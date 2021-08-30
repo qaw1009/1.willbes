@@ -143,172 +143,40 @@
                     @endfor
                 </ul>
 
-                <div class="will-nTit NSK-Black mt100">
-                    신광은경찰팀 유튜브 채널 모음
-                </div>
-                <div class="Section tube_wrap">
-                    <div class="widthAuto">
-                        <div class="tube_box">
-                            <ul class="tube_slider">
-                                <li>
-                                    <div>
-                                        <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/featured" target="_blank">
-                                            <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch01.png" alt="#신광은경찰팀  #공식채널">
-                                        </a>
-                                    </div>
-                                    <div class="tube_title">#신광은경찰팀  #공식채널</div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="https://www.youtube.com/channel/UCz_3g63yWTYjg6_Ko5QRK1g?view_as=subscriber" target="_blank">
-                                            <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch02.png" alt="#신광은 #형사법 #1일1제">
-                                        </a>
-                                    </div>
-                                    <div class="tube_title">#신광은 #형사법 #1일1제</div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="https://www.youtube.com/channel/UCjxTXvi1hPxz32wr031U7jw" target="_blank">
-                                            <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch03.png" alt="#장정훈 #경찰학 #1일1제">
-                                        </a>
-                                    </div>
-                                    <div class="tube_title">#장정훈 #경찰학 #1일1제</div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="https://www.youtube.com/channel/UCMVc2RbvQeJ_574VzzpPzpg">
-                                            <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch04.png" alt="#김원욱 #헌법 #1일1제">
-                                        </a>
-                                    </div>
-                                    <div class="tube_title">#김원욱 #헌법 #1일1제</div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="javascript:alert('Coming Soon!')">
-                                            <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch05.png" alt="#이국령 #헌법도약">
-                                        </a>
-                                    </div>
-                                    <div class="tube_title">#이국령 #헌법도약</div>
-                                </li>
-                            </ul>
-                            <p class="leftBtn"><a id="tube_slider_left"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_left.png"></a></p>
-                            <p class="rightBtn"><a id="tube_slider_right"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_right.png"></a></p>
+                @if (empty(element('메인_유튜브', $data['arr_main_banner'])) === false)
+                    <div class="will-nTit NSK-Black mt100">
+                        신광은경찰팀 유튜브 채널 모음
+                    </div>
+                    <div class="Section tube_wrap">
+                        <div class="widthAuto">
+                            <div class="tube_box">
+                                <ul class="tube_slider">
+                                    {{-- 배너함수 사용 불가 --}}
+                                    @foreach(element('메인_유튜브', $data['arr_main_banner']) as $row)
+                                        <li>
+                                            <div>
+                                                @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
+                                                    <a href="javascript:void(0);">
+                                                        <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                                    </a>
+                                                @else
+                                                    <a href="{{front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www')}}" target="{{$row['LinkType']}}">
+                                                        <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                                    </a>
+                                                @endif
+                                            </div>
+                                            <div class="tube_title">{{ $row['BannerName'] }}</div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                                <p class="leftBtn"><a id="tube_slider_left"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_left.png"></a></p>
+                                <p class="rightBtn"><a id="tube_slider_right"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_right.png"></a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                {{--<div class="tube_content NSK">
-                    <ul class="tube_list">
-                        {!! banner_html(element('메인_유튜브', $data['arr_main_banner']), '','','','','tube_img','','',true,true) !!}
-                    </ul>
-                    <p class="leftBtn" id="imgBannerLeft3"><a href="#none">이전</a></p>
-                    <p class="rightBtn" id="imgBannerRight3"><a href="none">다음</a></p>
-                </div>--}}
+                @endif
             </div>
         </div>
-
-        {{--
-        todo : 삭제 예정 2021.08.26
-        <div class="Section mt100">
-            <div class="widthAuto">
-                <div class="will-nTit NSK-Black">
-                    개편 과목 <span class="cop-color">전문 교수진</span>
-                    <span class="tx16 NSK-Thin pt10 ml20">2022년 경찰 합격을 위한 선택! 과목개편 대비 강좌을 경험해보세요.</span>
-                </div>
-                <ul class="SecBanner03">
-                    @for($i=1; $i<=4; $i++)
-                        @if(isset($data['arr_main_banner']['메인_전문교수진'.$i]) === true)
-                            <li>
-                                {!! banner_html($data['arr_main_banner']['메인_전문교수진'.$i]) !!}
-                            </li>
-                        @endif
-                    @endfor
-                </ul>
-            </div>
-        </div>
-
-        @if(isset($data['arr_main_banner']['메인_중간띠배너']) === true)
-            <div class="Section mt70">
-                <div class="widthAuto SecBanner04">
-                    {!! banner_html($data['arr_main_banner']['메인_중간띠배너'], 'slider') !!}
-                </div>
-            </div>
-        @endif
-
-        <div class="Section SectionBg01">
-            <div class="widthAuto">
-                <div class="will-nTit NSK-Black">
-                    전문 <span class="cop-color">교수진</span>
-                    <span class="tx16 NSK-Thin pt10 ml20">최고의 교수진으로 수험생의 합격을 돕겠습니다.</span>
-                </div>
-                <ul class="SecBanner05">
-                    @for($i=1; $i<=8; $i++)
-                        @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
-                            <li>
-                                {!! banner_html(element('메인_교수진'.$i, $data['arr_main_banner'])) !!}
-                            </li>
-                        @endif
-                    @endfor
-                </ul>
-            </div>
-        </div>
-
-        <div class="Section SectionBg02 NSK">
-            <div class="widthAuto">
-                <div class="will-nTit NSK-Black">
-                    수험생 맞춤 콘텐츠
-                    <span class="tx16 NSK-Thin pt10 ml20">경시생들에게 제공하는 수강 맞춤 콘텐츠 입니다.</span>
-                </div>
-                <ul class="SecBanner06">
-                    @for($i=1; $i<=9; $i++)
-                        @if(isset($data['arr_main_banner']['메인_콘텐츠'.$i]) === true)
-                            <li>
-                                {!! banner_html(element('메인_콘텐츠'.$i, $data['arr_main_banner'])) !!}
-                            </li>
-                        @endif
-                    @endfor
-                </ul>
-                <div class="will-nTit NSK-Black mt100">
-                    신광은경찰팀 TV
-                </div>
-                <div class="tabTv">
-                    <div class="tabTvBtns">
-                        <ul class="NSK-Black">
-                            <li><a href="#tabTv01" class="on"><span>커리큘럼 & 공부방법</span></a></li>
-                            <li><a href="#tabTv02"><span>신광은경찰팀 특강</span></a></li>
-                            <li><a href="#tabTv03"><span>합격생 영상</span></a></li>
-                        </ul>
-                        <div class="moreBtn"><a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">영상 더보기 ></a></div>
-                    </div>
-                    <div id="tabTv01" class="TvctsBox">
-                        @for($i=1; $i<=3; $i++)
-                            @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
-                                <div class="Tvcts">
-                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner']),'','','','','','','',true) !!}
-                                </div>
-                            @endif
-                        @endfor
-                    </div>
-                    <div id="tabTv02" class="TvctsBox">
-                        @for($i=4; $i<=6; $i++)
-                            @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
-                                <div class="Tvcts">
-                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner']),'','','','','','','',true) !!}
-                                </div>
-                            @endif
-                        @endfor
-                    </div>
-                    <div id="tabTv03" class="TvctsBox">
-                        @for($i=7; $i<=9; $i++)
-                            @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
-                                <div class="Tvcts">
-                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner']),'','','','','','','',true) !!}
-                                </div>
-                            @endif
-                        @endfor
-                    </div>
-                </div>
-            </div>
-        </div>--}}
 
         <div class="Section mt100">
             <div class="widthAuto SecBanner07">

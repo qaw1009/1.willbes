@@ -8,8 +8,11 @@
     .evtCtnsBox img {width:100%; max-width:720px;}
     .evtCtnsBox.wrap a:hover {box-shadow:0 5px 20px rgba(0,0,0,.5); border-radius:6px}
 
-    .evt01 {}
-    .evt01s .slide_con {}
+    .evt00 {padding-top:15%; background:#273238}
+    .video-container-box {padding:0 5%}
+    .video-container {position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow: hidden;}
+    .video-container iframe {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}  
+
     .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0}
     .slide_con .bx-wrapper .bx-pager {        
         width: auto;
@@ -28,19 +31,13 @@
     .slide_con .bx-wrapper .bx-pager.bx-default-pager a:hover, 
     .slide_con .bx-wrapper .bx-pager.bx-default-pager a.active,
     .slide_con .bx-wrapper .bx-pager.bx-default-pager a:focus {
-        background: #2F6C64;
+        background: #e85b4a;
     }
     .slide_con .bx-wrapper .bx-pager.bx-default-pager a.active {
         width: 30px;
     }
 
-    .evt05 a {position: absolute; top: 85.08%; width: 29.58%; height: 9.08%; z-index: 2;}
-    .evt05 a.a01 {left: 15.14%;}
-    .evt05 a.a02 {left: 54.44%;}
-
-    .evt06 a {position: absolute; top: 85.08%; width: 29.58%; height: 9.08%; z-index: 2;}
-    .evt06 a.b01 {left: 15.14%;}
-    .evt06 a.b02 {left: 54.44%;}
+  
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
@@ -60,12 +57,21 @@
 
 <div id="Container" class="Container NSK c_both"> 
 
-    <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2020/09/1068m_top.jpg" alt="장사원" > 
+    <div class="evtCtnsBox">
+        <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_top.jpg" alt="장사원" > 
     </div> 
     
-    <div class="evtCtnsBox evt01">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_01.jpg" alt="합격 전략의 중심" > 
+    <div class="evtCtnsBox">
+        <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_01.jpg" alt="합격 전략의 중심" > 
+    </div> 
+
+    <div class="evtCtnsBox evt00">
+        <div class="video-container-box">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/chEceiSyKOg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_00.jpg" alt="합격 전략의 중심" > 
     </div> 
 
     <div class="evtCtnsBox evt01s">
@@ -80,34 +86,17 @@
     </div> 
     
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_02.jpg" alt="농업직 4관왕" > 
+        <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_02.jpg" alt="농업직 4관왕" > 
     </div>
 
-    <div class="evtCtnsBox evt03">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_03.jpg" alt="커리큘러" > 
-    </div> 
-
-    <div class="evtCtnsBox evt04">
-        <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_04.jpg" alt="패키지 수강신청" >
-    </div> 
-
-    <div class="evtCtnsBox evt05 wrap">
-        <img src="https://static.willbes.net/public/images/promotion/2020/09/1068m_05.jpg" alt="농업직 이론 패키지">
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171517" title="농업직 기본심화이론" target="_blank" class="a01"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171522" title="7급 농업직" target="_blank" class="a02"></a>
-    </div> 
-
-    <div class="evtCtnsBox evt06 wrap">
-        <img src="https://static.willbes.net/public/images/promotion/2020/09/1068m_06.jpg" alt="농촌지도사 이론 패키지" >
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171775" title="농촌지도사 경기인천외" class="b01"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171777" title="농촌지도사 경기인천" class="b02"></a>
-    </div> 
-
-    <div class="evtCtnsBox evt07">
-        <a href="https://pass.willbes.net/m/professor/show/cate/3028/prof-idx/50429/?subject_idx=1171&subject_name=%EC%9E%AC%EB%B0%B0%ED%95%99" target="_blank">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_07.jpg" alt="수강신청 바로가기">
-        </a>
-    </div>     
+    <div class="evtCtnsBox wrap">
+        <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_06.jpg" alt="농촌지도사 이론 패키지" >
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185386" target="_blank" title="기본심화이론" style="position: absolute; left: 14.86%; top: 46.26%; width: 28.61%; height: 3.06%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185387" target="_blank" title="농업직이론" style="position: absolute; left: 56.39%; top: 46.26%; width: 28.61%; height: 3.06%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185390" target="_blank" title="농촌지도사이론" style="position: absolute; left: 14.86%; top: 79.32%; width: 28.61%; height: 3.06%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185391" target="_blank" title="농촌지도사이론" style="position: absolute; left: 56.396%; top: 79.32%; width: 28.61%; height: 3.06%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/professor/show/cate/3028/prof-idx/50429/?subject_idx=1171&subject_name=%EC%9E%AC%EB%B0%B0%ED%95%99" title="단과" style="position: absolute; left: 64.86%; top: 88.98%; width: 20.69%; height: 4.32%; z-index: 2;"></a>
+    </div>   
 </div>
 
 <!-- End Container -->

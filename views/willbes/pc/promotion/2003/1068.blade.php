@@ -25,7 +25,7 @@
 		.wb_00_01 {background:#273238; padding-top:150px}
 		.wb_00_01 iframe {width:945px; height:531px; margin:0 auto}
 
-		.wb_00 {background:url(https://static.willbes.net/public/images/promotion/2020/01/1068_01_bg.jpg) no-repeat center top; position:relative}
+		.wb_00 {background:url(https://static.willbes.net/public/images/promotion/2021/08/1068_00_bg.jpg) no-repeat center top; position:relative}
 
 		.wb_01{background:#fff;}    
 
@@ -54,10 +54,10 @@
         .LAeventB03 th {background:#5f5f5f; color:#fff}
         .LAeventB03 td:nth-child(1) {text-align:center}
         .LAeventB03 td:nth-child(2) {text-align:center}
-        .LAeventB03 td:nth-child(3) {color:#2f6c64;text-align:left}
+        .LAeventB03 td:nth-child(3) {color:#e85b4a;text-align:left}
         .LAeventB03 td:last-child {border:0}
         .LAeventB03 td p {font-size:12px}
-		.LAeventB03 table a {padding:10px 15px; color:#fff; background:#2f6c64; font-size:14px; display:block; border-radius:20px 20px 0 20px}
+		.LAeventB03 table a {padding:10px 15px; color:#fff; background:#e85b4a; font-size:14px; display:block; border-radius:20px 20px 0 20px}
         .LAeventB03 table a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
         .LAeventB03 table a:hover {background:#252525; color:#fff;}
         .LAeventB03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}			
@@ -83,9 +83,9 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">	
 		<div class="sky" id="QuickMenu">   
-			<a href="https://pass.willbes.net/promotion/index/cate/3028/code/2029" target="_blank"> 
+			{{--<a href="https://pass.willbes.net/promotion/index/cate/3028/code/2029" target="_blank"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/1068_sky1.png" alt="5과목 패키지" >
-            </a>
+            </a>--}}
 			<a href="#to_go">
 				<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_sky2.png" usemap="#map1068_sky" border="0" />
 				<map name="map1068_sky" id="map1068_sky">
@@ -108,7 +108,7 @@
         </div>
 		
         <div class="evtCtnsBox wb_00">
-			<img src="https://static.willbes.net/public/images/promotion/2020/01/1068_01.jpg" alt="">
+			<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_00.jpg" alt="">
 			<div class="slide_con">
                 <ul id="slidesImg3">
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01_Roll1.jpg" alt="" /></li>
@@ -122,7 +122,7 @@
         </div>	
 
 		<div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_01.jpg" alt="커리큘럼">
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/1068_01.jpg" alt="커리큘럼">
         </div>
 
 		{{--
@@ -135,13 +135,12 @@
 		--}}
 
 		<div class="evtCtnsBox wb_02" id="to_go">
-			<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_02_01.jpg" alt=""/>
 			<div class="wrap">
 				<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_02_02.jpg" alt=""/>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171517" target="_blank" title="" style="position: absolute; left: 4.29%; top: 66.97%; width: 18.3%; height: 5.31%; z-index: 2;"></a>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171522" target="_blank" title="" style="position: absolute; left: 28.04%; top: 66.97%; width: 18.3%; height: 5.31%;  z-index: 2;"></a>				
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171775" target="_blank" title="" style="position: absolute; left: 52.10%; top: 66.97%; width: 18.3%; height: 5.31%;  z-index: 2;"></a>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171777" target="_blank" title="" style="position: absolute; left: 75.84%; top: 66.97%; width: 18.3%; height: 5.31%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185386" target="_blank" title="" style="position: absolute; left: 5.27%; top: 75.98%; width: 17.5%; height: 4.45%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185387" target="_blank" title="" style="position: absolute; left: 29.2%; top: 75.98%; width: 17.5%; height: 4.45%; z-index: 2;"></a>				
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185390" target="_blank" title="" style="position: absolute; left: 52.68%; top: 75.98%; width: 17.5%; height: 4.45%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185391" target="_blank" title="" style="position: absolute; left: 76.52%; top: 75.98%; width: 17.5%; height: 4.45%; z-index: 2;"></a>
 			</div>
 		</div>
 		       

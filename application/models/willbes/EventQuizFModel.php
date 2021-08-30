@@ -111,7 +111,7 @@ class EventQuizFModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = "a.EqIdx, a.Title, b.EqsIdx, b.EqsGroupTitle, DATE_FORMAT(b.EqsStartDatm,'%Y-%m-%d') AS EqsStartDate
-            ,c.EqsqIdx, c.EqsqTitle, c.EqsqExplanation, c.RightAnswer,qm.IsFinish, qm.QmIdx, qmd.QmdIdx, qmd.EqsqdIdx, qmd.Answer
+            ,c.EqsqIdx, c.EqsqTitle, c.EqsqContent, c.EqsqExplanation, c.RightAnswer,qm.IsFinish, qm.QmIdx, qmd.QmdIdx, qmd.EqsqdIdx, qmd.Answer
             ,IF(LOCATE(qmd.Answer , c.RightAnswer), 'Y', 'N') AS IsWrong";
             $order_by_offset_limit = $this->_conn->makeOrderBy(['c.EqsqIdx' => 'ASC'])->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset(1, element('page_num', $params, 0))->getMakeLimitOffset();

@@ -1,7 +1,7 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
     <!-- Container -->
-    <div id="Container" class="Container cop NGR c_both">
+    <div id="Container" class="Container cop NGR c_both combine">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
@@ -80,21 +80,24 @@
             </div>
         </div>
 
-        <div class="Section mt100">
+
+        <div class="Section Sction3 mt100">
             <div class="widthAuto">
-                <div class="will-nTit NSK-Black">
-                    개편 과목 <span class="cop-color">전문 교수진</span>
-                    <span class="tx16 NSK-Thin pt10 ml20">2022년 경찰 합격을 위한 선택! 과목개편 대비 강좌을 경험해보세요.</span>
+                <div class="SecBanner12">
+                    <div class="will-nTit NSK-Black">
+                        전문 <span class="cop-color">교수진</span>
+                        <span class="tx16 NSK-Thin pt10 ml20">경찰 합격을 위한 선택! 최고의 교수진으로 수험생의 합격을 돕겠습니다.</span>
+                    </div>
+                    <ul class="pro_box">
+                        @for($i=1;$i<=10;$i++)
+                            @if(isset($data['arr_main_banner']['메인_전문교수진' . $i]) === true)
+                                <li class="bSlider">
+                                    {!! banner_html(element('메인_전문교수진'.$i, $data['arr_main_banner']),'slider') !!}
+                                </li>
+                            @endif
+                        @endfor
+                    </ul>
                 </div>
-                <ul class="SecBanner03">
-                    @for($i=1; $i<=4; $i++)
-                        @if(isset($data['arr_main_banner']['메인_전문교수진'.$i]) === true)
-                            <li>
-                                {!! banner_html($data['arr_main_banner']['메인_전문교수진'.$i]) !!}
-                            </li>
-                        @endif
-                    @endfor
-                </ul>
             </div>
         </div>
 
@@ -106,17 +109,17 @@
             </div>
         @endif
 
-        <div class="Section SectionBg01">
+        <div class="Section mt100">
             <div class="widthAuto">
                 <div class="will-nTit NSK-Black">
-                    전문 <span class="cop-color">교수진</span>
-                    <span class="tx16 NSK-Thin pt10 ml20">최고의 교수진으로 수험생의 합격을 돕겠습니다.</span>
+                    검정제 <span class="cop-color">교수진</span>
+                    <span class="tx16 NSK-Thin pt10 ml20">합격의 필수요소! 검정제 시작부터 제대로 준비하세요.</span>
                 </div>
-                <ul class="SecBanner05">
-                    @for($i=1; $i<=8; $i++)
-                        @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
+                <ul class="SecBanner11">
+                    @for($i=1;$i<=3;$i++)
+                        @if(isset($data['arr_main_banner']['메인_검정제교수진' . $i]) === true)
                             <li>
-                                {!! banner_html(element('메인_교수진'.$i, $data['arr_main_banner'])) !!}
+                                {!! banner_html(element('메인_검정제교수진'.$i, $data['arr_main_banner'])) !!}
                             </li>
                         @endif
                     @endfor
@@ -139,46 +142,39 @@
                         @endif
                     @endfor
                 </ul>
-                <div class="will-nTit NSK-Black mt100">
-                    신광은경찰팀 TV
-                </div>
-                <div class="tabTv">
-                    <div class="tabTvBtns">
-                        <ul class="NSK-Black">
-                            <li><a href="#tabTv01" class="on"><span>커리큘럼 & 공부방법</span></a></li>
-                            <li><a href="#tabTv02"><span>신광은경찰팀 특강</span></a></li>
-                            <li><a href="#tabTv03"><span>합격생 영상</span></a></li>
-                        </ul>
-                        <div class="moreBtn"><a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">영상 더보기 ></a></div>
+
+                @if (empty(element('메인_유튜브', $data['arr_main_banner'])) === false)
+                    <div class="will-nTit NSK-Black mt100">
+                        신광은경찰팀 유튜브 채널 모음
                     </div>
-                    <div id="tabTv01" class="TvctsBox">
-                        @for($i=1; $i<=3; $i++)
-                            @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
-                                <div class="Tvcts">
-                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner']),'','','','','','','',true) !!}
-                                </div>
-                            @endif
-                        @endfor
+                    <div class="Section tube_wrap">
+                        <div class="widthAuto">
+                            <div class="tube_box">
+                                <ul class="tube_slider">
+                                    {{-- 배너함수 사용 불가 --}}
+                                    @foreach(element('메인_유튜브', $data['arr_main_banner']) as $row)
+                                        <li>
+                                            <div>
+                                                @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
+                                                    <a href="javascript:void(0);">
+                                                        <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                                    </a>
+                                                @else
+                                                    <a href="{{front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www')}}" target="{{$row['LinkType']}}">
+                                                        <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                                    </a>
+                                                @endif
+                                            </div>
+                                            <div class="tube_title">{{ $row['BannerName'] }}</div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                                <p class="leftBtn"><a id="tube_slider_left"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_left.png"></a></p>
+                                <p class="rightBtn"><a id="tube_slider_right"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_right.png"></a></p>
+                            </div>
+                        </div>
                     </div>
-                    <div id="tabTv02" class="TvctsBox">
-                        @for($i=4; $i<=6; $i++)
-                            @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
-                                <div class="Tvcts">
-                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner']),'','','','','','','',true) !!}
-                                </div>
-                            @endif
-                        @endfor
-                    </div>
-                    <div id="tabTv03" class="TvctsBox">
-                        @for($i=7; $i<=9; $i++)
-                            @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
-                                <div class="Tvcts">
-                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner']),'','','','','','','',true) !!}
-                                </div>
-                            @endif
-                        @endfor
-                    </div>
-                </div>
+                @endif
             </div>
         </div>
 
@@ -256,6 +252,8 @@
         <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
         {{--유튜브 모달팝업//--}}
     @endif
+
+    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 
     <script src="/public/js/willbes/product_util.js?ver={{time()}}"></script>
     <script type="text/javascript">
@@ -402,6 +400,31 @@
                 });
             });
         });
+
+        //유튜브채널
+        $(function() {
+                var newsImg = $(".tube_slider").bxSlider({
+                    mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                    auto:true,
+                    speed:350,
+                    pause:4000,
+                    pager:false,
+                    controls:false,
+                    slideWidth: 224,
+                    minSlides:5,
+                    maxSlides:5,
+                    slideMargin:0,
+                    autoHover:true,
+                    moveSlides:1,
+                });
+                $("#tube_slider_left").click(function (){
+                    newsImg.goToPrevSlide();
+                });
+
+                $("#tube_slider_right").click(function (){
+                    newsImg.goToNextSlide();
+                });
+            });
 
         //교재
         /*$(function() {

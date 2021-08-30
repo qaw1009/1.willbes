@@ -163,7 +163,7 @@ class EventQuizModel extends WB_Model
      */
     public function findQuizQuestion($arr_condition)
     {
-        $column = 'sq.EqsqIdx, sq.EqsIdx, sq.EqsqTitle, sq.EqsqExplanation, sq.EqsqdTotalcnt, sq.RightAnswer';
+        $column = 'sq.EqsqIdx, sq.EqsIdx, sq.EqsqTitle, sq.EqsqContent, sq.EqsqExplanation, sq.EqsqdTotalcnt, sq.RightAnswer';
         $from = "
             FROM {$this->_table['event_quiz_set']} AS s
             INNER JOIN {$this->_table['event_quiz_set_question']} AS sq ON s.EqsIdx = sq.EqsIdx AND sq.IsStatus = 'Y'
@@ -440,6 +440,7 @@ class EventQuizModel extends WB_Model
                 $input_question_data = [
                     'EqsIdx' => $eqs_idx,
                     'EqsqTitle' => element('question_title_'.$i, $form_data),
+                    'EqsqContent' => element('question_content_'.$i, $form_data),
                     'EqsqExplanation' => element('eqsq_explanation_'.$i, $form_data),
                     'EqsqdTotalcnt' => element('question_cnt_'.$i, $form_data),
                     'RightAnswer' => implode(element('question_detail_is_answer_'.$i, $form_data),',')
@@ -505,6 +506,7 @@ class EventQuizModel extends WB_Model
                         'EqsqIdx' => element('sq_idx', $form_data)[$i],
                         'EqsIdx' => $eqs_idx,
                         'EqsqTitle' => element('question_title_'.$i, $form_data),
+                        'EqsqContent' => element('question_content_'.$i, $form_data),
                         'EqsqExplanation' => element('eqsq_explanation_'.$i, $form_data),
                         'EqsqdTotalcnt' => element('question_cnt_'.$i, $form_data),
                         'RightAnswer' => implode(element('question_detail_is_answer_'.$i, $form_data),',')
@@ -535,6 +537,7 @@ class EventQuizModel extends WB_Model
                     $input_question_data = [
                         'EqsIdx' => $eqs_idx,
                         'EqsqTitle' => element('question_title_'.$i, $form_data),
+                        'EqsqContent' => element('question_content_'.$i, $form_data),
                         'EqsqExplanation' => element('eqsq_explanation_'.$i, $form_data),
                         'EqsqdTotalcnt' => element('question_cnt_'.$i, $form_data),
                         'RightAnswer' => implode(element('question_detail_is_answer_'.$i, $form_data),',')

@@ -34,8 +34,8 @@
                         {!! nl2br($question_data['EqsqTitle']) !!}
                         @if(empty($question_data['EqsqContent']) === false)
                             <div class="exBox">
-                                <p>[보기]</p>
-                                <div class="ml5">{!! nl2br($question_data['EqsqContent']) !!}</div>
+                                {{--<p>[보기]</p>--}}
+                                {!! nl2br($question_data['EqsqContent']) !!}
                             </div>
                         @endif
                         <ul>

@@ -1328,18 +1328,9 @@ class OrderFModel extends BaseOrderFModel
 
                         // 타겟주문상품 중에서 가장 큰 실제강좌종료일자 + 1 day 조회
                         $target_order_idx = element('TargetOrderIdx', $input);
-                        $row['StudyStartDate'] = element('NextStudyStartDate',
-                            $this->_conn->getJoinFindResult($this->_table['my_lecture'] . ' as ML', 'inner', $this->_table['order_product'] . ' as OP', 'ML.OrderProdIdx = OP.OrderProdIdx'
-                                , 'date_add(max(ML.RealLecEndDate), interval 1 day) as NextStudyStartDate', [
-                                    'EQ' => [
-                                        'ML.ProdCode' => element('TargetProdCode', $input), 'ML.ProdCodeSub' => element('TargetProdCodeSub', $input),
-                                        'OP.MemIdx' => $this->session->userdata('mem_idx'), 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']
-                                    ],
-                                    'RAW' => [
-                                        'ML.OrderIdx in ' => '(select OrderIdx from ' . $this->_table['order_product'] . ' where OrderIdx = "' . $target_order_idx . '" or TargetOrderIdx = "' . $target_order_idx . '")'
-                                    ]
-                                ])
-                        );
+                        $target_prod_code = element('TargetProdCode', $input);
+                        $target_prod_code_sub = element('TargetProdCodeSub', $input);
+                        $row['StudyStartDate'] = $this->getExtendNextLecStartDate($target_order_idx, $target_prod_code, $target_prod_code_sub);
 
                         if (empty($row['StudyStartDate']) === true) {
                             throw new \Exception('수강연장 수강시작일자 조회에 실패했습니다.');
@@ -1447,6 +1438,38 @@ class OrderFModel extends BaseOrderFModel
         }
 
         return true;
+    }
+
+    /**
+     * 수강연장 다음 수강시작일 조회
+     * @param int $target_order_idx [타겟주문식별자]
+     * @param int $target_prod_code [타겟상품코드]
+     * @param int $target_prod_code_sub [타겟상품코드서브]
+     * @return mixed
+     */
+    public function getExtendNextLecStartDate($target_order_idx, $target_prod_code, $target_prod_code_sub)
+    {
+        $column = 'date_add(max(ML.RealLecEndDate), interval 1 day) as NextStudyStartDate';
+        $from = '
+            from ' . $this->_table['my_lecture'] . ' as ML
+                inner join ' . $this->_table['order_product'] . ' as OP
+                    on ML.OrderProdIdx = OP.OrderProdIdx
+            where OP.MemIdx = ?
+                and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"		
+                and ML.ProdCodeSub = ?
+                and (OP.ProdCode = ? or OP.TargetProdCode = ?)
+                and ML.OrderProdIdx in (
+                    select OrderProdIdx from ' . $this->_table['order_product'] . ' where OrderIdx = ? or TargetOrderIdx = ?
+                )
+        ';
+        $binds = [
+            $this->session->userdata('mem_idx'),
+            $target_prod_code_sub,
+            $target_prod_code, $target_prod_code,
+            $target_order_idx, $target_order_idx
+        ];
+
+        return element('NextStudyStartDate', $this->_conn->query('select ' . $column . $from, $binds)->row_array());
     }
 
     /**

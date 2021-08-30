@@ -31,14 +31,20 @@
 
                     <div class="question">
                         <span>{{ $next_page }}</span>
-                        {{ $question_data['EqsqTitle'] }}
+                        {!! nl2br($question_data['EqsqTitle']) !!}
+                        @if(empty($question_data['EqsqContent']) === false)
+                            <div class="exBox">
+                                <p>[보기]</p>
+                                <div class="ml5">{!! nl2br($question_data['EqsqContent']) !!}</div>
+                            </div>
+                        @endif
                         <ul>
                             @if (empty($question_detail_data) === false)
                                 @foreach($question_detail_data as $row)
                                     <li>
                                         <input type="radio" class="btn-answer-num" name="answer_id" id="answer_num_{{ $loop->index }}" value="{{ $row['EqsqdIdx'] }}" data-answer-num="{{ $loop->index }}"
                                                 {{ ($loop->index == $question_data['Answer'] ? 'checked=checked' : '') }}>
-                                        <label for="answer_num_{{ $loop->index }}">{{ $row['EqsqdQuestion'] }}</label>
+                                        <label for="answer_num_{{ $loop->index }}">{!! nl2br($row['EqsqdQuestion']) !!}</label>
                                     </li>
                                 @endforeach
                             @endif

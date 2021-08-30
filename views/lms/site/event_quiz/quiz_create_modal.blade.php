@@ -145,7 +145,12 @@
                 <div class="mb-30" id="qt_0">
                     <div class="row mb-5">
                         <label class="control-label col-md-1-1">질문 <span class="required">*</span></label>
-                        <input type="text" class="form-control input-eqs-question" name="question_title_0" title="답변항목" value="">
+                        <textarea class="form-control input-eqs-question" cols="70" rows="3" name="question_title_0" title="답변항목"></textarea>
+                    </div>
+
+                    <div class="row mb-5">
+                        <label class="control-label col-md-1-1">지문</label>
+                        <textarea class="form-control input-eqs-question" cols="70" rows="4" name="question_content_0" title="지문"></textarea>
                     </div>
 
                     <div class="row mb-5">
@@ -155,7 +160,8 @@
                                 <option value='{{ $i }}' >{{ $i }}</option>
                             @endfor
                         </select>
-                        <input type="text" class="form-control input-question-detail" name="question_detail_title_0[]" title="보기" value="">
+                        {{--<input type="text" class="form-control input-question-detail" name="question_detail_title_0[]" title="보기" value="">--}}
+                        <textarea class="form-control input-question-detail" cols="70" rows="2" name="question_detail_title_0[]" title="보기"></textarea>
                         정답
                         <input type="checkbox" name="question_detail_is_answer_0[]" value="1">
                         <div class="mt-5 question_detail_html"></div>
@@ -173,8 +179,13 @@
                         <input type="hidden" name="sq_idx[]" value="{{ $row['EqsqIdx'] }}">
                         <div class="row mb-5 form-inline">
                             <label class="control-label col-md-1-1">질문 <span class="required">*</span></label>
-                            <input type="text" class="form-control input-eqs-question" name="question_title_{{$box}}" title="답변항목" value="{{ $row['EqsqTitle'] }}">
+                            <textarea class="form-control input-eqs-question" cols="70" rows="3" name="question_title_{{$box}}" title="답변항목">{!! $row['EqsqTitle'] !!}</textarea>
                             <a href="javascript:void(0);" class="btn-delete-question" data-eqsq-idx="{{ $row['EqsqIdx'] }}" title="개별삭제"><i class="fa fa-times fa-lg red"></i></a>
+                        </div>
+
+                        <div class="row mb-5">
+                            <label class="control-label col-md-1-1">지문</label>
+                            <textarea class="form-control input-eqs-question" cols="70" rows="4" name="question_content_{{$box}}" title="지문">{!! $row['EqsqContent'] !!}</textarea>
                         </div>
 
                         <div class="row mb-5">
@@ -191,7 +202,7 @@
                                 @foreach($data_detail[$row['EqsqIdx']] as $d_key => $d_row)
                                     <input type="hidden" name="sqd_idx_{{$box}}[]" value="{{ $d_key }}">
                                     <div class="col-lg-offset-2 mb-5">
-                                        <input type="text" class="form-control input-question-detail mr-5 @if($d_box > 1) ml-5 @endif" name="question_detail_title_{{$box}}[]" title="보기" value="{{ $d_row['EqsqdQuestion'] }}">
+                                        <textarea class="form-control input-question-detail mr-5 @if($d_box > 1) ml-5 @endif" cols="70" rows="2" name="question_detail_title_{{$box}}[]" title="보기">{!! $d_row['EqsqdQuestion'] !!}</textarea>
                                         정답
                                         <input type="checkbox" name="question_detail_is_answer_{{$box}}[]" value="{{ $d_row['DetailRowNum'] }}" @if($d_row['IsWrong'] == "Y") checked="checked" @endif>
                                         <a href="javascript:void(0);" class="btn-delete-detail" data-box-id="{{ $box }}" data-eqsq-idx="{{ $row['EqsqIdx'] }}" data-eqsqd-idx="{{ $d_key }}" title="개별보기삭제"><i class="fa fa-times fa-lg red"></i></a>
@@ -339,7 +350,7 @@
 
             //개별항목삭제
             $_regi_form.on('click', '.btn-delete-detail', function() {
-                var q_cnt = $_regi_form.find('input[name="question_detail_title_'+$(this).data("box-id")+'[]"]').length;
+                var q_cnt = $_regi_form.find('textarea[name="question_detail_title_'+$(this).data("box-id")+'[]"]').length;
                 if (q_cnt <= 1) {
                     alert('보기는 최소 1개이상이여야 합니다.');
                     return false;
@@ -369,10 +380,14 @@
 
         function questionbox_html(num) {
             var add_html = '';
-            add_html += '<div class="mb-30 add-question-html" id="qt_'+num+'">';
+            add_html += '<div class="mb-30 add-question-html" id="qt_'+num+'" style="border-bottom: 1px solid #e6e9ed;padding-bottom: 5px;">';
             add_html += '<div class="row mb-5">';
             add_html += '<label class="control-label col-md-1-1">질문 <span class="required">*</span></label>';
-            add_html += '<input type="text" class="form-control input-eqs-question" name="question_title_'+num+'" title="답변항목" value="">';
+            add_html += '<textarea class="form-control input-eqs-question" cols="70" rows="3" name="question_title_'+num+'" title="답변항목"></textarea>';
+            add_html += '</div>';
+            add_html += '<div class="row mb-5">';
+            add_html += '<label class="control-label col-md-1-1">지문 <span class="required">*</span></label>';
+            add_html += '<textarea class="form-control input-eqs-question" cols="70" rows="4" name="question_content_'+num+'" title="지문"></textarea>';
             add_html += '</div>';
             add_html += '<div class="row mb-5">';
             add_html += '<label class="control-label col-md-1-1">보기 <span class="required">*</span></label>';
@@ -383,7 +398,7 @@
             add_html += '<option value="4">4</option>';
             add_html += '<option value="5">5</option>';
             add_html += '</select>';
-            add_html += '<input type="text" class="form-control input-question-detail" name="question_detail_title_'+num+'[]" title="보기" value="">';
+            add_html += '<textarea class="form-control input-question-detail mr-5" cols="70" rows="2" name="question_detail_title_'+num+'[]" title="보기"></textarea>';
             add_html += '정답';
             add_html += '<input type="checkbox" name="question_detail_is_answer_'+num+'[]" value="1">';
             add_html += '<div class="mt-5 question_detail_html"></div>';
@@ -400,7 +415,7 @@
             var answer_val = num + 1;
             var add_html = '';
             add_html += '<div class="col-lg-offset-2 mb-5 add-question-detail-html-'+box_id+'">';
-            add_html += '<input type="text" class="form-control input-question-detail ml-5 mr-5" name="question_detail_title_'+box_id+'[]" title="보기" value="">';
+            add_html += '<textarea class="form-control input-question-detail ml-5 mr-5" cols="70" rows="2" name="question_detail_title_'+box_id+'[]" title="보기"></textarea>';
             add_html += '정답';
             add_html += '<input type="checkbox" name="question_detail_is_answer_'+box_id+'[]" value="'+answer_val+'">';
             add_html += '</div>';

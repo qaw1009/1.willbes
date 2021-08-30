@@ -80,6 +80,132 @@
             </div>
         </div>
 
+
+        <div class="Section Sction3 mt100">
+            <div class="widthAuto">
+                <div class="SecBanner12">
+                    <div class="will-nTit NSK-Black">
+                        전문 <span class="cop-color">교수진</span>
+                        <span class="tx16 NSK-Thin pt10 ml20">경찰 합격을 위한 선택! 최고의 교수진으로 수험생의 합격을 돕겠습니다.</span>
+                    </div>
+                    <ul class="pro_box">
+                        @for($i=1;$i<=10;$i++)
+                            @if(isset($data['arr_main_banner']['메인_전문교수진' . $i]) === true)
+                                <li class="bSlider">
+                                    {!! banner_html(element('메인_전문교수진'.$i, $data['arr_main_banner']),'slider') !!}
+                                </li>
+                            @endif
+                        @endfor
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        @if(isset($data['arr_main_banner']['메인_중간띠배너']) === true)
+            <div class="Section mt70">
+                <div class="widthAuto SecBanner04">
+                    {!! banner_html($data['arr_main_banner']['메인_중간띠배너'], 'slider') !!}
+                </div>
+            </div>
+        @endif
+
+        <div class="Section mt100">
+            <div class="widthAuto">
+                <div class="will-nTit NSK-Black">
+                    검정제 <span class="cop-color">교수진</span>
+                    <span class="tx16 NSK-Thin pt10 ml20">합격의 필수요소! 검정제 시작부터 제대로 준비하세요.</span>
+                </div>
+                <ul class="SecBanner11">
+                    @for($i=1;$i<=3;$i++)
+                        @if(isset($data['arr_main_banner']['메인_검정제교수진' . $i]) === true)
+                            <li>
+                                {!! banner_html(element('메인_검정제교수진'.$i, $data['arr_main_banner'])) !!}
+                            </li>
+                        @endif
+                    @endfor
+                </ul>
+            </div>
+        </div>
+
+        <div class="Section SectionBg02 NSK">
+            <div class="widthAuto">
+                <div class="will-nTit NSK-Black">
+                    수험생 맞춤 콘텐츠
+                    <span class="tx16 NSK-Thin pt10 ml20">경시생들에게 제공하는 수강 맞춤 콘텐츠 입니다.</span>
+                </div>
+                <ul class="SecBanner06">
+                    @for($i=1; $i<=9; $i++)
+                        @if(isset($data['arr_main_banner']['메인_콘텐츠'.$i]) === true)
+                            <li>
+                                {!! banner_html(element('메인_콘텐츠'.$i, $data['arr_main_banner'])) !!}
+                            </li>
+                        @endif
+                    @endfor
+                </ul>
+
+                <div class="will-nTit NSK-Black mt100">
+                    신광은경찰팀 유튜브 채널 모음
+                </div>
+                <div class="tube_content NSK">
+                    <ul class="tube_list">
+                        {!! banner_html(element('메인_유튜브', $data['arr_main_banner']), '','','','','tube_img','','',true,true) !!}
+
+                        {{--<li>
+                            <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/featured" target="_blank">
+                                <span></span>
+                                <div class="tube_img">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch01.png" title="채널명">
+                                </div>
+                                <div>
+                                    <p>#신광은경찰팀  #공식채널</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/channel/UCz_3g63yWTYjg6_Ko5QRK1g?view_as=subscriber" target="_blank">
+                                <span></span>
+                                <div class="tube_img">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch02.png" title="채널명">
+                                </div>
+                                <p>#신광은 #형사법 #1일1제</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/channel/UCjxTXvi1hPxz32wr031U7jw" target="_blank">
+                                <span></span>
+                                <div class="tube_img">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch03.png" title="채널명">
+                                </div>
+                                <p>#장정훈 #경찰학 #1일1제</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/channel/UCMVc2RbvQeJ_574VzzpPzpg">
+                                <span></span>
+                                <div class="tube_img">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch04.png" title="채널명">
+                                </div>
+                                <p>#김원욱 #헌법 #1일1제</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:alert('Coming Soon!')">
+                                <span></span>
+                                <div class="tube_img">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch05.png" title="채널명">
+                                </div>
+                                <p>#이국령 #헌법도약</p>
+                            </a>
+                        </li>--}}
+                    </ul>
+                    <p class="leftBtn" id="imgBannerLeft3"><a href="#none">이전</a></p>
+                    <p class="rightBtn" id="imgBannerRight3"><a href="none">다음</a></p>
+                </div>
+            </div>
+        </div>
+
+        {{--
+        todo : 삭제 예정 2021.08.26
         <div class="Section mt100">
             <div class="widthAuto">
                 <div class="will-nTit NSK-Black">
@@ -180,7 +306,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--}}
 
         <div class="Section mt100">
             <div class="widthAuto SecBanner07">
@@ -256,6 +382,8 @@
         <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
         {{--유튜브 모달팝업//--}}
     @endif
+
+    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 
     <script src="/public/js/willbes/product_util.js?ver={{time()}}"></script>
     <script type="text/javascript">

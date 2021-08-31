@@ -25,7 +25,7 @@
         <div class="form-group form-group-sm" id="question_box" style="display: none;">
             <div class="col-md-6 ml-15">
                 @forelse($add_columns as $key => $val)
-                    <li>{{ $val }}</li>
+                    <li>{!! nl2br($val) !!}</li>
                 @empty
                     "문제(그룹)명"을 선택해주세요.
                 @endforelse

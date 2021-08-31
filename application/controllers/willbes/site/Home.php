@@ -10,7 +10,7 @@ class Home extends \app\controllers\FrontController
     private $_category_mobile = [
         '2003' => ['3019','3020','3023','3024','3035','3028','3103'],
         '2005' => 'all',
-        '2006' => ['309002','309003','309004'],
+        '2006' => ['309002','309003','309004', '308906'],
         '2008' => ['3100']
     ];
     private $_no_pc_cate_main = ['2012','2017'];   // 온라인 사이트 중 카테고리 메인 미사용 사이트 코드
@@ -278,9 +278,15 @@ class Home extends \app\controllers\FrontController
             if (in_array($this->_cate_code, $this->_category_mobile[$this->_site_code])) {
                 $s_cate_code = $cate_code;
                 $data['arr_main_banner'] = $this->_banner($s_cate_code);
-                $data['best_product'] = $this->_product('on_lecture', 20, $s_cate_code, 'Best');
-                $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $s_cate_code, 'New');
-                $data['board_lecture_plan'] = $this->_boardLecturePlan(5, $s_cate_code);
+
+                if ($s_cate_code == '308906') {
+                    // 빅데이터분석기사
+                    $data['dday'] = $this->_dday();
+                } else {
+                    $data['best_product'] = $this->_product('on_lecture', 20, $s_cate_code, 'Best');
+                    $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $s_cate_code, 'New');
+                    $data['board_lecture_plan'] = $this->_boardLecturePlan(5, $s_cate_code);
+                }
             }
         }
 

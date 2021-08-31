@@ -29,6 +29,8 @@
                         <li><a href="https://www.njobler.net" target="_blank">N잡/e창업 e-커머스</a></li>
                         <li><a href="{{ front_app_url('/home/index', 'willbesedu') }}" target="_blank">인천학원</a></li>
                         <li><a href="{{ front_app_url('/home/index', 'book') }}" target="_blank">온라인서점</a></li>
+                        <li><a href="{{ front_app_url('/home/index/cate/308906', 'job') }}" target="_blank">빅데이터분석기사 <span>N</span></a></li>
+                        <li></li>
                     </ul>
                     <div class="etc">
                         <a href="#none" class="btnMainToggle">기타자격증 <span>+</span></a>

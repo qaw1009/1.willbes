@@ -62,7 +62,7 @@
                                         <div class="w-date tx-gray">@if($lec['ispause'] == 'Y')({{str_replace('-', '.', $lec['lastPauseStartDate']) }}~{{str_replace('-', '.', $lec['lastPauseEndDate'])}})@else&nbsp;@endif</div>
                                     </td>
                                     <td>
-                                        <div class="w-lectit">수강연장</div>
+                                        <div class="w-lectit">수강연장(유료)</div>
                                         <div class="w-lec NGEB"><span class="tx-light-blue">{{$lec['RebuyCount']}}</span>회</div>
                                         <div class="w-date tx-gray">(최대 3회까지)</div>
                                     </td>

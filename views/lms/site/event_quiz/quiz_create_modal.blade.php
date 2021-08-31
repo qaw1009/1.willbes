@@ -142,19 +142,19 @@
                 <li>이미 서비스 오픈된 컨텐츠의 데이터 수정은 자제해주세요.("정답"이 달라질 수 있습니다.)</li>
             </div>
             @if($method == 'POST' || empty($data_question) === true)
-                <div class="mb-30" id="qt_0">
+                <div class="mb-30" id="qt_0" style="border-bottom: 2px solid #31708f;padding-bottom: 5px;">
                     <div class="row mb-5">
                         <label class="control-label col-md-1-1">질문 <span class="required">*</span></label>
                         <textarea class="form-control input-eqs-question" cols="70" rows="3" name="question_title_0" title="답변항목"></textarea>
                     </div>
 
                     <div class="row mb-5">
-                        <label class="control-label col-md-1-1">지문</label>
-                        <textarea class="form-control input-eqs-question" cols="70" rows="4" name="question_content_0" title="지문"></textarea>
+                        <label class="control-label col-md-1-1">보기</label>
+                        <textarea class="form-control input-eqs-question" cols="70" rows="4" name="question_content_0" title="보기"></textarea>
                     </div>
 
                     <div class="row mb-5">
-                        <label class="control-label col-md-1-1">보기 <span class="required">*</span></label>
+                        <label class="control-label col-md-1-1">지문 <span class="required">*</span></label>
                         <select class="form-control col-md-1-1 mr-5 btn-add-question-detail-box" data-box-id="0" name="question_cnt_0" title="갯수">
                             @for($i = 1; $i <= 5; $i++)
                                 <option value='{{ $i }}' >{{ $i }}</option>
@@ -175,7 +175,7 @@
             @else
                 @php $box=0; @endphp
                 @foreach($data_question as $row)
-                    <div class="mb-30" id="qt_{{$box}}" style="border-bottom: 1px solid #e6e9ed;padding-bottom: 5px;">
+                    <div class="mb-30" id="qt_{{$box}}" style="border-bottom: 2px solid #31708f;padding-bottom: 5px;">
                         <input type="hidden" name="sq_idx[]" value="{{ $row['EqsqIdx'] }}">
                         <div class="row mb-5 form-inline">
                             <label class="control-label col-md-1-1">질문 <span class="required">*</span></label>
@@ -184,12 +184,12 @@
                         </div>
 
                         <div class="row mb-5">
-                            <label class="control-label col-md-1-1">지문</label>
-                            <textarea class="form-control input-eqs-question" cols="70" rows="4" name="question_content_{{$box}}" title="지문">{!! $row['EqsqContent'] !!}</textarea>
+                            <label class="control-label col-md-1-1">보기</label>
+                            <textarea class="form-control input-eqs-question" cols="70" rows="4" name="question_content_{{$box}}" title="보기">{!! $row['EqsqContent'] !!}</textarea>
                         </div>
 
                         <div class="row mb-5">
-                            <label class="control-label col-md-1-1">보기 <span class="required">*</span></label>
+                            <label class="control-label col-md-1-1">지문 <span class="required">*</span></label>
                             <select class="form-control col-md-1-1 mr-5 btn-add-question-detail-box" name="question_cnt_{{$box}}" data-box-id="{{$box}}" title="갯수">
                                 @for($i = 1; $i <= 5; $i++)
                                     <option value='{{ $i }}'
@@ -380,17 +380,17 @@
 
         function questionbox_html(num) {
             var add_html = '';
-            add_html += '<div class="mb-30 add-question-html" id="qt_'+num+'" style="border-bottom: 1px solid #e6e9ed;padding-bottom: 5px;">';
+            add_html += '<div class="mb-30 add-question-html" id="qt_'+num+'" style="border-bottom: 2px solid #31708f;padding-bottom: 5px;">';
             add_html += '<div class="row mb-5">';
             add_html += '<label class="control-label col-md-1-1">질문 <span class="required">*</span></label>';
             add_html += '<textarea class="form-control input-eqs-question" cols="70" rows="3" name="question_title_'+num+'" title="답변항목"></textarea>';
             add_html += '</div>';
             add_html += '<div class="row mb-5">';
-            add_html += '<label class="control-label col-md-1-1">지문 <span class="required">*</span></label>';
-            add_html += '<textarea class="form-control input-eqs-question" cols="70" rows="4" name="question_content_'+num+'" title="지문"></textarea>';
+            add_html += '<label class="control-label col-md-1-1">보기 <span class="required">*</span></label>';
+            add_html += '<textarea class="form-control input-eqs-question" cols="70" rows="4" name="question_content_'+num+'" title="보기"></textarea>';
             add_html += '</div>';
             add_html += '<div class="row mb-5">';
-            add_html += '<label class="control-label col-md-1-1">보기 <span class="required">*</span></label>';
+            add_html += '<label class="control-label col-md-1-1">지문 <span class="required">*</span></label>';
             add_html += '<select class="form-control col-md-1-1 mr-5 btn-add-question-detail-box" data-box-id="'+num+'" name="question_cnt_'+num+'" title="갯수">';
             add_html += '<option value="1">1</option>';
             add_html += '<option value="2">2</option>';

@@ -278,24 +278,14 @@
     content:''; display: block; clear:both;List-Table
 }
 
-/* Main Container : QuickMenu  */
-.hanlim3099 .MainQuickMenu {
-    position: fixed;
-    top: 110px;
-    right: 20px;
-    width: 160px;
-    height: auto;    
-    z-index: 100;
-}
-.hanlim3099 .MainQuickMenu div {
-    margin-bottom:5px;
-    text-align: right;
-}
+/* Main Container : QuickMenu  
+
 .hanlim3099 .MainQuickMenu ul {    
     padding:0 8px !important;
     background: #ececec; 
     width:100%;    
 }
+
 .hanlim3099 .MainQuickMenu li {
     border-top:1px solid #f6f6f6;
     border-bottom:1px solid #d4d4d4;
@@ -329,7 +319,7 @@
 .hanlim3099 .MainQuickMenu li:nth-child(4) a {
     background: url("../../img/willbes/cop_acad/icon_rq09.png") no-repeat 3px center;
 }
-
+*/
 
 /* Guide Container */
 /*수험가이드*/

@@ -1,6 +1,5 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
-    <link href="/public/css/willbes/style_hanlim_3094.css?ver={{time()}}" rel="stylesheet">
     <!-- Container -->
     <div id="Container" class="Container hanlim{{$__cfg['CateCode']}} NSK c_both">
         <!-- site nav -->

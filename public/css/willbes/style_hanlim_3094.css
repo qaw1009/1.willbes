@@ -365,7 +365,7 @@ transition: 0.2s all ease;
 }
 
 /* Main Container : QuickMenu  */
-.hanlim3094 .MainQuickMenu {
+.hanlim3094 .QuickMenu {
     position: fixed;
     top: 110px;
     right: 10px;
@@ -373,7 +373,7 @@ transition: 0.2s all ease;
     height: auto;    
     z-index: 100;
 }
-.hanlim3094 .MainQuickMenu div {
+.hanlim3094 .QuickMenu div {
     margin-bottom:5px;
 }
 /*

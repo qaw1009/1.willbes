@@ -278,7 +278,7 @@
 }
 
 /* Main Container : QuickMenu  */
-.hanlim3097 .MainQuickMenu {
+.hanlim3097 .QuickMenu {
     position: fixed;
     top: 110px;
     right: 20px;
@@ -286,7 +286,7 @@
     height: auto;    
     z-index: 100;
 }
-.hanlim3097 .MainQuickMenu div {
+.hanlim3097 .QuickMenu div {
     margin-bottom:5px;
 }
 /*

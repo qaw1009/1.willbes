@@ -280,7 +280,7 @@
 
 
 /* Main Container : QuickMenu  */
-.hanlim3096 .MainQuickMenu {
+.hanlim3096 .QuickMenu {
     position: fixed;
     top: 110px;
     right: 20px;
@@ -288,7 +288,7 @@
     height: auto;    
     z-index: 100;
 }
-.hanlim3096 .MainQuickMenu div {
+.hanlim3096 .QuickMenu div {
     margin-bottom:5px;
 }
 /*

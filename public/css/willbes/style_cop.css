@@ -402,7 +402,7 @@
 
 /*유트브 채널*/
 .combine .tube_wrap {margin:100px 0;}
-.combine .tube_box {position:relative; margin-top:40px}   
+.combine .tube_box {position:relative; margin-top:40px;}   
 .combine .tube_slider {width:1120px; margin: 0 auto; height: 250px; overflow:hidden;}
 .combine .tube_slider:after {content:""; display: block; clear:both}
 .combine .tube_slider li {display:inline; float:left; width:20%;}

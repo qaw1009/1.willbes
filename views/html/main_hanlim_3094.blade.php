@@ -514,7 +514,7 @@
     </div>
     <!-- CS센터 //-->
 
-    <div id="QuickMenuB" class="MainQuickMenu">
+    <div id="QuickMenuB" class="QuickMenu">
         <ul>
             <li>
                 <div class="QuickSlider">      

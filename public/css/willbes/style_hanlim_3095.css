@@ -278,19 +278,7 @@
     content:''; display: block; clear:both;List-Table
 }
 
-/* Main Container : QuickMenu  */
-.hanlim3095 .QuickMenu {
-    position: fixed;
-    top: 110px;
-    right: 20px;
-    width: 160px;
-    height: auto;    
-    z-index: 100;
-}
-.hanlim3095 .QuickMenu div {
-    margin-bottom:5px;
-}
-/*
+/* Main Container : QuickMenu  
 .hanlim3095 .MainQuickMenu ul {    
     padding:0 8px !important;
     background: #ececec; 

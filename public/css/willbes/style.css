@@ -1948,6 +1948,20 @@ table.auTable tr td {
 	letter-spacing: 0;
 }
 
+/* 고등고시,자격증 퀵배너*/
+.QuickMenu {
+    position: fixed;
+    top: 110px;
+    right: 10px;
+    width: 160px;
+    height: auto;    
+    z-index: 100;
+}
+.QuickMenu div {
+    margin-bottom:5px;
+}
+
+
 /*바로가기 메뉴*/
 .goMenu {
 	background: #52bcc9;

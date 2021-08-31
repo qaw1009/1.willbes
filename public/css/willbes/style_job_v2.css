@@ -363,6 +363,15 @@
     vertical-align: baseline;
 }
 
+.job .MainQuickMenu {
+    position: fixed;
+    top: 80px;
+    right: 10px;
+    width: 160px;
+    height: auto;    
+    z-index: 100;
+}
+.job .MainQuickMenu .QuickSlider {height:112px; overflow: hidden}
 
 /**************************************************************************************/
 

@@ -288,8 +288,8 @@
 }
 .hanlim3097 .MainQuickMenu div {
     margin-bottom:5px;
-    text-align: right;
 }
+/*
 .hanlim3097 .MainQuickMenu ul {    
     padding:0 8px !important;
     background: #ececec; 
@@ -327,7 +327,7 @@
 .hanlim3097 .MainQuickMenu li:nth-child(4) a {
     background: url("../../img/willbes/cop_acad/icon_rq09.png") no-repeat 3px center;
 }
-
+*/
 
 /* Guide Container */
 /*수험가이드*/

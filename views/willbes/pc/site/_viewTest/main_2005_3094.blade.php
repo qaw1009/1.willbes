@@ -133,7 +133,7 @@
         </div>
         <!-- CS센터 //-->
 
-        <div id="QuickMenu" class="MainQuickMenu w160">
+        <div id="QuickMenu" class="MainQuickMenu">
             {{-- quick menu --}}
             @include('willbes.pc.site._viewTest.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>

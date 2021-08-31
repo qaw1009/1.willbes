@@ -66,12 +66,12 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/08/2343_top.jpg"  alt="파이널 패스" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2343_top.jpg"  alt="2022 개편과목 학습정보" />
         </div>
 
         <div class="evtCtnsBox evt_01">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2343_01.jpg"  alt="파이널 패스" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/2343_01.jpg"  alt="검정제 / 필수과목" />
                 <ul class="evtTab">
                     <li><a href="#tab01">한능검</a></li>
                     <li><a href="#tab02">지텔프</a></li>
@@ -126,7 +126,13 @@
 
     </div>
     <!-- End Container -->
-
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      $( document ).ready( function() {
+        AOS.init();
+      } );
+    </script>
     <script type="text/javascript">
         $(document).ready(function(){
             $('.evtTab').each(function(){

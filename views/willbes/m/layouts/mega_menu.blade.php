@@ -35,13 +35,14 @@
                 </li>
                 <li>
                     <span>행정법</span>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51206?subject_idx=1111') }}">신기훈</a>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50109?subject_idx=1111') }}">황남기</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51206?subject_idx=1111') }}">신기훈</a>                    
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50615?subject_idx=1111') }}">이석준</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50109?subject_idx=1111') }}">황남기</a>
                 </li>
                 <li>
                     <span>행정학</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50559?subject_idx=1112') }}">김덕관</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51266?subject_idx=1112&subject_name=행정학') }}">김철</a>
                 </li>
                 <li>
                     <span>형법</span>

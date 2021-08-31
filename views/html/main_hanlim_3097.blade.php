@@ -515,13 +515,33 @@
     </div>
     <!-- CS센터 //-->
 
-    <div id="QuickMenuB" class="MainQuickMenu">
-        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_quick_01.jpg" alt="동영상 1:1 상담"></a></div> 
-        <div class="mt5"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_quick_02.jpg" alt="학원 1:1상담"></a></div>  
-        <div class="mt5"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_quick_03.jpg" alt="강의시간표"></a></div>
-        <div class="mt5"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_quick_04.jpg" alt="강의계획서"></a></div>
-        <div class="mt5"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_quick_05.jpg" alt="학원공지사항"></a></div>
-        <div class="mt5"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_quick_06.jpg" alt="저작물불법이용"></a></div>
+    <div id="QuickMenuB" class="QuickMenu">
+        <ul>
+            <li>
+                <div class="QuickSlider">      
+                    <div class="sliderNum">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_sky01.jpg" title="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_sky02.jpg" title="배너명"></a></div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="QuickSlider">      
+                    <div class="sliderNum">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_sky02.jpg" title="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_sky03.jpg" title="배너명"></a></div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="QuickSlider">      
+                    <div class="sliderNum">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_sky03.jpg" title="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_sky01.jpg" title="배너명"></a></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div> 
 </div>
 

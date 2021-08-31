@@ -1866,6 +1866,11 @@ table.auTable tr td {
 	height: auto;
 	z-index: 100;
 }
+
+.MainQuickMenu.w160 {
+	width: 160px;
+}
+
 .MainQuickMenu ul li {	
 	margin-bottom: 8px;
 }

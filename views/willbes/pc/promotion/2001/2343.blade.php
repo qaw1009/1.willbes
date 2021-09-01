@@ -14,21 +14,23 @@
         }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
-        .evtCtnsBox .wrap a:hover {background-color:rgba(0,0,0,0.2)}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5); border-radius:5px}
 
         /************************************************************/
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/08/2343_top_bg.jpg) no-repeat center top;}
 
-        .evt_01 {background:#1f1f1f;}   
-        .evt_02 #tab02{padding-top: 70px;}
-        .evt_02 #tab04{padding-top: 70px;}
+        .evt_01 {background:#1f1f1f;position:relative;}   
+        .evt_02 #tab02{padding-top:70px;}
+        .evt_02 #tab04{padding-top:70px;}
         
         .evtTab {
+            width:1120px; margin:0 auto;
             display: flex;
             position: absolute;
             top:94px;
-            left:24px;
+            left:50%;
+            margin-left:-560px;
             justify-content: center;
             align-items: center;           
         }
@@ -52,7 +54,7 @@
             position: absolute;
             top:30px;
             right:5px;
-        }    
+        } 
         .evtTab li a:hover,.evtTab li a.active{color:#fff;}
         .evtTab li:nth-child(1) a:hover,.evtTab li:nth-child(1) a.active{background-color: #ff6565;}
         .evtTab li:nth-child(2) a:hover,.evtTab li:nth-child(2) a.active{background-color: #ff6565;}
@@ -66,21 +68,19 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/08/2343_top.jpg"  alt="파이널 패스" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2343_top.jpg"  alt="2022 개편과목 학습정보" />
         </div>
 
         <div class="evtCtnsBox evt_01">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2343_01.jpg"  alt="파이널 패스" />
-                <ul class="evtTab">
-                    <li><a href="#tab01">한능검</a></li>
-                    <li><a href="#tab02">지텔프</a></li>
-                    <li><a href="#tab03">형사법</a></li>
-                    <li><a href="#tab04">경찰학</a></li>
-                    <li><a href="#tab05">헌법</a></li>
-                    <li><a href="#tab06">범죄학</a></li>
-                </ul>  
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2343_01.jpg"  alt="검정제 / 필수과목" />
+            <ul class="evtTab">
+                <li><a href="#tab01">한능검</a></li>
+                <li><a href="#tab02">지텔프</a></li>
+                <li><a href="#tab03">형사법</a></li>
+                <li><a href="#tab04">경찰학</a></li>
+                <li><a href="#tab05">헌법</a></li>
+                <li><a href="#tab06">범죄학</a></li>
+            </ul>  
         </div>     
         
         <div class="evtCtnsBox evt_02">
@@ -95,8 +95,9 @@
             <div id="tab02">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2021/08/2343_01_02.jpg"  alt="국제공인영어시험 지텔프" />
-                    <a href="https://www.g-telp.co.kr:335/info/info7.asp" title="샘플테스트" target="_blank" style="position: absolute; left: 68.57%; top: 80.24%; width: 15.18%; height: 0.9%; z-index: 2;"></a>
-                    <a href="https://www.g-telp.co.kr:335/" title="지텔프 원서접수 바로가기" target="_blank" style="position: absolute; left: 19.55%; top: 92.72%; width: 22.41%; height: 1.99%; z-index: 2;"></a>
+                    <a href="https://www.g-telp.co.kr:335/receipt/schedule.asp" title="지텔프 시험일정" target="_blank" style="position: absolute; left: 32.5%; top: 55.29%; width: 35.27%; height: 2.84%; z-index: 2;"></a>
+                    <a href="https://www.g-telp.co.kr:335/info/info7.asp" title="샘플테스트" target="_blank" style="position: absolute; left: 68.57%; top: 81.8%; width: 15.18%; height: 0.9%; z-index: 2;"></a>
+                    <a href="https://www.g-telp.co.kr:335/" title="지텔프 원서접수 바로가기" target="_blank" style="position: absolute; left: 19.55%; top: 94.04%; width: 22.41%; height: 1.99%; z-index: 2;"></a>
                 </div>
             </div>    
             <div id="tab03">
@@ -112,7 +113,7 @@
             <div id="tab05">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2021/08/2343_01_05.jpg"  alt="헌법" />
-                    <a href="https://police.willbes.net/promotion/index/cate/3001/code/2284" title="경찰헌법 학습 tip자세히보기" target="_blank" style="position: absolute; left: 67.68%; top: 85.02%; width: 21.7%; height: 3.7%; z-index: 2;"></a>
+                    <a href="https://police.willbes.net/promotion/index/cate/3001/code/2284" title="경찰헌법 학습 tip자세히보기" target="_blank" style="position: absolute; left: 67.14%; top: 78.15%; width: 22.77%; height: 4.31%; z-index: 2;"></a>
                 </div>            
             </div>    
             <div id="tab06">
@@ -126,7 +127,13 @@
 
     </div>
     <!-- End Container -->
-
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      $( document ).ready( function() {
+        AOS.init();
+      } );
+    </script>
     <script type="text/javascript">
         $(document).ready(function(){
             $('.evtTab').each(function(){

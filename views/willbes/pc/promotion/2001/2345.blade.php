@@ -92,7 +92,7 @@
             <div>
                 <div class="slide_con">
                     <ul id="slidesImg4">
-                        <li><img src="https://static.willbes.net/public/images/promotion/2021/05/2208_01_01.jpgg" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/05/2208_01_01.jpg" alt="" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/05/2208_01_02.jpg" alt="" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/05/2208_01_03.jpg" alt="" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/05/2208_01_04.jpg" alt="" /></li>

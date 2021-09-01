@@ -377,17 +377,20 @@
                 <ul>
                     <li>
                         <span>[국어]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50158?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">오대혁</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50158?cate_code=3043&subject_idx=1253')}}">오대혁</a>
                         <span>[영어]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50500?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">한덕현</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50500?cate_code=3043&subject_idx=1254')}}">한덕현</a>
                     </li>
                     <li>
                         <span>[한국사]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50620?cate_code=3043&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">김상범</a>                       
+                        <a href="{{front_url('/professor/show/prof-idx/50620?cate_code=3043&subject_idx=1255')}}">김상범</a>                       
                         <span>[행정법]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/51215?cate_code=3043&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">신기훈</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51215?cate_code=3043&subject_idx=1257')}}">신기훈</a>
+                    </li>
+                    <li>                        
                         <span>[행정학]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50560?cate_code=3043&subject_idx=1258&subject_name=%ED%96%89%EC%A0%95%ED%95%99')}}">김덕관</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50560?cate_code=3043&subject_idx=1258')}}">김덕관</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51275?cate_code=3043&subject_idx=1258')}}">김철</a>
                     </li>
                 </ul>
             </div>

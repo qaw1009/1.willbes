@@ -15,7 +15,6 @@
 
 		/************************************************************/
 		.evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a:hover {box-shadow:0 5px 20px rgba(0,0,0,.5); border-radius:6px; border:1px solid #fff}
 		
 		.sky {position:fixed; top:100px; right:10px; width:142px; z-index:10;}
 		.sky a {display:block; margin-bottom:5px}

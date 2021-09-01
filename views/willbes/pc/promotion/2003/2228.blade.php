@@ -17,7 +17,6 @@
         /************************************************************/
 
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5); border-radius:4px}
         
         .wb_top {background:#50fec9; position:relative}
         .wb_top span {position: absolute; top:132px; left:50%; margin-left:-100px; animation:iptimg1 1.5s infinite;-webkit-animation:iptimg1 1.5s infinite;}

@@ -23,9 +23,13 @@
         }
 
         .ssam .noticeBanner {float:right;}
-        .ssam .noticeBanner li {width:250px; height:293px; overflow:hidden; float:left}
-        .ssam .noticeBanner li:first-child {margin-right:40px}
+        .ssam .noticeBanner .title {border-bottom:2px solid #0c5dc0 !important; margin-bottom:17px}
+        .ssam .noticeBanner .title span {background:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg1_on.png") no-repeat; width:99px; display:inline-block; height:36px !important; line-height:36px !important;text-align:center; font-size:14px; color:#fff; font-weight:bold}
+        .ssam .noticeBanner li {width:260px; height:240px; overflow:hidden; float:left; border-radius:15px}
+        .ssam .noticeBanner li:first-child {margin-right:20px}
         .ssam .noticeBanner:after {content:''; display:block; clear:both}
+
+        /*
         .ssam .noticeTabs {height:293px; overflow:hidden;}
         .ssam .noticeWrap li {margin:0}
         .ssam .noticeWrap li a {border:0 !important; height:36px !important; line-height:36px !important;}
@@ -36,6 +40,20 @@
         .ssam .noticeTabs .noticeBox .lecup-Notice {position:absolute; top:0; width:100%; z-index:2; border-bottom:1px solid #e3e3e3;}
         .ssam .noticeTabs .noticeBox .lecup-Notice a {display:block; height:36px; line-height:36px; font-size:13px}
         .ssam .noticeTabs .noticeBox .lecup-Notice a span {background: #0c5dc0; color: #fff; padding: 0 10px; border-radius: 10px; margin-right: 5px;}
+        */
+
+        .ssam .noticeTabs {height:293px; overflow:hidden;}
+        .ssam .noticeWrap li {position:relative;}
+        .ssam .noticeWrap li:first-child {width:99px;}
+        .ssam .noticeWrap li:last-child {width:129px;}
+        .ssam .noticeWrap li a {border:0 !important; display:block; height:36px !important; line-height:36px !important; position:absolute; z-index: 1; color:#fff !important; padding:0; text-align:center; left:0; font-weight:bold}   
+        .ssam .noticeWrap li:first-child a {background:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg1_off.png") no-repeat;}
+        .ssam .noticeWrap li:last-child a {background:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg2_off.png") no-repeat; left:-29px}
+        .ssam .noticeWrap li a.on {z-index: 2;}
+        .ssam .noticeWrap li:first-child a.on {background:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg1_on.png") no-repeat;}
+        .ssam .noticeWrap li:last-child a.on {background:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg2_on.png") no-repeat}
+
+        .ssam .noticeBox .List-Table {margin-top:20px !important;border-top:2px solid #0c5dc0 !important}
 
         .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
         .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}

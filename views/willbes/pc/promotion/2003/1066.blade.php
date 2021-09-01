@@ -15,7 +15,6 @@
 
         /************************************************************/
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a:hover {box-shadow:0 10px 20px rgba(0,0,0,.5); border-radius:4px}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/05/1066_top_bg.jpg) center top no-repeat}
         .wb_cts01 {background:#1e1c31;}       

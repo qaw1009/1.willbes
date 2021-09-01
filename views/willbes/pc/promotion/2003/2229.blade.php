@@ -18,7 +18,6 @@
         /************************************************************/ 
 
         .evtContent .wrap {width:1120px; margin:0 auto; position: relative;}
-        .evtContent .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.9);}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/05/2229_top_bg.jpg) no-repeat center top;}
 

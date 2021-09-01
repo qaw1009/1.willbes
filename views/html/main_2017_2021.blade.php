@@ -3,14 +3,28 @@
 
 <style type="text/css">
 .ssam .noticeBanner {float:right;}
-.ssam .noticeBanner li {width:250px; height:293px; overflow:hidden; float:left}
-.ssam .noticeBanner li:first-child {margin-right:40px}
+.ssam .noticeBanner li {width:260px; height:293px; overflow:hidden; float:left}
+.ssam .noticeBanner li:first-child {margin-right:20px}
 .ssam .noticeBanner:after {content:''; display:block; clear:both}
 .ssam .noticeTabs {height:293px; overflow:hidden;}
-.ssam .noticeWrap li {margin:0}
-.ssam .noticeWrap li a {border:0 !important; height:36px !important; line-height:36px !important;}
-.ssam .noticeWrap li a.on {background:#000; color:#fff}
-.ssam .noticeWrap li:first-child a {border-right:1px solid #ccc}
+.ssam .noticeWrap li {position:relative; display:inline-block; margin:0; height:36px !important; line-height:36px !important; background:#9bb5c9}
+.ssam .noticeWrap li:first-child {width:100px}
+.ssam .noticeWrap li:last-child {width:140px; margin-left:-10px}
+.ssam .noticeWrap li a {border:0 !important; display:block; height:36px !important; line-height:36px !important; position:absolute;
+    background-image:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg_off_L.jpg"),
+    url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg_off_R.jpg"); 
+    background-repeat: no-repeat, no-repeat;
+    background-position:left center, right center;
+    z-index: 1;
+}    
+
+.ssam .noticeWrap li.on {
+    background:#0c5dc0; 
+}
+.ssam .noticeWrap li.on a {
+    background-image:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg_on_L.jpg"),
+    url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg_on_R.jpg"); 
+    z-index: 2;}
 .ssam .noticeBox .List-Table {margin-top:20px !important;}
 
 .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
@@ -293,7 +307,7 @@ no-repeat 5px center}
         <div class="widthAuto">            
             <div class="noticeTabs">
                 <ul class="tabWrap noticeWrap two">
-                    <li><a href="#notice1" class="on">공지사항</a></li>
+                    <li class="on"><a href="#notice1">공지사항</a></li>
                     <li><a href="#notice2" class="">강의 업데이트</a></li>
                 </ul>
 
@@ -329,17 +343,17 @@ no-repeat 5px center}
                 <li>
                     <div class="bSlider">
                         <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x293.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x293.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x293.jpg" alt="배너명"></a></div>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="bSlider">
                         <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x293.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x293.jpg" alt="배너명"></a></div>
                         </div>
                     </div>
                 </li>
@@ -3421,7 +3435,6 @@ no-repeat 5px center}
             )}
         )}
     ); */
-
     
 </script>
 @stop

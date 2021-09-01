@@ -27,7 +27,6 @@
 .evt04 .check label{color:#fff}
 .evt04 .check input {border:2px solid #000; margin-right: 8px;height: 17px; width: 17px;} 
 .evt04 .check a {display: inline-block; padding:5px 20px; color: #111528;background: #d7d7d7; border-radius:20px; margin-left:20px}
-.evt04 .check a:hover {color: #fff;background:#f67012;}
 
 .evtInfo {padding:80px 0; background:#fff; color:#000; font-size:16px}
 .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}

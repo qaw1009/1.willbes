@@ -49,15 +49,18 @@
     </div>
 </div>
 
-<ul class="noticeBanner">
-    <li>
-        <div class="bSlider">
-            {!! banner_html(element('메인_서브배너_01', $data['arr_main_banner'])) !!}
-        </div>
-    </li>
-    <li>
-        <div class="bSlider">
-            {!! banner_html(element('메인_서브배너_02', $data['arr_main_banner'])) !!}
-        </div>
-    </li>
-</ul>
+<div class="noticeBanner">
+    <div class="title"><span>새소식</span></div>
+    <ul>
+        <li>
+            <div class="bSlider">
+                {!! banner_html(element('메인_서브배너_01', $data['arr_main_banner'])) !!}
+            </div>
+        </li>
+        <li>
+            <div class="bSlider">
+                {!! banner_html(element('메인_서브배너_02', $data['arr_main_banner'])) !!}
+            </div>
+        </li>
+    </ul>
+</div>

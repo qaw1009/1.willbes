@@ -8,7 +8,7 @@
         {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
         <div class="x_panel">
             <div class="x_content">
-                {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', false, $arr_site_code) !!}
+                <input type="hidden" id="search_site_code" name="search_site_code" value="{{$def_site_code}}">
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">조건검색</label>
                     <div class="col-md-4 form-inline">
@@ -19,7 +19,7 @@
                         </select>
                     </div>
 
-                    <label class="control-label col-md-1" for="search_start_date">등록일</label>
+                    <label class="control-label col-md-1" for="search_start_date">기간검색</label>
                     <div class="col-md-4 form-inline">
                         <div class="input-group mb-0">
                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>

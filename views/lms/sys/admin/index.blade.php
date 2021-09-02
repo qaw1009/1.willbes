@@ -16,25 +16,25 @@
                     </div>
                     <label class="control-label col-md-1" for="search_dept_ccd">조건</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control" id="search_dept_ccd" name="search_dept_ccd">
+                        <select class="form-control" id="search_dept_ccd" name="search_dept_ccd" title="소속">
                             <option value="">소속</option>
                             @foreach($dept_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control" id="search_position_ccd" name="search_position_ccd">
+                        <select class="form-control" id="search_position_ccd" name="search_position_ccd" title="직급">
                             <option value="">직급</option>
                             @foreach($position_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control" id="search_role_idx" name="search_role_idx">
+                        <select class="form-control" id="search_role_idx" name="search_role_idx" title="권한유형">
                             <option value="">권한유형</option>
                             @foreach($roles as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control" id="search_is_use" name="search_is_use">
+                        <select class="form-control" id="search_is_use" name="search_is_use" title="사용여부">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
@@ -64,6 +64,8 @@
                     <th>소속/직급</th>
                     <th>휴대폰번호</th>
                     <th>E-mail</th>
+                    <th>권한등록일</th>
+                    <th>최종접속일</th>
                     <th>사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -120,6 +122,8 @@
                         return row.wAdminPhone1 + '-' + row.wAdminPhone2 + '-' + row.wAdminPhone3;
                     }},
                     {'data' : 'wAdminMail'},
+                    {'data' : 'RoleRegDatm'},
+                    {'data' : 'wLastLoginDatm'},
                     {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {
                         return (data == 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},

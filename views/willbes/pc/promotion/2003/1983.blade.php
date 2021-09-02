@@ -27,8 +27,8 @@
         .wb_cts01 {background:#fff;}       
 
         .wb_cts02 {background:#f4f4f4; position:relative}
-        .wb_cts02 .tImg {position:absolute; top:390px; left:50%; margin-left:-560px; padding:0 18px}
-        .wb_cts02 .tImg img {margin-right:6px; width:264px;height:153px;}
+        .wb_cts02 .tImg {position:absolute; top:390px; left:50%; margin-left:-415px; padding:0 18px}
+        .wb_cts02 .tImg img {margin-right:10px; width:264px;height:153px;}
 
         .wb_cts03 {background:#fff}
 
@@ -153,7 +153,6 @@
             <div class="tImg">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_01.gif" alt="강의1" />
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_02.gif" alt="강의2" />
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_03.gif" alt="강의3" />
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_04.gif" alt="강의4" />
             </div>
         </div>
@@ -242,12 +241,10 @@
                     <dd>
                         <ol>
                             <li>본 PASS는 세무직 대비 과정으로, 참여 교수진의 전 강좌를 배수 제한없이 무제한으로 수강 가능합니다.<br>
-                            * 국어 기미진 [새벽실전모의고사] 제외, 영어 한덕현 [기본문법>제니스문법>기출리뷰>스나이퍼32>실전동형모의고사] 과정만 제공.
+                                영어 한덕현 [기본문법>제니스문법>기출리뷰>스나이퍼32>실전동형모의고사] 과정만 제공.
                             </li>
-                            <li>수강 가능 교수진 : 국어 오대혁/기미진, 영어 한덕현, 한국사 오태진/김상범/조민주, 행정법 신기훈/황남기/이석준, 행정학 김덕관<br>
-                                * 국어 기미진, 한국사 조민주, 행정법 이석준 교수의 경우 9급 일반행정직 신규 과정 진행하지 않으므로 기존 과정만 제공됩니다.
-                            </li>
-                            <li>2020년 7월부터 진행된 2021년 대비 전 과정 및 2022년 대비로 진행되는 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.<br>
+                            <li>수강 가능 교수진 : 국어 오대혁, 영어 한덕현, 한국사 김상범/오태진, 회계학 이윤호, 세법 박창한</li>
+                            <li>2022년 대비로 진행되는 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.<br>
                             (일부 교수진의 경우, 신규 과정이 업데이트 되지 않을 수 있으며 해당 경우에는 이전 연도 과정을 제공해드립니다.)</li>
                             <li>참여 교수진의 일정 및 진행 방식은 상이하게 진행될 수 있으며, 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있다는 점 숙지 부탁드립니다.<br>
                             (과목별 교수진의 제공 과정은 수강신청 안내 화면을 참고해주시기 바랍니다.)</li>
@@ -300,7 +297,7 @@
                             <li>아이디 공유 적발 시 회원 자격 박탈 및 환불 불가하며, 추가적인 불법 공유 행위 적발 시 형사 고발 조치가 단행될 수 있습니다.</li>
                         </ol>
                     </dd>
-
+                    {{--
                     <dt>재도전&환승 인증 이벤트 유의사항</dt>
                     <dd>
                         <ol>
@@ -317,12 +314,12 @@
                             <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>
                         </ol>
                     </dd>
-
+                    --}}
                     <dt>라이브모드 수강관련</dt>
                     <dd>
                         <ol>
                             <li>공무원학원 실강 내 LIVE로 진행되는 강좌만 제공됩니다. (* 일부 특강 제외)<br>
-                            - 국어 오대혁, 영어 한덕현, 한국사 오태진/김상범, 행정법 신기훈, 행정학 김덕관</li>
+                            - 국어 오대혁, 영어 한덕현, 한국사 김상범</li>
                             <li>제공되는 강좌 및 진행일정은 우측 버튼 클릭 후 페이지 하단에서 확인 가능합니다.
                             <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a></li>
                             <li>본 상품은 실시간 진행되므로 일시정지/연장/재수강은 제공되지 않습니다. 촬영 및 편집된 강의는 익일 오후 2시 이전까지 업로드됩니다.</li>

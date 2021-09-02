@@ -23,12 +23,12 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off" title="검색시작일자">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off" title="검색종료일자">
                         </div>
                     </div>
                 </div>
@@ -47,17 +47,19 @@
                 <tr class="bg-odd">
                     <th rowspan="2" class="valign-middle">No</th>
                     <th rowspan="2" class="valign-middle">기간(년월)</th>
-                    <th colspan="4">적립포인트</th>
-                    <th colspan="3">사용포인트</th>
+                    <th colspan="5">적립포인트</th>
+                    <th colspan="4">사용포인트</th>
                 </tr>
                 <tr class="bg-odd">
                     <th>회원가입</th>
                     <th>주문/결제</th>
                     <th>이벤트</th>
                     <th>기타</th>
+                    <th class="bg-info">합계</th>
                     <th>주문/결제</th>
                     <th>소멸</th>
                     <th>기타</th>
+                    <th class="bg-info">합계</th>
                 </tr>
                 <tr class="bg-info">
                     <th colspan="2" class="text-center">합계</th>
@@ -65,9 +67,11 @@
                     <th id="t_order_save_point" class="sumTh"></th>
                     <th id="t_event_save_point" class="sumTh"></th>
                     <th id="t_etc_save_point" class="sumTh"></th>
+                    <th id="t_save_point" class="sumTh"></th>
                     <th id="t_order_use_point" class="sumTh"></th>
                     <th id="t_expire_use_point" class="sumTh"></th>
                     <th id="t_etc_use_point" class="sumTh"></th>
+                    <th id="t_use_point" class="sumTh"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -121,6 +125,9 @@
                     {'data' : 'EtcSavePoint', 'render' : function(data, type, row, meta) {
                         return addComma(data);
                     }},
+                    {'data' : 'SavePoint', 'render' : function(data, type, row, meta) {
+                        return '<strong>' + addComma(data) + '</strong>';
+                    }},
                     {'data' : 'OrderUsePoint', 'render' : function(data, type, row, meta) {
                         return addComma(data);
                     }},
@@ -129,6 +136,9 @@
                     }},
                     {'data' : 'EtcUsePoint', 'render' : function(data, type, row, meta) {
                         return addComma(data);
+                    }},
+                    {'data' : 'UsePoint', 'render' : function(data, type, row, meta) {
+                        return '<strong>' + addComma(data) + '</strong>';
                     }}
                 ]
             });
@@ -140,9 +150,11 @@
                     $('#t_order_save_point').html(addComma(json.sum_data.tOrderSavePoint));
                     $('#t_event_save_point').html(addComma(json.sum_data.tEventSavePoint));
                     $('#t_etc_save_point').html(addComma(json.sum_data.tEtcSavePoint));
+                    $('#t_save_point').html(addComma(json.sum_data.tSavePoint));
                     $('#t_order_use_point').html(addComma(json.sum_data.tOrderUsePoint));
                     $('#t_expire_use_point').html(addComma(json.sum_data.tExpireUsePoint));
                     $('#t_etc_use_point').html(addComma(json.sum_data.tEtcUsePoint));
+                    $('#t_use_point').html(addComma(json.sum_data.tUsePoint));
                 } else {
                     $('#list_ajax_table thead tr th.sumTh').text('');
                 }

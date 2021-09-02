@@ -72,7 +72,7 @@ class ReasonStatus extends \app\controllers\BaseController
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        $headers = ['기간(년월)', '회원가입적립액', '주문/결제적립액', '이벤트적립액', '기타적립액', '주문/결제사용액', '소멸사용액', '기타사용액'];
+        $headers = ['기간(년월)', '회원가입적립액', '주문/결제적립액', '이벤트적립액', '기타적립액', '합계적립액', '주문/결제사용액', '소멸사용액', '기타사용액', '합계사용액'];
         $arr_condition = $this->_getListConditions();
         $list = $this->pointStatModel->listStatSaveUsePointByReason($this->_point_type, $arr_input['search_start_date'], $arr_input['search_end_date'], $arr_condition);
 
@@ -150,8 +150,8 @@ class ReasonStatus extends \app\controllers\BaseController
             if (isset($results[$idx]['BaseYm']) === false) {
                 $results[$idx] = [
                     'BaseYm' => $row['BaseYm'],
-                    'JoinSavePoint' => '0', 'OrderSavePoint' => '0', 'EventSavePoint' => '0', 'EtcSavePoint' => '0',
-                    'OrderUsePoint' => '0', 'ExpireUsePoint' => '0', 'EtcUsePoint' => '0'
+                    'JoinSavePoint' => '0', 'OrderSavePoint' => '0', 'EventSavePoint' => '0', 'EtcSavePoint' => '0', 'SavePoint' => '0',
+                    'OrderUsePoint' => '0', 'ExpireUsePoint' => '0', 'EtcUsePoint' => '0', 'UsePoint' => '0'
                 ];
             }
 
@@ -162,6 +162,10 @@ class ReasonStatus extends \app\controllers\BaseController
             if (isset($results[$idx][ucfirst($row['ReasonCode']) . 'UsePoint']) === true) {
                 $results[$idx][ucfirst($row['ReasonCode']) . 'UsePoint'] = $row['SumUsePoint'];
             }
+
+            // 합계
+            $results[$idx]['SavePoint'] = strval($results[$idx]['SavePoint'] + $row['SumSavePoint']);
+            $results[$idx]['UsePoint'] = strval($results[$idx]['UsePoint'] + $row['SumUsePoint']);
 
             $tmp_base_ym = $row['BaseYm'];
         }
@@ -180,9 +184,11 @@ class ReasonStatus extends \app\controllers\BaseController
         $sum_data['tOrderSavePoint'] = array_sum(array_pluck($data, 'OrderSavePoint'));
         $sum_data['tEventSavePoint'] = array_sum(array_pluck($data, 'EventSavePoint'));
         $sum_data['tEtcSavePoint'] = array_sum(array_pluck($data, 'EtcSavePoint'));
+        $sum_data['tSavePoint'] = array_sum(array_pluck($data, 'SavePoint'));
         $sum_data['tOrderUsePoint'] = array_sum(array_pluck($data, 'OrderUsePoint'));
         $sum_data['tExpireUsePoint'] = array_sum(array_pluck($data, 'ExpireUsePoint'));
         $sum_data['tEtcUsePoint'] = array_sum(array_pluck($data, 'EtcUsePoint'));
+        $sum_data['tUsePoint'] = array_sum(array_pluck($data, 'UsePoint'));
 
         return $sum_data;
     }

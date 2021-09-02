@@ -68,7 +68,7 @@ class BookStatus extends \app\controllers\BaseController
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        $headers = ['기간(년월)', '회원가입적립액', '회원가입사용액', '교재적립액', '교재사용액', '강의적립액', '강의사용액', '기타적립액', '기타사용액'];
+        $headers = ['기간(년월)', '회원가입적립액', '회원가입사용액', '교재적립액', '교재사용액', '강의적립액', '강의사용액', '기타적립액', '기타사용액', '합계적립액', '합계사용액'];
         $arr_condition = $this->_getListConditions();
         $list = $this->pointStatModel->listStatBookSaveUsePoint($arr_input['search_save_start_date'], $arr_input['search_save_end_date']
             , $arr_input['search_use_start_date'], $arr_input['search_use_end_date']
@@ -151,13 +151,18 @@ class BookStatus extends \app\controllers\BaseController
                     'JoinSavePoint' => '0', 'JoinUsePoint' => '0',
                     'BookSavePoint' => '0', 'BookUsePoint' => '0',
                     'LectureSavePoint' => '0', 'LectureUsePoint' => '0',
-                    'EtcSavePoint' => '0', 'EtcUsePoint' => '0'
+                    'EtcSavePoint' => '0', 'EtcUsePoint' => '0',
+                    'SavePoint' => '0', 'UsePoint' => '0'
                 ];
             }
 
             // 적립구분별 적립/사용 포인트 설정
             $results[$idx][ucfirst($row['SaveReason']) . 'SavePoint'] = $row['SumSavePoint'];
             $results[$idx][ucfirst($row['SaveReason']) . 'UsePoint'] = $row['SumUsePoint'];
+
+            // 합계
+            $results[$idx]['SavePoint'] = strval($results[$idx]['SavePoint'] + $row['SumSavePoint']);
+            $results[$idx]['UsePoint'] = strval($results[$idx]['UsePoint'] + $row['SumUsePoint']);
 
             $tmp_base_ym = $row['BaseYm'];
         }
@@ -180,6 +185,8 @@ class BookStatus extends \app\controllers\BaseController
         $sum_data['tLectureUsePoint'] = array_sum(array_pluck($data, 'LectureUsePoint'));
         $sum_data['tEtcSavePoint'] = array_sum(array_pluck($data, 'EtcSavePoint'));
         $sum_data['tEtcUsePoint'] = array_sum(array_pluck($data, 'EtcUsePoint'));
+        $sum_data['tSavePoint'] = array_sum(array_pluck($data, 'SavePoint'));
+        $sum_data['tUsePoint'] = array_sum(array_pluck($data, 'UsePoint'));
 
         return $sum_data;
     }

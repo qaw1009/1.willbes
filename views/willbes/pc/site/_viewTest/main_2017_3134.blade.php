@@ -25,22 +25,9 @@
         .ssam .noticeBanner {float:right;}
         .ssam .noticeBanner .title {border-bottom:2px solid #0c5dc0 !important; margin-bottom:17px}
         .ssam .noticeBanner .title span {background:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg1_on.png") no-repeat; width:99px; display:inline-block; height:36px !important; line-height:36px !important;text-align:center; font-size:14px; color:#fff; font-weight:bold}
-        .ssam .noticeBanner li {width:260px; height:240px; overflow:hidden; float:left; border-radius:15px}
+        .ssam .noticeBanner li {width:260px; height:240px; overflow:hidden; float:left; border-radius:15px; box-shadow:0 7px 5px rgba(0,0,0,.1);}
         .ssam .noticeBanner li:first-child {margin-right:20px}
         .ssam .noticeBanner:after {content:''; display:block; clear:both}
-
-        /*
-        .ssam .noticeTabs {height:293px; overflow:hidden;}
-        .ssam .noticeWrap li {margin:0}
-        .ssam .noticeWrap li a {border:0 !important; height:36px !important; line-height:36px !important;}
-        .ssam .noticeWrap li a.on {background:#000; color:#fff}
-        .ssam .noticeWrap li:first-child a {border-right:1px solid #ccc}
-        .ssam .noticeBox .List-Table {margin-top:20px !important;}
-
-        .ssam .noticeTabs .noticeBox .lecup-Notice {position:absolute; top:0; width:100%; z-index:2; border-bottom:1px solid #e3e3e3;}
-        .ssam .noticeTabs .noticeBox .lecup-Notice a {display:block; height:36px; line-height:36px; font-size:13px}
-        .ssam .noticeTabs .noticeBox .lecup-Notice a span {background: #0c5dc0; color: #fff; padding: 0 10px; border-radius: 10px; margin-right: 5px;}
-        */
 
         .ssam .noticeTabs {height:293px; overflow:hidden;}
         .ssam .noticeWrap li {position:relative;}

@@ -88,7 +88,7 @@
                                     @if($__cfg['CampusCcdArr'] != 'N')<td><span class="oBox campus_{{$row['CampusCcd']}} NSK">{{$row['CampusCcd_Name']}}</span></td>@endif
                                     <td class="w-list tx-left pl20">
                                         <a href="{{front_url($default_path.'/show'.$cate_path.'?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
-                                            @if($row['IsBest'] == '1')<strong>@endif{{hpSubString($row['Title'],0,40,'...')}}@if($row['IsBest'] == '1')</strong>@endif
+                                            @if($row['IsBest'] == '1')<strong>@endif{{hpSubString($row['Title'],0,50,'...')}}@if($row['IsBest'] == '1')</strong>@endif
                                         </a>
                                     </td>
                                     <td class="w-file">

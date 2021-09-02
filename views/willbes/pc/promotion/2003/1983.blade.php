@@ -15,14 +15,14 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}      
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,1); border-radius:8px}
-
 
         /************************************************************/
 
         .sky {position:fixed; top:225px;right:10px;z-index:10;}
+        
+        .wb_tops {background:url(https://static.willbes.net/public/images/promotion/2021/09/1983_tops_bg.jpg) no-repeat center top;}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/07/1983_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/09/1983_top_bg.jpg) no-repeat center top;}
 
         .wb_cts01 {background:#fff;}       
 
@@ -42,10 +42,10 @@
         .wb_cts05 .linkbtn02 a {background:#444; padding:8px 0}
         .wb_cts05 a:hover {background:#000}
 
-        .wb_cts06 {padding-bottom:100px}
-        .wb_cts06 table {width:860px; margin:0 auto 50px; border-top:1px solid #828282}
+        .wb_cts06 {padding-bottom:50px;}
+        .wb_cts06 table {width:860px; margin:25px auto 50px; border-top:1px solid #828282}
         .wb_cts06 table th,
-        .wb_cts06 table td {font-size:14px; padding:20px; text-align:center; line-height:1.5; border-right:1px solid #828282}
+        .wb_cts06 table td {font-size:14px; padding:20px; text-align:center; line-height:1.5; border-right:1px solid #828282;position:relative;}
         .wb_cts06 table th:last-child,
         .wb_cts06 table td:last-child {border-right:0}
         .wb_cts06 table tr {border-bottom:1px solid #828282}
@@ -54,8 +54,11 @@
         .wb_cts06 table tbody th {font-weight:bold;}
         .wb_cts06 table td.bg {background:#ececf3}
         .wb_cts06 table td span {color:#fff; padding:2px 6px; background:red; font-size:11px; border-radius:4px; margin-left:5px}
-        .wb_cts06 table td input {height:24px; width:24px;}
+        .wb_cts06 table td input {height:24px; width:24px;position:absolute;left:17%;top:41%;}
         .wb_cts06 table td label {font-size:30px; color:#5914a7; font-weight:bold;}
+        .wb_cts06 table td p {font-size:22px;color:#464646;text-decoration:line-through;}
+
+        .wb_cts07 {background:#ededed}
 
          /*타이머*/
         .newTopDday * {font-size:24px}
@@ -121,13 +124,24 @@
         </div>
 
         <div class="sky">
-            <a href="#apply"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/1983_sky.png" alt="세무직 패스 바로가기" >
-            </a>             
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/1983_sky.png" alt="자세히보기" usemap="#1983_sky" border="0" >
+            <map name="1983_sky" id="1983_sky">
+                <area shape="rect" coords="3,142,158,285" href="#apply" />
+                <area shape="rect" coords="-1,295,161,424" href="#apply" />
+                <area shape="rect" coords="-1,432,160,570" href="#apply2" />
+            </map>
         </div>   
 
+        <div class="evtCtnsBox wb_tops">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/1983_tops.jpg" alt="독점공개" />
+                <a href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/184117" title="이윤호 회계학" target="_blank" style="position: absolute;left: 0;top: 16.97%;width: 49.5%;height: 29.19%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/184118" title="박창한 세법" target="_blank" style="position: absolute;left: 50%;top: 16.97%;width: 49.5%;height: 29.19%;z-index: 2;"></a>
+            </div>
+        </div>
+
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/1983_top.jpg" alt="세무직 패스"  />
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/1983_top.jpg" alt="세무직 패스"  />
         </div>
 
         <div class="evtCtnsBox wb_cts01">
@@ -151,15 +165,15 @@
         <div class="evtCtnsBox wb_cts04">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1983_04.jpg" alt="커리큘럼" />
         </div>
-
+        {{--
         <div class="evtCtnsBox wb_cts05">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1983_05.jpg" alt="커리큘럼" />
             <div class="linkbtn01 NGEB"><a href="javascript:certOpen();">재도전 & 환승 인증하기 →</a></div>
             <div class="linkbtn02"><a href="#tip">유의사항 확인하기 →</a></div>
         </div>
-
+        --}}
         <div class="evtCtnsBox wb_cts06" id="apply">   
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/1983_06.jpg" title="신청하기" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/1983_06.jpg" title="신청하기" />
             <table>
                 <col />
                 <col width="40%" />
@@ -168,7 +182,7 @@
                     <tr>
                         <th>구분</th>
                         <th>윌비스 세무직 <strong>PASS</strong></th>
-                        <th>윌비스 세무직 <strong>전공PASS</strong></th>
+                        <th>윌비스 세무직 <strong>전공과목 T-PASS</strong></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -180,7 +194,7 @@
                     </tr>
                     <tr>
                         <th>수강기간</th>
-                        <td colspan="2">결제완료일로부터 <strong>1년</strong><br />
+                        <td colspan="2">2022 지방직 시험일까지<br />
                         배수 제한 없는 <strong>무제한 수강</strong></td>
                     </tr>
                     <tr>
@@ -196,8 +210,8 @@
                     </tr>
                     <tr>
                         <th>가격</th>
-                        <td class="NSK-Black"><input type="radio" id="y_pkg1" name="y_pkg" value="176432" onClick=""/><label for="y_pkg1"> 395,000원</label></td>
-                        <td class="NSK-Black"><input type="radio" id="y_pkg2" name="y_pkg" value="176415" onClick=""/><label for="y_pkg2"> 345,000원</label></td>
+                        <td class="NSK-Black"><input type="radio" id="y_pkg1" name="y_pkg" value="176432" onClick=""/><label for="y_pkg1"><p>990,000원</p>290,000원</label></td>
+                        <td class="NSK-Black"><input type="radio" id="y_pkg2" name="y_pkg" value="176415" onClick=""/><label for="y_pkg2"><p>790,000원</p>240,000원</label></td>
                     </tr>
                 </tbody>
             </table>
@@ -210,6 +224,14 @@
                 <a href="#tip" class="infotxt" > 유의사항 자세히보기 ↓</a>
                 <p class="NGEB"><a onclick="go_PassLecture(1);" target="_blank">지금 바로 신청하기 ></a></p>     
             </div>      
+        </div>
+
+        <div class="evtCtnsBox wb_cts07" id="apply2">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/1983_07.jpg" alt="신청하기" />
+                <a href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/184117" title="이윤호 회계학" target="_blank" style="position: absolute;left: 29.75%;top: 73.97%;width: 15.5%;height: 11.19%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/184118" title="박창한 세법" target="_blank" style="position: absolute;left: 54.95%;top: 73.97%;width: 15.5%;height: 11.19%;z-index: 2;"></a>
+            </div>   
         </div>
 
         <div class="evtCtnsBox wb_info" id="tip">

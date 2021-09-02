@@ -5,7 +5,7 @@
 .ssam .noticeBanner {float:right;}
 .ssam .noticeBanner .title {border-bottom:2px solid #0c5dc0 !important; margin-bottom:17px}
 .ssam .noticeBanner .title span {background:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg1_on.png") no-repeat; width:99px; display:inline-block; height:36px !important; line-height:36px !important;text-align:center; font-size:14px; color:#fff; font-weight:bold}
-.ssam .noticeBanner li {width:260px; height:240px; overflow:hidden; float:left; border-radius:15px}
+.ssam .noticeBanner li {width:260px; height:240px; overflow:hidden; float:left; border-radius:15px; box-shadow:0 7px 5px rgba(0,0,0,.1);}
 .ssam .noticeBanner li:first-child {margin-right:20px}
 .ssam .noticeBanner:after {content:''; display:block; clear:both}
 

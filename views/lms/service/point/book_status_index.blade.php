@@ -59,6 +59,7 @@
                     <th colspan="2">교재</th>
                     <th colspan="2">강의</th>
                     <th colspan="2">기타</th>
+                    <th colspan="2" class="bg-info">합계</th>
                 </tr>
                 <tr class="bg-odd">
                     <th>적립합계</th>
@@ -69,6 +70,8 @@
                     <th>사용합계</th>
                     <th>적립합계</th>
                     <th>사용합계</th>
+                    <th class="bg-info">적립합계</th>
+                    <th class="bg-info">사용합계</th>
                 </tr>
                 <tr class="bg-info">
                     <th colspan="2" class="text-center">합계</th>
@@ -80,6 +83,8 @@
                     <th id="t_lecture_use_point" class="sumTh"></th>
                     <th id="t_etc_save_point" class="sumTh"></th>
                     <th id="t_etc_use_point" class="sumTh"></th>
+                    <th id="t_save_point" class="sumTh"></th>
+                    <th id="t_use_point" class="sumTh"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -147,6 +152,12 @@
                     }},
                     {'data' : 'EtcUsePoint', 'render' : function(data, type, row, meta) {
                         return addComma(data);
+                    }},
+                    {'data' : 'SavePoint', 'render' : function(data, type, row, meta) {
+                        return '<strong>' + addComma(data) + '</strong>';
+                    }},
+                    {'data' : 'UsePoint', 'render' : function(data, type, row, meta) {
+                        return '<strong>' + addComma(data) + '</strong>';
                     }}
                 ]
             });
@@ -162,6 +173,8 @@
                     $('#t_lecture_use_point').html(addComma(json.sum_data.tLectureUsePoint));
                     $('#t_etc_save_point').html(addComma(json.sum_data.tEtcSavePoint));
                     $('#t_etc_use_point').html(addComma(json.sum_data.tEtcUsePoint));
+                    $('#t_save_point').html(addComma(json.sum_data.tSavePoint));
+                    $('#t_use_point').html(addComma(json.sum_data.tUsePoint));
                 } else {
                     $('#list_ajax_table thead tr th.sumTh').text('');
                 }

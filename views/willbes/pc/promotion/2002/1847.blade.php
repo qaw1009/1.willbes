@@ -64,7 +64,7 @@
 
         .evt02 {background:#fef1e0;}
         .evt03 {background:#d7e3ef;} 
-        .evt04 {background:#2d395a;}  
+        .evt04 {background:#d6d6de;}  
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -240,7 +240,7 @@
             </div>    
             
             <div class="evtCtnsBox evt04" id="to_go">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/1847_04.jpg"  title="최종마감">                             
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/1847_04.jpg"  title="최종마감">                             
             </div>
         </form>
 	</div>

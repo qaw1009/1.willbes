@@ -793,7 +793,6 @@
                     <li>
                         <strong>패키지</strong>
                         <a href="{{front_url('/package/index/cate/3020/pack/648001')}}">추천패키지</a>
-                        <a href="{{front_url('/promotion/index/cate/3020/code/1878')}}">2차 전문과목 PASS</a> 
                     </li>
                     <li>
                         <strong>과목</strong>

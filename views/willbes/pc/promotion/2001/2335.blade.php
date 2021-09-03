@@ -17,7 +17,7 @@
 
         /************************************************************/    
 
-        .sky {position:fixed;  top:250px; right:0; z-index:10;}
+        .sky {position:fixed; top:200px; right:0; z-index:10;}
         .sky a {display:block; margin-bottom:15px}   
 
         /*타이머*/
@@ -80,6 +80,10 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">  
+        <div class="sky" id="QuickMenu">
+            <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/08/2335_sky.png" alt="이벤트 진행중" ></a>
+        </div> 
+        
         <!-- 타이머 -->
         <div class="evtCtnsBox time NGEB" id="newTopDday">
            <div>
@@ -106,12 +110,7 @@
             
         <div class="evtCtnsBox evt00">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>
-
-
-        <div class="sky">
-            <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/08/2335_sky.png" alt="이벤트 진행중" ></a>
-        </div>        
+        </div>       
         
         <div class="evtCtnsBox evtTop" data-aos="fade-left">
             <div class="wrap">
@@ -131,17 +130,15 @@
         <div class="evtCtnsBox evt02" data-aos="fade-left">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2335_02.jpg" title="스케줄">
-                <a href="https://police.willbes.net/pass/offinfo/boardInfo/index/80" target="_blank" title="강의시간표 확인하기" style="position: absolute;left: 20.51%;top: 84.3%;width:58.63%;height: 11.13%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offinfo/boardInfo/index/80" target="_blank" title="강의시간표 확인하기" style="position: absolute; left: 20.54%; top: 84.49%; width: 58.39%; height: 6.04%; z-index: 2;"></a>
             </div>
         </div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-right" id="evt_01">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2335_03.jpg" title="스페셜 패키지">
-                @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-                @endif  
-            </div>    
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2335_03.jpg" title="스페셜 패키지">  
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+            @endif  
         </div>   
                 
 	</div>

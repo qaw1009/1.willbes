@@ -124,10 +124,10 @@
         <div class="evtCtnsBox evt_05" id="evt_pass">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2345_05.jpg"  alt="합격패스" />
-                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 183573);" title="파이널 패스1" style="position: absolute;left: 0;top: 92.56%;width: 24.5%;height: 7.83%;z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 183575);" title="파이널 패스2" style="position: absolute;left: 25%;top: 92.56%;width: 24.5%;height: 7.83%;z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183576);" title="파이널 패스3" style="position: absolute;left: 50%;top: 92.56%;width: 24.5%;height: 7.83%;z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183576);" title="파이널 패스4" style="position: absolute;left: 75%;top: 92.56%;width: 24.5%;height: 7.83%;z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 185408);" title="파이널 패스1" style="position: absolute;left: 0;top: 92.56%;width: 24.5%;height: 7.83%;z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 185584);" title="파이널 패스2" style="position: absolute;left: 25%;top: 92.56%;width: 24.5%;height: 7.83%;z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 185585);" title="파이널 패스3" style="position: absolute;left: 50%;top: 92.56%;width: 24.5%;height: 7.83%;z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 185586);" title="파이널 패스4" style="position: absolute;left: 75%;top: 92.56%;width: 24.5%;height: 7.83%;z-index: 2;"></a>
             </div>
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 FINAL PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>

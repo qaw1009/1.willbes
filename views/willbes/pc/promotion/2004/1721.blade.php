@@ -18,7 +18,7 @@
 
         /************************************************************/     
 
-        .sky {position:fixed;top:200px;right:25px;z-index:1;}
+        .sky {position:fixed;top:200px;right:10px; width:120px; z-index:1;}
         .sky a {display:block; margin-bottom:10px}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/07/1721_top_bg.jpg) no-repeat center top;}
@@ -97,11 +97,11 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
 
-        <div class="sky" >
+        <div class="sky" id="QuickMenu">
             <a href="#none;"><img src="https://static.willbes.net/public/images/promotion/2021/07/1721_sky_title.png" alt=""></a>
-            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/183669" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1721_sky1.png" alt=""></a>
-            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/183667" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1721_sky2.png" alt=""></a>
-            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/183668" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1721_sky3.png" alt=""></a>
+            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/185552" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1721_sky1.png" alt=""></a>
+            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/185553" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1721_sky2.png" alt=""></a>
+            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/185554" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1721_sky3.png" alt=""></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            

@@ -112,7 +112,7 @@
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/1721_01.png" alt="신청하기"/>
                 <a href="https://cafe.daum.net/sharkchoi" target="_blank" title="우영이집" style="position: absolute;left: 13.46%;top: 73.99%;width: 14.23%;height: 9.57%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU6WzIxLjA4LTA5XQ%3D%3D" target="_blank" title="단과강의" style="position: absolute;left: 43.46%;top: 73.99%;width: 14.23%;height: 9.57%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="단과강의" style="position: absolute;left: 43.46%;top: 73.99%;width: 14.23%;height: 9.57%;z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU6VC1QYXNz" target="_blank" title="t-pass" style="position: absolute;left: 72.96%;top: 73.99%;width: 14.23%;height: 9.57%;z-index: 2;"></a>
             </div>    
         </div>

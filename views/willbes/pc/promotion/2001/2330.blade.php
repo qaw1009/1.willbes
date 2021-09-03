@@ -21,7 +21,7 @@
         .evt00 {background:#0a0a0a}
 
         .evtTop {background:url("https://static.willbes.net/public/images/promotion/2021/08/2330_top_bg.jpg") no-repeat center top;} 
-        .evtTop span.img1 {position:absolute; left:50%; z-index:100; top:217px; margin-left:-500px; width:287px;
+        .evtTop span.img1 {position:absolute; left:50%; z-index:100; top:217px; margin-left:-550px; width:287px;
             animation:flipInX 2s infinite;
             -webkit-animation:flipInX 2s infinite;
             -webkit-animation-fill-mode: both;
@@ -243,7 +243,7 @@
 
         <div class="evtCtnsBox evtTop" id="main">
             <div data-aos="fade-right">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2330_top_bg.jpg"  alt=""/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/2330_top.jpg"  alt=""/>
                 <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2021/08/2230_top_img02.png" title="0원패스" /></span>
             </div>           
         </div>

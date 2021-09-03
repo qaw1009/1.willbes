@@ -1,83 +1,71 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .Container {
+        .evtContent {
             width:100% !important;
-            min-width:1210px !important;
-            background:#fff;
+            min-width:1120px !important;
+            margin-top:20px !important;
             padding:0 !important;
             background:#fff;
-            text-align:center;
         }
+        .evtContent span {vertical-align:auto}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         
-        .evt_06 {background:#F6F6F6;padding-bottom:125px;}
-        .evt_06 .tabBox {position:relative; width:940px; margin:0 auto;}
-        .evt_06 .tab li {display:inline; float:left; width:50%;border:1px solid #1a1a1a;}
-        .evt_06 .tab li a {display:block; text-align:center; font-size:22px; font-weight:600; background:#fff; color:#000; height:60px; line-height:60px; margin-right:1px}
-        .evt_06 .tab li a:hover,
-        .evt_06 .tab li a.active {background:#9b1f29; color:#fff;}
-        .evt_06 .tab li:last-child a {margin:0}
-        .evt_06 .tab:after {content:""; display:block; clear:both}
+        .evt_04 {padding-bottom:100px;}
+        .evt_04 .slide_con {width:954px; margin:0 auto; position:relative}
+        .evt_04 .slide_con p {position:absolute; top:35%; width:30px; z-index:90}
+        .evt_04 .slide_con p a {cursor:pointer}
+        .evt_04 .slide_con p.leftBtn {left:-115px; top:50%; width:62px; height:62px; margin-top:-30px;}
+        .evt_04 .slide_con p.rightBtn {right:-85px; top:50%; width:62px; height:62px; margin-top:-30px;}
 
     </style>    
 
-    <div id="Container" class="Container gosi NGR c_both">
-
-        <div class="Menu widthAuto NGR c_both">
-                @include('willbes.pc.layouts.partial.site_menu')
-        </div>
-
-        <div class="evt_06">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_06.jpg" style="width:940px;" />       
-            <div class="tabBox">
-                <ul class="tab">
-                    <li><a href="#tab04" class="active">모의평가 전(2020년 10월~11월)</a></li>
-                    <li><a href="#tab05">모의평가 후(2021년 1월~6월)</a></li>
+    <div class="p_re evtContent NSK" id="evtContainer"> 
+        <div class="evtCtnsBox evt_04" >
+            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_04.jpg" alt="psat to easy" id="to_go">
+            <div class="slide_con">
+                <ul id="slidesImg4">
+                    <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts01.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts02.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts03.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts04.png" /></li>
                 </ul>
-                <div id="tab04" style="padding-top:40px;">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab2_c1.png" alt="" style="width:940px;">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab2_c2.png" alt="" style="padding-top:40px;width:940px;">
-                </div>
-                <div id="tab05" style="padding-top:40px;">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab2_c3.png" alt="" style="width:940px;">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab2_c4.png" alt="" style="padding-top:40px;width:940px;">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab2_c5.png" alt="" style="padding-top:40px;width:940px;">
-                </div>
+                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_left.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_right.png"></a></p>
             </div>
-        </div> 
+        </div>
 
     </div>
 
     <!-- End Container -->
-    <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            $('.tab').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
+        $(document).ready(function() {
+            var slidesImg4 = $("#slidesImg4").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+            });
 
-                $content = $($active[0].hash);
+            $("#imgBannerLeft4").click(function (){
+                slidesImg4.goToPrevSlide();
+            });
 
-                $links.not($active).each(function () {
-                    $(this.hash).hide()});
-
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                    $active.removeClass('active');
-                    $content.hide();
-
-                    $active = $(this);
-                    $content = $(this.hash);
-
-                    $active.addClass('active');
-                    $content.show();
-
-                    e.preventDefault()})})}
-        );
-        
+            $("#imgBannerRight4").click(function (){
+                slidesImg4.goToNextSlide();
+            });
+        });        
     </script>
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

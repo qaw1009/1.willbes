@@ -1,6 +1,6 @@
 @extends('willbes.pc.layouts.master')
-<link href="/public/css/willbes/style_2015.css?ver={{time()}}" rel="stylesheet">
 @section('content')
+    <link href="/public/css/willbes/style_2015.css?ver={{time()}}" rel="stylesheet">
     <!-- Container -->
     <div id="Container" class="Container incheon NGR c_both">
         <!-- site nav -->

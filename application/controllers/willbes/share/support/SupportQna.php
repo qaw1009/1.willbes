@@ -224,9 +224,7 @@ class SupportQna extends BaseSupport
         $arr_base['public_type'] = (config_app('SiteGroupCode') == '1011') ? false : true;
 
         //카테고리별 과목 조회
-        foreach ($arr_base['category'] as $row){
-            $arr_base['subject'][] = $this->baseProductFModel->listSubjectCategoryMapping($row['SiteCode'], $row['CateCode']);
-        }
+        $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($param_site_code);
 
         $method = 'POST';
         $data = null;

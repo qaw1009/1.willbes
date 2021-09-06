@@ -712,6 +712,11 @@
                 <a href="{{ front_url('/offLecture/index?cate_code=3043&campus_ccd=605001') }}">단과</a>
             </li>
             <li>
+                <span>세무직</span>
+                <a href="{{ front_url('/offPackage/index?cate_code=3046&campus_ccd=605001') }}">종합반</a>
+                <a href="{{ front_url('/offLecture/index?cate_code=3046&campus_ccd=605001') }}">단과</a>
+            </li>
+            <li>
                 <span>법원직</span>
                 <a href="{{ front_url('/offPackage/index?cate_code=3059&campus_ccd=605001') }}">종합반</a>
                 <a href="{{ front_url('/offLecture/index?cate_code=3059&campus_ccd=605001') }}">단과</a>

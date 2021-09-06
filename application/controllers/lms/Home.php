@@ -106,12 +106,11 @@ class Home extends \app\controllers\BaseController
      */
     public function runScheduler()
     {
-        $role_idx = array_get($this->session->userdata('admin_auth_data'), 'Role.RoleIdx');
         $today_his = date('His');
         $result = true;
 
         // 작업스케줄러 실행 (시스템관리자 and 8 ~ 10시 사이)
-        if ($role_idx == '1030') {
+        if (is_sys_admin() === true) {
             if ($today_his > '080000' && $today_his < '100000') {
                 $run_result = $this->cronModel->runScheduler();
                 if ($run_result === null) {

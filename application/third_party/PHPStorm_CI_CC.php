@@ -119,6 +119,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SiteCampusModel $siteCampusModel                                      Site Campus Info Model Class
  * @property SiteMenuModel $siteMenuModel                                       Site Menu Model Class
  * @property CategoryModel $categoryModel                                       Category Model Class
+ * @property SysLogModel $sysLogModel                                           System Log Model Class
  * @property PayLogModel $payLogModel                                            Pay Log Model Class
  * @property CronModel $cronModel                                               Cron Model Class
  * @property CourseModel $courseModel                                             Product Course Model Class

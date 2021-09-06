@@ -53,8 +53,9 @@ $config['predict2'] = array(
     'upload_url_predict2' => PUBLICURL . 'uploads/' . $config['upload_prefix_dir'] . '/predict2/' // 업로드이미지 URL
 );
 
-$config['prof_role_idx'] = ['1011', '1062', '1063'];        //교수관리자 권한 , 임용_교수관리자, 교수관리자(임용 및 타직렬 겸용)
-$config['wca_tel'] = '1544-5006';         //W.C.A 대표번호
+$config['sys_role_idx'] = '1030';   // 시스템관리자
+$config['prof_role_idx'] = ['1011', '1062', '1063'];    // 교수관리자 권한, 임용_교수관리자, 교수관리자(임용 및 타직렬 겸용)
+$config['wca_tel'] = '1544-5006';   // W.C.A 대표번호
 
 /*
     관리자 페이지용 모바일 스타플레이어 라이센스

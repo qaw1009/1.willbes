@@ -237,81 +237,90 @@ if (!function_exists('html_def_site_tabs')) {
 
         return $return_html;
     }
+}
 
-    if (!function_exists('html_callback_num_select')) {
-        /**
-         * 발신번호 select box HTML 리턴
-         * Ccd에 매핑된 발신번호 값(CcdValue) 가공처리
-         * @param array $arr_send_callback_ccd  [발신번호 공통코드 배열 값]
-         * @param string $value [selected 값]
-         * @param string $ele_id [select box id]
-         * @param string $ele_name [select box name]
-         * @param string $class [select box에 추가되는 css class]
-         * @param string $title [select box title]
-         * @param string $required [select box required value]
-         * @param string $disabled [select box disabled value]
-         * @return string [select box HTML]
-         */
-        function html_callback_num_select($arr_send_callback_ccd = [], $value = '', $ele_id = 'send_tel', $ele_name = 'send_tel', $class = '', $title = '발신번호', $required = 'required', $disabled = '')
-        {
-            $return_html = '<select class="form-control ' . $class . '" id="' . $ele_id . '" name="' . $ele_name . '" title="' . $title . '"';
+if (!function_exists('html_callback_num_select')) {
+    /**
+     * 발신번호 select box HTML 리턴
+     * Ccd에 매핑된 발신번호 값(CcdValue) 가공처리
+     * @param array $arr_send_callback_ccd  [발신번호 공통코드 배열 값]
+     * @param string $value [selected 값]
+     * @param string $ele_id [select box id]
+     * @param string $ele_name [select box name]
+     * @param string $class [select box에 추가되는 css class]
+     * @param string $title [select box title]
+     * @param string $required [select box required value]
+     * @param string $disabled [select box disabled value]
+     * @return string [select box HTML]
+     */
+    function html_callback_num_select($arr_send_callback_ccd = [], $value = '', $ele_id = 'send_tel', $ele_name = 'send_tel', $class = '', $title = '발신번호', $required = 'required', $disabled = '')
+    {
+        $return_html = '<select class="form-control ' . $class . '" id="' . $ele_id . '" name="' . $ele_name . '" title="' . $title . '"';
+        empty($required) === false && $return_html .= ' required="' . $required . '"';
+        empty($disabled) === false && $return_html .= ' disabled="' . $disabled . '"';
+        $return_html .= '>' . PHP_EOL;
+        $return_html .= '<option value="">발송번호선택</option>' . PHP_EOL;
+
+        if (is_array($arr_send_callback_ccd) === true && empty($arr_send_callback_ccd) === false) {
+            foreach ($arr_send_callback_ccd as $key => $val) {
+                $arr_temp_val = explode(':', $val);
+                $selected = ($arr_temp_val[1] == $value) ? 'selected = "selected"' : '';
+                $return_html .= "<option value='{$arr_temp_val[1]}' {$selected}>{$arr_temp_val[0]} ({$arr_temp_val[1]})</option>";
+            }
+        }
+
+        $return_html .= '</select>' . PHP_EOL;
+
+        return $return_html;
+    }
+}
+
+if (!function_exists('html_site_checkbox')) {
+    /**
+     * 사이트 checkbox HTML 리턴
+     * @param string $site_code [선택될 사이트 코드]
+     * @param string $ele_id [checkbox id]
+     * @param string $ele_name [checkbox name]
+     * @param string $class [checkbox 추가 css class]
+     * @param string $title [checkbox title]
+     * @param string $required [checkbox required value]
+     * @param string $disabled [checkbox disabled value]
+     * @param bool $is_intg_site_use [통합사이트 사용 여부, true = 사용]
+     * @param array $site_codes [사이트 코드 배열, 특정 사이트만 노출할 경우, ex) ['2001' => '온라인 경찰', '2002' => '경찰']
+     * @param bool $line_view_count [한 라인에 보여 줄 갯수]
+     * @param string $checked [기본 선택 상태]
+     * @param string $is_all [전체 항목 사용여부, true = 사용]
+     * @return string [checkbox HTML]
+     */
+    function html_site_checkbox($site_code = '', $ele_id = 'site_code', $ele_name = 'site_code', $class = '', $title = '운영 사이트', $required = 'required', $disabled = '', $is_intg_site_use = false, $site_codes = [], $line_view_count = false, $checked = 'checked', $is_all = true)
+    {
+        // 운영자 권한이 있는 사이트 코드 목록
+        empty($site_codes) === true && $site_codes = get_auth_site_codes(true, $is_intg_site_use);
+
+        $counter = 0;
+        $return_html = '<p>';
+        !empty($is_all) ? $return_html .= '<input type="checkbox" class="flat ' . $class . '"  name="site_code_all_check" id="site_code_all_check" data-name="'. $ele_name .'" '. ((empty($checked) == false) ? ' checked="checked"' : '') .'> <b><span class="red">[전체]</span></b>&nbsp;&nbsp;&nbsp;' : '';
+        foreach ($site_codes as $key => $val) {
+            $return_html .= '<input type="checkbox" class="flat ' . $class . '" id="' . $ele_id . '_'.$key.'" name="' . $ele_name . '[]" title="' . $title . '"';
             empty($required) === false && $return_html .= ' required="' . $required . '"';
             empty($disabled) === false && $return_html .= ' disabled="' . $disabled . '"';
-            $return_html .= '>' . PHP_EOL;
-            $return_html .= '<option value="">발송번호선택</option>' . PHP_EOL;
+            empty($checked) === false && $return_html .= ' checked="' . $checked . '"';
 
-            if (is_array($arr_send_callback_ccd) === true && empty($arr_send_callback_ccd) === false) {
-                foreach ($arr_send_callback_ccd as $key => $val) {
-                    $arr_temp_val = explode(':', $val);
-                    $selected = ($arr_temp_val[1] == $value) ? 'selected = "selected"' : '';
-                    $return_html .= "<option value='{$arr_temp_val[1]}' {$selected}>{$arr_temp_val[0]} ({$arr_temp_val[1]})</option>";
-                }
-            }
-
-            $return_html .= '</select>' . PHP_EOL;
-
-            return $return_html;
+            $return_html .=' value="' . $key . '"' . (($key == $site_code) ? ' checked="checked"' : '') . '> <b>'. $val. '</b>&nbsp;&nbsp;&nbsp;';
+            $counter++;
+            (empty($line_view_count) === false) ?  (($counter % $line_view_count) === 0 ? $return_html .="</p><p>" : '') : '';
         }
+        $return_html .= '</p>'.PHP_EOL;
+        return $return_html;
     }
+}
 
-    if (!function_exists('html_site_checkbox')) {
-        /**
-         * 사이트 checkbox HTML 리턴
-         * @param string $site_code [선택될 사이트 코드]
-         * @param string $ele_id [checkbox id]
-         * @param string $ele_name [checkbox name]
-         * @param string $class [checkbox 추가 css class]
-         * @param string $title [checkbox title]
-         * @param string $required [checkbox required value]
-         * @param string $disabled [checkbox disabled value]
-         * @param bool $is_intg_site_use [통합사이트 사용 여부, true = 사용]
-         * @param array $site_codes [사이트 코드 배열, 특정 사이트만 노출할 경우, ex) ['2001' => '온라인 경찰', '2002' => '경찰']
-         * @param bool $line_view_count [한 라인에 보여 줄 갯수]
-         * @param string $checked [기본 선택 상태]
-         * @param string $is_all [전체 항목 사용여부, true = 사용]
-         * @return string [checkbox HTML]
-         */
-        function html_site_checkbox($site_code = '', $ele_id = 'site_code', $ele_name = 'site_code', $class = '', $title = '운영 사이트', $required = 'required', $disabled = '', $is_intg_site_use = false, $site_codes = [], $line_view_count = false, $checked = 'checked', $is_all = true)
-        {
-            // 운영자 권한이 있는 사이트 코드 목록
-            empty($site_codes) === true && $site_codes = get_auth_site_codes(true, $is_intg_site_use);
-
-            $counter = 0;
-            $return_html = '<p>';
-            !empty($is_all) ? $return_html .= '<input type="checkbox" class="flat ' . $class . '"  name="site_code_all_check" id="site_code_all_check" data-name="'. $ele_name .'" '. ((empty($checked) == false) ? ' checked="checked"' : '') .'> <b><span class="red">[전체]</span></b>&nbsp;&nbsp;&nbsp;' : '';
-            foreach ($site_codes as $key => $val) {
-                $return_html .= '<input type="checkbox" class="flat ' . $class . '" id="' . $ele_id . '_'.$key.'" name="' . $ele_name . '[]" title="' . $title . '"';
-                empty($required) === false && $return_html .= ' required="' . $required . '"';
-                empty($disabled) === false && $return_html .= ' disabled="' . $disabled . '"';
-                empty($checked) === false && $return_html .= ' checked="' . $checked . '"';
-
-                $return_html .=' value="' . $key . '"' . (($key == $site_code) ? ' checked="checked"' : '') . '> <b>'. $val. '</b>&nbsp;&nbsp;&nbsp;';
-                $counter++;
-                (empty($line_view_count) === false) ?  (($counter % $line_view_count) === 0 ? $return_html .="</p><p>" : '') : '';
-            }
-            $return_html .= '</p>'.PHP_EOL;
-            return $return_html;
-        }
+if (!function_exists('is_sys_admin')) {
+    /**
+     * 시스템관리자 여부 리턴
+     */
+    function is_sys_admin()
+    {
+        return array_get(sess_data('admin_auth_data'), 'Role.IsSysRole', false);
     }
-
 }

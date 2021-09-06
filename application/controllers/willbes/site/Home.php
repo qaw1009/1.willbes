@@ -11,7 +11,8 @@ class Home extends \app\controllers\FrontController
         '2003' => ['3019','3020','3023','3024','3035','3028','3103'],
         '2005' => 'all',
         '2006' => ['309002','309003','309004', '308906'],
-        '2008' => ['3100']
+        '2008' => ['3100'],
+        '2016' => ['3147'],
     ];
     private $_no_pc_cate_main = ['2012','2017'];   // 온라인 사이트 중 카테고리 메인 미사용 사이트 코드
 
@@ -501,13 +502,19 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
-     * 인천학원[온라인] 메인페이지 없음
+     * 인천학원[온라인] 데이터 조회
      * @param string $cate_code
      * @param array $arr_campus
+     * @return array|void
      */
     private function _getSite2016Data($cate_code = '', $arr_campus = [])
     {
-        redirect(front_url('/pass/home/index'));
+        if (in_array($cate_code, $this->_category_mobile[$this->_site_code]) === true) {
+            $data['dday'] = $this->_dday();
+            return $data;
+        } else {
+            redirect(front_url('/home/index', true));
+        }
     }
 
     /**

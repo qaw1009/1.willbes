@@ -518,7 +518,7 @@
                                 <option value="{{$key}}" @if($data['PointApplyCcd'] == $key) selected="selected" @endif>{{$val}}</option>
                             @endforeach
                         </select>
-                        <input type='number' name='PointSavePrice' value='@if($method==="POST"){{0}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" size="5" required="required" >
+                        <input type='number' name='PointSavePrice' id="PointSavePrice"  value='@if($method==="POST"){{0}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" size="5" required="required" >
                         <select name="PointSaveType" id="PointSaveType" class="form-control">
                             <option value="R" @if($data['PointSaveType'] == 'R')selected="selected"@endif>%</option>
                             <option value="P" @if($data['PointSaveType'] == 'P')selected="selected"@endif>원</option>
@@ -1198,6 +1198,19 @@
                 }, showValidateError, addValidate, false, 'alert');
             });
 
+            $('#PointSaveType').change(function(){
+                checkPointSave();
+            });
+
+            //포인트 적립 확인
+            function checkPointSave() {
+                if($regi_form.find('#PointSaveType').val() == 'R' && $regi_form.find('#PointSavePrice').val() > 100) {
+                    alert("포인트 적립률이 '100%' 초과입니다. 확인해 주세요.");
+                    $regi_form.find('#PointSaveType').focus();
+                    return true;
+                }
+            }
+
             function addValidate() {
                 if( $("input[name='essLecAddCheck[]']").length === 0) {
                     alert('필수과목강좌구성을 선택하여 주십시오.');$('#essLecAdd').focus();return;
@@ -1224,6 +1237,9 @@
                     }
                 }
                 */
+                if(checkPointSave() === true) {
+                    return;
+                }
                 return true;
             }
 

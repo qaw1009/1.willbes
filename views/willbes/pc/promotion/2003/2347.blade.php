@@ -62,10 +62,10 @@
 
         <div class="evtCtnsBox evt_04" data-aos="fade-left">
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2347_04.jpg" title="소문내주세요">
-            {{--기본댓글--}}
+            {{--홍보url--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_normal_partial')
-            @endif 
+                @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
+            @endif
         </div>
 
         <div class="evtCtnsBox evt_05" data-aos="fade-right">

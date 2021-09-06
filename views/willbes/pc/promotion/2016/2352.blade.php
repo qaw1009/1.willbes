@@ -17,7 +17,7 @@
         .evtCtnsBox .wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.3);}
 
 		/************************************************************/ 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/08/2337_top_bg.jpg) no-repeat center top; background-size:2000px 1104px; height:1104px}
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/09/2352_top_bg.jpg) no-repeat center top; background-size:2000px 1104px; height:1104px}
         
         .evt_top div {position:absolute; top:679px; z-index:10; text-align:center; width:100%}
 
@@ -33,13 +33,13 @@
     
 		<div class="evtCtnsBox evt_top">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2337_top.png" alt="소문내기 이벤트"  data-aos="flip-left"/> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2352_top.png" alt="소문내기 이벤트"  data-aos="flip-left"/> 
             </div>             
 		</div>
 
 		<div class="evtCtnsBox evt_01">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2337_01.jpg" alt="이벤트 안내"  data-aos="fade-right"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2352_01.jpg" alt="이벤트 안내"  data-aos="fade-right"/>
                 <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="소문내기 이미지 다운" style="position: absolute; left: 25.18%; top: 12.86%; width: 48.04%; height: 7.95%; z-index: 2;"></a>
 
                 <a href="javascript:void(0);" title="링크복사" onclick="copyTxt();" style="position: absolute; left: 25.09%; top: 64.74%; width: 54.38%; height: 9.68%; z-index: 2;"></a>

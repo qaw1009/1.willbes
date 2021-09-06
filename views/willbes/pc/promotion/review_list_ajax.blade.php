@@ -17,13 +17,11 @@
             @if(empty($arr_base['subject']) === false)
                 <select id="list_subject_idx" name="list_subject_idx" title="과목" class="seleLecA" @if(empty(element('list_cate_code', $arr_input)) === true) disabled @endif>
                     <option value="">과목</option>
-                    @foreach($arr_base['subject'] as $arr)
-                        @if(empty($arr) === false)
-                            @foreach($arr as $row)
-                                <option value="{{$row['SubjectIdx']}}" class="{{$row['CateCode']}}" @if(element('list_subject_idx', $arr_input) == $row['SubjectIdx'])selected="selected"@endif>{{$row['SubjectName']}}</option>
-                            @endforeach
-                        @endif
-                    @endforeach
+                    @if(empty($arr_base['subject']) === false)
+                        @foreach($arr_base['subject'] as $row)
+                            <option value="{{$row['SubjectIdx']}}" class="{{$row['CateCode']}}" @if(element('list_subject_idx',$arr_input) == $row['SubjectIdx'])selected="selected"@endif>{{$row['SubjectName']}}</option>
+                        @endforeach
+                    @endif
                 </select>
             @endif
         </span>

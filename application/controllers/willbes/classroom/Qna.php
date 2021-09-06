@@ -5,8 +5,6 @@ require_once APPPATH . 'controllers/willbes/share/support/SupportQna.php';
 
 class Qna extends SupportQna
 {
-    protected $models = array('categoryF', 'support/supportBoardTwoWayF', '_lms/sys/site', '_lms/sys/code', 'downloadF');
-    protected $helpers = array('download');
     protected $auth_controller = true;
     protected $auth_methods = array();
 

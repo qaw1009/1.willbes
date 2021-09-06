@@ -110,9 +110,9 @@ class BaseProductFModel extends WB_Model
      * @param bool $is_use_sm_order_num [소트매핑정렬번호사용여부]
      * @return mixed
      */
-    public function listSubjectCategoryMapping($site_code, $cate_code = null, $is_use_sm_order_num = false)
+    public function listSubjectCategoryMapping($site_code = null, $cate_code = null, $is_use_sm_order_num = false)
     {
-        $column = 'PSC.CateCode, PSC.SubjectIdx, PS.SubjectName';
+        $column = 'PSC.SiteCode, PSC.CateCode, PSC.SubjectIdx, PS.SubjectName';
         $from = '
             from ' . $this->_table['subject_r_category'] . ' as PSC 
                 inner join ' . $this->_table['site'] . ' as S
@@ -121,22 +121,31 @@ class BaseProductFModel extends WB_Model
                     on PSC.CateCode = SC.CateCode
                 inner join ' . $this->_table['subject'] . ' as PS
                     on PSC.SubjectIdx = PS.SubjectIdx
-            where PSC.SiteCode = ? and PSC.IsStatus = "Y"
-                and S.IsUse = "Y" and S.IsStatus = "Y"
-                and SC.IsUse = "Y" and SC.IsStatus = "Y"
-                and PS.IsUse = "Y" and PS.IsStatus = "Y"            
         ';
 
-        $where = $this->_conn->makeWhere(['EQ' => ['PSC.CateCode' => $cate_code]]);
-        $where = $where->getMakeWhere(true);
-        $order_by = ' order by SC.OrderNum asc, PS.OrderNum asc, PSC.CsIdx asc';
+        $arr_condition = [
+            'EQ' => [
+                'PSC.SiteCode' => $site_code
+                , 'PSC.CateCode' => $cate_code
+                ,'PSC.IsStatus' => 'Y'
+                ,'S.IsUse' => 'Y'
+                ,'S.IsStatus' => 'Y'
+                ,'SC.IsUse' => 'Y'
+                ,'SC.IsStatus' => 'Y'
+                ,'PS.IsUse' => 'Y'
+                ,'PS.IsStatus' => 'Y'
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by = ' order by PSC.SiteCode, SC.OrderNum asc, PS.OrderNum asc, PSC.CsIdx asc';
 
         if ($is_use_sm_order_num === true) {
             $order_by = ' order by SC.OrderNum asc, PSC.OrderNum asc, PS.OrderNum asc, PSC.CsIdx asc';
         }
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by, [$site_code]);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
 
         return $query->result_array();
     }

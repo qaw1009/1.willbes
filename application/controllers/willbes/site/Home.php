@@ -505,12 +505,16 @@ class Home extends \app\controllers\FrontController
      * 인천학원[온라인] 데이터 조회
      * @param string $cate_code
      * @param array $arr_campus
+     * @return array|void
      */
     private function _getSite2016Data($cate_code = '', $arr_campus = [])
     {
-        $data['dday'] = $this->_dday();
-
-        return $data;
+        if (in_array($cate_code, $this->_category_mobile[$this->_site_code]) === true) {
+            $data['dday'] = $this->_dday();
+            return $data;
+        } else {
+            redirect(front_url('/home/index', true));
+        }
     }
 
     /**

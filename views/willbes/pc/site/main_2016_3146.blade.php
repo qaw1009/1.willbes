@@ -60,7 +60,7 @@
 
         <div class="Section article3">
             <img src="https://static.willbes.net/public/images/promotion/main/2006/308906_02.jpg" title="시험일정">
-            <a href="https://job.dev.willbes.net/landing/show/lcode/1043/cate/308906/preview/Y" target="_blank" class="NSK-Black">빅데이터 분석기사 더 자세히 알아보기 ></a>
+            <a href="https://willbesedu.willbes.net/landing/show/lcode/1045/cate/3146/preview/Y" target="_blank" class="NSK-Black">빅데이터 분석기사 더 자세히 알아보기 ></a>
         </div>
 
         <div class="Section article4">
@@ -68,8 +68,8 @@
                 <img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03.jpg" title="왜 훈샘인가?"  data-aos="fade-left">
                 <div class="youtube">
                     <iframe src="https://www.youtube.com/embed/efr9iOZ57gM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <a href="https://job.willbes.net/lecture/show/cate/308906/pattern/only/prod-code/185036"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_01.jpg" title="훈쌤 전격입성"></a>
-                    <a href="https://job.willbes.net/lecture/show/cate/308906/pattern/only/prod-code/184363" class="f_right"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_02.jpg" title="훈쌤 전격입성"></a>
+                    <a href="https://willbesedu.willbes.net/lecture/show/cate/3146/pattern/only/prod-code/185587"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_01.jpg" title="훈쌤 전격입성"></a>
+                    <a href="https://willbesedu.willbes.net/lecture/show/cate/3146/pattern/only/prod-code/185588" class="f_right"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_02.jpg" title="훈쌤 전격입성"></a>
                 </div>  
             </div>  
         </div>

@@ -43,13 +43,11 @@
             </select>
             <select id="s_subject_idx" name="s_subject_idx" title="과목명" class="seleProcess width33p ml1p mt1p" required="required" @if($method == 'POST') disabled="disabled" @endif>
                 <option value="">과목</option>
-                @foreach($arr_base['subject'] as $arr)
-                    @if(empty($arr) === false)
-                        @foreach($arr as $row)
-                            <option value="{{$row['SubjectIdx']}}" class="{{$row['CateCode']}}" @if($data['SubjectIdx'] == $row['SubjectIdx'])selected="selected"@endif>{{$row['SubjectName']}}</option>
-                        @endforeach
-                    @endif
-                @endforeach
+                @if(empty($arr_base['subject']) === false)
+                    @foreach($arr_base['subject'] as $row)
+                        <option value="{{$row['SubjectIdx']}}" class="{{$row['CateCode']}}" @if($data['SubjectIdx'] == $row['SubjectIdx'])selected="selected"@endif>{{$row['SubjectName']}}</option>
+                    @endforeach
+                @endif
             </select>
             <span class="chkBox line2">
                 <input type="radio" id="s_is_public" name="s_is_public" class="goods_chk" value="1" @if($method == 'POST' || $data['IsPublic']=='N')checked="checked"@endif> <span>비밀글 여부</span>

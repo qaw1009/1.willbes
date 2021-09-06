@@ -534,7 +534,7 @@
                                 <option value="{{$key}}" @if($data['PointApplyCcd'] == $key) selected="selected" @endif>{{$val}}</option>
                             @endforeach
                         </select>
-                        <input type='number' name='PointSavePrice' value='@if($method==="POST"){{1}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" size="5" required="required" >
+                        <input type='number' name='PointSavePrice' id="PointSavePrice" value='@if($method==="POST"){{1}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" size="5" required="required" >
                         <select name="PointSaveType" id="PointSaveType" class="form-control">
                             <option value="R" @if($data['PointSaveType'] == 'R')selected="selected"@endif>%</option>
                             <option value="P" @if($data['PointSaveType'] == 'P')selected="selected"@endif>원</option>
@@ -1182,21 +1182,12 @@
                 }
                 $(this).blur();
                 if (confirm("사이트 변경으로 인해 입력된 값이 초기화 됩니다. 변경하시겠습니까?")) {
-
-                    /*
-                    $("#selected_category").html("");
-                    $("#teacherDivision tbody").remove();
-                    $("#lecList tbody").remove();
-                    sitecode_chained($(this).val());    //과정.과목 재조정
-                    */
                     location.reload();
-
                 } else {
                     $(this).val(prev_val);
                     return false;
                 }
             });
-
 
             //카테고리검색
             $("#searchCategory").on('click', function () {
@@ -1292,7 +1283,6 @@
                     'learnpatternccd' : $("#LearnPatternCcd").val()
                 };
 
-                //var salesprice = $("#SalePrice_613001").val();
                 var salesprice = $("#RealSalePrice_613001").val();  {{--TODO 19.04.08 최진영차장님 요청으로 정상가에서 판매가로 변경--}}
 
                 if (salesprice == '') {
@@ -1370,16 +1360,13 @@
 
             //동일한 마스터강의 등록 강좌 검색
             $('#sameLecture').on('click', function() {
-
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;};
                 if($('#wLecIdx').val() == '') {alert('마스터강좌를 선택해 주세요.'); return;};
-
                 $('#sameLecture').setLayer({
                     'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&wLecIdx='+$('#wLecIdx').val()
                     ,'width' : 1300
                 })
             });
-
 
             //쿠폰검색
             $('#couponAdd').on('click', function() {
@@ -1398,6 +1385,7 @@
                     ,'width' : 900
                 })
             });
+
             // 바이트 수
             $('#SmsMemo').on('change keyup input', function() {
                 $('#content_byte').val(fn_chk_byte($(this).val()));
@@ -1436,11 +1424,27 @@
                 }, showValidateError, addValidate, false, 'alert');
             });
 
+            $('#PointSaveType').change(function(){
+                checkPointSave();
+            });
+
+            //포인트 적립 확인
+            function checkPointSave() {
+                if($regi_form.find('#PointSaveType').val() == 'R' && $regi_form.find('#PointSavePrice').val() > 100) {
+                    alert("포인트 적립률이 '100%' 초과입니다. 확인해 주세요.");
+                    $regi_form.find('#PointSaveType').focus();
+                    return true;
+                }
+            }
+
             function addValidate() {
                 if($('input:radio[name="StudyPeriodCcd"]:checked').val() == '616002') {
                     if($('#StudyEndDate').val()=='') {
                         alert('수강종료일을 입력하여 주십시오.');return;
                     }
+                }
+                if(checkPointSave() === true) {
+                    return;
                 }
                 return true;
             }
@@ -1489,6 +1493,8 @@
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/on/lecture/') }}' + getQueryString());
             });
+
+
         });
 
         function rowDelete(strRow) {

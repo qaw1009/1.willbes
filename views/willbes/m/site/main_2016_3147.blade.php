@@ -41,7 +41,7 @@
             <div class="btnBox">
                 <div>
                     <img src="{{ img_static_url('promotion/main/2016/3147m_btn01.jpg') }}" alt="빅데이터 분석기사 필기합격 패키지 6개월">
-                    <a href="{{ front_url('lecture/show/cate/3147/pattern/only/prod-code/185587') }}" title="패키지 6개월 신청하기"></a>
+                    <a href="{{ front_url('/lecture/show/cate/3147/pattern/only/prod-code/185587') }}" title="패키지 6개월 신청하기"></a>
                 </div>
                 <div>
                     <img src="{{ img_static_url('promotion/main/2016/3147m_btn02.jpg') }}" alt="빅데이터 분석기사 필기 합격 패키지 3개월">

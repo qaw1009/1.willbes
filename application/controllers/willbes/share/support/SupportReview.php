@@ -611,9 +611,8 @@ class SupportReview extends BaseSupport
         $arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($this->_site_code);
 
         //과목조회
-        foreach ($arr_base['category'] as $row){
-            $arr_base['subject'][] = $this->baseProductFModel->listSubjectCategoryMapping($row['SiteCode'], $row['CateCode']);
-        }
+        $param_site_code = $this->_site_code == '2000' ? null : $this->_site_code;
+        $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($param_site_code);
 
         $method = 'POST';
         $data = null;
@@ -705,11 +704,8 @@ class SupportReview extends BaseSupport
         // 카테고리 조회
         $arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($this->_site_code);
 
-        if(empty($arr_base['category']) === false){
-            foreach ($arr_base['category'] as $row){
-                $arr_base['subject'][] = $this->baseProductFModel->listSubjectCategoryMapping($row['SiteCode'], $row['CateCode']);
-            }
-        }
+        $param_site_code = $this->_site_code == '2000' ? null : $this->_site_code;
+        $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($param_site_code);
 
         // 프론트 ui
         $arr_swich = element($this->_bm_idx,$this->_on_off_swich);

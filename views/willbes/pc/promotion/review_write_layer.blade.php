@@ -42,13 +42,11 @@
 
                             <select class="form-control" id="subject_idx" name="subject_idx" class="seleCampus" style="width: 250px;" title="과목명" required="required" @if($method == 'POST') disabled="disabled" @else @endif>
                                 <option value="">과목</option>
-                                @foreach($arr_base['subject'] as $arr)
-                                    @if(empty($arr) === false)
-                                        @foreach($arr as $row)
-                                            <option value="{{$row['SubjectIdx']}}" class="{{$row['CateCode']}}" @if($data['SubjectIdx'] == $row['SubjectIdx'])selected="selected"@endif>{{$row['SubjectName']}}</option>
-                                        @endforeach
-                                    @endif
-                                @endforeach
+                                @if(empty($arr_base['subject']) === false)
+                                    @foreach($arr_base['subject'] as $row)
+                                        <option value="{{$row['SubjectIdx']}}" class="{{$row['CateCode']}}" @if($data['SubjectIdx'] == $row['SubjectIdx'])selected="selected"@endif>{{$row['SubjectName']}}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </td>
                     </tr>

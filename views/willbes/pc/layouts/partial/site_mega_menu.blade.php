@@ -393,6 +393,42 @@
                         <a href="{{front_url('/professor/show/prof-idx/51275?cate_code=3043&subject_idx=1258')}}">김철</a>
                     </li>
                 </ul>
+                <h5>세무직</h5>
+                <ul>
+                    <li>
+                        <span>[국어]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/50158?cate_code=3046&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">오대혁</a>
+                        <span>[영어]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/50500?cate_code=3046&subject_idx=1254&subject_name=영어')}}">한덕현</a>
+                    </li>
+                    <li>
+                        <span>[한국사]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/50620?cate_code=3046&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">김상범</a>                       
+                        <span>[세법]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/51239?cate_code=3046&subject_idx=1269&subject_name=%EC%84%B8%EB%B2%95')}}">박창한</a>
+                    </li>
+                    <li>                        
+                        <span>[회계학]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/51240?cate_code=3046&subject_idx=1270&subject_name=회계학')}}">이윤호</a>
+                    </li>
+                </ul>
+                <h5>군무원</h5>
+                <ul>
+                    <li>
+                        <span>[국어]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/50158?cate_code=3048&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">오대혁</a>
+                        <span>[행정법]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/51215?cate_code=3048&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">신기훈</a><br>
+                        <span>[행정학]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/50560?cate_code=3048&subject_idx=1258&subject_name=%ED%96%89%EC%A0%95%ED%95%99')}}">김덕관</a>
+                    </li>
+                    <li>
+                        <span>[전자공학]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/50164/?cate_code=3052&subject_idx=1339&subject_name=%EC%A0%84%EC%9E%90%EA%B3%B5%ED%95%99')}}">최우영</a>
+                        <span>[통신이론]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/50164?cate_code=3052&subject_idx=1341&subject_name=%ED%86%B5%EC%8B%A0%EC%9D%B4%EB%A1%A0')}}">최우영</a>
+                    </li>
+                </ul>
             </div>
 
             <div class="prof-drop-Box">
@@ -515,25 +551,6 @@
                 </ul>
             </div>
 
-            <div class="prof-drop-Box" style="margin-top:-175px;">
-                <h5>군무원</h5>
-                <ul>
-                    <li>
-                        <span>[국어]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50158?cate_code=3048&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">오대혁</a>
-                        <span>[행정법]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/51215?cate_code=3048&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">신기훈</a><br>
-                        <span>[행정학]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50560?cate_code=3048&subject_idx=1258&subject_name=%ED%96%89%EC%A0%95%ED%95%99')}}">김덕관</a>
-                    </li>
-                    <li>
-                        <span>[전자공학]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50164/?cate_code=3052&subject_idx=1339&subject_name=%EC%A0%84%EC%9E%90%EA%B3%B5%ED%95%99')}}">최우영</a>
-                        <span>[통신이론]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50164?cate_code=3052&subject_idx=1341&subject_name=%ED%86%B5%EC%8B%A0%EC%9D%B4%EB%A1%A0')}}">최우영</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     @elseif($__cfg['SiteCode'] == '2017')
         {{-- 임용 --}}
@@ -1034,6 +1051,20 @@
                     </li>
                     <li>
                         <a href="{{site_url('/book/index/cate/3024')}}">교재구매</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="lec-drop-Box">
+                <h5>세무직</h5>
+                <ul>
+                    <li>
+                        <a href="{{front_url('/offPackage/index?cate_code=3046&campus_ccd=605001')}}">종합반</a>
+                    </li>
+                    <li>
+                        <a href="{{front_url('/offLecture/index?cate_code=3046&campus_ccd=605001')}}">단과</a>
+                    </li>
+                    <li>
+                        <a href="{{site_url('/book/index/cate/3028?cate_code=3022')}}">교재구매</a>
                     </li>
                 </ul>
             </div>

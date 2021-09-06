@@ -42,7 +42,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2352_01.jpg" alt="이벤트 안내"  data-aos="fade-right"/>
                 <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="소문내기 이미지 다운" style="position: absolute; left: 25.18%; top: 12.86%; width: 48.04%; height: 7.95%; z-index: 2;"></a>
 
-                <a href="javascript:void(0);" title="링크복사" onclick="copyTxt();" style="position: absolute; left: 25.09%; top: 64.74%; width: 54.38%; height: 9.68%; z-index: 2;"></a>
+                <a href="javascript:void(0);" title="링크복사" onclick="copyTxt();" style="position: absolute; left: 25.18%; top: 64.88%; width: 57.95%; height: 9.39%;  z-index: 2;"></a>
 
                 <a href="https://www.facebook.com" target="_blank" title="페이스북" style="position: absolute; left: 20%; top: 81.79%; width: 6.25%; height: 14.02%; z-index: 2;"></a>
                 <a href="https://www.instagram.com" target="_blank" title="인스타그램" style="position: absolute; left: 30.8%; top: 81.79%; width: 6.25%; height: 14.02%; z-index: 2;"></a>

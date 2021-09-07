@@ -43,11 +43,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2274_02.jpg" alt="초반 이론 학습" data-aos="fade-left"> 
         </div>
 
-        <div class="evtCtnsBox wb_cts03" id="careful" >            
+        <div class="evtCtnsBox wb_cts03" >            
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2274_03.jpg" alt="이런 분들이 수강하시면 좋아요." data-aos="fade-right"/>
         </div>
 
-        <div class="evtCtnsBox wb_cts04">       
+        <div class="evtCtnsBox wb_cts04" id="evt04">       
             <div class="wrap" data-aos="fade-up">     
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2274_04.jpg" alt="본인에게 딱 맞는 학습 전략" />
                 <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/185565" title="국영한 기본이론" target="_blank" style="position: absolute;left: 8.66%; top: 75.96%; width: 20.8%; height: 5.44%; z-index: 2;"></a>

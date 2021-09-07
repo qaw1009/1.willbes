@@ -48,6 +48,10 @@
                     <a href="{{ front_url('/lecture/show/cate/308906/pattern/only/prod-code/184363') }}" title="패키지 3개월 신청하기"></a>
                 </div>
             </div>
+
+            <div class="csTel NSK">
+                빅테이터분석기사 자격증 문의 <span class="NSK-Black">1544-1661</span>
+            </div>
         </div>
     </div>
     <!-- End Container -->
@@ -65,6 +69,9 @@
         .job308906 .btnBox{display: flex; justify-content: space-between; align-items: center; padding: 5% 20px;}
         .job308906 .btnBox div{ width:48%; position: relative;}
         .job308906 .btnBox div a{width:68%; height:30%; position: absolute; top:59%; left:15%; }
+
+        .job308906 .csTel {margin-top:80px; font-size:16px; text-align:center; vertical-align:middle;}
+        .job308906 .csTel span {font-size:22px; vertical-align:middle; margin-left:10px; color:#007ffc}
 
         /*타이머*/
         .job308906 .newTopDday {clear:both; background:#fff; width:100%; padding:20px 0;}

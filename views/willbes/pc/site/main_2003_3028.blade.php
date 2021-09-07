@@ -25,7 +25,7 @@
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2014">환경직(공채)</a></li>
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2014">환경직(특채)</a></li>
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2015">산림자원직</a></li>
-                    <li><a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178589">공통과목</a></li>
+                    <li><a href="https://pass.willbes.net/promotion/index/cate/3019/code/2274#evt04">공통과목</a></li>
                 </ul>
             </div>
         </div>

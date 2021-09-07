@@ -60,7 +60,7 @@
 
         <div class="Section article3">
             <img src="https://static.willbes.net/public/images/promotion/main/2006/308906_02.jpg" title="시험일정">
-            <a href="https://job.dev.willbes.net/landing/show/lcode/1043/cate/308906/preview/Y" target="_blank" class="NSK-Black">빅데이터 분석기사 더 자세히 알아보기 ></a>
+            <a href="https://job.willbes.net/landing/show/lcode/1043/cate/308906/preview/Y" target="_blank" class="NSK-Black">빅데이터 분석기사 더 자세히 알아보기 ></a>
         </div>
 
         <div class="Section article4">

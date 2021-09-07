@@ -174,6 +174,14 @@
                                         @if(empty($order_prod_row['LectureRoomSeatNo']) === false)
                                             <div class="blue">좌석번호 : {{ $order_prod_row['LectureRoomSeatNo'] }}</div>
                                         @endif
+                                        @if(empty($order_prod_row['dTargetOrderIdx']) === false && is_sys_admin() === true)
+                                            {{-- 시스템관리자만 표기 --}}
+                                            <div class="blue">(원)주문정보 :
+                                                <a href="{{ site_url('/pay/order/show/' . $order_prod_row['dTargetOrderIdx']) }}" target="_blank" class="gray">
+                                                    {{ $order_prod_row['dTargetOrderIdx'] }} ({{ $order_prod_row['dTargetProdCode'] }})
+                                                </a>
+                                            </div>
+                                        @endif
                                     </td>
                                     <td>{!! empty($order_prod_row['DeliveryStatusCcd']) === false ? $order_prod_row['DeliveryStatusCcdName'] . '<br/>' . substr($order_prod_row['DeliverySendDatm'], 0, 10) : '' !!}</td>
                                     <td>{{ number_format($order_prod_row['OrderPrice']) }}</td>

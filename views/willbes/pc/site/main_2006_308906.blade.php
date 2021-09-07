@@ -12,6 +12,8 @@
 
     .job308906 .article4 {background:#efefef; padding-bottom:100px}
     .job308906 .article4 .wrap {width:1120px; margin:0 auto; position:relative}
+    .job308906 .article4 .csTel {margin-top:80px; font-size:30px; text-align:center}
+    .job308906 .article4 .csTel span {font-size:50px; vertical-align:text-bottom; margin-left:30px; color:#007ffc}
     .job308906 .article5 .wrap {width:1120px; margin:0 auto; position:relative}
     .job308906 .article6 {background:#c7ebff;}
     .job308906 .article6 .wrap {width:1120px; margin:0 auto; position:relative}
@@ -70,9 +72,16 @@
                     <iframe src="https://www.youtube.com/embed/efr9iOZ57gM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <a href="https://job.willbes.net/lecture/show/cate/308906/pattern/only/prod-code/185036"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_01.jpg" title="훈쌤 전격입성"></a>
                     <a href="https://job.willbes.net/lecture/show/cate/308906/pattern/only/prod-code/184363" class="f_right"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_02.jpg" title="훈쌤 전격입성"></a>
-                </div>  
+                </div> 
+                
+                <div class="csTel NSK">
+                    빅테이터분석기사 자격증 문의 <span class="NSK-Black">1544-1661</span>
+                </div>
             </div>  
+            
         </div>
+
+        
         
     </div>
     <!-- End Container -->

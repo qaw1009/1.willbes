@@ -25,6 +25,9 @@
 
 		.evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
 
+        .csTel {font-size:30px; text-align:center; margin-bottom:150px}
+        .csTel span {font-size:50px; vertical-align:text-bottom; margin-left:30px; color:#007ffc}
+
         /************************************************************/      
     </style>     
 
@@ -57,6 +60,10 @@
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif 
+
+        <div class="evtCtnsBox csTel NSK">
+            빅테이터분석기사 자격증 문의 <span class="NSK-Black">1544-1661</span>
+        </div>
 
 	</div>
     <!-- End Container -->

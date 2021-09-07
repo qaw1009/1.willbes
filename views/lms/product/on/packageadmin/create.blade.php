@@ -1301,7 +1301,7 @@
                     total += ($(this).data('price'));
                 });
                 setTimeout(function() {
-                    if(confirm("가격이 변경되었습니다. 변경된 가격을 적용하시겠습니까?")) {
+                    if(confirm("가격이 변경되었습니다. 변경된 가격을 적용하시겠습니까? \n\n적용하신 후 반드시 강사료정산정보도 변경해 주셔야 합니다.")) {
                         $('input[name="SalePrice[]"]:eq(0)').val(total);
                         $key=$('input[name="SaleTypeCcd[]"]:eq(0)').val();
                         priceCheck($key);

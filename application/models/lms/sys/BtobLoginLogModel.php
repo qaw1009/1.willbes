@@ -42,7 +42,7 @@ class BtobLoginLogModel extends WB_Model
         $from = '
             from (
                 select BL.LogIdx, BL.AdminId, BL.LoginDatm, BL.LoginIp, BL.IsLogin, BL.LoginLogCcd, WCL.wCcdValue as LoginLogCcdName
-                    , ifnull(BA.BtobIdx, BL.BtobIdx) as BtobIdx, ifnull(B1.BtobId, B2.BtobId) as BtobId, ifnull(B1.BtobName, B2.BtobName) as BtobName
+                    , ifnull(BL.BtobIdx, BA.BtobIdx) as BtobIdx, ifnull(B1.BtobId, B2.BtobId) as BtobId, ifnull(B1.BtobName, B2.BtobName) as BtobName
                     , ifnull(BA.AdminName, "비운영자") as AdminName, BA.IsUse
                     , BR.RoleName, BR.RoleType
                     , ifnull(CAA.CcdValue, "") as AdminAreaCcdName, ifnull(CAB.CcdValue, "") as AdminBranchCcdName                    

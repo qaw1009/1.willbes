@@ -30,19 +30,8 @@ class BtobLoginLog extends \app\controllers\BaseController
      */
     public function listAjax()
     {
-        $arr_condition = [
-            'BDT' => ['LoginDatm' => [$this->input->post('search_start_date'), $this->input->post('search_end_date')]],
-            'EQ' => ['BtobIdx' => $this->_reqP('search_btob_idx')],
-            'ORG' => [
-                'LKB' => [
-                    'AdminName' => $this->_reqP('search_value'),
-                    'AdminId' => $this->_reqP('search_value'),
-                    'LoginIp' => $this->_reqP('search_value'),
-                ]
-            ]
-        ];
-
         $list = [];
+        $arr_condition = $this->_getListConditions();
         $count = $this->btobLoginLogModel->listBtobLoginLog(true, $arr_condition);
 
         if ($count > 0) {
@@ -54,5 +43,31 @@ class BtobLoginLog extends \app\controllers\BaseController
             'recordsFiltered' => $count,
             'data' => $list
         ]);
+    }
+
+    /**
+     * 제휴사관리자 접속관리 검색조건 리턴
+     * @return array
+     */
+    private function _getListConditions()
+    {
+        return [
+            'BDT' => [
+                'LoginDatm' => [
+                    get_var($this->_reqP('search_start_date'), date('Y-m-d')),
+                    get_var($this->_reqP('search_end_date'), date('Y-m-d'))
+                ]
+            ],
+            'EQ' => [
+                'BtobIdx' => $this->_reqP('search_btob_idx')
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'AdminName' => $this->_reqP('search_value'),
+                    'AdminId' => $this->_reqP('search_value'),
+                    'LoginIp' => $this->_reqP('search_value'),
+                ]
+            ]
+        ];
     }
 }

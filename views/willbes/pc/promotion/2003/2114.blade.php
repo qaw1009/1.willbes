@@ -14,15 +14,20 @@
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position: relative;}
 
         /************************************************************/
+        .sky {position:fixed;top:225px;right:10px;z-index:100;}
+        .sky a {display:block;margin-top:10px;}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2114_top_bg.jpg) no-repeat center top;}
 
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2114_01_bg.jpg) no-repeat center top;}
 
         .wb_cts03 {background:#F1F1F1;}
-        .wb_cts03 .tImg img {margin:0 5px 10px;width:343px;height:188px;}}
+        .wb_cts03 .tImg img {margin:0 5px 10px;width:343px;height:188px;}
+
+        .wb_cts05 {background:url(https://static.willbes.net/public/images/promotion/2021/09/2114_05_bg.jpg) no-repeat center top;}
 
          /*타이머*/
         .newTopDday * {font-size:24px}
@@ -37,7 +42,7 @@
         .newTopDday ul:after {content:""; display:block; clear:both}  
 
         /*수강신청 체크*/
-        .check {padding-bottom:75px;}
+        .check {margin:50px 0 100px;}
         .check p {margin-bottom:50px;padding-top:75px;}
         .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#163C57; text-align:center; border-radius:90px;}
         .check p a:hover {color:#8d0033; background:#eee53b;}
@@ -55,8 +60,6 @@
         .guide_box dd li {margin-bottom:3px; list-style:decimal; margin-left:20px;color:#3a3a3a;font-size:15px}
         .guide_box dd li a {display:inline-block; margin-left:20px; background:#032E5B; color:#fff; padding:3px 10px; border-radius:15px;}
         .guide_box .inquire{padding-top:25px;font-size:20px;font-weight:bold;color:#000;} 
-
-        .evt_wrap {width:1120px; margin:0 auto; position: relative;}
         
     </style>
 
@@ -88,6 +91,15 @@
             </div>
         </div>
 
+        <div class="sky" id="QuickMenu">
+            <a href="#evt05">
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2114_sky01.jpg" alt="타사 수강증 인증">
+            </a>
+            <a href="#evt05">
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2114_sky02.jpg" alt="타사 수강증 인증">
+            </a>
+        </div>
+
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2114_top.jpg" alt="조경직 패스" />
         </div>
@@ -109,11 +121,19 @@
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2114_04.jpg" alt="합격이 앞당겨집니다" />
         </div>
+
+        <div class="evtCtnsBox wb_cts05" id="evt05">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2114_05.jpg" alt="학습 커리큘럼" />
+                <a href="javascript:certOpen();" title="인증하기" style="position: absolute; left: 32.14%; top: 73.55%; width: 39.02%; height: 8%; z-index: 2;"></a>
+                <a href="#tip" title="유의사항" style="position: absolute; left: 43.84%; top: 83.27%; width: 15.18%; height: 4.33%; z-index: 2;"></a>
+            </div>
+        </div>
         
         <div class="evtCtnsBox wb_cts06">
-            <div class="evt_wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/05/2114_06.jpg" alt="수강신청 하기"/>
-                <a href="javascript:go_PassLecture('179737');" title="" style="position: absolute;left: 58.77%;top: 80.28%;width: 26.27%;height: 4.8%;z-index: 2;"></a>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2114_06.jpg" alt="수강신청 하기"/>
+                <a href="javascript:go_PassLecture('179737');" title="" style="position: absolute; left: 60.09%; top: 84.45%; width: 28.48%; height: 8.74%; z-index: 2;"></a>
             </div>   
             <div class="check" id="chkInfo">               
                 <label>
@@ -200,6 +220,22 @@
                             </li>
                             <li>본 상품은 실시간 진행되므로 일시정지/연장/재수강은 제공되지 않습니다. 촬영 및 편집된 강의는 익일 오후 2시 이전까지 업로드됩니다.</li>
                             <li>해당 혜택은 PASS 수강기간 내에만 이용 가능합니다. (* 이전 구매자 소급 적용)</li>
+                        </ol>
+                    </dd>
+
+                    <dt>재도전&환승 인증 이벤트 유의사항</dt>
+                    <dd>
+                        <ol>
+                            <li>본 이벤트는 1아이디당 1회만 참여 가능합니다.</li>
+                            <li>인증 완료 처리는 신청 후, 24시간 이내에 처리됩니다. 단, 주말 및 공휴일 인증 건의 경우 평일 오전 중으로 처리됩니다.<br>
+                            1) 재도전 인증<br>
+                            - 본인의 이름이 명시된 수험표 또는 윌비스 PASS 수강생의 경우 [내강의실] 페이지 내 이름과 PASS명이 명시된 이미지 캡쳐 후 업로드 시 인증 가능합니다.<br>
+                            2) 환승 인증<br>
+                            - 본인의 이름, 수강내역, 결제내역 등이 명확하게 기재된 수강증 등의 캡쳐를 통해서만 인증이 가능합니다.<br>
+                            (결제내역을 통한 인증 시, 수강자 이름과 결제 금액, 강좌명이 필수로 기재되어 있어야 합니다.)</li>
+                            <li>본 이벤트는 이벤트 참여자가 본인의 명의로 구매/응시한 내용에 한합니다.</li>
+                            <li>등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>
+                            <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>
                         </ol>
                     </dd>
                     

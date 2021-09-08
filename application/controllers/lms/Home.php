@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\BaseController
 {
-    protected $models = array('sys/wCode', 'sys/loginLog', 'pay/orderList', 'board/board', '_lms/sys/admin', '_lms/sys/cron');
+    protected $models = array('sys/loginLog', 'pay/orderList', 'board/board', '_lms/sys/admin', '_lms/sys/cron');
     protected $helpers = array();
 
     public function __construct()
@@ -32,20 +32,10 @@ class Home extends \app\controllers\BaseController
 
         // 금일 로그인 로그 조회
         $arr_condition = [
-            'EQ' => ['wAdminId' => $this->session->userdata('admin_id'), 'ConnSubDomain' => SUB_DOMAIN],
-            'BDT' => ['LoginDatm' => [$today, $today]]
+            'EQ' => ['L.wAdminId' => $this->session->userdata('admin_id'), 'L.ConnSubDomain' => SUB_DOMAIN],
+            'BDT' => ['L.LoginDatm' => [$today, $today]]
         ];
-
         $list = $this->loginLogModel->listTopLoginLog($arr_condition, 15);
-        if (count($list) > 0) {
-            // 사용하는 코드값 조회
-            $login_log_ccds = $this->wCodeModel->getCcd('117');
-
-            // 코드값에 해당하는 코드명을 배열 원소로 추가
-            $list = array_data_fill($list, [
-                'LoginLogCcdName' => ['LoginLogCcd' => $login_log_ccds]
-            ], true);
-        }
 
         // 사이트별 금일 주문환불처리 건수 조회
         $refund_data = [];

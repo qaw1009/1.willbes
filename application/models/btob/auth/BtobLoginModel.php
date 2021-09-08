@@ -8,7 +8,8 @@ class BtobLoginModel extends WB_Model
         'btob_admin_role' => 'lms_btob_admin_role',
         'btob_admin_login_log' => 'lms_btob_admin_login_log',
         'btob' => 'lms_btob',
-        'admin' => 'wbs_sys_admin'
+        'admin' => 'wbs_sys_admin',
+        'wcode' => 'wbs_sys_code'
     ];
 
     public function __construct()
@@ -81,9 +82,11 @@ class BtobLoginModel extends WB_Model
      */
     public function listTopLoginLog($arr_condition = [], $limit = null)
     {
-        $column = 'LogIdx, AdminId, LoginDatm, LoginIp, IsLogin, LoginLogCcd';
+        $column = 'L.LogIdx, L.AdminId, L.LoginDatm, L.LoginIp, L.IsLogin, L.LoginLogCcd, WCL.wCcdName as LoginLogCcdName';
 
-        return $this->_conn->getListResult($this->_table['btob_admin_login_log'], $column, $arr_condition, $limit, 0, ['LogIdx' => 'desc']);
+        return $this->_conn->getJoinListResult($this->_table['btob_admin_login_log'] . ' as L', 'left', $this->_table['wcode'] . ' as WCL'
+            , 'L.LoginLogCcd = WCL.wCcd and WCL.wIsStatus = "Y"'
+            , $column, $arr_condition, $limit, 0, ['L.LogIdx' => 'desc']);
     }
 
     /**

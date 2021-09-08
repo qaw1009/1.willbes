@@ -33,7 +33,7 @@
 
 		.evt02 {background:#ebebeb;}
 
-		.evt03 {background:#00ced1 url(https://static.willbes.net/public/images/promotion/2021/04/2180_03_bg.jpg) no-repeat center top; ; padding-bottom:150px}   
+		.evt03 {background:#00ced1 url(https://static.willbes.net/public/images/promotion/2021/09/2180_03_bg.jpg) no-repeat center top; ; padding-bottom:150px}   
         .evt03 .p_re {width:1120px; margin:0 auto}
         .evt03 .check {font-size:16px; text-align:center; line-height:1.5;margin-top:40px;font-weight:bold;}
         .evt03 .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
@@ -149,8 +149,10 @@
 
         <div class="evtCtnsBox evt03" id="event">
             <div class="p_re">
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2180_03.jpg" title="수험생들이 선택하고 인정한 영어정복 노하우!" />
-                <a href="javascript:go_PassLecture('180928');" title="" style="position: absolute; left: 67.77%; top: 88.45%; width: 14.73%; height: 7.43%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2180_03.jpg" title="수험생들이 선택하고 인정한 영어정복 노하우!" />
+                <a href="javascript:go_PassLecture('180928');" title="" style="position: absolute;left: 25.97%;top: 83.85%;width: 13.93%;height: 7.43%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('185620');" title="" style="position: absolute;left: 49.77%;top: 87.45%;width: 12.73%;height: 5.43%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('185702');" title="" style="position: absolute;left: 64.77%;top: 87.45%;width: 12.73%;height: 5.43%;z-index: 2;"></a>
             </div>
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
@@ -164,7 +166,9 @@
                 <div class="infoTit"><strong>상품구성</strong></div>
                 <ul>
                     <li>제공과정<br>
-                        - 전 과정 T-PASS : 2021~2022 한덕현 영어 9급 지방직 대비 전 과정 (반반/똑똑영어 다시보기 + 새벽모의고사 포함) 
+                        - 전 과정 T-PASS : 2021~2022 한덕현 영어 9급 지방직 대비 전 과정 (반반/똑똑영어 다시보기 + 새벽모의고사 포함)<br>
+                        - [국가직 대비] 새벽모의고사 T-PASS : 2022 대비로 진행된 한덕현 영어 새벽실전모의고사 (2021.7월~2022.3월)<br>
+                        - [지방직 대비] 새벽모의고사 T-PASS : 2022 대비로 진행된 한덕현 영어 새벽실전모의고사 (2021.7월~2022.6월) 
                     </li>
                     <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                     <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class LoginLog extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code', 'sys/loginLog');
+    protected $models = array('sys/loginLog');
     protected $helpers = array();
 
     public function __construct()
@@ -25,8 +25,34 @@ class LoginLog extends \app\controllers\BaseController
      */
     public function listAjax()
     {
-        $arr_condition = [
-            'BDT' => ['L.wLoginDatm' => [$this->input->post('search_start_date'), $this->input->post('search_end_date')]],
+        $list = [];
+        $arr_condition = $this->_getListConditions();
+        $count = $this->loginLogModel->listLoginLog(true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->loginLogModel->listLoginLog(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['L.wLogIdx' => 'desc']);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 운영자 접속관리 검색조건 리턴
+     * @return array
+     */
+    private function _getListConditions()
+    {
+        return [
+            'BDT' => [
+                'L.wLoginDatm' => [
+                    get_var($this->_reqP('search_start_date'), date('Y-m-d')),
+                    get_var($this->_reqP('search_end_date'), date('Y-m-d'))
+                ]
+            ],
             'ORG' => [
                 'LKB' => [
                     'A.wAdminName' => $this->_reqP('search_value'),
@@ -35,28 +61,5 @@ class LoginLog extends \app\controllers\BaseController
                 ]
             ]
         ];
-
-        $list = [];
-        $count = $this->loginLogModel->listLoginLog(true, $arr_condition);
-
-        if ($count > 0) {
-            $list = $this->loginLogModel->listLoginLog(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['L.wLogIdx' => 'desc']);
-
-            // 사용하는 코드값 조회
-            $codes = $this->codeModel->getCcdInArray(['109', '110', '117']);
-
-            // 코드값에 해당하는 코드명을 배열 원소로 추가
-            $list = array_data_fill($list, [
-                'wAdminDeptCcdName' => ['wAdminDeptCcd' => $codes['109']],
-                'wAdminPositionCcdName' => ['wAdminPositionCcd' => $codes['110']],
-                'wLoginLogCcdName' => ['wLoginLogCcd' => $codes['117']]
-            ], true);
-        }
-
-        return $this->response([
-            'recordsTotal' => $count,
-            'recordsFiltered' => $count,
-            'data' => $list
-        ]);
     }
 }

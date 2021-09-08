@@ -20,12 +20,12 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" title="조회시작일자">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" title="조회종료일자">
                         </div>
                     </div>
                 </div>
@@ -70,6 +70,11 @@
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $list_table.DataTable({
                 serverSide: true,
+                @if(is_sys_admin() === true)
+                    buttons: [
+                        { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset btn-excel' }
+                    ],
+                @endif
                 ajax: {
                     'url' : '{{ site_url('/sys/loginLog/listAjax') }}',
                     'type' : 'POST',
@@ -101,6 +106,14 @@
                     {'data' : 'LoginIp'},
                     {'data' : 'LoginDatm'}
                 ]
+            });
+
+            // 엑셀다운로드 버튼 클릭
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/sys/loginLog/excel') }}', $search_form.serializeArray(), 'POST');
+                }
             });
         });
     </script>

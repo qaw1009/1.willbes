@@ -31,13 +31,13 @@
         <div class="evtCtnsBox evt01">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2355_01.jpg" title="드림 패키지" data-aos="fade-left">
-                <a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/185708" target="_blank" title="패키지 신청하기" style="position: absolute; left: 22.68%; top: 88.77%; width: 54.82%; height: 5.24%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/185708" target="_blank" title="패키지 신청하기" style="position: absolute; left: 22.5%; top: 90.29%; width: 54.82%; height: 5.33%; z-index: 2;"></a>
             </div>
         </div>
 
         <div class="evtCtnsBox wrap">
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2355_02.jpg" title="소문내기 이벤트" data-aos="fade-right">
-            <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이벤트 이미지 다운로드" style="position: absolute; left: 22.5%; top: 68.64%; width: 54.82%; height: 6%; z-index: 2;"></a>
+            <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이벤트 이미지 다운로드" style="position: absolute; left: 22.86%; top: 65.8%; width: 54.82%; height: 5.6%; z-index: 2;"></a>
         </div> 
         
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

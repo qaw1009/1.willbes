@@ -84,7 +84,7 @@
         .wb_05 div span.area08 {top:750px; left:856px} /*진주*/
         .wb_05 div span.area09 {top:859px; left:754px} /*제주*/
 
-        .wb_07 {background:#009c0f;}
+        .wb_07 {background:#320a0b;}
         
 
 
@@ -170,25 +170,25 @@
 
         <div class="evt_top"> 
             <div class="main_box">
-                <p class="ani txt2">
+                <p class="ani txt2" data-aos="fade-down">
                     <img src="https://static.willbes.net/public/images/promotion/2021/09/2353_top_txt01.png" alt="">
                 </p>
-                <p class="ani txt3">
+                <p class="ani txt3" data-aos="fade-up">
                     <img src="https://static.willbes.net/public/images/promotion/2021/09/2353_top_txt02.png" alt="">
                 </p>
-                <p class="ani txt4">
+                <p class="ani txt4" data-aos="fade-up" data-aos-duration="500">
                     <img src="https://static.willbes.net/public/images/promotion/2021/09/2353_top_txt04.png" alt="">
                 </p>
-                <p class="ani txt5">
+                <p class="ani txt5" data-aos="fade-right">
                     <img src="https://static.willbes.net/public/images/promotion/2021/09/2353_top_txt05.png" alt="">
                 </p>
-                <p class="ani txt6">
+                <p class="ani txt6" data-aos="fade-left">
                     <img src="https://static.willbes.net/public/images/promotion/2021/09/2353_top_txt06.png" alt="">
                 </p>
-                <p class="ani txt7">
+                <p class="ani txt7" data-aos="fade-right" data-aos-duration="1500">
                     <img src="https://static.willbes.net/public/images/promotion/2021/09/2353_top_txt07.png" alt="">
                 </p>
-                <p class="ani txt8">
+                <p class="ani txt8" data-aos="fade-left" data-aos-duration="1500">
                     <img src="https://static.willbes.net/public/images/promotion/2021/09/2353_top_txt08.png" alt="">
                 </p>
             </div>

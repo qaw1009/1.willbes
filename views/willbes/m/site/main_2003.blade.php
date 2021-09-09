@@ -1,3 +1,8 @@
+@php
+    //인트로 페이지 리다이렉트
+    redirect(front_url('/intro/index')); exit;
+@endphp
+
 @extends('willbes.m.layouts.master')
 
 @section('content')

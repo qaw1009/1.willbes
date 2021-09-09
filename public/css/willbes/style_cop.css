@@ -343,7 +343,7 @@
 .cop .Sec02 {position:relative; height:390px}
 .cop .Sec02 div {position:absolute; top:0; left:50%; margin-left:-1000px}
 
-.cop .SectionBg02 {background:#f8f0dd; padding:100px 0 ;}
+.cop .SectionBg02 {background:#f8f0dd; padding:100px 0 10px;}
 .cop .SectionBg02 .will-nTit {color:#000}
 .cop .SecBanner06 {margin-right:-20px; margin-top:20px}
 .cop .SecBanner06 li {display:inline; float:left; margin:0 20px 20px 0;}

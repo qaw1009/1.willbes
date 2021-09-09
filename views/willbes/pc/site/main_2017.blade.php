@@ -133,7 +133,7 @@
         </div>
 
         <div class="Section sec-prof mt40">
-            @include('willbes.pc.site._viewTest.main_partial.professor_hot_clip_' . $__cfg['SiteCode'])
+            @include('willbes.pc.site.main_partial.professor_hot_clip_' . $__cfg['SiteCode'])
         </div>
 
         <div class="Section Section2 mt40">

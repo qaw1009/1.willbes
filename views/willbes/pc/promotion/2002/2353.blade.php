@@ -84,7 +84,7 @@
         .wb_05 div span.area08 {top:750px; left:856px} /*진주*/
         .wb_05 div span.area09 {top:859px; left:754px} /*제주*/
 
-        .wb_07 {background:#009c0f;}
+        .wb_07 {background:#320a0b;}
         
 
 

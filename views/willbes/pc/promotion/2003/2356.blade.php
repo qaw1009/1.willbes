@@ -14,40 +14,20 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
-        .evtCtnsBox .wrap a:hover {background-color:rgba(0,0,0,0.2)}
+        /*.evtCtnsBox .wrap a:hover {background-color:rgba(0,0,0,0.2)}*/
 
         /************************************************************/
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/09/2356_top_bg.jpg) no-repeat center top; height:1004px; position:relative}     
         .evt_top span {position:absolute; top:250px; margin-left:-420px}
 
-        .evt_01 {}
+        .evt_01 {position:relative}
         .ev_winner {position:absolute; width:596px; height:210px; top:1250px; left:50%; margin-left:-298px; z-index:10; overflow:hidden;}
         .ev_winner .bx-wrapper .bx-viewport {height:405px;}
         
         .evt_02 {background:#f4f4f4;}
         .evt_04 {background:#222 url(https://static.willbes.net/public/images/promotion/2021/09/2356_04_bg.jpg) no-repeat center top; position:relative;}
-
-
-        .evt_02 > div {width:1120px; margin:0 auto;}
-        .evt_02 > div a {display:inline-block; text-align:center; font-size:30px; background:#720017; color:#fff; margin:0 20px; height:85px; line-height:85px; padding:0 30px}
-        .evt_02 > div a:last-child {background:#251e54;}
-
-        /* 슬라이드배너*/
-        .slide_con {position:relative; width:980px; margin:0 auto;  overflow:hidden}
-
-        .slide_con .bx-wrapper .bx-controls {
-            position: absolute;
-            top:0;
-            width:100%;
-            z-index: 1;            
-        }
-       
-        .slide_cons {position:relative;width:1210px; margin:0 auto}	
-        .slide_cons p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
-        .slide_cons p a {cursor:pointer}
-        .slide_cons p.leftBtn {left:-40px; top:37%; width:80px; height:80px;}
-        .slide_cons p.rightBtn {right:-40px;top:37%; width:80px; height:80px;}       
+        .evt_07 {background:url(https://static.willbes.net/public/images/promotion/2021/09/2356_07_bg.jpg) no-repeat center top; position:relative;}    
 
     </style>
     
@@ -77,24 +57,15 @@
 
         <div class="evtCtnsBox evt_04">
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2356_04.jpg" alt="법원팀 최강 라인업"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2356_05.jpg" alt="커리큐럼" data-aos="fade-left"/>
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/2356_05.jpg" alt="커리큐럼" data-aos="fade-left"/>
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2356_06.jpg" alt="절대 만족 후기" data-aos="fade-right"/>
+                <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="합격수기 더보기" style="position: absolute; left: 35.18%; top: 57.77%; width: 29.11%; height: 4.44%; z-index: 2;"></a>    
+                <a href="https://open.kakao.com/o/s3fKkLrc" target="_blank" title="오픈채팅" style="position: absolute; left: 35.18%; top: 84.57%; width: 11.43%; height: 2.11%; z-index: 2;"></a>     
+                <a href="https://pass.willbes.net/support/qna/index?s_cate_code=3035&s_consult_type=622007" target="_blank" title="게시판" style="position: absolute; left: 53.21%; top: 84.57%; width: 11.43%; height: 2.11%; z-index: 2;"></a> 
+                <a href="https://cafe.daum.net/LAW-KDJTEAM" target="_blank" title="다음카페" style="position: absolute; left: 69.38%; top: 84.57%; width: 13.04%; height: 2.11%; z-index: 2;"></a>        
             </div>
         </div>
-
-        <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2356_02.jpg" alt="법원팀 139명 최종합격"/>
-            <div class="NSK-Black">
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/2096" target="_blank">학원 종합반 바로가기 ></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2087" target="_blank">온라인 패스 바로가기 ></a>
-            </div>
-        </div>
-
-        {{--기본댓글--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_normal_partial')
-        @endif 
     </div>
     <!-- End Container -->
 

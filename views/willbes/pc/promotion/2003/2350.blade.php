@@ -123,8 +123,8 @@
         <div class="evtCtnsBox evt04" id="tab04">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2350_04.jpg" title="수강할인">
-                <a href="javascript:alert('Coming Soon!')" title="윌비스티패스" style="position: absolute;left: 32.19%;top: 20.33%;width: 12.96%;height: 3.39%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/support/notice/show?board_idx=290110" target="_blank" title="9월신규강좌" style="position: absolute;left: 73.19%;top: 20.33%;width: 12.96%;height: 3.39%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2354" target="_blank" title="윌비스티패스" style="position: absolute;left: 32.19%;top: 20.33%;width: 12.96%;height: 3.39%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/support/notice/show?board_idx=354328" target="_blank" title="9월신규강좌" style="position: absolute;left: 73.19%;top: 20.33%;width: 12.96%;height: 3.39%;z-index: 2;"></a>
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2160" target="_blank" title="9급패스" style="position: absolute;left: 7.19%;top: 50.63%;width: 15.96%;height: 2.89%;z-index: 2;"></a>
                 <a href="https://pass.willbes.net/promotion/index/cate/3022/code/1983" target="_blank" title="세무직패스" style="position: absolute;left: 30.49%;top: 50.63%;width: 15.96%;height: 2.89%;z-index: 2;"></a>
                 <a href="https://pass.willbes.net/promotion/index/cate/3023/code/2127" target="_blank" title="소방패스" style="position: absolute;left: 53.69%;top: 50.63%;width: 15.96%;height: 2.89%;z-index: 2;"></a>

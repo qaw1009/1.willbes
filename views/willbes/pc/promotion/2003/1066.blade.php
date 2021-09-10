@@ -164,19 +164,19 @@
                         <th><strong>기본</strong></th>
                         <td>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/169567" target="_blank" >기초입문</a>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183409" target="_blank"><span>[NEW]</span> 제니스문법</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183409" target="_blank">제니스문법</a>
                         </td>
                         <td>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154894" target="_blank">제니스 독해</a>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/169820" target="_blank">필살기출비법</a>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154900" target="_blank">첨삭독해</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/185366" target="_blank">필살기출비법</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/184920" target="_blank">첨삭독해</a>
                         </td>
                         <td>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157581" target="_blank">제니스 보카</a>
                         </td>
                         <td>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158678" target="_blank">스나이퍼32</a>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183416" target="_blank"><span>[NEW]</span> 새벽모의고사</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/185509" target="_blank">새벽모의고사</a>
                         </td>
                     </tr>
                     <tr>
@@ -184,7 +184,7 @@
                             <strong>심화</strong>
                         </th>
                         <td>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183412" target="_blank"><span>[NEW]</span> 실전문법 464</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183412" target="_blank">실전문법 464</a>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145823" target="_blank">실전영작 215</a>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/173562" target="_blank">기출리뷰</a>
                         </td>

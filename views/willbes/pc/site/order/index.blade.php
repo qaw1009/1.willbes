@@ -264,6 +264,7 @@
                                 ({{ number_format(config_app('DeliveryFreePrice')) }}원 이상 교재 구매 시 무료 배송)
                             @endif
                             <p class="pt10">• 포인트를 사용하여 결제할 경우 포인트가 적립되지 않습니다.</p>
+                            <p class="pt10">• 환불 시 사용된 포인트는 복원되지 않고 소멸되며, 적립된 포인트는 회수됩니다.</p>
                         </div>
                     @endif
                 </div>

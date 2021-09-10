@@ -258,12 +258,13 @@
                         <div class="p-info tx-gray c_both">
                             • {{ $results['point_type_name'] }} 포인트는 <span class="tx-light-blue">{{ number_format(config_item('use_min_point')) }}P</span> 부터
                             <span class="tx-light-blue">{{ config_item('use_point_unit') }}P</span> 단위로 {{--사용 가능하며,
-                            주문금액의 <span class="tx-light-blue">{{ config_item('use_max_point_rate') }}%</span>까지만--}} 사용 가능합니다.
+                            주문금액의 <span class="tx-light-blue">{{ config_item('use_max_point_rate') }}%</span>까지만--}} 사용 가능합니다.<br>
                             @if($results['cart_type'] == 'book')
                                 {{-- 교재상품 구매일 경우 배송료 안내문구 노출 --}}
                                 ({{ number_format(config_app('DeliveryFreePrice')) }}원 이상 교재 구매 시 무료 배송)
                             @endif
-                            <p class="pt10">• 포인트를 사용하여 결제할 경우 포인트가 적립되지 않습니다.</p>
+                            • 포인트를 사용하여 결제할 경우 포인트가 적립되지 않습니다.<br>
+                            • 환불 시 사용된 포인트는 복원되지 않고 소멸되며, 적립된 포인트는 회수됩니다.
                         </div>
                     @endif
                 </div>

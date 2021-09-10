@@ -315,7 +315,9 @@
                 </dl>
             </div>
             <div class="p-info tx-gray c_both pb-zero">
-                • 강좌 포인트는 <span class="tx-light-blue">6,000p</span>부터<span class="tx-light-blue">1p</span> 단위로 사용 가능합니다.
+                • 강좌 포인트는 <span class="tx-light-blue">2,500p</span>부터<span class="tx-light-blue">1p</span> 단위로 사용 가능합니다.<br>
+                • 포인트를 사용하며 결제할 경우 포인트가 적립되지 않습니다.<br>
+                • 환불 시 사용된 포인트는 복원되지 않고 소멸되며, 적립된 포인트는 회수됩니다.
             </div>
         </div>
         <!-- willbes-Cart-Price -->

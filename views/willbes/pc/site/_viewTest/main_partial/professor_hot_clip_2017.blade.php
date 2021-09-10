@@ -155,7 +155,7 @@
         closeWin('youtube');
     }
 
-    /*교수 배너
+    /*교수 배너 탭기능
     $('.prof-Tab').each(function() {
         var $active, $content, $links = $(this).find('a');
         $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
@@ -178,13 +178,13 @@
     });*/
     
 
-    /*교수 롤링*/
+    /*교수 배너 롤링기능*/
     $(function(){ 
         var profslidesImg = $(".prof-Tab-Wrap").bxSlider({
             mode:'fade',
             touchEnabled: false,
-            speed:400,
-            pause:3000,
+            speed:1000,
+            pause:5000,
             sliderWidth:1120,
             auto : true,	
             autoHover: true,						

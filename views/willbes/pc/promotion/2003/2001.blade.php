@@ -52,7 +52,7 @@
 
         .tab01s_04 {background:#EAE6DB}
 
-        .tab01s_05 {background:#C23A2E;padding-bottom:100px;}
+        .tab01s_05 {background:#C23A2E;}
         .tab01s_05 > div {width:1120px; margin:0 auto; position:relative}
 
         .tab01s_06 {padding:100px 0; width:1120px; margin:0 auto;} 
@@ -172,13 +172,10 @@
 
         <div class="evtCtnsBox tab01s_03">
             <div class="link">
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_03_c.jpg" alt=""/>
-                <a href="javascript:go_popup1()" title="가축육종학 커리큘럼" style="position: absolute; left: 9.46%; top: 74.79%; width: 39.82%; height: 17.5%; z-index: 2;"></a>
-                <a href="javascript:go_popup2()" title="가축사양학 커리큘럼" style="position: absolute; left: 50.8%; top: 74.58%; width: 39.82%; height: 17.5%; z-index: 2;"></a>
-            </div>
-            <div>                               		
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_03s_01.jpg" alt=""/>
-            </div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/1915_03_c.jpg" alt=""/>
+                <a href="javascript:go_popup1()" title="조경직 커리큘럼" style="position: absolute; left: 9.2%; top: 61.47%; width: 81.34%; height: 26.42%; z-index: 2;"></a>
+            </div>                             		
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_03s_01.jpg" alt=""/>
         </div>
 
         <div class="evtCtnsBox tab01s_04">
@@ -229,23 +226,9 @@
         <div id="popup1" class="Pstyle">
             <span class="b-close NSK-Black">X</span>
             <div class="content">                  
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_curri01_c.jpg" alt="" />      
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/1915_curri01.jpg" alt="" />      
             </div> 
         </div>
-
-        <div id="popup2" class="Pstyle">
-            <span class="b-close NSK-Black">X</span>
-            <div class="content">                  
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_curri02_c.jpg" alt="" />      
-            </div> 
-        </div>  
-
-        <div id="popup3" class="Pstyle">
-            <span class="b-close NSK-Black">X</span>
-            <div class="content">                  
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1915_07_01.jpg" alt="" />    
-            </div> 
-        </div>  
 
     </div>
     <!-- End Container -->
@@ -280,12 +263,6 @@
         /*레이어팝업*/ 
         function go_popup1() {
             $('#popup1').bPopup();
-        }
-        function go_popup2() {
-            $('#popup2').bPopup();
-        }
-        function go_popup3() {
-            $('#popup3').bPopup();
         }
 
         /* 팝업창 */

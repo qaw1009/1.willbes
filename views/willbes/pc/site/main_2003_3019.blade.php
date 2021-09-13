@@ -374,7 +374,7 @@
     </div>
     <!-- End Container -->
 
-    <div id="Popup200916" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
+    <!-- <div id="Popup200916" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
         <div class="Layer-Cont" id="youtube_box">
             <iframe width="850" height="482" src="https://www.youtube.com/embed/bd1YXMDcw7o?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -383,7 +383,7 @@
             <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="yt_hdh_210805" data-popup-hide-days="">Close</a></li>
         </ul>
     </div>
-    <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
+    <div id="PopupBackWrap" class="willbes-Layer-Black"></div> -->
     {{--유튜브 모달팝업//--}}
 
 

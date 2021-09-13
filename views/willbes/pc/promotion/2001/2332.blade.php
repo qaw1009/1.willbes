@@ -101,13 +101,13 @@
     <div id="popup1" class="Pstyle">    
         <span class="b-close">X</span>
         <div class="content4">         
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2332_02_01.jpg"  alt="" />                           
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2332_02_01.jpg"  alt="관련 자격증 및 가산점" />                           
         </div>
     </div>
     <div id="popup2" class="Pstyle">    
         <span class="b-close">X</span>
         <div class="content4">         
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2332_07_01.jpg"  alt="" />                           
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2332_07_01.jpg"  alt="가맹단체 " />                           
         </div>
     </div>
     

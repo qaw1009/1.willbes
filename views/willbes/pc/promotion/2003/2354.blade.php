@@ -41,18 +41,18 @@
         <div class="evtCtnsBox wb_top">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2354_top.jpg" alt="윌비스 T-pass"  data-aos="fade-left" />
-                <a href="#wb_cts02" title="자세히보기" style="position: absolute; left: 31.43%; top: 86.97%; width: 12.59%; height: 3.45%; z-index: 2;"></a>
+                <a href="#wb_cts03" title="자세히보기" style="position: absolute; left: 31.43%; top: 86.97%; width: 12.59%; height: 3.45%; z-index: 2;"></a>
             </div>           
         </div>
 
         <div class="evtCtnsBox wb_cts01"> 
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2354_01.jpg" alt="같은과목을 공부해도, 어떻게 공부하냐에 따라 점수는 천차만별!" data-aos="fade-left" />           
         </div>
-        <div class="evtCtnsBox wb_cts02" id="wb_cts02">
+        <div class="evtCtnsBox wb_cts02">
             <img  src="https://static.willbes.net/public/images/promotion/2021/09/2354_02.jpg" alt="실강 개강 일정에 맞추어 실시간 업데이트 되는 커리큘럼" data-aos="fade-left"/>        
         </div>       
 
-        <div class="evtCtnsBox wb_cts03">
+        <div class="evtCtnsBox wb_cts03" id="wb_cts03">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2354_03.jpg" alt="원하는 교수님의 커리큘럼 무제한 수강!"  data-aos="fade-left"/>    
                 <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/185704" title="국어 오대혁" target="_blank" style="position: absolute; left: 10.98%; top: 32.35%; width: 17.41%; height: 2.1%; z-index: 2;"></a>

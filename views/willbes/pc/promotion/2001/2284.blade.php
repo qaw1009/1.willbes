@@ -27,7 +27,7 @@
 
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/07/2284_01_bg.jpg) no-repeat center top;} 
         
-        .evt10 {background:#3b3b3b}
+        .evt10 {background:#3b3b3b;}
 
         .evt11 {padding-bottom:100px;}
         .evtCtnsBox .title {color:#2a2a2a; font-size:30px; margin:50px 0 50px;}
@@ -49,9 +49,9 @@
             <a href="#evt_01"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2284_sky01.png" alt="학습팁" >
             </a>  
-            <a href="#evt_02"> 
+            <!-- <a href="#evt_02"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2284_sky02.png" alt="단강좌" >
-            </a>
+            </a> -->
         </div>   
 
         <div class="evtCtnsBox evtTop">
@@ -98,12 +98,12 @@
             </div>    
         </div>
 
-        <div class="evtCtnsBox evt10" id="evt_02">
+        <!-- <div class="evtCtnsBox evt10" id="evt_02">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2284_10.jpg"  alt="할인쿠폰받기"/>
                 <a href="javascript:void(0);" onclick="giveCheck();" title="쿠폰받기" style="position: absolute;left: 50.32%;top: 63.02%;width: 26.79%;height: 8.07%;z-index: 2;"></a>
             </div>    
-        </div>     
+        </div>-->
 
         <div class="evtCtnsBox evt11">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2284_11.jpg"  alt="강좌"/>

@@ -27,7 +27,7 @@
 
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/07/2284_01_bg.jpg) no-repeat center top;} 
         
-        .evt10 {background:#3b3b3b}
+        .evt10 {background:#3b3b3b;}
 
         .evt11 {padding-bottom:100px;}
         .evtCtnsBox .title {color:#2a2a2a; font-size:30px; margin:50px 0 50px;}

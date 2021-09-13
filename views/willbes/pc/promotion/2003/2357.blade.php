@@ -3,8 +3,7 @@
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
-    <style type="text/css">
-   
+    <style type="text/css">   
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -14,79 +13,77 @@
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
+        /*.evtCtnsBox .wrap a:hover {background-color:rgba(0,0,0,0.2)}*/
 
         /************************************************************/
 
-        .evt_top {background:#2a2a2d url(https://static.willbes.net/public/images/promotion/2021/04/2168_top_bg.jpg) no-repeat center top;}        
-        .evt_01 {background:#353439 url(https://static.willbes.net/public/images/promotion/2021/04/2168_01_bg.jpg) no-repeat center top; position:relative}
-        .ev_winner {position:absolute; width:693px; height:380px; top:1040px; left:50%; margin-left:-347px; z-index:10; overflow:hidden;}
-        .ev_winner .bx-wrapper .bx-viewport {height:405px;}
-        .evt_02 {background:#dbdbdb;padding-bottom:150px}
-        .evt_02 > div {width:1120px; margin:0 auto;}
-        .evt_02 > div a {display:inline-block; text-align:center; font-size:30px; background:#720017; color:#fff; margin:0 20px; height:85px; line-height:85px; padding:0 30px}
-        .evt_02 > div a:last-child {background:#251e54;}
-
-        /* 슬라이드배너*/
-        .slide_con {position:relative; width:980px; margin:0 auto;  overflow:hidden}
-
-        .slide_con .bx-wrapper .bx-controls {
-            position: absolute;
-            top:0;
-            width:100%;
-            z-index: 1;            
-        }
-       
-        .slide_cons {position:relative;width:1210px; margin:0 auto}	
-        .slide_cons p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
-        .slide_cons p a {cursor:pointer}
-        .slide_cons p.leftBtn {left:-40px; top:37%; width:80px; height:80px;}
-        .slide_cons p.rightBtn {right:-40px;top:37%; width:80px; height:80px;}       
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/09/2356_07_bg.jpg) no-repeat center top;}
 
     </style>
+
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+
+        <input type="hidden" name="msg" value="아래 체험팩 수강후기를 등록해 주세요.">
+    </form>
     
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2168_top.jpg" alt="법원팀 139명 최종합격"/>
-        </div>
-
-        <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2168_01.jpg" alt="법원팀 139명 최종합격"/>
-            <div class="ev_winner">
-                <ul id="slider1" class="bxslider">
-                    <li class="mb10"><img src="https://static.willbes.net/public/images/promotion/2021/04/2168_01_txt.png"/></li>					
-                </ul>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2356_07.jpg" alt="5일 체험팩"/>
+                <a href="javascript:void(0);" onclick="showPopup();" title="설문 참여" style="position: absolute; left: 34.64%; top: 76.44%; width: 30.09%; height: 8.76%; z-index: 2;"></a>
             </div>
         </div>
 
-        <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2168_02.jpg" />
-            <div class="NSK-Black">
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/2096" target="_blank">학원 종합반 바로가기 ></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2087" target="_blank">온라인 패스 바로가기 ></a>
+        <div class="evtCtnsBox pb100">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2356_08.jpg" alt="후기쓰고 쿠폰받기" data-aos="fade-right"/>
+                <a href="javascript:void(0);" onclick="giveCheck();" title="쿠폰받기" style="position: absolute; left: 50.89%; top: 71.2%; width: 30.09%; height: 12.92%; z-index: 2;"></a>
             </div>
-        </div>
 
-        {{--기본댓글--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_normal_partial')
-        @endif 
+            {{--기본댓글--}}
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_normal_partial')
+            @endif 
+        </div>        
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript">   
-        $(function() {
-            //Count the number of li elements
-            var bx_num01 = $("#slider1 li").length;
-            var ticker01 = $('#slider1').bxSlider({
-                minSlides: 0,
-                maxSlides: 100,
-                slideWidth: 980,
-                slideMargin: 0,
-                ticker: true,
-                mode: 'vertical',
-                tickerHover: true,
-                speed:50000*bx_num01
-            });
-        });
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      $( document ).ready( function() {
+        AOS.init();
+      } );
+
+      var $regi_form = $('#regi_form');
+
+      function showPopup(){
+          @if(empty($arr_promotion_params['SsIdx']) === true)
+            alert('설문정보가 없습니다.');
+            return;
+          @else
+              var url = "{{front_url('/eventSurvey/index/' . $arr_promotion_params['SsIdx'])}}";
+              window.open(url,'survey_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
+          @endif
+      }
+
+      {{--쿠폰발급--}}
+      function giveCheck() {
+          {!! login_check_inner_script('로그인 후 이용해주세요.','Y') !!}
+
+          @if(empty($arr_promotion_params) === false)
+              var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
+              ajaxSubmit($regi_form, _check_url, function (ret) {
+                  if (ret.ret_cd) {
+                      alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                  }
+              }, showValidateError, null, false, 'alert');
+          @else
+            alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+          @endif
+      }
     </script>
 @stop

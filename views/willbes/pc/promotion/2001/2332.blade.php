@@ -53,7 +53,7 @@
         <div class="evtCtnsBox evt02">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2332_02.jpg"  alt="자격증 등의 가산점 기준표" data-aos="fade-left">
-                <a href="javascript:go_popup1();" title="가산점 크게보기" style="position: absolute; left: 7.14%; top: 39.66%; width: 40%; height: 51.43%; z-index: 2;"></a>
+                <a href="javascript:go_popup('#popup1');" title="가산점 크게보기" style="position: absolute; left: 7.14%; top: 39.66%; width: 40%; height: 51.43%; z-index: 2;"></a>
             </div>            
         </div>
         
@@ -89,7 +89,7 @@
         <div class="evtCtnsBox evt07" id="evt07">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2332_07.jpg"  alt="무도" data-aos="fade-left">
-                <a href="javascript:go_popup2();" title="크게보기" style="position: absolute; left: 31.16%; top: 42.88%; width: 37.59%; height: 31.47%; z-index: 2;"></a>
+                <a href="javascript:go_popup('#popup2');" title="크게보기" style="position: absolute; left: 31.16%; top: 42.88%; width: 37.59%; height: 31.47%; z-index: 2;"></a>
             </div>             
         </div>
         <div class="evtCtnsBox evt08" id="evt08">
@@ -119,12 +119,8 @@
         AOS.init();
     } );
     /*레이어팝업*/
-    function go_popup1() {
-        $('#popup1').bPopup();
+    function go_popup(id) {
+        $(id).bPopup();
     }
-    function go_popup2() {
-        $('#popup2').bPopup();
-    }
-
     </script>
 @stop

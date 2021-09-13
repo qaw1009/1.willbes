@@ -25,6 +25,8 @@
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
+
+        <input type="hidden" name="msg" value="아래 체험팩 수강후기를 등록해 주세요.">
     </form>
     
     <div class="evtContent NSK" id="evtContainer">

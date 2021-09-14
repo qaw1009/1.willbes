@@ -1,7 +1,7 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
     <!-- Container -->
-    <div id="Container" class="Container cop NGR c_both">
+    <div id="Container" class="Container cop NGR c_both combine">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
@@ -57,7 +57,7 @@
                             @foreach($data['lecture_update_info'] as $row)
                                 @if($loop->index % 2 == 1)
                                     <div>
-                                @endif
+                                        @endif
                                         <div class="lecReview">
                                             <a href="{{ front_url('/lecture/show/cate/' . $row['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode']) }}">
                                                 <div class="imgBox">
@@ -65,12 +65,12 @@
                                                 </div>
                                                 <div class="lecinfo">
                                                     <p>{{$row['SubjectName']}} {{$row['ProfNickName']}}</p>
-                                                    <p>{{ (mb_strlen($row['ProdName'], 'UTF-8') > 75 ? mb_substr($row['ProdName'],'0','75','UTF-8').'...' : $row['ProdName']) }}</p>
+                                                    <p>{{ $row['ProdName'] }}</p>
                                                     <p>{{ date("m", strtotime($row['unit_regdate'])) }}월 {{ date("d", strtotime($row['unit_regdate'])) }}일 총 {{ $row['unit_cnt'] }}강 업로드</p>
                                                 </div>
                                             </a>
                                         </div>
-                                @if($loop->index % 2 == 0)
+                                        @if($loop->index % 2 == 0)
                                     </div>
                                 @endif
                             @endforeach
@@ -80,21 +80,24 @@
             </div>
         </div>
 
-        <div class="Section mt100">
+
+        <div class="Section Sction3 mt100">
             <div class="widthAuto">
-                <div class="will-nTit NSK-Black">
-                    개편 과목 <span class="cop-color">전문 교수진</span>
-                    <span class="tx16 NSK-Thin pt10 ml20">2022년 경찰 합격을 위한 선택! 과목개편 대비 강좌을 경험해보세요.</span>
+                <div class="SecBanner12">
+                    <div class="will-nTit NSK-Black">
+                        전문 <span class="cop-color">교수진</span>
+                        <span class="tx16 NSK-Thin pt10 ml20">경찰 합격을 위한 선택! 최고의 교수진으로 수험생의 합격을 돕겠습니다.</span>
+                    </div>
+                    <ul class="pro_box">
+                        @for($i=1;$i<=10;$i++)
+                            @if(isset($data['arr_main_banner']['메인_전문교수진' . $i]) === true)
+                                <li class="bSlider">
+                                    {!! banner_html(element('메인_전문교수진'.$i, $data['arr_main_banner']),'slider') !!}
+                                </li>
+                            @endif
+                        @endfor
+                    </ul>
                 </div>
-                <ul class="SecBanner03">
-                    @for($i=1; $i<=4; $i++)
-                        @if(isset($data['arr_main_banner']['메인_전문교수진'.$i]) === true)
-                            <li>
-                                {!! banner_html($data['arr_main_banner']['메인_전문교수진'.$i]) !!}
-                            </li>
-                        @endif
-                    @endfor
-                </ul>
             </div>
         </div>
 
@@ -106,17 +109,17 @@
             </div>
         @endif
 
-        <div class="Section SectionBg01">
+        <div class="Section mt100">
             <div class="widthAuto">
                 <div class="will-nTit NSK-Black">
-                    전문 <span class="cop-color">교수진</span>
-                    <span class="tx16 NSK-Thin pt10 ml20">최고의 교수진으로 수험생의 합격을 돕겠습니다.</span>
+                    검정제 <span class="cop-color">교수진</span>
+                    <span class="tx16 NSK-Thin pt10 ml20">합격의 필수요소! 검정제 시작부터 제대로 준비하세요.</span>
                 </div>
-                <ul class="SecBanner05">
-                    @for($i=1; $i<=8; $i++)
-                        @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
+                <ul class="SecBanner11">
+                    @for($i=1;$i<=3;$i++)
+                        @if(isset($data['arr_main_banner']['메인_검정제교수진' . $i]) === true)
                             <li>
-                                {!! banner_html(element('메인_교수진'.$i, $data['arr_main_banner'])) !!}
+                                {!! banner_html(element('메인_검정제교수진'.$i, $data['arr_main_banner'])) !!}
                             </li>
                         @endif
                     @endfor
@@ -139,46 +142,39 @@
                         @endif
                     @endfor
                 </ul>
-                <div class="will-nTit NSK-Black mt100">
-                    신광은경찰팀 TV
-                </div>
-                <div class="tabTv">
-                    <div class="tabTvBtns">
-                        <ul class="NSK-Black">
-                            <li><a href="#tabTv01" class="on"><span>커리큘럼 & 공부방법</span></a></li>
-                            <li><a href="#tabTv02"><span>신광은경찰팀 특강</span></a></li>
-                            <li><a href="#tabTv03"><span>합격생 영상</span></a></li>
-                        </ul>
-                        <div class="moreBtn"><a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">영상 더보기 ></a></div>
+
+                @if (empty(element('메인_유튜브', $data['arr_main_banner'])) === false)
+                    <div class="will-nTit NSK-Black mt100">
+                        신광은경찰팀 유튜브 채널 모음
                     </div>
-                    <div id="tabTv01" class="TvctsBox">
-                        @for($i=1; $i<=3; $i++)
-                            @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
-                                <div class="Tvcts">
-                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner']),'','','','','','','',true) !!}
-                                </div>
-                            @endif
-                        @endfor
+                    <div class="Section tube_wrap">
+                        <div class="widthAuto">
+                            <div class="tube_box">
+                                <ul class="tube_slider">
+                                    {{-- 배너함수 사용 불가 --}}
+                                    @foreach(element('메인_유튜브', $data['arr_main_banner']) as $row)
+                                        <li>
+                                            <div>
+                                                @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
+                                                    <a href="javascript:void(0);">
+                                                        <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                                    </a>
+                                                @else
+                                                    <a href="{{front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www')}}" target="{{$row['LinkType']}}">
+                                                        <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                                    </a>
+                                                @endif
+                                            </div>
+                                            <div class="tube_title">{{ $row['BannerName'] }}</div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                                <p class="leftBtn"><a id="tube_slider_left"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_left.png"></a></p>
+                                <p class="rightBtn"><a id="tube_slider_right"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_right.png"></a></p>
+                            </div>
+                        </div>
                     </div>
-                    <div id="tabTv02" class="TvctsBox">
-                        @for($i=4; $i<=6; $i++)
-                            @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
-                                <div class="Tvcts">
-                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner']),'','','','','','','',true) !!}
-                                </div>
-                            @endif
-                        @endfor
-                    </div>
-                    <div id="tabTv03" class="TvctsBox">
-                        @for($i=7; $i<=9; $i++)
-                            @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
-                                <div class="Tvcts">
-                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner']),'','','','','','','',true) !!}
-                                </div>
-                            @endif
-                        @endfor
-                    </div>
-                </div>
+                @endif
             </div>
         </div>
 
@@ -238,81 +234,7 @@
         </div>
     </div>
     <!-- End Container -->
-
-    @if (date('YmdHi') <= '202103060900')
-        {{--//유튜브 모달팝업--}}
-        <style type="text/css">
-            #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px; z-index: 106}
-        </style>
-        <div id="Popup200916" class="PopupWrap2 modal willbes-Layer-popBox" style="display: none;">
-            <div class="Layer-Cont" id="youtube_box">
-                <iframe width="850" height="482" src="https://www.youtube.com/embed/146yrfkqJgM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <ul class="btnWrapbt popbtn mt10">
-                <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="1">하루 보지않기</a></li>
-                <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="">Close</a></li>
-            </ul>
-        </div>
-        <div id="PopupBackWrap2" class="willbes-Layer-Black"></div>
-        {{--유튜브 모달팝업//--}}
-    @endif
-
     <script src="/public/js/willbes/product_util.js?ver={{time()}}"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            //하단이벤트배너 닫기
-            $('.mainBottomBn .btmEvClose').click(function(){
-                $('.mainBottomBn').hide();
-            });
-        });
-
-        //유튜브 모달팝업 close 버튼 클릭
-        var youtube_html;
-        $(document).ready(function() {
-            $('.PopupWrap2').on('click', '.btn-popup-close', function() {
-                youtube_html = $('#youtube_box');
-                $('#youtube_box').html('');
-
-                var popup_idx = $(this).data('popup-idx');
-                var hide_days = $(this).data('popup-hide-days');
-
-                // 팝업 close
-                $(this).parents('.PopupWrap2').fadeOut();
-
-                //하루 보지않기
-                if (hide_days !== '') {
-                    var domains = location.hostname.split('.');
-                    var domain = '.' + domains[domains.length - 2] + '.' + domains[domains.length - 1];
-
-                    $.cookie('_wb_client_popup_' + popup_idx, 'done', {
-                        domain: domain,
-                        path: '/',
-                        expires: hide_days
-                    });
-                }
-
-                // 모달팝업창이 닫힐 경우 백그라운드 레이어 숨김 처리
-                if ($(this).parents('.PopupWrap2').hasClass('modal') === true) {
-                    $('#PopupBackWrap2').fadeOut();
-                }
-            });
-
-            // 백그라운드 클릭 --}}
-            $('#PopupBackWrap2.willbes-Layer-Black').on('click', function() {
-                youtube_html = $('#youtube_box');
-                $('#youtube_box').html('');
-                $('.PopupWrap2.modal').fadeOut();
-                $(this).fadeOut();
-            });
-
-            // 팝업 오늘하루안보기 하드코딩
-            if($.cookie('_wb_client_popup_860') !== 'done') {
-                $('.PopupWrap2').fadeIn();
-                $('#PopupBackWrap2').fadeIn();
-            }
-        });
-    </script>
-
     <script type="text/javascript">
         //상단배너
         $(function(){
@@ -401,32 +323,30 @@
             });
         });
 
-        //교재
-        /*$(function() {
-            var slidesImg1 = $(".bookList").bxSlider({
+        //유튜브채널
+        $(function() {
+            var newsImg = $(".tube_slider").bxSlider({
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                 auto:true,
                 speed:350,
                 pause:4000,
-                pager:true,
+                pager:false,
                 controls:false,
-                minSlides:6,
-                maxSlides:6,
-                slideWidth: 186,
+                slideWidth: 224,
+                minSlides:5,
+                maxSlides:5,
                 slideMargin:0,
-                autoHover: true,
+                autoHover:true,
                 moveSlides:1,
-                pager:true,
-                touchEnabled: false,
             });
-            $("#imgBannerLeft3").click(function (){
-                slidesImg1.goToNextSlide();
+            $("#tube_slider_left").click(function (){
+                newsImg.goToPrevSlide();
             });
-            $("#imgBannerRight3").click(function (){
-                slidesImg1.goToPrevSlide();
-            });
-        });*/
 
+            $("#tube_slider_right").click(function (){
+                newsImg.goToNextSlide();
+            });
+        });
     </script>
 
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}

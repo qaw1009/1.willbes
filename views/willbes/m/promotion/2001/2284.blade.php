@@ -60,13 +60,6 @@
         </div>
     </div>
 
-    <div class="evtCtnsBox" data-aos="fade-left">
-        <div class="wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2284m_05.jpg" alt="할인쿠폰 받기"/>
-            <a href="javascript:void(0);" title="쿠폰" onclick="giveCheck();" style="position: absolute;left: 10.42%;top: 81.19%;width: 78.89%;height: 10.95%;z-index: 2;"></a>
-        </div>    
-    </div>
-
     <div class="evtCtnsBox" data-aos="fade-right">    
         <img src="https://static.willbes.net/public/images/promotion/2021/07/2284m_06.jpg"  alt="경찰 헌법 강의 신청"/>        
         <div class="title NSK-Black">경찰 헌법 강의 신청 ></div>        

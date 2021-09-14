@@ -34,15 +34,16 @@
         }
 
     .evt03 ul {margin:0 10px}
-    .evt03 li {display:inline; float:left; width:50%}
-    .evt03 li a {display:block; padding:20px 0; margin-left:5px; border-radius:10px; border:3px solid #c7c9c9; font-size:16px}
-    .evt03 li:last-child a{background:#fdf3eb}
-    .evt03 li span {display:block; color:#525252}
-    .evt03 li span:nth-child(2) {font-size:20px; font-weight:bold; color:#005af8}
-    .evt03 li span:nth-child(3) {margin-top:20px; color:#ff1500}
-    .evt03 li span:last-child {background:#000; color:#fff; padding:10px 0; margin:10px 10px 0; border-radius:5px;font-size:14px; letter-spacing:-1px}
-    .evt03 li span:last-child a {margin:0}
-    .evt03 li strong {font-size:22px;font-weight:bold;}
+    .evt03 li {display:flex; justify-content: center; padding-bottom: 5%;}
+    .evt03 li a {display:block; padding:20px 0; margin-left:5px; border-radius:10px; border:3px solid #000; font-size:16px; width:90%;}
+    .evt03 li span {display:block; color:#BA2933}
+    .evt03 li span:nth-child(2) {font-size:30px; font-weight:bold; color:#BA2933;}
+    .evt03 li span:nth-child(3) { color:#777777; font-size: 30px; font-weight:bold;}
+    .evt03 li:last-child span:nth-child(2) { color:#777777;}
+    .evt03 li:last-child span:nth-child(3) { color:#BA2933;}
+    .evt03 li span:last-child {background:#BA2933; color:#fff; padding:10px 0; margin:10px 10px 0; border-radius:5px;font-size:14px; letter-spacing:-1px}
+    .evt03 li span:last-child a {margin:0; font-size: 22px; }
+    .evt03 li strong {font-size:14px;font-weight:bold;display: block; color: #DBCB99;}
 
     .evt04 {padding:30px 0; background:#2a2a2a}    
     .evt04 li {display:inline; float:left; width:50%; font-size:16px; font-weight:bold}
@@ -134,19 +135,27 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1676m_02.jpg" alt="" >
         <ul>
             <li>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/183200" target="_blank">
-                    <span>반반&똑똑</span>
-                    <span>8월 방송<br>다시보기</span>
-                    <span><strong>6</strong>만원으로</span>
-                    <span>방송 다시보기 ></span>
+                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/185903" target="_blank">
+                    <span>반반모고&똑똑영어</span>
+                    <span>10월 방송</span>
+                    <span>다시보기</span>
+                    <span><strong>6만원으로</strong>방송 다시보기 ></span>
                 </a>
             </li>
             <li>
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank">
+                <a href="https://pass.willbes.net/m/package/show/cate/3019/pack/648001/prod-code/185909" target="_blank">
+                    <span>반반모고&똑똑영어</span>
+                    <span>7~12월 방송</span>
+                    <span>다시보기</span>
+                    <span><strong>19만원으로</strong>방송 다시보기 ></span>
+                </a>
+            </li>
+            <li>
+                <a href="https://pass.willbes.net/m/promotion/index/cate/3019/code/2180" target="_blank">
                     <span>2022 지방직 대비</span>
-                    <span>한덕현 영어<br>T-PASS</span>
-                    <span><strong>더켠쌤과</strong>함께</span>
-                    <span>열공하고 합격하기 ></span>
+                    <span>한덕현 영어<br></span>
+                    <span>T-PASS</span>
+                    <span><strong>더켠쌤과 함께</strong>열공하고 합격하기 ></span>
                 </a>
             </li>
         </ul>
@@ -251,8 +260,10 @@
 
             <p class="NSK-Black"><span>●</span> 열공 출첵 이벤트 관련</p>
             <ul>
-                <li>본 이벤트는 로그인 후 참여 가능하며, 8/16(월)~9/10(금)까지 총 20회 진행됩니다. <span>(*공휴일 제외)</span></li>
-                <li>출석체크 가능 시간은 반반(월/수/금) 21:00~22:00, 똑똑(화/목) 21:00~21:40, 모의고사 해설 LIVE (8/23(월), 9/6(월)) 19:00~20:00로, 시간 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.</li>
+                <li>본 이벤트는 로그인 후 참여 가능하며,9/27(월)~10/22(금)까지 총 20회 진행됩니다. <span> (*토/일 제외)</span></li>
+                <li>출석체크 가능 시간 반반(월/수/금 21:00~22:00, 똑똑(화/목) 21:00~21:40, 실전덕후단 유튜브 LIVE (10/4(월)) 19:00~22:00, 모의고사 해설 LIVE (10/18(월)) 19:00~20:00 내에 
+                    페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.</li>
+                <li>당첨자 안내 공지는 10/25(월) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
             </ul> 
         </div>
     </div>

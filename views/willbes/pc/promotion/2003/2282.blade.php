@@ -84,30 +84,7 @@
 
         .wb_cts09 {padding-bottom:100px;}
 
-        .emo_area {padding-bottom:100px;} 
-
-        /*레이어팝업*/
-        .Pstyle {
-            opacity: 0;
-            display: none;
-            position: relative;
-            width: auto;
-            background-color: #fff;
-            padding:10px;
-        }
-        .b-close {
-            position: absolute;
-            right: -30px;
-            top: 0px;
-            width:30px; height: 30px; line-height:30px;
-            display: inline-block;
-            cursor: pointer;
-            font-weight:bold;
-            text-align:center;
-            background:#000; color:#fff;
-        }
-        .Pstyle .content {height:auto; width:auto; min-width:500px; min-height:600px}
-
+        .emo_area {padding-bottom:100px;}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">

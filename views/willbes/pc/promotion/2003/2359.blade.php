@@ -15,7 +15,6 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-
         /************************************************************/
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/09/2359_top_bg.jpg) no-repeat center top;}
@@ -30,12 +29,10 @@
         .guide_box dd strong {color:#555}
         .guide_box dd li {margin-bottom:3px; list-style:decimal; margin-left:20px;}
         .guide_box dd li a {display:inline-block; margin-left:20px; background:#032E5B; color:#fff; padding:3px 10px; border-radius:15px; font-size:12px}
-        .guide_box .inquire{padding-top:25px;font-size:20px;font-weight:bold;color:#000;} 
-
+        .guide_box .inquire{padding-top:25px;font-size:20px;font-weight:bold;color:#000;}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2359_top.jpg" alt="덕후력퀴즈"  data-aos="fade-left" />                 
         </div>
@@ -43,14 +40,12 @@
         <div class="evtCtnsBox wb_cts01"> 
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2359_01.jpg" alt="퀴즈 어떻게 풀면 되나요" data-aos="fade-right" />           
-                <a href="javascript:void(0)" title="실전덕후단 464 덕후력 QUIZ 풀기" style="position: absolute;left: 30.3%;top: 89.3%;width: 38.57%;height: 6.9%;z-index: 2;"></a>
+                <a href="javascript:void(0)" onclick="list_quiz('{{ $arr_promotion_params['quiz_id'] or '' }}'); return false;" title="실전덕후단 464 덕후력 QUIZ 풀기" style="position: absolute;left: 30.3%;top: 89.3%;width: 38.57%;height: 6.9%;z-index: 2;"></a>
             </div>
         </div>
-
         <div class="evtCtnsBox wb_cts02">
             <img  src="https://static.willbes.net/public/images/promotion/2021/09/2359_02.jpg" alt="라이브 토크쇼" data-aos="fade-left"/>        
         </div>       
-
         <div class="evtCtnsBox wb_info" id="careful">
             <div class="guide_box">
                 <h2 class="NSK-Black">이벤트 유의사항</h2>
@@ -71,10 +66,15 @@
                 </dl>
             </div>
         </div>
+        <!--퀴즈팝업-->
+        <div id="popup" class="Pstyle">
+            <span class="b-close">X</span>
+            <div id="quiz_layer_box"></div>
+        </div>
     </div>
     <!-- End Container -->
  
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css?aa=1" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
     $( document ).ready( function() {
@@ -83,8 +83,10 @@
     </script>
 
 
+    {{-- quiz --}}
+    <link rel="stylesheet" href="/public/css/willbes/quiz.css">
+    <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
 
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
-
 @stop

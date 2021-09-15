@@ -18,8 +18,8 @@
 
         /************************************************************/
 
-        /* .sky {position:fixed;top:225px;right:15px;z-index:200;}
-        .sky a {display:block;margin-top:10px;} */
+        .sky {position:fixed;top:225px;right:15px;z-index:200;}
+        .sky a {display:block;margin-top:10px;}
 
         /*상단 애니메이션*/
         .wb_cts_top{position: relative;height: 899px;padding-top: 101px;background:url('https://static.willbes.net/public/images/promotion/2021/07/2282_after.jpg') 50% 0 repeat-x;}
@@ -111,14 +111,19 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <!-- <div class="sky" id="QuickMenu">
+        <div class="sky" id="QuickMenu">
+            {{--
             <a href="#curri01">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_sky01.png" alt="실전464">
             </a>
             <a href="#curri03">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_sky03.png" alt="새벽실저모의고사">
             </a>
-        </div> -->
+            --}}
+            <a href="#curri_quiz">
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2282_sky04.png" alt="덕후력퀴즈">
+            </a>
+        </div> 
 
         <div class="evtCtnsBox wb_cts_top">
             <div class="top_ani">
@@ -214,18 +219,21 @@
             @endif 
         </div>
 
-        <div class="evtCtnsBox wb_cts08">
-            @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
-                @if(empty($arr_promotion_params['quiz_id']) === false)
-                    <a href="javascript:void(0)" onclick="list_quiz('{{ $arr_promotion_params['quiz_id'] or '' }}'); return false;">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_08.jpg" alt="퀴즈테스트"/>
-                    </a>
+        <div class="evtCtnsBox wb_cts08" id="curri_quiz">
+            <div class="wrap">
+                @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
+                    @if(empty($arr_promotion_params['quiz_id']) === false)
+                        <a href="javascript:void(0)" onclick="list_quiz('{{ $arr_promotion_params['quiz_id'] or '' }}'); return false;">
+                            <img src="https://static.willbes.net/public/images/promotion/2021/09/2282_08.jpg" alt="퀴즈테스트"/>
+                            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2359" title="실전덕후단 464 덕후력 QUIZ" target="_blank" style="position: absolute;left: 27.3%;top: 78.3%;width: 39.57%;height: 8.9%;z-index: 2;"></a>
+                        </a>
+                    @else
+                        <img src="https://static.willbes.net/public/images/promotion/2021/09/2282_08.jpg" alt="퀴즈테스트"/>
+                    @endif
                 @else
-                    <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_08.jpg" alt="퀴즈테스트"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/09/2282_08.jpg" alt="퀴즈테스트"/>
                 @endif
-            @else
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_08.jpg" alt="퀴즈테스트"/>
-            @endif
+            </div>    
         </div>
 
         <!--퀴즈팝업-->

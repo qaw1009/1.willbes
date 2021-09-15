@@ -127,7 +127,7 @@ class Home extends \app\controllers\FrontController
             $data['new_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'New');
             $data['arr_main_banner'] = array_merge($this->_banner($s_cate_code), $this->_banner('0'));
             $data['lecture_update_info'] = $this->_getlectureUpdateInfo(10, $s_cate_code);
-            $data['new_product_book'] = $this->_getlistSalesProductBook(10, $s_cate_code);
+            $data['new_product_book'] = $this->_getlistSalesProductBook(20, $s_cate_code, ['wPublDate' => 'desc']);
         }
 
         $data['best_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? '4' : '8'), $s_cate_code, 'Best');
@@ -950,13 +950,11 @@ class Home extends \app\controllers\FrontController
      * 교재 조회
      * @param int $limit_cnt [조회건수]
      * @param string $cate_code
+     * @param string[] $order_by [ProdCode:등록순, wPublDate:교재 출판일순]
      * @return array|int
      */
-    private function _getlistSalesProductBook($limit_cnt = 5, $cate_code = '')
+    private function _getlistSalesProductBook($limit_cnt = 5, $cate_code = '', $order_by = ['P.ProdCode' => 'desc'])
     {
-        //$order_by = ['wPublDate' => 'desc'];
-        // 출판일 순 => 최근 등록순으로 수정
-        $order_by = ['P.ProdCode' => 'desc'];
         $arr_condition = [
             'EQ' => [
                 'SiteCode' => $this->_site_code,

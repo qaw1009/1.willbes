@@ -15,6 +15,8 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.5); border-radius:4px}
+
         /************************************************************/               
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/09/2347_top_bg.jpg) no-repeat center top}  
        
@@ -23,7 +25,6 @@
         .evt_02 {background:#fd637b}    
 
         .evt_05 {padding:50px 0;}
-
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">  
@@ -32,7 +33,7 @@
         </div>
 
         <div class="evtCtnsBox evt_01" data-aos="fade-right">
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2347_01.jpg" title="고민있는 수험생">
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2347_01.jpg" title="고민있는 수험생"  >
         </div>
 
         <form name="regi_form_register" id="regi_form_register">
@@ -44,8 +45,8 @@
             <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
             <input type="hidden" name="register_type" value="promotion" readonly="readonly"/>
         </form>
-        <div class="evtCtnsBox evt_02" data-aos="fade-left">
-            <div class="wrap"> 
+        <div class="evtCtnsBox evt_02" >
+            <div class="wrap" data-aos="fade-left"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2347_02.jpg" title="맛있는 간식이 듬뿍">
                 <a href="javascript:void(0)" onclick="javascript:fn_submit();" title="알림 신청하기" style="position: absolute;left: 7.29%;top: 85.59%;width: 41.93%;height: 6.49%;z-index: 2;"></a>
                 <a href="#reply" title="댓글달기" style="position: absolute;left: 51.29%;top: 85.59%;width: 41.93%;height: 6.49%;z-index: 2;"></a>

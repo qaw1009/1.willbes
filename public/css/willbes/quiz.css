@@ -1,3 +1,25 @@
+/*레이어팝업*/
+.Pstyle {
+    opacity: 0;
+    display: none;
+    position: relative;
+    width: auto;
+    background-color: #fff;
+    padding:10px;
+}
+.b-close {
+    position: absolute;
+    right: -30px;
+    top: 0px;
+    width:30px; height: 30px; line-height:30px;
+    display: inline-block;
+    cursor: pointer;
+    font-weight:bold;
+    text-align:center;
+    background:#000; color:#fff;
+}
+.Pstyle .content {height:auto; width:auto; min-width:500px; min-height:600px}
+
 span {vertical-align:auto}
 .eventPop {width:600px; margin:0 auto; font-size:14px; color:#333; line-height:1.5; padding:0 20px 50px; height:700px; overflow-y:auto;}
 .eventPop h3 {position:fixed; top:0; left:50%; margin-left:-300px; font-size:20px; border-bottom:2px solid #000; text-align:center; padding:15px 0; color:#2dda77; width:620px; background:#fff; z-index: 1;}

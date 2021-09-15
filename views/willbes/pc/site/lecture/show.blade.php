@@ -152,7 +152,7 @@
                         <div class="w-grid">
                             @if(empty($data['ProdBookData']) === false)
                                 @foreach($data['ProdBookData'] as $book_idx => $book_row)
-                                    <div class="w-sub">
+                                    <div class="w-sub overflow">
                                         <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
                                         <span class="w-subtit">{{ $book_row['ProdBookName'] }}</span>
                                         <span class="chk">
@@ -168,7 +168,7 @@
                                     </div>
                                 @endforeach
                             @else
-                                <div class="w-sub">{{ empty($data['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $data['ProdBookMemo'] }}</div>
+                                <div class="w-sub overflow">{{ empty($data['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $data['ProdBookMemo'] }}</div>
                             @endif
                         </div>
                     </div>

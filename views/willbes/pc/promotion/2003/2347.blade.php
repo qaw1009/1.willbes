@@ -16,11 +16,11 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         .evtCtnsBox .wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.5); border-radius:4px}
-        
+
         /************************************************************/               
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/09/2347_top_bg.jpg) no-repeat center top}  
        
-        .evt_01 {background:#f5f5f5}  
+        .evt_01 {background:url(https://static.willbes.net/public/images/promotion/2021/09/2347_01_bg.jpg) no-repeat center top}  
 
         .evt_02 {background:#fd637b}    
 
@@ -32,8 +32,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2347_top.jpg" title="무엇이든 물어보세요">
         </div>
 
-        <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2347_01.jpg" title="고민있는 수험생"  data-aos="fade-right">
+        <div class="evtCtnsBox evt_01" data-aos="fade-right">
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2347_01.jpg" title="고민있는 수험생"  >
         </div>
 
         <form name="regi_form_register" id="regi_form_register">

@@ -84,30 +84,7 @@
 
         .wb_cts09 {padding-bottom:100px;}
 
-        .emo_area {padding-bottom:100px;} 
-
-        /*레이어팝업*/
-        .Pstyle {
-            opacity: 0;
-            display: none;
-            position: relative;
-            width: auto;
-            background-color: #fff;
-            padding:10px;
-        }
-        .b-close {
-            position: absolute;
-            right: -30px;
-            top: 0px;
-            width:30px; height: 30px; line-height:30px;
-            display: inline-block;
-            cursor: pointer;
-            font-weight:bold;
-            text-align:center;
-            background:#000; color:#fff;
-        }
-        .Pstyle .content {height:auto; width:auto; min-width:500px; min-height:600px}
-
+        .emo_area {padding-bottom:100px;}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -225,7 +202,7 @@
                     @if(empty($arr_promotion_params['quiz_id']) === false)
                         <a href="javascript:void(0)" onclick="list_quiz('{{ $arr_promotion_params['quiz_id'] or '' }}'); return false;">
                             <img src="https://static.willbes.net/public/images/promotion/2021/09/2282_08.jpg" alt="퀴즈테스트"/>
-                            <a href="javascript:alert('Coming Soon!')" title="실전덕후단 464 덕후력 QUIZ" style="position: absolute;left: 27.3%;top: 78.3%;width: 39.57%;height: 8.9%;z-index: 2;"></a>
+                            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2359" target="_blank" title="실전덕후단 464 덕후력 QUIZ" style="position: absolute;left: 27.3%;top: 78.3%;width: 39.57%;height: 8.9%;z-index: 2;"></a>
                         </a>
                     @else
                         <img src="https://static.willbes.net/public/images/promotion/2021/09/2282_08.jpg" alt="퀴즈테스트"/>

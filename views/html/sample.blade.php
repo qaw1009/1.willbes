@@ -1,4 +1,5 @@
 <style type="text/css">
+
     a {text-decoration: none;}
     h1 {font-size:24px; font-weight:bold; height:60px; line-height:60px; border-bottom:4px double #000}
     ul {padding:0; margin:0}
@@ -14,6 +15,7 @@
     ul li a span {color:red; font-weight:bold}
     ul:after {content:""; display:block; clear:both}
     .c_both {content:""; display:block; clear:both; height:20px;}
+
 </style>
 
 <h1><a href="{{ site_url('/') }}" target="_blank">통합 HTML 퍼블리싱 페이지</a></h1>
@@ -29,14 +31,17 @@
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_v3') }}" target="_blank">통합메인-2020-01</a></li>
                 <li class="c_both"></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_cop_online_combine') }}" target="_blank">일반,경행,통합 메인</a></li> 
+                {{--
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_online') }}" target="_blank">경찰 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_adm_online') }}" target="_blank">경행경채 온라인 메인</a></li>
+                --}}
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_pro_online') }}" target="_blank">경찰승진 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_sea_online') }}" target="_blank">해양경찰 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_sea_special_online') }}" target="_blank">해양경찰특채 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_acad') }}" target="_blank">경찰학원 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">경찰 캠퍼스 안내</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_cop_online_combine') }}" target="_blank">일반,경행,통합 메인</a></li>  
+                 
                 <li class="w50"><a href="{{ site_url('/home/html/supporters') }}" target="_blank">광은 서포터즈</a></li>  
                 <li class="w50"><a href="{{ site_url('/home/html/management') }}" target="_blank">온라인 관리반 체험단</a></li> 
                 <li class="c_both"></li>

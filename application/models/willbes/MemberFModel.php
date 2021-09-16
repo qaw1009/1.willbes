@@ -643,8 +643,8 @@ class MemberFModel extends WB_Model
                 'Addr1' => element('Addr1', $input),
                 'TrustStatus' => $TrustStatus,
                 'InterestCode' => element('InterestCode', $input),
-                'GwIdx' => $this->session->userdata('gw_idx')
-
+                'GwIdx' => $this->session->userdata('gw_idx'),
+                'InterestCodeSub' => element('InterestCodeSub', $input)
             ];
 
             // lms_member_otherinfo 저장

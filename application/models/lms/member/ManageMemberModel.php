@@ -59,7 +59,7 @@ class ManageMemberModel extends WB_Model
             Mem.IsStatus,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType IN ('M','A') AND IsUse='Y' ) AS MobileCount,
-            c1.CcdName AS InterestName, 
+            c1.CcdName AS InterestName, ifnull(c2.CcdName, '') AS InterestSubName,
             IFNULL(Info.HanlimID, '') AS HanlimID, IFNULL(Info.ssamID, '') AS ssamID, Info.InterestCode AS interest,
             IFNULL((SELECT c2.CcdName FROM {$this->_table['ssam_info']} as si
                          LEFT JOIN {$this->_table['code']} as c2 ON si.SubjectCcd = c2.Ccd
@@ -73,6 +73,7 @@ class ManageMemberModel extends WB_Model
         $from = "FROM {$this->_table['member']} AS Mem 
             INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx
             LEFT JOIN {$this->_table['code']} AS c1 ON Info.InterestCode = c1.Ccd
+            LEFT JOIN {$this->_table['code']} AS c2 ON Info.InterestCodeSub = c2.Ccd
              ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -131,7 +132,7 @@ class ManageMemberModel extends WB_Model
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType IN ('M','A') AND IsUse='Y' ) AS MobileCount,
             (SELECT SiteName FROM {$this->_table['site']} WHERE SiteCode = Mem.SiteCode) AS SiteName,
             c1.CcdName AS CertName, 
-            c2.CcdName AS InterestName,
+            c2.CcdName AS InterestName, ifnull(c3.CcdName, '') AS InterestSubName,
             Info.HanlimID, Info.ssamID, Info.InterestCode AS interest            
             ";
 
@@ -139,6 +140,7 @@ class ManageMemberModel extends WB_Model
             INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx
             LEFT JOIN {$this->_table['code']} AS c1 ON Mem.CertifiedInfoTypeCcd = c1.Ccd
             LEFT JOIN {$this->_table['code']} AS c2 ON Info.InterestCode = c2.Ccd
+            LEFT JOIN {$this->_table['code']} AS c3 ON Info.InterestCodeSub = c3.Ccd
             ";
 
         $where = " WHERE Mem.MemIdx = {$memIdx} ";

@@ -95,8 +95,12 @@
                     if (Object.keys(add_columns).length > 0) {
                         //퀴즈그룹선택시
                         for (var i=0; i<Object.keys(add_columns).length; i++) {
-                            if (Object.keys(add_columns)[i] == arr_info_detail[i]['EqsqIdx']) {
-                                $(row).append('<td>' + arr_info_detail[i]['EqsqdQuestion'] + '</td>');
+                            if (typeof arr_info_detail[i] !== 'undefined') {
+                                if (Object.keys(add_columns)[i] == arr_info_detail[i]['EqsqIdx']) {
+                                    $(row).append('<td>' + arr_info_detail[i]['EqsqdQuestion'] + '</td>');
+                                }
+                            } else {
+                                $(row).append('<td></td>');
                             }
                         }
                     } else {

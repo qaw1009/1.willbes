@@ -1149,7 +1149,7 @@ class OrderListModel extends BaseOrderModel
             if ($data['LearnPatternCcd'] == $this->_learn_pattern_ccd['off_pack_lecture']) {
                 $arr_prod_name = array_pluck(json_decode($data['OrderSubProdData'], true), 'ProdName'); // 종합반일 경우 서브강좌명 추출
             } else {
-                $arr_prod_name[0] = $data['ProdName'];
+                $arr_prod_name[0] = get_var($data['ProdNameShort'], $data['ProdName']);
             }
 
             $cut_str = 16;  // 라인당 출력되는 상품명 길이
@@ -1299,12 +1299,15 @@ class OrderListModel extends BaseOrderModel
             }
             $data = element('0', $data);
 
+            // 출력상품명 설정
+            $_prod_name = get_var($data['ProdNameShortSub'], $data['ProdNameSub']);
+
             $cut_str = 16;  // 라인당 출력되는 상품명 길이
             $arr_line = [];
 
-            for($i = 0; $i < ceil(mb_strlen($data['ProdNameSub']) / $cut_str); $i++) {
+            for($i = 0; $i < ceil(mb_strlen($_prod_name) / $cut_str); $i++) {
                 $is_bold = $i == 0 ? 'true' : 'false';
-                $arr_line[] = ['Name' => trim(mb_substr($data['ProdNameSub'], $i * $cut_str, $cut_str)), 'Bold' => $is_bold];
+                $arr_line[] = ['Name' => trim(mb_substr($_prod_name, $i * $cut_str, $cut_str)), 'Bold' => $is_bold];
             }
 
             $data['OrderProdNameData'] = $arr_line;
@@ -1375,7 +1378,7 @@ class OrderListModel extends BaseOrderModel
      */
     public function getPrintCertSubLectureBaseSubProdData($order_idx, $order_prod_idx, $prod_code_sub)
     {
-        $column = 'O.OrderNo, M.MemName, SP.ProdName as ProdNameSub';
+        $column = 'O.OrderNo, M.MemName, SP.ProdName as ProdNameSub, SP.ProdNameShort as ProdNameShortSub';
 
         $from = '
             from ' . $this->_table['my_lecture'] . ' as ML 

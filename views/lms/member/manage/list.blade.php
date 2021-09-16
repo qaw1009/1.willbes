@@ -194,7 +194,12 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : 'InterestName', 'render' : function(data, type, row, meta){
-                            return data + (row.interest === '718009' ? '<br>('+row.SubjectName+')' : '') ;
+                            if(row.interest === '718009'){
+                                return data + '<br>('+row.SubjectName+')';
+                            } else if(row.interest === '718003' || row.interest === '718004'){
+                                return data + '<br>('+row.InterestSubName+')';
+                            }
+                            return data ;
                         }},
                     {'data' : 'MemIdx', 'render' : function(data,type,row,meta){
                             return '<a href="#" class="btn-view1 blue" data-idx="' + row.MemIdx + '">' + data + '</a>';

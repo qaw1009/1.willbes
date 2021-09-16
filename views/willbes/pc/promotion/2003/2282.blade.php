@@ -198,19 +198,9 @@
 
         <div class="evtCtnsBox wb_cts08" id="curri_quiz">
             <div class="wrap">
-                @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
-                    @if(empty($arr_promotion_params['quiz_id']) === false)
-                        <a href="javascript:void(0)" onclick="list_quiz('{{ $arr_promotion_params['quiz_id'] or '' }}'); return false;">
-                            <img src="https://static.willbes.net/public/images/promotion/2021/09/2282_08.jpg" alt="퀴즈테스트"/>
-                            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2359" target="_blank" title="실전덕후단 464 덕후력 QUIZ" style="position: absolute;left: 27.3%;top: 78.3%;width: 39.57%;height: 8.9%;z-index: 2;"></a>
-                        </a>
-                    @else
-                        <img src="https://static.willbes.net/public/images/promotion/2021/09/2282_08.jpg" alt="퀴즈테스트"/>
-                    @endif
-                @else
-                    <img src="https://static.willbes.net/public/images/promotion/2021/09/2282_08.jpg" alt="퀴즈테스트"/>
-                @endif
-            </div>    
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2282_08.jpg" alt="퀴즈테스트"/>
+                <a href="{{front_url('/promotion/index/cate/3019/code/2359')}}" target="_blank" title="실전덕후단 464 덕후력 QUIZ" style="position: absolute;left: 27.3%;top: 78.3%;width: 39.57%;height: 8.9%;z-index: 2;"></a>
+            </div>
         </div>
 
         <!--퀴즈팝업-->

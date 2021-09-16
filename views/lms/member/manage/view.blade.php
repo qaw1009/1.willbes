@@ -92,7 +92,9 @@
                 <tr>
                     <td>
                         {{ $data['InterestName'] }}
-                        @if($data['interest'] === '718009')
+                        @if($data['interest'] === '718003' || $data['interest'] === '718004')
+                            <br>({{$data['InterestSubName']}})
+                        @elseif($data['interest'] === '718009')
                             <br><button type="button" class="btn btn-default" id="view_ssam_info">추가정보</button>
                         @endif
                     </td>

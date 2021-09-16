@@ -154,6 +154,28 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="addInfo2" id="718004_info" style="display: none">
+                                <div>
+                                    <span class="tx-red">응시(예정)시험 *</span>
+                                    <select name="InterestCodeSub718004" title="">
+                                        <option value="">선택</option>
+                                        @foreach($interestCodeSub['744'] as $key => $value)
+                                            <option value="{{$key}}">{{$value}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="addInfo2" id="718003_info" style="display: none">
+                                <div>
+                                    <span class="tx-red">응시(예정)시험 *</span>
+                                    <select name="InterestCodeSub718003" title="">
+                                        <option value="">선택</option>
+                                        @foreach($interestCodeSub['745'] as $key => $value)
+                                            <option value="{{$key}}">{{$value}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class="tx-red mt10 err_msg" style="display: block;"></div>
                         </td>
                     </tr>
@@ -344,6 +366,12 @@
                     },
                     RegionCcd : {
                         ssam_region : true
+                    },
+                    InterestCodeSub718003 : {
+                        interestcodesub : true
+                    },
+                    InterestCodeSub718004 : {
+                        interestcodesub : true
                     }
                 },
                 messages : {
@@ -394,6 +422,12 @@
                     },
                     RegionCcd : {
                         ssam_region : "응시희망지역을 선택해주십시요."
+                    },
+                    InterestCodeSub718003 : {
+                        interestcodesub : "응시(예정)시험을 선택해주십시요."
+                    },
+                    InterestCodeSub718004 : {
+                        interestcodesub : "응시(예정)시험을 선택해주십시요."
                     }
                 },
                 invalidHandler: function(form, validator) {
@@ -409,7 +443,7 @@
                     var name = $element.attr("name");
                     if(name == 'Sex'){
                         var obj = $('input[name=MemName]');
-                    } else if(name == 'InterestCode' || name == 'SubjectCcd' || name == 'RegionCcd') {
+                    } else if(name == 'InterestCode' || name == 'SubjectCcd' || name == 'RegionCcd' || name == 'InterestCodeSub718003' || name == 'InterestCodeSub718004') {
                         var obj = $("input[name=int_temp]");
                     } else if(name == 'MailId' || name == 'MailDomain') {
                         var obj = $("input[name=mail_tmp]");
@@ -491,12 +525,17 @@
             });
 
             $.validator.addMethod("ssam_subject",function(value, element) {
-                if(value == ''){ return false};
+                if(value == ''){ return false; }
                 return true;
             });
 
             $.validator.addMethod("ssam_region",function(value, element) {
-                if(value == ''){ return false};
+                if(value == ''){ return false; }
+                return true;
+            });
+
+            $.validator.addMethod("interestcodesub",function(value, element) {
+                if(value == ''){ return false; }
                 return true;
             });
 
@@ -543,10 +582,14 @@
             }
 
             $('.interest').on('click', function(){
+                $('.addInfo2').hide();
+
                 if($("input[name='InterestCode']:checked").val() === '718009'){
                     $('#ssam_info').show();
-                } else {
-                    $('#ssam_info').hide();
+                } else if($("input[name='InterestCode']:checked").val() === '718004'){
+                    $('#718004_info').show();
+                } else if($("input[name='InterestCode']:checked").val() === '718003'){
+                    $('#718003_info').show();
                 }
             });
 

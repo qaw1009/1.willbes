@@ -31,7 +31,7 @@
         <div class="evtCtnsBox evt01">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2355_01.jpg" title="드림 패키지" data-aos="fade-left">
-                <a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/185708" target="_blank" title="패키지 신청하기" style="position: absolute; left: 22.5%; top: 90.29%; width: 54.82%; height: 5.33%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/185994" target="_blank" title="패키지 신청하기" style="position: absolute; left: 22.5%; top: 90.29%; width: 54.82%; height: 5.33%; z-index: 2;"></a>
             </div>
         </div>
 

@@ -101,7 +101,7 @@
             <div class="price">
                 <ul>
                     <li><input type="radio" id="y_pkg1" name="y_pkg" value="185929" data-sale-price="840000" onClick=""/> <label for="y_pkg1">84 만원<br>2022년 2차 PASS</label></li>
-                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="185932" data-sale-price="650000" onClick=""/> <label for="y_pkg2">95 만원<br>2022년 1차 PASS</label></li>
+                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="185932" data-sale-price="650000" onClick=""/> <label for="y_pkg2">65 만원<br>2022년 1차 PASS</label></li>
                 </ul>
             </div>
             <div class="ext01txt">

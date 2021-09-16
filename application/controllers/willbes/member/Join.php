@@ -93,6 +93,7 @@ class Join extends BaseMember
         $ssamsubject = $this->codeModel->getCcd('737');
         $ssamregion = $this->codeModel->getCcd('738');
         $ssamtake = $this->codeModel->getCcd('739');
+        $interestCodeSub = $this->codeModel->getCcdInArray(['744','745']);
 
         if($jointype === "655002") {
             // 핸드폰 sms 인증
@@ -155,7 +156,8 @@ class Join extends BaseMember
                     'interestCode' => $inerestCode,
                     'subject' => $ssamsubject,
                     'region' => $ssamregion,
-                    'take' => $ssamtake
+                    'take' => $ssamtake,
+                    'interestCodeSub' => $interestCodeSub
                 ]);
 
             } catch(Exception $e) {
@@ -217,7 +219,8 @@ class Join extends BaseMember
                     'interestCode' => $inerestCode,
                     'subject' => $ssamsubject,
                     'region' => $ssamregion,
-                    'take' => $ssamtake
+                    'take' => $ssamtake,
+                    'interestCodeSub' => $interestCodeSub
                 ]);
 
             } catch(Exception $e) {
@@ -400,7 +403,8 @@ class Join extends BaseMember
         $SiteCode = $this->session->userdata('join_sitecode');
         $SiteCode = (empty($SiteCode) == true) ? '2000' : $SiteCode;
         $input = array_merge($input, [
-            'SiteCode' => $SiteCode
+            'SiteCode' => $SiteCode,
+            'InterestCodeSub' => element('InterestCodeSub'.element('InterestCode', $input), $input)
         ]);
 
         // 실제 데이타 입력

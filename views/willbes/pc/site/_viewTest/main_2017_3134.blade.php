@@ -21,7 +21,7 @@
         .ssam .VisualBox .MaintabFlex span a:hover {
             background-color:rgba(255,255,255,.3); font-weight:bold
         }
-
+/*
         .ssam .noticeBanner {float:right;}
         .ssam .noticeBanner .title {border-bottom:2px solid #0c5dc0 !important; margin-bottom:17px}
         .ssam .noticeBanner .title span {background:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg1_on.png") no-repeat; width:99px; display:inline-block; height:36px !important; line-height:36px !important;text-align:center; font-size:14px; color:#fff; font-weight:bold}
@@ -41,6 +41,22 @@
         .ssam .noticeWrap li:last-child a.on {background:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg2_on.png") no-repeat}
 
         .ssam .noticeBox .List-Table {margin-top:20px !important;border-top:2px solid #0c5dc0 !important}
+        
+        */
+
+        .ssam .noticeBanner {float:right;}
+        .ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
+        .ssam .noticeBanner .bSlider {position:relative !important; width:540px;}
+        .ssam .noticeBanner .bSlider .HotnNew {width:540px; height:240px; overflow: hidden;}
+        .ssam .noticeBanner .bSlider .ctrbtn {position:absolute; top:-42px; left:110px}
+
+        .ssam .noticeTabs {height:293px; overflow:hidden;}
+        .ssam .noticeWrap li a {display:block; color:#474747 !important; background:#ededed; padding:0 20px !important; text-align:center; font-weight:bold; border:3px solid #ededed !important; border-radius:20px; font-size:18px; line-height:26px !important; height:32px !important; vertical-align:middle} 
+        .ssam .noticeWrap li a.on {border:3px solid #0c5dc0 !important; background:#fff; }
+
+        .ssam .noticeBox .List-Table {margin-top:20px !important;border-top:0 !important}
+
+ 
 
         .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
         .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
@@ -391,6 +407,30 @@
 
             $("#imgBannerRight").click(function (){
                 slidesImg.goToNextSlide();
+            });
+
+            // HOT & NEW
+            $(function() {
+                var hnnImg1 = $(".HotnNew").bxSlider({
+                    mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                    auto:true,
+                    speed:350,
+                    pause:4000,
+                    pager:false,
+                    controls:false,
+                    minSlides:2,
+                    maxSlides:2,
+                    slideWidth: 260,
+                    slideMargin:20,
+                    autoHover: true,
+                    moveSlides:2,
+                });
+                $("#HotnNewLeft").click(function (){
+                    hnnImg1.goToNextSlide();
+                });
+                $("#HotnNewRight").click(function (){
+                    hnnImg1.goToPrevSlide();
+                });        
             });
 
             //적중배너

@@ -1,11 +1,11 @@
 <div class="noticeTabs">
     <ul class="tabWrap noticeWrap two">
         <li><a href="#notice1" class="on">공지사항</a></li>
-        <li><a href="#notice2" class="">강의 업데이트</a></li>
+        <li><a href="#notice2">강의 업데이트</a></li>
     </ul>
     <div class="tabBox noticeBox">
         <div id="notice1" class="tabContent p_re">
-            <a href="{{front_url('/support/notice/index')}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+            <a href="{{front_url('/support/notice/index')}}" class="f_right btn-add"><img src="https://static.willbes.net/public/images/promotion/main/2018/icon_add.jpg" alt="더보기"></a>
             <ul class="List-Table">
                 @if(empty($data['notice']) === true)
                 <li><span>등록된 내용이 없습니다.</span></li>
@@ -23,11 +23,11 @@
             </ul>
         </div>
 
-        <div id="notice2" class="tabBox noticeBox p_re">   
+        <div id="notice2" class="tabBox noticeBox p_re">  
         
             <div class="tabContent p_re">      
                 <div class="lecup-Notice"><a href="https://ssam.willbes.net/support/notice/show?board_idx=351174&s_cate_code_disabled=Y"><span>공지</span>동영상강의 업데이트 일정 공지</a></div>
-                <a href="{{front_url('/updateLectureInfo')}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>            
+                <a href="{{front_url('/updateLectureInfo')}}" class="f_right btn-add"><img src="https://static.willbes.net/public/images/promotion/main/2018/icon_add.jpg" alt="더보기"></a>            
                 <ul class="List-Table List-Table2" style="padding-top:36px; height:260px; overflow:hidden;">
                 {{--<ul class="List-Table List-Table2">--}}
                     @if(empty($data['lecture_update_info']) === true)
@@ -50,17 +50,23 @@
 </div>
 
 <div class="noticeBanner">
-    <div class="title"><span>새소식</span></div>
-    <ul>
-        <li>
-            <div class="bSlider">
-                {!! banner_html(element('메인_서브배너_01', $data['arr_main_banner'])) !!}
-            </div>
-        </li>
-        <li>
-            <div class="bSlider">
-                {!! banner_html(element('메인_서브배너_02', $data['arr_main_banner'])) !!}
-            </div>
-        </li>
-    </ul>
+    <div class="title">HOT & NEW</div>
+    {{--
+    <div class="bSlider">
+        {!! banner_html(element('메인_서브배너_01', $data['arr_main_banner'])) !!}
+    </div>
+    --}}
+
+    <div class="bSlider">
+        <div class="HotnNew">
+            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
+            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>
+            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
+            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>
+        </div>
+        <div class="ctrbtn">
+            <a class="leftBtn" id="HotnNewLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>
+            <a class="rightBtn" id="HotnNewRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
+        </div>
+    </div>
 </div>

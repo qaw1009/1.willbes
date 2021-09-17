@@ -3,14 +3,13 @@
 
 <style type="text/css">
 .ssam .noticeBanner {float:right;}
-.ssam .noticeBanner .title {margin-bottom:17px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold; }
-.ssam .noticeBanner .bSlider {position:relative; width:540px;}
+.ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
+.ssam .noticeBanner .bSlider {position:relative; width:540px; }
 .ssam .noticeBanner .bSlider .HotnNew {width:540px; height:240px; overflow: hidden;}
 .ssam .noticeBanner .bSlider .ctrbtn {position:absolute; top:-50px; left:110px}
 
 
 .ssam .noticeTabs {height:293px; overflow:hidden;}
-.ssam .noticeWrap li {}
 .ssam .noticeWrap li a {display:block; color:#474747 !important; background:#ededed; padding:0 20px !important; text-align:center; font-weight:bold; border:3px solid #ededed !important; border-radius:20px; font-size:18px; line-height:26px !important; height:32px !important; vertical-align:middle} 
 .ssam .noticeWrap li a.on {border:3px solid #0c5dc0 !important; background:#fff; }
 
@@ -294,11 +293,12 @@ no-repeat 5px center}
     </div>
 
     <div class="Section mt40">
-        <div class="widthAuto">            
+        <div class="widthAuto">        
+
             <div class="noticeTabs">
                 <ul class="tabWrap noticeWrap two">
                     <li><a href="#notice1" class="on">공지사항</a></li>
-                    <li><a href="#notice2" class="">강의 업데이트</a></li>
+                    <li><a href="#notice2">강의 업데이트</a></li>
                 </ul>
 
                 <div class="tabBox noticeBox">
@@ -344,6 +344,7 @@ no-repeat 5px center}
                     </div>
                 </div>
             </div>
+
         </div>
     </div> 
 

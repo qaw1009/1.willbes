@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    퀴즈결과
+    퀴즈결과 (퀴즈완료)
 @stop
 
 @section('layer_header')
@@ -21,16 +21,20 @@
             </select>
             <button type="button" class="btn btn-sm btn-info btn-show-question ml-10">등록된 질문 보기</button>
         </div>
-    </div>
-        <div class="form-group form-group-sm" id="question_box" style="display: none;">
-            <div class="col-md-6 ml-15">
-                @forelse($add_columns as $key => $val)
-                    <li>{!! nl2br($val) !!}</li>
-                @empty
-                    "문제(그룹)명"을 선택해주세요.
-                @endforelse
-            </div>
+        <div class="form-inline text-right">
+            <button type="button" class="btn btn-sm btn-link btn-location">문항별 통계페이지 이동</button>
         </div>
+    </div>
+
+    <div class="form-group form-group-sm" id="question_box" style="display: none;">
+        <div class="col-md-6 ml-15">
+            @forelse($add_columns as $key => $val)
+                <li>{!! nl2br($val) !!}</li>
+            @empty
+                "문제(그룹)명"을 선택해주세요.
+            @endforelse
+        </div>
+    </div>
 
     <div class="form-group form-group-sm">
         <table id="_list_ajax_table" class="table table-bordered table-striped table-head-row2 form-table">
@@ -144,6 +148,11 @@
 
             $('.btn-show-question').on('click', function(event) {
                 $("#question_box").toggle();
+            });
+
+            $('.btn-location').on('click', function(event) {
+                var _replace_url = '{{ site_url('site/eventQuiz/quizStatsModal/'.$arr_base['eq_idx']) }}';
+                replaceModal(_replace_url,'');
             });
         });
     </script>

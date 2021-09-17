@@ -44,11 +44,10 @@
         
         */
 
-        .ssam .noticeBanner {float:right;}
+        .ssam .noticeBanner {float:right; position:relative;}
         .ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
-        .ssam .noticeBanner .bSlider {position:relative !important; width:540px;}
-        .ssam .noticeBanner .bSlider .HotnNew {width:540px; height:240px; overflow: hidden;}
-        .ssam .noticeBanner .bSlider .ctrbtn {position:absolute; top:-42px; left:110px}
+        .ssam .noticeBanner .bSlider {width:540px; height:240px; overflow: hidden;}
+        .ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:110px}
 
         .ssam .noticeTabs {height:293px; overflow:hidden;}
         .ssam .noticeWrap li a {display:block; color:#474747 !important; background:#ededed; padding:0 20px !important; text-align:center; font-weight:bold; border:3px solid #ededed !important; border-radius:20px; font-size:18px; line-height:26px !important; height:32px !important; vertical-align:middle} 

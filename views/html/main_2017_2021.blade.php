@@ -2,11 +2,10 @@
 @section('content')
 
 <style type="text/css">
-.ssam .noticeBanner {float:right;}
+.ssam .noticeBanner {float:right; position:relative;}
 .ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
-.ssam .noticeBanner .bSlider {position:relative; width:540px; }
-.ssam .noticeBanner .bSlider .HotnNew {width:540px; height:240px; overflow: hidden;}
-.ssam .noticeBanner .bSlider .ctrbtn {position:absolute; top:-50px; left:110px}
+.ssam .noticeBanner .bSlider {width:540px; height:240px; overflow: hidden;}
+.ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:110px}
 
 
 .ssam .noticeTabs {height:293px; overflow:hidden;}
@@ -331,18 +330,18 @@ no-repeat 5px center}
 
             <div class="noticeBanner">
                 <div class="title">HOT & NEW</div>
+                <div class="ctrbtn">
+                    <a class="leftBtn" id="HotnNewLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>
+                    <a class="rightBtn" id="HotnNewRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
+                </div>
                 <div class="bSlider">
                     <div class="HotnNew">
                         <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
                         <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>
                         <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
                         <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>
-                    </div>
-                    <div class="ctrbtn">
-                        <a class="leftBtn" id="HotnNewLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>
-                        <a class="rightBtn" id="HotnNewRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
-                    </div>
-                </div>
+                    </div>                    
+                </div>                
             </div>
 
         </div>

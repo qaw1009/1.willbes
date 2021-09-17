@@ -2,9 +2,9 @@
 @section('content')
 
 <style type="text/css">
-.ssam .noticeBanner {float:right; position:relative;}
+.ssam .noticeBanner {float:right;width:540px;position:relative;}
 .ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
-.ssam .noticeBanner .bSlider {width:540px; height:240px; overflow: hidden;}
+.ssam .noticeBanner .HotnNew {width:540px; height:240px; overflow: hidden;}
 .ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:110px}
 
 

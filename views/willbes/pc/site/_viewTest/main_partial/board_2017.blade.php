@@ -55,7 +55,7 @@
         <a class="leftBtn" id="HotnNewLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>
         <a class="rightBtn" id="HotnNewRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
     </div>
-    <div class="bSlider">
+    <div class="bSlider HotnNew">
         {!! banner_html(element('메인_서브배너_01', $data['arr_main_banner'])) !!}
     </div>
 </div>

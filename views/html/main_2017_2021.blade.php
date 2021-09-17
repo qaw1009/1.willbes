@@ -334,13 +334,11 @@ no-repeat 5px center}
                     <a class="leftBtn" id="HotnNewLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>
                     <a class="rightBtn" id="HotnNewRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
                 </div>
-                <div class="bSlider">
-                    <div class="HotnNew">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>
-                    </div>                    
+                <div class="bSlider HotnNew">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>                  
                 </div>                
             </div>
 
@@ -3237,7 +3235,7 @@ no-repeat 5px center}
         });			
     });
 
-    // HOT & NEW
+    /* HOT & NEW */
     $(function() {
         var hnnImg1 = $(".HotnNew").bxSlider({
             mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'

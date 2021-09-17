@@ -132,7 +132,7 @@
             </div>
         </div>
 
-        <div class="Section sec-prof mt40">
+        <div class="Section sec-prof">
             @include('willbes.pc.site.main_partial.professor_hot_clip_' . $__cfg['SiteCode'])
         </div>
 
@@ -408,27 +408,6 @@
             // }).mouseleave(function (){
             //     subslidesImg.startAuto();
             // });
-
-            $('.prof-Tab').each(function() {
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
-                $content = $($active[0].hash);
-                $links.not($active).each(function(){
-                    $(this.hash).hide()
-                });
-
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                    $active.removeClass('active');
-                    $content.hide();
-                    $active = $(this);
-                    $content = $(this.hash);
-                    $active.addClass('active');
-                    $content.show();
-                    e.preventDefault();
-                });
-            });
         });
     </script>
 @stop

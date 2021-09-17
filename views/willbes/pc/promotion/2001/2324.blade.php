@@ -42,7 +42,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2324_sky1.png" alt="학원강좌" >
             </a>  
             --}}
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2330" target="_blank"> 
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2360" target="_blank"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2324_sky2.png" alt="경찰pass" >
             </a>          
         </div> 

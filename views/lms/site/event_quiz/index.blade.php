@@ -52,28 +52,18 @@
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">
                 {!! csrf_field() !!}
                 <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
-                    <colgroup>
-                        <col style="width:4%">
-                        <col style="width:10%">
-                        <col style="width:5%">
-                        <col style="">
-                        <col style="width:20%">
-                        <col style="width:7%">
-                        <col style="width:7%">
-                        <col style="width:10%">
-                        <col style="width:10%">
-                    </colgroup>
                     <thead class="bg-white-gray">
                     <tr>
-                        <th class="text-center">NO</th>
-                        <th class="text-center">사이트</th>
-                        <th class="text-center">퀴즈코드</th>
-                        <th class="text-center">퀴즈명</th>
-                        <th class="text-center">기간</th>
-                        <th class="text-center">결과</th>
-                        <th class="text-center">사용유무</th>
-                        <th class="text-center">등록자</th>
-                        <th class="text-center">등록일</th>
+                        <th>NO</th>
+                        <th>사이트</th>
+                        <th>퀴즈코드</th>
+                        <th>퀴즈명</th>
+                        <th>기간</th>
+                        <th>결과(완료건수)</th>
+                        <th>사용유무</th>
+                        <th>등록자</th>
+                        <th>등록일</th>
+                        <th>문항별 회원통계</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -111,35 +101,38 @@
                     }
                 },
                 columns: [
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                    {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'SiteName', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                    {'data' : 'SiteName', 'render' : function(data, type, row, meta) {
                             return data;
                         }},
-                    {'data' : 'EqIdx', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                    {'data' : 'EqIdx', 'render' : function(data, type, row, meta) {
                             return data;
                         }},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.EqIdx + '"><u class="blue">' + row.Title + '</u></a>';
                         }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            var date = row.StartDatm + ' / ' + row.EndDatm;
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            var date = row.StartDay + ' ~ ' + row.EndDay;
                             return date;
                         }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                    {'data' : null, 'render' : function(data, type, row, meta) {
                             var AnswerCnt = row.CNT > 0 ? '<button class="btn btn-sm btn-primary btn-show-answer" data-idx="' + row.EqIdx + '">' + row.CNT + '</button>' : row.CNT;
                             return AnswerCnt;
                         }},
-                    {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                    {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             var UseYn = (row.IsUse === 'Y') ? '<span>사용</span>' : '<span class="red">미사용</span>';
                             return UseYn;
                         }},
-                    {'data' : 'RegAdminName', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                    {'data' : 'RegAdminName', 'render' : function(data, type, row, meta) {
                             return data;
                         }},
-                    {'data' : 'RegDatm', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                    {'data' : 'RegDatm', 'render' : function(data, type, row, meta) {
                             return data;
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '<a href="javascript:void(0);" class="btn-show-stats" data-idx="' + row.EqIdx + '"><u class="blue">통계</u></a>';
                         }},
                 ]
             });
@@ -152,6 +145,13 @@
             $list_table.on('click', '.btn-show-answer', function() {
                 $('.btn-show-answer').setLayer({
                     "url" : "{{ site_url('site/eventQuiz/quizAnswerModal/') }}" + $(this).data('idx'),
+                    width : "1600"
+                });
+            });
+
+            $list_table.on('click', '.btn-show-stats', function() {
+                $('.btn-show-stats').setLayer({
+                    "url" : "{{ site_url('site/eventQuiz/quizStatsModal/') }}" + $(this).data('idx'),
                     width : "1600"
                 });
             });

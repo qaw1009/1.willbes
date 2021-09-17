@@ -458,4 +458,89 @@ class EventQuiz extends \app\controllers\BaseController
         $this->excel->exportExcel($file_name, $list, $headers);
     }
 
+    /**
+     * 문항별 회원통계
+     * @param array $params
+     */
+    public function quizStatsModal($params = [])
+    {
+        if (empty($params[0]) === true) {
+            show_alert('잘못된 접근 입니다.', '/');
+        }
+
+        //퀴즈 그룹 조회
+        $arr_base['eq_idx'] = $params[0];
+
+        $selectBoxData = $this->eventQuizModel->listAllEventQuizSet($arr_base['eq_idx']);
+        if(empty($selectBoxData) === true){
+            show_alert('잘못된 접근 입니다.', '/');
+        }
+
+        $this->load->view('site/event_quiz/quiz_stats_modal', [
+            'arr_base' => $arr_base
+            ,'arr_selectbox_data' => $selectBoxData
+        ]);
+    }
+
+    public function lisAjaxQuizStatsModal()
+    {
+        $arr_input = $this->_reqP(null);
+        $list = [];
+
+        $arr_condition = [
+            'EQ' => [
+                'q.EqIdx' => element('search_eq_idx', $arr_input)
+                ,'qs.EqsIdx' => element('search_eqs_idx', $arr_input)
+            ],
+        ];
+
+        $order_by = array_merge(['qs.EqsIdx' => 'asc'],[element('search_orderby', $arr_input) => 'desc']);
+        $count = $this->eventQuizModel->listQuizStatsMember(true,$arr_condition);
+        if ($count > 0) {
+            $list = $this->eventQuizModel->listQuizStatsMember(false, $arr_condition, $this->input->post('length'), $this->input->post('start'), $order_by);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    /**
+     * 엑셀 다운로드
+     */
+    public function statsExcel($params = [])
+    {
+        if (empty($params[0]) === true) {
+            show_alert('잘못된 접근 입니다.', '/');
+        }
+        $arr_input = $this->_reqP(null);
+        $search_eqs_idx = element('search_eqs_idx', $arr_input);
+
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
+        $file_name = '문항별회원통계_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
+        $headers = ['문제(그룹)명', '이름', '아이디', '완료여부', '질문개수', '문제푼개수', '정답개수', '오답개수'];
+
+        $order_by = array_merge(['qs.EqsIdx' => 'asc'],[element('search_orderby', $arr_input) => 'desc']);
+        $arr_condition = [
+            'EQ' => [
+                'q.EqIdx' => $params[0]
+                ,'qs.EqsIdx' => $search_eqs_idx
+            ],
+        ];
+        $list = $this->eventQuizModel->listQuizStatsMember('excel', $arr_condition, null, null, $order_by);
+
+        $download_query = $this->eventQuizModel->getLastQuery();
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
+            show_alert('로그 저장 중 오류가 발생하였습니다.','back');
+        }
+
+        // export excel
+        $this->load->library('excel');
+        $this->excel->exportExcel($file_name, $list, $headers);
+    }
 }

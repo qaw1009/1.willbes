@@ -249,6 +249,15 @@ class EventQuizModel extends WB_Model
         return $this->_conn->query('select '.$column .$from .$where)->row_array();
     }
 
+    /**
+     * 퀴즈결과 리스트
+     * @param bool $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
     public function listQuizAnswerMember($is_count = true, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
@@ -283,6 +292,74 @@ class EventQuizModel extends WB_Model
             FROM {$this->_table['event_quiz']} AS a
             INNER JOIN {$this->_table['event_quiz_set']} AS b ON a.EqIdx = b.EqIdx AND b.IsStatus = 'Y'
             INNER JOIN {$this->_table['event_quiz_member_answer']} AS qm ON a.EqIdx = qm.EqIdx AND b.EqsIdx = qm.EqsIdx AND qm.IsFinish = 'Y'
+            INNER JOIN {$this->_table['member']} AS m ON qm.MemIdx = m.MemIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 문항별 회원통계
+     * @param bool $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listQuizStatsMember($is_count = true, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $add_column = "
+                ,(
+                    SELECT COUNT(*)
+                    FROM {$this->_table['event_quiz_set_question']} AS a
+                    WHERE qs.EqsIdx = a.EqsIdx AND a.IsStatus = 'Y'
+                ) AS CountQuestion #'질문개수'
+                ,(
+                    SELECT COUNT(*)
+                    FROM {$this->_table['event_quiz_member_answer_detail']} AS qmd
+                    WHERE qm.QmIdx = qmd.QmIdx
+                ) AS CountMemberAnswer #'문제푼개수'
+                ,(
+                    SELECT COUNT(*)
+                    FROM {$this->_table['event_quiz_member_answer_detail']} AS qmd
+                    INNER JOIN {$this->_table['event_quiz_set_question']} AS sq ON qmd.EqsqIdx = sq.EqsqIdx
+                    WHERE qm.QmIdx = qmd.QmIdx
+                    AND 'Y' = IF(LOCATE(qmd.Answer , sq.RightAnswer), 'Y', 'N')
+                ) AS CountMemberRightAnswer #'정답개수'
+                ,(
+                    SELECT COUNT(*)
+                    FROM {$this->_table['event_quiz_member_answer_detail']} AS qmd
+                    INNER JOIN {$this->_table['event_quiz_set_question']} AS sq ON qmd.EqsqIdx = sq.EqsqIdx
+                    WHERE qm.QmIdx = qmd.QmIdx
+                    AND 'N' = IF(LOCATE(qmd.Answer , sq.RightAnswer), 'Y', 'N')
+                ) AS CountMemberWrongAnswer #'오답개수'
+            ";
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            if ($is_count == 'excel') {
+                $column = "qs.EqsGroupTitle, m.MemName, m.MemId, IF(qm.IsFinish = 'Y','완료','미완료') AS FinishType" . $add_column;
+            } else {
+                $column = "
+                    q.Title, qm.EqsIdx, qm.MemIdx, m.MemId, m.MemName, qm.IsFinish, IF(qm.IsFinish = 'Y','완료','미완료') AS FinishType
+                    ,CONCAT(qs.EqsGroupTitle,' (',(SELECT COUNT(*) FROM lms_event_quiz_set_question AS a WHERE qs.EqsIdx = a.EqsIdx AND a.IsStatus = 'Y'),')') AS EqsGroupTitle
+                    " . $add_column;
+                $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            }
+        }
+
+        $from = "
+            FROM {$this->_table['event_quiz']} AS q
+            INNER JOIN {$this->_table['event_quiz_set']} AS qs ON q.EqIdx = qs.EqIdx
+            INNER JOIN {$this->_table['event_quiz_member_answer']} AS qm ON qs.EqIdx = qm.EqIdx AND qs.EqsIdx = qm.EqsIdx
             INNER JOIN {$this->_table['member']} AS m ON qm.MemIdx = m.MemIdx
         ";
 

@@ -27,22 +27,22 @@
         .evt03 .gobtn a {display:block; color:#fff; background:#37b5ff; font-size:26px}
         .evt03 .gobtn a:hover {background:#000}
         .evt04 {background:#f1f1f1}
-        .evt04 a {display:block; position:absolute; left: 81.52%; width: 15.09%; height: 60px; line-height:60px; border-radius:30px; color:#fff; background:#1c5f89; font-size:24px; z-index: 2;}
+        .evt04 a {display:block; position:absolute; left: 78.39%; width: 13.39%; height: 56px; line-height:56px; border-radius:30px; color:#fff; background:#1c5f89; font-size:22px; z-index: 2;}
         .evt04 a:hover {background:#37b5ff}
-        .evt04 a:nth-of-type(1) {top:14.78%;}
-        .evt04 a:nth-of-type(2) {top:21.88%;}
-        .evt04 a:nth-of-type(3) {top:28.74%;}
-        .evt04 a:nth-of-type(4) {top:34.91%;}
-        .evt04 a:nth-of-type(5) {top:41.49%;}
-        .evt04 a:nth-of-type(6) {top:47.11%;}
-        .evt04 a:nth-of-type(7) {top:52.83%;}
-        .evt04 a:nth-of-type(8) {top:58.3%;}
-        .evt04 a:nth-of-type(9) {top:64.02%;}
-        .evt04 a:nth-of-type(10) {top:69.75%;}
-        .evt04 a:nth-of-type(11) {top:75.47%;}
-        .evt04 a:nth-of-type(12) {top:81.08%;}
-        .evt04 a:nth-of-type(13) {top:86.6%;}
-        .evt04 a:nth-of-type(14) {top:92.38%;}
+        .evt04 a:nth-of-type(1) {top:15.56%}
+        .evt04 a:nth-of-type(2) {top:22.47%;}
+        .evt04 a:nth-of-type(3) {top:28.97%;}
+        .evt04 a:nth-of-type(4) {top:35%;}
+        .evt04 a:nth-of-type(5) {top:41.28%;}
+        .evt04 a:nth-of-type(6) {top:46.78%;}
+        .evt04 a:nth-of-type(7) {top:52.25%;}
+        .evt04 a:nth-of-type(8) {top:57.54%;}
+        .evt04 a:nth-of-type(9) {top:63.12%;}
+        .evt04 a:nth-of-type(10) {top:68.59%;}
+        .evt04 a:nth-of-type(11) {top:74.09%;}
+        .evt04 a:nth-of-type(12) {top:79.56%;}
+        .evt04 a:nth-of-type(13) {top:84.89%;}
+        .evt04 a:nth-of-type(14) {top:90.47%;}
         .evt05 {background:#d8d8d8}
 
         .slide_con {position:relative; width:1121px; margin:0 auto; padding-top:293px}

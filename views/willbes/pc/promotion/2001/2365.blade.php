@@ -13,6 +13,7 @@
         }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        br { font-family:dotum;} 
         
         /************************************************************/      
 

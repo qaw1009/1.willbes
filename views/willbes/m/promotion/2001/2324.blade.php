@@ -49,7 +49,7 @@
     <div class="evtCtnsBox" data-aos="fade-right">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2021/08/2324m_02.jpg" alt="헌법 학습"/>
-            <a href="https://police.willbes.net/m/promotion/index/cate/3001/code/2330" title="pc페이지로 이동" target="_blank" style="position: absolute;left: 10.42%;top: 74.69%;width: 78.89%;height: 14.95%;z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/promotion/index/cate/3001/code/2360" title="pc페이지로 이동" target="_blank" style="position: absolute;left: 10.42%;top: 74.69%;width: 78.89%;height: 14.95%;z-index: 2;"></a>
         </div>
     </div>
 

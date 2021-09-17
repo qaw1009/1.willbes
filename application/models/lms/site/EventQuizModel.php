@@ -54,7 +54,7 @@ class EventQuizModel extends WB_Model
                 ,(
                     SELECT COUNT(*) AS cnt
                     FROM {$this->_table['event_quiz_member_answer']} AS qm
-                    WHERE qm.EqIdx = A.EqIdx
+                    WHERE qm.EqIdx = A.EqIdx AND qm.IsFinish = 'Y'
                 ) AS CNT
             ";
 

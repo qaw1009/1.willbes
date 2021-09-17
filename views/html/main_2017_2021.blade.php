@@ -2,25 +2,18 @@
 @section('content')
 
 <style type="text/css">
-.ssam .noticeBanner {float:right;}
-.ssam .noticeBanner .title {border-bottom:2px solid #0c5dc0 !important; margin-bottom:17px}
-.ssam .noticeBanner .title span {background:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg1_on.png") no-repeat; width:99px; display:inline-block; height:36px !important; line-height:36px !important;text-align:center; font-size:14px; color:#fff; font-weight:bold}
-.ssam .noticeBanner li {width:260px; height:240px; overflow:hidden; float:left; border-radius:15px; box-shadow:0 7px 5px rgba(0,0,0,.1);}
-.ssam .noticeBanner li:first-child {margin-right:20px}
-.ssam .noticeBanner:after {content:''; display:block; clear:both}
+.ssam .noticeBanner {float:right;width:540px;position:relative;}
+.ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
+.ssam .noticeBanner .HotnNew {width:540px; height:240px; overflow: hidden;}
+.ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:110px}
+
 
 .ssam .noticeTabs {height:293px; overflow:hidden;}
-.ssam .noticeWrap li {position:relative;}
-.ssam .noticeWrap li:first-child {width:99px;}
-.ssam .noticeWrap li:last-child {width:129px;}
-.ssam .noticeWrap li a {border:0 !important; display:block; height:36px !important; line-height:36px !important; position:absolute; z-index: 1; color:#fff !important; padding:0; text-align:center; left:0; font-weight:bold}   
-.ssam .noticeWrap li:first-child a {background:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg1_off.png") no-repeat;}
-.ssam .noticeWrap li:last-child a {background:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg2_off.png") no-repeat; left:-29px}
-.ssam .noticeWrap li a.on {z-index: 2;}
-.ssam .noticeWrap li:first-child a.on {background:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg1_on.png") no-repeat;}
-.ssam .noticeWrap li:last-child a.on {background:url("https://static.willbes.net/public/images/promotion/main/2018/tab_bg2_on.png") no-repeat}
+.ssam .noticeWrap li a {display:block; color:#474747 !important; background:#ededed; padding:0 20px !important; text-align:center; font-weight:bold; border:3px solid #ededed !important; border-radius:20px; font-size:18px; line-height:26px !important; height:32px !important; vertical-align:middle} 
+.ssam .noticeWrap li a.on {border:3px solid #0c5dc0 !important; background:#fff; }
 
-.ssam .noticeBox .List-Table {margin-top:20px !important;border-top:2px solid #0c5dc0 !important}
+
+.ssam .noticeBox .List-Table {margin-top:20px !important;border-top:0 !important}
 
 .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
 .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
@@ -299,16 +292,17 @@ no-repeat 5px center}
     </div>
 
     <div class="Section mt40">
-        <div class="widthAuto">            
+        <div class="widthAuto">        
+
             <div class="noticeTabs">
                 <ul class="tabWrap noticeWrap two">
                     <li><a href="#notice1" class="on">공지사항</a></li>
-                    <li><a href="#notice2" class="">강의 업데이트</a></li>
+                    <li><a href="#notice2">강의 업데이트</a></li>
                 </ul>
 
                 <div class="tabBox noticeBox">
                     <div id="notice1" class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                        <a href="#none" class="f_right btn-add"><img src="https://static.willbes.net/public/images/promotion/main/2018/icon_add.jpg" alt="더보기"></a>
                         <ul class="List-Table">
                             <li><a href="#none"><span>HOT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
                             <li><a href="#none"><span>HOT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
@@ -321,7 +315,7 @@ no-repeat 5px center}
                     </div>
                     <div id="notice2" class="tabContent p_re">
                         <div class="lecup-Notice"><a href="#none"><span>공지</span>동영상강의 업데이트 일정 공지</a></div>
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                        <a href="#none" class="f_right btn-add"><img src="https://static.willbes.net/public/images/promotion/main/2018/icon_add.jpg" alt="더보기"></a>
                         <ul class="List-Table List-Table2" style="padding-top:36px; height:260px; overflow:hidden;">
                             <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> [인강전용] 2020 확률과 통계 문제풀이 - 수강생용 </a></li>
                             <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 - 직강 복습용 </a></li>
@@ -335,27 +329,19 @@ no-repeat 5px center}
             </div>
 
             <div class="noticeBanner">
-                <div class="title"><span>새소식</span></div>
-                <ul>
-                    <li>
-                        <div class="bSlider">
-                            <div class="slider">
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240.jpg" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240.jpg" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240.jpg" alt="배너명"></a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="bSlider">
-                            <div class="slider">
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240.jpg" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240.jpg" alt="배너명"></a></div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                <div class="title">HOT & NEW</div>
+                <div class="ctrbtn">
+                    <a class="leftBtn" id="HotnNewLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>
+                    <a class="rightBtn" id="HotnNewRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
+                </div>
+                <div class="bSlider HotnNew">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>                  
+                </div>                
             </div>
+
         </div>
     </div> 
 
@@ -3247,6 +3233,30 @@ no-repeat 5px center}
         $("#imgBannerRight").click(function (){
             slidesImg.goToNextSlide();
         });			
+    });
+
+    /* HOT & NEW */
+    $(function() {
+        var hnnImg1 = $(".HotnNew").bxSlider({
+            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+            auto:true,
+            speed:350,
+            pause:4000,
+            pager:false,
+            controls:false,
+            minSlides:2,
+            maxSlides:2,
+            slideWidth: 260,
+            slideMargin:20,
+            autoHover: true,
+            moveSlides:2,
+        });
+        $("#HotnNewLeft").click(function (){
+            hnnImg1.goToNextSlide();
+        });
+        $("#HotnNewRight").click(function (){
+            hnnImg1.goToPrevSlide();
+        });        
     });
 
     //교수진

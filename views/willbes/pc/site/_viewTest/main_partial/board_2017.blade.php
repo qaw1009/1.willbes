@@ -59,10 +59,13 @@
 
     <div class="bSlider">
         <div class="HotnNew">
+            {!! banner_html(element('메인_서브배너_01', $data['arr_main_banner'])) !!}
+            {{--
             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>
             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>
+            --}}
         </div>
         <div class="ctrbtn">
             <a class="leftBtn" id="HotnNewLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>

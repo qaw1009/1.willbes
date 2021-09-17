@@ -22,9 +22,18 @@
             background-color:rgba(255,255,255,.3); font-weight:bold
         }
 
-        .ssam .noticeTabs .noticeBox .lecup-Notice {position:absolute; top:0; width:100%; z-index:2; border-bottom:1px solid #e3e3e3;}
-        .ssam .noticeTabs .noticeBox .lecup-Notice a {display:block; height:36px; line-height:36px; font-size:13px}
-        .ssam .noticeTabs .noticeBox .lecup-Notice a span {background: #0c5dc0; color: #fff; padding: 0 10px; border-radius: 10px; margin-right: 5px;}
+        .ssam .noticeBanner {float:right; position:relative;}
+        .ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
+        .ssam .noticeBanner .HotnNew {width:540px; height:240px; overflow: hidden;}
+        .ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:110px}
+
+        .ssam .noticeTabs {height:293px; overflow:hidden;}
+        .ssam .noticeWrap li a {display:block; color:#474747 !important; background:#ededed; padding:0 20px !important; text-align:center; font-weight:bold; border:3px solid #ededed !important; border-radius:20px; font-size:18px; line-height:26px !important; height:32px !important; vertical-align:middle}
+        .ssam .noticeWrap li a.on {border:3px solid #0c5dc0 !important; background:#fff; }
+
+        .ssam .noticeBox .List-Table {margin-top:20px !important;border-top:0 !important}
+
+
 
         .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
         .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}

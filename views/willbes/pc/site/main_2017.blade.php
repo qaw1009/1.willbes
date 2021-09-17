@@ -386,6 +386,30 @@
                 slidesImg.goToNextSlide();
             });
 
+            // HOT & NEW
+            $(function() {
+                var hnnImg1 = $(".HotnNew").bxSlider({
+                    mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                    auto:true,
+                    speed:350,
+                    pause:4000,
+                    pager:false,
+                    controls:false,
+                    minSlides:2,
+                    maxSlides:2,
+                    slideWidth: 260,
+                    slideMargin:20,
+                    autoHover: true,
+                    moveSlides:2,
+                });
+                $("#HotnNewLeft").click(function (){
+                    hnnImg1.goToNextSlide();
+                });
+                $("#HotnNewRight").click(function (){
+                    hnnImg1.goToPrevSlide();
+                });        
+            });
+
             //적중배너
             var subslidesImg = $(".SubtabSlider").bxSlider({
                 mode:'horizontal',

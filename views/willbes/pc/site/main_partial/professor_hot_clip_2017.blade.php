@@ -97,7 +97,30 @@
         closeWin('youtube');
     }
 
-    /*교수 롤링
+    /*
+    $('.prof-Tab').each(function() {
+        var $active, $content, $links = $(this).find('a');
+        $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+        $active.addClass('active');
+        $content = $($active[0].hash);
+        $links.not($active).each(function(){
+            $(this.hash).hide()
+        });
+
+        // Bind the click event handler
+        $(this).on('click', 'a', function(e){
+            $active.removeClass('active');
+            $content.hide();
+            $active = $(this);
+            $content = $(this.hash);
+            $active.addClass('active');
+            $content.show();
+            e.preventDefault();
+        });
+    });
+    */
+
+    /*교수 롤링*/
     $(function(){ 
         var profslidesImg = $(".prof-Tab-Wrap").bxSlider({
             mode:'fade',
@@ -113,5 +136,5 @@
                 $("#profRollingSlider").css("visibility", "visible").animate({opacity:1}); 
             }
         });	   		
-    });*/
+    });
 </script>

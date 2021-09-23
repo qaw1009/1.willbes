@@ -31,7 +31,8 @@ class OffPackage extends \app\controllers\FrontController
         if($class_type === 'offpackage') {
             $_study_apply_ccds = ['654001','654002', '654003']; //온라인 접수, 방문+온라인 : TODO 방문접수 까지 추가 (2019.04.05 - 최진영 차장 요청)
             $_view_page = 'site/off_pack_lecture/index';
-            $_pack_type_ccds = ['648001','648002']; //일반형, 선택형
+            //$_pack_type_ccds = ['648001','648002']; //일반형, 선택형
+            $_pack_type_ccds = null;    // TODO 모든 유형 추출 2021.09.08 한주연대리 요청건
         } else {    //OffVisitPackage
             $_study_apply_ccds = ['654001', '654003']; //방문접수, 방문+온라인
             $_view_page = 'site/off_visit/package_index';
@@ -96,7 +97,6 @@ class OffPackage extends \app\controllers\FrontController
         }
 
         $list= $this->packageFModel->listSalesProduct($this->_learn_pattern,false,$arr_condition,null,null,$order_by);
-        //var_dump($list);
 
         foreach ($list as $idx => $row) {
             $list[$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'] , true);

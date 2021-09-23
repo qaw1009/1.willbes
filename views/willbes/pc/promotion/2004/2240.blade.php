@@ -119,7 +119,7 @@
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_sky.png" alt="7월 new"></a>
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky2.png" alt="새벽모의고사"></a>
-            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1359" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky3.png" alt="신기훈 t"></a>
+            <a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/2021/08/2241_sky3.png" alt="신기훈 t"></a>
             <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605001&subject_idx=1254&prof_idx=50500" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/08/2240_sky4.png" alt="한덕현 t"></a>
         </div>
 
@@ -297,14 +297,14 @@
                 </div>
             </div>
         </section>  
-
+        {{--
         <section class="evtCtnsBox wb_cts11" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2240_11.jpg" alt="교수진"/>
                 <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1359" target="_blank" title="무료특강 신청하기" style="position: absolute; left: 37.86%; top: 84.96%; width: 24.46%; height: 6.17%; z-index: 2;"></a>
             </div>
-        </section>    
-
+        </section>   
+        --}}
         <div class="evtCtnsBox wb_cts_notice">
             <div class="wb_tipBox">
             <ul class="tab02">

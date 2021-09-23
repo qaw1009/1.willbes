@@ -1,6 +1,6 @@
 <div class="content">
     <div class="eventPop NSK">
-        <h3 class="NSK-Black">DAILY QUIZ</h3>
+        <h3 class="NSK-Black">DAILY QUIZ @if(empty($list_quiz) === false && $list_quiz[0]['IsEventQuiz'] == 'N')<span class="tx-red">(이벤트가 종료되었습니다.)</span>@endif</h3>
         <div class="mt80">
             <ul class="evt-pop-box01">
                 <li>직전 퀴즈에 참여해 주셔야 다음 퀴즈에 참여하실 수 있습니다.</li>

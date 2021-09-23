@@ -2,16 +2,16 @@
 @section('content')
 
 <style type="text/css">
-.ssam .noticeBanner {float:right;width:540px;position:relative;}
+.ssam .noticeBanner {float:right; width:550px; position:relative;}
 .ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
-.ssam .noticeBanner .HotnNew {width:540px; height:240px; overflow: hidden;}
+.ssam .noticeBanner .bx-wrapper {max-width:550px !important; }
+.ssam .noticeBanner .HotnNew {height:250px !important; overflow: hidden;}
+.ssam .noticeBanner .HotnNew img {display:block; border-radius:10px; box-shadow:0 5px 5px rgba(0,0,0,.2); margin-bottom:10px}
 .ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:110px}
-
 
 .ssam .noticeTabs {height:293px; overflow:hidden;}
 .ssam .noticeWrap li a {display:block; color:#474747 !important; background:#ededed; padding:0 20px !important; text-align:center; font-weight:bold; border:3px solid #ededed !important; border-radius:20px; font-size:18px; line-height:26px !important; height:32px !important; vertical-align:middle} 
-.ssam .noticeWrap li a.on {border:3px solid #0c5dc0 !important; background:#fff; }
-
+.ssam .noticeWrap li a.on {border:3px solid #0c5dc0 !important; background:#fff;}
 
 .ssam .noticeBox .List-Table {margin-top:20px !important;border-top:0 !important}
 
@@ -339,7 +339,7 @@ no-repeat 5px center}
                     <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>
                     <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
                     <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>                  
-                </div>                
+                </div>              
             </div>
 
         </div>

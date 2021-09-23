@@ -31,9 +31,7 @@
         .ssam .noticeWrap li a {display:block; color:#474747 !important; background:#ededed; padding:0 20px !important; text-align:center; font-weight:bold; border:3px solid #ededed !important; border-radius:20px; font-size:18px; line-height:26px !important; height:32px !important; vertical-align:middle} 
         .ssam .noticeWrap li a.on {border:3px solid #0c5dc0 !important; background:#fff; }
 
-        .ssam .noticeBox .List-Table {margin-top:20px !important;border-top:0 !important}
-
- 
+        .ssam .noticeBox .List-Table {margin-top:20px !important;border-top:0 !important} 
 
         .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
         .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
@@ -142,7 +140,7 @@
         </div>
 
         <div class="Section sec-prof mt40">
-            @include('willbes.pc.site._viewTest.main_partial.professor_hot_clip_' . $__cfg['SiteCode'])
+            @include('willbes.pc.site._viewTest.main_partial.professor_hot_clip_' . $__cfg['SiteCode'])            
         </div>
 
         <div class="Section Section2 mt40">

@@ -17,12 +17,12 @@
 
         /************************************************************/   
         
-        .sky {position:fixed;top:200px;right:10px;z-index:11;}
-        .sky a {display:block; margin-bottom:10px}
+        .sky {position:fixed;top:200px;right:5px;z-index:11;}
+        .sky a {display:block; margin-bottom:5px}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/06/2240_top_bg.jpg) no-repeat center top;}
 
-        .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2240_01_bg.jpg) no-repeat center top;}
+        .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2021/09/2240_01_bg.jpg) no-repeat center top;}
 
         .wb_cts03 {background:#169adb}
 
@@ -37,7 +37,7 @@
         .wb_cts08 {background:#ECECEC;padding-bottom:50px;}
         .wb_cts08 .wrap {width:980px; margin:0 auto; position:relative}
 
-        .wb_cts10 {background:#ECECEC;}
+        .wb_cts10 {background:#fff;}
 
         .wb_cts11 {background:url(https://static.willbes.net/public/images/promotion/2021/07/2240_11_bg.jpg) no-repeat center top;}
  
@@ -120,7 +120,7 @@
             <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_sky.png" alt="7월 new"></a>
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky2.png" alt="새벽모의고사"></a>
             <a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/2021/08/2241_sky3.png" alt="신기훈 t"></a>
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605001&subject_idx=1254&prof_idx=50500" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/08/2240_sky4.png" alt="한덕현 t"></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3046&campus_ccd=605001" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_sky5.png" alt="세무직"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            
@@ -128,7 +128,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_01.jpg" alt="9급 일반행정"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_01.jpg" alt="9급 일반행정"/>
         </div>
 
         <nav class="evtMenu">
@@ -170,7 +170,7 @@
         </nav>
 
         <section class="evtCtnsBox wb_cts08" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_08.jpg" alt="기본 이론 종합반 클라쓰"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_08.jpg" alt="기본 이론 종합반 클라쓰"/>
             <div class="tabs" id="buyLec">                
                 <ul>
                     <li>
@@ -189,12 +189,18 @@
             </div>
 
             <div id="tab01s" class="wrap">            
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_09_cts1.png" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_09_cts1.png" />
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU67Jew6rCE" title="9급 연간 패스" target="_blank" style="position: absolute; left: 9.9%; top: 33.26%; width: 38.27%; height: 8.7%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3046&campus_ccd=605001&search_text=UHJvZE5hbWU67Jew6rCE" title="9급 세무 연간 패스" target="_blank" style="position: absolute; left: 51.5%; top: 33.26%; width: 38.27%; height: 8.7%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6MuqwnOyblA%3D%3D" title="9급 일행 2개월 패스" target="_blank" style="position: absolute; left: 9.9%; top: 80.65%; width: 38.27%; height: 8.7%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3046&campus_ccd=605001&search_text=UHJvZE5hbWU6MuqwnOyblA%3D%3D" title="9급 세무 2개월 패스" target="_blank" style="position: absolute; left: 51.5%; top: 80.65%; width: 38.27%; height: 8.7%; z-index: 2;"></a>
+
+
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6" target="_blank" style="position: absolute; left: 22.86%; top: 81.15%; width: 54.29%; height: 10.38%; z-index: 2;"></a>
             </div> 
 
             <div id="tab02s" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_09_cts2.png" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_09_cts2.jpg" />
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="_blank" style="position: absolute; left: 18.37%; top: 71.73%; width: 61.22%; height: 15.58%; z-index: 2;"></a>
             </div>
         </section>  
@@ -208,27 +214,27 @@
         </div>
 
         <section class="evtCtnsBox wb_cts05" >            
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_05.gif" alt="커리큘럼"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_05.gif" alt="커리큘럼"/>
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_05_1.gif" alt="커리큘럼"/>
-                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=350903" target="_blank" title="한덕현" style="position: absolute; left: 85.27%; top: 24.81%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1359" target="_blank" title="신기훈" style="position: absolute; left: 85.27%; top: 48.52%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_05_1.gif" alt="커리큘럼"/>
+                <a href="javascript:alert('Coming Soon');" title="한덕현" style="position: absolute; left: 85.27%; top: 24.81%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon');" title="신기훈" style="position: absolute; left: 85.27%; top: 48.52%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
             </div>
         </section>
 
         <section class="evtCtnsBox wb_cts04" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_04.jpg" alt="감사의 글"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_04.jpg" alt="감사의 글"/>
         </section>
         
         <section class="evtCtnsBox wb_cts03" >
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_03.jpg" alt="라이브 모드 구매하기"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_03.jpg" alt="라이브 모드 구매하기"/>
                 <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank" title="9급 구매하기" style="position: absolute; left: 22.32%; top: 76.06%; width: 55.36%; height: 7.33%;  z-index: 2;"></a>                
             </div>
         </section>
       
         <section class="evtCtnsBox wb_cts07" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_07.jpg" alt="합격을 이끌어낸 그 과정"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_07.jpg" alt="합격을 이끌어낸 그 과정"/>
             <div class="youtube_contents">
                 <div class="youtube_divide">             
                     <div class="preview_area">

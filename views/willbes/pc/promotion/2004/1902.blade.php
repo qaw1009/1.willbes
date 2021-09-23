@@ -12,13 +12,15 @@
             background:#fff;
         }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.5); border-radius:4px}
 
         /************************************************************/
         .evtTop01 {background:#241B20 url("https://static.willbes.net/public/images/promotion/2020/11/1902_top01_bg.jpg") center top no-repeat}
         .evtTop02 {background:#15161A url("https://static.willbes.net/public/images/promotion/2020/11/1902_top02_bg.jpg") center top no-repeat}
 
-        .evt02 {background:#866038; padding-bottom:150px}
-        .evt02 div {width:1120px; margin:0 auto; padding:20px; background:#fff; font-size:14px}
+        .evt02 {background:#866038;}
+        .evt02 div {width:1120px; margin:0 auto; background:#fff; font-size:14px}
         .evt02 th,
         .evt02 td {padding:20px 10px;}
         .evt02 td:nth-child(3) {text-align:left; color:#000}
@@ -31,7 +33,7 @@
         .evt02 tr:last-child {border:0}
 
         /* 이용안내 */
-        .wb_info {padding:100px 0;}
+        .wb_info {padding:150px 0;}
         .guide_box{width:1120px; margin:0 auto; border:2px solid #202020; padding:50px; text-align:left; word-break:keep-all}
         .guide_box h2 {font-size:30px; margin-bottom:30px}
         .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:17px;}        
@@ -50,30 +52,30 @@
     <div class="p_re evtContent NSK" id="evtContainer">    
 
         <div class="evtCtnsBox evtTop01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/1902_top01.gif" alt="" />        
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/1902_top01.gif" alt="윌비스 공무원 라이브 모드" />        
         </div>   
 
         <div class="evtCtnsBox evtTop02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/1902_top02.jpg" alt="" usemap="#Map1902_buy" border="0" />
-            <map name="Map1902_buy" id="Map1902_buy">
-                <area shape="rect" coords="259,931,846,1023" href="#evt02" />
-            </map>                 
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/1902_top02.jpg" alt="라이브 모드"/>
+                <a href="#evt02" title="라이브모드 구매하기" style="position: absolute; left: 23.93%; top: 79.21%; width: 51.25%; height: 6.68%; z-index: 2;"></a> 
+            </div>              
         </div>   
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1902_01.jpg" alt="이벤트 안내" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1902_01.jpg" alt="라이브 모드 혜택" />
         </div>  
 
         <div class="evtCtnsBox evt02" id="evt02"> 
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/1902_02.jpg" alt="라이브 모드 직렬변 신청하기" />
 
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/1902_02.jpg" alt="이벤트 안내" usemap="#Map1902_02" border="0" />
-            <map name="Map1902_02">
-                <area shape="rect" coords="112,1118,309,1182" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6TElWRQ%3D%3D" target="_blank" alt="행정직">
-                <area shape="rect" coords="461,1118,659,1181" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6TElWRQ%3D%3D" target="_blank" alt="소방직">
-                <area shape="rect" coords="816,1117,1008,1180" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU6TElWRQ%3D%3D" target="_blank" alt="군무원">
-            </map>   
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6TElWRQ%3D%3D" target="_blank" title="행정직" style="position: absolute; left: 10.36%; top: 78.1%; width: 17.05%; height: 3.97%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6TElWRQ%3D%3D" target="_blank" title="소방직" style="position: absolute; left: 41.7%; top: 78.1%; width: 17.05%; height: 3.97%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU6TElWRQ%3D%3D" target="_blank" title="군무원" style="position: absolute; left: 72.86%; top: 78.1%; width: 17.05%; height: 3.97%; z-index: 2;"></a> 
+            </div>
 
-
+{{--
             <div>
                 <table>
                     <col width="" />
@@ -207,7 +209,7 @@
                     </tbody>
                 </table>
             </div>
-
+--}}
         </div>
 
         <div class="evtCtnsBox wb_info" id="info">

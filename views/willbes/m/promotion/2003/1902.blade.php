@@ -13,7 +13,7 @@
 <div id="Container" class="Container NSK c_both">    
     
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2021/04/1902m_top.gif" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/09/1902m_top.gif" alt="" >
     </div>
 
     <div class="evtCtnsBox">

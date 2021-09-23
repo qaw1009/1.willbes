@@ -76,7 +76,7 @@
                     </ul>
                 </div>
 
-                <div class="lec-info">
+                <div class="lec-info @if($data["PackTypeCcd"] === '648003'){{'d_none'}}@endif" >
                     <h4 class="NGEB">강좌구성</h4>
                     <h5>· 필수과목</h5>
                     <div class="lec-choice-pkg">
@@ -336,7 +336,9 @@
                             <li><a href="#none"  class="btn_gray" name="btn_off_visit_pay" data-direct-pay="N" >방문결제</a></li>
                         @endif
                         @if($data['StudyApplyCcd'] != '654001')
-                            <li><a href="#none" name="btn_cart" data-direct-pay="N" class="btn-purple">장바구니</a></li>
+                            @if($data['PackTypeCcd'] != '648003')
+                                <li><a href="#none" name="btn_cart" data-direct-pay="N" class="btn-purple">장바구니</a></li>
+                            @endif
                             <li><a href="#none" name="btn_direct_pay" data-direct-pay="Y" class="btn-purple-line">바로결제</a></li>
                         @endif
                     </ul>
@@ -380,43 +382,44 @@
                     alert("신청 할 수 없는 강좌입니다.");return;
                 @endif
 
-                // 필수강좌 체크 여부
-                var groupArray = {!!json_encode($subGroup_array)!!};
-                for(i=0; i<groupArray.length;i++) {
-                    $checked = "";
-                    $ess_checked_count = 0;
-                    $(".lec-essential").find('.essSubGroup-'+groupArray[i]).each(function (){
+                @if($data['PackTypeCcd'] != '648003')
+                    {{-- 필수강좌 체크 여부 --}}
+                    var groupArray = {!!json_encode($subGroup_array)!!};
+                    for(i=0; i<groupArray.length;i++) {
+                        $checked = "";
+                        $ess_checked_count = 0;
+                        $(".lec-essential").find('.essSubGroup-'+groupArray[i]).each(function (){
+                            if ($(this).is(':checked')) {
+                                $checked = "Y";
+                                $ess_checked_count += 1;
+                            }
+                        });
+                        if($checked === "") {
+                            alert("필수과목은 과목별 1개씩 선택하셔야 합니다.");
+                            return;
+                        }
+                        if($ess_checked_count > 1) {
+                            alert("필수과목은 과목별 1개씩 선택하셔야 합니다. 현재 2개 이상의 과목이 선택되었습니다.");
+                            return;
+                        }
+                    }
+
+                    {{-- 선택강좌 --}}
+                    $check_cnt = 0;
+                    $(".lec-choice").find('.choSubGroup').each(function (){
                         if ($(this).is(':checked')) {
-                            $checked = "Y";
-                            $ess_checked_count += 1;
+                            $check_cnt += 1
                         }
                     });
-                    if($checked === "") {
-                        alert("필수과목은 과목별 1개씩 선택하셔야 합니다.");
+
+                    if($check_cnt !== parseInt({{$data['PackSelCount']}})) {
+                        alert("선택과목 중 {{$data['PackSelCount']}} 개를 선택하셔야 합니다.");
                         return;
                     }
-                    if($ess_checked_count > 1) {
-                        alert("필수과목은 과목별 1개씩 선택하셔야 합니다. 현재 2개 이상의 과목이 선택되었습니다.");
-                        return;
-                    }
-                }
-
-                {{-- 선택강좌 --}}
-                $check_cnt = 0;
-                $(".lec-choice").find('.choSubGroup').each(function (){
-                    if ($(this).is(':checked')) {
-                        $check_cnt += 1
-                    }
-                });
-
-                if($check_cnt !== parseInt({{$data['PackSelCount']}})) {
-                    alert("선택과목 중 {{$data['PackSelCount']}} 개를 선택하셔야 합니다.");
-                    return;
-                }
+                @endif
 
                 if ($(this).prop('name').indexOf('visit') > -1) {
                     {{-- 방문결제 --}}
-                    // 상품 체크
                     if (checkProduct($regi_off_form.find('input[name="learn_pattern"]').val(), $regi_off_form.find('input[name="prod_code[]"]').data('prod-code'), 'Y', $regi_off_form) === false) {
                         return;
                     }

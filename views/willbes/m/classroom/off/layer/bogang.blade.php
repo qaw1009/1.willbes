@@ -95,9 +95,11 @@
                         <td class="w-info tx-left">
                             <select id="u" name="u" title="" style="width:100%">
                                 <option value="">강의선택</option>
-                                @foreach($bogang_curr as $row)
-                                    <option value="{{$row['UnitArr']}}">{{$row['UnitName']}}</option>
-                                @endforeach
+                                @if(empty($bogang_curr) === false)
+                                    @foreach($bogang_curr as $row)
+                                        <option value="{{$row['UnitArr']}}">{{$row['UnitName']}}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </td>
                     </tr>

@@ -63,19 +63,19 @@ class EventQuizFModel extends WB_Model
                 ,'qs.IsUse' => 'Y'
                 ,'qs.IsStatus' => 'Y'
             ]
-            ,'LTE' => [
+            /*,'LTE' => [
                 'q.StartDatm' => date('Y-m-d')
             ]
             ,'GTE' => [
                 'q.EndDatm' => date('Y-m-d')
-            ]
+            ]*/
         ];
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $order_by = $this->_conn->makeOrderBy(['m.OrderNum' => 'asc'])->getMakeOrderBy();
 
         $column = "
             m.EqsIdx, m.EqsGroupTitle, m.EqsqTotalCnt, m.EqsType, m.OrderNum, m.EqsStartDate, m.EqsEndDate
-            ,m.MemQmIdx, m.MemEqIdx, m.MemEqsIdx
+            ,m.MemQmIdx, m.MemEqIdx, m.MemEqsIdx, m.IsEventQuiz
             ,IF(m.MemQmIdx IS NULL,'N','Y') AS IsQuizMember
             ,IF(DATE_FORMAT(EqsStartDate, '%Y-%m-%d') <= CURDATE(),'Y','N') AS ShowType
             ,IF(m.MemQmIdx IS NOT NULL,'9999',(@rownum:=@rownum+1)) AS RowNum
@@ -84,6 +84,7 @@ class EventQuizFModel extends WB_Model
         $from = "
             FROM (
                 SELECT qs.EqsIdx, qs.EqsGroupTitle, qs.EqsqTotalCnt, qs.EqsType, qs.OrderNum
+                    ,IF(DATE_FORMAT(q.StartDatm, '%Y-%m-%d') <= CURDATE() AND DATE_FORMAT(q.EndDatm, '%Y-%m-%d') >= CURDATE(),'Y','N') AS IsEventQuiz
                     ,DATE_FORMAT(qs.EqsStartDatm,'%Y-%m-%d') AS EqsStartDate
                     ,DATE_FORMAT(qs.EqsEndDatm,'%Y-%m-%d') AS EqsEndDate
                     ,qm.QmIdx AS MemQmIdx, qm.EqIdx AS MemEqIdx, qm.EqsIdx AS MemEqsIdx
@@ -110,7 +111,8 @@ class EventQuizFModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = "a.EqIdx, a.Title, b.EqsIdx, b.EqsGroupTitle, DATE_FORMAT(b.EqsStartDatm,'%Y-%m-%d') AS EqsStartDate
+            $column = "a.EqIdx, a.Title, IF(DATE_FORMAT(a.StartDatm, '%Y-%m-%d') <= CURDATE() AND DATE_FORMAT(a.EndDatm, '%Y-%m-%d') >= CURDATE(),'Y','N') AS IsEventQuiz
+            , b.EqsIdx, b.EqsGroupTitle, DATE_FORMAT(b.EqsStartDatm,'%Y-%m-%d') AS EqsStartDate
             ,c.EqsqIdx, c.EqsqTitle, c.EqsqContent, c.EqsqExplanation, c.RightAnswer,qm.IsFinish, qm.QmIdx, qmd.QmdIdx, qmd.EqsqdIdx, qmd.Answer
             ,IF(LOCATE(qmd.Answer , c.RightAnswer), 'Y', 'N') AS IsWrong";
             $order_by_offset_limit = $this->_conn->makeOrderBy(['c.EqsqIdx' => 'ASC'])->getMakeOrderBy();

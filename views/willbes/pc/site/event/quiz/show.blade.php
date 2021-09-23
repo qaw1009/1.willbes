@@ -1,6 +1,6 @@
 <div class="content">
     <div class="eventPop NSK">
-        <h3 class="NSK-Black">DAILY QUIZ <span class="tx-red">(이벤트가 종료되었습니다.)</span></h3>
+        <h3 class="NSK-Black">DAILY QUIZ @if(empty($question_data) === false && $question_data['IsEventQuiz'] == 'N')<span class="tx-red">(이벤트가 종료되었습니다.)</span>@endif</h3>
         @if(empty($question_data) === true)
             <div>
                 <div class="btnSt01 mt20 tx-right"><a href="javascript:void(0);" onclick="list_quiz('{{ $quiz_id }}'); return false;">전체퀴즈</a></div>
@@ -65,9 +65,9 @@
                         </div>
                     </div>
                     <div class="btnSt01 mt40 tx-center">
-                        @if ($question_data['IsEventQuiz'] == 'Y')
+                        {{--@if ($question_data['IsEventQuiz'] == 'Y')--}}
                             @if($question_count == $next_page)
-                                @if($question_data['IsFinish'] != 'Y')
+                                @if($question_data['IsFinish'] != 'Y' && $question_data['IsEventQuiz'] == 'Y')
                                     <div class="btnSt01 mt40 tx-center"><a href="javascript:void(0);" onclick="finish_quiz('{{ $question_data['QmIdx'] }}');">완료</a></div>
                                 @endif
                             @else
@@ -75,7 +75,7 @@
                                     다음 문제 →
                                 </a>
                             @endif
-                        @endif
+                        {{--@endif--}}
                     </div>
                 @endif
             </div>

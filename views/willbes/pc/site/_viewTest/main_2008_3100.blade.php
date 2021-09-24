@@ -1,6 +1,7 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
     <link href="/public/css/willbes/style_cop_2008.css?ver={{time()}}" rel="stylesheet">
+
     <!-- Container -->
     <div id="Container" class="Container cop2008v2 NGR c_both">
         <!-- site nav -->
@@ -149,7 +150,7 @@
             <div class="widthAuto">
                 <div class="will-acadTit bdb-black2 mb30">윌비스 <span class="tx-color">경찰간부</span> 학원</div>
                 {{--학원 오시는 길--}}
-                @include('willbes.pc.site._viewTest.main_partial.map_' . $__cfg['SiteCode'])
+                @include('willbes.pc.site.main_partial.map_' . $__cfg['SiteCode'])
             </div>
         </div>
 
@@ -161,8 +162,8 @@
         </div>
 
         <div id="QuickMenu" class="MainQuickMenu">
-            @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
-        </div>    
+            @include('willbes.pc.site._viewTest.main_partial.quick_menu_' . $__cfg['SiteCode'])
+        </div>
     </div>
     <!-- End Container -->
 

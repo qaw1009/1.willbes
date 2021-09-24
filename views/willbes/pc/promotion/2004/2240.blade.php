@@ -20,13 +20,18 @@
         .sky {position:fixed;top:200px;right:5px;z-index:11;}
         .sky a {display:block; margin-bottom:5px}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/06/2240_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/09/2240_top_bg.jpg) no-repeat center top;}
 
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2021/09/2240_01_bg.jpg) no-repeat center top;}
 
         .wb_cts03 {background:#169adb}
 
         .wb_cts04 {padding-bottom:50px;}
+        .wb_cts04 .slide_con {width:1120px; margin:0 auto; position:relative}
+        .wb_cts04 .slide_con p {position:absolute; top:35%; width:30px; z-index:90}
+        .wb_cts04 .slide_con p a {cursor:pointer}
+        .wb_cts04 .slide_con p.leftBtn {left:-20px; top:50%; width:62px; height:62px; margin-top:-30px;}
+        .wb_cts04 .slide_con p.rightBtn {right:-20px; top:50%; width:62px; height:62px; margin-top:-30px;}  
 
         .wb_cts05 {background:#ECECEC}
 
@@ -40,6 +45,8 @@
         .wb_cts10 {background:#fff;}
 
         .wb_cts11 {background:#8e3e47; padding:100px 0}
+
+
  
         /*분할 유튜브*/
         .youtube_contents {position:relative;width:1050px;margin:auto;z-index:1;}
@@ -112,14 +119,14 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
-            <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_sky.png" alt="7월 new"></a>
+            <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/09/2241_sky.png" alt="7월 new"></a>
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky2.png" alt="새벽모의고사"></a>
             <a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/2021/08/2241_sky3.png" alt="신기훈 t"></a>
             <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3046&campus_ccd=605001&search_text=UHJvZE5hbWU67Ius7ZmU7J2066Gg" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_sky5.png" alt="세무직"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_top.jpg" alt="너만바" />     
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_top.jpg" alt="너만바" />     
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
@@ -218,7 +225,16 @@
         </section>
 
         <section class="evtCtnsBox wb_cts04" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_04.jpg" alt="감사의 글"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_04_top.jpg" alt="소방직 합격"/>
+            <div class="slide_con">
+                <ul id="slidesImg4">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_04_01.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_04_02.png" /></li>   
+                </ul>
+                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_left.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_right.png"></a></p>
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_04_bottom.jpg"  alt="이모티콘"/>
         </section>
         
         <section class="evtCtnsBox wb_cts03" >
@@ -557,6 +573,32 @@
                 });
             });
         });
+
+        $(document).ready(function() {
+            var slidesImg4 = $("#slidesImg4").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+            });
+
+            $("#imgBannerLeft4").click(function (){
+                slidesImg4.goToPrevSlide();
+            });
+
+            $("#imgBannerRight4").click(function (){
+                slidesImg4.goToNextSlide();
+            });
+        });     
+
     </script>
 
 

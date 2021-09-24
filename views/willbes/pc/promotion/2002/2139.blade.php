@@ -114,12 +114,14 @@
         </div>
 
         <div class="evtCtnsBox evt01">
+            {{--
             <div class="txtinfo NSK-Black">
                 <div>코로나19로 인해<br>
                 <span>사립탐정사</span><br>
                 자격 3회시험일정은 <br>
                 추후공지 예정입니다.</div>
             </div>
+            --}}
             <div class="tag NSK-Black">#사립탐정 #한국탐정 #7/31 #누구나빠르게</div>
             <div class="request" id="request">
                 <div class="requestL">

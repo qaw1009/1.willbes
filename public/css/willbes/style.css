@@ -1957,7 +1957,8 @@ table.auTable tr td {
     height: auto;    
     z-index: 100;
 }
-.QuickMenu div {
+.QuickMenu div,
+.QuickMenu li {
     margin-bottom:5px;
 }
 

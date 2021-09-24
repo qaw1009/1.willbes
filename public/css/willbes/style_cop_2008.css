@@ -267,8 +267,8 @@
 .cop2008v2 .Section1 .preview .previewBox p.rightBtn {right:-50px}
 
 
-/* Main Container : QuickMenu : Cop */
-.cop2008v2 .MainQuickMenu {
+/* Main Container : QuickMenu : Cop
+.cop2008v2 .QuickMenu {
     position: fixed;
     top: 110px;
     right: 20px;
@@ -278,4 +278,4 @@
     overflow: hidden;
 }
 .cop2008v2 .QuickSlider {width:160px; height: 100px; overflow:hidden;}
-.cop2008v2 .QuickDdayBox {width:160px !important;}
+.cop2008v2 .QuickDdayBox {width:160px !important;} */

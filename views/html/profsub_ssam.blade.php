@@ -123,55 +123,62 @@
     </div>
 
     <div class="Lnb NG">
-        <h2>교수진 소개</h2>
+        <h2>강의안내</h2>
         <div class="lnb-List">
-            <div class="lnb-List-Tit">
-                <div><span class="Txt">교육학<span class="arrow-Btn">></span></span></div>
+            <div class="lnb-List-Tit-ssam">
+                <div><span class="Txt">교육학</span></div>
             </div>
             <div class="lnb-List-Depth lnb-List-Depth-ssam">
                 <dl>
-                    <dt><a href="#none" class="active">정채영</a></dt>
-                    <dt><a href="#none">기미진</a></dt>
-                    <dt><a href="#none">김세령</a></dt>
-                    <dt><a href="#none">오대혁</a></dt>
+                    <dt><a href="#" class="">· 교육학 <span class="NGEB">이인재</span></a></dt>
+                    <dt><a href="#" class="">· 교육학 <span class="NGEB">홍의일</span></a></dt>
                 </dl>
             </div>
-            <div class="lnb-List-Tit">
-                <div><span class="Txt">유아<span class="arrow-Btn">></span></span></div> 
+
+            <div class="lnb-List-Tit-ssam">
+                <div><span class="Txt">유아</span></div>
             </div>
             <div class="lnb-List-Depth lnb-List-Depth-ssam">
                 <dl>
-                    <dt><a href="#none">한덕주</a></dt>
-                    <dt><a href="#none">김신주</a></dt>
-                    <dt><a href="#none">성기건</a></dt>
-                    <dt><a href="#none">김영</a></dt>
+                    <dt><a href="#" class="">· 유아 <span class="NGEB">민정선</span></a></dt>
                 </dl>
             </div>
-            <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">한국사<span class="arrow-Btn">></span></span></a>
+
+            <div class="lnb-List-Tit-ssam">
+                <div><span class="Txt">초등</span></div>
             </div>
-            <div class="lnb-List-Depth"></div>
-            <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">행정학<span class="arrow-Btn">></span></span></a>
+            <div class="lnb-List-Depth lnb-List-Depth-ssam">
+                <dl>
+                    <dt><a href="#" class="">· 초등 <span class="NGEB">배재민</span></a></dt>
+                </dl>
             </div>
-            <div class="lnb-List-Depth"></div>
-            <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">교정학<span class="arrow-Btn">></span></span></a>
+
+            <div class="lnb-List-Tit-ssam">
+                <div><span class="Txt">중등</span></div>
             </div>
-            <div class="lnb-List-Depth"></div>
-            <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">국제법<span class="arrow-Btn">></span></span></a>
+            <div class="lnb-List-Depth lnb-List-Depth-ssam">
+                <dl>
+                    <dt><a href="#" class="">· 전공국어 <span class="NGEB">송원영</span></a></dt>
+                    <dt><a href="#" class="">· 전공국어 <span class="NGEB">이원근</span></a></dt>
+                    <dt><a href="#" class="">· 전공국어 <span class="NGEB">권보민</span></a></dt>
+                    <dt><a href="#" class="">· 전공영어 <span class="NGEB">김유석</span></a></dt>
+                    <dt><a href="#" class="">· 전공영어 <span class="NGEB">김영문</span></a></dt>
+                    <dt><a href="#" class="">· 전공영어 <span class="NGEB">공훈</span></a></dt>
+                    <dt><a href="#" class="">· 전공수학 <span class="NGEB">김철홍</span></a></dt>
+                    <dt><a href="#" class="">· 수학교육론 <span class="NGEB">박태영</span></a></dt>
+                    <dt><a href="#" class="">· 전공생물 <span class="NGEB">강치욱</span></a></dt>
+                    <dt><a href="#" class="">· 생물교육론 <span class="NGEB">양혜정</span></a></dt>
+                    <dt><a href="#" class="">· 도덕윤리 <span class="NGEB">김병찬</span></a></dt>
+                    <dt><a href="#" class="">· 전공역사 <span class="NGEB">최용림</span></a></dt>
+                    <dt><a href="#" class="">· 전공음악 <span class="NGEB">다이애나</span></a></dt>
+                    <dt><a href="#" class="">· 전기전자통신 <span class="NGEB">최우영</span></a></dt>
+                    <dt><a href="#" class="">· 정보컴퓨터 <span class="NGEB">송광진</span></a></dt>
+                    <dt><a href="#" class="">· 정컴교육론 <span class="NGEB">장순선</span></a></dt>
+                    <dt><a href="#" class="active">· 전공중국어 <span class="NGEB">정경미</span></a></dt>
+                </dl>
             </div>
-            <div class="lnb-List-Depth"></div>
-            <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">사회<span class="arrow-Btn">></span></span></a>
-            </div>
-            <div class="lnb-List-Depth"></div>
-            <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">사회복지학<span class="arrow-Btn">></span></span></a>
-            </div>
-            <div class="lnb-List-Depth"></div>
-        </div>
+        <div class="lnb-List-Depth"></div>
+</div>
     </div>
 
     <div class="Content p_re ml20 NG">
@@ -218,7 +225,7 @@
                     </li>
                     <li>
                         <a href="#none" onclick="openWin('Layerprof'),openWin('profBoard')">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon06.png" alt="학습자료실"> 학습자료실
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon06.png" alt="첨삭게시판"> 첨삭게시판
                         </a>
                     </li>
                     {{--

@@ -2388,6 +2388,7 @@ table.auTable tr td {
 .Lnb .lnb-List .lnb-List-Depth.lnb-List-Depth-ssam {
 	display: block;
 }
+.Lnb .lnb-List .lnb-List-Depth.lnb-List-Depth-ssam span {vertical-align: top}
 .Lnb .lnb-List .lnb-List-Depth dl dt {
 	line-height: 20px;
 }

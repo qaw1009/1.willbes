@@ -39,7 +39,7 @@
 
         .wb_cts10 {background:#fff;}
 
-        .wb_cts11 {background:url(https://static.willbes.net/public/images/promotion/2021/07/2240_11_bg.jpg) no-repeat center top;}
+        .wb_cts11 {background:#8e3e47; padding:100px 0}
  
         /*분할 유튜브*/
         .youtube_contents {position:relative;width:1050px;margin:auto;z-index:1;}
@@ -309,14 +309,14 @@
             </div>
         </section>  
 
-        {{--
+
         <section class="evtCtnsBox wb_cts11" >
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2240_11.jpg" alt="교수진"/>
-                <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1359" target="_blank" title="무료특강 신청하기" style="position: absolute; left: 37.86%; top: 84.96%; width: 24.46%; height: 6.17%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_11.jpg" alt="교수진"/>
+                <a href="javascript:alert('Coming Soon!');" title="무료특강 신청하기" style="position: absolute; left: 35.89%; top: 83.39%; width: 28.04%; height: 6%; z-index: 2;"></a>
             </div>
         </section>   
-        --}}
+
 
         <div class="evtCtnsBox wb_cts_notice">
             <div class="wb_tipBox">

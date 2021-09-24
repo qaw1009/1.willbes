@@ -165,7 +165,7 @@
         <div class="evtCtnsBox wb_04" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2364_04.jpg"  alt="검정제 선행 기본종합반">
-                <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank" class="NSK-Black"  id="apply">검정제 선행 기본종합반 신청하기 ></a>
+                <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank" class="NSK-Black"  id="apply">기본종합반 신청하기 ></a>
             </div>          
         </div>   
 

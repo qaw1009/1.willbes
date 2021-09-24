@@ -1139,93 +1139,96 @@
                     </div>
                     <!-- willbes-Leclist -->
 
-                    <br/><br/><br/>
+                    <br/><br/><br/><br/><br/>
 
                     <!-- Write -->
                     <div class="willbes-Leclist c_both">
                         <div class="LecWriteTable">
-                        <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdt-gray bdb-gray tx-gray fc-bd-none">
-                            <colgroup>
-                                <col style="width: 120px;">
-                                <col>
-                            </colgroup>
-                            <tbody>
-                                <tr>
-                                    <td class="w-tit bg-light-white tx-center strong">질문유형<span class="tx-light-blue">(*)</span></td>
-                                    <td class="w-selected full tx-left pl30" colspan="3">
-                                        <select id="s_consult_type" name="s_consult_type" title="질문유형" class="seleLecA" style="width: 250px;">
-                                            <option value="">질문유형을 선택하세요.</option>
-                                            <option value="702001">강좌내용</option>
-                                            <option value="702002">교재내용</option>
-                                            <option value="702003">학습상담</option>
-                                            <option value="702004">기타</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit bg-light-white  tx-center strong">수강정보</td>
-                                    <td class="w-selected full tx-left pl30" colspan="3">
-                                        <select id="study_prod_code" name="study_prod_code" title="강좌를 선택해 주세요.">
-                                            <option value="">강좌를 선택해 주세요.</option>
-                                            <option value="178742">【경정 승진대비】 ★2022 선동주 헌법 &amp; 김덕관 행정학 &amp; 정주형 형소법(주) PASS★</option>
-                                            <option value="176325">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
-                                            <option value="179368">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
-                                            <option value="181752">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
-                                            <option value="181770">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
-                                            <option value="181835">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
-                                            <option value="181842">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
-                                            <option value="183221">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
-                                            <option value="180901">김종욱 1순환 경찰간부 2018년 12월 강의(1순환) 테스트입니다</option>
-                                            <option value="183493">【경장,경사,경위 승진대비】 ★2022 신광은 형소법&amp;김원욱 형법&amp;장정훈/오현웅 실무종합 PASS★</option>
-                                            <option value="174029">多드림 패키지 (추석이벤트 전용 특강+쿠폰) (10/1(금) 00시부터 신청불가)</option>
-                                            <option value="185922">多드림 패키지 (추석이벤트 전용 특강+쿠폰) (10/1(금) 00시부터 신청불가)</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit bg-light-white tx-center strong">제목<span class="tx-light-blue">(*)</span></td>
-                                    <td class="w-text tx-left pl30" colspan="3">
-                                        <input type="text" id="board_title" name="board_title" class="iptTitle" maxlength="30" value="">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit bg-light-white tx-center strong">내용<span class="tx-light-blue">(*)</span></td>
-                                    <td class="w-textarea write tx-left pl30" colspan="3">
-                                        <textarea id="board_content" name="board_content" class="form-control" title="내용" placeholder=""></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit bg-light-white tx-left strong pl30">첨부</td>
-                                    <td class="w-file answer tx-left" colspan="4">
-                                        <ul class="attach">
-                                            <li>
-                                                <input type="file" id="attach_file0" name="attach_file[]" class="input-file" size="3">
-                                            </li>
-                                            <li>
-                                                <input type="file" id="attach_file0" name="attach_file[]" class="input-file" size="3">
-                                            </li>
-                                            <li>
-                                                <input type="file" id="attach_file0" name="attach_file[]" class="input-file" size="3">
-                                            </li>
-                                            <li>
-                                                • 첨부파일 총합 최대 5MB까지 등록 가능합니다.<br>
-                                                • hwp, doc, pdf, jpg, gif, png, zip 만 등록 가능합니다.
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                            <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">
-                                <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
-                                    <span>목록</span>
+                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdt-gray bdb-gray tx-gray fc-bd-none">
+                                <colgroup>
+                                    <col style="width: 120px;">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-tit bg-light-white tx-center strong">질문유형<span class="tx-light-blue">(*)</span></td>
+                                        <td class="w-selected full tx-left pl30" colspan="3">
+                                            <select id="s_consult_type" name="s_consult_type" title="질문유형" class="seleLecA" style="width: 250px;">
+                                                <option value="">질문유형을 선택하세요.</option>
+                                                <option value="702001">강좌내용</option>
+                                                <option value="702002">교재내용</option>
+                                                <option value="702003">학습상담</option>
+                                                <option value="702004">기타</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-tit bg-light-white  tx-center strong">수강정보</td>
+                                        <td class="w-selected full tx-left pl30" colspan="3">
+                                            <select id="study_prod_code" name="study_prod_code" title="강좌를 선택해 주세요.">
+                                                <option value="">강좌를 선택해 주세요.</option>
+                                                <option value="178742">【경정 승진대비】 ★2022 선동주 헌법 &amp; 김덕관 행정학 &amp; 정주형 형소법(주) PASS★</option>
+                                                <option value="176325">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
+                                                <option value="179368">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
+                                                <option value="181752">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
+                                                <option value="181770">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
+                                                <option value="181835">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
+                                                <option value="181842">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
+                                                <option value="183221">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
+                                                <option value="180901">김종욱 1순환 경찰간부 2018년 12월 강의(1순환) 테스트입니다</option>
+                                                <option value="183493">【경장,경사,경위 승진대비】 ★2022 신광은 형소법&amp;김원욱 형법&amp;장정훈/오현웅 실무종합 PASS★</option>
+                                                <option value="174029">多드림 패키지 (추석이벤트 전용 특강+쿠폰) (10/1(금) 00시부터 신청불가)</option>
+                                                <option value="185922">多드림 패키지 (추석이벤트 전용 특강+쿠폰) (10/1(금) 00시부터 신청불가)</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-tit bg-light-white tx-center strong">제목<span class="tx-light-blue">(*)</span></td>
+                                        <td class="w-text tx-left pl30" colspan="3">
+                                            <input type="text" id="board_title" name="board_title" class="iptTitle" maxlength="30" value="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-tit bg-light-white tx-center strong">내용<span class="tx-light-blue">(*)</span></td>
+                                        <td class="w-textarea write tx-left pl30" colspan="3">
+                                            <textarea id="board_content" name="board_content" class="form-control" title="내용" placeholder=""></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-tit bg-light-white tx-left strong pl30">첨부</td>
+                                        <td class="w-file answer tx-left" colspan="4">
+                                            <ul class="attach">
+                                                <li>
+                                                    <input type="file" id="attach_file0" name="attach_file[]" class="input-file" size="3">
+                                                </li>
+                                                <li>
+                                                    <input type="file" id="attach_file0" name="attach_file[]" class="input-file" size="3">
+                                                </li>
+                                                <li>
+                                                    <input type="file" id="attach_file0" name="attach_file[]" class="input-file" size="3">
+                                                </li>
+                                                <li>
+                                                    • 첨부파일 총합 최대 5MB까지 등록 가능합니다.<br>
+                                                    • hwp, doc, pdf, jpg, gif, png, zip 만 등록 가능합니다.
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="search-Btn mt20 h36 p_re">
+                                <button type="button" id="btn_list" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
+                                    <span class="tx-purple-gray">취소</span>
+                                </button>
+                                <button type="submit" id="btn_submit" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray center">
+                                    <span>저장</span>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <!-- willbes-Leclist -->
 
-                    <br/><br/><br/>
+                    <br/><br/><br/><br/><br/>
 
                     <!-- View -->
                     <div class="willbes-Leclist c_both">

@@ -719,7 +719,7 @@
             </div>
             <!-- // willbes-Layer-ReplyBox -->
 
-            <!-- willbes-Layer-Board -->
+            {{-- 학습자료실
             <div id="profBoard" class="willbes-Layer-Board">
                 <a class="closeBtn" href="#none" onclick="closeWin('Layerprof'),closeWin('profBoard')">
                     <img src="{{ img_url('prof/close.png') }}">
@@ -941,7 +941,373 @@
                     <!-- willbes-Leclist -->
                 </div>
             </div>
-            <!-- // willbes-Layer-Board -->
+            --}}
+
+            <div id="profBoard" class="willbes-Layer-Board">
+                <a class="closeBtn" href="#none" onclick="closeWin('Layerprof'),closeWin('profBoard')">
+                    <img src="{{ img_url('prof/close.png') }}">
+                </a>
+                <div class="Layer-Tit NG tx-dark-black">첨삭게시판</div>
+                <div class="Layer-Cont">
+                    <div class="willbes-Prof-Subject NG tx-dark-black">
+                        <div class="willbes-Lec-Search GM f_right">
+                            <div class="inputBox p_re">
+                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
+                                <button type="submit" onclick="" class="search-Btn">
+                                    <span>검색</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- List -->
+                    <div class="willbes-Leclist c_both">
+                        <div class="willbes-Lec-Selected tx-gray">                        
+                            <div class="willbes-Lec-Search GM">
+                                <select id="A" name="A" title="A" class="seleLecA">
+                                    <option selected="selected">질문유형</option>
+                                    <option value="강좌내용">강좌내용</option>
+                                    <option value="교재내용">교재내용</option>
+                                    <option value="학습상담">학습상담</option>
+                                    <option value="기타">기타</option>
+                                </select>
+                                <ul class="chkBox mt10">
+                                    <li>
+                                        <input type="checkbox" id="s_is_display" name="s_is_display" value="1" class="goods_chk">
+                                        <label>공지숨기기</label>
+                                    </li>
+                                    {{--
+                                    <li>
+                                        <input type="checkbox" id="s_is_my_contents" name="s_is_my_contents" value="1" class="goods_chk">
+                                        <label>내질문보기</label>
+                                    </li>
+                                    --}}
+                                </ul>
+                                <div class="search-Btn btnAuto90 h27 f_right">
+                                    <button type="button" id="btn_qna_create" class="mem-Btn bg-blue bd-dark-blue">
+                                        <span>질문하기</span>
+                                    </button>
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="LeclistTable">
+                            <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 65px;">
+                                    <col style="width: 100px;">
+                                    <col>
+                                    <col style="width: 90px;">
+                                    <col style="width: 110px;">
+                                    <col style="width: 90px;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>No<span class="row-line">|</span></th>
+                                        <th>질문유형<span class="row-line">|</span></th>
+                                        <th>제목<span class="row-line">|</span></th>
+                                        <th>작성자<span class="row-line">|</span></th>
+                                        <th>작성일<span class="row-line">|</span></th>
+                                        <th>답변상태</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
+                                        <td class="w-A">강좌내용</td>
+                                        <td class="w-list tx-left pl20">
+                                            <a href="#none">
+                                                <img src="{{ img_url('prof/icon_locked.gif') }}"> 로그인이되지않는데어떻게하나요?
+                                                <img src="{{ img_url('prof/icon_N.gif') }}">
+                                            </a>
+                                        </td>
+                                        <td class="w-write">관리자명</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-answer"><span class="aBox answerBox NSK">답변완료</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
+                                        <td class="w-A">강좌내용</td>
+                                        <td class="w-list tx-left pl20"><a href="#none">만14세미만회원은어떻게가입하나요?</a></td>
+                                        <td class="w-write">장동*</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-answer"><span class="aBox waitBox NSK">답변대기</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">10</td>
+                                        <td class="w-A">학습상담</td>
+                                        <td class="w-list tx-left pl20"><a href="#none"> 로그인이되지않는데어떻게하나요?</a></td>
+                                        <td class="w-write">관리자명</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-answer">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">9</td>
+                                        <td class="w-A">교재내용</td>
+                                        <td class="w-list tx-left pl20">
+                                            <a href="#none">
+                                                 회원탈퇴는어떻게하나요? 
+                                                <img src="{{ img_url('prof/icon_N.gif') }}"> 
+                                                <img src="{{ img_url('prof/icon_file.gif') }}">
+                                            </a>
+                                        </td>
+                                        <td class="w-write">박형*</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-answer">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">8</td>
+                                        <td class="w-A">기타</td>
+                                        <td class="w-list tx-left pl20"><a href="#none"> 로그인이되지않는데어떻게하나요?</a></td>
+                                        <td class="w-write">관리자명</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-answer">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">7</td>
+                                        <td class="w-A">교재내용</td>
+                                        <td class="w-list tx-left pl20">
+                                            <a href="#none">
+                                                 회원탈퇴는어떻게하나요? 
+                                                <img src="{{ img_url('prof/icon_N.gif') }}"> 
+                                                <img src="{{ img_url('prof/icon_file.gif') }}">
+                                            </a>
+                                        </td>
+                                        <td class="w-write">박형*</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-answer">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">6</td>
+                                        <td class="w-A">기타</td>
+                                        <td class="w-list tx-left pl20"><a href="#none"> 로그인이되지않는데어떻게하나요?</a></td>
+                                        <td class="w-write">관리자명</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-answer">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">5</td>
+                                        <td class="w-A">교재내용</td>
+                                        <td class="w-list tx-left pl20">
+                                            <a href="#none">
+                                                 회원탈퇴는어떻게하나요?                                              
+                                                <img src="{{ img_url('prof/icon_file.gif') }}">
+                                            </a>
+                                        </td>
+                                        <td class="w-write">박형*</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-answer">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">4</td>
+                                        <td class="w-A">학습상담</td>
+                                        <td class="w-list tx-left pl20">
+                                            <a href="#none">
+                                                 회원탈퇴는어떻게하나요?
+                                            </a>
+                                        </td>
+                                        <td class="w-write">장동*</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-answer">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">3</td>
+                                        <td class="w-A">강좌내용</td>
+                                        <td class="w-list tx-left pl20"><a href="#none"> 로그인이되지않는데어떻게하나요?</a></td>
+                                        <td class="w-write">박형*</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-answer">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">2</td>
+                                        <td class="w-A">교재내용</td>
+                                        <td class="w-list tx-left pl20"><a href="#none"> 로그인이되지않는데어떻게하나요?</a></td>
+                                        <td class="w-write">장동*</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-answer">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">1</td>
+                                        <td class="w-A">교재내용</td>
+                                        <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
+                                        <td class="w-write">박형*</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-answer">&nbsp;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- willbes-Leclist -->
+
+                    <br/><br/><br/><br/><br/>
+
+                    <!-- Write -->
+                    <div class="willbes-Leclist c_both">
+                        <div class="LecWriteTable">
+                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdt-gray bdb-gray tx-gray fc-bd-none">
+                                <colgroup>
+                                    <col style="width: 120px;">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-tit bg-light-white tx-center strong">질문유형<span class="tx-light-blue">(*)</span></td>
+                                        <td class="w-selected full tx-left pl30" colspan="3">
+                                            <select id="s_consult_type" name="s_consult_type" title="질문유형" class="seleLecA" style="width: 250px;">
+                                                <option value="">질문유형을 선택하세요.</option>
+                                                <option value="702001">강좌내용</option>
+                                                <option value="702002">교재내용</option>
+                                                <option value="702003">학습상담</option>
+                                                <option value="702004">기타</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-tit bg-light-white  tx-center strong">수강정보</td>
+                                        <td class="w-selected full tx-left pl30" colspan="3">
+                                            <select id="study_prod_code" name="study_prod_code" title="강좌를 선택해 주세요.">
+                                                <option value="">강좌를 선택해 주세요.</option>
+                                                <option value="178742">【경정 승진대비】 ★2022 선동주 헌법 &amp; 김덕관 행정학 &amp; 정주형 형소법(주) PASS★</option>
+                                                <option value="176325">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
+                                                <option value="179368">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
+                                                <option value="181752">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
+                                                <option value="181770">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
+                                                <option value="181835">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
+                                                <option value="181842">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
+                                                <option value="183221">윌비스 신광은경찰 0원 무제한 PASS (일반경찰+경행경채)</option>
+                                                <option value="180901">김종욱 1순환 경찰간부 2018년 12월 강의(1순환) 테스트입니다</option>
+                                                <option value="183493">【경장,경사,경위 승진대비】 ★2022 신광은 형소법&amp;김원욱 형법&amp;장정훈/오현웅 실무종합 PASS★</option>
+                                                <option value="174029">多드림 패키지 (추석이벤트 전용 특강+쿠폰) (10/1(금) 00시부터 신청불가)</option>
+                                                <option value="185922">多드림 패키지 (추석이벤트 전용 특강+쿠폰) (10/1(금) 00시부터 신청불가)</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-tit bg-light-white tx-center strong">제목<span class="tx-light-blue">(*)</span></td>
+                                        <td class="w-text tx-left pl30" colspan="3">
+                                            <input type="text" id="board_title" name="board_title" class="iptTitle" maxlength="30" value="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-tit bg-light-white tx-center strong">내용<span class="tx-light-blue">(*)</span></td>
+                                        <td class="w-textarea write tx-left pl30" colspan="3">
+                                            <textarea id="board_content" name="board_content" class="form-control" title="내용" placeholder=""></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-tit bg-light-white tx-left strong pl30">첨부</td>
+                                        <td class="w-file answer tx-left" colspan="4">
+                                            <ul class="attach">
+                                                <li>
+                                                    <input type="file" id="attach_file0" name="attach_file[]" class="input-file" size="3">
+                                                </li>
+                                                <li>
+                                                    <input type="file" id="attach_file0" name="attach_file[]" class="input-file" size="3">
+                                                </li>
+                                                <li>
+                                                    <input type="file" id="attach_file0" name="attach_file[]" class="input-file" size="3">
+                                                </li>
+                                                <li>
+                                                    • 첨부파일 총합 최대 5MB까지 등록 가능합니다.<br>
+                                                    • hwp, doc, pdf, jpg, gif, png, zip 만 등록 가능합니다.
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="search-Btn mt20 h36 p_re">
+                                <button type="button" id="btn_list" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
+                                    <span class="tx-purple-gray">취소</span>
+                                </button>
+                                <button type="submit" id="btn_submit" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray center">
+                                    <span>저장</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- willbes-Leclist -->
+
+                    <br/><br/><br/><br/><br/>
+
+                    <!-- View -->
+                    <div class="willbes-Leclist c_both">
+                        <div class="LecViewTable">
+                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
+                                <colgroup>
+                                	<col style="width: 80px;">
+                                    <col style="width: 100px;">
+                                    <col>
+                                    <col style="width: 100px;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th colspan="4" class="w-list tx-left  pl20"><img src="{{ img_url('prof/icon_notice.gif') }}" style="marign-right: 5px;"> <strong>[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</strong></th>
+                                    </tr>
+                                    <tr>
+                                    	<td>김보*<span class="row-line">|</span></td>
+                                        <td>교재내용<span class="row-line">|</span></td>
+                                        <td class="subTit tx-left pl20"><strong class="tx-light-blue" style="padding-right: 5px;">[강좌]</strong>2018 [국가직대비] 정채영 국어 적중 50선 특강 (4~5월)<span class="row-line">|</span></td>
+                                        <td class="w-date">2018-00-00</td>                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-file tx-left pl20" colspan="4">
+                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
+                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-txt tx-left" colspan="4">
+                                            이달의 개강 강좌 공지입니다.<br/>
+                                            이달의 개강 강좌 공지입니다.<br/>
+                                            이달의 개강 강좌 공지입니다.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 120px;">
+                                    <col style="width: 690px;">
+                                    <col style="width: 160px;">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <td class="w-answer">
+                                        <img src="/public/img/willbes/prof/icon_answer.gif">
+                                    </td>
+                                    <td class="w-acad tx-left">
+                                        <span class="aBox answerBox NSK">답변완료</span>
+                                    </td>
+                                    <td class="w-date">2021-09-23 13:49:02</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-txt answer tx-left" colspan="4">
+                                            <p>내가 수업 중에 자주 말하지요.</p>
+                                            <p>영어권 사용자들이 가장 많이 틀리는 문법이 수의 일치라고요</p>
+                                            <p>말한대로 복수동사 lend가 돼야 하는데 영어권 사용자들이 주어와 동사 사이에 수식이 들어가 있는 경우&nbsp;</p>
+                                            <p>바로 이 경우의 수의 일치를 잘못 적용하는 경우가 많답니다.</p>
+                                            <p>&nbsp;</p>
+                                            <p>독해기적은 그야말로 실제로 쓰인 문장 그대로 인용한 것이고요.</p>
+                                            <p>결국 그 문장은 문법 면에서는 틀린 것입니다^^</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">
+                                <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
+                                    <span>목록</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- willbes-Leclist -->
+                </div>
+            </div>
 
             <!-- willbes-Layer-Notice -->
             <div id="profNotice" class="willbes-Layer-Board">

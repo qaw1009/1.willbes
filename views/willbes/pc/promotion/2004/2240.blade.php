@@ -229,7 +229,7 @@
             <div class="slide_con">
                 <ul id="slidesImg4">
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_04_01.png" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_04_01.png" /></li>   
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_04_02.png" /></li>   
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_right.png"></a></p>

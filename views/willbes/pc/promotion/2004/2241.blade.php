@@ -47,14 +47,14 @@
         /*분할 유튜브*/
         .youtube_contents {position:relative;width:1050px;margin:auto;z-index:1;}
         .youtube_divide {margin:30px -15px 0;padding: 40px 0 0 30px;background:#fff;border-radius: 5px;box-shadow: -10px 10px 30px rgba(0,0,0,.1);}
-        .youtube_divide .preview_area {display:inline-block;border-right:1px solid #ddd;padding-bottom:40px;text-align:left;}
+        .youtube_divide .preview_area {display:inline-block;padding-bottom:40px;text-align:left;}
         .youtube_divide .preview_area .avi_box {width:730px;height:411px;margin-bottom:20px;} 
         .youtube_divide .preview_area h2 {display:block;font-size:24px;font-weight:700;line-height:32px;color:#000;overflow:hidden;text-overflow:ellipsis;word-wrap:normal;margin-bottom:4px;max-width:730px;}
         .youtube_divide .preview_area span {font-size:14px;font-weight:400;color:#555;}
         .youtube_divide .preview_area span a {display:inline-block;vertical-align: middle;width:18px;height:15px;margin:-3px 0 0 4px;
                                               background: url(https://static.willbes.net/public/images/promotion/2020/07/i_front_home.png) repeat;background-size:100% auto;font-size:0;}
         .youtube_divide .preview_list_area {display:inline-block;vertical-align:top;padding-left:12px;width:304px;text-align:left;}
-        .youtube_divide .preview_list_area .preview_list {margin-top:15px;height:455px;box-sizing:border-box;overflow-y:scroll;}
+        .youtube_divide .preview_list_area .preview_list {height:460px;box-sizing:border-box;overflow-y:scroll;}
         .youtube_divide .preview_list_area .preview_list ul li {margin-bottom:12px;}
         .youtube_divide .preview_list_area .preview_list ul li .num_box {width:26px;display:inline-block;font-size: 12px;font-weight:400;
                                                                          color:#666;padding-right:10px;text-indent: 2px;vertical-align:middle;box-sizing:border-box;}
@@ -89,7 +89,7 @@
         .tab02 li:last-child a {margin:0}
         .tab02:after {content:""; display:block; clear:both}  
         
-        .evtMenu {background:#4f7bf6; }            
+        .evtMenu {background:#4f7bf6;}            
         .evtMenu ul {width:1120px; margin:0 auto; text-align:left}        
         .evtMenu ul li{width:calc( 100% / 6); float:left;}
         .evtMenu ul li a{padding:15px 0; color:#fff; line-height:1.4; text-align:center; display:inline-block; width:100%; font-size:14px}
@@ -194,7 +194,7 @@
                 <div class="youtube_divide">             
                     <div class="preview_area">
                         <div class="avi_box">
-                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/qcQcS6lbWqc?rel=0"></iframe>
+                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/nQFyta6T3SM?rel=0"></iframe>
                         </div>
                         <h2 class="avi_title">신기훈 행정법 2021.07.24 군무원 9급 기출 해설</h2>
                     </div>
@@ -290,7 +290,17 @@
                                             <p>김덕관 행정학 2021.04.17 국가직 9급 기출 해설</p>
                                         </div>
                                     </a>
-                                </li>                                 
+                                </li>   
+                                
+                                <li class="">
+                                    <a href="#tab10">
+                                        <span class="num_box" data-num="10">10</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_thumbnail06.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>김철 행정학 OT</p>
+                                        </div>
+                                    </a>
+                                </li>  
 
                             </ul>
                         </div>
@@ -492,7 +502,7 @@
         ); 
         
         //유툽
-        var tab1_url = "https://www.youtube.com/embed/qcQcS6lbWqc?rel=0";
+        var tab1_url = "https://www.youtube.com/embed/nQFyta6T3SM?rel=0";
         var tab2_url = "https://www.youtube.com/embed/eiAKjkFjwtE?rel=0";
         var tab3_url = "https://www.youtube.com/embed/K_q0zcAGM3U?rel=0";  
         var tab4_url = "https://www.youtube.com/embed/sC9TJfUNkyc?rel=0";
@@ -500,7 +510,8 @@
         var tab6_url = "https://www.youtube.com/embed/YkBKsq5cr3I?rel=0";    
         var tab7_url = "https://www.youtube.com/embed/tf6wcBMkBwQ?rel=0";
         var tab8_url = "https://www.youtube.com/embed/WB_TNvasmJw?rel=0";  
-        var tab9_url = "https://www.youtube.com/embed/IIokG25Sssg?rel=0";    
+        var tab9_url = "https://www.youtube.com/embed/IIokG25Sssg?rel=0";   
+        var tab10_url = "https://www.youtube.com/embed/WDiAzplg_7k?rel=0";  
         
         $(function() {
             $(".preview_list ul li a").click(function(){
@@ -525,6 +536,8 @@
                     video_tab_url = tab8_url;
                 }else if(activeTab == "#tab9"){
                     video_tab_url = tab9_url;
+                }else if(activeTab == "#tab10"){
+                    video_tab_url = tab10_url;
                 }
                 
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'

@@ -503,10 +503,10 @@
     </div>
     <!-- CS센터 //-->
 
-    <div id="QuickMenu" class="MainQuickMenu">
+    <div id="QuickMenu" class="QuickMenu">
         <ul>
             <li>
-                <div class="QuickSlider ">
+                <div class="QuickSlider">
                     <div class="sliderNum">
                         <div class="QuickDdayBox">
                             <div class="q_tit">3차 필기시험</div>

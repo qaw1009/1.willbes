@@ -208,7 +208,7 @@
 
         <section class="evtCtnsBox wb_cts08" >
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_08.jpg" alt="5월 개강 불꽃소방 연간 패스"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2156_08.jpg" alt="5월 개강 불꽃소방 연간 패스"/>
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU66rO17LGEIOyXsOqwhA%3D%3D" target="_blank" title="공채" style="position: absolute; left: 18.66%; top: 58.67%; width: 22.14%; height: 9.73%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU66rK97LGEIOyXsOqwhA%3D%3D" target="_blank" title="경채" style="position: absolute; left: 59.38%; top: 58.67%; width: 22.14%; height: 9.73%; z-index: 2;"></a>
             </div>

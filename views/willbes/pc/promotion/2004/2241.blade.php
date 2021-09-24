@@ -161,13 +161,13 @@
             </div>
         </section> 
         
-        <section class="evtCtnsBox" > 
+        <div class="evtCtnsBox" > 
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_10.jpg" alt="전기/통신 수강신청하기"/>
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU66riw67O47J2066Gg" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 37.75%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 69.27%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
             </div>
-        </section>
+        </div>
 
         <section class="evtCtnsBox wb_cts05">
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2241_05.gif" alt="커리큘럼"/>

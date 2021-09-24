@@ -70,9 +70,9 @@
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/1902_02.jpg" alt="라이브 모드 직렬변 신청하기" />
 
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6TElWRQ%3D%3D" target="_blank" title="행정직" style="position: absolute; left: 10.36%; top: 78.1%; width: 17.05%; height: 3.97%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6TElWRQ%3D%3D" target="_blank" title="소방직" style="position: absolute; left: 41.7%; top: 78.1%; width: 17.05%; height: 3.97%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU6TElWRQ%3D%3D" target="_blank" title="군무원" style="position: absolute; left: 72.86%; top: 78.1%; width: 17.05%; height: 3.97%; z-index: 2;"></a> 
+                <a href="javascript:alert('Coming Soon');" title="행정직" style="position: absolute; left: 10.36%; top: 78.1%; width: 17.05%; height: 3.97%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon');" title="소방직" style="position: absolute; left: 41.7%; top: 78.1%; width: 17.05%; height: 3.97%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon');" title="군무원" style="position: absolute; left: 72.86%; top: 78.1%; width: 17.05%; height: 3.97%; z-index: 2;"></a> 
             </div>
 
 {{--

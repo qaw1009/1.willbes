@@ -44,17 +44,12 @@
         /*분할 유튜브*/
         .youtube_contents {position:relative;width:1050px;margin:auto;z-index:1;}
         .youtube_divide {margin:30px -15px 0;padding: 40px 0 0 30px;background:#fff;border-radius: 5px;box-shadow: -10px 10px 30px rgba(0,0,0,.1);}
-        .youtube_divide .preview_area {display:inline-block;border-right:1px solid #ddd;padding-bottom:40px;text-align:left;}
+        .youtube_divide .preview_area {display:inline-block;padding-bottom:40px;text-align:left;}
         .youtube_divide .preview_area .avi_box {width:730px;height:411px;margin-bottom:20px;} 
         .youtube_divide .preview_area h2 {display:block;font-size:24px;font-weight:700;line-height:32px;color:#000;overflow:hidden;text-overflow:ellipsis;word-wrap:normal;margin-bottom:4px;max-width:730px;}
         .youtube_divide .preview_area span {font-size:14px;font-weight:400;color:#555;}
-        .youtube_divide .preview_area span a {
-            display:inline-block;vertical-align: middle;width:18px;height:15px;margin:-3px 0 0 4px;
-            background: url(https://static.willbes.net/public/images/promotion/2020/07/i_front_home.png) repeat;
-            background-size:100% auto;font-size:0;
-        }
         .youtube_divide .preview_list_area {display:inline-block;vertical-align:top;padding-left:12px;width:304px;text-align:left;}
-        .youtube_divide .preview_list_area .preview_list {margin-top:15px;height:455px;box-sizing:border-box;overflow-y:scroll;}
+        .youtube_divide .preview_list_area .preview_list {height:460px;box-sizing:border-box;overflow-y:scroll;}
         .youtube_divide .preview_list_area .preview_list ul li {margin-bottom:12px;}
         .youtube_divide .preview_list_area .preview_list ul li .num_box {
             width:26px;display:inline-block;font-size: 12px;font-weight:400;
@@ -120,7 +115,7 @@
             <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_sky.png" alt="7월 new"></a>
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky2.png" alt="새벽모의고사"></a>
             <a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/2021/08/2241_sky3.png" alt="신기훈 t"></a>
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3046&campus_ccd=605001" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_sky5.png" alt="세무직"></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3046&campus_ccd=605001&search_text=UHJvZE5hbWU67Ius7ZmU7J2066Gg" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_sky5.png" alt="세무직"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            
@@ -239,7 +234,7 @@
                 <div class="youtube_divide">             
                     <div class="preview_area">
                         <div class="avi_box">
-                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://youtube.com/embed/HuXGXkO_mLM"></iframe>
+                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://youtube.com/embed/ipp-9NTYgXY"></iframe>
                         </div>
                         <h2 class="avi_title">한덕현 영어 - 제니스 영어 합격 커리큘럼!</h2>
                     </div>
@@ -250,7 +245,7 @@
                                 <li class="on">
                                     <a href="#tab1" class="active">
                                         <span class="num_box" data-num="1">1</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_thumbnail01.png" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>한덕현 영어 - 제니스 영어 합격 커리큘럼!</p>
                                         </div>
@@ -260,7 +255,7 @@
                                 <li class="">
                                     <a href="#tab2">
                                         <span class="num_box" data-num="2">2</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_thumbnail02.png" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_thumbnail02.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>행정법 마스터! 신기훈 노량진 착륙😆</p>
                                         </div>
@@ -270,7 +265,7 @@
                                 <li class="">
                                     <a href="#tab3">
                                         <span class="num_box" data-num="3">3</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail01.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_thumbnail03.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>영어 한덕현 ONE DAY OX특강 - those가 사람들로 쓰일 때</p>
                                         </div>
@@ -280,7 +275,7 @@
                                 <li class="">
                                     <a href="#tab4">
                                         <span class="num_box" data-num="4">4</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail02.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_thumbnail04.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>한덕현 영어 2020년6월13일 지방직 해설강의</p>
                                         </div>
@@ -290,12 +285,22 @@
                                 <li class="">
                                     <a href="#tab5">
                                         <span class="num_box" data-num="5">5</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail03.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_thumbnail05.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>김덕관 행정학 2021.04.17 국가직 9급 기출 해설</p>
                                         </div>
                                     </a>
-                                </li>                             
+                                </li>   
+                                
+                                <li class="">
+                                    <a href="#tab6">
+                                        <span class="num_box" data-num="6">6</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_thumbnail06.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>김철 행정학 OT</p>
+                                        </div>
+                                    </a>
+                                </li> 
 
                             </ul>
                         </div>
@@ -303,6 +308,7 @@
                 </div>
             </div>
         </section>  
+
         {{--
         <section class="evtCtnsBox wb_cts11" >
             <div class="wrap">
@@ -311,6 +317,7 @@
             </div>
         </section>   
         --}}
+
         <div class="evtCtnsBox wb_cts_notice">
             <div class="wb_tipBox">
             <ul class="tab02">
@@ -494,11 +501,12 @@
         ); 
         
         //유툽
-        var tab1_url = "https://youtube.com/embed/HuXGXkO_mLM";
-        var tab2_url = "https://youtube.com/embed/nQFyta6T3SM ";  
+        var tab1_url = "https://www.youtube.com/embed/ipp-9NTYgXY?rel=0";
+        var tab2_url = "https://www.youtube.com/embed/nQFyta6T3SM?rel=0";  
         var tab3_url = "https://www.youtube.com/embed/YitlBdAbtxU?rel=0";
         var tab4_url = "https://www.youtube.com/embed/swRWKKnOk8c?rel=0";  
-        var tab5_url = "https://www.youtube.com/embed/IIokG25Sssg?rel=0";    
+        var tab5_url = "https://www.youtube.com/embed/IIokG25Sssg?rel=0";  
+        var tab6_url = "https://www.youtube.com/embed/WDiAzplg_7k?rel=0";   
         
         $(function() {
             $(".preview_list ul li a").click(function(){
@@ -515,6 +523,8 @@
                     video_tab_url = tab4_url;
                 }else if(activeTab == "#tab5"){
                     video_tab_url = tab5_url;
+                }else if(activeTab == "#tab6"){
+                    video_tab_url = tab6_url;
                 }
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");

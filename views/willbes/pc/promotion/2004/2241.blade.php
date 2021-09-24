@@ -20,7 +20,7 @@
         .sky {position:fixed;top:200px;right:10px;z-index:11;}
         .sky a {display:block; margin-bottom:10px}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/06/2241_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/09/2241_top_bg.jpg) no-repeat center top;}
 
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2021/09/2241_01_bg.jpg) no-repeat center top;}
 
@@ -29,6 +29,11 @@
         .wb_cts03 {background:#099975}
 
         .wb_cts04 {padding-bottom:50px;}
+        .wb_cts04 .slide_con {width:1120px; margin:0 auto; position:relative}
+        .wb_cts04 .slide_con p {position:absolute; top:35%; width:30px; z-index:90}
+        .wb_cts04 .slide_con p a {cursor:pointer}
+        .wb_cts04 .slide_con p.leftBtn {left:-20px; top:50%; width:62px; height:62px; margin-top:-30px;}
+        .wb_cts04 .slide_con p.rightBtn {right:-20px; top:50%; width:62px; height:62px; margin-top:-30px;}  
 
         .wb_cts05 {background:#ECECEC}
 
@@ -109,7 +114,7 @@
         </div>
 
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_top.jpg" alt="너만바" />     
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2241_top.jpg" alt="너만바" />     
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
@@ -178,7 +183,16 @@
         </section> 
 
         <section class="evtCtnsBox wb_cts04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2241_04.jpg" alt="감사의 글"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2241_04_top.jpg" alt="소방직 합격"/>
+            <div class="slide_con">
+                <ul id="slidesImg4">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/09/2241_04_01.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/09/2241_04_01.png" /></li>   
+                </ul>
+                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_left.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_right.png"></a></p>
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2241_04_bottom.jpg"  alt="이모티콘"/>
         </section>
 
         <section class="evtCtnsBox wb_cts03">
@@ -545,7 +559,32 @@
                 $('.avi_box').html(html_str);
                 $('.avi_title').html($(this).find('p').html());
             });
-        });       
+        });
+
+        $(document).ready(function() {
+            var slidesImg4 = $("#slidesImg4").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+            });
+
+            $("#imgBannerLeft4").click(function (){
+                slidesImg4.goToPrevSlide();
+            });
+
+            $("#imgBannerRight4").click(function (){
+                slidesImg4.goToNextSlide();
+            });
+        });        
 
     </script>
 

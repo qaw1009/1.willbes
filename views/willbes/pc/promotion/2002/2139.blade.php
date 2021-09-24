@@ -122,7 +122,7 @@
                 추후공지 예정입니다.</div>
             </div>
             --}}
-            <div class="tag NSK-Black">#사립탐정 #한국탐정 #7/31 #누구나빠르게</div>
+            <div class="tag NSK-Black">#사립탐정 #한국탐정 #10/24 #누구나빠르게</div>
             <div class="request" id="request">
                 <div class="requestL">
                     <h3 class="NSK-Black">* 사립탐정사 시험  학원예약접수</h3>

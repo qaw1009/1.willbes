@@ -73,7 +73,7 @@
     </style>
     
     <div class="evtContent NSK" id="evtContainer">    
-    
+
         <div class="sky">
             <a href="#event01">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2366_sky02.png" alt="L-PASS"/>
@@ -96,7 +96,7 @@
             <div class="passLecBuy">           
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2366_01.jpg" alt="최저가" />
                 <div class="price price01">
-                    <strong>97</strong>만원<br>
+                    <strong>139</strong>만원<br>
                     <input type="radio" id="y_pkg1" name="y_pkg" value="186172" data-sale-price="960000"/> <label for="y_pkg1">신광은경찰간부 L-PASS</label>
                 </div>
             </div>    

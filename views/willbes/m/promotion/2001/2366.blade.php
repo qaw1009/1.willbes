@@ -91,7 +91,7 @@
         <img src="https://static.willbes.net/public/images/promotion/2021/09/2366m_01.jpg" alt="최저가" >
         <div class="price">
             <ul>
-                <li><input type="radio" id="y_pkg1" name="y_pkg" value="186172" data-sale-price="960000" onClick=""/> <label for="y_pkg1">97 만원<br>신광은경찰간부 L-PASS</label></li>
+                <li><input type="radio" id="y_pkg1" name="y_pkg" value="186172" data-sale-price="960000" onClick=""/> <label for="y_pkg1">139 만원<br>신광은경찰간부 L-PASS</label></li>
             </ul>
         </div>
         <div class="ext01txt">

@@ -14,26 +14,25 @@
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position: relative;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
 
         /************************************************************/             
-        .sky {position:fixed; top:225px;right:25px;z-index:10;}
-        .sky a {display:block;padding-top:15px;}
-        .sky2 {position:fixed;right:30px;}
+        .sky {position:fixed; top:200px;right:10px;z-index:10;}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/01/2037_top_bg.jpg) no-repeat center top;}	    
-        .evt01 {background:#DDD0BF;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/09/2037_top_bg.jpg) no-repeat center top;}	    
 
-            .tabs { margin-left:-490px; width:980px; z-index:10;margin:0 auto;padding-top:25px;}
-            .tabs ul{width:789px;margin:0 auto;}
-            .tabs li {display:inline; float:left; width:16.6%;}
-            .tabs li a {display:block; text-align:center; height:45px; line-height:45px; background:#b7b7b7; color:#fff; font-size:16px; margin-right:4px;border-radius:16px;}
-            .tabs li a:hover,
-            .tabs li a.active {background:#c6b269;}
-            .tabs li:last-child a {margin:0}
-            .tabs ul:after {content:""; display:block; clear:both}
-            .tabs div {width:840px; margin:25px 0 0 70px}
-            .tabs div a {display:block; width:400px; margin:160px auto 0; background:#0a0f25; color:#fff; font-size:22px; padding:15px 0; border-radius:40px}
-            .tabs div a:hover {background:#c6b269;}
+
+        .tabs { margin-left:-490px; width:980px; z-index:10;margin:0 auto;padding-top:25px;}
+        .tabs ul{width:789px;margin:0 auto;}
+        .tabs li {display:inline; float:left; width:16.6%;}
+        .tabs li a {display:block; text-align:center; height:45px; line-height:45px; background:#b7b7b7; color:#fff; font-size:16px; margin-right:4px;border-radius:16px;}
+        .tabs li a:hover,
+        .tabs li a.active {background:#c6b269;}
+        .tabs li:last-child a {margin:0}
+        .tabs ul:after {content:""; display:block; clear:both}
+        .tabs div {width:840px; margin:25px 0 0 70px}
+        .tabs div a {display:block; width:400px; margin:160px auto 0; background:#0a0f25; color:#fff; font-size:22px; padding:15px 0; border-radius:40px}
+        .tabs div a:hover {background:#c6b269;}
 
         .evt02 {background:#fff;padding-bottom:100px;}
 
@@ -45,24 +44,24 @@
     </form>
     <div class="p_re evtContent NGR" id="evtContainer">             
 
-        <div class="sky">
+        <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/2037_sky.png" alt="윌비스 전국모의고사 접수하기" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2037_sky.png" alt="윌비스 전국모의고사 접수하기" >
             </a>                     
         </div>
 
-        <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2037_top.jpg" alt="전국 모의고사 접수하기" usemap="#2037_apply" border="0" />
-            <map name="2037_apply" id="2037_apply">
-                <area shape="rect" coords="358,781,763,866" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" />
-            </map>
+        <div class="evtCtnsBox evtTop" data-aos="fade-left">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/09/2037_top.jpg" alt="전국 모의고사" />
+                <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank"  title="접수하기" style="position: absolute; left: 33.84%; top: 86.74%; width: 31.88%; height: 7.06%; z-index: 2;"></a>
+            </div>
         </div>
       
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2037_01.jpg" alt="시험 미리 만나기"  /> 
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2037_01.jpg" alt="시험 미리 만나기"  data-aos="fade-right"/> 
         </div>
         <div class="evtCtnsBox evt02">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2037_02.jpg" alt="접수 및 시행일정"  />  
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2037_02.jpg" alt="접수 및 시행일정"  data-aos="fade-left"/>  
             <div class="tabs">
                 <ul>
                     <li><a href="#tab01">서울(노량진)</a></li>
@@ -95,6 +94,14 @@
         
     </div>
     <!-- End Container -->
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+    $( document ).ready( function() {
+        AOS.init();
+    } );
+    </script>
 
     <script type="text/javascript">
         $regi_form = $('#regi_form');

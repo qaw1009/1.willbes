@@ -1147,7 +1147,14 @@ class OrderListModel extends BaseOrderModel
 
             // 상품명 추출
             if ($data['LearnPatternCcd'] == $this->_learn_pattern_ccd['off_pack_lecture']) {
-                $arr_prod_name = array_pluck(json_decode($data['OrderSubProdData'], true), 'ProdName'); // 종합반일 경우 서브강좌명 추출
+                // 종합반일 경우 서브강좌명 추출
+                $order_sub_prod_data = json_decode($data['OrderSubProdData'], true);
+                $arr_prod_name = [];
+                if (empty($order_sub_prod_data) === false) {
+                    foreach ($order_sub_prod_data as $sub_prod_row) {
+                        $arr_prod_name[] = get_var($sub_prod_row['ProdNameShort'], $sub_prod_row['ProdName']);
+                    }
+                }
             } else {
                 $arr_prod_name[0] = get_var($data['ProdNameShort'], $data['ProdName']);
             }

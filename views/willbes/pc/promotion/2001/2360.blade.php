@@ -105,7 +105,7 @@
     </form>
 
     <div class="evtContent NSK" id="evtContainer">
-        <div class="sky">
+        <div class="sky" id="QuickMenu">
             <a href="#pass">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2360_sky01.jpg" alt="무제한 패스">
             </a>  

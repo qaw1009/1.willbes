@@ -1,16 +1,20 @@
 //x86
-var STARPLAYER_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer-1.5.22.54.cab";
-var STARPLAYER_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer-1.5.22.54.exe";
-var STARPLAYER_VERSION = "1,5,22,54";
+//var STARPLAYER_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer-1.5.24.55.cab";
+//var STARPLAYER_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer-1.5.24.55.exe";
+var STARPLAYER_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer-1.5.27.60.cab";
+var STARPLAYER_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer-1.5.27.60.exe";
+var STARPLAYER_VERSION = "1,5,24,55";
 
 //x64
-var STARPLAYER64_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer64-1.5.22.54.cab";
-var STARPLAYER64_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer64-1.5.22.54.exe";
-var STARPLAYER64_VERSION = "1,5,22,54";
+//var STARPLAYER64_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer64-1.5.24.55.cab";
+//var STARPLAYER64_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer64-1.5.24.55.exe";
+var STARPLAYER64_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer64-1.5.27.60.cab";
+var STARPLAYER64_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer64-1.5.27.60.exe";
+var STARPLAYER64_VERSION = "1,5,24,55";
 
 //OSX
-// var STARPLAYER_OSX_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/StarPlayerAgent_1.0.5.17.pkg";
-// var STARPLAYER_OSX_VERSION = "1,0,5,17";
+//var STARPLAYER_OSX_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/StarPlayerAgent_1.0.5.17.pkg";
+//var STARPLAYER_OSX_VERSION = "1,0,5,17";
 var STARPLAYER_OSX_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/StarPlayerAgent_1.0.7.22.pkg";
 var STARPLAYER_OSX_VERSION = "1,0,7,22";
 

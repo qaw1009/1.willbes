@@ -427,6 +427,239 @@ class SupportProfQna extends BaseSupport
      */
     public function delete()
     {
+        if ($this->_reqP('del_method_type') == 'ajax') {
+            $this->_deleteforAjax();
+        } else {
+            $this->_deleteForDefault();
+        }
+    }
+
+    public function popupIndex(){
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        //상담유형
+        $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
+
+        $this->load->view('support/prof/layer_index_qna', [
+            'default_path' => $this->_default_path,
+            'arr_input' => $arr_input,
+            'arr_base' => $arr_base
+        ]);
+    }
+
+    /**
+     * ajax list
+     * @return CI_Output
+     */
+    public function listAjax()
+    {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $prof_idx = element('prof_idx',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $s_consult_type = element('s_consult_type',$arr_input);
+        $s_is_display = element('s_is_display',$arr_input);
+
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => $this->_bm_idx,
+                'b.TypeCcd' => $s_consult_type,
+                'b.IsUse' => 'Y',
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'b.Title' => $s_keyword,
+                    'b.Content' => $s_keyword
+                ]
+            ]
+        ];
+
+        // 공지숨기기
+        if ($s_is_display == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                'b.RegMemIdx' => (empty($this->session->userdata('mem_idx')) === false ? $this->session->userdata('mem_idx') : 0),
+                'b.RegType' => '0'
+            ]);
+        } else {
+            $arr_condition['ORG2']['RAW'] = [
+                'b.IsBest = ' => '1 OR (b.RegMemIdx = '.(empty($this->session->userdata('mem_idx')) === false ? $this->session->userdata('mem_idx') : 0).' AND b.RegType = 0)'
+            ];
+        }
+
+        $column = 'b.BoardIdx, b.CampusCcd, b.TypeCcd, b.IsBest, b.RegType, b.RegMemIdx, b.ProdName';
+        $column .= ', b.Title, b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt';
+        $column .= ', DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column .= ', b.IsPublic, b.CampusCcd_Name, b.TypeCcd_Name';
+        $column .= ', b.SiteName, b.ReplyStatusCcd, b.ReplyStatusCcd_Name';
+        $column .= ', IF(b.RegType=1, b.RegMemName, m.MemName) AS RegName';
+        $column .= ', IF(b.IsCampus=\'Y\',\'offline\',\'online\') AS CampusType';
+        $column .= ', IF(b.IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+
+        $list = [];
+        $total_rows = $this->supportBoardTwoWayFModel->listBoardForProf(true, $this->_site_code, $prof_idx, $arr_condition,'');
+        $paging = $this->pagination($this->_default_path.'/qna/listAjax/', $total_rows, $this->_paging_limit, $this->_paging_count, true);
+
+        if ($total_rows > 0) {
+            $list = $this->supportBoardTwoWayFModel->listBoardForProf(false, $this->_site_code, $prof_idx,$arr_condition,'',$column,$paging['limit'],$paging['offset'],$order_by);
+            foreach ($list as $idx => $row) {
+                $list[$idx]['AttachData'] = json_decode($row['AttachData'],true); //첨부파일
+            }
+        }
+
+        return $this->response([
+            'paging' => $paging,
+            'ret_data' => $list,
+        ]);
+    }
+
+    public function popupCreate()
+    {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $s_cate_code = element('s_cate_code',$arr_input);
+        $s_prof_idx = element('s_prof_idx',$arr_input);
+        $s_subject_idx = element('s_subject_idx',$arr_input);
+        $board_idx = element('board_idx',$arr_input);
+
+        if ($this->_validationData([$s_cate_code, $s_prof_idx, $s_subject_idx]) !== true) {
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
+
+        //질문유형
+        $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
+
+        // 수강중인 강좌 목록 [단강좌 AND 수강이력 AND 강좌종료일 + 30 데이터]
+        $arr_condition = [
+            'RAW' => [
+                'MemIdx = ' => empty($this->session->userdata('mem_idx')) === true ? '\'\'' : $this->session->userdata('mem_idx'),
+                'RealLecEndDate >= ' => 'DATE_FORMAT(DATE_ADD(NOW(), INTERVAL +30 DAY),\'%Y-%m-%d\')',
+                'lastStudyDate != ' => '\'\''
+            ]
+        ];
+        $arr_base['on_my_lecture'] = $this->supportBoardTwoWayFModel->getOnMyLectureArray($arr_condition);
+
+        $method = 'POST';
+        $data = null;
+
+        if (empty($board_idx) === false) {
+            $method = 'PUT';
+            $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
+            if($result !== true) {
+                show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
+            }
+
+            $arr_condition = [
+                'EQ' => [
+                    'BmIdx' => $this->_bm_idx,
+                    'IsUse' => 'Y'
+                ],
+            ];
+
+            $column = '
+                BoardIdx, b.SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
+                , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
+                , Title, Content, ReadCnt, SettingReadCnt
+                , RegDatm, RegMemIdx, RegMemId, RegMemName
+                , ReplyContent, ReplyRegDatm, ReplyStatusCcd
+                , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
+                , VocCcd_Name, MdCateCode_Name, SubJectName
+                , IF(RegType=1, b.RegMemName, m.MemName) AS RegName
+                , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
+                , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
+                , AttachData, Category_String
+            ';
+
+            $data = $this->supportBoardTwoWayFModel->findBoard($board_idx,$arr_condition,$column);
+            if (empty($data)) {
+                show_alert('게시글이 존재하지 않습니다.', 'back');
+            }
+            if ($data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
+                show_alert('잘못된 접근 입니다.', 'back');
+            }
+            $data['AttachData'] = json_decode($data['AttachData'],true);    //첨부파일
+        }
+
+        $this->load->view('support/prof/layer_create_qna', [
+            'default_path' => $this->_default_path
+            ,'method' => $method
+            ,'arr_input' => $arr_input
+            ,'arr_base' => $arr_base
+            ,'data' => $data
+            ,'board_idx' => $board_idx
+            ,'reg_type' => $this->_reg_type
+            ,'attach_file_cnt' => $this->supportBoardTwoWayFModel->_attach_img_cnt
+        ]);
+    }
+
+    public function popupShow()
+    {
+        $arr_input = $this->_reqG(null);
+        $prof_idx = element('s_prof_idx', $arr_input);
+        $board_idx = element('board_idx', $arr_input);
+        if ($this->_validationData([$prof_idx, $board_idx]) !== true) {
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'BmIdx' => $this->_bm_idx,
+                'IsUse' => 'Y'
+            ],
+        ];
+
+        $column = '
+            BoardIdx, b.SiteCode, MdCateCode, CampusCcd
+            , RegType, TypeCcd, IsBest, IsPublic
+            , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
+            , Title, Content, ReadCnt, SettingReadCnt
+            , RegDatm
+            , RegMemIdx, RegMemId, RegMemName
+            , ReplyContent, ReplyRegDatm, ReplyStatusCcd
+            , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
+            , VocCcd_Name, MdCateCode_Name, SubJectName
+            , IF(RegType=1, b.RegMemName, m.MemName) AS RegName
+            , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
+            , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
+            , AttachData
+        ';
+
+        $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
+        if($result !== true) {
+            show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
+        }
+
+        $data = $this->supportBoardTwoWayFModel->findBoard($board_idx,$arr_condition,$column);
+        if (empty($data)) {
+            show_alert('게시글이 존재하지 않습니다.', 'back');
+        }
+
+        //교수 정보 조회
+        $arr_base['prof_data'] = $this->professorFModel->findProfessorByProfIdx($prof_idx);
+
+        if ((empty($arr_base['prof_data']['IsBoardPublic']) === false && $arr_base['prof_data']['IsBoardPublic'] == 'Y')
+            && $data['RegType'] == '0' && $data['IsPublic'] == 'N' && $data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
+
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
+        $data['ReplyContent'] = $this->_getBoardForContent($data['ReplyContent'], $data['AttachData'], 1);
+
+        $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
+        $this->load->view('support/prof/layer_show_qna', [
+            'default_path' => $this->_default_path,
+            'arr_input' => $arr_input,
+            'data' => $data,
+            'board_idx' => $board_idx,
+            'reply_type_complete' => $this->_groupCcd['reply_status_ccd_complete']
+        ]);
+    }
+
+
+    /**
+     * 데이터 삭제 [기본형]
+     */
+    private function _deleteForDefault()
+    {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $board_idx = element('board_idx',$arr_input);
         $s_site_code = element('s_site_code',$arr_input);
@@ -450,11 +683,33 @@ class SupportProfQna extends BaseSupport
         }
 
         $result = $this->supportBoardTwoWayFModel->boardDelete($board_idx, '');
+
+        // 수동 쿼리 로그 저장 (후킹 안됨)
+        $this->save_log_queries();
+
         if (empty($result['ret_status']) === false) {
             show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
         }
 
         show_alert('삭제되었습니다.', front_url($this->_default_path.'/index?'.$get_params));
+    }
+
+    /**
+     * 데이터 삭제 ajax 호출용
+     */
+    private function _deleteforAjax()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'board_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->supportBoardTwoWayFModel->boardDelete($this->_reqP('board_idx'), '');
+        $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
     /**

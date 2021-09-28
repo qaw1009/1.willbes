@@ -47,7 +47,9 @@ class SupportersMemberModel extends WB_Model
                 ) AS AssignmentCnt,
                 ( SELECT COUNT(*) FROM lms_board WHERE BmIdx = "'.$this->_arr_bm_idx['suggest'].'" AND SupportersIdx = a.SupportersIdx AND RegMemIdx = a.MemIdx ) AS SuggestCnt,
                 ( 
-                    SELECT COUNT(*) AS AttendanceCnt FROM lms_supporters_attendance AS ad WHERE a.SupportersIdx = ad.SupportersIdx AND a.MemIdx = ad.MemIdx AND ad.IsStatus = "Y"
+                    SELECT COUNT(*) AS AttendanceCnt FROM lms_supporters_attendance AS ad
+                    WHERE a.SupportersIdx = ad.SupportersIdx AND a.MemIdx = ad.MemIdx AND ad.IsStatus = "Y"
+                    AND ad.AttendanceDay BETWEEN DATE_FORMAT(LAST_DAY(NOW() - INTERVAL 1 MONTH) + INTERVAL 1 DAY, "%Y%m%d") AND DATE_FORMAT(LAST_DAY(NOW()), "%Y%m%d")
                 ) AS AttendanceCnt
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();

@@ -79,7 +79,7 @@
                     <th>학년</th>
                     <th>재학여부</th>
                     <th>응시직렬</th>
-                    <th>출석일수</th>
+                    <th>출석일수({{date("m")}}월)</th>
                     <th>등록자</th>
                     <th>등록일</th>
                     <th>수정일</th>
@@ -145,7 +145,9 @@
                     {'data' : 'SchoolYearCcdName'},
                     {'data' : 'IsSchoolCcdName'},
                     {'data' : 'SerialCcdName'},
-                    {'data' : 'AttendanceCnt'},
+                    {'data' : 'AttendanceCnt', 'render' : function(data, type, row, meta) {
+                            return '<a href="javascript:void(0);" class="btn-calendar" data-supporters-idx="' + row.SupportersIdx + '" data-member-idx="' + row.MemIdx + '"><u>' + data + '</u></a>';
+                        }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
                     {'data' : 'UpdDatm'},
@@ -171,6 +173,22 @@
             //데이터 Read 페이지
             $list_table.on('click', '.btn-read', function() {
                 location.href='{{ site_url("/site/supporters/member/read") }}/' + $(this).data('srm-idx') + dtParamsToQueryString($datatable);
+            });
+
+            $list_table.on('click', '.btn-calendar', function() {
+                var _url = "{{ site_url("/site/supporters/member/calendarModal/") }}";
+                var supporters_idx = $(this).data("supporters-idx");
+                var member_idx = $(this).data("member-idx");
+
+                $('.btn-calendar').setLayer({
+                    "url" : _url,
+                    "width" : "900",
+                    'add_param_type' : 'param',
+                    'add_param' : [
+                        { 'id' : 'supporters_idx', 'name' : '서포터즈식별자', 'value' : supporters_idx, 'required' : true },
+                        { 'id' : 'member_idx', 'name' : '회원식별자', 'value' : member_idx, 'required' : true }
+                    ]
+                });
             });
         });
     </script>

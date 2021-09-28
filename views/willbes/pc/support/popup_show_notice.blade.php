@@ -60,7 +60,7 @@
                     </tbody>
                 </table>
                 <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">
-                    <button data-board-idx="" data-board-url="{{front_url($default_path.'/notice/popupIndex?'.$get_params)}}" onclick="go_board_popup(this)" class="mem-Btn bg-purple-gray bd-dark-gray">
+                    <button data-board-idx="" data-board-url="{{front_url($default_path.'/notice/popupIndex?'.$get_params)}}" onclick="_popup_notice(this)" class="mem-Btn bg-purple-gray bd-dark-gray">
                         <span>목록</span>
                     </button>
                 </div>
@@ -77,7 +77,7 @@
                                 <td class="w-prev bg-light-gray"><strong>이전글</strong></td>
                                 <td class="tx-left pl20">
                                     @if(empty($pre_data) === false)
-                                        <a href="#none" data-board-idx="{{$pre_data['BoardIdx']}}" data-board-url="{{front_url($default_path.'/notice/popupShow?'.$get_params)}}" onclick="go_board_popup(this)">{{$pre_data['Title']}}</a><span class="row-line">|</span>
+                                        <a href="#none" data-board-idx="{{$pre_data['BoardIdx']}}" data-board-url="{{front_url($default_path.'/notice/popupShow?'.$get_params)}}" onclick="_popup_notice(this)">{{$pre_data['Title']}}</a><span class="row-line">|</span>
                                     @else
                                         이전글이 없습니다.
                                     @endif
@@ -88,7 +88,7 @@
                                 <td class="w-next bg-light-gray"><strong>다음글</strong></td>
                                 <td class="tx-left pl20">
                                     @if(empty($next_data) === false)
-                                        <a href="#none" data-board-idx="{{$next_data['BoardIdx']}}" data-board-url="{{front_url($default_path.'/notice/popupShow?'.$get_params)}}" onclick="go_board_popup(this)">{{$next_data['Title']}}</a><span class="row-line">|</span>
+                                        <a href="#none" data-board-idx="{{$next_data['BoardIdx']}}" data-board-url="{{front_url($default_path.'/notice/popupShow?'.$get_params)}}" onclick="_popup_notice(this)">{{$next_data['Title']}}</a><span class="row-line">|</span>
                                     @else
                                         다음글이 없습니다.
                                     @endif
@@ -107,7 +107,7 @@
 
 <script type="text/javascript">
     // 레이어팝업
-    function go_board_popup(obj){
+    function _popup_notice(obj){
         var ele_id = 'WrapReply';
         var _url = $(obj).data('board-url');
         var data = {

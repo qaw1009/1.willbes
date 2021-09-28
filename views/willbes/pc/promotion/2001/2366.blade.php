@@ -78,7 +78,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2366_01.jpg" alt="최저가" />
                 <div class="price price01">
                     <strong>139</strong>만원<br>
-                    <input type="radio" id="y_pkg1" name="y_pkg" value="{{ (ENVIRONMENT == 'production' ? '186166' : '159718') }}" data-sale-price="970000"/> <label for="y_pkg1">신광은경찰간부 L-PASS</label>
+                    <input type="radio" id="y_pkg1" name="y_pkg" value="{{ (ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '186166' : '159718') }}" data-sale-price="970000"/> <label for="y_pkg1">신광은경찰간부 L-PASS</label>
                 </div>
             </div>
             <div class="check">

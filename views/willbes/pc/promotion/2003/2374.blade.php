@@ -73,7 +73,7 @@
         <div class="evtCtnsBox evt_apply">
             <div class="wrap"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2374_apply.jpg" alt="" />
-                <a href="javascript:alert('Coming Soon!')" title="체험팩 신청하기" style="position: absolute;left: 31.89%;top: 69.84%;width: 36.04%;height: 9.64%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2357" target="_blank" title="체험팩 신청하기" style="position: absolute;left: 31.89%;top: 69.84%;width: 36.04%;height: 9.64%;z-index: 2;"></a>
             </div>    
 		</div>
 

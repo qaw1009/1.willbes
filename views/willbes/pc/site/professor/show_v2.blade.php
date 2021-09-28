@@ -75,6 +75,13 @@
                             </a>
                         </li>
                     @endif
+                    @if($data['IsQnaBoard'] == 'Y') {{-- 학습Q&A --}}
+                        <li>
+                            <a href="javascript:void(0);" data-board-idx="" data-board-url="{{front_url('/prof/qna/popupIndex')}}" onclick="go_board_popup(this)">
+                                <img src="{{ img_static_url('promotion/main/2018/prof_icon06.png') }}" alt="첨삭게시판"> 첨삭게시판
+                            </a>
+                        </li>
+                    @endif
                     {{--<li class="sampleLec">
                         <a href="#none">
                             <img src="{{ img_static_url('promotion/main/2018/prof_icon07.png') }}" alt="샘플강의"> 샘플강의
@@ -211,7 +218,7 @@
             'board_idx' : $(obj).data('board-idx'),
             'subject_idx' : '{{ element('subject_idx', $arr_input) }}'
         };
-
+        console.log(data);
         sendAjax(_url, data, function(ret) {
             $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
         }, showAlertError, false, 'GET', 'html');

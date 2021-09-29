@@ -9,7 +9,7 @@
         <input type="hidden" name="supporters_idx" value="{{ $supporters_idx }}"/>
         <input type="hidden" name="ba_idx" value="{{ $data['am_BaIdx'] }}"/>
         <input type="hidden" name="save_type">
-        <a class="closeBtn" href="#none" onclick="closeWin('EDITPASS')"><img src="{{ img_url('sub/close.png') }}"></a>
+        <a class="closeBtn" href="javascript:void(0);" onclick="closeWin('EDITPASS')"><img src="{{ img_url('sub/close.png') }}"></a>
         <div class="Layer-Tit NG tx-dark-black">과제제출</div>
         <div class="Layer-Cont">
             <div class="PASSZONE-Lec-Section">
@@ -25,7 +25,7 @@
                             <th class="w-tit bg-light-white strong">과제제목</th>
                             <td class="w-data tx-left tx-gray pl15">
                                 {{$data['Title']}}
-                                <span class="MoreBtn"><a class="arrow" href="#none"><span class="txt">열기</span> <span class="arrow-Btn">></span></a></span>
+                                <span class="MoreBtn"><a class="arrow" href="javascript:void(0);"><span class="txt">열기</span> <span class="arrow-Btn">></span></a></span>
                             </td>
                         </tr>
                         <tr>

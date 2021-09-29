@@ -45,7 +45,7 @@
                 <div class="d_day NSK">
                     <ul>                       
                         <li>
-                            <p class="NSK-Black"> D-30</p>
+                            <p class="NSK-Black">{{ (empty($arr_base['dday_data'][0]['DDay']) === false) ? 'D'.$arr_base['dday_data'][0]['DDay'] : '' }}</p>
                         </li>
                     </ul>
                 </div>

@@ -60,13 +60,13 @@
                     add_table += '<li>';
                         if (item.am_AssignmentStatusCcd == '{{ $arr_input['arr_save_type_ccd'][1] }}') {
                             if (now_day >= item.SupportersStartDate.replace(/-/gi,'') && now_day <= item.SupportersEndDate.replace(/-/gi,'')) {
-                                add_table += '<span class="workBox workBox2"><a href="#none" onclick="javascript:goEdit(\'modify\',\''+item.BoardIdx+'\');">과제수정</a></span>';
+                                add_table += '<span class="workBox workBox2"><a href="javascript:void(0);" onclick="javascript:goEdit(\'modify\',\''+item.BoardIdx+'\'); return false;">과제수정</a></span>';
                             } else {
-                                add_table += '<span class="workBox workBox3"><a href="#none" onclick="javascript:goEdit(\'show\',\''+item.BoardIdx+'\');">제출완료</a></span>';
+                                add_table += '<span class="workBox workBox3"><a href="javascript:void(0);" onclick="javascript:goEdit(\'show\',\''+item.BoardIdx+'\'); return false;">제출완료</a></span>';
                             }
                         } else {
                             if (now_day >= item.SupportersStartDate.replace(/-/gi,'') && now_day <= item.SupportersEndDate.replace(/-/gi,'')) {
-                                add_table += '<span class="workBox workBox1"><a href="#none" onclick="javascript:goEdit(\'ing\',\''+item.BoardIdx+'\');">과제제출</a></span>';
+                                add_table += '<span class="workBox workBox1"><a href="javascript:void(0);" onclick="javascript:goEdit(\'ing\',\''+item.BoardIdx+'\'); return false;">과제제출</a></span>';
                             } else {
                                 add_table += '<span class="workBox workBox4">미제출</span>';
                             }

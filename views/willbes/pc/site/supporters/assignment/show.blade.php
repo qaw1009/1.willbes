@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 fix abs" style="display: block;">
-    <a class="closeBtn" href="#none" onclick="closeWin('MARKPASS')"><img src="{{ img_url('sub/close.png') }}"></a>
+    <a class="closeBtn" href="javascript:void(0);" onclick="closeWin('MARKPASS')"><img src="{{ img_url('sub/close.png') }}"></a>
     <div class="Layer-Tit NG tx-dark-black">제출 답안 확인</div>
     <div class="Layer-Cont">
         <div class="PASSZONE-Lec-Section">

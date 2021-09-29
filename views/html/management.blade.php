@@ -861,6 +861,12 @@
                         </div>
                     </div>
 
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
                     {{--글쓰기--}}
                     <div class="mt30">
                         <table class="tableTypeA">
@@ -913,6 +919,12 @@
                             <span>저장</span>
                         </button>
                     </div>
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
 
                     {{--글보기--}}
                     <div class="mt30">

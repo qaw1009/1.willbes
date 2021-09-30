@@ -124,7 +124,7 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner" id="QuickMenu">
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/2176" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_sky01.png" alt="적중"></a>
-            <a href="https://pass.willbes.net/pass/event/show/ongoing" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/08/2156_sky02.png" alt="완전정복"></a>
+            <a href="https://pass.willbes.net/pass/event/list/ongoing" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/08/2156_sky02.png" alt="완전정복"></a>
             {{-- 9/29 적용 예정
             <a href="#none" ><img src="https://static.willbes.net/public/images/promotion/2021/09/2156_sky02.png" alt="완전정복"></a>
                 --}}
@@ -471,7 +471,7 @@
         <section class="evtCtnsBox wb_cts02" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2156_02s.jpg" alt="적중 또 적중"/>
-                <a href="https://pass.willbes.net/pass/event/show/ongoing" target="_blank" title="적중사례 자세히 보기" style="position: absolute;  left: 36.79%; top: 88.43%; width: 26.7%; height: 6.65%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/event/list/ongoing" target="_blank" title="적중사례 자세히 보기" style="position: absolute;  left: 36.79%; top: 88.43%; width: 26.7%; height: 6.65%; z-index: 2;"></a>
             </div>
         </section>
 

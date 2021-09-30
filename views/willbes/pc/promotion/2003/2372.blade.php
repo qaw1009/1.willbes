@@ -18,7 +18,9 @@
         /************************************************************/
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/09/2372_top_bg.jpg) no-repeat center top;}
-          
+
+        .wb_cts03 {padding-bottom:100px;}
+
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -39,12 +41,11 @@
         </div>    
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2372_03.jpg" alt="2개월" data-aos="fade-right"/>            
-        </div>               
-
-        @if(empty($arr_base['display_product_data']) === false)
-            @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-        @endif   
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/2372_03.jpg" alt="2개월" data-aos="fade-right"/>    
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+            @endif           
+        </div>           
 
     </div>
     <!-- End Container -->

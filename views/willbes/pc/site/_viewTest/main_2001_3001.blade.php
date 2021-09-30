@@ -144,31 +144,31 @@
                 </ul>
 
                 @if (empty(element('메인_유튜브', $data['arr_main_banner'])) === false)
-                    <div class="will-nTit NSK-Black mt100">
-                        신광은경찰팀 유튜브 채널 모음
-                    </div>
+                <div class="will-nTit NSK-Black mt100">
+                    신광은경찰팀 유튜브 채널 모음 
+                </div>   
 
-                    <div class="tube_box">
-                        <ul class="tube_slider">
-                            {{-- 배너함수 사용 불가 --}}
-                            @foreach(element('메인_유튜브', $data['arr_main_banner']) as $row)
-                                <li>
-                                    @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
-                                        <a href="javascript:void(0);">
-                                            <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
-                                        </a>
-                                    @else
-                                        <a href="{{front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www')}}" target="{{$row['LinkType']}}">
-                                            <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
-                                        </a>
-                                    @endif
-                                    <div class="tube_title">{{ $row['BannerName'] }}</div>
-                                </li>
-                            @endforeach
-                        </ul>
-                        <p class="leftBtn"><a id="tube_slider_left"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_left.png"></a></p>
-                        <p class="rightBtn"><a id="tube_slider_right"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_right.png"></a></p>
-                    </div>
+                <div class="tube_box">
+                    <ul class="tube_slider">
+                        {{-- 배너함수 사용 불가 --}}
+                        @foreach(element('메인_유튜브', $data['arr_main_banner']) as $row)
+                            <li>
+                                @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
+                                    <a href="javascript:void(0);">
+                                        <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                    </a>
+                                @else
+                                    <a href="{{front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www')}}" target="{{$row['LinkType']}}">
+                                        <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                    </a>
+                                @endif
+                                <div class="tube_title">{{ $row['BannerName'] }}</div>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <p class="leftBtn"><a id="tube_slider_left"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_left.png"></a></p>
+                    <p class="rightBtn"><a id="tube_slider_right"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_right.png"></a></p>
+                </div>
                 @endif
             </div>
         </div>

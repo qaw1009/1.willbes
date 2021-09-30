@@ -324,7 +324,6 @@
 	color: #0c5dc0;
 }
 .cop .will-nTit {font-size:35px !important; border:0 !important; margin-bottom:30px;}
-.cop .will-nTits {font-size:35px !important; border:0 !important; margin-bottom:-70px;}
 
 .cop .pro_box {display: flex; flex-wrap: wrap; justify-content: space-between;}
 .cop .pro_box > li {
@@ -343,7 +342,7 @@
 .cop .Sec02 {position:relative; height:390px}
 .cop .Sec02 div {position:absolute; top:0; left:50%; margin-left:-1000px}
 
-.cop .SectionBg02 {background:#f8f0dd; padding:100px 0 0}
+.cop .SectionBg02 {background:#f8f0dd; padding:100px 0}
 .cop .SectionBg02 .will-nTit {color:#000}
 
 .cop .SecBanner06 {margin-right:-20px; margin-top:20px}
@@ -402,17 +401,17 @@
 .cop .bookContent > p.rightBtn {margin-left:600px; background-position: right center;}
 
 /*유트브 채널*/
-.combine .tube_wrap {margin:100px 0;}
-.combine .tube_box {position:relative;}   
-.combine .tube_slider {width:1120px; height:250px; overflow:hidden;}
-.combine .tube_slider:after {content:""; display: block; clear:both}
-.combine .tube_slider li {display:inline; float:left; width:20%;}
-.combine .tube_slider li a {display:block; width:224px; text-align: center;  } 
-.combine .tube_slider li a img {margin:0 auto}
-.combine .tube_slider li div.tube_title {height:40px; line-height:40px; font-size:14px; text-align:center; width:80%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; margin:0 auto;}
-.combine .tube_box p {position:absolute; top:50%; margin-top:-40px; width:60px; height:60px; z-index:10}
-.combine .tube_box p.leftBtn {left:-30px}
-.combine .tube_box p.rightBtn {right:-30px}
+.cop .tube_box {position:relative;}   
+.cop .tube_slider {width:1120px; height:250px; overflow:hidden;}
+
+.cop .tube_slider li {display:inline; float:left; width:20%;}
+.cop .tube_slider li a {display:block; width:224px; text-align: center;} 
+.cop .tube_slider li a img {margin:0 auto}
+.cop .tube_slider li div.tube_title {height:40px; line-height:40px; font-size:14px; text-align:center; width:80%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; margin:0 auto;}
+.cop .tube_slider:after {content:""; display: block; clear:both}
+.cop .tube_box p {position:absolute; top:50%; margin-top:-40px; width:60px; height:60px; z-index:10}
+.cop .tube_box p.leftBtn {left:-30px}
+.cop .tube_box p.rightBtn {right:-30px}
 
 /*검정제 교수진*/
 .cop .SecBanner11 {

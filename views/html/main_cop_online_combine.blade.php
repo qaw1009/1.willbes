@@ -452,11 +452,9 @@
                 </li>
             </ul>
 
-
-            <div class="will-nTits NSK-Black mt100">
+            <div class="will-nTit NSK-Black mt100">
                 신광은경찰팀 유튜브 채널 모음 
-            </div>  
-                     
+            </div>                       
              
             <div class="tube_box">
                 <ul class="tube_slider">
@@ -493,7 +491,7 @@
                 </ul> 
                 <p class="leftBtn"><a id="tube_slider_left"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_left.png"></a></p>                   
                 <p class="rightBtn"><a id="tube_slider_right"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_right.png"></a></p>                              
-            </div>   
+            </div>  
                                              
         </div>
     </div>

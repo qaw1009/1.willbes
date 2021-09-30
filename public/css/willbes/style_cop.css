@@ -402,17 +402,17 @@
 .cop .bookContent > p.rightBtn {margin-left:600px; background-position: right center;}
 
 /*유트브 채널*/
-.combine .tube_wrap {margin:100px 0;}
-.combine .tube_box {position:relative;}   
-.combine .tube_slider {width:1120px; height:250px; overflow:hidden;}
-.combine .tube_slider:after {content:""; display: block; clear:both}
-.combine .tube_slider li {display:inline; float:left; width:20%;}
-.combine .tube_slider li a {display:block; width:224px; text-align: center;  } 
-.combine .tube_slider li a img {margin:0 auto}
-.combine .tube_slider li div.tube_title {height:40px; line-height:40px; font-size:14px; text-align:center; width:80%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; margin:0 auto;}
-.combine .tube_box p {position:absolute; top:50%; margin-top:-40px; width:60px; height:60px; z-index:10}
-.combine .tube_box p.leftBtn {left:-30px}
-.combine .tube_box p.rightBtn {right:-30px}
+.cop .tube_box {position:relative; margin:100px 0}   
+.cop .tube_slider {width:1120px; height:250px; overflow:hidden;}
+
+.cop .tube_slider li {display:inline; float:left; width:20%;}
+.cop .tube_slider li a {display:block; width:224px; text-align: center;} 
+.cop .tube_slider li a img {margin:0 auto}
+.cop .tube_slider li div.tube_title {height:40px; line-height:40px; font-size:14px; text-align:center; width:80%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; margin:0 auto;}
+.cop .tube_slider:after {content:""; display: block; clear:both}
+.cop .tube_box p {position:absolute; top:50%; margin-top:-40px; width:60px; height:60px; z-index:10}
+.cop .tube_box p.leftBtn {left:-30px}
+.cop .tube_box p.rightBtn {right:-30px}
 
 /*검정제 교수진*/
 .cop .SecBanner11 {

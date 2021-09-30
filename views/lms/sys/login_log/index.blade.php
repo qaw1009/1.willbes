@@ -14,18 +14,40 @@
                     <div class="col-md-2">
                         <p class="form-control-static">이름, 아이디, 아이피 검색 가능</p>
                     </div>
+                    <label class="control-label col-md-1">조건</label>
+                    <div class="col-md-5 form-inline">
+                        <select class="form-control" id="search_role_idx" name="search_role_idx" title="권한유형">
+                            <option value="">권한유형</option>
+                            @foreach($roles as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control" id="search_login_log_ccd" name="search_login_log_ccd" title="로그유형">
+                            <option value="">로그유형</option>
+                            @foreach($arr_login_log_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control" id="search_is_use" name="search_is_use" title="활동여부">
+                            <option value="">활동여부</option>
+                            <option value="Y">활동</option>
+                            <option value="N">비활동</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-1" for="search_start_date">날짜</label>
                     <div class="col-md-5 form-inline">
-                        <div class="input-group">
+                        <div class="input-group mb-0">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" title="조회시작일자">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" title="조회시작일자" autocomplete="off">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" title="조회종료일자">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" title="조회종료일자" autocomplete="off">
                         </div>
                     </div>
                 </div>

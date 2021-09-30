@@ -7,7 +7,9 @@ class SupportersRegistModel extends WB_Model
         'lms_board' => 'lms_board',
         'supporters' => 'lms_supporters',
         'supporters_r_coupon' => 'lms_supporters_r_coupon',
+        'supporters_r_product' => 'lms_supporters_r_product',
         'lms_coupon' => 'lms_coupon',
+        'lms_product' => 'lms_product',
         'lms_site' => 'lms_site',
         'wbs_sys_admin' => 'wbs_sys_admin'
     ];
@@ -135,6 +137,10 @@ class SupportersRegistModel extends WB_Model
             }
             $supporters_idx = $this->_conn->insert_id();
 
+            if($this->_storSupportersForProduct($input, $supporters_idx) !== true) {
+                throw new \Exception('상품 등록에 실패했습니다.');
+            }
+
             if($this->_setCoupon($input, $supporters_idx) !== true) {
                 throw new \Exception('쿠폰 등록에 실패했습니다.');
             }
@@ -171,6 +177,10 @@ class SupportersRegistModel extends WB_Model
                 throw new \Exception('서포터즈 기수 정보 수정에 실패했습니다.');
             }
 
+            if($this->_storSupportersForProduct($input, $supporters_idx) !== true) {
+                throw new \Exception('상품 등록에 실패했습니다.');
+            }
+
             if($this->_setCoupon($input, $supporters_idx) !== true) {
                 throw new \Exception('쿠폰 등록에 실패했습니다.');
             }
@@ -201,6 +211,31 @@ class SupportersRegistModel extends WB_Model
 
         // 쿼리 실행
         return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
+
+    /**
+     * 상품 조회
+     * @param $supporters_idx
+     * @return mixed
+     */
+    public function listSupportersForProduct($supporters_idx)
+    {
+        $column = 'a.SrpIdx, a.SupportersIdx, a.ProdCode, b.ProdName';
+        $arr_condition = [
+            'EQ' => [
+                'a.SupportersIdx' => $supporters_idx,
+                'a.IsStatus' => 'Y'
+            ]
+        ];
+        $from = "
+            FROM {$this->_table['supporters_r_product']} as a
+            INNER JOIN {$this->_table['lms_product']} b on a.ProdCode = b.ProdCode and b.IsStatus='Y'
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where)->result_array();
     }
 
     /**
@@ -300,6 +335,72 @@ class SupportersRegistModel extends WB_Model
         return $result;
     }
 
+
+    /**
+     * 상품정보 등록
+     * @param array $input
+     * @param string $supporters_idx
+     */
+    private function _storSupportersForProduct($input = [], $supporters_idx = '')
+    {
+        try {
+            $arr_prod_code = element('ProdCode',$input);
+
+            //기존 쿠폰 정보 상태값 변경
+            if($this->_productDelete($supporters_idx) !== true) {
+                throw new \Exception('상품 수정에 실패했습니다.');
+            }
+
+            if(empty($arr_prod_code) === false) {
+                foreach ($arr_prod_code as $key => $val) {
+                    $input_data = [
+                        'SupportersIdx' => $supporters_idx,
+                        'ProdCode' => $val,
+                        'RegAdminIdx' => $this->session->userdata('admin_idx')
+                    ];
+
+                    if($this->_conn->set($input_data)->insert($this->_table['supporters_r_product']) === false) {
+                        //echo $this->_conn->last_query();
+                        throw new \Exception('상품 등록에 실패했습니다.');
+                    }
+                }
+            }
+
+            if (empty($arr_del_prod_code) === false) {
+
+            }
+
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 등록된 상품 삭제처리
+     * @param $supporters_idx
+     * @return bool
+     */
+    private function _productDelete($supporters_idx)
+    {
+        try {
+            //기존 정보 상태값 변경
+            $del_data = [
+                'IsStatus' => 'N',
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+            $this->_conn->set($del_data)->where('SupportersIdx', $supporters_idx)->where('IsStatus', 'Y');
+            if ($this->_conn->update($this->_table['supporters_r_product']) === false) {
+                //echo $this->_conn->last_query();
+                throw new \Exception('이전 상품 정보 수정에 실패했습니다.');
+            }
+            /*  기존 정보 상태값 변경 */
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+
     /**
      * 연결 쿠폰 등록
      * @param array $input
@@ -310,7 +411,7 @@ class SupportersRegistModel extends WB_Model
     {
         try {
             //기존 쿠폰 정보 상태값 변경
-            if($this->_setDataDelete($supporters_idx) !== true) {
+            if($this->_couponDelete($supporters_idx) !== true) {
                 throw new \Exception('쿠폰 수정에 실패했습니다.');
             }
 
@@ -341,7 +442,7 @@ class SupportersRegistModel extends WB_Model
      * @param $supporters_idx
      * @return bool|string
      */
-    private function _setDataDelete($supporters_idx)
+    private function _couponDelete($supporters_idx)
     {
         try {
             //기존 정보 상태값 변경
@@ -380,6 +481,7 @@ class SupportersRegistModel extends WB_Model
             ,'StartDate' => element('start_date',$input)
             ,'EndDate' => element('end_date',$input)
             ,'CouponIssueCcd' => element('coupon_issue_ccd',$input)
+            ,'MenuInfo' => (empty(element('menu_info',$input)) === false) ? implode(',',element('menu_info',$input)) : ''
             ,'IsUse' => element('is_use',$input)
         ];
         return $input_data;

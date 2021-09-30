@@ -71,13 +71,16 @@ class Regist extends BaseSupporters
         $data = null;
         $arr_base['arr_site_code'] = $this->_listSite();
         $arr_base['coupon_issue_ccd'] = $this->_couponIssueCcd();
-        $arr_base['supporters_type'] = $this->_getCcdData($this->_ccd['supporters_type']);
+
+        $arr_ccd_data = $this->_getCcdArrayData([$this->_ccd['supporters_type'],$this->_ccd['supporters_menu']]);
+        $arr_base['supporters_type'] = $arr_ccd_data[$this->_ccd['supporters_type']];
+        $arr_base['supporters_menu'] = $arr_ccd_data[$this->_ccd['supporters_menu']];
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $arr_base['supporters_idx'] = $params[0];
             $column = '
-                a.SupportersIdx, a.SiteCode, a.Title, a.SupportersTypeCcd, a.SupportersYear, a.SupportersNumber, a.StartDate, a.EndDate, a.CouponIssueCcd, a.IsUse, a.RegDatm, a.RegAdminIdx,
+                a.SupportersIdx, a.SiteCode, a.Title, a.SupportersTypeCcd, a.SupportersYear, a.SupportersNumber, a.StartDate, a.EndDate, a.CouponIssueCcd, a.MenuInfo, a.IsUse, a.RegDatm, a.RegAdminIdx,
                 b.SiteName, c.wAdminName as RegAdminName, d.wAdminName as UpdAdminName
             ';
             $arr_condition = [
@@ -92,6 +95,9 @@ class Regist extends BaseSupporters
 
             //쿠폰조회
             $arr_base['arr_coupon_data'] = $this->supportersRegistModel->listSupportersForCoupon($arr_base['supporters_idx']);
+
+            //쿠폰조회
+            $arr_base['arr_product_data'] = $this->supportersRegistModel->listSupportersForProduct($arr_base['supporters_idx']);
         }
 
         $this->load->view("site/supporters/regist/create", [
@@ -106,6 +112,8 @@ class Regist extends BaseSupporters
         $rules = [
             ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
             ['field' => 'supporters_type_ccd', 'label' => '서포터즈 유형', 'rules' => 'trim|required|integer'],
+            ['field' => 'ProdCode[]', 'label' => '상품코드', 'rules' => 'callback_validateRequiredIf[supporters_type_ccd,736002]'],
+            ['field' => 'menu_info[]', 'label' => '메뉴운영여부', 'rules' => 'callback_validateRequiredIf[supporters_type_ccd,736002]'],
             ['field' => 'supporters_year', 'label' => '기수(년)', 'rules' => 'trim|required'],
             ['field' => 'supporters_number', 'label' => '기수', 'rules' => 'trim|required'],
             ['field' => 'start_date', 'label' => '운영시작일', 'rules' => 'trim|required'],

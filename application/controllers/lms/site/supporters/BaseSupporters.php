@@ -11,7 +11,8 @@ class BaseSupporters extends \app\controllers\BaseController
         'year' => '721',    //학년
         'is_school' => '722',  //재학여부
         'exam_period' => '723',  //시험준비기간
-        'supporters_type' => '736'  //서포터즈유형
+        'supporters_type' => '736',  //서포터즈유형
+        'supporters_menu' => '746'  //서포터즈메뉴
     ];
     protected $_used_ccd = ['685002' => '', '685003' => ''];
 

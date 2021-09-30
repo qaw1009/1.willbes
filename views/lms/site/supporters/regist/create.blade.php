@@ -59,6 +59,37 @@
                     <input type="text" class="form-control" id="title" name="title" required="required" title="서포터즈명" value="{{ $data['Title'] }}" style="width: 300px;">
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-1-1" for="title">대상강좌 <span class="required">*</span></label>
+                <div class="col-md-1">
+                    <button type="button" id="searchPackage" class="btn btn-sm btn-primary btn-search-pass">상품검색</button>
+                </div>
+                <div class="col-md-9">
+                        <span id="selected_lecture" class="selected_content">
+                            @if(empty($arr_base['arr_product_data']) === false)
+                                @foreach($arr_base['arr_product_data'] as $idx => $row)
+                                    <span class="pr-10">
+                                        [{{$row['ProdCode']}}] {{$row['ProdName']}}
+                                        <a href="#none" data-prod-code="{{$row['ProdCode']}}" class="selected-product-delete"><i class="fa fa-times red"></i></a>
+                                        <input type="hidden" name="ProdCode[]" value="{{$row['ProdCode']}}"/>
+                                    </span>
+                                @endforeach
+                            @endif
+                        </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-1-1" for="title">메뉴운영여부 <span class="required">*</span></label>
+                <div class="col-md-8">
+                    <div class="checkbox">
+                        @foreach($arr_base['supporters_menu'] as $key => $val)
+                            <input type="checkbox" class="flat" id="menu_info_{{$key}}" name="menu_info[]" value="{{$key}}" @if($method == 'POST' || in_array($key,explode(',',$data['MenuInfo']))) checked="checked" @endif> <label class="input-label" for="menu_info_{{$key}}">{{$val}}</label>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label class="control-label col-md-1-1" for="coupon_issue_ccd">쿠폰자동지급 <span class="required">*</span></label>
                 <div class="col-md-4 form-inline item">
@@ -131,6 +162,22 @@
                     } else {
                         $('.addCoupon').removeClass('show').addClass('hide');
                     }
+                });
+
+                //무한패스검색
+                $('#searchPackage').on('click', function(e) {
+                    var id = 'selected_lecture';
+                    if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus(); return false;}
+                    $('#searchPackage').setLayer({
+                        'url' : '{{ site_url('common/searchPeriodPackage/')}}'+'?site_code='+$("#site_code").val()+'&locationid='+id
+                        ,'width' : 1200
+                    })
+                });
+
+                // 상품 삭제
+                $modal_regi_form.on('click', '.selected-product-delete', function() {
+                    var that = $(this);
+                    that.parent().remove();
                 });
             });
 

@@ -3,9 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class LoginLog extends \app\controllers\BaseController
 {
-    protected $models = array('sys/loginLog');
+    protected $models = array('sys/wCode', 'sys/role', 'sys/loginLog');
     protected $helpers = array();
     protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
+    private $_ccd = [
+        'LoginLog' => '117'
+    ];
 
     public function __construct()
     {
@@ -17,7 +20,16 @@ class LoginLog extends \app\controllers\BaseController
      */
     public function index()
     {
-        $this->load->view('sys/login_log/index');
+        // 사용하는 코드값 조회
+        $codes = $this->wCodeModel->getCcdInArray(array_values($this->_ccd));
+
+        // 권한유형 조회
+        $roles = $this->roleModel->getRoleArray();
+
+        $this->load->view('sys/login_log/index', [
+            'arr_login_log_ccd' => $codes[$this->_ccd['LoginLog']],
+            'roles' => $roles
+        ]);
     }
 
     /**
@@ -48,6 +60,11 @@ class LoginLog extends \app\controllers\BaseController
     private function _getListConditions()
     {
         return [
+            'EQ' => [
+                'AR.RoleIdx' => $this->_reqP('search_role_idx'),
+                'L.LoginLogCcd' => $this->_reqP('search_login_log_ccd'),
+                'A.wIsUse' => $this->_reqP('search_is_use')
+            ],
             'BDT' => [
                 'L.LoginDatm' => [
                     get_var($this->_reqP('search_start_date'), date('Y-m-d')),
@@ -80,19 +97,19 @@ class LoginLog extends \app\controllers\BaseController
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        $column = 'wAdminId, wAdminName, wAdminDeptCcdName, wAdminPositionCcdName, RoleName, if(wIsUse = "Y", "활동", "비활동") as IsActive, LoginLogCcdName, LoginIp, LoginDatm';
+        $column = 'wAdminId, wAdminName, wAdminDeptCcdName, wAdminPositionCcdName, RoleName, wIsUse, LoginLogCcdName, LoginIp, LoginDatm';
         $arr_condition = $this->_getListConditions();
         $list = $this->loginLogModel->listLoginLog($column, $arr_condition, null, null, ['LogIdx' => 'desc']);
         if (empty($list) === true) {
             show_alert('데이터가 없습니다.', 'back');
         }
 
-        $headers = ['이름', '아이디', '소속', '직급', '권한유형', '활동여부', '로그유형', '접속IP', '접속일'];
+        $headers = ['아이디', '이름', '소속', '직급', '권한유형', '활동여부', '로그유형', '접속IP', '접속일'];
         $file_name = '운영자접속관리_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
 
         // export excel
         $this->load->library('excel');
-        if ($this->excel->exportExcel($file_name, $list, $headers) !== true) {
+        if ($this->excel->exportHugeExcel($file_name, $list, $headers) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
     }

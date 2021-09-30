@@ -45,7 +45,7 @@ class SupportersFModel extends WB_Model
         $from = "
             FROM (
                 SELECT
-                SiteCode, SupportersIdx, SupportersTypeCcd, Title, SupportersYear, SupportersNumber, CouponIssueCcd
+                SiteCode, SupportersIdx, SupportersTypeCcd, Title, SupportersYear, SupportersNumber, CouponIssueCcd, MenuInfo
                 FROM {$this->_table['supporters']}
                 {$where_1}
                 ORDER BY SupportersIdx DESC

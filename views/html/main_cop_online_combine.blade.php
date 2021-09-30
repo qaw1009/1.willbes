@@ -2,6 +2,7 @@
 @section('content')
 <!-- Container -->
 <link href="/public/css/willbes/style_cop.css??ver={{time()}}" rel="stylesheet">
+
 <div id="Container" class="Container cop NGR c_both combine">
     <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
         <div class="Section widthAuto">
@@ -304,7 +305,7 @@
         </div>
     </div>
 
-    <div class="Section Sction3 mt100">
+    <div class="Section mt100">
         <div class="widthAuto">
             <div class="SecBanner12">
                 <div class="will-nTit NSK-Black">

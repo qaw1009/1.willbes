@@ -326,16 +326,16 @@
 .cop .will-nTit {font-size:35px !important; border:0 !important; margin-bottom:30px;}
 .cop .will-nTits {font-size:35px !important; border:0 !important; margin-bottom:-70px;}
 
-.cop .pro_box {margin-left:-5px}
+.cop .pro_box {display: flex; flex-wrap: wrap; justify-content: space-between;}
 .cop .pro_box > li {
     position: relative;
-    display: inline;
-    float: left;
-    width: 220px;
+    display: inline-block;
+	width:220px;
     height: 327px;
-    margin-left: -11px;
+	margin-right:8px;
     margin-bottom:5px
 }
+
 .cop .mouBox span {display:inline; float:left; margin-right:6px}
 .cop .mouBox:after {content:''; display:block; clear:both}
 

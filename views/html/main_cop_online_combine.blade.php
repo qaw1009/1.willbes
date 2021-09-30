@@ -2,6 +2,7 @@
 @section('content')
 <!-- Container -->
 <link href="/public/css/willbes/style_cop.css??ver={{time()}}" rel="stylesheet">
+
 <div id="Container" class="Container cop NGR c_both combine">
     <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
         <div class="Section widthAuto">
@@ -304,7 +305,7 @@
         </div>
     </div>
 
-    <div class="Section Sction3 mt100">
+    <div class="Section mt100">
         <div class="widthAuto">
             <div class="SecBanner12">
                 <div class="will-nTit NSK-Black">
@@ -493,54 +494,52 @@
                 신광은경찰팀 유튜브 채널 모음 
             </div>       
                  
-            <div class="Section tube_wrap">
-                <div class="widthAuto">              
-                    <div class="tube_box">
-                        <ul class="tube_slider">
-                            <li>
-                                <div>
-                                    <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/featured" target="_blank">
-                                        <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch01.png" alt="#신광은경찰팀  #공식채널">
-                                    </a>
-                                </div>
-                                <div class="tube_title">#신광은경찰팀  #공식채널</div>
-                            </li>
-                            <li>
-                                <div>
-                                    <a href="https://www.youtube.com/channel/UCz_3g63yWTYjg6_Ko5QRK1g?view_as=subscriber" target="_blank">
-                                        <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch02.png" alt="#신광은 #형사법 #1일1제">
-                                    </a>
-                                </div>
-                                <div class="tube_title">#신광은 #형사법 #1일1제</div>
-                            </li>
-                            <li>
-                                <div>
-                                    <a href="https://www.youtube.com/channel/UCjxTXvi1hPxz32wr031U7jw" target="_blank">
-                                        <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch03.png" alt="#장정훈 #경찰학 #1일1제">
-                                    </a>
-                                </div>
-                                <div class="tube_title">#장정훈 #경찰학 #1일1제</div>
-                            </li>
-                            <li>
-                                <div>
-                                    <a href="https://www.youtube.com/channel/UCMVc2RbvQeJ_574VzzpPzpg">
-                                        <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch04.png" alt="#김원욱 #헌법 #1일1제">
-                                    </a>
-                                </div>
-                                <div class="tube_title">#김원욱 #헌법 #1일1제</div>
-                            </li>
-                            <li>
-                                <div>
-                                    <a href="javascript:alert('Coming Soon!')">
-                                        <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch05.png" alt="#이국령 #헌법도약">
-                                    </a>
-                                </div>
-                                <div class="tube_title">#이국령 #헌법도약</div>
-                            </li>                          
-                        </ul> 
-                        <p class="leftBtn"><a id="tube_slider_left"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_left.png"></a></p>                   
-                        <p class="rightBtn"><a id="tube_slider_right"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_right.png"></a></p>                              
-                    </div>
+            <div class="Section tube_wrap">              
+                <div class="tube_box">
+                    <ul class="tube_slider">
+                        <li>
+                            <div>
+                                <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/featured" target="_blank">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch01.png" alt="#신광은경찰팀  #공식채널">
+                                </a>
+                            </div>
+                            <div class="tube_title">#신광은경찰팀  #공식채널</div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="https://www.youtube.com/channel/UCz_3g63yWTYjg6_Ko5QRK1g?view_as=subscriber" target="_blank">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch02.png" alt="#신광은 #형사법 #1일1제">
+                                </a>
+                            </div>
+                            <div class="tube_title">#신광은 #형사법 #1일1제</div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="https://www.youtube.com/channel/UCjxTXvi1hPxz32wr031U7jw" target="_blank">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch03.png" alt="#장정훈 #경찰학 #1일1제">
+                                </a>
+                            </div>
+                            <div class="tube_title">#장정훈 #경찰학 #1일1제</div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="https://www.youtube.com/channel/UCMVc2RbvQeJ_574VzzpPzpg">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch04.png" alt="#김원욱 #헌법 #1일1제">
+                                </a>
+                            </div>
+                            <div class="tube_title">#김원욱 #헌법 #1일1제</div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="javascript:alert('Coming Soon!')">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch05.png" alt="#이국령 #헌법도약">
+                                </a>
+                            </div>
+                            <div class="tube_title">#이국령 #헌법도약</div>
+                        </li>                          
+                    </ul> 
+                    <p class="leftBtn"><a id="tube_slider_left"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_left.png"></a></p>                   
+                    <p class="rightBtn"><a id="tube_slider_right"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_right.png"></a></p>                              
                 </div>
             </div>                                    
         </div>

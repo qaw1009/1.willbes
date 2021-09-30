@@ -10,6 +10,7 @@ class SupportersFModel extends WB_Model
         'supporters' => 'lms_supporters',
         'supporters_r_member' => 'lms_supporters_r_member',
         'supporters_r_coupon' => 'lms_supporters_r_coupon',
+        'supporters_r_product' => 'lms_supporters_r_product',
         'supporters_myclass' => 'lms_supporters_myclass',
         'supporters_attendance' => 'lms_supporters_attendance',
         'lms_member' => 'lms_member'
@@ -78,6 +79,26 @@ class SupportersFModel extends WB_Model
         $from = "FROM {$this->_table['supporters_r_coupon']}";
 
         return $this->_conn->query("SELECT {$column} {$from} {$where}")->result_array();
+    }
+
+    /**
+     * 상품정보 조회
+     * @param $supporters_idx
+     * @return mixed
+     */
+    public function listProduct($supporters_idx)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'SupportersIdx' => $supporters_idx,
+                'IsStatus' => 'Y'
+            ]
+        ];
+        $column = 'SrpIdx, ProdCode';
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $from = "FROM {$this->_table['supporters_r_product']}";
+        $result = $this->_conn->query("SELECT {$column} {$from} {$where}")->result_array();
     }
 
     public function listMyClass($is_count, $arr_condition=[], $column = 'a.SmcIdx', $limit = null, $offset = null, $order_by = [])

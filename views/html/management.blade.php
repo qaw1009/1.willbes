@@ -47,7 +47,10 @@
         .evtCtsBox {position:relative; height:100%}
         .evtCts {width:100%; padding:100px; border-radius:30px; background:#fff; margin-top:-50px}
         
-        .evtCts h4 {font-size:18px; font-weight:bold; margin-left:15px; margin:0 0 20px}     
+        .evtCts h4 {font-size:18px; font-weight:bold; margin-left:15px; margin:0 0 20px}   
+        .evtCts h4 div {float:right}  
+        .evtCts h4 div span {color:#ccc; margin:0 15px !important; font-size:18px !important; vertical-align:middle !important; font-weight:normal}
+        .evtCts h4 div strong {color:red;}
         .evtCts h5 {font-size:16px; font-weight:bold; margin-top:30px}  
         .evtCts .row-line {
             background: #ccc;  
@@ -107,8 +110,7 @@
         .tableTypeA td .imgBox {margin-bottom:20px}
         .tableTypeA td .imgBox img {max-width:100%;}
 
-        tr.calendar_month th span {color:#ccc}
-        tr.calendar_month th strong {color:red;}
+
 
         .learn {font-size:14px}
         .learn span { vertical-align: top;}
@@ -312,7 +314,10 @@
             </ul> 
             <div class="evtCtsBox">
                 <div id="tab01" class="evtCts">
-                    <h4>● 나의 출석기록</h4>    
+                    <h4>
+                        ● 나의 출석기록
+                        <div>출석완료 <strong>5</strong>/31 <span>|</span>출석률 <strong>16%</strong></div>
+                    </h4>    
                     <div class="mt40">
                         <table cellpadding="0" cellspacing="0" class="calendar NG">
                             <colgroup>
@@ -326,13 +331,10 @@
                             </colgroup>
                             <thead>
                                 <tr class="calendar_month">
-                                    <th colspan="3" class="">
+                                    <th colspan="7" class="">
                                         <span class="prev"><a href="#none"><img src="{{ img_url('counsel/calendar_prev.png') }}"></a></span>
                                         2020년&nbsp;&nbsp;&nbsp;&nbsp;09월
                                         <span class="next"><a href="#none"><img src="{{ img_url('counsel/calendar_next.png') }}"></a></span>
-                                    </th>
-                                    <th colspan="4">
-                                        <div>출석완료 <strong>5</strong>/31 <span>|</span>출석률 <strong>16%</strong></div>
                                     </th>
                                 </tr>
                             </thead>

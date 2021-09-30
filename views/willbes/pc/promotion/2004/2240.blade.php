@@ -92,8 +92,8 @@
         .tab02:after {content:""; display:block; clear:both}   
 
         .evtMenu {background:#4f7bf6; }            
-        .evtMenu ul {width:1120px; margin:0 auto; text-align:left}        
-        .evtMenu ul li{width:calc( 100% / 6); float:left;}
+        .evtMenu ul {width:1120px; margin:0 auto; display: flex;}        
+        .evtMenu ul li{width:calc( 100% / 5); justify-content: space-between; }
         .evtMenu ul li a{padding:15px 0; color:#fff; line-height:1.4; text-align:center; display:inline-block; width:100%; font-size:14px}
         .evtMenu ul li a.on{border-bottom:5px white solid;}
         .evtMenu ul:after{ content:""; display:block; clear:both;}
@@ -121,7 +121,6 @@
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/09/2241_sky.png" alt="7월 new"></a>
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky2.png" alt="새벽모의고사"></a>
-            <a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/2021/08/2241_sky3.png" alt="신기훈 t"></a>
             <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3046&campus_ccd=605001&search_text=UHJvZE5hbWU67Ius7ZmU7J2066Gg" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_sky5.png" alt="세무직"></a>
         </div>
 
@@ -161,12 +160,14 @@
                             교수진<br>YOUTUBE
                         </a>
                     </li>
+                    {{--
                     <li>
                         <a href="javascript:void(0);" onClick="scrolling('.wb_cts11')"  class="tab">
                             무료특강<br>
                             신청
                         </a>
                     </li>
+                    --}}
                 </ul>
             </div>
         </nav>
@@ -325,14 +326,14 @@
             </div>
         </section>  
 
-
+        {{--
         <section class="evtCtnsBox wb_cts11" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_11.jpg" alt="교수진"/>
                 <a href="javascript:alert('Coming Soon!');" title="무료특강 신청하기" style="position: absolute; left: 35.89%; top: 83.39%; width: 28.04%; height: 6%; z-index: 2;"></a>
             </div>
         </section>   
-
+        --}}
 
         <div class="evtCtnsBox wb_cts_notice">
             <div class="wb_tipBox">

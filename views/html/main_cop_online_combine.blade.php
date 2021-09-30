@@ -459,33 +459,43 @@
             <div class="tube_box">
                 <ul class="tube_slider">
                     <li>
-                        <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/featured" target="_blank">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch01.png" alt="#신광은경찰팀  #공식채널">
-                        </a>
+                        <div>
+                            <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/featured" target="_blank">
+                                <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch01.png" alt="#신광은경찰팀  #공식채널">
+                            </a>
+                        </div>
                         <div class="tube_title">#신광은경찰팀  #공식채널</div>
                     </li>
                     <li>
-                        <a href="https://www.youtube.com/channel/UCz_3g63yWTYjg6_Ko5QRK1g?view_as=subscriber" target="_blank">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch02.png" alt="#신광은 #형사법 #1일1제">
-                        </a>
+                        <div>
+                            <a href="https://www.youtube.com/channel/UCz_3g63yWTYjg6_Ko5QRK1g?view_as=subscriber" target="_blank">
+                                <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch02.png" alt="#신광은 #형사법 #1일1제">
+                            </a>
+                        </div>
                         <div class="tube_title">#신광은 #형사법 #1일1제</div>
                     </li>
                     <li>
-                        <a href="https://www.youtube.com/channel/UCjxTXvi1hPxz32wr031U7jw" target="_blank">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch03.png" alt="#장정훈 #경찰학 #1일1제">
-                        </a>
+                        <div>
+                            <a href="https://www.youtube.com/channel/UCjxTXvi1hPxz32wr031U7jw" target="_blank">
+                                <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch03.png" alt="#장정훈 #경찰학 #1일1제">
+                            </a>
+                        </div>
                         <div class="tube_title">#장정훈 #경찰학 #1일1제</div>
                     </li>
                     <li>
-                        <a href="https://www.youtube.com/channel/UCMVc2RbvQeJ_574VzzpPzpg">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch04.png" alt="#김원욱 #헌법 #1일1제">
-                        </a>
+                        <div>
+                            <a href="https://www.youtube.com/channel/UCMVc2RbvQeJ_574VzzpPzpg">
+                                <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch04.png" alt="#김원욱 #헌법 #1일1제">
+                            </a>
+                        </div>
                         <div class="tube_title">#김원욱 #헌법 #1일1제</div>
                     </li>
                     <li>
-                        <a href="javascript:alert('Coming Soon!')">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch05.png" alt="#이국령 #헌법도약">
-                        </a>
+                        <div>
+                            <a href="javascript:alert('Coming Soon!')">
+                                <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch05.png" alt="#이국령 #헌법도약">
+                            </a>
+                        </div>
                         <div class="tube_title">#이국령 #헌법도약</div>
                     </li>                          
                 </ul> 

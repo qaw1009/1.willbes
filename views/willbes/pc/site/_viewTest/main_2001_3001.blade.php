@@ -153,15 +153,17 @@
                         {{-- 배너함수 사용 불가 --}}
                         @foreach(element('메인_유튜브', $data['arr_main_banner']) as $row)
                             <li>
-                                @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
-                                    <a href="javascript:void(0);">
-                                        <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
-                                    </a>
-                                @else
-                                    <a href="{{front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www')}}" target="{{$row['LinkType']}}">
-                                        <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
-                                    </a>
-                                @endif
+                                <div>
+                                    @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
+                                        <a href="javascript:void(0);">
+                                            <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                        </a>
+                                    @else
+                                        <a href="{{front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www')}}" target="{{$row['LinkType']}}">
+                                            <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                        </a>
+                                    @endif
+                                </div>
                                 <div class="tube_title">{{ $row['BannerName'] }}</div>
                             </li>
                         @endforeach

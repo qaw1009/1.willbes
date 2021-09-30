@@ -345,6 +345,7 @@
 
 .cop .SectionBg02 {background:#f8f0dd; padding:100px 0 0}
 .cop .SectionBg02 .will-nTit {color:#000}
+
 .cop .SecBanner06 {margin-right:-20px; margin-top:20px}
 .cop .SecBanner06 li {display:inline; float:left; margin:0 20px 20px 0;}
 .cop .SecBanner06:after {content:''; display: block; clear:both}
@@ -403,7 +404,7 @@
 /*유트브 채널*/
 .combine .tube_wrap {margin:100px 0;}
 .combine .tube_box {position:relative;}   
-.combine .tube_slider {width:1120px; margin: 0 auto; height: 250px; overflow:hidden;}
+.combine .tube_slider {width:1120px; height:250px; overflow:hidden;}
 .combine .tube_slider:after {content:""; display: block; clear:both}
 .combine .tube_slider li {display:inline; float:left; width:20%;}
 .combine .tube_slider li a {display:block; width:224px; text-align: center;  } 

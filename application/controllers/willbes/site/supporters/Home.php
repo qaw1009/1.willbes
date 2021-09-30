@@ -42,6 +42,9 @@ class Home extends \app\controllers\FrontController
             show_alert('온라인 관리반 기본정보 조회 실패입니다. 관리자에게 문의해 주세요.', 'back');
         }
 
+        //서포터즈 상품정보 조회
+        $arr_base['product_list'] = $this->supportersFModel->listProduct($data['SupportersIdx']);
+
         //공지사항조회
         $arr_noti_condition = [
             'EQ' => [

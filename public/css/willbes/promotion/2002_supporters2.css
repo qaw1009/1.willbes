@@ -42,6 +42,9 @@
 .evtCts {width:100%; padding:100px; border-radius:30px; background:#fff; margin-top:-50px}
 
 .evtCts h4 {font-size:18px; font-weight:bold; margin-left:15px; margin:0 0 20px}
+.evtCts h4 div {float:right}
+.evtCts h4 div span {color:#ccc; margin:0 15px !important; font-size:18px !important; vertical-align:middle !important; font-weight:normal}
+.evtCts h4 div strong {color:red;}
 .evtCts h5 {font-size:16px; font-weight:bold; margin-top:30px}
 .evtCts .row-line {
     background: #ccc;

@@ -19,7 +19,7 @@
 {{--리스트--}}
 <div class="mt30" id="suggest_list">
     <div class="f_right mb10">
-        <div class="subBtn blue NSK f_right"><a href="#none" id="btn_suggest_create">글쓰기</a></div>
+        <div class="subBtn blue NSK f_right"><a href="javascript:void(0);" id="btn_suggest_create">글쓰기</a></div>
     </div>
     <div id="suggest_table"></div>
 </div>

@@ -18,7 +18,8 @@
 
         /************************************************************/
 
-        .sky {position:fixed; top:225px;right:10px;z-index:10;}
+        .sky {position:fixed; top:225px; width:137px; right:10px; z-index:10;}
+        .sky a {display:block; margin-bottom:10px}
         
         .wb_tops {background:url(https://static.willbes.net/public/images/promotion/2021/09/1983_tops_bg.jpg) no-repeat center top;}
 
@@ -37,10 +38,9 @@
         .wb_cts05 {background:#f4f4f4; padding-bottom:150px}
         .wb_cts05 a {display:block; color:#fff; text-align:center;}        
         .wb_cts05 .linkbtn01 {display:block;width:434px; margin:50px auto 0; }
-        .wb_cts05 .linkbtn01 a {background:#594783; font-size:23px; padding:15px 0 }
+        .wb_cts05 .linkbtn01 a {background:#010f1a; font-size:23px; padding:20px 0; border-radius:30px }
         .wb_cts05 .linkbtn02 {display:block;width:150px; margin:30px auto 0; }
-        .wb_cts05 .linkbtn02 a {background:#444; padding:8px 0}
-        .wb_cts05 a:hover {background:#000}
+        .wb_cts05 .linkbtn02 a {padding:10px 0; border:2px solid #959595; color:#333; font-size:14px; font-weight:bold}
 
         .wb_cts06 {padding-bottom:50px;}
         .wb_cts06 table {width:860px; margin:25px auto 50px; border-top:1px solid #828282}
@@ -87,7 +87,7 @@
         .guide_box h2 {font-size:30px; margin-bottom:30px}
         .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; 
         padding:5px 20px; font-weight:bold; font-size:17px; border-radius:30px}        
-        .guide_box dd{color:#777; margin:0 0 20px 5px;}
+        .guide_box dd{color:#777; margin:0 0 40px 5px;}
         .guide_box dd strong {color:#555}
         .guide_box dd li {margin-bottom:3px; list-style:decimal; margin-left:20px;}
         .guide_box dd li a {display:inline-block; margin-left:20px; background:#032E5B; color:#fff; padding:3px 10px; border-radius:15px; font-size:12px}
@@ -123,13 +123,13 @@
             </div>
         </div>
 
-        <div class="sky">
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/1983_sky.png" alt="자세히보기" usemap="#1983_sky" border="0" >
-            <map name="1983_sky" id="1983_sky">
-                <area shape="rect" coords="3,142,158,285" href="#apply" />
-                <area shape="rect" coords="-1,295,161,424" href="#apply" />
-                <area shape="rect" coords="-1,432,160,570" href="#apply2" />
-            </map>
+        <div class="sky" id="QuickMenu">
+            <a href="#evt05">
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/1983_sky01.png" alt="자세히보기" usemap="#1983_sky" border="0" >
+            </a>
+            <a href="#evt05">
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/1983_sky02.png" alt="자세히보기" usemap="#1983_sky" border="0" >
+            </a>
         </div>   
 
         <div class="evtCtnsBox wb_tops">
@@ -164,13 +164,13 @@
         <div class="evtCtnsBox wb_cts04">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1983_04.jpg" alt="커리큘럼" />
         </div>
-        {{--
-        <div class="evtCtnsBox wb_cts05">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/1983_05.jpg" alt="커리큘럼" />
+
+        <div class="evtCtnsBox wb_cts05" id="evt05">
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/1983_05.jpg" alt="커리큘럼" />
             <div class="linkbtn01 NGEB"><a href="javascript:certOpen();">재도전 & 환승 인증하기 →</a></div>
             <div class="linkbtn02"><a href="#tip">유의사항 확인하기 →</a></div>
         </div>
-        --}}
+
         <div class="evtCtnsBox wb_cts06" id="apply">   
             <img src="https://static.willbes.net/public/images/promotion/2021/09/1983_06.jpg" title="신청하기" />
             <table>
@@ -209,8 +209,14 @@
                     </tr>
                     <tr>
                         <th>가격</th>
-                        <td class="NSK-Black"><input type="radio" id="y_pkg1" name="y_pkg" value="176432" onClick=""/><label for="y_pkg1"><p>990,000원</p>290,000원</label></td>
-                        <td class="NSK-Black"><input type="radio" id="y_pkg2" name="y_pkg" value="176415" onClick=""/><label for="y_pkg2"><p>790,000원</p>240,000원</label></td>
+                        <td class="NSK-Black">
+                            <input type="radio" id="y_pkg1" name="y_pkg" value="176432" onClick=""/><label for="y_pkg1"><p>990,000원</p>490,000원</label>
+                            <div class="tx-red">재도전/환승 최종혜택가 290,000원</div>
+                        </td>
+                        <td class="NSK-Black">
+                            <input type="radio" id="y_pkg2" name="y_pkg" value="176415" onClick=""/><label for="y_pkg2"><p>790,000원</p>450,000원</label>
+                            <div class="tx-red">재도전/환승 최종혜택가 290,000원</div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -297,24 +303,23 @@
                             <li>아이디 공유 적발 시 회원 자격 박탈 및 환불 불가하며, 추가적인 불법 공유 행위 적발 시 형사 고발 조치가 단행될 수 있습니다.</li>
                         </ol>
                     </dd>
-                    {{--
+
                     <dt>재도전&환승 인증 이벤트 유의사항</dt>
                     <dd>
                         <ol>
                             <li>본 이벤트는 1아이디당 1회만 참여 가능합니다.</li>
-                            <li>인증 완료 처리는 신청 후, 24시간 이내에 처리됩니다. 단, 주말 및 공휴일 인증 건의 경우 평일 오전 중으로 처리됩니다.</li>
-                            <li>
-                                1) 재도전 인증<br>
+                            <li>인증 완료 처리는 신청 후, 24시간 이내에 처리됩니다. 단, 주말 및 공휴일 인증 건의 경우 평일 오전 중으로 처리됩니다.<br>
+                            1) 재도전 인증<br>
                                 - 본인의 이름이 명시된 수험표 또는 윌비스 PASS 수강생의 경우 [내강의실] 페이지 내 이름과 PASS명이 명시된 이미지 캡쳐 후 업로드 시 인증 가능합니다.<br>
-                                2) 환승 인증<br>
+                            2) 환승 인증<br>
                                 - 본인의 이름, 수강내역, 결제내역 등이 명확하게 기재된 수강증 등의 캡쳐를 통해서만 인증이 가능합니다.<br>
-                                (결제내역을 통한 인증 시, 수강자 이름과 결제 금액, 강좌명이 필수로 기재되어 있어야 합니다.)</li>
+                            (결제내역을 통한 인증 시, 수강자 이름과 결제 금액, 강좌명이 필수로 기재되어 있어야 합니다.)</li>
                             <li>본 이벤트는 이벤트 참여자가 본인의 명의로 구매/응시한 내용에 한합니다.</li>
                             <li>등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>
                             <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>
                         </ol>
                     </dd>
-                    --}}
+
                     <dt>라이브모드 수강관련</dt>
                     <dd>
                         <ol>

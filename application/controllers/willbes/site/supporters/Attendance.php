@@ -27,12 +27,15 @@ class Attendance extends \app\controllers\FrontController
 
         //일자별 데이터 조회
         $data = $this->_getScheduleDataForMonth($supporters_idx, $year.$month);
-
         $this->load->library('calendar');
         $this->calendar->next_prev_url = front_url('/supporters/attendance/showCalendar/');
         $calendar = $this->calendar->generate($year, $month, $data);
 
+        //월 회원 출석 통계
+        $member_average = $this->_getAttendanceMemberAverage($supporters_idx, $year.$month.'01');
+
         $this->load->view('site/supporters/calendar', [
+            'member_average' => $member_average,
             'calendar' => $calendar
         ]);
     }
@@ -72,6 +75,7 @@ class Attendance extends \app\controllers\FrontController
 
         for ($i=1; $i<=$last_day; $i++) {
             $temp_css = '';
+            $temp_txt = '';
             if($i < 10){
                 $day = '0'. $i;
             }else{
@@ -79,10 +83,32 @@ class Attendance extends \app\controllers\FrontController
             }
             if(empty($data[$target_month.$day]) === false){
                 $temp_css = 'attend';
+                $temp_txt = $data[$target_month.$day];
             }
-            $temp_html = '<span class="'.$temp_css.'"></span>';
+            $temp_html = '<span class="'.$temp_css.'">'.$temp_txt.'</span>';
             $month_data[$i] = $temp_html;
         }
         return $month_data;
+    }
+
+    /**
+     * 출석 통계
+     * @param string $supporters_idx
+     * @param string $target_day
+     * @return mixed
+     */
+    private function _getAttendanceMemberAverage($supporters_idx = '', $target_day = '')
+    {
+        $arr_condition = [
+            'EQ' => [
+                'SupportersIdx' => $supporters_idx
+                ,'MemIdx' => $this->session->userdata('mem_idx')
+                ,'IsStatus' => 'Y'
+            ],
+            'RAW' => [
+                'AttendanceDay BETWEEN ' => 'LAST_DAY('.$target_day.' - INTERVAL 1 MONTH) + INTERVAL 1 DAY AND DATE_FORMAT(LAST_DAY('.$target_day.'), "%Y%m%d")'
+            ]
+        ];
+        return $this->supportersFModel->getSupportersAttendanceMemberAverage($arr_condition, $target_day);
     }
 }

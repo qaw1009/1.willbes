@@ -98,7 +98,7 @@ class SupportersFModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $from = "FROM {$this->_table['supporters_r_product']}";
-        $result = $this->_conn->query("SELECT {$column} {$from} {$where}")->result_array();
+        return $this->_conn->query("SELECT {$column} {$from} {$where}")->result_array();
     }
 
     public function listMyClass($is_count, $arr_condition=[], $column = 'a.SmcIdx', $limit = null, $offset = null, $order_by = [])
@@ -189,17 +189,26 @@ class SupportersFModel extends WB_Model
     public function getSupportersAttendanceMember($arr_condition = [])
     {
         $column = " 
-            AttendanceDay
+            AttendanceDay, DATE_FORMAT(RegDatm,'%H:%i:%s') AS AttendanceTime
         ";
         $from = " FROM {$this->_table['supporters_attendance']} ";
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $list = $this->_conn->query('SELECT '. $column. $from. $where)->result_array();
+        return array_pluck($list, 'AttendanceTime', 'AttendanceDay');
+    }
 
-        $data = [];
-        foreach ($list as $key => $val){
-            $data[$val['AttendanceDay']] = $val;
-        }
-        return $data;
+    /**
+     * 월 출석 통계
+     * @param array $arr_condition
+     * @param string $date
+     * @return mixed
+     */
+    public function getSupportersAttendanceMemberAverage($arr_condition = [], $date = '')
+    {
+        $column = 'COUNT(*) AS MemberCount, DATE_FORMAT(LAST_DAY('.$date.'), \'%d\') AS LastDay, ROUND((COUNT(*)/DATE_FORMAT(LAST_DAY('.$date.'), \'%d\'))*100,0) AS MemberAverage';
+        $from = " FROM {$this->_table['supporters_attendance']} ";
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        return $this->_conn->query('SELECT '. $column. $from. $where)->row_array();
     }
 
     public function findSupportersAttendance($arr_condition = [], $column = 'SadIdx')

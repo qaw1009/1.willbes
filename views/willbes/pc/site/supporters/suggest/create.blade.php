@@ -38,7 +38,7 @@
                                 @if(empty($data['AttachData'][$i]) === false)
                                     <p id="file_{{ $data['AttachData'][$i]['FileIdx']}}">[ {{ $data['AttachData'][$i]['RealName'] }} ]
                                         @if ($data['RegMemIdx'] == sess_data('mem_idx'))
-                                            <a href="#none" class="file-delete" data-attach-idx="{{ $data['AttachData'][$i]['FileIdx']  }}">파일삭제</a>
+                                            <a href="javascript:void(0);" class="file-delete" data-attach-idx="{{ $data['AttachData'][$i]['FileIdx']  }}">파일삭제</a>
                                         @endif
                                     </p>
                                 @endif
@@ -102,7 +102,6 @@
 
             ajaxSubmit($suggest_create_form, _url, function(ret) {
                 if(ret.ret_cd) {
-                    console.log(1);
                     notifyAlert('success', '알림', ret.ret_msg);
                     $('#suggest_create').hide();
                     $('#suggest_list').show();

@@ -91,7 +91,7 @@
 
     <div class="evtContent NSK" id="evtContainer">
 
-        <div class="sky">
+        <div class="sky"  id="QuickMenu">
             <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2021/08/2291_sky02.png" alt="개편과목" ></a>
         </div>      
 
@@ -124,7 +124,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2364_top.jpg"  alt="" />
             <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank">
                 <div>
-                    2021년 10월 기본종합반 신청하기> <br>
+                    2021년 10~11월 기본종합반 신청하기> <br>
                     <span>사전접수 할인 이벤트중~~ 추가 할인까지!!!</span>
                 </div>
             </a>
@@ -193,14 +193,12 @@
 				</div>
 				<div class="infoTit">종합반 안내</div>
 				<ul>
-                    <li> 기본종합반(10/4~12/9)(인강 포함)<br>
+                    <li>기본종합반(11/1~12/24)(인강포함)<br>
                         ① 학원 강의 : 기본종합반<br>
-                        ② 기본종합반 복습 동영상<br>
-                        ③ 9월 기본헌법 강의 추가 제공(10월 선행학습용)                        
+                        ② 기본종합반 복습 동영상                     
                     </li>
-                    <li>기본종합반(10/4~12/9)(인강 미포함)<br>
-                        ① 학원 강의 : 기본종합반<br>
-                        ② 9월 기본헌법 강의 제공(10월 선행학습용)
+                    <li>기본종합반(11/1~12/24)(인강 미포함)<br>
+                        ① 학원 강의 : 기본종합반
                     </li>
 				</ul>
                 <div class="infoTit">기본종합반 특별할인 안내</div>

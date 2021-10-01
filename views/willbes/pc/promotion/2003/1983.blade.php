@@ -210,12 +210,12 @@
                     <tr>
                         <th>가격</th>
                         <td class="NSK-Black">
-                            <input type="radio" id="y_pkg1" name="y_pkg" value="176432" onClick=""/><label for="y_pkg1"><p>990,000원</p>490,000원</label>
+                            <input type="radio" id="y_pkg1" name="y_pkg" value="176432" onClick=""/><label for="y_pkg1">490,000원</label>
                             <div class="tx-red">재도전/환승 최종혜택가 290,000원</div>
                         </td>
                         <td class="NSK-Black">
-                            <input type="radio" id="y_pkg2" name="y_pkg" value="176415" onClick=""/><label for="y_pkg2"><p>790,000원</p>450,000원</label>
-                            <div class="tx-red">재도전/환승 최종혜택가 290,000원</div>
+                            <input type="radio" id="y_pkg2" name="y_pkg" value="176415" onClick=""/><label for="y_pkg2">450,000원</label>
+                            <div class="tx-red">재도전/환승 최종혜택가 250,000원</div>
                         </td>
                     </tr>
                 </tbody>

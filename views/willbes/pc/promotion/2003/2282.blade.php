@@ -88,19 +88,20 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="sky" id="QuickMenu">
-            {{--
+        {{--
+        <div class="sky" id="QuickMenu">            
             <a href="#curri01">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_sky01.png" alt="실전464">
             </a>
             <a href="#curri03">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_sky03.png" alt="새벽실저모의고사">
             </a>
-            --}}
+            
             <a href="#curri_quiz">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2282_sky04.png" alt="덕후력퀴즈">
             </a>
         </div> 
+        --}}
 
         <div class="evtCtnsBox wb_cts_top">
             <div class="top_ani">
@@ -199,7 +200,7 @@
         <div class="evtCtnsBox wb_cts08" id="curri_quiz">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2282_08.jpg" alt="퀴즈테스트"/>
-                <a href="{{front_url('/promotion/index/cate/3019/code/2359')}}" target="_blank" title="실전덕후단 464 덕후력 QUIZ" style="position: absolute;left: 27.3%;top: 78.3%;width: 39.57%;height: 8.9%;z-index: 2;"></a>
+                <a href="javascript:alert('이벤트가 종료되었습니다.');" title="실전덕후단 464 덕후력 QUIZ" style="position: absolute;left: 27.3%;top: 78.3%;width: 39.57%;height: 8.9%;z-index: 2;"></a>
             </div>
         </div>
 

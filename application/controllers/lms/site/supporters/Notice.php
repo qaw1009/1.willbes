@@ -66,7 +66,7 @@ class Notice extends BaseSupporters
         $column = '
             LB.BoardIdx, LB.SiteCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
-            LB.SupportersIdx, SP.SupportersYear, SP.SupportersNumber
+            LB.SupportersIdx, SP.Title AS SupportersName, SP.SupportersYear, SP.SupportersNumber
         ';
 
         $list = [];

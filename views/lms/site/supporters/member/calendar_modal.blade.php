@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    달력보기
+    월별 출석체크 현황
 @stop
 
 @section('layer_header')
@@ -73,8 +73,8 @@
         border: 1px solid #1a8ccb;
         color: #fff;
     }
-    tr.calendar_day td span.attend {display:block; width:30px; height:30px; line-height:30px; border-radius:20px;
-        background:#d12c10; float:right}
+    tr.calendar_day td span.attend {display:block; height:30px; line-height:30px; border-radius:20px;
+        background:#d12c10; float:right; color:#fff; padding:0 10px}
     tr.calendar_month th {
         text-align: center;
     }
@@ -88,6 +88,11 @@
 @endsection
 
 @section('layer_content')
+    <div class="form-group">
+        <div class="col-md-12">
+            <h5 class="bold"><span id="average_box"></span></h5>
+        </div>
+    </div>
     <div id="calendar_box"></div>
 
     <script type="text/javascript">

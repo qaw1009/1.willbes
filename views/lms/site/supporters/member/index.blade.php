@@ -70,15 +70,13 @@
                     <th>연도</th>
                     <th>기수</th>
                     <th>서포터즈명</th>
-                    <th>서포터즈유형</th>
                     <th>활동상태</th>
+                    <th>서포터즈유형</th>
+                    <th>응시직렬</th>
                     <th>과제수행</th>
                     <th>제안/토론</th>
-                    <th>학교</th>
-                    <th>전공</th>
-                    <th>학년</th>
-                    <th>재학여부</th>
-                    <th>응시직렬</th>
+                    <th>학습상담</th>
+                    <th>학습시간</th>
                     <th>출석일수({{date("m")}}월)</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -134,19 +132,25 @@
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-srm-idx="' + row.SrmIdx + '"><u>' + data + '</u></a>';
                         }},
-                    {'data' : 'SupportersTypeCcdName'},
                     {'data' : 'SupportersStatusCcdName'},
+                    {'data' : 'SupportersTypeCcdName'},
+                    {'data' : 'SerialCcdName'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.AssignmentCnt + '/' + row.AssignmentTotalCnt;
                         }},
                     {'data' : 'SuggestCnt'},
-                    {'data' : 'UniversityName'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return row.QnaReplyCnt + '/' + row.QnaTotalCnt;
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '00분';
+                        }},
+                    /*{'data' : 'UniversityName'},
                     {'data' : 'Department'},
                     {'data' : 'SchoolYearCcdName'},
-                    {'data' : 'IsSchoolCcdName'},
-                    {'data' : 'SerialCcdName'},
-                    {'data' : 'AttendanceCnt', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-calendar" data-supporters-idx="' + row.SupportersIdx + '" data-member-idx="' + row.MemIdx + '"><u>' + data + '</u></a>';
+                    {'data' : 'IsSchoolCcdName'},*/
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '<a href="javascript:void(0);" class="btn-calendar" data-supporters-idx="' + row.SupportersIdx + '" data-member-idx="' + row.MemIdx + '"><u>' + row.AttendanceCnt + ' (' + row.AttendanceCntAverage + '%)' + '</u></a>';
                         }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},

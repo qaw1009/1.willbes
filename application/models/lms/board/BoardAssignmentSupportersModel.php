@@ -10,7 +10,7 @@ class BoardAssignmentSupportersModel extends BoardModel
         'lms_supporters' => 'lms_supporters'
     ];
 
-    public function listAllSupportersForMember($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listAllSupportersForMember($bm_idx = null, $is_count = true, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -23,20 +23,42 @@ class BoardAssignmentSupportersModel extends BoardModel
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
-        $from = "
+        /*$from = "
             FROM (
                 SELECT a.BmIdx, b.BaIdx AS Idx, a.SiteCode, b.BoardIdx, b.Title, a.SupportersIdx, b.MemIdx, b.RegDatm, '과제' AS SupportersTypeName
                 ,IFNULL(fn_board_attach_data_assignment(b.BaIdx,0),'N') AS AttachFileName
                 FROM {$this->_table} AS a
                 INNER JOIN {$this->_this_table['lms_board_assignment']} AS b ON a.BoardIdx = b.BoardIdx AND b.IsStatus = 'Y'
                 WHERE a.BmIdx = '104' AND a.IsStatus = 'Y'
-                UNION ALL                
+                UNION ALL
                 SELECT a.BmIdx, a.BoardIdx AS Idx, a.SiteCode, a.BoardIdx, a.Title, a.SupportersIdx, a.RegMemIdx AS MemIdx, a.RegDatm, '제안/토론' AS SupportersTypeName
                 ,IFNULL(fn_board_attach_data(a.BoardIdx),'N') AS AttachFileName
                 FROM {$this->_table} AS a
                 WHERE BmIdx = '105' AND IsStatus = 'Y'
+                UNION ALL
+                SELECT a.BmIdx, a.BoardIdx AS Idx, a.SiteCode, a.BoardIdx, a.Title, a.SupportersIdx, a.RegMemIdx AS MemIdx, a.RegDatm, '학습상담' AS SupportersTypeName
+                ,IFNULL(fn_board_attach_data(a.BoardIdx),'N') AS AttachFileName
+                FROM {$this->_table} AS a
+                WHERE BmIdx = '118' AND IsStatus = 'Y'
             ) AS Board
             
+            INNER JOIN {$this->_this_table['lms_supporters']} AS SP ON Board.SupportersIdx = SP.SupportersIdx
+            INNER JOIN {$this->_table_sys_site} AS S ON Board.SiteCode = S.SiteCode
+            INNER JOIN {$this->_table_member} AS M ON Board.MemIdx = M.MemIdx
+            INNER JOIN {$this->_table_sys_code} AS LSC ON LSC.Ccd = SP.SupportersTypeCcd
+        ";*/
+
+        $from = " FROM (";
+        if (empty($bm_idx) === true) {
+            $from .= $this->_setQueryString_104() . ' UNION ALL ';
+            $from .= $this->_setQueryString_105() . ' UNION ALL ';
+            $from .= $this->_setQueryString_118();
+        } else {
+            $from .= $this->{'_setQueryString_' . $bm_idx}();
+        }
+
+        $from .= " ) AS Board";
+        $from .= "
             INNER JOIN {$this->_this_table['lms_supporters']} AS SP ON Board.SupportersIdx = SP.SupportersIdx
             INNER JOIN {$this->_table_sys_site} AS S ON Board.SiteCode = S.SiteCode
             INNER JOIN {$this->_table_member} AS M ON Board.MemIdx = M.MemIdx
@@ -55,6 +77,31 @@ class BoardAssignmentSupportersModel extends BoardModel
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    private function _setQueryString_104()
+    {
+        return /** @lang text */" SELECT a.BmIdx, b.BaIdx AS Idx, a.SiteCode, b.BoardIdx, b.Title, a.SupportersIdx, b.MemIdx, b.RegDatm, '과제' AS SupportersTypeName
+                ,IFNULL(fn_board_attach_data_assignment(b.BaIdx,0),'N') AS AttachFileName
+                FROM {$this->_table} AS a
+                INNER JOIN {$this->_this_table['lms_board_assignment']} AS b ON a.BoardIdx = b.BoardIdx AND b.IsStatus = 'Y'
+                WHERE a.BmIdx = '104' AND a.IsStatus = 'Y' ";
+    }
+
+    private function _setQueryString_105()
+    {
+        return /** @lang text */" SELECT a.BmIdx, a.BoardIdx AS Idx, a.SiteCode, a.BoardIdx, a.Title, a.SupportersIdx, a.RegMemIdx AS MemIdx, a.RegDatm, '제안/토론' AS SupportersTypeName
+                ,IFNULL(fn_board_attach_data(a.BoardIdx),'N') AS AttachFileName
+                FROM {$this->_table} AS a
+                WHERE BmIdx = '105' AND IsStatus = 'Y' ";
+    }
+
+    private function _setQueryString_118()
+    {
+        return /** @lang text */" SELECT a.BmIdx, a.BoardIdx AS Idx, a.SiteCode, a.BoardIdx, a.Title, a.SupportersIdx, a.RegMemIdx AS MemIdx, a.RegDatm, '학습상담' AS SupportersTypeName
+                ,IFNULL(fn_board_attach_data(a.BoardIdx),'N') AS AttachFileName
+                FROM {$this->_table} AS a
+                WHERE BmIdx = '118' AND IsStatus = 'Y' ";
     }
 
     /**

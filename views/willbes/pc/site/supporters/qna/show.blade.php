@@ -58,7 +58,7 @@
                     @if($row['FileType'] == 1)
                         <tr>
                             <td colspan="2" class="tx-left">
-                                <a href="{{front_url($default_path.'/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
+                                <a href="{{front_url('/supporters/qna/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
                                     {{$row['RealName']}} <img src="{{ img_url('prof/icon_file.gif') }}" alt="첨부파일"></a>
                             </td>
                         </tr>

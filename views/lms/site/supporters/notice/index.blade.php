@@ -63,6 +63,7 @@
                     <th>선택</th>
                     <th>NO</th>
                     <th>운영사이트</th>
+                    <th>서포터즈명</th>
                     <th>연도</th>
                     <th>기수</th>
                     <th>제목</th>
@@ -119,6 +120,7 @@
                             }
                         }},
                     {'data' : 'SiteName'},
+                    {'data' : 'SupportersName'},
                     {'data' : 'SupportersYear'},
                     {'data' : 'SupportersNumber'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {

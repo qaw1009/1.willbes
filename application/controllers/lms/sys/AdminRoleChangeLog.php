@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AdminRoleChangeLog extends \app\controllers\BaseController
 {
-    protected $models = array('sys/sysLog');
+    protected $models = array('sys/role', 'sys/sysLog');
     protected $helpers = array();
     protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
@@ -17,7 +17,12 @@ class AdminRoleChangeLog extends \app\controllers\BaseController
      */
     public function index()
     {
-        $this->load->view('sys/admin_role_change_log/index');
+        // 권한유형 조회
+        $roles = $this->roleModel->getRoleArray();
+
+        $this->load->view('sys/admin_role_change_log/index', [
+            'roles' => $roles
+        ]);
     }
 
     /**
@@ -48,6 +53,10 @@ class AdminRoleChangeLog extends \app\controllers\BaseController
     private function _getListConditions()
     {
         return [
+            'EQ' => [
+                'AR.RoleIdx' => $this->_reqP('search_role_idx'),
+                'AR.IsStatus' => $this->_reqP('search_is_use')
+            ],
             'BDT' => [
                 'AR.RegDatm' => [
                     get_var($this->_reqP('search_start_date'), date('Y-m-01')),

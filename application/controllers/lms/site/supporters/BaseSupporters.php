@@ -45,11 +45,7 @@ class BaseSupporters extends \app\controllers\BaseController
      */
     protected function _getSupportersData()
     {
-        $arr_condition = [
-            'EQ' => [
-                'a.IsUse' => 'Y'
-            ]
-        ];
+        $arr_condition = [];
         return $this->supportersRegistModel->getSupportersData($arr_condition);
     }
 

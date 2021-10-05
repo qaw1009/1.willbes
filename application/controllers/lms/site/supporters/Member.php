@@ -5,8 +5,21 @@ require APPPATH . 'controllers/lms/site/supporters/BaseSupporters.php';
 
 class Member extends BaseSupporters
 {
-    protected $temp_models = array('board/boardSupporters', 'board/boardAssignmentSupporters');
-    protected $helpers = array();
+    protected $temp_models = array('board/boardSupporters', 'board/boardAssignmentSupporters', 'board/board');
+    protected $helpers = array('download');
+    private $board_name = 'supportersQna';
+    private $_reg_type = [
+        'user' => 0,    //유저 등록 정보
+        'admin' => 1    //admin 등록 정보
+    ];
+    private $_attach_reg_type = [
+        'default' => 0,     //본문글 첨부
+        'reply' => 1        //본문 답변글첨부
+    ];
+    private $_arr_reply_code = [
+        'unAnswered' => '621001',   //미답변 코드
+        'finish' => '621004'        //답변완료
+    ];
 
     public function __construct()
     {
@@ -419,10 +432,249 @@ class Member extends BaseSupporters
         $this->calendar->next_prev_url = site_url('/site/supporters/member/showCalendar');
         $calendar = $this->calendar->generate($year, $month, $data);
 
+        //월 회원 출석 통계
+        $member_average = $this->_getAttendanceMemberAverage($supporters_idx, $member_idx, $year.$month.'01');
+
         $this->load->view('site/supporters/member/calendar', [
+            'member_average' => $member_average,
             'calendar' => $calendar
         ]);
     }
+
+    /**
+     * 학습상담 ajax
+     */
+    public function ajaxMyQna()
+    {
+        $arr_hidden_data['supporters_idx'] = $this->_reqG('supporters_idx');
+        $arr_hidden_data['member_idx'] = $this->_reqG('member_idx');
+
+        $this->load->view('site/supporters/member/layer/list_my_qna', [
+            'arr_reply_code' => $this->_arr_reply_code,
+            'arr_hidden_data' => $arr_hidden_data
+        ]);
+    }
+
+    /**
+     * 학습상담 dataTable
+     * @return CI_Output
+     */
+    public function ajaxQnaDataTable()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'LB.BmIdx' => $this->supportersMemberModel->_arr_bm_idx['qna'],
+                'LB.SupportersIdx' => $this->_reqP('supporters_idx'),
+                'LB.IsStatus' => 'Y',
+                'LB.IsUse' => 'Y'
+            ]
+        ];
+        $column = '
+            LB.BoardIdx, LB.RegType, LB.SiteCode,
+            LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic, LB.IsStatus,
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
+            LB.RegMemIdx, MEM.MemName AS RegMemName, MEM.MemId AS RegMemId,
+            LB.ReplyAdminIdx, LB.ReplyRegDatm,
+            LB.typeCcd, LSC2.CcdName AS TypeCcdName,
+            LB.SubjectIdx, PS.SubjectName,
+            LB.ReplyStatusCcd, LSC3.CcdName AS ReplyStatusCcdName,
+            ADMIN2.wAdminName AS ReplyRegAdminName,
+            lms_product.ProdName
+        ';
+
+        $list = [];
+        $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, [], '');
+
+        if ($count > 0) {
+            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, [], '', $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    /**
+     * 학습상담 보기
+     * @param array $param
+     */
+    public function readQnaReplyModal($param = [])
+    {
+        if (empty($param) === true) {
+            show_alert('잘못된 접근 입니다.','back');
+        }
+        $board_idx = $param[0];
+
+        $column = '
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LS.SiteName,
+            LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic,
+            LB.ReadCnt, LB.SettingReadCnt,
+            LBA_1.AttachFileIdx as reply_AttachFileIdx, LBA_1.AttachFilePath as reply_AttachFilePath, LBA_1.AttachFileName as reply_AttachFileName, LBA_1.AttachRealFileName as reply_AttachRealFileName,
+            LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName,
+            LB.typeCcd, LSC2.CcdName AS TypeCcdName,
+            ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
+            MEM.MemName, MEM.MemId, fn_dec(MEM.PhoneEnc) AS MemPhone,
+            LB.ReplyStatusCcd, LSC3.CcdName AS ReplyStatusCcdName, LB.ReplyContent,
+            qnaAdmin.wAdminName AS qnaAdminName, qnaAdmin2.wAdminName AS qnaUpdAdminName,
+            LB.ReplyRegDatm, LB.ReplyUpdDatm,
+            LB.SubjectIdx, PS.SubjectName, lms_product.ProdName
+            ';
+
+        $arr_condition = ([
+            'EQ'=>[
+                'LB.BoardIdx' => $board_idx,
+                'LB.IsStatus' => 'Y'
+            ]
+        ]);
+        $arr_condition_file = [
+            'reg_type' => $this->_reg_type['user'],
+            'attach_file_type' => $this->_attach_reg_type['default']
+        ];
+
+        $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+        if (empty($data) === true) {
+            show_alert('데이터 조회에 실패했습니다.','back');
+        }
+
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        /*$data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachFilePath'], $data['AttachFileName']);
+        $data['ReplyContent'] = $this->_getBoardForContent($data['ReplyContent'], $data['reply_AttachFilePath'], $data['reply_AttachFileName']);*/
+
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+        $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
+
+        $data['arr_reply_attach_file_idx'] = explode(',', $data['reply_AttachFileIdx']);
+        $data['arr_reply_attach_file_path'] = explode(',', $data['reply_AttachFilePath']);
+        $data['arr_reply_attach_file_name'] = explode(',', $data['reply_AttachFileName']);
+        $data['arr_reply_attach_file_real_name'] = explode(',', $data['reply_AttachRealFileName']);
+
+        $this->load->view('site/supporters/member/layer/read_qna_reply_modal', [
+            'data' => $data,
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
+        ]);
+    }
+
+    /**
+     * 학습상담 답변 등록 페이지
+     * @param array $param
+     */
+    public function createQnaReplyModal($param = [])
+    {
+        if (empty($param) === true) {
+            show_alert('잘못된 접근 입니다.','back');
+        }
+        $board_idx = $param[0];
+
+        $column = '
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LS.SiteName,
+            LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic,
+            LB.ReadCnt, LB.SettingReadCnt,
+            LBA_1.AttachFileIdx as reply_AttachFileIdx, LBA_1.AttachFilePath as reply_AttachFilePath, LBA_1.AttachFileName as reply_AttachFileName, LBA_1.AttachRealFileName as reply_AttachRealFileName,
+            LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName,
+            LB.typeCcd, LSC2.CcdName AS TypeCcdName,
+            ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
+            MEM.MemName, MEM.MemId, fn_dec(MEM.PhoneEnc) AS MemPhone,
+            LB.ReplyStatusCcd, LSC3.CcdName AS ReplyStatusCcdName, LB.ReplyContent,
+            qnaAdmin.wAdminName AS qnaAdminName, qnaAdmin2.wAdminName AS qnaUpdAdminName,
+            LB.ReplyRegDatm, LB.ReplyUpdDatm,
+            LB.SubjectIdx, PS.SubjectName, lms_product.ProdName
+            ';
+
+        $arr_condition = ([
+            'EQ'=>[
+                'LB.BoardIdx' => $board_idx,
+                'LB.IsStatus' => 'Y'
+            ]
+        ]);
+        $arr_condition_file = [
+            'reg_type' => $this->_reg_type['user'],
+            'attach_file_type' => $this->_attach_reg_type['default']
+        ];
+
+        $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+        if (empty($data) === true) {
+            show_alert('데이터 조회에 실패했습니다.','back');
+        }
+
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        /*$data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachFilePath'], $data['AttachFileName']);
+        $data['ReplyContent'] = $this->_getBoardForContent($data['ReplyContent'], $data['reply_AttachFilePath'], $data['reply_AttachFileName']);*/
+
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+        $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
+
+        $data['arr_reply_attach_file_idx'] = explode(',', $data['reply_AttachFileIdx']);
+        $data['arr_reply_attach_file_path'] = explode(',', $data['reply_AttachFilePath']);
+        $data['arr_reply_attach_file_name'] = explode(',', $data['reply_AttachFileName']);
+        $data['arr_reply_attach_file_real_name'] = explode(',', $data['reply_AttachRealFileName']);
+
+        $this->load->view('site/supporters/member/layer/create_qna_reply_modal', [
+            'board_idx' => $board_idx,
+            'data' => $data,
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
+        ]);
+    }
+
+    /**
+     * 답변 등록
+     * @return CI_Output|void
+     */
+    public function storeReply()
+    {
+        $this->bm_idx = $this->supportersMemberModel->_arr_bm_idx['qna'];
+
+        $rules = [
+            ['field' => 'reply_contents', 'label' => '답변 내용', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        if (empty($this->_reqP('idx')) === true) {
+            return $this->json_error('식별자가 없습니다.', _HTTP_NOT_FOUND);
+        } else {
+            $idx = $this->_reqP('idx');
+        }
+
+        $inputData = $this->_setReplyInputData($this->_reqP(null, false));
+        $result = $this->boardModel->replyAddBoard($inputData, $idx, $this->bm_idx);
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 학습상담 게시판 삭제
+     * @param array $params
+     */
+    public function deleteBoard($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $idx = $params[0];
+        $result = $this->boardModel->boardDelete($idx);
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
+    }
+
+    /**
+     * 첨부파일 다운로드
+     */
+    public function download()
+    {
+        $this->_download();
+    }
+
 
     private function _setInputData($input){
         $input_data = [
@@ -456,17 +708,68 @@ class Member extends BaseSupporters
 
         for ($i=1; $i<=$last_day; $i++) {
             $temp_css = '';
-            if($i < 10){
-                $day = '0'. $i;
-            }else{
-                $day = $i;
-            }
+            $temp_txt = '';
+            $day = ($i < 10) ? '0'. $i : $i;
             if(empty($data[$target_month.$day]) === false){
                 $temp_css = 'attend';
+                $temp_txt = $data[$target_month.$day];
             }
-            $temp_html = '<span class="'.$temp_css.'"></span>';
+            $temp_html = '<span class="'.$temp_css.'">'.$temp_txt.'</span>';
             $month_data[$i] = $temp_html;
         }
         return $month_data;
+    }
+
+    /**
+     * 출석 통계
+     * @param string $supporters_idx
+     * @param string $member_idx
+     * @param string $target_day
+     * @return mixed
+     */
+    private function _getAttendanceMemberAverage($supporters_idx = '', $member_idx = '', $target_day = '')
+    {
+        $arr_condition = [
+            'EQ' => [
+                'SupportersIdx' => $supporters_idx
+                ,'MemIdx' => $member_idx
+                ,'IsStatus' => 'Y'
+            ],
+            'RAW' => [
+                'AttendanceDay BETWEEN ' => 'LAST_DAY('.$target_day.' - INTERVAL 1 MONTH) + INTERVAL 1 DAY AND DATE_FORMAT(LAST_DAY('.$target_day.'), "%Y%m%d")'
+            ]
+        ];
+        return $this->supportersMemberModel->getSupportersAttendanceMemberAverage($arr_condition, $target_day);
+    }
+
+    /**
+     * 게시판 내용 재가공 처리
+     * @param $content
+     * @param $file_path
+     * @param $file_name
+     * @param $cnt
+     * @return string
+     */
+    private function _getBoardForContent($content, $file_path, $file_name, $cnt = 20)
+    {
+        $arr_file_path = explode(',', $file_path);
+        $arr_file_name = explode(',', $file_name);
+
+        $tmp_images = '';
+        for ($i=0; $i<$cnt; $i++) {
+            if (empty($arr_file_path[$i]) === false) {
+                $tmp_images .= make_image_tag($arr_file_path[$i] . $arr_file_name[$i]);
+            }
+        }
+        return $tmp_images . $content;
+    }
+
+    private function _setReplyInputData($input)
+    {
+        $input_data = [
+            'ReplyContent' => element('reply_contents', $input),
+            'ReplyStatusCcd' => $this->_arr_reply_code['finish']
+        ];
+        return $input_data;
     }
 }

@@ -278,9 +278,6 @@ class SupportersRegistModel extends WB_Model
 
         // 사이트 권한 추가
         $arr_condition = [
-            'EQ' => [
-                'IsUse' => 'Y'
-            ],
             'IN' => [
                 'SiteCode' => get_auth_site_codes()
             ]
@@ -314,9 +311,6 @@ class SupportersRegistModel extends WB_Model
 
         // 사이트 권한 추가
         $arr_condition = [
-            'EQ' => [
-                'IsUse' => 'Y'
-            ],
             'IN' => [
                 'SiteCode' => get_auth_site_codes()
             ]

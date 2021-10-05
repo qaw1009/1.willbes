@@ -9,7 +9,8 @@ class ActivityHistory extends BaseSupporters
     protected $helpers = array('download','file');
     private $_arr_supporters_type = [
         '104' => '과제',
-        '105' => '제안/토론'
+        '105' => '제안/토론',
+        '118' => '학습상담'
     ];
     private $_reg_type = [
         'user' => 0,    //유저 등록 정보
@@ -43,9 +44,9 @@ class ActivityHistory extends BaseSupporters
     {
         $arr_condition = [
             'EQ' => [
-                'Board.SiteCode' => $this->_reqP('search_site_code'),
-                'Board.SupportersIdx' => $this->_reqP('search_supporters_idx'),
-                'Board.BmIdx' => $this->_reqP('search_supporters_type')
+                'SP.SiteCode' => $this->_reqP('search_site_code'),
+                'SP.SupportersIdx' => $this->_reqP('search_supporters_idx'),
+                'SP.SupportersTypeCcd' => $this->_reqP('search_supporters_type_ccd'),
             ],
             'ORG' => [
                 'LKB' => [
@@ -55,11 +56,18 @@ class ActivityHistory extends BaseSupporters
             ]
         ];
 
+        if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'BDT' => ['Board.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+            ]);
+        }
+
         $list = [];
-        $count = $this->boardAssignmentSupportersModel->listAllSupportersForMember(true, $arr_condition);
+        $count = $this->boardAssignmentSupportersModel->listAllSupportersForMember($this->_reqP('search_supporters_type'),true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->boardAssignmentSupportersModel->listAllSupportersForMember(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['Board.RegDatm' => 'desc']);
+            $list = $this->boardAssignmentSupportersModel->listAllSupportersForMember($this->_reqP('search_supporters_type')
+                ,false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['Board.RegDatm' => 'desc']);
         }
 
         return $this->response([

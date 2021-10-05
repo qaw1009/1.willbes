@@ -63,7 +63,8 @@
                     }},
                 {'data' : 'AttachFileName', 'render' : function(data, type, row, meta) {
                         var tmp_return;
-                        (data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
+                        tmp_return = (data == 'N' ? '' : '<p class="glyphicon glyphicon-file"></p>');
+                        /*(data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';*/
                         return tmp_return;
                     }},
                 {'data' : 'RegDatm'},
@@ -75,8 +76,7 @@
                         }
                     }},
                 {'data' : 'ReadCnt', 'render' : function(data, type, row, meta) {
-                        var cnt = Number(data) + Number(row.SettingReadCnt);
-                        return cnt;
+                        return data;
                     }}
             ]
         });

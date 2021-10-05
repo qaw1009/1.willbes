@@ -16,7 +16,8 @@ class SupportersMemberModel extends WB_Model
 
     public $_arr_bm_idx = [
         'assignment' => '104',
-        'suggest' => '105'
+        'suggest' => '105',
+        'qna' => '118'
     ];
 
     public function __construct()
@@ -50,7 +51,17 @@ class SupportersMemberModel extends WB_Model
                     SELECT COUNT(*) AS AttendanceCnt FROM lms_supporters_attendance AS ad
                     WHERE a.SupportersIdx = ad.SupportersIdx AND a.MemIdx = ad.MemIdx AND ad.IsStatus = "Y"
                     AND ad.AttendanceDay BETWEEN DATE_FORMAT(LAST_DAY(NOW() - INTERVAL 1 MONTH) + INTERVAL 1 DAY, "%Y%m%d") AND DATE_FORMAT(LAST_DAY(NOW()), "%Y%m%d")
-                ) AS AttendanceCnt
+                ) AS AttendanceCnt,
+                (
+                    SELECT ROUND((COUNT(*)/DATE_FORMAT(LAST_DAY(NOW()), "%d")*100),0) AS AttendanceCntAverage
+                    FROM lms_supporters_attendance AS ad
+                    WHERE a.SupportersIdx = ad.SupportersIdx
+                    AND a.MemIdx = ad.MemIdx
+                    AND ad.IsStatus = "Y"
+                    AND ad.AttendanceDay BETWEEN DATE_FORMAT(LAST_DAY(NOW() - INTERVAL 1 MONTH) + INTERVAL 1 DAY, "%Y%m%d") AND DATE_FORMAT(LAST_DAY(NOW()), "%Y%m%d")
+                ) AS AttendanceCntAverage,
+                (SELECT COUNT(*) FROM lms_board WHERE BmIdx = "'.$this->_arr_bm_idx['qna'].'" AND SupportersIdx = a.SupportersIdx AND RegMemIdx = a.MemIdx AND IsStatus = "Y") AS QnaTotalCnt,
+		        (SELECT COUNT(*) FROM lms_board WHERE BmIdx = "'.$this->_arr_bm_idx['qna'].'" AND SupportersIdx = a.SupportersIdx AND RegMemIdx = a.MemIdx AND ReplyStatusCcd = "621001" AND IsStatus = "Y") AS QnaReplyCnt
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -361,17 +372,26 @@ class SupportersMemberModel extends WB_Model
     public function getSupportersAttendanceMember($arr_condition = [])
     {
         $column = " 
-            AttendanceDay
+            AttendanceDay, DATE_FORMAT(RegDatm,'%H:%i:%s') AS AttendanceTime
         ";
         $from = " FROM {$this->_table['supporters_attendance']} ";
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $list = $this->_conn->query('SELECT '. $column. $from. $where)->result_array();
+        return array_pluck($list, 'AttendanceTime', 'AttendanceDay');
+    }
 
-        $data = [];
-        foreach ($list as $key => $val){
-            $data[$val['AttendanceDay']] = $val;
-        }
-        return $data;
+    /**
+     * 월 출석 통계
+     * @param array $arr_condition
+     * @param string $date
+     * @return mixed
+     */
+    public function getSupportersAttendanceMemberAverage($arr_condition = [], $date = '')
+    {
+        $column = 'COUNT(*) AS MemberCount, DATE_FORMAT(LAST_DAY('.$date.'), \'%d\') AS LastDay, ROUND((COUNT(*)/DATE_FORMAT(LAST_DAY('.$date.'), \'%d\'))*100,0) AS MemberAverage';
+        $from = " FROM {$this->_table['supporters_attendance']} ";
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        return $this->_conn->query('SELECT '. $column. $from. $where)->row_array();
     }
 
     /**

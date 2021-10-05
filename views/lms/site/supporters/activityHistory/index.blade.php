@@ -122,7 +122,7 @@
                         }},
                     {'data' : 'AttachFileName', 'render' : function(data, type, row, meta) {
                             var tmp_return;
-                            (data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
+                            (data === 'N') ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
                             return tmp_return;
                         }},
                     {'data' : 'MemName'},
@@ -133,8 +133,10 @@
             $list_table.on('click', '.btn-read', function() {
                 if ($(this).data('bm-idx') == '104') {
                     var _url = "{{ site_url("/site/supporters/activityHistory/readAssignmentModal/") }}" + $(this).data('idx');
-                } else {
+                } else if ($(this).data('bm-idx') == '105') {
                     var _url = "{{ site_url("/site/supporters/activityHistory/readSuggestModal/") }}" + $(this).data('idx');
+                } else {
+                    var _url = "{{ site_url("/site/supporters/member/readQnaReplyModal/") }}" + $(this).data('idx');
                 }
                 var board_idx = $(this).data('board-idx');
 

@@ -30,7 +30,7 @@
         $datatable_attendance = $list_table_attendance.DataTable({
             serverSide: true,
             buttons: [
-                { text: '<i class="fa fa-calendar mr-10"></i> 달력보기', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-calendar' },
+                { text: '<i class="fa fa-calendar mr-10"></i> 월별 출석체크 현황', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-calendar' },
             ],
             ajax: {
                 'url' : '{{ site_url('/site/supporters/member/ajaxMyAttendanceDataTable/') }}',

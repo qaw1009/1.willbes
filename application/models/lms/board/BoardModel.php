@@ -186,6 +186,15 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                 ";
                 break;
+            case "supportersQna" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_product_subject} AS PS ON LB.SubjectIdx = PS.SubjectIdx
+                    LEFT OUTER JOIN {$this->_table_product} AS lms_product ON LB.ProdCode = lms_product.ProdCode
+                    LEFT OUTER JOIN {$this->_table_sys_code} AS LSC2 ON LB.TypeCcd = LSC2.Ccd
+                    LEFT OUTER JOIN {$this->_table_sys_code} AS LSC3 ON LB.ReplyStatusCcd = LSC3.Ccd
+                    LEFT OUTER JOIN {$this->_table_sys_admin} AS ADMIN2 ON LB.ReplyAdminIdx = ADMIN2.wAdminIdx
+                ";
+                break;
         }
 
         if (empty($site_code) === false) {
@@ -693,6 +702,22 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                     LEFT OUTER JOIN {$this->_table_product_predict} AS PP ON LB.PredictIdx = PP.PredictIdx AND PP.IsUse ='Y'                    
+                ";
+                break;
+            case "supportersQna" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
+                    LEFT OUTER JOIN {$this->_table_product_subject} AS PS ON LB.SubjectIdx = PS.SubjectIdx
+                    LEFT OUTER JOIN {$this->_table_product} AS lms_product ON LB.ProdCode = lms_product.ProdCode
+                    LEFT OUTER JOIN {$this->_table_sys_code} AS LSC2 ON LB.TypeCcd = LSC2.Ccd
+                    LEFT OUTER JOIN {$this->_table_sys_code} AS LSC3 ON LB.ReplyStatusCcd = LSC3.Ccd
+                    LEFT OUTER JOIN (
+                        select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
+                        from {$this->_table_attach} {$file_where} AND RegType = 1
+                        GROUP BY BoardIdx
+                    ) as LBA_1 ON LB.BoardIdx = LBA_1.BoardIdx
+                    LEFT OUTER JOIN {$this->_table_sys_admin} as qnaAdmin ON LB.ReplyAdminIdx = qnaAdmin.wAdminIdx and qnaAdmin.wIsStatus='Y'
+                    LEFT OUTER JOIN {$this->_table_sys_admin} as qnaAdmin2 ON LB.ReplyUpdAdminIdx = qnaAdmin2.wAdminIdx and qnaAdmin2.wIsStatus='Y'
                 ";
                 break;
         }

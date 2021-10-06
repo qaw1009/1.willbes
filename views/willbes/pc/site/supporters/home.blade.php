@@ -76,79 +76,98 @@
                             <div id="tab02" class="evtCts learn">
                                 <h4>● 나의 학습량</h4>
                                 <div class="learn01">
-                                    <div>이번달 학습 시간 <strong>00시간 00분 (수강강의 : 00개)</strong></div>
-                                    <div>오늘 수강 강좌 <strong>0개</strong></div>
+                                    <div>이번달 학습 시간 <strong>{{$chartdata['month_sum']['h']}}시간 {{$chartdata['month_sum']['m']}}분 (수강강의 : {{$chartdata['month_sum']['ProdCnt']}}개)</strong></div>
+                                    <div>오늘 수강 강좌 <strong>{{$chartdata['today']['ProdCnt']}}개</strong></div>
                                 </div>
                                 <div class="learn02">
                                     <div>
-                                        <p>2022 신광은 경찰 온라인관리반 PASS</p>
-                                        [수강기간] <span class="tx-blue">2021.08.06~2021.12.30</span> (잔여기간 <span class="tx-red">120일</span>)
+                                        <p>{{$passinfo['ProdName']}}</p>
+                                        [수강기간] <span class="tx-blue">{{str_replace('-', '.', $passinfo['LecStartDate'])}}~{{str_replace('-', '.', $passinfo['RealLecEndDate'])}}</span> (잔여기간 <span class="tx-red">{{$passinfo['remainDays']}}일</span>)
                                     </div>
                                     <div class="right">
                                         수강중인 강좌수
-                                        <p><span class="tx-blue">3강좌</span> / 10강좌</p>
+                                        <p><span class="tx-blue">{{$passinfo['TakeLecNum']}}강좌</span> / {{$passinfo['LecNum']}}강좌</p>
                                     </div>
                                 </div>
                                 <div class="learn03">
                                     <div class="stitle">[과목 별 월 학습량]</div>
                                     <div class="data">
-                                        <table cellspacing="0" cellpadding="0">
-                                            <colgroup>
-                                                <col width="10%" />
-                                                <col />
-                                                <col />
-                                                <col />
-                                                <col />
-                                            </colgroup>
-                                            <tbody>
-                                            <tr>
-                                                <th>
-                                                    16<br>
-                                                    14<br>
-                                                    12<br>
-                                                    10<br>
-                                                    8<br>
-                                                    6<br>
-                                                    4<br>
-                                                    2<br>
-                                                    0
-                                                </th>
-                                                <td>
-                                                    <div style="height:20%"></div>
-                                                    <div style="height:15%"></div>
-                                                    <div style="height:35%"></div>
-                                                </td>
-                                                <td>
-                                                    <div style="height:10%"></div>
-                                                    <div style="height:12%"></div>
-                                                    <div style="height:24%"></div>
-                                                    <div style="height:5%"></div>
-                                                    <div style="height:14%"></div>
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            </tbody>
-                                            <tfoot>
-                                            <tr>
-                                                <td></td>
-                                                <td>2021.08</td>
-                                                <td>2021.09</td>
-                                                <td>2021.10</td>
-                                                <td>2021.11</td>
-                                            </tr>
-                                            </tfoot>
-                                        </table>
-                                        <div class="subject">
-                                            <span>헌법</span>
-                                            <span>경찰학개론</span>
-                                            <span>형사법</span>
-                                            <span>과목4</span>
-                                            <span>과목5</span>
-                                        </div>
+                                        <canvas id="chart_div" width="920" height="400"></canvas>
                                     </div>
                                 </div>
                             </div>
+                            <script type="text/javascript" src="//cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+                            <script type="text/javascript">
+                                const $colors = ['#ad78b0', '#00496a', '#bd8a5b', '#f88268', '#73b062'];
+                                const $data = {
+                                    labels: [@foreach($chartdata['month'] as $month_key => $month) '{{$month_key}}', @endforeach],
+                                    datasets: [
+                                        @php $i = 0 @endphp
+                                        @foreach($chartdata['all'] as $key => $row)
+                                        {
+                                            label: '{{$key}}',
+                                            data: [@foreach($chartdata['month'] as $month_key => $month) {{ empty($month[$key]) == True ? 0 : $month[$key] }}, @endforeach],
+                                            backgroundColor: $colors[{{$i}}],
+                                        },
+                                            @php $i++ @endphp
+                                        @endforeach
+                                    ]
+                                };
+                                const $config = {
+                                    type: 'bar',
+                                    data: $data,
+                                    options: {
+                                        plugins: {
+                                            legend: {
+                                                position: 'bottom',
+                                                labels: {
+                                                    boxHeight:21
+                                                }
+                                            }
+                                        },
+                                        responsive: false,
+                                        scales: {
+                                            x: {
+                                                stacked: true
+                                            },
+                                            y: {
+                                                stacked: true
+                                            }
+                                        }
+                                    }
+                                };
+                                var $ctx = document.getElementById('chart_div').getContext('2d');
+                                var myChart = new Chart($ctx, $config);
+
+                                function drawVisualization() {
+                                    var data = google.visualization.arrayToDataTable([
+                                        [ '날짜' @foreach($chartdata['all'] as $key => $row) , '{{$key}}' @endforeach ]
+                                        @foreach($chartdata['month'] as $month_key => $month)
+                                            ,[ '{{$month_key}}' @foreach($chartdata['all'] as $key => $row) , {{ empty($month[$key]) == True ? 0 : $month[$key] }} @endforeach
+                                            ]
+                                        @endforeach
+                                    ]);
+
+                                    var options = {
+                                        isStacked: true,
+                                        width:920,
+                                        height:400,
+                                        chartArea:{
+                                            left:0,
+                                            top:0,
+                                            width:'100%',
+                                            height:'95%'
+                                        },
+                                        legend : {
+                                            position :'none'
+                                        },
+                                        colors: ['#ad78b0', '#00496a', '#bd8a5b', '#f88268', '#73b062']
+                                    };
+                                    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+                                    chart.draw(data, options);
+                                }
+                            </script>
+
                         @elseif($key == '746003' && in_array($key,explode(',',$data['MenuInfo'])) === true)
                             <div id="tab03" class="evtCts">
                                 @include('willbes.pc.site.supporters.home_assignment_partial')

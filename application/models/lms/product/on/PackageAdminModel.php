@@ -5,7 +5,6 @@ require_once APPPATH . 'models/lms/product/on/CommonLectureModel.php';
 
 class PackageAdminModel extends CommonLectureModel
 {
-
     /**
      * 강좌목록추출
      * @param $is_count
@@ -403,9 +402,6 @@ class PackageAdminModel extends CommonLectureModel
      */
     public function inputCommon($input=[], &$input_product, &$input_lecture)
     {
-
-
-
         $StudyPeriod = element('StudyPeriod',$input);       //수강일수
 
         $SaleStartDat = element('SaleStartDat',$input);
@@ -486,6 +482,7 @@ class PackageAdminModel extends CommonLectureModel
             ,'ExternalCorpCcd'=>element('ExternalCorpCcd',$input)
             ,'ExternalLinkCode'=>element('ExternalLinkCode',$input)
             ,'OrderNum' =>element('OrderNum',$input)
+            ,'DeviceLimitCount'=>element('DeviceLimitCount', $input)
         ];
     }
 }

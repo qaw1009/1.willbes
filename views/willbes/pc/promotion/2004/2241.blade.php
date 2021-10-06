@@ -211,7 +211,7 @@
                         <div class="avi_box">
                             <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/nQFyta6T3SM?rel=0"></iframe>
                         </div>
-                        <h2 class="avi_title">신기훈 행정법 2021.07.24 군무원 9급 기출 해설</h2>
+                        <h2 class="avi_title">[윌비스 공무원] 행정법 마스터! 신기훈 노량진 착륙</h2>
                     </div>
                     <div class="preview_list_area">
                         <div class="preview_list">
@@ -222,7 +222,7 @@
                                         <span class="num_box" data-num="1">1</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/08/2241_thumbnail01.png" alt=""></div>
                                         <div class="text_box">
-                                            <p>신기훈 행정법 2021.07.24 군무원 9급 기출 해설</p>
+                                            <p>[윌비스 공무원] 행정법 마스터! 신기훈 노량진 착륙</p>
                                         </div>
                                     </a>
                                 </li>

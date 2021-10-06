@@ -272,7 +272,7 @@ class SupportersFModel extends WB_Model
      */
     public function getChartData($arr_cond)
     {
-        $column = ' ps.SubjectName AS Name, count(*) AS Cnt, sum(lsh.StudyTime) AS TimeSum ';
+        $column = ' ps.SubjectName AS Name, COUNT(*) AS Cnt, sum(lsh.StudyTime) AS TimeSum, COUNT(DISTINCT lsh.ProdCodeSub) AS ProdCnt ';
 
         $from = 'FROM lms_order as o
             JOIN lms_order_product as op on o.OrderIdx = op.OrderIdx

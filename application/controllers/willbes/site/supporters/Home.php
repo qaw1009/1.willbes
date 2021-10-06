@@ -122,11 +122,13 @@ class Home extends \app\controllers\FrontController
             ]);
             $chart_data['today'] = [
                 'Cnt' => 0,
-                'TimeSum' => 0
+                'TimeSum' => 0,
+                'ProdCnt' => 0
             ];
             foreach ($chart_today as $row) {
                 $chart_data['today']['Cnt'] += $row['Cnt'];
                 $chart_data['today']['TimeSum'] += $row['TimeSum'];
+                $chart_data['today']['ProdCnt'] += $row['ProdCnt'];
             }
 
             // 월별기록
@@ -143,7 +145,6 @@ class Home extends \app\controllers\FrontController
                         'lsh.FIrstStudyDate' => $getmonth . '-'
                     ]
                 ]);
-
                 $chart_data['month'][str_replace('-', '.', $getmonth)] = array_data_pluck($month_data, 'Cnt','Name');
 
                 // 다음달 1일로 설정
@@ -152,11 +153,13 @@ class Home extends \app\controllers\FrontController
                 if($getmonth == substr($today, 0, 7)){
                     $chart_data['month_sum'] = [
                         'Cnt' => 0,
-                        'TimeSum' => 0
+                        'TimeSum' => 0,
+                        'ProdCnt' => 0
                     ];
                     foreach ($month_data as $row) {
                         $chart_data['month_sum']['Cnt'] += $row['Cnt'];
                         $chart_data['month_sum']['TimeSum'] += $row['TimeSum'];
+                        $chart_data['month_sum']['ProdCnt'] += $row['ProdCnt'];
                     }
                     $chart_data['month_sum']['h'] = gmdate('H', $chart_data['month_sum']['TimeSum']);
                     $chart_data['month_sum']['m'] = gmdate('i', $chart_data['month_sum']['TimeSum']);

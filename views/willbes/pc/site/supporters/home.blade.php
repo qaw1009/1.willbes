@@ -76,8 +76,8 @@
                             <div id="tab02" class="evtCts learn">
                                 <h4>● 나의 학습량</h4>
                                 <div class="learn01">
-                                    <div>이번달 학습 시간 <strong>{{$chartdata['month_sum']['h']}}시간 {{$chartdata['month_sum']['m']}}분 (수강강의 : {{$chartdata['month_sum']['Cnt']}}개)</strong></div>
-                                    <div>오늘 수강 강좌 <strong>{{$chartdata['today']['Cnt']}}개</strong></div>
+                                    <div>이번달 학습 시간 <strong>{{$chartdata['month_sum']['h']}}시간 {{$chartdata['month_sum']['m']}}분 (수강강의 : {{$chartdata['month_sum']['ProdCnt']}}개)</strong></div>
+                                    <div>오늘 수강 강좌 <strong>{{$chartdata['today']['ProdCnt']}}개</strong></div>
                                 </div>
                                 <div class="learn02">
                                     <div>

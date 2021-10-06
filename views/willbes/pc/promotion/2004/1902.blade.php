@@ -18,11 +18,10 @@
         /************************************************************/
         .evtTop01 {background:#241B20 url("https://static.willbes.net/public/images/promotion/2020/11/1902_top01_bg.jpg") center top no-repeat}
         .evtTop02 {background:#15161A url("https://static.willbes.net/public/images/promotion/2020/11/1902_top02_bg.jpg") center top no-repeat}
-
-        .evt02 {background:#866038;}
-        .evt02 div {width:1120px; margin:0 auto; background:#fff; font-size:14px}
+        .evt02 {background:#866038; padding-bottom:150px}
+        .evt02 .lecTable {width:1020px; margin:0 auto; background:#fff; font-size:14px}
         .evt02 th,
-        .evt02 td {padding:20px 10px;}
+        .evt02 td {padding:15px 5px; line-height:1.3}
         .evt02 td:nth-child(3) {text-align:left; color:#000}
         .evt02 td:nth-child(6) {color:red}
         .evt02 th {background:#f4f4f4}        
@@ -68,23 +67,23 @@
 
         <div class="evtCtnsBox evt02" id="evt02"> 
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/1902_02.jpg" alt="라이브 모드 직렬변 신청하기" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/1902_02.jpg" alt="라이브 모드 직렬변 신청하기" />
 
-                <a href="javascript:alert('Coming Soon');" title="행정직" style="position: absolute; left: 10.36%; top: 78.1%; width: 17.05%; height: 3.97%; z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon');" title="소방직" style="position: absolute; left: 41.7%; top: 78.1%; width: 17.05%; height: 3.97%; z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon');" title="군무원" style="position: absolute; left: 72.86%; top: 78.1%; width: 17.05%; height: 3.97%; z-index: 2;"></a> 
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="_blank" title="행정직" style="position: absolute; left: 10.36%; top: 78.1%; width: 17.05%; height: 3.97%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="_blank" title="소방직" style="position: absolute; left: 41.7%; top: 78.1%; width: 17.05%; height: 3.97%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="_blank" title="군무원" style="position: absolute; left: 72.86%; top: 78.1%; width: 17.05%; height: 3.97%; z-index: 2;"></a> 
             </div>
 
-{{--
-            <div>
+
+            <div class="lecTable">
                 <table>
+                    <col width="10%" />
+                    <col width="8%" />
                     <col width="" />
-                    <col width="" />
-                    <col width="" />
-                    <col width="" />
-                    <col width="" />
-                    <col width="" />
-                    <col width="" />
+                    <col width="12%" />
+                    <col width="12%" />
+                    <col width="8%" />
+                    <col width="8%" />
                     <thead>
                         <tr>
                             <th>과목명</th>
@@ -100,116 +99,134 @@
                         <tr>
                             <td>국어</td>
                             <td>오대혁</td>
-                            <td>[LIVE][21.09-10] 2022 오대혁 고갱이국어 심화이론</td>
-                            <td>09/06 ~ 10/28</td>
+                            <td>[LIVE][21.11-12] 2022 오대혁 고갱이국어 기출분석&amp;문제풀이</td>
+                            <td>11/8~12/30</td>
                             <td>월,목 9:00~13:00</td>
                             <td>128,000</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/184760" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/186451" target="_blank">신청하기</a></td>
                         </tr>
                         <tr>
                             <td>영어</td>
                             <td>한덕현</td>
-                            <td>[LIVE][21.09-10] 2022 한덕현 제니스영어 독해기적</td>
-                            <td>09/06 ~ 10/25</td>
+                            <td>[LIVE][21.11-12] 2022    한덕현 제니스영어 기출리뷰</td>
+                            <td>11/8~12/27</td>
                             <td>월 14:00~18:00</td>
                             <td>72,000</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/184761" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/186452" target="_blank">신청하기</a></td>
                         </tr>
                         <tr>
                             <td>영어</td>
                             <td>한덕현</td>
-                            <td>[LIVE][21.09-10] 2022 한덕현 제니스영어 필살기출비법</td>
-                            <td>09/11 ~ 10/30</td>
+                            <td>[LIVE][21.11-12] 2022 한덕현 제니스영어 스나이퍼32</td>
+                            <td>11/12~12/31</td>
+                            <td>금 9:00~13:00</td>
+                            <td>72,000</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/186453" target="_blank">신청하기</a></td>
+                        </tr>
+                        <tr>
+                            <td>영어</td>
+                            <td>한덕현</td>
+                            <td width="555">[LIVE][21.11-12] 2022 한덕현 제니스영어 논리독해</td>
+                            <td>11/13~21/1/1</td>
                             <td>토 9:00~13:00</td>
                             <td>72,000</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/184999" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/186454" target="_blank">신청하기</a></td>
                         </tr>
                         <tr>
                             <td>한국사</td>
                             <td>김상범</td>
-                            <td>[LIVE][21.09-10] 2022 김상범 한국사 심화이론</td>
-                            <td>09/09 ~ 10/30</td>
+                            <td>[LIVE][21.11-12] 2022 김상범 한국사 기출분석&amp;문제풀이</td>
+                            <td>11/11~21/1/1</td>
                             <td>목,토 14:00~18:00</td>
                             <td>128,000</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/184762" target="_blank">수강신청</a></td>
-                        </tr>
-                        <tr>
-                            <td>행정법</td>
-                            <td>신기훈</td>
-                            <td>[LIVE][21.09-10] 2022 신기훈 행정법총론 심화이론</td>
-                            <td>09/07 ~ 10/27</td>
-                            <td>화,수 9:00~13:00</td>
-                            <td>128,000</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/184763" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/186455" target="_blank">신청하기</a></td>
                         </tr>
                         <tr>
                             <td>행정학</td>
                             <td>김덕관</td>
-                            <td>[LIVE][21.09-10] 2022 김덕관 강한행정학 기출문제풀이</td>
-                            <td>09/22 ~ 11/10</td>
+                            <td>[LIVE][21.11-12] 2022 김덕관 강한행정학 진도별 모의고사</td>
+                            <td>11/17~12/15</td>
                             <td>수,금 14:00~18:00</td>
-                            <td>120,000</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/184764" target="_blank">수강신청</a></td>
+                            <td>72,000</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/186456" target="_blank">신청하기</a></td>
+                        </tr>
+                        <tr>
+                            <td>행정학</td>
+                            <td>김철</td>
+                            <td width="555">[LIVE][21.11-12] 2022 김철 행정학 기출분석&amp;문제풀이</td>
+                            <td>11/8~12/28</td>
+                            <td>월,화 14:00~18:00</td>
+                            <td>128,000</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/186457" target="_blank">신청하기</a></td>
+                        </tr>
+                        <tr>
+                            <td>행정법</td>
+                            <td>신기훈</td>
+                            <td width="555">[LIVE][21.11-12] 2022 신기훈 행정법총론 기출분석&amp;문제풀이</td>
+                            <td>11/9~12/29</td>
+                            <td>화,수 9:00~13:00</td>
+                            <td>128,000</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/186458" target="_blank">신청하기</a></td>
                         </tr>
                         <tr>
                             <td>소방학개론</td>
                             <td>이종오</td>
-                            <td>[LIVE][21.09-10] 2022 이종오 소방학개론 심화이론 & 핵심 요약정리</td>
-                            <td>09/08 ~ 10/27</td>
+                            <td>[LIVE][21.11-12] 2022 이종오 소방학개론 기출 문제 풀이 + OX 빈칸 특강</td>
+                            <td>11/10~12/29</td>
                             <td>수 10:00~17:00</td>
                             <td>128,000</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/184765" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/186459" target="_blank">신청하기</a></td>
                         </tr>
                         <tr>
                             <td>소방관계법규</td>
                             <td>이종오</td>
-                            <td>[LIVE][21.09-10] 2022 이종오 소방관계법규 심화이론 & 핵심 요약정리</td>
-                            <td>09/09 ~ 10/28</td>
+                            <td>[LIVE][21.11-12] 2022 이종오 소방관계법규 기출 문제 풀이 + OX 빈칸 특강</td>
+                            <td>11/11~12/30</td>
                             <td>목 9:00~13:00</td>
                             <td>64,000</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/184766" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/186460" target="_blank">신청하기</a></td>
                         </tr>
                         <tr>
                             <td>소방행정법</td>
                             <td>이석준</td>
-                            <td>[LIVE][21.09-10] 2022 이석준 소방행정법 심화이론</td>
-                            <td>09/07 ~ 10/26</td>
+                            <td>[LIVE][21.11-12] 2022 이석준 소방행정법 기출 문제 풀이</td>
+                            <td>11/9~12/28</td>
                             <td>화 9:00~18:00</td>
                             <td>128,000</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/184767" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/186461" target="_blank">신청하기</a></td>
                         </tr>
                         <tr>
                             <td>경채영어</td>
-                            <td>양익</td>
-                            <td>[LIVE][21.09-10] 2022 양익 경채영어 독해 필수문법 & 유형별 단어정리</td>
-                            <td>09/07 ~ 10/26</td>
-                            <td>화 9:00~13:00</td>
+                            <td>이아림</td>
+                            <td>[LIVE][21.11-12] 2022 이아림 소방공채영어 빈출 문법정리 + 통합 유형 독해 + 문제풀이</td>
+                            <td>11/12~12~31</td>
+                            <td>금 9:00~18:00</td>
                             <td>64,000</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/184769" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/186462" target="_blank">신청하기</a></td>
                         </tr>
                         <tr>
                             <td>공채영어</td>
-                            <td>이아림</td>
-                            <td>[LIVE][21.09-10] 2022 이아림 소방공채영어 기본문법 & 유형별 독해 정리</td>
-                            <td>09/10 ~ 10/29</td>
-                            <td>금 9:00~18:00</td>
+                            <td>양익</td>
+                            <td>[LIVE][21.11-12] 2022 양익 경채영어 생활영어 100제 + 필수유형별 독해</td>
+                            <td>11/9~12/28</td>
+                            <td>화 9:00~13:00</td>
                             <td>128,000</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/184768" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/186463" target="_blank">신청하기</a></td>
                         </tr>
                         <tr>
                             <td>소방한국사</td>
                             <td>한경준</td>
-                            <td>[LIVE][21.09-10] 2022 한경준 소방한국사 근현대사 & 핵심 요약정리</td>
-                            <td>09/06 ~ 10/25</td>
+                            <td>[LIVE][21.11-12] 2022 한경준 소방한국사 기출 문제 풀이</td>
+                            <td>11/8~12/27</td>
                             <td>월 9:00~18:00</td>
                             <td>128,000</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/184770" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/186464" target="_blank">신청하기</a></td>
                         </tr>
                         
                     </tbody>
                 </table>
             </div>
---}}
+
         </div>
 
         <div class="evtCtnsBox wb_info" id="info">

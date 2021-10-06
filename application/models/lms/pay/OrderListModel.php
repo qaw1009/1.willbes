@@ -1385,7 +1385,7 @@ class OrderListModel extends BaseOrderModel
      */
     public function getPrintCertSubLectureBaseSubProdData($order_idx, $order_prod_idx, $prod_code_sub)
     {
-        $column = 'O.OrderNo, M.MemName, SP.ProdName as ProdNameSub, SP.ProdNameShort as ProdNameShortSub';
+        $column = 'O.OrderNo, OOI.CertNo, M.MemName, SP.ProdName as ProdNameSub, SP.ProdNameShort as ProdNameShortSub';
 
         $from = '
             from ' . $this->_table['my_lecture'] . ' as ML 
@@ -1393,6 +1393,8 @@ class OrderListModel extends BaseOrderModel
                     on ML.OrderIdx = OP.OrderIdx and ML.OrderProdIdx = OP.OrderProdIdx and ML.ProdCode = OP.ProdCode
                 inner join ' . $this->_table['order'] . ' as O
                     on ML.OrderIdx = O.OrderIdx
+                left join ' . $this->_table['order_other_info'] . ' as OOI
+                    on ML.OrderIdx = OOI.OrderIdx                    
                 inner join ' . $this->_table['product'] . ' as SP
                     on ML.ProdCodeSub = SP.ProdCode and SP.IsStatus = "Y"
                 left join ' . $this->_table['member'] . ' as M

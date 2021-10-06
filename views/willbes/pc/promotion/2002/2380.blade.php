@@ -46,8 +46,8 @@
 			<img src="https://static.willbes.net/public/images/promotion/2020/10/wb_police.jpg"  alt="경찰학원부문 1위" />
 		</div>
 
-        <div class="evtCtnsBox wb_top">
-			<img src="https://static.willbes.net/public/images/promotion/2021/10/2380_top.jpg"  alt="이달의 추천강좌" data-aos="fade-left"/>
+        <div class="evtCtnsBox wb_top" data-aos="fade-left">
+			<img src="https://static.willbes.net/public/images/promotion/2021/10/2380_top.jpg"  alt="이달의 추천강좌" />
 		</div>
 
         <div class="evtCtnsBox wb_01" id="evt01">

@@ -76,7 +76,7 @@
         <div class="evtCtnsBox evt05" id="evt05">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2332_05.jpg"  alt="국어" data-aos="fade-left">
-                <a href="http://www.klata.or.kr/main.html " title="자격증 홈페이지 바로가기" target="_blank" style="position: absolute; left: 30.27%; top: 84.4%; width: 39.02%; height: 4.11%; z-index: 2;"></a>
+                <a href="https://www.klata.or.kr" title="자격증 홈페이지 바로가기" target="_blank" style="position: absolute; left: 30.27%; top: 84.4%; width: 39.02%; height: 4.11%; z-index: 2;"></a>
             </div>            
         </div>
         <div class="evtCtnsBox evt06" id="evt06">

@@ -21,7 +21,7 @@
         .sky {position:fixed; top:250px; right:100px; width:163px; z-index:1;}
         .sky a {display:block; margin-bottom:10px;}
  
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/07/2160_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/10/2160_top_bg.jpg) no-repeat center top;}
         .wb_top .tImg {position:absolute;left:50%;top:71.5%;margin-left:-220px;}
         .wb_top .tImg img {width:440px;height:240px;}
 
@@ -30,12 +30,14 @@
 
         .wb_cts02 {background:#f2f0f1;padding-bottom:150px;}      
         .wb_cts02 .txtBtn {background:#444; color:#fff; padding:10px 20px; display:inline-block} 
+        .wb_cts02 .txtBtn:hover {background:#000}
 
         .wb_cts03 {background:#854797;padding-bottom:100px;}
         .check {width:980px; margin:0 auto; padding:20px 0px 20px 10px; letter-spacing:3; color:#fff; z-index:5}
         .check label {cursor:pointer; font-size:15px;color:#FFF;font-weight:bold;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
         .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#2d2d2d; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
+        .check a:hover {background:#000}
 
         /*타이머*/
         .time {width:800px; margin:0 auto; text-align:center; padding:20px 0}
@@ -66,18 +68,18 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         {{--
         <div class="sky">
-            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/07/2160_sky01.png"  title="인증하고 할인받기" /></a>
-            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/07/2160_sky02.png"  title="갈아타고 할인받기" /></a>
+            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/10/2160_sky01.png"  title="인증하고 할인받기" /></a>
+            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/10/2160_sky02.png"  title="갈아타고 할인받기" /></a>
         </div>
         --}}
 
-        <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_top.jpg" alt="9급 패스"  />
+        <div class="evtCtnsBox wb_top" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2160_top.jpg" alt="9급 패스"  />
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_01.jpg" alt="년도별 출원인원" />
-            <div class="tImg">
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2160_01.jpg" alt="년도별 출원인원"  data-aos="fade-left"/>
+            <div class="tImg"  data-aos="fade-right">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t01.gif" alt="국어 오대혁" />
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t02.gif" alt="영어 한덕현" /><br>
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t04.gif" alt="한국사 김상범" />
@@ -86,16 +88,16 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts02">
+        <div class="evtCtnsBox wb_cts02" data-aos="fade-left">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_02.jpg" alt="교수진 및 커리큘럼" />    
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/2160_02.jpg" alt="교수진 및 커리큘럼" />    
                 <a href="javascript:certOpen();" title="타 사이트 수강 인증하기" style="position: absolute; left: 29.82%; top: 85.51%; width: 39.91%; height: 7.35%; z-index: 2;"></a>                  
             </div>   
             <a href="#careful" class="txtBtn">유의사항 확인하기 →</a>   
         </div>
 
-        <div class="evtCtnsBox wb_cts03" id="transfer">            
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_03.jpg" alt="환승 이벤트" />        
+        <div class="evtCtnsBox wb_cts03" id="transfer" data-aos="fade-right">            
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2160_03.jpg" alt="환승 이벤트" />        
             <div class="time NGEB" id="newTopDday">
                 <ul>
                     <li><span class=d_day>D-DAY</li>
@@ -113,7 +115,7 @@
                 </ul>
             </div>         
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_03_01.jpg" alt="환승 이벤트" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/2160_03_01.jpg" alt="환승 이벤트" />
                 <a href="javascript:go_PassLecture('180927');" title="수강 신청하기" style="position: absolute; left: 43.93%; top: 69.11%; width: 41.7%; height: 21.68%; z-index: 2;"></a>                
             </div>
             <div class="check">
@@ -125,7 +127,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_info" id="careful">
+        <div class="evtCtnsBox wb_info" id="careful" data-aos="fade-up">
             <div class="guide_box">
                 <h2 class="NSK-Black">윌비스 9급 PASS 이용안내</h2>
                 <dl>
@@ -220,7 +222,15 @@
     </div>
     <!-- End Container -->
 
-    <script>    
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+    $( document ).ready( function() {
+        AOS.init();
+    } );
+    </script>
+
+    <script>   
 
         /*수강신청 동의*/ 
         function go_PassLecture(code){

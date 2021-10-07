@@ -49,7 +49,7 @@
 <div class="p_re evtContent NGR" id="evtContainer">
     <div class="sky">
         <div><a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" ></a></div>      
-        <div><a href="https://pass.willbes.net/promotion/index/cate/3019/code/2282" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2282_sky.png" title="실전덕후단" ></a></div>    
+        {{--<div><a href="https://pass.willbes.net/promotion/index/cate/3019/code/2282" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2282_sky.png" title="실전덕후단" ></a></div>--}}  
     </div>
 
     <div class="evtCtnsBox wb_top" >

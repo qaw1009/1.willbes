@@ -23,8 +23,7 @@
         .wb_02 div {width:1120px; margin:0 auto}
 
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
-      
+                      
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -42,7 +41,7 @@
 
         <div class="evtCtnsBox wb_02">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2119_02.jpg" alt="수강신청" />  
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/2119_02.jpg" alt="수강신청" />  
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" title="수강신청하기" style="position: absolute; left: 28.84%; top: 82.52%; width: 42.86%; height: 8.96%; z-index: 2;"></a>
             </div>
         </div>

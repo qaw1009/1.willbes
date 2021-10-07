@@ -100,18 +100,19 @@
     </style>
     <div class="p_re evtContent NGR" id="evtContainer">  
               
-        <div class="skybanner">  
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky01.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0">
-                <map name="Map1071A" id="Map1071A" >
-                    <area shape="rect" coords="5,137,116,189" href="#" class="r_btn_tab" data-tab-id="1" />
-                    <area shape="rect" coords="5,196,116,258" href="#" class="r_btn_tab" data-tab-id="2"/>
-                    <area shape="rect" coords="5,266,116,326" href="#" class="r_btn_tab" data-tab-id="3"/>
-                    <area shape="rect" coords="5,334,116,384" href="#" class="r_btn_tab" data-tab-id="4"/>
-                    <area shape="rect" coords="5,390,116,457" href="#" class="r_btn_tab" data-tab-id="5"/>
-                    <area shape="rect" coords="5,462,116,511" href="#" class="r_btn_tab" data-tab-id="6"/>
-                </map>
-            </div>        
+        <div class="skybanner" id="QuickMenu">  
+            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2256" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/10/1071_sky02.png" alt="이유있는 선택"/> </a>
+
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky01.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0">
+            <map name="Map1071A" id="Map1071A" >
+                <area shape="rect" coords="5,137,116,189" href="#" class="r_btn_tab" data-tab-id="1" />
+                <area shape="rect" coords="5,196,116,258" href="#" class="r_btn_tab" data-tab-id="2"/>
+                <area shape="rect" coords="5,266,116,326" href="#" class="r_btn_tab" data-tab-id="3"/>
+                <area shape="rect" coords="5,334,116,384" href="#" class="r_btn_tab" data-tab-id="4"/>
+                <area shape="rect" coords="5,390,116,457" href="#" class="r_btn_tab" data-tab-id="5"/>
+                <area shape="rect" coords="5,462,116,511" href="#" class="r_btn_tab" data-tab-id="6"/>
+            </map>
+       
         </div>  
         
         <div class="evtCtnsBox wb_top" >

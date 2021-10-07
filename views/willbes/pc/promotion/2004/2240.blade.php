@@ -220,7 +220,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_05.gif" alt="커리큘럼"/>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_05_1.gif" alt="커리큘럼"/>
-                <a href="javascript:alert('Coming Soon');" title="한덕현" style="position: absolute; left: 85.27%; top: 24.81%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=361935&" title="한덕현" style="position: absolute; left: 85.27%; top: 24.81%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
                 <a href="javascript:alert('Coming Soon');" title="신기훈" style="position: absolute; left: 85.27%; top: 48.52%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
             </div>
         </section>

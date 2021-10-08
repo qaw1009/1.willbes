@@ -127,10 +127,10 @@
             </div>
         </div>
 
-        <div class="Section Section6 mt80">
+        <div class="Section mt80">
             <div class="widthAuto">
                 <div class="nNoticeBox three">
-                    <div class="Section NSK mt90 mb90">
+                    <div class="Section NSK mt90">
                         <div class="widthAuto">
                             <div class="noticeList widthAuto350 f_left">
                                 <div class="will-nlistTit p_re">공지사항 <a href="{{front_url('/support/notice/index/cate/'.$__cfg['CateCode'])}}" target="_blank" class="btn-add">
@@ -197,7 +197,7 @@
         </div>
 
         {{--학원 오시는 길--}}
-        @include('willbes.pc.site._viewTest.main_partial.map_2003')
+        @include('willbes.pc.site.main_partial.map_2003')
 
         <div class="Section mt70 mb90 NSK">
             <div class="widthAuto">

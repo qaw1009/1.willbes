@@ -58,9 +58,9 @@
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2386_02.jpg" alt="수강 신청하기" />
                 <a href="javascript:go_PassLecture('186515');" style="position: absolute;left: 71.16%;top: 13.67%;width: 25.04%;height: 16.73%;z-index: 2;"></a> 
-                <a href="javascript:go_PassLecture('186516');" style="position: absolute;left: 71.16%;top: 31.67%;width: 25.04%;height: 16.73%;z-index: 2;"></a> 
-                <a href="javascript:go_PassLecture('186517');" style="position: absolute;left: 71.16%;top: 48.97%;width: 25.04%;height: 16.73%;z-index: 2;"></a> 
-                <a href="javascript:go_PassLecture('186518');" style="position: absolute;left: 71.16%;top: 66.97%;width: 25.04%;height: 16.73%;z-index: 2;"></a>           
+                <a href="javascript:go_PassLecture('186518');" style="position: absolute;left: 71.16%;top: 31.67%;width: 25.04%;height: 16.73%;z-index: 2;"></a> 
+                <a href="javascript:go_PassLecture('186516');" style="position: absolute;left: 71.16%;top: 48.97%;width: 25.04%;height: 16.73%;z-index: 2;"></a> 
+                <a href="javascript:go_PassLecture('186517');" style="position: absolute;left: 71.16%;top: 66.97%;width: 25.04%;height: 16.73%;z-index: 2;"></a>           
             </div>    
             <div class="check">
                 <label>
@@ -82,24 +82,24 @@
                 <ul>
                     <li>
                     1. 경제학 전과정 E-PASS <br>
-                        10월 20일까지 결제시 <span class="original">2,023,000원</span> -> 1,210,000원 / 10월 20일 이후 결제시 <span class="original">2,023,000원</span> -> 1,410,000원 + 수강기간 결제시부터 300일<br>
+                        10월 20일까지 결제시 <span class="original">2,023,000원</span> -> 1,200,000원 / 10월 20일 이후 결제시 <span class="original">2,023,000원</span> -> 1,400,000원 + 수강기간 결제시부터 300일<br>
                         경제학예비(21년4월)+1순환(21년 7월)+2순환(20년 10월)+3순환(21년 3월) 
                     </li>    
                     <li>
-                    2. 경제학 전과정+경제학을 위한 특강 E-PASS <br>
-                        10월 20일까지 결제시 <span class="original">2,413,000원</span> -> 1,440,000원 / 10월 20일 이후 결제시 <span class="original">2,413,000원</span> -> 1,689,000원 + 수강기간 결제시부터 300일<br>
-                        경제학예비(21년4월)+1순환(21년 7월)+2순환(20년 10월)+3순환(21년 3월)+경제학 기본서 1회독+경제학을 위한 국제경제학
-                    </li>     
-                    <li>    
-                    3. 경제학+국제경제학 전과정 E-PASS <br>
-                        10월 20일까지 결제시 <span class="original">3,047,000원</span> -> 1,820,000원 / 10월 20일 이후 결제시 <span class="original">3,047,000원</span> -> 2,130,000원 + 수강기간 결제시부터 300일<br>
-                        경제학예비(21년4월)+1순환(21년 7월)+2순환(20년 10월)+3순환(21년 3월)+국제경제학 예비(21년 5월)+1순환(21년 10월)+2순환(21년 2월)+3순환(21년 6월)
-                    </li>     
-                    <li>
-                    4. 경제학 1~3순환+국제경제학 1순환 E-PASS <br>
+                    2. 경제학 1~3순환+국제경제학 1순환 E-PASS <br>
                         10월 20일까지 결제시 <span class="original">1,666,000원</span> -> 990,000원 / 10월 20일 이후 결제시 <span class="original">1,666,000원</span> -> 1,160,000원 + 수강기간 결제시부터 300일<br>
                         경제학 1순환(21년 7월)+2순환(20년 10월)+3순환(21년 3월)+국제경제학 1순환(21년 10월)
-                    </li>     
+                    </li>    
+                    <li>    
+                    3. 경제학 전과정+경제학을 위한 특강 E-PASS <br>
+                        10월 20일까지 결제시 <span class="original">2,413,000원</span> -> 1,400,000원  / 10월 20일 이후 결제시 <span class="original">2,413,000원</span> -> 1,600,000원 + 수강기간 결제시부터 300일<br>
+                        경제학예비(21년4월)+1순환(21년 7월)+2순환(20년 10월)+3순환(21년 3월)+경제학 기본서 1회독+경제학을 위한 국제경제학
+                    </li>    
+                    <li>    
+                    4. 경제학+국제경제학 전과정 E-PASS <br>
+                        10월 20일까지 결제시 <span class="original">3,047,000원</span> -> 1,800,000원 / 10월 20일 이후 결제시 <span class="original">3,047,000원</span> -> 2,100,000원 + 수강기간 결제시부터 300일<br>
+                        경제학예비(21년4월)+1순환(21년 7월)+2순환(20년 10월)+3순환(21년 3월)+국제경제학 예비(21년 5월)+1순환(21년 10월)+2순환(21년 2월)+3순환(21년 6월)
+                    </li>
                 </ul>
                 <div class="infoTit"><strong>수강기간-과정별 수강기간 자동 적용</strong></div>
                 <ul>

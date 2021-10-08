@@ -49,6 +49,31 @@ class Attendance extends \app\controllers\FrontController
         if ($this->validate($rules) === false) {
             return $this->json_error("정보가 올바르지 않습니다.");
         }
+
+        $column = 'a.SupportersIdx, a.SupportersTypeCcd, a.MenuInfo, a.StartDate, a.EndDate';
+        $arr_condition_1 = [
+            'EQ' => [
+                'SiteCode' => $this->_site_code,
+                'IsUse' => 'Y'
+            ],
+            'LTE' => ['StartDate' => date('Y-m-d')],
+            'GTE' => ['EndDate' => date('Y-m-d')]
+        ];
+
+        $arr_condition_2 = [
+            'EQ' => [
+                'b.MemIdx' => $this->session->userdata('mem_idx'),
+                'b.SiteCode' => $this->_site_code,
+                'b.SupportersStatusCcd' => '720001',
+                'b.IsStatus' => 'Y'
+            ]
+        ];
+        $data = $this->supportersFModel->findSupporters($arr_condition_1, $arr_condition_2, $column);
+        if (empty($data) === true) return $this->json_error('서포터즈 회원이 아닙니다.');
+        if ($data['SupportersTypeCcd'] == '736002' && empty($data['MenuInfo']) === true) {
+            return $this->json_error('온라인 관리반 기본정보 조회 실패입니다. 관리자에게 문의해 주세요.');
+        }
+
         $result = $this->supportersFModel->storeSupportersAttendance($this->_reqP(null, false));
         $this->json_result($result, '출석 처리 되었습니다.', $result);
     }

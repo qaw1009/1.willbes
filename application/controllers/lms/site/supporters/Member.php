@@ -710,7 +710,7 @@ class Member extends BaseSupporters
 
         $chart_data = [];
         $today = date("Y-m-d", time());
-        if(empty($prod_data) == false){
+        if(empty($prod_data) == false && empty($mem_idx) == false){
             $prod_code = array_data_pluck($prod_data, 'ProdCode');
             $prod = $this->manageLectureModel->getPackage(false, [
                 'EQ' => [
@@ -836,7 +836,7 @@ class Member extends BaseSupporters
                     }
                 }
             }
-        }
+        } 
 
         return $chart_data;
     }

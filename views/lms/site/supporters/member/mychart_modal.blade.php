@@ -7,6 +7,7 @@
 @section('layer_content')
     <form class="form-horizontal">
         <div class="form-group-sm">
+            @if(empty($chartdata['prod']) == false)
             <div class="form-group">
                 <label class="control-label col-md-2">
                     이번달 학습 시간
@@ -47,6 +48,16 @@
                     <p><span class="tx-blue">{{$chartdata['prod']['TakeLecNum']}}강좌</span> / {{$chartdata['prod']['LecNum']}}강좌</p>
                 </div>
             </div>
+            @else
+                <div class="form-group">
+                    <label class="control-label col-md-2">
+                        강좌명
+                    </label>
+                    <div class="col-md-8 form-inline">
+                        수강중인강좌없음
+                    </div>
+                </div>
+            @endif
         </div>
     </form>
 

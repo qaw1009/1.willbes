@@ -65,7 +65,11 @@
     
     <div class="evtCtnsBox">
         <img src="https://static.willbes.net/public/images/promotion/2021/07/1071m_03.jpg" alt="">
-    </div>   
+    </div> 
+
+     <div class="evtCtnsBox">
+        <img src="https://static.willbes.net/public/images/promotion/2021/10/1071_m.gif" alt=""> 
+    </div>  
 
     <div class="evtCtnsBox">
         <img src="https://static.willbes.net/public/images/promotion/2021/07/1071m_04.jpg" alt="">

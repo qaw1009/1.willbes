@@ -18,8 +18,8 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
         /*.evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5); }*/
 
-        .skybanner {position:fixed;top:180px;right:10px;z-index:10; text-align:center}
-        .skybanner a {display:block; margin-bottom:5px}
+        .sky {position:fixed;top:125px;right:10px;z-index:10; text-align:center}
+        .sky a {display:block; margin-bottom:5px}
 
         /*타이머*/
         .time {width:100%; text-align:center; background:#000; display:none}
@@ -52,6 +52,8 @@
         .wb_cts02 p span {color:#fd45a4}
 
         .wb_cts03 {background:#f4f4f4;}
+
+        .wb_cts03s {background:#101010}
 
         .wb_cts04 {background:#ead9d9; padding-bottom:50px}
         .wb_cts04 ul {width:1120px !important; margin:0 auto; display:flex; justify-content: space-around; align-content: center; flex-wrap: wrap;}  
@@ -100,8 +102,9 @@
     </style>
     <div class="p_re evtContent NGR" id="evtContainer">  
               
-        <div class="skybanner" id="QuickMenu">  
-            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2256" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/10/1071_sky02.png" alt="이유있는 선택"/> </a>
+        <div class="sky">  
+            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2256" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/10/1071_sky02.png" alt="t-pass 바로가기"/> </a>
+            <a href="#theory"><img src="https://static.willbes.net/public/images/promotion/2021/10/1071_sky03.png" alt="이론패키지 바로가기"/> </a>
 
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky01.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0">
             <map name="Map1071A" id="Map1071A" >
@@ -163,6 +166,10 @@
         
         <div class="evtCtnsBox wb_cts03">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1071_03.jpg" alt=""/> 
+        </div>
+
+        <div class="evtCtnsBox wb_cts03s" id="theory">
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/1071_pc.gif" alt=""/> 
         </div>
 
         <div class="evtCtnsBox wb_cts04" id="pkglec">

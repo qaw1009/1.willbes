@@ -143,7 +143,7 @@
                             return row.QnaReplyCnt + '/' + row.QnaTotalCnt;
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '00분';
+                            return '<a href="javascript:void(0);" class="btn-chart" data-supporters-idx="' + row.SupportersIdx + '" data-member-idx="' + row.MemIdx + '"><u>확인</u></a>';
                         }},
                     /*{'data' : 'UniversityName'},
                     {'data' : 'Department'},
@@ -185,6 +185,22 @@
                 var member_idx = $(this).data("member-idx");
 
                 $('.btn-calendar').setLayer({
+                    "url" : _url,
+                    "width" : "900",
+                    'add_param_type' : 'param',
+                    'add_param' : [
+                        { 'id' : 'supporters_idx', 'name' : '서포터즈식별자', 'value' : supporters_idx, 'required' : true },
+                        { 'id' : 'member_idx', 'name' : '회원식별자', 'value' : member_idx, 'required' : true }
+                    ]
+                });
+            });
+
+            $list_table.on('click', '.btn-chart', function() {
+                var _url = "{{ site_url("/site/supporters/member/myChartModal/") }}";
+                var supporters_idx = $(this).data("supporters-idx");
+                var member_idx = $(this).data("member-idx");
+
+                $('.btn-chart').setLayer({
                     "url" : _url,
                     "width" : "900",
                     'add_param_type' : 'param',

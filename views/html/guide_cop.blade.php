@@ -924,15 +924,16 @@
                                 <h4 class="hTy4">가산점안내</h4>
                                 <p class="mgB1_1">
                                     자격증 등의 가산점 기준표<br/>
-                                    &nbsp; - [관련 근거] 경찰공무원 채용시험 시행규칙 제 15조의 2 제 4항 관련 (2010.7.1)
+                                    &nbsp; - [관련 근거] 경찰공무원 채용시험 시행 규칙 제 15조의 2 제 4항 관련
                                 </p>
                                 <p class="mgB1"><a href="https://public.jinhakapply.com/PoliceV2/data/testdata_list.aspx?ReturnSite=SC&ServiceID=19&CategoryID=13&CurrentPage=1" target="_blank"><strong>무도 인증단체 현황 다운받기 ></strong></a></p>
                                 <table class="basicTb">
                                     <colgroup>
-                                        <col style="width: 82px;"/>
-                                        <col style="width: 251px;"/>
-                                        <col style="width: 251px;"/>
-                                        <col style="width: 251px;"/>
+                                        <col style="width: 5%;"/>
+                                        <col style="width: 8%;"/>
+                                        <col style="width: 29%;"/>
+                                        <col style="width: 29%;"/>
+                                        <col />
                                     </colgroup>
                                     <thead>
                                         <tr>
@@ -943,235 +944,220 @@
                                             <th>5점</th>
                                             <th>4점</th>
                                             <th>2점</th>
-                                    </tr>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                        
-                                    <tr>
-                                        <th colspan="2">학위</th>
-                                        <th>박사학위</th>
-                                        <th>석사 학위</th>
-                                        <th>- </th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">정보처리</th>
-                                        <td>- 정보관리기술사<br>
-                                        - 전자계산기조직응용기술사</td>
-                                        <td>- 정보처리기사<br>
-                                        - 전자계산기조직응용기사</td>
-                                        <td>- 정보처리산업기사<br>
-                                        - 전자계산기산업기사<br>
-                                        - 사무자동화산업기사<br>
-                                        - 컴퓨터활용능력1 / 2급<br>
-                                        - 워드프로세서1급</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">전자<br>
-                                        /통신</th>
-                                        <td>- 정보통신기술사<br>
-                                        - 전자계산기기술사</td>
-                                        <td>- 무선설비 / 전파통신 / 전파전자 / 
-                                        정보통신 / 전자 / 전자계산기기사<br>
-                                        - 통신설비기능장</td>
-                                        <td>- 무선설비 / 전파통신 / 전파전자 / 정보통신 / 통신선로 / 전자 / 전자계산기산업기사</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">국어</th>
-                                        <td>- 한국실용글쓰기검정 750점 이상<br>
-                                        - 한국어능력시험 770점 이상<br>
-                                        - 국어능력인증시험 162점 이상</td>
-                                        <td>- 한국실용글쓰기검정 630점 이상<br>
-                                        - 한국어능력시험 670점 이상<br>
-                                        - 국어능력인증시험 147점 이상</td>
-                                        <td>- 한국실용글쓰기검정 550점 이상<br>
-                                        - 한국어능력시험 570점 이상<br>
-                                        - 국어능력인증시험 130점 이상</td>
-                                    </tr>
-                                    <tr>
-                                        <th rowspan="3">외국어</th>
-                                        <td class="agC">영어</td>
-                                        <td>- TOEIC 900 이상<br>
-                                        - TEPS 850 이상<br>
-                                        - IBT 102 이상 <br>
-                                        - PBT 608 이상<br>
-                                        - TOSEL(advanced) 880 이상<br>
-                                        - FLEX 790 이상<br>
-                                        - PELT(main) 446 이상</td>
-                                        <td>- TOEIC 800 이상<br>
-                                        - TEPS 720 이상<br>
-                                        - IBT 88 이상<br>
-                                        - PBT 570 이상<br>
-                                        - TOSEL(advanced) 780 이상<br>
-                                        - FLEX 714 이상<br>
-                                        - PELT(main) 304 이상</td>
-                                        <td>- TOEIC 600 이상<br>
-                                        - TEPS 500 이상<br>
-                                        - IBT 57 이상<br>
-                                        - PBT 489 이상<br>
-                                        - TOSEL(advanced) 580 이상<br>
-                                        - FLEX 480 이상<br>
-                                        - PELT(main) 242 이상</td>
-                                    </tr>
-                                    <tr>
-                                        <th>일어</th>
-                                        <td>- JLPT 1급(N1)<br>
-                                        - JPT 850 이상</td>
-                                        <td>- JLPT 2급(N2)<br>
-                                        - JPT 650 이상</td>
-                                        <td>- JLPT 3급(N3, N4)<br>
-                                        - JPT 550 이상</td>
-                                    </tr>
-                                    <tr>
-                                        <th>중국어</th>
-                                        <td>- HSK 9급이상 (新 HSK 6급)</td>
-                                        <td>- HSK 8급 (新 HSK 5급- 210점 이상)</td>
-                                        <td>- HSK 7급 (新 HSK 4급- 195점 이상)</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">노동</th>
-                                        <td>- 공인노무사</td>
-                                        <td class="agC">- </td>
-                                        <td class="agC">- </td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">무도</th>
-                                        <td class="agC">- </td>
-                                        <td>- 무도4단 이상</td>
-                                        <td>- 무도2 / 3단</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">부동산</th>
-                                        <td>- 감정평가사</td>
-                                        <td class="agC">- </td>
-                                        <td>-  공인중개사</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">교육</th>
-                                        <td>- 청소년상담사 1급</td>
-                                        <td>- 정교사 2급 이상<br>
-                                        - 청소년지도사 1급<br>
-                                        - 청소년상담사 2급</td>
-                                        <td>- 청소년지도사 2·3급<br>
-                                        - 청소년상담사 3급</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">재난<br>
-                                        /안전관리</th>
-                                        <td>- 건설안전 / 전기안전 / 소방 / 
-                                        가스기술사</td>
-                                        <td>- 건설안전 / 산업안전 / 소방설비 / 
-                                        가스 / 원자력기사<br>
-                                        - 위험물기능장<br>
-                                        - 핵연료물질취급감독자면허<br>
-                                        - 방사선취급감독자면허<br>
-                                        - 경비지도사</td>
-                                        <td>- 산업안전 / 건설안전 / 소방설비 / 
-                                        가스 / 위험물산업기사<br>
-                                        - 1종 대형면허<br>
-                                        - 특수면허(트레일러,레커)<br>
-                                        - 조종면허(기중기,불도우저)<br>
-                                        - 응급구조사<br>
-                                        - 핵연료물질취급자면허</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">화약</th>
-                                        <td>- 화약류관리기술사</td>
-                                        <td>- 화약류제조기사<br>
-                                        - 화약류관리기사</td>
-                                        <td>- 화약류제조산업기사<br>
-                                        - 화약류관리산업기사</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">교통</th>
-                                        <td>- 교통기술사<br>
-                                        - 도시계획기술사</td>
-                                        <td>- 교통기사<br>
-                                        - 도시계획기사<br>
-                                        - 교통사고분석사<br>
-                                        - 도로교통사고감정사</td>
-                                        <td>- 교통산업기사</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">토목</th>
-                                        <td>- 토목시공기술사<br>
-                                        - 토목구조기술사<br>
-                                        - 토목품질시험기술사</td>
-                                        <td>- 토목기사</td>
-                                        <td>- 토목산업기사</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">법무</th>
-                                        <td>- 변호사</td>
-                                        <td>- 법무사</td>
-                                        <td class="agC">- </td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">세무회계</th>
-                                        <td>- 공인회계사</td>
-                                        <td>- 세무사<br>
-                                        - 관세사</td>
-                                        <td>- 전산세무 1·2급<br>
-                                        - 전산회계 1급</td>
-                                    </tr>
-                                    <tr>
-                                        <th rowspan="2" colspan="2">의료</th>
-                                        <td>- 의사</td>
-                                        <td>- 약사</td>
-                                        <td>- 임상병리사, 물리치료사, 방사선사, 
-                                        간호사, 의무기록사, 치과기공사</td>
-                                    </tr>
-                                    <tr>
-                                        <td>- 상담심리사 1급</td>
-                                        <td>- 정신보건임상심리사 1급<br>
-                                        - 임상심리사 1급<br>
-                                        - 상담심리사 2급</td>
-                                        <td>- 정신보건임상심리사 2급<br>
-                                        - 임상심리사 2급<br>
-                                        - 작업치료사</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">특허</th>
-                                        <td>- 변리사</td>
-                                        <td class="agC">- </td>
-                                        <td class="agC">- </td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">건축</th>
-                                        <td>- 건축구조 / 건축기계설비 / 건축시공 / 
-                                        건축품질시험기술사</td>
-                                        <td>- 건축, 건축설비기사</td>
-                                        <td>- 건축 / 건축설비 / 
-                                        건축일반시공산업기사</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">전기</th>
-                                        <td>- 건축전기설비 / 전기응용기술사</td>
-                                        <td>- 전기 / 전기공사기사</td>
-                                        <td>- 전기 / 전기기기 / 전기공사산업기사</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">식품위생</th>
-                                        <td>- 식품기술사</td>
-                                        <td>- 식품기사</td>
-                                        <td>- 식품산업기사</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2">환경</th>
-                                        <td>- 폐기물처리기술사<br>
-                                        - 화공기술사<br>
-                                        - 수질관리기술사<br>
-                                        - 농화학기술사<br>
-                                        - 대기관리기술사</td>
-                                        <td>- 폐기물처리기사<br>
-                                        - 화공기사<br>
-                                        - 수질환경기사<br>
-                                        - 농화학기사<br>
-                                        - 대기환경기사</td>
-                                        <td>- 폐기물처리산업기사<br>
-                                        - 화공산업기사<br>
-                                        - 수질환경산업기사<br>
-                                        - 대기환경산업기사</td>
-                                    </tr>
+                                        <tr>
+                                            <th colspan="2">학 위</th>
+                                            <td>-박사학위</td>
+                                            <td>-석사학위</td>
+                                            <td>　</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">정보처리</th>
+                                            <td>-정보관리기술사<br />
+                                            -전자계산기조직응용기술사　　　</td>
+                                            <td>-정보처리기사 <br />
+                                            -전자계산기조직응용기사<br />
+                                            -정보보안기사　　</td>
+                                            <td>-정보처리산업기사 <br />
+                                            -사무자동화산업기사 <br />
+                                            -컴퓨터활용능력1ㆍ2급<br />
+                                            -워드프로세서1급<br />
+                                            -정보보안산업기사</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">전자ㆍ통신</th>
+                                            <td>-정보통신기술사<br />
+                                            -전자계산기기술사</td>
+                                            <td>-무선설비ㆍ전파통신ㆍ전파전자ㆍ정보통신ㆍ전자ㆍ전자계산기기사-통신설비기능장</td>
+                                            <td>-무선설비ㆍ전파통신ㆍ전파전자ㆍ정보통신ㆍ통신선로ㆍ전자ㆍ전자계산기산업기사</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">국 어</th>
+                                            <td>-한국실용글쓰기검정 750점 이상<br />
+                                            -한국어능력시험 770점 이상<br />
+                                            -국어능력인증시험 162점 이상</td>
+                                            <td>-한국실용글쓰기검정 630점 이상<br />
+                                            -한국어능력시험    670점 이상<br />
+                                            -국어능력인증시험    147점 이상</td>
+                                            <td>-한국실용글쓰기검정 550점 이상<br />
+                                            -한국어능력시험    570점 이상<br />
+                                            -국어능력인증시험    130점 이상</td>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="3">
+                                                외<br>국<br>어
+                                            </th>
+                                            <th>영 어</th>
+                                            <td>-TOEIC 900 이상 <br />
+                                            -TEPS 850이상(New TEPS 488 이상) <br />
+                                            -IBT 102 이상 <br />
+                                            -PBT 608 이상<br />
+                                            -TOSEL(advanced) 880 이상<br />
+                                            -FLEX 790 이상<br />
+                                            -PELT(main) 446 이상<br />
+                                            -G-TELP Level 2 89 이상</td>
+                                            <td>-TOEIC 800 이상 <br />
+                                            -TEPS    720이상(New TEPS    399 이상) <br />
+                                            -IBT 88    이상 <br />
+                                            -PBT 570    이상<br />
+                                            -TOSEL(advanced)    780 이상<br />
+                                            -FLEX 714    이상-PELT(main)    304 이상<br />
+                                            -G-TELP    Level 2 75 이상</td>
+                                            <td>-TOEIC 600 이상 <br />
+                                            -TEPS    500이상(New TEPS    268 이상) <br />
+                                            -IBT 57    이상 <br />
+                                            -PBT 489    이상<br />
+                                            -TOSEL(advanced)    580 이상<br />
+                                            -FLEX 480    이상<br />
+                                            -PELT(main)    242 이상<br />
+                                            -G-TELP    Level 2 48 이상</td>
+                                        </tr>
+                                        <tr>
+                                            <th>일 어</th>
+                                            <td>-JLPT 1급(N1) <br />
+                                            -JPT 850 이상</td>
+                                            <td>-JLPT 2급(N2) <br />
+                                            -JPT 650    이상</td>
+                                            <td>-JLPT 3급(N3, N4) <br />
+                                            -JPT 550    이상</td>
+                                        </tr>
+                                        <tr>
+                                            <th>중국어</th>
+                                            <td>-HSK 9급이상(新 HSK 6급)</td>
+                                            <td>-HSK 8급 (新 HSK 5급-210점 이상)</td>
+                                            <td>-HSK 7급 (新 HSK 4급-195점 이상)</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">노 동</th>
+                                            <td>-공인노무사</td>
+                                            <td>　</td>
+                                            <td>　</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">무 도</th>
+                                            <td>　</td>
+                                            <td>-무도4단 이상</td>
+                                            <td>-무도2ㆍ3단</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">부 동 산</th>
+                                            <td>-감정평가사</td>
+                                            <td>　</td>
+                                            <td>공인중개사</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">교 육</th>
+                                            <td>-청소년상담사1급</td>
+                                            <td>-정교사 2급 이상 <br />
+                                            -청소년지도사1급<br />
+                                            -청소년상담사 2급</td>
+                                            <td>-청소년지도사 2ㆍ3급<br />
+                                            -청소년상담사    3급</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">재난ㆍ 안전관리</th>
+                                            <td>-건설안전ㆍ전기안전ㆍ소방ㆍ가스기술사</td>
+                                            <td>-건설안전ㆍ산업안전ㆍ소방설비ㆍ가스ㆍ원자력기사<br />
+                                            -위험물기능장<br />
+                                            -핵연료물질취급감독자면허<br />
+                                            -방사선취급감독자면허<br />
+                                            -경비지도사　　</td>
+                                            <td>-산업안전ㆍ건설안전ㆍ소방설비ㆍ가스ㆍ위험물산업기사<br />
+                                            -1종 대형면허<br />
+                                            -특수면허(트레일러,레커)<br />
+                                            -조종면허(기중기,불도우저) <br />
+                                            -응급구조사<br />
+                                            -핵연료물질취급자면허<br />
+                                            -방사성동위원소취급자면허</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">교 통</th>
+                                            <td>-교통기술사 <br />
+                                            -도시계획기술사　　</td>
+                                            <td>-교통기사<br />
+                                            -도시계획기사<br />
+                                            -교통사고분석사<br />
+                                            -도로교통사고감정사</td>
+                                            <td>-교통산업기사 　　　</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">토 목</th>
+                                            <td>-토목시공기술사<br />
+                                            -토목구조기술사<br />
+                                            -토목품질시험기술사</td>
+                                            <td>-토목기사 　　</td>
+                                            <td>-토목산업기사　　</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">법 무</th>
+                                            <td>-변호사 </td>
+                                            <td>-법무사</td>
+                                            <td>　</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">세무회계</th>
+                                            <td>-공인회계사　</td>
+                                            <td>-세무사<br />
+                                            -관세사</td>
+                                            <td>-전산세무 1ㆍ2급 <br />
+                                            -전산회계 1급</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">의 료</th>
+                                            <td>-의사<br />
+                                            -상담심리사1급　　</td>
+                                            <td>-약사<br />
+                                            -정신보건임상심리사 1급<br />
+                                            -임상심리사 1급<br />
+                                            -상담심리사 2급</td>
+                                            <td>-임상병리사, 물리치료사, 방사선사, 간호사, 의무기록사, 치과기공사<br />
+                                            -정신보건임상심리사2급<br />
+                                            -임상심리사2급<br />
+                                            -작업치료사</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">특 허</th>
+                                            <td>-변리사</td>
+                                            <td>　</td>
+                                            <td>　</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">건 축</th>
+                                            <td>-건축구조ㆍ건축기계설비ㆍ건축시공ㆍ건축품질시험기술사</td>
+                                            <td>-건축, 건축설비기사</td>
+                                            <td>-건축ㆍ건축설비ㆍ건축일반시공산업기사</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">전 기</th>
+                                            <td>-건축전기설비ㆍ전기응용기술사 </td>
+                                            <td>-전기ㆍ전기공사기사</td>
+                                            <td>-전기ㆍ전기기기ㆍ전기공사산업기사</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">식품위생</th>
+                                            <td>-식품기술사</td>
+                                            <td>-식품기사</td>
+                                            <td>-식품산업기사</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">환 경</th>
+                                            <td>-폐기물처리기술사<br />
+                                            -화공기술사 <br />
+                                            -수질관리기술사 <br />
+                                            -농화학기술사<br />
+                                            -대기관리기술사</td>
+                                            <td>-폐기물처리기사 <br />
+                                            -화공기사<br />
+                                            -수질환경기사 <br />
+                                            -농화학기사<br />
+                                            -대기환경기사</td>
+                                            <td>-폐기물처리산업기사 <br />
+                                            -화공산업기사<br />
+                                            -수질환경산업기사 <br />
+                                            -대기환경산업기사 　</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                                 

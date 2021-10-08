@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Qna extends \app\controllers\FrontController
 {
-    protected $models = array('_lms/sys/code', 'categoryF', 'downloadF', 'product/baseProductF', 'supportersF', 'support/supportBoardTwoWayF');
+    protected $models = array('_lms/sys/code', 'categoryF', 'downloadF', 'product/baseProductF', 'supportersF', 'support/supportBoardTwoWayF', 'classroomF');
     protected $helpers = array('download');
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -12,6 +12,7 @@ class Qna extends \app\controllers\FrontController
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
     protected $_reg_type = 0;    //등록타입
+    protected $_LearnPatternCcd_pass = ['615004'];
 
     private $_groupCcd = [
         'consult_ccd' => '702',   //유형 그룹 코드 = 상담유형
@@ -108,7 +109,31 @@ class Qna extends \app\controllers\FrontController
         $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code);
 
         //상품 조회
-        $arr_base['product_list'] = $this->supportersFModel->listProduct($supporters_idx);
+        $product_list = $this->supportersFModel->listProduct($supporters_idx);
+
+        $today = date("Y-m-d", time());
+        $lec_arr = array_data_pluck($product_list, 'ProdCode');
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+            ],
+            'LTE' => [
+                'LecStartDate' => $today // 시작일 <= 오늘
+            ],
+            'LT' => [
+                'lastPauseEndDate' => $today // 일시중지종료일 < 오늘
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today // 종료일 >= 오늘
+            ],
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pass, // 학습방식 : 기간제패키지
+                'ProdCode' => $lec_arr
+            ]
+        ];
+
+        // 수강중 강좌정보 읽어오기
+        $arr_base['package_list'] = $this->classroomFModel->getPackage($cond_arr, ['OrderDate' => 'DESC']);
 
         if (empty($board_idx) === false) {
             $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
@@ -222,7 +247,15 @@ class Qna extends \app\controllers\FrontController
         ];
 
         if ($this->validate($rules) === false) {
-            return;
+            return false;
+        }
+
+        $supporters_data = $this->_getSupportersData($this->_reqP('supporters_idx'));
+        if (empty($supporters_data) === true) {
+            return $this->json_error('조회된 서포터즈가 없습니다. 새로고침 후 다시 시도해 주세요.');
+        }
+        if ($supporters_data['SupportersTypeCcd'] == '736002' && empty($supporters_data['MenuInfo']) === true) {
+            return $this->json_error('온라인 관리반 기본정보 조회 실패입니다. 관리자에게 문의해 주세요.');
         }
 
         if (empty($this->_reqP('idx')) === false) {
@@ -309,6 +342,32 @@ class Qna extends \app\controllers\FrontController
             unset($input_data['board']['SiteCode']);
         }
         return$input_data;
+    }
+
+    /**
+     * 서포터즈데이터 조회
+     * @param $supporters_idx
+     * @return mixed
+     */
+    private function _getSupportersData($supporters_idx)
+    {
+        $column = 'a.SupportersIdx, a.SupportersTypeCcd, a.MenuInfo, a.Title AS SupportersTitle, a.SupportersYear, a.SupportersNumber, a.CouponIssueCcd';
+        $arr_condition_1 = [
+            'EQ' => [
+                'SupportersIdx' => $supporters_idx,
+                'IsUse' => 'Y'
+            ]
+        ];
+
+        $arr_condition_2 = [
+            'EQ' => [
+                'b.MemIdx' => $this->session->userdata('mem_idx'),
+                'b.SiteCode' => $this->_site_code,
+                'b.SupportersStatusCcd' => '720001',
+                'b.IsStatus' => 'Y'
+            ]
+        ];
+        return $this->supportersFModel->findSupporters($arr_condition_1, $arr_condition_2, $column);
     }
 
     public function download()

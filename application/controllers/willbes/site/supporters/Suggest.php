@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Suggest extends \app\controllers\FrontController
 {
-    protected $models = array('downloadF', 'support/supportBoardTwoWayF');
+    protected $models = array('downloadF', 'supportersF', 'support/supportBoardTwoWayF');
     protected $helpers = array('download');
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -209,7 +209,15 @@ class Suggest extends \app\controllers\FrontController
         ];
 
         if ($this->validate($rules) === false) {
-            return;
+            return false;
+        }
+
+        $supporters_data = $this->_getSupportersData($this->_reqP('supporters_idx'));
+        if (empty($supporters_data) === true) {
+            return $this->json_error('조회된 서포터즈가 없습니다. 새로고침 후 다시 시도해 주세요.');
+        }
+        if ($supporters_data['SupportersTypeCcd'] == '736002' && empty($supporters_data['MenuInfo']) === true) {
+            return $this->json_error('온라인 관리반 기본정보 조회 실패입니다. 관리자에게 문의해 주세요.');
         }
 
         if (empty($this->_reqP('idx')) === false) {
@@ -291,5 +299,31 @@ class Suggest extends \app\controllers\FrontController
             'board_r_category' => []
         ];
         return$input_data;
+    }
+
+    /**
+     * 서포터즈데이터 조회
+     * @param $supporters_idx
+     * @return mixed
+     */
+    private function _getSupportersData($supporters_idx)
+    {
+        $column = 'a.SupportersIdx, a.SupportersTypeCcd, a.MenuInfo, a.Title AS SupportersTitle, a.SupportersYear, a.SupportersNumber, a.CouponIssueCcd';
+        $arr_condition_1 = [
+            'EQ' => [
+                'SupportersIdx' => $supporters_idx,
+                'IsUse' => 'Y'
+            ]
+        ];
+
+        $arr_condition_2 = [
+            'EQ' => [
+                'b.MemIdx' => $this->session->userdata('mem_idx'),
+                'b.SiteCode' => $this->_site_code,
+                'b.SupportersStatusCcd' => '720001',
+                'b.IsStatus' => 'Y'
+            ]
+        ];
+        return $this->supportersFModel->findSupporters($arr_condition_1, $arr_condition_2, $column);
     }
 }

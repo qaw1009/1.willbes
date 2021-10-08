@@ -42,9 +42,16 @@
                     </select>
                     <select id="prod_code" name="prod_code" title="강좌" class="widthAutoFull mt5">
                         <option value="">강좌</option>
+                        @forelse($arr_base['package_list'] as $row)
+                            <option value="{{$row['ProdCode']}}" @if($data['ProdCode'] == $row['ProdCode'])selected="selected"@endif>{{$row['ProdName']}}</option>
+                        @empty
+                        @endforelse
+
+                        {{--@if (empty($arr_base['pass_list']) === false)
                         @foreach($arr_base['product_list'] as $row)
                             <option value="{{$row['ProdCode']}}" @if($data['ProdCode'] == $row['ProdCode'])selected="selected"@endif>{{$row['ProdCode']}}</option>
                         @endforeach
+                        @endif--}}
                     </select>
                 </td>
             </tr>

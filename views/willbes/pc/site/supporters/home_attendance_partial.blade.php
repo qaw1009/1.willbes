@@ -28,7 +28,7 @@
                 }
             }, function(ret) {
                 /*alert(ret.ret_msg);*/
-                notifyAlert('success', '알림', ret.ret_msg);
+                notifyAlert('error', '알림', ret.ret_msg);
                 show_calendar();
             }, null, false, 'alert');
         });

@@ -6,8 +6,7 @@
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
     .evtCtnsBox img {width:100%; max-width:720px;}
-    .evtCtnsBox.wrap a:hover {box-shadow:0 5px 20px rgba(0,0,0,.5); border-radius:6px}
-
+    
     .evt00 {padding-top:15%; background:#273238}
     .video-container-box {padding:0 5%}
     .video-container {position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow: hidden;}
@@ -86,13 +85,21 @@
         <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_02.jpg" alt="농업직 4관왕" > 
     </div>
 
+    <div class="evtCtnsBox evt03">
+        <img src="https://static.willbes.net/public/images/promotion/2021/10/1068_m.gif" alt="마감 예정" > 
+    </div>
+
     <div class="evtCtnsBox wrap">
-        <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_06.jpg" alt="농촌지도사 이론 패키지" >
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185386" target="_blank" title="기본심화이론" style="position: absolute; left: 14.86%; top: 46.26%; width: 28.61%; height: 3.06%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185387" target="_blank" title="농업직이론" style="position: absolute; left: 56.39%; top: 46.26%; width: 28.61%; height: 3.06%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185390" target="_blank" title="농촌지도사이론" style="position: absolute; left: 14.86%; top: 79.32%; width: 28.61%; height: 3.06%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185391" target="_blank" title="농촌지도사이론" style="position: absolute; left: 56.396%; top: 79.32%; width: 28.61%; height: 3.06%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/professor/show/cate/3028/prof-idx/50429/?subject_idx=1171&subject_name=%EC%9E%AC%EB%B0%B0%ED%95%99" title="단과" style="position: absolute; left: 64.86%; top: 88.98%; width: 20.69%; height: 4.32%; z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2021/10/1068m_06.jpg" alt="농촌지도사 이론 패키지" >
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185386" target="_blank" title="기본심화이론" style="position: absolute;left: 14.86%;top: 27.26%;width: 28.61%;height: 1.65%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185387" target="_blank" title="농업직이론" style="position: absolute;left: 56.16%;top: 27.26%;width: 28.61%;height: 1.65%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185390" target="_blank" title="농촌지도사이론" style="position: absolute;left: 14.86%;top: 47.06%;width: 28.61%;height: 1.65%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185391" target="_blank" title="농촌지도사이론" style="position: absolute;left: 56.16%;top: 47.06%;width: 28.61%;height: 1.65%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/186520" target="_blank" title="9급 농업직" style="position: absolute;left: 14.86%;top: 67.76%;width: 28.61%;height: 1.65%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/186521" target="_blank" title="7급 농업직" style="position: absolute;left: 55.86%;top: 67.76%;width: 28.61%;height: 1.65%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/186529" target="_blank" title="경기/인천외" style="position: absolute;left: 14.86%;top: 87.56%;width: 28.61%;height: 1.65%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/186530" target="_blank" title="경기/인천" style="position: absolute;left: 56.86%;top: 87.56%;width: 28.61%;height: 1.65%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/professor/show/cate/3028/prof-idx/50429/?subject_idx=1171&subject_name=%EC%9E%AC%EB%B0%B0%ED%95%99" target="_blank" title="단과" style="position: absolute;left: 64.86%;top: 93.48%;width: 20.69%;height: 2.32%;z-index: 2;"></a>
     </div>   
 </div>
 

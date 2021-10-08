@@ -395,6 +395,32 @@ class SupportersMemberModel extends WB_Model
     }
 
     /**
+     * 수강기록데이타
+     * @param $arr_cond
+     * @return mixed
+     */
+    public function getChartData($arr_cond)
+    {
+        $column = ' ps.SubjectName AS Name, COUNT(*) AS Cnt, sum(lsh.StudyTime) AS TimeSum, COUNT(DISTINCT lsh.ProdCodeSub) AS ProdCnt ';
+
+        $from = 'FROM lms_order as o
+            JOIN lms_order_product as op on o.OrderIdx = op.OrderIdx
+            JOIN lms_product as p on op.ProdCode = p.ProdCode
+            JOIN lms_lecture_study_history as lsh on op.ProdCode = lsh.ProdCode and o.MemIdx = lsh.MemIdx
+            JOIN lms_product as p_sub on lsh.ProdCodeSub = p_sub.ProdCode
+            JOIN lms_product_lecture as pl on p_sub.ProdCode = pl.ProdCode
+            JOIN lms_product_subject as ps on ps.SubjectIdx = pl.SubjectIdx
+            ';
+
+        $groupby = ' GROUP BY ps.SubjectName';
+
+        $where = $where = $this->_conn->makeWhere($arr_cond);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select ' . $column . $from . $where . $groupby)->result_array();
+    }
+
+    /**
      * 인풋항목 공통처리
      * @param array $input
      * @return array

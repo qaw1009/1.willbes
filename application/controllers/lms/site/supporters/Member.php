@@ -5,7 +5,7 @@ require APPPATH . 'controllers/lms/site/supporters/BaseSupporters.php';
 
 class Member extends BaseSupporters
 {
-    protected $temp_models = array('board/boardSupporters', 'board/boardAssignmentSupporters', 'board/board');
+    protected $temp_models = array('board/boardSupporters', 'board/boardAssignmentSupporters', 'board/board', 'member/manageLecture');
     protected $helpers = array('download');
     private $board_name = 'supportersQna';
     private $_reg_type = [
@@ -20,6 +20,7 @@ class Member extends BaseSupporters
         'unAnswered' => '621001',   //미답변 코드
         'finish' => '621004'        //답변완료
     ];
+    protected $_LearnPatternCcd_pass = ['615004'];
 
     public function __construct()
     {
@@ -665,6 +666,179 @@ class Member extends BaseSupporters
         $idx = $params[0];
         $result = $this->boardModel->boardDelete($idx);
         $this->json_result($result, '정상 처리 되었습니다.', $result);
+    }
+
+
+    public function ajaxMyChart()
+    {
+        $this->load->view('site/supporters/member/layer/list_myChart', [
+            'chart_data' => $this->_getChartData(),
+            'supporters_idx' => $this->_req('supporters_idx'),
+            'member_idx' => $this->_req('member_idx')
+        ]);
+    }
+
+    public function myChartModal()
+    {
+        $chart_data = $this->_getChartData();
+        $this->load->view('site/supporters/member/mychart_modal', [
+            'chartdata' => $chart_data,
+
+        ]);
+    }
+
+    /**
+     * 챠트데이타
+     * @return array
+     */
+    private function _getChartData()
+    {
+        $mem_idx = $this->_req('member_idx');
+        $supporter_idx = $this->_req('supporters_idx');
+
+        $column = '
+                a.SupportersIdx, a.SiteCode, a.Title, a.SupportersTypeCcd, a.SupportersYear, a.SupportersNumber, a.StartDate, a.EndDate, a.CouponIssueCcd, a.MenuInfo, a.IsUse, a.RegDatm, a.RegAdminIdx,
+                b.SiteName, c.wAdminName as RegAdminName, d.wAdminName as UpdAdminName
+            ';
+        $arr_condition = [
+            'EQ' => [
+                'a.SupportersIdx' => $supporter_idx
+            ]
+        ];
+        $data = $this->supportersRegistModel->findSupporters($arr_condition, $column);
+        $prod_data = $this->supportersRegistModel->listSupportersForProduct($supporter_idx);
+
+        $chart_data = [];
+        $today = date("Y-m-d", time());
+        if(empty($prod_data) == false){
+            $prod_code = array_data_pluck($prod_data, 'ProdCode');
+            $prod = $this->manageLectureModel->getPackage(false, [
+                'EQ' => [
+                    'MemIdx' => $mem_idx,
+                ],
+                'LTE' => [
+                    'LecStartDate' => $today // 시작일 <= 오늘
+                ],
+                'LT' => [
+                    'lastPauseEndDate' => $today // 일시중지종료일 < 오늘
+                ],
+                'GTE' => [
+                    'RealLecEndDate' => $today // 종료일 >= 오늘
+                ],
+                'IN' => [
+                    'LearnPatternCcd' => $this->_LearnPatternCcd_pass, // 학습방식 : 기간제패키지
+                    'ProdCode' => $prod_code
+                ]
+            ]);
+
+            if(empty($prod) == false){
+                $prod = $prod[0];
+
+                $prod['TakeLecNum'] = $this->manageLectureModel->getLecture(true, [
+                    'EQ' => [
+                        'MemIdx' => $prod['MemIdx'],
+                        'OrderIdx' => $prod['OrderIdx'],
+                        'ProdCode' => $prod['ProdCode']
+                    ],
+                    'NOT' => [
+                        'ProdCode' => 'ProdCodeSub'
+                    ]
+                ]);
+
+                $prod['LecNum'] = 0;
+
+                $chart_all = $this->supportersMemberModel->getChartData([
+                    'EQ' => [
+                        'o.MemIdx' => $prod['MemIdx'],
+                        'o.OrderIdx' => $prod['OrderIdx'],
+                        'op.ProdCode' => $prod['ProdCode']
+                    ]
+                ]);
+                $chart_data['prod'] = $prod;
+                $chart_data['all'] = array_data_pluck($chart_all, 'Cnt','Name');
+
+                $chart_today = $this->supportersMemberModel->getChartData([
+                    'EQ' => [
+                        'o.MemIdx' => $prod['MemIdx'],
+                        'o.OrderIdx' => $prod['OrderIdx'],
+                        'op.ProdCode' => $prod['ProdCode']
+                    ],
+                    'LKB' => [
+                        'lsh.FIrstStudyDate' => $today
+                    ]
+                ]);
+                $chart_data['today'] = [
+                    'Cnt' => 0,
+                    'TimeSum' => 0,
+                    'ProdCnt' => 0
+                ];
+                foreach ($chart_today as $row) {
+                    $chart_data['today']['Cnt'] += $row['Cnt'];
+                    $chart_data['today']['TimeSum'] += $row['TimeSum'];
+                    $chart_data['today']['ProdCnt'] += $row['ProdCnt'];
+                }
+
+                // 월별기록
+                $date = $data['StartDate'];
+                while(strtotime($date) <= strtotime($data['EndDate'])){
+                    $getmonth = date("Y-m", strtotime($date));
+                    $month_data = $this->supportersMemberModel->getChartData([
+                        'EQ' => [
+                            'o.MemIdx' => $prod['MemIdx'],
+                            'o.OrderIdx' => $prod['OrderIdx'],
+                            'op.ProdCode' => $prod['ProdCode']
+                        ],
+                        'LKB' => [
+                            'lsh.FIrstStudyDate' => $getmonth . '-'
+                        ]
+                    ]);
+                    $pluck_data = array_data_pluck($month_data, ['Cnt','TimeSum'],'Name');
+                    if(empty($pluck_data) == false){
+                        $sum_cnt = 0;
+                        $sum_time = 0;
+                        foreach($pluck_data as $key => $row){
+                            $pluck_arr = explode('::', $row);
+                            $pluck_data[$key] =
+                                [
+                                    'Cnt' => $pluck_arr[0],
+                                    'TimeSum' => $pluck_arr[1]
+                                ];
+                            $sum_cnt += $pluck_arr[0];
+                            $sum_time += $pluck_arr[1];
+                        }
+
+                        $pluck_data['SumCnt'] = $sum_cnt;
+                        $pluck_data['SumTime'] = gmdate('H시간 i분', $sum_time);
+                    } else{
+                        $pluck_data['SumCnt'] = 0;
+                        $pluck_data['SumTime'] = '00시간 00분';
+                    }
+
+
+                    $chart_data['month'][$getmonth] = $pluck_data;
+
+                    // 다음달 1일로 설정
+                    $date = date("Y-m-01", strtotime("+1 month", strtotime($date)));
+
+                    if($getmonth == substr($today, 0, 7)){
+                        $chart_data['month_sum'] = [
+                            'Cnt' => 0,
+                            'TimeSum' => 0,
+                            'ProdCnt' => 0
+                        ];
+                        foreach ($month_data as $row) {
+                            $chart_data['month_sum']['Cnt'] += $row['Cnt'];
+                            $chart_data['month_sum']['TimeSum'] += $row['TimeSum'];
+                            $chart_data['month_sum']['ProdCnt'] += $row['ProdCnt'];
+                        }
+                        $chart_data['month_sum']['h'] = gmdate('H', $chart_data['month_sum']['TimeSum']);
+                        $chart_data['month_sum']['m'] = gmdate('i', $chart_data['month_sum']['TimeSum']);
+                    }
+                }
+            }
+        }
+
+        return $chart_data;
     }
 
     /**

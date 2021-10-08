@@ -56,7 +56,7 @@
     </style>
 
     <div class="evtContent NGR" id="evtContainer">  
-        <div class="sky">
+        <div class="sky" id="QuickMenu">
             <a href="#evt3">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1676_sky2.png" title="한덕현 티패스">
             </a> 
@@ -68,7 +68,7 @@
                 <area shape="rect" coords="3,359,153,437" href="#evt3" />
             </map>        
         </div>    
-
+{{--
         <div class="evtCtnsBox evttop_banners">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/1676_top_banner.jpg">
@@ -76,7 +76,7 @@
                 <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" title="" style="position: absolute; left: 74.29%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>  
             </div>        
         </div>        
-
+--}}
         <div class="evtCtnsBox evttop">                 
             <img src="https://static.willbes.net/public/images/promotion/2021/02/1676_top.jpg"  title="더켠의 반반한 밤">                        
         </div>
@@ -106,7 +106,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">                   
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/09/1676_02_September.jpg" /></li>
+                    {{--<li><img src="https://static.willbes.net/public/images/promotion/2021/09/1676_02_September.jpg" /></li>--}}
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/09/1676_02_October.jpg" /></li>
                 </ul>    
 
@@ -240,10 +240,9 @@
                             - PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br>
                             - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.</li>
                             <li>열공 출첵 이벤트 관련<br>
-                            - 본 이벤트는 로그인 후 참여 가능하며, 9/27(월)~10/22(금)까지 총 20회 진행됩니다. (*토/일 제외)<br>
-                            - 출석체크 가능 시간 반반(월/수/금 21:00~22:00, 똑똑(화/목) 21:00~21:40, 실전덕후단 유튜브 LIVE (10/4(월)) 19:00~22:00,
-                              모의고사 해설 LIVE (10/18(월)) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다. <br>
-                            - 당첨자 안내 공지는 10/25(월) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
+                            - 본 이벤트는 로그인 후 참여 가능하며, 9/27(월)~10/27(수)까지 총 20회 진행됩니다. (*토/일 제외)<br>
+                            - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 실전덕후단 LIVE 토크쇼 (10/18(월)) 20:00~21:00, 모의고사 해설 LIVE (10/25(월)) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
+                            - 당첨자 안내 공지는 10/28(목) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
                         </ol>
                     </dd>
                 </dl>

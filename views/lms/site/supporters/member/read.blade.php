@@ -193,6 +193,7 @@
             <li role="presentation"><a role="tab" href="#none" class="fn_load" data-target-load="ajaxSuggest" data-toggle="tab" data-supporters-idx="{{ $data['SupportersIdx'] }}" data-member-idx="{{ $data['MemIdx'] }}"><strong>제안/토론</strong></a></li>
             <li role="presentation"><a role="tab" href="#none" class="fn_load" data-target-load="ajaxMyClass" data-toggle="tab" data-supporters-idx="{{ $data['SupportersIdx'] }}" data-member-idx="{{ $data['MemIdx'] }}"><strong>나의 소개</strong></a></li>
             <li role="presentation"><a role="tab" href="#none" class="fn_load" data-target-load="ajaxMyAttendance" data-toggle="tab" data-supporters-idx="{{ $data['SupportersIdx'] }}" data-member-idx="{{ $data['MemIdx'] }}"><strong>출석체크</strong></a></li>
+            <li role="presentation"><a role="tab" href="#none" class="fn_load" data-target-load="ajaxMyChart" data-toggle="tab" data-supporters-idx="{{ $data['SupportersIdx'] }}" data-member-idx="{{ $data['MemIdx'] }}"><strong>학습량</strong></a></li>
             <li role="presentation"><a role="tab" href="#none" class="fn_load" data-target-load="ajaxMyQna" data-toggle="tab" data-supporters-idx="{{ $data['SupportersIdx'] }}" data-member-idx="{{ $data['MemIdx'] }}"><strong>학습상담</strong></a></li>
         </ul>
         <div id="tab_content"></div>

@@ -169,7 +169,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="combine-Tit">관심정보</td>
+                    <td class="combine-Tit">준비과정</td>
                     <td>
                         <div class="addInfo1">
                             <label for="a02" class="mr10"><input name="" type="radio" value="" id="a02"/> 경찰</label>

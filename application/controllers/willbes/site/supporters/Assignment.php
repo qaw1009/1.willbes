@@ -223,6 +223,9 @@ class Assignment extends \app\controllers\FrontController
         if (empty($supporters_data) === true) {
             return $this->json_error('조회된 서포터즈가 없습니다. 새로고침 후 다시 시도해 주세요.');
         }
+        if ($supporters_data['SupportersTypeCcd'] == '736002' && empty($supporters_data['MenuInfo']) === true) {
+            return $this->json_error('온라인 관리반 기본정보 조회 실패입니다. 관리자에게 문의해 주세요.');
+        }
 
         //발급할 쿠폰 조회 -> 발급
         $this->_coupon($supporters_data, $this->_reqP('supporters_idx'));
@@ -262,7 +265,7 @@ class Assignment extends \app\controllers\FrontController
      */
     private function _getSupportersData($supporters_idx)
     {
-        $column = 'a.SupportersIdx, a.Title AS SupportersTitle, a.SupportersYear, a.SupportersNumber, a.CouponIssueCcd';
+        $column = 'a.SupportersIdx, a.SupportersTypeCcd, a.MenuInfo, a.Title AS SupportersTitle, a.SupportersYear, a.SupportersNumber, a.CouponIssueCcd';
         $arr_condition_1 = [
             'EQ' => [
                 'SupportersIdx' => $supporters_idx,

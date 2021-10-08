@@ -271,7 +271,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="w-tit">관심정보</td>
+                                <td class="w-tit">준비과정</td>
                                 <td class="w-info">
                                     <select id="option7" name="option7" title="선택" class="seleOption option">
                                         <option selected="selected">선택</option>

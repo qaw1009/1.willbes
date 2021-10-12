@@ -184,7 +184,7 @@
             <div class="btn NGEB">
                 <a href="javascript:void(0);" onclick="javascript:fn_submit();">사립탐정 자격시험 예약하기 ></a>
             </div>
-            <div class="mt30 tx16">* 결제는 신광은경찰학원(본원) 현장결제만 가능합니다.</div>
+            {{--<div class="mt30 tx16">* 결제는 신광은경찰학원(본원) 현장결제만 가능합니다.</div>--}}
         </div>
 
         <div class="evtCtnsBox evt02">

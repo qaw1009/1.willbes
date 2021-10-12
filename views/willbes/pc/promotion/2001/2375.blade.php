@@ -68,8 +68,8 @@
         <div class="evtCtnsBox evt03">
             <div class="wrap" data-aos="fade-right">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2375_03.jpg" alt="수강후기 작성 방법" />
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/2368" target="_blank" title="신규가입하기" style="position: absolute; left: 66.61%; top: 12.64%; width: 12.95%; height: 2.63%; z-index: 2;"></a>
-                <a href="https://www.willbes.net/classroom/on/list/ongoing" target="_blank" title="수강후기 작성하기" style="position: absolute; left: 25%; top: 84.56%; width: 49.64%; height: 5.31%; z-index: 2;"></a>
+                <a href="{{ front_url('/promotion/index/cate/3001/code/2368') }}" target="_blank" title="신규가입하기" style="position: absolute; left: 66.61%; top: 12.64%; width: 12.95%; height: 2.63%; z-index: 2;"></a>
+                <a href="https://www{{ENV_DOMAIN}}.willbes.net/classroom/on/list/ongoing" target="_blank" title="수강후기 작성하기" style="position: absolute; left: 25%; top: 84.56%; width: 49.64%; height: 5.31%; z-index: 2;"></a>
             </div>
         </div>
 
@@ -80,7 +80,7 @@
         <div class="evtCtnsBox evt05" id="event01">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2375_05.jpg" alt="이벤트1" data-aos="fade-left"/>
-                <a href="#none" title="pass받기" style="position: absolute; left: 20.63%; top: 74.1%; width: 16.79%; height: 5.52%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="fn_add_apply_submit({{ $arr_base['add_apply_data'][0]['EaaIdx'] or '' }}); return false;" title="pass받기" style="position: absolute; left: 20.63%; top: 74.1%; width: 16.79%; height: 5.52%; z-index: 2;"></a>
             </div>
         </div>
 
@@ -148,12 +148,63 @@
     </div>
     <!-- End evtContainer -->
 
+    <form id="add_apply_form" name="add_apply_form">
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+        <input type="hidden" name="register_type" value="promotion"/>
+        <input type="hidden" name="event_register_chk" value="N"/>
+        <input type="hidden" name="add_apply_chk[]" value="" />
+    </form>
+
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       $( document ).ready( function() {
         AOS.init();
       } );
+    </script>
+
+    <script type="text/javascript">
+        var $add_apply_form = $('#add_apply_form');
+
+        {{-- 무료 강좌지급 --}}
+        function fn_add_apply_submit(eaa_idx) {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+            var _url = '{!! front_url('/event/addApplyStore') !!}';
+            if (!eaa_idx) {
+                alert('이벤트 기간이 아닙니다.');
+                return;
+            }
+            $add_apply_form.find('input[name="add_apply_chk[]"]').val(eaa_idx);
+            if (!confirm('신청하시겠습니까?')) { return true; }
+            ajaxSubmit($add_apply_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert( getApplyMsg(ret.ret_msg) );
+                    location.reload();
+                }
+            }, function(ret, status, error_view) {
+                alert( getApplyMsg(ret.ret_msg || '') );
+            }, null, false, 'alert');
+        }
+
+        // 이벤트 추가 신청 메세지
+        function getApplyMsg(ret_msg) {
+            {{-- 해당 프로모션 종속 결과 메세지 --}}
+            var apply_msg = '';
+            var arr_apply_msg = [
+                ['처리 되었습니다.','장바구니에 담겼습니다.'],
+                ['신청 되었습니다.','신청 되었습니다. 내강의실에서 확인해 주세요.'],
+            ];
+
+            for (var i = 0; i < arr_apply_msg.length; i++) {
+                if(arr_apply_msg[i][0] == ret_msg) {
+                    apply_msg = arr_apply_msg[i][1];
+                }
+            }
+            if(apply_msg == '') apply_msg = ret_msg;
+            return apply_msg;
+        }
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

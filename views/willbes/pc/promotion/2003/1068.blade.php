@@ -83,7 +83,7 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">	
-		<div class="sky">   
+		<div class="sky"  id="QuickMenu">   
 			{{--
 			<a href="https://pass.willbes.net/promotion/index/cate/3028/code/2029" target="_blank"> 
 				<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_sky1.png" alt="5과목 패키지" >
@@ -153,8 +153,8 @@
 				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185391" target="_blank" title="" style="position: absolute;left: 76.47%;top: 49.38%;width: 17.5%;height: 2.85%;z-index: 2;"></a>
 				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186520" target="_blank" title="" style="position: absolute;left: 5.27%;top: 87.08%;width: 17.5%;height: 2.85%;z-index: 2;"></a>
 				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186521" target="_blank" title="" style="position: absolute;left: 29.27%;top: 87.08%;width: 17.5%;height: 2.85%;z-index: 2;"></a>				
-				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186529" target="_blank" title="" style="position: absolute;left: 52.57%;top: 87.08%;width: 17.5%;height: 2.85%;z-index: 2;"></a>
-				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186530" target="_blank" title="" style="position: absolute;left: 76.47%;top: 87.08%;width: 17.5%;height: 2.85%;z-index: 2;"></a>
+				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186530" target="_blank" title="" style="position: absolute;left: 52.57%;top: 87.08%;width: 17.5%;height: 2.85%;z-index: 2;"></a>
+				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186529" target="_blank" title="" style="position: absolute;left: 76.47%;top: 87.08%;width: 17.5%;height: 2.85%;z-index: 2;"></a>
 			</div>
 		</div>
 		       

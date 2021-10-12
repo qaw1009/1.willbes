@@ -98,21 +98,7 @@
     </div>
     <div class="evtCtnsBox evt03"><img src="https://static.willbes.net/public/images/promotion/2021/09/2366m_03.jpg" alt="개편포인트" ></div>
     <div class="evtCtnsBox evt04"><img src="https://static.willbes.net/public/images/promotion/2021/09/2366m_04.jpg" alt="합격포인트" ></div>
-    <div class="evtCtnsBox evt05"><img src="https://static.willbes.net/public/images/promotion/2021/09/2366m_05.jpg" alt="런칭이벤트" ></div>
-    <div class="evtCtnsBox evt06">
-        <img src="https://static.willbes.net/public/images/promotion/2021/09/2366m_06.jpg" alt="할인쿠폰받기" >
-        <a href="javascript:void(0);" title="할인쿠폰 받기" onclick="giveCheck(); return false;" style="position: absolute;left: 17.19%;top: 53.11%;width: 64.75%;height: 6.75%;z-index: 2;"></a>
-        <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif"  title="이미지 다운받기" style="position: absolute;left: 14.19%;top: 82.11%;width: 73.75%;height: 4.75%;z-index: 2;"></a>
-        <a href="http://cafe.daum.net/policeacademy" target="_blank" title="다음카페 경시모" style="position: absolute;left: 18.19%;top: 90.11%;width: 14.75%;height: 8.25%;z-index: 2;"></a>
-        <a href="https://cafe.naver.com/polstudy" target="_blank" title="네이버 경꿈사" style="position: absolute;left: 33.19%;top: 90.11%;width: 14.75%;height: 8.25%;z-index: 2;"></a>
-        <a href="https://gall.dcinside.com/board/lists/?id=government" target="_blank" title="공무원 갤러리" style="position: absolute;left: 48.19%;top: 90.11%;width: 14.75%;height: 8.25%;z-index: 2;"></a>
-        <a href="https://gall.dcinside.com/board/lists?id=policeofficer" target="_blank" title="순경 마이너 갤러리" style="position: absolute;left: 64.19%;top: 90.11%;width: 14.75%;height: 8.25%;z-index: 2;"></a>
-    </div>
-
-    {{--홍보url--}}
-    @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-        @include('willbes.m.promotion.show_comment_list_url_partial')
-    @endif
+    <div class="evtCtnsBox evt05"><img src="https://static.willbes.net/public/images/promotion/2021/09/2366m_05.jpg" alt="런칭이벤트" ></div>    
 
     <div class="evtCtnsBox evtInfo NGR" id="infoText">
         <div class="guide_box" >

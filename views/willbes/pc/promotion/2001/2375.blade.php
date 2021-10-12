@@ -49,7 +49,7 @@
             </a>
         </div>
 
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
+        <div class="evtCtnsBox evt00" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
         </div>
 
@@ -158,5 +158,5 @@
 
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
-    
+
 @stop

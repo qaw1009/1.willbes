@@ -59,8 +59,8 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2386_02.jpg" alt="수강 신청하기" />
                 <a href="javascript:go_PassLecture('186515');" style="position: absolute;left: 71.16%;top: 13.67%;width: 25.04%;height: 16.73%;z-index: 2;"></a> 
                 <a href="javascript:go_PassLecture('186518');" style="position: absolute;left: 71.16%;top: 31.67%;width: 25.04%;height: 16.73%;z-index: 2;"></a> 
-                <a href="javascript:go_PassLecture('186516');" style="position: absolute;left: 71.16%;top: 48.97%;width: 25.04%;height: 16.73%;z-index: 2;"></a> 
-                <a href="javascript:go_PassLecture('186517');" style="position: absolute;left: 71.16%;top: 66.97%;width: 25.04%;height: 16.73%;z-index: 2;"></a>           
+                <a href="javascript:go_PassLecture('186517');" style="position: absolute;left: 71.16%;top: 48.97%;width: 25.04%;height: 16.73%;z-index: 2;"></a> 
+                <a href="javascript:go_PassLecture('186516');" style="position: absolute;left: 71.16%;top: 66.97%;width: 25.04%;height: 16.73%;z-index: 2;"></a>           
             </div>    
             <div class="check">
                 <label>

@@ -123,22 +123,9 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2366_05.jpg" alt="합격포인트" />
         </div>
 
-        <div class="evtCtnsBox evt06">
+        <div class="evtCtnsBox evt06" id="event02">
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2366_06.jpg" alt="런칭이벤트" />
-        </div>
-
-        <div class="evtCtnsBox evt07" id="event02">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/2366_07.jpg" alt="할인쿠폰" />
-                <a href="javascript:void(0)" alt="할인쿠폰받기" onclick="giveCheck();" style="position: absolute;left: 29%;top: 63.65%;width: 42%;height: 8%;z-index: 2;"></a>
-                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="이미지다운받기" style="position: absolute;left: 26.75%;top: 91.65%;width: 48%;height: 5%;z-index: 2;"></a>
-            </div>
-        </div>
-
-        {{--홍보url--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial')
-        @endif
+        </div>  
 
         <div class="evtCtnsBox evtInfo NGR" id="info">
             <div class="guide_box" >

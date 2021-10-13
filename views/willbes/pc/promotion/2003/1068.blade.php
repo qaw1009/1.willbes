@@ -30,8 +30,6 @@
 
 		.wb_01s {background:url(https://static.willbes.net/public/images/promotion/2021/01/0119_add_bg.jpg) no-repeat center top;}
 
-		.wb_01_gif {background:#37393F;}
-
 		.wb_02{background:#f4f4f4;}  
 		
 		.content_guide_wrap {background:#fff; width:1210px; margin:0 auto; padding:50px 0 100px;}
@@ -83,15 +81,7 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">	
-		<div class="sky"  id="QuickMenu">   
-			{{--
-			<a href="https://pass.willbes.net/promotion/index/cate/3028/code/2029" target="_blank"> 
-				<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_sky1.png" alt="5과목 패키지" >
-			</a>
-			--}}
-			<a href="#theory">
-				<img src="https://static.willbes.net/public/images/promotion/2021/10/1068_sky.png" alt="이론 패키지" >
-			</a>
+		<div class="sky" id="QuickMenu">   
 			<a href="#to_go">
 				<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_sky2.png" usemap="#map1068_sky" border="0" />
 				<map name="map1068_sky" id="map1068_sky">
@@ -139,10 +129,6 @@
 			</div>
         </div>	
 		--}}
-
-		<div class="evtCtnsBox wb_01_gif" id="theory">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/1068_pc.gif" alt="">
-        </div>
 
 		<div class="evtCtnsBox wb_02" id="to_go">
 			<div class="wrap">

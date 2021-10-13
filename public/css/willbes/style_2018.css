@@ -299,6 +299,12 @@
 .ssam .examInfo .examBottom li a {display: block; }
 .ssam .examInfo .examBottom ul:after {content:""; display:block; clear:both}
 
+.ssam .d-day {position:absolute; top:10px; display: flex; font-size:11px; line-height:1.2; letter-spacing: normal}
+.ssam .d-day div {margin-right:10px; padding:10px 75px 10px 15px; background:#f1f1f1; color:#4c4c4c; position: relative;}
+.ssam .d-day p {font-size:16px;}
+.ssam .d-day p span {font-size:18px; color:#d32e13; position:absolute; right:15px; top:13px; font-size:22px}
+.ssam .d-day div:last-child span {color:#036ac1}
+
 /* subContainer : Prof : willbes-Layer-Trend */
 .willbes-Layer-Trend {
     display: none;

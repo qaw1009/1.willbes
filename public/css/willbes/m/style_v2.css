@@ -617,10 +617,11 @@ span {
 	padding: 15px 0;
 }
 #Header .dday span {
-	color: #339900;
-}
-#Header .dday span:last-child {
 	color: #d60000;
+}
+#Header .dday strong {padding:0 15px}
+#Header .dday strong:last-child span {
+	color: #036ac1;
 }
 
 #Header .searchBox {

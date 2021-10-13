@@ -85,10 +85,6 @@
         <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_02.jpg" alt="농업직 4관왕" > 
     </div>
 
-    <div class="evtCtnsBox evt03">
-        <img src="https://static.willbes.net/public/images/promotion/2021/10/1068_m.gif" alt="마감 예정" > 
-    </div>
-
     <div class="evtCtnsBox wrap">
         <img src="https://static.willbes.net/public/images/promotion/2021/10/1068m_06.jpg" alt="농촌지도사 이론 패키지" >
         <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185386" target="_blank" title="기본심화이론" style="position: absolute;left: 14.86%;top: 27.26%;width: 28.61%;height: 1.65%;z-index: 2;"></a>

@@ -25,21 +25,17 @@
     .evt03 a.b08 {top: 93.36%;}
 
     /* 폰 가로, 태블릿 세로*/
-    @@media all and (min-width:320px) and (max-width:408px) {       
-
-    }
-
-    @@media all and (min-width:409px) and (max-width:588px) {       
+    @@media only screen and (max-width: 374px)  {
 
     }
 
     /* 태블릿 세로 */
-    @@media only all and (min-width: 768px) {
+    @@media only screen and (min-width: 375px) and (max-width: 640px) {
 
     }
 
     /* 태블릿 가로, PC */
-    @@media only all and (min-width: 1024px) {
+    @@media only screen and (min-width: 641px) {
 
     }
 </style>
@@ -65,10 +61,6 @@
     
     <div class="evtCtnsBox">
         <img src="https://static.willbes.net/public/images/promotion/2021/07/1071m_03.jpg" alt="">
-    </div> 
-
-     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2021/10/1071_m.gif" alt=""> 
     </div>  
 
     <div class="evtCtnsBox">

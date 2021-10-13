@@ -96,9 +96,9 @@
             <div class="wrap" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2375_08.jpg" alt="" />
                 <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="홍보 이미지 다운" style="position: absolute; left: 27.23%; top: 51.76%; width: 47.59%; height: 7.48%; z-index: 2;"></a>
-                <a href="" title="경시모" target="_blank" style="position: absolute; left: 26.96%; top: 80.46%; width: 6.43%; height: 17.1%; z-index: 2;"></a>
-                <a href="" title="경꿈사" target="_blank" style="position: absolute; left: 36.88%; top: 80.46%; width: 6.43%; height: 17.1%; z-index: 2;"></a>
-                <a href="" title="닥공사" target="_blank" style="position: absolute; left: 46.61%; top: 80.46%; width: 6.43%; height: 17.1%; z-index: 2;"></a>
+                <a href="http://cafe.daum.net/policeacademy" title="경시모" target="_blank" style="position: absolute; left: 26.96%; top: 80.46%; width: 6.43%; height: 17.1%; z-index: 2;"></a>
+                <a href="https://cafe.naver.com/polstudy" title="경꿈사" target="_blank" style="position: absolute; left: 36.88%; top: 80.46%; width: 6.43%; height: 17.1%; z-index: 2;"></a>
+                <a href="https://cafe.naver.com/kts9719" title="닥공사" target="_blank" style="position: absolute; left: 46.61%; top: 80.46%; width: 6.43%; height: 17.1%; z-index: 2;"></a>
             </div>
         </div>
 

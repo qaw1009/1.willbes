@@ -1243,7 +1243,18 @@ class Player extends \app\controllers\FrontController
         $lec = $lec[0];
 
         // 기간제 패키지 이면 기기체크하기
-        if($lec['LearnPatternCcd'] == '615004'){
+        // 운영자 패키지 기기체크 추가
+        if($lec['LearnPatternCcd'] == '615004' || $lec['LearnPatternCcd'] == '615003'){
+            // 운영자패키지 일경우 기기제한정보가 없거나 0이하이면 디바이스 체크하지않고 재생가능
+            if($lec['LearnPatternCcd'] == '615003'){
+                // 제한정보가 없을때 숫자 비교시 에러발생 위험이있어 if를 분리함
+                if(empty($lec['DeviceLimitCount']) == true)
+                    return $this->json_result(true, '재생이 가능합니다.');
+
+                if($lec['DeviceLimitCount'] <= 0)
+                    return $this->json_result(true, '재생이 가능합니다.');
+            }
+
             // 등록된 디바이스 인지 체크
             $count = $this->playerFModel->getDevice([ 'EQ' => [
                 'MemIdx' => $MemIdx,
@@ -2229,6 +2240,24 @@ class Player extends \app\controllers\FrontController
                     ], $lec['DeviceLimitCount'], false);
                 }
 
+                // 운영자패키지 일경우 기기제한정보가 없거나 0이하이면 디바이스 체크하지않고 재생가능
+                if($lec['LearnPatternCcd'] == '615003'){
+                    if(empty($lec['DeviceLimitCount']) == true) {
+                        // 기기제한정보가 없음
+                        // 제한정보가 없을때 숫자 비교시 에러발생 위험이있어 if를 분리함
+                    } else if($lec['DeviceLimitCount'] > 0) {
+                        // 기기제한 대수가 0보다크면 체크함
+                        $this->checkDeviceMobile([
+                            'DeviceType' => 'M',
+                            'MemIdx' => $lec['MemIdx'],
+                            'DeviceModel' => $device_model,
+                            'DeviceId' => $device_id,
+                            'Os' => $os_version,
+                            'App' => $app_version
+                        ], $lec['DeviceLimitCount'], false);
+                    }
+                }
+
                 $this->updateMobileDevice([
                     'content_id' => $content_id,
                     'DeviceModel' => $device_model,
@@ -2347,6 +2376,24 @@ class Player extends \app\controllers\FrontController
                         'Os' => $os.' '.$os_version,
                         'App' => $app_version
                     ], $lec['DeviceLimitCount'], true);
+                }
+
+                // 운영자패키지 일경우 기기제한정보가 없거나 0이하이면 디바이스 체크하지않고 재생가능
+                if($lec['LearnPatternCcd'] == '615003'){
+                    if(empty($lec['DeviceLimitCount']) == true) {
+                        // 기기제한정보가 없음
+                        // 제한정보가 없을때 숫자 비교시 에러발생 위험이있어 if를 분리함
+                    } else if($lec['DeviceLimitCount'] > 0) {
+                        // 기기제한 대수가 0보다크면 체크함
+                        $this->checkDeviceMobile([
+                            'DeviceType' => 'A',
+                            'MemIdx' => $lec['MemIdx'],
+                            'DeviceModel' => $device_model,
+                            'DeviceId' => $device_id,
+                            'Os' => $os.' '.$os_version,
+                            'App' => $app_version
+                        ], $lec['DeviceLimitCount'], true);
+                    }
                 }
 
                 $this->updateMobileDevice([

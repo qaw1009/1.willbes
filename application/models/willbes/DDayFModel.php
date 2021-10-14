@@ -19,7 +19,7 @@ class DDayFModel extends WB_Model
      * @param string $limit
      * @return mixed
      */
-    public function getDDays($arr_condition = [], $limit = '')
+    public function getDDays($arr_condition = [], $limit = '', $order_by = '')
     {
         $column = 'a.DIdx, a.DayTitle, a.DayMainTitle, a.DayDatm, datediff(NOW(), a.DayDatm) as DDay';
         $arr_condition = array_merge_recursive($arr_condition, [
@@ -30,7 +30,8 @@ class DDayFModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);
 
-        $order_by_offset_limit = $this->_conn->makeOrderBy(['a.DayDatm' => 'asc'])->getMakeOrderBy();
+        $set_order_by = (empty($order_by) === true) ? 'asc' : 'desc';
+        $order_by_offset_limit = $this->_conn->makeOrderBy(['a.DayDatm' => $set_order_by])->getMakeOrderBy();
         if (empty($limit) === false) {
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, 0)->getMakeLimitOffset();
         }

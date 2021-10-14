@@ -83,7 +83,7 @@
                         @if(sess_data('mem_interest') != '718009')
                         {{-- 임용관련 메뉴 안보이게하기 --}}
                         <div class="willbes-listTable MyInfoBoxList widthAutoFull">
-                            <div class="will-Tit NG">나의 학습 기기 (무한PASS) <a class="f_right" href="{{front_url('/classroom/pass/')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                            <div class="will-Tit NG">나의 학습 기기 <a class="f_right" href="#{{-- front_url('/classroom/pass/') --}}" onclick="fnMyDevice('');"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                             <ul class="List-Table GM myTablet tx-gray">
                                 @forelse($data['device_list'] as $row)
                                     @if($row['DeviceType'] == 'P')
@@ -99,6 +99,7 @@
                         </div>
                         @endif
                     </div>
+                    <div id="MyDevice" class="willbes-Layer-PassBox willbes-Layer-PassBox800 h960 abs"></div>
                 </div>
                 @if(sess_data('is_login') == true && empty(sess_data('mem_ssamid')) == false)
                 <div class="Quick-Bnr mt20">
@@ -344,5 +345,21 @@
                 }, showAlertError, false, 'GET', 'html');
             });
         });
+
+        function fnMyDevice()
+        {
+            url = "{{ site_url("/classroom/pass/layerMyDevice/") }}";
+            data = $('#postForm').serialize();
+
+            sendAjax(url,
+                data,
+                function(d){
+                    openWin('MyDevice');
+                    $("#MyDevice").html(d).end();
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'GET', 'html');
+        }
     </script>
 @stop

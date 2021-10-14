@@ -123,7 +123,7 @@ class Home extends \app\controllers\FrontController
         if (APP_DEVICE == 'pc') {
             $s_cate_code = $cate_code;
 
-            $data['dday'] = $this->_dday();
+            $data['dday'] = $this->_dday($s_cate_code);
             $data['new_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'New');
             $data['arr_main_banner'] = array_merge($this->_banner($s_cate_code), $this->_banner('0'));
             $data['lecture_update_info'] = $this->_getlectureUpdateInfo(10, $s_cate_code);
@@ -157,7 +157,7 @@ class Home extends \app\controllers\FrontController
             $data['arr_main_banner'] = $this->_banner('0');
             $data['notice_campus'] = $this->_boardNoticeByCampus(2);
             $data['new_product'] = $this->_product('off_lecture', 9, $cate_code, 'New');
-            $data['dday'] = $this->_dday();
+            $data['dday'] = $this->_dday($cate_code);
         }
 
         return $data;
@@ -176,7 +176,7 @@ class Home extends \app\controllers\FrontController
         if (APP_DEVICE == 'pc') {
             $s_cate_code = $cate_code;
 
-            $data['dday'] = $this->_dday();
+            $data['dday'] = $this->_dday($s_cate_code);
             $data['best_product'] = $this->_productLectureBySubjectIdx('on_lecture', 2, $s_cate_code, 'Best');  // 과목별 2개씩 베스트 상품 조회
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
 
@@ -222,7 +222,7 @@ class Home extends \app\controllers\FrontController
         $data = [];
 
         if (APP_DEVICE == 'pc') {
-            $data['dday'] = $this->_dday();
+            $data['dday'] = $this->_dday($cate_code);
             $data['gallery'] = $this->_gallery();
             $data['arr_main_banner'] = $this->_banner('0');
             $data['notice_campus'] = $this->_boardNoticeByCampus(2);
@@ -274,7 +274,7 @@ class Home extends \app\controllers\FrontController
             $data['best_product'] = $this->_product('on_lecture', 20, $s_cate_code , 'Best');
             $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $s_cate_code , 'New');
             $data['board_lecture_plan'] = $this->_boardLecturePlan(5, $s_cate_code);
-            $data['dday'] = $this->_dday();
+            $data['dday'] = $this->_dday($s_cate_code);
         } else {
             if (in_array($this->_cate_code, $this->_category_mobile[$this->_site_code])) {
                 $s_cate_code = $cate_code;
@@ -282,7 +282,7 @@ class Home extends \app\controllers\FrontController
 
                 if ($s_cate_code == '308906') {
                     // 빅데이터분석기사
-                    $data['dday'] = $this->_dday();
+                    $data['dday'] = $this->_dday($s_cate_code);
                 } else {
                     $data['best_product'] = $this->_product('on_lecture', 20, $s_cate_code, 'Best');
                     $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $s_cate_code, 'New');
@@ -312,7 +312,7 @@ class Home extends \app\controllers\FrontController
 
         if (APP_DEVICE == 'pc') {
             $s_cate_code = $cate_code;
-            $data['dday'] = $this->_dday();
+            $data['dday'] = $this->_dday($s_cate_code);
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
         }
         $data['notice'] = $this->_boardNotice(5, $s_cate_code);
@@ -333,7 +333,7 @@ class Home extends \app\controllers\FrontController
         $data = [];
         $data['mapping_cate_data'] = $this->_getMappingCateCode($cate_code);
         $data['arr_main_banner'] = $this->_banner($cate_code);
-        $data['dday'] = $this->_dday();
+        $data['dday'] = $this->_dday($cate_code);
         /*$data['off_notice'] = $this->_boardNotice(5, $cate_code, null, 108);*/
         $data['off_notice'] = $this->_boardNoticeForPassCate(5, $cate_code);
         $data['notice'] = $this->_boardNotice(5, $cate_code);
@@ -379,7 +379,7 @@ class Home extends \app\controllers\FrontController
         $data = [];
 
         if (APP_DEVICE == 'pc') {
-            $data['dday'] = $this->_dday();
+            $data['dday'] = $this->_dday($cate_code);
             $data['arr_campus_info'] = $this->_getSiteCampusInfo();
             $data['gallery'] = $this->_gallery();
             $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
@@ -402,7 +402,7 @@ class Home extends \app\controllers\FrontController
         $data = [];
 
         if (APP_DEVICE == 'pc') {
-            $data['dday'] = $this->_dday();
+            $data['dday'] = $this->_dday($cate_code);
             $data['arr_campus_info'] = $this->_getSiteCampusInfo();
             $data['gallery'] = $this->_gallery();
             $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
@@ -452,7 +452,7 @@ class Home extends \app\controllers\FrontController
         $data = [];
 
         if (APP_DEVICE == 'pc') {
-            $data['dday'] = $this->_dday();
+            $data['dday'] = $this->_dday($cate_code);
             $data['arr_campus_info'] = $this->_getSiteCampusInfo();
             $data['gallery'] = $this->_gallery();
             $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
@@ -475,7 +475,7 @@ class Home extends \app\controllers\FrontController
     {
         $data = [];
         if (APP_DEVICE == 'pc') {
-            $data['dday'] = $this->_dday();
+            $data['dday'] = $this->_dday($cate_code);
         }
         $data['arr_main_banner'] = array_merge($this->_banner($cate_code), $this->_banner('0'));
         $data['notice'] = $this->_boardNotice(4, $cate_code);
@@ -510,7 +510,7 @@ class Home extends \app\controllers\FrontController
     private function _getSite2016Data($cate_code = '', $arr_campus = [])
     {
         if (in_array($cate_code, $this->_category_mobile[$this->_site_code]) === true) {
-            $data['dday'] = $this->_dday();
+            $data['dday'] = $this->_dday($cate_code);
             return $data;
         } else {
             redirect(front_url('/home/index', true));
@@ -534,9 +534,9 @@ class Home extends \app\controllers\FrontController
         }else{
             $data['new_product'] = $this->_product('on_lecture', 16, $s_cate_code, 'New');
             $data['event'] = $this->_getlistEvent(5, $s_cate_code);
-            $data['dday'] = $this->_dday();
         }
 
+        $data['dday'] = $this->_dday($s_cate_code, '2', 'desc');
         $data['arr_main_banner'] = $this->_banner('0');
         $data['notice'] = $this->_boardNotice((APP_DEVICE == 'pc' ? 7 : 5), $s_cate_code);
         $data['lecture_update_info'] = $this->_getlectureUpdateInfo((APP_DEVICE == 'pc' ? 7 : 5), $s_cate_code);
@@ -873,18 +873,19 @@ class Home extends \app\controllers\FrontController
 
     /**
      * 시험일정 조회 (디데이)
+     * @param string $cate_code
      * @return mixed
      */
-    private function _dday()
+    private function _dday($cate_code = '', $limit = '', $order_by = '')
     {
         $arr_condition = [
             'EQ' => [
                 'a.SiteCode' => $this->_site_code,
-                'b.CateCode' => $this->_cate_code
+                'b.CateCode' => $cate_code
             ]
         ];
 
-        return $this->dDayFModel->getDDays($arr_condition);
+        return $this->dDayFModel->getDDays($arr_condition, $limit, $order_by);
     }
 
     /**

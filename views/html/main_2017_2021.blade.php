@@ -90,18 +90,21 @@ no-repeat 5px center}
 <!-- Container -->
 <div id="Container" class="Container ssam NGR c_both">
 
-    <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
-        <div class="Section widthAuto p_re">
-            <div class="d-day NSK">
-                <div>
-                    <p class="NSK-Black">유∙초등 1차 <span>D-31</span></p>
-                    2021.11.13.(토)
-                </div>
-                <div>
-                    <p class="NSK-Black">중등 1차 <span>D-45</span></p>
-                    2021.11.27.(토)
-                </div>
+    <div class="d-day NSK">
+        <div class="d-day-wrap">
+            <div>
+                <p class="NSK-Black">유∙초등 1차 <span>D-31</span></p>
+                2021.11.13.(토)
             </div>
+            <div>
+                <p class="NSK-Black">중등 1차 <span>D-45</span></p>
+                2021.11.27.(토)
+            </div>
+        </div>
+    </div>
+
+    <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
+        <div class="Section widthAuto p_re">            
             <div class="onSearch NGR">
                 <div>
                     <input type="hidden" name="cate" id="unifiedSearch_cate" value="">

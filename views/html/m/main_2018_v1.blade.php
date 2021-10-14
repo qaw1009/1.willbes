@@ -238,7 +238,10 @@
         </div>
 
         <div class="dday NSK">
-            <strong class="NSK-Black">D-day</strong> 유초등 <span>D-050</span>  · 중등 <span>D-064</span>
+            <div class="NSK-Black">
+                <strong>유·초등 1차 <span>D-31</span></strong>
+                <strong>중등 1차 <span>D-45</span></strong>
+            </div>
         </div>
 
         <div class="subMenuBox c_both">

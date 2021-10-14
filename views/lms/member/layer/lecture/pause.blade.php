@@ -60,7 +60,7 @@
                     <b>[최초수강기간]</b> {{$lec['LecStartDate']}} ~ {{$lec['LecEndDate']}} ({{$lec['LecExpireDay']}}일)  &nbsp; &nbsp; &nbsp;
                     <b>[수강기간]</b> {{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}} ({{$lec['RealLecExpireDay']}}일) &nbsp; &nbsp; &nbsp;
                     <b>[남은수강기간]</b>
-                    @if(strtotime($lec['LecEndDate']) < strtotime(date("Y-m-d", time())))
+                    @if(strtotime($lec['RealLecEndDate']) < strtotime(date("Y-m-d", time())))
                         수강종료
                     @elseif(strtotime($lec['LecStartDate']) > strtotime(date("Y-m-d", time())))
                         {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['LecStartDate']))/86400 +1 }}일

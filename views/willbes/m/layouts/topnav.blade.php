@@ -70,12 +70,11 @@
 
                 @if($__cfg['SiteCode'] == '2017' && empty($data['dday']) === false) {{-- 임용추가 --}}
                     <div class="dday NSK">
-                        <strong class="NSK-Black">D-day</strong>
-                        @foreach($data['dday'] as $row)
-                            @if($loop->index <= 2)
-                                {{$row['DayTitle']}} <span>{{($row['DDay'] == 0) ? 'D-'.$row['DDay'] : 'D'.$row['DDay']}}</span>
-                            @endif
-                        @endforeach
+                        <div class="NSK-Black">
+                            @foreach($data['dday'] as $row)
+                                <strong>{{$row['DayTitle']}} <span>{{($row['DDay'] == 0) ? 'D-'.$row['DDay'] : 'D'.$row['DDay']}}</span></strong>
+                            @endforeach
+                        </div>
                     </div>
                 @endif
 

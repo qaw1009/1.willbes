@@ -115,7 +115,7 @@
                     @foreach($data['dday'] as $row)
                         <div>
                             <p class="NSK-Black">{{$row['DayTitle']}} <span>{{($row['DDay'] == 0) ? 'D-'.$row['DDay'] : 'D'.$row['DDay']}}</span></p>
-                            {{$row['DayDatm']}}.({{$week_w[date("w",strtotime($row['DayDatm']))]}})
+                            {{str_replace('-','.',$row['DayDatm'])}}.({{$week_w[date("w",strtotime($row['DayDatm']))]}})
                         </div>
                     @endforeach
                 </div>

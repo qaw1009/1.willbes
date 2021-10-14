@@ -110,6 +110,18 @@
 
     <!-- Container -->
     <div id="Container" class="Container ssam NGR c_both">
+        @if(empty($data['dday']) === false)
+            <div class="d-day NSK">
+                <div class="d-day-wrap">
+                    @foreach($data['dday'] as $row)
+                        <div>
+                            <p>{{$row['DayTitle']}} <span class="NSK-Black">{{($row['DDay'] == 0) ? 'D-'.$row['DDay'] : 'D'.$row['DDay']}}</span></p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 

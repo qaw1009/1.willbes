@@ -2386,13 +2386,13 @@ class Player extends \app\controllers\FrontController
                     } else if($lec['DeviceLimitCount'] > 0) {
                         // 기기제한 대수가 0보다크면 체크함
                         $this->checkDeviceMobile([
-                            'DeviceType' => 'M',
+                            'DeviceType' => 'A',
                             'MemIdx' => $lec['MemIdx'],
                             'DeviceModel' => $device_model,
                             'DeviceId' => $device_id,
-                            'Os' => $os_version,
+                            'Os' => $os.' '.$os_version,
                             'App' => $app_version
-                        ], $lec['DeviceLimitCount'], false);
+                        ], $lec['DeviceLimitCount'], true);
                     }
                 }
 

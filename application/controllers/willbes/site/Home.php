@@ -536,7 +536,7 @@ class Home extends \app\controllers\FrontController
             $data['event'] = $this->_getlistEvent(5, $s_cate_code);
         }
 
-        $data['dday'] = $this->_dday($s_cate_code, '2', 'desc');
+        $data['dday'] = $this->_dday($s_cate_code, '2', ['a.RegDatm' => 'asc']);
         $data['arr_main_banner'] = $this->_banner('0');
         $data['notice'] = $this->_boardNotice((APP_DEVICE == 'pc' ? 7 : 5), $s_cate_code);
         $data['lecture_update_info'] = $this->_getlectureUpdateInfo((APP_DEVICE == 'pc' ? 7 : 5), $s_cate_code);
@@ -874,9 +874,11 @@ class Home extends \app\controllers\FrontController
     /**
      * 시험일정 조회 (디데이)
      * @param string $cate_code
+     * @param string $limit
+     * @param array $arr_order_by
      * @return mixed
      */
-    private function _dday($cate_code = '', $limit = '', $order_by = '')
+    private function _dday($cate_code = '', $limit = '', $arr_order_by = [])
     {
         $arr_condition = [
             'EQ' => [
@@ -885,7 +887,7 @@ class Home extends \app\controllers\FrontController
             ]
         ];
 
-        return $this->dDayFModel->getDDays($arr_condition, $limit, $order_by);
+        return $this->dDayFModel->getDDays($arr_condition, $limit, $arr_order_by);
     }
 
     /**

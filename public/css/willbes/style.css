@@ -6330,6 +6330,7 @@ table.couponTable {
 	font-size: 11px;
 	text-align: center;
 }
+table.couponTable tbody tr th,
 table.couponTable thead tr th {
 	background: #f9f9f9;
 	height: 45px;
@@ -6338,9 +6339,9 @@ table.couponTable thead tr th {
 table.couponTable tr th,
 table.couponTable tr td {
 	text-align: center;
-	line-height: 40px;
+	line-height: 1.6;
 	letter-spacing: 0;
-	padding: 10px 0;
+	padding: 10px;
 }
 table.couponTable tr th .row-line {
 	float: right;
@@ -11740,6 +11741,14 @@ table.acadlecInfoPackageTable tr.Top td {
 .lecPocketTable .replyList.hover .arrow-Btn {
 	background: url("../../img/willbes/cs/icon_arrow.gif") no-repeat 0 0;
 }
+
+.LecPocketLinkBox {padding:20px 20px 0}
+.LecPocketLinkBox a {border:1px solid #0d74ae; color:#0d74ae; padding:10px; display:block; text-align: center; font-size:14px}
+.LecPocketLinkBox a:hover {background:#0d74ae; color:#fff;}
+
+.allBtn {padding-top:10px; text-align: right; font-size:14px}
+.allBtn a {display:inline-block; background:#0d74ae; color:#fff; padding:10px 15px; margin-left:10px}
+
 .priceBox {
 	padding: 20px;
 	letter-spacing: 0;

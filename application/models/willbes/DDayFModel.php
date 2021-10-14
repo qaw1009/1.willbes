@@ -15,11 +15,12 @@ class DDayFModel extends WB_Model
 
     /**
      * 금일 이후 시험일정 디데이 조회
-     * @param array $arr_condition [추가 조회조건]
+     * @param array $arr_condition
      * @param string $limit
+     * @param array $arr_order_by
      * @return mixed
      */
-    public function getDDays($arr_condition = [], $limit = '', $order_by = '')
+    public function getDDays($arr_condition = [], $limit = '', $arr_order_by = [])
     {
         $column = 'a.DIdx, a.DayTitle, a.DayMainTitle, a.DayDatm, datediff(NOW(), a.DayDatm) as DDay';
         $arr_condition = array_merge_recursive($arr_condition, [
@@ -30,8 +31,8 @@ class DDayFModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);
 
-        $set_order_by = (empty($order_by) === true) ? 'asc' : 'desc';
-        $order_by_offset_limit = $this->_conn->makeOrderBy(['a.DayDatm' => $set_order_by])->getMakeOrderBy();
+        $order_by = (empty($arr_order_by) === true) ? ['a.DayDatm' => 'asc'] : $arr_order_by;
+        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         if (empty($limit) === false) {
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, 0)->getMakeLimitOffset();
         }

@@ -93,12 +93,10 @@ no-repeat 5px center}
     <div class="d-day NSK">
         <div class="d-day-wrap">
             <div>
-                <p class="NSK-Black">유∙초등 1차 <span>D-31</span></p>
-                2021.11.13.(토)
+                <p>유∙초등 1차 <span class="NSK-Black">D-31</span></p>
             </div>
             <div>
-                <p class="NSK-Black">중등 1차 <span>D-45</span></p>
-                2021.11.27.(토)
+                <p>중등 1차 <span class="NSK-Black">D-45</span></p>
             </div>
         </div>
     </div>

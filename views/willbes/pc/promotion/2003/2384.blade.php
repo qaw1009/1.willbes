@@ -16,6 +16,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
 
+
         /************************************************************/
 
         .wb_top {background:#1729eb}
@@ -31,10 +32,10 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up"> 
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2384_01.jpg" alt="응시방법" usemap="#Map2384" border="0" />
-            <map name="Map2384" id="Map2384">
-                <area shape="rect" coords="321,2182,773,2303" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" alt="모의고사 신청 바로가기" />
-            </map>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/2384_01.jpg" alt="응시방법" />
+                <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" title="모의고사 신청 바로가기" target="_blank" style="position: absolute; left: 26.96%; top: 90.20%; width: 44.46%; height: 5.26%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
@@ -44,6 +45,7 @@
     </div>
     <!-- End Container -->
 
+    
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
@@ -51,6 +53,13 @@
         AOS.init();
     } );
     </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-rwdImageMaps/1.6/jquery.rwdImageMaps.min.js"></script> 
+    <script type="text/javascript">
+        // rwdImageMaps로 이미지맵 동적 할당하도록 설정
+        $('img[usemap]').rwdImageMaps();
+    </script>
+
 
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')

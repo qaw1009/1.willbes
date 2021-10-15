@@ -75,8 +75,8 @@
                 <a href="https://www.willbes.net/Player/Sample/183391/1305713/HD" target="_blank" title="정진천" style="position: absolute;left: 81%;top: 57.43%;width: 18.3%;height: 6.35%;z-index: 2;"></a>
                 <a href="https://www.willbes.net/Player/Sample/183390/1304533/HD" target="_blank" title="이국령" style="position: absolute;left: 1%;top: 90.93%;width: 18.3%;height: 6.35%;z-index: 2;"></a>
                 <a href="https://www.willbes.net/Player/Sample/186613/1316921/HD" target="_blank" title="선동주" style="position: absolute;left: 21%;top: 90.93%;width: 18.3%;height: 6.35%;z-index: 2;"></a>
-                <a href="https://www.willbes.net/Player/Sample/186538/1316133/HD" target="_blank" title="고태환" style="position: absolute;left: 41%;top: 90.93%;width: 18.3%;height: 6.35%;z-index: 2;"></a>
-                <a href="https://www.willbes.net/Player/Sample/186307/1314394/HD" target="_blank" title="김동진" style="position: absolute;left: 61%;top: 90.93%;width: 18.3%;height: 6.35%;z-index: 2;"></a>
+                <a href="https://www.willbes.net/Player/Sample/186307/1314394/HD" target="_blank" title="김동진" style="position: absolute;left: 41%;top: 90.93%;width: 18.3%;height: 6.35%;z-index: 2;"></a>
+                <a href="https://www.willbes.net/Player/Sample/186538/1316133/HD" target="_blank" title="고태환" style="position: absolute;left: 61%;top: 90.93%;width: 18.3%;height: 6.35%;z-index: 2;"></a>
                 <a href="https://www.willbes.net/Player/Sample/186546/1316433/HD" target="_blank" title="이동호" style="position: absolute;left: 81%;top: 90.93%;width: 18.3%;height: 6.35%;z-index: 2;"></a>
             </div>
         </div>

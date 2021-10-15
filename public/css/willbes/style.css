@@ -11746,8 +11746,28 @@ table.acadlecInfoPackageTable tr.Top td {
 .LecPocketLinkBox a {border:1px solid #0d74ae; color:#0d74ae; padding:10px; display:block; text-align: center; font-size:14px}
 .LecPocketLinkBox a:hover {background:#0d74ae; color:#fff;}
 
+.chkBoxAgree {position: relative;}
+.chkBoxAgree input[type=checkbox]:not(old) {
+	position: absolute;
+	right:0;
+	width: 0;
+	padding: 0;
+	margin: 0;
+	opacity:0; 
+}
+.chkBoxAgree input[type=checkbox]:not(old) + label {
+	display: block;
+    text-align: left; height:22px; padding-right: 25px; line-height: 22px;
+    background: url("../../img/willbes/login/icon_check.png") no-repeat right 0; 
+	cursor: pointer;
+}
+.chkBoxAgree input[type=checkbox]:not(old):checked + label {
+	background: url("../../img/willbes/login/icon_check.png") no-repeat right -44px;
+}
+
 .allBtn {padding-top:10px; text-align: right; font-size:14px}
-.allBtn a {display:inline-block; background:#0d74ae; color:#fff; padding:10px 15px; margin-left:10px}
+.allBtn a {display:inline-block; background:#0d74ae; color:#fff; border:1px solid #0d74ae; padding:10px 15px; margin-left:10px}
+.allBtn a:hover {background:#fff; color:#0d74ae; }
 
 .priceBox {
 	padding: 20px;

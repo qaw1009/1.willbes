@@ -783,16 +783,21 @@
                                         윌비스의「개인정보처리방침」이 변경될 경우 변경된 사항을 홈페이지를 통하여 공지합니다.<br>
                                         윌비스 개인정보처리방침은 아래와 같은 내용을 담고 있습니다.<br>
                                         <br>
-                                        <div><a href="https://www.willbes.net/company/protect" target="_blank" class="tx-blue">[윌비스 개인정보 취급방침 보기]</a></div>
+                                        <div><a href="https://www.willbes.net/company/protect" target="_blank" class="tx-blue">[윌비스 개인정보 취급방침 보기 →]</a></div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" class="tx-left">위 개인정보활용 안내사항을 모두 읽었으며 동의합니다. (필수)</td>
+                                    <td colspan="2" class="tx-left">                                        
+                                        <div class="chkBoxAgree">                                            
+                                            <input type="checkbox" id="check01" name="">   
+                                            <label for="check01">위 개인정보활용 안내사항을 모두 읽었으며 동의합니다. (필수)</label>
+                                        </div>                                        
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>환불정책 안내</th>
                                     <td class="tx-left">
-                                        ⊙  한림법학원 실강종합반 환불정책<br>
+                                        <p class="tx14">⊙  한림법학원 실강종합반 환불정책</p>
                                         (학원설립및과외교습에관한법률 제18조 및 동시행령 제18조에 근거함)<br>
                                         <br>
                                         - 환불시 강의료 정산 = 총 등록(결제) 금액 - 퇴원일까지 진행된 강의 수강료*<br>
@@ -800,11 +805,16 @@
                                         - 강의 개강일 기준 총 회차의 50% 이상이 진행된 경우 해당강의는 전회차 수강료로 정산됩니다.<br>
                                         - 종합반 반 변경은 불가하며, 기존 종합반 탈퇴 후 재가입하셔야 합니다. (탈퇴 시 상기 환불정책 준수)<br>
                                         <br>
-                                        <div><a href="https://www.willbes.net/company/protect" target="_blank" class="tx-blue">[윌비스 이용약관 보기]</a></div>
+                                        <div><a href="https://www.willbes.net/company/protect" target="_blank" class="tx-blue">[윌비스 이용약관 보기 →]</a></div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" class="tx-left">위 환불정책 안내사항을 모두 읽었으며 동의합니다. (필수)</td>
+                                    <td colspan="2" class="tx-left">
+                                        <div class="chkBoxAgree">                                            
+                                            <input type="checkbox" id="check02" name="">   
+                                            <label for="check02">위 환불정책 안내사항을 모두 읽었으며 동의합니다. (필수)</label>                                         
+                                        </div>   
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

@@ -31,7 +31,10 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up"> 
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2384_01.jpg" alt="응시방법" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2384_01.jpg" alt="응시방법" usemap="#Map2384" border="0" />
+            <map name="Map2384" id="Map2384">
+                <area shape="rect" coords="321,2182,773,2303" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" alt="모의고사 신청 바로가기" />
+            </map>
         </div>
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">

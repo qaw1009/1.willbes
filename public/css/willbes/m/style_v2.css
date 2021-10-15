@@ -4784,6 +4784,35 @@ body.memBody #Footer {
 	width: 100% !important;
 }
 
+/*개인정보활용 및 환불정책 안내 팝업*/
+.willbes-Layer-Black .protectBox {
+	border-top: 1px solid #ccc;
+	line-height: 1.4;
+	padding: 10px 0 !important;	 
+	position: relative;	
+}
+.willbes-Layer-Black .protectBox .protectBoxWrap {
+	height:305px;
+	overflow-y: scroll !important;
+}
+.willbes-Layer-Black .protectBox h5 {
+	font-size: 14px;
+	margin: 10px 0;
+	padding-bottom: 3px;
+	border-bottom: 1px dotted #ccc;
+}
+.willbes-Layer-Black .protectBox h5:first-child {
+	margin: 0 0 5px;
+}
+
+.willbes-Layer-Black .protectBox .protectBoxSm {
+	padding:10px 0;
+}
+
+.willbes-Layer-Black .protectBox .allBtn {padding-top:20px; text-align: center; font-size:14px;}
+.willbes-Layer-Black .protectBox .allBtn a {display:block; background:#0d74ae; color:#fff; border:1px solid #0d74ae; padding:8px 0; margin:10px auto 0}
+
+
 /* calendarTable */
 .calendarTable {
 	font-family: "Arial", "sans-serif";
@@ -5539,12 +5568,36 @@ body.memBody #Footer {
 }
 .basketBox .infoBox ul {
 	display: none;
+	margin-bottom:10px;
 }
 .basketBox .infoBox li {
 	margin-left: 15px;
 	list-style: disc;
 	font-size: 12px;
 	font-weight: normal;
+}
+
+.LecPocketLinkBox {padding:0}
+.LecPocketLinkBox a {border:1px solid #0d74ae; color:#0d74ae; padding:10px; display:block; text-align: center; font-size:14px}
+.LecPocketLinkBox a:hover {background:#0d74ae; color:#fff;}
+
+.chkBoxAgree {position:relative; margin:10px auto; line-height: 1.5; border-top:1px solid #f4f4f4; border-bottom:1px solid #333; padding:10px 0}
+.chkBoxAgree input[type=checkbox]:not(old) {
+	position: absolute;
+	right:0;
+	width: 0;
+	padding: 0;
+	margin: 0;
+	opacity:0; 
+}
+.chkBoxAgree input[type=checkbox]:not(old) + label {
+	display: block;
+    text-align: left; min-height:22px; padding-left:25px; 
+    background: url("/public/img/willbes/login/icon_check.png") no-repeat 0 0; 
+	cursor: pointer;
+}
+.chkBoxAgree input[type=checkbox]:not(old):checked + label {
+	background: url("/public/img/willbes/login/icon_check.png") no-repeat 0 -44px;
 }
 
 .basketListBox {

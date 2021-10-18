@@ -41,11 +41,11 @@
         </div>
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2387_top.jpg" alt="경찰간부" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2387_top.jpg" alt="이국령의 경찰 헌법 도약" />
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2387_01.jpg" alt="경찰간부" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2387_01.jpg" alt="왜 이국령을 선택해야하나" />
         </div>
 
         <div class="evtCtnsBox evt02">
@@ -53,16 +53,16 @@
                 <li><a href="#tab01">2021년 수험생대상<span>(재시생)</span></a></li>
                 <li><a href="#tab02">2022년 수험생대상<span>(초시생)</span></a></li>
             </ul>
-            <div id="tab01"><img src="https://static.willbes.net/public/images/promotion/2021/10/2387_02_01.jpg" alt="" /></div>
-            <div id="tab02"><img src="https://static.willbes.net/public/images/promotion/2021/10/2387_02_02.jpg" alt="" /></div>
+            <div id="tab01"><img src="https://static.willbes.net/public/images/promotion/2021/10/2387_02_01.jpg" alt="이국령 헌법속성반" /></div>
+            <div id="tab02"><img src="https://static.willbes.net/public/images/promotion/2021/10/2387_02_02.jpg" alt="이국령 헌법 기본이론" /></div>
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2387_03.jpg" alt="교수진" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2387_03.jpg" alt="2022 합격대비 커리큘럼" />
         </div>
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2387_04.jpg" alt="합격포인트" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2387_04.jpg" alt="국령쌤 추천강좌" />
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif  

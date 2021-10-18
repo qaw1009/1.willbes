@@ -34,6 +34,77 @@
             </tr>
             </tbody>
         </table>
+        @if(in_array($__cfg['SiteCode'], ['2010', '2011', '2013']) === true)
+            {{-- 한림전용 개인정보활용 및 환불정책안내 팝업 (고등고시, 자격증, 경찰간부학원만 노출) --}}
+            <div class="LecPocketLinkBox">
+                <a href="#none" onclick="openWin('protect')">개인정보활용 및 환불정책 안내</a>
+            </div>
+            <div id="protect" class="willbes-Layer-Black">
+                <div class="willbes-Layer-CartBox">
+                    <a class="closeBtn" href="#none" onclick="closeWin('protect')">
+                        <img src="{{ img_url('cart/close_cart.png') }}">
+                    </a>
+                    <div class="Layer-Tit NG bg-blue"> 개인정보활용 및 환불정책 안내</div>
+                    <div class="Layer-Cont">
+                        <table cellspacing="0" cellpadding="0" class="couponTable under-gray bdt-light-gray tx-gray">
+                            <colgroup>
+                                <col style="width: 120px;">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th>개인정보활용 안내</th>
+                                <td class="tx-left">
+                                    윌비스는 고객의 개인정보보호를 소중하게 생각하고, 고객의 개인정보를 보호하기 위하여 항상 최선을 다해 노력하고 있습니다.<br>
+                                    윌비스는 개인정보보호 관련 주요 법률인「정보통신망 이용촉진 및 정보보호 등에 관한 법률」을 비롯한 모든 개인정보보호 관련 법률을 준수하고 있습니다.<br>
+                                    또한, 윌비스는「개인정보처리방침」을 제정하여 이를 준수하고 있으며, 윌비스의「개인정보처리방침」을 홈페이지에 공개하여 고객이 언제나 용이하게 열람할 수 있도록 하고 있습니다.<br>
+                                    윌비스의「개인정보처리방침」은 관련 법률 및 지침의 변경 또는 내부 운영 방침의 변경에 따라 변경될 수 있습니다.<br>
+                                    윌비스의「개인정보처리방침」이 변경될 경우 변경된 사항을 홈페이지를 통하여 공지합니다.<br>
+                                    윌비스 개인정보처리방침은 아래와 같은 내용을 담고 있습니다.<br>
+                                    <br>
+                                    <div><a href="{{app_url('/company/protect', 'www')}}" target="_blank" class="tx-blue">[윌비스 개인정보 취급방침 보기 →]</a></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="tx-left">
+                                    <div class="chkBoxAgree">
+                                        <input type="checkbox" id="agree_protect" name="agree_protect" value="Y">
+                                        <label for="agree_protect">위 개인정보활용 안내사항을 모두 읽었으며 동의합니다. (필수)</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>환불정책 안내</th>
+                                <td class="tx-left">
+                                    <p class="tx14">⊙  한림법학원 실강종합반 환불정책</p>
+                                    (학원설립및과외교습에관한법률 제18조 및 동시행령 제18조에 근거함)<br>
+                                    <br>
+                                    - 환불시 강의료 정산 = 총 등록(결제) 금액 - 퇴원일까지 진행된 강의 수강료*<br>
+                                    * 퇴원일까지 진행된 강의 수강료 기준: 단과 수강료 기준 1회당 가격 * 진행된 강의 횟수<br>
+                                    - 강의 개강일 기준 총 회차의 50% 이상이 진행된 경우 해당강의는 전회차 수강료로 정산됩니다.<br>
+                                    - 종합반 반 변경은 불가하며, 기존 종합반 탈퇴 후 재가입하셔야 합니다. (탈퇴 시 상기 환불정책 준수)<br>
+                                    <br>
+                                    <div><a href="{{app_url('/company/agreement', 'www')}}" target="_blank" class="tx-blue">[윌비스 이용약관 보기 →]</a></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="tx-left">
+                                    <div class="chkBoxAgree">
+                                        <input type="checkbox" id="agree_refund" name="agree_refund" value="Y">
+                                        <label for="agree_refund">위 환불정책 안내사항을 모두 읽었으며 동의합니다. (필수)</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="allBtn">
+                            위 개인정보 활용 및 환불정책 안내사항을 모두 읽었으며 동의합니다.
+                            <a href="#none" id="agree_all">전체동의</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="priceBox">
             <ul>
                 <li class="p-tit">
@@ -92,6 +163,13 @@
                 alert('유의사항을 확인 후 동의해 주세요.');
                 return;
             }
+            if ($regi_visit_form.find('#protect').length > 0) {
+                if ($regi_visit_form.find('input[name="agree_protect"]:checked').length < 1 || $regi_visit_form.find('input[name="agree_refund"]:checked').length < 1) {
+                    alert('개인정보활용 및 환불정책 안내 내용을 확인해 주세요.');
+                    openWin('protect');
+                    return;
+                }
+            }
 
             if (confirm('방문접수를 신청하시겠습니까?')) {
                 var url = '{{ front_url('/order/visit') }}';
@@ -102,6 +180,21 @@
                     }
                 }, showValidateError, null, false, 'alert');
             }
+        });
+
+        // 한림전용 개인정보활용 및 환불정책안내 개별동의 버튼 클릭
+        $regi_visit_form.on('click', '#protect .chkBoxAgree input:checkbox', function() {
+            if ($regi_visit_form.find('input[name="agree_protect"]:checked').length > 0 && $regi_visit_form.find('input[name="agree_refund"]:checked').length > 0) {
+                alert('개인정보활용 및 환불정책 안내에 동의하셨습니다. 최종 방문결제를 진행해 주세요.');
+                closeWin('protect');
+            }
+        });
+
+        // 한림전용 개인정보활용 및 환불정책안내 전체동의 버튼 클릭
+        $regi_visit_form.on('click', '#protect #agree_all', function() {
+            $regi_visit_form.find('#protect .chkBoxAgree input:checkbox').prop('checked', true);
+            alert('개인정보활용 및 환불정책 안내에 동의하셨습니다. 최종 방문결제를 진행해 주세요.');
+            closeWin('protect');
         });
     });
 

@@ -51,12 +51,12 @@
         .content_guide_box dd p{ margin-bottom:3px;}
         .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px;}
 
-        .sky {position:fixed;top:225px;right:25px;z-index:1;}       
+        .sky {position:fixed;top:225px;right:10px;z-index:1;}       
 
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="sky">
+        <div class="sky" id="QuickMenu">
             <div><a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2036_sky.png" alt="현직경찰 인증하기"></a></div>
             <div style="margin-top:15px;"><a href="#apply_01"><img src="https://static.willbes.net/public/images/promotion/2021/01/2036_sky2.png" alt="계급별 패스"></a></div>
             <div style="margin-top:15px;"><a href="#apply_02"><img src="https://static.willbes.net/public/images/promotion/2021/01/2036_sky3.png" alt="교수별 패스"></a></div>
@@ -116,17 +116,16 @@
         </div>
 
         <div class="evtCtnsBox wb_cts06" id="apply_02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2036_06.jpg" alt="교수님별 12개월 패스" usemap="#Map2036_pass" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2036_06.jpg" alt="교수님별 12개월 패스" usemap="#Map2036_pass" border="0" />
             <map name="Map2036_pass" id="Map2036_pass">
                 <area shape="rect" coords="830,427,987,478" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178596" target="_blank" />
                 <area shape="rect" coords="830,527,987,578" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178597" target="_blank" />
                 <area shape="rect" coords="831,626,987,678" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178605" target="_blank" />
-                <area shape="rect" coords="831,727,988,777" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178604" target="_blank" />
-                <area shape="rect" coords="831,827,987,877" href="javascript:alert('21년 4월중 오픈예정')" />
-                <area shape="rect" coords="831,927,988,977" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178607" target="_blank" />
-                <area shape="rect" coords="831,1027,987,1079" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178608" target="_blank" />
-                <area shape="rect" coords="831,1127,987,1177" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178624" target="_blank" />
-                <area shape="rect" coords="831,1227,988,1278" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178622" target="_blank" />
+                <area shape="rect" coords="831,726,988,776" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178604" target="_blank" />
+                <area shape="rect" coords="830,827,987,877" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178607" target="_blank" />
+                <area shape="rect" coords="831,927,987,979" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178608" target="_blank" />
+                <area shape="rect" coords="831,1026,987,1076" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178624" target="_blank" />
+                <area shape="rect" coords="830,1126,987,1177" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178622" target="_blank" />
             </map>
         </div>
 

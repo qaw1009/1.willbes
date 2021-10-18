@@ -21,13 +21,13 @@
 
         .evt00 {background:#f4f1f3}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/10/2389_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/10/2389_top_bg.jpg) no-repeat center 100px; padding-top:100px}
 
         .evt02 {background:#e9e9e9}   
         
         /*타이머*/
         .time {width:1120px; margin:0 auto; text-align:center; padding:20px 0}
-        .time ul {width:100%; display:flex; justify-content: center; }
+        .time ul {width:100%; display:flex; justify-content: center;}
         .time li {line-height:61px; font-size:24px; margin-right:10px; position: relative;}
         .time li:first-child,
         .time li:last-child {line-height:1.3; color:#363635}
@@ -39,13 +39,17 @@
         .time li img {width:44px}
         .time .time_txt {color:#000; letter-spacing:-1px}
         .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
-        .d_day {color:#fff;font-size:30px;} 
+        .time .d_day {color:#fff;font-size:30px;} 
+
+        .jbMenu {display:none}
+        .jbMenu {position:absolute; top:0px; width:100%; background:#f4f1f3; display:block; z-index:100}
+        .jbFixed {position:fixed; top: 0px}
    
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
 
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
+        <div class="evtCtnsBox evt00 jbMenu cf" data-aos="fade-down">
             <div class="time NSK-Black" id="newTopDday">
                 <ul>
                     <li>
@@ -110,11 +114,20 @@
         } );
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-rwdImageMaps/1.6/jquery.rwdImageMaps.min.js"></script> 
-    <script type="text/javascript">
-        // rwdImageMaps로 이미지맵 동적 할당하도록 설정
-        $('img[usemap]').rwdImageMaps();
- 
+    <script type="text/javascript"> 
+        /* 스크롤배너*/
+        $( document ).ready( function() {
+            var jbOffset = $( '.jbMenu' ).offset();
+                $( window ).scroll( function() {
+                    if ( $( document ).scrollTop() > jbOffset.top ) {
+                $( '.jbMenu' ).addClass( 'jbFixed' );
+            }
+            else {
+                    $( '.jbMenu' ).removeClass( 'jbFixed' );
+                }
+            });
+        });
+
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');

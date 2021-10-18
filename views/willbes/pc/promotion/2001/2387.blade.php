@@ -20,13 +20,35 @@
         .evt04 > img{padding: 40px 0;}
 
         .evtTab {width:890px; margin:0 auto; padding-bottom: 80px; display: flex; justify-content: center; align-items: flex-end;}
-        .evtTab li {width:50%;}
-        .evtTab li a {display:block; color:#868686; font-size:32px; padding:20px 30px; border:8px solid #868686;  font-weight:900; letter-spacing: -2px;}
+        .evtTab li {width:50%; position: relative;}
+        .evtTab li a {display:block; color:#868686; font-size:32px; padding:20px 30px; border:8px solid #868686; font-weight:900; letter-spacing: -2px;}
         .evtTab li a span{font-size: 18px; vertical-align: baseline;}
-        .evtTab li:first-child a {border-right:0}
-        .evtTab li:last-child a {border-left:0}
+        .evtTab li:first-child::before{
+            content: '';
+            width:8px;
+            height: 100%;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .evtTab li:last-child::before{
+            content: '';
+            width:8px;
+            height: 100%;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: -8px;
+        }
+        .evtTab li:first-child a{border-right: 0;}
+        .evtTab li:last-child a{border-left:0}
         .evtTab li a:hover,
-        .evtTab li a.active {color:#000; border:8px solid #000; font-size: 38px; padding:30px; }
+        .evtTab li a.active {color:#000; border:8px solid #000;  font-size: 38px; padding:30px; }
+        .evtTab li:first-child a:hover,
+        .evtTab li:first-child a.active{border-right:0;}
+        .evtTab li:last-child a:hover,
+        .evtTab li:last-child a.active{border-left:0;}
         .evtTab li a:hover span,
         .evtTab li a.active span{font-size: 20px;}
         .evtTab:after {content:''; display:block; clear:both}

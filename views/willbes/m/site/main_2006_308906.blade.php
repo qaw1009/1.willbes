@@ -63,7 +63,7 @@
     <!-- End Container -->
     <style type="text/css">
         .job308906 {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
-        .job308906 img {width:100%; max-width:720px;}
+        .job308906 img {width:100%; max-width:680px;}
 
         /* 유튜브영상 */
         .job308906 .video-container-box {padding:20px}
@@ -75,8 +75,8 @@
         .job308906 .btnBox{display: flex; justify-content: space-between; align-items: center; padding: 5% 20px;}
         .job308906 .btnBox div{ width:48%; position: relative;}
         .job308906 .btnBox div a{width:68%; height:30%; position: absolute; top:59%; left:15%; }
-
-        .job308906 .csTel {margin-top:80px; font-size:16px; text-align:center; vertical-align:middle;}
+        
+        .job308906 .csTel {margin-top:30px; font-size:15px; text-align:center; vertical-align:middle;}
         .job308906 .csTel span {font-size:22px; vertical-align:middle; margin-left:10px; color:#007ffc}
 
         /*타이머*/

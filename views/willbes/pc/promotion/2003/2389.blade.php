@@ -15,15 +15,11 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-
-
         /************************************************************/
 
         .evt00 {background:#f4f1f3}
-
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/10/2389_top_bg.jpg) no-repeat center 100px; padding-top:100px}
-
-        .evt02 {background:#e9e9e9}   
+        .evt02 {background:#e9e9e9}
         
         /*타이머*/
         .time {width:1120px; margin:0 auto; text-align:center; padding:20px 0}
@@ -44,11 +40,9 @@
         .jbMenu {display:none}
         .jbMenu {position:absolute; top:0px; width:100%; background:#f4f1f3; display:block; z-index:100}
         .jbFixed {position:fixed; top: 0px}
-   
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-
         <div class="evtCtnsBox evt00 jbMenu cf" data-aos="fade-down">
             <div class="time NSK-Black" id="newTopDday">
                 <ul>
@@ -90,21 +84,23 @@
         <div class="evtCtnsBox evt02" data-aos="fade-up">
             <div class="wrap">
                 <img  src="https://static.willbes.net/public/images/promotion/2021/10/2389_02.jpg" alt="할인 쿠폰"/>
-                <a href="#none" title="3만원 할인" target="_blank" style="position: absolute; left: 56.607%; top: 40.481%; width: 18.393%; height: 3.574%; z-index: 2;"></a>
-                <a href="#none" title="15만원 할인" target="_blank" style="position: absolute; left: 29.018%; width: 10.804%; top: 75.784%; height: 2.845%; z-index: 2;"></a>
-                <a href="#none" title="20만원 할인" target="_blank" style="position: absolute; left: 60.268%; width: 10.804%; top: 75.784%; height: 2.845%; z-index: 2;"></a>
-                <a href="#none" title="5만원 할인" target="_blank" style="position: absolute; left: 29.018%; width: 10.804%; top: 93.654%; height: 2.845%; z-index: 2;"></a>
-                <a href="#none" title="10만원 할인" target="_blank" style="position: absolute; left: 60.268%; width: 10.804%; top: 93.654%; height: 2.845%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="javascript:giveCheck('{{empty($arr_promotion_params['arr_give_idx']) === false && empty(explode(',',$arr_promotion_params['arr_give_idx'])[0]) === false ? explode(',',$arr_promotion_params['arr_give_idx'])[0] : ''}}'); return false;"; title="3만원 할인" style="position: absolute; left: 56.607%; top: 40.481%; width: 18.393%; height: 3.574%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="javascript:giveCheck('{{empty($arr_promotion_params['arr_give_idx']) === false && empty(explode(',',$arr_promotion_params['arr_give_idx'])[1]) === false ? explode(',',$arr_promotion_params['arr_give_idx'])[1] : ''}}'); return false;"; title="15만원 할인" style="position: absolute; left: 29.018%; width: 10.804%; top: 75.784%; height: 2.845%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="javascript:giveCheck('{{empty($arr_promotion_params['arr_give_idx']) === false && empty(explode(',',$arr_promotion_params['arr_give_idx'])[2]) === false ? explode(',',$arr_promotion_params['arr_give_idx'])[2] : ''}}'); return false;"; title="20만원 할인" style="position: absolute; left: 60.268%; width: 10.804%; top: 75.784%; height: 2.845%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="javascript:giveCheck('{{empty($arr_promotion_params['arr_give_idx']) === false && empty(explode(',',$arr_promotion_params['arr_give_idx'])[3]) === false ? explode(',',$arr_promotion_params['arr_give_idx'])[3] : ''}}'); return false;"; title="5만원 할인" style="position: absolute; left: 29.018%; width: 10.804%; top: 93.654%; height: 2.845%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="javascript:giveCheck('{{empty($arr_promotion_params['arr_give_idx']) === false && empty(explode(',',$arr_promotion_params['arr_give_idx'])[4]) === false ? explode(',',$arr_promotion_params['arr_give_idx'])[4] : ''}}'); return false;"; title="10만원 할인" style="position: absolute; left: 60.268%; width: 10.804%; top: 93.654%; height: 2.845%; z-index: 2;"></a>
             </div>
             <div class="wrap">
                 <img  src="https://static.willbes.net/public/images/promotion/2021/10/2389_03.jpg" alt="기본 혜택"/>
                 <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2003" title="회원가입" target="_blank" style="position: absolute; left: 8.304%; width: 83.571%; top: 75.313%; height: 8.521%; z-index: 2;"></a>
             </div>
         </div>                   
-
     </div>
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
     <!-- End Container -->
-
     
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -132,6 +128,16 @@
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
+
+        {{--쿠폰발급--}}
+        var $regi_form = $('#regi_form');
+        function giveCheck(give_idx) {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}'+'&give_idx='+give_idx;
+            ajaxSubmit($regi_form, _check_url, function (ret) {
+                if (ret.ret_cd) {alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');}
+            }, showValidateError, null, false, 'alert');
+        }
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

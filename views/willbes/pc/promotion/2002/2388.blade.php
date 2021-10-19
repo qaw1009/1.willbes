@@ -39,7 +39,7 @@
 
         .evt02 {background:#efefef}
 
-        .evt03 {background:#fff}
+        .evt03 {background:#fff;padding-bottom:100px;}
 
         .evt04 {background:#d7d7d7}
         
@@ -193,12 +193,11 @@
 
             <div class="evtCtnsBox evt03" id="evt_03">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2388_03.jpg" title="무엇이든 물어보세요">
-            </div>
-
-            {{--기본댓글--}}
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_normal_partial')
-            @endif 
+                {{--기본댓글--}}
+                @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                    @include('willbes.pc.promotion.show_comment_list_normal_partial')
+                @endif 
+            </div>            
 
             <div class="evtCtnsBox evt04">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2388_04.jpg" title="누구보다 더 빨리 더 먼저">                

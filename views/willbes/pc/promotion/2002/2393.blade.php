@@ -42,32 +42,54 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
         </div>
 
-        <div class="evtCtnsBox evtTop" data-aos="fade-left">
+        <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_top.jpg" alt="신규가입 이벤트" />
         </div>
 
-        <div class="evtCtnsBox evt01">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_01.jpg" alt="2022년 경찰시험 개편" data-aos="fade-right"/>
+        <div class="evtCtnsBox evt01" data-aos="fade-up">  
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_01.jpg" alt="2022년 경찰시험 개편"/>
         </div>
 
-        <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_02.jpg" alt="혜택" data-aos="fade-left"/>
-        </div>
-
-        <div class="evtCtnsBox evt03">            
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_02.jpg" alt="혜택" />
             <div class="slide_con">
-                <div id="slidesImg3">
-                    <div><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_03_01.png" alt="1" /></div>
-                    <div><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_03_02.png" alt="2" /></div>
-                    <div><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_03_03.png" alt="3" /></div>
-                    <div><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_03_04.png" alt="4" /></div>
+                <div id="slidesImg">
+                    <div><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_02_01.png" alt="1" /></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_02_02.png" alt="2" /></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_02_03.png" alt="3" /></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_02_04.png" alt="4" /></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_02_05.png" alt="5" /></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_02_06.png" alt="6" /></div>
                 </div>
-                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_arrowL.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_arrowR.png"></a></p>
+                <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_arrL.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_arrR.png"></a></p>
             </div>
+        </div>
+
+        <div class="evtCtnsBox evt03" data-aos="fade-up">
+            <div>
+                <a href="#tab01">10개월<br>슈퍼PASS</a>
+                <a href="#tab02">4개월<br>슈퍼PASS</a>
+                <a href="#tab03">심화기술<br>패키지</a>
+                <a href="#tab04">기본이론<br>종합반</a>
+            </div>      
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_03.jpg" alt="회원가입" />
-                <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" title="회원가입" style="position: absolute; left: 29.2%; top: 20.83%; width: 41.61%; height: 5.64%; z-index: 2;"></a>
+                <div id="tab01">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_03_01.jpg" alt="10개월 슈퍼패스" />
+                    <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" title="" style="position: absolute; left: 29.2%; top: 20.83%; width: 41.61%; height: 5.64%; z-index: 2;"></a>
+                </div>
+                <div id="tab02">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_03_02.jpg" alt="4개월 슈퍼패스" />
+                    <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" title="" style="position: absolute; left: 29.2%; top: 20.83%; width: 41.61%; height: 5.64%; z-index: 2;"></a>
+                </div>
+                <div id="tab03">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_03_03.jpg" alt="심화기술 패키지" />
+                    <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" title="" style="position: absolute; left: 29.2%; top: 20.83%; width: 41.61%; height: 5.64%; z-index: 2;"></a>
+                </div>
+                <div id="tab04">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_03_04.jpg" alt="기본이론 종합반" />
+                    <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" title="" style="position: absolute; left: 29.2%; top: 20.83%; width: 41.61%; height: 5.64%; z-index: 2;"></a>
+                </div>
             </div>
         </div>
 
@@ -84,7 +106,7 @@
 
         /* 슬라이드 */
         $(document).ready(function() {
-            var slidesImg3 = $("#slidesImg3").bxSlider({
+            var slidesImg = $("#slidesImg").bxSlider({
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                 auto:true,
                 speed:350,
@@ -99,12 +121,12 @@
                 pager:false,
             });
 
-            $("#imgBannerLeft3").click(function (){
-                slidesImg3.goToPrevSlide();
+            $("#imgBannerLeft").click(function (){
+                slidesImg.goToPrevSlide();
             });
 
-            $("#imgBannerRight3").click(function (){
-                slidesImg3.goToNextSlide();
+            $("#imgBannerRight").click(function (){
+                slidesImg.goToNextSlide();
             });
         });       
       

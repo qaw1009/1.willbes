@@ -44,6 +44,13 @@
         .evt03 .tabs a:hover,
         .evt03 .tabs a.active {color:#fff; background:#ff4b4a}
 
+        .evtInfo {padding:80px 0; background:#e9e9e9; color:#555; font-size:14px}
+		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.5}
+		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
+		.evtInfoBox .infoTit {font-size:20px; margin-bottom:20px}
+		.evtInfoBox ul {margin-bottom:30px}
+        .evtInfoBox li {list-style-type:decimal; margin-left:20px; margin-bottom:5px}
+
     </style>
     
     <div class="evtContent NSK" id="evtContainer">     
@@ -114,6 +121,21 @@
                     <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_03_04.jpg" alt="기본이론 종합반" />
                     <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/2364" target="_blank" title="" style="position: absolute; left: 29.38%; top: 75.71%; width: 41.96%; height: 8%; z-index: 2;"></a>
                 </div>
+            </div>
+        </div>
+
+        <div class="evtCtnsBox evtInfo">
+            <div class="evtInfoBox">
+                <h4 class="NSK-Black">유의사항</h4>
+                <ul>
+                    <li>본 이벤트는 오프라인(노량진 본원) 전용입니다.</li>
+                    <li>당첨 경품은 뽑기 추첨 후 즉시 지급됩니다.</li>
+                    <li>뽑기 추첨권은 최대 3회 지급됩니다.(방문 상담 후 등록 시 1회 제공)</li>
+                    <li>수강생이 친구를 추천할 경우 추천한 수강생도 1회 뽑기 추첨권을 드립니다.</li>
+                    <li>10개월 패스 등록 시 1회 추첨권이 추가 지급됩니다.</li>
+                    <li>수강증 발권 시 추첨 대상이 됩니다.</li>
+                    <li>경품 소진 시까지 진행합니다.</li>              
+                </ul>                      
             </div>
         </div>
 

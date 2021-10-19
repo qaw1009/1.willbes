@@ -82,6 +82,27 @@ trait InitController
     }
 
     /**
+     * form input password verify callback method
+     * @param string $val
+     * @param string $field
+     * @return bool
+     */
+    public function validatePasswdVerify($val = '', $field = '')
+    {
+        $id = empty($field) === false ? $this->_reqP($field) : null;    // 아이디
+
+        // 비밀번호가 있을 경우만 체크
+        if (empty($val) === false) {
+            $is_verify = passwd_verify($val, $id);
+            if ($is_verify !== true) {
+                $this->form_validation->set_message(__FUNCTION__, $is_verify);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
      * request 간소화 함수 (get / post 둘다 사용)
      * @param $index
      * @param bool $xss_clean

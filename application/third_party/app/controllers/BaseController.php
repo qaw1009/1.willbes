@@ -70,13 +70,14 @@ abstract class BaseController extends \CI_Controller
      * return ajax error result
      * @param $err_msg
      * @param int $err_code
+     * @param array $return_data
      * @return \CI_Output
      */
-    public function json_error($err_msg, $err_code = _HTTP_ERROR)
+    public function json_error($err_msg, $err_code = _HTTP_ERROR, $return_data = [])
     {
         return $this->json_result(false, '', [
             'ret_cd' => false, 'ret_msg' => $err_msg, 'ret_status' => $err_code
-        ]);
+        ], $return_data);
     }
 
     /**

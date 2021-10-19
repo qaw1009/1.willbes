@@ -463,6 +463,44 @@ if (!function_exists('method_field')) {
     }
 }
 
+if (!function_exists('passwd_verify')) {
+    /**
+     * 비밀번호 유효성 체크
+     * @param string $passwd [비밀번호]
+     * @param null|string $id [아이디]
+     * @return bool|string
+     */
+    function passwd_verify($passwd, $id = null)
+    {
+        $min_length = 8;
+        $eng_exp = '/[a-zA-Z]/i';
+        $num_exp = '/[0-9]/i';
+        $spc_exp = '/[#&+\-%@=\/\\\:;,.^`~_|!?*$<>()\[\]{}]/i';     // 특수문자
+        $eq_exp = '/(\w)\1{2}/i';   // 동일문자 3회 이상 연속 사용
+
+        if (strlen($passwd) < $min_length) {
+            return '비밀번호를 8자리 이상으로 입력해 주십시오.';
+        }
+        if (empty($id) === false && preg_match('/' . $id . '/i', $passwd) > 0) {
+            return '비밀번호는 아이디를 포함할 수 없습니다.';
+        }
+        if (preg_match($eng_exp, $passwd) < 1 || preg_match($num_exp, $passwd) < 1 || preg_match($spc_exp, $passwd) < 1) {
+            return '비밀번호는 영문자, 숫자, 특수문자를 혼용하여 입력해 주십시오.';
+        }
+        if (preg_match($eq_exp, $passwd) > 0) {
+            return '비밀번호는 동일 문자를 3회 이상 사용할 수 없습니다.';
+        }
+        if (straights_with($passwd, 3) === true) {
+            return '비밀번호는 연속된 문자를 3회 이상 사용할 수 없습니다.';
+        }
+        if (straights_with(strrev($passwd), 3) === true) {
+            return '비밀번호는 역순으로 연속된 문자를 3회 이상 사용할 수 없습니다.';
+        }
+
+        return true;
+    }
+}
+
 if (!function_exists('remove_utf8_bom')) {
     /**
      * 텍스트(txt) 파일 내용의 utf8-bom 값이 있을 경우 삭제 후 리턴
@@ -702,6 +740,39 @@ if (!function_exists('str_replace_array')) {
         }
 
         return $subject;
+    }
+}
+
+if (!function_exists('straights_with')) {
+    /**
+     * 문자열(영문/숫자)이 체크길이만큼 연속된 문자열인지 여부 확인
+     * @param string $str [체크문자열(영문/숫자)]
+     * @param int $chk_length [체크길이]
+     * @return bool
+     */
+    function straights_with($str, $chk_length)
+    {
+        $str = strtolower($str);
+        $loop_cnt = strlen($str) - $chk_length + 1;
+
+        for ($i = 0; $i < $loop_cnt; $i++) {
+            $chk_cnt = 0;
+            $o = 0;
+
+            for ($j = 0; $j < $chk_length; $j++) {
+                $ac = ord(substr($str, $i + $j, 1));
+                if ($j > 0 && $ac - $o == 1) {
+                    $chk_cnt++;
+                }
+                $o = $ac;
+            }
+
+            if ($chk_cnt - $chk_length + 1 == 0) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
 

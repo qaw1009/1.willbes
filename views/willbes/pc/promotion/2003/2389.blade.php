@@ -63,7 +63,7 @@
                     <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li>
                         <span class="NSK">스타터팩 + 웰컴팩 100% 제공!</span>
-                        <a href="#none" target="_blank">지금 가입하기 ></a>
+                        <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2003" target="_blank">지금 가입하기 ></a>
                     </li>          
                 </ul>
             </div> 

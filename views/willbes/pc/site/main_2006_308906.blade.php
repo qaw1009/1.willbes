@@ -70,18 +70,17 @@
                 <img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03.jpg" title="왜 훈샘인가?"  data-aos="fade-left">
                 <div class="youtube">
                     <iframe src="https://www.youtube.com/embed/efr9iOZ57gM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <a href="https://job.willbes.net/lecture/show/cate/308906/pattern/only/prod-code/185036"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_01.jpg" title="훈쌤 전격입성"></a>
-                    <a href="https://job.willbes.net/lecture/show/cate/308906/pattern/only/prod-code/184363" class="f_right"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_02.jpg" title="훈쌤 전격입성"></a>
-                </div> 
-                
+                    <a href="https://job.willbes.net/lecture/index/cate/308906/pattern/only?search_order=regist&subject_idx=2171"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_01.jpg" title="훈쌤 전격입성"></a>
+                    <a href="https://job.willbes.net/lecture/index/cate/308906/pattern/only?search_order=regist&subject_idx=2172" class="f_right"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_02.jpg" title="훈쌤 전격입성"></a>
+                    <a href="https://job.willbes.net/Package/index/cate/308906/pack/648001"><img class="mt30" src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_03.jpg" title="훈쌤 전격입성"></a>
+                </div>     
+
                 <div class="csTel NSK">
                     빅테이터분석기사 자격증 문의 <span class="NSK-Black">1544-1661</span>
                 </div>
             </div>  
-            
-        </div>
 
-        
+        </div>        
         
     </div>
     <!-- End Container -->

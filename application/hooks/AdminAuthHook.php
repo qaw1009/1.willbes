@@ -14,10 +14,10 @@ class AdminAuthHook
         '/lcms/auth/regist/create',
         '/lcms/auth/regist/idCheck',
         '/lcms/auth/regist/store',
+        '/lcms/common/passwdVerify/check',
         '/crm/manageCs/noAuthList',
         '/crm/manageCs/noAuthListAjax',
         '/crm/manageCs/updateReadCnt',
-
         '/common/predictAutoUpdate/index',
         '/predict/gradeprocessing/scoreMakeStep1Ajax',
         '/predict/gradeprocessing/scoreMakeStep2Ajax',

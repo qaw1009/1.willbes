@@ -40,13 +40,19 @@
 
             <div class="btnBox">
                 <div>
-                    <img src="{{ img_static_url('promotion/main/2006/308906m_btn01.jpg') }}" alt="빅데이터 분석기사 필기합격 패키지 6개월">
-                    <a href="{{ front_url('/lecture/show/cate/308906/pattern/only/prod-code/185036') }}" title="패키지 6개월 신청하기"></a>
+                    <img src="{{ img_static_url('promotion/main/2006/308906m_btn01.jpg') }}" alt="빅데이터 분석기사 필기합격 패키지">
+                    <a href="{{ front_url('/lecture/index/cate/308906/pattern/only?search_order=regist&subject_idx=2171') }}" title="패키지 신청하기"></a>
                 </div>
                 <div>
-                    <img src="{{ img_static_url('promotion/main/2006/308906m_btn02.jpg') }}" alt="빅데이터 분석기사 필기 합격 패키지 3개월">
-                    <a href="{{ front_url('/lecture/show/cate/308906/pattern/only/prod-code/184363') }}" title="패키지 3개월 신청하기"></a>
-                </div>
+                    <img src="{{ img_static_url('promotion/main/2006/308906m_btn02.jpg') }}" alt="빅데이터 분석기사 필기 합격 패키지">
+                    <a href="{{ front_url('/lecture/index/cate/308906/pattern/only?search_order=regist&subject_idx=2172') }}" title="패키지 신청하기"></a>
+                </div>                
+            </div>
+
+            <div class="Section article5">
+                <a href="{{ front_url('/Package/index/cate/308906/pack/648001') }}" title="풀패키지">
+                    <img src="{{ img_static_url('promotion/main/2006/308906m_btn03.jpg') }}" alt="풀패키지 신청하기">
+                </a>
             </div>
 
             <div class="csTel NSK">

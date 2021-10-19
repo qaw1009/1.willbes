@@ -13,20 +13,22 @@
             background:#fff;
         }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
-        .skybanner{position: fixed; top:250px; right:10px; width:190px; z-index:10;}
+        .sky{position: fixed; top:250px; right:10px; width:151px; z-index:10;}
 
 		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/04/2180_top_bg.jpg) no-repeat center top; height:1124px; position:relative}
         .evtTop span { position:absolute; top:458px; left:50%; margin-left:-483px; animation:iptimg1 0.5s ease-in;-webkit-animation:iptimg1 0.5s ease-in;}
         @@keyframes iptimg1{
-        from{margin-left:-1200px; opacity: 0;}
-        to{margin-left:-483px; opacity: 1;}
+            from{margin-left:-1200px; opacity: 0;}
+            to{margin-left:-483px; opacity: 1;}
         }
         @@-webkit-keyframes iptimg1{
-        from{margin-left:-1200px; opacity: 0;}
-        to{margin-left:-483px; opacity: 1;}
+            from{margin-left:-1200px; opacity: 0;}
+            to{margin-left:-483px; opacity: 1;}
         }
 
         .evt01 {padding-bottom:150px}
@@ -71,13 +73,13 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
-        {{--
-        <div class="skybanner">
-            <a href="#lecbuy">
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_sky.png" title="" />    
+
+        <div class="sky" id="QuickMenu">
+            <a href="#event">
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/2180_sky.jpg" title="" />    
             </a>        
         </div>
-        --}}
+
 
         <div class="evtCtnsBox evtTop">
 			<span><img src="https://static.willbes.net/public/images/promotion/2021/04/2180_top_txt.png" title="한덕현T-PASS" /></span>			
@@ -148,11 +150,12 @@
         </div>   
 
         <div class="evtCtnsBox evt03" id="event">
-            <div class="p_re">
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/2180_03.jpg" title="수험생들이 선택하고 인정한 영어정복 노하우!" />
-                <a href="javascript:go_PassLecture('180928');" title="" style="position: absolute;left: 25.97%;top: 83.85%;width: 13.93%;height: 7.43%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('185620');" title="" style="position: absolute;left: 49.77%;top: 87.45%;width: 12.73%;height: 5.43%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('185702');" title="" style="position: absolute;left: 64.77%;top: 87.45%;width: 12.73%;height: 5.43%;z-index: 2;"></a>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/2180_03.jpg" title="수험생들이 선택하고 인정한 영어정복 노하우!" />
+                <a href="javascript:go_PassLecture('180928');" title="한덕현 영어" style="position: absolute; left:61.52%; top:56.94%; width:12.86%; height:7.51%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('185620');" title="새벽모의고사 29만원" style="position: absolute; left:12.23%; top:90.59%; width:11.25%; height:5.04%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('185702');" title="새벽모의고사 34만원" style="position: absolute; left:27.23%; top:90.59%; width:11.25%; height:5.04%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('186803');" title="실전" style="position: absolute; left:61.52%; top:86.50%; width:12.86%; height:7.51%; z-index: 2;"></a>                
             </div>
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
@@ -168,7 +171,8 @@
                     <li>제공과정<br>
                         - 전 과정 T-PASS : 2021~2022 한덕현 영어 9급 지방직 대비 전 과정 (반반/똑똑영어 다시보기 + 새벽모의고사 포함)<br>
                         - [국가직 대비] 새벽모의고사 T-PASS : 2022 대비로 진행된 한덕현 영어 새벽실전모의고사 (2021.7월~2022.3월)<br>
-                        - [지방직 대비] 새벽모의고사 T-PASS : 2022 대비로 진행된 한덕현 영어 새벽실전모의고사 (2021.7월~2022.6월) 
+                        - [지방직 대비] 새벽모의고사 T-PASS : 2022 대비로 진행된 한덕현 영어 새벽실전모의고사 (2021.7월~2022.6월)<br>
+                        - 실전 T-PASS : 2022 대비로 진행된 한덕현 실전464, 스나이퍼32, 새벽모의고사 (2021.7월~2022.6월) 전 과정 제공
                     </li>
                     <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                     <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>
@@ -189,14 +193,7 @@
                     <li>본 T-PASS는 교재를 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 [교재구매] 메뉴에서 구입 가능합니다.</li>
                     <li>윌비스 LIVE모드는 학원실강에서 진행되는 콘텐츠로, 본 상품에는 LIVE모드 별도 제공되지 않습니다.</li>
                 </ul>
-                <div class="infoTit"><strong>이벤트 경품 관련</strong></div>
-                <ul>
-                    <li>본 이벤트의 경품 수량은 [한미양행 황제황진환 침향 30정x3.75g] 총 30set이며, 선착순 수량 소진 시 별도의 마감 안내 없이 이벤트가 종료됩니다.</li>
-                    <li>제품 결제 시 사은품 관련 배송정보에 입력해주신 주소/전화번호로 배송처리 되며, 정확하지 않은 정보를 기입하여 오배송/누락된 경우에는 별도의 추가 발송 처리는 불가합니다.</li>
-                    <li>본 경품은 매주 목요일 24:00까지 구매 후 배송정보를 입력한 회원에 대하여 금요일 오후 발송처리될 예정입니다.
-                    (택배 발송 후 수령까지 영업일 기준 2~3일 소요 예정)</li>
-                    <li>T-PASS 환불 진행 시 본 경품도 회수 처리 되며, 제품의 가치가 손상된 경우에는 [결제금액]에서 소비자가 298,000원 별도 차감 후 환불 진행됩니다.  (환불 시 정산방법은 하단 [결제/환불] 내용 참조)</li>
-                </ul>
+
                 <div class="infoTit"><strong>결제/환불</strong></div>
                 <ul>
                     <li>결제 후 7일 이내 전액 환불 가능합니다. 단, 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불이 가능합니다.</li>

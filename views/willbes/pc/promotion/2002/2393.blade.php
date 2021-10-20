@@ -97,7 +97,7 @@
             <div class="tabs">
                 <a href="#tab01">10개월<br>슈퍼PASS</a>
                 <a href="#tab02">4개월<br>슈퍼PASS</a>
-                <a href="#tab03">심화기술<br>패키지</a>
+                <a href="#tab03">심화기출<br>패키지</a>
                 <a href="#tab04">기본이론<br>종합반</a>
             </div>      
             <div class="wrap">

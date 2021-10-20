@@ -4,25 +4,25 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
-        .evtContent { 
-            position:relative;            
+        .evtContent {
             width:100% !important;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }	
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
+
         /************************************************************/  
+
+        .evt00 {background:#0a0a0a}
+
         .wb_top {background:#232325 url(https://static.willbes.net/public/images/promotion/2020/03/1139_top_bg.jpg) no-repeat center top;}
         .wb_top span.sp01 { position:absolute; left:50%; top:30px; margin-left:-560px; animation: sp01 1.5s linear infinite;}
         @@keyframes sp01{
 		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
-        }
+        }       
 
         .wb_cts01 {background:#2b2b2b url(https://static.willbes.net/public/images/promotion/2020/03/1139_01_bg.jpg) no-repeat center top;}
 
@@ -32,31 +32,35 @@
 
     </style>
 
-    <div class="evtContent" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
 
-        <div class="skybanner">
+        <div class="skybanner" id="QuickMenu">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1139_sky.png" alt="스카이베너 빠르게가기" usemap="#Map1139" border="0" >
             <map name="Map1139" id="Map1139">
                 <area shape="rect" coords="12,4,116,72" href="#go_top" />
                 <area shape="rect" coords="10,81,118,145" href="#go_01" />
                 <area shape="rect" coords="11,154,118,218" href="#go_02" />
                 <area shape="rect" coords="10,224,118,289" href="#go_03" />
-              <area shape="rect" coords="12,290,115,375" href="https://police.willbes.net/promotion/index/cate/3001/code/2281" target="_blank" alt="신광은경찰패스" />
+              <area shape="rect" coords="12,290,115,375" href="https://police.willbes.net/promotion/index/cate/3001/code/2360" target="_blank" alt="신광은경찰패스" />
             </map>
         </div>
 
-        <div class="evtCtnsBox wb_top" id="go_top">
+        <div class="evtCtnsBox evt00" data-aos="fade-down">
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
+        </div>
+
+        <div class="evtCtnsBox wb_top" id="go_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1139_top.jpg" alt="합격환승 이벤트"/>
             <span class="sp01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1139_top_img.png">                    
             </span>
         </div>       
 
-        <div class="evtCtnsBox wb_cts01" id="go_01">
+        <div class="evtCtnsBox wb_cts01" id="go_01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1139_01.jpg" alt="합격"/>
         </div>
 
-        <div class="evtCtnsBox wb_cts02" >
+        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1139_02.jpg" alt="타학원 수강이력 인증" usemap="#Map1139a" border="0" id="go_02"/>
             <map name="Map1139a" id="Map1139a">
                 <area shape="rect" coords="337,923,766,1022" href="javascript:certOpen();" onfocus='this.blur()' alt="타학원 수강 인증">
@@ -66,7 +70,14 @@
               
     </div>
     <!-- End Container -->
-    <script type="text/javascript">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        $( document ).ready( function() {
+            AOS.init();
+        } ); 
+
         function certOpen(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
             @if(empty($arr_promotion_params) === false)

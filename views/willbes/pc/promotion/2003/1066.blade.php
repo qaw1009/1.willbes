@@ -19,7 +19,8 @@
         
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/10/1066_top_bg.jpg) center top no-repeat}
-        .wb_cts01 {background:#1e1c31;}       
+        .wb_cts01 {background:#1e1c31;}      
+        
 
         .wb_cts02 {background:#00ced1}
 
@@ -43,6 +44,8 @@
         .wb_cts05 table td span {vertical-align:top; color:#e55425;}
 
         .wb_cts07 {background:#f1f1f1;}
+        .wb_cts07 .wrap span {position: absolute; top:549px; left:50%; width:302px; margin-left:-427px} 
+        .wb_cts07 .wrap span img {width:100%}
 
         .skybanner {position:fixed;top:100px;right:10px;width:259px; text-align:center; z-index:11;}   
         .skybanner a {display:block;margin-bottom:10px;}   
@@ -85,7 +88,8 @@
 
         <div class="evtCtnsBox wb_cts07" id="evt07">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_07.jpg" alt="얼리버드 접수하고 교재받기" />
+                <span><img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_01.gif"></span>
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_07.gif" alt="얼리버드 접수하고 교재받기" />
                 <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture" target="_blank" title="접수하기" style="position: absolute; left: 19.55%; top:82.81%; width:60.36%; height:8.52%; z-index: 2;"></a>    
             </div>
         </div>
@@ -108,8 +112,8 @@
                     <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>             
                 </ul>
             </div>
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_01.jpg" title="고득점 실전 패키지" />  
+            <div class="wrap">                
+                <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_01.jpg" title="고득점 실전 패키지" />
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" title="수강신청" style="position: absolute; left: 57.05%; top: 76.82%; width: 27.5%; height: 7.64%; z-index: 2;"></a> 
             </div>    
         </div>          

@@ -90,8 +90,6 @@
             @endif  
         </div>
 
-
-
     </div>
     <!-- End evtContainer -->
 

@@ -25,7 +25,7 @@
 
         .evtTop {background:url("https://static.willbes.net/public/images/promotion/2021/10/2390_top_bg.jpg") no-repeat center top;} 
 
-        .certification {background:#00a968}
+        .certification {background:url("https://static.willbes.net/public/images/promotion/2021/10/2390_certification_bg.jpg") no-repeat center top;}
 
         .evt01 {padding-bottom:100px;}
         .evt01 .passLecBuy {position:relative; width:1120px; margin:0 auto;}

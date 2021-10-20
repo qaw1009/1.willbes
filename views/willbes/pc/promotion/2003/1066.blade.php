@@ -12,11 +12,13 @@
             position:relative;
         }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
-        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/05/1066_top_bg.jpg) center top no-repeat}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/10/1066_top_bg.jpg) center top no-repeat}
         .wb_cts01 {background:#1e1c31;}       
 
         .wb_cts02 {background:#00ced1}
@@ -38,7 +40,9 @@
         .wb_cts05 table th strong {font-size:20px}
         .wb_cts05 table td a {display:block; padding:5px}
         .wb_cts05 table td a:hover {background:#ffede8}
-        .wb_cts05 table td span {vertical-align:top; color:#e55425; }
+        .wb_cts05 table td span {vertical-align:top; color:#e55425;}
+
+        .wb_cts07 {background:#f1f1f1;}
 
         .skybanner {position:fixed;top:100px;right:10px;width:259px; text-align:center; z-index:11;}   
         .skybanner a {display:block;margin-bottom:10px;}   
@@ -53,31 +57,38 @@
         .time .time_txt {color:#000; letter-spacing:-1px}
         .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
         @@keyframes upDown{
-        from{color:#d63e4d}
-        50%{color:#ff6600}
-        to{color:#d63e4d}
+            from{color:#d63e4d}
+            50%{color:#ff6600}
+            to{color:#d63e4d}
         }
         @@-webkit-keyframes upDown{
-        from{color:#d63e4d}
-        50%{color:#ff6600}
-        to{color:#d63e4d}
+            from{color:#d63e4d}
+            50%{color:#ff6600}
+            to{color:#d63e4d}
         }   
     </style>
 
 
     <div class="evtContent NSK" id="evtContainer">      
-        <div class="skybanner">
+        <div class="skybanner" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1067" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_sky01.png" title="첨삭지도반" >
             </a>  
-            <a href="#live">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_sky2.png" title="라이브로 소통하기" >
+            <a href="#evt07">
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_sky02.png" title="라이브로 소통하기" >
             </a>                 
         </div>
       
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_top.jpg" title="제니스 영어 한덕현" />       
-        </div>        
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_top.jpg" title="제니스 영어 한덕현" />       
+        </div>  
+
+        <div class="evtCtnsBox wb_cts07" id="evt07">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_07.jpg" alt="얼리버드 접수하고 교재받기" />
+                <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture" target="_blank" title="접수하기" style="position: absolute; left: 19.55%; top:82.81%; width:60.36%; height:8.52%; z-index: 2;"></a>    
+            </div>
+        </div>
 
         <div class="evtCtnsBox wb_cts01" id="wb_cts01_01">
             <div class="time NGEB" id="newTopDday">
@@ -101,7 +112,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_01.jpg" title="고득점 실전 패키지" />  
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" title="수강신청" style="position: absolute; left: 57.05%; top: 76.82%; width: 27.5%; height: 7.64%; z-index: 2;"></a> 
             </div>    
-        </div>  
+        </div>          
 
         <div class="evtCtnsBox wb_cts02">
             <div class="wrap">
@@ -110,7 +121,8 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts02s" id="live">
+        {{--
+        <div class="evtCtnsBox wb_cts02s" id="live">            
             <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_03_01.jpg" alt="한덕현 라이브" />
             <div class="tImg">
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_01.gif" alt="" />
@@ -118,17 +130,19 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_03.gif" alt="" />
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_04.gif" alt="" />
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_05.gif" alt="" />
-            </div>
+            </div>            
             <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_03_02.jpg" alt="수강신청"/>
         </div>
+        --}}
 
+        {{--
         <div class="evtCtnsBox wb_cts03" >
             <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_04.jpg" alt="실시간 소통 댓글" /> 
-            {{-- 이모티콘 댓글 --}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
             @endif  
         </div>
+        --}}
 
         <div class="evtCtnsBox wb_cts04">
             <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_05.jpg" alt="영어는 어려운 과목이 아닙니다." />   
@@ -175,7 +189,7 @@
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157581" target="_blank">제니스 보카</a>
                         </td>
                         <td>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158678" target="_blank">스나이퍼32</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/186620" target="_blank"><span>NEW</span> 스나이퍼32</a>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/185509" target="_blank">새벽모의고사</a>
                         </td>
                     </tr>
@@ -186,11 +200,11 @@
                         <td>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183412" target="_blank">실전문법 464</a>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145823" target="_blank">실전영작 215</a>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/173562" target="_blank">기출리뷰</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/186619" target="_blank"><span>NEW</span> 기출리뷰</a>
                         </td>
                        <td>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/173563" target="_blank">독해기적</a>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157579" target="_blank">논리독해</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/186621" target="_blank"><span>NEW</span> 논리독해</a>
                         </td>
                         <td>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145826" target="_blank">열끝생활영어</a>

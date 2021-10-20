@@ -164,7 +164,7 @@
                 alert("이용안내에 동의하셔야 합니다.");
                 return;
             }
-            var url = '{{ site_url('/package/show/cate/3100/pack/648001/prod-code/') }}' + code;
+            var url = '{{ site_url('/package/show/cate/3100/pack/648002/prod-code/') }}' + code;
             location.href = url;
         }    
     </script>

@@ -30,15 +30,16 @@
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2021/08/2334m_top.jpg" alt="심화이론반" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/10/2349m_01.jpg" alt="신규가입 이벤트" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2021/08/2334m_01.jpg" alt="9월 스타트" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/10/2349m_02.jpg" alt="가입 혜택" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2021/08/2334m_02.jpg" alt="심화이론 포인트" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/10/2349m_03.jpg" alt="회원가입" >
+        <a href="https://www.willbes.net/member/join/?ismobile=1&sitecode=2001" target="_blank" title="회원가입" style="position:absolute; left:21.53%; top:57.91%; width:37.68%; height:2.75%; z-index: 2;"></a>
     </div> 
 
 </div>

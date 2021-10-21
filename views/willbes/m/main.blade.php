@@ -22,7 +22,7 @@
                         <li><a href="{{ front_app_url('/home/index/cate/309003', 'job') }}" target="_blank">감정평가사</a></li>  
                         <li><a href="{{ front_app_url('/home/index/cate/309004', 'job') }}" target="_blank">변리사</a></li>
                         <li><a href="{{ front_app_url('/home/index', 'job') }}" target="_blank">세무사</a></li>
-                        <li><a href="{{ front_app_url('/home/index/cate/3100', 'spo') }}" target="_blank">경찰간부·일반경찰</a></li>
+                        <li><a href="{{ front_app_url('/home/index/cate/3100', 'spo') }}" target="_blank">한림법학원 경찰간부</a></li>
                         <li><a href="{{ front_app_url('/home/index', 'job') }}" target="_blank">관세사</a></li>
                         <li><a href="{{ front_app_url('/home/index', 'work') }}" target="_blank">취업</a></li>
                         <li><a href="{{ front_app_url('/home/index', 'lang') }}" target="_blank">어학</a></li>              

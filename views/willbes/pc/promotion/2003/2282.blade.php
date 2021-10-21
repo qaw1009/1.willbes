@@ -7,7 +7,6 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -15,6 +14,7 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
@@ -55,7 +55,7 @@
         /************************************************************/
         .wb_cts01 {background:#54a783;padding-top:525px;}
 
-        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2021/07/2282_02_bg.jpg) no-repeat center top;position:relative;}
+        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2021/10/2282_02_bg.jpg) no-repeat center top;position:relative;}
         .wb_cts02 .curri {position:absolute;left:50%;}
         .wb_cts02 .curri a {display:block; font-size:20px; color:#333743; padding:0 25px; background:#55ff9e; border-radius:60px;height:60px;line-height:60px;}
         .wb_cts02 .curri a:hover {background:#d8ff00;}
@@ -83,6 +83,7 @@
         .wb_preview {background:#54a783;}
 
         .wb_cts09 {padding-bottom:100px;}
+        .wb_cts10 {background:url(https://static.willbes.net/public/images/promotion/2021/10/2282_10_bg.jpg) no-repeat center top;}
 
         .emo_area {padding-bottom:100px;}
     </style>
@@ -121,7 +122,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_02.jpg" alt="커리큘럼"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2282_02.jpg" alt="커리큘럼"/>
             <ul class="curri NSK-Black">
                 <li>
                     <a href="#curri01">
@@ -144,6 +145,13 @@
                     </a>
                 </li>
             </ul>    
+        </div>
+
+        <div class="evtCtnsBox wb_cts10">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/2282_10.jpg" alt="실전덕후단 패키지"/>
+                <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/186805" target="_blank" title="수강신청" style="position: absolute; left:34.73%; top:68.73%; width:30.54%; height:8.11%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_cts03" id="curri01">

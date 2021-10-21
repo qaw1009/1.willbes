@@ -90,10 +90,10 @@
                     {'data' : 'wRoleName'},
                     {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {
                         var is_use_text = '-'
-                        if (data == 'Y') {
+                        if (data === 'Y') {
                             is_use_text = '활동';
-                        } else if (data == 'N') {
-                            is_use_text = '<span class="red">비활동</span>'
+                        } else if (data === 'N') {
+                            is_use_text = '<span class="red no-line-height">비활동</span>'
                         }
                         return is_use_text;
                     }},

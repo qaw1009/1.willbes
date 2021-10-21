@@ -120,7 +120,7 @@
                         if (data === 'Y') {
                             is_use_text = '활동';
                         } else if (data === 'N') {
-                            is_use_text = '<span class="red">비활동</span>';
+                            is_use_text = '<span class="red no-line-height">비활동</span>';
                         }
                         return is_use_text;
                     }},

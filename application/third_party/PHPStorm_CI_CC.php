@@ -97,6 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CodeModel $codeModel                             Code Model Class
  * @property LoginModel $loginModel                             Login Model Class
  * @property LoginLogModel $loginLogModel                    Login Log Model Class
+ * @property LoginLockModel $loginLockModel                     Login Lock Model Class
  * @property RoleModel $roleModel                                Role Model Class
  * @property MenuModel $menuModel                            Menu Model Class
  * @property CpModel $cpModel                                    CP Model Class

@@ -18,8 +18,8 @@
 
         /************************************************************/
 
-        .sky {position:fixed;top:225px;right:15px;z-index:200;}
-        .sky a {display:block;margin-top:10px;}
+        .sky {position:fixed;top:225px; width:137px; right:5px;z-index:200;}
+        .sky a {display:block; margin-bottom:5px;}
 
         /*상단 애니메이션*/
         .wb_cts_top{position: relative;height: 899px;padding-top: 101px;background:url('https://static.willbes.net/public/images/promotion/2021/07/2282_after.jpg') 50% 0 repeat-x;}
@@ -89,20 +89,13 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        {{--
+
         <div class="sky" id="QuickMenu">            
-            <a href="#curri01">
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_sky01.png" alt="실전464">
-            </a>
-            <a href="#curri03">
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_sky03.png" alt="새벽실저모의고사">
-            </a>
-            
-            <a href="#curri_quiz">
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/2282_sky04.png" alt="덕후력퀴즈">
+            <a href="#event">
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/2282_sky.jpg" alt="실전464">
             </a>
         </div> 
-        --}}
+
 
         <div class="evtCtnsBox wb_cts_top">
             <div class="top_ani">
@@ -147,7 +140,7 @@
             </ul>    
         </div>
 
-        <div class="evtCtnsBox wb_cts10">
+        <div class="evtCtnsBox wb_cts10" id="event">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2282_10.jpg" alt="실전덕후단 패키지"/>
                 <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/186805" target="_blank" title="수강신청" style="position: absolute; left:34.73%; top:68.73%; width:30.54%; height:8.11%; z-index: 2;"></a>

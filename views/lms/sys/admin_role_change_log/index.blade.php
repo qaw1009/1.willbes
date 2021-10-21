@@ -107,7 +107,7 @@
                     }},
                     {'data' : 'RoleName'},
                     {'data' : 'IsActive', 'render' : function(data, type, row, meta) {
-                        return row.IsStatus === 'Y' ? '<span class="red">' + data + '</span>' : data;
+                        return row.IsStatus === 'Y' ? '<span class="red no-line-height">' + data + '</span>' : data;
                     }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},

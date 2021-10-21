@@ -90,6 +90,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property Pg $pg                                            Pg Driver Class
  * @property SendSms $sendsms                           Send Sms Class
  * @property SKBsignurl $skbsignurl                     SKB Sign Url Class
+ * * @property DbTableBackup $dbtablebackup             DB Table Backup Class
  ***************** MY MODELS ************************************************************************
  * @property SampleModel $sampleModel                       Sample Model Class
  ***************** WBS ******************************************************************************
@@ -225,6 +226,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property AuthGiveApplyModel $authGiveApplyModel                             Auth Apply Model Class
  * @property ProfessorHotClipModel $professorHotClipModel                Professor Hot Clip Model Class
  * @property EventQuizModel $eventQuizModel                                     event quiz Model Class
+ * @property DbBackupLogModel $dbBackupLogModel                             Db Backup Log Model Class
  ***************** MockTest ****************************************************************************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
  * @property BaseCodeModel $baseCodeModel                                        MockTest BaseCod Model Class

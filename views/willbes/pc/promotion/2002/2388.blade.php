@@ -15,7 +15,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .sky {position:fixed;  top:200px; right:25px; z-index:10;}
+        .sky {position:fixed; width:120px; top:200px; right:10px; z-index:10;}
         .sky a {display:block; margin-bottom:10px}
 
         .evt00 {background:#0A0A0A}
@@ -75,7 +75,7 @@
             <!--<input type="hidden" name="register_chk_col[]" value="EtcValue"/>
             <input type="hidden" name="register_chk_val[]" value=""/>-->
             
-            <div class="sky">               
+            <div class="sky" id="QuickMenu">               
                 <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/10/2388_sky1.png" title="초시생"></a>
                 <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/10/2388_sky2.png" title="유튜브"></a>
                 <a href="#evt_03"><img src="https://static.willbes.net/public/images/promotion/2021/10/2388_sky3.png" title="합격 설명회"></a>
@@ -85,11 +85,11 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/police.jpg" title="경찰학원 1위">
             </div>
 
-            <div class="evtCtnsBox evtTop">
+            <div class="evtCtnsBox evtTop" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2388_top.jpg" title="커리큘럼 설명회">
             </div>
 
-            <div class="evtCtnsBox evt01" id="evt_01">
+            <div class="evtCtnsBox evt01" id="evt_01" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2388_01.jpg" title="학원설명회 스케줄">
                 <div class="request" id="request">
                     <div class="requestL">
@@ -187,11 +187,11 @@
                 </div>
             </div>
 
-            <div class="evtCtnsBox evt02" id="evt_02">
+            <div class="evtCtnsBox evt02" id="evt_02" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2388_02.jpg" title="설명회 이벤트">                
             </div>
 
-            <div class="evtCtnsBox evt03" id="evt_03">
+            <div class="evtCtnsBox evt03" id="evt_03" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2388_03.jpg" title="무엇이든 물어보세요">
                 {{--기본댓글--}}
                 @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
@@ -199,21 +199,21 @@
                 @endif 
             </div>            
 
-            <div class="evtCtnsBox evt04">
+            <div class="evtCtnsBox evt04" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2388_04.jpg" title="누구보다 더 빨리 더 먼저">                
             </div>            
                         
-            <div class="evtCtnsBox">
+            <div class="evtCtnsBox" data-aos="fade-up">
                 <div class="loadmap">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.7927493090915!2d126.94179831559448!3d37.51280597980801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9fe8a0a1e2a5%3A0x3bc432e93a6e20c1!2zKOyjvCnsnIzruYTsiqQ!5e0!3m2!1sko!2skr!4v1603420278998!5m2!1sko!2skr" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
             </div>
 
-            <div class="evtCtnsBox evt05">
+            <div class="evtCtnsBox evt05" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2388_05.jpg" title="교통편">                
             </div>
 
-            <div class="evtCtnsBox evtInfo">
+            <div class="evtCtnsBox evtInfo" data-aos="fade-up">
                 <div class="evtInfoBox">
                     <h4 class="NSK-Black">유의사항 이용안내</h4>
                     <div class="infoTit"><strong>[설명회 유의사항]</strong></div>
@@ -241,7 +241,13 @@
 	</div>
     <!-- End Container -->
 
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        $( document ).ready( function() {
+            AOS.init();
+        } );
+
         function fn_submit() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 

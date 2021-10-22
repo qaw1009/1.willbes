@@ -161,11 +161,11 @@
             <div class="passLecBuy" data-aos="fade-left">            
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2390_01.jpg" alt="신광은경찰PASS">
                 <div class="price price01">                    
-                    <input type="radio" id="y_pkg1" name="y_pkg" value="186172" data-sale-price="960000"/>                
+                    <input type="radio" id="y_pkg1" name="y_pkg" value="186996" data-sale-price="960000"/>                
                     <label for="y_pkg1">22년 2차 PASS 신청</label>
                 </div>
                 <div class="price price02">                   
-                    <input type="radio" id="y_pkg2" name="y_pkg" value="186171" data-sale-price="670000"/>                 
+                    <input type="radio" id="y_pkg2" name="y_pkg" value="186995" data-sale-price="670000"/>                 
                     <label for="y_pkg2">22년 1차 PASS 신청</label>
                 </div>
             </div>
@@ -259,11 +259,11 @@
             <div class="passLecBuy" data-aos="fade-left">            
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2390_01.jpg"  alt="신광은경찰PASS">
                 <div class="price price01">                    
-                    <input type="radio" id="y_pkg1" name="y_pkg" value="186172" data-sale-price="960000"/>                
+                    <input type="radio" id="y_pkg1" name="y_pkg" value="186996" data-sale-price="960000"/>                
                     <label for="y_pkg1">22년 2차 PASS 신청</label>
                 </div>
                 <div class="price price02">                   
-                    <input type="radio" id="y_pkg2" name="y_pkg" value="186171" data-sale-price="670000"/>                 
+                    <input type="radio" id="y_pkg2" name="y_pkg" value="186995" data-sale-price="670000"/>                 
                     <label for="y_pkg2">22년 1차 PASS 신청</label>
                 </div>     
             </div>

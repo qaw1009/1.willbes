@@ -109,13 +109,13 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2390m_01_01.jpg" alt="" >
             <div class="price">
                 <ul>
-                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="186172" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청</label></li>                    
+                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="186996" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청</label></li>                    
                 </ul>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2390m_01_02.jpg" alt="" >
             <div class="price">
                 <ul>                    
-                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="186171" data-sale-price="670000" onClick=""/> 22년 1차 PASS 신청</label></li>
+                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="186995" data-sale-price="670000" onClick=""/> 22년 1차 PASS 신청</label></li>
                 </ul>
             </div>
             <div class="ext01txt">
@@ -202,13 +202,13 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2390m_01_01.jpg" alt="" >
             <div class="price">
                 <ul>
-                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="186172" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청</label></li>                    
+                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="186996" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청</label></li>                    
                 </ul>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2390m_01_02.jpg" alt="" >
             <div class="price">
                 <ul>                    
-                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="186171" data-sale-price="670000" onClick=""/> 22년 1차 PASS 신청</label></li>
+                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="186995" data-sale-price="670000" onClick=""/> 22년 1차 PASS 신청</label></li>
                 </ul>
             </div>
             <div class="ext01txt">
@@ -243,7 +243,7 @@
                     </dt>
                     <dd>
                         <ol>
-                            <li>본 상품은 구매일로부터 2022년 8월 31일 까지만  들을수 있는 기간제 PASS입니다.</li>
+                            <li>본 상품은 구매일로부터 22년 2차 필기시험일까지 수강 가능한 기간제 PASS입니다.</li>
                             <li>본 상품 강좌 구성은 다음과 같습니다.<br>
                                 - 2022년 대비 형사법, 경찰학, 헌법 전 강좌<br>
                                 - 2021년 대비 형사소송법, 경찰학개론, 형법 전 강좌                             

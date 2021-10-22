@@ -6,6 +6,7 @@
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
     .evtCtnsBox img {width:100%; max-width:720px;}
+    /*.evtCtnsBox a {border:1px solid #000}*/
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
@@ -39,7 +40,7 @@
 
     <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2021/10/2349m_03.jpg" alt="회원가입" >
-        <a href="https://www.willbes.net/member/join/?ismobile=1&sitecode=2001" target="_blank" title="회원가입" style="position:absolute; left:21.53%; top:57.91%; width:37.68%; height:2.75%; z-index: 2;"></a>
+        <a href="https://www.willbes.net/member/join/?ismobile=1&sitecode=2001" target="_blank" title="회원가입" style="position:absolute; left:21.67%; top:57.54%; width:58.33%; height:3.31%; z-index: 2;"></a>
     </div> 
 
 </div>

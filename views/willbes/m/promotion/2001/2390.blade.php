@@ -109,13 +109,13 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2390m_01_01.jpg" alt="" >
             <div class="price">
                 <ul>
-                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="186996" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청</label></li>                    
+                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="186995" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청</label></li>                    
                 </ul>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2390m_01_02.jpg" alt="" >
             <div class="price">
                 <ul>                    
-                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="186995" data-sale-price="670000" onClick=""/> 22년 1차 PASS 신청</label></li>
+                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="186996" data-sale-price="670000" onClick=""/> 22년 1차 PASS 신청</label></li>
                 </ul>
             </div>
             <div class="ext01txt">
@@ -202,13 +202,13 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2390m_01_01.jpg" alt="" >
             <div class="price">
                 <ul>
-                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="186996" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청</label></li>                    
+                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="186995" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청</label></li>                    
                 </ul>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2390m_01_02.jpg" alt="" >
             <div class="price">
                 <ul>                    
-                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="186995" data-sale-price="670000" onClick=""/> 22년 1차 PASS 신청</label></li>
+                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="186996" data-sale-price="670000" onClick=""/> 22년 1차 PASS 신청</label></li>
                 </ul>
             </div>
             <div class="ext01txt">

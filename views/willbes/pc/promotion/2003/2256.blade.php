@@ -19,6 +19,9 @@
 
         /************************************************************/
 
+        .sky {position:fixed;top:225px; width:159px; right:5px;z-index:200;}
+        .sky a {display:block; margin-bottom:5px;}
+
         /*타이머*/
         .newTopDday * {font-size:24px}
         .newTopDday {background:#e4e4e4; width:100%; padding:15px 0 40px}
@@ -57,6 +60,13 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+
+        <div class="sky" id="QuickMenu">            
+            <a href="#cts06">
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/2256_sky01.png" alt="환승할인">
+            </a>
+        </div> 
+
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday NG">        
             <div>
@@ -120,7 +130,7 @@
             </div>    
         </div>
 
-        <div class="evtCtnsBox wb_cts06">
+        <div class="evtCtnsBox wb_cts06" id="cts06">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2256_06.jpg" alt="바로 신청하기" />
                 <a href="javascript:certOpen();" title="재도전&환승하기" style="position:absolute; left:29.91%; top:77.06%; width:39.46%; height:5.85%; z-index:2;"></a>
@@ -168,6 +178,19 @@
                         - 결제금액 - (강좌 정상가의 1일 이용대금X이용일수)
                     </li>
                     <li>아이디 공유 적발 시 회원 자격 박탈 및 환불이 불가하오니 유의 바랍니다.</li>             				
+				</ul>
+                <div class="infoTit"><strong>재도전&환승 인증 이벤트 유의사항</strong></div>
+				<ul>
+					<li>본 이벤트는 1아이디당 1회만 참여 가능합니다.</li>
+                    <li>인증 완료 처리는 신청 후, 24시간 이내에 처리됩니다. 단, 주말 및 공휴일 인증 건의 경우 평일 오전 중으로 처리됩니다.</li>
+                    <li><strong>1) 재도전 인증</strong><br>
+                        - 본인의 이름이 명시된 수험표 또는 윌비스 PASS 수강생의 경우 [내강의실] 페이지 내 이름과 PASS명이 명시된 이미지 캡쳐 후 업로드 시 인증 가능합니다.<br>
+                        <strong>2) 환승 인증</strong><br>
+                        - 본인의 이름, 수강내역, 결제내역 등이 명확하게 기재된 수강증 등의 캡쳐를 통해서만 인증이 가능합니다.<br>
+                        (결제내역을 통한 인증 시, 수강자 이름과 결제 금액, 강좌명이 필수로 기재되어 있어야 합니다.)</li>
+                    <li>본 이벤트는 이벤트 참여자가 본인의 명의로 구매/응시한 내용에 한합니다.</li>
+                    <li>등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>
+                    <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>             				
 				</ul>
                 <div class="infoTit"><strong>윌비스 고객만족센터 1544-5006</strong></div>
 			</div>

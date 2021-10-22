@@ -24,7 +24,7 @@
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/10/2398_01_bg.jpg) repeat-y center top; padding-bottom:100px}
         .evt01 .wrap .choice {position:absolute; top:461px; width:1000px; left:65px; z-index: 2; display:flex; flex-wrap: wrap;}
         .evt01 .wrap .choice label {width:190px; height:88px; text-align:left; cursor: pointer; margin-right:10px; margin-bottom:35px; display:block; align-self: auto;}
-        .evt01 .wrap .choice input {width:20px; height:20px; margin:10px 0 0 20px;}
+        .evt01 .wrap .choice input {width:20px; height:20px; margin:8px 0 0 20px;}
         .evt01 .wrap a {display:block; position:absolute; top:842px; width:40%; left:50%; margin-left:-20%; padding:15px 0; font-size:20px; text-align:center; background:#333; color:#fff}
         .evt01 .wrap a:hover {background:#3c8340;}
 

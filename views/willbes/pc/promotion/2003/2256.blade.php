@@ -15,6 +15,7 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
@@ -37,6 +38,8 @@
         .wb_cts03 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2256_03_bg.jpg) no-repeat center top;} 
 
         .wb_cts04 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2256_04_bg.jpg) no-repeat center top;}
+
+        .wb_cts06 {background:#ebebeb}
 
         .check {position:absolute; bottom:50px; left:50%; margin-left:-490px; width:980px; padding:20px 0px 20px 10px; letter-spacing:3; color:#fff; z-index:5}
         .check label {cursor:pointer; font-size:15px;color:#000;font-weight:bold;}
@@ -117,6 +120,14 @@
             </div>    
         </div>
 
+        <div class="evtCtnsBox wb_cts06">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/2256_06.jpg" alt="바로 신청하기" />
+                <a href="javascript:certOpen();" title="재도전&환승하기" style="position:absolute; left:29.91%; top:77.06%; width:39.46%; height:5.85%; z-index:2;"></a>
+                <a href="#careful" title="유의사항" style="position:absolute; left:41.25%; top:84.37%; width:14.64%; height:3.84%; z-index:2;"></a
+            </div>    
+        </div>
+
         <div class="evtCtnsBox evtInfo" id="careful">
 			<div class="evtInfoBox">
 				<h4 class="NSK-Black">이용안내 및 유의사항</h4>
@@ -166,6 +177,14 @@
     <!-- End Container -->
 
     <script>    
+        /* 팝업창 */ 
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
+        }
 
         /*수강신청 동의*/ 
         function go_PassLecture(code){

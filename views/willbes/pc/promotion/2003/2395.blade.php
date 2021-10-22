@@ -34,7 +34,7 @@
         .time li:last-child {line-height:1.3; color:#363635}
         .time li:first-child {margin-right:20px}
         .time li:last-child {margin-left:20px}
-        .time li:first-child span {color:#be25da}        
+        .time li:first-child span {color:#a2090b}        
         .time li:last-child span {line-height:2.5; color:#363635;font-weight:bold;} 
         .time li:last-child a {display:block; color:#fff; background:#242424; padding:10px 20px; margin-top:20px}
         .time li img {width:44px}
@@ -129,16 +129,6 @@
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
-
-        {{--쿠폰발급--}}
-        var $regi_form = $('#regi_form');
-        function giveCheck(give_idx) {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}'+'&give_idx='+give_idx;
-            ajaxSubmit($regi_form, _check_url, function (ret) {
-                if (ret.ret_cd) {alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');}
-            }, showValidateError, null, false, 'alert');
-        }
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

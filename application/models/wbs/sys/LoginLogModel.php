@@ -38,24 +38,30 @@ class LoginLogModel extends WB_Model
 
     /**
      * 로그인 로그 목록 조회
-     * @param $is_count
+     * @param bool|string $is_count
      * @param array $arr_condition
-     * @param null $limit
-     * @param null $offset
+     * @param null|int $limit
+     * @param null|int $offset
      * @param array $order_by
      * @return mixed
      */
     public function listLoginLog($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $column = 'count(*) AS numrows';
+            $in_column = 'count(0) AS numrows';
+            $column = 'numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'L.wLogIdx, L.wAdminId, L.wLoginIp, L.wLoginDatm, L.wLoginLogCcd
-                , ifnull(A.wAdminName, "비운영자") as wAdminName, A.wAdminDeptCcd, A.wAdminPositionCcd, A.wIsUse
+            $in_column = 'L.wLogIdx, L.wAdminId, L.wLoginIp, L.wLoginDatm, L.wLoginLogCcd
+                , ifnull(A.wAdminName, "비운영자") as wAdminName, A.wAdminDeptCcd, A.wAdminPositionCcd, A.wRoleIdx, A.wIsUse
                 , R.wRoleName
-                , WCD.wCcdName as wAdminDeptCcdName, WCP.wCcdName as wAdminPositionCcdName, WCL.wCcdName as wLoginLogCcdName      
-            ';
+                , WCD.wCcdName as wAdminDeptCcdName, WCP.wCcdName as wAdminPositionCcdName, WCL.wCcdName as wLoginLogCcdName';
+
+            if (is_bool($is_count) === true) {
+                $column = '*';
+            } else {
+                $column = $is_count;
+            }
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -79,7 +85,7 @@ class LoginLogModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }

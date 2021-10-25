@@ -21,6 +21,22 @@
 
         /************************************************************/
 
+        /*타이머*/
+        .time {width:1120px; margin:0 auto; text-align:center; padding:20px 0}
+        .time ul {width:100%; display:flex; justify-content: center;}
+        .time li {line-height:61px; font-size:24px; margin-right:10px; position: relative;}
+        .time li:first-child,
+        .time li:last-child {line-height:1.3; color:#363635}
+        .time li:first-child {margin-right:20px}
+        .time li:last-child {margin-left:20px}
+        .time li:first-child span {color:#C82F25}        
+        .time li:last-child span {line-height:2.5; color:#363635;font-weight:bold;} 
+        .time li:last-child a {display:block; color:#fff; background:#242424; padding:10px 20px; margin-top:20px}
+        .time li img {width:44px}
+        .time .time_txt {color:#000; letter-spacing:-1px}
+        .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        .time .d_day {color:#fff;font-size:30px;}
+
         .evt_top {background:#0C1D23 url(https://static.willbes.net/public/images/promotion/2021/10/2386_top_bg.jpg) no-repeat center top;}
 
         .evt_01 {background:#b9a78f}
@@ -46,6 +62,31 @@
 
 	<div class="evtContent NGR">
 
+        <div class="evtCtnsBox">       
+            <div class="time NSK-Black" id="newTopDday">
+                <ul>
+                    <li>
+                        <span>성원에 감사드립니다</span><br>
+                              마감까지
+                    </li>
+                    <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li class="time_txt">일</li>
+                    <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li class="time_txt">:</li>
+                    <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li class="time_txt">:</li>
+                    <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li>
+                        <span class="NSK">남았습니다.</span>                        
+                    </li>          
+                </ul>
+            </div> 
+        </div>   
+        
 		<div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2386_top.jpg" alt="황종휴 경젱학"/>
 		</div>
@@ -144,6 +185,7 @@
     <!-- End Container -->
 
     <script type="text/javascript">
+
      /*수강신청 동의*/ 
      function go_PassLecture(code){
             if($("input[name='ischk']:checked").size() < 1){
@@ -153,7 +195,14 @@
 
             var url = '{{ site_url('/periodPackage/show/cate/33094/pack/648001/prod-code/') }}' + code;
             location.href = url;
-        }    
+        }
 
+          /*디데이카운트다운*/
+          $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
+        });
     </script>
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

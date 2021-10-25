@@ -5,9 +5,10 @@
 
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; position:relative; font-size:14px; line-height:1.5; clear:both}
-    .evtCtnsBox img {width:100%; max-width:720px;}
-    
-    .evtCtnsBox .wrap {margin:0 auto; position:relative}       
+    .evtCtnsBox img {width:100%; max-width:720px;}    
+    .evtCtnsBox .wrap {margin:0 auto; position:relative}   
+    .evtCtnsBox .passbtn {display:block; color:#fff; background:#8c2616;  font-size:200%; text-align:center; padding:2.5% 0; border-radius:10px}
+    .evtCtnsBox h4 {color:#8c2616; font-size:200%; margin:50px 10% 20px; text-align:center}    
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
 
@@ -52,10 +53,17 @@
 
     <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2021/10/2391m_05.jpg" alt="심화기출 강좌"/>
+
+        <a href="https://police.willbes.net/m/promotion/index/cate/3001/code/2390" target="_blank" class="passbtn">
+            2022 경찰 합격 PASS >
+        </a>
+
+        <h4 class="NSK-Black">11월 추천 심화기출 강좌 </h4>
         @if(empty($arr_base['display_product_data']) === false)
             @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
         @endif 
     </div>
+    
 
 </div>
 

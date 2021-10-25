@@ -64,7 +64,7 @@
         </div>   
         
         <div class="evtCtnsBox evt04" id="event04">
-            <h4 class="NSK-Black">11월 추천 강좌 </h4>
+            <h4 class="NSK-Black">11월 추천 심화기출 강좌 </h4>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif

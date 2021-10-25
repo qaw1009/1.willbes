@@ -31,9 +31,15 @@ class CommonLectureModel extends WB_Model
         'product_r_lectureroom' => 'lms_product_r_lectureroom'
     ];
 
+    protected $_process_group;  //백업 프로세스그룹
+    protected $_backup_location; //백업 클래스/메소드 정보
+
     public function __construct()
     {
         parent::__construct('lms');
+        $this->load->library('dbTableBackup', [$this->_conn]);  //백업
+        $this->_process_group = date_format(date_create(), 'YmdHisv');  //백업 처리 그룹
+        $this->_backup_location = $this->router->class.'/'.$this->router->method;
     }
     
     /**
@@ -49,8 +55,9 @@ class CommonLectureModel extends WB_Model
                         ,C.CateCode,Ca.CateName,Ca.CateRouteName
                         ,D.wAdminName as RegAdminName,E.wAdminName as UpdAdminName
                         ,fn_dec(FreeLecPasswd) as FreeLecPasswd 
-                        ,Bb.ProfInfo_string'
-        ;
+                        ,Bb.ProfInfo_string
+                        ,(select count(*) From lms_sys_table_backup_data where IdxName="ProdCode" and Idx=A.ProdCode) as BackupCnt
+        ';
 
         $from = '
                         from
@@ -70,7 +77,6 @@ class CommonLectureModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
         $result = $this->_conn->query('select ' .$column .$from .$where)->row_array();
-        //echo $this->_conn->last_query();
         return $result;
     }
 
@@ -121,7 +127,6 @@ class CommonLectureModel extends WB_Model
                 }
             $order_by = ' order by A.PdIdx ASC';
             $where = $this->_conn->makeWhere(['EQ'=>['A.ProdCode'=>$prodcode]])->getMakeWhere(true);
-            //echo 'select ' .$column .$from .$where. $order_by;
             $result = $this->_conn->query('select ' .$column .$from .$where. $order_by)->result_array();
 
         } elseif ($tableName === 'lms_product_memo') {   //메모
@@ -206,8 +211,6 @@ class CommonLectureModel extends WB_Model
                 }
 
             $result = $this->_conn->query('select ' .$column .$from .$where .$order_by)->result_array();
-            //echo $this->_conn->last_query();
-
 
         } else if ($tableName === 'lms_product_r_autocoupon') {    //쿠폰
 
@@ -341,6 +344,13 @@ class CommonLectureModel extends WB_Model
     public function _setCategory($input=[],$prodcode)
     {
         try {
+
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['category'], 'ProdCode', $prodcode, [] , $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             /*  기존 카테고리 정보 상태값 변경 */
             if($this->_setDataDelete($prodcode,$this->_table['category'],'카테고리') !== true) {
                 throw new \Exception('카테고리 수정에 실패했습니다.');
@@ -370,6 +380,13 @@ class CommonLectureModel extends WB_Model
     public function _setSample($input=[],$prodcode)
     {
         try {
+
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['sample'], 'ProdCode', $prodcode, [] , $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             /*  기존 샘플 정보 상태값 변경 */
             if($this->_setDataDelete($prodcode,$this->_table['sample'],'샘플') !== true) {
                 throw new \Exception('샘플 수정에 실패했습니다.');
@@ -405,6 +422,12 @@ class CommonLectureModel extends WB_Model
     public function _setPrice($input=[],$prodcode)
     {
         try {
+
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['sale'], 'ProdCode', $prodcode, [] , $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
 
             /*판매가격*/
             $SaleTypeCcd = element('SaleTypeCcd',$input);                     //판매가격 코드
@@ -452,6 +475,13 @@ class CommonLectureModel extends WB_Model
     public function _setDivision($input=[],$prodcode,$prodtype=null)
     {
         try {
+
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['division'], 'ProdCode', $prodcode, [] , $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             /*강사료정산*/
             $rateRemainProfIdx = element('rateRemainProfIdx',$input);          //단수적용 교수코드
             $SingularValue = element('rateRemain',$input,0);            //단수값
@@ -533,6 +563,13 @@ class CommonLectureModel extends WB_Model
     public function _setMemo($input=[],$prodcode)
     {
         try {
+
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['memo'], 'ProdCode', $prodcode, [], $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             /*각종 메모*/
             $MemoTypeCcd = element('MemoTypeCcd',$input,'');
             $IsOutPut = element('IsOutPut',$input,'Y');
@@ -542,7 +579,6 @@ class CommonLectureModel extends WB_Model
             if($this->_setDataDelete($prodcode,$this->_table['memo'],'메모','where_not_in','MemoTypeCcd','634001') !== true) {
                 throw new \Exception('메모 수정에 실패했습니다.');
             }
-            //echo $this->_conn->last_query();
 
             if(empty($MemoTypeCcd) === false) {
 
@@ -579,6 +615,13 @@ class CommonLectureModel extends WB_Model
     public function _setContent($input=[], $prodcode)
     {
         try {
+
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['content'], 'ProdCode', $prodcode, [], $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             /*각종 컨텐트*/
             $ContentTypeCcd = element('ContentTypeCcd',$input,'');
             $Content = element('Content',$input);
@@ -605,7 +648,6 @@ class CommonLectureModel extends WB_Model
                         if($this->_conn->set($data)->insert($this->_table['content']) === false) {
                             throw new \Exception('컨텐트 등록에 실패했습니다.');
                         }
-                        //echo $this->_conn->last_query();
                     }
 
                 }
@@ -623,6 +665,13 @@ class CommonLectureModel extends WB_Model
     public function _setSms($input=[],$prodcode)
     {
         try {
+
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['sms'], 'ProdCode', $prodcode, [], $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             /*  기존 컨텐트 정보 상태값 변경 */
             if($this->_setDataDelete($prodcode,$this->_table['sms'],'SMS') !== true) {
                 throw new \Exception('SMS 수정에 실패했습니다.');
@@ -653,6 +702,13 @@ class CommonLectureModel extends WB_Model
     public function _setSubProduct($input=[], $prodcode, $ProdCodeInputName, $prodtype, $msg)
     {
         try {
+
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['subproduct'], 'ProdCode', $prodcode, ['EQ' => ['ProdTypeCcd' => $prodtype]], $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             /*  기존 가격 정보 상태값 변경 */
             if($this->_setDataDelete($prodcode,$this->_table['subproduct'],$msg,'where','ProdTypeCcd',$prodtype) !== true) {
                 throw new \Exception($msg.' 수정에 실패했습니다.');
@@ -691,6 +747,12 @@ class CommonLectureModel extends WB_Model
     {
         try {
 
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['autocoupon'], 'ProdCode', $prodcode, [], $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             /*  기존 쿠폰 정보 상태값 변경 */
             if($this->_setDataDelete($prodcode,$this->_table['autocoupon'],'쿠폰') !== true) {
                 throw new \Exception('쿠폰 수정에 실패했습니다.');
@@ -723,6 +785,13 @@ class CommonLectureModel extends WB_Model
     public function _setPackSale($input=[],$prodcode)
     {
         try {
+
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['packsale'], 'ProdCode', $prodcode, [], $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             /*  기존 강좌 연결 정보 상태값 변경 */
             if($this->_setDataDelete($prodcode,$this->_table['packsale'],'패키지할인정보') !== true) {
                 throw new \Exception('패키지할인정보 수정에 실패했습니다.');
@@ -776,6 +845,13 @@ class CommonLectureModel extends WB_Model
     public function _setSubLecture($input=[],$prodcode)
     {
         try {
+
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['sublecture'], 'ProdCode', $prodcode, [], $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             /*  기존 강좌 연결 정보 상태값 변경 */
             if($this->_setDataDelete($prodcode,$this->_table['sublecture'],'강좌 연결') !== true) {
                 throw new \Exception('연결강좌 수정에 실패했습니다.');
@@ -852,6 +928,12 @@ class CommonLectureModel extends WB_Model
     {
         try {
 
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['product_btob'], 'ProdCode', $prodcode, [], $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             /*  제휴사 정보 상태값 변경 */
             if($this->_setDataDelete($prodcode,$this->_table['product_btob'],'제휴사(BtoB)') !== true) {
                 throw new \Exception('제휴사(BtoB) 수정에 실패했습니다.');
@@ -883,6 +965,13 @@ class CommonLectureModel extends WB_Model
     public function _setLectureDate($input=[],$prodcode)
     {
         try {
+
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['lecturedate'], 'ProdCode', $prodcode, [], $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             /*  기존 강좌 연결 정보 상태값 변경 */
             if($this->_setDataDelete($prodcode,$this->_table['lecturedate'],'수강 기간') !== true) {
                 throw new \Exception('수강기간 수정에 실패했습니다.');
@@ -928,11 +1017,19 @@ class CommonLectureModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
+
             if (count($params) < 1) {
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
             foreach ($params as $prod_code => $columns) {
+
+                // 테이블 백업
+                $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['product'], 'ProdCode', $prod_code, [], $this->_process_group, $this->_backup_location);
+                if($backup_result !== true) {
+                    throw new \Exception($backup_result);
+                }
+
                 $this->_conn->set($columns)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->where('ProdCode', $prod_code);
                 if ($this->_conn->update($this->_table['product']) === false) {
                     throw new \Exception('상품 정보 수정에 실패했습니다.');
@@ -963,12 +1060,19 @@ class CommonLectureModel extends WB_Model
             }
 
             foreach ($params as $prod_code => $order_num) {
+
+                // 테이블 백업
+                $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['lecture'], 'ProdCode', $prod_code, [], $this->_process_group, $this->_backup_location);
+                if($backup_result !== true) {
+                    throw new \Exception($backup_result);
+                }
+
                 $this->_conn->set('OrderNum',$order_num )->where('ProdCode', $prod_code);
 
                 if ($this->_conn->update($this->_table['lecture']) === false) {
                     throw new \Exception('정렬 정보 수정에 실패했습니다.');
                 }
-                //echo $this->_conn->last_query();
+
             }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -1260,6 +1364,12 @@ class CommonLectureModel extends WB_Model
                 }
 
                 if (empty($opt_data) === false) {
+                    // 테이블 백업
+                    $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['lecture'], 'ProdCode', $prodcode, [], $this->_process_group, $this->_backup_location);
+                    if($backup_result !== true) {
+                        throw new \Exception($backup_result);
+                    }
+
                     $this->_conn->set($opt_data)->where('ProdCode', $prodcode);
                     if ($this->_conn->update($table) === false) {
                         throw new \Exception('옵션 수정에 실패했습니다.');
@@ -1313,4 +1423,5 @@ class CommonLectureModel extends WB_Model
 
         return $this->_conn->query('SELECT '.$column .$from .$where)->row_array();
     }
+
 }

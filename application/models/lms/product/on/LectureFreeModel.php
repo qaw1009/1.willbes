@@ -215,6 +215,12 @@ class LectureFreeModel extends CommonLectureModel
             $this->inputCommon($input, $input_product, $input_lecture);
 
             /*----------------          상품수정        ---------------*/
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['product'], 'ProdCode', $prodcode, [] , $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             $product_data = array_merge($input_product,[
                 'UpdAdminIdx'=>$this->session->userdata('admin_idx')
             ]);
@@ -225,6 +231,12 @@ class LectureFreeModel extends CommonLectureModel
             /*----------------          상품수정        ---------------*/
 
             /*----------------          강좌수정        ---------------*/
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['lecture'], 'ProdCode', $prodcode, [] , $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             $lecture_data = array_merge($input_lecture,[
                 //'LearnPatternCcd'=>element('LearnPatternCcd',$input)
             ]);

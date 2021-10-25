@@ -610,9 +610,20 @@ class LectureRoomRegistModel extends WB_Model
      * @param string $lr_is_use
      * @return array|bool
      */
-    public function addProductLectureRoom($prod_code = null, $lr_code = null, $lr_unit_code = null, $lr_is_use = 'N')
+    public function addProductLectureRoom($prod_code = null, $lr_code = null, $lr_unit_code = null, $lr_is_use = 'N', $process_group = '')
     {
         try {
+            /* 백업 추가 */
+            if(empty($process_group) === false) {
+                $this->load->library('dbTableBackup', [$this->_conn]);  //백업
+                $backup_location = $this->router->class.'/'.$this->router->method;
+                $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['product_r_lectureroom'], 'ProdCode', $prod_code, [] , $process_group, $backup_location);
+                if($backup_result !== true) {
+                    throw new \Exception($backup_result);
+                }
+            }
+            /* 백업 추가 */
+
             $now =  date('Y-m-d H:i:s');
             $admin_idx = $this->session->userdata('admin_idx');
             $reg_ip = $this->input->ip_address();

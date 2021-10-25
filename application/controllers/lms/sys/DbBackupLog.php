@@ -120,10 +120,14 @@ class DbBackupLog extends \app\controllers\BaseController
         }
 
         $data['BackupData'] = json_decode($data['BackupData'],true);
-
         $column_config = array_merge($this->dbBackupLogModel->listColumnNameComment($data['TableName']), $this->_columns_config);
-        $admin_condition = ['IN' => ['wAdminIdx' => array_merge(array_column($data['BackupData'], 'RegAdminIdx'), array_column($data['BackupData'], 'UpdAdminIdx'))]];
-        $admin_config = $this->dbBackupLogModel->listAdminName($admin_condition);
+
+        $admin_config = [];
+
+        if(empty($data['BackupData']) !== true) {
+            $admin_condition = ['IN' => ['wAdminIdx' => array_merge(array_column($data['BackupData'], 'RegAdminIdx'), array_column($data['BackupData'], 'UpdAdminIdx'))]];
+            $admin_config = $this->dbBackupLogModel->listAdminName($admin_condition);
+        }
 
         $this->load->view('sys/db_backup_log/show_modal', [
             'data' => $data,

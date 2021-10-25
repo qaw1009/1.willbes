@@ -68,7 +68,7 @@
                 <area shape="rect" coords="3,359,153,437" href="#evt3" />
             </map>        
         </div>    
-
+{{--
         <div class="evtCtnsBox evttop_banners">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/1676_top_banner.jpg">
@@ -76,7 +76,7 @@
                 <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" title="" style="position: absolute; left: 74.29%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>  
             </div>        
         </div>        
-
+--}}
         <div class="evtCtnsBox evttop">                 
             <img src="https://static.willbes.net/public/images/promotion/2021/02/1676_top.jpg"  title="더켠의 반반한 밤">                        
         </div>

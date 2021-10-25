@@ -1139,6 +1139,9 @@
                 <div class="form-group btn-wrap text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
+                    @if($data['BackupCnt'] > 0 && ($__auth['Role']['RoleIdx'] === '1030'))
+                        <button type="button" class="btn btn-info ml-5" id="btn_backup_history">수정 이력</button>
+                    @endif
                 </div>
             </form>
         </div>
@@ -1494,6 +1497,13 @@
                 location.replace('{{ site_url('/product/on/lecture/') }}' + getQueryString());
             });
 
+            $('#btn_backup_history').click(function(){
+                $('#btn_backup_history').setLayer({
+                    'url' : '{{ site_url('/sys/dbBackupLog/index/modal/') }}?search_idx_name=ProdCode&search_idx='+$('#ProdCode').val()
+                    ,'width' : 1000
+                    ,'modal_id' : 'list_backup'
+                })
+            });
 
         });
 
@@ -1576,9 +1586,7 @@
                //남는값, 선택교수 초기화
                 $("input:radio[name='IsSingular']").prop("checked", false);
                 $("#rateRemainProfIdx").val('') //선택교수 초기화
-
             }
-
         }
 
         //단수체크
@@ -1605,19 +1613,15 @@
             }
 
             $("#rateRemainProfIdx").val(strGubun);      //선택 교수코드
-
             sum_remainValue = parseFloat($("#ProdDivisionRate_"+strGubun).val()) + remainValue;
 
             $("#ProdDivisionRate_"+strGubun).val( sum_remainValue.toFixed(8) );
-
-
             sum_rate = 0;
 
             //안분율 합산
             var ProdDivisionRate = document.getElementsByName('ProdDivisionRate[]') ;
 
             for(i=0;i<ProdDivisionRate.length;i++) {
-
                 if($('input[name="ProdDivisionRate[]"]')[i].value != "") {
                     sum_rate += parseFloat($('input[name="ProdDivisionRate[]"]')[i].value);
                 }

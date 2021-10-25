@@ -252,6 +252,12 @@ class OffLectureModel extends CommonLectureModel
             $this->inputCommon($input, $input_product, $input_lecture);
 
             /*----------------          상품수정        ---------------*/
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['product'], 'ProdCode', $prodcode, [] , $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             $product_data = array_merge($input_product,[
                 'UpdAdminIdx'=>$this->session->userdata('admin_idx')
             ]);
@@ -259,17 +265,21 @@ class OffLectureModel extends CommonLectureModel
             if ($this->_conn->set($product_data)->set('UpdDatm', 'NOW()', false)->where('ProdCode', $prodcode)->update($this->_table['product']) === false) {
                 throw new \Exception('상품 정보 수정에 실패했습니다.');
             }
-            //echo $this->_conn->last_query();
             /*----------------          상품수정        ---------------*/
 
             /*----------------          강좌수정        ---------------*/
+            // 테이블 백업
+            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['lecture'], 'ProdCode', $prodcode, [] , $this->_process_group, $this->_backup_location);
+            if($backup_result !== true) {
+                throw new \Exception($backup_result);
+            }
+
             $lecture_data = array_merge($input_lecture,[
                 //'LearnPatternCcd'=>element('LearnPatternCcd',$input)
             ]);
             if ($this->_conn->set($lecture_data)->where('ProdCode', $prodcode)->update($this->_table['lecture']) === false) {
                 throw new \Exception('강좌 정보 수정에 실패했습니다.');
             }
-           //echo $this->_conn->last_query();
             /*----------------          강좌수정        ---------------*/
 
             /*----------------          카테고리등록        ---------------*/
@@ -355,13 +365,11 @@ class OffLectureModel extends CommonLectureModel
             $lr_unit_code = element('lr_unit_code', $input);
             $lr_is_use = element('lr_is_use', $input, 'N');
             if (isset($_POST['lr_unit_code']) === true) {
-                if ($this->lectureRoomRegistModel->addProductLectureRoom($prodcode, $lr_code, $lr_unit_code, $lr_is_use) !== true) {
+                if ($this->lectureRoomRegistModel->addProductLectureRoom($prodcode, $lr_code, $lr_unit_code, $lr_is_use, $this->_process_group) !== true) {
                     throw new \Exception('강의실좌석 상품 등록 실패했습니다.');
                 }
             }
             /*----------------          강의실 좌석 상품 등록        ---------------*/
-
-            //$this->_conn->trans_rollback();
             $this->_conn->trans_commit();
 
         } catch (\Exception $e) {

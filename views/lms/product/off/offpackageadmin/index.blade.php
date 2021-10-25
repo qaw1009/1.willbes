@@ -255,7 +255,7 @@
                     {'data' : 'wAdminName'},//등록자
                     {'data' : 'RegDatm'},//등록일
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<input type="text" class="form-control" name="OrderNum[]" data-idx="'+ row.ProdCode +'"  value="'+row.OrderNum+'" style="width:30px" maxlength="3">';
+                            return '<input type="text" class="form-control" name="OrderNum[]" data-idx="'+ row.ProdCode +'" data-origin-order="'+row.OrderNum+'" value="'+row.OrderNum+'" style="width:30px" maxlength="3">';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return (row.ProdCode_Original !== '') ? '<span class="red">Y</span>' : '';
@@ -333,27 +333,27 @@
                 }, showError, false, 'POST');
             });
 
+
             // 정렬순서 변경
             $('.btn-order-modify').on('click', function() {
                 if (!confirm('정렬순서를 적용하시겠습니까?')) {
                     return;
                 }
-                var $order = $list_table.find('input[name="OrderNum[]"]');
                 var $params = {};
-                var this_prodcode,this_num;
-
-                $order.each(function(idx) {
-                    this_prodcode = $order.eq(idx).data('idx');
-                    this_num = $order.eq(idx).val();
-                    $params[this_prodcode] = this_num ;
+                $list_table.find('input[name="OrderNum[]"]').each(function() {
+                    if($(this).val() != $(this).data('origin-order')) {
+                        $params[$(this).data('idx')] = $(this).val();
+                    }
                 });
-
+                if (Object.keys($params).length < 1) {
+                    alert('변경된 내용이 없습니다.');
+                    return;
+                }
                 var data = {
                     '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'PUT',
                     'params' : JSON.stringify($params)
                 };
-
                 sendAjax('{{ site_url('/product/off/offPackageAdmin/reorder') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);

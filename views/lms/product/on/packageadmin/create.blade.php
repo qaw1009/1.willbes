@@ -977,6 +977,9 @@
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
+                    @if($data['BackupCnt'] > 0 && ($__auth['Role']['RoleIdx'] === '1030'))
+                        <button type="button" class="btn btn-info ml-5" id="btn_backup_history">수정 이력</button>
+                    @endif
                 </div>
             </form>
 
@@ -1274,6 +1277,14 @@
                 studyPeriodCheck($(this).val());
             });
             studyPeriodCheck($('input[name="StudyPeriodCcd"]:checked').val());
+
+            $('#btn_backup_history').click(function(){
+                $('#btn_backup_history').setLayer({
+                    'url' : '{{ site_url('/sys/dbBackupLog/index/modal/') }}?search_idx_name=ProdCode&search_idx='+$('#ProdCode').val()
+                    ,'width' : 1000
+                    ,'modal_id' : 'list_backup'
+                })
+            });
         });
 
         function rowDelete(strRow) {

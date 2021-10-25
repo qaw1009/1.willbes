@@ -47,7 +47,7 @@
         </div> 
         
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2391_top.jpg" title="경찰 11월 추천강좌">        
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2391_top.jpg" title="경찰 11월 추천강좌"><br>      
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2391_top_01.gif" title="심화기출">
         </div>
 

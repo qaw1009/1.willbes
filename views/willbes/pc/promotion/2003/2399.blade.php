@@ -12,7 +12,8 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}        
+        br {font-family:dotum;} 
 
         /************************************************************/      
 
@@ -139,10 +140,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>* 무료특강<br>&nbsp;&nbsp;&nbsp;확인경로</th>
+                                <th>* 무료특강<br>확인경로</th>
                                 <td>
                                     <ul>
-                                        <li><input type="radio" name="register_data2" id="CT1" value="홈페이지" /> <label for="CT1">홈페이지&nbsp;&nbsp;&nbsp;&nbsp;</label></li>
+                                        <li><input type="radio" name="register_data2" id="CT1" value="홈페이지" /> <label for="CT1">홈페이지</label></li>
                                         <li><input type="radio" name="register_data2" id="CT2" value="지인추천" /> <label for="CT2">지인추천</label></li>                                     
                                         <li><input type="radio" name="register_data2" id="CT3" value="인터넷광고" /> <label for="CT3">인터넷광고</label></li>
                                         <li><input type="radio" name="register_data2" id="CT4" value="인터넷검색" /> <label for="CT4">인터넷검색 </label></li>

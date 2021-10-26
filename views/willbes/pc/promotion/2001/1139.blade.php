@@ -12,35 +12,35 @@
             background:#fff;            
         }	
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
-
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/  
 
         .evt00 {background:#0a0a0a}
 
-        .wb_top {background:#232325 url(https://static.willbes.net/public/images/promotion/2020/03/1139_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/03/1139_top_bg.jpg) no-repeat center top;}
         .wb_top span.sp01 { position:absolute; left:50%; top:30px; margin-left:-560px; animation: sp01 1.5s linear infinite;}
         @@keyframes sp01{
-		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
+		    from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
         }       
 
-        .wb_cts01 {background:#2b2b2b url(https://static.willbes.net/public/images/promotion/2020/03/1139_01_bg.jpg) no-repeat center top;}
+        .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2020/03/1139_01_bg.jpg) no-repeat center top;}
 
-        .wb_cts02,.wb_cts03 {background:#242a1d url(https://static.willbes.net/public/images/promotion/2020/03/1139_02_bg.jpg) no-repeat center top;} 
+        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2021/10/1139_02_bg.jpg) no-repeat center top;} 
 
-        .skybanner {position:fixed;top:325px;right:0;z-index:1;}
+        .skybanner {position:fixed;top:325px;right:10px;z-index:1;}
 
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="skybanner" id="QuickMenu">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1139_sky.png" alt="스카이베너 빠르게가기" usemap="#Map1139" border="0" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/1139_sky.png" alt="스카이베너 빠르게가기" usemap="#Map1139" border="0" >
             <map name="Map1139" id="Map1139">
                 <area shape="rect" coords="12,4,116,72" href="#go_top" />
                 <area shape="rect" coords="10,81,118,145" href="#go_01" />
                 <area shape="rect" coords="11,154,118,218" href="#go_02" />
-                <area shape="rect" coords="10,224,118,289" href="#go_03" />
               <area shape="rect" coords="12,290,115,375" href="https://police.willbes.net/promotion/index/cate/3001/code/2360" target="_blank" alt="신광은경찰패스" />
             </map>
         </div>
@@ -61,11 +61,13 @@
         </div>
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1139_02.jpg" alt="타학원 수강이력 인증" usemap="#Map1139a" border="0" id="go_02"/>
-            <map name="Map1139a" id="Map1139a">
-                <area shape="rect" coords="337,923,766,1022" href="javascript:certOpen();" onfocus='this.blur()' alt="타학원 수강 인증">
-            </map>
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1139_03.jpg" alt="이벤트 참여" usemap="#Map1139a" border="0" id="go_03"/>
+            <div class="wrap" id="go_02">
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/1139_02.jpg" alt="타학원 수강이력 인증"/>
+                <a href="javascript:certOpen();" title="타학원 수강 인증" style="position: absolute; left:30.18%; top:81.76%; width:38.30%; height:9.71%; z-index: 2;"></a>
+            </div>
+            <div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/1139_03.jpg" alt="이벤트 참여" usemap="#Map1139a" border="0" id="go_03"/>
+    </div>
         </div>      
               
     </div>

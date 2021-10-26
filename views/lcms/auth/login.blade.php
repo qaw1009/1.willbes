@@ -58,6 +58,7 @@
             </section>
         </div>
     </div>
+    <button id="btn_hidden" class="hide"></button>
     <script type="text/javascript">
         var $login_form = $('#login_form');
 
@@ -70,26 +71,34 @@
                     if(ret.ret_cd) {
                         location.replace('{{ site_url('/home/main') }}');
                     }
-                }, showLoginError, null, false, 'alert');
+                }, function(result, status) {
+                    showValidateError(result, status);
+
+                    if (status === {{ _HTTP_NO_PERMISSION }}) {
+                        var err_req_code = result.ret_data || '';
+
+                        if (err_req_code === 'RequiredCert') {
+                            $('#btn_hidden').setLayer({
+                                'url': '{{ site_url('/lcms/auth/login/certification') }}/' + $login_form.find('input[name="admin_id"]').val(),
+                                'width': 900
+                            }).click();
+                        } else if (err_req_code === 'RequiredPasswd') {
+                            // 비밀번호 강제변경 폼 모달
+                            $('#btn_hidden').setLayer({
+                                'url' : '{{ site_url('/lcms/auth/regist/forcedEditPasswd') }}/' + $login_form.find('input[name="admin_id"]').val(),
+                                'width' : 560
+                            }).click();
+                        }
+                    }
+
+                    $login_form.find('input[name="admin_id"]').val('');
+                    $login_form.find('input[name="admin_passwd"]').val('');
+                    $login_form.find('input[name="admin_id"]').focus();
+                }, null, false, 'alert');
             });
 
-            function showLoginError(result, status) {
-                showValidateError(result, status);
-
-                if (status == 403) {
-                    $('<button id="btn_hidden" class="hide"></button>').insertBefore('form:eq(0)');
-                    $('#btn_hidden').setLayer({
-                        'url' : '{{ site_url('/lcms/auth/login/certification') }}/' + $login_form.find('input[name="admin_id"]').val(),
-                        'width' : 900
-                    }).click();
-                }
-
-                $login_form.find('input[name="admin_id"]').val('');
-                $login_form.find('input[name="admin_passwd"]').val('');
-                $login_form.find('input[name="admin_id"]').focus();
-            }
-
             @if(SUB_DOMAIN != 'tzone')
+                // 관리자 신청 버튼 클릭
                 $('#btn_regist').setLayer({
                     'url' : '{{ site_url('/lcms/auth/regist/create') }}',
                     'width' : 900

@@ -38,23 +38,31 @@
                     <label class="control-label col-md-2" for="admin_passwd">비밀번호
                     </label>
                     <div class="col-md-2 item">
-                        <input type="password" id="admin_passwd" name="admin_passwd" class="form-control" title="비밀번호" value="">
+                        <input type="password" id="admin_passwd" name="admin_passwd" class="form-control" title="비밀번호" value="" placeholder="@if($method == 'PUT')# 변경 시에만 입력@endif">
                     </div>
                     <div class="col-md-7">
-                        <p class="form-control-static"># @if($method == 'PUT') 변경 시에만 입력 @else 미입력 시 `1111`로 자동 셋팅 @endif</p>
+                        <p class="form-control-static">
+                            @if($method == 'PUT')
+                                @if(empty($data['wPasswdExpireDate']) === false)
+                                    <small><span class="blue"># 비밀번호 만료일자 :</span> {{$data['wPasswdExpireDate']}}</small>
+                                @endif
+                            @else
+                                # 미입력 시 `1111`로 자동 셋팅
+                            @endif
+                        </p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="admin_phone1">휴대폰번호<span class="required">*</span>
                     </label>
                     <div class="col-md-4 item multi form-inline">
-                        <select name="admin_phone1" id="admin_phone1" class="form-control" required="required" title="휴대폰번호1">
+                        <select name="admin_phone1" id="admin_phone1" class="form-control" required="required" title="휴대폰번호1" style="width: 90px;">
                             @foreach($phone1_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        - <input type="number" id="admin_phone2" name="admin_phone2" required="required" class="form-control" maxlength="4" title="휴대폰번호2" value="{{ $data['wAdminPhone2'] }}" style="width: 90px">
-                        - <input type="number" id="admin_phone3" name="admin_phone3" required="required" class="form-control" maxlength="4" title="휴대폰번호3" value="{{ $data['wAdminPhone3'] }}" style="width: 90px">
+                        - <input type="number" id="admin_phone2" name="admin_phone2" required="required" class="form-control" maxlength="4" title="휴대폰번호2" value="{{ $data['wAdminPhone2'] }}" style="width: 90px;">
+                        - <input type="number" id="admin_phone3" name="admin_phone3" required="required" class="form-control" maxlength="4" title="휴대폰번호3" value="{{ $data['wAdminPhone3'] }}" style="width: 90px;">
                         <input type="hidden" id="admin_phone" name="admin_phone" required="required" pattern="mobile" title="휴대폰번호" value="{{ $data['wAdminPhone1'] }}-{{ $data['wAdminPhone2'] }}-{{ $data['wAdminPhone3'] }}"/>
                     </div>
                     <label class="control-label col-md-2" for="admin_dept_ccd">소속/직급

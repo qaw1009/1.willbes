@@ -14,6 +14,8 @@ class AdminAuthHook
         '/lcms/auth/regist/create',
         '/lcms/auth/regist/idCheck',
         '/lcms/auth/regist/store',
+        '/lcms/auth/regist/forcedEditPasswd',
+        '/lcms/auth/regist/forcedUpdatePasswd',
         '/lcms/common/passwdVerify/check',
         '/crm/manageCs/noAuthList',
         '/crm/manageCs/noAuthListAjax',

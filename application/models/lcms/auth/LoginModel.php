@@ -4,6 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class LoginModel extends WB_Model
 {
     private $_table = 'wbs_sys_admin';
+    private $_log_table = [
+        'wbs' => 'wbs_sys_admin_login_log',
+        'lms' => 'lms_sys_admin_login_log'
+    ];
 
     public function __construct()
     {
@@ -18,7 +22,7 @@ class LoginModel extends WB_Model
      */
     public function findAdminForLogin($admin_id, $admin_passwd)
     {
-        $query = 'select wAdminIdx, wRoleIdx, wAdminId, wAdminName, wIsApproval, wProfIdx, wIsUse, ifnull(wCertType, "") as wCertType, ifnull(wLastLoginIp, "") as wLastLoginIp';
+        $query = 'select wAdminIdx, wRoleIdx, wAdminId, wAdminName, wIsApproval, wProfIdx, wIsUse, ifnull(wCertType, "") as wCertType, ifnull(wLastLoginIp, "") as wLastLoginIp, if(wPasswdExpireDate <= current_date(), "Y", "N") as wIsPasswdExpired';
         $query .= ' from ' . $this->_table;
         $query .= ' where wAdminId = ? and wAdminPasswd = fn_hash(?) and wIsStatus = "Y"';
 
@@ -124,14 +128,16 @@ class LoginModel extends WB_Model
             'CERT_IP_REQ' => ['117006', 'N'],
             'CERT_SUCCESS' => ['117007', 'N'],
             'LOGOUT' =>  ['117008', 'N'],
+            'LOCK' =>  ['117011', 'N'],
+            'PASSWD_REQ' =>  ['117012', 'N']
         ];
 
         try {
             if (APP_NAME == 'lms') {
-                $_table = 'lms_sys_admin_login_log';
+                $_table = $this->_log_table['lms'];
                 $prefix = '';
             } else {
-                $_table = 'wbs_sys_admin_login_log';
+                $_table = $this->_log_table['wbs'];
                 $prefix = 'w';
             }
 
@@ -150,6 +156,57 @@ class LoginModel extends WB_Model
 
             if ($this->{APP_NAME}->insert($_table) === false) {
                 throw new \Exception('관리자 로그인 로그 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 관리자 로그인 잠금체크 및 로그인 실패횟수에 따른 잠금처리
+     * @param string $admin_id
+     * @return bool|string
+     */
+    public function checkLoginLock($admin_id)
+    {
+        $login_fail_log_ccd = '117003';     // 로그인 실패체크 공통코드 (아이디/비밀번호 불일치)
+        $login_fail_limit_cnt = 5;          // 잠금처리 기준 로그인 실패횟수
+        $login_fail_chk_datm = date('Y-m-d') . ' 00:00:00';    // 로그인 실패체크 기준일시 (금일 0시 이후)
+        $lock_table = 'wbs_sys_admin_login_lock';
+
+        try {
+            // 로그인 잠금여부 조회
+            $column = 'wLockIdx, wLockDatm, wUnLockDatm';
+            $arr_condition = ['EQ' => ['wAdminId' => $admin_id]];
+            $lock_row = array_get($this->wbs->getListResult($lock_table, $column, $arr_condition, 1, 0, ['wLockIdx' => 'desc']), '0');
+            if (empty($lock_row) === false && empty($lock_row['wUnLockDatm']) === true) {
+                throw new \Exception('로그인 실패횟수 초과로 계정잠금된 상태입니다.');
+            }
+
+            // 잠금해제가 된 경우 로그인 실패횟수 체크 기준일시를 잠금해제일시로 변경
+            if (empty($lock_row) === false && empty($lock_row['wUnLockDatm']) === false && $login_fail_chk_datm < $lock_row['wUnLockDatm']) {
+                $login_fail_chk_datm = $lock_row['wUnLockDatm'];
+            }
+
+            // 로그인 실패횟수 조회 (WBS)
+            $arr_condition = ['EQ' => ['wAdminId' => $admin_id, 'wLoginLogCcd' => $login_fail_log_ccd], 'GTE' => ['wLoginDatm' => $login_fail_chk_datm]];
+            $login_fail_cnt = $this->wbs->getFindResult($this->_log_table['wbs'], true, $arr_condition);
+
+            // 로그인 실패횟수 조회 (LMS)
+            $arr_condition = ['EQ' => ['wAdminId' => $admin_id, 'LoginLogCcd' => $login_fail_log_ccd], 'GTE' => ['LoginDatm' => $login_fail_chk_datm]];
+            $login_fail_cnt += $this->lms->getFindResult($this->_log_table['lms'], true, $arr_condition);
+
+            // 로그인 실패횟수 초과시 잠금처리
+            if ($login_fail_cnt >= $login_fail_limit_cnt) {
+                // 잠금처리 데이터 저장
+                $lock_data = ['wAdminId' => $admin_id, 'wLockSubDomain' => SUB_DOMAIN, 'wLockIp' => $this->input->ip_address()];
+                if ($this->wbs->set($lock_data)->insert($lock_table) === false) {
+                    throw new \Exception('계정잠금 데이터 등록에 실패하였습니다.');
+                }
+
+                throw new \Exception('로그인 실패횟수 초과로 계정잠금 처리되었습니다.');
             }
         } catch (\Exception $e) {
             return $e->getMessage();

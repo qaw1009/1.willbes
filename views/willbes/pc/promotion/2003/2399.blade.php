@@ -32,7 +32,7 @@
         .evt04 .requestL {width:48%; float:left}
         .evt04 .requestR {width:48%; float:right; }
         .evt04 .requestR ul {margin-top:10px; line-height:1.5; padding:10px; border:1px solid #ccc; height:241px; overflow-y:scroll }
-        .evt04 .requestL li {display:inline-block; margin-right:9px}
+        .evt04 .requestL li {display:inline-block; margin-right:10px}
         .evt04 .requestR li {margin-bottom:5px}
         .evt04 .request:after {content:""; display:block; clear:both}
         .evt04 .btn {clear:both; width:500px; margin:0 auto;}
@@ -139,12 +139,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>* 계획중인<br>&nbsp;&nbsp;수강방법</th>
+                                <th>* 무료특강<br>&nbsp;&nbsp;&nbsp;확인경로</th>
                                 <td>
                                     <ul>
-                                        <li><input type="radio" name="register_data2" id="CT1" value="실강수강" /> <label for="CT1">실강수강</label></li>
-                                        <li><input type="radio" name="register_data2" id="CT2" value="동영상수강" /> <label for="CT2">동영상수강</label></li>                                     
-                                        <li><input type="radio" name="register_data2" id="CT7" value="실강+동영상" /> <label for="CT7">실강+동영상</label></li>
+                                        <li><input type="radio" name="register_data2" id="CT1" value="홈페이지" /> <label for="CT1">홈페이지&nbsp;&nbsp;&nbsp;&nbsp;</label></li>
+                                        <li><input type="radio" name="register_data2" id="CT2" value="지인추천" /> <label for="CT2">지인추천</label></li>                                     
+                                        <li><input type="radio" name="register_data2" id="CT3" value="인터넷광고" /> <label for="CT3">인터넷광고</label></li>
+                                        <li><input type="radio" name="register_data2" id="CT4" value="인터넷검색" /> <label for="CT4">인터넷검색 </label></li>
+                                        <li><input type="radio" name="register_data2" id="CT5" value="공무원카페" /> <label for="CT5">공무원카페</label></li>
                                     </ul>
                                 </td>
                             </tr>

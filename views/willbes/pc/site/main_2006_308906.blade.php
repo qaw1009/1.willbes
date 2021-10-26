@@ -69,7 +69,7 @@
             <div class="widthAuto">
                 <img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03.jpg" title="왜 훈샘인가?"  data-aos="fade-left">
                 <div class="youtube">
-                    <iframe src="https://www.youtube.com/embed/TY5OxuSnCLU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/7MZQzT41teQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <a href="https://job.willbes.net/lecture/index/cate/308906/pattern/only?search_order=regist&subject_idx=2171"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_01.jpg" title="훈쌤 전격입성"></a>
                     <a href="https://job.willbes.net/lecture/index/cate/308906/pattern/only?search_order=regist&subject_idx=2172" class="f_right"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_02.jpg" title="훈쌤 전격입성"></a>
                     <a href="https://job.willbes.net/Package/index/cate/308906/pack/648001"><img class="mt30" src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_03.jpg" title="훈쌤 전격입성"></a>

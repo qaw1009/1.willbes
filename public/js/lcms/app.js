@@ -493,7 +493,7 @@ function init_base() {
     // 관리자 정보수정 모달창 오픈
     $('.btn-admin-modify').setLayer({
         "url" : "/lcms/auth/regist/edit",
-        'width' : 900
+        'width' : 760
     });
 
     // 환경설정 모달창 오픈

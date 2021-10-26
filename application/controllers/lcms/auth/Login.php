@@ -51,14 +51,21 @@ class Login extends \app\controllers\BaseController
 
         $admin_id = $this->_reqP('admin_id');
         $wbs_prof_role_idx = '1013';    // WBS 교수관리자 역할식별자
-        $lms_prof_role_idx = $this->config->item('prof_role_idx');  // LMS 교수관리자 역할식별자
+        $lms_prof_role_idx = (array) $this->config->item('prof_role_idx');  // LMS 교수관리자 역할식별자
+
+        // 계정잠금 여부 확인
+        $is_lock = $this->loginModel->checkLoginLock($admin_id);
+        if ($is_lock !== true) {
+            // 로그인 로그 저장 (로그인 계정잠금)
+            $this->loginModel->addLoginLog($admin_id, 'LOCK');
+            return $this->json_error($is_lock, _HTTP_BAD_REQUEST);
+        }
 
         // 관리자 아이디/비밀번호 확인
         $row = $this->loginModel->findAdminForLogin($admin_id, $this->_reqP('admin_passwd', false));
         if (empty($row) === true) {
-            // 로그인 로그 저장
+            // 로그인 로그 저장 (아이디/비밀번호 불일치)
             $this->loginModel->addLoginLog($admin_id, 'NO_MATCH');
-
             return $this->json_error('일치하는 정보가 없습니다.', _HTTP_NOT_FOUND);
         }
 
@@ -83,7 +90,7 @@ class Login extends \app\controllers\BaseController
             }
         }
 
-        // T-zone 일 경우 WBS 접근 권한 확인, WBS,LMS 교수 정보 확인
+        // T-zone 일 경우 WBS 접근 권한 확인, WBS, LMS 교수 정보 확인
         if (SUB_DOMAIN == 'tzone') {
             /*if (empty($row['wRoleIdx']) === true || $row['wRoleIdx'] != $wbs_prof_role_idx) {
                 $is_auth = false;
@@ -100,9 +107,8 @@ class Login extends \app\controllers\BaseController
         }
 
         if ($is_auth === false) {
-            // 로그인 로그 저장
+            // 로그인 로그 저장 (권한없음)
             $this->loginModel->addLoginLog($admin_id, 'NO_AUTH');
-
             return $this->json_error('운영자 권한이 없습니다.', _HTTP_UNAUTHORIZED);
         }
 
@@ -122,11 +128,20 @@ class Login extends \app\controllers\BaseController
             }
 
             if ($is_cert === true) {
-                // 로그인 로그 저장
+                // 로그인 로그 저장 (인증요청)
                 $this->loginModel->addLoginLog($admin_id, $log_ccd_name);
-
-                return $this->json_error('본인 인증 후 로그인 하실 수 있습니다.', _HTTP_NO_PERMISSION);
+                return $this->json_error('본인 인증 후 로그인 하실 수 있습니다.', _HTTP_NO_PERMISSION, 'RequiredCert');
             }
+        }
+
+        // 비밀번호 강제변경
+        if ($row['wIsPasswdExpired'] == 'Y') {
+            // 비밀번호 수정 폼 보안용 flash 세션 생성 (관리자식별자)
+            $this->session->set_flashdata('forced_edit_passwd', $row['wAdminIdx']);
+
+            // 로그인 로그 저장 (비밀번호 강제변경 요청)
+            $this->loginModel->addLoginLog($admin_id, 'PASSWD_REQ');
+            return $this->json_error('비밀번호 사용기한이 만료되었습니다.' . PHP_EOL . '안전한 사용을 위하여, 기존 비밀번호를 변경 후 다시 로그인 해 주십시오.', _HTTP_NO_PERMISSION, 'RequiredPasswd');
         }
 
         // 아이디 저장
@@ -140,7 +155,7 @@ class Login extends \app\controllers\BaseController
     /**
      * 본인인증 폼/인증번호 확인, 로그인 성공 처리
      * @param array $params
-     * @return CI_Output
+     * @return mixed
      */
     public function certification($params = [])
     {
@@ -151,7 +166,7 @@ class Login extends \app\controllers\BaseController
             ];
 
             if ($this->validate($rules) === false) {
-                return;
+                return null;
             }
 
             // 운영자 정보 조회
@@ -176,9 +191,9 @@ class Login extends \app\controllers\BaseController
             // 로그인 로그 저장
             $this->loginModel->addLoginLog($row['wAdminId'], 'CERT_SUCCESS');
 
-            $this->json_result($result, '인증되었습니다. 다시 로그인해 주세요.', $result);
+            return $this->json_result($result, '인증되었습니다. 다시 로그인해 주세요.', $result);
         } else {
-            $this->load->view('lcms/auth/certification', [
+            return $this->load->view('lcms/auth/certification', [
                 'admin_id' => $params[0]
             ], false);
         }
@@ -273,9 +288,9 @@ class Login extends \app\controllers\BaseController
     private function _sendSmsAuthNumber($to, $auth_number)
     {
         try {
-//            $this->load->library('sendSms');
-//            if($this->sendsms->send($to, '윌비스 본인 인증 번호입니다. ['.$auth_number.']를 입력해 주십시요.', '1544-5006') === false){
-            if($this->smsModel->addKakaoMsg($to, null, null, null, 'KAT', 'cert001', [['#{회사명}' => '윌비스', '#{인증번호}' => $auth_number]]) === false) {
+            //$this->load->library('sendSms');
+            //if($this->sendsms->send($to, '윌비스 본인 인증 번호입니다. ['.$auth_number.']를 입력해 주십시요.', '1544-5006') === false) {
+            if ($this->smsModel->addKakaoMsg($to, null, null, null, 'KAT', 'cert001', [['#{회사명}' => '윌비스', '#{인증번호}' => $auth_number]]) === false) {
                 throw new \Exception('메세지 발송에 실패했습니다.\n다시 한번 시도해 주십시요.');
             }
         } catch (\Exception $e) {

@@ -8,7 +8,8 @@ class AdminModel extends WB_Model
         'admin_role' => 'wbs_sys_admin_role',
         'admin_role_r_cp' => 'wbs_sys_admin_role_r_cp',
         'cp' => 'wbs_sys_cp'
-    ];    
+    ];
+    private $_passwd_expire_period = 90;    // 비밀번호 만료기간
 
     public function __construct()
     {
@@ -92,7 +93,7 @@ class AdminModel extends WB_Model
     public function findAdminForModify($admin_idx)
     {
         $column = 'A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail, A.wAdminDeptCcd, A.wAdminPositionCcd, A.wAdminDesc';
-        $column .= ' , A.wIsApproval, A.wApprovalDatm, A.wApprovalAdminIdx, A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
+        $column .= ' , A.wIsApproval, A.wApprovalDatm, A.wApprovalAdminIdx, A.wPasswdExpireDate, A.wPasswdExpirePeriod, A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
         $column .= ' , if(A.wRoleIdx = 0, "", A.wRoleIdx) as wRoleIdx';
         $column .= ' , if(A.wRoleIdx = 0, "", (select wRoleName from ' . $this->_table['admin_role'] . ' where wRoleIdx = A.wRoleIdx and wIsStatus = "Y")) as wRoleName';
         $column .= ' , if(A.wApprovalAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wApprovalAdminIdx and wIsStatus = "Y")) as wApprovalAdminName';
@@ -107,7 +108,7 @@ class AdminModel extends WB_Model
     /**
      * 운영자 아이디 중복 여부 리턴
      * @param string $admin_id
-     * @return bool true : 중복 / false : 중복된 아이디 없음
+     * @return bool [true : 중복 / false : 중복된 아이디 없음]
      */
     public function isDuplicateAdminId($admin_id)
     {
@@ -121,7 +122,7 @@ class AdminModel extends WB_Model
     /**
      * 운영자 등록
      * @param array $input
-     * @param string $type 신청 : apply / 등록 : add
+     * @param string $type [신청 : apply / 등록 : add]
      * @return array|bool
      */
     public function addAdmin($input = [], $type = 'add')
@@ -179,12 +180,18 @@ class AdminModel extends WB_Model
             // 등록 운영자 식별자
             $data['wRegAdminIdx'] = get_var($this->session->userdata('admin_idx'), 0);
 
+            // 비밀번호 만료기간
+            $data['wPasswdExpirePeriod'] = $this->_passwd_expire_period;
+
             // 비밀번호
             $admin_passwd = get_var($data['wAdminPasswd'], '1111');
             unset($data['wAdminPasswd']);
 
             $this->_conn->set($data);
             $this->_conn->set('wAdminPasswd', 'fn_hash("' . $admin_passwd . '")', false);
+
+            // 비밀번호 만료일자
+            $this->_conn->set('wPasswdExpireDate', 'left(date_add(now(), interval ' . $this->_passwd_expire_period . ' day), 10)', false);
 
             // 운영자 승인
             if (isset($data['wIsApproval']) === true && $data['wIsApproval'] == 'Y') {
@@ -215,7 +222,7 @@ class AdminModel extends WB_Model
     /**
      * 운영자 수정
      * @param array $input
-     * @param string $type  sys : 운영자 정보관리 / my : 개인정보 수정
+     * @param string $type [sys : 운영자 정보관리 / my : 개인정보 수정]
      * @return array|bool
      */
     public function modifyAdmin($input = [], $type = 'sys')
@@ -283,14 +290,16 @@ class AdminModel extends WB_Model
     /**
      * 운영자 정보 업데이트
      * @param array $data
-     * @param $admin_idx
+     * @param int $admin_idx
      * @return bool|string
      */
-    private function _modifyAdminByIdx($data = [], $admin_idx)
+    private function _modifyAdminByIdx($data, $admin_idx)
     {
         try {
+            $admin_idx = get_var($admin_idx, '0');
+
             // 기존 운영자 데이터 조회
-            $row = $this->_conn->getFindResult($this->_table['admin'], 'ifnull(wApprovalDatm, "") as wApprovalDatm', [
+            $row = $this->_conn->getFindResult($this->_table['admin'], 'ifnull(wApprovalDatm, "") as wApprovalDatm, wPasswdExpirePeriod', [
                 'EQ' => ['wAdminIdx' => $admin_idx, 'wIsStatus' => 'Y']
             ]);
             if (empty($row) === true) {
@@ -300,6 +309,8 @@ class AdminModel extends WB_Model
             // 비밀번호
             if (empty($data['wAdminPasswd']) === false) {
                 $this->_conn->set($data)->set('wAdminPasswd', 'fn_hash("' . $data['wAdminPasswd'] . '")', false);
+                // 비밀번호 강제변경
+                $this->_conn->set('wPasswdExpireDate', 'left(date_add(now(), interval ' . get_var($row['wPasswdExpirePeriod'], $this->_passwd_expire_period) . ' day), 10)', false);
             } else {
                 unset($data['wAdminPasswd']);
                 $this->_conn->set($data);
@@ -329,6 +340,47 @@ class AdminModel extends WB_Model
             }
         } catch (\Exception $e) {
             return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 운영자 비밀번호 수정
+     * @param string $admin_passwd
+     * @param int $admin_idx
+     * @return array|bool
+     */
+    public function modifyAdminPasswd($admin_passwd, $admin_idx)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $admin_idx = get_var($admin_idx, '0');
+
+            // 기존 운영자 데이터 조회
+            $row = $this->_conn->getFindResult($this->_table['admin'], 'wPasswdExpirePeriod', [
+                'EQ' => ['wAdminIdx' => $admin_idx, 'wIsStatus' => 'Y']
+            ]);
+            if (empty($row) === true) {
+                throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+
+            // 비밀번호 수정
+            $passwd_expire_period = get_var($row['wPasswdExpirePeriod'], $this->_passwd_expire_period);   // 비밀번호 만료일자
+            $is_update = $this->_conn->set('wAdminPasswd', 'fn_hash("' . $admin_passwd . '")', false)
+                ->set('wPasswdExpireDate', 'left(date_add(now(), interval ' . $passwd_expire_period . ' day), 10)', false)
+                ->where('wAdminIdx', $admin_idx)
+                ->update($this->_table['admin']);
+
+            if ($is_update === false) {
+                throw new \Exception('비밀번호 변경에 실패하였습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
         }
 
         return true;

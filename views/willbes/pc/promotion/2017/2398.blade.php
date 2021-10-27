@@ -307,7 +307,6 @@
             </div>--}}
 
         </div>
-
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">
                 <h4 class="NSK-Black">신규 회원 가입 이벤트 유의사항</h4>
@@ -335,8 +334,8 @@
                     $("#authgive_box").html(d).end();
                 },
                 function(ret, status){
-                    alert('진행중인 인강 무료체험 강좌가 없습니다. 관리자에게 문의해주세요.');
-                    location.href = '{{ front_url('/') }}';
+                    //alert('진행중인 인강 무료체험 강좌가 없습니다. 관리자에게 문의해주세요.');
+                    //location.href = '{{ front_url('/') }}';
                 }, false, 'GET', 'html');
         });
 
@@ -389,6 +388,11 @@
                     location.reload();
                 }
             }, showValidateError, null, false, 'alert');
+        }
+
+        {{-- 강좌지급 인증 ajax 로 호출 시 사용--}}
+        function fn_login_check() {
+            {!! sess_data('is_login') !== true ?  login_check_inner_script('로그인 후 이용하여 주십시오.','Y') : 'return true;' !!}
         }
     </script>
 @stop

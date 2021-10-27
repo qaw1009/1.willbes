@@ -49,6 +49,7 @@ class AuthGiveApplyModel extends WB_Model
                              A.AaIdx, A.AgIdx, A.MemIdx, A.Affiliation, A.`Position`, A.EtcContent1, A.EtcContent2, fn_dec(A.PhoneEnc) as Phone
                             ,A.AttachFileName, A.AttachFileReal, A.AttachFilePath
                             ,A.ApplyStatusCcd, A.OrderIdx, A.RegDatm, A.ApprovalDatm, A.CancelDatm
+                            ,B.AgCode,B.Title
                             ,C.ProdCode
                             ,D.ProdName
                             ,G.SubjectName

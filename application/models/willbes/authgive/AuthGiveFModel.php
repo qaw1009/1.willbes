@@ -120,24 +120,30 @@ class AuthGiveFModel extends WB_Model
             $file_name = $ag_idx.'-'.date("YmdHis").rand(100,999);
 
             //첨부자료 등록
-            $upload_result = $this->upload->uploadFile('file','attach_file' ,$file_name, $file_path,'overwrite:false');
+            $upload_result = $this->upload->uploadFile('file','auth_attach_file' ,$file_name, $file_path,'overwrite:false');
 
             $input_data = [
                 'AgIdx' => $ag_idx,
                 'MemIdx' => $mem_idx,
-                'Affiliation' => element('affiliation', $input),
-                'Position' => element('position', $input),                  //현 미사용
-                'EtcContent1' => element('etc_content1', $input),   //현 미사용
+                'Affiliation' => element('auth_affiliation', $input),
+                'Position' => element('auth_position', $input),                  //현 미사용
+                'EtcContent1' => element('etc_content1', $input),
                 'EtcContent2' => element('etc_content2', $input),   //현 미사용
-                'AttachFileReal' => $upload_result[0]['client_name'],
-                'AttachFileName' => $upload_result[0]['file_name'],
-                'AttachFilePath' => $this->upload->_upload_url.$file_path.'/',
                 'ApplyProducts' => implode(',', element('app_prod_code', $input)),
                 'ApplyStatusCcd' => $apply_code,
                 'RegIp' => $this->input->ip_address()
             ];
+
+            if(empty($upload_result) !== true) {
+                $input_data = array_merge_recursive($input_data, [
+                    'AttachFileReal' => $upload_result[0]['client_name'],
+                    'AttachFileName' => $upload_result[0]['file_name'],
+                    'AttachFilePath' => $this->upload->_upload_url.$file_path.'/',
+                ]);
+            }
+
             // 인증 신청정보 등록
-            if($this->_conn->set($input_data)->set('PhoneEnc', 'fn_enc("'. element('phone', $input).'")',false)->insert($this->_table['apply']) === false) {
+            if($this->_conn->set($input_data)->set('PhoneEnc', 'fn_enc("'. element('auth_phone', $input).'")',false)->insert($this->_table['apply']) === false) {
                 throw new \Exception('인증 신청에 실패했습니다.');
             }
 
@@ -182,7 +188,7 @@ class AuthGiveFModel extends WB_Model
 
                 // 문자 발송
                 if($auth_data['IsUseSms'] === 'Y' && empty($auth_data['SendTel']) === false && empty($auth_data['SmsContent']) === false ) {
-                    if($this->smsFModel->addKakaoMsg(element('phone', $input), $auth_data['SmsContent'], $auth_data['SendTel'], null, 'KFT') === false) {
+                    if($this->smsFModel->addKakaoMsg(element('auth_phone', $input), $auth_data['SmsContent'], $auth_data['SendTel'], null, 'KFT') === false) {
                         //throw new \Exception('SMS 발송이 실패했습니다.');
                     }
                 }

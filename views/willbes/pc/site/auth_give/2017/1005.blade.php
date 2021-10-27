@@ -154,7 +154,7 @@
                         <li>이벤트 진행에 따른 저작물에 대한 저작권은 ㈜윌비스에 귀속됩니다.</li>
                     </ul>
 
-                    <input name="is_chk" type="checkbox" value="Y" id="is_chk" /> <label for="is_chk"> 이벤트참여에 따른 개인정보 및 마케팅 활용 동의하기(필수)</label>
+                    <input name="auth_is_chk" type="checkbox" value="Y" id="auth_is_chk" /> <label for="is_chk"> 이벤트참여에 따른 개인정보 및 마케팅 활용 동의하기(필수)</label>
                 </div>
 
                 <h5 class="mt100">재학생 인증 <span>* 윌비스임용의 본 이벤트의 대상자는 임용시험준비를 시작하는 대학교(원)의 재학생입니다.</span></h5>
@@ -173,17 +173,17 @@
                             <th>윌비스ID</th>
                             <td>{{ sess_data('mem_id') }}</td>
                             <th>연락처</th>
-                            <td><input type="text" id="phone" name="phone" value="{{ sess_data('mem_phone') }}" maxlength="11" style="width:90%" title="연락처" numberOnly /></td>
+                            <td><input type="text" id="auth_phone" name="auth_phone" value="{{ sess_data('mem_phone') }}" maxlength="11" style="width:90%" title="연락처" numberOnly /></td>
                         </tr>
                         <tr>
                             <th>대학교(원) / <br />
                                 (학부)학과</th>
                             <td>
-                                <input type="text" id="affiliation" name="affiliation" title="대학교(원) / (학부)학과"  maxlength="50" style="width:90%" />
+                                <input type="text" id="auth_affiliation" name="auth_affiliation" title="대학교(원) / (학부)학과"  maxlength="50" style="width:90%" />
                             </td>
                             <th>재학생인증<br />파일</th>
                             <td colspan="3">
-                                <input type="file" id="attach_file" name="attach_file" style="width:60%" onChange="chkUploadFile(this)" title="재학생인증 파일"/>&nbsp;&nbsp;
+                                <input type="file" id="auth_attach_file" name="auth_attach_file" style="width:60%" onChange="chkUploadFile(this)" title="재학생인증 파일"/>&nbsp;&nbsp;
                                 <a href="#none" onclick="del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" style="vertical-align:middle !important" alt="삭제"></a> <br />
                                 *파일의 크기는 2MB까지 업로드 가능, 이미지파일 (jpg, png등) 또는 PDF 파일 첨부
                             </td>
@@ -482,24 +482,24 @@
             });
 
             var addValidate = function() {
-                if($regi_form.find("input:checkbox[name='is_chk']").is(":checked") === false) {
+                if($regi_form.find("input:checkbox[name='auth_is_chk']").is(":checked") === false) {
                     alert("이벤트참여에 따른 개인정보 및 마케팅 활용에 동의하셔야 신청이 가능합니다.");
-                    $regi_form.find("input:checkbox[name='is_chk']").focus();
+                    $regi_form.find("input:checkbox[name='auth_is_chk']").focus();
                     return false;
                 }
-                if($regi_form.find("input:text[name='phone']").val() === '') {
-                    alert($regi_form.find("input:text[name='phone']").prop('title')+" (을)를 입력해 주세요.");
-                    $regi_form.find("input:text[name='phone']").focus();
+                if($regi_form.find("input:text[name='auth_phone']").val() === '') {
+                    alert($regi_form.find("input:text[name='auth_phone']").prop('title')+" (을)를 입력해 주세요.");
+                    $regi_form.find("input:text[name='auth_phone']").focus();
                     return false;
                 }
-                if($regi_form.find("input:text[name='affiliation']").val() === '') {
-                    alert($regi_form.find("input:text[name='affiliation']").prop('title')+" (을)를 입력해 주세요.");
-                    $regi_form.find("input:text[name='affiliation']").focus();
+                if($regi_form.find("input:text[name='auth_affiliation']").val() === '') {
+                    alert($regi_form.find("input:text[name='auth_affiliation']").prop('title')+" (을)를 입력해 주세요.");
+                    $regi_form.find("input:text[name='auth_affiliation']").focus();
                     return false;
                 }
-                if($regi_form.find("input:file[name='attach_file']").val() === '') {
-                    alert($regi_form.find("input:file[name='attach_file']").prop('title')+" (을)를 등록해 주세요.");
-                    $regi_form.find("input:file[name='attach_file']").focus();
+                if($regi_form.find("input:file[name='auth_attach_file']").val() === '') {
+                    alert($regi_form.find("input:file[name='auth_attach_file']").prop('title')+" (을)를 등록해 주세요.");
+                    $regi_form.find("input:file[name='auth_attach_file']").focus();
                     return false;
                 }
 
@@ -554,9 +554,9 @@
         }
 
         function del_file(){
-            if($("#attach_file").val() != '') {
+            if($("#auth_attach_file").val() != '') {
                 if(confirm("첨부파일을 삭제 하시겠습니까?")) {
-                    $("#attach_file").val("");
+                    $("#auth_attach_file").val("");
                 }
             }
         }

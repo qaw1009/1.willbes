@@ -203,7 +203,6 @@
                 </div>
             </div>
         </form>
-
 <script type="text/javascript">
     var $auth_form = $('#auth_form');
     var $group_array = {!! json_encode($data_product['ess_group']) !!};

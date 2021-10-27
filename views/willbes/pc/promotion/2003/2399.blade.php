@@ -39,6 +39,7 @@
         .evt04 .btn {clear:both; width:500px; margin:0 auto;}
         .evt04 .btn a {display:block; text-align:center; font-size:25px; color:#fff; background:#000; padding:20px 0; margin-top:30px; border-radius:50px}
         .evt04 .btn a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2);}
+        .attendee {line-height:1.25;}
 
         .evtInfo {padding:80px 0; background:#e9e9e9; color:#555; font-size:14px}
 		.evtInfoBox { width:1120px; margin:0 auto; text-align:left; line-height:1.5}
@@ -152,7 +153,8 @@
                                 </td>
                             </tr>
                         </table>
-                    </div>
+                        <p class="attendee">기본서 무료제공 등 수강특전은<br>무료특강 신청접수 및 노량진 실강 참석자에 한해 제공됩니다.</p>
+                    </div>                  
                     <div class="requestR">
                         <h3 class="NSK-Black">* 개인정보 수집 및 이용에 대한 안내</h3>
                         <ul>

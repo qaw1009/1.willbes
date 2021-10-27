@@ -28,43 +28,46 @@
         .evt01 .wrap p {position:absolute; top:905px; width:100%; font-size:14px; text-align:center; z-index: 2;}
         .evt01 .wrap01 h4 {font-size:30px; color:#000; text-align:left; margin:50px 0 20px; padding-left:20px}
 
-        .onLecFree {width:1120px; margin:0 auto; background:#f2f2f2}
-        .onLecFreeBox {padding:0 30px 50px; font-size:14px;}
+        .onLecFree {width:1120px; margin:0 auto; background:#fff; padding-bottom:50px;}
+        .onLecFreeBox {padding:0 30px 50px; font-size:14px; text-align:left; padding-top:50px}
         .onLecFreeBox h4 {font-size:64px; font-weight:bold; margin-bottom:50px; text-align:center; color:#1c3d1f}
         .onLecFreeBox h5 {font-size:24px; color:#1c3d1f; text-align:left; padding-bottom:10px; border-bottom:2px solid #1c3d1f; margin:50px 0 20px}
         .onLecFreeBox input[type=checkbox] {width:20px; height:20px; vertical-align:middle}
-        .onLecFree-txt01 {text-align:left; line-height:1.3}
-        .onLecFree-txt01 ul {border:1px solid #e4e4e4; padding:20px; height:150px; overflow-y:auto; margin-bottom:10px}
+        .onLecFree-txt01 {text-align:left; line-height:1.3; }
+        .onLecFree-txt01 ul {border:1px solid #e4e4e4; padding:20px; height:150px; overflow-y:auto; margin-bottom:10px; background:#fff}
         .onLecFreeInfo li,
         .onLecFree-txt01 li {margin-bottom:10px; list-style-type:decimal; margin-left:20px; text-align:left; font-size:14px}
 
-        .onLecFreeBox .evtMenu {}
         .onLecFreeBox .tabs li {display:inline; float:left; width:9.090909%}
-        .onLecFreeBox .tabs li a {display:block; border:1px solid #49569e; background:#49569e; color:#fff; font-size:14px; height:40px; line-height:40px; text-align:center; margin-right:1px}
+        .onLecFreeBox .tabs li a {display:block; border:1px solid #6ca76f; background:#6ca76f; color:#fff; font-size:14px; height:40px; line-height:40px; text-align:center; margin-right:1px}
         .onLecFreeBox .tabs li a:hover,
-        .onLecFreeBox .tabs li a.active {border-bottom:1px solid #fff; color:#49569e; background:#fff}
+        .onLecFreeBox .tabs li a.active {border-bottom:1px solid #fff; color:#6ca76f; background:#fff}
         .onLecFreeBox .tabs:after {content:''; display:block; clear:both}
 
-        .onLecFreeBox .evtMenu .infotxt {font-size:14px; margin:30px 0 10px; height:30px; line-height:30px;}
+        .onLecFreeBox .evtMenu .infotxt {font-size:14px; margin:30px 10px 10px; height:30px; line-height:30px;}
         .onLecFreeBox .evtMenu .infotxt a {float:right; display:inline-block; background:#1a8ccc; color:#fff;  padding:0 30px}
         .onLecFreeBox .evtMenu .infotxt:after {content:''; display:block; clear:both}
-        .onLecFreeBox .evtMenu .choiceLec {border-top:1px solid #000; border-bottom:1px solid #000; padding:10px; line-height:1.4; font-size:12px; height:90px; overflow-y:scroll}
+        .onLecFreeBox .evtMenu .choiceLec {border-top:1px solid #000; border-bottom:1px solid #000; padding:10px; line-height:1.4; font-size:12px; height:90px; overflow-y:scroll; background:#fff}
         .onLecFreeBox .evtMenu .choiceLec div {margin-bottom:8px}
         .onLecFreeBox .evtMenu .choiceLec span:nth-child(1) {display:inline-block; width:80px; color:#1a8ccc}
         .onLecFreeBox .evtMenu .choiceLec span:nth-child(2) {display:inline-block; width:80px;}
 
-        .onLecFreeBox .tabCts {padding-top:180px}
+        .onLecFreeBox .tabCts {padding-top:180px;}
         .onLecFreeBox #tab01 {padding-top:20px;}
+        .onLecFreeBox .lecTable .w-info dt:last-child {margin-left:-51%;}
+
 
         .evt_table{margin-bottom:30px;}
         .evt_table table{width:100%; border:1px solid #c1c1c1}
         .evt_table table tr{border-bottom:1px solid #c1c1c1}
-        .evt_table table tbody th{background:#e4e4e4; color:#333; font-size:16px; font-weight:300; border-bottom:1px solid #c1c1c1; padding:10px}
-        .evt_table table tbody td{padding:0 10px; font-size:14px; color:#000; font-weight:300; text-align:left; padding:10px}
+        .evt_table table tbody th{background:#e4e4e4; color:#333; font-size:16px; font-weight:300; border-bottom:1px solid #c1c1c1; padding:10px; text-align:center}
+        .evt_table table tbody td{font-size:14px; color:#000; font-weight:300; text-align:left; padding:10px}
         .evt_table table tbody td:last-of-type{border-right:0}
         .evt_table table tbody td.num{color:#999; font-weight:200}
         .evt_table input[type=text] {height:28px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; vertical-align:middle}
         .evt_table input[type=file] {height:30px; color:#494a4d; vertical-align:middle;}
+
+        .willbes-Layer-Box{left:50% !important; margin-left:-490px; border:2px solid #000 !important;}        
 
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -104,12 +107,16 @@
                     @if(empty($arr_base['display_product_data']) === false)
                         @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
                     @endif     
-                </div>         
+                </div>   
+                
+                {{-- 인강무료체험신청 --}}
+                <div id="authgive_box"></div>
             </div>
 
-            {{-- 인강무료체험신청 --}}
-            <div id="authgive_box"></div>
+            
         </div>
+
+
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">
                 <h4 class="NSK-Black">신규 회원 가입 이벤트 유의사항</h4>

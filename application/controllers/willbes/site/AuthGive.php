@@ -10,12 +10,13 @@ class AuthGive extends \app\controllers\FrontController
 
     public function index($params = [])
     {
-        if(empty($params) || empty($params['code'])) {
+        $cate_code = element('cate', $params);
+        $ag_code = element('code', $params);
+        $promotion = element('promo', $params);    //프로모션 코드
+
+        if(empty($params) || empty($ag_code)) {
             show_alert('잘못된 접근 입니다.', 'back');
         }
-
-        $cate_code = $params['cate'];
-        $ag_code = $params['code'];
 
         $arr_condition = [
             'EQ' => ['A.IsUse' => 'Y'],
@@ -63,7 +64,7 @@ class AuthGive extends \app\controllers\FrontController
         //개인신청정보 추출
         $apply_data = null;
         if($this->session->userdata('is_login')) {
-            $apply_data = $this->authGiveFModel->findAuthApplyInfo();
+            $apply_data = $this->authGiveFModel->findAuthApplyInfo(['EQ'=>['AgIdx'=>$data['AgIdx']]]);
         }
 
         $is_apply = 'Y';    //신청가능여부 - Y : 가능
@@ -86,7 +87,7 @@ class AuthGive extends \app\controllers\FrontController
             }
         }
 
-        $this->load->view('site/auth_give/' . $data['SiteCode'] .'/'. $ag_code, [
+        $this->load->view('site/auth_give/' . $data['SiteCode'] .'/'. $ag_code .(empty($promotion) ? '' : '_'.$promotion), [
             'data' => $data,
             'data_product' => [
                 'subject' => $subject_group,
@@ -97,6 +98,7 @@ class AuthGive extends \app\controllers\FrontController
             ],
             'is_apply' => $is_apply,
             'is_apply_msg' => $is_apply_msg,
+            'promotion' => $promotion
         ]);
     }
 
@@ -107,8 +109,8 @@ class AuthGive extends \app\controllers\FrontController
     {
         $rules = [
             ['field'=>'ag_idx', 'label' => '인증코드', 'rules' => 'trim|required'],
-            ['field'=>'phone', 'label' => '연락처', 'rules' => 'trim|required'],
-            ['field'=>'affiliation', 'label' => '대학교/학부', 'rules' => 'trim|required'],
+            ['field'=>'auth_phone', 'label' => '연락처', 'rules' => 'trim|required'],
+            ['field'=>'auth_affiliation', 'label' => '대학교/학부', 'rules' => 'trim|required'],
             ['field'=>'app_prod_code[]', 'label' => '강좌 선택', 'rules' => 'trim|required'],
         ];
 

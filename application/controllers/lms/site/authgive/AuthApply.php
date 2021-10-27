@@ -38,6 +38,7 @@ class AuthApply extends \app\controllers\BaseController
     {
         $excel = (empty($params) ? null : $params[0]);
 
+        $search_ag_idx = $this->_reqP('search_ag_idx');
         $search_member_opt = $this->_reqP('search_member_opt');
         $search_member = $this->_reqP('search_member');
         $search_product_opt = $this->_reqP('search_product_opt');
@@ -45,6 +46,7 @@ class AuthApply extends \app\controllers\BaseController
 
         $arr_condition = [
             'EQ' => [
+                'A.AgIdx' => $search_ag_idx,
                 'B.SiteCode' => $this->_reqP('search_site_code'),
                 'A.ApplyStatusCcd' => $this->_reqP('search_apply_ccd'),
             ],
@@ -89,13 +91,16 @@ class AuthApply extends \app\controllers\BaseController
                 'data' => $list,
             ]);
 
+
         } else {
 
             set_time_limit(0);
             ini_set('memory_limit', $this->_memory_limit_size);
 
             $add_column = '
-                A.AaIdx,J.MemId, J.MemName, fn_dec(A.PhoneEnc) as Phone, A.Affiliation
+                B.AgCode,B.Title
+                ,A.AaIdx,J.MemId, J.MemName, fn_dec(A.PhoneEnc) as Phone, A.Affiliation
+                ,D.ProdCode
                 ,concat(\'[\', G.SubjectName , \'] \', H.wProfName_String, \' \',D.ProdName)
                 ,A.RegDatm
                 ,K.wAdminName as ApprovalAdminName, A.ApprovalDatm
@@ -106,7 +111,7 @@ class AuthApply extends \app\controllers\BaseController
             $list = $list = $this->authGiveApplyModel->listAuthApply(false, $arr_condition, null, null, [], $add_column);
             $file_name = '수강인증목록_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
 
-            $headers = ['신청식별자', '회원명', '회원아이디', '인증시연락처', '신청정보', '신청강좌', '인증신청일', '승인자', '승인일','취소자', '취소일', '승인상태'];
+            $headers = ['인증코드', '인증제목', '신청식별자', '회원명', '회원아이디', '인증시연락처', '신청정보', '신청강좌코드', '신청강좌', '인증신청일', '승인자', '승인일','취소자', '취소일', '승인상태'];
 
             // export excel
             /*----  다운로드 정보 저장  ----*/
@@ -121,7 +126,6 @@ class AuthApply extends \app\controllers\BaseController
             $this->load->library('excel');
             $this->excel->exportHugeExcel($file_name, $list, $headers);
         }
-
     }
 
     //다운로드

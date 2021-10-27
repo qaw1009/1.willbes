@@ -11,8 +11,9 @@
                     <div class="col-md-5 form-inline">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', false, $arr_site_code) !!}
                         <select class="form-control" id="search_ag_idx" name="search_ag_idx">
+                            <option value="">인증관리</option>
                             @foreach($auth_list as $row)
-                            <option value="{{ $row['AgIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['Title'] }}</option>
+                            <option value="{{ $row['AgIdx'] }}" class="{{ $row['SiteCode'] }}">[{{$row['AgCode']}}] {{ $row['Title'] }}</option>
                             @endforeach
                         </select>
                         <select class="form-control" id="search_apply_ccd" name="search_apply_ccd">
@@ -67,6 +68,7 @@
                         <tr>
                             <th>NO</th>
                             <th class="rowspan">선택</th>
+                            <th class="rowspan">인증코드</th>
                             <th class="rowspan">회원정보</th>
                             <th class="rowspan">신청정보</th>
                             <th class="rowspan">첨부</th>
@@ -119,6 +121,9 @@
                         }},
                     {'data' : 'AaIdx', 'class': 'text-center', 'render' : function(data,type,row,meta) {
                             return '<input type="checkbox" id="checkIdx'+row.AaIdx+ '" name="checkIdx[]" class="flat target-crm-member" value="'+row.AaIdx+'" data-mem-idx="'+row.MemIdx+'" data-approval="' + row.ApplyStatusCcd + '"/>';
+                        }},
+                    {'data' : 'AgCode', 'class': 'text-center', 'render' : function(data,type,row,meta) {
+                            return data;
                         }},
                     {'data' : 'MemId', 'class': 'text-center', 'render' : function(data,type,row,meta) {
                             return row.MemName+'('+row.MemId+')<BR>'+row.Phone;

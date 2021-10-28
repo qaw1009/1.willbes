@@ -89,6 +89,7 @@
                     {!! csrf_field() !!}
                     {!! method_field('POST') !!}
                     <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
+                    <input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/>
                     <input type="hidden" name="register_type" value="promotion"/>
                     <input type="hidden" name="register_name" value="{{sess_data('mem_name')}}"/>
                     <input type="hidden" name="register_tel" value="{{sess_data('mem_phone')}}"/>

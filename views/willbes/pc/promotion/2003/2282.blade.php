@@ -82,7 +82,7 @@
 
         .wb_preview {background:#54a783;}
 
-        .wb_cts09 {padding-bottom:100px;}
+        .wb_cts09 {padding-bottom:50px;}
         .wb_cts10 {background:url(https://static.willbes.net/public/images/promotion/2021/10/2282_10_bg.jpg) no-repeat center top;}
 
         .emo_area {padding-bottom:100px;}
@@ -205,15 +205,18 @@
             </div>
         </div>
 
+        <div class="evtCtnsBox wb_cts09" >
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/2282_09.jpg" alt="덕밍아웃하라"/>
+                <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2401" title="수강후기 자세히 보기" target="_blank" style="position: absolute;left: 30.01%;top: 82.3%;width: 39.57%;height: 8.9%;z-index: 2;"></a>
+            </div>        
+        </div>
+
         <!--퀴즈팝업-->
         <div id="popup" class="Pstyle">
             <span class="b-close">X</span>
             <div id="quiz_layer_box"></div>
-        </div>
-
-        <div class="evtCtnsBox wb_cts09" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_09.jpg" alt="덕밍아웃하라"/>           
-        </div>
+        </div>                
         <!--
         <div class="emo_area">
             {{-- 이모티콘 댓글 --}}

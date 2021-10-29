@@ -168,9 +168,10 @@
         <div class="evtCtnsBox wb_cts04" id="pkglec">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1071_04_01.jpg" alt=""/> 
             <ul>
-                <li><a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/184023" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_04_02.png" alt=""/> </a></li>
-                <li><a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/184024" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_04_03.png" alt=""/> </a></li>
-                <li><a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/184021" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_04_04.png" alt=""/> </a></li>
+                <li><a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/186551" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/10/1071_04_05.png" alt="전자공학"/> </a></li>
+                <li><a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/184023" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/10/1071_04_02.png" alt="통신기술직"/> </a></li>
+                <li><a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/184024" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/10/1071_04_03.png" alt="전송기술직"/> </a></li>
+                <li><a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/184021" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/10/1071_04_04.png" alt="전기직"/> </a></li>
             </ul>
 
         </div>       

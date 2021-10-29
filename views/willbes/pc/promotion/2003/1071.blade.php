@@ -188,6 +188,7 @@
 
             {{--전송기술 9급--}}
             <div class="tabContents" id="tab1">
+                <h3 class="NGEB">전송기술 9급</h3>
                 <p>● 전자공학</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
@@ -203,14 +204,14 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2021 최우영 기초전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169233" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183992" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
                         <td>이론</td>
-                        <td>2021 최우영 전자공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/172882" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/186253" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>디지털공학</td>
@@ -221,8 +222,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 전자공학 단원별문제풀이+ 신규 문제추가 (2020 + 2021)</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176277" target="_blank">수강신청</a></td>
+                        <td>2022 전자공학[1권] 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/187095" target="_blank">수강신청</a></td>
                     </tr>         
                     <tr>
                         <td>전자공학</td>
@@ -259,26 +260,26 @@
                     <tr>
                         <td>무선공학</td>
                         <td>이론</td>
-                        <td>2021 최우영 무선/통신 공통 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169242" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 무선/통신 공통 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183993" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>무선공학</td>
                         <td>이론</td>
-                        <td>2021 최우영 무선공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/172885" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 무선공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/186254" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>무선공학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 무선/통신 공통 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174932" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 무선/통신 공통 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/187094" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>무선공학</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 무선공학 단원별문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/158348" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 무선공학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177170" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>무선공학</td>
@@ -291,6 +292,7 @@
 
             {{--통신기술 9급--}}
             <div class="tabContents" id="tab2">
+                <h3 class="NGEB">통신기술 9급</h3>
                 <p>● 전자공학</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
@@ -306,14 +308,14 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2021 최우영 기초전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169233" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183992" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
                         <td>이론</td>
-                        <td>2021 최우영 전자공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/172882" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/186253" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>디지털공학</td>
@@ -324,8 +326,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 전자공학 단원별문제풀이+ 신규 문제추가 (2020 + 2021)</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176277" target="_blank">수강신청</a></td>
+                        <td>2022 전자공학[1권] 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/187095" target="_blank">수강신청</a></td>
                     </tr>  
                     <tr>
                         <td>전자공학</td>
@@ -362,8 +364,8 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
-                        <td>2021 최우영 무선/통신 공통 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169242" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 무선/통신 공통 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183993" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
@@ -374,14 +376,14 @@
                     <tr>
                         <td>통신공학</td>
                         <td>이론</td>
-                        <td>2021 최우영 통신이론 (이론+문풀)</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174931" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 통신이론 (이론+문풀)</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183993" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 무선/통신 공통 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174932" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 무선/통신 공통 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/187094" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>
@@ -399,6 +401,7 @@
             </div>
 
             <div class="tabContents" id="tab3">
+                <h3 class="NGEB">통신직 7급</h3>
                 <p>● 통신이론/공학</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
@@ -414,8 +417,8 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
-                        <td>2021 최우영 무선/통신 공통 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169242" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 무선/통신 공통 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/186254" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
@@ -426,14 +429,14 @@
                     <tr>
                         <td>통신공학</td>
                         <td>이론</td>
-                        <td>2021 최우영 통신이론 (이론+문풀)</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174931" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 통신이론 (이론+문풀)</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/187093" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 무선/통신 공통 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174932" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 무선/통신 공통 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/187094" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>
@@ -476,6 +479,7 @@
             </div>
 
             <div class="tabContents" id="tab4">
+                <h3 class="NGEB">전기직 9급</h3>
                 <p>● 전기이론</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
@@ -491,8 +495,8 @@
                     <tr>
                         <td>전기이론</td>
                         <td>이론</td>
-                        <td>2021 최우영 전기이론 기본강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169231" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 전기이론 기본강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183991" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기이론</td>
@@ -528,8 +532,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>이론</td>
-                        <td>2021 최우영 전기기기 기본강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171763" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 전기기기 기본강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/184022" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
@@ -553,6 +557,7 @@
             </div>
 
             <div class="tabContents" id="tab5">
+                <h3 class="NGEB">전기직 7급</h3>
                 <p>● 전기기기</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
@@ -568,8 +573,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>이론</td>
-                        <td>2021 최우영 전기기기 기본강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171763" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 전기기기 기본강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/184022" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
@@ -660,14 +665,14 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2021 최우영 기초전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169233" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183992" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
                         <td>이론</td>
-                        <td>2021 최우영 전자공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/172882" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/186253" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>디지털공학</td>
@@ -678,8 +683,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 전자공학 단원별문제풀이+ 신규 문제추가 (2020 + 2021)</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176277" target="_blank">수강신청</a></td>
+                        <td>2022 전자공학[1권] 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/187095" target="_blank">수강신청</a></td>
                     </tr>     
                     <tr>
                         <td>전자공학</td>
@@ -733,8 +738,8 @@
                     <tr>
                         <td>전자회로</td>
                         <td>문제풀이</td>
-                        <td>2020 [군무원] 최우영 전자회로 최종모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/166761" target="_blank">수강신청</a></td>
+                        <td>2021 [군무원] 최우영 전자회로 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/182994" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
 
@@ -754,14 +759,14 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2021 최우영 기초전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169233" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183992" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
                         <td>이론</td>
-                        <td>2021 최우영 전자공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/172882" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/186253" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>디지털공학</td>
@@ -772,8 +777,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 전자공학 단원별문제풀이+ 신규 문제추가 (2020 + 2021)</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176277" target="_blank">수강신청</a></td>
+                        <td>2022 전자공학[1권] 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/187095" target="_blank">수강신청</a></td>
                     </tr>       
                     <tr>
                         <td>전자공학</td>
@@ -816,8 +821,8 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
-                        <td>2021 최우영 무선/통신 공통 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/169242" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 무선/통신 공통 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183993" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
@@ -828,14 +833,14 @@
                     <tr>
                         <td>통신공학</td>
                         <td>이론</td>
-                        <td>2021 최우영 통신이론 (이론+문풀)</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174931" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 통신이론 (이론+문풀)</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/187093" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 무선/통신 공통 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174932" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 무선/통신 공통 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/187094" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>

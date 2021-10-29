@@ -357,8 +357,8 @@
 					<tr>
 						<td>토양학</td>
 						<td>문제풀이</td>
-						<td>2021 장사원 토양학 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174434" target="_blank">수강신청</a></td>
+						<td>2022 장사원 토양학 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/186616" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
             </div>
@@ -507,8 +507,8 @@
 					<tr>
 						<td>토양학</td>
 						<td>문제풀이</td>
-						<td>2021 장사원 토양학 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174434" target="_blank">수강신청</a></td>
+						<td>2022 장사원 토양학 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/186616" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
             </div>

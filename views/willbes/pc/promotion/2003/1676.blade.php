@@ -23,7 +23,7 @@
         .evttop_banners {background:#060606;} 
         .evttop_banners a:hover {border:1px solid #fef200}
 
-        .evttop {background:url(https://static.willbes.net/public/images/promotion/2021/02/1676_top_bg.jpg) no-repeat center top; }
+        .evttop {background:url(https://static.willbes.net/public/images/promotion/2021/10/1676_top_bg.jpg) no-repeat center top; }
 
         .box_book{width:920px; margin:50px auto;border-top:2px solid #22197f;}
 
@@ -69,10 +69,10 @@
             </map>        
         </div>  
 
-        @if(time() < strtotime('202110250000'))
+        @if(time() < strtotime('202111150000'))
             <div class="evtCtnsBox evttop_banners">
                 <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/09/1676_top_banner.jpg">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/10/1676_top_banner.jpg">
                     <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="" style="position: absolute; left: 53.57%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>
                     <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" title="" style="position: absolute; left: 74.29%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>  
                 </div>        
@@ -81,7 +81,7 @@
         @endif
         
         <div class="evtCtnsBox evttop">                 
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1676_top.jpg"  title="더켠의 반반한 밤">                        
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/1676_top.jpg"  title="더켠의 반반한 밤">                        
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -108,9 +108,9 @@
         <div class="evtCtnsBox evt02" id="pairing">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
-                <ul id="slidesImg4">                   
-                    {{--<li><img src="https://static.willbes.net/public/images/promotion/2021/09/1676_02_September.jpg" /></li>--}}
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/09/1676_02_October.jpg" /></li>
+                <ul id="slidesImg4">                    
+                    {{--<li><img src="https://static.willbes.net/public/images/promotion/2021/09/1676_02_October.jpg" /></li>--}}
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/10/1676_02_November.jpg" /></li>
                 </ul>    
 
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>
@@ -123,15 +123,14 @@
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt03">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/1676_03_01.jpg" name="evt1" id="evt1">
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/1676_03_01.jpg" name="evt1" id="evt1">
                 <a href="#to_go" title="출석체크하러 가기" style="position: absolute; left: 30.89%; top: 89.05%; width: 38.39%; height: 5.44%; z-index: 2;"></a>
             </div>
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/1676_03_02.png" name="evt3" id="evt3">
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/185903" target="_blank" title="10월방송 다시보기" style="position: absolute; left: 11.7%; top: 75.72%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/10/1676_03_02.png" name="evt3" id="evt3">
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/185910" target="_blank" title="11월방송 다시보기" style="position: absolute; left: 11.7%; top: 75.72%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/185909" target="_blank" title="7~12월방송 다시보기" style="position: absolute; left: 38.93%; top: 75.57%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" title="한덕현 영어 tpass" style="position: absolute; left: 66.88%; top: 75.86%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
-                
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" title="한덕현 영어 tpass" style="position: absolute; left: 66.88%; top: 75.86%; width: 21.34%; height: 9.34%; z-index: 2;"></a>                
             </div>
             <!-- <div class="wrap" id="evt4">
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/1676_03_03.jpg">
@@ -243,9 +242,9 @@
                             - PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br>
                             - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.</li>
                             <li>열공 출첵 이벤트 관련<br>
-                            - 본 이벤트는 로그인 후 참여 가능하며, 9/27(월)~10/27(수)까지 총 20회 진행됩니다. (*토/일 제외)<br>
-                            - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 실전덕후단 LIVE 토크쇼 (10/18(월)) 20:00~21:00, 모의고사 해설 LIVE (10/25(월)) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
-                            - 당첨자 안내 공지는 10/28(목) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
+                            - 본 이벤트는 로그인 후 참여 가능하며, 11/8(월)~12/3(수)까지 총 20회 진행됩니다. (*토/일 제외)<br>
+                            - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (11/15(월), 11/29(월) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
+                            - 당첨자 안내 공지는 12/6(월) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
                         </ol>
                     </dd>
                 </dl>

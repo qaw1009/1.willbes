@@ -6,8 +6,9 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
+            max-width:2000px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -15,16 +16,17 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
         .evt00 {background:#f4f1f3}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/10/2395_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/11/2395_top_bg.jpg) no-repeat center top;}
 
-        .evt01 {background:#c40002;}     
+        .evt01 {background:#c45f33;}     
 
-        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/10/2395_03_bg.jpg) no-repeat center top;padding-bottom:100px;}
+        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/11/2395_03_bg.jpg) repeat-x center top; padding-bottom:100px;}
         
         /*타이머*/
         .time {width:1120px; margin:0 auto; text-align:center; padding:20px 0}
@@ -49,7 +51,7 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox evt00 jbMenu cf" data-aos="fade-down">
+        <div class="evtCtnsBox evt00 jbMenu cf">
             <div class="time NSK-Black" id="newTopDday">
                 <ul>
                     <li>
@@ -76,21 +78,21 @@
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2395_top.jpg" alt=""/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2395_top.jpg" alt=""/>
                 <a href="#special_lecture" title="특강 바로보기" style="position: absolute;left: 32.98%;top: 33.33%;width: 33.46%;height: 5.77%;z-index: 2;"></a>       
             </div>        
         </div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-left"> 
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2395_01.jpg" alt="" />
+        <div class="evtCtnsBox evt01"> 
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2395_01.jpg" alt=""  data-aos="fade-up"/>
         </div>                   
 
         <div class="evtCtnsBox evt02" data-aos="fade-up"> 
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2395_02.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2395_02.jpg" alt="" />
         </div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-up" id="special_lecture">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2395_03.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2395_03.jpg" alt="" />
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif

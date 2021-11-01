@@ -7,7 +7,8 @@ class DbBackupLogModel extends WB_Model
     private $_table = [
         'backup' => 'lms_sys_table_backup_data',
         'admin' => 'wbs_sys_admin',
-        'table_schema' => 'information_schema.tables',
+        //'table_schema' => 'information_schema.tables',    // 해당테이블 조인시 속도 하락
+        'table_schema' => 'lms_sys_table_schema',
         'column_schema' => 'information_schema.columns'
     ];
 
@@ -57,7 +58,7 @@ class DbBackupLogModel extends WB_Model
             $order_by_offset_limit = null;
         } else {
             $column = 'tbd.*
-                            ,(SELECT sch.TABLE_COMMENT FROM '. $this->_table['table_schema'] .' sch WHERE tbd.TableName = sch.TABLE_NAME ) AS TableComment
+                            ,sch.TABLE_COMMENT as TableComment
                             ,wsa.wAdminId as RegId, wsa.wAdminName as RegAdminName';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -66,6 +67,7 @@ class DbBackupLogModel extends WB_Model
         $from = '
                 from 
                     '. $this->_table['backup'].' tbd
+                    left join '. $this->_table['table_schema'] .' sch on tbd.TableName = sch.TABLE_NAME
                     left join '. $this->_table['admin'] .' wsa on tbd.RegAdminIdx = wsa.wAdminIdx
             ';
 

@@ -18,7 +18,7 @@
 
         /************************************************************/
 
-        .evtTop {background:#4768ef;}
+        .evtTop {background:#01bbbd;}
         .evt01 {background:#2a5391;}
         .evt03 {background:#f4f4f4;}        
     </style>
@@ -26,7 +26,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">    
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">           
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2402_top.jpg" alt="9급 기출문제풀이 패키지"/>              
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2404_top.jpg" alt="군무원 기출문제풀이 패키지"/>              
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up"> 
@@ -35,14 +35,13 @@
 
         <div class="evtCtnsBox evt02" data-aos="fade-up"> 
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2402_02_01.gif" alt="" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2402_02_02.jpg" alt="" />    
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2404_03_02.jpg" alt="" />    
         </div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-up"> 
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2402_03.jpg" alt="" />
-                <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/187032" target="_blank" title="9급 패키지" style="position: absolute; left: 12.95%; top: 75.44%; width: 28.39%; height: 5.69%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/187036" target="_blank" title="국영한 패키지" style="position: absolute; left: 55.59%; top: 75.44%; width: 28.39%; height: 5.69%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2404_03.jpg" alt="" />
+                <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/187066" target="_blank" title="군무원 패키지" style="position: absolute; left: 66.61%; top: 74.66%; width: 20.89%; height: 7.49%; z-index: 2;"></a>
             </div>
         </div>
 

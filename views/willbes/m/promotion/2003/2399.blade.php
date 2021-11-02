@@ -65,7 +65,14 @@
     }
 </style>
 
-<div id="Container" class="Container NSK c_both">    
+<div id="Container" class="Container NSK c_both">
+<form name="regi_form_register" id="regi_form_register">
+    {!! csrf_field() !!}
+    {!! method_field('POST') !!}
+    <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
+    <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
+    <input type="hidden" name="target_param_names[]" value="직렬"/> {{-- 체크 항목 전송 --}}
+    <input type="hidden" name="register_type" value="promotion"/>
 
     <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2021/11/2399m_01.gif" alt="PSAT 석치수 무료특강" >
@@ -94,12 +101,38 @@
             </div>
 
             <div class="request">
-                <div><input type="text" id="register_name" name="register_name" value="" placeholder="이름"/></div>
-                <div><input type="text" id="register_name" name="register_name" value="" placeholder="연락처" /></div>
+                <div>
+                    <input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" placeholder="이름" title="이름" {{(sess_data('is_login') === true) ? 'readonly="readonly"' : ''}}/>
+                </div>
+                <div><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" placeholder="연락처" /></div>
 
                 <div>
                     <div>
-                        <input type="checkbox" name="register_chk" id="campus0" value=""> <label for="campus0">11.14(일) 오후 2시(노량진 신광은 경찰학원)</label>
+                        {{--<input type="checkbox" name="register_chk" id="campus0" value=""> <label for="campus0">11.14(일) 오후 2시(노량진 신광은 경찰학원)</label>--}}
+                        @foreach($arr_base['register_list'] as $key => $val)
+                            @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
+                                @php
+                                    // 강의 기간 지나면 자동 disabled 처리
+                                    // 신청강의 날짜 형식. ex) 12.14 프리미엄올공반2차 설명회
+                                    //                         2.8(토) 초시생을 위한 합격커리큘럼 설명회
+                                    $reg_year = date('Y');
+                                    $temp_date = explode(' ', $val['Name'])[0];
+                                    if(strpos($temp_date, '(') !== false) {
+                                        $temp_date = substr($temp_date, 0, strpos($temp_date, '('));
+                                    }
+                                    $reg_month_day = explode('.', $temp_date);
+                                    $reg_month = mb_strlen($reg_month_day[0], 'utf-8') == 1 ? '0'.$reg_month_day[0] : $reg_month_day[0] ;
+                                    $reg_day = mb_strlen($reg_month_day[1], 'utf-8') == 1 ? '0'.$reg_month_day[1] : $reg_month_day[1] ;
+                                    $reg_date = $reg_year.$reg_month.$reg_day.'0000';
+                                    //echo date('YmdHi', strtotime($reg_date. '+1 days'));
+                                @endphp
+                                @if(time() >= strtotime($reg_date. '+1 days'))
+                                    <input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled"/> <label for="campus{{$key}}">{{$val['Name']}}</label>
+                                @else
+                                    <input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label>
+                                @endif
+                            @endif
+                        @endforeach
                     </div>
                 </div>
                 
@@ -133,7 +166,7 @@
                 </div>
 
                 <div class="btn NSK-Black">
-                    <a href="#none" onclick="javascript:fn_submit();">석치수 자료해석 무료특강 신청하기 > </a>
+                    <a href="javascript:void(0);" onclick="javascript:fn_submit();">석치수 자료해석 무료특강 신청하기 > </a>
                 </div>
             </div>            
         </div>
@@ -149,8 +182,7 @@
                 <li>PSAT 자료해석 빈출 유형으로 구성함을 원칙으로 <strong>본인의 확실한 실력을 확인할 수 있도록 상, 중, 하의 난이도 문제를 모두 포함하여 출제</strong></li>                                    
             </ul>
             <div class="infoTit"><strong>● 수강대상</strong></div>
-            <ul>   
-                
+            <ul>
                 <li>1. 지금까지 응시한 진단평가에서 <strong>자신의 위치나 약점을 정확하게 확인할 수 없었던 수험생</strong></li>
                 <li>2. 자료해석 공부 방법에 대해 <strong>확실한 가이드라인이 필요한 수험생</strong></li>
                 <li>3. 아무리 공부를 해도 자료해석 <strong>실력이 늘지 않아 불안한 수험생</strong></li>
@@ -200,10 +232,8 @@
                 <li><span class="bus02">마을</span> 동작01 동작03 동작08 동작13</li>                     
             </ul>        
         </div>
-
-    </div> 
-
-
+    </div>
+</form>
 </div>
 
 <!-- End Container -->
@@ -214,6 +244,54 @@
       $( document ).ready( function() {
         AOS.init();
       } );
+
+      function fn_submit() {
+          {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+          var $regi_form_register = $('#regi_form_register');
+          var _url = '{!! front_url('/event/registerStore') !!}';
+
+          if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+              alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+              return;
+          }
+          if ($.trim($regi_form_register.find('input[name="register_name"]').val()) == '') {
+              alert('이름을 입력하셔야 합니다.');
+              $("#register_name").focus();
+              return;
+          }
+          if ($.trim($regi_form_register.find('input[name="register_tel"]').val()) == '') {
+              alert('연락처를 입력하셔야 합니다.');
+              $("#register_tel").focus();
+              return;
+          }
+          if ($regi_form_register.find('input[name="register_chk[]"]:checked').length == 0) {
+              alert('참여일을 선택하셔야 합니다.');
+              return;
+          }
+          if ($regi_form_register.find('input[name="register_data2"]').is(':checked') === false) {
+              alert('직렬을 선택하셔야 합니다.');
+              return;
+          }
+
+          if (!confirm('저장하시겠습니까?')) { return true; }
+
+          //전부 disabled 처리
+          $regi_form_register.find('input[name="register_chk[]"]').attr('disabled', true);
+
+          //체크 disable 해제
+          $regi_form_register.find('input[name="register_chk[]"]:checked').each(function(i){
+              $(this).attr('disabled', false);
+          });
+
+          ajaxSubmit($regi_form_register, _url, function(ret) {
+              if(ret.ret_cd) {
+                  alert(ret.ret_msg);
+                  location.reload();
+              }
+          }, showValidateError, null, false, 'alert');
+          $regi_form_register.find('input[name="register_chk[]"]').attr('disabled', false); //disable 해제
+      }
 </script>
 
 

@@ -61,17 +61,9 @@
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
             <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
-{{--            <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>--}}
-            {{--@foreach($arr_base['register_list'] as $key => $val)
-                <input type="hidden" name="register_chk[]" value="{{$val['ErIdx']}}"/>
-            @endforeach--}}
-{{--            <input type="hidden" name="target_params[]" value="register_data1"/> --}}{{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
-{{--            <input type="hidden" name="target_param_names[]" value="참여캠퍼스"/> --}}{{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="직렬"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="무료특강 확인경로"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="register_type" value="promotion"/>
-            <!--<input type="hidden" name="register_chk_col[]" value="EtcValue"/>
-            <input type="hidden" name="register_chk_val[]" value=""/>-->              
 
             <div class="evtCtnsBox evtTop" data-aos="fade-down">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2399_top.gif" title="석치수 무료특강">
@@ -144,11 +136,11 @@
                                 <th>* 무료특강<br>확인경로</th>
                                 <td>
                                     <ul>
-                                        <li><input type="radio" name="register_data2" id="CT1" value="홈페이지" /> <label for="CT1">홈페이지</label></li>
-                                        <li><input type="radio" name="register_data2" id="CT2" value="지인추천" /> <label for="CT2">지인추천</label></li>                                     
-                                        <li><input type="radio" name="register_data2" id="CT3" value="인터넷광고" /> <label for="CT3">인터넷광고</label></li>
-                                        <li><input type="radio" name="register_data2" id="CT4" value="인터넷검색" /> <label for="CT4">인터넷검색 </label></li>
-                                        <li><input type="radio" name="register_data2" id="CT5" value="공무원카페" /> <label for="CT5">공무원카페</label></li>
+                                        <li><input type="radio" name="register_data1" id="CT1" value="홈페이지" /> <label for="CT1">홈페이지</label></li>
+                                        <li><input type="radio" name="register_data1" id="CT2" value="지인추천" /> <label for="CT2">지인추천</label></li>                                     
+                                        <li><input type="radio" name="register_data1" id="CT3" value="인터넷광고" /> <label for="CT3">인터넷광고</label></li>
+                                        <li><input type="radio" name="register_data1" id="CT4" value="인터넷검색" /> <label for="CT4">인터넷검색 </label></li>
+                                        <li><input type="radio" name="register_data1" id="CT5" value="공무원카페" /> <label for="CT5">공무원카페</label></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -265,8 +257,8 @@
                 alert('참여일을 선택하셔야 합니다.');
                 return;
             }
-            if ($regi_form_register.find('input[name="register_data2"]').is(':checked') === false) {
-                alert('직렬을 선택하셔야 합니다.');
+            if ($regi_form_register.find('input[name="register_data1"]').is(':checked') === false) {
+                alert('무료특강 확인경로를 선택하셔야 합니다.');
                 return;
             }
 

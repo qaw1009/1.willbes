@@ -39,7 +39,7 @@
         .onLecFree-txt01 li {margin-bottom:10px; list-style-type:decimal; margin-left:20px; text-align:left; font-size:14px}
 
         .onLecFreeBox .tabs li {display:inline; float:left; width:9.090909%}
-        .onLecFreeBox .tabs li a {display:block; border:1px solid #6ca76f; background:#6ca76f; color:#fff; font-size:14px; height:40px; line-height:40px; text-align:center; margin-right:1px}
+        .onLecFreeBox .tabs li a {display:block; border:1px solid #6ca76f; background:#6ca76f; color:#fff; font-size:14px; height:40px; line-height:40px; text-align:center; margin-right:1px; margin-bottom:1px}
         .onLecFreeBox .tabs li a:hover,
         .onLecFreeBox .tabs li a.active {border-bottom:1px solid #fff; color:#6ca76f; background:#fff}
         .onLecFreeBox .tabs:after {content:''; display:block; clear:both}
@@ -103,13 +103,15 @@
                     <img src="https://static.willbes.net/public/images/promotion/2021/10/2398_01_01.jpg" alt="가입혜택1 할인쿠폰 지급"/>
                 </form>
 
+                {{--
                 <div class="wrap01">
                     <h4 class="NSK-Black">할인 쿠폰 적용 가능한 강좌 신청하기</h4>
                     @if(empty($arr_base['display_product_data']) === false)
                         @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
                     @endif     
                 </div>   
-                
+                --}}
+
                 {{-- 인강무료체험신청 --}}
                 <div id="authgive_box"></div>
             </div>

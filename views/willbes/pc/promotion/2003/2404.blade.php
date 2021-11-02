@@ -35,7 +35,7 @@
 
         <div class="evtCtnsBox evt02" data-aos="fade-up"> 
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2402_02_01.gif" alt="" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2404_03_02.jpg" alt="" />    
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2404_02_02.jpg" alt="" />    
         </div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-up"> 

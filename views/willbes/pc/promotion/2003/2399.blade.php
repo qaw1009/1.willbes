@@ -81,15 +81,15 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2399_01.jpg" title="확실한 처방">
             </div>
 
-            <div class="evtCtnsBox evt02" data-aos="fade-left">
+            <div class="evtCtnsBox evt02" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2399_02.jpg" title="올바른 방향설정">
             </div>
 
-            <div class="evtCtnsBox evt03" data-aos="fade-right">
+            <div class="evtCtnsBox evt03" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2399_03.jpg" title="혜택">
             </div>
 
-            <div class="evtCtnsBox evt04" data-aos="fade-left">
+            <div class="evtCtnsBox evt04" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2399_04.jpg" title="무료특강">
                 <div class="request" id="request">
                     <div class="requestL">
@@ -179,11 +179,11 @@
                 </div>
             </div>
 
-            <div class="evtCtnsBox evt05" data-aos="fade-right">
+            <div class="evtCtnsBox evt05" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2399_05.jpg" title="13년간의 강의">
             </div>           
 
-            <div class="evtCtnsBox evtInfo" data-aos="fade-left">
+            <div class="evtCtnsBox evtInfo" data-aos="fade-up">
                 <div class="evtInfoBox">
                     <h4 class="NSK-Black">특강 정보</h4>
                     <div class="infoTit"><strong>● 특강 취지</strong></div>
@@ -220,13 +220,13 @@
                 </div>
 		    </div>      
                         
-            <div class="evtCtnsBox" data-aos="fade-right">
+            <div class="evtCtnsBox" data-aos="fade-up">
                 <div class="loadmap">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.7927493090915!2d126.94179831559448!3d37.51280597980801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9fe8a0a1e2a5%3A0x3bc432e93a6e20c1!2zKOyjvCnsnIzruYTsiqQ!5e0!3m2!1sko!2skr!4v1603420278998!5m2!1sko!2skr" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
             </div>
 
-            <div class="evtCtnsBox evt05" data-aos="fade-left">
+            <div class="evtCtnsBox evt05" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2399_06.jpg" title="교통편">           
             </div>
 

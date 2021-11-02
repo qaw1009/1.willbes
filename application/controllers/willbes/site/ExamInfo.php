@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ExamInfo extends \app\controllers\FrontController
 {
-    protected $models = array('examTakeInfoF');
+    protected $models = array('examTakeInfoF','examFileInfoF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array();

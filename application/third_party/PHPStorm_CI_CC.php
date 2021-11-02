@@ -222,6 +222,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property TaskOrganizationModel $taskOrganizationModel                  Task Organization Model Class
  * @property NpayModel $npayModel                                           Npay Model Class
  * @property ExamTakeInfoModel $examTakeInfoModel                        Exam TakeInfo Model Class
+ * @property ExamFileInfoModel $examFileInfoModel                        Exam FileInfo Model Class
  * @property AuthGiveModel $authGiveModel                                           Auth Model Class
  * @property AuthGiveApplyModel $authGiveApplyModel                             Auth Apply Model Class
  * @property ProfessorHotClipModel $professorHotClipModel                Professor Hot Clip Model Class
@@ -294,6 +295,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property NpayFModel $npayFModel                                             Npay Model Class
  * @property UpdateLectureInfoFModel $updateLectureInfoFModel           UpdateLectureInfo Model Class
  * @property ExamTakeInfoFModel $examTakeInfoFModel                     ExamTakeInfoFModel Model Class
+ * @property ExamFileInfoFModel $examFileInfoFModel                     ExamTakeFileFModel Model Class
  * @property AuthGiveFModel $authGiveFModel                                           Auth Model Class
  * @property PersonalityAptitudeExamFModel $personalityAptitudeExamFModel   PersonalityAptitudeExam Model Class
  * @property ProfessorHotClipFModel $professorHotClipFModel                 Professor Hot Clip Model Class

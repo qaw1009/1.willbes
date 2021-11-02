@@ -20,6 +20,9 @@
 
         /************************************************************/
 
+        .sky {position:fixed;top:200px;right:15px;z-index:200;}
+        .sky a {display:block;margin-top:10px;}
+
         .evt00 {background:#f4f1f3}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/11/2395_top_bg.jpg) no-repeat center top;}
@@ -51,6 +54,13 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+
+        <div class="sky" id="QuickMenu">
+            <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2401" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2395_sky.png" alt="바로가기">
+            </a>
+        </div>
+
         <div class="evtCtnsBox evt00 jbMenu cf">
             <div class="time NSK-Black" id="newTopDday">
                 <ul>

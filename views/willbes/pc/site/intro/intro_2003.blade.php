@@ -138,7 +138,7 @@
 
         <div class="Section mt80">
             <div class="widthAuto tx-center">
-                <div class="will-nTit NSK-Black mb40 tx-left">단기 합격자는 <span>지금 이 시기, ‘이론’</span>에 <span>집중</span>했습니다.</div>
+                <div class="will-nTit NSK-Black mb40 tx-left"><span>기출의 중요성</span>을 파악한 수험생은 이미 <span>성적상승</span>을 경험했습니다.</div>
                 {!! banner_html(element('게이트_단기합격자', $data['banner'])) !!}
             </div>
         </div>

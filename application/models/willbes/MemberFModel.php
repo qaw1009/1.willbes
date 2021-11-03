@@ -81,12 +81,15 @@ class MemberFModel extends WB_Model
             IFNULL(Mem.IsBlackList, '') AS IsBlackList, 
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount,
-            Mem.CertifiedInfoTypeCcd, Info.HanlimID, Info.ssamID, Info.InterestCode AS interest
+            Mem.CertifiedInfoTypeCcd, Info.HanlimID, Info.ssamID, Info.InterestCode AS interest, INfo.InterestCodeSub AS interestSub,
+            sInfo.SubjectCcd, sInfo.School, sInfo.RegionCcd, sInfo.TakeCcd, sInfo.LmsIdx            
             ";
         }
 
         $from = "FROM {$this->_table['member']} AS Mem 
-            INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx ";
+            INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx
+            LEFT JOIN {$this->_table['ssam_info']} AS sInfo ON Mem.MemIdx = sInfo.MemIdx
+            ";
 
         $where = $this->_conn->makeWhere($arr_cond);
         $where = $where->getMakeWhere(false);
@@ -278,12 +281,23 @@ class MemberFModel extends WB_Model
                 $updateColumnText .= '전화번호';
             }
 
+            if($oriData['interest'] != $data['InterestCode'] ||
+                $oriData['interestSub'] != $data['InterestCodeSub'] ||
+                $oriData['SubjectCcd'] != $data['SubjectCcd'] ||
+                $oriData['School'] != $data['School'] ||
+                $oriData['RegionCcd'] != $data['RegionCcd'] ||
+                $oriData['TakeCcd'] != $data['TakeCcd']  ){
+                $updateColumnText .= '준비과정';
+            }
+
             // 추가정보변경
             $input = [
                 'ZipCode' => element('ZipCode', $data),
                 'Addr1' => element('Addr1', $data),
                 'Tel1' => element('Tel1', $data),
-                'Tel3' => element('Tel3', $data)
+                'Tel3' => element('Tel3', $data),
+                'InterestCode' => element('InterestCode' , $data),
+                'InterestCodeSub' => element('InterestCodeSub' , $data)
             ];
             if($this->_conn->set($input)->
                 set('SmsRcvStatus', element('SmsRcvStatus', $data))->
@@ -295,6 +309,27 @@ class MemberFModel extends WB_Model
                 set('Addr2Enc',"fn_enc('".element('Addr2', $data)."')",false)->
                 where('MemIdx', $MemIdx)->update($this->_table['info']) === false){
                 throw new \Exception('회원정보 변경에 실패했습니다.');
+            }
+
+            // 임용고시추가정보 업데이트
+            if(empty($oriData['LmsIdx']) == true){
+                if($this->_conn->
+                    set('SubjectCcd', element('SubjectCcd', $data))->
+                    set('School', element('School', $data))->
+                    set('RegionCcd', element('RegionCcd', $data))->
+                    set('TakeCcd', element('TakeCcd', $data))->
+                    set('MemIdx', $MemIdx)->insert($this->_table['ssam_info']) === false){
+                    throw new \Exception('임용고시 추가정보 변경에 실패했습니다.');
+                }
+            } else {
+                if($this->_conn->
+                    set('SubjectCcd', element('SubjectCcd', $data))->
+                    set('School', element('School', $data))->
+                    set('RegionCcd', element('RegionCcd', $data))->
+                    set('TakeCcd', element('TakeCcd', $data))->
+                    where('MemIdx', $MemIdx)->update($this->_table['ssam_info']) === false){
+                    throw new \Exception('임용고시 추가정보 변경에 실패했습니다.');
+                }
             }
 
             // 정보변경날짜 업데이트

@@ -136,10 +136,21 @@ class Change extends BaseMember
         // 쿠폰갯수
         $data['coupon_cnt'] = $this->couponFModel->listMemberCoupon(true);
 
+        $inerestCode = $this->codeModel->getCcd('718');
+        $ssamsubject = $this->codeModel->getCcd('737');
+        $ssamregion = $this->codeModel->getCcd('738');
+        $ssamtake = $this->codeModel->getCcd('739');
+        $interestCodeSub = $this->codeModel->getCcdInArray(['744','745']);
+
         return $this->load->view('member/change/info', [
             'mail_domain_ccd' => $codes['661'],
             'password' => $this->encrypt->encode($Password),
-            'data' => $data
+            'data' => $data,
+            'interestCode' => $inerestCode,
+            'subject' => $ssamsubject,
+            'region' => $ssamregion,
+            'take' => $ssamtake,
+            'interestCodeSub' => $interestCodeSub
         ]);
     }
 
@@ -206,6 +217,24 @@ class Change extends BaseMember
         if($this->memberFModel->checkMemberPassword($MemIdx, $Password) === false){
             show_alert('비밀번호가 일치하지 않습니다.', '/member/change/index/info/', false);
         }
+        $InterestCode = $this->_req('InterestCode');
+        $InterestCodeSub = $this->_req('InterestCodeSub'.$this->_req('InterestCode'));
+        $SubjectCcd = $this->_req('SubjectCcd');
+        $School = $this->_req('School');
+        $RegionCcd = $this->_req('RegionCcd');
+        $TakeCcd = $this->_req('TakeCcd');
+
+        if($InterestCode != '718009'){
+            // 임용이 아니면 임용정보는 삭제
+            $SubjectCcd = '';
+            $School = '';
+            $RegionCcd = '';
+            $TakeCcd = '';
+
+        } else if($InterestCode != '718003' && $InterestCode != '718004'){
+            // 고등고시나 자격증이 아니면 서브 코드 삭제
+            $InterestCodeSub = '';
+        }
 
         $data = [
             'Tel' => $this->_req('Tel1').$this->_req('Tel2').$this->_req('Tel3'),
@@ -216,7 +245,13 @@ class Change extends BaseMember
             'Addr1' => $this->_req('Addr1'),
             'Addr2' => $this->_req('Addr2'),
             'MailRcvStatus' => ($this->_req('MailRcvStatus') == 'Y' ? 'Y' : 'N'),
-            'SmsRcvStatus' => ($this->_req('SmsRcvStatus') == 'Y' ? 'Y' : 'N')
+            'SmsRcvStatus' => ($this->_req('SmsRcvStatus') == 'Y' ? 'Y' : 'N'),
+            'InterestCode' => $InterestCode,
+            'InterestCodeSub' => $InterestCodeSub,
+            'SubjectCcd' => $SubjectCcd,
+            'School' => $School,
+            'RegionCcd' => $RegionCcd,
+            'TakeCcd' => $TakeCcd
         ];
 
         if($this->memberFModel->setMember($MemIdx, $data) == false){

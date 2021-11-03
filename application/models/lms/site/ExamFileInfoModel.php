@@ -77,6 +77,16 @@ class ExamFileInfoModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
+            $where = [
+                'SiteCode' => element('site_code', $form_data)
+                ,'YearTarget' => element('year_target', $form_data)
+                ,'DataType' => element('data_type', $form_data)
+            ];
+            $result = $this->_conn->select('*')->where($where)->get($this->_table['exam_file_info'])->result_array();
+            if (empty($result) === false) {
+                throw new \Exception('등록된 학년도가 있습니다. 중복으로 등록할 수 없습니다.');
+            }
+
             $group_code = $this->getGroupCode();
             $input_data = [
                 'SiteCode' => element('site_code', $form_data)
@@ -215,6 +225,40 @@ class ExamFileInfoModel extends WB_Model
         return true;
     }
 
+    /**
+     * Group데이터 사용/미사용 update
+     * @param array $params
+     * @return array|bool
+     */
+    public function modifyIsUse($params = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            foreach ($params as $idx => $columns) {
+                $this->_conn->set($columns)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->where('ExamFileIdx', $idx);
+                if ($this->_conn->update($this->_table['exam_file_info']) === false) {
+                    throw new \Exception('정보 수정에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 등록파일 단일 사용여부 수정
+     * @param array $form_data
+     * @return array|bool
+     */
     public function storeIsuse($form_data = [])
     {
         $this->_conn->trans_begin();

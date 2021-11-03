@@ -13,9 +13,6 @@ class ExamFileInfo extends \app\controllers\BaseController
 
     public function index()
     {
-        /*$codes = $this->codeModel->getCcd('734');
-        unset($codes['734001']);    //전국제외*/
-
         $arr_condition = [
             'EQ' => [
                 'a.DataType' => '0'
@@ -28,6 +25,21 @@ class ExamFileInfo extends \app\controllers\BaseController
             /*'exam_area_ccd' => $codes*/
             'list' => $list
         ]);
+    }
+
+    public function storeIsUses()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->examFileInfoModel->modifyIsUse(json_decode($this->_reqP('params'), true));
+        $this->json_result($result, '적용 되었습니다.', $result);
     }
 
     public function create($params=[])

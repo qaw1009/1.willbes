@@ -2,6 +2,7 @@
 
 @section('content')
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+        {!! csrf_field() !!}
         {!! html_def_site_tabs('','tabs_site_code') !!}
         <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
@@ -37,6 +38,7 @@
                     <th class="searching_is_use">사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
+                    <th>사용</th>
                     <th>수정</th>
                 </tr>
                 </thead>
@@ -51,6 +53,9 @@
                             </td>
                             <td>{{ $row['RegAdminName'] }}</td>
                             <td>{{ $row['RegDatm'] }}</td>
+                            <td>
+                                <input type="checkbox" class="flat" name="is_use" value="Y" data-is-use-idx="{{ $row['ExamFileIdx'] }}" data-origin-is-use="{{ $row['IsUse'] }}" {{ ($row['IsUse'] == 'Y' ? 'checked="checked"' : '') }}>
+                            </td>
                             <td><a href="{{site_url('/site/examFileInfo/create/'.$row['ExamFileIdx'])}}"><u class="blue">수정</u></a></td>
                         </tr>
                     @endforeach
@@ -70,10 +75,51 @@
                 paging: true,
                 searching: true,
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-5"></i> 지역별 공고문 자료등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
+                    { text: '<i class="fa fa-pencil"></i> 사용/미사용처리', className: 'btn-sm btn-danger border-radius-reset btn-modify-is-use'},
+                    { text: '<i class="fa fa-pencil mr-5"></i> 지역별 공고문 자료등록', className: 'ml-10 btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                             location.href = '{{ site_url('/site/examFileInfo/create') }}';
                         }}
                 ]
+            });
+
+            //사용/미사용 처리
+            $('.btn-modify-is-use').on('click', function() {
+                if (!confirm('사용/미사용 상태를 적용하시겠습니까?')) {
+                    return;
+                }
+
+                var $is_use = $list_table.find('input[name="is_use"]');
+                var origin_val, this_val, this_use_val;
+                var $params = {};
+                var _url = '{{ site_url('/site/examFileInfo/storeIsUses') }}';
+
+                $is_use.each(function(idx) {
+                    // 신규 또는 추천 값이 변하는 경우에만 파라미터 설정
+                    this_use_val = $is_use.eq(idx).filter(':checked').val() || 'N';
+                    this_val = this_use_val;
+                    origin_val = $is_use.eq(idx).data('origin-is-use');
+                    if (this_val != origin_val) {
+                        $params[$(this).data('is-use-idx')] = { 'IsUse' : this_use_val };
+                    }
+                });
+
+                if (Object.keys($params).length < 1) {
+                    alert('변경된 내용이 없습니다.');
+                    return;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'params' : JSON.stringify($params)
+                };
+
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST');
             });
         });
 

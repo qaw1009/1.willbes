@@ -11,22 +11,32 @@
         </div>
 
         <div class="w-Guide-Ssam mt20">
-
             <div class="guidebox GM">
                 <table>
                     <tbody>
                     <tr>
-                        <th rowspan="18">2021<BR>
-                            학년도 </th>
+                        <th rowspan="18">{{$year_target}}<BR>학년도</th>
                         <th>지역</th>
                         <th>유아 · 초등</th>
                         <th>중등</th>
                     </tr>
-                    @foreach($arr_download_list as $area => $row)
+                    @foreach($exam_area_ccd as $key => $val)
                         <tr>
-                            <td>{{$area}}</td>
-                            <td><a href="{{ site_url("/examInfo/download?path=" . urlencode('/public/uploads/willbes/site/2018/' . $row['infant_file_name']) . "&fname=" . urlencode($row['infant_file_name_kr'])) }}" class="btn01">다운하기</a></td>
-                            <td><a href="{{ site_url("/examInfo/download?path=" . urlencode('/public/uploads/willbes/site/2018/' . $row['secondary_file_name']) . "&fname=" . urlencode($row['secondary_file_name_kr'])) }}" class="btn01">다운하기</a></td>
+                            <td>{{$val}}</td>
+                            <td>
+                                @if(empty($arr_download_list[$key]) === false && empty($arr_download_list[$key][0]) === false)
+                                    <a class="btn01" href="{{front_url('/examInfo/download?path='.urlencode($arr_download_list[$key][0]['file_path']).'&fname='.urlencode($arr_download_list[$key][0]['file_real_name']))}}">다운하기</a>
+                                @else
+                                    준비중
+                                @endif
+                            </td>
+                            <td>
+                                @if(empty($arr_download_list[$key]) === false && empty($arr_download_list[$key][1]) === false)
+                                    <a class="btn01" href="{{front_url('/examInfo/download?path='.urlencode($arr_download_list[$key][1]['file_path']).'&fname='.urlencode($arr_download_list[$key][1]['file_real_name']))}}">다운하기</a>
+                                @else
+                                    준비중
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -36,7 +46,6 @@
 
         <!-- Topbtn -->
         @include('willbes.m.layouts.topbtn')
-
     </div>
     <!-- End Container -->
 @stop

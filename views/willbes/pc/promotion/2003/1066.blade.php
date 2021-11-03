@@ -77,15 +77,18 @@
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1067" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_sky01.png" title="첨삭지도반" >
             </a>  
+            {{--
             <a href="#evt07">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_sky02.png" title="라이브로 소통하기" >
-            </a>                 
+            </a>       
+            --}}          
         </div>
       
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_top.jpg" title="제니스 영어 한덕현" />       
         </div>  
 
+        {{--
         <div class="evtCtnsBox wb_cts07" id="evt07">
             <div class="wrap">
                 <span><img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_01.gif"></span>
@@ -93,6 +96,7 @@
                 <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture" target="_blank" title="접수하기" style="position: absolute; left: 19.55%; top:82.81%; width:60.36%; height:8.52%; z-index: 2;"></a>    
             </div>
         </div>
+        --}}
 
         <div class="evtCtnsBox wb_cts01" id="wb_cts01_01">
             <div class="time NGEB" id="newTopDday">

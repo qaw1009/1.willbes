@@ -236,6 +236,9 @@ class Change extends BaseMember
             $InterestCodeSub = '';
         }
 
+        $InterestCodeArr = $this->codeModel->getCcd('718');
+        $InterestCodeName = element($InterestCode, $InterestCodeArr);
+
         $data = [
             'Tel' => $this->_req('Tel1').$this->_req('Tel2').$this->_req('Tel3'),
             'Tel1' => $this->_req('Tel1'),
@@ -251,7 +254,8 @@ class Change extends BaseMember
             'SubjectCcd' => $SubjectCcd,
             'School' => $School,
             'RegionCcd' => $RegionCcd,
-            'TakeCcd' => $TakeCcd
+            'TakeCcd' => $TakeCcd,
+            'InterestCodeName' => $InterestCodeName
         ];
 
         if($this->memberFModel->setMember($MemIdx, $data) == false){

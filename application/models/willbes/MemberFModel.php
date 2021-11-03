@@ -274,11 +274,11 @@ class MemberFModel extends WB_Model
             }
             
             if($oriData['ZipCode'] != $data['ZipCode'] || $oriData['Addr1'] != $data['Addr1'] || $oriData['Addr2'] != $data['Addr2']){
-                $updateColumnText .= '주소 ';
+                $updateColumnText .= '주소, ';
             }
 
             if($oriData['Tel1'] != $data['Tel1'] || $oriData['Tel2'] != $data['Tel2'] || $oriData['Tel3'] != $data['Tel3']){
-                $updateColumnText .= '전화번호 ';
+                $updateColumnText .= '전화번호, ';
             }
 
             if($oriData['interest'] != $data['InterestCode'] ||
@@ -287,7 +287,15 @@ class MemberFModel extends WB_Model
                 $oriData['School'] != $data['School'] ||
                 $oriData['RegionCcd'] != $data['RegionCcd'] ||
                 $oriData['TakeCcd'] != $data['TakeCcd']  ){
-                $updateColumnText .= '관심분야 ';
+                $updateColumnText .= '관심분야('.$data['InterestCodeName'].'), ';
+            }
+
+            if($oriData['SmsRcvStatus'] != $data['SmsRcvStatus']){
+                $updateColumnText .= 'SMS수신여부('.element('SmsRcvStatus', $data).'), ';
+            }
+
+            if($oriData['MailRcvStatus'] != $data['MailRcvStatus']){
+                $updateColumnText .= '메일수신여부('.element('MailRcvStatus', $data).') ';
             }
 
             // 추가정보변경

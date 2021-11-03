@@ -278,7 +278,7 @@ class MemberFModel extends WB_Model
             }
 
             if($oriData['Tel1'] != $data['Tel1'] || $oriData['Tel2'] != $data['Tel2'] || $oriData['Tel3'] != $data['Tel3']){
-                $updateColumnText .= '전화번호';
+                $updateColumnText .= '전화번호 ';
             }
 
             if($oriData['interest'] != $data['InterestCode'] ||
@@ -287,7 +287,7 @@ class MemberFModel extends WB_Model
                 $oriData['School'] != $data['School'] ||
                 $oriData['RegionCcd'] != $data['RegionCcd'] ||
                 $oriData['TakeCcd'] != $data['TakeCcd']  ){
-                $updateColumnText .= '준비과정';
+                $updateColumnText .= '관심분야 ';
             }
 
             // 추가정보변경

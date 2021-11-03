@@ -89,7 +89,7 @@
                                 $avg_number2 = '-';
                             }
                             if ($avg_number1 != '-' && $avg_number2 != '-') {
-                                $avg_number3 = round($avg_number1 - $avg_number2, 2);
+                                $avg_number3 = round($avg_number2 - $avg_number1, 2);
                             } else {
                                 $avg_number3 = '-';
                             }

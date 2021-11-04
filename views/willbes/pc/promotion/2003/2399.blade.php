@@ -237,7 +237,7 @@
                     <a href="https://facebook.com" title="페이스북" target="_blank">페이스북</a>
                 </div>              
                 <div class="wrap">                    
-                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2399_08.jpg" title="13년간의 강의">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2399_08.jpg" title="소문내기 이벤트">
                     <a href="javascript:void(0);" title="링크복사" onclick="copyTxt();" style="position: absolute; left: 17.86%; top: 2.87%; width: 32.77%; height: 7.39%; z-index: 2;"></a>
                     <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="소문내기 다운" style="position: absolute; left: 51.96%; top: 2.87%; width: 32.77%; height: 7.39%; z-index: 2;"></a>
                 </div>

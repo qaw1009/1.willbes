@@ -378,7 +378,7 @@
                         <td>통신공학</td>
                         <td>이론</td>
                         <td>2022 최우영 통신이론 (이론+문풀)</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183993" target="_blank">수강신청</a></td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/187093" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>

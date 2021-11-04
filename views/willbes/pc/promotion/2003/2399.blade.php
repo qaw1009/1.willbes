@@ -13,7 +13,7 @@
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}        
-        br {font-family:dotum;} 
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
 
         /************************************************************/      
 
@@ -40,6 +40,14 @@
         .evt04 .btn a {display:block; text-align:center; font-size:25px; color:#fff; background:#000; padding:20px 0; margin-top:30px; border-radius:50px}
         .evt04 .btn a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2);}
         .attendee {line-height:1.25;}
+
+        .evt07 {background:#9dc9f0}
+
+        .evt08 {padding-top:100px}
+        .evt08 .evtBtns{width:1120px; margin:0 auto 40px; display:flex;}
+        .evt08 .evtBtns .tit{font-size:20px; font-weight:bold; color:#22417e; letter-spacing:-1px; margin:0 20px 0 80px; line-height:92px;}
+        .evt08 .evtBtns a{color:#fff; font-size:16px; font-weight:bold; display:flex; align-items:center; justify-content:center; background-color:#22417e; width:92px; height:92px; border-radius:20px; margin-left:10px; line-height:22px;}
+        .evt08 .evtBtns a:hover {background:#000}
 
         .evtInfo {padding:80px 0; background:#e9e9e9; color:#555; font-size:14px}
 		.evtInfoBox { width:1120px; margin:0 auto; text-align:left; line-height:1.5}
@@ -210,7 +218,35 @@
                         <li>* 무료 제공 교재는 강사가 직접 구입하여 무료제공됩니다.</li>          
                     </ul>                      
                 </div>
-		    </div>      
+		    </div>   
+
+            <div class="evtCtnsBox evt07" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2399_07.jpg" title="13년간의 강의">
+            </div>  
+
+            <div class="evtCtnsBox evt08" data-aos="fade-up">  
+                <div class="evtBtns">
+                    <div class="tit">바로가기</div>
+                    <a href="https://cafe.naver.com/gugrade" title="공드림" target="_blank">공드림</a>
+                    <a href="https://cafe.naver.com/kkaebangjeong" title="7공9공" target="_blank">7공9공</a>
+                    <a href="https://bit.ly/3gzszmB" title="독공사" target="_blank">독공사</a>
+                    <a href="https://cafe.daum.net/9glade/O6Qh" title="9꿈사" target="_blank">9꿈사</a>
+                    <a href="https://gall.dcinside.com/board/lists/?id=government" title="공무원갤러리" target="_blank">공무원<br>갤러리</a>
+                    <a href="https://section.blog.naver.com/BlogHome.naver" title="네이버블로그" target="_blank">네이버<br>블로그</a>
+                    <a href="https://www.instagram.com/" title="인스타그램" target="_blank">인스타그램</a>
+                    <a href="https://facebook.com" title="페이스북" target="_blank">페이스북</a>
+                </div>              
+                <div class="wrap">                    
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2399_08.jpg" title="13년간의 강의">
+                    <a href="javascript:void(0);" title="링크복사" onclick="copyTxt();" style="position: absolute; left: 17.86%; top: 2.87%; width: 32.77%; height: 7.39%; z-index: 2;"></a>
+                    <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="소문내기 다운" style="position: absolute; left: 51.96%; top: 2.87%; width: 32.77%; height: 7.39%; z-index: 2;"></a>
+                </div>
+            </div> 
+            
+            {{--홍보url--}}
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N', 'login_url'=>app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www'), 'is_public' => true)){{--기존SNS예외처리시, 로그인페이지 이동--}}
+            @endif
                         
             <div class="evtCtnsBox" data-aos="fade-up">
                 <div class="loadmap">
@@ -281,4 +317,7 @@
             $regi_form_register.find('input[name="register_chk[]"]').attr('disabled', false); //disable 해제
         }
     </script>
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop 

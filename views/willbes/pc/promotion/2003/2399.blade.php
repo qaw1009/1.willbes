@@ -220,8 +220,8 @@
                 </div>
 		    </div>   
 
-            <div class="evtCtnsBox evt07" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2399_07.jpg" title="13년간의 강의">
+            <div class="evtCtnsBox evt07" data-aos="fade-up" id="event07">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2399_07.jpg" title="소문내면 선물 드림">
             </div>  
 
             <div class="evtCtnsBox evt08" data-aos="fade-up">  

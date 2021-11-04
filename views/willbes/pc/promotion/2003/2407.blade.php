@@ -22,7 +22,7 @@
 
         .evt01 {background:#e1db13;}
 
-        .evt04 {background:#6f787d;}
+        .evt04 {background:url(https://static.willbes.net/public/images/promotion/2021/11/2407_04_bg.jpg) no-repeat center;}
 
     </style>
 
@@ -50,7 +50,7 @@
         <div class="evtCtnsBox evt04" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2407_04.jpg" alt="신청하기" />   
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/187229" target="_blank" title="지금바로 신청하기" style="position: absolute;left: 24.61%;top: 69.66%;width: 25.89%;height: 8.49%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/187229" target="_blank" title="지금바로 신청하기" style="position: absolute;left: 24.61%;top: 70.66%;width: 25.89%;height: 8.49%;z-index: 2;"></a>
             </div> 
         </div>
 

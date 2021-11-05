@@ -7,6 +7,7 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -18,23 +19,19 @@
 
         /************************************************************/
         
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/07/2290_top_bg.jpg) no-repeat center top;}
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/11/2406_top_bg.jpg) no-repeat center top;}
         
-        .evt_02 {background:#fff;}
-        .evt_02 .tabs {border-bottom:2px solid #2d4d2c; width:1120px; margin:0 auto}
-        .evt_02 .tabs li {display:inline; float:left; width:16.666666%;}
-        .evt_02 .tabs a {display:block; padding:20px 0; text-align:center; font-size:20px; color:#fff; background:#737373; margin-right:1px}
-        .evt_02 .tabs a:hover,
-        .evt_02 .tabs a.active {background:#2d4d2c;}
-        .evt_02 .tabs li:last-child a {margin:0}
-        .evt_02 .tabs:after {content:''; display:block; clear:both}
+        .evt_01 {background:#4e37a6;}
 
-        .evt_apply {padding-bottom:100px;}
-        .check {width:980px; margin:0 auto;letter-spacing:3; padding-top:30px;}
-        .check label {cursor:pointer; font-size:15px;font-weight:bold;}
-        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-        .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#2d4d2c; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
-        .check a:hover {background:#000;}
+        .evt_03 {background:#f1f0f3; padding-bottom:150px}
+        .evt_03 .tabs {border-bottom:2px solid #000; width:1084px; margin:0 auto; display:flex; justify-content: space-around;}
+        .evt_03 .tabs li {flex-basis: calc(100% / 7);}
+        .evt_03 .tabs a {display:block; padding:20px 0; text-align:center; font-size:20px; color:#fff; background:#959595; margin-right:1px}
+        .evt_03 .tabs a:hover,
+        .evt_03 .tabs a.active {background:#000;}
+        .evt_03 .tabs li:last-child a {margin-right:0}
+        .evt_03 .tabs:after {content:''; display:block; clear:both}
+        .evt_03 .tabCts span img {border-bottom:1px solid #f1f0f3}
 
         .evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.7;}
@@ -48,47 +45,60 @@
     </style> 
 	<div class="evtContent NSK">
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2290_top.jpg" alt="2순환 종합반"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_top.jpg" alt="72기 경찰간부시험 대비 티패스"/>
         </div>
         
         <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2290_01.jpg" alt="분명한 이유"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_01.jpg" alt="한달 간 이벤트"/>
+
+        </div>
+
+        <div class="evtCtnsBox evt_02">
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_02.jpg" alt="특별혜택"/>
         </div>
         
-        <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2290_02.jpg" alt="이해가 빠른 강의"/>
+        <div class="evtCtnsBox evt_03">
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03.jpg" alt="특별혜택"/>
             <ul class="tabs">
-                <li><a href="#tab01">형사소송법</a></li>
-                <li><a href="#tab02">민법총칙</a></li>
-                <li><a href="#tab03">형법</a></li>
-                <li><a href="#tab04">행정학</a></li>
-                <li><a href="#tab05">경찰학개론</a></li>
-                <li><a href="#tab06">한국사</a></li>
+                <li><a href="#tab01">형법</a></li>
+                <li><a href="#tab02">형사소송법</a></li>
+                <li><a href="#tab03">범죄학</a></li>
+                <li><a href="#tab04">경찰학개론</a></li>
+                <li><a href="#tab05">헌법</a></li>
+                <li><a href="#tab06">민법총칙</a></li>
+                <li><a href="#tab07">행정학</a></li>
             </ul>
-            <div>
-                <span id="tab01"><img src="https://static.willbes.net/public/images/promotion/2021/07/2290_02_01.png" alt="형사소송법" /></span>
-                <span id="tab02"><img src="https://static.willbes.net/public/images/promotion/2021/07/2290_02_02.png" alt="민법총칙" /></span>
-                <span id="tab03"><img src="https://static.willbes.net/public/images/promotion/2021/07/2290_02_03.png" alt="형법" /></span>
-                <span id="tab04"><img src="https://static.willbes.net/public/images/promotion/2021/07/2290_02_04.png" alt="행정학" /></span>
-                <span id="tab05"><img src="https://static.willbes.net/public/images/promotion/2021/07/2290_02_05.png" alt="경찰학개론" /></span>
-                <span id="tab06"><img src="https://static.willbes.net/public/images/promotion/2021/07/2290_02_06.png" alt="한국사" /></span>
+            <div class="tabCts">
+                <span id="tab01"><img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03_01.jpg" alt="형법" /></span>
+                <span id="tab02">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03_02.jpg" alt="형사소송법" /></br>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03_03.jpg" alt="형사소송법" />
+                </span>
+                <span id="tab03">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03_04.jpg" alt="범죄학" />
+                </span>
+                <span id="tab04"><img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03_05.jpg" alt="경찰학개론" /></span>
+                <span id="tab05">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03_06.jpg" alt="헌법" /></br>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03_07.jpg" alt="헌법" />
+                </span>
+                <span id="tab06">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03_08.jpg" alt="민법총칙" /></br>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03_09.jpg" alt="민법총칙" />
+                </span>
+                <span id="tab07"><img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03_10.jpg" alt="행정학" /></span>
             </div>            
         </div>
         
 
-        <div class="evtCtnsBox evt_apply">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2290_apply.jpg" alt="수강신청 바로가기"/>
-                <a href="javascript:go_PassLecture('184068');" title="" style="position: absolute; left: 5.63%; top: 71.43%; width: 88.3%; height: 16.35%; z-index: 2;"></a>
-            </div>
-
-            <div class="check">
-                <label>
-                    <input name="ischk"  type="checkbox" value="Y" />
-                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
-                </label>
-                <a href="#careful">이용안내확인하기 ↓</a>
-            </div>         
+        <div class="evtCtnsBox evt_04">
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04.jpg" alt="강의신청"/>
+            <ul>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_01.jpg" alt="강의신청"/>
+                    <a href="#none">신청하기</a>
+                </li>
+            </ul>
         </div>    
 
 		<div class="evtCtnsBox evtInfo">
@@ -152,35 +162,27 @@
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
                 $active.addClass('active');
-            
                 $content = $($active[0].hash);
-            
-                $links.not($active).each(function () {
-                $(this.hash).hide()});
-            
+
+                $links.not($active).each(function(){
+                    $(this.hash).hide();
+                });
+
                 // Bind the click event handler
                 $(this).on('click', 'a', function(e){
-                $active.removeClass('active');
-                $content.hide();
-            
-                $active = $(this);
-                $content = $(this.hash);
-            
-                $active.addClass('active');
-                $content.show();
-            
-                e.preventDefault()})})}
-        );
-        /*수강신청 동의*/ 
-        function go_PassLecture(code){
-            if($("input[name='ischk']:checked").size() < 1){
-                alert("이용안내에 동의하셔야 합니다.");
-                return;
-            }
-
-            var url = '{{ site_url('/package/show/cate/3100/pack/648001/prod-code/') }}' + code;
-            location.href = url;
-        }    
-
+                    $active.removeClass('active');
+                    $content.hide();
+                    $active = $(this);
+                    $content = $(this.hash);
+                    $active.addClass('active');
+                    $content.show();
+                    e.preventDefault();
+                });
+            });
+        }); 
     </script>
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
+
 @stop

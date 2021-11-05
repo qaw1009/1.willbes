@@ -399,6 +399,7 @@ class EventFModel extends WB_Model
             }
 
             //검증
+            $input_register_data = [];
             foreach ($register_info as $key => $row) {
                 //만료상태 체크
                 if ($row['RegisterExpireStatus'] == 'N') {
@@ -458,7 +459,7 @@ class EventFModel extends WB_Model
                         ]
                     ];
 
-                    $input_register_data = [
+                    $input_register_data[$key] = [
                         'ErIdx' => $key,
                         'UserName' => $inputData['register_name'],
                         'UserTelEnc' => $register_tel,
@@ -468,7 +469,7 @@ class EventFModel extends WB_Model
 
                     if(empty($inputData['register_chk_no_member']) === false && $inputData['register_chk_no_member'] == 'Y') {
                         // 등록 중복체크가 정상적으로 넘어갔을 경우, 신청 등록에서 memIdx가 등록 되어야함.
-                        $input_register_data['MemIdx'] = $this->session->userdata('mem_idx');
+                        $input_register_data[$key]['MemIdx'] = $this->session->userdata('mem_idx');
                     }
                 } else {
                     $arr_condition = [
@@ -481,7 +482,7 @@ class EventFModel extends WB_Model
                         ]
                     ];
 
-                    $input_register_data = [
+                    $input_register_data[$key] = [
                         'ErIdx' => $key,
                         'MemIdx' => $this->session->userdata('mem_idx'),
                         'UserName' => $inputData['register_name'],
@@ -531,8 +532,8 @@ class EventFModel extends WB_Model
                     }
 
                     if (count($uploaded) > 0) {
-                        $input_register_data['FileFullPath'] = $this->upload->_upload_url . $upload_dir . '/' . $uploaded[0]['orig_name'];
-                        $input_register_data['FileRealName'] = $uploaded[0]['client_name'];
+                        $input_register_data[$key]['FileFullPath'] = $this->upload->_upload_url . $upload_dir . '/' . $uploaded[0]['orig_name'];
+                        $input_register_data[$key]['FileRealName'] = $uploaded[0]['client_name'];
                     }
                 }
                 
@@ -559,14 +560,14 @@ class EventFModel extends WB_Model
 
                 //주민번호(암호화)
                 if (element('ssn_type', $inputData) == 'Y') {
-                    $input_register_data['UserSsnEnc'] = $reg_ssn;
+                    $input_register_data[$key]['UserSsnEnc'] = $reg_ssn;
                 }
+                $input_register_data[$key]['EtcTitle'] = element('etc_title', $inputData);
+            }
 
-                $input_register_data['EtcTitle'] = element('etc_title', $inputData);
-
-                if ($this->_addEventRegisterMember($input_register_data) !== true) {
-                    throw new \Exception('특강 신청에 등록 실패했습니다.');
-                }
+            // 신청자정보 저장
+            if ($this->_addEventRegisterMember($input_register_data) !== true) {
+                throw new \Exception('특강 신청에 등록 실패했습니다.');
             }
 
             // 자동문자 신청리스트명 치환 셋팅
@@ -1242,8 +1243,12 @@ class EventFModel extends WB_Model
     private function _addEventRegisterMember($inputData)
     {
         try {
-            if ($this->_conn->set($inputData)->insert($this->_table['event_member']) === false) {
+            if ($inputData) $this->_conn->insert_batch($this->_table['event_member'], $inputData);
+            /*if ($this->_conn->set($inputData)->insert($this->_table['event_member']) === false) {
                 throw new \Exception('특강 신청에 등록 실패했습니다.');
+            }*/
+            if ($this->_conn->trans_status() === false) {
+                throw new Exception('특강 신청에 등록 실패했습니다.');
             }
         } catch (\Exception $e) {
             return error_result($e);

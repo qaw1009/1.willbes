@@ -23,7 +23,8 @@
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51070?subject_idx=1108') }}">선석</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50991?subject_idx=1108') }}">안성호</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51011?subject_idx=1108') }}">이섬가</a>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51199?subject_idx=1108') }}">김현정</a>                  
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51199?subject_idx=1108') }}">김현정</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51299?subject_idx=1108') }}">장량</a>
                 </li>
                 <li>
                     <span>한국사</span>
@@ -54,7 +55,7 @@
                 <li>
                     <span>교정학</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51264?subject_idx=1120') }}">함다올</a>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50291?subject_idx=1120') }}">손영민</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50291?subject_idx=1120') }}">황태진</a>
                 </li>
                 <li><span>세법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51167?subject_idx=1123') }}">박창한</a></li>
                 <li>

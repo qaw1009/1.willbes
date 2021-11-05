@@ -30,7 +30,7 @@
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50991/?subject_idx=1108')}}">안성호</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/51011/?subject_idx=1108')}}">이섬가</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/51199/?subject_idx=1108')}}">김현정</a>
-                        
+                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/51299/?subject_idx=1108')}}">장량</a>
                     </li>
                     <li>
                         <span>[한국사]</span>

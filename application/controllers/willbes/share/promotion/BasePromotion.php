@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePromotion extends \app\controllers\FrontController
 {
-    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF', '_lms/sys/code', 'DDayF', 'product/lectureF', 'eventsurvey/survey', '_lms/product/base/subject', 'memberF');
+    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF', '_lms/sys/code', 'dDayF', 'product/lectureF', 'eventsurvey/survey', '_lms/product/base/subject', 'memberF');
     protected $helpers = array('download');
     protected $_paging_limit = 5;
     protected $_paging_count = 10;
@@ -157,7 +157,7 @@ class BasePromotion extends \app\controllers\FrontController
                     'a.DIdx' => $arr_promotion_params['DIdx']
                 ]
             ];
-            $arr_base['dday_data'] = $this->DDayFModel->getDDays($arr_dday_condition);
+            $arr_base['dday_data'] = $this->dDayFModel->getDDays($arr_dday_condition);
         }
 
         // 신청 통계

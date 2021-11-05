@@ -22,6 +22,8 @@
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/11/2406_top_bg.jpg) no-repeat center top;}
         
         .evt_01 {background:#4e37a6;}
+        .evt_01 .d_day {position:absolute; left:50%; margin-left:225px; top:225px; font-size:78px; color:#fff}
+        .evt_01 .d_day span {color:#fdeb00; vertical-align:top}
 
         .evt_03 {background:#f1f0f3; padding-bottom:150px}
         .evt_03 .tabs {border-bottom:2px solid #000; width:1084px; margin:0 auto; display:flex; justify-content: space-around;}
@@ -33,6 +35,12 @@
         .evt_03 .tabs:after {content:''; display:block; clear:both}
         .evt_03 .tabCts span img {border-bottom:1px solid #f1f0f3}
 
+        .evt_04 {padding-bottom:100px}
+        .evt_04 ul {width:976px; margin:0 auto; display:flex; justify-content: space-around; flex-wrap: wrap;}
+        .evt_04 ul li {flex-basis: calc(100% / 5); text-align:center; display:block; margin-bottom:40px}
+        .evt_04 li a {display:block; margin:15px 15px 0; padding:10px; color:#fff; background:#000; border-radius:20px; font-size:140%}
+        .evt_04 li a:hover {background:#4e37a6;}
+
         .evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.7;}
 		.evtInfoBox h4 {font-size:25px; margin-bottom:25px;padding-left:10px;}
@@ -40,24 +48,29 @@
 		.evtInfoBox .infoTit strong {padding:8px 20px; background:#333; border-radius:20px}
 		.evtInfoBox ul {margin-bottom:30px}
 		.evtInfoBox li {margin-bottom:8px; margin-left:20px; list-style:disc}
-
         /************************************************************/      
     </style> 
+
 	<div class="evtContent NSK">
-		<div class="evtCtnsBox evt_top">
+		<div class="evtCtnsBox evt_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_top.jpg" alt="72기 경찰간부시험 대비 티패스"/>
         </div>
         
-        <div class="evtCtnsBox evt_01">
+        <div class="evtCtnsBox evt_01" data-aos="fade-up">            
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_01.jpg" alt="한달 간 이벤트"/>
-
+            <div class="d_day NSK">
+                D-<span class="NSK-Black">18</span>
+            </div>
         </div>
 
-        <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_02.jpg" alt="특별혜택"/>
+        <div class="evtCtnsBox evt_02" data-aos="fade-up">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_02.jpg" alt="특별혜택"/>
+                <a href="#lecbuy" title="신청하기 바로가기" style="position: absolute; left: 70.45%; top: 14.05%; width: 16.88%; height: 27.32%; z-index: 2;"></a>
+            </div>
         </div>
         
-        <div class="evtCtnsBox evt_03">
+        <div class="evtCtnsBox evt_03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03.jpg" alt="특별혜택"/>
             <ul class="tabs">
                 <li><a href="#tab01">형법</a></li>
@@ -71,7 +84,7 @@
             <div class="tabCts">
                 <span id="tab01"><img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03_01.jpg" alt="형법" /></span>
                 <span id="tab02">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03_02.jpg" alt="형사소송법" /></br>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03_02.jpg" alt="유안석 형사소송법" /></br>
                     <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03_03.jpg" alt="형사소송법" />
                 </span>
                 <span id="tab03">
@@ -88,15 +101,50 @@
                 </span>
                 <span id="tab07"><img src="https://static.willbes.net/public/images/promotion/2021/11/2406_03_10.jpg" alt="행정학" /></span>
             </div>            
-        </div>
-        
+        </div>        
 
-        <div class="evtCtnsBox evt_04">
+        <div class="evtCtnsBox evt_04" id="lecbuy" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04.jpg" alt="강의신청"/>
             <ul>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_01.jpg" alt="강의신청"/>
-                    <a href="#none">신청하기</a>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_01.jpg" alt="문형석"/>
+                    <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187199" target="_blank">신청하기</a>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_02.jpg" alt="유안석"/>
+                    <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187200" target="_blank">신청하기</a>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_03.jpg" alt="서영교"/>
+                    <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187201" target="_blank">신청하기</a>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_04.jpg" alt="김한기"/>
+                    <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187204" target="_blank">신청하기</a>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_05.jpg" alt="정진천"/>
+                    <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187205" target="_blank">신청하기</a>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_06.jpg" alt="이국령"/>
+                    <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187203" target="_blank">신청하기</a>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_07.jpg" alt="선동주"/>
+                    <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187202" target="_blank">신청하기</a>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_08.jpg" alt="김동진"/>
+                    <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187197" target="_blank">신청하기</a>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_09.jpg" alt="고태환"/>
+                    <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187198" target="_blank">신청하기</a>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_10.jpg" alt="이동호"/>
+                    <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187206" target="_blank">신청하기</a>
                 </li>
             </ul>
         </div>    
@@ -155,6 +203,14 @@
 		</div> 
 	</div>
     <!-- End Container -->
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      $( document ).ready( function() {
+        AOS.init();
+      } );
+    </script>
 
     <script type="text/javascript">
         $(document).ready(function(){

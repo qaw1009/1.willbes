@@ -231,7 +231,7 @@
                     <a href="https://cafe.naver.com/kkaebangjeong" title="7공9공" target="_blank">7공9공</a>
                     <a href="https://bit.ly/3gzszmB" title="독공사" target="_blank">독공사</a>
                     <a href="https://cafe.daum.net/9glade/O6Qh" title="9꿈사" target="_blank">9꿈사</a>
-                    <a href="https://gall.dcinside.com/board/lists/?id=government" title="공무원갤러리" target="_blank">공무원<br>갤러리</a>
+                    <a href="https://gall.dcinside.com/board/lists/?id=government_new1" title="공무원갤러리" target="_blank">공무원<br>갤러리</a>
                     <a href="https://section.blog.naver.com/BlogHome.naver" title="네이버블로그" target="_blank">네이버<br>블로그</a>
                     <a href="https://www.instagram.com/" title="인스타그램" target="_blank">인스타그램</a>
                     <a href="https://facebook.com" title="페이스북" target="_blank">페이스북</a>

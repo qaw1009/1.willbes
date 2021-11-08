@@ -58,6 +58,7 @@ class Regist extends \app\controllers\BaseController
         $rules = [
             ['field' => 'admin_name', 'label' => '이름', 'rules' => 'trim|required'],
             ['field' => 'admin_id', 'label' => '아이디', 'rules' => 'trim|required|alpha_dash'],
+            ['field' => 'admin_passwd', 'label' => '비밀번호', 'rules' => 'callback_validatePasswdVerify[admin_id]'],
             ['field' => 'admin_phone1', 'label' => '휴대폰번호1', 'rules' => 'trim|required|integer'],
             ['field' => 'admin_phone2', 'label' => '휴대폰번호2', 'rules' => 'trim|required|integer'],
             ['field' => 'admin_phone3', 'label' => '휴대폰번호3', 'rules' => 'trim|required|integer'],

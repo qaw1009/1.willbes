@@ -65,6 +65,14 @@ class Login extends \app\controllers\BaseController
             return $this->json_error('일치하는 제휴사 정보가 없습니다.', _HTTP_NOT_FOUND);
         }
 
+        // 계정잠금 여부 확인
+        $is_lock = $this->btobLoginModel->checkLoginLock($admin_id);
+        if ($is_lock !== true) {
+            // 로그인 로그 저장 (로그인 계정잠금)
+            $this->btobLoginModel->addLoginLog($btob_row['BtobIdx'], $admin_id, 'LOCK');
+            return $this->json_error($is_lock, _HTTP_BAD_REQUEST);
+        }
+
         // 관리자 아이디/비밀번호 확인
         $row = $this->btobLoginModel->findAdminForLogin($admin_id, $this->_reqP('admin_passwd', false));
         if (empty($row) === true) {
@@ -76,14 +84,14 @@ class Login extends \app\controllers\BaseController
         }
 
         if ($is_no_match === true) {
-            // 로그인 로그 저장
+            // 로그인 로그 저장 (아이디/비밀번호 불일치)
             $this->btobLoginModel->addLoginLog($btob_row['BtobIdx'], $admin_id, 'NO_MATCH');
             return $this->json_error('일치하는 정보가 없습니다.', _HTTP_NOT_FOUND);
         }
 
         // 관리자 접근권한 확인
         if ($row['IsApproval'] != 'Y' || $row['IsUse'] != 'Y' || empty($row['RoleIdx']) === true) {
-            // 로그인 로그 저장
+            // 로그인 로그 저장 (권한없음)
             $this->btobLoginModel->addLoginLog($btob_row['BtobIdx'], $admin_id, 'NO_AUTH');
             return $this->json_error('운영자 권한이 없습니다.', _HTTP_UNAUTHORIZED);
         }

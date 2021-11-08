@@ -110,4 +110,59 @@ class LoginLockModel extends WB_Model
 
         return true;
     }
+
+    /**
+     * 운영자계정잠금여부 및 잠금여부 체크 기준일시 리턴 (true => 잠금상태)
+     * @param string $admin_id [관리자아이디]
+     * @return array
+     */
+    public function isLoginLock($admin_id)
+    {
+        $admin_id = get_var($admin_id, '_empty_id');
+        $chk_datm = date('Y-m-d') . ' 00:00:00';    // 잠금여부 체크 기준일시
+
+        // 로그인 잠금여부 조회
+        $column = 'wLockIdx, wLockDatm, wUnLockDatm';
+        $arr_condition = ['EQ' => ['wAdminId' => $admin_id]];
+
+        // 접속도메인 조건 추가
+        $op_sub_domain = SUB_DOMAIN == 'btob' ? 'EQ' : 'NOT';
+        $arr_condition[$op_sub_domain]['wLockSubDomain'] = 'btob';
+
+        $lock_row = array_get($this->_conn->getListResult($this->_table['admin_login_lock'], $column, $arr_condition, 1, 0, ['wLockIdx' => 'desc']), '0');
+        if (empty($lock_row) === false && empty($lock_row['wUnLockDatm']) === true) {
+            return ['ret_cd' => true, 'ret_data' => '로그인 실패횟수 초과로 계정잠금된 상태입니다.'];
+        }
+
+        // 잠금해제가 된 경우 잠금여부 체크 기준일시를 잠금해제일시로 변경
+        if (empty($lock_row) === false && empty($lock_row['wUnLockDatm']) === false && $chk_datm < $lock_row['wUnLockDatm']) {
+            $chk_datm = $lock_row['wUnLockDatm'];
+        }
+
+        return ['ret_cd' => false, 'ret_data' => $chk_datm];
+    }
+
+    /**
+     * 운영자계정잠금 데이터 등록
+     * @param string $admin_id [관리자아이디]
+     * @return bool|string
+     */
+    public function addLoginLock($admin_id)
+    {
+        try {
+            $data = [
+                'wAdminId' => $admin_id,
+                'wLockSubDomain' => SUB_DOMAIN,
+                'wLockIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($data)->insert($this->_table['admin_login_lock']) === false) {
+                throw new \Exception('계정잠금 데이터 등록에 실패하였습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
 }

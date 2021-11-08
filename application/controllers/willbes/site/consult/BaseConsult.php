@@ -332,7 +332,7 @@ class BaseConsult extends \app\controllers\FrontController
                 // 상담시간 문구
                 switch ($this->_consult_type) {
                     case 'V' :
-                        $time_comment = '· 상담은 월~일요일 오전 9시부터 오후 6시까지 진행됩니다.<br/>';      // 방문 상담
+                        $time_comment = '· 상담은 월~토요일 오전 9시부터 오후 6시까지 진행됩니다.<br/>';      // 방문 상담
                         break;
                     case 'T' :
                         $time_comment = '· 상담은 월~일요일 오전 10시부터 오후 5시까지 진행됩니다.<br/>';     // 전화 상담

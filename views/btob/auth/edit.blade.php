@@ -14,32 +14,42 @@
         <ul class="no-margin">
             <li>아이디, 지점정보, 권한유형은 수정 불가능합나다.</li>
             <li>비밀번호는 변경 시에만 입력해 주세요.</li>
+            <li>비밀번호 생성규칙 안내<br/>
+                - 8자리 이상의 영문자, 숫자, 일부 특수기호를 혼용하여 사용<br/>
+                - 아이디 포함하여 사용 금지<br/>
+                - 동일 문자 3회 이상 사용 금지 (예. aaa, 111)<br/>
+                - 연속된 문자 3회 이상 사용 금지 (예. abc, cba, 123, 321)
+            </li>
         </ul>
     </div>
     {!! form_errors() !!}
     <div class="form-group form-group-sm">
         <label class="control-label col-md-2" for="admin_name">이름 <span class="required">*</span>
         </label>
-        <div class="col-md-3 item">
+        <div class="col-md-4 item">
             <input type="text" id="admin_name" name="admin_name" required="required" class="form-control" title="이름" value="{{ $data['AdminName'] }}">
         </div>
-        <label class="control-label col-md-2 col-md-offset-1" for="admin_id">아이디 <span class="required">*</span>
+    </div>
+    <div class="form-group form-group-sm">
+        <label class="control-label col-md-2" for="admin_id">아이디 <span class="required">*</span>
         </label>
-        <div class="col-md-4 item form-inline form-control-static">
+        <div class="col-md-4 form-control-static item">
             {{ $data['AdminId'] }}
-            <input type="hidden" id="admin_id" name="admin_id" required="required" class="form-control" title="아이디" value="{{ $data['AdminId'] }}">
+            <input type="hidden" id="admin_id" name="admin_id" required="required" class="form-control" title="아이디" value="{{ $data['AdminId'] }}" data-passwd-verify="id">
         </div>
     </div>
     <div class="form-group form-group-sm">
         <label class="control-label col-md-2" for="admin_passwd">비밀번호 <span class="required">*</span>
         </label>
-        <div class="col-md-3 item">
-            <input type="password" id="admin_passwd" name="admin_passwd" class="optional form-control" data-validate-linked="admin_re_passwd" title="비밀번호" placeholder="# 변경 시에만 입력" value="">
+        <div class="col-md-4 item">
+            <input type="password" id="admin_passwd" name="admin_passwd" class="optional form-control" data-validate-linked="admin_re_passwd" title="비밀번호" placeholder="# 변경 시에만 입력" value="" data-passwd-verify="passwd">
         </div>
-        <label class="control-label col-md-2 col-md-offset-1" for="admin_re_passwd">비밀번호 재확인 <span class="required">*</span>
+    </div>
+    <div class="form-group form-group-sm">
+        <label class="control-label col-md-2" for="admin_re_passwd">비밀번호 확인 <span class="required">*</span>
         </label>
-        <div class="col-md-3 item">
-            <input type="password" id="admin_re_passwd" name="admin_re_passwd" class="optional form-control" data-validate-linked="admin_passwd" title="비밀번호 재확인" value="">
+        <div class="col-md-4 item">
+            <input type="password" id="admin_re_passwd" name="admin_re_passwd" class="optional form-control" data-validate-linked="admin_passwd" title="비밀번호 확인" value="">
         </div>
     </div>
     <div class="form-group form-group-sm">
@@ -63,9 +73,11 @@
         <div class="col-md-4 form-control-static">
             {{ element($data['AdminAreaCcd'], $arr_area_ccd) }} | {{ element($data['AdminBranchCcd'], $arr_branch_ccd) }}
         </div>
+    </div>
+    <div class="form-group form-group-sm">
         <label class="control-label col-md-2">권한유형
         </label>
-        <div class="col-md-4 item form-control-static">
+        <div class="col-md-4 form-control-static">
             {{ $__auth['Role']['RoleName'] }}
         </div>
     </div>

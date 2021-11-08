@@ -85,10 +85,12 @@ $.extend(true, $.fn.dataTable.defaults, {
 /*
  * SELECTPICKER DEFAULT SETTING
  */
-$.extend(true, $.fn.selectpicker.Constructor.DEFAULTS, {
-    noneSelectedText: '선택된 항목이 없습니다.',
-    noneResultsText: '{0}와(과) 일치하는 결과가 없습니다.'
-});
+if (typeof ($.fn.selectpicker) !== 'undefined') {
+    $.extend(true, $.fn.selectpicker.Constructor.DEFAULTS, {
+        noneSelectedText: '선택된 항목이 없습니다.',
+        noneResultsText: '{0}와(과) 일치하는 결과가 없습니다.'
+    });
+}
 
 $(document).ready(function() {
     // 관리자 목록 페이지 검색어 설정

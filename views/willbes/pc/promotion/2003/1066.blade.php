@@ -75,7 +75,7 @@
     <div class="evtContent NSK" id="evtContainer">      
         <div class="skybanner" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1067" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_sky01.png" title="첨삭지도반" >
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" >
             </a>  
             {{--
             <a href="#evt07">

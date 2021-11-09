@@ -55,7 +55,7 @@
                         <span>2022.2.26 서울시 1회 시험까지</span>                    
                     </li>                   
                     <li>
-                        <span class="NSK">D-123</span>                        
+                        <span class="NSK">{{ (empty($arr_base['dday_data'][0]['DDay']) === false) ? 'D'.$arr_base['dday_data'][0]['DDay'] : '' }}</span>                        
                     </li>          
                 </ul>
             </div> 
@@ -111,11 +111,6 @@
                     $( '.jbMenu' ).removeClass( 'jbFixed' );
                 }
             });
-        });
-
-        /*디데이카운트다운*/
-        $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
     </script>
 

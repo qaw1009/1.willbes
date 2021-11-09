@@ -19,8 +19,10 @@
         
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/10/1066_top_bg.jpg) center top no-repeat}
-        .wb_cts01 {background:#1e1c31;}      
-        
+
+        .wb_tops {background:#1e1c31;}
+
+        .wb_cts01 {background:#1e1c31;}        
 
         .wb_cts02 {background:#00ced1}
 
@@ -76,7 +78,10 @@
         <div class="skybanner" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1067" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" >
-            </a>  
+            </a>
+            <a href="#package">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/1067_skybanner3.png" title="패키지" >
+            </a>
             {{--
             <a href="#evt07">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_sky02.png" title="라이브로 소통하기" >
@@ -85,8 +90,15 @@
         </div>
       
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_top.jpg" title="제니스 영어 한덕현" />       
-        </div>  
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_top.jpg" title="제니스 영어 한덕현" />
+        </div>
+
+        <div class="evtCtnsBox wb_tops" id="package">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/1066_tops.jpg" title="수강신청" />
+                <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/187288" target="_blank" title="신청하기" style="position: absolute;left: 54.95%;top: 81.99%;width: 27.36%;height: 8.82%;z-index: 2;"></a>
+            </div>    
+        </div> 
 
         {{--
         <div class="evtCtnsBox wb_cts07" id="evt07">

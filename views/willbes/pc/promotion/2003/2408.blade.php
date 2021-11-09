@@ -21,6 +21,10 @@
 
         /************************************************************/
 
+        /*스카이베너*/
+        .sky {position:fixed;top:100px;right:10px;width:259px; text-align:center; z-index:111;}   
+        .sky a {display:block;margin-bottom:10px;}  
+
         /*타이머*/
         .time {width:1120px; margin:0 auto; text-align:center; padding:25px 0}
         .time ul {width:100%; display:flex; justify-content: center;}
@@ -47,6 +51,12 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+
+        <div class="sky" id="QuickMenu">          
+            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1066#package" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/1067_skybanner3.png" title="패키지" >
+            </a>           
+        </div>
 
         <div class="evtCtnsBox jbMenu"> 
             <div class="time NSK-Black" id="newTopDday">

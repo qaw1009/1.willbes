@@ -19,7 +19,11 @@
                     <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
                     <div class="wsBookImg">
-                        <img src="{{ $data['wAttachImgPath'] . $data['wAttachImgOgName'] }}" alt="{{ $data['ProdName'] }}" title="{{ $data['ProdName'] }}"/>
+                        <div class="imgWrap">
+                            <div>
+                            <img src="{{ $data['wAttachImgPath'] . $data['wAttachImgOgName'] }}" alt="{{ $data['ProdName'] }}" title="{{ $data['ProdName'] }}"/>
+                            </div>
+                        </div>
                     </div>
                     <div class="wsBookInfo">
                         <h5 class="NG">

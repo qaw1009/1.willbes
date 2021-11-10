@@ -22,7 +22,11 @@
                     <input type="checkbox" name="prod_code[]" value="{{ $data['ProdCode'] . ':' . $data['rwSaleTypeCcd'] . ':' . $data['ProdCode'] }}:book" checked="checked" data-prod-code="{{ $data['ProdCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" class="chk_books d_none" @if($data['IsSalesAble'] == 'N') disabled="disabled" @endif>
                 </h5>
                 <div class="wsBookImg">
-                    <img src="{{ $data['wAttachImgPath'] . $data['wAttachImgOgName'] }}" alt="{{ $data['ProdName'] }}" title="{{ $data['ProdName'] }}" onerror="this.height='350';"/>
+                    <div class="imgWrap">
+                        <div class="p_re">
+                            <img src="{{ $data['wAttachImgPath'] . $data['wAttachImgOgName'] }}" alt="{{ $data['ProdName'] }}" title="{{ $data['ProdName'] }}" onerror="this.height='350';"/>
+                        </div>
+                    </div>
                 </div>
                 <div class="wsBookInfo">
                     <ul class="wsBooktxt">

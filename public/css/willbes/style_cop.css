@@ -665,6 +665,11 @@
 	display: block;
 	clear: both;
 }
+
+.cop .SectionBg03 .willbes-Layer-Box {
+	left:50% !important;
+	margin-left:-490px !important;
+}
 /****************main end***********************/
 
 /* Guide Container : Cop */

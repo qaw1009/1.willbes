@@ -218,6 +218,36 @@ $(function () {
             prevEl: '.swiper-button-prev'
         }
     });
+    new Swiper('.swiper-container-page-manual', {
+        spaceBetween: 0,
+        centeredSlides: true,
+        loop: false,
+        loopFillGroupWithBlank: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        }
+    });
+    new Swiper('.swiper-container-book-img', {
+        spaceBetween: 0,
+        centeredSlides: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false
+        },
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        },
+        observer: true,
+        observeParents: true,
+    });
 });
 
 // Slider Swipe Script

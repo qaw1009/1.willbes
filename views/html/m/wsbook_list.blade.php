@@ -251,6 +251,9 @@
                     </select>
                 </li>
                 <li>
+                    <a href="#none" onclick="openWin('LayerBookLec')" class="lecViewBtn">교재로 진행중인 강의 ▼</a>
+                </li>
+                <li>
                     <div class="w-buy">       
                         <ul class="two">
                             <li><a href="#none" class="btn_gray">장바구니</a></li>
@@ -351,9 +354,27 @@
                     </div>
                 </li>
             </ul>
-        </div>
+        </div>        
     </div>
     <!--bookListWrap//-->
+
+    {{--교재로 진행중인 강의 팝업--}}
+    <div id="LayerBookLec" class="willbes-Layer-Black">
+        <div class="willbes-Layer-PassBox willbes-Layer-BookBox fix">
+            <a class="closeBtn" href="#none" onclick="closeWin('LayerBookLec')">
+                <img src="{{ img_url('m/calendar/close.png') }}">
+            </a>
+            <div class="Layer-Cont">
+                <div class="Layer-SubTit NG">· 교재로 진행중인 강의</div>
+                <div class="Layer-Txt tx-gray">
+                    <a href="#none">2022년 과목개편 대비 신광은 형사법 심화기출 (21년 11월)</a>
+                    <a href="#none">2022년 과목개편 대비 신광은 형사법(수사/증거편) 심화기출 (21년 11월)</a>
+                </div>
+            </div>
+        </div>
+        <div class="dim" onclick="closeWin('LayerBookLec')"></div>
+    </div>
+    <!--willbes-Layer-BookBox // -->
 
     <div class="goTopbtn">
         <a href="javascript:link_go();">

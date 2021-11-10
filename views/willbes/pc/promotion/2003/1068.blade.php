@@ -16,8 +16,8 @@
 		/************************************************************/
 		.evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
 		
-		.sky {position:fixed; top:150px; right:10px; width:142px; z-index:10;}
-		.sky a {display:block; margin-bottom:10px}
+		.sky {position:fixed; top:150px; right:10px;z-index:10;}
+		.sky a {display:block; margin-bottom:10px}	
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/08/1068_top_bg.jpg) no-repeat center top;}
 
@@ -30,7 +30,9 @@
 
 		.wb_01s {background:url(https://static.willbes.net/public/images/promotion/2021/01/0119_add_bg.jpg) no-repeat center top;}
 
-		.wb_02{background:#f4f4f4;}  
+		.wb_02{background:#f4f4f4;}
+
+		.wb_02_01 {background:#fb6250}
 		
 		.content_guide_wrap {background:#fff; width:1210px; margin:0 auto; padding:50px 0 100px;}
         .content_guide_wrap .guide_tit{width:1210px;margin:0 auto;text-align:center; }
@@ -77,11 +79,22 @@
         .check a:hover {background:#ffc600; color:#252525}
         
         input[id="cb1"]:checked + label {background-color: red;}
-	
+
+		/*유의사항*/
+		.evtInfo {padding:80px 0; background:#e9e9e9; color:#555; font-size:14px}
+		.evtInfoBox { width:1120px; margin:0 auto; text-align:left; line-height:1.5}
+		.evtInfoBox h4 {font-size:35px; margin-bottom:20px}
+		.evtInfoBox .infoTit {font-size:20px; margin-bottom:20px}
+		.evtInfoBox ul {margin-bottom:30px}
+        .evtInfoBox li {list-style-type:none; margin-left:20px; margin-bottom:5px}
+
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">	
-		<div class="sky" id="QuickMenu">   
+		<div class="sky" id="QuickMenu">
+			<a href="#transfer">
+				<img src="https://static.willbes.net/public/images/promotion/2021/11/1068_sky1.png" />				
+			</a>	
 			<a href="#to_go">
 				<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_sky2.png" usemap="#map1068_sky" border="0" />
 				<map name="map1068_sky" id="map1068_sky">
@@ -129,6 +142,14 @@
 			</div>
         </div>	
 		--}}
+
+		<div class="evtCtnsBox wb_02_01" id="transfer">
+			<div class="wrap">
+				<img src="https://static.willbes.net/public/images/promotion/2021/11/1068_02_01.jpg" alt="재도전.환승 이벤트">
+				<a href="https://pass.willbes.net/certApply/index/page/transfer/cert/56" title="인증하기" target="_blank" style="position: absolute;left: 29.85%;top: 77.75%;width: 39.43%;height: 6.53%;z-index: 2;"></a>
+				<a href="#notice" title="유의사항" style="position: absolute;left: 42.05%;top: 85.35%;width: 15.43%;height: 4.03%;z-index: 2;"></a>
+			</div>
+        </div>
 
 		<div class="evtCtnsBox wb_02" id="to_go">
 			<div class="wrap">
@@ -565,8 +586,34 @@
 				</table>
             </div>
             <!--유기농업기능사//-->
-        </div>
-		
+		</div>
+
+		<div class="evtCtnsBox evtInfo" id="notice">
+			<div class="evtInfoBox">
+				<h4 class="NSK-Black">유의사항</h4>
+				<div class="infoTit"><strong>재도전&환승 인증 이벤트 유의사항</strong></div>
+				<ul>
+					<li>· 본 이벤트는 1아이디당 1회만 참여 가능합니다.</li>
+					<li>· 인증 완료 처리는 신청 후, 24시간 이내에 처리됩니다. 단, 주말 및 공휴일 인증 건의 경우 평일 오전 중으로 처리됩니다.</li>               
+				</ul>  
+				<div class="infoTit"><strong>1) 재도전 인증</strong></div>
+				<ul>
+					<li>
+						- 본인의 이름이 명시된 수험표 또는 윌비스 PASS 수강생의 경우 [내강의실] 페이지 내 이름과 PASS명이 명시된 이미지 캡쳐 후 업로드 시 인증 가능합니다.<br>
+						(결제내역을 통한 인증 시, 수강자 이름과 결제 금액, 강좌명이 필수로 기재되어 있어야 합니다.)
+					</li>                                    
+				</ul>
+				<div class="infoTit"><strong>2) 환승 인증</strong></div>
+				<ul>					
+					<li>- 본인의 이름, 수강내역, 결제내역 등이 명확하게 기재된 수강증 등의 캡쳐를 통해서만 인증이 가능합니다.</li>
+					<li>- 본 이벤트는 이벤트 참여자가 본인의 명의로 구매/응시한 내용에 한합니다.</li>
+					<li>- 등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>
+					<li>- 발급된 쿠폰의 사용 기간은 3일입니다.</strong></li>
+					<li>- 지급된 쿠폰은 현재 페이지에서 판매중인 [2022 농업직 기본·심화 이론 패키지], [2022 7급 농업직 이론 패키지], [2022 농촌지도사 이론 패키지 (경기·인천 外)], [2022 농촌지도사 이론 패키지 (경기·인천)] 명시된 총 4개의 상품 구매 시에만 적용 가능합니다.</strong></li>                     
+				</ul>			
+			</div>
+		</div> 
+
     </div>
     <!-- End Container -->
 

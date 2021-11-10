@@ -289,6 +289,60 @@
         </div>
         <!-- Topbtn -->
 
+        <div id="protect" class="willbes-Layer-Black NG">
+            <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h510 fix">
+                <a class="closeBtn" href="#none" onclick="closeWin('protect')">
+                    <img src="{{ img_url('m/calendar/close.png') }}">
+                </a>
+                <h4>개인정보활용 및 환불정책 안내</h4>
+                <div class="protectBox">
+                    <div class="protectBoxWrap">
+                        <h5>개인정보활용 안내</h5>
+                        <div class="tx-dark-gray protectBoxSm">
+                            윌비스는 고객의 개인정보보호를 소중하게 생각하고, 고객의 개인정보를 보호하기 위하여 항상 최선을 다해 노력하고 있습니다.<br>
+                            윌비스는 개인정보보호 관련 주요 법률인「정보통신망 이용촉진 및 정보보호 등에 관한 법률」을 비롯한 모든 개인정보보호 관련 법률을 준수하고 있습니다.<br>
+                            또한, 윌비스는「개인정보처리방침」을 제정하여 이를 준수하고 있으며, 윌비스의「개인정보처리방침」을 홈페이지에 공개하여 고객이 언제나 용이하게 열람할 수 있도록 하고 있습니다.<br>
+                            윌비스의「개인정보처리방침」은 관련 법률 및 지침의 변경 또는 내부 운영 방침의 변경에 따라 변경될 수 있습니다.<br>
+                            윌비스의「개인정보처리방침」이 변경될 경우 변경된 사항을 홈페이지를 통하여 공지합니다.<br>
+                            윌비스 개인정보처리방침은 아래와 같은 내용을 담고 있습니다.<br>
+                            <br>
+                            <div><a href="https://www.willbes.net/company/protect" target="_blank" class="tx-blue">[윌비스 개인정보 취급방침 보기 →]</a></div>
+                        </div>
+                        <div class="chkBoxAgree">
+                            <input type="checkbox" id="protect_check01" name="protect_check01" onchange="protectCheck();">
+                            <label for="protect_check01">위 개인정보활용 안내사항을 모두 읽었으며 동의합니다. (필수)</label>
+                        </div>
+
+                        <h5 class="mt20">환불정책 안내</h5>
+                        <div class="tx-dark-gray protectBoxSm">
+                            <p class="tx14">⊙ 한림법학원 실강종합반 환불정책</p>
+                            (학원설립및과외교습에관한법률 제18조 및 동시행령 제18조에 근거함)<br>
+                            <br>
+                            - 환불시 강의료 정산 = 총 등록(결제) 금액 - 퇴원일까지 진행된 강의 수강료*<br>
+                            * 퇴원일까지 진행된 강의 수강료 기준: 단과 수강료 기준 1회당 가격 * 진행된 강의 횟수<br>
+                            - 강의 개강일 기준 총 회차의 50% 이상이 진행된 경우 해당강의는 전회차 수강료로 정산됩니다.<br>
+                            - 종합반 반 변경은 불가하며, 기존 종합반 탈퇴 후 재가입하셔야 합니다. (탈퇴 시 상기 환불정책 준수)<br>
+                            <br>
+                            <div><a href="https://www.willbes.net/company/protect" target="_blank" class="tx-blue">[윌비스 이용약관 보기 →]</a></div>
+                        </div>
+                        <div class="chkBoxAgree">
+                            <input type="checkbox" id="protect_check02" name="protect_check02" onchange="protectCheck();">
+                            <label for="protect_check02">위 환불정책 안내사항을 모두 읽었으며 동의합니다. (필수)</label>
+                        </div>
+                    </div>
+
+                    <div class="allBtn">
+                        위 개인정보 활용 및 환불정책 안내사항을 모두 읽었으며 동의합니다.
+                        <a href="#none" onclick="protectCheckAll();">전체동의</a>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="dim" onclick="closeWin('InfoForm')"></div>
+        </div>
+
     </div>
     <!-- End Container -->
     <form name="postForm" id="postForm" method="post">
@@ -341,10 +395,38 @@
             $("#postForm").attr("action", "{{ front_url("/classroom/off/ViewAssignProf/") }}").submit();
         }
 
+        var assign_o = '';
+        var assign_op = '';
+
         function AssignProf(o,op)
         {
-            $('#orderidx').val(o);
-            $('#orderprodidx').val(op);
+            assign_o = o;
+            assign_op = op;
+            $("#protect_check01").prop('checked', false);
+            $("#protect_check02").prop('checked', false);
+            $("#protect").show();
+        }
+
+        function protectCheck()
+        {
+            if($("#protect_check01").is(':checked') == true && $("#protect_check02").is(':checked') == true){
+                setTimeout(AssignProf_submit, 100);
+            }
+        }
+
+        function protectCheckAll()
+        {
+            $("#protect_check01").prop('checked', true);
+            $("#protect_check02").prop('checked', true);
+            setTimeout(AssignProf_submit, 100);
+        }
+
+        function AssignProf_submit(o,op)
+        {
+            alert('개인정보활용 및 환불정책 안내에 동의하셨습니다. 강사를 선택해 주세요.');
+
+            $('#orderidx').val(assign_o);
+            $('#orderprodidx').val(assign_op);
             $("#postForm").attr("action", "{{ front_url("/classroom/off/AssignProf/") }}").submit();
         }
 

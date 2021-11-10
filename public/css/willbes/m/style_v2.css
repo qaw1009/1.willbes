@@ -2294,6 +2294,7 @@ body.memBody #Footer {
 .wsBookView {
 	margin: 45px 0 20px;
 }
+.wsBookView h5 {margin-right:10px;}
 .wsBookView .wsBookImg {
 	display: inline-block;
 	float: left;

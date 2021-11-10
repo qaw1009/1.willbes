@@ -116,14 +116,14 @@
             <div id="tab01"><img src="https://static.willbes.net/public/images/promotion/2021/07/2268_02_01.jpg"  alt="2021년 해양경찰을 말하다" /></div>
             <div id="tab02"><img src="https://static.willbes.net/public/images/promotion/2021/07/2268_02_02.jpg"  alt="2022년 해양경찰을 말하다" /></div>    
         </div>
-
+        {{--
         <div class="evtCtnsBox evt_03" id="evt03">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2268_03.jpg"  alt="스폐셜 혜택" />
                 <a href="javascript:void(0);" onclick="certOpen();" title="수험표 인증하기" style="position: absolute; left: 54.11%; top: 62.27%; width: 33.13%; height: 5.91%; z-index: 2;"></a>
             </div>          
         </div>
-
+        --}}
         <div class="evtCtnsBox evt_04" id="evt04">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2268_04.jpg"  alt="합격패스" />

@@ -2308,7 +2308,7 @@ body.memBody #Footer {
 }
 .wsBookView .wsBookImg .bookView {position:absolute; width:calc(100% - 2px); bottom:0; display:block; z-index: 2; padding:10px; background-color: rgba(255,255,255,0.5); margin: 1px; font-size:14px; text-align:center}
 .wsBookView .wsBookImg .bookView:hover {background-color: #000; color:#fff}
-.wsBookView .wsBookImg .lecViewBtn {display:block; text-align: center}
+.wsBookView .wsBookImg .lecViewBtn {display:block; text-align: center;}
 
 .wsbook .tx-main {
 	color: #0c9d00;
@@ -6958,7 +6958,8 @@ body.memBody #Footer {
 	border-right: 0;
 }
 
-.lecViewBtn {display:inline-block; text-align:left; color:#fff !important; background:#00b22a; padding:10px 5px}
+.lecViewBtn {display:inline-block; text-align:center; color:#fff !important; background:#00b22a; padding:10px 0; width:58%; margin:0 auto}
+
 
 .bookImg {
 	width: 100%;

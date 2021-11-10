@@ -7444,6 +7444,59 @@ ul li.profList .willbes-Layer-ProfileBox {
 	margin-left: -170px;
 }
 
+/* subContainer : 윌스토리 : willbes-Layer-BookImg */
+
+.willbes-Layer-BookImg {	
+	display: none;
+	position: fixed;
+	background-color: #fff;
+	top: 0;
+	z-index: 110;
+	width: 800px;
+	height: 100%;
+	left: 50%;
+	margin-left: -400px;
+	padding-top:30px;	
+}
+
+.willbes-Layer-BookImg .closeBtn {
+	position: absolute;
+	top: -1px;
+	right: -1px;
+}
+.willbes-Layer-BookImg .Layer-Cont {
+	display:block;
+	height:100%;
+}
+.willbes-Layer-BookImg .sliderBookBig {
+	width: 600px;
+	margin:0 auto;	
+	position:relative;
+}
+
+.willbes-Layer-BookImg .sliderBookBig .sliderBL {display:flex; justify-content: center; align-items: center;}
+.willbes-Layer-BookImg .sliderBookBig .sliderBL img {width:100%;}   
+.willbes-Layer-BookImg .sliderBookBig .bx-wrapper .bx-pager {
+    bottom:0;
+}
+.willbes-Layer-BookImg .sliderBookBig .bx-wrapper .bx-pager.bx-default-pager a {
+	background: #b7b7b7;
+	width: 20px;
+	height: 5px;
+	margin: 0 2px;
+    border-radius: 0;
+}
+.willbes-Layer-BookImg .sliderBookBig .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.willbes-Layer-BookImg .sliderBookBig .bx-wrapper .bx-pager.bx-default-pager a.active,
+.willbes-Layer-BookImg .sliderBookBig .bx-wrapper .bx-pager.bx-default-pager a:focus {
+	background: #000;
+}
+.willbes-Layer-BookImg .sliderBookBig p {position:absolute; top:50%; margin-top:-18px; width:19px !important; height:36px !important; z-index:10}
+.willbes-Layer-BookImg .sliderBookBig p img {width:100%}
+.willbes-Layer-BookImg .sliderBookBig p.leftBtn {left:-60px}
+.willbes-Layer-BookImg .sliderBookBig p.rightBtn {right:-60px}
+
+
 /* subContainer : Prof : writeTable */
 .LecWriteTable .writeTable tr td.w-text input {
 	width: 670px;
@@ -7584,7 +7637,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 /* sliderWillbesBnr : 좌우 버튼(교수 상세 > 교수홈) */
 .sliderWillbesBnr {
 	clear: both;
-	width: 940x;
+	width: 940px;
 	height: auto;
 }
 .sliderWillbesBnr .bx-wrapper .bx-controls-direction {
@@ -8451,9 +8504,9 @@ ul li.profList .willbes-Layer-ProfileBox {
 	padding: 8px 0 !important;
 }
 /*교재구매 > 강의정보*/
-.bookLecBtn {
-	position: relative;
-}
+.bookLecBtn {position: relative;}
+.bookLecBtn .Layer-Cont li {margin-bottom:10px}
+
 .willbes-Layer-bookLecBox {
 	display: none;
 	background: #fff;
@@ -8463,8 +8516,11 @@ ul li.profList .willbes-Layer-ProfileBox {
 	z-index: 110;
 	width: 500px;
 	height: auto;
+	max-height: 400px;
 	border: 1px solid #2f2f2f;
 	padding: 20px 25px 30px;
+	text-align: left;
+	line-height: 1.5 !important;
 }
 
 /* subContainer : Cs : CScenterIndex : ActIndex4 */

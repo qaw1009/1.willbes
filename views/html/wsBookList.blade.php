@@ -15,7 +15,7 @@
                         <option value="3">출판사</option>
                     </select>
                     <input type="text" name="" class="d_none">                
-                    <input type="search" class='unifiedSearch' data-form="unifiedSearch_form" id="unifiedSearch_text" name="searchfull_text" value="" placeholder="검색어를 입력하세요." maxlength="100"/>
+                    <input type="text" class='unifiedSearch' data-form="unifiedSearch_form" id="unifiedSearch_text" name="searchfull_text" value="" placeholder="검색어를 입력하세요." maxlength="100"/>
                     <label for="onsearch" class="NSK-Black"><button title="검색" type="button" id="btn_unifiedSearch" class='btn_unifiedSearch' data-form="unifiedSearch_form">Search</button></label>
                 </form>
             </div>
@@ -181,6 +181,26 @@
                                 </select>
                             </li>
                         </ul>
+                        <div class="bookLecBtn mt10">
+                            <a href="#none" onclick="openWin('bookLec')" class="lecViewBtn">
+                                <strong>교재로 진행중인 강의 ▼</strong>
+                            </a> 
+                            {{--강의정보--}}
+                            <div id="bookLec" class="willbes-Layer-CScenterBox willbes-Layer-bookLecBox">
+                                <a class="closeBtn" href="#none" onclick="closeWin('bookLec')">
+                                    <img src="{{ img_url('prof/close.png') }}">
+                                </a>
+                                <div class="Layer-Cont">
+                                    <div class="LeclistTable">
+                                        <ul>
+                                            <li><a href="#none">2022년 과목개편 대비 신광은 형사법 심화기출 (21년 11월)</a></li>
+                                            <li><a href="#none">2022년 과목개편 대비 신광은 형사법(수사/증거편) 심화기출 (21년 11월)</a></li>
+                                            <li><a href="#none">2022년 과목개편 대비 신광은 형사법 심화기출 (21년 11월)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>                                  
+                        </div> 
                     </div>
                 </div>
                 <div class="wsBook">
@@ -212,6 +232,11 @@
                                 </select>
                             </li>
                         </ul>
+                        <div class="bookLecBtn mt10">
+                            <a href="#none" class="lecViewBtn">
+                                <strong>교재로 진행중인 강의 ▼</strong>
+                            </a>                                  
+                        </div> 
                     </div>
                 </div>
                 <div class="wsBook">
@@ -243,6 +268,11 @@
                                 </select>
                             </li>
                         </ul>
+                        <div class="bookLecBtn mt10">
+                            <a href="#none" class="lecViewBtn">
+                                <strong>교재로 진행중인 강의 ▼</strong>
+                            </a>                                  
+                        </div> 
                     </div>
                 </div>
                 <div class="wsBook">
@@ -274,6 +304,11 @@
                                 </select>
                             </li>
                         </ul>
+                        <div class="bookLecBtn mt10">
+                            <a href="#none" class="lecViewBtn">
+                                <strong>교재로 진행중인 강의 ▼</strong>
+                            </a>                                  
+                        </div> 
                     </div>
                 </div>
                 <div class="wsBook">
@@ -305,6 +340,11 @@
                                 </select>
                             </li>
                         </ul>
+                        <div class="bookLecBtn mt10">
+                            <a href="#none" class="lecViewBtn">
+                                <strong>교재로 진행중인 강의 ▼</strong>
+                            </a>                                  
+                        </div> 
                     </div>
                 </div>
                 <div class="wsBook">
@@ -367,6 +407,11 @@
                                 </select>
                             </li>
                         </ul>
+                        <div class="bookLecBtn mt10">
+                            <a href="#none" class="lecViewBtn">
+                                <strong>교재로 진행중인 강의 ▼</strong>
+                            </a>                                  
+                        </div> 
                     </div>
                 </div>
                 <div class="wsBook">
@@ -398,6 +443,11 @@
                                 </select>
                             </li>
                         </ul>
+                        <div class="bookLecBtn mt10">
+                            <a href="#none" class="lecViewBtn">
+                                <strong>교재로 진행중인 강의 ▼</strong>
+                            </a>                                  
+                        </div> 
                     </div>
                 </div>
                 <div class="wsBook">
@@ -429,6 +479,11 @@
                                 </select>
                             </li>
                         </ul>
+                        <div class="bookLecBtn mt10">
+                            <a href="#none" class="lecViewBtn">
+                                <strong>교재로 진행중인 강의 ▼</strong>
+                            </a>                                  
+                        </div> 
                     </div>
                 </div>
                 <div class="wsBook">

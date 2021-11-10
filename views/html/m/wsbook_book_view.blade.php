@@ -182,8 +182,36 @@
         <div class="wsBookView">
             <h5 class="NSK-Black">2020 기특한 국어 전 범위 모의고사 4</h5>
             <div class="wsBookImg">
-                <img src="https://pass.willbes.net/public/uploads/wbs/book/2018/303154/book_303154_og.jpg" alt="교재명" title="교재명" />
+                <div class="imgWrap">
+                    <div class="p_re">
+                        <img src="https://pass.willbes.net/public/uploads/wbs/book/2018/303154/book_303154_og.jpg" title="교재명" />
+                        <a href="#none" class="NG bookView" onclick="openWin('LayerBookImg')">+ 미리보기</a>
+                    </div>
+
+                    <div class="bookLecBtn mt20">
+                        <a href="#none" onclick="openWin('LayerBookLec')" class="lecViewBtn">
+                            <strong>교재로 진행중인 강의 ▼</strong>
+                        </a>                                  
+                    </div> 
+
+                    <div class="BookPlay swiper-container swiper-container-page-manual mt20">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide youtube">
+                                <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="swiper-slide youtube">
+                                <iframe src="https://www.youtube.com/embed/VHTrL5w2IF4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="swiper-slide youtube">
+                                <iframe src="https://www.youtube.com/embed/KkESWQLjtq8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
             </div>
+
             <div class="wsBookInfo">                
                 <ul class="wsBooktxt">
                     <li><strong class="shead">판매가</strong><span><s>12,000원</s> → <strong class="tx-red tx14">10,800원</strong></span></li>
@@ -212,6 +240,7 @@
                     </li>
                     <li class="total NG">총 상품금액 <strong>10,800원</strong></li>
                 </ul>
+
                 <div class="wsBook-buyBtn">
                     <ul>
                         <li class="btnAuto h36">
@@ -225,12 +254,15 @@
                             </button>
                         </li>
                     </ul>
-                </div>                
-            </div>                           
+                </div>   
+                
+                <div class="naver">
+                    네이버페이 영역
+                </div>
+            </div>          
+
         </div>
-        <div class="naver">
-            네이버페이 영역
-        </div>
+
 
         <div class="lec-info-tab">
             <ul class="tabWrap">
@@ -319,6 +351,53 @@
         </div>        
     </div>
 
+    {{--교재 이미지--}}
+    <div id="LayerBookImg" class="willbes-Layer-Black">
+        <div class="willbes-Layer-PassBox willbes-Layer-BookBox willbes-Layer-BookImgBox fix">
+            <a class="closeBtn" href="#none" onclick="closeWin('LayerBookImg')">
+                <img src="{{ img_url('m/calendar/close.png') }}">
+            </a>
+
+            <div class="BookPlay swiper-container swiper-container-book-img">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/bookimg01.jpg" alt="교재명">               
+                    </div>            
+                    <div class="swiper-slide">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/bookimg02.jpg" alt="교재명">               
+                    </div> 
+                    <div class="swiper-slide">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/bookimg03.jpg" alt="교재명">              
+                    </div> 
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+        <div class="dim" onclick="closeWin('LayerBookImg')"></div>
+    </div>
+    <!--willbes-Layer-BookBox // -->
+
+    {{--교재로 진행중인 강의 팝업--}}
+    <div id="LayerBookLec" class="willbes-Layer-Black">
+        <div class="willbes-Layer-PassBox willbes-Layer-BookBox fix">
+            <a class="closeBtn" href="#none" onclick="closeWin('LayerBookLec')">
+                <img src="{{ img_url('m/calendar/close.png') }}">
+            </a>
+            <div class="Layer-Cont">
+                <div class="Layer-SubTit NG">· 교재로 진행중인 강의</div>
+                <div class="Layer-Txt tx-gray">
+                    <a href="#none">2022년 과목개편 대비 신광은 형사법 심화기출 (21년 11월)</a>
+                    <a href="#none">2022년 과목개편 대비 신광은 형사법(수사/증거편) 심화기출 (21년 11월)</a>
+                </div>
+            </div>
+        </div>
+        <div class="dim" onclick="closeWin('LayerBookLec')"></div>
+    </div>
+    <!--willbes-Layer-BookBox // -->
+
     <div class="lec-btns w50p">
         <ul>
             <li><a href="#none" class="btn-purple">장바구니</a></li>
@@ -335,6 +414,52 @@
 
 </div>
 <!-- End Container -->
+
+<script>       
+    $(function() {         
+        //도서롤링
+        var swiper = new Swiper ('.swiper-container-nBook', { 
+            slidesPerView: 'auto',
+            spaceBetween: 0, 
+            slidesPerGroup: 1,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
+            pagination: { 
+                el: '.swiper-pagination', 
+                clickable: true,
+            }, 
+        });        
+    });
+    
+    //오늘의책  
+    $(document).ready(function() {
+        var bookInfo = $("#wsbookInfo").bxSlider({
+            auto:true,
+            speed:350,
+            pause:4000,            
+            controls:false,
+            minSlides:1,
+            maxSlides:1,
+            slideMargin:0,
+            autoHover:true,
+            moveSlides:1,
+            pager:false,
+        });       
+
+        $("#bookInfoLeft").click(function (){
+            bookInfo.goToPrevSlide();
+        });
+        
+        $("#bookInfogRight").click(function (){
+            bookInfo.goToNextSlide();
+        });
+    });
+
+</script> 
 
 <!-- footer -->
 <div id="Footer" class="widthAutoFull NGR c_both pb30">

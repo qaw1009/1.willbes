@@ -43,10 +43,50 @@
     </div>
 
     <div class="Content p_re">   
-        <div class="wsBookViewWrap">    
+        <div class="wsBookViewWrap" id="bookimg">    
             <div class="wsBookView">
                 <div class="wsBookImg">
-                    <img src="https://pass.willbes.net/public/uploads/wbs/book/2018/303154/book_303154_og.jpg" alt="교재명" title="교재명" />
+                    <div class="imgWrap">
+                        <div class="p_re">
+                            <img src="https://pass.willbes.net/public/uploads/wbs/book/2018/303154/book_303154_og.jpg" alt="교재명" title="교재명" />
+                            <a href="#none" class="NG bookView" onclick="openWin('LayerBookImg'),openWin('BookImg')">+ 미리보기</a>
+                        </div>
+                    
+                        <div class="bookLecBtn mt20">
+                            <a href="#none" onclick="openWin('bookLec')" class="lecViewBtn">
+                                <strong>교재로 진행중인 강의 ▼</strong>
+                            </a> 
+                            {{--강의정보--}}
+                            <div id="bookLec" class="willbes-Layer-CScenterBox willbes-Layer-bookLecBox">
+                                <a class="closeBtn" href="#none" onclick="closeWin('bookLec')">
+                                    <img src="{{ img_url('prof/close.png') }}">
+                                </a>
+                                <div class="Layer-Cont">
+                                    <div class="LeclistTable">
+                                        <ul>
+                                            <li><a href="#none">2022년 과목개편 대비 신광은 형사법 심화기출 (21년 11월)</a></li>
+                                            <li><a href="#none">2022년 과목개편 대비 신광은 형사법(수사/증거편) 심화기출 (21년 11월)</a></li>
+                                            <li><a href="#none">2022년 과목개편 대비 신광은 형사법 심화기출 (21년 11월)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>                                  
+                        </div> 
+
+                        <div class="sliderBookPlay mt20">
+                            <div class="slider">
+                                <div class="youtube">
+                                    <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                <div class="youtube yu02">
+                                    <iframe src="https://www.youtube.com/embed/VHTrL5w2IF4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                <div class="youtube yu03">
+                                    <iframe src="https://www.youtube.com/embed/KkESWQLjtq8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>	
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="wsBookInfo">
                     <h5 class="NG">2020 기특한 국어 전 범위 모의고사 4</h5>
@@ -114,7 +154,7 @@
                 </div>                
             </div>
             
-            <div id="Sticky" class="sticky-Wrap">
+            <div id="Sticky" class="sticky-Wrap mt50">
                 <div class="sticky-Grid sticky-menu NG">
                     <ul>
                         <li><a href="#none" onclick="movePos('#introduce');">도서소개 ▼</a></li>
@@ -389,11 +429,32 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <!--wsBookViewWrap//-->
+
     </div>
     <!--//Content-->
+
+    
+    <!-- willbes-Layer-bookimg -->
+    <div id="BookImg" class="willbes-Layer-BookImg">
+        <a class="closeBtn" href="#bookimg" onclick="closeWin('LayerBookImg'),closeWin('BookImg')">
+            <img src="{{ img_url('prof/close.png') }}">
+        </a>
+        <div class="Layer-Cont">
+            <div class="sliderBookBig">
+                <div class="sliderBL sliderBookImg">
+                    <div><img src="https://static.willbes.net/public/images/promotion/2021/11/bookimg01.jpg" alt="교재명"></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/2021/11/bookimg02.jpg" alt="교재명"></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/2021/11/bookimg03.jpg" alt="교재명"></div>
+                </div>
+                <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/2021/11/bookAL.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2021/11/bookAR.png"></a></p>
+            </div>
+        </div>
+    </div>
+    <div id="LayerBookImg" class="willbes-Layer-Black"></div>
+    <!-- // willbes-Layer-CurriBox -->
 
     <div class="Quick-Bnr ml20">
         <img src="https://static.willbes.net/public/images/promotion/sub/sub_bn_160.jpg">     
@@ -424,7 +485,36 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function() {
+        var slidesImg = $(".sliderBL").bxSlider({
+            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+            auto:true,
+            speed:350,
+            pause:4000,
+            pager:true,
+            controls:false,
+            minSlides:1,
+            maxSlides:1,
+            slideMargin:0,
+            autoHover: true,
+            moveSlides:1
+        });
 
+        $(".bookView").click(function() {   
+            $(".willbes-Layer-BookImg").show();
+            slidesImg.reloadSlider();
+        });
+
+        $("#imgBannerLeft").click(function (){
+            slidesImg.goToPrevSlide();
+        });
+
+        $("#imgBannerRight").click(function (){
+            slidesImg.goToNextSlide();
+        });
+    }); 
+</script>
 
 
 <!-- End Container -->

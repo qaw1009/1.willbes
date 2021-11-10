@@ -320,8 +320,8 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
 .wsBookWrap {position:relative; clear:both;}
 .wsBookWrap .amount {font-weight: bold; position: absolute; top:25px;}
 .wsBookWrap .amount span {color:#1087ef}
-.wsBookListBox {border-top:2px solid #000}
-.wsBookListBox .wsBook {display:inline; float:left; width:50%; padding:30px; border-bottom:1px solid #c9c9c9; position:relative; min-height:270px}
+.wsBookListBox {border-top:2px solid #000; display: flex; justify-content: space-between; align-items: stretch; flex-wrap: wrap; width:100%}
+.wsBookListBox .wsBook {flex: 1 1 40%; padding:30px; border-bottom:1px solid #c9c9c9; position:relative;}
 .wsBookListBox .wsBookImg {width:120px; position:absolute;}
 .wsBookListBox .wsBookImg img {width:100%;}
 .wsBookListBox .wsBookInfo {line-height:1.4; margin-left:140px;}
@@ -340,9 +340,11 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
 }
 .wsBookListBox .wsBookInfo .bookTitle a {margin-top:5px; display:block}
 .wsBookListBox .wsBookInfo label {cursor: pointer;}
-.wsBookListBox .wsBookInfo strong {display:inline-block; width:60px; font-weight:normal !important}
+.wsBookListBox .wsBookInfo li strong {display:inline-block; width:60px; font-weight:normal !important}
 .wsBookListBox .wsBookInfo input[type="checkbox"] {width:20px; height:20px;}
 .wsBookListBox .wsBookInfo select {width: 50px; height: 24px; border: 1px solid #d4d4d4;}
+
+.bookLecBtn .lecViewBtn {display:inline-block; text-align:left; color:#fff; background:#00b22a; padding:10px 15px}
 
 .wsBookListBox:after,
 .wsBook:after {content:""; display:block; clear:both;}
@@ -350,13 +352,44 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
 /*도서상세보기*/
 .wsBookViewWrap {border-top:1px solid #e1e1e1}
 .wsBookView {margin:45px 0}
-.wsBookView .wsBookImg {display: inline-block; float:left; width: 45%; text-align: center;}
-.wsBookView .wsBookImg img {width:250px}
+.wsBookView .wsBookImg {display:inline-block; float:left; width:45%;}
+.wsBookView .wsBookImg .imgWrap {width:250px; margin:0 auto;}
+.wsBookView .wsBookImg .imgWrap img {width:100%}
+.wsBookView .wsBookImg .bookView {position:absolute; width:calc(100% - 2px); bottom:0; display:block; z-index: 2; padding:10px; background-color: rgba(255,255,255,0.5); margin: 1px; font-size:14px; text-align:center}
+.wsBookView .wsBookImg .bookView:hover {background-color: #000; color:#fff}
+
+.wsBookView .bookLecBtn .lecViewBtn {display:block; text-align:center;}
+
+.sliderBookPlay {
+	clear: both;
+    width:250px;
+	height: auto;
+}
+.sliderBookPlay .bx-wrapper .bx-pager {
+    bottom:-20px;
+}
+.sliderBookPlay .bx-wrapper .bx-pager.bx-default-pager a {
+	background: #b7b7b7;
+	width: 20px;
+	height: 5px;
+	margin: 0 2px;
+    border-radius: 0;
+}
+.sliderBookPlay .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.sliderBookPlay .bx-wrapper .bx-pager.bx-default-pager a.active,
+.sliderBookPlay .bx-wrapper .bx-pager.bx-default-pager a:focus {
+	background: #000;
+}
+
+.sliderBookPlay .youtube iframe {width:250px; height:140px} 
+.sliderBookPlay .youtube {position:absolute; width:250px; z-index:1;}  
+
+
 .wsBookView .wsBookInfo {display: inline-block; float:left; width: 55%; letter-spacing: normal;}
 .wsBookView .wsBookInfo h5 {font-size:18px; margin-bottom:10px}
 .wsBookView .wsBooktxt {border-top:1px solid #d9d9d9}
 .wsBookView .wsBooktxt li {border-bottom:1px solid #d9d9d9; padding:15px 0}
-.wsBookView .wsBooktxt strong.shead {display:inline-block; width:13.5%}
+.wsBookView .wsBooktxt li strong.shead {display:inline-block; width:13.5%}
 .wsBookView .wsBooktxt a.another {display:inline-block; font-weight: bold; color:#0b9d00}
 .wsBookView .wsBooktxt span {display:inline-block; min-width:36%}
 .wsBookView .wsBooktxt li.total {text-align:right; font-size:16px}

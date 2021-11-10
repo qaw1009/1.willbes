@@ -1,5 +1,6 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
+<link href="/public/css/willbes/style_cop.css??ver={{time()}}" rel="stylesheet">
     <!-- Container -->
     <div id="Container" class="Container cop NGR c_both combine">
         <!-- site nav -->
@@ -202,7 +203,7 @@
         </div>
 
         <div class="Section SectionBg03 mt100">
-            <div class="widthAuto">
+            <div class="widthAuto p_re">
                 @include('willbes.pc.site.main_partial.new_product_' . $__cfg['SiteCode'])
             </div>
         </div>

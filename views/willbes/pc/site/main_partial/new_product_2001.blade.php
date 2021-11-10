@@ -49,7 +49,7 @@
                     <li class="aBox closeBox_block"><a href="#none">닫기</a></li>
                 </ul>
             </div>
-        </div>
+        </div>        
     </form>
 
     <script>

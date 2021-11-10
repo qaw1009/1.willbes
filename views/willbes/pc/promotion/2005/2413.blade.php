@@ -7,78 +7,70 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
-            margin-top:20px !important;
+            max-width:2000px;
+            margin:20px auto 0!important;
             padding:0 !important;
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position: relative;}
 
-        /************************************************************/       
+        /************************************************************/
+        
+        .sky {position:fixed;top:100px;right:10px;width:100px; text-align:center; z-index:111;}   
+        .sky a {display:block;margin-bottom:10px; border:5px solid #96f2fb; background:#7d3bb0; color:#96f2fb; padding:20px 0; 
+        font-size:24px; line-height:1.2} 
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/09/2371_top_bg.jpg) no-repeat center top;}	
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/11/2413_top_bg.jpg) repeat-x center top;}	
+        .evt_top div {position:absolute; top:50px; width:100%; text-align:center;}
 
-        .evt_02 {margin-top:100px;}
+        .evt_01 {margin-bottom:100px;}
         
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:14px; margin-top:100px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
 		.evtInfoBox h4 {font-size:30px; margin-bottom:40px}
+        .evtInfoBox h4 strong {color:#94f2fa}
 		.evtInfoBox .infoTit {font-size:18px; margin-bottom:20px}
 		.evtInfoBox .infoTit strong {padding:8px 20px; background:#000; border-radius:20px; font-weight:normal !important}
 		.evtInfoBox ul {margin-bottom:30px}
         .evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
         .evtInfoBox span {vertical-align:bottom}  
 
-        /* 슬라이드배너 */
-        .slide_con {position:relative; width:1120px; margin:0 auto}
-        .slide_con p {position:absolute; top:50%; width:56px; height:56px; margin-top:-28px; z-index:100}
-        .slide_con p a {cursor:pointer}
-        .slide_con p.leftBtn {left:-24px}
-        .slide_con p.rightBtn {right:-24px}
-        #slidesImg1 li {display:inline; float:left}
-        #slidesImg1 li img {width:100%}
-        #slidesImg1:after {content::""; display:block; clear:both}
+
  
         /************************************************************/      
     </style> 
 
-	<div class="evtContent NSK">    
+	<div class="evtContent NSK">  
+        
+        <div class="sky" id="QuickMenu">          
+            <a href="#lecwrap" class="NSK-Black">
+                GS2<br>
+                순환<br>
+                강의<br>
+                신청<br>
+                👇
+            </a>           
+        </div>
 
 		<div class="evtCtnsBox evt_top" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2371_top.jpg" alt="온라인 선행 2순환" />
+            <div><img src="https://static.willbes.net/public/images/promotion/2021/11/2413_top_img.png" alt="5급 GS2순환 합격이벤트"  data-aos="zoom-in-down" data-aos-delay="300"/></div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2413_top.jpg" alt="혜택" />
 		</div>
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2371_01.jpg" alt="5급공채(행정) GS2순환 과정" />
-        </div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2413_01.jpg" alt="5급공채(행정) GS2순환 과정" />
+        </div>   
 
-        <div class="evtCtnsBox evt_02" data-aos="fade-up">
-            <div class="slide_con">
-                <ul id="slidesImg1">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/09/2371_02_01.jpg" alt="10월" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/09/2371_02_02.jpg" alt="11월" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/09/2371_02_03.jpg" alt="12월" /></li>
-                </ul>
-                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2021/09/2371_p_prev.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2021/09/2371_p_next.png"></a></p>
-            </div>
-        </div>
-
-        <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2371_03.jpg" alt="채점 및 첨삭" />
-        </div>
-
-        <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2371_04.jpg" alt="수강료 및 상담문의" />
-        </div>    
-
+        <div id="lecwrap">
         @if(empty($arr_base['display_product_data']) === false)
             @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-        @endif        
+        @endif 
+        </div>       
         
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">
-                <h4 class="NSK-Black">윌비스 한림법학원 5급행정/국립외교원대비 GS2순환 합격 이벤트안내</h4>
+                <h4 class="NSK-Black">윌비스 한림법학원 <strong>5급행정/국립외교원대비 GS2순환 합격</strong> 이벤트 안내</h4>
                 <div class="infoTit"><strong>이벤트 내용</strong></div>
                 <ul>
                     <li>2021년 11월 11일부터 진행되는 GS2순환 강의 자유 선택<br>

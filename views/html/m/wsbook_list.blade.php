@@ -236,6 +236,7 @@
     </div>     
 
     <div class="tx14 pl20">총 <strong class="tx-blue">108</strong>개의 상품이 있습니다.</div>
+    
     <div class="bookListWrap">
         <div class="bookList">
             <div class="bookImg"><a href="#none"><img src="https://pass.willbes.net/public/uploads/wbs/book/2019/304149/book_304149_og.jpg"></a></div>

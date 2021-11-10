@@ -93,7 +93,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">	
 		<div class="sky" id="QuickMenu">
 			<a href="#transfer">
-				<img src="https://static.willbes.net/public/images/promotion/2021/11/1068_sky1.png" />				
+				<img src="https://static.willbes.net/public/images/promotion/2021/11/1068_sky1.png"/>				
 			</a>	
 			<a href="#to_go">
 				<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_sky2.png" usemap="#map1068_sky" border="0" />

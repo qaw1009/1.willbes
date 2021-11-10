@@ -6949,7 +6949,7 @@ body.memBody #Footer {
 }
 .bookList {
 	display: inline-block;
-	width: 50%;
+	width: calc(50% - 2px);
 	border-bottom: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 	padding: 20px 10px;

@@ -15,22 +15,28 @@
                 <div class="LecViewTable">
                     <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                         <colgroup>
-                            @if(empty($data['CampusName']) === false)<col style="width: 65px;">@endif
-                            @if(empty($data['SubjectName']) === false)<col style="width: 100px;">@endif
-                            @if(empty($data['wProfName']) === false)<col style="width: 65px;">@endif
-                            <col style="width: 110px;">
-                            <col style="width: 465px;">
+                        {{--
+                            @if(empty($data['CampusName']) === false)<col>@endif
+                            @if(empty($data['SubjectName']) === false)<col>@endif
+                            @if(empty($data['wProfName']) === false)<col>@endif
+                        --}}
+                            <col>
                             <col style="width: 150px;">
-                            <col style="width: 150px;">
+                            <col style="width: 100px;">
                         </colgroup>
                         <thead>
-                        <tr><th colspan="7" class="w-list tx-left pl20"><span class="w-select tx-blue">[{{$data['RequestTypeName']}}]</span> <strong>{{$data['EventName']}}</strong></th></tr>
                         <tr>
-                            @if(empty($data['CampusName']) === false)<td class="w-type">{{$data['CampusName']}}<span class="row-line">|</span></td>@endif
-                            @if(empty($data['SubjectName']) === false)<td class="w-type">{{$data['SubjectName']}}<span class="row-line">|</span></td>@endif
-                            @if(empty($data['wProfName']) === false)<td class="w-type">{{$data['wProfName']}}<span class="row-line">|</span></td>@endif
-                            <td class="w-area tx-left pl20">{{$data['TakeTypeName']}}<span class="row-line">|</span></td>
-                            <td class="w-area tx-left pl20">[접수기간] {{$data['RegisterStartDay']}} ~ {{$data['RegisterEndDay']}}<span class="row-line">|</span></td>
+                            <th colspan="3" class="w-list tx-left pl20"><span class="w-select tx-blue">[{{$data['RequestTypeName']}}]</span> <strong>{{$data['EventName']}}</strong>
+                            </th>
+                        </tr>
+                        <tr>                            
+                            <td class="w-area tx-left pl20">
+                                @if(empty($data['CampusName']) === false) {{$data['CampusName']}}<span class="row-line">|</span> @endif
+                                @if(empty($data['SubjectName']) === false) {{$data['SubjectName']}}<span class="row-line">|</span> @endif
+                                @if(empty($data['wProfName']) === false) {{$data['wProfName']}}<span class="row-line">|</span> @endif
+                                {{$data['TakeTypeName']}}<span class="row-line">|</span>
+                                [접수기간] {{$data['RegisterStartDay']}} ~ {{$data['RegisterEndDay']}}<span class="row-line">|</span>
+                            </td>
                             <td class="w-date">{{$data['RegDay']}}<span class="row-line">|</span></td>
                             <td class="w-click"><strong>조회수</strong> {{$data['ReadCnt']}}</td>
                         </tr>
@@ -38,22 +44,22 @@
                         <tbody>
                         @if(empty($arr_base['file_F']) === false)
                             <tr>
-                                <td class="w-file tx-left pl20" colspan="7">
+                                <td class="w-file tx-left pl20" colspan="3">
                                     <a href="{{front_url('/event/download?file_idx=').$arr_base['file_F']['EfIdx'].'&event_idx='.element('event_idx', $arr_input) }}" target="_blank">
                                         <img src="{{ img_url('prof/icon_file.gif') }}"> {{$arr_base['file_F']['FileRealName']}}
                                     </a>
                                 </td>
                             </tr>
                         @endif
-                        <tr>
-                            <td class="w-txt tx-left" colspan="7">
-                                @if($data['ContentType'] == $arr_base['content_type']['image'])
-                                    <img src="{{$arr_base['file_C']['FileFullPath'] . $arr_base['file_C']['FileName']}}">
-                                @else
-                                    {!! $data['Content'] !!}
-                                @endif
-                            </td>
-                        </tr>
+                            <tr>
+                                <td class="w-txt tx-left" colspan="3">
+                                    @if($data['ContentType'] == $arr_base['content_type']['image'])
+                                        <img src="{{$arr_base['file_C']['FileFullPath'] . $arr_base['file_C']['FileName']}}">
+                                    @else
+                                        {!! $data['Content'] !!}
+                                    @endif
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

@@ -78,8 +78,8 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2160_01.jpg" alt="년도별 출원인원"  data-aos="fade-left"/>
-            <div class="tImg"  data-aos="fade-right">
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2160_01.jpg" alt="년도별 출원인원"  data-aos="fade-up"/>
+            <div class="tImg"  data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t01.gif" alt="국어 오대혁" />
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t02.gif" alt="영어 한덕현" /><br>
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t04.gif" alt="한국사 김상범" />
@@ -88,7 +88,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts02" data-aos="fade-left">
+        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2160_02.jpg" alt="교수진 및 커리큘럼" />    
                 <a href="javascript:certOpen();" title="타 사이트 수강 인증하기" style="position: absolute; left: 29.82%; top: 85.51%; width: 39.91%; height: 7.35%; z-index: 2;"></a>                  
@@ -96,7 +96,7 @@
             <a href="#careful" class="txtBtn">유의사항 확인하기 →</a>   
         </div>
 
-        <div class="evtCtnsBox wb_cts03" id="transfer" data-aos="fade-right">            
+        <div class="evtCtnsBox wb_cts03" id="transfer" data-aos="fade-up">            
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2160_03.jpg" alt="환승 이벤트" />        
             <div class="time NGEB" id="newTopDday">
                 <ul>
@@ -136,7 +136,7 @@
                         <ol>
                             <li>본 PASS는 9급 일반행정직 대비 과정으로, 참여 교수진의 전 강좌를 배수 제한 없이 무제한으로 수강 가능합니다.<br>
                                 *국어 기미진 [새벽실전모의고사] 제외, 영어 한덕현 [기본문법>제니스문법>기출리뷰>스나이퍼32>실전동형모의고사] 과정만 제공. </li>
-                            <li>수강 가능 교수진 : 국어 오대혁/기미진, 영어 한덕현, 한국사 김상범/오태진/조민주, 행정법 신기훈/황남기/이석준, 행정학 김덕관<br>
+                            <li>수강 가능 교수진 : 국어 오대혁/기미진, 영어 한덕현, 한국사 김상범/오태진/조민주, 행정법 신기훈/황남기/이석준, 행정학 김덕관/김철<br>
                                 *국어 기미진, 한국사 조민주, 행정법 이석준 교수의 경우 9급 일반행정직 신규 과정 진행하지 않으므로 기존 과정만 제공됩니다.</li>
                             <li>2020년 7월부터 진행된 2021년 대비 전 과정 및 2022년 대비로 진행되는 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.<br>
                             (일부 교수진의 경우, 신규 과정이 업데이트 되지 않을 수 있으며 해당 경우에는 이전 연도 과정을 제공해드립니다.)</li>
@@ -208,7 +208,7 @@
                     <dd>
                         <ol>
                             <li>공무원학원 실강 내 LIVE로 진행되는 강좌만 제공됩니다. (* 일부 특강 제외)<br>
-                            - 국어 오대혁, 영어 한덕현, 한국사 김상범, 행정법 신기훈, 행정학 김덕관</li>
+                            - 국어 오대혁, 영어 한덕현, 한국사 김상범, 행정법 신기훈, 행정학 김덕관/김철</li>
                             <li>제공되는 강좌 및 진행일정은 우측 버튼 클릭 후 페이지 하단에서 확인 가능합니다.
                             <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a></li>
                             <li>본 상품은 실시간 진행되므로 일시정지/연장/재수강은 제공되지 않습니다. 촬영 및 편집된 강의는 익일 오후 2시 이전까지 업로드됩니다.</li>

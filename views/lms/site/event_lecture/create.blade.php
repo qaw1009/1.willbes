@@ -23,15 +23,15 @@
                     <div class="form-inline col-md-4 item">
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', true) !!}
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="promotion_code">프로모션코드</label>
-                    <div class="col-md-4 form-inline ml-12-dot">
+                    <label class="control-label col-md-1-1" for="promotion_code">프로모션코드</label>
+                    <div class="col-md-4 form-inline">
                         @if($promotion_modify_type === true && $method == 'PUT')
                             <input type="text" class="form-control" name="promotion_code" id="promotion_code" value="{{$data['PromotionCode']}}">
                         @else
                             <input type="hidden" name="promotion_code" value="{{$data['PromotionCode']}}">
                             {{$data['PromotionCode']}}
                         @endif
-                            <p class="form-control-static"> # 등록 시 자동 생성</p>
+                        <p class="form-control-static"> # 등록 시 자동 생성</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -787,8 +787,8 @@
 
             // site-code에 매핑되는 select box 자동 변경
             $regi_form.find('select[name="campus_ccd"]').chained('select[name="site_code"]');
-            $regi_form.find('select[name="subject_code"]').chained('select[name="site_code"]');
-            $regi_form.find('select[name="prof_code"]').chained('select[name="site_code"]');
+            $regi_form.find('select[name="subject_idx"]').chained("#site_code");
+            $regi_form.find('select[name="prof_idx"]').chained("#site_code");
             $regi_form.find('select[name="set_other_data_1"]').chained('select[name="site_code"]');
             $regi_form.find('select[name="set_other_data_2"]').chained('select[name="site_code"]');
             $regi_form.find('select[name="other_prof_idx[]"]').chained('select[name="site_code"]');

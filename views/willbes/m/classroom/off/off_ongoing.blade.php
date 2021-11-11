@@ -319,7 +319,7 @@
                             (학원설립및과외교습에관한법률 제18조 및 동시행령 제18조에 근거함)<br>
                             <br>
                             - 환불시 강의료 정산 = 총 등록(결제) 금액 - 퇴원일까지 진행된 강의 수강료*<br>
-                            * 퇴원일까지 진행된 강의 수강료 기준: 단과 수강료 기준 1회당 가격 * 진행된 강의 횟수<br>
+                            * 퇴원일까지 진행된 강의 수강료 기준: 단과 수강료 기준 1회당 가격 X 진행된 강의 횟수<br>
                             - 강의 개강일 기준 총 회차의 50% 이상이 진행된 경우 해당강의는 전회차 수강료로 정산됩니다.<br>
                             - 종합반 반 변경은 불가하며, 기존 종합반 탈퇴 후 재가입하셔야 합니다. (탈퇴 시 상기 환불정책 준수)<br>
                             <br>
@@ -395,13 +395,19 @@
             $("#postForm").attr("action", "{{ front_url("/classroom/off/ViewAssignProf/") }}").submit();
         }
 
-        var assign_o = '';
-        var assign_op = '';
+        let assign_o = '';
+        let assign_op = '';
 
         function AssignProf(o,op)
         {
             assign_o = o;
             assign_op = op;
+
+            if($.cookie('_wb_client_protect_' + o + '_' + op) === 'done'){
+                AssignProf_submit(false);
+                return;
+            }
+
             $("#protect_check01").prop('checked', false);
             $("#protect_check02").prop('checked', false);
             $("#protect").show();
@@ -409,7 +415,7 @@
 
         function protectCheck()
         {
-            if($("#protect_check01").is(':checked') == true && $("#protect_check02").is(':checked') == true){
+            if($("#protect_check01").is(':checked') === true && $("#protect_check02").is(':checked') === true){
                 setTimeout(AssignProf_submit, 100);
             }
         }
@@ -421,9 +427,20 @@
             setTimeout(AssignProf_submit, 100);
         }
 
-        function AssignProf_submit(o,op)
+        function AssignProf_submit(popup = false)
         {
-            alert('개인정보활용 및 환불정책 안내에 동의하셨습니다. 강사를 선택해 주세요.');
+            let domains = location.hostname.split('.');
+            let domain = '.' + domains[domains.length - 2] + '.' + domains[domains.length - 1];
+
+            $.cookie('_wb_client_protect_' + assign_o + '_' + assign_op, 'done', {
+                domain: domain,
+                path: '/',
+                expires: 365
+            });
+
+            if(popup === true){
+                alert('개인정보활용 및 환불정책 안내에 동의하셨습니다. 강사를 선택해 주세요.');
+            }
 
             $('#orderidx').val(assign_o);
             $('#orderprodidx').val(assign_op);

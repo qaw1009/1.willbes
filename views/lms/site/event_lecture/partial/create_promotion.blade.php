@@ -313,14 +313,14 @@
     <div class="col-md-10">
         <div class="form-group" style="border-bottom:none;">
             <div class="col-md-5 form-inline">
-                <select class="form-control" id="set_other_data_1" name="set_other_data_1">
+                <select class="form-control selectpicker" id="set_other_data_1" name="set_other_data_1" title="교수" data-live-search="true">
                     <option value="">교수선택</option>
                     @foreach($arr_professor as $row)
                         <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>
                     @endforeach
                 </select>
 
-                <select class="form-control" id="set_other_data_2" name="set_other_data_2">
+                <select class="form-control selectpicker" id="set_other_data_2" name="set_other_data_2" title="과목" data-live-search="true">
                     <option value="">과목선택</option>
                     @foreach($arr_subject as $row)
                         <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}" @if($row['SubjectIdx'] == $data['SubjectIdx'])selected="selected"@endif>{{ $row['SubjectName'] }}</option>

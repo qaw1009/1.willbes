@@ -51,7 +51,7 @@
                                                     </dt><br>
                                                     @if(empty($row['LectureSampleData']) === false)
                                                         @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
-                                                            <dt class="h27">맛보기{{ $sample_idx + 1 }}</dt>
+                                                            <dt class="h27"><strong>맛보기{{ $sample_idx + 1 }}</strong></dt>
                                                             @if(empty($sample_row['wHD']) === false) <dt class="tBox NSK black"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif
                                                             @if(empty($sample_row['wSD']) === false) <dt class="tBox NSK gray"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');">LOW</a></dt> @endif
                                                             <br/>

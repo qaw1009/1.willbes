@@ -11,15 +11,17 @@
     <!-- CSS -->    
     <!-- bootstrap-datepicker -->
     <link rel="stylesheet" href="/public/vendor/bootstrap/datepicker/css/bootstrap-datepicker.standalone.min.css">
-    <!-- Custom Theme Style -->
-    <link href="/public/css/willbes/basic.css" rel="stylesheet">
-    <link href="/public/css/willbes/m/style_v2.css" rel="stylesheet">
+    
     
     <!-- Slider jQuery -->
     <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.css">
     <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.min.css">
     <script src="/public/vendor/jquery/swiper/swiper.js"></script>
     <script src="/public/vendor/jquery/swiper/swiper.min.js"></script>
+
+    <!-- Custom Theme Style -->
+    <link href="/public/css/willbes/basic.css" rel="stylesheet">
+    <link href="/public/css/willbes/m/style_v2.css" rel="stylesheet">
     
     <!-- JAVASCRIPT -->
     <!--// CSS -->

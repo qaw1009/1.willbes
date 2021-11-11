@@ -1,23 +1,23 @@
 <div class="form-group">
     <label class="control-label col-md-1-1">특강구분</label>
     <div class="col-md-4 form-inline">
-        <select class="form-control mr-10" id="subject_idx" name="subject_idx" title="과목">
-            <option value="">과목</option>
-            @foreach($arr_subject as $row)
-                <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}" @if($row['SubjectIdx'] == $data['SubjectIdx'])selected="selected"@endif>{{ $row['SubjectName'] }}</option>
-            @endforeach
-        </select>
-
-        <select class="form-control mr-10" id="prof_idx" name="prof_idx" title="교수">
+        <select class="form-control selectpicker mr-10" id="prof_idx" name="prof_idx" title="교수" data-live-search="true">
             <option value="">교수</option>
             @foreach($arr_professor as $row)
                 <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}" @if($row['ProfIdx'] == $data['ProfIdx'])selected="selected"@endif>{{ $row['wProfName'] }}</option>
             @endforeach
         </select>
+
+        <select class="form-control selectpicker mr-10" id="subject_idx" name="subject_idx" title="과목" data-live-search="true">
+            <option value="">과목</option>
+            @foreach($arr_subject as $row)
+                <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}" @if($row['SubjectIdx'] == $data['SubjectIdx'])selected="selected"@endif>{{ $row['SubjectName'] }}</option>
+            @endforeach
+        </select>
     </div>
 
-    <label class="control-label col-md-1-1 d-line">HOT</label>
-    <div class="col-md-4 ml-12-dot item form-inline">
+    <label class="control-label col-md-1-1">HOT</label>
+    <div class="col-md-4 item form-inline">
         <div class="checkbox">
             <input type="checkbox" id="is_best" name="is_best" value="1" class="flat" @if($data['IsBest']=='1')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
         </div>
@@ -33,8 +33,8 @@
             @endforeach
         </div>
     </div>
-    <label class="control-label col-md-1-1 d-line">접수상태 <span class="required">*</span></label>
-    <div class="col-md-4 ml-12-dot item">
+    <label class="control-label col-md-1-1">접수상태 <span class="required">*</span></label>
+    <div class="col-md-4 item">
         <div class="radio">
             @foreach($arr_is_registers as $key => $val)
                 <input type="radio" class="flat" id="is_register_{{$key}}" name="is_register" value="{{$key}}" title="{{$val}}" required="required" @if($loop->first || $data['IsRegister']==$key)checked="checked"@endif> <label for="is_register_{{$key}}" class="input-label">{{$val}}</label>

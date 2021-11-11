@@ -82,7 +82,7 @@
             <div class="tImg"  data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t01.gif" alt="국어 오대혁" />
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t02.gif" alt="영어 한덕현" /><br>
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t04.gif" alt="한국사 김상범" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2160_t04.gif" alt="행정학 김철" />
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t05.gif" alt="행정법 신기훈" />
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t06.gif" alt="행정학 김덕관" />
             </div>

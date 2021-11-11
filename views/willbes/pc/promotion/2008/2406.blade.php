@@ -135,11 +135,11 @@
                     <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187202" target="_blank">신청하기</a>
                 </li>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_08.jpg" alt="김동진"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_09.jpg" alt="김동진"/>
                     <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187197" target="_blank">신청하기</a>
                 </li>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_09.jpg" alt="고태환"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_08.jpg" alt="고태환"/>
                     <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187198" target="_blank">신청하기</a>
                 </li>
                 <li>

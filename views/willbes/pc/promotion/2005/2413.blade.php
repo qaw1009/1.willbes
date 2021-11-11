@@ -25,6 +25,9 @@
         .evt_top div {position:absolute; top:50px; width:100%; text-align:center;}
 
         .evt_01 {margin-bottom:100px;}
+
+        .evt_02 {width:1120px; margin:0 auto}
+        .evt_02 .title {font-size:30px; margin-bottom:20px; text-align:left; color:#7d3bb0 }
         
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:14px; margin-top:100px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -62,10 +65,16 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2413_01.jpg" alt="5급공채(행정) GS2순환 과정" />
         </div>   
 
-        <div id="lecwrap">
-        @if(empty($arr_base['display_product_data']) === false)
-            @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-        @endif 
+        <div class="evtCtnsBox evt_02" id="lecwrap">
+            <div class="title NSK-Black">5급행정</div>
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+            @endif 
+
+            <div class="title NSK-Black mt50">국립외교원</div>
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+            @endif 
         </div>       
         
         <div class="evtCtnsBox evtInfo">

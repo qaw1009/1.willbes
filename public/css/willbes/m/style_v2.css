@@ -2309,7 +2309,7 @@ body.memBody #Footer {
 }
 .wsBookView .wsBookImg .bookView {position:absolute; width:calc(100% - 2px); bottom:0; display:block; z-index: 2; padding:10px; background-color: rgba(255,255,255,0.5); margin: 1px; font-size:14px; text-align:center}
 .wsBookView .wsBookImg .bookView:hover {background-color: #000; color:#fff}
-.wsBookView .wsBookImg .lecViewBtn {display:block; text-align: center;}
+.wsBookView .wsBookImg .lecViewBtn {display:block; text-align: center; width:100%;}
 
 .wsbook .tx-main {
 	color: #0c9d00;

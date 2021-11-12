@@ -85,13 +85,12 @@
                         <tr>
                             <th colspan="4" class="w-list tx-left pl20"><span class="w-select tx-blue">[이벤트]</span> <strong>합격생 중교 입교 버스 든든 이벤트</strong></th></tr>
                         <tr>
-                            <td class="w-type tx-left pl20">
-                                <span class="mr10">신림</span>
-                                <span class="mr10">영어</span>
-                                <span class="mr10">김현정(영어)</span>
-                                <span class="mr10">회원+비회원</span>
-                                <span class="mr10">[접수기간] 2018-00-00 ~ 2018-00-00</span>               
-                                <span class="row-line">|</span>
+                            <td class="w-area tx-left pl20">
+                                신림<span class="row-line">|</span>
+                                영어<span class="row-line">|</span>
+                                김현정(영어)<span class="row-line">|</span>
+                                회원+비회원<span class="row-line">|</span>
+                                [접수기간] 2018-00-00 ~ 2018-00-00<span class="row-line">|</span>
                             </td>
                             <td><a href="#none" class="btnstA">바로가기 ></a><span class="row-line">|</span></td>
                             <td class="w-date">2018-00-00<span class="row-line">|</span></td>

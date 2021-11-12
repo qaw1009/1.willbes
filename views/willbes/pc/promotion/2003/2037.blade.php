@@ -62,12 +62,12 @@
             </div>
         </div>
       
-        <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2037_01.jpg" alt="시험 미리 만나기"  data-aos="fade-up"/> 
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2037_01.jpg" alt="시험 미리 만나기"  /> 
         </div>
 
-        <div class="evtCtnsBox evt02">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2037_02.jpg" alt="접수 및 시행일정"  data-aos="fade-up"/>  
+        <div class="evtCtnsBox evt02" data-aos="fade-up">  
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2037_02.jpg" alt="접수 및 시행일정"  />  
             <div class="tabs">
                 <ul>
                     <li><a href="#tab01">서울(노량진)</a></li>
@@ -98,7 +98,7 @@
             </div>	       
         </div>
 
-        <div class="evtCtnsBox evt03" id="event03">
+        <div class="evtCtnsBox evt03" id="event03" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2037_03.jpg" alt="시험 미리 만나기"  data-aos="fade-up"/> 
                 <a href="javascript:;" onclick="giveCheck()" title="쿠폰" style="position: absolute; left: 12.41%; top: 68.62%; width: 37.23%; height: 8.14%; z-index: 2;"></a>

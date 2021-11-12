@@ -531,7 +531,7 @@
             setTimeout(AssignProf_submit, 100);
         }
 
-        function AssignProf_submit(popup = true)
+        function AssignProf_submit(popup)
         {
             let domains = location.hostname.split('.');
             let domain = '.' + domains[domains.length - 2] + '.' + domains[domains.length - 1];
@@ -542,7 +542,7 @@
                 expires: 365
             });
 
-            if(popup === true){
+            if(popup !== false){
                 alert('개인정보활용 및 환불정책 안내에 동의하셨습니다. 강사를 선택해 주세요.');
             }
 

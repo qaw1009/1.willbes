@@ -4769,6 +4769,7 @@ form .LeclistTable .evtTable tr td a.w-del {
 	background: #e4e4e4;
 	width: 1px;
 }
+.LecViewTable .listTable tr td.w-area .row-line {float: none; margin:0 10px; vertical-align: middle}
 .LecViewTable .listTable thead tr td dl dt {
 	float: left;
 }
@@ -6037,6 +6038,7 @@ a.btnstA {
 	color: #fff;
 	padding: 5px 20px;
 	border-radius: 20px;
+	vertical-align: middle
 }
 a.btnstA:hover {
 	background: #333;

@@ -14,17 +14,20 @@
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
 
         /************************************************************/
 
-        .sky {position:fixed; top:250px; right:100px; width:163px; z-index:1;}
+        .sky {position:fixed; top:250px; right:10px; width:230px; z-index:1;}
         .sky a {display:block; margin-bottom:25px;}
  
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2127_top_bg.jpg) no-repeat center top;}  
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/11/2127_top_bg.jpg) no-repeat center top;}  
+        .wb_top span {position:absolute; top:440px; left:50%; margin-left:-470px; z-index: 10;}
 
-        .wb_cts03 {padding-bottom:50px;}
+        .wb_cts02 {background:#f0514d}
 
-        .wb_cts04 {background:#fff; height:300px}
+        .wb_cts03 {background:#f2f0f1}
+
         .tabs {width:1120px; margin:0 auto}         
         .tabs li {display:inline; float:left;padding-right:25px;}
         .tabs li a {display:block;}
@@ -39,7 +42,7 @@
         .tab_cts {background:#e82e21;padding:100px 0;}
 
         /*수강신청 체크*/
-        .check {padding-bottom:100px;}
+        .check {position:absolute; width:1120px; bottom:60px; z-index: 100; left:50%; margin-left:-560px}
         .check p {margin-bottom:50px;padding-top:75px;}
         .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#163C57; text-align:center; border-radius:90px;}
         .check p a:hover {color:#8d0033; background:#eee53b;}
@@ -51,7 +54,7 @@
 
         .wb_cts06 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2127_06_bg.jpg) no-repeat center top;}  
 
-        .wb_cts07 {background:#f2f0f1}
+        .wb_cts07 {background:#f2f0f1; padding-top:100px}
 
          /*타이머*/
         .newTopDday * {font-size:24px}
@@ -66,7 +69,7 @@
         .newTopDday ul:after {content:""; display:block; clear:both}
 
         /* 이용안내 */
-        .wb_info {padding-bottom:100px;}
+        .wb_info {padding:100px 0; background:#f4f4f4}
         .guide_box{width:1000px; margin:0 auto; text-align:left; word-break:keep-all; line-height:1.5; font-size:13px;}
         .guide_box h2 {font-size:30px; margin-bottom:30px}
         .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; 
@@ -107,27 +110,48 @@
             </div>
         </div>
 
-        <div class="sky">
+        <div class="sky" id="QuickMenu">
             <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/04/2127_sky01.png"  title="인증하고 할인받기" /></a>
             <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/04/2127_sky02.png"  title="갈아타고 할일받기" /></a>
         </div>
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_top.jpg" alt="소방 패스"  />
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_top.jpg" alt="소방 패스"  />
+            <span data-aos="fade-right"><a href="#lecBuy"><img src="https://static.willbes.net/public/images/promotion/2021/11/2127_top_btn.png" alt="신청하기"/></a></span>
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_01.jpg" alt="왜 윌비스 소방 패스를 선택?" />          
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_01.jpg" alt="왜 윌비스 소방 패스를 선택?" />          
         </div>
 
         <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_02.jpg" alt="소방전문과목과 행정법" />          
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_02.jpg" alt="소방전문과목과 행정법" />          
         </div>
 
-        <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_03.jpg" alt="합격 라인업" />               
+        <div class="evtCtnsBox wb_cts03" id="transfer">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_03.jpg" alt="합격 라인업" />
+                <a href="javascript:certOpen();" title="인증하기" style="position: absolute; left: 29.64%; top: 80.24%; width: 40.09%; height: 5.71%; z-index: 2;"></a>
+                <a href="#careful" title="유의사항" style="position: absolute; left: 41.34%; top: 86.78%; width: 14.64%; height: 3.84%; z-index: 2;"></a>
+            </div>    
         </div>
 
+        <div class="evtCtnsBox wb_cts04" id="lecBuy">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_04.jpg" alt="환승 이벤트" />
+                <a href="javascript:go_PassLecture('180408');" target="_blank" title="공채" style="position: absolute; left: 27.5%; top: 74.1%; width: 17.95%; height: 6.78%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('180413');" target="_blank" title="특채" style="position: absolute; left: 71.16%; top: 74.1%; width: 17.95%; height: 6.78%; z-index: 2;"></a>
+            </div>
+            <div class="check" id="chkInfo">               
+                <label>
+                    <input name="ischk" type="checkbox" value="Y" />
+                    페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+                </label>
+                <a href="#careful" class="infotxt" > 유의사항 자세히보기 ↓</a>
+            </div> 
+        </div>
+
+        {{--
         <div class="evtCtnsBox wb_cts04">
             <ul class="tabs">
                 <li>
@@ -167,7 +191,7 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div>        
 
         <div class="tab_cts">   
             <div class="evtCtnsBox" id="tab01">
@@ -211,7 +235,7 @@
                     <area shape="rect" coords="290,207,400,244" href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/50615/?subject_idx=1111&subject_name=%ED%96%89%EC%A0%95%EB%B2%95" target="_blank" />
                 </map>
             </div>
-        </div>    
+        </div>  
 
         <div class="evtCtnsBox wb_cts05">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_05.jpg" alt="소방 전용 커리큘럼" />          
@@ -219,31 +243,16 @@
 
         <div class="evtCtnsBox wb_cts06">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_06.jpg" alt="q&a" />          
-        </div>
-
-        <div class="evtCtnsBox wb_cts07" id="transfer">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2127_07.jpg" alt="환승 이벤트" usemap="#2127a" border="0" />
-            <map name="2127a" id="2127a">
-                <area shape="rect" coords="342,1064,776,1120" href="javascript:certOpen();"/>
-                <area shape="rect" coords="470,1144,622,1177" href="#careful" />
-            </map>     
-        </div>
+        </div>               
 
         <div class="evtCtnsBox wb_cts08">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2127_08.jpg" alt="수강신청" usemap="#2127b" border="0" />
             <map name="2127b" id="2127b">
-                <area shape="rect" coords="316,1006,501,1083" href="javascript:go_PassLecture('180408');" alt="수강신청" />
-                <area shape="rect" coords="806,1007,991,1083" href="javascript:go_PassLecture('180413');" alt="수강신청" />
-            </map>      
-            <div class="check" id="chkInfo">               
-                <label>
-                    <input name="ischk" type="checkbox" value="Y" />
-                    페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
-                </label>
-                <a href="#careful" class="infotxt" > 유의사항 자세히보기 ↓</a>
-            </div>         
+                <area shape="rect" coords="316,1006,501,1083" href="" alt="수강신청" />
+                <area shape="rect" coords="806,1007,991,1083" href="" alt="수강신청" />
+            </map>        
         </div>
-    
+        --}} 
 
         <div class="evtCtnsBox wb_info" id="careful">
             <div class="guide_box">
@@ -348,6 +357,14 @@
         </div>
     </div>
     <!-- End Container -->
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        $( document ).ready( function() {
+            AOS.init();
+        } );
+    </script>
 
     <script>    
 

@@ -32,7 +32,10 @@ class LoginLockModel extends WB_Model
         } else {
             $in_column = 'L.wLockIdx, L.wAdminId, L.wLockSubDomain, L.wLockDatm, L.wLockIp, L.wUnLockDatm, L.wUnLockAdminIdx
                 , ifnull(A.wAdminName, "비운영자") as wAdminName, A.wRoleIdx, A.wIsUse
-                , if(A.wAdminIdx is null, "X", if(L.wUnLockDatm is null, "N", "Y")) as wIsUnLock
+                , (case L.wLockSubDomain 
+                    when "btob" then if(L.wUnLockDatm is null, "N", "Y")
+                    else if(A.wAdminIdx is null, "X", if(L.wUnLockDatm is null, "N", "Y"))
+                    end) as wIsUnLock
                 , R.wRoleName
                 , UA.wAdminId as wUnLockAdminId, UA.wAdminName as wUnLockAdminName';
 

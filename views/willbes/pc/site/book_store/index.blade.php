@@ -182,6 +182,22 @@
                                             </select>
                                         </li>
                                     </ul>
+                                    {{-- 연관된 강의정보 --}}
+                                    <div class="bookLecBtn mt10">
+                                        <a href="#none" class="lecViewBtn" data-prod-code="{{ $row['ProdCode'] }}" data-wbook-idx="{{ $row['wBookIdx'] }}">
+                                            <strong>교재로 진행중인 강의 ▼</strong>
+                                        </a>
+                                        <div id="bookLec_{{ $row['ProdCode'] }}" class="willbes-Layer-CScenterBox willbes-Layer-bookLecBox">
+                                            <a class="closeBtn" href="#none" data-prod-code="{{ $row['ProdCode'] }}">
+                                                <img src="{{ img_url('prof/close.png') }}">
+                                            </a>
+                                            <div class="Layer-Cont">
+                                                <div class="LeclistTable">
+                                                    <ul></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
@@ -246,6 +262,51 @@
             @endif
         });--}}
         {{--// 네이버페이 심사 --}}
+
+        // 교재로 진행중인 강의 버튼 클릭
+        $regi_form.on('click', '.bookLecBtn > a', function() {
+            var prod_code = $(this).data('prod-code');
+            var wbook_idx = $(this).data('wbook-idx');
+            var ele_id = 'bookLec_' + prod_code;
+            var lec_selector = $('#' + ele_id).find('.LeclistTable ul');
+
+            if ($(this).hasClass('on')) {
+                $(this).removeClass('on').text('교재로 진행중인 강의 ▼');
+                closeWin(ele_id);
+            } else {
+                $(this).addClass('on').text('교재로 진행중인 강의 ▲');
+                openWin(ele_id);
+
+                // 단강좌 정보 조회 (기존 조회결과가 없을 경우만 조회)
+                if (lec_selector.html() === '') {
+                    var url = '{{ front_url('/bookStore/lectureInfo/wbook-idx/') }}' + wbook_idx;
+                    var html = '';
+
+                    sendAjax(url, {}, function(ret) {
+                        if (ret.ret_cd) {
+                            if (ret.ret_data.length < 1) {
+                                html += '<li>해당 교재로 진행중인 강의가 없습니다.</li>';
+                            } else {
+                                $.each(ret.ret_data, function (i, item) {
+                                    html += '<li><a href="' + app_url('/lecture/show/cate/' + item.CateCode + '/pattern/only/prod-code/' + item.ProdCode, item.SiteSubDomain) + '" target="_blank">' + item.ProdName + '</a></li>';
+                                });
+                            }
+
+                            // 조회결과 셋팅
+                            lec_selector.html(html);
+                        }
+                    }, showAlertError, true, 'GET');
+                }
+            }
+        });
+
+        // 교재로 진행중인 강의 레이어 닫기
+        $regi_form.on('click', '.bookLecBtn .closeBtn', function() {
+            var prod_code = $(this).data('prod-code');
+
+            $(this).parents('.bookLecBtn').children('a').removeClass('on').text('교재로 진행중인 강의 ▼');
+            closeWin('bookLec_' + prod_code);
+        });
 
         // 검색어 입력 후 엔터
         $('#search_value').on('keyup', function() {

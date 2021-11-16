@@ -9,7 +9,7 @@
         @include('willbes.pc.layouts.partial.site_route_path')
     </div>
     <div class="Content p_re">
-        <div class="wsBookViewWrap">
+        <div class="wsBookViewWrap" id="BookViewWrap">
             <div class="wsBookView">
                 <form id="regi_book_form" name="regi_book_form" method="POST" onsubmit="return false;" novalidate>
                     {!! csrf_field() !!}
@@ -20,9 +20,50 @@
 
                     <div class="wsBookImg">
                         <div class="imgWrap">
-                            <div>
-                            <img src="{{ $data['wAttachImgPath'] . $data['wAttachImgOgName'] }}" alt="{{ $data['ProdName'] }}" title="{{ $data['ProdName'] }}"/>
+                            <div class="p_re">
+                                <img src="{{ $data['wAttachImgPath'] . $data['wAttachImgOgName'] }}" alt="{{ $data['ProdName'] }}" title="{{ $data['ProdName'] }}"/>
+                                @if(empty($data['wReferData']['pv_img']) === false)
+                                    <a href="#none" class="NG bookView" id="BookPreviewImg">+ 미리보기</a>
+                                @endif
                             </div>
+
+                            <div class="bookLecBtn mt20">
+                                <a href="#none" onclick="openWin('bookLec')" class="lecViewBtn">
+                                    <strong>교재로 진행중인 강의 ▼</strong>
+                                </a>
+                                {{-- 연관된 강의정보 --}}
+                                <div id="bookLec" class="willbes-Layer-CScenterBox willbes-Layer-bookLecBox">
+                                    <a class="closeBtn" href="#none" onclick="closeWin('bookLec')">
+                                        <img src="{{ img_url('prof/close.png') }}">
+                                    </a>
+                                    <div class="Layer-Cont">
+                                        <div class="LeclistTable">
+                                            <ul>
+                                                @if(empty($data['LectureData']) === false)
+                                                    @foreach($data['LectureData'] as $lec_row)
+                                                        <li><a href="{{ app_url('/lecture/show/cate/' . $lec_row['CateCode'] . '/pattern/only/prod-code/' . $lec_row['ProdCode'], $lec_row['SiteSubDomain']) }}" target="_blank">{{ $lec_row['ProdName'] }}</a></li>
+                                                    @endforeach
+                                                @else
+                                                    <li>해당 교재로 진행중인 강의가 없습니다.</li>
+                                                @endif
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- 유튜브영상 --}}
+                            @if(empty($data['wReferData']['yt_url']) === false)
+                                <div class="sliderBookPlay mt20">
+                                    <div class="slider">
+                                        @foreach($data['wReferData']['yt_url'] as $yt_row)
+                                            <div class="youtube">
+                                                <iframe src="{{ $yt_row['wReferValue'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="wsBookInfo">
@@ -139,7 +180,7 @@
                 </form>
             </div>
 
-            <div id="Sticky" class="sticky-Wrap">
+            <div id="Sticky" class="sticky-Wrap mt50">
                 <div class="sticky-Grid sticky-menu NG">
                     <ul>
                         <li><a href="#none" onclick="movePos('#introduce');">도서소개 ▼</a></li>
@@ -237,6 +278,29 @@
     </div>
     <!--//Content-->
 
+    {{-- 교재 미리보기 레이어팝업 --}}
+    @if(empty($data['wReferData']['pv_img']) === false)
+        <!-- willbes-Layer-bookimg -->
+        <div id="BookImg" class="willbes-Layer-BookImg">
+            <a class="closeBtn" href="#BookViewWrap" onclick="closeWin('LayerBookImg'); closeWin('BookImg')">
+                <img src="{{ img_url('prof/close.png') }}">
+            </a>
+            <div class="Layer-Cont">
+                <div class="sliderBookBig">
+                    <div class="sliderBL sliderBookImg">
+                        @foreach($data['wReferData']['pv_img'] as $pv_row)
+                            <div><img src="{{ $pv_row['wReferValue'] }}" alt="{{ $pv_row['wReferEtc'] }}"></div>
+                        @endforeach
+                    </div>
+                    <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/2021/11/bookAL.png"></a></p>
+                    <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2021/11/bookAR.png"></a></p>
+                </div>
+            </div>
+        </div>
+        <div id="LayerBookImg" class="willbes-Layer-Black"></div>
+        <!-- // willbes-Layer-bookimg -->
+    @endif
+
     {{-- 날개 배너 --}}
     {!! banner('교재구매_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
 
@@ -298,6 +362,37 @@
             var total_real_sale_price = real_sale_price * prod_qty;
 
             $regi_form.find('#total_real_sale_price').html(addComma(total_real_sale_price));
+        });
+
+        // 미리보기 슬라이드
+        var slidesPreviewImg = $('#BookImg .sliderBL').bxSlider({
+            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+            auto:true,
+            speed:350,
+            pause:4000,
+            pager:true,
+            controls:false,
+            minSlides:1,
+            maxSlides:1,
+            slideMargin:0,
+            autoHover: true,
+            moveSlides:1
+        });
+
+        // 미리보기 버튼 클릭
+        $regi_form.on('click', '#BookPreviewImg', function() {
+            openWin('LayerBookImg');
+            openWin('BookImg');
+            slidesPreviewImg.reloadSlider();
+        });
+
+        // 미리보기 슬라이드 좌우 버튼 클릭
+        $('#BookImg #imgBannerLeft').click(function (){
+            slidesPreviewImg.goToPrevSlide();
+        });
+
+        $('#BookImg #imgBannerRight').click(function (){
+            slidesPreviewImg.goToNextSlide();
         });
     });
 

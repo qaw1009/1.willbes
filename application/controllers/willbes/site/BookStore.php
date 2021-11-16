@@ -174,6 +174,12 @@ class BookStore extends \app\controllers\FrontController
         // 데이터 병합
         $data = array_merge($data, $w_data);
 
+        // 교재 참조정보 조회
+        $data['wReferData'] = $this->bookFModel->getBmsBookReferByWBookIdx($data['wBookIdx']);
+
+        // 교재와 연관된 단강좌 조회
+        $data['LectureData'] = $this->bookFModel->findSalesProductLectureToBookByWBookIdx($data['wBookIdx']);
+
         // 최근본책 쿠키 저장
         $this->_setCookieRecentBooks($prod_code, $data['wAttachImgPath'] . $data['wAttachImgSmName']);
 
@@ -183,6 +189,24 @@ class BookStore extends \app\controllers\FrontController
             'is_npay' => $this->_is_npay,
             'data' => $data
         ]);
+    }
+
+    /**
+     * 온라인서점 교재와 연관된 온라인 단강좌 조회
+     * @param array $params
+     * @return CI_Output
+     */
+    public function lectureInfo($params = [])
+    {
+        $wbook_idx = element('wbook-idx', $params);
+        if (empty($wbook_idx) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        // 연관된 온라인 단강좌 조회
+        $data = $this->bookFModel->findSalesProductLectureToBookByWBookIdx($wbook_idx);
+
+        return $this->json_result(true, '', [], $data);
     }
 
     /**

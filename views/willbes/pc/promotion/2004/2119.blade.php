@@ -5,22 +5,22 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
+            position:relative;
             width:100% !important;
             min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
+        /*.evtCtnsBox .wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.5);}*/
 
         /************************************************************/
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2119_top_bg.jpg) no-repeat center;}    
 
         .wb_01 {background:#fff}
-        .wb_02 {background:#f0f0f0}
-
-        .wb_01 div,
-        .wb_02 div {width:1120px; margin:0 auto}
+        .wb_02 {background:#f4f4f4}
 
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
                       
@@ -41,8 +41,8 @@
 
         <div class="evtCtnsBox wb_02">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2119_02.jpg" alt="수강신청" />  
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" title="수강신청하기" style="position: absolute; left: 28.84%; top: 82.52%; width: 42.86%; height: 8.96%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2119_02.jpg" alt="수강신청" />  
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" title="수강신청하기" style="position: absolute; left: 29.55%; top: 84.79%; width: 43.39%; height: 7.16%; z-index: 2;"></a>
             </div>
         </div>
     </div>

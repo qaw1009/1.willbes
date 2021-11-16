@@ -22,14 +22,16 @@
         .sky a {display:block; margin-bottom:25px;}
  
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/11/2127_top_bg.jpg) no-repeat center top;}  
-        .wb_top span {position:absolute; top:440px; left:50%; margin-left:-470px; z-index: 10;}
+        .wb_top span {position:absolute; top:440px; left:50%; margin-left:-470px; z-index: 10;}      
 
         .wb_cts02 {background:#f0514d}
 
         .wb_cts03 {background:#f2f0f1}
 
-        .tabs {width:1120px; margin:0 auto}         
-        .tabs li {display:inline; float:left;padding-right:25px;}
+        /* TAB */        
+        .wb_cts01_apply {background:#e0e0e0;padding-bottom:120px;}
+        .tabs {width:1000px; margin:0 auto}         
+        .tabs li {display:inline; float:left;padding-right:10px;}
         .tabs li a {display:block;}
         .tabs li a img.off {display:block}
         .tabs li a img.on {display:none}
@@ -37,10 +39,9 @@
         .tabs li a.active img.off {display:none}
         .tabs li a:hover img.on,
         .tabs li a.active img.on {display:block}
-        .tabs ul:after {content:""; display:blockl; clear:both}	 
-
-        .tab_cts {background:#e82e21;padding:100px 0;}
-
+        .tabs ul:after {content:""; display:block; clear:both}
+        .tab_cts {background:#e0e0e0;padding-top:100px;padding-bottom:120px;}
+      
         /*수강신청 체크*/
         .check {position:absolute; width:1120px; bottom:60px; z-index: 100; left:50%; margin-left:-560px}
         .check p {margin-bottom:50px;padding-top:75px;}
@@ -124,6 +125,105 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_01.jpg" alt="왜 윌비스 소방 패스를 선택?" />          
         </div>
 
+        <div class="evtCtnsBox wb_cts01_apply">
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_01_apply.jpg" alt="합격 라인업" />
+            <ul class="tabs">
+                <li>
+                    <a href="#tab01">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_tab01_off.png" title="" class="off"/> 
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_tab01.png" title="" class="on"/> 
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab02">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_tab02_off.png" title="" class="off"/> 
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_tab02.png" title="" class="on"/> 
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab03">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_tab03_off.png" title="" class="off"/> 
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_tab03.png" title="" class="on"/> 
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab04">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_tab04_off.png" title="" class="off"/> 
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_tab04.png" title="" class="on"/> 
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab05">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_tab05_off.png" title="" class="off"/> 
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_tab05.png" title="" class="on"/> 
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab06">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_tab06_off.png" title="" class="off"/> 
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_tab06.png" title="" class="on"/> 
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab07">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_tab07_off.png" title="" class="off"/> 
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_tab07.png" title="" class="on"/> 
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="tab_cts">
+            <div class="evtCtnsBox" id="tab01">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_04_01.png" title="">
+                    <a href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/51068/?subject_idx=1113" target="_blank" title="" style="position: absolute;left: 43.41%;top: 34.88%;width: 11.07%;height: 6.85%;z-index: 2;"></a>
+                </div>
+            </div>
+
+            <div class="evtCtnsBox" id="tab02">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_04_02.png" title="" >
+                    <a href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/50465?subject_idx=1113&subject_name=%EC%86%8C%EB%B0%A9%ED%95%99%EA%B0%9C%EB%A1%A0" target="_blank" title="" style="position: absolute;left: 43.41%;top: 34.88%;width: 11.07%;height: 6.85%;z-index: 2;"></a>
+                </div>      
+            </div>
+
+            <div class="evtCtnsBox" id="tab03">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_04_03.png" title="" >
+                    <a href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/50309?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4" target="_blank" title="" style="position: absolute;left: 31.59%;top: 34.88%;width: 11.07%;height: 6.85%;z-index: 2;"></a>
+                </div>         
+            </div>
+
+            <div class="evtCtnsBox" id="tab04">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_04_04.png" title="">
+                    <a href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/50071?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4" target="_blank" title="" style="position: absolute;left: 31.59%;top: 34.88%;width: 11.07%;height: 6.85%;z-index: 2;"></a>
+                </div>         
+            </div>
+
+            <div class="evtCtnsBox" id="tab05">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_04_05.png" title="" >
+                    <a href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/50305?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC" target="_blank" title="" style="position: absolute;left: 31.59%;top: 34.88%;width: 11.07%;height: 6.85%;z-index: 2;"></a>
+                </div>         
+            </div>
+
+            <div class="evtCtnsBox" id="tab06">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_04_06.png" title="" >
+                    <a href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/50615?subject_idx=1111&subject_name=%ED%96%89%EC%A0%95%EB%B2%95" target="_blank" title="" style="position: absolute;left: 31.59%;top: 34.88%;width: 11.07%;height: 6.85%;z-index: 2;"></a>
+                </div>       
+            </div>
+
+            <div class="evtCtnsBox" id="tab07">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_04_07.png" title="" >
+                    <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50157?subject_idx=1107" target="_blank" title="" style="position: absolute;left: 31.59%;top: 34.88%;width: 11.07%;height: 6.85%;z-index: 2;"></a>
+                </div>         
+            </div>
+        </div>
+
         <div class="evtCtnsBox wb_cts02">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_02.jpg" alt="소방전문과목과 행정법" />          
         </div>
@@ -151,109 +251,6 @@
             </div> 
         </div>
 
-        {{--
-        <div class="evtCtnsBox wb_cts04">
-            <ul class="tabs">
-                <li>
-                    <a href="#tab01">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_01_off.png" title="" class="off"/> 
-                        <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_01_on.png" title="" class="on"/> 
-                    </a>
-                </li>
-                <li>
-                    <a href="#tab02">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_02_off.png" title="" class="off"/> 
-                        <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_02_on.png" title="" class="on"/> 
-                    </a>
-                </li>
-                <li>
-                    <a href="#tab03">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_03_off.png" title="" class="off"/> 
-                        <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_03_on.png" title="" class="on"/> 
-                    </a>
-                </li>
-                <li>
-                    <a href="#tab04">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_04_off.png" title="" class="off"/> 
-                        <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_04_on.png" title="" class="on"/> 
-                    </a>
-                </li>
-                <li>
-                    <a href="#tab05">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_05_off.png" title="" class="off"/> 
-                        <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_05_on.png" title="" class="on"/> 
-                    </a>
-                </li>
-                <li>
-                    <a href="#tab06">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_06_off.png" title="" class="off"/> 
-                        <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_06_on.png" title="" class="on"/> 
-                    </a>
-                </li>
-            </ul>
-        </div>        
-
-        <div class="tab_cts">   
-            <div class="evtCtnsBox" id="tab01">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_01.png" title="이종오 교수" usemap="#2127_04_01"  border="0" />
-                <map name="2127_04_01" id="2127_04_01">
-                    <area shape="rect" coords="422,208,532,245" href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/51068?subject_idx=1113&subject_name=%EC%86%8C%EB%B0%A9%ED%95%99%EA%B0%9C%EB%A1%A0" target="_blank" />
-                </map>
-            </div>
-
-            <div class="evtCtnsBox" id="tab02">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_02.png" title="김종상 교수" usemap="#2127_04_02"  border="0" />
-                <map name="2127_04_02" id="2127_04_02">
-                    <area shape="rect" coords="422,208,532,245" href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/50465?subject_idx=1113&subject_name=%EC%86%8C%EB%B0%A9%ED%95%99%EA%B0%9C%EB%A1%A0" target="_blank" />
-                </map>
-            </div>
-
-            <div class="evtCtnsBox" id="tab03">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_03.png" title="이아림 교수" usemap="#2127_04_03"  border="0" />
-                <map name="2127_04_03" id="2127_04_03">
-                    <area shape="rect" coords="290,207,400,244" href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/50309?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4" target="_blank" />
-                </map>
-            </div>
-
-            <div class="evtCtnsBox" id="tab04">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_04.png" title="양익 교수" usemap="#2127_04_04"  border="0" />
-                <map name="2127_04_04" id="2127_04_04">
-                    <area shape="rect" coords="290,207,400,244" href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/50071?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4" target="_blank" />
-                </map>
-            </div>
-
-            <div class="evtCtnsBox" id="tab05">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_05.png" title="한경준 교수" usemap="#2127_04_05"  border="0" />
-                <map name="2127_04_05" id="2127_04_05">
-                    <area shape="rect" coords="290,207,400,244" href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/50305?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC" target="_blank" />
-                </map>
-            </div>
-
-            <div class="evtCtnsBox" id="tab06">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_04_06.png" title="이석준 교수" usemap="#2127_04_06"  border="0" />
-                <map name="2127_04_06" id="2127_04_06">
-                    <area shape="rect" coords="290,207,400,244" href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/50615/?subject_idx=1111&subject_name=%ED%96%89%EC%A0%95%EB%B2%95" target="_blank" />
-                </map>
-            </div>
-        </div>  
-
-        <div class="evtCtnsBox wb_cts05">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_05.jpg" alt="소방 전용 커리큘럼" />          
-        </div>
-
-        <div class="evtCtnsBox wb_cts06">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_06.jpg" alt="q&a" />          
-        </div>               
-
-        <div class="evtCtnsBox wb_cts08">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2127_08.jpg" alt="수강신청" usemap="#2127b" border="0" />
-            <map name="2127b" id="2127b">
-                <area shape="rect" coords="316,1006,501,1083" href="" alt="수강신청" />
-                <area shape="rect" coords="806,1007,991,1083" href="" alt="수강신청" />
-            </map>        
-        </div>
-        --}} 
-
         <div class="evtCtnsBox wb_info" id="careful">
             <div class="guide_box">
                 <h2 class="NSK-Black">윌비스 소방직 PASS 이용안내</h2>
@@ -263,7 +260,7 @@
                         <ol>
                             <li>본 PASS는 소방직 대비 과정으로, 참여 교수진의 전 강좌를 배수 제한없이 무제한으로 수강 가능합니다.<br>
                             · 공채 : 영어 이아림, 한국사 한경준, 소방학/소방관계법규 : 이종오/김종상, 행정법 : 이석준<br>
-                            · 특채 (구조/구급&관련학과) : 국어 김세령, 생활영어 양익, 소방학/소방관계법규 : 이종오, 김종상
+                            · 특채 (구조/구급&관련학과) : 국어 오대혁/김세령, 생활영어 양익, 소방학/소방관계법규 : 이종오, 김종상
                             </li>                         
                             <li>2021~2022년 대비로 진행된 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.<br>
                             (*국어 김세령 교수의 경우, 2022 대비 신규강의 업데이트 되지 않습니다.)
@@ -395,9 +392,8 @@
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
 
-
         /*tab*/
-           $(document).ready(function(){
+        $(document).ready(function(){
             $('.tabs').each(function(){
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
@@ -420,8 +416,8 @@
                     $content.show();
 
                     e.preventDefault()})})}
-        ) 
-
+        )          
+       
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

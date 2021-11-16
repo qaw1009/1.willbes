@@ -164,6 +164,16 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="">대표영상(유튜브)
+                    </label>
+                    <div class="col-md-4">
+                        @for($i = 1; $i <= $refer_type_cnts['yt_url']; $i++)
+                            <input type="text" id="yt_url{{$i}}" name="yt_url[]" class="form-control mb-5" title="대표영상(유튜브){{$i}}" value="{{ array_get($data['wReferStringData'], 'yt_url.' . $i . '.wReferValue') }}">
+                        @endfor
+                        # 유튜브 경로는 최대 {{ $refer_type_cnts['yt_url'] }}개까지 등록 가능합니다.
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2" for="attach_img">교재 이미지 (280*390, jpg) <span class="required">*</span>
                     </label>
                     <div class="col-md-9 item form-inline">
@@ -176,9 +186,30 @@
                             <a href="{{ $data['wAttachImgPath'] . $data['wAttachImgLgName'] }}" rel="popup-image" class="btn btn-sm btn-default mr-10" data-toggle="tooltip" data-original-title="Large">L</a>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="attach_img_delete" value="Y" class="flat"/> <span class="red">삭제</span>
+                            <label><input type="checkbox" name="attach_img_delete" value="Y" class="flat"/> <span class="red">삭제</span></label>
                         </div>
                         @endif
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="">미리보기 이미지 (810*1200)
+                    </label>
+                    <div class="col-md-9 form-inline">
+                        @for($i = 1; $i <= $refer_type_cnts['pv_img']; $i++)
+                            <input type="file" id="pv_img{{$i}}" name="pv_img[]" class="form-control mb-5" title="미리보기 이미지{{$i}}">
+                            @if(empty($data['wReferFileData']['pv_img'][$i]['wReferValue']) === false)
+                                <p class="form-control-static">
+                                    <a href="{{ $data['wReferFileData']['pv_img'][$i]['wReferValue'] }}" class="pl-30" rel="popup-image">
+                                        {{ $data['wReferFileData']['pv_img'][$i]['wReferEtc'] }}
+                                    </a>
+                                    <a href="#none" class="refer-file-delete" data-refer-type="{{ $data['wReferFileData']['pv_img'][$i]['wReferType'] }}" data-refer-idx="{{ $data['wReferFileData']['pv_img'][$i]['wReferIdx'] }}">
+                                        <i class="fa fa-times red"></i>
+                                    </a>
+                                </p>
+                            @endif
+                            <br/>
+                        @endfor
+                        # 미리보기 이미지는 최대 {{ $refer_type_cnts['pv_img'] }}개까지 등록 가능합니다.
                     </div>
                 </div>
                 <div class="form-group">
@@ -255,6 +286,27 @@
                         location.replace('{{ site_url('/bms/book/index') }}' + getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
+            });
+
+            // 참조 첨부파일 삭제
+            $regi_form.find('.refer-file-delete').click(function() {
+                if (!confirm('정말로 삭제하시겠습니까?')) {
+                    return;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE',
+                    'idx' : $regi_form.find('input[name="idx"]').val(),
+                    'refer_type' : $(this).data('refer-type'),
+                    'refer_idx' : $(this).data('refer-idx'),
+                };
+                sendAjax('{{ site_url('/bms/book/destroyReferFile') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST');
             });
 
             $('#btn_list').click(function() {

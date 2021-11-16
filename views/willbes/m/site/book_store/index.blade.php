@@ -130,6 +130,9 @@
                             </select>
                         </li>
                         <li>
+                            <a href="#none" class="lecViewBtn" data-wbook-idx="{{ $row['wBookIdx'] }}">교재로 진행중인 강의 ▼</a>
+                        </li>
+                        <li>
                             <div class="w-buy">
                                 <ul class="two">
                                 @if($row['IsSalesAble'] == 'Y')
@@ -149,6 +152,22 @@
             {!! $paging['pagination'] !!}
         </div>
     </div>
+
+    {{-- 교재로 진행중인 강의 팝업 --}}
+    <div id="LayerBookLec" class="willbes-Layer-Black">
+        <div class="willbes-Layer-PassBox willbes-Layer-BookBox fix">
+            <a class="closeBtn" href="#none" onclick="closeWin('LayerBookLec')">
+                <img src="{{ img_url('m/calendar/close.png') }}">
+            </a>
+            <div class="Layer-Cont">
+                <div class="Layer-SubTit NG">· 교재로 진행중인 강의</div>
+                <div class="Layer-Txt tx-gray">
+                </div>
+            </div>
+        </div>
+        <div class="dim" onclick="closeWin('LayerBookLec')"></div>
+    </div>
+    <!--willbes-Layer-BookBox // -->
 
     <!-- Topbtn -->
     @include('willbes.m.layouts.topbtn')
@@ -211,6 +230,35 @@
             @endif
         });--}}
         {{--// 네이버페이 심사 --}}
+
+        // 교재로 진행중인 강의 버튼 클릭
+        $regi_form.on('click', '.lecViewBtn', function() {
+            var lec_selector = $('#LayerBookLec .Layer-Txt');
+
+            // 레이어 팝업 내용 초기화
+            lec_selector.html('');
+
+            // 레이어 팝업 오픈
+            openWin('LayerBookLec');
+
+            // 단강좌 정보 조회
+            var html = '';
+            var url = '{{ front_url('/bookStore/lectureInfo/wbook-idx/') }}' + $(this).data('wbook-idx');
+            sendAjax(url, {}, function(ret) {
+                if (ret.ret_cd) {
+                    if (ret.ret_data.length < 1) {
+                        html += '해당 교재로 진행중인 강의가 없습니다.';
+                    } else {
+                        $.each(ret.ret_data, function (i, item) {
+                            html += '<a href="' + app_url('/{{ config_item('app_mobile_site_prefix') }}/lecture/show/cate/' + item.CateCode + '/pattern/only/prod-code/' + item.ProdCode, item.SiteSubDomain) + '" target="_blank">' + item.ProdName + '</a>';
+                        });
+                    }
+
+                    // 조회결과 셋팅
+                    lec_selector.html(html);
+                }
+            }, showAlertError, true, 'GET');
+        });
 
         // 검색어 입력 후 엔터
         $('#search_value').on('keyup', function() {

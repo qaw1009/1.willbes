@@ -19,6 +19,7 @@ class ProductFModel extends WB_Model
         'delivery_add_price' => 'vw_product_delivery_add_price',
         'product' => 'lms_product',
         'product_lecture' => 'lms_product_lecture',
+        'product_book' => 'lms_product_book',
         'product_sale' => 'lms_product_sale',
         'product_division' => 'lms_product_division',
         'product_r_category' => 'lms_product_r_category',
@@ -27,6 +28,7 @@ class ProductFModel extends WB_Model
         'product_lecture_disc' => 'lms_product_lecture_disc',
         'product_lecture_disc_info' => 'lms_product_lecture_disc_info',
         'product_affiliate_disc_info' => 'lms_product_affiliate_disc_info',
+        'product_series' => 'lms_product_subject_r_category_r_code',
         'product_salebook' => 'vw_product_salebook',
         'product_content' => 'lms_product_content',
         'product_memo' => 'lms_product_memo',
@@ -35,10 +37,10 @@ class ProductFModel extends WB_Model
         'cms_lecture' => 'wbs_cms_lecture',
         'cms_lecture_unit' => 'wbs_cms_lecture_unit',
         'bms_book_combine' => 'wbs_bms_book_combine',
+        'bms_book_reference' => 'wbs_bms_book_reference',
+        'site' => 'lms_site',
         'category' => 'lms_sys_category',
-        'code' => 'lms_sys_code',
-        'product_series' => 'lms_product_subject_r_category_r_code'
-
+        'code' => 'lms_sys_code'
     ];
 
     // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품)

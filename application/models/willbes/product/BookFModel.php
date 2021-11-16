@@ -192,7 +192,7 @@ class BookFModel extends ProductFModel
 
     /**
      * WBS BMS 교재정보 조회
-     * @param int $wbook_idx
+     * @param int $wbook_idx [WBS교재식별자]
      * @return array
      */
     public function findBmsBookByWBookIdx($wbook_idx)
@@ -201,6 +201,66 @@ class BookFModel extends ProductFModel
         $arr_condition = ['EQ' => ['wBookIdx' => get_var($wbook_idx, 0)]];
 
         return $this->_conn->getFindResult($this->_table['bms_book_combine'], $column, $arr_condition);
+    }
+
+    /**
+     * WBS BMS 교재 참조정보 조회
+     * @param int $wbook_idx [WBS교재식별자]
+     * @return array
+     */
+    public function getBmsBookReferByWBookIdx($wbook_idx)
+    {
+        $results = [];
+        $column = 'wReferIdx, wBookIdx, wReferGroup, wReferType, wReferSeq, wReferValue, wReferEtc, wOrderNum';
+        $arr_condition = ['EQ' => ['wBookIdx' => get_var($wbook_idx, 0), 'wIsStatus' => 'Y']];
+        $order_by = ['wReferType' => 'asc', 'wOrderNum' => 'asc', 'wReferIdx' => 'asc'];
+
+        $data = $this->_conn->getListResult($this->_table['bms_book_reference'], $column, $arr_condition, null, null, $order_by);
+
+        foreach ($data as $row) {
+            $results[$row['wReferType']][] = $row;
+        }
+
+        return $results;
+    }
+
+    /**
+     * WBS교재식별자 기준으로 교재와 연관된 온라인 단강좌 조회
+     * @param int $wbook_idx [WBS교재식별자]
+     * @param int $limit [출력갯수]
+     * @param array $arr_condition [단강좌 조회 추가조건]
+     * @return mixed
+     */
+    public function findSalesProductLectureToBookByWBookIdx($wbook_idx, $limit = 12, $arr_condition = [])
+    {
+        $column = 'LP.ProdCode, LP.ProdName, LP.CateCode, substring_index(LP.SiteUrl, ".", 1) as SiteSubDomain';
+
+        // 단강좌 조건
+        $arr_condition = array_merge_recursive($arr_condition, $this->getSalesProductCondition('on_lecture', 'LP'));
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+
+        $from = '
+            from (
+                select distinct(PRP.ProdCode) as ProdCode
+                from ' . $this->_table['product_book'] . ' as PB
+                    inner join ' . $this->_table['product_r_product'] . ' as PRP
+                        on PB.ProdCode = PRP.ProdCodeSub
+                where PB.wBookIdx = ?
+                    and PRP.IsStatus = "Y"
+            ) as TP
+                inner join ' . $this->_table['on_lecture'] . ' as LP
+                    on TP.ProdCode = LP.ProdCode
+        ';
+
+        $order_by_offset_limit = $this->_conn->makeOrderBy(['LP.ProdCode' => 'desc'])->getMakeOrderBy();
+        if (empty($limit) === false) {
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, 0)->getMakeLimitOffset();
+        }
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$wbook_idx]);
+
+        return $query->result_array();
     }
 
     /**

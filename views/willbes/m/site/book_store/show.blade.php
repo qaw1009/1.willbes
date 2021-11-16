@@ -25,7 +25,30 @@
                     <div class="imgWrap">
                         <div class="p_re">
                             <img src="{{ $data['wAttachImgPath'] . $data['wAttachImgOgName'] }}" alt="{{ $data['ProdName'] }}" title="{{ $data['ProdName'] }}" onerror="this.height='350';"/>
+                            @if(empty($data['wReferData']['pv_img']) === false)
+                                <a href="#none" class="NG bookView" onclick="openWin('LayerBookImg')">+ 미리보기</a>
+                            @endif
                         </div>
+
+                        <div class="bookLecBtn mt20">
+                            <a href="#none" onclick="openWin('LayerBookLec')" class="lecViewBtn">
+                                <strong>교재로 진행중인 강의 ▼</strong>
+                            </a>
+                        </div>
+                        {{-- 유튜브영상 --}}
+                        @if(empty($data['wReferData']['yt_url']) === false)
+                            <div class="BookPlay swiper-container swiper-container-page-manual mt20">
+                                <div class="swiper-wrapper">
+                                    @foreach($data['wReferData']['yt_url'] as $yt_row)
+                                        <div class="swiper-slide youtube">
+                                            <iframe src="{{ $yt_row['wReferValue'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <!-- Add Pagination -->
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="wsBookInfo">
@@ -58,48 +81,47 @@
                         </li>
                         <li class="total NG">총 상품금액 <strong id="total_real_sale_price">{{ number_format($data['rwRealSalePrice']) }}원</strong></li>
                     </ul>
+                    @if($data['IsSalesAble'] == 'Y')
+                        @if($is_npay === true)
+                            <div class="naver f_right">
+                                <script type="text/javascript">
+                                    // 네이버페이 결제
+                                    function buy_nc() {
+                                        formCreateSubmit('{{ front_url('/npayOrder/register/pattern/only') }}', $('#regi_book_form').serializeArray(), 'POST');
+                                        return false;
+                                    }
+
+                                    // 네이버페이 찜
+                                    function wishlist_nc() {
+                                        popupOpen('', '_wishlist_nc', '400', '267', '', '', 'yes', 'no');
+                                        formCreateSubmit('{{ front_url('/npayOrder/wishlist') }}', $('#regi_book_form').serializeArray(), 'POST', '_wishlist_nc');
+                                        return false;
+                                    }
+                                </script>
+                                <script type="text/javascript" src="https://pay.naver.com/customer/js/mobile/naverPayButton.js" charset="utf-8"></script>
+                                <script type="text/javascript" >//<![CDATA[
+                                    naver.NaverPayButton.apply({
+                                        BUTTON_KEY: '{{ config_app('npay_btn_cert_key') }}', // 페이에서 제공받은 버튼 인증 키 입력
+                                        TYPE: 'MA', // 버튼 모음 종류 설정
+                                        COLOR: 1, // 버튼 모음의 색 설정
+                                        COUNT: 1, // 버튼 개수 설정. 구매하기 버튼만 있으면 1, 찜하기 버튼도 있으면 2를 입력.
+                                        ENABLE: 'Y', // 품절 등의 이유로 버튼 모음을 비활성화할 때에는 "N" 입력
+                                        BUY_BUTTON_HANDLER: buy_nc, // 구매하기 버튼 이벤트 Handler 함수 등록, 품절인 경우 not_buy_nc 함수 사용
+                                        BUY_BUTTON_LINK_URL: '', // 링크 주소 (필요한 경우만 사용)
+                                        WISHLIST_BUTTON_HANDLER: wishlist_nc, // 찜하기 버튼 이벤트 Handler 함수 등록
+                                        WISHLIST_BUTTON_LINK_URL: '', // 찜하기 팝업 링크 주소(필요한 경우만 사용)
+                                        '':''
+                                    });
+                                //]]></script>
+                            </div>
+                        @endif
+                    @else
+                        <div class="naver tx-right">
+                            <span class="tx-red">구매할 수 없는 상품입니다.</span>
+                        </div>
+                    @endif
                 </div>
             </div>
-            @if($data['IsSalesAble'] == 'Y')
-                @if($is_npay === true)
-                    <div class="naver f_right mr10">
-                        <script type="text/javascript">
-                            // 네이버페이 결제
-                            function buy_nc() {
-                                formCreateSubmit('{{ front_url('/npayOrder/register/pattern/only') }}', $('#regi_book_form').serializeArray(), 'POST');
-                                return false;
-                            }
-
-                            // 네이버페이 찜
-                            function wishlist_nc() {
-                                popupOpen('', '_wishlist_nc', '400', '267', '', '', 'yes', 'no');
-                                formCreateSubmit('{{ front_url('/npayOrder/wishlist') }}', $('#regi_book_form').serializeArray(), 'POST', '_wishlist_nc');
-                                return false;
-                            }
-                        </script>
-                        <script type="text/javascript" src="https://pay.naver.com/customer/js/mobile/naverPayButton.js" charset="utf-8"></script>
-                        <script type="text/javascript" >//<![CDATA[
-                            naver.NaverPayButton.apply({
-                                BUTTON_KEY: '{{ config_app('npay_btn_cert_key') }}', // 페이에서 제공받은 버튼 인증 키 입력
-                                TYPE: 'MA', // 버튼 모음 종류 설정
-                                COLOR: 1, // 버튼 모음의 색 설정
-                                COUNT: 1, // 버튼 개수 설정. 구매하기 버튼만 있으면 1, 찜하기 버튼도 있으면 2를 입력.
-                                ENABLE: 'Y', // 품절 등의 이유로 버튼 모음을 비활성화할 때에는 "N" 입력
-                                BUY_BUTTON_HANDLER: buy_nc, // 구매하기 버튼 이벤트 Handler 함수 등록, 품절인 경우 not_buy_nc 함수 사용
-                                BUY_BUTTON_LINK_URL: '', // 링크 주소 (필요한 경우만 사용)
-                                WISHLIST_BUTTON_HANDLER: wishlist_nc, // 찜하기 버튼 이벤트 Handler 함수 등록
-                                WISHLIST_BUTTON_LINK_URL: '', // 찜하기 팝업 링크 주소(필요한 경우만 사용)
-                                '':''
-                            });
-                        //]]></script>
-                    </div>
-                @endif
-            @else
-                <div class="naver tx-right">
-                    <span class="tx-red">구매할 수 없는 상품입니다.</span>
-                </div>
-            @endif
-
             <div class="lec-info-tab c_both">
                 <ul class="tabWrap">
                     <li><a href="#tab01" class="on">도서소개</a></li>
@@ -168,6 +190,55 @@
                 </div>
             </div>
         </div>
+
+        @if(empty($data['wReferData']['pv_img']) === false)
+            {{--교재 이미지--}}
+            <div id="LayerBookImg" class="willbes-Layer-Black">
+                <div class="willbes-Layer-PassBox willbes-Layer-BookBox willbes-Layer-BookImgBox fix">
+                    <a class="closeBtn" href="#none" onclick="closeWin('LayerBookImg')">
+                        <img src="{{ img_url('m/calendar/close.png') }}">
+                    </a>
+                    <div class="BookPlay swiper-container swiper-container-book-img">
+                        <div class="swiper-wrapper">
+                            @foreach($data['wReferData']['pv_img'] as $pv_row)
+                                <div class="swiper-slide">
+                                    <img src="{{ $pv_row['wReferValue'] }}" alt="{{ $pv_row['wReferEtc'] }}">
+                                </div>
+                            @endforeach
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+                <div class="dim" onclick="closeWin('LayerBookImg')"></div>
+            </div>
+            <!--willbes-Layer-BookBox // -->
+        @endif
+
+        {{-- 교재로 진행중인 강의 팝업 --}}
+        <div id="LayerBookLec" class="willbes-Layer-Black">
+            <div class="willbes-Layer-PassBox willbes-Layer-BookBox fix">
+                <a class="closeBtn" href="#none" onclick="closeWin('LayerBookLec')">
+                    <img src="{{ img_url('m/calendar/close.png') }}">
+                </a>
+                <div class="Layer-Cont">
+                    <div class="Layer-SubTit NG">· 교재로 진행중인 강의</div>
+                    <div class="Layer-Txt tx-gray">
+                        @if(empty($data['LectureData']) === false)
+                            @foreach($data['LectureData'] as $lec_row)
+                                <a href="{{ front_app_url('/lecture/show/cate/' . $lec_row['CateCode'] . '/pattern/only/prod-code/' . $lec_row['ProdCode'], $lec_row['SiteSubDomain']) }}" target="_blank">{{ $lec_row['ProdName'] }}</a>
+                            @endforeach
+                        @else
+                            해당 교재로 진행중인 강의가 없습니다.
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="dim" onclick="closeWin('LayerBookLec')"></div>
+        </div>
+        <!--willbes-Layer-BookBox // -->
 
         <div class="lec-btns w50p">
             <ul>

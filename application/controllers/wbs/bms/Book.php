@@ -136,6 +136,11 @@ class Book extends \app\controllers\BaseController
             $data['wAttachImgSmName'] = str_replace($this->bookModel->_img_postfix, $this->bookModel->_thumb_postfixs['S'], $data['wAttachImgName']);
             $data['wAttachImgMdName'] = str_replace($this->bookModel->_img_postfix, $this->bookModel->_thumb_postfixs['M'], $data['wAttachImgName']);
             $data['wAttachImgLgName'] = str_replace($this->bookModel->_img_postfix, $this->bookModel->_thumb_postfixs['L'], $data['wAttachImgName']);
+
+            // 교재 참조정보 조회
+            $refer_data = $this->bookModel->listBookRefer($idx);
+            $data['wReferStringData'] = element('S', $refer_data);  // 문자열 참조정보
+            $data['wReferFileData'] = element('F', $refer_data);    // 첨부파일 참조정보
         }
 
         // 사용하는 코드값 조회
@@ -155,6 +160,9 @@ class Book extends \app\controllers\BaseController
             }
         }, $authors);
 
+        // 교재참조정보 등록건수
+        $refer_type_cnts = array_merge($this->bookModel->_refer_s_type, $this->bookModel->_refer_f_type);
+
         $this->load->view('bms/book/create', [
             'method' => $method,
             'idx' => $idx,
@@ -164,6 +172,7 @@ class Book extends \app\controllers\BaseController
             'publishers' => $publishers,
             'authors' => $authors,
             'selected_authors' => $selected_authors,
+            'refer_type_cnts' => $refer_type_cnts
         ]);
     }
 
@@ -207,5 +216,27 @@ class Book extends \app\controllers\BaseController
         $result = $this->bookModel->{$method . 'Book'}($this->_reqP(null, false));
 
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 교재 참조 첨부파일 삭제
+     * @return CI_Output|null
+     */
+    public function destroyReferFile()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'refer_type', 'label' => '참조구분', 'rules' => 'trim|required'],
+            ['field' => 'refer_idx', 'label' => '참조식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return null;
+        }
+
+        $result = $this->bookModel->removeReferFile($this->_reqP('refer_type'), $this->_reqP('refer_idx'), $this->_reqP('idx'));
+
+        return $this->json_result($result, '저장 되었습니다.', $result);
     }
 }

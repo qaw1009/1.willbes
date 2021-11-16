@@ -5,6 +5,7 @@ class BookModel extends WB_Model
 {
     private $_table = [
         'book' => 'wbs_bms_book',
+        'book_refer' => 'wbs_bms_book_reference',
         'book_r_author' => 'wbs_bms_book_r_author',
         'publisher' => 'wbs_bms_publisher',
         'author' => 'wbs_bms_author',
@@ -26,6 +27,10 @@ class BookModel extends WB_Model
         'M' => '150%',
         'L' => '200%'
     ];
+    // 교재 문자열 참조타입
+    public $_refer_s_type = ['yt_url' => 3];
+    // 교재 첨부파일 참조타입
+    public $_refer_f_type = ['pv_img' => 10];
 
     public function __construct()
     {
@@ -87,6 +92,25 @@ class BookModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . ') U ' . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 교재별 참조정보 목록 조회
+     * @param int $book_idx [교재식별자]
+     * @return array
+     */
+    public function listBookRefer($book_idx)
+    {
+        $results = [];
+        $column = 'wReferIdx, wBookIdx, wReferGroup, wReferType, wReferSeq, wReferValue, wReferEtc, wOrderNum';
+        $arr_condition = ['EQ' => ['wBookIdx' => $book_idx, 'wIsStatus' => 'Y']];
+        $data = $this->_conn->getListResult($this->_table['book_refer'], $column, $arr_condition, null, null, ['wReferIdx' => 'asc']);
+
+        foreach ($data as $row) {
+            $results[$row['wReferGroup']][$row['wReferType']][$row['wReferSeq']] = $row;
+        }
+
+        return $results;
     }
 
     /**
@@ -196,7 +220,7 @@ class BookModel extends WB_Model
                 throw new \Exception($uploaded);
             }
 
-            if (count($uploaded) > 0) {
+            if (empty($uploaded[0]) === false) {
                 // 첨부 이미지 정보 업데이트
                 $data['wAttachImgName'] = $uploaded[0]['file_name'];
                 $data['wAttachImgPath'] = $this->upload->_upload_url . $upload_sub_dir . '/';
@@ -212,6 +236,18 @@ class BookModel extends WB_Model
                 if ($this->_conn->set($data)->where('wBookIdx', $book_idx)->update($this->_table['book']) === false) {
                     throw new \Exception('교재 이미지 등록에 실패했습니다.');
                 }
+            }
+
+            // 교재 문자열 참조정보 등록
+            $is_refer_string = $this->_replaceBookStringRefer($input, [], $book_idx);
+            if ($is_refer_string !== true) {
+                throw new \Exception($is_refer_string);
+            }
+
+            // 교재 참조파일 업로드
+            $is_refer_file = $this->_replaceBookFileRefer($upload_sub_dir, [], $book_idx);
+            if ($is_refer_file !== true) {
+                throw new \Exception($is_refer_file);
             }
 
             $this->_conn->trans_commit();
@@ -295,7 +331,7 @@ class BookModel extends WB_Model
                 throw new \Exception($uploaded);
             }
 
-            if (count($uploaded) > 0) {
+            if (empty($uploaded[0]) === false) {
                 $data['wAttachImgName'] = $uploaded[0]['file_name'];
                 $data['wAttachImgPath'] = $this->upload->_upload_url . $upload_sub_dir . '/';
 
@@ -321,6 +357,21 @@ class BookModel extends WB_Model
                 if ($this->_conn->set($data)->where('wBookIdx', $book_idx)->update($this->_table['book']) === false) {
                     throw new \Exception('교재 이미지 수정에 실패했습니다.');
                 }
+            }
+
+            // 교재 참조정보 조회
+            $refer_data = $this->listBookRefer($book_idx);
+
+            // 교재 문자열 참조정보 등록
+            $is_refer_string = $this->_replaceBookStringRefer($input, $refer_data, $book_idx);
+            if ($is_refer_string !== true) {
+                throw new \Exception($is_refer_string);
+            }
+            
+            // 교재 참조 첨부파일 업로드
+            $is_refer_file = $this->_replaceBookFileRefer($upload_sub_dir, $refer_data, $book_idx);
+            if ($is_refer_file !== true) {
+                throw new \Exception($is_refer_file);
             }
 
             $this->_conn->trans_commit();
@@ -389,6 +440,211 @@ class BookModel extends WB_Model
             }
         } catch (\Exception $e) {
             return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 교재 문자열 참조정보 등록/수정
+     * @param array $input [입력값]
+     * @param array $refer_data [기존참조정보데이터]
+     * @param int $book_idx [교재식별자]
+     * @return bool|string
+     */
+    private function _replaceBookStringRefer($input, $refer_data, $book_idx)
+    {
+        try {
+            $input = elements(array_keys($this->_refer_s_type), $input);
+            $refer_data = element('S', $refer_data);
+            $admin_idx = $this->session->userdata('admin_idx');
+
+            foreach ($input as $refer_type => $refer_values) {
+                $refer_seq = 1;
+                foreach ($refer_values as $refer_value) {
+                    // 입력값이 있는 경우
+                    if (empty($refer_value) === false) {
+                        $o_refer_row = array_get($refer_data, $refer_type . '.' . $refer_seq);
+                        // 기존 등록값이 있는 경우
+                        if (empty($o_refer_row) === false) {
+                            // 기존 등록값과 다를 경우만 수정
+                            if ($refer_value != $o_refer_row['wReferValue']) {
+                                $data = [
+                                    'wReferValue' => $refer_value,
+                                    'wUpdAdminIdx' => $admin_idx
+                                ];
+
+                                $is_update = $this->_conn->set($data)
+                                    ->where('wReferIdx', $o_refer_row['wReferIdx'])
+                                    ->where('wBookIdx', $book_idx)
+                                    ->where('wReferType', $refer_type)
+                                    ->where('wReferSeq', $refer_seq)
+                                    ->update($this->_table['book_refer']);
+
+                                if ($is_update === false) {
+                                    throw new \Exception('교재 참조정보 수정에 실패했습니다.');
+                                }
+                            }
+                        } else {
+                            // 신규 등록
+                            $data = [
+                                'wBookIdx' => $book_idx,
+                                'wReferGroup' => 'S',
+                                'wReferType' => $refer_type,
+                                'wReferSeq' => $refer_seq,
+                                'wReferValue' => $refer_value,
+                                'wOrderNum' => $refer_seq,
+                                'wRegAdminIdx' => $admin_idx
+                            ];
+
+                            if ($this->_conn->set($data)->insert($this->_table['book_refer']) === false) {
+                                throw new \Exception('교재 참조정보 등록에 실패했습니다.');
+                            }
+                        }
+                    }
+
+                    $refer_seq++;
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 교재 참조 첨부파일 업로드
+     * @param string $upload_sub_dir [첨부파일 업로드 하위디렉토리경로]
+     * @param array $refer_data [기존참조정보데이터]
+     * @param int $book_idx [교재식별자]
+     * @return bool|string
+     */
+    private function _replaceBookFileRefer($upload_sub_dir, $refer_data, $book_idx)
+    {
+        try {
+            $refer_data = element('F', $refer_data);
+            $admin_idx = $this->session->userdata('admin_idx');
+
+            // 업로드 참조 첨부파일명 설정
+            $file_names = [];
+            foreach ($this->_refer_f_type as $refer_f_type => $refer_f_cnt) {
+                for ($i = 1; $i <= $refer_f_cnt; $i++) {
+                    $file_names[] = str_replace(['_img', '_file'], '_' . $book_idx, $refer_f_type) . '_' . $i . '_' . time();
+                }
+            }
+
+            // 참조 첨부파일 업로드
+            $this->load->library('upload');
+            $bak_uploaded_files = [];
+
+            $uploaded = $this->upload->uploadFile('img', array_keys($this->_refer_f_type), $file_names, $upload_sub_dir, 'overwrite:false');
+            if (is_array($uploaded) === false) {
+                throw new \Exception($uploaded);
+            }
+
+            foreach ($uploaded as $refer_files) {
+                if (empty($refer_files) === false) {
+                    list($refer_type, $tmp_book_idx, $refer_seq) = explode('_', $refer_files['file_name']);
+                    $refer_type .= $refer_files['is_image'] === true ? '_img' : '_file';
+                    $o_refer_row = array_get($refer_data, $refer_type . '.' . $refer_seq);
+
+                    if (empty($o_refer_row) === false) {
+                        // 기존 등록값이 있는 경우 수정
+                        $data = [
+                            'wReferValue' => $this->upload->_upload_url . $upload_sub_dir . '/' . $refer_files['file_name'],
+                            'wReferEtc' => $refer_files['client_name'],
+                            'wUpdAdminIdx' => $admin_idx
+                        ];
+
+                        $is_update = $this->_conn->set($data)
+                            ->where('wReferIdx', $o_refer_row['wReferIdx'])
+                            ->where('wBookIdx', $book_idx)
+                            ->where('wReferType', $refer_type)
+                            ->where('wReferSeq', $refer_seq)
+                            ->update($this->_table['book_refer']);
+
+                        if ($is_update === false) {
+                            throw new \Exception('교재 참조 첨부파일 수정에 실패했습니다.');
+                        }
+
+                        // 기존 참조 첨부파일경로 정보
+                        $bak_uploaded_files[] = $o_refer_row['wReferValue'];
+                    } else {
+                        // 신규 등록
+                        $data = [
+                            'wBookIdx' => $book_idx,
+                            'wReferGroup' => 'F',
+                            'wReferType' => $refer_type,
+                            'wReferSeq' => $refer_seq,
+                            'wReferValue' => $this->upload->_upload_url . $upload_sub_dir . '/' . $refer_files['file_name'],
+                            'wReferEtc' => $refer_files['client_name'],
+                            'wOrderNum' => $refer_seq,
+                            'wRegAdminIdx' => $admin_idx
+                        ];
+
+                        if ($this->_conn->set($data)->insert($this->_table['book_refer']) === false) {
+                            throw new \Exception('교재 참조 첨부파일 등록에 실패했습니다.');
+                        }
+                    }
+                }
+            }
+
+            // 기존 참조 첨부파일 백업
+            if (empty($bak_uploaded_files) === false) {
+                $is_bak_uploaded_file = $this->upload->bakUploadedFile(array_unique($bak_uploaded_files), true);
+                if ($is_bak_uploaded_file !== true) {
+                    throw new \Exception($is_bak_uploaded_file);
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 교재 참조 첨부파일 삭제
+     * @param string $refer_type [참조 첨부파일 타입]
+     * @param int $refer_idx [참조식별자]
+     * @param int $book_idx [교재식별자]
+     * @return array|bool
+     */
+    public function removeReferFile($refer_type, $refer_idx, $book_idx)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            // 참조 첨부파일 정보 조회
+            $row = $this->_conn->getFindResult($this->_table['book_refer'], 'wReferIdx, wReferValue', [
+                'EQ' => ['wBookIdx' => $book_idx, 'wReferIdx' => $refer_idx, 'wReferType' => $refer_type, 'wIsStatus' => 'Y']
+            ]);
+            if (empty($row) === true) {
+                throw new \Exception('교재 참조 첨부파일 정보 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+
+            // 기존 참조 첨부파일 백업
+            $this->load->library('upload');
+            $is_bak_uploaded_file = $this->upload->bakUploadedFile($row['wReferValue'], true);
+            if ($is_bak_uploaded_file !== true) {
+                throw new \Exception($is_bak_uploaded_file);
+            }
+
+            // 참조 첨부파일 삭제 업데이트
+            $is_update = $this->_conn->set('wIsStatus', 'N')->set('wUpdAdminIdx', $this->session->userdata('admin_idx'))
+                ->where('wReferIdx', $refer_idx)
+                ->where('wBookIdx', $book_idx)
+                ->where('wReferType', $refer_type)
+                ->update($this->_table['book_refer']);
+            if ($is_update === false) {
+                throw new \Exception('교재 참조 첨부파일 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
         }
 
         return true;

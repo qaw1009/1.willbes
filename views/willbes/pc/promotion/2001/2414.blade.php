@@ -106,9 +106,9 @@
         <div class="evtCtnsBox evt_05" id="evt05" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2414_04.jpg"  alt="합격패스" />
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 185393);" title="항해술 패스" style="position: absolute; left: 4.73%; top: 88.36%; width: 29.2%; height: 10.31%;  z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 185394);" title="해양공채 패스" style="position: absolute; left: 35.27%; top: 88.36%; width: 29.2%; height: 10.31%;  z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 185395);" title="해양공채 패스" style="position: absolute; left: 65.71%; top: 88.36%; width: 29.2%; height: 10.31%;  z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187597);" title="항해술 패스" style="position: absolute; left: 4.73%; top: 88.36%; width: 29.2%; height: 10.31%;  z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187598);" title="해양공채 패스" style="position: absolute; left: 35.27%; top: 88.36%; width: 29.2%; height: 10.31%;  z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187599);" title="해양공채 패스" style="position: absolute; left: 65.71%; top: 88.36%; width: 29.2%; height: 10.31%;  z-index: 2;"></a>
             </div>
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 합격PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>

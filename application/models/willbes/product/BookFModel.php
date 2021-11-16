@@ -233,7 +233,7 @@ class BookFModel extends ProductFModel
      */
     public function findSalesProductLectureToBookByWBookIdx($wbook_idx, $limit = 12, $arr_condition = [])
     {
-        $column = 'LP.ProdCode, LP.ProdName, LP.CateCode, substring_index(S.SiteUrl, ".", 1) as SiteSubDomain';
+        $column = 'LP.ProdCode, LP.ProdName, LP.CateCode, substring_index(LP.SiteUrl, ".", 1) as SiteSubDomain';
 
         // 단강좌 조건
         $arr_condition = array_merge_recursive($arr_condition, $this->getSalesProductCondition('on_lecture', 'LP'));
@@ -250,8 +250,6 @@ class BookFModel extends ProductFModel
             ) as TP
                 inner join ' . $this->_table['on_lecture'] . ' as LP
                     on TP.ProdCode = LP.ProdCode
-                inner join ' . $this->_table['site'] . ' as S
-                    on LP.SiteCode = S.SiteCode
         ';
 
         $order_by_offset_limit = $this->_conn->makeOrderBy(['LP.ProdCode' => 'desc'])->getMakeOrderBy();

@@ -112,6 +112,7 @@
         </div>
 
         <div class="sky" id="QuickMenu">
+            <a href="https://pass.willbes.net/promotion/index/cate/3023/code/1656" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/2127_sky.png"  title="소방 문풀" /></a>
             <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/04/2127_sky01.png"  title="인증하고 할인받기" /></a>
             <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/04/2127_sky02.png"  title="갈아타고 할일받기" /></a>
         </div>
@@ -239,8 +240,9 @@
         <div class="evtCtnsBox wb_cts04" id="lecBuy">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_04.jpg" alt="환승 이벤트" />
-                <a href="javascript:go_PassLecture('180408');" target="_blank" title="공채" style="position: absolute; left: 27.5%; top: 74.1%; width: 17.95%; height: 6.78%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('180413');" target="_blank" title="특채" style="position: absolute; left: 71.16%; top: 74.1%; width: 17.95%; height: 6.78%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3023/code/1656" target="_blank" title="신청하기" style="position: absolute;left: 46.5%;top: 46.85%;width: 41.95%;height: 4.78%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('180408');" target="_blank" title="공채" style="position: absolute; left: 27.5%; top: 78.1%; width: 17.95%; height: 6.78%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('180413');" target="_blank" title="특채" style="position: absolute; left: 71.16%; top: 78.1%; width: 17.95%; height: 6.78%; z-index: 2;"></a>
             </div>
             <div class="check" id="chkInfo">               
                 <label>

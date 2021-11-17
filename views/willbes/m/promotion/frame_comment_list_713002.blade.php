@@ -13,7 +13,7 @@
         .urlReplyList li span a {display:block; width:22px; height:22px; line-height:22px; border:1px solid #ccc; border-radius:2px; text-align:center}
     </style>
 
-    <div class="urlReply">
+    <div class="urlReply NSK">
         <form id="regi_form_comment" name="regi_form_comment" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
             {!! method_field($method) !!}
@@ -22,7 +22,7 @@
             @endforeach
 
             <div class="urlReplyW">
-                <div class="title">홍보 URL 남기기</div>
+                <div class="title strong">홍보 URL 남기기</div>
                 <div><input type="text" name="event_comment" id="event_comment" placeholder="홍보 URL 남기기"></div>
                 <div class="btn"><a href="javascript:void(0);" class="btnrwt" id="btn_submit_comment">이벤트 참여하기 ></a></div>
             </div>

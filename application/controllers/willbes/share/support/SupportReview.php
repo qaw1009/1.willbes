@@ -314,7 +314,7 @@ class SupportReview extends BaseSupport
         $board_idx = element('board_idx',$arr_input);
         $s_site_code = element('s_site_code',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
-        $s_campus = element('s_campus',$arr_input);
+        $s_campus = (int)element('s_campus',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
         $subject_idx = element('subject_idx',$arr_input);
@@ -802,7 +802,7 @@ class SupportReview extends BaseSupport
         $board_idx = element('board_idx',$arr_input);
         $s_site_code = element('s_site_code',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
-        $s_campus = element('s_campus',$arr_input);
+        $s_campus = (int)element('s_campus',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
         $subject_idx = element('subject_idx',$arr_input);

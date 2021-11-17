@@ -37,7 +37,7 @@ class SupportNotice extends BaseSupport
         $get_params = http_build_query($arr_input);
 
         $s_cate_code = element('s_cate_code',$arr_input);
-        $s_campus = element('s_campus',$arr_input);
+        $s_campus = (int)element('s_campus',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
         $subject_idx = element('subject_idx',$arr_input);
@@ -162,7 +162,7 @@ class SupportNotice extends BaseSupport
         $pre_data = [];
         $next_data = [];
         if($data['IsBest'] != 1) {
-            $s_campus = element('s_campus', $arr_input);
+            $s_campus = (int)element('s_campus', $arr_input);
             $s_keyword = element('s_keyword', $arr_input);
 
             $arr_condition_base = [

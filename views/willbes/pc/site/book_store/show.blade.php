@@ -57,9 +57,11 @@
                                 <div class="sliderBookPlay mt20">
                                     <div class="slider">
                                         @foreach($data['wReferData']['yt_url'] as $yt_row)
-                                            <div class="youtube">
-                                                <iframe src="{{ $yt_row['wReferValue'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                            </div>
+                                            @if(empty($yt_row['wReferValue']) === false)
+                                                <div class="youtube">
+                                                    <iframe src="{{ $yt_row['wReferValue'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </div>
+                                            @endif
                                         @endforeach
                                     </div>
                                 </div>

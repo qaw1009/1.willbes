@@ -462,31 +462,30 @@ class BookModel extends WB_Model
             foreach ($input as $refer_type => $refer_values) {
                 $refer_seq = 1;
                 foreach ($refer_values as $refer_value) {
-                    // 입력값이 있는 경우
-                    if (empty($refer_value) === false) {
-                        $o_refer_row = array_get($refer_data, $refer_type . '.' . $refer_seq);
-                        // 기존 등록값이 있는 경우
-                        if (empty($o_refer_row) === false) {
-                            // 기존 등록값과 다를 경우만 수정
-                            if ($refer_value != $o_refer_row['wReferValue']) {
-                                $data = [
-                                    'wReferValue' => $refer_value,
-                                    'wUpdAdminIdx' => $admin_idx
-                                ];
+                    $o_refer_row = array_get($refer_data, $refer_type . '.' . $refer_seq);
+                    // 기존 등록값이 있는 경우
+                    if (empty($o_refer_row) === false) {
+                        // 기존 등록값과 다를 경우만 수정
+                        if ($refer_value != $o_refer_row['wReferValue']) {
+                            $data = [
+                                'wReferValue' => $refer_value,
+                                'wUpdAdminIdx' => $admin_idx
+                            ];
 
-                                $is_update = $this->_conn->set($data)
-                                    ->where('wReferIdx', $o_refer_row['wReferIdx'])
-                                    ->where('wBookIdx', $book_idx)
-                                    ->where('wReferType', $refer_type)
-                                    ->where('wReferSeq', $refer_seq)
-                                    ->update($this->_table['book_refer']);
+                            $is_update = $this->_conn->set($data)
+                                ->where('wReferIdx', $o_refer_row['wReferIdx'])
+                                ->where('wBookIdx', $book_idx)
+                                ->where('wReferType', $refer_type)
+                                ->where('wReferSeq', $refer_seq)
+                                ->update($this->_table['book_refer']);
 
-                                if ($is_update === false) {
-                                    throw new \Exception('교재 참조정보 수정에 실패했습니다.');
-                                }
+                            if ($is_update === false) {
+                                throw new \Exception('교재 참조정보 수정에 실패했습니다.');
                             }
-                        } else {
-                            // 신규 등록
+                        }
+                    } else {
+                        // 신규 등록 (입력값이 있는 경우만)
+                        if (empty($refer_value) === false) {
                             $data = [
                                 'wBookIdx' => $book_idx,
                                 'wReferGroup' => 'S',

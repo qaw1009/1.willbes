@@ -84,6 +84,9 @@
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/05/2208_01_03.jpg" alt="" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/05/2208_01_04.jpg" alt="" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/05/2208_01_05.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2208_01_06.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2208_01_07.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2208_01_08.jpg" alt="" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2021/05/2208_p_prev.png" alt="left" /></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2021/05/2208_p_next.png" alt="right" /></a></p>

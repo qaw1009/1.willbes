@@ -40,9 +40,11 @@
                             <div class="BookPlay swiper-container swiper-container-page-manual mt20">
                                 <div class="swiper-wrapper">
                                     @foreach($data['wReferData']['yt_url'] as $yt_row)
-                                        <div class="swiper-slide youtube">
-                                            <iframe src="{{ $yt_row['wReferValue'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                        </div>
+                                        @if(empty($yt_row['wReferValue']) === false)
+                                            <div class="swiper-slide youtube">
+                                                <iframe src="{{ $yt_row['wReferValue'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            </div>
+                                        @endif
                                     @endforeach
                                 </div>
                                 <!-- Add Pagination -->

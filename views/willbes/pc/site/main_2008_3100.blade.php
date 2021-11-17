@@ -69,8 +69,8 @@
         <div class="Section lecBanner mt50">
             <div class="widthAuto">
                 <div class="copyTit NSK-Thin mb50">
-                    개편 전 마지막 시험, 이젠 <strong class="NSK-Black"><span class="tx-color2">처음부터 실전처럼 </span></strong>공부해야 합니다.<br />
-                    <strong class="NSK-Black"><span class="tx-color2">윌비스 한림법학원</span></strong>이 수험생을 위한 프로그램을 준비하였습니다.
+                    더욱 강력해진 <strong class="NSK-Black"><span class="tx-color2">한림법학원 경찰간부 동행(同行)팀 </span></strong>이<br />
+                    개편에 대비해 새롭게 준비한 <strong class="NSK-Black"><span class="tx-color2">맞춤형 학습 프로그램</span></strong>과 함께 하십시오.
                 </div>
                 <ul>
                     @if(empty($data['arr_main_banner']['메인_리스트']) === false)

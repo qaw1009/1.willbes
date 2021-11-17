@@ -42,7 +42,7 @@
         .guide_box h2 {font-size:30px; margin-bottom:30px;}
         .guide_box dt{margin-bottom:10px; color:#fff; background:#000; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:16px;}        
         .guide_box dd{margin-bottom:50px;}
-        .guide_box dl{color:#000;font-size:15px;font-weight:bold;}
+        .guide_box dl{color:#555;font-size:15px;font-weight:bold;}
         .guide_box dd li{margin-bottom:5px; list-style:decimal; margin-left:20px;font-size:14px;}
         .guide_box dd li.none {list-style:none; margin-left:0}
         .guide_box dd:last-child {margin:0}

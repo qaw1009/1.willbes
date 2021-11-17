@@ -146,7 +146,7 @@
 		<div class="evtCtnsBox wb_02_01" id="transfer">
 			<div class="wrap">
 				<img src="https://static.willbes.net/public/images/promotion/2021/11/1068_02_01.jpg" alt="재도전.환승 이벤트">
-				<a href="https://pass.willbes.net/certApply/index/page/transfer/cert/56" title="인증하기" target="_blank" style="position: absolute;left: 29.85%;top: 77.75%;width: 39.43%;height: 6.53%;z-index: 2;"></a>
+				<a href="javascript:certOpen();" title="인증하기" style="position: absolute;left: 29.85%;top: 77.75%;width: 39.43%;height: 6.53%;z-index: 2;"></a>
 				<a href="#notice" title="유의사항" style="position: absolute;left: 42.05%;top: 85.35%;width: 15.43%;height: 4.03%;z-index: 2;"></a>
 			</div>
         </div>
@@ -617,7 +617,8 @@
     </div>
     <!-- End Container -->
 
-	<script type="text/javascript">
+	<script type="text/javascript">   
+
 		$(document).ready(function() {
 			var slidesImg3 = $("#slidesImg3").bxSlider({
 				mode:'horizontal',
@@ -676,7 +677,16 @@
                 $('#tab'+activeTab).fadeIn();
                 return false;
             });			
-        });		
+        });
+
+		/* 팝업창 */ 
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
+        }	
 
     </script>
 

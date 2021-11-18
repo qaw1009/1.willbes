@@ -18,8 +18,8 @@
 
         /************************************************************/
 
-        .sky {position:fixed; top:225px; width:137px; right:10px; z-index:10;}
-        .sky a {display:block; margin-bottom:10px}
+        .sky {position:fixed; top:250px; right:10px;z-index:1;}
+        .sky a {display:block; margin-bottom:25px;}
         
         .wb_tops {background:url(https://static.willbes.net/public/images/promotion/2021/09/1983_tops_bg.jpg) no-repeat center top;}
 
@@ -124,13 +124,10 @@
         </div>
 
         <div class="sky" id="QuickMenu">
-            <a href="#evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/1983_sky01.png" alt="자세히보기" usemap="#1983_sky" border="0" >
-            </a>
-            <a href="#evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/1983_sky02.png" alt="자세히보기" usemap="#1983_sky" border="0" >
-            </a>
-        </div>   
+            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1531" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/1983_sky01.png"  title="" /></a>
+            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2021/11/1983_sky02.png"  title="" /></a>
+            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2021/11/1983_sky03.png"  title="" /></a>
+        </div>      
 
         <div class="evtCtnsBox wb_tops">
             <div class="wrap">
@@ -172,7 +169,11 @@
         </div>
 
         <div class="evtCtnsBox wb_cts06" id="apply">   
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/1983_06.jpg" title="신청하기" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/09/1983_06.jpg" title="수강신청" /><br>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/1983_06_apply.png" title="신청하기" />
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1531" target=_blank title="신청하기" style="position: absolute;left: 43.93%;top: 60.11%;width: 41.7%;height: 19.68%;z-index: 2;"></a>
+            </div>
             <table>
                 <col />
                 <col width="40%" />
@@ -211,11 +212,11 @@
                         <th>가격</th>
                         <td class="NSK-Black">
                             <input type="radio" id="y_pkg1" name="y_pkg" value="176432" onClick=""/><label for="y_pkg1">490,000원</label>
-                            <div class="tx-red">재도전/환승 최종혜택가 290,000원</div>
+                            <div class="tx-red">재도전/환승 최종혜택가 340,000원</div>
                         </td>
                         <td class="NSK-Black">
                             <input type="radio" id="y_pkg2" name="y_pkg" value="176415" onClick=""/><label for="y_pkg2">450,000원</label>
-                            <div class="tx-red">재도전/환승 최종혜택가 250,000원</div>
+                            <div class="tx-red">재도전/환승 최종혜택가 290,000원</div>
                         </td>
                     </tr>
                 </tbody>

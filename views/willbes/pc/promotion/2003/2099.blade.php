@@ -14,11 +14,12 @@
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
 
         /************************************************************/
 
-        .sky {position:fixed; top:225px;right:25px;z-index:10;}
-        .sky a {display:block;padding-top:15px;}
+        .sky {position:fixed; top:250px; right:10px; z-index:1;}
+        .sky a {display:block; margin-bottom:25px;}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2099_top_bg.jpg) no-repeat center top;}
 
@@ -62,17 +63,11 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        {{--
-        <div class="sky">
-            <a href="https://pass.willbes.net/promotion/index/cate/3024/code/2064" target="_blank"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2099_sky.png" alt="문제풀이" >
-            </a>     
-            <a href="#apply"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2099_sky2.png" alt="전략" >
-            </a>                     
+        
+        <div class="sky" id="QuickMenu">
+            <a href="https://pass.willbes.net/promotion/index/cate/3024/code/1655" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/2099_sky.png"  title="군무원 문풀 pass" /></a>
         </div>
-        --}}
-
+        
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday NG">        
             <div>
@@ -112,13 +107,14 @@
         </div>
 
         <div class="evtCtnsBox wb_cts03" id="apply">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2099_03.jpg" alt="수강신청" usemap="#Map2099_apply" border="0" />
-            <map name="Map2099_apply" id="Map2099_apply">
-                <area shape="rect" coords="237,698,437,740" href="javascript:go_PassLecture('179756');" alt="윌비스 행정직" />
-                <area shape="rect" coords="687,698,886,739" href="javascript:go_PassLecture('179754');" alt="군무원 행정직" />
-                <area shape="rect" coords="238,1150,437,1192" href="javascript:go_PassLecture('178824');" alt="군수직" />
-                <area shape="rect" coords="687,1151,886,1192" href="javascript:go_PassLecture('178825');" alt="정보직" />
-            </map>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2099_03.jpg" alt="수강신청"/>    
+                <a href="https://pass.willbes.net/promotion/index/cate/3024/code/1655" target="_blank" alt="신청하기" style="position: absolute;left: 45.61%;top: 31.38%;width: 40.07%;height: 4.85%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('179756');" alt="윌비스 행정직" style="position: absolute;left: 20.61%;top: 57.99%;width: 19.07%;height: 3.55%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('179754');" alt="군무원 행정직" title="" style="position: absolute;left: 60.61%;top: 57.99%;width: 19.07%;height: 3.55%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('178824');" alt="군수직" title="" style="position: absolute;left: 20.61%;top: 84.69%;width: 19.07%;height: 3.55%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('178825');" alt="정보직" style="position: absolute;left: 60.61%;top: 84.69%;width: 19.07%;height: 3.55%;z-index: 2;"></a>
+            </div>    
             <div class="check">
                 <label>
                     <input name="ischk"  type="checkbox" value="Y" />

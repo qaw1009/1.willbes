@@ -5,11 +5,12 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
-            margin-top:20px !important;
+            max-width:2000px !important;
+            margin:20px auto 0;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
@@ -18,8 +19,8 @@
 
         /************************************************************/
 
-        .sky {position:fixed;top:225px; width:137px; right:5px;z-index:200;}
-        .sky a {display:block; margin-bottom:5px;}
+        .sky {position:fixed;top:225px; width:139px; right:10px;z-index:111;}
+        .sky a {display:block; margin-bottom:10px; box-shadow:0 0 10px rgba(0,0,0,.1)}
 
         /*상단 애니메이션*/
         .wb_cts_top{position: relative;height: 899px;padding-top: 101px;background:url('https://static.willbes.net/public/images/promotion/2021/07/2282_after.jpg') 50% 0 repeat-x;}
@@ -94,10 +95,13 @@
             <a href="#event">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2282_sky.jpg" alt="실전464">
             </a>
+            <a href="#curri01">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2282_sky02.jpg" alt="김철 행정학">
+            </a>
         </div> 
 
 
-        <div class="evtCtnsBox wb_cts_top">
+        <div class="evtCtnsBox wb_cts_top" data-aos="fade-up">
             <div class="top_ani">
                 <div class="left open_ani"><img src="https://static.willbes.net/public/images/promotion/2021/07/2282_txt01.png" alt=""></div>
                 <div class="right open_ani"><img src="https://static.willbes.net/public/images/promotion/2021/07/2282_txt02.png" alt=""></div>
@@ -110,11 +114,11 @@
             </div>
         </div>    
 
-        <div class="evtCtnsBox wb_cts01" >
+        <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_01.jpg" alt="실전덕후단"/>
         </div>
 
-        <div class="evtCtnsBox wb_cts02" >
+        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2282_02.jpg" alt="커리큘럼"/>
             <ul class="curri NSK-Black">
                 <li>
@@ -140,35 +144,35 @@
             </ul>    
         </div>
 
-        <div class="evtCtnsBox wb_cts10" id="event">
+        <div class="evtCtnsBox wb_cts10" id="event"> 
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2282_10.jpg" alt="실전덕후단 패키지"/>
                 <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/186805" target="_blank" title="수강신청" style="position: absolute; left:34.73%; top:68.73%; width:30.54%; height:8.11%; z-index: 2;"></a>
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts03" id="curri01">
+        <div class="evtCtnsBox wb_cts03" id="curri01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_03.jpg" alt="실전464"/>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif 
         </div>
 
-        <div class="evtCtnsBox wb_cts04" id="curri02">
+        <div class="evtCtnsBox wb_cts04" id="curri02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_04.jpg" alt="테마특강"/>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))            
             @endif 
         </div>
 
-        <div class="evtCtnsBox wb_cts05" id="curri03">
+        <div class="evtCtnsBox wb_cts05" id="curri03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_05.jpg" alt="새벽실전모의고사"/>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))            
             @endif 
         </div>
 
-        <div class="evtCtnsBox wb_cts06" id="curri04">
+        <div class="evtCtnsBox wb_cts06" id="curri04" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_06.jpg" alt="온라인첨삭지도반"/>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))            
@@ -186,11 +190,11 @@
             </ul>
         </div>
 
-        <div class="evtCtnsBox wb_preview" >       
+        <div class="evtCtnsBox wb_preview"  data-aos="fade-up">       
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_preview.jpg" alt="미리 만나보세요"/>
         </div>              
 
-        <div class="evtCtnsBox wb_cts07" id="comment_event">   
+        <div class="evtCtnsBox wb_cts07" id="comment_event" data-aos="fade-up">   
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_07.jpg" alt="기대평이벤트"/>
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
@@ -198,14 +202,14 @@
             @endif 
         </div>
 
-        <div class="evtCtnsBox wb_cts08" id="curri_quiz">
+        <div class="evtCtnsBox wb_cts08" id="curri_quiz" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2282_08.jpg" alt="퀴즈테스트"/>
                 <a href="javascript:alert('이벤트가 종료되었습니다.');" title="실전덕후단 464 덕후력 QUIZ" style="position: absolute;left: 27.3%;top: 78.3%;width: 39.57%;height: 8.9%;z-index: 2;"></a>
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts09" >
+        <div class="evtCtnsBox wb_cts09" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2282_09.jpg" alt="덕밍아웃하라"/>
                 <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2401" title="수강후기 자세히 보기" target="_blank" style="position: absolute;left: 30.01%;top: 82.3%;width: 39.57%;height: 8.9%;z-index: 2;"></a>
@@ -227,6 +231,14 @@
         -->         
     </div>
     <!-- End Container -->
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        $( document ).ready( function() {
+            AOS.init();
+        } );
+    </script>
 
     {{-- quiz --}}
     <link rel="stylesheet" href="/public/css/willbes/quiz.css">

@@ -5,10 +5,12 @@
     <!-- Container -->
     <style type="text/css">   
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
-            margin-top:20px !important;
-            padding:0 !important;            
+            max-width:2000px !important;
+            margin:20px auto 0;
+            padding:0 !important;
+            background:#fff;            
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
@@ -69,15 +71,16 @@
             </map>        
         </div>  
 
-        @if(time() < strtotime('202111150000'))
+        @if(time() < strtotime('202111280000'))
             <div class="evtCtnsBox evttop_banners">
                 <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/10/1676_top_banner.jpg">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/1676_top_banner.jpg">
                     <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="" style="position: absolute; left: 53.57%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>
                     <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" title="" style="position: absolute; left: 74.29%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>  
                 </div>        
             </div>        
         @else
+        
         @endif
         
         <div class="evtCtnsBox evttop">                 

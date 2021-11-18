@@ -91,7 +91,7 @@ class CI_Exceptions {
 	/**
 	 * Exception Logger
 	 *
-	 * Logs PHP generated error messages ==> TODO : system core modified (add current url)
+	 * Logs PHP generated error messages ==> TODO : system core modified (add current url and ip address)
 	 *
 	 * @param	int	$severity	Log level
 	 * @param	string	$message	Error message
@@ -102,7 +102,7 @@ class CI_Exceptions {
 	public function log_exception($severity, $message, $filepath, $line)
 	{
 		$severity = isset($this->levels[$severity]) ? $this->levels[$severity] : $severity;
-		log_message('error', 'Severity: '.$severity.' --> '.$message.' '.$filepath.' '.$line.' --> //'.$_SERVER['HTTP_HOST'].''.$_SERVER['REQUEST_URI']);
+		log_message('error', 'Severity: '.$severity.' --> '.$message.' '.$filepath.' '.$line.' --> //'.$_SERVER['HTTP_HOST'].''.$_SERVER['REQUEST_URI'].' --> '.$_SERVER['REMOTE_ADDR']);
 	}
 
 	// --------------------------------------------------------------------

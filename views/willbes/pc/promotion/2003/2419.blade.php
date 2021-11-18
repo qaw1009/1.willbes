@@ -39,9 +39,10 @@
         .guide_box h2 {font-size:30px; margin-bottom:30px;}
         .guide_box dt{margin-bottom:10px; color:#fff; background:#000; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:16px;}        
         .guide_box dd{margin-bottom:50px;}
-        .guide_box dl{color:#555;font-size:15px;font-weight:bold;}
+        .guide_box dl{color:#555;font-size:15px;}
         .guide_box dd li{margin-bottom:5px; list-style:decimal; margin-left:20px;font-size:14px;}
         .guide_box dd li.none {list-style:none; margin-left:0}
+        .guide_box span {color: #ca1919; vertical-align:top}
         .guide_box dd:last-child {margin:0}
 
     </style> 
@@ -81,29 +82,40 @@
 
         <div class="evtCtnsBox evtInfo" id="ctsInfo">
             <div class="guide_box">
-                <h2 class="NSK-Black">윌비스 한림법학원 온라인 T-PASS반 이용안내</h2>
+                <h2 class="NSK-Black">윌비스 한림법학원 <span>온라인 T-PASS반</span> 이용안내</h2>
                 <dl>
                     <dt>상품안내</dt>
                     <dd>
                         <ol>
                             <li>본 상품은 2022년 7급공무원 1차시험(PSAT)을 준비하시는 분을 위해 준비되었습니다.<br>
                                 [과목별 교수님] 자료해석 : 석치수, 상황판단 : 박준범, 언어논리(택1) : 이나우/한승아</li>
-                            <li>수강기간 : 본 상품에 등록된 강의는 강의신청일부터 240일 동안 수강하실 수 있습니다.</li>
-                            ※ 패키지 과정은 특별할인 적용 상품으로, 일시중지/연장/재수강 적용되지 않으며 수강시작일 지정 불가합니다.</li>
-                            <li>강의배수  : 본 패키지 과정은 3배수제한 적용 과정입니다.</li>
-                            <li>기기대수제한  : pc 2 또는 pc 1 + 모바일 기기 1(스마트폰 또는 테블릿)5. 교재구매 : 수강중인 강의 > 강의보기 > 구매하지않은 교재 확인 후 결제 진행 하시면 됩니다.</li>
-                            <li>CORE 특강 무료제공 : 신정하신 교수님의 CORE특강이 자동 등록됩니다.(자료해석 신청시 계산의 모든 것 특강 추가 무료제공)</li>
-                            <li>진행(업로드) 강좌 순차 업로드 : 
+                            <li>수강기간 : 본 상품에 등록된 강의는 <span>강의신청일부터 240일 동안 수강</span>하실 수 있습니다.<br> 
+                            ※ 패키지 과정은 특별할인 적용 상품으로, <span>일시중지/연장/재수강 적용되지 않으며 수강시작일 지정 불가</span>합니다.</li>
+                            <li>강의배수  : 본 패키지 과정은 <span>3배수제한 적용 과정</span>입니다.</li>
+                            <li><span>기기대수제한  : pc 2 또는 pc 1 + 모바일 기기 1</span>(스마트폰 또는 테블릿)</li>
+                            <li>교재구매 : 수강중인 강의 > 강의보기 > 구매하지않은 교재 확인 후 결제 진행 하시면 됩니다.</li>
+                            <li>CORE 특강 무료제공 : 신정하신 교수님의 <span>CORE특강이 자동 등록</span>됩니다.(자료해석 신청시 계산의 모든 것 특강 추가 무료제공)</li>
+                            <li>진행(업로드) 강좌 순차 업로드 :<br> 
                             OPEN CLASS(기본, 21년 업로드), ADVANCED CLASS(심화, 22년 1~2월),   MASTER CLASS(실전모강, 22년 4~5월), 5급공채 9개년 기출해설 특강(업로드), Rescue 특강(21년 11~12월, 과목별 4회), Special 특강(22년 5~6월, 과목별 2회)이 순차적으로 업로드 될 예정입니다.</li>
                             <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>                          
                         </ol>
                     </dd>
+
+                    <dt>PASS 수강</dt>
+                    <dd>
+                        <ol>
+                            <li>로그인 후 <span>[내강의실] 에서 [무한PASS존]</span>으로 접속합니다.</li>
+                            <li>구매한 PASS 상품 선택 후 <span>[강좌추가]</span>를 클릭, 원하시는 강좌를 등록한 후 수강할 수 있습니다.</li>          
+                        </ol>
+                    </dd>
+
                     <dt>교재</dt>
                     <dd>
                         <ol>
                             <li>각 강의수강에 필요한 교재는 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 교재구매 메뉴에서 별도 구매 가능합니다.</li>          
                         </ol>
                     </dd>
+
                     <dt>환불</dt>
                     <dd>
                         <ol>

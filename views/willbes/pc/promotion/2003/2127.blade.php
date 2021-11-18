@@ -241,8 +241,8 @@
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_04.jpg" alt="환승 이벤트" />
                 <a href="https://pass.willbes.net/promotion/index/cate/3023/code/1656" target="_blank" title="신청하기" style="position: absolute;left: 46.5%;top: 46.85%;width: 41.95%;height: 4.78%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('180408');" target="_blank" title="공채" style="position: absolute; left: 27.5%; top: 78.1%; width: 17.95%; height: 6.78%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('180413');" target="_blank" title="특채" style="position: absolute; left: 71.16%; top: 78.1%; width: 17.95%; height: 6.78%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('180408');" title="공채" style="position: absolute; left: 27.5%; top: 78.1%; width: 17.95%; height: 6.78%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('180413');" title="특채" style="position: absolute; left: 71.16%; top: 78.1%; width: 17.95%; height: 6.78%; z-index: 2;"></a>
             </div>
             <div class="check" id="chkInfo">               
                 <label>

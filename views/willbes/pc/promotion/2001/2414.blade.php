@@ -125,7 +125,7 @@
         <div class="evtCtnsBox evt_06" id="evt06" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2414_05.jpg"  alt="합격패스 런칭 이벤트" />
-                <a href="javascript:void(0);" onclick="certOpen();" title="할인쿠폰받기" style="position: absolute; left: 49.55%; top: 65.19%; width: 33.3%; height: 7.51%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck();" title="할인쿠폰받기" style="position: absolute; left: 49.55%; top: 65.19%; width: 33.3%; height: 7.51%; z-index: 2;"></a>
             </div>          
         </div>
 
@@ -192,6 +192,10 @@
 			</div>
 		</div> 
     </div>
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
     <!-- End Container -->
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -203,6 +207,8 @@
     </script>
 
     <script type="text/javascript">
+        var $regi_form = $('#regi_form');
+
         $(document).ready(function() {
             var slidesImg4 = $("#slidesImg4").bxSlider({
                 mode:'horizontal',
@@ -238,35 +244,20 @@
             var _url = '{{ site_url('/periodPackage/show/cate/')}}' + cate + '/pack/648001/prod-code/' + code;
             location.href = _url;
         }
-        
 
-        function certOpen(){
+        function giveCheck() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
-            @if(empty($arr_promotion_params['edate']) === false && empty($arr_promotion_params['edate']) === false)
-                @if(strtotime(date('YmdHi')) >= strtotime($arr_promotion_params['edate'] . ' ' . $arr_promotion_params['etime']))
-                    alert('이벤트가 종료되었습니다.');
-                    return;
-                @endif
-            @endif
-
-            @if(empty($cert_apply) === false)
-                alert("이미 인증이 완료된 상태입니다.");
-                return;
-            @endif
-
-            @if(empty($arr_promotion_params["page"]) === false && empty($arr_promotion_params["cert"]) === false)
-                var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
-                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @if(empty($arr_promotion_params['give_type']) === false && empty($arr_promotion_params['give_idx']) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    }
+                }, showValidateError, null, false, 'alert');
             @else
                 alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
             @endif
-        } 
-
-
-
+        }
     </script>
-
-
-
 @stop

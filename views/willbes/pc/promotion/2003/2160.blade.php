@@ -18,8 +18,8 @@
 
         /************************************************************/
 
-        .sky {position:fixed; top:250px; right:100px; width:163px; z-index:1;}
-        .sky a {display:block; margin-bottom:10px;}
+        .sky {position:fixed; top:250px; right:10px; z-index:1;}
+        .sky a {display:block; margin-bottom:25px;}
  
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/10/2160_top_bg.jpg) no-repeat center top;}
         .wb_top .tImg {position:absolute;left:50%;top:71.5%;margin-left:-220px;}
@@ -66,12 +66,10 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        {{--
-        <div class="sky">
-            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/10/2160_sky01.png"  title="인증하고 할인받기" /></a>
-            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/10/2160_sky02.png"  title="갈아타고 할인받기" /></a>
+
+        <div class="sky" id="QuickMenu">
+            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1531" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/2160_sky.png"  title="9급 문풀 pass" /></a>
         </div>
-        --}}
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2160_top.jpg" alt="9급 패스"  />
@@ -115,8 +113,9 @@
                 </ul>
             </div>         
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2160_03_01.jpg" alt="환승 이벤트" />
-                <a href="javascript:go_PassLecture('180927');" title="수강 신청하기" style="position: absolute; left: 43.93%; top: 69.11%; width: 41.7%; height: 21.68%; z-index: 2;"></a>                
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2160_03_01.jpg" alt="환승 이벤트" />
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1531" target="_blank" title="신청하기" style="position: absolute;left: 43.93%;top: 22.11%;width: 41.7%;height: 17.68%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('180927');" title="수강 신청하기" style="position: absolute;left: 43.93%;top: 79.11%;width: 41.7%;height: 17.68%;z-index: 2;"></a>                
             </div>
             <div class="check">
                 <label>

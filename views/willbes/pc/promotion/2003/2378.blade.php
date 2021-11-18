@@ -6,16 +6,21 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
-            margin-top:20px !important;
+            max-width:2000px !important;
+            margin:20px auto 0;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+
         /************************************************************/
+
+        .sky {position:fixed;top:100px;right:10px ;width:152px; text-align:center; z-index:111;}    
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/10/2378_top_bg.jpg) no-repeat center top;}
 
@@ -28,26 +33,30 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+        <div class="sky" id="QuickMenu">          
+            <a href="#lecbuy"><img src="https://static.willbes.net/public/images/promotion/2021/11/2378_sky.jpg" alt="축산직 기출패키지" /></a>           
+        </div>
 
-        <div class="evtCtnsBox wb_top" data-aos="fade-left">           
+        <div class="evtCtnsBox wb_top" data-aos="fade-up">           
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2378_top.jpg" alt="축산직 윤용범" />         
         </div>
 
-        <div class="evtCtnsBox wb_cts01">         
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2378_01.jpg" alt="유튜브" data-aos="fade-right" />      
+        <div class="evtCtnsBox wb_cts01" data-aos="fade-up" >         
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2378_01.jpg" alt="유튜브" />      
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/jcr0AKg9yVk?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>  
         </div>
 
-        <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2378_02.jpg" alt="q&a" data-aos="fade-left"/>        
+        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2021/10/2378_02.jpg" alt="q&a"/>        
         </div>    
 
-        <div class="evtCtnsBox wb_cts03">
+        <div class="evtCtnsBox wb_cts03" data-aos="fade-up" id="lecbuy">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2378_03.jpg" alt="수강신청" data-aos="fade-right"/>    
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/186238" title="수강신청" target="_blank" style="position: absolute;left: 55.75%;top: 63.9%;width: 28.27%;height: 6.99%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2378_03.jpg" alt="수강신청" />   
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/186238" title="이론패키지" target="_blank" style="position: absolute; left: 16.16%; top: 76.08%; width: 27.77%; height: 6.76%; z-index: 2;"></a> 
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/187659" title="기출문제패키지" target="_blank" style="position: absolute; left: 55.45%; top: 76.08%; width: 27.77%; height: 6.76%; z-index: 2;"></a>
             </div>                         
         </div>           
 

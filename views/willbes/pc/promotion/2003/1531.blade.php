@@ -114,9 +114,9 @@
         <div class="evtCtnsBox wb_02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/1531_02.jpg" alt="문제풀이 영상"/> 
             <div class="wb_02_gif">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/1531_01_1.gif" alt="기미진 영상"/> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/1531_01_2.gif" alt="한덕현 영상"/> 
-                <img src="https://static.willbes.net/public/images/promotion/2020/02/1531_01_3.gif" alt="조민주 영상"/> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/1531_01_1.gif" alt="오대혁 영상"/> 
+                <img src="https://static.willbes.net/public/images/promotion/2020/02/1531_01_2.gif" alt="한덕현 영상"/> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/1531_01_3.gif" alt="김상범 영상"/> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/02/1531_01_4.gif" alt="김덕관 영상"/>    
             </div> 
         </div>        

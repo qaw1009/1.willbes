@@ -92,8 +92,7 @@
         .tab02 li:last-child a {margin:0}
         .tab02:after {content:""; display:block; clear:both}
 
-    </style>https://static.willbes.net/public/images/promotion/2021/07/1721_04_cts2.png
-
+    </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
 

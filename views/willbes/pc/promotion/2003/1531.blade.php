@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
+        /*.evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}*/
 
         /************************************************************/
         .sky {position:fixed;top:100px;right:10px ;width:120px; text-align:center; z-index:111;}   
@@ -37,7 +37,7 @@
         .newTopDday ul li:last-child a:hover {background:#666}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/02/1531_top_bg.jpg) no-repeat center top; height:1253px}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/11/1531_top_bg.jpg) no-repeat center top; height:1253px}
         .wb_top span {position: absolute; top:591px; left:50%; margin-left:-497px; z-index: 1;}
    
         .wb_02 {position:relative; background:url(https://static.willbes.net/public/images/promotion/2021/11/1531_02_bg.jpg) no-repeat center top; height:963px}
@@ -66,7 +66,7 @@
 
     </style>
     
-    <div class="p_re evtContent NSK" id="evtContainer">       
+    <div class="evtContent NSK" id="evtContainer">       
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">

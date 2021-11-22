@@ -59,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CI_FTP $ftp                                        FTP Class
  * @property WB_Image_lib $image_lib                       Image Manipulation class
  * @property CI_Migration $migration                        All migrations should implement this, forces up() and down() and gives access to the CI super-global.
- * @property CI_Pagination $pagination                     Pagination Class
+ * @property WB_Pagination $pagination                     Pagination Class (CI_Pagination extends)
  * @property CI_Parser $parser                                Parser Class
  * @property CI_Profiler $profiler                              This class enables you to display benchmark, query, and other data in order to help with debugging and optimization.
  * @property CI_Table $table                                  Lets you create tables manually or from database result objects, or arrays.

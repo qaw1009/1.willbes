@@ -4597,6 +4597,7 @@ table.classTable tr td img {
 .LeclistTable .listTable tr td.w-list a {
 	display: block;
 }
+.listTable .w-list a strong {color:#000}
 .LeclistTable .listTable tr td.w-lec {
 	text-align: left;
 }

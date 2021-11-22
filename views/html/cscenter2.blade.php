@@ -103,7 +103,7 @@
                                     <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
                                     <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                     <td class="w-campus">공통</td>
-                                    <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                    <td class="w-list tx-left pl20"><a href="#none"><strong>[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</strong></a></td>
                                     <td class="w-file">
                                         <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
                                     </td>

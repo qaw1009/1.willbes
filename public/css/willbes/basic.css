@@ -152,7 +152,7 @@ abbr[title] {
 }
 b,
 strong {
-	font-weight: bold !important;
+	font-weight: bold;
 }
 dfn {
 	font-style: italic;
@@ -486,7 +486,6 @@ a:visited {
 	cursor: pointer;
 }
 strong {
-	font-weight: 700;
 	vertical-align: baseline;
 }
 .sel_disabled,

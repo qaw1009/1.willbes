@@ -28,10 +28,14 @@
 
     <div class="evtCtnsBox"  data-aos="fade-down">
         <img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_00.jpg" alt="경찰학원부분 1위" >        
+    </div>
+
+    <div class="evtCtnsBox" data-aos="fade-up">
+        <img src="https://static.willbes.net/public/images/promotion/2021/11/2349m_top.jpg" alt="신규가입 이벤트" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2021/10/2349m_01.jpg" alt="신규가입 이벤트" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/11/2349m_01.jpg" alt="개편&커리큘럼" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">

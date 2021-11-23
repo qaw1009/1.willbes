@@ -23,7 +23,7 @@
        
         .evt00 {background:#0a0a0a}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/10/2349_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/11/2349_top_bg.jpg) no-repeat center top;}
 
         .evt02 {background:#3b3d41;}
 
@@ -39,7 +39,7 @@
     <div class="evtContent NSK" id="evtContainer"> 
         <div class="sky" id="QuickMenu">               
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2349_sky.png" title="타학원 환승 인증">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2349_sky.png" title="타학원 환승 인증">
             </a>
         </div>     
 
@@ -48,7 +48,7 @@
         </div>
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2349_top.jpg" alt="신규가입 이벤트" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2349_top.jpg" alt="신규가입 이벤트" />
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">

@@ -31,7 +31,7 @@
         .evt03 .entry {width:940px; position:absolute; top:1335px; left:50%; margin-left:-470px; z-index: 10;}
         .evt03 .entry table {width:500px; border-top:1px solid #c8c8c8; border-right:1px solid #c8c8c8}
         .evt03 .entry th,
-        .evt03 .entry td {padding:19px 15px; font-size:18px; border-bottom:1px solid #c8c8c8; border-left:1px solid #c8c8c8; line-height:1.2}
+        .evt03 .entry td {padding:17px 15px; font-size:18px; border-bottom:1px solid #c8c8c8; border-left:1px solid #c8c8c8; line-height:1.2}
         .evt03 .entry th {background:#58bb85; color:#fff; font-weight:bold}
         .evt03 .entry td {text-align:left; color:#676767}
         .evt03 .entry input,

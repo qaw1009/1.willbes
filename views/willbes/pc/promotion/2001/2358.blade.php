@@ -30,11 +30,11 @@
 
     <div class="evtContent NSK" id="evtContainer">   
 
-        <div class="evtCtnsBox wb_top" data-aos="fade-left">
+        <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2358_top.jpg" title="저스티스 범죄학" />       
         </div>       
 
-        <div class="evtCtnsBox evt01" data-aos="fade-right">
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2358_01.jpg"  alt="범죄학의 정석" />
                 <a href="https://police.willbes.net/professor/show/cate/3002/prof-idx/51278?subject_idx=2178&subject_name" target="_blank" title="교수님_홈" style="position: absolute;left: 72.98%;top: 75.03%;width: 11.46%;height: 7.27%;z-index: 2;"></a>
@@ -44,15 +44,15 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox evt02" data-aos="fade-left">
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2358_02.jpg"  alt="무엇을 어떻게" />
         </div>
 
-        <div class="evtCtnsBox evt03" data-aos="fade-right">
+        <div class="evtCtnsBox evt03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2358_03.jpg"  alt="커리큘럼" />
         </div>
 
-        <div class="evtCtnsBox evt04" data-aos="fade-left">
+        <div class="evtCtnsBox evt04" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2358_04.jpg"  alt="소문내기" />
                 <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="범죄학 이미지" style="position: absolute;left: 41.98%;top: 55.03%;width: 34.46%;height: 7.77%;z-index: 2;"></a>
@@ -67,7 +67,14 @@
             @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
         @endif
 
-        <div class="evtCtnsBox evt05" data-aos="fade-right">
+        <div class="evtCtnsBox evt05" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2358_06.jpg"  alt="100프로무료" />
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+            @endif  
+        </div>
+
+        <div class="evtCtnsBox evt05" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2358_05.jpg"  alt="100프로무료" />
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))

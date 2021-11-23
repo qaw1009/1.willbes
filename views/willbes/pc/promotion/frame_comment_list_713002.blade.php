@@ -22,9 +22,10 @@
         .evt_table .btns a {display:inline-block; width:260px; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#42425b; margin:0 10px; border-radius:40px}
         .evt_table .btns a:hover {background:#fe544a}
 
-        .urladd {padding:20px; background:#2e2e3c; color:#fff; margin:40px auto 20px; font-size:14px; text-align: center}
-        .urladd input[type=text] {height:28px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; background:#f5f5f5; vertical-align:middle; width:70%; margin:0 10px; color:#000}
-        .urladd a {display:inline-block; height:28px; line-height:28px; color:#2e2e3c; background:#ffc943; padding:0 20px; vertical-align:middle}
+        .urladd {margin:50px auto 20px; font-size:16px; text-align:left}
+        .urladd input[type=text] {height:40px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; background:#f5f5f5; vertical-align:middle; width:80%; color:#000}
+        .urladd a {display:inline-block; height:40px; line-height:40px; color:#fff; background:#333; vertical-align:middle; width:19%; text-align:center}
+        .urladd a:hover {background:#42425b}
         .evt_table {width:100%; background-color:#fff !important; padding:20px 0}
         .evt_table table td {font-size:14px; text-align:center}
         .evt_table table td:nth-child(2) {text-align:left}
@@ -38,10 +39,10 @@
         @endforeach
 
         <div class="urladd">
-            홍보 URL 남기기 <input type="text" name="event_comment" id="event_comment">
-            <a href="javascript:void(0);" id="btn_submit_comment">주소입력</a>
+            <input type="text" name="event_comment" id="event_comment" placeholder="소문내기 URL 남기기" >
+            <a href="javascript:void(0);" id="btn_submit_comment">내가 낸 소문 인증하기</a>
         </div>
-        <div class="evt_table pd20">
+        <div class="evt_table">
             <table>
                 <col width="8%" />
                 <col  />

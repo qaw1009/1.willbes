@@ -42,6 +42,7 @@
         .evt05 {width:1120px; margin:0 auto;}
 
         .evt06 {background:#fdfdfd}
+
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -136,9 +137,11 @@
                 <a href="javascript:void(0);" onclick="copyTxt();"  title="주소복사하기" style="position: absolute; left: 68.93%; top: 45.4%; width: 25.71%; height: 23.12%; z-index: 2;"></a>
                 <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운받기" style="position: absolute; left: 68.93%; top: 69.08%; width: 25.71%; height: 23.12%; z-index: 2;"></a>               
             </div>
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                    @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N')){{--기존SNS예외처리시--}}
+            <div class="urlWrap">
+                @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                    @include('willbes.pc.promotion.show_comment_list_url_partial',array('login_url'=>app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www')))
                 @endif
+            </div>
         </div>
 
         <div class="evtCtnsBox evt06">
@@ -147,6 +150,7 @@
         
     </div>
     <!-- End Container -->
+
 
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')

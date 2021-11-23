@@ -82,29 +82,20 @@
                         </tr>
                         <tr>
                             <th>출신학교</th>
-                            <td><input type="text" id="" name="" maxlength="100"/></td>
+                            <td><input type="text" id="" name="" placeholder="선택입력"/></td>
                         </tr>
                         <tr>
                             <th>출신학과</th>
-                            <td><input type="text" id="" name="" maxlength="100"/></td>
+                            <td><input type="text" id="" name="" placeholder="선택입력"/></td>
                         </tr>
                         <tr>
                             <th>응시횟수</th>
-                            <td>
-                                <select id="" name="" title="응시횟수">
-                                    <option value="">선택</option>
-                                    <option value="">1회</option>
-                                    <option value="">2회</option>
-                                    <option value="">3회</option>
-                                    <option value="">4회 이상</option>
-                                </select>
-                            </td>
-                        </tr>
+                            <td><input type="text" id="" name="" placeholder="선택입력"></td>
                         <tr>
-                            <th>희망응시지역</th>
+                            <th>희망응시지역<br>
+                        * 필수입력</th>
                             <td>
                                 <select id="" name="" title="응시지역">
-                                    <option value="">선택</option>
                                     <option value="">서울</option>
                                     <option value="">부산</option>
                                     <option value="">대전</option>

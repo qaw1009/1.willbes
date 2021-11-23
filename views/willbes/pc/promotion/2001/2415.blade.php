@@ -116,12 +116,10 @@
         </div> 
 
         <div class="evtCtnsBox evt06" data-aos="fade-up">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2415_06.jpg" alt="심화기출 가정" >
-            {{--
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2415_06.jpg" alt="심화기출 가정" >            
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/qofmQ0nkgYE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            --}}          
+                <iframe src="https://www.youtube.com/embed/EEX_dFeKOsI?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>                  
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
             @endif

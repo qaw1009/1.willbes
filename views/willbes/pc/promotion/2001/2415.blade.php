@@ -130,11 +130,11 @@
             {{--
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/qofmQ0nkgYE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div> 
-            <div class="youtube youtube2">
-                <iframe src="https://www.youtube.com/embed/qofmQ0nkgYE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             --}}
+            <div class="youtube youtube2">
+                <iframe src="https://www.youtube.com/embed/RYTCCF9_3NY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>           
         </div>
 
         <div class="evtCtnsBox evt08" data-aos="fade-up">  

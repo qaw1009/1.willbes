@@ -61,71 +61,73 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2424_02.jpg" alt="퀵 서머리 특징"/>
         </div>
 
-        <div class="evtCtnsBox evt03 p_re">            
-            <div class="entry">
-                <table>
-                    <col width="180"/>
-                    <col  />
-                    <tbody>
-                        <tr>
-                            <th>이름</th>
-                            <td>홍길동</td>
-                        </tr>
-                        <tr>
-                            <th>윌비스 ID</th>
-                            <td>willbes</td>
-                        </tr>
-                        <tr>
-                            <th>연락처</th>
-                            <td>010-1234-5678</td>
-                        </tr>
-                        <tr>
-                            <th>출신학교</th>
-                            <td><input type="text" id="" name="" placeholder="선택입력"/></td>
-                        </tr>
-                        <tr>
-                            <th>출신학과</th>
-                            <td><input type="text" id="" name="" placeholder="선택입력"/></td>
-                        </tr>
-                        <tr>
-                            <th>응시횟수</th>
-                            <td><input type="text" id="" name="" placeholder="선택입력"></td>
-                        <tr>
-                            <th>
-                                희망응시지역
-                                <div class="tx14">(* 필수입력)</div>
-                            </th>
-                            <td>
-                                <select id="" name="" title="응시지역">
-                                    <option value="">서울</option>
-                                    <option value="">부산</option>
-                                    <option value="">대전</option>
-                                    <option value="">울산</option>
-                                    <option value="">대구</option>
-                                    <option value="">광주</option>
-                                    <option value="">경기</option> 
-                                    <option value="">인천</option>
-                                    <option value="">강원</option>
-                                    <option value="">충북</option>
-                                    <option value="">충남</option>
-                                    <option value="">경북</option>
-                                    <option value="">경남</option>
-                                    <option value="">전북</option>
-                                    <option value="">전남</option>  
-                                    <option value="">제주</option>
-                                    <option value="">세종</option>                                  
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <form name="regi_form_register" id="regi_form_register">
+            {!! csrf_field() !!}
+            {!! method_field('POST') !!}
+            <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+            <input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/> {{-- 하나수강만 선택 가능할시 --}}
+            <input type="hidden" name="register_name" value="{{sess_data('mem_name')}}" title="성명" />
+            <input type="hidden" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" />
+            <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_params[]" value="register_data3"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_params_item[]" value="false"/>
+            <input type="hidden" name="target_params_item[]" value="false"/>
+            <input type="hidden" name="target_params_item[]" value="false"/>
+            <input type="hidden" name="register_type" value="promotion"/>
+            <div class="evtCtnsBox evt03 p_re">
+                <div class="entry">
+                    <table>
+                        <col width="180"/>
+                        <col  />
+                        <tbody>
+                            <tr>
+                                <th>이름</th>
+                                <td>{{(sess_data('is_login') === true ? sess_data('mem_name') : '홍길동')}}</td>
+                            </tr>
+                            <tr>
+                                <th>윌비스 ID</th>
+                                <td>{{(sess_data('is_login') === true ? sess_data('mem_id') : 'willbes')}}</td>
+                            </tr>
+                            <tr>
+                                <th>연락처</th>
+                                <td>{{(sess_data('is_login') === true ? sess_data('mem_phone') : '010-1234-5678')}}</td>
+                            </tr>
+                            <tr>
+                                <th>출신학교</th>
+                                <td><input type="text" class="register-data register-text" name="register_data1" autocomplete="off" maxlength="40" placeholder="선택입력"/></td>
+                            </tr>
+                            <tr>
+                                <th>출신학과</th>
+                                <td><input type="text" class="register-data register-text" name="register_data2" autocomplete="off" maxlength="40" placeholder="선택입력"/></td>
+                            </tr>
+                            <tr>
+                                <th>응시횟수</th>
+                                <td><input type="text" class="register-data register-text" name="register_data3" autocomplete="off" maxlength="40" placeholder="선택입력"></td>
+                            <tr>
+                                <th>
+                                    희망응시지역
+                                    <div class="tx14">(* 필수입력)</div>
+                                </th>
+                                <td>
+                                    <select class="register-data" name="register_chk[]" title="응시지역">
+                                        <option value="">응시지역</option>
+                                        @foreach($arr_base['register_list'] as $row)
+                                            <option value="{{$row['ErIdx']}}">{{ $row['Name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2424_03.jpg" alt="퀵 서머리 특징"/>
+                    <a href="javascript:void(0);" title="신청" onclick="fn_submit(); return false;" style="position: absolute; left: 22.68%; top: 87.05%; width: 25.98%; height: 3.96%; z-index: 2;"></a>
+                    <a href="javascript:void(0);" title="리셋" onclick="reset(); return false;" style="position: absolute; left: 51.25%; top: 87.05%; width: 25.98%; height: 3.96%; z-index: 2;"></a>
+                </div>
             </div>
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2424_03.jpg" alt="퀵 서머리 특징"/>
-                <a href="#none" title="신청" style="position: absolute; left: 22.68%; top: 87.05%; width: 25.98%; height: 3.96%; z-index: 2;"></a>
-                <a href="#none" title="리셋" style="position: absolute; left: 51.25%; top: 87.05%; width: 25.98%; height: 3.96%; z-index: 2;"></a>
-            </div>
-        </div>
+        </form>
 
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2424_04.jpg" alt="퀵 서머리 특징"/>
@@ -155,5 +157,51 @@
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
 
+    <script type="text/javascript">
+        function fn_submit() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            var $regi_form_register = $('#regi_form_register');
+            var _url = '{!! front_url('/event/registerStore') !!}';
+            var _check, _check2 = true;
+            var _max_byte = 32;
 
+            $.each($(".register-text"), function(index, item) {
+                if (checkSpecial($(this).val()) == true) {
+                    _check = false;
+                    return false;
+                }
+                if (fn_chk_byte($(this).val()) > _max_byte) {
+                    _check2 = false;
+                    return false;
+                }
+            });
+
+            if (_check == false) {
+                alert('특수문자는 입력할 수 없습니다.');
+                return false;
+            }
+
+            if (_check2 == false) {
+                alert('32byte까지 입력 가능합니다.');
+                return false;
+            }
+
+            if ($.trim($regi_form_register.find('select[name="register_chk[]"]').val()) == '') {
+                alert('희망응시지역을 선택해주세요.');
+                return;
+            }
+
+            if (!confirm('저장하시겠습니까?')) { return true; }
+            ajaxSubmit($regi_form_register, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    location.reload();
+                }
+            }, showValidateError, null, false, 'alert');
+        }
+
+        function reset() {
+            $(".register-data").val('');
+        }
+    </script>
 @stop

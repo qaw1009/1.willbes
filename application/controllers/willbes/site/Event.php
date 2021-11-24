@@ -305,7 +305,7 @@ class Event extends \app\controllers\FrontController
         $paging = $this->pagination($arr_base['page_url'].'?' . $get_page_params, $total_rows, 20, $paging_count, true);
 
         if ($total_rows > 0) {
-            $list = $this->eventFModel->listEventForComment(false, $arr_condition_notice, $arr_condition_event_comment, $paging['limit'], $paging['offset'], 'group by c.Idx');
+            $list = $this->eventFModel->listEventForComment(false, $arr_condition_notice, $arr_condition_event_comment, $paging['limit'], $paging['offset']);
         }
 
         $this->load->view('site/event/frame_comment_list',[

@@ -55,7 +55,7 @@
         if (link) {
             temp_params = link.split('?');
             params = temp_params[1].split('=');
-            num = params[1];
+            num = params[params.length - 1];
         }
 
         fnRegisterList(num);

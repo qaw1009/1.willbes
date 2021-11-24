@@ -1,70 +1,3 @@
-{{--20개까지 롤링형식--}}
-{{--<div class="imgSlider">--}}
-{{--    <div>--}}
-{{--        <ul id="sliderImg">--}}
-{{--            <li>--}}
-{{--                <div class="imgWrap">--}}
-{{--                    <div class="listTitle"><span>영어</span> | 홍*동<a href="#none">X</a></div>--}}
-{{--                    <div class="imgBox">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </li>--}}
-{{--            <li>--}}
-{{--                <div class="imgWrap">--}}
-{{--                    <div class="listTitle"><span>전기전자통신</span> | 홍*동</div>--}}
-{{--                    <div class="imgBox">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </li>--}}
-{{--            <li>--}}
-{{--                <div class="imgWrap">--}}
-{{--                    <div class="listTitle"><span>영어</span> | 홍*동</div>--}}
-{{--                    <div class="imgBox">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </li>--}}
-{{--            <li>--}}
-{{--                <div class="imgWrap">--}}
-{{--                    <div class="listTitle"><span>영어</span> | 홍*동</div>--}}
-{{--                    <div class="imgBox">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </li>--}}
-{{--            <li>--}}
-{{--                <div class="imgWrap">--}}
-{{--                    <div class="listTitle"><span>영어</span> | 홍*동</div>--}}
-{{--                    <div class="imgBox">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </li>--}}
-{{--            <li>--}}
-{{--                <div class="imgWrap">--}}
-{{--                    <div class="listTitle"><span>영어</span> | 홍*동</div>--}}
-{{--                    <div class="imgBox">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </li>--}}
-{{--            <li>--}}
-{{--                <div class="imgWrap">--}}
-{{--                    <div class="listTitle"><span>영어</span> | 홍*동</div>--}}
-{{--                    <div class="imgBox">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </li>--}}
-{{--        </ul>--}}
-{{--    </div>--}}
-{{--    <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/2021/01/2052_arrowL.png"></a></p>--}}
-{{--    <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2021/01/2052_arrowR.png"></a></p>--}}
-{{--</div>--}}
-
-{{--21개이상 리스트 형식--}}
 <div class="imgSlider">
     <div class="list">
         <ul>
@@ -120,11 +53,9 @@
         if (link) {
             temp_params = link.split('?');
             params = temp_params[1].split('=');
-            num = params[1];
+            num = params[params.length - 1];
         }
-
         fnRegisterList(num);
-
         return false;
     });
 

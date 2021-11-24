@@ -141,8 +141,10 @@
                     <label class="control-label col-md-1-1" for="is_use_y">사용여부<span class="required">*</span></label>
                     <div class="col-md-4 item form-inline">
                         <div class="radio">
-                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
-                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/>
+                            <label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/>
+                            <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
                 </div>
@@ -161,11 +163,11 @@
                         <div class="checkbox">
                             @foreach($arr_options as $key => $val)
                                 <input type="checkbox" id="option_ccds_{{$key}}" name="option_ccds[]" class="flat optoin-ccds" title="관리옵션" value="{{$key}}" data-code="{{$key}}"
-                                       @if( empty($data['data_option_ccd']) === false && array_key_exists($key, $data['data_option_ccd']) === true )checked="checked"@endif/>
+                                       {{ (empty($data['data_option_ccd']) === false && array_key_exists($key, $data['data_option_ccd']) === true ? 'checked="checked"' : '') }}/>
                                 <label class="inline-block mr-5" for="option_ccds_{{$key}}">{{$val}}</label>
                             @endforeach
                         </div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;• '신청리스트'을 설정해야만 온라인에서 접수를 받을 수 있습니다
+                        <p class="form-control-static ml-30">• '신청리스트'을 설정해야만 온라인에서 접수를 받을 수 있습니다</p>
                     </div>
                 </div>
 
@@ -376,22 +378,23 @@
                                     <label class="control-label col-md-2">댓글사용영역</label>
                                     <div class="col-md-7 form-inline">
                                         <div class="checkbox">
-                                        <input type="checkbox" id="comment_use_area_B" name="comment_use_area[]" value="B" class="flat" @if( (empty($data['ArrCommentUseArea']['B']) === false) && $data['ArrCommentUseArea']['B']=='B' )checked="checked"@endif/>
-                                        <label class="inline-block mr-5" for="comment_use_area_B">이벤트페이지(하단)</label>
+                                            <input type="checkbox" id="comment_use_area_B" name="comment_use_area[]" value="B" class="flat"
+                                                   {{ (empty($data['ArrCommentUseArea']['B']) === false && $data['ArrCommentUseArea']['B']=='B' ? 'checked="checked"' : '') }}/>
+                                            <label class="inline-block mr-5" for="comment_use_area_B">이벤트페이지(하단)</label>
 
-                                        <input type="checkbox" id="comment_use_area_P" name="comment_use_area[]" value="P" class="flat" @if( (empty($data['ArrCommentUseArea']['P']) === false) && $data['ArrCommentUseArea']['P']=='P' )checked="checked"@endif/>
-                                        <label class="inline-block mr-5" for="comment_use_area_P">바로신청팝업</label>
+                                            <input type="checkbox" id="comment_use_area_P" name="comment_use_area[]" value="P" class="flat"
+                                                    {{ (empty($data['ArrCommentUseArea']['P']) === false && $data['ArrCommentUseArea']['P']=='P' ? 'checked="checked"' : '') }}/>
+                                            <label class="inline-block mr-5" for="comment_use_area_P">바로신청팝업</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-2">댓글Ui종류</label>
-                                    <div class="col-md-7 form-inline">
+                                    <div class="col-md-8 form-inline">
                                         <div class="checkbox">
                                             @foreach($arr_comment_ui_type_ccd as $key => $val)
-                                                <input type="checkbox" id="comment_ui_type_{{$key}}" name="comment_ui_type_ccds[]" class="flat" title="댓글Ui종류" value="{{$key}}"
-                                                       @if( ($method == 'POST' && $loop->first === true) || (empty($data['comment_ui_type_ccds']) === false && array_key_exists($key, $data['comment_ui_type_ccds']) === true) )checked="checked"@endif
-                                                data-type="{{$key}}"/>
+                                                <input type="checkbox" id="comment_ui_type_{{$key}}" name="comment_ui_type_ccds[]" class="flat" title="댓글Ui종류" value="{{$key}}" data-type="{{$key}}"
+                                                        {{ (($method == 'POST' && $loop->first === true) || (empty($data['comment_ui_type_ccds']) === false && array_key_exists($key, $data['comment_ui_type_ccds']) === true) ? 'checked="checked"' : '') }}/>
                                                 <label class="inline-block mr-5" for="comment_ui_type_{{$key}}">{{$val}}</label>
                                             @endforeach
                                         </div>
@@ -755,7 +758,7 @@
                         생성 <input type="number" id="setting_readCnt" name="setting_readCnt" class="form-control" title="생성" value="{{$data['AdjuReadCnt']}}" style="width: 70px; padding:5px">
                         =
                         노출 <input type="text" id="total_read_count" name="total_read_count" class="form-control" title="노출" readonly="readonly" value="{{$data['TotalReadCnt']}}" style="width: 70px; padding:5px">
-                        &nbsp;&nbsp;&nbsp;&nbsp;• 사용자단에 노출되는 조회수는‘실조회수 + 조회수생성’입니다.
+                        <p class="form-control-static ml-30">• 사용자단에 노출되는 조회수는‘실조회수 + 조회수생성’입니다.</p>
                     </div>
                 </div>
 

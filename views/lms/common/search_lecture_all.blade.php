@@ -8,6 +8,8 @@
             온라인강좌
         @elseif($prod_type === 'off')
             학원강좌
+        @else
+            상품검색
         @endif
     @endif
 @stop

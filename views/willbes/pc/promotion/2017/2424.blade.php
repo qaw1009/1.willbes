@@ -83,15 +83,15 @@
                         <tbody>
                             <tr>
                                 <th>이름</th>
-                                <td>{{(sess_data('is_login') === true ? sess_data('mem_name') : '홍길동')}}</td>
+                                <td>{{sess_data('mem_name')}}</td>
                             </tr>
                             <tr>
                                 <th>윌비스 ID</th>
-                                <td>{{(sess_data('is_login') === true ? sess_data('mem_id') : 'willbes')}}</td>
+                                <td>{{sess_data('mem_id')}}</td>
                             </tr>
                             <tr>
                                 <th>연락처</th>
-                                <td>{{(sess_data('is_login') === true ? sess_data('mem_phone') : '010-1234-5678')}}</td>
+                                <td>{{sess_data('mem_phone')}}</td>
                             </tr>
                             <tr>
                                 <th>출신학교</th>

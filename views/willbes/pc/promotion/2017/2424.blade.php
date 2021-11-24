@@ -159,7 +159,7 @@
 
     <script type="text/javascript">
         function fn_submit() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
             var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
             var _check, _check2 = true;

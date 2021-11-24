@@ -104,11 +104,13 @@
                     <li>
                         <span>[소방학개론]</span>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/51068/?subject_idx=1113')}}">이종오</a>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51059/?subject_idx=1113')}}">이종희</a>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/50465/?subject_idx=1113')}}">김종상</a>
                     </li>
                     <li>
                         <span>[소방관계법규]</span>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/51068/?subject_idx=1138')}}">이종오</a>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51059/?subject_idx=1118')}}">이종희</a>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/50465/?subject_idx=1138')}}">김종상</a>
                     </li>
                     <li>

@@ -103,6 +103,10 @@
                                 <th>level</th>
                                 <th style="width: 120px;">time</th>
                                 <th>message</th>
+                                @if(starts_with($log_type, ['pg', 'deposit', 'cron']) === false)
+                                    <th>url</th>
+                                    <th style="width: 120px;">ip</th>
+                                @endif
                             </tr>
                             </thead>
                             <tbody>
@@ -112,6 +116,10 @@
                                     <td>{{ $row['level'] }}</td>
                                     <td>{{ $row['time'] }}</td>
                                     <td>{{ $row['message'] }}</td>
+                                    @if(starts_with($log_type, ['pg', 'deposit', 'cron']) === false)
+                                        <td>{{ $row['url'] }}</td>
+                                        <td>{{ $row['ip_addr'] }}</td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>

@@ -908,6 +908,20 @@ function fn_chk_text_length(msg, textType) {
 }
 
 /**
+ * 특수문자 체크 함수
+ * @param str
+ * @returns {boolean}
+ */
+function checkSpecial(str) {
+    var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi
+    if(regExp.test(str)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
  * 원격지원서비스 실행
  */
 function remoteOpen() {

@@ -18,9 +18,11 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/11/2425_top_bg.jpg) no-repeat center top;}
 
-        .evt_01_01 {padding-top:125px;}
+        .evt_tab {padding-top:125px;}
 
-        .evt_03_01 {padding-bottom:50px;}
+        .mid {background:#f4f4f4;}
+
+         /*탭*/   
         .evtTab {width:890px; margin:0 auto}
         .evtTab li {display:inline; float:left; width:50%}
         .evtTab li a {display:block; color:#ababab; font-size:24px; padding:20px 0; border:5px solid #ababab;font-weight:bold}
@@ -48,41 +50,45 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2425_top.jpg" alt="12월 추천강좌" />
         </div>   
 
-        <div class="evtCtnsBox evt_01_01" data-aos="fade-top">     
+        <div class="evtCtnsBox evt_tab" data-aos="fade-top">     
             <ul class="evtTab">
                 <li><a href="#tab01">22년 1차 합격반</a></li>
                 <li><a href="#tab02">22년 2차 합격반</a></li>
             </ul>
-            <div id="tab01"><img src="https://static.willbes.net/public/images/promotion/2021/11/2425_01_01.jpg" alt="" /></div>
-            <div id="tab02"><img src="https://static.willbes.net/public/images/promotion/2021/11/2425_01_02.jpg" alt="" /></div>             
+            <div id="tab01">
+                <div class="evtCtnsBox evt01" data-aos="fade-top">
+                    <div>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2425_01_01.jpg" alt="" />                      
+                    </div>
+                    <div class="mid">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2425_01_02.jpg" alt="" />                   
+                    </div>
+                    <div class="wrap">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2425_02.jpg" alt="" />
+                        <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" title="신청하기" target="_blank" style="position: absolute;left: 15.45%;top: 57.92%;width: 15.14%;height: 6.24%;z-index: 2;"></a>                      
+                        <a href="javascript:alert('Coming Soon!')" title="신청하기" style="position: absolute;left: 68.15%;top: 73.92%;width: 15.14%;height: 7.24%;z-index: 2;"></a>               
+                    </div>            
+                </div>                
+            </div>
+            <div id="tab02">
+                <div class="evtCtnsBox evt01" data-aos="fade-top">
+                        <div>
+                            <img src="https://static.willbes.net/public/images/promotion/2021/11/2425_03_01.jpg" alt="" />                           
+                        </div>
+                        <div class="mid">
+                            <img src="https://static.willbes.net/public/images/promotion/2021/11/2425_03_02.jpg" alt="" />                       
+                        </div>
+                        <div class="wrap">
+                            <img src="https://static.willbes.net/public/images/promotion/2021/11/2425_04.jpg" alt="" />
+                            <a href="https://police.willbes.net/pass/offPackage/show/prod-code/187520" title="신청하기" target="_blank" style="position: absolute;left: 15.45%;top: 55.42%;width: 15.14%;height: 6.24%;z-index: 2;"></a>
+                            <a href="https://police.willbes.net/pass/offPackage/show/prod-code/187545" title="신청하기" target="_blank" style="position: absolute;left: 42.45%;top: 55.42%;width: 15.14%;height: 6.24%;z-index: 2;"></a>
+                            <a href="https://police.willbes.net/pass/offPackage/show/prod-code/187546" title="신청하기" target="_blank" style="position: absolute;left: 69.45%;top: 55.42%;width: 15.14%;height: 6.24%;z-index: 2;"></a>               
+                        </div>            
+                    </div>                
+                </div>
+            </div>             
         </div>
 
-        <div class="evtCtnsBox evt02" data-aos="fade-top">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2425_02.jpg" alt="" />
-                <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" title="신청하기" target="_blank" style="position: absolute;left: 15.45%;top: 57.92%;width: 15.14%;height: 6.24%;z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!')" title="신청하기"  style="position: absolute;left: 68.15%;top: 73.62%;width: 15.14%;height: 7.24%;z-index: 2;"></a>
-            </div>              
-        </div>
-
-        <div class="evtCtnsBox evt_03_01" data-aos="fade-top">
-            <ul class="evtTab">
-                <li><a href="#tab03">22년 1차 합격반</a></li>
-                <li><a href="#tab04">22년 2차 합격반</a></li>
-            </ul>
-            <div id="tab03"><img src="https://static.willbes.net/public/images/promotion/2021/11/2425_03_01.jpg" alt="" /></div>
-            <div id="tab04"><img src="https://static.willbes.net/public/images/promotion/2021/11/2425_03_02.jpg" alt="" /></div>
-        </div>
-
-        <div class="evtCtnsBox evt04" data-aos="fade-top">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2425_04.jpg" alt="" />
-                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/187520" title="신청하기" target="_blank" style="position: absolute;left: 15.45%;top: 55.42%;width: 15.14%;height: 6.24%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/187545" title="신청하기" target="_blank" style="position: absolute;left: 42.45%;top: 55.42%;width: 15.14%;height: 6.24%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/187546" title="신청하기" target="_blank" style="position: absolute;left: 69.45%;top: 55.42%;width: 15.14%;height: 6.24%;z-index: 2;"></a>               
-            </div>           
-        </div>
-                        
     </div>
 
     <!-- End Container -->

@@ -74,11 +74,7 @@ class LogViewer
                     }
                 }
 
-                $data[] = [
-                    'level' => str_first_pos_before($content, ' - '),
-                    'time' => str_first_pos_after(str_first_pos_before($content, ' --> '), ' - '),
-                    'message' => str_replace('\n', '', str_first_pos_after($content, ' --> '))
-                ];
+                $data[] = $this->_getLogContentParser($content);
             }
 
             fclose ($handle);
@@ -87,17 +83,43 @@ class LogViewer
             if (empty($prev_line) === false) {
                 if (empty($log_level) === true || (empty($log_level) === false && starts_with($prev_line, $log_level) === true)) {
                     $content = $prev_line . rtrim($sub_line);
-
-                    $data[] = [
-                        'level' => str_first_pos_before($content, ' - '),
-                        'time' => str_first_pos_after(str_first_pos_before($content, ' --> '), ' - '),
-                        'message' => str_replace('\n', '', str_first_pos_after($content, ' --> '))
-                    ];
+                    $data[] = $this->_getLogContentParser($content);
                 }
             }
         }
 
         return $data;
+    }
+
+    /**
+     * 일반 로그파일 에러라인 파싱
+     * @param string $content [에러내용]
+     * @return array
+     */
+    private function _getLogContentParser($content)
+    {
+        $time_delm = ' - ';
+        $msg_delm = ' --> ';
+        $message = str_replace('\n', '', str_first_pos_after($content, $msg_delm));
+        $msg_delm_cnt = substr_count($message, $msg_delm);
+        $url = '';
+        $ip_addr = '';
+
+        if ($msg_delm_cnt == 1) {
+            $url = str_first_pos_after($message, $msg_delm);
+            $message = str_first_pos_before($message, $msg_delm);
+        } elseif ($msg_delm_cnt > 1) {
+            list($severity, $message, $url, $ip_addr) = explode($msg_delm, $message);
+            $message = '[' . $severity . '] ' . $message;
+        }
+
+        return [
+            'level' => str_first_pos_before($content, $time_delm),
+            'time' => str_first_pos_after(str_first_pos_before($content, $msg_delm), $time_delm),
+            'message' => $message,
+            'url' => $url,
+            'ip_addr' => $ip_addr
+        ];
     }
 
     /**

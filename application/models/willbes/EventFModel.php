@@ -136,7 +136,7 @@ class EventFModel extends WB_Model
             A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequestType, A.EventName, A.Link,
             A.RegisterStartDate, A.RegisterEndDate, DATE_FORMAT(A.RegisterStartDate, \'%Y-%m-%d\') AS RegisterStartDay, DATE_FORMAT(A.RegisterEndDate, \'%Y-%m-%d\') AS RegisterEndDay,
             A.OptionCcds, A.ReadCnt + A.AdjuReadCnt AS ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
-            G.SiteName, J.CcdName AS CampusName, D.CateCode,
+            G.SiteName, fn_ccd_name(A.CampusCcd) AS CampusName, D.CateCode,
             K.FileFullPath, K.FileName,
             CASE A.RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequestTypeName,
             CASE A.IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
@@ -161,7 +161,6 @@ class EventFModel extends WB_Model
             ) AS D ON A.ElIdx = D.ElIdx
             LEFT JOIN {$this->_table['event_file']} AS K ON A.ElIdx = K.ElIdx AND K.IsUse = 'Y' AND K.FileType = 'S'
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
-            LEFT OUTER JOIN {$this->_table['sys_code']} AS J ON A.CampusCcd = J.Ccd
         ";
 
         $default_arr_condition = ['NOT' => ['a.RequestType' => '5']];

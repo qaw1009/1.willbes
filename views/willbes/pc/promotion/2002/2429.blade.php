@@ -129,8 +129,8 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
-            <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/11/2405_sky01.jpg" alt="일정안내" ></a>
-            <a href="#evt_02"><img src="https://static.willbes.net/public/images/promotion/2021/11/2405_sky02.jpg" alt="신청하기" ></a>
+            <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/11/2429_sky01.jpg" alt="일정안내" ></a>
+            <a href="#evt_02"><img src="https://static.willbes.net/public/images/promotion/2021/11/2429_sky02.jpg" alt="신청하기" ></a>
         </div>        
 
         <!-- 타이머 -->

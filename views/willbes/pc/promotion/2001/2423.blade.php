@@ -76,29 +76,35 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_01" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2423_01.jpg" alt=""/> 
-                <div class="attend" data-aos="fade-right">
-                    <span class="end">12/1</span>
-                    <span>12/2</span>
-                    <span>12/3</span>
-                    <span>12/4</span>
-                    <span>12/5</span>
-                    <span>12/6</span>
-                    <span>12/7</span>
-                    <span>12/8</span>
-                    <span>12/9</span>
-                    <span>12/10</span>
-                    <span>12/11</span>
-                    <span>12/12</span>
-                    <span>12/13</span>
-                    <span>12/14</span>
-                    <span>12/15</span>
+        <form id="add_apply_form" name="add_apply_form">
+            {!! csrf_field() !!}
+            {!! method_field('POST') !!}
+            <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+            <input type="hidden" name="register_type" value="promotion"/>
+            <input type="hidden" name="apply_chk_el_idx" value="{{ $data['ElIdx'] }}"/>
+            <input type="hidden" name="event_register_chk" value="N"/>
+
+            @foreach($arr_base['add_apply_data'] as $row)
+                @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))
+                    <input type="hidden" name="add_apply_chk[]" value="{{$row['EaaIdx']}}" />
+                    @break;
+                @endif
+            @endforeach
+
+            <div class="evtCtnsBox wb_01" data-aos="fade-up">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2423_01.jpg" alt=""/>
+                    <div class="attend {{time() .' '. strtotime($row['ApplyEndDatm'])}}" data-aos="fade-right">
+                        @if(empty($arr_base['add_apply_data']) === false)
+                            @foreach($arr_base['add_apply_data'] as $key => $row)
+                                <span class="{{ (time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'] ? 'end' : '') }}">{{$row['Name']}}</span>
+                            @endforeach
+                        @endif
+                    </div>
+                    <a href="javascript:void(0);" title="신청하기" onclick="fn_add_apply_submit(); return false;" style="position: absolute; left: 19.55%; top: 67.51%; width: 39.2%; height: 7.32%; z-index: 2;"></a>
                 </div>
-                <a href="#none" title="신청하기" style="position: absolute; left: 19.55%; top: 67.51%; width: 39.2%; height: 7.32%; z-index: 2;"></a>
-            </div>        	
-		</div>
+            </div>
+        </form>
 
         <div class="evtCtnsBox wb_02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2423_02.jpg"  alt=""/>
@@ -112,9 +118,7 @@
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                     @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'Y')){{--기존SNS예외처리시--}}
             @endif         
-		</div>    
-
-        
+		</div>
 
         <!--레이어팝업-->
         <div id="popup" class="Pstyle">
@@ -130,8 +134,6 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2423_top_book02.jpg" />
             </div>
         </div>
-
-             
     </div>
     <!-- End Container -->
 
@@ -139,18 +141,58 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script>
-      $( document ).ready( function() {
-        AOS.init();
-      } );
+        $(document).ready(function(){AOS.init();});
 
-    /*레이어팝업*/
-    function go_popup() {
-        $('#popup').bPopup();
-    }
+        // 무료 당첨
+        function fn_add_apply_submit() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
-    function go_popup1() {
-        $('#popup1').bPopup();
-    }
+            var $add_apply_form = $('#add_apply_form');
+            var _url = '{!! front_url('/event/addApplyStore') !!}';
+
+            if (typeof $add_apply_form.find('input[name="add_apply_chk[]"]').val() === 'undefined') {
+                alert('이벤트 기간이 아닙니다.');
+                return;
+            }
+
+            if (!confirm('신청하시겠습니까?')) { return true; }
+            ajaxSubmit($add_apply_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert( getApplyMsg(ret.ret_msg) );
+                    location.reload();
+                }
+            }, function(ret, status, error_view) {
+                alert( getApplyMsg(ret.ret_msg || '') );
+            }, null, false, 'alert');
+        }
+
+        // 이벤트 추가 신청 메세지
+        function getApplyMsg(ret_msg) {
+            {{-- 해당 프로모션 종속 결과 메세지 --}}
+            var apply_msg = '';
+            var arr_apply_msg = [
+                ['이미 신청하셨습니다.','이미 참여하셨습니다.'],
+                ['신청 되었습니다.','당첨을 축하합니다. 장바구니를 확인해 주세요.'],
+                //['이벤트 신청후 이용 가능합니다.','봉투모의고사 신청후 이용 가능합니다.'],
+                ['마감되었습니다.','내일 20시에 다시 도전해 주세요.']
+            ];
+            for (var i = 0; i < arr_apply_msg.length; i++) {
+                if(arr_apply_msg[i][0] == ret_msg) {
+                    apply_msg = arr_apply_msg[i][1];
+                }
+            }
+            if(apply_msg == '') apply_msg = ret_msg;
+            return apply_msg;
+        }
+
+        /*레이어팝업*/
+        function go_popup() {
+            $('#popup').bPopup();
+        }
+
+        function go_popup1() {
+            $('#popup1').bPopup();
+        }
     </script>
 
 @stop

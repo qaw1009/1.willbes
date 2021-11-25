@@ -162,10 +162,10 @@
 			<img src="https://static.willbes.net/public/images/promotion/2020/10/wb_police.jpg"  alt="경찰학원부문 1위" />
 		</div>
 
-        <div class="evtCtnsBox evt_top" data-aos="fade-up"> 
+        <div class="evtCtnsBox evt_top"> 
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_top.jpg" alt="">
-            <div class="ani" data-aos="flip-left">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_top_img.png" alt="">
+            <div class="ani">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_top_img.png" alt="" data-aos="zoom-in">
             </div>
         </div>
 
@@ -175,7 +175,7 @@
 		</div>
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2405_02.jpg" title="팩트체크" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_02.jpg" title="팩트체크" >
             <div class="evtCtnsBox wb_tab">
                 <div class="tabContaier">    
                     <ul>    
@@ -184,16 +184,16 @@
                     </ul>
                 </div>                
                 <div id="tab1" class="tabContents">       
-                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2405_02_01.jpg" title="2022년도 경찰과목 개편"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_02_01.jpg" title="2022년도 경찰과목 개편"/>
                 </div>
                 <div id="tab2" class="tabContents">       
-                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2405_02_02.jpg" title="2022년도 출제비율"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_02_02.jpg" title="2022년도 출제비율"/>
                 </div> 
             </div>     
         </div>
 
         <div class="evtCtnsBox wb_03" >
-			<img src="https://static.willbes.net/public/images/promotion/2021/11/2405_03.jpg"  alt="new" />
+			<img src="https://static.willbes.net/public/images/promotion/2021/11/2429_03.jpg"  alt="new" />
             <div class="evtCtnsBox wb_tab">
                 <div class="tabContaier2">    
                     <ul>    
@@ -205,19 +205,19 @@
                     </ul>
                 </div>                
                 <div id="tab01" class="tabContents2">       
-                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2405_03_01.jpg" title="경찰전문가"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_03_01.jpg" title="경찰전문가"/>
                 </div>
                 <div id="tab02" class="tabContents2">       
-                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2405_03_02.jpg" title="위치확인"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_03_02.jpg" title="위치확인"/>
                 </div> 
                 <div id="tab03" class="tabContents2">       
-                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2405_03_03.jpg" title="학습점검"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_03_03.jpg" title="학습점검"/>
                 </div>
                 <div id="tab04" class="tabContents2">       
-                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2405_03_04.jpg" title="업그레이드"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_03_04.jpg" title="업그레이드"/>
                 </div> 
                 <div id="tab05" class="tabContents2">       
-                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2405_03_05.jpg" title="누구나 쉽게"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_03_05.jpg" title="누구나 쉽게"/>
                 </div>
             </div>     
 		</div>
@@ -231,7 +231,7 @@
        
 		<div class="evtCtnsBox wb_05" id="table">			
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2405_05.jpg"  alt="시간표 및 장소" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_05.jpg"  alt="시간표 및 장소" />
                 <p class="NSK-Black">2022년대비 <strong>전국모의고사</strong> 시험문의</p>
                 <ul>
                     <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="노량진" onmouseover="$('span.area01').addClass('on');" onmouseleave="$('span.area01').removeClass('on');">신청하기</a></li>
@@ -258,14 +258,14 @@
 
 		<div class="evtCtnsBox wb_06" id="evt_02">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_05.jpg"  alt="전국모의고사 이벤트"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_06.jpg"  alt="전국모의고사 이벤트"/>
                 <a href="javascript:;" onclick="giveCheck()" title="쿠폰받기" style="position: absolute;  left: 32.14%; top: 86.53%; width: 35.36%; height: 6.06%; z-index: 2;"></a>                
             </div> 
 		</div>
 
         <div class="evtCtnsBox">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_06.jpg"  alt="전국모의고사 이벤트"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_07.jpg"  alt="전국모의고사 이벤트"/>
                 <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지다운" style="position: absolute; left: 26.88%; top: 63.46%; width: 47.5%; height: 12.84%; z-index: 2;"></a> 
             </div>
 		</div>
@@ -277,7 +277,7 @@
 
         <div class="evtCtnsBox wb_07">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_07.jpg"  alt="전국모의고사 신청하기" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_08.jpg"  alt="전국모의고사 신청하기" />
                 <a href="https://police.willbes.net/pass/mockTest/apply/cate" target="_blank" title="신청하기" style="position: absolute; left: 28.75%; top: 78.49%; width: 42.59%; height: 8.72%; z-index: 2;"></a>
             </div>     
 		</div>           

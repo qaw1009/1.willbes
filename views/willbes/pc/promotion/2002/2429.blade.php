@@ -18,7 +18,7 @@
 
         /************************************************************/
 
-        .sky {position:fixed;  top:200px; right:10px; z-index:10;}
+        .sky {position:fixed; top:200px; right:10px; z-index:10;}
         .sky a {display:block; margin-bottom:15px}
         
         .wb_police {background:#0A0A0A}
@@ -129,8 +129,8 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
-            <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/11/2429_sky01.jpg" alt="일정안내" ></a>
-            <a href="#evt_02"><img src="https://static.willbes.net/public/images/promotion/2021/11/2429_sky02.jpg" alt="신청하기" ></a>
+            <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/11/2429_sky01.png" alt="일정안내" ></a>
+            <a href="#evt_02"><img src="https://static.willbes.net/public/images/promotion/2021/11/2429_sky02.png" alt="신청하기" ></a>
         </div>        
 
         <!-- 타이머 -->

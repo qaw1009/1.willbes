@@ -169,12 +169,12 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_01" >
+        <div class="evtCtnsBox wb_01" data-aos="fade-up">
 			<img src="https://static.willbes.net/public/images/promotion/2021/11/2429_01.jpg"  alt="커밍쑨"/>
             <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/Ks0XNnezIGQ?rel=0"></iframe>            
 		</div>
 
-        <div class="evtCtnsBox wb_02">
+        <div class="evtCtnsBox wb_02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_02.jpg" title="팩트체크" >
             <div class="evtCtnsBox wb_tab">
                 <div class="tabContaier">    
@@ -192,7 +192,7 @@
             </div>     
         </div>
 
-        <div class="evtCtnsBox wb_03" >
+        <div class="evtCtnsBox wb_03" data-aos="fade-up">
 			<img src="https://static.willbes.net/public/images/promotion/2021/11/2429_03.jpg"  alt="new" />
             <div class="evtCtnsBox wb_tab">
                 <div class="tabContaier2">    
@@ -222,14 +222,14 @@
             </div>     
 		</div>
 
-        <div class="evtCtnsBox wb_04" id="evt_01" >
+        <div class="evtCtnsBox wb_04" id="evt_01" data-aos="fade-up" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_04.jpg"  alt="시간표 및 응시안내" />
                 <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=355437" target="_blank" title="시험응시방법" style="position: absolute; left: 25.89%; top: 84.48%; width: 47.95%; height: 5.59%; z-index: 2;"></a>
             </div>
 		</div>
        
-		<div class="evtCtnsBox wb_05" id="table">			
+		<div class="evtCtnsBox wb_05" id="table" data-aos="fade-up">			
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_05.jpg"  alt="시간표 및 장소" />
                 <p class="NSK-Black">2022년대비 <strong>전국모의고사</strong> 시험문의</p>
@@ -256,7 +256,7 @@
 			</div>
 		</div>        
 
-		<div class="evtCtnsBox wb_06" id="evt_02">
+		<div class="evtCtnsBox wb_06" id="evt_02" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_06.jpg"  alt="전국모의고사 이벤트"/>
                 <a href="javascript:;" onclick="giveCheck()" title="쿠폰받기" style="position: absolute;  left: 32.14%; top: 86.53%; width: 35.36%; height: 6.06%; z-index: 2;"></a>                
@@ -275,7 +275,7 @@
             @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif 
 
-        <div class="evtCtnsBox wb_07">
+        <div class="evtCtnsBox wb_07" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2429_08.jpg"  alt="전국모의고사 신청하기" />
                 <a href="https://police.willbes.net/pass/mockTest/apply/cate" target="_blank" title="신청하기" style="position: absolute; left: 28.75%; top: 78.49%; width: 42.59%; height: 8.72%; z-index: 2;"></a>

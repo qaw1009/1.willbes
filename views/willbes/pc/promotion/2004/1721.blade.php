@@ -98,7 +98,7 @@
 
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB&subject_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/1721_sky_title.png" alt=""></a>
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB&subject_idx=1314" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/1721_sky1.png" alt=""></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE6riw" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/1721_sky1.png" alt=""></a>
             <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB&subject_idx=1339" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/1721_sky2.png" alt=""></a>
             <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB&subject_idx=1341" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/1721_sky3.png" alt=""></a>
         </div>

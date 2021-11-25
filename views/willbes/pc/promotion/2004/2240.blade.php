@@ -119,9 +119,9 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
-            <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/09/2241_sky.png" alt="7월 new"></a>
+            <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/2240_sky.png" alt="7월 new"></a>
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky2.png" alt="새벽모의고사"></a>
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3046&campus_ccd=605001&search_text=UHJvZE5hbWU67Ius7ZmU7J2066Gg" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_sky5.png" alt="세무직"></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3046&campus_ccd=605001&search_text=UHJvZE5hbWU66riw7Lac66y47KCc7ZKA7J20" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_sky5.png" alt="세무직"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            

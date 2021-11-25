@@ -36,6 +36,12 @@
         .evt03 .entry td {text-align:left; color:#676767}
         .evt03 .entry input,
         .evt03 .entry select {width:100%}
+        .evt03 .entry input::-webkit-input-placeholder {
+        color: #ccc;
+        }
+        .evt03 .entry input:-moz-placeholder {
+        color: #ccc;
+        }
 
         .evt04 {background:#dbf1e5}
 

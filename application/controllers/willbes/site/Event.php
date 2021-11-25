@@ -281,8 +281,7 @@ class Event extends \app\controllers\FrontController
                 'a.BmIdx' => $this->eventFModel->_bm_idx,
                 'a.IsStatus' => 'Y',
                 'a.RegType' => '1',
-                'a.SiteCode' => $this->_site_code,
-                'b.CateCode' => element('cate_code', $arr_input),
+                'a.SiteCode' => $this->_site_code
             ]
         ];
 
@@ -290,8 +289,7 @@ class Event extends \app\controllers\FrontController
             'EQ' => [
                 'a.ElIdx' => element('event_idx', $arr_input),
                 'a.IsStatus' => 'Y',
-                'b.SiteCode' => $this->_site_code,
-                'c.CateCode' => element('cate_code', $arr_input),
+                'b.SiteCode' => $this->_site_code
             ]
         ];
 

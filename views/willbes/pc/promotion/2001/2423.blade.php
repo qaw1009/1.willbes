@@ -34,7 +34,7 @@
         .wb_01 {background:url(https://static.willbes.net/public/images/promotion/2021/11/2423_01_bg.jpg) no-repeat center top;}
         .wb_01 .attend {position:absolute; top:496px; left:50%; width:688px; margin-left:-465px; z-index:1; display: flex; justify-content: space-between; flex-wrap: wrap;}
         .wb_01 .attend span {background:url(https://static.willbes.net/public/images/promotion/2021/11/2423_ch.png) no-repeat center top; width:128px; height:128px;
-        font-size:20px; padding-top:22px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color:#4f4f4f; margin-bottom:10px}
+        font-size:18px; padding-top:30px; font-family: Impact,  "Noto Sans KR Regular", Haettenschweiler, 'Arial Narrow Bold', sans-serif; color:#4f4f4f; margin-bottom:10px}
         .wb_01 .attend span.end {background-image:url(https://static.willbes.net/public/images/promotion/2021/11/2423_ch_off.png); font-size:0}
 
         .wb_02 {background:url(https://static.willbes.net/public/images/promotion/2021/11/2423_02_bg.jpg) no-repeat center top;}
@@ -58,7 +58,11 @@
         .Pstyle .content {height:auto; width:auto;}
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">      
+    <div class="p_re evtContent NSK" id="evtContainer">   
+        <div class="skybanner" id="QuickMenu">
+            <a href="https://www.youtube.com/channel/UCDjImsjLcG6H9y9jonFF84Q" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/2423_sky.png" alt="교수소개" ></a>
+        </div> 
+
         <div class="evtCtnsBox evt00">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>    
@@ -67,7 +71,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2423_top.jpg" alt=""/>
             <div class="star" data-aos="flip-left"><img src="https://static.willbes.net/public/images/promotion/2021/11/2423_top_img01.png" alt=""/></div>
             <div class="youtube" data-aos="fade-right">
-                <iframe src="https://www.youtube.com/embed/B_SpAwQNwio?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/MXc16mDNVPk?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="book p_re" data-aos="fade-left">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2423_top_img03.png" alt="">

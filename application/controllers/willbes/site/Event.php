@@ -617,24 +617,17 @@ class Event extends \app\controllers\FrontController
             ]
         ];
 
-        $sub_query_condition = [
-            'EQ' => [
-                'B.IsStatus' => 'Y',
-                'B.CateCode' => $this->_cate_code
-            ]
-        ];
-
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;
         } else {
             $paging_count = $this->_paging_count_m;
         }
 
-        $total_rows = $this->eventFModel->listAllEvent(true, $arr_condition, $sub_query_condition);
+        $total_rows = $this->eventFModel->listAllEvent(true, $this->_cate_code, $arr_condition);
         $paging = $this->pagination($arr_base['page_url'].'?' . $get_page_params, $total_rows, $this->_paging_limit, $paging_count, true);
 
         if ($total_rows > 0) {
-            $list = $this->eventFModel->listAllEvent(false, $arr_condition, $sub_query_condition, $paging['limit'], $paging['offset'], ['A.IsBest' => 'DESC', 'A.ElIdx' => 'DESC']);
+            $list = $this->eventFModel->listAllEvent(false, $this->_cate_code, $arr_condition, $paging['limit'], $paging['offset'], ['A.IsBest' => 'DESC', 'A.ElIdx' => 'DESC']);
         }
 
         $this->load->view('site/event/index' . $file_type, [
@@ -694,24 +687,17 @@ class Event extends \app\controllers\FrontController
             ]
         ];
 
-        $sub_query_condition = [
-            'EQ' => [
-                'B.IsStatus' => 'Y',
-                'B.CateCode' => $this->_cate_code
-            ]
-        ];
-
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;
         } else {
             $paging_count = $this->_paging_count_m;
         }
 
-        $total_rows = $this->eventFModel->listAllEvent(true, $arr_condition, $sub_query_condition);
+        $total_rows = $this->eventFModel->listAllEvent(true, $this->_cate_code, $arr_condition);
         $paging = $this->pagination($arr_base['page_url'].'?' . $get_page_params, $total_rows, $this->_paging_limit, $paging_count, true);
 
         if ($total_rows > 0) {
-            $list = $this->eventFModel->listAllEvent(false, $arr_condition, $sub_query_condition, $paging['limit'], $paging['offset'], ['A.IsBest' => 'DESC', 'A.ElIdx' => 'DESC']);
+            $list = $this->eventFModel->listAllEvent(false, $this->_cate_code, $arr_condition, $paging['limit'], $paging['offset'], ['A.IsBest' => 'DESC', 'A.ElIdx' => 'DESC']);
         }
 
         $this->load->view('site/event/index' . $file_type, [
@@ -762,24 +748,17 @@ class Event extends \app\controllers\FrontController
             ],
         ];
 
-        $sub_query_condition = [
-            'EQ' => [
-                'B.IsStatus' => 'Y',
-                'B.CateCode' => $this->_cate_code
-            ]
-        ];
-
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;
         } else {
             $paging_count = $this->_paging_count_m;
         }
 
-        $total_rows = $this->eventFModel->listAllEvent(true, $arr_condition, $sub_query_condition);
+        $total_rows = $this->eventFModel->listAllEvent(true, $this->_cate_code, $arr_condition);
         $paging = $this->pagination($arr_base['page_url'].'?' . $get_page_params, $total_rows, $this->_paging_limit, $paging_count, true);
 
         if ($total_rows > 0) {
-            $list = $this->eventFModel->listAllEvent(false, $arr_condition, $sub_query_condition, $paging['limit'], $paging['offset'], ['A.IsBest' => 'DESC', 'A.ElIdx' => 'DESC']);
+            $list = $this->eventFModel->listAllEvent(false, $this->_cate_code, $arr_condition, $paging['limit'], $paging['offset'], ['A.IsBest' => 'DESC', 'A.ElIdx' => 'DESC']);
         }
 
         $this->load->view('site/event/index_v2', [

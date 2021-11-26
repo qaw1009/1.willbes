@@ -126,7 +126,7 @@ class EventFModel extends WB_Model
         $this->load->loadModels(['crm/smsF', 'pointF', 'order/orderF', 'order/cartF']);
     }
 
-    public function listAllEvent($is_count, $arr_condition=[], $sub_query_condition, $limit = null, $offset = null, $order_by = [])
+    public function listAllEvent($is_count, $cate_code = null, $arr_condition=[], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -136,8 +136,7 @@ class EventFModel extends WB_Model
             A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequestType, A.EventName, A.Link,
             A.RegisterStartDate, A.RegisterEndDate, DATE_FORMAT(A.RegisterStartDate, \'%Y-%m-%d\') AS RegisterStartDay, DATE_FORMAT(A.RegisterEndDate, \'%Y-%m-%d\') AS RegisterEndDay,
             A.OptionCcds, A.ReadCnt + A.AdjuReadCnt AS ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
-            G.SiteName, fn_ccd_name(A.CampusCcd) AS CampusName, D.CateCode,
-            K.FileFullPath, K.FileName,
+            G.SiteName, fn_ccd_name(A.CampusCcd) AS CampusName, K.FileFullPath, K.FileName,
             CASE A.RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequestTypeName,
             CASE A.IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
             CASE A.TakeType WHEN 1 THEN \'회원\' WHEN 2 THEN \'회원+비회원\' END AS TakeTypeName,
@@ -147,28 +146,22 @@ class EventFModel extends WB_Model
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
-        $sub_query_where = $this->_conn->makeWhere($sub_query_condition);
-        $sub_query_where = $sub_query_where->getMakeWhere(false);
-
         $from = "
             FROM {$this->_table['event_lecture']} AS A
-            INNER JOIN (
-                SELECT B.ElIdx, GROUP_CONCAT(CONCAT(C.CateName,'[',B.CateCode,']')) AS CateCode
-                FROM {$this->_table['event_r_category']} AS B
-                INNER JOIN {$this->_table['sys_category']} AS C ON B.CateCode = C.CateCode AND B.IsStatus = 'Y'
-                {$sub_query_where}
-                GROUP BY B.ElIdx
-            ) AS D ON A.ElIdx = D.ElIdx
-            LEFT JOIN {$this->_table['event_file']} AS K ON A.ElIdx = K.ElIdx AND K.IsUse = 'Y' AND K.FileType = 'S'
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
+            LEFT JOIN {$this->_table['event_file']} AS K ON A.ElIdx = K.ElIdx AND K.IsUse = 'Y' AND K.FileType = 'S'
         ";
+
+        if (empty($cate_code) === false) {
+            $from .= "INNER JOIN lms_event_r_category AS D ON A.ElIdx = D.ElIdx AND D.CateCode = ? AND D.IsStatus = 'Y'";
+        }
 
         $default_arr_condition = ['NOT' => ['a.RequestType' => '5']];
         $arr_condition = array_merge_recursive($arr_condition, $default_arr_condition);
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$cate_code]);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 

@@ -1010,16 +1010,7 @@ class Home extends \app\controllers\FrontController
                 'A.RegisterEndDate' => date('Y-m-d H:i') . ':00'
             ]
         ];
-
-        $sub_query_condition = [
-            'EQ' => [
-                'B.IsStatus' => 'Y',
-                'B.CateCode' => $cate_code
-            ]
-        ];
-
-        $data = $this->eventFModel->listAllEvent(false, $arr_condition, $sub_query_condition, $limit_cnt, 0, $order_by);
-
+        $data = $this->eventFModel->listAllEvent(false, $cate_code, $arr_condition, $limit_cnt, 0, $order_by);
         return $data;
     }
 

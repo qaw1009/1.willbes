@@ -9,8 +9,8 @@
     .evtCtnsBox .wrap {margin:0 auto; position:relative}
     /*.evtCtnsBox a {border:1px solid #000}*/
 
-    .evt03 {background:#010111}
     .slide_con {padding:0 30px 30px}
+    .slide_con img {width:290px;margin:0 auto;}
     .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0}
     .slide_con .bx-wrapper .bx-pager {
         width: auto;

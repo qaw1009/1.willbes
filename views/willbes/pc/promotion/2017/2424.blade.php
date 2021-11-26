@@ -19,6 +19,9 @@
         /*.evtCtnsBox .wrap a:hover {border:1px solid #000}*/
 
         /************************************************************/
+
+        .sky {position:fixed; top:200px; right:10px; z-index:10;}
+        .sky a {display:block; margin-bottom:15px}
   
         .eventTop {background:url(https://static.willbes.net/public/images/promotion/2021/11/2424_top_bg.jpg) no-repeat center top;}
         
@@ -52,6 +55,11 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
+        <div class="sky" id="QuickMenu">
+            <a href="#evt03"><img src="https://static.willbes.net/public/images/promotion/2021/11/2424_sky01.png" alt="일정안내" ></a>
+            <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2021/11/2424_sky02.png" alt="신청하기" ></a>
+        </div>  
+
         <div class="evtCtnsBox eventTop">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2424_top.jpg" alt="퀵 서머리 한정판매"/>
@@ -81,7 +89,7 @@
             <input type="hidden" name="target_params_item[]" value="false"/>
             <input type="hidden" name="target_params_item[]" value="false"/>
             <input type="hidden" name="register_type" value="promotion"/>
-            <div class="evtCtnsBox evt03 p_re">
+            <div class="evtCtnsBox evt03 p_re" id="evt03">
                 <div class="entry">
                     <table>
                         <col width="180"/>
@@ -135,7 +143,7 @@
             </div>
         </form>
 
-        <div class="evtCtnsBox evt04">
+        <div class="evtCtnsBox evt04" id="evt04">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2424_04.jpg" alt="퀵 서머리 특징"/>
         </div>
 

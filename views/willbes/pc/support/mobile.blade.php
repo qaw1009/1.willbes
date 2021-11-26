@@ -26,8 +26,8 @@
                                 <li class="w-m-guide2"><a class="qBox" href="#m_guide2"><span>모바일 수강전용 앱</span></a></li>
                             </ul>
                             <div class="tabBox mt60">
-                                <div id="m_guide1" class="tabContent"><img src="{{ img_url('cs/willbes_m_guide01.jpg') }}" alt="모바일 웹"></div>
-                                <div id="m_guide2" class="tabContent"><img src="{{ img_url('cs/willbes_m_guide02.jpg') }}" alt="모바일 수강전용 앱"></div>
+                                <div id="m_guide1" class="tabContent"><img src="https://static.willbes.net/public/images/promotion/sub/cs/willbes_m_guide01.jpg" alt="모바일 웹"></div>
+                                <div id="m_guide2" class="tabContent"><img src="https://static.willbes.net/public/images/promotion/sub/cs/willbes_m_guide02.jpg" alt="모바일 수강전용 앱"></div>
                             </div>
                         </div>
                         @endif

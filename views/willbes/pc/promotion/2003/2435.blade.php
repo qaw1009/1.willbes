@@ -41,10 +41,10 @@
 
         .wb_02 {position:relative;background:url(https://static.willbes.net/public/images/promotion/2021/11/2435_02_bg.jpg) no-repeat center top;}
         
-        .rulletBox {position:absolute; top:350px; width:810px; left:50%; margin-left:-405px; z-index:5}
-        .rulletBox .btn-roulette {position:absolute; top:365px; width:255px; 
+        .rulletBox {position:absolute; top:450px; width:810px; left:50%; margin-left:-405px; z-index:5}
+        .rulletBox .btn-roulette {position:absolute; top:275px; width:255px; 
             height:255px; left:50%; padding:0; margin:0; margin-left:-127.5px; background:none; z-index:6}
-        .rulletBox a {position:absolute; top:650px; left:700px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 
+        .rulletBox a {position:absolute; top:550px; left:700px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 
             border-radius:40px;
             border:10px solid #000; z-index:6}
         .rulletBox a:hover {background:#2f1cc5; color:#fff}

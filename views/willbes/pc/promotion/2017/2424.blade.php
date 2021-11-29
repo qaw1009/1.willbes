@@ -32,7 +32,7 @@
         .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/11/2424_03_bg.jpg) no-repeat center top;}
 
         .evt03 .entry {width:940px; position:absolute; top:1335px; left:50%; margin-left:-470px; z-index: 10;}
-        .evt03 .entry table {width:500px; border-top:1px solid #c8c8c8; border-right:1px solid #c8c8c8;border-bottom:1px solid #c8c8c8;}
+        .evt03 .entry table {width:500px; border-top:1px solid #c8c8c8; border-right:1px solid #c8c8c8;}
         .evt03 .entry th,
         .evt03 .entry td {padding:17px 15px; font-size:18px; border-bottom:1px solid #c8c8c8; border-left:1px solid #c8c8c8; line-height:1.2}
         .evt03 .entry th {background:#58bb85; color:#fff; font-weight:bold}
@@ -91,6 +91,7 @@
             <input type="hidden" name="register_type" value="promotion"/>
             <div class="evtCtnsBox evt03 p_re" id="evt03">
                 <div class="entry">
+                    {{--
                     <table>
                         <col width="180"/>
                         <col  />
@@ -109,21 +110,20 @@
                             </tr>
                             <tr>
                                 <th>출신학교</th>
-                                {{--<td><input type="text" class="register-data register-text" name="register_data1" autocomplete="off" maxlength="40" placeholder="선택입력"/></td>--}}
+                                <td><input type="text" class="register-data register-text" name="register_data1" autocomplete="off" maxlength="40" placeholder="선택입력"/></td>
                             </tr>
                             <tr>
                                 <th>출신학과</th>
-                                {{--<td><input type="text" class="register-data register-text" name="register_data2" autocomplete="off" maxlength="40" placeholder="선택입력"/></td>--}}
+                                <td><input type="text" class="register-data register-text" name="register_data2" autocomplete="off" maxlength="40" placeholder="선택입력"/></td>
                             </tr>
                             <tr>
                                 <th>응시횟수</th>
-                                {{--<td><input type="text" class="register-data register-text" name="register_data3" autocomplete="off" maxlength="40" placeholder="선택입력"></td>--}}
+                                <td><input type="text" class="register-data register-text" name="register_data3" autocomplete="off" maxlength="40" placeholder="선택입력"></td>
                             <tr>
                                 <th>
                                     희망응시지역
                                     <div class="tx14">(* 필수입력)</div>
-                                </th>
-                                {{--
+                                </th>                               
                                 <td>
                                     <select class="register-data" name="register_chk[]" title="응시지역">
                                         <option value="">응시지역</option>
@@ -131,11 +131,11 @@
                                             <option value="{{$row['ErIdx']}}">{{ $row['Name'] }}</option>
                                         @endforeach
                                     </select>
-                                </td>
-                                --}}
+                                </td>                                
                             </tr>
                         </tbody>
                     </table>
+                    --}}
                 </div>
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2021/11/2424_03.jpg" alt="퀵 서머리 특징"/>

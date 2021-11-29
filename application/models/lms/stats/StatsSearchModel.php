@@ -49,7 +49,7 @@ class StatsSearchModel extends BaseStatsModel
                             from '. $this->_table['search_log'] .' as sl
                             where 
                                 1=1
-                                and sl.MemIdx is not null
+                                and (sl.MemIdx is not null and sl.MemIdx > 0)
                                 '. $search_where .'
                             group by result_date
                         ) as temp_login_search on temp_date.base_date = temp_login_search.result_date
@@ -62,7 +62,7 @@ class StatsSearchModel extends BaseStatsModel
                             from '. $this->_table['search_log'] .' as sl
                             where 
                                 1=1
-                                and sl.MemIdx is null
+                                and (sl.MemIdx is null or sl.MemIdx = 0)
                                 '. $search_where .'
                             group by result_date
                         ) temp_not_search on temp_date.base_date = temp_not_search.result_date
@@ -140,7 +140,6 @@ class StatsSearchModel extends BaseStatsModel
 
         $column = '
                         if(left(sl.UserPlatform,7)=\'Unknown\',\'검색엔진/크롤러\', if(left(sl.UserPlatform,7)=\'\',\'기타\', left(sl.UserPlatform,7))) AS user_platform
-                        #if(sl.UserPlatform =\'Unknown Platform\',\'검색엔진/크롤러\', if(sl.UserPlatform =\'\',\'기타\', sl.UserPlatform)) AS user_platform
                         ,COUNT(*) AS search_count
                         ,sum(ResultCount) as search_result_sum
                        ';
@@ -218,7 +217,7 @@ class StatsSearchModel extends BaseStatsModel
         ';
 
         $group_by = ' group by s.SiteName,sl.SearchWord ';
-        $order_by = ' order by count(*) DESC, SearchWord ASC' ;
+        $order_by = ' order by search_count DESC, search_result_sum DESC, S.SiteCode ASC, SearchWord ASC' ;
         $limit = ' limit 20 ';
 
         return $this->_conn->query('select ' . $column . $from .$group_by .$order_by .$limit)->result_array();
@@ -256,7 +255,7 @@ class StatsSearchModel extends BaseStatsModel
         ';
 
         $group_by = ' group by sl.SearchWord ';
-        $order_by = ' order by count(*) DESC, SearchWord ASC' ;
+        $order_by = ' order by search_count DESC, search_result_sum DESC, SearchWord ASC' ;
         $limit = ' limit 20 ';
 
         return $this->_conn->query('select ' . $column . $from .$group_by .$order_by .$limit)->result_array();
@@ -295,7 +294,7 @@ class StatsSearchModel extends BaseStatsModel
         ';
 
         $group_by = ' group by s.SiteName,sl.SearchWord ';
-        $order_by = ' order by count(*) DESC, SearchWord ASC' ;
+        $order_by = ' order by search_count DESC, search_result_sum DESC, S.SiteCode ASC, SearchWord ASC' ;
         $limit = ' limit 20 ';
 
         return $this->_conn->query('select ' . $column . $from .$group_by .$order_by .$limit)->result_array();
@@ -334,7 +333,7 @@ class StatsSearchModel extends BaseStatsModel
         ';
 
         $group_by = ' group by sl.SearchWord ';
-        $order_by = ' order by count(*) DESC, SearchWord ASC' ;
+        $order_by = ' order by search_count DESC, search_result_sum DESC, SearchWord ASC' ;
         $limit = ' limit 20 ';
 
         return $this->_conn->query('select ' . $column . $from .$group_by .$order_by .$limit)->result_array();

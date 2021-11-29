@@ -64,7 +64,7 @@
 <div id="Container" class="Container NSK c_both">    
 
     <div class="evtCtnsBox" data-aos="fade-down">
-        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_mtop.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_mtop.gif" alt="" >
     </div>
 
     <div class="evtCtnsBox" data-aos="fade-top">

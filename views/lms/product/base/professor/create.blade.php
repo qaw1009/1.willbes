@@ -252,7 +252,8 @@
                     <div class="col-md-10">
                         <div class="radio">
                             @foreach($arr_appellation_ccd as $key => $val)
-                                <input type="radio" id="appellation_ccd_{{$key}}" name="appellation_ccd" value="{{$key}}" class="flat" @if($data['AppellationCcd'] == $key || ($method == 'POST' && $loop->index === 1)) checked="checked" @endif> <label for="appellation_ccd_{{$key}}" class="input-label">{{$val}}</label>
+                                <input type="radio" id="appellation_ccd_{{$key}}" name="appellation_ccd" value="{{$key}}" class="flat" @if($data['AppellationCcd'] == $key || ($method == 'POST' && $loop->index === 1)) checked="checked" @endif> <label for="appellation_ccd_{{$key}}" class="input-label">
+                                    {{$key == '724013' ? '해당없음' : $val}}</label>
                             @endforeach
                         </div>
                     </div>

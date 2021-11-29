@@ -59,7 +59,7 @@
         </div>
 
         <div class="evtCtnsBox wb_top" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_top.jpg" title="겨울나기" />       
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_top.gif" title="겨울나기" />       
         </div>       
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">

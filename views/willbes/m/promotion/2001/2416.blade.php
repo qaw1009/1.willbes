@@ -91,7 +91,7 @@
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m05.jpg" alt="" >
             <a href="javascript:void(0)" title="14일 무료체험" style="position: absolute;left: 2.44%;top: 67.95%;width: 34.78%;height: 19.71%;z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/promotion/index/cate/3001/code/2390" target="_blank" title="신광은 경찰 패스" style="position: absolute;left: 11.44%;top: 91.65%;width: 80.78%;height: 5.71%;z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/promotion/index/cate/3001/code/2390" target="_blank" title="신광은 경찰 패스" style="position: absolute;left: 11.44%;top: 91.65%;width: 80.78%;height: 6.71%;z-index: 2;"></a>
         </div>    
     </div>
 
@@ -99,13 +99,12 @@
         <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m06.jpg" alt="" >        
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m06_btn.jpg" title="플래너 6종 다운로드" />
-            <a href="javascript:alert('PC 사이트를 이용해주세요.\nhttps://police.willbes.net/promotion/index/cate/3001/code/2416')" title="플래너 다운로드" style="position: absolute;left: 29.55%;top: 18.99%;width: 41.3%;height: 31.51%;z-index: 2;"></a>        
+            <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="플래너 다운로드" style="position: absolute;left: 28.55%;top: 16.99%;width: 43.3%;height: 39.51%;z-index: 2;"></a>        
         </div>     
     </div>
 
     <div class="evtCtnsBox" data-aos="fade-top">
-        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07.jpg" alt="" >
-        <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="홍보 이미지 받기" style="position: absolute;left: 28.55%;top: 15.99%;width: 43.3%;height: 40.51%;z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07.jpg" alt="" >        
         <div class="slide_con">
             <ul id="slidesImg2">
                 <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_01.png" alt="" /></li>
@@ -124,8 +123,8 @@
         </div>
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_btn.jpg" title="배경화면 다운로드" />
-            <a href="javascript:alert('PC 사이트를 이용해주세요.\nhttps://police.willbes.net/promotion/index/cate/3001/code/2416')" title="배경화면 다운로드" style="position: absolute;left: 28.55%;top: 16.99%;width: 43.3%;height: 40.51%;z-index: 2;"></a>
-        </div>  
+            <a href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 28.25%;top: 17.99%;width: 44.3%;height: 39.51%;z-index: 2;"></a>
+        </div>
     </div>
 
     <div class="evtCtnsBox evt_m08" data-aos="fade-top">

@@ -58,23 +58,23 @@
             <a href="#evt_03"><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_sky03.png" alt="배경화면"/></a>        
         </div>
 
-        <div class="evtCtnsBox wb_top">
+        <div class="evtCtnsBox wb_top" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_top.jpg" title="겨울나기" />       
         </div>       
 
-        <div class="evtCtnsBox evt01">
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_01.jpg" title="why" />
         </div>
 
-        <div class="evtCtnsBox evt02">
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_02.jpg" title="fast" />
         </div>
 
-        <div class="evtCtnsBox evt03">
+        <div class="evtCtnsBox evt03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_03.jpg" title="이론/기출 학습꿀팁" />
         </div>
 
-        <div class="evtCtnsBox evt04">
+        <div class="evtCtnsBox evt04" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_04.jpg" title="검정제 학습꿀팁" />
                 <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/171830" target="_blank" title="한능검 추천강좌" style="position: absolute;left: 18.55%;top: 73.19%;width: 25.3%;height: 6.51%;z-index: 2;"></a>
@@ -82,7 +82,7 @@
             </div>    
         </div>
 
-        <div class="evtCtnsBox evt05" id="evt_01">
+        <div class="evtCtnsBox evt05" id="evt_01" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_05.jpg" title="14일 패스 무료" />
                 <a href="javascript:void(0)" title="14일 무료체험" style="position: absolute;left: 8.55%;top: 67.99%;width: 29.3%;height: 18.51%;z-index: 2;"></a>
@@ -90,7 +90,7 @@
             </div>   
         </div>
 
-        <div class="evtCtnsBox evt06" id="evt_02">           
+        <div class="evtCtnsBox evt06" id="evt_02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_06.jpg" title="플래너 다운받기" />
             <div class="tabs">
                 <div id="tab01s" class="active">
@@ -142,7 +142,7 @@
             </div>    
         </div>        
 
-        <div class="evtCtnsBox evt07" id="evt_03">
+        <div class="evtCtnsBox evt07" id="evt_03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07.jpg" title="배경화면 다운받기" />
             <div class="slide_con_bg">     
                 <div class="slide_con">
@@ -170,7 +170,7 @@
             </div>  
         </div>
 
-        <div class="evtCtnsBox evt08">
+        <div class="evtCtnsBox evt08" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_08.jpg" title="12월 추천강좌 바로가기" />
             <div class="sTitle NSK-Black">2022대비 온라인 <span>심화기출</span> 신청</div>
             @if(empty($arr_base['display_product_data']) === false)

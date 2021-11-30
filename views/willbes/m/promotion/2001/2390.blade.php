@@ -95,18 +95,11 @@
         </div>
 
         <div class="evtCtnsBox evtTop" data-aos="fade-right">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2390m_top.gif" alt="0원 PASS" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2390m_top.jpg" alt="0원 PASS" >
         </div>
-
-        <div class="evtCtnsBox evtTop" data-aos="fade-right">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2390m_certification.jpg" alt="인증" >
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="인증하기" style="position: absolute;left: 16.44%;top: 71.85%;width: 66.78%;height: 10.71%;z-index: 2;"></a>
-            </div>
-        </div>
-
+        
         <div class="evtCtnsBox evt01" data-aos="fade-left" id="evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2390m_01_01.jpg" alt="" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2390m_01_01.jpg" alt="" >
             <div class="price">
                 <ul>
                     <li><input type="radio" id="y_pkg1" name="y_pkg" value="186995" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청</label></li>                    
@@ -199,7 +192,7 @@
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-left" id="evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2390m_01_01.jpg" alt="" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2390m_01_01.jpg" alt="" >
             <div class="price">
                 <ul>
                     <li><input type="radio" id="y_pkg1" name="y_pkg" value="186995" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청</label></li>                    

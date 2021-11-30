@@ -23,15 +23,15 @@
         
         .evt00 {background:#0a0a0a}
 
-        .evtTop {background:url("https://static.willbes.net/public/images/promotion/2021/10/2390_top_bg.jpg") no-repeat center top;} 
+        .evtTop {background:url("https://static.willbes.net/public/images/promotion/2021/11/2390_top_bg.jpg") no-repeat center top;} 
 
         .certification {background:url("https://static.willbes.net/public/images/promotion/2021/10/2390_certification_bg.jpg") no-repeat center top;}
 
         .evt01 {padding-bottom:100px;}
         .evt01 .passLecBuy {position:relative; width:1120px; margin:0 auto;}
         .evt01 .passLecBuy .price {position:absolute; left:205px; width:250px; text-align:left; line-height:30px; font-size:26px; font-weight:bold; color:#fff; z-index: 2;}
-        .evt01 .passLecBuy .price01 {top:630px}
-        .evt01 .passLecBuy .price02 {top:630px;left:650px;}
+        .evt01 .passLecBuy .price01 {top:640px}
+        .evt01 .passLecBuy .price02 {top:640px;left:650px;}
         .evt01 .passLecBuy .price strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}   
         .evt01 input[type="radio"] {height:26px; width:26px; vertical-align:middle}
         .evt01 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle}
@@ -111,7 +111,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2390_sky01.png" alt="0원 패스">
             </a>  
             <a href="#transfer">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2390_sky02.png" alt="최대 40%">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2390_sky02.png" alt="최대 40%">
             </a>  
         </div>
 
@@ -147,19 +147,12 @@
         </div>
 
         <div class="evtCtnsBox evtTop" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2390_top.gif" alt="0원 패스"/>        
-        </div>
-
-        <div class="evtCtnsBox certification" id="main">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2390_certification.jpg" alt="인증"/>    
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139#go_02" target="_blank" title="인증하기" style="position: absolute;left: 28.89%;top: 68.03%;width: 42.28%;height: 10.34%;z-index: 2;"></a>
-            </div>
-        </div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2390_top.jpg" alt="0원 패스"/>        
+        </div>        
 
         <div class="evtCtnsBox evt01" id="pass">
             <div class="passLecBuy" data-aos="fade-left">            
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2390_01.jpg" alt="신광은경찰PASS">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2390_01.jpg" alt="신광은경찰PASS">
                 <div class="price price01">                    
                     <input type="radio" id="y_pkg1" name="y_pkg" value="186995" data-sale-price="960000"/>                
                     <label for="y_pkg1">22년 2차 PASS 신청</label>
@@ -257,7 +250,7 @@
 
         <div class="evtCtnsBox evt01" id="pass2">
             <div class="passLecBuy" data-aos="fade-left">            
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2390_01.jpg"  alt="신광은경찰PASS">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2390_01.jpg"  alt="신광은경찰PASS">
                 <div class="price price01">                    
                     <input type="radio" id="y_pkg1" name="y_pkg" value="186995" data-sale-price="960000"/>                
                     <label for="y_pkg1">22년 2차 PASS 신청</label>

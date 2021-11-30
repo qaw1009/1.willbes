@@ -104,26 +104,52 @@
     </div>
 
     <div class="evtCtnsBox" data-aos="fade-top">
-        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07.jpg" alt="" >        
-        <div class="slide_con">
-            <ul id="slidesImg2">
-                <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_01.png" alt="" /></li>
-                <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_02.png" alt="" /></li>
-                <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_03.png" alt="" /></li>
-                <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_04.png" alt="" /></li>
-                <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_05.png" alt="" /></li>
-                <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_06.png" alt="" /></li>
-                <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_07.png" alt="" /></li>
-                <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_08.png" alt="" /></li>
-                <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_09.png" alt="" /></li>
-                <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_10.png" alt="" /></li>
-                <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_11.png" alt="" /></li>
-                <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_12.png" alt="" /></li>
-            </ul>
-        </div>
+        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07.jpg" alt="" >
+        <div class="wrap">    
+            <div class="slide_con">
+                <ul id="slidesImg2">
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_01.png" alt="" />
+                        <a href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 28.25%;top: 17.99%;width: 44.3%;height: 39.51%;z-index: 2;"></a>
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_02.png" alt="" />
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_03.png" alt="" />
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_04.png" alt="" />
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_05.png" alt="" />
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_06.png" alt="" />
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_07.png" alt="" />
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_08.png" alt="" />
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_09.png" alt="" />
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_10.png" alt="" />
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_11.png" alt="" />
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_12.png" alt="" />
+                    </li>
+                </ul>
+            </div>
+        </div>    
         <div class="wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_btn.jpg" title="배경화면 다운로드" />
-            <a href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 28.25%;top: 17.99%;width: 44.3%;height: 39.51%;z-index: 2;"></a>
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_btn.jpg" title="배경화면 다운로드" />            
         </div>
     </div>
 

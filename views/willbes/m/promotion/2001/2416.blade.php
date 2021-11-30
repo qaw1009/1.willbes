@@ -99,7 +99,7 @@
         <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m06.jpg" alt="" >
         <div class="wrap">    
             <div class="slide_con">
-                <ul id="slidesImg3">
+                <ul id="slidesImg2">
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m06_nail01.png" alt="" />                          
                     </li>
@@ -128,43 +128,53 @@
         <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07.jpg" alt="" >
         <div class="wrap">    
             <div class="slide_con">
-                <ul id="slidesImg2">
+                <ul id="slidesImg3">
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_01.png" alt="" />
-                        <a href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 28.25%;top: 17.99%;width: 44.3%;height: 39.51%;z-index: 2;"></a>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_01.png" alt="" />
+                        <a href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_02.png" alt="" />
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_02.png" alt="" />
+                        <a href="@if(empty($file_yn) === false && $file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_03.png" alt="" />
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_03.png" alt="" />
+                        <a href="@if(empty($file_yn) === false && $file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_04.png" alt="" />
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_04.png" alt="" />
+                        <a href="@if(empty($file_yn) === false && $file_yn[4] == 'Y') {{ front_url($file_link[4]) }} @else {{ $file_link[4] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_05.png" alt="" />
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_05.png" alt="" />
+                        <a href="@if(empty($file_yn) === false && $file_yn[5] == 'Y') {{ front_url($file_link[5]) }} @else {{ $file_link[5] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_06.png" alt="" />
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_06.png" alt="" />
+                        <a href="@if(empty($file_yn) === false && $file_yn[6] == 'Y') {{ front_url($file_link[6]) }} @else {{ $file_link[6] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_07.png" alt="" />
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_07.png" alt="" />
+                        <a href="@if(empty($file_yn) === false && $file_yn[7] == 'Y') {{ front_url($file_link[7]) }} @else {{ $file_link[7] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_08.png" alt="" />
+                        <a href="@if(empty($file_yn) === false && $file_yn[8] == 'Y') {{ front_url($file_link[8]) }} @else {{ $file_link[8] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_08.png" alt="" />
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_09.png" alt="" />
+                        <a href="@if(empty($file_yn) === false && $file_yn[9] == 'Y') {{ front_url($file_link[9]) }} @else {{ $file_link[9] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_09.png" alt="" />
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_10.png" alt="" />
+                        <a href="@if(empty($file_yn) === false && $file_yn[10] == 'Y') {{ front_url($file_link[10]) }} @else {{ $file_link[10] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_10.png" alt="" />
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_11.png" alt="" />
+                        <a href="@if(empty($file_yn) === false && $file_yn[11] == 'Y') {{ front_url($file_link[11]) }} @else {{ $file_link[11] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_11.png" alt="" />
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m07_12.png" alt="" />
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_12.png" alt="" />
+                        <a href="@if(empty($file_yn) === false && $file_yn[12] == 'Y') {{ front_url($file_link[12]) }} @else {{ $file_link[12] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
                     </li>
                 </ul>
             </div>
@@ -207,7 +217,7 @@
     var $regi_form = $('#regi_form');
     
     $(document).ready(function() {
-        var slidesImg1 = $("#slidesImg3").bxSlider({
+        var slidesImg1 = $("#slidesImg2").bxSlider({
             auto: true,
             speed: 500,
             pause: 4000,
@@ -219,7 +229,7 @@
     });
 
     $(document).ready(function() {
-        var slidesImg1 = $("#slidesImg2").bxSlider({
+        var slidesImg1 = $("#slidesImg3").bxSlider({
             auto: true,
             speed: 500,
             pause: 4000,

@@ -96,7 +96,28 @@
     </div>
 
     <div class="evtCtnsBox" data-aos="fade-top">
-        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m06.jpg" alt="" >        
+        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m06.jpg" alt="" >
+        <div class="wrap">    
+            <div class="slide_con">
+                <ul id="slidesImg3">
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m06_nail01.png" alt="" />                          
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m06_nail02.png" alt="" />  
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m06_nail03.png" alt="" />  
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m06_nail04.png" alt="" />  
+                    </li>
+                    <li>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m06_nail05.png" alt="" />
+                    </li>                  
+                </ul>
+            </div>
+        </div>       
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m06_btn.jpg" title="플래너 6종 다운로드" />
             <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="플래너 다운로드" style="position: absolute;left: 28.55%;top: 16.99%;width: 43.3%;height: 39.51%;z-index: 2;"></a>        
@@ -184,6 +205,18 @@
 <script src="/public/vendor/jquery/bxslider/jquery.bxslider.js"></script>
 <script type="text/javascript">
     var $regi_form = $('#regi_form');
+    
+    $(document).ready(function() {
+        var slidesImg1 = $("#slidesImg3").bxSlider({
+            auto: true,
+            speed: 500,
+            pause: 4000,
+            mode:'horizontal',
+            autoControls: false,
+            controls:false,
+            pager:true,
+        });
+    });
 
     $(document).ready(function() {
         var slidesImg1 = $("#slidesImg2").bxSlider({

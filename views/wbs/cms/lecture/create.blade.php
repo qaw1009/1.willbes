@@ -59,37 +59,19 @@
                     <label class="control-label col-md-2" for="ProfIdx">교수 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 item form-inline">
-                        <select name="ProfIdx[]" id="ProfIdx1" required="required" class="form-control" title="교수1">
-                            <option value="">교수1</option>
-                            @foreach($prof_list as $row)
-                            <option value="{{$row['wProfIdx']}}"
-                                @foreach($data_prof as $data_row )
-                                    @if($data_row['wOrderNum'] =='1' && $data_row['wProfIdx'] == $row['wProfIdx'])selected="selected"@endif
+                        @for($i = 1; $i <= 4; $i++)
+                            <select name="ProfIdx[]" id="ProfIdx{{$i}}" required="required" class="form-control" title="교수{{$i}}">
+                                <option value="">교수{{$i}}</option>
+                                @foreach($prof_list as $row)
+                                    <option value="{{$row['wProfIdx']}}"
+                                            @foreach($data_prof as $data_row )
+                                                @if($data_row['wOrderNum'] == $i && $data_row['wProfIdx'] == $row['wProfIdx'])selected="selected"@endif
+                                            @endforeach
+                                    >{{$row['wProfName']}} [ {{ $row['wProfIdx'] }} ]</option>
                                 @endforeach
-                            >{{$row['wProfName']}} [ {{ $row['wProfIdx'] }} ]</option>
-                            @endforeach
-                        </select>
-                        <select name="ProfIdx[]" id="ProfIdx2" class="form-control" title="교수2">
-                            <option value="">교수2</option>
-                            @foreach($prof_list as $row)
-                            <option value="{{$row['wProfIdx']}}"
-                                @foreach($data_prof as $data_row )
-                                    @if($data_row['wOrderNum'] =='2' && $data_row['wProfIdx'] == $row['wProfIdx'])selected="selected"@endif
-                                @endforeach
-                            >{{$row['wProfName']}} [ {{ $row['wProfIdx'] }} ]</option>
-                            @endforeach
-                        </select>
-                        <select name="ProfIdx[]" id="ProfIdx3" class="form-control" title="교수3">
-                            <option value="">교수3</option>
-                            @foreach($prof_list as $row)
-                            <option value="{{$row['wProfIdx']}}"
-                                @foreach($data_prof as $data_row )
-                                    @if($data_row['wOrderNum'] =='3' && $data_row['wProfIdx'] == $row['wProfIdx'])selected="selected"@endif
-                                @endforeach
-                            >{{$row['wProfName']}} [ {{ $row['wProfIdx'] }} ]</option>
-                            @endforeach
-                        </select>
-                         • 다수의 교수가 강의한 마스터강의의 경우 3명까지 선택 가능
+                            </select>
+                        @endfor
+                        • 다수의 교수가 강의한 마스터강의의 경우 4명까지 선택 가능
                     </div>
                 </div>
                 <div class="form-group">

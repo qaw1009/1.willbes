@@ -132,7 +132,6 @@
                     @for($i=1;$i<=12;$i++)
                         <li>
                             <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_{{(strlen($i) > 1 ? '' : '0').$i}}.png" alt="" />
-                            <a href="{{ (empty($file_yn) === false && $file_yn[$i] == 'Y' ? front_url($file_link[$i]) : $file_link[$i]) }}" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
                             <a href="{{ (sess_data('is_login') === false ? 'javascript:void(0);' : (empty($file_yn) === false && $file_yn[$i] == 'Y' ? front_url($file_link[$i]) : $file_link[$i])) }}"
                                onclick="{{ (sess_data('is_login') === false ? 'javascript:alert(\'로그인 후 이용해주세요.\'); return false;' : '') }}" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
                         </li>

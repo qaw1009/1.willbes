@@ -120,7 +120,7 @@
         </div>       
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_m06_btn.jpg" title="플래너 6종 다운로드" />
-            <a href="{{ (empty($file_yn) === false && $file_yn[0] == 'Y' ? front_url($file_link[0]) : $file_link[0]) }}" title="플래너 다운로드" style="position: absolute;left: 28.55%;top: 16.99%;width: 43.3%;height: 39.51%;z-index: 2;"></a>
+            <a href="{{ (empty($file_yn) === false && $file_yn[0] == 'Y' ? front_url($file_link[0]) : $file_link[0]) }}" title="플래너 다운로드" style="position: absolute;left: 28.55%;top: 16.99%;width: 43.3%;height: 39.51%;z-index: 2;" target="_blank"></a>
         </div>     
     </div>
 

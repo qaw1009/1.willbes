@@ -42,7 +42,10 @@
         </div>
 
         <div class="evtCtnsBox">
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2431_01.jpg" alt="" />
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/2431_01.jpg" alt="" />
+                <a href="https://cafe.daum.net/LAW-KDJTEAM" target="_blank" title="김동진 법원팀 카페" style="position: absolute;left: 56.7%;top: 79.04%;width: 21.53%;height: 1.83%;z-index: 2;"></a>
+            </div>
         </div>  
         
         <div class="evtCtnsBox evt_02">

@@ -60,7 +60,7 @@
                     </label>
                     <div class="col-md-10 item form-inline">
                         @for($i = 1; $i <= 4; $i++)
-                            <select name="ProfIdx[]" id="ProfIdx{{$i}}" required="required" class="form-control" title="교수{{$i}}">
+                            <select name="ProfIdx[]" id="ProfIdx{{$i}}" @if($i === 1) required="required" @endif class="form-control" title="교수{{$i}}">
                                 <option value="">교수{{$i}}</option>
                                 @foreach($prof_list as $row)
                                     <option value="{{$row['wProfIdx']}}"

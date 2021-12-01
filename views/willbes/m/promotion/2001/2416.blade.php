@@ -42,7 +42,7 @@
     .tabs li {display:inline; float:left;padding-right:20px;}  
     .tabs ul:after {content:""; display:block; clear:both}
 
-    .evt_m08 .sTitle {margin:50px 0 30px; font-size:20px; text-align:left; color:#464646}
+    .evt_m08 .sTitle {margin:50px 0 30px; font-size:20px; text-align:center; color:#464646}
     .evt_m08 span {vertical-align:top;}
 
     /* 폰 가로, 태블릿 세로*/

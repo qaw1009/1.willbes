@@ -7,21 +7,11 @@ require_once APPPATH . 'third_party/crontask/tasks/Task.php';
 
 class MemberPointExpireTask extends \crontask\tasks\Task
 {
-    /**
-     * @var \CI_DB_query_builder
-     */
-    private $_db;
-
     public function __construct()
     {
         parent::__construct();
 
-        $this->_db = $this->_CI->load->database('lms', true);
-    }
-
-    public function __destruct()
-    {
-        $this->_db->close();
+        $this->setLogId('MPE');     // cron 실행로그 작업구분 컬럼값
     }
 
     /**
@@ -30,8 +20,10 @@ class MemberPointExpireTask extends \crontask\tasks\Task
      */
     public function run()
     {
+        $_db = $this->_CI->load->database('lms', true);
+
         try {
-            $query = $this->_db->query('call sp_member_point_expire');
+            $query = $_db->query('call sp_member_point_expire');
             $result = $query->row(0);
 
             $this->setOutput('MemberPointExpireTask complete.');
@@ -41,6 +33,8 @@ class MemberPointExpireTask extends \crontask\tasks\Task
             $this->setOutput('MemberPointExpireTask error occured. [' . $e->getMessage() . ']');
 
             return 'Error (0)';
+        } finally {
+            $_db->close();
         }
     }
 }

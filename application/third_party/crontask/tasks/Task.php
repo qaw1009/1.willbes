@@ -31,6 +31,11 @@ abstract class Task implements TaskInterface
     protected $output;
 
     /**
+     * @var string
+     */
+    protected $log_id;
+
+    /**
      * Task constructor.
      */
     public function __construct()
@@ -124,5 +129,26 @@ abstract class Task implements TaskInterface
         $cron = CronExpression::factory($expression);
 
         return $cron->isDue();
+    }
+
+    /**
+     * Set log id from the task
+     * @param string $log_id
+     * @return Task $this
+     */
+    public function setLogId($log_id)
+    {
+        $this->log_id = $log_id;
+
+        return $this;
+    }
+
+    /**
+     * Get log id
+     * @return string
+     */
+    public function getLogId()
+    {
+        return $this->log_id;
     }
 }

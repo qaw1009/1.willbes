@@ -10,10 +10,8 @@ class MockGradeMakeTask extends \crontask\tasks\Task
     public function __construct()
     {
         parent::__construct();
-    }
 
-    public function __destruct()
-    {
+        $this->setLogId('MGM');     // cron 실행로그 작업구분 컬럼값
     }
 
     /**

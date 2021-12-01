@@ -87,14 +87,22 @@ class Scheduler
                     // create lock file
                     $this->_createLockFile($task_id);
 
+                    // start time
+                    $start_time = microtime(true);
+
                     // run task
                     $result = $task->run();
 
+                    // run time
+                    $run_time = round(microtime(true) - $start_time, 2);
+
                     // set output
                     $output[] = [
-                        'task'   => get_class($task),
-                        'output' => $task->getOutput(),
-                        'result' => $result,
+                        'task'      => get_class($task),
+                        'output'    => $task->getOutput(),
+                        'result'    => $result,
+                        'logid'     => $task->getLogId(),
+                        'runtime'   => $run_time
                     ];
 
                     // remove lock file
@@ -104,6 +112,7 @@ class Scheduler
         }
 
         $this->_writeLog($output);
+        $this->_writeDBLog($output);
 
         return $output;
     }
@@ -155,6 +164,45 @@ class Scheduler
         if (empty($output) === false) {
             $log_path = $this->logFileDir . 'log-' . date('Y-m-d') . '.log';
             logger('Cron run log', $output, 'debug', $log_path);
+        }
+
+        return null;
+    }
+
+    /**
+     * Write DB log
+     * @param array $output
+     * @return null
+     */
+    private function _writeDBLog($output = [])
+    {
+        if (empty($output) === true) {
+            return null;
+        }
+
+        $_db = $this->_CI->load->database('lms', true);
+        $_table = 'lms_cron_exec_log';
+        $today = date('Ymd');
+
+        try {
+            foreach ((array) $output as $row) {
+                $data = [
+                    'TaskType' => get_var($row['logid'], 'NOS'),
+                    'ExecDate' => $today,
+                    'RunTime' => $row['runtime'],
+                    'ResultCode' => (stripos($row['result'], 'Err') !== false ? 'N' : 'Y'),
+                    'ResultMsg' => $row['output'] . '(' . $row['result'] . ')',
+                    'RegAdminIdx' => '1005'
+                ];
+
+                if ($_db->set($data)->insert($_table) === false) {
+                    throw new \Exception('Failed to write db log.');
+                }
+            }
+        } catch (\Exception $e) {
+            $this->_writeLog($e->getMessage());
+        } finally {
+            $_db->close();
         }
 
         return null;

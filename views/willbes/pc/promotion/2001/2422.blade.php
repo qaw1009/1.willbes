@@ -25,7 +25,7 @@
 
         .evt00 {background:#0a0a0a}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/11/2422_top_bg.jpg) no-repeat center; position:relative}  
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/12/2422_top_bg.jpg) no-repeat center; position:relative}  
         .wb_top .youtube {position:absolute; top:946px; left:50%; width:978px; z-index:1;margin-left:-489px; box-shadow:0 10px 20px rgba(0,0,0,.3);}
         .wb_top .youtube iframe {width:978px; height:505px}      
         
@@ -40,9 +40,7 @@
         .slide_con p {position:absolute; top:50%; margin-top:-30px; width:61px; height:61px; z-index:100}
         .slide_con p a {cursor:pointer;  width:61px; height:61px;}
         .slide_con p.leftBtn {left:-30px;}
-        .slide_con p.rightBtn {right:-30px;}
-
-        .wb_04 {padding-bottom:150px}
+        .slide_con p.rightBtn {right:-30px;}       
 
         .wb_05 {padding-bottom:150px; background:#f1f1f1}    
         .wb_05 .youtube {width:717px; margin:0 auto; }
@@ -63,20 +61,14 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>    
 
-        <div class="evtCtnsBox wb_top" id="main">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2422_top.jpg" alt="김원욱 경찰헌법" usemap="#Map1990B" border="0"/>
-                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51146?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" alt="교수홈 바로가기" style="position: absolute; left: 70.89%; top: 30.2%; width: 17.95%; height: 2.69%; z-index: 2;"></a>
-            </div>
-            <div class="youtube" data-aos="fade-up">
-                <iframe src="https://www.youtube.com/embed/B_SpAwQNwio?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>	
-		</div>
-
+        <div class="evtCtnsBox wb_top" id="main">            
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2422_top.jpg" alt="김원욱 경찰헌법"/>             
+		</div>        
+        {{--
         <div class="evtCtnsBox wb_01" >
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2422_01.jpg"  alt="딱맞는 플랜"/>            	
 		</div>
-
+        
         <div class="evtCtnsBox wb_02" >
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2422_02_01.jpg"  alt="경찰헌법 커리큘럼"/>
             <div class="youtube" data-aos="fade-right">
@@ -86,8 +78,8 @@
             <div class="youtube" data-aos="fade-right">
                 <iframe src="https://www.youtube.com/embed/RGS2dBNNjss?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>	
-		</div>        
-
+		</div>
+               
         <div class="evtCtnsBox wb_03" >
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2422_03.jpg"  alt="체계적인 합습 컨텐츠"/>	
             <div class="slide_con">
@@ -98,10 +90,10 @@
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2021/11/2422_arr_l.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2021/11/2422_arr_r.png"></a></p>
             </div>		
-		</div>        
-
+		</div>
+        --}}
         <div class="evtCtnsBox wb_04" id="evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2422_04.jpg"  alt="김원욱 헌법 최신강의"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2422_04.jpg"  alt="김원욱 헌법 최신강의"/>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif	
@@ -110,7 +102,7 @@
         <div class="evtCtnsBox wb_05" >
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2422_05_01.jpg" alt="경찰헌법 기본이론"/>
             <div class="youtube" data-aos="fade-right">
-                <iframe src="https://www.youtube.com/embed/xCaNQU2R_h8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/UB91DCctYgU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>	
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2422_05_02.jpg" alt="경찰헌법 심화이론"/>
             <div class="youtube" data-aos="fade-right">
@@ -118,11 +110,11 @@
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2422_05_03.jpg" alt="경찰헌법 심화기출"/>
             <div class="youtube" data-aos="fade-right">
-                <iframe src="https://www.youtube.com/embed/RGS2dBNNjss?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/xpxf6BfraTQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2422_05_04.jpg"  alt="경찰헌법 문제풀이"/><br>
             <div class="comingsoon"><img src="https://static.willbes.net/public/images/promotion/2021/11/2422_05_05.jpg" alt=""/></div>
-		</div> 
+		</div>
              
     </div>
     <!-- End Container -->

@@ -124,12 +124,12 @@
         </div>
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2435_02.jpg" alt="100% 당첨"/>            
+            <img src="https://static.willbes.net/public/images/promotion/2021/11/2435_02.jpg" alt="100% 당첨"/>  
             <div class="rulletBox">
                 <canvas id="box_roulette" class="tutCanvas" width="810" height="810">Canvas not supported</canvas>
-                <button id="btn_roulette" class="btn-roulette" onclick="rouletteStart(); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2021/11/2435_rull_start.png" alt="start" /></button>
+                <button id="btn_roulette" class="btn-roulette" onclick="startRoulette('https://static.willbes.net/public/images/promotion/2021/11/2435_rull_gift0','png'); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2021/11/2435_rull_start.png" alt="start" /></button>
                 <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" >Reset</a>
-            </div>            
+            </div>      
         </div>
 
         <div class="evtCtnsBox wb_03">

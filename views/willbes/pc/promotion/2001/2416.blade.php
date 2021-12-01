@@ -85,7 +85,7 @@
         <div class="evtCtnsBox evt05" id="evt_01" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_05.jpg" title="14일 패스 무료" />
-                <a href="javascript:void(0)" title="14일 무료체험" style="position: absolute;left: 8.55%;top: 67.99%;width: 29.3%;height: 18.51%;z-index: 2;"></a>
+                <a href="javascript:void(0)" onclick="fn_add_apply_submit({{ $arr_base['add_apply_data'][0]['EaaIdx'] or '' }}); return false;" title="14일 무료체험" style="position: absolute;left: 8.55%;top: 67.99%;width: 29.3%;height: 18.51%;z-index: 2;"></a>
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/2390" target="_blank" title="신광은 경찰 패스" style="position: absolute;left: 16.55%;top: 90.19%;width: 67.3%;height: 5.91%;z-index: 2;"></a>
             </div>   
         </div>
@@ -138,7 +138,9 @@
             </div>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_06_btn.jpg" title="플래너 6종 다운로드" />
-                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="플래너 다운로드" style="position: absolute;left: 29.55%;top: 18.99%;width: 41.3%;height: 31.51%;z-index: 2;"></a>        
+                <a href="{{ (sess_data('is_login') === false ? 'javascript:void(0);' : (empty($file_yn) === false && $file_yn[0] == 'Y' ? front_url($file_link[0]) : $file_link[0])) }}"
+                   onclick="{{ (sess_data('is_login') === false ? 'javascript:alert(\'로그인 후 이용해주세요.\'); return false;' : '') }}" title="플래너 다운로드" style="position: absolute;left: 29.55%;top: 18.99%;width: 41.3%;height: 31.51%;z-index: 2;" target="_blank">
+                </a>
             </div>    
         </div>        
 
@@ -148,53 +150,12 @@
                 <div class="slide_con_bg">     
                     <div class="slide_con">
                         <ul id="slidesImg3">
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_01.png" alt="" />
-                                <a href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
-                            </li>
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_02.png" alt="" />
-                                <a href="@if(empty($file_yn) === false && $file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
-                            </li>
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_03.png" alt="" />
-                                <a href="@if(empty($file_yn) === false && $file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
-                            </li>
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_04.png" alt="" />
-                                <a href="@if(empty($file_yn) === false && $file_yn[4] == 'Y') {{ front_url($file_link[4]) }} @else {{ $file_link[4] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
-                            </li>
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_05.png" alt="" />
-                                <a href="@if(empty($file_yn) === false && $file_yn[5] == 'Y') {{ front_url($file_link[5]) }} @else {{ $file_link[5] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
-                            </li>
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_06.png" alt="" />
-                                <a href="@if(empty($file_yn) === false && $file_yn[6] == 'Y') {{ front_url($file_link[6]) }} @else {{ $file_link[6] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
-                            </li>
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_07.png" alt="" />
-                                <a href="@if(empty($file_yn) === false && $file_yn[7] == 'Y') {{ front_url($file_link[7]) }} @else {{ $file_link[7] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_08.png" alt="" />
-                                <a href="@if(empty($file_yn) === false && $file_yn[8] == 'Y') {{ front_url($file_link[8]) }} @else {{ $file_link[8] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
-                            </li>
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_09.png" alt="" />
-                                <a href="@if(empty($file_yn) === false && $file_yn[9] == 'Y') {{ front_url($file_link[9]) }} @else {{ $file_link[9] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
-                            </li>
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_10.png" alt="" />
-                                <a href="@if(empty($file_yn) === false && $file_yn[10] == 'Y') {{ front_url($file_link[10]) }} @else {{ $file_link[10] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
-                            </li>
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_11.png" alt="" />
-                                <a href="@if(empty($file_yn) === false && $file_yn[11] == 'Y') {{ front_url($file_link[11]) }} @else {{ $file_link[11] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
-                            </li>
-                            <li>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_12.png" alt="" />
-                                <a href="@if(empty($file_yn) === false && $file_yn[12] == 'Y') {{ front_url($file_link[12]) }} @else {{ $file_link[12] }} @endif" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;"></a>
-                            </li>
+                            @for($i=1;$i<=12;$i++)
+                                <a href="{{ (sess_data('is_login') === false ? 'javascript:void(0);' : (empty($file_yn) === false && $file_yn[$i] == 'Y' ? front_url($file_link[$i]) : $file_link[$i])) }}"
+                                   onclick="{{ (sess_data('is_login') === false ? 'javascript:alert(\'로그인 후 이용해주세요.\'); return false;' : '') }}" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;" target="_blank">
+                                    <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_{{(strlen($i) > 1 ? '' : '0').$i}}.png" alt="" /></li>
+                                </a>
+                            @endfor
                         </ul>
                         <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_left.png"></a></p>
                         <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_right.png"></a></p>
@@ -217,19 +178,27 @@
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
             @endif
         </div>   
-
     </div>
     <!-- End Container -->
+
+    <form id="add_apply_form" name="add_apply_form">
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+        <input type="hidden" name="register_type" value="promotion"/>
+        <input type="hidden" name="event_register_chk" value="N"/>
+        <input type="hidden" name="add_apply_chk[]" value="" />
+    </form>
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      $( document ).ready( function() {
+        $( document ).ready( function() {
         AOS.init();
-      } );    
+        } );
 
         /*탭(이미지버전)*/
-        $(document).ready(function(){
+        $(document).ready(function() {
             $('.tabs ul').each(function(){
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
@@ -237,7 +206,7 @@
                 $content = $($active[0].hash);
 
                 $links.not($active).each(function () {
-                    $(this.hash).hide();
+                $(this.hash).hide();
                 });
 
                 // Bind the click event handler
@@ -268,16 +237,55 @@
                 slideMargin:0,
                 autoHover: true,
                 moveSlides:1
-                });
-            
-                $("#imgBannerLeft3").click(function (){
-                    slidesImg3.goToPrevSlide();
-                });
-            
-                $("#imgBannerRight3").click(function (){
-                    slidesImg3.goToNextSlide();
-                });
-         });     
+            });
+
+            $("#imgBannerLeft3").click(function (){
+                slidesImg3.goToPrevSlide();
+            });
+
+            $("#imgBannerRight3").click(function (){
+                slidesImg3.goToNextSlide();
+            });
+        });
+
+        {{-- 무료 강좌지급 --}}
+        var $add_apply_form = $('#add_apply_form');
+        function fn_add_apply_submit(eaa_idx) {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+                var _url = '{!! front_url('/event/addApplyStore') !!}';
+            if (!eaa_idx) {
+                alert('이벤트 기간이 아닙니다.');
+                return;
+            }
+            $add_apply_form.find('input[name="add_apply_chk[]"]').val(eaa_idx);
+            if (!confirm('신청하시겠습니까?')) { return true; }
+            ajaxSubmit($add_apply_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert( getApplyMsg(ret.ret_msg) );
+                    location.reload();
+                }
+            }, function(ret, status, error_view) {
+                alert( getApplyMsg(ret.ret_msg || '') );
+            }, null, false, 'alert');
+        }
+
+        // 이벤트 추가 신청 메세지
+        function getApplyMsg(ret_msg) {
+            {{-- 해당 프로모션 종속 결과 메세지 --}}
+            var apply_msg = '';
+            var arr_apply_msg = [
+                ['처리 되었습니다.','장바구니에 담겼습니다.'],
+                ['신청 되었습니다.','신청 되었습니다. 내강의실에서 확인해 주세요.'],
+            ];
+
+            for (var i = 0; i < arr_apply_msg.length; i++) {
+                if(arr_apply_msg[i][0] == ret_msg) {
+                    apply_msg = arr_apply_msg[i][1];
+                }
+            }
+            if(apply_msg == '') apply_msg = ret_msg;
+            return apply_msg;
+        }
     </script>
     
     {{-- 프로모션용 스크립트 include --}}

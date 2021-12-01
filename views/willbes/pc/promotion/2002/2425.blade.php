@@ -37,7 +37,7 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky" id="QuickMenu">
-            <a href="javascript:alert('Coming Soon!')"  >
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2416" target="_blank"  >
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2425_sky.png" alt="온라인 추천강좌"/>
             </a>                      
         </div>

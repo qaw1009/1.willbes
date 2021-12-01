@@ -18,19 +18,18 @@
 
         /************************************************************/
         
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/11/2407_top_bg.jpg) no-repeat center;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/12/2407_top_bg.jpg) no-repeat center;}
 
         .evt01 {background:#e1db13;}
 
-        .evt04 {background:url(https://static.willbes.net/public/images/promotion/2021/11/2407_04_bg.jpg) no-repeat center;}
-
+        .evt04 {background:#f7f7f7;padding-bottom:100px;}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">    
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2407_top.jpg" alt="백전불패 영어 장량"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2407_top.jpg" alt="백전불패 영어 장량"/>
                 <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/51299?subject_idx=1112&subject_name=%ED%96%89%EC%A0%95%ED%95%99" target="_blank" title="홈 바로가기" style="position: absolute;left: 67.61%;top: 74.66%;width: 18.89%;height: 6.49%;z-index: 2;"></a>
             </div>                            
         </div>
@@ -47,12 +46,12 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2407_03.jpg" alt="커리큘럼" />             
         </div>
 
-        <div class="evtCtnsBox evt04" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2407_04.jpg" alt="신청하기" />   
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/187229" target="_blank" title="지금바로 신청하기" style="position: absolute;left: 24.61%;top: 70.66%;width: 25.89%;height: 8.49%;z-index: 2;"></a>
-            </div> 
-        </div>
+        <div class="evtCtnsBox evt04" data-aos="fade-top">
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2407_04.jpg" alt="결제하기"/>
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+            @endif 
+        </div>    
 
     </div>
     <!-- End Container -->

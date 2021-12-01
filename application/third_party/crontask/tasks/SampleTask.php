@@ -7,27 +7,23 @@ require_once APPPATH . 'third_party/crontask/tasks/Task.php';
 
 class SampleTask extends \crontask\tasks\Task
 {
-    /**
-     * @var \CI_DB_query_builder
-     */
-    private $_db;
-
     public function __construct()
     {
         parent::__construct();
 
-        $this->_db = $this->_CI->load->database('lms', true);
+        $this->setLogId('SAM');     // cron 실행로그 작업구분 컬럼값
     }
 
-    public function __destruct()
-    {
-        $this->_db->close();
-    }
-
+    /**
+     * 샘플 작업
+     * @return mixed|string
+     */
     public function run()
     {
+        $_db = $this->_CI->load->database('lms', true);
+
         try {
-            $query = $this->_db->query('select NOW() as today');
+            $query = $_db->query('select NOW() as today');
             $result = $query->row(0)->today;
 
             $this->setOutput('SampleTask complete.');
@@ -37,6 +33,8 @@ class SampleTask extends \crontask\tasks\Task
             $this->setOutput('SampleTask error occured. [' . $e->getMessage() . ']');
 
             return 'Error (0)';
+        } finally {
+            $_db->close();
         }
     }
 }

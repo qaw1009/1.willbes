@@ -55,7 +55,7 @@
         @if(empty($arr_base['display_product_data']) === false)
             @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
         @endif
-        <img src="https://static.willbes.net/public/images/promotion/2021/12/2442m_04_02.jpg" alt="오직psat자료해석만을 위한 13년간의 강의" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/12/2442m_04_02.jpg" alt="오직psat자료해석만을 위한 13년간의 강의" class="mt30">
     </div> 
 
     <!-- <div class="evtCtnsBox" data-aos="fade-up">

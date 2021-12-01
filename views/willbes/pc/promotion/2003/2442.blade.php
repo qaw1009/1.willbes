@@ -61,11 +61,13 @@
         </div>
 
         <div class="evtCtnsBox evt04" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2442_04_01.jpg" title="석치수 자료해석 진단평가&긴급처방 무료특강">
-            @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-            @endif  
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2442_04_02.jpg" title="오직psat자료해석만을 위한 13년간의 강의">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2442_04_01.jpg" title="석치수 자료해석 진단평가&긴급처방 무료특강">
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                @endif  
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2442_04_02.jpg" title="오직psat자료해석만을 위한 13년간의 강의" class="mt30">
+            </div>
         </div>
 
         <!-- <div class="evtCtnsBox evtInfo" data-aos="fade-up">

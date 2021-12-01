@@ -48,7 +48,7 @@
 
     <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2021/12/2442m_03.jpg" alt="석치수 자료해석" >
-        <a href="" title="진단평가&긴급처방+정답기입" target="_blank" style="position: absolute; left: 5.83%; top: 88.63%; width: 88.06%; height: 8.1%; z-index: 2;"></a>
+        <a href="http://naver.me/5CvH8cmy" title="진단평가&긴급처방+정답기입" target="_blank" style="position: absolute; left: 5.83%; top: 88.63%; width: 88.06%; height: 8.1%; z-index: 2;"></a>
     </div> 
     <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2021/12/2442m_04_01.jpg" alt="석치수 자료해석 진단평가&긴급처방 무료특강" >

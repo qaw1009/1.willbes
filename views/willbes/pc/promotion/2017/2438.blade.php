@@ -23,62 +23,20 @@
         .evt01 {background:#002643;}
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2438_02_bg.jpg) no-repeat center top;}
 
-        .evt03 {width:1120px; margin:0 auto; padding:100px 0; display: flex;}
-        .evt03:after {content:''; display:block; clear:both}
+        .evt03 {width:1120px; margin:0 auto; padding:100px 0; display: flex; justify-content: space-between;}
 
-        .tabs {float:left; width:300px; box-shadow:0 0 20px rgba(0,0,0,.2); border-radius:10px}
-        .tabs ul {margin:16px; }
-        .tabs li {border-bottom:1px solid #ddd; text-align:left;}
-        .tabs li:last-child {border:0}
-        .tabs li a {display:block; height:52px; line-height:52px; font-size:17px; padding:0 10px}
-        .tabs li a span {font-weight:bold; float:right}
-        .tabs li a.active,
-        .tabs li a:hover {background:#ffd800}
-
-        .tabCts {float:right; width:777px;}
-        .tabCts .ctsTitle {font-size:38px; text-align:left; margin-bottom:20px; color:#232323}
-        .tabCts .ctsTitle span {color:#cb1800}
-        .tabTop {background:#4b66b0; border:1px solid #c4c4c4; border-top:5px solid #000;}
-        .tabTop .left {float:left; width:276px}
-        .tabTop .left li:nth-child(1) div {width:188px; height:188px; margin:50px auto 0; border-radius:94px; background:#fff; box-shadow:0 0 20px rgba(0,0,0,.3); overflow:hidden}
-        .tabTop .left li:nth-child(1) div img {width:100%}
-        .tabTop .left li:nth-child(2) {padding:20px 0; color:#fff; font-size:25px; line-height:1.2}
-        .tabTop .left li a {display:block; border:1px solid #fff; height:40px; line-height:40px; color:#fff; font-size:14px; margin:0 30px 10px;
-            background:url(https://static.willbes.net/public/images/promotion/2021/12/2438_arr_icon.png) no-repeat 90% center;}
-        .tabTop .left li a:hover {background:#fff; color:#4b66b0}
-        .tabTop .right {float:right}
-        .tabTop:after {content:''; display:block; clear:both}
-
-        .tabBottom {margin-top:40px; border:1px solid #c4c4c4;}
-        .tabBottom td {padding:30px 20px; text-align:left; line-height:1.5; vertical-align: top;}
-        .tabBottom td:nth-child(1) {background:#f3f3f3}
-        .tabBottom td:nth-child(1) li {margin-bottom:5px; padding-left:60px; position:relative}
-        .tabBottom td:nth-child(1) li span {position:absolute; left:0; display:inline-block; color:#2c4fad;}
-        .tabBottom td:nth-child(1) li.sTitle {font-size:15px; margin:10px 0; padding:0}
-        .tabBottom td:nth-child(1) li.sTitle:nth-child(1) {margin-top:0}
-        .tabBottom td:nth-child(1) li.sTitle2 {border:1px solid #333; padding:5px; text-align:center}
-        .tabBottom td input {width:20px; height:20px; vertical-align: middle; margin-right:5px}
-        .tabBottom td:nth-child(2) {font-size:16px}
-        .tabBottom td:nth-child(2) ul {margin:20px 80px 0}
-        .tabBottom td:nth-child(2) li {display:inline; float:left; width:33.33333%; text-align:center}
-        .tabBottom td:nth-child(2) > div:nth-child(2) strong {background:#38af00;}
-        .tabBottom td:nth-child(2) p {font-size:12px; padding-left:25px; color:#999}
-        .tabBottom td:nth-child(2) > div {position:relative; margin-bottom:30px}
-        .tabBottom td:nth-child(2) div li div {background:#ffd800; width:60px; margin:0 auto; line-height:1; padding:15px 0;
-            text-align:center; border-radius:30px; color:#000; margin-top:-10px}
-        .tabBottom td:nth-child(2) ul:after {content:''; display:block; clear:both}
-        .tabBottom td:nth-child(2) > div.lecBtn {margin:0}
-        .tabBottom td:nth-child(2) > div.lecBtn a {display:inline-block; width:47%; margin-right:10px; color:#fff; background:#111; font-size:20px;
-            padding:15px 0; text-align:center; line-height:1.2}            
-        .tabBottom td:nth-child(2) > div.lecBtn a:nth-child(2) {background:#4b66b0}
-        .tabBottom td:nth-child(2) > div.lecBtn.three a {width:30%;}
-        .tabBottom td:nth-child(2) > div.lecBtn a:nth-child(3) {background:#1bd3e1}
-        .tabBottom td:nth-child(2) > div.lecBtn a:hover {color:#000; background:#ffd800;}
-        .tabBottom td h5 {border-radius:10px; color:#fff; text-align:center; background:#4b66b0; padding:10px 0; width:100%; margin-bottom:10px; font-size:14px}
-        .tabBottom td .banner {border:1px solid #b96ac3; margin:20px; padding:20px; text-align:center}
-        .tabBottom td .banner p {font-size:28px; color:#8448c2; padding:0}
-        .tabBottom td .banner a {display:block; margin-top:20px; background:#b96ac3; color:#fff; padding:10px}
-        .tabBottom td .banner a:hover {background:#8448c2}
+        .tabCts {width:780px;}
+        .tabCts .btnBox {position:absolute; bottom:30px; left:50px; text-align:left}
+        .tabCts .prof-top-btn a {display:inline-block; color:#fff; padding:4px 10px 4px 22px; margin-right:4px}
+        .tabCts .prof-top-btn a:nth-of-type(1) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon01.png") 
+            no-repeat 5px center}
+        .tabCts .prof-top-btn a:nth-of-type(2) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon02.png") 
+        no-repeat 5px center}
+        .tabCts .prof-top-btn a:nth-of-type(3) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon03.png") 
+            no-repeat 5px center}
+        .tabCts .prof-clip-btn {margin-top:14px}
+        .tabCts .prof-clip-btn a {display:inline-block; margin-right:5px}
+        .tabCts .hotclip {position:absolute; top:225px; left:355px;}
 
         .evt04 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2438_04_bg.jpg) no-repeat center top;}
         .evt05 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2438_05_bg.jpg) no-repeat center top;}
@@ -92,55 +50,66 @@
         .evtInfoBox li {list-style-type: decimal;margin-left:30px; margin-bottom:10px}
 
         .ssam-Lnb {
-            width: 298px;
-            border:1px solid #a2a2a2
+            width: 300px;
+            text-align:left;            
         }
-        .ssam-Lnb .lnb-List .ssm-lnb-List-Tit a {
+        .ssam-Lnb .lnb-List {border:1px solid #a2a2a2; border-bottom;0}
+        .ssam-Lnb .lnb-List .ssam-lnb-List-Tit a {
             display: block;
             height: 50px;
-            font-size: 15px;
-            color: #363636;
+            font-size: 18px;
+            font-weight:bold;
+            color: #000;
             line-height: 50px;
-            border-bottom: 1px solid #ececec;
-            padding-left: 10px;            
+            border-bottom: 1px solid #b2b2b2;
+            padding-left: 20px;            
             position:relative;
+            background:#e4e4e4 url("https://static.willbes.net/public/images/promotion/2021/12/2438_arrowDown.png") no-repeat 90% center;
         }
         .ssam-Lnb .lnb-List .ssam-lnb-List-Tit.hover a {
             color: #0d74ae;
+            background-image: url("https://static.willbes.net/public/images/promotion/2021/12/2438_arrowUp.png");
         }
-        .ssam-Lnb .lnb-List .ssam-lnb-List-Tit a .arrow-Btn {
-            position: absolute;
-            background: url("/public/img/willbes/gnb/icon_arrow.gif") no-repeat -20px -12px;
-            top:10px;
-            right:10px;
-            width: 9px;
-            height: 6px;
-            margin: 21px 10px 21px 0;
-        }
-        .ssam-Lnb .lnb-List .ssam-lnb-List-Tit.hover a .arrow-Btn {
-            background: url("/public/img/willbes/gnb/icon_arrow.gif") no-repeat -20px 0;
-        }   
 
         .ssam-Lnb .lnb-List .lnb-List-Depth {
             display: none;
-            background: #f9f9f9;
-            padding: 20px 0 20px 20px;
+            background: #fff;
             border-bottom: 1px solid #ececec;
-        }
-        .ssam-Lnb .lnb-List .lnb-List-Depth dl dt {
-            line-height: 20px;            
         }
         .ssam-Lnb .lnb-List .lnb-List-Depth dl dt a {
             display: block;
-            font-size: 13px;
+            font-size: 16px;
             color: #3a3a3a;
+            padding:15px 20px;
+            border-bottom:1px solid #ddd;
         }
+        .ssam-Lnb .lnb-List .lnb-List-Depth dl dt a:hover,
         .ssam-Lnb .lnb-List .lnb-List-Depth dl dt a.active {
-            color: #2784d2;
+            background: #ffd800;
         }
+        .ssam-Lnb .lnb-List .lnb-List-Depth dl dt:last-child a {border:0}
+
+        .ssam .willbes-Layer-youtube {
+            display: none;
+            background:#000;
+            position: absolute;
+            top: 50px;
+            z-index: 110;
+            width: 860px;
+            height: 484px;
+            border: 1px solid #2f2f2f;
+            left: 50%;
+            margin-left: -445px;
+        }
+        .ssam .willbes-Layer-youtube .closeBtn {
+            position: absolute;
+            top: -33px;
+            right: -2px;
+        }
+        .ssam .willbes-Layer-youtube iframe {width:860px; height:484px}
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="p_re evtContent NSK ssam" id="evtContainer">
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2438_top.jpg" alt="2022학년도 연간패키지"/>
         </div>
@@ -154,998 +123,77 @@
         </div>
 
         <div class="evtCtnsBox evt03">
-
             <div class="ssam-Lnb">
                 <div class="lnb-List">
                     <div class="ssam-lnb-List-Tit">
-                        <a href="#none"><span class="Txt">국어<span class="arrow-Btn">></span></span></a>
+                        <a href="#none">유·초등</a>
                     </div>
                     <div class="lnb-List-Depth">
                         <dl>
-                            <dt><a href="#none">정채영</a></dt>
-                            <dt><a href="#none">기미진</a></dt>
-                            <dt><a href="#none">김세령</a></dt>
-                            <dt><a href="#none">오대혁</a></dt>
+                            <dt><a href="#none">유아 민정선</a></dt>
+                            <dt><a href="#none">초등 배재민</a></dt>
                         </dl>
                     </div>
                     <div class="ssam-lnb-List-Tit">
-                        <a href="#none"><span class="Txt">영어<span class="arrow-Btn">></span></span></a> 
+                        <a href="#none">교육학 논술</a> 
                     </div>
                     <div class="lnb-List-Depth">
                         <dl>
-                            <dt><a href="#none">한덕주</a></dt>
-                            <dt><a href="#none">김신주</a></dt>
-                            <dt><a href="#none">성기건</a></dt>
-                            <dt><a href="#none">김영</a></dt>
+                            <dt><a href="#none">교육학 이인재</a></dt>
                         </dl>
                     </div>
                     <div class="ssam-lnb-List-Tit">
-                        <a href="#none"><span class="Txt">한국사<span class="arrow-Btn">></span></span></a>
+                        <a href="#none">중등(국·영·수)</a>
                     </div>
-                    <div class="lnb-List-Depth"></div>
+                    <div class="lnb-List-Depth">
+                        <dl>
+                            <dt><a href="#none">국교론/문교론 송원영</a></dt>
+                            <dt><a href="#none">문법 권보민</a></dt>
+                            <dt><a href="#none">전공국어 구동언</a></dt>
+                            <dt><a href="#none">일영/영미문학 김유석</a></dt>
+                            <dt><a href="#none">수학내용학 김철홍</a></dt>
+                            <dt><a href="#none">수학교육론 박태영</a></dt>
+                            <dt><a href="#none">수학교육론 박혜향</a></dt>
+                        </dl>
+                    </div>
                     <div class="ssam-lnb-List-Tit">
-                        <a href="#none"><span class="Txt">행정학<span class="arrow-Btn">></span></span></a>
+                        <a href="#none">중등(사회·과학)</a>
                     </div>
-                    <div class="lnb-List-Depth"></div>
+                    <div class="lnb-List-Depth">
+                        <dl>
+                            <dt><a href="#none">일반사회 허역팀</a></dt>
+                            <dt><a href="#none">생물내용학 박태영</a></dt>
+                        </dl>
+                    </div>
                     <div class="ssam-lnb-List-Tit">
-                        <a href="#none"><span class="Txt">교정학<span class="arrow-Btn">></span></span></a>
+                        <a href="#none">중등(음·체·전산·중국어)</a>
                     </div>
-                    <div class="lnb-List-Depth"></div>
-
+                    <div class="lnb-List-Depth">
+                        <dl>
+                            <dt><a href="#none">음악 다이애나</a></dt>
+                            <dt><a href="#none">전기전자통신 최우영</a></dt>
+                            <dt><a href="#none">정보컴퓨터 송광진</a></dt>
+                            <dt><a href="#none">중국어 장경미</a></dt>
+                        </dl>
+                    </div>
                 </div>
             </div>
 
             <div class="tabCts">
-                <div id="tab01">
-                    <div class="ctsTitle NSK-Black">광범위한 교과내용을 <span>체계적인 강의</span>로 정리!!</div>
-                    <div class="tabTop">
-                        <div class="left">
-                            <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51077/prof_detail_51077.png" alt="배재민"></div></li>
-                                <li class="NSK-thin">초등<br> <strong class="NSK-Black">배재민</strong> 교수<li>
-                                <li>
-                                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982" target="_blank">교수페이지 바로가기</a>
-                                    <a href="javascript:fnPlayerSample('175159','1260419','HD');">합격전략 설명회 보기</a>
-                                </li>                                
-                            </ul>
+                <div id="tab01" class="p_re">
+                    <div>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2438_prof_mjs.jpg" alt="특별이벤트"/>
+                        <div class="btnBox">
+                            <div class="prof-top-btn">                            
+                                <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                                <a href="https://ssam.willbes.net/professor/show/prof-idx/51076?cate_code=3135&subject_idx=1981">교수님 홈</a>
+                            </div> 
+                            <div class="prof-clip-btn">
+                                <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
+                                <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>   
+                                <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
+                            </div> 
                         </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2021/12/2438_03_r02.jpg" alt=""/></div>
-                    </div>
-                    <div class="tabBottom">
-                        <table>
-                            <col width="276px" />
-                            <col />
-                            <tr>
-                                <td>
-                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
-                                    <ul>
-                                        <li class="sTitle NSK-Black">2021년</li>
-                                        <li><span>1~2월</span> 기본이론반</li>
-                                        <li><span>3월</span> 기출분석반</li>
-                                        <li><span>4월</span> 국정지도서분석반</li>
-                                        <li><span>5월</span> 검정지도서분석반</li>
-                                        <li><span>6~8월</span> 통합 서브노트반</li>
-                                        <li><span>9월</span> 과목별 문제풀이반(기본문풀)</li>
-                                        <li><span>10월</span> 실전 모의고사반(심화문풀)</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <h5>1년 전과정 Full Package</h5>
-                                    <div>
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~10월<br>
-                                            - 온라인강의 : 326일 * 배수:1.8배수<br>
-                                            * 교재 별도 구매
-                                        </div>
-                                        <ul>
-                                            <li class="tx-gray">원 수강료 <br><s>2,000,000원</s></li>
-                                            <li><div class="NSK-Black">30%<br>할인</div></li>
-                                            <li>패키지 수강료 <br><span class="NSK-Black">1,400,000원</span></li>                                            
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176125" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3136/pack/648001/prod-code/176017" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="tab04">
-                    <div class="ctsTitle NSK-Black">국어ㆍ문학교육론! 체계적이면서 <span>완벽한 자료!!</span></div>
-                    <div class="tabTop">
-                        <div class="left">
-                            <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51078/prof_detail_51078.png" alt="송원영"></div></li>
-                                <li class="NSK-thin">전공국어<br> <strong class="NSK-Black">송원영</strong> 교수<li>
-                                <li>
-                                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983" target="_blank">교수페이지 바로가기</a>
-                                    <a href="javascript:fnPlayerSample('174869','1256192','HD');">합격전략 설명회 보기</a>
-                                </li>                                
-                            </ul>
-                        </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2021/12/2438_03_r01.jpg" alt=""/></div>
-                    </div>
-                    <div class="tabBottom">
-                        <table>
-                            <col width="276px" />
-                            <col />
-                            <tr>
-                                <td>
-                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
-                                    <ul>
-                                        <li class="sTitle NSK-Black">2021년</li>
-                                        <li><span>1~2월</span> 국어/문학교육론 이론정리반</li>
-                                        <li><span>3~4월</span> 국어/문학교육론 교육과정 정리 및 문학작품 분석반</li>
-                                        <li><span>5~6월</span> 국어/문학교육론 교육과정 적용, 구체화 및 문학작품 분석반(갈래이론 및 문학사)</li>
-                                        <li><span>7~8월</span> 국어/문학교육론 문제풀이를 통한 이론정리반</li>
-                                        <li><span>9~10월</span> 실전 모고를 통한 이론완성+파이널 시험 직전 출제 예상테마</li>
-                                        <li class="sTitle NSK-Black tx-center tx18">+</li>
-                                        <li class="sTitle sTitle2 NSK-Black">권보민 교수님 연간 패키지 </li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <h5>송원영(국어·문학교육론) + 권보민(문법) 1년 전 과정 Full Package</h5>
-                                    <div>
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~11월<br>
-                                            - 온라인강의 : 365일 * 배수:1.6배수<br>
-                                        </div>
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>3,580,000원</s></li>
-                                            <li><div class="NSK-Black">약53%<br>할인</div></li>
-                                            <li>패키지 수강료 <br><span class="NSK-Black">1,670,000원</span></li>                                            
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176588" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176586" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="tab05">
-                    <div class="ctsTitle NSK-Black">깊게 이해하고 쉽게 푸는 <span>국어문법</span></div>
-                    <div class="tabTop">
-                        <div class="left">
-                            <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51080/prof_detail_51080.png" alt="권보민"></div></li>
-                                <li class="NSK-thin">국어문법<br> <strong class="NSK-Black">권보민</strong> 교수<li>
-                                <li>
-                                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51080?cate_code=3137&subject_idx=1983" target="_blank">교수페이지 바로가기</a>
-                                    {{--<a href="#none" target="_blank">샘플강의 보기</a>--}}
-                                </li>                                
-                            </ul>
-                        </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2021/12/2438_03_r04.jpg" alt=""/></div>
-                    </div>
-                    <div class="tabBottom">
-                        <table>
-                            <col width="276px" />
-                            <col />
-                            <tr>
-                                <td>
-                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
-                                    <ul>
-                                        <li class="sTitle NSK-Black">2021년</li>
-                                        <li><span>1~2월</span>
-                                            - 현대 국어 문법 기초 다지기<br>
-                                            - 기출문제 분석 및 응용반 1<br>
-                                            - 중세 국어 문법 감각 기르기 (중세 국어 문법 개론서 예문 분석 1)
-                                        </li>
-                                        <li><span>3~4월</span>
-                                            - 중세 국어 문법 기초 다지기 <br>
-                                            - 기출문제 분석 및 응용반2<br>
-                                            - 중세 국어 문법 적용력 기르기 (중세 국어 문법 개론서 예문 분석 2 및 자료 강독 1)
-                                        </li>
-                                        <li><span>5~6월</span>
-                                            - 현대 국어 문법과 중세 국어 문법 강화하기<br>
-                                            - 중세 국어 문법 확장하기(중세 국어 원전 자료 강독 2)<br>
-                                            - 문법 개론서 정리('우리말문법론' 핵심 정리) 
-                                        </li>
-                                        <li><span>7~8월</span>
-                                            - 문법 갈무리 미니모의고사<br>
-                                            - 적중 예상 문제 300제 특강<br>
-                                            - 핵심 주제 문법 특강 1
-                                        </li>
-                                        <li><span>9~10월</span>
-                                            - 실전모의고사 1<br>
-                                            - 중세 국어 문법 열매 맺기 (중세 국어 원전 자료 강독 3)<br>
-                                            - 핵심 주제 문법 특강 2<br>
-                                        </li>
-                                        <li><span>11월</span>
-                                            - 실전모의고사 2<br>
-                                            - 중세 국어 문법 파이널 갈무리<br>
-                                            - 현대 국어 문법 파이널 갈무리
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <h5>권보민 교수님 국어문법 패키지</h5>
-                                    <div>
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~11월<br>
-                                            - 온라인강의 : 365일 * 배수:1.8배수<br>
-                                        </div>
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>1,640,000원</s></li>
-                                            <li><div class="NSK-Black">35%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">1,066,000원</span></li>                                            
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176262" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176236" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-                                    <h5 class="mt50">권보민 교수님 국어문법 + 송원영 교수님 국어/문학 교육론 패키지</h5>
-                                    <div>
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~11월<br>
-                                            - 온라인강의 : 365일 * 배수:1.6배수<br>
-                                        </div>
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>3,580,000원</s></li>
-                                            <li><div class="NSK-Black">약53%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">1,670,000원</span></li>                                           
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176588" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176586" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="tab06">
-                    <div class="ctsTitle NSK-Black">흐름을 꿰뚫는 <span>전략!</span> 차이를 만드는 <span>힘!</span></div>
-                    <div class="tabTop">
-                        <div class="left">
-                            <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51081/prof_detail_51081.png" alt="김유석"></div></li>
-                                <li class="NSK-thin">전공영어<br> <strong class="NSK-Black">김유석</strong> 교수<li>
-                                <li>
-                                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51081?cate_code=3137&subject_idx=1984" target="_blank">교수페이지 바로가기</a>
-                                    <a href="javascript:fnPlayerSample('174873','1256220','HD');">합격전략 설명회 보기</a>
-                                </li>                                
-                            </ul>
-                        </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2021/12/2438_03_r06.jpg" alt=""/></div>
-                    </div>
-                    <div class="tabBottom">
-                        <table>
-                            <col width="276px" />
-                            <col />
-                            <tr>
-                                <td>
-                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
-                                    <ul>
-                                        <li class="sTitle NSK-Black">2021년</li>
-                                        <li><span>1~2월</span> 일반영어 Power Reading(5판)</li>
-                                        <li><span>1~2월</span> 영미문학 영미시의 이해</li>
-                                        <li><span>3~4월</span> 일반영어 Power Prose Writing</li>
-                                        <li><span>3~4월</span> 영미문학 영미소설의 이해</li>
-                                        <li><span>5~6월</span> 일반영어/영미문학 기출 모의고사반</li>                                        
-                                        <li><span>5~6월</span> 영미시/영미소설 문제적용반</li>
-                                        <li><span>7~8월</span> 일반영어/영미문학 상위권 문제풀이반</li>
-                                        <li><span>9~11월</span> 일반영어/영미문학 상위권 모의고사반</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <h5>1년 전과정 Full Package</h5>
-                                    <div>
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~11월<br>
-                                            - 온라인강의 : 365일 * 배수:1.5배수<br>
-                                        </div>
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>2,060,000원</s></li>
-                                            <li><div class="NSK-Black">17%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">1,700,000원</span></li>                                            
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176754" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176752" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="tab07">
-                    <div class="ctsTitle NSK-Black">수학 <span>“내용학+교육론”</span> 합격을 위한 One Team</div>
-                    <div class="tabTop">
-                        <div class="left">
-                            <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51084/prof_detail_51084.png" alt="김철홍"></div></li>
-                                <li class="NSK-thin">전공수학<br> <strong class="NSK-Black">김철홍</strong> 교수<li>
-                                <li>
-                                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51084?cate_code=3137&subject_idx=1985" target="_blank">교수페이지 바로가기</a>
-                                    {{--<a href="#none" target="_blank">기출 해설강의 보기</a>--}}
-                                </li>                                
-                            </ul>
-                        </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2021/12/2438_03_r07.jpg" alt=""/></div>
-                    </div>
-                    <div class="tabBottom">
-                        <table>
-                            <col width="276px" />
-                            <col />
-                            <tr>
-                                <td>
-                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
-                                    <ul>
-                                        <li class="sTitle NSK-Black">2021년</li>
-                                        <li class="sTitle NSK-Black">[수학내용학]</li>
-                                        <li><span>1~2월</span> 대수학과 정수론 완전학습반 (이론 및 문제풀이 통합반)</li>
-                                        <li><span>3~4월</span> 해석학 완전학습반 (이론 및 문제풀이 통합반)<br>
-                                            위상수학 기본이론 - 완벽 정리반</li>
-                                        <li><span>5월</span> 미분기하학 완전학습반 (이론 및 문제풀이 통합반)</li>
-                                        <li><span>인간전용</span> 미적분과 다변수 해석학 마스터반 (기본이론+문제풀이) - 2019년 영상 제공</li>
-                                        <li><span>5~6월</span> 확률과 통계 기본이론 - 완벽 정리반</li>
-                                        <li><span>6월</span> '패턴으로 완성하는' 위상수학 완전학습반 (이론 및 문제풀이 통합반)</li>
-                                        <li><span>7월</span> 선형대수학 완전학습반 (이론 및 문제풀이 통합반)</li>
-                                        <li><span>8월</span> 복소해석학 완전학습반 (이론 및 문제풀이 통합반)</li>
-                                        <li><span>9~11월</span>  [교육론+내용학] 실전 모의고사 및 최종 정리반</li>
-                                        <li class="sTitle NSK-Black">[수학교육론]</li>
-                                        <li><span>1~2월</span>  신기한[신론(1,2)과 기출을 결합한] 이론반</li>
-                                        <li><span>3~4월</span>  수학교육과정과 교재연구</li>
-                                        <li><span>5~6월</span>  수학교육론 기출 100선</li>
-                                        <li><span>7~8월</span>  수학교육론 주제별 모의고사 [최종 노트 완성]</li>
-                                        <li><span>11월</span>  수학교육론 파이널 총정리 특강</li>
-                                        <li class="sTitle NSK-Black">[특강]</li>
-                                        <li><span>복습 1</span>  수학교육론 교육과정 비교표 / 별책 유의사항 특강 (외우기)</li>
-                                        <li><span>복습 2</span>  신론(1,2) 테스트 특강 (탐구 논의문제 포함)</li>
-                                        <li><span>복습 3</span>  수학교육과정과 교재연구 총정리 특강</li>
-                                        <li><span>복습 4</span>  수학교육론 기출 100선 총정리 특강</li>
-                                        <li><span>하반기<br> OneDay<br> </span>  - 서술형 쓰기 연습 특강 (감점 없는 답안지 작성 특강)<br>
-                                        - 한줄 정리 빈칸 채우기 특강</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <h5>전공수학(내용학&교육론) 1년 전과정 Full Package</h5>
-                                    <div>
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~11월<br>
-                                            - 온라인강의 : 365일 * 배수:1.8배수<br>
-                                        </div>
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>3,710,000원</s></li>
-                                            <li><div class="NSK-Black">40%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">2,226,000원</span></li>                                            
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176972" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176960" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-
-                                    <h5 class="mt50">수학 내용학(김철홍교수) 1년 과정 Package</h5>
-                                    <div>
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~11월<br>
-                                            - 온라인강의 : 365일 * 배수:1.8배수<br>
-                                        </div>
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>2,080,000원</s></li>
-                                            <li><div class="NSK-Black">30%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">1,456,000원</span></li>                                            
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176977" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176965" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="tab08">
-                    <div class="ctsTitle NSK-Black">수학 <span>“내용학+교육론”</span> 합격을 위한 One Team</div>
-                    <div class="tabTop">
-                        <div class="left">
-                            <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51085/prof_detail_51085.png" alt="박태영"></div></li>
-                                <li class="NSK-thin">수학교육론<br> <strong class="NSK-Black">박태영</strong> 교수<li>
-                                <li>
-                                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51085?cate_code=3137&subject_idx=1986" target="_blank">교수페이지 바로가기</a>
-                                    <a href="javascript:fnPlayerSample('176092','1263042','HD');">합격전략 설명회 보기</a>
-                                </li>                                
-                            </ul>
-                        </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2021/12/2438_03_r08.jpg" alt=""/></div>
-                    </div>
-                    <div class="tabBottom">
-                        <table>
-                            <col width="276px" />
-                            <col />
-                            <tr>
-                                <td>
-                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
-                                    <ul>
-                                        <li class="sTitle NSK-Black">2021년</li>
-                                        <li class="sTitle NSK-Black">[수학내용학]</li>
-                                        <li><span>1~2월</span> 대수학과 정수론 완전학습반 (이론 및 문제풀이 통합반)</li>
-                                        <li><span>3~4월</span> 해석학 완전학습반 (이론 및 문제풀이 통합반)<br>
-                                            위상수학 기본이론 - 완벽 정리반</li>
-                                        <li><span>5월</span> 미분기하학 완전학습반 (이론 및 문제풀이 통합반)</li>
-                                        <li><span>인간전용</span> 미적분과 다변수 해석학 마스터반 (기본이론+문제풀이) - 2019년 영상 제공</li>
-                                        <li><span>5~6월</span> 확률과 통계 기본이론 - 완벽 정리반</li>
-                                        <li><span>6월</span> '패턴으로 완성하는' 위상수학 완전학습반 (이론 및 문제풀이 통합반)</li>
-                                        <li><span>7월</span> 선형대수학 완전학습반 (이론 및 문제풀이 통합반)</li>
-                                        <li><span>8월</span> 복소해석학 완전학습반 (이론 및 문제풀이 통합반)</li>
-                                        <li><span>9~11월</span>  [교육론+내용학] 실전 모의고사 및 최종 정리반</li>
-                                        <li class="sTitle NSK-Black">[수학교육론]</li>
-                                        <li><span>1~2월</span>  신기한[신론(1,2)과 기출을 결합한] 이론반</li>
-                                        <li><span>3~4월</span>  수학교육과정과 교재연구</li>
-                                        <li><span>5~6월</span>  수학교육론 기출 100선</li>
-                                        <li><span>7~8월</span>  수학교육론 주제별 모의고사 [최종 노트 완성]</li>
-                                        <li><span>11월</span>  수학교육론 파이널 총정리 특강</li>
-                                        <li class="sTitle NSK-Black">[특강]</li>
-                                        <li><span>복습 1</span>  수학교육론 교육과정 비교표 / 별책 유의사항 특강 (외우기)</li>
-                                        <li><span>복습 2</span>  신론(1,2) 테스트 특강 (탐구 논의문제 포함)</li>
-                                        <li><span>복습 3</span>  수학교육과정과 교재연구 총정리 특강</li>
-                                        <li><span>복습 4</span>  수학교육론 기출 100선 총정리 특강</li>
-                                        <li><span>하반기<br> OneDay<br> </span>  - 서술형 쓰기 연습 특강 (감점 없는 답안지 작성 특강)<br>
-                                        - 한줄 정리 빈칸 채우기 특강</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <h5>전공수학(내용학&교육론) 1년 전과정 Full Package</h5>
-                                    <div>
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~11월<br>
-                                            - 온라인강의 : 365일 * 배수:1.8배수<br>
-                                        </div>
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>3,710,000원</s></li>
-                                            <li><div class="NSK-Black">35%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">2,226,000원</span></li>                                            
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176972" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176960" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-
-                                    <h5 class="mt50">수학교육론(박태영교수) 1년 과정 Package</h5>
-                                    <div>
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~11월<br>
-                                            - 온라인강의 : 365일 * 배수:1.8배수<br>
-                                        </div>
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>1,430,000원</s></li>
-                                            <li><div class="NSK-Black">30%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">1,000,000원</span></li>                                            
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176972" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176960" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="tab09">
-                    <div class="ctsTitle NSK-Black">독보적인 도덕ㆍ윤리, <span>명품 강의!</span></div>
-                    <div class="tabTop">
-                        <div class="left">
-                            <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51088/prof_detail_51088.png" alt="김병찬"></div></li>
-                                <li class="NSK-thin">도덕윤리<br> <strong class="NSK-Black">김병찬</strong> 교수<li>
-                                <li>
-                                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51088?cate_code=3137&subject_idx=1989" target="_blank">교수페이지 바로가기</a>
-                                    <a href="javascript:fnPlayerSample('174884','1256233','HD');">합격전략 설명회 보기</a>
-                                </li>                                
-                            </ul>
-                        </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2021/12/2438_03_r09.jpg" alt=""/></div>
-                    </div>
-                    <div class="tabBottom">
-                        <table>
-                            <col width="276px" />
-                            <col />
-                            <tr>
-                                <td>
-                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
-                                    <ul>
-                                        <li class="sTitle NSK-Black">2021년</li>
-                                        <li><span>1~2월</span> 교과 내용학 Ⅰ</li>
-                                        <li><span>3~4월</span> 교과 내용학 Ⅱ</li>
-                                        <li><span>4~5월</span> 기출문제 분석</li>
-                                        <li><span>5~6월</span> 교과교육론</li>
-                                        <li><span>7~8월</span> 영역별ㆍ주제별 문제풀이</li>
-                                        <li><span>9~10월</span> 모의고사</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <h5>1년 전과정 Full Package</h5>
-                                    <div>
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~10월<br>
-                                            - 온라인강의 : 365일 * 배수:1.6배수<br>
-                                        </div>
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>1,980,000원</s></li>
-                                            <li><div class="NSK-Black">13%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">1,728,000원</span></li>                                            
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176757" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176748" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="tab10">
-                    <div class="ctsTitle NSK-Black">최적의 <span>학습전략</span>으로 합격의 역사를 쓴다!</div>
-                    <div class="tabTop">
-                        <div class="left">
-                            <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51089/prof_detail_51089.png" alt="최용림"></div></li>
-                                <li class="NSK-thin">전공역사<br> <strong class="NSK-Black">최용림</strong> 교수<li>
-                                <li>
-                                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51089?cate_code=3137&subject_idx=1990" target="_blank">교수페이지 바로가기</a>
-                                    <a href="javascript:fnPlayerSample('176991','1260609','HD');">합격전략 설명회 보기</a>
-                                </li>                                
-                            </ul>
-                        </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2021/12/2438_03_r10.jpg" alt=""/></div>
-                    </div>
-                    <div class="tabBottom">
-                        <table>
-                            <col width="276px" />
-                            <col />
-                            <tr>
-                                <td>
-                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
-                                    <ul>
-                                        <li class="sTitle NSK-Black">2021년</li>
-                                        <li><span>1~2월</span> 임용역사 이론반</li>
-                                        <li><span>3~4월</span> 임용역사 심화이론</li>
-                                        <li><span>5~6월</span> 임용역사 기출문제분석</li>
-                                        <li><span>7~8월</span> 임용역사 영역ㆍ단원별 문제풀이</li>
-                                        <li><span>9~10월</span> 임용역사 실전모의고사 </li>
-                                        <li><span>11월</span> 임용역사 핵심 FINAL - 출제 예상 주제 및 모의고사</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <h5>1년 전과정 Full Package</h5>
-                                    <div>
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~11월<br>
-                                            - 온라인강의 : 365일 * 배수:1.6배수<br>
-                                        </div>
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>1,580,000원</s></li>
-                                            <li><div class="NSK-Black">40%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">948,000원</span></li>                                            
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176178" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176176" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="tab11">
-                    <div class="ctsTitle NSK-Black">구조화의 끝판왕! <span>합격의 지름길!!</span></div>
-                    <div class="tabTop">
-                        <div class="left">
-                            <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51090/prof_detail_51090_1606459468.png" alt="다이애나"></div></li>
-                                <li class="NSK-thin">전공음악<br> <strong class="NSK-Black">다이애나</strong> 교수<li>
-                                <li>
-                                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51090?cate_code=3137&subject_idx=1991" target="_blank">교수페이지 바로가기</a>
-                                    <a href="javascript:fnPlayerSample('174885','1256234','HD');">합격전략 설명회 보기</a>
-                                </li>                                
-                            </ul>
-                        </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2021/12/2438_03_r11.jpg" alt=""/></div>
-                    </div>
-                    <div class="tabBottom">
-                        <table>
-                            <col width="276px" />
-                            <col />
-                            <tr>
-                                <td>
-                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
-                                    <ul>
-                                        <li class="sTitle NSK-Black">2021년</li>
-                                        <li><span>1~2월</span> 전공음악 기본이론</li>
-                                        <li><span>1~2월</span> 전공음악 화성학</li>
-                                        <li><span>1~2월</span> 전공음악 한.끝.맵.(한권으로 끝내는 마인드맵)</li>
-                                        <li><span>3~4월</span> 전공음악 심화이론</li>
-                                        <li><span>3~6월</span> 전공음악 한줄정리(국악)</li>
-                                        <li><span>3~6월</span> 전공음악 한줄정리(서양음악)</li>
-                                        <li><span>3~6월</span> 전공음악 개론서(국악)</li>
-                                        <li><span>3~6월</span> 전공음악 개론서(서양음악)</li>
-                                        <li><span>3~6월</span> 전공음악 개론서(음악교육론)</li>
-                                        <li><span>7~8월</span> 전공음악 문제풀이반</li>
-                                        <li><span>7~8월</span> 전공음악 기출문제 풀이반</li>
-                                        <li><span>9~10월</span> 전공음악 모의고사반</li>
-                                        <li><span>11월</span> 전공음악 파이널 스터디</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <h5>1년 전과정 Full Package</h5>                                    
-                                    <div>
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~11월<br>
-                                            - 온라인강의 : 365일 * 배수:1.8배수<br>
-                                        </div>
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>4,200,000원</s></li>                                            
-                                            <li><div class="NSK-Black">약51%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">2,050,000원</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn three">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/177090" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/177089" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/177092" target="_blank"><span class="NSK-Black">직강LIVE</span><br> 수강신청</a>
-                                    </div>
-                                    {{--
-                                    <p class="tx22 tx-center tx-dark-black">음악은 12월 27일 공개예정입니다.</p>
-                                    <div class="banner">
-                                        2022학년도 대비 On-Tact Live 설명회<br>
-                                        <p class="NSK-Black">다이애나 전공음악</p>
-                                        2020. 12. 27. (일) PM. 09:30
-                                        <a href="https://ssam.willbes.net/pass/offLecture/show/cate/3141/prod-code/177108" target="_blank">설명회 신청하기 ></a>
-                                    </div>
-                                    --}}
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="tab12">
-                    <div class="ctsTitle NSK-Black">합격하는 그 순간까지 함께 하는 우영쌤~!</div>
-                    <div class="tabTop">
-                        <div class="left">
-                            <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51091/prof_detail_51091.png" alt="최우영"></div></li>
-                                <li class="NSK-thin">전기<br> <strong class="NSK-Black">최우영</strong> 교수<li>
-                                <li>
-                                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank">교수페이지 바로가기</a>
-                                    <a href="javascript:fnPlayerSample('174886','1256235','HD');">합격전략 설명회 보기</a>
-                                </li>                                
-                            </ul>
-                        </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2021/12/2438_03_r12.jpg" alt=""/></div>
-                    </div>
-                    <div class="tabBottom">
-                        <table>
-                            <col width="276px" />
-                            <col />
-                            <tr>
-                                <td>
-                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
-                                    <ul>
-                                        <li class="sTitle NSK-Black">2021년</li>
-                                        <li><span>1~2월</span> 기초 전기전자/회로이론</li>
-                                        <li><span>3~6월</span> 전력+문제풀이</li>
-                                        <li><span>3~6월</span> 전기자기학</li>
-                                        <li><span>7~9월</span> 1~6월, 이론반 통합문제풀이</li>
-                                        <li><span>10~11월</span> 전기 모의고사 </li>
-                                        <li><span>인강제공</span> 
-                                            기출문제분석<br>
-                                            전기기기+문제풀이<br>
-                                            제어+문제풀이
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <h5>1년 전과정 Full Package</h5>
-                                    <div>   
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~11월<br>
-                                            - 온라인강의 : 365일 * 배수:1.8배수<br>
-                                        </div>                                     
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>2,590,000원</s></li>
-                                            <li><div class="NSK-Black">약42%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">1,500,000원</span></li>                                            
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176811" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176685" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="tab13">
-                    <div class="ctsTitle NSK-Black">합격하는 그 순간까지 함께 하는 우영쌤~!</div>
-                    <div class="tabTop">
-                        <div class="left">
-                            <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51091/prof_detail_51091.png" alt="최우영"></div></li>
-                                <li class="NSK-thin">전자<br> <strong class="NSK-Black">최우영</strong> 교수<li>
-                                <li>
-                                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank">교수페이지 바로가기</a>
-                                    <a href="javascript:fnPlayerSample('174886','1256235','HD');">합격전략 설명회 보기</a>
-                                </li>                                
-                            </ul>
-                        </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2021/12/2438_03_r13.jpg" alt=""/></div>
-                    </div>
-                    <div class="tabBottom">
-                        <table>
-                            <col width="276px" />
-                            <col />
-                            <tr>
-                                <td>
-                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
-                                    <ul>
-                                        <li class="sTitle NSK-Black">2021년</li>
-                                        <li><span>1~2월</span> 기초 전기전자/회로이론</li>
-                                        <li><span>3~6월</span> 전자회로</li>
-                                        <li><span>3~6월</span> 전기자기학</li>
-                                        <li><span>7~9월</span> 1~6월, 이론반 통합문제풀이</li>
-                                        <li><span>10~11월</span> 전자 모의고사</li>
-                                        <li><span>인강제공</span> 
-                                            마이크로프로세서+문제풀이<br>
-                                            통신+문제풀이<br>
-                                            전자기기+문제풀이
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <h5>1년 전과정 Full Package</h5>
-                                    <div>      
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~11월<br>
-                                            - 온라인강의 : 365일 * 배수:1.8배수<br>
-                                        </div>                                  
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>2,790,000원</s></li>
-                                            <li><div class="NSK-Black">약46%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">1,500,000원</span></li>                                            
-                                        </ul>
-                                    </div>                                    
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176813" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176686" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>                                    
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="tab14">
-                    <div class="ctsTitle NSK-Black">합격하는 그 순간까지 함께 하는 우영쌤~!</div>
-                    <div class="tabTop">
-                        <div class="left">
-                            <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51091/prof_detail_51091.png" alt="최우영"></div></li>
-                                <li class="NSK-thin">통신<br> <strong class="NSK-Black">최우영</strong> 교수<li>
-                                <li>
-                                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank">교수페이지 바로가기</a>
-                                    <a href="javascript:fnPlayerSample('174886','1256235','HD');">기출 해설강의 보기</a>
-                                </li>                                
-                            </ul>
-                        </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2021/12/2438_03_r14.jpg" alt=""/></div>
-                    </div>
-                    <div class="tabBottom">
-                        <table>
-                            <col width="276px" />
-                            <col />
-                            <tr>
-                                <td>
-                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
-                                    <ul>
-                                        <li class="sTitle NSK-Black">2021년</li>
-                                        <li><span>1~2월</span> 기초 전기전자/회로이론</li>
-                                        <li><span>3~6월</span> 전자회로</li>
-                                        <li><span>3~6월</span> 전기자기학</li>
-                                        <li><span>7~9월</span> 1~6월, 이론반 통합문제풀이</li>
-                                        <li><span>10~11월</span> 통신 모의고사</li>
-                                        <li><span>인강제공</span> 
-                                            마이크로프로세서+문제풀이<br>
-                                            통신+문제풀이<br>
-                                            기출문제분석
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td>
-                                     <h5>1년 전과정 Full Package</h5>
-                                    <div>      
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~11월<br>
-                                            - 온라인강의 : 365일 * 배수:1.8배수<br>
-                                        </div>                                  
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>2,590,000원</s></li>
-                                            <li><div class="NSK-Black">약42%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">1,500,000원</span></li>                                            
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176812" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176687" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="tab15">
-                    <div class="ctsTitle NSK-Black">정보컴퓨터의 절대 강자!</div>
-                    <div class="tabTop">
-                        <div class="left">
-                            <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51092/prof_detail_51092.png" alt="송광진"></div></li>
-                                <li class="NSK-thin">정보컴퓨터<br> <strong class="NSK-Black">송광진</strong> 교수<li>
-                                <li>
-                                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51092?cate_code=3137&subject_idx=1993" target="_blank">교수페이지 바로가기</a>
-                                    <a href="javascript:fnPlayerSample('174887','1256241','HD');">합격전략 설명회 보기</a>
-                                </li>                                
-                            </ul>
-                        </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2021/12/2438_03_r15.jpg" alt=""/></div>
-                    </div>
-                    <div class="tabBottom">
-                        <table>
-                            <col width="276px" />
-                            <col />
-                            <tr>
-                                <td>
-                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
-                                    <ul>
-                                        <li class="sTitle NSK-Black">2021년</li>
-                                        <li><span>1~3월</span> 정보컴퓨터 내용학 일반과정</li>
-                                        <li><span>4~6월</span> 정보컴퓨너 태용학 심화과정</li>
-                                        <li><span>3~4월</span> 정보컴퓨터 내용학 기출문제분석</li>
-                                        <li><span>7~9월</span> 정보컴퓨터 적중 문제풀이반</li>
-                                        <li><span>10~11월</span> 정보컴퓨터 최종모의고사반(송광진&장순선)</li>
-                                        <li><span>인강제공</span> 정보컴퓨터 내용학 C언어 특강</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <h5>정보컴퓨터 All-In-One  Package (C언어 포함)</h5>
-                                    <div>
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~11월<br>
-                                            - 온라인강의 : 365일 * 배수:1.6배수<br>
-                                        </div>
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>2,800,000원</s></li>
-                                            <li><div class="NSK-Black">25%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">2,100,000원</span></li>                                            
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176146" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176005" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-
-                                    <h5 class="mt50">정보컴퓨터 All-In-One  Package (C언어 제외)</h5>
-                                    <div>
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~11월<br>
-                                            - 온라인강의 : 365일 * 배수:1.6배수<br>
-                                        </div>
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>2,600,000원</s></li>
-                                            <li><div class="NSK-Black">25%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">1,950,000원</span></li>                                            
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176265" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176263" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="tab16">
-                    <div class="ctsTitle NSK-Black">임용 중국어의 New Paradigm!</div>
-                    <div class="tabTop">
-                        <div class="left">
-                            <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51094/prof_detail_51094.png" alt="정경미"></div></li>
-                                <li class="NSK-thin">전공중국어<br> <strong class="NSK-Black">정경미</strong> 교수<li>
-                                <li>
-                                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995" target="_blank">교수페이지 바로가기</a>
-                                    <a href="javascript:fnPlayerSample('174890','1256242','HD');">합격전략 설명회 보기</a>
-                                </li>                                
-                            </ul>
-                        </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2021/12/2438_03_r16.jpg" alt=""/></div>
-                    </div>
-                    <div class="tabBottom">
-                        <table>
-                            <col width="276px" />
-                            <col />
-                            <tr>
-                                <td>
-                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
-                                    <ul>
-                                        <li class="sTitle NSK-Black">2021년</li>
-                                        <li><span>1~4월</span> 기본이론반</li>
-                                        <li><span>1~4월</span> 기본독해반</li>
-                                        <li><span>3~4월</span> 영역별문제풀이반</li>
-                                        <li><span>5~6월</span> 심화이론반</li>
-                                        <li><span>5~6월</span> 심화독해반</li>
-                                        <li><span>5~6월</span> 기출문제분석반</li>
-                                        <li><span>7~8월</span> 문제풀이 + 핵심체크반</li>
-                                        <li><span>7~8월</span> 독해 마스터반</li>
-                                        <li><span>9~10월</span> 모의고사반</li>
-                                        <li><span>11월</span> 최종정리 모의고사반</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <h5>1년 전과정 Full Package</h5>                                    
-                                    <div>
-                                        <div class="NSK tx14 mt10">
-                                            [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~10월<br>
-                                            - 온라인강의 : 365일 * 배수:1.8배수<br>
-                                        </div>
-                                        <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>3,420,000원</s></li>                                            
-                                            <li><div class="NSK-Black">50%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">1,710,000원</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="lecBtn">
-                                        <a href="https://ssam.stage.willbes.net/pass/offPackage/show/prod-code/177162" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="https://ssam.stage.willbes.net/package/show/cate/3137/pack/648001/prod-code/177161" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
                     </div>
                 </div>
             </div>
@@ -1183,6 +231,16 @@
                 </ul>             
             </div>
         </div>
+
+        {{--교수 youtube 팝업 --}}
+        <div id="youtube" class="willbes-Layer-youtube">
+            <a class="closeBtn" href="#none" onclick="closeWin('sec-prof-layer'),closeWin('youtube')">
+                <img src="{{ img_url('prof/close.png') }}">
+            </a>
+            <iframe src="https://www.youtube.com/embed/Y2W3lUrn3aI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                
+        </div>
+        {{--교수 커리큘럼 --}}
+        <div id="sec-prof-layer" class="willbes-Layer-Black"></div>
     </div>
     <!-- End Container -->
 

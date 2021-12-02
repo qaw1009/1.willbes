@@ -12,6 +12,7 @@
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
+            margin:0 auto;
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
@@ -27,7 +28,7 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/11/2395_top_bg.jpg) no-repeat center top;}
 
-        .evt01 {background:#c45f33;}     
+        .evt01 {background:#9001BF;}     
 
         .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/11/2395_03_bg.jpg) repeat-x center top; padding-bottom:100px;}
         
@@ -39,7 +40,7 @@
         .time li:last-child {line-height:1.3; color:#363635}
         .time li:first-child {margin-right:20px}
         .time li:last-child {margin-left:20px}
-        .time li:first-child span {color:#a2090b}        
+        .time li:first-child span {color:#9001bf;}        
         .time li:last-child span {line-height:2.5; color:#363635;font-weight:bold;} 
         .time li:last-child a {display:block; color:#fff; background:#242424; padding:10px 20px; margin-top:20px}
         .time li img {width:44px}
@@ -54,13 +55,13 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-
+        {{--
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2401" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2395_sky.png" alt="바로가기">
             </a>
         </div>
-
+        --}}
         <div class="evtCtnsBox evt00 jbMenu cf">
             <div class="time NSK-Black" id="newTopDday">
                 <ul>

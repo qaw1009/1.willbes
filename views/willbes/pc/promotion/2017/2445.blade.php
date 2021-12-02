@@ -28,15 +28,15 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox eventTop">
-        	<img src="https://static.willbes.net/public/images/promotion/2021/12/2445_top.jpg" alt="퀵 서머리 한정판매"/>
+        	<img src="https://static.willbes.net/public/images/promotion/2021/12/2445_top.jpg" alt="통합기념 이벤트"/>
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2445_01.jpg" alt="퀵 서머리 한정판매"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2445_01.jpg" alt=""/>
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2445_02.jpg" alt="퀵 서머리 한정판매"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2445_02.jpg" alt="임용 교수진"/>
         </div>
 
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
@@ -44,7 +44,7 @@
             @endif
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2445_03.jpg" alt="퀵 서머리 한정판매"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2445_03.jpg" alt="이용안내"/>
         </div>
     </div>
     <!-- End Container -->

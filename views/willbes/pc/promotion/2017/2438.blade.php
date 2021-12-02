@@ -273,7 +273,7 @@
                         <div class="btnBox">
                             <div class="prof-top-btn">                            
                                 <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                                <a href="https://ssam.willbes.net/professor/show/prof-idx/51076?cate_code=3135&subject_idx=1981">교수님 홈</a>
+                                <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982">교수님 홈</a>
                             </div> 
                             <div class="prof-clip-btn">
                                 <a onclick="openWin('sec-prof-layer'),openWin('youtube')">
@@ -327,7 +327,7 @@
                             </div>
                         </div>
                         <div class="lecbox">
-                            <h5><strong>학원직강 연간패키지</strong> 신청내역</h5>
+                            <h5><strong>동영상강의 연간패키지</strong> 신청내역</h5>
                             <ul>
                                 <li><strong>교수명</strong> 교육학 연간패키지
                                 <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>

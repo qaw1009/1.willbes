@@ -233,7 +233,7 @@
             <div class="widthAuto">
                 <div class="will-nTit">윌비스 임용 <span class="tx-color">합격 교수진</span></div>
                 <ul>
-                    @for($i=1; $i<=24; $i++)
+                    @for($i=1; $i<=36; $i++)
                         @if(empty($data['arr_main_banner']['메인_교수진'.$i]) === false)
                             <li>
                                 {!! banner_html($data['arr_main_banner']['메인_교수진'.$i]) !!}

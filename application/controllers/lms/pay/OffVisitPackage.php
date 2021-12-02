@@ -30,7 +30,7 @@ class OffVisitPackage extends BaseOrder
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
         // 사용하는 코드값 조회
-        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PackType', 'PayMethod', 'PayStatus']);
+        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayRoute', 'PackType', 'PayMethod', 'PayStatus']);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
 
         // 패키지유형 공통코드에서 일반/선택형(강사배정) 코드만 필터링
@@ -45,6 +45,7 @@ class OffVisitPackage extends BaseOrder
             'arr_campus' => $arr_campus,
             'arr_pack_type_ccd' => $arr_pack_type_ccd,
             'chk_pack_type_ccd' => $this->_target_pack_type_ccd,
+            'arr_pay_route_ccd' => $codes[$this->_group_ccd['PayRoute']],
             'arr_pay_method_ccd' => $codes[$this->_group_ccd['PayMethod']],
             'arr_pay_status_ccd' => $arr_pay_status_ccd,
             'chk_pay_status_ccd' => $this->_target_pay_status_ccd
@@ -101,6 +102,7 @@ class OffVisitPackage extends BaseOrder
                 'PL.LearnPatternCcd' => $this->orderListModel->_learn_pattern_ccd['off_pack_lecture'],  // 종합반
                 'PL.CampusCcd' => $this->_reqP('search_campus_ccd'),
                 'PL.PackTypeCcd' => $this->_reqP('search_pack_type_ccd'),
+                'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'),
                 'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'),
                 'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd')
             ],
@@ -180,10 +182,10 @@ class OffVisitPackage extends BaseOrder
      */
     public function excel()
     {
-        $headers = ['주문번호', '수강증번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제수단', '결제완료일', '접수신청일', '총 실결제금액', '총 환불금액', '총 남은금액'
+        $headers = ['주문번호', '수강증번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제루트', '결제수단', '결제완료일', '접수신청일', '총 실결제금액', '총 환불금액', '총 남은금액'
             , '상품구분', '캠퍼스', '종합반유형', '상품명', '결제금액', '환불금액', '결제상태', '환불완료일', '환불완료자', '환불사유', '미수금여부'];
 
-        $column = 'OrderNo, CertNo, SiteName, MemName, MemId, MemPhone, PayMethodCcdName, CompleteDatm, OrderDatm, tRealPayPrice, tRefundPrice
+        $column = 'OrderNo, CertNo, SiteName, MemName, MemId, MemPhone, PayRouteCcdName, PayMethodCcdName, CompleteDatm, OrderDatm, tRealPayPrice, tRefundPrice
             , (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice, ProdTypeCcdName, CampusCcdName, PackTypeCcdName, ProdName, RealPayPrice, RefundPrice, PayStatusCcdName
             , RefundDatm, RefundAdminName, RefundReason, IsUnPaid';
 

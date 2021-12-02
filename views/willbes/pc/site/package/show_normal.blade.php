@@ -64,7 +64,7 @@
                                         @if($__cfg['SiteCode'] === '2017' && $price_row['SaleRateUnit'] === '원' )
                                             (↓{{ number_format(($price_row['SalePrice'] - $price_row['RealSalePrice'] ) / $price_row['SalePrice'] * 100). '%'}})
                                         @else
-                                            (↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})
+                                            (↓{{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }})
                                         @endif
                                     </span>
                                     <span class="pl10"> ▶ </span>

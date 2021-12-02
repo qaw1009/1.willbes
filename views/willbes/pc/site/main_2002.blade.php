@@ -121,7 +121,7 @@
                     </div>
                 </div>
                 <div class="sliderInfo">
-                    <div class="will-acadTit"><span class="tx-color">왜</span> 노량진 실강인가?</div>
+                    <div class="will-acadTit"><span class="tx-color">이달의 추천강좌</span></div>
                     {!! banner_html(element('메인_학원소식2', $data['arr_main_banner'])) !!}
                 </div>
                 @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'])

@@ -228,10 +228,12 @@
 }
 
 /*전문교수진 */
-.hanlim .SectionBg01 {background:#fbfbfd; padding:100px 0 80px}
+.hanlim .SectionBg01 {background:#d0cdb9; padding:100px 0}
 .hanlim .SecBanner01 {margin-right:-20px; margin-top:20px}
 .hanlim .SecBanner01 li {display:inline; float:left; margin:0 20px 20px 0;}
 .hanlim .SecBanner01:after {content:''; display: block; clear:both}
+
+
 
 /* Main Container : Notice : noticeTabs */
 .hanlim .noticeTabs {

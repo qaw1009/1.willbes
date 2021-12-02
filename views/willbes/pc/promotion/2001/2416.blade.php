@@ -151,10 +151,12 @@
                     <div class="slide_con">
                         <ul id="slidesImg3">
                             @for($i=1;$i<=12;$i++)
-                                <a href="{{ (sess_data('is_login') !== true ? 'javascript:void(0);' : (empty($file_yn) === false && $file_yn[$i] == 'Y' ? front_url($file_link[$i]) : $file_link[$i])) }}"
-                                   onclick="{{ (sess_data('is_login') !== true ? 'javascript:alert(\'로그인 후 이용해주세요.\'); return false;' : '') }}" title="배경화면 다운로드" style="position: absolute;left: 0;top: 90.55%;width: 100%;height: 11.21%;z-index: 2;" target="_blank">
-                                    <li><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_{{(strlen($i) > 1 ? '' : '0').$i}}.png" alt="" /></li>
-                                </a>
+                                <li>
+                                    <a href="{{ (sess_data('is_login') !== true ? 'javascript:void(0);' : (empty($file_yn) === false && $file_yn[$i] == 'Y' ? front_url($file_link[$i]) : $file_link[$i])) }}"
+                                       onclick="{{ (sess_data('is_login') !== true ? 'javascript:alert(\'로그인 후 이용해주세요.\'); return false;' : '') }}" title="배경화면 다운로드" target="_blank">
+                                        <img src="https://static.willbes.net/public/images/promotion/2021/11/2416_07_{{(strlen($i) > 1 ? '' : '0').$i}}.png" alt="" />
+                                    </a>
+                                </li>
                             @endfor
                         </ul>
                         <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2021/11/2416_left.png"></a></p>

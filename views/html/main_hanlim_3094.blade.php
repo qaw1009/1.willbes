@@ -1,6 +1,16 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
 <link href="/public/css/willbes/style_hanlim.css??ver={{time()}}" rel="stylesheet">
+<style>
+    .hanlim .SectionBg01 .profTab {background:#34332b; border-radius:30px; padding:15px 30px; 
+    display: flex; justify-content: space-around;}
+    .hanlim .SectionBg01 .profTab a {display:block; width:100%; text-align: center; border-right:1px solid #d0cdb9; font-size:16px; color:#d0cdb9; font-weight:lighter}
+    .hanlim .SectionBg01 .profTab a:last-child {border:0}
+    .hanlim .SectionBg01 .profTab a.active {font-weight: bold; color:#fff}
+
+    .hanlim .SectionBg01 .profWrap {display:flex; margin-top: 40px}
+    .hanlim .SectionBg01 .profTab a {display:block}
+</style>
 <!-- Container -->
 <div id="Container" class="Container hanlim hl3094 NSK c_both">
     <div class="Menu widthAuto NGR c_both">
@@ -195,6 +205,89 @@
             <div class="copyTit NSK-Black">
                 전문 <span class="tx-colorr">교수진</span> <span class="NSK ml20 tx16">최고의 교수진으로 수험생의 합격을 돕겠습니다.</span>
             </div>
+            <div>
+                <div class="profTab">
+                    <a href="#tab01" class="active">경제학</a>
+                    <a href="#tab02">행정법</a>
+                    <a href="#tab03">행정학</a>
+                    <a href="#tab04">정치학</a>
+                    <a href="#tab05">국제법</a>
+                    <a href="#tab06">재정학</a>
+                    <a href="#tab07">교육학</a>
+                    <a href="#tab08">국제경제학</a>
+                    <a href="#tab09">정보체계론</a>
+                    <a href="#tab10">정책학</a>
+                </div>
+
+                <div class="profWrap" id="tab01">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_hjh.jpg" title="경제학 황종휴"></a></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_01.jpg" title="경제학, 어려운 과목"></div>
+                </div>
+
+                <div class="profWrap" id="tab02">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_pdw_2x.jpg" title="행정법 박도원"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_pdw_2x.jpg" title="행정법 신기훈"></a></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_01.jpg" title="고득점 합겹"></div>
+                </div>
+
+                <div class="profWrap" id="tab03">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_hjh.jpg" title="행정학 박경효"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_hjh.jpg" title="행정학 최승호"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_hjh.jpg" title="행정학 백승준"></a></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_02.jpg" title="행정학 어떻게 준비하시겠습니까?"></div>
+                </div>
+
+                <div class="profWrap" id="tab04">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_hjh.jpg" title="정치학 황종휴"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_kji.jpg" title="정치학 김정일"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_hjh.jpg" title="정치학 황종휴"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_kji.jpg" title="정치학 김정일"></a></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_01.jpg" title="정치학! 쉽고 분명하게"></div>
+                </div>
+
+                <div class="profWrap" id="tab05">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_pdw_2x.jpg" title="국제법 박도원"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_pdw_2x.jpg" title="국제법 신기훈"></a></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_01.jpg" title="제대로 배우고, 정확히 쓸 수 있는"></div>
+                </div>
+
+                <div class="profWrap" id="tab06">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_hjh.jpg" title="경제학 황종휴"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_kji.jpg" title="행정법 김정일"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_pdw_2x.jpg" title="행정법 박도원"></a></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_01.jpg" title="고득점 합겹"></div>
+                </div>
+
+                <div class="profWrap" id="tab07">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_hjh.jpg" title="경제학 황종휴"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_kji.jpg" title="행정법 김정일"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_pdw_2x.jpg" title="행정법 박도원"></a></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_01.jpg" title="고득점 합겹"></div>
+                </div>
+
+                <div class="profWrap" id="tab08">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_hjh.jpg" title="경제학 황종휴"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_kji.jpg" title="행정법 김정일"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_pdw_2x.jpg" title="행정법 박도원"></a></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_01.jpg" title="고득점 합겹"></div>
+                </div>
+
+                <div class="profWrap" id="tab09">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_hjh.jpg" title="경제학 황종휴"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_kji.jpg" title="행정법 김정일"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_pdw_2x.jpg" title="행정법 박도원"></a></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_01.jpg" title="고득점 합겹"></div>
+                </div>
+
+                <div class="profWrap" id="tab10">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_hjh.jpg" title="경제학 황종휴"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_kji.jpg" title="행정법 김정일"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_pdw_2x.jpg" title="행정법 박도원"></a></div>
+                    <div><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/prof_01.jpg" title="고득점 합겹"></div>
+                </div>
+
+            </div>
+            {{--
             <ul class="SecBanner01">
                 <li>
                     <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_265x211.jpg" usemap="#MapProp01" title="배너명" border="0">
@@ -267,6 +360,7 @@
                     </map>
                 </li>
             </ul>
+            --}}
         </div>
     </div>
 
@@ -603,5 +697,30 @@
             slidesImg.goToNextSlide();
         });
     });
+
+    $(document).ready(function(){
+        $('.profTab').each(function(){
+            var $active, $content, $links = $(this).find('a');
+            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+            $active.addClass('active');
+        
+            $content = $($active[0].hash);
+        
+            $links.not($active).each(function () {
+            $(this.hash).hide()});
+        
+            // Bind the click event handler
+            $(this).on('click', 'a', function(e){
+            $active.removeClass('active');
+            $content.hide();
+        
+            $active = $(this);
+            $content = $(this.hash);
+        
+            $active.addClass('active');
+            $content.show();
+        
+            e.preventDefault()})})}
+    );
 </script>
 @stop

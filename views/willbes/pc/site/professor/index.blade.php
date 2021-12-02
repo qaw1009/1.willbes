@@ -139,7 +139,8 @@
                     @endif
                     <a class="profBox" href="{{ front_url($show_url . 'subject_idx=' . $row['SubjectIdx'] . '&subject_name=' . rawurlencode($row['SubjectName'])) }}">
                         @if(empty($row['ProfEventData']) === false)
-                            <a href="{{ $row['ProfEventData']['Link'] }}"><img class="Evt" src="{{ img_url('prof/icon_event.gif') }}"></a>
+                            {{--<a href="{{ $row['ProfEventData']['Link'] }}"><img class="Evt" src="{{ img_url('prof/icon_event.gif') }}"></a>--}}
+                            <img class="Evt" src="{{ img_url('prof/icon_event.gif') }}">
                         @endif
                         <div class="Obj">{!! $row['ProfSlogan'] !!}</div>
                         <div class="Name">

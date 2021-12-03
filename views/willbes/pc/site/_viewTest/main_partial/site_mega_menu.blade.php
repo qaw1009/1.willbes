@@ -623,7 +623,7 @@
                             <li class="subTit">수학교육론</li>
                             <li><a href="{{front_url('/professor/show/prof-idx/51085?cate_code=3137&subject_idx=1986')}}">박태영</a></li>
                             <li class="subTit">수학교육론</li>
-                            <li><a href="{{front_url('/professor/show/prof-idx/51314?cate_code=3137&subject_idx=1986')}}">박헤향</a></li>
+                            <li><a href="{{front_url('/professor/show/prof-idx/51314?cate_code=3137&subject_idx=1986')}}">박혜향</a></li>
                         </ul>
                     </td>
                     <td>

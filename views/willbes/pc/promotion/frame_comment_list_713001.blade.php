@@ -128,7 +128,7 @@
             @if(empty($arr_base['write_yn']) === true)
                 <div class="replyWrite">
                     <div class="textarBx">
-                        <textarea id="event_comment" name="event_comment" cols="30" rows="3"></textarea>
+                        <textarea id="event_comment" name="event_comment" cols="30" rows="3" onclick="loginCheck('{{ sess_data('is_login') }}')"></textarea>
                     </div>
                     <p>
                          * 지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있습니다.
@@ -193,6 +193,8 @@
 
 <script type="text/javascript">
     var $regi_form_comment = $('#regi_form_comment');
+    var $login_url = "{{$arr_base['login_url'] or ''}}";
+
     $(document).ready(function() {
         // 문자 바이트 수 계산
         $('#event_comment').on('change keyup', function() {
@@ -204,7 +206,7 @@
             @if($arr_base['comment_create_type'] == '1')
             comment_submit();
             @elseif($arr_base['comment_create_type'] == '2')
-            alert('회원만 댓글을 등록할 수 있습니다.');
+            loginCheck();
             @elseif($arr_base['comment_create_type'] == '3')
             alert('만료된 이벤트 입니다.');
             @endif
@@ -306,6 +308,14 @@
 
     function reload() {
         location.reload();
+    }
+
+    function loginCheck(is_login){
+        if(!is_login && $login_url){
+            alert('로그인해 주세요.');
+            window.parent.location.href = $login_url;
+        }
+        return true;
     }
 </script>
 

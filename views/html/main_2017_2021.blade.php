@@ -86,6 +86,7 @@ no-repeat 5px center}
 	right: -1px;
 }
 .dropdown .list-drop-Box-ssam td p {background:#f9f9f9;width:75px;height:50px;line-height:50px;font-size:14px;display:table-cell;border-bottom: 1px solid #e4e4e4;border-top: 1px solid #e4e4e4;}
+.no_click {color:#A6A6A6;font-size:13px;line-height:1.75;}
 </style>
 
 <!-- Container -->
@@ -242,10 +243,10 @@ no-repeat 5px center}
                                 <td>
                                     <ul>
                                         <li><a href="#none">허역 팀</a></li>
-                                        <li><a href="javascript:void(0)" style="color:#A6A6A6">김현중</a></li>
-                                        <li><a href="javascript:void(0)" style="color:#A6A6A6">허역</a></li>
-                                        <li><a href="javascript:void(0)" style="color:#A6A6A6">이웅재</a></li>
-                                        <li><a href="javascript:void(0)" style="color:#A6A6A6">정인홍</a></li>
+                                        <span class="no_click">김현중</span><br>
+                                        <span class="no_click">김현중</span><br>
+                                        <span class="no_click">김현중</span><br>
+                                        <span class="no_click">김현중</span>
                                     </ul>
                                 </td>
                                 <td>
@@ -256,7 +257,7 @@ no-repeat 5px center}
                                 </td>
                                 <td>
                                     <ul>
-                                        <li><a href="#none" style="line-height:75px;">다이애나</a></li><br>
+                                        <li><a href="#none">다이애나</a></li><br>
                                         <p>정보컴퓨터
                                             <li class="subTit">정컴내용학</li>
                                             <li><a href="#none">송광진</a></li>
@@ -267,9 +268,9 @@ no-repeat 5px center}
                                 </td>
                                 <td>
                                     <ul>
-                                        <li><a href="#none" style="line-height:75px;">최우영</a></li><br>
+                                        <li><a href="#none">최우영</a></li><br>
                                         <p>중국어
-                                            <li><a href="#none" style="padding-top:33px;">장영희</a></li>                                       
+                                            <li><a href="#none" style="padding-top:15px;">장영희</a></li>                                       
                                             <li><a href="#none">정경미</a></li>                                          
                                         </p>   
                                     </ul>

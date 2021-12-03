@@ -257,7 +257,7 @@ no-repeat 5px center}
                                 </td>
                                 <td>
                                     <ul>
-                                        <li><a href="#none" style="line-height:75px;">다이애나</a></li><br>
+                                        <li><a href="#none" style="padding-bottom:25px;">다이애나</a></li><br>
                                         <p>정보컴퓨터
                                             <li class="subTit">정컴내용학</li>
                                             <li><a href="#none">송광진</a></li>
@@ -268,7 +268,7 @@ no-repeat 5px center}
                                 </td>
                                 <td>
                                     <ul>
-                                        <li><a href="#none" style="line-height:75px;">최우영</a></li><br>
+                                        <li><a href="#none" style="padding-bottom:25px;">최우영</a></li><br>
                                         <p>중국어
                                             <li><a href="#none" style="padding-top:17px;">장영희</a></li>                                       
                                             <li><a href="#none">정경미</a></li>                                          

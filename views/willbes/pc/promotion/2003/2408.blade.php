@@ -45,7 +45,7 @@
         
         /*타이머 스크롤*/
         .jbMenu {display:none}
-        .jbMenu {top:0px; width:100%; background:#000; display:block; z-index:100}
+        .jbMenu {top:0px; width:100%; background:#000; display:block; z-index:10;}
         .jbFixed {position:fixed; top: 0px}
 
     </style>

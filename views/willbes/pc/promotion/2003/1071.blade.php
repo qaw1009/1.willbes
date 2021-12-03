@@ -54,9 +54,6 @@
         .wb_cts03 {background:#f4f4f4;}
 
         .wb_cts04 {background:#ead9d9; padding-bottom:50px}
-        .wb_cts04 ul {width:1120px !important; margin:0 auto; display:flex; justify-content: space-around; align-content: center; flex-wrap: wrap;}  
-        .wb_cts04 li a:hover img {box-shadow:10px 10px 20px rgba(0,0,0,.3); border-radius:24px}
-
 
         .wb_cts05 {background:#ead9d9; padding-bottom:100px}
         .wb_cts05 ul {width:960px; margin:0 auto}
@@ -166,14 +163,14 @@
         </div>
 
         <div class="evtCtnsBox wb_cts04" id="pkglec">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/1071_04_01.jpg" alt=""/> 
-            <ul>
-                <li><a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/186551" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/10/1071_04_05.png" alt="전자공학"/> </a></li>
-                <li><a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/184023" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/10/1071_04_02.png" alt="통신기술직"/> </a></li>
-                <li><a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/184024" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/10/1071_04_03.png" alt="전송기술직"/> </a></li>
-                <li><a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/184021" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/10/1071_04_04.png" alt="전기직"/> </a></li>
-            </ul>
-
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/1071_04_01.jpg" alt=""/>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/186551" target="_blank"  title="전자공학" style="position: absolute;left: 11.64%;top: 53.93%;width: 20.36%;height: 4.06%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/184023" target="_blank"  title="통신기술직" style="position: absolute;left: 39.64%;top: 53.93%;width: 20.36%;height: 4.06%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/184024" target="_blank"  title="전기직" style="position: absolute;left: 68.64%;top: 53.93%;width: 20.36%;height: 4.06%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/184021" target="_blank"  title="기본강의" style="position: absolute;left: 24.94%;top: 90.93%;width: 20.36%;height: 4.06%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/188423" target="_blank"  title="단원별문풀 패키지" style="position: absolute;left: 54.44%;top: 90.93%;width: 20.36%;height: 4.06%;z-index: 2;"></a>                
+            </div>
         </div>       
 
         <div class="evtCtnsBox wb_cts05">
@@ -502,8 +499,8 @@
                     <tr>
                         <td>전기이론</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 전기이론 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/175321" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 전기이론 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/188421" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기이론</td>
@@ -539,8 +536,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 전기기기 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/175322" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 전기기기 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/188422" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
@@ -580,8 +577,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 전기기기 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/175322" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 전기기기 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/188422" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>

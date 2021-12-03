@@ -55,6 +55,9 @@
         <div class="sky" id="QuickMenu">          
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1066#package" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/1067_skybanner3.png" title="패키지" >
+            </a>
+            <a href="#package">
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2408_sky.png" title="기출+모고" >
             </a>           
         </div>
 
@@ -83,10 +86,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2408_02.jpg" alt="맞춤형 과정" />
         </div>
 
-        <div class="evtCtnsBox evt03" data-aos="fade-up">
+        <div class="evtCtnsBox evt03" data-aos="fade-up" id="package"> 
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2408_03.jpg" alt="패키지" />
-                <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/187287" target="_blank" title="수강신청하기" style="position: absolute;left: 31.98%;top: 48.33%;width: 32.46%;height: 7.77%;z-index: 2;"></a>       
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2408_03.jpg" alt="패키지" />
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/188418" target="_blank" title="수강신청하기" style="position: absolute;left: 59.98%;top: 31.83%;width: 25.46%;height: 4.77%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/187287" target="_blank" title="수강신청하기" style="position: absolute;left: 31.98%;top: 68.33%;width: 32.46%;height: 7.77%;z-index: 2;"></a>       
                 <div class="sTitle NSK-Black">실전덕후단 서울시 1회 단과 수강신청</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))

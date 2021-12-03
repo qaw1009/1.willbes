@@ -60,7 +60,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2377_02.gif" alt="커리큘럼" />        
         </div> 
 
-        <div class="evtCtnsBox wb_cts03" data-aos="fade-up">
+        <div class="evtCtnsBox wb_cts03" data-aos="fade-up"  id="package">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2377_03.jpg" alt="수강신청" />    
                 <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2408" title="수강신청" target="_blank" style="position: absolute;left: 58.52%;top: 26.9%;width: 29.07%;height: 5.9%;z-index: 2;"></a>
@@ -69,7 +69,7 @@
             </div>                      
         </div>
 
-        <div class="evtCtnsBox wb_cts04" data-aos="fade-up" id="package">
+        <div class="evtCtnsBox wb_cts04" data-aos="fade-up">
             <div class="wrap">           
                 <div class="sTitle NSK-Black">단과 수강신청</div>
                 @if(empty($arr_base['display_product_data']) === false)

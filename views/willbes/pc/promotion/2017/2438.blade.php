@@ -25,43 +25,19 @@
 
         .evt03 {width:1120px; margin:0 auto; padding:100px 0; display: flex; justify-content: space-between;}
 
-        .tabCts {width:780px;}
-        .tabCts .btnBox {position:absolute; bottom:30px; left:50px; text-align:left}
-        .tabCts .prof-top-btn a {display:inline-block; color:#fff; padding:4px 10px 4px 22px; margin-right:4px}
-        .tabCts .prof-top-btn a:nth-of-type(1) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon01.png") 
-            no-repeat 5px center}
-        .tabCts .prof-top-btn a:nth-of-type(2) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon02.png") 
-        no-repeat 5px center}
-        .tabCts .prof-top-btn a:nth-of-type(3) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon03.png") 
-            no-repeat 5px center}
-        .tabCts .prof-clip-btn {margin-top:14px}
-        .tabCts .prof-clip-btn a {display:inline-block; margin-right:5px}
-        .tabCts .hotclip {position:absolute; top:225px; left:355px;}
-
-        .evt04 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2438_04_bg.jpg) no-repeat center top;}
-        .evt05 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2438_05_bg.jpg) no-repeat center top;}
-
-        .evtInfo {padding:80px 0; background:#fff; color:#242424; font-size:16px}
-		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
-        .evtInfoBox h4 {font-size:40px; margin-bottom:20px}
-        .evtInfoBox h4 span {color:#e30000}
-        .evtInfoBox h5 {font-size:18px; margin-bottom:10px; font-weight:bold}
-        .evtInfoBox ul {margin-bottom:30px}
-        .evtInfoBox li {list-style-type: decimal;margin-left:30px; margin-bottom:10px}
-
         .ssam-Lnb {
             width: 300px;
             text-align:left;            
         }
-        .ssam-Lnb .lnb-List {border:1px solid #a2a2a2; border-bottom;0}
+        .ssam-Lnb .lnb-List {border:1px solid #a2a2a2; border-top:0}
         .ssam-Lnb .lnb-List .ssam-lnb-List-Tit a {
             display: block;
             height: 50px;
             font-size: 18px;
-            font-weight:bold;
+            font-weight:bold;            
+            border-top: 1px solid #b2b2b2;
             color: #000;
-            line-height: 50px;
-            border-bottom: 1px solid #b2b2b2;
+            line-height: 50px;            
             padding-left: 20px;            
             position:relative;
             background:#e4e4e4 url("https://static.willbes.net/public/images/promotion/2021/12/2438_arrowDown.png") no-repeat 90% center;
@@ -73,7 +49,8 @@
 
         .ssam-Lnb .lnb-List .lnb-List-Depth {
             display: none;
-            background: #fff;
+            background: #fff;            
+            border-top: 1px solid #b2b2b2;
             border-bottom: 1px solid #ececec;
         }
         .ssam-Lnb .lnb-List .lnb-List-Depth dl dt a {
@@ -87,13 +64,70 @@
         .ssam-Lnb .lnb-List .lnb-List-Depth dl dt a.active {
             background: #ffd800;
         }
-        .ssam-Lnb .lnb-List .lnb-List-Depth dl dt:last-child a {border:0}
+        .ssam-Lnb .lnb-List .lnb-List-Depth dl dt:last-child,
+        .ssam-Lnb .lnb-List .lnb-List-Depth dl dt:last-child a {border-bottom:0}
+
+        .tabCts {width:780px; text-align:left} 
+        .tabCts .btnBox {position:absolute; bottom:30px; left:50px;}
+        .tabCts .prof-top-btn a {display:inline-block; color:#fff; padding:4px 10px 4px 22px; margin-right:4px}
+        .tabCts .prof-top-btn a:nth-of-type(1) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon01.png") 
+            no-repeat 5px center}
+        .tabCts .prof-top-btn a:nth-of-type(2) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon02.png") 
+        no-repeat 5px center}
+        .tabCts .prof-top-btn a:nth-of-type(3) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon03.png") 
+            no-repeat 5px center}
+        .tabCts .prof-top-btn a:hover {background-color:#ffd800; color:#0a2230}
+ 
+        .tabCts .prof-clip-btn {margin-top:14px}
+        .tabCts .prof-clip-btn a {display:inline-block; margin-right:5px; position: relative;}
+        .tabCts .prof-clip-btn a img.play {position:absolute; top:0; left:0; z-index: 10; opacity:0.7;}
+        .tabCts .prof-clip-btn a:hover img.play {opacity:1;}
+        .tabCts .pkgBuy {display:flex; justify-content: space-between; margin:20px 0 40px}
+        .tabCts .pkgBuy div {flex-grow: 1;}
+        .tabCts .pkgBuy a {display:block; line-height:1.3; font-weight:bold; background:#111; color:#fff; padding:20px 25px; text-align:center; margin-right:10px}
+        .tabCts .pkgBuy div:nth-of-type(even) a {background:#4b66b0;}
+        .tabCts .pkgBuy a:hover {background:#ffd800 !important; color:#111}
+        .tabCts .pkgBuy div:last-child a {margin:0}
+        .tabCts .pkgBuy strong {display:block; font-size:18px}
+
+   
+        .tabCts .buyWrap h4 {font-size:24px; margin-bottom:20px}
+        .tabCts .buyWrap h5 {font-size:16px; margin-bottom:10px}
+        .tabCts .buyWrap .basket {display:flex; justify-content: space-between; line-height:1.4; margin-bottom:40px}
+        .tabCts .buyWrap .lecbox {width:calc((100% / 2) - 10px);}
+        .tabCts .buyWrap .lecbox ul {border:1px solid #c4c4c4; border-top:4px solid #313131; padding:20px; background:#f4f4f4; min-height:150px; margin-bottom:15px}
+        .tabCts .buyWrap .lecbox li {padding:5px 0}
+        .tabCts .buyWrap .lecbox li strong {color:#2c4fad}
+        .tabCts .buyWrap .lecbox div {text-align:right; font-size:16px}
+        .tabCts .buyWrap .lecbox div p:nth-child(2) {font-size:24px; padding-bottom:10px; margin-bottom:10px; border-bottom:1px solid #7f7f7f; color:#7f7f7f; font-weight:bold}
+        .tabCts .buyWrap .lecbox div p strong {color:#0070c0}
+        .tabCts .buyWrap .lecbox div p strong:last-child {color:#ff0000}
+        .tabCts .buyWrap .lecbox div p a {display:inline-block; padding:10px 20px; color:#fff; background:#111}
+        .tabCts .buyWrap .lecbox div p a:hover {background-color:#ffd800; color:#111}
+        .tabCts .buyWrap .checkWrap input {width:18px; height:18px}
+        .tabCts .buyWrap .checkWrap label {cursor: pointer}
+
+        .evt04 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2438_04_bg.jpg) no-repeat center top;}
+        .evt05 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2438_05_bg.jpg) no-repeat center top;}
+
+        .evtInfo {padding:80px 0; background:#fff; color:#242424; font-size:16px}
+		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
+        .evtInfoBox h4 {font-size:40px; margin-bottom:20px}
+        .evtInfoBox h4 span {color:#e30000}
+        .evtInfoBox h5 {font-size:18px; margin-bottom:10px; font-weight:bold}
+        .evtInfoBox ul {margin-bottom:30px}
+        .evtInfoBox li {list-style-type: decimal;margin-left:30px; margin-bottom:10px}
+
+        .willbes-Layer-CurriBox {top:2300px}
 
         .ssam .willbes-Layer-youtube {
             display: none;
+        }
+        .ssam .willbes-Layer-youtube .popupWrap {
+            display:flex; justify-content: center;align-items: center;
             background:#000;
             position: absolute;
-            top: 50px;
+            top: 2300px;
             z-index: 110;
             width: 860px;
             height: 484px;
@@ -107,6 +141,7 @@
             right: -2px;
         }
         .ssam .willbes-Layer-youtube iframe {width:860px; height:484px}
+
     </style>
 
     <div class="p_re evtContent NSK ssam" id="evtContainer">
@@ -124,14 +159,14 @@
 
         <div class="evtCtnsBox evt03">
             <div class="ssam-Lnb">
-                <div class="lnb-List">
+                <div class="lnb-List tabs">
                     <div class="ssam-lnb-List-Tit">
                         <a href="#none">유·초등</a>
                     </div>
                     <div class="lnb-List-Depth">
                         <dl>
-                            <dt><a href="#none">유아 민정선</a></dt>
-                            <dt><a href="#none">초등 배재민</a></dt>
+                            <dt><a href="#tab01" class="active">유아 민정선</a></dt>
+                            <dt><a href="#tab02">초등 배재민</a></dt>
                         </dl>
                     </div>
                     <div class="ssam-lnb-List-Tit">
@@ -180,21 +215,135 @@
             </div>
 
             <div class="tabCts">
-                <div id="tab01" class="p_re">
-                    <div>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2438_prof_mjs.jpg" alt="특별이벤트"/>
+                <div id="tab01" class="profBox">
+                    <div class="p_re">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2438_prof_mjs.jpg" alt="유아 민정선"/>
                         <div class="btnBox">
                             <div class="prof-top-btn">                            
                                 <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
                                 <a href="https://ssam.willbes.net/professor/show/prof-idx/51076?cate_code=3135&subject_idx=1981">교수님 홈</a>
                             </div> 
                             <div class="prof-clip-btn">
-                                <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
-                                <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>   
-                                <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
+                                <a onclick="openWin('sec-prof-layer'),openWin('youtube')">
+                                    <img src="https://static.willbes.net/public/images/promotion/2021/12/icon_youtube.png" class="play">
+                                    <img src="https://ssam.willbes.net/public/uploads/willbes/etc/hotclip/2021/0818/thumbnail_0_20210818153134.jpg" title="유튜브">
+                                </a>
+                                <a onclick="openWin('sec-prof-layer'),openWin('youtube')">
+                                    <img src="https://static.willbes.net/public/images/promotion/2021/12/icon_youtube.png" class="play">
+                                    <img src="https://ssam.willbes.net/public/uploads/willbes/etc/hotclip/2021/0818/thumbnail_0_20210818153134.jpg" title="유튜브">
+                                </a>   
+                                <a onclick="openWin('sec-prof-layer'),openWin('youtube')">
+                                    <img src="https://static.willbes.net/public/images/promotion/2021/12/icon_youtube.png" class="play">
+                                    <img src="https://ssam.willbes.net/public/uploads/willbes/etc/hotclip/2021/0818/thumbnail_0_20210818153134.jpg" title="유튜브">
+                                </a>                    
                             </div> 
                         </div>
                     </div>
+                    <div class="pkgBuy">
+                        <div>
+                            <a href="#none">
+                                연간패키지 - 논술포함
+                                <strong>학원직강 신청</strong>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#none">
+                                연간패키지 - 논술포함
+                                <strong>동영상강의 신청</strong>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#none">
+                                연간패키지 - 논술제외
+                                <strong>학원직강 신청</strong>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#none">
+                                연간패키지 - 논술제외
+                                <strong>동영상강의 신청</strong>
+                            </a>
+                        </div>
+                    </div>        
+                </div>
+
+                <div id="tab02" class="profBox">
+                    <div class="p_re">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2438_prof_bjm.jpg" alt="초등 배재민"/>
+                        <div class="btnBox">
+                            <div class="prof-top-btn">                            
+                                <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                                <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982">교수님 홈</a>
+                            </div> 
+                            <div class="prof-clip-btn">
+                                <a onclick="openWin('sec-prof-layer'),openWin('youtube')">
+                                    <img src="https://static.willbes.net/public/images/promotion/2021/12/icon_youtube.png" class="play">
+                                    <img src="https://ssam.willbes.net/public/uploads/willbes/etc/hotclip/2021/0818/thumbnail_0_20210818153134.jpg" title="유튜브">
+                                </a>
+                                <a onclick="openWin('sec-prof-layer'),openWin('youtube')">
+                                    <img src="https://static.willbes.net/public/images/promotion/2021/12/icon_youtube.png" class="play">
+                                    <img src="https://ssam.willbes.net/public/uploads/willbes/etc/hotclip/2021/0818/thumbnail_0_20210818153134.jpg" title="유튜브">
+                                </a>   
+                                <a onclick="openWin('sec-prof-layer'),openWin('youtube')">
+                                    <img src="https://static.willbes.net/public/images/promotion/2021/12/icon_youtube.png" class="play">
+                                    <img src="https://ssam.willbes.net/public/uploads/willbes/etc/hotclip/2021/0818/thumbnail_0_20210818153134.jpg" title="유튜브">
+                                </a>                    
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="pkgBuy">
+                        <div>
+                            <a href="#none">
+                                연간패키지 - 논술포함
+                                <strong>학원직강 신청</strong>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#none">
+                                연간패키지 - 논술포함
+                                <strong>동영상강의 신청</strong>
+                            </a>
+                        </div>
+                    </div>        
+                </div>
+
+                <div class="buyWrap">
+                    <h4 class="NSK-Black">· 2023학년도 대비  연간패키지 신청내역</h4>
+                    <div class="basket">
+                        <div class="lecbox">
+                            <h5><strong>학원직강 연간패키지</strong> 신청내역</h5>
+                            <ul>
+                                <li><strong>교수명</strong> 교육학 연간패키지
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
+                                <li><strong>교수명</strong> 영어학 연간패키지
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
+                                <li><strong>교수명</strong> 일반영어 연간패키지
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
+                            </ul>
+                            <div>
+                                <p>100,000(10%) 할인</p>
+                                <p><strong>3과목</strong> 결제금액 <strong>4,523,666</strong>원</p>
+                                <p><a href="#none">결제하기</a></p>
+                            </div>
+                        </div>
+                        <div class="lecbox">
+                            <h5><strong>동영상강의 연간패키지</strong> 신청내역</h5>
+                            <ul>
+                                <li><strong>교수명</strong> 교육학 연간패키지
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
+                                <li><strong>교수명</strong> 영어학 연간패키지
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
+                                <li><strong>교수명</strong> 일반영어 연간패키지
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
+                            </ul>
+                            <div>
+                                <p>100,000(10%) 할인</p>
+                                <p><strong>3과목</strong> 결제금액 <strong>4,523,666</strong>원</p>
+                                <p><a href="#none">결제하기</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkWrap"><input type="checkbox" id="check"> <label for="check">페이지 하단의 상품 관련 유의사항을 모두 확인하였고, 이에 동의합니다.</label></div>
                 </div>
             </div>
         </div>
@@ -234,15 +383,31 @@
 
         {{--교수 youtube 팝업 --}}
         <div id="youtube" class="willbes-Layer-youtube">
-            <a class="closeBtn" href="#none" onclick="closeWin('sec-prof-layer'),closeWin('youtube')">
-                <img src="{{ img_url('prof/close.png') }}">
-            </a>
-            <iframe src="https://www.youtube.com/embed/Y2W3lUrn3aI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                
+            <div class="popupWrap">
+                <a class="closeBtn" href="#none" onclick="closeWin('sec-prof-layer'),closeWin('youtube')">
+                    <img src="{{ img_url('prof/close.png') }}">
+                </a>
+                <iframe src="https://www.youtube.com/embed/Y2W3lUrn3aI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
+            </div>             
         </div>
-        {{--교수 커리큘럼 --}}
+        {{--교수 커리큘럼 팝업 --}}
+        <div id="Curriculum" class="willbes-Layer-CurriBox">
+            <div class="popupWrap">
+                <a class="closeBtn" href="#none" onclick="closeWin('sec-prof-layer'),closeWin('Curriculum')">
+                    <img src="{{ img_url('prof/close.png') }}">
+                </a>
+                <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">민정선</span> 교수님 커리큘럼</div>
+                <div class="Layer-Cont">
+                    <img src="https://ssam.willbes.net/public/uploads/willbes/board/92/2020/1127/board_305025_01_20201127150717.jpg"/>
+                </div>  
+            </div>             
+        </div>
         <div id="sec-prof-layer" class="willbes-Layer-Black"></div>
+
     </div>
     <!-- End Container -->
+
+
 
     <script type="text/javascript">
         $(function() {
@@ -261,30 +426,5 @@
                 }   
             });
         });
-/*
-        $(document).ready(function(){
-            $('.tabs ul').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
-
-                $content = $($active[0].hash);
-
-                $links.not($active).each(function () {
-                    $(this.hash).hide()});
-
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                    $active.removeClass('active');
-                    $content.hide();
-
-                    $active = $(this);
-                    $content = $(this.hash);
-
-                    $active.addClass('active');
-                    $content.show();
-
-                    e.preventDefault()})})}
-        );*/
     </script>
 @stop

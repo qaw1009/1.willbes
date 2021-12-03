@@ -6,7 +6,7 @@ class BasePromotion extends \app\controllers\FrontController
 {
     protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF', '_lms/sys/code', 'dDayF', 'product/lectureF', 'eventsurvey/survey', '_lms/product/base/subject', 'memberF');
     protected $helpers = array('download');
-    protected $_paging_limit = 5;
+    protected $_paging_limit = 10;
     protected $_paging_count = 10;
     protected $_paging_count_m = 5;
 

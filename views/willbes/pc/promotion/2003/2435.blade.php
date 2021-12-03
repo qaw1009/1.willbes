@@ -165,7 +165,7 @@
 
         <div class="evtCtnsBox wb_info" id="info">
             <div class="guide_box">
-                <h2 class="NSK-Black">여름엔 열공! 룰렛 돌리고 합격 해볼랫?</h2>
+                <h2 class="NSK-Black">룰렛 돌리고 합격 해볼랫?</h2>
                 <dl>
                     <dt>&lt;룰렛 이벤트&gt;</dt>
                     <dd>

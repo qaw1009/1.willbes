@@ -22,6 +22,8 @@
 .ssam .VisualBox .MaintabFlex span a:hover {
     background-color:rgba(255,255,255,.3); font-weight:bold
 }
+.dropdown .list-drop-Box-ssam td p {background:#f9f9f9;width:75px;height:50px;line-height:50px;font-size:14px;display:table-cell;border-bottom: 1px solid #e4e4e4;border-top: 1px solid #e4e4e4;}
+.no_click {color:#A6A6A6;font-size:13px;line-height:1.75;font-weight:100;}
 </style>
 
 <!-- Container -->
@@ -91,18 +93,19 @@
                                     <th>영어</th>
                                     <th>수학</th>
                                     <th>생물</th>
+                                    <th>화학</th>
                                     <th>도덕윤리</th>
+                                    <th>일반사회</th>
                                     <th>역사</th>
                                     <th>음악</th>
                                     <th>전기전자통신</th>
-                                    <th>정보컴퓨터</th>
-                                    <th>중국어</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td>
                                     <ul>
+                                        <li><a href="#none">이경범</a></li>
                                         <li><a href="#none">이인재</a></li>
                                         <li><a href="#none">홍의일</a></li>
                                     </ul>
@@ -118,34 +121,35 @@
                                 </td>
                                 <td>
                                     <ul>
-                                        <li class="subTit">국어<br>국어교육학</li>
+                                        <li class="subTit">국어/문학<br>교육론</li>
                                         <li><a href="#none">송원영</a></li>
-                                        <li class="subTit">국어문법</li>
-                                        <li><a href="#none">이원근</a></li>
+                                        <li class="subTit">문법</li>
                                         <li><a href="#none">권보민</a></li>
+                                        <li class="subTit">전공국어</li>
+                                        <li><a href="#none">구동언</a></li>
                                     </ul>
                                 </td>
                                 <td>
                                     <ul>
                                         <li class="subTit">일반영어<br>영미문학</li>
-                                        <li><a href="#none">송원영</a></li>
+                                        <li><a href="#none">김유석</a></li>
                                         <li class="subTit">영어학</li>
-                                        <li><a href="#none">김영문</a></li>
-                                        <li class="subTit">영어학<br>영어교육론</li>
-                                        <li><a href="#none">공훈</a></li>
+                                        <li><a href="#none">김영문</a></li>                                        
                                     </ul>
                                 </td>
                                 <td>
                                     <ul>
-                                        <li class="subTit">전공수학</li>
+                                        <li class="subTit">수학내용학</li>
                                         <li><a href="#none">김철홍</a></li>
                                         <li class="subTit">수학교육론</li>
                                         <li><a href="#none">박태영</a></li>
+                                        <li class="subTit">수학교육론</li>
+                                        <li><a href="#none">박헤향</a></li>
                                     </ul>
                                 </td>
                                 <td>
                                     <ul>
-                                        <li class="subTit">전공생물</li>
+                                        <li class="subTit">생물내용학</li>
                                         <li><a href="#none">강치욱</a></li>
                                         <li class="subTit">생물교육론</li>
                                         <li><a href="#none">양혜정</a></li>
@@ -153,37 +157,50 @@
                                 </td>
                                 <td>
                                     <ul>
-                                        <li><a href="#none">김병찬</a></li>
+                                        <li><a href="#none">강철</a></li>
                                     </ul>
                                 </td>
                                 <td>
                                     <ul>
+                                        <li><a href="#none">김병찬</a></li>
+                                        <li><a href="#none">김민응</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">허역 팀</a></li>
+                                        <span class="no_click">김현중</span><br>
+                                        <span class="no_click">허역</span><br>
+                                        <span class="no_click">이웅재</span><br>
+                                        <span class="no_click">정인홍</span>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">김종권</a></li>
                                         <li><a href="#none">최용림</a></li>
                                     </ul>
                                 </td>
                                 <td>
                                     <ul>
-                                        <li><a href="#none">다이애나</a></li>
+                                        <li><a href="#none" style="padding-bottom:25px;">다이애나</a></li><br>
+                                        <p>정보컴퓨터
+                                            <li class="subTit">정컴내용학</li>
+                                            <li><a href="#none">송광진</a></li>
+                                            <li class="subTit">정컴교육론</li>
+                                            <li><a href="#none">장순선</a></li>
+                                        </p>   
                                     </ul>
                                 </td>
                                 <td>
                                     <ul>
-                                        <li><a href="#none">최우영</a></li>
+                                        <li><a href="#none" style="padding-bottom:25px;">최우영</a></li><br>
+                                        <p>중국어
+                                            <li><a href="#none" style="padding-top:17px;">장영희</a></li>                                       
+                                            <li><a href="#none">정경미</a></li>                                          
+                                        </p>   
                                     </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li class="subTit">정보컴퓨터</li>
-                                        <li><a href="#none">송광진</a></li>
-                                        <li class="subTit">정컴교육론</li>
-                                        <li><a href="#none">장순선</a></li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li><a href="#none">정경미</a></li>
-                                    </ul>
-                                </td>
+                                </td>                          
                             </tr>
                             </tbody>
                         </table>

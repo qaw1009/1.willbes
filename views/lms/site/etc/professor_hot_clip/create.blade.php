@@ -331,6 +331,11 @@
         $(document).ready(function() {
             $regi_form.find('select[name="hotclip_group_idx"]').chained("#site_code");
 
+            $regi_form.on('change','select[name="site_code"]', function () {
+                $('#selected_category').html('');
+                $('#selected_prof_subject').html('');
+            });
+
             var view_type = $("#hotclip_group_idx").find("option:selected").data("view-type");
             if (typeof view_type === 'undefined') {
                 $('.event').hide();
@@ -345,7 +350,7 @@
 
             // 카테고리 검색
             $('#btn_category_search').on('click', function() {
-                var site_code = $regi_form.find('input[name="site_code"]').val();
+                var site_code = $regi_form.find('select[name="site_code"]').val();
                 if (!site_code) {
                     alert('운영사이트를 먼저 선택해 주십시오.');
                     return;
@@ -360,7 +365,7 @@
 
             // 과목/교수 검색 버튼 클릭
             $('#btn_prof_subject_search').on('click', function(event) {
-                var site_code = $regi_form.find('input[name="site_code"]').val();
+                var site_code = $regi_form.find('select[name="site_code"]').val();
                 var cate_code = $regi_form.find('input[name="cate_code"]').val();
                 var search_url = '{{ site_url('/common/searchProfessorSubject/index/') }}';
 

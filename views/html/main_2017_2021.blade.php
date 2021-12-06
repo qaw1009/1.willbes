@@ -177,51 +177,51 @@ no-repeat 5px center}
                             </thead>
                             <tbody>
                             <tr>
-                                <td>
+                                <td rowspan="3">
                                     <ul>
                                         <li><a href="#none">이경범</a></li>
                                         <li><a href="#none">이인재</a></li>
                                         <li><a href="#none">홍의일</a></li>
                                     </ul>
                                 </td>
-                                <td>
+                                <td rowspan="3">
                                     <ul>
                                         <li><a href="#none">민정선</a></li>
+                                    </ul>
                                 </td>
-                                <td>
+                                <td rowspan="3">
                                     <ul>
                                         <li><a href="#none">배재민</a></li>
                                     </ul>
                                 </td>
-                                <td>
+                                <td rowspan="3">
                                     <ul>
-                                        <li class="subTit">국어/문학<br>교육론</li>
+                                        <li class="subTit">국어<br>문학교육학</li>
                                         <li><a href="#none">송원영</a></li>
-                                        <li class="subTit">문법</li>
+                                        <li class="subTit">문법</li>                                        
                                         <li><a href="#none">권보민</a></li>
                                         <li class="subTit">전공국어</li>
                                         <li><a href="#none">구동언</a></li>
                                     </ul>
                                 </td>
-                                <td>
+                                <td rowspan="3">
                                     <ul>
                                         <li class="subTit">일반영어<br>영미문학</li>
                                         <li><a href="#none">김유석</a></li>
                                         <li class="subTit">영어학</li>
-                                        <li><a href="#none">김영문</a></li>                                        
+                                        <li><a href="#none">김영문</a></li>
                                     </ul>
                                 </td>
-                                <td>
+                                <td rowspan="3">
                                     <ul>
                                         <li class="subTit">수학내용학</li>
                                         <li><a href="#none">김철홍</a></li>
                                         <li class="subTit">수학교육론</li>
                                         <li><a href="#none">박태영</a></li>
-                                        <li class="subTit">수학교육론</li>
                                         <li><a href="#none">박헤향</a></li>
                                     </ul>
                                 </td>
-                                <td>
+                                <td rowspan="3">
                                     <ul>
                                         <li class="subTit">생물내용학</li>
                                         <li><a href="#none">강치욱</a></li>
@@ -229,27 +229,31 @@ no-repeat 5px center}
                                         <li><a href="#none">양혜정</a></li>
                                     </ul>
                                 </td>
-                                <td>
+                                <td rowspan="3">
                                     <ul>
                                         <li><a href="#none">강철</a></li>
                                     </ul>
                                 </td>
-                                <td>
+                                <td rowspan="3">
                                     <ul>
                                         <li><a href="#none">김병찬</a></li>
                                         <li><a href="#none">김민응</a></li>
                                     </ul>
                                 </td>
-                                <td>
+                                <td rowspan="3">
                                     <ul>
-                                        <li><a href="#none">허역 팀</a></li>
-                                        <span class="no_click">김현중</span><br>
-                                        <span class="no_click">허역</span><br>
-                                        <span class="no_click">이웅재</span><br>
-                                        <span class="no_click">정인홍</span>
+                                        <li>
+                                            <a href="#none" class="strong">허역팀</a>
+                                        </li>
+                                        <li class="tx-purple-gray">
+                                            김현중<br>
+                                            허역<br>
+                                            이웅재<br>
+                                            정인홍
+                                        </li>                                       
                                     </ul>
                                 </td>
-                                <td>
+                                <td rowspan="3">
                                     <ul>
                                         <li><a href="#none">김종권</a></li>
                                         <li><a href="#none">최용림</a></li>
@@ -257,24 +261,34 @@ no-repeat 5px center}
                                 </td>
                                 <td>
                                     <ul>
-                                        <li><a href="#none" style="padding-bottom:25px;">다이애나</a></li><br>
-                                        <p>정보컴퓨터
-                                            <li class="subTit">정컴내용학</li>
-                                            <li><a href="#none">송광진</a></li>
-                                            <li class="subTit">정컴교육론</li>
-                                            <li><a href="#none">장순선</a></li>
-                                        </p>   
+                                        <li><a href="#none">다이애나</a></li>
                                     </ul>
                                 </td>
                                 <td>
                                     <ul>
-                                        <li><a href="#none" style="padding-bottom:25px;">최우영</a></li><br>
-                                        <p>중국어
-                                            <li><a href="#none" style="padding-top:17px;">장영희</a></li>                                       
-                                            <li><a href="#none">정경미</a></li>                                          
-                                        </p>   
+                                        <li><a href="#none">최우영</a></li>
                                     </ul>
-                                </td>                          
+                                </td>
+                              </tr>
+                            <tr>
+                                <th>정보컴퓨터</th>
+                                <th>중국어</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul>
+                                        <li class="subTit">정보컴퓨터</li>
+                                        <li><a href="#none">송광진</a></li>
+                                        <li class="subTit">정컴교육론</li>
+                                        <li><a href="#none">장순선</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">장영희</a></li>
+                                        <li><a href="#none">정경미</a></li>
+                                    </ul>
+                                </td>
                             </tr>
                             </tbody>
                         </table>

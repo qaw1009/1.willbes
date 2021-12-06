@@ -9,13 +9,18 @@ class ProfessorHotClipModel extends WB_Model
         'max_size' => 5120 //2560
     ];
     private $_table = [
-        'professor_hot_clip' => 'lms_professor_hot_clip'
+        'professor_hot_clip_group' => 'lms_professor_hot_clip_group'
+        ,'professor_hot_clip' => 'lms_professor_hot_clip'
         ,'professor_hot_clip_thumbnail' => 'lms_professor_hot_clip_thumbnail'
         ,'product_subject' => 'lms_product_subject'
         ,'professor' => 'lms_professor'
+        ,'professor_hot_clip_product' => 'lms_professor_hot_clip_product'
+        ,'product' => 'lms_product'
+        ,'product_lecture' => 'lms_product_lecture'
         ,'sys_category' => 'lms_sys_category'
         ,'w_pms_professor' => 'wbs_pms_professor'
         ,'admin' => 'wbs_sys_admin'
+        ,'sys_code' => 'lms_sys_code'
     ];
 
     public function __construct()
@@ -23,24 +28,207 @@ class ProfessorHotClipModel extends WB_Model
         parent::__construct('lms');
     }
 
-    public function list()
+    /**
+     * 핫클립 그룹 리스트
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function listGroup($arr_condition = [])
     {
-        $order_by = $this->_conn->makeOrderBy(['hc.OrderNum' => 'ASC'])->getMakeOrderBy();
-        $arr_condition = [
-            'EQ' => [
-                'hc.IsStatus' => 'Y'
-            ]
-        ];
+        $order_by = $this->_conn->makeOrderBy(['a.ViewType' => 'ASC', 'a.OrderNum' => 'ASC'])->getMakeOrderBy();
+        $arr_condition['IN']['a.SiteCode'] = get_auth_site_codes();
+
+        $column = "a.PhcgIdx,a.ViewType,a.SiteCode,a.Title,a.OrderNum,a.IsUse,a.RegDatm,b.wAdminName AS RegAdminName";
+        $from = "
+            FROM {$this->_table['professor_hot_clip_group']} AS a
+            INNER JOIN {$this->_table['admin']} AS b ON a.RegAdminIdx = b.wAdminIdx AND b.wIsStatus = 'Y'
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $query = $this->_conn->query('select '. $column . $from . $where . $order_by);
+        return $query->result_array();
+    }
+
+    public function findProfessorHotClipGroup($arr_condition = [])
+    {
+        $column = "a.PhcgIdx,a.ViewType,a.SiteCode,a.Title,a.OrderNum,a.IsUse,a.RegDatm,a.UpdDatm
+            ,admin.wAdminName AS RegAdminName,admin2.wAdminName AS UpdAdminName
+        ";
+        $from = "
+            FROM {$this->_table['professor_hot_clip_group']} AS a
+            INNER JOIN {$this->_table['admin']} AS admin ON a.RegAdminIdx = admin.wAdminIdx AND admin.wIsStatus = 'Y'
+            LEFT JOIN {$this->_table['admin']} AS admin2 ON a.UpdAdminIdx = admin2.wAdminIdx AND admin2.wIsStatus = 'Y'
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select '. $column . $from . $where)->row_array();
+    }
+
+    /**
+     * 핫클립 그룹 등록
+     * @param array $form_data
+     * @return array|bool
+     */
+    public function addProfessorHotClipGroup($form_data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $input_data = [
+                'ViewType' => element('view_type',$form_data),
+                'SiteCode' => element('site_code',$form_data),
+                'Title' => element('title',$form_data),
+                'IsUse' => element('is_use',$form_data),
+                'IsStatus' => element('is_status',$form_data,'Y'),
+                'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            $query_string = "Max(OrderNum) as MaxOrderNum FROM {$this->_table['professor_hot_clip_group']} WHERE SiteCode = ? AND ViewType = ?";
+            $result = $this->_conn->query('select '.$query_string,[element('site_code',$form_data), element('view_type',$form_data)])->row_array();
+
+            $input_data = array_merge($input_data,[
+                'OrderNum' => (empty($result['MaxOrderNum']) === true) ? 1 : $result['MaxOrderNum'] + 1
+            ]);
+
+            if ($this->_conn->set($input_data)->insert($this->_table['professor_hot_clip_group']) === false) {
+                throw new \Exception('등록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    public function modifyProfessorHotClipGroup($form_data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $input_data = [
+                'ViewType' => element('view_type',$form_data),
+                'SiteCode' => element('site_code',$form_data),
+                'Title' => element('title',$form_data),
+                'IsUse' => element('is_use',$form_data),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+
+            $where = [
+                'PhcgIdx' => element('idx', $form_data),
+                'IsStatus' => 'Y'
+            ];
+            $this->_conn->set($input_data)->where($where);
+            if ($this->_conn->update($this->_table['professor_hot_clip_group']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            if ($this->_conn->trans_status() === false) {
+                throw new Exception('수정 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 정렬순서 update
+     * @param array $params
+     */
+    public function modifyGroupOrderNum($params = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+            foreach ($params as $phcg_idx => $order_num) {
+                if(empty($phcg_idx) === true) throw new \Exception('필수 파라미터 오류입니다.');
+
+                $data = [
+                    'OrderNum' => $order_num,
+                    'UpdAdminIdx' => $this->session->userdata('admin_idx')
+                ];
+                $this->_conn->set($data)->where('PhcgIdx', $phcg_idx);
+
+                if ($this->_conn->update($this->_table['professor_hot_clip_group']) === false) {
+                    throw new \Exception('정렬정보 수정에 실패했습니다.');
+                }
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 데이터 삭제
+     * @param $phct_idx
+     * @return array|bool
+     */
+    public function deleteProfessorHotClipGroup($idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $del_data = [
+                'IsStatus' => 'N',
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+            $where = [
+                'PhcgIdx' => $idx,
+                'IsStatus' => 'Y'
+            ];
+            $this->_conn->set($del_data)->where($where);
+            if ($this->_conn->update($this->_table['professor_hot_clip_group']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 핫클립 리스트
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function list($arr_condition = [])
+    {
+        $order_by = $this->_conn->makeOrderBy(['hcg.ViewType' => 'ASC', 'hcg.OrderNum' => 'ASC', 'hc.OrderNum' => 'ASC'])->getMakeOrderBy();
         $arr_condition['IN']['hc.SiteCode'] = get_auth_site_codes();
 
         $column = "
-            hc.PhcIdx,hc.SiteCode,hc.CateCode,hc.OrderNum
+            hcg.ViewType,hcg.Title as GroupTitle,hcg.IsUse as GroupIsUse,hc.PhcIdx,hc.SiteCode,hc.CateCode,hc.OrderNum
             ,hc.ProfBtnIsUse,hc.CurriculumBtnIsUse,hc.StudyCommentBtnIsUse,hc.RegDatm
             ,ps.SubjectName,wp.wProfName,a.wAdminName AS RegAdminName
             ,(SELECT COUNT(*) AS cnt FROM {$this->_table['professor_hot_clip_thumbnail']} AS hct WHERE hc.PhcIdx = hct.PhcIdx AND hct.IsStatus = 'Y') AS ThumbnailCnt
+            ,(
+                SELECT GROUP_CONCAT(CONCAT('[',b.ProdCode,'] ',b.ProdName)) AS ProdductInfo
+                FROM {$this->_table['professor_hot_clip_product']} AS a #on hc.PhcIdx = a.PhcIdx AND a.IsStatus = 'Y'
+                INNER JOIN {$this->_table['product']} AS b ON b.ProdCode = a.ProdCode
+                INNER JOIN {$this->_table['product_lecture']} AS c ON b.ProdCode = c.ProdCode AND c.LearnPatternCcd = '615003'
+                WHERE hc.PhcIdx = a.PhcIdx AND a.IsStatus = 'Y'
+            ) AS admin_package_product_info
+            ,(
+                SELECT GROUP_CONCAT(CONCAT('[',b.ProdCode,'] ',b.ProdName)) AS ProdductInfo
+                FROM {$this->_table['professor_hot_clip_product']} AS a #on hc.PhcIdx = a.PhcIdx AND a.IsStatus = 'Y'
+                INNER JOIN {$this->_table['product']} AS b ON b.ProdCode = a.ProdCode
+                INNER JOIN {$this->_table['product_lecture']} AS c ON b.ProdCode = c.ProdCode AND c.LearnPatternCcd = '615007'
+                WHERE hc.PhcIdx = a.PhcIdx AND a.IsStatus = 'Y'
+            ) AS off_package_product_info
         ";
         $from = "
             FROM {$this->_table['professor_hot_clip']} AS hc
+            LEFT JOIN {$this->_table['professor_hot_clip_group']} AS hcg ON hc.PhcgIdx = hcg.PhcgIdx AND hcg.IsStatus = 'Y'
             INNER JOIN {$this->_table['product_subject']} AS ps ON hc.SubjectIdx = ps.SubjectIdx
             INNER JOIN {$this->_table['professor']} AS pf ON hc.ProfIdx = pf.ProfIdx
             INNER JOIN {$this->_table['w_pms_professor']} AS wp ON pf.wProfIdx = wp.wProfIdx
@@ -57,7 +245,10 @@ class ProfessorHotClipModel extends WB_Model
     public function findProfessorHotClip($arr_condition = [])
     {
         $column = "
-            hc.PhcIdx,hc.SiteCode,hc.CateCode,hc.OrderNum
+            hc.PhcIdx
+            #,hc.ViewType
+            ,hc.SiteCode,hc.PhcgIdx
+            ,hc.CateCode,hc.OrderNum
             ,hc.ProfBgImagePath,hc.ProfBgImageName,hc.ProfBgImageRealName
             ,hc.ProfBtnIsUse,hc.CurriculumBtnIsUse,hc.StudyCommentBtnIsUse,hc.RegDatm,hc.UpdDatm
             ,c.CateName AS CateRouteName,ps.SubjectName,wp.wProfName
@@ -97,6 +288,41 @@ class ProfessorHotClipModel extends WB_Model
         return $query->result_array();
     }
 
+    public function listProfessorHotClipProduct($phc_idx)
+    {
+        $order_by = $this->_conn->makeOrderBy(['p.ProdTypeCcd' => 'ASC', 'pl.LearnPatternCcd' => 'ASC', 'pp.OrderNum' => 'ASC'])->getMakeOrderBy();
+        $arr_condition = [
+            'EQ' => [
+                'pp.PhcIdx' => $phc_idx
+                ,'pp.IsStatus' => 'Y'
+            ]
+        ];
+        $column = "pp.PpIdx, pp.ProdCode, pp.IsEssay, p.ProdTypeCcd, pl.LearnPatternCcd, c.CcdName AS LearnPatternCcdName, p.ProdName, pp.OrderNum";
+        $from = "
+            FROM {$this->_table['professor_hot_clip_product']} AS pp
+            INNER JOIN {$this->_table['product']} AS p ON pp.ProdCode = p.ProdCode
+            INNER JOIN {$this->_table['product_lecture']} AS pl ON pl.ProdCode = p.ProdCode
+            INNER JOIN {$this->_table['sys_code']} AS c ON pl.LearnPatternCcd = c.Ccd
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $result = $this->_conn->query('select '. $column . $from . $where . $order_by)->result_array();
+
+        $return = [];
+        if (empty($result) === false) {
+            foreach ($result as $row) {
+                $return[$row['ProdTypeCcd']][$row['PpIdx']]['PpIdx'] = $row['PpIdx'];
+                $return[$row['ProdTypeCcd']][$row['PpIdx']]['LearnPatternCcd'] = $row['LearnPatternCcd'];
+                $return[$row['ProdTypeCcd']][$row['PpIdx']]['LearnPatternCcdName'] = $row['LearnPatternCcdName'];
+                $return[$row['ProdTypeCcd']][$row['PpIdx']]['ProdCode'] = $row['ProdCode'];
+                $return[$row['ProdTypeCcd']][$row['PpIdx']]['IsEssay'] = $row['IsEssay'];
+                $return[$row['ProdTypeCcd']][$row['PpIdx']]['ProdName'] = $row['ProdName'];
+                $return[$row['ProdTypeCcd']][$row['PpIdx']]['OrderNum'] = $row['OrderNum'];
+            }
+        }
+        return $return;
+    }
+
     /**
      * 교수 핫클립 데이터 등록
      * @param array $form_data
@@ -127,6 +353,10 @@ class ProfessorHotClipModel extends WB_Model
             }
             // 등록된 게시판 식별자
             $insert_idx = $this->_conn->insert_id();
+
+            if ($this->_addProfessorHotClipProduct($insert_idx, $form_data) === false) {
+                throw new \Exception('상품 등록에 실패했습니다.');
+            }
 
             $thumbnail_data = $this->_addSetThumbnailData($form_data,$insert_idx);
             if($thumbnail_data) $this->_conn->insert_batch($this->_table['professor_hot_clip_thumbnail'], $thumbnail_data);
@@ -176,6 +406,10 @@ class ProfessorHotClipModel extends WB_Model
             $this->_conn->set($input_data)->where($where);
             if ($this->_conn->update($this->_table['professor_hot_clip']) === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            if ($this->_addProfessorHotClipProduct(element('idx', $form_data), $form_data) === false) {
+                throw new \Exception('상품 수정에 실패했습니다.');
             }
 
             $thumbnail_data = $this->_modifySetThumbnailData($form_data);
@@ -253,7 +487,7 @@ class ProfessorHotClipModel extends WB_Model
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];
             $where = [
-                'PhcIdx' => $phc_idx,
+                'PhcgIdx' => $phc_idx,
                 'IsStatus' => 'Y'
             ];
             $this->_conn->set($del_data)->where($where);
@@ -287,6 +521,35 @@ class ProfessorHotClipModel extends WB_Model
             ];
             $this->_conn->set($del_data)->where($where);
             if ($this->_conn->update($this->_table['professor_hot_clip_thumbnail']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 상품 개별 삭제
+     * @param $phct_idx
+     * @return array|bool
+     */
+    public function deleteProfessorHotClipProduct($pp_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $del_data = [
+                'IsStatus' => 'N',
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+            $where = [
+                'PpIdx' => $pp_idx,
+                'IsStatus' => 'Y'
+            ];
+            $this->_conn->set($del_data)->where($where);
+            if ($this->_conn->update($this->_table['professor_hot_clip_product']) === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
             }
             $this->_conn->trans_commit();
@@ -394,7 +657,9 @@ class ProfessorHotClipModel extends WB_Model
         $prof_subject_idx = element('prof_subject_idx',$form_data)[0];
         $_arr_prof_subject_idx = explode('_', $prof_subject_idx);
         $input_data = [
+            /*'ViewType' => element('view_type',$form_data),*/
             'SiteCode' => element('site_code',$form_data),
+            'PhcgIdx' => element('hotclip_group_idx',$form_data),
             'CateCode' => element('cate_code',$form_data),
             'SubjectIdx' => element('1', $_arr_prof_subject_idx),
             'ProfIdx' => element('0', $_arr_prof_subject_idx),
@@ -419,6 +684,43 @@ class ProfessorHotClipModel extends WB_Model
             ]);
         }
         return $input_data;
+    }
+
+    /**
+     * 상품 등록/수정
+     * @param $phc_idx
+     * @param array $input
+     * @return array|bool
+     */
+    private function _addProfessorHotClipProduct($phc_idx, $input = [])
+    {
+        try {
+            if(empty($input['pp_idx']) === false) {
+                foreach ($input['pp_idx'] as $key => $val) {
+                    $inputData['PpIdx'] = $input['pp_idx'][$key];
+                    $inputData['PhcIdx'] = $phc_idx;
+                    $inputData['ProdCode'] = $input['prod_code'][$key];
+                    $inputData['IsEssay'] = $input['is_essay'][$key];
+                    $inputData['OrderNum'] = $input['order_num'][$key];
+
+                    // pp_idx 값으로 insert, update 구분
+                    if (empty($val) === true) {
+                        $inputData['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                        if ($this->_conn->set($inputData)->insert($this->_table['professor_hot_clip_product']) === false) {
+                            throw new \Exception('fail');
+                        }
+                    } else {
+                        $inputData['UpdAdminIdx'] = $this->session->userdata('admin_idx');
+                        if ($this->_conn->set($inputData)->where('PpIdx', $val)->update($this->_table['professor_hot_clip_product']) === false) {
+                            throw new \Exception('fail');
+                        }
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
     }
 
     private function _getAttachImgNames($set_name = 'image')

@@ -160,6 +160,7 @@
                                             <td>{{$row['LearnPatternCcdName']}}</td>
                                             <td class="form-inline">
                                                 <select class="form-control" name="is_essay[]">
+                                                    <option value="X" {{ ($row['IsEssay'] == 'X' ? 'selected="selected"' : '') }}>해당없음</option>
                                                     <option value="Y" {{ ($row['IsEssay'] == 'Y' ? 'selected="selected"' : '') }}>포함</option>
                                                     <option value="N" {{ ($row['IsEssay'] == 'N' ? 'selected="selected"' : '') }}>미포함</option>
                                                 </select>
@@ -208,6 +209,7 @@
                                             <td>{{$row['LearnPatternCcdName']}}</td>
                                             <td class="form-inline">
                                                 <select class="form-control" name="is_essay[]">
+                                                    <option value="X" {{ ($row['IsEssay'] == 'X' ? 'selected="selected"' : '') }}>해당없음</option>
                                                     <option value="Y" {{ ($row['IsEssay'] == 'Y' ? 'selected="selected"' : '') }}>포함</option>
                                                     <option value="N" {{ ($row['IsEssay'] == 'N' ? 'selected="selected"' : '') }}>미포함</option>
                                                 </select>
@@ -479,7 +481,7 @@
                     html += '	</td>';
                     html += '	<td>' + data.learnPatternCcdName + '</td>';
                     html += '	<td class="form-inline">';
-                    html += '		<select class="form-control" name="is_essay[]"><option>포함</option><option>미포함</option></select>';
+                    html += '		<select class="form-control" name="is_essay[]"><option value="X">해당없음</option><option value="Y">포함</option><option value="N">미포함</option></select>';
                     html += '	</td>';
                     html += '	<td class="form-inline">';
                     html += '		<input type="text" class="form-control" name="order_num[]" value="999">';
@@ -507,7 +509,7 @@
                     html += '	</td>';
                     html += '	<td>' + data.learnPatternCcdName + '</td>';
                     html += '	<td class="form-inline">';
-                    html += '		<select class="form-control" name="is_essay[]"><option>포함</option><option>미포함</option></select>';
+                    html += '		<select class="form-control" name="is_essay[]"><option value="X">해당없음</option><option value="Y">포함</option><option value="N">미포함</option></select>';
                     html += '	</td>';
                     html += '	<td class="form-inline">';
                     html += '		<input type="text" class="form-control" name="order_num[]" value="999">';

@@ -44,6 +44,7 @@ class CronLog extends \app\controllers\BaseController
 
         if ($count > 0) {
             $list = $this->cronModel->listRunSchedulerLog(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['CL.ExecDate' => 'desc']);
+            $list = $this->cronModel->getListRunSchedulerLog($list);
         }
 
         return $this->response([

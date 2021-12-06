@@ -113,7 +113,7 @@ class Home extends \app\controllers\BaseController
                 $succ_msg = '작업 실행시간이 아닙니다.';
             }
 
-            $log_data = $this->cronModel->listTodayRunSchedulerLog();
+            $log_data = $this->cronModel->getListRunSchedulerLog($this->cronModel->listTodayRunSchedulerLog());
 
             return $this->json_result($result, $succ_msg, $result, $log_data);
         }

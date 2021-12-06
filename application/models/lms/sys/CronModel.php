@@ -7,7 +7,11 @@ class CronModel extends WB_Model
         'cron_exec_log' => 'lms_cron_exec_log',
         'admin' => 'wbs_sys_admin'
     ];
-    public $_task_type = ['MPE' => '회원포인트소멸', 'VSR' => '방문자통계집계'];
+    public $_task_type = [
+        'MPE' => '회원포인트소멸',
+        'VSR' => '방문자통계집계',
+        'SAM' => '샘플작업'
+    ];
 
     public function __construct()
     {
@@ -28,12 +32,7 @@ class CronModel extends WB_Model
         $column = $is_count;
 
         if ($is_count === false) {
-            $column = 'CL.ExecIdx, CL.TaskType, CL.ExecDate, CL.RunTime, CL.ResultCode, CL.ResultMsg, CL.RegDatm, CL.RegAdminIdx
-                , (case CL.TaskType 
-                    when "MPE" then "' . $this->_task_type['MPE'] . '"
-                    when "VSR" then "' . $this->_task_type['VSR'] . '"
-                    else "기타"
-                  end) as TaskTypeName  
+            $column = 'CL.ExecIdx, CL.TaskType, CL.ExecDate, CL.RunTime, CL.ResultCode, CL.ResultMsg, CL.RegDatm, CL.RegAdminIdx 
                 , A.wAdminName as RegAdminName';
         }
 
@@ -48,16 +47,22 @@ class CronModel extends WB_Model
      */
     public function listTodayRunSchedulerLog()
     {
-        $column = 'TaskType, RunTime, ResultMsg
-            , (case TaskType 
-                when "MPE" then "' . $this->_task_type['MPE'] . '"
-                when "VSR" then "' . $this->_task_type['VSR'] . '"
-                else "기타"
-              end) as TaskTypeName            
-        ';
+        $column = 'TaskType, RunTime, ResultMsg';
         $arr_condition = ['EQ' => ['ExecDate' => date('Ymd')]];
 
         return $this->_conn->getListResult($this->_table['cron_exec_log'], $column, $arr_condition, null, null, ['ExecIdx' => 'asc']);
+    }
+
+    /**
+     * 작업스케줄러 실행로그 목록 리턴 (작업구분명 추가)
+     * @param array $list [작업스케줄러 실행로그 데이터]
+     * @return array
+     */
+    public function getListRunSchedulerLog($list)
+    {
+        return array_data_fill($list, [
+            'TaskTypeName' => ['TaskType' => $this->_task_type]
+        ], true);
     }
 
     /**

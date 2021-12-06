@@ -85,8 +85,8 @@ no-repeat 5px center}
 	top: -1px;
 	right: -1px;
 }
-
-
+.dropdown .list-drop-Box-ssam td p {background:#f9f9f9;width:75px;height:50px;line-height:50px;font-size:14px;display:table-cell;border-bottom: 1px solid #e4e4e4;border-top: 1px solid #e4e4e4;}
+.no_click {color:#A6A6A6;font-size:13px;line-height:1.75;font-weight:100;}
 </style>
 
 <!-- Container -->
@@ -390,7 +390,6 @@ no-repeat 5px center}
     <div class="Section sec-prof mt40">
         <div class="sec-prof-title"><img src="https://static.willbes.net/public/images/promotion/main/2018/title01.jpg" title="교수진"></div>
         <div class="widthAuto p_re NSK">
-           {{--
             <ul class="prof-Tab" id="profRolling">
                 <li><a data-slide-index="0" href="javascript:void(0);" class="active"><span>유아</span>민정선</a></li>
                 <li><a data-slide-index="1" href="javascript:void(0);"><span>초등</span>배재민</a></li>
@@ -412,72 +411,6 @@ no-repeat 5px center}
                 <li><a data-slide-index="17" href="javascript:void(0);"><span>정컴교육론</span>장순선</a></li>
                 <li><a data-slide-index="18" href="javascript:void(0);"><span>전공중국어</span>정경미</a></li>
             </ul>
-            --}}
-
-            <ul class="ssam-prof-List">
-                <li class="prof-dropdown">
-                    <a href="#none">유·초등</a>
-                    <div class="prof-list-drop-Box">
-                        <ul>
-                            <li><a href="#none">유아 민정선</a></li>
-                            <li><a href="#none">초등 배재민</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="prof-dropdown">
-                    <a href="#none">교육학논술</a>
-                    <div class="prof-list-drop-Box">
-                        <ul>
-                            <li><a href="#none">교육학 이경범</a></li>
-                            <li><a href="#none">교육학 이인재</a></li>
-                            <li><a href="#none">교육학 정현</a></li>
-                            <li><a href="#none">교육학 홍의일</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="prof-dropdown">
-                    <a href="#none">중등(국·영·수)</a>
-                    <div class="prof-list-drop-Box">
-                        <ul>
-                            <li><a href="#none">국어 송원영</a></li>
-                            <li><a href="#none">국어 권보민</a></li>
-                            <li><a href="#none">국어 구동언</a></li>
-                            <li><a href="#none">영어 김유석</a></li>
-                            <li><a href="#none">영어 김영문</a></li>
-                            <li><a href="#none">수학 김철홍</a></li>
-                            <li><a href="#none">수학 박태영</a></li>
-                            <li><a href="#none">수학 박혜향</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="prof-dropdown">
-                    <a href="#none">중등(사회·과학)</a>
-                    <div class="prof-list-drop-Box">
-                        <ul>
-                            <li><a href="#none">일반사회 허역팀</a></li>
-                            <li><a href="#none">생물 강치욱</a></li>
-                            <li><a href="#none">생물 양혜정</a></li>
-                            <li><a href="#none">화학 강철</a></li>
-                            <li><a href="#none">도덕윤리 김병찬</a></li>
-                            <li><a href="#none">도덕윤리 김민응</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="prof-dropdown">
-                    <a href="#none">중등(음·체·전산·중국어)</a>
-                    <div class="prof-list-drop-Box">
-                        <ul>
-                            <li><a href="#none">음악 다이애나</a></li>
-                            <li><a href="#none">체육 체규훈</a></li>
-                            <li><a href="#none">전기전자통신 최우영</a></li>
-                            <li><a href="#none">정보컴퓨터 송광진</a></li>
-                            <li><a href="#none">정보컴퓨터 장순선</a></li>
-                            <li><a href="#none">중국어 장영희</a></li>
-                            <li><a href="#none">중국어 정경미</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
 
             <div class="prof-Tab-Wrap" id="profRollingSlider">
                 <div class="prof-Tab-Cts" id="tab01">
@@ -492,7 +425,7 @@ no-repeat 5px center}
                         </div>
                     </div>
                     <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51076.jpg" title="유아 민정선" class="prof-img">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51076.jpg" title="유아 민정선">
                 </div>
 
                 <div class="prof-Tab-Cts" id="tab02">
@@ -3370,7 +3303,7 @@ no-repeat 5px center}
         });        
     });
 
-    /*교수진*/
+    //교수진
     $(function(){ 
         var profslidesImg = $(".prof-Tab-Wrap").bxSlider({
             mode:'fade',
@@ -3379,15 +3312,14 @@ no-repeat 5px center}
             pause:3000,
             sliderWidth:1120,
             auto : true,	
-            autoHover: true,          
-            controls:false, 
-            /*pagerCustom: '#profRolling',				
+            autoHover: true,						
+            pagerCustom: '#profRolling',
+            controls:false, 				
             onSliderLoad: function(){
                 $("#profRollingSlider").css("visibility", "visible").animate({opacity:1}); 
-            }*/
+            }
         });	   		
     });
-
 
     //적중배너
     $(function(){ 

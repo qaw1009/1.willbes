@@ -535,6 +535,29 @@
 .ssam .mapWrap .mapR li {margin-bottom:10px}
 .ssam .mapWrap:after {content:''; display:block; clear:both}
 
+/*중간 교수진 영역*/
+.ssam .ssam-prof-List {position: absolute; top:50px; left:10px; z-index: 10;}
+.prof-dropdown {}
+.prof-dropdown > a {width:170px; display:block; color:#fff; font-size:15px; border:1px solid #668597; border-bottom:0; padding:20px 10px}
+.prof-dropdown:last-child > a {border-bottom:1px solid #668597} 
+.prof-dropdown:hover {background:#fff}
+.prof-dropdown:hover > a {color:#0a2230}
+.prof-dropdown:hover .prof-list-drop-Box {
+	display: block;
+}
+.prof-list-drop-Box {
+	display: none;
+	position: absolute;
+	background: #fff;
+    left:169px;
+    top:0;
+	width: 150px;
+    height: 281px;
+    border:1px solid #668597; border-left:0;
+}
+.prof-list-drop-Box a {display:block; padding:10px; height:calc(279px / 8); font-size:13px}
+.prof-list-drop-Box a:hover {background:#0a2230; color:#fff}
+
 
 /*sub*/
 /*임용가이드*/

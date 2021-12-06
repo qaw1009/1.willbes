@@ -419,8 +419,8 @@ no-repeat 5px center}
                     <a href="#none">유·초등</a>
                     <div class="prof-list-drop-Box">
                         <ul>
-                            <li><a href="#none">유아 민정선</a></li>
-                            <li><a href="#none">초등 배재민</a></li>
+                            <li><a href="#none">유아 <strong>민정선</strong></a></li>
+                            <li><a href="#none">초등 <strong>배재민</strong></a></li>
                         </ul>
                     </div>
                 </li>
@@ -428,10 +428,10 @@ no-repeat 5px center}
                     <a href="#none">교육학논술</a>
                     <div class="prof-list-drop-Box">
                         <ul>
-                            <li><a href="#none">교육학 이경범</a></li>
-                            <li><a href="#none">교육학 이인재</a></li>
-                            <li><a href="#none">교육학 정현</a></li>
-                            <li><a href="#none">교육학 홍의일</a></li>
+                            <li><a href="#none">교육학 <strong>이경범</strong></a></li>
+                            <li><a href="#none">교육학 <strong>이인재</strong></a></li>
+                            <li><a href="#none">교육학 <strong>정현</strong></a></li>
+                            <li><a href="#none">교육학 <strong>홍의일</strong></a></li>
                         </ul>
                     </div>
                 </li>
@@ -439,14 +439,14 @@ no-repeat 5px center}
                     <a href="#none">중등(국·영·수)</a>
                     <div class="prof-list-drop-Box">
                         <ul>
-                            <li><a href="#none">국어 송원영</a></li>
-                            <li><a href="#none">국어 권보민</a></li>
-                            <li><a href="#none">국어 구동언</a></li>
-                            <li><a href="#none">영어 김유석</a></li>
-                            <li><a href="#none">영어 김영문</a></li>
-                            <li><a href="#none">수학 김철홍</a></li>
-                            <li><a href="#none">수학 박태영</a></li>
-                            <li><a href="#none">수학 박혜향</a></li>
+                            <li><a href="#none">국어 <strong>송원영</strong></a></li>
+                            <li><a href="#none">국어 <strong>권보민</strong></a></li>
+                            <li><a href="#none">국어 <strong>구동언</strong></a></li>
+                            <li><a href="#none">영어 <strong>김유석</strong></a></li>
+                            <li><a href="#none">영어 <strong>김영문</strong></a></li>
+                            <li><a href="#none">수학 <strong>김철홍</strong></a></li>
+                            <li><a href="#none">수학 <strong>박태영</strong></a></li>
+                            <li><a href="#none">수학 <strong>박혜향</strong></a></li>
                         </ul>
                     </div>
                 </li>
@@ -454,12 +454,12 @@ no-repeat 5px center}
                     <a href="#none">중등(사회·과학)</a>
                     <div class="prof-list-drop-Box">
                         <ul>
-                            <li><a href="#none">일반사회 허역팀</a></li>
-                            <li><a href="#none">생물 강치욱</a></li>
-                            <li><a href="#none">생물 양혜정</a></li>
-                            <li><a href="#none">화학 강철</a></li>
-                            <li><a href="#none">도덕윤리 김병찬</a></li>
-                            <li><a href="#none">도덕윤리 김민응</a></li>
+                            <li><a href="#none">일반사회 <strong>허역팀</strong></a></li>
+                            <li><a href="#none">생물 <strong>강치욱</strong></a></li>
+                            <li><a href="#none">생물 <strong>양혜정</strong></a></li>
+                            <li><a href="#none">화학 <strong>강철</strong></a></li>
+                            <li><a href="#none">도덕윤리 <strong>김병찬</strong></a></li>
+                            <li><a href="#none">도덕윤리 <strong>김민응</strong></a></li>
                         </ul>
                     </div>
                 </li>
@@ -467,13 +467,13 @@ no-repeat 5px center}
                     <a href="#none">중등(음·체·전산·중국어)</a>
                     <div class="prof-list-drop-Box">
                         <ul>
-                            <li><a href="#none">음악 다이애나</a></li>
-                            <li><a href="#none">체육 체규훈</a></li>
-                            <li><a href="#none">전기전자통신 최우영</a></li>
-                            <li><a href="#none">정보컴퓨터 송광진</a></li>
-                            <li><a href="#none">정보컴퓨터 장순선</a></li>
-                            <li><a href="#none">중국어 장영희</a></li>
-                            <li><a href="#none">중국어 정경미</a></li>
+                            <li><a href="#none">음악 <strong>다이애나</strong></a></li>
+                            <li><a href="#none">체육 <strong>체규훈</strong></a></li>
+                            <li><a href="#none">전기전자통신 <strong>최우영</strong></a></li>
+                            <li><a href="#none">정보컴퓨터 <strong>송광진</strong></a></li>
+                            <li><a href="#none">정보컴퓨터 <strong>장순선</strong></a></li>
+                            <li><a href="#none">중국어 <strong>장영희</strong></a></li>
+                            <li><a href="#none">중국어 <strong>정경미</strong></a></li>
                         </ul>
                     </div>
                 </li>

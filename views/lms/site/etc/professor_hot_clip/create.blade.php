@@ -294,6 +294,19 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-1-1">사용여부 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 item">
+                        <div class="form-inline">
+                            <div class="radio mr-30">
+                                <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                                <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1">등록자
                     </label>
                     <div class="col-md-4">

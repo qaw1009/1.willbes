@@ -1046,6 +1046,7 @@ class Home extends \app\controllers\FrontController
                 ,'g.IsUse' => 'Y'
                 ,'g.IsStatus' => 'Y'
                 ,'hc.SiteCode' => $this->_site_code
+                ,'hc.IsUse' => 'Y'
                 ,'hc.IsStatus' => 'Y'
             ]
         ];

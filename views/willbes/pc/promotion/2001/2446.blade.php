@@ -156,7 +156,7 @@
                 <a href="javascript:go_PassLecture('188140');" title="문풀 이국령" style="position: absolute; left: 57.14%; top: 82.02%; width: 17.86%; height: 8.42%; z-index: 2;"></a>
             </div>
             <div class="check">
-                <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 2021 2차대비 문풀풀패키지(PASS) 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
+                <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
                 <a href="#careful">이용안내확인하기 ↓</a>               
             </div>
             <div class="info">

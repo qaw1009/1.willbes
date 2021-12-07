@@ -115,19 +115,15 @@
     </script>
 
     <script type="text/javascript">
-
-    /*수강신청 동의*/ 
+        /*수강신청 동의*/ 
         function go_PassLecture(code){
             if($("input[name='ischk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");
                 return;
             }
 
-            var url = '{{ site_url('/m/periodPackage/show/cate/309004/pack/648001/prod-code/') }}' + code;
+            var url = '{{ front_url('/periodPackage/show/cate/309004/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }    
     </script>
-
-    {{-- 프로모션용 스크립트 include --}}
-    @include('willbes.pc.promotion.promotion_script')
 @stop

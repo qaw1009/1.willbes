@@ -531,6 +531,7 @@ class Home extends \app\controllers\FrontController
         if(APP_DEVICE == 'pc'){
             $data['new_product'] = $this->_getlistSalesProductBook(5, $s_cate_code);
             $data['prof_hot_clip'] = $this->_getlistProfHotClip();
+            $data['prof_hot_clip_test'] = $this->_getlistProfHotClip_test();  /** todo : 개발/테스트 완료 후 실제 함수에 대입 (2021.12.06) */
         }else{
             $data['new_product'] = $this->_product('on_lecture', 16, $s_cate_code, 'New');
             $data['event'] = $this->_getlistEvent(5, $s_cate_code);
@@ -1028,6 +1029,42 @@ class Home extends \app\controllers\FrontController
             ]
         ];
         $data = $this->professorHotClipFModel->listHotClip($arr_condition, $order_by);
+        return $data;
+    }
+
+    /**
+     * todo : 개발/테스트 완료 후 실제 함수에 대입 (2021.12.06)
+     * TEST 강사 핫클립 데이터 리스트
+     */
+    private function _getlistProfHotClip_test()
+    {
+        $data = [];
+        $order_by = ['g.OrderNum' => 'ASC', 'hc.OrderNum' => 'ASC'];
+        $arr_condition = [
+            'EQ' => [
+                'g.ViewType' => '1'
+                ,'g.IsUse' => 'Y'
+                ,'g.IsStatus' => 'Y'
+                ,'hc.SiteCode' => $this->_site_code
+                ,'hc.IsStatus' => 'Y'
+            ]
+        ];
+        $result = $this->professorHotClipFModel->listHotClip_test($arr_condition, $order_by);
+        if (empty($result) === false) {
+            foreach ($result as $row) {
+                $data[$row['group_title']][$row['ProfIdx']]['ProfIdx'] = $row['ProfIdx'];
+                $data[$row['group_title']][$row['ProfIdx']]['wProfName'] = $row['wProfName'];
+                $data[$row['group_title']][$row['ProfIdx']]['SubjectName'] = $row['SubjectName'];
+                $data[$row['group_title']][$row['ProfIdx']]['SubjectIdx'] = $row['SubjectIdx'];
+                $data[$row['group_title']][$row['ProfIdx']]['CateCode'] = $row['CateCode'];
+                $data[$row['group_title']][$row['ProfIdx']]['ProfBtnIsUse'] = $row['ProfBtnIsUse'];
+                $data[$row['group_title']][$row['ProfIdx']]['CurriculumBtnIsUse'] = $row['CurriculumBtnIsUse'];
+                $data[$row['group_title']][$row['ProfIdx']]['StudyCommentBtnIsUse'] = $row['StudyCommentBtnIsUse'];
+                $data[$row['group_title']][$row['ProfIdx']]['ProfBgImagePath'] = $row['ProfBgImagePath'];
+                $data[$row['group_title']][$row['ProfIdx']]['ProfBgImageName'] = $row['ProfBgImageName'];
+                $data[$row['group_title']][$row['ProfIdx']]['thumbnail_data'] = $row['thumbnail_data'];
+            }
+        }
         return $data;
     }
 

@@ -28,6 +28,9 @@ class ProductFModel extends WB_Model
         'product_lecture_disc' => 'lms_product_lecture_disc',
         'product_lecture_disc_info' => 'lms_product_lecture_disc_info',
         'product_affiliate_disc_info' => 'lms_product_affiliate_disc_info',
+        'product_bundle_disc' => 'lms_product_bundle_disc',
+        'product_bundle_disc_info' => 'lms_product_bundle_disc_info',
+        'product_bundle_disc_r_product' => 'lms_product_bundle_disc_r_product',
         'product_series' => 'lms_product_subject_r_category_r_code',
         'product_salebook' => 'vw_product_salebook',
         'product_content' => 'lms_product_content',
@@ -717,6 +720,75 @@ class ProductFModel extends WB_Model
             where A.DiscRate > 0
                 and B.IsUse = "Y" 
                 and B.IsStatus = "Y"                        
+        ';
+
+        // 쿼리 실행
+        $data = $this->_conn->query('select ' . $column . $from, [$arr_prod_code, $site_code])->result_array();
+        if (empty($data) === true) {
+            return null;
+        }
+
+        // 상품코드별 할인정보 설정
+        foreach ($data as $row) {
+            $bundle_prod_code = explode(',', $row['BundleProdCode']);
+            foreach ($bundle_prod_code as $prod_code) {
+                $result[$prod_code] = [
+                    'DiscIdx' => $row['DiscIdx'],
+                    'DiscRate' => $row['DiscRate'],
+                    'DiscType' => 'R',
+                    'DiscRateUnit' => '%',
+                    'DiscTitle' => $row['DiscTitle']
+                ];
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * 묶음할인율 리턴 (운영자패키지, 학원종합반 상품만 해당)
+     * @param $arr_prod_code
+     * @param $site_code
+     * @return array|null
+     */
+    public function getBundleDiscRate($arr_prod_code, $site_code)
+    {
+        $result = null;
+
+        // 운영사이트 묶음할인율 설정여부 확인
+        $cnt_rows = $this->_conn->getListResult($this->_table['product_bundle_disc'], 'DiscIdx'
+            , ['EQ' => ['SiteCode' => get_var($site_code, '0'), 'IsUse' => 'Y', 'IsStatus' => 'Y']]);
+        if (empty($cnt_rows) === true) {
+            return null;
+        }
+
+        // 묶음할인율 조회
+        $column = 'TA.DiscIdx, BD.DiscTitle, TA.DiscRate, TA.BundleProdCode';
+        $from = '
+            from (
+                select BDP.DiscIdx, group_concat(BDP.ProdCode) as BundleProdCode
+                    , ifnull(
+                        (select DiscRate
+                            from ' . $this->_table['product_bundle_disc_info'] . '
+                            where DiscIdx = BDP.DiscIdx
+                                and DiscNum <= count(0)
+                                and IsApply = "Y"
+                                and IsStatus = "Y"
+                            order by DiscNum desc limit 1
+                        ), 0) as DiscRate
+                from ' . $this->_table['product_bundle_disc_r_product'] . ' as BDP
+                where BDP.ProdCode in ?
+                    and BDP.IsStatus = "Y"
+                group by BDP.DiscIdx
+                having count(0) > 1
+                order by BDP.DiscIdx desc limit 1
+            ) as TA
+                inner join ' . $this->_table['product_bundle_disc'] . ' as BD
+                    ON TA.DiscIdx = BD.DiscIdx
+            where TA.DiscRate > 0
+                and BD.SiteCode = ?
+                and BD.IsUse = "Y"
+                and BD.IsStatus = "Y"
         ';
 
         // 쿼리 실행

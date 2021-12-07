@@ -283,7 +283,7 @@ no-repeat 5px center}
                                         <li><a href="#none">장순선</a></li>
                                     </ul>
                                 </td>
-                                <td>
+                                <td valign="top">
                                     <ul>
                                         <li><a href="#none">장영희</a></li>
                                         <li><a href="#none">정경미</a></li>

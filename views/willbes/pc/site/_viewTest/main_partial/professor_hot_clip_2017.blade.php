@@ -6,8 +6,8 @@
                 <a href="javascript:void(0);">{{$subject_name}}</a>
                 <div class="prof-list-drop-Box">
                     <ul>
-                        @foreach($arr_row as $prof_idx => $row)
-                            <li><a href="javascript:void(0);" class="btn-hotclip-prof" data-prof-id="{{$row['ProfIdx']}}">{{$row['SubjectName']}} <strong>{{$row['wProfName']}}</strong></a></li>
+                        @foreach($arr_row as $key => $row)
+                            <li><a href="javascript:void(0);" class="btn-hotclip-prof" data-prof-id="{{$row['PhcIdx']}}">{{$row['SubjectName']}} <strong>{{$row['wProfName']}}</strong></a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -18,8 +18,8 @@
 
     <div class="prof-Tab-Wrap" id="profRollingSlider">
         @forelse($data['prof_hot_clip_test'] as $subject_name => $arr_row)
-            @foreach($arr_row as $prof_idx => $row)
-                <div class="prof-Tab-Cts" id="tab{{$row['ProfIdx']}}">
+            @foreach($arr_row as $key => $row)
+                <div class="prof-Tab-Cts" id="tab{{$row['PhcIdx']}}">
                     <div class="btnBox">
                         <div class="prof-top-btn">
                             @if($row['ProfBtnIsUse'] == 'Y')

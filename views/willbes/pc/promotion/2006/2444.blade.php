@@ -51,7 +51,10 @@
 		</div>       
 
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2021/12/2444_02.jpg" alt="김동진 민법" />    
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2444_02.jpg" alt="김동진 민법" />    
+                <a href="https://cafe.daum.net/patentbar-no1" target="_blank" title="카페" style="position: absolute; left: 48.66%; top: 54.87%; width: 16.79%; height: 3.14%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt_03" data-aos="fade-up">

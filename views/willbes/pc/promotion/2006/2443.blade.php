@@ -67,7 +67,7 @@
         <div class="evtCtnsBox evt_05" data-aos="fade-up">
             <div class="wrap">
 			    <img src="https://static.willbes.net/public/images/promotion/2021/12/2443_05.jpg" alt="강좌 선택하기"/>
-                <a href="javascript:go_PassLecture('188419');" title="수강신청" style="position: absolute;left: 20.41%;top: 75.59%;width: 59.46%;height: 14.27%;z-index: 2;scrollbar-gutter: red;"></a>  
+                <a href="javascript:go_PassLecture('188419');" title="수강신청" style="position: absolute;left: -0.59%;top: 75.59%;width: 101.46%;height: 14.27%;z-index: 2;"></a>  
                 <div class="check">
                     <label>
                         <input type="checkbox" name="ischk" value="Y">

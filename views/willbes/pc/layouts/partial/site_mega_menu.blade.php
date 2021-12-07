@@ -688,7 +688,7 @@
                         </td>
                         <td>
                             <ul>
-                                <li><a href="{{front_url('/professor/show/prof-idx/51318?cate_code=3137&subject_idx=1995')}}" style="padding-top:17px;">장영희</a></li>
+                                <li><a href="{{front_url('/professor/show/prof-idx/51318?cate_code=3137&subject_idx=1995')}}">장영희</a></li>
                                 <li><a href="{{front_url('/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995')}}">정경미</a></li>
                             </ul>
                         </td>

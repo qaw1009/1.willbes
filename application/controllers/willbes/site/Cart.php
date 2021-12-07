@@ -639,4 +639,71 @@ class Cart extends \app\controllers\FrontController
 
         return $cart_type;
     }
+
+    /**
+     * 결제예상금액 리턴 (묶음할인정보만 적용)
+     * @return CI_Output
+     */
+    public function getExptPayPrice()
+    {
+        $arr_prod_code = (array) $this->_reqP('prod_code');
+        $real_sale_price = 0;   // 총 판매금액
+        $expt_pay_price = 0;    // 총 예상결제금액
+        $expt_disc_rate = '0%'; // 예상할인율
+
+        try {
+            if (empty($arr_prod_code) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+
+            // 상품정보 조회
+            $data = $this->productFModel->findRawProductByProdCode($arr_prod_code);
+            if (empty($data) === true) {
+                throw new \Exception('상품정보 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+
+            // 상품별 묶음할인정보 조회
+            $disc_data = $this->productFModel->getBundleDiscRate($arr_prod_code, $this->_site_code);
+
+            // 예상할인율 셋팅
+            if (empty($disc_data) === false) {
+                $expt_disc_rate = array_get(current($disc_data), 'DiscRate', 0) . '' . array_get(current($disc_data), 'DiscRateUnit', '%');
+            }
+
+            // 총 예상결제금액 계산
+            foreach ($data as $row) {
+                if ($row['ProdPriceData'] == 'N') {
+                    throw new \Exception('상품가격정보가 없습니다.', _HTTP_NOT_FOUND);
+                }
+
+                $price_row = element('0', json_decode($row['ProdPriceData'], true));
+                $disc_row = array_get($disc_data, $row['ProdCode']);
+
+                if (empty($disc_row) === false && $disc_row['DiscRate'] > 0) {
+                    if ($disc_row['DiscType'] == 'R') {
+                        $expt_pay_price += ceil($price_row['RealSalePrice'] * ((100 - $disc_row['DiscRate']) / 100));    // 소숫점 올림;
+                    } else {
+                        if ($disc_row['DiscType'] == 'P' && $price_row['RealSalePrice'] > $disc_row['DiscRate']) {
+                            $expt_pay_price += $price_row['RealSalePrice'] - $disc_row['DiscRate'];
+                        } else {
+                            $expt_pay_price += $price_row['RealSalePrice'];
+                        }
+                    }
+                } else {
+                    $expt_pay_price += $price_row['RealSalePrice'];
+                }
+
+                $real_sale_price += $price_row['RealSalePrice'];
+            }
+        } catch (\Exception $e) {
+            return $this->json_error($e->getMessage(), $e->getCode());
+        }
+
+        return $this->json_result(true, '', [], [
+            'real_sale_price' => $real_sale_price,
+            'expt_disc_rate' => $expt_disc_rate,
+            'expt_disc_price' => ($real_sale_price - $expt_pay_price),
+            'expt_pay_price' => $expt_pay_price
+        ]);
+    }
 }

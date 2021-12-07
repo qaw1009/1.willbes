@@ -8,7 +8,7 @@
     .evtCtnsBox img {width:100%; max-width:720px;}
     /*.evtCtnsBox a:hover {box-shadow:0 10px 10px rgba(0,0,0,.5);}*/
 
-    .evt03 {background:#f1f1f1; padding-bottom:50px}
+
     .evtCtnsBox .check {font-size:16px; text-align:center; line-height:1.5;; margin:40px 20px 0;font-weight:bold;}
     .evtCtnsBox .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
     .evtCtnsBox .check a {display:block; width:60%; padding:5px 20px; color:#fff; background:#000; margin:20px auto 0; border-radius:20px}
@@ -63,15 +63,15 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_00.jpg" alt="경찰학원부분 1위" >        
     </div>
 
-    <div class="evtCtnsBox evtTop">
+    <div class="evtCtnsBox evtTop" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2021/12/2446m_01.gif" alt="문제풀이 풀패키지"/>
     </div>
 
-    <div class="evtCtnsBox evt01">
+    <div class="evtCtnsBox evt01" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2021/12/2446m_02.jpg" alt="커리큘럼"/>
     </div>
 
-    <div class="evtCtnsBox evt02">
+    <div class="evtCtnsBox evt02" data-aos="fade-up">
         <div class="p_re">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2446m_03.jpg"  alt="문제풀이 풀패키지"/>
             <a href="javascript:go_PassLecture('188139');" title="김원욱 헌법" style="position: absolute; left: 16.94%; top: 82.76%; width: 27.78%; height: 8.05%;z-index: 2;"></a>
@@ -86,7 +86,7 @@
         </div>
     </div>
 
-    <div class="evtCtnsBox evt04">
+    <div class="evtCtnsBox evt04" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2021/12/2446m_04.jpg" alt="단계별 종합반" >  
         <div class="evt04_table">     
             <div class="title NSK-Black">              
@@ -182,7 +182,7 @@
         </div>   
     </div>
 
-    <div class="evtCtnsBox evtInfo" id="careful">
+    <div class="evtCtnsBox evtInfo" id="careful" data-aos="fade-up">
         <div class="evtInfoBox">
             <h4 class="NSK-Black">윌비스 신광은 경찰 문제풀이 풀패키지 이용안내</h4>
             <div class="infoTit"><strong>상품구성</strong></div>
@@ -219,28 +219,36 @@
     </div> 
 </div>		
 
-    <!-- End Container -->
-    <script type="text/javascript">
-        function go_PassLecture(code) {
-            if($("input[name='ischk']:checked").size() < 1){
-                alert("이용안내에 동의하셔야 합니다.");
-                return;
-            }
-            var url = '{{ front_url('/m/periodPackage/show/cate/3001/pack/648001/prod-code/') }}' + code;
-            location.href = url;
-        }
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+    $( document ).ready( function() {
+        AOS.init();
+    } );
+</script>
 
-        $(document).ready(function(){
-            $(".tabContents").hide();
-            $(".tabContents:first").show();
-            $(".tabContaier ul li a").click(function(){
-            var activeTab = $(this).attr("href");
-            $(".tabContaier ul li a").removeClass("active");
-            $(this).addClass("active");
-            $(".tabContents").hide();
-            $(activeTab).fadeIn();
-            return false;
-            });
+<!-- End Container -->
+<script type="text/javascript">
+    function go_PassLecture(code) {
+        if($("input[name='ischk']:checked").size() < 1){
+            alert("이용안내에 동의하셔야 합니다.");
+            return;
+        }
+        var url = '{{ front_url('/periodPackage/show/cate/3001/pack/648001/prod-code/') }}' + code;
+        location.href = url;
+    }
+
+    $(document).ready(function(){
+        $(".tabContents").hide();
+        $(".tabContents:first").show();
+        $(".tabContaier ul li a").click(function(){
+        var activeTab = $(this).attr("href");
+        $(".tabContaier ul li a").removeClass("active");
+        $(this).addClass("active");
+        $(".tabContents").hide();
+        $(activeTab).fadeIn();
+        return false;
         });
-    </script> 
+    });
+</script> 
 @stop

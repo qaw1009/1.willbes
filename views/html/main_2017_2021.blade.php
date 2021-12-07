@@ -243,7 +243,7 @@ no-repeat 5px center}
                                 <td rowspan="3">
                                     <ul>
                                         <li>
-                                            <a href="#none" class="strong">허역팀</a>
+                                            <a href="#none">허역팀</a>
                                         </li>
                                         <li class="tx-purple-gray">
                                             김현중<br>

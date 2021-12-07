@@ -212,14 +212,14 @@ class ProfessorHotClipModel extends WB_Model
             ,ps.SubjectName,wp.wProfName,a.wAdminName AS RegAdminName
             ,(SELECT COUNT(*) AS cnt FROM {$this->_table['professor_hot_clip_thumbnail']} AS hct WHERE hc.PhcIdx = hct.PhcIdx AND hct.IsStatus = 'Y') AS ThumbnailCnt
             ,(
-                SELECT GROUP_CONCAT(CONCAT('[',b.ProdCode,'] ',b.ProdName)) AS ProdductInfo
+                SELECT GROUP_CONCAT(CONCAT('[',b.ProdCode,'] ',b.ProdName) ORDER BY a.OrderNum ASC) AS ProdductInfo
                 FROM {$this->_table['professor_hot_clip_product']} AS a #on hc.PhcIdx = a.PhcIdx AND a.IsStatus = 'Y'
                 INNER JOIN {$this->_table['product']} AS b ON b.ProdCode = a.ProdCode
                 INNER JOIN {$this->_table['product_lecture']} AS c ON b.ProdCode = c.ProdCode AND c.LearnPatternCcd = '615003'
                 WHERE hc.PhcIdx = a.PhcIdx AND a.IsStatus = 'Y'
             ) AS admin_package_product_info
             ,(
-                SELECT GROUP_CONCAT(CONCAT('[',b.ProdCode,'] ',b.ProdName)) AS ProdductInfo
+                SELECT GROUP_CONCAT(CONCAT('[',b.ProdCode,'] ',b.ProdName) ORDER BY a.OrderNum ASC) AS ProdductInfo
                 FROM {$this->_table['professor_hot_clip_product']} AS a #on hc.PhcIdx = a.PhcIdx AND a.IsStatus = 'Y'
                 INNER JOIN {$this->_table['product']} AS b ON b.ProdCode = a.ProdCode
                 INNER JOIN {$this->_table['product_lecture']} AS c ON b.ProdCode = c.ProdCode AND c.LearnPatternCcd = '615007'

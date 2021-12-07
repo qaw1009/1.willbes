@@ -165,98 +165,96 @@
         </div>
 
         <div class="evtCtnsBox evt05" id="apply2">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2446_05.jpg" title="단계별 종합반" />
-            <div id="tab1" class="tabContents">   
-                <div class="evt05_table">     
-                    <div class="title NSK-Black">              
-                        문제풀이 1단계
-                    </div>   
-                    <div> 
-                        <table border="0" cellspacing="0" cellpadding="0">
-                            <col />
-                            <col width="28%" />
-                            <col width="15%" />
-                            <thead>
-                                <tr>
-                                    <th>강의명</th>
-                                    <th>수강료</th>                        
-                                    <th>온라인수강</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>2022년 1차대비  1단계종합반 (헌법 김원욱)</td>
-                                    <td>1,000,000원 > <span class="tx-red">460,000원</span></td>              
-                                    <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/188105">신청하기 ></a></td>
-                                </tr>     
-                                <tr>
-                                    <td>2022년 1차대비  1단계종합반 (헌법 이국령)</td>
-                                    <td>1,000,000원 > <span class="tx-red">460,000원</span></td>                         
-                                    <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/188106" target="_blank">신청하기 ></a></td>
-                                </tr>                          
-                            </tbody>
-                        </table>        
-                    </div> 
-                    <div class="title NSK-Black">              
-                        문제풀이 2단계
-                    </div>   
-                    <div> 
-                        <table border="0" cellspacing="0" cellpadding="0">
-                            <col width="60%" />
-                            <col width="25%" />
-                            <col width="15%" />
-                            <thead>
-                                <tr>
-                                    <th>강의명</th>
-                                    <th>수강료</th>                        
-                                    <th>온라인수강</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>2022년1차대비 2단계 동형모의고사 종합반 (헌법 김원욱)</td>
-                                    <td>1,000,000원 > <span class="tx-red">400,000원</span></td>                          
-                                    <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/188107" target="_blank">신청하기 ></a></td>
-                                </tr>  
-                                <tr>
-                                    <td>2022년1차대비 2단계 동형모의고사 종합반 (헌법 이국령)</td>
-                                    <td>1,000,000원 > <span class="tx-red">400,000원</span></td>                          
-                                    <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/188108" target="_blank">신청하기 ></a></td>
-                                </tr>                                  
-                            </tbody>
-                        </table>        
-                    </div>
-                    <div class="title NSK-Black">              
-                        문제풀이 3단계
-                    </div>   
-                    <div> 
-                        <table border="0" cellspacing="0" cellpadding="0">
-                            <col width="60%" />
-                            <col width="25%" />
-                            <col width="15%" />
-                            <thead>
-                                <tr>
-                                    <th>강의명</th>
-                                    <th>수강료</th>                        
-                                    <th>온라인수강</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>2022년1차대비 3단계 파이널 모의고사 종합반 (헌법 김원욱)</td>
-                                    <td>1,000,000원 > <span class="tx-red">400,000원</span></td>                          
-                                    <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/188122" target="_blank">신청하기 ></a></td>
-                                </tr>
-                                <tr>
-                                    <td>2022년1차대비 3단계 파이널 모의고사 종합반 (헌법 이국령)</td>
-                                    <td>1,000,000원 > <span class="tx-red">400,000원</span></td>                          
-                                    <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/188125" target="_blank">신청하기 ></a></td>
-                                </tr>                                                          
-                            </tbody>
-                        </table>        
-                    </div>                                                                        
-                </div>    
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2446_05.jpg" title="단계별 종합반" />   
+            <div class="evt05_table">     
+                <div class="title NSK-Black">              
+                    문제풀이 1단계
+                </div>   
+                <div> 
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <col />
+                        <col width="28%" />
+                        <col width="15%" />
+                        <thead>
+                            <tr>
+                                <th>강의명</th>
+                                <th>수강료</th>                        
+                                <th>온라인수강</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2022년 1차대비  1단계종합반 (헌법 김원욱)</td>
+                                <td>1,000,000원 > <span class="tx-red">460,000원</span></td>              
+                                <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/188105" target="_blank">신청하기 ></a></td>
+                            </tr>     
+                            <tr>
+                                <td>2022년 1차대비  1단계종합반 (헌법 이국령)</td>
+                                <td>1,000,000원 > <span class="tx-red">460,000원</span></td>                         
+                                <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/188106" target="_blank">신청하기 ></a></td>
+                            </tr>                          
+                        </tbody>
+                    </table>        
+                </div> 
+                <div class="title NSK-Black">              
+                    문제풀이 2단계
+                </div>   
+                <div> 
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <col width="60%" />
+                        <col width="25%" />
+                        <col width="15%" />
+                        <thead>
+                            <tr>
+                                <th>강의명</th>
+                                <th>수강료</th>                        
+                                <th>온라인수강</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2022년1차대비 2단계 동형모의고사 종합반 (헌법 김원욱)</td>
+                                <td>1,000,000원 > <span class="tx-red">400,000원</span></td>                          
+                                <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/188107" target="_blank">신청하기 ></a></td>
+                            </tr>  
+                            <tr>
+                                <td>2022년1차대비 2단계 동형모의고사 종합반 (헌법 이국령)</td>
+                                <td>1,000,000원 > <span class="tx-red">400,000원</span></td>                          
+                                <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/188108" target="_blank">신청하기 ></a></td>
+                            </tr>                                  
+                        </tbody>
+                    </table>        
+                </div>
+                <div class="title NSK-Black">              
+                    문제풀이 3단계
+                </div>   
+                <div> 
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <col width="60%" />
+                        <col width="25%" />
+                        <col width="15%" />
+                        <thead>
+                            <tr>
+                                <th>강의명</th>
+                                <th>수강료</th>                        
+                                <th>온라인수강</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2022년1차대비 3단계 파이널 모의고사 종합반 (헌법 김원욱)</td>
+                                <td>200,000원 > <span class="tx-red">70,000원</span></td>                          
+                                <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/188122" target="_blank">신청하기 ></a></td>
+                            </tr>
+                            <tr>
+                                <td>2022년1차대비 3단계 파이널 모의고사 종합반 (헌법 이국령)</td>
+                                <td>200,000원 > <span class="tx-red">70,000원</span></td>                          
+                                <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/188125" target="_blank">신청하기 ></a></td>
+                            </tr>                                                          
+                        </tbody>
+                    </table>        
+                </div>                                                                        
+            </div>   
         </div>
 
         <div class="evtCtnsBox evtInfo" id="careful">

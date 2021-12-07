@@ -41,6 +41,7 @@
                         <th colspan="3">메인</th>
                         <th colspan="2">이벤트</th>
                         <th rowspan="2">썸네일등록개수</th>
+                        <th rowspan="2">사용여부</th>
                         <th rowspan="2">등록자</th>
                         <th style="width: 120px;" rowspan="2">등록일</th>
                         <th rowspan="2">수정</th>
@@ -130,6 +131,9 @@
                             return str;
                         }},
                     {'data' : 'ThumbnailCnt'},
+                    {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
+                            return (data == 'Y') ? '사용' : '<span class="red">미사용</span>';
+                        }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
                     {'data' : 'PhcIdx', 'render' : function(data, type, row, meta) {

@@ -208,7 +208,7 @@ class ProfessorHotClipModel extends WB_Model
 
         $column = "
             hcg.ViewType,hcg.Title as GroupTitle,hcg.IsUse as GroupIsUse,hc.PhcIdx,hc.SiteCode,hc.CateCode,hc.OrderNum
-            ,hc.ProfBtnIsUse,hc.CurriculumBtnIsUse,hc.StudyCommentBtnIsUse,hc.RegDatm
+            ,hc.ProfBtnIsUse,hc.CurriculumBtnIsUse,hc.StudyCommentBtnIsUse,hc.IsUse,hc.RegDatm
             ,ps.SubjectName,wp.wProfName,a.wAdminName AS RegAdminName
             ,(SELECT COUNT(*) AS cnt FROM {$this->_table['professor_hot_clip_thumbnail']} AS hct WHERE hc.PhcIdx = hct.PhcIdx AND hct.IsStatus = 'Y') AS ThumbnailCnt
             ,(
@@ -250,7 +250,7 @@ class ProfessorHotClipModel extends WB_Model
             ,hc.SiteCode,hc.PhcgIdx
             ,hc.CateCode,hc.OrderNum
             ,hc.ProfBgImagePath,hc.ProfBgImageName,hc.ProfBgImageRealName
-            ,hc.ProfBtnIsUse,hc.CurriculumBtnIsUse,hc.StudyCommentBtnIsUse,hc.RegDatm,hc.UpdDatm
+            ,hc.ProfBtnIsUse,hc.CurriculumBtnIsUse,hc.StudyCommentBtnIsUse,hc.IsUse,hc.RegDatm,hc.UpdDatm
             ,c.CateName AS CateRouteName,ps.SubjectName,wp.wProfName
             ,CONCAT(ps.SubjectName,'>',wp.wProfName) AS ProfSubjectName
             ,CONCAT(hc.ProfIdx,'_',hc.SubjectIdx) AS ProfSubjectIdx
@@ -666,6 +666,7 @@ class ProfessorHotClipModel extends WB_Model
             'ProfBtnIsUse' => element('prof_btn_isUse',$form_data),
             'CurriculumBtnIsUse' => element('curriculum_btn_is_use',$form_data),
             'StudyCommentBtnIsUse' => element('studycomment_btn_is_use',$form_data),
+            'IsUse' => element('is_use',$form_data,'Y'),
             'IsStatus' => element('is_status',$form_data,'Y'),
         ];
 

@@ -1053,17 +1053,18 @@ class Home extends \app\controllers\FrontController
         $result = $this->professorHotClipFModel->listHotClip_test($arr_condition, $order_by);
         if (empty($result) === false) {
             foreach ($result as $row) {
-                $data[$row['group_title']][$row['ProfIdx']]['ProfIdx'] = $row['ProfIdx'];
-                $data[$row['group_title']][$row['ProfIdx']]['wProfName'] = $row['wProfName'];
-                $data[$row['group_title']][$row['ProfIdx']]['SubjectName'] = $row['SubjectName'];
-                $data[$row['group_title']][$row['ProfIdx']]['SubjectIdx'] = $row['SubjectIdx'];
-                $data[$row['group_title']][$row['ProfIdx']]['CateCode'] = $row['CateCode'];
-                $data[$row['group_title']][$row['ProfIdx']]['ProfBtnIsUse'] = $row['ProfBtnIsUse'];
-                $data[$row['group_title']][$row['ProfIdx']]['CurriculumBtnIsUse'] = $row['CurriculumBtnIsUse'];
-                $data[$row['group_title']][$row['ProfIdx']]['StudyCommentBtnIsUse'] = $row['StudyCommentBtnIsUse'];
-                $data[$row['group_title']][$row['ProfIdx']]['ProfBgImagePath'] = $row['ProfBgImagePath'];
-                $data[$row['group_title']][$row['ProfIdx']]['ProfBgImageName'] = $row['ProfBgImageName'];
-                $data[$row['group_title']][$row['ProfIdx']]['thumbnail_data'] = $row['thumbnail_data'];
+                $data[$row['group_title']][$row['PhcIdx']]['PhcIdx'] = $row['PhcIdx'];
+                $data[$row['group_title']][$row['PhcIdx']]['ProfIdx'] = $row['ProfIdx'];
+                $data[$row['group_title']][$row['PhcIdx']]['wProfName'] = $row['wProfName'];
+                $data[$row['group_title']][$row['PhcIdx']]['SubjectName'] = $row['SubjectName'];
+                $data[$row['group_title']][$row['PhcIdx']]['SubjectIdx'] = $row['SubjectIdx'];
+                $data[$row['group_title']][$row['PhcIdx']]['CateCode'] = $row['CateCode'];
+                $data[$row['group_title']][$row['PhcIdx']]['ProfBtnIsUse'] = $row['ProfBtnIsUse'];
+                $data[$row['group_title']][$row['PhcIdx']]['CurriculumBtnIsUse'] = $row['CurriculumBtnIsUse'];
+                $data[$row['group_title']][$row['PhcIdx']]['StudyCommentBtnIsUse'] = $row['StudyCommentBtnIsUse'];
+                $data[$row['group_title']][$row['PhcIdx']]['ProfBgImagePath'] = $row['ProfBgImagePath'];
+                $data[$row['group_title']][$row['PhcIdx']]['ProfBgImageName'] = $row['ProfBgImageName'];
+                $data[$row['group_title']][$row['PhcIdx']]['thumbnail_data'] = $row['thumbnail_data'];
             }
         }
         return $data;

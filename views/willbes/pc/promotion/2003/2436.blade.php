@@ -61,7 +61,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2436_02.jpg" alt="" />
                 <a href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/188205" target="_blank" title="민법" style="position: absolute; left: 5.89%; top: 48.22%; width: 15.98%; height: 3.8%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/188206" target="_blank" title="형법" style="position: absolute; left: 29.64%; top: 48.22%; width: 15.98%; height: 3.8%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/188207" target="_blank" title="헌법" style="position: absolute; left: 53.84%%; top: 48.22%; width: 15.98%; height: 3.8%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/188207" target="_blank" title="헌법" style="position: absolute; left: 53.84%; top: 48.22%; width: 15.98%; height: 3.8%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/188208" target="_blank" title="민사소송법" style="position: absolute; left: 77.59%; top: 48.22%; width: 15.98%; height: 3.8%; z-index: 2;"></a>
 
                 <a href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/188209" target="_blank" title="형사소송법" style="position: absolute; left: 5.89%; top: 80.5%; width: 15.98%; height: 3.8%; z-index: 2;"></a>

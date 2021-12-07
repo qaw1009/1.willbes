@@ -647,7 +647,7 @@
                         </td>
                         <td rowspan="3">
                             <ul>
-                                <li><a href="{{front_url('/professor/show/prof-idx/51316?cate_code=3137&subject_idx=2035')}}"  class="strong">허역 팀</a></li>
+                                <li><a href="{{front_url('/professor/show/prof-idx/51316?cate_code=3137&subject_idx=2035')}}">허역 팀</a></li>
                                 <li class="tx-purple-gray">
                                     김현중<br>
                                     허역<br>

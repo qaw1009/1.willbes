@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     {
         {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
-        var cart_url = (cart_onoff_type == 'off') ? "{{front_url('/pass/cart/store')}}" : "{{front_url('/cart/store')}}";
+        var cart_url = (cart_onoff_type == 'off') ? "{{front_url('/cart/store', true)}}" : "{{front_url('/cart/store')}}";
         var $regi_form = $('#' + ele_id);
         var $prod_code = $regi_form.find('input[name="' + field_name + '"]:checked');   // 상품코드
         var $is_chk = $regi_form.find('input[name="is_chk"]');  // 동의여부

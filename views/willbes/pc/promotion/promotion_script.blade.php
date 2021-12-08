@@ -9,11 +9,13 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
      * @@param cart_type [장바구니 타입 (tab)]
      * @@param learn_pattern [학습형태]
      * @@param is_direct_pay [바로결제여부 (Y/N)]
+     * @@param cart_onoff_type [온라인,학원 타입 (off:학원, 기본값 : 온라인)]
     --}}
-    function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay)
+    function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay, cart_onoff_type)
     {
         {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
+        var cart_url = (cart_onoff_type == 'off') ? "{{front_url('/cart/store', true)}}" : "{{front_url('/cart/store')}}";
         var $regi_form = $('#' + ele_id);
         var $prod_code = $regi_form.find('input[name="' + field_name + '"]:checked');   // 상품코드
         var $is_chk = $regi_form.find('input[name="is_chk"]');  // 동의여부
@@ -47,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         });
 
         {{-- // 장바구니 저장 URL로 전송 --}}
-        formCreateSubmit('{{ front_url('/cart/store') }}', params, 'POST');
+        formCreateSubmit(cart_url, params, 'POST');
     }
 
     {{--

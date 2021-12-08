@@ -104,8 +104,31 @@
             top: -1px;
             right: -1px;
         }
-        .dropdown .list-drop-Box-ssam td p {background:#f9f9f9;width:75px;height:50px;line-height:50px;font-size:14px;display:table-cell;border-bottom: 1px solid #e4e4e4;border-top: 1px solid #e4e4e4;}
-        .no_click {color:#A6A6A6;font-size:13px;line-height:1.75;font-weight:100;}
+
+
+        /*중간 교수진 영역*/
+        .ssam .ssam-prof-List {position: absolute; top:50px; left:10px; z-index: 200;}
+        .prof-dropdown {}
+        .prof-dropdown > a {width:170px; display:block; color:#fff; font-size:15px; border:1px solid #668597; border-bottom:0; padding:20px 10px}
+        .prof-dropdown:last-child > a {border-bottom:1px solid #668597} 
+        .prof-dropdown:hover {background:#fff}
+        .prof-dropdown:hover > a {color:#0a2230}
+        .prof-dropdown:hover .prof-list-drop-Box {
+            display: block;
+        }
+        .prof-list-drop-Box {
+            display: none;
+            position: absolute;
+            background: #fff;
+            left:169px;
+            top:0;
+            width: 150px;
+            height: 281px;
+            border:1px solid #668597; border-left:0;
+        }
+        .prof-list-drop-Box a {display:block; padding:10px 15px; height:calc(279px / 8); font-size:13px; width:100%;}
+        .prof-list-drop-Box a:hover {background:#0a2230; color:#fff}
+        .prof-list-drop-Box a strong {margin-left:10px;}
     </style>
 
     <!-- Container -->

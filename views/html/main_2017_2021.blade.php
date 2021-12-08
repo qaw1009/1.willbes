@@ -18,7 +18,7 @@
 .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
 .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
 .ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}
-.ssam .sec-prof .prof-Tab {position:absolute; top:24px; left:50px; width:300px; z-index: 2;}
+.ssam .sec-prof .prof-Tab {position:absolute; top:24px; left:50px; width:300px; z-index: 900;}
 
 .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
 .ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:35px; line-height:35px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
@@ -85,6 +85,30 @@ no-repeat 5px center}
 	top: -1px;
 	right: -1px;
 }
+
+/*중간 교수진 영역*/
+.ssam .ssam-prof-List {position: absolute; top:50px; left:10px; z-index: 200;}
+.prof-dropdown {}
+.prof-dropdown > a {width:170px; display:block; color:#fff; font-size:15px; border:1px solid #668597; border-bottom:0; padding:20px 10px}
+.prof-dropdown:last-child > a {border-bottom:1px solid #668597} 
+.prof-dropdown:hover {background:#fff}
+.prof-dropdown:hover > a {color:#0a2230}
+.prof-dropdown:hover .prof-list-drop-Box {
+	display: block;
+}
+.prof-list-drop-Box {
+	display: none;
+	position: absolute;
+	background: #fff;
+    left:169px;
+    top:0;
+	width: 150px;
+    height: 281px;
+    border:1px solid #668597; border-left:0;
+}
+.prof-list-drop-Box a {display:block; padding:10px 15px; height:calc(279px / 8); font-size:13px; width:100%;}
+.prof-list-drop-Box a:hover {background:#0a2230; color:#fff}
+.prof-list-drop-Box a strong {margin-left:10px;}
 
 
 </style>

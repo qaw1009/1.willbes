@@ -122,7 +122,8 @@
 
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2455_03_01.jpg" alt="오시는길"/>
-            <div class="map" id="alterMap1">지도영역</div>
+            <div class="map" id="map">지도영역</div>
+            <div class="map" id="alterMap1" style="display: none;"><img src="https://static.willbes.net/public/images/promotion/main/2018/2017_map.jpg" style="width: 100%"></div>
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2455_03_02.jpg" alt="버스 노선"/>
         </div>
     </div>

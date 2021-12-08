@@ -470,8 +470,8 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전기자기학 단원별문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/168185" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 전기자기학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/183000" target="_blank">수강신청</a></td>
                     </tr>
                 </table>              
             </div>
@@ -614,8 +614,8 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전기자기학 단원별문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/168185" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 전기자기학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/183000" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>● 회로이론</p>
@@ -709,6 +709,7 @@
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/166792" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
+                
                 <p>● 전자회로</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
@@ -825,8 +826,8 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
-                        <td>2020 최우영 통신공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156379" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 통신공학 이론</td>
+                        <td><a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180545" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>
@@ -855,8 +856,14 @@
                     <tr>
                         <td>통신공학</td>
                         <td>문제풀이</td>
-                        <td>2020 [군무원] 최우영 통신공학 최종모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/166765" target="_blank">수강신청</a></td>
+                        <td>2021 [군무원] 최우영 9급 통신공학 실전모의고사</td>
+                        <td><a href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/182993" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신공학</td>
+                        <td>문제풀이</td>
+                        <td>2021 [군무원] 최우영 7급 통신공학 실전모의고사</td>
+                        <td><a href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/182999" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>● 전기자기학</p>
@@ -880,8 +887,8 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전기자기학 단원별문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/168185" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 전기자기학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/183000" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
             </div>

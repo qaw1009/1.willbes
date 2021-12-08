@@ -16,7 +16,7 @@
         .evt01 .price ul{display: flex; justify-content: center; margin:0 4.4%}
         .evt01 .price li {display:block;text-align:center; font-size:22px; font-weight:bold; color:#fff; background:#000; border-radius:10px; padding:20px 14px; margin:0 1.6% 5%; letter-spacing:-1px}
         .evt01 .price li label {display:block}
-        .evt01 .ext01txt {padding:0 20px;}
+        .evt01 .ext01txt {padding:20px;}
         .evt01 .ext01txt label {font-size:18px; font-weight:bold}
         .evt01 input[type="radio"] {height:18px; width:18px; vertical-align:middle}
         .evt01 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle; margin-right:5px}
@@ -24,8 +24,7 @@
         .evt01 .ext01txt ul {margin:10px 0 0 25px}
         .evt01 a {display:block; width:90%; margin:20px auto 0; background:#000; color:#fff; border-radius:30px; padding:10px 0; font-size:20px; font-weight:bold; text-align:center}
         
-        /*탭(텍스트)*/
-        .evt06 {padding-bottom:50px;}
+        /*탭(텍스트)*/     
         .tabContaier{width:100%;background:#fff;margin-top:50px;}
         .tabContaier ul{margin:0 auto; height:65px;} 
         .tabContaier li {display:inline-block; float:left; width:20%; height:60px; line-height:59px;background:#fff;color:#0101ff; font-size:18px;font-weight:bold;border:1px solid #0101ff;} 
@@ -33,9 +32,15 @@
         .tabContaier li a:hover,
         .tabContaier li a.active {color:#fff;font-size:20px;background:#0101ff;}
         .tabContaier:after {content:""; display:block; clear:both}
+
          /*유튜브*/
         .youtube {position:absolute; top:435px; left:50%;z-index:1;margin-left:-273px}
         .youtube iframe {width:547px; height:308px}
+
+        .video-container {position:relative; padding-top:30px; padding-bottom:56.25%; margin:0 20px; height:0; overflow: hidden;}
+        .video-container iframe,
+        .video-container object,
+        .video-container embed {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
         /* 이용안내 */
         .content_guide_wrap{background:#fff; margin:0 10; padding:30px 0 100px}
@@ -60,7 +65,7 @@
             .dday a {padding:5px 10px;}
             .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
             .content_guide_wrap .tabs li a {font-size:12px !important; letter-spacing:-1px}
-            .evt01 .price li {font-size:12px;}
+            .evt01 .price li {font-size:13px;}
             .tabContaier li {font-size:16px;}
             .tabContaier li a:hover {font-size:17px;}
         }
@@ -159,48 +164,53 @@
                 </ul>
                 <div id="tab1" class="tabContents">
                     <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_01.jpg"  alt="형사법" />
-                        <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51160?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 25.89%;top: 82.03%;width: 47.88%;height: 8.34%;z-index: 2;"></a>
-                        <div class="youtube">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_01.jpg"  alt="형사법" />                       
+                        <div class="video-container">
                             <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_01_btn.jpg"  alt="교수님 소개" />
+                        <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51160?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 25.89%;top:90.03%;width: 47.88%;height: 8.34%;z-index: 2;"></a>
                     </div>                         
                 </div>
                 <div id="tab2" class="tabContents">
                     <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_02.jpg"  alt="경찰학" />
-                        <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51161?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 25.89%;top: 82.03%;width: 47.88%;height: 8.34%;z-index: 2;"></a>
-                        <div class="youtube">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_02.jpg"  alt="경찰학" />                        
+                        <div class="video-container">
                             <iframe src="https://www.youtube.com/embed/VHTrL5w2IF4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_02_btn.jpg"  alt="교수님 소개" />
+                        <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51161?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 25.89%;top: 90.03%;width: 47.88%;height: 8.34%;z-index: 2;"></a>
                     </div>                         
                 </div> 
                 <div id="tab3" class="tabContents">
                     <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_03.jpg"  alt="헌법 김원욱" />
-                        <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51146?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 25.89%;top: 82.03%;width: 47.88%;height: 8.34%;z-index: 2;"></a>
-                        <div class="youtube">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_03.jpg"  alt="헌법 김원욱" />                       
+                        <div class="video-container">
                             <iframe src="https://www.youtube.com/embed/UB91DCctYgU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_03_btn.jpg"  alt="교수님 소개" />
+                        <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51146?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 25.89%;top: 90.03%;width: 47.88%;height: 8.34%;z-index: 2;"></a>
                     </div>                               
                 </div> 
                 <div id="tab4" class="tabContents">
                     <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_04.jpg"  alt="헌법 이국령" />
-                        <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51259?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 25.89%;top: 82.03%;width: 47.88%;height: 8.34%;z-index: 2;"></a>
-                        <div class="youtube">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_04.jpg"  alt="헌법 이국령" />                        
+                        <div class="video-container">
                             <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_04_btn.jpg"  alt="교수님 소개" />
+                        <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51259?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 25.89%;top: 90.03%;width: 47.88%;height: 8.34%;z-index: 2;"></a>
                     </div>                                 
                 </div> 
                 <div id="tab5" class="tabContents">
                     <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_05.jpg"  alt="범죄학" />
-                        <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51278?subject_idx=2178&subject_name=%EB%B2%94%EC%A3%84%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 25.89%;top: 82.03%;width: 47.88%;height: 8.34%;z-index: 2;"></a>
-                        <div class="youtube">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_05.jpg"  alt="범죄학" />                        
+                        <div class="video-container">
                             <iframe src="https://www.youtube.com/embed/8T1HxQ5PPhQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                    </div>                          
+                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_05_btn.jpg"  alt="교수님 소개" />
+                        <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51278?subject_idx=2178&subject_name=%EB%B2%94%EC%A3%84%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 25.89%;top: 90.03%;width: 47.88%;height: 8.34%;z-index: 2;"></a>
+                    </div>                        
                 </div>                                
             </div>           
         </div>        

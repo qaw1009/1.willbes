@@ -15,7 +15,7 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,1);}
+        /*.evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,1);}*/
 
         /************************************************************/
         
@@ -163,7 +163,7 @@
                 <div class="infoTit NG"><strong>수강관련</strong></div>
 				<ul>
 					<li>본 상품 신청 시 컴퓨터, 스마트 기기를 이용하여 자유롭게 수강하실 수 있습니다.</li>
-                    <li>신청일로부터 2배수 범위 내 365일 수강 가능</li>
+                    <li>신청일로부터 3배수 범위 내 365일 수강 가능</li>
                     <li>PC 또는 모바일 2대에 한하여 사용 가능(기기 선택 후 변경 신청 가능)</li>
                     <li>본 상품은 구매일로부터 바로 수강이 진행되며, 수강기간 조정 및 정지가 불가합니다.</li>
                 </ul>

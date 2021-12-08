@@ -33,8 +33,6 @@
 
         .ssam .noticeBox .List-Table {margin-top:20px !important;border-top:0 !important}
 
-
-
         .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
         .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
         .ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}
@@ -106,10 +104,7 @@
             top: -1px;
             right: -1px;
         }
-        /*
-        .dropdown .list-drop-Box-ssam td p {background:#f9f9f9;width:75px;height:50px;line-height:50px;font-size:14px;display:table-cell;border-bottom: 1px solid #e4e4e4;border-top: 1px solid #e4e4e4;}
-        .no_click {color:#A6A6A6;font-size:13px;line-height:1.75;font-weight:100;}
-        */
+
     </style>
 
     <!-- Container -->

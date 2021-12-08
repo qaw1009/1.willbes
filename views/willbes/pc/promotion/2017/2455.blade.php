@@ -122,13 +122,12 @@
 
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2455_03_01.jpg" alt="오시는길"/>
-            <div class="map" id="map">지도영역</div>
+            <div class="map" id="alterMap1">지도영역</div>
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2455_03_02.jpg" alt="버스 노선"/>
         </div>
     </div>
     <!-- End Container -->
 
-{{--
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ config_item('kakao_js_app_key') }}&libraries=services"></script>
 <script type="text/javascript" src="/public/js/map_util.js?ver={{time()}}"></script>
 <script type="text/javascript">
@@ -145,7 +144,4 @@
         $kakaomap.run();
     });
 </script>
---}}
-
-
 @stop

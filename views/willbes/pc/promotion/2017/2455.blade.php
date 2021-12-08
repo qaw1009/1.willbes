@@ -26,8 +26,11 @@
         .evt01 .profList .profBox a:hover {box-shadow:5px 5px 10px rgba(0,0,0,.4); outline:1px solid #b28026; display: block;}
         .evt01 .profList .soon {position:absolute; width:100%; height:100%; background:rgba(0,0,0,.6); color:#fff; z-index: 2;
             display: flex; justify-content: center; align-items: flex-end; font-size:24px; padding-bottom:80px}
+        
         .evt02 {background:#b28026}
+
         .evt03 {background:#eee9e3; padding-top:150px}    
+        .evt03 .map {width:1120px; margin:0 auto; height:623px; background:#f4f4f4}
 
     </style>
 
@@ -119,12 +122,13 @@
 
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2455_03_01.jpg" alt="오시는길"/>
-            <div class="mapL" id="map">지도영역</div>
+            <div class="map" id="map">지도영역</div>
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2455_03_02.jpg" alt="버스 노선"/>
         </div>
     </div>
     <!-- End Container -->
 
+{{--
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ config_item('kakao_js_app_key') }}&libraries=services"></script>
 <script type="text/javascript" src="/public/js/map_util.js?ver={{time()}}"></script>
 <script type="text/javascript">
@@ -141,6 +145,7 @@
         $kakaomap.run();
     });
 </script>
+--}}
 
 
 @stop

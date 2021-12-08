@@ -96,6 +96,14 @@
             <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['ProfNickName'] }}</span> {{ $data['AppellationCcdName'] }} 커리큘럼</div>
             <div class="Layer-Cont">
                 {!! $data['ProfCurriculum'] !!}
+
+                {{-- 커리큘럼 첨부파일 --}}
+                @if(empty($data['ProfReferData']['curri_file']) === false)
+                    {{-- 이미지 파일 표시 --}}
+                    @foreach($data['ProfReferData']['curri_file'] as $curri_row)
+                        {!! make_image_tag($curri_row['ReferValue']) !!}
+                    @endforeach
+                @endif
             </div>
         </div>
         <div class="dim" onclick="closeWin('LayerCurriculum')"></div>

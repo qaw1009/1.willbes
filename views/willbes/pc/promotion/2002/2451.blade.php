@@ -7,17 +7,19 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:auto}
+        .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
-        .evt_wrap {width:1120px; margin:0 auto; position: relative;}
-        .evt_wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.25);}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
-        .sky {position:fixed;  top:150px; right:25px; z-index:10;}
+        .sky {position:fixed; top:100px; right:10px; z-index:10;}
         .sky a {display:block; margin-bottom:10px}
 
         .evt00 {background:#0A0A0A}
@@ -74,7 +76,7 @@
             <!--<input type="hidden" name="register_chk_col[]" value="EtcValue"/>
             <input type="hidden" name="register_chk_val[]" value=""/>-->
             
-            <div class="sky">               
+            <div class="sky" id="QuickMenu">               
                 <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2451_sky01.png" title="신광은 경찰팀 tv"></a>
                 <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/12/2451_sky02.png" title="참석 go"></a>
                 <a href="#evt_02"><img src="https://static.willbes.net/public/images/promotion/2021/12/2451_sky03.png" title="소문 go"></a>

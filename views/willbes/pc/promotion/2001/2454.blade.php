@@ -53,6 +53,9 @@
     
         .evt08 {padding-bottom:100px;}
 
+        
+        .videoBox{position: relative; padding-top: 60%; width:760px;}
+        .videoBox iframe{position: absolute; top:0; left:0; width:100%; height:100%; }
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -131,46 +134,47 @@
      <!-- 비디오 영상팝업 리스트 -->
 
      <div id="vid1" style="display: none;">
-        <span class="b-close"><i class="fa fa-times" aria-hidden="true"></i></span>
-        <video id="movie1" class="video_main"  controls  poster="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_poster_01.jpg">
-            <source src="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_video_01.mp4" type='video/mp4' />
-        </video>
+        <span class="b-close">X</span>
+        <div class="videoBox">
+            <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs?rel=0" frameborder="0" allowfullscreen=""></iframe>
+        </div>
     </div>
     <div id="vid2" style="display: none;">
-        <span class="b-close"><i class="fa fa-times" aria-hidden="true"></i></span>
-        <video id="movie2" class="video_main" controls  poster="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_poster_02.jpg">
-            <source src="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_video_02.mp4" type='video/mp4' />
-        </video>
+        <span class="b-close">X</span>
+        <div class="videoBox">
+            <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs?rel=0" frameborder="0" allowfullscreen=""></iframe>
+        </div>
     </div>
     <div id="vid3" style="display: none;">
-        <span class="b-close"><i class="fa fa-times" aria-hidden="true"></i></span>
-        <video id="movie3" class="video_main" controls poster="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_poster_03.jpg">
-            <source src="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_video_03.mp4" type='video/mp4' />
-        </video>
+        <span class="b-close">X</span>
+        <div class="videoBox">
+            <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs?rel=0" frameborder="0" allowfullscreen=""></iframe>
+        </div>
     </div>
     <div id="vid4" style="display: none;">
-        <span class="b-close"><i class="fa fa-times" aria-hidden="true"></i></span>
-        <video id="movie4" class="video_main" controls poster="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_poster_04.jpg">
-            <source src="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_video_04.mp4" type='video/mp4' />
-        </video>
+        <span class="b-close">X</span>
+        <div class="videoBox">
+            <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs?rel=0" frameborder="0" allowfullscreen=""></iframe>
+        </div>
     </div>
     <div id="vid5" style="display: none;">
-        <span class="b-close"><i class="fa fa-times" aria-hidden="true"></i></span>
-        <video id="movie5" class="video_main" controls poster="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_poster_05.jpg">
-            <source src="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_video_05.mp4" type='video/mp4' />
-        </video>
+        <span class="b-close">X</span>
+        <div class="videoBox">
+            <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs?rel=0" frameborder="0" allowfullscreen=""></iframe>
+        </div>
     </div>
     <div id="vid6" style="display: none;">
-        <span class="b-close"><i class="fa fa-times" aria-hidden="true"></i></span>
-        <video id="movie6" class="video_main" controls poster="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_poster_06.jpg">
-            <source src="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_video_06.mp4" type='video/mp4' />
-        </video>
+        <span class="b-close">X</span>
+        <div class="videoBox">
+            <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs?rel=0" frameborder="0" allowfullscreen=""></iframe>
+        </div>
     </div>
     
      <!-- End evtContainer -->
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script type="text/javascript" src="https://pass.willbes.net/public/js/willbes/jquery.bpopup.min.js"></script>
 
         <script>
         $( document ).ready( function() {
@@ -191,13 +195,6 @@
         </script>
         
     </script>
-
-    <iframe id="ne_tgmiframe_0" width="0" height="0" style="position:absolute;width:0px;height:0px;display:none;" src="about:blank"></iframe><div id="criteo-tags-div" style="display: none;"></div><div class="b-modal __b-popup1__" style="background-color: rgb(0, 0, 0); position: fixed; inset: 0px; opacity: 0.7; z-index: 9998; cursor: pointer;"></div><div id="vid1" style="left: 567px; position: fixed; top: 211.5px; z-index: 9999; opacity: 1; display: block;">
-    <span class="b-close"><i class="fa fa-times" aria-hidden="true"></i></span>
-    <video id="movie1" class="video_main" controls="">
-    <source src="https://www.youtube.com/embed/PLp3fcmi4AE?rel=0" type="video/mp4">
-    </video>
-    </div></body>
 
     
 

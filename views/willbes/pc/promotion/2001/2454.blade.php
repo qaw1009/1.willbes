@@ -27,7 +27,25 @@
 
         .evt01 {background:#f1f1f1;} 
 
-        .evt02 {background:#f1f1f1;}      
+        .evt02 {background:#f1f1f1;}
+
+        .Pstyle {
+        opacity: 0;
+        display: none;
+        position: relative;
+        width: auto;
+        }
+        .b-close {
+        position: absolute;
+        right: 0;
+        top: -60px;
+        display: inline-block;
+        cursor: pointer;
+        font-size: 40px;
+        font-weight: bold;
+        color:#fff;
+        }
+        .video_main {max-width: 786px; width: 80vw;}
 
         .evt03, .evt04, .evt05, .evt06{padding-bottom:100px;}
 
@@ -60,11 +78,11 @@
         <div class="evtCtnsBox evt02" data-aos="fade-up">
             <div class="wrap">            
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2454_02.jpg" title="클릭 후기">
-                <a href="javascript:void(0)" title="" style="position: absolute;left: 9.73%;top: 25.16%;width: 16.2%;height: 7.31%;z-index: 2;"></a>
-                <a href="javascript:void(0)" title="" style="position: absolute;left: 41.73%;top: 25.16%;width: 16.2%;height: 7.31%;z-index: 2;"></a>
-                <a href="javascript:void(0)" title="" style="position: absolute;left: 73.73%;top: 25.16%;width: 16.2%;height: 7.31%;z-index: 2;"></a>
-                <a href="javascript:void(0)" title="" style="position: absolute;left: 24.73%;top: 57.16%;width: 16.2%;height: 7.31%;z-index: 2;"></a>
-                <a href="javascript:void(0)" title="" style="position: absolute;left: 58.73%;top: 57.16%;width: 16.2%;height: 7.31%;z-index: 2;"></a>            
+                <a href="javascript:videoPop('#vid1');" title="" style="position: absolute;left: 9.73%;top: 25.16%;width: 16.2%;height: 7.31%;z-index: 2;"></a>
+                <a href="javascript:videoPop('#vid2');" title="" style="position: absolute;left: 41.73%;top: 25.16%;width: 16.2%;height: 7.31%;z-index: 2;"></a>
+                <a href="javascript:videoPop('#vid3');" title="" style="position: absolute;left: 73.73%;top: 25.16%;width: 16.2%;height: 7.31%;z-index: 2;"></a>
+                <a href="javascript:videoPop('#vid4');" title="" style="position: absolute;left: 24.73%;top: 57.16%;width: 16.2%;height: 7.31%;z-index: 2;"></a>
+                <a href="javascript:videoPop('#vid5');" title="" style="position: absolute;left: 58.73%;top: 57.16%;width: 16.2%;height: 7.31%;z-index: 2;"></a>            
             </div>    
         </div>
 
@@ -110,6 +128,45 @@
 
 	</div>
 
+     <!-- 비디오 영상팝업 리스트 -->
+
+     <div id="vid1" style="display: none;">
+        <span class="b-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+        <video id="movie1" class="video_main"  controls  poster="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_poster_01.jpg">
+            <source src="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_video_01.mp4" type='video/mp4' />
+        </video>
+    </div>
+    <div id="vid2" style="display: none;">
+        <span class="b-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+        <video id="movie2" class="video_main" controls  poster="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_poster_02.jpg">
+            <source src="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_video_02.mp4" type='video/mp4' />
+        </video>
+    </div>
+    <div id="vid3" style="display: none;">
+        <span class="b-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+        <video id="movie3" class="video_main" controls poster="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_poster_03.jpg">
+            <source src="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_video_03.mp4" type='video/mp4' />
+        </video>
+    </div>
+    <div id="vid4" style="display: none;">
+        <span class="b-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+        <video id="movie4" class="video_main" controls poster="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_poster_04.jpg">
+            <source src="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_video_04.mp4" type='video/mp4' />
+        </video>
+    </div>
+    <div id="vid5" style="display: none;">
+        <span class="b-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+        <video id="movie5" class="video_main" controls poster="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_poster_05.jpg">
+            <source src="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_video_05.mp4" type='video/mp4' />
+        </video>
+    </div>
+    <div id="vid6" style="display: none;">
+        <span class="b-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+        <video id="movie6" class="video_main" controls poster="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_poster_06.jpg">
+            <source src="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_video_06.mp4" type='video/mp4' />
+        </video>
+    </div>
+    
      <!-- End evtContainer -->
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -118,10 +175,32 @@
         <script>
         $( document ).ready( function() {
             AOS.init();
-        } ); 
+        } );
+
+        // 비디오팝업
+        function videoPop(id) { 
+            $(id).bPopup({
+                positionStyle:'fixed',            
+                onClose: function(){
+                    $('video').each(function(){
+                        $(this).get(0).pause();
+                    });
+                }
+            });
+        } 
         </script>
         
     </script>
+
+    <iframe id="ne_tgmiframe_0" width="0" height="0" style="position:absolute;width:0px;height:0px;display:none;" src="about:blank"></iframe><div id="criteo-tags-div" style="display: none;"></div><div class="b-modal __b-popup1__" style="background-color: rgb(0, 0, 0); position: fixed; inset: 0px; opacity: 0.7; z-index: 9998; cursor: pointer;"></div><div id="vid1" style="left: 567px; position: fixed; top: 211.5px; z-index: 9999; opacity: 1; display: block;">
+    <span class="b-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+    <video id="movie1" class="video_main" controls="">
+    <source src="https://www.youtube.com/embed/PLp3fcmi4AE?rel=0" type="video/mp4">
+    </video>
+    </div></body>
+
+    
+
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
 @stop

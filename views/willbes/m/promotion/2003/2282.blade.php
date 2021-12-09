@@ -9,12 +9,10 @@
 
     .evtTop {position:relative}
 
-    .embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } 
-    .embed-container iframe, 
-    .embed-container object, 
-    .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .embed-container {position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background:#fde337 } 
+    .embed-container iframe {position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding:0 20px;}
 
-    .evtMenu {background:#f3f3f3; width:100%; border-bottom:1px solid #edeff0; border-top:1px solid #edeff0}
+    .evtMenu {padding:0 20px}
     .tabs {width:100%; max-width:720px; margin:0 auto;}
     .tabs li {display:inline; float:left; width:20%}
     .tabs li a {display:block; text-align:center; font-size:16px; line-height:1.5; padding:15px 0; color:#ccc; font-weight:bold; letter-spacing:-1px;background:#333743;}
@@ -42,11 +40,16 @@
 <div id="Container" class="Container NSK c_both">     
 
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2021/07/2282m_top.jpg" alt="실전덕후단" > 
+        <img src="https://static.willbes.net/public/images/promotion/2021/12/2282m_top.jpg" alt="실전덕후단" > 
         <div class='embed-container'>
             <iframe src='https://www.youtube.com/embed/nAQUdmuvUuw?rel=0' frameborder='0' allowfullscreen></iframe>
         </div>
+        <img src="https://static.willbes.net/public/images/promotion/2021/12/2282m_01.jpg" alt="실전덕후단" > 
     </div>  
+
+    <div class="evtCtnsBox evt02">
+        <img src="https://static.willbes.net/public/images/promotion/2021/12/2282m_02.jpg" alt="커리큘럼" >
+    </div>
 
     <div class="evtMenu">
         <ul class="tabs">
@@ -54,54 +57,35 @@
             <li><a href="#tab02" data-tab="tab02" class="top-tab">원데이특강</a></li>
             <li><a href="#tab03" data-tab="tab03" class="top-tab">새벽모고</a></li>
             <li><a href="#tab04" data-tab="tab04" class="top-tab">온라인첨삭</a></li>
-            <li><a href="#tab05" data-tab="tab05" class="top-tab">EVENT</a></li>
+            <li><a href="#tab05" data-tab="tab05" class="top-tab">패키지</a></li>
         </ul>
-    </div> 
-    
-    <div class="evtCtnsBox evt01">
-        <img src="https://static.willbes.net/public/images/promotion/2021/07/2282m_01.jpg" alt="선택지" >
-    </div>
-
-    <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2021/07/2282m_02.jpg" alt="커리큘럼" >
-    </div>
+    </div>  
 
     <div class="evtCtnsBox evt03" id="tab01">
-        <div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282m_03.jpg" alt="실전464" >
-            <a href="https://pass.willbes.net/m/lecture/index/pattert_n/only?search_order=regist&cate_code=3019&subjecidx=&search_text=UHJvZE5hbWU6NDY0" target="_blank" title="" style="position: absolute;left: 28%;top: 84.5%;width: 44.27%;height: 8.8%;z-index: 2;"></a>
-        </div>    
+        <img src="https://static.willbes.net/public/images/promotion/2021/07/2282m_03.jpg" alt="실전464" >
+        <a href="https://pass.willbes.net/m/lecture/index/pattert_n/only?search_order=regist&cate_code=3019&subjecidx=&search_text=UHJvZE5hbWU6NDY0" target="_blank" title="" style="position: absolute;left: 28%;top: 84.5%;width: 44.27%;height: 8.8%;z-index: 2;"></a> 
     </div>
 
     <div class="evtCtnsBox evt04" id="tab02">
-        <div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282m_04.jpg" alt="실전 원데이특강" >
-            <a href="https://pass.willbes.net/m/lecture/index/pattern/only?search_order=regist&cate_code=3019&subject_idx=&search_text=UHJvZE5hbWU67JuQ642w7J20" target="_blank" title="" style="position: absolute;left: 20%;top: 84.5%;width: 59.77%;height: 8.8%;z-index: 2;"></a>
-        </div>    
+        <img src="https://static.willbes.net/public/images/promotion/2021/07/2282m_04.jpg" alt="실전 원데이특강" >
+        <a href="https://pass.willbes.net/m/lecture/index/pattern/only?search_order=regist&cate_code=3019&subject_idx=&search_text=UHJvZE5hbWU67JuQ642w7J20" target="_blank" title="" style="position: absolute;left: 20%;top: 84.5%;width: 59.77%;height: 8.8%;z-index: 2;"></a>   
     </div>
 
     <div class="evtCtnsBox evt05" id="tab03">
-        <div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282m_05.jpg" alt="새벽실전모의고사" >
-            <a href="https://pass.willbes.net/m/lecture/index/pattern/only?search_order=regist&cate_code=3019&subject_idx=&search_text=UHJvZE5hbWU6NDY0" target="_blank" title="" style="position: absolute;left: 23%;top: 85%;width: 54.27%;height: 8.8%;z-index: 2;"></a>
-        </div>    
+        <img src="https://static.willbes.net/public/images/promotion/2021/07/2282m_05.jpg" alt="새벽실전모의고사" >
+        <a href="https://pass.willbes.net/m/lecture/index/pattern/only?search_order=regist&cate_code=3019&subject_idx=&search_text=UHJvZE5hbWU6NDY0" target="_blank" title="" style="position: absolute;left: 23%;top: 85%;width: 54.27%;height: 8.8%;z-index: 2;"></a>   
     </div>
 
     <div class="evtCtnsBox evt06" id="tab04">
-        <div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282m_06.jpg" alt="첨삭지도반" >
-            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1067" target="_blank" title="" style="position: absolute;left: 26%;top: 89.5%;width: 47.27%;height: 4.8%;z-index: 2"></a>
-        </div>
+        <img src="https://static.willbes.net/public/images/promotion/2021/07/2282m_06.jpg" alt="첨삭지도반" >
+        <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1067" target="_blank" title="" style="position: absolute;left: 26%;top: 89.5%;width: 47.27%;height: 4.8%;z-index: 2"></a>
     </div>
 
-    <div class="evtCtnsBox evt07">
-        <img src="https://static.willbes.net/public/images/promotion/2021/07/2282m_07.jpg" alt="이벤트를 미리 만나보세요" >
+    <div class="evtCtnsBox" id="tab05">
+        <img src="https://static.willbes.net/public/images/promotion/2021/12/2282m_07.jpg" alt="패키지" >
+        <a href="https://pass.willbes.net/m/package/show/cate/3019/pack/648001/prod-code/186805" target="_blank" title="국,영,역" style="position: absolute; left: 55.69%; top: 47.13%; width: 27.08%; height: 6.69%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3019/pack/648001/prod-code/188760" target="_blank" title="일반행정직 9급" style="position: absolute; left: 55.69%; top: 79.74%; width: 27.08%; height: 6.69%; z-index: 2;"></a>
     </div>
-
-    <div class="evtCtnsBox evt08" id="tab05">
-        <img src="https://static.willbes.net/public/images/promotion/2021/07/2282m_08.jpg" alt="기대평 이벤트" >      
-    </div> 
-
 </div>
 <!-- End Container -->
 

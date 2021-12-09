@@ -29,6 +29,7 @@
 
         .evt02 {background:#f1f1f1;}
 
+        /*유트브 팝업창*/
         .Pstyle {
         opacity: 0;
         display: none;
@@ -44,18 +45,16 @@
         font-size: 40px;
         font-weight: bold;
         color:#fff;
-        }
-        .video_main {max-width: 786px; width: 80vw;}
+        }       
+        .videoBox{position: relative; padding-top: 60%; width:760px;}
+        .videoBox iframe{position: absolute; top:0; left:0; width:100%; height:100%; }
 
         .evt03, .evt04, .evt05, .evt06{padding-bottom:100px;}
 
         .evt07 {background:#2ddbab;}
     
-        .evt08 {padding-bottom:100px;}
-
-        
-        .videoBox{position: relative; padding-top: 60%; width:760px;}
-        .videoBox iframe{position: absolute; top:0; left:0; width:100%; height:100%; }
+        .evt08 {padding-bottom:100px;}        
+       
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -136,40 +135,34 @@
      <div id="vid1" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox">
-            <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            <iframe src="https://www.youtube.com/embed/PLp3fcmi4AE?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
     <div id="vid2" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox">
-            <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            <iframe src="https://www.youtube.com/embed/4BWj-TLdh_E?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
     <div id="vid3" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox">
-            <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            <iframe src="https://www.youtube.com/embed/F0ltf17HcRQ?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
     <div id="vid4" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox">
-            <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            <iframe src="https://www.youtube.com/embed/ya8DHcb7tMI?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
     <div id="vid5" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox">
-            <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            <iframe src="https://www.youtube.com/embed/ZCjsKGd9Cn4?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid6" style="display: none;">
-        <span class="b-close">X</span>
-        <div class="videoBox">
-            <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs?rel=0" frameborder="0" allowfullscreen=""></iframe>
-        </div>
-    </div>
-    
+
      <!-- End evtContainer -->
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />

@@ -141,7 +141,6 @@
             right: -2px;
         }
         .ssam .willbes-Layer-youtube iframe {width:860px; height:484px}
-
     </style>
 
     <div class="p_re evtContent NSK ssam" id="evtContainer">
@@ -157,11 +156,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2438_02.jpg" alt="특별이벤트"/>
         </div>
 
-        <div class="evtCtnsBox evt03">
-            <div class="ssam-Lnb">
+        <div class="evtCtnsBox evt03" id="hotclip_box">
+            {{--<div class="ssam-Lnb">
                 <div class="lnb-List tabs">
                     <div class="ssam-lnb-List-Tit">
-                        <a href="#none">유·초등</a>
+                        <a href="javascript:void(0);">유·초등</a>
                     </div>
                     <div class="lnb-List-Depth">
                         <dl>
@@ -170,45 +169,45 @@
                         </dl>
                     </div>
                     <div class="ssam-lnb-List-Tit">
-                        <a href="#none">교육학 논술</a> 
+                        <a href="javascript:void(0);">교육학 논술</a>
                     </div>
                     <div class="lnb-List-Depth">
                         <dl>
-                            <dt><a href="#none">교육학 이인재</a></dt>
+                            <dt><a href="javascript:void(0);">교육학 이인재</a></dt>
                         </dl>
                     </div>
                     <div class="ssam-lnb-List-Tit">
-                        <a href="#none">중등(국·영·수)</a>
+                        <a href="javascript:void(0);">중등(국·영·수)</a>
                     </div>
                     <div class="lnb-List-Depth">
                         <dl>
-                            <dt><a href="#none">국교론/문교론 송원영</a></dt>
-                            <dt><a href="#none">문법 권보민</a></dt>
-                            <dt><a href="#none">전공국어 구동언</a></dt>
-                            <dt><a href="#none">일영/영미문학 김유석</a></dt>
-                            <dt><a href="#none">수학내용학 김철홍</a></dt>
-                            <dt><a href="#none">수학교육론 박태영</a></dt>
-                            <dt><a href="#none">수학교육론 박혜향</a></dt>
+                            <dt><a href="javascript:void(0);">국교론/문교론 송원영</a></dt>
+                            <dt><a href="javascript:void(0);">문법 권보민</a></dt>
+                            <dt><a href="javascript:void(0);">전공국어 구동언</a></dt>
+                            <dt><a href="javascript:void(0);">일영/영미문학 김유석</a></dt>
+                            <dt><a href="javascript:void(0);">수학내용학 김철홍</a></dt>
+                            <dt><a href="javascript:void(0);">수학교육론 박태영</a></dt>
+                            <dt><a href="javascript:void(0);">수학교육론 박혜향</a></dt>
                         </dl>
                     </div>
                     <div class="ssam-lnb-List-Tit">
-                        <a href="#none">중등(사회·과학)</a>
+                        <a href="javascript:void(0);">중등(사회·과학)</a>
                     </div>
                     <div class="lnb-List-Depth">
                         <dl>
-                            <dt><a href="#none">일반사회 허역팀</a></dt>
-                            <dt><a href="#none">생물내용학 박태영</a></dt>
+                            <dt><a href="javascript:void(0);">일반사회 허역팀</a></dt>
+                            <dt><a href="javascript:void(0);">생물내용학 박태영</a></dt>
                         </dl>
                     </div>
                     <div class="ssam-lnb-List-Tit">
-                        <a href="#none">중등(음·체·전산·중국어)</a>
+                        <a href="javascript:void(0);">중등(음·체·전산·중국어)</a>
                     </div>
                     <div class="lnb-List-Depth">
                         <dl>
-                            <dt><a href="#none">음악 다이애나</a></dt>
-                            <dt><a href="#none">전기전자통신 최우영</a></dt>
-                            <dt><a href="#none">정보컴퓨터 송광진</a></dt>
-                            <dt><a href="#none">중국어 장경미</a></dt>
+                            <dt><a href="javascript:void(0);">음악 다이애나</a></dt>
+                            <dt><a href="javascript:void(0);">전기전자통신 최우영</a></dt>
+                            <dt><a href="javascript:void(0);">정보컴퓨터 송광진</a></dt>
+                            <dt><a href="javascript:void(0);">중국어 장경미</a></dt>
                         </dl>
                     </div>
                 </div>
@@ -219,10 +218,10 @@
                     <div class="p_re">
                         <img src="https://static.willbes.net/public/images/promotion/2021/12/2438_prof_mjs.jpg" alt="유아 민정선"/>
                         <div class="btnBox">
-                            <div class="prof-top-btn">                            
-                                <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <div class="prof-top-btn">
+                                <a href="javascript:void(0);" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
                                 <a href="https://ssam.willbes.net/professor/show/prof-idx/51076?cate_code=3135&subject_idx=1981">교수님 홈</a>
-                            </div> 
+                            </div>
                             <div class="prof-clip-btn">
                                 <a onclick="openWin('sec-prof-layer'),openWin('youtube')">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/12/icon_youtube.png" class="play">
@@ -231,50 +230,50 @@
                                 <a onclick="openWin('sec-prof-layer'),openWin('youtube')">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/12/icon_youtube.png" class="play">
                                     <img src="https://ssam.willbes.net/public/uploads/willbes/etc/hotclip/2021/0818/thumbnail_0_20210818153134.jpg" title="유튜브">
-                                </a>   
+                                </a>
                                 <a onclick="openWin('sec-prof-layer'),openWin('youtube')">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/12/icon_youtube.png" class="play">
                                     <img src="https://ssam.willbes.net/public/uploads/willbes/etc/hotclip/2021/0818/thumbnail_0_20210818153134.jpg" title="유튜브">
-                                </a>                    
-                            </div> 
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="pkgBuy">
                         <div>
-                            <a href="#none">
+                            <a href="javascript:void(0);">
                                 연간패키지 - 논술포함
                                 <strong>학원직강 신청</strong>
                             </a>
                         </div>
                         <div>
-                            <a href="#none">
+                            <a href="javascript:void(0);">
                                 연간패키지 - 논술포함
                                 <strong>동영상강의 신청</strong>
                             </a>
                         </div>
                         <div>
-                            <a href="#none">
+                            <a href="javascript:void(0);">
                                 연간패키지 - 논술제외
                                 <strong>학원직강 신청</strong>
                             </a>
                         </div>
                         <div>
-                            <a href="#none">
+                            <a href="javascript:void(0);">
                                 연간패키지 - 논술제외
                                 <strong>동영상강의 신청</strong>
                             </a>
                         </div>
-                    </div>        
+                    </div>
                 </div>
 
                 <div id="tab02" class="profBox">
                     <div class="p_re">
                         <img src="https://static.willbes.net/public/images/promotion/2021/12/2438_prof_bjm.jpg" alt="초등 배재민"/>
                         <div class="btnBox">
-                            <div class="prof-top-btn">                            
-                                <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <div class="prof-top-btn">
+                                <a href="javascript:void(0);" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
                                 <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982">교수님 홈</a>
-                            </div> 
+                            </div>
                             <div class="prof-clip-btn">
                                 <a onclick="openWin('sec-prof-layer'),openWin('youtube')">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/12/icon_youtube.png" class="play">
@@ -283,28 +282,28 @@
                                 <a onclick="openWin('sec-prof-layer'),openWin('youtube')">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/12/icon_youtube.png" class="play">
                                     <img src="https://ssam.willbes.net/public/uploads/willbes/etc/hotclip/2021/0818/thumbnail_0_20210818153134.jpg" title="유튜브">
-                                </a>   
+                                </a>
                                 <a onclick="openWin('sec-prof-layer'),openWin('youtube')">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/12/icon_youtube.png" class="play">
                                     <img src="https://ssam.willbes.net/public/uploads/willbes/etc/hotclip/2021/0818/thumbnail_0_20210818153134.jpg" title="유튜브">
-                                </a>                    
-                            </div> 
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="pkgBuy">
                         <div>
-                            <a href="#none">
+                            <a href="javascript:void(0);">
                                 연간패키지 - 논술포함
                                 <strong>학원직강 신청</strong>
                             </a>
                         </div>
                         <div>
-                            <a href="#none">
+                            <a href="javascript:void(0);">
                                 연간패키지 - 논술포함
                                 <strong>동영상강의 신청</strong>
                             </a>
                         </div>
-                    </div>        
+                    </div>
                 </div>
 
                 <div class="buyWrap">
@@ -314,38 +313,38 @@
                             <h5><strong>학원직강 연간패키지</strong> 신청내역</h5>
                             <ul>
                                 <li><strong>교수명</strong> 교육학 연간패키지
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
+                                <a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
                                 <li><strong>교수명</strong> 영어학 연간패키지
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
+                                <a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
                                 <li><strong>교수명</strong> 일반영어 연간패키지
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
+                                <a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
                             </ul>
                             <div>
                                 <p>100,000(10%) 할인</p>
                                 <p><strong>3과목</strong> 결제금액 <strong>4,523,666</strong>원</p>
-                                <p><a href="#none">결제하기</a></p>
+                                <p><a href="javascript:void(0);">결제하기</a></p>
                             </div>
                         </div>
                         <div class="lecbox">
                             <h5><strong>동영상강의 연간패키지</strong> 신청내역</h5>
                             <ul>
                                 <li><strong>교수명</strong> 교육학 연간패키지
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
+                                <a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
                                 <li><strong>교수명</strong> 영어학 연간패키지
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
+                                <a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
                                 <li><strong>교수명</strong> 일반영어 연간패키지
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
+                                <a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제"></a></li>
                             </ul>
                             <div>
                                 <p>100,000(10%) 할인</p>
                                 <p><strong>3과목</strong> 결제금액 <strong>4,523,666</strong>원</p>
-                                <p><a href="#none">결제하기</a></p>
+                                <p><a href="javascript:void(0);">결제하기</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="checkWrap"><input type="checkbox" id="check"> <label for="check">페이지 하단의 상품 관련 유의사항을 모두 확인하였고, 이에 동의합니다.</label></div>
                 </div>
-            </div>
+            </div>--}}
         </div>
 
         <div class="evtCtnsBox evt04">
@@ -384,7 +383,7 @@
         {{--교수 youtube 팝업 --}}
         <div id="youtube" class="willbes-Layer-youtube">
             <div class="popupWrap">
-                <a class="closeBtn" href="#none" onclick="closeWin('sec-prof-layer'),closeWin('youtube')">
+                <a class="closeBtn" href="javascript:void(0);" onclick="closeWin('sec-prof-layer'),closeWin('youtube')">
                     <img src="{{ img_url('prof/close.png') }}">
                 </a>
                 <iframe src="https://www.youtube.com/embed/Y2W3lUrn3aI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
@@ -393,7 +392,7 @@
         {{--교수 커리큘럼 팝업 --}}
         <div id="Curriculum" class="willbes-Layer-CurriBox">
             <div class="popupWrap">
-                <a class="closeBtn" href="#none" onclick="closeWin('sec-prof-layer'),closeWin('Curriculum')">
+                <a class="closeBtn" href="javascript:void(0);" onclick="closeWin('sec-prof-layer'),closeWin('Curriculum')">
                     <img src="{{ img_url('prof/close.png') }}">
                 </a>
                 <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">민정선</span> 교수님 커리큘럼</div>
@@ -407,24 +406,13 @@
     </div>
     <!-- End Container -->
 
-
-
     <script type="text/javascript">
-        $(function() {
-            $('div.ssam-lnb-List-Tit').click(function() {
-                $('div.ssam-lnb-List-Tit').removeClass('hover');
-
-                if ($(this).next().is(':visible')) {
-                    $(this).next().slideUp('normal');
-                    $(this).removeClass('hover');
-
-                } else {
-                    $('div.lnb-List-Depth').slideUp('normal');
-                    $(this).next().slideDown('normal');
-                    $(this).addClass('hover');
-
-                }   
-            });
+        $(document).ready(function () {
+            /* 핫클립 상품 페이지 로드 */
+            var _url = '{{ front_url('/promotion/ajaxHotClipProduct') }}';
+            sendAjax(_url, '', function(ret) {
+                $('#hotclip_box').html(ret);
+            }, null, false, 'GET', 'html');
         });
     </script>
 @stop

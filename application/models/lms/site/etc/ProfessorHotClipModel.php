@@ -290,14 +290,14 @@ class ProfessorHotClipModel extends WB_Model
 
     public function listProfessorHotClipProduct($phc_idx)
     {
-        $order_by = $this->_conn->makeOrderBy(['p.ProdTypeCcd' => 'ASC', 'pl.LearnPatternCcd' => 'ASC', 'pp.OrderNum' => 'ASC'])->getMakeOrderBy();
+        $order_by = $this->_conn->makeOrderBy(['p.ProdTypeCcd' => 'ASC', 'pl.LearnPatternCcd' => 'ASC', 'pp.OrderNum' => 'ASC', 'pp.Territory' => 'ASC'])->getMakeOrderBy();
         $arr_condition = [
             'EQ' => [
                 'pp.PhcIdx' => $phc_idx
                 ,'pp.IsStatus' => 'Y'
             ]
         ];
-        $column = "pp.PpIdx, pp.ProdCode, pp.IsEssay, p.ProdTypeCcd, pl.LearnPatternCcd, c.CcdName AS LearnPatternCcdName, p.ProdName, pp.OrderNum";
+        $column = "pp.PpIdx, pp.ProdCode, pp.Territory, pp.ProdItemCcd, p.ProdTypeCcd, pl.LearnPatternCcd, c.CcdName AS LearnPatternCcdName, p.ProdName, pp.OrderNum";
         $from = "
             FROM {$this->_table['professor_hot_clip_product']} AS pp
             INNER JOIN {$this->_table['product']} AS p ON pp.ProdCode = p.ProdCode
@@ -315,7 +315,8 @@ class ProfessorHotClipModel extends WB_Model
                 $return[$row['ProdTypeCcd']][$row['PpIdx']]['LearnPatternCcd'] = $row['LearnPatternCcd'];
                 $return[$row['ProdTypeCcd']][$row['PpIdx']]['LearnPatternCcdName'] = $row['LearnPatternCcdName'];
                 $return[$row['ProdTypeCcd']][$row['PpIdx']]['ProdCode'] = $row['ProdCode'];
-                $return[$row['ProdTypeCcd']][$row['PpIdx']]['IsEssay'] = $row['IsEssay'];
+                $return[$row['ProdTypeCcd']][$row['PpIdx']]['Territory'] = $row['Territory'];
+                $return[$row['ProdTypeCcd']][$row['PpIdx']]['ProdItemCcd'] = $row['ProdItemCcd'];
                 $return[$row['ProdTypeCcd']][$row['PpIdx']]['ProdName'] = $row['ProdName'];
                 $return[$row['ProdTypeCcd']][$row['PpIdx']]['OrderNum'] = $row['OrderNum'];
             }
@@ -701,7 +702,8 @@ class ProfessorHotClipModel extends WB_Model
                     $inputData['PpIdx'] = $input['pp_idx'][$key];
                     $inputData['PhcIdx'] = $phc_idx;
                     $inputData['ProdCode'] = $input['prod_code'][$key];
-                    $inputData['IsEssay'] = $input['is_essay'][$key];
+                    $inputData['Territory'] = $input['territory'][$key];
+                    $inputData['ProdItemCcd'] = $input['prod_item_ccd'][$key];
                     $inputData['OrderNum'] = $input['order_num'][$key];
 
                     // pp_idx 값으로 insert, update 구분

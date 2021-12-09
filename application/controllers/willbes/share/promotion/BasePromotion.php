@@ -4,7 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePromotion extends \app\controllers\FrontController
 {
-    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF', '_lms/sys/code', 'dDayF', 'product/lectureF', 'eventsurvey/survey', '_lms/product/base/subject', 'memberF');
+    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF',
+        '_lms/sys/code', 'dDayF', 'product/lectureF', 'eventsurvey/survey', '_lms/product/base/subject', 'memberF', 'professorHotClipF');
     protected $helpers = array('download');
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
@@ -687,6 +688,49 @@ class BasePromotion extends \app\controllers\FrontController
 
         return $result;
     }
+
+    /**
+     * 핫클립 상품 ajax 페이지
+     */
+    public function ajaxHotClipProduct()
+    {
+        $order_by = ['g.OrderNum' => 'ASC', 'hc.OrderNum' => 'ASC'];
+        $arr_condition = [
+            'EQ' => [
+                'g.ViewType' => '2'
+                ,'g.IsUse' => 'Y'
+                ,'g.IsStatus' => 'Y'
+                ,'hc.SiteCode' => $this->_site_code
+                ,'hc.IsUse' => 'Y'
+                ,'hc.IsStatus' => 'Y'
+            ]
+        ];
+        $result = $this->professorHotClipFModel->listHotClipForProduct($arr_condition, $order_by);
+        if (empty($result) === false) {
+            foreach ($result as $row) {
+                $data[$row['group_title']][$row['PhcIdx']]['PhcIdx'] = $row['PhcIdx'];
+                $data[$row['group_title']][$row['PhcIdx']]['ProfIdx'] = $row['ProfIdx'];
+                $data[$row['group_title']][$row['PhcIdx']]['wProfName'] = $row['wProfName'];
+                $data[$row['group_title']][$row['PhcIdx']]['SubjectName'] = $row['SubjectName'];
+                $data[$row['group_title']][$row['PhcIdx']]['SubjectIdx'] = $row['SubjectIdx'];
+                $data[$row['group_title']][$row['PhcIdx']]['CateCode'] = $row['CateCode'];
+                $data[$row['group_title']][$row['PhcIdx']]['ProfBtnIsUse'] = $row['ProfBtnIsUse'];
+                $data[$row['group_title']][$row['PhcIdx']]['CurriculumBtnIsUse'] = $row['CurriculumBtnIsUse'];
+                $data[$row['group_title']][$row['PhcIdx']]['StudyCommentBtnIsUse'] = $row['StudyCommentBtnIsUse'];
+                $data[$row['group_title']][$row['PhcIdx']]['ProfBgImagePath'] = $row['ProfBgImagePath'];
+                $data[$row['group_title']][$row['PhcIdx']]['ProfBgImageName'] = $row['ProfBgImageName'];
+                $data[$row['group_title']][$row['PhcIdx']]['thumbnail_data'] = $row['thumbnail_data'];
+                $data[$row['group_title']][$row['PhcIdx']]['product_info_1'] = $row['product_info_1'];
+                $data[$row['group_title']][$row['PhcIdx']]['product_info_2'] = $row['product_info_2'];
+            }
+        }
+
+        $view_file = 'willbes/'.APP_DEVICE.'/promotion/hotclip_list_ajax';
+        $this->load->view($view_file, [
+            'data' => $data
+        ], false);
+    }
+
 
     /**
      * 합격예측 데이터

@@ -132,8 +132,14 @@
         <div class="checkWrap"><input type="checkbox" id="is_chk" name="is_chk" value="Y"> <label for="is_chk">페이지 하단의 상품 관련 유의사항을 모두 확인하였고, 이에 동의합니다.</label></div>
     </div>
 
-    <form name="exptpay_form_off" id="exptpay_form_off">{!! csrf_field() !!}</form>
-    <form name="exptpay_form_online" id="exptpay_form_online">{!! csrf_field() !!}</form>
+    <form name="exptpay_form_off" id="exptpay_form_off">
+        {!! csrf_field() !!}
+        <input type="hidden" name="disc_idx" value="{{$params['off_disc_code']}}">
+    </form>
+    <form name="exptpay_form_online" id="exptpay_form_online">
+        {!! csrf_field() !!}
+        <input type="hidden" name="disc_idx" value="{{$params['online_disc_code']}}">
+    </form>
     <div id="order_div_off" style="display: none"></div>
     <div id="order_div_online" style="display: none"></div>
 </div>
@@ -244,6 +250,12 @@
     // 결제하기
     function directPay(_learn_pattern)
     {
+        var is_login = '{{sess_data('is_login')}}';
+        if (is_login != true) {
+            alert('로그인 후 이용해 주세요.');
+            return;
+        }
+
         var prod_cnt = $("#exptpay_form_"+_learn_pattern).find("input[name='prod_code[]']").length;
         var cart_type = '', learn_pattern = '', is_direct_pay = '', cart_onoff_type = '';
         if (_learn_pattern == 'off') {

@@ -23,11 +23,11 @@
         .sky a {display:block; margin-bottom:10px; box-shadow:0 0 10px rgba(0,0,0,.1)}
 
         /*상단 애니메이션*/
-        .wb_cts_top{position: relative;height: 899px;padding-top: 101px;background:url('https://static.willbes.net/public/images/promotion/2021/07/2282_after.jpg') 50% 0 repeat-x;}
+        .wb_cts_top{position: relative;height: 899px;padding-top: 101px;background:url('https://static.willbes.net/public/images/promotion/2021/12/2282_after.jpg') 50% 0 repeat-x;}
         .wb_cts_top h2{margin-top: 48px;}
         .wb_cts_top h2 img{transform: scale(0.6);animation: scaleUp 0.4s 3.9s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;}
         .wb_cts_top .top_ani{position: absolute;top: 0;right: 0;left: 0;bottom: 0;}
-        .top_ani .open_ani{position: relative; padding-top: 121px; width: 50%;height: 100%;background:url('https://static.willbes.net/public/images/promotion/2021/07/2282_before.jpg') 50% 0 repeat-x;z-index: 10;}
+        .top_ani .open_ani{position: relative; padding-top: 121px; width: 50%;height: 100%;background:url('https://static.willbes.net/public/images/promotion/2021/12/2282_before.jpg') 50% 0 repeat-x;z-index: 10;}
         .top_ani .open_ani img{position: absolute;top: 121px;opacity: 0;animation: fadein 0.5s ease-in-out both;}
         .top_ani .left{float: left;animation: moveOutLeft 1s 3.6s ease-in-out both;}
         .top_ani .left img{right: 169px;}
@@ -48,27 +48,26 @@
         @@keyframes moveOutRight {
             100%{transform: translateX(100%);}
         }
-        .top_ani .hdh_img{position: absolute;bottom: 0;left: 50%;transform: translateX(-50%);animation: fadeOut 1s 3.1s ease-in-out both;z-index: 10;}
+        .top_ani .hdh_img{position: absolute; bottom: 0;left: 50%;transform: translateX(-50%);animation: fadeOut 1s 3.1s ease-in-out both;z-index: 10;}
 
         .youtube {position:absolute; top:825px; left:50%;z-index:12;margin-left:-472.5px}
         .youtube iframe {width:945px; height:531px;}
 
         /************************************************************/
-        .wb_cts01 {background:#54a783;padding-top:525px;}
+        .wb_cts01 {background:#fde337;padding-top:440px;}
 
-        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2021/10/2282_02_bg.jpg) no-repeat center top;position:relative;}
+        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2282_02_bg.jpg) no-repeat center top;position:relative;}
         .wb_cts02 .curri {position:absolute;left:50%;}
-        .wb_cts02 .curri a {display:block; font-size:20px; color:#333743; padding:0 25px; background:#55ff9e; border-radius:60px;height:60px;line-height:60px;}
+        .wb_cts02 .curri a {display:block; font-size:20px; color:#333743; padding:15px 20px; background:#fff17f; border-radius:60px;line-height:1.2;}
         .wb_cts02 .curri a:hover {background:#d8ff00;}
         .wb_cts02 .curri li {padding-bottom:20px;}
         .wb_cts02 .curri li:first-child {width:130px;margin-left:-390px;margin-top:-575px;}
-        .wb_cts02 .curri li:first-child span{font-size:15px;}
-        .wb_cts02 .curri li:first-child a {line-height:25px;}
+        .wb_cts02 .curri li:first-child span{font-size:14px;}
         .wb_cts02 .curri li:nth-child(2) {width:450px;margin-left:-390px;}
         .wb_cts02 .curri li:nth-child(3) {width:780px;margin-left:-390px;}
         .wb_cts02 .curri li:last-child {width:780px;margin-left:-390px;}
 
-        .wb_cts03 {background:url(https://static.willbes.net/public/images/promotion/2021/07/2282_03_bg.jpg) no-repeat center top;padding-bottom:100px;}
+        .wb_cts03 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2282_03_bg.jpg) no-repeat center top;padding-bottom:100px;}
 
         .wb_cts05 {padding-bottom:100px;}
 
@@ -84,7 +83,7 @@
         .wb_preview {background:#54a783;}
 
         .wb_cts09 {padding-bottom:50px;}
-        .wb_cts10 {background:url(https://static.willbes.net/public/images/promotion/2021/10/2282_10_bg.jpg) no-repeat center top;}
+        .wb_cts10 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2282_10_bg.jpg) no-repeat center top;}
 
         .emo_area {padding-bottom:100px;}
     </style>
@@ -103,27 +102,27 @@
 
         <div class="evtCtnsBox wb_cts_top" data-aos="fade-up">
             <div class="top_ani">
-                <div class="left open_ani"><img src="https://static.willbes.net/public/images/promotion/2021/07/2282_txt01.png" alt=""></div>
-                <div class="right open_ani"><img src="https://static.willbes.net/public/images/promotion/2021/07/2282_txt02.png" alt=""></div>
-                <img class="hdh_img" src="https://static.willbes.net/public/images/promotion/2021/07/2282_hdh.png" alt="">
+                <div class="left open_ani"><img src="https://static.willbes.net/public/images/promotion/2021/12/2282_txt01.png" alt=""></div>
+                <div class="right open_ani"><img src="https://static.willbes.net/public/images/promotion/2021/12/2282_txt02.png" alt=""></div>
+                <img class="hdh_img" src="https://static.willbes.net/public/images/promotion/2021/12/2282_hdh.png" alt="">
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_txt03.png" alt="">
-            <h2><img src="https://static.willbes.net/public/images/promotion/2021/07/2282_txt04.png" alt=""></h2>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2282_txt03.png" alt="">
+            <h2><img src="https://static.willbes.net/public/images/promotion/2021/12/2282_txt04.png" alt=""></h2>
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/bd1YXMDcw7o?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>    
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_01.jpg" alt="실전덕후단"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2282_01.jpg" alt="실전덕후단"/>
         </div>
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2282_02.jpg" alt="커리큘럼"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2282_02.jpg" alt="커리큘럼"/>
             <ul class="curri NSK-Black">
                 <li>
                     <a href="#curri01">
-                        실전 464<br><span class="infinite">(무한 회독)</span>
+                        실전 464<br><span>(무한 회독)</span>
                     </a>
                 </li>
                 <li>
@@ -146,34 +145,34 @@
 
         <div class="evtCtnsBox wb_cts10" id="event"> 
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2282_10.jpg" alt="실전덕후단 패키지"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2282_10.jpg" alt="실전덕후단 패키지"/>
                 <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/186805" target="_blank" title="수강신청" style="position: absolute; left:34.73%; top:68.73%; width:30.54%; height:8.11%; z-index: 2;"></a>
             </div>
         </div>
 
         <div class="evtCtnsBox wb_cts03" id="curri01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_03.jpg" alt="실전464"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2282_03.jpg" alt="실전464"/>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif 
         </div>
 
         <div class="evtCtnsBox wb_cts04" id="curri02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_04.jpg" alt="테마특강"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2282_04.jpg" alt="테마특강"/>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))            
             @endif 
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="curri03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_05.jpg" alt="새벽실전모의고사"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2282_05.jpg" alt="새벽실전모의고사"/>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))            
             @endif 
         </div>
 
         <div class="evtCtnsBox wb_cts06" id="curri04" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_06.jpg" alt="온라인첨삭지도반"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2282_06.jpg" alt="온라인첨삭지도반"/>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))            
             @endif 
@@ -190,12 +189,13 @@
             </ul>
         </div>
 
+        <!--
         <div class="evtCtnsBox wb_preview"  data-aos="fade-up">       
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_preview.jpg" alt="미리 만나보세요"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2282_preview.jpg" alt="미리 만나보세요"/>
         </div>              
 
         <div class="evtCtnsBox wb_cts07" id="comment_event" data-aos="fade-up">   
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_07.jpg" alt="기대평이벤트"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2282_07.jpg" alt="기대평이벤트"/>
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')
@@ -215,13 +215,14 @@
                 <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2401" title="수강후기 자세히 보기" target="_blank" style="position: absolute;left: 30.01%;top: 82.3%;width: 39.57%;height: 8.9%;z-index: 2;"></a>
             </div>        
         </div>
+        -->
 
-        <!--퀴즈팝업-->
+        <!--퀴즈팝업
         <div id="popup" class="Pstyle">
             <span class="b-close">X</span>
             <div id="quiz_layer_box"></div>
-        </div>                
-        <!--
+        </div>    
+
         <div class="emo_area">
             {{-- 이모티콘 댓글 --}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

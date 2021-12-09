@@ -133,24 +133,25 @@
 
                 <div class="event">
                     <div class="form-group">
-                        <label class="control-label col-md-1-1" for="subject_idx">임용 온라인강좌<span class="required">*</span></label>
+                        <label class="control-label col-md-1-1" for="subject_idx">임용 학원강좌<span class="required">*</span></label>
                         <div class="col-md-10">
-                            <button type="button" class="btn btn-sm btn-primary btn_product_search" data-site-code="2017" data-product-type="on" data-target-id="online_box">상품검색</button>
-                            <span id="online_box" class="hide"></span>
-                            <table class="table table-striped table-bordered mt-15" id="table_product_on">
+                            <button type="button" class="btn btn-sm btn-primary btn_product_search" data-site-code="2018" data-product-type="off" data-target-id="off_box">상품검색</button>
+                            <span id="off_box" class="hide"></span>
+                            <table class="table table-striped table-bordered mt-15" id="table_product_off">
                                 <thead>
                                 <tr>
-                                    <th>강좌명</th>
+                                    <th width="45%">강좌명</th>
                                     <th>상품종류</th>
-                                    <th>논술포함여부</th>
+                                    <th>노출영역</th>
+                                    <th>항목</th>
                                     <th>DP순서</th>
                                     <th>삭제</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if (empty($list_product['636001']) === false)
+                                @if (empty($list_product['636002']) === false)
                                     @php $i=1; @endphp
-                                    @foreach($list_product['636001'] as $row)
+                                    @foreach($list_product['636002'] as $row)
                                         <tr>
                                             <td>
                                                 <input type="hidden" name="pp_idx[]" value="{{$row['PpIdx']}}">
@@ -159,10 +160,16 @@
                                             </td>
                                             <td>{{$row['LearnPatternCcdName']}}</td>
                                             <td class="form-inline">
-                                                <select class="form-control" name="is_essay[]">
-                                                    <option value="X" {{ ($row['IsEssay'] == 'X' ? 'selected="selected"' : '') }}>해당없음</option>
-                                                    <option value="Y" {{ ($row['IsEssay'] == 'Y' ? 'selected="selected"' : '') }}>포함</option>
-                                                    <option value="N" {{ ($row['IsEssay'] == 'N' ? 'selected="selected"' : '') }}>미포함</option>
+                                                <select class="form-control" name="territory[]">
+                                                    <option value="1" {{ ($row['Territory'] == '1' ? 'selected="selected"' : '') }}>1영역</option>
+                                                    <option value="2" {{ ($row['Territory'] == '2' ? 'selected="selected"' : '') }}>2영역</option>
+                                                </select>
+                                            </td>
+                                            <td class="form-inline">
+                                                <select class="form-control" name="prod_item_ccd[]">
+                                                    @foreach($prod_item_ccd as $key => $val)
+                                                        <option value="{{$key}}" {{ ($row['ProdItemCcd'] == $key ? 'selected="selected"' : '') }}>{{$val}}</option>
+                                                    @endforeach
                                                 </select>
                                             </td>
                                             <td>
@@ -182,24 +189,25 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-1-1" for="subject_idx">임용 학원강좌<span class="required">*</span></label>
+                        <label class="control-label col-md-1-1" for="subject_idx">임용 온라인강좌<span class="required">*</span></label>
                         <div class="col-md-10">
-                            <button type="button" class="btn btn-sm btn-primary btn_product_search" data-site-code="2018" data-product-type="off" data-target-id="off_box">상품검색</button>
-                            <span id="off_box" class="hide"></span>
-                            <table class="table table-striped table-bordered mt-15" id="table_product_off">
+                            <button type="button" class="btn btn-sm btn-primary btn_product_search" data-site-code="2017" data-product-type="on" data-target-id="online_box">상품검색</button>
+                            <span id="online_box" class="hide"></span>
+                            <table class="table table-striped table-bordered mt-15" id="table_product_on">
                                 <thead>
                                 <tr>
-                                    <th>강좌명</th>
+                                    <th width="45%">강좌명</th>
                                     <th>상품종류</th>
-                                    <th>논술포함여부</th>
+                                    <th>노출영역</th>
+                                    <th>항목</th>
                                     <th>DP순서</th>
                                     <th>삭제</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if (empty($list_product['636002']) === false)
+                                @if (empty($list_product['636001']) === false)
                                     @php $i=1; @endphp
-                                    @foreach($list_product['636002'] as $row)
+                                    @foreach($list_product['636001'] as $row)
                                         <tr>
                                             <td>
                                                 <input type="hidden" name="pp_idx[]" value="{{$row['PpIdx']}}">
@@ -208,10 +216,16 @@
                                             </td>
                                             <td>{{$row['LearnPatternCcdName']}}</td>
                                             <td class="form-inline">
-                                                <select class="form-control" name="is_essay[]">
-                                                    <option value="X" {{ ($row['IsEssay'] == 'X' ? 'selected="selected"' : '') }}>해당없음</option>
-                                                    <option value="Y" {{ ($row['IsEssay'] == 'Y' ? 'selected="selected"' : '') }}>포함</option>
-                                                    <option value="N" {{ ($row['IsEssay'] == 'N' ? 'selected="selected"' : '') }}>미포함</option>
+                                                <select class="form-control" name="territory[]">
+                                                    <option value="1" {{ ($row['Territory'] == '1' ? 'selected="selected"' : '') }}>1영역</option>
+                                                    <option value="2" {{ ($row['Territory'] == '2' ? 'selected="selected"' : '') }}>2영역</option>
+                                                </select>
+                                            </td>
+                                            <td class="form-inline">
+                                                <select class="form-control" name="prod_item_ccd[]">
+                                                    @foreach($prod_item_ccd as $key => $val)
+                                                        <option value="{{$key}}" {{ ($row['ProdItemCcd'] == $key ? 'selected="selected"' : '') }}>{{$val}}</option>
+                                                    @endforeach
                                                 </select>
                                             </td>
                                             <td>
@@ -494,8 +508,9 @@
                     html += '	</td>';
                     html += '	<td>' + data.learnPatternCcdName + '</td>';
                     html += '	<td class="form-inline">';
-                    html += '		<select class="form-control" name="is_essay[]"><option value="X">해당없음</option><option value="Y">포함</option><option value="N">미포함</option></select>';
+                    html += '		<select class="form-control" name="territory[]"><option value="1">1영역</option><option value="2">2영역</option></select>';
                     html += '	</td>';
+                    html += '	<td class="form-inline">'+htmlProdItemCcdSelectBox()+'<td>';
                     html += '	<td class="form-inline">';
                     html += '		<input type="text" class="form-control" name="order_num[]" value="999">';
                     html += '	</td>';
@@ -522,8 +537,9 @@
                     html += '	</td>';
                     html += '	<td>' + data.learnPatternCcdName + '</td>';
                     html += '	<td class="form-inline">';
-                    html += '		<select class="form-control" name="is_essay[]"><option value="X">해당없음</option><option value="Y">포함</option><option value="N">미포함</option></select>';
+                    html += '		<select class="form-control" name="territory[]"><option value="1">1영역</option><option value="2">2영역</option></select>';
                     html += '	</td>';
+                    html += '	<td class="form-inline">'+htmlProdItemCcdSelectBox()+'<td>';
                     html += '	<td class="form-inline">';
                     html += '		<input type="text" class="form-control" name="order_num[]" value="999">';
                     html += '	</td>';
@@ -594,6 +610,18 @@
             }
 
             return true;
+        }
+
+        function htmlProdItemCcdSelectBox()
+        {
+            /*var arr_data = '{!! json_encode($prod_item_ccd) !!}';*/
+            var arr_data = JSON.parse('{!! json_encode($prod_item_ccd) !!}');
+            var html = '<select class="form-control" name="prod_item_ccd[]">';
+            $.each(arr_data, function (key, val) {
+                html += '<option value="'+key+'">'+val+'</option>';
+            });
+            html += '</select>';
+            return html;
         }
     </script>
 @stop

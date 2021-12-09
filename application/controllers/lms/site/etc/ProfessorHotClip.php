@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ProfessorHotClip extends \app\controllers\BaseController
 {
-    protected $models = array('site/etc/professorHotClip');
+    protected $models = array('site/etc/professorHotClip', 'sys/code');
     protected $helpers = array();
 
     public function __construct()
@@ -141,6 +141,7 @@ class ProfessorHotClip extends \app\controllers\BaseController
         $list_thumbnail = null;
         $list_product = null;
         $idx = null;
+        $prod_item_ccd = $this->codeModel->getCcd('747');
 
         $arr_condition = [
             'EQ' => [
@@ -169,6 +170,7 @@ class ProfessorHotClip extends \app\controllers\BaseController
 
         $this->load->view("site/etc/professor_hot_clip/create", [
             'method' => $method,
+            'prod_item_ccd' => $prod_item_ccd,
             'group_list' => $group_list,
             'data' => $data,
             'list_thumbnail' => $list_thumbnail,

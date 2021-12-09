@@ -510,7 +510,7 @@
                     html += '	<td class="form-inline">';
                     html += '		<select class="form-control" name="territory[]"><option value="1">1영역</option><option value="2">2영역</option></select>';
                     html += '	</td>';
-                    html += '	<td class="form-inline">'+htmlProdItemCcdSelectBox()+'<td>';
+                    html += '	<td class="form-inline">'+htmlProdItemCcdSelectBox()+'</td>';
                     html += '	<td class="form-inline">';
                     html += '		<input type="text" class="form-control" name="order_num[]" value="999">';
                     html += '	</td>';
@@ -539,7 +539,7 @@
                     html += '	<td class="form-inline">';
                     html += '		<select class="form-control" name="territory[]"><option value="1">1영역</option><option value="2">2영역</option></select>';
                     html += '	</td>';
-                    html += '	<td class="form-inline">'+htmlProdItemCcdSelectBox()+'<td>';
+                    html += '	<td class="form-inline">'+htmlProdItemCcdSelectBox()+'</td>';
                     html += '	<td class="form-inline">';
                     html += '		<input type="text" class="form-control" name="order_num[]" value="999">';
                     html += '	</td>';

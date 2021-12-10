@@ -49,7 +49,7 @@
                     <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t24.jpg" alt="정현 교육학"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t23.jpg" alt="신태식 교육학"/></a>
+                    <a href="https://ssam.willbes.net/event/show/all?event_idx=1516" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t23.jpg" alt="신태식 교육학"/></a>
                 </div>
                 <div class="profBox">                    
                     <a href="https://ssam.willbes.net/event/show/all?event_idx=1484" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t02.jpg" alt="이인재 교육학"/></a>

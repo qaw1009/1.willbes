@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+        .evtCtnsBox .wrap a {border:1px solid #000}
 
         /************************************************************/   
 
@@ -120,10 +120,11 @@
 
             <div class="wrap" data-aos="fade-up" id="evt02">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2456_02.jpg" title="온라인강의 듣고, 수강후기 작성하자">
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180748" title="형사법" style="position: absolute; left: 21.88%; top: 58.56%; width: 26.61%; height: 3.41%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180566" title="경찰학" style="position: absolute; left: 50.63%; top: 58.56%; width: 26.61%; height: 3.41%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180567" title="헌법 김원욱" style="position: absolute; left: 21.88%; top: 62.3%; width: 26.61%; height: 3.41%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/183520" title="헌법 이국령" style="position: absolute; left: 50.63%; top: 62.3%; width: 26.61%; height: 3.41%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180748" title="형사법" style="position: absolute; left: 10.45%; top: 58.61%; width: 26.16%; height: 3.3%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180566" title="경찰학" style="position: absolute; left: 36.61%; top: 58.61%; width: 26.16%; height: 3.3%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180567" title="헌법 김원욱" style="position: absolute; left:62.68%; top: 58.61%; width: 26.16%; height: 3.3%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/183520" title="헌법 이국령" style="position: absolute; left: 23.48%; top: 62.3%; width: 26.16%; height: 3.3%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/187329" title="범죄학 박상민" style="position: absolute; left: 50%; top: 62.3%; width: 26.16%; height: 3.3%; z-index: 2;"></a>
             </div> 
 
             <div class="wrap" data-aos="fade-up" id="evt03">
@@ -145,7 +146,7 @@
                     <li>미션1. 유튜브 구독, 인스타 팔로우 확인 (페이지에 나와 있는 계정 전부 구독, 팔로우 하여야 합니다.)</li>
                     <li>미션2 . 수강후기 작성 (3과목[형사법, 경찰학, 헌법] 전부 작성해야 합니다.)<br>
                         * 초시생은 입문강의 수강후기 작성여부를 확인합니다. (8, 9개월 PASS와 기본종합반 할인가능)<br>
-                        * 재시생은 심화강의 수강후기 작성 후 글 남기기를 참여해 주셔야 추첨대상자가 됩니다. (3개월 필합PASS와 문제풀이 1+2+3 종합반 할인가능)<br>
+                        * 재시생은 심화강의 수강후기 작성여부를 확인합니다. (3개월 필합PASS와 문제풀이 1+2+3 종합반 할인가능)<br>
                     <li>미션3. 방문상담 예약을 반드시 하여야 하고 당일 등록해야만 할인이 적용됩니다.</li>
                     <li>보너스 이벤트는 3가지 미션 중 2가지 이상을 클리어 하면 자동으로 참여되는 이벤트 입니다.</li>
                     <li>보너스 이벤트 지급방법 안내<br>
@@ -153,7 +154,7 @@
                         → 슈퍼패스 재등록권, 심화종합반 실강 50% 할인권 접수처에서 대상자 확인 후 할인진행<br>
                         → 온라인패스 20% 할인권 해당 수강생 ID로 발송</li>
                     <li>인강패스 할인쿠폰은 경찰간부 상품에는 할인적용 되지 않습니다.</li>
-                    <li>인강패스 할인쿠폰은 21년 2차패스에만 적용됩니다.</li>
+                    <li>인강패스 할인쿠폰은 22년 2차패스에만 적용됩니다.</li>
                 </ul>         
 		
 			</div>

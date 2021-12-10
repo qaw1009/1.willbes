@@ -27,6 +27,17 @@
                     {{--@php $img_link_url = '//' . (strpos($row['LinkUrl'], config_item('base_domain')) === false ? $row['LinkUrl'] : app_to_env_url($row['LinkUrl'])); @endphp--}}
                 @endif
 
+                @if($row['PopUpTypeName'] == 'bnBottom')
+                    html += '<div style="position: absolute; top: -9px; right: 50%; width: 19px; height: 19px; margin-right: -700px;">';
+                    html += '   <a href="#none" class="btn-popup-close" data-popup-idx="{{ $row['PIdx'] }}" data-popup-hide-days=""><img src="{{ img_static_url('promotion/common/mainBottom_btnclose.png') }}"/></a>';
+                    html += '</div>';
+                @else
+                    html += '<ul class="btnWrapbt popbtn mt10">';
+                    html += '   <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="{{ $row['PIdx'] }}" data-popup-hide-days="1">하루 보지않기</a></li>';
+                    html += '   <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="{{ $row['PIdx'] }}" data-popup-hide-days="">Close</a></li>';
+                    html += '</ul>';
+                @endif
+
                 html += '<div id="Popup{{ $row['PIdx'] }}" class="PopupWrap willbes-Layer-popBox {{ $row['PopUpTypeName'] }} {{ $row['IsModal'] === true ? 'modal-popup' : '' }}" style="{{ $pop_style }}">';
                 html += '   <div class="Layer-Cont">';
                 @if($row['PopUpTypeName'] == 'youtube')
@@ -38,16 +49,7 @@
                 @endif
                 html += '   </div>';
 
-                @if($row['PopUpTypeName'] == 'bnBottom')
-                    html += '<div style="position: absolute; top: -9px; right: 50%; width: 19px; height: 19px; margin-right: -700px;">';
-                    html += '   <a href="#none" class="btn-popup-close" data-popup-idx="{{ $row['PIdx'] }}" data-popup-hide-days=""><img src="{{ img_static_url('promotion/common/mainBottom_btnclose.png') }}"/></a>';
-                    html += '</div>';
-                @else
-                    html += '<ul class="btnWrapbt popbtn mt10">';
-                    html += '   <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="{{ $row['PIdx'] }}" data-popup-hide-days="1">하루 보지않기</a></li>';
-                    html += '   <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="{{ $row['PIdx'] }}" data-popup-hide-days="">Close</a></li>';
-                    html += '</ul>';
-                @endif
+                
 
                 @if(empty($row['PopUpImgMapData']) === false)
                     html += '<map name="PopupImgMap{{ $row['PIdx'] }}">';

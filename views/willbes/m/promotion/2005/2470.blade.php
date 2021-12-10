@@ -20,9 +20,9 @@
 
     .evtInfo {padding:80px 20px; background:#333; color:#fff;}
     .evtInfoBox {margin:0 auto; text-align:left; line-height:1.5;}
-    .evtInfoBox h4 {font-size:30px; margin-bottom:40px;}
-    .evtInfoBox .infoTit {font-size:18px; margin-bottom:20px}
-    .evtInfoBox .infoTit strong {padding:8px 20px; background:#000; border-radius:20px; font-weight:normal !important}
+    .evtInfoBox h4 {font-size:24px; margin-bottom:40px;}
+    .evtInfoBox .infoTit {font-size:16px; margin-bottom:20px}
+    .evtInfoBox .infoTit strong {padding:6px 16px; background:#000; border-radius:20px; font-weight:normal !important}
     .evtInfoBox ul {margin-bottom:30px}
     .evtInfoBox li {margin-bottom:8px; list-style-type: decimal; margin-left:20px}
     .evtInfoBox li span {vertical-align:bottom; color:#f1d188}  

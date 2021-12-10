@@ -596,6 +596,7 @@
             <!--유기농업기능사//-->
 		</div>
 
+		@if(time() < strtotime('202112150000'))
 		<div class="evtCtnsBox evtInfo" id="notice">
 			<div class="evtInfoBox">
 				<h4 class="NSK-Black">유의사항</h4>
@@ -621,6 +622,7 @@
 				</ul>			
 			</div>
 		</div> 
+		@endif
 
     </div>
     <!-- End Container -->

@@ -28,15 +28,6 @@
                 @endif
 
                 html += '<div id="Popup{{ $row['PIdx'] }}" class="PopupWrap willbes-Layer-popBox {{ $row['PopUpTypeName'] }} {{ $row['IsModal'] === true ? 'modal-popup' : '' }}" style="{{ $pop_style }}">';
-                html += '   <div class="Layer-Cont">';
-                @if($row['PopUpTypeName'] == 'youtube')
-                    html += '   <iframe width="{{ $row['Width'] }}" height="{{ $row['Height'] }}" src="{!! $row['LinkUrl'] !!}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-                @else
-                    html += '   <a href="{!! $img_link_url !!}" target="_{{ $row['LinkType'] }}">';
-                    html += '       <img src="{{ $row['PopUpFullPath'] }}{{ $row['PopUpImgName'] }}" usemap="#PopupImgMap{{ $row['PIdx'] }}"/>';
-                    html += '   </a>';
-                @endif
-                html += '   </div>';
 
                 @if($row['PopUpTypeName'] == 'bnBottom')
                     html += '<div style="position: absolute; top: -9px; right: 50%; width: 19px; height: 19px; margin-right: -700px;">';
@@ -49,6 +40,18 @@
                     html += '</ul>';
                 @endif
 
+
+                html += '   <div class="Layer-Cont">';
+                @if($row['PopUpTypeName'] == 'youtube')
+                    html += '   <iframe width="{{ $row['Width'] }}" height="{{ $row['Height'] }}" src="{!! $row['LinkUrl'] !!}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                @else
+                    html += '   <a href="{!! $img_link_url !!}" target="_{{ $row['LinkType'] }}">';
+                    html += '       <img src="{{ $row['PopUpFullPath'] }}{{ $row['PopUpImgName'] }}" usemap="#PopupImgMap{{ $row['PIdx'] }}"/>';
+                    html += '   </a>';
+                @endif
+                html += '   </div>';
+
+                
                 @if(empty($row['PopUpImgMapData']) === false)
                     html += '<map name="PopupImgMap{{ $row['PIdx'] }}">';
                     @foreach($row['PopUpImgMapData'] as $map_row)

@@ -29,45 +29,6 @@ class ProfessorHotClipFModel extends WB_Model
     public function listHotClip($arr_condition = [], $order_by = '')
     {
         $column = "
-            hc.PhcIdx,hc.SiteCode,hc.CateCode,hc.ProfIdx,hc.SubjectIdx,hc.OrderNum
-            ,hc.ProfBgImagePath,hc.ProfBgImageName,hc.ProfBgImageRealName
-	        ,hc.ProfBtnIsUse,hc.CurriculumBtnIsUse,hc.StudyCommentBtnIsUse,hc.RegDatm
-	        ,ps.SubjectName,wp.wProfName
-	        ,(
-            SELECT
-                CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
-                    'LinkType', LinkType,
-                    'LinkUrl', LinkUrl,
-                    'ThumbnailPath', ThumbnailPath,
-                    'ThumbnailFileName', ThumbnailFileName,
-                    'ThumbnailRealName', ThumbnailRealName
-                )), ']') AS info
-            FROM {$this->_table['professor_hot_clip_thumbnail']} AS hct
-            WHERE hc.PhcIdx = hct.PhcIdx AND hct.IsStatus = 'Y'
-            ) AS thumbnail_data
-        ";
-        $from = "
-            FROM {$this->_table['professor_hot_clip']} AS hc
-            INNER JOIN {$this->_table['product_subject']} AS ps ON hc.SubjectIdx = ps.SubjectIdx
-            INNER JOIN {$this->_table['professor']} AS pf ON hc.ProfIdx = pf.ProfIdx
-            INNER JOIN {$this->_table['pms_professor']} AS wp ON pf.wProfIdx = wp.wProfIdx
-        ";
-        $order_by = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
-        return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
-    }
-
-    /**
-     * todo : 개발/테스트 완료 후 실제 함수에 대입 (2021.12.06)
-     * 강사 핫클립 데이터 리스트
-     * @param array $arr_condition
-     * @param string $order_by
-     * @return mixed
-     */
-    public function listHotClip_test($arr_condition = [], $order_by = '')
-    {
-        $column = "
             g.PhcgIdx AS group_code,g.Title AS group_title
             ,hc.PhcIdx,hc.SiteCode,hc.CateCode,hc.ProfIdx,hc.SubjectIdx,hc.OrderNum
             ,hc.ProfBgImagePath,hc.ProfBgImageName,hc.ProfBgImageRealName

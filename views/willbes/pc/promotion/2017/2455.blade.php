@@ -45,12 +45,17 @@
                 <div class="profBox">
                     <a href="https://ssam.willbes.net/event/show/all?event_idx=1508" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t01.jpg" alt="이경범 교육학"/></a>
                 </div>
+                <div class="profBox">
+                    <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t24.jpg" alt="정현 교육학"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t23.jpg" alt="신태식 교육학"/></a>
+                </div>
                 <div class="profBox">                    
                     <a href="https://ssam.willbes.net/event/show/all?event_idx=1484" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t02.jpg" alt="이인재 교육학"/></a>
                 </div>
                 <div class="profBox">
-                    <div class="soon NSK-Black">준비중입니다.</div>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t03.jpg" alt="송원영 전공국어"/></a>
+                    <a href="https://ssam.willbes.net/event/show/all?event_idx=1511" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t03.jpg" alt="송원영 전공국어"/></a>
                 </div>
                 <div class="profBox">
                     <a href="https://ssam.willbes.net/event/show/all?event_idx=1507" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t04.jpg" alt="구동언 전공국어"/></a>
@@ -59,16 +64,16 @@
                     <a href="https://ssam.willbes.net/event/show/all?event_idx=1495" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t05.jpg" alt="김유석 전공영어"/></a>
                 </div>
                 <div class="profBox">
-                    <div class="soon NSK-Black">준비중입니다.</div>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t06.jpg" alt="김영문 영어학"/></a>
+                    <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t06.jpg" alt="김영문 영어학"/></a>
                 </div>
                 <div class="profBox">
-                    <div class="soon NSK-Black">준비중입니다.</div>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t07.jpg" alt="김철홍 전공수학"/></a>
+                    <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t07.jpg" alt="김철홍 전공수학"/></a>
                 </div>
                 <div class="profBox">
-                    <div class="soon NSK-Black">준비중입니다.</div>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t08.jpg" alt="박태영 수학교육론"/></a>
+                    <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t22.jpg" alt="김현웅 전공수학"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t08.jpg" alt="박태영 수학교육론"/></a>
                 </div>
                 <div class="profBox">
                     <a href="https://ssam.willbes.net/event/show/all?event_idx=1506" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t09.jpg" alt="박혜향 수학교육론"/></a>
@@ -92,8 +97,10 @@
                     <a href="https://ssam.willbes.net/event/show/all?event_idx=1503" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t15.jpg" alt="김종권 전공역사"/></a>
                 </div>
                 <div class="profBox">
-                    <div class="soon NSK-Black">준비중입니다.</div>
                     <a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t20.jpg" alt="최용림 역사"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t25.jpg" alt="최규훈 전공체육"/></a>
                 </div>
                 <div class="profBox">
                     <a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/188601" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t16.jpg" alt="다이애나 전공음악"/></a>
@@ -108,10 +115,8 @@
                     <a href="https://ssam.willbes.net/event/show/all?event_idx=1502" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t19.jpg" alt="장영희 전공중국어"/></a>
                 </div>
                 <div class="profBox">
-                    <div class="soon NSK-Black">준비중입니다.</div>
                     <a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t21.jpg" alt="정경미 전공중국어"/></a>
                 </div>
-                <div class="profBox"></div>
             </div>
         </div>
 

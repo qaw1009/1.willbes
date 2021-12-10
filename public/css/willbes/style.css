@@ -6383,7 +6383,7 @@ table.couponTable .tBox {
 }
 ul.btnWrapbt {
 	/*float: left;*/
-	text-align: center;
+	text-align: right;
 }
 ul.btnWrapbt li {
 	display: inline-block;

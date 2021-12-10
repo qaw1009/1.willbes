@@ -35,7 +35,7 @@
 
         .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
         .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
-        .ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}
+        .ssam .sec-prof .widthAuto {height:402px; overflow: hidden; z-index: 1}
         .ssam .sec-prof .prof-Tab {position:absolute; top:24px; left:50px; width:300px; z-index: 2;}
 
         .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}

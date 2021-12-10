@@ -1024,8 +1024,9 @@ class Home extends \app\controllers\FrontController
         $order_by = ['hc.OrderNum' => 'ASC'];
         $arr_condition = [
             'EQ' => [
-                'hc.SiteCode' => $this->_site_code,
-                'hc.IsStatus' => 'Y'
+                'hc.SiteCode' => $this->_site_code
+                ,'hc.IsUse' => 'Y'
+                ,'hc.IsStatus' => 'Y'
             ]
         ];
         $data = $this->professorHotClipFModel->listHotClip($arr_condition, $order_by);

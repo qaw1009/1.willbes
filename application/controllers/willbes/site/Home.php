@@ -1021,11 +1021,15 @@ class Home extends \app\controllers\FrontController
      */
     private function _getlistProfHotClip()
     {
-        $order_by = ['hc.OrderNum' => 'ASC'];
+        $order_by = ['g.OrderNum' => 'ASC', 'hc.OrderNum' => 'ASC'];
         $arr_condition = [
             'EQ' => [
-                'hc.SiteCode' => $this->_site_code,
-                'hc.IsStatus' => 'Y'
+                'g.ViewType' => '1'
+                ,'g.IsUse' => 'Y'
+                ,'g.IsStatus' => 'Y'
+                ,'hc.SiteCode' => $this->_site_code
+                ,'hc.IsUse' => 'Y'
+                ,'hc.IsStatus' => 'Y'
             ]
         ];
         $data = $this->professorHotClipFModel->listHotClip($arr_condition, $order_by);
@@ -1050,7 +1054,7 @@ class Home extends \app\controllers\FrontController
                 ,'hc.IsStatus' => 'Y'
             ]
         ];
-        $result = $this->professorHotClipFModel->listHotClip_test($arr_condition, $order_by);
+        $result = $this->professorHotClipFModel->listHotClip($arr_condition, $order_by);
         if (empty($result) === false) {
             foreach ($result as $row) {
                 $data[$row['group_title']][$row['PhcIdx']]['PhcIdx'] = $row['PhcIdx'];

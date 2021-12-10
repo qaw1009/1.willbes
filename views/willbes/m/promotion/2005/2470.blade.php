@@ -1,82 +1,60 @@
-@extends('willbes.pc.layouts.master')
+@extends('willbes.m.layouts.master')
 
 @section('content')
-    @include('willbes.pc.layouts.partial.site_menu')
-    <!-- Container -->
+<!-- Container -->
     <style type="text/css">
-        .evtContent {
-            width:100%;
-            min-width:1120px !important;
-            max-width:2000px !important;
-            margin:20px auto 0;
-            padding:0 !important;
-            background:#fff;     
-            font-size:14px;       
-        }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
-        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
+    .evtCtnsBox img {width:100%; max-width:720px;} 
 
-        /************************************************************/
+    /************************************************************/
 
-        .evt_top {background:#0C1D23 url(https://static.willbes.net/public/images/promotion/2021/12/2470_top_bg.jpg) no-repeat center top; position: relative;}
-        .evt_top span {position:absolute; left:50%; margin-left:-280px; top:300px; width:560px; z-index: 2;}
-        .evt_01 {background:#b9a78f}
+    @@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+    .evt_02 {padding:50px 0}
+    .evt_02 h4 {font-family: 'Black Han Sans', sans-serif; font-size:30px}
+    .evt_02 > a {display:block; margin-bottom:15px}
 
-        .evt_02 {width:1120px; margin:0 auto; padding:150px 0}
-        .evt_02 h4 {font-size:50px; margin-bottom:30px; color:#2d2d35}
-        .evt_02 a {display:block; margin-bottom:30px}
+    .check {padding:20px 0 0; letter-spacing:1; color:#fff;}
+    .check label {cursor:pointer; font-size:15px;color:#000;font-weight:bold;}
+    .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
+    .check a {display:block; padding:10px 0; color:#fff; background:#393939; border-radius:20px; font-weight:bold; width:60%; margin:20px auto 0}
 
-        .check { width:980px; margin:0 auto; padding:20px 0; letter-spacing:3; color:#fff;}
-        .check label {cursor:pointer; font-size:15px;color:#000;font-weight:bold;}
-        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-        .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#393939 ; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
+    .evtInfo {padding:80px 20px; background:#333; color:#fff;}
+    .evtInfoBox {margin:0 auto; text-align:left; line-height:1.5;}
+    .evtInfoBox h4 {font-size:30px; margin-bottom:40px;}
+    .evtInfoBox .infoTit {font-size:18px; margin-bottom:20px}
+    .evtInfoBox .infoTit strong {padding:8px 20px; background:#000; border-radius:20px; font-weight:normal !important}
+    .evtInfoBox ul {margin-bottom:30px}
+    .evtInfoBox li {margin-bottom:8px; list-style-type: decimal; margin-left:20px}
+    .evtInfoBox li span {vertical-align:bottom; color:#f1d188}  
 
-        .evtInfo {padding:80px 0; background:#333; color:#fff;}
-		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.5;}
-		.evtInfoBox h4 {font-size:30px; margin-bottom:40px;}
-		.evtInfoBox .infoTit {font-size:18px; margin-bottom:20px}
-		.evtInfoBox .infoTit strong {padding:8px 20px; background:#000; border-radius:20px; font-weight:normal !important}
-		.evtInfoBox ul {margin-bottom:30px}
-        .evtInfoBox li {margin-bottom:8px; list-style-type: decimal; margin-left:20px}
-        .evtInfoBox li span {vertical-align:bottom; color:#f1d188}  
+    
+    </style>
 
+    <div id="Container" class="Container NSK c_both">
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2470m_01.jpg" alt="황종휴 경제학">
+        </div>
 
-        @@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
-        .evt_02 h4 {font-family: 'Black Han Sans', sans-serif;}
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2470m_02.jpg" alt="특별혜택">
+        </div>    
         
-        /************************************************************/      
-    </style> 
-
-	<div class="evtContent NSK"> 
-        
-		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2470_top.jpg" alt="황종휴 경젱학"/>
-            <span  data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_top_img.png" alt="황종휴 경젱학"/></span>
-		</div>
-
-        <div class="evtCtnsBox evt_01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2470_01.jpg" alt="특별혜택"/>            
-		</div>
-
-        <div class="evtCtnsBox evt_02">
-            <h4>황종휴 경제학 고득점 합격 E-PASS Ⅱ</h4>
-            <div class="wrap">                
-                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/188871" onclick="go_PassLecture(this)"  data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_01.jpg" alt="경제학 3 PICK 패키지" /></a> 
-                <a hhref="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/188877" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_02.jpg" alt="재정학 3 PICK 패키지" /></a> 
-                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/188878" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_03.jpg" alt="국제경제학 3 PICK 패키지" /></a> 
-                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/188880" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_04.jpg" alt="경제학+국제경제학 콜라보 패키지 1" /></a> 
-                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/periodPackage/show/cate/3094/pack/648001/prod-code/188883" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_05.jpg" alt="경제학+국제경제학 콜라보 패키지 2" /></a>           
-            </div>    
+        <div class="evtCtnsBox evt_02 " data-aos="fade-up">
+            <h4>황종휴 경제학 고득점 합격 E-PASS Ⅱ</h4>             
+            <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/188871" onclick="go_PassLecture(this)"  data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_01.jpg" alt="경제학 3 PICK 패키지" /></a> 
+            <a hhref="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/188877" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_02.jpg" alt="재정학 3 PICK 패키지" /></a> 
+            <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/188878" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_03.jpg" alt="국제경제학 3 PICK 패키지" /></a> 
+            <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/188880" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_04.jpg" alt="경제학+국제경제학 콜라보 패키지 1" /></a> 
+            <a href="javascript:void(0);" data-url="https://gosi.willbes.net/periodPackage/show/cate/3094/pack/648001/prod-code/188883" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_05.jpg" alt="경제학+국제경제학 콜라보 패키지 2" /></a>           
+   
             <div class="check">
                 <label>
                     <input name="ischk"  type="checkbox" value="Y" />
                     페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#notice">이용안내확인하기 ↓</a>
-            </div>               
-		</div>
+            </div> 
+        </div>
 
         <div class="evtCtnsBox evtInfo" id="notice">
             <div class="evtInfoBox">
@@ -143,30 +121,15 @@
                 </ul>
             </div>
         </div>
-
-	</div>
+    </div>
     <!-- End Container -->
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      $( document ).ready( function() {
-        AOS.init();
-      } );
-    </script>
-
-
-    <script type="text/javascript">
-        /*수강신청 동의*/ 
-        function go_PassLecture(obj){
-            if($("input[name='ischk']:checked").size() < 1){
-                alert("이용안내에 동의하셔야 합니다.");
-                return;
-            }else{
-                var _url = $(obj).data('url');
-                window.open(_url);
-            }
-        }
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+        $( document ).ready( function() {
+            AOS.init();
+        } );
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

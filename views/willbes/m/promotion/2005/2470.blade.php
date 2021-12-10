@@ -41,11 +41,11 @@
         
         <div class="evtCtnsBox evt_02 " data-aos="fade-up">
             <h4>황종휴 경제학 고득점 합격 E-PASS Ⅱ</h4>             
-            <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/188871" onclick="go_PassLecture(this)"  data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_01.jpg" alt="경제학 3 PICK 패키지" /></a> 
-            <a hhref="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/188877" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_02.jpg" alt="재정학 3 PICK 패키지" /></a> 
-            <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/188878" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_03.jpg" alt="국제경제학 3 PICK 패키지" /></a> 
-            <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/188880" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_04.jpg" alt="경제학+국제경제학 콜라보 패키지 1" /></a> 
-            <a href="javascript:void(0);" data-url="https://gosi.willbes.net/periodPackage/show/cate/3094/pack/648001/prod-code/188883" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_05.jpg" alt="경제학+국제경제학 콜라보 패키지 2" /></a>           
+            <a href="javascript:void(0);" data-url="https://gosi.willbes.net/m/userPackage/show/cate/3094/prod-code/188871" onclick="go_PassLecture(this)"  data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_01.jpg" alt="경제학 3 PICK 패키지" /></a> 
+            <a hhref="javascript:void(0);" data-url="https://gosi.willbes.net/m/userPackage/show/cate/3094/prod-code/188877" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_02.jpg" alt="재정학 3 PICK 패키지" /></a> 
+            <a href="javascript:void(0);" data-url="https://gosi.willbes.net/m/userPackage/show/cate/3094/prod-code/188878" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_03.jpg" alt="국제경제학 3 PICK 패키지" /></a> 
+            <a href="javascript:void(0);" data-url="https://gosi.willbes.net/m/userPackage/show/cate/3094/prod-code/188880" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_04.jpg" alt="경제학+국제경제학 콜라보 패키지 1" /></a> 
+            <a href="javascript:void(0);" data-url="https://gosi.willbes.net/m/periodPackage/show/cate/3094/pack/648001/prod-code/188883" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2021/12/2470_02_05.jpg" alt="경제학+국제경제학 콜라보 패키지 2" /></a>           
    
             <div class="check">
                 <label>

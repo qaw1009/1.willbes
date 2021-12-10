@@ -132,6 +132,19 @@
         } );
     </script>
 
+<script type="text/javascript">
+        /*수강신청 동의*/ 
+        function go_PassLecture(obj){
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
+                return;
+            }else{
+                var _url = $(obj).data('url');
+                window.open(_url);
+            }
+        }
+    </script>
+
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
 @stop

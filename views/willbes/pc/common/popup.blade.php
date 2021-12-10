@@ -58,7 +58,7 @@
                             html += '   <a href="#none" class="btn-popup-close" data-popup-idx="{{ $row['PIdx'] }}" data-popup-hide-days=""><img src="{{ img_static_url('promotion/common/mainBottom_btnclose.png') }}"/></a>';
                             html += '</div>';
                     @else
-                        html += '<ul class="btnWrapbt popbtn mt10">';
+                        html += '<ul class="btnWrapbt popbtn mt10 tx-center">';
                             html += '   <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="{{ $row['PIdx'] }}" data-popup-hide-days="1">하루 보지않기</a></li>';
                             html += '   <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="{{ $row['PIdx'] }}" data-popup-hide-days="">Close</a></li>';
                             html += '</ul>';

@@ -531,7 +531,7 @@ class Home extends \app\controllers\FrontController
         if(APP_DEVICE == 'pc'){
             $data['new_product'] = $this->_getlistSalesProductBook(5, $s_cate_code);
             $data['prof_hot_clip'] = $this->_getlistProfHotClip();
-            $data['prof_hot_clip_test'] = $this->_getlistProfHotClip_test();  /** todo : 개발/테스트 완료 후 실제 함수에 대입 (2021.12.06) */
+            $data['prof_hot_clip_test'] = $this->_getlistProfHotClip_test($data['prof_hot_clip']);  /** todo : 개발/테스트 완료 후 실제 함수에 대입 (2021.12.06) */
         }else{
             $data['new_product'] = $this->_product('on_lecture', 16, $s_cate_code, 'New');
             $data['event'] = $this->_getlistEvent(5, $s_cate_code);
@@ -1040,21 +1040,9 @@ class Home extends \app\controllers\FrontController
      * todo : 개발/테스트 완료 후 실제 함수에 대입 (2021.12.06)
      * TEST 강사 핫클립 데이터 리스트
      */
-    private function _getlistProfHotClip_test()
+    private function _getlistProfHotClip_test($result)
     {
         $data = [];
-        $order_by = ['g.OrderNum' => 'ASC', 'hc.OrderNum' => 'ASC'];
-        $arr_condition = [
-            'EQ' => [
-                'g.ViewType' => '1'
-                ,'g.IsUse' => 'Y'
-                ,'g.IsStatus' => 'Y'
-                ,'hc.SiteCode' => $this->_site_code
-                ,'hc.IsUse' => 'Y'
-                ,'hc.IsStatus' => 'Y'
-            ]
-        ];
-        $result = $this->professorHotClipFModel->listHotClip($arr_condition, $order_by);
         if (empty($result) === false) {
             foreach ($result as $row) {
                 $data[$row['group_title']][$row['PhcIdx']]['PhcIdx'] = $row['PhcIdx'];

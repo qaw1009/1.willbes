@@ -5,18 +5,22 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
-            margin-top:20px !important;
+            max-width:2000px !important;
+            margin:20px auto 0;
             padding:0 !important;
-            background:#fff;
+            background:#fff;     
+            font-size:14px;       
         }
+        .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
 		/************************************************************/
-		.evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
 		
-		.sky {position:fixed; top:150px; right:10px;z-index:10;}
+		.sky {position:fixed; top:120px; right:10px;z-index:10;}
 		.sky a {display:block; margin-bottom:10px}	
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/08/1068_top_bg.jpg) no-repeat center top;}
@@ -82,7 +86,7 @@
 
 		/*유의사항*/
 		.evtInfo {padding:80px 0; background:#e9e9e9; color:#555; font-size:14px}
-		.evtInfoBox { width:1120px; margin:0 auto; text-align:left; line-height:1.5}
+		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.5}
 		.evtInfoBox h4 {font-size:35px; margin-bottom:20px}
 		.evtInfoBox .infoTit {font-size:20px; margin-bottom:20px}
 		.evtInfoBox ul {margin-bottom:30px}
@@ -92,9 +96,11 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">	
 		<div class="sky" id="QuickMenu">
+			@if(time() < strtotime('202112150000'))
 			<a href="#transfer">
-				<img src="https://static.willbes.net/public/images/promotion/2021/11/1068_sky1.png"/>				
+				<img src="https://static.willbes.net/public/images/promotion/2021/12/1068_sky1.png"/>				
 			</a>	
+			@endif
 			<a href="#to_go">
 				<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_sky2.png" usemap="#map1068_sky" border="0" />
 				<map name="map1068_sky" id="map1068_sky">
@@ -143,13 +149,15 @@
         </div>	
 		--}}
 
+		@if(time() < strtotime('202112150000'))
 		<div class="evtCtnsBox wb_02_01" id="transfer">
 			<div class="wrap">
-				<img src="https://static.willbes.net/public/images/promotion/2021/11/1068_02_01.jpg" alt="재도전.환승 이벤트">
+				<img src="https://static.willbes.net/public/images/promotion/2021/12/1068_02_01.jpg" alt="재도전.환승 이벤트">
 				<a href="javascript:certOpen();" title="인증하기" style="position: absolute;left: 29.85%;top: 77.75%;width: 39.43%;height: 6.53%;z-index: 2;"></a>
 				<a href="#notice" title="유의사항" style="position: absolute;left: 42.05%;top: 85.35%;width: 15.43%;height: 4.03%;z-index: 2;"></a>
 			</div>
         </div>
+		@endif
 
 		<div class="evtCtnsBox wb_02" id="to_go">
 			<div class="wrap">

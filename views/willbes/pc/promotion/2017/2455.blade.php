@@ -70,7 +70,7 @@
                     <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t07.jpg" alt="김철홍 전공수학"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t22.jpg" alt="김현웅 전공수학"/></a>
+                    <a href="https://ssam.willbes.net/event/show/all?event_idx=1515" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t22.jpg" alt="김현웅 전공수학"/></a>
                 </div>
                 <div class="profBox">
                     <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t08.jpg" alt="박태영 수학교육론"/></a>

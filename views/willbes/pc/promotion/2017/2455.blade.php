@@ -91,20 +91,17 @@
                     <a href="https://ssam.willbes.net/event/show/all?event_idx=1505" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t13.jpg" alt="김민응 도덕윤리"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="https://ssam.willbes.net/event/show/all?event_idx=1504" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t14.jpg" alt="허역팀 일반사회"/></a>
-                </div>
-                <div class="profBox">
-                    <a href="https://ssam.willbes.net/event/show/all?event_idx=1503" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t15.jpg" alt="김종권 전공역사"/></a>
-                </div>
-                <div class="profBox">
-                    <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t20.jpg" alt="최용림 역사"/></a>
-                </div>
-                <div class="profBox">
                     <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t25.jpg" alt="최규훈 전공체육"/></a>
                 </div>
                 <div class="profBox">
                     <a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/188601" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t16.jpg" alt="다이애나 전공음악"/></a>
                 </div>
+                <div class="profBox">
+                    <a href="https://ssam.willbes.net/event/show/all?event_idx=1504" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t14.jpg" alt="허역팀 일반사회"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="https://ssam.willbes.net/event/show/all?event_idx=1503" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t15.jpg" alt="김종권 전공역사"/></a>
+                </div>          
                 <div class="profBox">
                     <a href="javascript:fnPlayerSample('177588','1270307','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t17.jpg" alt="최우영 전기전자통신"/></a>
                 </div>
@@ -114,9 +111,7 @@
                 <div class="profBox">
                     <a href="https://ssam.willbes.net/event/show/all?event_idx=1502" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t19.jpg" alt="장영희 전공중국어"/></a>
                 </div>
-                <div class="profBox">
-                    <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t21.jpg" alt="정경미 전공중국어"/></a>
-                </div>
+                <div class="profBox"></div>
             </div>
         </div>
 

@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+        .evtCtnsBox .wrap a {border:1px solid #000}
 
         /************************************************************/   
 
@@ -120,10 +120,11 @@
 
             <div class="wrap" data-aos="fade-up" id="evt02">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2456_02.jpg" title="온라인강의 듣고, 수강후기 작성하자">
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180748" title="형사법" style="position: absolute; left: 21.88%; top: 58.56%; width: 26.61%; height: 3.41%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180566" title="경찰학" style="position: absolute; left: 50.63%; top: 58.56%; width: 26.61%; height: 3.41%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180567" title="헌법 김원욱" style="position: absolute; left: 21.88%; top: 62.3%; width: 26.61%; height: 3.41%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/183520" title="헌법 이국령" style="position: absolute; left: 50.63%; top: 62.3%; width: 26.61%; height: 3.41%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180748" title="형사법" style="position: absolute; left: 10.45%; top: 58.61%; width: 26.16%; height: 3.3%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180566" title="경찰학" style="position: absolute; left: 36.61%; top: 58.61%; width: 26.16%; height: 3.3%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180567" title="헌법 김원욱" style="position: absolute; left:62.68%; top: 58.61%; width: 26.16%; height: 3.3%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/183520" title="헌법 이국령" style="position: absolute; left: 23.48%; top: 62.3%; width: 26.16%; height: 3.3%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/187329" title="범죄학 박상민" style="position: absolute; left: 50%; top: 62.3%; width: 26.16%; height: 3.3%; z-index: 2;"></a>
             </div> 
 
             <div class="wrap" data-aos="fade-up" id="evt03">

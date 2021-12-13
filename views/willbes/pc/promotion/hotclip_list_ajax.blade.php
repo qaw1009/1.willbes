@@ -1,148 +1,150 @@
-<div class="ssam-Lnb">
-    <div class="lnb-List tabs">
+<div class="evtCtnsBox evt03">
+    <div class="ssam-Lnb">
+        <div class="lnb-List tabs">
+            @if (empty($data) === false)
+                @foreach($data as $subject_name => $arr_row)
+                    <div class="ssam-lnb-List-Tit {{($loop->first === true ? 'hover' : '')}}">
+                        <a href="javascript:void(0);">{{$subject_name}}</a>
+                    </div>
+                    <div class="lnb-List-Depth" style="display: {{($loop->first == true ? 'block' : 'none')}}">
+                        <dl>
+                            @foreach($arr_row as $key => $row)
+                                <dt>
+                                    <a href="javascript:void(0);" class="btn-hotclip-prof {{($loop->parent->index == 1 && $loop->depth == 2 && $loop->index == 1 ? 'active' : '')}}"
+                                       data-prof-id="{{$row['PhcIdx']}}">{{$row['SubjectName']}} <strong>{{$row['wProfName']}}</strong>
+                                    </a>
+                                </dt>
+                            @endforeach
+                        </dl>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+    </div>
+
+    <div class="tabCts">
         @if (empty($data) === false)
             @foreach($data as $subject_name => $arr_row)
-                <div class="ssam-lnb-List-Tit {{($loop->first === true ? 'hover' : '')}}">
-                    <a href="javascript:void(0);">{{$subject_name}}</a>
-                </div>
-                <div class="lnb-List-Depth" style="display: {{($loop->first == true ? 'block' : 'none')}}">
-                    <dl>
-                        @foreach($arr_row as $key => $row)
-                            <dt>
-                                <a href="javascript:void(0);" class="btn-hotclip-prof {{($loop->parent->index == 1 && $loop->depth == 2 && $loop->index == 1 ? 'active' : '')}}"
-                                   data-prof-id="{{$row['PhcIdx']}}">{{$row['SubjectName']}} <strong>{{$row['wProfName']}}</strong>
-                                </a>
-                            </dt>
-                        @endforeach
-                    </dl>
-                </div>
-            @endforeach
-        @endif
-    </div>
-</div>
-
-<div class="tabCts">
-    @if (empty($data) === false)
-        @foreach($data as $subject_name => $arr_row)
-            @foreach($arr_row as $key => $row)
-                <div id="tab{{$row['PhcIdx']}}" class="profBox" style="display: {{($loop->parent->index == 1 && $loop->depth == 2 && $loop->index == 1 ? 'block' : 'none')}}">
-                    <div class="p_re">
-                        <img src="{{$row['ProfBgImagePath'].$row['ProfBgImageName']}}" alt="{{$row['SubjectName']}} {{$row['wProfName']}}">
-                        <div class="btnBox">
-                            <div class="prof-top-btn">
-                                @if($row['CurriculumBtnIsUse'] == 'Y')
-                                    <a href="javascript:void(0);" onclick="openWin('sec-prof-layer'); fnOpenProfCurriculum('{{$row['ProfIdx']}}');">커리큘럼</a>
-                                @endif
-                                    @if($row['ProfBtnIsUse'] == 'Y')
-                                        <a href="{{front_url("/professor/show/prof-idx/{$row['ProfIdx']}?cate_code={$row['CateCode']}&subject_idx={$row['SubjectIdx']}")}}" target="_blank">교수님 홈</a>
+                @foreach($arr_row as $key => $row)
+                    <div id="tab{{$row['PhcIdx']}}" class="profBox" style="display: {{($loop->parent->index == 1 && $loop->depth == 2 && $loop->index == 1 ? 'block' : 'none')}}">
+                        <div class="p_re">
+                            <img src="{{$row['ProfBgImagePath'].$row['ProfBgImageName']}}" alt="{{$row['SubjectName']}} {{$row['wProfName']}}">
+                            <div class="btnBox">
+                                <div class="prof-top-btn">
+                                    @if($row['CurriculumBtnIsUse'] == 'Y')
+                                        <a href="javascript:void(0);" onclick="openWin('sec-prof-layer'); fnOpenProfCurriculum('{{$row['ProfIdx']}}');">커리큘럼</a>
                                     @endif
-                            </div>
-                            @if(empty($row['thumbnail_data']) === false)
-                                <div class="prof-clip-btn">
-                                    @php
-                                        $thumbnail_data = json_decode($row['thumbnail_data'],true);
-                                        foreach ($thumbnail_data as $thumbnail_row) {
-                                            $html = '';
-                                            if ($thumbnail_row['LinkType'] == 'layer') {
-                                                $html .= '<a onclick="fnOpenYoutube(\''.$thumbnail_row['LinkUrl'].'\')">';
-                                            } elseif ($thumbnail_row['LinkType'] == 'self') {
-                                                $html .= '<a href="'.$thumbnail_row['LinkUrl'].'">';
-                                            } elseif ($thumbnail_row['LinkType'] == 'blank') {
-                                                $html .= '<a href="'.$thumbnail_row['LinkUrl'].'" target="_balnk">';
-                                            } else {
-                                                $html .= '<a href="javascript:void(0);">';
-                                            }
-                                            $html .= '<img src="'.$thumbnail_row['ThumbnailPath'].$thumbnail_row['ThumbnailFileName'].'" title="유튜브">';
-                                            $html .= '</a>';
-                                            echo $html;
-                                        }
-                                    @endphp
+                                        @if($row['ProfBtnIsUse'] == 'Y')
+                                            <a href="{{front_url("/professor/show/prof-idx/{$row['ProfIdx']}?cate_code={$row['CateCode']}&subject_idx={$row['SubjectIdx']}")}}" target="_blank">교수님 홈</a>
+                                        @endif
                                 </div>
+                                @if(empty($row['thumbnail_data']) === false)
+                                    <div class="prof-clip-btn">
+                                        @php
+                                            $thumbnail_data = json_decode($row['thumbnail_data'],true);
+                                            foreach ($thumbnail_data as $thumbnail_row) {
+                                                $html = '';
+                                                if ($thumbnail_row['LinkType'] == 'layer') {
+                                                    $html .= '<a onclick="fnOpenYoutube(\''.$thumbnail_row['LinkUrl'].'\')">';
+                                                } elseif ($thumbnail_row['LinkType'] == 'self') {
+                                                    $html .= '<a href="'.$thumbnail_row['LinkUrl'].'">';
+                                                } elseif ($thumbnail_row['LinkType'] == 'blank') {
+                                                    $html .= '<a href="'.$thumbnail_row['LinkUrl'].'" target="_balnk">';
+                                                } else {
+                                                    $html .= '<a href="javascript:void(0);">';
+                                                }
+                                                $html .= '<img src="'.$thumbnail_row['ThumbnailPath'].$thumbnail_row['ThumbnailFileName'].'" title="유튜브">';
+                                                $html .= '</a>';
+                                                echo $html;
+                                            }
+                                        @endphp
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="pkgBuy">
+                            @if(empty($row['product_info_1']) === false)
+                                @php
+                                    $product_data = json_decode($row['product_info_1'],true);
+                                    $html = '';
+                                    foreach ($product_data as $key => $product_row) {
+                                        $html .= '<div>';
+                                            $html .= '<a href="javascript:void(0);" class="btn-add-product"
+                                                data-prof-name="'.$product_row['ProfName'].'"
+                                                data-learn-pattern="'.$product_row['LearnPatternCcd'].'"
+                                                data-prod-code="'.$product_row['ProdCode'].'"
+                                                data-prod-name="'.$product_row['ProdName'].'">';
+                                            $html .= '연간패키지'.$product_row['ProdItemCcdName'];
+                                            $html .= '<strong>'.$product_row['ProductTitle'].'</strong>';
+                                            $html .= '</a>';
+                                        $html .= '</div>';
+                                    }
+                                    echo $html;
+                                @endphp
+                            @endif
+                            @if(empty($row['product_info_2']) === false)
+                                @php
+                                    $product_data = json_decode($row['product_info_2'],true);
+                                    $html = '';
+                                    foreach ($product_data as $key => $product_row) {
+                                        $html .= '<div>';
+                                            $html .= '<a href="javascript:void(0);" class="btn-add-product"
+                                                data-prof-name="'.$product_row['ProfName'].'"
+                                                data-learn-pattern="'.$product_row['LearnPatternCcd'].'"
+                                                data-prod-code="'.$product_row['ProdCode'].'"
+                                                data-prod-name="'.$product_row['ProdName'].'">';
+                                            $html .= '연간패키지'.$product_row['ProdItemCcdName'];
+                                            $html .= '<strong>'.$product_row['ProductTitle'].'</strong>';
+                                            $html .= '</a>';
+                                        $html .= '</div>';
+                                    }
+                                    echo $html;
+                                @endphp
                             @endif
                         </div>
                     </div>
+                @endforeach
+            @endforeach
+        @endif
 
-                    <div class="pkgBuy">
-                        @if(empty($row['product_info_1']) === false)
-                            @php
-                                $product_data = json_decode($row['product_info_1'],true);
-                                $html = '';
-                                foreach ($product_data as $key => $product_row) {
-                                    $html .= '<div>';
-                                        $html .= '<a href="javascript:void(0);" class="btn-add-product"
-                                            data-prof-name="'.$product_row['ProfName'].'"
-                                            data-learn-pattern="'.$product_row['LearnPatternCcd'].'"
-                                            data-prod-code="'.$product_row['ProdCode'].'"
-                                            data-prod-name="'.$product_row['ProdName'].'">';
-                                        $html .= '연간패키지'.$product_row['ProdItemCcdName'];
-                                        $html .= '<strong>'.$product_row['ProductTitle'].'</strong>';
-                                        $html .= '</a>';
-                                    $html .= '</div>';
-                                }
-                                echo $html;
-                            @endphp
-                        @endif
-                        @if(empty($row['product_info_2']) === false)
-                            @php
-                                $product_data = json_decode($row['product_info_2'],true);
-                                $html = '';
-                                foreach ($product_data as $key => $product_row) {
-                                    $html .= '<div>';
-                                        $html .= '<a href="javascript:void(0);" class="btn-add-product"
-                                            data-prof-name="'.$product_row['ProfName'].'"
-                                            data-learn-pattern="'.$product_row['LearnPatternCcd'].'"
-                                            data-prod-code="'.$product_row['ProdCode'].'"
-                                            data-prod-name="'.$product_row['ProdName'].'">';
-                                        $html .= '연간패키지'.$product_row['ProdItemCcdName'];
-                                        $html .= '<strong>'.$product_row['ProductTitle'].'</strong>';
-                                        $html .= '</a>';
-                                    $html .= '</div>';
-                                }
-                                echo $html;
-                            @endphp
-                        @endif
+        <div class="buyWrap">
+            <h4 class="NSK-Black">· 2023학년도 대비  연간패키지 신청내역</h4>
+            <div class="basket">
+                <div class="lecbox" id="order_box_off">
+                    <h5><strong>학원직강 연간패키지</strong> 신청내역</h5>
+                    <ul></ul>
+                    <div>
+                        <p class="expt-disc">-할인</p>
+                        <p><strong class="prod-cnt">-과목</strong> 결제금액 <strong class="sale-price">-</strong>원</p>
+                        <p><a href="javascript:void(0);" onclick="javascript:directPay('off'); return false;">결제하기</a></p>
                     </div>
                 </div>
-            @endforeach
-        @endforeach
-    @endif
-
-    <div class="buyWrap">
-        <h4 class="NSK-Black">· 2023학년도 대비  연간패키지 신청내역</h4>
-        <div class="basket">
-            <div class="lecbox" id="order_box_off">
-                <h5><strong>학원직강 연간패키지</strong> 신청내역</h5>
-                <ul></ul>
-                <div>
-                    <p class="expt-disc">-할인</p>
-                    <p><strong class="prod-cnt">-과목</strong> 결제금액 <strong class="sale-price">-</strong>원</p>
-                    <p><a href="javascript:void(0);" onclick="javascript:directPay('off'); return false;">결제하기</a></p>
+                <div class="lecbox" id="order_box_online">
+                    <h5><strong>동영상강의 연간패키지</strong> 신청내역</h5>
+                    <ul></ul>
+                    <div>
+                        <p class="expt-disc">-할인</p>
+                        <p><strong class="prod-cnt">-과목</strong> 결제금액 <strong class="sale-price">-</strong>원</p>
+                        <p><a href="javascript:void(0);" onclick="javascript:directPay('online'); return false;">결제하기</a></p>
+                    </div>
                 </div>
             </div>
-            <div class="lecbox" id="order_box_online">
-                <h5><strong>동영상강의 연간패키지</strong> 신청내역</h5>
-                <ul></ul>
-                <div>
-                    <p class="expt-disc">-할인</p>
-                    <p><strong class="prod-cnt">-과목</strong> 결제금액 <strong class="sale-price">-</strong>원</p>
-                    <p><a href="javascript:void(0);" onclick="javascript:directPay('online'); return false;">결제하기</a></p>
-                </div>
-            </div>
+            <div class="checkWrap"><input type="checkbox" id="is_chk" name="is_chk" value="Y"> <label for="is_chk">페이지 하단의 상품 관련 유의사항을 모두 확인하였고, 이에 동의합니다.</label></div>
         </div>
-        <div class="checkWrap"><input type="checkbox" id="is_chk" name="is_chk" value="Y"> <label for="is_chk">페이지 하단의 상품 관련 유의사항을 모두 확인하였고, 이에 동의합니다.</label></div>
     </div>
-
-    <form name="exptpay_form_off" id="exptpay_form_off">
-        {!! csrf_field() !!}
-        <input type="hidden" name="disc_idx" value="{{$params['off_disc_code']}}">
-    </form>
-    <form name="exptpay_form_online" id="exptpay_form_online">
-        {!! csrf_field() !!}
-        <input type="hidden" name="disc_idx" value="{{$params['online_disc_code']}}">
-    </form>
-    <div id="order_div_off" style="display: none"></div>
-    <div id="order_div_online" style="display: none"></div>
 </div>
+
+<form name="exptpay_form_off" id="exptpay_form_off">
+    {!! csrf_field() !!}
+    <input type="hidden" name="disc_idx" value="{{$params['off_disc_code']}}">
+</form>
+<form name="exptpay_form_online" id="exptpay_form_online">
+    {!! csrf_field() !!}
+    <input type="hidden" name="disc_idx" value="{{$params['online_disc_code']}}">
+</form>
+<div id="order_div_off" style="display: none"></div>
+<div id="order_div_online" style="display: none"></div>
 
 {{--교수 커리큘럼 팝업 --}}
 <div id="curriculum_box" class="willbes-Layer-CurriBox"></div>

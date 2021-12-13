@@ -230,7 +230,7 @@
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_09.jpg" alt="교재 신청하기" >
-                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute;left: 27.72%;top: 24.32%;width: 58.06%;height: 5.88%;z-index: 2;"></a>
+                {{--<a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute;left: 27.72%;top: 24.32%;width: 58.06%;height: 5.88%;z-index: 2;"></a>--}}
                 <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="경찰학" style="position: absolute;left: 16.74%;top: 50.85%;width: 21.78%;height: 3.71%;z-index: 2;"></a>
                 <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180748" target="_blank" title="형사법" style="position: absolute;left: 38.74%;top: 50.85%;width: 21.78%;height: 3.71%;z-index: 2;"></a>
                 <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180567" target="_blank" title="헌법(김)" style="position: absolute;left: 61.74%;top: 50.85%;width: 21.78%;height: 3.71%;z-index: 2;"></a>
@@ -502,8 +502,7 @@
             dDayCountDown('{{$arr_promotion_params['edate']}}', '{{$arr_promotion_params['etime'] or "00:00"}}', 'txt');
         });
 
-        function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay)
-        {
+        function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay) {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
             var $regi_form = $('#' + ele_id);
@@ -523,7 +522,7 @@
                 return;
             }
 
-            {{-- 장바구니 저장 기본 파라미터 --}}
+            // 장바구니 저장 기본 파라미터
                 params = [
                 { 'name' : '{{ csrf_token_name() }}', 'value' : '{{ csrf_token() }}' },
                 { 'name' : '_method', 'value' : 'POST' },
@@ -532,16 +531,16 @@
                 { 'name' : 'is_direct_pay', 'value' : is_direct_pay }
             ];
 
-            {{-- 선택된 상품코드 파라미터 --}}
+            // 선택된 상품코드 파라미터
             $prod_code.each(function() {
                 params.push({ 'name' : 'prod_code[]', 'value' : $(this).val() + ':613001:' + $(this).val() });
             });
 
-            {{-- 장바구니 저장 URL로 전송 --}}
+            //장바구니 저장 URL로 전송
             formCreateSubmit('{{ front_url('/cart/store') }}', params, 'POST');
         }
 
-        {{-- 쿠폰발급 --}}
+        // 쿠폰발급
         function giveCheck() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
@@ -557,7 +556,7 @@
             @endif
         }
 
-        /* 팝업창 */
+        // 팝업창
         function certOpen(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
@@ -569,7 +568,7 @@
             @endif
         }
 
-        /* 무료 교재지급 */
+        // 무료 교재지급
         function fn_promotion_etc_submit() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
@@ -614,7 +613,7 @@
             return apply_msg;
         }
 
-        /*tab*/
+        // tab
         $(document).ready(function(){
             $(".tabs li a").click(function(){
                 var activeTab = $(this).attr("href");
@@ -641,7 +640,7 @@
             }
         });
 
-        /*교수 tab*/
+        //교수 tab
         $(document).ready(function(){
             $(".tabContents").hide();
             $(".tabContents:first").show();

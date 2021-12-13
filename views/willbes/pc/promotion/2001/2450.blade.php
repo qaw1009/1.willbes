@@ -277,7 +277,7 @@
                 <input type="hidden" name="register_type" value="promotion"/>
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2021/12/2450_09.jpg"  alt="스폐셜혜택" />
-                    <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 13.04%; top: 40.03%; width: 29.91%; height: 6.9%; z-index: 2;"></a>
+                    {{--<a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 13.04%; top: 40.03%; width: 29.91%; height: 6.9%; z-index: 2;"></a>--}}
                     <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="장정훈 경찰학" style="position: absolute;left: 51.52%;top: 41.03%;width: 13.46%;height: 4.77%;z-index: 2;"></a>
                     <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180748" target="_blank" title="신광은 형법" style="position: absolute;left: 65.82%;top: 41.03%;width: 13.46%;height: 4.77%;z-index: 2;"></a>
                     <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180567" target="_blank" title="김원욱 헌법" style="position: absolute;left: 80.09%;top: 41.03%;width: 13.46%;height: 4.77%;z-index: 2;"></a>

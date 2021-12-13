@@ -286,7 +286,7 @@ class StatsOrderModel extends BaseStatsModel
 
         $pay_where = $this->_conn->makeWhere($pay_condition)->getMakeWhere(true);
 
-        $column = 'Ifnull(O.PayMethodCcd,\'600000\') as PayMethodCcd, Ifnull(SC.CcdName,\'기타무료결제\') as CcdName, Count(*) as order_count, Sum(OP.RealPayPrice) as order_pay';
+        $column = 'if(O.PayMethodCcd = \'\', \'600000\', O.PayMethodCcd) as PayMethodCcd, Ifnull(SC.CcdName,\'기타무료결제\') as CcdName, Count(*) as order_count, Sum(OP.RealPayPrice) as order_pay';
 
         $from = '   from '. $this->_table['order'] .' as O
                             join '. $this->_table['order_product'] .' as OP on O.OrderIdx = OP.OrderIdx

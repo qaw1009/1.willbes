@@ -44,18 +44,27 @@
                         * 검색기간이 3개월을 초과할 경우 '월'로 2년이 초과할 경우 '년'으로 자동 변환
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group hide search_detail">
                     <label class="control-label col-md-1" for="search_value">검색</label>
                     <div class="col-md-10 form-inline">
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;" value=""> [배너명]
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group hide search_detail">
                     <label class="control-label col-md-1" for="search_type">조건검색</label>
                     <div class="col-md-11 form-inline">
                         <div class="checkbox">
-                            <input type="checkbox" name="search_except_will_ip" id="search_except_will_ip" class="flat" value="Y"> 윌비스 IP 제외 [* 대략적인 영역임으로 정확도를 요하지는 않음]
+                            <input type="checkbox" name="search_except_will_ip" id="search_except_will_ip" class="flat" value="Y"> 윌비스 IP 제외 [* 대략적인 영역이며 정확도를 요하지는 않음]
                         </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="search_stats_type"><span class="red">통계형식</span></label>
+                    <div class="col-md-10 form-inline">
+                        <select class="form-control mr-10" id="search_stats_type" name="search_stats_type">
+                            <option value="gather" selected>집계통계 [5분지연]</option>
+                            <option value="" >실시간통계 [속도저하]</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -231,34 +240,9 @@
                         </table>
                     </div>
                 </div>
-                <!--
-                <div class="col-md-5 form-inline">
-                    <strong>[전체 클릭 순위 : 상위 20개]</strong>
-                    <div class="x_content">
-                        <table id="list_rank_table" class="table table-striped table-bordered">
-                            <thead>
-                            <tr>
-                                <th>순위</th>
-                                <th>배너명</th>
-                                <th width="80">배너정보</th>
-                                <th width="80">클릭수</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <th colspan="3"><font>합계</font></th>
-                                <th></th>
-                            </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
-                //-->
             </div>
 
-            <div class="form-group">
+            <div class="form-group hide search_detail">
                 <div class="col-md-12 form-inline">
                     <strong>[배너 클릭 이력]</strong>
                     <div class="x_content">
@@ -286,6 +270,10 @@
     <script type="text/javascript">
         $(document).ready(function(){
             var $search_form = $('#search_form');
+
+            $search_form.find('select[name="search_stats_type"]').change(function() {
+                $(this).val() === '' ? $('.search_detail').removeClass('hide') : $('.search_detail').addClass('hide');
+            });
 
             function getStats($type) {
                 var data = {
@@ -526,7 +514,7 @@
             }
 
             var $font = "<font color='#9c1e1e' size='3px'>";
-            var $datatable_count_info, $datatable_site, $datatable_platform, $datatable_site_rank, $datatable_rank, $datatable_list;
+            var $datatable_count_info, $datatable_site, $datatable_platform, $datatable_site_rank, $datatable_site_low_rank, $datatable_list;
 
             function datatableExe() {
                 $datatable_count_info = $("#list_count_table").DataTable({
@@ -643,7 +631,7 @@
                                 return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(data)+'</font></b>';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<a href="//'+row.LinkUrl+'" target="_blank">' + (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(row.BannerName)+'</font></b></a>';
+                                return '<a href="//'+row.LinkUrl.replace('https://','')+'" target="_blank">' + ( meta.row==0 ? '<b><font color=\'#eb7f36\'>'+(row.BannerName)+'</font></b>' : (row.BannerName) ) +'</a>';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return "<a href='"+row.BannerFullPath + row.BannerImgName+"' rel='popup-image'><img class='img_' src='"+row.BannerFullPath + row.BannerImgName+"' height='15px'>";
@@ -680,7 +668,7 @@
                                 return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(data)+'</font></b>';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<a href="//'+row.LinkUrl+'" target="_blank">' + (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(row.BannerName)+'</font></b></a>';
+                                return '<a href="//'+row.LinkUrl.replace('https://','')+'" target="_blank">' + ( meta.row==0 ? '<b><font color=\'#eb7f36\'>'+(row.BannerName)+'</font></b>' : (row.BannerName) ) +'</a>';
                             }},
                         {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return "<a href='"+row.BannerFullPath + row.BannerImgName+"' rel='popup-image'><img class='img_' src='"+row.BannerFullPath + row.BannerImgName+"' height='15px'>";
@@ -700,42 +688,6 @@
                             +"</font>");
                     }
                 });
-
-                /* 사이트별 랭크와 별반 차이 없음
-                $datatable_rank = $("#list_rank_table").DataTable({
-                    dom: 'Pfrtip',
-                    paging : false,
-                    serverSide: false,
-                    ajax: false,
-                    searching: false,
-                    info : '',
-                    data: getStats('Banner/Rank'),
-                    columns: [
-                        {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(meta.row + 1)+'</font></b>';
-                            }},
-                        {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<a href="//'+row.LinkUrl+'" target="_blank">' + (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+(row.BannerName)+'</font></b></a>';
-                            }},
-                        {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return "<a href='"+row.BannerFullPath + row.BannerImgName+"' rel='popup-image'><img class='img_' src='"+row.BannerFullPath + row.BannerImgName+"' height='25px'>";
-                            }},
-                        {'data': 'click_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (meta.row==0 ? '<b><font color=\'#eb7f36\'>' : '')+addComma(data)+'</font></b>';
-                            }},
-                    ],
-                    footerCallback: function( tfoot, data, start, end, display ) {
-                        var api = this.api();
-                        $(api.column(3).footer()).html($font+
-                            addComma(
-                                api.column(3).data().reduce(function ( a, b ) {
-                                    return (parseInt(a) + parseInt(b));
-                                }, 0)
-                            )
-                            +"</font>");
-                    }
-                });
-                 */
 
                 $datatable_list = $('#list_ajax_table').DataTable({
                     serverSide: true,
@@ -771,8 +723,8 @@
                 $datatable_count_info.destroy();
                 $datatable_site.destroy();
                 $datatable_platform.destroy();
-                $datatable_site_rank.destroy();
-                $datatable_rank.destroy();
+                $datatable_site_rank.destroy()
+                $datatable_site_low_rank.destroy();
                 $datatable_list.destroy();
                 datatableExe();
             }

@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_is_use">검색기간</label>
+                    <label class="control-label col-md-1" for="search_start_date">검색기간</label>
                     <div class="col-md-11 form-inline">
                         <div class="input-group mb-0">
                             <div class="input-group-addon">
@@ -44,8 +44,8 @@
                         * 검색기간이 3개월을 초과할 경우 '월'로 2년이 초과할 경우 '년'으로 자동 변환
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-md-1" for="search_is_use">조건검색</label>
+                <div class="form-group hide search_detail">
+                    <label class="control-label col-md-1" for="search_age">조건검색</label>
                     <div class="col-md-10 form-inline">
                         <select class="form-control mr-10" id="search_age" name="search_age">
                             <option value=""> [ 연령 ]</option>
@@ -66,6 +66,16 @@
                             @foreach($code_interest as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
+                        </select>
+                        * '실시간통계' 일 경우 검색 가능
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="search_stats_type"><span class="red">통계형식</span></label>
+                    <div class="col-md-10 form-inline">
+                        <select class="form-control mr-10" id="search_stats_type" name="search_stats_type">
+                            <option value="gather" selected>집계통계 [5분지연]</option>
+                            <option value="">실시간통계 [속도저하]</option>
                         </select>
                     </div>
                 </div>
@@ -160,7 +170,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 form-inline">
-                    <strong>[로그인현황 - 다량의 데이터로 인해 검색기간만 조건적용]</strong>
+                    <strong>[로그인현황 - '검색기간' 만 조건적용]</strong>
                     <div class="x_content">
                         <table id="list_login_table" class="table table-striped table-bordered">
                             <thead>
@@ -262,6 +272,10 @@
     <script type="text/javascript">
     $(document).ready(function(){
         var $search_form = $('#search_form');
+
+        $search_form.find('select[name="search_stats_type"]').change(function() {
+            $(this).val() === '' ? $('.search_detail').removeClass('hide') : $('.search_detail').addClass('hide');
+        });
 
         function getStats($type) {
             var data = {

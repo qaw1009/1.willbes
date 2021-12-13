@@ -20,13 +20,11 @@ class StatsBanner extends BaseStats
     {
         $list = [];
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-
-        $count = $this->statsBannerModel->getBannerHistoryList(true, $arr_input);
-
+        $model_prefix = element('search_stats_type', $arr_input) === 'gather' ? 'gatherStats' : 'stats';
+        $count = $this->{$model_prefix.'BannerModel'}->getBannerHistoryList(true, $arr_input);
         if($count > 0) {
-            $list = $this->statsBannerModel->getBannerHistoryList(false, $arr_input);
+            $list = $this->{$model_prefix.'BannerModel'}->getBannerHistoryList(false, $arr_input);
         }
-
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,

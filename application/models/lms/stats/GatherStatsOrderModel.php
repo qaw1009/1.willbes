@@ -75,7 +75,7 @@ class GatherStatsOrderModel extends GatherBaseStatsModel
         $from = '
                     from (
                             select 
-                                OrderType as order_status
+                                \'결제\' as order_status
                                 , ifnull(sum(if(Sex =\'m\', PayCount, 0)),0) as \'m\'
                                 , ifnull(sum(if(Sex =\'m\', PayPrice, 0)),0) as \'m_pay\'
                                 , ifnull(sum(if(Sex =\'f\', PayCount, 0)),0) as \'f\'
@@ -89,7 +89,7 @@ class GatherStatsOrderModel extends GatherBaseStatsModel
                             union all 
                         
                             select 
-                                OrderType
+                                \'환불\'
                                 , (ifnull(sum(if(Sex =\'m\', PayCount, 0)),0)*-1) as \'m\'
                                 , (ifnull(sum(if(Sex =\'m\', PayPrice, 0)),0)*-1) as \'m_pay\'
                                 , (ifnull(sum(if(Sex =\'f\', PayCount, 0)),0)*-1) as \'f\'

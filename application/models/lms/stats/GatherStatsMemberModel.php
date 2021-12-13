@@ -121,7 +121,7 @@ class GatherStatsMemberModel extends GatherBaseStatsModel
                     *
                     from
                     (
-                        select MemType as mem_status
+                        select \'가입\' as mem_status
                             , ifnull(sum(if(Sex =\'m\', MemCount, 0)),0) as m
                             , ifnull(sum(if(Sex =\'f\', MemCount, 0)),0) as f
                             , ifnull(sum(if(Sex =\'not\', MemCount, 0)),0) as \'not\'
@@ -132,7 +132,7 @@ class GatherStatsMemberModel extends GatherBaseStatsModel
                                 
                         union all 
                         
-                        select MemType as mem_status
+                        select \'탈퇴\' as mem_status
                             , ifnull(sum(if(Sex =\'m\', MemCount, 0)),0) as m
                             , ifnull(sum(if(Sex =\'f\', MemCount, 0)),0) as f
                             , ifnull(sum(if(Sex =\'not\', MemCount, 0)),0) as \'not\'

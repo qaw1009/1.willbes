@@ -119,7 +119,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_02.jpg" alt="" >
             <div class="price">
                 <ul>                    
-                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> FIMAL PASS 신청하기</label></li>
+                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> FINAL PASS 신청하기</label></li>
                 </ul>
             </div>
             <div class="ext01txt">

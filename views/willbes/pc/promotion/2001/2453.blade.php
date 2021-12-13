@@ -108,7 +108,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2453_04.jpg" alt="선착순 이벤트"/>                            
                 <a href="javascript:void(0);" title="이벤트 참여하기" onclick="fn_add_apply_submit(); return false;" style="position: absolute;left: 28.99%;top: 54.08%;width: 41.93%;height: 6.58%;z-index: 2;"></a>
                 <div class="tree">
-                    <span class="_20 red">12/20<br>20명</span>
+                    <span class="_20 red">12/20<br>10명</span>
                     <span class="_21 green">12/21<br>10명</span>
                     <span class="_22 green">12/22<br>10명</span>
                     <span class="_23 red">12/23<br>10명</span>

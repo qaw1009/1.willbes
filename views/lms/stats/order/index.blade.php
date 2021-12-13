@@ -61,18 +61,21 @@
                             @endforeach
                         </select>
                         &nbsp;
-                        <select class="form-control mr-10" id="search_pay_route" name="search_pay_route">
-                            <option value=""> [ 결제루트 ]</option>
-                            @foreach($code_pay_route as $key => $val)
-                                <option value="{{ $key }}">{{ $val }}</option>
-                            @endforeach
+{{--                        <select class="form-control mr-10" id="search_pay_route" name="search_pay_route">--}}
+{{--                            <option value=""> [ 결제루트 ]</option>--}}
+{{--                            @foreach($code_pay_route as $key => $val)--}}
+{{--                                <option value="{{ $key }}">{{ $val }}</option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="search_stats_type">통계형식</label>
+                    <div class="col-md-10 form-inline">
+                        <select class="form-control mr-10" id="search_stats_type" name="search_stats_type">
+                            <option value="gather" selected>집계통계 [5분지연]</option>
+                            <option value="" >실시간통계 [속도저하]</option>
                         </select>
-                        &nbsp;
-                        <!--<select class="form-control mr-10" id="search_interest" name="search_interest">
-                            <option value=""> [ 결제상태 ]</option>
-                            <option value="">결제완료</option>
-                            <option value="">환불완료</option>
-                        </select>//-->
                     </div>
                 </div>
             </div>

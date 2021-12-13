@@ -24,11 +24,10 @@ class StatsSearch extends BaseStats
     {
         $list = [];
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-
-        $count = $this->statsSearchModel->getSearchHistoryList(true, $arr_input);
-
+        $model_prefix = element('search_stats_type', $arr_input) === 'gather' ? 'gatherStats' : 'stats';
+        $count = $this->{$model_prefix.'SearchModel'}->getSearchHistoryList(true, $arr_input);
         if($count > 0) {
-            $list = $this->statsSearchModel->getSearchHistoryList(false, $arr_input);
+            $list = $this->{$model_prefix.'SearchModel'}->getSearchHistoryList(false, $arr_input);
         }
         return $this->response([
             'recordsTotal' => $count,

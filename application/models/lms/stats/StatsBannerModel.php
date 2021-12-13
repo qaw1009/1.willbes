@@ -47,7 +47,7 @@ class StatsBannerModel extends BaseStatsModel
                                 join '. $this->_table['banner'] .' b on bal.BIdx = b.BIdx
                             where 
                                 1=1
-                                and bal.MemIdx is not null
+                                and (bal.MemIdx is not null and bal.MemIdx > 0)
                                 '. $sub_where .'
                             group by result_date
                         ) as temp_login on temp_date.base_date = temp_login.result_date
@@ -61,15 +61,14 @@ class StatsBannerModel extends BaseStatsModel
                                 join '. $this->_table['banner'] .' b on bal.BIdx = b.BIdx
                             where 
                                 1=1
-                                and bal.MemIdx is null
+                                and (bal.MemIdx is null or bal.MemIdx = 0)
                                 '. $sub_where .'
                             group by result_date
                         ) temp_not on temp_date.base_date = temp_not.result_date
         ';
-
         $order_by = ' order by base_date asc';
 
-        return $this->_conn->query('select ' . $column . $from .$order_by)->result_array();
+        return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
     }
 
     /**
@@ -188,9 +187,8 @@ class StatsBannerModel extends BaseStatsModel
         ';
 
         $group_by = ' group by b.BIdx, b.BannerName, b.LinkUrl, b.BannerFullPath, b.BannerImgName, b.SiteCode, S.SiteName ';
-        $order_by = ' order by count(*) DESC, SiteName ASC' ;
+        $order_by = ' order by count(*) DESC, SiteName ASC, B.BIdx DESC' ;
         $limit = ' limit 20 ';
-
         return $this->_conn->query('select ' . $column . $from .$group_by .$order_by .$limit)->result_array();
     }
 
@@ -229,7 +227,7 @@ class StatsBannerModel extends BaseStatsModel
         ';
 
         $group_by = ' group by b.BIdx, b.BannerName, b.LinkUrl, b.BannerFullPath, b.BannerImgName, b.SiteCode, S.SiteName ';
-        $order_by = ' order by count(*) ASC, SiteName ASC' ;
+        $order_by = ' order by count(*) ASC, SiteName ASC, B.BIdx DESC' ;
         $limit = ' limit 20 ';
 
         return $this->_conn->query('select ' . $column . $from .$group_by .$order_by .$limit)->result_array();

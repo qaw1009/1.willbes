@@ -54,12 +54,12 @@
                     <label class="control-label col-md-1" for="search_type">조건검색</label>
                     <div class="col-md-11 form-inline">
                         <div class="checkbox">
-                            <input type="checkbox" name="search_except_will_ip" id="search_except_will_ip" class="flat" value="Y"> 윌비스 IP 제외 [* 대략적인 영역임으로 정확도를 요하지는 않음]
+                            <input type="checkbox" name="search_except_will_ip" id="search_except_will_ip" class="flat" value="Y"> 윌비스 IP 제외 [* 대략적인 영역이며 정확도를 요하지는 않음]
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_stats_type">통계형식</label>
+                    <label class="control-label col-md-1" for="search_stats_type"><span class="red">통계형식</span></label>
                     <div class="col-md-10 form-inline">
                         <select class="form-control mr-10" id="search_stats_type" name="search_stats_type">
                             <option value="gather" selected>집계통계 [5분지연]</option>

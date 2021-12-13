@@ -694,8 +694,8 @@ class BasePromotion extends \app\controllers\FrontController
      */
     public function ajaxHotClipProduct()
     {
-        $params['off_disc_code'] = $this->_reqG('off_disc_code');
-        $params['online_disc_code'] = $this->_reqG('online_disc_code');
+        $params['off_disc_code'] = (empty($this->_reqG('off_disc_code')) === true ? [] : explode(',', $this->_reqG('off_disc_code')));
+        $params['online_disc_code'] = (empty($this->_reqG('online_disc_code')) === true ? [] : explode(',', $this->_reqG('online_disc_code')));
 
         $order_by = ['g.OrderNum' => 'ASC', 'hc.OrderNum' => 'ASC'];
         $arr_condition = [

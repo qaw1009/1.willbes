@@ -187,7 +187,7 @@ class StatsBannerModel extends BaseStatsModel
         ';
 
         $group_by = ' group by b.BIdx, b.BannerName, b.LinkUrl, b.BannerFullPath, b.BannerImgName, b.SiteCode, S.SiteName ';
-        $order_by = ' order by count(*) DESC, SiteName ASC, B.BIdx DESC' ;
+        $order_by = ' order by count(*) DESC, b.BIdx DESC, S.SiteCode ASC' ;
         $limit = ' limit 20 ';
         return $this->_conn->query('select ' . $column . $from .$group_by .$order_by .$limit)->result_array();
     }
@@ -227,7 +227,7 @@ class StatsBannerModel extends BaseStatsModel
         ';
 
         $group_by = ' group by b.BIdx, b.BannerName, b.LinkUrl, b.BannerFullPath, b.BannerImgName, b.SiteCode, S.SiteName ';
-        $order_by = ' order by count(*) ASC, SiteName ASC, B.BIdx DESC' ;
+        $order_by = ' order by count(*) ASC, b.BIdx DESC, S.SiteCode ASC' ;
         $limit = ' limit 20 ';
 
         return $this->_conn->query('select ' . $column . $from .$group_by .$order_by .$limit)->result_array();

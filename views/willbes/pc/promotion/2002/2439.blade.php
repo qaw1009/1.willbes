@@ -5,18 +5,19 @@
     <!-- Container -->
     <style type="text/css">       
      
-        .evtContent {
+     .evtContent {
             width:100% !important;
             min-width:1120px !important;
-            background:#ccc;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        br { font-family:dotum;}  
-        .evtContent span {vertical-align:auto}
+        .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/   
 
@@ -30,7 +31,7 @@
         .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:70px}
         .newTopDday ul:after {content:""; display:block; clear:both}
    
-        .sky {position:fixed;top:250px;right:25px;z-index:1;} 
+        .sky {position:fixed;top:200px;right:10px;z-index:1;} 
         .sky a {display:block; margin-bottom:15px}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/11/2439_top_bg.jpg) repeat-y center top;}     
@@ -49,6 +50,7 @@
 		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
 		.evtInfoBox .infoTit {font-size:20px; margin-bottom:10px; color:#c4feff}
 		.evtInfoBox ul {margin-bottom:30px}
+        .evtInfoBox ul li {list-style-type: disc; margin-left:25px}
 
     </style>
 
@@ -116,40 +118,40 @@
 				<h4 class="NSK-Black">유의사항</h4>
 				<div class="infoTit"><strong>◇ 3개월 필합패스 경찰 전문 교수진</strong></div>
 				<ul>
-					<li>형사법– 신광은 교수님</li> 
-                    <li>경찰학개론 – 장정훈 교수님</li> 
-                    <li>헌법 – 김원욱 교수님 / 이국령 교수님 (택1)</li>
+					<li>형사법 신광은 교수님</li> 
+                    <li>경찰학개론  장정훈 교수님</li> 
+                    <li>헌법  김원욱 교수님 / 이국령 교수님 (택1)</li>
                 </ul>
                 <div class="infoTit"><strong>◇ 3개월 필합패스</strong></div>
                 <ul>
-                    <li>- 포함과정 : 문제풀이(실강) + 마무리특강(실강) + 빅매치 모의고사(학원시행) + 사물함 + 인강패스<br/>
-                        * 인강패스 제공 강좌 (12/1 ~ 3/12 제공)</li>
-                    <li>- 2022년 1차 대비 기본이론</li>
-                    <li>- 2022년 1차 대비 심화이론 / 기출과정</li>
-                    <li>- 2022년 1차 대비 문제풀이</li>
-                    <li>- 2022년 1차 대비 마무리 특강</li>             
+                    <li>포함과정 : 문제풀이(실강) + 마무리특강(실강) + 빅매치 모의고사(학원시행) + 사물함 + 인강패스<br/>
+                        * 인강패스 제공 강좌 (12/1 ~ 3/19 제공)</li>
+                    <li>2022년 1차 대비 기본이론</li>
+                    <li>2022년 1차 대비 심화이론 / 기출과정</li>
+                    <li>2022년 1차 대비 문제풀이</li>
+                    <li>2022년 1차 대비 마무리 특강</li>             
                 </ul>
                 <div class="infoTit"><strong>◇ 3개월 필합패스 유의사항</strong></div>
                 <ul>
-                    <li>① 3개월 필합패스는 2022/3/12(토)까지 인강패스, 12/1(월)~3/12(토) 실강+인강패스로 구성된 상품입니다.</li>
-                    <li>② 3개월 필합패스는 2022년 3월 12일까지 책정된 수강료로 시험일정에 따라 정규과정 이외에 강의가 진행될 경우 추가 수강료가 부과될 수 있습니다.<br/>
-                        (1개월 연장 시 – 실강 10만원, 인강 5만원)<br/>
+                    <li>3개월 필합패스는 2022/3/19(토)까지 인강패스, 1/3(월)~3/19(토) 실강+인강패스로 구성된 상품입니다.</li>
+                    <li>3개월 필합패스는 2022년 3월 19일까지 책정된 수강료로 시험일정에 따라 정규과정 이외에 강의가 진행될 경우 추가 수강료가 부과될 수 있습니다.<br/>
+                        (1개월 연장 시  실강 10만원, 인강 5만원)<br/>
                         *정규과정 : 기본이론, 심화이론, 심화기출, 문제풀이 1+2+3단계, 마무리특강</li>
-                    <li>③ 국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 대체될 수 있으며, 이로 인한 해당기간 환불은 불가합니다.</li>                  
-                    <li>④ 인강패스와 정규과정 외 특강 및 모의고사는 슈퍼패스 등록생에게 제공되는 무료혜택입니다.</li>
-                    <li>⑤ 특강의 경우 별도 신청이 필요합니다.</li>
-                    <li>⑥ 일부특강은 유료로 결제할 수 있습니다.</li>
-                    <li>⑦ 중도환불 시 수강기간만큼 차감 후, 무료혜택 금액을 차감하여 환불됩니다.</li>
+                    <li>국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 대체될 수 있으며, 이로 인한 해당기간 환불은 불가합니다.</li>                  
+                    <li>인강패스와 정규과정 외 특강 및 모의고사는 슈퍼패스 등록생에게 제공되는 무료혜택입니다.</li>
+                    <li>특강의 경우 별도 신청이 필요합니다.</li>
+                    <li>일부특강은 유료로 결제할 수 있습니다.</li>
+                    <li>중도환불 시 수강기간만큼 차감 후, 무료혜택 금액을 차감하여 환불됩니다.</li>
                 </ul>
                 <div class="infoTit"><strong>◇ 3개월 필합패스 이벤트 유의사항</strong></div>
                 <ul>
-                    <li>① 재등록 대상자 이벤트<br>
+                    <li>재등록 대상자 이벤트<br>
                         - 신광은 경찰학원 슈퍼패스를 1년이내에 재등록하는 수험생
                     </li>
-                    <li>② 2021년 필합 대상자 이벤트<br>
+                    <li>2021년 필합 대상자 이벤트<br>
                         - 2021년 1차 또는 2차 필기합격 인증이 가능한 수험생
                     </li>
-                    <li>③ 타학원 환승 이벤트<br>
+                    <li>타학원 환승 이벤트<br>
                         - 환승 대상자 (아래 두 가지 모두 해당할 시 가능)<br>
                         * 타 경찰학원 정규과정 실강 또는 인강 수강이력 증빙이 가능한 수강생<br>
                         * 2020년 1월 이후 신광은 경찰학원 정규과정 수강이력이 없는 수강생<br>

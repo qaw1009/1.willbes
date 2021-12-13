@@ -72,10 +72,10 @@
         </div>  
 
         @if(time() < strtotime('202112200000'))
-            <div class="evtCtnsBox evttop_banners">
+            <div class="evtCtnsBox evttop_banners" data-aos="fade-down">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2021/11/1676_top_banner.jpg">
-                    <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2037" target="_blank" title="" style="position: absolute; left: 53.57%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="" style="position: absolute; left: 53.57%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>
                     <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" title="" style="position: absolute; left: 74.29%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>  
                 </div>        
             </div>        
@@ -83,11 +83,11 @@
         
         @endif
         
-        <div class="evtCtnsBox evttop">                 
+        <div class="evtCtnsBox evttop" data-aos="fade-up">                 
             <img src="https://static.willbes.net/public/images/promotion/2021/10/1676_top.jpg"  title="더켠의 반반한 밤">                        
         </div>
 
-        <div class="evtCtnsBox evt01">
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_01_01.jpg" title="마무리짓는 1시간"> 
             <div class="box_book">
                 <div class="slice_area">
@@ -108,7 +108,7 @@
         </div> 
 
         
-        <div class="evtCtnsBox evt02" id="pairing">
+        <div class="evtCtnsBox evt02" id="pairing" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">                    
@@ -124,7 +124,7 @@
         </div>           
 
         {{-- 출석체크 --}}
-        <div class="evtCtnsBox evt03">
+        <div class="evtCtnsBox evt03" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/1676_03_01.jpg" name="evt1" id="evt1">
                 <a href="#to_go" title="출석체크하러 가기" style="position: absolute; left: 30.89%; top: 88.35%; width: 38.39%; height: 5.44%; z-index: 2;"></a>
@@ -146,7 +146,7 @@
         </div>
 
 
-        <div class="evtCtnsBox evt04">
+        <div class="evtCtnsBox evt04" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_03_03.jpg" usemap="#Map1676e" title="라이브 티비" border="0">
             <map name="Map1676e">
                 <area shape="rect" coords="162,62,552,163" href="#pairing" />
@@ -178,7 +178,7 @@
         </form>
 
         {{-- 출석체크 --}}
-        <div class="evtCtnsBox evt05" id="to_go">
+        <div class="evtCtnsBox evt05" id="to_go" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_05.jpg" title="출석 횟수">
 
             <span class="NSK-Black">
@@ -217,7 +217,7 @@
         @endif
        
 
-        <div class="evtCtnsBox evtInfo" id="ctsInfo">
+        <div class="evtCtnsBox evtInfo" id="ctsInfo" data-aos="fade-up">
             <div class="guide_box">
                 <h2 class="NSK-Black">유의사항</h2>
                 <dl>
@@ -255,6 +255,14 @@
         </div>                
 	</div>
     <!-- End Container -->
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        $( document ).ready( function() {
+            AOS.init();
+        } );
+    </script>
 
     <script type="text/javascript">
         $(document).ready(function() {

@@ -88,7 +88,7 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : 'wAdminName', 'render' : function(data, type, row, meta) {
-                            return data + '</u> (' + row.wAdminId.substr(0, row.wAdminId.length - 3) + '***)';
+                            return data + '</u> (' + row.wAdminIdMask + ')';
                         }},
                     {'data' : 'CcdName'},
                     {'data' : 'CcdDesc'},

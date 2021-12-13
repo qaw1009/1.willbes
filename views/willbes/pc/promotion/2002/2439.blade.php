@@ -5,7 +5,7 @@
     <!-- Container -->
     <style type="text/css">       
      
-     .evtContent {
+        .evtContent {
             width:100% !important;
             min-width:1120px !important;
             max-width:2000px !important;

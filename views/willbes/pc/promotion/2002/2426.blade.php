@@ -4,25 +4,23 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">        
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }        
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
-            background:#ccc;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:auto}
+        .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/            
 
-        .sky {position:fixed;top:250px;right:25px;z-index:1;} 
+        .sky {position:fixed;top:200px;right:10px;z-index:1;} 
         .sky a {display:block; margin-bottom:15px}
 
         .evtTop00 {background:#0a0a0a}
@@ -110,7 +108,7 @@
 
     </style>
 
-    <div class="p_re evtContent NGR" id="evtContainer">
+    <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="sky" id="QuickMenu">
             <a href="#evt_01">
@@ -341,16 +339,16 @@
                         ① 문제풀이 1단계<br/>
                         - 형사법,경찰학,헌법 : 오전 핵심요약 , 오후 진도별 모의고사  진행됩니다.<br/>
                         - 형사법 & 경찰학 10회 , 헌법 6회 진행됩니다.<br/>
-                        - 형사법(12/27 개강), 경찰학(12/29 개강), 헌법(12/31 개강)
+                        - 형사법(1/3 개강) , 경찰학(1/5 개강) , 헌법(1/7 개강)
                     </li> 
                     <li>
                         ② 문제풀이 2단계<br/>                        
-                        - 형사법(1/31 개강), 경찰학(2/1 개강), 헌법(2/4 개강)                
+                        - 형사법(2/7 개강) , 경찰학(2/8 개강) , 헌법(2/11 개강)
                     </li>
                     <li>
                         ③ 문제풀이 3단계<br/>
-                        - 3월7일(월)  ~ 3월11일(금) 파이널 모의고사 진행됩니다.<br>
-                        - 3/7, 3/8, 3/9 해설강의 진행, 3/10, 3/11 해설지 배부
+                        - 파이널모의고사 진행됩니다.
+                        - 일정은 추후공지 됩니다.
                     </li>
                     <li>
                         ④국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 <br/>

@@ -130,7 +130,7 @@ class StatsMemberModel extends BaseStatsModel
                                     JOIN '. $this->_table['member_other'] .' AS mo ON m.MemIdx = mo.MemIdx
                                     LEFT JOIN '. $this->_table['member_out'] .' AS l ON m.MemIdx = l.MemIdx 
                             where 1=1
-                                       '. $join_where .'
+                                       '. $join_where .' and m.BirthDay REGEXP \'^[0-9]+$\'
                             
                             union all
                                     
@@ -153,7 +153,7 @@ class StatsMemberModel extends BaseStatsModel
                                     LEFT JOIN '. $this->_table['member_out'] .' AS l ON m.MemIdx = l.MemIdx 
                             where   1=1
                                         and l.MemIdx is not null
-                                        '. $out_where .'  
+                                        '. $out_where .'  and m.BirthDay REGEXP \'^[0-9]+$\'
                         ) tmp
         ';
 

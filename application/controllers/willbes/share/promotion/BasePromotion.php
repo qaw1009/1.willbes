@@ -708,6 +708,8 @@ class BasePromotion extends \app\controllers\FrontController
                 ,'hc.IsStatus' => 'Y'
             ]
         ];
+
+        $data = [];
         $result = $this->professorHotClipFModel->listHotClipForProduct($arr_condition, $order_by);
         if (empty($result) === false) {
             foreach ($result as $row) {

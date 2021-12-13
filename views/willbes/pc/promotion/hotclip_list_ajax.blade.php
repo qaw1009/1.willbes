@@ -137,11 +137,17 @@
 
 <form name="exptpay_form_off" id="exptpay_form_off">
     {!! csrf_field() !!}
-    <input type="hidden" name="disc_idx" value="{{$params['off_disc_code']}}">
+    @forelse($params['off_disc_code'] as $val)
+        <input type="hidden" name="disc_idx[]" value="{{$val}}">
+    @empty
+    @endforelse
 </form>
 <form name="exptpay_form_online" id="exptpay_form_online">
     {!! csrf_field() !!}
-    <input type="hidden" name="disc_idx" value="{{$params['online_disc_code']}}">
+    @forelse($params['online_disc_code'] as $val)
+        <input type="hidden" name="disc_idx[]" value="{{$val}}">
+    @empty
+    @endforelse
 </form>
 <div id="order_div_off" style="display: none"></div>
 <div id="order_div_online" style="display: none"></div>
@@ -239,7 +245,7 @@
                     var expt_pay_price = ret.ret_data.expt_pay_price;     //예상결제금액
                     $("#order_box_"+learn_pattern).find('.expt-disc').text(parseInt(expt_disc_price).toLocaleString()+'('+expt_disc_rate+') 할인');
                     $("#order_box_"+learn_pattern).find('.prod-cnt').text(prod_cnt+'과목');
-                    $("#order_box_"+learn_pattern).find('.sale-price').text(parseInt(real_sale_price).toLocaleString());
+                    $("#order_box_"+learn_pattern).find('.sale-price').text(parseInt(expt_pay_price).toLocaleString());
                 }
             }, showError, false, 'POST');
         } else {

@@ -21,33 +21,10 @@
             @foreach($arr_base['register_list'] as $row)
                 <tr>
                     <td class="w-list tx-left pl20" colspan="2">{{$row['Name']}}</td>
-                    {{--<td class="w-chk">
-                        @if($row['RegisterExpireStatus'] == 'Y')
-                            @if($row['PersonLimitType'] == 'L')
-                                @if($row['MemCount'] < $row['PersonLimit'])
-                                    @if($data['SelectType'] == 'S')
-                                        <input type="radio" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}">
-                                    @else
-                                        <input type="checkbox" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}" @if($row['PersonLimitType'] == $arr_base['register_limit_type']['limit_true'] && $row['PersonLimit'] <= $row['MemCount']) disabled @endif>
-                                    @endif
-                                @else
-                                    [신청만료2]
-                                @endif
-                            @else
-                                @if($data['SelectType'] == 'S')
-                                    <input type="radio" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}">
-                                @else
-                                    <input type="checkbox" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}" @if($row['PersonLimitType'] == $arr_base['register_limit_type']['limit_true'] && $row['PersonLimit'] <= $row['MemCount']) disabled @endif>
-                                @endif
-                            @endif
-                        @else
-                            [신청만료]
-                        @endif
-                    </td>--}}
                     <td class="w-chk">
                         @if($row['RegisterExpireStatus'] == 'Y')
                             @if($data['SelectType'] == 'S')
-                                <input type="radio" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}">
+                                <input type="radio" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}" {!! ($loop->first === true) ? 'checked="checked"' : '' !!}>
                             @else
                                 <input type="checkbox" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}" @if($row['PersonLimitType'] == $arr_base['register_limit_type']['limit_true'] && $row['PersonLimit'] <= $row['MemCount']) disabled @endif>
                             @endif

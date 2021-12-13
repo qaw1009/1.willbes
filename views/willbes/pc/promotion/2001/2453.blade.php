@@ -25,7 +25,7 @@
 
         .evt00 {background:#0a0a0a}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_bf_top_bg.jpg) no-repeat center top;}
 
         .wb_01 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_01_bg.jpg) no-repeat center top;}
 
@@ -79,7 +79,7 @@
         </div>    
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">           
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2453_top.jpg" alt="777"/>              
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2453_bf_top.jpg" alt="777"/>              
         </div>
 
         <div class="evtCtnsBox wb_01" data-aos="fade-up">

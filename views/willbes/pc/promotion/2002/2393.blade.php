@@ -57,7 +57,7 @@
         <div class="sky" id="QuickMenu">               
             <a href="#event01"><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_sky01.png" title="초시생"></a>
             <a href="#event02"><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_sky02.png" title="유튜브"></a>
-            <a href="#event03"><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_sky03.png" title="합격 설명회"></a>
+            <a href="#event03"><img src="https://static.willbes.net/public/images/promotion/2021/12/2393_sky03.png" title="합격 설명회"></a>
         </div> 
 
         <div class="evtCtnsBox evt00">
@@ -95,31 +95,33 @@
                 <p class="NSK-Black">신광은경찰팀과 함께^^</p>
             </div>
             <div class="tabs">
-                <a href="#tab01">10개월<br>슈퍼PASS</a>
-                <a href="#tab02">4개월<br>슈퍼PASS</a>
-                <a href="#tab03">심화기출<br>패키지</a>
+                <a href="#tab01">9개월<br>슈퍼PASS</a>
+                <a href="#tab02">8개월<br>슈퍼PASS</a>
+                <a href="#tab03">문제풀이<br>풀패키지</a>
                 <a href="#tab04">기본이론<br>종합반</a>
             </div>      
             <div class="wrap">
                 <div id="tab01">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_03_01.jpg" alt="10개월 슈퍼패스" />
-                    <a href="https://police.willbes.net/pass/offPackage/show/prod-code/186105" target="_blank" title="김원욱 헌법" style="position: absolute; left: 16.52%; top: 51.98%; width: 10.63%; height: 4.14%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/pass/offPackage/show/prod-code/186107" target="_blank" title="이국령 헌법" style="position: absolute; left: 45.27%; top: 51.98%; width: 10.63%; height: 4.14%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/pass/offPackage/show/prod-code/186109" target="_blank" title="경행경채" style="position: absolute; left: 72.77%; top: 51.98%; width: 10.63%; height: 4.14%; z-index: 2;"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/12/2393_03_01.jpg" alt="9개월 슈퍼패스" />
+                    <a href="https://police.willbes.net/pass/offPackage/show/prod-code/187520" target="_blank" title="김원욱 헌법" style="position: absolute;left: 16.32%;top: 55.98%;width: 13.63%;height: 5.14%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/pass/offPackage/show/prod-code/187545" target="_blank" title="이국령 헌법" style="position: absolute;left: 43.12%;top: 55.98%;width: 13.63%;height: 5.14%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/pass/offPackage/show/prod-code/187546" target="_blank" title="경행경채" style="position: absolute;left: 70.12%;top: 55.98%;width: 13.63%;height: 5.14%;z-index: 2;"></a>
                 </div>
                 <div id="tab02">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_03_02.jpg" alt="4개월 슈퍼패스" />
-                    <a href="https://police.willbes.net/pass/offPackage/show/prod-code/186101" target="_blank" title="김원욱 헌법" style="position: absolute; left: 16.07%; top: 52.44%; width: 10.63%; height: 4.14%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/pass/offPackage/show/prod-code/186103" target="_blank" title="이국령 헌법" style="position: absolute; left: 44.73%; top: 52.44%; width: 10.63%; height: 4.14%; z-index: 2;"></a>
-
+                    <img src="https://static.willbes.net/public/images/promotion/2021/12/2393_03_02.jpg" alt="8개월 슈퍼패스" />
+                    <a href="https://police.willbes.net/pass/offPackage/show/prod-code/187552" target="_blank" title="김원욱 헌법" style="position: absolute;left: 16.32%;top: 55.98%;width: 13.63%;height: 5.14%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/pass/offPackage/show/prod-code/187557" target="_blank" title="이국령 헌법" style="position: absolute;left: 43.12%;top: 55.98%;width: 13.63%;height: 5.14%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/pass/offPackage/show/prod-code/187558" target="_blank" title="경행경채" style="position: absolute;left: 70.12%;top: 55.98%;width: 13.63%;height: 5.14%;z-index: 2;"></a>
                 </div>
                 <div id="tab03">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_03_03.jpg" alt="심화기술 패키지" />
-                    <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" title="" style="position: absolute; left: 32.32%; top: 74.52%; width: 35.80%; height: 8%; z-index: 2;"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/12/2393_03_03.jpg" alt="문제풀이 풀패키지" />
+                    <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" title="" style="position: absolute;left: 16.32%;top: 55.98%;width: 13.63%;height: 5.14%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" title="" style="position: absolute;left: 68.32%;top: 70.58%;width: 14.63%;height: 7.14%;z-index: 2;"></a>
                 </div>
                 <div id="tab04">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_03_04.jpg" alt="기본이론 종합반" />
-                    <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/2364" target="_blank" title="" style="position: absolute; left: 29.38%; top: 75.71%; width: 41.96%; height: 8%; z-index: 2;"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/12/2393_03_04.jpg" alt="기본이론 종합반" />
+                    <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank" title="" style="position: absolute;left: 18.68%;top: 65.19%;width: 28.96%;height: 8.25%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1040" target="_blank" title="" style="position: absolute;left: 55.18%;top: 65.19%;width: 28.96%;height: 8.25%;z-index: 2;"></a>
                 </div>
             </div>
         </div>
@@ -132,7 +134,7 @@
                     <li>당첨 경품은 뽑기 추첨 후 즉시 지급됩니다.</li>
                     <li>뽑기 추첨권은 최대 3회 지급됩니다.(방문 상담 후 등록 시 1회 제공)</li>
                     <li>수강생이 친구를 추천할 경우 추천한 수강생도 1회 뽑기 추첨권을 드립니다.</li>
-                    <li>10개월 패스 등록 시 1회 추첨권이 추가 지급됩니다.</li>
+                    <li>9개월 패스 등록 시 1회 추첨권이 추가 지급됩니다.</li>
                     <li>수강증 발권 시 추첨 대상이 됩니다.</li>
                     <li>경품 소진 시까지 진행합니다.</li>     
                     <li>경품뽑기 100% 당첨선물<br>

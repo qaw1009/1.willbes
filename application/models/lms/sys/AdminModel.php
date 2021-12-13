@@ -42,7 +42,8 @@ class AdminModel extends WB_Model
 
         $in_colum = '
                 A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPositionCcd, A.wAdminDeptCcd, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail
-                    , A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wLastLoginDatm, A.wLastLoginIp                                        
+                    , A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wLastLoginDatm, A.wLastLoginIp
+                    , fn_mask(A.wAdminId, "id", "N") as wAdminIdMask                                       
                     , ifnull(AR.RoleIdx, "") as RoleIdx, AR.RegDatm as RoleRegDatm
                     , if((select count(*) from ' . $this->_table['admin_r_site_campus'] . ' where wAdminIdx = A.wAdminIdx and IsStatus = "Y") > 0, "Y", "N") as IsSiteCampus
                     , (case when A.wAdminIdx = A.wRegAdminIdx 

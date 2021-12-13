@@ -98,7 +98,7 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'wAdminName', 'render' : function(data, type, row, meta) {
-                        return '<a href="#" class="btn-modify" data-idx="' + row.wAdminIdx + '"><u class="blue">' + data + ' (' + row.wAdminId.substr(0, row.wAdminId.length - 3) + '***)' + '</u></a>';
+                        return '<a href="#" class="btn-modify" data-idx="' + row.wAdminIdx + '"><u class="blue">' + data + ' (' + row.wAdminIdMask + ')' + '</u></a>';
                     }},
                     {'data' : 'RoleIdx', 'render' : function(data, type, row, meta) {
                         var html = '';

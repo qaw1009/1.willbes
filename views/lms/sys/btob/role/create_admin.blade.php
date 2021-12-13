@@ -92,9 +92,7 @@
                         // 리스트 번호
                         return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
-                    {'data' : 'AdminId', 'render' : function(data, type, row, meta) {
-                        return data.substr(0, data.length - 3) + '***';
-                    }},
+                    {'data' : 'AdminIdMask'},
                     {'data' : 'AdminName'},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},

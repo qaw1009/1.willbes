@@ -42,8 +42,7 @@
         .wb_04 ._tree_7 {width:122px;height:143px;position:absolute; top:600px; left:30%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_red_start.png) no-repeat center top;
                     padding-top:45px;padding-right:10px;font-size:25px;color:#fff;font-weight:bold;line-height:30px;}     
         /* 이벤트 마감시 */
-        .wb_04 .tree span.red_end {background-image:url(https://static.willbes.net/public/images/promotion/2021/12/2453_red_end.png); font-size:0}
-        .wb_04 .tree span.green_end {background-image:url(https://static.willbes.net/public/images/promotion/2021/12/2453_green_end.png); font-size:0}
+        .wb_04 .tree span.end {filter: brightness(0.4) blur(0.6px);}
         .wb_05 {background:#4f3030;}
 
         /*이용안내*/
@@ -119,7 +118,9 @@
                     <div class="tree">
                         @if(empty($arr_base['add_apply_data']) === false)
                             @foreach($arr_base['add_apply_data'] as $row)
-                                <span class="_tree_{{ $loop->index }} {{ (time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'] ? ($loop->index % 2 == 1 ? 'red_end' : 'green_end') : '') }}">{{ $row['Name'] }}<br>{{ $row['PersonLimit'] }}명</span>
+                                <span class="_tree_{{ $loop->index }} {{ (time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'] ? 'end' : '') }}">
+                                    {{ $row['Name'] }}<br>{{ (time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'] ? '-마감-' : $row['PersonLimit'].'명') }}
+                                </span>
                             @endforeach
                         @endif
                     </div>

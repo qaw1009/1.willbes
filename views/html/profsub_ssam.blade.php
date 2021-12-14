@@ -1,6 +1,22 @@
 @extends('html.layouts.master')
 @section('content')
 
+<style>
+.willbes-Layer-CurriBox {
+	display: none;
+	background: #fff;
+	position: absolute;
+	top: -70px;
+	right:0;
+	left: 50%;
+	width: 1120px;
+	margin-left: -650px;
+	height: 620px;
+	border: 1px solid #2f2f2f;
+	padding: 20px 25px 30px; 
+	z-index: 110;	
+}
+</style>
 <!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">
     <div class="Menu widthAuto NGR c_both">
@@ -311,11 +327,11 @@
                 </a>
                 <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">민정선</span> 교수님 커리큘럼</div>
                 <div class="Layer-Cont">
-                    <img src="http://file1.willbes.net//data/upload/popup/hanlim/POPUPVALUE3510.JPG"/>
                     <ul>
                         <li><a href="#none">2022학년도 커리큘럼.jpg</a></li>
                         <li><a href="#none">2022학년도_교육학_커리큘럼_상세.hwp</a></li>
                     </ul>
+                    <img src="https://static.willbes.net/public/images/promotion/sub/2017_curri.jpg"/>                    
                 </div>                
             </div>
             <!-- // willbes-Layer-CurriBox -->

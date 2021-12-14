@@ -128,16 +128,9 @@
                     <div class="tree">
                         @if(empty($arr_base['add_apply_data']) === false)
                             @foreach($arr_base['add_apply_data'] as $row)
-                                <span class="_tree_{{ $loop->index }} red">{{ $row['Name'] }}<br>{{ $row['PersonLimit'] }}명</span>
+                                <span class="_tree_{{ $loop->index }} red" {{ (time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'] ? 'end' : '') }}>{{ $row['Name'] }}<br>{{ $row['PersonLimit'] }}명</span>
                             @endforeach
                         @endif
-                        {{--<span class="_tree_1 red">12/20<br>10명</span>
-                        <span class="_tree_2 green">12/21<br>10명</span>
-                        <span class="_tree_3 green">12/22<br>10명</span>
-                        <span class="_tree_4 red">12/23<br>10명</span>
-                        <span class="_tree_5 red">12/24<br>10명</span>
-                        <span class="_tree_6 green">12/25<br>5명</span>
-                        <span class="_tree_7 red">12/26<br>10명</span>--}}
                     </div>
                 </div>
             </div>

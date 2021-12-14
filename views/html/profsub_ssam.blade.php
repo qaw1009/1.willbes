@@ -326,12 +326,12 @@
                     <img src="{{ img_url('prof/close.png') }}">
                 </a>
                 <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">민정선</span> 교수님 커리큘럼</div>
-                <div class="Layer-Cont">
+                <div class="Layer-Cont">                    
+                    <img src="https://static.willbes.net/public/images/promotion/sub/2017_curri.jpg"/> 
                     <ul>
                         <li><a href="#none">2022학년도 커리큘럼.jpg</a></li>
                         <li><a href="#none">2022학년도_교육학_커리큘럼_상세.hwp</a></li>
-                    </ul>
-                    <img src="https://static.willbes.net/public/images/promotion/sub/2017_curri.jpg"/>                    
+                    </ul>                   
                 </div>                
             </div>
             <!-- // willbes-Layer-CurriBox -->

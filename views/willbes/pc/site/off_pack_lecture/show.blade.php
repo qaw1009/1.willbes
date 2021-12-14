@@ -49,7 +49,11 @@
                 $sale_type_ccd = $data['ProdPriceData'][0]['SaleTypeCcd'];
                 $sale_price = $data['ProdPriceData'][0]['SalePrice'];
                 $real_sale_price = $data['ProdPriceData'][0]['RealSalePrice'];
-                $sale_info = $data['ProdPriceData'][0]['SaleRate'] . $data['ProdPriceData'][0]['SaleRateUnit'];
+                if($data['SiteCode'] === '2018' && $data['ProdPriceData'][0]['SaleRateUnit'] === '원' ) {
+                    $sale_info = number_format(($data['ProdPriceData'][0]['SalePrice'] - $data['ProdPriceData'][0]['RealSalePrice'] ) / $data['ProdPriceData'][0]['SalePrice'] * 100). '%';
+                } else {
+                    $sale_info = number_format($data['ProdPriceData'][0]['SaleRate'],0) . $data['ProdPriceData'][0]['SaleRateUnit'];
+                }
             } else {
                 $sale_type_ccd = 0;
                 $sale_price = 0;
@@ -76,7 +80,7 @@
                         <span>
                             <span class="price-txt">종합반</span>
                             <span class="tx-dark-gray">{{ number_format($sale_price, 0) }}원</span>
-                            <span class="tx-pink pl10">(↓{{$sale_info}})</span>
+                            <span class="tx-pink pl10">(↓{{ $sale_info }})</span>
                             <span class="pl10"> ▶ </span>
                             <span class="tx-light-blue pl10">{{ number_format($real_sale_price,0)}}원</span>
                         </span>
@@ -149,7 +153,7 @@
                                         <div class="priceWrap">
                                             @if($data['ProdPriceData'][0]['SalePrice'] > $real_sale_price)
                                                 <span class="price">{{ number_format($data['ProdPriceData'][0]['SalePrice'], 0) }}원</span>
-                                                <span class="discount">({{ ($data['ProdPriceData'][0]['SaleRateUnit'] == '%' ? $data['ProdPriceData'][0]['SaleRate'] : number_format($data['ProdPriceData'][0]['SaleRate'], 0)) . $data['ProdPriceData'][0]['SaleRateUnit'] }}↓)</span>
+                                                <span class="discount">({{ $sale_info }}↓)</span>
                                             @endif
                                             <span class="dcprice">{{ number_format($real_sale_price, 0) }}원</span>
                                         </div>

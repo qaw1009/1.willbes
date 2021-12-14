@@ -58,7 +58,9 @@
 		</div>
 
 		<div class="evtCtnsBox evt_01" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2021/12/2457_01.jpg" alt="특별혜택" />	  
+            <a href="#evt03">
+			<img src="https://static.willbes.net/public/images/promotion/2021/12/2457_01.jpg" alt="특별혜택" />	 
+            </a> 
 		</div>      
         
         <div class="evtCtnsBox" data-aos="fade-up">
@@ -97,7 +99,7 @@
 			</div>
 		</div>
 
-        <div class="evtCtnsBox evt_03">
+        <div class="evtCtnsBox evt_03" id="evt03">
 			<img src="https://static.willbes.net/public/images/promotion/2021/12/2457_05.jpg" alt="수험생을 위한 혜택"/>
             <a href="javascript:go_PassLecture('188770');" class="NSK-Black">1차 기본이론 선택형 종합반 수강신청 ></a>  
             <div class="check">

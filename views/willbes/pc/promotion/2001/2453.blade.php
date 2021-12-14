@@ -22,15 +22,10 @@
 
         .sky {position:fixed;top:200px; width:120px; right:10px;z-index:1;}        
         .sky a {display:block;margin-bottom:15px;}
-
         .evt00 {background:#0a0a0a}
-
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_bf_top_bg.jpg) no-repeat center top;}
-
         .wb_01 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_01_bg.jpg) no-repeat center top;}
-
         .wb_02 {background:#4f3030;}
-
         .wb_04 {background:#e2a990;}    
         .wb_04 ._tree_1 {width:122px;height:143px;position:absolute; top:200px; left:50%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_red_start.png) no-repeat center top;
                     padding-top:45px;padding-right:10px;font-size:25px;color:#fff;font-weight:bold;line-height:30px;}
@@ -46,11 +41,9 @@
                     padding-top:45px;padding-right:10px;font-size:25px;color:#fff;font-weight:bold;line-height:30px;}
         .wb_04 ._tree_7 {width:122px;height:143px;position:absolute; top:600px; left:30%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_red_start.png) no-repeat center top;
                     padding-top:45px;padding-right:10px;font-size:25px;color:#fff;font-weight:bold;line-height:30px;}     
-        /* 이벤트 마감시     
-        .wb_04 .tree span.red {background-image:url(https://static.willbes.net/public/images/promotion/2021/12/2453_red_end.png); font-size:0}
-        .wb_04 .tree span.green {background-image:url(https://static.willbes.net/public/images/promotion/2021/12/2453_green_end.png); font-size:0}
-        */ 
-
+        /* 이벤트 마감시 */
+        .wb_04 .tree span.red_end {background-image:url(https://static.willbes.net/public/images/promotion/2021/12/2453_red_end.png); font-size:0}
+        .wb_04 .tree span.green_end {background-image:url(https://static.willbes.net/public/images/promotion/2021/12/2453_green_end.png); font-size:0}
         .wb_05 {background:#4f3030;}
 
         /*이용안내*/
@@ -63,11 +56,9 @@
         .guide_box dd li {margin-bottom:3px; list-style:none; margin-left:20px;color:#3a3a3a;font-size:16px;font-weight:bold;}
         .guide_box dd li a {display:inline-block; margin-left:20px; background:#032E5B; color:#fff; padding:3px 10px; border-radius:15px;}
         .guide_box .inquire{padding-top:25px;font-size:20px;font-weight:bold;color:#000;}
-            
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-
         <div class="sky" id="QuickMenu">
             <a href="#chris"><img src="https://static.willbes.net/public/images/promotion/2021/12/2453_sky01.png" alt="크리스마스 이벤트" ></a>
             <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/12/2453_sky02.png" alt="매일 선착순" ></a>
@@ -128,7 +119,7 @@
                     <div class="tree">
                         @if(empty($arr_base['add_apply_data']) === false)
                             @foreach($arr_base['add_apply_data'] as $row)
-                                <span class="_tree_{{ $loop->index }} red" {{ (time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'] ? 'end' : '') }}>{{ $row['Name'] }}<br>{{ $row['PersonLimit'] }}명</span>
+                                <span class="_tree_{{ $loop->index }} {{ (time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'] ? ($loop->index % 2 == 1 ? 'red_end' : 'green_end') : '') }}">{{ $row['Name'] }}<br>{{ $row['PersonLimit'] }}명</span>
                             @endforeach
                         @endif
                     </div>
@@ -164,8 +155,7 @@
                     </dd>
                 </dl>
             </div>
-        </div>      
-
+        </div>
     </div>
     <!-- End Container -->
 
@@ -181,7 +171,6 @@
 
             var $add_apply_form = $('#add_apply_form');
             var _url = '{!! front_url('/event/addApplyStore') !!}';
-
             if (typeof $add_apply_form.find('input[name="add_apply_chk[]"]').val() === 'undefined') {
                 alert('이벤트 기간이 아닙니다.');
                 return;
@@ -216,7 +205,5 @@
             if(apply_msg == '') apply_msg = ret_msg;
             return apply_msg;
         }
-                     
     </script>
-
 @stop

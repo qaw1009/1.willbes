@@ -8,18 +8,21 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
-        .sky {position:fixed; top:250px; right:10px; width:230px; z-index:1;}
-        .sky a {display:block; margin-bottom:25px;}
+        .sky {position:fixed; top:200px; right:10px; width:230px; z-index:1; text-align:right}
+        .sky a {display:block; margin-bottom:10px;}
  
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/11/2127_top_bg.jpg) no-repeat center top;}  
         .wb_top span {position:absolute; top:440px; left:50%; margin-left:-470px; z-index: 10;}      
@@ -50,6 +53,8 @@
         .check label {cursor:pointer;color:#585858;font-weight:bold;font-size:15px;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
         .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#504f4f; background:#ededed; margin-left:50px; border-radius:20px;font-size:15px;font-weight:bold;}
+
+        .wb_cts04 {position:relative}
 
         .wb_cts05 {background:#FFC40E}
 
@@ -86,7 +91,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <!-- 타이머 -->
-        <div id="newTopDday" class="newTopDday NG">        
+        <div id="newTopDday" class="newTopDday">        
             <div>
                 <ul>
                     <li>
@@ -113,20 +118,23 @@
 
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3023/code/1656" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/2127_sky.png"  title="소방 문풀" /></a>
+            <a href="#lecBuy"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>
+            {{--
             <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/04/2127_sky01.png"  title="인증하고 할인받기" /></a>
             <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/04/2127_sky02.png"  title="갈아타고 할일받기" /></a>
+            --}}
         </div>
 
-        <div class="evtCtnsBox wb_top">
+        <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_top.jpg" alt="소방 패스"  />
             <span data-aos="fade-right"><a href="#lecBuy"><img src="https://static.willbes.net/public/images/promotion/2021/11/2127_top_btn.png" alt="신청하기"/></a></span>
         </div>
 
-        <div class="evtCtnsBox wb_cts01">
+        <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_01.jpg" alt="왜 윌비스 소방 패스를 선택?" />          
         </div>
 
-        <div class="evtCtnsBox wb_cts01_apply">
+        <div class="evtCtnsBox wb_cts01_apply" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_01_apply.jpg" alt="합격 라인업" />
             <ul class="tabs">
                 <li>
@@ -174,7 +182,7 @@
             </ul>
         </div>
         
-        <div class="tab_cts">
+        <div class="tab_cts" data-aos="fade-up">
             <div class="evtCtnsBox" id="tab01">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_04_01.png" title="">
@@ -225,24 +233,24 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts02">
+        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_02.jpg" alt="소방전문과목과 행정법" />          
         </div>
-
-        <div class="evtCtnsBox wb_cts03" id="transfer">
+{{--
+        <div class="evtCtnsBox wb_cts03" id="transfer" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_03.jpg" alt="합격 라인업" />
                 <a href="javascript:certOpen();" title="인증하기" style="position: absolute; left: 29.64%; top: 80.24%; width: 40.09%; height: 5.71%; z-index: 2;"></a>
                 <a href="#careful" title="유의사항" style="position: absolute; left: 41.34%; top: 86.78%; width: 14.64%; height: 3.84%; z-index: 2;"></a>
             </div>    
         </div>
-
-        <div class="evtCtnsBox wb_cts04" id="lecBuy">
+--}}
+        <div class="evtCtnsBox wb_cts04" id="lecBuy" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2127_04.jpg" alt="환승 이벤트" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2127_04.jpg" alt="환승 이벤트" />
                 <a href="https://pass.willbes.net/promotion/index/cate/3023/code/1656" target="_blank" title="신청하기" style="position: absolute;left: 46.5%;top: 46.85%;width: 41.95%;height: 4.78%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('180408');" title="공채" style="position: absolute; left: 27.5%; top: 78.1%; width: 17.95%; height: 6.78%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('180413');" title="특채" style="position: absolute; left: 71.16%; top: 78.1%; width: 17.95%; height: 6.78%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('180408');" title="공채" style="position: absolute; left: 27.5%; top: 80.1%; width: 17.95%; height: 6.78%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('180413');" title="특채" style="position: absolute; left: 71.16%; top: 80.1%; width: 17.95%; height: 6.78%; z-index: 2;"></a>
             </div>
             <div class="check" id="chkInfo">               
                 <label>
@@ -253,7 +261,7 @@
             </div> 
         </div>
 
-        <div class="evtCtnsBox wb_info" id="careful">
+        <div class="evtCtnsBox wb_info" id="careful" data-aos="fade-up">
             <div class="guide_box">
                 <h2 class="NSK-Black">윌비스 소방직 PASS 이용안내</h2>
                 <dl>
@@ -270,6 +278,7 @@
                             <li>참여 교수진의 일정 및 진행 방식은 상이하게 진행될 수 있으며, 각 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있다는 점 숙지 부탁드립니다.<br>
                             (과목별 교수진의 제공 과정은 수강신청 상세안내 화면을 참고해주시기 바랍니다.)
                             </li>
+                            <li>이벤트 해당 상품 (전과목PASS) 구매 시  지급되는 추가 포인트의 경우, 교재 구매 시 사용할 수 있으며 결제완료 후 익일 담당자 확인 후에 지급해드릴 예정입니다.</li>
                         </ol>
                     </dd>
 
@@ -306,7 +315,8 @@
                             <li>맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
                             <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
                             <li>본 상품은 특별 기획 상품으로, 수강시작일(결제 당일 포함)로부터 7일 경과 후 환불 시에는 할인 되기 전 정가를 기준으로 사용일수만큼 차감하고 환불됩니다.<br>
-                                · 결제금액 - (강좌 정상가의 1일 이용대금×이용일수)
+                                · 전과목PASS (12월의 기적 이벤트 기간 내 구매) : 결제금액 - 지급된 수강지원포인트 - (강좌 정상가의 1일 이용대금*이용일수)<br>
+                                · 문제풀이PASS : 결제금액 - (강좌 정상가의 1일 이용대금*이용일수)
                             </li>
                         </ol>
                     </dd>
@@ -319,7 +329,7 @@
                             <li>아이디 공유 적발 시 회원 자격 박탈 및 환불 불가하며, 추가적인 불법 공유 행위 적발 시 형사 고발 조치가 단행될 수 있습니다.</li>
                         </ol>
                     </dd>   
-
+{{--
                     <dt>재도전&amp;환승 인증 이벤트 유의사항</dt>
                     <dd>
                         <ol>
@@ -336,7 +346,7 @@
                             <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>
                         </ol>
                     </dd>                        
-
+--}}
                     <dt>라이브모드 수강관련</dt>
                     <dd>
                         <ol>

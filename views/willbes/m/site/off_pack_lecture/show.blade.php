@@ -56,7 +56,12 @@
                         $sale_type_ccd = $data['ProdPriceData'][0]['SaleTypeCcd'];
                         $sale_price = $data['ProdPriceData'][0]['SalePrice'];
                         $real_sale_price = $data['ProdPriceData'][0]['RealSalePrice'];
-                        $sale_info = $data['ProdPriceData'][0]['SaleRate'] . $data['ProdPriceData'][0]['SaleRateUnit'];
+                        //TODO 임용 예외처리 : 종합반 + '원' 일 경우 % 로 변환 (21.12.13 최진영)
+                        if($data['SiteCode'] === '2018' && $data['ProdPriceData'][0]['SaleRateUnit'] === '원' ) {
+                            $sale_info = number_format(($data['ProdPriceData'][0]['SalePrice'] - $data['ProdPriceData'][0]['RealSalePrice'] ) / $data['ProdPriceData'][0]['SalePrice'] * 100). '%';
+                        } else {
+                            $sale_info = number_format($data['ProdPriceData'][0]['SaleRate'],0) . $data['ProdPriceData'][0]['SaleRateUnit'];
+                        }
                     } else {
                         $sale_type_ccd = 0;
                         $sale_price = 0;
@@ -70,7 +75,8 @@
 
                 <div class="priceBox">
                     <ul>
-                        <li><strong>종합반</strong> {{ number_format($sale_price, 0) }}원<span class="tx-red">(↓{{$sale_info}})</span>
+                        <li><strong>종합반</strong> {{ number_format($sale_price, 0) }}원
+                            <span class="tx-red">(↓{{$sale_info}})</span>
                             ▶ <span class="tx-blue">{{ number_format($real_sale_price,0)}}원</span></li>
                         <li class="NGEB"><strong>총 주문금액</strong> <span class="tx-blue">{{ number_format($real_sale_price,0)}}원</span></li>
                     </ul>

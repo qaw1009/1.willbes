@@ -1096,7 +1096,13 @@ class Professor extends \app\controllers\FrontController
             $arr_condition['LKR']['CateCode'] = $this->_def_cate_code;
         }
 
-        $data = $this->packageFModel->listSalesProduct($learn_pattern,false, $arr_condition,null,null, ['ProdCode' => 'desc']);
+        // 정렬조건 (운영자패키지일 경우 정렬순서 컬럼 추가)
+        $order_by = ['ProdCode' => 'desc'];
+        if ($learn_pattern == 'adminpack_lecture') {
+            $order_by = ['OrderNum' => 'desc', 'ProdCode' => 'desc'];
+        }
+
+        $data = $this->packageFModel->listSalesProduct($learn_pattern,false, $arr_condition,null,null, $order_by);
 
         // 상품 json 데이터 decode
         $data = array_map(function ($row) {

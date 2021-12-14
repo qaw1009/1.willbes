@@ -32,19 +32,19 @@
         .wb_02 {background:#4f3030;}
 
         .wb_04 {background:#e2a990;}    
-        .wb_04 ._20 {width:122px;height:143px;position:absolute; top:200px; left:50%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_red_start.png) no-repeat center top;
+        .wb_04 ._tree_1 {width:122px;height:143px;position:absolute; top:200px; left:50%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_red_start.png) no-repeat center top;
                     padding-top:45px;padding-right:10px;font-size:25px;color:#fff;font-weight:bold;line-height:30px;}
-        .wb_04 ._21 {width:122px;height:143px;position:absolute; top:269px; left:39%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_green_start.png) no-repeat center top;
+        .wb_04 ._tree_2 {width:122px;height:143px;position:absolute; top:269px; left:39%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_green_start.png) no-repeat center top;
                     padding-top:45px;padding-right:10px;font-size:25px;color:#fff;font-weight:bold;line-height:30px;}
-        .wb_04 ._22 {width:122px;height:143px;position:absolute; top:350px; left:54%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_green_start.png) no-repeat center top;
+        .wb_04 ._tree_3 {width:122px;height:143px;position:absolute; top:350px; left:54%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_green_start.png) no-repeat center top;
                 padding-top:45px;padding-right:10px;font-size:25px;color:#fff;font-weight:bold;line-height:30px;}
-        .wb_04 ._23 {width:122px;height:143px;position:absolute; top:440px; left:37%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_red_start.png) no-repeat center top;
+        .wb_04 ._tree_4 {width:122px;height:143px;position:absolute; top:440px; left:37%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_red_start.png) no-repeat center top;
                 padding-top:45px;padding-right:10px;font-size:25px;color:#fff;font-weight:bold;line-height:30px;}
-        .wb_04 ._24 {width:122px;height:143px;position:absolute; top:500px; left:55%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_red_start.png) no-repeat center top;
+        .wb_04 ._tree_5 {width:122px;height:143px;position:absolute; top:500px; left:55%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_red_start.png) no-repeat center top;
                     padding-top:45px;padding-right:10px;font-size:25px;color:#fff;font-weight:bold;line-height:30px;}
-        .wb_04 ._25 {width:122px;height:143px;position:absolute; top:575px; left:43.5%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_green_start.png) no-repeat center top;
+        .wb_04 ._tree_6 {width:122px;height:143px;position:absolute; top:575px; left:43.5%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_green_start.png) no-repeat center top;
                     padding-top:45px;padding-right:10px;font-size:25px;color:#fff;font-weight:bold;line-height:30px;}
-        .wb_04 ._26 {width:122px;height:143px;position:absolute; top:600px; left:30%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_red_start.png) no-repeat center top;
+        .wb_04 ._tree_7 {width:122px;height:143px;position:absolute; top:600px; left:30%;z-index:1;background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_red_start.png) no-repeat center top;
                     padding-top:45px;padding-right:10px;font-size:25px;color:#fff;font-weight:bold;line-height:30px;}     
         /* 이벤트 마감시     
         .wb_04 .tree span.red {background-image:url(https://static.willbes.net/public/images/promotion/2021/12/2453_red_end.png); font-size:0}
@@ -101,23 +101,47 @@
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                     @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'Y')){{--기존SNS예외처리시--}}
             @endif  
-        </div>      
+        </div>
 
-        <div class="evtCtnsBox wb_04" data-aos="fade-up" id="evt_01">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2453_04.jpg" alt="선착순 이벤트"/>                            
-                <a href="javascript:void(0);" title="이벤트 참여하기" onclick="fn_add_apply_submit(); return false;" style="position: absolute;left: 28.99%;top: 54.08%;width: 41.93%;height: 6.58%;z-index: 2;"></a>
-                <div class="tree">
-                    <span class="_20 red">12/20<br>10명</span>
-                    <span class="_21 green">12/21<br>10명</span>
-                    <span class="_22 green">12/22<br>10명</span>
-                    <span class="_23 red">12/23<br>10명</span>
-                    <span class="_24 red">12/24<br>10명</span>
-                    <span class="_25 green">12/25<br>5명</span>
-                    <span class="_26 red">12/26<br>10명</span>
+        <form id="add_apply_form" name="add_apply_form">
+            {!! csrf_field() !!}
+            {!! method_field('POST') !!}
+            <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+            <input type="hidden" name="register_type" value="promotion"/>
+            <input type="hidden" name="apply_chk_el_idx" value="{{ $data['ElIdx'] }}"/>
+            <input type="hidden" name="event_register_chk" value="N"/>
+            <input type="hidden" name="comment_chk_yn" value="{{ (empty($arr_promotion_params["comment_chk_yn"]) === true ? '' : $arr_promotion_params["comment_chk_yn"]) }}"/>
+            <input type="hidden" name="comment_ccd" value="713002">
+            @if(empty($arr_base['add_apply_data']) === false)
+                @foreach($arr_base['add_apply_data'] as $row)
+                    @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))
+                        <input type="hidden" name="add_apply_chk[]" value="{{$row['EaaIdx']}}" />
+                        @break;
+                    @endif
+                @endforeach
+            @endif
+
+            <div class="evtCtnsBox wb_04" data-aos="fade-up" id="evt_01">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/12/2453_04.jpg" alt="선착순 이벤트"/>
+                    <a href="javascript:void(0);" title="이벤트 참여하기" onclick="fn_add_apply_submit(); return false;" style="position: absolute;left: 28.99%;top: 54.08%;width: 41.93%;height: 6.58%;z-index: 2;"></a>
+                    <div class="tree">
+                        @if(empty($arr_base['add_apply_data']) === false)
+                            @foreach($arr_base['add_apply_data'] as $row)
+                                <span class="_tree_{{ $loop->index }} red">{{ $row['Name'] }}<br>{{ $row['PersonLimit'] }}명</span>
+                            @endforeach
+                        @endif
+                        {{--<span class="_tree_1 red">12/20<br>10명</span>
+                        <span class="_tree_2 green">12/21<br>10명</span>
+                        <span class="_tree_3 green">12/22<br>10명</span>
+                        <span class="_tree_4 red">12/23<br>10명</span>
+                        <span class="_tree_5 red">12/24<br>10명</span>
+                        <span class="_tree_6 green">12/25<br>5명</span>
+                        <span class="_tree_7 red">12/26<br>10명</span>--}}
+                    </div>
                 </div>
             </div>
-        </div>        
+        </form>
 
         <div class="evtCtnsBox wb_05" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2453_05.jpg" alt="여기서 잠깐"/>           
@@ -187,7 +211,7 @@
             var apply_msg = '';
             var arr_apply_msg = [
                 ['이미 신청하셨습니다.','이미 참여하셨습니다.'],
-                ['신청 되었습니다.','당첨을 축하합니다. 장바구니를 확인해 주세요.'],
+                ['신청 되었습니다.','당첨을 축하합니다.'],
                 //['이벤트 신청후 이용 가능합니다.','봉투모의고사 신청후 이용 가능합니다.'],
                 ['마감되었습니다.','내일 20시에 다시 도전해 주세요.']
             ];

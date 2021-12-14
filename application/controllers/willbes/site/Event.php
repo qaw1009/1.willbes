@@ -856,6 +856,27 @@ class Event extends \app\controllers\FrontController
      */
     public function addApplyStore()
     {
+        $comment_chk_yn = $this->_req('comment_chk_yn');    //댓글참여 확인 여부
+        $comment_ccd = (int)$this->_req('comment_ccd');    //댓글참여 확인 여부
+
+        // 댓글 참여 여부 확인
+        if(empty($comment_chk_yn) === false && $comment_chk_yn == 'Y') {
+            $arr_condition = [
+                'EQ' => [
+                    'a.MemIdx' => $this->session->userdata('mem_idx'),
+                    'a.ElIdx' => (int)$this->_req('event_idx'),
+                    'a.IsStatus' => 'Y',
+                    'a.IsUse' => 'Y',
+                    'a.CommentUiCcd' => $comment_ccd
+                ]
+            ];
+
+            $comment_result = $this->eventFModel->listEventForCommentPromotion(false, $arr_condition, 1, 0, ['a.CIdx' => 'DESC']);
+            if (empty($comment_result) === true) {
+                return $this->json_error('소문내기 댓글을 등록해 주세요.');
+            }
+        }
+
         $register_type = ($this->_reqP('register_type') == 'promotion') ? 'promotion' : 'event';
         $rules = [
             ['field' => 'event_idx', 'label' => '이벤트식별자', 'rules' => 'trim|required|integer'],

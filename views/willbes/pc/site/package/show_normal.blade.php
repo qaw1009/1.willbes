@@ -61,10 +61,10 @@
                                     <span class="tx-dark-gray">{{ number_format($price_row['SalePrice'], 0) }}원</span>
                                     <span class="tx-pink pl10">
                                         {{-- TODO 임용 예외처리 : 운영자패키지 + '원' 일 경우 % 로 변환 (21.12.01 최진영)--}}
-                                        @if($__cfg['SiteCode'] === '2017' && $price_row['SaleRateUnit'] === '원' )
+                                        @if($data['SiteCode'] === '2017' && $price_row['SaleRateUnit'] === '원' )
                                             (↓{{ number_format(($price_row['SalePrice'] - $price_row['RealSalePrice'] ) / $price_row['SalePrice'] * 100). '%'}})
                                         @else
-                                            (↓{{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }})
+                                            (↓{{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }})
                                         @endif
                                     </span>
                                     <span class="pl10"> ▶ </span>
@@ -167,7 +167,7 @@
                                             @if($__cfg['SiteCode'] === '2017' && $price_row['SaleRateUnit'] === '원' )
                                                 ({{ number_format(($price_row['SalePrice'] - $price_row['RealSalePrice'] ) / $price_row['SalePrice'] * 100). '%'}}↓)
                                             @else
-                                                ({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)
+                                                ({{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }}↓)
                                             @endif
                                         </span> ▶
                                     @endif

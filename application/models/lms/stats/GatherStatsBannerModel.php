@@ -120,19 +120,26 @@ class GatherStatsBannerModel extends GatherBaseStatsModel
      */
     public function getBannerSiteRank($arr_input = [])
     {
-        $get_condition = $this->_setCondition($arr_input, 'SB.');
+        $get_condition = $this->_setCondition($arr_input);
 
         $where = $this->_conn->makeWhere($get_condition['comm_condition'])->getMakeWhere();
 
-        $column = 'SB.BIdx, B.BannerName, B.LinkUrl, B.BannerFullPath, B.BannerImgName, b.SiteCode, S.SiteName, sum(ClickCount) AS click_count';
+        $column = 'SB.BIdx, B.BannerName, B.LinkUrl, B.BannerFullPath, B.BannerImgName, SB.SiteCode, S.SiteName, click_count';
 
-        $from = '   from
-                            '. $this->_table['banner'] .' SB
-                            join '. $this->_table['site'] .' S on S.SiteCode = SB.SiteCode 
-                            join '. $this->_table['banner_info'] . ' B on SB.BIdx = B.BIdx and B.IsStatus=\'Y\' 
-                            '. $where . ' group by SB.BIdx, B.BannerName, B.LinkUrl, B.BannerFullPath, B.BannerImgName, B.SiteCode, S.SiteName';
+        $from =  '
+                    from
+                    (
+                        SELECT
+                            SiteCode, BIdx, SUM(ClickCount) AS click_count
+                        FROM 
+                            '. $this->_table['banner'] . $where .'
+                        GROUP BY SiteCode, BIdx
+                    ) SB 
+                    JOIN  '. $this->_table['site']. ' S ON S.SiteCode = SB.SiteCode 
+                    JOIN '. $this->_table['banner_info']. ' B ON SB.BIdx = B.BIdx and B.IsStatus=\'Y\' 
+        ';
 
-        $order_by_limit = $this->_conn->makeOrderBy(['click_count' => 'DESC', 'SB.BIdx' => 'DESC', 'S.SiteCode' => 'ASC'])->getMakeOrderBy();
+        $order_by_limit = $this->_conn->makeOrderBy(['click_count' => 'DESC', 'SB.BIdx' => 'DESC', 'SB.SiteCode' => 'ASC'])->getMakeOrderBy();
         $order_by_limit .= $this->_conn->makeLimitOffset('20')->getMakeLimitOffset();
         return $this->_conn->query('select ' . $column . $from . $order_by_limit)->result_array();
     }
@@ -155,7 +162,7 @@ class GatherStatsBannerModel extends GatherBaseStatsModel
             ],
             // 현시점 게시중인 배너
             'RAW' => [
-                'date_format(now(),\'%Y-%m-%d\') between ' =>  'date_format(B.DispStartDatm,\'%Y-%m-%d\') and date_format(b.DispEndDatm,\'%Y-%m-%d\')'
+                'date_format(now(),\'%Y-%m-%d\') between ' =>  'date_format(B.DispStartDatm,\'%Y-%m-%d\') and date_format(B.DispEndDatm,\'%Y-%m-%d\')'
             ]
         ];
         $join_where = $this->_conn->makeWhere($join_condition)->getMakeWhere(true);
@@ -167,13 +174,12 @@ class GatherStatsBannerModel extends GatherBaseStatsModel
                     SELECT BIdx, SiteCode, SUM(ClickCount) AS click_count 
                         FROM '. $this->_table['banner'] . $this->_conn->makeWhere($get_condition['comm_condition'])->getMakeWhere() .'
                     GROUP BY BIdx, SiteCode 
-                    ORDER BY SUM(ClickCount) ASC, BIdx DESC, SiteCode ASC LIMIT 200
                 ) SB
                 JOIN '. $this->_table['site']. ' S ON S.SiteCode = SB.SiteCode 
                 JOIN '. $this->_table['banner_info']. ' B ON SB.BIdx = B.BIdx '. $join_where .'
         ';
 
-        $order_by_limit = $this->_conn->makeOrderBy(['click_count' => 'ASC', 'SB.BIdx' => 'DESC', 'S.SiteName' => 'ASC'])->getMakeOrderBy();
+        $order_by_limit = $this->_conn->makeOrderBy(['click_count' => 'ASC', 'SB.BIdx' => 'DESC', 'SB.SiteCode' => 'ASC'])->getMakeOrderBy();
         $order_by_limit .= $this->_conn->makeLimitOffset('20')->getMakeLimitOffset();
         return $this->_conn->query('select ' . $column . $from . $order_by_limit)->result_array();
     }

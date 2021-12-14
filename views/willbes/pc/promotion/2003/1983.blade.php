@@ -8,18 +8,21 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}      
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
-        .sky {position:fixed; top:250px; right:10px;z-index:1;}
-        .sky a {display:block; margin-bottom:25px;}
+        .sky {position:fixed; top:150px; right:10px;z-index:1;}
+        .sky a {display:block; margin-bottom:10px;}
         
         .wb_tops {background:url(https://static.willbes.net/public/images/promotion/2021/09/1983_tops_bg.jpg) no-repeat center top;}
 
@@ -53,9 +56,9 @@
         .wb_cts06 table thead th strong {color:#5914a7}
         .wb_cts06 table tbody th {font-weight:bold;}
         .wb_cts06 table td.bg {background:#ececf3}
-        .wb_cts06 table td span {color:#fff; padding:2px 6px; background:red; font-size:11px; border-radius:4px; margin-left:5px}
-        .wb_cts06 table td input {height:24px; width:24px;position:absolute;left:17%;top:41%;}
-        .wb_cts06 table td label {font-size:30px; color:#5914a7; font-weight:bold;}
+        .wb_cts06 table td span.point {color:#fff; padding:2px 6px; background:red; font-size:11px; border-radius:4px; margin-left:5px}
+        .wb_cts06 table td input {height:24px; width:24px; vertical-align:middle}
+        .wb_cts06 table td label {font-size:30px; color:#5914a7; font-weight:bold; margin-left:10px}
         .wb_cts06 table td p {font-size:22px;color:#464646;text-decoration:line-through;}
 
         .wb_cts07 {background:#ededed}
@@ -125,11 +128,10 @@
 
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1531" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/1983_sky01.png"  title="" /></a>
-            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2021/11/1983_sky02.png"  title="" /></a>
-            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2021/11/1983_sky03.png"  title="" /></a>
+            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>
         </div>      
 
-        <div class="evtCtnsBox wb_tops">
+        <div class="evtCtnsBox wb_tops" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/1983_tops.jpg" alt="독점공개" />
                 <a href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/184117" title="이윤호 회계학" target="_blank" style="position: absolute;left: 0;top: 16.97%;width: 49.5%;height: 29.19%;z-index: 2;"></a>
@@ -137,15 +139,15 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_top">
+        <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/09/1983_top.jpg" alt="세무직 패스"  />
         </div>
 
-        <div class="evtCtnsBox wb_cts01">
+        <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1983_01.jpg" alt="전격출시"  />
         </div>
 
-        <div class="evtCtnsBox wb_cts02">
+        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1983_02.jpg" alt="라이브로 만나다" />
             <div class="tImg">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_01.gif" alt="강의1" />
@@ -154,22 +156,23 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts03">
+        <div class="evtCtnsBox wb_cts03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1983_03.jpg" alt="교수진" />
         </div>
 
-        <div class="evtCtnsBox wb_cts04">
+        <div class="evtCtnsBox wb_cts04" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1983_04.jpg" alt="커리큘럼" />
         </div>
-
-        <div class="evtCtnsBox wb_cts05" id="evt05">
+{{--
+        <div class="evtCtnsBox wb_cts05" id="evt05" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/10/1983_05.jpg" alt="커리큘럼" />
             <div class="linkbtn01 NGEB"><a href="javascript:certOpen();">재도전 & 환승 인증하기 →</a></div>
             <div class="linkbtn02"><a href="#tip">유의사항 확인하기 →</a></div>
         </div>
+--}}
 
-        <div class="evtCtnsBox wb_cts06" id="apply">   
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/1983_06.jpg" title="수강신청" /><br>
+        <div class="evtCtnsBox wb_cts06" id="apply" data-aos="fade-up">   
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/1983_06.jpg" title="수강신청" /><br>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/1983_06_apply.png" title="신청하기" />
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1531" target=_blank title="신청하기" style="position: absolute;left: 43.93%;top: 60.11%;width: 41.7%;height: 19.68%;z-index: 2;"></a>
@@ -204,19 +207,29 @@
                     <tr>
                         <th>혜택</th>
                         <td colspan="2" class="bg">
-                        ① 윌비스 공무원학원 <strong>국어 / 영어 /    한국사 무편집 LIVE 강의 제공</strong><span>LIVE</span><br />
+                        ① 윌비스 공무원학원 <strong>국어 / 영어 / 한국사 무편집 LIVE 강의 제공</strong><span class="point">LIVE</span><br />
                         ② 2022 대비 신규 진행<strong> ALL 과정 업데이트</strong><br />
                         ③ 직렬별 온라인 모의고사 진행 시 <strong>무료 제공</strong></td>
                     </tr>
                     <tr>
-                        <th>가격</th>
+                        <th>정가</th>
                         <td class="NSK-Black">
-                            <input type="radio" id="y_pkg1" name="y_pkg" value="176432" onClick=""/><label for="y_pkg1">490,000원</label>
-                            <div class="tx-red">재도전/환승 최종혜택가 340,000원</div>
+                            <p>490,000원</p>
+                        </td>
+                        <td class="NSK-Black">
+                            <p>450,000원</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>이벤트 가격</th>
+                        <td class="NSK-Black">
+                            <div><input type="radio" id="y_pkg1" name="y_pkg" value="176432" onClick=""/><label for="y_pkg1">340,000원</label></div>
+                            <div class="tx-red">
+                            12월의 기적, 12/22(수) 마감!<br>    
+                            * 지금 구매 시 3만포인트 추가 제공!</div>
                         </td>
                         <td class="NSK-Black">
                             <input type="radio" id="y_pkg2" name="y_pkg" value="176415" onClick=""/><label for="y_pkg2">450,000원</label>
-                            <div class="tx-red">재도전/환승 최종혜택가 290,000원</div>
                         </td>
                     </tr>
                 </tbody>
@@ -232,7 +245,7 @@
             </div>      
         </div>
 
-        <div class="evtCtnsBox wb_cts07" id="apply2">
+        <div class="evtCtnsBox wb_cts07" id="apply2" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/1983_07.jpg" alt="신청하기" />
                 <a href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/184117" title="이윤호 회계학" target="_blank" style="position: absolute;left: 29.75%;top: 73.97%;width: 15.5%;height: 11.19%;z-index: 2;"></a>
@@ -240,7 +253,7 @@
             </div>   
         </div>
 
-        <div class="evtCtnsBox wb_info" id="tip">
+        <div class="evtCtnsBox wb_info" id="tip" data-aos="fade-up">
             <div class="guide_box">
                 <h2 class="NSK-Black">윌비스 세무직 PASS 이용안내</h2>
                 <dl>
@@ -255,6 +268,7 @@
                             (일부 교수진의 경우, 신규 과정이 업데이트 되지 않을 수 있으며 해당 경우에는 이전 연도 과정을 제공해드립니다.)</li>
                             <li>참여 교수진의 일정 및 진행 방식은 상이하게 진행될 수 있으며, 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있다는 점 숙지 부탁드립니다.<br>
                             (과목별 교수진의 제공 과정은 수강신청 안내 화면을 참고해주시기 바랍니다.)</li>
+                            <li>이벤트 해당 상품 (전과목PASS) 구매 시  지급되는 추가 포인트의 경우, 교재 구매 시 사용할 수 있으며 결제완료 후 익일 담당자 확인 후에 지급해드릴 예정입니다.</li>
                         </ol>
                     </dd>
 
@@ -291,7 +305,8 @@
                             <li>맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
                             <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
                             <li>본 상품은 특별 기획 상품으로, 수강시작일(결제 당일 포함)로부터 7일 경과 후 환불 시에는 할인 되기 전 정가를 기준으로 사용일수만큼 차감하고 환불됩니다.<br>
-                                · 결제금액 - (강좌 정상가의 1일 이용대금×이용일수)
+                                · 전과목PASS (12월의 기적 이벤트 기간 내 구매) : 결제금액 - 지급된 수강지원포인트 - (강좌 정상가의 1일 이용대금*이용일수)<br>
+                                · 문제풀이PASS : 결제금액 - (강좌 정상가의 1일 이용대금*이용일수)<br>
                             </li>
                         </ol>
                     </dd>
@@ -304,7 +319,7 @@
                             <li>아이디 공유 적발 시 회원 자격 박탈 및 환불 불가하며, 추가적인 불법 공유 행위 적발 시 형사 고발 조치가 단행될 수 있습니다.</li>
                         </ol>
                     </dd>
-
+{{--
                     <dt>재도전&환승 인증 이벤트 유의사항</dt>
                     <dd>
                         <ol>
@@ -320,7 +335,7 @@
                             <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>
                         </ol>
                     </dd>
-
+--}}
                     <dt>라이브모드 수강관련</dt>
                     <dd>
                         <ol>
@@ -339,7 +354,15 @@
     </div>
     <!-- End Container -->
 
-    <script>    
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+    $( document ).ready( function() {
+        AOS.init();
+    } );
+    </script>
+
+    <script>   
     
         /*수강신청 동의*/ 
         function go_PassLecture(code){

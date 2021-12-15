@@ -57,8 +57,8 @@
             <div class="row mt-10">
                 <div class="col-md-1">
                     <select class="form-control" id="search_year" name="search_year" title="조회년도">
-                        @for($y = date('Y'); $y >= 2021; $y--)
-                            <option value="{{ $y }}">{{ $y }}</option>
+                        @for($y = (date('Y') + 2); $y >= 2021; $y--)
+                            <option value="{{ $y }}" @if($y == date('Y')) selected="selected" @endif>{{ $y }}</option>
                         @endfor
                     </select>
                 </div>

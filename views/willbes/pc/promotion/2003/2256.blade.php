@@ -8,9 +8,11 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;  
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
@@ -60,13 +62,13 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-
+{{--
         <div class="sky" id="QuickMenu">            
             <a href="#cts06">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2256_sky01.png" alt="환승할인">
             </a>
         </div> 
-
+--}}
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday NG">        
             <div>
@@ -110,16 +112,21 @@
         </div>
 
         <div class="evtCtnsBox wb_cts04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2256_04.jpg" alt="절호의 기회" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2256_04.jpg" alt="절호의 기회" />
         </div>
 
         <div class="evtCtnsBox wb_cts05">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2256_05.jpg" alt="바로 신청하기" />
-                <a href="javascript:go_PassLecture('181424');" title="" style="position: absolute;left: 16.86%;top: 43.85%;width: 19.75%;height: 3.5%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('181423');" title="" style="position: absolute;left: 61.86%;top: 43.85%;width: 19.75%;height: 3.5%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('183366')" title="" style="position: absolute;left: 16.86%;top: 81.35%;width: 19.75%;height: 3.5%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('183367')" title="" style="position: absolute;left: 61.86%;top: 81.35%;width: 19.75%;height: 3.5%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2256_05.jpg" alt="바로 신청하기" />
+                <a href="javascript:go_PassLecture('181424');" title="" style="position: absolute; left: 4.38%; top: 44.05%; width: 19.11%; height: 3.6%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('188766');" title="" style="position: absolute; left: 28.48%; top: 44.05%; width: 19.11%; height: 3.6%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('188763')" title="" style="position: absolute; left: 52.59%; top: 44.05%; width: 19.11%; height: 3.6%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('188767')" title="" style="position: absolute; left: 76.79%; top: 44.05%; width: 19.11%; height: 3.6%; z-index: 2;"></a>
+
+                <a href="javascript:go_PassLecture('181423');" title="" style="position: absolute; left: 4.38%; top: 83.4%; width: 19.11%; height: 3.6%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('183367');" title="" style="position: absolute; left: 28.48%; top: 83.4%; width: 19.11%; height: 3.6%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('188784')" title="" style="position: absolute; left: 52.59%; top: 83.4%; width: 19.11%; height: 3.6%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('183366')" title="" style="position: absolute; left: 76.79%; top: 83.4%; width: 19.11%; height: 3.6%; z-index: 2;"></a>
                 <div class="check">
                     <label>
                         <input name="ischk"  type="checkbox" value="Y" />
@@ -129,7 +136,7 @@
                 </div>
             </div>    
         </div>
-
+{{--
         <div class="evtCtnsBox wb_cts06" id="cts06">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2256_06.jpg" alt="바로 신청하기" />
@@ -137,13 +144,23 @@
                 <a href="#careful" title="유의사항" style="position:absolute; left:41.25%; top:84.37%; width:14.64%; height:3.84%; z-index:2;"></a
             </div>    
         </div>
-
+--}}
         <div class="evtCtnsBox evtInfo" id="careful">
 			<div class="evtInfoBox">
 				<h4 class="NSK-Black">이용안내 및 유의사항</h4>
+
+                <div class="infoTit"><strong>12월의 기적 이벤트</strong></div>
+				<ul>
+                    <li>12월의 기적 이벤트는 12.15.(수)~12.22.(수) 기간 내 진행됩니다.</li>
+                    <li>본 이벤트 페이지 내 판매중인 상품 구매 시 수강지원 포인트 50,000점을 지급해드립니다. 단, 지급되는 추가 포인트의 경우, 교재 구매 시 사용할 수 있으며 결제완료 후 익일 담당자 확인 후에 지급해드릴 예정입니다.</li>
+                    <li>12월의 기적 이벤트 시 구매한 상품에 대한 환불 시, 아래 규정을 준수합니다.<br>
+                    - 결제금액 - 지급된 수강지원포인트 - (강좌 정상가의 1일 이용대금*이용일수)</li>
+				</ul>
+
+
 				<div class="infoTit"><strong>상품구성</strong></div>
 				<ul>
-                    <li>최우영 T-PASS 제공 과정 (*과목별 상세 제공 과정의 경우 수강신청 상세 안내 참조)<br>
+                    <li>최우영 T-PASS 제공 과정 (*문제풀이 T-PASS의 경우, 해당 직렬의 문제풀이 강좌만 제공)<br>
                         - 통신직 : 2021년도 대비 이론 + 2022년도 9급 국가직·지방직/군무원 대비 신규 개강 전 과정<br>
                         - 전기직 : 2021년도 대비 이론 및 문제풀이 + 2022년도 9/7급 국가직·지방직/군무원 전기직 대비 신규 개강 전 과정<br>
                         - 전자직 : 2021년도 대비 이론 및 문제풀이 + 2022년도 군무원 전자직 대비 신규 개강 전 과정
@@ -179,6 +196,7 @@
                     </li>
                     <li>아이디 공유 적발 시 회원 자격 박탈 및 환불이 불가하오니 유의 바랍니다.</li>             				
 				</ul>
+                {{--
                 <div class="infoTit"><strong>재도전&환승 인증 이벤트 유의사항</strong></div>
 				<ul>
 					<li>본 이벤트는 1아이디당 1회만 참여 가능합니다.</li>
@@ -192,6 +210,7 @@
                     <li>등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>
                     <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>             				
 				</ul>
+                --}}
                 <div class="infoTit"><strong>윌비스 고객만족센터 1544-5006</strong></div>
 			</div>
 		</div> 

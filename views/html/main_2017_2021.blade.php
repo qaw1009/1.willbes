@@ -1,6 +1,6 @@
 @extends('html.layouts.master')
 @section('content')
-<link href="/public/css/willbes/style_2018.css?ver={{time()}}" rel="stylesheet">
+
 <style type="text/css">
 .ssam .noticeBanner {float:right; width:550px; position:relative;}
 .ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}

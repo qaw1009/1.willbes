@@ -72,7 +72,7 @@
 
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1531" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/2160_sky.png"  title="9급 문풀 pass" /></a>
-            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="9급 문풀 pass" /></a>
+            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>
         </div>
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">

@@ -119,7 +119,8 @@
 					<area shape="rect" coords="12,344,132,400" href="#" class="r_btn_tab" data-tab-id="4"/>
 					<area shape="rect" coords="12,409,131,472" href="#" class="r_btn_tab" data-tab-id="5"/>
 				</map>
-			</a>			  
+			</a>
+			<a href="#transfer2"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>			  
         </div>
 		
         <div class="evtCtnsBox wb_top">
@@ -159,7 +160,7 @@
         </div>
 		@endif
 
-		<div class="evtCtnsBox wb_02_02">
+		<div class="evtCtnsBox wb_02_02" id="transfer2">
 			<div class="wrap">
 				<img src="https://static.willbes.net/public/images/promotion/2021/12/1068_02_02.jpg" alt="">
 				<a href="javascript:go_PassLecture('188905')" title="농업직 패스" style="position: absolute; left: 9.02%; top: 41.95%; width: 17.23%; height: 5.85%; z-index: 2;"></a>

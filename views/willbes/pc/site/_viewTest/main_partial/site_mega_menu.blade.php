@@ -559,43 +559,39 @@
         <div class="drop-Box list-drop-Box list-drop-Box-ssam">
             <table class="ssamProf">
                 <thead>
-                <tr>
-                    <th rowspan="2" scope="col">교육학</th>
-                    <th colspan="2" scope="col">유.초등</th>
-                    <th colspan="10" scope="col">중등</th>
-                </tr>
-                <tr>
-                    <th>유아</th>
-                    <th>초등</th>
-                    <th>국어</th>
-                    <th>영어</th>
-                    <th>수학</th>
-                    <th>생물</th>
-                    <th>화학</th>
-                    <th>도덕윤리</th>
-                    <th>일반사회</th>
-                    <th>역사</th>
-                    <th>음악</th>
-                    <th>전기전자통신</th>
-                </tr>
+                    <tr>
+                        <th rowspan="2">교육학</th>
+                        <th>유.초등</th>
+                        <th colspan="10">중등</th>
+                    </tr>
+                    <tr>
+                        <th>유아</th>
+                        <th>국어</th>
+                        <th>영어</th>
+                        <th>수학</th>
+                        <th>생물</th>
+                        <th>화학</th>
+                        <th>도덕윤리</th>
+                        <th>일반사회</th>
+                        <th>역사</th>
+                        <th>체육</th>
+                        <th>음악</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td rowspan="3">
                             <ul>
                                 <li><a href="{{front_url('/professor/show/prof-idx/51312?cate_code=3134&subject_idx=1980')}}">이경범</a></li>
+                                <li><a href="{{front_url('/professor/show/prof-idx/51158?cate_code=3134&subject_idx=1980')}}">정현</a></li>
+                                <li><a href="{{front_url('/professor/show/prof-idx/51336?cate_code=3134&subject_idx=1980')}}">신태식</a></li>
                                 <li><a href="{{front_url('/professor/show/prof-idx/51074?cate_code=3134&subject_idx=1980')}}">이인재</a></li>
                                 <li><a href="{{front_url('/professor/show/prof-idx/51075?cate_code=3134&subject_idx=1980')}}">홍의일</a></li>
                             </ul>
                         </td>
-                        <td rowspan="3">
+                        <td>
                             <ul>
                                 <li><a href="{{front_url('/professor/show/prof-idx/51076?cate_code=3135&subject_idx=1981')}}">민정선</a></li>
-                            </ul>
-                        </td>
-                        <td rowspan="3">
-                            <ul>
-                                <li><a href="{{front_url('/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982')}}">배재민</a></li>
                             </ul>
                         </td>
                         <td rowspan="3">
@@ -620,9 +616,9 @@
                             <ul>
                                 <li class="subTit">수학내용학</li>
                                 <li><a href="{{front_url('/professor/show/prof-idx/51084?cate_code=3137&subject_idx=1985')}}">김철홍</a></li>
+                                <li><a href="{{front_url('/professor/show/prof-idx/51338?cate_code=3137&subject_idx=1985')}}">김현웅</a></li>
                                 <li class="subTit">수학교육론</li>
                                 <li><a href="{{front_url('/professor/show/prof-idx/51085?cate_code=3137&subject_idx=1986')}}">박태영</a></li>
-                                <li class="subTit">수학교육론</li>
                                 <li><a href="{{front_url('/professor/show/prof-idx/51314?cate_code=3137&subject_idx=1986')}}">박혜향</a></li>
                             </ul>
                         </td>
@@ -656,28 +652,39 @@
                                 </li> 
                             </ul>
                         </td>
-                        <td rowspan="3">
+                        <td>
                             <ul>
                                 <li><a href="{{front_url('/professor/show/prof-idx/51315?cate_code=3137&subject_idx=1990')}}">김종권</a></li>
-                                <li><a href="{{front_url('/professor/show/prof-idx/51089?cate_code=3137&subject_idx=1990')}}">최용림</a></li>
                             </ul>
                         </td>
                         <td>
                             <ul>
-                                <li><a href="{{front_url('/professor/show/prof-idx/51090?cate_code=3137&subject_idx=1991')}}" style="padding-bottom:25px;">다이애나</a></li>
+                                <li><a href="{{front_url('/professor/show/prof-idx/51156?cate_code=3137&subject_idx=2044')}}">최규훈</a></li>
                             </ul>
                         </td>
                         <td>
                             <ul>
-                                <li><a href="{{front_url('/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992')}}" style="padding-bottom:25px;">최우영</a></li>                            
+                                <li><a href="{{front_url('/professor/show/prof-idx/51090?cate_code=3137&subject_idx=1991')}}">다이애나</a></li>                            
                             </ul>
                         </td>
                     </tr>
                     <tr>
+                        <th>초등</th>
+                        <th>전기전자통신</th>
                         <th>정보컴퓨터</th>
                         <th>중국어</th>
                     </tr>
                     <tr>
+                    <td>
+                        <ul>
+                            <li><a href="{{front_url('/professor/show/prof-idx/51077?cate_code=3135&subject_idx=1982')}}">배재민</a></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li><a href="{{front_url('/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992')}}">최우영</a></li>                            
+                        </ul>
+                    </td>
                         <td>
                             <ul>
                                 <li class="subTit">정보컴퓨터</li>
@@ -689,7 +696,6 @@
                         <td>
                             <ul>
                                 <li><a href="{{front_url('/professor/show/prof-idx/51318?cate_code=3137&subject_idx=1995')}}">장영희</a></li>
-                                <li><a href="{{front_url('/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995')}}">정경미</a></li>
                             </ul>
                         </td>
                     </tr>

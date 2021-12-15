@@ -7,13 +7,16 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/   
         
@@ -119,9 +122,9 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
-            <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/2240_sky.png" alt="7월 new"></a>
-            <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky2.png" alt="새벽모의고사"></a>
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3046&campus_ccd=605001&search_text=UHJvZE5hbWU66riw7Lac66y47KCc7ZKA7J20" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/09/2240_sky5.png" alt="세무직"></a>
+            <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2240_sky.png" alt="1월 new"></a>
+            <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2240_sky2.png" alt="새벽모의고사"></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3046&campus_ccd=605001&search_text=UHJvZE5hbWU6" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/12/2240_sky5.png" alt="세무직"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            
@@ -129,7 +132,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_01.jpg" alt="9급 일반행정"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2240_01.jpg" alt="9급 일반행정"/>
         </div>
 
         <nav class="evtMenu">
@@ -173,7 +176,7 @@
         </nav>
 
         <section class="evtCtnsBox wb_cts08" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_08.jpg" alt="기본 이론 종합반 클라쓰"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2240_08.jpg" alt="기본 이론 종합반 클라쓰"/>
             <div class="tabs" id="buyLec">                
                 <ul>
                     <li>
@@ -192,7 +195,7 @@
             </div>
 
             <div id="tab01s" class="wrap">            
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_09_cts1.png" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2240_09_cts1.png" />
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU67Jew6rCE" title="9급 연간 패스" target="_blank" style="position: absolute; left: 9.9%; top: 33.26%; width: 38.27%; height: 8.7%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3046&campus_ccd=605001&search_text=UHJvZE5hbWU67Jew6rCE" title="9급 세무 연간 패스" target="_blank" style="position: absolute; left: 51.5%; top: 33.26%; width: 38.27%; height: 8.7%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6MuqwnOyblA%3D%3D" title="9급 일행 2개월 패스" target="_blank" style="position: absolute; left: 9.9%; top: 80.65%; width: 38.27%; height: 8.7%; z-index: 2;"></a>
@@ -203,21 +206,21 @@
             </div> 
 
             <div id="tab02s" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_09_cts2.jpg" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2240_09_cts2.jpg" />
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="_blank" style="position: absolute; left: 18.37%; top: 71.73%; width: 61.22%; height: 15.58%; z-index: 2;"></a>
             </div>
         </section>  
 
         <div class="evtCtnsBox wb_cts10">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2240_10.jpg" alt="전기/통신 수강신청하기"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2240_10.jpg" alt="전기/통신 수강신청하기"/>
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="수강신청하기" style="position: absolute; left: 45.63%; top: 40.13%; width: 28.57%; height: 8.08%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="수강신청하기" style="position: absolute; left: 45.63%; top: 71.92%; width: 28.57%; height: 8.08%; z-index: 2;"></a>
             </div>
         </div>
 
         <section class="evtCtnsBox wb_cts05" >            
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_05.gif" alt="커리큘럼"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2240_05.gif" alt="커리큘럼"/>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_05_1.gif" alt="커리큘럼"/>
                 <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=361935&" title="한덕현" style="position: absolute; left: 85.27%; top: 24.81%; width: 10.45%; height: 20.19%; z-index: 2;"></a>

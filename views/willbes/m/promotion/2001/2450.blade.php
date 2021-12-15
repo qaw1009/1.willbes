@@ -230,7 +230,7 @@
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_09.jpg" alt="교재 신청하기" >
-                {{--<a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute;left: 27.72%;top: 24.32%;width: 58.06%;height: 5.88%;z-index: 2;"></a>--}}
+                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 25.14%; top: 28.96%; width: 47.5%; height: 4.67%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="경찰학" style="position: absolute;left: 16.74%;top: 50.85%;width: 21.78%;height: 3.71%;z-index: 2;"></a>
                 <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180748" target="_blank" title="형사법" style="position: absolute;left: 38.74%;top: 50.85%;width: 21.78%;height: 3.71%;z-index: 2;"></a>
                 <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180567" target="_blank" title="헌법(김)" style="position: absolute;left: 61.74%;top: 50.85%;width: 21.78%;height: 3.71%;z-index: 2;"></a>

@@ -103,6 +103,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2114_sky02.jpg" alt="타사 수강증 인증">
             </a>
             --}}
+            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>
         </div>
 
         <div class="evtCtnsBox wb_top">
@@ -135,7 +136,7 @@
             </div>
         </div>
 --}}
-        <div class="evtCtnsBox wb_cts06">
+        <div class="evtCtnsBox wb_cts06" id="transfer">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2114_06.jpg" alt="수강신청 하기"/>
                 <a href="javascript:go_PassLecture('179737');" title="" style="position: absolute; left: 58.57%; top: 85.86%; width: 27.95%; height: 7.47%; z-index: 2;"></a>

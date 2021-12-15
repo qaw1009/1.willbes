@@ -165,7 +165,7 @@
 				<img src="https://static.willbes.net/public/images/promotion/2021/12/1068_02_02.jpg" alt="">
 				<a href="javascript:go_PassLecture('188905')" title="농업직 패스" style="position: absolute; left: 9.02%; top: 41.95%; width: 17.23%; height: 5.85%; z-index: 2;"></a>
 				<a href="javascript:go_PassLecture('188915')" title="농촌지도사 패스" style="position: absolute; left: 30.71%; top: 41.95%; width: 17.23%; height: 5.85%; z-index: 2;"></a>
-				<a href="javascript:go_PassLecture('188914')" title="농촌지도사 패스" style="position: absolute; left: 51.25%; top: 41.95%; width: 17.23%; height: 5.85%; z-index: 2;"></a>
+				<a href="javascript:go_PassLecture('188913')" title="농촌지도사 패스" style="position: absolute; left: 51.25%; top: 41.95%; width: 17.23%; height: 5.85%; z-index: 2;"></a>
 
 				<a href="javascript:go_PassLecture('188922')" title="농업직 문풀" style="position: absolute; left: 9.02%; top: 71.83%; width: 17.23%; height: 5.85%; z-index: 2;"></a>
 				<a href="javascript:go_PassLecture('188920')" title="농촌지도사 문풀" style="position: absolute; left: 30.71%; top: 71.83%; width: 17.23%; height: 5.85%; z-index: 2;"></a>

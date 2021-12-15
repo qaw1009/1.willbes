@@ -617,7 +617,7 @@
 		</div>		
 
 
-		<div class="evtCtnsBox wb_info" id="notice">
+		<div class="evtCtnsBox wb_info" id="ctsInfo">
             <div class="guide_box">
                 <h2 class="NSK-Black">12월의 기적 장사원 T-PASS 한정판매 안내</h2>
                 <dl>

@@ -677,7 +677,7 @@
                     <tr>
                     <td>
                         <ul>
-                            <li><a href="{{front_url('/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982')}}">배재민</a></li>
+                            <li><a href="{{front_url('/professor/show/prof-idx/51077?cate_code=3135&subject_idx=1982')}}">배재민</a></li>
                         </ul>
                     </td>
                     <td>

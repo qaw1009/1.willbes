@@ -297,7 +297,7 @@ no-repeat 5px center}
                                 <tr>
                                 <td>
                                     <ul>
-                                        <li><a href="{{front_url('/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982')}}">배재민</a></li>
+                                        <li><a href="{{front_url('/professor/show/prof-idx/51077?cate_code=3135&subject_idx=1982')}}">배재민</a></li>
                                     </ul>
                                 </td>
                                 <td>
@@ -419,29 +419,6 @@ no-repeat 5px center}
     <div class="Section sec-prof mt40">
         <div class="sec-prof-title"><img src="https://static.willbes.net/public/images/promotion/main/2018/title01.jpg" title="교수진"></div>
         <div class="widthAuto p_re NSK">
-           {{--
-            <ul class="prof-Tab" id="profRolling">
-                <li><a data-slide-index="0" href="javascript:void(0);" class="active"><span>유아</span>민정선</a></li>
-                <li><a data-slide-index="1" href="javascript:void(0);"><span>초등</span>배재민</a></li>
-                <li><a data-slide-index="2" href="javascript:void(0);"><span>교육학</span>이인재</a></li>
-                <li><a data-slide-index="3" href="javascript:void(0);"><span>교육학</span>홍의일</a></li>
-                <li><a data-slide-index="4" href="javascript:void(0);"><span>전공국어</span>송원영</a></li>
-                <li><a data-slide-index="5" href="javascript:void(0);"><span>전공국어</span>권보민</a></li>
-                <li><a data-slide-index="6" href="javascript:void(0);"><span>전공영어</span>김유석</a></li>
-                <li><a data-slide-index="7" href="javascript:void(0);"><span>전공영어</span>김영문</a></li>
-                <li><a data-slide-index="8" href="javascript:void(0);"><span>전공수학</span>김철홍</a></li>
-                <li><a data-slide-index="9" href="javascript:void(0);"><span>수학교육론</span>박태영</a></li>
-                <li><a data-slide-index="10" href="javascript:void(0);"><span>전공생물</span>강치욱</a></li>
-                <li><a data-slide-index="11" href="javascript:void(0);"><span>생물교육론</span>양혜정</a></li>
-                <li><a data-slide-index="12" href="javascript:void(0);"><span>도덕윤리</span>김병찬</a></li>
-                <li><a data-slide-index="13" href="javascript:void(0);"><span>전공역사</span>최용림</a></li>
-                <li><a data-slide-index="14" href="javascript:void(0);"><span>전공음악</span>다이애나</a></li>
-                <li><a data-slide-index="15" href="javascript:void(0);"><span>전기전자통신</span>최우영</a></li>
-                <li><a data-slide-index="16" href="javascript:void(0);"><span>정보컴퓨터</span>송광진</a></li>
-                <li><a data-slide-index="17" href="javascript:void(0);"><span>정컴교육론</span>장순선</a></li>
-                <li><a data-slide-index="18" href="javascript:void(0);"><span>전공중국어</span>정경미</a></li>
-            </ul>
-            --}}
 
             <ul class="ssam-prof-List">
                 <li class="prof-dropdown">

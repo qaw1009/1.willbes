@@ -37,6 +37,12 @@
 		.wb_02{background:#f4f4f4;}
 
 		.wb_02_01 {background:#fb6250}
+		.wb_02_02 {background:#e5e1d6 url(https://static.willbes.net/public/images/promotion/2021/12/1068_02_bg.jpg) repeat-x center top; position:relative}
+		.check { position:absolute; bottom:0; color:#333; font-size:17px; font-weight:bold; z-index: 10;}
+        .check label {cursor:pointer}
+        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
+        .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
+        .check a.infotxt:hover {background:#108179}   
 		
 		.content_guide_wrap {background:#fff; width:1210px; margin:0 auto; padding:50px 0 100px;}
         .content_guide_wrap .guide_tit{width:1210px;margin:0 auto;text-align:center; }
@@ -84,19 +90,22 @@
         
         input[id="cb1"]:checked + label {background-color: red;}
 
-		/*유의사항*/
-		.evtInfo {padding:80px 0; background:#e9e9e9; color:#555; font-size:14px}
-		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.5}
-		.evtInfoBox h4 {font-size:35px; margin-bottom:20px}
-		.evtInfoBox .infoTit {font-size:20px; margin-bottom:20px}
-		.evtInfoBox ul {margin-bottom:30px}
-        .evtInfoBox li {list-style-type:none; margin-left:20px; margin-bottom:5px}
+        /* 이용안내 */
+        .wb_info {padding:100px 0;background:#ededed}
+        .guide_box{width:1000px; margin:0 auto; text-align:left; word-break:keep-all; line-height:1.5; font-size:13px;}
+        .guide_box h2 {font-size:30px; margin-bottom:30px;color:#3a3a3a;}
+        .guide_box dt{margin-bottom:10px; display:inline-block;font-weight:bold; font-size:17px; border-radius:30px;color:#3a3a3a;font-size:25px;}        
+        .guide_box dd{color:#777; margin:0 0 20px 5px;}
+        .guide_box dd strong {color:#555}
+        .guide_box dd li {margin-bottom:3px; list-style:decimal; margin-left:20px;color:#3a3a3a;font-size:15px}
+        .guide_box dd li a {display:inline-block; margin-left:20px; background:#032E5B; color:#fff; padding:3px 10px; border-radius:15px;}
+        .guide_box .inquire{padding-top:25px;font-size:20px;font-weight:bold;color:#000;} 
 
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">	
 		<div class="sky" id="QuickMenu">
-			@if(time() < strtotime('202112150000'))
+			@if(time() < strtotime('202112140000'))
 			<a href="#transfer">
 				<img src="https://static.willbes.net/public/images/promotion/2021/12/1068_sky1.png"/>				
 			</a>	
@@ -140,16 +149,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/08/1068_01.jpg" alt="커리큘럼">
         </div>
 
-		{{--
-		<div class="evtCtnsBox wb_01s">
-			<div class="wrap">
-				<img src="https://static.willbes.net/public/images/promotion/2021/01/0119_add.jpg" alt="지금 바로 고민 타파하러 가기">
-				<a href="https://pass.willbes.net/promotion/index/cate/3022/code/2028" target="_blank" title="" style="position: absolute; left: 32.05%; top: 77.5%; width: 36.43%; height: 7.03%; z-index: 2;"></a>
-			</div>
-        </div>	
-		--}}
-
-		@if(time() < strtotime('202112150000'))
+		@if(time() < strtotime('202112140000'))
 		<div class="evtCtnsBox wb_02_01" id="transfer">
 			<div class="wrap">
 				<img src="https://static.willbes.net/public/images/promotion/2021/12/1068_02_01.jpg" alt="재도전.환승 이벤트">
@@ -158,6 +158,26 @@
 			</div>
         </div>
 		@endif
+
+		<div class="evtCtnsBox wb_02_02">
+			<div class="wrap">
+				<img src="https://static.willbes.net/public/images/promotion/2021/12/1068_02_02.jpg" alt="">
+				<a href="javascript:go_PassLecture('188905')" title="농업직 패스" style="position: absolute; left: 9.02%; top: 41.95%; width: 17.23%; height: 5.85%; z-index: 2;"></a>
+				<a href="javascript:go_PassLecture('188915')" title="농촌지도사 패스" style="position: absolute; left: 30.71%; top: 41.95%; width: 17.23%; height: 5.85%; z-index: 2;"></a>
+				<a href="javascript:go_PassLecture('188914')" title="농촌지도사 패스" style="position: absolute; left: 51.25%; top: 41.95%; width: 17.23%; height: 5.85%; z-index: 2;"></a>
+
+				<a href="javascript:go_PassLecture('188922')" title="농업직 문풀" style="position: absolute; left: 9.02%; top: 71.83%; width: 17.23%; height: 5.85%; z-index: 2;"></a>
+				<a href="javascript:go_PassLecture('188920')" title="농촌지도사 문풀" style="position: absolute; left: 30.71%; top: 71.83%; width: 17.23%; height: 5.85%; z-index: 2;"></a>
+				<a href="javascript:go_PassLecture('188918')" title="농촌지도사 문풀" style="position: absolute; left: 51.25%; top: 71.83%; width: 17.23%; height: 5.85%; z-index: 2;"></a>
+			</div>
+			<div class="check" id="chkInfo">   
+                <label>
+                    <input name="ischk" type="checkbox" value="Y" />
+                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
+                </label>
+                <a href="#ctsInfo" class="infotxt">이용안내확인하기 ↓</a>
+            </div>
+        </div>
 
 		<div class="evtCtnsBox wb_02" id="to_go">
 			<div class="wrap">
@@ -170,7 +190,7 @@
 				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186521" target="_blank" title="" style="position: absolute;left: 29.27%;top: 87.08%;width: 17.5%;height: 2.85%;z-index: 2;"></a>				
 				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186530" target="_blank" title="" style="position: absolute;left: 52.57%;top: 87.08%;width: 17.5%;height: 2.85%;z-index: 2;"></a>
 				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186529" target="_blank" title="" style="position: absolute;left: 76.47%;top: 87.08%;width: 17.5%;height: 2.85%;z-index: 2;"></a>
-			</div>
+			</div>			
 		</div>
 		       
 		<div class="content_guide_wrap NSK" id="tab">
@@ -594,35 +614,63 @@
 				</table>
             </div>
             <!--유기농업기능사//-->
-		</div>
+		</div>		
 
-		@if(time() < strtotime('202112150000'))
-		<div class="evtCtnsBox evtInfo" id="notice">
-			<div class="evtInfoBox">
-				<h4 class="NSK-Black">유의사항</h4>
-				<div class="infoTit"><strong>재도전&환승 인증 이벤트 유의사항</strong></div>
-				<ul>
-					<li>· 본 이벤트는 1아이디당 1회만 참여 가능합니다.</li>
-					<li>· 인증 완료 처리는 신청 후, 24시간 이내에 처리됩니다. 단, 주말 및 공휴일 인증 건의 경우 평일 오전 중으로 처리됩니다.</li>               
-				</ul>  
-				<div class="infoTit"><strong>1) 재도전 인증</strong></div>
-				<ul>
-					<li>
-						- 본인의 이름이 명시된 수험표 또는 윌비스 PASS 수강생의 경우 [내강의실] 페이지 내 이름과 PASS명이 명시된 이미지 캡쳐 후 업로드 시 인증 가능합니다.<br>
-						(결제내역을 통한 인증 시, 수강자 이름과 결제 금액, 강좌명이 필수로 기재되어 있어야 합니다.)
-					</li>                                    
-				</ul>
-				<div class="infoTit"><strong>2) 환승 인증</strong></div>
-				<ul>					
-					<li>- 본인의 이름, 수강내역, 결제내역 등이 명확하게 기재된 수강증 등의 캡쳐를 통해서만 인증이 가능합니다.</li>
-					<li>- 본 이벤트는 이벤트 참여자가 본인의 명의로 구매/응시한 내용에 한합니다.</li>
-					<li>- 등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>
-					<li>- 발급된 쿠폰의 사용 기간은 3일입니다.</strong></li>
-					<li>- 지급된 쿠폰은 현재 페이지에서 판매중인 [2022 농업직 기본·심화 이론 패키지], [2022 7급 농업직 이론 패키지], [2022 농촌지도사 이론 패키지 (경기·인천 外)], [2022 농촌지도사 이론 패키지 (경기·인천)] 명시된 총 4개의 상품 구매 시에만 적용 가능합니다.</strong></li>                     
-				</ul>			
-			</div>
-		</div> 
-		@endif
+
+		<div class="evtCtnsBox wb_info" id="notice">
+            <div class="guide_box">
+                <h2 class="NSK-Black">12월의 기적 장사원 T-PASS 한정판매 안내</h2>
+                <dl>
+                    <dt>유의사항</dt>
+                    <dd>
+                        <ol>
+                            <li>12월의 기적 이벤트는 12.15.(수)~12.22.(수) 기간 내 진행됩니다.</li>
+							<li>장사원 농업직/농촌지도사 T-PASS의 경우 기간 한정 특별 기획 상품이므로 이벤트 기간 이후에 재판매 계획은 없습니다.</li>
+							<li>12월의 기적 이벤트에 해당하는 상품은 다음과 같습니다.<br>
+							- 농업직 9급 전과목 T-PASS : 99만원<br>
+							- 농촌지도사 [경기/인천] 전과목 T-PASS : 119만원<br>
+							- 농촌지도사 [경기/인천 外] 전과목 T-PASS : 119만원<br>
+							- 농업직 9급 문제풀이 T-PASS : 59만원<br>
+							- 농촌지도사 [경기/인천] 문제풀이 T-PASS : 69만원<br>
+							- 농촌지도사 [경기/인천 外] 문제풀이 T-PASS : 69만원</li>
+							<li>상기 이벤트 해당 상품 구매 시 수강지원 포인트 50,000점을 지급해드립니다. 단, 지급되는 추가 포인트의 경우, 교재 구매 시 사용할 수 있으며 결제완료 후 익일 담당자 확인 후에 지급해드릴 예정입니다.</li>
+							<li>12월의 기적 이벤트 시 구매한 상품에 대한 환불 시, 아래 규정을 준수합니다.<br>
+							- 결제금액 - 지급된 수강지원포인트 - (강좌 정상가의 1일 이용대금*이용일수)</li>
+                        </ol>
+                    </dd>  
+
+				@if(time() < strtotime('202112140000'))
+					<dt>재도전&환승 인증 이벤트 유의사항</dt>
+                    <dd>
+                        <ol>
+							<li>본 이벤트는 1아이디당 1회만 참여 가능합니다.</li>
+							<li>인증 완료 처리는 신청 후, 24시간 이내에 처리됩니다. 단, 주말 및 공휴일 인증 건의 경우 평일 오전 중으로 처리됩니다.</li> 
+                        </ol>
+                    </dd>  
+
+					<dt>재도전 인증</dt>
+                    <dd>
+                        <ol>
+							<li>본인의 이름이 명시된 수험표 또는 윌비스 PASS 수강생의 경우 [내강의실] 페이지 내 이름과 PASS명이 명시된 이미지 캡쳐 후 업로드 시 인증 가능합니다.<br>
+						(결제내역을 통한 인증 시, 수강자 이름과 결제 금액, 강좌명이 필수로 기재되어 있어야 합니다.)</li> 
+                        </ol>
+                    </dd>
+					
+					<dt>2) 환승 인증</dt>
+                    <dd>
+                        <ol>
+							<li>본인의 이름, 수강내역, 결제내역 등이 명확하게 기재된 수강증 등의 캡쳐를 통해서만 인증이 가능합니다.</li>
+							<li>본 이벤트는 이벤트 참여자가 본인의 명의로 구매/응시한 내용에 한합니다.</li>
+							<li>등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>
+							<li>발급된 쿠폰의 사용 기간은 3일입니다.</strong></li>
+							<li>지급된 쿠폰은 현재 페이지에서 판매중인 [2022 농업직 기본·심화 이론 패키지], [2022 7급 농업직 이론 패키지], [2022 농촌지도사 이론 패키지 (경기·인천 外)], [2022 농촌지도사 이론 패키지 (경기·인천)] 명시된 총 4개의 상품 구매 시에만 적용 가능합니다.</strong></li>   
+                        </ol>
+                    </dd>
+				@endif
+                </dl>
+            </div>
+        </div>
+		
 
     </div>
     <!-- End Container -->
@@ -688,6 +736,16 @@
                 return false;
             });			
         });
+
+		function go_PassLecture(code){
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
+                return;
+            }
+
+            var url = '{{ site_url('/periodPackage/show/cate/3028/pack/648001/prod-code/') }}' + code;
+            location.href = url;
+        }
 
 		/* 팝업창 */ 
         function certOpen(){

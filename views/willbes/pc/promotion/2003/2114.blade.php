@@ -8,13 +8,16 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:auto}
+        .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
-        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position: relative;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
         .sky {position:fixed;top:225px;right:10px;z-index:100;}
@@ -92,12 +95,14 @@
         </div>
 
         <div class="sky" id="QuickMenu">
+            {{--
             <a href="#evt05">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2114_sky01.jpg" alt="타사 수강증 인증">
             </a>
             <a href="#evt05">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2114_sky02.jpg" alt="타사 수강증 인증">
             </a>
+            --}}
         </div>
 
         <div class="evtCtnsBox wb_top">
@@ -121,7 +126,7 @@
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2114_04.jpg" alt="합격이 앞당겨집니다" />
         </div>
-
+{{--
         <div class="evtCtnsBox wb_cts05" id="evt05">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2114_05.jpg" alt="학습 커리큘럼" />
@@ -129,11 +134,11 @@
                 <a href="#tip" title="유의사항" style="position: absolute; left: 43.84%; top: 83.27%; width: 15.18%; height: 4.33%; z-index: 2;"></a>
             </div>
         </div>
-        
+--}}
         <div class="evtCtnsBox wb_cts06">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/2114_06.jpg" alt="수강신청 하기"/>
-                <a href="javascript:go_PassLecture('179737');" title="" style="position: absolute; left: 60.09%; top: 84.45%; width: 28.48%; height: 8.74%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2114_06.jpg" alt="수강신청 하기"/>
+                <a href="javascript:go_PassLecture('179737');" title="" style="position: absolute; left: 58.57%; top: 85.86%; width: 27.95%; height: 7.47%; z-index: 2;"></a>
             </div>   
             <div class="check" id="chkInfo">               
                 <label>
@@ -159,6 +164,7 @@
                             (일부 교수진의 경우, 신규 과정이 업데이트 되지 않을 수 있으며 해당 경우에는 이전 연도 과정을 제공해드립니다.)</li>
                             <li>참여 교수진의 일정 및 진행 방식은 상이하게 진행될 수 있으며, 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있다는 점 숙지 부탁드립니다.<br>
                             (과목별 교수진의 제공 과정은 수강신청 상세안내 화면을 참고해주시기 바랍니다.)</li>
+                            <li>이벤트 해당 상품 (전과목PASS) 구매 시  지급되는 추가 포인트의 경우, 교재 구매 시 사용할 수 있으며 결제완료 후 익일 담당자 확인 후에 지급해드릴 예정입니다.</li>
                         </ol>
                     </dd>
 
@@ -195,7 +201,8 @@
                             <li>맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
                             <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
                             <li>본 상품은 특별 기획 상품으로, 수강시작일(결제 당일 포함)로부터 7일 경과 후 환불 시에는 할인 되기 전 정가를 기준으로 사용일수만큼 차감하고 환불됩니다.<br>
-                                · 결제금액 - (강좌 정상가의 1일 이용대금×이용일수)
+                                · 전과목PASS (12월의 기적 이벤트 기간 내 구매) : 결제금액 - 지급된 수강지원포인트 - (강좌 정상가의 1일 이용대금*이용일수)<br>
+                                · 문제풀이PASS : 결제금액 - (강좌 정상가의 1일 이용대금*이용일수)<br>
                             </li>
                         </ol>
                     </dd>
@@ -222,7 +229,7 @@
                             <li>해당 혜택은 PASS 수강기간 내에만 이용 가능합니다. (* 이전 구매자 소급 적용)</li>
                         </ol>
                     </dd>
-
+{{--
                     <dt>재도전&환승 인증 이벤트 유의사항</dt>
                     <dd>
                         <ol>
@@ -238,7 +245,7 @@
                             <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>
                         </ol>
                     </dd>
-                    
+--}}         
                 </dl>
             </div>
         </div>

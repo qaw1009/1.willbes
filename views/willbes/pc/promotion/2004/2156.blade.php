@@ -7,13 +7,16 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/   
         
@@ -95,7 +98,7 @@
 
         .evtMenu {background:#4f7bf6; }            
         .evtMenu ul {width:1120px; margin:0 auto; text-align:left}        
-        .evtMenu ul li{width:calc( 100% / 6); float:left;}
+        .evtMenu ul li{width:calc( 100% / 5); float:left;}
         .evtMenu ul li a{padding:15px 0; color:#fff; line-height:1.4; text-align:center; display:inline-block; width:100%; font-size:14px}
         .evtMenu ul li a.on{border-bottom:5px white solid;}
         .evtMenu ul:after{ content:""; display:block; clear:both;}
@@ -124,9 +127,6 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner" id="QuickMenu">
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/2176" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_sky01.png" alt="적중"></a>
-
-            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1358"  target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/09/2156_sky02.png" alt="완전정복"></a>
-
         </div>
 
         <div class="evtCtnsBox wb_top" >            
@@ -134,7 +134,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2156_01.jpg" alt="윌비스 불꽃소방"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2156_01.jpg" alt="윌비스 불꽃소방"/>
         </div>
 
         <nav class="evtMenu">
@@ -165,53 +165,55 @@
                             교수진<br>YOUTUBE
                         </a>
                     </li>
+                    {{--
                     <li>
                         <a href="javascript:void(0);" onClick="scrolling('.wb_cts02')"  class="tab">
                             무료특강<br>신청
                         </a>
                     </li>
+                    --}}
                 </ul>
             </div>
         </nav>
 
         
         <section class="evtCtnsBox wb_cts07">
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2156_07.jpg" alt="기초 입문 종합반"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2156_07.jpg" alt="기초 입문 종합반"/>
             <div class="tabs" id="buyLec">                
                 <ul>
                     <li>
                         <a href="#tab01s" class="active">
-                            <img src="https://static.willbes.net/public/images/promotion/2021/09/2156_07_tab_on.png" class="on"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2021/09/2156_07_tab.png" class="off"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2021/12/2156_07_tab_on.png" class="on"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2021/12/2156_07_tab.png" class="off"/>
                         </a>
                     </li>
                     <li>
                         <a href="#tab02s">
-                            <img src="https://static.willbes.net/public/images/promotion/2021/09/2156_07_tab2_on.png" class="on"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2021/09/2156_07_tab2.png" class="off"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2021/12/2156_07_tab2_on.png" class="on"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2021/12/2156_07_tab2.png" class="off"/>
                         </a>
                     </li>                  
                 </ul>
             </div>
 
             <div id="tab01s" class="wrap">            
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/2156_07_cts.png" />
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6MuqwnOyblA%3D%3D" target="_blank" title="" style="position: absolute; left: 27.46%; top: 64.99%; width: 44.53%; height: 18.57%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2156_07_cts.png" />
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6&course_idx=" target="_blank" title="" style="position: absolute; left: 27.46%; top: 64.99%; width: 44.53%; height: 18.57%; z-index: 2;"></a>
             </div> 
 
             <div id="tab02s" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/2156_07_cts2.png" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2156_07_cts2.jpg" />
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6TElWRQ%3D%3D" target="_blank" title="" style="position: absolute; left: 27.46%; top: 64.99%; width: 44.53%; height: 18.57%; z-index: 2;"></a>
             </div>
         </section>  
 
         <section class="evtCtnsBox wb_cts08" >
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/2156_08.jpg" alt="5월 개강 불꽃소방 연간 패스"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2156_08.jpg" alt="5월 개강 불꽃소방 연간 패스"/>
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU66rO17LGEIOyXsOqwhA%3D%3D" target="_blank" title="공채" style="position: absolute; left: 18.66%; top: 58.67%; width: 22.14%; height: 9.73%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU66rK97LGEIOyXsOqwhA%3D%3D" target="_blank" title="경채" style="position: absolute; left: 59.38%; top: 58.67%; width: 22.14%; height: 9.73%; z-index: 2;"></a>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2156_05.gif" alt="커리큘럼"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2156_05.gif" alt="커리큘럼"/>
         </section>
 
 
@@ -231,7 +233,7 @@
 
         <section class="evtCtnsBox wb_cts03" >
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/2156_03.jpg" alt="구매하기"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2156_03.jpg" alt="구매하기"/>
                 <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank" title="불꽃소방 라이브 모드 구매하기" style="position: absolute; left: 23.13%; top: 79.16%; width: 55%; height: 7.92%; z-index: 2;"></a>
             </div>
         </section>
@@ -466,14 +468,14 @@
                 </div>
             </div>
         </section>  
-
+{{--
         <section class="evtCtnsBox wb_cts02" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2156_02s.jpg" alt="적중 또 적중"/>
                 <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1358" target="_blank" title="적중사례 자세히 보기" style="position: absolute;  left: 36.79%; top: 88.43%; width: 26.7%; height: 6.65%; z-index: 2;"></a>
             </div>
         </section>
-
+        --}}
          <div class="evtCtnsBox wb_cts09">
             <div class="wb_tipBox">
             <ul class="tab02">

@@ -62,13 +62,11 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-{{--
+
         <div class="sky" id="QuickMenu">            
-            <a href="#cts06">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2256_sky01.png" alt="환승할인">
-            </a>
+            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>
         </div> 
---}}
+
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday NG">        
             <div>
@@ -115,7 +113,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2256_04.jpg" alt="절호의 기회" />
         </div>
 
-        <div class="evtCtnsBox wb_cts05">
+        <div class="evtCtnsBox wb_cts05" id="transfer">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2256_05.jpg" alt="바로 신청하기" />
                 <a href="javascript:go_PassLecture('181424');" title="" style="position: absolute; left: 4.38%; top: 44.05%; width: 19.11%; height: 3.6%; z-index: 2;"></a>

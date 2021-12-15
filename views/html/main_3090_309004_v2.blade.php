@@ -1,14 +1,14 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-<link href="/public/css/willbes/style_hanlim.css??ver={{time()}}" rel="stylesheet">
+<link href="/public/css/willbes/style_job_v2.css??ver={{time()}}" rel="stylesheet">
 <!-- Container -->
-<div id="Container" class="Container hanlim NSK c_both">
+<div id="Container" class="Container job job309004 NSK c_both">
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">자격증<span class="row-line">|</span></li>
-                <li class="subTit">감정평가사</li>
+                <li class="subTit">변리사</li>
             </ul>
             <ul class="menu-List">
                 <li class="dropdown">
@@ -39,74 +39,24 @@
                         </ul>
                     </div>
                 </li>
+
                 <li class="dropdown">
                     <a href="#none">학원수강신청</a>
-                    <div class="drop-Box list-drop-Box list-drop-Box-license">
-                        <table class="ssamProf">
-                            <thead>
-                            <tr>                            
-                                <th colspan="5" scope="col">1차</th>
-                                <th colspan="3" scope="col">2차</th>
-                            </tr>
-                            <tr>
-                                <th width="81">민법</th>
-                                <th width="94">경제학</th>
-                                <th width="98">부동산학원론</th>
-                                <th width="97">감정평가관계법규</th>
-                                <th width="96">회계학</th>
-                                <th width="107">감정평가실무</th>
-                                <th width="107">감정평가이론</th>
-                                <th width="107"><p>감정평가 및 보상법규</p></th>                               
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td rowspan="3">
-                                        <ul>
-                                            <li><a href="https://job.willbes.net/pass/offLecture/index?cate_code=3112&subject_idx=1657&prof_idx=50895">김춘환</a></li>
-                                    </ul></td>
-                                    <td rowspan="3">
-                                        <ul>
-                                          <li><a href="https://job.willbes.net/pass/offLecture/index?cate_code=3112&subject_idx=1658&prof_idx=51258">김영식</a></li>
-                                        </ul>
-                                    </td>
-                                    <td rowspan="3">
-                                        <ul>
-                                          <li><a href="https://job.willbes.net/pass/offLecture/index?cate_code=3112&subject_idx=1664&prof_idx=50900">송우석</a></li>
-                                        </ul>
-                                    </td>
-                                    <td rowspan="3">
-                                        <ul>
-                                          <li><a href="https://job.willbes.net/pass/offLecture/index?cate_code=3112&subject_idx=1663&prof_idx=51303">구갑성</a></li>
-                                        </ul>
-                                    </td>
-                                    <td rowspan="3">
-                                      <ul>
-                                        <li><a href="https://job.willbes.net/pass/offLecture/index?cate_code=3112&subject_idx=1659&prof_idx=51253">이재휴</a></li>
-                                      </ul>
-                                    </td>
-                                    <td rowspan="3">
-                                        <ul>
-                                          <li><a href="https://job.willbes.net/pass/offLecture/index?cate_code=3112&subject_idx=1665&prof_idx=50901">여지훈</a></li>
-                                        </ul>
-                                    </td>
-                                    <td rowspan="3">
-                                        <ul>
-                                          <li><a href="https://job.willbes.net/pass/offLecture/index?cate_code=3112&subject_idx=1666&prof_idx=50902">어정민</a></li>
-                                          <li><a href="https://job.willbes.net/pass/offLecture/index?cate_code=3112&subject_idx=1666&prof_idx=50903">최동진</a></li>
-                                        </ul>
-                                    </td>
-                                    <td rowspan="3">
-                                        <ul>
-                                          <li><a href="https://job.willbes.net/pass/offLecture/index?cate_code=3112&subject_idx=1669&prof_idx=50906">이현진</a></li>
-                                        </ul>
-                                    </td>                                   
-                                </tr>                             
-                            </tbody>
-                        </table>
-                    </div>                   
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">학원수강신청</li>
+                            <li><a href="//job.willbes.net/pass/offLecture/index?cate_code=3113" target="_self">단과반수강신청</a></li>
+                            <li><a href="//job.willbes.net/support/gosiNotice/index/cate/309004?s_cate_code=309004&amp;s_cate_code_disabled=Y" target="_self">학원공지사항</a></li>
+                            <li><a href="//job.willbes.net/pass/offinfo/boardInfo/index/109?on_off_link_cate_code=309004&amp;s_cate_code_disabled=Y" target="_self">강의계획서</a></li>
+                            <li><a href="//job.willbes.net/pass/offinfo/boardInfo/index/80?on_off_link_cate_code=309004&amp;s_cate_code_disabled=Y" target="_self">강의시간표</a></li>
+                            <li><a href="//job.willbes.net/pass/offinfo/boardInfo/index/82?on_off_link_cate_code=309004&amp;s_cate_code_disabled=Y" target="_self">강의실배정표</a></li>
+                            <li><a href="//job.willbes.net/pass/offinfo/boardInfo/index/110?on_off_link_cate_code=309004&amp;s_cate_code_disabled=Y" target="_self">강의자료실</a></li>
+                            <li><a href="//job.willbes.net/lecture/index/cate/309004/pattern/free?search_order=course&amp;course_idx=1220" target="_self">학원보강</a></li>
+                            <li><a href="//job.willbes.net/pass/support/qna/index?on_off_link_cate_code=309004&amp;s_cate_code_disabled=Y" target="_self">학원1:1상담</a></li>
+                        </ul>
+                    </div>                              
                 </li>
-               
+
                 <li class="dropdown">
                     <a href="#none">온라인수강신청</a>
                     <div class="drop-Box list-drop-Box">

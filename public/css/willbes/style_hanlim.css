@@ -122,7 +122,7 @@
     background: #b85712 !important;
 }
 
-/*바로가기 메뉴(고등고시)*/ 
+/*바로가기 메뉴*/ 
 .hanlim .goMenuBtns {background:#fff; padding:10px 0}
 .hanlim .goMenuBtns ul {width:1120px; margin:0 auto}
 .hanlim .goMenuBtns li {
@@ -149,28 +149,6 @@
 	top: 0;
 	z-index: 100;
 }
-
-/*바로가기 메뉴(자격증)*/ 
-.hanlim .go_MenuBtns {background:#fff; padding:10px 0}
-.hanlim .go_MenuBtns ul {width:1120px; margin:0 auto}
-.hanlim .go_MenuBtns li {
-	display: inline;
-	float: left;
-	width: 224px;
-}
-.hanlim .go_MenuBtns li a {
-	display: block;
-	text-align: center;
- }
-.hanlim .go_MenuBtns li a img {display:block; margin:0 auto}
-.hanlim .go_MenuBtns li span {display:inline-block; color:#363636; background:#c9e6fc; border-radius:10px; margin-top:10px; font-size:15px; padding:5px 15px}
-.hanlim .go_MenuBtns li a:hover span {color: #fff; background:#0076e1}
-.hanlim .go_MenuBtns:after {
-	content: "";
-	display: block;
-	clear: both;
-}
-
 
 
 /*업로드강의*/
@@ -456,101 +434,4 @@
 .hl3099 .bx-wrapper .bx-pager.bx-default-pager a.active,
 .hl3099 .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #bf112b !important;
-}
-
-/*상단 gnd 메뉴 (자격증)*/
-.dropdown .list-drop-Box-license {
-    top: 38px;
-    left: 50%;
-    margin-left: -690px;
-    -webkit-margin-start: -469px;
-    width: 1120px;
-    padding: 0;
-    z-index: 100;
-}
-
-/*전문교수진*/
-.hanlim .SecBanner12 .bSlider .slider {
-	height: 100px;	
-}
-.hanlim .SecBanner12 .bx-wrapper .bx-pager {
-	float: none;
-	width: 100%;
-	right: 8px;
-	bottom: 15px;
-	text-align: center;
-}
-.hanlim .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a {
-	background: #ccc;
-	width: 12px;
-	height: 12px;
-	margin: 0 2px;
-	background: #fff;
-	border:1px solid #b9b9b9;
-	border-radius:10px;
-}
-.hanlim .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a:hover,
-.hanlim .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a.active,
-.hanlim .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a:focus {
-	background: #9a9a9a;
-	border:1px solid #9a9a9a;
-}
-.chanlimop .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a.active {
-	width: 40px;
-}
-
-/*전문교수진*/
-.hanlim .SecBanner12 .bSlider .slider {
-	height: 100px;	
-}
-.hanlim .SecBanner12 .bx-wrapper .bx-pager {
-	float: none;
-	width: 100%;
-	right: 8px;
-	bottom: 15px;
-	text-align: center;
-}
-.hanlim .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a {
-	background: #ccc;
-	width: 12px;
-	height: 12px;
-	margin: 0 2px;
-	background: #fff;
-	border:1px solid #b9b9b9;
-	border-radius:10px;
-}
-.hanlim .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a:hover,
-.hanlim .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a.active,
-.hanlim .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a:focus {
-	background: #9a9a9a;
-	border:1px solid #9a9a9a;
-}
-.hanlim .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a.active {
-	width: 40px;
-}
-
-/*전문교수진 */
-.hanlim .SectionBg01 {background:#fbfbfd; padding:100px 0 80px}
-.hanlim .SectionBg01 {background:#fbfbfd; padding:100px 0 80px}
-.hanlim .SecBanner05 {margin-right:-20px; margin-top:20px}
-.hanlim .SecBanner05 li {display:inline; float:left; margin:0 20px 20px 0;}
-.hanlim .SecBanner05:after {content:''; display: block; clear:both}
-
-.hanlim .SecBanner12 {margin-right:-20px; margin-top:20px}
-.hanlim .SecBanner12 li {display:inline; float:left; margin:0 20px 20px 0;}
-.hanlim .SecBanner12:after {content:''; display: block; clear:both}
-
-.hanlim .tx-color {
-	color: #0c5dc0;
-}
-.hanlim .will-nTit {font-size:35px !important; border:0 !important; margin-bottom:30px;}
-
-.hanlim .pro_box {display: flex; flex-wrap: wrap; justify-content: space-between;}
-.hanlim .pro_box > li {
-    position: relative;
-    display: inline-block;
-	width:220px;
-    height: 327px;
-	margin-right:8px;
-    margin-bottom:5px
 }

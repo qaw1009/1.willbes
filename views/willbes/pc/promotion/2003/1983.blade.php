@@ -229,7 +229,7 @@
                             * 지금 구매 시 3만포인트 추가 제공!</div>
                         </td>
                         <td class="NSK-Black">
-                            <input type="radio" id="y_pkg2" name="y_pkg" value="176415" onClick=""/><label for="y_pkg2">450,000원</label>
+                            <input type="radio" id="y_pkg2" name="y_pkg" value="176415" onClick=""/><label for="y_pkg2">290,000원</label>
                         </td>
                     </tr>
                 </tbody>

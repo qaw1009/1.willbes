@@ -31,9 +31,9 @@
         .evt_01 span {position:absolute; top:-50px; left:50%; margin-left:-210px; z-index: 2;}
 
         .evt_02 {background:#fff;}
-        .evt_02_box ul {width:1030px; margin:0 auto; display: flex; justify-content: space-around;}
+        .evt_02_box ul {width:1030px; margin:0 auto; display: flex; justify-content: space-between;}
         .evt_02_box li {width:calc(100% / 6)}
-        .evt_02_box li a {display:block; background:#1b1b1b; color:#fff; font-size:20px; margin-right:10px; border-radius:10px; padding:15px 0}
+        .evt_02_box li a {display:block; background:#1b1b1b; color:#fff; font-size:20px; margin:0 5px; border-radius:10px; padding:15px 0}
         .evt_02_box li a:hover,
         .evt_02_box li a.active {background:#c11c20}
 
@@ -115,7 +115,24 @@
                 <div id="tab04"><img src="https://static.willbes.net/public/images/promotion/2021/12/2475_02_t4.jpg"  alt="헌법" /></div>
                 <div id="tab05"><img src="https://static.willbes.net/public/images/promotion/2021/12/2475_02_t5.jpg"  alt="범죄학" /></div>
                 <div id="tab06"><img src="https://static.willbes.net/public/images/promotion/2021/12/2475_02_t6.jpg"  alt="민법총칙" /></div>
-            </div>   
+            </div>  
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2475_02_01.jpg"  alt="3가지 포인트" />   
+            <div class="evt_02_box">
+                <ul class="evtTab">
+                    <li><a href="#tab07">형사법</a></li>
+                    <li><a href="#tab08">경찰학</a></li>
+                    <li><a href="#tab09">헌법(김원욱)</a></li>
+                    <li><a href="#tab10">헌법(이국령)</a></li>
+                    <li><a href="#tab11">범죄학</a></li>
+                    <li><a href="#tab12">민법총칙</a></li>
+                </ul>
+                <div id="tab07"><img src="https://static.willbes.net/public/images/promotion/2021/12/2475_02_t7.jpg"  alt="형사법" /></div>
+                <div id="tab08"><img src="https://static.willbes.net/public/images/promotion/2021/12/2475_02_t8.jpg"  alt="경찰학" /></div>
+                <div id="tab09"><img src="https://static.willbes.net/public/images/promotion/2021/12/2475_02_t9.jpg"  alt="헌법" /></div>
+                <div id="tab10"><img src="https://static.willbes.net/public/images/promotion/2021/12/2475_02_t10.jpg"  alt="헌법" /></div>
+                <div id="tab11"><img src="https://static.willbes.net/public/images/promotion/2021/12/2475_02_t11.jpg"  alt="범죄학" /></div>
+                <div id="tab12"><img src="https://static.willbes.net/public/images/promotion/2021/12/2475_02_t12.jpg"  alt="민법총칙" /></div>
+            </div> 
         </div>
 
         <form id="add_apply_form" name="add_apply_form">

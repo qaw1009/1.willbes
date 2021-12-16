@@ -73,7 +73,7 @@ class ProfessorHotClipFModel extends WB_Model
             ,hc.PhcIdx,hc.SiteCode,hc.CateCode,hc.ProfIdx,hc.SubjectIdx,hc.OrderNum
             ,hc.ProfBgImagePath,hc.ProfBgImageName,hc.ProfBgImageRealName
 	        ,hc.ProfBtnIsUse,hc.CurriculumBtnIsUse,hc.StudyCommentBtnIsUse,hc.RegDatm
-	        ,ps.SubjectName,wp.wProfName
+	        ,ps.SubjectName,pf.ProfNickName
 	        ,(
                 SELECT
                     CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
@@ -88,7 +88,7 @@ class ProfessorHotClipFModel extends WB_Model
             ) AS thumbnail_data
             ,(
                 SELECT CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
-                    'ProfName', wp.wProfName,
+                    'ProfNickName', pf.ProfNickName,
                     'LearnPatternCcd', c.LearnPatternCcd,
                     'ProductTitle', IF(c.LearnPatternCcd = '615007','학원직강 신청', '동영상강의 신청'),
                     'ProdCode',a.ProdCode,
@@ -102,7 +102,7 @@ class ProfessorHotClipFModel extends WB_Model
             ) AS product_info_1
             ,(
                 SELECT CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
-                    'ProfName', wp.wProfName,
+                    'ProfNickName', pf.ProfNickName,
                     'LearnPatternCcd', c.LearnPatternCcd,
                     'ProductTitle', IF(c.LearnPatternCcd = '615007','학원직강 신청', '동영상강의 신청'),
                     'ProdCode',a.ProdCode,
@@ -120,7 +120,6 @@ class ProfessorHotClipFModel extends WB_Model
             INNER JOIN {$this->_table['professor_hot_clip']} AS hc ON g.PhcgIdx = hc.PhcgIdx
             INNER JOIN {$this->_table['product_subject']} AS ps ON hc.SubjectIdx = ps.SubjectIdx
             INNER JOIN {$this->_table['professor']} AS pf ON hc.ProfIdx = pf.ProfIdx
-            INNER JOIN {$this->_table['pms_professor']} AS wp ON pf.wProfIdx = wp.wProfIdx
         ";
         $order_by = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $where = $this->_conn->makeWhere($arr_condition);

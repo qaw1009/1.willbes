@@ -715,7 +715,7 @@ class BasePromotion extends \app\controllers\FrontController
             foreach ($result as $row) {
                 $data[$row['group_title']][$row['PhcIdx']]['PhcIdx'] = $row['PhcIdx'];
                 $data[$row['group_title']][$row['PhcIdx']]['ProfIdx'] = $row['ProfIdx'];
-                $data[$row['group_title']][$row['PhcIdx']]['wProfName'] = $row['wProfName'];
+                $data[$row['group_title']][$row['PhcIdx']]['ProfNickName'] = $row['ProfNickName'];
                 $data[$row['group_title']][$row['PhcIdx']]['SubjectName'] = $row['SubjectName'];
                 $data[$row['group_title']][$row['PhcIdx']]['SubjectIdx'] = $row['SubjectIdx'];
                 $data[$row['group_title']][$row['PhcIdx']]['CateCode'] = $row['CateCode'];

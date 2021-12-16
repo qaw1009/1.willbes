@@ -4,7 +4,7 @@
 <!-- Container -->
 
 <style type="text/css">
-    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:2.2vw; line-height:1.5; clear:both}
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:2.4vw; line-height:1.5; clear:both}
     .evtCtnsBox img {width:100%; max-width:720px;}
     /*.evtCtnsBox a {border:1px solid #000}*/
 
@@ -30,7 +30,7 @@
     .evtCtnsBox .btnRequest a {display:block; border-radius:40px; padding:15px; text-align:center; color:#fff; background:#000; font-size:20px}
     .evtCtnsBox .btnRequest a:hover {background:#ffff00; color:#11153a}
 
-    .evtInfo {padding:50px 20px; background:#333; color:#fff; font-size:2vw}
+    .evtInfo {padding:50px 20px; background:#333; color:#fff;}
     .evtInfoBox {text-align:left; line-height:1.2}
     .evtInfoBox h4 {font-size:3vw; margin-bottom:20px}
     .evtInfoBox .infoTit {font-size:2.6vw;margin-bottom:20px}

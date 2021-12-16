@@ -243,7 +243,7 @@
                     var expt_disc_rate = ret.ret_data.expt_disc_rate;     //예상할인율
                     var expt_disc_price = ret.ret_data.expt_disc_price;   //예상할인금액
                     var expt_pay_price = ret.ret_data.expt_pay_price;     //예상결제금액
-                    $("#order_box_"+learn_pattern).find('.expt-disc').text(parseInt(expt_disc_price).toLocaleString()+'('+expt_disc_rate+') 할인');
+                    $("#order_box_"+learn_pattern).find('.expt-disc').text(parseInt(expt_disc_price).toLocaleString()+'할인');
                     $("#order_box_"+learn_pattern).find('.prod-cnt').text(prod_cnt+'과목');
                     $("#order_box_"+learn_pattern).find('.sale-price').text(parseInt(expt_pay_price).toLocaleString());
                 }

@@ -641,7 +641,7 @@ class Cart extends \app\controllers\FrontController
     }
 
     /**
-     * 결제예상금액 리턴 (묶음할인정보만 적용)
+     * 결제예상금액 리턴 (조건할인정보만 적용)
      * @return CI_Output
      */
     public function getExptPayPrice()
@@ -649,7 +649,6 @@ class Cart extends \app\controllers\FrontController
         $arr_prod_code = (array) $this->_reqP('prod_code');
         $real_sale_price = 0;   // 총 판매금액
         $expt_pay_price = 0;    // 총 예상결제금액
-        $expt_disc_rate = '0%'; // 예상할인율
 
         try {
             if (empty($arr_prod_code) === true) {
@@ -662,13 +661,8 @@ class Cart extends \app\controllers\FrontController
                 throw new \Exception('상품정보 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
-            // 상품별 묶음할인정보 조회
-            $disc_data = $this->productFModel->getBundleDiscRate($arr_prod_code, $this->_site_code);
-
-            // 예상할인율 셋팅
-            if (empty($disc_data) === false) {
-                $expt_disc_rate = array_get(current($disc_data), 'DiscRate', 0) . '' . array_get(current($disc_data), 'DiscRateUnit', '%');
-            }
+            // 상품별 조건할인정보 조회
+            $disc_data = $this->productFModel->getCondDiscRate($arr_prod_code, $this->_site_code);
 
             // 총 예상결제금액 계산
             foreach ($data as $row) {
@@ -695,6 +689,10 @@ class Cart extends \app\controllers\FrontController
 
                 $real_sale_price += $price_row['RealSalePrice'];
             }
+
+            // 예상할인금액, 할인율 셋팅
+            $expt_disc_price = $real_sale_price - $expt_pay_price;
+            $expt_disc_rate = round($expt_disc_price / $real_sale_price * 100) . '%';
         } catch (\Exception $e) {
             return $this->json_error($e->getMessage(), $e->getCode());
         }
@@ -702,7 +700,7 @@ class Cart extends \app\controllers\FrontController
         return $this->json_result(true, '', [], [
             'real_sale_price' => $real_sale_price,
             'expt_disc_rate' => $expt_disc_rate,
-            'expt_disc_price' => ($real_sale_price - $expt_pay_price),
+            'expt_disc_price' => $expt_disc_price,
             'expt_pay_price' => $expt_pay_price
         ]);
     }

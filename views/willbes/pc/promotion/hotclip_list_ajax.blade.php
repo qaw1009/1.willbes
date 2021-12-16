@@ -11,7 +11,7 @@
                             @foreach($arr_row as $key => $row)
                                 <dt>
                                     <a href="javascript:void(0);" class="btn-hotclip-prof {{($loop->parent->index == 1 && $loop->depth == 2 && $loop->index == 1 ? 'active' : '')}}"
-                                       data-prof-id="{{$row['PhcIdx']}}">{{$row['SubjectName']}} <strong>{{$row['wProfName']}}</strong>
+                                       data-prof-id="{{$row['PhcIdx']}}">{{$row['SubjectName']}} <strong>{{$row['ProfNickName']}}</strong>
                                     </a>
                                 </dt>
                             @endforeach
@@ -28,7 +28,7 @@
                 @foreach($arr_row as $key => $row)
                     <div id="tab{{$row['PhcIdx']}}" class="profBox" style="display: {{($loop->parent->index == 1 && $loop->depth == 2 && $loop->index == 1 ? 'block' : 'none')}}">
                         <div class="p_re">
-                            <img src="{{$row['ProfBgImagePath'].$row['ProfBgImageName']}}" alt="{{$row['SubjectName']}} {{$row['wProfName']}}">
+                            <img src="{{$row['ProfBgImagePath'].$row['ProfBgImageName']}}" alt="{{$row['SubjectName']}} {{$row['ProfNickName']}}">
                             <div class="btnBox">
                                 <div class="prof-top-btn">
                                     @if($row['CurriculumBtnIsUse'] == 'Y')
@@ -71,7 +71,7 @@
                                     foreach ($product_data as $key => $product_row) {
                                         $html .= '<div>';
                                             $html .= '<a href="javascript:void(0);" class="btn-add-product"
-                                                data-prof-name="'.$product_row['ProfName'].'"
+                                                data-prof-name="'.$product_row['ProfNickName'].'"
                                                 data-learn-pattern="'.$product_row['LearnPatternCcd'].'"
                                                 data-prod-code="'.$product_row['ProdCode'].'"
                                                 data-prod-name="'.$product_row['ProdName'].'">';
@@ -90,7 +90,7 @@
                                     foreach ($product_data as $key => $product_row) {
                                         $html .= '<div>';
                                             $html .= '<a href="javascript:void(0);" class="btn-add-product"
-                                                data-prof-name="'.$product_row['ProfName'].'"
+                                                data-prof-name="'.$product_row['ProfNickName'].'"
                                                 data-learn-pattern="'.$product_row['LearnPatternCcd'].'"
                                                 data-prod-code="'.$product_row['ProdCode'].'"
                                                 data-prod-name="'.$product_row['ProdName'].'">';
@@ -243,7 +243,7 @@
                     var expt_disc_rate = ret.ret_data.expt_disc_rate;     //예상할인율
                     var expt_disc_price = ret.ret_data.expt_disc_price;   //예상할인금액
                     var expt_pay_price = ret.ret_data.expt_pay_price;     //예상결제금액
-                    $("#order_box_"+learn_pattern).find('.expt-disc').text(parseInt(expt_disc_price).toLocaleString()+'('+expt_disc_rate+') 할인');
+                    $("#order_box_"+learn_pattern).find('.expt-disc').text(parseInt(expt_disc_price).toLocaleString()+'할인');
                     $("#order_box_"+learn_pattern).find('.prod-cnt').text(prod_cnt+'과목');
                     $("#order_box_"+learn_pattern).find('.sale-price').text(parseInt(expt_pay_price).toLocaleString());
                 }

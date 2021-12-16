@@ -4,7 +4,7 @@
 <!-- Container -->
 
 <style type="text/css">
-    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:2.4vw; line-height:1.5; clear:both}
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
     .evtCtnsBox img {width:100%; max-width:720px;}
     /*.evtCtnsBox a {border:1px solid #000}*/
 
@@ -14,26 +14,26 @@
     .evt_02_box li a:hover,
     .evt_02_box li a.active {background:#c11c20}
 
-    .event04 {background:#3252a9; padding-bottom:50px; }
+    .event04 {background:#3252a9; padding-bottom:50px;}
     .c_table {margin:20px; border-radius:10px; padding:10px; background:#fff; box-shadow: 5px 5px 10px rgba(0,0,0,.5);}
     .c_table th,
-    .c_table td {font-size:4vw; text-align:center}
+    .c_table td {font-size:20px; text-align:center}
     .c_table th {background:#11153a; color:#edbb3b; padding:15px 0; }        
     .c_table tbody tr {border-bottom:1px solid #cfd1d1; border-left:1px solid #cfd1d1}
-    .c_table tbody td {border-right:1px solid #cfd1d1; color:#acacac; height:70px; line-height:70px; position:relative; font-size:3.5vw}
+    .c_table tbody td {border-right:1px solid #cfd1d1; color:#acacac; height:70px; line-height:70px; position:relative; font-size:16px}
     .c_table tbody td span.end {display:block; position:absolute; top:0; left:0; width:100%; height:100%; z-index:5; background:url(https://static.willbes.net/public/images/promotion/2021/12/2475_end.png) no-repeat center center; background-size:auto 90%}        
     .c_table .txtinfo {margin:20px 0; border:1px solid #e4e4e4; padding:20px; height:150px; overflow-y:auto}
 
     .evtCtnsBox input[type=text] {height:40px; padding:0 5px; color:#494a4d; border:1px solid #b8b8b8; vertical-align:middle; width:48%;}
     .evtCtnsBox input[type=checkbox] {width:20px; height:20px} 
     .evtCtnsBox .btnRequest {width:85%; margin:0 auto}
-    .evtCtnsBox .btnRequest a {display:block; border-radius:40px; padding:15px; text-align:center; color:#fff; background:#000; font-size:4.6vw}
+    .evtCtnsBox .btnRequest a {display:block; border-radius:40px; padding:15px; text-align:center; color:#fff; background:#000; font-size:20px}
     .evtCtnsBox .btnRequest a:hover {background:#ffff00; color:#11153a}
 
     .evtInfo {padding:50px 20px; background:#333; color:#fff;}
     .evtInfoBox {text-align:left; line-height:1.2}
-    .evtInfoBox h4 {font-size:3vw; margin-bottom:20px}
-    .evtInfoBox .infoTit {font-size:2.6vw;margin-bottom:20px}
+    .evtInfoBox h4 {font-size:22px; margin-bottom:20px}
+    .evtInfoBox .infoTit {font-size:18px;margin-bottom:20px}
     .evtInfoBox ul {margin-bottom:20px}
     .evtInfoBox ul li {list-style:decimal; margin-left:20px; margin-bottom:10px;}
     .evtInfoBox span {color:#d4c24b}

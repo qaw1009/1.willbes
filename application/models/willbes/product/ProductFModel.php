@@ -31,6 +31,8 @@ class ProductFModel extends WB_Model
         'product_bundle_disc' => 'lms_product_bundle_disc',
         'product_bundle_disc_info' => 'lms_product_bundle_disc_info',
         'product_bundle_disc_r_product' => 'lms_product_bundle_disc_r_product',
+        'product_cond_disc' => 'lms_product_cond_disc',
+        'product_cond_disc_r_product' => 'lms_product_cond_disc_r_product',
         'product_series' => 'lms_product_subject_r_category_r_code',
         'product_salebook' => 'vw_product_salebook',
         'product_content' => 'lms_product_content',
@@ -746,7 +748,7 @@ class ProductFModel extends WB_Model
     }
 
     /**
-     * 묶음할인율 리턴 (운영자패키지, 학원종합반 상품만 해당)
+     * 묶음할인율 리턴 (운영자패키지, 학원종합반 상품만 해당, 정책변경으로 미사용)
      * @param $arr_prod_code
      * @param $site_code
      * @return array|null
@@ -809,6 +811,78 @@ class ProductFModel extends WB_Model
                     'DiscTitle' => $row['DiscTitle']
                 ];
             }
+        }
+
+        return $result;
+    }
+
+    /**
+     * 조건할인율 리턴 (운영자패키지, 학원종합반 상품만 해당)
+     * @param $arr_prod_code
+     * @param $site_code
+     * @return array|null
+     */
+    public function getCondDiscRate($arr_prod_code, $site_code)
+    {
+        $result = null;
+
+        // 운영사이트 조건할인율 설정여부 확인
+        $cnt_rows = $this->_conn->getListResult($this->_table['product_cond_disc'], 'DiscIdx'
+            , ['EQ' => ['SiteCode' => get_var($site_code, '0'), 'IsUse' => 'Y', 'IsStatus' => 'Y']]);
+        if (empty($cnt_rows) === true) {
+            return null;
+        }
+
+        // 조건할인율 조회
+        $column = 'TA.DiscIdx, CD.DiscTitle, CDP.ProdCode, CDP.DiscRate, CDP.DiscType, if(CDP.DiscType = "P", "원", "%") as DiscRateUnit';
+        $from = '
+            from (
+                select CDP.DiscIdx, group_concat(CDP.ProdCode) as DiscProdCode, count(0) as DiscProdCnt		
+                from ' . $this->_table['product_cond_disc_r_product'] . ' as CDP
+                where CDP.ProdCode in ?
+                    and CDP.CondType = "D"
+                    and CDP.IsStatus = "Y"
+                group by CDP.DiscIdx
+            ) as TA	
+                inner join (
+                    select CDP.DiscIdx 
+                    from ' . $this->_table['product_cond_disc_r_product'] . ' as CDP
+                    where CDP.ProdCode in ?
+                        and CDP.CondType = "C"
+                        and CDP.IsStatus = "Y"
+                    group by CDP.DiscIdx
+                    having count(0) > 1
+                ) as TB
+                    on TA.DiscIdx = TB.DiscIdx
+                inner join ' . $this->_table['product_cond_disc'] . ' as CD
+                    on TA.DiscIdx = CD.DiscIdx
+                inner join ' . $this->_table['product_cond_disc_r_product'] . ' as CDP
+                    on TA.DiscIdx = CDP.DiscIdx
+            where TA.DiscProdCnt = CD.DiscProdCnt
+                and find_in_set(CDP.ProdCode, TA.DiscProdCode) > 0
+                and CD.SiteCode = ?
+                and CD.IsUse = "Y"
+                and CD.IsStatus = "Y"	
+                and CDP.CondType = "D"
+                and CDP.IsStatus = "Y"
+            order by TA.DiscIdx asc            
+        ';
+
+        // 쿼리 실행
+        $data = $this->_conn->query('select ' . $column . $from, [$arr_prod_code, $arr_prod_code, $site_code])->result_array();
+        if (empty($data) === true) {
+            return null;
+        }
+
+        // 상품코드별 할인정보 설정 (상품코드가 중복될 경우 최종 등록정보 사용)
+        foreach ($data as $row) {
+            $result[$row['ProdCode']] = [
+                'DiscIdx' => $row['DiscIdx'],
+                'DiscRate' => $row['DiscRate'],
+                'DiscType' => $row['DiscType'],
+                'DiscRateUnit' => $row['DiscRateUnit'],
+                'DiscTitle' => $row['DiscTitle']
+            ];
         }
 
         return $result;

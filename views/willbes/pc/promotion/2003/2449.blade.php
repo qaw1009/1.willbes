@@ -38,7 +38,7 @@
         </div>
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">
-            <a href="https://pass.willbes.net/pass/promotion/index/cate/3059/code/2119" target="_blank">
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2449_01.jpg" alt="수강신청" />
             </a>
         </div>

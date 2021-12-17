@@ -80,7 +80,15 @@
                                                 <input type="checkbox" name="prod_code[]" value="{{ $data['ProdCode'] . ':' . $data['ProdPriceData'][0]['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $data['ProdCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-sale-price="{{ $data['ProdPriceData'][0]['RealSalePrice'] }}" class="chk_products" @if($data['IsSalesAble'] == 'N') disabled="disabled" @endif>
                                                 <label for="goods_chk" class="pl5 d_inblock tx-spacing">
                                                     <span>{{ number_format($data['ProdPriceData'][0]['SalePrice'], 0) }}원</span>
-                                                    <span class="discount">(↓{{ $data['ProdPriceData'][0]['SaleRate'] . $data['ProdPriceData'][0]['SaleRateUnit'] }}) ▶ </span>
+                                                    <span class="discount">
+                                                        {{-- TODO 임용 예외처리 : '원' 일 경우 % 로 변환 (21.12.17 최진영)--}}
+                                                        @if($__cfg['SiteGroupCode'] === '1011' && $data['ProdPriceData'][0]['SaleRateUnit'] === '원' )
+                                                            (↓{{ number_format(($data['ProdPriceData'][0]['SalePrice'] - $data['ProdPriceData'][0]['RealSalePrice'] ) / $data['ProdPriceData'][0]['SalePrice'] * 100). '%'}})
+                                                        @else
+                                                            (↓{{ number_format($data['ProdPriceData'][0]['SaleRate'],0) . $data['ProdPriceData'][0]['SaleRateUnit'] }})
+                                                        @endif
+                                                         ▶
+                                                    </span>
                                                     <span class="tx-blue">{{ number_format($data['ProdPriceData'][0]['RealSalePrice'], 0) }}원</span>
                                                 </label>
                                             </div>

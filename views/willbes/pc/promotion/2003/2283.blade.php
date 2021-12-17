@@ -44,7 +44,7 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="sky">
+        <div class="sky" id="QuickMenu">
             <a href="#evt04"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2283_sky01.jpg" alt="무료수강권">
             </a>

@@ -43,13 +43,12 @@
                     </tbody>
                 </table>
             </div>
-
         @php
             if(empty($data['ProdPriceData'] ) === false) {
                 $sale_type_ccd = $data['ProdPriceData'][0]['SaleTypeCcd'];
                 $sale_price = $data['ProdPriceData'][0]['SalePrice'];
                 $real_sale_price = $data['ProdPriceData'][0]['RealSalePrice'];
-                if($data['SiteCode'] === '2018' && $data['ProdPriceData'][0]['SaleRateUnit'] === '원' ) {
+                if($__cfg['SiteGroupCode'] === '1011' && $data['ProdPriceData'][0]['SaleRateUnit'] === '원' ) {
                     $sale_info = number_format(($data['ProdPriceData'][0]['SalePrice'] - $data['ProdPriceData'][0]['RealSalePrice'] ) / $data['ProdPriceData'][0]['SalePrice'] * 100). '%';
                 } else {
                     $sale_info = number_format($data['ProdPriceData'][0]['SaleRate'],0) . $data['ProdPriceData'][0]['SaleRateUnit'];

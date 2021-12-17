@@ -24,8 +24,8 @@
                                 @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
                                     <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
                                     <span class="discount">
-                                        {{-- TODO 임용 예외처리 : 운영자패키지 + '원' 일 경우 % 로 변환 (21.12.01 최진영)--}}
-                                        @if($row['SiteCode'] === '2017' && $price_row['SaleRateUnit'] === '원' )
+                                        {{-- TODO 임용 예외처리 :  '원' 일 경우 % 로 변환 (21.12.01 최진영)--}}
+                                        @if($__cfg['SiteGroupCode'] === '1011' && $price_row['SaleRateUnit'] === '원' )
                                             ({{ number_format(($price_row['SalePrice'] - $price_row['RealSalePrice'] ) / $price_row['SalePrice'] * 100). '%'}}↓)
                                         @else
                                             ({{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }}↓)

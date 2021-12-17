@@ -329,7 +329,7 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit">윌비스 <span class="NSK-Black tx-blue">신광은 경찰 PASS </span> 이용안내 </p>
             <ul class="tabs">
-                <li><a href="#tab01">22년 2차 PASS</a></li>
+                <li><a href="#tab01" class="active">22년 2차 PASS</a></li>
                 <li><a href="#tab02">Final PASS (22년 1차 대비)</a></li>
             </ul>
 
@@ -399,7 +399,7 @@
                             * 전국모의고사 및 빅매치 모의고사 중 온라인 경행경채 직렬이 없다면 온라인 일반경찰로 응시를 꼭 하시기 바랍니다.<br>
                             (* 학원 모의고사에 따라 진행)<br>
                             최종합격자 발표일로부터 1개월경과 후 요청 시에는 환급이 불가합니다.<br>
-                            자세한 환급신청 방법은 공지사항에서 확인 바랍니다.</li>
+                            자세한 환급신청 방법은 공지사항에서 확인 바랍니다.</li>
                         </ol>
                     </dd>
 
@@ -538,6 +538,7 @@
                 </dl>
             </div>
         </div>
+
         <!-- content_guide_wrap //-->
     </div>
     <!-- End evtContainer -->
@@ -551,48 +552,7 @@
     </script>
 
     <script type="text/javascript">
-        var $regi_form = $('#regi_form');
-
-        /*tab*/
-        $(document).ready(function(){
-            $(".tabs li a").click(function(){
-                var activeTab = $(this).attr("href");
-                $(".tabs li a").removeClass("active");
-                $(this).addClass("active");
-                $(".content_guide_box").hide();
-                $(activeTab).fadeIn();
-                return false;
-            });
-
-            var url = window.location.href;
-            if(url.indexOf("tab3") > -1){
-                var activeTab = "#tab3";
-                $(".tabs li a").removeClass("active");
-                $(".tabs li a[href='#tab3']").addClass("active");
-                $(".tabContents").hide();
-                $(activeTab).show();
-                return false;
-            }else{
-                $(".tabs li a").removeClass("active");
-                $(".tabs li a[href='#tab1']").addClass("active");
-                $(".content_guide_box").hide();
-                $(".content_guide_box:first").show();
-            }
-        });
-
-        function goDesc(tab){
-            location.href = '#tab';
-            var activeTab = "#"+tab;
-            $(".tabs li a").removeClass("active");
-            $(".tabs li a[href='#"+tab+"']").addClass("active");
-            $(".content_guide_box").hide();
-            $(activeTab).show();
-        }
-
-        /*디데이카운트다운*/
-        $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
-        });        
+        var $regi_form = $('#regi_form'); 
 
 
          /* 팝업창 */
@@ -632,6 +592,21 @@
             }
             goCartNDirectPay(ele_id, 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');
         }
+
+
+         /*탭(텍스터버전)*/
+        $(document).ready(function(){
+            $(".tabContents").hide();
+            $(".tabContents:first").show();
+            $(".tabContaier ul li a").click(function(){
+            var activeTab = $(this).attr("href");
+            $(".tabContaier ul li a").removeClass("active");
+            $(this).addClass("active");
+            $(".tabContents").hide();
+            $(activeTab).fadeIn();
+            return false;
+            });
+        });
 
         /*무료 교재지급*/
         function fn_promotion_etc_submit() {
@@ -678,19 +653,46 @@
             return apply_msg;
         }
 
-         /*탭(텍스터버전)*/
-            $(document).ready(function(){
-                $(".tabContents").hide();
-                $(".tabContents:first").show();
-                $(".tabContaier ul li a").click(function(){
+        /*tab*/
+        $(document).ready(function(){
+            $(".tabs li a").click(function(){
                 var activeTab = $(this).attr("href");
-                $(".tabContaier ul li a").removeClass("active");
+                $(".tabs li a").removeClass("active");
                 $(this).addClass("active");
-                $(".tabContents").hide();
+                $(".content_guide_box").hide();
                 $(activeTab).fadeIn();
                 return false;
-                });
             });
+
+            var url = window.location.href;
+            if(url.indexOf("tab3") > -1){
+                var activeTab = "#tab3";
+                $(".tabsl li a").removeClass("active");
+                $(".tabs li a[href='#tab03']").addClass("active");
+                $(".tabContents").hide();
+                $(activeTab).show();
+                return false;
+            }else{
+                $(".tabs li a").removeClass("active");
+                $(".tabs li a[href='#tab01']").addClass("active");
+                $(".content_guide_box").hide();
+                $(".content_guide_box:first").show();
+            }
+        });
+
+        function goDesc(tab){
+            location.href = '#tab';
+            var activeTab = "#"+tab;
+            $(".tabs li a").removeClass("active");
+            $(".tabs li a[href='#"+tab+"']").addClass("active");
+            $(".content_guide_box").hide();
+            $(activeTab).show();
+        }
+
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
+        });   
     </script>
 
     

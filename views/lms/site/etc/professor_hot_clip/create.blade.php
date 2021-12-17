@@ -144,6 +144,7 @@
                                     <th>상품종류</th>
                                     <th>노출영역</th>
                                     <th>항목</th>
+                                    <th>버튼제목</th>
                                     <th>DP순서</th>
                                     <th>삭제</th>
                                 </tr>
@@ -173,7 +174,10 @@
                                                 </select>
                                             </td>
                                             <td>
-                                                <input type="text" name="order_num[]" value="{{$row['OrderNum']}}">
+                                                <input type="text" class="form-control" name="button_title[]" value="{{$row['ButtonTitle']}}" autocomplete="off">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="order_num[]" value="{{$row['OrderNum']}}" autocomplete="off">
                                             </td>
                                             <td>
                                                 <a href="#none" class="btn-product-delete" data-pp-idx="{{$row['PpIdx']}}">
@@ -200,6 +204,7 @@
                                     <th>상품종류</th>
                                     <th>노출영역</th>
                                     <th>항목</th>
+                                    <th>버튼제목</th>
                                     <th>DP순서</th>
                                     <th>삭제</th>
                                 </tr>
@@ -229,7 +234,10 @@
                                                 </select>
                                             </td>
                                             <td>
-                                                <input type="text" name="order_num[]" value="{{$row['OrderNum']}}">
+                                                <input type="text" class="form-control" name="button_title[]" value="{{$row['ButtonTitle']}}" autocomplete="off">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="order_num[]" value="{{$row['OrderNum']}}" autocomplete="off">
                                             </td>
                                             <td>
                                                 <a href="#none" class="btn-product-delete" data-pp-idx="{{$row['PpIdx']}}">
@@ -512,7 +520,10 @@
                     html += '	</td>';
                     html += '	<td class="form-inline">'+htmlProdItemCcdSelectBox()+'</td>';
                     html += '	<td class="form-inline">';
-                    html += '		<input type="text" class="form-control" name="order_num[]" value="999">';
+                    html += '		<input type="text" class="form-control" name="button_title[]" value="동영상강의 신청" autocomplete="off">';
+                    html += '	</td>';
+                    html += '	<td class="form-inline">';
+                    html += '		<input type="text" class="form-control" name="order_num[]" value="999" autocomplete="off">';
                     html += '	</td>';
                     html += '	<td>';
                     html += '       <a href="javascript:void(0);" class="temp-product-delete"><i class="fa fa-times red"></i></a>';
@@ -541,7 +552,10 @@
                     html += '	</td>';
                     html += '	<td class="form-inline">'+htmlProdItemCcdSelectBox()+'</td>';
                     html += '	<td class="form-inline">';
-                    html += '		<input type="text" class="form-control" name="order_num[]" value="999">';
+                    html += '		<input type="text" class="form-control" name="button_title[]" value="학원직강 신청" autocomplete="off">';
+                    html += '	</td>';
+                    html += '	<td class="form-inline">';
+                    html += '		<input type="text" class="form-control" name="order_num[]" value="999" autocomplete="off">';
                     html += '	</td>';
                     html += '	<td>';
                     html += '       <a href="javascript:void(0);" class="temp-product-delete"><i class="fa fa-times red"></i></a>';

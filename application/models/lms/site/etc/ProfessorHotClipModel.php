@@ -297,7 +297,7 @@ class ProfessorHotClipModel extends WB_Model
                 ,'pp.IsStatus' => 'Y'
             ]
         ];
-        $column = "pp.PpIdx, pp.ProdCode, pp.Territory, pp.ProdItemCcd, p.ProdTypeCcd, pl.LearnPatternCcd, c.CcdName AS LearnPatternCcdName, p.ProdName, pp.OrderNum";
+        $column = "pp.PpIdx, pp.ProdCode, pp.Territory, pp.ProdItemCcd, pp.ButtonTitle, p.ProdTypeCcd, pl.LearnPatternCcd, c.CcdName AS LearnPatternCcdName, p.ProdName, pp.OrderNum";
         $from = "
             FROM {$this->_table['professor_hot_clip_product']} AS pp
             INNER JOIN {$this->_table['product']} AS p ON pp.ProdCode = p.ProdCode
@@ -317,6 +317,7 @@ class ProfessorHotClipModel extends WB_Model
                 $return[$row['ProdTypeCcd']][$row['PpIdx']]['ProdCode'] = $row['ProdCode'];
                 $return[$row['ProdTypeCcd']][$row['PpIdx']]['Territory'] = $row['Territory'];
                 $return[$row['ProdTypeCcd']][$row['PpIdx']]['ProdItemCcd'] = $row['ProdItemCcd'];
+                $return[$row['ProdTypeCcd']][$row['PpIdx']]['ButtonTitle'] = $row['ButtonTitle'];
                 $return[$row['ProdTypeCcd']][$row['PpIdx']]['ProdName'] = $row['ProdName'];
                 $return[$row['ProdTypeCcd']][$row['PpIdx']]['OrderNum'] = $row['OrderNum'];
             }
@@ -704,6 +705,7 @@ class ProfessorHotClipModel extends WB_Model
                     $inputData['ProdCode'] = $input['prod_code'][$key];
                     $inputData['Territory'] = $input['territory'][$key];
                     $inputData['ProdItemCcd'] = $input['prod_item_ccd'][$key];
+                    $inputData['ButtonTitle'] = $input['button_title'][$key];
                     $inputData['OrderNum'] = $input['order_num'][$key];
 
                     // pp_idx 값으로 insert, update 구분

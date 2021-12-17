@@ -265,10 +265,12 @@
 
                 if (disc_rate < 0) {
                     alert('할인율은 0 이상의 숫자여야만 합니다.');
+                    $regi_form.find('[name="disc_rate[]"]').eq(index).val('0');
                     return;
                 }
                 if (disc_type === 'R' && disc_rate > 100) {
                     alert('할인율은 100 이하의 숫자여야만 합니다.');
+                    $regi_form.find('[name="disc_rate[]"]').eq(index).val('0');
                     return;
                 }
 
@@ -282,6 +284,7 @@
 
                 if (real_pay_price < 0) {
                     alert('할인금액은 0보다 작을 수 없습니다.');
+                    $regi_form.find('[name="disc_rate[]"]').eq(index).val('0');
                     return;
                 }
 

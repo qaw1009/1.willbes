@@ -90,7 +90,7 @@ class ProfessorHotClipFModel extends WB_Model
                 SELECT CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
                     'ProfNickName', pf.ProfNickName,
                     'LearnPatternCcd', c.LearnPatternCcd,
-                    'ProductTitle', IF(c.LearnPatternCcd = '615007','학원직강 신청', '동영상강의 신청'),
+                    'ProductTitle', a.ButtonTitle,
                     'ProdCode',a.ProdCode,
                     'ProdName',b.ProdName,
                     'ProdItemCcdName', IF(a.ProdItemCcd = '747001', '', CONCAT(' - ',fn_ccd_name(a.ProdItemCcd)))
@@ -104,7 +104,7 @@ class ProfessorHotClipFModel extends WB_Model
                 SELECT CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
                     'ProfNickName', pf.ProfNickName,
                     'LearnPatternCcd', c.LearnPatternCcd,
-                    'ProductTitle', IF(c.LearnPatternCcd = '615007','학원직강 신청', '동영상강의 신청'),
+                    'ProductTitle', a.ButtonTitle,
                     'ProdCode',a.ProdCode,
                     'ProdName',b.ProdName,
                     'ProdItemCcdName', IF(a.ProdItemCcd = '747001', '', CONCAT(' - ',fn_ccd_name(a.ProdItemCcd)))

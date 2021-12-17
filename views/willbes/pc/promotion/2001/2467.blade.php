@@ -31,9 +31,8 @@
         
         .wb_01 {background:#57280f}
 
-        .wb_03 {background:#39796d}
-  
-}    
+        .wb_03 {background:#39796d} 
+   
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer"> 

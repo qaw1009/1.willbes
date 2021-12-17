@@ -67,8 +67,8 @@
                                             </td>
                                             <td class="form-inline">
                                                 <select class="form-control input-sm set-pay-price" name="disc_type[]" title="할인구분">
-                                                    <option value="R" @if($prod_row['DiscRate'] == 'R') selected="selected" @endif>%</option>
-                                                    <option value="P" @if($prod_row['DiscRate'] == 'P') selected="selected" @endif>원</option>
+                                                    <option value="R" @if($prod_row['DiscType'] == 'R') selected="selected" @endif>%</option>
+                                                    <option value="P" @if($prod_row['DiscType'] == 'P') selected="selected" @endif>원</option>
                                                 </select>
                                                 <input type="number" name="disc_rate[]" class="form-control input-sm set-pay-price" title="할인율" value="{{ $prod_row['DiscRate'] }}">
                                             </td>

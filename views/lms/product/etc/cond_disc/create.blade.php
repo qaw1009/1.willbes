@@ -67,8 +67,8 @@
                                             </td>
                                             <td class="form-inline">
                                                 <select class="form-control input-sm set-pay-price" name="disc_type[]" title="할인구분">
-                                                    <option value="R" @if($prod_row['DiscRate'] == 'R') selected="selected" @endif>%</option>
-                                                    <option value="P" @if($prod_row['DiscRate'] == 'P') selected="selected" @endif>원</option>
+                                                    <option value="R" @if($prod_row['DiscType'] == 'R') selected="selected" @endif>%</option>
+                                                    <option value="P" @if($prod_row['DiscType'] == 'P') selected="selected" @endif>원</option>
                                                 </select>
                                                 <input type="number" name="disc_rate[]" class="form-control input-sm set-pay-price" title="할인율" value="{{ $prod_row['DiscRate'] }}">
                                             </td>
@@ -265,10 +265,12 @@
 
                 if (disc_rate < 0) {
                     alert('할인율은 0 이상의 숫자여야만 합니다.');
+                    $regi_form.find('[name="disc_rate[]"]').eq(index).val('0');
                     return;
                 }
                 if (disc_type === 'R' && disc_rate > 100) {
                     alert('할인율은 100 이하의 숫자여야만 합니다.');
+                    $regi_form.find('[name="disc_rate[]"]').eq(index).val('0');
                     return;
                 }
 
@@ -282,6 +284,7 @@
 
                 if (real_pay_price < 0) {
                     alert('할인금액은 0보다 작을 수 없습니다.');
+                    $regi_form.find('[name="disc_rate[]"]').eq(index).val('0');
                     return;
                 }
 

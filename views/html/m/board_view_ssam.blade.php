@@ -1,7 +1,6 @@
-@extends('willbes.pc.layouts.master')
+@extends('html.m.layouts.master')
 
 @section('content')
-<!-- Container -->
 <style type="text/css">
     .ssamLecList {line-height:1.2; letter-spacing:0;}
     .ssamLecList span {vertical-align:top}
@@ -10,51 +9,70 @@
 
     .subjectWrap h5 {font-size:16px; margin-bottom:10px; border-bottom:2px solid #999; padding-bottom:10px}
     .subjectWrap .lecListBox {display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom:30px}
-    .subjectWrap .lecList {padding:10px 10px 10px 0;  border-bottom:1px solid #ccc; flex: 1 1 40%;}
-    .subjectWrap .lecList li {margin-bottom:5px; }
-    .subjectWrap .lecList li:first-child {font-size:14px; font-weight:bold}
-    .subjectWrap .lecList li span.txt01 {font-size:12px; color:#e62727; font-weight:normal}
+    .subjectWrap .lecList {padding:10px 10px 10px 0; border-bottom:1px solid #ccc; flex: 1 1 40%;}
+    .subjectWrap .lecList li {margin-bottom:5px;}
+    .subjectWrap .lecList li:first-child {font-weight:bold}
+    .subjectWrap .lecList li span.txt01 {color:#e62727; font-weight:normal; font-size:11px}
     .subjectWrap .lecList li:last-child span {color:#e62727;font-weight:bold}
     .subjectWrap .lecList .btnLecBuy {margin-top:10px}
     .subjectWrap .lecList .btnLecBuy a {display:inline-block; padding:5px 10px; background:#ff6600; color:#fff; border-radius:4px; text-align:center; margin-right:5px; font-size:11px}
     .subjectWrap .lecList .btnLecBuy a:last-child {background:#2e898e; margin:0}
     .subjectWrap .lecList .btnLecBuy a:hover {background:#000}
+
+    /* 폰 가로, 태블릿 세로*/
+    @@media only screen and (max-width: 374px)  {
+        .subjectWrap .lecList {padding:10px 0; flex: 1 1 100%;}
+    }
+
+    /* 태블릿 세로 */
+    @@media only screen and (min-width: 375px) and (max-width: 640px) {       
+        .subjectWrap .lecList {padding:10px 0; flex: 1 1 100%;}
+    }
+
+    /* 태블릿 가로, PC */
+    @@media only screen and (min-width: 641px) {
+        .subjectWrap .lecList {padding:10px 10px 10px 0; flex: 1 1 40%;}
+    }
+
 </style>
-<div id="Container" class="subContainer widthAuto c_both">
-    <div class="Menu NGR c_both">
-        <h3>
-            <ul class="menu-Tit">
-                <li class="Tit">임용<span class="row-line">|</span></li>
-                <li class="subTit">윌비스임용</li>
-            </ul>
-            <ul class="menu-List">
-                <li>
-                    <a href="#none">내강의실</a>
-                </li>
-                <li>
-                    <a href="#none">강의안내/신청</a>
-                </li>
-                <li>
-                    <a href="#none">무료강의</a>
-                </li>
-                <li>
-                    <a href="#none">임용정보</a>
-                </li>
-                <li>
-                    <a href="#none">고객센터</a>
-                </li>
-            </ul>
-        </h3>
+
+<!-- Container -->
+<div id="Container" class="Container NG c_both">
+    <div class="onSearch">
+        <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />
+        <label for="onsearch"><button title="검색">검색</button></label>
     </div>
-    <div class="Depth">
-        <img src="{{ img_url('sub/icon_home.gif') }}"> 
-        <span class="depth"><span class="depth-Arrow">></span><strong>고객센터</strong></span>
-        <span class="depth"><span class="depth-Arrow">></span><strong>공지사항</strong></span>
+
+    <div class="willbes-Tit NGEB p_re">  
+        공지사항
     </div>
-    <div class="Content p_re">
-        <div class="willbes-AcadInfo c_both">
-            
-            <div class="ssamLecList NGR">
+
+    <div class="lineTabs lecListTabs c_both">
+        <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
+            <tbody>
+                <tr class="list bg-light-gray">
+                    <td class="w-data tx-left">
+                        <dl class="w-info">
+                            <dt>교육학,유·초등,중등</dt>
+                        </dl>
+                        <div class="w-tit">
+                            <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                        </div>
+                        <dl class="w-info tx-gray">
+                            <dt>2018-00-00<span class="row-line">|</span></dt>
+                            <dt>조회수 : <span class="tx-blue">10</span></dt>
+                        </dl>
+                    </td>
+                </tr>
+                <tr class="flie">
+                    <td class="w-file NGR">
+                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
+                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
+                    </td>
+                </tr>
+                <tr class="txt">
+                    <td class="w-txt NGR">
+                    <div class="ssamLecList NGR">
                 <h3 class="NSK-Black">윌비스 임용 <span>2021년 1~2월 </span>강의 일정</h3>
                 <div class="subjectWrap">
                     <h5 class="NGEB">교육학논술 이경범</h5>
@@ -666,11 +684,21 @@
                     </table>
                 <div class="tx-right mt10">※ 상기 내용은 학원 사정 상 변경될 수 있습니다.</div>
             </div>
-
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="lecSubject mt40">
+            <a href="{{ site_url('/home/html/m/mypage_csnotice_list') }}">목록</a>
         </div>
-
-        <!-- willbes-AcadInfo -->
     </div>
+
+    <div class="goTopbtn">
+        <a href="javascript:link_go();">
+            <img src="{{ img_url('m/main/icon_top.png') }}">
+        </a>
+    </div>
+    <!-- Topbtn -->
 
 </div>
 <!-- End Container -->

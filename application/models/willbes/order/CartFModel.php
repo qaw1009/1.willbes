@@ -789,7 +789,7 @@ class CartFModel extends BaseOrderFModel
     }
 
     /**
-     * 장바구니 데이터에 단과/제휴 할인율 정보를 추가하여 리턴 (재수강, 수강연장 제외)
+     * 장바구니 데이터에 단과/패키지/제휴 할인율 정보를 추가하여 리턴 (재수강, 수강연장 제외)
      * @param array $cart_rows [유효한 장바구니 데이터]
      * @param null|int $aff_idx [제휴할인식별자]
      * @return mixed
@@ -813,6 +813,16 @@ class CartFModel extends BaseOrderFModel
             // 과정별 단과할인 (상품코드 기준)
             $chk_key = 'ProdCode';
             $disc_data = $this->productFModel->getLetureDiscRate($arr_prod_code, $site_code);
+
+            if (empty($disc_data) === true) {
+                // 상품별 조건할인 (상품코드 기준, 패키지/종합반 상품만 적용)
+                $disc_data = $this->productFModel->getCondDiscRate($arr_prod_code, $site_code);
+            }
+
+            /*// 할인정책 동시 적용 (사용안함)
+            $disc_lecture_data = (array) $this->productFModel->getLetureDiscRate($arr_prod_code, $site_code);  // 과정별 단과할인 (상품코드 기준)
+            $disc_cond_data = (array) $this->productFModel->getCondDiscRate($arr_prod_code, $site_code);  // 상품별 조건할인 (상품코드 기준)
+            $disc_data = array_replace($disc_lecture_data, $disc_cond_data);   // 할인정보 병합 (동일상품코드는 후위 우선)*/
         }
 
         if (empty($disc_data) === false) {

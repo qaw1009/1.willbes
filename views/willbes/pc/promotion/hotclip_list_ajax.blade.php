@@ -130,7 +130,12 @@
                     </div>
                 </div>
             </div>
-            <div class="tx-red tx16 strong mb20">* 학원직강과 동영상강의를 각각 신청하는 경우에는 할인 적용 및 동시 결제가 불가합니다.</div>
+            <div class="tx-red tx16 strong mb10">
+                * 학원직강과 동영상강의를 각각 신청하는 경우에는 할인 적용 및 동시 결제가 불가합니다.
+            </div>
+            <div class="tx-red tx16 strong mb20">
+                * 학원직강과 동영상강의를 각각 신청하고자 하는 경우, 할인 적용을 위해서는 한가지 방법으로 결제하고, 추후 <br>1:1상담 게시판을 통하여 변경 신청해 주시기 바랍니다.
+            </div>
             <div class="checkWrap"><input type="checkbox" id="is_chk" name="is_chk" value="Y"> <label for="is_chk">페이지 하단의 상품 관련 유의사항을 모두 확인하였고, 이에 동의합니다.</label></div>
         </div>
     </div>

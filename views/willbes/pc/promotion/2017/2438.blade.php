@@ -84,7 +84,7 @@
         .tabCts .prof-clip-btn a:hover img.play {opacity:1;}
         .tabCts .pkgBuy {display:flex; justify-content: space-between; margin:20px 0 40px}
         .tabCts .pkgBuy div {flex-grow: 1;}
-        .tabCts .pkgBuy a {display:block; line-height:1.3; font-weight:bold; background:#111; color:#fff; padding:20px 25px; text-align:center; margin-right:10px}
+        .tabCts .pkgBuy a {display:block; line-height:1.3; font-weight:bold; background:#111; color:#fff; padding:20px 0; text-align:center; margin-right:10px}
         .tabCts .pkgBuy div:nth-of-type(even) a {background:#4b66b0;}
         .tabCts .pkgBuy a:hover {background:#ffd800 !important; color:#111}
         .tabCts .pkgBuy div:last-child a {margin:0}

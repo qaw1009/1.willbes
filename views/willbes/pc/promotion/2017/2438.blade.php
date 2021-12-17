@@ -118,7 +118,7 @@
         .evtInfoBox ul {margin-bottom:30px}
         .evtInfoBox li {list-style-type: decimal;margin-left:30px; margin-bottom:10px}
 
-        .willbes-Layer-CurriBox {top:2300px}
+        .willbes-Layer-CurriBox {top:2300px; margin-left: -560px;}
 
         .ssam .willbes-Layer-youtube {
             display: none;

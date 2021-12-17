@@ -109,6 +109,7 @@
             <a href="{{ site_url('/home/html/m/map_2018') }}" target="_blank">오시는 길</a>
             <a href="{{ site_url('/home/html/m/mypage_csvideo_list_2017') }}" target="_blank">상담실 글목록</a>
             <a href="{{ site_url('/home/html/m/mypage_csvideo_write_2017') }}" target="_blank">상담실 글보기</a>
+            <a href="{{ site_url('/home/html/m/board_view_ssam') }}" target="_blank">공지 강의일정 글보기</a>
         </div>
     </li>
     <li>        

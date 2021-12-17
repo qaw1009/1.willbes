@@ -239,7 +239,7 @@
                             <tr>
                                 <td>2022년1차대비 2단계 동형모의고사 종합반(헌법 이국령)</td>
                                 <td><span style="text-decoration: line-through;">1,000,000원</span><br />
-                                <span style="color:#f72739">550,000원</span></td>                        
+                                <span style="color:#f72739">500,000원</span></td>                    
                                 <td><a href="https://police.willbes.net/pass/offPackage/show/prod-code/187834" target="_blank">신청하기 ></a></td>
                             </tr>                                                         
                         </tbody>

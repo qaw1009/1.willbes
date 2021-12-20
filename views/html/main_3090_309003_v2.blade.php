@@ -2,6 +2,9 @@
 
 @section('content')
 <link href="/public/css/willbes/style_job_v2.css??ver={{time()}}" rel="stylesheet">
+<style>
+.Section1 {background:#f0eee3; padding:100px 0}
+</style>
 <!-- Container -->
 <div id="Container" class="Container job job309003 NSK c_both">
     <div class="Menu widthAuto NGR c_both">
@@ -208,26 +211,158 @@
     </div>
     
     {{--최근 업로드 강좌--}}
-    <div class="Section mt50">
+    <div class="Section mt100">
         <div class="widthAuto">
-            <div class="will-nTit bd-none">
-                최근 <span class="tx-color">업로드 강좌</span>
+            <div class="will-nTit NSK-Black">
+                최근 <span class="tx-color">업로드</span> 강좌
+                <span class="f_right tx12 NSK-Thin pt10">* 최근 1주일 이내 업데이트된 강좌들 입니다.</span>
             </div>
-            <div class="uploadLec">
-                <div class="sliderNumV vSlider">
-                    <div><a href="#">형사소송법 신광은 <span>|</span> <strong>2021년 1차대비 신광은 형사소송법 심화이론 + OX (20년 10월)</strong> </a></div>
-                    <div><a href="#">경찰학개론 장정훈 <span>|</span> <strong>2021년 1차대비 신광은 형사소송법 심화이론 + OX (20년 10월)</strong> </a></div>
-                    <div><a href="#">한국사 원유철 <span>|</span> <strong>2021년 1차대비 신광은 형사소송법 심화이론 + OX (20년 10월)</strong> </a></div>
-                    <div><a href="#">한국사 오태진 <span>|</span> <strong>2021년 1차대비 신광은 형사소송법 심화이론 + OX (20년 10월)</strong> </a></div>
-                    <div><a href="#">영어 하승민 <span>|</span> <strong>2021년 1차대비 신광은 형사소송법 심화이론 + OX (20년 10월)</strong> </a></div>
+            <div class="uploadLec NSK">
+                <div class="vSlider">
+                    <div class="sliderNumV">
+                        <div>
+                            <div class="lecReview">
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/51135/lec_list_51135.png">
+                                    </div>
+                                    <div class="lecinfo">
+                                        <p>형법 신광은</p>
+                                        <p>2021년 1차대비 신광은 형법 기본이론(20년 11월) 2021년 1차대비 신광은 1111)</p>
+                                        <p>12월 16일 총 4강 업로드</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="lecReview">
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/50135/lec_list_50135.png">
+                                    </div>
+                                    <div class="lecinfo">
+                                        <p>영어 하승민</p>
+                                        <p>2021년 1차대비 하승민 영어 형법 기본이론(20년 11,12월) 하승민 영어 형법 기본이론(20년 11,12월)</p>
+                                        <p>12월 16일 총 3강 업로드</p>
+                                    </div>
+                                </a>
+                            </div>   
+                        </div>
+
+                        <div>                         
+                            <div class="lecReview">
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/51146/lec_list_51146.png">
+                                    </div>
+                                    <div class="lecinfo">
+                                        <p>형법 김원욱</p>
+                                        <p>2021년 1차대비 김원욱 형법 기본이론(20년 11월) 김원욱 형법 기본이론(20년 11월)</p>
+                                        <p>12월 16일 총 4강 업로드</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="lecReview">
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/50748/lec_list_50748.png">
+                                    </div>
+                                    <div class="lecinfo">
+                                        <p>영어 김현정</p>
+                                        <p>2021년 1차대비 김현정 영어 형법 기본이론(20년 11,12월) 김현정 영어 형법 기본이론(20년 11,12월)</p>
+                                        <p>12월 16일 총 3강 업로드</p>
+                                    </div>
+                                </a>
+                            </div>   
+                        </div>  
+
+                        <div>                      
+                            <div class="lecReview">
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/50748/lec_list_50748.png">
+                                    </div>
+                                    <div class="lecinfo">
+                                        <p>영어 김현정</p>
+                                        <p>2021년 1차대비 김현정 영어 형법 기본이론(20년 11,12월)</p>
+                                        <p>12월 16일 총 3강 업로드</p>
+                                    </div>
+                                </a>
+                            </div>  
+                            <div class="lecReview">
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/51135/lec_list_51135.png">
+                                    </div>
+                                    <div class="lecinfo">
+                                        <p>형법 신광은</p>
+                                        <p>2021년 1차대비 신광은 형법 기본이론(20년 11월)</p>
+                                        <p>12월 16일 총 4강 업로드</p>
+                                    </div>
+                                </a>
+                            </div>  
+                        </div>
+
+                        <div>                       
+                            <div class="lecReview">
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/51135/lec_list_51135.png">
+                                    </div>
+                                    <div class="lecinfo">
+                                        <p>형법 신광은</p>
+                                        <p>2021년 1차대비 신광은 형법 기본이론(20년 11월)</p>
+                                        <p>12월 16일 총 4강 업로드</p>
+                                    </div>
+                                </a>
+                            </div> 
+                            <div class="lecReview">
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/50748/lec_list_50748.png">
+                                    </div>
+                                    <div class="lecinfo">
+                                        <p>영어 김현정</p>
+                                        <p>2021년 1차대비 김현정 영어 형법 기본이론(20년 11,12월)</p>
+                                        <p>12월 16일 총 3강 업로드</p>
+                                    </div>
+                                </a>
+                            </div>  
+                        </div>
+
+                        <div>                                             
+                            <div class="lecReview">
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/51146/lec_list_51146.png">
+                                    </div>
+                                    <div class="lecinfo">
+                                        <p>형법 김원욱</p>
+                                        <p>2021년 1차대비 김원욱 형법 기본이론(20년 11월)</p>
+                                        <p>12월 16일 총 4강 업로드</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="lecReview">
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/50748/lec_list_50748.png">
+                                    </div>
+                                    <div class="lecinfo">
+                                        <p>영어 김현정</p>
+                                        <p>2021년 1차대비 김현정 영어 형법 기본이론(20년 11,12월)</p>
+                                        <p>12월 16일 총 3강 업로드</p>
+                                    </div>
+                                </a>
+                            </div>                          
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     
-    <div class="Section hotIssue mt50">
+    <div class="Section hotIssue mt100">
         <div class="widthAuto">
-            <div class="copyTit NSK-Black">
+            <div class="will-nTit NSK-Black">
                 한림법학원 <span class="tx-color">Hot Issue!</span> <span class="NSK ml20 tx16">학원강의일정 및 이벤트 등 중요내용을 확인하세요.</span>
             </div>
             <ul>
@@ -246,7 +381,7 @@
         <div class="widthAuto">
             <div class="SecBanner12">
                 <div class="will-nTit NSK-Black">
-                    전문 <span class="cop-color">교수진</span>
+                    전문 <span class="tx-color">교수진</span>
                     <span class="tx16 NSK-Thin pt10 ml20">경찰 합격을 위한 선택! 최고의 교수진으로 수험생의 합격을 돕겠습니다.</span>
                 </div>
                 <ul class="pro_box">
@@ -367,51 +502,76 @@
         </div>
     </div>     
 
-    {{--이달의 강의 / 강의맛보기 --}}
-    <div class="Section lectureBestWrap mt50">
+    {{-- 대표 강의 맛보기--}}
+    <div class="Section Section1 mt100">
         <div class="widthAuto">
-            <div class="copyTit NSK-Black">
-                윌비스 한림법학원 <span class="tx-color">대표 강의 맛보기</span>
+            <div class="will-nTit">
+                <strong class="NSK-Black">윌비스</strong> <strong class="NSK-Black"><span class="tx-color">대표 강의 맛보기</span></strong>
             </div>
-            <div class="f_left">
-                <div>윌비스<br>
-                대표 강의 맛보기</div>
-                {{--<a href="#none">강의 더보기 ></a>--}}
-            </div>
-            <div class="lectureBest NSK">
-                <div class="lectureBestBox">
-                    <ul class="lbSlider">
+            <div class="preview NSK">
+                <div class="previewBox">
+                    <ul class="pvslider">
                         <li>
                             <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_282x228_01.jpg" alt="배너명">
-                                <div>행정법 김정일 11월 22일 : 오리엔테이션</div>
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/prof_index_50769.png">
+                                <div>
+                                    오리엔테이션, 무역모형기초 1회 1강
+                                    <strong>국제경제학 황종휴</strong>
+                                </div>
                             </a>
                         </li>
                         <li>
                             <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_282x228_02.jpg" alt="배너명">
-                                <div>행정법 김정일 11월 22일 : 오리엔테이션</div>
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50837/prof_index_50837.png">
+                                <div>
+                                    03월 27일 : 제 10회 모의고사 1회 1강
+                                    <strong>국제경제학 황종휴</strong>
+                                </div>
                             </a>
                         </li>
                         <li>
                             <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_282x228_03.jpg" alt="배너명">
-                                <div>행정법 김정일 11월 22일 : 오리엔테이션</div>
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50838/prof_index_50838.png">
+                                <div>
+                                    09월 04일 : 2019 학제통합논술Ⅰ~ 학논Ⅱ2-1문 1회 1강
+                                    <strong>국제경제학 황종휴</strong>
+                                </div>
                             </a>
                         </li>
                         <li>
                             <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_282x228_02.jpg" alt="배너명">
-                                <div>행정법 김정일 11월 22일 : 오리엔테이션</div>
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png">
+                                <div>
+                                    오리엔테이션, 무역모형기초 1회 1강
+                                    <strong>국제경제학 황종휴</strong>
+                                </div>
                             </a>
                         </li>
-                    </ul> 
+                        <li>
+                            <a href="#none">
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50841/prof_index_50841.png">
+                                <div>
+                                    09월 04일 : 2019 학제통합논술Ⅰ~ 학논Ⅱ2-1문 1회 1강
+                                    <strong>국제경제학 황종휴</strong>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50848/prof_index_50848.png">
+                                <div>
+                                    03월 27일 : 제 10회 모의고사 1회 1강
+                                    <strong>국제경제학 황종휴</strong>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>  
+                    <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
+                    <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>                
                 </div>
-                <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p> 
             </div>
         </div>
-    </div>
+    </div>  
 
     <div class="Section loadMap mt50">
         <div class="widthAuto">
@@ -594,17 +754,16 @@
     //최근 업로드 강좌 
     $(function() {
         $('.sliderNumV').bxSlider({
-            mode: 'vertical', 
+            mode: 'fade', 
             auto: true,
-            controls: true,
-            infiniteLoop: true,
-            pagerType: 'short',
-            minSlides: 1,
-            pause: 4000,
-            pager: true,
+            touchEnabled: false,
+            controls: false,
+            pause: 3000,
+            autoHover: true,
+            pager:true,
             onSliderLoad: function(){
                 $(".vSlider").css("visibility", "visible").animate({opacity:1}); 
-            } 
+            }
         });
     });    
 
@@ -647,6 +806,31 @@
         $("#imgBannerRight").click(function (){
             slidesImg.goToNextSlide();
         });
-    });     
+    });    
+
+    $(function() {
+        var slidesImg1 = $(".pvslider").bxSlider({
+            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+            auto:true,
+            speed:350,
+            pause:4000,
+            pager:true,
+            controls:false,
+            minSlides:3,
+            maxSlides:3,
+            slideWidth: 460,
+            slideMargin:10,
+            autoHover: true,
+            moveSlides:1,
+            pager:true,
+        });
+        $("#imgBannerLeft1").click(function (){
+            slidesImg1.goToPrevSlide();
+        });
+
+        $("#imgBannerRight1").click(function (){
+            slidesImg1.goToNextSlide();
+        });
+    }); 
 </script>
 @stop

@@ -70,9 +70,9 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3098') }}" target="_blank">고등고시 법원행시</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3099') }}" target="_blank">고등고시 변호사시험</a></li>
                 <li class="c_both"></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_3090_309002') }}" target="_blank">전문자격증 공인노무사</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_3090_309003') }}" target="_blank">전문자격증 감정평가사</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_3090_309004') }}" target="_blank">전문자격증 변리사</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_3090_309002_v2') }}" target="_blank">전문자격증 공인노무사</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_3090_309003_v2') }}" target="_blank">전문자격증 감정평가사</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_3090_309004_v2') }}" target="_blank">전문자격증 변리사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_3090_309005') }}" target="_blank">전문자격증 관세사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_3090_309006') }}" target="_blank">전문자격증 세무사</a></li>                
                 <li class="c_both"></li>

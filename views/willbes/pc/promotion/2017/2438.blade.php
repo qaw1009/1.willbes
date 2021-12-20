@@ -79,7 +79,7 @@
         .tabCts .prof-top-btn a:hover {background-color:#ffd800; color:#0a2230}
  
         .tabCts .prof-clip-btn {margin-top:14px}
-        .tabCts .prof-clip-btn a {display:inline-block; margin-right:5px; position: relative;}
+        .tabCts .prof-clip-btn a {display:inline-block; margin-right:5px; position: relative; border:1px solid #ccc}
         .tabCts .prof-clip-btn a img.play {position:absolute; top:0; left:0; z-index: 10; opacity:0.7;}
         .tabCts .prof-clip-btn a:hover img.play {opacity:1;}
         .tabCts .pkgBuy {display:flex; justify-content: space-between; margin:20px 0 40px}

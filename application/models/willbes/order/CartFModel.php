@@ -43,6 +43,7 @@ class CartFModel extends BaseOrderFModel
                 , ifnull(if(
                     (PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['adminpack_lecture'] . '" and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '")
                         or (PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '" and PL.PackTypeCcd = "' . $this->_userpack_lecture_type_ccd['fixed'] . '")
+                        or (PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '" and CA.ProdCodeSub = "")
                     , fn_product_sublecture_codes(CA.ProdCode)
                     , CA.ProdCodeSub
                   ), "") as ProdCodeSub

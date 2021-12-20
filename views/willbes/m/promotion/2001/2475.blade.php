@@ -106,82 +106,85 @@
             <div id="tab11"><img src="https://static.willbes.net/public/images/promotion/2021/12/2475_02_t11.jpg"  alt="범죄학" /></div>
             <div id="tab12"><img src="https://static.willbes.net/public/images/promotion/2021/12/2475_02_t12.jpg"  alt="민법총칙" /></div>
         </div> 
-    </div> 
+    </div>
 
-    <div class="evtCtnsBox event04" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2021/12/2475m_04.jpg" alt="선착순 200명 증정" >
-        <div class="c_table NSK-Black">
-            <table>
-                <col />
-                <thead>
-                    <tr>
-                        <th>월</th>
-                        <th>화</th>
-                        <th>수</th>
-                        <th>목</th>
-                        <th>금</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <span class="end"></span>12/20
-                        </td>
-                        <td>12/21</td>
-                        <td>12/22</td>
-                        <td>12/23</td>
-                        <td>12/24</td>
-                    </tr>
-                    <tr>
-                        <td>12/27</td>
-                        <td>12/28</td>
-                        <td>12/29</td>
-                        <td>12/30</td>
-                        <td>12/31</td>
-                    </tr>
-                    <tr>
-                        <td>1/3</td>
-                        <td>1/4</td>
-                        <td>1/5</td>
-                        <td>1/6</td>
-                        <td>1/7</td>
-                    </tr>
-                    <tr>
-                        <td>1/10</td>
-                        <td>1/11</td>
-                        <td>1/12</td>
-                        <td>1/13</td>
-                        <td>1/14</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <img src="https://static.willbes.net/public/images/promotion/2021/12/2475m_04_01.jpg"  alt="참여방법 " />
-        <div class="c_table tx-left">
-            <div>
-                <input type="text" value="{{ sess_data('mem_name') }}" placeholder="이름" readonly onclick="loginCheck();">
-                <input type="text" value="{{ sess_data('mem_phone') }}" placeholder="연락처 '-'없이 숫자만 입력" readonly onclick="loginCheck();">
+    <form id="add_apply_form" name="add_apply_form">
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+        <input type="hidden" name="register_type" value="promotion"/>
+        <input type="hidden" name="apply_chk_el_idx" value="{{ $data['ElIdx'] }}"/>
+        <input type="hidden" name="event_register_chk" value="N"/>
+
+        @foreach($arr_base['add_apply_data'] as $row)
+            @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))
+                <input type="hidden" name="add_apply_chk[]" value="{{$row['EaaIdx']}}" />
+                @break;
+            @endif
+        @endforeach
+
+        <div class="evtCtnsBox event04" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2475m_04.jpg" alt="선착순 200명 증정" >
+            <div class="c_table NSK-Black">
+                <table>
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>월</th>
+                            <th>화</th>
+                            <th>수</th>
+                            <th>목</th>
+                            <th>금</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if(empty($arr_base['add_apply_data']) === false)
+                            @foreach($arr_base['add_apply_data'] as $key => $row)
+                                @php $col_cnt = 5; @endphp
+                                @if($loop->index % $col_cnt === 1)
+                                    <tr>
+                                        @endif
+                                        <td>
+                                            {{$row['Name']}}
+                                            @if(time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'])
+                                                <span class="end"></span>
+                                            @endif
+                                        </td>
+                                        @if($loop->index % $col_cnt === 0)
+                                    </tr>
+                                @endif
+                            @endforeach
+                        @endif
+                    </tbody>
+                </table>
             </div>
-            <div class="txtinfo">
-                ▶ 개인정보 수집 및 이용에 대한 안내<br>
-                <br>
-                개인정보 수집 이용 목적 <br>
-                - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대<br>
-                - 이벤트 참여에 따른 강의 수강자 목록에 활용<br>
-                <br>
-                개인정보 수집 항목 <br>
-                - 신청인의 이름,연락처<br>
-                <br>
-                개인정보 이용기간 및 보유기간<br>
-                - 본 수집, 활용목적 달성 후 바로 파기<br>
-                <br>
-                개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익 <br>
-                - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2475m_04_01.jpg"  alt="참여방법 " />
+            <div class="c_table tx-left">
+                <div>
+                    <input type="text" value="{{ sess_data('mem_name') }}" placeholder="이름" readonly onclick="loginCheck();">
+                    <input type="text" value="{{ sess_data('mem_phone') }}" placeholder="연락처 '-'없이 숫자만 입력" readonly onclick="loginCheck();">
+                </div>
+                <div class="txtinfo">
+                    ▶ 개인정보 수집 및 이용에 대한 안내<br>
+                    <br>
+                    개인정보 수집 이용 목적 <br>
+                    - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대<br>
+                    - 이벤트 참여에 따른 강의 수강자 목록에 활용<br>
+                    <br>
+                    개인정보 수집 항목 <br>
+                    - 신청인의 이름,연락처<br>
+                    <br>
+                    개인정보 이용기간 및 보유기간<br>
+                    - 본 수집, 활용목적 달성 후 바로 파기<br>
+                    <br>
+                    개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익 <br>
+                    - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
+                </div>
+                <div><input name="is_chk" type="checkbox" value="Y" id="is_chk" onclick="loginCheck();"/> <label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label></div>
             </div>
-            <div><input name="is_chk" type="checkbox" value="Y" id="is_chk" onclick="loginCheck();"/> <label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label></div>
+            <div class="btnRequest NSK-Black"><a href="javascript:void(0);" onclick="fn_add_apply_submit();">하루 200명 선착순! 신청하기 ></a></div>
         </div>
-        <div class="btnRequest NSK-Black"><a href="javascript:void(0);" onclick="fn_add_apply_submit();">하루 200명 선착순! 신청하기 ></a></div>
-    </div> 
+    </form>
 
     <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2021/12/2475m_05.jpg" alt="무료 수강" >
@@ -312,7 +315,7 @@
             alert('윌비스 개인정보 제공에 동의하셔야 합니다.');
             return;
         }
-
+``
         if (typeof $add_apply_form.find('input[name="add_apply_chk[]"]').val() === 'undefined') {
             alert('이벤트 기간이 아닙니다.');
             return;
@@ -337,7 +340,7 @@
             ['이미 신청하셨습니다.','이미 참여하셨습니다.'],
             ['신청 되었습니다.','당첨을 축하합니다. 장바구니를 확인해 주세요.'],
             //['이벤트 신청후 이용 가능합니다.','봉투모의고사 신청후 이용 가능합니다.'],
-            ['마감되었습니다.','내일 14시에 다시 도전해 주세요.']
+            ['마감되었습니다.','내일 20시에 다시 도전해 주세요.']
         ];
         for (var i = 0; i < arr_apply_msg.length; i++) {
             if(arr_apply_msg[i][0] == ret_msg) {

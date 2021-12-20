@@ -172,9 +172,11 @@
                                     <tr>
                                 @endif
                                         <td>
-                                            {{$row['Name']}}
-                                            @if(time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'])
-                                                <span class="end"></span>
+                                            @if($loop->index > 1)
+                                                {{$row['Name']}}
+                                                @if(time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'])
+                                                    <span class="end"></span>
+                                                @endif
                                             @endif
                                         </td>
                                 @if($loop->index % $col_cnt === 0)

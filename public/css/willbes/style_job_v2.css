@@ -22,9 +22,9 @@
 .job .tx-color {
     color: #109bb8;
 }
-.job .copyTit {color: #363636; font-size:36px; text-align:left; margin-bottom:30px}
-.job .copyTit span {vertical-align: bottom;}
-.job .copyTit span:nth-child(2) {color: #363636;}
+.job .jobyTit {color: #363636; font-size:36px; text-align:left; margin-bottom:30px}
+.job .jobyTit span {vertical-align: bottom;}
+.job .jobyTit span:nth-child(2) {color: #363636;}
 
 /*********************************************     Main Container     *********************************************/
 
@@ -153,30 +153,75 @@
 }
 
 /*업로드강의*/
+.job .will-nTit {font-size:35px !important; border:0 !important; }
 .job .uploadLec {
-	position: relative;  
-    padding-left: 20px;
-    overflow:hidden;
+	box-shadow:0 10px 25px rgba(0,0,0,.2);
+	border-radius:10px;
+	padding:20px;
 }
-.job .uploadLec .sliderNumV div {
-	font-size: 18px;
-	height: 50px;
-	line-height: 50px;
+.job .uploadLec .vSlider {position:relative; width:100%; height:74px;}
+.job .uploadLec .vSlider:after {content:''; display: block; clear:both}
+.job .uploadLec .vSlider .sliderNumV {
+	height:74px;
+	overflow: hidden;
 }
-.job .uploadLec .sliderNumV div span {
-	color: #ccc;
-	margin: 0 10px;
+.job .uploadLec .vSlider .sliderNumV > div:after {content:''; display: block; clear:both}
+.job .uploadLec .vSlider .sliderNumV .lecReview {
+	float:left;
+	display: inline;
+	width:50%;
+	height:74px;
+	line-height: 1.3;
 }
-.job .uploadLec .bx-wrapper .bx-prev {
-	background: url("/public/img/willbes/prof/btn_prev_V.png") no-repeat 0 0 !important;
+.job .uploadLec .vSlider .sliderNumV .lecReview a {display:block;}
+.job .uploadLec .vSlider .sliderNumV .lecReview a:after {content:''; display: block; clear:both}
+.job .uploadLec .imgBox {
+	position:relative;
+	float: left;
+	width: 74px;
+	height: 74px;
+	border-radius:6px;
+	overflow:hidden;
 }
-.job .uploadLec .bx-wrapper .bx-next {
-	background: url("/public/img/willbes/prof/btn_next_V.png") no-repeat 0 0 !important;
-	left: 20px;
+.job .uploadLec .imgBox img {
+	position: absolute; left:50%; top:50%; width:100%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%) scale(1);
+	transition: all ease-in-out .2s;
 }
+.job .uploadLec .vSlider .sliderNumV .lecReview a:hover img {
+	-ms-transform: translate(-50%, -50%) scale(1.1);
+	-webkit-transform: translate(-50%, -50%) scale(1.1);
+	transform: translate(-50%, -50%) scale(1.1);
+}
+.job .uploadLec .vSlider .sliderNumV > div:nth-child(1n) .lecReview:nth-child(1n) .imgBox {
+	background:#34b696;
+}
+.job .uploadLec .vSlider .sliderNumV > div:nth-child(1n) .lecReview:nth-child(2n) .imgBox {
+	background:#e583b9;
+}
+.job .uploadLec .vSlider .sliderNumV > div:nth-child(2n) .lecReview:nth-child(1n) .imgBox {
+	background:#3490b6;
+}
+.job .uploadLec .vSlider .sliderNumV > div:nth-child(2n) .lecReview:nth-child(2n) .imgBox {
+	background:#b1b634;
+}
+.job .uploadLec .vSlider .sliderNumV > div:nth-child(3n) .lecReview:nth-child(1n) .imgBox {
+	background:#b67734;
+}
+.job .uploadLec .vSlider .sliderNumV > div:nth-child(3n) .lecReview:nth-child(2n) .imgBox {
+	background:#d3b9ef;
+}
+.job .uploadLec .lecinfo {float:left; margin-left:10px; width:calc(100% - 100px); position:relative; height:74px}
+.job .uploadLec .lecinfo p {color:#848484; font-size:14px; margin-bottom:0}
+.job .uploadLec .lecinfo p:nth-child(2) {color:#363636; font-size:16px; font-weight:600; margin-bottom: 3px;}
+.job .uploadLec .lecinfo p:nth-child(3) {color:#0c5dc0; font-size:12px; position: absolute; bottom:0}
 .job .uploadLec .bx-wrapper .bx-controls-direction {
 	position: absolute;
-	top: 15px;
+	top: 0;
 	right: 10px;
 	width: 40px;
 	height: 20px;
@@ -186,17 +231,28 @@
 	height: 20px;
 }
 .job .uploadLec .bx-wrapper .bx-pager {
-	width: auto;
-	position: absolute;
-	top: 18px;
-	right: 60px;
-	bottom: 0;
-	font-size: 11px;
-	font-weight: 300;
-	color: #888;
-	margin: 0;
-	padding: 0;
-	letter-spacing: 0;
+	float: none;
+	width: 100%;
+	right: 8px;
+	bottom: -50px;
+	text-align: center;
+}
+.job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a {
+	width: 12px;
+	height: 12px;
+	margin: 0 2px;
+	background: #fff;
+	border:1px solid #b9b9b9;
+	border-radius:10px;
+}
+.job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a.active,
+.job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a:focus {
+	background: #000;
+	border:1px solid #000;
+}
+.job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a.active {
+	width: 40px;
 }
 
 /*hot issue*/
@@ -370,7 +426,6 @@
 .job309003 .Menu .menu-List li.job > a,
 .job309003 .Depth .depth:last-child strong,
 .job309003 .tx-color {color: #d39e02;}
-.job309003 .uploadLec {border: 4px solid #d39e02;}
 .job309003 .tabBox.noticeBox .List-Table li a span {background: #d39e02;}
 .job309003 .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .job309003 .bx-wrapper .bx-pager.bx-default-pager a.active,
@@ -378,10 +433,9 @@
 
 /*변리사*/
 .job309004 .menu-List .Tit,
-.job309004 .Menu .menu-List li.job > a,
+.job309004 .Menu .menu-List li.job > a,a
 .job309004 .Depth .depth:last-child strong,
 .job309004 .tx-color {color: #034c03;}
-.job309004 .uploadLec {border: 4px solid #034c03;}
 .job309004 .tabBox.noticeBox .List-Table li a span {background: #034c03;}
 .job309004 .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .job309004 .bx-wrapper .bx-pager.bx-default-pager a.active,
@@ -501,43 +555,7 @@
 	margin-right:8px;
     margin-bottom:5px
 }
-/*강의맛보기 */
-.Section1 .preview {margin-top:50px}
-.Section1 .preview .previewBox {position:relative; height:234px;  width:1120px; margin: 0 auto;}
-.Section1 .preview .pvslider {width:1120px; margin: 0 auto; height:234px; overflow: hidden;}
-.Section1 .preview .pvslider li {display: inline; float: left; width:33.3333%; overflow: hidden;  position: relative;}
-.Section1 .preview .pvslider li a {display:block; text-align: right; height:234px; overflow: hidden; background:#828181 url("https://static.willbes.net/public/images/promotion/main/btn_play.png") no-repeat 25px 150px ; color:#fff} 
-.Section1 .preview .pvslider li a img {position:absolute; bottom:0; right:0;
-    -webkit-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
-    -moz-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
-    -ms-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
-    -o-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
-    filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
-    -ms-transform: scale(1);
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    transition: 0.2s all ease;
-    -webkit-transition: 0.2s all ease; 
-    -moz-transition: 0.2s all ease; 
-    -ms-transition: 0.2s all ease;  
-    -o-transition: 0.2s all ease; 
-}
-.Section1 .preview .pvslider li a:hover img {
-    -ms-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-    transition: 0.2s all ease;
-    -webkit-transition: 0.2s all ease; 
-    -moz-transition: 0.2s all ease; 
-    -ms-transition: 0.2s all ease;  
-    -o-transition: 0.2s all ease; 
- }
-.Section1 .preview .pvslider li a div {position:absolute; top:40px; left:25px; width:60%; font-size:14px; text-align: left; z-index:5; line-height: 1.5;}
-.Section1 .preview .pvslider li a div strong {display:block; font-size:18px; font-weight:600; margin-top:10px}
-.Section1 .preview .pvslider:after {content: ""; display: block; clear:both}
-.Section1 .preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
-.Section1 .preview .previewBox p.leftBtn {left:-40px}
-.Section1 .preview .previewBox p.rightBtn {right:-60px}
+
 
 /*Main Container : 최근 업로드 강의*/
 .job .will-nTit {font-size:35px !important; border:0 !important; }
@@ -635,12 +653,51 @@
 .job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a.active,
 .job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a:focus {
-	background: #000;
-	border:1px solid #000;
+	background: #000 !important;
+	border:1px solid #000 !important;
 }
 .job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a.active {
 	width: 40px;
 }
+
+/*강의맛보기 */
+.Section1 {background:#f0eee3; padding:100px 0}
+.Section1 .preview {margin-top:50px}
+.Section1 .preview .previewBox {position:relative; height:234px;  width:1120px; margin: 0 auto;}
+.Section1 .preview .pvslider {width:1120px; margin: 0 auto; height:234px; overflow: hidden;}
+.Section1 .preview .pvslider li {display: inline; float: left; width:33.3333%; overflow: hidden;  position: relative;}
+.Section1 .preview .pvslider li a {display:block; text-align: right; height:234px; overflow: hidden; background:#828181 url("https://static.willbes.net/public/images/promotion/main/btn_play.png") no-repeat 25px 150px ; color:#fff} 
+.Section1 .preview .pvslider li a img {position:absolute; bottom:0; right:0;
+    -webkit-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
+    -moz-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
+    -ms-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
+    -o-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
+    filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    transition: 0.2s all ease;
+    -webkit-transition: 0.2s all ease; 
+    -moz-transition: 0.2s all ease; 
+    -ms-transition: 0.2s all ease;  
+    -o-transition: 0.2s all ease; 
+}
+.Section1 .preview .pvslider li a:hover img {
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 0.2s all ease;
+    -webkit-transition: 0.2s all ease; 
+    -moz-transition: 0.2s all ease; 
+    -ms-transition: 0.2s all ease;  
+    -o-transition: 0.2s all ease; 
+ }
+.Section1 .preview .pvslider li a div {position:absolute; top:40px; left:25px; width:60%; font-size:14px; text-align: left; z-index:5; line-height: 1.5;}
+.Section1 .preview .pvslider li a div strong {display:block; font-size:18px; font-weight:600; margin-top:10px}
+.Section1 .preview .pvslider:after {content: ""; display: block; clear:both}
+.Section1 .preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
+.Section1 .preview .previewBox p.leftBtn {left:-40px}
+.Section1 .preview .previewBox p.rightBtn {right:-60px}
 
 /*개편 과목 전문교수진*/
 .job .SecBanner03 {

@@ -737,6 +737,51 @@ class BasePromotion extends \app\controllers\FrontController
         ], false);
     }
 
+    public function ajaxHotClipProduct_test()
+    {
+        $params['off_disc_code'] = (empty($this->_reqG('off_disc_code')) === true ? [] : explode(',', $this->_reqG('off_disc_code')));
+        $params['online_disc_code'] = (empty($this->_reqG('online_disc_code')) === true ? [] : explode(',', $this->_reqG('online_disc_code')));
+
+        $order_by = ['g.OrderNum' => 'ASC', 'hc.OrderNum' => 'ASC'];
+        $arr_condition = [
+            'EQ' => [
+                'g.ViewType' => '2'
+                ,'g.IsUse' => 'Y'
+                ,'g.IsStatus' => 'Y'
+                ,'hc.SiteCode' => $this->_site_code
+                ,'hc.IsUse' => 'Y'
+                ,'hc.IsStatus' => 'Y'
+            ]
+        ];
+
+        $data = [];
+        $result = $this->professorHotClipFModel->listHotClipForProduct($arr_condition, $order_by);
+        if (empty($result) === false) {
+            foreach ($result as $row) {
+                $data[$row['group_title']][$row['PhcIdx']]['PhcIdx'] = $row['PhcIdx'];
+                $data[$row['group_title']][$row['PhcIdx']]['ProfIdx'] = $row['ProfIdx'];
+                $data[$row['group_title']][$row['PhcIdx']]['ProfNickName'] = $row['ProfNickName'];
+                $data[$row['group_title']][$row['PhcIdx']]['SubjectName'] = $row['SubjectName'];
+                $data[$row['group_title']][$row['PhcIdx']]['SubjectIdx'] = $row['SubjectIdx'];
+                $data[$row['group_title']][$row['PhcIdx']]['CateCode'] = $row['CateCode'];
+                $data[$row['group_title']][$row['PhcIdx']]['ProfBtnIsUse'] = $row['ProfBtnIsUse'];
+                $data[$row['group_title']][$row['PhcIdx']]['CurriculumBtnIsUse'] = $row['CurriculumBtnIsUse'];
+                $data[$row['group_title']][$row['PhcIdx']]['StudyCommentBtnIsUse'] = $row['StudyCommentBtnIsUse'];
+                $data[$row['group_title']][$row['PhcIdx']]['ProfBgImagePath'] = $row['ProfBgImagePath'];
+                $data[$row['group_title']][$row['PhcIdx']]['ProfBgImageName'] = $row['ProfBgImageName'];
+                $data[$row['group_title']][$row['PhcIdx']]['thumbnail_data'] = $row['thumbnail_data'];
+                $data[$row['group_title']][$row['PhcIdx']]['product_info_1'] = $row['product_info_1'];
+                $data[$row['group_title']][$row['PhcIdx']]['product_info_2'] = $row['product_info_2'];
+            }
+        }
+
+        $view_file = 'willbes/'.APP_DEVICE.'/promotion/hotclip_list_ajax_test';
+        $this->load->view($view_file, [
+            'params' => $params,
+            'data' => $data
+        ], false);
+    }
+
 
     /**
      * 합격예측 데이터

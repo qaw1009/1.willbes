@@ -49,67 +49,67 @@
                     <a href="https://ssam.willbes.net/event/show/all?event_idx=1524"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t24.jpg" alt="정현 교육학"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t23.jpg" alt="신태식 교육학"/></a>
+                    <a href="javascript:fnPlayerSample('189524','1328611','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t23.jpg" alt="신태식 교육학"/></a>
                 </div>
                 <div class="profBox">                    
-                    <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t02.jpg" alt="이인재 교육학"/></a>
+                    <a href="javascript:fnPlayerSample('189525','1328610','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t02.jpg" alt="이인재 교육학"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t03.jpg" alt="송원영 전공국어"/></a>
+                    <a href="javascript:fnPlayerSample('189542','1328262','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t03.jpg" alt="송원영 전공국어"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t04.jpg" alt="구동언 전공국어"/></a>
+                    <a href="javascript:fnPlayerSample('189545','1328676','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t04.jpg" alt="구동언 전공국어"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t05.jpg" alt="김유석 전공영어"/></a>
+                    <a href="javascript:fnPlayerSample('189549','1328770','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t05.jpg" alt="김유석 전공영어"/></a>
                 </div>
                 <div class="profBox">
                     <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t06.jpg" alt="김영문 영어학"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t07.jpg" alt="김철홍 전공수학"/></a>
+                    <a href="javascript:fnPlayerSample('189420','1328367','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t07.jpg" alt="김철홍 전공수학"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t22.jpg" alt="김현웅 전공수학"/></a>
+                    <a href="javascript:fnPlayerSample('189555','1328677','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t22.jpg" alt="김현웅 전공수학"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t08.jpg" alt="박태영 수학교육론"/></a>
+                    <a href="javascript:fnPlayerSample('189421','1328364','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t08.jpg" alt="박태영 수학교육론"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="hjavascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t09.jpg" alt="박혜향 수학교육론"/></a>
+                    <a href="hjavascript:fnPlayerSample('189556','1328681','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t09.jpg" alt="박혜향 수학교육론"/></a>
                 </div>
                 <div class="profBox">
                     <a href="javascript:fnPlayerSample('174880','1258449','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t10.jpg" alt="양혜정 생물교육론"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t11.jpg" alt="강철 전공화학"/></a>
+                    <a href="javascript:fnPlayerSample('189526','1328675','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t11.jpg" alt="강철 전공화학"/></a>
                 </div>
                 <div class="profBox">
                     <a href="javascript:fnPlayerSample('174884','1256233','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t12.jpg" alt="김병찬 도덕윤리"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t13.jpg" alt="김민응 도덕윤리"/></a>
+                    <a href="javascript:fnPlayerSample('189557','1328679','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t13.jpg" alt="김민응 도덕윤리"/></a>
                 </div>
                 <div class="profBox">
                     <a href="https://ssam.willbes.net/event/show/all?event_idx=1523"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t25.jpg" alt="최규훈 전공체육"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t16.jpg" alt="다이애나 전공음악"/></a>
+                    <a href="javascript:fnPlayerSample('189561','1328769','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t16.jpg" alt="다이애나 전공음악"/></a>
                 </div>
                 <div class="profBox">
                     <a href="https://ssam.willbes.net/event/show/all?event_idx=1504"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t14.jpg" alt="허역팀 일반사회"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t15.jpg" alt="김종권 전공역사"/></a>
+                    <a href="javascript:fnPlayerSample('189558','1328678','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t15.jpg" alt="김종권 전공역사"/></a>
                 </div>          
                 <div class="profBox">
                     <a href="javascript:fnPlayerSample('177588','1270307','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t17.jpg" alt="최우영 전기전자통신"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t18.jpg" alt="송광진 정보컴퓨터"/></a>
+                    <a href="javascript:fnPlayerSample('189560','1328682','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t18.jpg" alt="송광진 정보컴퓨터"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t19.jpg" alt="장영희 전공중국어"/></a>
+                    <a href="javascript:fnPlayerSample('189559','1328674','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t19.jpg" alt="장영희 전공중국어"/></a>
                 </div>
                 <div class="profBox"></div>
             </div>

@@ -31,9 +31,10 @@
         .certification {background:url("https://static.willbes.net/public/images/promotion/2021/10/2390_certification_bg.jpg") no-repeat center top;}
      
         .evt01 .passLecBuy {position:relative; width:1120px; margin:0 auto;}
-        .evt01 .passLecBuy .price {position:absolute; left:205px; width:250px; text-align:left; line-height:30px; font-size:23px; font-weight:bold; color:#fff; z-index: 2;}
-        .evt01 .passLecBuy .price01 {top:700px}
-        .evt01 .passLecBuy .price02 {top:700px;left:650px;}
+        .evt01 .passLecBuy .price {position:absolute;  width:250px; text-align:left; line-height:30px; font-size:23px; font-weight:bold; color:#fff; z-index: 2;}
+        .evt01 .passLecBuy .price00 {top:695px;left:70px;}
+        .evt01 .passLecBuy .price01 {top:695px;left:440px;}
+        .evt01 .passLecBuy .price02 {top:595px;left:825px;}
         .evt01 .passLecBuy .price strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}   
         .evt01 input[type="radio"] {height:26px; width:26px; vertical-align:middle}
         .evt01 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle}
@@ -159,16 +160,23 @@
         </div>      
 
         <div class="evtCtnsBox evt01" id="pass" data-aos="fade-up">
-            <div class="passLecBuy">            
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450_01.jpg" alt="신광은경찰PASS">
-                <div class="price price01">                    
-                    <input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000"/>                
-                    <label for="y_pkg1">22년 2차 PASS 신청</label>
-                </div>
-                <div class="price price02">                   
-                    <input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000"/>                 
-                    <label for="y_pkg2">FINAL PASS 신청하기</label>
-                </div>
+            <div class="passLecBuy">   
+                <div class="wrap">         
+                    <img src="https://static.willbes.net/public/images/promotion/2021/12/2450_01.jpg" alt="신광은경찰PASS">
+                    <a href="javascript:alert('Coming Soon!')" title="쿠폰받기" style="position: absolute;left: 5.39%;top: 63.23%;width: 22.99%;height: 4.34%;z-index: 2;"></a>
+                    <div class="price price00">                    
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="189573" data-sale-price="960000"/>                
+                        <label for="y_pkg1">23년 1차 PASS 신청</label>
+                    </div>
+                    <div class="price price01">                    
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000"/>                
+                        <label for="y_pkg1">22년 2차 PASS 신청</label>
+                    </div>
+                    <div class="price price02">                   
+                        <input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000"/>                 
+                        <label for="y_pkg2">FINAL PASS 신청</label>
+                    </div>
+                </div>    
             </div>
 
             <div class="check" data-aos="fade-up">
@@ -291,18 +299,25 @@
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
-            <div class="passLecBuy">            
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450_01.jpg"  alt="신광은경찰PASS">
-                <div class="price price01">                    
-                    <input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000"/>                
-                    <label for="y_pkg1">22년 2차 PASS 신청</label>
-                </div>
-                <div class="price price02">                   
-                    <input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000"/>       
-                    <label for="y_pkg2">FINAL PASS 신청하기</label>
-                </div>     
+            <div class="passLecBuy">   
+                <div class="wrap">         
+                    <img src="https://static.willbes.net/public/images/promotion/2021/12/2450_01.jpg" alt="신광은경찰PASS">
+                    <a href="javascript:alert('Coming Soon!')" title="쿠폰받기" style="position: absolute;left: 5.39%;top: 63.23%;width: 22.99%;height: 4.34%;z-index: 2;"></a>
+                    <div class="price price00">                    
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="189573" data-sale-price="960000"/>                
+                        <label for="y_pkg1">23년 1차 PASS 신청</label>
+                    </div>
+                    <div class="price price01">                    
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000"/>                
+                        <label for="y_pkg1">22년 2차 PASS 신청</label>
+                    </div>
+                    <div class="price price02">                   
+                        <input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000"/>                 
+                        <label for="y_pkg2">FINAL PASS 신청</label>
+                    </div>
+                </div>    
             </div>
-
+            
             <div class="check">
                 <input type="checkbox" id="is_chk2" name="is_chk" value="Y"/>
                 <label for="is_chk2">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
@@ -329,18 +344,18 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit">윌비스 <span class="NSK-Black tx-blue">신광은 경찰 PASS </span> 이용안내 </p>
             <ul class="tabs">
-                <li><a href="#tab01" class="active">22년 2차 PASS</a></li>
+                <li><a href="#tab01" class="active">23년 1차 PASS</a></li>
                 <li><a href="#tab02">Final PASS (22년 1차 대비)</a></li>
             </ul>
 
             <div class="content_guide_box" id="tab01">
                 <dl>
                     <dt>
-                        <h3>22년 2차 PASS</h3>
+                        <h3>23년 1차 PASS</h3>
                     </dt>
                     <dd>
                         <ol>
-                            <li>본 상품은 구매일로부터 22년 2차 필기시험일까지 수강 가능한 기간제 PASS입니다.</li>
+                            <li>본 상품은 구매일로부터 23년 1차 필기시험일까지 수강 가능한 기간제 PASS입니다.</li>
                             <li>본 상품 강좌 구성은 다음과 같습니다.<br>
                                 - 2022년 대비 형사법, 경찰학, 헌법, 범죄학 전 강좌<br>
                                 - 2021년 대비 형사소송법, 경찰학개론, 형법 전 강좌<br>                                
@@ -382,7 +397,7 @@
                                 ※ 지급된 혜택(포인트 등)을 사용하지 않았어도 지급된 만큼 차감 후 환급금 책정</li>
                             <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증자료를 제출하여야 환급금 지급 대상이 됩니다.<br>
                                 ※ 환급 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채</li>
-                            <li>환급 신청은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다.(22년 1차 또는 2차 최종합격)<br>
+                            <li>환급 신청은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다.(22년 1,2차 또는 23년 1차 최종합격)<br>
                             패스 수강 기간 내에 합격예측 서비스 1회 이상 참여 해주셔야합니다.<br>
                             (해당 서비스는 시즌성 이벤트로 일정 기간이 지나면 확인 불가하니, 참여 후 캡쳐해서 추후 증빙자료로 제출하셔야 합니다.)<br>
                             패스 수강기간 내에 모든 전국 모의고사 및 빅매치 모의고사를 모두 응시하여야 합니다.<br>

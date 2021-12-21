@@ -649,6 +649,7 @@ class Cart extends \app\controllers\FrontController
         $arr_prod_code = (array) $this->_reqP('prod_code');
         $real_sale_price = 0;   // 총 판매금액
         $expt_pay_price = 0;    // 총 예상결제금액
+        $prod_data = [];        // 상품 목록
 
         try {
             if (empty($arr_prod_code) === true) {
@@ -672,22 +673,42 @@ class Cart extends \app\controllers\FrontController
 
                 $price_row = element('0', json_decode($row['ProdPriceData'], true));
                 $disc_row = array_get($disc_data, $row['ProdCode']);
+                $disc_price = 0;    // 상품별 할인금액
+                $disc_rate = '0%';  // 상품별 할인율
 
                 if (empty($disc_row) === false && $disc_row['DiscRate'] > 0) {
                     if ($disc_row['DiscType'] == 'R') {
-                        $expt_pay_price += ceil($price_row['RealSalePrice'] * ((100 - $disc_row['DiscRate']) / 100));    // 소숫점 올림;
+                        $tmp_pay_price = ceil($price_row['RealSalePrice'] * ((100 - $disc_row['DiscRate']) / 100));    // 소숫점 올림;
+                        $expt_pay_price += $tmp_pay_price;  // 총 예상결제금액 합산
+
+                        // 상품별 할인금액 계산
+                        $disc_price = $price_row['RealSalePrice'] - $tmp_pay_price;
+                        $disc_rate = $disc_row['DiscRate'] . $disc_row['DiscRateUnit'];
                     } else {
                         if ($disc_row['DiscType'] == 'P' && $price_row['RealSalePrice'] > $disc_row['DiscRate']) {
-                            $expt_pay_price += $price_row['RealSalePrice'] - $disc_row['DiscRate'];
+                            $expt_pay_price += $price_row['RealSalePrice'] - $disc_row['DiscRate'];     // 총 예상결제금액 합산
+
+                            // 상품별 할인금액 계산
+                            $disc_price = $disc_row['DiscRate'];
+                            $disc_rate = $disc_row['DiscRate'] . $disc_row['DiscRateUnit'];
                         } else {
-                            $expt_pay_price += $price_row['RealSalePrice'];
+                            $expt_pay_price += $price_row['RealSalePrice'];     // 총 예상결제금액 합산
                         }
                     }
                 } else {
-                    $expt_pay_price += $price_row['RealSalePrice'];
+                    $expt_pay_price += $price_row['RealSalePrice'];     // 총 예상결제금액 합산
                 }
 
+                // 총 판매금액
                 $real_sale_price += $price_row['RealSalePrice'];
+
+                // 상품별 정보
+                $prod_data[$row['ProdCode']] = [
+                    'real_sale_price' => $price_row['RealSalePrice'],
+                    'expt_disc_rate' => $disc_rate,
+                    'expt_disc_price' => $disc_price,
+                    'expt_pay_price' => ($price_row['RealSalePrice'] - $disc_price)
+                ];
             }
 
             // 예상할인금액, 할인율 셋팅
@@ -701,7 +722,8 @@ class Cart extends \app\controllers\FrontController
             'real_sale_price' => $real_sale_price,
             'expt_disc_rate' => $expt_disc_rate,
             'expt_disc_price' => $expt_disc_price,
-            'expt_pay_price' => $expt_pay_price
+            'expt_pay_price' => $expt_pay_price,
+            'data' => $prod_data
         ]);
     }
 }

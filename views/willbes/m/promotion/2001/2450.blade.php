@@ -22,8 +22,9 @@
         .evt01 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle; margin-right:5px}
         .evt01 input:checked + label {color:#ffef7e}
         .evt01 .ext01txt ul {margin:10px 0 0 25px}
-        .evt01 a {display:block; width:90%; margin:20px auto 0; background:#000; color:#fff; border-radius:30px; padding:10px 0; font-size:20px; font-weight:bold; text-align:center}
-        
+        .evt01 a {display:block; width:90%; margin:20px auto 0; background:#000; color:#fff; border-radius:30px; padding:10px 0; font-size:20px; font-weight:bold; text-align:center;}
+        .evt01_coupon a {background-color:rgba(255,255,255,0.1);}
+
         /*탭(텍스트)*/     
         .tabContaier{width:100%;background:#fff;margin-top:50px;}
         .tabContaier ul{margin:0 auto; height:65px;} 
@@ -110,28 +111,37 @@
         </div>
         
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_01.jpg" alt="" >
-            <div class="price">
-                <ul>
-                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청하기</label></li>                    
-                </ul>
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_02.jpg" alt="" >
-            <div class="price">
-                <ul>                    
-                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> FINAL PASS 신청하기</label></li>
-                </ul>
-            </div>
-            <div class="ext01txt">
-                <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
-                <ul>
-                    <li>※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.</li>
-                    <li>※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.</li>
-                    <li>※ 쿠폰은 PASS 결제 후 [내 강의실>결제관리>쿠폰/수강권 관리] 에서 확인 가능합니다.</li>
-                    <li>※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.</li>
-                </ul>
-            </div>
-            <div><a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신청하기 ></a></div>
+            <div class="evt01_coupon">
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_00.jpg" alt="" >
+                <a href="javascript:alert('Coming Soon!')" title="쿠폰받기" style="position: absolute;left: 53.89%;top: 9.73%;width: 39.88%;height: 2.34%;z-index: 2;"></a>
+                <div class="price">
+                    <ul>
+                        <li><input type="radio" id="y_pkg1" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> 23년 1차 PASS 신청하기</label></li>                    
+                    </ul>
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_01.jpg" alt="" >
+                <div class="price">
+                    <ul>
+                        <li><input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청하기</label></li>                    
+                    </ul>
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_02.jpg" alt="" >
+                <div class="price">
+                    <ul>                    
+                        <li><input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> FINAL PASS 신청하기</label></li>
+                    </ul>
+                </div>
+                <div class="ext01txt">
+                    <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
+                    <ul>
+                        <li>※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.</li>
+                        <li>※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.</li>
+                        <li>※ 쿠폰은 PASS 결제 후 [내 강의실>결제관리>쿠폰/수강권 관리] 에서 확인 가능합니다.</li>
+                        <li>※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.</li>
+                    </ul>
+                </div>
+                <div><a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신청하기 ></a></div>
+            </div>    
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
@@ -240,28 +250,37 @@
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_01.jpg" alt="" >
-            <div class="price">
-                <ul>
-                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청하기</label></li>                    
-                </ul>
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_02.jpg" alt="" >
-            <div class="price">
-                <ul>                    
-                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> FIMAL PASS 신청하기</label></li>
-                </ul>
-            </div>
-            <div class="ext01txt">
-                <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
-                <ul>
-                    <li>※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.</li>
-                    <li>※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.</li>
-                    <li>※ 쿠폰은 PASS 결제 후 [내 강의실>결제관리>쿠폰/수강권 관리] 에서 확인 가능합니다.</li>
-                    <li>※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.</li>
-                </ul>
-            </div>
-            <div><a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신청하기 ></a></div>
+            <div class="evt01_coupon">
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_00.jpg" alt="" >
+                <a href="javascript:alert('Coming Soon!')" title="쿠폰받기" style="position: absolute;left: 53.89%;top: 9.73%;width: 39.88%;height: 2.34%;z-index: 2;"></a>
+                <div class="price">
+                    <ul>
+                        <li><input type="radio" id="y_pkg1" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> 23년 1차 PASS 신청하기</label></li>                    
+                    </ul>
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_01.jpg" alt="" >
+                <div class="price">
+                    <ul>
+                        <li><input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청하기</label></li>                    
+                    </ul>
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_02.jpg" alt="" >
+                <div class="price">
+                    <ul>                    
+                        <li><input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> FINAL PASS 신청하기</label></li>
+                    </ul>
+                </div>
+                <div class="ext01txt">
+                    <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
+                    <ul>
+                        <li>※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.</li>
+                        <li>※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.</li>
+                        <li>※ 쿠폰은 PASS 결제 후 [내 강의실>결제관리>쿠폰/수강권 관리] 에서 확인 가능합니다.</li>
+                        <li>※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.</li>
+                    </ul>
+                </div>
+                <div><a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신청하기 ></a></div>
+            </div> 
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
@@ -273,18 +292,18 @@
         <div class="content_guide_wrap" id="tab"  data-aos="fade-up">
             <p class="guide_tit NSK-Thin">윌비스 <span class="NSK-Black">신광은 경찰 PASS</span> 이용안내 </p>
             <ul class="tabs">
-                <li><a href="#tab01">22년 2차 PASS</a></li>
+                <li><a href="#tab01">23년 1차 PASS</a></li>
                 <li><a href="#tab02">Final PASS (22년 1차 대비)</a></li>
             </ul>
 
             <div class="content_guide_box" id="tab01">
                 <dl>
                     <dt>
-                        <h3>22년 2차 PASS</h3>
+                        <h3>23년 1차 PASS</h3>
                     </dt>
                     <dd>
                         <ol>
-                            <li>본 상품은 구매일로부터 22년 2차 필기시험일까지 수강 가능한 기간제 PASS입니다.</li>
+                            <li>본 상품은 구매일로부터 23년 1차 필기시험일까지 수강 가능한 기간제 PASS입니다.</li>
                             <li>본 상품 강좌 구성은 다음과 같습니다.<br>
                                 - 2022년 대비 형사법, 경찰학, 헌법, 범죄학 전 강좌<br>
                                 - 2021년 대비 형사소송법, 경찰학개론, 형법 전 강좌                             
@@ -326,7 +345,7 @@
                                 ※ 지급된 혜택(포인트 등)을 사용하지 않았어도 지급된 만큼 차감 후 환급금 책정</li>
                             <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증자료를 제출하여야 환급금 지급 대상이 됩니다.<br>
                                 ※ 환급 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채</li>
-                            <li>환급 신청은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다.(22년 1차 또는 2차 최종합격)<br>
+                            <li>환급 신청은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다.(22년 1,2차 또는 23년 1차 최종합격)<br>
                             패스 수강 기간 내에 합격예측 서비스 1회 이상 참여 해주셔야합니다.<br>
                             (해당 서비스는 시즌성 이벤트로 일정 기간이 지나면 확인 불가하니, 참여 후 캡쳐해서 추후 증빙자료로 제출하셔야 합니다.)<br>
                             패스 수강기간 내에 모든 전국 모의고사 및 빅매치 모의고사를 모두 응시하여야 합니다.<br>

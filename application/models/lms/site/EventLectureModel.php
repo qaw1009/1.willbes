@@ -384,7 +384,7 @@ class EventLectureModel extends WB_Model
 
             // 데이터 복사 실행
             $insert_column = '
-                SiteCode, CampusCcd, PromotionCode, PromotionParams, PromotionLiveType, , BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsCopy, IsUse, IsStatus, EventName,
+                SiteCode, CampusCcd, PromotionCode, PromotionParams, PromotionLiveType, BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsCopy, IsUse, IsStatus, EventName,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 RegAdminIdx, RegIp
             ';

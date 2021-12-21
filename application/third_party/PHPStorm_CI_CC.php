@@ -224,6 +224,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property GatherStatsSearchModel $gatherStatsSearchModel                   Gather Stats Search Model Class
  * @property GatherStatsBannerModel $gatherStatsBannerModel                   Gather Stats Banner Model Class
  * @property GatherStatsOrderModel $gatherStatsOrderModel                   Gather Stats Order Model Class
+ * @property GatherStatsGatewayModel $gatherStatsGatewayModel                   Gather Stats Gateway Model Class
  * @property TaskModel $taskModel                                           Task Model Class
  * @property TaskCodeModel $taskCodeModel                              Task Code Model Class
  * @property TaskOrganizationModel $taskOrganizationModel                  Task Organization Model Class

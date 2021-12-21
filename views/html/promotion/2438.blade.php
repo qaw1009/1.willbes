@@ -95,7 +95,7 @@
         .tabCts .buyWrap h5 {font-size:16px; margin-bottom:10px}
         .tabCts .buyWrap .basket {display:flex; justify-content: space-between; line-height:1.4; margin-bottom:40px}
         .tabCts .buyWrap .lecbox {width:calc((100% / 2) - 10px);}
-        .tabCts .buyWrap .lecbox ul {border:1px solid #c4c4c4; border-top:4px solid #313131; padding:10px 20px; background:#f4f4f4; height:200px; margin-bottom:15px; overflow-y:scroll;}
+        .tabCts .buyWrap .lecbox ul {border:1px solid #c4c4c4; border-top:4px solid #313131; padding:10px 10px 10px 20px; background:#f4f4f4; height:200px; margin-bottom:15px; overflow-y:scroll;}
         .tabCts .buyWrap .lecbox li {padding:10px 20px 10px 0; border-bottom:1px solid #ccc; position: relative;}
         .tabCts .buyWrap .lecbox li:last-child {border:0}
         .tabCts .buyWrap .lecbox li a {position:absolute; top:10px; right:0; z-index: 2; background:#fff}

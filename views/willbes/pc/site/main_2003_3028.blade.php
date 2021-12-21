@@ -18,9 +18,9 @@
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1071">전기직</a></li>
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1071">전자직</a></li>
                     <li><a href="https://pass.willbes.net/lecture/index/cate/3028/pattern/only?search_order=regist&series_ccd=614021">토목직</a></li>
-                    <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1915">축산직</a></li>
-                    <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2000">기계직</a></li>
-                    <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2001">조경직</a></li>
+                    <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2115">축산직</a></li>
+                    <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2116">기계직</a></li>
+                    <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2114">조경직</a></li>
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2013">전산직</a></li>
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2014">환경직(공채)</a></li>
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2014">환경직(특채)</a></li>

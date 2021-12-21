@@ -20,7 +20,7 @@
         /************************************************************/
 
         .eventTop {background:url(https://static.willbes.net/public/images/promotion/2021/12/2455_top_bg.jpg) no-repeat center top;}
-        .evt01 {background:#eee9e3 url(https://static.willbes.net/public/images/promotion/2021/12/2455_01_bg.jpg) no-repeat center top;}
+        .evt01 {background:#eee9e3;}
         .evt01 .profList {width:1120px; margin:10px auto 0; display: flex; flex-wrap: wrap; justify-content: space-between; padding-bottom:140px}
         .evt01 .profList .profBox {width: 270px; margin-bottom:15px; position: relative;}
         .evt01 .profList .profBox a:hover {box-shadow:5px 5px 10px rgba(0,0,0,.4); outline:1px solid #b28026; display: block;}

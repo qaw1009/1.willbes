@@ -44,20 +44,21 @@
                         * 검색기간이 3개월을 초과할 경우 '월'로 2년이 초과할 경우 '년'으로 자동 변환
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group hide search_detail">
                     <label class="control-label col-md-1" for="search_value">검색</label>
                     <div class="col-md-10 form-inline">
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;" value=""> [계약명, 광고명]
                     </div>
                 </div>
-                <!--div class="form-group">
-                    <label class="control-label col-md-1" for="search_type">조건검색</label>
-                    <div class="col-md-11 form-inline">
-                        <div class="checkbox">
-                            <input type="checkbox" name="search_except_will_ip" id="search_except_will_ip" class="flat" value="Y"> 윌비스 IP 제외 [* 대략적인 영역임으로 정확도를 요하지는 않음]
-                        </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="search_stats_type"><span class="red">통계형식</span></label>
+                    <div class="col-md-10 form-inline">
+                        <select class="form-control mr-10" id="search_stats_type" name="search_stats_type">
+                            <option value="gather" selected>집계통계 [5분지연]</option>
+                            <option value="" >실시간통계 [속도저하]</option>
+                        </select>
                     </div>
-                </div-->
+                </div>
             </div>
         </div>
         <div class="row">
@@ -189,7 +190,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group hide search_detail">
                 <div class="col-md-12 form-inline">
                     <strong>[광고 접속이력]</strong>
                     <div class="x_content">
@@ -217,6 +218,10 @@
     <script type="text/javascript">
         $(document).ready(function(){
             var $search_form = $('#search_form');
+
+            $search_form.find('select[name="search_stats_type"]').change(function() {
+                $(this).val() === '' ? $('.search_detail').removeClass('hide') : $('.search_detail').addClass('hide');
+            });
 
             function getStats($type) {
                 var data = {

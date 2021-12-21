@@ -9,6 +9,7 @@ class BaseStats extends \app\controllers\BaseController
                                         , 'stats/gatherStatsSearch'
                                         , 'stats/gatherStatsBanner'
                                         , 'stats/gatherStatsOrder'
+                                        , 'stats/gatherStatsGateway'
                                         );
 
     protected $helpers = array();

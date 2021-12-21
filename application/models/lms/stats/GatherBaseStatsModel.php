@@ -24,9 +24,11 @@ class GatherBaseStatsModel extends WB_Model
         'banner' => 'stats_banner',
         'banner_info' => 'vw_lms_banner',
 
-        /*주문문*/
+        /*주문*/
        'order' => 'stats_order',
 
+        /*광고*/
+        'gateway' => 'stats_gateway',
 
     ];
 

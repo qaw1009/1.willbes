@@ -54,7 +54,8 @@ class StatsGatewayModel extends BaseStatsModel
         $order_where = $this->_conn->makeWhere($order_condition)->getMakeWhere(true);
         $refund_where = $this->_conn->makeWhere($refund_condition)->getMakeWhere(true);
 
-        $column = ' temp_date.base_date
+        $column = ' Straight_JOIN  
+                        temp_date.base_date
                         ,ifnull(temp_gateway.gateway_count,0) as gateway_count
                         ,ifnull(temp_member.member_count,0) as member_count
                         ,ifnull(temp_order.order_count,0) as order_count

@@ -211,7 +211,7 @@
     <div class="Section mt50">
         <div class="go_MenuBtns">
         <ul id="go_MenuBtns">        
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon01.png" alt=""><span>학원수강신청</span></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon01.png" alt=""><span>학원공지사항</span></a></li>
             <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon02.png" alt=""><span>강의실배정표</span></a></li>
             <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon03.png" alt=""><span>학원1:1상담</span></a></li>
             <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon04.png" alt=""><span>동영상1:1상담</span></a></li>

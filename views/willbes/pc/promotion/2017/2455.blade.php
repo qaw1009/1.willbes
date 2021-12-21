@@ -46,7 +46,7 @@
                     <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t01.jpg" alt="이경범 교육학"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="https://ssam.willbes.net/event/show/all?event_idx=1524"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t24.jpg" alt="정현 교육학"/></a>
+                    <a href="javascript:fnPlayerSample('189597','1328888','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t24.jpg" alt="정현 교육학"/></a>
                 </div>
                 <div class="profBox">
                     <a href="javascript:fnPlayerSample('189524','1328611','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t23.jpg" alt="신태식 교육학"/></a>

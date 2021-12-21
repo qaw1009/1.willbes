@@ -220,7 +220,8 @@
                 html += '<div class="price target-price" id="_price_'+this_prod_code+'"></div>';
                 html += '</li>';
                 $("#order_box_"+this_learn_pattern+" > ul").append(html);
-                getExptPayPrice(this_learn_pattern, this_prod_code);
+                
+                getExptPayPrice(this_learn_pattern);
             }
         });
 
@@ -237,7 +238,7 @@
     });
 
     // 할인율 정보 조회
-    function getExptPayPrice(learn_pattern, target_prod_code) {
+    function getExptPayPrice(learn_pattern) {
         var _url = (learn_pattern == 'off') ? "{{front_url('/pass/cart/getExptPayPrice')}}" : "{{front_url('/cart/getExptPayPrice')}}";
         var data = $("#exptpay_form_"+learn_pattern).serialize();
         var prod_cnt = $("#exptpay_form_"+learn_pattern).find("input[name='prod_code[]']").length;

@@ -22,8 +22,9 @@
         .evt01 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle; margin-right:5px}
         .evt01 input:checked + label {color:#ffef7e}
         .evt01 .ext01txt ul {margin:10px 0 0 25px}
-        .evt01 a {display:block; width:90%; margin:20px auto 0; background:#000; color:#fff; border-radius:30px; padding:10px 0; font-size:20px; font-weight:bold; text-align:center}
-        
+        .evt01 a {display:block; width:90%; margin:20px auto 0; background:#000; color:#fff; border-radius:30px; padding:10px 0; font-size:20px; font-weight:bold; text-align:center;}
+        .evt01_coupon a {background-color:rgba(255,255,255,0.1);}
+
         /*탭(텍스트)*/     
         .tabContaier{width:100%;background:#fff;margin-top:50px;}
         .tabContaier ul{margin:0 auto; height:65px;} 
@@ -109,35 +110,38 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_top.jpg" alt="0원 PASS" >
         </div>
         
-        <div class="evtCtnsBox evt01 wrap" data-aos="fade-up" id="evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_00.jpg" alt="" >           
-            <div class="price">
-                <ul>
-                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> 23년 1차 PASS 신청하기</label></li>                    
-                </ul>
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_01.jpg" alt="" >
-            <div class="price">
-                <ul>
-                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청하기</label></li>                    
-                </ul>
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_02.jpg" alt="" >
-            <div class="price">
-                <ul>                    
-                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> FINAL PASS 신청하기</label></li>
-                </ul>
-            </div>
-            <div class="ext01txt">
-                <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
-                <ul>
-                    <li>※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.</li>
-                    <li>※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.</li>
-                    <li>※ 쿠폰은 PASS 결제 후 [내 강의실>결제관리>쿠폰/수강권 관리] 에서 확인 가능합니다.</li>
-                    <li>※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.</li>
-                </ul>
-            </div>
-            <div><a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신청하기 ></a></div>
+        <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
+            <div class="evt01_coupon">
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_00.jpg" alt="" >
+                <a href="javascript:alert('Coming Soon!')" title="쿠폰받기" style="position: absolute;left: 53.89%;top: 9.73%;width: 39.88%;height: 2.34%;z-index: 2;"></a>
+                <div class="price">
+                    <ul>
+                        <li><input type="radio" id="y_pkg1" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> 23년 1차 PASS 신청하기</label></li>                    
+                    </ul>
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_01.jpg" alt="" >
+                <div class="price">
+                    <ul>
+                        <li><input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청하기</label></li>                    
+                    </ul>
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_02.jpg" alt="" >
+                <div class="price">
+                    <ul>                    
+                        <li><input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> FINAL PASS 신청하기</label></li>
+                    </ul>
+                </div>
+                <div class="ext01txt">
+                    <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
+                    <ul>
+                        <li>※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.</li>
+                        <li>※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.</li>
+                        <li>※ 쿠폰은 PASS 결제 후 [내 강의실>결제관리>쿠폰/수강권 관리] 에서 확인 가능합니다.</li>
+                        <li>※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.</li>
+                    </ul>
+                </div>
+                <div><a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신청하기 ></a></div>
+            </div>    
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
@@ -246,34 +250,37 @@
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_00.jpg" alt="" >
-            <div class="price">
-                <ul>
-                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> 23년 1차 PASS 신청하기</label></li>                    
-                </ul>
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_01.jpg" alt="" >
-            <div class="price">
-                <ul>
-                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청하기</label></li>                    
-                </ul>
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_02.jpg" alt="" >
-            <div class="price">
-                <ul>                    
-                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> FIMAL PASS 신청하기</label></li>
-                </ul>
-            </div>
-            <div class="ext01txt">
-                <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
-                <ul>
-                    <li>※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.</li>
-                    <li>※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.</li>
-                    <li>※ 쿠폰은 PASS 결제 후 [내 강의실>결제관리>쿠폰/수강권 관리] 에서 확인 가능합니다.</li>
-                    <li>※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.</li>
-                </ul>
-            </div>
-            <div><a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신청하기 ></a></div>
+            <div class="evt01_coupon">
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_00.jpg" alt="" >
+                <a href="javascript:alert('Coming Soon!')" title="쿠폰받기" style="position: absolute;left: 53.89%;top: 9.73%;width: 39.88%;height: 2.34%;z-index: 2;"></a>
+                <div class="price">
+                    <ul>
+                        <li><input type="radio" id="y_pkg1" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> 23년 1차 PASS 신청하기</label></li>                    
+                    </ul>
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_01.jpg" alt="" >
+                <div class="price">
+                    <ul>
+                        <li><input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청하기</label></li>                    
+                    </ul>
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_02.jpg" alt="" >
+                <div class="price">
+                    <ul>                    
+                        <li><input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> FINAL PASS 신청하기</label></li>
+                    </ul>
+                </div>
+                <div class="ext01txt">
+                    <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
+                    <ul>
+                        <li>※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.</li>
+                        <li>※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.</li>
+                        <li>※ 쿠폰은 PASS 결제 후 [내 강의실>결제관리>쿠폰/수강권 관리] 에서 확인 가능합니다.</li>
+                        <li>※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.</li>
+                    </ul>
+                </div>
+                <div><a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신청하기 ></a></div>
+            </div> 
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">

@@ -5,15 +5,18 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            position:relative;
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:auto}
+        .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/      
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/07/2139_top_bg_n1.jpg) no-repeat center top; position: relative;}
@@ -122,7 +125,8 @@
                 추후공지 예정입니다.</div>
             </div>
             --}}
-            <div class="tag NSK-Black">#사립탐정 #한국탐정 #10/24 #누구나빠르게</div>
+            <div class="tag NSK-Black">#사립탐정 #한국탐정 #01/23 #누구나빠르게</div>
+            {{--
             <div class="request" id="request">
                 <div class="requestL">
                     <h3 class="NSK-Black">* 사립탐정사 시험  학원예약접수</h3>
@@ -181,14 +185,19 @@
                     </div>
                 </div>
             </div>
+            --}}
             <div class="btn NGEB">
-                <a href="javascript:void(0);" onclick="javascript:fn_submit();">사립탐정 자격시험 예약하기 ></a>
+                {{--<a href="javascript:void(0);" onclick="javascript:fn_submit();">사립탐정 자격시험 예약하기 ></a>--}}
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIE5rWwEPmgP6fBEzM2yqis6KpZC-Ib72kNcXmK987GhGgsw/viewform" target="_blank">사립탐정 자격시험 예약하기 ></a>
             </div>
             {{--<div class="mt30 tx16">* 결제는 신광은경찰학원(본원) 현장결제만 가능합니다.</div>--}}
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2139_01.jpg"  alt="사립탐정사 자격시험" />
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2139_01.jpg"  alt="사립탐정사 자격시험" />
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIE5rWwEPmgP6fBEzM2yqis6KpZC-Ib72kNcXmK987GhGgsw/viewform" target="_blank" title="" style="position: absolute; left: 20.45%; top: 61.76%; width: 20.89%; height: 1.7%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt03">

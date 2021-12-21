@@ -162,10 +162,10 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2438_02.jpg" alt="특별이벤트"/>
         </div>
 
-        {{-- 핫클립 상품 Box(ajax data) evt03--}}
+        {{-- 핫클립 상품 Box(ajax data) evt03
         <div id="hotclip_box"></div>
+        --}}
 
-        {{--
         <div class="evtCtnsBox evt03">
             <div class="ssam-lnb"></div>
             <div class="tabCts">
@@ -213,11 +213,10 @@
                         * 학원직강과 동영상강의를 각각 신청하는 경우에는 할인 적용 및 동시 결제가 불가합니다.
                         <br>* 학원직강과 동영상강의를 각각 신청하고자 하는 경우, 할인 적용을 위해서는 한가지 방법으로 결제하고, 추후<br><span class="ml10">1:1상담 게시판을 통하여 변경 신청해 주시기 바랍니다.</span>
                     </div>
-                    <div class="checkWrap"><input type="checkbox" id="is_chk" name="is_chk" value="Y"> <label for="is_chk">페이지 하단의 상품 관련 유의사항을 모두 확인하였고, 이에 동의합니다.</label></div>
+                                <div class="checkWrap"><input type="checkbox" id="is_chk" name="is_chk" value="Y"> <label for="is_chk">페이지 하단의 상품 관련 유의사항을 모두 확인하였고, 이에 동의합니다.</label></div>
                 </div>
             </div>
         </div>
-        --}}
 
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2438_04.jpg" alt="초심을 잃지 마세요~!"/>
@@ -231,12 +230,6 @@
             <div class="evtInfoBox">
                 <h4 class="NSK-Black"><span>[ 필독 ]</span> 연간 패키지 수강 시 유의 사항</h4>
                 <ul>
-                    {{--
-                    <li>본 패키지의 수강 기간은 365일 이며, 수강 기간 중  “일시중지” 및 “(유료)연장”은 할 수 없습니다.</li>
-                    <li>본 패키지는 과목에 따라 수강 기간이 1년(365일) 이하의 상품도 포함될 수 있습니다. (과목별 안내 사항 참고)</li>
-                    <li>본 패키지는 1차 대비 강의만 포함됩니다. (2차 강의는 별도)</li>
-                    <li>본 패키지 강의는 양도 및 매매가 불가능하며, 위반시 처벌 받을 수 있습니다.</li>
-                    --}} 
                     <li>본 패키지는 교육학과 전공 동시 수강 시, 교육학의 추가 10%할인 혜택이 있습니다. (정현 교육학 제외) </li>
                     <li>본 패키지의 수강 기간은 365일 이며, 수강 기간 중 “일시중지“ 및 “(유료)연장＂은 할 수 없습니다. </li>
                     <li>본 패키지는 과목에 따라 수강 기간이 1년(365일) 이하의 상품도 포함될 수 있습니다. (과목별 안내 사항 참고)<br>
@@ -292,7 +285,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             /* 핫클립 상품 페이지 로드 */
-            var _url = '{!! front_url('/promotion/ajaxHotClipProduct_test') !!}';
+            var _url = '{!! front_url('/promotion/ajaxHotClipProduct') !!}';
             _url += '?online_disc_code={{ (empty($arr_promotion_params["online_disc_code"]) === false ? $arr_promotion_params["online_disc_code"] : '') }}';
             _url += '&off_disc_code={{ (empty($arr_promotion_params["off_disc_code"]) === false ? $arr_promotion_params["off_disc_code"] : '') }}';
             sendAjax(_url, '', function(ret) {

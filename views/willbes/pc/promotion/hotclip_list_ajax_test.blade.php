@@ -114,18 +114,18 @@
                 <div class="lecbox" id="order_box_off">
                     <h5><strong>학원직강 연간패키지</strong> 신청내역</h5>
                     <ul></ul>
-                    <div>
-                        <p class="expt-disc">-할인</p>
+                    <div>                        
                         <p><strong class="prod-cnt">-과목</strong> 결제금액 <strong class="sale-price">-</strong>원</p>
+                        <p>총 <span class="expt-disc">-할인</span></p>
                         <p><a href="javascript:void(0);" onclick="javascript:directPay('off'); return false;">결제하기</a></p>
                     </div>
                 </div>
                 <div class="lecbox" id="order_box_online">
                     <h5><strong>동영상강의 연간패키지</strong> 신청내역</h5>
                     <ul></ul>
-                    <div>
-                        <p class="expt-disc">-할인</p>
+                    <div>                        
                         <p><strong class="prod-cnt">-과목</strong> 결제금액 <strong class="sale-price">-</strong>원</p>
+                        <p>총 <span class="expt-disc">-할인</span></p>
                         <p><a href="javascript:void(0);" onclick="javascript:directPay('online'); return false;">결제하기</a></p>
                     </div>
                 </div>
@@ -134,9 +134,7 @@
                 * 학원직강과 동영상강의를 각각 신청하는 경우에는 할인 적용 및 동시 결제가 불가합니다.
                 <br>* 학원직강과 동영상강의를 각각 신청하고자 하는 경우, 할인 적용을 위해서는 한가지 방법으로 결제하고, 추후<br><span class="ml10">1:1상담 게시판을 통하여 변경 신청해 주시기 바랍니다.</span>
             </div>
-            {{--<div class="tx-red tx16 strong mb20">
-                * 학원직강과 동영상강의를 각각 신청하고자 하는 경우, 할인 적용을 위해서는 한가지 방법으로 결제하고, 추후 <br>1:1상담 게시판을 통하여 변경 신청해 주시기 바랍니다.
-            </div>--}}
+
             <div class="checkWrap"><input type="checkbox" id="is_chk" name="is_chk" value="Y"> <label for="is_chk">페이지 하단의 상품 관련 유의사항을 모두 확인하였고, 이에 동의합니다.</label></div>
         </div>
     </div>
@@ -219,6 +217,7 @@
                 html += 'data-prod-code="'+this_prod_code+'"> ';
                 html += '<img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제">';
                 html += '</a>';
+                html += '<div class="price">1,330,000원 → <strong>1,197,000원</strong> <span>(133,000원 할인)</span></div>';
                 html += '</li>';
                 $("#order_box_"+this_learn_pattern+" > ul").append(html);
                 getExptPayPrice(this_learn_pattern);

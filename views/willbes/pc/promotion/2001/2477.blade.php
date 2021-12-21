@@ -106,7 +106,7 @@
         <div class="evtCtnsBox evt_07" id="evt07" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2477_07.jpg"  alt="강의 교재" /> 
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/18956" target="_blank" title="96000원" style="position: absolute; left: 63.75%; top: 38.87%; width: 23.75%; height: 20.82%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/189562" target="_blank" title="96000원" style="position: absolute; left: 63.75%; top: 38.87%; width: 23.75%; height: 20.82%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/book/index/cate/3001?cate_code=3001" target="_blank" title="17010원" style="position: absolute; left: 63.75%; top: 61.8%; width: 23.75%; height: 20.82%; z-index: 2;"></a>
             </div>            
         </div>

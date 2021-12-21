@@ -275,6 +275,7 @@ class Home extends \app\controllers\FrontController
             $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $s_cate_code , 'New');
             $data['board_lecture_plan'] = $this->_boardLecturePlan(5, $s_cate_code);
             $data['dday'] = $this->_dday($s_cate_code);
+            $data['lecture_update_info'] = $this->_getlectureUpdateInfo(10, $s_cate_code);
         } else {
             if (in_array($this->_cate_code, $this->_category_mobile[$this->_site_code])) {
                 $s_cate_code = $cate_code;

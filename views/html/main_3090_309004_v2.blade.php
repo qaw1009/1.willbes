@@ -142,11 +142,11 @@
     <div class="Section mt50">
         <div class="go_MenuBtns">
         <ul id="go_MenuBtns">        
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon02.png" alt=""><span>학원수강신청</span></a></li>
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon04.png" alt=""><span>강의실배정표</span></a></li>
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon05.png" alt=""><span>학원1:1상담</span></a></li>
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon06.png" alt=""><span>동영상1:1상담</span></a></li>
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon07.png" alt=""><span>강의자료실</span></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon01.png" alt=""><span>학원공지사항</span></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon02.png" alt=""><span>강의실배정표</span></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon03.png" alt=""><span>학원1:1상담</span></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon04.png" alt=""><span>동영상1:1상담</span></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon05.png" alt=""><span>강의자료실</span></a></li>
         </ul>
         </div>
     </div>
@@ -324,80 +324,78 @@
         </div>
     </div>
     
-    <div class="Section mt100">
+    <div class="Section SecBanner12">
         <div class="widthAuto">
-            <div class="SecBanner12">
-                <div class="will-nTit NSK-Black">
-                    전문 <span class="tx-color">교수진</span>
-                    <span class="tx16 NSK-Thin pt10 ml20">경찰 합격을 위한 선택! 최고의 교수진으로 수험생의 합격을 돕겠습니다.</span>
-                </div>
-                <ul class="pro_box">
-                    <li class="bSlider">
-                        <div class="slider">
-                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51160?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_01.png" alt="교수명"></a></div>
-                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51160?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_01.png" alt="교수명"></a></div>
-                        </div>
-                    </li>
-                    <li class="bSlider">
-                        <div class="slider">
-                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51161?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_02.png" alt="교수명"></a></div>
-                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51161?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_02.png" alt="교수명"></a></div>
-                        </div>
-                    </li>
-                    <li class="bSlider">
-                        <div class="slider">
-                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51146?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_03.png" alt="교수명"></a></div>
-                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51146?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_03.png" alt="교수명"></a></div>
-                        </div>
-                    </li>
-                    <li class="bSlider">
-                        <div class="slider">
-                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_04.png" alt="교수명"></a></div>
-                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_04.png" alt="교수명"></a></div>
-                        </div>
-                    </li>
-                    <li class="bSlider">
-                        <div class="slider">
-                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_05.png" alt="교수명"></a></div>
-                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_05.png" alt="교수명"></a></div>
-                        </div>
-                    </li>                  
-                    <li class="bSlider">
-                        <div class="slider">
-                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_07.png" alt="교수명"></a></div>
-                            <div><a href="javascript:alert('Coming Soon!')" ><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_07.png" alt="교수명"></a></div>
-                        </div>
-                    </li>
-                    <li class="bSlider">
-                        <div class="slider">
-                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_08.png" alt="교수명"></a></div>
-                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_08.png" alt="교수명"></a></div>
-                        </div>
-                    </li>
-                    <li class="bSlider">
-                        <div class="slider">
-                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_09.png" alt="교수명"></a></div>
-                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_09.png" alt="교수명"></a></div>
-                        </div>
-                    </li>
-                    <li class="bSlider">
-                        <div class="slider">
-                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_10.png" alt="교수명"></a></div>
-                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_10.png" alt="교수명"></a></div>
-                        </div>
-                    </li>
-                    <li class="bSlider">
-                        <div class="slider">
-                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_11.png" alt="교수명"></a></div>
-                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_12.png" alt="교수명"></a></div>
-                        </div>
-                    </li>                   
-                </ul>
+            <div class="will-nTit NSK-Black">
+                전문 <span class="tx-color">교수진</span>
+                <span class="tx16 NSK-Thin pt10 ml20">최고의 교수진으로 수험생의 합격을 돕겠습니다.</span>
             </div>
+            <ul class="pro_box">
+                <li class="bSlider">
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                    </div>
+                </li>
+                <li class="bSlider">
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                    </div>
+                </li>
+                <li class="bSlider">
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                    </div>
+                </li>
+                <li class="bSlider">
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                    </div>
+                </li>
+                <li class="bSlider">
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                    </div>
+                </li>                  
+                <li class="bSlider">
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                    </div>
+                </li>
+                <li class="bSlider">
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                    </div>
+                </li>
+                <li class="bSlider">
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                    </div>
+                </li>
+                <li class="bSlider">
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                    </div>
+                </li>
+                <li class="bSlider">
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/bn_220x327.jpg" alt="교수명"></a></div>
+                    </div>
+                </li>                   
+            </ul>
         </div>    
     </div>
 
-    <div class="Section mt50">
+    <div class="Section mt100">
         <div class="widthAuto"> 
             <div class="noticeTabs">
                 <div class="will-listTit">학원 공지사항</div>

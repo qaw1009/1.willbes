@@ -20,13 +20,11 @@ class StatsGateway extends BaseStats
     {
         $list = [];
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-
-        $count = $this->statsGatewayModel->getGatewayHistoryList(true, $arr_input);
-
+        $model_prefix = element('search_stats_type', $arr_input) === 'gather' ? 'gatherStats' : 'stats';
+        $count = $this->{$model_prefix.'GatewayModel'}->getGatewayHistoryList(true, $arr_input);
         if($count > 0) {
-            $list = $this->statsGatewayModel->getGatewayHistoryList(false, $arr_input);
+            $list = $this->{$model_prefix.'GatewayModel'}->getGatewayHistoryList(false, $arr_input);
         }
-
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,

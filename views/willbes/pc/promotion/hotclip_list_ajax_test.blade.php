@@ -207,8 +207,8 @@
             var param_check = $("#exptpay_form_"+this_learn_pattern).find('#_exptpay_'+this_prod_code).val();
 
             if (typeof param_check === 'undefined') {
-                $("#exptpay_form_"+this_learn_pattern).append('<input type="hidden" name="prod_code[]" id="_exptpay_' + $(this).data("prod-code") + '" value="' + $(this).data("prod-code") + '"/>');
-                $("#order_div_"+this_learn_pattern).append('<input type="checkbox" name="y_pkg" id="_order_' + $(this).data("prod-code") + '" value="' + $(this).data("prod-code") + '" checked="checked"/>');
+                $("#exptpay_form_"+this_learn_pattern).append('<input type="hidden" name="prod_code[]" id="_exptpay_' + this_prod_code + '" value="' + this_prod_code + '"/>');
+                $("#order_div_"+this_learn_pattern).append('<input type="checkbox" name="y_pkg" id="_order_' + this_prod_code + '" value="' + this_prod_code + '" checked="checked"/>');
                 var html = '<li>';
                 html += '<strong>'+this_prof_name+'</strong> ';
                 html += this_prod_name+' ';
@@ -217,10 +217,10 @@
                 html += 'data-prod-code="'+this_prod_code+'"> ';
                 html += '<img src="https://static.willbes.net/public/images/promotion/2021/12/btn_del.png" alt="삭제">';
                 html += '</a>';
-                html += '<div class="price">1,330,000원 → <strong>1,197,000원</strong> <span>(133,000원 할인)</span></div>';
+                html += '<div class="price target-price" id="_price_'+this_prod_code+'"></div>';
                 html += '</li>';
                 $("#order_box_"+this_learn_pattern+" > ul").append(html);
-                getExptPayPrice(this_learn_pattern);
+                getExptPayPrice(this_learn_pattern, this_prod_code);
             }
         });
 
@@ -237,7 +237,7 @@
     });
 
     // 할인율 정보 조회
-    function getExptPayPrice(learn_pattern) {
+    function getExptPayPrice(learn_pattern, target_prod_code) {
         var _url = (learn_pattern == 'off') ? "{{front_url('/pass/cart/getExptPayPrice')}}" : "{{front_url('/cart/getExptPayPrice')}}";
         var data = $("#exptpay_form_"+learn_pattern).serialize();
         var prod_cnt = $("#exptpay_form_"+learn_pattern).find("input[name='prod_code[]']").length;
@@ -249,6 +249,14 @@
                     var expt_disc_rate = ret.ret_data.expt_disc_rate;     //예상할인율
                     var expt_disc_price = ret.ret_data.expt_disc_price;   //예상할인금액
                     var expt_pay_price = ret.ret_data.expt_pay_price;     //예상결제금액
+
+                    var target_prod_html = '';
+                    if (typeof ret.ret_data.data !== 'undefined') {
+                        $.each(ret.ret_data.data, function (key,row) {
+                            target_prod_html = parseInt(row.real_sale_price).toLocaleString()+'원 → <strong>'+parseInt(row.expt_pay_price).toLocaleString()+'원</strong> <span>('+parseInt(row.expt_disc_price).toLocaleString()+'원 할인)</span>';
+                            $("#_price_"+key).html(target_prod_html);
+                        });
+                    }
                     $("#order_box_"+learn_pattern).find('.expt-disc').text(parseInt(expt_disc_price).toLocaleString()+'할인');
                     $("#order_box_"+learn_pattern).find('.prod-cnt').text(prod_cnt+'과목');
                     $("#order_box_"+learn_pattern).find('.sale-price').text(parseInt(expt_pay_price).toLocaleString());

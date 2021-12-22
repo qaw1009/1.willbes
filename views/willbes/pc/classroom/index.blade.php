@@ -102,11 +102,11 @@
                     <div id="MyDevice" class="willbes-Layer-PassBox willbes-Layer-PassBox800 h960 abs"></div>
                 </div>
                 @if(sess_data('is_login') == true && empty(sess_data('mem_ssamid')) == false)
-                <div class="Quick-Bnr mt20">
+                {{-- <div class="Quick-Bnr mt20">
                     <a href="{{front_url('/classroom/home/gotoSsam/')}}" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/sub/ssam_oldmypage_quick.gif" alt="이전 내강의실 보기">
                     </a>
-                </div>
+                </div> --}}
                 @endif
                 <div class="Quick-Top">
                     {!! banner('내강의실_우측퀵', 'Quick-Bnr', $__cfg['SiteCode'], '0') !!}

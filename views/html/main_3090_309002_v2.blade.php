@@ -11,6 +11,9 @@
                 <li class="subTit">공인노무사</li>
             </ul>
             <ul class="menu-List">
+                <li>
+                    <a href="#none">내강의실</a>
+                </li>
                 <li class="dropdown">
                     <a href="#none">교수진소개</a>
                     <div class="drop-Box list-drop-Box">
@@ -146,14 +149,16 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#none">교재구매</a>
+                    <a href="#none">온라인서점</a>
                 </li>
+                {{--
                 <li class="gosi">
                     <a href="#none" target="_self">
                         학원 방문 결제 
                         <span class="arrow-Btn">></span>
                     </a>
                 </li>
+                --}}
             </ul>
         </h3>
     </div>

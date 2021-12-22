@@ -1,4 +1,5 @@
 <style>
+
     .tabWrapCustom.noticeWrap_campus {
         height: 60px;
         border-bottom: none;
@@ -45,7 +46,8 @@
         margin: -36px 0 0;
     }
 </style>
-<div class="Section Section4_hl mb50">
+
+<div class="Section Section4_hl mt50">
     <div class="widthAuto">
         <div class="will-acadTit">윌비스 <span class="tx-color">자격증</span> 학원</div>
         <div class="noticeTabs campus c_both">

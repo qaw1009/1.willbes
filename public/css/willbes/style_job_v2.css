@@ -248,7 +248,7 @@
 .job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a.active,
 .job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a:focus {
-	background: #000;
+	background: #000 !important;
 	border:1px solid #000;
 }
 .job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a.active {
@@ -348,7 +348,7 @@
 .job .lectureBestWrap .lectureBest p.leftBtn {left:-30px}
 .job .lectureBestWrap .lectureBest p.rightBtn {right:-50px}
 
-/*오시는길*/
+/*오시는길
 .job .loadMap .noticeTabs {
 	width: 100% !important;
 }
@@ -392,6 +392,7 @@
 	text-align: center;
 	border: 1px solid #000;
 }
+*/
 
 .job .willbesNumber {
 	background: #f6f6f6;
@@ -500,8 +501,6 @@
 .job .SecBanner05:after {content:''; display: block; clear:both}
 
 
-.job .will-nTit {font-size:35px !important; border:0 !important; margin-bottom:30px;}
-
 .job .pro_box {display: flex; flex-wrap: wrap; justify-content: space-between;}
 .job .pro_box > li {
     position: relative;
@@ -510,109 +509,6 @@
     margin-bottom:5px
 }
 
-
-/*Main Container : 최근 업로드 강의*/
-.job .will-nTit {font-size:35px !important; border:0 !important; }
-.job .uploadLec {
-	box-shadow:0 10px 25px rgba(0,0,0,.2);
-	border-radius:10px;
-	padding:20px;
-}
-.job .uploadLec .vSlider {position:relative; width:100%; height:74px;}
-.job .uploadLec .vSlider:after {content:''; display: block; clear:both}
-.job .uploadLec .vSlider .sliderNumV {
-	height:74px;
-	overflow: hidden;
-}
-.job .uploadLec .vSlider .sliderNumV > div:after {content:''; display: block; clear:both}
-.job .uploadLec .vSlider .sliderNumV .lecReview {
-	float:left;
-	display: inline;
-	width:50%;
-	height:74px;
-	line-height: 1.3;
-}
-.job .uploadLec .vSlider .sliderNumV .lecReview a {display:block;}
-.job .uploadLec .vSlider .sliderNumV .lecReview a:after {content:''; display: block; clear:both}
-.job .uploadLec .imgBox {
-	position:relative;
-	float: left;
-	width: 74px;
-	height: 74px;
-	border-radius:6px;
-	overflow:hidden;
-}
-.job .uploadLec .imgBox img {
-	position: absolute; left:50%; top:50%; width:100%;
-	-webkit-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	-moz-transform: translate(-50%, -50%);
-	-o-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%) scale(1);
-	transition: all ease-in-out .2s;
-}
-.job .uploadLec .vSlider .sliderNumV .lecReview a:hover img {
-	-ms-transform: translate(-50%, -50%) scale(1.1);
-	-webkit-transform: translate(-50%, -50%) scale(1.1);
-	transform: translate(-50%, -50%) scale(1.1);
-}
-.job .uploadLec .vSlider .sliderNumV > div:nth-child(1n) .lecReview:nth-child(1n) .imgBox {
-	background:#34b696;
-}
-.job .uploadLec .vSlider .sliderNumV > div:nth-child(1n) .lecReview:nth-child(2n) .imgBox {
-	background:#e583b9;
-}
-.job .uploadLec .vSlider .sliderNumV > div:nth-child(2n) .lecReview:nth-child(1n) .imgBox {
-	background:#3490b6;
-}
-.job .uploadLec .vSlider .sliderNumV > div:nth-child(2n) .lecReview:nth-child(2n) .imgBox {
-	background:#b1b634;
-}
-.job .uploadLec .vSlider .sliderNumV > div:nth-child(3n) .lecReview:nth-child(1n) .imgBox {
-	background:#b67734;
-}
-.job .uploadLec .vSlider .sliderNumV > div:nth-child(3n) .lecReview:nth-child(2n) .imgBox {
-	background:#d3b9ef;
-}
-.job .uploadLec .lecinfo {float:left; margin-left:10px; width:calc(100% - 100px); position:relative; height:74px}
-.job .uploadLec .lecinfo p {color:#848484; font-size:14px; margin-bottom:0}
-.job .uploadLec .lecinfo p:nth-child(2) {color:#363636; font-size:16px; font-weight:600; margin-bottom: 3px;}
-.job .uploadLec .lecinfo p:nth-child(3) {color:#0c5dc0; font-size:12px; position: absolute; bottom:0}
-.job .uploadLec .bx-wrapper .bx-controls-direction {
-	position: absolute;
-	top: 0;
-	right: 10px;
-	width: 40px;
-	height: 20px;
-}
-.job .uploadLec .bx-wrapper .bx-controls-direction a {
-	width: 20px;
-	height: 20px;
-}
-.job .uploadLec .bx-wrapper .bx-pager {
-	float: none;
-	width: 100%;
-	right: 8px;
-	bottom: -50px;
-	text-align: center;
-}
-.job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a {
-	width: 12px;
-	height: 12px;
-	margin: 0 2px;
-	background: #fff;
-	border:1px solid #b9b9b9;
-	border-radius:10px;
-}
-.job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a:hover,
-.job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a.active,
-.job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a:focus {
-	background: #000 !important;
-	border:1px solid #000 !important;
-}
-.job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a.active {
-	width: 40px;
-}
 
 /*강의맛보기 */
 .Section1 {background:#f0eee3; padding:100px 0}

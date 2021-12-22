@@ -6,7 +6,7 @@
 
 </style>
 <!-- Container -->
-<div id="Container" class="Container job job309002 NSK c_both">
+<div id="Container" class="Container job NSK c_both">
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
@@ -210,13 +210,13 @@
 
     <div class="Section mt50">
         <div class="go_MenuBtns">
-        <ul id="go_MenuBtns">        
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon01.png" alt=""><span>학원공지사항</span></a></li>
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon02.png" alt=""><span>강의실배정표</span></a></li>
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon03.png" alt=""><span>학원1:1상담</span></a></li>
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon04.png" alt=""><span>동영상1:1상담</span></a></li>
-            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon05.png" alt=""><span>강의자료실</span></a></li>
-        </ul>
+            <ul id="go_MenuBtns">        
+                <li><a href="https://job.willbes.net/support/gosiNotice/index/cate/309002?s_cate_code=309002&s_cate_code_disabled=Y"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon01.png" alt=""><span>학원공지사항</span></a></li>
+                <li><a href="https://job.willbes.net/pass/offinfo/boardInfo/index/82?on_off_link_cate_code=309002&s_cate_code_disabled=Y"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon02.png" alt=""><span>강의실배정표</span></a></li>
+                <li><a href="https://job.willbes.net/support/qna/index?s_cate_code=309002&s_cate_code_disabled=Y"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon03.png" alt=""><span>학원1:1상담</span></a></li>
+                <li><a href="https://job.willbes.net/support/qna/index?s_cate_code=309002&s_cate_code_disabled=Y"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon04.png" alt=""><span>동영상1:1상담</span></a></li>
+                <li><a href="https://job.willbes.net/pass/offinfo/boardInfo/index/110?on_off_link_cate_code=309002&s_cate_code_disabled=Y"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon05.png" alt=""><span>강의자료실</span></a></li>
+            </ul>
         </div>
     </div>
 
@@ -587,7 +587,7 @@
         </div>
     </div>  
 
-    <div class="Section loadMap mt50">
+    <div class="Section Section4_hl mt50">
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">자격증</span> 학원</div>
             <div class="noticeTabs campus c_both">
@@ -601,6 +601,7 @@
                             <img src="https://static.willbes.net/public/images/promotion/main/2010_map01.jpg" alt="신림(본원)">
                             <span class="origin">신림(본원)</span>
                         </div>
+
                         <div class="campus_info">
                             <dl>
                                 <dt>
@@ -632,6 +633,7 @@
                             <img src="https://static.willbes.net/public/images/promotion/main/2010_map02.jpg" alt="강남(분원)">
                             <span>강남(분원)</span>
                         </div>
+
                         <div class="campus_info">
                             <dl>
                                 <dt>

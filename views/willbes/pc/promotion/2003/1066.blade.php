@@ -5,18 +5,23 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
-            background:#fff;
-            position:relative;
+            padding:0 !important;
+            background:#fff;            
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
-        
+
+        .skybanner {position:fixed;top:100px;right:10px;width:259px; text-align:center; z-index:11;}   
+        .skybanner a {display:block;margin-bottom:5px;}          
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/10/1066_top_bg.jpg) center top no-repeat}
 
@@ -49,8 +54,7 @@
         .wb_cts07 .wrap span {position: absolute; top:549px; left:50%; width:302px; margin-left:-427px} 
         .wb_cts07 .wrap span img {width:100%}
 
-        .skybanner {position:fixed;top:100px;right:10px;width:259px; text-align:center; z-index:11;}   
-        .skybanner a {display:block;margin-bottom:10px;}   
+ 
 
         /*타이머*/
         .time {text-align:center; padding:20px 0; background:#fff; border-radius:20px; width:1000px !important; margin:0 auto}
@@ -81,12 +85,14 @@
             </a>
             <a href="#package">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/1067_skybanner3.png" title="패키지" >
-            </a>
-            {{--
-            <a href="#evt07">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_sky02.png" title="라이브로 소통하기" >
-            </a>       
-            --}}          
+            </a>  
+            <span>
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/1066_sky03.png" usemap="#Mapsky" border="0" />
+                <map name="Mapsky" id="Mapsky">
+                    <area shape="rect" coords="22,105,116,212" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/189351" target="_blank" />
+                    <area shape="rect" coords="125,104,219,213" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/186676" target="_blank"  />
+                </map>
+            </span>          
         </div>
       
         <div class="evtCtnsBox wb_top">

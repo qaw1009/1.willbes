@@ -180,16 +180,7 @@
 
 
 
-/*상단 gnd 메뉴 (자격증)*/
-.dropdown .list-drop-Box-license {
-    top: 38px;
-    left: 50%;
-    margin-left: -690px;
-    -webkit-margin-start: -469px;
-    width: 1120px;
-    padding: 0;
-    z-index: 100;
-}
+
 
 
 

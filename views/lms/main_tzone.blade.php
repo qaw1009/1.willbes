@@ -5,7 +5,7 @@
         <div class="col-md-6">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>안녕하세요. {{ sess_data('admin_name') }} 교수님. <span class="red">담당자 외 접속은 IP 추적을 통해 법적 조치하겠습니다.</span></h2>
+                    <h2>안녕하세요. {{ sess_data('admin_name') }} 교수님. <span class="red">본인 외 ID와 비번이 유출되지 않도록 보안 유지를 부탁드립니다.</span></h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">

@@ -11,6 +11,9 @@
                 <li class="subTit">감정평가사</li>
             </ul>
             <ul class="menu-List">
+                <li>
+                    <a href="#none">내강의실</a>
+                </li>
                 <li class="dropdown">
                     <a href="#none">교수진소개</a>
                     <div class="drop-Box list-drop-Box">
@@ -130,28 +133,17 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#none">교재구매</a>
+                    <a href="#none">온라인서점</a>
                 </li>
-                <li class="dropdown">
-                    <a href="#none">고객센터</a>
-                    <div class="drop-Box list-drop-Box">
-                        <ul>
-                            <li><a href="#none">고객센터 HOME</a></li>
-                            <li><a href="#none">자주하는 질문</a></li>
-                            <li><a href="#none">공지사항</a></li>
-                            <li><a href="#none">1:1 상담</a></li>
-                            <li class="Tit">수강지원</li>
-                            <li><a href="#none">PC원격지원</a></li>
-                            <li><a href="#none">학습프로그램설치</a></li>
-                        </ul>
-                    </div>
-                </li>
+
+                {{--
                 <li class="gosi">
                     <a href="#none" target="_self">
                         학원 방문 결제 
                         <span class="arrow-Btn">></span>
                     </a>
                 </li>
+                --}}
             </ul>
         </h3>
     </div>

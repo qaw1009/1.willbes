@@ -1,9 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-<link href="/public/css/willbes/style_job_v2.css??ver={{time()}}" rel="stylesheet">
+
 <!-- Container -->
-<div id="Container" class="Container job job309004 NSK c_both">
+<div id="Container" class="Container job patent NSK c_both">
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
@@ -113,26 +113,26 @@
     </div> 
 
     <div class="Section p_re">        
-        <div class="MainVisual NSK">            
+        <div class="MainVisual">            
             <div class="VisualBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_740x400.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_740x400.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_725x400.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_725x400.jpg" alt="배너명"></a></div>
                     </div>
                 </div>
             </div>
             <div class="VisualsubBox">
                 <div class="bSlider VisualsubBoxTop">                    
                     <div class="slider">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x154.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x154.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x128.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x128.jpg" alt="배너명"></a></div>
                     </div>
                 </div>   
                 <div class="bSlider">
-                    <div class="slider">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x223.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x223.jpg" alt="배너명"></a></div>
+                    <div class="sliderStopAutoPager">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x248.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x248.jpg" alt="배너명"></a></div>
                     </div>
                 </div>   
             </div>

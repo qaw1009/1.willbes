@@ -36,68 +36,67 @@
 }
 
 /* Main Container : MainVisual */
-.nomu .MainVisual {
+.job .MainVisual {
     position: relative;
     width: 1120px;
-    margin:40px auto 0;
+    margin:0 auto;
     height: 400px;
 }
-.nomu .MainVisual:after {
+.job .MainVisual:after {
     content: "";
     display: block;
     clear: both;
 }
 
-.nomu .VisualBox {
+.job .VisualBox {
     width:725px;  
     height: 400px;
     overflow: hidden;
     float:left;
   }
-.nomu .VisualBox img {
+.job .VisualBox img {
     height: 400px;
   }
   
-.nomu .VisualBox .bx-wrapper .bx-controls-auto {
+.job .VisualBox .bx-wrapper .bx-controls-auto {
     left:20px;
     bottom: 20px;
     width: 50px;
     z-index: 90;
 }
-.nomu .VisualBox .bx-wrapper .bx-pager {
+.job .VisualBox .bx-wrapper .bx-pager {
     width: auto;
     left:60px;
-    bottom: 18px;
+    bottom: 22px;
     text-align: left;
     z-index: 90;
 }
-.nomu .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #cecece; width:14px; height:14px; border-radius: 7px;
+.job .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
   }
-.nomu .VisualBox .bx-wrapper .bx-pager.bx-default-pager a.active {width:30px}
 
-.nomu .VisualsubBox {
+.job .VisualsubBox {
     width: 384px;
     padding:10px;
     float:right;
     background: #ccc;
 }
 
-.nomu .VisualsubBox .bSlider:nth-child(2) {
+.job .VisualsubBox .bSlider:nth-child(2) {
     margin-top:3px;
     width: 364px;
     height: 248px !important;
     overflow: hidden;
   }
 
-.nomu .VisualsubBox .bx-wrapper .bx-controls-auto {
+.job .VisualsubBox .bx-wrapper .bx-controls-auto {
     left:20px;
     bottom: 20px;
     margin: 0;
     width: 50px;
     z-index: 90;
   }
-.nomu .VisualsubBox .bx-wrapper .bx-pager {
+.job .VisualsubBox .bx-wrapper .bx-pager {
     float: right;
     width: auto;
     left:60px;
@@ -105,35 +104,29 @@
     text-align: right;
     z-index: 90;
 }
-.nomu .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+.job .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
     width: 8px;
     height: 8px;
     margin: 0 2px;
 }
 
-.nomu .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden;}
+.job .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden;}
 
-.nomu .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager {
+.job .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager {
     float: left;
     width: auto;
     left: 20px;
     bottom: 10px;
     text-align: left;
 }
-.nomu .VisualsubBox .VisualsubBoxTop  .bx-wrapper .bx-pager.bx-default-pager a {
+.job .VisualsubBox .VisualsubBoxTop  .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
 }
 .nomu .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .nomu .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
 .nomu .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #109bb8 !important;
-}
-
-/**/
-.nomu .Section.barBnr {
-    /*background:url("../../img/willbes/gosi/banner/bnr_1120_bg.jpg") repeat-x left bottom;*/
-    margin-top:20px;
 }
 
 /* Main Container : Prof */
@@ -342,6 +335,234 @@
 .nomu .MainQuickMenu li:nth-child(4) a {
     background: url("../../img/willbes/cop_acad/icon_rq09.png") no-repeat 3px center;
 } 
+
+/*바로가기 메뉴*/ 
+.job .go_MenuBtns {background:#fff; padding:10px 0}
+.job .go_MenuBtns ul {width:1120px; margin:0 auto; display:flex; justify-content: space-around;}
+.job .go_MenuBtns li {border-right:1px solid #e3e3e3; display:block; width:calc(100% / 5)}
+.job .go_MenuBtns li:last-child {border:0}
+.job .go_MenuBtns li a {display: block;	text-align: center;}
+.job .go_MenuBtns li a img {display:block; margin:0 auto}
+.job .go_MenuBtns li span {display:inline-block; color:#fff; background:#1b1b1b; border-radius:10px; margin-top:10px; font-size:15px; padding:5px 15px}
+.job .go_MenuBtns li a:hover span {color: #000; background:#ffc75a}
+
+/**/
+.nomu .Section.barBnr {
+    /*background:url("../../img/willbes/gosi/banner/bnr_1120_bg.jpg") repeat-x left bottom;*/
+    margin-top:20px;
+}
+
+/*업로드강의*/
+.job .will-nTit {font-size:35px !important; border:0 !important; }
+.job .uploadLec {
+	box-shadow:0 10px 25px rgba(0,0,0,.2);
+	border-radius:10px;
+	padding:20px;
+}
+.job .uploadLec .vSlider {position:relative; width:100%; height:74px;}
+.job .uploadLec .vSlider:after {content:''; display: block; clear:both}
+.job .uploadLec .vSlider .sliderNumV {
+	height:74px;
+	overflow: hidden;
+}
+.job .uploadLec .vSlider .sliderNumV > div:after {content:''; display: block; clear:both}
+.job .uploadLec .vSlider .sliderNumV .lecReview {
+	float:left;
+	display: inline;
+	width:50%;
+	height:74px;
+	line-height: 1.3;
+}
+.job .uploadLec .vSlider .sliderNumV .lecReview a {display:block;}
+.job .uploadLec .vSlider .sliderNumV .lecReview a:after {content:''; display: block; clear:both}
+.job .uploadLec .imgBox {
+	position:relative;
+	float: left;
+	width: 74px;
+	height: 74px;
+	border-radius:6px;
+	overflow:hidden;
+}
+.job .uploadLec .imgBox img {
+	position: absolute; left:50%; top:50%; width:100%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%) scale(1);
+	transition: all ease-in-out .2s;
+}
+.job .uploadLec .vSlider .sliderNumV .lecReview a:hover img {
+	-ms-transform: translate(-50%, -50%) scale(1.1);
+	-webkit-transform: translate(-50%, -50%) scale(1.1);
+	transform: translate(-50%, -50%) scale(1.1);
+}
+.job .uploadLec .vSlider .sliderNumV > div:nth-child(1n) .lecReview:nth-child(1n) .imgBox {
+	background:#34b696;
+}
+.job .uploadLec .vSlider .sliderNumV > div:nth-child(1n) .lecReview:nth-child(2n) .imgBox {
+	background:#e583b9;
+}
+.job .uploadLec .vSlider .sliderNumV > div:nth-child(2n) .lecReview:nth-child(1n) .imgBox {
+	background:#3490b6;
+}
+.job .uploadLec .vSlider .sliderNumV > div:nth-child(2n) .lecReview:nth-child(2n) .imgBox {
+	background:#b1b634;
+}
+.job .uploadLec .vSlider .sliderNumV > div:nth-child(3n) .lecReview:nth-child(1n) .imgBox {
+	background:#b67734;
+}
+.job .uploadLec .vSlider .sliderNumV > div:nth-child(3n) .lecReview:nth-child(2n) .imgBox {
+	background:#d3b9ef;
+}
+.job .uploadLec .lecinfo {float:left; margin-left:10px; width:calc(100% - 100px); position:relative; height:74px}
+.job .uploadLec .lecinfo p {color:#848484; font-size:14px; margin-bottom:0}
+.job .uploadLec .lecinfo p:nth-child(2) {color:#363636; font-size:16px; font-weight:600; margin-bottom: 3px;}
+.job .uploadLec .lecinfo p:nth-child(3) {color:#0c5dc0; font-size:12px; position: absolute; bottom:0}
+.job .uploadLec .bx-wrapper .bx-controls-direction {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	width: 40px;
+	height: 20px;
+}
+.job .uploadLec .bx-wrapper .bx-controls-direction a {
+	width: 20px;
+	height: 20px;
+}
+.job .uploadLec .bx-wrapper .bx-pager {
+	float: none;
+	width: 100%;
+	right: 8px;
+	bottom: -50px;
+	text-align: center;
+}
+.job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a {
+	width: 12px;
+	height: 12px;
+	margin: 0 2px;
+	background: #fff;
+	border:1px solid #b9b9b9;
+	border-radius:10px;
+}
+.job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a.active,
+.job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a:focus {
+	background: #000 !important;
+	border:1px solid #000;
+}
+.job .uploadLec .bx-wrapper .bx-pager.bx-default-pager a.active {
+	width: 40px;
+}
+
+/*hot issue*/
+.job .hotIssue {background:#eee;	padding: 100px 0;}
+.job .hotIssue li {
+	display: inline;
+	float: left;
+	width: 33.33333%;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.job .hotIssue li a {
+	display: block;
+	width: 360px;
+	margin: 0 auto;
+	transition: opacity 0.4s ease-in-out;
+}
+.job .hotIssue li a img {
+	width: 100%;
+}
+.job .hotIssue li a:hover {
+	-webkit-box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.3);
+	box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.3);
+}
+.job .hotIssue ul:hover a:not(:hover) {
+	opacity: 0.4;
+}
+
+/*전문교수진*/
+.job .SecBanner12 {background:#d0cdb9; padding:100px 0}
+.job .SecBanner12 .bSlider .slider {
+	height: 327px;
+}
+.job .SecBanner12 .bx-wrapper .bx-pager {
+	float: none;
+	width: 100%;
+	right: 8px;
+	padding:0; margin:0;
+	bottom: 15px;
+}
+.job .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a {
+	background: #ccc;
+	width: 12px;
+	height: 12px;
+	margin: 0 2px;
+	background: #fff;
+	border:1px solid #b9b9b9;
+	border-radius:10px;
+}
+.job .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.job .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a.active,
+.job .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a:focus {
+	background: #9a9a9a;
+	border:0;
+}
+.job .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a.active {
+	width: 40px;
+    background:#109bb8;
+}
+.job .pro_box {display: flex; flex-wrap: wrap; justify-content: space-between;}
+.job .pro_box > li {
+    position: relative;
+	width:220px;
+    height: 327px;
+    overflow: hidden;
+    margin-bottom:5px
+}
+
+/*강의맛보기 */
+.job .Section1 {background:#f1efe3; padding:100px 0}
+.job .Section1 .preview {margin-top:50px}
+.job .Section1 .preview .previewBox {position:relative; height:234px;  width:1120px; margin: 0 auto;}
+.job .Section1 .preview .pvslider {width:1120px; margin: 0 auto; height:234px; overflow: hidden;}
+.job .Section1 .preview .pvslider li {display: inline; float: left; width:33.3333%; overflow: hidden;  position: relative;}
+.job .Section1 .preview .pvslider li a {display:block; text-align: right; height:234px; overflow: hidden; background:#828181 url("https://static.willbes.net/public/images/promotion/main/btn_play.png") no-repeat 25px 150px ; color:#fff} 
+.job .Section1 .preview .pvslider li a img {position:absolute; bottom:0; right:0;
+    -webkit-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
+    -moz-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
+    -ms-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
+    -o-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
+    filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    transition: 0.2s all ease;
+    -webkit-transition: 0.2s all ease; 
+    -moz-transition: 0.2s all ease; 
+    -ms-transition: 0.2s all ease;  
+    -o-transition: 0.2s all ease; 
+}
+.job .Section1 .preview .pvslider li a:hover img {
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 0.2s all ease;
+    -webkit-transition: 0.2s all ease; 
+    -moz-transition: 0.2s all ease; 
+    -ms-transition: 0.2s all ease;  
+    -o-transition: 0.2s all ease; 
+ }
+.job .Section1 .preview .pvslider li a div {position:absolute; top:40px; left:25px; width:60%; font-size:14px; text-align: left; z-index:5; line-height: 1.5;}
+.job.Section1 .preview .pvslider li a div strong {display:block; font-size:18px; font-weight:600; margin-top:10px}
+.job .Section1 .preview .pvslider:after {content: ""; display: block; clear:both}
+.job .Section1 .preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
+.job .Section1 .preview .previewBox p.leftBtn {left:-40px}
+.job .Section1 .preview .previewBox p.rightBtn {right:-60px}
+
+
+
 
 
 /* Guide Container */

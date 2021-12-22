@@ -42,7 +42,7 @@
                 <li class="dropdown">
                     <a href="#none">학원수강신청</a>
                     <div class="drop-Box list-drop-Box list-drop-Box-license">
-                        <table class="ssamProf">
+                        <table class="Prof">
                             <thead>
                             <tr>                            
                                 <th colspan="4" scope="col">1차</th>

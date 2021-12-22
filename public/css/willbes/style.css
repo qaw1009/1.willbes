@@ -1081,6 +1081,29 @@ table.auTable tr td {
 	margin-left: -50px;
 }
 
+
+/*상단 gnd 메뉴 (자격증)*/
+.dropdown .list-drop-Box-license {
+    top: 38px;
+    left: 50%;
+    margin-left: -690px;
+    -webkit-margin-start: -469px;
+    width: 1120px;
+    padding: 0;
+    z-index: 100;
+}
+
+.dropdown .Prof {table-layout: fixed;}
+.dropdown .Prof th,
+.dropdown .Prof td {text-align: center; padding:15px 5px; border-right:1px solid #e4e4e4; line-height:1.2; letter-spacing: normal;}
+.dropdown .Prof tr {border-bottom:1px solid #e4e4e4}
+.dropdown .Prof th {font-size:14px !important; background-color: #f9f9f9; letter-spacing: -1px; vertical-align: middle !important}
+.dropdown .Prof td {vertical-align: top;}
+.dropdown .Prof td li {font-size: 13px !important; font-weight: normal; }
+.dropdown .Prof td li.subTit {margin-top:20px !important; color: #0c5dc0; line-height: 1.2; font-weight: bold}
+.dropdown .Prof td li.subTit:first-child {margin:0 !important}.
+.dropdown .Prof td li a {display:block; width: 100%; padding:0 5px 5px; margin:0; color:#000 !important}
+
 /* Header : left-drop-Box */
 .dropdown:hover .left-drop-Box {
 	opacity: 1;

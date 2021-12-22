@@ -23,10 +23,10 @@
                 </div>
                 <div class="VisualsubBox">
                     <div class="bSlider VisualsubBoxTop">
-                        {!! banner_html(element('메인_서브1', $data['arr_main_banner']), 'slider') !!}
+                        {!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}
                     </div>
                     <div class="bSlider">
-                        {!! banner_html(element('메인_서브2', $data['arr_main_banner']), 'slider') !!}
+                        {!! banner_html(element('메인_서브2', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                     </div>
                 </div>
             </div>

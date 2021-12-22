@@ -45,9 +45,9 @@
             <ul class="NGEB">
                 <li class="ListTit"><h1 class="NGEB">내강의실</h1></li>
                 @if(sess_data('is_login') == true && empty(sess_data('mem_ssamid')) == false)
-                    <li class="ListBox">
+                    {{-- <li class="ListBox">
                         <div class="List NGEB"><a href="{{ front_app_url('/classroom/home/gotoSsam/', 'www', false, true) }}" target="_blank">이전 내강의실 보기</a></div>
-                    </li>
+                    </li> --}}
                 @endif
                 @if(sess_data('mem_interest') != '718009')
                 {{-- 임용관련 메뉴 안보이게하기 --}}

@@ -124,7 +124,7 @@
                 </li>
                
                 <li class="dropdown">
-                    <a href="#none">온라인수강신청</a>
+                    <a href="#none">동영상수강신청</a>
                     <div class="drop-Box list-drop-Box">
                         <ul>
                             <li><a href="#none">단강좌</a></li>
@@ -147,20 +147,6 @@
                 </li>
                 <li>
                     <a href="#none">교재구매</a>
-                </li>
-                <li class="dropdown">
-                    <a href="#none">고객센터</a>
-                    <div class="drop-Box list-drop-Box">
-                        <ul>
-                            <li><a href="#none">고객센터 HOME</a></li>
-                            <li><a href="#none">자주하는 질문</a></li>
-                            <li><a href="#none">공지사항</a></li>
-                            <li><a href="#none">1:1 상담</a></li>
-                            <li class="Tit">수강지원</li>
-                            <li><a href="#none">PC원격지원</a></li>
-                            <li><a href="#none">학습프로그램설치</a></li>
-                        </ul>
-                    </div>
                 </li>
                 <li class="gosi">
                     <a href="#none" target="_self">

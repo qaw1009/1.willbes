@@ -14221,31 +14221,32 @@ table.acadlecInfoPackageTable tr.Top td {
 	opacity: 0.4;
 }
 
-/*****************************************고등고시, 자격증 학원 오시는 길***********************************************/
+/*****************************************고등고시, 자격증 학원 오시는 길*******************************************/
+
 .Section4_hl {
 	width: 1120px !important;
 	margin: auto;
 }
+
 .Section4_hl .noticeTabs {
 	width: 100% !important;
 }
+
+.Section4_hl .noticeWrap_campus {width:1120px}
+.Section4_hl .noticeBox_campus .tabContent {width:1120px; display:flex; justify-content: space-between;}
+
 .Section4_hl .map_img {
 	position: relative;
-	float: left !important;
 	width: 698px;
 	height: 328px;
 	overflow: hidden;
 }
-
-.Section4_hl .map_img2 img {
+.Section4_hl .map_img img {
 	position: absolute;
-	left: 50%;
-	margin-left: -349px;
 }
 
 .Section4_hl .campus_info {
 	position: relative;
-	float: right !important;
 	width: 320px;
 	height: 328px;
 }

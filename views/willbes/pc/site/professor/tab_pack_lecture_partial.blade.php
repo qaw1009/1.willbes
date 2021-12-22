@@ -37,7 +37,7 @@
                                             </dt>
                                             <dt>개강일 : <span class="tx-blue">{{ $row['StudyStartDate'] }}</span></dt>
                                             <dt><span class="row-line">|</span></dt>
-                                            <dt>수강기간 : <span class="tx-blue">{{ $row['StudyPeriodCcd'] == '616002' ? $row['StudyEndDate'] : $row['StudyPeriod'] . '일' }}</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">{{ $row['StudyPeriodCcd'] == '616002' ? $row['StudyEndDate'] . ' 까지' : $row['StudyPeriod'] . '일' }}</span></dt>
                                             <dt class="NSK ml15">
                                                 <span class="nBox n1">{{ $row['MultipleApply'] === '1' ? '무제한' : $row['MultipleApply'] . '배수'}}</span>
                                             </dt>

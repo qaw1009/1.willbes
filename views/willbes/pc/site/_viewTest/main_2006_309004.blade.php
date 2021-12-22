@@ -1,10 +1,8 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    <link href="/public/css/willbes/style_job_v2.css??ver={{time()}}" rel="stylesheet">
-
     <!-- Container -->
-    <div id="Container" class="Container job job309004 NSK c_both">
+    <div id="Container" class="Container job patent NSK c_both">
         <!-- site nav -->
         @include('willbes.pc.site._viewTest.main_partial.site_menu')
 
@@ -15,7 +13,7 @@
         </div>
 
         <div class="Section p_re">
-            <div class="MainVisual NSK">
+            <div class="MainVisual">
                 <div class="VisualBox">
                     <div class="bSlider">
                         {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
@@ -113,7 +111,7 @@
             </div>
         </div>
 
-        <div class="Section mt50">
+        <div class="Section mt100">
             <div class="widthAuto">
                 {{-- board include --}}
                 @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'] . '_off')

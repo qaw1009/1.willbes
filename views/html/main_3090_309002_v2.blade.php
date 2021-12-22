@@ -1,12 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-<link href="/public/css/willbes/style_job_v2.css??ver={{time()}}" rel="stylesheet">
-<style>
 
-</style>
 <!-- Container -->
-<div id="Container" class="Container job NSK c_both">
+<div id="Container" class="Container job nomu NSK c_both">
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
@@ -45,7 +42,7 @@
                 <li class="dropdown">
                     <a href="#none">학원수강신청</a>
                     <div class="drop-Box list-drop-Box list-drop-Box-license">
-                        <table class="ssamProf">
+                        <table class="Prof">
                             <thead>
                             <tr>                            
                                 <th colspan="4" scope="col">1차</th>
@@ -127,7 +124,7 @@
                 </li>
                
                 <li class="dropdown">
-                    <a href="#none">온라인수강신청</a>
+                    <a href="#none">동영상수강신청</a>
                     <div class="drop-Box list-drop-Box">
                         <ul>
                             <li><a href="#none">단강좌</a></li>
@@ -151,20 +148,6 @@
                 <li>
                     <a href="#none">교재구매</a>
                 </li>
-                <li class="dropdown">
-                    <a href="#none">고객센터</a>
-                    <div class="drop-Box list-drop-Box">
-                        <ul>
-                            <li><a href="#none">고객센터 HOME</a></li>
-                            <li><a href="#none">자주하는 질문</a></li>
-                            <li><a href="#none">공지사항</a></li>
-                            <li><a href="#none">1:1 상담</a></li>
-                            <li class="Tit">수강지원</li>
-                            <li><a href="#none">PC원격지원</a></li>
-                            <li><a href="#none">학습프로그램설치</a></li>
-                        </ul>
-                    </div>
-                </li>
                 <li class="gosi">
                     <a href="#none" target="_self">
                         학원 방문 결제 
@@ -182,26 +165,26 @@
     </div> 
 
     <div class="Section p_re">        
-        <div class="MainVisual NSK">            
+        <div class="MainVisual">            
             <div class="VisualBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_740x400.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_740x400.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_725x400.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_725x400.jpg" alt="배너명"></a></div>
                     </div>
                 </div>
             </div>
             <div class="VisualsubBox">
                 <div class="bSlider VisualsubBoxTop">                    
                     <div class="slider">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x154.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x154.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x128.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x128.jpg" alt="배너명"></a></div>
                     </div>
                 </div>   
                 <div class="bSlider">
-                    <div class="slider">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x223.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x223.jpg" alt="배너명"></a></div>
+                    <div class="sliderStopAutoPager">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x248.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x248.jpg" alt="배너명"></a></div>
                     </div>
                 </div>   
             </div>

@@ -33,8 +33,10 @@
                                     <div class="w-info tx-gray">
                                         <dl>
                                             <dt class="mb5"><strong>개강일</strong>{{$data['StudyStartDateYM']}}</dt><br/>
-                                            <dt class="mb5"><strong>수강기간</strong><span class="tx-blue">{{$data['StudyPeriod']}}일</span>
-                                                <span class="NSK ml10 nBox n1">{{ $data['MultipleApply'] === "1" ? '무제한' : $data['MultipleApply'].'배수'}}</span> </dt>
+                                            <dt class="mb5">
+                                                <strong>수강기간</strong><span class="tx-blue">{{ $data['StudyPeriodCcd'] == '616002' ? $data['StudyEndDate'] . ' 까지' : $data['StudyPeriod'] . '일' }}</span>
+                                                <span class="NSK ml10 nBox n1">{{ $data['MultipleApply'] === '1' ? '무제한' : $data['MultipleApply'].'배수'}}</span>
+                                            </dt>
                                         </dl>
                                     </div>
                                 </div>

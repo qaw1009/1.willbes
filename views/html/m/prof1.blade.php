@@ -34,6 +34,7 @@
                     <a href="#none">
                         <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/prof_index_50769.png" alt="강사명">
                         <div>
+                            <span class="subject">경제학</span>
                             <span>황종휴</span>
                             강사
                         </div>
@@ -49,6 +50,7 @@
                     <a href="#none">
                         <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50837/prof_index_50837.png" alt="강사명">
                         <div>
+                            <span class="subject">행정법</span>
                             <span>김정일</span>
                             교수
                         </div>
@@ -58,6 +60,7 @@
                     <a href="#none">
                         <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50838/prof_index_50838.png" alt="강사명">
                         <div>
+                            <span class="subject">행정법</span>
                             <span>박도원</span>
                             교수
                         </div>
@@ -67,6 +70,7 @@
                     <a href="#none">
                         <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png" alt="강사명">
                         <div>
+                            <span class="subject">행정법</span>
                             <span>김기홍</span>
                             교수
                         </div>
@@ -76,6 +80,7 @@
                     <a href="#none">
                         <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png" alt="강사명">
                         <div>
+                            <span class="subject">행정법</span>
                             <span>김기홍</span>
                             교수
                         </div>

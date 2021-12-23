@@ -64,7 +64,7 @@
                     <a href="javascript:fnPlayerSample('189549','1328770','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t05.jpg" alt="김유석 전공영어"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t06.jpg" alt="김영문 영어학"/></a>
+                    <a href="javascript:fnPlayerSample('189551','1327523','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t06.jpg" alt="김영문 영어학"/></a>
                 </div>
                 <div class="profBox">
                     <a href="javascript:fnPlayerSample('189420','1328367','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t07.jpg" alt="김철홍 전공수학"/></a>
@@ -97,7 +97,7 @@
                     <a href="javascript:fnPlayerSample('189561','1328769','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t16.jpg" alt="다이애나 전공음악"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="https://ssam.willbes.net/event/show/all?event_idx=1504"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t14.jpg" alt="허역팀 일반사회"/></a>
+                    <a href="javascript:fnPlayerSample('189719','1329286','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t14.jpg" alt="허역팀 일반사회"/></a>
                 </div>
                 <div class="profBox">
                     <a href="javascript:fnPlayerSample('189558','1328678','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t15.jpg" alt="김종권 전공역사"/></a>

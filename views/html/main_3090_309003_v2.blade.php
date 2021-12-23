@@ -121,6 +121,9 @@
                 <li>
                     <a href="#none">무료강좌</a>
                 </li>
+                <li>
+                    <a href="#none">학원보강</a>
+                </li>
                 <li class="dropdown">
                     <a href="#none">수험정보</a>
                     <div class="drop-Box list-drop-Box">

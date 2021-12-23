@@ -45,16 +45,21 @@ class Order extends BaseOrder
         $arr_condition = $this->_getListConditions();
 
         $list = [];
+        $order_cnt = 0;
         $count = $this->orderListModel->listAllOrder(true, $arr_condition, null, null, [], $this->_list_add_join);
 
         if ($count > 0) {
             $list = $this->orderListModel->listAllOrder(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $this->_getListOrderBy(), $this->_list_add_join);
+
+            // 주문식별자 기준 조회건수 조회
+            $order_cnt = array_get($this->orderListModel->listAllOrder('count(distinct O.OrderIdx) as tOrderCnt', $arr_condition, null, null, [], $this->_list_add_join, false), '0.tOrderCnt', 0);
         }
 
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
-            'data' => $list
+            'data' => $list,
+            'order_cnt' => $order_cnt
         ]);
     }
 
@@ -103,6 +108,11 @@ class Order extends BaseOrder
                 ],
             ],*/
         ];
+
+        // 추가정보 조건
+        if ($this->_reqP('search_chk_is_remark') == 'Y') {
+            $arr_condition['RAW']['OP.Remark is'] = ' not null';
+        }
 
         // 회원 검색
         $arr_mem_condition = $this->_getListMemConditions($this->_reqP('search_member_keyword'), $this->_reqP('search_member_value'));

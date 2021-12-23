@@ -926,6 +926,9 @@ button.btn-sm {
 .required {
     color: #e74c3c !important;
 }
+.tx-hide {
+    color: #f7f7f7 !important;
+}
 
 /* font */
 .bold {

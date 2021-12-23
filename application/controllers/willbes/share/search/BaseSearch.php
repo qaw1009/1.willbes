@@ -155,9 +155,9 @@ class BaseSearch extends \app\controllers\FrontController
         //선택패키지
         $data_adminpack_lecture_648002 = $this->searchFModel->findSearchProduct('adminpack_lecture', false, array_merge_recursive($common_condition, ['EQ' => ['PackTypeCcd' => '648002']]), $order_by_pack, $limit);
         //학원단과
-        $data_off_lecture = $this->searchFModel->findSearchProduct('off_lecture', false, array_merge_recursive($common_off_condition, ['ORG1' => ['LKB' => ['ProfNickName' => element('searchfull_text', $arr_search_input)]]]), $order_by, $limit);
+        $data_off_lecture = $this->searchFModel->findSearchProduct('off_lecture', false, array_merge_recursive($common_off_condition, [ 'NOT' => ['StudyApplyCcd' => '654004'], 'ORG1' => ['LKB' => ['ProfNickName' => element('searchfull_text', $arr_search_input)]]]), $order_by, $limit);
         //학원종합반
-        $data_off_pack_lecture = $this->searchFModel->findSearchProduct('off_pack_lecture', false, $common_off_condition, $order_by_pack, $limit);
+        $data_off_pack_lecture = $this->searchFModel->findSearchProduct('off_pack_lecture', false, array_merge_recursive($common_off_condition, [ 'NOT' => ['StudyApplyCcd' => '654004']]), $order_by_pack, $limit);
 
         $result_info = '단강좌:'.count($data_lecture).
             ', 무료강좌:' .count($data_free_lecture).

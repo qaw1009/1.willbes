@@ -11,8 +11,11 @@
             <dt><strong>강의촬영(실강)</strong> {{ empty($data['lecture']['StudyStartDate']) ? '' : substr($data['lecture']['StudyStartDate'],0,4).'년 '. substr($data['lecture']['StudyStartDate'],5,2).'월' }}</dt>
             <dt>
                 강의수 <span class="tx-blue">{{ $data['lecture']['wUnitLectureCnt'] }}강@if($data['lecture']['wLectureProgressCcd'] != '105002' && empty($data['lecture']['wScheduleCount'])==false)/{{$data['lecture']['wScheduleCount']}}강@endif
-                </span><span class="row-line ml10">|</span>
-                수강기간 <span class="tx-blue">{{$data['lecture']['StudyPeriod']}}일</span>
+                </span>
+                @if($opener != 'package')
+                    <span class="row-line ml10">|</span>
+                    수강기간 <span class="tx-blue">{{$data['lecture']['StudyPeriod']}}일</span>
+                @endif
                 <span class="NSK ml10 nBox n1">{{ $data['lecture']['MultipleApply'] === "1" ? '무제한' : $data['lecture']['MultipleApply'].'배수'}}</span>
                 <span class="NSK nBox n{{ substr($data['lecture']['wLectureProgressCcd'], -1)+1 }}">{{ $data['lecture']['wLectureProgressCcdName'] }}</span>
             </dt>

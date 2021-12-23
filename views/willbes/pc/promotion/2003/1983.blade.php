@@ -225,7 +225,7 @@
                         <td class="NSK-Black">
                             <div><input type="radio" id="y_pkg1" name="y_pkg" value="176432" onClick=""/><label for="y_pkg1">340,000원</label></div>
                             <div class="tx-red">
-                            12월의 기적, 12/22(수) 마감!<br>    
+                            12월의 기적, 12/31(금) 마감!<br>    
                             * 지금 구매 시 3만포인트 추가 제공!</div>
                         </td>
                         <td class="NSK-Black">

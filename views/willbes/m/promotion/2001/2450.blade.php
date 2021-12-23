@@ -68,7 +68,7 @@
             .content_guide_wrap .tabs li a {font-size:12px !important; letter-spacing:-1px}
             .evt01 .price li {font-size:13px;}
             .tabContaier li {font-size:16px;}
-            .tabContaier li a:hover {font-size:17px;}
+            .tabContaier li a:hover {font-size:17px;}         
         }
 
         /* 태블릿 세로 */
@@ -79,7 +79,7 @@
             .content_guide_wrap .guide_tit{font-size:24px;}
             .content_guide_wrap .tabs li a {font-size:15px !important; letter-spacing:-1px}
             .evt01 .price li {font-size:15px;}
-            #btn {position:absolute !important;top:7.25% !important;}
+            #btn {position:absolute !important;top:7.25% !important;display:block; margin:0 auto; background-color:rgba(255,255,255,0.1);border-radius:0;padding:0;}
         }
 
         /* 태블릿 가로, PC */
@@ -88,7 +88,7 @@
             .evt01 .price li {font-size:21px;}
             .content_guide_wrap .tabs li a {font-size:21px !important; letter-spacing:-1px}        
             .evt01 .price li {font-size:21px;}
-            #btn {position:absolute !important;top:9.75% !important;}
+            #btn {position:absolute !important;top:9.75% !important;display:block; margin:0 auto; background-color:rgba(255,255,255,0.1);border-radius:0;padding:0;}
         }
 
     </style>

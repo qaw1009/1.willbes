@@ -113,7 +113,7 @@
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
             <div class="evt01_coupon">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_00.jpg" alt="" >
-                <a href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=1525&" target="_blank" title="쿠폰받기" style="position: absolute;left: 53.89%;top: 9.73%;width: 39.88%;height: 2.34%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=1525&" onclick="giveCheck(); return false;" title="쿠폰받기" style="position: absolute;left: 53.89%;top: 9.73%;width: 39.88%;height: 2.34%;z-index: 2;"></a>
                 <div class="price">
                     <ul>
                         <li><input type="radio" id="y_pkg1" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> 23년 1차 PASS 신청하기</label></li>                    
@@ -252,7 +252,7 @@
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
             <div class="evt01_coupon">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_00.jpg" alt="" >
-                <a href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=1525&" target="_blank" style="position: absolute;left: 53.89%;top: 9.73%;width: 39.88%;height: 2.34%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=1525&" onclick="giveCheck(); return false;" style="position: absolute;left: 53.89%;top: 9.73%;width: 39.88%;height: 2.34%;z-index: 2;"></a>
                 <div class="price">
                     <ul>
                         <li><input type="radio" id="y_pkg1" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> 23년 1차 PASS 신청하기</label></li>                    

@@ -216,17 +216,17 @@
                 <ul class="prof-brief-btn">
                     <li>
                         <a href="https://www.willbes.net" target="_blank">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon01.png" alt="홈페이지"> 교수님 홈페이지
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon01.png" alt="홈페이지"> 교수 홈페이지
                         </a>
                     </li>
                     <li>
                         <a href="https://section.cafe.naver.com" target="_blank">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon02.png" alt="카페"> 교수님 카페
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon02.png" alt="카페"> 교수 카페
                         </a>
                     </li>
                     <li>
                         <a href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0" target="_blank">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon03.png" alt="블로그"> 교수님 블로그
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon03.png" alt="블로그"> 교수 블로그
                         </a>
                     </li>
                     <li>
@@ -242,6 +242,11 @@
                     <li>
                         <a href="#none" onclick="openWin('Layerprof'),openWin('profBoard')">
                             <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon06.png" alt="첨삭게시판"> 첨삭게시판
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon_qna.png" alt="Q&A"> Q&A
                         </a>
                     </li>
                     {{--

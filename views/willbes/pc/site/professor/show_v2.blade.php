@@ -78,7 +78,7 @@
                     @if($data['IsQnaBoard'] == 'Y') {{-- 학습Q&A --}}
                         <li>
                             <a href="javascript:void(0);" data-board-idx="" data-board-url="{{front_url('/prof/qna/popupIndex')}}" onclick="go_board_popup(this)">
-                                <img src="{{ img_static_url('promotion/main/2018/prof_icon_qna.png') }}" alt="Q&A"> Q&A
+                                <img src="{{ img_static_url('promotion/main/2018/prof_icon_qna.png') }}" alt="학습Q&A"> 학습Q&A
                             </a>
                         </li>
                     @endif

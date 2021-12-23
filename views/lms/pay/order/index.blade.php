@@ -97,6 +97,7 @@
                             <input type="checkbox" id="search_chk_is_escrow" name="search_chk_is_escrow" class="flat" value="Y"/> <label for="search_chk_is_escrow" class="input-label">에스크로(e)</label>
                             <input type="checkbox" id="search_chk_is_coupon" name="search_chk_is_coupon" class="flat" value="Y"/> <label for="search_chk_is_coupon" class="input-label">쿠폰적용</label>
                             <input type="checkbox" id="search_chk_is_approval" name="search_chk_is_approval" class="flat" value="Y"/> <label for="search_chk_is_approval" class="input-label">지결환불</label>
+                            <input type="checkbox" id="search_chk_is_remark" name="search_chk_is_remark" class="flat" value="Y"/> <label for="search_chk_is_remark" class="input-label">추가정보</label>
                         </div>
                     </div>
                 </div>
@@ -257,6 +258,13 @@
                         return data + (row.IsUseCoupon === 'Y' ? ' (Y)' : '');
                     }}
                 ]
+            });
+
+            // datatable length 영역에 주문식별자 기준건수 표기
+            $datatable.on('xhr.dt', function(e, settings, json) {
+                var that = $('#list_ajax_table_length');
+                that.find('span').remove();
+                that.append(' <span class="tx-hide">(주문번호 기준건수: ' + json.order_cnt + ')</span>');
             });
 
             // 엑셀다운로드 버튼 클릭

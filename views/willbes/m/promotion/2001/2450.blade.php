@@ -23,8 +23,8 @@
         .evt01 input:checked + label {color:#ffef7e}
         .evt01 .ext01txt ul {margin:10px 0 0 25px}
         .evt01 a {display:block; width:90%; margin:20px auto 0; background:#000; color:#fff; border-radius:30px; padding:10px 0; font-size:20px; font-weight:bold; text-align:center;}
-        .evt01_coupon a {background-color:rgba(255,255,255,0.1);}
-
+        #btn {display:block; margin:0 auto; background-color:rgba(255,255,255,0.1);border-radius:0;padding:0;}
+      
         /*탭(텍스트)*/     
         .tabContaier{width:100%;background:#fff;margin-top:50px;}
         .tabContaier ul{margin:0 auto; height:65px;} 
@@ -68,7 +68,7 @@
             .content_guide_wrap .tabs li a {font-size:12px !important; letter-spacing:-1px}
             .evt01 .price li {font-size:13px;}
             .tabContaier li {font-size:16px;}
-            .tabContaier li a:hover {font-size:17px;}
+            .tabContaier li a:hover {font-size:17px;}         
         }
 
         /* 태블릿 세로 */
@@ -79,6 +79,7 @@
             .content_guide_wrap .guide_tit{font-size:24px;}
             .content_guide_wrap .tabs li a {font-size:15px !important; letter-spacing:-1px}
             .evt01 .price li {font-size:15px;}
+            #btn {position:absolute !important;top:7.25% !important;display:block; margin:0 auto; background-color:rgba(255,255,255,0.1);border-radius:0;padding:0;}
         }
 
         /* 태블릿 가로, PC */
@@ -87,6 +88,7 @@
             .evt01 .price li {font-size:21px;}
             .content_guide_wrap .tabs li a {font-size:21px !important; letter-spacing:-1px}        
             .evt01 .price li {font-size:21px;}
+            #btn {position:absolute !important;top:9.75% !important;display:block; margin:0 auto; background-color:rgba(255,255,255,0.1);border-radius:0;padding:0;}
         }
 
     </style>
@@ -113,22 +115,22 @@
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
             <div class="evt01_coupon">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_00.jpg" alt="" >
-                <a href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=1525&" onclick="giveCheck(); return false;" title="쿠폰받기" style="position: absolute;left: 53.89%;top: 9.73%;width: 39.88%;height: 2.34%;z-index: 2;"></a>
+                <a id="btn" href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=1525&" onclick="giveCheck(); return false;" title="쿠폰받기" style="position: absolute;left: 53.89%;top: 6.58%;width: 39.88%;height: 2.34%;z-index: 2;"></a>
                 <div class="price">
                     <ul>
-                        <li><input type="radio" id="y_pkg1" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> 23년 1차 PASS 신청하기</label></li>                    
+                        <li><input type="radio" id="y_pkg0" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> <label> 23년 1차 PASS<br> 신청하기</label></li>                    
                     </ul>
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_01.jpg" alt="" >
                 <div class="price">
                     <ul>
-                        <li><input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청하기</label></li>                    
+                        <li><input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> <label> 22년 2차 PASS<br> 신청하기</label></li>                    
                     </ul>
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_02.jpg" alt="" >
                 <div class="price">
                     <ul>                    
-                        <li><input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> FINAL PASS 신청하기</label></li>
+                        <li><input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> <label> FINAL PASS<br> 신청하기</label></li>
                     </ul>
                 </div>
                 <div class="ext01txt">
@@ -252,22 +254,22 @@
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
             <div class="evt01_coupon">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_00.jpg" alt="" >
-                <a href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=1525&" onclick="giveCheck(); return false;" style="position: absolute;left: 53.89%;top: 9.73%;width: 39.88%;height: 2.34%;z-index: 2;"></a>
+                <a id="btn" href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=1525&" onclick="giveCheck(); return false;" style="position: absolute;left: 53.89%;top: 6.58%;width: 39.88%;height: 2.34%;z-index: 2;"></a>
                 <div class="price">
                     <ul>
-                        <li><input type="radio" id="y_pkg1" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> 23년 1차 PASS 신청하기</label></li>                    
+                        <li><input type="radio" id="y_pkg0" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> <label> 23년 1차 PASS<br> 신청하기</label></li>                    
                     </ul>
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_01.jpg" alt="" >
                 <div class="price">
                     <ul>
-                        <li><input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> 22년 2차 PASS 신청하기</label></li>                    
+                        <li><input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> <label> 22년 2차 PASS<br> 신청하기</label></li>                    
                     </ul>
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_02.jpg" alt="" >
                 <div class="price">
                     <ul>                    
-                        <li><input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> FINAL PASS 신청하기</label></li>
+                        <li><input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> <label> FINAL PASS<br> 신청하기</label></li>
                     </ul>
                 </div>
                 <div class="ext01txt">

@@ -430,55 +430,80 @@
             <ul>
                 <li>
                     <a href="#none">
-                        <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50837/prof_index_50837.png" alt="강사명">
+                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51076/prof_index_51076.png" alt="강사명">
                         <div>
-                            <span>김정일</span>
+                            <span class="subject">유아</span>
+                            <span>민정선</span>
                             교수
                         </div>
                     </a>
                 <li>
                 <li>
                     <a href="#none">
-                        <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50838/prof_index_50838.png" alt="강사명">
+                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51077/prof_index_51077.png" alt="강사명">
+                        <div>
+                            <span class="subject">초등</span>
+                            <span>배재민</span>
+                            교수
+                        </div>
+                    </a>
+                <li>
+                <li>
+                    <a href="#none">
+                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51312/prof_index_51312.png" alt="강사명">
                         <div>
                             <span class="subject">교육학</span>
-                            <span>박도원</span>
+                            <span>이경범</span>
                             교수
                         </div>
                     </a>
                 <li>
                 <li>
                     <a href="#none">
-                        <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png" alt="강사명">
+                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51158/prof_index_51158.png" alt="강사명">
                         <div>
-                            <span>김기홍</span>
+                            <span class="subject">교육학</span>
+                            <span>정 현</span>
                             교수
                         </div>
                     </a>
                 <li>
                 <li>
                     <a href="#none">
-                        <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png" alt="강사명">
+                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51336/prof_index_51336.png" alt="강사명">
                         <div>
-                            <span>김기홍</span>
+                            <span class="subject">교육학</span>
+                            <span>신태식</span>
                             교수
                         </div>
                     </a>
                 <li>
                 <li>
                     <a href="#none">
-                        <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png" alt="강사명">
+                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51074/prof_index_51074.png" alt="강사명">
                         <div>
-                            <span>김기홍</span>
+                            <span class="subject">교육학</span>
+                            <span>이인재</span>
                             교수
                         </div>
                     </a>
                 <li>
                 <li>
                     <a href="#none">
-                        <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png" alt="강사명">
+                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51075/prof_index_51075.png" alt="강사명">
                         <div>
-                            <span>김기홍</span>
+                            <span class="subject">교육학</span>
+                            <span>홍의일</span>
+                            교수
+                        </div>
+                    </a>
+                <li>
+                <li>
+                    <a href="#none">
+                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51078/prof_index_51078.png" alt="강사명">
+                        <div>
+                            <span class="subject">국어/문학교육론</span>
+                            <span>송원영</span>
                             교수
                         </div>
                     </a>

@@ -242,7 +242,7 @@
                                                     </dt>
                                                     <br>
                                                     <dt class="mr20">
-                                                        <a href="#none" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture')">
+                                                        <a href="#none" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover1','{{ site_url('/lecture') }}', 'opener/package/')">
                                                             <strong class="open-info-modal">강좌상세정보</strong>
                                                         </a>
                                                     </dt>
@@ -384,7 +384,7 @@
                                                     </dt>
                                                     <BR>
                                                     <dt class="mr20">
-                                                        <a href="#none" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture')">
+                                                        <a href="#none" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover1','{{ site_url('/lecture') }}', 'opener/package/')">
                                                             <strong class="open-info-modal">강좌상세정보</strong>
                                                         </a>
                                                     </dt>

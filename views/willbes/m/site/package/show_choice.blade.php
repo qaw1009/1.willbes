@@ -137,7 +137,7 @@
                                                                     <span class="NSK nBox n{{ substr($sub_row['wLectureProgressCcd'], -1)+1 }}">{{$sub_row['wLectureProgressCcdName']}}</span>
                                                                 </dt>
                                                                 <dt>
-                                                                    <a href="#none" class="lecView" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', '','{{ front_url('/') }}lecture')">
+                                                                    <a href="#none" class="lecView" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', '','{{ front_url('/lecture') }}', 'opener/package/')">
                                                                         강좌상세정보</a>
                                                                     @if(empty($sub_row['LectureSampleData']) === false)
                                                                         <span class="row-line ml10 mr10">|</span>
@@ -255,7 +255,7 @@
                                                                 <span class="NSK nBox n{{ substr($sub_row['wLectureProgressCcd'], -1)+1 }}">{{$sub_row['wLectureProgressCcdName']}}</span>
                                                             </dt>
                                                             <dt>
-                                                                <a href="#none" class="lecView" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', '','{{ front_url('/') }}lecture')">
+                                                                <a href="#none" class="lecView" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', '','{{ front_url('/lecture') }}', 'opener/package/')">
                                                                     강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                                                 @if(empty($sub_row['LectureSampleData']) === false)
                                                                     <strong>맛보기</strong>

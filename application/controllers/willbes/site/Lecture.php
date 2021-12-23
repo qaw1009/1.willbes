@@ -224,6 +224,7 @@ class Lecture extends \app\controllers\FrontController
     public function info($params = [])
     {
         $prod_code = element('prod-code', $params);
+        $opener = element('opener', $params);   // 사용하는 위치 (lecture, package, userPackage, periodPackage)
         if (empty($prod_code) === true) {
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
         }
@@ -234,6 +235,7 @@ class Lecture extends \app\controllers\FrontController
 
         return $this->load->view('site/lecture/info_modal', [
             'ele_id' => $this->_req('ele_id'),
+            'opener' => $opener,
             'data' => $data
         ]);
     }

@@ -59,7 +59,7 @@
                             <img src="{{ $row['ProfReferData']['prof_index_img'] or '' }}" alt="">
                             <div>
                                 @if($view_type == 'v2')
-                                    <span class="tx-light-gray tx14 pb15" style="margin-top: -15px;">{!! $row['ProfSlogan'] !!}</span>
+                                    <span class="subject">{!! $row['ProfSlogan'] !!}</span>
                                 @endif
                                 <span>{{ $row['ProfNickName'] }}</span>
                                 {{ $row['AppellationCcdName'] }}

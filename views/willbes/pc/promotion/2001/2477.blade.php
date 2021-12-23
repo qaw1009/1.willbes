@@ -54,9 +54,10 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="skyBanner" id="QuickMenu">
-            <a href="#evt07"><img src="https://static.willbes.net/public/images/promotion/2021/12/2477_sky01.jpg" alt="이벤트 하나"/></a>
-            <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2021/12/2477_sky02.jpg" alt="이벤트 둘"/></a>
-            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2021/12/2477_sky03.jpg" alt="이벤트 셋"/></a>
+            <a href="#evt07"><img src="https://static.willbes.net/public/images/promotion/2021/12/2477_sky01.jpg" alt="이벤트"/></a>
+            <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2021/12/2477_sky02.jpg" alt="이벤트 하나"/></a>
+            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2021/12/2477_sky03.jpg" alt="이벤트 둘"/></a>
+            <a href="#evt06"><img src="https://static.willbes.net/public/images/promotion/2021/12/2477_sky04.jpg" alt="이벤트 셋"/></a>
         </div>
 
         <div class="evtCtnsBox evt00">

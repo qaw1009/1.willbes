@@ -150,19 +150,29 @@ class GatherStatsSearchModel extends GatherBaseStatsModel
      */
     public function getSearchSiteWord($arr_input = [])
     {
-        $get_condition = $this->_setCondition($arr_input, 'SL.');
+        $get_condition = $this->_setCondition($arr_input, 'S.');
 
         $where = $this->_conn->makeWhere($get_condition['comm_condition'])->getMakeWhere();
 
-        $column = 'S.SiteName, REPLACE(SL.SearchWord, \' \', \'&nbsp;\') as SearchWord, sum(SL.SearchCount) as search_count, sum(SL.SearchSum) as search_result_sum';
+        $order_by = $this->_conn->makeOrderBy(['search_count' => 'DESC', 'search_result_sum' => 'DESC',  'S.SiteCode' => 'ASC'])->getMakeOrderBy();
+        $order_by_limit = $order_by . $this->_conn->makeLimitOffset('20')->getMakeLimitOffset();
 
-        $from = '   from
-                            '. $this->_table['search'] .' SL
-                            join '. $this->_table['site'] .' S on S.SiteCode = SL.SiteCode '. $where . ' group by S.SiteName, SL.SearchWord';
+        $column = ' SiteName, SearchWord,search_count,search_result_sum ';
+        $from = ' from
+                        (
+                        select
+                            SiteCode
+                            , SearchWord
+                            , sum(S.SearchCount) as search_count
+                            , sum(S.SearchSum) as search_result_sum 
+                        from '. $this->_table['search']  .' S '. $where .'
+                        group by S.SiteCode, S.SearchWord 
+                        '. $order_by_limit .'
+                    ) temp 
+                    join '. $this->_table['site'] .' S on temp.SiteCode = S.SiteCode
+        ';
 
-        $order_by_limit = $this->_conn->makeOrderBy(['search_count' => 'DESC', 'search_result_sum' => 'DESC',  'S.SiteCode' => 'ASC', 'SearchWord' => 'ASC'])->getMakeOrderBy();
-        $order_by_limit .= $this->_conn->makeLimitOffset('20')->getMakeLimitOffset();
-        return $this->_conn->query('select ' . $column . $from . $order_by_limit)->result_array();
+        return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
     }
 
     /**
@@ -174,10 +184,9 @@ class GatherStatsSearchModel extends GatherBaseStatsModel
     public function getSearchWord($arr_input = [])
     {
         $get_condition = $this->_setCondition($arr_input, 'SL.');
-
         $where = $this->_conn->makeWhere($get_condition['comm_condition'])->getMakeWhere();
 
-        $column = 'REPLACE(SL.SearchWord, \' \', \'&nbsp;\') as SearchWord, sum(SL.SearchCount) as search_count, sum(SL.SearchSum) as search_result_sum';
+        $column = 'SearchWord, sum(SL.SearchCount) as search_count, sum(SL.SearchSum) as search_result_sum';
 
         $from = '   from
                             '. $this->_table['search'] .' SL '.  $where . ' group by SL.SearchWord';
@@ -195,22 +204,32 @@ class GatherStatsSearchModel extends GatherBaseStatsModel
      */
     public function getSearchSiteWordNoResult($arr_input=[])
     {
-        $get_condition = $this->_setCondition($arr_input, 'SL.');
+        $get_condition = $this->_setCondition($arr_input, 'S.');
         $get_condition['comm_condition'] = array_merge_recursive($get_condition['comm_condition'],[
-               'EQ' => ['SL.SearchSum' => '0']
+                'EQ' => ['S.SearchSum' => '0']
             ]
         );
         $where = $this->_conn->makeWhere($get_condition['comm_condition'])->getMakeWhere();
 
-        $column = 'S.SiteName, REPLACE(SL.SearchWord, \' \', \'&nbsp;\') as SearchWord, sum(SL.SearchCount) as search_count, sum(SL.SearchSum) as search_result_sum';
+        $order_by = $this->_conn->makeOrderBy(['search_count' => 'DESC',  'S.SiteCode' => 'ASC'])->getMakeOrderBy();
+        $order_by_limit = $order_by . $this->_conn->makeLimitOffset('20')->getMakeLimitOffset();
 
-        $from = '   from
-                            '. $this->_table['search'] .' SL
-                            join '. $this->_table['site'] .' S on S.SiteCode = SL.SiteCode '. $where . ' group by S.SiteName, SL.SearchWord';
+        $column = ' SiteName, SearchWord,search_count,search_result_sum ';
+        $from = ' from
+                        (
+                        select
+                            SiteCode
+                            , SearchWord
+                            , sum(S.SearchCount) as search_count
+                            , sum(S.SearchSum) as search_result_sum 
+                        from '. $this->_table['search']  .' S '. $where .'
+                        group by S.SiteCode, S.SearchWord 
+                        '. $order_by_limit .'
+                    ) temp 
+                    join '. $this->_table['site'] .' S on temp.SiteCode = S.SiteCode
+        ';
 
-        $order_by_limit = $this->_conn->makeOrderBy(['search_count' => 'DESC', 'search_result_sum' => 'DESC',  'S.SiteCode' => 'ASC', 'SearchWord' => 'ASC'])->getMakeOrderBy();
-        $order_by_limit .= $this->_conn->makeLimitOffset('20')->getMakeLimitOffset();
-        return $this->_conn->query('select ' . $column . $from . $order_by_limit)->result_array();
+        return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
     }
 
 
@@ -230,14 +249,14 @@ class GatherStatsSearchModel extends GatherBaseStatsModel
 
         $where = $this->_conn->makeWhere($get_condition['comm_condition'])->getMakeWhere();
 
-        $column = 'REPLACE(SL.SearchWord, \' \', \'&nbsp;\') as SearchWord, sum(SL.SearchCount) as search_count, sum(SL.SearchSum) as search_result_sum';
+        $column = 'SearchWord, sum(SL.SearchCount) as search_count, sum(SL.SearchSum) as search_result_sum';
 
         $from = '   from
                             '. $this->_table['search'] .' SL '.  $where . ' group by SL.SearchWord';
 
-        $order_by_limit = $this->_conn->makeOrderBy(['search_count' => 'DESC', 'search_result_sum' => 'DESC', 'SearchWord' => 'ASC'])->getMakeOrderBy();
+        $order_by_limit = $this->_conn->makeOrderBy(['search_count' => 'DESC', 'SearchWord' => 'ASC'])->getMakeOrderBy();
         $order_by_limit .= $this->_conn->makeLimitOffset('20')->getMakeLimitOffset();
-        return $this->_conn->query('select ' . $column . $from .$order_by_limit)->result_array();
+        return $this->_conn->query('select ' . $column . $from . $order_by_limit)->result_array();
     }
 
 

@@ -147,6 +147,10 @@
 	clear: both;
 }
 
+.ssam .profwrap {display:flex; flex-wrap: wrap; justify-content: space-around; align-content: stretch; padding:0 10px; margin-top:20px}
+.ssam .profwrap div {flex: 1 1 30%; margin:5px; text-align:center}
+.ssam .profwrap div img {width:100%; max-width:220px; margin:0 auto}
+
 @@media only screen and (max-width: 374px) {
     .ssam .bestLecBox2 .lecinfo li {
         margin-bottom: 1%;
@@ -160,6 +164,7 @@
     .ssam .bestLecBox2 .lecinfo li strong {
         font-size: 13px;
     }
+    .ssam .profwrap div {flex: 1 1 40%;}
 }
 @@media only screen and (min-width: 375px) and (max-width: 640px) {
     .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) {
@@ -171,6 +176,7 @@
     .ssam .bestLecBox2 .lecinfo li strong {
         font-size: 14px;
     }
+    .ssam .profwrap div {flex: 1 1 30%;}
 }
     </style>
 
@@ -426,95 +432,50 @@
         </div>
     </div>
 
-
     <div class="mainTit NSK-Black tx-center mt30">윌비스 임용 <span class="tx-main">합격 교수진</span></div>
-    <div class="profArea">
-        <div class="subjectBox">
-            <ul>
-                <li>
-                    <a href="#none">
-                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51076/prof_index_51076.png" alt="강사명">
-                        <div>
-                            <span class="subject">유아</span>
-                            <span>민정선</span>
-                            교수
-                        </div>
-                    </a>
-                <li>
-                <li>
-                    <a href="#none">
-                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51077/prof_index_51077.png" alt="강사명">
-                        <div>
-                            <span class="subject">초등</span>
-                            <span>배재민</span>
-                            교수
-                        </div>
-                    </a>
-                <li>
-                <li>
-                    <a href="#none">
-                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51312/prof_index_51312.png" alt="강사명">
-                        <div>
-                            <span class="subject">교육학</span>
-                            <span>이경범</span>
-                            교수
-                        </div>
-                    </a>
-                <li>
-                <li>
-                    <a href="#none">
-                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51158/prof_index_51158.png" alt="강사명">
-                        <div>
-                            <span class="subject">교육학</span>
-                            <span>정 현</span>
-                            교수
-                        </div>
-                    </a>
-                <li>
-                <li>
-                    <a href="#none">
-                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51336/prof_index_51336.png" alt="강사명">
-                        <div>
-                            <span class="subject">교육학</span>
-                            <span>신태식</span>
-                            교수
-                        </div>
-                    </a>
-                <li>
-                <li>
-                    <a href="#none">
-                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51074/prof_index_51074.png" alt="강사명">
-                        <div>
-                            <span class="subject">교육학</span>
-                            <span>이인재</span>
-                            교수
-                        </div>
-                    </a>
-                <li>
-                <li>
-                    <a href="#none">
-                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51075/prof_index_51075.png" alt="강사명">
-                        <div>
-                            <span class="subject">교육학</span>
-                            <span>홍의일</span>
-                            교수
-                        </div>
-                    </a>
-                <li>
-                <li>
-                    <a href="#none">
-                        <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51078/prof_index_51078.png" alt="강사명">
-                        <div>
-                            <span class="subject">국어/문학교육론</span>
-                            <span>송원영</span>
-                            교수
-                        </div>
-                    </a>
-                <li>
-            </ul>
+    <div class="profwrap">
+        <div>
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof01.jpg" alt="강사명">
+            </a>
         </div>
+        <div>
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof02.jpg" alt="강사명">
+            </a>
+        </div>
+        <div>
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof03.jpg" alt="강사명">
+            </a>
+        </div>
+        <div>
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof04.jpg" alt="강사명">
+            </a>
+        </div>
+        <div>
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof05.jpg" alt="강사명">
+            </a>
+        </div>
+        <div>
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof06.jpg" alt="강사명">
+            </a>
+        </div>
+        <div>
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof07.jpg" alt="강사명">
+            </a>
+        </div>
+        <div>
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof08.jpg" alt="강사명">
+            </a>
+        </div>
+        <div></div>
     </div>
-
 
     <div class="mainTit NSK-Black tx-center mt50">          
         윌비스 임용 <span class="tx-main">실시간 인기강의 TOP3</span>           

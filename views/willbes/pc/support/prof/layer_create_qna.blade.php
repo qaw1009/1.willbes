@@ -1,6 +1,6 @@
 <div id="profQna" class="willbes-Layer-Board" style="display: block">
     <a class="closeBtn" href="javascript:void(0);" onclick="closeWin('{{ $arr_input['ele_id'] }}');"><img src="{{ img_url('prof/close.png') }}"></a>
-    <div class="Layer-Tit NG tx-dark-black">첨삭게시판</div>
+    <div class="Layer-Tit NG tx-dark-black">학습Q&A</div>
     <form id="_regi_form" name="_regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}

@@ -22,25 +22,28 @@
         /************************************************************/
         
         /*타이머*/
-        .time {width:100%; text-align:center; background:#000;margin-top:40px;}
+        .time {background:#e4e4e4; width:100%; padding:15px 0 40px;}
         .time {text-align:center; padding:20px 0}
         .time table {width:1000px; margin:0 auto}
-        .time table td {line-height:1.2; color:#fff;}        
+        .time table td {line-height:1.2; color:#000;}        
         .time table td img {width:65%}
         .time .time_txt {font-size:30px;  letter-spacing: -1px; text-align:right}
         .time span {color:#ffda39; font-size:30px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
         .time table td:last-child,
         .time table td:last-child span {font-size:30px;}
         @@keyframes upDown{
-            from{color:#fff}
+            from{color:#555}
             50%{color:#ff3837}
-            to{color:#fff}
+            to{color:#555}
         }
         @@-webkit-keyframes upDown{
-            from{color:#fff}
+            from{color:#555}
             50%{color:#ff3837}
-            to{color:#fff}
+            to{color:#555}
         }
+
+        .sky {position:fixed; top:150px; right:10px;z-index:1;}
+        .sky a {display:block; margin-bottom:10px;}
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/12/2466_top_bg.jpg) no-repeat center top;}
         .evt_top span {position:absolute; bottom:0; left:50%; margin-left:-508px;}
@@ -69,7 +72,7 @@
             <div>
                 <table>
                     <tr>                    
-                        <td class="time_txt">이벤트 마감일<br><span> 12/22(수)</span>까지</td>
+                        <td class="time_txt">이벤트 마감일<br><span> 12/31(금)</span>까지</td>
                         <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                         <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                         <td class="time_txt">일 </td>
@@ -87,6 +90,10 @@
             </div>
         </div>
 
+        <div class="sky" id="QuickMenu">          
+            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>
+        </div>   
+
         <div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2466_top.jpg" alt="공무원 패스 역대급 할인"/>        
         </div>
@@ -99,7 +106,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2466_02.jpg" alt="혜택" />
         </div> 
 
-        <div class="evtCtnsBox evt_03" data-aos="fade-up">
+        <div class="evtCtnsBox evt_03" id="apply" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2466_03.jpg" alt="직렬별 패스"/>
                 <div>
@@ -128,7 +135,7 @@
                     <dt>이용안내</dt>
                     <dd>
                         <ol>
-                            <li>이벤트 기간 : 2021.12.15.(수)~2021.12.22.(수)</li>
+                            <li>이벤트 기간 : 2021.12.23.(목)~2021.12.31.(금)</li>
                             <li>본 이벤트 진행 기간 내에는 발급받으신 재도전/환승 인증 이벤트 쿠폰이 추가로 적용되지 않습니다.</li>
                             <li>장사원 농업직/농촌지도사 [전과목] T-PASS의 경우, 이벤트 기간 내 판매되는 특별 기획 상품이므로 이벤트 기간 종료 후 재판매 계획은 없습니다.</li>
                             <li>수강지원 포인트의 경우, 결제완료 후 익일 내로 담당자가 확인 후에 순차적으로 지급해드릴 예정입니다. 해당 포인트는 [교재구매] 시 사용 가능합니다.</li>

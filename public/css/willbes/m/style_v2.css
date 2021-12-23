@@ -6618,7 +6618,7 @@ body.memBody #Footer {
 }
 .profArea .subjectBox li div {
 	position: absolute;
-	top: 38px;
+	top: 15px;
 	left: 18px;
 	width: 60%;
 	text-align: left;
@@ -6631,6 +6631,7 @@ body.memBody #Footer {
 	width: 100%;
 	top: -10px;
 }
+.profArea .subjectBox span.subject {font-size:14px; margin-bottom:15px; color:#c0c0c0}
 .profArea .subjectBox span {
 	display: block;
 	font-size: 20px;

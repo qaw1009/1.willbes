@@ -184,19 +184,22 @@
                 <h2 class="NGEB"><img src="/public/img/willbes/m/main/icon_book.png" class="clogo">임용</h2>
                 <ul class="NGEB">
                     <li class="ListBox">
+                        <div class="List">교수진 소개</div>
+                    </li>
+                    <li class="ListBox">
                         <div class="List">보강신청</div>
                     </li>
                     <li class="ListBox">
                         <div class="List">무료강의</div>
                     </li>
                     <li class="ListBox">
-                        <div class="List">FAQ</div>
+                        <div class="List">동영상 FAQ</div>
                     </li>
                     <li class="ListBox">
-                        <div class="List">1:1 상담</div>
+                        <div class="List">동영상 1:1상담</div>
                     </li>
                     <li class="ListBox">
-                        <div class="List">오시는길</div>
+                        <div class="List">오시는 길</div>
                     </li>
                 </ul>
             </div>

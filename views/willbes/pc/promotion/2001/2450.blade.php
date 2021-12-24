@@ -302,16 +302,16 @@
                     <img src="https://static.willbes.net/public/images/promotion/2021/12/2450_01.gif" alt="신광은경찰PASS">
                     <a href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=1525&" onclick="giveCheck(); return false;" title="쿠폰받기" style="position: absolute;left: 5.39%;top: 63.23%;width: 22.99%;height: 4.34%;z-index: 2;"></a>
                     <div class="price price00">                    
-                        <input type="radio" id="y_pkg0" name="y_pkg" value="189573" data-sale-price="960000"/>                
-                        <label for="y_pkg0">23년 1차 PASS 신청</label>
+                        <input type="radio" id="y_pkg3" name="y_pkg" value="189573" data-sale-price="960000"/>                
+                        <label for="y_pkg3">23년 1차 PASS 신청</label>
                     </div>
                     <div class="price price01">                    
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000"/>                
-                        <label for="y_pkg1">22년 2차 PASS 신청</label>
+                        <input type="radio" id="y_pkg4" name="y_pkg" value="188689" data-sale-price="960000"/>                
+                        <label for="y_pkg4">22년 2차 PASS 신청</label>
                     </div>
                     <div class="price price02">                   
-                        <input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000"/>                 
-                        <label for="y_pkg2">FINAL PASS 신청</label>
+                        <input type="radio" id="y_pkg5" name="y_pkg" value="188690" data-sale-price="670000"/>                 
+                        <label for="y_pkg5">FINAL PASS 신청</label>
                     </div>
                 </div>    
             </div>

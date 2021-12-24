@@ -23,18 +23,11 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/12/2485_top_bg.jpg) no-repeat center top;}
 
-        .evt01 {background:#f0f0f0;padding-bottom:100px}        
-        .check {margin-top:20px; color:#333; font-size:17px;font-weight:bold;}
-        .check label {cursor:pointer}
-        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
-        .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
-        .check a.infotxt:hover {background:#1571B2}   
-
-        .evt_apply {background:#3a3a3a}
+        .evt01 {background:#fff;padding-bottom:100px;}
 
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2485_02_bg.jpg) no-repeat center top;}
 
-        .evt03 {background:#f0f0f0;}
+        .evt03 {background:#f0e1ca;}
 
         /* 이용안내 */
         .evtInfo {padding:100px 0; background:#555; color:#fff; line-height:1.5}
@@ -52,54 +45,38 @@
 
 	<div class="evtContent NGR">
 
-		<div class="evtCtnsBox evtTop">
+		<div class="evtCtnsBox evtTop" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2485_top.jpg" alt="김동진 법원팀" />
 		</div>
 
-        <div class="evtCtnsBox evt01">
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2485_01.jpg" alt="신청하기" />
-                <a href="javascript:go_PassLecture('186279')" style="position: absolute; left: 17.5%; top: 88.08%; width: 20.8%; height: 7.4%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2221" target="_blank" style="position: absolute; left: 61.88%; top: 88.08%; width: 20.8%; height: 7.4%; z-index: 2;"></a>
-            </div>
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059"  target="_blank" style="position: absolute;left: 17.5%;top: 79.08%;width: 20.8%;height: 8.4%;z-index: 2;"></a>
+                <a href="javascript:certOpen();"style="position: absolute;left: 61.38%;top: 79.08%;width: 20.8%;height: 8.4%;z-index: 2;"></a>
+            </div>           
+		</div>       
 
-            <div class="check" id="chkInfo">   
-                <label>
-                    <input name="ischk" type="checkbox" value="Y" />
-                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
-                </label>
-                <a href="#ctsInfo" class="infotxt">이용안내확인하기 ↓</a>
-            </div> 
-		</div>
-
-        <div class="evtCtnsBox evt_apply">
-            <div class="wrap"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2485_apply.jpg" alt="" />
-                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2357" target="_blank" title="체험팩 신청하기" style="position: absolute;left: 31.89%;top: 69.84%;width: 36.04%;height: 9.64%;z-index: 2;"></a>
-            </div>    
-		</div>
-
-        <div class="evtCtnsBox evt02">
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
             <div class="wrap">            
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2485_02.jpg" alt="연간 커리큘럼">
-                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2087" title="pass" target="_blank" style="position: absolute; left: 13.21%; top: 81.74%; width: 11.16%; height: 3.64%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1411" title="3순환" target="_blank" style="position: absolute; left: 46.07%; top: 74.34%; width: 8.04%; height: 3.64%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1412" title="4순환" target="_blank" style="position: absolute; left: 58.39%; top: 74.34%; width: 8.04%; height: 3.64%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1413" title="5순환" target="_blank" style="position: absolute; left: 70.89%; top: 74.34%; width: 8.04%; height: 3.64%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2087" title="pass" target="_blank" style="position: absolute;left: 19.21%;top: 79.74%;width: 11.16%;height: 4.64%;z-index: 2;"></a>               
+                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1412" title="4순환" target="_blank" style="position: absolute;left: 58.39%;top: 72.84%;width: 8.04%;height: 4.64%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1413" title="5순환" target="_blank" style="position: absolute;left: 70.99%;top: 72.84%;width: 8.04%;height: 4.64%;z-index: 2;"></a>
             </div>
 		</div>
 
-        <div class="evtCtnsBox evt03">
+        <div class="evtCtnsBox evt03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2485_03.jpg" alt="수강생 중심 운영" />
 		</div>
 
-        <div class="evtCtnsBox evt04">
+        <div class="evtCtnsBox evt04" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2485_04.jpg" alt="절대 만족 후기"/>
-                <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="더 많은 합격수기 보기" style="position: absolute; left: 34.46%; top: 78.42%; width: 30.89%; height: 5.55%; z-index: 2;"></a>
+                <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="더 많은 합격수기 보기" style="position: absolute;left: 34.46%;top: 89.42%;width: 30.89%;height: 5.55%;z-index: 2;"></a>
             </div>
 		</div>
-        
+        {{--
         <div class="evtCtnsBox evtInfo" id="ctsInfo">
             <div class="guide_box">
                 <h2 class="NSK-Black">이용안내</h2>
@@ -158,19 +135,28 @@
                 </dl>
             </div>
         </div>
-
+        --}}
 	</div>
     <!-- End Container -->
 
-    <script type="text/javascript">         
-        function go_PassLecture(code){
-            if($("input[name='ischk']:checked").size() < 1){
-                alert("이용안내에 동의하셔야 합니다.");
-                return;
-            }
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      $( document ).ready( function() {
+        AOS.init();
+      } );     
 
-            var url = '{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/') }}' + code;
-            location.href = url;
-        }
+    </script>
+    <script>
+
+        /* 팝업창 */ 
+        function certOpen(){
+                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+                @if(empty($arr_promotion_params) === false)
+                var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+                @endif
+            }
+        
     </script>
 @stop

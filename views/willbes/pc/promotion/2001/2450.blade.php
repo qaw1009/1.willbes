@@ -179,7 +179,7 @@
 
             <div class="check" data-aos="fade-up">
                 <input type="checkbox" id="is_chk1" name="is_chk" value="Y"/>
-                <label for="is_chk1">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                <label for="is_chk">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                 <a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a>
                 <p>
                     ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>
@@ -302,23 +302,23 @@
                     <img src="https://static.willbes.net/public/images/promotion/2021/12/2450_01.gif" alt="신광은경찰PASS">
                     <a href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=1525&" onclick="giveCheck(); return false;" title="쿠폰받기" style="position: absolute;left: 5.39%;top: 63.23%;width: 22.99%;height: 4.34%;z-index: 2;"></a>
                     <div class="price price00">                    
-                        <input type="radio" id="y_pkg0" name="y_pkg" value="189573" data-sale-price="960000"/>                
-                        <label for="y_pkg0">23년 1차 PASS 신청</label>
+                        <input type="radio" id="y_pkg3" name="y_pkg" value="189573" data-sale-price="960000"/>                
+                        <label for="y_pkg3">23년 1차 PASS 신청</label>
                     </div>
                     <div class="price price01">                    
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000"/>                
-                        <label for="y_pkg1">22년 2차 PASS 신청</label>
+                        <input type="radio" id="y_pkg4" name="y_pkg" value="188689" data-sale-price="960000"/>                
+                        <label for="y_pkg4">22년 2차 PASS 신청</label>
                     </div>
                     <div class="price price02">                   
-                        <input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000"/>                 
-                        <label for="y_pkg2">FINAL PASS 신청</label>
+                        <input type="radio" id="y_pkg5" name="y_pkg" value="188690" data-sale-price="670000"/>                 
+                        <label for="y_pkg5">FINAL PASS 신청</label>
                     </div>
                 </div>    
             </div>
             
             <div class="check">
                 <input type="checkbox" id="is_chk2" name="is_chk" value="Y"/>
-                <label for="is_chk2">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                <label for="is_chk">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                 <a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a>
                 <p>
                     ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>

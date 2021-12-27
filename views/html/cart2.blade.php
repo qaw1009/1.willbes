@@ -94,7 +94,7 @@
                                         <span class="pBox p1">강좌</span> 2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)                                                                                
                                     </dt>
                                     <dt>
-                                        <span class="w-day">수강기간 : <span class="tx-blue">50일</span></span>
+                                        <span class="w-day">수강기간 : <span class="tx-blue">2022-01-31까지</span></span>
                                         <span class="w-data">
                                             [강좌시작일 설정] 
                                             <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30">
@@ -130,7 +130,7 @@
                                         <span class="pBox p1">강좌</span> 2018 김용철행정법총론실전동형모의고사(3월)                                        
                                     </dt>
                                     <dt>
-                                        <span class="w-day">수강기간 : <span class="tx-blue">50일</span></span>
+                                        <span class="w-day">수강기간 : <span class="tx-blue">2022-01-31까지</span></span>
                                         <span class="w-data">
                                             [강좌시작일 설정] 
                                             <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30">
@@ -161,7 +161,7 @@
                                         <span class="pBox p2">패키지</span> 2017 9급공무원이론선택형종합패키지-30일완성
                                     </dt>
                                     <dt>
-                                        <span class="w-day">수강기간 : <span class="tx-blue">100일</span></span>
+                                        <span class="w-day">수강기간 : <span class="tx-blue">2022-01-31까지</span></span>
                                         <span class="w-data">[강좌시작일 설정] <span class="tx-light-blue">결제완료 후 바로 수강 시작</span></span>
                                     </dt>
                                     <dt class="w-coupon">

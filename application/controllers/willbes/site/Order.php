@@ -133,9 +133,10 @@ class Order extends \app\controllers\FrontController
         // 회원정보 조회
         $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
 
-        // 결제완료 광고스크립트 데이터 생성 (경찰온라인/학원만)
+        // 결제완료 광고스크립트 데이터 생성 (경찰온라인/학원, 임용온라인/학원만)
         $ad_data = [];
-        if (in_array($results['order']['SiteCode'], ['2001', '2002']) === true) {
+        if (in_array($results['order']['SiteCode'], ['2001', '2002', '2017', '2018']) === true) {
+            // 주문정보
             $ad_data = [
                 'OrderNo' => $results['order']['OrderNo'],
                 'ReprProdName' => $results['order']['ReprProdName'],
@@ -143,15 +144,28 @@ class Order extends \app\controllers\FrontController
                 'tOrderQty' => count($results['order_product'])
             ];
 
-            // 카카오 주문상품정보 가공
-            foreach ($results['order_product'] as $order_prod_row) {
-                $ad_data['KakaoProducts'][] = [
-                    'name' => $order_prod_row['ProdName'],
-                    'quantity' => '1',
-                    'price' => $order_prod_row['RealPayPrice']
-                ];
+            if (in_array($results['order']['SiteCode'], ['2001', '2002']) === true) {
+                // 경찰                
+                $ad_data['Gtag'] = ['uid' => 'AW-710035840', 'send_to' => 'AW-710035840/IzCxCPnzl9cBEICTydIC'];  // 구글 애널리틱스
+                $ad_data['Adn'] = ['uid' => '102299'];                  // ADN Tracker
+                $ad_data['Enliple'] = ['uid' => 'willpolice'];          // Enliple Tracker
+                $ad_data['Kakao'] = ['uid' => '2420477028898879027'];    // kakaoPixel
+            } else {
+                // 임용
+                $ad_data['Gtag'] = ['uid' => 'AW-966587654', 'send_to' => 'AW-966587654/1p9iCMavgowDEIbq88wD'];  // 구글 애널리틱스
             }
-            $ad_data['KakaoProducts'] = json_encode($ad_data['KakaoProducts'], JSON_UNESCAPED_UNICODE);
+
+            // 카카오 주문상품정보 가공
+            if (empty($ad_data['Kakao']) === false) {
+                foreach ($results['order_product'] as $order_prod_row) {
+                    $ad_data['Kakao']['products'][] = [
+                        'name' => $order_prod_row['ProdName'],
+                        'quantity' => '1',
+                        'price' => $order_prod_row['RealPayPrice']
+                    ];
+                }
+                $ad_data['Kakao']['products'] = json_encode($ad_data['Kakao']['products'], JSON_UNESCAPED_UNICODE);
+            }
         }
 
         $this->load->view('site/order/complete', [

@@ -81,7 +81,7 @@
                                                         <span class="w-day">연장기간 : <span class="tx-blue">{{ $row['ExtenDay'] }}일</span></span>
                                                     @else
                                                         @if(empty($row['StudyPeriod']) === false)
-                                                            <span class="w-day">수강기간 : <span class="tx-blue">{{ $row['StudyPeriod'] }}일</span></span>
+                                                            <span class="w-day">수강기간 : <span class="tx-blue">{{ ends_with($row['StudyPeriodCcd'], '002') === true ? $row['StudyEndDate'] . '까지' : $row['StudyPeriod'] . '일' }}</span></span>
                                                         @endif
                                                     @endif
                                                     <span class="w-data">

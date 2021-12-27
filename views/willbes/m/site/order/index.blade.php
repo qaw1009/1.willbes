@@ -81,7 +81,7 @@
                                         @if(empty($row['ExtenDay']) === false)
                                             <li class="NGR"><strong>연장기간</strong> {{ $row['ExtenDay'] }}일</li>
                                         @elseif(empty($row['StudyPeriod']) === false)
-                                            <li class="NGR"><strong>수강기간</strong> {{ $row['StudyPeriod'] }}일</li>
+                                            <li class="NGR"><strong>수강기간</strong> {{ ends_with($row['StudyPeriodCcd'], '002') === true ? $row['StudyEndDate'] . '까지' : $row['StudyPeriod'] . '일' }}</li>
                                         @endif
                                         <li class="NGR">
                                             {{-- 강좌시작일지정 여부 : Y, 결제일 이후부터 30일 이내 날짜로 설정 가능, 개강일 전이라면 개강일부터 30일 이내 설정 가능 --}}

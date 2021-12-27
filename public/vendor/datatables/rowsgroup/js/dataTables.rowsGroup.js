@@ -232,7 +232,7 @@ RowsGroup.prototype = {
 		currentOrder = this._getInjectedMonoSelectWorkaround(currentOrder);
 		this.order = this._getOrderWithGroupColumns(currentOrder)
 		this.table.order($.extend(true, Array(), this.order))
-		this.table.draw()
+		this.table.draw(false)
 	},
 };
 

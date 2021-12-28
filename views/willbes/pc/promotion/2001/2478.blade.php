@@ -24,7 +24,7 @@
 
         .wb_cts03 {background:#17161b;}
 
-        .wb_cts04 {background: linear-gradient( to right, #ba3baf, #a83cb5, #973dbb, #643fcc );}
+        .wb_cts04 {background: linear-gradient( to bottom, #ae3cb3, #a23cb7, #a23cb7, #833dc1);}
         
         .wb_cts05 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2478_05_bg.jpg) no-repeat center;}
 
@@ -62,27 +62,27 @@
             <div style="margin-top:15px;"><a href="#apply_02"><img src="https://static.willbes.net/public/images/promotion/2021/12/2478_sky3.png" alt="교수별 패스"></a></div>
         </div>
 
-        <div class="evtCtnsBox evt00">
+        <div class="evtCtnsBox evt00" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>    
 
-        <div class="evtCtnsBox wb_top" id="main">
+        <div class="evtCtnsBox wb_top" id="main" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_top.jpg" alt="신광은 경찰 합격 패스" />
         </div>
 
-        <div class="evtCtnsBox wb_cts01">
+        <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_01.jpg" alt="교수진 소개" />
         </div>
 
-        <div class="evtCtnsBox wb_cts02">
+        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_02.jpg" alt="경찰승진 패스를 말하다" />
         </div>
 
-        <div class="evtCtnsBox wb_cts03">
+        <div class="evtCtnsBox wb_cts03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_03.jpg" alt="경찰승진 계급별 확인하기" />
         </div>
 
-        <div class="evtCtnsBox wb_cts04" id="apply_01">
+        <div class="evtCtnsBox wb_cts04" id="apply_01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_04.jpg" alt="계급별 패스" />
             <ul class="tab">
                 <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2021/12/2478_tab01_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2021/12/2478_tab01.png" class="on"  /></a></li>
@@ -116,7 +116,7 @@
             </div>            
         </div>
 
-        <div class="evtCtnsBox wb_cts05" id="apply_02">
+        <div class="evtCtnsBox wb_cts05" id="apply_02" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_05.jpg" alt="교수별 패스" />
                 <a href="javascript:alert('Coming Soon!')" title="신광은 형소법" style="position: absolute;left: 74.01%;top: 34.08%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
@@ -128,11 +128,11 @@
             </div>   
         </div>
 
-        <div class="evtCtnsBox wb_cts06">
+        <div class="evtCtnsBox wb_cts06" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_06.jpg" alt="인증방법 안내" />
         </div>
 
-        <div class="content_guide_wrap NG">
+        <div class="content_guide_wrap NG" data-aos="fade-up">
             <div class="content_guide_box">               
                 <dl>
                     <dt>
@@ -195,7 +195,15 @@
             </div>
         </div>
     </div>
-    <!-- End Container -->
+     <!-- End Container -->
+
+     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      $( document ).ready( function() {
+        AOS.init();
+      } );
+    </script>
 
     <script>
 

@@ -612,14 +612,21 @@
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50809?subject_idx=1513') }}">김남훈</a>                   
                 </li>
                 <li>
-                    <span>특허법</span>                 
+                    <span>특허법</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51344?subject_idx=1558') }}">남솔잎</a>                           
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51128?subject_idx=1558') }}">조현중</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50810?subject_idx=1558') }}">손인호</a>
                 </li>
                 <li>
                     <span>상표법</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51345?subject_idx=1557') }}">이슬기</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51129?subject_idx=1557') }}">김영남</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50943?subject_idx=1557') }}">이대현</a>
+                </li>
+                <li>
+                    <span>디자인보호법</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51340?subject_idx=2203') }}">이준권 </a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51129?subject_idx=2203') }}">김영남  </a>
                 </li>
                 <li>
                     <span>회로이론</span>

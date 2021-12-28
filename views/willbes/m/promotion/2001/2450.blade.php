@@ -12,10 +12,8 @@
         .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#000; font-size:14px !important;}
 
         .evt01 {padding-bottom:50px; text-align:left}
-        .evt01 .price { width:39.06%; margin:0 auto;}
-        .evt01 .price ul{display: flex; justify-content: center; margin:0 4.4%}
-        .evt01 .price li {display:block;text-align:center; font-size:22px; font-weight:bold; color:#fff; background:#000; border-radius:10px; padding:20px 14px; margin:0 1.6% 5%; letter-spacing:-1px}
-        .evt01 .price li label {display:block}
+        .evt01 .price {text-align:center; font-size:22px; font-weight:bold; color:#fff; background:#000; border-radius:10px; padding:15px 0; margin:0 5% 5%; letter-spacing:-1px}
+        .evt01 .price label {display:inline-block}
         .evt01 .ext01txt {padding:20px;}
         .evt01 .ext01txt label {font-size:18px; font-weight:bold}
         .evt01 input[type="radio"] {height:18px; width:18px; vertical-align:middle}
@@ -28,7 +26,8 @@
         /*탭(텍스트)*/     
         .tabContaier{width:100%;background:#fff;margin-top:50px;}
         .tabContaier ul{margin:0 auto; height:65px;} 
-        .tabContaier li {display:inline-block; float:left; width:20%; height:60px; line-height:59px;background:#fff;color:#0101ff; font-size:18px;font-weight:bold;border:1px solid #0101ff;} 
+        .tabContaier li {display:inline-block; float:left; width:20%; height:60px; line-height:59px; background:#fff;color:#0101ff; font-size:18px;font-weight:bold;border:1px solid #0101ff; border-right:0} 
+        .tabContaier li:last-child {border-right:1px solid #0101ff;}
         .tabContaier li a{display:block;}
         .tabContaier li a:hover,
         .tabContaier li a.active {color:#fff;font-size:20px;background:#0101ff;}
@@ -60,46 +59,26 @@
         .content_guide_box dd li {margin-bottom:3px; list-style:decimal; margin-left:20px}
         .content_guide_box dd:after {content:""; display:block; clear:both}
 
-        /* 폰 가로, 태블릿 세로*/
+
         @@media only screen and (max-width: 374px)  {
             .dday {font-size:18px !important;}
             .dday a {padding:5px 10px;}
             .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
             .content_guide_wrap .tabs li a {font-size:12px !important; letter-spacing:-1px}
-            .evt01 .price li {font-size:13px;}
+            .evt01 .ext01txt label {font-size:14px;}
+            .evt01 .price {font-size:13px;}
             .tabContaier li {font-size:16px;}
             .tabContaier li a:hover {font-size:17px;}         
         }
 
-        /* 태블릿 세로 */
-        @@media only screen and (min-width: 375px) and (max-width: 500px) {
-            .dday {font-size:18px !important;}
-            .dday a {padding:5px 10px;}
-            .evt01 .price li {font-size:16px;}
+        @@media only screen and (min-width: 375px) and (max-width: 640px) {
+            .evt01 .price {font-size:16px;}
             .content_guide_wrap .guide_tit{font-size:24px;}
             .content_guide_wrap .tabs li a {font-size:15px !important; letter-spacing:-1px}
-            .evt01 .price li {font-size:15px;}
-            .evt01_coupon .coupon_btn {position:absolute !important;top:7.55% !important;margin:0 auto; background-color:rgba(255,255,255,0.1);}
-        }
-
-        @@media only screen and (min-width: 501px) and (max-width: 640px) {
-            .dday {font-size:18px !important;}
-            .dday a {padding:5px 10px;}
-            .evt01 .price li {font-size:16px;}
-            .content_guide_wrap .guide_tit{font-size:24px;}
-            .content_guide_wrap .tabs li a {font-size:15px !important; letter-spacing:-1px}
-            .evt01 .price li {font-size:15px;}
             .evt01_coupon .coupon_btn {position:absolute !important;top:8.55% !important;margin:0 auto; background-color:rgba(255,255,255,0.1);}
         }
 
-        /* 태블릿 가로, PC */
-        @@media only screen and (min-width: 641px) {
-            .content_guide_wrap .tabs li a br {display:none}
-            .evt01 .price li {font-size:21px;}
-            .content_guide_wrap .tabs li a {font-size:21px !important; letter-spacing:-1px}        
-            .evt01 .price li {font-size:21px;}
-            .evt01_coupon .coupon_btn {position:absolute !important;top:9.75% !important;margin:0 auto; background-color:rgba(255,255,255,0.1);}
-        }
+
 
     </style>
 
@@ -127,21 +106,15 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_00.gif" alt="" >
                 <a class="coupon_btn" href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=1525&" onclick="giveCheck(); return false;" title="쿠폰받기" style="position: absolute;left: 53.89%;top: 6.58%;width: 39.88%;height: 2.34%;z-index: 2;"></a>
                 <div class="price">
-                    <ul>
-                        <li><input type="radio" id="y_pkg0" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> <label for="y_pkg0"> 23년 1차 PASS<br> 신청하기</label></li>                    
-                    </ul>
+                    <input type="radio" id="y_pkg0" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> <label for="y_pkg0"> 23년 1차 PASS 신청하기</label>
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_01.jpg" alt="" >
                 <div class="price">
-                    <ul>
-                        <li><input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> <label for="y_pkg1"> 22년 2차 PASS<br> 신청하기</label></li>                    
-                    </ul>
+                    <input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> <label for="y_pkg1"> 22년 2차 PASS 신청하기</label>
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_02.jpg" alt="" >
                 <div class="price">
-                    <ul>                    
-                        <li><input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> <label for="y_pkg2"> FINAL PASS<br> 신청하기</label></li>
-                    </ul>
+                    <input type="radio" id="y_pkg2" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> <label for="y_pkg2"> FINAL PASS 신청하기</label>
                 </div>
                 <div class="ext01txt">
                     <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
@@ -261,26 +234,20 @@
             </form>
         </div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
             <div class="evt01_coupon">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_00.gif" alt="" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_00.jpg" alt="" >
                 <a class="coupon_btn" href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=1525&" onclick="giveCheck(); return false;" style="position: absolute;left: 53.89%;top: 6.58%;width: 39.88%;height: 2.34%;z-index: 2;"></a>
                 <div class="price">
-                    <ul>
-                        <li><input type="radio" id="y_pkg3" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> <label for="y_pkg3"> 23년 1차 PASS<br> 신청하기</label></li>                    
-                    </ul>
+                    <input type="radio" id="y_pkg3" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> <label for="y_pkg3"> 23년 1차 PASS 신청하기</label>
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_01.jpg" alt="" >
                 <div class="price">
-                    <ul>
-                        <li><input type="radio" id="y_pkg4" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> <label for="y_pkg4"> 22년 2차 PASS<br> 신청하기</label></li>                    
-                    </ul>
+                    <input type="radio" id="y_pkg4" name="y_pkg" value="188689" data-sale-price="960000" onClick=""/> <label for="y_pkg4"> 22년 2차 PASS 신청하기</label>
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_02.jpg" alt="" >
                 <div class="price">
-                    <ul>                    
-                        <li><input type="radio" id="y_pkg5" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> <label for="y_pkg5">FINAL PASS<br> 신청하기</label></li>
-                    </ul>
+                    <input type="radio" id="y_pkg5" name="y_pkg" value="188690" data-sale-price="670000" onClick=""/> <label for="y_pkg5">FINAL PASS 신청하기</label>
                 </div>
                 <div class="ext01txt">
                     <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
@@ -304,9 +271,9 @@
         <div class="content_guide_wrap" id="tab"  data-aos="fade-up">
             <p class="guide_tit NSK-Thin">윌비스 <span class="NSK-Black">신광은 경찰 PASS</span> 이용안내 </p>
             <ul class="tabs">
-                <li><a href="#tab01">23년 1차 PASS</a></li>
-                <li><a href="#tab02">22년 2차 PASS</a></li>
-                <li><a href="#tab03">Final PASS (22년 1차 대비)</a></li>
+                <li><a href="#tab01">23년 1차<br> PASS</a></li>
+                <li><a href="#tab02">22년 2차<br> PASS</a></li>
+                <li><a href="#tab03">Final PASS<br> (22년 1차 대비)</a></li>
             </ul>
 
             <div class="content_guide_box" id="tab01">

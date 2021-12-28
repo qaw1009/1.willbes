@@ -27,7 +27,9 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/12/2426_top_bg.jpg) repeat-y center top;} 
 
-        .evt01 {background:#00030C;} 
+        .evt01 {background:#00030C;position:relative;}
+        .youtube {position:absolute; top:398px; left:50%;z-index:1;margin-left:-367px}
+        .youtube iframe {width:731px; height:400px}
 
         .evt02 {background:#F8F8F8;}
 
@@ -156,7 +158,10 @@
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2426_01.jpg" title="문제풀이 과정">           
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2426_01.jpg" title="문제풀이 과정">
+            <div class="youtube">
+                <iframe src="https://www.youtube.com/embed/1_R8WySNAVA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>            
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">

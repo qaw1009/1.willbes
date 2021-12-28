@@ -24,7 +24,9 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/12/2446_top_bg.gif) no-repeat center top;}     
 
-        .evt01 {background:#00030c;} 
+        .evt01 {background:#00030c;position:relative;}
+        .youtube {position:absolute; top:398px; left:50%;z-index:1;margin-left:-367px}
+        .youtube iframe {width:731px; height:400px}
 
         .evt02 {background:#f8f8f8;}
 
@@ -127,7 +129,10 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2446_01.jpg" title="커리큘럼">           
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2446_01.jpg" title="커리큘럼">
+            <div class="youtube">
+                <iframe src="https://www.youtube.com/embed/1_R8WySNAVA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>         
         </div>
 
         <div class="evtCtnsBox evt02">

@@ -236,7 +236,7 @@
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
             <div class="evt01_coupon">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_00.jpg" alt="" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_01_00.gif" alt="" >
                 <a class="coupon_btn" href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=1525&" onclick="giveCheck(); return false;" style="position: absolute;left: 53.89%;top: 6.58%;width: 39.88%;height: 2.34%;z-index: 2;"></a>
                 <div class="price">
                     <input type="radio" id="y_pkg3" name="y_pkg" value="189573" data-sale-price="960000" onClick=""/> <label for="y_pkg3"> 23년 1차 PASS 신청하기</label>

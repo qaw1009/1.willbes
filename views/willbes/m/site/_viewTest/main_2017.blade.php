@@ -119,9 +119,10 @@
         clear: both;
     }
 
-    .ssam .profwrap {display:flex; flex-wrap: wrap; justify-content: space-around; align-content: stretch; padding:0 10px; margin-top:20px}
-    .ssam .profwrap div {flex: 1 1 30%; margin:5px; text-align:center}
+    .ssam .profwrap {padding:0 10px; margin-top:20px}
+    .ssam .profwrap div {display: inline-block; width:calc(33.33333% - 10px); text-align:center; float:left; margin:0 5px 10px}
     .ssam .profwrap div img {width:100%; max-width:220px; margin:0 auto}
+    .ssam .profwrap:after {content:''; display:block; clear:both}
 
     @@media only screen and (max-width: 374px) {
         .ssam .bestLecBox2 .lecinfo li {
@@ -136,7 +137,7 @@
         .ssam .bestLecBox2 .lecinfo li strong {
             font-size: 13px;
         }
-        .ssam .profwrap div {flex: 1 1 40%;}
+        .ssam .profwrap div {width:calc(50% - 10px);}
     }
     @@media only screen and (min-width: 375px) and (max-width: 640px) {
         .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) {
@@ -148,7 +149,6 @@
         .ssam .bestLecBox2 .lecinfo li strong {
             font-size: 14px;
         }
-        .ssam .profwrap div {flex: 1 1 30%;}
     }
     </style>
     <!-- Container -->

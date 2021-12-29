@@ -24,7 +24,7 @@
 
         .wb_cts03 {background:#17161b;}
 
-        .wb_cts04 {background: linear-gradient( to bottom, #ae3cb3, #a23cb7, #a23cb7, #833dc1);}
+        .wb_cts04 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2478_04_bg.jpg) no-repeat center;}
         
         .wb_cts05 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2478_05_bg.jpg) no-repeat center;}
 
@@ -92,26 +92,26 @@
             <div id="tab1">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_tab01_apply.jpg" title="경장/경사/경위"/>
-                    <a href="javascript:alert('Coming Soon!')" title="경장/경사/경위 승진대비" style="position: absolute;left: 74.01%;top: 13.08%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                    <a href="javascript:alert('Coming Soon!')" title="경장/경사/경위 승진대비" style="position: absolute;left: 74.01%;top: 26.88%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                    <a href="javascript:alert('Coming Soon!')" title="경장/경사/경위 승진대비" style="position: absolute;left: 74.01%;top: 41.08%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                    <a href="javascript:alert('Coming Soon!')" title="경장/경사/경위 승진대비" style="position: absolute;left: 74.01%;top: 55.58%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                    <a href="javascript:alert('Coming Soon!')" title="경장/경사/경위 승진대비" style="position: absolute;left: 74.01%;top: 69.78%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189899" target="_blnak" title="경장/경사/경위 승진대비" style="position: absolute;left: 74.01%;top: 13.08%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189900" target="_blnak" title="경장/경사/경위 승진대비" style="position: absolute;left: 74.01%;top: 26.88%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189901" target="_blnak" title="경장/경사/경위 승진대비" style="position: absolute;left: 74.01%;top: 41.08%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189902" target="_blnak" title="경장/경사/경위 승진대비" style="position: absolute;left: 74.01%;top: 55.58%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189903" target="_blnak" title="경장/경사/경위 승진대비" style="position: absolute;left: 74.01%;top: 69.78%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
                 </div>              
             </div>
             <div id="tab2">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_tab02_apply.jpg" title="경감"/>
-                    <a href="javascript:alert('Coming Soon!')" title="경감 승진대비" style="position: absolute;left: 74.01%;top: 13.08%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                    <a href="javascript:alert('Coming Soon!')" title="경감 승진대비" style="position: absolute;left: 74.01%;top: 26.88%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                    <a href="javascript:alert('Coming Soon!')" title="경감 승진대비" style="position: absolute;left: 74.01%;top: 41.08%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                    <a href="javascript:alert('Coming Soon!')" title="경감 승진대비" style="position: absolute;left: 74.01%;top: 55.58%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189904" target="_blnak" title="경감 승진대비" style="position: absolute;left: 74.01%;top: 13.08%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189905" target="_blnak" title="경감 승진대비" style="position: absolute;left: 74.01%;top: 26.88%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189906" target="_blnak" title="경감 승진대비" style="position: absolute;left: 74.01%;top: 41.08%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189907" target="_blnak" title="경감 승진대비" style="position: absolute;left: 74.01%;top: 55.58%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
                 </div>  
             </div>   
             <div id="tab3">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_tab03_apply.jpg" title="경정"/>
-                    <a href="javascript:alert('Coming Soon!')" title="경정 승진대비" style="position: absolute;left: 74.01%;top: 13.08%;width: 14.93%;height: 8.08%;z-index: 2;"></a>                   
+                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189908" target="_blnak" title="경정 승진대비" style="position: absolute;left: 74.01%;top: 13.08%;width: 14.93%;height: 8.08%;z-index: 2;"></a>                   
                 </div>               
             </div>            
         </div>
@@ -119,12 +119,12 @@
         <div class="evtCtnsBox wb_cts05" id="apply_02" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_05.jpg" alt="교수별 패스" />
-                <a href="javascript:alert('Coming Soon!')" title="신광은 형소법" style="position: absolute;left: 74.01%;top: 34.08%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!')" title="신광은 형법" style="position: absolute;left: 74.01%;top: 42.38%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!')" title="장정훈/오현웅 실무" style="position: absolute;left: 74.01%;top: 50.58%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!')" title="송광호 실무" style="position: absolute;left: 74.01%;top: 58.58%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!')" title="황남기 헌법" style="position: absolute;left: 74.01%;top: 67.01%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!')" title="김덕관 행정학" style="position: absolute;left: 74.01%;top: 75.08%;width: 14.93%;height: 5.08%;z-index: 2;"></a> 
+                <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189909" target="_blnak" title="신광은 형소법" style="position: absolute;left: 74.01%;top: 34.08%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189910" target="_blnak" title="신광은 형법" style="position: absolute;left: 74.01%;top: 42.38%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189911" target="_blnak" title="장정훈/오현웅 실무" style="position: absolute;left: 74.01%;top: 50.58%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189912" target="_blnak" title="송광호 실무" style="position: absolute;left: 74.01%;top: 58.58%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189913" target="_blnak" title="황남기 헌법" style="position: absolute;left: 74.01%;top: 67.01%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189914" target="_blnak" title="김덕관 행정학" style="position: absolute;left: 74.01%;top: 75.08%;width: 14.93%;height: 5.08%;z-index: 2;"></a> 
             </div>   
         </div>
 

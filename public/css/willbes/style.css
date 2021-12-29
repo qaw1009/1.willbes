@@ -4190,22 +4190,22 @@ table.classTable tr td img {
 }
 /* subContainer : Content : 교재정보 */
 .willbes-Layer-Box .bookInfo {
-	border-top: 1px solid #959595;
+	border-bottom: 1px solid #959595;
 }
 .bookWrap {
-	margin: 25px -20px 20px;
-	padding: 0 20px;
 	height: 448px;
+	padding-right:10px;
 	overflow-x: auto;
 }
+.bookWrap:after {content:''; display:block; clear:both}
 .bookInfo {
 	width: 100%;
 	height: 370px;
-	padding-top: 30px;
+	padding: 20px 0;
 }
 .bookInfo .bookImg {
 	float: left;
-	margin: 15px 15px 0;
+	margin: 0 auto 0;
 	width: 200px;
 }
 .bookInfo .bookImg img {
@@ -4213,7 +4213,7 @@ table.classTable tr td img {
 }
 .bookDetail {
 	float: right;
-	width: 678px;
+	width: 690px;
 }
 .bookDetail .book-Tit {
 	font-size: 18px;
@@ -4360,7 +4360,7 @@ table.classTable tr td img {
 	overflow-y: auto;
 }
 .tabBox .caution-txt {
-	padding: 15px 20px;
+	padding: 5px 20px;
 	margin-left: 5px;
 }
 

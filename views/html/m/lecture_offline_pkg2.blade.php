@@ -84,6 +84,30 @@
                                         <dt><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt>
                                         <dt><a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a></dt>
                                     </dl>
+                                    <div class="w-book mb-zero">
+                                        <ul>
+                                            <li>
+                                                <span class="chk">
+                                                    <label>[판매]</label>
+                                                    <input type="checkbox" id="" name="">
+                                                </span>
+                                                <div class="priceWrap NG">
+                                                    주교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
+                                                    <p class="NGR">[판매] <span class="tx-blue">42,000원</span>(↓10%)</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <span class="chk">
+                                                    <label>[품절]</label>
+                                                    <input type="checkbox" id="" name="" disabled>
+                                                </span>
+                                                <div class="priceWrap NG">
+                                                    부교재  <span class="NGR">신광은 형사소송법 신정8판</span><br>
+                                                    <p class="NGR">[품절] <span class="tx-blue">42,000원</span>(↓10%)</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="w-data-pkg">
                                     <div class="w-info">
@@ -102,6 +126,9 @@
                                         <dt><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt>
                                         <dt><a href="#none" class="lecView" onclick="openWin('InfoForm')">강좌상세정보</a></dt>
                                     </dl>
+                                    <div class="w-book">
+                                        ※ 별도 구매 가능한 교재가 없습니다.
+                                    </div>
                                 </div>
                             </td>
                         </tr>

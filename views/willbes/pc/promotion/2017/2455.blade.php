@@ -91,7 +91,7 @@
                     <a href="javascript:fnPlayerSample('189557','1328679','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t13.jpg" alt="김민응 도덕윤리"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="https://ssam.willbes.net/event/show/all?event_idx=1523"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t25.jpg" alt="최규훈 전공체육"/></a>
+                    <a href="javascript:fnPlayerSample('189920','1329983','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t25.jpg" alt="최규훈 전공체육"/></a>
                 </div>
                 <div class="profBox">
                     <a href="javascript:fnPlayerSample('189561','1328769','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t16.jpg" alt="다이애나 전공음악"/></a>

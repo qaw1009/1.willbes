@@ -138,7 +138,7 @@
 
         <div class="Section mt80">
             <div class="widthAuto tx-center">
-                <div class="will-nTit NSK-Black mb40 tx-left"><span>기출의 중요성</span>을 파악한 수험생은 이미 <span>성적상승</span>을 경험했습니다.</div>
+                <div class="will-nTit NSK-Black mb40 tx-left">지금 이 시기, <span>합격</span> 할 수 있는 <span>문제풀이 스킬</span>이 중요합니다.</div>
                 {!! banner_html(element('게이트_단기합격자', $data['banner'])) !!}
             </div>
         </div>

@@ -6,7 +6,7 @@
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; font-size:14px; line-height:1.5;}
     .evtCtnsBox img {width:100%; max-width:720px;}  
     .evtCtnsBox .wrap { margin:0 auto; position:relative}
-    .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
+    /*.evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}*/
 
     .evt04 .slide_con {position:relative;}
     .evt04 .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0; padding-bottom:50px;}
@@ -87,11 +87,11 @@
     <div class="evtCtnsBox evt05" >   
         <img src="https://static.willbes.net/public/images/promotion/2021/07/1721m_05.jpg" alt="대세">
         <div class="wrap cts05">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/1721m_05_01.png" alt="대세">
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/1721m_05_01.png" alt="대세">
             <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3052&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="공무원" style="position: absolute;left: 21%;top: 80%;width: 57.27%;height: 11.8%;z-index: 2;"></a>
         </div>  
         <div class="wrap cts05">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/1721m_05_02.png" alt="대세">
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/1721m_05_02.png" alt="대세">
             <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3048&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="군무원" style="position: absolute;left: 21%;top: 81.5%;width: 57.27%;height: 11.8%;z-index: 2;"></a>
         </div>      
     </div>

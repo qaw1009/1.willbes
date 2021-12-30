@@ -985,6 +985,7 @@
                     <div class="willbes-Leclist c_both">
                         <div class="willbes-Lec-Selected tx-gray">                        
                             <div class="willbes-Lec-Search GM">
+                                {{--
                                 <select id="A" name="A" title="A" class="seleLecA">
                                     <option selected="selected">질문유형</option>
                                     <option value="강좌내용">강좌내용</option>
@@ -992,6 +993,7 @@
                                     <option value="학습상담">학습상담</option>
                                     <option value="기타">기타</option>
                                 </select>
+                                --}}
                                 <ul class="chkBox mt10">
                                     <li>
                                         <input type="checkbox" id="s_is_display" name="s_is_display" value="1" class="goods_chk">
@@ -1015,7 +1017,6 @@
                             <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
                                 <colgroup>
                                     <col style="width: 65px;">
-                                    <col style="width: 100px;">
                                     <col>
                                     <col style="width: 90px;">
                                     <col style="width: 110px;">
@@ -1024,17 +1025,15 @@
                                 <thead>
                                     <tr>
                                         <th>No<span class="row-line">|</span></th>
-                                        <th>질문유형<span class="row-line">|</span></th>
                                         <th>제목<span class="row-line">|</span></th>
                                         <th>작성자<span class="row-line">|</span></th>
                                         <th>작성일<span class="row-line">|</span></th>
-                                        <th>답변상태</th>
+                                        <th>첨삭상태</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
-                                        <td class="w-A">강좌내용</td>
                                         <td class="w-list tx-left pl20">
                                             <a href="#none">
                                                 <img src="{{ img_url('prof/icon_locked.gif') }}"> 로그인이되지않는데어떻게하나요?
@@ -1043,19 +1042,17 @@
                                         </td>
                                         <td class="w-write">관리자명</td>
                                         <td class="w-date">2018-00-00</td>
-                                        <td class="w-answer"><span class="aBox answerBox NSK">답변완료</span></td>
+                                        <td class="w-answer"><span class="aBox answerBox NSK">첨삭완료</span></td>
                                     </tr>
                                     <tr>
                                         <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
-                                        <td class="w-A">강좌내용</td>
                                         <td class="w-list tx-left pl20"><a href="#none">만14세미만회원은어떻게가입하나요?</a></td>
                                         <td class="w-write">장동*</td>
                                         <td class="w-date">2018-00-00</td>
-                                        <td class="w-answer"><span class="aBox waitBox NSK">답변대기</span></td>
+                                        <td class="w-answer"><span class="aBox waitBox NSK">첨삭대기</span></td>
                                     </tr>
                                     <tr>
                                         <td class="w-no">10</td>
-                                        <td class="w-A">학습상담</td>
                                         <td class="w-list tx-left pl20"><a href="#none"> 로그인이되지않는데어떻게하나요?</a></td>
                                         <td class="w-write">관리자명</td>
                                         <td class="w-date">2018-00-00</td>
@@ -1063,7 +1060,6 @@
                                     </tr>
                                     <tr>
                                         <td class="w-no">9</td>
-                                        <td class="w-A">교재내용</td>
                                         <td class="w-list tx-left pl20">
                                             <a href="#none">
                                                  회원탈퇴는어떻게하나요? 
@@ -1077,7 +1073,6 @@
                                     </tr>
                                     <tr>
                                         <td class="w-no">8</td>
-                                        <td class="w-A">기타</td>
                                         <td class="w-list tx-left pl20"><a href="#none"> 로그인이되지않는데어떻게하나요?</a></td>
                                         <td class="w-write">관리자명</td>
                                         <td class="w-date">2018-00-00</td>
@@ -1085,7 +1080,6 @@
                                     </tr>
                                     <tr>
                                         <td class="w-no">7</td>
-                                        <td class="w-A">교재내용</td>
                                         <td class="w-list tx-left pl20">
                                             <a href="#none">
                                                  회원탈퇴는어떻게하나요? 
@@ -1099,7 +1093,6 @@
                                     </tr>
                                     <tr>
                                         <td class="w-no">6</td>
-                                        <td class="w-A">기타</td>
                                         <td class="w-list tx-left pl20"><a href="#none"> 로그인이되지않는데어떻게하나요?</a></td>
                                         <td class="w-write">관리자명</td>
                                         <td class="w-date">2018-00-00</td>
@@ -1107,7 +1100,6 @@
                                     </tr>
                                     <tr>
                                         <td class="w-no">5</td>
-                                        <td class="w-A">교재내용</td>
                                         <td class="w-list tx-left pl20">
                                             <a href="#none">
                                                  회원탈퇴는어떻게하나요?                                              
@@ -1120,7 +1112,6 @@
                                     </tr>
                                     <tr>
                                         <td class="w-no">4</td>
-                                        <td class="w-A">학습상담</td>
                                         <td class="w-list tx-left pl20">
                                             <a href="#none">
                                                  회원탈퇴는어떻게하나요?
@@ -1132,7 +1123,6 @@
                                     </tr>
                                     <tr>
                                         <td class="w-no">3</td>
-                                        <td class="w-A">강좌내용</td>
                                         <td class="w-list tx-left pl20"><a href="#none"> 로그인이되지않는데어떻게하나요?</a></td>
                                         <td class="w-write">박형*</td>
                                         <td class="w-date">2018-00-00</td>
@@ -1140,7 +1130,6 @@
                                     </tr>
                                     <tr>
                                         <td class="w-no">2</td>
-                                        <td class="w-A">교재내용</td>
                                         <td class="w-list tx-left pl20"><a href="#none"> 로그인이되지않는데어떻게하나요?</a></td>
                                         <td class="w-write">장동*</td>
                                         <td class="w-date">2018-00-00</td>
@@ -1148,7 +1137,6 @@
                                     </tr>
                                     <tr>
                                         <td class="w-no">1</td>
-                                        <td class="w-A">교재내용</td>
                                         <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
                                         <td class="w-write">박형*</td>
                                         <td class="w-date">2018-00-00</td>
@@ -1171,6 +1159,7 @@
                                     <col>
                                 </colgroup>
                                 <tbody>
+                                    {{--
                                     <tr>
                                         <td class="w-tit bg-light-white tx-center strong">질문유형<span class="tx-light-blue">(*)</span></td>
                                         <td class="w-selected full tx-left pl30" colspan="3">
@@ -1203,6 +1192,7 @@
                                             </select>
                                         </td>
                                     </tr>
+                                    --}}
                                     <tr>
                                         <td class="w-tit bg-light-white tx-center strong">제목<span class="tx-light-blue">(*)</span></td>
                                         <td class="w-text tx-left pl30" colspan="3">
@@ -1256,31 +1246,26 @@
                         <div class="LecViewTable">
                             <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                                 <colgroup>
-                                	<col style="width: 80px;">
+                                	<col>
                                     <col style="width: 100px;">
-                                    <col>
                                     <col style="width: 100px;">
                                 </colgroup>
                                 <thead>
                                     <tr>
-                                        <th colspan="4" class="w-list tx-left  pl20"><img src="{{ img_url('prof/icon_notice.gif') }}" style="marign-right: 5px;"> <strong>[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</strong></th>
-                                    </tr>
-                                    <tr>
-                                    	<td>김보*<span class="row-line">|</span></td>
-                                        <td>교재내용<span class="row-line">|</span></td>
-                                        <td class="subTit tx-left pl20"><strong class="tx-light-blue" style="padding-right: 5px;">[강좌]</strong>2018 [국가직대비] 정채영 국어 적중 50선 특강 (4~5월)<span class="row-line">|</span></td>
-                                        <td class="w-date">2018-00-00</td>                                        
+                                        <th class="w-list tx-left pl20"><img src="{{ img_url('prof/icon_notice.gif') }}" style="marign-right: 5px;"> <strong>[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</strong></th>
+                                    	<th>김보*</th>
+                                        <th class="w-date">2018-00-00</th>                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="w-file tx-left pl20" colspan="4">
+                                        <td class="w-file tx-left pl20" colspan="3">
                                             <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
                                             <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="w-txt tx-left" colspan="4">
+                                        <td class="w-txt tx-left" colspan="3">
                                             이달의 개강 강좌 공지입니다.<br/>
                                             이달의 개강 강좌 공지입니다.<br/>
                                             이달의 개강 강좌 공지입니다.
@@ -1300,7 +1285,8 @@
                                         <img src="/public/img/willbes/prof/icon_answer.gif">
                                     </td>
                                     <td class="w-acad tx-left">
-                                        <span class="aBox answerBox NSK">답변완료</span>
+                                        <span class="aBox answerBox NSK">첨삭완료</span>
+                                        <span class="aBox waitBox NSK">첨삭대기</span>
                                     </td>
                                     <td class="w-date">2021-09-23 13:49:02</td>
                                 </tr>

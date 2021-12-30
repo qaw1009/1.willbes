@@ -163,7 +163,7 @@
                     </tbody>
                 </table>     
             </div>     
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_05.png" alt="교수별 패스" /> 
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_05.png" alt="교수별 패스" id="apply_02"/> 
             <div class="tabcts mt50">
                 <table>
                     <col width="">

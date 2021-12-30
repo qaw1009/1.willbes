@@ -5,45 +5,54 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
         .evt00 {background:#0a0a0a}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/12/2478_top_bg.jpg) no-repeat center;}     
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/12/2478_top_bg.jpg) no-repeat center top;}     
 
         .wb_cts02 {background:#ecebf0;}
 
         .wb_cts03 {background:#17161b;}
 
-        .wb_cts04 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2478_04_bg.jpg) no-repeat center;}
+        .wb_cts04 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2478_04_bg.jpg) no-repeat center top; padding:100px 0}
         
-        .wb_cts05 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2478_05_bg.jpg) no-repeat center;}
+        .wb_cts05 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2478_05_bg.jpg) no-repeat center top;}
 
         .wb_cts06 {background:#ECECEC;}
 
         /* TAB */
-        .tab {width:985px; margin:0 auto; bottom:120px;}		
-        .tab li { float:left;padding-right:8px;}
-        .tab a img.off {display:block}
-        .tab a img.on {display:none}
-        .tab a.active img.off {display:none}
-        .tab a.active img.on {display:block;width:320px;height:100px;}
-        .tab:after {content:""; display:block; clear:both}   
+        .wb_cts04 .tab {width:985px; margin:50px auto 0; display:flex; justify-content:space-between;}
+        .wb_cts04 .tab li {flex: 1 1 30%; margin-right:10px}
+        .wb_cts04 .tab li:last-child {margin:0}
+        .wb_cts04 .tab a {display:block; background:#161616; color:#fff; font-size:30px; padding:30px 0; text-align:center; width:100%; font-weight:bold}
+        .wb_cts04 .tab a.active {background:#fff; color:#161616; } 
 
-        .content_guide_wrap{min-width:1210px; margin:0 auto 50px; font-size:12px;padding-top:100px;}
-        .content_guide_box{ position:relative; width:980px; margin:0 auto; padding:0 0 50px 0;}
+        .tabcts {width:985px; margin:0 auto 100px; background:#fff; padding:50px; }
+        .tabcts tr {border-bottom:1px solid #d7d7d7}
+        .tabcts tr:last-child {border:0}
+        .tabcts td {padding:20px 0; font-size:18px}
+        .tabcts td:first-child {text-align:left; font-weight:bold; font-size:20px}
+        .tabcts td a {display:block; background:#161616; color:#fff; border-radius:5px; padding:15px 0}
+        .tabcts td a:hover {background:#af3cb3;}
+
+        .content_guide_wrap{width:1000px; margin:0 auto; padding:100px 0;}
         .content_guide_box .guide_tit{margin-bottom:20px;}
-        .content_guide_box dl{ margin:0 ; word-break:keep-all;border:2px solid #e0e0e0;padding:30px;}
-        .content_guide_box dt{ margin-bottom:10px;}
+        .content_guide_box dl{word-break:keep-all; border:2px solid #e0e0e0; padding:30px;}
+        .content_guide_box dt{margin-bottom:10px;}
         .content_guide_box dt h3{color:#fff; background:#333; display:inline-block; padding:3px 7px; font-size:14px; font-weight:bold; margin-right:10px;}
         .content_guide_box dt img.btn{padding:2px 0 0 0;}
         .content_guide_box dd{ color:#777; font-size:13px; margin:0 0 20px 5px; line-height:17px;}
@@ -51,15 +60,16 @@
         .content_guide_box dd p{ margin-bottom:3px;}
         .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px;}
 
-        .sky {position:fixed;top:225px;right:10px;z-index:1;}       
+        .sky {position:fixed;top:200px;right:10px; width:130px; z-index:1;}     
+        .sky a {display:block; margin-bottom:10px}  
 
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
-            <div><a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/2021/12/2478_sky.png" alt="현직경찰 인증하기"></a></div>
-            <div style="margin-top:15px;"><a href="#apply_01"><img src="https://static.willbes.net/public/images/promotion/2021/12/2478_sky2.png" alt="계급별 패스"></a></div>
-            <div style="margin-top:15px;"><a href="#apply_02"><img src="https://static.willbes.net/public/images/promotion/2021/12/2478_sky3.png" alt="교수별 패스"></a></div>
+            <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/2021/12/2478_sky.png" alt="현직경찰 인증하기"></a>
+            <a href="#apply_01"><img src="https://static.willbes.net/public/images/promotion/2021/12/2478_sky2.png" alt="계급별 패스"></a>
+            <a href="#apply_02"><img src="https://static.willbes.net/public/images/promotion/2021/12/2478_sky3.png" alt="교수별 패스"></a>
         </div>
 
         <div class="evtCtnsBox evt00" data-aos="fade-down">
@@ -83,56 +93,116 @@
         </div>
 
         <div class="evtCtnsBox wb_cts04" id="apply_01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_04.jpg" alt="계급별 패스" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_04.png" alt="계급별 패스" />
             <ul class="tab">
-                <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2021/12/2478_tab01_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2021/12/2478_tab01.png" class="on"  /></a></li>
-                <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2021/12/2478_tab02_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2021/12/2478_tab02.png" class="on"  /></a></li>
-                <li><a href="#tab3"><img src="https://static.willbes.net/public/images/promotion/2021/12/2478_tab03_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2021/12/2478_tab03.png" class="on"  /></a></li>
+                <li><a href="#tab1">경장/경사/경위</a></li>
+                <li><a href="#tab2">경감</a></li>
+                <li><a href="#tab3">경정</a></li>
             </ul>
-            <div id="tab1">
-                <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_tab01_apply.jpg" title="경장/경사/경위"/>
-                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189899" target="_blnak" title="경장/경사/경위 승진대비" style="position: absolute;left: 74.01%;top: 13.08%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189900" target="_blnak" title="경장/경사/경위 승진대비" style="position: absolute;left: 74.01%;top: 26.88%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189901" target="_blnak" title="경장/경사/경위 승진대비" style="position: absolute;left: 74.01%;top: 41.08%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189902" target="_blnak" title="경장/경사/경위 승진대비" style="position: absolute;left: 74.01%;top: 55.58%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189903" target="_blnak" title="경장/경사/경위 승진대비" style="position: absolute;left: 74.01%;top: 69.78%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                </div>              
+            <div id="tab1" class="tabcts">
+                <table>
+                    <col width="">
+                    <col width="20%">
+                    <tbody>
+                        <tr>
+                            <td>2023 신광은 형소법 & 신광은 형법 PASS</td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189899" target="_blank">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>2023 신광은 형소법 & 장정훈 실무종합 PASS</td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189900" target="_blank">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>2023 신광은 형법  & 장정훈 실무종합 PASS</td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189901" target="_blank">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>2023 신광은 형소법 & 신광은 형법 & 장정훈/오현웅 실무종합 PASS</td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189902" target="_blank">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>2023 신광은 형소법 & 신광은 형법  & 송광호 실무종합 PASS</td>
+                            <td><a href="#none" target="_blank">수강신청 ></a></td>
+                        </tr>
+                    </tbody>
+                </table>         
             </div>
-            <div id="tab2">
-                <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_tab02_apply.jpg" title="경감"/>
-                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189904" target="_blnak" title="경감 승진대비" style="position: absolute;left: 74.01%;top: 13.08%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189905" target="_blnak" title="경감 승진대비" style="position: absolute;left: 74.01%;top: 26.88%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189906" target="_blnak" title="경감 승진대비" style="position: absolute;left: 74.01%;top: 41.08%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189907" target="_blnak" title="경감 승진대비" style="position: absolute;left: 74.01%;top: 55.58%;width: 14.93%;height: 8.08%;z-index: 2;"></a>
-                </div>  
+            <div id="tab2" class="tabcts">
+                <table>
+                    <col width="">
+                    <col width="20%">
+                    <tbody>
+                        <tr>
+                            <td>2023 신광은 형법 & 장정훈/오현웅 실무종합 PASS</td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189904" target="_blank">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>2023 장정훈/오현웅 실무종합 & 유시완 행정법(주) PASS</td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189905" target="_blank">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>2023 신광은 형법 & 유시완 행정법(주) PASS</td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189906" target="_blank">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>2023 신광은 형법 & 장정훈/오현웅 실무종합 & 유시완 행정법(주) PASS</td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189907" target="_blank">수강신청 ></a></td>
+                        </tr> 
+                    </tbody>
+                </table> 
             </div>   
-            <div id="tab3">
-                <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_tab03_apply.jpg" title="경정"/>
-                    <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189908" target="_blnak" title="경정 승진대비" style="position: absolute;left: 74.01%;top: 13.08%;width: 14.93%;height: 8.08%;z-index: 2;"></a>                   
-                </div>               
-            </div>            
-        </div>
-
-        <div class="evtCtnsBox wb_cts05" id="apply_02" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_05.jpg" alt="교수별 패스" />
-                <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189909" target="_blnak" title="신광은 형소법" style="position: absolute;left: 74.01%;top: 34.08%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189910" target="_blnak" title="신광은 형법" style="position: absolute;left: 74.01%;top: 42.38%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189911" target="_blnak" title="장정훈/오현웅 실무" style="position: absolute;left: 74.01%;top: 50.58%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189912" target="_blnak" title="송광호 실무" style="position: absolute;left: 74.01%;top: 58.58%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189913" target="_blnak" title="황남기 헌법" style="position: absolute;left: 74.01%;top: 67.01%;width: 14.93%;height: 5.08%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189914" target="_blnak" title="김덕관 행정학" style="position: absolute;left: 74.01%;top: 75.08%;width: 14.93%;height: 5.08%;z-index: 2;"></a> 
-            </div>   
+            <div id="tab3" class="tabcts">
+                <table>
+                    <col width="">
+                    <col width="20%">
+                    <tbody>
+                        <tr>
+                            <td>2023 황남기 헌법 & 김덕관 행정학 & 정주형 형소법(주) PASS</td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189908" target="_blank">수강신청 ></a></td>
+                        </tr> 
+                    </tbody>
+                </table>     
+            </div>     
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_05.png" alt="교수별 패스" /> 
+            <div class="tabcts mt50">
+                <table>
+                    <col width="">
+                    <col width="20%">
+                    <tbody>
+                        <tr>
+                            <td>[2023 승진대비 형소법  PASS] - 신광은</td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189909" target="_blank">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>[2023 승진대비 형법  PASS] - 신광은</td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189910" target="_blank">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>[2023 승진대비 실무종합  PASS] - 장정훈 & 오현웅</td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189911" target="_blank">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>[2023 승진대비 실무종합  PASS] - 송광호</td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189912" target="_blank">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>[2023 승진대비 헌법  PASS] - 황남기</td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189913" target="_blank">수강신청 ></a></td>
+                        </tr>
+                        <tr>
+                            <td>[2023 승진대비 행정학  PASS] - 김덕관</td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189914" target="_blank">수강신청 ></a></td>
+                        </tr>
+                    </tbody>
+                </table>         
+            </div>      
         </div>
 
         <div class="evtCtnsBox wb_cts06" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2478_06.jpg" alt="인증방법 안내" />
         </div>
 
-        <div class="content_guide_wrap NG" data-aos="fade-up">
+        <div class="content_guide_wrap" data-aos="fade-up">
             <div class="content_guide_box">               
                 <dl>
                     <dt>
@@ -197,7 +267,7 @@
     </div>
      <!-- End Container -->
 
-     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       $( document ).ready( function() {

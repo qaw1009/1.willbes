@@ -310,7 +310,7 @@
                                         <col width="*">
                                         <col style="width: 120px;">
                                         <col style="width: 70px;">
-                                        <col style="width: 130px;">
+                                        <col style="width: 150px;">
                                     </colgroup>
                                     <tbody>
                                     <tr>

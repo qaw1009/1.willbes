@@ -31,7 +31,7 @@
 
     </style> 
 
-	<div class="evtContent NSK">
+    <div class="evtContent NSK" id="evtContainer">
 		<div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2486_top.jpg" alt="9급 단원별 문풀" />
 		</div>
@@ -60,7 +60,8 @@
 
         @if(empty($arr_base['display_product_data']) === false)
             @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-        @endif  
+        @endif   
+        
 
 	</div>
     <!-- End Container -->

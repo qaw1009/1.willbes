@@ -238,6 +238,14 @@
                                 <option value="">9</option>
                                 <option value="">10</option>
                             </select>
+                            <div class="buyinfo mt0">
+                                <a href="#none" onclick="openWin('leyerbuyPop')"><span>2개까지</span> 구매가능 ❔</a>
+                                <div class="buyinfoPop" id="leyerbuyPop">
+                                    <a href="#none" onclick="closeWin('leyerbuyPop')" class="closeBtn">X</a>
+                                    <p>[구매 제한 교재 안내]</p>
+                                    해당 교재는 구매 가능 개수가 제한된 교재로 아이디당 안내된 개수까지만 구매 가능합니다. 
+                                </div>
+                            </div>
                         </span>
                     </li>
                     <li class="total NG">총 상품금액 <strong>10,800원</strong></li>

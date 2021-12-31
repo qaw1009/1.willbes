@@ -342,9 +342,8 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
 .wsBookListBox .wsBookInfo label {cursor: pointer;}
 .wsBookListBox .wsBookInfo li strong {display:inline-block; width:60px; font-weight:normal !important}
 .wsBookListBox .wsBookInfo input[type="checkbox"] {width:20px; height:20px;}
-.wsBookListBox .wsBookInfo select {width: 50px; height: 24px; border: 1px solid #d4d4d4;}
-
-.bookLecBtn .lecViewBtn {display:inline-block; text-align:left; color:#fff; background:#00b22a; padding:10px 15px}
+.wsBookListBox .wsBookInfo select {width: 50px; height: 24px; border: 1px solid #d4d4d4; vertical-align: middle}
+.wsBookListBox .wsBookInfo .bookLecBtn .lecViewBtn {display:inline-block; text-align:left; color:#fff; background:#00b22a; padding:10px 15px}
 
 .wsBookListBox:after,
 .wsBook:after {content:""; display:block; clear:both;}
@@ -385,7 +384,7 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
 .sliderBookPlay .youtube {position:absolute; width:250px; z-index:1;}  
 
 
-.wsBookView .wsBookInfo {display: inline-block; float:left; width: 55%; letter-spacing: normal;}
+.wsBookView .wsBookInfo {display: inline-block; float:left; width:55%; letter-spacing: normal;}
 .wsBookView .wsBookInfo h5 {font-size:18px; margin-bottom:10px}
 .wsBookView .wsBooktxt {border-top:1px solid #d9d9d9}
 .wsBookView .wsBooktxt li {border-bottom:1px solid #d9d9d9; padding:15px 0}
@@ -399,7 +398,7 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
 .wsBookView .wsBooktxt a.more .delivery {display:none;}
 .wsBookView .wsBooktxt a.more:hover .delivery {display:block; position: absolute; top:40px; left:0; text-align: left; font-size: 12px;
     border:2px solid #0b9d00; background:#fff; color:#333; padding:20px; width: 520px; line-height: 1.5; z-index: 5;}
-.wsBookView .wsBooktxt select {width: 50px; height: 24px; border: 1px solid #d4d4d4;}
+.wsBookView .wsBooktxt select {width: 50px; height: 24px; border: 1px solid #d4d4d4; vertical-align: middle}
 .wsBookView .wsBook-buyBtn {margin-top:20px}
 .wsBookView .wsBookInfo .naver {margin-top:10px; text-align: right;}
 .wsBookView .wsBookInfo:after,

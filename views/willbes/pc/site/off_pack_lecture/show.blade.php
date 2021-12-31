@@ -130,7 +130,7 @@
                         <div class="willbes-Buy-List willbes-Buy-PackageList bd-none">
                             <table cellspacing="0" cellpadding="0" class="lecTable acadlecTable">
                                 <colgroup>
-                                    <col style="width: 760px;">
+                                    <col style="width: 740px;">
                                     <col style="width: 200px;">
                                 </colgroup>
                                 <tbody>
@@ -179,6 +179,7 @@
                             <div class="willbes-Lec-Subject willbes-Lec-Tit-select NG tx-black p_re">
                                 <a id="Required" name="Required" class="sticky-top" style="top: 10px;"></a>
                                 · 필수과목
+                                <span class="MoreBtn"><a href="#none">교재정보 전체보기 ▼</a></span>
                             </div>
                         </div>
                         <table cellspacing="0" cellpadding="0" class="lecWrapTable lec-essential">
@@ -194,7 +195,6 @@
                             @foreach($data_sublist as $idx => $sub_row /*필수 과목*/)
                                 @if($sub_row['IsEssential'] === 'Y')
                                     @php
-                                        //$subGroup_array[] = $sub_row['SubGroupName'];
                                         $subGroupName_Re = strlen($sub_row['SubGroupName']) == 1 ? "0".$sub_row['SubGroupName'] : $sub_row['SubGroupName'];
                                         $subGroup_array[] = $subGroupName_Re;
                                     @endphp
@@ -206,7 +206,7 @@
                                                     <colgroup>
                                                         <col style="width: 50px;">
                                                         <col style="width: 60px;">
-                                                        <col style="width: 555px;">
+                                                        <col>
                                                         <col style="width: 200px;">
                                                     </colgroup>
                                                     <tbody>
@@ -222,29 +222,64 @@
                                                             </dl>
                                                             <dl class="w-info">
                                                                 <dt class="mr20">
-                                                                    <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}')">
+                                                                    <a href="javascript:void(0)" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover1', '{{ front_url('/offLecture') }}','','InfoFormOff')">
                                                                         <strong>강좌상세정보</strong>
                                                                     </a>
                                                                 </dt>
                                                                 <dt>수강형태 : <span class="tx-blue">{{$sub_row['StudyPatternCcdName']}}</span></dt>
-                                                                <dt class="w-notice ml15">
+                                                                <dt class="w-notice NSK ml15">
                                                                     <span class="acadInfo n{{ substr($sub_row['AcceptStatusCcd'], -1) }}">{{$sub_row['AcceptStatusCcdName']}}</span>
                                                                 </dt>
                                                             </dl>
-                                                            @php
-                                                                $id = $sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode'];
-                                                                $date = $sub_row['StudyStartDate'].' ~ '. $sub_row['StudyEndDate'];
-                                                                lecture_info_layer($id ,$sub_row['ProdName'] ,$date,$sub_row['WeekArrayName'] ,$sub_row['Amount'] ,$sub_row['Content'],$sub_row['Content5'],$sub_row['Content6'],$sub_row['Content7']);
-                                                            @endphp
                                                         </td>
-                                                        <td class="w-schedule">
+                                                        <td class="w-notice w-schedule">
                                                             <span class="tx-blue">{{$sub_row['StudyStartDate']}} ~  {{$sub_row['StudyEndDate']}}</span><br/>
                                                             {{$sub_row['WeekArrayName']}} ({{$sub_row['Amount']}}회차)
+                                                            <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                                                         </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
                                                 <!-- lecTable -->
+                                                <table cellspacing="0" cellpadding="0" class="lecInfoTable">
+                                                    <colgroup>
+                                                        <col style="width: 850px;">
+                                                    </colgroup>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            @if(empty($sub_row['ProdBookData']) === false)
+                                                                @foreach($sub_row['ProdBookData'] as $book_idx => $book_row)
+                                                                    <div class="w-sub">
+                                                                        <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
+                                                                        <span class="w-subtit">{{ $book_row['ProdBookName'] }}</span>
+                                                                        <span class="chk">
+                                                                            <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
+                                                                                [{{ $book_row['wSaleCcdName'] }}]
+                                                                            </label>
+                                                                            <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $sub_row['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                                                        </span>
+                                                                        <span class="priceWrap">
+                                                                            <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
+                                                                            <span class="discount">(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</span>
+                                                                        </span>
+                                                                    </div>
+                                                                @endforeach
+                                                                <div class="w-sub tx-red">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
+                                                                <div class="w-sub">
+                                                                    <a href="javascript:void(0)" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover2', '{{ front_url('/offLecture') }}','','InfoFormOff')">
+                                                                        <strong class="open-info-modal">교재상세정보</strong>
+                                                                    </a>
+                                                                </div>
+                                                            @else
+                                                                <div class="w-sub">
+                                                                   {{ empty($sub_row['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $sub_row['ProdBookMemo'] }}
+                                                                </div>
+                                                            @endif
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                             <!-- willbes-Lec-Table -->
                                         </td>
@@ -266,10 +301,11 @@
                         </div>
 
                         <!-- pos2 -->
-                        <div id="pos2" class="pt35 mt10">
+                        <div id="pos2" class="pt35 mt20">
                             <div class="willbes-Lec-Subject willbes-Lec-Tit-select NG tx-black p_re">
                                 <a id="Choose" name="Choose" class="sticky-top" style="top: 10px;"></a>
                                 · 선택과목<span class="willbes-Lec-subTit">(전체 선택과목 중  {{$data['PackSelCount']}}개를 선택해 주세요.)</span>
+                                <span class="MoreBtn"><a href="#none">교재정보 전체보기 ▼</a></span>
                             </div>
                         </div>
                         <table cellspacing="0" cellpadding="0" class="lecWrapTable lec-choice">
@@ -299,7 +335,7 @@
                                                         <tbody>
                                                         <tr>
                                                             @php
-                                                                $prof_img = json_decode($sub_row['ProfReferData'],true)
+                                                                $prof_img = json_decode($sub_row['ProfReferData'],true);
                                                             @endphp
                                                             <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="choSubGroup choSubGroup-{{$subGroupName_Re}}" onclick="checkOnly('.choSubGroup-{{$subGroupName_Re}}', this.value);" ></td>
                                                             <td class="w-img"><img src="{{$prof_img['lec_list_img'] or  ''}}"></td>
@@ -309,30 +345,67 @@
                                                                 </dl>
                                                                 <dl class="w-info">
                                                                     <dt class="mr20">
-                                                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm_sel_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}')">
+                                                                        <a href="javascript:void(0)" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover1', '{{ front_url('/offLecture') }}','','InfoFormOff')">
                                                                             <strong>강좌상세정보</strong>
                                                                         </a>
                                                                     </dt>
                                                                     <dt>수강형태 : <span class="tx-blue">{{$sub_row['StudyPatternCcdName']}}</span></dt>
-                                                                    <dt class="w-notice ml15">
+                                                                    <dt class="w-notice NSK ml15">
                                                                         <span class="acadInfo n{{ substr($sub_row['AcceptStatusCcd'], -1) }}">{{$sub_row['AcceptStatusCcdName']}}</span>
                                                                     </dt>
                                                                 </dl>
                                                                 <!-- willbes-Layer-Box -->
-                                                                @php
-                                                                    $id = 'sel_'.$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode'];
-                                                                    $date = $sub_row['StudyStartDate'].' ~ '. $sub_row['StudyEndDate'];
-                                                                    lecture_info_layer($id ,$sub_row['ProdName'] ,$date,$sub_row['WeekArrayName'] ,$sub_row['Amount'] ,$sub_row['Content'],$sub_row['Content5'],$sub_row['Content6'],$sub_row['Content7']);
-                                                                @endphp
                                                             </td>
-                                                            <td class="w-schedule">
+                                                            <td class="w-notice w-schedule">
                                                                 <span class="tx-blue">{{$sub_row['StudyStartDate']}} ~  {{$sub_row['StudyEndDate']}}</span><br/>
                                                                 {{$sub_row['WeekArrayName']}} ({{$sub_row['Amount']}}회차)
+                                                                <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                                                             </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
                                                     <!-- lecTable -->
+                                                    <table cellspacing="0" cellpadding="0" class="lecInfoTable">
+                                                        <colgroup>
+                                                            <col style="width: 30px;">
+                                                            <col style="width: 846px">
+                                                        </colgroup>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>&nbsp;</td>
+                                                            <td>
+                                                                @if(empty($sub_row['ProdBookData']) === false)
+                                                                    @foreach($sub_row['ProdBookData'] as $book_idx => $book_row)
+                                                                        <div class="w-sub">
+                                                                            <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
+                                                                            <span class="w-subtit">{{ $book_row['ProdBookName'] }}</span>
+                                                                            <span class="chk">
+                                                                                <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
+                                                                                    [{{ $book_row['wSaleCcdName'] }}]
+                                                                                </label>
+                                                                                <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $sub_row['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                                                            </span>
+                                                                            <span class="priceWrap">
+                                                                                <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
+                                                                                <span class="discount">(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</span>
+                                                                            </span>
+                                                                        </div>
+                                                                    @endforeach
+                                                                    <div class="w-sub tx-red">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
+                                                                    <div class="w-sub">
+                                                                        <a href="javascript:void(0)" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover2', '{{ front_url('/offLecture') }}','','InfoFormOff')">
+                                                                            <strong class="open-info-modal">교재상세정보</strong>
+                                                                        </a>
+                                                                    </div>
+                                                                @else
+                                                                    <div class="w-sub">
+                                                                        {{ empty($sub_row['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $sub_row['ProdBookMemo'] }}
+                                                                    </div>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                                 <!-- willbes-Lec-Table -->
                                             </td>
@@ -351,8 +424,7 @@
                         <div class="TopBtn">
                             <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
                         </div>
-
-                </div>
+                    </div>
 
                     <a name="Info"></a>
                     <div class="willbes-Class c_both">
@@ -382,88 +454,13 @@
 
                 </div>
                 <!-- willbes-Lec -->
+                <div id="InfoFormOff" class="willbes-Layer-Box d3"></div>
             </form>
 
         </div>
         {!! banner('수강신청_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
     </div>
     <!-- End Container -->
-
-    @php
-        /*
-        하위 강좌정보 레이어 팝업용
-        */
-        function lecture_info_layer($id='', $prod_name='', $date='', $weekname='', $amount='', $content='', $content5='',$content6='',$content7='')
-        {
-            $show_info = '
-                <div id="InfoForm_'.$id.'" class="willbes-Layer-Box d3">
-                    <a class="closeBtn" href="#none" onclick="closeWin(\'InfoForm_'.$id.'\')">
-                        <img src="'. img_url('sub/close.png') .'">
-                    </a>
-                    <div class="Layer-Tit tx-dark-black NG">
-                        '.$prod_name.'
-                    </div>
-                    <div class="lecDetailWrap">
-                        <div class="classInfo">
-                            <dl class="w-info NG">
-                                <dt>수강기간 : <span class="tx-blue">'.$date.'</span></dt>
-                                <dt><span class="row-line">|</span></dt>
-                                <dt><span class="tx-blue">'.$weekname.' ('.$amount.' 회차)</span></dt>
-                            </dl>
-                        </div>
-                        <div class="classInfoTable">
-                            <table cellspacing="0" cellpadding="0" class="classTable under-black tx-gray">
-                                <colgroup>
-                                    <col style="width: 140px;">
-                                    <col width="*">
-                                </colgroup>
-                                <tbody>';
-
-            if(empty($content5) != true) {
-                $show_info.= '      <tr>
-                                        <td class="w-list bg-light-white">수강대상</td>
-                                        <td class="w-data tx-left pl25">
-                                            '. $content5 .'
-                                        </td>
-                                    </tr>';
-            }
-
-            $show_info.= '          <tr>
-                                        <td class="w-list bg-light-white">강좌소개<Br>(강좌구성)</td>
-                                        <td class="w-data tx-left pl25">
-                                            '. $content .'
-                                        </td>
-                                    </tr>';
-
-            if(empty($content6) != true) {
-                $show_info.= '      <tr>
-                                        <td class="w-list bg-light-white">강좌효과</td>
-                                        <td class="w-data tx-left pl25">
-                                            '. $content6 .'
-                                        </td>
-                                    </tr>';
-            }
-
-            if(empty($content7) != true) {
-                $show_info.= '      <tr>
-                                        <td class="w-list bg-light-white">수강후기</td>
-                                        <td class="w-data tx-left pl25">
-                                            '. $content7 .'
-                                        </td>
-                                    </tr>';
-            }
-
-            $show_info.= '
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>';
-
-            echo $show_info;
-        }
-    @endphp
-
     <script src="/public/js/willbes/product_util.js"></script>
     <script type="text/javascript">
         var $regi_off_form = $('#regi_off_form');
@@ -520,8 +517,11 @@
                     }
 
                     if (confirm('방문접수를 신청하시겠습니까?')) {
+                        if($regi_off_form.find('.chk_books:checked').length > 0) {
+                            alert('방문접수는 강좌 신청만 가능합니다. 교재 구입은 학원에 문의해 주세요.')
+                        }
+                        $regi_off_form.find('.chk_books').removeAttr('checked'); {{-- 방문결제시 교재 제거 --}}
                         $regi_off_form.find('input[name="cart_type"]').val(getCartType($regi_off_form));
-
                         var url = '{{ front_url('/order/visit/direct', true) }}';
                         ajaxSubmit($regi_off_form, url, function(ret) {
                             if(ret.ret_cd) {

@@ -156,7 +156,6 @@ class OffPackage extends \app\controllers\FrontController
             show_alert('상품코드가 존재하지 않습니다.', 'back');
         }
 
-
         $arr_condition = [
             'IN' => ['StudyApplyCcd' => $_study_apply_ccds] // 접수방식
         ];
@@ -178,6 +177,7 @@ class OffPackage extends \app\controllers\FrontController
         $data_sublist = $this->packageFModel->subListProduct($this->_learn_pattern,$prod_code,[],null,null,$order_by);   //패키지 하위 강좌 목록
 
         foreach ($data_sublist as $idx => $row) {
+            $data_sublist[$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
             $data_sublist[$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
         }
 

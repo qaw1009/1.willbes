@@ -54,7 +54,7 @@ class RoleModel extends WB_Model
      */
     public function findRoleForModify($role_idx)
     {
-        $column = 'R.RoleIdx, R.RoleName, R.RoleDesc, R.IsUse, R.RegDatm, R.RegAdminIdx, R.UpdDatm, R.UpdAdminIdx';
+        $column = 'R.RoleIdx, R.RoleName, R.RoleDesc, R.SubRoleJson, R.IsUse, R.RegDatm, R.RegAdminIdx, R.UpdDatm, R.UpdAdminIdx';
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $column .= ' , if(R.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName';
 
@@ -73,9 +73,13 @@ class RoleModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
+            $sub_role = element('sub_role', $input);
+            $sub_role_json = empty($sub_role) === true ? null : json_encode($sub_role);
+
             $data = [
                 'RoleName' => element('role_name', $input),
                 'RoleDesc' => element('role_desc', $input),
+                'SubRoleJson' => $sub_role_json,
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
@@ -113,10 +117,13 @@ class RoleModel extends WB_Model
 
         try {
             $role_idx = element('idx', $input);
+            $sub_role = element('sub_role', $input);
+            $sub_role_json = empty($sub_role) === true ? null : json_encode($sub_role);
 
             $data = [
                 'RoleName' => element('role_name', $input),
                 'RoleDesc' => element('role_desc', $input),
+                'SubRoleJson' => $sub_role_json,
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];

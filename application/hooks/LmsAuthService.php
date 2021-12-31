@@ -104,7 +104,7 @@ class LmsAuthService extends AdminAuthService
         $results = [];
 
         // 권한유형 조회
-        $column = 'R.RoleIdx, R.RoleName';
+        $column = 'R.RoleIdx, R.RoleName, R.SubRoleJson';
         $from = '
             from lms_sys_admin_role as R inner join lms_sys_admin_r_admin_role as AR
     	            on R.RoleIdx = AR.RoleIdx  
@@ -116,6 +116,10 @@ class LmsAuthService extends AdminAuthService
         // 쿼리 실행
         $query = $this->_db->query('select ' . $column . $from . $where, [$this->_CI->session->userdata('admin_idx')]);
         $results['Role'] = $query->row_array();
+
+        // 권한유형별 세부항목
+        $results['Role']['SubRole'] = empty($results['Role']['SubRoleJson']) === true ? null : json_decode($results['Role']['SubRoleJson'], true);
+        unset($results['Role']['SubRoleJson']);
 
         // 시스템관리자 여부
         $results['Role']['IsSysRole'] = false;

@@ -324,3 +324,16 @@ if (!function_exists('is_sys_admin')) {
         return array_get(sess_data('admin_auth_data'), 'Role.IsSysRole', false);
     }
 }
+
+if (!function_exists('get_admin_sub_role')) {
+    /**
+     * 관리자 권한유형별 세부항목값 리턴
+     * @param string $sub_role [권한유형별세부항목]
+     * @param null|string|int $default [미설정시디폴트값]
+     * @return array|mixed
+     */
+    function get_admin_sub_role($sub_role, $default = null)
+    {
+        return array_get(sess_data('admin_auth_data'), 'Role.SubRole.' . $sub_role, $default);
+    }
+}

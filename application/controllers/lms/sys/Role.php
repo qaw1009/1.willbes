@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Role extends \app\controllers\BaseController
 {
-    protected $models = array('sys/role');
+    protected $models = array('sys/role', 'sys/code');
     protected $helpers = array('text');
 
     public function __construct()
@@ -47,16 +47,22 @@ class Role extends \app\controllers\BaseController
             if (empty($data) === true) {
                 show_error('데이터 조회에 실패했습니다.');
             }
+
+            $data['SubRoleData'] = empty($data['SubRoleJson']) === true ? null : json_decode($data['SubRoleJson'], true);   // 권한유형별 세부항목
         }
 
         // 권한유형별 메뉴 목록 조회
         $menus = $this->roleModel->listRoleMenu($idx);
 
+        // 권한유형별 세부항목 공통코드 조회
+        $arr_sub_role = $this->codeModel->getCcd('748');
+
         $this->load->view('sys/role/create', [
             'method' => $method,
             'idx' => $idx,
             'data' => $data,
-            'menus' => $menus
+            'menus' => $menus,
+            'arr_sub_role' => $arr_sub_role
         ]);
     }
 

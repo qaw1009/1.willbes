@@ -28,6 +28,21 @@
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['RoleIdx'] }}@else # 등록 시 자동 생성 @endif</p>
                     </div>
                 </div>
+                @if(empty($arr_sub_role) === false)
+                    {{-- 운영자권한유형 세부항목 --}}
+                    @foreach($arr_sub_role as $key => $val)
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="{{ $key }}_y">{{ $val }} <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9 item">
+                                <div class="radio">
+                                    <input type="radio" id="{{ $key }}_y" name="sub_role[{{ $key }}]" class="flat" value="Y" title="{{ $val }}" required="required" @if($method == 'POST' || array_get($data, 'SubRoleData.' . $key) == 'Y')checked="checked"@endif/> <label for="{{ $key }}_y" class="input-label">노출</label>
+                                    <input type="radio" id="{{ $key }}_n" name="sub_role[{{ $key }}]" class="flat" value="N" @if(array_get($data, 'SubRoleData.' . $key) == 'N')checked="checked"@endif/> <label for="{{ $key }}_n" class="input-label">미노출</label>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
                 <div class="form-group">
                     <label class="control-label col-md-2" for="is_use">사용여부 <span class="required">*</span>
                     </label>

@@ -141,6 +141,28 @@
                                                         <dt><span class="tx-blue">{{str_replace('-', '.', $sub_row['StudyStartDate'])}} ~ {{str_replace('-', '.', $sub_row['StudyEndDate'])}} {{$sub_row['WeekArrayName']}} ({{$sub_row['Amount']}}회차)</span></dt>
                                                         <dt><a href="#none" class="lecView" onclick="openWin('InfoForm_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}')">강좌상세정보</a></dt>
                                                     </dl>
+                                                    <div class="w-book mb-zero">
+                                                        <ul>
+                                                            @if(empty($sub_row['ProdBookData']) === false)
+                                                                @foreach($sub_row['ProdBookData'] as $book_idx => $book_row)
+                                                                    <li>
+                                                                                <span class="chk">
+                                                                                    <label> [{{ $book_row['wSaleCcdName'] }}]</label>
+                                                                                    <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $sub_row['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                                                                </span>
+                                                                        <div class="priceWrap NG">
+                                                                            {{ $book_row['BookProvisionCcdName'] }}  <span class="NGR">{{ $book_row['ProdBookName'] }}</span><br>
+                                                                            <p class="NGR">[{{ $book_row['wSaleCcdName'] }}] <span class="tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</p>
+                                                                        </div>
+                                                                    </li>
+                                                                @endforeach
+                                                            @else
+                                                                <li>
+                                                                    {{ empty($sub_row['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $sub_row['ProdBookMemo'] }}
+                                                                </li>
+                                                            @endif
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                                 <div id="InfoForm_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}" class="willbes-Layer-Black NG">
                                                     <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h510 fix">
@@ -253,6 +275,28 @@
                                                             <dt><span class="tx-blue">{{$sub_row['StudyStartDate']}} ~  {{$sub_row['StudyEndDate']}} {{$sub_row['WeekArrayName']}} ({{$sub_row['Amount']}}회차)</span></dt>
                                                             <dt><a href="#none" class="lecView" onclick='InfoForm_sel_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}'>강좌상세정보</a></dt>
                                                         </dl>
+                                                        <div class="w-book mb-zero">
+                                                            <ul>
+                                                                @if(empty($sub_row['ProdBookData']) === false)
+                                                                    @foreach($sub_row['ProdBookData'] as $book_idx => $book_row)
+                                                                        <li>
+                                                                                <span class="chk">
+                                                                                    <label> [{{ $book_row['wSaleCcdName'] }}]</label>
+                                                                                    <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $sub_row['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                                                                </span>
+                                                                            <div class="priceWrap NG">
+                                                                                {{ $book_row['BookProvisionCcdName'] }}  <span class="NGR">{{ $book_row['ProdBookName'] }}</span><br>
+                                                                                <p class="NGR">[{{ $book_row['wSaleCcdName'] }}] <span class="tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</p>
+                                                                            </div>
+                                                                        </li>
+                                                                    @endforeach
+                                                                @else
+                                                                    <li>
+                                                                        {{ empty($sub_row['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $sub_row['ProdBookMemo'] }}
+                                                                    </li>
+                                                                @endif
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                     <div id="InfoForm_sel_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}" class="willbes-Layer-Black NG">
                                                         <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h510 fix">
@@ -431,6 +475,10 @@
                     }
 
                     if (confirm('방문접수를 신청하시겠습니까?')) {
+                        if($regi_off_form.find('.chk_books:checked').length > 0) {
+                            alert('방문접수는 강좌 신청만 가능합니다. 교재 구입은 학원에 문의해 주세요.')
+                        }
+                        $regi_off_form.find('.chk_books').removeAttr('checked'); {{-- 방문결제시 교재 제거 --}}
                         $regi_off_form.find('input[name="cart_type"]').val(getCartType($regi_off_form));
 
                         var url = '{{ front_url('/order/visit/direct', true) }}';

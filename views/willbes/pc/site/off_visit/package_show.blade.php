@@ -202,8 +202,11 @@
                                                             </colgroup>
                                                             <tbody>
                                                             <tr>
+                                                                @php
+                                                                    $prof_img = json_decode($sub_row['ProfReferData'],true)
+                                                                @endphp
                                                                 <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="essSubGroup-{{$subGroupName_Re}}" onclick="checkOnly('.essSubGroup-{{$subGroupName_Re}}', this.value);" checked></td>
-                                                                <td class="w-img"><img src="{{$sub_row['ProfReferData']['lec_list_img'] or '' }}"></td>
+                                                                <td class="w-img"><img src="{{$prof_img['lec_list_img'] or  ''}}"></td>
                                                                 <td class="w-data tx-left pl25">
                                                                     <dl class="w-info">
                                                                         <dt class="w-name">{{$sub_row['ProfNickName']}}</dt>
@@ -270,7 +273,6 @@
                                     @foreach($data_sublist as $idx => $sub_row /*선택 과목*/)
                                         @if($sub_row['IsEssential'] === 'N')
                                             @php
-                                                //$subGroup_cho_array[] = $sub_row['SubGroupName'];
                                                 $subGroupName_Re = strlen($sub_row['SubGroupName']) == 1 ? "0".$sub_row['SubGroupName'] : $sub_row['SubGroupName'];
                                                 $subGroup_array[] = $subGroupName_Re;
                                             @endphp
@@ -287,8 +289,11 @@
                                                         </colgroup>
                                                         <tbody>
                                                             <tr>
+                                                                @php
+                                                                    $prof_img = json_decode($sub_row['ProfReferData'],true)
+                                                                @endphp
                                                                 <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="choSubGroup choSubGroup-{{$subGroupName_Re}}" onclick="checkOnly('.choSubGroup-{{$subGroupName_Re}}', this.value);" ></td>
-                                                                <td class="w-img"><img src="{{$sub_row['ProfReferData']['lec_list_img'] or '' }}"></td>
+                                                                <td class="w-img"><img src="{{$prof_img['lec_list_img'] or  ''}}"></td>
                                                                 <td class="w-data tx-left pl25">
                                                                     <dl class="w-info">
                                                                         <dt class="w-name">{{$sub_row['ProfNickName']}}</dt>

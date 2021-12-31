@@ -160,7 +160,7 @@
                 </div>                
             </div>
 
-            <table cellspacing="0" cellpadding="0" class="lecWrapTable">
+            <table cellspacing="0" cellpadding="0" class="lecWrapTable lec-essential">
                 <colgroup>
                     <col style="width: 75px;">
                     <col style="width: 865px;">
@@ -384,12 +384,10 @@
 
                                 <table cellspacing="0" cellpadding="0" class="lecInfoTable">
                                     <colgroup>
-                                        <col style="width: 30px;">
-                                        <col>
+                                        <col style="width: 850px;">
                                     </colgroup>
                                     <tbody>
                                         <tr>
-                                            <td>&nbsp;</td>
                                             <td>
                                                 <div class="w-sub">
                                                     <span class="w-obj tx-blue tx11">수강생 교재</span> 
@@ -605,7 +603,7 @@
                     <span class="MoreBtn"><a href="#none">교재정보 전체보기 ▼</a></span>
                 </div>
             </div>
-            <table cellspacing="0" cellpadding="0" class="lecWrapTable">
+            <table cellspacing="0" cellpadding="0" class="lecWrapTable lec-essential">
                 <colgroup>
                     <col style="width: 75px;">
                     <col style="width: 865px;">

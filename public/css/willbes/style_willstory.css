@@ -342,9 +342,16 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
 .wsBookListBox .wsBookInfo label {cursor: pointer;}
 .wsBookListBox .wsBookInfo li strong {display:inline-block; width:60px; font-weight:normal !important}
 .wsBookListBox .wsBookInfo input[type="checkbox"] {width:20px; height:20px;}
-.wsBookListBox .wsBookInfo select {width: 50px; height: 24px; border: 1px solid #d4d4d4;}
+.wsBookListBox .wsBookInfo select {width: 50px; height: 24px; border: 1px solid #d4d4d4; vertical-align: middle}
+.wsBookListBox .wsBookInfo .bookLecBtn .lecViewBtn {display:inline-block; text-align:left; color:#fff; background:#00b22a; padding:10px 15px}
 
-.bookLecBtn .lecViewBtn {display:inline-block; text-align:left; color:#fff; background:#00b22a; padding:10px 15px}
+
+.buyinfo {display: inline-block; margin-left:5px; border:1px solid #00b22a; border-radius:4px; line-height: 24px; height:24px; padding:0 10px; vertical-align: middle; position: relative;}
+.buyinfo span {color:#00b22a;}
+.buyinfo .buyinfoPop {position: absolute; background:#fff; color:#333; border:1px solid #ccc; padding:10px; width:200px; left:0; top:26px; line-height: 1.3; z-index: 10; display:none}
+.buyinfo .buyinfoPop p {font-weight:bold; margin-bottom:10px; color:#00b22a}
+.buyinfo .buyinfoPop .closeBtn {position: absolute; right:0; top:0; width:20px; height:20px; line-height: 20px; background:#ccc; color:#000; text-align: center; font-family:Arial, Helvetica, sans-serif}
+
 
 .wsBookListBox:after,
 .wsBook:after {content:""; display:block; clear:both;}
@@ -385,7 +392,7 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
 .sliderBookPlay .youtube {position:absolute; width:250px; z-index:1;}  
 
 
-.wsBookView .wsBookInfo {display: inline-block; float:left; width: 55%; letter-spacing: normal;}
+.wsBookView .wsBookInfo {display: inline-block; float:left; width:55%; letter-spacing: normal;}
 .wsBookView .wsBookInfo h5 {font-size:18px; margin-bottom:10px}
 .wsBookView .wsBooktxt {border-top:1px solid #d9d9d9}
 .wsBookView .wsBooktxt li {border-bottom:1px solid #d9d9d9; padding:15px 0}
@@ -399,7 +406,7 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
 .wsBookView .wsBooktxt a.more .delivery {display:none;}
 .wsBookView .wsBooktxt a.more:hover .delivery {display:block; position: absolute; top:40px; left:0; text-align: left; font-size: 12px;
     border:2px solid #0b9d00; background:#fff; color:#333; padding:20px; width: 520px; line-height: 1.5; z-index: 5;}
-.wsBookView .wsBooktxt select {width: 50px; height: 24px; border: 1px solid #d4d4d4;}
+.wsBookView .wsBooktxt select {width: 50px; height: 24px; border: 1px solid #d4d4d4; vertical-align: middle}
 .wsBookView .wsBook-buyBtn {margin-top:20px}
 .wsBookView .wsBookInfo .naver {margin-top:10px; text-align: right;}
 .wsBookView .wsBookInfo:after,

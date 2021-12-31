@@ -280,6 +280,9 @@
                                         <td class="w-list tx-left p_re pl20">
                                             <span class="pBox p3">교재</span>
                                             2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
+                                            <div class="buyinfo">
+                                                <a href="#none"><span>2개까지</span> 구매가능</a>
+                                            </div>
                                         </td>
                                         <td class="w-price tx-light-blue">80,000원</td>
                                         <td>2</td>

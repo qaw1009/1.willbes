@@ -517,8 +517,11 @@
                     }
 
                     if (confirm('방문접수를 신청하시겠습니까?')) {
+                        if($regi_off_form.find('.chk_books:checked').length > 0) {
+                            alert('방문접수는 강좌 신청만 가능합니다. 교재 구입은 학원에 문의해 주세요.')
+                        }
+                        $regi_off_form.find('.chk_books').removeAttr('checked'); {{-- 방문결제시 교재 제거 --}}
                         $regi_off_form.find('input[name="cart_type"]').val(getCartType($regi_off_form));
-
                         var url = '{{ front_url('/order/visit/direct', true) }}';
                         ajaxSubmit($regi_off_form, url, function(ret) {
                             if(ret.ret_cd) {

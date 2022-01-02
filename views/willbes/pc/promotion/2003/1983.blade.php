@@ -15,7 +15,7 @@
             background:#fff;            
         }
         .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
@@ -99,7 +99,7 @@
     </style>
 
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday NG">        
             <div>
@@ -128,7 +128,8 @@
 
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1531" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/1983_sky01.png"  title="" /></a>
-            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>
+            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2022/01/1983_sky01.png"  title="재도전" /></a>
+            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2022/01/1983_sky02.png"  title="환승" /></a>
         </div>      
 
         <div class="evtCtnsBox wb_tops" data-aos="fade-up">
@@ -163,16 +164,15 @@
         <div class="evtCtnsBox wb_cts04" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1983_04.jpg" alt="커리큘럼" />
         </div>
-{{--
+
         <div class="evtCtnsBox wb_cts05" id="evt05" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/1983_05.jpg" alt="커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/1983_05.jpg" alt="커리큘럼" />
             <div class="linkbtn01 NGEB"><a href="javascript:certOpen();">재도전 & 환승 인증하기 →</a></div>
             <div class="linkbtn02"><a href="#tip">유의사항 확인하기 →</a></div>
         </div>
---}}
 
         <div class="evtCtnsBox wb_cts06" id="apply" data-aos="fade-up">   
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/1983_06.jpg" title="수강신청" /><br>
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/1983_06.jpg" title="수강신청" /><br>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/1983_06_apply.png" title="신청하기" />
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1531" target=_blank title="신청하기" style="position: absolute;left: 43.93%;top: 60.11%;width: 41.7%;height: 19.68%;z-index: 2;"></a>
@@ -211,6 +211,7 @@
                         ② 2022 대비 신규 진행<strong> ALL 과정 업데이트</strong><br />
                         ③ 직렬별 온라인 모의고사 진행 시 <strong>무료 제공</strong></td>
                     </tr>
+                    {{--
                     <tr>
                         <th>정가</th>
                         <td class="NSK-Black">
@@ -220,16 +221,16 @@
                             <p>450,000원</p>
                         </td>
                     </tr>
+                    --}}
                     <tr>
                         <th>이벤트 가격</th>
                         <td class="NSK-Black">
-                            <div><input type="radio" id="y_pkg1" name="y_pkg" value="176432" onClick=""/><label for="y_pkg1">340,000원</label></div>
-                            <div class="tx-red">
-                            12월의 기적, 12/31(금) 마감!<br>    
+                            <div><input type="radio" id="y_pkg1" name="y_pkg" value="176432" onClick=""/><label for="y_pkg1">390,000원</label></div>
+                            <div class="tx-red">   
                             * 지금 구매 시 3만포인트 추가 제공!</div>
                         </td>
                         <td class="NSK-Black">
-                            <input type="radio" id="y_pkg2" name="y_pkg" value="176415" onClick=""/><label for="y_pkg2">290,000원</label>
+                            <input type="radio" id="y_pkg2" name="y_pkg" value="176415" onClick=""/><label for="y_pkg2">340,000원</label>
                         </td>
                     </tr>
                 </tbody>
@@ -305,8 +306,8 @@
                             <li>맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
                             <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
                             <li>본 상품은 특별 기획 상품으로, 수강시작일(결제 당일 포함)로부터 7일 경과 후 환불 시에는 할인 되기 전 정가를 기준으로 사용일수만큼 차감하고 환불됩니다.<br>
-                                · 전과목PASS (12월의 기적 이벤트 기간 내 구매) : 결제금액 - 지급된 수강지원포인트 - (강좌 정상가의 1일 이용대금*이용일수)<br>
-                                · 문제풀이PASS : 결제금액 - (강좌 정상가의 1일 이용대금*이용일수)<br>
+                                · 결제금액 - (강좌 정상가의 1일 이용대금*이용일수)<br>
+                                *수강지원 포인트 포함 상품 환불 시 포인트를 미사용한 경우는 회수 후 환불 처리하오나, 포인트를 사용하였다면 사용분만큼 결제금액에서 차감 후 환불됩니다.
                             </li>
                         </ol>
                     </dd>
@@ -319,7 +320,19 @@
                             <li>아이디 공유 적발 시 회원 자격 박탈 및 환불 불가하며, 추가적인 불법 공유 행위 적발 시 형사 고발 조치가 단행될 수 있습니다.</li>
                         </ol>
                     </dd>
-{{--
+
+                    <dt>라이브모드 수강관련</dt>
+                    <dd>
+                        <ol>
+                            <li>공무원학원 실강 내 LIVE로 진행되는 강좌만 제공됩니다. (* 일부 특강 제외)<br>
+                            - 국어 오대혁, 영어 한덕현, 한국사 김상범</li>
+                            <li>제공되는 강좌 및 진행일정은 우측 버튼 클릭 후 페이지 하단에서 확인 가능합니다.
+                            <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a></li>
+                            <li>본 상품은 실시간 진행되므로 일시정지/연장/재수강은 제공되지 않습니다. 촬영 및 편집된 강의는 익일 오후 2시 이전까지 업로드됩니다.</li>
+                            <li>해당 혜택은 PASS 수강기간 내에만 이용 가능합니다. </li>
+                        </ol>
+                    </dd> 
+                    
                     <dt>재도전&환승 인증 이벤트 유의사항</dt>
                     <dd>
                         <ol>
@@ -335,18 +348,6 @@
                             <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>
                         </ol>
                     </dd>
---}}
-                    <dt>라이브모드 수강관련</dt>
-                    <dd>
-                        <ol>
-                            <li>공무원학원 실강 내 LIVE로 진행되는 강좌만 제공됩니다. (* 일부 특강 제외)<br>
-                            - 국어 오대혁, 영어 한덕현, 한국사 김상범</li>
-                            <li>제공되는 강좌 및 진행일정은 우측 버튼 클릭 후 페이지 하단에서 확인 가능합니다.
-                            <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a></li>
-                            <li>본 상품은 실시간 진행되므로 일시정지/연장/재수강은 제공되지 않습니다. 촬영 및 편집된 강의는 익일 오후 2시 이전까지 업로드됩니다.</li>
-                            <li>해당 혜택은 PASS 수강기간 내에만 이용 가능합니다. </li>
-                        </ol>
-                    </dd>                
                 </dl>
                 <div class="inquire">※ 이용 문의 : 윌비스 고객만족센터 1544-5006</div>
             </div>

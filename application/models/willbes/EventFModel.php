@@ -52,6 +52,7 @@ class EventFModel extends WB_Model
     //등록파일 rule 설정
     private $_upload_file_rule = [
         'allowed_types' => 'gif|jpg|jpeg|png|bmp|pdf|hwp|doc|docx',
+        'allowed_types2' => 'gif|jpg|jpeg|png|bmp',
         'overwrite' => 'false',
         'max_size' => 5120
     ];
@@ -512,7 +513,7 @@ class EventFModel extends WB_Model
 
                     $this->load->library('upload');
                     $upload_dir = config_item('upload_prefix_dir') . '/event/member/' . date('Y') . '/' . date('md');
-                    $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_dir
+                    $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(0), $upload_dir
                         ,'allowed_types:'.$this->_upload_file_rule['allowed_types'].',overwrite:'.$this->_upload_file_rule['overwrite']);
                     if (is_array($uploaded) === false) {
                         throw new \Exception($uploaded);
@@ -521,6 +522,26 @@ class EventFModel extends WB_Model
                     if (count($uploaded) > 0) {
                         $input_register_data[$key]['FileFullPath'] = $this->upload->_upload_url . $upload_dir . '/' . $uploaded[0]['orig_name'];
                         $input_register_data[$key]['FileRealName'] = $uploaded[0]['client_name'];
+                    }
+                }
+
+                if (empty($_FILES['attach_file2']) === false) {
+                    $sum_size_mb = round($_FILES['attach_file2']['size'] / 1024);
+                    if ($sum_size_mb > $this->_upload_file_rule['max_size']) {
+                        throw new \Exception('첨부파일 최대 5MB까지 등록 가능합니다.');
+                    }
+
+                    $this->load->library('upload');
+                    $upload_dir = config_item('upload_prefix_dir') . '/event/member/' . date('Y') . '/' . date('md');
+                    $uploaded = $this->upload->uploadFile('file', ['attach_file2'], $this->_getAttachImgNames(1), $upload_dir
+                        ,'allowed_types:'.$this->_upload_file_rule['allowed_types2'].',overwrite:'.$this->_upload_file_rule['overwrite']);
+                    if (is_array($uploaded) === false) {
+                        throw new \Exception($uploaded);
+                    }
+
+                    if (count($uploaded) > 0) {
+                        $input_register_data[$key]['FileFullPath2'] = $this->upload->_upload_url . $upload_dir . '/' . $uploaded[0]['orig_name'];
+                        $input_register_data[$key]['FileRealName2'] = $uploaded[0]['client_name'];
                     }
                 }
                 
@@ -614,7 +635,7 @@ class EventFModel extends WB_Model
                         /*throw new \Exception('이미지 삭제에 실패했습니다.');*/
                     }
                 }
-                $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_dir
+                $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(0), $upload_dir
                     ,'allowed_types:'.$this->_upload_file_rule['allowed_types'].',overwrite:'.$this->_upload_file_rule['overwrite']);
                 if (is_array($uploaded) === false) {
                     throw new \Exception($uploaded);
@@ -1306,11 +1327,12 @@ class EventFModel extends WB_Model
 
     /**
      * 파일명 생성
+     * @param int $num
      * @return string
      */
-    private function _getAttachImgNames()
+    private function _getAttachImgNames($num = 0)
     {
-        $attach_file_names = date("YmdHis").'-'.rand(100,999);
+        $attach_file_names = date("YmdHis").'-'.$num.'-'.rand(100,999);
         return $attach_file_names;
     }
 

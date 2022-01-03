@@ -129,7 +129,10 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="use_board">게시판운영여부
                     </label>
-                    <div class="col-md-6">
+                    <div class="col-md-10">
+                        <p class="form-control-static"># 체크시 사용자단 교수소개 영역에 노출됩니다. (단, 첨삭게시판 제외)</p>
+                    </div>
+                    <div class="col-lg-offset-2 col-md-10">
                         <div class="checkbox">
                             <input type="checkbox" id="use_board1" name="use_board[]" class="flat" value="{{ $arr_bm_idx['notice'] }}" @if($data['IsNoticeBoard'] == 'Y' || $method=="POST") checked="checked" @endif/> <label for="use_board1" class="input-label">공지사항</label>
                             <input type="checkbox" id="use_board2" name="use_board[]" class="flat" value="{{ $arr_bm_idx['qna'] }}" @if($data['IsQnaBoard'] == 'Y') checked="checked" @endif/> <label for="use_board2" class="input-label">학습Q&A</label>
@@ -138,10 +141,8 @@
                             <input type="checkbox" id="use_board5" name="use_board[]" class="flat" value="{{ $arr_bm_idx['assignment'] }}" @if($data['IsAssignmentBoard'] == 'Y') checked="checked" @endif/> <label for="use_board5" class="input-label">참삭게시판</label>
                             <input type="checkbox" id="use_board6" name="use_board[]" class="flat" value="{{ $arr_bm_idx['tcc'] }}" @if($data['IsTccBoard'] == 'Y') checked="checked" @endif/> <label for="use_board6" class="input-label">TCC게시판</label>
                             <input type="checkbox" id="use_board7" name="use_board[]" class="flat" value="{{ $arr_bm_idx['anonymous'] }}" @if($data['IsAnonymousBoard'] == 'Y') checked="checked" @endif/> <label for="use_board7" class="input-label">자유게시판</label>
+                            <input type="checkbox" id="use_board8" name="use_board[]" class="flat" value="{{ $arr_bm_idx['assignment_for_qna'] }}" @if($data['IsAssignmentForQnaBoard'] == 'Y') checked="checked" @endif/> <label for="use_board8" class="input-label">참삭게시판(임용전용)</label>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <p class="form-control-static"># 체크시 사용자단 교수소개 영역에 노출됩니다. (단, 첨삭게시판 제외)</p>
                     </div>
                 </div>
 

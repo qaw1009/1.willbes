@@ -66,6 +66,7 @@
                 <th>제목</th>
                 <th>추가데이터</th>
                 <th>첨부파일</th>
+                <th>첨부파일2</th>
                 <th>신청일</th>
                 <th class="rowspan">신청특강/설명회</th>
                 <th>총신청수</th>
@@ -158,6 +159,9 @@
                 {'data' : 'EtcValue'},
                 {'data' : 'FileRealName', 'render' : function(data, type, row, meta) {
                         return '<a href="javascript:void(0);" class="file-register-download" data-file-path="'+encodeURIComponent(row.FileFullPath)+'" data-file-name="'+encodeURIComponent(row.FileRealName)+'" target="_blank">['+row.FileRealName+']</a>';
+                    }},
+                {'data' : 'FileRealName2', 'render' : function(data, type, row, meta) {
+                        return '<a href="javascript:void(0);" class="file-register-download" data-file-path="'+encodeURIComponent(row.FileFullPath2)+'" data-file-name="'+encodeURIComponent(row.FileRealName2)+'" target="_blank">['+row.FileRealName2+']</a>';
                     }},
                 {'data' : 'RegDatm'},
                 {'data' : 'RegisterName'},

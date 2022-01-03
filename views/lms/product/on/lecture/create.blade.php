@@ -405,13 +405,10 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label col-md-2">강사료정산정보
-                        {{--@if($method==='POST' || empty($data_division))--}}
-                        <p>
+                <div class="form-group {{get_admin_sub_role('prod_div_disp') !== 'Y' ? 'hide' : ''}}">
+                    <label class="control-label col-md-2">
+                        강사료정산정보 <br>
                         <button type="button" class="btn-sm btn-success border-radius-reset mr-15" id="searchProfessor">불러오기</button>
-                        </p>
-                        {{--@endif--}}
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="col-xs-6">
@@ -422,7 +419,6 @@
                                 <option value="1" @if($data['LecCalcType'] === '1') selected="selected"@endif>표준</option>
                                 <option value="2" @if($data['LecCalcType'] === '2') selected="selected"@endif>별도</option>
                             </select>
-                            <!--button class="btn btn-sm btn-primary ml-3" onclick="teacherCalculator()" id="cal">계산</button//-->
                         </div>
                         <div class="item inline-block">
                             <table class="table table-striped table-bordered" id='teacherDivision' >

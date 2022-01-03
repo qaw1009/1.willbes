@@ -38,6 +38,7 @@ class Role extends \app\controllers\BaseController
         $method = 'POST';
         $idx = null;
         $data = null;
+        $is_copy = null;
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
@@ -57,12 +58,20 @@ class Role extends \app\controllers\BaseController
         // 권한유형별 세부항목 공통코드 조회
         $arr_sub_role = $this->codeModel->getCcd('748');
 
+        // 복사 설정
+        if (isset($params[1]) === true && $params[1] == 'copy') {
+            $method = 'POST';
+            $idx = null;
+            $is_copy = 'Y';
+        }
+
         $this->load->view('sys/role/create', [
             'method' => $method,
             'idx' => $idx,
             'data' => $data,
             'menus' => $menus,
-            'arr_sub_role' => $arr_sub_role
+            'arr_sub_role' => $arr_sub_role,
+            'is_copy' => $is_copy
         ]);
     }
 

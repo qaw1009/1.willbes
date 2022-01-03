@@ -15,7 +15,7 @@
             background:#fff;            
         }
         .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
@@ -65,11 +65,10 @@
     </style>
 
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
         
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3024/code/1655" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/2099_sky.png"  title="군무원 문풀 pass" /></a>
-            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>
         </div>
         
         <!-- 타이머 -->
@@ -112,7 +111,7 @@
 
         <div class="evtCtnsBox wb_cts03" id="apply" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2099_03.jpg" alt="수강신청"/>    
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2099_03.jpg" alt="수강신청"/>    
                 <a href="https://pass.willbes.net/promotion/index/cate/3024/code/1655" target="_blank" alt="신청하기" style="position: absolute;left: 45.61%;top: 31.38%;width: 40.07%;height: 4.85%;z-index: 2;"></a>
                 <a href="javascript:go_PassLecture('179756');" alt="윌비스 행정직" style="position: absolute;left: 20.61%;top: 57.99%;width: 19.07%;height: 3.55%;z-index: 2;"></a>
                 <a href="javascript:go_PassLecture('179754');" alt="군무원 행정직" title="" style="position: absolute;left: 60.61%;top: 57.99%;width: 19.07%;height: 3.55%;z-index: 2;"></a>
@@ -181,8 +180,8 @@
                             <li>맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
                             <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
                             <li>본 상품은 특별 기획 상품으로, 수강시작일(결제 당일 포함)로부터 7일 경과 후 환불 시에는 할인 되기 전 정가를 기준으로 사용일수만큼 차감하고 환불됩니다.<br>
-                                · 전과목PASS (12월의 기적 이벤트 기간 내 구매) : 결제금액 - 지급된 수강지원포인트 - (강좌 정상가의 1일 이용대금*이용일수)<br>
-                                · 문제풀이PASS : 결제금액 - (강좌 정상가의 1일 이용대금*이용일수)<br>
+                                · 결제금액 - (강좌 정상가의 1일 이용대금*이용일수)<br>
+                                * 수강지원 포인트 포함 상품 환불 시 포인트를 미사용한 경우는 회수 후 환불 처리하오나, 포인트를 사용하였다면 사용분만큼 결제금액에서 차감 후 환불됩니다.
                             </li>
                         </ol>
                     </dd>

@@ -15,7 +15,7 @@
             background:#fff;            
         }
         .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
@@ -95,15 +95,12 @@
         </div>
 
         <div class="sky" id="QuickMenu">
-            {{--
             <a href="#evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/2114_sky01.jpg" alt="타사 수강증 인증">
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2114_sky01.png" alt="타사 수강증 인증">
             </a>
             <a href="#evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/2114_sky02.jpg" alt="타사 수강증 인증">
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2114_sky02.png" alt="타사 수강증 인증">
             </a>
-            --}}
-            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>
         </div>
 
         <div class="evtCtnsBox wb_top">
@@ -127,18 +124,18 @@
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2115_04.jpg" alt="합격이 앞당겨집니다" />
         </div>
-{{--
+
         <div class="evtCtnsBox wb_cts05" id="evt05">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2115_05.jpg" alt="학습 커리큘럼" />
-                <a href="javascript:certOpen();" title="인증하기" style="position: absolute; left: 32.14%; top: 73.55%; width: 39.02%; height: 8%; z-index: 2;"></a>
-                <a href="#tip" title="유의사항" style="position: absolute; left: 43.84%; top: 83.27%; width: 15.18%; height: 4.33%; z-index: 2;"></a>
+                <a href="javascript:certOpen();" title="인증하기" style="position: absolute; left: 29.29%; top: 73.47%; width: 40.09%; height: 7.92%; z-index: 2;"></a>
+                <a href="#tip" title="유의사항" style="position: absolute; left: 41.88%; top: 83.1%; width: 15.27%; height: 4.57%; z-index: 2;"></a>
             </div>
         </div>
---}}
+
         <div class="evtCtnsBox wb_cts06" id="transfer">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2115_06.jpg" alt="수강신청 하기"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2115_06.jpg" alt="수강신청 하기"/>
                 <a href="javascript:go_PassLecture('179743');" title="" style="position: absolute; left: 58.3%; top: 84.5%; width: 27.95%; height: 7.31%; z-index: 2;"></a>
             </div>
             <div class="check" id="chkInfo">               
@@ -202,8 +199,8 @@
                             <li>맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
                             <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
                             <li>본 상품은 특별 기획 상품으로, 수강시작일(결제 당일 포함)로부터 7일 경과 후 환불 시에는 할인 되기 전 정가를 기준으로 사용일수만큼 차감하고 환불됩니다.<br>
-                                · 전과목PASS (12월의 기적 이벤트 기간 내 구매) : 결제금액 - 지급된 수강지원포인트 - (강좌 정상가의 1일 이용대금*이용일수)<br>
-                                · 문제풀이PASS : 결제금액 - (강좌 정상가의 1일 이용대금*이용일수)<br>
+                                · 결제금액 - (강좌 정상가의 1일 이용대금*이용일수)<br>
+                                * 수강지원 포인트 포함 상품 환불 시 포인트를 미사용한 경우는 회수 후 환불 처리하오나, 포인트를 사용하였다면 사용분만큼 결제금액에서 차감 후 환불됩니다.
                             </li>
                         </ol>
                     </dd>
@@ -230,7 +227,7 @@
                             <li>해당 혜택은 PASS 수강기간 내에만 이용 가능합니다.</li>
                         </ol>
                     </dd>
-{{--
+
                     <dt>재도전&환승 인증 이벤트 유의사항</dt>
                     <dd>
                         <ol>
@@ -245,9 +242,10 @@
                             <li>등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>
                             <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>
                         </ol>
-                    </dd>
---}}                    
+                    </dd>  
+                    <dt>윌비스 고객만족센터 1544-5006</dt>                  
                 </dl>
+                
             </div>
         </div>
     </div>

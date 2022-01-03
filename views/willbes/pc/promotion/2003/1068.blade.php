@@ -14,7 +14,7 @@
             font-size:14px;       
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
@@ -105,11 +105,6 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">	
 		<div class="sky" id="QuickMenu">
-			@if(time() < strtotime('202112140000'))
-			<a href="#transfer">
-				<img src="https://static.willbes.net/public/images/promotion/2021/12/1068_sky1.png"/>				
-			</a>	
-			@endif
 			<a href="#to_go">
 				<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_sky2.png" usemap="#map1068_sky" border="0" />
 				<map name="map1068_sky" id="map1068_sky">
@@ -120,7 +115,9 @@
 					<area shape="rect" coords="12,409,131,472" href="#" class="r_btn_tab" data-tab-id="5"/>
 				</map>
 			</a>
-			<a href="#transfer2"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>			  
+			<a href="#transfer">
+				<img src="https://static.willbes.net/public/images/promotion/2022/01/1068_sky1.png"/>				
+			</a>			  
         </div>
 		
         <div class="evtCtnsBox wb_top">
@@ -150,16 +147,16 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/08/1068_01.jpg" alt="커리큘럼">
         </div>
 
-		@if(time() < strtotime('202112140000'))
+
 		<div class="evtCtnsBox wb_02_01" id="transfer">
 			<div class="wrap">
-				<img src="https://static.willbes.net/public/images/promotion/2021/12/1068_02_01.jpg" alt="재도전.환승 이벤트">
+				<img src="https://static.willbes.net/public/images/promotion/2022/01/1068_02_01.jpg" alt="재도전.환승 이벤트">
 				<a href="javascript:certOpen();" title="인증하기" style="position: absolute;left: 29.85%;top: 77.75%;width: 39.43%;height: 6.53%;z-index: 2;"></a>
 				<a href="#notice" title="유의사항" style="position: absolute;left: 42.05%;top: 85.35%;width: 15.43%;height: 4.03%;z-index: 2;"></a>
 			</div>
         </div>
-		@endif
 
+{{--
 		<div class="evtCtnsBox wb_02_02" id="transfer2">
 			<div class="wrap">
 				<img src="https://static.willbes.net/public/images/promotion/2021/12/1068_02_02.jpg" alt="">
@@ -179,6 +176,7 @@
                 <a href="#ctsInfo" class="infotxt">이용안내확인하기 ↓</a>
             </div>
         </div>
+--}}
 
 		<div class="evtCtnsBox wb_02" id="to_go">
 			<div class="wrap">
@@ -620,27 +618,8 @@
 
 		<div class="evtCtnsBox wb_info" id="ctsInfo">
             <div class="guide_box">
-                <h2 class="NSK-Black">12월의 기적 장사원 T-PASS 한정판매 안내</h2>
+                <h2 class="NSK-Black">이용안내 및 유의사항</h2>
                 <dl>
-                    <dt>유의사항</dt>
-                    <dd>
-                        <ol>
-                            <li>12월의 기적 이벤트는 12.15.(수)~12.22.(수) 기간 내 진행됩니다.</li>
-							<li>장사원 농업직/농촌지도사 T-PASS의 경우 기간 한정 특별 기획 상품이므로 이벤트 기간 이후에 재판매 계획은 없습니다.</li>
-							<li>12월의 기적 이벤트에 해당하는 상품은 다음과 같습니다.<br>
-							- 농업직 9급 전과목 T-PASS : 99만원<br>
-							- 농촌지도사 [경기/인천] 전과목 T-PASS : 119만원<br>
-							- 농촌지도사 [경기/인천 外] 전과목 T-PASS : 119만원<br>
-							- 농업직 9급 문제풀이 T-PASS : 59만원<br>
-							- 농촌지도사 [경기/인천] 문제풀이 T-PASS : 69만원<br>
-							- 농촌지도사 [경기/인천 外] 문제풀이 T-PASS : 69만원</li>
-							<li>상기 이벤트 해당 상품 구매 시 수강지원 포인트 50,000점을 지급해드립니다. 단, 지급되는 추가 포인트의 경우, 교재 구매 시 사용할 수 있으며 결제완료 후 익일 담당자 확인 후에 지급해드릴 예정입니다.</li>
-							<li>12월의 기적 이벤트 시 구매한 상품에 대한 환불 시, 아래 규정을 준수합니다.<br>
-							- 결제금액 - 지급된 수강지원포인트 - (강좌 정상가의 1일 이용대금*이용일수)</li>
-                        </ol>
-                    </dd>  
-
-				@if(time() < strtotime('202112140000'))
 					<dt>재도전&환승 인증 이벤트 유의사항</dt>
                     <dd>
                         <ol>
@@ -657,7 +636,7 @@
                         </ol>
                     </dd>
 					
-					<dt>2) 환승 인증</dt>
+					<dt>환승 인증</dt>
                     <dd>
                         <ol>
 							<li>본인의 이름, 수강내역, 결제내역 등이 명확하게 기재된 수강증 등의 캡쳐를 통해서만 인증이 가능합니다.</li>
@@ -667,7 +646,6 @@
 							<li>지급된 쿠폰은 현재 페이지에서 판매중인 [2022 농업직 기본·심화 이론 패키지], [2022 7급 농업직 이론 패키지], [2022 농촌지도사 이론 패키지 (경기·인천 外)], [2022 농촌지도사 이론 패키지 (경기·인천)] 명시된 총 4개의 상품 구매 시에만 적용 가능합니다.</strong></li>   
                         </ol>
                     </dd>
-				@endif
                 </dl>
             </div>
         </div>

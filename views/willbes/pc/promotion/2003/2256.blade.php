@@ -42,8 +42,8 @@
 
         .wb_cts03 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2256_03_bg.jpg) no-repeat center top;} 
 
-        .wb_cts04 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2256_04_bg.jpg) no-repeat center top;}
-
+        .wb_cts04 {background:url(https://static.willbes.net/public/images/promotion/2022/01/2256_04_bg.jpg) no-repeat center top;}
+        .wb_cts05 {background:#fff}
         .wb_cts06 {background:#ebebeb}
 
         .check {position:absolute; bottom:50px; left:50%; margin-left:-490px; width:980px; padding:20px 0px 20px 10px; letter-spacing:3; color:#fff; z-index:5}
@@ -62,10 +62,10 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-
+        {{--
         <div class="sky" id="QuickMenu">            
             <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>
-        </div> 
+        </div> --}}
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday NG">        
@@ -109,13 +109,21 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2256_03.jpg" alt="믿고 따라만 오세요" />
         </div>
 
+        <div class="evtCtnsBox wb_cts06" id="cts06">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2256_06.jpg" alt="바로 신청하기" />
+                <a href="javascript:certOpen();" title="재도전&환승하기" style="position:absolute; left:29.91%; top:77.06%; width:39.46%; height:5.85%; z-index:2;"></a>
+                <a href="#careful" title="유의사항" style="position:absolute; left:41.25%; top:84.37%; width:14.64%; height:3.84%; z-index:2;"></a
+            </div>    
+        </div>
+
         <div class="evtCtnsBox wb_cts04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2256_04.jpg" alt="절호의 기회" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2256_04.jpg" alt="절호의 기회" />
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="transfer">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2256_05.jpg" alt="바로 신청하기" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2256_05.jpg" alt="바로 신청하기" />
                 <a href="javascript:go_PassLecture('181424');" title="" style="position: absolute; left: 4.38%; top: 44.05%; width: 19.11%; height: 3.6%; z-index: 2;"></a>
                 <a href="javascript:go_PassLecture('188766');" title="" style="position: absolute; left: 28.48%; top: 44.05%; width: 19.11%; height: 3.6%; z-index: 2;"></a>
                 <a href="javascript:go_PassLecture('188763')" title="" style="position: absolute; left: 52.59%; top: 44.05%; width: 19.11%; height: 3.6%; z-index: 2;"></a>
@@ -134,27 +142,12 @@
                 </div>
             </div>    
         </div>
-{{--
-        <div class="evtCtnsBox wb_cts06" id="cts06">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2256_06.jpg" alt="바로 신청하기" />
-                <a href="javascript:certOpen();" title="재도전&환승하기" style="position:absolute; left:29.91%; top:77.06%; width:39.46%; height:5.85%; z-index:2;"></a>
-                <a href="#careful" title="유의사항" style="position:absolute; left:41.25%; top:84.37%; width:14.64%; height:3.84%; z-index:2;"></a
-            </div>    
-        </div>
---}}
+
+
+
         <div class="evtCtnsBox evtInfo" id="careful">
 			<div class="evtInfoBox">
 				<h4 class="NSK-Black">이용안내 및 유의사항</h4>
-
-                <div class="infoTit"><strong>12월의 기적 이벤트</strong></div>
-				<ul>
-                    <li>12월의 기적 이벤트는 12.15.(수)~12.22.(수) 기간 내 진행됩니다.</li>
-                    <li>본 이벤트 페이지 내 판매중인 상품 구매 시 수강지원 포인트 50,000점을 지급해드립니다. 단, 지급되는 추가 포인트의 경우, 교재 구매 시 사용할 수 있으며 결제완료 후 익일 담당자 확인 후에 지급해드릴 예정입니다.</li>
-                    <li>12월의 기적 이벤트 시 구매한 상품에 대한 환불 시, 아래 규정을 준수합니다.<br>
-                    - 결제금액 - 지급된 수강지원포인트 - (강좌 정상가의 1일 이용대금*이용일수)</li>
-				</ul>
-
 
 				<div class="infoTit"><strong>상품구성</strong></div>
 				<ul>
@@ -190,11 +183,12 @@
 					<li>결제 후 7일 이내 전액 환불 가능합니다. 단, 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불이 가능합니다.</li>
                     <li>강의자료 및 모바일 강의 다운로드 서비스를 이용 시 수강한 것으로 간주 됩니다.</li>
                     <li>본 상품은 특별 기획 강좌로 환불 시에는 할인 되기 전 정가를 기준으로 사용일 수 만큼 차감되고 환불 됩니다.<br>
-                        - 결제금액 - (강좌 정상가의 1일 이용대금X이용일수)
+                        - 결제금액 - (강좌 정상가의 1일 이용대금*이용일수)<br>
+                        * 수강지원 포인트 포함 상품 환불 시 포인트를 미사용한 경우는 회수 후 환불 처리하오나, 포인트를 사용하였다면 사용분만큼 결제금액에서 차감 후 환불됩니다.
                     </li>
                     <li>아이디 공유 적발 시 회원 자격 박탈 및 환불이 불가하오니 유의 바랍니다.</li>             				
 				</ul>
-                {{--
+
                 <div class="infoTit"><strong>재도전&환승 인증 이벤트 유의사항</strong></div>
 				<ul>
 					<li>본 이벤트는 1아이디당 1회만 참여 가능합니다.</li>
@@ -208,7 +202,7 @@
                     <li>등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>
                     <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>             				
 				</ul>
-                --}}
+
                 <div class="infoTit"><strong>윌비스 고객만족센터 1544-5006</strong></div>
 			</div>
 		</div> 

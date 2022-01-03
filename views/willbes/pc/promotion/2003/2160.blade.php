@@ -15,9 +15,9 @@
             background:#fff;            
         }
         .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}/
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
@@ -68,11 +68,12 @@
     </style>
 
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1531" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/2160_sky.png"  title="9급 문풀 pass" /></a>
-            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>
+            <a href="#event02"><img src="https://static.willbes.net/public/images/promotion/2022/01/2160_sky01.png"  title="재도전" /></a>
+            <a href="#event02"><img src="https://static.willbes.net/public/images/promotion/2022/01/2160_sky02.png"  title="환승" /></a>
         </div>
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
@@ -89,15 +90,15 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t06.gif" alt="행정학 김덕관" />
             </div>
         </div>
-{{--
-        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
+
+        <div class="evtCtnsBox wb_cts02" data-aos="fade-up" id="event02">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2160_02.jpg" alt="교수진 및 커리큘럼" />    
-                <a href="javascript:certOpen();" title="타 사이트 수강 인증하기" style="position: absolute; left: 29.82%; top: 85.51%; width: 39.91%; height: 7.35%; z-index: 2;"></a>                  
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2160_02.jpg" alt="교수진 및 커리큘럼" />    
+                <a href="javascript:certOpen();" title="타 사이트 수강 인증하기" style="position: absolute; left: 29.64%; top: 89.97%; width: 40.09%; height: 6.83%; z-index: 2;"></a>                  
             </div>   
             <a href="#careful" class="txtBtn">유의사항 확인하기 →</a>   
         </div>
---}}
+
         <div class="evtCtnsBox wb_cts03" id="transfer" data-aos="fade-up">            
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2160_03.jpg" alt="환승 이벤트" />        
             <div class="time NSK-Black" id="newTopDday">
@@ -117,7 +118,7 @@
                 </ul>
             </div>         
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2160_03_01.jpg" alt="환승 이벤트" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2160_03_01.jpg" alt="환승 이벤트" />
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1531" target="_blank" title="신청하기" style="position: absolute; left: 28.66%; top: 71.15%; width: 15.36%; height: 16.89%; z-index: 2;"></a>
                 <a href="javascript:go_PassLecture('180927');" title="수강 신청하기" style="position: absolute; left: 71.61%; top: 71.15%; width: 15.36%; height: 16.89%; z-index: 2;"></a>                
             </div>
@@ -177,8 +178,8 @@
                             <li>맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
                             <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
                             <li>본 상품은 특별 기획 상품으로, 수강시작일(결제 당일 포함)로부터 7일 경과 후 환불 시에는 할인 되기 전 정가를 기준으로 사용일수만큼 차감하고 환불됩니다.<br>
-                                · 전과목PASS (12월의 기적 이벤트 기간 내 구매) : 결제금액 - 지급된 수강지원포인트 - (강좌 정상가의 1일 이용대금*이용일수)<br>
-                                · 문제풀이PASS : 결제금액 - (강좌 정상가의 1일 이용대금*이용일수)
+                                · 결제금액 - (강좌 정상가의 1일 이용대금*이용일수)<br>
+                                * 수강지원 포인트 포함 상품 환불 시 포인트를 미사용한 경우는 회수 후 환불 처리하오나, 포인트를 사용하였다면 사용분만큼 결제금액에서 차감 후 환불됩니다.
                             </li>
                         </ol>
                     </dd>
@@ -190,8 +191,20 @@
                             <li>선택한 교수의 강의가 학원 사정에 의해 부득이하게 진행되지 않을 경우 대체 강의가 제공되며, 이로 인한 환불은 불가합니다.</li>
                             <li>아이디 공유 적발 시 회원 자격 박탈 및 환불 불가하며, 추가적인 불법 공유 행위 적발 시 형사 고발 조치가 단행될 수 있습니다.</li>
                         </ol>
-                    </dd>
-{{--
+                    </dd>   
+
+                    <dt>라이브모드 수강관련</dt>
+                    <dd>
+                        <ol>
+                            <li>공무원학원 실강 내 LIVE로 진행되는 강좌만 제공됩니다. (* 일부 특강 제외)<br>
+                            - 국어 오대혁, 영어 한덕현, 한국사 김상범, 행정법 신기훈, 행정학 김덕관/김철</li>
+                            <li>제공되는 강좌 및 진행일정은 우측 버튼 클릭 후 페이지 하단에서 확인 가능합니다.
+                            <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a></li>
+                            <li>본 상품은 실시간 진행되므로 일시정지/연장/재수강은 제공되지 않습니다. 촬영 및 편집된 강의는 익일 오후 2시 이전까지 업로드됩니다.</li>
+                            <li>해당 혜택은 PASS 수강기간 내에만 이용 가능합니다. (* 이전 구매자 소급 적용) </li>
+                        </ol>
+                    </dd>  
+                    
                     <dt>재도전&amp;환승 인증 이벤트 유의사항</dt>
                     <dd>
                         <ol>
@@ -207,19 +220,7 @@
                             <li>등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>
                             <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>
                         </ol>
-                    </dd>    
---}}
-                    <dt>라이브모드 수강관련</dt>
-                    <dd>
-                        <ol>
-                            <li>공무원학원 실강 내 LIVE로 진행되는 강좌만 제공됩니다. (* 일부 특강 제외)<br>
-                            - 국어 오대혁, 영어 한덕현, 한국사 김상범, 행정법 신기훈, 행정학 김덕관/김철</li>
-                            <li>제공되는 강좌 및 진행일정은 우측 버튼 클릭 후 페이지 하단에서 확인 가능합니다.
-                            <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a></li>
-                            <li>본 상품은 실시간 진행되므로 일시정지/연장/재수강은 제공되지 않습니다. 촬영 및 편집된 강의는 익일 오후 2시 이전까지 업로드됩니다.</li>
-                            <li>해당 혜택은 PASS 수강기간 내에만 이용 가능합니다. (* 이전 구매자 소급 적용) </li>
-                        </ol>
-                    </dd>                
+                    </dd> 
                 </dl>
                 <div class="inquire">※ 이용 문의 : 윌비스 고객만족센터 1544-5006</div>
             </div>

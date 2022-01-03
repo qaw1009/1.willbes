@@ -222,7 +222,7 @@
             <option selected="selected">최근등록순</option>
             <option value="">상품명순</option>
         </select>
-        <select id="lecture" name="lecture" title="lecture" class="seleLec width30p ml1p">
+        <select id="lecture" name="lecture" title="lecture" class="seleLec">
             <option selected="selected">도서명</option>
             <option value="">출판사</option>
             <option value="">저자</option>
@@ -237,21 +237,29 @@
         </div>
     </div>     
 
-    <div class="tx14 pl20">총 <strong class="tx-blue">108</strong>개의 상품이 있습니다.</div>
+    <div class="tx14 pl20">총 <strong class="tx-blue">108</strong>개의 상품이 있습니다.</div>
     
     <div class="bookListWrap">
         <div class="bookList">
             <div class="bookImg"><a href="#none"><img src="https://pass.willbes.net/public/uploads/wbs/book/2019/304149/book_304149_og.jpg"></a></div>
             <ul class="bookInfo">
                 <li class="bookTitle">2019 기태국어 기본이론(어법, 독해)(세트전2권) </li>
-                <li><span class="writer">신광은경찰팀 저</span><br><span class="row-line">|</span> 윌비스</li>                
-                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
+                <li><span class="writer">신광은경찰팀 저</span><br><span class="row-line">|</span> 윌비스</li>                
+                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
                 <li>
-                    <select id="" name="" class="seleLec width30p ml1p">
+                    <select id="" name="" class="seleLec">
                         <option selected="selected">1</option>
                         <option value="">2</option>
                         <option value="">3</option>
                     </select>
+                    <div class="buyinfo">
+                        <a href="#none" onclick="openWin('leyerbuyPop')"><span>2개까지</span> 구매가능 ❔</a>
+                        <div class="buyinfoPop" id="leyerbuyPop">
+                            <a href="#none" onclick="closeWin('leyerbuyPop')" class="closeBtn">X</a>
+                            <p>[구매 제한 교재 안내]</p>
+                            해당 교재는 구매 가능 개수가 제한된 교재로 아이디당 안내된 개수까지만 구매 가능합니다. 
+                        </div>
+                    </div>
                 </li>
                 <li>
                     <a href="#none" onclick="openWin('LayerBookLec')" class="lecViewBtn">교재로 진행중인 강의 ▼</a>
@@ -270,10 +278,10 @@
             <div class="bookImg"><a href="#none"><img src="https://pass.willbes.net/public/uploads/wbs/book/2019/304121/book_304121_og.jpg"></a></div>
             <ul class="bookInfo">
                 <li class="bookTitle">2018 9급 오대혁 국어 백발백중 전범위 동형모의고사 665제 </li>
-                <li><span class="writer">서울대학교정치외교학부 교수진 저</span><br><span class="row-line">|</span> 윌비스</li>                
-                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
+                <li><span class="writer">서울대학교정치외교학부 교수진 저</span><br><span class="row-line">|</span> 윌비스</li>                
+                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
                 <li>
-                    <select id="" name="" class="seleLec width30p ml1p">
+                    <select id="" name="" class="seleLec">
                         <option selected="selected">1</option>
                         <option value="">2</option>
                         <option value="">3</option>
@@ -293,10 +301,10 @@
             <div class="bookImg"><a href="#none"><img src="https://gosi.willbes.net/public/uploads/wbs/book/2020/307874/book_307874_og.jpg"></a></div>
             <ul class="bookInfo">
                 <li class="bookTitle">2017 정채영 국어 마무리시리즈(적중문제편) 100문제만 찍어주마! </li>
-                <li><span class="writer">강인엽 저<span><br><span class="row-line">|</span> 윌비스</li>                
-                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
+                <li><span class="writer">강인엽 저<span><br><span class="row-line">|</span> 윌비스</li>                
+                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
                 <li>
-                    <select id="" name="" class="seleLec width30p ml1p">
+                    <select id="" name="" class="seleLec">
                         <option selected="selected">1</option>
                         <option value="">2</option>
                         <option value="">3</option>
@@ -316,10 +324,10 @@
             <div class="bookImg"><a href="#none"><img src="https://police.willbes.net/public/uploads/wbs/book/2020/305041/book_305041_og.jpg"></a></div>
             <ul class="bookInfo">
                 <li class="bookTitle">2020 강인엽 경찰 면접의 정석2.0</li>
-                <li>강인엽 저<br><span class="row-line">|</span> 윌비스</li>                
-                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
+                <li>강인엽 저<br><span class="row-line">|</span> 윌비스</li>                
+                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
                 <li>
-                    <select id="" name="" class="seleLec width30p ml1p">
+                    <select id="" name="" class="seleLec">
                         <option selected="selected">1</option>
                         <option value="">2</option>
                         <option value="">3</option>
@@ -339,10 +347,10 @@
             <div class="bookImg"><a href="#none"><img src="https://pass.willbes.net/public/uploads/wbs/book/2018/303318/book_303318_og.jpg"></a></div>
             <ul class="bookInfo">
                 <li class="bookTitle">2020 강인엽 경찰 면접의 정석2.0</li>
-                <li>강인엽 저<br><span class="row-line">|</span> 윌비스</li>                
-                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
+                <li>강인엽 저<br><span class="row-line">|</span> 윌비스</li>                
+                <li>[판매중] <span class="tx-blue">31,500원</span> (↓10%)</li>
                 <li>
-                    <select id="" name="" class="seleLec width30p ml1p">
+                    <select id="" name="" class="seleLec">
                         <option selected="selected">1</option>
                         <option value="">2</option>
                         <option value="">3</option>

@@ -7,6 +7,7 @@
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="idx" value="{{ $idx }}"/>
+        <input type="hidden" name="is_copy" value="{{ $is_copy }}"/>
         <div class="x_panel">
             <div class="x_title">
                 <h2>권한유형 정보</h2>

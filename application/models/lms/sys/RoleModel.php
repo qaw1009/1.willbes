@@ -25,7 +25,7 @@ class RoleModel extends WB_Model
      */
     public function listRole($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $column = 'R.RoleIdx, R.RoleName, R.RoleDesc, R.IsUse, R.RegDatm, R.RegAdminIdx';
+        $column = 'R.RoleIdx, R.RoleName, R.RoleDesc, R.IsCopy, R.IsUse, R.RegDatm, R.RegAdminIdx';
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $arr_condition['EQ']['R.IsStatus'] = 'Y';
 
@@ -75,11 +75,13 @@ class RoleModel extends WB_Model
         try {
             $sub_role = element('sub_role', $input);
             $sub_role_json = empty($sub_role) === true ? null : json_encode($sub_role);
+            $is_copy = element('is_copy', $input) == 'Y' ? 'Y' : null;
 
             $data = [
                 'RoleName' => element('role_name', $input),
                 'RoleDesc' => element('role_desc', $input),
                 'SubRoleJson' => $sub_role_json,
+                'IsCopy' => $is_copy,
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()

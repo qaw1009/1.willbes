@@ -36,18 +36,21 @@
             <table id="list_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>No</th>
-                    <th class="searching">권한유형코드</th>
-                    <th class="searching">권한유형명</th>
-                    <th>설명</th>
-                    <th class="searching_is_use">사용여부</th>
-                    <th>등록자</th>
-                    <th>등록일</th>
+                    <th>복사<br/>선택</th>
+                    <th class="valign-middle">No</th>
+                    <th class="searching valign-middle">권한유형코드</th>
+                    <th class="searching valign-middle">권한유형명</th>
+                    <th class="valign-middle">설명</th>
+                    <th class="searching_is_use valign-middle">사용여부</th>
+                    <th class="valign-middle">등록자</th>
+                    <th class="valign-middle">등록일</th>
+                    <th class="valign-middle">복사</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($data as $row)
                     <tr>
+                        <td><label><input type="radio" name="role_idx" class="flat" value="{{ $row['RoleIdx'] }}"></label></td>
                         <td>{{ $loop->index }}</td>
                         <td>{{ $row['RoleIdx'] }}</td>
                         <td><a href="#" class="btn-modify" data-idx="{{ $row['RoleIdx'] }}"><u class="blue">{{ $row['RoleName'] }}</u></a></td>
@@ -57,6 +60,7 @@
                         </td>
                         <td>{{ $row['RegAdminName'] }}</td>
                         <td>{{ $row['RegDatm'] }}</td>
+                        <td>@if($row['IsCopy'] == 'Y') <span class="red">Y</span> @endif </td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -75,10 +79,22 @@
                 paging: false,
                 searching: true,
                 buttons: [
+                    { text: '<i class="fa fa-files-o mr-5"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 권한유형 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                         location.href = '{{ site_url('/sys/role/create') }}' + dtParamsToQueryString($datatable);
                     }}
                 ]
+            });
+
+            // 복사버튼 클릭
+            $('.btn-copy').on('click', function() {
+                var role_idx = $list_table.find('input[name="role_idx"]:checked').val();
+                if (typeof role_idx === 'undefined') {
+                    alert('복사할 권한유형을 선택해 주세요.');
+                    return;
+                }
+
+                location.href = '{{ site_url('/sys/role/create') }}/' + role_idx + '/copy' + dtParamsToQueryString($datatable);
             });
 
             // 데이터 수정 폼

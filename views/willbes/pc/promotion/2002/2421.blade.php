@@ -5,23 +5,22 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
-        br {font-family:dotum;}  
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
-        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .wrap a {display:block; color:#fff; font-size:24px; background:#1f2223; padding:20px 0; width:450px; margin:50px auto 30px; border-radius:40px}
-        .wrap a:hover{box-shadow:0 10px 20px rgba(0,0,0,.3); background:#0094c2}
-
-        .sky {position:fixed;top:200px; width:179px; right:0; z-index:100;}        
+        .sky {position:fixed;top:200px; width:169px; right:0; z-index:100;}        
         .sky a {display:block; margin-bottom:10px}
 
         /*타이머*/
@@ -44,12 +43,7 @@
             50% {opacity: 0;}
         }
 
-        .wb_01 > div,
-        .wb_03 > div,
-        .wb_04 > div{position:relative; width:1120px; margin:0 auto}
-
-        .wb_01 {background:#dbe8ed} 
-        .wb_01 a:hover{box-shadow:0 10px 20px rgba(0,0,0,.3);}
+        .wb_01 {background:#dbe8ed}        
 
         .wb_02 {background:#fff;}	
         
@@ -58,24 +52,23 @@
         .wb_02 .youtube.yu02 {top:905px; margin-left:-139px;}
         .wb_02 .youtube.yu03 {top:1356px;}   
         .wb_02 .youtube.yu04 {top:1806px; margin-left:-139px;}
+        .wb_02 .youtube.yu05 {top:2262px;}  
 
-        .wb_03 {background:#e5e5e5; padding-bottom:100px}         
+        .wb_03 {background:#e5e5e5; padding-bottom:100px}     
+        .wb_03 .wrap a {display:block; color:#fff; font-size:24px; background:#1f2223; padding:20px 0; width:450px; margin:50px auto 30px; border-radius:40px}
+        .wb_03 .wrap a:hover{box-shadow:0 10px 20px rgba(0,0,0,.3); background:#0094c2}    
 
         .wb_04,
         .wb_05 {background:#0094c2}
 
         .wb_04 .wrap a {position:absolute; bottom:75px; left:18%; margin-left:-225px; z-index: 2;display:flex; justify-content: center;}
-        .wb_04 .wrap .btns a {font-size:20px; background:#1f2223; padding:15px; width:310px; margin:0 auto; border-radius:30px;}
+        .wb_04 .wrap .btns a {font-size:20px; background:#1f2223; color:#fff; padding:15px; width:310px; margin:0 auto; border-radius:30px;}
         .wb_04 .wrap .btns a:nth-child(2) {margin-left:410px}
         .wb_04 .wrap .btns a:hover {background:#0094c2}
 
-        .wb_05 .wrap .btns {position:absolute; top:920px; left:50%; margin-left:-422px; z-index: 2;display:flex; justify-content: center;}
-        .wb_05 .wrap .btns a {font-size:18px; background:#1f2223; padding:10px; width:150px; margin:0 auto; border-radius:30px;}
-        .wb_05 .wrap .btns a:nth-child(2),
-        .wb_05 .wrap .btns a:nth-child(3),
-        .wb_05 .wrap .btns a:nth-child(4) {margin-left:90px}
-        .wb_05 .wrap .btns a:hover {background:#0094c2}
-        
+        .wb_05 .wrap .btns {position:absolute; top:920px; width:1086px; left:50%; margin-left:-543px; z-index: 2; display:flex; justify-content: center;}
+        .wb_05 .wrap .btns a {font-size:18px; background:#1f2223; color:#fff; padding:10px; width:150px; margin:0 auto; border-radius:30px;}
+        .wb_05 .wrap .btns a:hover {background:#0094c2}        
 
         .evtInfo {padding:150px 0; background:#333; color:#fff; font-size:15px}
 		.evtInfoBox {width:1010px; margin:0 auto; text-align:left; line-height:1.4}
@@ -121,7 +114,7 @@
             </div>
         </div>  
         
-        <div class="evtCtnsBox wb_top" id="main">
+        <div class="evtCtnsBox wb_top" id="main" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2421_top.jpg"  alt="기본종합반" />
             <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank">
                 <div>
@@ -131,16 +124,16 @@
             </a>
 		</div>
 
-        <div class="evtCtnsBox wb_01">
-            <div>
+        <div class="evtCtnsBox wb_01" data-aos="fade-up">
+            <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2421_01.jpg"  alt="기본환성 기출반" />
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/1839" title="경찰시험 개편과목 전략" target="_blank" style="position: absolute; left: 15.45%; top: 78.62%; width: 32.14%; height: 11.24%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/1966" title="G-TELP 단기간전략!" target="_blank" style="position: absolute; left: 50.27%; top: 78.47%; width: 32.14%; height: 11.24%; z-index: 2;"></a>
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_02" >
-			<img src="https://static.willbes.net/public/images/promotion/2021/11/2421_02.jpg"  alt="빠르게 준비 및 유튜브 영상"/><br>	
+        <div class="evtCtnsBox wb_02" data-aos="fade-up">
+			<img src="https://static.willbes.net/public/images/promotion/2022/01/2421_02.jpg"  alt="빠르게 준비 및 유튜브 영상"/><br>	
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
@@ -153,17 +146,20 @@
             <div class="youtube yu04">
                 <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+            <div class="youtube yu05">
+                <iframe src="https://www.youtube.com/embed/8T1HxQ5PPhQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
 		</div>
 
-        <div class="evtCtnsBox wb_03" >
+        <div class="evtCtnsBox wb_03" data-aos="fade-up">
             <divv class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2421_03.jpg"  alt="기본완성기출반 스케줄"/>    
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2421_03.jpg"  alt="기본완성기출반 스케줄"/>    
                 <a href="https://police.willbes.net/pass/offinfo/boardInfo/index/80" target="_blank" class="NSK-Black">강의시간표 확인하기 ></a>
                 *학원사정으로 지연,연기 될수 있습니다.
             </divv>
         </div>
 
-        <div class="evtCtnsBox wb_04" id="wb_04">
+        <div class="evtCtnsBox wb_04" id="wb_04" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2421_04_01.jpg"  alt="검정제 선행 기본종합반"/>
                 <div class="btns">
@@ -173,19 +169,20 @@
             </div>
         </div>   
 
-        <div class="evtCtnsBox wb_05">
+        <div class="evtCtnsBox wb_05" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2421_04_03.jpg"  alt="단과"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2421_04_03.jpg"  alt="단과"/>
                 <div class="btns">
                     <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/185782" title="형사법 신광은" target="_blank">신청하기 ></a>
                     <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/184605" title="경찰학 장정훈" target="_blank">신청하기 ></a>
                     <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/185783" title="헌법 김원욱" target="_blank">신청하기 ></a>
                     <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/185784" title="헌법 이국령" target="_blank">신청하기 ></a>
+                    <a href="https://police.willbes.net/pass/offLecture/show/cate/3011/prod-code/187485" title="범죄확 박상민" target="_blank">신청하기 ></a>
                 </div>
             </div>
         </div>
 
-        <div class="evtCtnsBox evtInfo">
+        <div class="evtCtnsBox evtInfo" data-aos="fade-up">
 			<div class="evtInfoBox">
 				<h4 class="NSK-Black">1월 기본종합반 학원 실강 이용안내</h4>
 				<div class="infoTit">2022 개편과목 기본종합반 전문 교수진</div>
@@ -194,7 +191,7 @@
                     경찰학 - 장정훈 교수님<br>
                     헌 법 - 김원욱 교수님<br>            
                     헌 법 - 이국령 교수님<br>
-                    범죄학 – 박상민 교수님
+                    범죄학 - 박상민 교수님
 				</div>
 				<div class="infoTit">종합반 안내</div>
 				<ul>
@@ -227,8 +224,8 @@
                             <td>100,000원<br>(경행종합반 등록 시 50,000원)</td>
                         </tr>
                         <tr>
-                            <td>종합반 연속 수강자 / 전의경 전역자 / 경찰행정학과 재학․ 졸업생 /<br>
-                            가족 2인 이상 등록 / 영어․ 한국사 검정제 기준점수 취득자 /
+                            <td>종합반 연속 수강자 / 전의경 전역자 / 경찰행정학과 재학. 졸업생 /<br>
+                            가족 2인 이상 등록 / 영어. 한국사 검정제 기준점수 취득자 /
                             **현직 경찰관 추천</td>
                             <td>50,000원<br>(경행종합반 등록 시 추가할인 없음)</td>
                         </tr>
@@ -258,8 +255,13 @@
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript">
-    
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        $( document ).ready( function() {
+            AOS.init();
+        } );
+
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('@if(empty($arr_promotion_params['edate'])===false) {{$arr_promotion_params['edate']}} @endif');

@@ -138,4 +138,10 @@ class Home extends \app\controllers\FrontController
 
         $this->load->view($view_file, [], false);
     }
+
+    // 방화벽 404페이지 노출용
+    public function e404()
+    {
+        $this->load->view('errors/html/error_404', [], false, false, false);
+    }
 }

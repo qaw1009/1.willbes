@@ -474,88 +474,93 @@ class CommonLectureModel extends WB_Model
     //강사료정산
     public function _setDivision($input=[],$prodcode,$prodtype=null)
     {
-        try {
+        /* TODO 정산권한이 있는 관리자만 수정 가능 : 21.12.28 최진영 차장*/
+        if(get_admin_sub_role('prod_div_disp') == 'Y') {
 
-            // 테이블 백업
-            $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['division'], 'ProdCode', $prodcode, [] , $this->_process_group, $this->_backup_location);
-            if($backup_result !== true) {
-                throw new \Exception($backup_result);
-            }
+            try {
 
-            /*강사료정산*/
-            $rateRemainProfIdx = element('rateRemainProfIdx',$input);          //단수적용 교수코드
-            $SingularValue = element('rateRemain',$input,0);            //단수값
-            $IsSingular = element('IsSingular',$input,'');                   //단수적용코드
-            $IsReprProf = element('IsReprProf',$input);                               //대표강사
-
-            $prodcodesub = element('ProdCodeDiv',$input,'');
-            $ProfIdx = element('ProfIdx',$input,[]);
-            $TotalPrice = element('TotalPrice',$input);
-            $ProdDivisionPrice = element('ProdDivisionPrice',$input);           //안분가격
-            $ProdDivisionRate = element('ProdDivisionRate',$input);             //안분율
-            $ProdCalcRate = element('ProdCalcRate',$input);                     //정산율
-
-            /*  기존 강사료 정산 정보 상태값 변경 */
-            if($this->_setDataDelete($prodcode,$this->_table['division'],'강사료 정산') !== true) {
-                throw new \Exception('강사료 정산 수정에 실패했습니다.');
-            }
-
-            for($i=0;$i<count($ProfIdx);$i++) {
-
-                if(empty($ProfIdx[$i]) !== true) {
-
-                    //서브 상품코드가 없을경우 해당 상품코드가 서브로 들어감 (단강좌 와 패키지의 구조를 맞추기 위함)
-                    $prodcodesubMake = (empty($prodcodesub) === true ? $prodcode : $prodcodesub[$i]);
-
-                    //교수코드와 대표강사의 값이같으면.
-                    $IsReprProfMake = ($ProfIdx[$i] === $IsReprProf ? 'Y' : 'N');
-
-                    if(empty($prodtype)) {
-                        //교수코드와 단수적용 교수가 값이 같으면
-                        if ($ProfIdx[$i] === $rateRemainProfIdx) {
-                            $IsSingularMake = 'Y';
-                            $SingularValueMake = $SingularValue;
-                        } else {
-                            $IsSingularMake = 'N';
-                            $SingularValueMake = 0;
-                        }
-                    } else if($prodtype === 'packageadmin' || $prodtype === 'offpackageadmin') {
-                        //교수코드-상품코드와 단수적용 교수코드-상품코드가 값이 같으면
-                        if (trim($ProfIdx[$i].'-'.$prodcodesubMake) == trim($rateRemainProfIdx)) {
-                            $IsSingularMake = 'Y';
-                            $SingularValueMake = $SingularValue;
-                        } else {
-                            $IsSingularMake = 'N';
-                            $SingularValueMake = 0;
-                        }
-                    }
-
-                    $data = [
-                        'ProdCode' => $prodcode
-                        ,'ProdCodeSub' => $prodcodesubMake
-                        ,'ProfIdx' => $ProfIdx[$i]
-                        ,'LecCnt' => 0
-                        ,'IsReprProf' => $IsReprProfMake
-                        ,'TotalPrice' => $TotalPrice[$i]
-                        ,'ProdDivisionPrice' => $ProdDivisionPrice[$i]
-                        ,'ProdDivisionRate' => $ProdDivisionRate[$i]
-                        ,'ProdCalcRate' => $ProdCalcRate[$i]
-                        ,'SingularValue' => $SingularValueMake
-                        ,'IsSingular' => $IsSingularMake
-                        ,'RegAdminIdx' => $this->session->userdata('admin_idx')
-                        ,'RegIp' => $this->input->ip_address()
-                    ];
-
-                    if($this->_conn->set($data)->insert($this->_table['division']) === false) {
-                        throw new \Exception('강사료 정산 등록에 실패했습니다.');
-                    }
-                   //echo $this->_conn->last_query();
+                // 테이블 백업
+                $backup_result = $this->dbtablebackup->execTableBackup( $this->_table['division'], 'ProdCode', $prodcode, [] , $this->_process_group, $this->_backup_location);
+                if($backup_result !== true) {
+                    throw new \Exception($backup_result);
                 }
-            }
 
-        } catch (\Exception $e) {
-            return $e->getMessage();
+                /*강사료정산*/
+                $rateRemainProfIdx = element('rateRemainProfIdx',$input);          //단수적용 교수코드
+                $SingularValue = element('rateRemain',$input,0);            //단수값
+                $IsSingular = element('IsSingular',$input,'');                   //단수적용코드
+                $IsReprProf = element('IsReprProf',$input);                               //대표강사
+
+                $prodcodesub = element('ProdCodeDiv',$input,'');
+                $ProfIdx = element('ProfIdx',$input,[]);
+                $TotalPrice = element('TotalPrice',$input);
+                $ProdDivisionPrice = element('ProdDivisionPrice',$input);           //안분가격
+                $ProdDivisionRate = element('ProdDivisionRate',$input);             //안분율
+                $ProdCalcRate = element('ProdCalcRate',$input);                     //정산율
+
+                /*  기존 강사료 정산 정보 상태값 변경 */
+                if($this->_setDataDelete($prodcode,$this->_table['division'],'강사료 정산') !== true) {
+                    throw new \Exception('강사료 정산 수정에 실패했습니다.');
+                }
+
+                for($i=0;$i<count($ProfIdx);$i++) {
+
+                    if(empty($ProfIdx[$i]) !== true) {
+
+                        //서브 상품코드가 없을경우 해당 상품코드가 서브로 들어감 (단강좌 와 패키지의 구조를 맞추기 위함)
+                        $prodcodesubMake = (empty($prodcodesub) === true ? $prodcode : $prodcodesub[$i]);
+
+                        //교수코드와 대표강사의 값이같으면.
+                        $IsReprProfMake = ($ProfIdx[$i] === $IsReprProf ? 'Y' : 'N');
+
+                        if(empty($prodtype)) {
+                            //교수코드와 단수적용 교수가 값이 같으면
+                            if ($ProfIdx[$i] === $rateRemainProfIdx) {
+                                $IsSingularMake = 'Y';
+                                $SingularValueMake = $SingularValue;
+                            } else {
+                                $IsSingularMake = 'N';
+                                $SingularValueMake = 0;
+                            }
+                        } else if($prodtype === 'packageadmin' || $prodtype === 'offpackageadmin') {
+                            //교수코드-상품코드와 단수적용 교수코드-상품코드가 값이 같으면
+                            if (trim($ProfIdx[$i].'-'.$prodcodesubMake) == trim($rateRemainProfIdx)) {
+                                $IsSingularMake = 'Y';
+                                $SingularValueMake = $SingularValue;
+                            } else {
+                                $IsSingularMake = 'N';
+                                $SingularValueMake = 0;
+                            }
+                        }
+
+                        $data = [
+                            'ProdCode' => $prodcode
+                            ,'ProdCodeSub' => $prodcodesubMake
+                            ,'ProfIdx' => $ProfIdx[$i]
+                            ,'LecCnt' => 0
+                            ,'IsReprProf' => $IsReprProfMake
+                            ,'TotalPrice' => $TotalPrice[$i]
+                            ,'ProdDivisionPrice' => $ProdDivisionPrice[$i]
+                            ,'ProdDivisionRate' => $ProdDivisionRate[$i]
+                            ,'ProdCalcRate' => $ProdCalcRate[$i]
+                            ,'SingularValue' => $SingularValueMake
+                            ,'IsSingular' => $IsSingularMake
+                            ,'RegAdminIdx' => $this->session->userdata('admin_idx')
+                            ,'RegIp' => $this->input->ip_address()
+                        ];
+
+                        if($this->_conn->set($data)->insert($this->_table['division']) === false) {
+                            throw new \Exception('강사료 정산 등록에 실패했습니다.');
+                        }
+                    }
+                }
+
+            } catch (\Exception $e) {
+                return $e->getMessage();
+            }
+            
         }
+
         return true;
     }
 
@@ -597,7 +602,6 @@ class CommonLectureModel extends WB_Model
                         if($this->_conn->set($data)->insert($this->_table['memo']) === false) {
                             throw new \Exception('메모 등록에 실패했습니다.');
                         }
-                        //echo $this->_conn->last_query().';';
                     }
 
                 }

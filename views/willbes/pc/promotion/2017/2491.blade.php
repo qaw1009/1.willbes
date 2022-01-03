@@ -57,85 +57,99 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2491_top.jpg" alt="2022학년도 대비 합격전략 설명회"/>
         </div>
 
-        <div class="evtCtnsBox evt01">
-            <div>
-                안녕하세요. <br>
-                합격을 부르는 윌비스 임용입니다. <br>
-                <br>
-                임용시험의 불합격 결과에 심심한 위로의 말씀을 드립니다. <br>
-                최종 합격하는 날까지 윌비스 임용이 교단에 서는 여러분의 꿈을 응원하겠습니다.<br>
-                <br>
-                (구)임용단기의 프리패스를 수강하신 선생님들께 수강기간 갱신 방법을 안내합니다.<br>
-                <br>
-                <p>[갱신 신청 대상자]</p> 
-                평생 및 평생 0원 프리패스, 무제한 프리패스 수강신청자 <br>
-                <br>
-                <p>[갱신 신청 기간] </p>
-                * 1차: 2022년 01월 27일(목) 까지 <br>
-                * 2차: 2022년 02월 25일(금) 까지 
-            </div>
-            <div class="info">
-                <ul>
-                    <li>
-                        개인정보 및 고유식별정보 수집/이용 동의<br>
-                        1) 개인정보의 수집ㆍ이용 목적 : 수강기간 연장을 위한 확인 <br>
-                        2) 수집하려는 개인정보의 항목 : 학원ID, 이름, 연락처, 주민등록번호, 수강과목 등 <br>
-                        3) 동의를 거부할 권리가 있다는 사실 및 동의 거부에 따른 불이익이 있는 경우에는 그 불이익의 내용: 고객님은 동의를 거부하실 수 있으며, 거부 시 수강연장이 불가합니다.
-                    </li>
-                    <li>입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3자에게 제공되지 않으며 개인정보 처리 방침에 따라 보호되고 있습니다.</li>
-                    <li>개인정보 수집/이용에 동의하셨으면, 아래 사항을 기재해 주시기 바랍니다.</li>
-                </ul>
-                <label><input type="checkbox" id="is_chk" name="is_chk" value="Y" title="개인정보 수집/이용 동의"> 윌비스에 개인정보 제공 동의하기(필수)</label>
-            </div>
-            <div class="table_wrap">
-                <table>
-                    <col width="10%">
-                    <col width="10%">
-                    <col width="35%">
-                    <col width="15%">
-                    <col width="*">
-                    <tbody>
-                        <tr>
-                          <th colspan="2">* 성명</th>
-                            <td>{{sess_data('mem_name')}}</td>
-                            <th>* 윌비스 ID</th>
-                            <td>{{sess_data('mem_id')}}</td>
-                        </tr>
-                        <tr>
-                          <th colspan="2">* 연락처</th>
-                            <td>{{sess_data('mem_phone')}}</td>
-                            <th>* 임용단기 ID</th>
-                            <td>
-                                <input name="" id="" type="text">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th rowspan="2">
-                              불합격 인증<br />
-                                (파일제출)
-                            </th>
-                            <th>인증파일</th>
-                            <td colspan="3">
-                            	<input type="file" id="attach_file" name="attach_file" style="width:40%; margin-right:10px"/>
-                        		<a onclick="javascript:del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" style="vertical-align:middle !important" alt="삭제"></a> 
-                        		* 5MB 이하의 이미지 파일(png, jpg, gif, bmp)
-                            </td>
-                        </tr>
-                        <tr>
-                          <th>신분증사본</th>
-                            <td colspan="3">
-                            	<input type="file" id="attach_file" name="attach_file" style="width:40%; margin-right:10px"/>
-                        		<a onclick="javascript:del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" style="vertical-align:middle !important" alt="삭제"></a> 
-                        		* 5MB 이하의 이미지 파일(png, jpg, gif, bmp)
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="btnSet">
-                    <a href="{!! front_url('/event/registerStore') !!}" onclick="javascript:fn_submit(); return false;">평생 프리패스 수강기간 갱신 신청하기 ></a>
+        <form name="regi_form_register" id="regi_form_register">
+            {!! csrf_field() !!}
+            {!! method_field('POST') !!}
+            <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+            <input type="hidden" name="register_type" value="promotion"/>
+            <input type="hidden" name="file_chk" value="Y"/>
+            <input type="hidden" name="file_chk2" value="Y"/>
+            <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="임용단기 아이디"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}"/>
+            <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
+            <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
+
+            <div class="evtCtnsBox evt01">
+                <div>
+                    안녕하세요. <br>
+                    합격을 부르는 윌비스 임용입니다. <br>
+                    <br>
+                    임용시험의 불합격 결과에 심심한 위로의 말씀을 드립니다. <br>
+                    최종 합격하는 날까지 윌비스 임용이 교단에 서는 여러분의 꿈을 응원하겠습니다.<br>
+                    <br>
+                    (구)임용단기의 프리패스를 수강하신 선생님들께 수강기간 갱신 방법을 안내합니다.<br>
+                    <br>
+                    <p>[갱신 신청 대상자]</p>
+                    평생 및 평생 0원 프리패스, 무제한 프리패스 수강신청자 <br>
+                    <br>
+                    <p>[갱신 신청 기간] </p>
+                    * 1차: 2022년 01월 27일(목) 까지 <br>
+                    * 2차: 2022년 02월 25일(금) 까지
+                </div>
+                <div class="info">
+                    <ul>
+                        <li>
+                            개인정보 및 고유식별정보 수집/이용 동의<br>
+                            1) 개인정보의 수집ㆍ이용 목적 : 수강기간 연장을 위한 확인 <br>
+                            2) 수집하려는 개인정보의 항목 : 학원ID, 이름, 연락처, 주민등록번호, 수강과목 등 <br>
+                            3) 동의를 거부할 권리가 있다는 사실 및 동의 거부에 따른 불이익이 있는 경우에는 그 불이익의 내용: 고객님은 동의를 거부하실 수 있으며, 거부 시 수강연장이 불가합니다.
+                        </li>
+                        <li>입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3자에게 제공되지 않으며 개인정보 처리 방침에 따라 보호되고 있습니다.</li>
+                        <li>개인정보 수집/이용에 동의하셨으면, 아래 사항을 기재해 주시기 바랍니다.</li>
+                    </ul>
+                    <label><input type="checkbox" id="is_chk" name="is_chk" value="Y" title="개인정보 수집/이용 동의"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+                </div>
+                <div class="table_wrap">
+                    <table>
+                        <col width="10%">
+                        <col width="10%">
+                        <col width="35%">
+                        <col width="15%">
+                        <col width="*">
+                        <tbody>
+                            <tr>
+                              <th colspan="2">* 성명</th>
+                                <td>{{sess_data('mem_name')}}</td>
+                                <th>* 윌비스 ID</th>
+                                <td>{{sess_data('mem_id')}}</td>
+                            </tr>
+                            <tr>
+                              <th colspan="2">* 연락처</th>
+                                <td>{{sess_data('mem_phone')}}</td>
+                                <th>* 임용단기 ID</th>
+                                <td>
+                                    <input type="text" id="register_data1" name="register_data1" maxlength="50"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th rowspan="2">
+                                  불합격 인증<br />
+                                    (파일제출)
+                                </th>
+                                <th>인증파일</th>
+                                <td colspan="3">
+                                    <input type="file" id="attach_file_1" name="attach_file" onchange="chkUploadFile(this)" style="width:40%; margin-right:10px"/>
+                                    <a onclick="javascript:del_file(1);"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" style="vertical-align:middle !important" alt="삭제"></a>
+                                    * 5MB 이하의 이미지 파일(png, jpg, gif, bmp)
+                                </td>
+                            </tr>
+                            <tr>
+                              <th>신분증사본</th>
+                                <td colspan="3">
+                                    <input type="file" id="attach_file_2" name="attach_file2" onchange="chkUploadFile(this)" style="width:40%; margin-right:10px"/>
+                                    <a onclick="javascript:del_file(2);"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" style="vertical-align:middle !important" alt="삭제"></a>
+                                    * 5MB 이하의 이미지 파일(png, jpg, gif, bmp)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="btnSet">
+                        <a href="{!! front_url('/event/registerStore') !!}" onclick="javascript:fn_submit(); return false;">평생 프리패스 수강기간 갱신 신청하기 ></a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
 
         <div class="evtCtnsBox evtInfo" data-aos="fade-up">
 			<div class="evtInfoBox">
@@ -168,37 +182,11 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        var _msg = [];
-        $(document).ready(function() {
-            _msg = [
-                '주민번호를 기입해주세요.'
-                , '주민번호는 숫자만 입력하셔야 합니다.'
-                , '올바른 주민번호를 입력하여 주세요.'
-            ];
-
-            $('#ssn_1').keyup (function () {
-                var charLimit = $(this).attr("maxlength");
-                if (this.value.length >= charLimit) {
-                    $("#ssn_2").focus();
-                    return false;
-                }
-            });
-        });
+        var $regi_form_register = $('#regi_form_register');
 
         function fn_submit() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-
-            var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
-
-            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
-                alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
-                return;
-            }
-
-            if (!confirm('저장하시겠습니까?')) {
-                return true;
-            }
             ajaxSubmit($regi_form_register, _url, function (ret) {
                 if (ret.ret_cd) {
                     alert(ret.ret_msg);
@@ -208,49 +196,47 @@
         }
 
         function addValidate() {
-            var ssn_chk = ssnCheck($('#ssn_1').val(), $('#ssn_2').val());
-            if (ssn_chk !== true) {
-                alert(ssn_chk);
+            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+                alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
                 return false;
             }
-            if ($("#register_data1").val() == '') {
-                alert('수강과목을 선택해주세요.');
+
+            if ($regi_form_register.find('input[name="register_data1"]').val() == '') {
+                alert('임용단기ID를 입력해주세요.');
                 return false;
             }
-            return true;
+
+            if (!$regi_form_register.find('input[name="attach_file"]').val()) {
+                alert('인증파일을 등록해 주세요.');
+                return;
+            }
+
+            if (!$regi_form_register.find('input[name="attach_file2"]').val()) {
+                alert('신분증사본 파일을 등록해 주세요.');
+                return;
+            }
+
+            if (confirm('저장하시겠습니까?')) {
+                return true;
+            }
+
+            return false;
         }
 
-        function ssnCheck(_ssn1, _ssn2) {
-            var ssn1 = _ssn1,
-                ssn2 = _ssn2,
-                ssn = ssn1 + '' + ssn2,
-                arr_ssn = [],
-                compare = [2, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5],
-                sum = 0;
+        function chkUploadFile(elem) {
+            if ($(elem).val()) {
+                var filename = $(elem).prop("files")[0].name;
+                var ext = filename.split('.').pop().toLowerCase();
 
-            // 입력여부 체크
-            if (ssn1 == '') {return _msg[0];}
-            if (ssn2 == '') {return _msg[0];}
-
-            // 입력값 체크
-            if (ssn1.match('[^0-9]')) {$("#ssn_1").val(''); return _msg[1];}
-            if (ssn2.match('[^0-9]')) {$("#ssn_2").val(''); return _msg[1];}
-
-            // 자리수 체크
-            if (ssn.length != 13) {return _msg[2];}
-
-            // 공식: M = (11 - ((2×A + 3×B + 4×C + 5×D + 6×E + 7×F + 8×G + 9×H + 2×I + 3×J + 4×K + 5×L) % 11)) % 11
-            for (var i = 0; i < 13; i++) {
-                arr_ssn[i] = ssn.substring(i, i + 1);
+                if ($.inArray(ext, ['gif', 'jpg', 'jpeg', 'png', 'bmp']) === -1) {
+                    $(elem).val("");
+                    alert('이미지 파일만 업로드 가능합니다.');
+                }
             }
-            for (var i = 0; i < 12; i++) {
-                sum = sum + (arr_ssn[i] * compare[i]);
-            }
+        }
 
-            sum = (11 - (sum % 11)) % 10;
-            if (sum != arr_ssn[12]) {return _msg[2];}
-
-            return true;
+        function del_file(id){
+            $("#attach_file_"+id).val("");
         }
     </script>
 @stop

@@ -59,12 +59,19 @@ class ManageMemberModel extends WB_Model
             Mem.IsStatus,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType IN ('M','A') AND IsUse='Y' ) AS MobileCount,
-            c1.CcdName AS InterestName, ifnull(c2.CcdName, '') AS InterestSubName,
-            IFNULL(Info.HanlimID, '') AS HanlimID, IFNULL(Info.ssamID, '') AS ssamID, Info.InterestCode AS interest,
+            c1.CcdName AS InterestName, 
+            IFNULL(c2.CcdName, '') AS InterestSubName,
+            IFNULL(Info.HanlimID, '') AS HanlimID, 
+            IFNULL(Info.ssamID, '') AS ssamID, 
+            Info.InterestCode AS interest,
+            IFNULL(c3.CcdName, '') as SubjectName 
+            ";
+
+            /*
             IFNULL((SELECT c2.CcdName FROM {$this->_table['ssam_info']} as si
                          LEFT JOIN {$this->_table['code']} as c2 ON si.SubjectCcd = c2.Ccd
                          WHERE si.MemIdx = Mem.MemIdx), '') as SubjectName            
-            ";
+            "; */
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -74,6 +81,8 @@ class ManageMemberModel extends WB_Model
             INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx
             LEFT JOIN {$this->_table['code']} AS c1 ON Info.InterestCode = c1.Ccd
             LEFT JOIN {$this->_table['code']} AS c2 ON Info.InterestCodeSub = c2.Ccd
+            LEFT JOIN {$this->_table['ssam_info']} AS si ON Mem.MemIdx = si.MemIdx
+            LEFT JOIN {$this->_table['code']} AS c3 ON si.SubjectCcd = c3.Ccd
              ";
 
         $where = $this->_conn->makeWhere($arr_condition);

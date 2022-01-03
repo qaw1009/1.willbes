@@ -789,7 +789,7 @@ class EventLectureModel extends WB_Model
         } else {
             $column = '
             A.EmIdx, A.MemIdx, B.PersonLimitType, B.PersonLimit, B.Name AS RegisterName, A.EtcTitle, A.EtcValue, A.RegDatm,
-            A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, A.FileFullPath, A.FileRealName, A.IsStatus,
+            A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, A.FileFullPath, A.FileRealName, A.FileFullPath2, A.FileRealName2, A.IsStatus,
             O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode,
             fn_dec(A.UserSsnEnc) AS UserSsn
             ,(SELECT COUNT(*) FROM lms_event_member AS em WHERE A.ErIdx = em.ErIdx) AS registerCnt

@@ -41,9 +41,13 @@ class Manage extends \app\controllers\BaseController
     public function index()
     {
         $InterestCcd = $this->codeModel->getCcd('718');
+        $SubInterestCcd['718004'] = $this->codeModel->getCcd('744');
+        $SubInterestCcd['718003'] = $this->codeModel->getCcd('745');
+        $SubInterestCcd['718009'] = $this->codeModel->getCcd('737');
 
         $this->load->view('member/manage/list', [
-            'InterestCcd' => $InterestCcd
+            'InterestCcd' => $InterestCcd,
+            'SubInterestCcd' => $SubInterestCcd
         ]);
     }
 
@@ -57,6 +61,19 @@ class Manage extends \app\controllers\BaseController
         $search_value_enc = $this->manageMemberModel->getEncString($search_value); // 검색어 암호화
         $inQuery = "";
         $list = [];
+
+        $interestCode = $this->_req('search_interest');
+        $interestCodeSub = null;
+        $ssamSubjectCode = null;
+        switch($interestCode){
+            case '718003':
+            case '718004':
+                $interestCodeSub = $this->_req('search_interest_sub');
+                break;
+
+            case '718009':
+                $ssamSubjectCode = $this->_req('search_interest_sub');
+        }
 
         // 기본 검색조건
         $arr_condition = [
@@ -76,7 +93,9 @@ class Manage extends \app\controllers\BaseController
                 'Info.SmsRcvStatus' => $this->_req('SmsRcv'), // sms 수신여부
                 'Info.MailRcvStatus' => $this->_req('MailRcv'), // 메일 수신여부
                 'Mem.IsBlackList' => $this->_req('IsBlackList'), // 블랙리스트 여부
-                'Info.InterestCode' => $this->_req('search_interest')
+                'Info.InterestCode' => $interestCode, // 관심분야
+                'Info.InterestCodeSub' => $interestCodeSub, // 관심분야 하위
+                'si.SubjectCcd' => $ssamSubjectCode
             ]
         ];
 

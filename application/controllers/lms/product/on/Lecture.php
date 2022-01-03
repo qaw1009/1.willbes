@@ -249,14 +249,6 @@ Class Lecture extends CommonLecture
         ]);
     }
 
-/*
-    public function download()
-    {
-        $filename = urldecode($this->_req('filename', false));
-        $filename_ori = urldecode($this->_req('filename_ori',false));
-        public_download($filename, $filename_ori);
-    }
-*/
 
     /**
      * 처리 프로세스

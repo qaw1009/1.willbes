@@ -326,6 +326,7 @@ class Event extends \app\controllers\FrontController
         $target_params_item = $this->_reqP('target_params_item');
         $register_type = ($this->_reqP('register_type') == 'promotion') ? 'promotion' : 'event';
         $file_chk = $this->_reqP('file_chk');   //첨부파일 체크 유무
+        $file_chk2 = $this->_reqP('file_chk2'); //첨부파일2 체크 유무
         $el_idx = (int)$this->_req('event_code');   //이벤트식별자
         $comment_chk_yn = $this->_req('comment_chk_yn');    //댓글참여 확인 여부
         $ssn_type = $this->_req('ssn_type');    //상품권지급 프로모션 여부
@@ -363,6 +364,12 @@ class Event extends \app\controllers\FrontController
         if ($file_chk == 'Y') {
             $rules = array_merge($rules, [
                 ['field' => 'attach_file', 'label' => '첨부파일', 'rules' => 'callback_validateFileRequired[attach_file]']
+            ]);
+        }
+
+        if ($file_chk2 == 'Y') {
+            $rules = array_merge($rules, [
+                ['field' => 'attach_file2', 'label' => '첨부파일', 'rules' => 'callback_validateFileRequired[attach_file2]']
             ]);
         }
 

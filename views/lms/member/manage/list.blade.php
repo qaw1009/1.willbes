@@ -73,12 +73,22 @@
                     <label class="control-label col-md-1">조건검색</label>
                     <div class="col-md-11 form-inline">
                         <div class="input-group mr-20">
-                            <select name="search_interest" class="form-control">
+                            <select name="search_interest" id="search_interest" class="form-control">
                                 <option value="">관심분야</option>
                                 @foreach($InterestCcd as $key => $value)
                                     <option value="{{$key}}">{{$value}}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="input-group mr-20">
+                        <select class="form-control" id="search_interest_sub" name="search_interest_sub" title="중분류">
+                            <option value="">응시예정시험</option>
+                            @foreach($SubInterestCcd as $key => $rows)
+                                @foreach($rows as $subkey => $value)
+                                    <option value="{{$subkey}}" class="{{ $key }}">{{ $value }}</option>
+                                @endforeach
+                            @endforeach
+                        </select>
                         </div>
                         <label class="input-label">
                             <input type="checkbox" class="flat" id="IsChange" name="IsChange" value="Y">
@@ -262,6 +272,9 @@
                         }} */
                 ]
             });
+
+            // 과정, 과목, 교수 자동 변경
+            $search_form.find('select[name="search_interest_sub"]').chained("#search_interest");
 
             $list_table.on('click', '.btn-view1', function() {
                 location.href=('{{ site_url('/member/manage/detail') }}/' + $(this).data('idx') + '/' + dtParamsToQueryString($datatable));

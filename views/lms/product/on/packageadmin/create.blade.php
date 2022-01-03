@@ -401,14 +401,10 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label col-md-2">강사료정산정보 <br>
-                        {{--@if($method==='POST' || empty($data_division))--}}
-                        <p>
+                <div class="form-group {{get_admin_sub_role('prod_div_disp') !== 'Y' ? 'hide' : ''}}">
+                    <label class="control-label col-md-2">
+                        강사료정산정보 <br>
                         <button type="button" class="btn-sm btn-success border-radius-reset mr-15" id="searchProfessor">불러오기</button>
-                        </p>
-                        {{--@endif--}}
-
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="col-xs-6">

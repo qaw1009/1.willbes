@@ -28,6 +28,10 @@
 
         .evt_01 {background:#ececec;}
 
+        .evt_02 {background:#fff;position:relative;}
+        .youtube {position:absolute; top:744px; left:50%;z-index:1;margin-left:-351px}
+        .youtube iframe {width:704px; height:393px}
+
 
         .evt_03 {background:#6278de;}
 
@@ -73,7 +77,10 @@
         </div>
 
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2477_02.jpg"  alt="왜 하승민 교수님일까요" /> 
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2477_02.jpg"  alt="왜 하승민 교수님일까요" />
+            <div class="youtube">
+                <iframe src="https://www.youtube.com/embed/-dJOvbLVy3M?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div> 
         </div>
 
         <div class="evtCtnsBox evt_03" id="evt03" data-aos="fade-up">

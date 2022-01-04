@@ -8,7 +8,7 @@
         .evtTop {position:relative}
         .evt00 {text-align:center; background:#f4f1f3}
         .evt00 .dday {font-size:22px;padding:20px 0;}
-        .evt00 .dday span {color:#df4bfa; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
+        .evt00 .dday span {color:#0567ff; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
         .evtCtnsBox a {position: absolute; z-index: 5;}
 
         /* 폰 가로, 태블릿 세로*/

@@ -29,8 +29,8 @@
         .time li:last-child {line-height:1.3; color:#363635}
         .time li:first-child {margin-right:20px}
         .time li:last-child {margin-left:20px}
-        .time li:first-child span {color:#be25da}        
-        .time li:last-child span {font-size:14px; background:#be25da; color:#fff; border-radius:20px; padding:3px 8px; position:absolute; width:100%; left:0; top:0; z-index: 2; border:2px solid #f4f1f3} 
+        .time li:first-child span {color:#0567ff }        
+        .time li:last-child span {font-size:14px; background:#0567ff ; color:#fff; border-radius:20px; padding:3px 8px; position:absolute; width:100%; left:0; top:0; z-index: 2; border:2px solid #f4f1f3} 
         .time li:last-child a {display:block; color:#fff; background:#242424; padding:10px 20px; margin-top:20px}
         .time li img {width:44px}
         .time .time_txt {color:#000; letter-spacing:-1px}

@@ -55,7 +55,7 @@
     </style> 
 	<div class="evtContent NSK">
 		<div class="evtCtnsBox evt_top" data-aos="fade-right">
-			<img src="https://static.willbes.net/public/images/promotion/2021/08/2305_top.jpg" alt="21/22 얼리버드 감평패스" />
+			<img src="https://static.willbes.net/public/images/promotion/2022/01/2305_top.jpg" alt="success t-pass" />
 		</div>
 
 		<div class="evtCtnsBox evt_01" data-aos="fade-right">
@@ -144,7 +144,18 @@
                 <a href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/184429" target="_blank" style="position: absolute; left: 60.18%; top: 92.83%; width: 19.38%; height: 2.93%; z-index: 2;"></a>
                 <a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/184430" target="_blank" style="position: absolute; left: 80.36%; top: 92.83%; width: 19.38%; height: 2.93%; z-index: 2;"></a> 
             </div>
-		</div> 
+
+            <div class="wrap" data-aos="fade-right">
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2305_04.jpg" alt="신청하기" />
+                <a href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/190045" target="_blank" style="position: absolute;left: 0;top: 67.99%;width: 16.38%;height: 7.99%;z-index: 2;"></a>
+                <a href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/190046" target="_blank" style="position: absolute;left: 16.75%;top: 67.99%;width: 16.38%;height: 7.99%;z-index: 2;"></a>
+                <a href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/190047" target="_blank" style="position: absolute;left: 33.45%;top: 67.99%;width: 16.38%;height: 7.99%;z-index: 2;"></a>
+                <a href="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/190048" target="_blank" style="position: absolute;left: 50.25%;top: 67.99%;width: 16.38%;height: 7.99%;z-index: 2;"></a>
+                <a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/190050" target="_blank" style="position: absolute;left: 66.95%;top: 67.99%;width: 16.38%;height: 7.99%;z-index: 2;"></a>
+                <a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/190087" target="_blank" style="position: absolute;left: 83.55%;top: 67.99%;width: 16.38%;height: 7.99%;z-index: 2;"></a>            
+            </div>
+
+		</div>        
 
 		<div class="evtCtnsBox evtInfo NGR" id="careful">
 			<div class="evtInfoBox">
@@ -162,9 +173,11 @@
 					<li>본 상품 신청 시 컴퓨터, 스마트 기기를 이용하여 자유롭게 수강하실 수 있습니다.</li>
                     <li>본 상품은 2배수 수강제한이 되어있습니다.</li>
                     <li>본 상품 수강기간은 다음과 같습니다.<br/>
-                        GS0순환 ~ GS3순환 : 2022년 2차 시험일까지 [2021.08.27_예정]<br/>
+                        GS0순환 ~ GS3순환 : 2022년 2차 시험일까지 [2021.09.03]<br/>
+                        GS1순환 ~ GS3순환 : 2022년 2차 시험일까지 [2021.09.03] <br/>
                         GS0순환 ~ GS2순환 : 2022년 6월 30일까지 <br/>
-                        GS0순환 ~ GS1순환 : 2022년 4월 30일까지</li>
+                        GS0순환 ~ GS1순환 : 2022년 4월 30일까지
+                    </li>
                     <li>본 상품은 구매일로부터 바로 수강이 진행되며, 수강기간 조정 및 정지가 불가합니다.</li>
 				</ul>
 				<div class="infoTit NG"><strong>교재관련</strong></div>

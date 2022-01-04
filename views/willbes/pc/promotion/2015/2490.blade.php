@@ -191,7 +191,7 @@
             alert("이용안내에 동의하셔야 합니다.");
             return;
         }
-        var url = '{{ site_url('/offPackage/show/prod-code/') }}' + code;
+        var url = '{{ site_url('/pass/offPackage/show/prod-code/') }}' + code;
         location.href = url;
     } 
 

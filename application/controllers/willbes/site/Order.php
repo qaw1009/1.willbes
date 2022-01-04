@@ -144,6 +144,7 @@ class Order extends \app\controllers\FrontController
                 'tOrderQty' => count($results['order_product'])
             ];
 
+            // 광고스크립트 설정
             if (in_array($results['order']['SiteCode'], ['2001', '2002']) === true) {
                 // 경찰                
                 $ad_data['Gtag'] = ['uid' => 'AW-710035840', 'send_to' => 'AW-710035840/IzCxCPnzl9cBEICTydIC'];  // 구글 애널리틱스
@@ -153,18 +154,40 @@ class Order extends \app\controllers\FrontController
             } else {
                 // 임용
                 $ad_data['Gtag'] = ['uid' => 'AW-966587654', 'send_to' => 'AW-966587654/1p9iCMavgowDEIbq88wD'];  // 구글 애널리틱스
+                $ad_data['Enliple2'] = ['uid' => 'ssam', 'device' => ($this->_is_mobile === true ? 'M' : 'W')];   // Enliple Tracker v2
             }
 
-            // 카카오 주문상품정보 가공
-            if (empty($ad_data['Kakao']) === false) {
+            // 주문상품정보 가공
+            $ad_prod_data_keys = ['Kakao', 'Enliple2'];
+
+            if (empty(array_filter_keys($ad_data, $ad_prod_data_keys)) === false) {
                 foreach ($results['order_product'] as $order_prod_row) {
-                    $ad_data['Kakao']['products'][] = [
-                        'name' => $order_prod_row['ProdName'],
-                        'quantity' => '1',
-                        'price' => $order_prod_row['RealPayPrice']
-                    ];
+                    // kakaoPixel
+                    if (empty($ad_data['Kakao']) === false) {
+                        $ad_data['Kakao']['products'][] = [
+                            'name' => $order_prod_row['ProdName'],
+                            'quantity' => '1',
+                            'price' => $order_prod_row['RealPayPrice']
+                        ];
+                    }
+                    // Enliple Tracker v2
+                    if (empty($ad_data['Enliple2']) === false) {
+                        $ad_data['Enliple2']['products'][] = [
+                            'productCode' => $order_prod_row['ProdCode'],
+                            'productName' => $order_prod_row['ProdName'],
+                            'price' => $order_prod_row['RealPayPrice'],
+                            'dcPrice' => $order_prod_row['DiscPrice'],
+                            'qty' => '1'
+                        ];
+                    }
                 }
-                $ad_data['Kakao']['products'] = json_encode($ad_data['Kakao']['products'], JSON_UNESCAPED_UNICODE);
+
+                // 주문상품정보 json_encode
+                foreach ($ad_prod_data_keys as $ad_key) {
+                    if (empty($ad_data[$ad_key]['products']) === false) {
+                        $ad_data[$ad_key]['products'] = json_encode($ad_data[$ad_key]['products'], JSON_UNESCAPED_UNICODE);
+                    }
+                }
             }
         }
 

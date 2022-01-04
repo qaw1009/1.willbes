@@ -26,9 +26,9 @@
 
         .evt00 {background:#f4f1f3}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/11/2395_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/01/2395_top_bg.jpg) no-repeat center top;}
 
-        .evt01 {background:#9001BF;}     
+        .evt01 {background:#e95649;}     
 
         .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/11/2395_03_bg.jpg) repeat-x center top; padding-bottom:100px;}
         
@@ -40,7 +40,7 @@
         .time li:last-child {line-height:1.3; color:#363635}
         .time li:first-child {margin-right:20px}
         .time li:last-child {margin-left:20px}
-        .time li:first-child span {color:#9001bf;}        
+        .time li:first-child span {color:#e95649;}        
         .time li:last-child span {line-height:2.5; color:#363635;font-weight:bold;} 
         .time li:last-child a {display:block; color:#fff; background:#242424; padding:10px 20px; margin-top:20px}
         .time li img {width:44px}
@@ -89,21 +89,21 @@
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2395_top.jpg" alt=""/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2395_top.jpg" alt=""/>
                 <a href="#special_lecture" title="특강 바로보기" style="position: absolute;left: 32.98%;top: 33.33%;width: 33.46%;height: 5.77%;z-index: 2;"></a>       
             </div>        
         </div>
 
         <div class="evtCtnsBox evt01"> 
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2395_01.jpg" alt=""  data-aos="fade-up"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2395_01.jpg" alt="" data-aos="fade-up"/>
         </div>                   
 
         <div class="evtCtnsBox evt02" data-aos="fade-up"> 
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2395_02.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2395_02.jpg" alt="" />
         </div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-up" id="special_lecture">
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2395_03.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2395_03.jpg" alt="" />
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif

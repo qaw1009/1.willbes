@@ -97,6 +97,49 @@ class Cart extends \app\controllers\FrontController
             $npay_enable_yn = 'Y';
         }
 
+        // 장바구니 광고스크립트 데이터 생성 (임용온라인/학원만)
+        $ad_data = [];
+        if (in_array($this->_site_code, ['2017', '2018']) === true) {
+            // 장바구니 데이터가 있을 경우만
+            if (empty($results['list']) === false) {
+                // 장바구니 정보
+                $ad_data = [
+                    'tRealSalePrice' => array_sum($results['price']),
+                    'tProdQty' => array_sum($results['count'])
+                ];
+
+                // 광고스크립트 설정
+                $ad_data['Enliple2'] = ['uid' => 'ssam', 'device' => ($this->_is_mobile === true ? 'M' : 'W')];   // Enliple Tracker v2
+
+                // 장바구니 상품정보 가공
+                $ad_prod_data_keys = ['Enliple2'];
+
+                if (empty(array_filter_keys($ad_data, $ad_prod_data_keys)) === false) {
+                    foreach ($results['list'] as $cart_prod_rows) {
+                        foreach ($cart_prod_rows as $cart_prod_row) {
+                            // Enliple Tracker v2
+                            if (empty($ad_data['Enliple2']) === false) {
+                                $ad_data['Enliple2']['products'][] = [
+                                    'productCode' => $cart_prod_row['ProdCode'],
+                                    'productName' => $cart_prod_row['ProdName'],
+                                    'price' => $cart_prod_row['RealSalePrice'],
+                                    'dcPrice' => strval($cart_prod_row['SalePrice'] - $cart_prod_row['RealSalePrice']),
+                                    'qty' => $cart_prod_row['ProdQty']
+                                ];
+                            }
+                        }
+                    }
+
+                    // 장바구니 상품정보 json_encode
+                    foreach ($ad_prod_data_keys as $ad_key) {
+                        if (empty($ad_data[$ad_key]['products']) === false) {
+                            $ad_data[$ad_key]['products'] = json_encode($ad_data[$ad_key]['products'], JSON_UNESCAPED_UNICODE);
+                        }
+                    }
+                }
+            }
+        }
+
         $this->load->view('site/cart/' . $view_name, [
             'arr_input' => $arr_input,
             'lecture_key' => $lecture_key,
@@ -104,7 +147,8 @@ class Cart extends \app\controllers\FrontController
             'is_npay' => $is_npay,
             'npay_enable_yn' => $npay_enable_yn,
             'results' => $results,
-            'hide_site_menu_sub_title' => true
+            'hide_site_menu_sub_title' => true,
+            'ad_data' => $ad_data
         ]);
     }
 

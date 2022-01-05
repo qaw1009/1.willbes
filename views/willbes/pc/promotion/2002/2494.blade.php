@@ -33,6 +33,23 @@
         .evtTab li a:hover,
         .evtTab li a.active {color:#fff; border:5px solid #000;background:#101010;}
         .evtTab:after {content:''; display:block; clear:both}
+
+        .mid2 {position:relative;}
+        .mid2 .curri00{position:absolute;left:31%;top:27%;margin-left:-100px;}
+        .mid2 .curri01{position:absolute;left:48%;top:27%;margin-left:-100px;}
+        .mid2 .curri02{position:absolute;left:64%;top:27%;margin-left:-100px;}
+        .mid2 .curri03{position:absolute;left:80%;top:27%;margin-left:-100px;}
+        .mid2 .curri04{position:absolute;left:31%;top:46%;margin-left:-100px;}
+        .mid2 .curri05{position:absolute;left:55%;top:46%;margin-left:-100px;}
+        .mid2 .curri06{position:absolute;left:79%;top:46%;margin-left:-100px;}
+
+        .mid2 div a img.on {display:none;}
+        .mid2 div a img.off {display:block}
+        .mid2 div a.active img.on,
+        .mid2 div a:hover img.on {display:block;}
+        .mid2 div a.active img.off,
+        .mid2 div a:hover img.off {display:block}
+        .mid2 div:after {content:""; display:block; clear:both}
       
     </style>
 
@@ -88,8 +105,47 @@
                         </div>
                         <div class="mid2">
                             <div class="wrap">
-                                <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_02_02.jpg" alt="자세히 보기" />
+                                <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_02_02.jpg" class="off" alt="자세히 보기" />                                
                                 <a href="javascript:alert('Coming Soon!')" style="position: absolute;left: 35.45%;top: 86.62%;width: 29.14%;height: 5.24%;z-index: 2;"></a>
+                                <div class="curri00">                                
+                                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech.png" alt="" class="off">                          
+                                </div> 
+                                <div class="curri01">
+                                    <a href="#none;">
+                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech01.png" alt="" class="off">
+                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble01.png" alt="" class="on">
+                                    </a>    
+                                </div> 
+                                <div class="curri02">
+                                    <a href="#none;">
+                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech02.png" alt="" class="off">
+                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble02.png" alt="" class="on">
+                                    </a>    
+                                </div>  
+                                <div class="curri03">
+                                    <a href="#none;">                                 
+                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech03.png" alt="" class="off">
+                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble03.png" alt="" class="on">
+                                    </a>    
+                                </div>  
+                                <div class="curri04">
+                                    <a href="#none;">
+                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech04.png" alt="" class="off">
+                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble04.png" alt="" class="on">
+                                    </a>
+                                </div>  
+                                <div class="curri05">
+                                    <a href="#none;">
+                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech05.png" alt="" class="off">
+                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble05.png" alt="" class="on">
+                                    </a>   
+                                </div>  
+                                <div class="curri06">
+                                    <a href="#none;">
+                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech06.png" alt="" class="off">
+                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble06.png" alt="" class="on">
+                                    </a>    
+                                </div>               
                             </div>                          
                         </div>
                         <div class="end">

@@ -22,8 +22,8 @@
                     <div class="form-control-static col-md-4">
                         {{$data['SiteName']}}
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="">카테고리</label>
-                    <div class="form-control-static col-md-4 ml-12-dot">
+                    <label class="control-label col-md-1-1" for="">카테고리</label>
+                    <div class="form-control-static col-md-4">
                         @if(empty($data['arr_cate_code']) === false)
                             @foreach($data['arr_cate_code'] as $key => $val)
                                 {{$val}} @if ($loop->last === false) | @endif
@@ -32,40 +32,41 @@
                     </div>
                 </div>
 
-                {{--
-                TODO: 필요없는 항목
+                {{-- 필요없는 항목
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">분류</label>
                     <div class="form-control-static col-md-3">
                         {{$data['MdCateName']}}
                     </div>
-                </div>
-                --}}
+                </div>--}}
+
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">과목</label>
                     <div class="form-control-static col-md-4">
                         {{$data['SubjectName']}}
                     </div>
-                    <label class="control-label col-md-1-1" for="">질문유형</label>
-                    <div class="form-control-static col-md-4">
-                        {{$data['TypeCcdName']}}
-                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">질문강좌</label>
-                    <div class="form-control-static col-md-10">
-
+                @if ($display_type == 'on')
+                    <div class="form-group">
+                        <label class="control-label col-md-1-1" for="">질문유형</label>
+                        <div class="form-control-static col-md-4">
+                            {{$data['TypeCcdName']}}
+                        </div>
+                        <label class="control-label col-md-1-1" for="">질문강좌</label>
+                        <div class="form-control-static col-md-4">
+                            {{$data['ProdName']}}
+                        </div>
                     </div>
-                </div>
+                @endif
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">등록자</label>
                     <div class="form-control-static col-md-4">
                         {{$data['MemName']}}({{$data['MemId']}})
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="">휴대폰 번호</label>
-                    <div class="form-control-static col-md-4 ml-12-dot">
+                    <label class="control-label col-md-1-1" for="">휴대폰 번호</label>
+                    <div class="form-control-static col-md-4">
                         {{$data['MemPhone']}}
                     </div>
                 </div>
@@ -75,8 +76,8 @@
                     <div class="form-control-static col-md-4">
                         {{ $data['RegDatm'] }}
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="">사용</label>
-                    <div class="form-control-static col-md-4 ml-12-dot">
+                    <label class="control-label col-md-1-1" for="">사용</label>
+                    <div class="form-control-static col-md-4">
                         {!! ($data['IsUse'] == 'Y') ? '사용' : '<span class="red">미사용</span>'  !!}
                     </div>
                 </div>
@@ -92,8 +93,8 @@
                             @endif
                         @endfor
                     </div>
-                    <label class="control-label col-md-1 d-line" for="">조회수</label>
-                    <div class="form-control-static col-md-4 ml-12-dot">
+                    <label class="control-label col-md-1-1" for="">조회수</label>
+                    <div class="form-control-static col-md-4">
                         {{$data['ReadCnt']}} ({{$data['SettingReadCnt']}})
                     </div>
                 </div>

@@ -82,6 +82,13 @@
                             </a>
                         </li>
                     @endif
+                    @if($data['IsAssignmentForQnaBoard'] == 'Y') {{-- 학습Q&A(임용) --}}
+                    <li>
+                        <a href="javascript:void(0);" data-board-idx="" data-board-url="{{front_url('/prof/assignmentQna/popupIndex')}}" onclick="go_board_popup(this)">
+                            <img src="{{ img_static_url('promotion/main/2018/prof_icon08.png') }}" alt="첨삭"> 첨삭게시판
+                        </a>
+                    </li>
+                    @endif
                     {{--<li class="sampleLec">
                         <a href="#none">
                             <img src="{{ img_static_url('promotion/main/2018/prof_icon07.png') }}" alt="샘플강의"> 샘플강의

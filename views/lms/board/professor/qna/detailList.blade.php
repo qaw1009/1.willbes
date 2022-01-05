@@ -111,7 +111,7 @@
                     <th>카테고리</th>
                     <th>분류</th>
                     <th>과목</th>
-                    <th>질문유형</th>
+                    @if ($display_type == 'on')<th>질문유형</th>@endif
                     <th>제목</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -197,7 +197,9 @@
                         }},
                     {'data' : 'MdCateName'},
                     {'data' : 'SubjectName'},
-                    {'data' : 'TypeCcdName'},
+                    @if ($display_type == 'on')
+                        {'data' : 'TypeCcdName'},
+                    @endif
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             if (row.RegType == 1) {
                                 return '<a href="javascript:void(0);" class="btn-admin-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';

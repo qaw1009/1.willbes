@@ -106,7 +106,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2139_04.jpg"  alt="영상으로 만나보세요"/>
             <ul>
                 <li>                    
-                    <iframe src="https://www.youtube.com/embed/MVdqPxC_i5c?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/39Aovh9Lwe0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div>#탐정사 시험안내</div>
                 </li>
                 <li>

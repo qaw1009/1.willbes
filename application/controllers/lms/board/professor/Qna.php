@@ -30,6 +30,7 @@ class Qna extends BaseBoard
         'reply' => '621',       //답변상태
         'type_group_ccd' => '702' //유형 그룹 코드 = 질문유형
     ];
+    private $_target_bm_display = ['119'];  //항목 미노출 대상 게시판
 
     public function __construct()
     {
@@ -140,6 +141,7 @@ class Qna extends BaseBoard
 
         $this->load->view("board/professor/{$this->board_name}/detailList", [
             'bm_idx' => $this->bm_idx,
+            'display_type' => (in_array($this->bm_idx, $this->_target_bm_display) ? 'off' : 'on'),
             'arr_search_data' => $arr_search_data['arr_search_data'],
             'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'arr_ccd_reply' => $this->_Ccd['reply'],
@@ -269,7 +271,7 @@ class Qna extends BaseBoard
             $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsPublic, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
-            LB.SubjectIdx, PS.SubjectName
+            LB.SubjectIdx, PS.SubjectName, lms_product.ProdName
             ';
             $method = 'PUT';
             $board_idx = $params[0];
@@ -487,7 +489,8 @@ class Qna extends BaseBoard
             MEM.MemName, MEM.MemId, fn_dec(MEM.PhoneEnc) AS MemPhone,
             LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent,
             LB.SubjectIdx, PS.SubjectName,
-            LB.MdCateCode, MdSysCate.CateName as MdCateName
+            LB.MdCateCode, MdSysCate.CateName as MdCateName,
+            lms_product.ProdName
             ';
         $board_idx = $params[0];
         $arr_condition = ([
@@ -530,6 +533,7 @@ class Qna extends BaseBoard
         $data['arr_voc_code'] = $arr_voc_code;
 
         $this->load->view("board/professor/{$this->board_name}/create_qna_reply", [
+            'display_type' => (in_array($this->bm_idx, $this->_target_bm_display) ? 'off' : 'on'),
             'boardName' => $this->board_name,
             'arr_prof_info' => $arr_prof_info,
             'data' => $data,
@@ -572,7 +576,8 @@ class Qna extends BaseBoard
             qnaAdmin.wAdminName AS qnaAdminName, qnaAdmin2.wAdminName AS qnaUpdAdminName,
             LB.ReplyRegDatm, LB.ReplyUpdDatm,
             LB.SubjectIdx, PS.SubjectName,
-            LB.MdCateCode, MdSysCate.CateName as MdCateName
+            LB.MdCateCode, MdSysCate.CateName as MdCateName,
+            lms_product.ProdName
             ';
         $board_idx = $params[0];
         $arr_condition = ([
@@ -625,6 +630,7 @@ class Qna extends BaseBoard
         $data['reply_status'] = (empty($arr_reply_code[$data['ReplyStatusCcd']])) ? '' : $arr_reply_code[$data['ReplyStatusCcd']];
 
         $this->load->view("board/professor/{$this->board_name}/read_qna_reply", [
+            'display_type' => (in_array($this->bm_idx, $this->_target_bm_display) ? 'off' : 'on'),
             'boardName' => $this->board_name,
             'arr_prof_info' => $arr_prof_info,
             'data' => $data,

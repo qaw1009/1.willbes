@@ -655,6 +655,7 @@ class BoardModel extends WB_Model
             case "qna" :
             case "mocktest/qna" :
                 $from = $from."
+                    LEFT JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC3 ON LB.ReplyStatusCcd = LSC3.Ccd

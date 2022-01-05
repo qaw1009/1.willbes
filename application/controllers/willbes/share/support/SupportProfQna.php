@@ -12,6 +12,7 @@ class SupportProfQna extends BaseSupport
 
     protected $_bm_idx;
     protected $_default_path;
+    protected $_view_postfix = '';
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
     protected $_paging_count_m = 5;
@@ -24,6 +25,7 @@ class SupportProfQna extends BaseSupport
     public function __construct()
     {
         parent::__construct();
+        $this->_view_postfix = ($this->_bm_idx == '119' ? '_'.$this->_bm_idx : '');
     }
 
     /**
@@ -363,11 +365,16 @@ class SupportProfQna extends BaseSupport
         $method = 'add';
         $msg = '저장되었습니다';
         $rules = [
-            ['field' => 's_consult_type', 'label' => '상담유형', 'rules' => 'trim|required|integer'],
             ['field' => 'board_title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
             ['field' => 'is_public', 'label' => '공개여부', 'rules' => 'trim|required|in_list[Y,N]'],
         ];
+
+        if ($this->_bm_idx != '119') {
+            $rules = array_merge($rules, [
+                ['field' => 's_consult_type', 'label' => '상담유형', 'rules' => 'trim|required|integer'],
+            ]);
+        }
 
         switch ($this->_default_path) {
             case '/support/qna' :    //고객센터 상담게시판
@@ -440,7 +447,7 @@ class SupportProfQna extends BaseSupport
         //상담유형
         $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
 
-        $this->load->view('support/prof/layer_index_qna', [
+        $this->load->view('support/prof/layer_index_qna'.$this->_view_postfix, [
             'default_path' => $this->_default_path,
             'arr_input' => $arr_input,
             'arr_base' => $arr_base
@@ -578,7 +585,7 @@ class SupportProfQna extends BaseSupport
             $data['AttachData'] = json_decode($data['AttachData'],true);    //첨부파일
         }
 
-        $this->load->view('support/prof/layer_create_qna', [
+        $this->load->view('support/prof/layer_create_qna'.$this->_view_postfix, [
             'default_path' => $this->_default_path
             ,'method' => $method
             ,'arr_input' => $arr_input
@@ -645,7 +652,7 @@ class SupportProfQna extends BaseSupport
         $data['ReplyContent'] = $this->_getBoardForContent($data['ReplyContent'], $data['AttachData'], 1);
 
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
-        $this->load->view('support/prof/layer_show_qna', [
+        $this->load->view('support/prof/layer_show_qna'.$this->_view_postfix, [
             'default_path' => $this->_default_path,
             'arr_input' => $arr_input,
             'data' => $data,

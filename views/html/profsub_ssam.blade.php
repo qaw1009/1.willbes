@@ -241,7 +241,7 @@
                     </li>
                     <li>
                         <a href="#none" onclick="openWin('Layerprof'),openWin('profBoard')">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon06.png" alt="첨삭게시판"> 첨삭게시판
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon08.png" alt="첨삭게시판"> 첨삭게시판
                         </a>
                     </li>
                     <li>

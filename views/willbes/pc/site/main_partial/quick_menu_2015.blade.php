@@ -23,4 +23,9 @@
             {!! banner_html(element('메인_퀵배너3', $data['arr_main_banner']), 'sliderNum') !!}
         </div>
     </li>
+    <li>
+        <div class="QuickSlider">
+            {!! banner_html(element('메인_퀵배너4', $data['arr_main_banner']), 'sliderNum') !!}
+        </div>
+    </li>
 </ul>

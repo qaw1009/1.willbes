@@ -26,6 +26,12 @@
             @endif
         </div>
 
+        <div class="youtubeWrap">
+            <div>
+                <iframe src="https://www.youtube.com/embed/5ktEIM6KSUY?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
         {{-- 신간/화제의책/예약판매 --}}
         <div class="Section">
             <div class="widthAuto bookListWrap">
@@ -37,12 +43,14 @@
                     </ul>
                     <div class="more"><a href="{{ front_url('/bookStore/index/pattern/new') }}">+ 신간안내 더보기</a></div>
                 </div>
+                
                 <div id="tab01" class="bookContent">
                     <div class="booktitle">
                         <span><img src="{{ img_static_url('promotion/main/2012_main_img01.png') }}" alt="신간안내"></span>
                         <div class="NGEB">신간안내</div>
                         <p>윌스토리가 새로 나온 책을 안내해 드립니다.<br>혹시나 나에게 필요한 책이 나왔는지 확인해 보세요.</p>
                     </div>
+
                     <div class="bookList">
                         <ul>
                             {{-- 신간안내 --}}

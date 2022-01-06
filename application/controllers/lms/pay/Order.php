@@ -20,7 +20,7 @@ class Order extends BaseOrder
     public function index()
     {
         // 사용하는 코드값 조회
-        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayChannel', 'PayRoute', 'PayMethod', 'ProdType', 'LearnPattern', 'SalePattern', 'PayStatus', 'DeliveryStatus']);
+        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayChannel', 'PayRoute', 'PayMethod', 'ProdType', 'LearnPattern', 'SalePattern', 'PayStatus', 'DeliveryStatus', 'PackType', 'UserPackType']);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
 
         $this->load->view('pay/order/index', [
@@ -32,6 +32,8 @@ class Order extends BaseOrder
             'arr_sale_pattern_ccd' => $codes[$this->_group_ccd['SalePattern']],
             'arr_pay_status_ccd' => $codes[$this->_group_ccd['PayStatus']],
             'arr_delivery_status_ccd' => $codes[$this->_group_ccd['DeliveryStatus']],
+            'arr_pack_type_ccd' => $codes[$this->_group_ccd['PackType']],
+            'arr_userpack_type_ccd' => $codes[$this->_group_ccd['UserPackType']],
             '_pay_status_ccd' => $this->orderListModel->_pay_status_ccd
         ]);
     }
@@ -79,6 +81,7 @@ class Order extends BaseOrder
                 'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'),
                 'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd'),
                 'PL.LearnPatternCcd' => $this->_reqP('search_learn_pattern_ccd'),
+                'PL.PackTypeCcd' => $this->_reqP('search_pack_type_ccd'),
                 'OP.SalePatternCcd' => $this->_reqP('search_sale_pattern_ccd'),
                 'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd'),
                 'OPD.DeliveryStatusCcd' => $this->_reqP('search_delivery_status_ccd'),

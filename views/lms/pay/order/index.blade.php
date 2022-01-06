@@ -41,6 +41,15 @@
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
+                        <select class="form-control" id="search_pack_type_ccd" name="search_pack_type_ccd" title="패키지구분">
+                            <option value="">패키지구분</option>
+                            @foreach($arr_pack_type_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                            @foreach($arr_userpack_type_ccd as $key => $val)
+                                <option value="{{ $key }}">사용자 {{ $val }}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control" id="search_sale_pattern_ccd" name="search_sale_pattern_ccd" title="판매형태">
                             <option value="">판매형태</option>
                         @foreach($arr_sale_pattern_ccd as $key => $val)

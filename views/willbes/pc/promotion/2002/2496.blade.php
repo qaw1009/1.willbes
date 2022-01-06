@@ -16,17 +16,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/
-
-        /*타이머*/
-        .newTopDday {background:#f5f5f5; width:100%; padding:20px 0; font-size:24px; color:#000;}
-        .newTopDday ul {width:1120px; margin:0 auto}
-        .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-weight:600; color:#000}
-        .newTopDday ul li strong {line-height:70px}
-        .newTopDday ul li img {width:50px}
-        .newTopDday ul li:first-child {text-align:right; padding-right:20px; width:28%; line-height:70px;}
-        .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%; line-height:70px;}
-        .newTopDday ul:after {content:""; display:block; clear:both}
-
+      
         .sky {position:fixed;top:150px; right:10px; z-index:10;}
         .sky a {display:block; margin-bottom:15px}
        
@@ -42,19 +32,19 @@
 
         .evt03 {background:#fff}
 
-		.evt04 {background:#FAFAFC; padding-bottom:150px}
-        .evt04 div {width:1120px; margin:0 auto}
-        .evt04 .btn a {font-size:30px; height:80px; line-height:80px; color:#fff; background:#000; border-radius:10px; display:block; text-align:center}
-        .evt04 .btn a:hover {background:#015637;}
-        /*탭(이미지)*/
-        .evt04 .tabBox {background:#FAFAFC}
-        .evt04 .tabs {width:760px; margin:0 auto;}		
-        .evt04 .tabs li {display:inline; float:left;padding-right:3px;}	
-        .evt04 .tabs a img.off {display:block}
-        .evt04 .tabs a img.on {display:none}
-        .evt04 .tabs a.active img.off {display:none}
-        .evt04 .tabs a.active img.on {display:block}
-        .evt04 .tabs:after {content:""; display:block; clear:both}
+        .evt_tab{background:#fafafb}  
+		.evt_tab .wrap{background:#fafafb}                   
+        /*탭*/   
+        .evtTab {width:780px; margin:0 auto}
+        .evtTab li {display:inline; float:left; width:50%}
+        .evtTab li a {display:block; color:#000; font-size:24px; padding:20px 0; border:5px solid #000;font-weight:bold}
+        .evtTab li:first-child a {border-right:0}
+        .evtTab li:last-child a {border-left:0}
+        .evtTab li a:hover,
+        .evtTab li a.active {color:#fff; border:5px solid #000;background:#101010;}
+        .evtTab:after {content:''; display:block; clear:both}
+
+        .evt_tab_again {background:#fafafb;padding-bottom:100px}
 
         .evt05 {background:#ECEBF0}
 
@@ -76,39 +66,13 @@
     <div class="evtContent NSK" id="evtContainer">      
 
         <div class="sky" id="QuickMenu">
-            <a href="#none" class="r_btn_tab" data-tab-id="1">
+            <a href="#event01">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_sky01.png" alt="선접수 할인"/>
             </a>
-            <a href="#none"class="r_btn_tab" data-tab-id="2">
+            <a href="#event02">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_sky02.png" alt="추가할인 이벤트"/>
             </a>           
-        </div>
-        {{--
-        <!-- 타이머 -->
-        <div id="newTopDday" class="newTopDday">
-            <div id="ddaytime">
-                <ul>
-                    <li class="NSK-Black">
-                        SUPER PASS
-                    </li>
-                    <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><strong>일</strong></li>
-                    <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><strong>:</strong></li>
-                    <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><strong>:</strong></li>
-                    <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li class="NSK-Black">
-                        {{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} {{ $arr_promotion_params['etime'] or '' }} 마감!
-                    </li>
-                </ul>
-            </div>
-        </div>
-        --}}
+        </div>    
 
         <div class="evtCtnsBox evt00" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
@@ -135,36 +99,37 @@
         <div class="evtCtnsBox evt03" data-aos="fade-top">
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_03.jpg" alt="합격 커리큘럼"  />   
         </div>
-          
-         <div class="evtCtnsBox evt04" data-aos="fade-top">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04.jpg" alt="2022년 시험대비 합격반"  />
-            <div class="tabBox">              
-                <ul class="tabs">
-                    <li>
-                        <a href="#tab1" id="menu_tab1">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_tab1_on.png" class="on"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_tab1_off.png" class="off"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab2" id="menu_tab2">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_tab2_on.png" class="on"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_tab2_off.png" class="off"/>
-                        </a>
-                    </li>                    
-                </ul>
+
+        <div class="evtCtnsBox evt_tab" data-aos="fade-top">
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04.jpg" alt="시험대비 합격반" id="event01" />
+            <ul class="evtTab">
+                <li><a href="#tab01">3월 개강반</a></li>
+                <li><a href="#tab02">4월 개강반</a></li>
+            </ul>            
+            <div id="tab01">
+                <div class="evtCtnsBox evt01" data-aos="fade-top">
+                    <div class="wrap">
+                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_01.jpg" alt="3월 개강반" />
+                        <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" title="super pass 신청하기" target="_blank" style="position: absolute;left: 33.45%;top: 86.92%;width: 33.14%;height: 8.24%;z-index: 2;"></a>                  
+                    </div>                   
+                </div>                
             </div>
+            <div id="tab02">
+                <div class="evtCtnsBox evt01" data-aos="fade-top">
+                        <div class="wrap">
+                            <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_02.jpg" alt="4월 개강반" />
+                            <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" title="super pass 신청하기" target="_blank" style="position: absolute;left: 33.45%;top: 86.92%;width: 33.14%;height: 8.24%;z-index: 2;"></a>                                          
+                        </div>                     
+                    </div>                
+                </div>
+            </div>                              
+        </div>
 
-            <div id="tab1" class="tabContents">       
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_01.jpg" alt="3월 개강반"/>
-                <div class="NSK-Black btn"><a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank">SUPER PASS 신청하기 ></a></div>     
+        <div class="evtCtnsBox evt_tab_again" data-aos="fade-top">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_again.jpg" alt="다시한번 합격을 위해" id="event02" />
+                <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" title="super pass 신청하기" target="_blank" style="position: absolute;left: 36.45%;top: 84.12%;width: 27.14%;height: 6.24%;z-index: 2;"></a>
             </div> 
-
-            <div id="tab2" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_02.jpg" alt="4월 개강반"/>
-                <div class="NSK-Black btn"><a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank">SUPER PASS 신청하기 ></a></div>
-            </div> 
-
         </div>
 
         <div class="evtCtnsBox evt05" data-aos="fade-top">
@@ -264,40 +229,31 @@
     </script>
 
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
-    <script type="text/javascript">          
-        $(document).ready(function() {
-            /*강의탭*/
-        var $active, $links = $(this).find('.tabs li a');
-            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-            $active.addClass('active');
-            $links.not($active).each(function () {
-                $(this.hash).hide()
+    <script type="text/javascript">
+
+     /*탭*/
+     $(document).ready(function(){
+            $('.evtTab').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+                $content = $($active[0].hash);
+                $links.not($active).each(function () {
+                    $(this.hash).hide()
+                });
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+                    $active = $(this);
+                    $content = $(this.hash);
+                    $active.addClass('active');
+                    $content.show();
+                    e.preventDefault();
+                });
+            });
         });
-
-        $(".r_btn_tab").click(function () {
-            var offset = $('.tabs').offset();
-            $('html, body').animate({scrollTop : offset.top}, 400);
-
-            var activeTab = $(this).data("tab-id");
-            $(".tabs li a").removeClass("active");
-            $('#menu_tab'+activeTab).addClass("active");
-            $(".tabContents").hide();
-            $('#tab'+activeTab).fadeIn();
-            return false;
-        });
-
-        $(".tabs li a").click(function(){
-            var activeTab = $(this).attr("href");
-            $(".tabs li a").removeClass("active");
-            $(this).addClass("active");
-            $(".tabContents").hide();
-            $(activeTab).fadeIn();
-            return false;
-        });
-
-            /*디데이카운트다운*/
-            dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
-        }); 
          
     </script>
 

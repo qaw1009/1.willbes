@@ -2,7 +2,9 @@
 
 @section('content')
 <style type="text/css">
-
+    .youtubeWrap {margin:50px auto 0; background:#f4f4f4; padding:50px 0}
+    .youtubeWrap div {width:900px; height:506px; margin:0 auto; box-shadow: 0 10px 25px rgba(0,0,0,.4);}
+    .youtubeWrap div iframe {width:900px; height:506px;}
 </style>
 <!-- Container -->
 
@@ -63,6 +65,12 @@
             </div>  
         </div>
     </div>    
+
+    <div class="youtubeWrap">
+        <div>
+            <iframe src="https://www.youtube.com/embed/5ktEIM6KSUY?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
 
     {{--신간/화제의책/예약판매--}}
     <div class="Section">

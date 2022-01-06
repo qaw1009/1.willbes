@@ -110,8 +110,8 @@
 
         <div class="evtCtnsBox wb_02" data-aos="fade-up" id="event">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/1655_02.jpg" alt="수강신청" usemap="#Map1656A" border="0"/>
-                <a href="javascript:go_PassLecture('165419');" title="수강신청" style="position: absolute; left: 60.54%; top: 65.47%; width: 22.77%; height: 7.94%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/11/1655_02.jpg" alt="수강신청"/>
+                <a href="javascript:go_PassLecture('187646');" title="수강신청" style="position: absolute; left: 60.54%; top: 65.47%; width: 22.77%; height: 7.94%; z-index: 2;"></a>
             </div>
    
             <div class="check" id="chkInfo">   

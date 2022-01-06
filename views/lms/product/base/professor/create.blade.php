@@ -216,12 +216,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="is_board_public">학습Q&A 공개/비공개 사용여부
+                    <label class="control-label col-md-2" for="is_board_public">학습Q&A 질문 공개여부 노출
                     </label>
                     <div class="col-md-10">
                         <div class="checkbox">
-                            <input type="checkbox" id="is_board_public" name="is_board_public" class="flat" value="Y" @if($data['IsBoardPublic'] == 'Y' || $method=="POST") checked="checked" @endif/> <label for="is_board_public" class="input-label">공개</label>
-                            <span class="pl-30"># 미체크시 사용자단 학습Q&A에서 공개로 자동 설정됩니다.</span>
+                            <input type="checkbox" id="is_board_public" name="is_board_public" class="flat" value="Y" @if($data['IsBoardPublic'] == 'Y' || $method=="POST") checked="checked" @endif/> <label for="is_board_public" class="input-label">사용</label>
+                            <span class="pl-30"># 체크시 사용자단 학습Q&A에서 질문 공개/비공개 여부 선택이 가능하며, 미체크시 공개로 자동 설정됩니다.</span>
                         </div>
                     </div>
                 </div>

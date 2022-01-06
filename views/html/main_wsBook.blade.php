@@ -3,8 +3,8 @@
 @section('content')
 <style type="text/css">
     .youtubeWrap {margin:50px auto 0; background:#f4f4f4; padding:50px 0}
-    .youtubeWrap div {width:900px; height:506px; margin:0 auto; box-shadow: 0 10px 25px rgba(0,0,0,.4);}
-    .youtubeWrap div iframe {width:900px; height:506px;}
+    .youtubeWrap div {width:1120px; margin:0 auto; box-shadow: 0 10px 25px rgba(0,0,0,.4);}
+    .youtubeWrap div iframe {width:1120px; height:630px;}
 </style>
 <!-- Container -->
 

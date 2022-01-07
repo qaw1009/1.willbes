@@ -122,7 +122,7 @@
                         </tr>
                         <tr>
                             <td>2023 신광은 형소법 & 신광은 형법  & 송광호 실무종합 PASS</td>
-                            <td><a href="#none" target="_blank">수강신청 ></a></td>
+                            <td><a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189903" target="_blank">수강신청 ></a></td>
                         </tr>
                     </tbody>
                 </table>         

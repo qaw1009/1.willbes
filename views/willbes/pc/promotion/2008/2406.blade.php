@@ -55,14 +55,14 @@
 		<div class="evtCtnsBox evt_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_top.jpg" alt="72기 경찰간부시험 대비 티패스"/>
         </div>
-        
+        {{--
         <div class="evtCtnsBox evt_01" data-aos="fade-up">            
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_01.jpg" alt="한달 간 이벤트"/>
             <div class="d_day NSK">
                 <span class="NSK-Black">{{ (empty($arr_base['dday_data'][0]['DDay']) === false) ? 'D'.$arr_base['dday_data'][0]['DDay'] : '' }}</span>
             </div>
         </div>
-
+        --}}
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_02.jpg" alt="특별혜택"/>

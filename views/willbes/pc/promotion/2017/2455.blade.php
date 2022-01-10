@@ -97,7 +97,19 @@
                     <a href="javascript:fnPlayerSample('189561','1328769','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t16.jpg" alt="다이애나 전공음악"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="javascript:fnPlayerSample('189719','1329286','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t14.jpg" alt="허역팀 일반사회"/></a>
+                    <a href="javascript:fnPlayerSample('189719','1332081','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t14.jpg" alt="허역팀 일반사회"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189719','1329286','HD');"><img src="https://static.willbes.net/public/images/promotion/2022/01/2455_01_t26.jpg" alt="허역 일반사회"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189719','1329288','HD');"><img src="https://static.willbes.net/public/images/promotion/2022/01/2455_01_t27.jpg" alt="이응재 일반사회"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189719','1329289','HD');"><img src="https://static.willbes.net/public/images/promotion/2022/01/2455_01_t28.jpg" alt="정인홍 일반사회"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189719','1329287','HD');"><img src="https://static.willbes.net/public/images/promotion/2022/01/2455_01_t29.jpg" alt="김현중 일반사회"/></a>
                 </div>
                 <div class="profBox">
                     <a href="javascript:fnPlayerSample('189558','1328678','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t15.jpg" alt="김종권 전공역사"/></a>

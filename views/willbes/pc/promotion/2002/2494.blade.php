@@ -151,12 +151,12 @@
                         <div class="end">
                             <div class="wrap">
                                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_02_03.jpg" alt="종합반" />
-                                <a href="javascript:alert('Coming Soon!')" title="김원욱 기본형 신청하기"  style="position: absolute;left: 16.95%;top: 39.92%;width: 14.72%;height: 4.54%;z-index: 2;"></a>                      
-                                <a href="javascript:alert('Coming Soon!')" title="이국령 헌법 신청하기"  style="position: absolute;left: 42.55%;top: 39.92%;width: 14.72%;height: 4.54%;z-index: 2;"></a>
-                                <a href="javascript:alert('Coming Soon!')" title="경행경채 기본형 신청하기"  style="position: absolute;left: 68.25%;top: 39.92%;width: 14.72%;height: 4.54%;z-index: 2;"></a>                      
-                                <a href="javascript:alert('Coming Soon!')" title="김원욱 심화형 신청하기"  style="position: absolute;left: 16.95%;top: 66.22%;width: 14.72%;height: 4.54%;z-index: 2;"></a>
-                                <a href="javascript:alert('Coming Soon!')" title="이국령 심화형 신청하기"  style="position: absolute;left: 42.55%;top: 66.22%;width: 14.72%;height: 4.54%;z-index: 2;"></a>                      
-                                <a href="javascript:alert('Coming Soon!')" title="경행경채 심화형 신청하기"  style="position: absolute;left: 68.25%;top: 66.22%;width: 14.72%;height: 4.54%;z-index: 2;"></a>             
+                                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190191" title="김원욱 기본형 신청하기" target="_blank" style="position: absolute;left: 16.95%;top: 39.92%;width: 14.72%;height: 4.54%;z-index: 2;"></a>                      
+                                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190192" title="이국령 헌법 신청하기" target="_blank" style="position: absolute;left: 42.55%;top: 39.92%;width: 14.72%;height: 4.54%;z-index: 2;"></a>
+                                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190197" title="경행경채 기본형 신청하기" target="_blank" style="position: absolute;left: 68.25%;top: 39.92%;width: 14.72%;height: 4.54%;z-index: 2;"></a>                      
+                                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190250" title="김원욱 심화형 신청하기" target="_blank" style="position: absolute;left: 16.95%;top: 66.22%;width: 14.72%;height: 4.54%;z-index: 2;"></a>
+                                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190193" title="이국령 심화형 신청하기" target="_blank" style="position: absolute;left: 42.55%;top: 66.22%;width: 14.72%;height: 4.54%;z-index: 2;"></a>                      
+                                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190251" title="경행경채 심화형 신청하기"target="_blank" style="position: absolute;left: 68.25%;top: 66.22%;width: 14.72%;height: 4.54%;z-index: 2;"></a>             
                             </div>
                         </div>         
                     </div>                

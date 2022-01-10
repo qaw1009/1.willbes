@@ -202,7 +202,7 @@ class BookModel extends WB_Model
     {
         $column = '
             P.ProdCode, P.SiteCode, P.ProdName, P.IsPoint, P.PointSavePrice, P.PointSaveType, P.IsCoupon, P.IsNew, P.IsBest, P.IsFreebiesTrans, P.Keyword, P.OptionCcds
-                , P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
+                , P.OrderLimitCnt, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
                 , B.wBookIdx, B.SchoolYear, B.CourseIdx, B.DispTypeCcd, B.IsFree
                 , S.SaleRate, S.SaleDiscType, S.RealSalePrice
                 , VWB.wBookName, VWB.wPublName, VWB.wPublDate, VWB.wAuthorNames, VWB.wIsbn, VWB.wPageCnt, VWB.wEditionCcdName, VWB.wPrintCnt, VWB.wEditionCnt, VWB.wEditionSize
@@ -244,6 +244,12 @@ class BookModel extends WB_Model
                 $option_ccds = implode(',', $option_ccds);
             }
 
+            // 구매제한개수 (미입력시 NULL)
+            $order_limit_cnt = element('order_limit_cnt', $input);
+            if (empty($order_limit_cnt) === true || is_numeric($order_limit_cnt) === false || $order_limit_cnt < 1) {
+                $order_limit_cnt = null;
+            }
+
             // 상품 등록
             $data = [
                 'ProdCode' => $row['ProdCode'],
@@ -266,6 +272,7 @@ class BookModel extends WB_Model
                 'IsDeliveryInfo' => 'Y',
                 'Keyword' => element('keyword', $input),
                 'OptionCcds' => $option_ccds,
+                'OrderLimitCnt' => $order_limit_cnt,
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
@@ -359,6 +366,12 @@ class BookModel extends WB_Model
                 $option_ccds = implode(',', $option_ccds);
             }
 
+            // 구매제한개수 (미입력시 NULL)
+            $order_limit_cnt = element('order_limit_cnt', $input);
+            if (empty($order_limit_cnt) === true || is_numeric($order_limit_cnt) === false || $order_limit_cnt < 1) {
+                $order_limit_cnt = null;
+            }
+
             // 상품 정보 수정
             $data = [
                 'ProdName' => element('book_name', $input),
@@ -371,6 +384,7 @@ class BookModel extends WB_Model
                 'IsFreebiesTrans' => element('is_freebies_trans', $input, 'Y'),
                 'Keyword' => element('keyword', $input),
                 'OptionCcds' => $option_ccds,
+                'OrderLimitCnt' => $order_limit_cnt,
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];

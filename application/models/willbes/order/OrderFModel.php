@@ -82,12 +82,21 @@ class OrderFModel extends BaseOrderFModel
                 $row['SubRealSalePrice'] = json_decode($row['SubRealSalePrice'], true);
             }
 
-            // 주문정보 입력에서만 수강생교재 체크
+            // 주문정보 입력단 체크
             if ($make_type == 'order') {
                 if ($row['CartProdType'] == 'book') {
+                    // 수강생교재 체크
                     $check_student_book = $this->cartFModel->checkStudentBook($row['SiteCode'], $row['ProdCode'], $row['ParentProdCode'], $row['ProdQty']);
                     if ($check_student_book !== true) {
                         return $check_student_book;
+                    }
+
+                    // 상품별 회원당 구매가능개수 체크
+                    if (empty($row['OrderLimitCnt']) === false) {
+                        $check_limit_cnt = $this->cartFModel->checkOrderLimitCnt($row['ProdCode'], $row['OrderLimitCnt'], $row['ProdQty']);
+                        if ($check_limit_cnt !== true) {
+                            return $check_limit_cnt;
+                        }
                     }
                 }
 

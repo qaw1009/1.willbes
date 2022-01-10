@@ -184,7 +184,14 @@
                                         @foreach($results['list']['book'] as $idx => $row)
                                             <tr>
                                                 <td class="w-chk"><input type="checkbox" name="cart_idx[]" value="{{ $row['CartIdx'] }}" class="chk-cart"/></td>
-                                                <td class="w-list tx-left pl20"><span class="pBox p3">교재</span> {{ $row['ProdAddInfo'] }} <strong>{{ $row['ProdName'] }}</strong></td>
+                                                <td class="w-list tx-left pl20">
+                                                    <span class="pBox p3">교재</span> {{ $row['ProdAddInfo'] }} <strong>{{ $row['ProdName'] }}</strong>
+                                                    @if(empty($row['OrderLimitCnt']) === false)
+                                                        <div class="buyinfo">
+                                                            <a href="javascript:void(0);"><span>{{ $row['OrderLimitCnt'] }}개까지</span>구매가능</a>
+                                                        </div>
+                                                    @endif
+                                                </td>
                                                 <td>{{ $row['ProdQty'] }}</td>
                                                 <td class="w-price tx-light-blue">{{ number_format($row['RealSalePrice'], 0) }}원</td>
                                                 <td class="w-buy">
@@ -441,4 +448,6 @@
         });
     });
 </script>
+{{-- 광고 스크립트 추가 --}}
+{{--@include('willbes.pc.site.cart.ad_script_partial')--}}
 @stop

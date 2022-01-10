@@ -198,11 +198,17 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="is_coupon_y">배송료부과여부 <span class="required">*</span>
                     </label>
-                    <div class="col-md-9 item">
+                    <div class="col-md-3 item">
                         <div class="radio">
                             <input type="radio" id="is_freebies_trans_y" name="is_freebies_trans" class="flat" value="Y" required="required" title="배송료부과여부" @if($method == 'POST' || $data['IsFreebiesTrans'] == 'Y')checked="checked"@endif/> <label for="is_freebies_trans_y" class="input-label">유료</label>
                             <input type="radio" id="is_freebies_trans_n" name="is_freebies_trans" class="flat" value="N" @if($data['IsFreebiesTrans'] == 'N')checked="checked"@endif/> <label for="is_freebies_trans_n" class="input-label">무료</label>
                         </div>
+                    </div>
+                    <label class="control-label col-md-2 col-md-offset-1">구매제한개수
+                    </label>
+                    <div class="col-md-4 form-inline item">
+                        <input type="number" id="order_limit_cnt" name="order_limit_cnt" class="form-control optional" data-validate-minmax="1" title="구매제한개수" value="{{ $data['OrderLimitCnt'] > 0 ? $data['OrderLimitCnt'] : '' }}" style="width: 120px;">
+                        <span class="pl-20"># 아이디 당 구매 가능한 개수 입력</span>
                     </div>
                 </div>
                 <div class="form-group">

@@ -82,6 +82,9 @@
                                             <li><span>교재</span></li>
                                             <li>{{ $row['ProdName'] }}</li>
                                             <li>판매가 <span>{{ number_format($row['RealSalePrice'], 0) }}원</span> 수량 <span>{{ $row['ProdQty'] }}</span></li>
+                                            @if(empty($row['OrderLimitCnt']) === false)
+                                                <li><span class="amount">{{ $row['OrderLimitCnt'] }}개까지</span> 구매가능</li>
+                                            @endif
                                         </ul>
                                     </label>
                                 </div>
@@ -233,4 +236,6 @@
         });
     });
 </script>
+{{-- 광고 스크립트 추가 --}}
+{{--@include('willbes.pc.site.cart.ad_script_partial')--}}
 @stop

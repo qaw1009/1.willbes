@@ -7140,7 +7140,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 	float: right;
 	width: 656px;
 	height: 448px;
-	letter-spacing: 0;
+	letter-spacing: -1px;
 }
 .willbes-Prof-Profile-ssam .prof-brief-btn {
 	border-bottom: 1px solid #ddd;
@@ -7152,16 +7152,16 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .willbes-Prof-Profile-ssam .prof-brief-btn li a {
 	display: block;
-	font-size: 11px;
-	padding-right: 20px;
+	font-size: 14px;
+	padding-right: 16px;
 	height: 30px;
 	line-height: 30px;
 	text-align: center;
 	margin-left: 1px;
-	line-height: 30px;
+	line-height: 30px;	
 }
 .willbes-Prof-Profile-ssam .prof-brief-btn li img {
-	margin-right: 5px;
+	margin-right: 3px;
 }
 .willbes-Prof-Profile-ssam .prof-brief-btn li.sampleLec {
 	float: right;

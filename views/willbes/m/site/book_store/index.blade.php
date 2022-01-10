@@ -68,7 +68,7 @@
             <option value="price-asc" @if(element('search_order', $arr_input) == 'price-asc') selected="selected" @endif>가격↓</option>
         </select>
         @if($is_sort_mapping === true)
-            <select id="search_keyword" name="search_keyword" title="검색키워드" class="seleLec width30p ml1p">
+            <select id="search_keyword" name="search_keyword" title="검색키워드" class="seleLec">
                 <option value="ProdName" @if($arr_base['search_keyword'] == 'ProdName') selected="selected" @endif>도서명</option>
                 <option value="wAuthorNames" @if($arr_base['search_keyword'] == 'wAuthorNames') selected="selected" @endif>저자명</option>
                 <option value="wPublName" @if($arr_base['search_keyword'] == 'wPublName') selected="selected" @endif>출판사</option>
@@ -84,7 +84,7 @@
                 </button>
             </div>
         </div>
-        <div class="tx14 pl20">총 <strong class="tx-blue">{{ $count }}</strong>개의 상품이 있습니다.</div>
+        <div class="tx14 pl20">총 <strong class="tx-blue">{{ $count }}</strong>개의 상품이 있습니다.</div>
     @else
         <div class="c_both"></div>
     @endif
@@ -123,11 +123,21 @@
                             <span class="d_none">
                                 <input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $row['rwSaleTypeCcd'] . ':' . $row['ProdCode'] }}:book" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_books" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/>
                             </span>
-                            <select name="prod_qty[{{ $row['ProdCode'] }}]" title="수량" class="seleLec width30p ml1p">
+                            <select name="prod_qty[{{ $row['ProdCode'] }}]" title="수량" class="seleLec">
                                 @for($i = 1; $i <= 10; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
                             </select>
+                            @if(empty($row['OrderLimitCnt']) === false)
+                                <div class="buyinfo">
+                                    <a href="javascript:void(0);" onclick="openWin('layerbuyPop{{ $row['ProdCode'] }}')"><span>{{ $row['OrderLimitCnt'] }}개까지</span> 구매가능 ❔</a>
+                                    <div class="buyinfoPop" id="layerbuyPop{{ $row['ProdCode'] }}">
+                                        <a href="javascript:void(0);" onclick="closeWin('layerbuyPop{{ $row['ProdCode'] }}')" class="closeBtn">X</a>
+                                        <p>[구매 제한 교재 안내]</p>
+                                        해당 교재는 구매 가능 개수가 제한된 교재로 아이디당 안내된 개수까지만 구매 가능합니다.
+                                    </div>
+                                </div>
+                            @endif
                         </li>
                         <li>
                             <a href="#none" class="lecViewBtn" data-wbook-idx="{{ $row['wBookIdx'] }}">교재로 진행중인 강의 ▼</a>

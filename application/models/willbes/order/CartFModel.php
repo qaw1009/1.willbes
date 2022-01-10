@@ -50,7 +50,7 @@ class CartFModel extends BaseOrderFModel
                 , CA.ParentProdCode, CA.SaleTypeCcd, CA.SalePatternCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay, CA.CaIdx, CA.ExtenDay, CA.PostData
                 , CA.TargetOrderIdx, CA.TargetProdCode, CA.TargetProdCodeSub 
                 , concat(P.ProdName, if(CA.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", fn_ccd_name(CA.SalePatternCcd), ")"), "")) as ProdName
-                , P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd, PL.StudyPeriodCcd, P.IsCoupon, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice, P.IsAllianceDisc
+                , P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd, PL.StudyPeriodCcd, P.IsCoupon, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice, P.IsAllianceDisc, P.OrderLimitCnt
                 , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['retake'] . '", "N", P.IsPoint) as IsPoint
                 , if((PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" and CA.SalePatternCcd != "' . $this->_sale_pattern_ccd['retake'] . '") or P.ProdTypeCcd in ("' . $this->_prod_type_ccd['book'] . '"), "Y", "N") as IsUsePoint                
                 , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '", "N", P.IsFreebiesTrans) as IsFreebiesTrans
@@ -358,8 +358,14 @@ class CartFModel extends BaseOrderFModel
 
             // 데이터 저장
             foreach ($arr_prod_code as $prod_code => $prod_row) {
+                // 상품 수량
+                $prod_qty = array_get($input, 'prod_qty.' . $prod_code, 1);
+                if (empty($prod_qty) === true || is_numeric($prod_qty) === false || $prod_qty < 1) {
+                    $prod_qty = 1;
+                }
+
                 // 학습형태별 사전 체크
-                $check_result = $this->checkProduct($prod_row['LearnPattern'], $site_code, $prod_code, $prod_row['ParentProdCode'], $is_visit_pay, false, true, $sale_pattern_ccd);
+                $check_result = $this->checkProduct($prod_row['LearnPattern'], $site_code, $prod_code, $prod_row['ParentProdCode'], $is_visit_pay, false, true, $sale_pattern_ccd, $prod_qty);
                 if ($check_result !== true) {
                     throw new \Exception($check_result);
                 }
@@ -374,12 +380,6 @@ class CartFModel extends BaseOrderFModel
                 $is_direct_pay_change = false;
                 if ($is_direct_pay == 'Y' && $is_prod_mixed === true && $prod_row['LearnPattern'] == 'book') {
                     $is_direct_pay_change = true;
-                }
-
-                // 상품 수량
-                $prod_qty = array_get($input, 'prod_qty.' . $prod_code, 1);
-                if (empty($prod_qty) === true || is_numeric($prod_qty) === false || $prod_qty < 1) {
-                    $prod_qty = 1;
                 }
 
                 // 데이터 등록
@@ -649,9 +649,10 @@ class CartFModel extends BaseOrderFModel
      * @param bool $is_data_return [상품 데이터 리턴 여부]
      * @param bool $is_cart [장바구니여부]
      * @param string $sale_pattern_ccd [판매형태공통코드]
+     * @param null|int $prod_qty [상품수량]
      * @return bool|array|string
      */
-    public function checkProduct($learn_pattern, $site_code, $prod_code, $parent_prod_code, $is_visit_pay, $is_data_return = false, $is_cart = false, $sale_pattern_ccd = '')
+    public function checkProduct($learn_pattern, $site_code, $prod_code, $parent_prod_code, $is_visit_pay, $is_data_return = false, $is_cart = false, $sale_pattern_ccd = '', $prod_qty = null)
     {
         $sale_pattern = array_search($sale_pattern_ccd, $this->_sale_pattern_ccd);  // 판매형태구분
 
@@ -676,13 +677,15 @@ class CartFModel extends BaseOrderFModel
         }
 
         if ($learn_pattern == 'book') {
-            // 수강생 교재 체크 (체크안함)
-            /*if ($is_cart === false) {
-                $check_result = $this->checkStudentBook($site_code, $prod_code, $parent_prod_code);
-                if ($check_result !== true) {
-                    return $check_result;
+            // 상품별 회원당 구매가능개수 체크
+            if ($is_cart === true) {
+                if (empty($data['OrderLimitCnt']) === false && empty($prod_qty) === false) {
+                    $check_result = $this->checkOrderLimitCnt($prod_code, $data['OrderLimitCnt'], $prod_qty);
+                    if ($check_result !== true) {
+                        return $check_result;
+                    }
                 }
-            }*/
+            }
         } elseif ($learn_pattern == 'mock_exam') {
             // 응시형태가 학원일 경우 정원 체크
             if ($data['TakeFormsCcd'] == '690002') {
@@ -725,6 +728,40 @@ class CartFModel extends BaseOrderFModel
         }
 
         return $is_data_return === true ? $data : true;
+    }
+
+    /**
+     * 상품별 회원당 구매가능개수 체크
+     * @param int $prod_code [상품코드]
+     * @param int $order_limit_cnt [회원당구매가능개수]
+     * @param int $expt_prod_qty [구매예정상품수량]
+     * @return bool|string [true : 주문가능, string : 주문불가]
+     */
+    public function checkOrderLimitCnt($prod_code, $order_limit_cnt, $expt_prod_qty = 1)
+    {
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+
+        // 비로그인 상태
+        if (empty($sess_mem_idx) === true) {
+            return '로그인 정보가 없습니다.';
+        }
+
+        // 구매가능개수 설정이 없다면 주문가능
+        if (empty($order_limit_cnt) === true) {
+            return true;
+        }
+
+        // 이전구매개수 조회
+        $paid_cnt = $this->orderListFModel->listOrderProduct(true, [
+            'EQ' => ['OP.MemIdx' => $sess_mem_idx, 'OP.ProdCode' => $prod_code, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]
+        ]);
+
+        // 구매가능개수보다 (이전구매개수 + 구매예정수량)이 크다면 주문불가
+        if ($order_limit_cnt < ($expt_prod_qty + $paid_cnt)) {
+            return '구매 제한 교재가 포함되어 있습니다. 구매 제한 교재의 수량을 확인해 주세요.';
+        }
+
+        return true;
     }
 
     /**

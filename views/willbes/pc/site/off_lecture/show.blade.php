@@ -297,4 +297,8 @@
     <!-- End Container -->
     {{-- footer script --}}
     @include('willbes.pc.site.off_lecture.only_footer_partial')
+
+    {{-- 광고 스크립트 --}}
+    @include('willbes.pc.site.product_partial.product_ad_partial')
+
 @stop

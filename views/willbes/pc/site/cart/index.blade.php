@@ -449,5 +449,5 @@
     });
 </script>
 {{-- 광고 스크립트 추가 --}}
-{{--@include('willbes.pc.site.cart.ad_script_partial')--}}
+@include('willbes.pc.site.cart.ad_script_partial')
 @stop

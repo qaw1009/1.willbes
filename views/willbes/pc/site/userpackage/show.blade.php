@@ -469,4 +469,8 @@
 
         });
     </script>
+
+    {{-- 광고 스크립트 --}}
+    @include('willbes.pc.site.product_partial.product_ad_partial')
+
 @stop

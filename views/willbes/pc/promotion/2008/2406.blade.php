@@ -55,14 +55,14 @@
 		<div class="evtCtnsBox evt_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_top.jpg" alt="72기 경찰간부시험 대비 티패스"/>
         </div>
-        
+        {{--
         <div class="evtCtnsBox evt_01" data-aos="fade-up">            
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_01.jpg" alt="한달 간 이벤트"/>
             <div class="d_day NSK">
                 <span class="NSK-Black">{{ (empty($arr_base['dday_data'][0]['DDay']) === false) ? 'D'.$arr_base['dday_data'][0]['DDay'] : '' }}</span>
             </div>
         </div>
-
+        --}}
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_02.jpg" alt="특별혜택"/>
@@ -135,13 +135,13 @@
                     <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187202" target="_blank">신청하기</a>
                 </li>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_08.jpg" alt="고태환"/>
-                    <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187198" target="_blank">신청하기</a>
-                </li>
-                <li>
                     <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_09.jpg" alt="김동진"/>
                     <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187197" target="_blank">신청하기</a>
                 </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_08.jpg" alt="고태환"/>
+                    <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187198" target="_blank">신청하기</a>
+                </li>               
                 <li>
                     <img src="https://static.willbes.net/public/images/promotion/2021/11/2406_04_10.jpg" alt="이동호"/>
                     <a href="https://spo.willbes.net/package/show/cate/3100/pack/648001/prod-code/187206" target="_blank">신청하기</a>

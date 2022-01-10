@@ -13,6 +13,7 @@
         <div class="ActIndex MyInfo widthAutoFull">
             <div class="widthAuto p_re">
                 <div class="Content p_re">
+                    {{--
                     @if(sess_data('is_login') == true && empty(sess_data('mem_ssamid')) == false && sess_data('mem_id') == 'ssammjs')
                     <div class="oldMypage" id="oldMypage">
                         <img src="https://static.willbes.net/public/images/promotion/sub/ssam_oldmypage_popup.jpg" alt="이전 내강의실 보기" usemap="#oldMypage" border="0"/>
@@ -23,6 +24,7 @@
                         </map>
                     </div>
                     @endif
+                    --}}
                     <div class="will-Tit NG">나의 <span class="tx-light-blue">학습</span>/혜택 <span class="tx-light-blue">정보</span></div>
                     <div class="MyLecInfoBox NG">
                         <ul>
@@ -99,12 +101,12 @@
                     </div>
                     <div id="MyDevice" class="willbes-Layer-PassBox willbes-Layer-PassBox800 h960 abs"></div>
                 </div>
-                @if(sess_data('is_login') == true && empty(sess_data('mem_ssamid')) == false)
-                {{-- <div class="Quick-Bnr mt20">
+                @if(sess_data('is_login') == true && empty(sess_data('mem_ssamid')) == false && sess_data('mem_id') == 'ssammjs')
+                <div class="Quick-Bnr mt20">
                     <a href="{{front_url('/classroom/home/gotoSsam/')}}" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/sub/ssam_oldmypage_quick.gif" alt="이전 내강의실 보기">
                     </a>
-                </div> --}}
+                </div>
                 @endif
                 <div class="Quick-Top">
                     {!! banner('내강의실_우측퀵', 'Quick-Bnr', $__cfg['SiteCode'], '0') !!}

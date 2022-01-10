@@ -131,11 +131,13 @@ class UserPackage extends \app\controllers\FrontController
         $data['contents'] = $this->packageFModel->findProductContents($prod_code, ['633001']);
         $data['contents'] = (empty($data['contents']) ? [] : $data['contents'][0]);
 
+
         foreach ($data_sublist as $idx => $row) {
             $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
             $row['ProdBookData'] = json_decode($row['ProdBookData'], true);
             $row['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
-            ($pack === '743001' ? $selected_list[$row['SubjectIdx']][] = $row: $selected_list[] = $row)   ;
+            $row['ProfReferData'] = json_decode($row['ProfReferData'], true);
+            ($pack === '743001' ? $selected_list[$row['SubjectIdx']][] = $row: $selected_list[] = $row);
         }
 
         $this->load->view('site/userpackage/show'.$this->pack_type_view[$pack],[

@@ -169,16 +169,16 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2503_05.jpg" alt="소방직 패스 수강신청" />
             <div class="passlec">
                 <div id="lecBuy2022">
-                    <input type="radio" name="prod_code" id="pass01" data-cate-code="3023" data-prod-code="180408"><label for="pass01">2022 소방직 공채</label>
+                    <input type="radio" name="y_pkg" id="pass01" value="180408"><label for="pass01">2022 소방직 공채</label>
                 </div>
                 <div>
-                    <input type="radio" name="prod_code" id="pass02" data-cate-code="3023" data-prod-code="180413"><label for="pass02">2022 소방직 경채</label>
+                    <input type="radio" name="y_pkg" id="pass02" value="180413"><label for="pass02">2022 소방직 경채</label>
                 </div>
                 <div id="lecBuy2023">
-                    <input type="radio" name="prod_code" id="pass03" data-cate-code="3023" data-prod-code="190146"><label for="pass03">2023 소방직 공채</label>
+                    <input type="radio" name="y_pkg" id="pass03" value="190146"><label for="pass03">2023 소방직 공채</label>
                 </div>
                 <div>
-                    <input type="radio" name="prod_code" id="pass04" data-cate-code="3023" data-prod-code="190147"><label for="pass04">2023 소방직 경채</label>
+                    <input type="radio" name="y_pkg" id="pass04" value="190147"><label for="pass04">2023 소방직 경채</label>
                 </div>
             </div>
             <div class="check" id="chkInfo">
@@ -313,16 +313,12 @@
                 return;
             }
 
-            if ($('input:radio[name="prod_code"]').is(':checked') === false) {
-                alert('상품을 선택해주세요.');
-                return false;
+            code = $('input[name="y_pkg"]:checked').val();
+            if (typeof code == 'undefined' || code == '') {
+                alert('강좌를 선택해 주세요.');
+                return;
             }
-
-            var cate = $('input:radio[name="prod_code"]:checked').data('cate-code');
-            var code = $('input:radio[name="prod_code"]:checked').data('prod-code');
-
-            var _url = '{{ front_url('/periodPackage/show/cate/')}}' + cate + '/pack/648001/prod-code/' + code;
-            location.href = _url;
+            location.href = "{{ front_url('/periodPackage/show/cate/3023/pack/648001/prod-code/') }}" + code;
         }    
 
         /* 팝업창 */ 

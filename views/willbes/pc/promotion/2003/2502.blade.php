@@ -206,7 +206,7 @@
                 <a href="#careful">이용안내확인하기 ↓</a>
             </div>
             <div class="passbuy">
-                <a href="javascript:void(0);">지금 바로 신청하기</a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(); return false;">지금 바로 신청하기</a>
             </div>
         </div>
 
@@ -310,20 +310,18 @@
 
     <script>       
 
-         /*수강신청 동의*/ 
-         function go_PassLecture(code){
+        /*수강신청 동의*/
+        function go_PassLecture(){
             if($("input[name='ischk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");
                 return;
             }
-            if(code == 1){
-                code = $('input[name="y_pkg"]:checked').val();
-                if (typeof code == 'undefined' || code == '') {
-                    alert('강좌를 선택해 주세요.');
-                    return;
-                }
+            code = $('input[name="y_pkg"]:checked').val();
+            if (typeof code == 'undefined' || code == '') {
+                alert('강좌를 선택해 주세요.');
+                return;
             }
-            location.href = "{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}" + code;
+            location.href = "{{ front_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}" + code;
         }
 
         /* 팝업창 */ 

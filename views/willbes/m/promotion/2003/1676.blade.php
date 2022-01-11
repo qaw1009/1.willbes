@@ -143,11 +143,11 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:alert('Coming Soon!')" >
-                    <span>반반모고&똑똑영어</span>
-                    <span>1~4월 방송</span>
-                    <span>다시보기</span>
-                    <span><strong>19만원으로</strong>방송 다시보기 ></span>
+                <a href="https://pass.willbes.net/m/periodPackage/show/cate/3019/pack/648001/prod-code/190443" target="_blank">
+                    <span>2021.07.~2022.05. 진행</span>
+                    <span>반반똑똑</span>
+                    <span>다시보기 PASS</span>
+                    <span><strong>25만원으로 </strong>방송 다시보기 ></span>
                 </a>
             </li>
             <li>

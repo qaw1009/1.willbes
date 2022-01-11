@@ -474,7 +474,7 @@ class RegGradeModel extends WB_Model
     public function registerForSubjectDetail($prod_code)
     {
         $column = "
-            M.*
+            STRAIGHT_JOIN M.*
             ,(
                 SELECT T.Top10AvgOrgPoint
                 FROM (
@@ -546,7 +546,7 @@ class RegGradeModel extends WB_Model
 
         $from = "
             FROM (
-                SELECT A.ProdCode, A.TakeMockPart, A.MpIdx, A.MockType, A.SubjectName
+                SELECT STRAIGHT_JOIN A.ProdCode, A.TakeMockPart, A.MpIdx, A.MockType, A.SubjectName
                 ,ROUND(AVG(A.OrgPoint), 2) AS AvgOrgPoint		#원점수평균
                 ,ROUND(AVG(A.AdjustPoint),2) AS AvgAdjustPoint	#조정점수평균
                 ,ROUND(MAX(A.OrgPoint),2) AS MaxOrgPoint		#원점수최고점

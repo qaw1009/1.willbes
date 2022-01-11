@@ -169,19 +169,19 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2503_05.jpg" alt="소방직 패스 수강신청" />
             <div class="passlec">
                 <div id="lecBuy2022">
-                    <input type="radio" id="pass01" value="180408"><label for="pass01">2022 소방직 공채</label>
+                    <input type="radio" name="prod_code" id="pass01" data-cate-code="3023" data-prod-code="180408"><label for="pass01">2022 소방직 공채</label>
                 </div>
                 <div>
-                    <input type="radio" id="pass02" value="180413"><label for="pass02">2022 소방직 경채</label>
+                    <input type="radio" name="prod_code" id="pass02" data-cate-code="3023" data-prod-code="180413"><label for="pass02">2022 소방직 경채</label>
                 </div>
                 <div id="lecBuy2023">
-                    <input type="radio" id="pass03" value="190146"><label for="pass03">2023 소방직 공채</label>
+                    <input type="radio" name="prod_code" id="pass03" data-cate-code="3023" data-prod-code="190146"><label for="pass03">2023 소방직 공채</label>
                 </div>
                 <div>
-                    <input type="radio" id="pass04" value="190147"><label for="pass04">2023 소방직 경채</label>
+                    <input type="radio" name="prod_code" id="pass04" data-cate-code="3023" data-prod-code="190147"><label for="pass04">2023 소방직 경채</label>
                 </div>
             </div>
-            <div class="check" id="chkInfo">               
+            <div class="check" id="chkInfo">
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />
                     페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
@@ -189,7 +189,7 @@
                 <a href="#careful" class="infotxt" > 이용안내 확인하기 ↓</a>
             </div> 
             <div class="passbuy">
-                <a href="#none">지금 바로 신청하기</a>
+                <a href="javascript:void(0);" onclick="javascript:go_PassLecture(); return false;">지금 바로 신청하기</a>
             </div>
         </div>
 
@@ -307,14 +307,22 @@
         });
 
         /*수강신청 동의*/ 
-        function go_PassLecture(code){
+        function go_PassLecture(){
             if($("input[name='ischk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");
                 return;
             }
 
-            var url = '{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
-            location.href = url;
+            if ($('input:radio[name="prod_code"]').is(':checked') === false) {
+                alert('상품을 선택해주세요.');
+                return false;
+            }
+
+            var cate = $('input:radio[name="prod_code"]:checked').data('cate-code');
+            var code = $('input:radio[name="prod_code"]:checked').data('prod-code');
+
+            var _url = '{{ front_url('/periodPackage/show/cate/')}}' + cate + '/pack/648001/prod-code/' + code;
+            location.href = _url;
         }    
 
         /* 팝업창 */ 
@@ -331,8 +339,7 @@
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
-        });    
-       
+        });
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

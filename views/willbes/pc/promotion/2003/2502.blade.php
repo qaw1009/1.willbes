@@ -54,22 +54,33 @@
         .wb_cts04 {padding-bottom:100px;}      
         .wb_cts04 .txtBtn {background:#444; color:#fff; padding:10px 20px; display:inline-block} 
         .wb_cts04 .txtBtn:hover {background:#000}
+        
+        .wb_cts05 {background:#43aaf8; padding-bottom:100px}
+        .wb_cts05 .passlec {display:flex; width:1120px; margin:auto; justify-content: space-between; flex-wrap: wrap;}
+        .wb_cts05 .passlec div {width:255px;position:relative; margin-bottom:20px}
+        .wb_cts05 .passlec div label {display:block; width:255px; height:473px; font-size:0; cursor: pointer;}
+        .wb_cts05 .passlec div:nth-child(1) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/01/2502_apply1.png)}
+        .wb_cts05 .passlec div:nth-child(2) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/01/2502_apply2.png)}
+        .wb_cts05 .passlec div:nth-child(3) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/01/2502_apply3.png)}
+        .wb_cts05 .passlec div:nth-child(4) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/01/2502_apply4.png)}
+        .wb_cts05 .passlec div:nth-child(5) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/01/2502_apply5.png)}
+        .wb_cts05 .passlec div:nth-child(6) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/01/2502_apply6.png)}
+        .wb_cts05 .passlec div:nth-child(7) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/01/2502_apply7.png)}
+        .wb_cts05 .passlec div:nth-child(8) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/01/2502_apply8.png)}
 
-        .wb_cts05 {background:#43AAF9;}      
-        .apply_area ul {width:1120px;margin:0 auto;}
-        .apply_area li {width:23.66%;display:inline;float:left;background:#fff;padding:25px;margin-right:15px;margin-bottom:20px;}
-        .apply_area li:hover {background:#fff49b;}
-        .apply_area li a {display:block;}        
-        .apply_area li img {width:200px;height:400px;}
-        .wb_cts05 .apply_area input[type="radio"] {width:30px;height:35px;}      
-        .check {width:980px; margin:0 auto; padding:20px 0px 20px 10px; letter-spacing:3; color:#fff; z-index:5;}
-        .check label {cursor:pointer; font-size:15px;color:#FFF;font-weight:bold;}
+        .wb_cts05 .passlec input[type="radio"] {height:26px; width:26px; position:absolute; top:20px; left:20px; visibility: hidden;}
+        .wb_cts05 .passlec input:checked + label {background-position:right top}
+
+        /*수강신청 체크*/
+        .check { width:930px; margin:30px auto 50px;}
+        .check p {margin-bottom:50px;padding-top:75px;}
+        .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#163C57; text-align:center; border-radius:90px;}
+        .check p a:hover {color:#8d0033; background:#eee53b;}
+        .check label {cursor:pointer;color:#fff;font-weight:bold;font-size:15px;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-        .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#2d2d2d; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
-        .check a:hover {background:#000}
-        .wb_cts05 .passbuy {padding-bottom:100px;}
-        .wb_cts05 .passbuy a {display:block; width:400px; margin:0 auto; background:#fff49b; color:#000; font-size:30px; border-radius:50px; padding:20px 0; font-weight:bold;}  
-        .wb_cts05 .passbuy a:hover {background:#000; color:#fff49b;}
+        .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#1c2127; margin-left:50px; border-radius:20px;font-size:15px;font-weight:bold;}
+        .wb_cts05 .passbuy a {display:block; width:400px; margin:0 auto; background:#1c2127; color:#fff; font-size:30px; border-radius:50px; padding:20px 0; font-weight:bold}  
+        .wb_cts05 .passbuy a:hover {background:#fff; color:#1c2127;}
 
         /* 이용안내 */
         .wb_info {padding:100px 0;}
@@ -154,53 +165,43 @@
             <a href="#careful" class="txtBtn">유의사항 확인하기 →</a>   
         </div>
 
-        <div class="evtCtnsBox wb_cts05"  data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2502_05.jpg" alt="전 강좌를 합리적인 가격에"  />
-            <div class="apply_area">
-                <ul>
-                    <li id="lec_buy2022">
-                        <input type="radio" id="pass01" name="y_pkg" value="180927"><label for="pass01"></label>
-                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2502_apply1.png" alt="" />
-                    </li>
-                    <li>
-                        <input type="radio" id="pass02" name="y_pkg" value="176432"><label for="pass02"></label>
-                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2502_apply2.png" alt="" />
-                    </li>
-                    <li>
-                        <input type="radio" id="pass03" name="y_pkg" value="190148"><label for="pass03"></label>
-                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2502_apply3.png" alt="" />
-                    </li>
-                    <li>
-                        <input type="radio" id="pass04" name="y_pkg" value="190149"><label for="pass04"></label>
-                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2502_apply4.png" alt="" />
-                    </li>
-                    <li id="lec_buy2023">
-                        <input type="radio" id="pass05" name="y_pkg" value="189930"><label for="pass05"></label>
-                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2502_apply5.png" alt="" />
-                    </li>
-                    <li>
-                        <input type="radio" id="pass06" name="y_pkg"  value="189939"><label for="pass06"></label>
-                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2502_apply6.png" alt="" />
-                    </li>
-                    <li>
-                        <input type="radio" id="pass07" name="y_pkg" value="190056"><label for="pass07"></label>
-                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2502_apply7.png" alt="" />
-                    </li>
-                    <li>
-                        <input type="radio" id="pass08" name="y_pkg" value="190055"><label for="pass08"></label>
-                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2502_apply8.png" alt="" />
-                    </li>                                                   	
-                </ul>
+        <div class="evtCtnsBox wb_cts05" id="lecBuy" data-aos="fade-up">            
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2502_05.jpg" alt="수강신청" />
+            <div class="passlec">
+                <div id="lecBuy2022">
+                    <input type="radio" name="y_pkg" id="pass01" value="180927"><label for="pass01">2022 행정직pass</label>
+                </div>
+                <div>
+                    <input type="radio" name="y_pkg" id="pass02" value="176432"><label for="pass02">2022 세무직pass</label>
+                </div>
+                <div>
+                    <input type="radio" name="y_pkg" id="pass03" value="190148"><label for="pass03">2022 교육행정직pass</label>
+                </div>
+                <div>
+                    <input type="radio" name="y_pkg" id="pass04" value="190149"><label for="pass04">2022 사회복지직pass</label>
+                </div>
+                <div id="lecBuy2023">
+                    <input type="radio" name="y_pkg" id="pass05" value="189930"><label for="pass05">2022~2023 행정직pass</label>
+                </div>
+                <div>
+                    <input type="radio" name="y_pkg" id="pass06" value="189939"><label for="pass06">2022~2023 세무직pass</label>
+                </div>
+                <div>
+                    <input type="radio" name="y_pkg" id="pass07" value="190056"><label for="pass07">2022~2023 교육행정직pass</label>
+                </div>
+                <div>
+                    <input type="radio" name="y_pkg" id="pass08" value="190055"><label for="pass08">2022~2023 사회복지직pass</label>
+                </div>
             </div>
-            <div class="check">
+            <div class="check" id="chkInfo">
                 <label>
-                    <input name="ischk"  type="checkbox" value="Y" />
-                    페이지 하단의 PASS 유의사항을 모두 확인하였고, 이에 동의합니다.
+                    <input name="ischk" type="checkbox" value="Y" />
+                    페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
-                <a href="#careful">이용안내확인하기 ↓</a>
-            </div>
+                <a href="#careful" class="infotxt" > 이용안내 확인하기 ↓</a>
+            </div> 
             <div class="passbuy">
-                <a href="javascript:void(0);" onclick="go_PassLecture(); return false;">지금 바로 신청하기</a>
+                <a href="javascript:void(0);" onclick="javascript:go_PassLecture(); return false;">지금 바로 신청하기 ></a>
             </div>
         </div>
 
@@ -302,21 +303,22 @@
     } );
     </script>
 
-    <script>       
+    <script>
 
-        /*수강신청 동의*/
+        /*수강신청 동의*/ 
         function go_PassLecture(){
             if($("input[name='ischk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");
                 return;
             }
+
             code = $('input[name="y_pkg"]:checked').val();
             if (typeof code == 'undefined' || code == '') {
                 alert('강좌를 선택해 주세요.');
                 return;
             }
             location.href = "{{ front_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}" + code;
-        }
+        }    
 
         /* 팝업창 */ 
         function certOpen(){

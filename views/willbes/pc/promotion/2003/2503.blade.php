@@ -52,7 +52,7 @@
         .wb_cts05 .passlec div:nth-child(3) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/01/2503_05_03.png)}
         .wb_cts05 .passlec div:nth-child(4) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/01/2503_05_04.png)}
 
-        .wb_cts05 .passlec input[type="radio"] {height:26px; width:26px; position:absolute; top:20px; left:20px;}
+        .wb_cts05 .passlec input[type="radio"] {height:26px; width:26px; position:absolute; top:20px; left:20px; visibility: hidden;}
         .wb_cts05 .passlec input:checked + label {background-position:right top}
 
         /*수강신청 체크*/

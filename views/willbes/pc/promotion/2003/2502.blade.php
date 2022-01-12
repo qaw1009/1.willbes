@@ -35,19 +35,13 @@
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/01/2502_top_bg.jpg) no-repeat center top;}
 
         /*교수 롤링*/
-        .SectionBook {
-        background:url(https://static.willbes.net/public/images/promotion/2022/01/2502_02_bg.jpg) no-repeat center top; position:relative;
-        height: 919px;
-        margin-top:200px;
-        clear: both;
-        }
-        .SectionBook .buyBook {position:absolute; top:220px; left:50%; width:400px; margin-left:-200px; z-index:1}
-        .SectionBook .buyBook a {display: block; padding:15px; font-size:20px; color:#1b1f25; text-align: center; background: #76dccf; border-radius: 40px;}
-        .SectionBook .buyBook a:hover {color:#fff; background:#bb332d}
-        .SectionBook .box-book {position:absolute; top:380px; left:0; width:100%; z-index:1}
-        .SectionBook .box-book .bx-wrapper{max-width:100% !important;}
-        .SectionBook .box-book li {display:inline; float:left; height: 380px;}
-        .SectionBook .box-book li img {
+        .section_pro {
+        background:url(https://static.willbes.net/public/images/promotion/2022/01/2502_02_bg.jpg) no-repeat center top; 
+                   position:relative;height:919px;clear:both;}      
+        .section_pro .box_pro {position:absolute; top:380px; left:0; width:100%; z-index:1}
+        .section_pro .box_pro .bx-wrapper{max-width:100% !important;}
+        .section_pro .box_pro li {display:inline; float:left; height: 380px;}
+        .section_pro .box_pro li img {
         width: 310px;
         height: 380px;
         -webkit-box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
@@ -132,9 +126,9 @@
         </div>
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
-            <div class="SectionBook">                
-                <div class="box-book">
-                    <ul class="slidesBook">
+            <div class="section_pro">                
+                <div class="box_pro">
+                    <ul class="slide_pro">
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro1.png" alt=""/></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro2.png" alt=""/></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro3.png" alt=""/></li>  
@@ -339,7 +333,7 @@
 
         /*롤링*/
         $(document).ready(function() {
-            var BxBook = $('.slidesBook').bxSlider({
+            var BxBook = $('.slide_pro').bxSlider({
                 slideWidth: 310,
                 slideMargin: 40,
                 maxSlides:10,

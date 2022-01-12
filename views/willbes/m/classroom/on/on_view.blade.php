@@ -38,7 +38,11 @@
                                     <dt class="h22"><strong>강좌정보 :</strong> {{$lec['wLectureProgressCcdName']}}<span class="row-line">|</span>{{$lec['MultipleApply'] == '1' ? '무제한' : round($lec['MultipleApply'], 1).'배수' }}</dt><br/>
                                     <dt class="h22"><strong>진도율 :</strong> <span class="tx-blue">{{$lec['StudyRate']}}%</span></dt><br/>
                                     <dt class="h22">                                    
-                                        <strong>잔여기간 :</strong> <span class="tx-blue">
+                                        <strong>잔여기간 :</strong>
+                                        @if($lec['StudyPeriodCcd'] == '616002')
+                                            <span class="tx-blue">{{str_replace('-', '.', $lec['RealLecEndDate'])}} 까지</span>
+                                        @else
+                                            <span class="tx-blue">
                                             @if(strtotime($lec['LecStartDate']) > strtotime(date("Y-m-d", time())))
                                                 {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['LecStartDate']))/86400 +1 }}일
                                             @elseif(empty($lec['lastPauseEndDate']) == true)
@@ -48,6 +52,7 @@
                                             @else
                                                 {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
                                             @endif</span>({{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}})
+                                        @endif
                                     </dt>
                                 </dl>
                             </div>                            

@@ -144,7 +144,13 @@
                                                 {{$row['ProdName']}}
                                             </div>
                                             <dl class="w-info tx-gray">
-                                                <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}</span>일 ({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
+                                                <dt>잔여기간 :
+                                                    @if($row['StudyPeriodCcd'] == '616002')
+                                                        <span class="tx-blue">{{str_replace('-', '.', $row['RealLecEndDate'])}} 까지</span>
+                                                    @else
+                                                        <span class="tx-blue">{{$row['remainDays']}}</span>일 ({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})
+                                                    @endif
+                                                </dt>
                                             </dl>
                                             <div class="w-start tx-gray">
                                                 <ul class="f_left two">
@@ -197,7 +203,13 @@
                                                 <dl class="w-info tx-gray">
                                                     <dt>강의수 : <span class="tx-black">{{$subrow['wUnitLectureCnt']}}강</span><span class="row-line">|</span></dt>
                                                     <dt>진도율 : <span class="tx-blue">{{$subrow['StudyRate']}}%</span><span class="row-line">|</span></dt>
-                                                    <dt>잔여기간 : <span class="tx-blue">{{$subrow['remainDays']}}</span>일<span class="row-line">|</span></dt>
+                                                    <dt>잔여기간 :
+                                                        @if($subrow['StudyPeriodCcd'] == '616002')
+                                                            <span class="tx-blue">{{str_replace('-', '.', $subrow['RealLecEndDate'])}} 까지</span><span class="row-line">|</span>
+                                                        @else
+                                                            <span class="tx-blue">{{$subrow['remainDays']}}</span>일<span class="row-line">|</span>
+                                                        @endif
+                                                    </dt>
                                                     <dt>최종학습일 : <span class="tx-black">{{ $subrow['lastStudyDate'] == '' ? '학습이력없음' : $subrow['lastStudyDate'] }}</span></dt>
                                                 </dl>
                                                 <div class="w-line mt20">-</div>

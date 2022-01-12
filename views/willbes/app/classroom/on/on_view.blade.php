@@ -38,7 +38,11 @@
                             <dl>
                                 <dt><strong>강좌정보 :</strong> {{$lec['wLectureProgressCcdName']}}<span class="row-line">|</span>{{$lec['MultipleApply'] == '1' ? '무제한' : round($lec['MultipleApply'], 1).'배수' }}</dt><br/>
                                 <dt><strong>진도율 :</strong> <span class="tx-blue">{{$lec['StudyRate']}}%</span><!-- (1강/20강) --><span class="row-line">|</span>
-                                    <strong>잔여기간 :</strong> <span class="tx-blue">
+                                    <strong>잔여기간 :</strong>
+                                    @if($lec['StudyPeriodCcd'] == '616002')
+                                        <span class="tx-blue">{{str_replace('-', '.', $lec['RealLecEndDate'])}} 까지</span>
+                                    @else
+                                        <span class="tx-blue">
                                         @if(strtotime($lec['LecStartDate']) > strtotime(date("Y-m-d", time())))
                                             {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['LecStartDate']))/86400 +1 }}일
                                         @elseif(empty($lec['lastPauseEndDate']) == true)
@@ -47,7 +51,9 @@
                                             {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['lastPauseEndDate']))/86400 }}일
                                         @else
                                             {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
-                                        @endif</span>({{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}})</dt>
+                                        @endif</span>({{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}})
+                                    @endif
+                                </dt>
                             </dl>
                         </div>
                         @if($lec['wControlCountUse'] > 0 && $lec['IsMobileDownload'] != 'Y')

@@ -82,8 +82,8 @@
     </div>
 
     <div class="evtCtnsBox" id="tab05">
-        <img src="https://static.willbes.net/public/images/promotion/2021/12/2282m_07.jpg" alt="패키지" >
-        <a href="https://pass.willbes.net/m/package/show/cate/3019/pack/648001/prod-code/186805" target="_blank" title="국,영,역" style="position: absolute; left: 55.69%; top: 47.13%; width: 27.08%; height: 6.69%; z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2022/01/2282m_07.jpg" alt="패키지" >
+        <a href="https://pass.willbes.net/m/package/show/cate/3019/pack/648001/prod-code/190493" target="_blank" title="국,영,역" style="position: absolute; left: 55.69%; top: 47.13%; width: 27.08%; height: 6.69%; z-index: 2;"></a>
         <a href="https://pass.willbes.net/m/package/show/cate/3019/pack/648001/prod-code/188760" target="_blank" title="일반행정직 9급" style="position: absolute; left: 55.69%; top: 79.74%; width: 27.08%; height: 6.69%; z-index: 2;"></a>
     </div>
 </div>

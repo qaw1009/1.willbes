@@ -13,7 +13,7 @@
             background:#fff;            
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
@@ -145,8 +145,8 @@
 
         <div class="evtCtnsBox wb_cts10" id="event"> 
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2282_10.jpg" alt="실전덕후단 패키지"/>
-                <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/186805" target="_blank" title="수강신청" style="position: absolute; left: 16.16%; top: 76.59%; width: 25.98%; height: 6.54%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2282_10.jpg" alt="실전덕후단 패키지"/>
+                <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/190493" target="_blank" title="수강신청" style="position: absolute; left: 16.16%; top: 76.59%; width: 25.98%; height: 6.54%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/188760" target="_blank" title="수강신청" style="position: absolute; left: 57.05%; top: 76.59%; width: 25.98%; height: 6.54%; z-index: 2;"></a>
             </div>
         </div>

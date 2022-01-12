@@ -185,6 +185,7 @@
                 </li>
                 <li>
                     <span>한국사검정능력시험</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50027?subject_idx=1237') }}">오태진</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50619?subject_idx=1237') }}">김상범</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50305?subject_idx=1237') }}">한경준</a>
                 </li>

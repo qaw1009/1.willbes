@@ -5,16 +5,17 @@
     <!-- content -->
     <style type="text/css">
         .evtContent {
-            position:relative;
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
-            margin-top:20px !important;
+            max-width:2000px !important;
+            margin:20px auto 0;
             padding:0 !important;
-            background:#fff;
+            background:#fff;     
+            font-size:14px;       
         }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
-        /*.evtCtnsBox .wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.5);}*/
+        .evtCtnsBox .wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.5);}
 
         /************************************************************/
         .sky {position:fixed; width:120px; top:200px; right:10px; z-index:10;}
@@ -103,10 +104,11 @@
 
         <div class="evtCtnsBox evt_05" id="apply_pass" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2437_04.jpg"  alt="합격패스" />
-                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 188217);" title="항해술 패스" style="position: absolute; left: 4.73%; top: 87.16%; width: 29.2%; height: 10.31%;  z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 188239);" title="기관술 패스" style="position: absolute; left: 35.27%; top: 87.16%; width: 29.2%; height: 10.31%;  z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 188240);" title="필수과목 패스" style="position: absolute; left: 65.71%; top: 87.16%; width: 29.2%; height: 10.31%;  z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2437_04.jpg"  alt="합격패스" />
+                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 188217);" title="항해술 패스" style="position: absolute; left: 1.07%; top: 87.28%; width: 24.02%; height: 9.42%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 188239);" title="기관술 패스" style="position: absolute; left: 25.8%; top: 87.28%; width: 24.02%; height: 9.42%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 188240);" title="필수과목 패스" style="position: absolute; left: 50.18%; top: 87.28%; width: 24.02%; height: 9.42%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 190525);" title="해경 패스" style="position: absolute; left: 74.64%; top: 87.28%; width: 24.02%; height: 9.42%; z-index: 2;"></a>
             </div>
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 합격PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>

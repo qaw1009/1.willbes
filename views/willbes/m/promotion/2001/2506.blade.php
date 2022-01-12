@@ -14,11 +14,12 @@
         .evt01 {padding-bottom:50px; text-align:left}
         .evt01 .price {text-align:center; font-size:22px; font-weight:bold; color:#fff; background:#000; border-radius:10px; padding:15px 0; margin:0 11% 5%; letter-spacing:-1px}
         .evt01 .price label {display:inline-block}
+        .evt01 .price input:checked + label {color:#ffef7e}
         .evt01 .ext01txt {padding:20px;}
         .evt01 .ext01txt label {font-size:18px; font-weight:bold}
         .evt01 input[type="radio"] {height:18px; width:18px; vertical-align:middle}
         .evt01 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle; margin-right:5px}
-        .evt01 input:checked + label {color:#ffef7e}
+        .evt01 .ext01txt input:checked + label {color:#1350b9}
         .evt01 .ext01txt ul {margin:10px 0 0 25px}
         .evt01 a {display:block; width:90%; margin:20px auto 0; background:#000; color:#fff; border-radius:30px; padding:10px 0; font-size:20px; font-weight:bold; text-align:center;}
         .evt01_coupon .coupon_btn {margin:0 auto; background-color:rgba(255,255,255,0.1)}

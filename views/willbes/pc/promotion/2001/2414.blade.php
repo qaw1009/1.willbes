@@ -5,12 +5,13 @@
     <!-- content -->
     <style type="text/css">
         .evtContent {
-            position:relative;
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
-            margin-top:20px !important;
+            max-width:2000px !important;
+            margin:20px auto 0;
             padding:0 !important;
-            background:#fff;
+            background:#fff;     
+            font-size:14px;       
         }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
@@ -108,10 +109,11 @@
 
         <div class="evtCtnsBox evt_05" id="evt05" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/2414_04.jpg"  alt="합격패스" />
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187597);" title="항해술 패스" style="position: absolute; left: 4.73%; top: 88.36%; width: 29.2%; height: 10.31%;  z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187598);" title="해양공채 패스" style="position: absolute; left: 35.27%; top: 88.36%; width: 29.2%; height: 10.31%;  z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187599);" title="해양공채 패스" style="position: absolute; left: 65.71%; top: 88.36%; width: 29.2%; height: 10.31%;  z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2414_04.jpg"  alt="합격패스" />
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187597);" title="스페셜1" style="position: absolute; left: 0.89%; top: 88.65%; width: 24.02%; height: 9.18%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187598);" title="스페셜2" style="position: absolute; left: 25.45%; top: 88.65%; width: 24.02%; height: 9.18%;  z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187599);" title="스페셜3" style="position: absolute; left: 50.09%; top: 88.65%; width: 24.02%; height: 9.18%;  z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 190512);" title="스페셜4" style="position: absolute; left: 74.82%; top: 88.65%; width: 24.02%; height: 9.18%;  z-index: 2;"></a>
             </div>
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 합격PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>

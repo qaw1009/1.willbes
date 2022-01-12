@@ -127,8 +127,8 @@
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2502_top.jpg" alt="윌비스 9급 패스"  />
-                <a href="#lec_buy2022" title="22패스 구매하기" style="position: absolute;left: 4.91%;top: 82.61%;width: 34.78%;height: 8.31%;z-index: 2;"></a>
-                <a href="#lec_buy2023" title="22~23패스 구매하기" style="position: absolute;left: 41.23%;top: 82.61%;width: 34.78%;height: 8.31%;z-index: 2;"></a>
+                <a href="#lecBuy2022" title="22패스 구매하기" style="position: absolute;left: 4.91%;top: 82.61%;width: 34.78%;height: 8.31%;z-index: 2;"></a>
+                <a href="#lecBuy2023" title="22~23패스 구매하기" style="position: absolute;left: 41.23%;top: 82.61%;width: 34.78%;height: 8.31%;z-index: 2;"></a>
             </div>     
         </div>
 

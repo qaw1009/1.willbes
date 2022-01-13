@@ -98,9 +98,11 @@
     </form>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="sky">
-            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2022/01/2507_sky.png" alt="스카이베너" ></a>         
-        </div>        
+    
+        <div class="sky" id="QuickMenu">
+            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2022/01/2507_sky.png" alt="최종점검 모의고사 신청하기" ></a>
+            <a href="#coupon"><img src="https://static.willbes.net/public/images/promotion/2022/01/2507_sky2.png" alt="소문내고 쿠폰 바로받기" ></a>       
+        </div>
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday"  data-aos="fade-down">
@@ -169,11 +171,11 @@
 			</div>
 		</div>     		
 
-        <div class="evtCtnsBox wb_04" data-aos="fade-up">
+        <div class="evtCtnsBox wb_04" id="coupon" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2507_04.jpg"  alt="할인쿠폰" />
-                <a href="javascript:;" onclick="giveCheck()" title="응시쿠폰 받기" style="position: absolute;left: 39.55%;top: 63.55%;width: 20.89%;height: 4.5%;z-index: 2;"></a>
-                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="전국모의고사 이미지 다운받기" style="position: absolute;left: 33.01%;top: 88.38%;width: 33.84%;height: 3.41%;z-index: 2;"></a>
+                <a href="javascript:;" onclick="giveCheck()" title="응시쿠폰 받기" style="position: absolute;left: 39.55%;top: 60.55%;width: 20.89%;height: 4.5%;z-index: 2;"></a>
+                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="전국모의고사 이미지 다운받기" style="position: absolute;left: 33.01%;top: 87.78%;width: 33.84%;height: 3.41%;z-index: 2;"></a>
             </div>
 		</div>
 

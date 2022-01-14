@@ -112,8 +112,8 @@
             <div class="lecwrap mt50">
                 <span>동영상</span>
                 <div>
-                    7급 Advanced  PSAT CLASS PASS 반
-                    <a href="https://gosi.willbes.net/package/show/cate/3103/pack/648002/prod-code/190120" target="_blank">수강신청하기 ></a>
+                    7급 Advanced PSAT CLASS PASS 반
+                    <a href="https://pass.willbes.net/package/show/cate/3103/pack/648002/prod-code/190120" target="_blank">수강신청하기 ></a>
                 </div>
                 <div>
                     7급 석치수 자료해석 Advanced  CLASS

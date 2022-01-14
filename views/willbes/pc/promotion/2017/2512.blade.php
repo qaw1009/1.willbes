@@ -20,7 +20,7 @@
 
         /************************************************************/
 
-        .evtTop {background:#369eff}
+        .evtTop {background:#00b6f1}
         .evt01 {width:1120px; margin:50px auto; padding:20px; text-align:left; font-size:16px; line-height:1.4}
         .evt01 p {font-weight:bold; font-size:18px}
         .evt01 .info {font-size:14px; margin-top:50px}
@@ -32,14 +32,14 @@
         .evt01 label {margin-left:5px; font-size:14px}
         .evt01 input[type=checkbox] {width:20px; height:20px}
         .evt01 .table_wrap {margin-top:50px}
-        .evt01 .table_wrap table {width:100%; border-top:1px solid #d0d2d9; background:#fff; margin-top:10px !important}
+        .evt01 .table_wrap table {width:100%; border:3px solid #464646; background:#fff; margin-top:10px !important}
         .evt01 .table_wrap td,
-        .evt01 .table_wrap th{padding:10px; border:1px solid #d0d2d9; border-left:0; border-top:0; font-size:15px; text-align:center}
-        .evt01 .table_wrap th{color:#767987; font-weight:500; background:#dfe1e7}
+        .evt01 .table_wrap th{padding:10px; border:1px solid #cdcdcd; border-left:0; border-top:0; font-size:15px; text-align:center}
+        .evt01 .table_wrap th{color:#000; font-weight:500; background:#f4f4f4}
         .evt01 .table_wrap td{color:#444;padding:10px; line-height:1.5; text-align:left}
-        .evt01 .table_wrap tr th{border-top:1px solid #d0d2d9}
+        .evt01 .table_wrap tr th{border-top:1px solid #cdcdcd}
         .evt01 .btnSet {width:80%; margin:50px auto}
-        .evt01 .btnSet a {display:block; padding:20px 0; text-align:center; font-size:25px; font-weight:bold; background:#427eec; color:#fff; border-radius:50px}
+        .evt01 .btnSet a {display:block; padding:20px 0; text-align:center; font-size:25px; font-weight:bold; background:#0c5dc0; color:#fff; border-radius:50px}
         .evt01 .btnSet a:hover {background:#333;}    
 
         .evtInfoBox {margin-top:30px}

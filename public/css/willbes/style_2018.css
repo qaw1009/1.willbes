@@ -254,6 +254,7 @@
 .ssam .Section4 .lecinfo li:last-child {display: block; word-break: keep-all;}
 .ssam .Section4 .lecinfo li:last-child span {background:rgba(255,255,255,0.5);}
 
+.ssam .Section5 {position: relative;}
 
 /* Main Container : 교재*/
 .ssam .bookContent {position:relative; padding-left:55px}
@@ -284,7 +285,7 @@
 .ssam .bookContent > p.leftBtn {margin-left:-560px;}
 .ssam .bookContent > p.rightBtn {margin-left:528px; background-position: right center;}
 
-.ssam .willbes-Layer-Box {left:50%; top:3400px !important; margin-left:-490px !important; z-index: 110;}
+.ssam .willbes-Layer-Box {left:50%; top:0 !important; margin-left:-490px !important; z-index: 110;}
 
 /* Main Container : 시험정보*/
 .ssam .examInfo {border:1px solid #dedede; line-height: 1.5; font-size:14px}

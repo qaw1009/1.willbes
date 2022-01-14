@@ -35,7 +35,7 @@
 
 		.evt02 {background:#ebebeb;}
 
-		.evt03 {background:#00ced1 url(https://static.willbes.net/public/images/promotion/2021/09/2180_03_bg.jpg) no-repeat center top; ; padding-bottom:150px}   
+		.evt03 {background:#01CED3 url(https://static.willbes.net/public/images/promotion/2022/01/2180_03_bg.jpg) no-repeat center top; padding-bottom:100px}   
         .evt03 .p_re {width:1120px; margin:0 auto}
         .evt03 .check {font-size:16px; text-align:center; line-height:1.5;margin-top:40px;font-weight:bold;}
         .evt03 .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
@@ -151,11 +151,11 @@
 
         <div class="evtCtnsBox evt03" id="event">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2180_03.jpg" title="수험생들이 선택하고 인정한 영어정복 노하우!" />
-                <a href="javascript:go_PassLecture('180928');" title="한덕현 영어" style="position: absolute; left:61.52%; top:56.94%; width:12.86%; height:7.51%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('185620');" title="새벽모의고사 29만원" style="position: absolute; left:12.23%; top:90.59%; width:11.25%; height:5.04%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('185702');" title="새벽모의고사 34만원" style="position: absolute; left:27.23%; top:90.59%; width:11.25%; height:5.04%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('186803');" title="실전" style="position: absolute; left:61.52%; top:86.50%; width:12.86%; height:7.51%; z-index: 2;"></a>                
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2180_03.jpg" title="수험생들이 선택하고 인정한 영어정복 노하우!" />
+                <a href="javascript:go_PassLecture('180928');" title="전과목" style="position: absolute;left: 7.45%;top: 86.94%;width:12.86%;height: 6.25%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('186803');" title="실전1" style="position: absolute;left: 31.45%;top: 86.94%;width:12.86%;height: 6.25%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('190505');" title="실전2" style="position: absolute;left: 55.45%;top: 86.94%;width:12.86%;height: 6.25%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('185702');" title="새벽모고" style="position: absolute;left: 79.70%;top: 86.94%;width:12.86%;height: 6.25%;z-index: 2;"></a>                
             </div>
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
@@ -170,9 +170,9 @@
                 <ul>
                     <li>제공과정<br>
                         - 전 과정 T-PASS : 2021~2022 한덕현 영어 9급 지방직 대비 전 과정 (반반/똑똑영어 다시보기 + 새벽모의고사 포함)<br>
-                        - [국가직 대비] 새벽모의고사 T-PASS : 2022 대비로 진행된 한덕현 영어 새벽실전모의고사 (2021.7월~2022.3월)<br>
-                        - [지방직 대비] 새벽모의고사 T-PASS : 2022 대비로 진행된 한덕현 영어 새벽실전모의고사 (2021.7월~2022.6월)<br>
-                        - 실전 T-PASS : 2022 대비로 진행된 한덕현 실전464, 스나이퍼32, 새벽모의고사 (2021.7월~2022.6월) 전 과정 제공
+                        - 실전Ⅰ T-PASS : 2022 대비로 진행된 한덕현 실전464, 스나이퍼32, 새벽모의고사 (2021.7월~2022.6월) 과정 제공<br>
+                        - 실전Ⅱ T-PASS : 2022 대비로 진행된 한덕현 실전464, 독해기적, 스나이퍼32, 아작내기 특강, 새벽모의고사 (2021.7월~2022.6월) 과정 제공<br>
+                        - [지방직 대비] 새벽모의고사 T-PASS : 2022 대비로 진행된 한덕현 영어 새벽실전모의고사 (2021.7월~2022.6월)
                     </li>
                     <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                     <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>

@@ -106,21 +106,17 @@
                 <li><a href="#tab01">3월 개강반</a></li>
                 <li><a href="#tab02">4월 개강반</a></li>
             </ul>            
-            <div id="tab01">
-                <div class="evtCtnsBox evt01" data-aos="fade-top">
-                    <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_01.jpg" alt="3월 개강반" />
-                        <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" title="super pass 신청하기" target="_blank" style="position: absolute;left: 33.45%;top: 86.92%;width: 33.14%;height: 8.24%;z-index: 2;"></a>                  
-                    </div>                   
-                </div>                
+            <div id="tab01" data-aos="fade-top">             
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_01.jpg" alt="3월 개강반" />
+                    <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378203&" title="기본형" target="_blank" style="position: absolute;left: 33.71%;top: 90.52%;width: 15.74%;height: 6.04%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378205&" title="기본/심화형" target="_blank" style="position: absolute;left: 50.21%;top: 90.52%;width: 15.74%;height: 6.04%;z-index: 2;"></a>
+                </div>     
             </div>
-            <div id="tab02">
-                <div class="evtCtnsBox evt01" data-aos="fade-top">
-                        <div class="wrap">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_02.jpg" alt="4월 개강반" />
-                            <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" title="super pass 신청하기" target="_blank" style="position: absolute;left: 33.45%;top: 86.92%;width: 33.14%;height: 8.24%;z-index: 2;"></a>                                          
-                        </div>                     
-                    </div>                
+            <div id="tab02" data-aos="fade-top">           
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_02.jpg" alt="4월 개강반" />
+                    <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378211&" title="심화 시작반" target="_blank" style="position: absolute;left: 33.45%;top: 89.92%;width: 33.14%;height: 6.24%;z-index: 2;"></a>                                         
                 </div>
             </div>                              
         </div>
@@ -143,17 +139,17 @@
 				<ul>
 					<li>형사법 - 신광은 교수님</li>
                     <li>경찰학 - 장정훈 교수님</li>
-                    <li>헌 법 – 김원욱 교수님 & 이국령 교수님(택1)</li>
-                    <li>범죄학 – 박상민 교수님</li>
-                    <li>G-TELP – 김준기 교수님</li>
-                    <li>한능검 – 오태진 교수님</li>                      
+                    <li>헌 법 - 김원욱 교수님 & 이국령 교수님(택1)</li>
+                    <li>범죄학 - 박상민 교수님</li>
+                    <li>G-TELP - 김준기 교수님</li>
+                    <li>한능검 - 오태진 교수님</li>                      
 				</ul>
                 
                 <div class="infoTit"><strong>3월 개강반) [기본형] 7개월, 6개월 슈퍼패스 유의사항</strong></div>
 				<ul>
                     <li>① [기본형] 7개월 슈퍼패스, 6개월 슈퍼패스는 2022년 3월 7일부터 2022년 8월 20일까지 책정된 수강료로
                         시험 일정에 따라 추가 수강료가 부과될 수 있습니다.<br>
-                        (1개월 연장 시 – 실강 10만원, 인강 5만원)<br>
+                        (1개월 연장 시 - 실강 10만원, 인강 5만원)<br>
                         *정규과정 : 2022년 과목개편대비 기본이론,심화과정,문제풀이,마무리 특강
                     </li>
                     <li>② 기본형 슈퍼패스를 등록한 경우 22년 4월에 진행되는 심화강의 실강은 수강이 불가합니다.</li>
@@ -171,7 +167,7 @@
                 <ul>
                     <li>① [기본/심화형] 7개월 슈퍼패스, 6개월 슈퍼패스는 2022년 3월 7일부터 2022년 8월 20일까지 책정된 수강료로
                         시험 일정에 따라 추가 수강료가 부과될 수 있습니다.<br>
-                        (1개월 연장 시 – 실강 10만원, 인강 5만원)<br>
+                        (1개월 연장 시 - 실강 10만원, 인강 5만원)<br>
                         *정규과정 : 2022년 과목개편대비 기본이론,심화과정,문제풀이,마무리 특강
                     </li>
                     <li>② 22년 2월 인강 선지급은 7개월 슈퍼패스를 등록한 수강생에게 제공되는 혜택입니다.</li>
@@ -188,7 +184,7 @@
                 <ul>
                     <li>① [심화시작반] 6개월 슈퍼패스, 5개월 슈퍼패스는 2022년 4월 4일부터 2022년 8월 20일까지 책정된 수강료로
                         시험 일정에 따라 추가 수강료가 부과될 수 있습니다.<br>
-                        (1개월 연장 시 – 실강 10만원, 인강 5만원)<br>
+                        (1개월 연장 시 - 실강 10만원, 인강 5만원)<br>
                         *정규과정 : 2022년 과목개편대비 기본이론,심화과정,문제풀이,마무리 특강
                     </li>     
                     <li> ② 22년 2월 인강 선지급은 6개월 슈퍼패스를 등록한 수강생에게 제공되는 혜택입니다.</li>

@@ -89,8 +89,11 @@
 
         <div class="evtCtnsBox evt03">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2180m_03.jpg" alt="수강신청" >
-                <a href="javascript:go_PassLecture('180928');" title="수강신청" style="position: absolute; left: 74.72%; top: 84.58%; width: 16.94%; height: 7.49%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2180m_03.jpg" alt="수강신청" >
+                <a href="javascript:go_PassLecture('180928');" title="전과목" style="position: absolute;left: 65.72%;top: 47.28%;width: 16.04%;height: 3.79%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('186803');" title="실전1" style="position: absolute;left: 65.72%;top: 61.68%;width: 16.04%;height: 3.79%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('190505');" title="실전2" style="position: absolute;left: 65.72%;top: 75.58%;width: 16.04%;height: 3.79%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('185702');" title="새벽모고" style="position: absolute;left: 65.72%;top: 90.08%;width: 16.04%;height: 3.79%;z-index: 2;"></a>
             </div>
             <div class="check">
                 <label>
@@ -105,8 +108,12 @@
         <h3 class="NSK-Black">이용안내 및 유의사항</h3>
         <p>● 상품구성 </p>
         <ul>
-            <li>제공과정<br/>
-            - 전 과정 T-PASS : 2021~2022 한덕현 영어 9급 지방직 대비 전 과정 (반반/똑똑영어 다시보기 + 새벽모의고사 포함)</li>
+            <li>제공과정<br>
+                - 전 과정 T-PASS : 2021~2022 한덕현 영어 9급 지방직 대비 전 과정 (반반/똑똑영어 다시보기 + 새벽모의고사 포함)<br>
+                - 실전Ⅰ T-PASS : 2022 대비로 진행된 한덕현 실전464, 스나이퍼32, 새벽모의고사 (2021.7월~2022.6월) 과정 제공<br>
+                - 실전Ⅱ T-PASS : 2022 대비로 진행된 한덕현 실전464, 독해기적, 스나이퍼32, 아작내기 특강, 새벽모의고사 (2021.7월~2022.6월) 과정 제공<br>
+                - [지방직 대비] 새벽모의고사 T-PASS : 2022 대비로 진행된 한덕현 영어 새벽실전모의고사 (2021.7월~2022.6월)
+            </li>
             <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
             <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>
             <li>본 상품은 결제가 완료되는 즉시 수강이 시작됩니다.</li>

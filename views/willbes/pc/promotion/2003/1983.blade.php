@@ -192,7 +192,7 @@
                 <tbody>
                     <tr>
                         <th>과목/교수진</th>                        
-                        <td colspan="2">국어 <strong>오대혁</strong>, 영어 <strong>한덕현</strong>, 한국사 <strong>오태진/김상범</strong><br />
+                        <td colspan="2">국어 <strong>오대혁</strong>, 영어 <strong>한덕현</strong>, 한국사 <strong>김상범</strong><br />
                         회계학 <strong>이윤호</strong>, 세법 <strong>박창한</strong></td>
                         <td>회계학 <strong>이윤호</strong>, 세법 <strong>박창한</strong></td>
                     </tr>

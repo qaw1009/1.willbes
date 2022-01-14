@@ -5,15 +5,18 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
-            min-width:2000px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;            
         }
         .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
       
@@ -32,8 +35,8 @@
 
         .evt03 {background:#fff}
 
-        .evt_tab{background:#fafafb}  
-		.evt_tab .wrap{background:#fafafb}                   
+        .evt_tab{background:#fafafb} 
+
         /*탭*/   
         .evtTab {width:780px; margin:0 auto}
         .evtTab li {display:inline; float:left; width:50%}
@@ -78,61 +81,58 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
         </div>
 
-        <div class="evtCtnsBox evtTop" data-aos="fade-top">
+        <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_top.jpg" alt="2022 슈퍼 pass" />
         </div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-top">
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_01.jpg" alt="슈퍼패스를 말하다"  />
         </div>
 
-        <div class="evtCtnsBox evt02" data-aos="fade-top">
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_02.jpg" alt="2022년을 준비하다"  />
-                <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" title="영상이 궁금하다면?" target="_blank" style="position: absolute;left: 29.45%;top: 85.92%;width: 41.14%;height: 3.25%;z-index: 2;"></a>
+                <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" title="영상이 궁금하다면?" target="_blank" style="position: absolute;left: 29.45%;top: 85.92%;width: 41.14%;height: 3.25%; z-index: 2;"></a>
             </div>
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/qkIw507IPpM?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 
-        <div class="evtCtnsBox evt03" data-aos="fade-top">
+        <div class="evtCtnsBox evt03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_03.jpg" alt="합격 커리큘럼"  />   
         </div>
 
-        <div class="evtCtnsBox evt_tab" data-aos="fade-top">
+        <div class="evtCtnsBox evt_tab" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04.jpg" alt="시험대비 합격반" id="event01" />
             <ul class="evtTab">
                 <li><a href="#tab01">3월 개강반</a></li>
                 <li><a href="#tab02">4월 개강반</a></li>
-            </ul>            
-            <div id="tab01" data-aos="fade-top">             
-                <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_01.jpg" alt="3월 개강반" />
-                    <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378203&" title="기본형" target="_blank" style="position: absolute;left: 33.71%;top: 90.52%;width: 15.74%;height: 6.04%;z-index: 2;"></a>
-                    <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378205&" title="기본/심화형" target="_blank" style="position: absolute;left: 50.21%;top: 90.52%;width: 15.74%;height: 6.04%;z-index: 2;"></a>
-                </div>     
-            </div>
-            <div id="tab02" data-aos="fade-top">           
-                <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_02.jpg" alt="4월 개강반" />
-                    <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378211&" title="심화 시작반" target="_blank" style="position: absolute;left: 33.45%;top: 89.92%;width: 33.14%;height: 6.24%;z-index: 2;"></a>                                         
-                </div>
-            </div>                              
+            </ul>           
+           
+            <div class="wrap" id="tab01" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_01.jpg" alt="3월 개강반" />
+                <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378203&" title="기본형" target="_blank" style="position: absolute; left: 20.27%; top: 86.43%; width: 29.29%; height: 9.55%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378205&" title="기본/심화형" target="_blank" style="position: absolute;left: 49.73%; top: 86.43%; width: 29.29%; height: 9.55%; z-index: 2;"></a>
+            </div>             
+            <div class="wrap" id="tab02" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_02.jpg" alt="4월 개강반" />
+                <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378211&" title="심화 시작반" target="_blank" style="position: absolute;left: 20.18%; top: 86.25%; width: 59.38%; height: 8.48%; z-index: 2;"></a>                                         
+            </div>                            
         </div>
 
-        <div class="evtCtnsBox evt_tab_again" data-aos="fade-top">
+        <div class="evtCtnsBox evt_tab_again" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_again.jpg" alt="다시한번 합격을 위해" id="event02" />
-                <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" title="super pass 신청하기" target="_blank" style="position: absolute;left: 36.45%;top: 84.12%;width: 27.14%;height: 6.24%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" title="super pass 신청하기" target="_blank" style="position: absolute; left: 27.5%; top: 91.52%; width: 44.73%; height: 6.79%; z-index: 2;"></a>
             </div> 
         </div>
 
-        <div class="evtCtnsBox evt05" data-aos="fade-top">
+        <div class="evtCtnsBox evt05" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_05.jpg" alt="특별혜택"  /> 
         </div>
 
-        <div class="evtCtnsBox evtInfo" data-aos="fade-top">
+        <div class="evtCtnsBox evtInfo" data-aos="fade-up">
 			<div class="evtInfoBox">
 				<h4 class="NSK-Black">유의사항</h4>
 				<div class="infoTit"><strong>2022 슈퍼패스 경찰 전문 교수진</strong></div>
@@ -187,8 +187,8 @@
                         (1개월 연장 시 - 실강 10만원, 인강 5만원)<br>
                         *정규과정 : 2022년 과목개편대비 기본이론,심화과정,문제풀이,마무리 특강
                     </li>     
-                    <li> ② 22년 2월 인강 선지급은 6개월 슈퍼패스를 등록한 수강생에게 제공되는 혜택입니다.</li>
-                    <li> ③ 국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 대체될 수 있으며, 
+                    <li>② 22년 2월 인강 선지급은 6개월 슈퍼패스를 등록한 수강생에게 제공되는 혜택입니다.</li>
+                    <li>③ 국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 대체될 수 있으며, 
                          이로 인한 해당기간 환불은 불가합니다.
                     </li>
                     <li>④ G-TELP 특강은 수강기간 내에, 실강 1회에 한하여 50% 할인 적용됩니다.</li>
@@ -224,7 +224,6 @@
       } );
     </script>
 
-    <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script type="text/javascript">
 
      /*탭*/

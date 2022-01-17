@@ -117,7 +117,7 @@ class ProfessorModel extends WB_Model
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
         $column .= ' , if(P.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wUpdAdminIdx and wIsStatus = "Y")) as wUpdAdminName';
         //운영자 등록
-        $column .=', (SELECT wProfIdx FROM wbs_sys_admin WHERE wProfIdx = P.wProfId) AS admin_reg_check ';
+        $column .=', (SELECT wProfIdx FROM wbs_sys_admin WHERE wAdminId = P.wProfId) AS admin_reg_check ';
 
 
         return $this->_conn->getFindResult($this->_table['professor'] . ' as P', $column, [

@@ -50,8 +50,8 @@ class Login extends \app\controllers\BaseController
         }
 
         $admin_id = $this->_reqP('admin_id');
-        $wbs_prof_role_idx = '1013';    // WBS 교수관리자 역할식별자
-        $lms_prof_role_idx = (array) $this->config->item('prof_role_idx');  // LMS 교수관리자 역할식별자
+        $wbs_prof_role_idx = ['1013', '1032'];  // WBS 교수관리자 역할식별자 (교수관리자, 조교관리자)
+        $lms_prof_role_idx = (array) config_item('prof_role_idx');  // LMS 교수관리자 역할식별자 (교수관리자, 임용_교수관리자, 교수관리자(임용 및 타직렬 겸용), 임용_조교관리자)
 
         // 계정잠금 여부 확인
         $is_lock = $this->loginModel->checkLoginLock($admin_id);
@@ -73,36 +73,35 @@ class Login extends \app\controllers\BaseController
         $is_auth = true;
         if ($row['wIsApproval'] != 'Y' || $row['wIsUse'] != 'Y') {
             $is_auth = false;
-        } else if (APP_NAME == 'wbs') {
+        } elseif (APP_NAME == 'wbs') {
             // 권한설정이 없거나 교수관리자 권한일 경우 wbs 접근 금지
-            if (empty($row['wRoleIdx']) === true || $row['wRoleIdx'] == $wbs_prof_role_idx) {
+            if (empty($row['wRoleIdx']) === true || in_array($row['wRoleIdx'], $wbs_prof_role_idx) === true) {
                 $is_auth = false;
             }
-        } else if (APP_NAME == 'lms') {
+        } elseif (APP_NAME == 'lms') {
             $lms_role_idx = $this->loginModel->getLmsRoleIdx($row['wAdminIdx']);
             if (empty($lms_role_idx) === true) {
                 $is_auth = false;
-            }
-
-            // 교수관리자 권한으로 lms 접근 금지
-            if (SUB_DOMAIN == 'lms' && in_array($lms_role_idx, $lms_prof_role_idx) === true) {
-                $is_auth = false;
-            }
-        }
-
-        // T-zone 일 경우 WBS 접근 권한 확인, WBS, LMS 교수 정보 확인
-        if (SUB_DOMAIN == 'tzone') {
-            /*if (empty($row['wRoleIdx']) === true || $row['wRoleIdx'] != $wbs_prof_role_idx) {
-                $is_auth = false;
             } else {
-                $arr_prof_idx = array_keys($this->professorModel->getProfessorArray('all', $row['wProfIdx']));
-                if (empty($arr_prof_idx) === true) {
-                    $is_auth = false;
+                if (SUB_DOMAIN == 'lms') {
+                    // 교수관리자 권한으로 lms 접근금지
+                    if (in_array($lms_role_idx, $lms_prof_role_idx) === true) {
+                        $is_auth = false;
+                    }
+                } elseif (SUB_DOMAIN == 'tzone') {
+                    // wbs 교수식별자가 없을 경우 접근금지 (시스템관리자 예외)
+                    if ($lms_role_idx != config_item('sys_role_idx') && empty($row['wProfIdx']) === true) {
+                        $is_auth = false;
+                    } else {
+                        if (empty($row['wProfIdx']) === false) {
+                            // wbs 교수식별자와 연결된 lms 교수식별자가 없을 경우 접근금지
+                            $arr_prof_idx = array_keys($this->professorModel->getProfessorArray('all', $row['wProfIdx']));
+                            if (empty($arr_prof_idx) === true) {
+                                $is_auth = false;
+                            }
+                        }
+                    }
                 }
-            }*/
-            $arr_prof_idx = array_keys($this->professorModel->getProfessorArray('all', $row['wProfIdx']));
-            if (empty($arr_prof_idx) === true) {
-                $is_auth = false;
             }
         }
 
@@ -146,6 +145,7 @@ class Login extends \app\controllers\BaseController
 
         // 아이디 저장
         $row['IsSaveAdminId'] = $this->_reqP('is_save_admin_id');
+
         // 로그인 성공
         $this->_loginSucceed($row);
 

@@ -10,6 +10,7 @@ class AdminModel extends WB_Model
         'cp' => 'wbs_sys_cp'
     ];
     private $_passwd_expire_period = 90;    // 비밀번호 만료기간
+    public $_asst_role_idx = 1032;         // 조교관리자 권한식별자 (티존연동교수아이디 등록)
 
     public function __construct()
     {
@@ -93,7 +94,7 @@ class AdminModel extends WB_Model
     public function findAdminForModify($admin_idx)
     {
         $column = 'A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail, A.wAdminDeptCcd, A.wAdminPositionCcd, A.wAdminDesc';
-        $column .= ' , A.wIsApproval, A.wApprovalDatm, A.wApprovalAdminIdx, A.wPasswdExpireDate, A.wPasswdExpirePeriod, A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
+        $column .= ' , A.wIsApproval, A.wApprovalDatm, A.wApprovalAdminIdx, A.wPasswdExpireDate, A.wPasswdExpirePeriod, A.wProfIdx, A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
         $column .= ' , if(A.wRoleIdx = 0, "", A.wRoleIdx) as wRoleIdx';
         $column .= ' , if(A.wRoleIdx = 0, "", (select wRoleName from ' . $this->_table['admin_role'] . ' where wRoleIdx = A.wRoleIdx and wIsStatus = "Y")) as wRoleName';
         $column .= ' , if(A.wApprovalAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wApprovalAdminIdx and wIsStatus = "Y")) as wApprovalAdminName';
@@ -154,6 +155,16 @@ class AdminModel extends WB_Model
                     'wIsApproval' => element('is_approval', $input),
                     'wRoleIdx' => element('role_idx', $input),
                 ]);
+
+                // 조교관리자 교수식별자 셋팅
+                $arr_prof_info = $this->_getProfIdx($data['wRoleIdx'], element('prof_id', $input));
+                if ($arr_prof_info['ret_cd'] === false) {
+                    if (empty($arr_prof_info['ret_data']) === false) {
+                        throw new \Exception($arr_prof_info['ret_data']);
+                    }
+                } else {
+                    $data['wProfIdx'] = $arr_prof_info['ret_data'];
+                }
             }
 
             if ($this->_addAdmin($data) !== true) {
@@ -249,29 +260,32 @@ class AdminModel extends WB_Model
                     'wIsUse' => element('is_use', $input),
                     'wIsApproval' => element('is_approval', $input),
                     'wRoleIdx' => element('role_idx', $input),
+                    'wProfId' => element('prof_id', $input),
                 ]);
             } else {
                 $admin_idx = $this->session->userdata('admin_idx');
             }
 
-            if($this->_modifyAdminByIdx($data, $admin_idx) !== true) {
-                throw new \Exception('운영자 정보 수정에 실패했습니다.');
+            // 운영자 정보 수정
+            $is_update = $this->_modifyAdminByIdx($data, $admin_idx);
+            if ($is_update !== true) {
+                throw new \Exception($is_update);
             }
 
-            if(empty($type) === false && $type == 'my'){
+            if (empty($type) === false && $type == 'my') {
                 // 조직 정보 수정 (삭제/인서트)
                 $this->load->loadModels(['_lms/task/taskOrganization']);
                 $arr_org_idx = element('org_idx', $input);
 
                 $org_result = $this->taskOrganizationModel->removeAdminRelationOrganization(['wAdminIdx' => $this->session->userdata('admin_idx')]);
-                if($org_result !== true) {
+                if ($org_result !== true) {
                     throw new \Exception('조직 정보 수정에 실패했습니다.');
                 }
 
-                if(empty($arr_org_idx) === false){
-                    foreach($arr_org_idx as $key => $row) {
+                if (empty($arr_org_idx) === false) {
+                    foreach ($arr_org_idx as $key => $row) {
                         $org_result = $this->taskOrganizationModel->addAdminRelationOrganization(['OrgIdx' => $row, 'wAdminIdx' => $this->session->userdata('admin_idx')]);
-                        if($org_result !== true) {
+                        if ($org_result !== true) {
                             throw new \Exception('조직 정보 수정에 실패했습니다.');
                         }
                     }
@@ -299,22 +313,20 @@ class AdminModel extends WB_Model
             $admin_idx = get_var($admin_idx, '0');
 
             // 기존 운영자 데이터 조회
-            $row = $this->_conn->getFindResult($this->_table['admin'], 'ifnull(wApprovalDatm, "") as wApprovalDatm, wPasswdExpirePeriod', [
+            $row = $this->_conn->getFindResult($this->_table['admin'], 'ifnull(wApprovalDatm, "") as wApprovalDatm, wPasswdExpirePeriod, wProfIdx', [
                 'EQ' => ['wAdminIdx' => $admin_idx, 'wIsStatus' => 'Y']
             ]);
             if (empty($row) === true) {
-                throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+                throw new \Exception('운영자 정보 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
             // 비밀번호
             if (empty($data['wAdminPasswd']) === false) {
-                $this->_conn->set($data)->set('wAdminPasswd', 'fn_hash("' . $data['wAdminPasswd'] . '")', false);
+                $this->_conn->set('wAdminPasswd', 'fn_hash("' . $data['wAdminPasswd'] . '")', false);
                 // 비밀번호 강제변경
                 $this->_conn->set('wPasswdExpireDate', 'left(date_add(now(), interval ' . get_var($row['wPasswdExpirePeriod'], $this->_passwd_expire_period) . ' day), 10)', false);
-            } else {
-                unset($data['wAdminPasswd']);
-                $this->_conn->set($data);
             }
+            unset($data['wAdminPasswd']);
             
             // 운영자 승인/미승인
             if (isset($data['wIsApproval']) === true) {
@@ -327,22 +339,71 @@ class AdminModel extends WB_Model
                 }
             }
 
+            // 조교관리자 교수식별자 셋팅
+            if (isset($data['wProfId']) === true) {
+                $arr_prof_info = $this->_getProfIdx($data['wRoleIdx'], $data['wProfId'], $row['wProfIdx']);
+                if ($arr_prof_info['ret_cd'] === false) {
+                    if (empty($arr_prof_info['ret_data']) === false) {
+                        throw new \Exception($arr_prof_info['ret_data']);
+                    }
+                } else {
+                    $this->_conn->set('wProfIdx', $arr_prof_info['ret_data']);
+                }
+
+                unset($data['wProfId']);
+            }
+
             // 수정 운영자 식별자
             $this->_conn->set('wUpdAdminIdx', $this->session->userdata('admin_idx'));
             $this->_conn->set('wUpdDatm', 'NOW()', false);
 
             // where 조건
-            $this->_conn->where('wAdminIdx', $admin_idx);
+            $this->_conn->set($data)->where('wAdminIdx', $admin_idx);
             
             // 데이터 수정
             if ($this->_conn->update($this->_table['admin']) === false) {
-                throw new \Exception('데이터 수정에 실패했습니다.');
+                throw new \Exception('운영자 정보 수정에 실패했습니다.');
             }
         } catch (\Exception $e) {
             return $e->getMessage();
         }
 
         return true;
+    }
+
+    /**
+     * 교수아이디에 해당하는 교수식별자 조회
+     * @param int $role_idx [권한식별자]
+     * @param string $prof_id [교수아이디]
+     * @param null|int $o_prof_idx [기존교수식별자]
+     * @return array [ret_cd값이 true일 경우 ret_data값으로 업데이트, ret_cd값이 false일 경우 업데이트 안함]
+     */
+    private function _getProfIdx($role_idx, $prof_id, $o_prof_idx = null)
+    {
+        if ($role_idx == $this->_asst_role_idx) {
+            // 조교관리자
+            if (empty($prof_id) === true) {
+                return ['ret_cd' => false, 'ret_data' => 'T존연동교수아이디가 없습니다.'];
+            }
+
+            // 교수식별자 조회
+            $this->load->loadModels(['pms/professor']);
+            $_prof_idx = array_get($this->professorModel->findProfessor('wProfIdx', ['EQ' => ['wProfId' => get_var($prof_id, '_empty_id')]]), 'wProfIdx');
+
+            if (empty($_prof_idx) === true) {
+                return ['ret_cd' => false, 'ret_data' => 'T존연동교수아이디와 일치하는 교수정보가 없습니다.'];
+            } else {
+                if ($_prof_idx == $o_prof_idx) {
+                    // 기존 값과 동일 (업데이트 안함)
+                    return ['ret_cd' => false, 'ret_data' => null];
+                } else {
+                    return ['ret_cd' => true, 'ret_data' => $_prof_idx];
+                }
+            }
+        } else {
+            // 조교관리자 이외의 권한은 교수식별자 업데이트 안함
+            return ['ret_cd' => false, 'ret_data' => null];
+        }
     }
 
     /**

@@ -107,11 +107,11 @@
             <div class="evt01_coupon">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2506m_01_00.gif" alt="" >
                 <div class="price">
-                    <input type="radio" id="y_pkg0" name="y_pkg" value="189573" data-sale-price="860000" onClick=""/> <label for="y_pkg0"> 23년 1차 PASS 신청하기</label>
+                    <input type="radio" id="y_pkg0" name="y_pkg" value="190426" data-sale-price="860000" onClick=""/> <label for="y_pkg0"> 23년 1차 PASS 신청하기</label>
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2506m_01_01.jpg" alt="" >
                 <div class="price">
-                    <input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="770000" onClick=""/> <label for="y_pkg1"> 22년 2차 PASS 신청하기</label>
+                    <input type="radio" id="y_pkg1" name="y_pkg" value="190425" data-sale-price="770000" onClick=""/> <label for="y_pkg1"> 22년 2차 PASS 신청하기</label>
                 </div>
 
                 <div class="ext01txt">
@@ -236,11 +236,11 @@
             <div class="evt01_coupon">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2506m_01_00.gif" alt="" >
                 <div class="price">
-                    <input type="radio" id="y_pkg3" name="y_pkg" value="189573" data-sale-price="860000" onClick=""/> <label for="y_pkg3"> 23년 1차 PASS 신청하기</label>
+                    <input type="radio" id="y_pkg3" name="y_pkg" value="190426" data-sale-price="860000" onClick=""/> <label for="y_pkg3"> 23년 1차 PASS 신청하기</label>
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2506m_01_01.jpg" alt="" >
                 <div class="price">
-                    <input type="radio" id="y_pkg4" name="y_pkg" value="188689" data-sale-price="770000" onClick=""/> <label for="y_pkg4"> 22년 2차 PASS 신청하기</label>
+                    <input type="radio" id="y_pkg4" name="y_pkg" value="190425" data-sale-price="770000" onClick=""/> <label for="y_pkg4"> 22년 2차 PASS 신청하기</label>
                 </div>
 
                 <div class="ext01txt">

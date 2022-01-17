@@ -124,13 +124,18 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="role_idx">권한유형 <span class="required">*</span>
                     </label>
-                    <div class="col-md-9 item form-inline">
+                    <div class="col-md-4 item form-inline">
                         <select class="form-control" id="role_idx" name="role_idx" required="required" title="권한유형">
                             <option value="">권한유형</option>
                             @foreach($roles as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <label class="control-label col-md-2" for="prof_id">T존연동교수아이디
+                    </label>
+                    <div class="col-md-2 item">
+                        <input type="text" id="prof_id" name="prof_id" class="form-control" title="T존연동교수아이디" value="{{ $data['wProfId'] or '' }}" readonly="readonly">
                     </div>
                 </div>
                 <div class="form-group">
@@ -205,6 +210,21 @@
                     }
                 }, showError, false, 'POST');
             });
+
+            // 권한유형 변경 이벤트
+            $regi_form.on('change', 'select[name="role_idx"]', function() {
+                var role_idx = $(this).val();
+                var asst_role_idx = '{{ $asst_role_idx }}';
+                var $prof_id = $regi_form.find('input[name="prof_id"]');
+
+                if (asst_role_idx === role_idx) {
+                    // 조교관리자일 경우
+                    $prof_id.prop('readonly', false);
+                } else {
+                    $prof_id.prop('readonly', true);
+                }
+            });
+            $regi_form.find('select[name="role_idx"]').trigger('change');
 
             // ajax submit
             $regi_form.submit(function() {

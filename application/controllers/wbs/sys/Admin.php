@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code', 'sys/role', 'sys/admin');
+    protected $models = array('sys/code', 'sys/role', 'sys/admin', 'pms/professor');
     protected $helpers = array();
 
     public function __construct()
@@ -82,6 +82,7 @@ class Admin extends \app\controllers\BaseController
         $method = 'POST';
         $idx = null;
         $data = null;
+        $asst_role_idx = $this->adminModel->_asst_role_idx;   // 조교관리자
 
         // 사용하는 코드값 조회
         $codes = $this->codeModel->getCcdInArray(['102', '103', '109', '110']);
@@ -101,6 +102,11 @@ class Admin extends \app\controllers\BaseController
             $data['wAdminMailId'] = substr($data['wAdminMail'], 0, strpos($data['wAdminMail'], '@'));
             $data['wAdminMailDomain'] = substr($data['wAdminMail'], strpos($data['wAdminMail'], '@') + 1);
             $data['wAdminMailDomainCcd'] = (empty($codes['103'][$data['wAdminMailDomain']]) === true) ? '' : $data['wAdminMailDomain'];
+
+            // 조교관리자일 경우 교수식별자 조회
+            if (empty($data['wProfIdx']) === false && $asst_role_idx == $data['wRoleIdx']) {
+                $data['wProfId'] = array_get($this->professorModel->findProfessor('wProfId', ['EQ' => ['wProfIdx' => get_var($data['wProfIdx'], '0')]]), 'wProfId');
+            }
         }
 
         $this->load->view('sys/admin/create', [
@@ -111,7 +117,8 @@ class Admin extends \app\controllers\BaseController
             'mail_domain_ccd' => $codes['103'],
             'dept_ccd' => $codes['109'],
             'position_ccd' => $codes['110'],
-            'roles' => $roles
+            'roles' => $roles,
+            'asst_role_idx' => $asst_role_idx
         ]);
     }
 

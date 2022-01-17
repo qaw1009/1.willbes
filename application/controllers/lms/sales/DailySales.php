@@ -24,10 +24,13 @@ class DailySales extends \app\controllers\BaseController
      */
     public function index()
     {
-        // 경찰, 공무원학원 사이트코드 제외
+        /*// 경찰, 공무원학원 사이트코드 제외
         $arr_site_code = array_filter($this->_target_site_code, function($key) {
             return !in_array($key, ['2002', '2004']);
-        }, ARRAY_FILTER_USE_KEY);
+        }, ARRAY_FILTER_USE_KEY);*/
+
+        // 전체 학원사이트 적용
+        $arr_site_code = $this->_target_site_code;
 
         // 디폴트 사이트코드
         $def_site_code = key($arr_site_code);

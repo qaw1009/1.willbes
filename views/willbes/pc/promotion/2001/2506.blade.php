@@ -159,11 +159,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_01.gif" alt="신광은경찰PASS">
             <div class="passLecBuy">   
                 <div>                    
-                    <input type="radio" id="y_pkg0" name="y_pkg" value="189573" data-sale-price="860000"/>                
+                    <input type="radio" id="y_pkg0" name="y_pkg" value="190426" data-sale-price="860000"/>                
                     <label for="y_pkg0">23년 1차 PASS 신청</label>
                 </div>
                 <div>                    
-                    <input type="radio" id="y_pkg1" name="y_pkg" value="188689" data-sale-price="770000"/>                
+                    <input type="radio" id="y_pkg1" name="y_pkg" value="190425" data-sale-price="770000"/>                
                     <label for="y_pkg1">22년 2차 PASS 신청</label>
                 </div>   
             </div>
@@ -291,11 +291,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_01.gif" alt="신광은경찰PASS">
             <div class="passLecBuy">   
                 <div>                    
-                    <input type="radio" id="y_pkg2" name="y_pkg" value="189573" data-sale-price="860000"/>                
+                    <input type="radio" id="y_pkg2" name="y_pkg" value="190426" data-sale-price="860000"/>                
                     <label for="y_pkg2">23년 1차 PASS 신청</label>
                 </div>
                 <div>                    
-                    <input type="radio" id="y_pkg3" name="y_pkg" value="188689" data-sale-price="770000"/>                
+                    <input type="radio" id="y_pkg3" name="y_pkg" value="190425" data-sale-price="770000"/>                
                     <label for="y_pkg3">22년 2차 PASS 신청</label>
                 </div>   
             </div>

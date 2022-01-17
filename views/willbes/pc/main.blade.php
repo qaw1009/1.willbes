@@ -51,12 +51,7 @@
                                 <li><a href="#none" class="favor-cate-each" data-key="ssam_3" data-url="{{ front_app_url('/home/index', 'ssam') }}">중등</a></li>
                             </ul>
                         </div>
-                        <div>
-                            <h5>ㆍ 어학</h5>
-                            <ul>
-                                <li><a href="#none" class="favor-cate-each" data-key="2007_3093" data-url="{{ front_app_url('/home/index/cate/3093', 'lang') }}">G-TELP</a></li>
-                            </ul>
-                        </div>
+
                         <div>
                             <h5>ㆍ 고등고시</h5>
                             <ul>
@@ -95,7 +90,6 @@
                             <ul>
                                 <li><a href="#none" class="favor-cate-each" data-key="namu_1" data-url="http://www.namucpa.com">회계사</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="namu_2" data-url="http://www.namucpa.com">세무사</a></li>
-                                <li><a href="#none" class="favor-cate-each" data-key="namu_3" data-url="http://www.namucpa.com">관세사</a></li>
                             </ul>
                         </div>
                         <div>
@@ -183,13 +177,11 @@
                         </tr>
                         <tr>
                             <th scope="row">교원임용</th>
-                            <td colspan="3">
+                            <td colspan="5">
                                 <a href="{{ front_app_url('/home/index', 'ssam') }}" target="_blank">교육학</a>
                                 <a href="{{ front_app_url('/home/index', 'ssam') }}" target="_blank">유아.초등</a>
                                 <a href="{{ front_app_url('/home/index', 'ssam') }}" target="_blank">중등</a>
                             </td>
-                            <th>어학</th>
-                            <td><a href="{{ front_app_url('/home/index/cate/3093', 'lang') }}" target="_blank">G-TELP</a></td>
                         </tr>
                         <tr>
                             <th scope="row">고등고시</th>
@@ -229,7 +221,6 @@
                             <td colspan="5">
                                 <a href="http://www.namucpa.com" target="_blank">회계사</a>
                                 <a href="http://www.namucpa.com" target="_blank">세무사</a>
-                                <a href="http://www.namucpa.com" target="_blank">관세사</a>
                             </td>
                         </tr>
                         <tr>
@@ -522,7 +513,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-site">N잡/어학/취업</td>
+                                    <td class="w-site">N잡/취업</td>
                                     <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                     <td class="w-call">1544-5006 ▶ 2</td>
                                     <td class="w-time tx-left pl25">

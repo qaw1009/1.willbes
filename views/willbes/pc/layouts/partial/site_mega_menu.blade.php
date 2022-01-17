@@ -174,7 +174,7 @@
                     </li>
                     <li>
                         <span>[G-TELP]</span>
-                        <a href="https://lang.willbes.net/professor/show/cate/3093/prof-idx/50764/?subject_idx=1478&subject_name=G-TELP&search_order=course&tab=home&series=">서민지</a>
+                        <a href="{{front_url('/professor/show/cate/3020/prof-idx/50713/?subject_idx=1177')}}">서민지</a>
                         <span>[프랑스어]</span>
                         <a href="{{front_url('/professor/show/cate/3020/prof-idx/50001/?subject_idx=1178')}}">박훈</a>
                     </li>
@@ -355,7 +355,7 @@
                     </li>
                     <li>
                         <span>[G-TELP]</span>
-                        <a href="https://lang.willbes.net/professor/show/cate/3093/prof-idx/50764/?subject_idx=1478&subject_name=G-TELP&search_order=course&tab=home&series=">서민지</a>
+                        <a href="{{front_url('/professor/show/cate/3024/prof-idx/50713/?subject_idx=1177')}}">서민지</a>
                         <span>[전자회로]</span>
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/50163?subject_idx=1196')}}">최우영</a>
                     </li>
@@ -967,7 +967,7 @@
                         <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=1112')}}">행정학</a>
                         <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=1185')}}">경영학</a>
                         <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=1196')}}">전자회로</a>
-                        <a href="http://lang.willbes.net/home/index/cate/3093">G-TELP</a>
+                        <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=1177')}}">G-TELP</a>
                         <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=1237')}}">한국사능력시험</a>
                     </li>
                     <li>

@@ -54,15 +54,16 @@
         <form name="regi_form_register" id="regi_form_register">
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
-            <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
-            <input type="hidden" name="register_type" value="promotion"/>
-            <input type="hidden" name="file_chk" value="Y"/>
-            <input type="hidden" name="file_chk2" value="Y"/>
-            <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="임용단기 아이디"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}"/>
+            <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
+            <input type="hidden" name="ssn_type" value="Y"> {{-- 주민번호 전송 --}}
+            <input type="hidden" id="register_name" name="register_name" value="{{sess_data('mem_name')}}">
+            <input type="hidden" id="userId" name="userId" value="{{sess_data('mem_id')}}">
             <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
-            <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
+            <input type="hidden" name="register_type" value="promotion"/>
+            <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] }}"/>
+            <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="수강과목"/> {{-- 체크 항목 전송 --}}
 
             <div class="evtCtnsBox evt01">
                 <div>
@@ -90,7 +91,7 @@
                         <li>입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3자에게 제공되지 않으며 개인정보 처리 방침에 따라 보호되고 있습니다.</li>
                         <li>개인정보 수집/이용에 동의하셨으면, 아래 사항을 기재해 주시기 바랍니다.</li>
                     </ul>
-                    <label><input type="checkbox" id="is_chk" name="is_chk" value="Y" title="개인정보 수집/이용 동의"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+                    <label><input type="checkbox" id="is_chk" name="is_chk" value="Y" onchange="loginCheck();" title="개인정보 수집/이용 동의"> 윌비스에 개인정보 제공 동의하기(필수)</label>
                 </div>
                 <div class="table_wrap">
                     <table>
@@ -108,17 +109,20 @@
                             <tr>
                               <th>연락처</th>
                                 <td>{{sess_data('mem_phone')}}</td>
-                                <th>패키지 수강과목</th>
+                                <th>* 패키지 수강과목</th>
                                 <td>
-                                    <input type="text" id="register_data1" name="register_data1" maxlength="50"/>
+                                    <input type="text" id="register_data1" name="register_data1" onclick="loginCheck();" maxlength="50"/>
                                 </td>
                             </tr>
                             <tr>
                               <th>* 주민번호</th>
-                                <td><input type="text" id="" name="" maxlength="6" style="width:100px"/> - <input type="text" id="" name="" maxlength="7" style="width:100px"/></td>
-                                <th>상품권 종류</th>
                                 <td>
-                                    <input type="text" id="" name="" maxlength="50"/>
+                                    <input type="text" id="ssn_1" name="ssn_1" maxlength="6" onclick="loginCheck();" style="width:100px"/> -
+                                    <input type="text" id="ssn_2" name="ssn_2" maxlength="7" onclick="loginCheck();" style="width:100px"/>
+                                </td>
+                                <th>* 상품권 종류</th>
+                                <td>
+                                    <input type="text" id="register_data2" name="register_data2" onclick="loginCheck();" maxlength="50"/>
                                 </td>
                             </tr>
 
@@ -143,60 +147,112 @@
 
     <script type="text/javascript">
         var $regi_form_register = $('#regi_form_register');
+        var _msg = [];
+
+        $(document).ready(function() {
+            _msg = [
+                '주민번호를 기입해주세요.'
+                , '주민번호는 숫자만 입력하셔야 합니다.'
+                , '올바른 주민번호를 입력하여 주세요.'
+            ];
+
+            $('#ssn_1').keyup (function () {
+                var charLimit = $(this).attr("maxlength");
+                if (this.value.length >= charLimit) {
+                    $("#ssn_2").focus();
+                    return false;
+                }
+            });
+        });
 
         function fn_submit() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+                alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+                return;
+            }
+
+            if ($("#register_data1").val() == '') {
+                alert('수강과목을 입력해주세요.');
+                $("#register_data1").focus();
+                return false;
+            }
+
+            if ($("#ssn_1").val() == '') {
+                alert('주민번호를 입력해주세요.');
+                $("#ssn_1").focus();
+                return false;
+            }
+
+            if ($("#ssn_2").val() == '') {
+                alert('주민번호를 입력해주세요.');
+                $("#ssn_2").focus();
+                return false;
+            }
+
+            if ($("#register_data2").val() == '') {
+                alert('상품권 종류를 입력해주세요.');
+                $("#register_data2").focus();
+                return false;
+            }
+
             var _url = '{!! front_url('/event/registerStore') !!}';
-            ajaxSubmit($regi_form_register, _url, function (ret) {
-                if (ret.ret_cd) {
-                    alert(ret.ret_msg);
-                    location.reload();
-                }
-            }, showValidateError, addValidate, false, 'alert');
+            if (confirm('저장하시겠습니까?')) {
+                ajaxSubmit($regi_form_register, _url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert(ret.ret_msg);
+                        location.reload();
+                    }
+                }, showValidateError, addValidate, false, 'alert');
+            }
         }
 
         function addValidate() {
-            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
-                alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+            var ssn_chk = ssnCheck($('#ssn_1').val(), $('#ssn_2').val());
+            if (ssn_chk !== true) {
+                alert(ssn_chk);
                 return false;
             }
 
-            if ($regi_form_register.find('input[name="register_data1"]').val() == '') {
-                alert('임용단기ID를 입력해주세요.');
-                return false;
-            }
-
-            if (!$regi_form_register.find('input[name="attach_file"]').val()) {
-                alert('인증파일을 등록해 주세요.');
-                return;
-            }
-
-            if (!$regi_form_register.find('input[name="attach_file2"]').val()) {
-                alert('신분증사본 파일을 등록해 주세요.');
-                return;
-            }
-
-            if (confirm('저장하시겠습니까?')) {
-                return true;
-            }
-
-            return false;
+            return true;
         }
 
-        function chkUploadFile(elem) {
-            if ($(elem).val()) {
-                var filename = $(elem).prop("files")[0].name;
-                var ext = filename.split('.').pop().toLowerCase();
+        function ssnCheck(_ssn1, _ssn2) {
+            var ssn1 = _ssn1,
+                ssn2 = _ssn2,
+                ssn = ssn1 + '' + ssn2,
+                arr_ssn = [],
+                compare = [2, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5],
+                sum = 0;
 
-                if ($.inArray(ext, ['gif', 'jpg', 'jpeg', 'png', 'bmp']) === -1) {
-                    $(elem).val("");
-                    alert('이미지 파일만 업로드 가능합니다.');
-                }
+            // 입력여부 체크
+            if (ssn1 == '') {return _msg[0];}
+            if (ssn2 == '') {return _msg[0];}
+
+            // 입력값 체크
+            if (ssn1.match('[^0-9]')) {$("#ssn_1").val(''); return _msg[1];}
+            if (ssn2.match('[^0-9]')) {$("#ssn_2").val(''); return _msg[1];}
+
+            // 자리수 체크
+            if (ssn.length != 13) {return _msg[2];}
+
+            // 공식: M = (11 - ((2×A + 3×B + 4×C + 5×D + 6×E + 7×F + 8×G + 9×H + 2×I + 3×J + 4×K + 5×L) % 11)) % 11
+            for (var i = 0; i < 13; i++) {
+                arr_ssn[i] = ssn.substring(i, i + 1);
             }
+            for (var i = 0; i < 12; i++) {
+                sum = sum + (arr_ssn[i] * compare[i]);
+            }
+
+            sum = (11 - (sum % 11)) % 10;
+            if (sum != arr_ssn[12]) {return _msg[2];}
+
+            return true;
         }
 
-        function del_file(id){
-            $("#attach_file_"+id).val("");
+        function loginCheck(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
         }
     </script>
 @stop

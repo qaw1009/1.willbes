@@ -233,6 +233,12 @@ class BasePromotion extends \app\controllers\FrontController
             if(empty($arr_promotion_params['member_info_chk_yn']) === false && $arr_promotion_params['member_info_chk_yn'] == 'Y'){
                 $arr_base['member_info'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $this->session->userdata('mem_idx')]]);
             }
+
+            // 문화상품권 지급내역 조회
+            if(empty($arr_promotion_params['member_recipient']) === false && $arr_promotion_params['member_recipient'] == 'Y'){
+                $arr_condition = ['EQ' => ['PromotionCode' => $data['PromotionCode'], 'IsStatus' => 'Y', 'MemIdx' => $this->session->userdata('mem_idx')]];
+                $arr_base['member_recipient'] = $this->eventFModel->findPromotionMemberRecipient($arr_condition);
+            }
         }
 
         $arr_base['frame_params'] = 'cate_code=' . $this->_cate_code . '&event_idx=' . $data['ElIdx'] . '&pattern=ongoing&promotion_code=' . $data['PromotionCode'] . $add_frame_params;

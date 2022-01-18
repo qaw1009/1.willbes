@@ -307,6 +307,20 @@ class EventFModel extends WB_Model
     }
 
     /**
+     * 이벤트 회원 상품권 신청 가능 내역
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function findPromotionMemberRecipient($arr_condition = [])
+    {
+        $column = 'MemIdx, MemId, IsApply, SubjectName, GiftCertificate';
+        $from = " FROM {$this->_table['event_promotion_member_recipient']}";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select '. $column . $from . $where)->row_array();
+    }
+
+    /**
      * 특강 신청자 등록
      * @param array $inputData
      * @param $site_code

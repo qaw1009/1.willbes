@@ -63,7 +63,9 @@
             <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] }}"/>
             <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="수강과목"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="수강생정보"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" id="register_data1" name="register_data1" value="{{ $arr_base['member_recipient']['SubjectName'] or ''}}">
+            <input type="hidden" id="register_data2" name="register_data2" value="{{ $arr_base['member_recipient']['GiftCertificate'] or ''}}">
 
             <div class="evtCtnsBox evt01">
                 <div>
@@ -111,7 +113,7 @@
                                 <td>{{sess_data('mem_phone')}}</td>
                                 <th>* 패키지 수강과목</th>
                                 <td>
-                                    <input type="text" id="register_data1" name="register_data1" onclick="loginCheck();" maxlength="50"/>
+                                    {{ $arr_base['member_recipient']['SubjectName'] or ''}}
                                 </td>
                             </tr>
                             <tr>
@@ -122,7 +124,7 @@
                                 </td>
                                 <th>* 상품권 종류</th>
                                 <td>
-                                    <input type="text" id="register_data2" name="register_data2" onclick="loginCheck();" maxlength="50"/>
+                                    {{ $arr_base['member_recipient']['GiftCertificate'] or ''}}
                                 </td>
                             </tr>
 
@@ -136,7 +138,11 @@
                         (10만원권 수령자 - 128,205원 차감 / 15만원권 수령자 - 192,308원 차감 )</li>
                     </ul>
                     <div class="btnSet">
-                        <a href="{!! front_url('/event/registerStore') !!}" onclick="javascript:fn_submit(); return false;">문화상품권 신청하기 ></a>
+                        @if(empty($arr_base['member_recipient']) === false)
+                            <a href="{!! front_url('/event/registerStore') !!}" onclick="javascript:fn_submit(); return false;">문화상품권 신청하기 ></a>
+                        @else
+                            <a href="javascript:alert('상품권 수령 대상자가 아닙니다.');">문화상품권 신청하기 ></a>
+                        @endif
                     </div>
                 </div>
 
@@ -173,12 +179,6 @@
                 return;
             }
 
-            if ($("#register_data1").val() == '') {
-                alert('수강과목을 입력해주세요.');
-                $("#register_data1").focus();
-                return false;
-            }
-
             if ($("#ssn_1").val() == '') {
                 alert('주민번호를 입력해주세요.');
                 $("#ssn_1").focus();
@@ -188,12 +188,6 @@
             if ($("#ssn_2").val() == '') {
                 alert('주민번호를 입력해주세요.');
                 $("#ssn_2").focus();
-                return false;
-            }
-
-            if ($("#register_data2").val() == '') {
-                alert('상품권 종류를 입력해주세요.');
-                $("#register_data2").focus();
                 return false;
             }
 

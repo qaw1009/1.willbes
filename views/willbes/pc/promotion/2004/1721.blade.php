@@ -102,6 +102,7 @@
             <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB&subject_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/1721_sky_title.png" alt=""></a>
             <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67ZqM66Gc7J2066Gg" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/1721_sky1.png" alt=""></a>
             <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU665SU7KeA7YS46rO17ZWZ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/1721_sky2.png" alt=""></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU6&subject_idx=1340" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/01/1721_sky3.png" alt=""></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            
@@ -286,12 +287,12 @@
             </div>
 
             <div id="tab01s" class="wrap">            
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/1721_05_cts1.png" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/1721_05_cts1.png" />
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="" style="position: absolute;left: 26.46%;top: 77.99%;width: 47.23%;height: 15.57%;z-index: 2;"></a>
             </div> 
 
             <div id="tab02s" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/1721_05_cts2.png" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/1721_05_cts2.png" />
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="" style="position: absolute;left: 26.46%;top: 79.99%;width: 47.23%;height: 15.57%;z-index: 2;"></a>
             </div>
         </div>

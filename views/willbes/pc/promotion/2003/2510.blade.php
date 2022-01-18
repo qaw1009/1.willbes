@@ -56,7 +56,6 @@
         <div class="evtCtnsBox event01" data-aos="fade-up"> 
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2510_01.jpg" alt="수험생의 영어고민" />
-                <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" title="모의고사 신청 바로가기" target="_blank" style="position: absolute; left: 26.96%; top: 90.20%; width: 44.46%; height: 5.26%; z-index: 2;"></a>
             </div>
         </div>
       

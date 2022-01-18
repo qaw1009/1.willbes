@@ -26,7 +26,7 @@
 
         .event01 {background:#f8f8f8;}   
 
-        .event02 {padding-bottom:100px; width:920px; margin:0 auto;}
+        .event02 {padding-bottom:30px; width:920px; margin:0 auto;}
         .event02 .txtTitle {font-size:32px; color:#5a5a5a; line-height:1.3; font-weight:bold; text-align:center; padding:100px 0 50px; letter-spacing:-1px}   
         .event02 .txtTitle p {font-size:46px;} 
         .event02 .txtTitle strong {color:#8813d8}
@@ -41,6 +41,9 @@
         .event02 .proftab a.active {background:#5e009e; color:#fff; border-color:#5e009e}
         .event02 .proftab a:nth-child(3),
         .event02 .proftab a:last-child {margin-right:0}
+
+        .event03 {width:1120px; margin:0 auto}
+        .event03 .title {font-size:32px; color:#8813d8; line-height:1.3; font-weight:bold; text-align:left; letter-spacing:-1px; margin-bottom:30px} 
    
     </style>
 
@@ -111,9 +114,14 @@
             </div>
         </div>  
 
-        <div id="lec">
+        <div class="evtCtnsBox event03"  id="lec">
+            <div class="title NSK-Black">[단과] 강의</div>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+            @endif 
+            <div class="title NSK-Black mt100">[패키지] 강의</div>
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
             @endif 
         </div>
 

@@ -51,10 +51,10 @@
         <div class="evtCtnsBox evt03" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2505_03.jpg" alt="유튜브">
-                <a href="https://www.youtube.com/channel/UCsNPdhwjR37qVtuePB599KQ" target="_blank" title="공식채널" style="position: absolute; left: 16.25%; top: 74.72%; width: 67.14%; height: 12.98%; z-index: 2;"></a>
+                <a href="https://www.youtube.com/watch?v=xV7WNdZ0zug&list=PLBXfMpjrxeIEqNC7pkyBjgb61nB06NjgA" target="_blank" title="공식채널" style="position: absolute; left: 16.25%; top: 74.72%; width: 67.14%; height: 12.98%; z-index: 2;"></a>
             </div>
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/H4H3Sd2nhOs?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/xV7WNdZ0zug?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>                
         </div> 
 
@@ -70,12 +70,14 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2505_05.jpg" alt="소문내기 이벤트">             
         </div>
 
-        <div class="evtCtnsBox wrap" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2505_06.jpg" alt="소문내기 이벤트 sns">
-            <a href="https://gall.dcinside.com/board/lists?id=government" title="공갤" target="_blank" style="position: absolute; left: 5.89%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
-            <a href="https://top.cafe.daum.net" title="구꿈사" target="_blank" style="position: absolute; left: 24.64%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
-            <a href="https://section.cafe.naver.com/ca-fe" title="네이버카페" target="_blank" style="position: absolute; left: 43.39%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
-            <a href="https://www.instagram.com" title="인스타그램"  target="_blank" style="position: absolute; left: 63.57%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2505_06.jpg" alt="소문내기 이벤트 sns">
+                <a href="https://gall.dcinside.com/board/lists?id=government" title="공갤" target="_blank" style="position: absolute; left: 5.89%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
+                <a href="https://top.cafe.daum.net" title="구꿈사" target="_blank" style="position: absolute; left: 24.64%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
+                <a href="https://section.cafe.naver.com/ca-fe/" title="네이버카페" target="_blank" style="position: absolute; left: 43.39%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
+                <a href="https://www.instagram.com" title="인스타그램"  target="_blank" style="position: absolute; left: 63.57%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
+            </div>
         </div>
 
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

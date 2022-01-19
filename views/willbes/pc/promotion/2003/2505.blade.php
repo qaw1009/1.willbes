@@ -51,10 +51,10 @@
         <div class="evtCtnsBox evt03" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2505_03.jpg" alt="유튜브">
-                <a href="https://www.youtube.com/channel/UCsNPdhwjR37qVtuePB599KQ" target="_blank" title="공식채널" style="position: absolute; left: 16.25%; top: 74.72%; width: 67.14%; height: 12.98%; z-index: 2;"></a>
+                <a href="https://www.youtube.com/watch?v=xV7WNdZ0zug&list=PLBXfMpjrxeIEqNC7pkyBjgb61nB06NjgA" target="_blank" title="공식채널" style="position: absolute; left: 16.25%; top: 74.72%; width: 67.14%; height: 12.98%; z-index: 2;"></a>
             </div>
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/H4H3Sd2nhOs?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/xV7WNdZ0zug?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>                
         </div> 
 

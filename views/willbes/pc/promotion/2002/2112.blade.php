@@ -5,15 +5,18 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
-            margin-top:20px !important;
+            max-width:2000px !important;
+            margin:20px auto 0;
             padding:0 !important;
-            background:#fff;            
+            background:#fff;     
+            font-size:14px;       
         }
-        .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtContent span {vertical-align:auto}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}  */
 
         /************************************************************/
         .sky {position:fixed; width:160px; top:200px;right:10px;z-index:1;}
@@ -41,12 +44,11 @@
         .content_guide_wrap{background:#fff; width:1000px; margin:0 auto; padding:50px 0 100px; font-size:14px}
         .content_guide_wrap .guide_tit{margin-bottom:50px; text-align:left; font-size:30px;}
 
-        .content_guide_wrap .tabs {width:1000px; margin:0 auto;} 
-        .content_guide_wrap .tabs li {display:inline; float:left; width:33.33333%}
+        .content_guide_wrap .tabs {width:1000px; margin:0 auto; display:flex; justify-content: space-around;} 
+        .content_guide_wrap .tabs li {width:50%;}
         .content_guide_wrap .tabs li a {display:block; text-align:center; height:60px; line-height:60px; font-size:140% !important; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
         .content_guide_wrap .tabs li a:hover,
         .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
-        .content_guide_wrap .tabs:after {content:""; display:block; clear:both}
         .content_guide_box {width:1000px; margin:0 auto; border:2px solid #202020; border-top:0; padding-top:30px}
         .content_guide_box dl{margin:0 20px; word-break:keep-all; padding:30px}
         .content_guide_box dt{margin-bottom:10px}
@@ -72,25 +74,6 @@
         .newTopDday ul li:last-child a:hover {background:#666}
         .newTopDday ul li:last-child span {display:block; margin-top:10px}
         .newTopDday ul:after {content:""; display:block; clear:both}
-
-        /*레이어팝업*/
-        .Pstyle {
-            opacity: 0;
-            display: none;
-            position: relative;
-            width: auto;
-            background-color: #fff;
-        }
-        .b-close {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            padding: 5px;
-            display: inline-block;
-            cursor: pointer;
-        }
-        .Pstyle .content {height:auto; width:auto;}
-
     </style>
 
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
@@ -100,7 +83,7 @@
         <input type="hidden" id="chk_price" name="chk_price" value="0"/>
     </form>
 
-    <div class="p_re evtContent NSK" id="evtContainer">        
+    <div class="evtContent NSK" id="evtContainer">        
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
@@ -183,12 +166,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2112_05.jpg"  alt="최정예 교수진" />
         </div>
 
-        <div class="content_guide_wrap" id="tab">                
+        <div class="content_guide_wrap" id="tab">
             <p class="guide_tit">윌비스 <span class="NSK-Black tx-blue">신광은 경찰 PASS </span> 이용안내 </p>
             <ul class="tabs">
                 <li><a href="#tab01" class="active">23년 1차 PASS</a></li>
                 <li><a href="#tab02">22년 2차 PASS</a></li>
-                <li><a href="#tab03">Final PASS (22년 1차 대비)</a></li>
             </ul>
 
             <div class="content_guide_box" id="tab01">
@@ -433,89 +415,6 @@
                     </dd>
                 </dl>
             </div>
-
-            <div class="content_guide_box" id="tab03">
-                <dl>
-                    <dt>
-                        <h3>Final PASS</h3>
-                    </dt>
-                    <dd>
-                        <ol>
-                            <li>본 상품은 구매일로부터 22년 1차 필기시험일까지 수강 가능합니다.</li>
-                            <li>
-                                본 상품 강좌 구성은 다음과 같습니다.<br>
-                                - 2022년 대비 형사법, 경찰학, 헌법, 범죄학 전 강좌
-                                <div class="tx-blue">
-                                    * 형사법 : 신광은 교수님<br>
-                                    * 경찰학(개편) : 장정훈 교수님<br>
-                                    * 헌법 : 김원욱 교수님 / 이국령 교수님<br>
-                                    * 범죄학 : 박상민 교수님
-                                </div>
-                            </li>
-                            <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 2배수 수강 할 수 있습니다.</li>
-                            <li>각 강좌 별 2배수 수강 후에는 추가 수강이 불가합니다. (<a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank" class="tx-blue">배수제한 공지 자세히 보기 ></a>)</li>
-                            <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다. (결제완료자에 한함)</li>
-                            <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
-                        </ol>
-                    </dd>  
-
-                    <dt>
-                        <h3>교재 및 포인트</h3>
-                    </dt>
-                    <dd>
-                        <ol>
-                            <li>신광은 경찰 PASS 수강에 필요한 교재는 별도로 구매하셔야 하며, 각 강좌 별 교재는 강좌 소개 및 교재 구매 메뉴에서 별도 구매 가능합니다. </li>
-                        </ol>
-                    </dd>
-
-                    <dt>
-                        <h3>환불</h3>
-                    </dt>
-                    <dd>
-                        <ol>
-                            <li>결제 후 7일 이내 3강 이하 수강시에만 전액 환불 가능합니다.</li>
-                            <li>결제 후 7일 이내 환불 요청 시 수강한 각 강의 정가 기준으로 수강 부분만큼 차감 후 나머지 부분에 대해 환불이 진행됩니다.</li>
-                            <li>강좌 내 학습 자료 및 모바일 다운로드 이용 시에는 수강한 것으로 간주됩니다.</li>
-                            <li>고객 변심으로 인한 환불은 수강 시작일 (당일 포함)로부터 7일이 경과되면, 신광은 경찰PASS 결제가 기준으로 계산하여 
-                            사용일 수 만큼 차감 후 환불됩니다. (단, 가산점 특강, 온라인 모의고사 등 이용 시에도 차감)</li>
-                            <li>중도 환불 시 제공받은 입문서는 판매가 기준으로 차감 후 환불됩니다.</li>
-                        </ol>
-                    </dd>
-
-                    <dt>
-                        <h3>PASS 수강</h3>
-                    </dt>
-                    <dd>
-                        <ol>
-                            <li>로그인 후 [내 강의실]에서 [무한PASS존]으로 접속합니다.</li>
-                            <li>구매한 PASS 상품 선택 후 [강좌추가하기]를 클릭, 원하시는 강좌를 등록한 후 수강할 수 있습니다.</li>
-                            <li>신광은 경찰 PASS는 일시 정지, 수강 연장, 재수강 불가합니다.</li>
-                            <li>신광은 경찰 PASS 수강 시 이용 가능한 기기 대수는 다음과 같이 제한됩니다.<br>
-                            총 수강 기기 대수 2대 : PC 2대 또는 PC 1대 모바일 1대 또는 모바일 2대 (신광은 경찰PASS PMP강의는 제공하지 않습니다.)</li>
-                            <li>PC, 모바일 기기에 대한 초기화가 필요할 경우 최초 초기화에 한해서는 수강생 본인이 초기화가 가능합니다. 다만 추후 초기화가
-                                필요할 시 내용 확인 후 가능하오니 고객센터로 문의하시기 바랍니다. ([내 강의실] 내 [무한PASS존]에서 등록기기정보 확인)</li>
-                            <li>일부 강좌의 경우 자료 출력 횟수 제한이 적용됩니다. (2단계 동형 모의고사, 3단계 파이널 모의고사 등)</li>
-                        </ol>
-                    </dd>
-
-                    <dt>
-                        <h3>유의사항</h3>
-                    </dt>
-                    <dd>
-                        <ol>
-                            <li>본 상품은 특별할인기획 상품으로 쿠폰 할인, 다다익선 할인, 포인트 사용 등 혜택이 적용되지 않으니 양해 및 참고 부탁드립니다.(재수강/환승 및 이벤트진행시 제외)</li>
-                            <li>신광은경찰PASS 강좌 (부가 서비스 등) 중 불가피한 사정에 의해 부득이 진행되지 않을 경우 대체 강좌로 제공 예정이며, 이로 인한 환불은 불가합니다.</li>
-                            <li>아이디 공유, 타인에게 양도 및 판매 등 부정 사용 적발 시 수강 중인 PASS 강좌는 즉시 정지, 회원 자격이 박탈됩니다. 이로 인한 강의 환불은 절대 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 발생 할 수 있습니다.</li>
-                            <li>온,오프라인 동시 시행되는 이벤트, 무료특강 등의 경우 해당 강좌는 PASS에 미지급 되거나, 이벤트 종료 후 제공 될 수 있습니다.</li>
-                            <li>PASS 관련 발급 된 쿠폰은 이벤트가 변경되거나 종료 될 경우 자동 회수 될 수 있으며, 동일 혜택이 적용되지 않을 수 있습니다.</li>
-                        </ol>
-                    </dd>
-
-                    <dd>
-                        <p>※ 이용문의 : 고객센터 1544-5006 / 사이트 내 1:1 상담 게시판</p>
-                    </dd>
-                </dl>
-            </div>
         </div>
 
         <!-- content_guide_wrap //-->
@@ -613,13 +512,13 @@
             if(url.indexOf("tab3") > -1){
                 var activeTab = "#tab3";
                 $(".tabsl li a").removeClass("active");
-                $(".tabs li a[href='#tab3']").addClass("active");
+                $(".tabs li a[href='#tab03']").addClass("active");
                 $(".tabContents").hide();
                 $(activeTab).show();
                 return false;
             }else{
                 $(".tabs li a").removeClass("active");
-                $(".tabs li a[href='#tab1']").addClass("active");
+                $(".tabs li a[href='#tab01']").addClass("active");
                 $(".content_guide_box").hide();
                 $(".content_guide_box:first").show();
             }

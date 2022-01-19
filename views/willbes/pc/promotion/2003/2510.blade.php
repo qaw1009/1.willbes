@@ -42,7 +42,7 @@
         .event02 .proftab a:nth-child(3),
         .event02 .proftab a:last-child {margin-right:0}
 
-        .event03 {width:1120px; margin:0 auto}
+        .event03 {width:1120px; margin:0 auto 100px}
         .event03 .title {font-size:32px; color:#8813d8; line-height:1.3; font-weight:bold; text-align:left; letter-spacing:-1px; margin-bottom:30px} 
    
     </style>

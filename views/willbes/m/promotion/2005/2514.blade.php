@@ -59,10 +59,10 @@
         <div class="evtCtnsBox mb50 event04" data-aos="fade-up" id="lecbuy">
             <div class="tabs NSK-Black">
                 <a href="#tab01" class="active">5급/외교원<br><strong>예비순환</strong></a>
-                <a href="#tab01">5급/외교원<br><strong>GS1순환</strong></a>
-                <a href="#tab01">5급/외교원<br><strong>GS2순환</strong></a>
-                <a href="#tab01">5급/외교원<br><strong>GS3순환</strong></a>
-                <a href="#tab01">5급헌법 <br>+ PSAT</a>
+                <a href="#tab02">5급/외교원<br><strong>GS1순환</strong></a>
+                <a href="#tab03">5급/외교원<br><strong>GS2순환</strong></a>
+                <a href="#tab04">5급/외교원<br><strong>GS3순환</strong></a>
+                <a href="#tab05">5급헌법 <br>+ PSAT</a>
             </div>
 
             <div id="tab01" class="tabContents">

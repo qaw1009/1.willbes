@@ -553,6 +553,7 @@ class LectureModel extends CommonLectureModel
             ,'ExternalLinkCode'=>element('ExternalLinkCode',$input)
             ,'IsOpenwUnitNum'=>element('IsOpenwUnitNum',$input,'N')
             ,'IsMobileDownload'=>element('IsMobileDownload',$input,'Y')
+            ,'DeviceLimitCount'=>element('DeviceLimitCount', $input, 0)
         ];
    }
 }

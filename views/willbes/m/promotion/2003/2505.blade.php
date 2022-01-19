@@ -48,9 +48,9 @@
     <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/01/2505m_04.jpg" alt="" >
         <div class="embed-container">
-            <iframe src="https://www.youtube.com/embed/H4H3Sd2nhOs?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/xV7WNdZ0zug?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <a href="https://www.youtube.com/channel/UCsNPdhwjR37qVtuePB599KQ" target="_blank" title="공식채널" >
+        <a href="https://www.youtube.com/watch?v=xV7WNdZ0zug&list=PLBXfMpjrxeIEqNC7pkyBjgb61nB06NjgA" target="_blank" title="공식채널" >
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2505m_04_01.jpg" alt="" > 
         </a>
     </div> 

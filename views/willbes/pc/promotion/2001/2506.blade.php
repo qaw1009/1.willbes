@@ -160,11 +160,11 @@
             <div class="passLecBuy">   
                 <div>                    
                     <input type="radio" id="y_pkg0" name="y_pkg" value="190426" data-sale-price="860000"/>                
-                    <label for="y_pkg0">23년 1차 PASS 신청</label>
+                    <label for="y_pkg0">23년 1차 경찰 PASS 신청 </label>
                 </div>
                 <div>                    
                     <input type="radio" id="y_pkg1" name="y_pkg" value="190425" data-sale-price="770000"/>                
-                    <label for="y_pkg1">22년 2차 PASS 신청</label>
+                    <label for="y_pkg1">22년 2차 경찰 PASS 신청</label>
                 </div>   
             </div>
 
@@ -292,11 +292,11 @@
             <div class="passLecBuy">   
                 <div>                    
                     <input type="radio" id="y_pkg2" name="y_pkg" value="190426" data-sale-price="860000"/>                
-                    <label for="y_pkg2">23년 1차 PASS 신청</label>
+                    <label for="y_pkg2">23년 1차 경찰 PASS 신청</label>
                 </div>
                 <div>                    
                     <input type="radio" id="y_pkg3" name="y_pkg" value="190425" data-sale-price="770000"/>                
-                    <label for="y_pkg3">22년 2차 PASS 신청</label>
+                    <label for="y_pkg3">22년 2차 경찰 PASS 신청</label>
                 </div>   
             </div>
            
@@ -326,14 +326,14 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit">윌비스 <span class="NSK-Black tx-blue">신광은 경찰 PASS </span> 이용안내 </p>
             <ul class="tabs">
-                <li><a href="#tab01" class="active">23년 1차 PASS</a></li>
-                <li><a href="#tab02">22년 2차 PASS</a></li>
+                <li><a href="#tab01" class="active">23년 1차 경찰 PASS</a></li>
+                <li><a href="#tab02">22년 2차 경찰 PASS</a></li>
             </ul>
 
             <div class="content_guide_box" id="tab01">
                 <dl>
                     <dt>
-                        <h3>23년 1차 PASS</h3>
+                        <h3>23년 1차 경찰 PASS</h3>
                     </dt>
                     <dd>
                         <ol>
@@ -455,7 +455,7 @@
             <div class="content_guide_box" id="tab02">
                 <dl>
                     <dt>
-                        <h3>22년 2차 PASS</h3>
+                        <h3>22년 2차 경찰 PASS</h3>
                     </dt>
                     <dd>
                         <ol>

@@ -52,9 +52,7 @@
         .evt03, .evt04, .evt05, .evt06{padding-bottom:100px;}
 
         .evt07 {background:#2ddbab;}
-    
-        .evt08 {padding-bottom:100px;}        
-       
+               
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -118,15 +116,7 @@
 
         <div class="evtCtnsBox evt07" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2454_07.jpg" title="1등인 이유">           
-        </div>
-
-        <div class="evtCtnsBox evt08" data-aos="fade-up" id="tip">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2454_08.jpg" title="꿀팁 대방출">
-            {{--기본댓글--}}
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_normal_partial')
-            @endif       
-        </div>
+        </div>        
 
 	</div>
 

@@ -53,9 +53,7 @@
     
     .evt05, .evt07 {background:#f8f8f8;}
 
-    .evt08 {background:#3e3e3e;}
-
-    .evt09 {padding-bottom:100px;}
+    .evt08 {background:#3e3e3e;padding-bottom:50px;}  
 
     </style>
 
@@ -140,15 +138,7 @@
 
         <div class="evtCtnsBox evt08" data-aos="fade-up">  
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2415_08.jpg" alt="1일 1제" >    
-        </div> 
-
-        <div class="evtCtnsBox evt09" data-aos="fade-up">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2415_09.jpg" alt="꿀팁 대방출" >
-            {{--기본댓글--}}
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_normal_partial')
-            @endif     
-        </div>
+        </div>       
 
     </div>
 

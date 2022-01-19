@@ -47,7 +47,7 @@
         .evt_02 strong {color:#ffff00}
 
         .evt_03 {padding:100px 0; width:1120px; margin:auto}
-        .evt_03 .tabs {display:flex}
+        .evt_03 .tabs {display:flex; margin-bottom:20px}
         .evt_03 .tabs a {font-size:20px; text-align:center; display:block; width:20%; background:#670c14; color:#fff; padding:20px 0 }
         .evt_03 .tabs a.active {background:#fff; color:#000; border:3px solid #670c14; border-bottom:0}
         .evt_03 .tabs a strong {color:#cf1425}        

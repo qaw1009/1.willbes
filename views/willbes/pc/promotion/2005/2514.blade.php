@@ -47,7 +47,7 @@
         .evt_02 strong {color:#ffff00}
 
         .evt_03 {padding:100px 0; width:1120px; margin:auto}
-        .evt_03 .tabs {display:flex}
+        .evt_03 .tabs {display:flex; margin-bottom:20px}
         .evt_03 .tabs a {font-size:20px; text-align:center; display:block; width:20%; background:#670c14; color:#fff; padding:20px 0 }
         .evt_03 .tabs a.active {background:#fff; color:#000; border:3px solid #670c14; border-bottom:0}
         .evt_03 .tabs a strong {color:#cf1425}        
@@ -104,10 +104,10 @@
         <div class="evtCtnsBox evt_03" id="lecwrap">
             <div class="tabs NSK-Black">
                 <a href="#tab01" class="active">5급/외교원<br><strong>예비순환</strong></a>
-                <a href="#tab01">5급/외교원<br><strong>GS1순환</strong></a>
-                <a href="#tab01">5급/외교원<br><strong>GS2순환</strong></a>
-                <a href="#tab01">5급/외교원<br><strong>GS3순환</strong></a>
-                <a href="#tab01">5급헌법 <br>+ PSAT</a>
+                <a href="#tab02">5급/외교원<br><strong>GS1순환</strong></a>
+                <a href="#tab03">5급/외교원<br><strong>GS2순환</strong></a>
+                <a href="#tab04">5급/외교원<br><strong>GS3순환</strong></a>
+                <a href="#tab05">5급헌법 <br>+ PSAT</a>
             </div>
 
             <div id="tab01" class="tabContents">
@@ -119,7 +119,7 @@
             <div id="tab02" class="tabContents">
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
-                @endif 
+                @endif
             </div> 
 
             <div id="tab03" class="tabContents">
@@ -165,7 +165,6 @@
             /*디데이*/
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
-
     </script>
     
     {{-- 프로모션용 스크립트 include --}}

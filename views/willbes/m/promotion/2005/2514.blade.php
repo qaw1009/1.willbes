@@ -3,7 +3,7 @@
 @section('content')
 <!-- Container -->
     <style type="text/css">
-    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.3; clear:both}
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; position:relative; font-size:14px; line-height:1.3; clear:both}
     .evtCtnsBox img {width:100%; max-width:720px;} 
 
     /************************************************************/
@@ -16,7 +16,7 @@
     .evtInfo li {margin-bottom:8px; list-style:disc; margin-left:20px}
     .evtInfo strong {color:#ffff00}
 
-    .event04 {margin-bottom:50px}
+    .event04 {margin-bottom:50px;}
     .event04 .tabs {display:flex}
     .event04 .tabs a {font-size:16px; text-align:center; display:block; width:20%; background:#cf1425; color:#fff; padding:20px 0; letter-spacing:-1px}
     .event04 .tabs a.active {background:#fff; color:#000;}
@@ -59,10 +59,10 @@
         <div class="evtCtnsBox mb50 event04" data-aos="fade-up" id="lecbuy">
             <div class="tabs NSK-Black">
                 <a href="#tab01" class="active">5급/외교원<br><strong>예비순환</strong></a>
-                <a href="#tab01">5급/외교원<br><strong>GS1순환</strong></a>
-                <a href="#tab01">5급/외교원<br><strong>GS2순환</strong></a>
-                <a href="#tab01">5급/외교원<br><strong>GS3순환</strong></a>
-                <a href="#tab01">5급헌법 <br>+ PSAT</a>
+                <a href="#tab02">5급/외교원<br><strong>GS1순환</strong></a>
+                <a href="#tab03">5급/외교원<br><strong>GS2순환</strong></a>
+                <a href="#tab04">5급/외교원<br><strong>GS3순환</strong></a>
+                <a href="#tab05">5급헌법 <br>+ PSAT</a>
             </div>
 
             <div id="tab01" class="tabContents">

@@ -70,12 +70,14 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2505_05.jpg" alt="소문내기 이벤트">             
         </div>
 
-        <div class="evtCtnsBox wrap" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2505_06.jpg" alt="소문내기 이벤트 sns">
-            <a href="https://gall.dcinside.com/board/lists?id=government" title="공갤" target="_blank" style="position: absolute; left: 5.89%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
-            <a href="https://top.cafe.daum.net" title="구꿈사" target="_blank" style="position: absolute; left: 24.64%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
-            <a href="https://section.cafe.naver.com/ca-fe" title="네이버카페" target="_blank" style="position: absolute; left: 43.39%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
-            <a href="https://www.instagram.com" title="인스타그램"  target="_blank" style="position: absolute; left: 63.57%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2505_06.jpg" alt="소문내기 이벤트 sns">
+                <a href="https://gall.dcinside.com/board/lists?id=government" title="공갤" target="_blank" style="position: absolute; left: 5.89%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
+                <a href="https://top.cafe.daum.net" title="구꿈사" target="_blank" style="position: absolute; left: 24.64%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
+                <a href="https://section.cafe.naver.com/ca-fe/" title="네이버카페" target="_blank" style="position: absolute; left: 43.39%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
+                <a href="https://www.instagram.com" title="인스타그램"  target="_blank" style="position: absolute; left: 63.57%; top: 39.64%; width: 16.34%; height: 50.3%; z-index: 2;"></a>
+            </div>
         </div>
 
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

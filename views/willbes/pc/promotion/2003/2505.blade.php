@@ -18,7 +18,9 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
-        /************************************************************/     
+        /************************************************************/   
+        .sky {position:fixed;top:200px;right:5px;z-index:11;}
+        .sky a {display:block; margin-top:5px}  
 
         .evttop {background:url(https://static.willbes.net/public/images/promotion/2022/01/2505_top_bg.jpg) no-repeat center top;} 
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/01/2505_01_bg.jpg) no-repeat center top;} 
@@ -34,6 +36,11 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">  
+        <div class="sky" id="QuickMenu">
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2505_sky.png" alt="런칭기념event">
+            <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2022/01/2505_sky2.png" alt="기대평남기기"></a>
+            <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2022/01/2505_sky3.png" alt="소문내고 선물받기"></a>
+        </div>
 
         <div class="evtCtnsBox evttop" data-aos="fade-up">                 
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2505_top.jpg" alt="한덕현 동사구 업 데이">                                  
@@ -58,8 +65,8 @@
             </div>                
         </div> 
 
-        <div class="evtCtnsBox evt04" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2505_04.jpg" alt="기대평 이벤트">              
+        <div class="evtCtnsBox evt04" id="evt04">
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2505_04.jpg"  alt="기대평 이벤트">              
         </div> 
         {{-- 이모티콘 댓글 --}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
@@ -92,6 +99,7 @@
         $( document ).ready( function() {
             AOS.init();
         } );
+
     </script>
 
     <script type="text/javascript">

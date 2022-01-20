@@ -1022,7 +1022,7 @@ class Home extends \app\controllers\FrontController
      */
     private function _getlistProfHotClip()
     {
-        $order_by = ['g.OrderNum' => 'ASC', 'hc.OrderNum' => 'ASC'];
+        $order_by = ['hc.OrderNum' => 'ASC'];
         $arr_condition = [
             'EQ' => [
                 'g.ViewType' => '1'

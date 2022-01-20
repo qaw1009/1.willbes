@@ -143,12 +143,13 @@
         </script>
         <script src="https://cdn.megadata.co.kr/js/en_script/3.6/enliple_min3.6.js" defer="defer" onload="mobConv()"></script>
         <!-- Enliple Tracker v3.6 [회원가입] end -->
-        {{-- 회원가입 경찰일때만 경찰 김문정 요청 --}}
+        {{-- 회원가입 경찰일때만 경찰 김문정 요청 -> 공통코드로 변경
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TMFT3J3');</script>
         <!-- End Google Tag Manager -->
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TMFT3J3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
+        --}}
     @endif
 @stop

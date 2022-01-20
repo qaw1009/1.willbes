@@ -106,7 +106,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">	
 		<div class="sky" id="QuickMenu">
 			<a href="#to_go">
-				<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_sky2.png" usemap="#map1068_sky" border="0" />
+				<img src="https://static.willbes.net/public/images/promotion/2022/01/1068_sky2.png" usemap="#map1068_sky" border="0" />
 				<map name="map1068_sky" id="map1068_sky">
 					<area shape="rect" coords="11,121,132,195" href="#" class="r_btn_tab" data-tab-id="1"/>
 					<area shape="rect" coords="11,209,131,264" href="#" class="r_btn_tab" data-tab-id="2"/>
@@ -180,15 +180,16 @@
 
 		<div class="evtCtnsBox wb_02" id="to_go">
 			<div class="wrap">
-				<img src="https://static.willbes.net/public/images/promotion/2021/10/1068_02_02.jpg" alt=""/>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185386" target="_blank" title="" style="position: absolute;left: 5.27%;top: 49.38%;width: 17.5%;height: 2.85%;z-index: 2;"></a>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185387" target="_blank" title="" style="position: absolute;left: 29.27%;top: 49.38%;width: 17.5%;height: 2.85%;z-index: 2;"></a>				
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185390" target="_blank" title="" style="position: absolute;left: 52.57%;top: 49.38%;width: 17.5%;height: 2.85%;z-index: 2;"></a>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185391" target="_blank" title="" style="position: absolute;left: 76.47%;top: 49.38%;width: 17.5%;height: 2.85%;z-index: 2;"></a>
-				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186520" target="_blank" title="" style="position: absolute;left: 5.27%;top: 87.08%;width: 17.5%;height: 2.85%;z-index: 2;"></a>
-				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186521" target="_blank" title="" style="position: absolute;left: 29.27%;top: 87.08%;width: 17.5%;height: 2.85%;z-index: 2;"></a>				
-				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186530" target="_blank" title="" style="position: absolute;left: 52.57%;top: 87.08%;width: 17.5%;height: 2.85%;z-index: 2;"></a>
-				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186529" target="_blank" title="" style="position: absolute;left: 76.47%;top: 87.08%;width: 17.5%;height: 2.85%;z-index: 2;"></a>
+				<img src="https://static.willbes.net/public/images/promotion/2022/01/1068_02_02.jpg" alt=""/>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/187658"  target="_blank" title="재배학/식용작물" style="position: absolute; left: 68.75%; top: 25.23%; width: 20.09%; height: 2.47%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185386" target="_blank" title="기본심화이론" style="position: absolute; left: 5.54%; top: 56.31%; width: 16.96%; height: 2.42%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185387" target="_blank" title="농업직이론" style="position: absolute; left: 29.38%; top: 56.41%; width: 16.96%; height: 2.42%; z-index: 2;"></a>				
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185390" target="_blank" title="농촌지도사 경기,인천외" style="position: absolute; left: 52.86%; top: 56.51%; width: 16.96%; height: 2.42%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185391" target="_blank" title="농촌지도사 경기,인천" style="position: absolute; left: 76.79%; top: 56.41%; width: 16.96%; height: 2.42%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186520" target="_blank" title="9급농업직" style="position: absolute; left: 5.54%; top: 88.65%; width: 16.96%; height: 2.42%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186521" target="_blank" title="7급농업직" style="position: absolute; left: 29.38%; top: 88.7%; width: 16.96%; height: 2.42%; z-index: 2;"></a>				
+				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186530" target="_blank" title="농촌지도사 경기.인천외" style="position: absolute; left: 53.04%; top: 88.65%; width: 16.96%; height: 2.42%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/186529" target="_blank" title="농촌지도사 경기,인천" style="position: absolute; left: 76.7%; top: 88.6%; width: 16.96%; height: 2.42%; z-index: 2;"></a>
 			</div>			
 		</div>
 		       

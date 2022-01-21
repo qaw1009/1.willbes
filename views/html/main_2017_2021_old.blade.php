@@ -22,12 +22,12 @@
 .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
 .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
 */
-.ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2; 
+.ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 100; 
     display: grid; grid-template-columns: repeat(auto-fill, minmax(50%, auto)); 
     grid-template-rows: repeat(16, minmax(0, auto)); 
     grid-auto-flow: column;
     grid-gap: 0;
-	gap: 0;
+	gap: 0;  
 }
 .ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:24px; line-height:24px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
 .ssam .sec-prof .prof-Tab li a span {font-size:12px; color:#0a2230; display:inline-block; width:67px; margin-right:2px; vertical-align:bottom; font-weight:bold;  text-align:left;}

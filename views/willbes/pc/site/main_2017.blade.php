@@ -33,30 +33,29 @@
 
         .ssam .noticeBox .List-Table {margin-top:20px !important;border-top:0 !important}
 
-        .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
+        .ssam .sec-prof {background:#9cb6c5 url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative; margin-top:40px}
         .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
         .ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}
-        .ssam .sec-prof .prof-Tab {position:absolute; top:24px; left:50px; width:300px; z-index: 101;}
+        .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
 
         .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
-        .ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:35px; line-height:35px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
-        .ssam .sec-prof .prof-Tab li a span {font-size:13px; color:#0a2230; display:inline-block; width:67px; margin-right:2px; vertical-align:bottom; font-weight:bold;  text-align:left;}
+        .ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:24px; line-height:24px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
+        .ssam .sec-prof .prof-Tab li a span {font-size:12px; color:#0a2230; display:inline-block; width:67px; margin-right:2px; vertical-align:bottom; font-weight:bold;  text-align:left;}
         .ssam .sec-prof .prof-Tab li a.active {width:130px; background:#0a2230; width:140px; border:1px solid #0a2230; border-bottom:1px solid #638294}
         .ssam .sec-prof .prof-Tab li a.active span {color:#8ca4b2}
         .ssam .sec-prof .prof-Tab li a,
         .ssam .sec-prof .prof-Tab:after {content; display:block; clear:both}
-        .ssam .sec-prof .prof-Tab-Cts {position:relative; width:1120px; margin:0 auto}
+        .ssam .sec-prof .prof-Tab-Cts {position:relative; width:1120px; margin:0 auto;}
         .ssam .sec-prof .prof-Tab-Cts .btnBox {position:absolute; top:195px; left:384px}
-        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn { height:25px;}
         .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a {display:inline-block; color:#fff; padding:4px 10px 4px 22px; margin-right:4px}
-        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(1) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon01.png")
+        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(1) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon01.png") 
+            no-repeat 5px center}
+        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(2) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon02.png") 
         no-repeat 5px center}
-        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(2) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon02.png")
-        no-repeat 5px center}
-        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(3) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon03.png")
-        no-repeat 5px center}
+        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(3) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon03.png") 
+            no-repeat 5px center}
         .ssam .sec-prof .prof-Tab-Cts .prof-clip-btn {margin-top:42px}
-        .ssam .sec-prof .prof-Tab-Cts .prof-clip-btn a {display:inline-block; margin-right:5px; margin-bottom: 5px;}
+        .ssam .sec-prof .prof-Tab-Cts .prof-clip-btn a {display:inline-block; margin-right:5px}
         .ssam .sec-prof .prof-Tab-Cts .hotclip {position:absolute; top:225px; left:355px;}
 
         .ssam .willbes-Layer-youtube {

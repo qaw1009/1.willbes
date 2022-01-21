@@ -4,7 +4,7 @@
     <ul class="prof-Tab" id="profRolling">
         @if(empty($data['prof_hot_clip']) === false)
             @foreach($data['prof_hot_clip'] as $row)
-                <li><a href="#tab{{$loop->index}}" @if($loop->first)class="active"@endif><span>{{ $row['SubjectName'] }}</span>{{ $row['wProfName'] }}</a></li>
+                <li><a href="#tab{{$loop->index}}" @if($loop->first)class="active"@endif><span>{{ $row['SubjectName'] }}</span>{{ $row['ProfNickName'] }}</a></li>
             @endforeach
         @endif
     </ul>
@@ -49,7 +49,7 @@
                     @endif
                 </div>
                 @if(empty($row['thumbnail_data']) === false)<span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>@endif
-                <img src="{{$row['ProfBgImagePath'].$row['ProfBgImageName']}}" title="{{$row['SubjectName']}} {{$row['wProfName']}}">
+                <img src="{{$row['ProfBgImagePath'].$row['ProfBgImageName']}}" title="{{$row['SubjectName']}} {{$row['ProfNickName']}}">
             </div>
         @endforeach
     @endif
@@ -61,7 +61,7 @@
     <ul class="prof-Tab" id="profRolling">
         @if(empty($data['prof_hot_clip']) === false)
             @foreach($data['prof_hot_clip'] as $row)
-                <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" @if($loop->first)class="active"@endif><span>{{ $row['SubjectName'] }}</span>{{ $row['wProfName'] }}</a></li>
+                <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" @if($loop->first)class="active"@endif><span>{{ $row['SubjectName'] }}</span>{{ $row['ProfNickName'] }}</a></li>
             @endforeach
         @endif
     </ul>
@@ -106,7 +106,7 @@
                     @endif
                 </div>
                 @if(empty($row['thumbnail_data']) === false)<span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>@endif
-                <img src="{{$row['ProfBgImagePath'].$row['ProfBgImageName']}}" title="{{$row['SubjectName']}} {{$row['wProfName']}}">
+                <img src="{{$row['ProfBgImagePath'].$row['ProfBgImageName']}}" title="{{$row['SubjectName']}} {{$row['ProfNickName']}}">
             </div>
         @endforeach
     @endif

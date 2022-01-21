@@ -15,19 +15,19 @@
 
 .ssam .noticeBox .List-Table {margin-top:20px !important;border-top:0 !important}
 
-.ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
+.ssam .sec-prof {background:#9cb6c5 url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative; margin-top:40px}
 .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
 .ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}
-.ssam .sec-prof .prof-Tab {position:absolute; top:24px; left:50px; width:300px; z-index: 2;}
+.ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
 
 .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
-.ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:35px; line-height:35px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
-.ssam .sec-prof .prof-Tab li a span {font-size:13px; color:#0a2230; display:inline-block; width:67px; margin-right:2px; vertical-align:bottom; font-weight:bold;  text-align:left;}
+.ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:24px; line-height:24px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
+.ssam .sec-prof .prof-Tab li a span {font-size:12px; color:#0a2230; display:inline-block; width:67px; margin-right:2px; vertical-align:bottom; font-weight:bold;  text-align:left;}
 .ssam .sec-prof .prof-Tab li a.active {width:130px; background:#0a2230; width:140px; border:1px solid #0a2230; border-bottom:1px solid #638294}
 .ssam .sec-prof .prof-Tab li a.active span {color:#8ca4b2}
 .ssam .sec-prof .prof-Tab li a,
 .ssam .sec-prof .prof-Tab:after {content; display:block; clear:both}
-.ssam .sec-prof .prof-Tab-Cts {position:relative; width:1120px; margin:0 auto}
+.ssam .sec-prof .prof-Tab-Cts {position:relative; width:1120px; margin:0 auto;}
 .ssam .sec-prof .prof-Tab-Cts .btnBox {position:absolute; top:195px; left:384px}
 .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a {display:inline-block; color:#fff; padding:4px 10px 4px 22px; margin-right:4px}
 .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(1) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon01.png") 
@@ -387,7 +387,7 @@ no-repeat 5px center}
         </div>
     </div> 
 
-    <div class="Section sec-prof mt40">
+    <div class="Section sec-prof">
         <div class="sec-prof-title"><img src="https://static.willbes.net/public/images/promotion/main/2018/title01.jpg" title="교수진"></div>
         <div class="widthAuto p_re NSK">
             <ul class="prof-Tab" id="profRolling">
@@ -410,6 +410,18 @@ no-repeat 5px center}
                 <li><a data-slide-index="16" href="javascript:void(0);"><span>정보컴퓨터</span>송광진</a></li>
                 <li><a data-slide-index="17" href="javascript:void(0);"><span>정컴교육론</span>장순선</a></li>
                 <li><a data-slide-index="18" href="javascript:void(0);"><span>전공중국어</span>정경미</a></li>
+                <li><a data-slide-index="19" href="javascript:void(0);"><span>수학교육론</span>박태영</a></li>
+                <li><a data-slide-index="20" href="javascript:void(0);"><span>전공생물</span>강치욱</a></li>
+                <li><a data-slide-index="21" href="javascript:void(0);"><span>생물교육론</span>양혜정</a></li>
+                <li><a data-slide-index="22" href="javascript:void(0);"><span>도덕윤리</span>김병찬</a></li>
+                <li><a data-slide-index="23" href="javascript:void(0);"><span>전공역사</span>최용림</a></li>
+                <li><a data-slide-index="24" href="javascript:void(0);"><span>전공음악</span>다이애나</a></li>
+                <li><a data-slide-index="25" href="javascript:void(0);"><span>생물교육론</span>양혜정</a></li>
+                <li><a data-slide-index="26" href="javascript:void(0);"><span>도덕윤리</span>김병찬</a></li>
+                <li><a data-slide-index="27" href="javascript:void(0);"><span>전공역사</span>최용림</a></li>
+                <li><a data-slide-index="28" href="javascript:void(0);"><span>전공음악</span>다이애나</a></li>
+                <li><a data-slide-index="29" href="javascript:void(0);"><span>전공역사</span>최용림</a></li>
+                <li><a data-slide-index="30" href="javascript:void(0);"><span>전공음악</span>다이애나</a></li>
             </ul>
 
             <div class="prof-Tab-Wrap" id="profRollingSlider">

@@ -33,7 +33,7 @@ class ProfessorHotClipFModel extends WB_Model
             ,hc.PhcIdx,hc.SiteCode,hc.CateCode,hc.ProfIdx,hc.SubjectIdx,hc.OrderNum
             ,hc.ProfBgImagePath,hc.ProfBgImageName,hc.ProfBgImageRealName
 	        ,hc.ProfBtnIsUse,hc.CurriculumBtnIsUse,hc.StudyCommentBtnIsUse,hc.RegDatm
-	        ,ps.SubjectName,wp.wProfName
+	        ,ps.SubjectName,wp.wProfName,pf.ProfNickName
 	        ,(
             SELECT
                 CONCAT('[', GROUP_CONCAT(JSON_OBJECT(

@@ -4194,19 +4194,24 @@ body.memBody #Footer {
 	margin-top: 10px;
 	padding: 10px 20px;
 }
+.replyWrite div span i {vertical-align: top !important}
 .replyWrite:after {
 	content: "";
 	display: block;
 	clear: both;
 }
 
+
+.replyList {margin-bottom:20px}
 .replyList li {
 	border-bottom: 1px solid #f4f4f4;
 	padding: 15px 10px;
+	font-size:14px;
 }
 .replyList li .date {
 	margin-bottom: 10px;
 	color: #666;
+	font-size:12px;
 }
 .replyList li .date a {
 	display: inline-block;
@@ -4229,6 +4234,8 @@ body.memBody #Footer {
 .replyList li.noReply {
 	text-align: center;
 }
+.replyList .ryw_info a.rpDel {color:#ff4400; float:right; display:inline-block;} 
+
 
 /* ETC : 나머지 버튼 공통 */
 .InfoBtn {

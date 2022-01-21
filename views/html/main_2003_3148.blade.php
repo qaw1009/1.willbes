@@ -2,28 +2,10 @@
 
 @section('content')
 <style>
-.gosi .tx-color {
-    color: #ba5610;
-}
-.gosi .will_nTit {border:0; font-size:46px}
-.gosi .will_nTit span {color:#ba5610}
 
 .gosi .Menu h3 {border:0}
 
-/**/
-.gosi-bnfull-Sec {position:relative; margin:0; height: 90px !important;}
-.gosi-bnfull {position: absolute;
-    top:0;
-    left:50%;
-    margin-left:-1000px;
-    width: 2000px;
-    min-width: 1120px;
-    max-width: 2000px;
-    height: 90px; 
-    overflow: hidden;}    
-.gosi-bnfull .bx-wrapper .sliderBar img {width:2000px !important; height:90px}
-
-/*상단 메인 배너*//
+/*상단 메인 배너*/
 .gosi .gosi-Sec {
     width: 100%;
     max-width: 2000px;        
@@ -64,94 +46,6 @@
 .gosi .gosi-bntop .Gositab li a:hover,
 .gosi .gosi-bntop .Gositab li a.active {color:#fff; font-weight: bold;}
 
-/**/
-.gosi .gosi-bn02 {margin-top:100px}
-.gosi .gosi-bn02 ul {margin-right:-20px}
-.gosi .gosi-bn02 li {
-    display: inline;
-    float: left;    
-    width: 265px;       
-    margin-right:20px;
-}
-.gosi .gosi-bn02 ul:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-.gosi .gosi-bn02 .slider {width: 265px; height:123px; overflow:hidden;}
-.gosi .gosi-bn02 .bSlider .bx-wrapper .bx-pager {
-    width: auto;
-    left: 0;
-    bottom: -20px;
-    text-align: center;
-}
-.gosi .gosi-bn02 .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #e1e1e1;
-}
-.gosi .gosi-bn02 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.gosi .gosi-bn02 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.gosi .gosi-bn02 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #898989 !important;
-}
-
-/**/
-.gosi-bn03 {margin-top:120px; padding-bottom:100px}    
-.gosi-bn03 ul {margin-top:60px; margin-right:-20px}
-.gosi-bn03 li {display:inline; float:left; width:265px; margin-right:20px}
-.gosi-bn03 li:first-child {width:550px;}
-.gosi-bn03 ul:after {content: ""; display: block; clear:both}
-.gosi-bn03 .sliderNum {height:303px; overflow:hidden;}
-.gosi-bn03 .nSlider .bx-wrapper .bx-controls-direction {
-    position: absolute;
-    top: 310px;
-    left:0;
-    right: 0;
-    width: 100%;
-    height: 20px;
-    text-align:center;
-}
-.gosi-bn03 .nSlider .bx-wrapper .bx-controls-direction a {
-    width: 20px;
-    height: 20px;
-}
-.gosi-bn03 .nSlider .bx-wrapper a.bx-prev {
-    background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat right top;
-    left:145px !important;
-}
-.gosi-bn03 .nSlider .bx-wrapper a.bx-next {
-    background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat left top;   
-    left:100px !important;     
-}
-.gosi-bn03 li:first-child .bx-wrapper a.bx-prev {
-    left:290px !important;
-} 
-.gosi-bn03 li:first-child .bx-wrapper a.bx-next {
-    left:240px !important;
-} 
-.gosi-bn03 .nSlider .bx-wrapper .bx-pager {
-    width: auto;
-    position: absolute;
-    top: 315px;
-    left:0;
-    right: 0;
-    bottom: 0;
-    font-size: 11px;
-    font-weight: 300;
-    color: #000;
-    margin: 0;
-    padding: 0;
-    letter-spacing: 0;
-}
-
-/* */
-.gosi-bnfull-Sec02 {position:relative; height: 190px; background: url(https://static.willbes.net/public/images/promotion/main/2003/3019_1120x190_bg.jpg) repeat-x left bottom; }
-.gosi-bnfull-Sec02 .gosi-bnfull02 {width: 1120px; height: 190px; margin:0 auto; overflow: hidden;}    
-.gosi-bnfull-Sec02 p {position:absolute; top:70%; left:50%; margin-top:-19px; width:22px; height:38px; cursor:pointer; 
-    background: url(https://static.willbes.net/public/images/promotion/main/arrow_w22.png) no-repeat left center;  opacity:0.4; filter:alpha(opacity=40);}
-.gosi-bnfull-Sec02 p a {display:none;}
-.gosi-bnfull-Sec02 p.leftBtn {margin-left:-620px;}
-.gosi-bnfull-Sec02 p.rightBtn {margin-left:588px; background-position: right center;}
-.gosi-bnfull-Sec02 p:hover {opacity:100; filter:alpha(opacity=100);}
 
 /*교수진*/
 .gosi-profWrap {background:#d3e0e4; padding:130px 0}
@@ -212,10 +106,10 @@
     letter-spacing: 0;
 }
 
+.Section4_hl {margin:100px auto 50px}
 .Section4_hl .will-acadTit {font-size:19px;font-weight:600;color:#363636;line-height:60px;border-bottom: 2px solid #000;margin-bottom:20px;}
 .Section4_hl .tx-color {color:#643fb5;}
 .willbesNumber .tx-color {color:#643fb5;}
-
 </style>
 
 <!-- Container -->
@@ -230,7 +124,7 @@
             <ul class="menu-List">
                 <li class="dropdown">
                     <a href="#none">교수진소개</a>
-                    <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 gosi">
+                    <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 GA">
                         <div class="prof-drop-Box">
                             <h5>9급</h5>
                             <ul>
@@ -604,9 +498,12 @@
                         </div>
                     </div>
                 </li>
+                <li>
+                    <a href="#none">학원수강강좌</a>
+                </li>
                 <li class="dropdown">
-                    <a href="#none">수강신청</a>
-                    <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 gosi2">
+                    <a href="#none">동영상수강신청</a>
+                    <div class="drop-Box drop-Box-1120 list-drop-Box list-drop-Box-1120 gosi3">
                         <div class="lec-drop-Box-gosi">
                             <h5>9급</h5>
                             <ul>
@@ -928,20 +825,11 @@
         </h3>
     </div>
 
-    <div class="gosi-bnfull-Sec">
-        <div class="gosi-bnfull">
-            <div class="sliderBar">
-                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3019_fullx90_01.jpg" alt="배너명"></a></div>
-                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3019_fullx90_02.jpg" alt="배너명"></a></div>
-            </div>
-        </div>
-    </div>   
-
     <div class="Section gosi-Sec NSK">
         <div class="gosi-bntop">                        
             <div id="TechRollingSlider" class="GositabBox">
                 <ul class="GositabSlider">
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3148_2000x440_01.png" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3148_2000x460_01.jpg" alt="배너명"></a></li>
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_02.jpg" alt="배너명"></a></li>
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_03.jpg" alt="배너명"></a></li>
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_04.jpg" alt="배너명"></a></li>
@@ -1034,7 +922,7 @@
         </div>
     </div>
 
-    <div class="Section NSK Section4_hl mt50">
+    <div class="Section NSK Section4_hl">
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">공무원</span> 학원</div>
             <div class="noticeTabs campus c_both">
@@ -1052,12 +940,12 @@
                                         <div class="address">
                                             <span class="a-tit">주소</span>
                                             <span>
-                                    서울시 동작구 노량진로 196 노량빌딩 7층
-                                </span>
+                                                서울 동작구 노량진로 196 JH빌딩 10층
+                                            </span>
                                         </div>
                                         <div class="tel">
                                             <span class="a-tit">연락처</span>
-                                            <span class="tx-color">1544-0330 > 2번</span>
+                                            <span class="tx-color">1544-0330</span>
                                         </div>
                                     </div>
                                 </dt>
@@ -1081,7 +969,7 @@
                                 <div class="nTxt">
                                     [운영시간]<br/>
                                     평일: 09시~ 18시 (점심시간12시~13시)<br/>
-                                    공휴일/일요일휴무<br/>
+                                    주말/공휴일 휴무<br/>
                                 </div>
                             </li>
                             <li>
@@ -1090,7 +978,7 @@
                                 <div class="nTxt">
                                     [운영시간]<br/>
                                     평일: 09시~ 17시 (점심시간12시~13시)<br/>
-                                    공휴일/일요일휴무<br/>
+                                    주말/공휴일 휴무<br/>
                                 </div>
                             </li>
                             <li>
@@ -1098,7 +986,8 @@
                                 <div class="nNumber tx-color">1544-0330</div>
                                 <div class="nTxt">
                                     [전화/방문상담 운영시간]<br/>
-                                    평일/주말: 09시~ 22시<br/>
+                                    평일/주말: 09시~ 18시<br/>
+                                    주말/공휴일 휴무
                                 </div>
                             </li>
                         </ul>
@@ -1160,19 +1049,6 @@
 </script> 
 
 <script type="text/javascript">
-    $(function() {
-        $('.sliderBar').bxSlider({
-            mode:'fade',
-            auto: true,
-            touchEnabled: false,
-            controls: false,
-            sliderWidth:2000,
-            pause: 3000,
-            autoHover: true,
-            pager: false,
-        });
-    });
-
     //상단 메인 배너
     $(function(){ 
         var slidesImg = $(".GositabSlider").bxSlider({
@@ -1198,27 +1074,6 @@
         });			
     }); 
 
-    /*bar 배너 롤링 */
-    $(function() {
-        var slidesImg02 = $(".sliderBar02").bxSlider({
-            mode:'fade',
-            auto: true,
-            touchEnabled: false,
-            controls: false,
-            sliderWidth:2000,
-            pause: 3000,
-            autoHover: true,
-            pager: false,
-        });
-        $("#imgBannerRight02").click(function (){
-            slidesImg02.goToPrevSlide();
-        });
-    
-        $("#imgBannerLeft02").click(function (){
-            slidesImg02.goToNextSlide();
-        });	
-    });
-
     /*교수진*/
     $(function() {
         $('.sliderProf').bxSlider({        
@@ -1238,37 +1093,6 @@
             onSliderLoad: function(){
                 $(".gosi-gate-prof").css("visibility", "visible").animate({opacity:1}); 
             }  
-        });
-    });
-
-    /*윌비스 강좌*/
-    $(function(){ 
-        $('.prof-subject').bxSlider({ 
-            speed:800,  
-            responsive:true,
-            infiniteLoop:true,
-            pager:false,
-            slideWidth:78,
-            minSlides:1,
-            maxSlides:8
-        });
-    });
-
-    /*수강후기*/
-    $(function() {
-        $('.sliderNumV').bxSlider({
-            mode: 'vertical', 
-            auto: true,
-            controls: true,
-            infiniteLoop: true,
-            slideWidth: 1120,
-            pagerType: 'short',
-            minSlides: 3,
-            pause: 3000,
-            pager: true,
-            onSliderLoad: function(){
-                $(".vSlider").css("visibility", "visible").animate({opacity:1}); 
-            } 
         });
     });
 </script>

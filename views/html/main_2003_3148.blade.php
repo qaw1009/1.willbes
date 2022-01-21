@@ -1034,7 +1034,7 @@
         </div>
     </div>
 
-    <div class="Section NSK Section4_hl mb50">
+    <div class="Section NSK Section4_hl mt50">
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">공무원</span> 학원</div>
             <div class="noticeTabs campus c_both">

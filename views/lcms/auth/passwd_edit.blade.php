@@ -27,7 +27,7 @@
             <label class="control-label col-md-3" for="admin_id">아이디
             </label>
             <div class="col-md-5 item">
-                <input type="text" id="admin_id" name="admin_id" required="required" pattern="alphanumeric" class="form-control" title="아이디" value="{{ $admin_id }}" data-passwd-verify="id" readonly="readonly"/>
+                <input type="text" id="admin_id" name="admin_id" required="required" class="form-control" title="아이디" value="{{ $admin_id }}" data-passwd-verify="id" readonly="readonly"/>
             </div>
         </div>
         <div class="form-group form-group-sm">

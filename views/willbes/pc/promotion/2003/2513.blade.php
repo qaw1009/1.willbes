@@ -94,7 +94,16 @@
                 <a href="https://pass.willbes.net/promotion/index/cate/3023/code/2503" target="_blank" title="소방직" style="position: absolute; left: 45.18%; top: 49.62%; width: 10.27%; height: 1.5%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/promotion/index/cate/3024/code/2099" target="_blank" title="군무원" style="position: absolute; left: 70.18%; top: 49.62%; width: 10.27%; height: 1.5%; z-index: 2;"></a>
 
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2502" target="_blank" title="기술직" style="position: absolute; left: 13.3%; top: 56.47%; width: 73.39%; height: 37.37%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2256" target="_blank" title="최우영" style="position: absolute; left: 26.43%; top: 65.41%; width: 11.61%; height: 1.73%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/1068" target="_blank" title="장사원" style="position: absolute; left: 61.96%; top: 65.41%; width: 11.61%; height: 1.73%; z-index: 2;"></a>
+
+                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2114" target="_blank" title="조경직" style="position: absolute; left: 19.2%; top: 78.23%; width: 11.61%; height: 1.73%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2115" target="_blank" title="축산직" style="position: absolute; left: 44.2%; top: 78.23%; width: 11.61%; height: 1.73%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2116" target="_blank" title="기계직" style="position: absolute; left: 69.91%; top: 78.23%; width: 11.61%; height: 1.73%; z-index: 2;"></a>
+
+                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2014" target="_blank" title="환경직" style="position: absolute; left: 19.2%; top: 90.9%; width: 11.61%; height: 1.73%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2013" target="_blank" title="전산직" style="position: absolute; left: 44.2%; top: 90.9%; width: 11.61%; height: 1.73%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2015" target="_blank" title="산림자원직" style="position: absolute; left: 69.91%; top: 90.9%; width: 11.61%; height: 1.73%; z-index: 2;"></a>
             </div>
         </div> 
         

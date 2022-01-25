@@ -40,17 +40,24 @@
                     <div class="col-md-2 item">
                         <input type="password" id="admin_passwd" name="admin_passwd" class="form-control" title="비밀번호" value="" placeholder="@if($method == 'PUT')# 변경 시에만 입력@endif">
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-2">
                         <p class="form-control-static">
-                            @if($method == 'PUT')
-                                @if(empty($data['wPasswdExpireDate']) === false)
-                                    <small><span class="blue"># 비밀번호 만료일자 :</span> {{$data['wPasswdExpireDate']}}</small>
-                                @endif
-                            @else
+                            @if($method == 'POST')
                                 # 미입력 시 `1111`로 자동 셋팅
                             @endif
                         </p>
                     </div>
+                    @if($method == 'PUT')
+                        <label class="control-label col-md-2" for="passwd_expire_date">비밀번호 만료일자
+                        </label>
+                        <div class="col-md-4 item form-inline">
+                            <input type="text" id="passwd_expire_date" name="passwd_expire_date" class="form-control datepicker" title="비밀번호 만료일자" value="{{$data['wPasswdExpireDate']}}" disabled="disabled">
+                            @if(is_w_sys_admin() === true)
+                                <button type="button" id="btn_passwd_expire_date_modify" class="btn btn-success mb-0 mr-0">만료일자 수정</button>
+                            @endif
+                            <span class="blue pl-15">(기간설정 : {{$data['wPasswdExpirePeriod']}}일)</span>
+                        </div>
+                    @endif
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="admin_phone1">휴대폰번호<span class="required">*</span>
@@ -209,6 +216,16 @@
                         }
                     }
                 }, showError, false, 'POST');
+            });
+
+            // 만료일자 수정버튼 클릭
+            $regi_form.on('click', '#btn_passwd_expire_date_modify', function() {
+                var is_modify = $regi_form.find('input[name=passwd_expire_date]').prop('disabled') !== true;
+                $regi_form.find('input[name=passwd_expire_date]').prop('disabled', is_modify);
+
+                if (is_modify === false) {
+                    $regi_form.find('input[name=passwd_expire_date]').focus();
+                }
             });
 
             // 권한유형 변경 이벤트

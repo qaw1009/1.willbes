@@ -170,7 +170,7 @@
         @endif
 
         @if(empty($data['top_order_lecture']) === false)
-            <div class="mainTit NSK-Black tx-center mt50">
+            <div class="mainTit NSK-Black tx-center mt30">
                 윌비스 임용 <span class="tx-main">실시간 인기강의 TOP3</span>
             </div>
             <div class="reference">* 접속 시간 기준, 24시간 내 홈페이지 강의 결제 순</div>

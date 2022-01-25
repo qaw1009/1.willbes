@@ -63,7 +63,7 @@
         <div class="evtCtnsBox evt_03" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2515_03.jpg"  alt="이벤트 방법" />
-                <a href="javascript:void(0)" title="쿠폰 받기" style="position: absolute;left: 26.91%;top: 57.62%;width: 45.71%;height: 6.25%;z-index: 2;"></a>
+                <a href="javascript:void(0)" onclick="giveCheck();" title="쿠폰받기" style="position: absolute;left: 26.91%;top: 57.62%;width: 45.71%;height: 6.25%;z-index: 2;"></a>
                 <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운받기" style="position: absolute;left: 26.91%;top: 82.32%;width: 45.71%;height: 6.25%;z-index: 2;"></a>
             </div>       
         </div>              
@@ -71,8 +71,12 @@
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'Y'))
         @endif        
-
     </div>
+
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
     <!-- End Container -->
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -85,11 +89,24 @@
     </script>
 
     <script type="text/javascript">
+        $regi_form = $('#regi_form');
 
-        function loginCheck(){
+        {{--쿠폰발급--}}
+        function giveCheck() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($arr_promotion_params) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&arr_give_idx_chk={{$arr_promotion_params['arr_give_idx_chk']}}';
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                        {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                    }
+                }, showValidateError, null, false, 'alert');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
         }
-        
     </script>
     
 @stop

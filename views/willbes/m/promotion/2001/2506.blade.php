@@ -100,7 +100,11 @@
         </div>
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
+            @if(time() >= strtotime('202201280000') && time() < strtotime('202202030000'))
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2506m_top_evt.jpg" alt="0원 패스"/>
+            @else
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2506m_top.jpg" alt="0원 PASS" >
+            @endif           
         </div>
         
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">

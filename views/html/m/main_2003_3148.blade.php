@@ -233,7 +233,7 @@
     <div class="loadMap">
         <p class="start"><span>START</span></p>
         <ul>
-            <li class="lmTitle"><a href="#none">1순환 기본강의(약 8주)</a>
+            <li class="lmTitle"><a href="#none">1순환 기본강의</a>
                 <div class="lmCts">
                     <div>
                         <span><‘체계’의 과정><br>
@@ -247,7 +247,7 @@
                     </ul>                    
                 </div>
             </li>          
-            <li class="lmTitle"><a href="#none">2순환 심화강의(약 12주)</a>
+            <li class="lmTitle"><a href="#none">2순환 심화강의</a>
                 <div class="lmCts">
                     <div>
                         <span>
@@ -266,7 +266,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="lmTitle"><a href="#none">3순환 진도별모의고사(기출포함) (약 10주)</a>
+            <li class="lmTitle"><a href="#none">3순환 진도별모의고사(기출포함)</a>
                 <div class="lmCts">
                     <div>
                         <span>
@@ -282,7 +282,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="lmTitle"><a href="#none">4순환 전범위모의고사(약 5주)</a>
+            <li class="lmTitle"><a href="#none">4순환 전범위모의고사</a>
                 <div class="lmCts">
                     <div>
                         <span>

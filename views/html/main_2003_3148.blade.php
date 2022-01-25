@@ -979,7 +979,7 @@
                                         <div class="address">
                                             <span class="a-tit">주소</span>
                                             <span>
-                                                서울 동작구 노량진로 196 JH빌딩 10층
+                                                서울 동작구 노량진로 196 JH빌딩 3층
                                             </span>
                                         </div>
                                         <div class="tel">

@@ -2,11 +2,13 @@
 
 @section('content')
     <style>
-        .gosi .Menu h3 {border:0}
+        .gosi .Menu h3 {height:40px;margin-top:20px;line-height:38px;border-bottom:2px solid #000;}
+
         /*상단 메인 배너*/
         .gosi .gosi-Sec {
             width: 100%;
             max-width: 2000px;
+            margin: 20px auto 0;
         }
         .gosi .gosi-bntop {position:relative; margin:0; height: 460px !important;}
         .gosi .gosi-bntop .GositabBox {
@@ -43,6 +45,7 @@
         .gosi .gosi-bntop .Gositab li a {display:block; text-align:center; line-height:1.2; font-size: 15px; color:#b4b4b4;}
         .gosi .gosi-bntop .Gositab li a:hover,
         .gosi .gosi-bntop .Gositab li a.active {color:#fff; font-weight: bold;}
+
 
         /*교수진*/
         .gosi-profWrap {background:#d3e0e4; padding:130px 0}

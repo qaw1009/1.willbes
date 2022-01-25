@@ -153,15 +153,15 @@
 
         <div class="evtCtnsBox evtTop" id="main" data-aos="fade-up">
             @if(time() >= strtotime('202201280000') && time() < strtotime('202202030000'))
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_top_evt.jpg" alt="0원 패스"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_top_evt.jpg" alt="0원 패스 이벤트"/>
             @else
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_top.jpg" alt="0원 패스"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_top.jpg" alt="0원 pass"/>
             @endif                    
         </div>      
 
         <div class="evtCtnsBox evt01" id="pass" data-aos="fade-up">
             @if(time() >= strtotime('202201280000') && time() < strtotime('202202030000'))
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_01_evt.gif" alt="신광은경찰PASS">
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_01_evt.gif" alt="신광은경찰PASS 이벤트">
             @else
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_01.gif" alt="신광은경찰PASS">
             @endif
@@ -298,7 +298,7 @@
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
             @if(time() >= strtotime('202201280000') && time() < strtotime('202202030000'))
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_01_evt.gif" alt="신광은경찰PASS">
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_01_evt.gif" alt="신광은경찰PASS 이벤트">
             @else
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_01.gif" alt="신광은경찰PASS">
             @endif

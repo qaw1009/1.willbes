@@ -36,15 +36,35 @@
         .ssam .sec-prof {background:#9cb6c5 url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative; margin-top:40px}
         .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
         .ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}
-        .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
 
+        .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
         .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
-        .ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:35px; line-height:35px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
+        /*
+        .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
+        .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
+        */
+        .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 100; 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(50%, auto)); 
+            grid-template-rows: repeat(15, minmax(0, auto)); 
+            grid-auto-flow: column;
+            grid-gap: 0;
+            gap: 0; 
+        }
+        /*ie 구버전용*/
+        _:-ms-lang(x), .prof-Tab {}
+        @@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        .prof-Tab {
+            display: flex; justify-content: space-between;flex-wrap: wrap;
+            }
+            .prof-Tab li {flex: 1 1 40%;}
+        }
+
+        .ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:25px; line-height:25px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
         .ssam .sec-prof .prof-Tab li a span {font-size:12px; color:#0a2230; display:inline-block; width:67px; margin-right:2px; vertical-align:bottom; font-weight:bold;  text-align:left;}
-        .ssam .sec-prof .prof-Tab li a.active {width:130px; background:#0a2230; width:140px; border:1px solid #0a2230; border-bottom:1px solid #638294}
+        .ssam .sec-prof .prof-Tab li a.active {background:#0a2230; width:140px; border:1px solid #0a2230; border-bottom:1px solid #638294}
         .ssam .sec-prof .prof-Tab li a.active span {color:#8ca4b2}
-        .ssam .sec-prof .prof-Tab li a,
-        .ssam .sec-prof .prof-Tab:after {content; display:block; clear:both}
+        .ssam .sec-prof .prof-Tab li a {content; display:block; clear:both}
         .ssam .sec-prof .prof-Tab-Cts {position:relative; width:1120px; margin:0 auto;}
         .ssam .sec-prof .prof-Tab-Cts .btnBox {position:absolute; top:195px; left:384px}
         .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a {display:inline-block; color:#fff; padding:4px 10px 4px 22px; margin-right:4px}

@@ -1,3 +1,4 @@
+
 @extends('html.layouts.master')
 @section('content')
 
@@ -23,13 +24,23 @@
 .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
 */
 .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 100; 
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(50%, auto)); 
-    grid-template-rows: repeat(16, minmax(0, auto)); 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(50%, auto)); 
+    grid-template-rows: repeat(15, minmax(0, auto)); 
     grid-auto-flow: column;
     grid-gap: 0;
-	gap: 0;  
+    gap: 0; 
 }
-.ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:24px; line-height:24px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
+/*ie 구버전용*/
+_:-ms-lang(x), .prof-Tab {}
+@@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+.prof-Tab {
+    display: flex; justify-content: space-between;flex-wrap: wrap;
+    }
+    .prof-Tab li {flex: 1 1 40%;}
+}
+
+.ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:25px; line-height:25px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
 .ssam .sec-prof .prof-Tab li a span {font-size:12px; color:#0a2230; display:inline-block; width:67px; margin-right:2px; vertical-align:bottom; font-weight:bold;  text-align:left;}
 .ssam .sec-prof .prof-Tab li a.active {background:#0a2230; width:140px; border:1px solid #0a2230; border-bottom:1px solid #638294}
 .ssam .sec-prof .prof-Tab li a.active span {color:#8ca4b2}
@@ -94,6 +105,9 @@ no-repeat 5px center}
 }
 .dropdown .list-drop-Box-ssam td p {background:#f9f9f9;width:75px;height:50px;line-height:50px;font-size:14px;display:table-cell;border-bottom: 1px solid #e4e4e4;border-top: 1px solid #e4e4e4;}
 .no_click {color:#A6A6A6;font-size:13px;line-height:1.75;font-weight:100;}
+
+
+
 </style>
 
 <!-- Container -->
@@ -427,8 +441,6 @@ no-repeat 5px center}
                 <li><a data-slide-index="26" href="javascript:void(0);"><span>도덕윤리</span>김병찬</a></li>
                 <li><a data-slide-index="27" href="javascript:void(0);"><span>전공역사</span>최용림</a></li>
                 <li><a data-slide-index="28" href="javascript:void(0);"><span>전공음악</span>다이애나</a></li>
-                <li><a data-slide-index="29" href="javascript:void(0);"><span>전공역사</span>최용림</a></li>
-                <li><a data-slide-index="30" href="javascript:void(0);"><span>전공음악</span>다이애나</a></li>
             </ul>
 
             <div class="prof-Tab-Wrap" id="profRollingSlider">

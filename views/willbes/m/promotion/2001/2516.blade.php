@@ -13,9 +13,6 @@
     .evtinfo p {font-size:120%}
     .evtinfo li {list-style-type: disc; margin-left:20px}
 
-
-
-
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
 
@@ -70,7 +67,11 @@
         </ul>
     </div>
 
-    <div class="reply">
+    @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+        @include('willbes.m.promotion.show_comment_list_normal_partial', array('login_url'=>app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www')))
+    @endif
+
+    {{--<div class="reply">
         <div class="replyWrite">
             <textarea id="event_comment" name="event_comment" cols="30" rows="3"></textarea>
             <div class="mt10">* 지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있습니다.</div>
@@ -110,7 +111,7 @@
                 <li class="Next"><a href="#none"><img src="/public/img/willbes/paging/paging_next.png"></a></li>
             </ul>
         </div>
-    </div>
+    </div>--}}
 
 
 </div>
@@ -118,12 +119,10 @@
 <!-- End Container -->
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      $(document).ready(function() {
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    $(document).ready(function() {
         AOS.init();
-      });
+    });
 </script>
-
-
 @stop

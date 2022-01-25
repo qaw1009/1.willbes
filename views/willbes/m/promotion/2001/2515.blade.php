@@ -27,7 +27,6 @@
 </style>
 
 <div id="Container" class="Container NSK c_both">
-
     <div class="evtCtnsBox"  data-aos="fade-down">
         <img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_00.jpg" alt="경찰학원부분 1위" >        
     </div>
@@ -49,7 +48,7 @@
 
     <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/01/2515_m03.jpg" alt="이벤트" >
-        <a href="javascript:void(0)" title="쿠폰 받기" style="position: absolute;left: 21.86%;top: 52.51%;width: 55.92%;height: 5.89%;z-index: 2;"></a>
+        <a href="javascript:void(0)" onclick="giveCheck();" title="쿠폰받기" style="position: absolute;left: 21.86%;top: 52.51%;width: 55.92%;height: 5.89%;z-index: 2;"></a>
         <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운받기" style="position: absolute;left: 21.76%;top: 75.21%;width: 55.92%;height: 5.89%;z-index: 2;"></a>
         <a href="https://cafe.daum.net/policeacademy" target="_blank" title="경시모" style="position: absolute; left: 5.42%; top: 91.46%; width: 21.39%; height: 5.49%;  z-index: 2;"></a>
         <a href="https://cafe.naver.com/polstudy" target="_blank" title="경꿈사" style="position: absolute; left: 28.47%; top: 91.46%; width: 21.39%; height: 5.49%;  z-index: 2;"></a>
@@ -63,6 +62,10 @@
 
 </div>
 
+<form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+    {!! csrf_field() !!}
+    {!! method_field('POST') !!}
+</form>
 <!-- End Container -->
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -74,11 +77,24 @@
 </script>
 
 <script type="text/javascript">
+    $regi_form = $('#regi_form');
 
-    function loginCheck(){
+    {{--쿠폰발급--}}
+    function giveCheck() {
         {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-    } 
-  
+
+        @if(empty($arr_promotion_params) === false)
+            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&arr_give_idx_chk={{$arr_promotion_params['arr_give_idx_chk']}}';
+            ajaxSubmit($regi_form, _check_url, function (ret) {
+                if (ret.ret_cd) {
+                    alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                }
+            }, showValidateError, null, false, 'alert');
+        @else
+            alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+        @endif
+    }
 </script>
 
 @stop

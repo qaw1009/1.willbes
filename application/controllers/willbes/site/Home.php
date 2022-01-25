@@ -8,7 +8,7 @@ class Home extends \app\controllers\FrontController
     protected $auth_controller = false;
     protected $auth_methods = array();
     private $_category_mobile = [
-        '2003' => ['3019','3020','3023','3024','3035','3028','3103'],
+        '2003' => ['3019','3020','3023','3024','3035','3028','3103','3148'],
         '2005' => 'all',
         '2006' => ['309002','309003','309004', '308906'],
         '2008' => ['3100'],
@@ -201,6 +201,7 @@ class Home extends \app\controllers\FrontController
                 $data['best_product'] = $this->_product('on_lecture', 20, $s_cate_code, 'Best');
                 $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $s_cate_code, 'New');
                 $data['board_lecture_infomation'] = $this->_boardLectureInformation(5, $s_cate_code);
+                $data['toptab_menu_exclude'] = ['3035','3103','3148'];  //탭메뉴 제외 (법원직, 7급 PSAT, 검찰직)
             }
         }
 

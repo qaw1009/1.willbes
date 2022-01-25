@@ -10,3 +10,5 @@ $config['wbs'] = array(
     'head_title' => '미래를 준비하는 사람들! : willbes.net',
     'home_url' => '/home/main',
 );
+
+$config['w_sys_role_idx'] = '1031';   // 시스템관리자

@@ -3,12 +3,13 @@
 @section('content')
 <style>
 
-.gosi .Menu h3 {border:0}
+.gosi .Menu h3 {height:40px;margin-top:20px;line-height:38px;border-bottom:2px solid #000;}
 
 /*상단 메인 배너*/
 .gosi .gosi-Sec {
     width: 100%;
-    max-width: 2000px;        
+    max-width: 2000px;
+    margin: 20px auto 0;
 }
 .gosi .gosi-bntop {position:relative; margin:0; height: 460px !important;}
 .gosi .gosi-bntop .GositabBox {
@@ -115,6 +116,44 @@
 <!-- Container -->
 
 <div id="Container" class="Container gosi NGR c_both">
+
+    <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
+        <div class="Section widthAuto">
+            <div class="onSearch NGR">
+                <div>
+                    <input type="hidden" name="cate" id="unifiedSearch_cate" value="">
+                    <input type="hidden" name="search_class" id="unifiedSearch_class" value="">
+                    <input type="hidden" name="search_target" id="unifiedSearch_target" value="">
+                    <input type="hidden" name="etc_info" id="unifiedEtc_info" value="">
+                    <input type="text" class='unifiedSearch' data-form="unifiedSearch_form" id="unifiedSearch_text" name="searchfull_text" value="" placeholder="온라인강의 검색" title="온라인강의 검색" maxlength="100"/>
+                    <label for="onsearch"><button title="검색" type="button" id="btn_unifiedSearch" class='btn_unifiedSearch' data-form="unifiedSearch_form">검색</button></label>
+                </div>
+                <div class="searchPop">
+                    <div class="popTit">인기검색어</div>
+                    <ul>
+                        <li><a href="#nnon">신광은</a></li>
+                        <li><a href="#nnon">무료특강</a></li>
+                        <li><a href="#nnon">형소법</a></li>
+                        <li><a href="#nnon">기미진</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">

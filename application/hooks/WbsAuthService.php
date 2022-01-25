@@ -107,6 +107,12 @@ class WbsAuthService extends AdminAuthService
         $query = $this->_db->query('select ' . $column . $from . $where, [$this->_CI->session->userdata('admin_idx')]);
         $results['Role'] = $query->row_array();
 
+        // 시스템관리자 여부
+        $results['Role']['IsSysRole'] = false;
+        if (empty($results['Role']['RoleIdx']) === false && $results['Role']['RoleIdx'] == config_item('w_sys_role_idx')) {
+            $results['Role']['IsSysRole'] = true;
+        }
+
         return $results;
     }
 

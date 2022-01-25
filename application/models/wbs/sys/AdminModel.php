@@ -261,6 +261,7 @@ class AdminModel extends WB_Model
                     'wIsApproval' => element('is_approval', $input),
                     'wRoleIdx' => element('role_idx', $input),
                     'wProfId' => element('prof_id', $input),
+                    'wPasswdExpireDate' => element('passwd_expire_date', $input),
                 ]);
             } else {
                 $admin_idx = $this->session->userdata('admin_idx');
@@ -324,9 +325,16 @@ class AdminModel extends WB_Model
             if (empty($data['wAdminPasswd']) === false) {
                 $this->_conn->set('wAdminPasswd', 'fn_hash("' . $data['wAdminPasswd'] . '")', false);
                 // 비밀번호 강제변경
-                $this->_conn->set('wPasswdExpireDate', 'left(date_add(now(), interval ' . get_var($row['wPasswdExpirePeriod'], $this->_passwd_expire_period) . ' day), 10)', false);
+                if (empty($data['wPasswdExpireDate']) === true) {
+                    $this->_conn->set('wPasswdExpireDate', 'left(date_add(now(), interval ' . get_var($row['wPasswdExpirePeriod'], $this->_passwd_expire_period) . ' day), 10)', false);
+                }
             }
             unset($data['wAdminPasswd']);
+
+            // 비밀번호 만료일자가 있을 경우에만 업데이트
+            if (empty($data['wPasswdExpireDate']) === true) {
+                unset($data['wPasswdExpireDate']);
+            }
             
             // 운영자 승인/미승인
             if (isset($data['wIsApproval']) === true) {

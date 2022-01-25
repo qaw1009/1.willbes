@@ -152,11 +152,20 @@
         </div>
 
         <div class="evtCtnsBox evtTop" id="main" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_top.jpg" alt="0원 패스"/>        
+            @if(time() >= strtotime('202201280000') && time() < strtotime('202202030000'))
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_top_evt.jpg" alt="0원 패스 이벤트"/>
+            @else
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_top.jpg" alt="0원 pass"/>
+            @endif                    
         </div>      
 
         <div class="evtCtnsBox evt01" id="pass" data-aos="fade-up">
+            @if(time() >= strtotime('202201280000') && time() < strtotime('202202030000'))
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_01_evt.gif" alt="신광은경찰PASS 이벤트">
+            @else
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_01.gif" alt="신광은경찰PASS">
+            @endif
+            
             <div class="passLecBuy">   
                 <div>                    
                     <input type="radio" id="y_pkg0" name="y_pkg" value="190426" data-sale-price="860000"/>                
@@ -288,7 +297,11 @@
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
+            @if(time() >= strtotime('202201280000') && time() < strtotime('202202030000'))
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_01_evt.gif" alt="신광은경찰PASS 이벤트">
+            @else
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_01.gif" alt="신광은경찰PASS">
+            @endif
             <div class="passLecBuy">   
                 <div>                    
                     <input type="radio" id="y_pkg2" name="y_pkg" value="190426" data-sale-price="860000"/>                

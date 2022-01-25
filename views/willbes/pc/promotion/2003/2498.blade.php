@@ -133,7 +133,7 @@
                 </div>
             </div>
         </div>    
-        
+        {{--
         <div class="evtCtnsBox evt_06" data-aos="fade-up">  
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2498_06.jpg" alt="" />
         </div>  
@@ -157,11 +157,15 @@
                 <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="소문내기 다운" style="position: absolute; left: 52.5%; top: 5.47%; width: 32.68%; height: 7.42%; z-index: 2;"></a>
             </div>
         </div> 
+        --}}
 
+        <!--
         {{--홍보url--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N', 'login_url'=>app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www'), 'is_public' => true)){{--기존SNS예외처리시, 로그인페이지 이동--}}
         @endif
+        -->
+        
          
     </div>
 

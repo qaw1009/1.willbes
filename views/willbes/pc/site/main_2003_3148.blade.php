@@ -185,7 +185,7 @@
                                         <div class="c-info">
                                             <div class="address">
                                                 <span class="a-tit">주소</span>
-                                                <span>서울 동작구 노량진로 196 JH빌딩 10층</span>
+                                                <span>서울 동작구 노량진로 196 JH빌딩 3층</span>
                                             </div>
                                             <div class="tel">
                                                 <span class="a-tit">연락처</span>
@@ -260,7 +260,7 @@
                 });
             });
 
-            var info_txt = '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">윌비스 <strong class="tx-color">한림법학원</strong><br>김동진법원팀(7~9층)</div>';
+            var info_txt = '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">윌비스 <strong class="tx-color">한림법학원</strong><br>검찰팀(3층)</div>';
             var $kakaomap = new kakaoMap();
             $kakaomap.config.ele_id = 'map';
             $kakaomap.config.alter_id = 'alterMap1';

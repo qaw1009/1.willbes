@@ -35,8 +35,8 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky" id="QuickMenu">
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2467" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/01/2515_sky1.png" alt="기프티콘 받자"/></a>
-            <a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/2022/01/2515_sky2.png" alt="즉시 할인"/></a>          
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2467" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/01/2515_sky2.png" alt="즉시 할인"/></a>
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2516" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/01/2515_sky1.png" alt="기프티콘 받자"/></a>                      
         </div>
 
         <div class="evtCtnsBox evt00" data-aos="fade-down">

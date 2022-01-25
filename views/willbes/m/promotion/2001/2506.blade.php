@@ -109,7 +109,12 @@
         
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
             <div class="evt01_coupon">
+                @if(time() >= strtotime('202201280000') && time() < strtotime('202202030000'))
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2506m_01_evt.gif" alt="" >
+                @else
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2506m_01_00.gif" alt="" >
+                @endif 
+                
                 <div class="price">
                     <input type="radio" id="y_pkg0" name="y_pkg" value="190426" data-sale-price="860000" onClick=""/> <label for="y_pkg0"> 23년 1차 경찰 PASS 신청하기</label>
                 </div>
@@ -238,7 +243,12 @@
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
             <div class="evt01_coupon">
+                @if(time() >= strtotime('202201280000') && time() < strtotime('202202030000'))
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2506m_01_evt.gif" alt="" >
+                @else
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2506m_01_00.gif" alt="" >
+                @endif 
+
                 <div class="price">
                     <input type="radio" id="y_pkg3" name="y_pkg" value="190426" data-sale-price="860000" onClick=""/> <label for="y_pkg3"> 23년 1차 경찰 PASS 신청하기</label>
                 </div>

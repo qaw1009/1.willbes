@@ -918,9 +918,13 @@ class EventLecture extends \app\controllers\BaseController
         $file_name = '이벤트_신청현황_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
         $headers = ['이름', '아이디', '연락처', '이메일', '추가데이터', '신청일', '신청특강/설명회', '총신청수', '주소', '상세주소', '우편번호', '성별'];
 
+        if ($this->_reqP('data_ssn') == 'Y') {
+            array_push($headers, '주민번호');
+        }
+
         $el_idx = $params[0];
         $arr_condition = $this->_getRegisterListConditions($el_idx);
-        $list = $this->eventLectureModel->listAllEventRegister('excel', $arr_condition, null, null, ['A.EmIdx' => 'desc']);
+        $list = $this->eventLectureModel->listAllEventRegister('excel', $arr_condition, null, null, ['A.EmIdx' => 'desc'], $this->_reqP('data_ssn'));
 
         /*----  다운로드 정보 저장  ----*/
         $download_query = $this->eventLectureModel->getLastQuery();
@@ -932,7 +936,9 @@ class EventLecture extends \app\controllers\BaseController
 
         // export excel
         $this->load->library('excel');
-        $this->excel->exportExcel($file_name, $list, $headers);
+        if ($this->excel->exportHugeExcel($file_name, $list, $headers) !== true) {
+            show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
     }
 
     /**

@@ -13,7 +13,8 @@
                         <li><a href="{{ front_app_url('/home/index/cate/3094', 'gosi') }}" target="_blank">5급행정</a></li>                        
                         <li><a href="{{ front_app_url('/home/index/cate/3095', 'gosi') }}" target="_blank">국립외교원</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/3035', 'pass') }}" target="_blank">법원직</a></li>
-                        <li><a href="{{ front_app_url('/home/index/cate/3096', 'gosi') }}" target="_blank">5급PSAT</a></li>                    
+                        <li><a href="{{ front_app_url('/home/index/cate/3096', 'gosi') }}" target="_blank">5급PSAT</a></li>
+                        <li><a href="{{ front_app_url('/home/index/cate/3148', 'pass') }}" target="_blank">검찰직</a></li>                    
                         <li><a href="{{ front_app_url('/home/index/cate/3097', 'gosi') }}" target="_blank">5급헌법</a></li> 
                         <li><a href="{{ front_app_url('/home/index/cate/3103', 'pass') }}" target="_blank">7급PSAT</a></li> 
                         <li><a href="{{ front_app_url('/home/index/cate/3098', 'gosi') }}" target="_blank">법원행시</a></li> 

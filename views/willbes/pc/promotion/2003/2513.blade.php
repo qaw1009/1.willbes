@@ -25,7 +25,38 @@
     .sky a {display:block; margin-bottom:5px;}
 
 
-    .evt_top {background:url('https://static.willbes.net/public/images/promotion/2022/01/2513_top_bg.jpg') no-repeat center top; position:relative;}   
+    .evt_top {background:url('https://static.willbes.net/public/images/promotion/2022/01/2513_top_bg.jpg') no-repeat center top;}   
+    .evt_top span {position: absolute; top:100px; left:50%; width:185px; margin-left:-550px; z-index: 2;}
+
+    .swirl-in-fwd {
+        -webkit-animation: swirl-in-fwd 0.6s ease-out both;
+                animation: swirl-in-fwd 0.6s ease-out both;
+    }
+    @@-webkit-keyframes swirl-in-fwd {
+        0% {
+            -webkit-transform: rotate(-540deg) scale(0);
+                    transform: rotate(-540deg) scale(0);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: rotate(0) scale(1);
+                    transform: rotate(0) scale(1);
+            opacity: 1;
+        }
+    }
+    @@keyframes swirl-in-fwd {
+        0% {
+            -webkit-transform: rotate(-540deg) scale(0);
+                    transform: rotate(-540deg) scale(0);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: rotate(0) scale(1);
+                    transform: rotate(0) scale(1);
+            opacity: 1;
+        }
+    }
+
 
     .evt_top .tabs {width:1120px; position:absolute; top:920px; left:50%; margin-left:-560px; z-index:1}
     .evt_top .tabs li {display:inline; float:left; width:20%}
@@ -61,6 +92,7 @@
 
         <div class="evtCtnsBox evt_top" data-aos="fade-up"> 
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2513_top.jpg" alt="설맞이 이벤트" >
+            <span class="swirl-in-fwd"><a href="#offline"><img src="https://static.willbes.net/public/images/promotion/2022/01/2513_top_popup.png" alt="설 연휴 학원운영" ></a></span>
         </div>
 
 
@@ -105,7 +137,9 @@
                 <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2013" target="_blank" title="전산직" style="position: absolute; left: 44.2%; top: 90.9%; width: 11.61%; height: 1.73%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2015" target="_blank" title="산림자원직" style="position: absolute; left: 69.91%; top: 90.9%; width: 11.61%; height: 1.73%; z-index: 2;"></a>
             </div>
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2513_04.jpg" alt="설 연휴 학원운영" id="offline">
         </div> 
+
         
         <div class="evtCtnsBox evtInfo" data-aos="fade-up">
             <div class="evtInfoBox">

@@ -1,6 +1,7 @@
 <div class="row">
     <form class="form-horizontal" id="search_register_form" name="search_register_form" method="POST">
         {!! csrf_field() !!}
+        <input type="hidden" name="data_ssn" value="N">
         <div class="form-group">
             <label class="control-label col-md-2">다중특강정보</label>
             <div class="col-md-2 form-inline">
@@ -51,6 +52,9 @@
 </div>
 
 <div class="x_panel mt-20">
+    <div class="col-xs-12 text-right">
+        <input type="checkbox" class="flat" id="add_data_ssn" name="add_data_ssn" value="Y"> <label for="add_data_ssn">주민번호포함 (엑셀변환)</label>
+    </div>
     <div class="x_content">
         <table id="list_ajax_register_table" class="table table-striped table-bordered">
             <thead>
@@ -120,10 +124,10 @@
             serverSide: true,
             rowsGroup: ['.rowspan'],
             buttons: [
-                { text: '<i class="fa fa-send mr-10"></i> 엑셀변환', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-excel-register' },
-                { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-message' },
-                { text: '<i class="fa fa-send mr-10"></i> SMS발송', className: 'btn-sm btn-info border-radius-reset ml-15 btn-sms' },
-                { text: '<i class="fa fa-pencil mr-10"></i> 목록', className: 'btn-sm btn-primary border-radius-reset ml-15 btn-list' },
+                { text: '<i class="fa fa-send mr-10"></i> 엑셀변환', className: 'btn-default btn-sm btn-success border-radius-reset btn-excel-register' },
+                { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset ml-10 btn-message' },
+                { text: '<i class="fa fa-send mr-10"></i> SMS발송', className: 'btn-sm btn-info border-radius-reset ml-10 btn-sms' },
+                { text: '<i class="fa fa-pencil mr-10"></i> 목록', className: 'btn-sm btn-primary border-radius-reset ml-10 btn-list' },
             ],
             ajax: {
                 'url' : '{{ site_url('/site/eventLecture/listRegisterAjax/'.$el_idx) }}',
@@ -211,6 +215,10 @@
 
         // 엑셀다운로드 버튼 클릭
         $('.btn-excel-register').on('click', function(event) {
+            var data_ssn_type = $('input:checkbox[name="add_data_ssn"]:checked').val();
+            if (typeof data_ssn_type !== 'undefined') {
+                $search_register_form.find('input[name="data_ssn"]').val(data_ssn_type);
+            }
             event.preventDefault();
             formCreateSubmit('{{ site_url('/site/eventLecture/registerExcel/'.$el_idx) }}', $search_register_form.serializeArray(), 'POST');
         });

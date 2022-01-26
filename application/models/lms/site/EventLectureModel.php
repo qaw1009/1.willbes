@@ -781,7 +781,7 @@ class EventLectureModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    public function listAllEventRegister($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listAllEventRegister($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $data_ssn_type = '')
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -802,6 +802,7 @@ class EventLectureModel extends WB_Model
                     , O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode,
                     CASE C.Sex WHEN "M" THEN "남" WHEN "F" THEN "여" END AS MemSex
                 ';
+                $column = ($data_ssn_type == 'Y' ? $column.',fn_dec(A.UserSsnEnc) AS UserSsn' : $column);
             }
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();

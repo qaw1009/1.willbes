@@ -28,6 +28,7 @@
                                 <li><a href="#none" class="favor-cate-each" data-key="2003_3103" data-url="{{ front_app_url('/home/index/cate/3103', 'pass') }}">7급PSAT</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2003_3022" data-url="{{ front_app_url('/home/index/cate/3022', 'pass') }}">세무직</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2003_3035" data-url="{{ front_app_url('/home/index/cate/3035', 'pass') }}">법원직</a></li>
+                                <li><a href="#none" class="favor-cate-each" data-key="2003_3148" data-url="{{ front_app_url('/home/index/cate/3148', 'pass') }}">검찰직</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2003_3023" data-url="{{ front_app_url('/home/index/cate/3023', 'pass') }}">소방직</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2003_3028" data-url="{{ front_app_url('/home/index/cate/3028', 'pass') }}">기술직</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2003_3024" data-url="{{ front_app_url('/home/index/cate/3024', 'pass') }}">군무원</a></li>
@@ -160,6 +161,7 @@
                                 <a href="{{ front_app_url('/home/index/cate/3103', 'pass') }}" target="_blank">7급PSAT</a>
                                 <a href="{{ front_app_url('/home/index/cate/3022', 'pass') }}" target="_blank">세무직</a>
                                 <a href="{{ front_app_url('/home/index/cate/3035', 'pass') }}" target="_blank">법원직</a>
+                                <a href="{{ front_app_url('/home/index/cate/3148', 'pass') }}" target="_blank">검찰직</a>
                                 <a href="{{ front_app_url('/home/index/cate/3023', 'pass') }}" target="_blank">소방직</a>
                                 <a href="{{ front_app_url('/home/index/cate/3028', 'pass') }}" target="_blank">기술직</a>
                                 <a href="{{ front_app_url('/home/index/cate/3024', 'pass') }}" target="_blank">군무원 </a>

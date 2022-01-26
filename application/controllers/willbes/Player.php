@@ -1244,9 +1244,9 @@ class Player extends \app\controllers\FrontController
 
         // 기간제 패키지 이면 기기체크하기
         // 운영자 패키지 기기체크 추가
-        if($lec['LearnPatternCcd'] == '615004' || $lec['LearnPatternCcd'] == '615003'){
+        if($lec['LearnPatternCcd'] == '615004' || $lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615001'){
             // 운영자패키지 일경우 기기제한정보가 없거나 0이하이면 디바이스 체크하지않고 재생가능
-            if($lec['LearnPatternCcd'] == '615003'){
+            if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615001'){
                 // 제한정보가 없을때 숫자 비교시 에러발생 위험이있어 if를 분리함
                 if(empty($lec['DeviceLimitCount']) == true)
                     return $this->json_result(true, '재생이 가능합니다.');
@@ -2241,7 +2241,7 @@ class Player extends \app\controllers\FrontController
                 }
 
                 // 운영자패키지 일경우 기기제한정보가 없거나 0이하이면 디바이스 체크하지않고 재생가능
-                if($lec['LearnPatternCcd'] == '615003'){
+                if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615001'){
                     if(empty($lec['DeviceLimitCount']) == true) {
                         // 기기제한정보가 없음
                         // 제한정보가 없을때 숫자 비교시 에러발생 위험이있어 if를 분리함
@@ -2379,7 +2379,7 @@ class Player extends \app\controllers\FrontController
                 }
 
                 // 운영자패키지 일경우 기기제한정보가 없거나 0이하이면 디바이스 체크하지않고 재생가능
-                if($lec['LearnPatternCcd'] == '615003'){
+                if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615001'){
                     if(empty($lec['DeviceLimitCount']) == true) {
                         // 기기제한정보가 없음
                         // 제한정보가 없을때 숫자 비교시 에러발생 위험이있어 if를 분리함

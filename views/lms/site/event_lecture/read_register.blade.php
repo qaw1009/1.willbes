@@ -218,6 +218,8 @@
             var data_ssn_type = $('input:checkbox[name="add_data_ssn"]:checked').val();
             if (typeof data_ssn_type !== 'undefined') {
                 $search_register_form.find('input[name="data_ssn"]').val(data_ssn_type);
+            } else {
+                $search_register_form.find('input[name="data_ssn"]').val('N');
             }
             event.preventDefault();
             formCreateSubmit('{{ site_url('/site/eventLecture/registerExcel/'.$el_idx) }}', $search_register_form.serializeArray(), 'POST');

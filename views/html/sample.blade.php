@@ -48,7 +48,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_2008_v2') }}" target="_blank">경찰간부 온라인 메인</a></li>
                 {{--<li class="w50"><a href="{{ site_url('/home/html/main_cop_2013') }}" target="_blank">경찰간부 학원 메인</a></li>    --}}            
                 <li class="c_both"></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_gosi_gate') }}" target="_blank">공무원 게이트</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_gosi_gate_2021') }}" target="_blank">공무원 게이트</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_online') }}" target="_blank">공무원 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_3103') }}" target="_blank">공무원 7급 PSAT 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_seven') }}" target="_blank">공무원 7급 온라인 메인</a></li>

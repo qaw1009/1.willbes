@@ -70,6 +70,9 @@
                         <a href="#none">법원직</a>
                     </div>
                     <div>
+                        <a href="#none">검찰직</a>
+                    </div>
+                    <div>
                         <a href="#none">소방직</a>
                     </div>
                     <div>
@@ -92,7 +95,7 @@
                     </div>
                 </ul>
                 <div class="menu-banner">
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_330x100.jpg" alt="배너"></a>
+                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_310x100.jpg" alt="배너"></a>
                 </div>
             </h3>
         </div>

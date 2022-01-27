@@ -19,9 +19,9 @@
                         <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/2003_logo_2021.png" alt="윌비스공무원">
                     </div>
                     <ul class="menu-List">
-                        <div><a href="{{ front_url('/home/index/cate/3019') }}">9급</a></div>
-                        <div><a href="{{ front_url('/home/index/cate/3103') }}">7급PSAT</a></div>
+                        <div><a href="{{ front_url('/home/index/cate/3019') }}">9급</a></div>                        
                         <div><a href="{{ front_url('/home/index/cate/3020') }}">7급</a></div>
+                        <div><a href="{{ front_url('/home/index/cate/3103') }}">7급PSAT</a></div>
                         <div><a href="{{ front_url('/home/index/cate/3022') }}">세무직</a></div>
                         <div><a href="{{ front_url('/home/index/cate/3035') }}">법원직</a></div>
                         <div><a href="{{ front_url('/home/index/cate/3148') }}">검찰직</a></div>

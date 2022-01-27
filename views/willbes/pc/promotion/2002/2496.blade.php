@@ -53,7 +53,7 @@
 
         /*이용안내*/        
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
-		.evtInfoBox {width:1120px; margin:0 auto; text-align:left; line-height:1.4}
+		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
 		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
 		.evtInfoBox .infoTit {font-size:20px; margin-bottom:10px; color:#c4feff}
 		.evtInfoBox ul {margin-bottom:30px}
@@ -82,7 +82,7 @@
         </div>
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_top.jpg" alt="2022 슈퍼 pass" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2496_top.jpg" alt="2022 슈퍼 pass" />
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
@@ -100,7 +100,7 @@
         </div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_03.jpg" alt="합격 커리큘럼"  />   
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2496_03.jpg" alt="합격 커리큘럼"  />   
         </div>
 
         <div class="evtCtnsBox evt_tab" data-aos="fade-up">
@@ -111,9 +111,8 @@
             </ul>           
            
             <div class="wrap" id="tab01" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_01.jpg" alt="3월 개강반" />
-                <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378203&" title="기본형" target="_blank" style="position: absolute; left: 20.27%; top: 86.43%; width: 29.29%; height: 9.55%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378205&" title="기본/심화형" target="_blank" style="position: absolute;left: 49.73%; top: 86.43%; width: 29.29%; height: 9.55%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/2496_04_01.jpg" alt="3월 개강반" />
+                <a href="hhttps://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378205" title="기본형" target="_blank" style="position: absolute; left: 20.63%; top: 81.75%; width: 58.66%; height: 11.25%; z-index: 2;"></a>
             </div>             
             <div class="wrap" id="tab02" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_02.jpg" alt="4월 개강반" />
@@ -123,7 +122,7 @@
 
         <div class="evtCtnsBox evt_tab_again" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_again.jpg" alt="다시한번 합격을 위해" id="event02" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/2496_04_again.jpg" alt="다시한번 합격을 위해" id="event02" />
                 <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" title="super pass 신청하기" target="_blank" style="position: absolute; left: 27.5%; top: 91.52%; width: 44.73%; height: 6.79%; z-index: 2;"></a>
             </div> 
         </div>
@@ -145,39 +144,17 @@
                     <li>한능검 - 오태진 교수님</li>                      
 				</ul>
                 
-                <div class="infoTit"><strong>3월 개강반) [기본형] 7개월, 6개월 슈퍼패스 유의사항</strong></div>
-				<ul>
-                    <li>① [기본형] 7개월 슈퍼패스, 6개월 슈퍼패스는 2022년 3월 7일부터 2022년 8월 20일까지 책정된 수강료로
-                        시험 일정에 따라 추가 수강료가 부과될 수 있습니다.<br>
-                        (1개월 연장 시 - 실강 10만원, 인강 5만원)<br>
-                        *정규과정 : 2022년 과목개편대비 기본이론,심화과정,문제풀이,마무리 특강
-                    </li>
-                    <li>② 기본형 슈퍼패스를 등록한 경우 22년 4월에 진행되는 심화강의 실강은 수강이 불가합니다.</li>
-                    <li>③ 22년 2월 인강 선지급은 7개월 슈퍼패스를 등록한 수강생에게 제공되는 혜택입니다.</li>
-                    <li>④ 국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 대체될 수 있으며, 
-                        이로 인한 해당기간 환불은 불가합니다.
-                    </li>
-                    <li>⑤ G-TELP 특강은 수강기간 내에, 실강 1회에 한하여 50% 할인 적용됩니다.</li>
-                    <li>⑥ 인강패스와 정규과정 외 특강 및 모의고사는 슈퍼패스 등록생에게 제공되는 무료 혜택입니다.</li>
-                    <li>⑦ 일부 특강은 유료로 결제할 수 있습니다.</li>
-                    <li>⑧ 중도 환불 시 수강기간만큼 차감 후, 무료 혜택 금액을 차감하여 환불됩니다.</li>	
-				</ul>
-
-                <div class="infoTit"><strong>3월 개강반) [기본/심화형] 7개월, 6개월 슈퍼패스 유의사항</strong></div>
+                <div class="infoTit"><strong>2월 개강반) 7개월 슈퍼패스 유의사항</strong></div>
                 <ul>
-                    <li>① [기본/심화형] 7개월 슈퍼패스, 6개월 슈퍼패스는 2022년 3월 7일부터 2022년 8월 20일까지 책정된 수강료로
+                    <li>① 7개월 슈퍼패스는 2022년 2월 7일부터 2022년 8월 20일까지 책정된 수강료로
                         시험 일정에 따라 추가 수강료가 부과될 수 있습니다.<br>
                         (1개월 연장 시 - 실강 10만원, 인강 5만원)<br>
-                        *정규과정 : 2022년 과목개편대비 기본이론,심화과정,문제풀이,마무리 특강
-                    </li>
-                    <li>② 22년 2월 인강 선지급은 7개월 슈퍼패스를 등록한 수강생에게 제공되는 혜택입니다.</li>
-                    <li>③ 국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 대체될 수 있으며, 
-                        이로 인한 해당기간 환불은 불가합니다.
-                    </li>
-                    <li>④ G-TELP 특강은 수강기간 내에, 실강 1회에 한하여 50% 할인 적용됩니다. </li>
-                    <li>⑤ 인강패스와 정규과정 외 특강 및 모의고사는 슈퍼패스 등록생에게 제공되는 무료 혜택입니다.</li>
-                    <li>⑥ 일부 특강은 유료로 결제할 수 있습니다.</li>
-                    <li>⑦ 중도 환불 시 수강기간만큼 차감 후, 무료 혜택 금액을 차감하여 환불됩니다.</li>                   
+                        *정규과정 : 2022년 과목개편대비 기본이론,심화과정,문제풀이,마무리 특강</li>
+                    <li>② 국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 대체될 수 있으며, 이로 인한 해당기간 환불은 불가합니다.</li>
+                    <li>③ G-TELP 특강은 수강기간 내에, 실강 1회에 한하여 50% 할인 적용됩니다. </li>
+                    <li>④ 인강패스와 정규과정 외 특강 및 모의고사는 슈퍼패스 등록생에게 제공되는 무료 혜택입니다.</li>
+                    <li>⑤ 일부 특강은 유료로 결제할 수 있습니다.</li>
+                    <li>⑥ 중도 환불 시 수강기간만큼 차감 후, 무료 혜택 금액을 차감하여 환불됩니다.</li>                   
                 </ul>
 
                 <div class="infoTit"><strong>4월 개강반) [심화시작반] 6개월, 5개월 슈퍼패스 유의사항</strong></div>

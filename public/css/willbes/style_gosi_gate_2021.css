@@ -7,10 +7,10 @@
 .gosi-gate-secTop {position:relative; padding-top:56px }
 .gosi-gate-secTop .gosi-gate-search {position:absolute; top:0;}
 .gosi-gate-secTop .Menu h3 {border:0; margin:0; display:flex; height: 100px;}
-.gosi-gate-secTop .Menu h3 .menu-Tit {width:220px;}
-.gosi-gate-secTop .Menu h3 .menu-List {display:flex; margin:10px 0 0; width:570px}
-.gosi-gate-secTop .Menu h3 .menu-List > div {font-size:15px; color:#808080; position:relative; width: 10%;}
-.gosi-gate-secTop .Menu h3 .menu-List > div a {display:block; width:100%; text-align:center }
+.gosi-gate-secTop .Menu h3 .menu-Tit {width:240px;}
+.gosi-gate-secTop .Menu h3 .menu-List {display:flex; justify-content: space-around; margin:10px 0 0; width:550px}
+.gosi-gate-secTop .Menu h3 .menu-List > div {font-size:15px; color:#808080; position:relative;}
+.gosi-gate-secTop .Menu h3 .menu-List > div a {display:block; text-align:center}
 .gosi-gate-secTop .Menu h3 .menu-List > div.dropdown > a span {display:inline-block; background:url("/public/img/willbes/cs/icon_arrow.gif") no-repeat; width:11px; height:11px; margin-right:5px}
 .gosi-gate-secTop .Menu h3 .menu-List > div.dropdown:hover {background:url("/public/img/willbes/common/top_menu_list_arrow.png") no-repeat center 32px;}
 .gosi-gate-secTop .Menu h3 .menu-List > div.dropdown div a {text-align:left}

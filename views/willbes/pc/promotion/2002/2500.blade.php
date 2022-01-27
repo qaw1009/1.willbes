@@ -146,7 +146,7 @@
                 <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1040" target="_blank" title="경행경채 기본종합반 신청하기" style="position: absolute; left: 55.89%; top: 83.93%; width: 26.16%; height: 4.4%; z-index: 2;"></a>
             </div>
         </div>   
-
+        {{--
         <div class="evtCtnsBox wb_05" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2500_05.jpg"  alt="단과"/>
@@ -157,10 +157,10 @@
                 <a href="https://police.willbes.net/pass/offLecture/show/cate/3011/prod-code/187485" title="범죄확 박상민" target="_blank" style="position: absolute; left: 81.79%; top: 69.62%; width: 14.11%; height: 9.24%; z-index: 2;"></a>
             </div>
         </div>
-
+        --}}
         <div class="evtCtnsBox evtInfo" data-aos="fade-up">
 			<div class="evtInfoBox">
-				<h4 class="NSK-Black">3월 기본종합반 학원 실강 이용안내</h4>
+				<h4 class="NSK-Black">2월 기본종합반 학원 실강 이용안내</h4>
 				<div class="infoTit">2022 개편과목 기본종합반 전문 교수진</div>
 				<div>
                     형사법 - 신광은 교수님<br>
@@ -171,12 +171,12 @@
 				</div>
 				<div class="infoTit">종합반 안내</div>
 				<ul>
-                    <li>기본종합반 (일반공채) 3/7(월) ~ 4/29(금)<br>
-                        ① 학원 강의 : 형사법, 경찰학, 헌법 기본이론 (헌법 교수님 택1)<br>
+                    <li>기본종합반 (일반공채) 2/7(월) ~ 4/1(금)<br>
+                        ① 학원 강의 : 형사법, 경찰학, 헌법 1월 강의 영상반 진행 (헌법 교수님 택1)<br>
                         ② 기본이론 복습동영상 (수강기간동안)
                     </li>
-                    <li> 기본종합반 (경행경채) 3/7(월) ~ 4/29(금)<br>
-                        ① 학원 강의 : 형사법, 경찰학, 범죄학 기본이론<br>
+                    <li> 기본종합반 (경행경채) 2/7(월) ~ 4/1(금)<br>
+                        ① 학원 강의 : 형사법, 경찰학 1월 강의 영상반 진행 / 범죄학 핵지총 실강<br>
                         ② 기본이론 복습동영상 (수강기간동안)
                     </li>
 				</ul>

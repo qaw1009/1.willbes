@@ -64,17 +64,17 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
         </div>
 
-        <div class="evtCtnsBox evtTop" data-aos="fade-top">
+        <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2524_top.gif" alt="추천강좌" />
         </div>   
 
-        <div class="evtCtnsBox evt_tab" data-aos="fade-top">     
+        <div class="evtCtnsBox evt_tab" data-aos="fade-up">     
             <ul class="evtTab">
                 <li><a href="#tab01">22년 1차 합격반</a></li>
                 <li><a href="#tab02">22년 2차 합격반</a></li>
             </ul>
             <div id="tab01">
-                <div class="evtCtnsBox evt01" data-aos="fade-top">
+                <div class="evtCtnsBox evt01" data-aos="fade-up">
                     <div>
                         <div class="wrap">
                             <img src="https://static.willbes.net/public/images/promotion/2022/01/2524_01.jpg" alt="마무리 단계" />
@@ -86,7 +86,7 @@
                 </div>                
             </div>
             <div id="tab02">
-                <div class="evtCtnsBox evt01" data-aos="fade-top">
+                <div class="evtCtnsBox evt01" data-aos="fade-up">
                         <div>
                             <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_02_01.jpg" alt="super pass" />                           
                         </div>

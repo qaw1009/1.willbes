@@ -52,9 +52,6 @@
 </div>
 
 <div class="x_panel mt-20">
-    <div class="col-xs-12 text-right">
-        <input type="checkbox" class="flat" id="add_data_ssn" name="add_data_ssn" value="Y"> <label for="add_data_ssn">주민번호포함 (엑셀변환)</label>
-    </div>
     <div class="x_content">
         <table id="list_ajax_register_table" class="table table-striped table-bordered">
             <thead>
@@ -173,6 +170,10 @@
             ]
         });
 
+        // datatable button안에 체크박스 그리기
+        var add_checkbox = '<div class="checkbox mr-10" style="z-index: 1001; position: absolute; margin-top: 5px; margin-left: 8px;"><input type="checkbox" class="flat2" id="add_data_ssn" name="add_data_ssn" value="Y" title="주민번호 추가"><label for="add_data_ssn"></label><div>';
+        $('.btn-excel-register').parent().parent().prepend(add_checkbox);
+
         // 검색
         $('.btn-search-register').click(function (){
             $datatable_register.draw();
@@ -213,8 +214,19 @@
             }, showError, false, 'GET');
         });
 
+        $('input:checkbox[name="add_data_ssn"]').click(function () {
+            if ($(this).is(":checked") === true) {
+                notifyAlert('error', '알림', '주민번호 데이터가 "추가"되었습니다.');
+            } else {
+                notifyAlert('success', '알림', '주민번호 데이터가 "제거"되었습니다.');
+            }
+        });
+
         // 엑셀다운로드 버튼 클릭
         $('.btn-excel-register').on('click', function(event) {
+            if (!confirm('엑셀변환을 하시겠습니까?')) {
+                return;
+            }
             var data_ssn_type = $('input:checkbox[name="add_data_ssn"]:checked').val();
             if (typeof data_ssn_type !== 'undefined') {
                 $search_register_form.find('input[name="data_ssn"]').val(data_ssn_type);

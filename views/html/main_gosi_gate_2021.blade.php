@@ -58,11 +58,11 @@
                         <a href="#none">9급</a>
                     </div>
                     <div>
-                        <a href="#none">7급PSAT</a>
-                    </div>
-                    <div>
                         <a href="#none">7급</a>
                     </div>
+                    <div>
+                        <a href="#none">7급PSAT</a>
+                    </div>                    
                     <div>
                         <a href="#none">세무직</a>
                     </div>

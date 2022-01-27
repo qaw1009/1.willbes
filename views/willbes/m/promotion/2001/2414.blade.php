@@ -36,7 +36,9 @@
     }
 
     .evt06 {background:#ececec; padding-bottom:50px}
-    .evt06 .lecbuy {display: flex;  justify-content: space-evenly;}
+    .evt06 .lecbuy {display:flex; justify-content:center; flex-wrap: wrap; max-width:460px; margin:auto}
+    .evt06 .lecbuy a {width:50%; margin-bottom:20px}
+    .evt06 .lecbuy a img {max-width:220px;}
     .evt06 .check {font-size:14px; text-align:center; line-height:1.4;margin-top:40px;font-weight:bold;}
     .evt06 .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
     .evt06 .check a {display:block; padding:5px 0; color:#fff; background:#000; width:60%; margin:20px auto 0; border-radius:20px}
@@ -54,14 +56,12 @@
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
-        .evt06 .lecbuy {flex-wrap: wrap; flex-direction: column; flex-direction: row; align-content: stretch;}
-        .evt06 .lecbuy a {margin-bottom:20px}
+        .evt06 .lecbuy a {width: calc(50% - 10px);}
     }
 
     /* 태블릿 세로 */
-    @@media only screen and (min-width: 375px) and (max-width: 640px) {       
-        .evt06 .lecbuy {flex-wrap: wrap; flex-direction: column; flex-direction: row; align-content: stretch;}
-        .evt06 .lecbuy a {margin-bottom:20px}
+    @@media only screen and (min-width: 375px) and (max-width: 640px) {     
+        .evt06 .lecbuy a {width: calc(50% - 10px);}
     }
     
     /* 태블릿 가로, PC */
@@ -113,9 +113,10 @@
     <div class="evtCtnsBox evt06" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2021/11/2414m_06.jpg" alt="2022 해양경찰 합격 패스" >
         <div class="lecbuy">
-            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187597);"><img src="https://static.willbes.net/public/images/promotion/2021/11/2414m_06_01.jpg" alt="스폐셜 01" ></a>
-            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187598);"><img src="https://static.willbes.net/public/images/promotion/2021/11/2414m_06_02.jpg" alt="스폐셜 02" ></a>
-            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187599);"><img src="https://static.willbes.net/public/images/promotion/2021/11/2414m_06_03.jpg" alt="스폐셜 03" ></a>
+            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187597);"><img src="https://static.willbes.net/public/images/promotion/2022/01/2414m_06_01.png" alt="스폐셜 01" ></a>
+            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187598);"><img src="https://static.willbes.net/public/images/promotion/2022/01/2414m_06_02.png" alt="스폐셜 02" ></a>
+            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187599);"><img src="https://static.willbes.net/public/images/promotion/2022/01/2414m_06_03.png" alt="스폐셜 03" ></a>
+            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 190512);"><img src="https://static.willbes.net/public/images/promotion/2022/01/2414m_06_04.png" alt="스폐셜 04" ></a>
         </div>
         <div class="check">
             <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 합격PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
@@ -123,6 +124,7 @@
         </div>
         <div class="info">
             ※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.
+            <div class="tx16 mt20">※선택한 해양경찰 공채 합격PASS상품의 표시된 기간동안 동영상 강좌를 무제한 수강할수 있습니다.</div>
         </div>
     </div>
 

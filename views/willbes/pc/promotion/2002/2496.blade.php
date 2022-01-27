@@ -112,7 +112,7 @@
            
             <div class="wrap" id="tab01" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2496_04_01.jpg" alt="3월 개강반" />
-                <a href="hhttps://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378205" title="기본형" target="_blank" style="position: absolute; left: 20.63%; top: 81.75%; width: 58.66%; height: 11.25%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378205" title="기본형" target="_blank" style="position: absolute; left: 20.63%; top: 81.75%; width: 58.66%; height: 11.25%; z-index: 2;"></a>
             </div>             
             <div class="wrap" id="tab02" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_04_02.jpg" alt="4월 개강반" />

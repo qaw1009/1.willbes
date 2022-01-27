@@ -24,6 +24,7 @@
                         <div><a href="{{ front_url('/home/index/cate/3020') }}">7급</a></div>
                         <div><a href="{{ front_url('/home/index/cate/3022') }}">세무직</a></div>
                         <div><a href="{{ front_url('/home/index/cate/3035') }}">법원직</a></div>
+                        <div><a href="{{ front_url('/home/index/cate/3148') }}">검찰직</a></div>
                         <div><a href="{{ front_url('/home/index/cate/3023') }}">소방직</a></div>
                         <div><a href="{{ front_url('/home/index/cate/3028') }}">기술직</a></div>
                         <div><a href="{{ front_url('/home/index/cate/3024') }}">군무원</a></div>

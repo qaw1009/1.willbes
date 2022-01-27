@@ -20,7 +20,7 @@
 
         /************************************************************/
 
-        .evt_top {background:#0C1D23 url(https://static.willbes.net/public/images/promotion/2022/01/2522_top_bg.jpg) no-repeat center top; }
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/01/2522_top_bg.jpg) no-repeat center top; }
 
         @@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
         .evt_02 {width:1120px; margin:0 auto; padding-bottom:150px; display:flex; justify-content: center; flex-wrap: wrap; align-items: center; font-family: 'Black Han Sans', sans-serif; letter-spacing:-1px}

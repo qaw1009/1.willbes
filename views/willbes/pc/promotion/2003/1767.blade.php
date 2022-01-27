@@ -103,9 +103,9 @@
             <div class="youtube_divide">             
                 <div class="preview_area">
                     <div class="avi_box">
-                        <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/T7bpGfvf-_U?rel=0"></iframe>
+                        <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/vcIVfZluZuY?rel=0"></iframe>
                     </div>
-                    <h2 class="avi_title">예비군법 핵심포인트 정리! - 『법+위·사·시·필·사』</h2>
+                    <h2 class="avi_title">2022년 70회 대비, 병역법! 여기서 1문제는 반드시 나온다!</h2>
                 </div>
                 <div class="preview_list_area">
                     <div class="preview_list">
@@ -113,16 +113,36 @@
                             <li class="on">
                                 <a href="#tab1" class="active">
                                     <span class="num_box" data-num="1">1</span>
-                                    <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/01/1767_thumbnail01.jpg" alt="예비군법"></div>
+                                    <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2022/01/1767_thumbnail01.jpg" alt="병역법 1문제는 반드시 나온다"></div>
                                     <div class="text_box">
-                                        <p>예비군법 핵심포인트 정리! - 『법+위·사·시·필·사』</p>
+                                        <p>2022년 70회 대비, 병역법! 여기서 1문제는 반드시 나온다!</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a href="#tab2">
+                                    <span class="num_box" data-num="2">2</span>
+                                    <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2022/01/1767_thumbnail02.jpg" alt="병역법 단원별 출전문제 정리하기"></div>
+                                    <div class="text_box">
+                                        <p>2022년 70회 대비, 병역법! 단원별 출제문제 정리하기!</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a href="#tab3">
+                                    <span class="num_box" data-num="3">3</span>
+                                    <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/01/1767_thumbnail03.jpg" alt="통합방위법"></div>
+                                    <div class="text_box">
+                                        <p>통합방위법에는 시행규칙이 없다!</p>
                                     </div>
                                 </a>
                             </li>
                     
                             <li class="">
-                                <a href="#tab2">
-                                    <span class="num_box" data-num="2">2</span>
+                                <a href="#tab4">
+                                    <span class="num_box" data-num="4">4</span>
                                     <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/01/1767_thumbnail02.jpg" alt="병역법"></div>
                                     <div class="text_box">
                                         <p>병역법의 정의에서 꼭 1문제는 나온다! - 『징·역 / 소·의·지』</p>
@@ -131,8 +151,8 @@
                             </li>
 
                             <li class="">
-                                <a href="#tab3">
-                                    <span class="num_box" data-num="3">3</span>
+                                <a href="#tab5">
+                                    <span class="num_box" data-num="5">5</span>
                                     <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/01/1767_thumbnail03.jpg" alt="통합방위법"></div>
                                     <div class="text_box">
                                         <p>통합방위법에는 시행규칙이 없다!</p>
@@ -309,16 +329,12 @@
 
 
       //유툽
-      var tab1_url = "https://www.youtube.com/embed/T7bpGfvf-_U?rel=0";
-      var tab2_url = "https://www.youtube.com/embed/dXzoUDt9UME?rel=0";  
-      var tab3_url = "https://www.youtube.com/embed/kpiHmPg9-_U?rel=0";   
-      var tab4_url = "https://www.youtube.com/embed/FYzC6MElEzw?rel=0";   
-      var tab5_url = "https://www.youtube.com/embed/rc-ZBbEhU_A?rel=0"; 
-      var tab6_url = "https://www.youtube.com/embed/_crgLD0rmN8?rel=0";  
-      var tab7_url = "https://www.youtube.com/embed/9dxrpJ6TOZg?rel=0";  
-      var tab8_url = "https://www.youtube.com/embed/1zATq2Kydwg?rel=0";   
-      var tab9_url = "https://www.youtube.com/embed/37yjw2mC8wY?rel=0";                        
-  
+
+      var tab1_url = "https://www.youtube.com/embed/vcIVfZluZuY?rel=0";
+      var tab2_url = "https://www.youtube.com/embed/_s3nr6mriWQ?rel=0";  
+      var tab3_url = "https://www.youtube.com/embed/T7bpGfvf-_U?rel=0";   
+      var tab4_url = "https://www.youtube.com/embed/dXzoUDt9UME?rel=0";   
+      var tab5_url = "https://www.youtube.com/embed/kpiHmPg9-_U?rel=0";  
 
       $(function() {
           $(".preview_list ul li a").click(function(){

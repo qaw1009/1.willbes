@@ -53,9 +53,20 @@ class SearchLectureAll extends \app\controllers\BaseController
                 $arr_code['arr_subject'] = $this->subjectModel->getSubjectArray($site_code);
             }
 
-            // 대분류 카테고리 조회
-            $arr_code['arr_category'] = $this->categoryModel->getCategoryArray($site_code, '', '', '1');
+            //카테고리 목록 추출
+            $arr_condition = [
+                'EQ' => [
+                    'S.SiteCode' => $this->_req('site_code'),
+                    'C.IsUse' => 'Y',
+                ],
+                'IN' => ['S.SiteCode' => get_auth_site_codes()]    //사이트 권한 추가
+            ];
+
+            $arr_code['arr_category']  = $this->categoryModel->listSearchCategory(false, $arr_condition, null, null, null);
         }
+
+        // 판매여부
+        $arr_code['arr_sales_ccd'] = $this->codeModel->getCcd('618');   // 판매여부공통코드 조회
 
         // 학원사이트일 경우만 조회
         if ($is_off_site === true) {
@@ -93,7 +104,9 @@ class SearchLectureAll extends \app\controllers\BaseController
                 'B.SubjectIdx' => $this->_reqP('search_subject_idx'),
                 'B.StudyPatternCcd' => $this->_reqP('search_study_pattern_ccd'),
                 'A.SiteCode' => $this->_reqP('site_code'),
-                'Ca.GroupCateCode' => $this->_reqP('search_lg_cate_code')
+                'Ca.CateCode' => $this->_reqP('search_cate_code'),
+                'A.SaleStatusCcd' =>$this->_reqP('search_sales_ccd'),
+                'A.IsUse' =>$this->_reqP('search_is_use'),
             ]
         ];
 

@@ -28,7 +28,7 @@ class SearchLectureVariable extends \app\controllers\BaseController
         ];
 
         //카테고리 목록 추출
-        $cate_list = $this->categoryModel->listSearchCategory(false, $arr_condition, null, null, ['C.OrderNum' => 'ASC']);
+        $cate_list = $this->categoryModel->listSearchCategory(false, $arr_condition, null, null, null);
 
         $this->load->view('common/search_lecture_variable',[
             'arr_input' => $arr_input

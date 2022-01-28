@@ -77,10 +77,11 @@
                 </select>
             @endif
             @if(empty($arr_category) === false)
-                <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
-                    <option value="">대분류</option>
-                    @foreach($arr_category as $key => $val)
-                        <option value="{{ $key }}">{{ $val }}</option>
+                <select class="form-control mr-10" id="search_cate_code" name="search_cate_code">
+                    <option value="">카테고리</option>
+                    @foreach($arr_category as $row)
+                        <option value="{{ $row['CateCode'] }}">
+                            {{ $row['ParentCateName']== '' ? $row['CateName'] : $row['ParentCateName'].' > '.$row['CateName'] }}</option>
                     @endforeach
                 </select>
             @endif
@@ -108,6 +109,19 @@
                     @endforeach
                 </select>
             @endif
+            @if(empty($arr_sales_ccd) === false)
+                <select class="form-control" id="search_sales_ccd" name="search_sales_ccd">
+                    <option value="">판매여부</option>
+                    @foreach($arr_sales_ccd as $key=>$val)
+                        <option value="{{ $key }}">{{ $val }}</option>
+                    @endforeach
+                </select>
+            @endif
+            <select class="form-control" id="search_is_use" name="search_is_use">
+                <option value="">전체</option>
+                <option value="Y">사용</option>
+                <option value="N">미사용</option>
+            </select>
         </div>
         <div class="col-md-2 text-right pr-5">
             <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>

@@ -62,25 +62,21 @@
         </div>
 
         <div class="evtCtnsBox evt_top">
-            <span data-aos="flip-up"><img src="https://static.willbes.net/public/images/promotion/2022/01/2521_top.png" alt="파이널 패스"></span>
+            <span data-aos="flip-up" data-aos-delay="500"><img src="https://static.willbes.net/public/images/promotion/2022/01/2521_top.png" alt="파이널 패스"></span>
         </div>      
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2521_01.jpg"  alt="왜 등불쌤인가?" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2521_01.jpg" alt="왜 등불쌤인가?" />
         </div>
 
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2521_02.jpg"  alt="학습 PLAN" />     
-                <a href="javascript:alert('준비중입니다.');" title="필기부터 면접까지" style="position: absolute; left: 20.54%; top: 86.95%; width: 11.7%; height: 3.8%; z-index: 2;"></a>
-                <a href="https://blog.naver.com/psb7817/222211861661" target="_blank" title="해양경찰 공부는 이렇게" style="position: absolute; left: 67.32%; top: 86.95%; width: 11.7%; height: 3.8%; z-index: 2;"></a>
-            </div>       
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2521_02.jpg" alt="학습 PLAN" />     
         </div>
 
         <div class="evtCtnsBox evt_03" id="apply_pass" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2521_03.jpg"  alt="합격패스" />
-                <a href="javascript:void(0);" onclick="go_PassLecture(3001, 190892);" title="항해술 패스" style="position: absolute; left: 1.07%; top: 87.28%; width: 24.02%; height: 9.42%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/01/2521_03.jpg" alt="합격패스" />
+                <a href="javascript:void(0);" onclick="go_PassLecture(3001, 190892);" title="항해술 패스" style="position: absolute; left: 25.8%; top: 81.37%; width: 48.04%; height: 14.95%; z-index: 2;"></a>
             </div>
             <div class="check">
                 <input name="ischk" type="checkbox" id="is_chk" value="Y" />

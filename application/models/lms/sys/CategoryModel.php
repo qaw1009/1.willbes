@@ -98,8 +98,18 @@ class CategoryModel extends WB_Model
                 S.SiteCode, S.SiteName
                     , C.CateCode, C.CateName, ifnull(PC.CateCode, "") as ParentCateCode, ifnull(PC.CateName, "") as ParentCateName
                     , concat(S.SiteName, if(PC.CateCode is null, "", concat(" > ", PC.CateName)), " > ", C.CateName) as CateRouteName
-                    , C.IsUse, C.RegDatm, C.RegAdminIdx, C.IsFrontUse, A.wAdminName as RegAdminName	                
+                    , C.IsUse, C.RegDatm, C.RegAdminIdx, C.IsFrontUse, A.wAdminName as RegAdminName
+                    , ifnull(PC.OrderNum, C.OrderNum) as ParentOrderNum 	                
             ';
+
+            if(empty($order_by)) {
+                $order_by = [
+                    'ParentOrderNum' => 'ASC',
+                    'C.CateDepth' => 'ASC',
+                    'C.OrderNum' => 'ASC',
+                    'length(C.CateCode)' => 'ASC'
+                ];
+            }
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -122,7 +132,6 @@ class CategoryModel extends WB_Model
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 

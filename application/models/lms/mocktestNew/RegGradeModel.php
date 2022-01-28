@@ -874,10 +874,10 @@ class RegGradeModel extends WB_Model
                 ) AS A
                 INNER JOIN {$this->_table['product_subject']} AS PS ON A.SubjectIdx = PS.SubjectIdx AND PS.IsUse = 'Y' AND PS.IsStatus = 'Y'
                 INNER JOIN (
-                    SELECT ProdCode, TakeMockPart
-                    FROM {$this->_table['mock_register']}
-                    WHERE ProdCode = ?
-                    GROUP BY TakeMockPart
+                    SELECT a.ProdCode,SUBSTRING_INDEX(SUBSTRING_INDEX(a.MockPart,',',numbers.n),',',-1) AS TakeMockPart
+                    FROM (SELECT num AS n FROM tmp_numbers LIMIT 10) AS numbers
+                    INNER JOIN lms_product_mock AS a ON CHAR_LENGTH(a.MockPart) - CHAR_LENGTH(REPLACE(a.MockPart,',','')) >= numbers.n - 1
+                    WHERE a.ProdCode = ?
                 ) AS TM ON TM.ProdCode = A.ProdCode
             ) AS M
             ORDER BY M.TakeMockPart ASC, M.MpIdx ASC

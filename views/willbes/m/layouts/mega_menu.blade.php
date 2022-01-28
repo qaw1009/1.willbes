@@ -14,6 +14,7 @@
                 <li>
                     <span>국어</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50157?subject_idx=1107') }}">오대혁</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51353?subject_idx=1107') }}">서슬찬</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50241?subject_idx=1107') }}">기미진</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50661?subject_idx=1107') }}">김세령</a>
                 </li>
@@ -28,9 +29,10 @@
                 </li>
                 <li>
                     <span>한국사</span>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50619/?subject_idx=1109') }}">김상범</a>
-                    <a href="{{ front_url('/professor/show/cate/3019/prof-idx/51267?subject_idx=1109&subject_name=한국사') }}">나명재</a>   
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50027/?subject_idx=1109') }}">오태진</a>                    
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50619?subject_idx=1109') }}">김상범</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51354?subject_idx=1109') }}">김민규</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51267?subject_idx=1109') }}">나명재</a>   
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50027?subject_idx=1109') }}">오태진</a>                    
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50647?subject_idx=1109') }}">조민주</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50003?subject_idx=1109') }}">원유철</a>
                 </li>
@@ -43,7 +45,8 @@
                 <li>
                     <span>행정학</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50559?subject_idx=1112') }}">김덕관</a>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51266?subject_idx=1112&subject_name=행정학') }}">김철</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51266?subject_idx=1112') }}">김철</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51356?subject_idx=1112') }}">임혁</a>
                 </li>
                 <li>
                     <span>형법</span>
@@ -80,7 +83,7 @@
                 </li>
                 <li>
                     <span>헌법</span>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50109/?subject_idx=1114') }}">황남기</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50109?subject_idx=1114') }}">황남기</a>
                 </li>
                 <li>
                     <span>형법</span>
@@ -153,7 +156,7 @@
                     <span>행정법</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51206?subject_idx=1111') }}">신기훈</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50615?subject_idx=1111') }}">이석준</a>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50407/?subject_idx=1111') }}">임병주</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50407?subject_idx=1111') }}">임병주</a>
                 </li>
                 <li>
                     <span>행정학</span>
@@ -173,11 +176,16 @@
                 </li>
                 <li>
                     <span>G-TELP</span>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50764?subject_idx=1478') }}">서민지</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50764?subject_idx=1177') }}">서민지</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51348?subject_idx=1177') }}">김혜진</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51349?subject_idx=1177') }}">김윤성</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51350?subject_idx=1177') }}">켈리</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51351?subject_idx=1177') }}">김태운</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51352?subject_idx=1177') }}">방재운</a>
                 </li>                
                 <li>
                     <span>전자회로</span>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50163/?subject_idx=1196') }}">최우영</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50163?subject_idx=1196') }}">최우영</a>
                 </li>
                 <li>
                     <span>예비전력관리담당자</span>
@@ -227,7 +235,7 @@
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50647?subject_idx=1109') }}">조민주</a>                   
                 </li>                
                 <li><span>통신직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50163') }}">최우영</a></li>
-                <li><span>전기직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50163/?subject_idx=1193') }}">최우영</a></li>
+                <li><span>전기직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50163?subject_idx=1193') }}">최우영</a></li>
                 <li><span>토목직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50435?subject_idx=1215') }}">장성국</a></li>
                 <li><span>농업직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50429?subject_idx=1172') }}">장사원</a></li>
                 <li><span>농촌지도사</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50429?subject_idx=1230') }}">장사원</a></li>

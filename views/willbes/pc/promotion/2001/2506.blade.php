@@ -179,7 +179,7 @@
 
             <div class="check" data-aos="fade-up">
                 <input type="checkbox" id="is_chk1" name="is_chk" value="Y"/>
-                <label for="is_chk">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                <label for="is_chk1">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                 <a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a>
                 <p>
                     ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>
@@ -296,7 +296,7 @@
             </form>    
         </div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-up">
+        <div class="evtCtnsBox evt01" data-aos="fade-up" id="pass2">
             @if(time() >= strtotime('202201280000') && time() < strtotime('202202030000'))
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2506_01_evt.gif" alt="신광은경찰PASS 이벤트">
             @else
@@ -315,7 +315,7 @@
            
             <div class="check">
                 <input type="checkbox" id="is_chk2" name="is_chk" value="Y"/>
-                <label for="is_chk">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                <label for="is_chk2">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                 <a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a>
                 <p>
                     ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>

@@ -71,7 +71,7 @@
             </map>        
         </div>  
 
-        @if(time() < strtotime('202201240000'))
+        @if(time() < strtotime('202202070000'))
             <div class="evtCtnsBox evttop_banners" data-aos="fade-down">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2022/01/1676_top_banner.jpg">

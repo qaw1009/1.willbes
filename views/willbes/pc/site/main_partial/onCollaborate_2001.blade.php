@@ -32,6 +32,7 @@
                                 <a href="https://www.woosuk.ac.kr" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3001_collaborate_24.jpg" alt="우석대"></a>
                                 <a href="http://www.jwu.ac.kr" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3001_collaborate_25.jpg" alt="중원대"></a>
                                 <a href="https://www.pro.ac.kr" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3001_collaborate_26.jpg" alt="한국영상대학교"></a>
+                                <a href="https://samil-th.or.kr/html/formPage.do?menugrp=020801&searchSid=27" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3001_collaborate_27.jpg" alt="삼일공업고등학교"></a>
                             </li>
                         </ul>
                     </div>

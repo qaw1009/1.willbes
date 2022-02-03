@@ -341,8 +341,6 @@
                 </ul>
             </div>
         </div>  
-
-
     </div>
     <!-- End Container -->
 
@@ -353,6 +351,4 @@
         AOS.init();
       });
     </script>
-
-
 @stop

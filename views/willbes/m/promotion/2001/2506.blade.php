@@ -241,7 +241,7 @@
             </form>
         </div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-up">
+        <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt02">
             <div class="evt01_coupon">
                 @if(time() >= strtotime('202201280000') && time() < strtotime('202202030000'))
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2506m_01_evt.gif" alt="이벤트" >
@@ -258,7 +258,7 @@
                 </div>
 
                 <div class="ext01txt">
-                    <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
+                    <input type="checkbox" id="is_chk2" name="is_chk" value="Y"/> <label for="is_chk2">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
                     <ul>
                         <li>※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.</li>
                         <li>※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.</li>
@@ -266,7 +266,7 @@
                         <li>※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.</li>
                     </ul>
                 </div>
-                <div><a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신청하기 ></a></div>
+                <div><a href="javascript:void(0);" onclick="goCartNDirectPay('evt02', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신청하기 ></a></div>
             </div> 
         </div>
 
@@ -557,6 +557,7 @@
             if ($is_chk.length > 0) {
                 if ($is_chk.is(':checked') === false) {
                     alert('이용안내에 동의하셔야 합니다.');
+                    $is_chk.focus();
                     return;
                 }
             }

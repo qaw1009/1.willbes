@@ -81,7 +81,8 @@
 
     <div class="evtContent NSK">
         <div class="evtCtnsBox evtTop">
-        	<span data-aos="fade-down"><img src="https://static.willbes.net/public/images/promotion/2022/02/2523_top_img.png" alt="합격축하 이벤트"/></span>
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2523_top.jpg" alt="합격수기&수강후기 이벤트"/>
+        	<span data-aos="fade-down"><img src="https://static.willbes.net/public/images/promotion/2022/02/2523_top_img.png" alt=""/></span>
         </div>
 
         <div class="evtCtnsBox evt01">

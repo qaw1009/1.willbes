@@ -99,7 +99,7 @@
                 <div class="Layer-Cont">                   
                     <div class="psotSort">
                         <input type="radio" id="sortA"><label for="sortA">합격수기</label>
-                        <input type="radio" id="sortB"><label for="sortB">수강수기</label>
+                        <input type="radio" id="sortB"><label for="sortB">수강후기</label>
                     </div>
                     
                     <div class="willbes-Leclist">
@@ -160,7 +160,7 @@
                                 </tbody>
                             </table>
 
-                            {{-- 수강수기 --}}
+                            {{-- 수강후기 --}}
                             <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
                                 <colgroup>
                                     <col style="width: 100px;">

@@ -44,6 +44,7 @@
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
+        <input type="hidden" name="msg" value="댓글을 등록해 주세요.">
     </form>
     <div class="p_re evtContent NGR" id="evtContainer">             
 
@@ -103,7 +104,7 @@
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2528_03.jpg" alt="시험 미리 만나기"  data-aos="fade-up"/> 
                 <a href="javascript:;" onclick="giveCheck()" title="쿠폰" style="position: absolute; left: 12.41%; top: 68.62%; width: 37.23%; height: 8.14%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" title="모의고사 신청" target="_blank" style="position: absolute; left: 50.45%; top: 68.62%; width: 37.23%; height: 8.14%; z-index: 2;"></a>
+                <a href="{{ front_url('/mockTestNew/apply/cate', true) }}" title="모의고사 신청" target="_blank" style="position: absolute; left: 50.45%; top: 68.62%; width: 37.23%; height: 8.14%; z-index: 2;"></a>
             </div>
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')

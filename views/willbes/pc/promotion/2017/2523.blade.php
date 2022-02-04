@@ -81,7 +81,8 @@
 
     <div class="evtContent NSK">
         <div class="evtCtnsBox evtTop">
-        	<span data-aos="fade-down"><img src="https://static.willbes.net/public/images/promotion/2022/02/2523_top_img.png" alt="합격축하 이벤트"/></span>
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2523_top.jpg" alt="합격수기&수강후기 이벤트"/>
+        	<span data-aos="fade-down"><img src="https://static.willbes.net/public/images/promotion/2022/02/2523_top_img.png" alt=""/></span>
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -98,7 +99,7 @@
                 <div class="Layer-Cont">                   
                     <div class="psotSort">
                         <input type="radio" id="sortA"><label for="sortA">합격수기</label>
-                        <input type="radio" id="sortB"><label for="sortB">수강수기</label>
+                        <input type="radio" id="sortB"><label for="sortB">수강후기</label>
                     </div>
                     
                     <div class="willbes-Leclist">
@@ -159,7 +160,7 @@
                                 </tbody>
                             </table>
 
-                            {{-- 수강수기 --}}
+                            {{-- 수강후기 --}}
                             <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
                                 <colgroup>
                                     <col style="width: 100px;">

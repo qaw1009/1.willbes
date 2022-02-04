@@ -10,6 +10,7 @@ class CronModel extends WB_Model
     public $_task_type = [
         'MPE' => '회원포인트소멸',
         'VSR' => '방문자통계집계',
+        'ESM' => '매출통합데이터이관',
         'SAM' => '샘플작업'
     ];
 

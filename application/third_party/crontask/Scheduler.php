@@ -191,7 +191,7 @@ class Scheduler
                     'ExecDate' => $today,
                     'RunTime' => $row['runtime'],
                     'ResultCode' => (stripos($row['result'], 'Err') !== false ? 'N' : 'Y'),
-                    'ResultMsg' => $row['output'] . '(' . $row['result'] . ')',
+                    'ResultMsg' => $row['result'],
                     'RegAdminIdx' => '1005'
                 ];
 

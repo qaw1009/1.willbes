@@ -20,8 +20,8 @@
 
         .sky{position: fixed; top:250px; right:10px; width:151px; z-index:10;}
 
-		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/04/2180_top_bg.jpg) no-repeat center top; height:1124px; position:relative}
-        .evtTop span { position:absolute; top:458px; left:50%; margin-left:-483px; animation:iptimg1 0.5s ease-in;-webkit-animation:iptimg1 0.5s ease-in;}
+		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/02/2180_top_bg.jpg) no-repeat center top; height:1124px; position:relative}
+        .evtTop span { position:absolute; top:900px; left:50%; margin-left:-483px; animation:iptimg1 0.5s ease-in;-webkit-animation:iptimg1 0.5s ease-in;}
         @@keyframes iptimg1{
             from{margin-left:-1200px; opacity: 0;}
             to{margin-left:-483px; opacity: 1;}
@@ -33,14 +33,20 @@
 
         .evt01 {padding-bottom:150px}
 
-		.evt02 {background:#ebebeb;}
+        /* 롤링*/
+        .section_pro {
+        background:url(https://static.willbes.net/public/images/promotion/2022/02/2180_02_bg.jpg) no-repeat center top; 
+                   position:relative;height:895px;clear:both;}      
+        .section_pro .box_pro {position:absolute; top:380px; left:0; width:100%; z-index:1}
+        .section_pro .box_pro .bx-wrapper{max-width:100% !important;}
+        .section_pro .box_pro li {display:inline; float:left; height: 380px;}    
 
-		.evt03 {background:#01CED3 url(https://static.willbes.net/public/images/promotion/2022/01/2180_03_bg.jpg) no-repeat center top; padding-bottom:100px}   
+		.evt03 {background:#e8e8e8; padding-bottom:100px}   
         .evt03 .p_re {width:1120px; margin:0 auto}
         .evt03 .check {font-size:16px; text-align:center; line-height:1.5;margin-top:40px;font-weight:bold;}
         .evt03 .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
         .evt03 .check a {display:inline-block; padding:5px 20px; color:#fff; background:#000; margin-left:20px; border-radius:20px}
-        .evt03 .check a:hover {color:#333; background:#35fffa;}
+        .evt03 .check a:hover {color:#333; background:#f26522;}
 
         /*타이머*/
         .newTopDday {clear:both;background:#f5f5f5; width:100%; padding:20px 0; font-size:26px;}
@@ -70,22 +76,26 @@
 		.evtInfoBox ul {margin-bottom:30px}
         .evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
         .evtInfoBox span {color:#ff6d6d;vertical-align:bottom}
+
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky" id="QuickMenu">
             <a href="#event">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/2180_sky.jpg" title="" />    
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/2180_sky.png" title="구매하기 바로가기" />    
             </a>        
         </div>
 
-
-        <div class="evtCtnsBox evtTop">
-			<span><img src="https://static.willbes.net/public/images/promotion/2021/04/2180_top_txt.png" title="한덕현T-PASS" /></span>			
+        <div class="evtCtnsBox evtTop" data-aos="fade-down">
+			<span>
+                <a href="#event">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/02/2180_apply.gif" title="합격하기 이벤트" />
+                </a>
+            </span>			
 		</div>		
 
-		<div class="evtCtnsBox evt01">
+		<div class="evtCtnsBox evt01" data-aos="fade-up">
 			<img src="https://static.willbes.net/public/images/promotion/2021/04/2180_01_01.jpg" title="합격전략 공개" />
             <div class="tabContaier">
 				<ul>
@@ -120,9 +130,20 @@
 			</div>
 		</div>
 
-		<div class="evtCtnsBox evt02">
-			<img src="https://static.willbes.net/public/images/promotion/2021/04/2180_02.jpg"  title="갓덕현이 모두 해결해드립니다." />			
-		</div>
+        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
+            <div class="section_pro">                
+                <div class="box_pro">
+                    <ul class="slide_pro">
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/02/2180_cmt1.png" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/02/2180_cmt2.png" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/02/2180_cmt3.png" alt=""/></li>  
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/02/2180_cmt4.png" alt=""/></li>  
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/02/2180_cmt5.png" alt=""/></li>  
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/02/2180_cmt6.png" alt=""/></li>                            
+                    </ul>
+                </div>  
+            </div>
+        </div>
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
@@ -149,27 +170,29 @@
             </div>
         </div>   
 
-        <div class="evtCtnsBox evt03" id="event">
+        <div class="evtCtnsBox evt03" id="event" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2180_03.jpg" title="수험생들이 선택하고 인정한 영어정복 노하우!" />
-                <a href="javascript:go_PassLecture('180928');" title="전과목" style="position: absolute;left: 7.45%;top: 86.94%;width:12.86%;height: 6.25%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('186803');" title="실전1" style="position: absolute;left: 31.45%;top: 86.94%;width:12.86%;height: 6.25%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('190505');" title="실전2" style="position: absolute;left: 55.45%;top: 86.94%;width:12.86%;height: 6.25%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('185702');" title="새벽모고" style="position: absolute;left: 79.70%;top: 86.94%;width:12.86%;height: 6.25%;z-index: 2;"></a>                
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/2180_03.jpg" title="수험생들이 선택하고 인정한 영어정복 노하우!" />
+                <a href="javascript:go_PassLecture('190916');" title="22~23 전과정 티패스" style="position: absolute;left: 16.45%;top: 55.34%;width: 20.56%;height: 4.25%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('180928');" title="22 전과정 티패스" style="position: absolute;left: 16.45%;top: 77.44%;width: 20.56%;height: 4.25%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('186803');" title="실전1 티패스" style="position: absolute;left: 62.45%;top: 54.34%;width: 20.56%;height: 4.25%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('190505');" title="실전2 티패스" style="position: absolute;left: 62.45%;top: 72.14%;width: 20.56%;height: 4.25%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('185702');" title="새벽모의고사 티패스" style="position: absolute;left: 62.45%;top: 90.14%;width: 20.56%;height: 4.25%;z-index: 2;"></a>           
             </div>
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
-                <a href="#careful">이용안내확인하기 ↓</a>               
+                <a href="#notice">이용안내확인하기 ↓</a>               
             </div>    
         </div>
         
-        <div class="evtCtnsBox evtInfo" id="careful">
+        <div class="evtCtnsBox evtInfo" id="notice" data-aos="fade-up">
             <div class="evtInfoBox">
                 <h4 class="NGEB">이용안내 및 유의사항</h4>
                 <div class="infoTit"><strong>상품구성</strong></div>
                 <ul>
                     <li>제공과정<br>
-                        - 전 과정 T-PASS : 2021~2022 한덕현 영어 9급 지방직 대비 전 과정 (반반/똑똑영어 다시보기 + 새벽모의고사 포함)<br>
+                        - 22~23 전과정 T-PASS : 2023년 6월까지 진행되는 한덕현 영어 신규강좌 전 과정 (반반/똑똑영어 다시보기 + 새벽모의고사 포함)<br>
+                        - 22 전과정 T-PASS : 2022년 6월까지 진행되는 한덕현 영어 신규강좌 전 과정 (반반/똑똑영어 다시보기 + 새벽모의고사 포함)<br>
                         - 실전Ⅰ T-PASS : 2022 대비로 진행된 한덕현 실전464, 스나이퍼32, 새벽모의고사 (2021.7월~2022.6월) 과정 제공<br>
                         - 실전Ⅱ T-PASS : 2022 대비로 진행된 한덕현 실전464, 독해기적, 스나이퍼32, 아작내기 특강, 새벽모의고사 (2021.7월~2022.6월) 과정 제공<br>
                         - [지방직 대비] 새벽모의고사 T-PASS : 2022 대비로 진행된 한덕현 영어 새벽실전모의고사 (2021.7월~2022.6월)
@@ -207,8 +230,16 @@
             </div>
         </div>
 	</div>
+
 	<!-- End Container -->
 
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        $(document).ready(function() {
+            AOS.init();
+        });
+    </script>
 
 	<script type="text/javascript">
         /*디데이카운트다운*/
@@ -240,7 +271,25 @@
             }
             var url = '{{ front_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
             location.href = url;
-        }	        
+        }
+
+        /*롤링*/
+        $(document).ready(function() {
+            var BxBook = $('.slide_pro').bxSlider({
+                slideWidth: 310,
+                slideMargin: 40,
+                maxSlides:10,
+                minSlides:1,
+                moveSlides: 1,
+                ticker:true,
+                speed:40000,
+                onSlideAfter: function() {
+                    BxBook.stopAuto();
+                    BxBook.startAuto();
+                }
+            });
+        });
+
 	</script>
 
 	{{-- 프로모션용 스크립트 include --}}

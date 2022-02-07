@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class BasePromotion extends \app\controllers\FrontController
 {
     protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF',
-        '_lms/sys/code', 'dDayF', 'product/lectureF', 'eventsurvey/survey', '_lms/product/base/subject', 'memberF', 'professorHotClipF');
+        '_lms/sys/code', 'dDayF', 'product/lectureF', 'eventsurvey/survey', '_lms/product/base/subject', 'memberF', 'professorHotClipF', 'promotionBoardF');
     protected $helpers = array('download');
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
@@ -786,6 +786,132 @@ class BasePromotion extends \app\controllers\FrontController
             'params' => $params,
             'data' => $data
         ], false);
+    }
+
+    /**
+     * 프로모션용 게시판 리스트 (합격수기+수강후기)
+     * @param array $params
+     */
+    public function listBoardAjax($params = [])
+    {
+        if (empty($params['code']) === true || !is_numeric($params['code'])) {
+           show_alert('잘못된 접근 입니다.', 'back');
+            /*return $this->json_error('잘못된 접근 입니다.');*/
+        }
+        $get_page_params = '';
+
+        if (APP_DEVICE == 'pc') {
+            $paging_count = $this->_paging_count;
+        } else {
+            $paging_count = $this->_paging_count_m;
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'a.PromotionCode' => $params['code']
+                ,'a.IsStatus' => 'Y'
+            ]
+        ];
+
+        $list = [];
+        $total_rows = $this->promotionBoardFModel->listPromotionBoard(true, $arr_condition);
+        $paging = $this->pagination('/promotion/listBoardAjax/code/'.$params['code'].'?' . $get_page_params, $total_rows, $this->_paging_limit, $paging_count, true);
+        if ($total_rows > 0) {
+            $list = $this->promotionBoardFModel->listPromotionBoard(false,$arr_condition, $paging['limit'], $paging['offset']);
+            foreach ($list as $idx => $row) {
+                $list[$idx]['AttachData'] = json_decode($row['AttachData'], true);       //첨부파일
+            }
+        }
+
+        $this->load->view('promotion/board_list_ajax', [
+            'list' => $list,
+            'paging' => $paging,
+        ]);
+    }
+
+    /**
+     * 프로모션용 게시판 등록페이지
+     * @param array $params
+     */
+    public function createPromotionBoard($params = [])
+    {
+        if (empty($params['code']) === true || !is_numeric($params['code'])) {
+            show_alert('잘못된 접근 입니다.', 'back');
+            /*return $this->json_error('잘못된 접근 입니다.');*/
+        }
+
+        $this->load->view('promotion/board_create_layer', [
+            'method' => 'POST'
+            ,'promotion_code' => $params['code']
+        ]);
+    }
+
+    /**
+     * 프로모션용 게시판 저장
+     */
+    public function storePromotionBoard()
+    {
+        $rules = [
+            ['field' => 'promotion_code', 'label' => '프로모션코드', 'rules' => 'trim|required|integer'],
+            /*['field' => 'comment_ui_ccd', 'label' => '이벤트UI식별자', 'rules' => 'trim|required'],
+            ['field' => 'event_comment', 'label' => '댓글', 'rules' => 'trim|required']*/
+        ];
+
+        if (empty($this->session->userdata('mem_idx')) === true) {
+            $this->json_error('로그인 후 이용해주세요.');
+            return;
+        }
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->promotionBoardFModel->addPromotionBoard($this->_reqP(null, false));
+        $this->json_result($result, '등록되었습니다.', $result);
+    }
+
+    /**
+     * 프로모션용 게시판 삭제
+     */
+    public function deletePromotionBoard()
+    {
+        if (empty($this->session->userdata('mem_idx')) === true) {
+            $this->json_error('로그인 후 이용해주세요.');
+            return;
+        }
+
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'idx', 'label' => '게시판식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $idx = $this->_reqP('idx');
+        $arr_condition = [
+            'EQ' => [
+                'RegMemIdx' => $this->session->userdata('mem_idx'),
+                'EpbIdx' => $idx,
+                'IsStatus' => 'Y'
+            ]
+        ];
+        $data = $this->promotionBoardFModel->findPromotionBoard('EpbIdx', $arr_condition);
+
+        if (empty($data) === true) {
+            $this->json_error('조회된 게시물이 없습니다.');
+            return;
+        }
+
+        $result = $this->promotionBoardFModel->deletePromotionBoard($idx);
+
+        if ($result !== true) {
+            $this->json_error('삭제 실패입니다. 관리자에게 문의해주세요.');
+            return;
+        }
+
+        $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
 

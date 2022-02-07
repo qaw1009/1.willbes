@@ -200,6 +200,7 @@
                 <li><a data-toggle="tab" href="#list_comment" class="send_type" data-content-type="2">댓글현황</a></li>
                 <li><a data-toggle="tab" href="#list_member_success" class="send_type" data-content-type="2">합격수기현황</a></li>
                 <li><a data-toggle="tab" href="#list_download" class="send_type">자료다운로드현황(라이브)</a></li>
+                <li><a data-toggle="tab" href="#list_board" class="send_type">게시판</a></li>
             </ul>
         </div>
         <div class="tab-content">
@@ -214,6 +215,9 @@
             </div>
             <div id="list_download" class="form-group tab-pane fade">
                 @include('lms.site.event_lecture.read_live_download')
+            </div>
+            <div id="list_board" class="form-group tab-pane fade">
+                @include('lms.site.event_lecture.read_board')
             </div>
         </div>
     </div>

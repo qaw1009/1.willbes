@@ -673,6 +673,33 @@ class EventLecture extends \app\controllers\BaseController
     }
 
     /**
+     * 이벤트 프로모션 게시판 현황
+     * @param array $params
+     * @return CI_Output
+     */
+    public function listPromotionBoardAjax($params = [])
+    {
+        $count = 0;
+        $list = [];
+        $promotion_code = $params[0];
+
+        if (empty($promotion_code) === false) {
+            $arr_condition = $this->_getPromotionBoardListConditions($promotion_code);
+
+            $count = $this->eventLectureModel->listPromotionBoard(true, $arr_condition);
+            if ($count > 0) {
+                $list = $this->eventLectureModel->listPromotionBoard(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
+            }
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    /**
      * 댓글등록
      */
     public function storeComment()
@@ -1060,6 +1087,120 @@ class EventLecture extends \app\controllers\BaseController
         $this->excel->exportExcel($file_name, $list, $headers);
     }
 
+    /**
+     * 프로모션 게시판 엑셀변환
+     * @param array $params
+     */
+    public function promotionBoardExcel($params = [])
+    {
+        $file_name = '프로모션_게시판_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
+        $headers = ['구분', '아이디', '이름', '제목', '응시지역', '과목', '교수', '평점', '등록일'];
+
+        $promotion_code = $params[0];
+        $arr_condition = $this->_getPromotionBoardListConditions($promotion_code);
+        $list = $this->eventLectureModel->listPromotionBoard('excel', $arr_condition, null, null);
+
+        /*----  다운로드 정보 저장  ----*/
+        $download_query = $this->eventLectureModel->getLastQuery();
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
+            show_alert('로그 저장 중 오류가 발생하였습니다.','back');
+        }
+        /*----  다운로드 정보 저장  ----*/
+
+        // export excel
+        $this->load->library('excel');
+        $this->excel->exportExcel($file_name, $list, $headers);
+    }
+
+    public function deletePromotionBoard($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $epb_idx = $params[0];
+        if (empty($epb_idx) === true) {
+            $result = false;
+        } else {
+            $result = $this->eventLectureModel->promotionBoardDelete($epb_idx);
+        }
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
+    }
+
+    /**
+     * 프로모션 추가신청정보 회원 리스트
+     * @param array $params
+     * @return CI_Output
+     */
+    public function listApplyAjax($params = [])
+    {
+        $count = 0;
+        $list = [];
+        $el_idx = $params[0];
+
+        if (empty($el_idx) === false) {
+            $arr_condition = ['EQ' => ['B.ElIdx' => $el_idx]];
+
+            $count = $this->eventLectureModel->listAllEventApply(true, $arr_condition);
+            if ($count > 0) {
+                $list = $this->eventLectureModel->listAllEventApply(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.EamIdx' => 'desc']);
+            }
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    /**
+     * DP 강좌신청 삭제
+     */
+    public function delDisplayProduct()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'edp_idx', 'label' => '강좌신청 식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventLectureModel->delDisplayProduct($this->_reqP('edp_idx'));
+        $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
+     * 프로모션 추가신청정보 수정
+     */
+    public function updateAddApply()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'eaa_idx', 'label' => '프로모션 추가신청정보식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'person_limit_type', 'label' => '인원제한타입', 'rules' => 'trim|required|in_list[L,N]'],
+            ['field' => 'person_limit', 'label' => '인원수', 'rules' => 'callback_validateRequiredIf[person_limit_type,L]|integer'],
+            ['field' => 'name', 'label' => '신청정보명', 'rules' => 'trim|required'],
+            ['field' => 'apply_start_datm', 'label' => '신청가능 시작일시', 'rules' => 'trim|required'],
+            ['field' => 'apply_end_datm', 'label' => '신청가능 종료일시', 'rules' => 'trim|required'],
+            ['field' => 'register_expire_status', 'label' => '접수상태', 'rules' => 'trim|required|in_list[Y,N]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventLectureModel->modifyAddApply($this->_reqP(null, false));
+        $this->json_result($result, '프로모션 추가신청정보가 정상적으로 수정 되었습니다.', $result);
+    }
+
     public function download()
     {
         $file_path = $this->_reqG('path');
@@ -1067,6 +1208,7 @@ class EventLecture extends \app\controllers\BaseController
 
         public_download($file_path, $file_name);
     }
+
 
     /**
      * 검색 조건 셋팅
@@ -1281,74 +1423,22 @@ class EventLecture extends \app\controllers\BaseController
         return $input_data;
     }
 
-    /**
-     * 프로모션 추가신청정보 회원 리스트
-     * @param array $params
-     * @return CI_Output
-     */
-    public function listApplyAjax($params = [])
+    private function _getPromotionBoardListConditions($promotion_code)
     {
-        $count = 0;
-        $list = [];
-        $el_idx = $params[0];
-
-        if (empty($el_idx) === false) {
-            $arr_condition = ['EQ' => ['B.ElIdx' => $el_idx]];
-
-            $count = $this->eventLectureModel->listAllEventApply(true, $arr_condition);
-            if ($count > 0) {
-                $list = $this->eventLectureModel->listAllEventApply(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.EamIdx' => 'desc']);
-            }
-        }
-
-        return $this->response([
-            'recordsTotal' => $count,
-            'recordsFiltered' => $count,
-            'data' => $list,
-        ]);
-    }
-
-    /**
-     * DP 강좌신청 삭제
-     */
-    public function delDisplayProduct()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
-            ['field' => 'edp_idx', 'label' => '강좌신청 식별자', 'rules' => 'trim|required|integer']
+        $arr_condition = [
+            'EQ' => [
+                'a.PromotionCode' => $promotion_code,
+                'a.BoardType' => $this->_reqP('search_board_type'),
+                'a.IsStatus' => 'Y'
+            ],
+            'ORG1' => [
+                'LKB' => [
+                    'b.MemName' => $this->_reqP('search_board_value'),
+                    'b.MemId' => $this->_reqP('search_board_value')
+                ]
+            ]
         ];
 
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $result = $this->eventLectureModel->delDisplayProduct($this->_reqP('edp_idx'));
-        $this->json_result($result, '삭제 되었습니다.', $result);
+        return $arr_condition;
     }
-
-    /**
-     * 프로모션 추가신청정보 수정
-     */
-    public function updateAddApply()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'eaa_idx', 'label' => '프로모션 추가신청정보식별자', 'rules' => 'trim|required|integer'],
-            ['field' => 'person_limit_type', 'label' => '인원제한타입', 'rules' => 'trim|required|in_list[L,N]'],
-            ['field' => 'person_limit', 'label' => '인원수', 'rules' => 'callback_validateRequiredIf[person_limit_type,L]|integer'],
-            ['field' => 'name', 'label' => '신청정보명', 'rules' => 'trim|required'],
-            ['field' => 'apply_start_datm', 'label' => '신청가능 시작일시', 'rules' => 'trim|required'],
-            ['field' => 'apply_end_datm', 'label' => '신청가능 종료일시', 'rules' => 'trim|required'],
-            ['field' => 'register_expire_status', 'label' => '접수상태', 'rules' => 'trim|required|in_list[Y,N]']
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $result = $this->eventLectureModel->modifyAddApply($this->_reqP(null, false));
-        $this->json_result($result, '프로모션 추가신청정보가 정상적으로 수정 되었습니다.', $result);
-    }
-
-
 }

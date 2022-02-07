@@ -149,7 +149,7 @@
         }, showAlertError, false, 'GET', 'html');
     }
 
-    $("div.Paging a").on("click", function() {
+    $(".LeclistTable > div.Paging a").on("click", function() {
         var link, temp_params, params;
         var num = 1;
         var cate_code = $review_search_form.find('select[name="list_cate_code"]').val();

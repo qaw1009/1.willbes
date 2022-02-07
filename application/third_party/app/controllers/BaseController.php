@@ -284,4 +284,31 @@ abstract class BaseController extends \CI_Controller
         $query_log = new \LogQueryHook();
         $query_log->logQueries();        
     }
+
+    /**
+     * 중복요청 방지
+     * @param bool $is_dsrp [dsrp토큰사용여부]
+     * @param null|int $ttl [중복체크세션지속시간(초)]
+     * @return mixed
+     */
+    public function _prevent_duplicate_submit_request($is_dsrp = true, $ttl = null)
+    {
+        $is_proc_running = $this->session->tempdata('is_proc_running');
+        $chk_token = $is_dsrp === true ? get_var($this->_reqP(dsrp_token_name()), true) : true;
+        $token_ttl = get_var($ttl, (is_bool($chk_token) === true ? 5 : 300));
+        $err_msg = '이전 요청 처리 중 입니다.';
+        $err_code = 429;
+
+        if ($is_proc_running === $chk_token) {
+            if ($this->input->is_ajax_request() === true) {
+                return $this->json_error($err_msg, $err_code);
+            } else {
+                show_error($err_msg, $err_code);
+            }
+        } else {
+            $this->session->set_tempdata('is_proc_running', $chk_token, $token_ttl);
+        }
+
+        return true;
+    }
 }

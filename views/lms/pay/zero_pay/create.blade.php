@@ -13,6 +13,7 @@
             {!! form_errors() !!}
             <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
+                {!! dsrp_field() !!}
                 {!! method_field('POST') !!}
                 <div class="row">
                     <div class="col-md-12">
@@ -282,7 +283,7 @@
                         notifyAlert('success', '알림', ret.ret_msg);
                         goList();
                     }
-                }, showValidateError, addValidate, false, 'alert');
+                }, showValidateDsrpError, addValidate, false, 'alert');
             });
 
             var addValidate = function() {

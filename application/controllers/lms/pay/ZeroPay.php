@@ -199,6 +199,11 @@ class ZeroPay extends BaseOrder
      */
     public function store()
     {
+        // 중복요청 방지
+        if ($this->_prevent_duplicate_submit_request() !== true) {
+            return null;
+        }
+
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],

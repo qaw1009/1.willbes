@@ -8,6 +8,10 @@
     .evtCtnsBox img {width:100%; max-width:720px;}
     /*.evtCtnsBox a:hover {box-shadow:0 10px 10px rgba(0,0,0,.5);}*/
 
+    .dday {font-size:24px !important; padding:10px; background:#f5f5f5; color:#000; text-align:center; letter-spacing:-1px}
+    .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
+    .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#000; font-size:14px !important;}
+
     .evtCtnsBox .check {font-size:16px; text-align:center; line-height:1.5;; margin:0 20px;font-weight:bold;}
     .evtCtnsBox .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
     .evtCtnsBox .check a {display:block; width:60%; padding:5px 20px; color:#fff; background:#000; margin:20px auto 0; border-radius:20px}
@@ -40,6 +44,10 @@
 
 
 <div id="Container" class="Container NSK c_both"> 
+    <div class="evtCtnsBox dday NSK-Thin">
+        <strong class="NSK-Black">판매종료까지 <span id="ddayCountText"></span> </strong>
+    </div>
+
     <div class="evtCtnsBox evt00">
         <img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_00.jpg" alt="경찰학원부분 1위" >        
     </div>
@@ -147,5 +155,13 @@
         var url = '{{ front_url('/periodPackage/show/cate/3001/pack/648001/prod-code/') }}' + code;
         location.href = url;
     }
+
+    /*디데이카운트다운*/
+    $(document).ready(function() {
+        dDayCountDown('{{$arr_promotion_params['edate']}}', '{{$arr_promotion_params['etime'] or "00:00"}}', 'txt');
+    });
 </script> 
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

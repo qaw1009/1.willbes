@@ -24,8 +24,9 @@
     </div>
 </div>
 
-{!! $paging['pagination'] !!}
-
+<div class="imgTablePage">
+    {!! $paging['pagination'] !!}
+</div>
 <script>
     function delRegister(em_idx){
         var _url = '{{ site_url("/event/deleteRegister") }}';
@@ -45,7 +46,7 @@
         }
     }
 
-    $("div.Paging a").on("click", function() {
+    $(".imgTablePage > div.Paging a").on("click", function() {
         var link, temp_params, params;
         var num = 1;
 

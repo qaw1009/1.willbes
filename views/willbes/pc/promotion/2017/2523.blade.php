@@ -87,246 +87,14 @@
 
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2523_01.jpg"/>
-            <a href="#none" onclick="openWin('Layerprof'),openWin('postWrite')" class="NSK-Black">합격수기&수강후기 등록하기</a>
+            <a href="javascript:void(0);" onclick="createPromotionBoard(); return false;" class="NSK-Black">합격수기&수강후기 등록하기</a>
 
-            <!--팝업 S-->
-            <div id="postWrite" class="willbes-Layer-Board">
-                <a class="closeBtn" href="#none" onclick="closeWin('Layerprof'),closeWin('postWrite')">
-                    <img src="{{ img_url('prof/close.png') }}">
-                </a>
-
-
-                <div class="Layer-Cont">                   
-                    <div class="psotSort">
-                        <input type="radio" id="sortA"><label for="sortA">합격수기</label>
-                        <input type="radio" id="sortB"><label for="sortB">수강후기</label>
-                    </div>
-                    
-                    <div class="willbes-Leclist">
-                        <div class="LeclistTable">
-                            {{-- 합격수기 --}}
-                            <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
-                                <colgroup>
-                                    <col style="width: 100px;">
-                                    <col>
-                                    <col style="width: 100px;">
-                                    <col>
-                                </colgroup>
-                                <tbody>
-                                    <tr>
-                                        <th>응시지역 <span>*</span></th>
-                                        <td>
-                                            <select id="" name="" title="응시지역" class="seleAcad">
-                                                <option selected="selected">응시지역</option>
-                                                <option value="서울">서울</option>
-                                                <option value="경기">경기</option>
-                                                <option value="인천">인천</option>
-                                            </select>
-                                        </td>
-                                        <th>합격과목 <span>*</span></th>
-                                        <td>
-                                            <select id="" name="" title="과목선택" class="seleAcad">
-                                                <option selected="selected">과목선택</option>
-                                                <option value="가정">가정</option>
-                                                <option value="건설">건설</option>
-                                                <option value="관광">관광</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>제목 <span>*</span></th>
-                                        <td colspan="3">
-                                            <input type="text" id="" name="">
-                                        </td>
-                                    </tr> 
-                                    <tr>
-                                        <th>내용 <span>*</span></th>
-                                        <td colspan="3">
-                                            <textarea id="psot_comment" name="psot_comment" rows="5" placeholder="500자 이상 입력해 주세요.  &#13;&#10;합격수기와 관련없는 내용은 삭제될 수 있습니다.  &#13;&#10;파일첨부(합격인증)는 필수사항이 아닙니다."></textarea>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>첨부파일<br>(합격인증)</th>
-                                        <td colspan="3">
-                                            <ul class="attach">
-                                                <li><input type="file" size="3"></li>                                                                                           
-                                                <li>
-                                                    • 첨부파일 총합 최대 5MB까지 등록 가능합니다.<br>
-                                                    • hwp, doc, pdf, jpg, gif, png, zip만 등록 가능합니다.
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>                                  
-                                </tbody>
-                            </table>
-
-                            {{-- 수강후기 --}}
-                            <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
-                                <colgroup>
-                                    <col style="width: 100px;">
-                                    <col>
-                                    <col style="width: 100px;">
-                                    <col>
-                                    <col style="width: 100px;">
-                                    <col>
-                                </colgroup>
-                                <tbody>
-                                    <tr>
-                                        <th>수강과목 <span>*</span></th>
-                                        <td>
-                                            <select id="" name="" title="과목선택" class="seleAcad">
-                                                <option selected="selected">과목선택</option>
-                                                <option value="가정">교육학</option>
-                                                <option value="건설">유아</option>
-                                                <option value="관광">초등</option>
-                                            </select>
-                                        </td>
-                                        <th>담당교수 <span>*</span></th>
-                                        <td>
-                                            <select id="" name="" title="담당교수" class="seleAcad">
-                                                <option value="민정선">민정선</option>
-                                                <option value="배재민">배재민</option>
-                                                <option value="이경범">이경범</option>
-                                            </select>
-                                        </td>
-                                        
-                                        <th>평점 <span>*</span></th>
-                                        <td>
-                                            <select id="" name="" title="평점" class="seleAcad">
-                                                <option value="5" selected="selected">5</option>
-                                                <option value="4">4</option>
-                                                <option value="3">3</option>
-                                                <option value="2">2</option>
-                                                <option value="1">1</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>제목 <span>*</span></th>
-                                        <td colspan="5">
-                                            <input type="text" id="" name="">
-                                        </td>
-                                    </tr> 
-                                    <tr>
-                                        <th>내용 <span>*</span></th>
-                                        <td colspan="5">
-                                            <textarea id="psot_comment" name="psot_comment" rows="5" placeholder="100자 이상 입력해 주세요.  &#13;&#10;수강후기와 관련없는 내용은 삭제될 수 있습니다."></textarea>
-                                        </td>
-                                    </tr>                                  
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-
-                    <div class="info">
-                        <ul>
-                            <li>개인정보 수집 이용 목적<br>
-                            - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대 - 이벤트 참여에 따른 강의 수강자 목록에 활용</li>
-                            <li>개인정보 수집 항목<br>
-                            - 신청인의 이름</li>
-                            <li>개인정보 이용기간 및 보유기간<br>
-                            - 본 수집, 활용목적 달성 후 바로 파기</li>
-                            <li>개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
-                            - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다. </li>
-                        </ul>
-                        <label><input type="checkbox"> 윌비스에 개인정보 제공 동의하기(필수)</label>
-                    </div>
-
-                    <div class="btn"><a href="#none">등록하기</a></div>
-
-                </div>
-            </div>
-            <div id="Layerprof" class="willbes-Layer-Black"></div>
-            <!--팝업 E-->
+            {{-- 등록 팝업 --}}
+            <div id="create_board_box"></div>
         </div>
-        
-        <div class="evtCtnsBox evt02" data-aos="fade-up">
-            <div class="postWrap">
-                <div class="postList">
-                    <h4>
-                        <strong>합격수기</strong>
-                        제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다. 
-                        <a href="#none">삭제</a>
-                    </h4>
-                    <div class="postSub">
-                        <div><span>서울</span><span>유아</span></div>
-                        <div><span>lil****</span><span>2022.02.03</span></div>
-                    </div>
-                    <div class="postContent">
-                        저의 합격수기가 임용을 시작하시는 선생님들, 그리고 다시 시작하시는 선생님들에게 도움이 되었으면 합니다.<br>
-                        먼저, 합격수기를 쓰기 전에 제가 공부하면서 힘이 되었던 글들입니다.<br>
-                        - 지금 내가 할 수 있는 일은 함부로 살지 않는 일, 그래, 함부로 살지 말자, 할 수 있는데 안하지는 말자. 이것이 내가 삶에게 보일 수 있는 최고의 적극성이다.<br>
-                        - 다시 시작하는 마음 결국은 다 된다.<br>
-                        <br>
-                        ▶ 공부기간<br>
-                        (2017 - 2020)<br>
-                        2017 올인 민쌤 연간 패키지 (1차불합)<br>
-                        2018 학업병행 민쌤 연간패키지 (최종 불합)<br>
-                        2019 올인 / 추시 있던 해에는 독학했습니다. (추시 1차불합 / 정시 최종불합)<br>
-                        2020 일병행(누리보조) 하반기부터 공부시작 / 민쌤 연간 패키지 (최종합격)<br>
-                    </div>
-                </div>
 
-                <div class="postList">
-                    <h4>
-                        <strong>수강후기</strong>
-                        제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다.
-                    </h4>
-                    <div class="postSub">
-                        <div><span>유아</span><span>민정선</span><span>5점</span></div>
-                        <div><span>lil****</span><span>2022.02.03</span></div>
-                    </div>
-                    <div class="postContent">
-                        안녕하세요. 올해 초수 수험생입니다.<br>
-                        하나씩 천천히 꼼꼼하게 설명해 주시고, 설명을 들으면서 공부했었습니다. !!<br>
-                        이번 특강은 넓게 펼쳐저 있었던 지식들을.. 한 곳으로 모아 주는 느낌적인 느낌?.. 인것 같습니다.<br>
-                        남은 준비 기간 동안 열심히 따라가며 합격수기 남기러 오도록 하겠습니다!!<br>
-                        감사합니다.
-                    </div>
-                </div>
-
-                <div class="postList">
-                    <h4>
-                        <strong>합격수기</strong>
-                        제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다. 제목이 출력됩니다. 
-                    </h4>
-                    <div class="postSub">
-                        <div><span>서울</span><span>유아</span></div>
-                        <div><span>lil****</span><span>2022.02.03</span></div>
-                    </div>
-                    <div class="postContent">
-                        저의 합격수기가 임용을 시작하시는 선생님들, 그리고 다시 시작하시는 선생님들에게 도움이 되었으면 합니다.<br>
-                        먼저, 합격수기를 쓰기 전에 제가 공부하면서 힘이 되었던 글들입니다.<br>
-                        - 지금 내가 할 수 있는 일은 함부로 살지 않는 일, 그래, 함부로 살지 말자, 할 수 있는데 안하지는 말자. 이것이 내가 삶에게 보일 수 있는 최고의 적극성이다.<br>
-                        - 다시 시작하는 마음 결국은 다 된다.<br>
-                        <br>
-                        ▶ 공부기간<br>
-                        (2017 - 2020)<br>
-                        2017 올인 민쌤 연간 패키지 (1차불합)<br>
-                        2018 학업병행 민쌤 연간패키지 (최종 불합)<br>
-                        2019 올인 / 추시 있던 해에는 독학했습니다. (추시 1차불합 / 정시 최종불합)<br>
-                        2020 일병행(누리보조) 하반기부터 공부시작 / 민쌤 연간 패키지 (최종합격)<br>
-                    </div>
-                </div>
-            </div>
-            <div class="Paging">
-                <ul>
-                    <li class="Prev"><a href="#none"><img src="/public/img/willbes/paging/paging_prev.png"> </a></li>
-                    <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                    <li><a href="#none">2</a><span class="row-line">|</span></li>
-                    <li><a href="#none">3</a><span class="row-line">|</span></li>
-                    <li><a href="#none">4</a><span class="row-line">|</span></li>
-                    <li><a href="#none">5</a><span class="row-line">|</span></li>
-                    <li><a href="#none">6</a><span class="row-line">|</span></li>
-                    <li><a href="#none">7</a><span class="row-line">|</span></li>
-                    <li><a href="#none">8</a><span class="row-line">|</span></li>
-                    <li><a href="#none">9</a><span class="row-line">|</span></li>
-                    <li><a href="#none">10</a></li>
-                    <li class="Next"><a href="#none"><img src="/public/img/willbes/paging/paging_next.png"> </a></li>
-                </ul>
-            </div>
-        </div>
+        {{-- list --}}
+        <div id="review_list"></div>
 
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">
@@ -347,9 +115,33 @@
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      $(document).ready(function(){
-        AOS.init();
-      });
+    <script type="text/javascript">
+        $(document).ready(function(){
+            AOS.init();
+            fnReviewList(1);
+        });
+
+        function fnReviewList(page) {
+            var _url = '{{ front_url('/promotion/listBoardAjax/code/'.$arr_base['promotion_code']) }}';
+            var data = {
+                'page' : page
+            };
+            sendAjax(_url, data, function(ret) {
+                if (ret) {
+                    $("#review_list").html(ret);
+                }
+            }, showAlertError, false, 'GET', 'html');
+        }
+
+        function createPromotionBoard() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.', 'Y') !!}
+            var ele_id =  'create_board_box';
+            var data = '';
+            var _url = '{{ front_url('/promotion/createPromotionBoard/code/'.$arr_base['promotion_code']) }}';
+            sendAjax(_url, data, function(ret) {
+                /*$('#' + ele_id).html(ret).show();*/
+                $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+            }, showAlertError, false, 'GET', 'html');
+        }
     </script>
 @stop

@@ -28,7 +28,9 @@ class EventLectureModel extends WB_Model
         'event_add_apply_member' => 'lms_event_add_apply_member',
         'event_display_product' => 'lms_event_display_product',
         'product_lecture' => 'lms_product_lecture',
-        'event_download_log' => 'lms_event_download_log'
+        'event_download_log' => 'lms_event_download_log',
+        'event_promotion_board' => 'lms_event_promotion_board',
+        'event_promotion_board_file' => 'lms_event_promotion_board_file'
     ];
 
     public $_groupCcd = [
@@ -1239,6 +1241,84 @@ class EventLectureModel extends WB_Model
         // 쿼리 실행
         $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 프로모션 게시판 리스트
+     * @param bool $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @return mixed
+     */
+    public function listPromotionBoard($is_count = true, $arr_condition=[], $limit = null, $offset = null)
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = "
+                a.EpbIdx,a.PromotionCode,a.BoardType
+                ,a.Title,CONCAT(LEFT(a.Title, 30), IF (CHAR_LENGTH(a.Title) > 30, '...', '') ) AS ReTitle
+                ,a.Content,a.AreaName,a.SubjectName,a.ProfName,a.Score
+                ,a.RegDatm,a.RegMemIdx,b.MemId,b.MemName
+                ,IF(a.BoardType='1','합격수기','수강후기') AS BoardTypeName
+                ,IFNULL((
+                    SELECT CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
+                        'FileIdx', EpbfIdx,
+                        'FilePath', FileFullPath,
+                        'FileName', FileName,
+                        'RealName', FileRealName
+                    )), ']') AS AttachData
+                    FROM {$this->_table['event_promotion_board_file']} AS f
+                    WHERE f.EpbIdx = a.EpbIdx AND f.IsStatus = 'Y'
+                ),'N') AS AttachData
+            ";
+
+            if ($is_count == 'excel') {
+                $column = "IF(a.BoardType='1','합격수기','수강후기') AS BoardTypeName, b.MemId, b.MemName, a.Title, a.AreaName,a.SubjectName,a.ProfName,a.Score, a.RegDatm";
+            }
+
+            $order_by = ['a.EpbIdx' => 'desc'];
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $from = "
+            from {$this->_table['event_promotion_board']} as a
+            inner join {$this->_table['member']} as b on a.RegMemIdx = b.MemIdx
+        ";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 프로모션 게시판 삭제
+     * @param $epb_idx
+     * @return array|bool
+     */
+    public function promotionBoardDelete($epb_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+
+            $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $admin_idx)->where('EpbIdx', $epb_idx);
+            if ($this->_conn->update($this->_table['event_promotion_board']) === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
     }
 
     /**

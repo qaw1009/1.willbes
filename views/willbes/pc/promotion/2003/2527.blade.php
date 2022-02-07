@@ -33,7 +33,7 @@
         .wb_05 {background:url(https://static.willbes.net/public/images/promotion/2022/02/2527_05_bg.jpg) no-repeat center top;}
         .wb_05 .attend {position:absolute; top:490px; left:50%; width:640px; margin-left:-330px; z-index:1; display: flex; justify-content: space-between; flex-wrap: wrap;}
         .wb_05 .attend span {background:url(https://static.willbes.net/public/images/promotion/2022/02/2527_ch.png) no-repeat center top; width:128px; height:128px;
-        font-size:20px; padding-top:13px; font-family: Impact,  "Noto Sans KR Regular", Haettenschweiler, 'Arial Narrow Bold', sans-serif; color:##4f4f4f; margin-bottom:3px}
+        font-size:20px; padding-top:13px; font-family: Impact,  "Noto Sans KR Regular", Haettenschweiler, 'Arial Narrow Bold', sans-serif; color:#4f4f4f; margin-bottom:3px}
         .wb_05 .attend span.end {background-image:url(https://static.willbes.net/public/images/promotion/2022/02/2527_ch_off.png); font-size:0}
 
         /*유의사항*/

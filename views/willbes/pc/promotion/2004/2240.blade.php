@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+        .evtCtnsBox .wrap a {border:1px solid #000}
 
         /************************************************************/   
         
@@ -195,18 +195,13 @@
             </div>
 
             <div id="tab01s" class="wrap">            
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2240_09_cts1.png" />
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU67Jew6rCE" title="9급 연간 패스" target="_blank" style="position: absolute; left: 9.9%; top: 33.26%; width: 38.27%; height: 8.7%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3046&campus_ccd=605001&search_text=UHJvZE5hbWU67Jew6rCE" title="9급 세무 연간 패스" target="_blank" style="position: absolute; left: 51.5%; top: 33.26%; width: 38.27%; height: 8.7%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6MuqwnOyblA%3D%3D" title="9급 일행 2개월 패스" target="_blank" style="position: absolute; left: 9.9%; top: 80.65%; width: 38.27%; height: 8.7%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" title="9급 세무 2개월 패스" target="_blank" style="position: absolute; left: 51.5%; top: 80.65%; width: 38.27%; height: 8.7%; z-index: 2;"></a>
-
-
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6" target="_blank" style="position: absolute; left: 22.86%; top: 81.15%; width: 54.29%; height: 10.38%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/2240_09_cts1.jpg" />
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6MuqwnOyblA%3D%3D" title="9급 일행 2개월 패스" target="_blank" style="position: absolute; left: 10%; top: 65.38%; width: 38.88%; height: 15.96%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" title="9급 세무 2개월 패스" target="_blank" style="position: absolute; left: 50.61%; top: 65.38%; width: 38.88%; height: 15.96%; z-index: 2;"></a>
             </div> 
 
             <div id="tab02s" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2240_09_cts2.jpg" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/2240_09_cts2.jpg" />
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="_blank" style="position: absolute; left: 18.37%; top: 71.73%; width: 61.22%; height: 15.58%; z-index: 2;"></a>
             </div>
         </section>  

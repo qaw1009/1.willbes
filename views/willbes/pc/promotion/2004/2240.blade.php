@@ -200,9 +200,6 @@
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3046&campus_ccd=605001&search_text=UHJvZE5hbWU67Jew6rCE" title="9급 세무 연간 패스" target="_blank" style="position: absolute; left: 51.5%; top: 33.26%; width: 38.27%; height: 8.7%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6MuqwnOyblA%3D%3D" title="9급 일행 2개월 패스" target="_blank" style="position: absolute; left: 9.9%; top: 80.65%; width: 38.27%; height: 8.7%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" title="9급 세무 2개월 패스" target="_blank" style="position: absolute; left: 51.5%; top: 80.65%; width: 38.27%; height: 8.7%; z-index: 2;"></a>
-
-
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6" target="_blank" style="position: absolute; left: 22.86%; top: 81.15%; width: 54.29%; height: 10.38%; z-index: 2;"></a>
             </div> 
 
             <div id="tab02s" class="wrap">

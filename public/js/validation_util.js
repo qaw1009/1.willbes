@@ -258,3 +258,41 @@ function setValidateHasError(key)
         _input.closest('.item').addClass('has-error');
     }
 }
+
+/**
+ * validation 에러 메시지 alert and 중복요청 방지 처리
+ * @param result validation result
+ * @param status http code
+ * @param error_view unused
+ * @returns {boolean}
+ */
+function showValidateDsrpError(result, status, error_view)
+{
+    var reset_dsrp = true;
+    var err_msg = '';
+
+    if (status === 422) { // validation error (Unprocessable Entity)
+        err_msg = result[Object.keys(result)[0]] || '필수 파라미터 오류입니다.';
+    } else {
+        err_msg = result.ret_msg || '';
+
+        if (err_msg === '') {
+            if (status === 401) {  // 권한 없음 || 미로그인
+                err_msg = '권한이 없습니다.';
+            } else if (status === 403) {
+                err_msg = '토큰 정보가 올바르지 않습니다.';
+            }
+        }
+
+        if (status === 429) {   // 중복요청
+            reset_dsrp = false;
+        }
+    }
+
+    if (reset_dsrp === true) {
+        $('input[name="_dsrp_token"]').val(new Date().getTime());   // 토큰값 refresh (13자리)
+    }
+
+    alert(err_msg);
+    return false;
+}

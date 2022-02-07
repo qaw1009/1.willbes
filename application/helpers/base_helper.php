@@ -833,3 +833,36 @@ if (!function_exists('make_image_tag')) {
         return $data;
     }
 }
+
+if (!function_exists('dsrp_field')) {
+    /**
+     * get drsp token input html (duplicate submit request prevent)
+     * @return string
+     */
+    function dsrp_field()
+    {
+        return form_hidden(dsrp_token_name(), dsrp_token());
+    }
+}
+
+if (!function_exists('dsrp_token')) {
+    /**
+     * get drsp token value (duplicate submit request prevent, 13자리)
+     * @return string
+     */
+    function dsrp_token()
+    {
+        return time() . '' . str_pad(random_int(0, 999), 3, '0', STR_PAD_LEFT);
+    }
+}
+
+if (!function_exists('dsrp_token_name')) {
+    /**
+     * get drsp token name (duplicate submit request prevent)
+     * @return string
+     */
+    function dsrp_token_name()
+    {
+        return '_dsrp_token';
+    }
+}

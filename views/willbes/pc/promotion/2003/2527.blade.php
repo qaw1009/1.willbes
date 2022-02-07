@@ -96,7 +96,7 @@
                             @endforeach
                         @endif
                     </div>
-                    <a href="javascript:void(0);" title="신청하기" style="position: absolute;left: 23.75%;top: 74.51%;width: 52.2%;height: 11.32%;z-index: 2;"></a>
+                    <a href="javascript:void(0);" onclick="fn_add_apply_submit(); return false;" title="신청하기" style="position: absolute;left: 23.75%;top: 74.51%;width: 52.2%;height: 11.32%;z-index: 2;"></a>
                 </div>           
             </div>
         </form>

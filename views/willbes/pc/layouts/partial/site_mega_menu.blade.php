@@ -239,6 +239,7 @@
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50429?subject_idx=1220')}}">장사원</a>
                         <span>[생물]</span>
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50429?subject_idx=1222')}}">장사원</a>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51359?subject_idx=1222')}}">강치욱</a>
                     </li>
                     <li>
                         <span>[농촌지도론]</span>

@@ -19,8 +19,18 @@ class BtobAdmin extends \app\controllers\BaseController
         // 제휴사 목록
         $arr_btob_idx = $this->btobModel->getCompanyArray();
 
+        // 제휴사별 지역/지점 목록
+        $arr_branch_ccd = $this->btobCodeModel->getAreaBranchCcd(null);
+        $arr_area_ccd = array_data_pluck($arr_branch_ccd, ['BtobIdx', 'AreaCcdName'], 'AreaCcd');
+
+        // 제휴사권한 목록
+        $arr_role = $this->btobRoleModel->getRoleArray();
+
         $this->load->view('sys/btob/admin/index', [
-            'arr_btob_idx' => $arr_btob_idx
+            'arr_btob_idx' => $arr_btob_idx,
+            'arr_area_ccd' => $arr_area_ccd,
+            'arr_branch_ccd' => $arr_branch_ccd,
+            'arr_role' => $arr_role
         ]);
     }
 
@@ -33,6 +43,9 @@ class BtobAdmin extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'A.BtobIdx' => $this->_reqP('search_btob_idx'),
+                'A.AdminAreaCcd' => $this->_reqP('search_admin_area_ccd'),
+                'A.AdminBranchCcd' => $this->_reqP('search_admin_branch_ccd'),
+                'A.RoleIdx' => $this->_reqP('search_role_idx'),
                 'A.IsUse' => $this->_reqP('search_is_use')
             ],
             'ORG' => [

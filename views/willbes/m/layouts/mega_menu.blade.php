@@ -243,6 +243,7 @@
                 <li><span>축산직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51150?subject_idx=2115') }}">윤용범</a></li>
                 <li><span>기계직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51148?subject_idx=1216') }}">윤황현</a></li>
                 <li><span>조경직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51153?subject_idx=2120') }}">이윤주</a></li>
+                <li><span>생물</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51359?subject_idx=1222') }}">강치욱</a></li>
                 <li><span>전산직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51162?subject_idx=1169') }}">곽후근</a></li>
                 <li><span>환경공학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51163?subject_idx=2129') }}">신영조</a></li>
                 <li><span>화학</span>

@@ -30,6 +30,24 @@
                     </div>
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-5 form-inline">
+                        <select class="form-control" id="search_admin_area_ccd" name="search_admin_area_ccd" title="지역">
+                            <option value="">지역</option>
+                            @foreach($arr_area_ccd as $key => $val)
+                                <option value="{{ $key }}" class="{{ str_first_pos_before($val, '::') }}">{{ str_first_pos_after($val, '::') }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control" id="search_admin_branch_ccd" name="search_admin_branch_ccd" title="지점">
+                            <option value="">지점</option>
+                            @foreach($arr_branch_ccd as $row)
+                                <option value="{{ $row['BranchCcd'] }}" class="{{ $row['AreaCcd'] }}">{{ $row['BranchCcdName'] }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control" id="search_role_idx" name="search_role_idx" title="권한유형">
+                            <option value="">권한유형</option>
+                            @foreach($arr_role as $row)
+                                <option value="{{ $row['RoleIdx'] }}" class="{{ $row['BtobIdx'] }}">{{ $row['RoleName'] }}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
@@ -73,6 +91,11 @@
         var $list_table = $('#list_table');
 
         $(document).ready(function() {
+            // 지역, 지점, 권한유형 자동변경
+            $search_form.find('select[name="search_admin_area_ccd"]').chained("#search_btob_idx");
+            $search_form.find('select[name="search_admin_branch_ccd"]').chained("#search_admin_area_ccd");
+            $search_form.find('select[name="search_role_idx"]').chained("#search_btob_idx");
+
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $list_table.DataTable({
                 serverSide: true,

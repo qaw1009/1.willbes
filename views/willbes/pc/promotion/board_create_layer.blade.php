@@ -292,15 +292,15 @@
             }
 
             if ($('input:radio[name="board_type"]:checked').val() == 1) {
-                if($_review_regi_form.find('select[name="area_name"]').val() == '') {alert('응시지역을 선택해주세요.');return;}
-                if($("#subject_name_1").val() == '') {alert('합격과목을 선택해주세요.');return;}
-                if($("#board_title_1").val() == '') {alert('제목을 선택해주세요.');return;}
-                if($("#board_content_1").val() == '') {alert('내용을 선택해주세요.');return;}
+                if($_review_regi_form.find('select[name="area_name"]').val() == '') {alert('응시지역을 선택해 주세요.');return;}
+                if($("#subject_name_1").val() == '') {alert('합격과목을 선택해 주세요.');return;}
+                if($("#board_title_1").val() == '') {alert('제목을 입력해 주세요.');return;}
+                if($("#board_content_1").val() == '') {alert('내용을 입력해 주세요.');return;}
             } else {
-                if($("#subject_name_2").val() == ''){alert('수강과목을 선택해주세요.'); return;}
+                if($("#subject_name_2").val() == ''){alert('수강과목을 선택해 주세요.'); return;}
                 if($_review_regi_form.find('select[name="prof_name"]').val() == ''){alert('담당교수를 선택해주세요.');return;}
-                if($("#board_title_2").val() == '') {alert('제목을 선택해주세요.');return;}
-                if($("#board_content_2").val() == '') {alert('내용을 선택해주세요.');return;}
+                if($("#board_title_2").val() == '') {alert('제목을 입력해 주세요.');return;}
+                if($("#board_content_2").val() == '') {alert('내용을 입력해 주세요.');return;}
             }
 
             if (!confirm('저장하시겠습니까?')) {

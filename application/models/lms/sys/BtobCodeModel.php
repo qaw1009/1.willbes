@@ -92,7 +92,14 @@ class BtobCodeModel extends WB_Model
      */
     public function getAreaBranchCcd($btob_idx)
     {
-        $column = 'ACC.Ccd as AreaCcd, ACC.CcdName as AreaCcdName, BCC.Ccd as BranchCcd, BCC.CcdName as BranchCcdName';
+        $where = '';
+        $binds = false;
+        if (empty($btob_idx) === false) {
+            $where = 'and AC.BtobIdx = ?';
+            $binds = [$btob_idx];
+        }
+
+        $column = 'AC.BtobIdx, ACC.Ccd as AreaCcd, ACC.CcdName as AreaCcdName, BCC.Ccd as BranchCcd, BCC.CcdName as BranchCcdName';
         $from = '
             from ' . $this->_table . ' as AC
                 inner join ' . $this->_table . ' as ACC
@@ -101,12 +108,13 @@ class BtobCodeModel extends WB_Model
                     on BC.ConnValue = ACC.Ccd and BC.GroupCcd = 0 and BC.IsUse = "Y" and BC.IsStatus = "Y"
                 inner join ' . $this->_table . ' as BCC
                     on BC.Ccd = BCC.GroupCcd and BCC.IsUse = "Y" and BCC.IsStatus = "Y"
-            where AC.BtobIdx = ? and AC.ConnValue = "branch"
+            where AC.ConnValue = "branch"
                 and AC.GroupCcd = 0 and AC.IsUse = "Y" and AC.IsStatus = "Y"
+                ' . $where . '                
             order by ACC.OrderNum asc, BCC.OrderNum asc                                    
         ';
 
-        return $this->_conn->query('select ' . $column . $from, [$btob_idx])->result_array();
+        return $this->_conn->query('select ' . $column . $from, $binds)->result_array();
     }
 
     /**

@@ -7,7 +7,7 @@ class BasePromotion extends \app\controllers\FrontController
     protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF',
         '_lms/sys/code', 'dDayF', 'product/lectureF', 'eventsurvey/survey', '_lms/product/base/subject', 'memberF', 'professorHotClipF', 'promotionBoardF');
     protected $helpers = array('download');
-    protected $_paging_limit = 10;
+    protected $_arr_paging_limit = [10,15];
     protected $_paging_count = 10;
     protected $_paging_count_m = 5;
 
@@ -33,6 +33,9 @@ class BasePromotion extends \app\controllers\FrontController
         '615004' => 'period',    // 기간제패키지
         '615005' => 'free'      // 무료강좌
     ];
+
+    // 프로모션게시판 파일 사용여부
+    private $_is_use_promotion_board_file = false;
 
     public function __construct()
     {
@@ -347,7 +350,7 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         $total_rows = $this->eventFModel->listEventForCommentPromotion(true, $arr_condition, [], [], [], element('cate_code', $arr_input));
-        $paging = $this->pagination($arr_base['page_url'] . '?' . $get_page_params, $total_rows, $this->_paging_limit, $paging_count, true);
+        $paging = $this->pagination($arr_base['page_url'] . '?' . $get_page_params, $total_rows, $this->_arr_paging_limit[0], $paging_count, true);
 
         if ($total_rows > 0) {
             $list = $this->eventFModel->listEventForCommentPromotion(false, $arr_condition, $paging['limit'], $paging['offset'], ['a.CIdx' => 'DESC'], element('cate_code', $arr_input));
@@ -815,11 +818,13 @@ class BasePromotion extends \app\controllers\FrontController
 
         $list = [];
         $total_rows = $this->promotionBoardFModel->listPromotionBoard(true, $arr_condition);
-        $paging = $this->pagination('/promotion/listBoardAjax/code/'.$params['code'].'?' . $get_page_params, $total_rows, $this->_paging_limit, $paging_count, true);
+        $paging = $this->pagination('/promotion/listBoardAjax/code/'.$params['code'].'?' . $get_page_params, $total_rows, $this->_arr_paging_limit[1], $paging_count, true);
         if ($total_rows > 0) {
-            $list = $this->promotionBoardFModel->listPromotionBoard(false,$arr_condition, $paging['limit'], $paging['offset']);
-            foreach ($list as $idx => $row) {
-                $list[$idx]['AttachData'] = json_decode($row['AttachData'], true);       //첨부파일
+            $list = $this->promotionBoardFModel->listPromotionBoard(false,$arr_condition, $paging['limit'], $paging['offset'], $this->_is_use_promotion_board_file);
+            if ($this->_is_use_promotion_board_file === true) {
+                foreach ($list as $idx => $row) {
+                    $list[$idx]['AttachData'] = json_decode($row['AttachData'], true); //첨부파일
+                }
             }
         }
 

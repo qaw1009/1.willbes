@@ -44,13 +44,13 @@ class BtobRoleModel extends WB_Model
      */
     public function getRoleArray($btob_idx = null)
     {
-        $data = $this->_conn->getListResult($this->_table['btob_admin_role'], 'RoleIdx, RoleName', [
+        $data = $this->_conn->getListResult($this->_table['btob_admin_role'], 'RoleIdx, RoleName, BtobIdx', [
             'EQ' => ['BtobIdx' => $btob_idx, 'IsUse' => 'Y', 'IsStatus' => 'Y']
         ], null, null, [
             'RoleIdx' => 'asc'
         ]);
 
-        return array_pluck($data, 'RoleName', 'RoleIdx');
+        return empty($btob_idx) === true ? $data : array_pluck($data, 'RoleName', 'RoleIdx');
     }
 
     /**

@@ -28,16 +28,6 @@
         .evt01 > a {background:#ffff66; color:#363636; padding:20px 0; display:block; width:600px; margin:0 auto; font-size:30px; border-radius:20px}
         .evt01 > a:hover {background:#000; color:#ffff66;}
 
-        .evt02 {padding:100px 0;}
-        .postWrap {width:1000px; margin:0 auto; line-height:1.5; text-align:left; font-size:12px}
-        .postList > h4 {font-size:14px; padding:10px 50px 0 0; position: relative; color:#216a4f}
-        .postList > h4 strong {background:#216a4f; color:#fff; padding:3px 6px; border-radius:0 4px 4px 0; margin-right:10px}
-        .postList > h4 a {position: absolute; top:10px; right:10px; font-size:12px; background:#333; color:#fff; padding:3px 6px; border-radius:4px}
-        .postList .postSub {padding:10px 0; border-bottom:1px solid #e0e0e0; color:#666; display:flex; justify-content: space-between;}
-        .postList .postSub span {padding:0 10px; border-right:1px solid #ccc}
-        .postList .postSub span:last-child {border:0}
-        .postWrap .postContent {border-bottom:1px solid #999; background:#fafafa; padding:10px}
-
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
 		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}

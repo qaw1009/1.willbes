@@ -27,9 +27,10 @@ class PromotionBoardFModel extends WB_Model
      * @param array $arr_condition
      * @param null $limit
      * @param null $offset
+     * @param false $is_use_promotion_board_file
      * @return mixed
      */
-    public function listPromotionBoard($is_count = true, $arr_condition=[], $limit = null, $offset = null)
+    public function listPromotionBoard($is_count = true, $arr_condition=[], $limit = null, $offset = null, $is_use_promotion_board_file = false)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -39,8 +40,9 @@ class PromotionBoardFModel extends WB_Model
                 a.EpbIdx,a.PromotionCode,a.BoardType,a.Title,a.Content,a.AreaName,a.SubjectName,a.ProfName,a.Score
                 ,DATE_FORMAT(a.RegDatm, '%Y.%m.%d') as RegDatm,a.RegMemIdx,b.MemId,b.MemName
                 ,IF(a.BoardType='1','합격수기','수강후기') AS BoardTypeName
-                ,IFNULL((
-                    SELECT CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
+            ";
+            if ($is_use_promotion_board_file === true) {
+                $column .= ",IFNULL((SELECT CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
                         'FileIdx', EpbfIdx,
                         'FilePath', FileFullPath,
                         'FileName', FileName,
@@ -48,8 +50,8 @@ class PromotionBoardFModel extends WB_Model
                     )), ']') AS AttachData
                     FROM {$this->_table['event_promotion_board_file']} AS f
                     WHERE f.EpbIdx = a.EpbIdx AND f.IsStatus = 'Y'
-                ),'N') AS AttachData
-            ";
+                ),'N') AS AttachData";
+            }
             $order_by = ['a.EpbIdx' => 'desc'];
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();

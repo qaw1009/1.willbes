@@ -7,6 +7,7 @@ class BtobAdminModel extends WB_Model
         'btob_admin' => 'lms_btob_admin',
         'btob_admin_role' => 'lms_btob_admin_role',
         'btob_code' => 'lms_btob_code',
+        'btob' => 'lms_btob',
         'admin' => 'wbs_sys_admin'
     ];    
 
@@ -30,8 +31,9 @@ class BtobAdminModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'A.AdminIdx, A.RoleIdx, A.AdminId, A.AdminName, A.AdminPhone1, A.AdminPhone2, A.AdminPhone3, A.AdminAreaCcd, A.AdminBranchCcd, A.IsUse, A.RegDatm, A.RegAdminIdx
-                , ifnull(R.RoleName, "-") as RoleName, AC.CcdName as AdminAreaCcdName, BC.CcdName as AdminBranchCcdName, ifnull(RA.AdminName, "") as RegAdminName';
+            $column = 'A.AdminIdx, A.BtobIdx, A.RoleIdx, A.AdminId, A.AdminName, A.AdminPhone1, A.AdminPhone2, A.AdminPhone3, A.AdminAreaCcd, A.AdminBranchCcd, A.IsUse, A.RegDatm, A.RegAdminIdx, A.LastLoginDatm, A.LastLoginIp
+                , B.BtobId, B.BtobName, ifnull(R.RoleName, "-") as RoleName, AC.CcdName as AdminAreaCcdName, BC.CcdName as AdminBranchCcdName
+                , ifnull(RA.AdminName, WA.wAdminName) as RegAdminName';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -39,6 +41,8 @@ class BtobAdminModel extends WB_Model
 
         $from = '
             from ' . $this->_table['btob_admin'] . ' as A
+                left join ' . $this->_table['btob'] . ' as B
+                    on A.BtobIdx = B.BtobIdx and B.IsStatus = "Y"            
                 left join ' . $this->_table['btob_admin_role'] . ' as R
                     on A.RoleIdx = R.RoleIdx and R.IsStatus = "Y"
                 left join ' . $this->_table['btob_code'] . ' as AC
@@ -46,7 +50,9 @@ class BtobAdminModel extends WB_Model
                 left join ' . $this->_table['btob_code'] . ' as BC
                     on A.AdminBranchCcd = BC.Ccd and BC.IsStatus = "Y"		
                 left join ' . $this->_table['btob_admin'] . ' as RA
-                    on A.RegAdminIdx = RA.AdminIdx and RA.IsStatus = "Y"                     
+                    on A.RegAdminIdx = RA.AdminIdx and RA.IsStatus = "Y" 
+                left join ' . $this->_table['admin'] . ' as WA
+                    on A.RegAdminIdx = WA.wAdminIdx and WA.wIsStatus = "Y"                                        
             where A.IsStatus = "Y"        
         ';
 
@@ -80,15 +86,31 @@ class BtobAdminModel extends WB_Model
      */
     public function findAdminForModify($admin_idx, $btob_idx = null)
     {
-        $column = 'A.AdminIdx, A.AdminId, A.AdminName, A.AdminPhone1, A.AdminPhone2, A.AdminPhone3, A.AdminMail, A.AdminAreaCcd, A.AdminBranchCcd';
-        $column .= ' , A.AdminDesc, A.IsApproval, A.ApprovalDatm, A.ApprovalAdminIdx, A.IsUse, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx';
-        $column .= ' , if(A.RoleIdx = 0, "", A.RoleIdx) as RoleIdx';
-        $column .= ' , (select AdminName from ' . $this->_table['btob_admin'] . ' where AdminIdx = A.RegAdminIdx and IsStatus = "Y") as RegAdminName';
-        $column .= ' , if(A.UpdAdminIdx is null, "", (select AdminName from ' . $this->_table['btob_admin'] . ' where AdminIdx = A.UpdAdminIdx and IsStatus = "Y")) as UpdAdminName';
+        $column = 'A.AdminIdx, A.BtobIdx, A.AdminId, A.AdminName, A.AdminPhone1, A.AdminPhone2, A.AdminPhone3, A.AdminMail, A.AdminAreaCcd, A.AdminBranchCcd
+            , A.AdminDesc, A.IsApproval, A.ApprovalDatm, A.ApprovalAdminIdx, A.IsUse, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx
+            , if(A.RoleIdx = 0, "", A.RoleIdx) as RoleIdx
+            , ifnull(RA.AdminName, WA.wAdminName) as RegAdminName
+            , ifnull(UA.AdminName, WU.wAdminName) as UpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table['btob_admin'] . ' as A', $column, [
-            'EQ' => ['A.AdminIdx' => $admin_idx, 'A.BtobIdx' => $btob_idx, 'A.IsStatus' => 'Y']
-        ]);
+        $from = '
+            from ' . $this->_table['btob_admin'] . ' as A	
+                left join ' . $this->_table['btob_admin'] . ' as RA
+                    on A.RegAdminIdx = RA.AdminIdx and RA.IsStatus = "Y" 
+                left join ' . $this->_table['admin'] . ' as WA
+                    on A.RegAdminIdx = WA.wAdminIdx and WA.wIsStatus = "Y"
+                left join ' . $this->_table['btob_admin'] . ' as UA
+                    on A.UpdAdminIdx = UA.AdminIdx and UA.IsStatus = "Y" 
+                left join ' . $this->_table['admin'] . ' as WU
+                    on A.UpdAdminIdx = WU.wAdminIdx and WU.wIsStatus = "Y"
+            where A.AdminIdx = ?
+                and A.IsStatus = "Y"   
+        ';
+
+        $where = $this->_conn->makeWhere(['EQ' => ['A.BtobIdx' => $btob_idx]]);
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where, [$admin_idx])->row_array();
     }
 
     /**
@@ -127,6 +149,8 @@ class BtobAdminModel extends WB_Model
                 throw new \Exception('이미 사용중인 아이디입니다. 다른 아이디를 입력해 주세요.', _HTTP_CONFLICT);
             }
 
+            $btob_idx = element('btob_idx', $input);  // LMS > 시스템 > 제휴사관리 > 제휴사운영자관리 > 운영자 등록폼
+
             $data = [
                 'AdminId' => element('admin_id', $input),
                 'AdminPasswd' => element('admin_passwd', $input),
@@ -148,7 +172,7 @@ class BtobAdminModel extends WB_Model
                 ]);
             }
 
-            if ($this->_addAdmin($data) !== true) {
+            if ($this->_addAdmin($data, $btob_idx) !== true) {
                 throw new \Exception('운영자 등록에 실패했습니다.');
             }
 
@@ -164,13 +188,20 @@ class BtobAdminModel extends WB_Model
     /**
      * 제휴사 운영자 정보 등록
      * @param array $data
+     * @param null|int $btob_idx
      * @return bool|string
      */
-    public function _addAdmin($data = [])
+    public function _addAdmin($data = [], $btob_idx = null)
     {
         try {
-            $sess_btob_idx = $this->session->userdata('btob.btob_idx');  // 제휴사식별자
-            $sess_btob_admin_idx = $this->session->userdata('btob.admin_idx');  // 제휴사운영자식별자
+            // 제휴사식별자, 제휴사운영자식별자 셋팅 (LMS에서 수정할 경우)
+            if (empty($btob_idx) === false) {
+                $sess_btob_idx = $btob_idx;
+                $sess_btob_admin_idx = $this->session->userdata('admin_idx');
+            } else {
+                $sess_btob_idx = $this->session->userdata('btob.btob_idx');
+                $sess_btob_admin_idx = $this->session->userdata('btob.admin_idx');
+            }
 
             $data['BtobIdx'] = get_var($sess_btob_idx, 0);
             $data['RegAdminIdx'] = get_var($sess_btob_admin_idx, 0);
@@ -210,6 +241,8 @@ class BtobAdminModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
+            $o_btob_idx = element('o_btob_idx', $input);  // LMS > 시스템 > 제휴사관리 > 제휴사운영자관리 > 운영자 수정폼
+
             $data = [
                 'AdminName' => element('admin_name', $input),
                 'AdminPasswd' => element('admin_passwd', $input),
@@ -234,7 +267,7 @@ class BtobAdminModel extends WB_Model
                 $admin_idx = $this->session->userdata('btob.admin_idx');
             }
 
-            if($this->_modifyAdminByIdx($data, $admin_idx) !== true) {
+            if($this->_modifyAdminByIdx($data, $admin_idx, $o_btob_idx) !== true) {
                 throw new \Exception('운영자 정보 수정에 실패했습니다.');
             }
 
@@ -250,14 +283,21 @@ class BtobAdminModel extends WB_Model
     /**
      * 제휴사 운영자 정보 업데이트
      * @param array $data
-     * @param $admin_idx
+     * @param int $admin_idx
+     * @param null|int $btob_idx
      * @return bool|string
      */
-    private function _modifyAdminByIdx($data, $admin_idx)
+    private function _modifyAdminByIdx($data, $admin_idx, $btob_idx = null)
     {
         try {
-            $sess_btob_idx = $this->session->userdata('btob.btob_idx');  // 제휴사식별자
-            $sess_btob_admin_idx = $this->session->userdata('btob.admin_idx');  // 제휴사운영자식별자
+            // 제휴사식별자, 제휴사운영자식별자 셋팅 (LMS에서 수정할 경우)
+            if (empty($btob_idx) === false) {
+                $sess_btob_idx = $btob_idx;
+                $sess_btob_admin_idx = $this->session->userdata('admin_idx');
+            } else {
+                $sess_btob_idx = $this->session->userdata('btob.btob_idx');
+                $sess_btob_admin_idx = $this->session->userdata('btob.admin_idx');
+            }
 
             // 기존 운영자 데이터 조회
             $row = $this->_conn->getFindResult($this->_table['btob_admin'], 'ifnull(ApprovalDatm, "") as ApprovalDatm', [
@@ -269,11 +309,9 @@ class BtobAdminModel extends WB_Model
 
             // 비밀번호
             if (empty($data['AdminPasswd']) === false) {
-                $this->_conn->set($data)->set('AdminPasswd', 'fn_hash("' . $data['AdminPasswd'] . '")', false);
-            } else {
-                unset($data['AdminPasswd']);
-                $this->_conn->set($data);
+                $this->_conn->set('AdminPasswd', 'fn_hash("' . $data['AdminPasswd'] . '")', false);
             }
+            unset($data['AdminPasswd']);
             
             // 운영자 승인/미승인
             if (isset($data['IsApproval']) === true) {
@@ -290,7 +328,7 @@ class BtobAdminModel extends WB_Model
             $this->_conn->set('UpdAdminIdx', $sess_btob_admin_idx);
 
             // where 조건
-            $this->_conn->where('AdminIdx', $admin_idx);
+            $this->_conn->set($data)->where('AdminIdx', $admin_idx);
             
             // 데이터 수정
             if ($this->_conn->update($this->_table['btob_admin']) === false) {

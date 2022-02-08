@@ -23,7 +23,11 @@
                             <span>{{$row['RegDatm']}}</span>
                         </div>
                     </div>
-                    <div class="postContent">
+                    <div class="postContent minimum-text">
+                        {!! nl2br(mb_substr($row['Content'],0,150,'UTF-8')) !!}
+                        {!! (mb_strlen($row['Content'],'UTF-8') > 150 ? '<span class="btn-more-text" style="cursor: pointer; font-size: 15px; font-weight:bold;">...더보기</span>' : '') !!}
+                    </div>
+                    <div class="postContent full-text" style="display: none;">
                         {!! nl2br($row['Content']) !!}
                     </div>
                 </div>
@@ -47,6 +51,11 @@
             }
             fnReviewList(num);
             return false;
+        });
+
+        $(".btn-more-text").click(function () {
+            $(this).closest(".minimum-text").css('display', 'none');
+            $(this).closest(".minimum-text").next().css('display', 'block');
         });
     });
 

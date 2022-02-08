@@ -58,8 +58,8 @@
                 <iframe width="850" height="482" src="https://www.youtube.com/embed/xV7WNdZ0zug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <ul class="btnWrapbt popbtn mt10">
-                <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="1">하루 보지않기</a></li>
-                <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="">Close</a></li>
+                <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="2505" data-popup-hide-days="1">하루 보지않기</a></li>
+                <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="2505" data-popup-hide-days="">Close</a></li>
             </ul>
         </div>
         <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
@@ -197,7 +197,7 @@
     <script type="text/javascript">  
         //유튜브 모달팝업 close 버튼 클릭
         var youtube_html;
-        $(document).ready(function() {                
+        $(document).ready(function() {
             $('.PopupWrap').on('click', '.btn-popup-close', function() {
                 youtube_html = $('#youtube_box');
                 $('#youtube_box').html('');
@@ -210,8 +210,12 @@
 
                 //하루 보지않기
                 if (hide_days !== '') {
+                    console.log(123123);
+
                     var domains = location.hostname.split('.');
                     var domain = '.' + domains[domains.length - 2] + '.' + domains[domains.length - 1];
+
+                    console.log(domain);
 
                     $.cookie('_wb_client_popup_' + popup_idx, 'done', {
                         domain: domain,
@@ -235,12 +239,13 @@
             });
 
             // 팝업 오늘하루안보기 하드코딩
-            if($.cookie('_wb_client_popup_860') !== 'done') {
-                $('#Popup2505').show();
+            if($.cookie('_wb_client_popup_2505') !== 'done') {
                 $('.PopupWrap').fadeIn();
                 $('#PopupBackWrap').fadeIn();
+            } else {
+                $('#Popup2505').hide();
             }
-        });    
+        });
     </script>
     
 @stop

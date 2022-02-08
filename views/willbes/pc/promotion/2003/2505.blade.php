@@ -210,13 +210,8 @@
 
                 //하루 보지않기
                 if (hide_days !== '') {
-                    console.log(123123);
-
                     var domains = location.hostname.split('.');
                     var domain = '.' + domains[domains.length - 2] + '.' + domains[domains.length - 1];
-
-                    console.log(domain);
-
                     $.cookie('_wb_client_popup_' + popup_idx, 'done', {
                         domain: domain,
                         path: '/',

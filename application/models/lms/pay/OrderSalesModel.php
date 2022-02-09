@@ -182,6 +182,7 @@ class OrderSalesModel extends BaseOrderModel
             from (
                 select BO.SiteCode, BO.ProdCode, sum(ifnull(BO.RealPayPrice, 0)) as tRealPayPrice, sum(ifnull(BO.RefundPrice, 0)) as tRefundPrice
                     , count(BO.OrderProdIdx) as tOrderProdCnt, sum(if(BO.RefundPrice is null, 1, 0)) as tRealPayCnt, sum(if(BO.RefundPrice is null, 0, 1)) as tRefundCnt
+                    ' . $this->_getListStatsQuery('in_column', $learn_pattern) . '
                 from (
                     ' . $this->_getBaseOrder($start_date, $end_date, $search_type) . '
                 ) as BO
@@ -237,6 +238,7 @@ class OrderSalesModel extends BaseOrderModel
     {
         $from = '';
         $column = '';
+        $in_column = '';
         $excel_column = '';
         $where = '';
 
@@ -320,16 +322,16 @@ class OrderSalesModel extends BaseOrderModel
                     left join ' . $this->_table['code'] . ' as CAS
                         on PL.AcceptStatusCcd = CAS.Ccd and CAS.IsStatus = "Y"';
                 $column .= ', CCA.CcdName as CampusCcdName, PL.SchoolYear, CSP.CcdName as StudyPatternCcdName, PL.SchoolStartYear, PL.SchoolStartMonth
-                    , PL.IsLecOpen, CAS.CcdName as AcceptStatusCcdName
-                    , (select concat(min(B.StudyStartDate), "~", max(B.StudyEndDate)) 
+                    , PL.IsLecOpen, CAS.CcdName as AcceptStatusCcdName, json_value(SU.StudyPeriod, "$.StudyStartDate") as StudyStartDate, json_value(SU.StudyPeriod, "$.StudyEndDate") as StudyEndDate';
+                $in_column .= '
+                    , (select json_object("StudyStartDate", min(B.StudyStartDate), "StudyEndDate", max(B.StudyEndDate)) 
                         from ' . $this->_table['product_r_sublecture'] . ' as A
                             inner join ' . $this->_table['product_lecture'] . ' as B
                                 on A.ProdCodeSub = B.ProdCode
-                        where A.ProdCode = SU.ProdCode
+                        where A.ProdCode = BO.ProdCode
                             and A.IsStatus = "Y") as StudyPeriod';
                 $excel_column .= 'CampusCcdName, SchoolYear, StudyPatternCcdName, concat(SchoolStartYear, "/", SchoolStartMonth) as SchoolStartYearMonth
-                    , left(StudyPeriod, 10) as StudyStartDate, right(StudyPeriod, 10) as StudyEndDate, RealSalePrice, SalePrice
-                    , if(IsLecOpen = "Y", "개설", "폐강") as IsLecOpenName, AcceptStatusCcdName';
+                    , StudyStartDate, StudyEndDate, RealSalePrice, SalePrice, if(IsLecOpen = "Y", "개설", "폐강") as IsLecOpenName, AcceptStatusCcdName';
                 break;
             case 'book' :
                 // 교재

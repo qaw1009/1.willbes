@@ -121,8 +121,8 @@
                                     <td>{{ $data['SchoolYear'] }}</td>
                                     <td>{{ $data['StudyPatternCcdName'] }}</td>
                                     <td>{{ $data['SchoolStartYear'] }}/{{ $data['SchoolStartMonth'] }}</td>
-                                    <td>{{ substr($data['StudyPeriod'], 0, 10) }}</td>
-                                    <td>{{ substr($data['StudyPeriod'], 11, 10) }}</td>
+                                    <td>{{ $data['StudyStartDate'] }}</td>
+                                    <td>{{ $data['StudyEndDate'] }}</td>
                                 @elseif($stats_type == 'book')
                                     {{-- 교재 --}}
                                     <td>{{ str_replace(',', '<br/>', $data['ProfSubjectNames']) }}</td>

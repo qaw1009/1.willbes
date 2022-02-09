@@ -19,33 +19,36 @@
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
-        .skyBanner {position:fixed; width:130px; top:200px; right:10px; z-index:10;}
+        .skyBanner {position:fixed; width:120px; top:200px; right:10px; z-index:10;}
         .skyBanner a {display:block; margin-bottom:10px}
 
         .evt00 {background:#0a0a0a}
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/06/2244_top_bg.jpg) no-repeat center top;}
-        .evt_01 {background:#01010d;}
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/02/2526_top_bg.jpg) no-repeat center top;}
+        .evt_01 {background:#20364a;}
+        .evt_02 {background:#f8f8f8;}
 
-        .evt_03 {background:#f2b63f;}  
+        .evt_03 {padding-bottom:100px;}
+        .evt_03 .check {font-size:16px; text-align:center; line-height:1.5;font-weight:bold;}
+        .evt_03 .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
+        .evt_03 .check a {display:inline-block; padding:5px 20px; color:#fff; background:#000; margin-left:20px; border-radius:20px}
+        .evt_03 .check a:hover {color:#333; background:#f2b63f;}
+        .evt_03 .info {margin:20px auto 50px; padding:10px;line-height:1.4; font-size:14px; font-weight:bold;}
 
-        .evt_04 {padding-bottom:100px}     
-        .evt_04 .check {font-size:16px; text-align:center; line-height:1.5;font-weight:bold;}
-        .evt_04 .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
-        .evt_04 .check a {display:inline-block; padding:5px 20px; color:#fff; background:#000; margin-left:20px; border-radius:20px}
-        .evt_04 .check a:hover {color:#333; background:#f2b63f;}
-        .evt_04 .info {margin:20px auto 50px; padding:10px;line-height:1.4; font-size:14px; font-weight:bold;}
 
-        .evt_05 {background:#ececec; padding:150px 0}  
-        .evt_05_box {width:1000px; margin:auto; border:8px double #333; border-radius:30px; background:#fff; padding:50px; font-size:14px; line-height:1.3; color:#666; position:relative; text-align:left }
-        .evt_05_box h4 { position:absolute; font-size:34px; margin-bottom:30px; color:#fff; width:40%; left:50%; margin-left:-20%; top:-38px; background:#000; border-radius:40px; padding:10px 0; text-align:center; z-index: 2;}
-        .evt_05_box .infoA {display:flex; justify-content: space-between; align-items: stretch; margin:30px auto 50px; }
-        .evt_05_box .infoA li {border:1px solid #c4c4c4; flex-basis: 25%; padding:40px 20px 20px; position:relative; margin:0 10px; text-align:center}
-        .evt_05_box .step {position:absolute; height:30px; line-height:30px; width:100%; top:0; left:0; background:#c4c4c4; color:#fff; z-index: 2; }
-        .evt_05_box .sTilte {font-size:16px; font-weight:bold; margin-bottom:10px}
-        .evt_05_box > div {font-size:18px; color:#000; margin:0 20px 10px}
-        .evt_05_box .infoB {margin:0 20px}
-        .evt_05_box .infoB li {margin-left:20px; list-style:disc; margin-bottom:5px}
+        .evt_04 {background:#363636}     
+
+
+        .evt_06 {background:#ececec; padding:150px 0}  
+        .evt_06_box {width:1000px; margin:auto; border:8px double #333; border-radius:30px; background:#fff; padding:50px; font-size:14px; line-height:1.3; color:#666; position:relative; text-align:left }
+        .evt_06_box h4 { position:absolute; font-size:34px; margin-bottom:30px; color:#fff; width:40%; left:50%; margin-left:-20%; top:-38px; background:#000; border-radius:40px; padding:10px 0; text-align:center; z-index: 2;}
+        .evt_06_box .infoA {display:flex; justify-content: space-between; align-items: stretch; margin:30px auto 50px; }
+        .evt_06_box .infoA li {border:1px solid #c4c4c4; flex-basis: 25%; padding:40px 20px 20px; position:relative; margin:0 10px; text-align:center}
+        .evt_06_box .step {position:absolute; height:30px; line-height:30px; width:100%; top:0; left:0; background:#c4c4c4; color:#fff; z-index: 2; }
+        .evt_06_box .sTilte {font-size:16px; font-weight:bold; margin-bottom:10px}
+        .evt_06_box > div {font-size:18px; color:#000; margin:0 20px 10px}
+        .evt_06_box .infoB {margin:0 20px}
+        .evt_06_box .infoB li {margin-left:20px; list-style:disc; margin-bottom:5px}
 
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -58,8 +61,9 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="skyBanner">
-            <a href="javascript:void(0);" onclick="certOpen();"><img src="https://static.willbes.net/public/images/promotion/2021/06/2244_sky01.jpg" alt="이벤트 하나"/></a>
-            <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2021/06/2244_sky02.jpg" alt="이벤트 둘"/></a>
+            <a href="javascript:void(0);" onclick="certOpen();"><img src="https://static.willbes.net/public/images/promotion/2022/02/2526_sky01.jpg" alt="이벤트 하나"/></a>
+            <a href="#evt03"><img src="https://static.willbes.net/public/images/promotion/2022/02/2526_sky02.jpg" alt="이벤트 둘"/></a>
+            <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2022/02/2526_sky03.jpg" alt="이벤트 둘"/></a>
         </div>
 
         <div class="evtCtnsBox evt00">
@@ -67,37 +71,46 @@
         </div>
 
         <div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2244_top.jpg"  alt="해양경찰 등불쌤 승진패스" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2526_top.jpg"  alt="해양경찰 등불쌤 승진패스" />
         </div>
 
         <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2244_01.jpg"  alt="베스트 교수진" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2526_01.jpg"  alt="베스트 교수진" />
         </div>
 
         <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2244_02.jpg"  alt="해양경찰 승진시험대비" />      
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2526_02.jpg"  alt="해양경찰 승진시험대비" />      
         </div>
 
-        <div class="evtCtnsBox evt_03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2244_03.jpg"  alt="이벤트" />         
-        </div>
-
-        <div class="evtCtnsBox evt_04" id="evt04">
+        <div class="evtCtnsBox evt_03" id="evt03">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2244_04.jpg"  alt="12개월 패스" />
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183042);" title="형소법,형법,해사법규" style="position: absolute; left: 4.64%; top: 85.24%; width: 22.14%; height: 8.82%; z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183091);" title="형소법,형법" style="position: absolute; left: 27.59%; top: 85.24%; width: 22.14%; height: 8.82%; z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183063);" title="형법,해사법규" style="position: absolute; left: 50.18%; top: 85.24%; width: 22.14%; height: 8.82%; z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183065);" title="형소법,해사법규" style="position: absolute; left: 72.68%; top: 85.24%; width: 22.14%; height: 8.82%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/2526_03.jpg"  alt="12개월 패스" />
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183042);" title="형소법,형법,해사법규" style="position: absolute; left: 8.84%; top: 84.69%; width: 27.23%; height: 9.67%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183091);" title="형법,해사법규" style="position: absolute; left: 36.34%; top: 84.69%; width: 27.23%; height: 9.67%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183063);" title="형소법법,해사법규" style="position: absolute; left: 63.75%; top: 84.69%; width: 27.23%; height: 9.67%; z-index: 2;"></a>
             </div>
             <div class="check">
-                <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 합격PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
+                <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
                 <a href="#careful">이용안내 확인하기 ↓</a>               
             </div>
             <div class="info">
                 ※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.<br>
                 ※ 해양경찰 현직인증은 필수입니다.(오직 해양경찰 현직 전용PASS)<br>
                 ※ 한정 상품으로 할인쿠폰이 사용불가한 상품입니다.(이벤트 쿠폰재외)
+            </div>       
+        </div>
+
+        <div class="evtCtnsBox evt_04" id="evt04">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/2526_04.jpg"  alt="20% 할인쿠폰" />
+                <a href="javascript:void(0);" onclick="giveCheck();" title="할인쿠폰 받기" style="position: absolute; left: 37.59%; top: 75%; width: 24.38%; height: 8.2%; z-index: 2;"></a>
+            </div>
+        </div>
+
+        <div class="evtCtnsBox evt_05" id="evt05">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/2526_05.jpg"  alt="소문내기 이벤트" />
+                <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="다운로드" style="position: absolute; left: 27.5%; top: 58.42%; width: 47.59%; height: 13.27%; z-index: 2;"></a>
             </div>
         </div>
 
@@ -106,8 +119,8 @@
             @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'Y'))
         @endif 
 
-        <div class="evtCtnsBox evt_05" id="evt05">
-            <div class="evt_05_box">
+        <div class="evtCtnsBox evt_06" id="evt05">
+            <div class="evt_06_box">
                 <h4>인증방법 안내</h4>
                 <ul class="infoA">
                     <li>
@@ -149,7 +162,7 @@
 
         <div class="evtCtnsBox evtInfo" id="careful">
 			<div class="evtInfoBox">
-				<h4 class="NSK-Black">[윌비스 X 등불쌤] 해양경찰 승진 PASS 이용안내</h4>
+				<h4 class="NSK-Black">윌비스 X 등불쌤 해양경찰 승진 PASS 이용안내</h4>
 				<div class="infoTit NSK-Black">상품안내</div>
 				<ul>
                     <li>해경승진PASS는 현직경찰 인증이 완료 된 후 관련 PASS 수강신청이 가능합니다. 상품 구매전 상단 현직경찰 인증하기를 진행해주세요.</li>
@@ -229,6 +242,21 @@
             @if(empty($arr_promotion_params["page"]) === false && empty($arr_promotion_params["cert"]) === false)
                 var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
                 window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
+
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($arr_promotion_params['give_type']) === false && empty($arr_promotion_params['give_idx']) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    }
+                }, showValidateError, null, false, 'alert');
             @else
                 alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
             @endif

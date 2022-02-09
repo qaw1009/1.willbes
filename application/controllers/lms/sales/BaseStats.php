@@ -195,13 +195,25 @@ class BaseStats extends \app\controllers\BaseController
         $search_study_end_date = $this->_reqP('search_study_end_date');
 
         if (empty($search_study_date_type) === false && empty($search_study_start_date) === false && empty($search_study_end_date) === false) {
-            switch ($search_study_date_type) {
-                case 'StudyStartDate' :
-                    $arr_condition['BDT'] = ['PL.StudyStartDate' => [$search_study_start_date, $search_study_end_date]];
-                    break;
-                case 'StudyEndDate' :
-                    $arr_condition['BDT'] = ['PL.StudyEndDate' => [$search_study_start_date, $search_study_end_date]];
-                    break;
+            if ($this->_learn_pattern == 'off_pack_lecture') {
+                // 학원종합반
+                switch ($search_study_date_type) {
+                    case 'StudyStartDate' :
+                        $arr_condition['RAW'] = ['json_value(SU.StudyPeriod, "$.StudyStartDate") between ' => '"' . $search_study_start_date . '" and "' . $search_study_end_date . '"'];
+                        break;
+                    case 'StudyEndDate' :
+                        $arr_condition['RAW'] = ['json_value(SU.StudyPeriod, "$.StudyEndDate") between ' => '"' . $search_study_start_date . '" and "' . $search_study_end_date . '"'];
+                        break;
+                }
+            } else {
+                switch ($search_study_date_type) {
+                    case 'StudyStartDate' :
+                        $arr_condition['BDT'] = ['PL.StudyStartDate' => [$search_study_start_date, $search_study_end_date]];
+                        break;
+                    case 'StudyEndDate' :
+                        $arr_condition['BDT'] = ['PL.StudyEndDate' => [$search_study_start_date, $search_study_end_date]];
+                        break;
+                }
             }
         }
 

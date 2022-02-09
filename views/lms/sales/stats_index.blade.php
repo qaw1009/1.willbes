@@ -166,8 +166,8 @@
                         </div>
                     </div>
                 </div>
-                @if($stats_type == 'offLecture')
-                    {{-- 학원단과반 개강일/종강일 검색 추가 --}}
+                @if(starts_with($stats_type, 'off') === true)
+                    {{-- 학원강좌 개강일/종강일 검색 추가 --}}
                     <div class="form-group">
                         <label class="control-label col-md-1">검색일</label>
                         <div class="col-md-5 form-inline">
@@ -374,12 +374,8 @@
                     {'data' : 'SchoolStartYear', 'render' : function(data, type, row, meta) {
                         return data + '/' + row.SchoolStartMonth;
                     }},
-                    {'data' : 'StudyPeriod', 'render' : function(data, type, row, meta) {
-                        return data.substr(0, 10);
-                    }},
-                    {'data' : 'StudyPeriod', 'render' : function(data, type, row, meta) {
-                        return data.substr(11, 10);
-                    }},
+                    {'data' : 'StudyStartDate'},
+                    {'data' : 'StudyEndDate'},
                 @elseif($stats_type == 'book')
                     {{-- 교재 --}}
                     {'data' : 'ProfSubjectNames', 'render' : function(data, type, row, meta) {

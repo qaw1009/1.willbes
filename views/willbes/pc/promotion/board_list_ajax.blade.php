@@ -66,6 +66,8 @@
         });
 
         $(".btn-more-text").click(function () {
+            $(".full-text").css('display', 'none');
+            $(".minimum-text").css('display', 'block');
             $(this).closest(".minimum-text").css('display', 'none');
             $(this).closest(".minimum-text").next().css('display', 'block');
         });

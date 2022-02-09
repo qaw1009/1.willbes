@@ -2084,7 +2084,7 @@ no-repeat 5px center}
                                 <td class="w-date">2018-00-00</td>
                             </tr>
                             <tr class="replyTxt w-replyTxt tx-gray">
-                                <td colspan="7" class="tx14">
+                                <td colspan="7">
                                     <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
                                     Woo ah(우와) Dae Bark(박) 입니다!!! 정채영 교수님 수업을 온/오프라인으로 몇번 들었던 장수생입니다.
                                     계속해서 무료 강좌 시리즈를 개설해 주셔서 감사합니다! 강의의 질이나 수준도 결코 유료특강에 떨어지지 않는 수준입니다.

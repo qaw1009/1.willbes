@@ -90,7 +90,7 @@
                 <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183063);" title="형소법법,해사법규" style="position: absolute; left: 63.75%; top: 84.69%; width: 27.23%; height: 9.67%; z-index: 2;"></a>
             </div>
             <div class="check">
-                <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 합격PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
+                <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
                 <a href="#careful">이용안내 확인하기 ↓</a>               
             </div>
             <div class="info">
@@ -162,7 +162,7 @@
 
         <div class="evtCtnsBox evtInfo" id="careful">
 			<div class="evtInfoBox">
-				<h4 class="NSK-Black">[윌비스 X 등불쌤] 해양경찰 승진 PASS 이용안내</h4>
+				<h4 class="NSK-Black">윌비스 X 등불쌤 해양경찰 승진 PASS 이용안내</h4>
 				<div class="infoTit NSK-Black">상품안내</div>
 				<ul>
                     <li>해경승진PASS는 현직경찰 인증이 완료 된 후 관련 PASS 수강신청이 가능합니다. 상품 구매전 상단 현직경찰 인증하기를 진행해주세요.</li>

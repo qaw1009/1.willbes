@@ -536,7 +536,8 @@
 .ssam .mapWrap .mapR li {margin-bottom:10px}
 .ssam .mapWrap:after {content:''; display:block; clear:both}
 
-
+.ssam .LeclistTable .replyTxt td {font-size:14px}
+.ssam .LeclistTable .replyTxt td div.tx-blue {font-size:16px}
 
 
 /*sub*/

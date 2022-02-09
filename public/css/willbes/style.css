@@ -4621,7 +4621,7 @@ table.classTable tr td img {
 }
 .listTable .w-list a strong {color:#000}
 .LeclistTable .listTable tr td.w-lec {
-	text-align: left;
+	text-align: center;
 }
 .LeclistTable .listTable .w-chk input[type="checkbox"] {
 	cursor: pointer;

@@ -128,7 +128,7 @@
         }
         .prof-list-drop-Box a {display:block; padding:10px 15px; height:calc(279px / 8); font-size:13px; width:100%;}
         .prof-list-drop-Box a:hover {background:#0a2230; color:#fff}
-        .prof-list-drop-Box a strong {margin-left:10px;}
+        .prof-list-drop-Box a strong {margin-left:10px;}       
     </style>
 
     <!-- Container -->

@@ -210,12 +210,17 @@
                 <div class="infoTit NSK-Black">※ 이용문의 : 고객센터 1544-5006</div>
 			</div>
 		</div>       
-
-
     </div>
     <!-- End Container -->
 
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
+
     <script type="text/javascript">
+        $regi_form = $('#regi_form');
+
         function go_PassLecture(cate, code){
             if($("input[name='ischk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");

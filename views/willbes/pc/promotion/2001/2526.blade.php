@@ -85,9 +85,9 @@
         <div class="evtCtnsBox evt_03" id="evt03">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2526_03.jpg"  alt="12개월 패스" />
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183042);" title="형소법,형법,해사법규" style="position: absolute; left: 8.84%; top: 84.69%; width: 27.23%; height: 9.67%; z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183091);" title="형법,해사법규" style="position: absolute; left: 36.34%; top: 84.69%; width: 27.23%; height: 9.67%; z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183063);" title="형소법법,해사법규" style="position: absolute; left: 63.75%; top: 84.69%; width: 27.23%; height: 9.67%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 191220);" title="형소법,형법,해사법규" style="position: absolute; left: 8.84%; top: 84.69%; width: 27.23%; height: 9.67%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 191230);" title="형법,해사법규" style="position: absolute; left: 36.34%; top: 84.69%; width: 27.23%; height: 9.67%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 191232);" title="형소법법,해사법규" style="position: absolute; left: 63.75%; top: 84.69%; width: 27.23%; height: 9.67%; z-index: 2;"></a>
             </div>
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.</label>

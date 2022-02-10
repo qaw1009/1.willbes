@@ -27,8 +27,8 @@
         .evt01 span {position:absolute; top:100px; left:50%; margin-left:100px; z-index: 10;}
        
         .evt03 {background:#f4f4f4; padding-bottom:100px}
-        .evt04 {background:#7d39ce; margin-bottom:50px}
-        .evt05 {background:#feda7a; margin-top:100px}
+        .evt04 {background:url(https://static.willbes.net/public/images/promotion/2022/02/2505_04_bg.jpg) repeat-x center top;} 
+
 
         /*분할 유튜브*/
         .youtube_contents {position:relative;width:1050px;margin:0 auto 50px; z-index:1;}
@@ -53,6 +53,7 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer"> 
+        {{--유튜브 모달팝업--}}
         <div id="Popup2505" class="PopupWrap modal willbes-Layer-popBox">
             <div class="Layer-Cont" id="youtube_box">
                 <iframe width="850" height="482" src="https://www.youtube.com/embed/xV7WNdZ0zug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -63,7 +64,7 @@
             </ul>
         </div>
         <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
-        {{--유튜브 모달팝업//--}}
+        
     
         {{--
         <div class="sky" id="QuickMenu">
@@ -117,7 +118,17 @@
                                             <p>의존의 전치사 「to」가 포함된 동사구를 알아보자! </p>
                                         </div>
                                     </a>
-                                </li>               
+                                </li>    
+                                
+                                <li class="">
+                                    <a href="#tab3">
+                                        <span class="num_box" data-num="3">3</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2022/02/2505_03_s03.jpg" alt="발생의 부사「up」이 포함된 동사구를 알아보자!"></div>
+                                        <div class="text_box">
+                                            <p>발생의 부사「up」이 포함된 동사구를 알아보자!</p>
+                                        </div>
+                                    </a>
+                                </li> 
                             </ul>
                         </div>
                     </div>          
@@ -127,6 +138,14 @@
             <a href="https://www.youtube.com/watch?v=xV7WNdZ0zug&list=PLBXfMpjrxeIEqNC7pkyBjgb61nB06NjgA" target="_blank" title="신규영상" ><img src="https://static.willbes.net/public/images/promotion/2022/02/2505_03_btn.png" alt="신규영상"></a>     
             </div>         
         </div> 
+
+        <div class="evtCtnsBox evt04" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2505_04.jpg" alt="갓덕현 강좌 할인받아 열공하세요!">
+        </div>
+
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_normal_partial')
+        @endif
 
         <!--
         <div class="evtCtnsBox evt04" id="evt04">
@@ -155,7 +174,7 @@
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
         @endif 
-                            -->
+        -->
 	</div>
     <!-- End Container -->
 
@@ -175,6 +194,7 @@
         //유튜브
         var tab1_url = "https://www.youtube.com/embed/O-3vSZOagkI?rel=0";
         var tab2_url = "https://www.youtube.com/embed/OMQ-M2ncBKk?rel=0"; 
+        var tab3_url = "https://www.youtube.com/embed/aGnegIlcaZs?rel=0"; 
 
         $(function() {
             $(".preview_list ul li a").click(function(){
@@ -184,7 +204,9 @@
                 if(activeTab == "#tab1"){
                     video_tab_url = tab1_url;
                 }else if(activeTab == "#tab2"){
-                    video_tab_url = tab2_url;                
+                    video_tab_url = tab2_url; 
+                }else if(activeTab == "#tab3"){
+                    video_tab_url = tab3_url;                
                 }
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");

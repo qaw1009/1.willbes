@@ -53,6 +53,7 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer"> 
+        {{--유튜브 모달팝업--}}
         <div id="Popup2505" class="PopupWrap modal willbes-Layer-popBox">
             <div class="Layer-Cont" id="youtube_box">
                 <iframe width="850" height="482" src="https://www.youtube.com/embed/xV7WNdZ0zug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -63,7 +64,7 @@
             </ul>
         </div>
         <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
-        {{--유튜브 모달팝업//--}}
+        
     
         {{--
         <div class="sky" id="QuickMenu">
@@ -117,7 +118,17 @@
                                             <p>의존의 전치사 「to」가 포함된 동사구를 알아보자! </p>
                                         </div>
                                     </a>
-                                </li>               
+                                </li>    
+                                
+                                <li class="">
+                                    <a href="#tab3">
+                                        <span class="num_box" data-num="3">3</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2022/02/2505_03_s03.jpg" alt="발생의 부사「up」이 포함된 동사구를 알아보자!"></div>
+                                        <div class="text_box">
+                                            <p>발생의 부사「up」이 포함된 동사구를 알아보자!</p>
+                                        </div>
+                                    </a>
+                                </li> 
                             </ul>
                         </div>
                     </div>          
@@ -175,6 +186,7 @@
         //유튜브
         var tab1_url = "https://www.youtube.com/embed/O-3vSZOagkI?rel=0";
         var tab2_url = "https://www.youtube.com/embed/OMQ-M2ncBKk?rel=0"; 
+        var tab3_url = "https://www.youtube.com/embed/aGnegIlcaZs?rel=0"; 
 
         $(function() {
             $(".preview_list ul li a").click(function(){
@@ -184,7 +196,9 @@
                 if(activeTab == "#tab1"){
                     video_tab_url = tab1_url;
                 }else if(activeTab == "#tab2"){
-                    video_tab_url = tab2_url;                
+                    video_tab_url = tab2_url; 
+                }else if(activeTab == "#tab3"){
+                    video_tab_url = tab3_url;                
                 }
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");

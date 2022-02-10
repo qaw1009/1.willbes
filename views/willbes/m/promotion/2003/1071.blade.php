@@ -5,24 +5,9 @@
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
     .evtCtnsBox img {width:100%; max-width:720px;}
-    /*.evtCtnsBox a:hover {box-shadow:0 5px 20px rgba(0,0,0,.5); border-radius:6px}*/
+    /*.evtCtnsBox a {box-shadow:0 5px 20px rgba(0,0,0,.5); border-radius:6px}*/
 
-    .evt03 a {position: absolute; left: 70.69%; width: 19.03%; height: 2.32%; z-index: 2;}
-    .evt03 a.b01 {top: 21.96%;}
-    .evt03 a.b02 {top: 25.96%;}
-    .evt03 a.b03 {top: 29.88%;}
 
-    .evt03 a.b11 {left: 71.94%; top: 42.56%;}
-    .evt03 a.b12 {left: 71.94%; top: 46.56%;}
-
-    .evt03 a.b09 {top: 58.84%;}
-    .evt03 a.b10 {top: 63.24%;}
-    .evt03 a.b04 {top: 69.48%;}
-    .evt03 a.b05 {top: 73.84%;}
-    .evt03 a.b06 {top: 80.48%;}
-    .evt03 a.b07 {top: 84.76%;}
-
-    .evt03 a.b08 {top: 93.36%;}
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {
@@ -64,12 +49,13 @@
     </div>  
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2021/12/1071m_04.jpg" alt="">
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/186551" target="_blank" title="전자공학" style="position: absolute; left: 52.78%; top: 28.89%; width: 27.64%; height: 2.87%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/184023" target="_blank" title="통신기술직" style="position: absolute; left: 52.92%; top: 44.61%; width: 27.64%; height: 2.87%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/184024" target="_blank" title="전송기술직" style="position: absolute; left: 52.64%; top: 60.16%; width: 27.64%; height: 2.87%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/184021" target="_blank" title="전기직이론" style="position: absolute; left: 52.64%; top: 75.87%; width: 27.64%; height: 2.87%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/188423" target="_blank" title="전기직 단원별문 패키지" style="position: absolute; left: 52.64%; top: 91.37%; width: 27.64%; height: 2.87%; z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2022/02/1071m_04.jpg" alt="">
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/186551" target="_blank" title="전자공학" style="position: absolute; left: 51.81%; top: 24.17%; width: 29.44%; height: 2.2%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/184023" target="_blank" title="통신기술직" style="position: absolute; left: 51.81%; top: 37.18%; width: 29.44%; height: 2.2%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/184024" target="_blank" title="전송기술직" style="position: absolute; left: 51.81%; top: 50.16%; width: 29.44%; height: 2.2%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/184021" target="_blank" title="전기직이론" style="position: absolute; left: 51.81%; top: 63.22%; width: 29.44%; height: 2.2%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/188423" target="_blank" title="전기직 단원별문 패키지" style="position: absolute; left: 51.81%; top: 76.2%; width: 29.44%; height: 2.2%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/190962" target="_blank" title="통신기술직 단원별문 패키지" style="position: absolute; left: 51.81%; top: 91.33%; width: 29.44%; height: 2.2%; z-index: 2;"></a>
     </div>
 </div>
 <!-- End Container -->

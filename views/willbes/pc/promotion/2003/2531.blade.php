@@ -23,7 +23,7 @@
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/02/2531_top_bg.jpg) no-repeat center top;}
 
         .wb_03, .wb_04 {background:#222}
-        .check {color:#fff; font-size:15px;font-weight:bold;position:absolute;left:50%;top:40%;margin-left:-345px;margin-top:325px;}
+        .check {color:#fff; font-size:15px;font-weight:bold;position:absolute;left:50%;top:22%;margin-left:-345px;margin-top:325px;}
         .check label {cursor:pointer}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
         .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#222; background:#fff; margin-left:50px; border-radius:20px}
@@ -67,7 +67,9 @@
         <div class="evtCtnsBox wb_03" data-aos="fade-up" id="apply">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2531_03.jpg" alt="수강신청" />
-                <a href="javascript:go_PassLecture('190056');" title="조경직 이윤주 티패스" style="position: absolute;left: 60.23%;top: 65.86%;width: 28.7%;height: 11.93%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('191148');" title="조경직 이윤주 티패스" style="position: absolute;left: 60.23%;top: 36.12%;width: 28.7%;height: 5.93%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185716" target="_blank" title="조경직 이윤주 이론+예상문제팩" style="position: absolute;left: 11.23%;top: 79.46%;width: 28.7%;height: 5.93%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2408" target="_blank" title="조경직 전과목 기출&모의고사팩" style="position: absolute;left: 60.23%;top: 79.46%;width: 28.7%;height: 5.93%;z-index: 2;"></a>  
             </div>
             <div class="check" id="chkInfo">   
                 <label>
@@ -76,13 +78,7 @@
                 </label>
                 <a href="#info" class="infotxt">이용안내확인하기 ↓</a>
             </div>              
-        </div>
-
-        <div class="evtCtnsBox wb_04" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2531_04.jpg" alt="수강신청"/>
-            <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185716" target="_blank" title="조경직 이윤주 이론+예상문제팩" style="position: absolute;left: 27.23%;top: 55.86%;width: 16.7%;height: 11.93%;z-index: 2;"></a>
-            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2408" target="_blank" title="조경직 전과목 기출&모의고사팩" style="position: absolute;left: 56.13%;top: 55.86%;width: 16.7%;height: 11.93%;z-index: 2;"></a>  
-        </div>
+        </div>      
 
         <div class="evtCtnsBox wb_05" data-aos="fade-up">
             <div class="wrap">

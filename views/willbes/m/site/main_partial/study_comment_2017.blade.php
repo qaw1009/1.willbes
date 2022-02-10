@@ -1,5 +1,5 @@
 @if(empty($data['study_comment']) === false)
-    <div class="mainTit mt30 p_re">
+    <div class="mainTit mt50 p_re">
         <span class="NSK-Black">임용 <span class="tx-main">생생 수강후기</span></span>
         <a href="{{ front_url('/support/LectureReview/index') }}" onclick="openWin('LayerReply'),openWin('Reply')" class="morebtn">more ></a>
         <div class="goBtns NSK">

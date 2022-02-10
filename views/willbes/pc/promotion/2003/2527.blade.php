@@ -57,7 +57,10 @@
 		</div>
 
         <div class="evtCtnsBox wb_02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2527_02.jpg"  alt="특강 공개"/>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/2527_02.jpg"  alt="특강 공개"/>
+                <a href="https://pass.willbes.net/lecture/index/cate/3148/pattern/free" target="_blank" title="특강 바로가기" style="position: absolute;left: 31.63%;top: 68.86%;width: 36.7%;height: 15.93%;z-index: 2;"></a>
+            </div>
 		</div> 
 
         <div class="evtCtnsBox wb_03" data-aos="fade-up">

@@ -27,8 +27,8 @@
         .evt01 span {position:absolute; top:100px; left:50%; margin-left:100px; z-index: 10;}
        
         .evt03 {background:#f4f4f4; padding-bottom:100px}
-        .evt04 {background:#7d39ce; margin-bottom:50px}
-        .evt05 {background:#feda7a; margin-top:100px}
+        .evt04 {background:url(https://static.willbes.net/public/images/promotion/2022/02/2505_04_bg.jpg) repeat-x center top;} 
+
 
         /*분할 유튜브*/
         .youtube_contents {position:relative;width:1050px;margin:0 auto 50px; z-index:1;}
@@ -139,6 +139,14 @@
             </div>         
         </div> 
 
+        <div class="evtCtnsBox evt04" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2505_04.jpg" alt="갓덕현 강좌 할인받아 열공하세요!">
+        </div>
+
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_normal_partial')
+        @endif
+
         <!--
         <div class="evtCtnsBox evt04" id="evt04">
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2505_04.jpg"  alt="기대평 이벤트">              
@@ -166,7 +174,7 @@
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
         @endif 
-                            -->
+        -->
 	</div>
     <!-- End Container -->
 

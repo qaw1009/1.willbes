@@ -155,9 +155,6 @@
     <div id="Container" class="Container NSK ssam mb40">
         {!! banner('M_메인', 'MainSlider', $__cfg['SiteCode'], '0') !!}
 
-        {{-- 수강후기 --}}
-        @include('willbes.m.site.main_partial.study_comment_' . $__cfg['SiteCode'])
-
         <div class="noticeTabs c_both mt30">
             {{-- 게시판 --}}
             @include('willbes.m.site.main_partial.board_' . $__cfg['SiteCode'])
@@ -189,6 +186,9 @@
                 @endforeach
             </ul>
         @endif
+
+        {{-- 수강후기 --}}
+        @include('willbes.m.site.main_partial.study_comment_' . $__cfg['SiteCode'])
 
         {{--<div class="mainTit NSK-Black tx-center mt60" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>
         <div class="sampleViewImg">

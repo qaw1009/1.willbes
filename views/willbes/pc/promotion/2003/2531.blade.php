@@ -22,7 +22,7 @@
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/02/2531_top_bg.jpg) no-repeat center top;}
 
-        .wb_03, .wb_04 {background:#222}
+        .wb_03 {background:#222}
         .check {color:#fff; font-size:15px;font-weight:bold;position:absolute;left:50%;top:22%;margin-left:-345px;margin-top:325px;}
         .check label {cursor:pointer}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }

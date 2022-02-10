@@ -7,16 +7,20 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
+        .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
-        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
-        /*.evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5); }*/
+
 
         .sky {position:fixed;top:125px;right:10px;z-index:10; text-align:center}
         .sky a {display:block; margin-bottom:5px}
@@ -164,12 +168,14 @@
 
         <div class="evtCtnsBox wb_cts04" id="pkglec">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/1071_04_01.jpg" alt=""/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/1071_04_01.jpg" alt=""/>
                 <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/186551" target="_blank"  title="전자공학" style="position: absolute;left: 11.64%;top: 53.93%;width: 20.36%;height: 4.06%;z-index: 2;"></a>
                 <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/184023" target="_blank"  title="통신기술직" style="position: absolute;left: 39.64%;top: 53.93%;width: 20.36%;height: 4.06%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/184024" target="_blank"  title="전기직" style="position: absolute;left: 68.64%;top: 53.93%;width: 20.36%;height: 4.06%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/184021" target="_blank"  title="기본강의" style="position: absolute;left: 24.94%;top: 90.93%;width: 20.36%;height: 4.06%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/188423" target="_blank"  title="단원별문풀 패키지" style="position: absolute;left: 54.44%;top: 90.93%;width: 20.36%;height: 4.06%;z-index: 2;"></a>                
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/184024" target="_blank"  title="전기직" style="position: absolute; left: 68.64%;top: 53.93%;width: 20.36%;height: 4.06%;z-index: 2;"></a>
+
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/184021" target="_blank"  title="이론 패키지" style="position: absolute; left: 12.05%; top: 91.13%; width: 20.36%;height: 4.06%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/188423" target="_blank"  title="단원별문풀 패키지" style="position: absolute; left: 39.64%; top: 91.13%; width: 20.36%;height: 4.06%; z-index: 2;"></a>           
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/190962" target="_blank"  title="국가직 통신기술직" style="position: absolute; left: 68.64%; top: 91.13%; width: 20.36%;height: 4.06%; z-index: 2;"></a>      
             </div>
         </div>       
 
@@ -214,8 +220,8 @@
                     <tr>
                         <td>디지털공학</td>
                         <td>이론</td>
-                        <td>2021 최우영 디지털공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176064" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 디지털공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/189859" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -226,14 +232,14 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 전자공학 기출 단원별문풀</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/175434" target="_blank">수강신청</a></td>
+                        <td>2021+2022 최우영 전자공학 기출단원문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/190052" target="_blank">수강신청</a></td>
                     </tr>   
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 [국가직] 최우영 전자공학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179654" target="_blank">수강신청</a></td>
+                        <td>2022 [국가직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/191163" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -276,14 +282,14 @@
                     <tr>
                         <td>무선공학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 무선공학 단원별문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177170" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 무선공학 단원별문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/190669" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>무선공학</td>
                         <td>문제풀이</td>
-                        <td>2021 [국가직] 최우영 무선공학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179655" target="_blank">수강신청</a></td>
+                        <td>2022 [국가직] 최우영 무선공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/191164" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
             </div>
@@ -318,8 +324,8 @@
                     <tr>
                         <td>디지털공학</td>
                         <td>이론</td>
-                        <td>2021 최우영 디지털공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176064" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 디지털공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/189859" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -330,14 +336,14 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 전자공학 기출 단원별문풀</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/175434" target="_blank">수강신청</a></td>
+                        <td>2021+2022 최우영 전자공학 기출단원문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/190052" target="_blank">수강신청</a></td>
                     </tr>     
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 [국가직] 최우영 전자공학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179654" target="_blank">수강신청</a></td>
+                        <td>2022 [국가직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/191163" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -505,8 +511,8 @@
                     <tr>
                         <td>전기이론</td>
                         <td>문제풀이</td>
-                        <td>2021 [국가직] 최우영 전기이론 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179652" target="_blank">수강신청</a></td>
+                        <td>2022 [국가직] 최우영 전기이론 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/191160" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기이론</td>
@@ -542,8 +548,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>문제풀이</td>
-                        <td>2021 [국가직] 최우영 전기기기 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179653" target="_blank">수강신청</a></td>
+                        <td>2022 [국가직] 최우영 전기기기 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/191159" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
@@ -583,8 +589,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>문제풀이</td>
-                        <td>2021 [국가직] 최우영 전기기기 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179653" target="_blank">수강신청</a></td>
+                        <td>2022 [국가직] 최우영 전기기기 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/191159" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
@@ -675,8 +681,8 @@
                     <tr>
                         <td>디지털공학</td>
                         <td>이론</td>
-                        <td>2021 최우영 디지털공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176064" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 디지털공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/189859" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -687,14 +693,14 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 전자공학 기출 단원별문풀</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/175434" target="_blank">수강신청</a></td>
+                        <td>2021+2022 최우영 전자공학 기출단원문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/190052" target="_blank">수강신청</a></td>
                     </tr>             
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 [국가직] 최우영 전자공학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179654" target="_blank">수강신청</a></td>
+                        <td>2022 [국가직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/191163" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -770,8 +776,8 @@
                     <tr>
                         <td>디지털공학</td>
                         <td>이론</td>
-                        <td>2021 최우영 디지털공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176064" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 디지털공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/189859" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -782,14 +788,14 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 전자공학 기출 단원별문풀</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/175434" target="_blank">수강신청</a></td>
+                        <td>2021+2022 최우영 전자공학 기출단원문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/190052" target="_blank">수강신청</a></td>
                     </tr>     
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 [국가직] 최우영 전자공학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179654" target="_blank">수강신청</a></td>
+                        <td>2022 [국가직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/191163" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>

@@ -196,7 +196,7 @@
 
             <div id="tab01s" class="wrap">            
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2240_09_cts1.jpg" />
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6MuqwnOyblA%3D%3D" title="9급 일행 2개월 패스" target="_blank" style="position: absolute; left: 19.39%; top: 64.81%; width: 60.82%; height: 17.12%;  z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU664%2BZ7ZiV" title="종합반 수강신청" target="_blank" style="position: absolute; left: 19.39%; top: 64.81%; width: 60.82%; height: 17.12%;  z-index: 2;"></a>
             </div> 
 
             <div id="tab02s" class="wrap">

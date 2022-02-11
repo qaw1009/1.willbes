@@ -61,7 +61,7 @@
         </div>
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">           
-            <span><a href="#lecbuy01"><img src="https://static.willbes.net/public/images/promotion/2022/02/2378_top_img.jpg" alt="축산직 윤용범" /></a></span>
+            <span data-aos="fade-right"><a href="#lecbuy01"><img src="https://static.willbes.net/public/images/promotion/2022/02/2378_top_img.jpg" alt="축산직 윤용범" /></a></span>
         </div>
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up">         

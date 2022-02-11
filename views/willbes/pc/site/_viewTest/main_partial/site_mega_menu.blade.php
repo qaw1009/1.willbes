@@ -1137,9 +1137,10 @@
     @endif
 @endsection
 
-{{-- 자격증 학원수강신청 --}}
+{{-- 학원수강신청 --}}
 @section('mega_menu_off_lecture')
-    @if($__cfg['SiteCode'] == '2006')
+    {{-- 자격증 > 공인노무사 --}}
+    @if($__cfg['SiteCode'] == '2006' && $__cfg['CateCode'] == '309002')
         <div class="drop-Box list-drop-Box list-drop-Box-license">
             <table class="ssamProf">
                 <thead>
@@ -1214,6 +1215,74 @@
                             <li><a href="{{front_url('/offLecture/index?cate_code=3111&subject_idx=1678&prof_idx=51307', true)}}">이강희</a></li>
                             <li class="subTit">민사소송법</li>
                             <li><a href="{{front_url('/offLecture/index?cate_code=3111&subject_idx=1679&prof_idx=50895', true)}}">김춘환</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    @endif
+
+    {{-- 자격증 > 감정평가사 --}}
+    @if($__cfg['SiteCode'] == '2006' && $__cfg['CateCode'] == '309003')
+        <div class="drop-Box list-drop-Box list-drop-Box-license">
+            <table class="ssamProf">
+                <thead>
+                <tr>
+                    <th colspan="5" scope="col">1차</th>
+                    <th colspan="3" scope="col">2차</th>
+                </tr>
+                <tr>
+                    <th width="81">민법</th>
+                    <th width="94">경제학</th>
+                    <th width="98">부동산학원론</th>
+                    <th width="97">감정평가관계법규</th>
+                    <th width="96">회계학</th>
+                    <th width="107">감정평가실무</th>
+                    <th width="107">감정평가이론</th>
+                    <th width="107"><p>감정평가 및 보상법규</p></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td rowspan="3">
+                        <ul>
+                            <li><a href="{{front_url('/offLecture/index?cate_code=3112&subject_idx=1657&prof_idx=50895', true)}}">김춘환</a></li>
+                        </ul></td>
+                    <td rowspan="3">
+                        <ul>
+                            <li><a href="{{front_url('/offLecture/index?cate_code=3112&subject_idx=1658&prof_idx=51258', true)}}">김영식</a></li>
+                        </ul>
+                    </td>
+                    <td rowspan="3">
+                        <ul>
+                            <li><a href="{{front_url('/offLecture/index?cate_code=3112&subject_idx=1664&prof_idx=50900', true)}}">송우석</a></li>
+                        </ul>
+                    </td>
+                    <td rowspan="3">
+                        <ul>
+                            <li><a href="{{front_url('/offLecture/index?cate_code=3112&subject_idx=1663&prof_idx=51303', true)}}">구갑성</a></li>
+                        </ul>
+                    </td>
+                    <td rowspan="3">
+                        <ul>
+                            <li><a href="{{front_url('/offLecture/index?cate_code=3112&subject_idx=1659&prof_idx=51253', true)}}">이재휴</a></li>
+                        </ul>
+                    </td>
+                    <td rowspan="3">
+                        <ul>
+                            <li><a href="{{front_url('/offLecture/index?cate_code=3112&subject_idx=1665&prof_idx=50901', true)}}">여지훈</a></li>
+                        </ul>
+                    </td>
+                    <td rowspan="3">
+                        <ul>
+                            <li><a href="{{front_url('/offLecture/index?cate_code=3112&subject_idx=1666&prof_idx=50902', true)}}">어정민</a></li>
+                            <li><a href="{{front_url('/offLecture/index?cate_code=3112&subject_idx=1666&prof_idx=50903', true)}}">최동진</a></li>
+                        </ul>
+                    </td>
+                    <td rowspan="3">
+                        <ul>
+                            <li><a href="{{front_url('/offLecture/index?cate_code=3112&subject_idx=1669&prof_idx=50906', true)}}">이현진</a></li>
                         </ul>
                     </td>
                 </tr>

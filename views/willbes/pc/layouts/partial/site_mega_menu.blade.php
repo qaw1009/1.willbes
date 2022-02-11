@@ -1149,14 +1149,14 @@
                     <th colspan="4" scope="col">2차</th>
                 </tr>
                 <tr>
-                    <th width="81">노동법 1,2</th>
-                    <th width="94">민법</th>
-                    <th width="81">사회보험법</th>
-                    <th width="100">선택과목</th>
-                    <th width="94">노동법</th>
-                    <th width="107">인사노무관리</th>
-                    <th width="107">행정소송법</th>
-                    <th width="85">선택과목</th>
+                    <th>노동법 1,2</th>
+                    <th>민법</th>
+                    <th>사회보험법</th>
+                    <th>선택과목</th>
+                    <th>노동법</th>
+                    <th>인사노무관리</th>
+                    <th>행정소송법</th>
+                    <th>선택과목</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -1180,10 +1180,10 @@
                     </td>
                     <td rowspan="3">
                         <ul>
-                            <li class="subTit">경제학</li>
-                            <li><a href="{{front_url('/offLecture/index?cate_code=3111&subject_idx=1658&prof_idx=51258', true)}}">김영식</a></li>
                             <li class="subTit">경영학</li>
                             <li><a href="{{front_url('/offLecture/index?cate_code=3111&subject_idx=1670&prof_idx=50908', true)}}">전수환</a></li>
+                            <li class="subTit">경제학</li>
+                            <li><a href="{{front_url('/offLecture/index?cate_code=3111&subject_idx=1658&prof_idx=51258', true)}}">김영식</a></li>                            
                         </ul>
                     </td>
                     <td rowspan="3"><ul>
@@ -1197,6 +1197,7 @@
                             <li><a href="{{front_url('/offLecture/index?cate_code=3111&subject_idx=1676&prof_idx=51071', true)}}">오은지</a></li>
                             <li><a href="{{front_url('/offLecture/index?cate_code=3111&subject_idx=1676&prof_idx=50924', true)}}">정준모</a></li>
                             <li><a href="{{front_url('/offLecture/index?cate_code=3111&subject_idx=1676&prof_idx=51118', true)}}">박건민</a></li>
+                            <li><a href="{{front_url('/offLecture/index?cate_code=3111&subject_idx=1676&prof_idx=51358', true)}}">신현표</a></li>
                         </ul>
                     </td>
                     <td rowspan="3">

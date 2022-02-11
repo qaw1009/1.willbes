@@ -301,9 +301,18 @@
 
             $("#imgBannerRight4").click(function (){
                 slidesImg4.goToNextSlide();
-            });
-                                    
+            });                                    
         });
+
+         /*약관동의*/
+         function termsCheck(terms_id,ele_id){
+            if($("#" + terms_id).is(":checked") === false){
+                $("#" + terms_id).focus();
+                alert('이용안내에 동의하셔야 합니다.');
+                return;
+            }
+            goCartNDirectPay(ele_id, 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');
+        }
 
     </script>
 

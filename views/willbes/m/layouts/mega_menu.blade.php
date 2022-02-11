@@ -508,15 +508,15 @@
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50784?subject_idx=1492') }}">황보수정</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50770?subject_idx=1492') }}">김춘환</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50805?subject_idx=1492') }}">김동진</a>
-                </li>                
-                <li>
-                    <span>경제학</span>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51255?subject_idx=1493') }}">김영식</a>
-                </li>
+                </li> 
                 <li>
                     <span>경영학</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50783?subject_idx=1504') }}">전수환</a>
-                </li>
+                </li>               
+                <li>
+                    <span>경제학</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51255?subject_idx=1493') }}">김영식</a>
+                </li>               
 
                 <li>
                     <span>노동법(1, 2)</span>
@@ -547,6 +547,7 @@
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51069?subject_idx=1510') }}">오은지</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50799?subject_idx=1510') }}">정준모</a>                    
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51117?subject_idx=1510') }}">박건민</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51358?subject_idx=1510') }}">신현표</a>
                 </li>
 
                 <li>

@@ -1,9 +1,9 @@
-<ul id="goMenu" class="goMenu" >
-    <li><a href="{{front_url('/pass/offLecture/index')}}?cate_code=3113">학원수강신청<span>|</span></a></li>
-    <li><a href="{{front_url('/lecture/index/cate/'.$__cfg['CateCode'].'/pattern/free')}}?search_order=course&course_idx=1220">학원보강<span>|</span></a></li>
-    {{--<li><a href="{{front_url('/pass/offinfo/boardInfo/index/82')}}?on_off_link_cate_code={{$__cfg['CateCode']}}&s_cate_code_disabled=Y">강의실배정표<span>|</span></a></li>--}}
-    <li><a href="{{front_url('board/anonymous/index/cate/'.$__cfg['CateCode'])}}">커뮤니티<span>|</span></a></li>
-    <li><a href="{{front_url('/pass/offinfo/boardInfo/index/80')}}?on_off_link_cate_code={{$__cfg['CateCode']}}&s_cate_code_disabled=Y">강의시간표<span>|</span></a></li>
-    <li><a href="{{front_url('/lecture/index/cate/'.$__cfg['CateCode'].'/pattern/free')}}">무료특강<span>|</span></a></li>
-    <li><a href="{{front_url('/pass/offinfo/boardInfo/index/110')}}?on_off_link_cate_code={{$__cfg['CateCode']}}&s_cate_code_disabled=Y">강의자료실</a></li>
-</ul>
+<div class="go_MenuBtns">
+    <ul id="go_MenuBtns">
+        <li><a href="{{ front_url('/support/gosiNotice/index/cate/'.$__cfg['CateCode'].'?s_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y') }}"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon01.png" alt=""><span>학원공지사항</span></a></li>
+        <li><a href="https://job.willbes.net/landing/show/lcode/1009/cate/309004"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon02.png" alt=""><span>수험정보</span></a></li>
+        <li><a href="{{ front_url('/support/qna/index', true) }}"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon03.png" alt=""><span>학원1:1상담</span></a></li>
+        <li><a href="{{ front_url('/support/qna/index?s_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y') }}"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon04.png" alt=""><span>동영상1:1상담</span></a></li>
+        <li><a href="{{ front_url('/offinfo/boardInfo/index/110?on_off_link_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y', true) }}"><img src="https://static.willbes.net/public/images/promotion/main/2006/main_icon05.png" alt=""><span>강의자료실</span></a></li>
+    </ul>
+</div>

@@ -29,6 +29,9 @@ class Home extends \app\controllers\FrontController
         // 모바일 리다이렉트 commit test
         $this->_redirectMobile();
 
+        $aaa = 0.1 * 0.1;
+        echo 'asdfsdf = '.$aaa;
+
         $cate_code = get_var($this->_cate_code, config_app('DefCateCode'));
         $arr_campus = [];
 

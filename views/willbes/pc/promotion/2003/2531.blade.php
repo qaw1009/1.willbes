@@ -19,6 +19,8 @@
         /*.evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}*/
 
         /************************************************************/
+        .sky {position:fixed;top:100px;right:10px ;width:131px; text-align:center; z-index:111;}    
+        .sky a {display: block; margin-bottom:10px}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/02/2531_top_bg.jpg) no-repeat center top;}
 
@@ -48,11 +50,16 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
+        <div class="sky" id="QuickMenu">          
+            <a href="#lecbuy01"><img src="https://static.willbes.net/public/images/promotion/2022/02/2531_sky01.jpg" alt="조경직 티패스" /></a>    
+            <a href="#lecbuy01"><img src="https://static.willbes.net/public/images/promotion/2022/02/2531_sky02.jpg" alt="조경직 패키지" /></a> 
+            <a href="#lecbuy02"><img src="https://static.willbes.net/public/images/promotion/2022/02/2531_sky03.jpg" alt="조경직 단과" /></a>        
+        </div>
 
         <div class="evtCtnsBox wb_top" data-aos="fade-down">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2531_top.jpg" alt="조경직 이윤주"/>
-                <a href="#apply" title="지금 바로 신청하기" style="position: absolute;left: 24.73%;top: 85.86%;width: 50.7%;height: 5.93%;z-index: 2;"></a>
+                <a href="#lecbuy01" title="지금 바로 신청하기" style="position: absolute;left: 24.73%;top: 85.86%;width: 50.7%;height: 5.93%;z-index: 2;"></a>
             </div>
         </div>
 
@@ -64,7 +71,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2531_02.gif" alt="커리큘럼"/>           
         </div>        
 
-        <div class="evtCtnsBox wb_03" data-aos="fade-up" id="apply">
+        <div class="evtCtnsBox wb_03" data-aos="fade-up" id="lecbuy01">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2531_03.jpg" alt="수강신청" />
                 <a href="javascript:go_PassLecture('191148');" title="조경직 이윤주 티패스" style="position: absolute;left: 60.23%;top: 36.12%;width: 28.7%;height: 5.93%;z-index: 2;"></a>
@@ -74,13 +81,13 @@
             <div class="check" id="chkInfo">   
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />
-                    페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#info" class="infotxt">이용안내확인하기 ↓</a>
             </div>              
         </div>      
 
-        <div class="evtCtnsBox wb_05" data-aos="fade-up">
+        <div class="evtCtnsBox wb_05" data-aos="fade-up" id="lecbuy02">
             <div class="wrap">
                 <div class="sTitle NSK-Black">단과 수강신청</div>           
                 @if(empty($arr_base['display_product_data']) === false)
@@ -110,7 +117,7 @@
                     <dd>
                         <ol>
                             <li>본 상품 수강 시 이용 가능한 기기는 다음과 같이 제한됩니다.<br>
-                                - PC 2대 or 모바일 2대 of PC 1대 + 모바일 1대(총 2대)
+                                - PC 2대 or 모바일 2대 of PC 1대 + 모바일 1대(총 2대)
                             </li>
                             <li>PC/모바일 기기변경 등 단말기 초기화가 필요한 경우, 최조 1회에 한해 [내강의실] > [등록기기정보]에서 직접 초기화 가능하며, 그 외 특별한 사유에 의한 단말기 초기화의 경우, 고객센터 1544-5006 or 1:1 상단게시판으로 문의바랍니다.</li>
                         </ol>

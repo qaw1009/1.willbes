@@ -1132,6 +1132,11 @@
                 <li>
                     <a href="{{front_url('/offLecture/index?cate_code=3130')}}">바로가기</a>
                 </li>
+                <li class="Tit">PASS</li>
+                <li>
+                    <a href="{{front_url('/offLecture/index?cate_code=3150&course_idx=1404')}}">인강 PASS</a>
+                    <a href="{{front_url('/offLecture/index?cate_code=3150&course_idx=1405')}}">승진 PASS</a>
+                </li>
             </ul>
         </div>
     @endif
@@ -1197,7 +1202,7 @@
                             <li><a href="{{front_url('/offLecture/index?cate_code=3111&subject_idx=1676&prof_idx=51071', true)}}">오은지</a></li>
                             <li><a href="{{front_url('/offLecture/index?cate_code=3111&subject_idx=1676&prof_idx=50924', true)}}">정준모</a></li>
                             <li><a href="{{front_url('/offLecture/index?cate_code=3111&subject_idx=1676&prof_idx=51118', true)}}">박건민</a></li>
-                            <li><a href="{{front_url('/offLecture/index?cate_code=3111&subject_idx=1676&prof_idx=51355', true)}}">신현표</a></li>
+                            <li><a href="{{front_url('/offLecture/index?cate_code=3111&subject_idx=1676&prof_idx=51358', true)}}">신현표</a></li>
                         </ul>
                     </td>
                     <td rowspan="3">

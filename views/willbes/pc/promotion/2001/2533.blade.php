@@ -159,8 +159,8 @@
             </div>
             <div class="evtCtnsBox wrap mt40" id="transfer">           
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2533_03s.jpg"  alt="재수강, 환승">
-                <a href="https://www.willbes.net/classroom/qna/index" target="_blank" title="재수강 쿠폰받기" style="position: absolute; left: 40.89%; top: 55.03%; width: 11.88%; height: 18.34%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute; left: 74.2%; top: 55.03%; width: 11.88%; height: 18.34%; z-index: 2;"></a>
+                <a href="https://www.willbes.net/classroom/qna/index" target="_blank" title="재수강 쿠폰받기" style="position: absolute;left: 42.19%;top: 55.03%;width: 11.88%;height: 18.34%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute;left: 75.45%;top: 55.03%;width: 11.88%;height: 18.34%;z-index: 2;"></a>
             </div>
             <div class="totalPrice NSK-Black">
                 <a href="javascript:void(0);" onclick="termsCheck('is_chk1', 'pass');">신청하기 ></a>
@@ -304,7 +304,7 @@
             });
                                     
         });
-        
+
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

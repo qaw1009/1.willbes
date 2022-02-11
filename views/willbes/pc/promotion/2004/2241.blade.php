@@ -165,7 +165,7 @@
         <section class="evtCtnsBox wb_cts09" >   
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2241_08.jpg" alt="기본 이론 종합반 클라쓰"/>        
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2241_09.jpg" alt="수강 신청하기"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/2241_09.jpg" alt="수강 신청하기"/>
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001" target="_blank" title="수강신청하기" style="position: absolute; left: 25.54%; top: 67.52%; width: 48.66%; height: 12.08%;z-index: 2;"></a>
             </div>
         </section> 

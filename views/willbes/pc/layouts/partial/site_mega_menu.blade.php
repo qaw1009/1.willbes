@@ -1132,6 +1132,11 @@
                 <li>
                     <a href="{{front_url('/offLecture/index?cate_code=3130')}}">바로가기</a>
                 </li>
+                <li class="Tit">PASS</li>
+                <li>
+                    <a href="{{front_url('/offLecture/index?cate_code=3150&course_idx=1404')}}">인강 PASS</a>
+                    <a href="{{front_url('/offLecture/index?cate_code=3150&course_idx=1405')}}">승진 PASS</a>
+                </li>
             </ul>
         </div>
     @endif

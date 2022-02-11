@@ -196,8 +196,7 @@
 
             <div id="tab01s" class="wrap">            
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2240_09_cts1.jpg" />
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6MuqwnOyblA%3D%3D" title="9급 일행 2개월 패스" target="_blank" style="position: absolute; left: 10%; top: 65.38%; width: 38.88%; height: 15.96%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" title="9급 세무 2개월 패스" target="_blank" style="position: absolute; left: 50.61%; top: 65.38%; width: 38.88%; height: 15.96%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6MuqwnOyblA%3D%3D" title="9급 일행 2개월 패스" target="_blank" style="position: absolute; left: 19.39%; top: 64.81%; width: 60.82%; height: 17.12%;  z-index: 2;"></a>
             </div> 
 
             <div id="tab02s" class="wrap">
@@ -214,7 +213,7 @@
             </div>
         </div>
 
-        <section class="evtCtnsBox wb_cts05" >            
+        <section class="evtCtnsBox wb_cts05">            
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2240_05.gif" alt="커리큘럼"/>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_05_1.gif" alt="커리큘럼"/>
@@ -223,7 +222,7 @@
             </div>
         </section>
 
-        <section class="evtCtnsBox wb_cts04" >
+        <section class="evtCtnsBox wb_cts04">
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2240_04_top.jpg" alt="소방직 합격"/>
             <div class="slide_con">
                 <ul id="slidesImg4">

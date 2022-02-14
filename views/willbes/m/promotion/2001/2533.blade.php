@@ -123,7 +123,7 @@
         <div class="evtCtnsBox evt01" id="evt01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2533_m03.jpg" alt="지금 신청해야 최저가" >
             <div class="price">
-                <input type="radio" id="y_pkg0" name="y_pkg" value="190426" data-sale-price="860000" onClick=""/> <label for="y_pkg0"> 신광은경찰 법학경채 PASS</label>
+                <input type="radio" id="y_pkg0" name="y_pkg" value="191316" data-sale-price="860000" onClick=""/> <label for="y_pkg0"> 신광은경찰 법학경채 PASS</label>
             </div>
             <div class="ext01txt">
                 <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>

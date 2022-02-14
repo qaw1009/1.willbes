@@ -146,7 +146,7 @@
             </div>
             <div class="passLecBuy">   
                 <div>                    
-                    <input type="radio" id="y_pkg0" name="y_pkg" value="190426" data-sale-price="860000"/>                
+                    <input type="radio" id="y_pkg0" name="y_pkg" value="191316" data-sale-price="860000"/>                
                     <label for="y_pkg0">신광은경찰 법학경채 PASS </label>
                 </div>                
             </div>

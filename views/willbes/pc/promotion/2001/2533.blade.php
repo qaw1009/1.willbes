@@ -52,15 +52,17 @@
 
         .evt_03 {background:#f4f4f4;height:1430px;}
         .evt_03 .passLecBuy {width:1120px; margin:0 auto; display: flex; justify-content: space-around;}
-        .evt_03 .passLecBuy div {width:50%; margin:0 10px; line-height:30px; font-size:22px; font-weight:bold; color:#fff; background:#000; border-radius:20px; padding:20px 0}
-        .evt_03 .passLecBuy .radio_btn {width:25px;height:25px;}                  
+        .evt_03 .passLecBuy div {width:50%; margin:0 10px; line-height:30px; font-size:22px; font-weight:bold; color:#fff; background:#000; border-radius:20px; padding:20px 0}      
+        .evt_03 input[type="radio"] {height:26px; width:26px; vertical-align:middle}
+        .evt_03 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle}
+        .evt_03 input:checked + label {border-bottom:1px dashed #fec200; color:#fec200}
+        .evt_03 .totalPrice {width:600px; margin:60px auto;}
+        .evt_03 .totalPrice a {background:#c00d0d; display:block; font-size:36px; color:#fff; padding:0 30px; background:#000; border-radius:60px; height:80px; line-height:80px; box-shadow:10px rgba(0,0,0,.5);}
+        .evt_03 .totalPrice a:hover {background:#0202b0}
         .evt_03 .check {width:800px; margin:0 auto; padding:20px; font-size:16px; color:#000; letter-spacing:-1px;}
         .evt_03 .check a {display:inline-block; padding:10px; color:#fff; background:#000; margin-left:40px; border-radius:20px; font-size:12px}
         .evt_03 .check p {font-size:14px; padding:10px 0 0 20px; line-height:1.4}
         .evt_03 .check input:checked + label {border-bottom:1px dashed #4d0721; color:#4d0721}
-        .evt_03 .totalPrice {width:600px; margin:60px auto;}
-        .evt_03 .totalPrice a {display:block; font-size:36px; color:#fff; padding:0 30px; background:#000; border-radius:60px; height:80px; line-height:80px; box-shadow:10px rgba(0,0,0,.5);}
-        .evt_03 .totalPrice a:hover {background:#0202b0}
 
         .evt_04 {background:#019bfd;}
 
@@ -144,11 +146,11 @@
             </div>
             <div class="passLecBuy">   
                 <div>                    
-                    <input type="radio" class="radio_btn" id="y_pkg0" name="y_pkg" value="190426" data-sale-price="860000"/>                
+                    <input type="radio" id="y_pkg0" name="y_pkg" value="190426" data-sale-price="860000"/>                
                     <label for="y_pkg0">신광은경찰 법학경채 PASS </label>
                 </div>                
             </div>
-            <div class="check" data-aos="fade-up">
+            <div class="check">
                 <input type="checkbox" id="is_chk1" name="is_chk" value="Y"/>
                 <label for="is_chk1">페이지 하단 신광은 경찰 법학경채 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                 <a href="#info">이용안내확인하기 ↓</a>
@@ -247,18 +249,21 @@
 
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
-    
-        function go_PassLecture(cate, code){
-            if($("input[name='ischk']:checked").size() < 1){
-                alert("이용안내에 동의하셔야 합니다.");
-                return;
-            }
 
-            var _url = '{{ site_url('/periodPackage/show/cate/')}}' + cate + '/pack/648001/prod-code/' + code;
-            location.href = _url;
+        /* 팝업창 */
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($arr_promotion_params["page"]) === false && empty($arr_promotion_params["cert"]) === false)
+                var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
         }
 
-        function giveCheck() {
+        /*쿠폰발급 */
+         function giveCheck() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
             @if(empty($arr_promotion_params['give_type']) === false && empty($arr_promotion_params['give_idx']) === false)
@@ -272,6 +277,17 @@
                 alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
             @endif
         }
+
+         /*약관동의*/
+         function termsCheck(terms_id,ele_id){
+            if($("#" + terms_id).is(":checked") === false){
+                $("#" + terms_id).focus();
+                alert('이용안내에 동의하셔야 합니다.');
+                return;
+            }
+            goCartNDirectPay(ele_id, 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');
+        }
+
 
         /*디데이카운트다운*/
         $(document).ready(function() {
@@ -304,16 +320,7 @@
             });                                    
         });
 
-         /*약관동의*/
-         function termsCheck(terms_id,ele_id){
-            if($("#" + terms_id).is(":checked") === false){
-                $("#" + terms_id).focus();
-                alert('이용안내에 동의하셔야 합니다.');
-                return;
-            }
-            goCartNDirectPay(ele_id, 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');
-        }
-
+        
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

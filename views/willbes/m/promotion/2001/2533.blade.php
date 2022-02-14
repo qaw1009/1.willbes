@@ -120,7 +120,7 @@
             </div>    
         </div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-up">
+        <div class="evtCtnsBox evt01" id="evt01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2533_m03.jpg" alt="지금 신청해야 최저가" >
             <div class="price">
                 <input type="radio" id="y_pkg0" name="y_pkg" value="190426" data-sale-price="860000" onClick=""/> <label for="y_pkg0"> 신광은경찰 법학경채 PASS</label>

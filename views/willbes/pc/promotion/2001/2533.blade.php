@@ -165,7 +165,7 @@
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute;left: 75.45%;top: 55.03%;width: 11.88%;height: 18.34%;z-index: 2;"></a>
             </div>
             <div class="totalPrice NSK-Black">
-                <a href="javascript:void(0);" onclick="termsCheck('is_chk1', 'pass');">신청하기 ></a>
+                <a href="javascript:void(0);" onclick="termsCheck('is_chk1', 'evt01');">신청하기 ></a>
             </div>  
         </div>
 

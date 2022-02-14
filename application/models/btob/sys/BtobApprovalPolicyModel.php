@@ -141,8 +141,8 @@ class BtobApprovalPolicyModel extends WB_Model
             // 지점별 정책등록여부 확인
             $chk_row = $this->getApprovalPolicy($sess_btob_idx, $branch_ccd);
             if (empty($chk_row) === false) {
-                if ($start_date <= $now_date) {
-                    // 당월 포함 이전정보 등록 불가
+                if ($start_date < $now_date || ($start_date == $now_date && get_auth_role_type() != 'S')) {
+                    // 당월 포함 이전정보 등록 불가 (시스템관리자일 경우 당월은 등록 가능)
                     throw new \Exception('당월 이후의 수강부여제한정보만 등록 가능합니다.', _HTTP_BAD_REQUEST);
                 }
 

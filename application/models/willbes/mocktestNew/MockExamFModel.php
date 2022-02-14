@@ -301,6 +301,11 @@ class MockExamFModel extends WB_Model
                     'MpIdx' => element('mp_idx', $formData),
                 ]
             ];
+
+            if (empty($this->_findQuestionsData($add_condition)) === true) {
+                throw new Exception('선택항목을 조회할 수 없습니다. 창을 닫고 다시 시도해 주세요.');
+            }
+
             $answer_temp_data = $this->findAnswerTemp($formData, $add_condition, 'row');
             if(empty($answer_temp_data['MatIdx']) === true) {
                 $mode = 'add';
@@ -580,6 +585,22 @@ class MockExamFModel extends WB_Model
         return $this->_conn->query('select ' . $column . $from . $where)->row_array();
     }
 
+
+    /**
+     * 문제정보 조회
+     * @param array $arr_condition
+     * @return mixed
+     */
+    private function _findQuestionsData($arr_condition = [])
+    {
+        $column = "MqIdx";
+        $from = " FROM {$this->_table['mock_questions']}";
+        $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['IsStatus' => 'Y']);
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
 
     /**
      * 시간저장

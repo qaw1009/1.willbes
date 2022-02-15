@@ -13,7 +13,7 @@
         .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#000; font-size:14px !important;}
 
         .evt01 {padding-bottom:50px; text-align:left}
-        .evt01 .price {text-align:center; font-size:22px; font-weight:bold; color:#fff; background:#000; border-radius:10px; padding:15px 0; margin:0 11% 5%; letter-spacing:-1px}
+        .evt01 .price {text-align:center; font-size:22px; font-weight:bold; color:#fff; background:#000; border-radius:10px; padding:15px 0; margin:0 11% 5%; letter-spacing:-1px;margin-top:25px;}
         .evt01 .price label {display:inline-block}
         .evt01 .price input:checked + label {color:#ffef7e}
         .evt01 .ext01txt {padding:20px;}

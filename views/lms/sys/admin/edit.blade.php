@@ -20,7 +20,7 @@
                     <label class="control-label col-md-2">이름 (아이디)
                     </label>
                     <div class="col-md-3">
-                        <p class="form-control-static">{{ $data['wAdminName'] }} ({{ substr($data['wAdminId'], 0, strlen($data['wAdminId'])-3) }}***)</p>
+                        <p class="form-control-static">{{ $data['wAdminName'] }} ({{ $data['wAdminIdMask'] }})</p>
                     </div>
                     <label class="control-label col-md-2 col-md-offset-1">소속 / 직급
                     </label>

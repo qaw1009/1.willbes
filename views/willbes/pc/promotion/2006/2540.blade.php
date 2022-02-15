@@ -40,11 +40,14 @@
 
         .evt_01 {background:url(https://static.willbes.net/public/images/promotion/2022/02/2540_01_bg.jpg) repeat-x center top;}
 
-        .evt_02 {padding:100px 0; width:1120px; margin:auto}
-        .evt_02 .NSK-Black {font-size:50px; text-align:left; padding:20px 0; color:#331780 }    
- 
+        .evt_apply {padding:100px 0; width:1120px; margin:auto}
+        .evt_apply .tabs {display:flex; margin-bottom:20px;flex-direction: row;}
+        .evt_apply .tabs a {font-size:19px; text-align:center; display:block; width:25%; background:#3a1a92; color:#fff; padding:25px 0;line-height:25px;}
+        .evt_apply .tabs a.active {background:#fff; color:#000; border:3px solid #3a1a92; border-bottom:0}
+        .evt_apply .tabs a strong {color:#cf1425}
+         
         /************************************************************/
-        
+
     </style> 
 
 	<div class="evtContent NSK">     
@@ -80,43 +83,61 @@
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2540_01.jpg" alt="특별할인 프로모션" />
-        </div>        
+        </div>
 
-        <div class="evtCtnsBox evt_02" data-aos="fade-up">
-            <div class="NSK-Black">노동법</div>
-            <div>
+        <div class="evtCtnsBox evt_apply">
+            <div class="tabs NSK-Black">
+                <a href="#tab01" class="active">자격증<br><strong>노동법</strong></a>
+                <a href="#tab02">자격증<br><strong>행정쟁송법</strong></a>
+                <a href="#tab03">자격증<br><strong>인사노무관리</strong></a>
+                <a href="#tab04">자격증<br><strong>선택과목(경영조직론/민사소송법)</strong></a>              
+            </div>
+
+            <div id="tab01" class="tabContents">
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
                 @endif
             </div>
-            <div class="NSK-Black">행정쟁송법</div>
-            <div>
+
+            <div id="tab02" class="tabContents">
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
                 @endif
             </div>
-            <div class="NSK-Black">인사노무관리</div>
-            <div>
+
+            <div id="tab03" class="tabContents">
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
                 @endif
             </div>
-            <div class="NSK-Black">선택과목(경영조직론/민사소송법)</div>
-            <div>
+
+            <div id="tab04" class="tabContents">
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))
                 @endif
             </div>
-        </div>       
+
+        </div>      
 
 	</div>
-     <!-- End Container -->
+    <!-- End Container -->
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         $(document).ready(function() {
             AOS.init();
+
+            $(".tabContents").hide();
+            $(".tabContents:first").show();
+            $(".tabs a").click(function(){
+            var activeTab = $(this).attr("href");
+            $(".tabs a").removeClass("active");
+            $(this).addClass("active");
+            $(".tabContents").hide();
+            $(activeTab).fadeIn();
+            return false;
+            });
 
             /*디데이*/
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');

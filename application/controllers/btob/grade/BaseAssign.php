@@ -6,7 +6,7 @@ class BaseAssign extends \app\controllers\BaseController
     protected $models = array('correct/btobOffLecture','correct/btobCorrect','correct/btobAssign');
     protected $helpers = array('download');
     private $_sess_btob_idx = null;
-    private $_sess_btob_site_code = null;
+    protected $_sess_btob_site_code = null;
     public $_sess_btob_role_idx = null;
     private $_is_authority = true;
 

@@ -67,7 +67,12 @@
                             <td class="bg-white-only">{{ number_format($data['order']['tRealPayPrice']) }}원</td>
                             <th class="bg-odd">포인트사용금액</th>
                             <td class="bg-white-only">{{ number_format($data['order']['tUseLecPoint'] + $data['order']['tUseBookPoint']) }}p
-                                (잔액 : 강좌 {{ number_format($data['mem_point']['lecture']) }}p | 교재 {{ number_format($data['mem_point']['book']) }}p)</td>
+                                (잔액 : 강좌 {{ number_format($data['mem_point']['lecture']) }}p | 교재 {{ number_format($data['mem_point']['book']) }}p)
+                                @if(is_sys_admin() === true)
+                                    (적립포인트 : 강좌 {{ number_format($data['order']['tSaveLecPoint']) }}p
+                                    | 교재 {{ number_format($data['order']['tSaveBookPoint']) }}p)
+                                @endif
+                            </td>
                             <th class="bg-odd">가상계좌취소(일)</th>
                             <td class="bg-white-only">
                                 @if($data['order']['VBankStatus'] == 'O')
@@ -121,6 +126,39 @@
                     </table>
                 </div>
             </div>
+            @if($data['order']['IsDelivery'] == 'Y' && is_sys_admin() === true)
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4><strong>배송지정보</strong></h4>
+                    </div>
+                    <div class="col-md-6 text-right">
+                    </div>
+                    <div class="col-md-12">
+                        <table id="list_delivery_addr_table" class="table table-striped table-bordered">
+                            <colgroup>
+                                <col class="bg-odd" style="width: 156px;"/>
+                                <col style="width: 400px;"/>
+                                <col class="bg-odd" style="width: 188px;"/>
+                                <col/>
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th>수령인명</th>
+                                <td class="bg-white-only">{{ $data['order']['Receiver'] }}</td>
+                                <th>주소</th>
+                                <td class="bg-white-only">[{{ $data['order']['ZipCode'] }}] {{ $data['order']['Addr1'] }} {{ $data['order']['Addr2'] }}</td>
+                            </tr>
+                            <tr>
+                                <th>연락처</th>
+                                <td class="bg-white-only">{{ $data['order']['ReceiverPhone'] }} ({{ $data['order']['ReceiverTel'] }})</td>
+                                <th>요청사항</th>
+                                <td class="bg-white-only">{{ $data['order']['DeliveryMemo'] }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-md-6">
                     <h4><strong>· 주문상세내역</strong></h4>
@@ -183,6 +221,11 @@
                                                 <a href="{{ site_url('/pay/order/show/' . $order_prod_row['dTargetOrderIdx']) }}" target="_blank" class="gray">
                                                     {{ $order_prod_row['dTargetOrderIdx'] }} ({{ $order_prod_row['dTargetProdCode'] }})
                                                 </a>
+                                                @if($order_prod_row['IsUnPaid'] == 'Y')
+                                                    <a href="{{ site_url('/pay/offVisitPackage/create/' . $order_prod_row['OrderIdx'] . '/' . $order_prod_row['UnPaidIdx'] . '/' . $order_prod_row['ProdCode'] . '/' . $order_prod_row['MemIdx']) }}" target="_blank" class="gray">
+                                                        : 미수금주문
+                                                    </a>
+                                                @endif
                                             </div>
                                         @endif
                                     </td>

@@ -27,7 +27,8 @@ class Issue extends BaseAssign
     {
         $arr_condition = [
             'EQ' => [
-                'cu.ProdCode' => $this->_reqP('search_prod_code')
+                'p.SiteCode' => $this->_sess_btob_site_code
+                ,'cu.ProdCode' => $this->_reqP('search_prod_code')
                 ,'cu.CorrectIdx' => $this->_reqP('search_correct_idx')
                 ,'ba.AdminIdx' => $this->_reqP('search_admin_idx')
                 ,'cua.IsReply' => $this->_reqP('search_is_reply')

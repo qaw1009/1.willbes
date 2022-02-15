@@ -77,7 +77,7 @@ class AdminModel extends WB_Model
     {
         $column = 'A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPositionCcd, A.wAdminDeptCcd, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail';
         $column .= ' , A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
-        $column .= ' , ifnull(AR.RoleIdx, "") as RoleIdx';
+        $column .= ' , fn_mask(A.wAdminId, "id", "N") as wAdminIdMask, ifnull(AR.RoleIdx, "") as RoleIdx';
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
         $column .= ' , if(A.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wUpdAdminIdx and wIsStatus = "Y")) as wUpdAdminName';
 

@@ -11,26 +11,33 @@
     .dday span {color:#cf1425; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
     .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#000; font-size:14px !important;}
 
-    .event_apply {margin-bottom:50px;}    
-    .event_apply .NSK-Black {font-size:40px; text-align:left; padding:20px 0; color:#331780}
+    .evt_apply {margin-bottom:50px;}
+    .evt_apply .tabs {display:flex}
+    .evt_apply .tabs a {font-size:16px; text-align:center; display:block; width:25%; background:#3a1a92; color:#fff; padding:20px 0; letter-spacing:-1px}
+    .evt_apply .tabs a.active {background:#fff; color:#000;}
+    .evt_apply .tabs a.active {background:#fff; color:#000; border:3px solid #3a1a92; border-bottom:0}
+    .evt_apply .tabs a strong {color:#cf1425}
 
      /* 폰 가로, 태블릿 세로*/     
      @@media only screen and (max-width: 374px)  {
         .dday {font-size:18px !important;}
         .dday a {padding:5px 10px;}
-        .event_apply .NSK-Black {font-size:20px;padding:20px;}
+        .evt_apply .NSK-Black {padding:10px 0 0;}
+        .evt_apply .NSK-Black a{font-size:12px;}
     }
     /* 태블릿 세로 */
         @@media only screen and (min-width: 375px) and (max-width: 640px) {       
-        .event_apply .NSK-Black {font-size:25px;padding:25px;}
+        .evt_apply .NSK-Black {padding:10px 0 0;}
+        .evt_apply .NSK-Black a{font-size:13px;}
         }
     /* 태블릿 가로, PC */
         @@media only screen and (min-width: 641px) {
-        .event_apply .NSK-Black {font-size:30px;padding:30px;}
+        .evt_apply .NSK-Black {padding:10px 0 0;}
+        .evt_apply .NSK-Black a{font-size:15px;}
         }
 
     </style>
-    
+
     <div id="Container" class="Container NSK c_both">
 
         <div class="evtCtnsBox dday NSK-Thin"  data-aos="fade-down">
@@ -46,33 +53,39 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2540_m01.jpg" alt="특별할인 프로모션">
         </div>
 
-        <div class="evtCtnsBox mb50 event_apply" data-aos="fade-up" id="lec_buy">
-            <div class="NSK-Black">노동법</div>
-            <div>
-                @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-                @endif
+         <div class="evtCtnsBox mb50 evt_apply" data-aos="fade-up">
+            <div class="tabs NSK-Black">
+                <a href="#tab01" class="active">자격증<br><strong>노동법</strong></a>
+                <a href="#tab02">자격증<br><strong>행정쟁송법</strong></a>
+                <a href="#tab03">자격증<br><strong>인사노무관리</strong></a>
+                <a href="#tab04">자격증<br><strong>(경영조직론/민사소송법)</strong></a>              
             </div>
-            <div class="NSK-Black">행정쟁송법</div>
-            <div>
-                @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
-                @endif
-            </div>
-            <div class="NSK-Black">인사노무관리</div>
-            <div>
-                @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
-                @endif
-            </div>
-            <div class="NSK-Black">선택과목(경영조직론/민사소송법)</div>
-            <div>
-                @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))
-                @endif
-            </div>
-        </div>
 
+            <div id="tab01" class="tabContents">
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
+                @endif 
+            </div> 
+
+            <div id="tab02" class="tabContents">
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.m.promotion.display_product_partial',array('group_num'=>2))
+                @endif 
+            </div> 
+
+            <div id="tab03" class="tabContents">
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.m.promotion.display_product_partial',array('group_num'=>3))
+                @endif 
+            </div> 
+
+            <div id="tab04" class="tabContents">
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.m.promotion.display_product_partial',array('group_num'=>4))
+                @endif 
+            </div>
+
+        </div>    
     </div>
     <!-- End Container -->
 
@@ -81,6 +94,18 @@
     <script>
         $(document).ready(function() {
             AOS.init();
+
+            $(".tabContents").hide();
+            $(".tabContents:first").show();
+            $(".tabs a").click(function(){
+            var activeTab = $(this).attr("href");
+            $(".tabs a").removeClass("active");
+            $(this).addClass("active");
+            $(".tabContents").hide();
+            $(activeTab).fadeIn();
+            return false;
+            });
+
             dDayCountDown('{{$arr_promotion_params['edate']}}', '{{$arr_promotion_params['etime'] or "00:00"}}', 'txt');
         });
     </script>

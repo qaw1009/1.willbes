@@ -28,6 +28,7 @@ class User extends BaseMocktest
         $arr_base['search_PayStatusCcd'] = $this->_reqG('search_PayStatusCcd');
         $arr_base['search_IsTake'] = $this->_reqG('search_IsTake');
         $arr_base['search_takeArea'] = $this->_reqG('search_takeArea');
+        $arr_base['search_prod_code'] = $this->_reqG('search_prod_code', true);
         $arr_base['search_fi'] = $this->_reqG('search_fi', true);
 
         $paymentStatus = $this->mockCommonModel->_groupCcd['paymentStatus'];
@@ -64,16 +65,16 @@ class User extends BaseMocktest
                 'MR.TakeForm' => $this->_req('search_TakeForm'),
                 'MR.TakeArea' => $this->_req('search_TakeArea'),
                 'MR.IsTake' => $this->_req('search_IsTake'),
+                'MR.ProdCode' => $this->_req('search_prod_code'),
+                'O.OrderNo' => $this->_req('search_order_no'),
+                'MR.TakeNumber' => $this->_req('search_take_num')
             ],
             'ORG' => [
                 'LKB' => [
+                    'PD.ProdName' => $this->_req('search_prod_name', true),
                     'U.MemName' => $this->_req('search_fi', true),
                     'U.MemId' => $this->_req('search_fi', true),
-                    'U.Phone3' => $this->_req('search_fi', true),
-                    'PD.ProdName' => $this->_req('search_fi', true),
-                    'MR.ProdCode' => $this->_req('search_fi', true),
-                    'MR.TakeNumber' => $this->_req('search_fi', true),
-                    'O.OrderNo' => $this->_req('search_fi', true),
+                    'U.Phone3' => $this->_req('search_fi', true)
                 ]
             ]
         ];
@@ -109,16 +110,16 @@ class User extends BaseMocktest
                 'MR.TakeForm' => $this->_req('search_TakeForm'),
                 'MR.TakeArea' => $this->_req('search_TakeArea'),
                 'MR.IsTake' => $this->_req('search_IsTake'),
+                'MR.ProdCode' => $this->_req('search_prod_code'),
+                'O.OrderNo' => $this->_req('search_order_no'),
+                'MR.TakeNumber' => $this->_req('search_take_num')
             ],
             'ORG' => [
                 'LKB' => [
+                    'PD.ProdName' => $this->_req('search_prod_name', true),
                     'U.MemName' => $this->_req('search_fi', true),
                     'U.MemId' => $this->_req('search_fi', true),
-                    'U.Phone3' => $this->_req('search_fi', true),
-                    'PD.ProdName' => $this->_req('search_fi', true),
-                    'MR.ProdCode' => $this->_req('search_fi', true),
-                    'MR.TakeNumber' => $this->_req('search_fi', true),
-                    'O.OrderNo' => $this->_req('search_fi', true),
+                    'U.Phone3' => $this->_req('search_fi', true)
                 ]
             ]
         ];

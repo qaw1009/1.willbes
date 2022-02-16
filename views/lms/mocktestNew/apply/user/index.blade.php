@@ -52,9 +52,25 @@
                     </div>
                 </div>
                 <div class="form-group form-inline">
+                    <label class="col-md-1 control-label">상품검색</label>
+                    <div class="col-md-11">
+                        <input type="text" class="form-control" style="width:300px;" id="search_prod_code" name="search_prod_code" value="{{$arr_base['search_prod_code']}}">
+                        <p class="form-control-static mr-20">상품코드 검색</p>
+                        <input type="text" class="form-control" style="width:300px;" id="search_prod_name" name="search_prod_name" value="">
+                        <p class="form-control-static">상품명 검색</p>
+                    </div>
+                </div>
+                <div class="form-group form-inline">
                     <label class="col-md-1 control-label">회원검색</label>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value="{{$arr_base['search_fi']}}"> 회원명, 연락처, 주문번호, 응시번호, 상품명/코드 검색 가능
+                    <div class="col-md-11">
+                        <input type="text" class="form-control" style="width:300px;" id="search_order_no" name="search_order_no" value="">
+                        <p class="form-control-static mr-20">주문번호 검색</p>
+                        <input type="text" class="form-control" style="width:300px;" id="search_take_num" name="search_take_num" value="">
+                        <p class="form-control-static">응시번호 검색</p>
+                    </div>
+                    <div class="col-lg-offset-1 col-md-11">
+                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value="">
+                        <p class="form-control-static">회원명, 연락처 검색</p>
                     </div>
                 </div>
                 <div class="pt-10">

@@ -68,7 +68,7 @@
                         <th class="valign-middle text-center rowspan">회차</th>
                         <th class="valign-middle text-center rowspan">모의고사명</th>
                         <th class="valign-middle text-center blue">결제완료</th>
-                        <th class="valign-middle text-center">환불완료</th>
+                        <th class="valign-middle text-center bdr-line">환불완료</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -115,13 +115,13 @@
                             return (data === null) ? '없음' : data;
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<a href="{{site_url('/mocktestNew/apply/user/')}}?search_site_code='+$('#search_site_code').val()+'&search_PayStatusCcd={{$arr_base['pay_status']['paid']}}&search_fi='+row.ProdCode+'&search_takeArea='+row.TakeArea+'" target="_new"><u class="blue">'+ row.pay_count +'</u></a>';
+                            return '<a href="{{site_url('/mocktestNew/apply/user/')}}?search_site_code='+$('#search_site_code').val()+'&search_PayStatusCcd={{$arr_base['pay_status']['paid']}}&search_prod_code='+row.ProdCode+'&search_takeArea='+row.TakeArea+'" target="_new"><u class="blue">'+ row.pay_count +'</u></a>';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<a href="{{site_url('/mocktestNew/apply/user/')}}?search_site_code='+$('#search_site_code').val()+'&search_PayStatusCcd={{$arr_base['pay_status']['refund']}}&search_fi='+row.ProdCode+'&search_takeArea='+row.TakeArea+'" target="_new"><u class="blue">'+ row.refund_count +'</u></a>';
+                            return '<a href="{{site_url('/mocktestNew/apply/user/')}}?search_site_code='+$('#search_site_code').val()+'&search_PayStatusCcd={{$arr_base['pay_status']['refund']}}&search_prod_code='+row.ProdCode+'&search_takeArea='+row.TakeArea+'" target="_new"><u class="blue">'+ row.refund_count +'</u></a>';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<a href="{{site_url('/mocktestNew/apply/user/')}}?search_site_code='+$('#search_site_code').val()+'&search_fi='+row.ProdCode+'&search_takeArea='+row.TakeArea+'&search_IsTake=Y" target="_new"><u class="blue">'+ row.take_count +'</u></a>';
+                            return '<a href="{{site_url('/mocktestNew/apply/user/')}}?search_site_code='+$('#search_site_code').val()+'&search_prod_code='+row.ProdCode+'&search_takeArea='+row.TakeArea+'&search_IsTake=Y" target="_new"><u class="blue">'+ row.take_count +'</u></a>';
                         }},
                 ]
             });

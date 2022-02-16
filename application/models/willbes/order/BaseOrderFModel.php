@@ -16,6 +16,7 @@ class BaseOrderFModel extends WB_Model
         'order_delivery_address' => 'lms_order_delivery_address',
         'order_product_refund' => 'lms_order_product_refund',
         'order_post_data' => 'lms_order_post_data',
+        'order_exception' => 'lms_order_exception',
         'product' => 'lms_product',
         'product_lecture' => 'lms_product_lecture',
         'product_book' => 'lms_product_book',

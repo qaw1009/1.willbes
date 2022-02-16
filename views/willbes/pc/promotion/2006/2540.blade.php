@@ -45,7 +45,7 @@
         .evt_apply .tabs a {font-size:19px; text-align:center; display:block; width:25%; background:#3a1a92; color:#fff; padding:25px 0;line-height:25px;}
         .evt_apply .tabs a.active {background:#fff; color:#000; border:3px solid #3a1a92; border-bottom:0}
         .evt_apply .tabs a strong {color:#cf1425}
-         
+
         /************************************************************/
 
     </style> 
@@ -87,10 +87,10 @@
 
         <div class="evtCtnsBox evt_apply">
             <div class="tabs NSK-Black">
-                <a href="#tab01" class="active">자격증<br><strong>노동법</strong></a>
-                <a href="#tab02">자격증<br><strong>행정쟁송법</strong></a>
-                <a href="#tab03">자격증<br><strong>인사노무관리</strong></a>
-                <a href="#tab04">자격증<br><strong>선택과목(경영조직론/민사소송법)</strong></a>              
+                <a href="#tab01" class="active">노동법</a>
+                <a href="#tab02">행정쟁송법</a>
+                <a href="#tab03">인사노무관리</a>
+                <a href="#tab04">선택과목(경영조직론/민사소송법)</a>            
             </div>
 
             <div id="tab01" class="tabContents">

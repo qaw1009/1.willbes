@@ -55,10 +55,10 @@
 
          <div class="evtCtnsBox mb50 evt_apply" data-aos="fade-up">
             <div class="tabs NSK-Black">
-                <a href="#tab01" class="active">자격증<br><strong>노동법</strong></a>
-                <a href="#tab02">자격증<br><strong>행정쟁송법</strong></a>
-                <a href="#tab03">자격증<br><strong>인사노무관리</strong></a>
-                <a href="#tab04">자격증<br><strong>(경영조직론/민사소송법)</strong></a>              
+                <a href="#tab01" class="active">노동법</a>
+                <a href="#tab02">행정쟁송법</strong></a>
+                <a href="#tab03">인사노무관리</strong></a>
+                <a href="#tab04">(경영조직론/민사소송법)</strong></a>              
             </div>
 
             <div id="tab01" class="tabContents">

@@ -20,18 +20,16 @@
 
         /************************************************************/
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/02/2527_top_bg.jpg) no-repeat center top;}
-
-        .wb_01 {background:#2d2d2d;}
+        .wb_top {background:#2d2d2d url(https://static.willbes.net/public/images/promotion/2022/02/2527_top_bg.jpg) no-repeat center top;}
 
         .wb_02 {background:url(https://static.willbes.net/public/images/promotion/2022/02/2527_02_bg.jpg) no-repeat center top;}
 
         .wb_04 {background:#fff;position:relative;}
-        .youtube {position:absolute; top:168px; left:50%;z-index:10;margin-left:-314px}
+        .youtube {width:625px; margin:0 auto}
         .youtube iframe {width:625px; height:350px}
 
-        .wb_05 {background:url(https://static.willbes.net/public/images/promotion/2022/02/2527_05_bg.jpg) no-repeat center top;}
-        .wb_05 .attend {position:absolute; top:475px; left:50%; width:640px; margin-left:-330px; z-index:1; display: flex; justify-content: space-between; flex-wrap: wrap;}
+        .wb_05 {background:#124475;}
+        .wb_05 .attend { width:640px; margin:30px auto; display: flex; justify-content: space-between; flex-wrap: wrap;}
         .wb_05 .attend span {background:url(https://static.willbes.net/public/images/promotion/2022/02/2527_ch.png) no-repeat center top; width:128px; height:139px;
         font-size:20px; padding-top:13px; font-family: Impact,  "Noto Sans KR Regular", Haettenschweiler, 'Arial Narrow Bold', sans-serif; color:#4f4f4f; margin-bottom:3px}
         .wb_05 .attend span.end {background-image:url(https://static.willbes.net/public/images/promotion/2022/02/2527_ch_off.png);}
@@ -46,15 +44,12 @@
        
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
 
-        <div class="evtCtnsBox wb_top" id="main" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2527_top.jpg" alt="검찰직 형법/형소법"/>    
+        <div class="evtCtnsBox wb_top" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2527_top.jpg" alt="검찰직 형법/형소법"/><br>
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2527_01.jpg"  alt="선착순 50명 한정"/>  
         </div>
-
-        <div class="evtCtnsBox wb_01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2527_01.jpg"  alt="선착순 50명 한정"/>
-		</div>
 
         <div class="evtCtnsBox wb_02" data-aos="fade-up">
             <div class="wrap">
@@ -64,14 +59,11 @@
 		</div> 
 
         <div class="evtCtnsBox wb_03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2527_03.jpg"  alt="선택과목 폐지"/>
-		</div> 
-
-        <div class="evtCtnsBox wb_04" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2527_04.jpg"  alt="경탈팀 홍보영상"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2527_03_01.jpg"  alt="선택과목 폐지"/>            
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/5swtZjOQxRU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2527_03_02.jpg"  alt="최신 3개년 판례, 기출"/>
 		</div> 
 
         <form id="add_apply_form" name="add_apply_form">
@@ -90,16 +82,17 @@
             @endforeach
 
             <div class="evtCtnsBox wb_05" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/2527_05_01.jpg" alt="증정 이벤트"/>
+                <div class="attend {{time() .' '. strtotime($row['ApplyEndDatm'])}}" data-aos="fade-right">
+                    @if(empty($arr_base['add_apply_data']) === false)
+                        @foreach($arr_base['add_apply_data'] as $key => $row)
+                            <span class="{{ (time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'] ? 'end' : '') }}">{{$row['Name']}}</span>
+                        @endforeach
+                    @endif
+                </div>
                 <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/02/2527_05.jpg"  alt="증정 이벤트"/>
-                    <div class="attend {{time() .' '. strtotime($row['ApplyEndDatm'])}}" data-aos="fade-right">
-                        @if(empty($arr_base['add_apply_data']) === false)
-                            @foreach($arr_base['add_apply_data'] as $key => $row)
-                                <span class="{{ (time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'] ? 'end' : '') }}">{{$row['Name']}}</span>
-                            @endforeach
-                        @endif
-                    </div>
-                    <a href="javascript:void(0);" onclick="fn_add_apply_submit(); return false;" title="신청하기" style="position: absolute;left: 23.75%;top: 74.51%;width: 52.2%;height: 11.32%;z-index: 2;"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/2022/02/2527_05_02.jpg" alt="증정 이벤트"/>
+                    <a href="javascript:void(0);" onclick="fn_add_apply_submit(); return false;" title="신청하기" style="position: absolute; left: 23.48%; top: 6.76%; width: 52.5%; height: 39.86%; z-index: 2;"></a>
                 </div>           
             </div>
         </form>

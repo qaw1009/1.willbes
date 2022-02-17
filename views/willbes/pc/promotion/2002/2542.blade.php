@@ -80,15 +80,15 @@
                 <a href="#evt_02"><img src="https://static.willbes.net/public/images/promotion/2022/02/2542_sky3.png" title="경품 참여하기"></a>
             </div>
 
-            <div class="evtCtnsBox evt00">
+            <div class="evtCtnsBox evt00" data-aos="fade-down">
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/police.jpg" title="경찰학원 1위">
             </div>
 
-            <div class="evtCtnsBox evtTop">
+            <div class="evtCtnsBox evtTop" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2542_top.jpg" title="기본/심화 커리큘럼 설명회">
             </div>
 
-            <div class="evtCtnsBox evt01" id="evt_01">
+            <div class="evtCtnsBox evt01" id="evt_01" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2542_01.jpg" title="설명회">
                 <div class="request" id="request">
                     <div class="requestL">
@@ -188,15 +188,15 @@
                 </div>
             </div>
 
-            <div class="evtCtnsBox evt02">
+            <div class="evtCtnsBox evt02" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2542_02.jpg" title="명쾌한 해답 제시">
             </div>
 
-            <div class="evtCtnsBox evt03">
+            <div class="evtCtnsBox evt03" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2542_03.jpg" title="스페셜 혜택">                
             </div>
 
-            <div class="evtCtnsBox evt04" id="evt_02">
+            <div class="evtCtnsBox evt04" id="evt_02" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2542_04.jpg" title="무엇이든 물어보세요">
             </div>
 
@@ -205,7 +205,7 @@
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')
             @endif 
          
-            <div class="evtCtnsBox evt05">
+            <div class="evtCtnsBox evt05" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2542_05.jpg" title="누구보다 더 빨리 더 먼저">                         
             </div>   
             
@@ -213,11 +213,11 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.7927493090915!2d126.94179831559448!3d37.51280597980801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9fe8a0a1e2a5%3A0x3bc432e93a6e20c1!2zKOyjvCnsnIzruYTsiqQ!5e0!3m2!1sko!2skr!4v1603420278998!5m2!1sko!2skr" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
 
-            <div class="evtCtnsBox evt06">
+            <div class="evtCtnsBox evt06"  data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2542_06.jpg" title="오시는 길">                         
             </div>   
 
-            <div class="evtCtnsBox evtInfo NGR">
+            <div class="evtCtnsBox evtInfo NGR" data-aos="fade-up">
                 <div class="evtInfoBox">
                     <h4 class="NGEB">유의사항 이용안내</h4>
                     <div class="infoTit NG"><strong>[설명회 유의사항]</strong></div>
@@ -243,6 +243,15 @@
         </form>
 	</div>
     <!-- End Container -->
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+    $( document ).ready( function() {
+        AOS.init();
+    } );
+    </script>
 
     <script>
         function fn_submit() {

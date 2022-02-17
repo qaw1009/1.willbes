@@ -508,6 +508,8 @@ class OrderListFModel extends BaseOrderFModel
 
         $from = '
             from ' . $this->_table['order'] . ' as O
+                left join ' . $this->_table['order_exception'] . ' as OE
+                    on O.OrderIdx = OE.OrderIdx and OE.IsStatus = "Y"                
                 left join ' . $this->_table['site'] . ' as S
                     on O.SiteCode = S.SiteCode and S.IsStatus = "Y"
                 left join ' . $this->_table['site_group'] . ' as SG
@@ -515,11 +517,12 @@ class OrderListFModel extends BaseOrderFModel
                 left join ' . $this->_table['code'] . ' as CPR
                     on O.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y"
                 left join ' . $this->_table['code'] . ' as CPM
-                    on O.PayMethodCcd = CPM.Ccd and CPM.IsStatus = "Y"              
+                    on O.PayMethodCcd = CPM.Ccd and CPM.IsStatus = "Y" 
+            where OE.OrderExcIdx is null 
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
+        $where = $where->getMakeWhere(true);
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);

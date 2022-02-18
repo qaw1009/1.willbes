@@ -33,8 +33,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2544_top.jpg" alt="동행모의고사"/>    
         </div>
 
-        <div class="evtCtnsBox wb_cts01" data-aos="fade-up"> 
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2544_01.jpg" alt="응시방법"/>  
+        <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/2544_01.jpg" alt="응시방법"/>
+                <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="모의고사 신청 바로가기" style="position: absolute;left: 29.53%;top: 89.41%;width: 39.46%;height: 4.99%;z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">

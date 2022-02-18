@@ -745,7 +745,22 @@
     </div>
 
 </div>
+
+{{--모달팝업--}}
+<div class="popupBox NSK" id="modalPopup">
+    <div class="popupContent">
+        <div class="popbanner"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/popup_sp01.jpg"></a></div>
+        <div class="popbanner"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/popup_sp02.jpg"></a></div>
+    </div>
+    <div class="btnClose">
+        <div><button onclick="closeWin('modalPopup')">오늘 그만 보기</button></div>
+        <div><button onclick="closeWin('modalPopup')">닫기</button></div>
+    </div>
+</div>
+{{--모달팝업//--}}
 <!-- End Container -->
+
+
 <script>   
     //swiper 메인 슬라이드
     $(document).ready(function(){

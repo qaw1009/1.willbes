@@ -290,12 +290,6 @@
         <div class="swiper-pagination"></div>
     </div>
 
-    {{--
-    <div class="gosiTitle NSK">
-        합격을 위해 필요한 모든 것, <span class="NSK-Black">윌비스PASS<span>
-    </div>
-    --}}
-
     <div class="MainSlider swiper-container swiper-container-page mt20">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x600_01.jpg"></div>
@@ -532,18 +526,6 @@
 
 </div>
 
-{{--모달팝업--}}
-<div class="popupBox quizPopup01 NSK">
-    <div class="popupContent">
-        <div class="popbanner"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/popup_sp01.jpg"></a></div>
-        <div class="popbanner"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/popup_sp02.jpg"></a></div>
-    </div>
-    <div class="btnClose">
-        <div><a href="#none">오늘 그만 보기</a></div>
-        <div><a href="#none">닫기</a></div>
-    </div>
-</div>
-{{--모달팝업//--}}
 <!-- End Container -->
 
 

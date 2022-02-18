@@ -246,9 +246,9 @@
                                                 <td>
                                                     <div>
                                                         @if(time() >= strtotime($arr_base['add_apply_data'][$j]['ApplyEndDatm']) || $arr_base['add_apply_data'][$j]['PersonLimit'] <= $arr_base['add_apply_data'][$j]['MemberCnt'])
-                                                            <span><img src="https://static.willbes.net/public/images/promotion/2022/02/2535_02_img02.png" alt="마감"></span>
+                                                            <span><img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img02.png" alt="마감"></span>
                                                         @endif
-                                                        <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_02_img01.png" alt="">
+                                                        <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
                                                     </div>
                                                 </td>
                                                 @if($j==($tr_i+$col_cnt-1) || $j == (count($arr_base['add_apply_data']))-1)

@@ -93,7 +93,7 @@
 
         <div class="evtCtnsBox evt03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2541_03_01.jpg" alt="" />  
-            <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605006" target="_blank">지금 바로 신규 개강 과정 신청하기 ></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605006&course_idx=1063" target="_blank">지금 바로 신규 개강 과정 신청하기 ></a>
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2541_03_02.jpg" alt="" />  
         </div>
     </div>

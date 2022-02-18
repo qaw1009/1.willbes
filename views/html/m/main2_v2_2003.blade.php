@@ -531,7 +531,22 @@
     </div>
 
 </div>
+
+{{--모달팝업--}}
+<div class="popupBox quizPopup01 NSK">
+    <div class="popupContent">
+        <div class="popbanner"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/popup_sp01.jpg"></a></div>
+        <div class="popbanner"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/popup_sp02.jpg"></a></div>
+    </div>
+    <div class="btnClose">
+        <div><a href="#none">오늘 그만 보기</a></div>
+        <div><a href="#none">닫기</a></div>
+    </div>
+</div>
+{{--모달팝업//--}}
 <!-- End Container -->
+
+
 <script>    
     //교수진
     var swiper = new Swiper('.swiper-container-prof', {

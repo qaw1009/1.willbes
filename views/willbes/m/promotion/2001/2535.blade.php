@@ -11,9 +11,7 @@
     /*.evtCtnsBox a {border:1px solid #000}*/
 
 
-    .evt03 {padding-bottom:50px} 
-
-    .form_area{padding:10px; border:1px solid #909090; letter-spacing:-1px}
+    .form_area{padding:30px 10px; letter-spacing:-1px}
     .form_area h4{font-size:1.2rem; background:#344963; color:#fff; padding:10px}
     .form_area h5{margin-bottom:10px;font-weight:bold; color:#344963;}
     .form_area strong {display:inline-block; width:150px; color:#344963; background-color:#e4e4e4; height:30px; line-height:30px; padding-left:5px; vertical-align:middle; margin-right:5px}

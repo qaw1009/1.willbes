@@ -25,10 +25,10 @@
         .downWrap .btns{position: relative; width:1120px; margin:0 auto;}
         .downWrap .btns a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
 
-        .evt01 {padding:100px 0; border-bottom:1px solid #ccc; width:1120px; margin:0 auto; position:relative;}
+        .evt01 {padding:50px 0 100px; border-bottom:1px solid #ccc; width:1120px; margin:0 auto; position:relative;}
         .evt01 .txtinfo {position:absolute; top:0; left:0; width:100%; z-index: 2; background:rgba(255,255,255,.9); display: flex; justify-content: center; align-items: center; height:650px; font-size:50px; line-height:1.3; text-shadow:0 5px 10px rgba(0,0,0,.2); color:#5b4ffb; }
         .evt01 .txtinfo span {color:#000; font-size:70px}
-        .evt01 .tag {font-size:40px; color:#5b4ffb; text-align:center}
+     
         .evt01 .request {width:1000px; margin:0 auto; background:#fff; padding:50px;text-align:left}
         .evt01 .request h3 {font-size:17px;}
         .evt01 .request td {padding:10px; font-size:14px}
@@ -48,10 +48,10 @@
         .evt03 {background:#f6f0e0}  
         .evt04 {background:#978674} 
         
-        .youtube {background:#f4f4f4; padding:0 0 150px 0;}
+        .youtube {background:#f4f4f4; padding:0 0 100px 0;}
         .youtube .NSK-Black {color:#fff; font-size:50px; margin-bottom:50px}
         .youtube ul {width:1120px; margin:0 auto}
-        .youtube li {display:inline; float:left;}
+        .youtube li {display:inline;}
         .youtube li:last-child {margin-left:20px}        
         .youtube li div {margin-top:30px; font-size:30px; font-weight:bold; color:#595959}
         .youtube li div span {color:#fff;}
@@ -88,7 +88,7 @@
     <div class="evtContent NSK" id="evtContainer">
         
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2139_top_n1.jpg"  alt="사립탐정사"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2139_top_n1.jpg"  alt="사립탐정사"/>
             <div class="NSK">사립탐정사 시험 필수 자료</div>
         </div> 
 
@@ -106,102 +106,26 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2139_04.jpg"  alt="영상으로 만나보세요"/>
             <ul>
                 <li>                    
-                    <iframe src="https://www.youtube.com/embed/39Aovh9Lwe0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div>#탐정사 시험안내</div>
-                </li>
-                <li>
-                    <iframe src="https://www.youtube.com/embed/bM29qtP9Fag?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div>#한국탐정 KPD소개</div>
-                </li>
+                    <iframe src="https://www.youtube.com/embed/A0fi0Juq_7U?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                    
+                </li>         
             </ul>            
         </div>
 
-        <div class="evtCtnsBox evt01">
-            {{--
-            <div class="txtinfo NSK-Black">
-                <div>코로나19로 인해<br>
-                <span>사립탐정사</span><br>
-                자격 3회시험일정은 <br>
-                추후공지 예정입니다.</div>
-            </div>
-            --}}
-            <div class="tag NSK-Black">#사립탐정 #한국탐정 #01/23 #누구나빠르게</div>
-            {{--
-            <div class="request" id="request">
-                <div class="requestL">
-                    <h3 class="NSK-Black">* 사립탐정사 시험  학원예약접수</h3>
-                    <table width="0" cellspacing="0" cellpadding="0" class="table_type">
-                        <col width="25%" />
-                        <col  />
-                        <tr>
-                            <th>* 이름</th>
-                            <td scope="col">
-                                <input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" {{(sess_data('is_login') === true) ? 'readonly="readonly"' : ''}}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>* 연락처</th>
-                            <td>
-                                <input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" maxlength="11">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>* 시험선택</th>
-                            <td>
-                                <ul>
-                                    @foreach($arr_base['register_list'] as $key => $val)
-                                        @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
-                                            <li><input type="radio" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li><br/>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="requestR">
-                    <h3 class="NSK-Black">* 개인정보 수집 및 이용에 대한 안내</h3>
-                    <ul>
-                        <li>
-                            <strong>1. 개인정보 수집 이용 목적</strong> <br>
-                            - 신청자 본인 확인 및 신청 접수 및 문의사항 응대
-                            - 통계분석 및 마케팅
-                            - 윌비스 신광은경찰학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공
-                        </li>
-                        <li><strong>2. 개인정보 수집 항목</strong> <br>
-                        - 필수항목 : 성명, 연락처, 선택항목 
-                        </li>
-                        <li><strong>3. 개인정보 이용기간 및 보유기간</strong><br>
-                        - 이용 목적 달성 또는 신청자의 신청 해지 및 삭제 요청 시 파기
-                        </li>
-                        <li><strong>4. 신청자의 개인정보 수집 및 활용 동의 거부 시</strong><br>
-                        - 개인정보 수집에 동의하지 않으시는 경우 설명회 접수 및 서비스 이용에 제한이 있을 수 있습니다.
-                        </li>
-                        <li>5. 입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3 자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.</li>
-                        <li>6. 신이벤트 진행에 따른 단체사진 및 영상 촬영에 대한 귀하의 초상권 사용을 동의하며, 해당 저작물에 대한 저작권은 윌비스에 귀속됩니다.</li>
-                    </ul>
-                    <div>
-                        <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
-                    </div>
-                </div>
-            </div>
-            --}}
-            <div class="btn NGEB">
-                {{--<a href="javascript:void(0);" onclick="javascript:fn_submit();">사립탐정 자격시험 예약하기 ></a>--}}
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIE5rWwEPmgP6fBEzM2yqis6KpZC-Ib72kNcXmK987GhGgsw/viewform" target="_blank">사립탐정 자격시험 예약하기 ></a>
-            </div>
-            {{--<div class="mt30 tx16">* 결제는 신광은경찰학원(본원) 현장결제만 가능합니다.</div>--}}
+        <div class="evtCtnsBox evt01">           
+            <div class="btn NGEB">               
+                <a href="https://bit.ly/3rLYbLd" target="_blank">사립탐정 자격시험 예약하기 ></a>
+            </div>          
         </div>
 
         <div class="evtCtnsBox evt02">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2139_01.jpg"  alt="사립탐정사 자격시험" />
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIE5rWwEPmgP6fBEzM2yqis6KpZC-Ib72kNcXmK987GhGgsw/viewform" target="_blank" title="" style="position: absolute; left: 20.45%; top: 61.76%; width: 20.89%; height: 1.7%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/2139_01.jpg"  alt="사립탐정사 자격시험" />
+                <a href="https://bit.ly/3rLYbLd" target="_blank" title="" style="position: absolute; left: 20.45%; top: 61.76%; width: 20.89%; height: 1.7%; z-index: 2;"></a>
             </div>
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2139_02.jpg"  alt="간단히 알고가는 사립탐정사">
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2139_02.jpg"  alt="간단히 알고가는 사립탐정사">
         </div>
 
         <div class="evtCtnsBox evt04">

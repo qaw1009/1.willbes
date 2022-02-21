@@ -29,9 +29,8 @@
         .evtTop {background:url("https://static.willbes.net/public/images/promotion/2022/02/2545_top_bg.jpg") no-repeat center top; height: 1016px;} 
         .evtTop span {position: absolute; top:530px; left:50%; margin-left:-510px; z-index: 10;}
 
-        .certification {background:url("https://static.willbes.net/public/images/promotion/2021/10/2390_certification_bg.jpg") no-repeat center top;}
-            
-        .evt01 {padding-top:150px}
+           
+        .evt01 {padding:150px 0 100px}
         .evt01 .passLecBuy {width:1120px; margin:0 auto; display: flex; justify-content: space-around;}
         .evt01 .passLecBuy div {width:50%; margin:0 10px; line-height:30px; font-size:22px; font-weight:bold; color:#fff; background:#000; border-radius:20px; padding:20px 0} 
         .evt01 input[type="radio"] {height:26px; width:26px; vertical-align:middle}
@@ -46,29 +45,12 @@
         .evt01 .check a {display:inline-block; padding:10px; color:#fff; background:#000; margin-left:40px; border-radius:20px; font-size:12px}
         .evt01 .check p {font-size:14px; padding:10px 0 0 20px; line-height:1.4}
         .evt01 .check input:checked + label {border-bottom:1px dashed #4d0721; color:#4d0721}
+
+        .evt02 {background:url("https://static.willbes.net/public/images/promotion/2022/02/2545_02_bg.jpg") no-repeat center top;} 
     
-        .evt03 {background:#393939}
-        .evt04 {background:#eee;} 
+        .evt03 {background:#9e70de}
 
-        .evt06{padding-bottom:50px;}
-
-        /*탭(텍스트)*/
-        .tabContaier{width:100%;background:#fff;margin-top:50px;}
-        .tabContaier ul{width:1120px;margin:0 auto;height:80px;} 
-        .tabContaier li{display:inline-block;width:224px;height:75px;line-height:74px;color:#0101ff;float:left;font-size:25px;font-weight:bold;border:1px solid #0101ff;}    
-        .tabContaier:after {content:""; display:block; clear:both}
-        .tabContaier li a{display:block;}
-        .tabContaier li a:hover,
-        .tabContaier li a.active {color:#fff;font-size:35px;background:#0101ff;}
-        /*유튜브*/
-        .youtube {position:absolute; top:184px; left:50%;z-index:1;margin-left:-100px}
-        .youtube iframe {width:586px; height:330px}
-
-        .evt07 {background:#eee;} 
-        .evt08 {background:#f6f9fe;}
-        .evt09 {background:#9e70de}
-
-        /* 이용안내 */
+          /* 이용안내 */
         .content_guide_wrap{background:#fff; width:1000px; margin:0 auto; padding:50px 0 100px; font-size:14px}
         .content_guide_wrap .guide_tit{margin-bottom:50px; text-align:left; font-size:30px;}
 
@@ -110,6 +92,7 @@
     </form>
 
     <div class="evtContent NSK" id="evtContainer">
+        {{--
         <div class="sky" id="QuickMenu">
             <a href="#pass">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2539_sky01.png" alt="0원 패스">
@@ -121,6 +104,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2539_sky03.png" alt="23년 패스">
             </a>  
         </div>
+        
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
@@ -148,6 +132,7 @@
                 </ul>
             </div>
         </div>
+        --}}
 
         <div class="evtCtnsBox evt00" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/wb_police.jpg" alt="경찰학원부분 1위"/>
@@ -195,92 +180,18 @@
             </div>  
         </div>              
 
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2545_02.jpg"  alt="후기"/>
+        </div>      
+
         <div class="evtCtnsBox evt03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2539_03.jpg"  alt="후기"/>
-        </div>
-         
-        <div class="evtCtnsBox evt04" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2539_04.jpg"  alt="합격할수 없는 이유"/>            
-        </div>        
-
-        <div class="evtCtnsBox evt05" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2539_05.jpg"  alt="전문교수진" />      
-        </div>
-
-        <div class="evtCtnsBox evt06" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2539_06.jpg"  alt="믿고 듣는 신광은 경찰팀" />
-            <div class="tabContaier" id="apply">    
-                <ul class="NSK-Black">    
-                    <li><a href="#tab1" class="active">형사법</a></li>                            
-                    <li><a href="#tab2">경찰학</a></li>
-                    <li><a href="#tab3">헌법 (김원욱)</a></li>                            
-                    <li><a href="#tab4">헌법 (이국령)</a></li>  
-                    <li><a href="#tab5">범죄학</a></li>           
-                </ul>
-                <div id="tab1" class="tabContents">
-                    <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450_06_01.jpg"  alt="형사법" />
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51160?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 32.89%;top: 82.03%;width: 33.88%;height: 11.34%;z-index: 2;"></a>
-                        <div class="youtube">
-                            <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>                         
-                </div>
-                <div id="tab2" class="tabContents">
-                    <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450_06_02.jpg"  alt="경찰학" />
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51161?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 32.89%;top: 82.03%;width: 33.88%;height: 11.34%;z-index: 2;"></a>
-                        <div class="youtube">
-                            <iframe src="https://www.youtube.com/embed/VHTrL5w2IF4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>                         
-                </div> 
-                <div id="tab3" class="tabContents">
-                    <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450_06_03.jpg"  alt="헌법 김원욱" />
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51146?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 32.89%;top: 82.03%;width: 33.88%;height: 11.34%;z-index: 2;"></a>
-                        <div class="youtube">
-                            <iframe src="https://www.youtube.com/embed/UB91DCctYgU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>                               
-                </div> 
-                <div id="tab4" class="tabContents">
-                    <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450_06_04.jpg"  alt="헌법 이국령" />
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 32.89%;top: 82.03%;width: 33.88%;height: 11.34%;z-index: 2;"></a>
-                        <div class="youtube">
-                            <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>                                 
-                </div> 
-                <div id="tab5" class="tabContents">
-                    <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450_06_05.jpg"  alt="범죄학" />
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51278?subject_idx=2178&subject_name=%EB%B2%94%EC%A3%84%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 32.89%;top: 82.03%;width: 33.88%;height: 11.34%;z-index: 2;"></a>
-                        <div class="youtube">
-                            <iframe src="https://www.youtube.com/embed/8T1HxQ5PPhQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>                          
-                </div>                                
-            </div>                 
-        </div>
-
-        <div class="evtCtnsBox evt07" data-aos="fade-up">        
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2539_07.jpg"  alt="reason2" />  
-        </div>
-
-        <div class="evtCtnsBox evt08" data-aos="fade-up">      
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2539_08.jpg"  alt="reason3" />  
-        </div>
-
-        <div class="evtCtnsBox evt09" data-aos="fade-up">
             <form id="add_apply_form" name="add_apply_form">
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
                 <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/02/2539_09.jpg"  alt="스폐셜혜택" />
+                    <img src="https://static.willbes.net/public/images/promotion/2022/02/2545_03.jpg"  alt="스폐셜혜택" />
                     <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 13.04%; top: 42.5%; width: 29.91%; height: 6.9%; z-index: 2;"></a>
                     <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="장정훈 경찰학" style="position: absolute;left: 51.52%;top: 41.03%;width: 13.46%;height: 4.77%;z-index: 2;"></a>
                     <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180748" target="_blank" title="신광은 형법" style="position: absolute;left: 65.82%;top: 41.03%;width: 13.46%;height: 4.77%;z-index: 2;"></a>
@@ -291,44 +202,6 @@
             </form>    
         </div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-up" id="pass2">
-
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2539_01.gif" alt="신광은경찰PASS">
-
-            <div class="passLecBuy">   
-                <div>                    
-                    <input type="radio" id="y_pkg2" name="y_pkg" value="191723" data-sale-price="860000"/>                
-                    <label for="y_pkg2">23년 1차 스파르타경찰PASS 신청</label>
-                </div>
-                <div>                    
-                    <input type="radio" id="y_pkg3" name="y_pkg" value="191722" data-sale-price="770000"/>                
-                    <label for="y_pkg3">22년 2차 스파르타경찰PASS 신청</label>
-                </div>   
-            </div>
-           
-            <div class="check">
-                <input type="checkbox" id="is_chk2" name="is_chk" value="Y"/>
-                <label for="is_chk2">페이지 하단 스파르타경찰PASS 이용안내를 모두 확인하였고 , 이에 동의합니다. </label>
-                <a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a>
-                <p>
-                    ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>
-                    ※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.<br>
-                    ※ 쿠폰은 PASS 결제 후 [내 강의실>결제관리>쿠폰/수강권 관리] 에서 확인 가능합니다.<br>
-                    ※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.
-                    ※ 본 상품은 해당 지점 선착순 상품으로, 스파르타, 독서실이용은 각 지점으로 연락 후 상담받으세요.
-                </p>
-            </div>
-
-            <div class="wrap mt40">               
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/2539_02.png"  alt="재수강, 환승">
-                <a href="https://www.willbes.net/member/login/?rtnUrl=%2F%2Fwww.willbes.net%2Fclassroom%2Fqna%2Findex" target="_blank" title="재수강 쿠폰받기" style="position: absolute;left: 45.89%;top: 59.03%;width: 11.88%;height: 18.34%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute;left: 75.29%;top: 59.03%;width: 11.88%;height: 18.34%;z-index: 2;"></a>
-            </div>
-
-            <div class="totalPrice NSK-Black">
-                <a href="javascript:void(0);" onclick="termsCheck('is_chk2', 'pass2');">신청하기 ></a>
-            </div>
-        </div>
 
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit">윌비스 <span class="NSK-Black tx-blue">신광은 스파르타경찰PASS </span> 이용안내 </p>
@@ -634,21 +507,6 @@
             }
             goCartNDirectPay(ele_id, 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');
         }
-
-
-         /*탭(텍스터버전)*/
-        $(document).ready(function(){
-            $(".tabContents").hide();
-            $(".tabContents:first").show();
-            $(".tabContaier ul li a").click(function(){
-            var activeTab = $(this).attr("href");
-            $(".tabContaier ul li a").removeClass("active");
-            $(this).addClass("active");
-            $(".tabContents").hide();
-            $(activeTab).fadeIn();
-            return false;
-            });
-        });
 
         /*무료 교재지급*/
         function fn_promotion_etc_submit() {

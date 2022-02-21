@@ -290,12 +290,6 @@
         <div class="swiper-pagination"></div>
     </div>
 
-    {{--
-    <div class="gosiTitle NSK">
-        합격을 위해 필요한 모든 것, <span class="NSK-Black">윌비스PASS<span>
-    </div>
-    --}}
-
     <div class="MainSlider swiper-container swiper-container-page mt20">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x600_01.jpg"></div>
@@ -531,7 +525,10 @@
     </div>
 
 </div>
+
 <!-- End Container -->
+
+
 <script>    
     //교수진
     var swiper = new Swiper('.swiper-container-prof', {

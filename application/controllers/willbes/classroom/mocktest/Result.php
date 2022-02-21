@@ -111,7 +111,7 @@ class Result extends \app\controllers\FrontController
 
         //과목별 점수
         $subject_result = $this->mockResultFModel->registerForSubjectDetail($prod_code, $mr_idx);
-        $subject_data = $this->_setSubjectData($subject_result,$productInfo['IsAdjust']);
+        $subject_data = $this->_setSubjectData($subject_result,$productInfo['IsAdjust'],$productInfo['TakeMockPartName']);
 
         $view_path = ($productInfo['IsAdjust'] == 'Y') ? 'stat_total' : 'stat_total_n';
         $this->load->view('/classroom/mocktestNew/result/'.$view_path, [
@@ -295,10 +295,16 @@ class Result extends \app\controllers\FrontController
      * 과목별 점수 데이터 가공
      * @param $subject_result
      * @param $is_adjust //조정점수반영여부
+     * @param $takemockpart_name //직렬명
      * @return array[]
      */
-    private function _setSubjectData($subject_result,$is_adjust)
+    private function _setSubjectData($subject_result,$is_adjust,$takemockpart_name)
     {
+        $_takemockpart_name = '';
+        if (empty($takemockpart_name) === false) {
+            $_takemockpart_name = '['.$takemockpart_name.'] ';
+        }
+
         $arr_subject_e = $arr_subject_s = [];
         foreach ($subject_result as $key => $row) {
             if ($row['MockType'] == 'E') {
@@ -315,8 +321,8 @@ class Result extends \app\controllers\FrontController
                 $data_e['전체평균'][$val['MpIdx']] = $val['AvgOrgPoint'];
                 $data_e['최고점'][$val['MpIdx']] = $val['MaxOrgPoint'];
                 $data_e['과목석차'][$val['MpIdx']] = $val['MyRank'].'/'.$val['MemCount'];
-                $data_e['상위10%'][$val['MpIdx']] = $val['Top10AvgOrgPoint'];
-                $data_e['상위30%'][$val['MpIdx']] = $val['Top30AvgOrgPoint'];
+                $data_e[$_takemockpart_name.'상위10%'][$val['MpIdx']] = $val['Top10AvgOrgPoint'];
+                $data_e[$_takemockpart_name.'상위30%'][$val['MpIdx']] = $val['Top30AvgOrgPoint'];
                 if ($is_adjust == 'Y') $data_default_e['표준편차'][$val['MpIdx']] = $val['StandardDeviation'];
             }
 
@@ -329,10 +335,10 @@ class Result extends \app\controllers\FrontController
                 $data_s['최고점'][$val['MpIdx']]['adjust'] = $val['MaxAdjustPoint'];
                 $data_s['과목석차'][$val['MpIdx']]['org'] = $val['MyRank'].'/'.$val['MemCount'];
                 $data_s['과목석차'][$val['MpIdx']]['adjust'] = $val['MyRank'].'/'.$val['MemCount'];
-                $data_s['상위10%'][$val['MpIdx']]['org'] = $val['Top10AvgOrgPoint'];
-                $data_s['상위10%'][$val['MpIdx']]['adjust'] = $val['Top10AvgAdjustPoint'];
-                $data_s['상위30%'][$val['MpIdx']]['org'] = $val['Top30AvgOrgPoint'];
-                $data_s['상위30%'][$val['MpIdx']]['adjust'] = $val['Top30AvgAdjustPoint'];
+                $data_s[$_takemockpart_name.'상위10%'][$val['MpIdx']]['org'] = $val['Top10AvgOrgPoint'];
+                $data_s[$_takemockpart_name.'상위10%'][$val['MpIdx']]['adjust'] = $val['Top10AvgAdjustPoint'];
+                $data_s[$_takemockpart_name.'상위30%'][$val['MpIdx']]['org'] = $val['Top30AvgOrgPoint'];
+                $data_s[$_takemockpart_name.'상위30%'][$val['MpIdx']]['adjust'] = $val['Top30AvgAdjustPoint'];
                 if ($is_adjust == 'Y') $data_default_s['표준편차'][$val['MpIdx']] = $val['StandardDeviation'];
             }
         }

@@ -117,7 +117,7 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'wAdminName', 'render' : function(data, type, row, meta) {
-                        return data + ' (' + row.wAdminId.substr(0, row.wAdminId.length - 3) + '***)';
+                        return data + ' (' + row.wAdminIdMask + ')';
                     }},
                     {'data' : 'wRoleName'},
                     {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {

@@ -26,8 +26,8 @@
         
         .evt00 {background:#0a0a0a}
 
-        .evtTop {background:url("https://static.willbes.net/public/images/promotion/2022/02/2545_top_bg.jpg") no-repeat center top; height: 1016px;} 
-        .evtTop span {position: absolute; top:530px; left:50%; margin-left:-510px; z-index: 10;}
+        .evtTop {background:url("https://static.willbes.net/public/images/promotion/2022/02/2545_top_bg.jpg") no-repeat center top; height: 1100px;} 
+        .evtTop span {position: absolute; top:610px; left:50%; margin-left:-510px; z-index: 10;}
 
            
         .evt01 {padding:150px 0 100px}

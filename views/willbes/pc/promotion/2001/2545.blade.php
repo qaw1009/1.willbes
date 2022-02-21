@@ -147,11 +147,11 @@
             
             <div class="passLecBuy">   
                 <div>                    
-                    <input type="radio" id="y_pkg0" name="y_pkg" value="191723" data-sale-price="860000"/>                
+                    <input type="radio" id="y_pkg0" name="y_pkg" value="191749" data-sale-price="790000"/>                
                     <label for="y_pkg0">23년 1차 스파르타경찰PASS 신청</label>
                 </div>
                 <div>                    
-                    <input type="radio" id="y_pkg1" name="y_pkg" value="191722" data-sale-price="770000"/>                
+                    <input type="radio" id="y_pkg1" name="y_pkg" value="191748" data-sale-price="690000"/>                
                     <label for="y_pkg1">22년 2차 경찰 PASS 신청</label>
                 </div>   
             </div>

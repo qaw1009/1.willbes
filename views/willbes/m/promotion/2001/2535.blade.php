@@ -103,177 +103,173 @@
         <img src="https://static.willbes.net/public/images/promotion/2022/02/2535m_02.jpg" alt="커리큘럼"/>
     </div>
 
-    <div class="evtCtnsBox evt03" data-aos="fade-up">
-        <div id="apply">
-            <div class="form_area" id="to_go">
-                <h4 class="NSK-Black">2022 봉투 모의고사 이벤트</h4>
-                <div class="privacy">
-                    <div class="contacts NSK">
-                        <p><strong><span class="star">▶</span>이름</strong><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" readonly /></p>
-                        <p><strong><span class="star">▶</span>연락처</strong><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" maxlength="11" readonly/></p>
-                        <p class="check_contact">
-                            <strong><span class="star">▶</span>22년 1차 응시지원청</strong><br>
-                        <ul class="area">
-                            <li><input type="checkbox" name="register_data1[]" id="aa1" value="서울청"><label for="aa1"> 서울청</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa2" value="대구청"><label for="aa2"> 대구청</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa3" value="인천청"><label for="aa3"> 인천청</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa4" value="광주청"><label for="aa4"> 광주청</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa5" value="대전청"><label for="aa5"> 대전청</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa6" value="울산청"><label for="aa6"> 울산청</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa7" value="경기남부"><label for="aa7"> 경기남부</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa8" value="경기북부"><label for="aa8"> 경기북부</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa9" value="강원청"><label for="aa9"> 강원청</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa10" value="충북청"><label for="aa10"> 충북청</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa11" value="충남청"><label for="aa11"> 충남청</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa12" value="전북청"><label for="aa12"> 전북청</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa13" value="전남청"><label for="aa13"> 전남청</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa14" value="경북청"><label for="aa14"> 경북청</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa15" value="경남청"><label for="aa15"> 경남청</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa16" value="부산청"><label for="aa16"> 부산청</label></li>
-                            <li><input type="checkbox" name="register_data1[]" id="aa17" value="제주청"><label for="aa17"> 제주청</label></li>
-                        </ul>
-                        </p>
+    <form name="regi_form_register" id="regi_form_register">
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+        <input type="hidden" name="register_type" value="promotion"/>
+        <input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/> {{-- 하나수강만 선택 가능할시 --}}
+        <input type="hidden" name="target_params[]" value="register_data1[]"/> {{-- 체크 항목 전송 --}}
+        <input type="hidden" name="target_param_names[]" value="희망지원청"/> {{-- 체크 항목 전송 --}}
+        <input type="hidden" name="target_params[]" value="register_data2[]"/> {{-- 체크 항목 전송 --}}
+        <input type="hidden" name="target_param_names[]" value="사전안내문자서비스"/> {{-- 체크 항목 전송 --}}
+        <input type="hidden" name="register_chk[]" id="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
+        <div class="evtCtnsBox evt03" data-aos="fade-up">
+            <div id="apply">
+                <div class="form_area" id="to_go">
+                    <h4 class="NSK-Black">2022 봉투 모의고사 이벤트</h4>
+                    <div class="privacy">
+                        <div class="contacts NSK">
+                            <p><strong><span class="star">▶</span>이름</strong><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" readonly /></p>
+                            <p><strong><span class="star">▶</span>연락처</strong><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" maxlength="11" readonly/></p>
+                            <p class="check_contact">
+                                <strong><span class="star">▶</span>22년 1차 응시지원청</strong><br>
+                                <ul class="area">
+                                    <li><input type="checkbox" name="register_data1[]" id="aa1" value="서울청"><label for="aa1"> 서울청</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa2" value="대구청"><label for="aa2"> 대구청</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa3" value="인천청"><label for="aa3"> 인천청</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa4" value="광주청"><label for="aa4"> 광주청</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa5" value="대전청"><label for="aa5"> 대전청</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa6" value="울산청"><label for="aa6"> 울산청</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa7" value="경기남부"><label for="aa7"> 경기남부</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa8" value="경기북부"><label for="aa8"> 경기북부</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa9" value="강원청"><label for="aa9"> 강원청</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa10" value="충북청"><label for="aa10"> 충북청</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa11" value="충남청"><label for="aa11"> 충남청</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa12" value="전북청"><label for="aa12"> 전북청</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa13" value="전남청"><label for="aa13"> 전남청</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa14" value="경북청"><label for="aa14"> 경북청</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa15" value="경남청"><label for="aa15"> 경남청</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa16" value="부산청"><label for="aa16"> 부산청</label></li>
+                                    <li><input type="checkbox" name="register_data1[]" id="aa17" value="제주청"><label for="aa17"> 제주청</label></li>
+                                </ul>
+                            </p>
+                            <p>
+                                <strong><span class="star">▶</span>사전안내 문자서비스</strong>
+                                <input type="radio" name="register_data2[]" id="bb1" value="Y"><label for="bb1"> 예</label>
+                                <input type="radio" name="register_data2[]" id="bb2" value="N"><label for="bb2"> 아니오</label>
+                            </p>
+                        </div>
 
-                        <p>
-                            <strong><span class="star">▶</span>사전안내 문자서비스</strong>
-                            <input type="radio" name="" id="bb1" value="예"><label for="bb1"> 예</label>
-                            <input type="radio" name="" id="bb1" value="아니오"><label for="bb1"> 아니오</label>
-                        </p>
+
+                        <div class="info">
+                            <h5><span class="star">▶</span>개인정보 수집 및 이용에 대한 안내</h5>
+                            <ul>
+                                <li>개인정보 수집 이용 목적<br/>
+                                    - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대<br/>
+                                    - 이벤트 참여에 따른 강의 수강자 목록에 활용
+                                </li>
+                                <li>개인정보 수집 항목<br/>
+                                    - 신청인의 이름, 연락처, 희망청
+                                </li>
+                                <li>개인정보 이용기간 및 보유기간<br/>
+                                    - 본 수집, 활용목적 달성 후 바로 파기
+                                </li>
+                                <li>개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br/>
+                                    - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-
-
-                    <div class="info">
-                        <h5><span class="star">▶</span>개인정보 수집 및 이용에 대한 안내</h5>
-                        <ul>
-                            <li>개인정보 수집 이용 목적<br/>
-                                - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대<br/>
-                                - 이벤트 참여에 따른 강의 수강자 목록에 활용
-                            </li>
-                            <li>개인정보 수집 항목<br/>
-                                - 신청인의 이름, 연락처, 희망청
-                            </li>
-                            <li>개인정보 이용기간 및 보유기간<br/>
-                                - 본 수집, 활용목적 달성 후 바로 파기
-                            </li>
-                            <li>개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br/>
-                                - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
-                            </li>
-                        </ul>
+                    <p class="accept">
+                        <input type="checkbox" name="is_chk" id="is_chk" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+                    </p>
+                    <div class="btn NSK-Black">
+                        <a href="javascript:void(0);" onclick="javascript:fn_submit(); return false;">
+                            3월 봉투 모의고사 이벤트 참여 >
+                        </a>
                     </div>
-                </div>
-                <p class="accept">
-                    <input type="checkbox" name="is_chk" id="is_chk" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
-                </p>
-                <div class="btn NSK-Black">
-                    <a onclick="javascript:fn_submit();">
-                        3월 봉투 모의고사 이벤트 참여 >
-                    </a>
                 </div>
             </div>
         </div>
-    </div> 
+    </form>
 
-    <div class="evtCtnsBox evt04" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/02/2535m_03.jpg" alt="단계별 포인트"/>
-        <div>
-            <table cellspacing="0" cellpadding="0">
-                <colgroup>
-                    <col width="16.666%">
-                    <col width="16.666%">
-                    <col width="16.666%">
-                    <col width="16.666%">
-                    <col width="16.666%">
-                    <col>
-                </colgroup>
-            <tbody>                                                                                                                                                                  <tr>
-                    <td>3/1(화)</td>
-                    <td>3/2(수)</td>
-                    <td>3/3(목)</td>
-                    <td>3/4(금)</td>
-                    <td>3/5(토)</td>
-                    <td>3/6(일)</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div>
-                            <span><img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img02.png" alt="마감"></span>
-                            <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
-                        </div>
-                    <td>
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
-                        </div>
-                    </td>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3/7(월)</td>
-                    <td>3/7(화)</td>
-                    <td>3/8(수)</td>
-                    <td>3/10(목)</td>
-                    <td>3/11(금)</td>
-                    <td>3/12(토)</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
-                        </div>
-                    </td>
-                </tr>                                                                                                                                
-                                                    
-                </tbody>
-            </table>
+    <form id="add_apply_form" name="add_apply_form">
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+        <input type="hidden" name="register_type" value="promotion"/>
+        <input type="hidden" name="apply_chk_el_idx" value="{{ $data['ElIdx'] }}"/>
+        @foreach($arr_base['add_apply_data'] as $row)
+            {{--<input type="radio" name="add_apply_chk[]" id="add_apply_{{ $row['EaaIdx'] }}" value="{{$row['EaaIdx']}}" />
+            <label for="register_chk_{{ $row['EaaIdx'] }}">{{ $row['Name'] }}</label>--}}
+            {{--                    @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyStartDatm']))--}}
+            @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))
+                <input type="hidden" name="add_apply_chk[]" value="{{$row['EaaIdx']}}" />
+                @break;
+            @endif
+        @endforeach
+
+        <div class="evtCtnsBox evt04" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2535m_03.jpg" alt="단계별 포인트"/>
+            <div>
+                <table cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col width="16.666%">
+                        <col width="16.666%">
+                        <col width="16.666%">
+                        <col width="16.666%">
+                        <col width="16.666%">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                        @if(empty($arr_base['add_apply_data']) === false)
+                            @php $col_cnt = 6; @endphp
+                            @for($i=0; $i < count($arr_base['add_apply_data']); $i++)
+                                @if($i==0 || $i%$col_cnt == 0)
+                                    @php $tr_i = $i; @endphp
+                                    <tr>
+                                        @endif
+                                        <td>{{$arr_base['add_apply_data'][$i]['Name']}}</td>
+                                        @if($i==($tr_i+$col_cnt-1) || $i == (count($arr_base['add_apply_data']))-1)
+                                            @if($i == (count($arr_base['add_apply_data']))-1) {{-- 마지막일때 --}}
+                                            @php
+                                                $remain_cnt = $col_cnt - (count($arr_base['add_apply_data'])%$col_cnt);
+                                                if($remain_cnt == $col_cnt) $remain_cnt = 0;
+                                            @endphp
+                                            @if($remain_cnt != 0)
+                                                @for($r=0; $r < $remain_cnt; $r++)
+                                                    <td></td>
+                                                @endfor
+                                            @endif
+                                            @endif
+                                    </tr>
+                                    @php $temp_j = 0; @endphp
+                                    @for($j=($i-$col_cnt+1+(empty($remain_cnt)? 0 : $remain_cnt)); $j <= $i; $j++)
+                                        @if($j==0 || ($j%$col_cnt == 0  && $temp_j == 0) || ($i == (count($arr_base['add_apply_data']))-1 && $temp_j == 0) )
+                                            <tr>
+                                                @endif
+                                                <td>
+                                                    <div>
+                                                        @if(time() >= strtotime($arr_base['add_apply_data'][$j]['ApplyEndDatm']) || $arr_base['add_apply_data'][$j]['PersonLimit'] <= $arr_base['add_apply_data'][$j]['MemberCnt'])
+                                                            <span><img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img02.png" alt="마감"></span>
+                                                        @endif
+                                                        <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
+                                                    </div>
+                                                </td>
+                                                @if($j==($tr_i+$col_cnt-1) || $j == (count($arr_base['add_apply_data']))-1)
+                                                    @if(empty($remain_cnt) === false && $remain_cnt != 0)
+                                                        @for($r=0; $r < $remain_cnt; $r++)
+                                                            <td></td>
+                                                        @endfor
+                                                    @endif
+                                            </tr>
+                                        @endif
+                                        @php $temp_j++; @endphp
+                                    @endfor
+                                @endif
+                            @endfor
+                        @endif
+                    </tbody>
+                </table>
+            </div>
+            <div class="btn">
+                <a href="javascript:void(0);" onclick="javascript:fn_add_apply_submit(); return false;">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_btn.png"  alt="이벤트신청"/>
+                </a>
+            </div>
         </div>
-        <div class="btn">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_btn.png"  alt="이벤트신청"/></a>
-        </div>
-    </div>
+    </form>
 
     <div class="evtCtnsBox evt05" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/02/2535m_04.jpg"  alt="문제풀이 풀패키지"/>
@@ -325,21 +321,76 @@
 
 <!-- End Container -->
 <script type="text/javascript">
-    function go_PassLecture(code) {
-        if($("input[name='ischk']:checked").size() < 1){
-            alert("이용안내에 동의하셔야 합니다.");
-            return;
+    // 무료 당첨
+    function fn_add_apply_submit() {
+        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            var $add_apply_form = $('#add_apply_form');
+        var _url = '{!! front_url('/event/addApplyStore') !!}';
+
+        if (typeof $add_apply_form.find('input[name="add_apply_chk[]"]').val() === 'undefined') {
+            alert('이벤트 기간이 아닙니다.'); return;
         }
-        var url = '{{ front_url('/periodPackage/show/cate/3001/pack/648001/prod-code/') }}' + code;
-        location.href = url;
+
+        if (!confirm('신청하시겠습니까?')) { return true; }
+        ajaxSubmit($add_apply_form, _url, function(ret) {
+            if(ret.ret_cd) {
+                alert( getApplyMsg(ret.ret_msg) );
+                location.reload();
+            }
+        }, function(ret, status, error_view) {
+            alert( getApplyMsg(ret.ret_msg || '') );
+        }, null, false, 'alert');
     }
 
-    /*디데이카운트다운*/
-    $(document).ready(function() {
-        dDayCountDown('{{$arr_promotion_params['edate']}}', '{{$arr_promotion_params['etime'] or "00:00"}}', 'txt');
-    });
-</script> 
+    // 이벤트 추가 신청 메세지
+    function getApplyMsg(ret_msg) {
+        {{-- 해당 프로모션 종속 결과 메세지 --}}
+        var apply_msg = '';
+        var arr_apply_msg = [
+            ['이미 신청하셨습니다.','이미 당첨되셨습니다.'],
+            ['신청 되었습니다.','당첨을 축하합니다. 장바구니를 확인해 주세요.'],
+            //['이벤트 신청후 이용 가능합니다.','봉투모의고사 신청후 이용 가능합니다.'],
+            ['마감되었습니다.','내일 20시에 다시 도전해 주세요.']
+        ];
+        for (var i = 0; i < arr_apply_msg.length; i++) {
+            if(arr_apply_msg[i][0] == ret_msg) {
+                apply_msg = arr_apply_msg[i][1];
+            }
+        }
+        if(apply_msg == '') apply_msg = ret_msg;
+        return apply_msg;
+    }
 
-    {{-- 프로모션용 스크립트 include --}}
-    @include('willbes.pc.promotion.promotion_script')
+    function fn_submit() {
+        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+        var $regi_form_register = $('#regi_form_register');
+        var _url = '{!! front_url('/event/registerStore') !!}';
+
+        if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+            alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+            return;
+        }
+
+        if ($regi_form_register.find('input[name="register_data1[]"]:checked').length == 0) {
+            alert('희망지원청을 선택 해주세요.');
+            return;
+        }
+
+        if ($regi_form_register.find('input[name="register_data1[]"]:checked').length > 1) {
+            alert('희망지원청은 1개까지만 선택 가능합니다.');
+            return;
+        }
+
+        if (!confirm('신청하시겠습니까?')) { return; }
+        ajaxSubmit($regi_form_register, _url, function(ret) {
+            if(ret.ret_cd) {
+                alert(ret.ret_msg);
+                location.reload();
+            }
+        }, showValidateError, null, false, 'alert');
+    }
+</script>
+
+{{-- 프로모션용 스크립트 include --}}
+@include('willbes.pc.promotion.promotion_script')
 @stop

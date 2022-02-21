@@ -111,8 +111,10 @@
             <input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/> {{-- 하나수강만 선택 가능할시 --}}
             <input type="hidden" name="target_params[]" value="register_data1[]"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_param_names[]" value="희망지원청"/> {{-- 체크 항목 전송 --}}
-
+            <input type="hidden" name="target_params[]" value="register_data2[]"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="사전안내문자서비스"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="register_chk[]" id="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
+
             <div class="evtCtnsBox evt03" data-aos="fade-up">
                 <div id="apply">
                     <div class="form_area" id="to_go">
@@ -123,31 +125,30 @@
                                 <p><strong><span class="star">▶</span>연락처</strong><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" maxlength="11" readonly/></p>
                                 <p class="check_contact">
                                     <strong><span class="star">▶</span>22년 1차 응시지원청</strong><br>
-                                <ul class="area">
-                                    <li><input type="checkbox" name="register_data1[]" id="aa1" value="서울청"><label for="aa1"> 서울청</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa2" value="대구청"><label for="aa2"> 대구청</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa3" value="인천청"><label for="aa3"> 인천청</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa4" value="광주청"><label for="aa4"> 광주청</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa5" value="대전청"><label for="aa5"> 대전청</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa6" value="울산청"><label for="aa6"> 울산청</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa7" value="경기남부"><label for="aa7"> 경기남부</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa8" value="경기북부"><label for="aa8"> 경기북부</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa9" value="강원청"><label for="aa9"> 강원청</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa10" value="충북청"><label for="aa10"> 충북청</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa11" value="충남청"><label for="aa11"> 충남청</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa12" value="전북청"><label for="aa12"> 전북청</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa13" value="전남청"><label for="aa13"> 전남청</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa14" value="경북청"><label for="aa14"> 경북청</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa15" value="경남청"><label for="aa15"> 경남청</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa16" value="부산청"><label for="aa16"> 부산청</label></li>
-                                    <li><input type="checkbox" name="register_data1[]" id="aa17" value="제주청"><label for="aa17"> 제주청</label></li>
-                                </ul>
+                                    <ul class="area">
+                                        <li><input type="checkbox" name="register_data1[]" id="aa1" value="서울청"><label for="aa1"> 서울청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa2" value="대구청"><label for="aa2"> 대구청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa3" value="인천청"><label for="aa3"> 인천청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa4" value="광주청"><label for="aa4"> 광주청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa5" value="대전청"><label for="aa5"> 대전청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa6" value="울산청"><label for="aa6"> 울산청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa7" value="경기남부"><label for="aa7"> 경기남부</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa8" value="경기북부"><label for="aa8"> 경기북부</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa9" value="강원청"><label for="aa9"> 강원청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa10" value="충북청"><label for="aa10"> 충북청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa11" value="충남청"><label for="aa11"> 충남청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa12" value="전북청"><label for="aa12"> 전북청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa13" value="전남청"><label for="aa13"> 전남청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa14" value="경북청"><label for="aa14"> 경북청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa15" value="경남청"><label for="aa15"> 경남청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa16" value="부산청"><label for="aa16"> 부산청</label></li>
+                                        <li><input type="checkbox" name="register_data1[]" id="aa17" value="제주청"><label for="aa17"> 제주청</label></li>
+                                    </ul>
                                 </p>
-
                                 <p>
                                     <strong><span class="star">▶</span>사전안내 문자서비스</strong>
-                                    <input type="radio" name="" id="bb1" value="예"><label for="bb1"> 예</label>
-                                    <input type="radio" name="" id="bb1" value="아니오"><label for="bb1"> 아니오</label>
+                                    <input type="radio" name="register_data2[]" id="bb1" value="Y"><label for="bb1"> 예</label>
+                                    <input type="radio" name="register_data2[]" id="bb2" value="N"><label for="bb2"> 아니오</label>
                                 </p>
                             </div>
 
@@ -175,7 +176,7 @@
                             <input type="checkbox" name="is_chk" id="is_chk" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
                         </p>
                         <div class="btn NSK-Black">
-                            <a onclick="javascript:fn_submit();">
+                            <a href="javascript:void(0);" onclick="javascript:fn_submit(); return false;">
                                 3월 봉투 모의고사 이벤트 참여하기 >
                             </a>
                         </div>
@@ -217,60 +218,60 @@
                             <col>
                         </colgroup>
                         <tbody>
-                        @if(empty($arr_base['add_apply_data']) === false)
-                            @php $col_cnt = 6; @endphp
-                            @for($i=0; $i < count($arr_base['add_apply_data']); $i++)
-                                @if($i==0 || $i%$col_cnt == 0)
-                                    @php $tr_i = $i; @endphp
-                                    <tr>
-                                        @endif
-                                        <td>{{$arr_base['add_apply_data'][$i]['Name']}}</td>
-                                        @if($i==($tr_i+$col_cnt-1) || $i == (count($arr_base['add_apply_data']))-1)
-                                            @if($i == (count($arr_base['add_apply_data']))-1) {{-- 마지막일때 --}}
-                                            @php
-                                                $remain_cnt = $col_cnt - (count($arr_base['add_apply_data'])%$col_cnt);
-                                                if($remain_cnt == $col_cnt) $remain_cnt = 0;
-                                            @endphp
-                                            @if($remain_cnt != 0)
-                                                @for($r=0; $r < $remain_cnt; $r++)
-                                                    <td></td>
-                                                @endfor
+                            @if(empty($arr_base['add_apply_data']) === false)
+                                @php $col_cnt = 6; @endphp
+                                @for($i=0; $i < count($arr_base['add_apply_data']); $i++)
+                                    @if($i==0 || $i%$col_cnt == 0)
+                                        @php $tr_i = $i; @endphp
+                                        <tr>
                                             @endif
-                                            @endif
-                                    </tr>
-                                    @php $temp_j = 0; @endphp
-                                    @for($j=($i-$col_cnt+1+(empty($remain_cnt)? 0 : $remain_cnt)); $j <= $i; $j++)
-                                        @if($j==0 || ($j%$col_cnt == 0  && $temp_j == 0) || ($i == (count($arr_base['add_apply_data']))-1 && $temp_j == 0) )
-                                            <tr>
+                                            <td>{{$arr_base['add_apply_data'][$i]['Name']}}</td>
+                                            @if($i==($tr_i+$col_cnt-1) || $i == (count($arr_base['add_apply_data']))-1)
+                                                @if($i == (count($arr_base['add_apply_data']))-1) {{-- 마지막일때 --}}
+                                                @php
+                                                    $remain_cnt = $col_cnt - (count($arr_base['add_apply_data'])%$col_cnt);
+                                                    if($remain_cnt == $col_cnt) $remain_cnt = 0;
+                                                @endphp
+                                                @if($remain_cnt != 0)
+                                                    @for($r=0; $r < $remain_cnt; $r++)
+                                                        <td></td>
+                                                    @endfor
                                                 @endif
-                                                <td>
-                                                    <div>
-                                                        @if(time() >= strtotime($arr_base['add_apply_data'][$j]['ApplyEndDatm']) || $arr_base['add_apply_data'][$j]['PersonLimit'] <= $arr_base['add_apply_data'][$j]['MemberCnt'])
-                                                            <span><img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img02.png" alt="마감"></span>
-                                                        @endif
-                                                        <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
-                                                    </div>
-                                                </td>
-                                                @if($j==($tr_i+$col_cnt-1) || $j == (count($arr_base['add_apply_data']))-1)
-                                                    @if(empty($remain_cnt) === false && $remain_cnt != 0)
-                                                        @for($r=0; $r < $remain_cnt; $r++)
-                                                            <td></td>
-                                                        @endfor
+                                                @endif
+                                        </tr>
+                                        @php $temp_j = 0; @endphp
+                                        @for($j=($i-$col_cnt+1+(empty($remain_cnt)? 0 : $remain_cnt)); $j <= $i; $j++)
+                                            @if($j==0 || ($j%$col_cnt == 0  && $temp_j == 0) || ($i == (count($arr_base['add_apply_data']))-1 && $temp_j == 0) )
+                                                <tr>
                                                     @endif
-                                            </tr>
-                                        @endif
-                                        @php $temp_j++; @endphp
-                                    @endfor
-                                @endif
-
-                            @endfor
-                        @endif
-
+                                                    <td>
+                                                        <div>
+                                                            @if(time() >= strtotime($arr_base['add_apply_data'][$j]['ApplyEndDatm']) || $arr_base['add_apply_data'][$j]['PersonLimit'] <= $arr_base['add_apply_data'][$j]['MemberCnt'])
+                                                                <span><img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img02.png" alt="마감"></span>
+                                                            @endif
+                                                            <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_img01.png" alt="">
+                                                        </div>
+                                                    </td>
+                                                    @if($j==($tr_i+$col_cnt-1) || $j == (count($arr_base['add_apply_data']))-1)
+                                                        @if(empty($remain_cnt) === false && $remain_cnt != 0)
+                                                            @for($r=0; $r < $remain_cnt; $r++)
+                                                                <td></td>
+                                                            @endfor
+                                                        @endif
+                                                </tr>
+                                            @endif
+                                            @php $temp_j++; @endphp
+                                        @endfor
+                                    @endif
+                                @endfor
+                            @endif
                         </tbody>
                     </table>
                 </div>
                 <div class="mt50">
-                    <a onclick="javascript:fn_add_apply_submit();" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_btn.png"  alt="이벤트신청"/></a>
+                    <a href="javascript:void(0);" onclick="javascript:fn_add_apply_submit(); return false;">
+                        <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_03_btn.png"  alt="이벤트신청"/>
+                    </a>
                 </div>
             </div>
         </form>
@@ -335,14 +336,6 @@
         // 무료 당첨
         function fn_add_apply_submit() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-
-            @if(ENVIRONMENT == 'production')
-                @if(date('YmdHi') < '202102102000')
-                    alert('2월10일 20:00 부터 이벤트 참여 가능합니다.');
-                    return;
-                @endif
-            @endif
-
             var $add_apply_form = $('#add_apply_form');
             var _url = '{!! front_url('/event/addApplyStore') !!}';
 
@@ -367,9 +360,9 @@
             var apply_msg = '';
             var arr_apply_msg = [
                 ['이미 신청하셨습니다.','이미 당첨되셨습니다.'],
-                ['신청 되었습니다.','당첨을 축하합니다. 내강의실에서 확인해 주세요.'],
+                ['신청 되었습니다.','당첨을 축하합니다. 장바구니를 확인해 주세요.'],
                 //['이벤트 신청후 이용 가능합니다.','봉투모의고사 신청후 이용 가능합니다.'],
-                ['마감되었습니다.','내일 19시에 다시 도전해 주세요.']
+                ['마감되었습니다.','내일 20시에 다시 도전해 주세요.']
             ];
             for (var i = 0; i < arr_apply_msg.length; i++) {
                 if(arr_apply_msg[i][0] == ret_msg) {

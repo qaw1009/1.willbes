@@ -292,7 +292,6 @@ class MemberPrivateModel extends WB_Model
                 ,ROUND(MAX(A.AdjustPoint),2) AS MaxAdjustPoint  #조정점수최고점
                 ,A.StandardDeviation                            #표준편차
                 ,COUNT(A.MpIdx) AS MemCount                     #응시인원
-                ,fn_ccd_name(A.TakeMockPart) AS TakeMockPartName
                 FROM (
                     SELECT a.ProdCode, a.TakeMockPart, b.MpIdx, e.MockType, b.OrgPoint, b.AdjustPoint, b.StandardDeviation, c.SubjectIdx, d.SubjectName
                     FROM {$this->_table['mock_register']} AS a

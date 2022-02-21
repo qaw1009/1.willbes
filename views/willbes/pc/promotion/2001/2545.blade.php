@@ -30,7 +30,8 @@
         .evtTop span {position: absolute; top:530px; left:50%; margin-left:-510px; z-index: 10;}
 
         .certification {background:url("https://static.willbes.net/public/images/promotion/2021/10/2390_certification_bg.jpg") no-repeat center top;}
-     
+            
+        .evt01 {padding-top:150px}
         .evt01 .passLecBuy {width:1120px; margin:0 auto; display: flex; justify-content: space-around;}
         .evt01 .passLecBuy div {width:50%; margin:0 10px; line-height:30px; font-size:22px; font-weight:bold; color:#fff; background:#000; border-radius:20px; padding:20px 0} 
         .evt01 input[type="radio"] {height:26px; width:26px; vertical-align:middle}
@@ -152,8 +153,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/10/wb_police.jpg" alt="경찰학원부분 1위"/>
         </div>
 
-        <div class="evtCtnsBox evtTop" id="main" data-aos="fade-up">           
-            <span><img src="https://static.willbes.net/public/images/promotion/2022/02/2545_top_img.png" alt="0원 pass"/></span>                     
+        <div class="evtCtnsBox evtTop" id="main">           
+            <span data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/02/2545_top_img.png" alt="0원 pass"/></span>                     
         </div>      
 
         <div class="evtCtnsBox evt01" id="pass" data-aos="fade-up">         

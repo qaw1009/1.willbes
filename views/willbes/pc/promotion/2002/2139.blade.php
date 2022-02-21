@@ -120,7 +120,7 @@
         <div class="evtCtnsBox evt02">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2139_01.jpg"  alt="사립탐정사 자격시험" />
-                <a href="https://bit.ly/3rLYbLd" target="_blank" title="" style="position: absolute; left: 20.45%; top: 61.76%; width: 20.89%; height: 1.7%; z-index: 2;"></a>
+                <a href="https://bit.ly/3rLYbLd" target="_blank" title="" style="position: absolute;left: 20.45%;top: 60.56%;width: 20.89%;height: 1.7%;z-index: 2;"></a>
             </div>
         </div>
 

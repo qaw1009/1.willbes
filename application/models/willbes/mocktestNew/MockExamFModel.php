@@ -77,7 +77,7 @@ class MockExamFModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         $column = "
-            MP.*, MB.MemName, A.OrderProdIdx, A.MrIdx, A.TakeNumber, A.TakeMockPartName,
+            MP.*, MB.MemName, A.OrderProdIdx, A.MrIdx, A.TakeNumber, A.TakeMockPart, A.TakeMockPartName,
             IFNULL(A.IsDate, MP.TakeStartDatm) AS IsDate, A.MpIdx, A.subject_names, A.IsOpen, A.TotalScore,
             PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,
             C1.CateName, C1.IsUse AS IsUseCate, Temp.LogIdx,
@@ -87,7 +87,7 @@ class MockExamFModel extends WB_Model
         $from = "
             FROM (
                 SELECT 
-                mr.ProdCode, mr.OrderProdIdx, mr.MrIdx, mr.MemIdx, mr.TakeNumber, fn_ccd_name(mr.TakeMockPart) AS TakeMockPartName,
+                mr.ProdCode, mr.OrderProdIdx, mr.MrIdx, mr.MemIdx, mr.TakeNumber, mr.TakeMockPart, fn_ccd_name(mr.TakeMockPart) AS TakeMockPartName,
                 mr.IsTake AS MrIsStatus, mr.RegDatm AS IsDate,
                 SUM(mp.TotalScore) AS TotalScore,
                 GROUP_CONCAT(pmp.MpIdx ORDER BY pmp.OrderNum ASC) AS MpIdx,

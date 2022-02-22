@@ -181,6 +181,54 @@ class MockResultFModel extends WB_Model
     }
 
     /**
+     * 직렬에 속한 석차
+     * @param $prod_code
+     * @param $mr_idx
+     * @param $take_mock_part
+     * @return mixed
+     */
+    public function takeMockPartInfo($prod_code, $mr_idx, $take_mock_part)
+    {
+        $set_condition = [
+            'EQ' => [
+                'reg.ProdCode' => $prod_code,
+                'reg.IsTake' => 'Y'
+            ]
+        ];
+        $arr_condition = array_merge_recursive($set_condition, [
+            'EQ' => ['reg.TakeMockPart' => $take_mock_part]
+        ]);
+        $sub_where = $this->_conn->makeWhere($arr_condition);
+        $sub_where = $sub_where->getMakeWhere(false);
+
+        $arr_condition = array_merge_recursive($set_condition, [
+            'EQ' => ['reg.MrIdx' => $mr_idx]
+        ]);
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = "reg.MrIdx, reg.TakeMockPart, fn_ccd_name(reg.TakeMockPart) AS TakeMockPartName, rnk.OrgRankNum, rnk.AdjustRankNum
+        ,(SELECT COUNT(*) AS cnt FROM {$this->_table['mock_register']} AS reg {$sub_where}) AS TotalCount";
+        $from = "
+            FROM {$this->_table['mock_register']} AS reg
+            INNER JOIN (
+                SELECT
+                a.*
+                ,RANK() OVER (PARTITION BY a.TakeMockPart ORDER BY a.SumOrgPoint DESC) OrgRankNum
+                ,RANK() OVER (PARTITION BY a.TakeMockPart ORDER BY a.SumAdjustPoint DESC) AdjustRankNum
+                FROM (
+                    SELECT reg.ProdCode, reg.MrIdx, reg.TakeMockPart, SUM(b.OrgPoint) AS SumOrgPoint, SUM(b.AdjustPoint) AS SumAdjustPoint
+                    FROM {$this->_table['mock_register']} AS reg
+                    INNER JOIN {$this->_table['mock_grades']} AS b ON reg.MrIdx = b.MrIdx
+                    {$sub_where}
+                    GROUP BY reg.MrIdx
+                ) AS a
+            ) AS rnk ON reg.MrIdx = rnk.MrIdx
+        ";
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
+
+    /**
      * 전체 성적 분석 > 전체 응시자 평균점수 분포표
      * @param $prod_code
      * @param $mr_idx

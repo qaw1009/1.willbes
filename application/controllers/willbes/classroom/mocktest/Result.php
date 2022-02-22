@@ -106,6 +106,9 @@ class Result extends \app\controllers\FrontController
         //종합분석
         $gradeInfo = $this->mockResultFModel->gradeInfo($prod_code, $mr_idx);
 
+        //직렬석차
+        $takeMockPartInfo = $this->mockResultFModel->takeMockPartInfo($prod_code, $mr_idx, $productInfo['TakeMockPart']);
+
         //평균점수 분포
         $selectivityInfo = $this->mockResultFModel->selectivity($prod_code, $mr_idx);
 
@@ -118,6 +121,7 @@ class Result extends \app\controllers\FrontController
             'page_type' => 'total',
             'productInfo' => $productInfo,
             'gradeInfo' => $gradeInfo,
+            'takeMockPartInfo' => $takeMockPartInfo,
             'selectivityInfo' => $selectivityInfo,
             'subject_graph' => $subject_result,
             'subject_data' => $subject_data

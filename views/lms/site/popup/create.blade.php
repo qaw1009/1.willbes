@@ -28,6 +28,22 @@
                     </div>
                 </div>
 
+                @if($method == 'POST')
+                <div class="form-group">
+                    <label class="control-label col-md-1-1">카테고리타입
+                    </label>
+                    <div class="col-md-2 item form-inline">
+                        <div class="radio">
+                            <input type="radio" id="category_type_1" name="category_type" class="flat" data-category-type="1" value="1" required="required" title="검색" checked="checked"/> <label for="category_type_1" class="input-label">카테고리검색</label>
+                            <input type="radio" id="category_type_2" name="category_type" class="flat" data-category-type="2" value="2"/> <label for="category_type_2" class="input-label">전체카테고리</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <p class="form-control-static">• <span>전체카테고리 : 학원, 인트로 <span class="ml-10">• 선택적 전체카테고리</span> : 온라인+모바일</p>
+                    </div>
+                </div>
+                @endif
+
                 <div class="form-group">
                     <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
                     </label>
@@ -372,6 +388,24 @@
                 $regi_form.find('select[name="prof_idx"]').prop('disabled', true);
             @endif
 
+            // 카테고리타입
+            $regi_form.on('ifChanged ifCreated', 'input[name="category_type"]:checked', function() {
+                // 카테고리 검색 초기화
+                $('#selected_category').html('');
+                var set_val = $(this).data('category-type');
+                if (set_val == '1') {
+                    $('#btn_category_search').show();
+                } else {
+                    // 노출섹션이 인트로 영역일 경우 전체카테고리 값으로 고정 (0)
+                    var html = '';
+                    html += '<p class="form-control-static">전체카테고리';
+                    html += '	<input type="hidden" name="cate_code[]" value="0">';
+                    html += '</p>';
+                    $('#selected_category').html(html);
+                    $('#btn_category_search').hide();
+                }
+            });
+
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {
                 // 카테고리 검색 초기화
@@ -384,10 +418,13 @@
                     html += '<p class="form-control-static">전체카테고리';
                     html += '	<input type="hidden" name="cate_code[]" value="0">';
                     html += '</p>';
-
                     $('#selected_category').html(html);
+                    $regi_form.find('input[name="category_type"]').filter('#category_type_1').prop('checked', false).iCheck('update');
+                    $regi_form.find('input[name="category_type"]').filter('#category_type_2').prop('checked', true).iCheck('update');
                     $('#btn_category_search').hide();
                 } else {
+                    $regi_form.find('input[name="category_type"]').filter('#category_type_1').prop('checked', true).iCheck('update');
+                    $regi_form.find('input[name="category_type"]').filter('#category_type_2').prop('checked', false).iCheck('update');
                     $('#btn_category_search').show();
                 }
 
@@ -409,12 +446,16 @@
                     html += '</p>';
 
                     $('#selected_category').html(html);
+                    $regi_form.find('input[name="category_type"]').filter('#category_type_1').prop('checked', false).iCheck('update');
+                    $regi_form.find('input[name="category_type"]').filter('#category_type_2').prop('checked', true).iCheck('update');
                     $('#btn_category_search').hide();
                 } else {
                     var is_campus = $regi_form.find('select[name="site_code"]').find(':selected').data('is-campus');
                     var $cate_code = $regi_form.find('input[name="cate_code[]"]');
 
                     if (is_campus !== undefined && is_campus === 'N') {
+                        $regi_form.find('input[name="category_type"]').filter('#category_type_1').prop('checked', true).iCheck('update');
+                        $regi_form.find('input[name="category_type"]').filter('#category_type_2').prop('checked', false).iCheck('update');
                         $('#btn_category_search').show();
 
                         if ($cate_code.length > 0 && $cate_code.eq(0).val() === '0') {
@@ -494,7 +535,6 @@
             // ajax submit
             $regi_form.submit(function() {
                 var url = '{{ site_url('/site/popup/store') }}' + getQueryString();
-
                 ajaxSubmit($regi_form, url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
@@ -519,7 +559,11 @@
                 }
                 @endif
 
-                return true;
+                if(confirm('카테고리타입을 확인해주세요. \n등록하시겠습니까?')){
+                    return true;
+                } else {
+                    return false;
+                }
             }
         });
     </script>

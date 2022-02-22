@@ -87,4 +87,6 @@
         .job308906 .newTopDday .d_day {line-height:1.2;text-align:center;padding-top:30px;}
         .job308906 .newTopDday .d_day p {color:#fffb00; font-size:40px; background:#000; border-radius:40px; padding:5px 15px}
     </style>
+
+    {!! popup('657007', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

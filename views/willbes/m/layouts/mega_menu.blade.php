@@ -668,6 +668,7 @@
                 </li>
                 <li>
                     <span>지구과학</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51363?subject_idx=2189') }}">박준희</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51290?subject_idx=2189') }}">방정훈</a>
                 </li>                          
             </ul>

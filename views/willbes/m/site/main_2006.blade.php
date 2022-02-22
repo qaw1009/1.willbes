@@ -30,4 +30,6 @@
         </div>
     </div>
     <!-- End Container -->
+
+    {!! popup('657007', $__cfg['SiteCode'], '0') !!}
 @stop

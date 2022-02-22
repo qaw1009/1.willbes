@@ -412,4 +412,5 @@
             });
         });
     </script>
+    {!! popup('657008', $__cfg['SiteCode'], '0') !!}
 @stop

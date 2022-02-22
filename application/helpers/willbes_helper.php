@@ -196,7 +196,7 @@ if (!function_exists('popup')) {
         empty($site_code) === true && $site_code = config_app('SiteCode');
         empty($cate_code) === true && strlen($cate_code) < 1 && $cate_code = get_var(config_app('CateCode'), config_app('DefCateCode'));
 
-        return '<script src="' . app_url('/popup/show/?site_code=' . $site_code . '&cate_code=' . $cate_code . '&section=' . $section . '&campus_ccd=' . $campus_ccd  . '&prof_idx=' . $prof_idx, 'www') . '"></script>';
+        return '<script src="' . front_app_url('/popup/show/?site_code=' . $site_code . '&cate_code=' . $cate_code . '&section=' . $section . '&campus_ccd=' . $campus_ccd  . '&prof_idx=' . $prof_idx, 'www') . '"></script>';
     }
 }
 

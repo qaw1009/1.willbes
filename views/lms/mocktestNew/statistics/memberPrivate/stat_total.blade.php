@@ -97,6 +97,11 @@
                         <td>{{ $gradeInfo['AdjustRankNum'] }} / {{ $gradeInfo['TotalCount'] }}</td>
                     </tr>
                     <tr>
+                        <td>{{$takeMockPartInfo['TakeMockPartName']}} 석차</td>
+                        <td>{{ $takeMockPartInfo['OrgRankNum'] }} / {{ $takeMockPartInfo['TotalCount'] }}</td>
+                        <td>{{ $takeMockPartInfo['AdjustRankNum'] }} / {{ $takeMockPartInfo['TotalCount'] }}</td>
+                    </tr>
+                    <tr>
                         <td>상위수준</td>
                         <td>{!! (empty($gradeInfo['TotalCount']) === false ? round(($gradeInfo['OrgRankNum'] / $gradeInfo['TotalCount']) * 100, 2) : '0') !!} %</td>
                         <td>{!! (empty($gradeInfo['TotalCount']) === false ? round(($gradeInfo['AdjustRankNum'] / $gradeInfo['TotalCount']) * 100, 2) : '0') !!} %</td>
@@ -115,6 +120,9 @@
                     평균 <strong>{{ $gradeInfo['AvgAdjustPoint'] }}점</strong>으로,
                     전체 <strong>{{ $gradeInfo['TotalCount'] }}명</strong>에서 <strong>{{ $gradeInfo['AdjustRankNum'] }}위</strong>이며
                     상위 수준 <strong>{!! (empty($gradeInfo['TotalCount']) === false ? round(($gradeInfo['AdjustRankNum'] / $gradeInfo['TotalCount']) * 100, 2) : '0') !!} %</strong>입니다.
+                </p>
+                <p class="h5 border-dark-blue">
+                    <strong>{{$takeMockPartInfo['TakeMockPartName']}}</strong> 전체 <strong>{{$takeMockPartInfo['TotalCount']}}명</strong> 중 <strong>{{$takeMockPartInfo['AdjustRankNum']}}위</strong> 입니다.
                 </p>
             </div>
         </div>

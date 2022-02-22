@@ -196,6 +196,9 @@ class MemberPrivate extends BaseMocktest
         //종합분석
         $gradeInfo = $this->memberPrivateModel->gradeInfo($prod_code, $mr_idx);
 
+        //직렬석차
+        $takeMockPartInfo = $this->memberPrivateModel->takeMockPartInfo($prod_code, $mr_idx, $productInfo['TakeMockPart']);
+
         //평균점수 분포
         $selectivityInfo = $this->memberPrivateModel->selectivity($prod_code, $mr_idx);
 
@@ -208,6 +211,7 @@ class MemberPrivate extends BaseMocktest
             'page_type' => 'total',
             'productInfo' => $productInfo,
             'gradeInfo' => $gradeInfo,
+            'takeMockPartInfo' => $takeMockPartInfo,
             'selectivityInfo' => $selectivityInfo,
             'subject_graph' => $subject_result['data'],
             'subject_data' => $subject_data

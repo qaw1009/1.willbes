@@ -392,7 +392,7 @@ class MemberPrivateModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         $column = "
-            MP.*, MB.MemName, A.OrderProdIdx, A.MrIdx, A.TakeNumber, A.TakeMockPartName,
+            MP.*, MB.MemName, A.OrderProdIdx, A.MrIdx, A.TakeNumber, A.TakeMockPart, A.TakeMockPartName,
             IFNULL(A.IsDate, MP.TakeStartDatm) AS IsDate, A.MpIdx, A.subject_names, A.TotalScore,
             PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,
             C1.CateName, C1.IsUse AS IsUseCate, Temp.LogIdx,
@@ -402,7 +402,7 @@ class MemberPrivateModel extends WB_Model
         $from = "
             FROM (
                 SELECT 
-                mr.ProdCode, mr.OrderProdIdx, mr.MrIdx, mr.MemIdx, mr.TakeNumber, fn_ccd_name(mr.TakeMockPart) AS TakeMockPartName,
+                mr.ProdCode, mr.OrderProdIdx, mr.MrIdx, mr.MemIdx, mr.TakeNumber, mr.TakeMockPart, fn_ccd_name(mr.TakeMockPart) AS TakeMockPartName,
                 mr.IsTake AS MrIsStatus, mr.RegDatm AS IsDate,
                 SUM(mp.TotalScore) AS TotalScore,
                 GROUP_CONCAT(pmp.MpIdx) AS MpIdx,
@@ -487,6 +487,54 @@ class MemberPrivateModel extends WB_Model
                     GROUP BY MrIdx
                 ) AS R
             ) AS ARank ON MG.MrIdx = ARank.MrIdx
+        ";
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
+
+    /**
+     * 직렬에 속한 석차
+     * @param $prod_code
+     * @param $mr_idx
+     * @param $take_mock_part
+     * @return mixed
+     */
+    public function takeMockPartInfo($prod_code, $mr_idx, $take_mock_part)
+    {
+        $set_condition = [
+            'EQ' => [
+                'reg.ProdCode' => $prod_code,
+                'reg.IsTake' => 'Y'
+            ]
+        ];
+        $arr_condition = array_merge_recursive($set_condition, [
+            'EQ' => ['reg.TakeMockPart' => $take_mock_part]
+        ]);
+        $sub_where = $this->_conn->makeWhere($arr_condition);
+        $sub_where = $sub_where->getMakeWhere(false);
+
+        $arr_condition = array_merge_recursive($set_condition, [
+            'EQ' => ['reg.MrIdx' => $mr_idx]
+        ]);
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = "reg.MrIdx, reg.TakeMockPart, fn_ccd_name(reg.TakeMockPart) AS TakeMockPartName, rnk.OrgRankNum, rnk.AdjustRankNum
+        ,(SELECT COUNT(*) AS cnt FROM {$this->_table['mock_register']} AS reg {$sub_where}) AS TotalCount";
+        $from = "
+            FROM {$this->_table['mock_register']} AS reg
+            INNER JOIN (
+                SELECT
+                a.*
+                ,RANK() OVER (PARTITION BY a.TakeMockPart ORDER BY a.SumOrgPoint DESC) OrgRankNum
+                ,RANK() OVER (PARTITION BY a.TakeMockPart ORDER BY a.SumAdjustPoint DESC) AdjustRankNum
+                FROM (
+                    SELECT reg.ProdCode, reg.MrIdx, reg.TakeMockPart, SUM(b.OrgPoint) AS SumOrgPoint, SUM(b.AdjustPoint) AS SumAdjustPoint
+                    FROM {$this->_table['mock_register']} AS reg
+                    INNER JOIN {$this->_table['mock_grades']} AS b ON reg.MrIdx = b.MrIdx
+                    {$sub_where}
+                    GROUP BY reg.MrIdx
+                ) AS a
+            ) AS rnk ON reg.MrIdx = rnk.MrIdx
         ";
         return $this->_conn->query('select ' . $column . $from . $where)->row_array();
     }

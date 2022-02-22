@@ -168,4 +168,6 @@
             });
         });
     </script>
+
+    {!! popup('657007', $__cfg['SiteCode'], '0') !!}
 @stop

@@ -10,12 +10,13 @@
             max-width:2000px !important;
             margin:20px auto 0;
             padding:0 !important;
-            background:#fff;            
+            background:#fff;     
+            font-size:14px;       
         }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
-
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position: relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
@@ -25,7 +26,7 @@
         .evttop_banners {background:#060606;} 
         .evttop_banners a:hover {border:1px solid #fef200}
 
-        .evttop {background:url(https://static.willbes.net/public/images/promotion/2021/10/1676_top_bg.jpg) no-repeat center top; }
+        .evttop {background:url(https://static.willbes.net/public/images/promotion/2022/02/1676_top_bg.jpg) no-repeat center top; }
 
         .box_book{width:920px; margin:50px auto;border-top:2px solid #22197f;}
 
@@ -59,22 +60,20 @@
 
     <div class="evtContent NGR" id="evtContainer">  
         <div class="sky" id="QuickMenu">
-            <a href="#evt3">
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1676_sky2.png" title="한덕현 티패스">
-            </a> 
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_sky.png" usemap="#Map1676_sky" title="반반한 모의고사" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_sky.png" usemap="#Map1676_sky" title="반반한 모의고사" border="0">
             <map name="Map1676_sky">
-                <area shape="rect" coords="6,116,152,194" href="#watch" />
-                <area shape="rect" coords="4,199,150,272" href="#detail" />
-                <area shape="rect" coords="4,279,149,355" href="#evt1" />
-                <area shape="rect" coords="3,359,153,437" href="#evt3" />
-            </map>        
+                <area shape="rect" coords="6,12,152,106" href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank"/>
+                <area shape="rect" coords="6,116,157,211" href="#detail" />
+                <area shape="rect" coords="6,216,154,319" href="#evt1" />
+                <area shape="rect" coords="5,326,154,428" href="#evt4" />
+                <area shape="rect" coords="5,440,157,536" href="#evt1" />
+            </map>       
         </div>  
 
-        @if(time() < strtotime('202202140000'))
+        @if(time() < strtotime('202203070000'))
             <div class="evtCtnsBox evttop_banners" data-aos="fade-down">
                 <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/01/1676_top_banner.jpg">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_top_banner.jpg">
                     <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="" style="position: absolute; left: 53.57%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>
                     <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" title="" style="position: absolute; left: 74.29%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>  
                 </div>        
@@ -84,7 +83,7 @@
         @endif
         
         <div class="evtCtnsBox evttop" data-aos="fade-up">                 
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/1676_top.jpg"  title="더켠의 반반한 밤">                        
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_top.jpg"  title="더켠의 반반한 밤">                        
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
@@ -111,47 +110,55 @@
         <div class="evtCtnsBox evt02" id="pairing" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
-                <ul id="slidesImg4">                    
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/01/1676_02_january.jpg" /></li>
+                <ul id="slidesImg4">                   
                     <li><img src="https://static.willbes.net/public/images/promotion/2022/01/1676_02_february.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/02/1676_02_march.jpg" /></li>
                 </ul>    
 
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p>  
                       
             </div> 
-            <!-- <img src="https://static.willbes.net/public/images/promotion/2021/08/1676_02_02.jpg">        -->
+
         </div>           
 
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt03" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/1676_03_01.jpg" name="evt1" id="evt1">
-                <a href="#to_go" title="출석체크하러 가기" style="position: absolute; left: 30.89%; top: 88.35%; width: 38.39%; height: 5.44%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_03_01.jpg" name="evt1" id="evt1">
+                <a href="#to_go" title="출석체크하러 가기" style="position: absolute; left: 30.71%; top: 88.7%; width: 38.48%; height: 6.07%; z-index: 2;"></a>
             </div>
+
+            <div class="wrap" id="evt4">
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_03_02.jpg">
+                <a href="https://gall.dcinside.com/board/lists/?id=government" target="_blank" title="공갤" style="position: absolute; left: 15.36%; top: 89.51%; width: 14.64%; height: 7.91%; z-index: 2;"></a>
+                <a href="https://cafe.daum.net/9glade" target="_blank" title="9꿈사" style="position: absolute; left: 30.09%; top: 89.51%; width: 14.64%; height: 7.91%; z-index: 2;"></a>
+                <a href="https://cafe.naver.com/gugrade" target="_blank" title="공드림" style="position: absolute; left: 44.46%; top: 89.51%; width: 14.64%; height: 7.91%; z-index: 2;"></a>
+                <a href="https://www.instagram.com" target="_blank" title="인스타" style="position: absolute; left: 58.93%; top: 89.51%; width: 14.64%; height: 7.91%; z-index: 2;"></a>
+                <a href="https://www.willbes.net/classroom/home/index" target="_blank" title="수강후기" style="position: absolute; left: 73.84%; top: 89.51%; width: 14.64%; height: 7.91%; z-index: 2;"></a>
+            </div>
+            
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N', 'login_url'=>app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www'), 'is_public' => true)){{--기존SNS예외처리시, 로그인페이지 이동--}}
+            @endif
+
+
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/1676_03_02.png" name="evt3" id="evt3">
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/190319" target="_blank" title="1~2월방송 다시보기" style="position: absolute; left: 11.7%; top: 75.72%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/190443" target="_blank" title="1~4월방송 다시보기" style="position: absolute; left: 38.93%; top: 75.57%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" title="한덕현 영어 tpass" style="position: absolute; left: 66.88%; top: 75.86%; width: 21.34%; height: 9.34%; z-index: 2;"></a>                
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_03_03.jpg" name="evt3" id="evt3">
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/191912" target="_blank" title="3월방송 다시보기" style="position: absolute; left: 11.7%; top: 75.72%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/190443" target="_blank" title="다시보기" style="position: absolute; left: 38.93%; top: 75.57%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" title="tpass" style="position: absolute; left: 66.88%; top: 75.86%; width: 21.34%; height: 9.34%; z-index: 2;"></a>                
             </div>
-            <!-- <div class="wrap" id="evt4">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/1676_03_03.jpg">
-                <a href="https://www.instagram.com/?hl=ko" target="_blank" title="인스타" style="position: absolute; left: 8.93%; top: 79.26%; width: 15.89%; height: 7.87%; z-index: 2;"></a>
-                <a href="https://ko-kr.facebook.com" target="_blank" title="페이스북" style="position: absolute; left: 26.43%; top: 79.26%; width: 15.89%; height: 7.87%; z-index: 2;"></a>
-                <a href="https://top.cafe.daum.net" target="_blank" title="다음카페" style="position: absolute; left: 41.96%; top: 79.26%; width: 15.89%; height: 7.87%; z-index: 2;"></a>
-                <a href="https://section.cafe.naver.com/ca-fe" target="_blank" title="네이버카페" style="position: absolute; left: 57.86%; top: 79.26%; width: 15.89%; height: 7.87%; z-index: 2;"></a>
-                <a href="https://gall.dcinside.com/board/lists?id=government" target="_blank" title="공무원갤러리" style="position: absolute; left: 74.91%; top: 79.26%; width: 15.89%; height: 7.87%; z-index: 2;"></a>
-            </div> -->
+
         </div>
 
 
         <div class="evtCtnsBox evt04" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_03_03.jpg" usemap="#Map1676e" title="라이브 티비" border="0">
-            <map name="Map1676e">
-                <area shape="rect" coords="162,62,552,163" href="#pairing" />
-                <area shape="rect" coords="569,64,959,159" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" />
-            </map>                  
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_03_04.jpg">
+                <a href="#pairing" title="편성표" style="position: absolute; left: 14.29%; top: 29.03%; width: 35%; height: 46.54%; z-index: 2;"></a>
+                <a href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" title="자료다운" style="position: absolute; left: 50.8%; top: 29.03%; width: 35%; height: 46.54%; z-index: 2;"></a>
+            </div>                 
             <div class="liveWrap" >
                 @if(empty($data['PromotionLivePlayer']) === false && $data['PromotionLivePlayer'] == 'youtube')
                     @include('willbes.pc.promotion.live_video_youtube_partial')
@@ -245,9 +252,9 @@
                             - PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br>
                             - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.</li>
                             <li>열공 출첵 이벤트 관련<br>
-                            - 본 이벤트는 로그인 후 참여 가능하며, 1/17(월)~2/18(금)까지 총 20회 진행됩니다. <span>(*토/일 제외)</span><br>
-                            - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (12/20(월), 1/3(월) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
-                            - 당첨자 안내 공지는 1/10(월) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
+                            - 본 이벤트는 로그인 후 참여 가능하며, 2/28(월)~3/25(금)까지 총 20회 진행됩니다. (* 토/일 제외)<br>
+                            - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (3/7(월), 3/21(월) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
+                            - 당첨자 안내 공지는 3/28(월) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
                         </ol>
                     </dd>
                 </dl>
@@ -259,9 +266,9 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        $( document ).ready( function() {
+        $(document).ready(function() {
             AOS.init();
-        } );
+        });
     </script>
 
     <script type="text/javascript">

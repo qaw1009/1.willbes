@@ -38,7 +38,7 @@
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2089_01.jpg" alt="이벤트">
         </div>
-        @include('willbes.pc.predict2.2089_promotion_partial')
+        @include('willbes.pc.predict2.iframe_promotion_partial')
         <div class="evtCtnsBox evtInfo" id="careful">
 			<div class="evtInfoBox">
 				<h4 class="NSK-Black">이벤트 유의사항</h4>

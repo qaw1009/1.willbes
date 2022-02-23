@@ -5,14 +5,18 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
-            margin-top:20px !important;
+            max-width:2000px !important;
+            margin:20px auto 0;
             padding:0 !important;
-            background:#fff;
+            background:#fff;     
+            font-size:14px;       
         }
         .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position: relative;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
@@ -21,7 +25,7 @@
 
         .wb_police {background:#0A0A0A}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/12/1985_top_bg.jpg) no-repeat center;position:relative}        
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/02/1985_top_bg.jpg) no-repeat center;position:relative}        
         .wb_01 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1985_01_bg.jpg) no-repeat center;position:relative}
         .wb_01 .youtube {position:absolute; top:546px; left:50%; width:608px; z-index:1;margin-left:-127px; border:1px solid #000; box-shadow:0 10px 20px rgba(0,0,0,.3)}
         .wb_01 .youtube iframe {width:606px; height:317px}
@@ -42,8 +46,8 @@
 
 
 
-    <div class="p_re evtContent NSK" id="evtContainer">      
-        <div class="skybanner">
+    <div class="evtContent NSK" id="evtContainer">      
+        <div class="skybanner" id="QuickMenu">
             <a href="#evt07"><img src="https://static.willbes.net/public/images/promotion/2021/04/1985_sky_01.png" alt="경찰학 고" ></a>
         </div>  
 
@@ -52,7 +56,7 @@
 		</div>     
 
         <div class="evtCtnsBox wb_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1985_top.jpg"  alt="장정훈 경찰학개론 베테랑"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/1985_top.jpg"  alt="장정훈 경찰학개론 베테랑"/>
 		</div>
 
         <div class="evtCtnsBox wb_01" >

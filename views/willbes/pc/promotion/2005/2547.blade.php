@@ -41,7 +41,7 @@
         <div class="evtCtnsBox evt01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2547_01.jpg" alt="이벤트">
         </div>
-        @include('willbes.pc.predict2.2547_promotion_partial')
+        @include('willbes.pc.predict2.iframe_promotion_partial')
         <div class="evtCtnsBox evtInfo" id="careful" data-aos="fade-up">
 			<div class="evtInfoBox">
 				<h4 class="NSK-Black">이벤트 유의사항</h4>

@@ -5,21 +5,26 @@
 
     <!-- Container -->
     <style type="text/css">
-    .evtContent { 
-        position:relative;            
-        width:100% !important;
-        margin-top:20px !important;
-        padding:0 !important;
-        background:#fff;
-    }	
-    .evtContent span {vertical-align:auto}
-    .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtContent {
+            width:100%;
+            min-width:1120px !important;
+            max-width:2000px !important;
+            margin:20px auto 0;
+            padding:0 !important;
+            background:#fff;     
+            font-size:14px;       
+        }
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position: relative;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+
     /*****************************************************************/ 
     .skybanner {position:fixed; top:225px; width:150px; right:10px;z-index:1;}
     .skybanner a {display:block; margin-bottom:10px}
 
     .evt00 {background:#0a0a0a}
-    .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/11/1926_top_bg.jpg) no-repeat center top;position:relative}  
+    .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/02/1926_top_bg.jpg) no-repeat center top;position:relative}  
     .evt_top .youtube {width:726px; position:absolute; top:1566px; left:50%; margin-left:-363px; z-index:5}
     .evt_top .youtube iframe {width:726px; height:380px;} 
 
@@ -52,8 +57,8 @@
 
     </style>
 
-    <div class="evtContent NGR" id="evtContainer"> 
-        <div class="skybanner">
+    <div class="evtContent NSK" id="evtContainer"> 
+        <div class="skybanner" id="QuickMenu">
             <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_sky01.jpg" alt="형사법 시작부터 제대로"/></a>
         </div>
 
@@ -62,7 +67,7 @@
         </div> 
 
         <div class="evtCtnsBox evt_top">  
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_top.jpg" alt="신광은 형사법 신세계" usemap="#Map1926_01" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/1926_top.jpg" alt="신광은 형사법 신세계" usemap="#Map1926_01" border="0">
             <map name="Map1926_01">
                 <area shape="rect" coords="226,1452,434,1517" href="https://police.willbes.net/professor/show/cate/3001/prof-idx/50547?subject_idx=1004" target="_blank" alt="교수님 ">
             </map>

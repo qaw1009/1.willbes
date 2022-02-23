@@ -35,7 +35,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/05/1627_top{{ ('20200516200000' <= date('YmdHis') ? '_01' : '') }}.jpg" alt="#">
         </div>
         <!--sectin1_box//-->
-        @include('willbes.pc.predict2.1627_promotion_partial')
+        @include('willbes.pc.predict2.iframe_promotion_partial')
 
         <div class="sectin2_box">
             <div class="NSK-Black">이벤트 유의사항</div>

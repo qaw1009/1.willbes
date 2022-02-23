@@ -5,16 +5,18 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-        width:100% !important;
-        min-width:1120px !important;
-        margin-top:20px !important;
-        padding:0 !important;
-        background:#fff;
+            width:100%;
+            min-width:1120px !important;
+            max-width:2000px !important;
+            margin:20px auto 0;
+            padding:0 !important;
+            background:#fff;     
+            font-size:14px;       
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
-        .evtContent span {vertical-align:auto}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position: relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
@@ -23,7 +25,7 @@
         .sky {position:fixed; top:225px;right:10px; width:120px; z-index:2;}
         .sky a{display:block; margin-bottom:10px}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/06/2236_top_bg.jpg) no-repeat center top;position:relative;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/02/2236_top_bg.jpg) no-repeat center top;position:relative;}
         .circle {position:absolute;left:50%;top:50%;margin-left:-188px;margin-top:-100px;animation: circle 5s linear infinite;}
         @@keyframes circle{
             0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
@@ -34,7 +36,7 @@
         }
         .constitution {position: absolute;left:50%;top: 50%;margin-left: -77px;margin-top: 35px;}
 
-        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2236_01_bg.jpg) no-repeat center top;}
+        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/02/2236_01_bg.jpg) no-repeat center top;}
 
         .evt03 {background:#383838;}
         .evt03 .youtube {position:absolute; top:440px; left:50%; width:658px; z-index:1; margin-left:-329px; box-shadow:0 10px 20px rgba(0,0,0,.3);}  
@@ -91,34 +93,30 @@
     </form>
 
     <div class="evtContent NSK" id="evtContainer">
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>   
-
-        <div class="sky">
+        <div class="sky" id="QuickMenu">
             <a href="#evt_01"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2236_sky.jpg" alt="go 헌법 시작부터 제대로!" >
             </a>  
-        </div>   
+        </div>
+
+        <div class="evtCtnsBox evt00">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg" alt="경찰학원부분 1위"/>
+        </div>     
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_top.jpg"  alt="이국령 형법"/>
-            <div class="circle">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_circle.png"  alt=""/>
-            </div>
-            <div class="constitution">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_constitution.png"  alt=""/>
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2236_top.jpg" alt="이국령 형법"/>
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_01.jpg"  alt="경찰헌법 이국령"/>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/02/2236_01.jpg" alt="경찰헌법 이국령"/>
+                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049" title="교수홈" target="_blank" style="position: absolute; left: 58.66%; top: 54.02%; width: 29.2%; height: 9.67%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt02">  
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_02.jpg"  alt="박수친 이유"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_02.jpg" alt="박수친 이유"/>
                 <a href="javascript:go_popup1()" style="position: absolute;left: 71%;top: 18.25%;width: 6.5%;height: 3%;z-index: 2;"></a>
             </div>    
         </div>

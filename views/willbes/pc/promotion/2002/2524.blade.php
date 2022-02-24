@@ -16,7 +16,7 @@
 
         .evt00 {background:#0a0a0a}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/01/2524_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/02/2524_top_bg.jpg) no-repeat center top;}
 
         .evt_tab {padding-top:125px;}
 
@@ -65,87 +65,89 @@
         </div>
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2524_top.gif" alt="추천강좌" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/02/2524_top.jpg" alt="추천강좌" />
         </div>   
 
         <div class="evtCtnsBox evt_tab" data-aos="fade-up">     
             <ul class="evtTab">
-                <li><a href="#tab01">22년 1차 합격반</a></li>
-                <li><a href="#tab02">22년 2차 합격반</a></li>
+                <li><a href="#tab01">초시생 (23년 대비)</a></li>
+                <li><a href="#tab02">재시생 (22년 대비)</a></li>
             </ul>
             <div id="tab01">
-                <div class="evtCtnsBox evt01" data-aos="fade-up">
-                    <div>
-                        <div class="wrap">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/01/2524_01.jpg" alt="마무리 단계" />
-                            <a href="javascript:alert('2/9부터 신청 가능합니다.')" style="position: absolute;left: 65.45%;top: 33.32%;width: 19.14%;height: 2.95%;z-index: 2;"></a>
-                            <a href="javascript:alert('접수 기간이 아닙니다.')" style="position: absolute;left: 65.45%;top: 54.82%;width: 19.14%;height: 2.95%;z-index: 2;"></a>
-                            <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1045" target="_blank" style="position: absolute;left: 65.45%;top: 76.32%;width: 19.14%;height: 2.95%;z-index: 2;"></a>
-                        </div>       
-                    </div>                   
+                <div class="evtCtnsBox evt01" data-aos="fade-up">                    
+                    <div class="wrap">
+                        <img src="https://static.willbes.net/public/images/promotion/2022/02/2524_01_01.jpg" alt="12개월" />
+                        <a href="https://police.willbes.net/pass/offPackage/show/prod-code/191863" target="_blank" alt="헌법 김원욱" style="position: absolute;left: 18.25%;top: 83.99%;width: 19.84%;height: 2.45%;z-index: 2;"></a>
+                        <a href="https://police.willbes.net/pass/offPackage/show/prod-code/191868" target="_blank" alt="헌법 이국령" style="position: absolute;left: 61.99%;top: 83.99%;width: 19.84%;height: 2.45%;z-index: 2;"></a>
+                    </div>                                    
                 </div>                
             </div>
             <div id="tab02">
                 <div class="evtCtnsBox evt01" data-aos="fade-up">
-                        <div>
-                            <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_02_01.jpg" alt="super pass" />                           
+                    <div class="wrap">
+                        <img src="https://static.willbes.net/public/images/promotion/2022/02/2524_01_02.jpg" alt="6개월" />
+                        <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190293" target="_blank" alt="헌법 김원욱" style="position: absolute;left: 11.05%;top: 83.99%;width: 19.84%;height: 2.45%;z-index: 2;"></a>
+                        <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190294" target="_blank" alt="헌법 이국령" style="position: absolute;left: 40.11%;top: 83.99%;width: 19.84%;height: 2.45%;z-index: 2;"></a>
+                        <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190295" target="_blank" alt="경행경채" style="position: absolute;left: 69.15%;top: 83.99%;width: 19.84%;height: 2.45%;z-index: 2;"></a>                       
+                    </div>
+                    {{--
+                    <div class="mid2">
+                        <div class="wrap">
+                            <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_02_02.jpg" class="off" alt="자세히 보기" />                                
+                            <a href="javascript:alert('Coming Soon!')" style="position: absolute;left: 35.45%;top: 86.62%;width: 29.14%;height: 5.24%;z-index: 2;"></a>
+                            <div class="curri00">                                
+                                <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech.png" alt="" class="off">                          
+                            </div> 
+                            <div class="curri01">
+                                <a href="#none;">
+                                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech01.png" alt="" class="off">
+                                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble01.png" alt="" class="on">
+                                </a>    
+                            </div> 
+                            <div class="curri02">
+                                <a href="#none;">
+                                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech02.png" alt="" class="off">
+                                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble02.png" alt="" class="on">
+                                </a>    
+                            </div>  
+                            <div class="curri03">
+                                <a href="#none;">                                 
+                                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech03.png" alt="" class="off">
+                                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble03.png" alt="" class="on">
+                                </a>    
+                            </div>  
+                            <div class="curri04">
+                                <a href="#none;">
+                                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech04.png" alt="" class="off">
+                                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble04.png" alt="" class="on">
+                                </a>
+                            </div>  
+                            <div class="curri05">
+                                <a href="#none;">
+                                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech05.png" alt="" class="off">
+                                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble05.png" alt="" class="on">
+                                </a>   
+                            </div>  
+                            <div class="curri06">
+                                <a href="#none;">
+                                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech06.png" alt="" class="off">
+                                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble06.png" alt="" class="on">
+                                </a>    
+                            </div>               
+                        </div>                          
+                    </div>
+                    <div class="end">
+                        <div class="wrap">
+                            <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_02_03.jpg" alt="종합반" />
+                            <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190191" title="김원욱 기본형 신청하기" target="_blank" style="position: absolute;left: 16.95%;top: 39.92%;width: 14.72%;height: 4.54%;z-index: 2;"></a>                      
+                            <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190192" title="이국령 헌법 신청하기" target="_blank" style="position: absolute;left: 42.55%;top: 39.92%;width: 14.72%;height: 4.54%;z-index: 2;"></a>
+                            <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190197" title="경행경채 기본형 신청하기" target="_blank" style="position: absolute;left: 68.25%;top: 39.92%;width: 14.72%;height: 4.54%;z-index: 2;"></a>                      
+                            <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190250" title="김원욱 심화형 신청하기" target="_blank" style="position: absolute;left: 16.95%;top: 66.22%;width: 14.72%;height: 4.54%;z-index: 2;"></a>
+                            <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190193" title="이국령 심화형 신청하기" target="_blank" style="position: absolute;left: 42.55%;top: 66.22%;width: 14.72%;height: 4.54%;z-index: 2;"></a>                      
+                            <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190251" title="경행경채 심화형 신청하기"target="_blank" style="position: absolute;left: 68.25%;top: 66.22%;width: 14.72%;height: 4.54%;z-index: 2;"></a>             
                         </div>
-                        <div class="mid2">
-                            <div class="wrap">
-                                <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_02_02.jpg" class="off" alt="자세히 보기" />                                
-                                <a href="javascript:alert('Coming Soon!')" style="position: absolute;left: 35.45%;top: 86.62%;width: 29.14%;height: 5.24%;z-index: 2;"></a>
-                                <div class="curri00">                                
-                                    <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech.png" alt="" class="off">                          
-                                </div> 
-                                <div class="curri01">
-                                    <a href="#none;">
-                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech01.png" alt="" class="off">
-                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble01.png" alt="" class="on">
-                                    </a>    
-                                </div> 
-                                <div class="curri02">
-                                    <a href="#none;">
-                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech02.png" alt="" class="off">
-                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble02.png" alt="" class="on">
-                                    </a>    
-                                </div>  
-                                <div class="curri03">
-                                    <a href="#none;">                                 
-                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech03.png" alt="" class="off">
-                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble03.png" alt="" class="on">
-                                    </a>    
-                                </div>  
-                                <div class="curri04">
-                                    <a href="#none;">
-                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech04.png" alt="" class="off">
-                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble04.png" alt="" class="on">
-                                    </a>
-                                </div>  
-                                <div class="curri05">
-                                    <a href="#none;">
-                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech05.png" alt="" class="off">
-                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble05.png" alt="" class="on">
-                                    </a>   
-                                </div>  
-                                <div class="curri06">
-                                    <a href="#none;">
-                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_speech06.png" alt="" class="off">
-                                        <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_bubble06.png" alt="" class="on">
-                                    </a>    
-                                </div>               
-                            </div>                          
-                        </div>
-                        <div class="end">
-                            <div class="wrap">
-                                <img src="https://static.willbes.net/public/images/promotion/2022/01/2494_02_03.jpg" alt="종합반" />
-                                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190191" title="김원욱 기본형 신청하기" target="_blank" style="position: absolute;left: 16.95%;top: 39.92%;width: 14.72%;height: 4.54%;z-index: 2;"></a>                      
-                                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190192" title="이국령 헌법 신청하기" target="_blank" style="position: absolute;left: 42.55%;top: 39.92%;width: 14.72%;height: 4.54%;z-index: 2;"></a>
-                                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190197" title="경행경채 기본형 신청하기" target="_blank" style="position: absolute;left: 68.25%;top: 39.92%;width: 14.72%;height: 4.54%;z-index: 2;"></a>                      
-                                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190250" title="김원욱 심화형 신청하기" target="_blank" style="position: absolute;left: 16.95%;top: 66.22%;width: 14.72%;height: 4.54%;z-index: 2;"></a>
-                                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190193" title="이국령 심화형 신청하기" target="_blank" style="position: absolute;left: 42.55%;top: 66.22%;width: 14.72%;height: 4.54%;z-index: 2;"></a>                      
-                                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/190251" title="경행경채 심화형 신청하기"target="_blank" style="position: absolute;left: 68.25%;top: 66.22%;width: 14.72%;height: 4.54%;z-index: 2;"></a>             
-                            </div>
-                        </div>         
+                    </div>
+                    --}}       
                     </div>                
                 </div>
             </div>             

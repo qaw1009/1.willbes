@@ -264,7 +264,7 @@
 
                     @if ($research_type == 'Research2')
                         <input type="hidden" id="mode" name="mode" value="{{ ($data['research2_cnt'] > 0) ? 'modify' : 'add' }}" />
-                        <div class="markingtitle mt50">Research 2<br>(2022.02.26[토] 20 : 00 ~ 2022.03.04[금] 20 : 00까지)<br>※ 약 일주일간 제공</div>
+                        <div class="markingtitle mt50">Research 2<br>(2022.02.26[토] 19 : 46 ~ 2022.03.04[화] 13 : 00까지)</div>
                         <div class="markingBox">
                             <h3 class="mt30">본인 점수 입력</h3>
                             <table class="boardTypeB">

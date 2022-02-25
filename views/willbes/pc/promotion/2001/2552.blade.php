@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}  */
+        .evtCtnsBox .wrap a {border:1px solid #000} 
 
         /************************************************************/
 
@@ -53,11 +53,12 @@
         /*탭(텍스트)*/
         .tabContaier{width:100%;background:#fff;margin-top:50px;}
         .tabContaier ul{width:1120px;margin:0 auto;height:80px;} 
-        .tabContaier li{display:inline-block;width:224px;height:75px;line-height:74px;color:#0101ff;float:left;font-size:25px;font-weight:bold;border:1px solid #0101ff;}    
-        .tabContaier:after {content:""; display:block; clear:both}
+        .tabContaier li {display:inline-block;width:224px;height:75px;line-height:74px;color:#0101ff;float:left;font-size:25px;font-weight:bold;border:1px solid #0101ff; border-right:0}  
+        .tabContaier li:last-child {border-right:1px solid #0101ff}         
         .tabContaier li a{display:block;}
         .tabContaier li a:hover,
         .tabContaier li a.active {color:#fff;font-size:35px;background:#0101ff;}
+        .tabContaier:after {content:""; display:block; clear:both}
         /*유튜브*/
         .youtube {position:absolute; top:184px; left:50%;z-index:1;margin-left:-100px}
         .youtube iframe {width:586px; height:330px}
@@ -159,14 +160,18 @@
         <div class="evtCtnsBox evt01" id="pass" data-aos="fade-up">         
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2552_01.gif" alt="신광은경찰 PASS">          
             
-            <div class="passLecBuy">   
+            <div class="passLecBuy">  
                 <div>                    
-                    <input type="radio" id="y_pkg0" name="y_pkg" value="191723" data-sale-price="860000"/>                
-                    <label for="y_pkg0">23년 1차 경찰 PASS 신청 </label>
+                    <input type="radio" id="y_pkg0" name="y_pkg" value="191901" data-sale-price="990000"/>                
+                    <label for="y_pkg0">23년 합격 PASS 신청하기</label>
+                </div> 
+                <div>                    
+                    <input type="radio" id="y_pkg1" name="y_pkg" value="191723" data-sale-price="890000"/>                
+                    <label for="y_pkg1">23년 1차 경찰 PASS 신청</label>
                 </div>
                 <div>                    
-                    <input type="radio" id="y_pkg1" name="y_pkg" value="191722" data-sale-price="770000"/>                
-                    <label for="y_pkg1">22년 2차 경찰 PASS 신청</label>
+                    <input type="radio" id="y_pkg2" name="y_pkg" value="191722" data-sale-price="690000"/>                
+                    <label for="y_pkg2">22년 2차 경찰 PASS 신청</label>
                 </div>   
             </div>
 
@@ -293,14 +298,18 @@
 
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2552_01.gif" alt="신광은경찰PASS">
 
-            <div class="passLecBuy">   
+            <div class="passLecBuy">  
                 <div>                    
-                    <input type="radio" id="y_pkg2" name="y_pkg" value="191723" data-sale-price="860000"/>                
-                    <label for="y_pkg2">23년 1차 경찰 PASS 신청</label>
+                    <input type="radio" id="y_pkg3" name="y_pkg" value="191901" data-sale-price="990000"/>                
+                    <label for="y_pkg3">23년 합격 PASS 신청하기</label>
+                </div> 
+                <div>                    
+                    <input type="radio" id="y_pkg4" name="y_pkg" value="191723" data-sale-price="890000"/>                
+                    <label for="y_pkg4">23년 1차 경찰 PASS 신청</label>
                 </div>
                 <div>                    
-                    <input type="radio" id="y_pkg3" name="y_pkg" value="191722" data-sale-price="770000"/>                
-                    <label for="y_pkg3">22년 2차 경찰 PASS 신청</label>
+                    <input type="radio" id="y_pkg5" name="y_pkg" value="191722" data-sale-price="690000"/>                
+                    <label for="y_pkg5">22년 2차 경찰 PASS 신청</label>
                 </div>   
             </div>
            

@@ -29,7 +29,7 @@
         .youtube li {display:inline; float:left;}
         .youtube li:nth-child(2),
         .youtube li:last-child {margin-left:20px}
-        .youtube li div {margin-bottom:70px; font-size:30px; font-weight:bold; color:#fec345}
+        .youtube li div {margin-bottom:70px; font-size:30px; font-weight:bold; color:#fec345; letter-spacing:-1px}
         .youtube li div span {color:#fff;}
         .youtube li iframe {width:550px; height:310px}
         .youtube ul:after {content:''; display:block; clear:both}
@@ -62,12 +62,12 @@
                     <iframe src="https://www.youtube.com/embed/y8vRHR1V5SA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
                 <li>
-                    <div class="mt100"><span>2022 학년도 대비</span> 설명회 바로보기</div>
-                    <iframe src="https://www.youtube.com/embed/nmqJSQbE0v4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="mt100" style="font-size:28px"><span>2023 학년도 대비</span> 송원영 국어/문학교육론 설명회</div>
+                    <iframe src="https://www.youtube.com/embed/NH8iLXKXvBY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
                 <li>
-                    <div class="mt100"><span>2019 학년도</span> 기출 해설 바로보기</div>
-                    <iframe src="https://www.youtube.com/embed/lIdD_ZA63-M?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="mt100"><span>송원영 국어교육론</span> 강의 미리보기</div>
+                    <iframe src="https://www.youtube.com/embed/i8CGjjQViIk?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
             </ul>            
         </div>

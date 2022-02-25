@@ -111,6 +111,32 @@ no-repeat 5px center}
 .prof-list-drop-Box a strong {margin-left:10px;}
 
 
+/*Main Container : 적중*/
+.ssam .Section1 .smallTit {border-top:0;}
+.ssam .Section1 .smallTit p { position: static;}
+
+.ssam .VisualSubBox {text-align: center;background:url("https://static.willbes.net/public/images/promotion/main/2018/2018_main_bg.jpg"); width:1120px;
+    margin:0 auto; padding:50px 0}
+.ssam .SubtabBox {
+    width: 978px;
+    height: 260px; 
+    margin:0 auto;
+    overflow: hidden;
+}
+.ssam .SubtabBox p {position:absolute; top:50%; left:50%; margin-top:-28px; width:32px; height:57px; cursor:pointer; 
+    background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;}
+.ssam .SubtabBox p a {display:none;}
+.ssam .SubtabBox p.leftBtn {margin-left:-540px;}
+.ssam .SubtabBox p.rightBtn {margin-left:508px; background-position: right center;}	
+.ssam .VisualSubBox .Subtab {width:978px; display:flex; flex-wrap: wrap; margin:10px auto 0; border-left:1px solid #e3e3e3; border-top:1px solid #e3e3e3;}
+.ssam .VisualSubBox .Subtab li {display: inline-block; width:12.5%}
+.ssam .VisualSubBox .Subtab li a {display:block; text-align:center; font-size:14px; background: #fff; color:#494949; line-height:30px; border-right:1px solid #e3e3e3; border-bottom:1px solid #e3e3e3}
+.ssam .VisualSubBox .Subtab li a.active,
+.ssam .VisualSubBox .Subtab li a:hover {color:#fff; background:#5ba5fe; font-weight:bold;}
+.ssam .VisualSubBox .Subtab li:nth-child a (6),
+.ssam .VisualSubBox .Subtab li:last-child a {border:0}
+
+
 </style>
 
 <!-- Container -->
@@ -1290,11 +1316,9 @@ no-repeat 5px center}
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_lij.jpg" alt="교육한 이인재"></a></li>
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_hei.jpg" alt="교육한 홍의일"></a></li>
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_swy.jpg" alt="전공국어 송원영"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_lwg.jpg" alt="전공국어 이원근"></a></li>
-                    <li><a href="#none"><img src="http://file1.willbes.net/datassam/event/191106_main_wsam32.jpg" alt="전공국어 권보민"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kbm.jpg" alt="전공국어 권보민"></a></li>
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kys.jpg" alt="전공영어 김유석"></a></li>
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kym.jpg" alt="전공영어 김영문"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kh.jpg" alt="전공영어 공훈"></a></li>
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kcm.jpg" alt="전공수학 김철홍"></a></li>
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_bty.jpg" alt="수학교육론 박태영"></a></li>
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kcu.jpg" alt="전공생물 강치욱"></a></li>
@@ -1313,25 +1337,33 @@ no-repeat 5px center}
                 <ul class="Subtab">
                     <li><a data-slide-index='0' href="javascript:void(0);" class="active">유아 민정선</a></li>
                     <li><a data-slide-index='1' href="javascript:void(0);">초등 배재민</a></li>
-                    <li><a data-slide-index='2' href="javascript:void(0);">교육학 김차웅</a></li>
+                    <li><a data-slide-index='2' href="javascript:void(0);">교육학 이경범</a></li>
+                    <li><a data-slide-index='2' href="javascript:void(0);">교육학 정 현</a></li>
+                    <li><a data-slide-index='2' href="javascript:void(0);">교육학 신태식</a></li>
                     <li><a data-slide-index='3' href="javascript:void(0);">교육학 이인재</a></li>
                     <li><a data-slide-index='4' href="javascript:void(0);">교육학 홍의일</a></li>
                     <li><a data-slide-index='5' href="javascript:void(0);">전공국어 송원영</a></li>
-                    <li><a data-slide-index='6' href="javascript:void(0);">전공국어 이원근</a></li>
                     <li><a data-slide-index='7' href="javascript:void(0);">전공국어 권보민</a></li>
+                    <li><a data-slide-index='7' href="javascript:void(0);">전공국어 구동언</a></li>
                     <li><a data-slide-index='8' href="javascript:void(0);">전공영어 김유석</a></li>
                     <li><a data-slide-index='9' href="javascript:void(0);">전공영어 김영문</a></li>
-                    <li><a data-slide-index='10' href="javascript:void(0);">전공영어 공훈</a></li>
                     <li><a data-slide-index='11' href="javascript:void(0);">전공수학 김철홍</a></li>
+                    <li><a data-slide-index='11' href="javascript:void(0);">전공수학 김현웅</a></li>
                     <li><a data-slide-index='12' href="javascript:void(0);">수학교육론 박태영</a></li>
+                    <li><a data-slide-index='12' href="javascript:void(0);">수학교육론 박혜향</a></li>
+                    <li><a data-slide-index='15' href="javascript:void(0);">도덕윤리 김병찬</a></li>
+                    <li><a data-slide-index='15' href="javascript:void(0);">도덕윤리 김민응</a></li>
+                    <li><a data-slide-index='15' href="javascript:void(0);">일반사회 허역 팀</a></li>
+                    <li><a data-slide-index='15' href="javascript:void(0);">전공역사 김종권</a></li>
                     <li><a data-slide-index='13' href="javascript:void(0);">전공생물 강치욱</a></li>
                     <li><a data-slide-index='14' href="javascript:void(0);">생물교육론 양혜정</a></li>
-                    <li><a data-slide-index='15' href="javascript:void(0);">도덕윤리 김병찬</a></li>
+                    <li><a data-slide-index='14' href="javascript:void(0);">전공화학 강 철</a></li>
+                    <li><a data-slide-index='14' href="javascript:void(0);">전공체육 최규훈</a></li>
                     <li><a data-slide-index='16' href="javascript:void(0);">전공음악 다이애나</a></li>
                     <li><a data-slide-index='17' href="javascript:void(0);">전기전자통신 최우영</a></li>
                     <li><a data-slide-index='18' href="javascript:void(0);">정보컴퓨터 송광진</a></li>
                     <li><a data-slide-index='19' href="javascript:void(0);">정컴교육론 장순선</a></li>
-                    <li><a data-slide-index='20' href="javascript:void(0);">전공중국어 정경미</a></li>
+                    <li><a data-slide-index='20' href="javascript:void(0);">전공중국어 장영희</a></li>
                 </ul>
             </div>           
         </div> 

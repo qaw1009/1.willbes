@@ -42,12 +42,12 @@
         <div class="evtCtnsBox youtube">
             <ul>
                 <li>
-                    <div><span>2021</span> 이론반 실강 바로보기</div>
-                    <iframe src="https://www.youtube.com/embed/VJkL-JYnpwk?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div><span>2023학년도 대비</span> 이인재 교육학 설명회</div>
+                    <iframe src="https://www.youtube.com/embed/uh2eby9-bPE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
                 <li>
-                    <div><span>2022학년도 대비</span> 설명회 바로보기</div>
-                    <iframe src="https://www.youtube.com/embed/sLuznU9Rmd0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div><span>이인재 교육학 </span> 강의 미리보기</div>
+                    <iframe src="https://www.youtube.com/embed/VJkL-JYnpwk?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
             </ul>            
         </div>

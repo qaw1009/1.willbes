@@ -58,37 +58,16 @@
         <div class="evtCtnsBox youtube">
             <ul>
                 <li>
-                    <div><span>2019학년도</span> 유아 합격생 간담회</div>
+                    <div><span>2020학년도</span> 유아 합격생 간담회</div>
                     <iframe src="https://www.youtube.com/embed/Y2W3lUrn3aI?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
                 <li>
-                    <div><span>2021학년도</span> 유아 합격전략 설명회 보기</div>
-                    <iframe src="https://www.youtube.com/embed/yjdW1qJ1vHs?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div><span>2023학년도</span> 유아 합격전략 설명회 보기</div>
+                    <iframe src="https://www.youtube.com/embed/mG3dim4NgKI?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
             </ul>            
         </div>
 
-        {{--
-        <div class="evtCtnsBox ev01">         
-
-
-
-
-            <div class="evt02">
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/190924_wsammjs_02.jpg" usemap="#Mapmjs02" border="0">
-                <map name="Mapmjs02" class="review_btn" id="wsammjs">
-                  <area shape="rect" coords="467,2241,809,2324" href="#none" onclick="go_study_comment_popup();" alt="합격수기확인" />
-                </map>
-            </div>
-
-            <div class="evt04">
-              	<ul>
-                	<li><iframe width="600" height="336" src="https://www.youtube.com/embed/Y2W3lUrn3aI?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></li>
-                    <li><iframe width="600" height="336" src="https://www.youtube.com/embed/yjdW1qJ1vHs?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></li>
-                </ul>
-       	   </div>
-        </div>
-        --}}
     </div>
     <!-- End Container -->
 

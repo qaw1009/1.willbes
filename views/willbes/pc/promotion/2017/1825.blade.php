@@ -63,12 +63,12 @@
                     <iframe src="https://www.youtube.com/embed/17WQEf6HLdY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
                 <li class="mt100">
-                    <div><span>2021 </span> 기출 적중 비교 영상</div>
-                    <iframe src="https://www.youtube.com/embed/okSM82f5Yxg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div><span>2023학년도 대비 </span> 박태영 수학교육론 설명회</div>
+                    <iframe src="https://www.youtube.com/embed/Jv0C0NI9OHA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
                 <li class="mt100">
-                    <div><span>2022 학년도 대비 </span> 설명회</div>
-                    <iframe src="https://www.youtube.com/embed/ZinD4SnjwYg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div><span>박태영 수학교육론</span> 강의 미리보기</div>
+                    <iframe src="https://www.youtube.com/embed/uWzJC7v-woY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
             </ul>            
         </div>

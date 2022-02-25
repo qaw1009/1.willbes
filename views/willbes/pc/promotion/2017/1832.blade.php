@@ -43,7 +43,8 @@
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1832_top.jpg" alt="정컴교육론 장순선" />
         </div> 
-
+        
+        {{--
         <div class="evtCtnsBox youtube">
             <ul>
                 <li>
@@ -56,6 +57,7 @@
                 </li>
             </ul>            
         </div>
+        --}}
     </div>
     <!-- End Container -->
 

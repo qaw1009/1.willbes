@@ -63,7 +63,7 @@ class MemberPrivateModel extends WB_Model
             if ($is_count == 'excel') {
                 $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
                 $column = "
-                    MB.MemName ,CONCAT(MB.Phone1,'-',fn_dec(MB.Phone2Enc),'-',MB.phone3) AS Phone ,MR.TakeNumber
+                    MB.MemId, MB.MemName ,CONCAT(MB.Phone1,'-',fn_dec(MB.Phone2Enc),'-',MB.phone3) AS Phone ,MR.TakeNumber
                     ,fn_ccd_name(MR.TakeForm) AS TakeFormName
                     ,MP.MockYear ,MP.MockRotationNo ,PD.ProdName ,C1.CateName
                     ,fn_ccd_name(MR.TakeMockPart) AS TakeMockPartName

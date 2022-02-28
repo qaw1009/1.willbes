@@ -118,7 +118,7 @@ class MemberPrivate extends BaseMocktest
         ];
         $results = $this->memberPrivateModel->mainList('excel', $arr_condition_1, $arr_condition_2);
         $file_name = '개인별성적통계_'.date('Ymd');
-        $headers = ['회원명', '연락처', '응시번호', '응시형태', '연도', '회차', '모의고사명', '카테고리', '직렬', '과목', '응시지역', '총점', '등록일'];
+        $headers = ['아이디','회원명', '연락처', '응시번호', '응시형태', '연도', '회차', '모의고사명', '카테고리', '직렬', '과목', '응시지역', '총점', '등록일'];
 
         $last_query = $this->memberPrivateModel->getLastQuery();
         // download log

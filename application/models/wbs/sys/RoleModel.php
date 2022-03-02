@@ -7,6 +7,7 @@ class RoleModel extends WB_Model
         'admin_role' => 'wbs_sys_admin_role',
         'admin_role_r_cp' => 'wbs_sys_admin_role_r_cp',
         'admin_role_r_menu' => 'wbs_sys_admin_role_r_menu',
+        'admin_role_change_log' => 'wbs_sys_admin_role_change_log',
         'menu' => 'wbs_sys_menu',
         'cp' => 'wbs_sys_cp',
         'admin' => 'wbs_sys_admin'
@@ -321,5 +322,59 @@ class RoleModel extends WB_Model
         }
 
         return true;
+    }
+
+    /**
+     * 운영자 권한 변경 로그 조회
+     * @param bool|string $is_count
+     * @param array $arr_condition
+     * @param null|int $limit
+     * @param null|int $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listAdminRoleChangeLog($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $in_column = 'count(0) AS numrows';
+            $column = 'numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $in_column = 'CL.wArcIdx, CL.wAdminIdx, CL.wRoleIdx, CL.wPrevRoleIdx, CL.wRegDatm, CL.wRegAdminIdx, CL.wRegIp
+                , A.wAdminId, A.wAdminName
+                , fn_mask(A.wAdminId, "id", "N") as wAdminIdMask
+                , R.wRoleName, ifnull(PR.wRoleName, "-") as wPrevRoleName
+                , RA.wAdminName as wRegAdminName                        
+            ';
+
+            if (is_bool($is_count) === true) {
+                $column = '*';
+            } else {
+                $column = $is_count;
+            }
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+            from ' . $this->_table['admin_role_change_log'] . ' as CL
+                left join ' . $this->_table['admin'] . ' as A
+                    on CL.wAdminIdx = A.wAdminIdx
+                left join ' . $this->_table['admin_role'] . ' as R
+                    on CL.wRoleIdx = R.wRoleIdx
+                left join ' . $this->_table['admin_role'] . ' as PR
+                    on CL.wPrevRoleIdx = PR.wRoleIdx
+                left join ' . $this->_table['admin'] . ' as RA
+                    on CL.wRegAdminIdx = RA.wAdminIdx
+        ';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 }

@@ -7,6 +7,8 @@ class AdminModel extends WB_Model
         'admin' => 'wbs_sys_admin',
         'admin_role' => 'wbs_sys_admin_role',
         'admin_role_r_cp' => 'wbs_sys_admin_role_r_cp',
+        'admin_role_change_log' => 'wbs_sys_admin_role_change_log',
+        'admin_passwd_change_log' => 'wbs_sys_admin_passwd_change_log',
         'cp' => 'wbs_sys_cp'
     ];
     private $_passwd_expire_period = 90;    // 비밀번호 만료기간
@@ -217,13 +219,28 @@ class AdminModel extends WB_Model
                 throw new \Exception('운영자 신청에 실패했습니다.');
             }
 
+            $admin_idx = $this->_conn->insert_id();
+
             if (empty($data['wRegAdminIdx']) === true) {
                 // 운영자 신청일 경우 RegAdminIdx 컬럼을 신청자 등록 후 생성된 식별자로 업데이트
-                $admin_idx = $this->_conn->insert_id();
                 $is_update = $this->_conn->set(['wRegAdminIdx' => $admin_idx, 'wUpdAdminIdx' => $admin_idx])->where('wAdminIdx', $admin_idx)->update($this->_table['admin']);
                 if ($is_update === false) {
                     throw new \Exception('운영자 신청정보 수정에 실패했습니다.');
                 }
+            }
+
+            // 권한유형 변경로그 등록
+            if (isset($data['wRoleIdx']) === true) {
+                $is_admin_role_change_log = $this->_addAdminRoleChangeLog($admin_idx, $data['wRoleIdx']);
+                if ($is_admin_role_change_log !== true) {
+                    throw new \Exception($is_admin_role_change_log);
+                }
+            }
+
+            // 비밀번호 변경로그 등록
+            $is_admin_passwd_change_log = $this->_addAdminPasswdChangeLog($admin_idx, $admin_passwd);
+            if ($is_admin_passwd_change_log !== true) {
+                throw new \Exception($is_admin_passwd_change_log);
             }
         } catch (\Exception $e) {
             return $e->getMessage();
@@ -314,9 +331,10 @@ class AdminModel extends WB_Model
     {
         try {
             $admin_idx = get_var($admin_idx, '0');
+            $admin_passwd = null;   // 변경비밀번호
 
             // 기존 운영자 데이터 조회
-            $row = $this->_conn->getFindResult($this->_table['admin'], 'ifnull(wApprovalDatm, "") as wApprovalDatm, wPasswdExpirePeriod, wProfIdx', [
+            $row = $this->_conn->getFindResult($this->_table['admin'], 'wRoleIdx, ifnull(wApprovalDatm, "") as wApprovalDatm, wAdminPasswd, wPasswdExpirePeriod, wProfIdx', [
                 'EQ' => ['wAdminIdx' => $admin_idx, 'wIsStatus' => 'Y']
             ]);
             if (empty($row) === true) {
@@ -330,6 +348,7 @@ class AdminModel extends WB_Model
                 if (empty($data['wPasswdExpireDate']) === true) {
                     $this->_conn->set('wPasswdExpireDate', 'left(date_add(now(), interval ' . get_var($row['wPasswdExpirePeriod'], $this->_passwd_expire_period) . ' day), 10)', false);
                 }
+                $admin_passwd = $data['wAdminPasswd'];
             }
             unset($data['wAdminPasswd']);
 
@@ -373,6 +392,81 @@ class AdminModel extends WB_Model
             // 데이터 수정
             if ($this->_conn->update($this->_table['admin']) === false) {
                 throw new \Exception('운영자 정보 수정에 실패했습니다.');
+            }
+
+            // 권한유형 변경로그 등록
+            if (isset($data['wRoleIdx']) === true) {
+                if ($data['wRoleIdx'] != $row['wRoleIdx']) {
+                    $is_admin_role_change_log = $this->_addAdminRoleChangeLog($admin_idx, $data['wRoleIdx'], $row['wRoleIdx']);
+                    if ($is_admin_role_change_log !== true) {
+                        throw new \Exception($is_admin_role_change_log);
+                    }
+                }
+            }
+            
+            // 비밀번호 변경로그 등록
+            if (empty($admin_passwd) === false) {
+                $is_admin_passwd_change_log = $this->_addAdminPasswdChangeLog($admin_idx, $admin_passwd, $row['wAdminPasswd']);
+                if ($is_admin_passwd_change_log !== true) {
+                    throw new \Exception($is_admin_passwd_change_log);
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 운영자 권한유형 변경로그 등록
+     * @param int $admin_idx [운영자식별자]
+     * @param int $role_idx [권한식별자]
+     * @param null|int $old_role_idx [이전권한식별자]
+     * @return bool|string
+     */
+    private function _addAdminRoleChangeLog($admin_idx, $role_idx, $old_role_idx = null)
+    {
+        try {
+            $data = [
+                'wAdminIdx' => $admin_idx,
+                'wRoleIdx' => get_var($role_idx, '0'),
+                'wPrevRoleIdx' => get_var($old_role_idx, '0'),
+                'wRegAdminIdx' => get_var($this->session->userdata('admin_idx'), $admin_idx),
+                'wRegIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($data)->insert($this->_table['admin_role_change_log']) === false) {
+                throw new \Exception('운영자 권한유형 변경로그 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 운영자 비밀번호 변경로그 등록
+     * @param int $admin_idx [운영자식별자]
+     * @param int $admin_passwd [운영자비밀번호]
+     * @param null|int $old_admin_passwd [이전운영자비밀번호]
+     * @return bool|string
+     */
+    private function _addAdminPasswdChangeLog($admin_idx, $admin_passwd, $old_admin_passwd = null)
+    {
+        try {
+            $data = [
+                'wAdminIdx' => $admin_idx,
+                'wPrevAdminPasswd' => $old_admin_passwd,
+                'wRegAdminIdx' => get_var($this->session->userdata('admin_idx'), $admin_idx),
+                'wRegIp' => $this->input->ip_address()
+            ];
+
+            $this->_conn->set($data)->set('wAdminPasswd', 'fn_hash("' . $admin_passwd . '")', false);
+
+            if ($this->_conn->insert($this->_table['admin_passwd_change_log']) === false) {
+                throw new \Exception('운영자 비밀번호 변경로그 등록에 실패했습니다.');
             }
         } catch (\Exception $e) {
             return $e->getMessage();

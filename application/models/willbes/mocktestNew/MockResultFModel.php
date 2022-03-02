@@ -55,30 +55,9 @@ class MockResultFModel extends WB_Model
                     JOIN {$this->_table['mock_register']} AS MMR ON MMR.MrIdx = MA.MrIdx AND MMR.IsStatus = 'Y'
                     WHERE MMR.MrIdx = MR.MrIdx AND MMR.ProdCode = MR.ProdCode
                 ) AS TCNT,
-                (
-                    SELECT ROUND(AVG(a.AdjustPoint),2)
-                    FROM {$this->_table['mock_grades']} AS a
-                    INNER JOIN {$this->_table['mock_register']} AS b ON a.MrIdx = b.MrIdx AND b.IsStatus = 'Y'
-                    INNER JOIN {$this->_table['order_product']} AS c ON b.OrderProdIdx = c.OrderProdIdx AND PayStatusCcd = '676001' 
-                    WHERE a.ProdCode = MR.ProdCode
-                ) AS TotalAvgAdjustPoint,
-                IFNULL(
-                (
-                    SELECT SUM(OrgPoint) 
-                    FROM {$this->_table['mock_grades']} AS a
-                    INNER JOIN {$this->_table['mock_register']} AS b ON a.MrIdx = b.MrIdx AND b.IsStatus = 'Y'
-                    INNER JOIN {$this->_table['order_product']} AS c ON b.OrderProdIdx = c.OrderProdIdx AND PayStatusCcd = '676001' 
-                    WHERE a.ProdCode = MR.ProdCode
-                )
-                ,0) AS TotalOrgPoint,
-                IFNULL(
-                (
-                    SELECT COUNT(*)
-                    FROM {$this->_table['mock_register']} AS a
-                    INNER JOIN {$this->_table['order_product']} AS b ON a.OrderProdIdx = b.OrderProdIdx AND b.PayStatusCcd = '676001' 
-                    WHERE a.ProdCode = MR.ProdCode AND a.IsStatus = 'Y' AND a.IsTake = 'Y'
-                )
-                ,0) AS MemberCount,
+                (SELECT ROUND(AVG(a.AdjustPoint),2) FROM {$this->_table['mock_grades']} AS a WHERE a.ProdCode = MR.ProdCode) AS TotalAvgAdjustPoint,
+                ifnull((select sum(OrgPoint) from {$this->_table['mock_grades']} as a WHERE a.ProdCode = MR.ProdCode),0) as TotalOrgPoint,
+                ifnull((select count(*) from {$this->_table['mock_register']} as a WHERE a.ProdCode = MR.ProdCode and IsStatus = 'Y' and IsTake = 'Y' group by a.ProdCode),0) as MemberCount,
                 (SELECT RegDatm FROM {$this->_table['mock_answerpaper']} WHERE MrIdx = MR.MrIdx AND MemIdx = MR.MemIdx AND ProdCode = MR.ProdCode ORDER BY RegDatm DESC LIMIT 1) Wdate
             ";
 

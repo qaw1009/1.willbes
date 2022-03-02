@@ -51,6 +51,9 @@
         .evtTab li:last-child a {border-left:0}
         .evtTab li a:hover,
         .evtTab li a.active {background:#66429a;color:#fff;}
+        .evtTab li:nth-child(2) a:hover,
+        .evtTab li:nth-child(2) a.active {background:#46557c;color:#fff;}
+        .evtTab li:nth-child(2) a.active {background:#46557c;color:#fff;}
         .evtTab:after {content:''; display:block; clear:both}
 
         .evt05 {background:#f6f6f6}

@@ -282,10 +282,12 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_04_01.jpg" title="시험전 체크">
                 <a href="https://police.willbes.net/event/show/cate/3001/pattern/ongoing?event_idx=1581&" target="_blank" title="경찰학" style="position: absolute; left: 2.77%; top: 80.48%; width: 30.71%; height: 5.84%; z-index: 2;"></a>                
             </div>
+            {{--
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2535_04_02.jpg" title="빅매치2">
                 <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/2525" target="_blank" title="빅매치2" style="position: absolute; left: 29.91%; top: 76.82%; width: 40.54%; height: 7.76%; z-index: 2;"></a>
             </div>
+            --}}
         </div>
 
         <div class="evtCtnsBox evtInfo" id="careful" data-aos="fade-up">

@@ -455,7 +455,7 @@ class AdminModel extends WB_Model
      */
     private function _addAdminPasswdChangeLog($admin_idx, $admin_passwd, $old_admin_passwd = null)
     {
-        try {
+        /*try {
             $data = [
                 'wAdminIdx' => $admin_idx,
                 'wPrevAdminPasswd' => $old_admin_passwd,
@@ -470,7 +470,7 @@ class AdminModel extends WB_Model
             }
         } catch (\Exception $e) {
             return $e->getMessage();
-        }
+        }*/
 
         return true;
     }

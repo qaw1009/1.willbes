@@ -20,6 +20,9 @@
 
         /************************************************************/
 
+        .sky {position:fixed; top:200px;right:0;z-index:1;}
+        .sky a {display: block; margin-bottom:10px}
+
         .evt00 {background:#0a0a0a}
 
         .evt_tops {background:#9a9ca9}       
@@ -47,7 +50,7 @@
         .evtTab li:first-child a {border-right:0}
         .evtTab li:last-child a {border-left:0}
         .evtTab li a:hover,
-        .evtTab li a.active {background:#46557c;color:#fff;}
+        .evtTab li a.active {background:#66429a;color:#fff;}
         .evtTab:after {content:''; display:block; clear:both}
 
         .evt05 {background:#f6f6f6}
@@ -73,6 +76,11 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+
+        <div class="sky" id="QuickMenu">
+            <a href="#apply1"><img src="https://static.willbes.net/public/images/promotion/2022/03/2553_sky1.png" alt="종합반 신청하기" ></a>
+            <a href="#apply2"><img src="https://static.willbes.net/public/images/promotion/2022/03/2553_sky2.png" alt="단과반 신청하기" ></a>
+        </div>
 
         <div class="evtCtnsBox evt00" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
@@ -122,7 +130,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2553_03.jpg" title="심화과정">
         </div>
 
-        <div class="evtCtnsBox evt04" data-aos="fade-up">
+        <div class="evtCtnsBox evt04" data-aos="fade-up" id="apply1">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2553_04.jpg" title="스페셜 패키지">
             <ul class="evtTab">
                 <li><a href="#tab01">일반경찰</a></li>
@@ -146,7 +154,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2553_05.jpg" title="스페셜 이벤트">
         </div>
 
-        <div class="evtCtnsBox evt06" data-aos="fade-up">
+        <div class="evtCtnsBox evt06" data-aos="fade-up" id="apply2">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2553_06.jpg" title="스페셜 단강좌">
                 <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/191831" title="헌법 김원욱" target="_blank" style="position: absolute;left: 2.51%;top: 71.92%;width: 12.01%;height: 4.55%;z-index: 2;"></a>

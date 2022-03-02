@@ -128,7 +128,28 @@
                                             <p>발생의 부사「up」이 포함된 동사구를 알아보자!</p>
                                         </div>
                                     </a>
-                                </li> 
+                                </li>
+
+                                <li class="">
+                                    <a href="#tab4">
+                                        <span class="num_box" data-num="4">4</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2022/03/2505_03_s04.png" alt="유발(시작)의 부사「off」가 포함된 공무원 영어 필수 동사구를 알아보자!"></div>
+                                        <div class="text_box">
+                                            <p>유발(시작)의 부사「off」가 포함된 공무원 영어 필수 동사구를 알아보자!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#tab5">
+                                        <span class="num_box" data-num="5">5</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2022/03/2505_03_s05.png" alt="이용의 전치사「on」이 포함된 공무원 영어 필수 동사구를 알아보자!"></div>
+                                        <div class="text_box">
+                                            <p>이용의 전치사「on」이 포함된 공무원 영어 필수 동사구를 알아보자!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
                             </ul>
                         </div>
                     </div>          
@@ -194,7 +215,9 @@
         //유튜브
         var tab1_url = "https://www.youtube.com/embed/O-3vSZOagkI?rel=0";
         var tab2_url = "https://www.youtube.com/embed/OMQ-M2ncBKk?rel=0"; 
-        var tab3_url = "https://www.youtube.com/embed/aGnegIlcaZs?rel=0"; 
+        var tab3_url = "https://www.youtube.com/embed/aGnegIlcaZs?rel=0";
+        var tab4_url = "https://www.youtube.com/embed/CMAQY5L9O0Q?rel=0"; 
+        var tab5_url = "https://www.youtube.com/embed/L8Qgx36delE?rel=0";
 
         $(function() {
             $(".preview_list ul li a").click(function(){
@@ -207,6 +230,10 @@
                     video_tab_url = tab2_url; 
                 }else if(activeTab == "#tab3"){
                     video_tab_url = tab3_url;                
+                }else if(activeTab == "#tab4"){
+                    video_tab_url = tab4_url;                
+                }else if(activeTab == "#tab5"){
+                    video_tab_url = tab5_url;                
                 }
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");

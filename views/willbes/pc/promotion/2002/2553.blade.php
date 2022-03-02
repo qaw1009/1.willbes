@@ -18,46 +18,43 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000} */
 
-        /************************************************************/    
+        /************************************************************/
 
-        .sky {position:fixed;  top:225px; right:10px; z-index:10;}
-        .sky a {display:block; margin-bottom:15px}   
+        .evt00 {background:#0a0a0a}
+
+        .evt_tops {background:#9a9ca9}       
 
         /*타이머*/
-        .time {width:100%; text-align:center; background:#ebebeb}
+        .time {width:100%; text-align:center; background:#4c396b;}
         .time {text-align:center; padding:20px 0}
         .time table {width:1120px; margin:0 auto}
         .time table td {line-height:1.2}        
         .time table td img {width:65%}
-        .time .time_txt {font-size:20px; color:#000; letter-spacing: -1px; text-align:left}
-        .time span {color:#ffda39; font-size:28px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        .time .time_txt {font-size:25px; color:#fff; letter-spacing: -1px; text-align:left}
+        .time span {color:#fff; font-size:25px;}
         .time table td:last-child,
-        .time table td:last-child span {font-size:40px}
-        @@keyframes upDown{
-        from{color:#000}
-        50%{color:#424ac7}
-        to{color:#000}
-        }
-        @@-webkit-keyframes upDown{
-        from{color:#000}
-        50%{color:#424ac7}
-        to{color:#000}
-        } 
+        .time table td:last-child span {font-size:35px;color:#fff;}
 
-        .evt00 {background:#0a0a0a}  
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/03/2553_top_bg.jpg) no-repeat center top;}        
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/08/2320_top_bg.jpg) no-repeat center top;}
+        .evt02 {background:#f5f5f5}
 
-        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/08/2320_01_bg.jpg) no-repeat center top;}
+        .evt03 {background:#93a5d2}
 
-        .evt02 {background:url(https://static.willbes.net/public/images/promotion/2021/08/2320_02_bg.jpg) no-repeat center top;}
+        .evtTab {width:1120px; margin:0 auto}
+        .evtTab li {display:inline; float:left; width:50%}
+        .evtTab li a {display:block; color:#9ea4aa;background:#eff2f5;font-size:25px; padding:20px 0;font-weight:bold}
+        .evtTab li:first-child a {border-right:0}
+        .evtTab li:last-child a {border-left:0}
+        .evtTab li a:hover,
+        .evtTab li a.active {background:#46557c;color:#fff;}
+        .evtTab:after {content:''; display:block; clear:both}
 
-        .evt03 {background:#873BE6}
+        .evt05 {background:#f6f6f6}
 
-        .evt04 {background:url(https://static.willbes.net/public/images/promotion/2021/08/2320_04_bg.jpg) no-repeat center top;}
+        .evt06 {background:#66429a}
 
-        .evt05 {background:#E73BAB}
-
+        /*이용안내*/
         .wb_ctsInfo {background:#fff; padding:100px 0}  
         .wb_ctsInfo div {
             width:1000px; margin:0 auto; color:#fff; font-size:14px; line-height:1.5;
@@ -72,22 +69,21 @@
             color:#000;
             font-weight:bold;
         }
-        .wb_ctsInfo p {margin-top:40px;font-size:18px;}
-        .wb_ctsInfo p span  {border:2px solid #fff; padding:10px 20px}
-
-        .wb_ctsInfo .original {text-decoration:line-through; color:#666} 
-        .wb_ctsInfo .discount {color:#e80000;} 
 
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">  
-            
-        <div class="evtCtnsBox evt00">
+    <div class="p_re evtContent NSK" id="evtContainer">
+
+        <div class="evtCtnsBox evt00" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>
 
+        <div class="evtCtnsBox evt_tops" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2553_tops.jpg" title="신광은 경찰학원">
+        </div>
+
         <!-- 타이머 -->
-        <div class="evtCtnsBox time NGEB" id="newTopDday">
+        <div class="evtCtnsBox time NGEB" id="newTopDday" data-aos="fade-up">
            <div>
                <table>
                    <tr>                    
@@ -110,51 +106,60 @@
         </div>
         <!-- 타이머 //-->
 
-        {{--
-        <div class="sky" id="QuickMenu">
-            <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/08/2320_sky01.png" alt="일정안내" ></a>
-            <a href="#evt_02"><img src="https://static.willbes.net/public/images/promotion/2021/08/2320_sky02.png" alt="신청하기" ></a>
-        </div>        
-        --}}
-        
-        <div class="evtCtnsBox evtTop" data-aos="fade-left">
+        <div class="evtCtnsBox evt_top" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2553_top.jpg" title="2022 심화과정">
+        </div>
+
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2553_01.jpg" title="일정안내">
+        </div>
+
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2553_02.jpg" title="업그레이드">
+        </div>
+
+        <div class="evtCtnsBox evt03" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2553_03.jpg" title="심화과정">
+        </div>
+
+        <div class="evtCtnsBox evt04" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2553_04.jpg" title="스페셜 패키지">
+            <ul class="evtTab">
+                <li><a href="#tab01">일반경찰</a></li>
+                <li><a href="#tab02">경행경채</a></li>
+            </ul>
+            <div id="tab01">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2553_04_01.jpg" alt="일반경찰" />
+                    <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" title="일반경찰" target="_blank" style="position: absolute;left: 29.51%;top: 83.52%;width: 41.01%;height: 7.55%;z-index: 2;"></a>
+                </div> 
+            </div>
+            <div id="tab02">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2553_04_02.jpg" alt="경행경채" />
+                    <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1041" title="경행경채" target="_blank" style="position: absolute;left: 29.51%;top: 83.52%;width: 41.01%;height: 7.55%;z-index: 2;"></a>
+                </div> 
+            </div>
+        </div>
+
+        <div class="evtCtnsBox evt05" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2553_05.jpg" title="스페셜 이벤트">
+        </div>
+
+        <div class="evtCtnsBox evt06" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2320_top.gif" title="심화 이론반"> 
-                <a href="#evt05" title="신청하기" style="position: absolute;left: 28.71%;top: 80.6%;width: 42.63%;height: 7.13%;z-index: 2;"></a>	       
-            </div>    
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2553_06.jpg" title="스페셜 단강좌">
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/191831" title="헌법 김원욱" target="_blank" style="position: absolute;left: 2.51%;top: 71.92%;width: 12.01%;height: 4.55%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/191832" title="헌법 이국령" target="_blank" style="position: absolute;left: 16.11%;top: 71.92%;width: 12.01%;height: 4.55%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/191838" title="경찰학 장정훈" target="_blank" style="position: absolute;left: 31.31%;top: 71.92%;width: 12.01%;height: 4.55%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/191837" title="형사법 신광은" target="_blank" style="position: absolute;left: 44.81%;top: 71.92%;width: 12.01%;height: 4.55%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/191835" title="헌법 김원욱 심화기출" target="_blank" style="position: absolute;left: 58.51%;top: 71.92%;width: 12.01%;height: 4.55%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/191836" title="헌법 이국령 심화기출" target="_blank" style="position: absolute;left: 72.21%;top: 71.92%;width: 12.01%;height: 4.55%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3011/prod-code/191839" title="범죄학 박상민 심화이론" target="_blank" style="position: absolute;left: 85.81%;top: 71.92%;width: 12.01%;height: 4.55%;z-index: 2;"></a>
+           </div>     
         </div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-right">
-            <img src="https://static.willbes.net/public/images/promotion/2021/08/2320_01.jpg" title="9월 스타트">
-        </div>
-
-        <div class="evtCtnsBox evt02" data-aos="fade-left">
-            <img src="https://static.willbes.net/public/images/promotion/2021/08/2320_02.jpg" title="심화이론 포인트">
-        </div>
-
-        <div class="evtCtnsBox evt03" data-aos="fade-right" id="evt_02">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2320_03.jpg" title="신청하기">
-            </div>     
-        </div>
-
-        {{--
-        <div class="evtCtnsBox evt04" data-aos="fade-left" id="evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/08/2320_04.jpg" title="심화이론 특별이벤트">
-        </div>
-        --}}
-
-        <div class="evtCtnsBox evt05" data-aos="fade-right" id="evt05">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2320_05.jpg" title="스페셜 단과">
-                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/184615" target="_blank" title="신광은" style="position: absolute;left: 3.99%;top: 80.95%;width: 18.63%;height: 3.75%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/184616" target="_blank" title="장정훈" style="position: absolute;left: 28.39%;top: 80.95%;width: 18.63%;height: 3.75%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/184617" target="_blank" title="김원욱" style="position: absolute;left: 52.69%;top: 80.95%;width: 18.63%;height: 3.75%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/184618" target="_blank" title="이국령" style="position: absolute;left: 76.99%;top: 80.95%;width: 18.63%;height: 3.75%;z-index: 2;"></a>
-            </div>    
-        </div>
-
-        <div class="wb_ctsInfo" id="careful">
+        <div class="wb_ctsInfo" data-aos="fade-up">
             <div>
                 <h3 class="NSK-Black">3월 심화과정 패키지 학원 실강 이용안내</h3>
                 <dd>
@@ -207,6 +212,29 @@
           $(document).ready(function() {
               dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
+         /*탭*/
+         $(document).ready(function(){
+            $('.evtTab').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+                $content = $($active[0].hash);
+                $links.not($active).each(function () {
+                    $(this.hash).hide()
+                });
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+                    $active = $(this);
+                    $content = $(this.hash);
+                    $active.addClass('active');
+                    $content.show();
+                    e.preventDefault();
+                });
+            });
+        });        
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

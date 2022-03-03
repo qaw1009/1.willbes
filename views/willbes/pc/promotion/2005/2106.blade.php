@@ -4,19 +4,19 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
-            margin-top:20px !important;
+            max-width:2000px !important;
+            margin:20px auto 0;
             padding:0 !important;
-            background:#fff;
+            background:#fff;     
+            font-size:14px;       
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; }
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/ 
 
@@ -42,7 +42,7 @@
         to{color:#d63e4d}
         }          
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2106_top_bg.jpg) no-repeat center top;}	
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/03/2106_top_bg.jpg) no-repeat center top;}	
 
         .evt_01 {background:#c4ebfd;}
 
@@ -55,7 +55,7 @@
 		.evtInfoBox .infoTit strong {padding:8px 20px; background:#000; border-radius:20px; font-weight:normal !important}
 		.evtInfoBox ul {margin-bottom:30px}
         .evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
-        .evtInfoBox li span {color:#6ffede}
+        .evtInfoBox li span {color:#c4ebfd}
         .evtInfoBox span {vertical-align:bottom}  
  
         /************************************************************/      
@@ -82,11 +82,11 @@
         </div>
 
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2106_top.jpg" alt="변호사 시험 대비" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2106_top.jpg" alt="변호사 시험 대비" />
 		</div>
 
         <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2106_01.jpg" alt="수강특전" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2106_01.jpg" alt="수강특전" />
 		</div>
 
 		<div class="evtCtnsBox evt_02">
@@ -117,7 +117,7 @@
                 <h4 class="NSK-Black">윌비스 한림법학원 동영상 T-PASS반 상품이용안내</h4>
                 <div class="infoTit"><strong>이용안내</strong></div>
                 <ul>
-                    <li>본 상품은 2021년 3월에서 2022년 6월까지 진행이 되는 신규 예비순환 ~ GS3순환 동영상 과정입니다.</li>
+                    <li>본 상품은 2022년 3월에서 2023년 6월까지 진행이 되는 신규 예비순환 ~ GS3순환 동영상 과정입니다.</li>
                     <li>이벤트 내용 <br>
                     [PASS 상품 및 해당과정 수강기간]<br>
                     - 예비순환 + GS1순환 필수과목 PASS반<br> : 수강기간 210일<br>
@@ -132,8 +132,8 @@
                     <span>[수강기간-과정별 수강기간 자동 적용] : 강의신청시 다음날부터 바로 수강시작이 되며 일시정지, 강의연장이 적용되지 않습니다.</span></li>
                     <li>강의배수 제한 : 동영상강의는 1.5배수제한 규정이 적용됩니다.</li>
                     <li>강의진행 월 또는 회차는 학원 사정 등에 따라 변동될 수 있습니다.</li>
-                    <li>동영상 PASS반은 3월 18일까지 신청하실 수 있으며, 사정에 의해서 신청기간이 변경될 수 있습니다.</li>
-                    <li>동영상강의 할인쿠폰(1아이디당 2개발행) : 15%할인쿠폰은 3월 19일 일괄발행됩니다.(5급, 외교원, PSAT, 5급헌법 동영상강의에 적용, 유효기간 : 2021년 12월 31일까지)</li>
+                    <li>동영상 PASS반은 3월 22일까지 신청하실 수 있으며, 사정에 의해서 신청기간이 변경될 수 있습니다.</li>
+                    <li>동영상강의 할인쿠폰(1아이디당 2개발행) : 15%할인쿠폰은 3월 23일 일괄발행됩니다.(5급, 외교원, PSAT, 5급헌법 동영상강의에 적용, 유효기간 : 2022년 12월 31일까지)</li>
                 </ul>
                 <div class="infoTit"><strong>교재</strong></div>
                 <ul>

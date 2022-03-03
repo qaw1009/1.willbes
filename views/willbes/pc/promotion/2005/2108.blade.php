@@ -5,14 +5,18 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/ 
 
@@ -103,13 +107,13 @@
         
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">
-                <h4 class="NSK-Black">2021 예비순환 상품 이용안내</h4>
+                <h4 class="NSK-Black">2022 예비순환 상품 이용안내</h4>
                 <div class="infoTit"><strong>상품구성</strong></div>
                 <ul>
-                    <li>2021년도 5급 행정/국립외교원 예비순환 강의 중 이벤트기간 2과목이상 강의신청시 특별혜택이 적용됩니다.(교재별도)<br>
+                    <li>2022년도 5급 행정/국립외교원 예비순환 강의 중 이벤트기간 2과목이상 강의신청시 특별혜택이 적용됩니다.(교재별도)<br>
                     - 2과목 동시 수강신청시 : 수강료 15% 할인+수강기간 20일 연장<br>
                     - 3과목이상 동시 수강신청시 : 수강료 25% 할인+수강기간 20일 연장</li>
-                    <li>본 이벤트는 ~3/21(일)까지 이벤트페이지에서 수강신청 및 결제완료시 적용됩니다.</li>
+                    <li>본 이벤트는 ~3/22(화)까지 이벤트페이지에서 수강신청 및 결제완료시 적용됩니다.</li>
                     <li>수강시작일 설정관련(필독)<br>
                     - 개강예정인 과목들의 수강시작일은 해당 과목의 동영상 개강일에 자동시작이 됩니다.<br>
                     수강시작일을 변경 원하시는 분은 동영상게시판에 원하시는 시작일을 적어주시면 변경해드리겠습니다.(신청한 강의 동영상업로드일 이후 30일 범위내)</li>

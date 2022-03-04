@@ -46,23 +46,8 @@
         </div>
 
 		<div class="evtCtnsBox">
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2106m_02_01.jpg" alt="">
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
-            @endif
-            
-            @if($__cfg['CateCode'] == '3094')
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2106m_02_02.jpg" alt="">
-                @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.m.promotion.display_product_partial',array('group_num'=>2))
-                @endif
-            @endif
-            
-            @if($__cfg['CateCode'] == '3095')
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2106m_02_03.jpg" alt="">
-                @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.m.promotion.display_product_partial',array('group_num'=>5))
-                @endif
             @endif
         </div>
 

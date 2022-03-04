@@ -29,7 +29,7 @@
         .youtube iframe {width:625px; height:350px}
 
         .wb_05 {background:#124475;}
-        .wb_05 .attend { width:900px; margin:30px auto; display: flex; justify-content: space-between; flex-wrap: wrap;}
+        .wb_05 .attend { width:900px; margin:30px auto; display: flex; justify-content: flex-start; flex-wrap: wrap;}
         .wb_05 .attend span {background:url(https://static.willbes.net/public/images/promotion/2022/02/2527_ch.png) no-repeat center top; width:128px; height:139px;
         font-size:20px; padding-top:13px; font-family: Impact,  "Noto Sans KR Regular", Haettenschweiler, 'Arial Narrow Bold', sans-serif; color:#4f4f4f; margin-bottom:3px}
         .wb_05 .attend span.end {background-image:url(https://static.willbes.net/public/images/promotion/2022/02/2527_ch_off.png);}

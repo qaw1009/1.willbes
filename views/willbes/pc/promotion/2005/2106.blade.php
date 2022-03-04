@@ -90,6 +90,7 @@
 		</div>
 
 		<div class="evtCtnsBox evt_02">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2106_02_01.jpg" alt="" />
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif
@@ -97,6 +98,7 @@
 
         @if($__cfg['CateCode'] == '3094')
             <div class="evtCtnsBox evt_02">
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2106_02_02.jpg" alt="" />
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
                 @endif
@@ -106,6 +108,7 @@
 
         @if($__cfg['CateCode'] == '3095')
             <div class="evtCtnsBox evt_02">
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2106_02_03.jpg" alt="" />
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>5))
                 @endif

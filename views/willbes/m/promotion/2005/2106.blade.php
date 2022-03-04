@@ -46,21 +46,20 @@
         </div>
 
 		<div class="evtCtnsBox">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2106m_02_01.jpg" alt="">
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
             @endif
-        </div>
-        
-        <div class="evtCtnsBox">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2106m_02_02.jpg" alt="">
             @if($__cfg['CateCode'] == '3094')
                 @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+                    @include('willbes.m.promotion.display_product_partial',array('group_num'=>2))
                 @endif
             @endif
-            
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2106m_02_03.jpg" alt="">
             @if($__cfg['CateCode'] == '3095')
                 @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>5))
+                    @include('willbes.m.promotion.display_product_partial',array('group_num'=>5))
                 @endif
             @endif
         </div>

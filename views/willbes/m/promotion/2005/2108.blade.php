@@ -51,7 +51,7 @@
 
 		<div class="evtCtnsBox">
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
             @endif
         </div>       
 

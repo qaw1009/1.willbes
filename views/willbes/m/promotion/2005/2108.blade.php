@@ -49,9 +49,21 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2108m_02.jpg" alt="자유선택">
         </div>
 
-		<div class="evtCtnsBox">
+		<div class="evtCtnsBox" id="lecbuy">
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
+            @endif
+
+            @if($__cfg['CateCode'] == '3094')              
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.m.promotion.display_product_partial',array('group_num'=>2))
+                @endif 
+            @endif
+
+            @if($__cfg['CateCode'] == '3095')             
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.m.promotion.display_product_partial',array('group_num'=>3))
+                @endif  
             @endif
         </div>       
 

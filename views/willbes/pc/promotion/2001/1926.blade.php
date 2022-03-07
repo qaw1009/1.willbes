@@ -24,7 +24,7 @@
     .skybanner a {display:block; margin-bottom:10px}
 
     .evt00 {background:#0a0a0a}
-    .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/02/1926_top_bg.jpg) no-repeat center top;position:relative}  
+    .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/03/1926_top_bg.jpg) no-repeat center top;position:relative}  
     .evt_top .youtube {width:726px; position:absolute; top:1566px; left:50%; margin-left:-363px; z-index:5}
     .evt_top .youtube iframe {width:726px; height:380px;} 
 
@@ -67,7 +67,7 @@
         </div> 
 
         <div class="evtCtnsBox evt_top">  
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/1926_top.jpg" alt="신광은 형사법 신세계" usemap="#Map1926_01" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/1926_top.jpg" alt="신광은 형사법 신세계" usemap="#Map1926_01" border="0">
             <map name="Map1926_01">
                 <area shape="rect" coords="226,1452,434,1517" href="https://police.willbes.net/professor/show/cate/3001/prof-idx/50547?subject_idx=1004" target="_blank" alt="교수님 ">
             </map>

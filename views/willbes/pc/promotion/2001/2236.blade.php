@@ -25,7 +25,7 @@
         .sky {position:fixed; top:225px;right:10px; width:120px; z-index:2;}
         .sky a{display:block; margin-bottom:10px}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/02/2236_top_bg.jpg) no-repeat center top;position:relative;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2236_top_bg.jpg) no-repeat center top;position:relative;}
         .circle {position:absolute;left:50%;top:50%;margin-left:-188px;margin-top:-100px;animation: circle 5s linear infinite;}
         @@keyframes circle{
             0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
@@ -104,16 +104,16 @@
         </div>     
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2236_top.jpg" alt="이국령 형법"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2236_top.jpg" alt="이국령 형법"/>
         </div>
-
+        {{--
         <div class="evtCtnsBox evt01">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2236_01.jpg" alt="경찰헌법 이국령"/>
                 <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049" title="교수홈" target="_blank" style="position: absolute; left: 58.66%; top: 54.02%; width: 29.2%; height: 9.67%; z-index: 2;"></a>
             </div>
         </div>
-
+        --}}
         <div class="evtCtnsBox evt02">  
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_02.jpg" alt="박수친 이유"/>

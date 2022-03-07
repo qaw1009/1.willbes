@@ -25,7 +25,7 @@
 
         .wb_police {background:#0A0A0A}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/02/1990_top_bg.jpg) no-repeat center; position:relative}  
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/03/1990_top_bg.jpg) no-repeat center; position:relative}  
         .wb_top .youtube {position:absolute; top:946px; left:50%; width:978px; z-index:1;margin-left:-489px; box-shadow:0 10px 20px rgba(0,0,0,.3);}
         .wb_top .youtube iframe {width:978px; height:505px}      
         
@@ -57,7 +57,7 @@
 		</div>     
 
         <div class="evtCtnsBox wb_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/1990_top.jpg"  alt="김원욱 경찰헌법"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/1990_top.jpg"  alt="김원욱 경찰헌법"/>
 		</div>
 
         <div class="evtCtnsBox wb_01" >

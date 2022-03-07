@@ -171,7 +171,7 @@ class AdminModel extends WB_Model
                 }
             }
 
-            if ($this->_addAdmin($data) !== true) {
+            if ($this->_addAdmin($data, $type) !== true) {
                 throw new \Exception('운영자 등록에 실패했습니다.');
             }
 
@@ -187,9 +187,10 @@ class AdminModel extends WB_Model
     /**
      * 운영자 정보 등록
      * @param array $data
+     * @param null|string $type
      * @return bool|string
      */
-    public function _addAdmin($data = [])
+    public function _addAdmin($data = [], $type = null)
     {
         try {
             // 등록 운영자 식별자
@@ -238,7 +239,7 @@ class AdminModel extends WB_Model
             }
 
             // 비밀번호 변경로그 등록
-            $is_admin_passwd_change_log = $this->_addAdminPasswdChangeLog($admin_idx, $admin_passwd);
+            $is_admin_passwd_change_log = $this->_addAdminPasswdChangeLog($admin_idx, $type, $admin_passwd);
             if ($is_admin_passwd_change_log !== true) {
                 throw new \Exception($is_admin_passwd_change_log);
             }
@@ -287,7 +288,7 @@ class AdminModel extends WB_Model
             }
 
             // 운영자 정보 수정
-            $is_update = $this->_modifyAdminByIdx($data, $admin_idx);
+            $is_update = $this->_modifyAdminByIdx($data, $admin_idx, $type);
             if ($is_update !== true) {
                 throw new \Exception($is_update);
             }
@@ -325,9 +326,10 @@ class AdminModel extends WB_Model
      * 운영자 정보 업데이트
      * @param array $data
      * @param int $admin_idx
+     * @param string $type
      * @return bool|string
      */
-    private function _modifyAdminByIdx($data, $admin_idx)
+    private function _modifyAdminByIdx($data, $admin_idx, $type = null)
     {
         try {
             $admin_idx = get_var($admin_idx, '0');
@@ -406,7 +408,7 @@ class AdminModel extends WB_Model
             
             // 비밀번호 변경로그 등록
             if (empty($admin_passwd) === false) {
-                $is_admin_passwd_change_log = $this->_addAdminPasswdChangeLog($admin_idx, $admin_passwd, $row['wAdminPasswd']);
+                $is_admin_passwd_change_log = $this->_addAdminPasswdChangeLog($admin_idx, $type, $admin_passwd, $row['wAdminPasswd']);
                 if ($is_admin_passwd_change_log !== true) {
                     throw new \Exception($is_admin_passwd_change_log);
                 }
@@ -449,15 +451,29 @@ class AdminModel extends WB_Model
     /**
      * 운영자 비밀번호 변경로그 등록
      * @param int $admin_idx [운영자식별자]
+     * @param string $chg_route [비밀번호변경루트]
      * @param int $admin_passwd [운영자비밀번호]
      * @param null|int $old_admin_passwd [이전운영자비밀번호]
      * @return bool|string
      */
-    private function _addAdminPasswdChangeLog($admin_idx, $admin_passwd, $old_admin_passwd = null)
+    private function _addAdminPasswdChangeLog($admin_idx, $chg_route, $admin_passwd, $old_admin_passwd = null)
     {
-        /*try {
+        try {
+            // 비밀번호변경루트 (기본(자동) : AU / 사용자 : MY / 관리자 : SY / 비밀번호강제변경 : PW / BtoB : BB)
+            switch (strtolower($chg_route)) {
+                case 'add' :
+                case 'sys' :
+                    $chg_route = 'SY';
+                    break;
+                case 'apply' :
+                case 'my' :
+                    $chg_route = 'MY';
+                    break;
+            }
+
             $data = [
                 'wAdminIdx' => $admin_idx,
+                'wPasswdChgRoute' => get_var($chg_route, 'AU'),
                 'wPrevAdminPasswd' => $old_admin_passwd,
                 'wRegAdminIdx' => get_var($this->session->userdata('admin_idx'), $admin_idx),
                 'wRegIp' => $this->input->ip_address()
@@ -470,7 +486,7 @@ class AdminModel extends WB_Model
             }
         } catch (\Exception $e) {
             return $e->getMessage();
-        }*/
+        }
 
         return true;
     }
@@ -524,7 +540,7 @@ class AdminModel extends WB_Model
             $admin_idx = get_var($admin_idx, '0');
 
             // 기존 운영자 데이터 조회
-            $row = $this->_conn->getFindResult($this->_table['admin'], 'wPasswdExpirePeriod', [
+            $row = $this->_conn->getFindResult($this->_table['admin'], 'wAdminPasswd, wPasswdExpirePeriod', [
                 'EQ' => ['wAdminIdx' => $admin_idx, 'wIsStatus' => 'Y']
             ]);
             if (empty($row) === true) {
@@ -540,6 +556,12 @@ class AdminModel extends WB_Model
 
             if ($is_update === false) {
                 throw new \Exception('비밀번호 변경에 실패하였습니다.');
+            }
+
+            // 비밀번호 변경로그 등록
+            $is_admin_passwd_change_log = $this->_addAdminPasswdChangeLog($admin_idx, 'PW', $admin_passwd, $row['wAdminPasswd']);
+            if ($is_admin_passwd_change_log !== true) {
+                throw new \Exception($is_admin_passwd_change_log);
             }
 
             $this->_conn->trans_commit();

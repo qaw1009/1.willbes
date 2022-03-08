@@ -25,13 +25,13 @@
             </div>
             @endif
         </div>
-
+        {{--
         <div class="youtubeWrap">
             <div>
                 <iframe src="https://www.youtube.com/embed/5ktEIM6KSUY?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
-
+        --}}
         {{-- 신간/화제의책/예약판매 --}}
         <div class="Section">
             <div class="widthAuto bookListWrap">

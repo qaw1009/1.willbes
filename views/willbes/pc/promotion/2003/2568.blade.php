@@ -25,16 +25,19 @@
         .evt01 {background:#c0ff92}
 
         .evt02 {padding-bottom:100px;}
-        .tabs { margin-left:-490px; width:980px; z-index:10;margin:0 auto;padding-top:25px;}
-        .tabs ul{width:789px;margin:0 auto;display: flex; justify-content: space-around;}
-        .tabs li {width:16.6666%}
+
+        .tabs {width:783px; margin:25px auto 0;}
+        .tabs ul{margin:0 auto 20px; display: flex; justify-content: space-around;}
+        .tabs li {width:20%}
         .tabs li a {display:block; text-align:center; height:45px; line-height:45px; background:#b7b7b7; color:#fff; font-size:16px; margin-right:4px;border-radius:16px;}
         .tabs li a:hover,
         .tabs li a.active {background:#c0ff92; color:#89443f; font-weight:bold}
         .tabs li:last-child a {margin:0}
-        .tabs div {width:840px; margin:25px 0 0 70px}
-        .tabs div a {display:block; width:400px; margin:160px auto 0; background:#0a0f25; color:#fff; font-size:22px; padding:15px 0; border-radius:40px}
-        .tabs div a:hover {background:#c6b269;}       
+        
+        .tabs .map > div {background:#f5f5f3; padding:30px; font-size:14px; text-align:left; line-height:1.4; margin-top:10px}
+        .tabs .map .area {font-size:15px; margin-bottom:15px}
+        .tabs .map .area a {padding:5px 10px; background:#464646; color:#fff}
+        .tabs .map .area a:hover {background:#000}  
 
         .evt03 {background:url(https://static.willbes.net/public/images/promotion/2022/03/2568_03_bg.jpg) repeat-x left top; padding-bottom:100px}
 
@@ -44,7 +47,7 @@
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
     </form>
-    <div class="p_re evtContent NGR" id="evtContainer">             
+    <div class="evtContent NSK" id="evtContainer">             
 
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank"> 
@@ -75,26 +78,58 @@
                     <li><a href="#tab03">광주</a></li>
                     <li><a href="#tab04">대구</a></li>
                     <li><a href="#tab05">부산</a></li>
-                    <li><a href="#tab06">전북</a></li>
+                    {{--<li><a href="#tab06">전북</a></li>--}}
                 </ul>
-                <div id="tab01">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2568_01_tab01.jpg" alt="서울(노량진)" />
+                <div id="tab01" class="map">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2568_01_map01.jpg" alt="서울(노량진)" />
+                    <div>
+                        <div class="area"><a href="http://naver.me/5HUAqXha" target="_blank">노량진 학원 오시는 길 🔗</a></div>
+                        🚩 주소 : 서울시 동작구 노량진로 196 노량빌딩(구 JH빌딩) 10층 / 노량진동 143-2<br>
+                        📲 연락처 : 1544 - 0330
+                    </div>
                 </div>
-                <div id="tab02">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2568_01_tab02.jpg" alt="인천" />
+                <div id="tab02" class="map">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2568_01_map02.jpg" alt="인천" />
+                    <div>
+                        <div class="area"><a href="http://naver.me/5CbXbASe" target="_blank">인천 학원 오시는 길 🔗</a></div>
+                        🚩 주소 : 인천 부평구 경원대로 1395 부평1번가 11층<br>
+                        📲 연락처 : 1544 - 1661
+                    </div>
                 </div>    
-                <div id="tab03">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2568_01_tab03.jpg" alt="광주" />
+                <div id="tab03" class="map">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2568_01_map03.jpg" alt="광주" />
+                    <div>
+                        <div class="area"><a href="http://naver.me/5THcHZv2" target="_blank">광주 학원 오시는 길 🔗</a></div>
+                        🚩 주소 : 광주 북구 호동로 6-11<br>
+                        📲 연락처 : 1566-3864 / 070-5154-4811
+                    </div>
                 </div>
-                <div id="tab04">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2568_01_tab04.jpg" alt="대구" />
+                <div id="tab04" class="map">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2568_01_map04.jpg" alt="대구" />
+                    <div>
+                        <div class="area"><a href="http://naver.me/5thHhVZF" target="_blank">대구 학원 오시는 길 🔗</a></div>
+                        🚩 주소 : 대구 중구 중앙대로 412(남일동) CGV 2층<br>
+                        📲 연락처 : 1522 - 6112
+                    </div>
                 </div>
-                <div id="tab05">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2568_01_tab05.jpg" alt="부산" />
+                <div id="tab05" class="map">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2568_01_map05.jpg" alt="부산" />
+                    <div>
+                        <div class="area"><a href="http://naver.me/5jYFYzg2" target="_blank">부산 학원 오시는 길 🔗</a></div>
+                        🚩 주소 : 부산 진구 부전동 223-8<br>
+                        📲 연락처 : 1522 - 8112
+                    </div>
                 </div>
-                <div id="tab06">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2568_01_tab06.jpg" alt="전북" />
+                {{--
+                <div id="tab06" class="map">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2568_01_map06.jpg" alt="전북" />
+                    <div>
+                        <div class="area"><a href="http://naver.me/585A59V6" target="_blank">전주 학원 오시는 길 🔗</a></div>
+                        🚩 주소 : 전북 전주시 덕진구 떡전5길 22 전북대학교 산학협력단 별관 인재개발센터 3층 305호<br>
+                        📲 연락처 : 063-272-9946
+                    </div>
                 </div>
+                --}}
             </div>	       
         </div>
 

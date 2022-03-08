@@ -189,6 +189,7 @@
             </div>
         </div>
 
+        {{--
         <div class="Section Section1 mt40">
             <div class="widthAuto smallTit NSK-Black">
                 <p>
@@ -248,6 +249,7 @@
                 </div>
             </div>
         </div>
+        --}}
         
 
         <div class="Section Section3 mt40">

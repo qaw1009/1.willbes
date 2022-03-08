@@ -1,0 +1,48 @@
+/*--합격예측*/
+.predictWrap {line-height: 1.5; position: relative;}
+.predictWrap select {
+    height: 2rem;
+    background: none;
+    padding: 0 0 0 0.6rem;
+}
+.predictWrap input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
+.predictWrap input[type="text"] {height: 2rem;}
+.predictWrap .willbes-Tit {background: #2e3c52; color:#fff; border:0}
+.predictWrap .willbes-Tit span {color:#f6cc20}
+.predictWrap .predictMain { background:#c375bc;padding-bottom:50px}
+.predictWrap .predictMain .mainImg img {width:100%; max-width:720px;} 
+.predictWrap .predictMain .mainBtn {padding-top:50px;}
+.predictWrap .predictMain .mainBtn a { 
+    display:block; width: 50%; max-width: 700px; margin:0 auto; padding:1em 0;
+    text-align: center; background: #000; color:#fff; border-radius: 10px;
+    font-size:18px; font-weight: bold;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.2);
+}
+
+.predictWrap .predictMain .mainBtn a.btn2 {
+    background:#b62200; 
+    animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;
+    margin-top:25px;
+}
+	@keyframes upDown{
+	from{background:#b62200}
+	50%{background:#00337e}
+	to{background:#b62200}
+	}
+	@-webkit-keyframes upDown{
+	from{background:#b62200}
+	50%{background:#00337e}
+	to{background:#b62200}
+    }   
+  
+
+.predictWrap .predictMain .sort {margin-top:30px;text-align:center;}
+.predictWrap .predictMain .sort div {
+    display: inline-block; width: 100px; height: 100px; line-height: 100px; vertical-align: middle;
+    border:3px solid #f1f0f1; border-radius: 50px; background: #a07191; color:#fff;
+    font-size:16px; margin-right:10px;
+}
+.predictWrap .predictMain .sort div:last-child {margin:0}
+.predictWrap .predictMain .sort div span {display:block; line-height: 1.4; margin-top:25px;}
+
+.marktxt1 {color:#000; margin-top:2em; padding:0 10%;text-align:center;font-size:13px;}

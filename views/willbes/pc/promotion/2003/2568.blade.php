@@ -28,7 +28,7 @@
 
         .tabs {width:783px; margin:25px auto 0;}
         .tabs ul{margin:0 auto 20px; display: flex; justify-content: space-around;}
-        .tabs li {width:20%}
+        .tabs li {width:16.66666%}
         .tabs li a {display:block; text-align:center; height:45px; line-height:45px; background:#b7b7b7; color:#fff; font-size:16px; margin-right:4px;border-radius:16px;}
         .tabs li a:hover,
         .tabs li a.active {background:#c0ff92; color:#89443f; font-weight:bold}
@@ -78,7 +78,7 @@
                     <li><a href="#tab03">광주</a></li>
                     <li><a href="#tab04">대구</a></li>
                     <li><a href="#tab05">부산</a></li>
-                    {{--<li><a href="#tab06">전북</a></li>--}}
+                    <li><a href="#tab06">전북</a></li>
                 </ul>
                 <div id="tab01" class="map">
                     <img src="https://static.willbes.net/public/images/promotion/2022/03/2568_01_map01.jpg" alt="서울(노량진)" />
@@ -119,8 +119,7 @@
                         🚩 주소 : 부산 진구 부전동 223-8<br>
                         📲 연락처 : 1522 - 8112
                     </div>
-                </div>
-                {{--
+                </div>                
                 <div id="tab06" class="map">
                     <img src="https://static.willbes.net/public/images/promotion/2022/03/2568_01_map06.jpg" alt="전북" />
                     <div>
@@ -128,8 +127,7 @@
                         🚩 주소 : 전북 전주시 덕진구 떡전5길 22 전북대학교 산학협력단 별관 인재개발센터 3층 305호<br>
                         📲 연락처 : 063-272-9946
                     </div>
-                </div>
-                --}}
+                </div>                
             </div>	       
         </div>
 

@@ -1,7 +1,7 @@
 @extends('html.m.layouts.master')
 
 @section('content')
-<link href="/public/css/willbes/promotion/2002_1332M.css" rel="stylesheet">
+<link href="/public/css/willbes/promotion/2001_m2548.css" rel="stylesheet">
 
 <!-- Container -->
 <div id="Container" class="Container NG c_both">

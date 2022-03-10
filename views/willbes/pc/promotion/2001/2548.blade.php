@@ -222,8 +222,7 @@
         <div class="evtCtnsBox evt01" id="evt01" data-aos="fade-up">
             <div class="d-day NSK">
                 2022년 경찰1차 <span>합격 플레져</span> 프로그램                
-                <p class="NSK-Black">필기시험까지 <span>D-</span></p>               
-               
+                <p class="NSK-Black">필기시험까지 <span>D-</span></p>      
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2548_01.jpg" alt="이 모든 혜택을 드립니다.">
 

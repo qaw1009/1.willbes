@@ -28,7 +28,7 @@
     					채점 후 ‘완료’ 버튼을 반드시 눌러야 전형정보 관리에 성적이 반영됩니다.
     				</li>
     				<li>
-    					기본정보는 사전예약 기간에만(~4/3) 수정이 가능하며, 본 서비스 오픈 후에는(4/4~) 수정이 불가합니다.
+    					기본정보는 사전예약 기간에만(~3/25) 수정이 가능하며, 본 서비스 오픈 후에는(3/26~) 수정이 불가합니다.
     				</li>
                     <li>
                     	자세한 합격예측 분석 데이터는 PC버전에서 확인 가능합니다.
@@ -48,45 +48,30 @@
         <form name="frm"  id="frm" action="" method="post">
             <div>
                 <table cellspacing="0" cellpadding="0" class="table_type table_type2">
-                    <col width="25%" />
-                    <col width="25%" />
-                    <col width="25%" />
+                    <col width="33.3333%" />
+                    <col width="33.3333%" />                   
                     <col width="*" />
                     <thead>
                         <tr>
                             <th>과목 </th>
-                            <th>원점수 </th>
-                            <th>조정점수 </th>
+                            <th>원점수 </th>                          
                             <th>정오표 </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th>공통과목1</th>
-                            <td>101점 </td>
-                            <td>101점 </td>
+                            <th>헌법</th>
+                            <td>101점 </td>                           
                             <td rowspan="5" class="tx-center"><a href="#none" onclick="openWin('mypoint')" class="mypoint">확인</a></td>
                         </tr>
                         <tr>
-                            <th>공통과목2</th>
-                            <td>101점 </td>
-                            <td>101점 </td>
-                        </tr>
-                        <tr>
-                            <th>선택과목1 </th>
-                            <td>101점 </td>
+                            <th>형사법</th>
                             <td>101점 </td>
                         </tr>
                         <tr>
-                            <th>선택과목2 </th>
-                            <td>101점 </td>
-                            <td>101점 </td>
-                        </tr>
-                        <tr>
-                            <th>선택과목3 </th>
-                            <td>101점 </td>
-                            <td>101점 </td>
-                        </tr>
+                            <th>경찰학</th>
+                            <td>101점 </td>                         
+                        </tr>                      
                     </tbody>
                 </table>
                 <div class="mt10 tx-center">

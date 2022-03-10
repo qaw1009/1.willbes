@@ -27,7 +27,7 @@
     					채점 후 ‘완료’ 버튼을 반드시 눌러야 전형정보 관리에 성적이 반영됩니다.
     				</li>
     				<li>
-    					기본정보는 사전예약 기간에만(~4/3) 수정이 가능하며, 본 서비스 오픈 후에는(4/4~) 수정이 불가합니다.
+    					기본정보는 사전예약 기간에만(~3/25) 수정이 가능하며, 본 서비스 오픈 후에는(3/26~) 수정이 불가합니다.
     				</li>
                     <li>
                     	자세한 합격예측 분석 데이터는 PC버전에서 확인 가능합니다.
@@ -39,7 +39,7 @@
 
         <div class="markMbtn2">
         	<a href="#none">기본정보입력</a>        	
-            <a href="javascript:alert('4월27일(토) 오픈예정입니다.')" class="btn2">채점 및 성적확인</a>
+            <a href="javascript:alert('3월26일(토)오픈 예정입니다.')" class="btn2">채점 및 성적확인</a>
             {{-- 27일부터 보이는 버튼
             <a href="javascript:alert('기본정보를 저장하고 채점해주세요.');" class="btn2">채점 및 성적확인</a>
             --}}
@@ -73,16 +73,11 @@
                         {{--직렬/지역 선택 전--}}
                         직렬(지역)구분을 선택해주세요.
                         {{--직렬/지역 선택 후--}}
-                        <div>
-                            <p>공통과목 : 과목1, 과목2</p>
-                            <p>선택과목(3과목)를 체크해주세요.</p>
+                        <div>                           
                             <ul class="sel_info">
-                                <li><input type="checkbox" name="aa1" id="aa1" value="" > <label for="aa1">선택과목A</label></li>
-                                <li><input type="checkbox" name="aa2" id="aa2" value="" > <label for="aa2">선택과목B</label></li>
-                                <li><input type="checkbox" name="aa3" id="aa3" value="" > <label for="aa3">선택과목C</label></li>
-                                <li><input type="checkbox" name="aa4" id="aa4" value="" > <label for="aa4">선택과목D</label></li>
-                                <li><input type="checkbox" name="aa5" id="aa5" value="" > <label for="aa5">선택과목E</label></li>
-                                <li><input type="checkbox" name="aa6" id="aa6" value="" > <label for="aa6">선택과목F</label></li>
+                                <li><input type="checkbox" name="aa1" id="aa1" value="" > <label for="aa1">헌법</label></li>
+                                <li><input type="checkbox" name="aa2" id="aa2" value="" > <label for="aa2">형사법</label></li>
+                                <li><input type="checkbox" name="aa3" id="aa3" value="" > <label for="aa3">경찰학</label></li>                              
                             </ul>
                         </div>
                     </td>

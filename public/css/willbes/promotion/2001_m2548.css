@@ -9,7 +9,7 @@
 .predictWrap input[type="text"] {height: 2rem;}
 .predictWrap .willbes-Tit {background: #2e3c52; color:#fff; border:0}
 .predictWrap .willbes-Tit span {color:#f6cc20}
-.predictWrap .predictMain { background:#c375bc;padding-bottom:50px}
+.predictWrap .predictMain {background: linear-gradient(to bottom, #daaabc, #c375bc);padding-bottom:50px}
 .predictWrap .predictMain .mainImg img {width:100%; max-width:720px;} 
 .predictWrap .predictMain .mainBtn {padding-top:50px;}
 .predictWrap .predictMain .mainBtn a { 

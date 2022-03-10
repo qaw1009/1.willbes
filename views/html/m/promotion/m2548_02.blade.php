@@ -27,7 +27,7 @@
     					채점 후 ‘완료’ 버튼을 반드시 눌러야 전형정보 관리에 성적이 반영됩니다.
     				</li>
     				<li>
-    					기본정보는 사전예약 기간에만(~4/3) 수정이 가능하며, 본 서비스 오픈 후에는(4/4~) 수정이 불가합니다.
+    					기본정보는 사전예약 기간에만(~3/25) 수정이 가능하며, 본 서비스 오픈 후에는(3/26~) 수정이 불가합니다.
     				</li>
                     <li>
                     	자세한 합격예측 분석 데이터는 PC버전에서 확인 가능합니다.
@@ -50,7 +50,7 @@
             </ul>
             <div id="tab1">
                 <div class="marking">
-                    <h5>공통과목 : 과목1</h5>
+                    <h5>헌법</h5>
                     <ul>
                         <li>
                             <div>    
@@ -79,7 +79,7 @@
                     </ul>
                 </div>
                 <div class="marking">
-                    <h5>공통과목 : 과목2</h5>
+                    <h5>형사법</h5>
                     <ul>
                         <li>
                             <div>    
@@ -102,13 +102,37 @@
                         <li>
                             <div>    
                                 <label>16 ~ 20번</label>
+                                <input value="" type="number" maxlength="5" name="" id="">
+                            </div>
+                        </li>
+                        <li>
+                            <div>    
+                                <label>21 ~ 25번</label>
+                                <input value="" type="number" maxlength="5" name="" id="">
+                            </div>
+                        </li>
+                        <li>
+                            <div>    
+                                <label>26 ~ 30번</label>
+                                <input value="" type="number" maxlength="5" name="" id="">
+                            </div>
+                        </li>
+                        <li>
+                            <div>    
+                                <label>31 ~ 35번</label>
+                                <input value="" type="number" maxlength="5" name="" id="">
+                            </div>
+                        </li>
+                        <li>
+                            <div>    
+                                <label>36 ~ 40번</label>
                                 <input value="" type="number" maxlength="5" name="" id="">
                             </div>
                         </li>
                     </ul>
                 </div>
                 <div class="marking">
-                    <h5>선택과목 : 과목1</h5>
+                    <h5>경찰학</h5>
                     <ul>
                         <li>
                             <div>    
@@ -134,66 +158,32 @@
                                 <input value="" type="number" maxlength="5" name="" id="">
                             </div>
                         </li>
-                    </ul>
-                </div>
-                <div class="marking">
-                    <h5>선택과목 : 과목2</h5>
-                    <ul>
                         <li>
                             <div>    
-                                <label>1 ~ 5번</label>
+                                <label>21 ~ 25번</label>
                                 <input value="" type="number" maxlength="5" name="" id="">
                             </div>
                         </li>
                         <li>
                             <div>    
-                                <label>6 ~ 10번</label>
+                                <label>26 ~ 30번</label>
                                 <input value="" type="number" maxlength="5" name="" id="">
                             </div>
                         </li>
                         <li>
                             <div>    
-                                <label>11 ~ 15번</label>
+                                <label>31 ~ 35번</label>
                                 <input value="" type="number" maxlength="5" name="" id="">
                             </div>
                         </li>
                         <li>
                             <div>    
-                                <label>16 ~ 20번</label>
+                                <label>36 ~ 40번</label>
                                 <input value="" type="number" maxlength="5" name="" id="">
                             </div>
                         </li>
                     </ul>
-                </div>
-                <div class="marking">
-                    <h5>선택과목 : 과목3</h5>
-                    <ul>
-                        <li>
-                            <div>    
-                                <label>1 ~ 5번</label>
-                                <input value="" type="number" maxlength="5" name="" id="">                                
-                            </div>
-                        </li>
-                        <li>
-                            <div>    
-                                <label>6 ~ 10번</label>
-                                <input value="" type="number" maxlength="5" name="" id="">
-                            </div>
-                        </li>
-                        <li>
-                            <div>    
-                                <label>11 ~ 15번</label>
-                                <input value="" type="number" maxlength="5" name="" id="">
-                            </div>
-                        </li>
-                        <li>
-                            <div>    
-                                <label>16 ~ 20번</label>
-                                <input value="" type="number" maxlength="5" name="" id="">
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                </div>                                             
                 <div class="mt10 tx-center">
                     답안을 다시 한번 확인 하시고,
                     하단 완료 버튼을 눌러 주세요.

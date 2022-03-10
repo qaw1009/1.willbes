@@ -761,7 +761,7 @@
     </div>
     <div class="dim Menu_close" style="display: none;"></div>
 
-    {{--모달팝업
+    {{--모달팝업--}}
     <div class="popupBox NSK" id="modalPopup">
         <div class="popupContent">
             <div class="popbanner"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/popup_sp01.jpg"></a></div>
@@ -772,7 +772,7 @@
             <div><button onclick="closeWin('modalPopup')">닫기</button></div>
         </div>
     </div>
-    모달팝업//--}}
+
 
     <script>   
         // 검색    

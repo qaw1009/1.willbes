@@ -130,7 +130,10 @@
 
         .cop .sec-cast {margin:0 20px;} 
 
-        .cop .swiper-best {
+
+        .cop .swiper-best{display: flex; position: relative; clear: both; overflow: hidden;}
+        .cop .swiper-best .swiper-slide{display: flex; flex-direction: column;}
+        /* .cop .swiper-best {
             width: calc(100% - 20px);
             height: 100%;
             margin:0 auto;
@@ -143,7 +146,7 @@
             height: calc(100% / 4) !important;
             display:block;
             background:#f4f4f4;            
-        }
+        } */
         /*.cop .swiper-best .swiper-slide a {position: relative; display:block; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; }
         .cop .swiper-best .swiper-slide a img {position: absolute; top: 0; left: 0; width: 100%; z-index: 10;}*/
         .cop .swiper-best .swiper-pagination {
@@ -185,6 +188,7 @@
             .cop .castInfo p {font-size:2.2vh;}  
             .cop .swiper-best {width: calc(100% - 40px); padding-bottom:100px;}     
             .cop .swiper-best .swiper-pagination {top:99%;}
+        }
     </style>
 </head>
 <body id="goTop">
@@ -524,17 +528,50 @@
         </div>
         <div class="swiper-best mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_01.jpg" alt="배너명"></a></div>
-                <div class="swiper-slide"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_02.jpg" alt="배너명"></a></div>
-                <div class="swiper-slide"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_03.jpg" alt="배너명"></a></div>
-                <div class="swiper-slide"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_04.jpg" alt="배너명"></a></div>
-                <div class="swiper-slide"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_01.jpg" alt="배너명"></a></div>
-                <div class="swiper-slide"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_02.jpg" alt="배너명"></a></div>
-                <div class="swiper-slide"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_03.jpg" alt="배너명"></a></div>
-                <div class="swiper-slide"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_04.jpg" alt="배너명"></a></div>
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_01.jpg" alt="배너명">
+                    </a>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_02.jpg" alt="배너명">
+                    </a>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_03.jpg" alt="배너명">
+                    </a>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_04.jpg" alt="배너명">
+                    </a>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_01.jpg" alt="배너명">
+                    </a>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_01.jpg" alt="배너명">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_01.jpg" alt="배너명">
+                    </a>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_02.jpg" alt="배너명">
+                    </a>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_03.jpg" alt="배너명">
+                    </a>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_04.jpg" alt="배너명">
+                    </a>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_01.jpg" alt="배너명">
+                    </a>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_01.jpg" alt="배너명">
+                    </a>
+                </div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
+
         <!--
         <div class="sec-bestLec">
             <div class="swiper-container-view">
@@ -710,9 +747,8 @@
         });
 
         //베스트강의
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            slidesPerColumn: 4,
+        var mySwiper = new Swiper(".mySwiper", {
+            slidesPerView: 'auto',
             spaceBetween: 0,
             pagination: {
                 el: ".swiper-pagination",
@@ -723,7 +759,6 @@
                 disableOnInteraction: false,
             }, //3초에 한번씩 자동 넘김
         });
-
 
 
     </script> 

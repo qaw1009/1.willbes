@@ -20,8 +20,9 @@
 
         /************************************************************/
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2564_top_bg.jpg) no-repeat center top;}
+        .evt01 {padding-bottom:150px}
 
-        .btnSt {width:470px; margin:50px auto 0; position:relative}
+        .btnSt {width:470px; margin:0 auto; position:relative}
         .btnSt a {display:block; border-radius:18px; color:#fff; background:#ce3c3f; padding:20px 0; font-size:24px}
         .btnSt a:hover {background:#000}
         .btnSt img {position:absolute; left:70%; top:35px}

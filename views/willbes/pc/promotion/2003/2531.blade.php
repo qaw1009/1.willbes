@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}*/
+        /*.evtCtnsBox .wrap a {border:1px solid #000;}*/
 
         /************************************************************/
         .sky {position:fixed;top:100px;right:10px ;width:131px; text-align:center; z-index:111;}    
@@ -25,7 +25,7 @@
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/02/2531_top_bg.jpg) no-repeat center top;}
 
         .wb_03 {background:#222}
-        .check {color:#fff; font-size:15px;font-weight:bold;position:absolute;left:50%;top:22%;margin-left:-345px;margin-top:325px;}
+        .check {color:#fff; font-size:15px;font-weight:bold;position:absolute; left:50%; top:950px; margin-left:-345px;}
         .check label {cursor:pointer}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
         .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#222; background:#fff; margin-left:50px; border-radius:20px}
@@ -52,7 +52,7 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">          
             <a href="#lecbuy01"><img src="https://static.willbes.net/public/images/promotion/2022/02/2531_sky01.jpg" alt="조경직 티패스" /></a>    
-            <a href="#lecbuy01"><img src="https://static.willbes.net/public/images/promotion/2022/02/2531_sky02.jpg" alt="조경직 패키지" /></a> 
+            <a href="#lecbuy03"><img src="https://static.willbes.net/public/images/promotion/2022/02/2531_sky02.jpg" alt="조경직 패키지" /></a> 
             <a href="#lecbuy02"><img src="https://static.willbes.net/public/images/promotion/2022/02/2531_sky03.jpg" alt="조경직 단과" /></a>        
         </div>
 
@@ -73,10 +73,8 @@
 
         <div class="evtCtnsBox wb_03" data-aos="fade-up" id="lecbuy01">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/2531_03.jpg" alt="수강신청" />
-                <a href="javascript:go_PassLecture('191148');" title="조경직 이윤주 티패스" style="position: absolute;left: 60.23%;top: 36.12%;width: 28.7%;height: 5.93%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185716" target="_blank" title="조경직 이윤주 이론+예상문제팩" style="position: absolute;left: 11.23%;top: 79.46%;width: 28.7%;height: 5.93%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2408" target="_blank" title="조경직 전과목 기출&모의고사팩" style="position: absolute;left: 60.23%;top: 79.46%;width: 28.7%;height: 5.93%;z-index: 2;"></a>  
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2531_03.jpg" alt="수강신청" />
+                <a href="javascript:go_PassLecture('191148');" title="조경직 이윤주 티패스" style="position: absolute; left: 72.32%; top: 73.47%; width: 14.82%; height: 8.53%;  z-index: 2;"></a>
             </div>
             <div class="check" id="chkInfo">   
                 <label>
@@ -87,8 +85,14 @@
             </div>              
         </div>      
 
-        <div class="evtCtnsBox wb_05" data-aos="fade-up" id="lecbuy02">
-            <div class="wrap">
+        <div class="evtCtnsBox wb_05" data-aos="fade-up">
+            <div class="wrap" id="lecbuy03">
+                <div class="sTitle NSK-Black">패키지 수강신청</div>           
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+                @endif
+            </div>
+            <div class="wrap" id="lecbuy02">
                 <div class="sTitle NSK-Black">단과 수강신청</div>           
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))

@@ -35,8 +35,6 @@
         .youtube li div span {color:#fff;}
         .youtube li iframe {width:550px; height:310px}
         .youtube ul:after {content:''; display:block; clear:both}
-
-        .willbes-Layer-ReplyBox { top:2000px}
     </style>
 
     <div class="evtContent NSK" id="evtContainer">

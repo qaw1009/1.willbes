@@ -20,7 +20,6 @@
 
         /************************************************************/
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2556_top_bg.jpg) no-repeat center top;}
-        .evt01 {background:#f7f6fa; padding-bottom:100px}
 
         .btnSt {width:470px; margin:50px auto 0; position:relative}
         .btnSt a {display:block; border-radius:18px; color:#fff; background:#ce3c3f; padding:20px 0; font-size:24px}
@@ -35,8 +34,6 @@
         .youtube li div span {color:#fff;}
         .youtube li iframe {width:550px; height:310px}
         .youtube ul:after {content:''; display:block; clear:both}
-
-        .willbes-Layer-ReplyBox { top:2000px}
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -46,13 +43,7 @@
         </div> 
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2556_01.jpg" alt=""> 
-            {{--
-            <div class="btnSt NSK-Black">
-                <a href="#none" onclick="go_study_comment_popup();" id="wsamjh">교수님의 더 많은 수강후기 확인하기 ></a>
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2017_prof_icon.png" alt="">
-            </div>         
-            --}}               
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2556_01.jpg" alt="">              
         </div>
 
         <div class="evtCtnsBox youtube" data-aos="fade-up">

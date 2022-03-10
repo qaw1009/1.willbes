@@ -130,31 +130,73 @@
 
         .cop .sec-cast {margin:0 20px;} 
 
-
-        .cop .swiper-best{display: flex; position: relative; clear: both; overflow: hidden;}
+        .cop .swiper-best{display:flex; position: relative; overflow: hidden; padding-bottom:30px; width:calc(100% - 40px); margin:0 auto;}
         .cop .swiper-best .swiper-slide{display: flex; flex-direction: column;}
-        /* .cop .swiper-best {
-            width: calc(100% - 20px);
-            height: 100%;
-            margin:0 auto;
-            position: relative;
-            overflow:hidden;   
-            background:#f1fac0;            
-        }
-
-        .cop .swiper-best .swiper-slide {
-            height: calc(100% / 4) !important;
-            display:block;
-            background:#f4f4f4;            
-        } */
-        /*.cop .swiper-best .swiper-slide a {position: relative; display:block; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; }
-        .cop .swiper-best .swiper-slide a img {position: absolute; top: 0; left: 0; width: 100%; z-index: 10;}*/
         .cop .swiper-best .swiper-pagination {
-            top:95%;
+            top:98%;
             float:none;
             text-align:center;
             z-index: 100;
         }
+        
+        .swiper-container-Book {
+            width: calc(100% - 40px);
+            margin:0 auto;
+            height: 340px;
+            overflow: hidden;
+            position: relative; 
+        }
+        .swiper-container-Book .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            width:160px;
+            align-items: stretch;
+        }
+        .swiper-container-Book .swiper-slide a {
+            display: block;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+        .swiper-container-Book .swiper-slide .bookimg {
+            width: 158px;
+            height: 216px;
+            margin: 0 auto; /*border:1px solid #d9d9d9;*/
+            position: relative;
+        }
+        .swiper-container-Book .swiper-slide img {
+            width: 100%;
+            max-width: 158px;
+            margin: 0 auto;
+        }
+        .swiper-container-Book ul {
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+        .swiper-container-Book li:nth-child(1) {
+            width: 98%;
+            overflow: hidden;
+            text-overflow:ellipsis; /*말줄임*/
+            display:-webkit-box;/*블록속성*/ 
+            -webkit-line-clamp: 2; /* 라인수 */ 
+            -webkit-box-orient:vertical;/*박스의 흐름 방향을 지정*/ 
+            word-wrap:break-word; /*언어간 줄바꿈*/
+        }
+        .swiper-container-Book li:nth-child(2) {
+            color: #737373;
+        }
+
+        .swiper-container-Book li:last-child strong {
+            font-size: 14px;
+            color: #3f84c2;
+        }
+        .swiper-container-Book li:last-child span {
+            color: #000;
+            font-weight: normal;
+        }
+        .swiper-container-Book .swiper-pagination {
+            bottom: 0 !important;
+        }
+
 
         .noticeTabs {margin-top:10%;}
         .noticeTabs .tabContent {padding:20px 20px 0;}
@@ -175,7 +217,9 @@
 
             .cop .swiper-sec,
             .cop .sec-cast {margin:0 10px;}
-            .cop .sec-tip {width:calc(100% - 20px); margin:0 10px;}
+            .cop .sec-tip,
+            .cop .swiper-best,
+            .swiper-container-Book {width:calc(100% - 20px);}
 
             .noticeBoard {padding:10px}
             .noticeBoard a {padding:8px 0}
@@ -185,9 +229,8 @@
 
         @@media (min-width: 721px) {
             .cop .castInfo h5 {font-size:2.4vh;}
-            .cop .castInfo p {font-size:2.2vh;}  
-            .cop .swiper-best {width: calc(100% - 40px); padding-bottom:100px;}     
-            .cop .swiper-best .swiper-pagination {top:99%;}
+            .cop .castInfo p {font-size:2.2vh;}
+            .cop .swiper-best{width:calc(100% - 20px); padding-bottom:40px;}
         }
     </style>
 </head>
@@ -541,12 +584,6 @@
                     <a href="#none">
                         <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_04.jpg" alt="배너명">
                     </a>
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_01.jpg" alt="배너명">
-                    </a>
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_01.jpg" alt="배너명">
-                    </a>
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
@@ -561,64 +598,91 @@
                     <a href="#none">
                         <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_04.jpg" alt="배너명">
                     </a>
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_01.jpg" alt="배너명">
-                    </a>
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_01.jpg" alt="배너명">
-                    </a>
                 </div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
 
-        <!--
-        <div class="sec-bestLec">
-            <div class="swiper-container-view">
+        <div class="conTitle">
+            <div class="NSK-Black">경찰 베스트 <strong class="mainColor">교재</strong><a href="https://police.willbes.net/m/m/book/index" target="_blank"><img src="https://static.willbes.net/public/images/promotion/m/icon_more.png" alt="더보기" class="moreBtn"></a></div>
+        </div>      
+        <div class="swiper-container-Book">
+            <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_01.jpg" alt="배너명">                            
-                    </a>
-                </div>
+                        <div class="bookimg"><img src="https://static.willbes.net/public/images/promotion/m/2001/book_01.jpg" alt="교재명"></div> 
+                        <ul>                            
+                            <li>2020 기특한 국어 전 범위 모의고사 4</li>
+                            <li>[판매중]</li>
+                            <li><span>54,000원</span> <strong>(↓ 10%)</strong></li>                            
+                        </ul> 
+                    </a>                
+                </div>            
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_02.jpg" alt="배너명">                            
-                    </a>
-                </div>
+                        <div class="bookimg"><img src="https://static.willbes.net/public/images/promotion/m/2001/book_02.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>장정훈 경찰학 적중예상문제풀이[2022 경찰채용 1차대비]</li>
+                            <li>[판매중]</li>
+                            <li><span>54,000원</span> <strong>(↓ 10%)</strong></li>  
+                        </ul> 
+                    </a>                
+                </div> 
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_03.jpg" alt="배너명">                            
-                    </a>
-                </div>
+                        <div class="bookimg"><img src="https://static.willbes.net/public/images/promotion/m/2001/book_03.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>근대 세계의 창조</li>
+                            <li>[판매중]</li>
+                            <li><span>54,000원</span> <strong>(↓ 10%)</strong></li>  
+                        </ul> 
+                    </a>                
+                </div> 
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_04.jpg" alt="배너명">                            
-                    </a>
-                </div>
+                        <div class="bookimg"><img src="https://static.willbes.net/public/images/promotion/m/2001/book_04.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>근대 세계의 창조</li>
+                            <li>[판매중]</li>
+                            <li><span>54,000원</span> <strong>(↓ 10%)</strong></li>  
+                        </ul> 
+                    </a>                
+                </div> 
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_02.jpg" alt="배너명">                            
-                    </a>
-                </div>
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>장정훈 경찰학 적중예상문제풀이[2022 경찰채용 1차대비]</li>
+                            <li>[판매중]</li>
+                            <li><span>54,000원</span> <strong>(↓ 10%)</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_04.jpg" alt="배너명">                            
-                    </a>
-                </div>
+                        <div class="bookimg"><img src="https://book.willbes.net/public/uploads/wbs/book/2020/311110/book_311110_sm.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>장정훈 경찰학 적중예상문제풀이[2022 경찰채용 1차대비]</li>
+                            <li>[판매중]</li>
+                            <li><span>54,000원</span> <strong>(↓ 10%)</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_01.jpg" alt="배너명">                            
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_680x300_03.jpg" alt="배너명">                            
-                    </a>
-                </div>
-                <div class="swiper-pagination"></div>
+                        <div class="bookimg"><img src="https://static.willbes.net/public/images/promotion/m/2001/book_04.jpg" alt="교재명"></div> 
+                        <ul>
+                            <li>장정훈 경찰학 적중예상문제풀이[2022 경찰채용 1차대비]</li>
+                            <li>[판매중]</li>
+                            <li><span>54,000원</span> <strong>(↓ 10%)</strong></li>
+                        </ul> 
+                    </a>                
+                </div> 
             </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
         </div>
-    -->
+ 
 
 
         <div class="noticeTabs">
@@ -735,17 +799,6 @@
             },
         });
 
-        //교수진
-        var swiper = new Swiper('.swiper-container-sec04', {
-            slidesPerView: 'auto',
-            slidesPerColumn: 1,
-            spaceBetween: 0,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            }, //3초에 한번씩 자동 넘김
-        });
-
         //베스트강의
         var mySwiper = new Swiper(".mySwiper", {
             slidesPerView: 'auto',
@@ -760,7 +813,21 @@
             }, //3초에 한번씩 자동 넘김
         });
 
-
+        //도서
+        var swiper = new Swiper ('.swiper-container-Book', { 
+            slidesPerView: 'auto',
+            spaceBetween: 11,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
+            pagination: { 
+                el: '.swiper-pagination', 
+                clickable: true,
+            }, 
+        }); 
     </script> 
 
     <!-- scripts -->

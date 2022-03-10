@@ -4,43 +4,49 @@
     @include('willbes.pc.layouts.partial.site_menu')
     
 <!-- Container -->
-     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
-        .evtContent {
-            width:100% !important;
-            min-width:1120px !important;
-            background:#ccc;
-            margin-top:20px !important;
-            padding:0 !important;
-            background:#fff;
-        }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+<style type="text/css">
+  .evtContent {
+      width:100%;
+      min-width:1120px !important;
+      max-width:2000px !important;
+      margin:0 auto;
+      margin-top:20px !important;
+      padding:0 !important;
+      background:#fff;            
+  }
+  .evtContent span {vertical-align:auto}
+  .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+  .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+  /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
-        /************************************************************/
+  /************************************************************/
 
-        .wb_cts01 {position:relative; overflow:hidden; background:#ce7598 url("https://static.willbes.net/public/images/promotion/2020/08/1762_top_bg.jpg") center top  no-repeat;height:1025px;}
-        .wb_cts02 {background:#203B7A url("https://static.willbes.net/public/images/promotion/2020/08/1762_01_bg.jpg") center top  no-repeat}
-        .wb_cts03 {background:#E1E1E1;}  
-        .wb_cts04 {background:#fff;}
-        .wb_cts05 {background:#223E7D;}
+  .sky {position:fixed; top:100px;right:10px ;width:230px; text-align:center; z-index:111;}    
+  .sky a {display: block; margin-bottom:10px}
 
-		/* txt_motion */
-		.wb_cts01 > div {width:1120px; margin:0 auto; position:relative;}
-		.wb_cts01 > div span {position:absolute; width:120px; z-index: 1;}
-		.wb_cts01 > div span.txt1 {top:75px; left:150px; animation:slidein1 0.3s ease-in; -webkit-animation:slidein1 0.3s ease-in;}
-		.wb_cts01 > div span.txt2 {top:300px; left:280px; animation:slidein2 0.6s ease-in; -webkit-animation:slidein2 0.6s ease-in;}
-        .wb_cts01 > div span.txt3 {top:425px; left:250px; animation:slidein3 0.9s ease-in; -webkit-animation:slidein3 0.9s ease-in;}
-        	
-		@@keyframes slidein1 {from {left:605px; opacity: 0;}to {left:150px; opacity: 1}}
-		@@keyframes slidein2 {from {left:605px; opacity: 0;}to {left:150; opacity: 1}}
-		@@keyframes slidein3 {from {left:605px; opacity: 0;}to {left:150; opacity: 1}}	
+  .wb_cts01 {position:relative; overflow:hidden; background:#ce7598 url("https://static.willbes.net/public/images/promotion/2020/08/1762_top_bg.jpg") center top  no-repeat;height:1025px;}
+  .wb_cts02 {background:#203B7A url("https://static.willbes.net/public/images/promotion/2020/08/1762_01_bg.jpg") center top  no-repeat}
+  .wb_cts03 {background:#E1E1E1;}  
+  .wb_cts04 {background:#fff;}
+  .wb_cts05 {background:#223E7D;}
 
- </style>
+  /* txt_motion */
+  .wb_cts01 > div {width:1120px; margin:0 auto; position:relative;}
+  .wb_cts01 > div span {position:absolute; width:120px; z-index: 1;}
+  .wb_cts01 > div span.txt1 {top:75px; left:150px; animation:slidein1 0.3s ease-in; -webkit-animation:slidein1 0.3s ease-in;}
+  .wb_cts01 > div span.txt2 {top:300px; left:280px; animation:slidein2 0.6s ease-in; -webkit-animation:slidein2 0.6s ease-in;}
+      .wb_cts01 > div span.txt3 {top:425px; left:250px; animation:slidein3 0.9s ease-in; -webkit-animation:slidein3 0.9s ease-in;}
+        
+  @@keyframes slidein1 {from {left:605px; opacity: 0;}to {left:150px; opacity: 1}}
+  @@keyframes slidein2 {from {left:605px; opacity: 0;}to {left:150; opacity: 1}}
+  @@keyframes slidein3 {from {left:605px; opacity: 0;}to {left:150; opacity: 1}}	
 
- <div class="p_re evtContent NGR" id="evtContainer">
+</style>
+
+<div class="evtContent NSK" id="evtContainer">
+  <div class="sky" id="QuickMenu">          
+      <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/192286"><img src="https://static.willbes.net/public/images/promotion/2022/03/1762_sky.png" alt="신광은 형소법" /></a>      
+  </div>
   
   <div class="evtCtnsBox wb_cts01">
     <div class style="height:1025px;">
@@ -72,9 +78,7 @@
 </div>
 <!-- End Container -->
 
-<script type="text/javascript">
 
-</script>
 {{-- 프로모션용 스크립트 include --}}
 @include('willbes.pc.promotion.promotion_script')
 

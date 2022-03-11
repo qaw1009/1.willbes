@@ -1,16 +1,16 @@
 <style>
     .skybanner {
             position:fixed;
+            height:auto;
             top:70px;
-            height: 100%;
             right:0 !important;
-            width:150px;	
+            width:140px;	
             /*background:rgba(0,0,0,.5);*/
             overflow-y:auto;
 			z-index:10;
         }
 	.skybanner li {line-height:1.4;}
-	.skybanner a {display:block; color:#fff; padding:5px 7px; text-align:left; font-size:12px; letter-spacing:normal; background:#333; margin-bottom:1px}
+	.skybanner a {display:block; color:#fff; padding:5px 7px; text-align:left; font-size:12px; letter-spacing:normal; background:#333; margin-bottom:1px; }
 	.skybanner li:last-child a {border-bottom:0;}
 	.skybanner a:hover {background:#000}
     .skybanner::after {top:0 !important}

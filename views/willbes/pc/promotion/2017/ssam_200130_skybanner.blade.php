@@ -1,12 +1,11 @@
 <style>
     .skybanner {
             position:fixed;
-            top:0 !important;
+            top:70px;
             height: 100%;
             right:0 !important;
             width:150px;	
-            background:rgba(0,0,0,.5);
-            padding:5px;
+            /*background:rgba(0,0,0,.5);*/
             overflow-y:auto;
 			z-index:10;
         }

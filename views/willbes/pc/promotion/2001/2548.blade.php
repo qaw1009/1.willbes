@@ -192,7 +192,7 @@
     <div class="evtContent NGR" id="evtContainer">
 
         <div class="sky" id="QuickMenu">
-            <a href="javascript:alert('Coming Soon!')">
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2578" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2548_sky01.png" alt="적중 이벤트">
             </a>
             <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">

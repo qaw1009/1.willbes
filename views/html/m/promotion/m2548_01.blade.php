@@ -74,16 +74,7 @@
                         직렬(지역)구분을 선택해주세요.
                         {{--직렬/지역 선택 후--}}
                         <div>
-                            <p>공통과목 : 과목1, 과목2</p>
-                            <p>선택과목(3과목)를 체크해주세요.</p>
-                            <ul class="sel_info">
-                                <li><input type="checkbox" name="aa1" id="aa1" value="" > <label for="aa1">선택과목A</label></li>
-                                <li><input type="checkbox" name="aa2" id="aa2" value="" > <label for="aa2">선택과목B</label></li>
-                                <li><input type="checkbox" name="aa3" id="aa3" value="" > <label for="aa3">선택과목C</label></li>
-                                <li><input type="checkbox" name="aa4" id="aa4" value="" > <label for="aa4">선택과목D</label></li>
-                                <li><input type="checkbox" name="aa5" id="aa5" value="" > <label for="aa5">선택과목E</label></li>
-                                <li><input type="checkbox" name="aa6" id="aa6" value="" > <label for="aa6">선택과목F</label></li>
-                            </ul>
+                            <p>공통과목 : 과목1, 과목2</p>                           
                         </div>
                     </td>
                 </tr>

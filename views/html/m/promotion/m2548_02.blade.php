@@ -54,22 +54,28 @@
                     <ul>
                         <li>
                             <div>    
-                                <label>헌법</label>
+                                <label>1 ~ 5번</label>
                                 <input value="" type="number" maxlength="5" name="" id="">
                             </div>
                         </li>
                         <li>
                             <div>    
-                                <label>형소법</label>
+                                <label>6 ~ 10번</label>
                                 <input value="" type="number" maxlength="5" name="" id="">
                             </div>
                         </li>
                         <li>
                             <div>    
-                                <label>경찰학</label>
+                                <label>11 ~ 15번</label>
                                 <input value="" type="number" maxlength="5" name="" id="">
                             </div>
-                        </li>                       
+                        </li>
+                        <li>
+                            <div>    
+                                <label>16 ~ 20번</label>
+                                <input value="" type="number" maxlength="5" name="" id="">
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="marking">
@@ -77,22 +83,52 @@
                     <ul>
                         <li>
                             <div>    
-                                <label>헌법</label>
+                                <label>1 ~ 5번</label>
                                 <input value="" type="number" maxlength="5" name="" id="">
                             </div>
                         </li>
                         <li>
                             <div>    
-                                <label>형소법</label>
+                                <label>6 ~ 10번</label>
                                 <input value="" type="number" maxlength="5" name="" id="">
                             </div>
                         </li>
                         <li>
                             <div>    
-                                <label>경찰학</label>
+                                <label>11 ~ 15번</label>
                                 <input value="" type="number" maxlength="5" name="" id="">
                             </div>
-                        </li>                        
+                        </li>
+                        <li>
+                            <div>    
+                                <label>16 ~ 20번</label>
+                                <input value="" type="number" maxlength="5" name="" id="">
+                            </div>
+                        </li>
+                        <li>
+                            <div>    
+                                <label>21 ~ 25번</label>
+                                <input value="" type="number" maxlength="5" name="" id="">
+                            </div>
+                        </li>
+                        <li>
+                            <div>    
+                                <label>26 ~ 30번</label>
+                                <input value="" type="number" maxlength="5" name="" id="">
+                            </div>
+                        </li>
+                        <li>
+                            <div>    
+                                <label>31 ~ 35번</label>
+                                <input value="" type="number" maxlength="5" name="" id="">
+                            </div>
+                        </li>
+                        <li>
+                            <div>    
+                                <label>36 ~ 40번</label>
+                                <input value="" type="number" maxlength="5" name="" id="">
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="marking">
@@ -100,22 +136,52 @@
                     <ul>
                         <li>
                             <div>    
-                                <label>헌법</label>
+                                <label>1 ~ 5번</label>
                                 <input value="" type="number" maxlength="5" name="" id="">
                             </div>
                         </li>
                         <li>
                             <div>    
-                                <label>형소법</label>
+                                <label>6 ~ 10번</label>
                                 <input value="" type="number" maxlength="5" name="" id="">
                             </div>
                         </li>
                         <li>
                             <div>    
-                                <label>경찰학</label>
+                                <label>11 ~ 15번</label>
                                 <input value="" type="number" maxlength="5" name="" id="">
                             </div>
-                        </li>                      
+                        </li>
+                        <li>
+                            <div>    
+                                <label>16 ~ 20번</label>
+                                <input value="" type="number" maxlength="5" name="" id="">
+                            </div>
+                        </li>
+                        <li>
+                            <div>    
+                                <label>21 ~ 25번</label>
+                                <input value="" type="number" maxlength="5" name="" id="">
+                            </div>
+                        </li>
+                        <li>
+                            <div>    
+                                <label>26 ~ 30번</label>
+                                <input value="" type="number" maxlength="5" name="" id="">
+                            </div>
+                        </li>
+                        <li>
+                            <div>    
+                                <label>31 ~ 35번</label>
+                                <input value="" type="number" maxlength="5" name="" id="">
+                            </div>
+                        </li>
+                        <li>
+                            <div>    
+                                <label>36 ~ 40번</label>
+                                <input value="" type="number" maxlength="5" name="" id="">
+                            </div>
+                        </li>
                     </ul>
                 </div>                                             
                 <div class="mt10 tx-center">
@@ -151,21 +217,21 @@
                     <ul>
                         <li>
                             <div>    
-                                <label>선택과목1</label>
+                                <label>헌법</label>
                                 <input value="" type="number" maxlength="3" name="" id="">
                                 <span>점</span>
                             </div>
                         </li>
                         <li>
                             <div>    
-                                <label>선택과목2</label>
+                                <label>형사법</label>
                                 <input value="" type="number" maxlength="3" name="" id="">
                                 <span>점</span>
                             </div>
                         </li>
                         <li>
                             <div>    
-                                <label>선택과목3</label>
+                                <label>경찰학</label>
                                 <input value="" type="number" maxlength="3" name="" id="">
                                 <span>점</span>
                             </div>

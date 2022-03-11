@@ -63,12 +63,11 @@
 
 .marking {margin:10px; padding:10px; border:1px dashed #e4e4e4}
 .marking h5 {font-size:14px; margin-bottom:10px}
-.marking li {display:inline; float:left; width:33.3333%;}
+.marking li {display:inline; float:left; width:25%;}
 .marking li div {margin-right:4px;  padding:3px; background:#666; text-align:center}
 .marking li div label {color:#fff; padding-bottom:5px; display: block}
 .marking li div input {width:100%; padding:5px 0; margin:0 auto; text-align:center; letter-spacing:4px}
 .marking li div span {position:absolute; right:20px; top:30px; z-index: 10;}
-.marking li:last-child div {margin-right:0}
 .marking ul:after {content:""; display:block; clear:both}
 
 .marking2 li {width:50%; position: relative;}

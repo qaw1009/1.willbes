@@ -166,7 +166,7 @@
 .ssam .SubtabBox p.leftBtn {margin-left:-540px;}
 .ssam .SubtabBox p.rightBtn {margin-left:508px; background-position: right center;}	
 .ssam .VisualSubBox .Subtab {width:978px; margin:10px auto 0; border-left:1px solid #e3e3e3; border-top:1px solid #e3e3e3;}
-.ssam .VisualSubBox .Subtab li {display:inline; float:left; width:14.28571%}
+.ssam .VisualSubBox .Subtab li {display:inline; float:left; width:12.5%}
 .ssam .VisualSubBox .Subtab li a {display:block; text-align:center; font-size:14px; background: #fff; color:#494949; line-height:30px; border-right:1px solid #e3e3e3; border-bottom:1px solid #e3e3e3}
 .ssam .VisualSubBox .Subtab li a.active,
 .ssam .VisualSubBox .Subtab li a:hover {color:#fff; background:#5ba5fe; font-weight:bold;}

@@ -214,6 +214,7 @@
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1821') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kys.jpg" alt="전공영어 김유석"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1822') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kym.jpg" alt="전공영어 김영문"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1824') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kcm.jpg" alt="전공수학 김철홍"></a></li>
+                        <li><a href="{{ front_url('/promotion/index/cate/3140/code/2559') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51338.jpg" alt="전공수학 김현웅"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1825') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_bty.jpg" alt="수학교육론 박태영"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/2560') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51314.jpg" alt="수학교육론 박혜향"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1828') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kbc.jpg" alt="도덕윤리 김병찬"></a></li>
@@ -249,6 +250,7 @@
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1821') }}"'><a data-slide-index='10' href="javascript:void(0);">전공영어 김유석</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1822') }}"'><a data-slide-index='11' href="javascript:void(0);">전공영어 김영문</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1824') }}"'><a data-slide-index='12' href="javascript:void(0);">전공수학 김철홍</a></li>
+                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2559') }}"'><a data-slide-index='28' href="javascript:void(0);">전공수학 김현웅</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1825') }}"'><a data-slide-index='13' href="javascript:void(0);">수학교육론 박태영</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2560') }}"'><a data-slide-index='14' href="javascript:void(0);">수학교육론 박혜향</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1828') }}"'><a data-slide-index='15' href="javascript:void(0);">도덕윤리 김병찬</a></li>

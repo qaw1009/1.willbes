@@ -13,6 +13,7 @@ class SurveyModel extends WB_Model
 
         'predictProduct' => 'lms_product_predict',
         'predictCode' => 'lms_predict_code',
+        'predict_code_r_subject' => 'lms_predict_code_r_subject',
         'predictRegisterR' => 'lms_predict_register_r_code',
         'predictRegister' => 'lms_predict_register',
 
@@ -697,6 +698,24 @@ class SurveyModel extends WB_Model
         $Res = $query->result_array();
 
         return $Res;
+    }
+
+    /**
+     * 합격예측 직렬+과목코드 조회
+     * @param array $arr_condition
+     */
+    public function getSubjectCode($arr_condition = [])
+    {
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = "b.Ccd, b.CcdName, b.Type";
+        $from = "
+            FROM {$this->_table['predict_code_r_subject']} AS a
+            INNER JOIN {$this->_table['predictCode']} AS b ON a.TakeMockPart = b.GroupCcd AND a.SubjectCode = b.Ccd
+        ";
+        $order_by = " ORDER BY a.OrderNum";
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
     }
 
     /**

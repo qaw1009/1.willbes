@@ -221,8 +221,12 @@
 
         <div class="evtCtnsBox evt01" id="evt01" data-aos="fade-up">
             <div class="d-day NSK">
-                2022년 경찰1차 <span>합격 플레져</span> 프로그램                
-                <p class="NSK-Black">필기시험까지 <span>D-</span></p>      
+                2022년 경찰1차 <span>합격 플레져</span> 프로그램
+                @if(empty($arr_base['dday_data'][0]['DDay']) === false)
+                    @if($onoff_1 == 'on')
+                        <p class="NSK-Black">필기시험까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
+                    @endif
+                @endif
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2548_01.jpg" alt="이 모든 혜택을 드립니다.">
 
@@ -417,7 +421,7 @@
                 //사전예약 마감
                 @if($onoff_1 != 'on')
                     var openNewWindow = window.open("about:blank");
-                    openNewWindow.location.href = '{{ front_url('/promotion/index/cate/3001/code/2081') }}';
+                    openNewWindow.location.href = '{{ front_url('/promotion/index/cate/3001/code/2572') }}';
                 @else
                     var url = "{{ front_url('/predict/index/' . $arr_promotion_params['PredictIdx']) }}";
                     window.open(url,'event', 'scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');

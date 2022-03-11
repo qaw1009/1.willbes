@@ -220,14 +220,20 @@ class BasePassPredict extends \app\controllers\FrontController
      */
     public function getSerialAjax()
     {
-        $GroupCcd = $this->_req("GroupCcd");
+        /*$GroupCcd = $this->_req("GroupCcd");
+        $list = $this->surveyModel->getSerial($GroupCcd);*/
 
-        $list = $this->surveyModel->getSerial($GroupCcd);
+        $arr_condition = [
+            'EQ' => [
+                'PredictIdx' => $this->_reqP('PredictIdx')
+                ,'TakeMockPart' => $this->_reqP('GroupCcd')
+            ]
+        ];
+        $list = $this->surveyModel->getSubjectCode($arr_condition);
 
         return $this->response([
             'data' => $list
         ]);
-
     }
 
     /**

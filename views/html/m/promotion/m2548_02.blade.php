@@ -194,25 +194,7 @@
                 </div>
             </div>
 
-            <div id="tab2">
-                <div class="marking marking2">
-                    <ul>
-                        <li>
-                            <div>    
-                                <label>공통과목1</label>
-                                <input value="" type="number" maxlength="3" name="" id="">
-                                <span>점</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>    
-                                <label>공통과목2</label>
-                                <input value="" type="number" maxlength="3" name="" id="">
-                                <span>점</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+            <div id="tab2">                
                 <div class="marking marking3">
                     <ul>
                         <li>

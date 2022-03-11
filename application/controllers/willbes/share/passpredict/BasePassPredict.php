@@ -225,8 +225,10 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $arr_condition = [
             'EQ' => [
-                'PredictIdx' => $this->_reqP('PredictIdx')
-                ,'TakeMockPart' => $this->_reqP('GroupCcd')
+                'a.PredictIdx' => $this->_reqP('PredictIdx')
+                ,'a.TakeMockPart' => $this->_reqP('GroupCcd')
+                ,'b.GroupCcd' => $this->_reqP('GroupCcd')
+                ,'a.IsStatus' => 'Y'
             ]
         ];
         $list = $this->surveyModel->getSubjectCode($arr_condition);

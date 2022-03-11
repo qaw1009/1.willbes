@@ -15,7 +15,7 @@
 	.skybanner a:hover {background:#000}
     .skybanner::after {top:0 !important}
 </style>
-<div class="skybanner NG" id="QuickMenu">
+<div class="skybanner NG" id="subQuickMenu">
     <ul>
         <li><a href='1816'>유아 <strong>민정선</strong></a></li>
         <li><a href='1817'>초등 <strong>배재민</strong></a></li>
@@ -48,3 +48,19 @@
         <li><a href='2563'>중국어 <strong>장영희</strong></a></li>
     </ul>
 </div>
+
+<script>
+    $('*[id*=subQuickMenu]:visible').ready(function () {
+        var stickyOffset = $('#subQuickMenu').offset();
+
+        if (typeof stickyOffset !== 'undefined') {
+            $(window).scroll(function () {
+                if ($(document).scrollTop() > stickyOffset.top) {
+                    $('#subQuickMenu').css('top', '0px');
+                } else {
+                    $('#subQuickMenu').css('top', '70px');
+                }
+            });
+        }
+    });
+</script>

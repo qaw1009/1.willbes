@@ -73,12 +73,8 @@
                         {{--직렬/지역 선택 전--}}
                         직렬(지역)구분을 선택해주세요.
                         {{--직렬/지역 선택 후--}}
-                        <div>                           
-                            <ul class="sel_info">
-                                <li><input type="checkbox" name="aa1" id="aa1" value="" > <label for="aa1">헌법</label></li>
-                                <li><input type="checkbox" name="aa2" id="aa2" value="" > <label for="aa2">형사법</label></li>
-                                <li><input type="checkbox" name="aa3" id="aa3" value="" > <label for="aa3">경찰학</label></li>                              
-                            </ul>
+                        <div>
+                            <p>공통과목 : 과목1, 과목2</p>                           
                         </div>
                     </td>
                 </tr>

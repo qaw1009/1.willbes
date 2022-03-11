@@ -194,44 +194,26 @@
                 </div>
             </div>
 
-            <div id="tab2">
-                <div class="marking marking2">
-                    <ul>
-                        <li>
-                            <div>    
-                                <label>공통과목1</label>
-                                <input value="" type="number" maxlength="3" name="" id="">
-                                <span>점</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>    
-                                <label>공통과목2</label>
-                                <input value="" type="number" maxlength="3" name="" id="">
-                                <span>점</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+            <div id="tab2">                
                 <div class="marking marking3">
                     <ul>
                         <li>
                             <div>    
-                                <label>선택과목1</label>
+                                <label>헌법</label>
                                 <input value="" type="number" maxlength="3" name="" id="">
                                 <span>점</span>
                             </div>
                         </li>
                         <li>
                             <div>    
-                                <label>선택과목2</label>
+                                <label>형사법</label>
                                 <input value="" type="number" maxlength="3" name="" id="">
                                 <span>점</span>
                             </div>
                         </li>
                         <li>
                             <div>    
-                                <label>선택과목3</label>
+                                <label>경찰학</label>
                                 <input value="" type="number" maxlength="3" name="" id="">
                                 <span>점</span>
                             </div>

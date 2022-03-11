@@ -57,7 +57,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2044_03.jpg"  alt="전수받기 및 수강신청" usemap="#Map2024_apply" border="0" />
             <map name="Map2024_apply" id="Map2024_apply">
                 <area shape="rect" coords="423,416,690,543" href="https://willbesedu.willbes.net/pass/support/review/index?s_cate_code=3125" target="_blank" />
-                <area shape="rect" coords="275,633,842,746" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605005&course_idx=1312" target="_blank" />
+                <area shape="rect" coords="275,633,842,746" href="https://police.willbes.net/pass/offPackage/index/type/agong?cate_code=3010&campus_ccd=605005&course_idx=1094" target="_blank" />
             </map>
 		</div>	
        

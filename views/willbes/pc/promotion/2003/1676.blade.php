@@ -58,17 +58,17 @@
         .guide_box dd:last-child {margin:0}    	
     </style>
 
-    <div class="evtContent NGR" id="evtContainer">  
+    <div class="evtContent NGR" id="evtContainer">
+
         <div class="sky" id="QuickMenu">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_sky.png" usemap="#Map1676_sky" title="반반한 모의고사" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/1676_sky.png" usemap="#Map1676_sky" title="반반한 모의고사" border="0">
             <map name="Map1676_sky">
                 <area shape="rect" coords="6,12,152,106" href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank"/>
                 <area shape="rect" coords="6,116,157,211" href="#detail" />
-                <area shape="rect" coords="6,216,154,319" href="#evt1" />
-                <area shape="rect" coords="5,326,154,428" href="#evt4" />
-                <area shape="rect" coords="5,440,157,536" href="#evt1" />
-            </map>       
-        </div>  
+                <area shape="rect" coords="5,216,153,319" href="#evt1" />               
+              	<area shape="rect" coords="5,328,159,434" href="#evt1" />
+            </map>  
+        </div>           
 
         @if(time() < strtotime('202203070000'))
             <div class="evtCtnsBox evttop_banners" data-aos="fade-down">
@@ -128,7 +128,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_03_01.jpg" name="evt1" id="evt1">
                 <a href="#to_go" title="출석체크하러 가기" style="position: absolute; left: 30.71%; top: 88.7%; width: 38.48%; height: 6.07%; z-index: 2;"></a>
             </div>
-
+            {{--
             <div class="wrap" id="evt4">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_03_02.jpg">
                 <a href="https://gall.dcinside.com/board/lists/?id=government" target="_blank" title="공갤" style="position: absolute; left: 15.36%; top: 89.51%; width: 14.64%; height: 7.91%; z-index: 2;"></a>
@@ -137,14 +137,9 @@
                 <a href="https://www.instagram.com" target="_blank" title="인스타" style="position: absolute; left: 58.93%; top: 89.51%; width: 14.64%; height: 7.91%; z-index: 2;"></a>
                 <a href="https://www.willbes.net/classroom/home/index" target="_blank" title="수강후기" style="position: absolute; left: 73.84%; top: 89.51%; width: 14.64%; height: 7.91%; z-index: 2;"></a>
             </div>
-            
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N', 'login_url'=>app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www'), 'is_public' => true)){{--기존SNS예외처리시, 로그인페이지 이동--}}
-            @endif
-
-
+            --}}
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_03_03.jpg" name="evt3" id="evt3">
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/1676_03_03.jpg" name="evt3" id="evt3">
                 <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/191912" target="_blank" title="3월방송 다시보기" style="position: absolute; left: 11.7%; top: 75.72%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/190443" target="_blank" title="다시보기" style="position: absolute; left: 38.93%; top: 75.57%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" title="tpass" style="position: absolute; left: 66.88%; top: 75.86%; width: 21.34%; height: 9.34%; z-index: 2;"></a>                

@@ -66,7 +66,7 @@
                 <area shape="rect" coords="6,12,152,106" href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank"/>
                 <area shape="rect" coords="6,116,157,211" href="#detail" />
                 <area shape="rect" coords="5,216,153,319" href="#evt1" />               
-              	<area shape="rect" coords="5,328,159,434" href="#evt1" />
+              	<area shape="rect" coords="5,328,159,434" href="#evt3" />
             </map>  
         </div>           
 

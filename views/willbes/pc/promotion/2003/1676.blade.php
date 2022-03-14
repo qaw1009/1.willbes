@@ -70,10 +70,10 @@
             </map>  
         </div>           
 
-        @if(time() < strtotime('202203070000'))
+        @if(time() < strtotime('202203220000'))
             <div class="evtCtnsBox evttop_banners" data-aos="fade-down">
                 <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_top_banner.jpg">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/03/1676_top_banner.jpg">
                     <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="" style="position: absolute; left: 53.57%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>
                     <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" title="" style="position: absolute; left: 74.29%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>  
                 </div>        
@@ -110,14 +110,11 @@
         <div class="evtCtnsBox evt02" id="pairing" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
-                <ul id="slidesImg4">                   
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/01/1676_02_february.jpg" /></li>
+                <ul id="slidesImg4">                  
                     <li><img src="https://static.willbes.net/public/images/promotion/2022/02/1676_02_march.jpg" /></li>
                 </ul>    
-
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p>  
-                      
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p> 
             </div> 
 
         </div>           

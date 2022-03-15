@@ -62,12 +62,12 @@
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2576_02.jpg" alt="커리큘럼"/>
             <ul class="tabs">
-                <li><a href="#tab01">범죄확</a></li>
+                <li><a href="#tab01">범죄학</a></li>
                 <li><a href="#tab02">행정학</a></li>
                 <li><a href="#tab03">민법총칙</a></li>
             </ul>
             <div>
-                <span id="tab01"><img src="https://static.willbes.net/public/images/promotion/2022/03/2576_02_01.jpg" alt="범죄확" /></span>
+                <span id="tab01"><img src="https://static.willbes.net/public/images/promotion/2022/03/2576_02_01.jpg" alt="범죄학" /></span>
                 <span id="tab02"><img src="https://static.willbes.net/public/images/promotion/2022/03/2576_02_02.jpg" alt="행정학" /></span>
                 <span id="tab03"><img src="https://static.willbes.net/public/images/promotion/2022/03/2576_02_03.jpg" alt="민법총칙" /></span>
             </div>            

@@ -746,11 +746,11 @@
         </div>
 
         <div class="btnCounsel">
-        <a href="#none">
-            <img src="https://static.willbes.net/public/images/promotion/m/icon_counsel.png" alt="">
-            방문상담<br>예약
-        </a>
-    </div>
+            <a href="https://police.willbes.net/pass/consult/visitConsult/index">
+                <img src="https://static.willbes.net/public/images/promotion/m/icon_counsel.png" alt="">
+                방문상담<br>예약
+            </a>
+        </div>
 
     </div>
 

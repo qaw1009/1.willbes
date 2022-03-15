@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Question extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict' , 'mocktest/mockCommon');
+    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict', 'predict/predictCode' , 'mocktest/mockCommon');
     protected $helpers = array();
 
     public function __construct()
@@ -45,10 +45,18 @@ class Question extends \app\controllers\BaseController
         ];
         list($data, $count) = $this->predictModel->mainList($condition);
 
+        //직렬리스트
+        $arr_take_mock_part_list = $this->predictCodeModel->getPredictForTakeMockPart();
+
+        //합격예측별 직렬별 과목 전체 리스트
+        $arr_subject_list = $this->predictCodeModel->getPredictForSubjectAll();
+
         $this->load->view('predict/question/index', [
             'predictList' => $data,
             'def_site_code' => $def_site_code,
             'arr_site_code' => $arr_site_code,
+            'arr_take_mock_part_list' => $arr_take_mock_part_list,
+            'arr_subject_list' => $arr_subject_list,
             'upImgUrl' => $this->config->item('upload_url_predict', 'predict'),
         ]);
     }
@@ -62,6 +70,8 @@ class Question extends \app\controllers\BaseController
             'EQ' => [
                 'PD.SiteCode' => $this->input->post('search_site_code'),
                 'PD.PredictIdx' => $this->input->post('search_PredictIdx'),
+                'PP.TakeMockPart' => $this->input->post('search_take_mock_part'),
+                'PP.SubjectCode' => $this->input->post('search_subject_code'),
                 'PP.IsUse' => $this->input->post('search_use'),
             ],
             'ORG' => [
@@ -98,9 +108,15 @@ class Question extends \app\controllers\BaseController
         //합격예측 기본정보호출
         $productList = $this->predictModel->getProductALL();
 
+        //직렬리스트
+        $arr_take_mock_part_list = $this->predictCodeModel->getPredictForTakeMockPart();
+
+        //합격예측별 직렬별 과목 전체 리스트
+        $arr_subject_list = $this->predictCodeModel->getPredictForSubjectAll();
+
+        $data = null;
         if(empty($idx) === true){
-            $method = "CREATE";
-            $data = array();
+            $method = "POST";
             $qData = array();
             $subject = "";
             $PredictIdx = "";
@@ -124,6 +140,8 @@ class Question extends \app\controllers\BaseController
             'method' => $method,
             'siteCodeDef' => '',
             'productList' => $productList,
+            'arr_take_mock_part_list' => $arr_take_mock_part_list,
+            'arr_subject_list' => $arr_subject_list,
             'subject' => $subject,
             'PredictIdx' => $PredictIdx,
             'data' => $data,
@@ -143,6 +161,7 @@ class Question extends \app\controllers\BaseController
             ['field' => 'PaperName', 'label' => '과목문제지명', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'PredictIdx', 'label' => '합격예측명', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'take_mock_part', 'label' => '직렬', 'rules' => 'trim|required|integer'],
             ['field' => 'SubjectCode', 'label' => '시험지명', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
@@ -156,7 +175,7 @@ class Question extends \app\controllers\BaseController
 
         if ($this->validate($rules) === false) return;
 
-        $result = $this->predictModel->storePaper();
+        $result = $this->predictModel->storePaper($this->_reqP(null));
         $this->json_result($result['ret_cd'], '저장되었습니다.', $result, $result);
     }
 
@@ -168,6 +187,7 @@ class Question extends \app\controllers\BaseController
         $rules = [
             ['field' => 'PaperName', 'label' => '과목문제지명', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'PredictIdx', 'label' => '합격예측명', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'take_mock_part', 'label' => '직렬', 'rules' => 'trim|required|integer'],
             ['field' => 'SubjectCode', 'label' => '시험지명', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
@@ -180,7 +200,7 @@ class Question extends \app\controllers\BaseController
         }
         if ($this->validate($rules) === false) return;
 
-        $result = $this->predictModel->updatePaper();
+        $result = $this->predictModel->updatePaper($this->_reqP(null));
         $this->json_result($result['ret_cd'], '변경되었습니다.', $result, $result);
     }
 

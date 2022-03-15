@@ -5,6 +5,8 @@
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
+        <select id="temp_subject_code" style="display: none;"></select>
+
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group form-inline">
@@ -14,6 +16,18 @@
                         <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx">
                             @foreach($predictList as $row)
                                 <option value="{{$row['PredictIdx']}}" class="{{$row['SiteCode']}}">[{{$row['PredictIdx']}}] {{$row['ProdName']}}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control" name="search_take_mock_part" title="직렬">
+                            <option value="">직렬선택</option>
+                            @foreach($arr_take_mock_part_list as $row)
+                                <option class="{{$row['PredictIdx']}}" value="{{$row['TakeMockPart']}}">{{$row['CcdName']}}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control" name="search_subject_code" title="과목">
+                            <option value="">과목선택</option>
+                            @foreach($arr_subject_list as $key => $row)
+                                <option class="{{$row['PredictIdx'].'_'.$row['TakeMockPart']}}" data-subject-type="{{$row['Type']}}" value="{{$row['SubjectCode']}}">{{$row['CcdName']}}</option>
                             @endforeach
                         </select>
                         <select name="search_use" id="search_use" class="form-control mr-5">
@@ -51,6 +65,8 @@
                         <th class="text-center">선택</th>
                         <th class="text-center">NO</th>
                         <th class="text-center">합격예측명</th>
+                        <th class="text-center">직렬</th>
+                        <th class="text-center">과목</th>
                         <th class="text-center">과목별문제지명</th>
                         <th class="text-center">문제보기</th>
                         <th class="text-center">사용여부</th>
@@ -73,6 +89,16 @@
         $(document).ready(function() {
             // 합격예측서비스명 자동 변경
             $search_form.find('select[name="search_PredictIdx"]').chained("#search_site_code");
+            // 직렬
+            $search_form.find('select[name="search_take_mock_part"]').chained("#search_PredictIdx");
+            // 과목
+            $search_form.find('select[name="search_subject_code"]').chained("#temp_subject_code");
+            $search_form.find('select[name="search_take_mock_part"]').on('change', function () {
+                var p_idx = $search_form.find('select[name="search_PredictIdx"]').val();
+                $("#temp_subject_code option").remove();
+                $("#temp_subject_code").append('<option value="'+p_idx+'_'+this.value+'">과목코드</option>');
+                $("#temp_subject_code option").trigger('change');
+            });
 
             // DataTables
             $datatable = $list_table.DataTable({
@@ -98,6 +124,8 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'ProdName', 'class': 'text-center'},
+                    {'data' : 'TakeMockPartName', 'class': 'text-center'},
+                    {'data' : 'SubjectName', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return '<span class="blue underline-link act-edit">[' + row.PpIdx + '] ' + row.PaperName + '</span>';
                     }},

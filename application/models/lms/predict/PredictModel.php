@@ -164,6 +164,8 @@ class PredictModel extends WB_Model
         $column = "
 	        PP.PpIdx, PP.PaperName, PP.AnswerNum, PP.TotalScore, PP.QuestionFile, PP.RealQuestionFile, PP.RegDate, PP.PredictIdx, PP.SubjectCode, PP.Type, 
 	        A.wAdminName, A2.wAdminName AS wAdminName2, PP.IsUse, PD.ProdName
+	        ,(SELECT CcdName FROM lms_predict_code AS a WHERE a.Ccd = PP.TakeMockPart) AS TakeMockPartName
+	        ,(SELECT CcdName FROM lms_predict_code AS a WHERE a.Ccd = PP.SubjectCode) AS SubjectName
         ";
 
         $from = "
@@ -436,12 +438,12 @@ class PredictModel extends WB_Model
             $this->_conn->trans_begin();
 
             // lms_mock_paper 복사
-            $sql = "
+            $sql = /** @lang text */"
                 INSERT INTO {$this->_table['predictPaper']}
                     (PaperName, AnswerNum, TotalScore, 
-                     QuestionFile, RealQuestionFile, PredictIdx, SubjectCode, Type, IsUse, RegIp, RegAdminIdx, RegDate)
+                     QuestionFile, RealQuestionFile, PredictIdx, TakeMockPart, SubjectCode, Type, IsUse, RegIp, RegAdminIdx, RegDate)
                 SELECT CONCAT('복사-', PaperName), AnswerNum, TotalScore,
-                       QuestionFile, RealQuestionFile, PredictIdx, SubjectCode, Type, 'N', ?, ?, ?
+                       QuestionFile, RealQuestionFile, PredictIdx, TakeMockPart, SubjectCode, Type, 'N', ?, ?, ?
                 FROM {$this->_table['predictPaper']}
                 WHERE PpIdx = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($RegIp, $RegAdminIdx, $RegDatm, $idx));
@@ -449,7 +451,7 @@ class PredictModel extends WB_Model
             $nowIdx = $this->_conn->insert_id();
 
             // lms_mock_questions 복사
-            $sql = "
+            $sql = /** @lang text */"
                 INSERT INTO {$this->_table['predictQuestion']}
                     (PpIdx, QuestionNO, RightAnswer, Scoring, RegIp, RegAdminIdx, RegDatm)
                 SELECT ?, QuestionNO, RightAnswer, Scoring, ?, ?, ?
@@ -462,9 +464,9 @@ class PredictModel extends WB_Model
             $dest = $this->upload_path . $this->upload_path_predict . $nowIdx . "/";
 
             exec("cp -rf $src $dest");
-            if(is_dir($dest) === false) {
+            /*if(is_dir($dest) === false) {
                 throw new Exception('파일 저장에 실패했습니다.');
-            }
+            }*/
 
             if ($this->_conn->trans_status() === false) {
                 throw new Exception('복사에 실패했습니다.');
@@ -496,7 +498,6 @@ class PredictModel extends WB_Model
             if(LectureType = 1, '온라인강의', if(LectureType = 2, '학원강의', if(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
             if(Period = 1, '6개월 이하', if(Period = 2, '1년 이하', if(Period = 3, '2년 이하', '2년 이상'))) AS Period,
             PR.RegDatm
-
         ";
 
         $from = "
@@ -812,7 +813,7 @@ class PredictModel extends WB_Model
         if (!preg_match('/^[0-9]+$/', $idx)) return false;
 
         $column = "
-	        PP.PpIdx, PP.PaperName, PP.AnswerNum, PP.TotalScore, PP.QuestionFile, PP.RealQuestionFile, PP.RegDate, PP.PredictIdx, PP.SubjectCode, PP.Type, PP.UpdDate, 
+	        PP.PpIdx, PP.PaperName, PP.AnswerNum, PP.TotalScore, PP.QuestionFile, PP.RealQuestionFile, PP.RegDate, PP.PredictIdx, PP.SubjectCode, PP.Type, PP.TakeMockPart, PP.UpdDate, 
 	        A.wAdminName, A2.wAdminName AS wAdminName2, PP.IsUse
 	        ,PP.RegistAvgPoint, PP.RegistStandard
         ";
@@ -1009,7 +1010,7 @@ class PredictModel extends WB_Model
     /**
      * 과목정보 등록 (lms_Predict_Paper)
      */
-    public function storePaper()
+    public function storePaper($form_data = [])
     {
         try {
             $this->_conn->trans_begin();
@@ -1021,6 +1022,7 @@ class PredictModel extends WB_Model
                 'PaperName' => $this->input->post('PaperName', true),
                 'AnswerNum' => $this->input->post('AnswerNum'),
                 'PredictIdx' => $this->input->post('PredictIdx'),
+                'TakeMockPart' => element('take_mock_part', $form_data),
                 'SubjectCode' => $this->input->post('SubjectCode'),
                 'TotalScore' => $this->input->post('TotalScore'),
                 'Type' => $this->input->post('Type'),
@@ -1061,7 +1063,7 @@ class PredictModel extends WB_Model
     /**
      * 과목정보 수정 (lms_Predict_Paper)
      */
-    public function updatePaper()
+    public function updatePaper($form_data = [])
     {
         $names = $this->mockCommonModel->makeUploadFileName(['QuestionFile'], 1);
 
@@ -1072,6 +1074,7 @@ class PredictModel extends WB_Model
             $data = array(
                 'PaperName' => $this->input->post('PaperName', true),
                 'PredictIdx' => $this->input->post('PredictIdx'),
+                'TakeMockPart' => element('take_mock_part', $form_data),
                 'SubjectCode' => $this->input->post('SubjectCode'),
                 'Type' => $this->input->post('Type'),
                 'IsUse' => $this->input->post('IsUse'),

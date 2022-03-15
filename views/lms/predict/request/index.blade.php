@@ -51,6 +51,7 @@
                         <th class="text-center">사용여부</th>
                         <th class="text-center">등록자</th>
                         <th class="text-center">등록일</th>
+                        <th class="text-center">직렬별과목</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -97,7 +98,10 @@
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},
                     {'data' : 'wAdminName', 'class': 'text-center'},
-                    {'data' : 'RegDatm', 'class': 'text-center'}
+                    {'data' : 'RegDatm', 'class': 'text-center'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '<button type="button" class="btn btn-dark btn-layer-subject-box" data-predict-idx="'+ row.PredictIdx + '">과목설정</button>';
+                        }},
                 ]
             });
 
@@ -105,6 +109,14 @@
             $list_form.on('click', '.act-edit', function () {
                 var query = dtParamsToQueryString($datatable);
                 location.href = '{{ site_url('/predict/request/create/') }}' + $(this).closest('tr').find('[name=prod]').val() + query;
+            });
+
+            $list_form.on('click', '.btn-layer-subject-box', function () {
+                var predict_idx = $(this).data("predict-idx");
+                $('.btn-layer-subject-box').setLayer({
+                    'url' : '{{ site_url('/predict/baseCode/subject/') }}' + predict_idx,
+                    'width' : 900
+                });
             });
         });
     </script>

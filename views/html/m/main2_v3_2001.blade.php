@@ -232,7 +232,7 @@
      
             .btnCounsel a {width:60px; height: 60px; font-size:1.5vh}
             .btnCounsel a img {margin-bottom:3px; width:50%;}
-
+        }
         @@media (min-width: 721px) {
             .cop .castInfo h5 {font-size:2.4vh;}
             .cop .castInfo p {font-size:2.2vh;}
@@ -778,7 +778,7 @@
     </div>
     <div class="dim Menu_close" style="display: none;"></div>
 
-    {{--모달팝업
+    {{--모달팝업--}}
     <div class="popupBox NSK" id="modalPopup">
         <div class="popupContent">
             <div class="popbanner"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/popup_sp01.jpg"></a></div>
@@ -788,7 +788,7 @@
             <div><button onclick="closeWin('modalPopup')">오늘 그만 보기</button></div>
             <div><button onclick="closeWin('modalPopup')">닫기</button></div>
         </div>
-    </div>--}}
+    </div>
 
 
     <script>   

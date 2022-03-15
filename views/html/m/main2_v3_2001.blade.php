@@ -204,6 +204,10 @@
         .sec-bottomBn {margin-top:10%;}
         .appPlayer {margin-top:8%;}
 
+        .btnCounsel {position:fixed; right:10px; bottom:10px; z-index: 90;}        
+        .btnCounsel a {display:flex; flex-direction: column; justify-content: center; align-items: center; width:90px; height:90px; background:#fbe901; color:#363636; border-radius:50%; text-align:center; font-weight:bold; padding:5px; font-size:1.7vh}
+        .btnCounsel a img {display:block; margin-bottom:5px; width:50%; max-width:45px}
+
        
         @@media only screen and (max-width: 374px) {
             .groupLink a {font-size:1.6vh;}
@@ -225,12 +229,16 @@
             .noticeBoard a {padding:8px 0}
 
             .noticeTabs .tabContent {padding:10px 10px 0;}
-        }
+     
+            .btnCounsel a {width:60px; height: 60px; font-size:1.5vh}
+            .btnCounsel a img {margin-bottom:3px; width:50%;}
 
         @@media (min-width: 721px) {
             .cop .castInfo h5 {font-size:2.4vh;}
             .cop .castInfo p {font-size:2.2vh;}
             .cop .swiper-best{width:calc(100% - 20px); padding-bottom:40px;}
+
+            .btnCounsel a {width:100px; height: 100px;}
         }
     </style>
 </head>
@@ -737,7 +745,16 @@
             </a>
         </div>
 
+        <div class="btnCounsel">
+        <a href="#none">
+            <img src="https://static.willbes.net/public/images/promotion/m/icon_counsel.png" alt="">
+            방문상담<br>예약
+        </a>
     </div>
+
+    </div>
+
+
 
     <!-- End Container -->
 
@@ -761,7 +778,7 @@
     </div>
     <div class="dim Menu_close" style="display: none;"></div>
 
-    {{--모달팝업--}}
+    {{--모달팝업
     <div class="popupBox NSK" id="modalPopup">
         <div class="popupContent">
             <div class="popbanner"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/popup_sp01.jpg"></a></div>
@@ -771,7 +788,7 @@
             <div><button onclick="closeWin('modalPopup')">오늘 그만 보기</button></div>
             <div><button onclick="closeWin('modalPopup')">닫기</button></div>
         </div>
-    </div>
+    </div>--}}
 
 
     <script>   

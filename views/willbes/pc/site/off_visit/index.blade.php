@@ -142,18 +142,18 @@
                             <tbody>
                             <tr>
                                 <td> 
-                                    <h4 class="NG mb10 tx16 tx-dark-blue"><span class="tx-shadow">[ GS-1순환 선접수 안내사항  ]</span></h4>
+                                    <h4 class="NG mb10 tx16 tx-dark-blue"><span class="tx-shadow">[ GS-2순환 선접수 안내사항 ]</span></h4>
                                     <strong>1. 신청 대상자</strong><br>
-                                    1) 22년대비 GS-0순환 이수진 노동법 [실강/실영상] 수강생<br>
-                                    2) 22년대비 GS-0순환 문일  행정쟁송법 [실강/실영상] 수강생<br>
-                                    3) 22년대비 GS-0순환 오은지 인사노무관리, 경영조직론 [실강] 수강생<br>
-                                    <span class="tx-red">※ [온라인첨삭반/동영상] 강의 수강자는 선접수 대상자가 아닙니다.</span><br>
+                                    1) 22년대비 GS-1순환 이수진 노동법 [실강/실영상] 수강생<br>
+                                    2) 22년대비 GS-1순환 문일  행정쟁송법 [실강/실영상] 수강생<br>
+                                    3) 22년대비 GS-1순환 오은지 인사노무관리, 경영조직론 [실강/실영상] 수강생<br>
+                                    <span class="tx-red">※ [온라인첨삭반/동영상] 강의 수강자는 선접수 대상자가 아닙니다.</span><br>
                                     <br>
-                                    <strong>2. 신청 기간 : <span class="tx-shadow">12/10(금) 11시 ~ 12/12(일) 24시</span></strong><br>                                 
+                                    <strong>2. 신청 기간 : <span class="tx-shadow">3/22(화) 11시 ~ 3/27(일) 24시</span></strong><br>                                 
                                     <br>
-                                    <strong>3. 신청 강의 : GS-1순환 강의</strong><br>
+                                    <strong>3. 신청 강의 : GS-2순환 강의</strong><br>
                                     <br>
-                                    <strong>4. 신청 방법 : 방문신청 / 온라인신청 가능</strong><br>
+                                    <strong>4. 신청 방법 : 온라인 / 방문 신청</strong><br>
                                     ▶ 온라인신청 방법: 홈페이지 로그인 → 학원수강신청 → 단과 선접수<br>
                                     ▶ <span class="tx-shadow">코로나바이러스-19 예방을 위해 가급적 온라인으로 수강신청</span> 부탁드립니다.<br>
                                     <br>

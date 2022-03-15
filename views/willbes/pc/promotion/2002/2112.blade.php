@@ -135,7 +135,7 @@
 
         <div class="evtCtnsBox evt03" id="pass"> 
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2112_03_03.jpg"  alt="온라인 PASS 바로가기" usemap="#Map2112_pass" border="0">
-            <div class="lecbuybtn"><a href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3125&course_idx=1404&subject_idx=2159" target="_blank">온라인 pass 바로가기 ></a></div> 
+            <div class="lecbuybtn"><a href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3150&course_idx=1404" target="_blank">온라인 pass 바로가기 ></a></div> 
 
             {{--
             <div class="check">                    

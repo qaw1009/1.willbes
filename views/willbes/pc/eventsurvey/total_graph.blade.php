@@ -413,9 +413,10 @@
                     </div>
                 </h3>
                 <ul>
-                    <li>Q1. 전체적인 난이도는?</li>
-                    <li>Q2. 공통 과목 난이도는?</li>
-                    <li>Q3. 선택 과목 난이도는?</li>
+                    <li>Q1. 전체적인 시험난이도는?</li>
+                    <li>Q2. 과목별 시험난이도는?</li>
+                    <li>Q3. 시험준비하면서 도움된 부분은?</li>
+                    <li>Q4. 신광은 경찰면접캠프를 알고있는가?</li>
                 </ul>
             </div>
 
@@ -423,7 +424,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2080_bn1.png" alt="최종합격을 결정짓는 2차 전형 윌비스 전문가와 함께 전략적으로 준비하세요">
                 <div>
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/08/2306_tab01_bn.jpg" alt="면접캠프설명회">
+                        <img src="https://static.willbes.net/public/images/promotion/2022/03/2572_camp.png" alt="면접캠프설명회">
                     </a>
                 </div>
             </div>
@@ -771,7 +772,7 @@
 
         function setAreaMsg(num)
         {
-            var msg = '※ 직전시험경쟁률, 직전시험 합격정보는 2021년 1차시험기준임.(경행경재 : 20년 2차기준)';
+            var msg = '※ 직전시험경쟁률 정보는 2021년 2차시험기준임.(전의경 경채 : 21년 1차기준)';
             switch (num) {
                 case 800 :
                     msg = '※ 직전시험 경쟁률, 직전시험 합격선 정보는 2019년 2차 시험 기준임.';

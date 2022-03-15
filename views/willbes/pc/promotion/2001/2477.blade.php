@@ -25,12 +25,12 @@
 
         .evt00 {background:#0a0a0a}
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/12/2477_top_bg.jpg) no-repeat center top;}
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/03/2477_top_bg.jpg) no-repeat center top;}
 
         .evt_01 {background:#ececec;}
 
         .evt_02 {background:#fff;position:relative;}
-        .youtube {position:absolute; top:744px; left:50%;z-index:1;margin-left:-351px}
+        .youtube {position:absolute; top:743px; left:50%;z-index:1;margin-left:-350px}
         .youtube iframe {width:704px; height:393px}
 
         .evt_07 {background:#6278de}  
@@ -55,7 +55,7 @@
         </div>    
 
         <div class="evtCtnsBox evt_top" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2477_top.jpg"  alt="하승민 경찰 지텔프 맞춤형 강의" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2477_top.jpg"  alt="하승민 경찰 지텔프 맞춤형 강의" />
         </div>
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">
@@ -63,7 +63,7 @@
         </div>
 
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2477_02.jpg"  alt="왜 하승민 교수님일까요" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2477_02.jpg"  alt="왜 하승민 교수님일까요" />
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/-dJOvbLVy3M?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div> 
@@ -71,7 +71,7 @@
 
         <div class="evtCtnsBox evt_07" id="evt07" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2477_07.jpg"  alt="강의 교재" /> 
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2477_07.jpg"  alt="강의 교재" /> 
                 <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/189562" target="_blank" title="96000원" style="position: absolute; left: 63.75%; top: 38.87%; width: 23.75%; height: 20.82%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/book/index/cate/3001?cate_code=3001" target="_blank" title="17010원" style="position: absolute; left: 63.75%; top: 61.8%; width: 23.75%; height: 20.82%; z-index: 2;"></a>
             </div>            

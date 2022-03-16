@@ -20,8 +20,8 @@
         .liveTab01 span {position:absolute}
         .liveTab01 .txt01 {top:30px; left:292px; font-size:30px; font-weight:bold; color:#fdf9c1; width:190px; text-align:center; line-height:1.3}
         .liveTab01 .txt02 {top:70px; left:292px; font-size:30px; font-weight:bold; color:#fdf9c1; width:190px; text-align:center; line-height:1.3}
-        .liveTab01 .txt03 {top:62px; left:824px; font-size:50px; font-weight:bold; color:#8e182e; letter-spacing:-1px; font-family:"Times New Roman", Times, serif}
-        .liveTab01 .txt04 {top:33px; left:1040px; width:140px; height:33px; line-height:33px; font-size:28px; text-align:right; font-family:"Times New Roman", Times, serif; font-weight:bold;}
+        .liveTab01 .txt03 {top:62px; left:824px; font-size:50px; font-weight:bold; color:#ff99cc; letter-spacing:-1px; font-family:"Times New Roman", Times, serif}
+        .liveTab01 .txt04 {top:33px; left:1040px; width:140px; height:33px; line-height:33px; font-size:28px; text-align:right; font-family:"Times New Roman", Times, serif; font-weight:bold; color:#fff}
         .liveTab01 .txt05 {top:74px; left:1040px; width:140px; height:33px; line-height:33px; font-size:28px; text-align:right; font-family:"Times New Roman", Times, serif; font-weight:bold;}
 
         .liveTab02 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}

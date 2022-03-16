@@ -66,10 +66,10 @@
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
             <div class="wrap">
 			    <img src="https://static.willbes.net/public/images/promotion/2022/03/2569_02.jpg" alt="노무패스 신청하기" />                
-                <a href="javascript:go_PassLecture('192321');" title="노무패스 1차" style="position: absolute; left: 0%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('192320');" title="노무패스 2차" style="position: absolute; left: 25.45%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('192319');" title="동차 베이직" style="position: absolute; left: 50.98%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('192318');" title="동차 프리미엄" style="position: absolute; left: 76.43%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/periodPackage/show/cate/309002/pack/648001/prod-code/192321" onclick="go_PassLecture(this)" title="노무패스 1차" style="position: absolute; left: 0%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/periodPackage/show/cate/309002/pack/648002/prod-code/192320" onclick="go_PassLecture(this)" title="노무패스 2차" style="position: absolute; left: 25.45%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/periodPackage/show/cate/309002/pack/648002/prod-code/192319" onclick="go_PassLecture(this)" title="동차 베이직" style="position: absolute; left: 50.98%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/periodPackage/show/cate/309002/pack/648002/prod-code/192318" onclick="go_PassLecture(this)" title="동차 프리미엄" style="position: absolute; left: 76.43%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
             </div>
             <div class="check">
                 <label>
@@ -243,15 +243,15 @@
         );
 
         /*수강신청 동의*/ 
-            function go_PassLecture(code){
-                if($("input[name='ischk']:checked").size() < 1){
-                    alert("이용안내에 동의하셔야 합니다.");
-                    return;
-                }
-
-                var url = '{{ site_url('/periodPackage/show/cate/309002/pack/648001/prod-code/') }}' + code;
-                location.href = url;
-            }    
+        function go_PassLecture(obj){
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
+                return;
+            }else{
+                var _url = $(obj).data('url');
+                window.open(_url);
+            }
+        }     
     </script>
 
 

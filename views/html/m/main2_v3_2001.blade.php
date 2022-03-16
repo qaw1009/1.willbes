@@ -29,13 +29,15 @@
     <!-- Custom Script -->
     <script src="/public/js/willbes/mobile.js?ver=1594952526"></script>  
     <style>
-        #Header .subMenuWrap {background-color: #f6f6f6; padding:15px 10px; font-size: 14px; max-width:720px; margin:0 auto}
-        #Header .subMenuWrap a {display: inline-block; margin-right:20px}
-        #Header .subMenuWrap a:last-child {margin:0}
+
 
         .cop img {max-width:100%}
         
         .fixed {position:fixed; top:0; left:0; width:100%; border-bottom:1px solid #ccc; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10}
+
+        .subMenuWrap {background-color: #f6f6f6; padding:15px 10px; font-size: 14px; max-width:720px; margin:0 auto}
+        .subMenuWrap a {display: inline-block; margin-right:20px}
+        .subMenuWrap a:last-child {margin:0}
 
         .groupLink {background:#3f84c2; padding:12px 0; display:flex; justify-content: space-between;}
         .groupLink a {display:block; width:25%; text-align:center; color:#fff; font-size:2vh; border-right:1px solid #3678b9; border-left:1px solid #66a4d4}
@@ -359,20 +361,21 @@
                     <label for="search"><button title="검색" class="searchBtn">검색</button></label>  
                     <button title="닫기" class="searchClose">닫기</button>
                 </div>                    
-            </div>
+            </div>        
+        </div>    
+    </div>
 
+    <!-- Container -->
+    <div id="Container" class="Container NSK cop mb40 p_re"> 
+        <div class="widthAutoFull">
             <div class="subMenuWrap">
                 <a href="#none">내강의실</a>
                 <a href="#none">무료특강</a>
                 <a href="#none">전체강좌</a>
                 <a href="#none">교제구매</a>              
             </div> 
-        
-        </div>    
-    </div>
+        </div>
 
-    <!-- Container -->
-    <div id="Container" class="Container NSK cop mb40 p_re"> 
         <div class="widthAutoFull">
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_720x92.jpg" alt="배너명"></a>
         </div>

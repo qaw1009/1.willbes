@@ -12,9 +12,7 @@
             <div class="willbes-Package-Detail NG tx-black">
                 <table cellspacing="0" cellpadding="0" class="packageDetailTable">
                     <colgroup>
-                        <col style="width: 135px;"/>
-                        <col style="width: 1px;"/>
-                        <col style="width: 804px;"/>
+                        <col style="width: 940px;"/>
                     </colgroup>
                     <tbody>
                     <tr>

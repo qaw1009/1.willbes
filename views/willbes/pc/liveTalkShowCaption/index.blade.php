@@ -12,17 +12,17 @@
         .viewmenu li a.active {background:#06F; color:#fff}
         .viewmenu:after {content:""; display:block; clear:both}
 
-        .viewArea {position:fixed; bottom:0; width:100%; height:130px;}
+        .viewArea {position:fixed; bottom:0; width:100%; height:130px; /*background:url("https://static.willbes.net/public/images/promotion/2022/03/20220315-1210_01.jpg") no-repeat center top;*/}
         .viewArea .viewbox {position:relative; width:1210px; margin:0 auto; height:130px;}
         .bgimg {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:-1 !important}
-        .liveTab01 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:9999 !important}
-        .liveTab01 li {height:130px; position:relative}
+        .liveTab01 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:9999 !important; }
+        .liveTab01 li {height:130px; position:relative;}
         .liveTab01 span {position:absolute}
-        .liveTab01 .txt01 {top:30px; left:292px; font-size:24px; font-weight:bold; color:#fff; width:190px; text-align:center;}
-        .liveTab01 .txt02 {top:63px; left:292px; font-size:36px; font-weight:bold; color:#fdf9c1; width:190px; text-align:center;}
-        .liveTab01 .txt03 {top:62px; left:824px; font-size:50px; font-weight:bold; color:#ff99cc; letter-spacing:-1px;}
-        .liveTab01 .txt04 {top:33px; left:1040px; width:140px; height:33px; line-height:33px; font-size:28px; text-align:right; ; font-weight:bold; color:#fff}
-        .liveTab01 .txt05 {top:74px; left:1040px; width:140px; height:33px; line-height:33px; font-size:28px; text-align:right; ; font-weight:bold; color:#fff}
+        .liveTab01 .txt01 {top:30px; left:310px; font-size:24px; font-weight:bold; color:#fff; width:190px; text-align:center;}
+        .liveTab01 .txt02 {top:63px; left:310px; font-size:36px; color:#fff200; width:190px; text-align:center; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
+        .liveTab01 .txt03 {top:40px; left:1070px; font-size:41px; color:#fff200; letter-spacing:-1px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
+        .liveTab01 .txt04 {top:50px; left:740px; width:140px; height:33px; line-height:33px; letter-spacing:-1px; font-size:26px; text-align:left; color:#fff200; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
+        .liveTab01 .txt05 {top:50px; left:865px; width:140px; height:33px; line-height:33px; letter-spacing:-1px; font-size:28px; text-align:left; color:#fff200; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
 
         .liveTab02 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
         .liveTab02 li {padding-left:260px; height:130px; line-height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; width:890px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}

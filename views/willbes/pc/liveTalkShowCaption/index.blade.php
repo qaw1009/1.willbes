@@ -12,7 +12,7 @@
         .viewmenu li a.active {background:#06F; color:#fff}
         .viewmenu:after {content:""; display:block; clear:both}
 
-        .viewArea {position:fixed; bottom:0; width:100%; height:130px; /*background:url("https://static.willbes.net/public/images/promotion/2022/03/20220315-1210_01.jpg") no-repeat center top;*/}
+        .viewArea {position:fixed; bottom:0; width:100%; height:130px; /*background:url("https://static.willbes.net/public/images/promotion/2022/03/20220315-1210_02.jpg") no-repeat center top;*/}
         .viewArea .viewbox {position:relative; width:1210px; margin:0 auto; height:130px;}
         .bgimg {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:-1 !important}
         .liveTab01 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:9999 !important; }
@@ -27,16 +27,17 @@
         .liveTab02 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
         .liveTab02 li {padding-left:260px; height:130px; line-height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; width:890px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
         .liveTab02 li span {margin-right:10px; vertical-align:top}
-        .liveTab02 li span.st01 {font-weight:600; color:#ffff00; /* border-bottom:2px solid #fdf9c1 */}
+        .liveTab02 li span.st01 {font-weight:600; color:#ffff00;}
         .liveTab02 li span.st02 {}
 
         .liveTab03 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
-        .liveTab03 li {padding-left:260px; height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; width:890px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+        .liveTab03 li {height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; position:relative;}
+        .liveTab03 li div {font-size:22px; position:absolute; top:55px; left:308px}
+        .liveTab03 li div.subject {top:46px; left:600px; font-size:35px;}
+        .liveTab03 li div.subject .st01 {margin-right:40px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
         .liveTab03 li span {margin-right:10px; vertical-align:top}
-        .liveTab03 li span.st01 {font-weight:600; color:#ffff00; /* border-bottom:2px solid #fdf9c1 */}
-        .liveTab03 li span.st02 {}
-        .liveTab03 li div {font-size:22px; margin-bottom:12px; margin-top:26px}
-        .liveTab03 li div span.st01 {border:0; letter-spacing:0;}
+        .liveTab03 li span.st01 {font-weight:600; color:#ffff00;letter-spacing:-1px;}        
+  
 
         .counter {position:absolute; top:0; left:0; text-align:center; width:100%; padding-left:200px; z-index:10;}
         .counter div {color:#fff; font-size:40px; padding-top:45px}
@@ -81,7 +82,7 @@
                                     foreach($arr_input['data'][$row['PstIdx']] as $arr_content) {
                                         echo "<li>";
                                         echo '<div><span class="st01">'.(empty($arr_content[0]) === true ? '' : $arr_content[0]).'</span>';
-                                        echo '<span class="st01">'.(empty($arr_content[1]) === true ? '' : $arr_content[1]).'</span></div>';
+                                        echo '<span class="st02">'.(empty($arr_content[1]) === true ? '' : $arr_content[1]).'</span></div>';
                                         echo '<span>'.(empty($arr_content[2]) === true ? '' : $arr_content[2]).'</span>';
                                         echo '<span class="st01">'.(empty($arr_content[3]) === true ? '' : $arr_content[3]).'</span>';
                                         echo '<span>'.(empty($arr_content[4]) === true ? '' : $arr_content[4]).'</span>';
@@ -105,12 +106,12 @@
                                 echo '<ul class="liveTab03 slide01">';
                                     foreach($arr_input['data'][$row['PstIdx']] as $arr_content) {
                                         echo "<li>";
-                                        echo "<div><span class='st01'>{$arr_content[0]}</span><span class='st01'>{$arr_content[1]}</span></div>";
-                                        echo "<span>{$arr_content[2]}</span><span class='st01'>{$arr_content[3]}</span>";
+                                        echo "<div><span>{$arr_content[0]}</span><span class='st01'>{$arr_content[1]}</span></div>";
+                                        echo "<div class='subject'><span>{$arr_content[2]}</span><span class='st01'>{$arr_content[3]}</span>";
                                         echo "<span>{$arr_content[4]}</span><span class='st01'>{$arr_content[5]}</span>";
                                         echo "<span>{$arr_content[6]}</span><span class='st01'>{$arr_content[7]}</span>";
                                         echo "<span>{$arr_content[8]}</span><span class='st01'>{$arr_content[9]}</span>";
-                                        echo "<span>{$arr_content[10]}</span><span class='st01'>{$arr_content[11]}</span>";
+                                        echo "<span>{$arr_content[10]}</span><span class='st01'>{$arr_content[11]}</span></div>";
                                         echo "</li>";
                                     }
                                 echo '</ul>';

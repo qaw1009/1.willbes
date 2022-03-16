@@ -21,8 +21,8 @@
         .liveTab01 .txt01 {top:30px; left:310px; font-size:24px; font-weight:bold; color:#fff; width:190px; text-align:center;}
         .liveTab01 .txt02 {top:63px; left:310px; font-size:36px; color:#fff200; width:190px; text-align:center; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
         .liveTab01 .txt03 {top:40px; left:1070px; font-size:41px; color:#fff200; letter-spacing:-1px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
-        .liveTab01 .txt04 {top:50px; left:740px; width:140px; height:33px; line-height:33px; letter-spacing:-1px; font-size:26px; text-align:left; color:#fff200; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
-        .liveTab01 .txt05 {top:50px; left:865px; width:140px; height:33px; line-height:33px; letter-spacing:-1px; font-size:28px; text-align:left; color:#fff200; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
+        .liveTab01 .txt04 {top:50px; left:690px; width:140px; height:33px; line-height:33px; letter-spacing:-1px; font-size:26px; text-align:left; color:#fff200; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
+        .liveTab01 .txt05 {top:50px; left:850px; width:140px; height:33px; line-height:33px; letter-spacing:-1px; font-size:28px; text-align:left; color:#fff200; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
 
         .liveTab02 {position:absolute; top:0; left:0; width:1210px; height:130px; z-index:10}
         .liveTab02 li {padding-left:260px; height:130px; line-height:130px; color:#fff; font-size:40px; letter-spacing:-3px; text-align:left; width:890px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}

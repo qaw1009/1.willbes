@@ -213,7 +213,7 @@
         .castBoxpopup {display:none}
         .castBoxpopup .close {position:absolute; top:0; right:0}
 	    .castBoxpopup .close button {background:#fff url("https://static.willbes.net/public/images/promotion/m/icon_close.png") no-repeat center center;
-            background-size:60%; font-size:0; text-indent: -9999px; width:24px; height:24px}	
+            background-size:60%; font-size:0; text-indent: -9999px; width:24px; height:24px; border-radius:50%}	
 
        
         @@media only screen and (max-width: 374px) {

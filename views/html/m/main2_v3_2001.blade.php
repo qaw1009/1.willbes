@@ -88,7 +88,7 @@
         .cop .swiper-sec .swiper-slide:last-child {margin:0}
 
         .cop .sec-cast {margin:0 20px;} 
-        .cop .castList {display:flex; justify-content: space-between; margin-bottom:5px; background:#f2f2f2; }
+        .cop .castList a {display:flex; justify-content: space-between; margin-bottom:5px; background:#f2f2f2; }
         .cop .castImg {width:calc(42%); max-width:284px}
         .cop .castImg img {width:100%}
         .cop .castInfo {width:calc(58%); padding:12px; line-height:1.4; }
@@ -209,6 +209,11 @@
         .btnCounsel {position:fixed; right:10px; bottom:10px; z-index: 90;}        
         .btnCounsel a {display:flex; flex-direction: column; justify-content: center; align-items: center; width:90px; height:90px; background:#fbe901; color:#363636; border-radius:50%; text-align:center; font-weight:bold; padding:5px; font-size:1.7vh}
         .btnCounsel a img {display:block; margin-bottom:5px; width:50%; max-width:45px}
+
+        .castBoxpopup {display:none}
+        .castBoxpopup .close {position:absolute; top:0; right:0}
+	    .castBoxpopup .close button {background:#fff url("https://static.willbes.net/public/images/promotion/m/icon_close.png") no-repeat center center;
+            background-size:60%; font-size:0; text-indent: -9999px; width:24px; height:24px}	
 
        
         @@media only screen and (max-width: 374px) {
@@ -481,25 +486,31 @@
         </div>
         <div class="sec-cast">
             <div class="castList">
-                <div class="castImg"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_284x160_01.jpg" alt="배너명"></div>
-                <div class="castInfo">
-                    <h5>[신광은경찰학원] 추천못해!! 5급<br> 행시 합격생이 교수님을 찾아온 SSUL</h5>
-                    <p>5급 행시 합격생이 신광은 교수님을 찾아온 썰!</p>
-                </div>
+                <a href="#none" onclick="openWin('castPopup')">
+                    <div class="castImg"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_284x160_01.jpg" alt="배너명"></div>
+                    <div class="castInfo">
+                        <h5>[신광은경찰학원] 추천못해!! 5급<br> 행시 합격생이 교수님을 찾아온 SSUL</h5>
+                        <p>5급 행시 합격생이 신광은 교수님을 찾아온 썰!</p>
+                    </div>
+                </a>
             </div>
             <div class="castList">
-                <div class="castImg"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_284x160_02.jpg" alt="배너명"></div>
-                <div class="castInfo">
-                    <h5>[짱쌤X아이언짐 경찰체력] <br>3편_악력 점수 For Real?? (⓿_⓿)</h5>
-                    <p>악력점수는 어떻게 하면 높일 수 있을까요?</p>
-                </div>
+                <a href="#none" onclick="openWin('castPopup')">
+                    <div class="castImg"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_284x160_02.jpg" alt="배너명"></div>
+                    <div class="castInfo">
+                        <h5>[짱쌤X아이언짐 경찰체력] <br>3편_악력 점수 For Real?? (⓿_⓿)</h5>
+                        <p>악력점수는 어떻게 하면 높일 수 있을까요?</p>
+                    </div>
+                </a>
             </div>
             <div class="castList">
-                <div class="castImg"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_284x160_03.jpg" alt="배너명"></div>
-                <div class="castInfo">
-                    <h5>경찰 헌법 심화기출 강의 커리큘럼, <br>공부방법_김원욱교수</h5>
-                    <p>경찰 헌법 심화기출 강의 커리큘럼, 공부방법</p>
-                </div>
+                <a href="#none" onclick="openWin('castPopup')">
+                    <div class="castImg"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_284x160_03.jpg" alt="배너명"></div>
+                    <div class="castInfo">
+                        <h5>경찰 헌법 심화기출 강의 커리큘럼, <br>공부방법_김원욱교수</h5>
+                        <p>경찰 헌법 심화기출 강의 커리큘럼, 공부방법</p>
+                    </div>
+                </a>
             </div>
         </div>
 
@@ -756,9 +767,6 @@
         </div>
 
     </div>
-
-
-
     <!-- End Container -->
 
     <!-- footer -->
@@ -781,7 +789,7 @@
     </div>
     <div class="dim Menu_close" style="display: none;"></div>
 
-    {{--모달팝업--}}
+    {{--모달팝업
     <div class="popupBox NSK" id="modalPopup">
         <div class="popupContent">
             <div class="popbanner"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/popup_sp01.jpg"></a></div>
@@ -790,6 +798,18 @@
         <div class="btnClose">
             <div><button onclick="closeWin('modalPopup')">오늘 그만 보기</button></div>
             <div><button onclick="closeWin('modalPopup')">닫기</button></div>
+        </div>
+    </div>--}}
+
+    {{--경찰캐스트 팝업--}}
+    <div id="castPopup" class="castBoxpopup">
+        <div class="popupBox NSK" >
+            <div class="popupContent">
+                <div class="close"><button onclick="closeWin('castPopup')">닫기</button></div>
+                <div class="embed-container">                
+                    <iframe src="https://www.youtube.com/embed/d6TpPnR5crM" frameborder="0" allowfullscreen></iframe>                    
+                </div>                      
+            </div>        
         </div>
     </div>
 

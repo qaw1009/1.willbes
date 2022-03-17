@@ -110,8 +110,8 @@
                                         echo "<div class='subject'><span>{$arr_content[2]}</span><span class='st01'>{$arr_content[3]}</span>";
                                         echo "<span>{$arr_content[4]}</span><span class='st01'>{$arr_content[5]}</span>";
                                         echo "<span>{$arr_content[6]}</span><span class='st01'>{$arr_content[7]}</span>";
-                                        echo "<span>{$arr_content[8]}</span><span class='st01'>{$arr_content[9]}</span>";
-                                        echo "<span>{$arr_content[10]}</span><span class='st01'>{$arr_content[11]}</span></div>";
+                                        echo "<span>" . element('8', $arr_content) . "</span><span class='st01'>" . element('9', $arr_content) . "</span>";
+                                        echo "<span>" . element('10', $arr_content) . "</span><span class='st01'>" . element('11', $arr_content) . "</span></div>";
                                         echo "</li>";
                                     }
                                 echo '</ul>';

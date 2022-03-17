@@ -353,11 +353,11 @@
                     <div class="logo">
                         <a href="#none" class="siteTitle NSK">신광은경찰</a>
                     </div>
-
+                    {{--
                     <button type="button" class="classroom">
                         <span>강의실배정표</span>
-                    </button> {{--임용전용--}}
-
+                    </button> <!--임용전용-->
+                    --}}                   
                     <button type="button" class="searchView">
                         <span class="hidden">검색</span>
                     </button>

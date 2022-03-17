@@ -247,7 +247,7 @@
                 <button type="button" class="searchView">
                     <span class="hidden">검색</span>
                 </button>
-                
+
                 <button type="button" class="basket">
                     <span class="hidden">장바구니</span>
                 </button>                

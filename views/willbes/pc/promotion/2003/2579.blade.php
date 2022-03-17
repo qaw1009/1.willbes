@@ -18,7 +18,9 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
-        /************************************************************/     
+        /************************************************************/    
+        .sky {position:fixed; top:200px; width:190px; text-align:center; right:10px;z-index:20;}
+        .sky a {display:block; margin-bottom:20px} 
 
         .evttop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2579_top_bg.jpg) no-repeat center top;} 
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/03/2579_01_bg.jpg) no-repeat center top;} 
@@ -34,6 +36,15 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">  
+        <div class="sky" id="QuickMenu">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2579_sky.png" alt="적중 50선" usemap="#Map2579" border="0" >
+            <map name="Map2579" id="Map2579">
+                <area shape="rect" coords="6,135,182,205" href="#evt01" />
+                <area shape="rect" coords="7,215,182,288" href="#evt02" />
+                <area shape="rect" coords="7,294,183,368" href="#evt03" />
+            </map>                
+        </div>
+
         <div class="evtCtnsBox jbMenu"> 
             <div class="time NSK-Black" id="newTopDday">
                 국가직 <span>{{ (empty($arr_base['dday_data'][0]['DDay']) === false) ? 'D'.$arr_base['dday_data'][0]['DDay'] : '' }}</span>                      
@@ -44,14 +55,14 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2579_top.jpg" title="윌비스 적중 50선">                       
         </div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-up">
+        <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2579_01.gif" title="적중 라이브 편성표">      
                 <a href="#none" title="문자 알림 받기" style="position: absolute; left: 26.61%; top: 83.22%; width: 47.05%; height: 6.64%; z-index: 2;"></a>     
             </div>   
         </div> 
 
-        <div class="evtCtnsBox evt02" data-aos="fade-up">
+        <div class="evtCtnsBox evt02" data-aos="fade-up" id="evt02">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2579_02.jpg" title="자료 다운로드"> 
                 @if(sess_data('is_login') === true)
@@ -72,7 +83,7 @@
             @endif                
         </div> 
 
-        <div class="evtCtnsBox evt03" data-aos="fade-up">
+        <div class="evtCtnsBox evt03" data-aos="fade-up" id="evt03">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2579_03.jpg" title="소문내기 이벤트"> 
                 <a href="https://gall.dcinside.com/board/lists/?id=government" target="_blank" title="공무원 갤러리" style="position: absolute; left: 15.09%; top: 91.6%; width: 14.38%; height: 6.33%; z-index: 2;"></a>

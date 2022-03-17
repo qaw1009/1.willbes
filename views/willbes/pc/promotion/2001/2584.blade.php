@@ -62,7 +62,7 @@
             <input type="hidden" name="register_chk_val[]" value=""/>-->
             
             <div class="sky" id="QuickMenu">
-                <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2022/03/2584_sky01.png" title="토크쇼 참여하기"></a>                
+                <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2022/03/2584_sky01.png" title="토크쇼 참여하기"></a>                
                 <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/03/2584_sky02.png" title="토크쇼 바로가기"></a>
             </div>
 
@@ -74,9 +74,9 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2584_top.jpg" title="합격예측 토크쇼">
             </div>
 
-            <div class="evtCtnsBox evt01" id="evt_01" data-aos="fade-up">
+            <div class="evtCtnsBox evt01" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2584_01.jpg" title="설명회">           
-                <div class="request" id="request">
+                <div class="request" id="apply">
                     <div class="requestL">
                         <h3 class="NSK-Black">* 3월 합격예측 토크쇼 <span>사전예약</span></h3>
                         <table width="0" cellspacing="0" cellpadding="0" class="table_type">

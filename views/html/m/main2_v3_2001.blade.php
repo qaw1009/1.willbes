@@ -354,9 +354,14 @@
                         <a href="#none" class="siteTitle NSK"><span>신광은</span>경찰</a>
                     </div>
 
+                    <button type="button" class="classroom">
+                        <span>강의실배정표</span>
+                    </button> {{--임용전용--}}
+
                     <button type="button" class="searchView">
                         <span class="hidden">검색</span>
-                    </button>         
+                    </button>
+                    
                     <button type="button" class="basket">
                         <span class="hidden">장바구니</span>
                     </button>           

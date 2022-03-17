@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/public/vendor/bootstrap/datepicker/css/bootstrap-datepicker.standalone.min.css">
     <!-- Custom Theme Style -->
     <link href="/public/css/willbes/basic.css" rel="stylesheet">
-    <link href="/public/css/willbes/m/style_v2.css" rel="stylesheet">
+    <link href="/public/css/willbes/m/style_v3.css" rel="stylesheet">
     
     <!-- Slider jQuery -->
     <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.css">
@@ -235,9 +235,11 @@
                 <button type="button" class="mypage Menu_open">
                     <span class="hidden">내강의실</span>
                 </button>
+
                 <div class="logo">
                     <a href="#none" class="siteTitle NSK-Black">윌비스 임용</span></a>
-                </div>   
+                </div>  
+                 
                 <button type="button" class="classroom">
                     <span>강의실배정표</span>
                 </button>      

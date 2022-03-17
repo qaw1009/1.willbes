@@ -8326,7 +8326,7 @@ span.calendar_btn {
 	.popupBox .btnClose div {width:50%;}
 	.popupBox .btnClose div.wfull {width:100%;}
 	.popupBox .btnClose div button {display:block; background:#000; color:#fff; font-size:0.9rem; height:38px; line-height:38px; text-align: center; border-top:1px solid #fff; border-right:1px solid #fff; }
-	.popupBox .btnClose div:last-child button {border-right:0}
+	.popupBox .btnClose div:last-child button {border-right:0; color:#ffff66}
  
   @media (max-width: 720px) {
 	.popupBox .popupContent {

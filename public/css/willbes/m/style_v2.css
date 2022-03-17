@@ -8279,7 +8279,7 @@ span.calendar_btn {
 	.popupBox .popupContent {
 		position: relative;
 		width: 100%;
-		max-width: 768px;
+		max-width: 720px;
 		/*max-height: 100%;*/
 		margin:0 auto;
 		overflow-y: auto;
@@ -8313,9 +8313,9 @@ span.calendar_btn {
 	.popupBox .btnClose {position: absolute; bottom:0; left:0; width:100%; display: flex; justify-content: space-between; }
 	.popupBox .btnClose div {width:50%;}
 	.popupBox .btnClose div button {display:block; background:#000; color:#fff; font-size:0.9rem; height:38px; line-height:38px; text-align: center; border-top:1px solid #fff; border-right:1px solid #fff; }
-	.popupBox .btnClose div:last-child button {border-right:0}
+	.popupBox .btnClose div:last-child button {border-right:0; color:#ffff66}
  
-  @media (max-width: 768px) {
+  @media (max-width: 720px) {
 	.popupBox .popupContent {
 	  width: calc(100% - 40px);
 	}

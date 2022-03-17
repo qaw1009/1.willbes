@@ -21,7 +21,7 @@
             <a href="{{ site_url('/home/html/m/intro3') }}" target="_blank">인트로-2020</a>
             <br><br>
             <!--<a href="{{ site_url('/home/html/m/main') }}" target="_blank">메인</a>-->
-            <a href="{{ site_url('/home/html/m/main5') }}" target="_blank">메인-경찰</a>
+            <a href="{{ site_url('/home/html/m/main2_v3_2001') }}" target="_blank">메인-경찰</a>
             <a href="{{ site_url('/home/html/m/main2_2008') }}" target="_blank">메인-경찰간부</a>
             <br><br>
             <a href="{{ site_url('/home/html/m/main2_v3_2003') }}" target="_blank">메인-공무원(모달팝업)</a>

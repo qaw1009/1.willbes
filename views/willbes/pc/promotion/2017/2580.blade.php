@@ -20,7 +20,7 @@
 
         /************************************************************/
 
-        .sky {position:fixed; top:150px; right:25px; z-index:10;}
+        .sky {position:fixed; top:150px; right:10px; z-index:10;}
 
         .evtTop  {background:url("https://static.willbes.net/public/images/promotion/2022/03/2580_top_bg.jpg") no-repeat center top;}
 

@@ -351,7 +351,7 @@
                     </button>
 
                     <div class="logo">
-                        <a href="#none" class="siteTitle NSK"><span>신광은</span>경찰</a>
+                        <a href="#none" class="siteTitle NSK">신광은경찰</a>
                     </div>
 
                     <button type="button" class="classroom">

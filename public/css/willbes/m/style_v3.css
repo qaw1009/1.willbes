@@ -346,7 +346,7 @@ span {
 	margin: 0;
 	padding: 10px;
 }
-#Header .Menu-List .main {display:flex; align-items: center; width:100%} 
+#Header .Menu-List .main {display:flex; align-items:center; width:100%;} 
 #Header .Menu-List .main > div {display: inline-block; height: 30px; line-height: 30px;}
 
 #Header button {
@@ -401,8 +401,6 @@ span {
 	width: 70px;
 	height: 30px;
 	line-height: 30px;
-	text-align: center;	
-	letter-spacing: -1px;
 	background-color: none;
 	margin-right:5px;
 }
@@ -412,6 +410,8 @@ span {
 	color: #fff;
 	font-size: 12px;	
 	border-radius: 6px;
+	text-align: center;	
+	letter-spacing: -1px;
 }
 #Header button.myacad {
 	background: url("../../../img/willbes/m/main/icon_myacad.png") no-repeat center center;
@@ -422,7 +422,7 @@ span {
 }
 
 #header .logo {
-	display: inline-block; width: calc(100% - 120px); 
+	display: inline-block; width: calc(100% - 190px); 
 }
 #header .logo a {
 	font-weight: bold; display:block; text-align: left; margin-left: 10px;

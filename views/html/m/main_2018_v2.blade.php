@@ -239,10 +239,15 @@
                 <div class="logo">
                     <a href="#none" class="siteTitle NSK-Black">윌비스 임용</span></a>
                 </div>  
-                 
+
                 <button type="button" class="classroom">
                     <span>강의실배정표</span>
-                </button>      
+                </button>   
+
+                <button type="button" class="searchView">
+                    <span class="hidden">검색</span>
+                </button>
+                
                 <button type="button" class="basket">
                     <span class="hidden">장바구니</span>
                 </button>                

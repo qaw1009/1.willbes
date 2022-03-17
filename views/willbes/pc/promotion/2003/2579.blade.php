@@ -25,7 +25,7 @@
 
         /*타이머*/
         .time {width:1120px; margin:0 auto; text-align:center; padding:15px 0; font-size:40px; color:#fff}
-        .time span {color:#fdeb00;font-weight:bold;}     
+        .time span {color:#fdeb00;font-weight:bold; vertical-align:top; font-size:44px}     
 
         /*타이머 스크롤*/
         .jbMenu {display:none}
@@ -36,7 +36,7 @@
     <div class="evtContent NSK" id="evtContainer">  
         <div class="evtCtnsBox jbMenu"> 
             <div class="time NSK-Black" id="newTopDday">
-                국가직 D- <span class="NSK">{{ (empty($arr_base['dday_data'][0]['DDay']) === false) ? 'D'.$arr_base['dday_data'][0]['DDay'] : '' }}</span>                      
+                국가직 <span>{{ (empty($arr_base['dday_data'][0]['DDay']) === false) ? 'D'.$arr_base['dday_data'][0]['DDay'] : '' }}</span>                      
             </div> 
         </div>
 

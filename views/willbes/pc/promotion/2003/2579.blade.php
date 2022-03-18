@@ -57,10 +57,20 @@
 
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2579_01.gif" title="적중 라이브 편성표">      
-                <a href="#none" title="문자 알림 받기" style="position: absolute; left: 26.61%; top: 83.22%; width: 47.05%; height: 6.64%; z-index: 2;"></a>     
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2579_01.gif" title="적중 라이브 편성표">
+                <a href="javascript:void(0)" onclick="javascript:fn_submit();" title="문자 알림 받기" style="position: absolute; left: 26.61%; top: 83.22%; width: 47.05%; height: 6.64%; z-index: 2;"></a>
             </div>   
-        </div> 
+        </div>
+
+        <form name="regi_form_register" id="regi_form_register">
+            {!! csrf_field() !!}
+            {!! method_field('POST') !!}
+            <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
+            <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
+            <input type="hidden" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명"/>
+            <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
+            <input type="hidden" name="register_type" value="promotion" readonly="readonly"/>
+        </form>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up" id="evt02">
             <div class="wrap">
@@ -126,6 +136,19 @@
                 }
             });
         });
+
+        function fn_submit() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+            var $regi_form_register = $('#regi_form_register');
+            var _url = '{!! front_url('/event/registerStore') !!}';
+            if (!confirm('신청하시겠습니까?')) { return true; }
+            ajaxSubmit($regi_form_register, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    location.reload();
+                }
+            }, showValidateError, null, false, 'alert');
+        }
 
         function loginCheck(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}

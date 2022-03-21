@@ -249,7 +249,11 @@ class DeliveryInfoModel extends BaseOrderModel
      */
     public function getDeliveryTargetOrderData($search_start_datm, $search_end_datm, $site_code = null)
     {
-        $where = $this->_conn->makeWhere(['EQ' => ['O.SiteCode' => $site_code]])->getMakeWhere(true);
+        $arr_condition = [
+            'EQ' => ['O.SiteCode' => $site_code],
+            'IN' => ['O.SiteCode' => get_auth_site_codes()]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
         $column = 'O.OrderIdx, OP.OrderProdIdx, OP.ProdCode
             , current_date() as OutDate
@@ -310,7 +314,11 @@ class DeliveryInfoModel extends BaseOrderModel
      */
     public function getDeliveryCNPlusOrderData($search_start_datm, $search_end_datm, $site_code = null)
     {
-        $where = $this->_conn->makeWhere(['EQ' => ['O.SiteCode' => $site_code]])->getMakeWhere(true);
+        $arr_condition = [
+            'EQ' => ['O.SiteCode' => $site_code],
+            'IN' => ['O.SiteCode' => get_auth_site_codes()]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
         $column = 'TA.Receiver, TA.ReceiverTel, TA.ReceiverPhone
             , TA.ZipCode, TA.Addr, TA.DeliveryMemo

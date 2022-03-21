@@ -69,7 +69,7 @@
               	<area shape="rect" coords="5,328,159,434" href="#evt3" />
             </map>  
         </div>           
-
+        {{--
         @if(time() < strtotime('202203220000'))
             <div class="evtCtnsBox evttop_banners" data-aos="fade-down">
                 <div class="wrap">
@@ -78,9 +78,9 @@
                     <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" title="" style="position: absolute; left: 74.29%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>  
                 </div>        
             </div>        
-        @else
-        
+        @else        
         @endif
+        --}}
         
         <div class="evtCtnsBox evttop" data-aos="fade-up">                 
             <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_top.jpg"  title="더켠의 반반한 밤">                        

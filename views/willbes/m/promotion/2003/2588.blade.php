@@ -9,11 +9,13 @@
 
         .evtCtnsBox .wrap { margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000} */
-
+     
         .evt01 {background:#ffc000;padding-bottom:100px;}
         .evt01 .btn {clear:both; width:550px; margin:0 auto;}
         .evt01 .btn a {display:block; text-align:center; font-size:25px; color:#000; background:#fff; padding:20px 0; margin-top:50px; border-radius:50px}
         .evt01 .btn a:hover {color:#fff;background:#34B696;}
+
+        .evt_apply {background:#212121;padding-bottom:50px;}
 
         /*탭(텍스트)*/     
         .tabContaier{width:100%;background:#fff;}
@@ -70,7 +72,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2588_m02.jpg" alt="커리큘럼" />
         </div>
 
-        <div class="evtCtnsBox" data-aos="fade-up">
+        <div class="evtCtnsBox evt_apply" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2588_03.jpg" alt="수강신청" />
             <div class="tabContaier" id="apply">    
                 <ul class="NSK-Black">    
@@ -87,26 +89,19 @@
                 <div id="tab2" class="tabContents">
                     <div class="wrap">
                         <img src="https://static.willbes.net/public/images/promotion/2022/03/2588_m03_02.jpg"  alt="" />                     
-                        <a href="https://pass.willbes.net/m/package/show/cate/3035/pack/648001/prod-code/192579" target="_blank" title="" style="position: absolute;left: 65.69%;top: 55.03%;width: 20.88%;height: 13.34%;z-index: 2;"></a>
-                    </div>                         
+                        <a href="https://pass.willbes.net/m/package/show/cate/3035/pack/648001/prod-code/192579" target="_blank" title="" style="position: absolute;left: 65.69%;top: 9.75%;width: 20.88%;height: 2.34%;z-index: 2;"></a>
+                        <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192570" title="" target="_blank" style="position: absolute;left: 72.05%;top: 32.32%;width: 20.51%;height: 3.05%;z-index: 2;"></a>
+                        <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192576" title="" target="_blank" style="position: absolute;left: 72.05%;top: 40.82%;width: 20.51%;height: 3.05%;z-index: 2;"></a>
+                        <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192571" title="" target="_blank" style="position: absolute;left: 72.05%;top: 49.32%;width: 20.51%;height: 3.05%;z-index: 2;"></a>
+                        <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192577" title="" target="_blank" style="position: absolute;left: 72.05%;top: 58.02%;width: 20.51%;height: 3.05%;z-index: 2;"></a>
+                        <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192572" title="" target="_blank" style="position: absolute;left: 72.05%;top: 66.52%;width: 20.51%;height: 3.05%;z-index: 2;"></a>
+                        <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192575" title="" target="_blank" style="position: absolute;left: 72.05%;top: 75.12%;width: 20.51%;height: 3.05%;z-index: 2;"></a>
+                        <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192574" title="" target="_blank" style="position: absolute;left: 72.05%;top: 83.62%;width: 20.51%;height: 3.05%;z-index: 2;"></a>
+                        <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192578" title="" target="_blank" style="position: absolute;left: 72.05%;top: 92.12%;width: 20.51%;height: 3.05%;z-index: 2;"></a>
+                    </div>                    
                 </div>
             </div> 
-        </div>        
-
-        <div class="evtCtnsBox" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2588_m03_03.jpg" alt="동영상 단과" />
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192570" title="" target="_blank" style="position: absolute;left: 72.05%;top: 13.92%;width: 20.51%;height: 3.55%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192576" title="" target="_blank" style="position: absolute;left: 72.05%;top: 24.82%;width: 20.51%;height: 3.55%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192571" title="" target="_blank" style="position: absolute;left: 72.05%;top: 35.52%;width: 20.51%;height: 3.55%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192577" title="" target="_blank" style="position: absolute;left: 72.05%;top: 46.32%;width: 20.51%;height: 3.55%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192572" title="" target="_blank" style="position: absolute;left: 72.05%;top: 57.22%;width: 20.51%;height: 3.55%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192575" title="" target="_blank" style="position: absolute;left: 72.05%;top: 67.92%;width: 20.51%;height: 3.55%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192574" title="" target="_blank" style="position: absolute;left: 72.05%;top: 78.72%;width: 20.51%;height: 3.55%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/only/prod-code/192578" title="" target="_blank" style="position: absolute;left: 72.05%;top: 89.62%;width: 20.51%;height: 3.55%;z-index: 2;"></a>
-            </div>     
-        </div>
-      
+        </div> 
 
         <div class="evtCtnsBox evtInfo" data-aos="fade-up">
 

@@ -27,7 +27,7 @@
 
         .evt02 {background:#f0f0f0;}
       
-        .evt03 {background:#212121;}
+        .evt03 {background:#212121;padding-bottom:100px;}
 
         /* 탭 */
         .evtTab {width:980px; margin:0 auto}
@@ -93,24 +93,18 @@
             <div id="tab02">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2022/03/2588_03_02.jpg" alt="온라인" />
-                    <a href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/192579" title="동영상 패키지" target="_blank" style="position: absolute;left: 63.91%;top: 54.62%;width: 18.01%;height: 13.75%;z-index: 2;"></a>
-                </div> 
+                    <a href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/192579" title="동영상 패키지" target="_blank" style="position: absolute;left: 63.91%;top: 9.82%;width: 18.01%;height: 2.75%;z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192570" title="김동진" target="_blank" style="position: absolute;left: 69.41%;top: 31.27;top: 30.97%;width: 18.01%;height: 2.79%;z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192576" title="박초롱" target="_blank" style="position: absolute;left: 69.41%;top: 31.27;top: 39.67%;width: 18.01%;height: 2.79%;z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192571" title="이덕훈" target="_blank" style="position: absolute;left: 69.41%;top: 31.27;top: 48.47%;width: 18.01%;height: 2.79%;z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192577" title="임진석" target="_blank" style="position: absolute;left: 69.41%;top: 31.27;top: 57.17%;width: 18.01%;height: 2.79%;z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192572" title="문형석" target="_blank" style="position: absolute;left: 69.41%;top: 31.27;top: 65.97%;width: 18.01%;height: 2.79%;z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192575" title="이국령" target="_blank" style="position: absolute;left: 69.41%;top: 31.27;top: 74.67%;width: 18.01%;height: 2.79%;z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192574" title="유안석" target="_blank" style="position: absolute;left: 69.41%;top: 31.27;top: 83.47%;width: 18.01%;height: 2.79%;z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192578" title="박재현" target="_blank" style="position: absolute;left: 69.41%;top: 31.27;top: 92.17%;width: 18.01%;height: 2.79%;z-index: 2;"></a>
+                </div>
             </div>
-        </div>
-
-        <div class="evtCtnsBox evt03_apply" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2588_03_03.jpg" alt="동영상 단과" />
-                <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192570" title="김동진" target="_blank" style="position: absolute;left: 69.41%;top: 15.37%;width: 18.01%;height: 2.99%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192576" title="박초롱" target="_blank" style="position: absolute;left: 69.41%;top: 25.87%;width: 18.01%;height: 2.99%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192571" title="이덕훈" target="_blank" style="position: absolute;left: 69.41%;top: 36.37%;width: 18.01%;height: 2.99%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192577" title="임진석" target="_blank" style="position: absolute;left: 69.41%;top: 46.87%;width: 18.01%;height: 2.99%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192572" title="문형석" target="_blank" style="position: absolute;left: 69.41%;top: 57.37%;width: 18.01%;height: 2.99%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192575" title="이국령" target="_blank" style="position: absolute;left: 69.41%;top: 67.87%;width: 18.01%;height: 2.99%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192574" title="유안석" target="_blank" style="position: absolute;left: 69.41%;top: 78.37%;width: 18.01%;height: 2.99%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192578" title="박재현" target="_blank" style="position: absolute;left: 69.41%;top: 88.87%;width: 18.01%;height: 2.99%;z-index: 2;"></a>
-            </div>
-        </div>
+        </div>       
               
         <div class="evtCtnsBox evtInfo" data-aos="fade-up">
 

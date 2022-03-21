@@ -31,9 +31,9 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="publ_idx">출판사 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 item">
-                        <select name="publ_idx" id="publ_idx" required="required" class="form-control" title="출판사">
-                            <option value="">출판사명</option>
+                    <div class="col-md-3 form-inline item">
+                        <select name="publ_idx" id="publ_idx" required="required" class="form-control selectpicker" title="출판사" data-size="10" data-live-search="true">
+                            <option value="">출판사</option>
                             @foreach($publishers as $key => $val)
                                 <option value="{{ $key }}" @if($key == $data['wPublIdx'])selected="selected"@endif>{{ $val }}</option>
                             @endforeach
@@ -42,7 +42,7 @@
                     <label class="control-label col-md-2 col-md-offset-1" for="publ_date">출판일 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 item form-inline">
-                        <div class="input-group">
+                        <div class="input-group mb-0">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
@@ -53,9 +53,9 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="author_idx1">저자 <span class="required">*</span>
                     </label>
-                    <div class="col-md-9 item form-inline">
+                    <div class="col-md-9 form-inline item">
                     @for($i = 1; $i <= 3; $i++)
-                        <select name="author_idx[{{ $i-1 }}]" id="author_idx{{ $i }}" class="form-control mr-10" title="저자{{ $i }}" @if($i == 1)required="required"@endif>
+                        <select name="author_idx[{{ $i-1 }}]" id="author_idx{{ $i }}" class="form-control selectpicker" title="저자{{ $i }}" data-size="10" data-live-search="true" @if($i == 1)required="required"@endif>
                             <option value="">저자{{ $i }}</option>
                             @foreach($authors as $row)
                                 <option value="{{ $row['wAuthorIdx'] }}" @if($row['wAuthorIdx'] == element($i-1, $selected_authors))selected="selected"@endif>{{ $row['wAuthorName'] }}</option>

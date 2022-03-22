@@ -14,7 +14,7 @@
             <input type="hidden" id="TakeMockPart" name="TakeMockPart" value="{{ $data['TakeMockPart'] }}" />
 
             <div class="sub3_1">
-                <h2>기본정보 입력 </h2>
+                <h2>기본정보 입력</h2>
                 <div>
                     <table class="boardTypeB">
                         <col width="20%"/>
@@ -157,12 +157,12 @@
                             <col width="25%" />
                             <col width="25%" />
                             <col width="25%" />
-                            <col width="25%" />
+                            {{--<col width="25%" />--}}
                             <tr>
                                 <th scope="col">과목</th>
                                 <th scope="col">채점</th>
                                 <th scope="col">원점수</th>
-                                <th scope="col">조정점수</th>
+                                {{--<th scope="col">조정점수</th>--}}
                             </tr>
                             @if (empty($subject_list) === true)
                                 {{--<tr><td colspan="4">등록 설정된 과목이 없습니다.</td></tr>--}}
@@ -172,7 +172,7 @@
                                         <td>{{ $val['CcdName'] }}</td>
                                         @if($loop->first)<td rowspan="5"><a href="javascript:popWindow({{ $idx }})" class="type1">채점하기 ▶</a></td>@endif
                                         <td>미입력</td>
-                                        <td>미입력</td>
+                                        {{--<td>미입력</td>--}}
                                     </tr>
                                 @endforeach
                             @endif
@@ -185,21 +185,21 @@
                             <col width="25%" />
                             <col width="25%" />
                             <col width="25%" />
-                            <col width="25%" />
+                            {{--<col width="25%" />--}}
                             <tr>
                                 <th scope="col">과목</th>
                                 <th scope="col">성적확인</th>
                                 <th scope="col">원점수</th>
-                                <th scope="col">조정점수</th>
+                                {{--<th scope="col">조정점수</th>--}}
                             </tr>
                             @foreach($subject_list as $key => $val)
                                 <tr>
                                     <td>{{ $val['CcdName'] }}</td>
                                     @if($loop->first)<td rowspan="5"><a href="javascript:resultPop({{ $idx }})" class="type1">확인 ▶</a></td>@endif
                                     <td>{{ (empty($scoredata['PpIdx'][$key]) === true ? '미입력' : $scoredata['score'][$key]) }}</td>
-                                    <td>
+                                    {{--<td>
                                         {{(empty($scoredata['PpIdx'][$key]) === true) ? '미입력' :  (empty($scoredata['addscore'][$key]) === true ? '집계중' : $scoredata['addscore'][$key])}}
-                                    </td>
+                                    </td>--}}
                                 </tr>
                             @endforeach
                         </table>
@@ -236,7 +236,7 @@
 
         function moveMyPredict(){
             {{--alert('안정화 작업중입니다!');--}}
-            parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/2308') }}');
+            parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/2574') }}');
         }
 
         function examDeleteAjax() {
@@ -277,8 +277,8 @@
                     height = 900;
                 } else if(type == 2){
                     _url = '{{ front_url('/predict/popwin2/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
-                    width = 680;
-                    height = 700;
+                    width = 1380;
+                    height = 480;
                 } else {
                     _url = '{{ front_url('/predict/popwin3/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
                     width = 600;
@@ -294,8 +294,8 @@
                         height = 900;
                     } else if(type == 2){
                         _url = '{{ front_url('/predict/popwin2/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
-                        width = 680;
-                        height = 700;
+                        width = 1380;
+                        height = 480;
                     } else {
                         _url = '{{ front_url('/predict/popwin3/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
                         width = 600;
@@ -315,7 +315,7 @@
                 return ;
             }
             _url = '{{ front_url('/predict/popwin4/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
-            width = 1300;
+            width = 900;
             height = 900;
             win = window.open(_url, 'resultpop', 'width=' + width + ', height=' + height + ', scrollbars=yes, resizable=yes');
             win.focus();
@@ -325,8 +325,8 @@
         function addAnswer(PredictIdx)
         {
             _url = '{{ front_url('/predict/popwin2/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val() + '&type=answer';
-            width = 680;
-            height = 700;
+            width = 1380;
+            height = 480;
             win = window.open(_url, 'answer', 'width=' + width + ', height=' + height + ', scrollbars=yes, resizable=yes');
             win.focus();
         }

@@ -2969,12 +2969,11 @@ class PredictModel extends WB_Model
         foreach ($avg_standard_list as $key => $val) {
             if ($val['RegistStandardIsUse'] == 'N') {
                 $subject_cnt = $val['SubjectCnt'] - 1;
-                $data[$key] = (empty($arr_sum[$key]) === true || $arr_sum[$key] <= 0) ? '0' : round(sqrt($arr_sum[$key] / $subject_cnt), 2);
+                $data[$key] = (empty($arr_sum[$key]) === true || $arr_sum[$key] <= 0 || $subject_cnt <= 0) ? '0' : round(sqrt($arr_sum[$key] / $subject_cnt), 2);
             } else {
                 $data[$key] = $val['RegistStandard'];
             }
         }
-
         return $data;
     }
 

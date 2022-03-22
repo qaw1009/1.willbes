@@ -53,7 +53,7 @@
                         <tr>
                             <th>과목</th>
                             <th>원점수</th>
-                            <th>조정점수</th>
+                            {{--<th>조정점수</th>--}}
                             <th>내 석차 </th>
                             <th>전체 평균</th>
                             <th>상위 5% 평균</th>
@@ -67,7 +67,7 @@
                                 <tr>
                                     <th>{{ $val['SubjectName'] }}</th>
                                     <td>{{ $val['OrgPoint'] }}</td>
-                                    <td>
+                                    {{--<td>
                                         @if ($val['TakeMockPart'] === 800)
                                             {{ $val['OrgPoint'] }}
                                         @else
@@ -77,7 +77,7 @@
                                                 {{ $arr_base['user_subject_avg'][$key]['AdjustPoint'] }}
                                             @endif
                                         @endif
-                                    </td>
+                                    </td>--}}
                                     <td>
                                         @if (empty($arr_base['user_subject_avg']) === true)
                                             집계중
@@ -112,7 +112,7 @@
                             <tr>
                                 <th>총점</th>
                                 <th>{{ (empty($arr_base['total_area_avg']) === false ? $arr_base['total_area_avg']['TotalOrgPoint'] : '집계중') }}</th>
-                                <th>{{ (empty($arr_base['total_area_avg']['TotalAdjustPoint']) === false ? $arr_base['total_area_avg']['TotalAdjustPoint'] : '집계중') }}</th>
+                                {{--<th>{{ (empty($arr_base['total_area_avg']['TotalAdjustPoint']) === false ? $arr_base['total_area_avg']['TotalAdjustPoint'] : '집계중') }}</th>--}}
                                 <th>{{ (empty($arr_base['total_area_avg']['RankNum']) === false ? $arr_base['total_area_avg']['RankNum'] : '집계중') }} / {{ (empty($arr_base['total_area_avg']) === false ? $arr_base['total_area_avg']['Cnt'] : '집계중') }} </th>
                                 <th>{{ (empty($arr_base['total_area_avg']['TotalAvrPoint']) === false ? $arr_base['total_area_avg']['TotalAvrPoint'] : '집계중') }}</th>
                                 <th>{{ (empty($arr_base['total_area_avg']['TotalFivePerPoint']) === false ? $arr_base['total_area_avg']['TotalFivePerPoint'] : '집계중') }}</th>

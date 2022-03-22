@@ -23,7 +23,6 @@
                         <col width="20%" />
                         <col width="20%" />
                         <col width="20%" />
-                        <col width="20%" />
                         <tr>
                             <th scope="col">구분</th>
                             <th scope="col">정오</th>

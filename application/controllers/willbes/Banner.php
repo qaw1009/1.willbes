@@ -10,6 +10,7 @@ class Banner extends \app\controllers\BaseController
 
     private $_rolling_type = ['665001' => 'bSlider',  '665002' => 'cSlider', '665003' => 'nSlider', '665004' => 'vSlider'
         , '665005' => '', '665006' => 'swiper-container-arrow', '665007' => 'swiper-container-page', '665008' => 'swiper-manual-page'
+        , '665009' => 'swiper-container-scrollbar'
     ];
 
     public function __construct()

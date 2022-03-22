@@ -46,6 +46,17 @@ $(function () {
     });
 });
 
+// GNB 검색창
+$(function() {
+    $('#Header .Menu-List .searchView').click(function() {
+        $('#Header .Menu-List .searchWrap').show().css('display', 'block');
+    });
+
+    $('#Header .Menu-List .searchClose').click(function() {
+        $('#Header .Menu-List .searchWrap').hide().css('display', 'none');
+    });
+});
+
 // 열기, 닫기 버튼 Script
 $(function () {
     $('.willbes-Txt .MoreBtn a').click(function () {
@@ -64,7 +75,6 @@ $(function () {
     });
 });
 
-
 // 내강의실 학원강의 Script
 $(function () {
     $('.w-lecList > div > a').click(function () {
@@ -78,7 +88,6 @@ $(function () {
         }
     });
 });
-
 
 // 내강의실 온라인강좌 버튼 Script
 $(function () {
@@ -154,7 +163,6 @@ $(function () {
             $(this.hash).hide().css('display', 'none');
         });
 
-
         $(this).on('click', 'a', function (e) {
             $active.removeClass('on');
             $content.hide().css('display', 'none');
@@ -173,8 +181,6 @@ $(function () {
 function openLink(tabId) {
     $('ul.myCouponTab').find('#' + tabId).click();
 }
-
-
 
 // Swiper Script
 $(function () {
@@ -247,6 +253,16 @@ $(function () {
         },
         observer: true,
         observeParents: true,
+    });
+    new Swiper('.swiper-container-scrollbar', {
+        slidesPerView: 'auto',
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
     });
 });
 

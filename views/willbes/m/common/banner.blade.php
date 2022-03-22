@@ -30,7 +30,7 @@ var html = '', link_url = '#none', link_target = 'self';
             html += '   <div class="swiper-slide">';
             html += '       <a href="' + link_url + '" @if($row['LinkType'] != 'script') target="_{{ $row['LinkType'] }}" @endif>';
             html += '           <img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" title="{{ $row['BannerName'] }}"/>';
-            @if($set_class == 'bnTit')
+            @if(in_array($set_class, ['bnTit', 'bnTitle']) === true)
                 html += '       <div class="{{ $set_class }}">{{ $row['BannerName'] }}</div>';
             @endif
             html += '       </a>';
@@ -41,6 +41,8 @@ var html = '', link_url = '#none', link_target = 'self';
             html += '   <div class="swiper-pagination"></div>';
         @elseif(strpos($disp['DispRollingTypeName'], 'arrow') > -1)
             html += '   <div class="swiper-button-next"></div><div class="swiper-button-prev"></div>';
+        @elseif(strpos($disp['DispRollingTypeName'], 'scrollbar') > -1)
+            html += '   <div class="swiper-scrollbar"></div>';
         @endif
         html += '</div>';
     @endif

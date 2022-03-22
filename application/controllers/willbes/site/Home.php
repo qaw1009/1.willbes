@@ -124,13 +124,20 @@ class Home extends \app\controllers\FrontController
             $s_cate_code = $cate_code;
 
             $data['dday'] = $this->_dday($s_cate_code);
+            $data['best_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'Best');
             $data['new_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'New');
             $data['arr_main_banner'] = array_merge($this->_banner($s_cate_code), $this->_banner('0'));
             $data['lecture_update_info'] = $this->_getlectureUpdateInfo(10, $s_cate_code);
             $data['new_product_book'] = $this->_getlistSalesProductBook(20, $s_cate_code, ['wPublDate' => 'desc']);
+        } else {
+            $data['arr_main_banner'] = $this->_bannerByDispName(['M_메인_경찰캐스트_1', 'M_메인_경찰캐스트_2', 'M_메인_경찰캐스트_3', 'M_메인_베스트강좌'], '0');
+            $data['board_lecture_infomation'] = $this->_boardLectureInformation(5, $s_cate_code);
+            $data['new_product_book'] = $this->_getlistSalesProductBook(15, $s_cate_code, ['wPublDate' => 'desc']);
+
+            // TODO : 최종반영시 삭제요망
+            $data['best_product'] = $this->_product('on_lecture', 8, $s_cate_code, 'Best');
         }
 
-        $data['best_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? '4' : '8'), $s_cate_code, 'Best');
         $data['notice'] = $this->_boardNotice(4, $s_cate_code);
         $data['exam_announcement'] = $this->_boardExamAnnouncement(4, $s_cate_code);
         $data['exam_news'] = $this->_boardExamNews(4, $s_cate_code);
@@ -581,6 +588,24 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
+     * 메인 배너 by 노출섹션명
+     * @param array $disp_name [노출섹션명]
+     * @param int $cate_code
+     * @return array
+     */
+    private function _bannerByDispName($disp_name = [], $cate_code = 0)
+    {
+        $result = $this->bannerFModel->findBanners($disp_name, $this->_site_code, $cate_code);
+
+        $data = [];
+        foreach ($result as $key => $row) {
+            $data[$row['DispName']][] = $result[$key];
+        }
+
+        return $data;
+    }
+
+    /**
      * 상품 조회
      * @param $learn_pattern
      * @param int $limit_cnt
@@ -973,12 +998,12 @@ class Home extends \app\controllers\FrontController
             ],
         ];
 
-//        $data = $this->bookFModel->listBookStoreProduct(false, $arr_condition, $limit_cnt, 0, $order_by);
-//        foreach ($data as $key => $row){
-//            if(empty($row['ProdPriceData']) === false){
-//                $data[$key]['ProdPriceData'] = json_decode($row['ProdPriceData'],true);
-//            }
-//        }
+        /*$data = $this->bookFModel->listBookStoreProduct(false, $arr_condition, $limit_cnt, 0, $order_by);
+        foreach ($data as $key => $row){
+            if(empty($row['ProdPriceData']) === false){
+                $data[$key]['ProdPriceData'] = json_decode($row['ProdPriceData'],true);
+            }
+        }*/
 
         $data = $this->bookFModel->listSalesProductBook(false, $arr_condition, $limit_cnt, 0, $order_by);
 

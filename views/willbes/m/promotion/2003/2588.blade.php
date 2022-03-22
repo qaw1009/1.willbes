@@ -83,6 +83,7 @@
                     <div class="wrap">
                         <img src="https://static.willbes.net/public/images/promotion/2022/03/2588_m03_01.jpg"  alt="" />              
                         <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3059" target="_blank" title="" style="position: absolute;left: 65.69%;top: 23.23%;width: 20.88%;height: 7.34%;z-index: 2;"></a>
+                        <a href="https://pass.willbes.net/pass/promotion/index/cate/3059/code/2119" target="_blank" title="" style="position: absolute;left: 67.59%;top: 52.83%;width: 22.88%;height: 10.34%;z-index: 2;"></a>
                         <a href="https://pass.willbes.net/pass/promotion/index/cate/3059/code/2119 " target="_blank" title="" style="position: absolute;left: 65.69%;top: 66.83%;width: 20.88%;height: 7.34%;z-index: 2;"></a>
                     </div>                         
                 </div>

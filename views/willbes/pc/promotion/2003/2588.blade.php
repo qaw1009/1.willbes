@@ -28,6 +28,7 @@
         .evt02 {background:#f0f0f0;}
       
         .evt03 {background:#212121;padding-bottom:100px;}
+        .evt03 span {font-size:35px;border-bottom:3px solid #000;}
 
         /* 탭 */
         .evtTab {width:980px; margin:0 auto}
@@ -80,13 +81,14 @@
         <div class="evtCtnsBox evt03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2588_03.jpg" alt="수강신청" />
             <ul class="evtTab">
-                <li><a href="#tab01">오프라인 수강 상품 보기<br> 학원종합반 & 온라인관리반 </a></li>
-                <li><a href="#tab02">온라인 수강 상품 보기<br> 동영상패키지 & 동영상단과 </a></li>
+                <li><a href="#tab01"><span>오프라인</span> 수강 상품 보기<br> 학원종합반 & 온라인관리반 </a></li>
+                <li><a href="#tab02"><span>온라인</span> 수강 상품 보기<br> 동영상패키지 & 동영상단과 </a></li>
             </ul>
             <div id="tab01">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2022/03/2588_03_01.jpg" alt="오프라인" />
                     <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" title="학원종합반" target="_blank" style="position: absolute;left: 63.91%;top: 24.62%;width: 18.01%;height: 6.55%;z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/pass/promotion/index/cate/3059/code/2119" title="자세히 알아보기" target="_blank" style="position: absolute;left: 65.41%;top: 53.62%;width: 20.01%;height: 9.55%;z-index: 2;"></a>
                     <a href="https://pass.willbes.net/pass/promotion/index/cate/3059/code/2119 " title="온라인관리반" target="_blank" style="position: absolute;left: 63.91%;top: 67.62%;width: 18.01%;height: 6.55%;z-index: 2;"></a>
                 </div> 
             </div>

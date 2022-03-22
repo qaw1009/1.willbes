@@ -132,12 +132,13 @@
     </form>
 
     <div class="evtContent NSK" id="evtContainer">
-
+        {{--
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2020" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2589_sky.png" alt="혜택받기" />
             </a>
         </div>
+        --}}
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2589_top.jpg" title="국가직 9급 풀케어 서비스" />

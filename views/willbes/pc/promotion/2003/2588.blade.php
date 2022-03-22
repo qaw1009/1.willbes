@@ -89,7 +89,7 @@
                     <img src="https://static.willbes.net/public/images/promotion/2022/03/2588_03_01.jpg" alt="오프라인" />
                     <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" title="학원종합반" target="_blank" style="position: absolute;left: 63.91%;top: 24.62%;width: 18.01%;height: 6.55%;z-index: 2;"></a>
                     <a href="https://pass.willbes.net/pass/promotion/index/cate/3059/code/2119" title="자세히 알아보기" target="_blank" style="position: absolute;left: 65.41%;top: 53.62%;width: 20.01%;height: 9.55%;z-index: 2;"></a>
-                    <a href="https://pass.willbes.net/pass/promotion/index/cate/3059/code/2119 " title="온라인관리반" target="_blank" style="position: absolute;left: 63.91%;top: 67.62%;width: 18.01%;height: 6.55%;z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" title="온라인관리반" target="_blank" style="position: absolute;left: 63.91%;top: 67.62%;width: 18.01%;height: 6.55%;z-index: 2;"></a>
                 </div> 
             </div>
             <div id="tab02">

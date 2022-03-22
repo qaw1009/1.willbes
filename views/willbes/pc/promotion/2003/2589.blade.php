@@ -14,29 +14,30 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a {border:1px solid #000}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /*****************************************************************/
 
         .sky {position:fixed; top:200px; right:10px; z-index:11;}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/04/2159_top_bg.jpg) no-repeat center top; }
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2589_top_bg.jpg) no-repeat center top; }
         .youtube {}
         .youtube iframe {width:900px; height:525px;}
 
         .evtMenu ul {width:1120px; margin:100px auto 0;}
         .evtMenu li {display:inline; float:left; width:25%; position: relative;}
-        .evtMenu li a {display:block; text-align:center; padding:30px 0; color:#7d7d7d; font-size:20px; background:#e0dfdf;border-bottom:0; margin-right:4px;border:1px solid #bfbfbf;}
+        .evtMenu li a {display:block; text-align:center; padding:30px 0; color:#7d7d7d; font-size:20px; background:#e0dfdf; border-bottom:0; margin-right:4px;border:1px solid #bfbfbf;}
         .evtMenu li:last-child a {margin:0}
         .evtMenu li a span {font-size:20px}
         .evtMenu li a div {margin-top:8px;color:#7d7d7d}
         .evtMenu li:hover a,
-        .evtMenu li a.active {background:#fff; color:#363636; border:2px solid #219164;}
-        .evtMenu li:hover:after {content:"▼"; display:block; clear:both; color:#219164; font-size:25px; position:absolute; top:110px; width:100%; text-align:center; z-index: 10;}
+        .evtMenu li a.active {background:#fff; color:#363636; border:2px solid #0070cf;}
+        .evtMenu li a.active:after,
+        .evtMenu li a:hover:after {content:"▼"; display:block; clear:both; color:#0070cf; font-size:25px; position:absolute; top:110px; width:100%; text-align:center; z-index: 10;}
         .evtMenu li:hover a span,
         .evtMenu li a.active span {color:#363636;font-weight:bold;}
         .evtMenu li:hover a div,
-        .evtMenu li a.active div {color:#219164}
+        .evtMenu li a.active div {color:#0070cf}
         .evtMenu ul:after {content:""; display:block; clear:both}
 
         .tabCts {position:relative; width:1120px; margin:0 auto; text-align:center; font-size:14px;}
@@ -50,23 +51,22 @@
         .tabCts .download span a:hover {background:#e50001}
         .tabCts .youtube {width:100%; text-align:center; margin:3em 0}
         .tabCts .youtube iframe {width:800px; height:453px; margin:0 auto}
-        .tabCts a {border:1px solid #000}
 
-        .download {font-weight:bold;font-size:17px;padding-bottom:35px;color:#219164}
+        .download {font-weight:bold;font-size:17px;padding-bottom:35px;color:#0070cf}
 
-        .Cts02 a {display:inline-block; padding:5px 10px; color:#fff; background:#219164; font-size:90%; margin-left:20px}
+        .Cts02 a {display:inline-block; padding:5px 10px; color:#fff; background:#0070cf; font-size:90%; margin-left:20px}
 
         .boardD {width:980px; border-spacing:0px; border:1px solid #000; table-layout:auto; color:#666; margin:0 auto}
         .boardD caption {display:none}
         .boardD th,
         .boardD td {font-size:14px}
-        .boardD td:nth-child(4) {background:#DAF2E2;font-weight:bold;}
-        .boardD td:nth-child(7) {background:#DAF2E2;font-weight:bold;}
+        .boardD td:nth-child(4) {background:#d1eaff;font-weight:bold;}
+        .boardD td:nth-child(7) {background:#d1eaff;font-weight:bold;}
         .boardD td:nth-child(9) {color:red;font-weight:bold;}
         .boardD th {padding:15px 5px; background:#f5f5f5; border-right:1px solid #000; border-bottom:1px solid #000; color:#000; font-weight:bold}
         .boardD thead th {background:#eee; color:#333}
         .boardD td {padding:15px 5px; margin:0; border:none; text-align:center; border-right:1px solid #000; border-bottom:1px solid #000;color:#000;}
-        .boardD tbody th {background:#b4e7c6}
+        .boardD tbody th {background:#add7fb}
         .boardD th a {display:inline; padding:5px 10px; color:#333; background:#fff; border:1px solid #ccc; border-radius:4px; margin:0 auto}
         .boardD th a:hover {background:#e50001; color:#fff}
 
@@ -135,24 +135,24 @@
 
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2020" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2159_sky.png" alt="지방직 대비 문풀 수강하기" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2589_sky.png" alt="혜택받기" />
             </a>
         </div>
 
-        <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2159_top.jpg" title="국가직 9급 풀케어 서비스" />
+        <div class="evtCtnsBox evtTop" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2589_top.jpg" title="국가직 9급 풀케어 서비스" />
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/85P7aoE5tew?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 
         <div class="evtCtnsBox">
-            <div class="evtMenu" id="evtMenu">
+            <div class="evtMenu" id="evtMenu" data-aos="fade-up">
                 <ul>
                     <li>
                         <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/2159/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=1#content_1') }}">
                             <span>실전464 강좌</span>
-                            <div class="NSK-Black">+온라인모의고사 무료!</div>
+                            <div class="NSK-Black">+온라인 모의고사 무료!</div>
                         </a>
                     </li>
                     <li>
@@ -176,22 +176,22 @@
                 </ul>
             </div>
 
-            <div id="content_1" class="tabCts">
+            <div id="content_1" class="tabCts" data-aos="fade-up">
                 <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/04/2159_01_01.jpg" title="" />
-                    <a href="javascript:void(0);" title="적중 경험하기" onclick="javascript:fn_submit();" style="position: absolute; left: 26.96%; top: 86.43%; width: 45.98%; height: 8.37%; z-index: 2;"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2589_01_01.jpg" title="" />
+                    <a href="javascript:void(0);" title="적중 경험하기" onclick="javascript:fn_submit();" style="position: absolute; left: 26.96%; top: 88.72%; width: 45.98%; height: 8.37%; z-index: 2;"></a>
                 </div>
                 <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/04/2159_01_02.jpg" title="" />
-                    <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="응시하기" style="position: absolute; left: 21.16%; top: 79.23%; width: 57.59%; height: 9.18%; z-index: 2;"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2589_01_02.jpg" title="" />
+                    <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="응시하기" style="position: absolute; left: 21.16%; top: 81.84%; width: 57.59%; height: 9.18%; z-index: 2;"></a>
                 </div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2159_01_03.jpg" title="" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2589_01_03.jpg" title="" />
             </div>
 
             <!--완벽분석-->
-            <div id="content_2" class="tabCts Cts02">
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2159_02_01.jpg" title="" id="content_2_01" />
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2159_02_02.jpg" title="" />
+            <div id="content_2" class="tabCts Cts02" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2589_02_01.jpg" title="" id="content_2_01" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2589_02_02.jpg" title="" />
                 <div class="mt20 mb100">
                     <p class="download">
                         2022 국가직 시험문제&가답안 다운로드 <a href="https://www.gosi.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000138" target="_blank">바로가기 ></a>
@@ -1128,13 +1128,13 @@
             </div>
 
             <!--시험총평 및 시험후기-->
-            <div id="content_3" class="tabCts Cts03">
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2159_03_01.jpg" title="시험 체감난이도&이벤트" />
+            <div id="content_3" class="tabCts Cts03" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2589_03_01.jpg" title="시험 체감난이도&이벤트" />
                 @include('willbes.pc.eventsurvey.show_graph_partial',array('is_series' => 'N')) {{-- is_series(직렬: Y, 직렬아님: N) --}}
 
                 <div class="tx-center">
                     <a href="javascript:pullOpen();">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/04/2159_btn03.png" title="설문참야하기" />
+                        <img src="https://static.willbes.net/public/images/promotion/2022/03/2589_btn03.png" title="설문참야하기" />
                     </a>
                 </div>
 
@@ -1145,25 +1145,24 @@
                         {!! $data['Content'] !!}
                     </div>
                 </div>
-                -->
+            -->
 
-                <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2021/04/2159_03_02.jpg" title="시험후기 댓글 이벤트" /></div>
+                <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2022/03/2589_03_02.jpg" title="시험후기 댓글 이벤트" /></div>
                 {{--시험평가댓글--}}
                 @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                     @include('willbes.pc.promotion.show_comment_list_evaluate_partial')
                 @endif
 
-                <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2021/04/2159_03_03.jpg" title="기대평과 응원 메시지" /> </div>
+                <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2022/03/2589_03_03.jpg" title="기대평과 응원 메시지" /> </div>
                 {{--기본댓글--}}
                 @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                     @include('willbes.pc.promotion.show_comment_list_normal_partial')
                 @endif
-
             </div>
 
             <!--기출해설강의-->
-            <div id="content_4" class="tabCts Cts04">
-                <div><img src="https://static.willbes.net/public/images/promotion/2021/04/2159_04_01.jpg" title="기출해설" /></div>
+            <div id="content_4" class="tabCts Cts04" data-aos="fade-up">
+                <div><img src="https://static.willbes.net/public/images/promotion/2022/03/2589_04_01.jpg" title="기출해설" /></div>
                 <div class="lecture">
                     <ul>
                         @if(empty($arr_base['promotion_otherinfo_data']) === false)

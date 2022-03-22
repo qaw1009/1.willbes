@@ -234,7 +234,7 @@
                 <div class="btnJoin NGEB">
                     <div class="mb30 every">경찰 1차 필기합격생이면 누구나!</div>
                     <a href="javascript:;" onclick="doEvent(); return false;" target="_blank">
-                        <span>필기합격생 인증하기 ></span>
+                        <span>경찰 1차 필기합격생 이벤트 참여하기 ></span>
                     </a>
                 </div>
             @else

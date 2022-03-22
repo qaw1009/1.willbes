@@ -49,21 +49,21 @@
                     <table cellspacing="0" cellpadding="0" class="table_type table_type2">
                         <col width="25%" />
                         <col width="25%" />
+                        {{--<col width="25%" />--}}
                         <col width="25%" />
-                        <col width="*" />
                         <tr>
                             <th scope="col">과목</th>
                             <th scope="col">원점수</th>
-                            <th scope="col">조정점수</th>
+                            {{--<th scope="col">조정점수</th>--}}
                             <th scope="col">정오표</th>
                         </tr>
                         @foreach($subject_list as $key => $val)
                             <tr>
                                 <td>{{ $val['CcdName'] }}</td>
                                 <td>{{ (empty($scoredata['PpIdx'][$key]) === true ? '미입력' : $scoredata['score'][$key]) }}</td>
-                                <td>
+                                {{--<td>
                                     {{(empty($scoredata['PpIdx'][$key]) === true) ? '미입력' :  (empty($scoredata['addscore'][$key]) === true ? '집계중' : $scoredata['addscore'][$key])}}
-                                </td>
+                                </td>--}}
                                 @if($loop->first)<td rowspan="5"><a href="javascript:resultPop({{ $PredictIdx }})" class="type1">확인 ▶</a></td>@endif
                             </tr>
                         @endforeach

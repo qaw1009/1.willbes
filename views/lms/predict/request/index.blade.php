@@ -51,7 +51,7 @@
                         <th class="text-center">사용여부</th>
                         <th class="text-center">등록자</th>
                         <th class="text-center">등록일</th>
-                        <th class="text-center">직렬별과목</th>
+                        {{--<th class="text-center">직렬별과목</th>--}}
                     </tr>
                     </thead>
                     <tbody>
@@ -99,9 +99,9 @@
                     }},
                     {'data' : 'wAdminName', 'class': 'text-center'},
                     {'data' : 'RegDatm', 'class': 'text-center'},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
+                    /*{'data' : null, 'render' : function(data, type, row, meta) {
                             return '<button type="button" class="btn btn-dark btn-layer-subject-box" data-predict-idx="'+ row.PredictIdx + '">과목설정</button>';
-                        }},
+                        }},*/
                 ]
             });
 

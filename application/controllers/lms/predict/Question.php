@@ -222,7 +222,7 @@ class Question extends \app\controllers\BaseController
 
         $rules = [
             ['field' => 'QuestionNO[]', 'label' => '문항번호', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'Scoring[]', 'label' => '배점', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'Scoring[]', 'label' => '배점', 'rules' => 'trim|required'],
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
 

@@ -322,15 +322,15 @@ if (empty($arr_promotion_params['live_start']) === false && empty($arr_promotion
 
     function tabMove(num) {
         if(num == 1){
-            var url = "{{ site_url('/promotion/index/cate/3001/code/2306') }}";
+            var url = "{{ site_url('/promotion/index/cate/3001/code/2572') }}";
         } else if(num == 2) {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
-            var url = "{{ site_url('/promotion/index/cate/3001/code/2307') }}";
+            var url = "{{ site_url('/promotion/index/cate/3001/code/2573') }}";
         } else if(num == 3) {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
-            var url = "{{ site_url('/promotion/index/cate/3001/code/2308') }}" ;
+            var url = "{{ site_url('/promotion/index/cate/3001/code/2574') }}" ;
         } else {
-            var url = "{{ site_url('/promotion/index/cate/3001/code/2309') }}";
+            var url = "{{ site_url('/promotion/index/cate/3001/code/2575') }}";
         }
         location.href = url;
     }

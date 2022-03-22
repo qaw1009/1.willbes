@@ -60,7 +60,8 @@ class PredictCodeModel extends WB_Model
     public function getPredictForSubjectAll($predict_idx = null)
     {
         $column = "
-            a.PredictIdx, a.TakeMockPart, a.SubjectCode, b.CcdName, b.Type, a.RegDatm ,c.wAdminName AS RegAdminName
+            a.PrsIdx, a.PredictIdx, a.TakeMockPart, a.SubjectCode, a.RegDatm, a.OrderNum, b.CcdName, b.Type, IF(b.Type='P','필수','선택') AS TypeName
+            ,c.wAdminName AS RegAdminName
             ,(SELECT CcdName FROM {$this->_table['predict_code']} AS s1 WHERE s1.Ccd = a.TakeMockPart) AS TakeMockPartName
         ";
 
@@ -85,5 +86,28 @@ class PredictCodeModel extends WB_Model
             INNER JOIN {$this->_table['wbs_sys_admin']} AS c ON a.RegAdminIdx = c.wAdminIdx
         ";
         return $this->_conn->query("select ". $column . $from . $where . $order_by)->result_array();
+    }
+
+    public function deleteSubjectCode($form_data = [])
+    {
+        try {
+            $this->_conn->trans_begin();
+
+            $update_data = [
+                'IsStatus' => 'N',
+                'UpdDatm' => date('Y-m-d H:i:s'),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+            $this->_conn->set($update_data)->where('PrsIdx', element('prs_idx', $form_data));
+            if ($this->_conn->update($this->_table['predict_code_r_subject']) === false) {
+                throw new \Exception('과목삭제 실패입니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 }

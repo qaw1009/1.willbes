@@ -1621,10 +1621,12 @@ class SurveyModel extends WB_Model
      */
     public function subjectList($PredictIdx, $pridx) {
         try {
-            $column = 'SubjectCode';
+            $column = 'TotalScore, pp.PpIdx, CcdName, pp.Type';
             $from = "
                 FROM {$this->_table['predictRegister']} AS pr
                 JOIN {$this->_table['predictRegisterR']} AS prc ON pr.PrIdx = prc.PrIdx
+                INNER JOIN {$this->_table['predictPaper']} AS pp ON prc.SubjectCode = pp.SubjectCode
+                INNER JOIN {$this->_table['predictCode']} AS pc ON pp.SubjectCode = pc.Ccd
             ";
             $arr_condition = [
                 'EQ' => [
@@ -1636,31 +1638,9 @@ class SurveyModel extends WB_Model
 
             $where = $this->_conn->makeWhere($arr_condition);
             $where = $where->getMakeWhere(false);
-            $query = $this->_conn->query('select ' . $column . $from . $where);
-            $data = $query->result_array();
-            if (empty($data) === true) {
-                throw new \Exception('등록된 과목이 없습니다.');
-            }
-
-            $subjectIn = '';
-            foreach ($data as $key => $val) {
-                $SubjectCode = $val['SubjectCode'];
-                $SubjectCode = substr($SubjectCode, 3, 3);
-                if ($key == 0) {
-                    $subjectIn = "100" . $SubjectCode;
-                } else {
-                    $subjectIn .= ", 100" . $SubjectCode;
-                }
-            }
-
-            $column = 'TotalScore, pp.PpIdx, CcdName, pp.Type';
-            $from = "
-                FROM {$this->_table['predictPaper']} AS pp
-                LEFT JOIN {$this->_table['predictCode']} AS pc ON pp.SubjectCode = pc.Ccd
-            ";
-            $order_by = " ORDER BY OrderNum";
-            $where = " WHERE pp.PredictIdx = " . $PredictIdx . " AND SubjectCode IN (" . $subjectIn . ") AND pp.IsUse = 'Y'";
+            $order_by = " ORDER BY pc.OrderNum";
             $data = $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
+
             if (empty($data) === true) {
                 throw new \Exception('조회된 과목이 없습니다.');
             }
@@ -1670,8 +1650,6 @@ class SurveyModel extends WB_Model
 
         return $data;
     }
-
-
 
     /**
      * 과목호출

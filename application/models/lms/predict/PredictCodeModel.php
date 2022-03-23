@@ -22,15 +22,17 @@ class PredictCodeModel extends WB_Model
 
     /**
      * 합격예측별 직렬
+     * @param null $predict_idx
      * @return mixed
      */
-    public function getPredictForTakeMockPart()
+    public function getPredictForTakeMockPart($predict_idx = null)
     {
         $column = "a.PredictIdx, a.TakeMockPart, b.CcdName";
         $arr_condition = [
             'EQ' => [
+                'PredictIdx' => $predict_idx,
                 'IsStatus' => 'Y'
-                ]
+            ]
         ];
         $sub_where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $arr_condition = [
@@ -56,8 +58,11 @@ class PredictCodeModel extends WB_Model
 
     /**
      * 합격예측별 직렬별 과목 전체 리스트
+     * @param null $predict_idx
+     * @param null $take_mock_part
+     * @return mixed
      */
-    public function getPredictForSubjectAll($predict_idx = null)
+    public function getPredictForSubjectAll($predict_idx = null, $take_mock_part = null)
     {
         $column = "
             a.PrsIdx, a.PredictIdx, a.TakeMockPart, a.SubjectCode, a.RegDatm, a.OrderNum, b.CcdName, b.Type, IF(b.Type='P','필수','선택') AS TypeName
@@ -68,6 +73,7 @@ class PredictCodeModel extends WB_Model
         $arr_condition = [
             'EQ' => [
                 'a.PredictIdx' => $predict_idx,
+                'a.TakeMockPart' => $take_mock_part,
                 'a.IsStatus' => 'Y',
                 ]
         ];

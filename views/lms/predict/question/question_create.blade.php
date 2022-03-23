@@ -14,6 +14,7 @@
                 {!! html_site_select($search_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                 <input type="hidden" name="idx" value="{{ ($method == 'PUT') ? $data['PpIdx'] : '' }}">
                 <input type="hidden" id="sType" name="Type" @if($method == 'PUT') value="{{ $data['Type'] }}" @endif/>
+                <input type="hidden" name="isDeny" value="{{ $isDeny }}">
                 <select id="temp_subject_code" style="display: none;">
                     @if($method == 'PUT')
                         <option value="{{$data['PredictIdx'].'_'.$data['TakeMockPart']}}"></option>

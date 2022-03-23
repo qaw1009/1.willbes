@@ -20,9 +20,7 @@
 
         .sky {position:fixed; top:200px; right:10px; z-index:11;}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2589_top_bg.jpg) no-repeat center top; }
-        .youtube {}
-        .youtube iframe {width:900px; height:525px;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2589_top_bg.jpg) no-repeat center top;}
 
         .evtMenu ul {width:1120px; margin:100px auto 0;}
         .evtMenu li {display:inline; float:left; width:25%; position: relative;}
@@ -142,9 +140,6 @@
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2589_top.jpg" title="국가직 9급 풀케어 서비스" />
-            <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/85P7aoE5tew?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
         </div>
 
         <div class="evtCtnsBox">

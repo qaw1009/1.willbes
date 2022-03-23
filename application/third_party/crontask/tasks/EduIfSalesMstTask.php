@@ -104,7 +104,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
 
             // 교수정보 조회
             $query = /** @lang text */ '
-                select SYS_CD, CUD_CD, SEND_TIME, TEACHER_CD, TEACHER_NM, CONTRACT_FR, CONTRACT_TO, CONTRACT_PAY
+                select SYS_CD, CUD_CD, current_timestamp() as SEND_TIME, TEACHER_CD, TEACHER_NM, CONTRACT_FR, CONTRACT_TO, CONTRACT_PAY
                 from ' . $this->_src_table['teacher'] . '
                 where IF_DATE = ?
                 order by IF_IDX asc
@@ -139,7 +139,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
 
             // 상품정보 조회
             $query = /** @lang text */ '
-                select SYS_CD, CUD_CD, SEND_TIME, A_CD, P_TYPE, TEACHER_CD, P_CD, P_NM, P_CRE_DATE, C_NM, C_DETAIL_NM, FR_DATE, TO_DATE
+                select SYS_CD, CUD_CD, current_timestamp() as SEND_TIME, A_CD, P_TYPE, TEACHER_CD, P_CD, P_NM, P_CRE_DATE, C_NM, C_DETAIL_NM, FR_DATE, TO_DATE
                     , PRICE, REFUND, C_DAY, C_PRICE, C_RATE
                 from ' . $this->_src_table['product'] . '
                 where IF_DATE = ?
@@ -175,7 +175,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
 
             // 상품 강의스케줄 조회
             $query = /** @lang text */ '
-                select SYS_CD, CUD_CD, SEND_TIME, TEACHER_CD, P_CD, P_NM, C_NM, C_DETAIL_NM, C_SCH_DATE
+                select SYS_CD, CUD_CD, current_timestamp() as SEND_TIME, TEACHER_CD, P_CD, P_NM, C_NM, C_DETAIL_NM, C_SCH_DATE
                 from ' . $this->_src_table['product_sch'] . '
                 where IF_DATE = ?
                 order by IF_IDX asc
@@ -210,7 +210,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
 
             // 매출정보 조회
             $query = /** @lang text */ '
-                select SYS_CD, CUD_CD, SEND_TIME, ORDER_NO, INOUT_CD, OUT_ABLE_CD, MEMBERSHIP_NO, MEMBERSHIP_NM
+                select SYS_CD, CUD_CD, current_timestamp() as SEND_TIME, ORDER_NO, INOUT_CD, OUT_ABLE_CD, MEMBERSHIP_NO, MEMBERSHIP_NM
                     , IN_RT, IN_CH, IN_METHOD, CAMPUS, TEACHER_CD, P_CD, C_CD, C_DETAIL_NM, C_ON_FR_DATE, C_ON_TO_DATE, INOUT_DATE, TODAY_INOUT_AMT
                 from ' . $this->_src_table['order'] . '
                 where IF_DATE = ?

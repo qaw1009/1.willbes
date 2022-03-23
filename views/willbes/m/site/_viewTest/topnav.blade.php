@@ -133,7 +133,7 @@
                         </ul>
                     </div>
                 @else
-                    <div class="c_both {{ $__cfg['IsPassSite'] === false ? 'mb10' : '' }}"></div>
+                    {{--<div class="c_both {{ $__cfg['IsPassSite'] === false ? 'mb10' : '' }}"></div>--}}
                 @endif
             </div>
         </div>

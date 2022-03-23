@@ -70,7 +70,7 @@
         <div class="evtCtnsBox evt01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2588_01.jpg" alt="후기" />
             <div class="btn NGEB">
-                <a href="http://cafe.daum.net/LAW-KDJTEAM/I7Bo" title="확인하기" target="_blank">더 많은 합겨수기 확인하기 ></a>
+                <a href="http://cafe.daum.net/LAW-KDJTEAM/I7Bo" title="확인하기" target="_blank">더 많은 합격수기 확인하기 ></a>
             </div>
         </div>
         

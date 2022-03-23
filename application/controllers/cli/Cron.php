@@ -32,9 +32,9 @@ class Cron extends \app\controllers\BaseController
         $scheduler = new crontask\Scheduler();
 
         $scheduler->addTasks([
-            (new crontask\tasks\EduIfSalesMstTask())->setExpression('10 4 * * *')   // 매일 4시 10분 실행
-            , (new crontask\tasks\SampleTask())->setExpression('10 0 * * *')        // 매일 0시 10분 실행
+            (new crontask\tasks\EduIfSalesMstTask())->setExpression('10 2 * * *')   // 매일 2시 10분 실행
             /* 사용안함
+            , (new crontask\tasks\SampleTask())->setExpression('10 0 * * *')                // 매일 0시 10분 실행
             , (new crontask\tasks\MemberPointExpireTask())->setExpression('10 0 * * *')     // 매일 0시 10분 실행
             , (new crontask\tasks\VbankWaitToExpireTask())->setExpression('40 0 * * *')     // 매일 0시 40분 실행
             , (new crontask\tasks\MockGradeMakeTask())->setExpression('10 1 * * *')         // 매일 1시 10분 실행
@@ -43,5 +43,30 @@ class Cron extends \app\controllers\BaseController
         ]);
 
         $scheduler->run();
+    }
+
+    /**
+     * 테스트 실행
+     */
+    public function testRun()
+    {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
+        $task = new crontask\tasks\EduIfSalesMstTask();
+        $result = $task->run();
+
+        var_dump($result);
+    }
+
+    /**
+     * 테스트 커넥션
+     */
+    public function testConn()
+    {
+        $task = new crontask\tasks\EduIfSalesMstTask();
+        $result = $task->testConn();
+
+        var_dump($result);
     }
 }

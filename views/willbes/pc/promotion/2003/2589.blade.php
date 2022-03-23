@@ -1134,15 +1134,6 @@
                     </a>
                 </div>
 
-            <!--
-                <div class="Cts03_01">
-                    <h3>2020년 6월 13일 시행 <span>지방직 9급 시험 총평</span></h3>
-                    <div>
-                        {!! $data['Content'] !!}
-                    </div>
-                </div>
-            -->
-
                 <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2022/03/2589_03_02.jpg" title="시험후기 댓글 이벤트" /></div>
                 {{--시험평가댓글--}}
                 @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

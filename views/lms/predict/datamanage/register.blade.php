@@ -7,13 +7,21 @@
             <div class="x_content">
                 <form class="form-horizontal" id="invoice_form" name="invoice_form" method="POST" onsubmit="return false;">
                     {!! csrf_field() !!}
+                    <input type="hidden" name="predict_idx" value="{{$PredictIdx}}">
+
                     <div class="form-group form-group-sm form-group-bordered">
                         <label class="control-label col-md-1">엑셀정보</label>
                         <div class="col-md-11 form-inline">
                             <input type="file" id="attach_file" name="attach_file" class="form-control" title="송장엑셀파일" value="">
-                            <button type="button" name="btn_file_upload" class="btn btn-primary btn-sm mb-0 ml-10 mr-10" onClick="registData({{ $PredictIdx }})">엑셀 업로드</button>
-                            <button type="button" name="btn_file_download" class="btn btn-success btn-sm mb-0">샘플엑셀 다운로드</button>
-                            <button type="button" name="btn_fakedata_download" class="btn btn-success btn-sm mb-0">가데이터 엑셀 다운로드</button>
+                            <select class="form-control" name="take_mock_part" title="직렬">
+                                <option value="">직렬선택</option>
+                                @foreach($arr_take_mock_part_list as $row)
+                                    <option class="{{$row['PredictIdx']}}" value="{{$row['TakeMockPart']}}">{{$row['CcdName']}}</option>
+                                @endforeach
+                            </select>
+                            <button type="button" name="btn_file_download" class="btn btn-success btn-sm mb-0">직렬별 샘플엑셀 다운로드</button>
+                            <button type="button" name="btn_file_upload" class="btn btn-primary btn-sm mb-0 mr-20" onClick="registData({{ $PredictIdx }})">엑셀 업로드</button>
+                            <button type="button" name="btn_fakedata_download" class="btn btn-dark btn-sm mb-0">가데이터 엑셀 다운로드</button>
                         </div>
                     </div>
                     <div class="row mt-10">
@@ -141,7 +149,7 @@
             location.replace('{{ site_url('/predict/datamanage/') }}' + getQueryString());
         });
 
-        //
+        // 가데이터 등록
         var registData = function(predictidx) {
             var data, is_file, files;
 
@@ -151,10 +159,16 @@
                 return;
             }
 
+            if ($invoice_form.find('select[name="take_mock_part"]').val() == '') {
+                alert('직렬을 선택해주세요.');
+                return;
+            }
+
             data = new FormData();
             data.append('{{ csrf_token_name() }}', $invoice_form.find('input[name="{{ csrf_token_name() }}"]').val());
             data.append('_method', 'POST');
             data.append('predictidx', predictidx);
+            data.append('take_mock_part', $invoice_form.find('select[name="take_mock_part"]').val());
             data.append('attach_file', $invoice_form.find('input[name="attach_file"]')[0].files[0]);
             is_file = true;
 
@@ -162,18 +176,25 @@
                 return;
             }
 
-            sendAjax('{{ site_url('/predict/datamanage/redata') }}', data, function(ret) {
+            sendLoadingAjax('{{ site_url('/predict/datamanage/redata') }}', data, function(ret) {
                 if (ret.ret_cd) {
                     notifyAlert('success', '알림', ret.ret_msg);
                     $datatable.draw();
                     $invoice_form.find('input[name="attach_file"]').val('');
                 }
-            }, showError, false, 'POST', 'json', is_file);
+            }, showError, 'POST', $invoice_form, 'json', is_file);
         };
 
         // 샘플엑셀다운로드 버튼 클릭
-        $('button[name="btn_file_download"]').on('click', function() {
-            location.replace('{{ site_url('/predict/datamanage/sampleDownload') }}');
+        $('button[name="btn_file_download"]').on('click', function(event) {
+            /*location.replace('{{ site_url('/predict/datamanage/sampleDownload') }}');*/
+
+            if ($invoice_form.find('select[name="take_mock_part"]').val() == '') {
+                alert('직렬을 선택해주세요.');
+                return;
+            }
+            event.preventDefault();
+            formCreateSubmit('{{ site_url('/predict/datamanage/sampleDownload') }}', $invoice_form.serializeArray(), 'POST');
         });
 
         $('button[name="btn_fakedata_download"]').on('click', function(event) {

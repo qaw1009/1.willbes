@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Datamanage extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict');
+    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict', 'predict/predictCode');
     protected $helpers = array();
     /*protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값*/
 
@@ -55,6 +55,9 @@ class Datamanage extends \app\controllers\BaseController
         $area = $this->predictModel->getArea($sysCode_Area);
         $serial = $this->predictModel->getSerialAll();
 
+        //직렬리스트
+        $arr_take_mock_part_list = $this->predictCodeModel->getPredictForTakeMockPart($PredictIdx);
+
         if(empty($PredictIdx) === true){
             $method = "CREATE";
             $data = array();
@@ -68,6 +71,7 @@ class Datamanage extends \app\controllers\BaseController
             'PredictIdx' => $PredictIdx,
             'area' => $area,
             'serial' => $serial,
+            'arr_take_mock_part_list' => $arr_take_mock_part_list
         ]);
     }
 
@@ -110,10 +114,11 @@ class Datamanage extends \app\controllers\BaseController
      */
     public function redata()
     {
-        $predictidx = get_var($this->_reqP('predictidx'), 'form');
-
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST,PUT]'],
+            ['field' => 'predictidx', 'label' => '직렬', 'rules' => 'trim|required'],
+            ['field' => 'attach_file', 'label' => '가데이터 엑셀파일', 'rules' => 'callback_validateFileRequired[attach_file]'],
+            ['field' => 'take_mock_part', 'label' => '직렬', 'rules' => 'trim|required'],
         ];
 
         if ($this->validate($rules) === false) {
@@ -121,12 +126,12 @@ class Datamanage extends \app\controllers\BaseController
         }
 
         $params = $this->_getInvoiceExcelData();
-
         if ($params === false) {
             return $this->json_error('엑셀파일 읽기에 실패했습니다.');
         }
 
-        $result = $this->predictModel->tempDataUpload($predictidx, $params);
+        /*$result = $this->predictModel->tempDataUpload($predictidx, $params);*/
+        $result = $this->predictModel->tempDataUpload($params, $this->_reqP(null));
         return $this->json_result($result, '저장 되었습니다.', $result);
     }
 
@@ -152,9 +157,27 @@ class Datamanage extends \app\controllers\BaseController
      */
     public function sampleDownload()
     {
-        $this->load->helper('download');
+        /*$this->load->helper('download');
         $file_path = STORAGEPATH . 'resources/sample/sample_predict.xls';
-        force_download($file_path, null);
+        force_download($file_path, null);*/
+
+        $predict_idx = $this->_reqP('predict_idx');
+        $take_mock_part = $this->_reqP('take_mock_part');
+
+        $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
+        $area = $this->predictModel->getArea($sysCode_Area);
+
+        $result_subject = $this->predictCodeModel->getPredictForSubjectAll($predict_idx, $take_mock_part);
+        $headers = ['지역','지역코드'];
+        $paper_headers = [];
+        foreach ($result_subject as $row) {
+            $paper_headers[] = $row['CcdName'];
+        }
+        $headers = array_merge($headers,$paper_headers);
+
+        $file_name = 'sample_'.$result_subject[0]['TakeMockPartName'];
+        $this->load->library('excel');
+        $this->excel->exportHugeExcel($file_name, $area, $headers);
     }
 
     public function originSampleDataDelete()
@@ -176,7 +199,7 @@ class Datamanage extends \app\controllers\BaseController
      */
     public function exportFakeExcel()
     {
-        $arr_result = $this->predictModel->predictRegistFakeListForExcel($this->_reqP('search_predict_idx'));
+        $arr_result = $this->predictModel->predictRegistFakeListForExcel($this->_reqP(null));
         $last_query = $this->predictModel->getLastQuery();
         $file_name = '합격예측성적 가데이터_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
         $headers = ['직렬', '지역'];

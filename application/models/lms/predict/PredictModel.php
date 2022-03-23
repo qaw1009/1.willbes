@@ -70,8 +70,10 @@ class PredictModel extends WB_Model
         'predict_r_product' => 'lms_predict_r_product',
         'predictFinal' => 'lms_predict_final',
         'predictFinalPoint' => 'lms_predict_final_point',
-        'predictSuccessfulCount' => 'lms_predict_successful_count'
+        'predictSuccessfulCount' => 'lms_predict_successful_count',
+        'predict_code_r_subject' => 'lms_predict_code_r_subject',
     ];
+    private $_temp_base_excel = ['C','D','E','F','G','H','I','J','K','L','M'];
 
     public $upload_path;            // 업로드 기본경로
     public $upload_path_predict;       // 통파일 저장경로: ~/predict/{idx}/
@@ -379,22 +381,31 @@ class PredictModel extends WB_Model
      * @param $predict_idx
      * @return mixed
      */
-    public function predictRegistFakeListForExcel($predict_idx)
+    public function predictRegistFakeListForExcel($form_data = [])
     {
         //과목정보조회
-        $queryString = "PpIdx, PaperName from {$this->_table['predictPaper']} where PredictIdx = ?";
-        $paperList = $this->_conn->query("select ". $queryString, $predict_idx)->result_array();
+        $condition = [
+            'EQ' => [
+                'a.PredictIdx' => element('search_predict_idx', $form_data),
+            ]
+        ];
+
+        $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
+        $queryString = "a.PpIdx, CONCAT(a.PaperName,':',b.CcdName) AS PaperName
+            from {$this->_table['predictPaper']} as a
+            INNER JOIN {$this->_table['predictCode']} AS b ON a.TakeMockPart = b.Ccd AND b.GroupCcd = 0
+        ";
+        $paperList = $this->_conn->query("select ". $queryString . $where)->result_array();
 
         $order_by = ['a.TakeMockPart' => 'ASC', 'a.TakeArea' => 'ASC'];
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-
         $column = "
             c.CcdName AS TakeMockPartName,d.CcdName AS TakeAreaName
             #GROUP_CONCAT(b.PaperName ORDER BY a.PpIdx ASC) AS PaperName,
             #GROUP_CONCAT(a.OrgPoint ORDER BY a.PpIdx ASC) AS OrgPoint
         ";
         foreach ($paperList as $row) {
-            $column .= ",(SELECT OrgPoint FROM {$this->_table['predictGradesOrigin']} AS t1 WHERE t1.PrIdx = a.PrIdx AND t1.PpIdx = '{$row['PpIdx']}') AS '{$row['PaperName']}'";
+            $column .= ",(SELECT OrgPoint FROM {$this->_table['predictGradesOrigin']} AS t1 WHERE t1.PrIdx = a.PrIdx AND t1.PpIdx = '{$row['PpIdx']}') AS '{$row['PaperName']}({$row['PpIdx']})'";
         }
 
         $from = "
@@ -406,7 +417,7 @@ class PredictModel extends WB_Model
 
         $condition = [
             'EQ' => [
-                'a.PredictIdx' => $predict_idx,
+                'a.PredictIdx' => element('search_predict_idx', $form_data),
                 'a.MemIdx' => '1000000'
             ],
             /*'NOT' => [
@@ -416,6 +427,7 @@ class PredictModel extends WB_Model
 
         $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
         $group_by = " GROUP BY a.PrIdx ";
+
         return [
             'paperList' => $paperList,
             'list' => $this->_conn->query("select ". $column . $from . $where . $group_by . $order_by_offset_limit)->result_array()
@@ -576,7 +588,7 @@ class PredictModel extends WB_Model
      */
     public function getArea($GroupCcd){
         $column = "
-            Ccd, CcdName  
+            CcdName, Ccd
         ";
 
         $from = "
@@ -689,7 +701,101 @@ class PredictModel extends WB_Model
     /**
      *  가데이터입력
      */
-    public function tempDataUpload($PredictIdx, $params = [])
+    public function tempDataUpload($params = [], $form_data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $arr_ppidx = $this->getPpIdx($form_data);
+            foreach ($params as $row) {
+                $take_area = $row['B'];
+
+                if (empty($take_area) === false) {
+                    // 데이터 등록
+                    $addRegData = [
+                        'PredictIdx' => element('predictidx', $form_data),
+                        'MemIdx' => 1000000,
+                        'SiteCode' => 2001,
+                        'TakeMockPart' => element('take_mock_part', $form_data),
+                        'TakeNumber' => '999',
+                        'TakeArea' => $take_area,
+                        'AddPoint' => 0,
+                        'IsStatus' => 'Y',
+                        'LectureType' => 1,
+                        'Period' => 1,
+                        'IsTake' => 'N'
+                    ];
+                    if ($this->_conn->set($addRegData)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictRegister']) === false) {
+                        throw new \Exception('등록에 실패했습니다.');
+                    }
+                    $idx = $this->_conn->insert_id();
+
+                    $arrPoint = [];
+                    foreach ($this->_temp_base_excel as $sel_key => $sel_name) {
+                        if (array_key_exists($sel_name, $row)) {
+                            if (empty($row[$sel_name]) === false) {
+                                $arrPoint[$sel_key] = $row[$sel_name];
+                            } else {
+                                $arrPoint[$sel_key] = 0;
+                            }
+                        }
+                    }
+
+                    foreach ($arrPoint as $pp_key => $pp_point) {
+                        $addOriginData = [
+                            'MemIdx' => 1000000,
+                            'PrIdx' => $idx,
+                            'PredictIdx' => element('predictidx', $form_data),
+                            'PpIdx' => $arr_ppidx[$pp_key]['PpIdx'],
+                            'TakeMockPart' => element('take_mock_part', $form_data),
+                            'TakeArea' => $take_area,
+                            'OrgPoint' => $pp_point,
+                        ];
+                        if ($this->_conn->set($addOriginData)->insert($this->_table['predictGradesOrigin']) === false) {
+                            throw new \Exception('점수등록에 실패했습니다.');
+                        }
+                    }
+                }
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 합격예측+직렬에 설정된 과목코드 조회
+     * @param array $form_data
+     * @return mixed
+     */
+    private function getPpIdx($form_data = [])
+    {
+        $column = "PpIdx";
+        $arr_condition = [
+            'EQ' => [
+                'a.PredictIdx' => element('predictidx', $form_data)
+                ,'a.TakeMockPart' => element('take_mock_part', $form_data)
+                ,'a.IsStatus' => 'Y'
+                ,'a.IsUse' => 'Y'
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+
+        $arr_order_by = [
+            'b.TakeMockPart' => 'ASC'
+            ,'b.OrderNum' => 'ASC'
+        ];
+        $order_by = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
+        $from = "
+                FROM {$this->_table['predictPaper']} as a
+                INNER JOIN lms_predict_code_r_subject AS b ON a.SubjectCode = b.SubjectCode AND b.IsStatus = 'Y'
+            ";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        return $query->result_array();
+    }
+    public function tempDataUpload_backup($PredictIdx, $params = [])
     {
         //print_r($params);
 

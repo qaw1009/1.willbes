@@ -119,6 +119,7 @@
                     <table class="boardTypeB">
                         <thead>
                         <tr>
+                            <th scope="col">직렬</th>
                             <th scope="col">과목</th>
                             <th scope="col">참여자 실시간 평균</th>
                         </tr>
@@ -126,7 +127,11 @@
                         <tbody>
                         @foreach($gradelist2 as $row)
                             <tr>
-                                <th class="{{ $row['Type'] == 'P' ? 'thBg01' : '' }}">{{ $row['SubjectName'] }}</th>
+                                <th class="{{ $row['Type'] == 'P' ? 'thBg01' : '' }}">
+                                    일반공채(남)/(여), 101단
+                                    {{--전의경경채--}}
+                                </th>
+                                <td>{{ $row['SubjectName'] }}</td>
                                 <td>{{ $row['Avg'] }}</td>
                             </tr>
                         @endforeach
@@ -153,7 +158,7 @@
 
         {{--합격예측 참여자 분석 현황--}}
         <div class="m_section3_3">
-            <h2><span>합격예측 참여자</span> 분석 현황</h2>
+            <h2><span>합격예측 참여자</span> 분석 현황 - 일반공채(남), 일반공채(여), 101단 </h2>
             @if(empty($pointList) === false)
                 <div class="m_section3_3L">
                     <h3><Expect>총점</Expect> 성적 분포</h3>
@@ -287,16 +292,18 @@
                 @foreach($surveyStatisticsList['Now'] as $title => $val)
                     <div class="graph_box" @if($loop->index > 1) style="display: none" @endif>
                         <table class="boardTypeC">
-                            <col width="40%" />
+                            {{--<col width="40%" />--}}
                             <col width="20%" />
-                            <col width="40%" />
+                            <col width="80%" />
                             @if(empty($val) === false)
                                 @foreach($val as $item => $spread)
                                 <tr>
+                                    {{--
                                     <td>
                                         <div class="graph2ch"><span class="graph2" style="width:{{ $surveyStatisticsList['Prev'][$title][$item] or 0 }}%"></span></div>
                                         <Expect class="ratio2ch">{{ $surveyStatisticsList['Prev'][$title][$item] or 0 }}%</Expect>
                                     </td>
+                                    --}}
                                     <th>{{ $item }}</th>
                                     <td>
                                         <div class="graph"><span class="graph1" style="width:{{ $spread or 0 }}%"></span></div>
@@ -306,7 +313,7 @@
                                 @endforeach
                             @endif
                             <tr>
-                                <td>2021년 1차</td>
+                                {{--<td>2021년 1차</td>--}}
                                 <th>구분</th>
                                 <td>2022년 1차</td>
                             </tr>

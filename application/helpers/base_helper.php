@@ -54,6 +54,24 @@ if (!function_exists('config_get')) {
     }
 }
 
+if (!function_exists('contains_with')) {
+    /**
+     * haystack(대상 문자열)이 needles(찾을 문자열 배열)가 포함되어 있는지 여부 체크
+     * @param $haystack
+     * @param $needles
+     * @return bool
+     */
+    function contains_with($haystack, $needles)
+    {
+        foreach ((array)$needles as $needle) {
+            if ($needle != '' && strpos($haystack, $needle) !== false) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
 if (!function_exists('csrf_field')) {
     /**
      * get csrf token input html

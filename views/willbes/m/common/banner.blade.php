@@ -15,7 +15,7 @@ var html = '', link_url = '#none', link_target = 'self';
         html += '</div>';
     @else
         // 롤링 배너 (등록 배너개수가 2개 이상일 경우)
-        html = '<div class="{{ strpos($disp['DispRollingTypeName'], 'manual') === false ? 'swiper-container' : '' }} {{ $disp['DispRollingTypeName'] }} {{ $css_class }}">';
+        html = '<div class="{{ contains_with($disp['DispRollingTypeName'], ['manual', 'scrollbar']) === false ? 'swiper-container' : '' }} {{ $disp['DispRollingTypeName'] }} {{ $css_class }}">';
         html += '   <div class="swiper-wrapper">';
         @foreach($data as $idx => $row)
             @if(empty($row['LinkUrl']) === false && $row['LinkUrl'] == '#')

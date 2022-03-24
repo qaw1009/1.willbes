@@ -720,7 +720,6 @@
         // 직렬선택
         function selSurveyGraph(obj_val) {
             var json_data = [];
-            var html = "";
             var idx = 1;
             @if(empty($surveyList) === false)
                 json_data = {!! json_encode($surveyList) !!};
@@ -732,15 +731,40 @@
 
             $("#graph_box").html('');
             $.each(json_data[obj_val], function(type, data) {
-                html = '<div class="question">';
-                html += '<p>Q' + idx + '. ' + Object.keys(data) + '</p>';
-                html += '<div class="qBox">';
-                html += '<div id="survey_' + idx + '"></div>';
-                html += '</div>';
-                html += '</div>';
-                $("#graph_box").append(html);
-                nwagonChart(type, data, idx);
-                idx++;
+
+                // 응시직렬 선택형(그룹) 여러개 적용
+                if(Object.keys(data).length > 1){
+                    $.each(data, function (tit,val){
+                        selSurveyHtml(idx, tit);
+
+                        var names = [];
+                        var fields = [];
+                        var values = [];
+                        var cnt = 0;
+                        var title = tit;
+
+                        $.each(val, function(item_title, items) {
+                            names.push(item_title);
+
+                            var spreads = [];
+                            $.each(items, function(item, spread) {
+                                if(cnt == 0){
+                                    fields.push(item);
+                                }
+                                spreads.push(spread);
+                            });
+                            values[cnt] = spreads;
+                            cnt++;
+                        });
+
+                        nwagonChartOption(names, title, values, fields, idx);
+                        idx++;
+                    });
+                }else{
+                    selSurveyHtml(idx, Object.keys(data));
+                    nwagonChart(type, data, idx);
+                    idx++;
+                }
             });
         }
 
@@ -773,6 +797,23 @@
                 });
             });
 
+            nwagonChartOption(names, title, values, fields, idx);
+        }
+
+        // 직렬 리스트 html
+        function selSurveyHtml(idx, title){
+            var html = "";
+            html = '<div class="question">';
+            html += '<p>Q' + idx + '. ' + title + '</p>';
+            html += '<div class="qBox">';
+            html += '<div id="survey_' + idx + '"></div>';
+            html += '</div>';
+            html += '</div>';
+
+            $("#graph_box").append(html);
+        }
+
+        function nwagonChartOption(names, title, values, fields, idx){
             var options = {
                 'legend': {
                     names: names

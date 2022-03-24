@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PredictFinal extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict');
+    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict', 'predict/predictCode');
     protected $helpers = array();
     protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
@@ -19,15 +19,16 @@ class PredictFinal extends \app\controllers\BaseController
         ];
         list($data, $count) = $this->predictModel->mainList($condition);
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
+        //직렬리스트
+        $arr_take_mock_part_list = $this->predictCodeModel->getPredictForTakeMockPart();
         $area = $this->predictModel->getArea($sysCode_Area);
-        $serial = $this->predictModel->getSerialAll();
 
         $this->load->view('predict/predictFinal/index',[
             'predictList' => $data,
             'def_site_code' => $def_site_code,
             'arr_site_code' => $arr_site_code,
+            'arr_take_mock_part_list' => $arr_take_mock_part_list,
             'area' => $area,
-            'serial' => $serial,
         ]);
     }
 
@@ -41,7 +42,7 @@ class PredictFinal extends \app\controllers\BaseController
 
         $arr_condition = [
             'EQ' => [
-                'A.TakeMockPart' => $this->_reqP('search_TakeMockPart'),
+                'A.TakeMockPart' => $this->_reqP('search_take_mock_part'),
                 'A.TakeAreaCcd' => $this->_reqP('search_TakeArea'),
                 'C.PredictIdx' => $this->_reqP('search_PredictIdx'),
                 'C.SiteCode' => $this->_reqP('search_site_code'),
@@ -193,7 +194,8 @@ class PredictFinal extends \app\controllers\BaseController
             show_error('잘못된 접근 입니다.');
         }
 
-        $arr_base['take_mock_part'] = $this->predictModel->getSerialAll();
+        //직렬리스트
+        $arr_base['take_mock_part'] = $this->predictCodeModel->getPredictForTakeMockPart($params[0]);
         $arr_base['take_area'] = $this->codeModel->getCcd('712');
         $arr_condition = ['EQ' => ['ps.PredictIdx' => $params[0]]];
         $data = $this->predictModel->listSuccessful($arr_condition, ['ps.TakeMockPart' => 'asc', 'ps.TakeArea' => 'asc']);

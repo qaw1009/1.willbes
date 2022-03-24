@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Passline extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict' , 'mocktest/mockCommon');
+    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict', 'predict/predictCode');
     protected $helpers = array();
 
     public function __construct()
@@ -49,9 +49,11 @@ class Passline extends \app\controllers\BaseController
         $arr_site_code = get_auth_on_off_site_codes('N', true);
         $def_site_code = empty($arr_input['SiteCode']) === false ? $arr_input['SiteCode'] : key($arr_site_code);
 
-        $arr_base['serialList'] = $this->predictModel->getSerialAll();
+        //직렬리스트
+        $arr_base['serialList'] = $this->predictCodeModel->getPredictForTakeMockPart();
         $area_code = $this->config->item('sysCode_Area', 'predict');
         $arr_base['areaList'] = $this->predictModel->getArea($area_code);
+
         $arr_condition = [
             'EQ' => [
                 'A.TakeMockPart' => element('TakeMockPart', $arr_input),

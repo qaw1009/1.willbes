@@ -641,31 +641,6 @@ class PredictModel extends WB_Model
     }
 
     /**
-     *  합격예측용 직렬호출
-     */
-    public function getSerialAll($arr_condition = array()){
-        $column = "
-            Ccd, CcdName, Type  
-        ";
-
-        $from = "
-            FROM 
-                {$this->_table['predictCode']} 
-        ";
-
-        $order_by = " ORDER BY OrderNum";
-        if(empty($arr_condition)===true){
-            $where = " WHERE IsUse = 'Y' AND GroupCcd = 0";
-        }else{
-            $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
-        }
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-        $Res = $query->result_array();
-
-        return $Res;
-    }
-
-    /**
      *  합격예측용 기존데이터 호출
      */
     public function getProduct($PredictIdx){
@@ -3734,5 +3709,34 @@ class PredictModel extends WB_Model
         }
 
         return ['ret_cd' => true];
+    }
+
+    /**
+     * 합격예측에 설정된 직렬조회
+     * 콤마(,) => ROW형태 변환
+     */
+    public function getMockPartListForPredict($predict_idx = null)
+    {
+        $column = "p.MockPart, c.CcdName AS MockPartName";
+        $arr_condition = [
+            'EQ' => [
+                'PredictIdx' => $predict_idx
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        $order_by = $this->_conn->makeOrderBy(['c.Ccd' => 'ASC'])->getMakeOrderBy();
+
+        $from = "
+            FROM (
+                SELECT SUBSTRING_INDEX (SUBSTRING_INDEX(p.MockPart,',',numbers.n),',',-1) AS MockPart
+                FROM (SELECT 1 n
+                    UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
+                    UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10) numbers
+                INNER JOIN {$this->_table['predictProduct']} AS p ON CHAR_LENGTH (p.MockPart) - CHAR_LENGTH(REPLACE(p.MockPart,',','')) >= numbers . n-1
+                {$where}
+            ) AS p
+            INNER JOIN {$this->_table['predictCode']} AS c ON p.MockPart = c.Ccd AND c.GroupCcd = 0
+        ";
+        return $this->_conn->query("select ". $column . $from . $order_by)->result_array();
     }
 }

@@ -51,7 +51,7 @@
                         <th class="text-center">사용여부</th>
                         <th class="text-center">등록자</th>
                         <th class="text-center">등록일</th>
-                        {{-- <th class="text-center">직렬별과목</th> --}}
+                        {{--<th class="text-center">직렬별과목</th>--}}
                     </tr>
                     </thead>
                     <tbody>
@@ -114,7 +114,7 @@
             $list_form.on('click', '.btn-layer-subject-box', function () {
                 var predict_idx = $(this).data("predict-idx");
                 $('.btn-layer-subject-box').setLayer({
-                    'url' : '{{ site_url('/predict/baseCode/subject/') }}' + predict_idx,
+                    'url' : '{{ site_url('/predict/baseCode/listSubject/') }}' + predict_idx,
                     'width' : 900
                 });
             });

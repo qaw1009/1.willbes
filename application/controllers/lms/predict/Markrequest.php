@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Markrequest extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict');
+    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict', 'predict/predictCode');
     protected $helpers = array();
     protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
@@ -40,9 +40,6 @@ class Markrequest extends \app\controllers\BaseController
 
         $search_fi = $this->_req('search_fi', true);
         $search_site_code = $this->_req('search_site_code', true);
-        $search_TakeMockPart = $this->_req('search_TakeMockPart', true);
-        $search_TakeArea = $this->_req('search_TakeArea', true);
-
         if($search_site_code){
             $scode = $search_site_code;
         } else {
@@ -56,17 +53,16 @@ class Markrequest extends \app\controllers\BaseController
         ];
         list($data, $count) = $this->predictModel->mainList($condition);
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
+        //직렬리스트
+        $arr_take_mock_part_list = $this->predictCodeModel->getPredictForTakeMockPart();
         $area = $this->predictModel->getArea($sysCode_Area);
-        $serial = $this->predictModel->getSerialAll();
 
         $this->load->view('predict/markrequest/index', [
             'predictList' => $data,
             'arr_site_code' => $arr_site_code,
             'def_site_code' => $scode,
+            'arr_take_mock_part_list' => $arr_take_mock_part_list,
             'area' => $area,
-            'serial' => $serial,
-            'search_TakeMockPart'=> $search_TakeMockPart,
-            'search_TakeArea'=> $search_TakeArea,
             'search_fi'=> $search_fi
         ]);
     }
@@ -87,7 +83,7 @@ class Markrequest extends \app\controllers\BaseController
                 'PR.ApplyType' => $this->_req('search_ApplyType'),
                 'PR.SiteCode' => $this->_req('search_site_code'),
                 'PR.PredictIdx' => $this->_req('search_PredictIdx'),
-                'PR.TakeMockPart' => $this->_req('search_TakeMockPart'),
+                'PR.TakeMockPart' => $this->_req('search_take_mock_part'),
                 'PR.TakeArea' => $this->_req('search_TakeArea'),
             ],
             'ORG' => [

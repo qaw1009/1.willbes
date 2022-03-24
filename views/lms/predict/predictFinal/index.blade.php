@@ -62,10 +62,10 @@
                                 <option value="{{$row['PredictIdx']}}" class="{{$row['SiteCode']}}">[{{$row['PredictIdx']}}] {{$row['ProdName']}}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-5" id="search_TakeMockPart" name="search_TakeMockPart">
+                        <select class="form-control mr-5" id="search_take_mock_part" name="search_take_mock_part">
                             <option value="">응시직렬</option>
-                            @foreach($serial as $k => $v)
-                                <option value="{{$v['Ccd']}}">{{$v['CcdName']}}</option>
+                            @foreach($arr_take_mock_part_list as $row)
+                                <option class="{{$row['PredictIdx']}}" value="{{$row['TakeMockPart']}}">{{$row['CcdName']}}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-5" id="search_TakeArea" name="search_TakeArea">
@@ -134,6 +134,8 @@
         $(document).ready(function() {
             // 합격예측서비스명 자동 변경
             $search_form.find('select[name="search_PredictIdx"]').chained("#search_site_code");
+            //직렬
+            $search_form.find('select[name="search_take_mock_part"]').chained("#search_PredictIdx");
 
             //가데이터 셈플다운로드
             $('.btn-excel-download').on('click', function() {

@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Gradeprocessing extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict' , 'mocktest/mockCommon');
+    protected $models = array('sys/site', 'sys/code', 'sys/category', 'predict/predict' , 'predict/predictCode');
     protected $helpers = array();
 
     public function __construct()
@@ -40,8 +40,10 @@ class Gradeprocessing extends \app\controllers\BaseController
 
         //합격예측 기본정보호출
         $productList = $this->predictModel->getProductALL();
-        $serialList = $this->predictModel->getSerialAll();
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
+
+        //직렬리스트
+        $arr_take_mock_part_list = $this->predictCodeModel->getPredictForTakeMockPart();
         $areaList = $this->predictModel->getArea($sysCode_Area);
 
         $condition = [
@@ -55,7 +57,7 @@ class Gradeprocessing extends \app\controllers\BaseController
             'productList' => $data,
             'def_site_code' => $def_site_code,
             'arr_site_code' => $arr_site_code,
-            'serialList' => $serialList,
+            'arr_take_mock_part_list' => $arr_take_mock_part_list,
             'areaList' => $areaList
         ]);
     }

@@ -20,10 +20,10 @@
                                 {{--<option value="{{ $val['PredictIdx'] }}" class="{{ $val['SiteCode'] }}" @if($PredictIdx == $val['PredictIdx'] || $loop->first === true)checked="checked"@endif>[{{ $val['PredictIdx'] }}] {{ $val['ProdName'] }}</option>--}}
                             @endforeach
                         </select>
-                        <select class="form-control mr-5" id="search_TakeMockPart" name="search_TakeMockPart">
+                        <select class="form-control mr-5" id="search_take_mock_part" name="search_take_mock_part">
                             <option value="">직렬선택</option>
-                            @foreach($arr_base['serialList'] as $key => $val)
-                                <option value="{{ $val['Ccd'] }}" @if(empty($arr_input['TakeMockPart']) === false && $arr_input['TakeMockPart'] == $val['Ccd']) selected @endif>{{ $val['CcdName'] }}</option>
+                            @foreach($arr_base['serialList'] as $key => $row)
+                                <option class="{{$row['PredictIdx']}}" value="{{$row['TakeMockPart']}}">{{$row['CcdName']}}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-5" id="search_TakeArea" name="search_TakeArea">
@@ -154,6 +154,8 @@
         $(document).ready(function() {
             // 합격예측서비스명 자동 변경
             $search_form.find('select[name="search_PredictIdx"]').chained("#search_site_code");
+            // 직렬
+            $search_form.find('select[name="search_take_mock_part"]').chained("#search_PredictIdx");
 
             $datatable = $list_table.DataTable({
                 responsive: false,
@@ -167,7 +169,7 @@
         function selProd() {
             var qs = '?PredictIdx=' + $search_form.find('select[name="search_PredictIdx"]').val();
             qs += '&SiteCode=' + $search_form.find('select[name="search_site_code"]').val();
-            qs += '&TakeMockPart=' + $search_form.find('select[name="search_TakeMockPart"]').val();
+            qs += '&TakeMockPart=' + $search_form.find('select[name="search_take_mock_part"]').val();
             qs += '&TakeArea=' + $search_form.find('select[name="search_TakeArea"]').val();
             location.href = '/predict/passline/' + qs;
         }

@@ -14,6 +14,10 @@ class BaseEventSurvey extends \app\controllers\FrontController
         '1' => 'N'      // 불가능
     ];
 
+    //직렬그룹설정 : 합격예측별로 다를 수 있음.
+    private $_group_take_mock_part = [100,200,400];
+    private $_single_take_mock_part = [300];
+
     public function __construct()
     {
         parent::__construct();
@@ -187,7 +191,11 @@ class BaseEventSurvey extends \app\controllers\FrontController
         }
 
         // 2. 과목별 원점수 평균 (origin, 0점 제외)
-        $gradedata = $this->surveyModel->gradeList($PredictIdx);
+        /*$gradedata = $this->surveyModel->gradeList($PredictIdx);*/
+        $gradedata_1 = $this->surveyModel->gradeList_1($PredictIdx, $this->_group_take_mock_part);
+        $gradedata_2 = $this->surveyModel->gradeList_1($PredictIdx, $this->_single_take_mock_part);
+
+        $gradedata = [];
         $gradelist = array_pluck($gradedata, 'Avg', 'SubjectCode');
         $gradesubject = array_pluck($gradedata, 'SubjectName', 'SubjectCode');
 
@@ -223,10 +231,12 @@ class BaseEventSurvey extends \app\controllers\FrontController
         }
 
         // 4. 총점성적분포 (origin, 0점 포함)
-        $pointList = $this->surveyModel->pointArea($PredictIdx);
+        /*$pointList = $this->surveyModel->pointArea($PredictIdx);*/
+        $pointList = $this->surveyModel->pointArea_1($PredictIdx, $this->_group_take_mock_part);
 
         // 5. 과목별성적분포 (origin, 0점 제외)
-        $subjectPointList = $this->surveyModel->getSubjectPoint($PredictIdx);
+        /*$subjectPointList = $this->surveyModel->getSubjectPoint($PredictIdx);*/
+        $subjectPointList = $this->surveyModel->getSubjectPoint_1($PredictIdx, $this->_group_take_mock_part);
 
         // 6. 과목별단일선호도 (origin, 0점 제외)
         $bestList = $this->surveyModel->bestSubject($PredictIdx);
@@ -250,7 +260,8 @@ class BaseEventSurvey extends \app\controllers\FrontController
         $surveyList = $this->_getGraphData($series_data,$survey_series_data,$question_info);
 
         // 10. 과목별 오답랭킹
-        $wrongData = $this->surveyModel->wrongRank($PredictIdx);
+        /*$wrongData = $this->surveyModel->wrongRank($PredictIdx);*/
+        $wrongData = $this->surveyModel->wrongRank_1($PredictIdx);
         $wrongSubject = array_unique(array_pluck($wrongData, 'PaperName', 'PpIdx'));
         $wrongList = [];
         foreach ($wrongData as $row) {
@@ -273,7 +284,10 @@ class BaseEventSurvey extends \app\controllers\FrontController
             'wrongList' => $wrongList,
             'surveyList' => $surveyList,
             'SsIdx2' => $SsIdx2,
-            'series_data' => $series_data
+            'series_data' => $series_data,
+
+            'gradedata_1' => $gradedata_1,
+            'gradedata_2' => $gradedata_2,
         ], false);
     }
 

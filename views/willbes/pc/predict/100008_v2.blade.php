@@ -62,10 +62,10 @@
                                 직렬(지역)구분을 선택해주세요.
                                 {{--입력후--}}
                                 <div><strong>공통과목 : </strong> <span id="karea1"></span></div>
-                                <strong id="sel3">선택과목(3과목) : </strong>
+                                {{--<strong id="sel3">선택과목(3과목) : </strong>
                                 <ul id="karea2">
 
-                                </ul>
+                                </ul>--}}
                             </td>
                         </tr>
                         <tr>
@@ -357,13 +357,13 @@
                 return;
             }
 
-            if($("#TakeMockPart").val() == '300' || $("#TakeMockPart").val() == '800'){
+            /*if($("#TakeMockPart").val() == '300' || $("#TakeMockPart").val() == '800'){
             } else {
                 if($("input[name='Ssubject[]']:checked").length != 3){
                     alert('선택과목은 3개를 선택해 주세요.');
                     return ;
                 }
-            }
+            }*/
 
             var takenum = $('#TakeNumber').val();
             takenum = parseInt(takenum);

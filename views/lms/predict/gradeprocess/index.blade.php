@@ -20,10 +20,10 @@
                                 <option value="{{ $val['PredictIdx'] }}" @if($loop->first === true)checked="checked"@endif class="{{$val['SiteCode']}}">[{{ $val['PredictIdx'] }}] {{ $val['ProdName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-5" id="search_TakeMockPart" name="search_TakeMockPart">
+                        <select class="form-control" name="search_take_mock_part" title="직렬">
                             <option value="">직렬선택</option>
-                            @foreach($serialList as $key => $val)
-                                <option value="{{ $val['Ccd'] }}">{{ $val['CcdName'] }}</option>
+                            @foreach($arr_take_mock_part_list as $row)
+                                <option class="{{$row['PredictIdx']}}" value="{{$row['TakeMockPart']}}">{{$row['CcdName']}}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-5" id="search_TakeArea" name="search_TakeArea">
@@ -62,8 +62,8 @@
             <span class="required">*</span> 건수가 많아서 정상동작 안할시 사용해주세요.
             <select class="form-control mr-5" id="TakeMockPart" name="TakeMockPart">
                 <option value="">직렬별입력</option>
-                @foreach($serialList as $key => $val)
-                    <option value="{{ $val['Ccd'] }}">{{ $val['CcdName'] }}</option>
+                @foreach($arr_take_mock_part_list as $row)
+                    <option class="{{$row['PredictIdx']}}" value="{{$row['TakeMockPart']}}">{{$row['CcdName']}}</option>
                 @endforeach
             </select>
         </div>
@@ -100,6 +100,9 @@
             // 합격예측서비스명 자동 변경
             $search_form.find('select[name="search_PredictIdx"]').chained("#search_site_code");
             selProd($search_form.find('select[name="search_PredictIdx"]').val());
+            //직렬
+            $search_form.find('select[name="search_take_mock_part"]').chained("#search_PredictIdx");
+            $regi_form.find('select[name="TakeMockPart"]').chained("#search_PredictIdx");
 
             // DataTables
             $datatable = $list_table.DataTable({

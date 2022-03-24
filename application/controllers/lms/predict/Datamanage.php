@@ -52,11 +52,9 @@ class Datamanage extends \app\controllers\BaseController
     {
         if($param) $PredictIdx = $param[0];
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
-        $area = $this->predictModel->getArea($sysCode_Area);
-        $serial = $this->predictModel->getSerialAll();
-
         //직렬리스트
         $arr_take_mock_part_list = $this->predictCodeModel->getPredictForTakeMockPart($PredictIdx);
+        $area = $this->predictModel->getArea($sysCode_Area);
 
         if(empty($PredictIdx) === true){
             $method = "CREATE";
@@ -69,21 +67,20 @@ class Datamanage extends \app\controllers\BaseController
 
         $this->load->view('predict/datamanage/register', [
             'PredictIdx' => $PredictIdx,
+            'arr_take_mock_part_list' => $arr_take_mock_part_list,
             'area' => $area,
-            'serial' => $serial,
-            'arr_take_mock_part_list' => $arr_take_mock_part_list
         ]);
     }
 
     /**
      * 리스트
      */
-    public function list()
+    public function registerListAjax()
     {
         $condition = [
             'EQ' => [
                 'r.IsStatus' => 'Y',
-                'r.TakeMockPart' => $this->_reqP('search_TakeMockPart'),
+                'r.TakeMockPart' => $this->_reqP('search_take_mock_part'),
                 'r.TakeArea' => $this->_reqP('search_TakeArea'),
             ]
         ];

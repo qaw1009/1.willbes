@@ -316,6 +316,34 @@ class SurveyModel extends WB_Model
 
         return $query->result_array();
     }
+    public function gradeList_1($PredictIdx, $arr_target_mock_part)
+    {
+        $column = "b.CcdName AS SubjectName, a.Avg";
+
+        $arr_condition = [
+            'EQ' => [
+                'a.PredictIdx' => $PredictIdx,
+            ],
+            'IN' => [
+                'a.TakeMockPart' => $arr_target_mock_part
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+
+        $from = "
+        FROM (
+            SELECT c.SubjectCode, ROUND(AVG(a.OrgPoint)) AS AVG
+            FROM lms_predict_grades_origin AS a
+            INNER JOIN lms_predict_paper AS pp ON a.PpIdx = pp.PpIdx
+            INNER JOIN lms_predict_code_r_subject AS c ON pp.SubjectCode = c.SubjectCode
+            {$where}
+            GROUP BY c.GroupBy
+        ) AS a
+        INNER JOIN lms_predict_code AS b ON a.SubjectCode = b.Ccd
+        ";
+        $query = $this->_conn->query('select ' . $column . $from);
+        return $query->result_array();
+    }
 
     /**
      * 총점 성적분포
@@ -347,6 +375,50 @@ class SurveyModel extends WB_Model
         $order_by = " GROUP BY Pointarea ORDER BY Pointarea ASC";
 
         $query = $this->_conn->query('select ' . $column . $from . $order_by, [$PredictIdx]);
+        $result = $query->result_array();
+
+        $arr_point_area = [];
+        if (empty($result) === false) {
+            $total = array_sum(array_pluck($result, 'CNT'));    // 총인원수
+
+            // 점수대별 인원비율, (인원수/총인원수) * 100, PA0 ~ PA4
+            foreach ($result as $row) {
+                $arr_point_area['PA' . $row['Pointarea']] = $row['CNT'] < 1 ? 0 : ROUND($row['CNT'] / $total * 100, 2);
+            }
+        }
+
+        return $arr_point_area;
+    }
+    public function pointArea_1($PredictIdx, $arr_target_mock_part)
+    {
+        $column = "COUNT(*) AS CNT, Pointarea";
+
+        $arr_condition = [
+            'EQ' => [
+                'PredictIdx' => $PredictIdx,
+            ],
+            'IN' => [
+                'TakeMockPart' => $arr_target_mock_part
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+
+        $from = "            
+            FROM
+            (
+                SELECT 
+                    (case 
+                        when SUM(OrgPoint) <= 100 then 0
+                        when SUM(OrgPoint) >= 500 then 4
+                        else substr(SUM(OrgPoint), 1, 1)
+                    end) as Pointarea 
+                FROM {$this->_table['predict_grades_origin']}
+                {$where}
+                GROUP BY PrIdx
+            ) AS A                
+        ";
+        $order_by = " GROUP BY Pointarea ORDER BY Pointarea ASC";
+        $query = $this->_conn->query('select ' . $column . $from . $order_by);
         $result = $query->result_array();
 
         $arr_point_area = [];
@@ -420,6 +492,77 @@ class SurveyModel extends WB_Model
             }
         }
 
+        return $arr_point_area;
+    }
+    public function getSubjectPoint_1($PredictIdx, $arr_target_mock_part){
+        $column = "A.PpIdx, A.Pointarea, A.CNT, B.SubjectCode, C.CcdName AS SubjectName, A.TotalCNT";
+
+        $arr_condition = [
+            'EQ' => [
+                'a.PredictIdx' => $PredictIdx,
+            ],
+            'IN' => [
+                'a.TakeMockPart' => $arr_target_mock_part
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+
+        $from = "
+        FROM (
+            SELECT
+            m.PpIdx, m.Pointarea, m.CNT, tc.TotalCNT
+            FROM (
+                SELECT a.PpIdx
+                , (CASE 
+                    WHEN a.OrgPoint BETWEEN 1 AND 20 THEN 1
+                    WHEN a.OrgPoint BETWEEN 21 AND 40 THEN 2
+                    WHEN a.OrgPoint BETWEEN 41 AND 60 THEN 3
+                    WHEN a.OrgPoint BETWEEN 61 AND 80 THEN 4
+                    ELSE 5
+                END) AS Pointarea	
+                , COUNT(0) AS CNT
+                FROM lms_predict_grades_origin AS a
+                INNER JOIN lms_predict_paper AS pp ON a.PpIdx = pp.PpIdx
+                INNER JOIN lms_predict_code_r_subject AS c ON pp.SubjectCode = c.SubjectCode
+                {$where}
+                GROUP BY c.GroupBy, Pointarea
+            ) AS m
+            LEFT JOIN (
+                SELECT pp.PpIdx, COUNT(*) AS TotalCNT
+                FROM lms_predict_grades_origin AS a
+                INNER JOIN lms_predict_paper AS pp ON a.PpIdx = pp.PpIdx
+                INNER JOIN lms_predict_code_r_subject AS c ON pp.SubjectCode = c.SubjectCode
+                {$where}
+                GROUP BY c.GroupBy
+            ) AS tc ON m.PpIdx = tc.PpIdx
+        ) AS A
+        LEFT JOIN lms_predict_paper AS B ON A.PpIdx = B.PpIdx
+        LEFT JOIN lms_predict_code AS C ON B.SubjectCode = C.Ccd
+        ";
+
+        $query = $this->_conn->query('select ' . $column . $from);
+        /*echo '<pre>'.$this->_conn->last_query().'</pre>';*/
+        $result = $query->result_array();
+
+        $arr_point_area = [];
+        if (empty($result) === false) {
+            $tmp_subject_code = '';
+            foreach ($result as $idx => $row) {
+                if ($row['SubjectCode'] != $tmp_subject_code) {
+                    $arr_point_area[$row['SubjectCode']]['SubjectName'] = $row['SubjectName'];
+                }
+                for($i = 1; $i <= 5; $i++) {
+                    if ($i == $row['Pointarea']) {
+                        $arr_point_area[$row['SubjectCode']][$row['Pointarea']] = ROUND(($row['CNT'] / $row['TotalCNT']) * 100, 2);
+                    } else {
+                        if (isset($arr_point_area[$row['SubjectCode']][$i]) === false) {
+                            $arr_point_area[$row['SubjectCode']][$i] = 0;
+                        }
+                    }
+                }
+                $tmp_subject_code = $row['SubjectCode'];
+            }
+        }
         return $arr_point_area;
     }
 
@@ -554,6 +697,41 @@ class SurveyModel extends WB_Model
 
         $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx]);
 
+        return $query->result_array();
+    }
+    public function wrongRank_1($PredictIdx)
+    {
+        $column = "A.PpIdx, A.PqIdx, A.CNT, A.Answer1, A.Answer2, A.Answer3, A.Answer4, A.WrongCnt, A.RankNum
+            , round((A.Answer1 / A.CNT) * 100, 2) as AnswerRatio1
+            , round((A.Answer2 / A.CNT) * 100, 2) as AnswerRatio2
+            , round((A.Answer3 / A.CNT) * 100, 2) as AnswerRatio3
+            , round((A.Answer4 / A.CNT) * 100, 2) as AnswerRatio4
+            , pp.PaperName, pq.QuestionNO, pq.RightAnswer            
+        ";
+
+        $from = "
+            from (
+                select PpIdx, PqIdx, count(0) as CNT
+                    , sum(if(Answer = '1', 1, 0)) as Answer1
+                    , sum(if(Answer = '2', 1, 0)) as Answer2
+                    , sum(if(Answer = '3', 1, 0)) as Answer3
+                    , sum(if(Answer = '4', 1, 0)) as Answer4
+                    , sum(if(IsWrong = 'N', 1, 0)) as WrongCNT
+                    , row_number() over (partition by PpIdx order by WrongCnt desc, PqIdx asc) as RankNum 
+                from {$this->_table['predict_answer_paper']}
+                where PredictIdx = ?
+                    and Answer in ('1', '2', '3', '4')
+                group by PpIdx, PqIdx
+            ) as A
+                inner join {$this->_table['predict_paper']} as pp
+                    on A.PpIdx = pp.PpIdx
+                inner join {$this->_table['predict_question']} as pq
+                    on A.PpIdx = pq.PpIdx and A.PqIdx = pq.PqIdx
+            where A.RankNum between 1 and 5
+            order by A.PpIdx asc, A.RankNum asc            
+        ";
+        $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx]);
+        echo '<pre>'.$this->_conn->last_query().'</pre>';
         return $query->result_array();
     }
 

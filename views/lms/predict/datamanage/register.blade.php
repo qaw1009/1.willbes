@@ -48,10 +48,10 @@
                                 <option value="up">5개 이상</option>
                                 <option value="down">5개 이하</option>
                             </select>
-                            <select class="form-control mr-5" id="search_TakeMockPart" name="search_TakeMockPart">
+                            <select class="form-control mr-5" id="search_take_mock_part" name="search_take_mock_part">
                                 <option value="">응시직렬</option>
-                                @foreach($serial as $k => $v)
-                                    <option value="{{$v['Ccd']}}">{{$v['CcdName']}}</option>
+                                @foreach($arr_take_mock_part_list as $row)
+                                    <option class="{{$row['PredictIdx']}}" value="{{$row['TakeMockPart']}}">{{$row['CcdName']}}</option>
                                 @endforeach
                             </select>
                             <select class="form-control mr-5" id="search_TakeArea" name="search_TakeArea">
@@ -105,7 +105,7 @@
                 serverSide: true,
                 buttons: [],
                 ajax: {
-                    'url' : '{{ site_url('/predict/datamanage/list') }}',
+                    'url' : '{{ site_url('/predict/datamanage/registerListAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), {'start' : data.start, 'length' : data.length});

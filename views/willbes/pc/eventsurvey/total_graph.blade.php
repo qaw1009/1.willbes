@@ -96,10 +96,10 @@
                                 <th>합격안정권</th>
                                 @if($val2['IsUse'] == 'Y')<td> {{ $val2['StabilityAvrPoint'] ? $val2['StabilityAvrPoint'] : $val2['StabilityAvrPointRef'] }} 이상 </td>@else<td>집계중</td>@endif
                             </tr>
-                            <tr class="bg01">
+                            {{--<tr class="bg01">
                                 <th>직전시험 합격선</th>
                                 <td>{{ $val2['PassLineAgo'] }} </td>
-                            </tr>
+                            </tr>--}}
                             </tbody>
                         </table>
                         </span>
@@ -114,7 +114,10 @@
         {{--과목별 원점수 평균--}}
         <div class="m_section3_3">
             <h2>과목별 <span>원점수 평균</span></h2>
-            @if(empty($gradelist2) === false)
+            {{--@if(empty($gradelist2) === false)--}}
+            @if(empty($gradedata_1) === true || empty($gradedata_2) === true)
+                <div class="txtBox01">가답안 발표 후 해당 서비스가 제공됩니다.</div>
+            @else
                 <div class="m_section3_3L">
                     <table class="boardTypeB">
                         <thead>
@@ -125,12 +128,32 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($gradelist2 as $row)
+                        {{--@foreach($gradelist2 as $row)
                             <tr>
-                                <th class="{{ $row['Type'] == 'P' ? 'thBg01' : '' }}">
-                                    일반공채(남)/(여), 101단
-                                    {{--전의경경채--}}
-                                </th>
+                                <th class="{{ $row['Type'] == 'P' ? 'thBg01' : '' }}">{{ $row['SubjectName'] }}</th>
+                                <td>{{ $row['Avg'] }}</td>
+                            </tr>
+                        @endforeach--}}
+                        <tr>
+                            <th class="thBg01" rowspan="4">
+                                일반공채(남),
+                                일반공채(여),
+                                101단
+                            </th>
+                        </tr>
+                        @foreach($gradedata_1 as $row)
+                            <tr>
+                                <td>{{ $row['SubjectName'] }}</td>
+                                <td>{{ $row['Avg'] }}</td>
+                            </tr>
+                        @endforeach
+                        <tr>
+                            <th class="thBg01" rowspan="4">
+                                전의경경채
+                            </th>
+                        </tr>
+                        @foreach($gradedata_2 as $row)
+                            <tr>
                                 <td>{{ $row['SubjectName'] }}</td>
                                 <td>{{ $row['Avg'] }}</td>
                             </tr>
@@ -138,8 +161,6 @@
                         </tbody>
                     </table>
                 </div>
-            @else
-                <div class="txtBox01">가답안 발표 후 해당 서비스가 제공됩니다.</div>
             @endif
 
             @if(empty($gradeList) === false)
@@ -183,7 +204,7 @@
             @else
                 <div class="txtBox01">가답안 발표 후 해당 서비스가 제공됩니다.</div>
             @endif
-        <!--m_section3_3L//-->
+            <!--m_section3_3L//-->
             @if(empty($subjectPointList) === false)
                 <div class="m_section3_3R">
                     <h3><Expect>과목별</Expect> 성적 분포 - <Expect id="grtxt"></Expect></h3>

@@ -58,7 +58,7 @@
                     $(".btn-subject-add").on("click", function () {
                         $('.btn-subject-add').setLayer({
                             'modal_id' : 'modal_search_organization',
-                            'url' : '{{ site_url('/predict/baseCode/code/'.$arr_base['predict_idx']) }}',
+                            'url' : '{{ site_url('/predict/baseCode/createSubject/'.$arr_base['predict_idx']) }}',
                             'width' : 1200
                         });
                     });

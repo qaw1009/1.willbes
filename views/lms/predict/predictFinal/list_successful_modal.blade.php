@@ -29,9 +29,9 @@
             <select class="form-control" name="search_take_mock_part" style="width: 130px;">
                 <option value="">응시직렬</option>
                 @foreach($arr_base['take_mock_part'] as $row)
-                    <option value="{{$row['Ccd']}}">{{$row['CcdName']}}</option>
+                    <option class="{{$row['PredictIdx']}}" value="{{$row['TakeMockPart']}}">{{$row['CcdName']}}</option>
                 @endforeach
-             </select>
+            </select>
             <select class="form-control" name="search_take_area" style="width: 130px;">
                 <option value="">응시지역</option>
                 @foreach($arr_base['take_area'] as $key => $val)

@@ -232,11 +232,17 @@ class BaseEventSurvey extends \app\controllers\FrontController
 
         // 4. 총점성적분포 (origin, 0점 포함)
         /*$pointList = $this->surveyModel->pointArea($PredictIdx);*/
-        $pointList = $this->surveyModel->pointArea_1($PredictIdx, $this->_group_take_mock_part);
+        $subject_result = $this->surveyModel->pointArea_1($PredictIdx, $this->_group_take_mock_part, 'total');
+        $pointList = array_pluck($subject_result,'PointAvg','Pointarea');
 
         // 5. 과목별성적분포 (origin, 0점 제외)
         /*$subjectPointList = $this->surveyModel->getSubjectPoint($PredictIdx);*/
-        $subjectPointList = $this->surveyModel->getSubjectPoint_1($PredictIdx, $this->_group_take_mock_part);
+        $subject_result_1 = $this->surveyModel->pointArea_1($PredictIdx, $this->_group_take_mock_part, 1);
+        $subject_result_2 = $this->surveyModel->pointArea_1($PredictIdx, $this->_group_take_mock_part, 2);
+        $subject_result_3 = $this->surveyModel->pointArea_1($PredictIdx, $this->_group_take_mock_part, 3);
+        $subjectPointList_1 = array_pluck($subject_result_1,'PointAvg','Pointarea');
+        $subjectPointList_2 = array_pluck($subject_result_2,'PointAvg','Pointarea');
+        $subjectPointList_3 = array_pluck($subject_result_3,'PointAvg','Pointarea');
 
         // 6. 과목별단일선호도 (origin, 0점 제외)
         $bestList = $this->surveyModel->bestSubject($PredictIdx);
@@ -260,8 +266,7 @@ class BaseEventSurvey extends \app\controllers\FrontController
         $surveyList = $this->_getGraphData($series_data,$survey_series_data,$question_info);
 
         // 10. 과목별 오답랭킹
-        /*$wrongData = $this->surveyModel->wrongRank($PredictIdx);*/
-        $wrongData = $this->surveyModel->wrongRank_1($PredictIdx);
+        $wrongData = $this->surveyModel->wrongRank($PredictIdx);
         $wrongSubject = array_unique(array_pluck($wrongData, 'PaperName', 'PpIdx'));
         $wrongList = [];
         foreach ($wrongData as $row) {
@@ -276,7 +281,10 @@ class BaseEventSurvey extends \app\controllers\FrontController
             'gradelist2' => $gradedata,
             'gradeList' => $gradeSet,
             'pointList' => $pointList,
-            'subjectPointList' => $subjectPointList,
+            /*'subjectPointList' => $subjectPointList,*/
+            'subjectPointList_1' => $subjectPointList_1,
+            'subjectPointList_2' => $subjectPointList_2,
+            'subjectPointList_3' => $subjectPointList_3,
             'bestList' => $bestList,
             'bestCombList' => $bestCombList,
             'surveyStatisticsList' => $surveyStatisticsList,

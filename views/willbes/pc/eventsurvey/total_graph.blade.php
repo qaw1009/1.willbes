@@ -186,13 +186,13 @@
                     <table class="boardTypeC">
                         <col width="20%" />
                         <col width="" />
-                        @php $_arr_pa_area = ['4' => '401-500', '3' => '301-400', '2' => '201-300', '1' => '101-200', '0' => '0-100']; @endphp
+                        @php $_arr_pa_area = ['4' => '201-250', '3' => '151-200', '2' => '101-150', '1' => '51-100', '0' => '0-50']; @endphp
                         @foreach($_arr_pa_area as $key => $val)
                             <tr>
                                 <th>{{ $val }}</th>
                                 <td>
-                                    <div class="graph"><span class="graph1" style="width:{{ element('PA' . $key, $pointList, 0) }}%"></span></div>
-                                    <Expect class="ratio"><span id="pa{{ $val }}">{{ element('PA' . $key, $pointList, 0) }}</span>%</Expect>
+                                    <div class="graph"><span class="graph1" style="width:{{ element($key, $pointList, 0) }}%"></span></div>
+                                    <Expect class="ratio"><span id="pa{{ $val }}">{{ element($key, $pointList, 0) }}</span>%</Expect>
                                 </td>
                             </tr>
                         @endforeach
@@ -201,11 +201,78 @@
                         <div id="pointarea"></div>
                     </div>
                 </div>
+
+                <div class="m_section3_3R">
+                    <h3><Expect>과목별</Expect> 성적 분포 - 헌법</h3>
+                    <div class="m_section3_3R_warp">
+                        <table class="boardTypeC">
+                            <col width="20%" />
+                            <col width="" />
+                            @php $_arr_pa_area = ['4' => '41-50', '3' => '31-40', '2' => '21-30', '1' => '11-20', '0' => '0-10']; @endphp
+                            @foreach($_arr_pa_area as $key => $val)
+                                <tr>
+                                    <th>{{ $val }}</th>
+                                    <td>
+                                        <div class="graph"><span class="graph1" style="width:{{ element($key, $subjectPointList_1, 0) }}%"></span></div>
+                                        <Expect class="ratio"><span id="pa-1{{ $val }}">{{ element($key, $subjectPointList_1, 0) }}</span>%</Expect>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
+                        <div class="mt10">
+                            <div id="pointarea_subject_1"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="m_section3_3L">
+                    <h3><Expect>과목별</Expect> 성적 분포 - 형사법</h3>
+                    <table class="boardTypeC">
+                        <col width="20%" />
+                        <col width="" />
+                        @php $_arr_pa_area = ['4' => '81-100', '3' => '61-80', '2' => '41-60', '1' => '21-40', '0' => '0-20']; @endphp
+                        @foreach($_arr_pa_area as $key => $val)
+                            <tr>
+                                <th>{{ $val }}</th>
+                                <td>
+                                    <div class="graph"><span class="graph1" style="width:{{ element($key, $subjectPointList_2, 0) }}%"></span></div>
+                                    <Expect class="ratio"><span id="pa-2{{ $val }}">{{ element($key, $subjectPointList_2, 0) }}</span>%</Expect>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </table>
+                    <div class="mt10">
+                        <div id="pointarea_subject_2"></div>
+                    </div>
+                </div>
+
+                <div class="m_section3_3R">
+                    <h3><Expect>과목별</Expect> 성적 분포 - 경찰학</h3>
+                    <div class="m_section3_3R_warp">
+                        <table class="boardTypeC">
+                            <col width="20%" />
+                            <col width="" />
+                            @php $_arr_pa_area = ['4' => '81-100', '3' => '61-80', '2' => '41-60', '1' => '21-40', '0' => '0-20']; @endphp
+                            @foreach($_arr_pa_area as $key => $val)
+                                <tr>
+                                    <th>{{ $val }}</th>
+                                    <td>
+                                        <div class="graph"><span class="graph1" style="width:{{ element($key, $subjectPointList_3, 0) }}%"></span></div>
+                                        <Expect class="ratio"><span id="pa-3{{ $val }}">{{ element($key, $subjectPointList_3, 0) }}</span>%</Expect>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
+                        <div class="mt10">
+                            <div id="pointarea_subject_3"></div>
+                        </div>
+                    </div>
+                </div>
             @else
                 <div class="txtBox01">가답안 발표 후 해당 서비스가 제공됩니다.</div>
             @endif
             <!--m_section3_3L//-->
-            @if(empty($subjectPointList) === false)
+            {{--@if(empty($subjectPointList) === false)
                 <div class="m_section3_3R">
                     <h3><Expect>과목별</Expect> 성적 분포 - <Expect id="grtxt"></Expect></h3>
                     <div class="m_section3_3R_warp">
@@ -234,7 +301,7 @@
                         <p class="rightBtn"><a onClick="selPoint2('N')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowR.png" alt="다음"/></a></p>
                     </div>
                 </div>
-        @endif
+            @endif--}}
         <!--m_section3_3R//-->
         </div>
 
@@ -492,7 +559,10 @@
             $('#selgrade option').eq(0).prop('selected', 'selected');
             selGrade($('#selgrade option:selected').val());
             selPoint();
-            selPoint2(0);
+            selPoint_1();
+            selPoint_2();
+            selPoint_3();
+            /*selPoint2(0);*/
             bestSubject();
             bestCombSubject();
             setAreaMsg(0);
@@ -560,7 +630,7 @@
                 return;
             }
 
-            var fields = ['0-100', '101-200', '201-300', '301-400', '401-500'];
+            var fields = ['0-50', '51-100', '101-150', '151-200', '201-250'];
             var values = [];
             var length = fields.length;
             for(var i = 0; i < length; i++) {
@@ -583,9 +653,89 @@
             Nwagon.chart(options);
         }
 
+        //과목별 성적분포
+        function selPoint_1() {
+            if ($('#pointarea_subject_1').length < 1) {
+                return;
+            }
+            var fields = ['0-10', '11-20', '21-30', '31-40', '41-50'];
+            var values = [];
+            var length = fields.length;
+            for(var i = 0; i < length; i++) {
+                values.push(parseFloat($('#pa-1' + fields[i]).text()));
+            }
+            var options = {
+                'dataset':{
+                    title: 'Web accessibility status',
+                    values: values,
+                    colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93' , '#f10a00'],
+                    fields: fields
+                },
+                'donut_width' : 35,
+                'core_circle_radius':50,
+                'chartDiv': 'pointarea_subject_1',
+                'chartType': 'donut',
+                'chartSize': {width:700, height:300}
+            };
+            Nwagon.chart(options);
+        }
+        function selPoint_2() {
+            if ($('#pointarea_subject_2').length < 1) {
+                return;
+            }
+            var fields = ['0-20', '21-40', '41-60', '61-80', '81-100'];
+            var values = [];
+            var length = fields.length;
+            for(var i = 0; i < length; i++) {
+                values.push(parseFloat($('#pa-2' + fields[i]).text()));
+            }
+            var options = {
+                'dataset':{
+                    title: 'Web accessibility status',
+                    values: values,
+                    colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93' , '#f10a00'],
+                    fields: fields
+                },
+                'donut_width' : 35,
+                'core_circle_radius':50,
+                'chartDiv': 'pointarea_subject_2',
+                'chartType': 'donut',
+                'chartSize': {width:700, height:300}
+            };
+            Nwagon.chart(options);
+        }
+        function selPoint_3() {
+            if ($('#pointarea_subject_3').length < 1) {
+                return;
+            }
+            var fields = ['0-20', '21-40', '41-60', '61-80', '81-100'];
+            var values = [];
+            var length = fields.length;
+            for(var i = 0; i < length; i++) {
+                values.push(parseFloat($('#pa-3' + fields[i]).text()));
+            }
+            var options = {
+                'dataset':{
+                    title: 'Web accessibility status',
+                    values: values,
+                    colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93' , '#f10a00'],
+                    fields: fields
+                },
+                'donut_width' : 35,
+                'core_circle_radius':50,
+                'chartDiv': 'pointarea_subject_3',
+                'chartType': 'donut',
+                'chartSize': {width:700, height:300}
+            };
+            Nwagon.chart(options);
+        }
+
+
+
+
         // 과목별 성적분포
         var currNum = 0;
-        function selPoint2(type) {
+        /*function selPoint2(type) {
             var arrPoint = [];
             var arrCnt = 0;
             var arrGraph = '';
@@ -641,7 +791,7 @@
                 'chartSize': {width:700, height:300}
             };
             Nwagon.chart(options);
-        }
+        }*/
 
         // 과목별 단일 선호도
         function bestSubject() {

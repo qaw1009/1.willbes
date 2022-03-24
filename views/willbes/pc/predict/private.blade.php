@@ -135,7 +135,7 @@
                         <div class="cutLine">
                             <div>
                                 {{--<span style="bottom:20.77%">--}}
-                                <span style="bottom:{{ ((empty($arr_base['total_area_avg']['TotalAdjustPoint']) === false ? $arr_base['total_area_avg']['TotalAdjustPoint'] : '0') / 500) * 100 }}%">
+                                <span style="bottom:{{ ((empty($arr_base['total_area_avg']['TotalAdjustPoint']) === false ? $arr_base['total_area_avg']['TotalAdjustPoint'] : '0') / 300) * 100 }}%">
                                 <strong>{{ (empty($arr_base['total_area_avg']['TotalAdjustPoint']) === false ? $arr_base['total_area_avg']['TotalAdjustPoint'] : '0') }}</strong>
                             </span>
                             </div>
@@ -149,16 +149,16 @@
                             <tr>
                                 <td>
                                     <ul>
-                                        <li>500</li>
-                                        <li>400</li>
                                         <li>300</li>
+                                        <li>250</li>
                                         <li>200</li>
-                                        <li>100</li>
+                                        <li>150</li>
+                                        <li>50</li>
                                         <li>0</li>
                                     </ul>
                                 </td>
                                 <td>
-                                    <div><span class="myscore" style="height:{{ ((empty($arr_base['arr_line_data']['OnePerCut']) === false ? $arr_base['arr_line_data']['OnePerCut'] : '0') / 500) * 100 }}%"></span></div>
+                                    <div><span class="myscore" style="height:{{ ((empty($arr_base['arr_line_data']['OnePerCut']) === false ? $arr_base['arr_line_data']['OnePerCut'] : '0') / 300) * 100 }}%"></span></div>
                                 </td>
 
                                 <td>
@@ -306,17 +306,18 @@
         function initLineChart() {
             var options = {
                 'legend':{
-                    names: ['', '100점 이하', '200점 이하', '300점 이하', '400점 이하', '500점 이하']
+                    names: ['', '50점 이하', '100점 이하', '150점 이하', '200점 이하', '250점 이하', '300점 이하']
                 },
                 'dataset':{
                     title:'Playing time per day'
                     ,values: [
                         [0],
-                        [{{ (empty($arr_base['count_area_member_point']['cnt_100']) === true ? 0 : $arr_base['count_area_member_point']['cnt_100']) }}]
+                        [{{ (empty($arr_base['count_area_member_point']['cnt_50']) === true ? 0 : $arr_base['count_area_member_point']['cnt_50']) }}]
+                        ,[{{ (empty($arr_base['count_area_member_point']['cnt_100']) === true ? 0 : $arr_base['count_area_member_point']['cnt_100']) }}]
+                        ,[{{ (empty($arr_base['count_area_member_point']['cnt_150']) === true ? 0 : $arr_base['count_area_member_point']['cnt_150']) }}]
                         ,[{{ (empty($arr_base['count_area_member_point']['cnt_200']) === true ? 0 : $arr_base['count_area_member_point']['cnt_200']) }}]
+                        ,[{{ (empty($arr_base['count_area_member_point']['cnt_250']) === true ? 0 : $arr_base['count_area_member_point']['cnt_250']) }}]
                         ,[{{ (empty($arr_base['count_area_member_point']['cnt_300']) === true ? 0 : $arr_base['count_area_member_point']['cnt_300']) }}]
-                        ,[{{ (empty($arr_base['count_area_member_point']['cnt_400']) === true ? 0 : $arr_base['count_area_member_point']['cnt_400']) }}]
-                        ,[{{ (empty($arr_base['count_area_member_point']['cnt_500']) === true ? 0 : $arr_base['count_area_member_point']['cnt_500']) }}]
                     ]
                     ,colorset: ['#0072b2']
                     ,fields: ['지원자 수']

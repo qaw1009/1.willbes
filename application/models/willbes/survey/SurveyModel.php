@@ -2343,15 +2343,17 @@ class SurveyModel extends WB_Model
     {
         $query = "
             (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx) AS A
-            WHERE A.SumAdjustPoint <= 99) AS cnt_100,
+            WHERE A.SumAdjustPoint <= 50) AS cnt_50,
             (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx ) AS A
-            WHERE A.SumAdjustPoint BETWEEN 100 AND 199 ) AS cnt_200,
+            WHERE A.SumAdjustPoint BETWEEN 51 AND 100 ) AS cnt_100,
             (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx ) AS A
-            WHERE A.SumAdjustPoint BETWEEN 200 AND 299 ) AS cnt_300,
+            WHERE A.SumAdjustPoint BETWEEN 101 AND 150 ) AS cnt_150,
             (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx ) AS A
-            WHERE A.SumAdjustPoint BETWEEN 300 AND 399 ) AS cnt_400,
+            WHERE A.SumAdjustPoint BETWEEN 151 AND 200 ) AS cnt_200,
             (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx ) AS A
-            WHERE A.SumAdjustPoint BETWEEN 400 AND 500 ) AS cnt_500
+            WHERE A.SumAdjustPoint BETWEEN 201 AND 250 ) AS cnt_250,
+            (SELECT COUNT(*) AS cnt FROM (SELECT PrIdx, SUM(AdjustPoint) AS SumAdjustPoint FROM lms_predict_grades WHERE PredictIdx = '{$PredictIdx}' AND TakeMockPart = '{$take_mock_part}' AND TakeArea = '{$take_area}' GROUP BY PrIdx ) AS A
+            WHERE A.SumAdjustPoint BETWEEN 251 AND 300 ) AS cnt_300
         ";
         return $this->_conn->query('select ' . $query)->row_array();
     }

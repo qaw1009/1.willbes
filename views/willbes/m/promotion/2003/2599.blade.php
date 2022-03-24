@@ -1,42 +1,25 @@
-@extends('willbes.pc.layouts.master')
+@extends('willbes.m.layouts.master')
 
 @section('content')
-    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
+
     <style type="text/css">
-        .evtContent {
-            width:100% !important;
-            min-width:1120px !important;
-            margin-top:20px !important;
-            padding:0 !important;
-            background:#fff;
-        }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
-        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+
+        .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
+        .evtCtnsBox img {width:100%; max-width:720px;}
+
+        .evtCtnsBox .wrap { margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
-        /************************************************************/ 
-
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2599_top_bg.jpg) no-repeat center top;}
-
-        .evt01 {background:#fff;padding-bottom:100px}        
         .check {margin-top:20px; color:#333; font-size:17px;font-weight:bold;}
         .check label {cursor:pointer}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
         .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
-        .check a.infotxt:hover {background:#FA7C01}   
-
-        .evt_apply {background:url(https://static.willbes.net/public/images/promotion/2022/03/2599_apply_bg.jpg) no-repeat center top;}
-
-        .evt02 {background:url(https://static.willbes.net/public/images/promotion/2022/03/2599_02_bg.jpg) no-repeat center top;}
-
-        .evt03 {background:#f1f1f1;}
+        .check a.infotxt:hover {background:#FA7C01}
 
         /* 이용안내 */
         .evtInfo {padding:100px 0; background:#f4f4f4; color:#363636; line-height:1.5}
-        .guide_box{width:1120px; margin:0 auto; padding:0 50px; text-align:left; word-break:keep-all}
-        .guide_box h2 {font-size:30px; margin-bottom:30px;}
+        .guide_box{ margin:0 auto; padding:0 50px; text-align:left; word-break:keep-all}        .guide_box h2 {font-size:30px; margin-bottom:30px;}
         .guide_box dt{margin-bottom:10px; color:#fff; background:#000; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:16px;}        
         .guide_box dd{margin-bottom:50px;}
         .guide_box dl{color:#555;font-size:15px;font-weight:bold;}
@@ -44,56 +27,61 @@
         .guide_box dd li.none {list-style:none; margin-left:0}
         .guide_box dd:last-child {margin:0}
 
-        /************************************************************/      
+        @@media only screen and (max-width: 374px)  {
+        .check {margin-top:20px; color:#333; font-size:15px;font-weight:bold;}
+        .check input {border:2px solid #000;height:20px; width:20px;}
+        .check a.infotxt {display:block;width:200px;color:#fff; background:#000; margin-left:50px; border-radius:20px;padding:10px;margin:10px auto;}
+        }
 
-    </style> 
+        @@media only screen and (min-width: 375px) and (max-width: 640px) {
+        .check {margin-top:20px; color:#333; font-size:16px;font-weight:bold;}
+        .check input {border:2px solid #000;height:20px; width:20px;}
+        .check a.infotxt {display:block;width:200px;color:#fff; background:#000; margin-left:50px; border-radius:20px;padding:10px;margin:10px auto;}
+        }
 
-	<div class="evtContent NSK">
+    </style>    
+   
+    <div id="Container" class="Container NSK c_both">
 
-		<div class="evtCtnsBox evtTop">
+        <div class="evtCtnsBox evtTop">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2599_top.jpg" alt="5순환 패키지" />
-                <a href="https://pass.willbes.net/support/notice/show/cate/3035?board_idx=389692&s_cate_code=3035" target="_blank" style="position: absolute;left: 7.5%;top: 87.38%;width: 19.8%;height: 3.51%;z-index: 2;"></a>
-            </div>
-		</div>
-
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2599_mtop.jpg" alt="" />
+                <a href="https://pass.willbes.net/m/support/notice/show/cate/3035?board_idx=389692&s_cate_code=3035" target="_blank" style="position: absolute;left: 35.5%;top: 70.38%;width: 29.52%;height: 3.01%;z-index: 2;"></a>
+            </div>           
+        </div>
+        
         <div class="evtCtnsBox evt01">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2599_01.jpg" alt="" />
-                <a href="javascript:go_PassLecture('192749')" style="position: absolute;left: 39.69%;top: 84.58%;width: 20.8%;height: 7.4%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2599_m01.jpg" alt="" />
+                <a href="javascript:go_PassLecture('192749')" style="position: absolute;left: 33.69%;top: 83.58%;width: 31.8%;height: 7.51%;z-index: 2;"></a>
             </div>
-
             <div class="check" id="chkInfo">   
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />
                     페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#ctsInfo" class="infotxt">이용안내확인하기 ↓</a>
-            </div> 
-		</div>
+            </div>     
+        </div>
 
-        <div class="evtCtnsBox evt_apply">
-            <div class="wrap"> 
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2599_apply.jpg" alt="" />
-                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2357" target="_blank" title="체험팩 신청하기" style="position: absolute;left: 33.59%;top: 78.14%;width: 31.04%;height: 10.74%;z-index: 2;"></a>
-            </div>    
-		</div>
-
-        <div class="evtCtnsBox evt02">                    
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2599_02.jpg" alt="연간 커리큘럼">              
-		</div>
-
-        <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2599_03.jpg" alt="수강생 중심 운영" />
-		</div>
-
-        <div class="evtCtnsBox evt04">
+        <div class="evtCtnsBox">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2599_04.jpg" alt="절대 만족 후기"/>
-                <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="더 많은 합격수기 보기" style="position: absolute;left: 34.46%;top: 82.92%;width: 30.98%;height: 5.78%;z-index: 2;"></a>
-            </div>
-		</div>
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2599_m_apply.jpg" alt="" />
+                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2357" target="_blank" style="position: absolute;left: 26.5%;top: 84.18%;width: 46.8%;height: 10.51%;z-index: 2;"></a>
+            </div>            
+        </div>
         
+        <div class="evtCtnsBox">            
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2599_m02.jpg" alt="" />                    
+        </div>
+
+        <div class="evtCtnsBox">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2599_m04.jpg" alt="" />
+                <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" style="position: absolute;left: 33.5%;top: 82.68%;width: 33.8%;height: 6.51%;z-index: 2;"></a>
+            </div>            
+        </div>
+
         <div class="evtCtnsBox evtInfo" id="ctsInfo">
             <div class="guide_box">
                 <h2 class="NSK-Black">이용안내</h2>
@@ -152,17 +140,10 @@
             </div>
         </div>
 
-	</div>
-    <!-- End Container -->
+    </div>
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      $(document).ready(function() {
-        AOS.init();
-      });
-    </script>
-
+  <!-- End Container -->
+  
     <script type="text/javascript">         
         function go_PassLecture(code){
             if($("input[name='ischk']:checked").size() < 1){
@@ -170,7 +151,7 @@
                 return;
             }
 
-            var url = '{{ site_url('/package/show/cate/3035/pack/648001/prod-code/') }}' + code;
+            var url = '{{ site_url('/m/package/show/cate/3035/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }
     </script>

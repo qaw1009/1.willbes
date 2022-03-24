@@ -57,6 +57,10 @@
     </div>
     <!--willbes-Layer-PassBox//-->
 
-
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.resizeTo(900, 1000);
+        });
+    </script>
 
 @stop

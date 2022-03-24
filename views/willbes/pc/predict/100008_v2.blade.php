@@ -3,7 +3,7 @@
 @section('content')
     <link href="/public/css/willbes/promotion/cop_2018_1ch.css?ver={{time()}}" rel="stylesheet">
 
-    <div class="sub_warp">
+    <div class="sub_warp NGR">
         <form class="form-table" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
             <input type="hidden" id="GroupCcd" name="GroupCcd" >

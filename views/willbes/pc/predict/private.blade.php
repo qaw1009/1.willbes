@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/public/vendor/Nwagon/Nwagon.css">
 
 
-    <div class="evtCtnsBox">
+    <div class="evtCtnsBox NGR">
         <div class="sub_warp">
             <div class="sub3_1">
                 <h2>지원자 정보</h2>

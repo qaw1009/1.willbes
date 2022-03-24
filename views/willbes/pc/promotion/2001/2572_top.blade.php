@@ -19,7 +19,7 @@ if (empty($arr_promotion_params['live_start']) === false && empty($arr_promotion
     <li><a href="#event">합격예측 참여하고, <Br />푸짐한 혜택 받자!</a></li>
     <li><a href="javascript:tabMove(2);">빠른채점</a></li>
     <li><a {!! $live_url !!}>라이브 토크쇼</a></li>
-    <li><a href="{{front_url('/promotion/index/cate/3001/code/2277')}}" target="_blank">적중이벤트</a></li>
+    <li><a href="{{front_url('/promotion/index/cate/3001/code/2578')}}" target="_blank">적중이벤트</a></li>
 </ul>
 
 

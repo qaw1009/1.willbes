@@ -1621,7 +1621,10 @@ class SurveyModel extends WB_Model
      */
     public function subjectList($PredictIdx, $pridx) {
         try {
-            $column = 'TotalScore, pp.PpIdx, CcdName, pp.Type';
+            $column = "
+                TotalScore, pp.PpIdx, CcdName, pp.Type
+                ,(SELECT COUNT(*) AS ppCnt FROM lms_predict_questions AS a WHERE a.PpIdx = pp.PpIdx AND a.IsStatus = 'Y' ) AS PpCnt
+            ";
             $from = "
                 FROM {$this->_table['predictRegister']} AS pr
                 JOIN {$this->_table['predictRegisterR']} AS prc ON pr.PrIdx = prc.PrIdx
@@ -1639,6 +1642,7 @@ class SurveyModel extends WB_Model
             $where = $this->_conn->makeWhere($arr_condition);
             $where = $where->getMakeWhere(false);
             $order_by = " ORDER BY pc.OrderNum";
+            /*echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";*/
             $data = $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
 
             if (empty($data) === true) {
@@ -1705,7 +1709,8 @@ class SurveyModel extends WB_Model
         $from = " 
             FROM
                 {$this->_table['predictPaper']} AS pp
-                JOIN {$this->_table['predictQuestion']} AS pq ON pp.PpIdx = pq.PpIdx AND pp.IsUse = 'Y' AND pq.IsStatus = 'Y'
+                INNER JOIN lms_predict_register_r_code AS rc ON rc.PredictIdx = '{$PredictIdx}' AND rc.PrIdx = '{$pridx}' AND pp.SubjectCode = rc.SubjectCode
+                INNER JOIN {$this->_table['predictQuestion']} AS pq ON pp.PpIdx = pq.PpIdx AND pp.IsUse = 'Y' AND pq.IsStatus = 'Y'
                 LEFT JOIN {$this->_table['predictAnswerPaper']} AS pa ON pq.PqIdx = pa.PqIdx AND pa.MemIdx = ".$this->session->userdata('mem_idx')." AND pp.PredictIdx = '{$PredictIdx}' AND pa.PrIdx = '{$pridx}'
         ";
 
@@ -1717,7 +1722,7 @@ class SurveyModel extends WB_Model
             $order_by = " ORDER BY pp.PpIdx, QuestionNO ";
         }
 
-        //echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";
+        /*echo "<pre>".'select ' . $column . $from . $where . $order_by."</pre>";*/
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->result_array();
     }

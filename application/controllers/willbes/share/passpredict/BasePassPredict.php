@@ -564,6 +564,7 @@ class BasePassPredict extends \app\controllers\FrontController
         if (empty($subject_list) === true) {
             show_alert('조회된 기본 정보가 없습니다.','back');
         }
+        $get_pp_cnt = array_pluck($subject_list, 'PpCnt', 'PpIdx');
         $question_list= $this->surveyModel->predictQuestionCall($ppidx, $PredictIdx, $pridx);
 
         $j = 1;
@@ -574,22 +575,17 @@ class BasePassPredict extends \app\controllers\FrontController
         foreach($question_list as $key => $val){
             $PpIdx = $val['PpIdx'];
             $Answer = $val['Answer'];
-            $isPP = 'N';
-            foreach($subject_list as $key2 => $val2){
-                if($PpIdx == $val2['PpIdx']) $isPP = 'Y';
+            $numArr[] = $j;
+            if($Answer) $numstr .= $Answer;
+            if($j % 5 == 0){
+                $newQuestion['numset'][$PpIdx][] = min($numArr). "~" .max($numArr);
+                $newQuestion['answerset'][$PpIdx][] = $numstr;
+                unset($numArr);
+                $numstr = '';
+                $j = ($j == $get_pp_cnt[$PpIdx]) ? 0 : $j;
+                /*if($j == 20) $j = 0;*/
             }
-            if($isPP == 'Y'){
-                $numArr[] = $j;
-                if($Answer) $numstr .= $Answer;
-                if($j % 5 == 0){
-                    $newQuestion['numset'][$PpIdx][] = min($numArr). "~" .max($numArr);
-                    $newQuestion['answerset'][$PpIdx][] = $numstr;
-                    unset($numArr);
-                    $numstr = '';
-                    if($j == 20) $j = 0;
-                }
-                $j++;
-            }
+            $j++;
         }
 
         $score1 = $this->surveyModel->getScore1($pridx, $PredictIdx);
@@ -665,6 +661,7 @@ class BasePassPredict extends \app\controllers\FrontController
         if (empty($subject_list) === true) {
             show_alert('조회된 기본 정보가 없습니다.','back');
         }
+        $get_pp_cnt = array_pluck($subject_list, 'PpCnt', 'PpIdx');
         $question_list= $this->surveyModel->predictQuestionCall($ppidx, $PredictIdx, $pridx);
 
         $j = 1;
@@ -675,22 +672,17 @@ class BasePassPredict extends \app\controllers\FrontController
         foreach($question_list as $key => $val){
             $PpIdx = $val['PpIdx'];
             $Answer = $val['Answer'];
-            $isPP = 'N';
-            foreach($subject_list as $key2 => $val2){
-                if($PpIdx == $val2['PpIdx']) $isPP = 'Y';
+            $numArr[] = $j;
+            if($Answer) $numstr .= $Answer;
+            if($j % 5 == 0){
+                $newQuestion['numset'][$PpIdx][] = min($numArr). "~" .max($numArr);
+                $newQuestion['answerset'][$PpIdx][] = $numstr;
+                unset($numArr);
+                $numstr = '';
+                $j = ($j == $get_pp_cnt[$PpIdx]) ? 0 : $j;
+                /*if($j == 20) $j = 0;*/
             }
-            if($isPP == 'Y'){
-                $numArr[] = $j;
-                if($Answer) $numstr .= $Answer;
-                if($j % 5 == 0){
-                    $newQuestion['numset'][$PpIdx][] = min($numArr). "~" .max($numArr);
-                    $newQuestion['answerset'][$PpIdx][] = $numstr;
-                    unset($numArr);
-                    $numstr = '';
-                    if($j == 20) $j = 0;
-                }
-                $j++;
-            }
+            $j++;
         }
 
         $score1 = $this->surveyModel->getScore1($pridx, $PredictIdx);
@@ -854,22 +846,16 @@ class BasePassPredict extends \app\controllers\FrontController
             $QuestionNO = $val['QuestionNO'];
             $IsWrong = $val['IsWrong'];
             $OrgPoint = $val['OrgPoint'];
-            $isPP = 'N';
-            foreach($subject_list as $key2 => $val2){
-                if($PpIdx == $val2['PpIdx']) $isPP = 'Y';
+            if($IsWrong == 'Y'){
+                $IsWrong = "<span class='tx-blue'>O</span>";
+            } else {
+                $IsWrong = "<span class='tx-red'>X</span>";
             }
-            if($isPP == 'Y'){
-                if($IsWrong == 'Y'){
-                    $IsWrong = "<span class='tx-blue'>O</span>";
-                } else {
-                    $IsWrong = "<span class='tx-red'>X</span>";
-                }
-                $newQuestion['QuestionNO'][$PpIdx][] = $QuestionNO;
-                $newQuestion['Answer'][$PpIdx][] = $Answer;
-                $newQuestion['RightAnswer'][$PpIdx][] = $RightAnswer;
-                $newQuestion['IsWrong'][$PpIdx][] = $IsWrong;
-                $newQuestion['OrgPoint'][$PpIdx][] = $OrgPoint;
-            }
+            $newQuestion['QuestionNO'][$PpIdx][] = $QuestionNO;
+            $newQuestion['Answer'][$PpIdx][] = $Answer;
+            $newQuestion['RightAnswer'][$PpIdx][] = $RightAnswer;
+            $newQuestion['IsWrong'][$PpIdx][] = $IsWrong;
+            $newQuestion['OrgPoint'][$PpIdx][] = $OrgPoint;
         }
         
         $score1 = $this->surveyModel->getScore1($pridx, $PredictIdx);

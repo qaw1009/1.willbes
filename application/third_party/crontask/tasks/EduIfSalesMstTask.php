@@ -115,7 +115,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
             if (empty($result) === false) {
                 foreach ($result as $row) {
                     if ($this->_rem_db->set($row)->insert($this->_rem_table['teacher']) === false) {
-                        throw new \Exception('교수정보 등록에 실패했습니다.');
+                        throw new \Exception('교수정보 등록에 실패했습니다. (' . element('message', $this->_rem_db->error()) . ')');
                     }
                     $ins_cnt++;
                 }
@@ -151,7 +151,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
             if (empty($result) === false) {
                 foreach ($result as $row) {
                     if ($this->_rem_db->set($row)->insert($this->_rem_table['product']) === false) {
-                        throw new \Exception('상품정보 등록에 실패했습니다.');
+                        throw new \Exception('상품정보 등록에 실패했습니다. (' . element('message', $this->_rem_db->error()) . ')');
                     }
                     $ins_cnt++;
                 }
@@ -186,7 +186,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
             if (empty($result) === false) {
                 foreach ($result as $row) {
                     if ($this->_rem_db->set($row)->insert($this->_rem_table['product_sch']) === false) {
-                        throw new \Exception('상품 강의스케줄 등록에 실패했습니다.');
+                        throw new \Exception('상품 강의스케줄 등록에 실패했습니다. (' . element('message', $this->_rem_db->error()) . ')');
                     }
                     $ins_cnt++;
                 }
@@ -222,7 +222,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
             if (empty($result) === false) {
                 foreach ($result as $row) {
                     if ($this->_rem_db->set($row)->insert($this->_rem_table['order']) === false) {
-                        throw new \Exception('매출정보 등록에 실패했습니다.');
+                        throw new \Exception('매출정보 등록에 실패했습니다. (' . element('message', $this->_rem_db->error()) . ')');
                     }
                     $ins_cnt++;
                 }
@@ -249,6 +249,32 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
         } catch (\Exception $e) {
             return $e->getMessage();
         } finally {
+            $this->_rem_db->close();
+        }
+    }
+
+    /**
+     * 매출관리시스템 개별 프로세스 실행
+     * @param $name
+     * @return string
+     */
+    public function testRunByName($name)
+    {
+        $this->_src_db = $this->_CI->load->database('gathering', true);     // 소스DB
+        $this->_rem_db = $this->_CI->load->database('eduif', true);     // 원격DB
+        $this->_rem_db->trans_begin();
+
+        try {
+            $method = '_run' . $name;
+            $result = $this->{$method}();
+
+            $this->_rem_db->trans_commit();
+            return 'Success(' . $name . ' : ' . $result . ')';
+        } catch (\Exception $e) {
+            $this->_rem_db->trans_rollback();
+            return 'Error(' . $e->getMessage() . ')';
+        } finally {
+            $this->_src_db->close();
             $this->_rem_db->close();
         }
     }

@@ -47,14 +47,22 @@ class Cron extends \app\controllers\BaseController
 
     /**
      * 테스트 실행
+     * @param array $params [개별 프로세스명 (TeacherMst / ProductMst / ProductSch / OrderMst)]
      */
-    public function testRun()
+    public function testRun($params = [])
     {
         set_time_limit(0);
         ini_set('memory_limit', $this->_memory_limit_size);
 
+        $run_name = element('0', $params);
+
         $task = new crontask\tasks\EduIfSalesMstTask();
-        $result = $task->run();
+
+        if (empty($run_name) === false) {
+            $result = $task->testRunByName($run_name);
+        } else {
+            $result = $task->run();
+        }
 
         var_dump($result);
     }

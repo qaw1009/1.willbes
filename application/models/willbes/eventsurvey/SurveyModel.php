@@ -731,7 +731,7 @@ class SurveyModel extends WB_Model
             order by A.PpIdx asc, A.RankNum asc            
         ";
         $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx]);
-        echo '<pre>'.$this->_conn->last_query().'</pre>';
+        /*echo '<pre>'.$this->_conn->last_query().'</pre>';*/
         return $query->result_array();
     }
 

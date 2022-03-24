@@ -38,10 +38,9 @@
         <div class="skybanner" id="QuickMenu">
             <img src="https://static.willbes.net/public/images/promotion/2021/10/1139_sky.png" alt="스카이베너 빠르게가기" usemap="#Map1139" border="0" >
             <map name="Map1139" id="Map1139">
-                <area shape="rect" coords="12,4,116,72" href="#go_top" />
-                <area shape="rect" coords="10,81,118,145" href="#go_01" />
-                <area shape="rect" coords="11,154,118,218" href="#go_02" />
-              <area shape="rect" coords="12,290,115,375" href="https://police.willbes.net/promotion/index/cate/3001/code/2360" target="_blank" alt="신광은경찰패스" />
+                <area shape="rect" coords="4,78,108,146" href="#go_01" />
+                <area shape="rect" coords="0,153,108,217" href="#go_02" />
+                <area shape="rect" coords="1,224,108,288" href="#go_03" />
             </map>
         </div>
 
@@ -49,7 +48,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
         </div>
 
-        <div class="evtCtnsBox wb_top" id="go_top" data-aos="fade-up">
+        <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1139_top.jpg" alt="합격환승 이벤트"/>
             <span class="sp01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1139_top_img.png">                    

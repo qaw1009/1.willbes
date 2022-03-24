@@ -733,7 +733,11 @@
             $.each(json_data[obj_val], function(type, data) {
 
                 // 응시직렬 선택형(그룹) 여러개 적용
-                if(Object.keys(data).length > 1){
+                if(Object.keys(data).length == 1){
+                    selSurveyHtml(idx, Object.keys(data));
+                    nwagonChart(type, data, idx);
+                    idx++;
+                }else{
                     $.each(data, function (tit,val){
                         selSurveyHtml(idx, tit);
 
@@ -760,10 +764,6 @@
                         nwagonChartOption(names, title, values, fields, idx);
                         idx++;
                     });
-                }else{
-                    selSurveyHtml(idx, Object.keys(data));
-                    nwagonChart(type, data, idx);
-                    idx++;
                 }
             });
         }

@@ -8,9 +8,19 @@
 
 <div>
     <div class="evtCtnsBox cts02_top">
-        <div class="wrap">         
+        <div class="wrap">2022 03 26 12 30
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2548_cts02_top.jpg" alt="합격예측 풀서비스">
-            <a href="javascript:alert('3월 26일 12:30 오픈됩니다.')" style="position: absolute;left: 26.01%;top: 84.07%;width: 48.13%;height: 6.3%;z-index: 2;"></a>
+            @if($arr_promotion_params['start_active_tab2'] <= date('YmdHi'))
+                <a href="{{front_url('/promotion/index/cate/3001/code/2573')}}" target="_blank" style="position: absolute;left: 26.01%;top: 84.07%;width: 48.13%;height: 6.3%;z-index: 2;"></a>
+            @else
+                @php
+                $set_month = (substr($arr_promotion_params['start_active_tab2'], 4,2) < 10 ? substr($arr_promotion_params['start_active_tab2'], 5,1) : substr($arr_promotion_params['start_active_tab2'], 4,2));
+                $set_day = (substr($arr_promotion_params['start_active_tab2'], 6,2) < 10 ? substr($arr_promotion_params['start_active_tab2'], 7,1) : substr($arr_promotion_params['start_active_tab2'], 6,2));
+                $set_min = (substr($arr_promotion_params['start_active_tab2'], 8,2) < 10 ? substr($arr_promotion_params['start_active_tab2'], 9,1) : substr($arr_promotion_params['start_active_tab2'], 8,2));
+                $set_sec = (substr($arr_promotion_params['start_active_tab2'], 10,2) < 10 ? substr($arr_promotion_params['start_active_tab2'], 11,1) : substr($arr_promotion_params['start_active_tab2'], 10,2));
+                @endphp
+                <a href="javascript:alert('{{$set_month}}월 {{$set_day}}일 {{$set_min}}:{{$set_sec}} 오픈됩니다.')" style="position: absolute;left: 26.01%;top: 84.07%;width: 48.13%;height: 6.3%;z-index: 2;"></a>
+            @endif
         </div>
     </div>
     <div class="evtCtnsBox cts02_01" id="cts02_01">

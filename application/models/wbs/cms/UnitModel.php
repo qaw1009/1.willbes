@@ -22,13 +22,14 @@ class UnitModel extends WB_Model
      */
     public function listAllUnit($lecidx)
     {
-        $column = 'A.*,B.wProfName,C.wAdminName,Ccd.wCcd, Ccd.wCcdName';
+        $column = 'A.*,B.wProfName,C.wAdminName,Ccd.wCcd, Ccd.wCcdName, D.wAdminName As wUpdAdminName';
 
         $from = '
                     From '.$this->_table.' A 
                     left outer join wbs_pms_professor B on A.wProfIdx = B.wProfIdx And B.wIsStatus="Y"
                     left outer join wbs_sys_admin C on A.wRegAdminIdx = C.wAdminIdx And C.wIsStatus="Y"
                     left outer join wbs_sys_code Ccd on A.wContentSizeCcd = Ccd.wCcd
+                    left outer join wbs_sys_admin D on A.wUpdAdminIdx = D.wAdminIdx And D.wIsStatus="Y"
                     ';
 
         $where =  $this->_conn->makeWhere([

@@ -234,7 +234,8 @@
                             <th>영상비율</th>
                             <th>촬영일/교수</th>
                             <th>활성</th>
-                            <th>등록일/등록자</th>
+                            <th width="120">최초등록일/최초등록자</th>
+                            <th width="120">최종수정일/최종수정자</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -268,11 +269,13 @@
                                     {{ $row['wBookPage']  }} P
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('WD','{{$row['wUnitIdx']}}')">와이드&nbsp;&nbsp;&nbsp;</button> {{ $row['wWD'] }}
-                                    <BR>
-                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('HD','{{$row['wUnitIdx']}}')">고화질&nbsp;&nbsp;&nbsp;</button> {{ $row['wHD'] }}
-                                    <br>
-                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('SD','{{$row['wUnitIdx']}}')">일반화질</button> {{ $row['wSD'] }}
+                                    <p>
+                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('WD','{{$row['wUnitIdx']}}')">와이드&nbsp;&nbsp;&nbsp;</button> {{ $row['wWD'] }}
+                                    </p>
+                                    <p>
+                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('HD','{{$row['wUnitIdx']}}')">고화질&nbsp;&nbsp;&nbsp;</button> {{ $row['wHD'] }}
+                                    </p>
+                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('SD','{{$row['wUnitIdx']}}')">일반화질</button> {{ $row['wSD'] }}
                                 </td>
                                 <td>{{$row['wCcdName']}}</td>
                                 <td>
@@ -282,6 +285,7 @@
                                 </td>
                                 <td>{!! $row['wIsUse'] == 'Y' ? '활성' : '<b><font color=red>비활성</font></b>' !!}</td>
                                 <td>{{ $row['wRegDatm'] }}<BR>{{ $row['wAdminName'] }}</td>
+                                <td>{{ $row['wUpdDatm'] }}<BR>{{ $row['wUpdAdminName'] }}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -328,7 +332,7 @@
             $('.btn-unitregist').click(function() {
                 $('.btn-unitregist').setLayer({
                     "url" : "{{ site_url('cms/lecture/createUnitModal/') }}"+ $('#LecIdx').val() +"/"+$("#ProfIdx1").val()
-                    ,width : "1550"
+                    ,width : "1680"
                 });
             });
 

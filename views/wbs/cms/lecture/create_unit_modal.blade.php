@@ -56,7 +56,8 @@
                             <th>영상비율<span class="required">*</span></th>
                             <th  width="150">촬영일/교수<span class="required">*</span></th>
                             <th>활성</th>
-                            <th width="90">등록일/등록자</th>
+                            <th width="85">최초등록일<Br>최종등록자</th>
+                            <th width="85">최종수정일<Br>최종수정자</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -139,6 +140,11 @@
                                         {{ $row['wRegDatm'] }}
                                         <BR>
                                         {{ $row['wAdminName'] }}
+                                    </td>
+                                    <td>
+                                        {{ $row['wUpdDatm'] }}
+                                        <BR>
+                                        {{ $row['wUpdAdminName'] }}
                                     </td>
                                 </tr>
                             @endforeach

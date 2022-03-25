@@ -40,7 +40,7 @@
         to{color:#d63e4d}
         }          
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2147_top_bg.jpg) no-repeat center top;}	
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/03/2147_top_bg.jpg) no-repeat center top;}	
         .evtCtnsBox .title {text-align:left; color:#464646; font-size:40px; margin:100px 0 50px}
 
         .evt_01 {width:1120px; margin:0 auto}	
@@ -78,7 +78,7 @@
         </div>
 
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2147_top.jpg" alt="새봄맞이 특별이벤트" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2147_top.jpg" alt="새봄맞이 특별이벤트" />
 		</div>
 
         @if(empty($arr_base['display_product_data']) === false)

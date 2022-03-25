@@ -254,7 +254,7 @@
                 합격생들이 <strong>증명하는 생생한 후기</strong>
             </div>
             <div class="reviewWrap">
-                <div class="revieSlide">
+                <div class="reviewSlide">
                     <div class="reviewList">
                         <div>
                             수험생들이 자꾸 틀리는 부분을<br>
@@ -940,7 +940,7 @@
 
         /*롤링*/
         $(document).ready(function() {
-            var BxBook = $('.revieSlide').bxSlider({
+            var BxBook = $('.reviewSlide').bxSlider({
                 slideWidth: 510,
                 slideMargin: 40,
                 maxSlides:12,

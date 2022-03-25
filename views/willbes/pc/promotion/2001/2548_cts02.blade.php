@@ -8,18 +8,18 @@
 
 <div>
     <div class="evtCtnsBox cts02_top">
-        <div class="wrap">2022 03 26 12 30
+        <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2548_cts02_top.jpg" alt="합격예측 풀서비스">
             @if($arr_promotion_params['start_active_tab2'] <= date('YmdHi'))
                 <a href="{{front_url('/promotion/index/cate/3001/code/2573')}}" target="_blank" style="position: absolute;left: 26.01%;top: 84.07%;width: 48.13%;height: 6.3%;z-index: 2;"></a>
             @else
                 @php
-                $set_month = (substr($arr_promotion_params['start_active_tab2'], 4,2) < 10 ? substr($arr_promotion_params['start_active_tab2'], 5,1) : substr($arr_promotion_params['start_active_tab2'], 4,2));
-                $set_day = (substr($arr_promotion_params['start_active_tab2'], 6,2) < 10 ? substr($arr_promotion_params['start_active_tab2'], 7,1) : substr($arr_promotion_params['start_active_tab2'], 6,2));
-                $set_min = (substr($arr_promotion_params['start_active_tab2'], 8,2) < 10 ? substr($arr_promotion_params['start_active_tab2'], 9,1) : substr($arr_promotion_params['start_active_tab2'], 8,2));
-                $set_sec = (substr($arr_promotion_params['start_active_tab2'], 10,2) < 10 ? substr($arr_promotion_params['start_active_tab2'], 11,1) : substr($arr_promotion_params['start_active_tab2'], 10,2));
+                    $set_month = date("n", strtotime($arr_promotion_params['start_active_tab2'].'00'));
+                    $set_day = date("j", strtotime($arr_promotion_params['start_active_tab2'].'00'));
+                    $set_hour = date("H", strtotime($arr_promotion_params['start_active_tab2'].'00'));
+                    $set_min = date("i", strtotime($arr_promotion_params['start_active_tab2'].'00'));
                 @endphp
-                <a href="javascript:alert('{{$set_month}}월 {{$set_day}}일 {{$set_min}}:{{$set_sec}} 오픈됩니다.')" style="position: absolute;left: 26.01%;top: 84.07%;width: 48.13%;height: 6.3%;z-index: 2;"></a>
+                <a href="javascript:alert('{{$set_month}}월{{$set_day}}일 {{$set_hour}}시{{$set_min}}분 오픈됩니다.')" style="position: absolute;left: 26.01%;top: 84.07%;width: 48.13%;height: 6.3%;z-index: 2;"></a>
             @endif
         </div>
     </div>

@@ -50,8 +50,8 @@
         <div class="evtCtnsBox evt02">
             <div class="wrap" data-aos="fade-right">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2582_02.jpg" alt="인적성 검사"/>
-                <a href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank" title="인적성 검사" style="position: absolute; left: 59.73%; top: 20.27%; width: 22.59%; height: 7.92%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank" title="검사 신청하기" style="position: absolute; left: 33.39%; top: 72.73%; width: 33.21%; height: 3.12%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank" title="인적성 검사" style="position: absolute; left: 59.91%; top: 23.11%; width: 22.59%; height: 9.17%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank" title="면접캠프 신청하기" style="position: absolute;  left: 33.3%; top: 83.07%; width: 33.21%; height: 3.29%;z-index: 2;"></a>
             </div>           
 		</div> 
 

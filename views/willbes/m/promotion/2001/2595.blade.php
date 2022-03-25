@@ -6,7 +6,7 @@
     <style type="text/css">
         .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
         .evtCtnsBox img {width:100%; max-width:720px;}
-        .wrap a {border:1px solid #000} */
+        /*.wrap a {border:1px solid #000} */
 
         .dday {font-size:24px !important; padding:10px; background:#ebebeb; color:#000; text-align:left; letter-spacing:-1px}
         .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}

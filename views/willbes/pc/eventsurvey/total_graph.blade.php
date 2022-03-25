@@ -128,12 +128,6 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {{--@foreach($gradelist2 as $row)
-                            <tr>
-                                <th class="{{ $row['Type'] == 'P' ? 'thBg01' : '' }}">{{ $row['SubjectName'] }}</th>
-                                <td>{{ $row['Avg'] }}</td>
-                            </tr>
-                        @endforeach--}}
                         <tr>
                             <th class="thBg01" rowspan="4">
                                 일반공채(남),
@@ -147,6 +141,19 @@
                                 <td>{{ $row['Avg'] }}</td>
                             </tr>
                         @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="m_section3_3R">
+                    <table class="boardTypeB">
+                        <thead>
+                        <tr>
+                            <th scope="col">직렬</th>
+                            <th scope="col">과목</th>
+                            <th scope="col">참여자 실시간 평균</th>
+                        </tr>
+                        </thead>
+                        <tbody>
                         <tr>
                             <th class="thBg01" rowspan="4">
                                 전의경경채
@@ -163,7 +170,7 @@
                 </div>
             @endif
 
-            @if(empty($gradeList) === false)
+            {{--@if(empty($gradeList) === false)
                 <div class="m_section3_3R">
                     <select id="selgrade" style="width:98%; border:#555 1px solid; height:28px; line-height:28px;" onchange="selGrade(this.value)">
                         @foreach($gradeList as $key => $val)
@@ -174,7 +181,7 @@
                         <div id="Nwagon"></div>
                     </div>
                 </div>
-            @endif
+            @endif--}}
         </div>
 
         {{--합격예측 참여자 분석 현황--}}

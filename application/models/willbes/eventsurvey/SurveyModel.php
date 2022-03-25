@@ -318,7 +318,17 @@ class SurveyModel extends WB_Model
     }
     public function gradeList_1($PredictIdx, $arr_target_mock_part)
     {
-        $column = "b.CcdName AS SubjectName, a.Avg";
+        $where = $this->_conn->makeWhere([
+            'IN' => ['Ccd' => $arr_target_mock_part]
+        ])->getMakeWhere(false);
+        $column = "
+            b.CcdName AS SubjectName, a.Avg
+            ,(
+                SELECT GROUP_CONCAT(CcdName ORDER BY Ccd) AS CcdName
+                FROM lms_predict_code
+                {$where}
+            ) AS TakeMockPartName
+        ";
 
         $arr_condition = [
             'EQ' => [

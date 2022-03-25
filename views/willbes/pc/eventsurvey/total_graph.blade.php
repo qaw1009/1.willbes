@@ -140,19 +140,6 @@
                                 <td>{{ $row['Avg'] }}</td>
                             </tr>
                         @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <div class="m_section3_3R">
-                    <table class="boardTypeB">
-                        <thead>
-                        <tr>
-                            <th scope="col">직렬</th>
-                            <th scope="col">과목</th>
-                            <th scope="col">참여자 실시간 평균</th>
-                        </tr>
-                        </thead>
-                        <tbody>
                         <tr>
                             <th class="thBg01" rowspan="4">
                                 전의경경채
@@ -166,6 +153,16 @@
                         @endforeach
                         </tbody>
                     </table>
+                </div>
+
+                <div class="m_section3_3R">
+                    <select id="select_radar" onchange="jsRadar(this.value);" style="width: 98%; border: #555 1px solid; height: 28px; line-height: 28px;">
+                        <option value="1">{{$gradedata_1[0]['TakeMockPartName']}}</option>
+                        <option value="2">{{$gradedata_2[0]['TakeMockPartName']}}</option>
+                    </select>
+                    <div class="mt10">
+                        <div id="radar_box"></div>
+                    </div>
                 </div>
             @endif
         </div>
@@ -559,6 +556,7 @@
             bestCombSubject();
             setAreaMsg(0);
             selSurveyGraph($('input[name="sp_serial"]:checked').val());
+            jsRadar($('#select_radar option:selected').val());
         });
 
         // 지역별 현황
@@ -616,6 +614,47 @@
                 'chartType': 'donut',
                 'chartSize': {width:700, height:300}
             };
+            Nwagon.chart(options);
+        }
+
+        //원점수평균 : 분포그래프
+        function jsRadar(val) {
+            if ($('#select_radar').length < 1) {
+                return;
+            }
+
+            var json_gradedata_1 = {!! json_encode($gradedata_1) !!};
+            var json_gradedata_2 = {!! json_encode($gradedata_2) !!};
+            var names = [];
+            var values = [];
+
+            if (val == 1) {
+                $.each(json_gradedata_1, function(index, item) {
+                    names.push(item.SubjectName);
+                    values.push(parseInt(item.Avg));
+                });
+            } else {
+                $.each(json_gradedata_2, function(index, item) {
+                    names.push(item.SubjectName);
+                    values.push(parseInt(item.Avg));
+                });
+            }
+
+            var options = {
+                'legend':{
+                    names: names,
+                },
+                'dataset': {
+                    title: '과목별 원점수 평균 분포',
+                    values: [values],
+                    bgColor: '#f9f9f9',
+                    fgColor: '#30a1ce',
+                },
+                'chartDiv': 'radar_box',
+                'chartType': 'radar',
+                'chartSize': { width: 400, height: 250 }
+            };
+            $('#radar_box').html('');
             Nwagon.chart(options);
         }
 
@@ -695,7 +734,6 @@
             };
             Nwagon.chart(options);
         }
-
 
 
 

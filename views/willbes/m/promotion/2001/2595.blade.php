@@ -165,7 +165,7 @@
                 </div>
 
                 <div class="p_re mt30">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2595m_pass02.png" alt="22년 2차 패스" >
+                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2595m_pass03.png" alt="22년 2차 패스" >
                     <div class="price NSK-Black">
                         <p><span>10만 포인트!</span></p>
                         <input type="radio" id="y_pkg2" name="y_pkg" value="192944" data-sale-price="650000" onClick=""/>

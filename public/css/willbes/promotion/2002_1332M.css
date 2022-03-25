@@ -86,6 +86,8 @@
 
 .markingTit1 {margin-left:10px; border-left:2px solid #1087ef; padding-left:10px; font-size:120%}
 
+.tableBox {height:500px; overflow-y: auto}
+
 .table_type {width:100%; margin:1em auto; border-top:#464646 1px solid; border-bottom:#464646 1px solid; border-left:#cdcdcd 1px solid}
 .table_type caption {display:none}	
 .table_type th,
@@ -127,6 +129,8 @@ ul.sel_info li { display: inline-block; margin-right:10px; margin-bottom:5px}
     top: -1px;
     right: -1px;
 }
+
+
 
 .eventPopS3 {padding:20px}
 .eventPopS3 p {font-weight:bold; margin-bottom:10px}

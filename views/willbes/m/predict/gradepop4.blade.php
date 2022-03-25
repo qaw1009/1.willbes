@@ -92,7 +92,7 @@
                     </ul>
 
                     @foreach($subject_list as $key => $val)
-                    <div id="ss_{{ $val['PpIdx'] }}" @if($key != 0) style="display:none;" @endif>
+                    <div id="ss_{{ $val['PpIdx'] }}" @if($key != 0) style="display:none;" @endif class="tableBox">
                         <table cellspacing="0" cellpadding="0" class="table_type table_type3">
                             <col />
                             <tr>

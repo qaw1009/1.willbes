@@ -108,6 +108,7 @@
                             @php
                                 $num_i = 1;
                                 $num_j = ($val['PpCnt'] == 20 ? 11 : 21);
+
                                 $i = 0;
                                 $j = ($val['PpCnt'] == 20 ? 10 : 20);
                                 $max = ($val['PpCnt'] == 20 ? 10 : 20);
@@ -115,12 +116,12 @@
                                     $table_txt = "<tr>";
                                     $table_txt .= "<th>{$num_i}</th>";
                                     $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$i]}</td>";
-                                    $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$i]}</td>";
-                                    $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$i]}</td>";
+                                    $table_txt .= "<td>{$newQuestion['RightAnswer'][$val['PpIdx']][$i]}</td>";
+                                    $table_txt .= "<td>{$newQuestion['Answer'][$val['PpIdx']][$i]}</td>";
                                     $table_txt .= "<th>{$num_j}</th>";
                                     $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$j]}</td>";
-                                    $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$j]}</td>";
-                                    $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$j]}</td>";
+                                    $table_txt .= "<td>{$newQuestion['RightAnswer'][$val['PpIdx']][$j]}</td>";
+                                    $table_txt .= "<td>{$newQuestion['Answer'][$val['PpIdx']][$j]}</td>";
                                     $table_txt .= "</tr>";
                                     echo $table_txt;
                                     $num_i++; $num_j++; $i++; $j++;

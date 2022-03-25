@@ -28,7 +28,7 @@
         }
 
         .evt01 .price label {display:inline-block}
-        .evt01 .price input:checked + label {color:#ffef7e}
+        .evt01 .price input:checked + label {color:blue}
         .evt01 .ext01txt {padding:20px; text-align:left}
         .evt01 .ext01txt label {font-size:20px; font-weight:bold;}
         .evt01 input[type="radio"] {height:20px; width:20px; vertical-align:middle}

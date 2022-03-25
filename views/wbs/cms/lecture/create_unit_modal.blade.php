@@ -212,6 +212,7 @@
                                         <span id="is_use_view_{{$i}}"></span>
                                     </td>
                                     <td></td>
+                                    <td></td>
                                 </tr>
                             @endfor
 

@@ -525,7 +525,7 @@
             <div class="bannerWarp">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2080_bn1.png" alt="최종합격을 결정짓는 2차 전형 윌비스 전문가와 함께 전략적으로 준비하세요">
                 <div>
-                    <a href="#none">
+                    <a href="https://police.willbes.net/pass/event/show/ongoing?event_idx=1628&" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/2022/03/2572_camp.png" alt="면접캠프설명회">
                     </a>
                 </div>

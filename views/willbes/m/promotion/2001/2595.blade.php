@@ -140,7 +140,7 @@
 
         <div class="evtCtnsBox" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2595m_event01.jpg" alt="쿠폰받기" >
-            <a href="#none" title="쿠폰받기" style="position: absolute; left: 14.31%; top: 82.95%; width: 71.25%; height: 8.03%; z-index: 2;"></a>
+            <a href="javascript:void(0);" onclick="giveCheck(); return false;" title="쿠폰받기" style="position: absolute; left: 14.31%; top: 82.95%; width: 71.25%; height: 8.03%; z-index: 2;"></a>
         </div>
         
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">

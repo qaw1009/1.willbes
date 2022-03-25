@@ -106,145 +106,26 @@
                                 <th>내답</th>
                             </tr>
                             @php
+                                $num_i = 1;
+                                $num_j = ($val['PpCnt'] == 20 ? 11 : 21);
                                 $i = 0;
                                 $j = ($val['PpCnt'] == 20 ? 10 : 20);
                                 $max = ($val['PpCnt'] == 20 ? 10 : 20);
                                 for ($z=1; $z<=$max; $z++) {
                                     $table_txt = "<tr>";
-                                    $table_txt .= "<th>{$i}</th>";
+                                    $table_txt .= "<th>{$num_i}</th>";
                                     $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$i]}</td>";
                                     $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$i]}</td>";
                                     $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$i]}</td>";
-                                    $table_txt .= "<th>{$j}</th>";
+                                    $table_txt .= "<th>{$num_j}</th>";
                                     $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$j]}</td>";
                                     $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$j]}</td>";
                                     $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$j]}</td>";
                                     $table_txt .= "</tr>";
                                     echo $table_txt;
-                                    $i++; $j++;
+                                    $num_i++; $num_j++; $i++; $j++;
                                 }
                             @endphp
-
-                            {{--@if ($val['PpCnt'] == 20)
-                                <tr>
-                                    <th>1</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][0] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][0] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][0] }}</td>
-                                    <th>11</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][10] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][10] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][10] }}</td>
-                                </tr>
-                                <tr>
-                                    <th>2</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][1] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][1] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][1] }}</td>
-                                    <th>12</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][11] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][11] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][11] }}</td>
-                                </tr>
-                                <tr>
-                                    <th>3</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][2] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][2] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][2] }}</td>
-                                    <th>13</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][12] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][12] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][12] }}</td>
-                                </tr>
-                                <tr>
-                                    <th>4</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][3] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][3] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][3] }}</td>
-                                    <th>14</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][13] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][13] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][13] }}</td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][4] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][4] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][4] }}</td>
-                                    <th>15</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][14] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][14] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][14] }}</td>
-                                </tr>
-                                <tr>
-                                    <th>6</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][5] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][5] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][5] }}</td>
-                                    <th>16</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][15] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][15] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][15] }}</td>
-                                </tr>
-                                <tr>
-                                    <th>7</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][6] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][6] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][6] }}</td>
-                                    <th>17</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][16] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][16] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][16] }}</td>
-                                </tr>
-                                <tr>
-                                    <th>8</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][7] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][7] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][7] }}</td>
-                                    <th>18</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][17] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][17] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][17] }}</td>
-                                </tr>
-                                <tr>
-                                    <th>9</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][8] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][8] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][8] }}</td>
-                                    <th>19</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][18] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][18] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][18] }}</td>
-                                </tr>
-                                <tr>
-                                    <th>10</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][9] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][9] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][9] }}</td>
-                                    <th>20</th>
-                                    <td>{!!$newQuestion['IsWrong'][$val['PpIdx']][19] !!}</td>
-                                    <td>{{ $newQuestion['RightAnswer'][$val['PpIdx']][19] }}</td>
-                                    <td>{{ $newQuestion['Answer'][$val['PpIdx']][19] }}</td>
-                                </tr>
-                            @else
-                                @php
-                                $i=0; $j=20;
-                                for ($z=1; $z<=20; $z++) {
-                                    $table_txt = "<tr>";
-                                    $table_txt .= "<th>{$i}</th>";
-                                    $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$i]}</td>";
-                                    $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$i]}</td>";
-                                    $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$i]}</td>";
-                                    $table_txt .= "<th>{$j}</th>";
-                                    $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$j]}</td>";
-                                    $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$j]}</td>";
-                                    $table_txt .= "<td>{$newQuestion['IsWrong'][$val['PpIdx']][$j]}</td>";
-                                    $table_txt .= "</tr>";
-                                    echo $table_txt;
-                                    $i++; $j++;
-                                }
-                                @endphp
-                            @endif--}}
                         </table>
                         <div class="markingPoint"><span>원점수</span>{{ $newQuestion['OrgPoint'][$val['PpIdx']][19] }}</div>
                     </div>

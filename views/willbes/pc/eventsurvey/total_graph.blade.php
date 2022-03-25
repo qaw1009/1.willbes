@@ -114,7 +114,6 @@
         {{--과목별 원점수 평균--}}
         <div class="m_section3_3">
             <h2>과목별 <span>원점수 평균</span></h2>
-            {{--@if(empty($gradelist2) === false)--}}
             @if(empty($gradedata_1) === true || empty($gradedata_2) === true)
                 <div class="txtBox01">가답안 발표 후 해당 서비스가 제공됩니다.</div>
             @else
@@ -169,19 +168,6 @@
                     </table>
                 </div>
             @endif
-
-            {{--@if(empty($gradeList) === false)
-                <div class="m_section3_3R">
-                    <select id="selgrade" style="width:98%; border:#555 1px solid; height:28px; line-height:28px;" onchange="selGrade(this.value)">
-                        @foreach($gradeList as $key => $val)
-                            <option value="{{ $val['subject'] }}{{ $val['grade'] }}" selected="selected">{{ $val['subject'] }}</option>
-                        @endforeach
-                    </select>
-                    <div class="mt10">
-                        <div id="Nwagon"></div>
-                    </div>
-                </div>
-            @endif--}}
         </div>
 
         {{--합격예측 참여자 분석 현황--}}
@@ -564,7 +550,6 @@
     <script>
         $(document).ready(function () {
             $('#selgrade option').eq(0).prop('selected', 'selected');
-            selGrade($('#selgrade option:selected').val());
             selPoint();
             selPoint_1();
             selPoint_2();
@@ -603,32 +588,6 @@
             $("[id*='ss_']").removeClass('active');
             $("#ss_" + num).addClass('active');
             $("#area_" + $('#selS').val() + '_' + num).show();
-        }
-
-        // 과목별 원점수 평균
-        function selGrade(val){
-            if ($('#selgrade').length < 1) {
-                return;
-            }
-
-            var arrStr = val.split('/');
-            var options = {
-                'legend':{
-                    names: [arrStr[0], arrStr[1], arrStr[2], arrStr[3], arrStr[4]],
-                    hrefs: []
-                },
-                'dataset': {
-                    title: 'Web accessibility status',
-                    values: [[parseInt(arrStr[5]),parseInt(arrStr[6]),parseInt(arrStr[7]),parseInt(arrStr[8]),parseInt(arrStr[9])]],
-                    bgColor: '#f9f9f9',
-                    fgColor: '#30a1ce'
-                },
-                'chartDiv': 'Nwagon',
-                'chartType': 'radar',
-                'chartSize': { width: 500, height: 300 }
-            };
-            $('#Nwagon').html('');
-            Nwagon.chart(options);
         }
 
         // 총점 성적분포

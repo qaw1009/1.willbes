@@ -195,41 +195,6 @@ class BaseEventSurvey extends \app\controllers\FrontController
         $gradedata_1 = $this->surveyModel->gradeList_1($PredictIdx, $this->_group_take_mock_part);
         $gradedata_2 = $this->surveyModel->gradeList_1($PredictIdx, $this->_single_take_mock_part);
 
-        $gradedata = [];
-        $gradelist = array_pluck($gradedata, 'Avg', 'SubjectCode');
-        $gradesubject = array_pluck($gradedata, 'SubjectName', 'SubjectCode');
-
-        // 3. 과목별 원점수 평균 그래프 (과목별 원점수 평균 데이터 활용)
-        $arr_grade_subject = [
-            ['100100', '100200', '100300', '100500', '100400'],  // 한국사/영어/형법/경찰학개론/형사소송법
-            ['100100', '100200', '100300', '100600', '100400'],  // 한국사/영어/형법/국어/형사소송법
-            ['100100', '100200', '100500', '100800', '100600'],  // 한국사/영어/경찰학개론/사회/국어
-        ];
-
-        $gradeSet = [];
-        $idx = 0;
-        foreach ($arr_grade_subject as $arr) {
-            $is_set = true;
-            $tmp_subject = '';
-            $tmp_grade = '';
-
-            foreach ($arr as $subject_code) {
-                if (array_key_exists($subject_code, $gradelist) === false) {
-                    $is_set = false;
-                    break;
-                }
-
-                $tmp_subject .= '/' . $gradesubject[$subject_code];
-                $tmp_grade .= '/' . $gradelist[$subject_code];
-            }
-
-            if ($is_set === true) {
-                $gradeSet[$idx]['subject'] = substr($tmp_subject, 1);
-                $gradeSet[$idx]['grade'] = $tmp_grade;
-                $idx++;
-            }
-        }
-
         // 4. 총점성적분포 (origin, 0점 포함)
         /*$pointList = $this->surveyModel->pointArea($PredictIdx);*/
         $subject_result = $this->surveyModel->pointArea_1($PredictIdx, $this->_group_take_mock_part, 'total');
@@ -278,8 +243,6 @@ class BaseEventSurvey extends \app\controllers\FrontController
             'PredictIdx' => $PredictIdx,
             'serialList' => $serialList,
             'areaList' => $dtSet,
-            'gradelist2' => $gradedata,
-            'gradeList' => $gradeSet,
             'pointList' => $pointList,
             /*'subjectPointList' => $subjectPointList,*/
             'subjectPointList_1' => $subjectPointList_1,
@@ -293,7 +256,6 @@ class BaseEventSurvey extends \app\controllers\FrontController
             'surveyList' => $surveyList,
             'SsIdx2' => $SsIdx2,
             'series_data' => $series_data,
-
             'gradedata_1' => $gradedata_1,
             'gradedata_2' => $gradedata_2,
         ], false);

@@ -49,7 +49,7 @@
         }
         .evtPass input[type="radio"] {height:22px; width:22px; vertical-align:middle}
         .evtPass input[type="checkbox"] {height:20px; width:20px; vertical-align:middle}
-        .evtPass input:checked + label {border-bottom:1px dashed #fec200; color:#fec200}
+        .evtPass input:checked + label {border-bottom:1px dashed #533fd1; color:#533fd1}
 
 
         .evtPass .totalPrice {width:860px; margin:90px auto 0;}
@@ -59,7 +59,7 @@
         .evtPass .check {width:800px; margin:50px auto 0; padding:20px; font-size:16px; color:#000; letter-spacing:-1px;}
         .evtPass .check a {display:inline-block; padding:10px; color:#fff; background:#000; margin-left:40px; border-radius:20px; font-size:12px}
         .evtPass .check p {font-size:14px; padding:10px 0 0 20px; line-height:1.4}
-        .evtPass .check input:checked + label {border-bottom:1px dashed #4d0721; color:#4d0721}
+        .evtPass .check input:checked + label {border-bottom:1px dashed #533fd1; color:#533fd1}
 
         .evtPass .title02 {font-size:28px; color:#fff; margin:90px auto 30px}
         .evtPass .title02 div {font-size:46px}

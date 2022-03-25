@@ -205,17 +205,17 @@
                 <div class="passLecBuy NSK-Black"> 
                     <div>         
                         <p>학습지원금 10만 + <span>10만 포인트 더!</span></p>           
-                        <input type="radio" id="y_pkg0" name="y_pkg" value="193035" data-sale-price="990000"/>                
+                        <input type="radio" id="y_pkg0" name="y_pkg" value="193035" data-sale-price="920000"/>                
                         <label for="y_pkg0">23년 합격 PASS 신청하기</label>
                     </div> 
                     <div>   
                         <p>학습지원금 5만 + <span>10만 포인트 더!</span></p>                 
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="193026" data-sale-price="890000"/>                
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="193026" data-sale-price="790000"/>                
                         <label for="y_pkg1">23년 1차 경찰 PASS 신청</label>
                     </div>
                     <div>  
                         <p><span>10만 포인트!</span></p>                  
-                        <input type="radio" id="y_pkg2" name="y_pkg" value="192944" data-sale-price="690000"/>                
+                        <input type="radio" id="y_pkg2" name="y_pkg" value="192944" data-sale-price="650000"/>                
                         <label for="y_pkg2">22년 2차 경찰 PASS 신청</label>
                     </div> 
                 </div>
@@ -476,8 +476,7 @@
         </div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2595_03.jpg"  alt="커리큘럼" />
-              
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2595_03.jpg"  alt="커리큘럼" />              
         </div>
 
         <div class="evtCtnsBox evt04" data-aos="fade-up">        

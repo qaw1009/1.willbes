@@ -6,7 +6,7 @@
     <style type="text/css">
         .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
         .evtCtnsBox img {width:100%; max-width:720px;}
-        .evtCtnsBox a {border:1px solid #000} 
+        .wrap a {border:1px solid #000} */
 
         .dday {font-size:24px !important; padding:10px; background:#ebebeb; color:#000; text-align:left; letter-spacing:-1px}
         .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
@@ -38,43 +38,44 @@
 
         .evt01_coupon .coupon_btn {margin:0 auto; background-color:rgba(255,255,255,0.1)}
 
-        .evtReview {background:#f2f2f2; padding:50px 0 0;}
-        .evtReview .title01 {font-size:3vh; color:#b6b6b6; margin-bottom:50px}
+        .evtReview {background:#f2f2f2; padding:50px 0 0; border:1px solid #f2f2f2}
+        .evtReview .title01 {font-size:3vh; color:#b6b6b6; margin-bottom:30px}
         .evtReview .title01 strong {color:#000}
         .reviewWrap .reviewList {position: relative; height:350px }
         .reviewWrap .reviewList div {width:90%; min-width:300px; margin:0 auto; height:300px; padding:20px 0; border-radius:8px; font-size:1.8vh; line-height:1.4; color:#585858; letter-spacing:-1px; box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.1); background:#fff;}
         .reviewList p {color:#000; margin-top:40px; font-weight:bold; position:absolute; top:200px; width:90%;}
         .evtReview .bx-wrapper {border:0; background:none; box-shadow:none}
       
+        .evt02 {background:#f6f6f6; padding-bottom:10%}
         /*탭(텍스트)*/     
-        .tabContaier{width:100%;background:#fff;margin-top:50px;}
-        .tabContaier ul{margin:0 auto; height:65px;} 
-        .tabContaier li {display:inline-block; float:left; width:20%; height:60px; line-height:59px; background:#fff;color:#0101ff; font-size:18px;font-weight:bold;border:1px solid #0101ff; border-right:0} 
-        .tabContaier li:last-child {border-right:1px solid #0101ff;}
-        .tabContaier li a{display:block;}
-        .tabContaier li a:hover,
-        .tabContaier li a.active {color:#fff;font-size:20px;background:#0101ff;}
-        .tabContaier:after {content:""; display:block; clear:both}
+        .tabContaier {background:#fff; border-radius:10px; margin:0 3%; box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.1); padding:15px}
+        .tabContaier ul{display:flex;} 
+        .tabContaier li {width:20%;} 
+        .tabContaier li a{display:block; background:#e9e9e9; color:#a6a6a6; font-size:18px; padding:15px 0; margin-right:2px; line-height:1.2}
+        .tabContaier li a.active {color:#fff; background:#cf9c5d;}
+        .tabContaier li a br {display:none}
+        .tabContaier li:last-child a {margin:0}
 
          /*유튜브*/
-        .youtube {position:absolute; top:435px; left:50%;z-index:1;margin-left:-273px}
-        .youtube iframe {width:547px; height:308px}
+        .video-container {position:relative; padding-bottom:56.25%; overflow: hidden; margin-top:-20px !important}
+        .video-container iframe {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
-        .video-container {position:relative; padding-top:30px; padding-bottom:56.25%; margin:0 20px; height:0; overflow: hidden;}
-        .video-container iframe,
-        .video-container object,
-        .video-container embed {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
+        .tabContaier .tabContents div {font-size:28px; color:#000; font-weight:bold; margin-top:20px; text-align:left}
+        .tabContaier .tabContents div a {color:#cf9c5d; font-size:16px; background:url("https://static.willbes.net/public/images/promotion/2022/03/2595_icon01.png") no-repeat right center; padding-right:25px}
+
+        .passgo {position:absolute; width:80%; height:60px; line-height:60px; bottom:-30px; left:50%; margin-left:-40%; z-index: 10;}
+        .passgo a {display:block; border-radius:50px; color:#fff; background:#000; font-size:22px}
 
         /* 이용안내 */
-        .content_guide_wrap{background:#fff; margin:0 10; padding:30px 0 100px}
-        .content_guide_wrap .guide_tit{text-align:center; font-size:26px; margin-bottom:30px}
+        .content_guide_wrap{background:#f3f3f3; padding:100px 20px}
+        .content_guide_wrap .guide_tit{text-align:left; font-size:26px; margin-bottom:30px}
         .content_guide_wrap .tabs {display:flex; justify-content: space-around;} 
         .content_guide_wrap .tabs li {width:50%;}
         .content_guide_wrap .tabs li a {display:block; text-align:center; padding:15px 0; font-size:16px; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
         .content_guide_wrap .tabs li a:hover,
         .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
         .content_guide_wrap .tabs:after {content:""; display:block; clear:both}
-        .content_guide_box{border:2px solid #202020; border-top:0; padding-top:20px}
+        .content_guide_box{border:2px solid #202020; border-top:0; padding-top:20px; background:#fff}
         .content_guide_box dl{word-break:keep-all; padding:10px}
         .content_guide_box dt{margin-bottom:10px}
         .content_guide_box dt h3{color:#fff; background:#333; display:inline-block; padding:3px 7px; font-weight:bold; margin-right:10px; font-size:120%}
@@ -96,21 +97,24 @@
             .reviewWrap .reviewList div {height:220px;}
             .reviewList p {top:130px;;}
 
-            .tabContaier li {font-size:16px;}
-            .tabContaier li a:hover {font-size:17px;}         
+            .tabContaier li a{font-size:14px; }
+            .tabContaier li a br {display:block} 
+            .tabContaier .tabContents div {font-size:20px;}
+            .tabContaier .tabContents div a {font-size:14px;}
         }
 
         @@media only screen and (min-width: 375px) and (max-width: 640px) {
             .evt01 .price {font-size:20px;}
             .content_guide_wrap .guide_tit{font-size:24px;}
             .content_guide_wrap .tabs li a {font-size:15px !important; letter-spacing:-1px}
-            .evt01_coupon .coupon_btn {position:absolute !important;top:8.55% !important;margin:0 auto; background-color:rgba(255,255,255,0.1);}
-
+            .evt01_coupon .coupon_btn {position:absolute !important;top:8.55% !important;margin:0 auto; background-color:rgba(255,255,255,0.1);}            
 
             .reviewWrap .reviewList {height:300px }            
             .reviewWrap .reviewList div {height:220px; font-size:2vh;}
             
             .reviewList p {top:130px;}
+
+            .tabContaier li a br {display:block} 
         }
 
     </style>
@@ -146,7 +150,7 @@
                     <img src="https://static.willbes.net/public/images/promotion/2022/03/2595m_pass01.png" alt="23년 합격 패스" > 
                     <div class="price NSK-Black">
                         <p>학습지원금 10만 + <span>10만 포인트 더!</span></p>  
-                        <input type="radio" id="y_pkg0" name="y_pkg" value="191901" data-sale-price="990000" onClick=""/>
+                        <input type="radio" id="y_pkg0" name="y_pkg" value="193035" data-sale-price="920000" onClick=""/>
                         <label for="y_pkg0"> 23년 합격 PASS 신청하기</label>
                     </div>
                 </div>
@@ -155,7 +159,7 @@
                     <img src="https://static.willbes.net/public/images/promotion/2022/03/2595m_pass02.png" alt="23년 1차 패스" > 
                     <div class="price NSK-Black">
                         <p>학습지원금 5만 + <span>10만 포인트 더!</span></p>  
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="191723" data-sale-price="860000" onClick=""/>
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="193026" data-sale-price="790000" onClick=""/>
                         <label for="y_pkg1"> 23년 1차 경찰 PASS 신청하기</label>
                     </div>
                 </div>
@@ -164,7 +168,7 @@
                     <img src="https://static.willbes.net/public/images/promotion/2022/03/2595m_pass02.png" alt="22년 2차 패스" >
                     <div class="price NSK-Black">
                         <p><span>10만 포인트!</span></p>
-                        <input type="radio" id="y_pkg2" name="y_pkg" value="191722" data-sale-price="770000" onClick=""/>
+                        <input type="radio" id="y_pkg2" name="y_pkg" value="192944" data-sale-price="650000" onClick=""/>
                         <label for="y_pkg2"> 22년 2차 경찰 PASS 신청하기</label>
                     </div>
                 </div>
@@ -332,82 +336,83 @@
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2539m_04.jpg" alt="합격할수 밖에 없는 이유" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2595m_01.jpg" alt="교수진" >
         </div>
 
-        <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2539m_05.jpg" alt="교수진" >
-        </div>
-
-        <div class="evtCtnsBox evt06" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2539m_06.jpg" alt="3법 전문" >
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2595m_02.jpg" alt="" >
             <div class="tabContaier" id="apply">    
-                <ul class="NSK-Black">    
-                    <li><a href="#tab1" class="active">형사법</a></li>                            
-                    <li><a href="#tab2">경찰학</a></li>
-                    <li><a href="#tab3">헌법(김)</a></li>                            
-                    <li><a href="#tab4">헌법(이)</a></li>  
-                    <li><a href="#tab5">범죄학</a></li>           
+                <ul>    
+                    <li><a href="#tab1" class="active">형사법<br> 신광은</a></li>                            
+                    <li><a href="#tab2">경찰학<br> 장정훈</a></li>
+                    <li><a href="#tab3">헌법<br> 김원욱</a></li>                            
+                    <li><a href="#tab4">헌법<br> 이국령</a></li>  
+                    <li><a href="#tab5">범죄학<br> 박상민</a></li>           
                 </ul>
                 <div id="tab1" class="tabContents">
-                    <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_01.jpg"  alt="형사법" />                       
+                    <div class="wrap">                     
                         <div class="video-container">
                             <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_01_btn.jpg"  alt="교수님 소개" />
-                        <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51160?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 25.89%;top:90.03%;width: 47.88%;height: 8.34%;z-index: 2;"></a>
+                        <div>
+                            <p class="NSK-Black">형사법 공부방법 & 커리큘럼</p>
+                            <a href="{{front_url('/professor/show/cate/3001/prof-idx/51160?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29')}}" target="_blank">형사법 신광은</a>
+                        </div>
                     </div>                         
                 </div>
                 <div id="tab2" class="tabContents">
-                    <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_02.jpg"  alt="경찰학" />                        
+                    <div class="wrap">                       
                         <div class="video-container">
                             <iframe src="https://www.youtube.com/embed/VHTrL5w2IF4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_02_btn.jpg"  alt="교수님 소개" />
-                        <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51161?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 25.89%;top: 90.03%;width: 47.88%;height: 8.34%;z-index: 2;"></a>
+                        <div>
+                            <p class="NSK-Black">경찰학 공부방법 & 커리큘럼</p>
+                            <a href="{{front_url('/professor/show/cate/3001/prof-idx/51161?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29')}}" target="_blank">경찰학 장정훈</a>
+                        </div>
                     </div>                         
                 </div> 
                 <div id="tab3" class="tabContents">
-                    <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_03.jpg"  alt="헌법 김원욱" />                       
+                    <div class="wrap">                      
                         <div class="video-container">
                             <iframe src="https://www.youtube.com/embed/UB91DCctYgU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_03_btn.jpg"  alt="교수님 소개" />
-                        <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51146?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 25.89%;top: 90.03%;width: 47.88%;height: 8.34%;z-index: 2;"></a>
+                        <div>
+                            <p class="NSK-Black">헌법 김원욱 기본이론 오리엔테이션</p>
+                            <a href="{{front_url('/professor/show/cate/3001/prof-idx/51146?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29')}}" target="_blank">헌법 김원욱</a>
+                        </div>>
                     </div>                               
                 </div> 
                 <div id="tab4" class="tabContents">
-                    <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_04.jpg"  alt="헌법 이국령" />                        
+                    <div class="wrap">                       
                         <div class="video-container">
                             <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_04_btn.jpg"  alt="교수님 소개" />
-                        <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51259?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 25.89%;top: 90.03%;width: 47.88%;height: 8.34%;z-index: 2;"></a>
+                        <div>
+                            <p class="NSK-Black">NEW 헌법 전문가 경찰 헌법 이국령 교수</p>
+                            <a href="{{front_url('/professor/show/cate/3001/prof-idx/51259?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29')}}" target="_blank">헌법 이국령</a>
+                        </div>
                     </div>                                 
                 </div> 
                 <div id="tab5" class="tabContents">
-                    <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_05.jpg"  alt="범죄학" />                        
+                    <div class="wrap">                        
                         <div class="video-container">
                             <iframe src="https://www.youtube.com/embed/8T1HxQ5PPhQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <img src="https://static.willbes.net/public/images/promotion/2021/12/2450m_06_05_btn.jpg"  alt="교수님 소개" />
-                        <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51278?subject_idx=2178&subject_name=%EB%B2%94%EC%A3%84%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="" style="position: absolute;left: 25.89%;top: 90.03%;width: 47.88%;height: 8.34%;z-index: 2;"></a>
+                        <div>
+                            <p class="NSK-Black">[범죄학OT] 범죄학의 혁명! 박상민으로 끝!</p>
+                            <a href="{{front_url('/professor/show/cate/3001/prof-idx/51278?subject_idx=2178&subject_name=%EB%B2%94%EC%A3%84%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29')}}" target="_blank">범죄학 박상민</a>
+                        </div>
                     </div>                        
                 </div>                                
             </div>           
-        </div>        
-
+        </div>
+        
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2539m_07.jpg" alt="커리큘럼" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2595m_03.jpg" alt="" >
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2539m_08.jpg" alt="한능검 특강" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2595m_04.jpg" alt="" >
         </div>
 
         <div class="evtCtnsBox wrap" data-aos="fade-up">
@@ -416,14 +421,15 @@
                 {!! method_field('POST') !!}
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/2539m_09.jpg" alt="교재 신청하기" >
-                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 25.14%; top: 31.96%; width: 47.5%; height: 4.67%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="경찰학" style="position: absolute;left: 16.74%;top: 51.33%;width: 21.78%;height: 3.71%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180748" target="_blank" title="형사법" style="position: absolute;left: 38.74%;top: 51.33%;width: 21.78%;height: 3.71%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180567" target="_blank" title="헌법(김)" style="position: absolute;left: 61.74%;top: 51.33%;width: 21.78%;height: 3.71%;z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!')" title="헌법(이)" style="position: absolute;left: 27.74%;top: 55.05%;width: 21.78%;height: 3.71%;z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!')" title="범죄학" style="position: absolute;left: 50.74%;top: 55.05%;width: 21.78%;height: 3.71%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2595m_05.jpg" alt="교재 신청하기" >
+                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 58.89%; top: 32.29%; width: 25%; height: 2.67%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="경찰학" style="position: absolute; left: 28.06%; top: 51.31%; width: 21.94%; height: 2.22%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180748" target="_blank" title="형사법" style="position: absolute; left: 50.28%; top: 51.31%; width: 21.94%; height: 2.22%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180567" target="_blank" title="헌법(김)" style="position: absolute;left: 16.94%; top: 53.53%; width: 21.94%; height: 2.22%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!')" title="헌법(이)" style="position: absolute; left: 39.03%; top: 53.53%;; width: 21.94%; height: 2.22%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!')" title="범죄학" style="position: absolute; left: 61.39%; top: 53.53%; width: 21.94%; height: 2.22%; z-index: 2;"></a>
             </form>
+            <div class="passgo NSK-Black"><a href="#evt01">0원 PASS 신청 ↑</a></div> 
         </div>
 
         <div class="content_guide_wrap" id="tab">
@@ -970,12 +976,8 @@
         /*롤링*/
         $(document).ready(function() {
             var BxBook = $('.reviewSlide').bxSlider({
-                slideMargin: 10,
-                maxSlides:12,
-                minSlides:1,
-                moveSlides: 1,
                 ticker:true,
-                speed:100000,
+                speed:150000,
                 onSlideAfter: function() {
                     BxBook.stopAuto();
                     BxBook.startAuto();

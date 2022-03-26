@@ -262,6 +262,7 @@ class PredictModel extends WB_Model
             IF(Period = 1, '6개월 이하', IF(Period = 2, '1년 이하', IF(Period = 3, '2년 이하', '2년 이상'))) AS Period,
             RegDatm
             ,(GROUP_CONCAT(CONCAT('-',PP.PaperName,':',PG.OrgPoint))) AS OPOINT
+            ,(SELECT COUNT(*) FROM lms_predict_answerpaper AS pa WHERE pa.PrIdx = PR.PrIdx ) AS AnswerCnt
         ";
         $from = "
             FROM {$this->_table['predictRegister']} AS PR

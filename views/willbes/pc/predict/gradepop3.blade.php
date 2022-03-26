@@ -30,7 +30,7 @@
                             <tr>
                                 <th>{{$val['CcdName']}}</th>
                                 <td>
-                                    <input type="number" name="Score[]" maxlength="3" data-max-num="100" oninput="maxLengthCheck(this)" @if(empty($subject_grade)===false) value="{{ $subject_grade[$val['PpIdx']] }}" @endif > 점
+                                    <input type="number" name="Score[]" maxlength="3" data-max-num="{{$val['TotalScore']}}" oninput="maxLengthCheck(this)" @if(empty($subject_grade)===false) value="{{ $subject_grade[$val['PpIdx']] }}" @endif > 점
                                     <input type="hidden" name="PpIdx[]" value="{{ $val['PpIdx'] }}" />
                                 </td>
                             </tr>

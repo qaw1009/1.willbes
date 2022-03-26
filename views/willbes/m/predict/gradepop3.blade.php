@@ -25,7 +25,7 @@
                             채점 후 ‘완료’ 버튼을 반드시 눌러야 전형정보 관리에 성적이 반영됩니다.
                         </li>
                         <li>
-                            기본정보는 사전예약 기간에만(~8/20) 수정이 가능하며, 본 서비스 오픈 후에는(8/21~) 수정이 불가합니다.
+                            기본정보는 사전예약 기간에만(~3/25) 수정이 가능하며, 본 서비스 오픈 후에는(3/26~) 수정이 불가합니다.
                         </li>
                         <li>
                             자세한 합격예측 분석 데이터는 PC버전에서 확인 가능합니다.
@@ -58,7 +58,7 @@
                             <li>
                                 <div>
                                     <label>{{ $val['CcdName'] }}</label>
-                                    <input type="number" name="Score[]" maxlength="3" data-max-num="100" oninput="maxLengthCheck(this)" @if(empty($subject_grade)===false) value="{{ $subject_grade[$val['PpIdx']] }}" @endif >
+                                    <input type="number" name="Score[]" maxlength="3" data-max-num="{{$val['TotalScore']}}" oninput="maxLengthCheck(this)" @if(empty($subject_grade)===false) value="{{ $subject_grade[$val['PpIdx']] }}" @endif >
                                     <input type="hidden" name="PpIdx[]" value="{{ $val['PpIdx'] }}" />
                                     <span>점</span>
                                 </div>

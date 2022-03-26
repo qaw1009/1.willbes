@@ -735,68 +735,6 @@
             Nwagon.chart(options);
         }
 
-
-
-        // 과목별 성적분포
-        var currNum = 0;
-        /*function selPoint2(type) {
-            var arrPoint = [];
-            var arrCnt = 0;
-            var arrGraph = '';
-
-            // 그래프 데이터 배열
-            @foreach($subjectPointList as $row)
-            arrPoint.push('{{ implode('/', $row) }}');
-            @endforeach
-
-                arrCnt = arrPoint.length - 1;
-            if (arrCnt < 0) {
-                return;
-            }
-
-            // 이전/다음 선택시 그래프번호 조회
-            if (type !== 0) {
-                if (type === 'N') {
-                    currNum = currNum + 1;
-                    if (currNum > arrCnt) {
-                        currNum = 0;
-                    }
-                } else {
-                    currNum = currNum - 1;
-                    if (currNum < 0) {
-                        currNum = arrCnt;
-                    }
-                }
-            }
-
-            // 해당 그래프 데이터
-            arrGraph = arrPoint[currNum].split('/');
-
-            // 막대그래프 표기
-            $('#grtxt').html(arrGraph[0]);
-            for(var i = 1; i <= 5; i++) {
-                $('#gr' + i).css('width', arrGraph[i] + '%');
-                $('#grt' + i).html(arrGraph[i] + '%');
-            }
-
-            // 그래프 표기
-            $('#pointarea2').html('');
-            var options = {
-                'dataset':{
-                    title: 'Web accessibility status',
-                    values: [parseFloat(arrGraph[1]), parseFloat(arrGraph[2]) , parseFloat(arrGraph[3]), parseFloat(arrGraph[4]), parseFloat(arrGraph[5])],
-                    colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93', '#f10a00'],
-                    fields: ['0-20', '21-40', '41-60', '61-80', '81-100']
-                },
-                'donut_width' : 35,
-                'core_circle_radius':50,
-                'chartDiv': 'pointarea2',
-                'chartType': 'donut',
-                'chartSize': {width:700, height:300}
-            };
-            Nwagon.chart(options);
-        }*/
-
         // 과목별 단일 선호도
         function bestSubject() {
             var fields = [];

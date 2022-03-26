@@ -30,7 +30,7 @@
                             <tr>
                                 <th>{{$val['CcdName']}}</th>
                                 <td>
-                                    <input type="number" name="Score[]" maxlength="4" data-max-num="{{$val['TotalScore']}}" oninput="maxLengthCheck(this)" @if(empty($subject_grade)===false) value="{{ $subject_grade[$val['PpIdx']] }}" @endif > 점
+                                    <input type="number" name="Score[]" maxlength="4" data-take-mock-part="{{$val['TakeMockPart']}}" data-max-num="{{$val['TotalScore']}}" oninput="maxLengthCheck(this)" @if(empty($subject_grade)===false) value="{{ $subject_grade[$val['PpIdx']] }}" @endif > 점
                                     <input type="hidden" name="PpIdx[]" value="{{ $val['PpIdx'] }}" />
                                 </td>
                             </tr>
@@ -71,6 +71,7 @@
             var check = true;
 
             $('input[name="Score[]"]').each(function(){
+                var scoring = ($(this).data("take-mock-part") == 300) ? 5 : 2.5;
                 var scr_val = $(this).val();
 
                 if($.trim(scr_val) == ''){
@@ -80,17 +81,10 @@
                     vali_msg = '점수는 0~100점 사이 이어야 합니다';
                     check = false;
                 } else {
-                    if ($(this).data("max-num") == 100) {
-                        if(scr_val%5 != 0) {
-                            vali_msg = '정확한 원점수를 입력해주세요'; //한문제당 5점
-                            check = false;
-                        }
+                    if(scr_val % scoring == 0) {
                     } else {
-                        if(scr_val%5 == 0 || scr_val%5 == 0.5) {
-                        } else {
-                            vali_msg = '정확한 원점수를 입력해주세요'; //한문제당 0.5점
-                            check = false;
-                        }
+                        vali_msg = '정확한 원점수를 입력해주세요'; //한문제당 0.5점
+                        check = false;
                     }
                 }
             });

@@ -111,8 +111,8 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
-            <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2241_sky.png" alt="7월 new"></a>
-            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2241_sky2.png" alt="최우영 t"></a>
+            <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/03/2241_sky.png" alt="7월 new"></a>
+            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/03/2241_sky2.png" alt="최우영 t"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            
@@ -120,7 +120,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/09/2241_01.jpg" alt="군무원 모집"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2241_01.jpg" alt="군무원 모집"/>
         </div>
 
         <nav class="evtMenu">
@@ -163,23 +163,23 @@
         </nav>
 
         <section class="evtCtnsBox wb_cts09" >   
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2241_08.jpg" alt="기본 이론 종합반 클라쓰"/>        
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2241_08.jpg" alt="기본 이론 종합반 클라쓰"/>        
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/2241_09.jpg" alt="수강 신청하기"/>
+                <img src="https://static.willbes.net/public/images/promotion/2023/03/2241_09.jpg" alt="수강 신청하기"/>
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001" target="_blank" title="수강신청하기" style="position: absolute; left: 25.54%; top: 67.52%; width: 48.66%; height: 12.08%;z-index: 2;"></a>
             </div>
         </section> 
         
         <div class="evtCtnsBox wb_cts09" > 
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2241_10.jpg" alt="전기/통신 수강신청하기"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2241_10.jpg" alt="전기/통신 수강신청하기"/>
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZk5pY2tOYW1lOuy1nOyasOyYgQ%3D%3D" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 37.75%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 69.27%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
             </div>
         </div>
 
         <section class="evtCtnsBox wb_cts05">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2241_05.gif" alt="커리큘럼"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2241_05.gif" alt="커리큘럼"/>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2241_05_1.gif" alt="커리큘럼"/>
                 <a href="javascript:alert('Coming Soon');" title="신기훈" style="position: absolute; left: 86.34%; top: 33.75%; width: 9.82%; height: 25.25%; z-index: 2;"></a>

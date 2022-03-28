@@ -77,9 +77,9 @@
         <img src="https://static.willbes.net/public/images/promotion/2021/07/1721m_04.jpg" alt="커리큘럼">
         <div class="slide_con">
             <div id="slidesImg1">
-                <div><img src="https://static.willbes.net/public/images/promotion/2021/07/1721m_04_01.png" alt="전기"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2021/07/1721m_04_02.png" alt="무선/통신"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2021/07/1721m_04_03.png" alt="전자공학"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2022/03/1721m_04_01.png" alt="전기"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2022/03/1721m_04_02.png" alt="무선/통신"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2022/03/1721m_04_03.png" alt="전자공학"/></div>
             </div>
         </div> 
     </div>

@@ -112,7 +112,7 @@
         </div>
 
         {{--과목별 원점수 평균--}}
-        <div class="m_section3_3">
+        {{--<div class="m_section3_3">
             <h2>과목별 <span>원점수 평균</span></h2>
             @if(empty($gradedata_1) === true || empty($gradedata_2) === true)
                 <div class="txtBox01">가답안 발표 후 해당 서비스가 제공됩니다.</div>
@@ -165,7 +165,7 @@
                     </div>
                 </div>
             @endif
-        </div>
+        </div>--}}
 
         {{--합격예측 참여자 분석 현황--}}
         <div class="m_section3_3">
@@ -210,7 +210,7 @@
                             @endforeach
                         </table>
                         <div class="mt10">
-                            <div id="pointarea_subject_1"></div>
+                            <div id="point_subject_1"></div>
                         </div>
                     </div>
                 </div>
@@ -232,7 +232,7 @@
                         @endforeach
                     </table>
                     <div class="mt10">
-                        <div id="pointarea_subject_2"></div>
+                        <div id="point_subject_2"></div>
                     </div>
                 </div>
 
@@ -254,45 +254,13 @@
                             @endforeach
                         </table>
                         <div class="mt10">
-                            <div id="pointarea_subject_3"></div>
+                            <div id="point_subject_3"></div>
                         </div>
                     </div>
                 </div>
             @else
                 <div class="txtBox01">가답안 발표 후 해당 서비스가 제공됩니다.</div>
             @endif
-            <!--m_section3_3L//-->
-            {{--@if(empty($subjectPointList) === false)
-                <div class="m_section3_3R">
-                    <h3><Expect>과목별</Expect> 성적 분포 - <Expect id="grtxt"></Expect></h3>
-                    <div class="m_section3_3R_warp">
-                        <ul>
-                            <li>
-                                <table class="boardTypeC">
-                                    <col width="20%" />
-                                    <col width="" />
-                                    @php $_arr_gr_area = ['5' => '81-100', '4' => '61-80', '3' => '41-60', '2' => '21-40', '1' => '0-20']; @endphp
-                                    @foreach($_arr_gr_area as $key => $val)
-                                        <tr>
-                                            <th>{{ $val }}</th>
-                                            <td>
-                                                <div class="graph"><span id='gr{{ $key }}' class="graph1"></span></div>
-                                                <Expect class="ratio" id="grt{{ $key }}"></Expect>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </table>
-                                <div class="mt10">
-                                    <div id="pointarea2"></div>
-                                </div>
-                            </li>
-                        </ul>
-                        <p class="leftBtn"><a onClick="selPoint2('P')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowL.png" alt="이전"/></a></p>
-                        <p class="rightBtn"><a onClick="selPoint2('N')"><img src="https://static.willbes.net/public/images/promotion/2019/04/1211_arrowR.png" alt="다음"/></a></p>
-                    </div>
-                </div>
-            @endif--}}
-        <!--m_section3_3R//-->
         </div>
 
         <div class="m_section3_3">
@@ -551,7 +519,6 @@
             selPoint_1();
             selPoint_2();
             selPoint_3();
-            /*selPoint2(0);*/
             bestSubject();
             bestCombSubject();
             setAreaMsg(0);
@@ -660,7 +627,7 @@
 
         //과목별 성적분포
         function selPoint_1() {
-            if ($('#pointarea_subject_1').length < 1) {
+            if ($('#point_subject_1').length < 1) {
                 return;
             }
             var fields = ['0-10', '11-20', '21-30', '31-40', '41-50'];
@@ -678,14 +645,14 @@
                 },
                 'donut_width' : 35,
                 'core_circle_radius':50,
-                'chartDiv': 'pointarea_subject_1',
+                'chartDiv': 'point_subject_1',
                 'chartType': 'donut',
                 'chartSize': {width:700, height:300}
             };
             Nwagon.chart(options);
         }
         function selPoint_2() {
-            if ($('#pointarea_subject_2').length < 1) {
+            if ($('#point_subject_2').length < 1) {
                 return;
             }
             var fields = ['0-20', '21-40', '41-60', '61-80', '81-100'];
@@ -703,14 +670,14 @@
                 },
                 'donut_width' : 35,
                 'core_circle_radius':50,
-                'chartDiv': 'pointarea_subject_2',
+                'chartDiv': 'point_subject_2',
                 'chartType': 'donut',
                 'chartSize': {width:700, height:300}
             };
             Nwagon.chart(options);
         }
         function selPoint_3() {
-            if ($('#pointarea_subject_3').length < 1) {
+            if ($('#point_subject_3').length < 1) {
                 return;
             }
             var fields = ['0-20', '21-40', '41-60', '61-80', '81-100'];
@@ -728,7 +695,7 @@
                 },
                 'donut_width' : 35,
                 'core_circle_radius':50,
-                'chartDiv': 'pointarea_subject_3',
+                'chartDiv': 'point_subject_3',
                 'chartType': 'donut',
                 'chartSize': {width:700, height:300}
             };

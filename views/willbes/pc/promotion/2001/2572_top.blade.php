@@ -80,7 +80,7 @@ if (empty($arr_promotion_params['live_start']) === false && empty($arr_promotion
 
 
     <div class="talkShow">
-        <a href="https://police.willbes.net/promotion/index/cate/3001/code/2277" target="_blank" >
+        <a href="{{front_url('/promotion/index/cate/3001/code/2578')}}" target="_blank">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2572_top_bn4.png" alt="적중 이벤트">
         </a>
     </div>

@@ -25,10 +25,13 @@
        
         .evt00 {background:#0a0a0a}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/02/2496_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2496_top_bg.jpg) no-repeat center top;}
         .evtTop span {position: absolute; left:50%; z-index: 2;}
         .evtTop .img01 {width:428px; top:585px; margin-left:-800px}
-        .evtTop .img02 {width:356px; top:1300px; margin-left:400px}
+
+        .evtTops {background:#005B3A}
+        .evtTops span {position: absolute; left:50%; z-index: 2;}        
+        .evtTops .img02 {width:356px; top:100px; margin-left:450px}
       
         .evt01 {background:#fff}
 
@@ -73,7 +76,7 @@
 
         <div class="sky" id="QuickMenu">
             <a href="#event01">
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/2496_sky01.png" alt="선접수 할인"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2496_sky01.png" alt="선접수 할인"/>
             </a>
             <a href="#event02">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_sky02.png" alt="추가할인 이벤트"/>
@@ -85,9 +88,13 @@
         </div>
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2496_top.jpg" alt="2022 슈퍼 pass" />
-            <span class="img01" data-aos="fade-right"><img src="https://static.willbes.net/public/images/promotion/2022/02/2496_top_img01.png" alt="" /></span>
-            <span class="img02" data-aos="fade-left"><img src="https://static.willbes.net/public/images/promotion/2022/02/2496_top_img02.png" alt="" /></span>
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2496_top.jpg" alt="2022 슈퍼 pass" />
+            <span class="img01" data-aos="fade-right"><img src="https://static.willbes.net/public/images/promotion/2022/02/2496_top_img01.png" alt="" /></span>           
+        </div>
+
+        <div class="evtCtnsBox evtTops" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2496_tops.jpg" alt="2022 슈퍼 pass" />
+            <span class="img02" data-aos="fade-right"><img src="https://static.willbes.net/public/images/promotion/2022/02/2496_top_img02.png" alt="" /></span>           
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
@@ -105,22 +112,20 @@
         </div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2496_03.jpg" alt="합격 커리큘럼"  />   
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2496_03.jpg" alt="합격 커리큘럼"  />   
         </div>
 
         <div class="evtCtnsBox evt_tab" data-aos="fade-up">   
             <div class="wrap" id="event01" >
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/2496_04_03.jpg" alt="3월 개강반" />
-                <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378203" title="기본형" target="_blank" style="position: absolute; left: 0.18%; top: 85.44%; width: 32.23%; height: 6.35%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=378211" title="심화형 6개월" target="_blank" style="position: absolute; left: 33.66%; top: 85.44%; width: 32.77%; height: 6.35%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=385719" title="심화형 5개월" target="_blank" style="position: absolute; left: 67.23%; top: 85.44%; width: 32.77%; height: 6.35%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2496_04_03.jpg" alt="3월 개강반" />               
+                <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=385719" title="심화형" target="_blank" style="position: absolute; left: 33.66%; top: 88.24%; width: 32.77%; height: 6.35%; z-index: 2;"></a>              
             </div>      
         </div>
 
         <div class="evtCtnsBox evt_tab_again" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/2496_04_again.jpg" alt="다시한번 합격을 위해" id="event02" />
-                <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" title="super pass 신청하기" target="_blank" style="position: absolute; left: 27.59%; top: 81.84%; width: 44.82%; height: 5.74%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2496_04_again.jpg" alt="다시한번 합격을 위해" id="event02" />
+                <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" title="super pass 신청하기" target="_blank" style="position: absolute; left: 27.59%; top: 82.24%; width: 44.82%; height: 5.74%; z-index: 2;"></a>
             </div> 
         </div>
 
@@ -129,6 +134,7 @@
         </div>
 
         <div class="evtCtnsBox evtInfo" data-aos="fade-up">
+
 			<div class="evtInfoBox">
 				<h4 class="NSK-Black">유의사항</h4>
 				<div class="infoTit"><strong>2022 슈퍼패스 경찰 전문 교수진</strong></div>
@@ -140,32 +146,6 @@
                     <li>G-TELP - 김준기 교수님</li>
                     <li>한능검 - 오태진 교수님</li>                      
 				</ul>
-                
-                <div class="infoTit"><strong>[기본형] 6개월 슈퍼패스 유의사항</strong></div>
-                <ul>
-                    <li>① [기본형] 6개월 슈퍼패스는 2022년 3월 7일부터 2022년 8월 20일까지 책정된 수강료로 시험 일정에 따라 추가 수강료가 부과될 수 있습니다.<br>
-                    (1개월 연장 시 - 실강 10만원, 인강 5만원)<br>
-                    * 정규과정 : 2022년 과목개편대비 기본이론,심화과정,문제풀이,마무리 특강</li>
-                    <li>② 해당 수강권으로는 22년 4~5월 심화강의 실강, 22년 6월 문제풀이 1단계 실강 수강이 불가합니다.</li>
-                    <li>③ 국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 대체될 수 있으며, 이로 인한 해당기간 환불은 불가합니다.</li>
-                    <li>④ 3~6월 영상반이 진행되는 기간동안 전용 영상반 수업 강의실과 전용 자습실이 제공됩니다.</li>
-                    <li>⑤ G-TELP 특강은 수강기간 내에, 실강 1회에 한하여 50% 할인 적용됩니다.</li>
-                    <li>⑥ 인강패스와 정규과정 외 특강 및 모의고사는 슈퍼패스 등록생에게 제공되는 무료 혜택입니다.</li>
-                    <li>⑦ 일부 특강은 유료로 결제할 수 있습니다.</li>
-                    <li>⑧ 중도 환불 시 수강기간만큼 차감 후, 무료 혜택 금액을 차감하여 환불됩니다.</li>                   
-                </ul>
-
-                <div class="infoTit"><strong>[심화형] 6개월 슈퍼패스 유의사항</strong></div>
-                <ul>
-                    <li>① [심화형] 6개월 슈퍼패스는 2022년 3월 14일부터 2022년 8월 20일까지 책정된 수강료로 시험 일정에 따라 추가 수강료가 부과될 수 있습니다.<br>
-                    (1개월 연장 시 - 실강 10만원, 인강 5만원)<br>
-                    * 정규과정 : 2022년 과목개편대비 기본이론,심화과정,문제풀이,마무리 특강</li>
-                    <li>② 국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 대체될 수 있으며, 이로 인한 해당기간 환불은 불가합니다.</li>
-                    <li>③ G-TELP 특강은 수강기간 내에, 실강 1회에 한하여 50% 할인 적용됩니다.</li>
-                    <li>④ 인강패스와 정규과정 외 특강 및 모의고사는 슈퍼패스 등록생에게 제공되는 무료 혜택입니다.</li>
-                    <li>⑤ 일부 특강은 유료로 결제할 수 있습니다.</li>
-                    <li>⑥ 중도 환불 시 수강기간만큼 차감 후, 무료 혜택 금액을 차감하여 환불됩니다.</li>
-                </ul>
 
                 <div class="infoTit"><strong>[심화형] 5개월 슈퍼패스 유의사항</strong></div>
                 <ul>

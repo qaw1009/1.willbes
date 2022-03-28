@@ -27,7 +27,7 @@
 
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2020/03/1139_01_bg.jpg) no-repeat center top;}
 
-        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2021/10/1139_02_bg.jpg) no-repeat center top;} 
+        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2022/03/1139_02_bg.jpg) no-repeat center top;} 
 
         .skybanner {position:fixed;top:325px;right:10px;z-index:1;}
 
@@ -61,11 +61,11 @@
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
             <div class="wrap" id="go_02">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/1139_02.jpg" alt="타학원 수강이력 인증"/>
-                <a href="javascript:certOpen();" title="타학원 수강 인증" style="position: absolute;left: 30.13%;top: 82.56%;width: 38.15%;height: 7.89%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/1139_02.jpg" alt="타학원 수강이력 인증"/>
+                <a href="javascript:certOpen();" title="타학원 수강 인증" style="position: absolute;left: 30.78%;top: 88.56%;width: 38.30%;height: 7.71%;z-index: 2;"></a>
             </div>
             <div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/1139_03.jpg" alt="이벤트 참여" usemap="#Map1139a" border="0" id="go_03"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/1139_03.jpg" alt="이벤트 참여" usemap="#Map1139a" border="0" id="go_03"/>
     </div>
         </div>      
               

@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+        .evtCtnsBox .wrap a {border:1px solid #000}
 
         /************************************************************/
 
@@ -109,7 +109,7 @@
 
         <div class="evtCtnsBox wb_03" data-aos="fade-up">
             <divv class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2601_03.jpg"  alt="기본종합반 스케줄"/>    
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2601_03.jpg"  alt="기본종합반 스케줄"/>    
                 <a href="https://police.willbes.net/pass/offinfo/boardInfo/index/80" target="_blank" class="NSK-Black">강의시간표 확인하기 ></a>
                 * 학원사정으로 지연,연기 될수 있습니다.
             </divv>
@@ -117,20 +117,19 @@
 
         <div class="evtCtnsBox wb_04" id="apply" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2601_04.jpg"  alt="기본종합반"/>
-                <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank"  title="일반공채" style="position: absolute;left: 17.29%;top: 81.43%;width: 26.16%;height: 4.4%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1040" target="_blank" title="경행경채" style="position: absolute;left: 56.49%;top: 81.43%;width: 26.16%;height: 4.4%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2601_04.jpg"  alt="기본종합반"/>
+                <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank"  title="일반공채" style="position: absolute; left: 37.05%; top: 81.43%;width: 26.16%;height: 4.4%; z-index: 2;"></a>
             </div>
         </div>
 
         <div class="evtCtnsBox wb_05" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2601_05.jpg"  alt="신청하기"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2601_05.jpg"  alt="신청하기"/>
                 <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/192678" target="_blank"  title="신광은" style="position: absolute;left: 3.89%;top: 60.63%;width: 14.16%;height: 8.4%;z-index: 2;"></a>
                 <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/192679" target="_blank"  title="장정훈" style="position: absolute;left: 23.19%;top: 60.63%;width: 14.16%;height: 8.4%;z-index: 2;"></a>
                 <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/192680" target="_blank"  title="김원욱" style="position: absolute;left: 42.59%;top: 60.63%;width: 14.16%;height: 8.4%;z-index: 2;"></a>
                 <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/192681" target="_blank"  title="이국령" style="position: absolute;left: 62.39%;top: 60.63%;width: 14.16%;height: 8.4%;z-index: 2;"></a>
-                <a href="javascript:alert('준비중입니다.')"  title="박상민" style="position: absolute;left: 81.79%;top: 60.63%;width: 14.16%;height: 8.4%;z-index: 2;"></a>
+                <a href="javascript:alert('* 박상민 교수님 강의는 인강으로 제공합니다.')"  title="박상민" style="position: absolute;left: 81.79%;top: 60.63%;width: 14.16%;height: 8.4%;z-index: 2;"></a>
             </div>
         </div>
 
@@ -143,19 +142,13 @@
                     경찰학 - 장정훈 교수님<br>
                     헌 법 - 김원욱 교수님<br>            
                     헌 법 - 이국령 교수님<br>
-                    범죄학 - 박상민 교수님
+                    범죄학 - 박상민 교수님 (* 박상민 교수님  5월 기본강의는 인강으로 제공합니다.)
 				</div>
 				<div class="infoTit">종합반 안내</div>
 				<ul>
                     <li>
                         기본종합반 (일반공채) 5/2(월) ~ 7/1(금)<br>
                         ① 학원 강의 : 형사법, 경찰학, 헌법 실강 (헌법 교수님 택1)<br>
-                        ② 기본이론 복습동영상 (수강기간동안)<br>
-                        ③ 학습지원금 10만 포인트 지급
-                    </li>
-                    <li>
-                        기본종합반 (경행경채) 5/2(월) ~ 7/1(금)<br>
-                        ① 학원 강의 : 형사법, 경찰학, 범죄학 실강<br>
                         ② 기본이론 복습동영상 (수강기간동안)<br>
                         ③ 학습지원금 10만 포인트 지급
                     </li>

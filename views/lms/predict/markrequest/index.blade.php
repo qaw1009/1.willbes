@@ -76,6 +76,7 @@
                         <th class="text-center">수강여부</th>
                         <th class="text-center">시험준비기간</th>
                         <th class="text-center">신청일</th>
+                        <th class="text-center">채점형태</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -128,7 +129,10 @@
                     {'data' : 'TaKeNumber', 'class': 'text-center'},
                     {'data' : 'LectureType', 'class': 'text-center'},
                     {'data' : 'Period', 'class': 'text-center'},
-                    {'data' : 'RegDatm', 'class': 'text-center'}
+                    {'data' : 'RegDatm', 'class': 'text-center'},
+                    {'data' : 'AnswerCnt', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            if (data > 0) { return '일반채점'; } else { return '직접채점'; }
+                        }}
                 ]
             });
 

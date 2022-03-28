@@ -1622,7 +1622,7 @@ class SurveyModel extends WB_Model
     public function subjectList($PredictIdx, $pridx) {
         try {
             $column = "
-                TotalScore, pp.PpIdx, CcdName, pp.Type
+                pr.TakeMockPart, TotalScore, pp.PpIdx, CcdName, pp.Type
                 ,(SELECT COUNT(*) AS ppCnt FROM lms_predict_questions AS a WHERE a.PpIdx = pp.PpIdx AND a.IsStatus = 'Y' ) AS PpCnt
             ";
             $from = "

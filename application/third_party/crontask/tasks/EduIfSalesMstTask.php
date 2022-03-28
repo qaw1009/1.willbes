@@ -130,6 +130,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
                 order by IF_IDX asc
             ';
             $result = $this->_src_db->query($query, [$if_sdate, $if_edate])->result_array();
+            logger('_runTeacherMst => ' . $this->_src_db->last_query());
 
             // 교수정보 등록
             if (empty($result) === false) {
@@ -140,6 +141,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
                     $ins_cnt++;
                 }
             }
+            logger('_runTeacherMst => Remote DB insert completed.');
 
             return $ins_cnt;
         } catch (\Exception $e) {
@@ -168,6 +170,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
                 order by IF_IDX asc
             ';
             $result = $this->_src_db->query($query, [$if_sdate, $if_edate])->result_array();
+            logger('_runProductMst => ' . $this->_src_db->last_query());
 
             // 상품정보 등록
             if (empty($result) === false) {
@@ -178,6 +181,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
                     $ins_cnt++;
                 }
             }
+            logger('_runProductMst => Remote DB insert completed.');
 
             return $ins_cnt;
         } catch (\Exception $e) {
@@ -205,6 +209,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
                 order by IF_IDX asc
             ';
             $result = $this->_src_db->query($query, [$if_sdate, $if_edate])->result_array();
+            logger('_runProductSch => ' . $this->_src_db->last_query());
 
             // 상품 강의스케줄 등록
             if (empty($result) === false) {
@@ -215,6 +220,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
                     $ins_cnt++;
                 }
             }
+            logger('_runProductSch => Remote DB insert completed.');
 
             return $ins_cnt;
         } catch (\Exception $e) {
@@ -234,15 +240,24 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
             $ins_cnt = 0;
             list($if_sdate, $if_edate) = $this->_setIfDate($if_sdate, $if_edate);
 
+            if ($if_sdate == $if_edate) {
+                $where = 'IF_DATE = ?';
+                $arr_bind = [$if_sdate];
+            } else {
+                $where = 'IF_DATE between ? and ?';
+                $arr_bind = [$if_sdate, $if_edate];
+            }
+
             // 매출정보 조회
             $query = /** @lang text */ '
                 select SYS_CD, CUD_CD, current_timestamp() as SEND_TIME, ORDER_NO, INOUT_CD, OUT_ABLE_CD, MEMBERSHIP_NO, MEMBERSHIP_NM
                     , IN_RT, IN_CH, IN_METHOD, CAMPUS, TEACHER_CD, P_CD, C_CD, C_DETAIL_NM, C_ON_FR_DATE, C_ON_TO_DATE, INOUT_DATE, TODAY_INOUT_AMT
                 from ' . $this->_src_table['order'] . '
-                where IF_DATE between ? and ?
+                where ' . $where . '
                 order by IF_IDX asc
             ';
-            $result = $this->_src_db->query($query, [$if_sdate, $if_edate])->result_array();
+            $result = $this->_src_db->query($query, $arr_bind)->result_array();
+            logger('_runOrderMst => ' . $this->_src_db->last_query());
 
             // 매출정보 등록
             if (empty($result) === false) {
@@ -253,6 +268,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
                     $ins_cnt++;
                 }
             }
+            logger('_runOrderMst => Remote DB insert completed.');
 
             return $ins_cnt;
         } catch (\Exception $e) {

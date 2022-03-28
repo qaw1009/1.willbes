@@ -30,8 +30,7 @@
                 <li>
                     <span>한국사</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50619?subject_idx=1109') }}">김상범</a>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51354?subject_idx=1109') }}">김민규</a>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51267?subject_idx=1109') }}">나명재</a>   
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51354?subject_idx=1109') }}">김민규</a>               
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50027?subject_idx=1109') }}">오태진</a>                    
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50647?subject_idx=1109') }}">조민주</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50003?subject_idx=1109') }}">원유철</a>
@@ -229,8 +228,7 @@
                 </li>
                 <li>
                     <span>한국사</span>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50619?subject_idx=1109') }}">김상범</a>
-                    <a href="{{ front_url('/professor/show/cate/3028/prof-idx/51267?subject_idx=1109&subject_name=한국사') }}">나명재</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50619?subject_idx=1109') }}">김상범</a>                   
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50027?subject_idx=1109') }}">오태진</a>                    
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50647?subject_idx=1109') }}">조민주</a>                   
                 </li>                

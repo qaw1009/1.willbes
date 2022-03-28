@@ -7,7 +7,7 @@ require_once APPPATH . 'third_party/crontask/Scheduler.php';
 //require_once APPPATH . 'third_party/crontask/tasks/VbankWaitToExpireTask.php';
 //require_once APPPATH . 'third_party/crontask/tasks/MockGradeMakeTask.php';
 require_once APPPATH . 'third_party/crontask/tasks/EduIfSalesMstTask.php';
-require_once APPPATH . 'third_party/crontask/tasks/SampleTask.php';
+//require_once APPPATH . 'third_party/crontask/tasks/SampleTask.php';
 
 class Cron extends \app\controllers\BaseController
 {
@@ -47,24 +47,54 @@ class Cron extends \app\controllers\BaseController
 
     /**
      * 테스트 실행
-     * @param array $params [개별 프로세스명 (TeacherMst / ProductMst / ProductSch / OrderMst)]
+     * @example https://cli.local.willbes.net/cron/testRun/2022-03-28/2022-03-28
+     * @param array $params [인터페이스 시작일자, 종료일자]
      */
     public function testRun($params = [])
     {
         set_time_limit(0);
         ini_set('memory_limit', $this->_memory_limit_size);
 
+        $if_sdate = element('0', $params);
+        $if_edate = element('1', $params);
+
+        // start time
+        $start_time = microtime(true);
+
+        // run
+        $task = new crontask\tasks\EduIfSalesMstTask();
+        $result = $task->run($if_sdate, $if_edate);
+
+        // run time
+        $run_time = round(microtime(true) - $start_time, 2);
+
+        var_dump($result, $run_time . 's');
+    }
+
+    /**
+     * 개별 프로세스 별도 실행
+     * @example https://cli.local.willbes.net/cron/testRunOne/OrderMst/2022-03-28/2022-03-28
+     * @param array $params [개별 프로세스명 (TeacherMst / ProductMst / ProductSch / OrderMst), 인터페이스 시작일자, 종료일자]
+     */
+    public function testRunOne($params = [])
+    {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
         $run_name = element('0', $params);
+        $if_sdate = element('1', $params);
+        $if_edate = element('2', $params);
+
+        // start time
+        $start_time = microtime(true);
 
         $task = new crontask\tasks\EduIfSalesMstTask();
+        $result = $task->testRunOne($run_name, $if_sdate, $if_edate);
 
-        if (empty($run_name) === false) {
-            $result = $task->testRunByName($run_name);
-        } else {
-            $result = $task->run();
-        }
+        // run time
+        $run_time = round(microtime(true) - $start_time, 2);
 
-        var_dump($result);
+        var_dump($result, $run_time . 's');
     }
 
     /**

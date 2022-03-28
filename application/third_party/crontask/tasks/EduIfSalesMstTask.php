@@ -40,9 +40,11 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
 
     /**
      * 매출관리시스템 인터페이스 데이터 등록
+     * @param null|string $if_sdate
+     * @param null|string $if_edate
      * @return mixed|string
      */
-    public function run()
+    public function run($if_sdate = null, $if_edate = null)
     {
         $this->_src_db = $this->_CI->load->database('gathering', true);   // 소스DB
         $this->_rem_db = $this->_CI->load->database('eduif', true);     // 원격DB
@@ -52,28 +54,28 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
             $ret_msg = '';
 
             // 교수정보
-            $teacher_result = $this->_runTeacherMst();
+            $teacher_result = $this->_runTeacherMst($if_sdate, $if_edate);
             if (is_numeric($teacher_result) === false) {
                 throw new \Exception($teacher_result);
             }
             $ret_msg .= 'Teacher : ' . $teacher_result;
 
             // 상품정보
-            $product_result = $this->_runProductMst();
+            $product_result = $this->_runProductMst($if_sdate, $if_edate);
             if (is_numeric($product_result) === false) {
                 throw new \Exception($product_result);
             }
             $ret_msg .= ' / Product : ' . $product_result;
 
             // 강의스케줄
-            $product_sch_result = $this->_runProductSch();
+            $product_sch_result = $this->_runProductSch($if_sdate, $if_edate);
             if (is_numeric($product_sch_result) === false) {
                 throw new \Exception($product_sch_result);
             }
             $ret_msg .= ' / Product Sch : ' . $product_sch_result;
 
             // 매출정보
-            $order_result = $this->_runOrderMst();
+            $order_result = $this->_runOrderMst($if_sdate, $if_edate);
             if (is_numeric($order_result) === false) {
                 throw new \Exception($order_result);
             }
@@ -93,23 +95,41 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
     }
 
     /**
+     * 매출통합 인터페이스 일자 설정
+     * @param null|string $if_sdate
+     * @param null|string $if_edate
+     * @return array|null[]
+     */
+    private function _setIfDate($if_sdate = null, $if_edate = null)
+    {
+        if (date_verify($if_sdate, 'Y-m-d') === false || date_verify($if_edate, 'Y-m-d') === false) {
+            $if_sdate = date('Y-m-d');
+            $if_edate = $if_sdate;
+        }
+
+        return [$if_sdate, $if_edate];
+    }    
+
+    /**
      * 교수정보 조회/등록
+     * @param null|string $if_sdate
+     * @param null|string $if_edate
      * @return int|string
      */
-    private function _runTeacherMst()
+    private function _runTeacherMst($if_sdate = null, $if_edate = null)
     {
         try {
             $ins_cnt = 0;
-            $if_date = date('Y-m-d');
+            list($if_sdate, $if_edate) = $this->_setIfDate($if_sdate, $if_edate);
 
             // 교수정보 조회
             $query = /** @lang text */ '
                 select SYS_CD, CUD_CD, current_timestamp() as SEND_TIME, TEACHER_CD, TEACHER_NM, CONTRACT_FR, CONTRACT_TO, CONTRACT_PAY
                 from ' . $this->_src_table['teacher'] . '
-                where IF_DATE = ?
+                where IF_DATE between ? and ?
                 order by IF_IDX asc
             ';
-            $result = $this->_src_db->query($query, [$if_date])->result_array();
+            $result = $this->_src_db->query($query, [$if_sdate, $if_edate])->result_array();
 
             // 교수정보 등록
             if (empty($result) === false) {
@@ -129,23 +149,25 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
 
     /**
      * 상품정보 조회/등록
+     * @param null|string $if_sdate
+     * @param null|string $if_edate
      * @return int|string
      */
-    private function _runProductMst()
+    private function _runProductMst($if_sdate = null, $if_edate = null)
     {
         try {
             $ins_cnt = 0;
-            $if_date = date('Y-m-d');
+            list($if_sdate, $if_edate) = $this->_setIfDate($if_sdate, $if_edate);
 
             // 상품정보 조회
             $query = /** @lang text */ '
                 select SYS_CD, CUD_CD, current_timestamp() as SEND_TIME, A_CD, P_TYPE, TEACHER_CD, P_CD, P_NM, P_CRE_DATE, C_NM, C_DETAIL_NM, FR_DATE, TO_DATE
                     , PRICE, REFUND, C_DAY, C_PRICE, C_RATE
                 from ' . $this->_src_table['product'] . '
-                where IF_DATE = ?
+                where IF_DATE between ? and ?
                 order by IF_IDX asc
             ';
-            $result = $this->_src_db->query($query, [$if_date])->result_array();
+            $result = $this->_src_db->query($query, [$if_sdate, $if_edate])->result_array();
 
             // 상품정보 등록
             if (empty($result) === false) {
@@ -165,22 +187,24 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
 
     /**
      * 상품 강의스케줄 조회/등록
+     * @param null|string $if_sdate
+     * @param null|string $if_edate
      * @return int|string
      */
-    private function _runProductSch()
+    private function _runProductSch($if_sdate = null, $if_edate = null)
     {
         try {
             $ins_cnt = 0;
-            $if_date = date('Y-m-d');
+            list($if_sdate, $if_edate) = $this->_setIfDate($if_sdate, $if_edate);
 
             // 상품 강의스케줄 조회
             $query = /** @lang text */ '
                 select SYS_CD, CUD_CD, current_timestamp() as SEND_TIME, TEACHER_CD, P_CD, P_NM, C_NM, C_DETAIL_NM, C_SCH_DATE
                 from ' . $this->_src_table['product_sch'] . '
-                where IF_DATE = ?
+                where IF_DATE between ? and ?
                 order by IF_IDX asc
             ';
-            $result = $this->_src_db->query($query, [$if_date])->result_array();
+            $result = $this->_src_db->query($query, [$if_sdate, $if_edate])->result_array();
 
             // 상품 강의스케줄 등록
             if (empty($result) === false) {
@@ -200,23 +224,25 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
 
     /**
      * 매출정보 조회/등록
+     * @param null|string $if_sdate
+     * @param null|string $if_edate
      * @return int|string
      */
-    private function _runOrderMst()
+    private function _runOrderMst($if_sdate = null, $if_edate = null)
     {
         try {
             $ins_cnt = 0;
-            $if_date = date('Y-m-d');
+            list($if_sdate, $if_edate) = $this->_setIfDate($if_sdate, $if_edate);
 
             // 매출정보 조회
             $query = /** @lang text */ '
                 select SYS_CD, CUD_CD, current_timestamp() as SEND_TIME, ORDER_NO, INOUT_CD, OUT_ABLE_CD, MEMBERSHIP_NO, MEMBERSHIP_NM
                     , IN_RT, IN_CH, IN_METHOD, CAMPUS, TEACHER_CD, P_CD, C_CD, C_DETAIL_NM, C_ON_FR_DATE, C_ON_TO_DATE, INOUT_DATE, TODAY_INOUT_AMT
                 from ' . $this->_src_table['order'] . '
-                where IF_DATE = ?
+                where IF_DATE between ? and ?
                 order by IF_IDX asc
             ';
-            $result = $this->_src_db->query($query, [$if_date])->result_array();
+            $result = $this->_src_db->query($query, [$if_sdate, $if_edate])->result_array();
 
             // 매출정보 등록
             if (empty($result) === false) {
@@ -255,10 +281,12 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
 
     /**
      * 매출관리시스템 개별 프로세스 실행
-     * @param $name
+     * @param string $name [개별 프로세스명 (TeacherMst / ProductMst / ProductSch / OrderMst)]
+     * @param null|string $if_sdate
+     * @param null|string $if_edate*
      * @return string
      */
-    public function testRunByName($name)
+    public function testRunOne($name, $if_sdate = null, $if_edate = null)
     {
         $this->_src_db = $this->_CI->load->database('gathering', true);     // 소스DB
         $this->_rem_db = $this->_CI->load->database('eduif', true);     // 원격DB
@@ -266,7 +294,7 @@ class EduIfSalesMstTask extends \crontask\tasks\Task
 
         try {
             $method = '_run' . $name;
-            $result = $this->{$method}();
+            $result = $this->{$method}($if_sdate, $if_edate);
 
             $this->_rem_db->trans_commit();
             return 'Success(' . $name . ' : ' . $result . ')';

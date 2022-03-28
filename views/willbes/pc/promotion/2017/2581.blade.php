@@ -5,15 +5,18 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            position:relative;
             width:100% !important;
-            min-width:1120px!important;
+            min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
-            background:#fff;
-            color:#3a3a3a;
+            padding:0 !important;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtContent span {vertical-align:middle}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px; position: relative;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a:hover {border:1px solid #000}*/
 
         /************************************************************/
         .btnBox {width:100%; text-align:center}
@@ -62,12 +65,16 @@
         .evt_tableA table thead th {text-align:center}
         .evt_tableA table tbody td {font-size:14px; color:#000; text-align:center; padding:8px; border-right:1px solid #c1c1c1}
         .evt_tableA table tbody td:last-child {border-right:0; color:#005180}
-        .evt_tableA table tbody td:nth-last-child(3) { text-decoration: line-through}
+        .evt_tableA table tbody td:nth-last-child(4) {text-decoration: line-through; text-align:right}
+        .evt_tableA table tbody td:nth-last-child(3) {text-align:right; font-weight:bold; color:red}
+        .evt_tableA table tbody td:nth-last-child(2) {text-align:right; color:blue }
         .evt_tableA table tbody td label {display:block; text-align:left;}
         .evt_tableA table tbody td input {margin-right:5px}
-        .evt_tableA table tbody td span {color:#F00; display:block; margin-top:5px}
+        .evt_tableA table tbody td span {color:#F00; display:block; margin-top:5px}        
         .evt_tableA table tbody td a.btn01 {display:block; padding:5px; background:#1b233b; color:#fff; border-radius:4px}
-        .evt_tableA table tbody td a.btn02 {display:block; padding:5px; background:#1f3b8e; color:#fff; border-radius:4px}
+        .evt_tableA table tbody td:nth-last-child(1) a,
+        .evt_tableA table tbody td a.btn02 {display:block; padding:5px; background:#ff5200; color:#fff; border-radius:20px; font-size:12px;}
+        .evt_tableA table tbody td a:hover {background:#000}
 
         .evtInfo {padding:80px 0; background:#eee; font-size:16px}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -160,75 +167,97 @@
                                 <col/>
                                 <col width="10%"/>
                                 <col width="10%"/>
-                                <col width="10%"/>
+                                <col width="12%"/>
+                                <col width="8%"/>
                                 <thead>
                                     <tr>
                                         <th>과목</th>
                                         <th>교수</th>
                                         <th>강좌</th>
-                                        <th>정상 수강료</th>
-                                        <th colspan="2">할인 수강료</th>
+                                        <th colspan="3">환승& 재도전 할인 수강료</th>
+                                        <th>수강신청</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td rowspan="4">교육학</td>
-                                        <td rowspan="4">이인재</td>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][0]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][0]['Name'] or ''}}
-                                            </label>
+                                      <td rowspan="5">교육학</td>
+                                      <td rowspan="2">이경범</td>
+                          				<td>
+                                          <label>
+                                              <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][0]['ErIdx'] or ''}}"/>
+                                              {{ $arr_base['register_list'][0]['Name'] or ''}}
+                                              2022(1~11월) 교육학 연간 Full 패키지
+                                          </label>
                                         </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                          				<td width="72">1,330,000원</td>
+                          				<td align="right" width="83">1,197,000 원</td>
+                          				<td align="right" width="72">133,000원 할인</td>
+                                        <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
+                                      <td>
+                                          <label>
+                                              <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][0]['ErIdx'] or ''}}"/>
+                                              {{ $arr_base['register_list'][0]['Name'] or ''}}
+                                              2022(3~11월) 이경범 교육학 Core 패키지
+                                          </label>
+                                        </td>
+                                      <td width="72">1,092,000원</td>
+                                      <td align="right">982,800 원</td>
+                                      <td align="right">109,200원 할인</td>
+                                        <td><a href="#none">결제하기</a></td>
+                                    </tr>
+                                    <tr>
+                                      <td>정 현</td>
                                         <td>
                                             <label>
                                                 <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][1]['ErIdx'] or ''}}"/>
                                                 {{ $arr_base['register_list'][1]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                        <td width="72">610,000원</td>
+                                        <td align="right">549,000 원</td>
+                                        <td align="right">61,000원 할인</td>
+                                        <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
+                                      <td rowspan="2">신태식</td>
                                         <td>
                                             <label>
                                                 <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][32]['ErIdx'] or ''}}"/>
                                                 {{ $arr_base['register_list'][32]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                        <td width="72">1,275,000원</td>
+                                        <td align="right">1,147,500 원</td>
+                                        <td align="right">127,500원 할인</td>
+                                        <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][33]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][33]['Name'] or ''}}
-                                            </label>
+                                      <td>
+                                          <label>
+                                              <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][33]['ErIdx'] or ''}}"/>
+                                              {{ $arr_base['register_list'][33]['Name'] or ''}}
+                                          </label>
                                         </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                      <td width="72">840,000원</td>
+                                      <td align="right">756,000 원</td>
+                                      <td align="right">84,000원 할인</td>
+                                        <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td rowspan="4">국어</td>
-                                        <td rowspan="2">송원영</td>
+                                        <td rowspan="2">송원영/권보민</td>
                                         <td>
                                             <label>
                                                 <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][2]['ErIdx'] or ''}}"/>
                                                 {{ $arr_base['register_list'][2]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                        <td width="72">1,670,000원</td>
+                                        <td align="right">1,503,000 원</td>
+                                        <td align="right">167,000원 할인</td>
+                                        <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -237,21 +266,23 @@
                                                 {{ $arr_base['register_list'][3]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                        <td width="72">1,450,000원</td>
+                                        <td align="right">1,305,000 원</td>
+                                        <td align="right">145,000원 할인</td>
+                                        <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="2">권보민</td>
+                                        <td rowspan="2">구동언</td>
                                         <td>
                                             <label>
                                                 <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][4]['ErIdx'] or ''}}"/>
                                                 {{ $arr_base['register_list'][4]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                        <td width="72">1,749,000원</td>
+                                        <td align="right">1,574,100 원</td>
+                                        <td align="right">174,900원 할인</td>
+                                        <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -260,313 +291,159 @@
                                                 {{ $arr_base['register_list'][5]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                        <td width="72">1,331,000원</td>
+                                        <td align="right">1,197,900 원</td>
+                                        <td align="right">133,100원 할인</td>
+                                        <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="2">영어</td>
-                                        <td rowspan="2">김영문</td>
+                                        <td>영어</td>
+                                        <td>김영문</td>
                                         <td>
                                             <label>
                                                 <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][6]['ErIdx'] or ''}}"/>
                                                 {{ $arr_base['register_list'][6]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                        <td width="72">532,000원</td>
+                                        <td align="right">478,800 원</td>
+                                        <td align="right">53,200원 할인</td>
+                                        <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][7]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][7]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="4">수학</td>
+                                        <td rowspan="6">수학</td>
                                         <td rowspan="2">김철홍</td>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][8]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][8]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                        <td><label>
+                                          <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][7]['ErIdx'] or ''}}"/>
+                                          {{ $arr_base['register_list'][7]['Name'] or ''}} </label></td>
+                                        <td width="72">1,449,000원</td>
+                                        <td align="right">1,304,100 원</td>
+                                        <td align="right">144,900원 할인</td>
+                                        <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][9]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                      <td><label>
+                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][8]['ErIdx'] or ''}}"/>
+                                        {{ $arr_base['register_list'][8]['Name'] or ''}} </label></td>
+                                      <td width="72">945,000원</td>
+                                      <td align="right">850,500 원</td>
+                                      <td align="right">94,500원 할인</td>
+                                      <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="2">박태영</td>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][10]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][10]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                      <td>김현웅</td>
+                                      <td><label>
+                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}"/>
+                                        {{ $arr_base['register_list'][9]['Name'] or ''}} </label></td>
+                                      <td width="72">1,400,000원</td>
+                                      <td align="right">1,260,000 원</td>
+                                      <td align="right">140,000원 할인</td>
+                                      <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][11]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][11]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                      <td rowspan="2">박태영</td>
+                                      <td><label>
+                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}"/>
+                                        {{ $arr_base['register_list'][9]['Name'] or ''}} </label></td>
+                                      <td width="72">1,118,000원</td>
+                                      <td align="right">1,006,200 원</td>
+                                      <td align="right">111,800원 할인</td>
+                                      <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td>생물</td>
-                                        <td>양혜정</td>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][12]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][12]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                      <td><label>
+                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}"/>
+                                        {{ $arr_base['register_list'][9]['Name'] or ''}} </label></td>
+                                      <td width="72">973,000원</td>
+                                      <td align="right">875,700 원</td>
+                                      <td align="right">97,300원 할인</td>
+                                      <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="2">역사</td>
-                                        <td rowspan="2">최용림</td>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][13]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][13]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                      <td>박혜향</td>
+                                      <td><label>
+                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][10]['ErIdx'] or ''}}"/>
+                                        {{ $arr_base['register_list'][10]['Name'] or ''}} </label></td>
+                                      <td width="72">777,000원</td>
+                                      <td align="right">699,300 원</td>
+                                      <td align="right">77,700원 할인</td>
+                                      <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][14]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][14]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                        <td>도덕윤리</td>
+                                        <td>김민응</td>
+                                        <td><label>
+                                          <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][11]['ErIdx'] or ''}}"/>
+                                          {{ $arr_base['register_list'][11]['Name'] or ''}} </label></td>
+                                        <td width="72">1,104,000원</td>
+                                        <td align="right">993,600 원</td>
+                                        <td align="right">110,400원 할인</td>
+                                        <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="9">음악</td>
-                                        <td rowspan="9">다이애나</td>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][15]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][15]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                        <td>일반사회</td>
+                                        <td>허역팀</td>
+                                        <td><label>
+                                          <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][12]['ErIdx'] or ''}}"/>
+                                          {{ $arr_base['register_list'][12]['Name'] or ''}} </label></td>
+                                        <td width="72">1,992,000원</td>
+                                        <td align="right">1,792,800 원</td>
+                                        <td align="right">199,200원 할인</td>
+                                        <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][16]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][16]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                      <td rowspan="2">역사</td>
+                                      <td rowspan="2">김종권</td>
+                                      <td><label>
+                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][13]['ErIdx'] or ''}}"/>
+                                        {{ $arr_base['register_list'][13]['Name'] or ''}} </label></td>
+                                      <td width="72">2,304,000원</td>
+                                      <td align="right">2,073,600 원</td>
+                                      <td align="right">230,400원 할인</td>
+                                      <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][17]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][17]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                      <td><label>
+                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][14]['ErIdx'] or ''}}"/>
+                                        {{ $arr_base['register_list'][14]['Name'] or ''}} </label></td>
+                                      <td width="72">1,872,000원</td>
+                                      <td align="right">1,684,800 원</td>
+                                      <td align="right">187,200원 할인</td>
+                                      <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][18]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][18]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                      <td>체육</td>
+                                      <td>최규훈</td>
+                                      <td><label>
+                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][15]['ErIdx'] or ''}}"/>
+                                        {{ $arr_base['register_list'][15]['Name'] or ''}} </label></td>
+                                      <td width="72">1,690,000원</td>
+                                      <td align="right">1,521,000 원</td>
+                                      <td align="right">169,000원 할인</td>
+                                      <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][19]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][19]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                      <td rowspan="2">중국어</td>
+                                      <td rowspan="2">장영희</td>
+                                      <td><label>
+                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][16]['ErIdx'] or ''}}"/>
+                                        {{ $arr_base['register_list'][16]['Name'] or ''}} </label></td>
+                                      <td width="72">3,496,000원</td>
+                                      <td align="right">3,146,400 원</td>
+                                      <td align="right">349,600원 할인</td>
+                                      <td><a href="#none">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][20]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][20]['Name'] or ''}}
-                                            </label>
+                                      <td>
+                                          <label>
+                                              <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][17]['ErIdx'] or ''}}"/>
+                                              {{ $arr_base['register_list'][17]['Name'] or ''}}
+                                          </label>
                                         </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][21]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][21]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][22]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][22]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][23]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][23]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="4">전기전자</td>
-                                        <td rowspan="4">최우영</td>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][24]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][24]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][25]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][25]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][26]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][26]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][27]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][27]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="2">정보<br />
-                                        컴퓨터</td>
-                                        <td rowspan="2">송광진</td>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][28]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][28]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][29]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][29]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="2">중국어</td>
-                                        <td rowspan="2">정경미</td>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][30]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][30]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][31]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][31]['Name'] or ''}}
-                                            </label>
-                                        </td>
-                                        <td>350,000원</td>
-                                        <td><span><strong>175,000원</strong></span></td>
-                                        <td>66,000원 할인<span></span></td>
+                                        <td width="72">1,864,000원</td>
+                                        <td align="right">1,677,600 원</td>
+                                        <td align="right">186,400원 할인</td>
+                                        <td><a href="#none">결제하기</a></td>
                                     </tr>
                                 </tbody>
                             </table>

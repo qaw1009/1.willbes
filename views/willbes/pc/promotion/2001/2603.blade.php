@@ -19,7 +19,10 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
-        /************************************************************/      
+        /************************************************************/
+
+        .sky {position:fixed;top:200px; width:120px; right:10px;z-index:1;}        
+        .sky a {display:block; margin-bottom:-1px}
 
         .evt00 {background:#0a0a0a}
 
@@ -37,6 +40,14 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
 
+        <div class="sky" id="QuickMenu">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2603_sky.png" alt="" usemap="#2603_sky" border="0">
+            <map name="2603_sky" id="2603_sky">
+            <area shape="rect" coords="2,0,125,141" href="#apply1" />
+            <area shape="rect" coords="2,153,129,290" href="#apply2" />
+            </map>
+        </div>
+        
         <div class="evtCtnsBox evt00" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>    

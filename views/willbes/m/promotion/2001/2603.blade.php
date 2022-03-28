@@ -35,20 +35,20 @@
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/03/2603m_top.jpg" alt="4월 신규가입 이벤트" >
+        <img src="https://static.willbes.net/public/images/promotion/2022/03/2603m_top.jpg" alt="4월 추천강좌" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/03/2603m_01.jpg" alt="경찰전문강의 20년" >
+        <img src="https://static.willbes.net/public/images/promotion/2022/03/2603m_01.jpg" alt="커리큘럼" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/03/2603m_02.jpg" alt="웰컴팩" >
-        <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" title="웰컴팩 모두 받기" style="position: absolute; left: 7.5%; top: 82.5%; width: 85%; height: 8.71%; z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2022/03/2603m_02.jpg" alt="체크리스트" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/03/2603m_03.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2022/03/2603m_03.jpg" alt="기본이론/심화이론" >
+        <a href="{{front_url('/promotion/index/cate/3001/code/2595')}}" target="_blank"title="PASS 신청" style="position: absolute; left: 9.86%; top: 74.75%; width: 80.56%; height: 13.42%; z-index: 2;"></a>
     </div>  
 
     <div class="evtCtnsBox evt04" data-aos="fade-up">

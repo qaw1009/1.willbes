@@ -26,7 +26,7 @@
         .eventWrap input[type=checkbox] {width:20px; height:20px; vertical-align:middle}
 
         .eventTop {background:url("https://static.willbes.net/public/images/promotion/2022/03/2581_top_bg.jpg") no-repeat center top;}
-        .eventTop span {position: absolute; top:1030px; left:50%; margin-left:-520px; width:661px; z-index: 2;}
+        .eventTop span {position: absolute; top:1100px; left:50%; margin-left:-520px; width:661px; z-index: 2;}
 
         .event01 {background:url("https://static.willbes.net/public/images/promotion/2022/03/2581_01_bg.jpg") no-repeat center top;}
         .event02 {background:#ff707c}

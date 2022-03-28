@@ -54,8 +54,8 @@
         <div class="evtCtnsBox evt_apply" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2577_m05.jpg" alt="신청하기">
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-            @endif   
+                @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
+            @endif
         </div>
 
         <div class="evtCtnsBox evtInfo" data-aos="fade-up">

@@ -68,13 +68,10 @@
         .evt_tableA table tbody td:nth-last-child(5) {text-decoration: line-through; text-align:right; border-right:0}
         .evt_tableA table tbody td:nth-last-child(4) {border-right:0}
         .evt_tableA table tbody td:nth-last-child(3) {text-align:left; font-weight:bold; color:red; border-right:0}
-        .evt_tableA table tbody td:nth-last-child(2) {color:blue; border:1px solid blue; text-align:right }
-        .evt_tableA table tbody td label {display:block; text-align:left;}
-        .evt_tableA table tbody td input {margin-right:5px}
-        .evt_tableA table tbody td span {color:#F00; display:block; margin-top:5px}        
-        .evt_tableA table tbody td a.btn01 {display:block; padding:5px; background:#1b233b; color:#fff; border-radius:4px}
+        .evt_tableA table tbody td:nth-last-child(2) span {color:blue; border:1px solid blue; display:block}
+        .evt_tableA table tbody td:nth-last-child(6) {text-align:left;}
         .evt_tableA table tbody td:nth-last-child(1) a,
-        .evt_tableA table tbody td a.btn02 {display:block; padding:5px; background:#ff5200; color:#fff; border-radius:20px; font-size:12px;}
+        .evt_tableA table tbody td a.btn02 {display:block; padding:5px; background:#ff5200; color:#fff; border-radius:4px; font-size:12px;}
         .evt_tableA table tbody td a:hover {background:#000}
 
         .evtInfo {padding:80px 0; background:#eee; font-size:16px}
@@ -184,298 +181,219 @@
                                     <tr>
                                       <td rowspan="5">교육학</td>
                                       <td rowspan="2">이경범</td>
-                          				<td>
-                                          <label>
-                                              <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][0]['ErIdx'] or ''}}"/>
-                                              {{ $arr_base['register_list'][0]['Name'] or ''}}
-                                              2022(1~11월) 교육학 연간 Full 패키지
-                                          </label>
-                                        </td>
+                          				<td>2022(1~11월) 교육학 연간 Full 패키지</td>
                           				<td>1,330,000원</td>
                           				<td>→</td>
                           				<td>1,197,000원</td>
-                          				<td>133,000원 할인</td>
+                          				<td><span>133,000원 할인</span></td>
                                         <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/188978">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                      <td>
-                                          <label>
-                                              <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][0]['ErIdx'] or ''}}"/>
-                                              {{ $arr_base['register_list'][0]['Name'] or ''}}
-                                              2022(3~11월) 이경범 교육학 Core 패키지
-                                          </label>
-                                        </td>
+                                      <td>2022(3~11월) 이경범 교육학 Core 패키지</td>
                                       <td>1,092,000원</td>
                                       <td>→</td>
                                       <td>982,800원</td>
-                                      <td>109,200원 할인</td>
+                                      <td><span>109,200원 할인</span></td>
                                         <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/191210">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td>정 현</td>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][1]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][1]['Name'] or ''}}
-                                            </label>
-                                        </td>
+                                        <td>2022(1~6월) VZONEdu 정현 교육학 상반기종합반</td>
                                         <td>610,000원</td>
                                         <td>→</td>
                                         <td>549,000원</td>
-                                        <td>61,000원 할인</td>
+                                        <td><span>61,000원 할인</span></td>
                                         <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/189385">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td rowspan="2">신태식</td>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][32]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][32]['Name'] or ''}}
-                                            </label>
-                                        </td>
+                                        <td>2022(01~11월) 신태식 교육학 연간 Full 패키지</td>
                                         <td>1,275,000원</td>
                                         <td>→</td>
                                         <td>1,147,500원</td>
-                                        <td>127,500원 할인</td>
+                                        <td><span>127,500원 할인</span></td>
                                         <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/189065">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                      <td>
-                                          <label>
-                                              <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][33]['ErIdx'] or ''}}"/>
-                                              {{ $arr_base['register_list'][33]['Name'] or ''}}
-                                          </label>
-                                        </td>
+                                      <td>2022(03~04월 & 07~11월) 신태식 교육학 심화이론 + 문풀 패키지</td>
                                       <td>840,000원</td>
                                       <td>→</td>
                                       <td>756,000원</td>
-                                      <td>84,000원 할인</td>
-                                        <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/190684">결제하기</a></td>
+                                      <td><span>84,000원 할인</span></td>
+                                      <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/190684">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td rowspan="4">국어</td>
                                         <td rowspan="2">송원영/권보민</td>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][2]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][2]['Name'] or ''}}
-                                            </label>
-                                        </td>
+                                        <td>2022(1~11월) 전공국어 완전정복 연간 Full 패키지 </td>
                                         <td>1,670,000원</td>
                                         <td>→</td>
                                         <td>1,503,000원</td>
-                                        <td>167,000원 할인</td>
+                                        <td><span>167,000원 할인</span></td>
                                         <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188964">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][3]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][3]['Name'] or ''}}
-                                            </label>
-                                        </td>
+                                        <td>2022(3~11월) 전공국어 완전정복 패키지</td>
                                         <td>1,450,000원</td>
                                         <td>→</td>
                                         <td>1,305,000원</td>
-                                        <td>145,000원 할인</td>
+                                        <td><span>145,000원 할인</span></td>
                                         <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191389">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2">구동언</td>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][4]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][4]['Name'] or ''}}
-                                            </label>
-                                        </td>
+                                        <td>2022(1~11월) 구동언 전공국어 연간 Full 패키지</td>
                                         <td>1,749,000원</td>
                                         <td>→</td>
                                         <td>1,574,100원</td>
-                                        <td>174,900원 할인</td>
+                                        <td><span>174,900원 할인</span></td>
                                         <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189121">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][5]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][5]['Name'] or ''}}
-                                            </label>
-                                        </td>
+                                        <td>2022(3~11월) 구동언 전공국어 Core 패키지</td>
                                         <td>1,331,000원</td>
                                         <td>→</td>
                                         <td>1,197,900원</td>
-                                        <td>133,100원 할인</td>
+                                        <td><span>133,100원 할인</span></td>
                                         <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191234">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td>영어</td>
                                         <td>김영문</td>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][6]['ErIdx'] or ''}}"/>
-                                                {{ $arr_base['register_list'][6]['Name'] or ''}}
-                                            </label>
-                                        </td>
+                                        <td>2022 김영문 영어학 연간 패키지</td>
                                         <td>532,000원</td>
                                         <td>→</td>
                                         <td>478,800원</td>
-                                        <td>53,200원 할인</td>
+                                        <td><span>53,200원 할인</span></td>
                                         <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188929">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td rowspan="6">수학</td>
                                         <td rowspan="2">김철홍</td>
-                                        <td><label>
-                                          <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][7]['ErIdx'] or ''}}"/>
-                                          {{ $arr_base['register_list'][7]['Name'] or ''}} </label></td>
+                                        <td>2022(1~11월) 김철홍 전공수학 내용학 All-In-One 패키지</td>
                                         <td>1,449,000원</td>
                                         <td>→</td>
                                         <td>1,304,100원</td>
-                                        <td>144,900원 할인</td>
+                                        <td><span>144,900원 할인</span></td>
                                         <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188685">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                      <td><label>
-                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][8]['ErIdx'] or ''}}"/>
-                                        {{ $arr_base['register_list'][8]['Name'] or ''}} </label></td>
+                                      <td>2022(1~6월) 김철홍 전공수학 내용학 상반기 패키지</td>
                                       <td>945,000원</td>
                                       <td>→</td>
                                       <td>850,500원</td>
-                                      <td>94,500원 할인</td>
+                                      <td><span>94,500원 할인</span></td>
                                       <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188686">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td>김현웅</td>
-                                      <td><label>
-                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}"/>
-                                        {{ $arr_base['register_list'][9]['Name'] or ''}} </label></td>
+                                      <td>2022(1~11월) 김현웅 전공수학 연간 패키지</td>
                                       <td>1,400,000원</td>
                                       <td>→</td>
                                       <td>1,260,000원</td>
-                                      <td>140,000원 할인</td>
+                                      <td><span>140,000원 할인</span></td>
                                       <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189518">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td rowspan="2">박태영</td>
-                                      <td><label>
-                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}"/>
-                                        {{ $arr_base['register_list'][9]['Name'] or ''}} </label></td>
+                                      <td>2022(1~11월) 박태영 수학교육론 All-In-One 패키지</td>
                                       <td>1,118,000원</td>
                                       <td>→</td>
                                       <td>1,006,200원</td>
-                                      <td>111,800원 할인</td>
+                                      <td><span>111,800원 할인</span></td>
                                       <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188984">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                      <td><label>
-                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}"/>
-                                        {{ $arr_base['register_list'][9]['Name'] or ''}} </label></td>
+                                      <td>2022(3~11월) 박태영 수학교육론 core 패키지</td>
                                       <td>973,000원</td>
                                       <td>→</td>
                                       <td>875,700원</td>
-                                      <td>97,300원 할인</td>
+                                      <td><span>97,300원 할인</span></td>
                                       <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191400">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td>박혜향</td>
-                                      <td><label>
-                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][10]['ErIdx'] or ''}}"/>
-                                        {{ $arr_base['register_list'][10]['Name'] or ''}} </label></td>
+                                      <td>2022(1~11월) 박혜향 수학교육론 연간 패키지</td>
                                       <td>777,000원</td>
                                       <td>→</td>
                                       <td>699,300원</td>
-                                      <td>77,700원 할인</td>
+                                      <td><span>77,700원 할인</span></td>
                                       <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189046">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td>도덕윤리</td>
                                         <td>김민응</td>
-                                        <td><label>
-                                          <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][11]['ErIdx'] or ''}}"/>
-                                          {{ $arr_base['register_list'][11]['Name'] or ''}} </label></td>
+                                        <td>2022(1~11월) 김민응 도덕윤리 연간 Full 패키지</td>
                                         <td>1,104,000원</td>
                                         <td>→</td>
                                         <td>993,600원</td>
-                                        <td>110,400원 할인</td>
+                                        <td><span>110,400원 할인</span></td>
                                         <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188803">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td>일반사회</td>
                                         <td>허역팀</td>
-                                        <td><label>
-                                          <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][12]['ErIdx'] or ''}}"/>
-                                          {{ $arr_base['register_list'][12]['Name'] or ''}} </label></td>
+                                        <td>2022(1~11월) 일반사회 허역팀 연간 FULL 패키지</td>
                                         <td>1,992,000원</td>
                                         <td>→</td>
                                         <td>1,792,800원</td>
-                                        <td>199,200원 할인</td>
+                                        <td><span>199,200원 할인</span></td>
                                         <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189215">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td rowspan="2">역사</td>
                                       <td rowspan="2">김종권</td>
-                                      <td><label>
-                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][13]['ErIdx'] or ''}}"/>
-                                        {{ $arr_base['register_list'][13]['Name'] or ''}} </label></td>
+                                      <td>2022(1~11월) 김종권 전공역사 연간 패키지</td>
                                       <td>2,304,000원</td>
                                       <td>→</td>
                                       <td>2,073,600원</td>
-                                      <td>230,400원 할인</td>
+                                      <td><span>230,400원 할인</span></td>
                                       <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188948">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                      <td><label>
-                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][14]['ErIdx'] or ''}}"/>
-                                        {{ $arr_base['register_list'][14]['Name'] or ''}} </label></td>
+                                      <td>2022(3~11월) 김종권 전공역사 Core 패키지</td>
                                       <td>1,872,000원</td>
                                       <td>→</td>
                                       <td>1,684,800원</td>
-                                      <td>187,200원 할인</td>
+                                      <td><span>187,200원 할인</span></td>
                                       <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191214">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td>체육</td>
                                       <td>최규훈</td>
-                                      <td><label>
-                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][15]['ErIdx'] or ''}}"/>
-                                        {{ $arr_base['register_list'][15]['Name'] or ''}} </label></td>
+                                      <td>2022(1~6월) VZONE 최규훈 전공체육 상반기 종합반</td>
                                       <td>1,690,000원</td>
                                       <td>→</td>
                                       <td>1,521,000원</td>
-                                      <td>169,000원 할인</td>
+                                      <td><span>169,000원 할인</span></td>
                                       <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189330">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td rowspan="2">중국어</td>
                                       <td rowspan="2">장영희</td>
-                                      <td><label>
-                                        <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][16]['ErIdx'] or ''}}"/>
-                                        {{ $arr_base['register_list'][16]['Name'] or ''}} </label></td>
+                                      <td>2022(1~11월) 장영희 중국어 연간 종합반</td>
                                       <td>3,496,000원</td>
                                       <td>→</td>
                                       <td>3,146,400원</td>
-                                      <td>349,600원 할인</td>
+                                      <td><span>349,600원 할인</span></td>
                                       <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189044">결제하기</a></td>
                                     </tr>
                                     <tr>
-                                      <td>
-                                          <label>
-                                              <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][17]['ErIdx'] or ''}}"/>
-                                              {{ $arr_base['register_list'][17]['Name'] or ''}}
-                                          </label>
-                                        </td>
+                                      <td>2022(3~11월) 장영희 중국어 N수 트랙 종합반</td>
                                         <td>1,864,000원</td>
                                         <td>→</td>
                                         <td>1,677,600원</td>
-                                        <td>186,400원 할인</td>
+                                        <td><span>186,400원 할인</span></td>
                                         <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191904">결제하기</a></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
+                        {{--
                         <div class="btnBox mt50">
                             <a href="javascript:fn_submit();">신청하기</a>
                         </div>
+                        --}}
                     </div>
                 </div>
             </form>
@@ -493,9 +411,9 @@
                     <li>본 이벤트 참여를 위한 윌비스 임용의 수강생은 별도의 인증 절차를 거치지 않으셔도 됩니다. (신청 시, 자체 검증 가능)</li>
                     <li>본 이벤트는 5월31일(일)까지 진행됩니다. (5월31일까지 신청할 수 있음)</li>
                     <li>본 이벤트에서 타학원 수강이 인증되면, 개별 ID로 할인쿠폰이 발급되며, 7일이내 수강하셔야 합니다. (* 7일후 쿠폰소멸)</li>
-                    <li>본 이벤트를 통하여 수강하고, 환불시에는 할인된 수강료가 아니고,원수강료에서 기산됩니다. </li>
+                    <li>본 이벤트를 통하여 수강하고, 환불시에는 할인된 수강료가 아니고, 원수강료에서 기산됩니다. </li>
                     <li>본 이벤트는 교재가 필요하다고 판단되면, 별도로 구매하셔야 합니다. </li>
-                    <li>본 이벤트로 인한 할인강의는 양도 및 매매가 불가능하며, 위반시 처벌받을 수 있습니다.</li>
+                    <li>본 이벤트로 인한 할인강의는 양도 및 매매가 불가능하며, 위반 시 처벌받을 수 있습니다.</li>
                 </ul>
             </div>
         </div>

@@ -63,11 +63,12 @@
         .evt_tableA table thead th,
         .evt_tableA table tbody th{background:#dedede; font-size:16px; font-weight:300; text-align:center; color:#333; padding:10px 0; border-right:1px solid #fff}
         .evt_tableA table thead th {text-align:center}
-        .evt_tableA table tbody td {font-size:14px; color:#000; text-align:center; padding:8px; border-right:1px solid #c1c1c1}
+        .evt_tableA table tbody td {font-size:14px; color:#000; text-align:center; padding:8px; border-right:0}
         .evt_tableA table tbody td:last-child {border-right:0; color:#005180}
-        .evt_tableA table tbody td:nth-last-child(4) {text-decoration: line-through; text-align:right}
-        .evt_tableA table tbody td:nth-last-child(3) {text-align:right; font-weight:bold; color:red}
-        .evt_tableA table tbody td:nth-last-child(2) {text-align:right; color:blue }
+        .evt_tableA table tbody td:nth-last-child(5) {text-decoration: line-through; text-align:right; border-right:0}
+        .evt_tableA table tbody td:nth-last-child(4) {border-right:0}
+        .evt_tableA table tbody td:nth-last-child(3) {text-align:left; font-weight:bold; color:red; border-right:0}
+        .evt_tableA table tbody td:nth-last-child(2) {color:blue; border:1px solid blue}
         .evt_tableA table tbody td label {display:block; text-align:left;}
         .evt_tableA table tbody td input {margin-right:5px}
         .evt_tableA table tbody td span {color:#F00; display:block; margin-top:5px}        
@@ -164,8 +165,9 @@
                             <table>
                                 <col width="8%"/>
                                 <col width="8%"/>
-                                <col/>
+                                <col/>                                
                                 <col width="10%"/>
+                                <col width="3%"/>
                                 <col width="10%"/>
                                 <col width="12%"/>
                                 <col width="8%"/>
@@ -174,7 +176,7 @@
                                         <th>과목</th>
                                         <th>교수</th>
                                         <th>강좌</th>
-                                        <th colspan="3">환승& 재도전 할인 수강료</th>
+                                        <th colspan="4">환승& 재도전 할인 수강료</th>
                                         <th>수강신청</th>
                                     </tr>
                                 </thead>
@@ -189,10 +191,11 @@
                                               2022(1~11월) 교육학 연간 Full 패키지
                                           </label>
                                         </td>
-                          				<td width="72">1,330,000원</td>
-                          				<td align="right" width="83">1,197,000 원</td>
-                          				<td align="right" width="72">133,000원 할인</td>
-                                        <td><a href="#none">결제하기</a></td>
+                          				<td>1,330,000원</td>
+                          				<td>→</td>
+                          				<td>1,197,000원</td>
+                          				<td>133,000원 할인</td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/188978">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td>
@@ -202,10 +205,11 @@
                                               2022(3~11월) 이경범 교육학 Core 패키지
                                           </label>
                                         </td>
-                                      <td width="72">1,092,000원</td>
-                                      <td align="right">982,800 원</td>
-                                      <td align="right">109,200원 할인</td>
-                                        <td><a href="#none">결제하기</a></td>
+                                      <td>1,092,000원</td>
+                                      <td>→</td>
+                                      <td>982,800원</td>
+                                      <td>109,200원 할인</td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/191210">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td>정 현</td>
@@ -215,10 +219,11 @@
                                                 {{ $arr_base['register_list'][1]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td width="72">610,000원</td>
-                                        <td align="right">549,000 원</td>
-                                        <td align="right">61,000원 할인</td>
-                                        <td><a href="#none">결제하기</a></td>
+                                        <td>610,000원</td>
+                                        <td>→</td>
+                                        <td>549,000원</td>
+                                        <td>61,000원 할인</td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/189385">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td rowspan="2">신태식</td>
@@ -228,10 +233,11 @@
                                                 {{ $arr_base['register_list'][32]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td width="72">1,275,000원</td>
-                                        <td align="right">1,147,500 원</td>
-                                        <td align="right">127,500원 할인</td>
-                                        <td><a href="#none">결제하기</a></td>
+                                        <td>1,275,000원</td>
+                                        <td>→</td>
+                                        <td>1,147,500원</td>
+                                        <td>127,500원 할인</td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/189065">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td>
@@ -240,10 +246,11 @@
                                               {{ $arr_base['register_list'][33]['Name'] or ''}}
                                           </label>
                                         </td>
-                                      <td width="72">840,000원</td>
-                                      <td align="right">756,000 원</td>
-                                      <td align="right">84,000원 할인</td>
-                                        <td><a href="#none">결제하기</a></td>
+                                      <td>840,000원</td>
+                                      <td>→</td>
+                                      <td>756,000원</td>
+                                      <td>84,000원 할인</td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/190684">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td rowspan="4">국어</td>
@@ -254,10 +261,11 @@
                                                 {{ $arr_base['register_list'][2]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td width="72">1,670,000원</td>
-                                        <td align="right">1,503,000 원</td>
-                                        <td align="right">167,000원 할인</td>
-                                        <td><a href="#none">결제하기</a></td>
+                                        <td>1,670,000원</td>
+                                        <td>→</td>
+                                        <td>1,503,000원</td>
+                                        <td>167,000원 할인</td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188964">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -266,10 +274,11 @@
                                                 {{ $arr_base['register_list'][3]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td width="72">1,450,000원</td>
-                                        <td align="right">1,305,000 원</td>
-                                        <td align="right">145,000원 할인</td>
-                                        <td><a href="#none">결제하기</a></td>
+                                        <td>1,450,000원</td>
+                                        <td>→</td>
+                                        <td>1,305,000원</td>
+                                        <td>145,000원 할인</td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191389">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2">구동언</td>
@@ -279,10 +288,11 @@
                                                 {{ $arr_base['register_list'][4]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td width="72">1,749,000원</td>
-                                        <td align="right">1,574,100 원</td>
-                                        <td align="right">174,900원 할인</td>
-                                        <td><a href="#none">결제하기</a></td>
+                                        <td>1,749,000원</td>
+                                        <td>→</td>
+                                        <td>1,574,100원</td>
+                                        <td>174,900원 할인</td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189121">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -291,10 +301,11 @@
                                                 {{ $arr_base['register_list'][5]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td width="72">1,331,000원</td>
-                                        <td align="right">1,197,900 원</td>
-                                        <td align="right">133,100원 할인</td>
-                                        <td><a href="#none">결제하기</a></td>
+                                        <td>1,331,000원</td>
+                                        <td>→</td>
+                                        <td>1,197,900원</td>
+                                        <td>133,100원 할인</td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191234">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td>영어</td>
@@ -305,10 +316,11 @@
                                                 {{ $arr_base['register_list'][6]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td width="72">532,000원</td>
-                                        <td align="right">478,800 원</td>
-                                        <td align="right">53,200원 할인</td>
-                                        <td><a href="#none">결제하기</a></td>
+                                        <td>532,000원</td>
+                                        <td>→</td>
+                                        <td>478,800원</td>
+                                        <td>53,200원 할인</td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188929">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td rowspan="6">수학</td>
@@ -316,58 +328,64 @@
                                         <td><label>
                                           <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][7]['ErIdx'] or ''}}"/>
                                           {{ $arr_base['register_list'][7]['Name'] or ''}} </label></td>
-                                        <td width="72">1,449,000원</td>
-                                        <td align="right">1,304,100 원</td>
-                                        <td align="right">144,900원 할인</td>
-                                        <td><a href="#none">결제하기</a></td>
+                                        <td>1,449,000원</td>
+                                        <td>→</td>
+                                        <td>1,304,100원</td>
+                                        <td>144,900원 할인</td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188685">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td><label>
                                         <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][8]['ErIdx'] or ''}}"/>
                                         {{ $arr_base['register_list'][8]['Name'] or ''}} </label></td>
-                                      <td width="72">945,000원</td>
-                                      <td align="right">850,500 원</td>
-                                      <td align="right">94,500원 할인</td>
-                                      <td><a href="#none">결제하기</a></td>
+                                      <td>945,000원</td>
+                                      <td>→</td>
+                                      <td>850,500원</td>
+                                      <td>94,500원 할인</td>
+                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188686">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td>김현웅</td>
                                       <td><label>
                                         <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}"/>
                                         {{ $arr_base['register_list'][9]['Name'] or ''}} </label></td>
-                                      <td width="72">1,400,000원</td>
-                                      <td align="right">1,260,000 원</td>
-                                      <td align="right">140,000원 할인</td>
-                                      <td><a href="#none">결제하기</a></td>
+                                      <td>1,400,000원</td>
+                                      <td>→</td>
+                                      <td>1,260,000원</td>
+                                      <td>140,000원 할인</td>
+                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189518">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td rowspan="2">박태영</td>
                                       <td><label>
                                         <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}"/>
                                         {{ $arr_base['register_list'][9]['Name'] or ''}} </label></td>
-                                      <td width="72">1,118,000원</td>
-                                      <td align="right">1,006,200 원</td>
-                                      <td align="right">111,800원 할인</td>
-                                      <td><a href="#none">결제하기</a></td>
+                                      <td>1,118,000원</td>
+                                      <td>→</td>
+                                      <td>1,006,200원</td>
+                                      <td>111,800원 할인</td>
+                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188984">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td><label>
                                         <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}"/>
                                         {{ $arr_base['register_list'][9]['Name'] or ''}} </label></td>
-                                      <td width="72">973,000원</td>
-                                      <td align="right">875,700 원</td>
-                                      <td align="right">97,300원 할인</td>
-                                      <td><a href="#none">결제하기</a></td>
+                                      <td>973,000원</td>
+                                      <td>→</td>
+                                      <td>875,700원</td>
+                                      <td>97,300원 할인</td>
+                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191400">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td>박혜향</td>
                                       <td><label>
                                         <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][10]['ErIdx'] or ''}}"/>
                                         {{ $arr_base['register_list'][10]['Name'] or ''}} </label></td>
-                                      <td width="72">777,000원</td>
-                                      <td align="right">699,300 원</td>
-                                      <td align="right">77,700원 할인</td>
-                                      <td><a href="#none">결제하기</a></td>
+                                      <td>777,000원</td>
+                                      <td>→</td>
+                                      <td>699,300원</td>
+                                      <td>77,700원 할인</td>
+                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189046">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td>도덕윤리</td>
@@ -375,10 +393,11 @@
                                         <td><label>
                                           <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][11]['ErIdx'] or ''}}"/>
                                           {{ $arr_base['register_list'][11]['Name'] or ''}} </label></td>
-                                        <td width="72">1,104,000원</td>
-                                        <td align="right">993,600 원</td>
-                                        <td align="right">110,400원 할인</td>
-                                        <td><a href="#none">결제하기</a></td>
+                                        <td>1,104,000원</td>
+                                        <td>→</td>
+                                        <td>993,600원</td>
+                                        <td>110,400원 할인</td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188803">결제하기</a></td>
                                     </tr>
                                     <tr>
                                         <td>일반사회</td>
@@ -386,10 +405,11 @@
                                         <td><label>
                                           <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][12]['ErIdx'] or ''}}"/>
                                           {{ $arr_base['register_list'][12]['Name'] or ''}} </label></td>
-                                        <td width="72">1,992,000원</td>
-                                        <td align="right">1,792,800 원</td>
-                                        <td align="right">199,200원 할인</td>
-                                        <td><a href="#none">결제하기</a></td>
+                                        <td>1,992,000원</td>
+                                        <td>→</td>
+                                        <td>1,792,800원</td>
+                                        <td>199,200원 할인</td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189215">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td rowspan="2">역사</td>
@@ -397,19 +417,21 @@
                                       <td><label>
                                         <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][13]['ErIdx'] or ''}}"/>
                                         {{ $arr_base['register_list'][13]['Name'] or ''}} </label></td>
-                                      <td width="72">2,304,000원</td>
-                                      <td align="right">2,073,600 원</td>
-                                      <td align="right">230,400원 할인</td>
-                                      <td><a href="#none">결제하기</a></td>
+                                      <td>2,304,000원</td>
+                                      <td>→</td>
+                                      <td>2,073,600원</td>
+                                      <td>230,400원 할인</td>
+                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188948">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td><label>
                                         <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][14]['ErIdx'] or ''}}"/>
                                         {{ $arr_base['register_list'][14]['Name'] or ''}} </label></td>
-                                      <td width="72">1,872,000원</td>
-                                      <td align="right">1,684,800 원</td>
-                                      <td align="right">187,200원 할인</td>
-                                      <td><a href="#none">결제하기</a></td>
+                                      <td>1,872,000원</td>
+                                      <td>→</td>
+                                      <td>1,684,800원</td>
+                                      <td>187,200원 할인</td>
+                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191214">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td>체육</td>
@@ -417,10 +439,11 @@
                                       <td><label>
                                         <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][15]['ErIdx'] or ''}}"/>
                                         {{ $arr_base['register_list'][15]['Name'] or ''}} </label></td>
-                                      <td width="72">1,690,000원</td>
-                                      <td align="right">1,521,000 원</td>
-                                      <td align="right">169,000원 할인</td>
-                                      <td><a href="#none">결제하기</a></td>
+                                      <td>1,690,000원</td>
+                                      <td>→</td>
+                                      <td>1,521,000원</td>
+                                      <td>169,000원 할인</td>
+                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189330">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td rowspan="2">중국어</td>
@@ -428,10 +451,11 @@
                                       <td><label>
                                         <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][16]['ErIdx'] or ''}}"/>
                                         {{ $arr_base['register_list'][16]['Name'] or ''}} </label></td>
-                                      <td width="72">3,496,000원</td>
-                                      <td align="right">3,146,400 원</td>
-                                      <td align="right">349,600원 할인</td>
-                                      <td><a href="#none">결제하기</a></td>
+                                      <td>3,496,000원</td>
+                                      <td>→</td>
+                                      <td>3,146,400원</td>
+                                      <td>349,600원 할인</td>
+                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189044">결제하기</a></td>
                                     </tr>
                                     <tr>
                                       <td>
@@ -440,10 +464,11 @@
                                               {{ $arr_base['register_list'][17]['Name'] or ''}}
                                           </label>
                                         </td>
-                                        <td width="72">1,864,000원</td>
-                                        <td align="right">1,677,600 원</td>
-                                        <td align="right">186,400원 할인</td>
-                                        <td><a href="#none">결제하기</a></td>
+                                        <td>1,864,000원</td>
+                                        <td>→</td>
+                                        <td>1,677,600원</td>
+                                        <td>186,400원 할인</td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191904">결제하기</a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -468,7 +493,7 @@
                     <li>본 이벤트 참여를 위한 윌비스 임용의 수강생은 별도의 인증 절차를 거치지 않으셔도 됩니다. (신청 시, 자체 검증 가능)</li>
                     <li>본 이벤트는 5월31일(일)까지 진행됩니다. (5월31일까지 신청할 수 있음)</li>
                     <li>본 이벤트에서 타학원 수강이 인증되면, 개별 ID로 할인쿠폰이 발급되며, 7일이내 수강하셔야 합니다. (* 7일후 쿠폰소멸)</li>
-                    <li>본 이벤트를 통하여 수강하고, 환불시에는 할인된 수강료가 아니고, 원수강료에서 기산됩니다. </li>
+                    <li>본 이벤트를 통하여 수강하고, 환불시에는 할인된 수강료가 아니고,원수강료에서 기산됩니다. </li>
                     <li>본 이벤트는 교재가 필요하다고 판단되면, 별도로 구매하셔야 합니다. </li>
                     <li>본 이벤트로 인한 할인강의는 양도 및 매매가 불가능하며, 위반시 처벌받을 수 있습니다.</li>
                 </ul>

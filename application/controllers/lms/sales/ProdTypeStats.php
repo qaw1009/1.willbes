@@ -383,6 +383,9 @@ class ProdTypeStats extends \app\controllers\BaseController
      */
     public function orderListExcel()
     {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
         $prod_type_ccd = $this->_reqP('prod_type_ccd');
         $site_code = $this->_reqP('site_code');
         $search_start_date = $this->_reqP('search_start_date');

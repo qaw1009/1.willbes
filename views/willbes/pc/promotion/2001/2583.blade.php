@@ -69,7 +69,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2583_03.jpg"  alt="커리큘럼"/>
                 <a href="javascript:alert('준비중입니다.')" title="유튜브" style="position: absolute;left: 5.19%;top: 30.03%;width: 89.88%;height: 39.34%;z-index: 2;"></a>
                 <a href="https://www.youtube.com/channel/UCDjImsjLcG6H9y9jonFF84Q" target="_blank" title="헌법도약 유튜브" style="position: absolute;left: 15.19%;top: 73.03%;width: 32.88%;height: 9.34%;z-index: 2;"></a>
-                <a href="javascript:alert('준비중입니다.')" title="카페" style="position: absolute;left: 52.19%;top: 73.03%;width: 32.88%;height: 9.34%;z-index: 2;"></a>
+                <a href="https://cafe.daum.net/doyag" target="_blank" title="이국령 카페" style="position: absolute;left: 52.19%;top: 73.03%;width: 32.88%;height: 9.34%;z-index: 2;"></a>
             </div>
         </div>
 
@@ -95,7 +95,7 @@
         <div class="evtCtnsBox evt_btn" data-aos="fade-up">
             <div class="wrap">            
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2583_btn.jpg"  alt="워크북 교재받기"/>
-                <a href="javascript:alert('준비중입니다.')" title="" style="position: absolute;left: 25.19%;top: 29.53%;width: 49.88%;height: 40.34%;z-index: 2;"></a>
+                <a href="javascript:void(0)" title="" style="position: absolute;left: 25.19%;top: 29.53%;width: 49.88%;height: 40.34%;z-index: 2;"></a>
             </div>                 
         </div>
 

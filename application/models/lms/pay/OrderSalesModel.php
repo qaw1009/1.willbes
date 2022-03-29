@@ -354,6 +354,81 @@ class OrderSalesModel extends BaseOrderModel
     }
 
     /**
+     * 상품구분별 매출현황
+     * @param string $start_date [조회시작일자]
+     * @param string $end_date [조회종료일자]
+     * @param string $search_type [조회구분 (전체: all, 실매출: real_pay)]
+     * @param bool|string $is_count
+     * @param array $arr_condition
+     * @param null|int $limit
+     * @param null|int $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listProdTypeStatsOrder($start_date, $end_date, $search_type, $is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        $order_by_offset_limit = '';
+        $group_by = 'group by BO.SiteCode, P.ProdTypeCcd, PL.LearnPatternCcd, BO.PayChannelCcd, BO.PayRouteCcd';
+
+        if ($is_count === true) {
+            $in_column = 'BO.SiteCode, P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, BO.PayChannelCcd, BO.PayRouteCcd';
+            $column = 'count(*) AS numrows';
+        } else {
+            $in_column = 'sum(ifnull(BO.RealPayPrice, 0)) as tRealPayPrice, sum(ifnull(BO.RefundPrice, 0)) as tRefundPrice
+                , (sum(ifnull(BO.RealPayPrice, 0)) - sum(ifnull(BO.RefundPrice, 0))) as tRemainPrice
+                , count(BO.OrderProdIdx) as tOrderProdCnt, sum(if(BO.RefundDatm is null, 1, 0)) as tRealPayCnt, sum(if(BO.RefundDatm is null, 0, 1)) as tRefundCnt';
+
+            if ($is_count === 'sum') {
+                // 상품구분별 전체합계
+                $column = '*';
+                $group_by = '';
+            } else {
+                $in_column .= ', BO.SiteCode, P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, BO.PayChannelCcd, BO.PayRouteCcd
+                    , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName';
+
+                if (is_bool($is_count) === true) {
+                    $column = '*';
+                } else {
+                    $column = $is_count;
+                }
+
+                $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+                $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            }
+        }
+
+        $from = '
+            from (
+                ' . $this->_getBaseOrder($start_date, $end_date, $search_type) . '
+            ) as BO
+                inner join ' . $this->_table['product'] . ' as P
+                    on BO.ProdCode = P.ProdCode
+                left join ' . $this->_table['product_lecture'] . ' as PL
+                    on BO.ProdCode = PL.ProdCode  
+                left join ' . $this->_table['product_r_category'] . ' as PC
+                    on BO.ProdCode = PC.ProdCode and PC.IsStatus = "Y"
+                left join ' . $this->_table['category'] . ' as SC
+                    on PC.CateCode = SC.CateCode and SC.IsStatus = "Y"                                     
+                left join ' . $this->_table['code'] . ' as CPT
+                    on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y" and CPT.GroupCcd = "' . $this->_group_ccd['ProdType'] . '"
+                left join ' . $this->_table['code'] . ' as CLP
+                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y" and CLP.GroupCcd = "' . $this->_group_ccd['LearnPattern'] . '"			
+                left join ' . $this->_table['code'] . ' as CPC
+                    on BO.PayChannelCcd = CPC.Ccd and CPC.IsStatus = "Y" and CPC.GroupCcd = "' . $this->_group_ccd['PayChannel'] . '" 
+                left join ' . $this->_table['code'] . ' as CPR
+                    on BO.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y" and CPR.GroupCcd = "' . $this->_group_ccd['PayRoute'] . '"
+            where BO.SalePatternCcd in ("' . $this->_sale_pattern_ccd['normal'] . '", "' . $this->_sale_pattern_ccd['extend'] . '", "' . $this->_sale_pattern_ccd['retake'] . '")                                                  
+        ';
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . PHP_EOL . $group_by . PHP_EOL . ') U ' . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
      * 월비스전체매출현황 통계
      * @param string $start_date [조회시작일자]
      * @param string $end_date [조회종료일자]

@@ -29,8 +29,6 @@
     <!-- Custom Script -->
     <script src="/public/js/willbes/mobile.js?ver=1594952526"></script>  
     <style>
-
-
         .cop img {max-width:100%}
         
         .fixed {position:fixed; top:0; left:0; width:100%; border-bottom:1px solid #ccc; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10}
@@ -101,7 +99,15 @@
             -webkit-box-orient:vertical;/*박스의 흐름 방향을 지정*/ 
             word-wrap:break-word; /*언어간 줄바꿈*/
         }
-        .cop .castInfo p {font-size:1.5vh; width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+        .cop .castInfo p {font-size:1.5vh; 
+            width:100%;
+            overflow:hidden; 
+            text-overflow:ellipsis; /*말줄임*/
+            display:-webkit-box;/*블록속성*/ 
+            -webkit-line-clamp: 2; /* 라인수 */ 
+            -webkit-box-orient:vertical;/*박스의 흐름 방향을 지정*/ 
+            word-wrap:break-word; /*언어간 줄바꿈*/
+        }
         
         .cop .swiper-sec .swiper-slide .bnTitle {margin-top:10px; font-size:1.8vh}
 
@@ -504,7 +510,7 @@
                     <div class="castImg"><img src="https://static.willbes.net/public/images/promotion/m/2001/bn_284x160_02.jpg" alt="배너명"></div>
                     <div class="castInfo">
                         <h5>[짱쌤X아이언짐 경찰체력] <br>3편_악력 점수 For Real?? (⓿_⓿)</h5>
-                        <p>악력점수는 어떻게 하면 높일 수 있을까요?</p>
+                        <p>악력점수는 어떻게 하면 높일 수 있을까요? 악력점수는 어떻게 하면 높일 수 있을까요? 악력점수는 어떻게 하면 높일 수 있을까요?</p>
                     </div>
                 </a>
             </div>

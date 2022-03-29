@@ -3,7 +3,7 @@
 @section('content')
     <style>
         .cop img {max-width:100%}
-
+        
         .fixed {position:fixed; top:0; left:0; width:100%; border-bottom:1px solid #ccc; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10}
 
         .subMenuWrap {background-color: #f6f6f6; padding:15px 10px; font-size: 14px; max-width:720px; margin:0 auto}
@@ -16,6 +16,7 @@
         .groupLink a:nth-child(1) {border-left:0}
         .groupLink a:last-child {border-right::0}
 
+
         .conTitle {text-align:left; font-size:2.5vh; margin:10% 20px 2%}
         .conTitle img.moreBtn {width:28px; vertical-align:top; display:inline-block; margin-left:10px}
 
@@ -23,8 +24,8 @@
 
         .cop .swiper-sec {
             position: relative;
-            overflow: hidden;
-            height: auto;
+            overflow: hidden;     
+            height: auto; 
             margin:0 20px;
             padding:0 0 20px;
         }
@@ -36,7 +37,7 @@
             z-index: 50;
             height: 5px;
             width: 100%;
-        }
+        }        
         .cop .swiper-scrollbar {background: rgba(0,0,0,.1);}
         .cop .swiper-scrollbar-drag {
             height: 100%;
@@ -57,27 +58,35 @@
         .cop .swiper-sec02 .swiper-slide a img {border-radius:5px}
         .cop .swiper-sec .swiper-slide:last-child {margin:0}
 
-        .cop .sec-cast {margin:0 20px;}
+        .cop .sec-cast {margin:0 20px;} 
         .cop .castList a {display:flex; justify-content: space-between; margin-bottom:5px; background:#f2f2f2; }
         .cop .castImg {width:calc(42%); max-width:284px}
         .cop .castImg img {width:100%}
         .cop .castInfo {width:calc(58%); padding:12px; line-height:1.4; }
         .cop .castInfo h5 {font-size:1.6vh; font-weight:bold; margin-bottom:8px;
             width:100%;
-            overflow:hidden;
+            overflow:hidden; 
             text-overflow:ellipsis; /*말줄임*/
-            display:-webkit-box;/*블록속성*/
-            -webkit-line-clamp: 2; /* 라인수 */
-            -webkit-box-orient:vertical;/*박스의 흐름 방향을 지정*/
+            display:-webkit-box;/*블록속성*/ 
+            -webkit-line-clamp: 2; /* 라인수 */ 
+            -webkit-box-orient:vertical;/*박스의 흐름 방향을 지정*/ 
             word-wrap:break-word; /*언어간 줄바꿈*/
         }
-        .cop .castInfo p {font-size:1.5vh; width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
-
+        .cop .castInfo p {font-size:1.5vh; 
+            width:100%;
+            overflow:hidden; 
+            text-overflow:ellipsis; /*말줄임*/
+            display:-webkit-box;/*블록속성*/ 
+            -webkit-line-clamp: 2; /* 라인수 */ 
+            -webkit-box-orient:vertical;/*박스의 흐름 방향을 지정*/ 
+            word-wrap:break-word; /*언어간 줄바꿈*/
+        }
+        
         .cop .swiper-sec .swiper-slide .bnTitle {margin-top:10px; font-size:1.8vh}
 
-        .cop .sec-tip {width:calc(100% - 40px); margin:0 auto; display:flex; justify-content: space-between;}
-        .cop .sec-tip .tipBox {width:calc(25% - 8px); min-width:78px; max-width:157px; margin-right:8px; padding-bottom:20px}
-        .cop .sec-tip .tipBox img {min-height:70px;}
+        .cop .sec-tip {width:calc(100% - 40px); margin:0 auto; display:flex; justify-content: space-between;} 
+        .cop .sec-tip .tipBox {width:calc(25% - 8px); min-width:78px; max-width:157px; margin-right:8px; padding-bottom:20px} 
+        .cop .sec-tip .tipBox img {min-height:70px;} 
         .cop .sec-tip .tipBox:nth-child(1) {width:50%; min-width:166px; max-width:332px;}
         .cop .sec-tip .swiper-sec03 {position:relative; overflow: hidden; margin:0}
         .cop .sec-tip .swiper-sec03 .swiper-pagination {
@@ -94,12 +103,13 @@
             background:#3f84c2 !important;
         }
 
+
         .noticeBoard {background:#f8f8f8; padding:10px 20px; line-height:1.4; font-size:14px}
         .noticeBoard a {display:block; width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; border-bottom:1px solid #dadada; padding:14px 0}
         .noticeBoard a span {font-size:12px; background:#4d79f6; color:#fff; padding:0 5px; margin-right:5px}
         .noticeBoard li:last-child a {border:0}
 
-        .cop .sec-cast {margin:0 20px;}
+        .cop .sec-cast {margin:0 20px;} 
 
         .cop .swiper-best{display:flex; position: relative; overflow: hidden; padding-bottom:30px; width:calc(100% - 40px); margin:0 auto;}
         .cop .swiper-best .swiper-slide{display: flex; flex-direction: column;}
@@ -109,13 +119,13 @@
             text-align:center;
             z-index: 100;
         }
-
+        
         .swiper-container-Book {
             width: calc(100% - 40px);
             margin:0 auto;
             height: 340px;
             overflow: hidden;
-            position: relative;
+            position: relative; 
         }
         .swiper-container-Book .swiper-slide {
             text-align: center;
@@ -147,9 +157,9 @@
             width: 98%;
             overflow: hidden;
             text-overflow:ellipsis; /*말줄임*/
-            display:-webkit-box;/*블록속성*/
-            -webkit-line-clamp: 2; /* 라인수 */
-            -webkit-box-orient:vertical;/*박스의 흐름 방향을 지정*/
+            display:-webkit-box;/*블록속성*/ 
+            -webkit-line-clamp: 2; /* 라인수 */ 
+            -webkit-box-orient:vertical;/*박스의 흐름 방향을 지정*/ 
             word-wrap:break-word; /*언어간 줄바꿈*/
         }
         .swiper-container-Book li:nth-child(2) {
@@ -168,25 +178,27 @@
             bottom: 0 !important;
         }
 
+
         .noticeTabs {margin-top:10%;}
         .noticeTabs .tabContent {padding:20px 20px 0;}
 
         .sec-bottomBn {margin-top:10%;}
         .appPlayer {margin-top:8%;}
 
-        .btnCounsel {position:fixed; right:10px; bottom:10px; z-index: 90;}
+        .btnCounsel {position:fixed; right:10px; bottom:10px; z-index: 90;}        
         .btnCounsel a {display:flex; flex-direction: column; justify-content: center; align-items: center; width:90px; height:90px; background:#fbe901; color:#363636; border-radius:50%; text-align:center; font-weight:bold; padding:5px; font-size:1.7vh}
         .btnCounsel a img {display:block; margin-bottom:5px; width:50%; max-width:45px}
 
         .castBoxpopup {display:none}
         .castBoxpopup .close {position:absolute; top:0; right:0}
-        .castBoxpopup .close button {background:#fff url("https://static.willbes.net/public/images/promotion/m/icon_close.png") no-repeat center center;
-            background-size:60%; font-size:0; text-indent: -9999px; width:24px; height:24px; border-radius:50%}
+	    .castBoxpopup .close button {background:#fff url("https://static.willbes.net/public/images/promotion/m/icon_close.png") no-repeat center center;
+            background-size:60%; font-size:0; text-indent: -9999px; width:24px; height:24px; border-radius:50%}	
 
+       
         @@media only screen and (max-width: 374px) {
             .groupLink a {font-size:1.6vh;}
             .conTitle img.moreBtn {width:20px;}
-            .cop .castInfo {padding:8px; font-size:1.6vh;}
+            .cop .castInfo {padding:8px; font-size:1.6vh;} 
             .cop .castInfo h5 {font-size:1.7vh; font-weight:bold; margin-bottom:4px}
             .cop .castInfo h5 br {display:none}
             .cop .sec-tip .swiper-sec03 .swiper-pagination {top:85%;}
@@ -203,11 +215,10 @@
             .noticeBoard a {padding:8px 0}
 
             .noticeTabs .tabContent {padding:10px 10px 0;}
-
+     
             .btnCounsel a {width:60px; height: 60px; font-size:1.5vh}
             .btnCounsel a img {margin-bottom:3px; width:50%;}
         }
-
         @@media (min-width: 721px) {
             .cop .castInfo h5 {font-size:2.4vh;}
             .cop .castInfo p {font-size:2.2vh;}

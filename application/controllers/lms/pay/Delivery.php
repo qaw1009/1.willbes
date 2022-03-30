@@ -445,6 +445,53 @@ class Delivery extends BaseOrder
     /**
      * 모아시스 송장등록 주문조회
      */
+    public function targetExcelNew()
+    {
+        // 송장등록 주문조회
+        $search_start_date = $this->_reqP('search_start_date');
+        $search_start_hour = $this->_reqP('search_start_hour');
+        $search_end_date = $this->_reqP('search_end_date');
+        $search_end_hour = $this->_reqP('search_end_hour');
+        $search_site_code = $this->_reqP('search_site_code');
+
+        if (empty($search_start_date) === true || empty($search_start_hour) === true || empty($search_end_date) === true || empty($search_end_hour) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+        }
+
+        $search_start_datm = $search_start_date . ' ' . $search_start_hour . ':00:00';
+        $search_end_datm = $search_end_date . ' ' . $search_end_hour . ':59:59';
+
+        $data = $this->deliveryInfoModel->getDeliveryTargetOrderData($search_start_datm, $search_end_datm, $search_site_code);
+        if (empty($data) === true) {
+            show_alert('데이터가 없습니다.', 'back');
+        }
+        $last_query = $this->deliveryInfoModel->getLastQuery();
+
+        // 주문 데이터 가공
+        $results = [];
+
+        foreach ($data as $idx => $row) {
+            $results[$idx]['ShippingNo'] = $row['ShippingNo'];
+            $results[$idx]['Receiver'] = $row['Receiver'];
+            $results[$idx]['Addr'] = $row['ZipCode'] . ' ' . $row['Addr'];
+            $results[$idx]['ReceiverPhone'] = $row['ReceiverPhone'];
+            $results[$idx]['wBookName'] = $row['wBookName'];
+            $results[$idx]['wIsbn'] = $row['wIsbn'];
+            $results[$idx]['OutProdCode'] = '';
+            $results[$idx]['OrderProdQty'] = (int) $row['OrderProdQty'];
+            $results[$idx]['SupplyRate'] = 100;
+            $results[$idx]['Present'] = '';
+            $results[$idx]['DeliveryMemo'] = $row['DeliveryMemo'];
+        }
+
+        // export excel
+        $headers = ['출고번호', '수취인명', '수취인주소', '수취인전화번호', '도서명', 'ISBN', '상품코드', '수량', '공급률', '증정', '비고(택배메시지)'];
+        $this->_makeExcel('교재배송_모아시스(N)', $results, $headers, true, $last_query);
+    }
+
+    /**
+     * 모아시스 송장등록 주문조회 (이전버전)
+     */
     public function targetExcel()
     {
         // 송장등록 주문조회

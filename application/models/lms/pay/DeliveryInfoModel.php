@@ -261,12 +261,14 @@ class DeliveryInfoModel extends BaseOrderModel
             , fn_dec(ODA.ReceiverPhoneEnc) as ReceiverPhone
             , TA.wBookIdx
             , WB.wBookName
+            , WB.wIsbn
             , OP.OrderPrice
             , TA.OrderProdQty
             , OP.RealPayPrice
             , ODA.ZipCode
             , concat(trim(ODA.Addr1), " ", trim(fn_dec(ODA.Addr2Enc))) as Addr
-            , ODA.DeliveryMemo        
+            , ODA.DeliveryMemo
+            , dense_rank() over (order by O.OrderIdx desc) as ShippingNo    
         ';
 
         $from = '

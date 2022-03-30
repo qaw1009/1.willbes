@@ -171,6 +171,7 @@
                 buttons: [
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> CN플러스 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-cnplus-excel' },
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 모아시스 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-target-excel' },
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 모아시스 엑셀다운로드(신)', className: 'btn-sm btn-success border-radius-reset mr-15 btn-target-excel-new' },
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-sms' },
@@ -409,6 +410,15 @@
                 var url = '{{ site_url('/pay/delivery/') }}' + ($(this).hasClass('btn-cnplus-excel') === true ? 'cnplus' : 'target') + 'Excel';
 
                 if (confirm(msg)) {
+                    formCreateSubmit(url, $search_form.serializeArray(), 'POST');
+                }
+            });
+
+            // 모아시스(신) 엑셀다운로드 버튼 클릭
+            $('.btn-target-excel-new').on('click', function(event) {
+                var url = '{{ site_url('/pay/delivery/targetExcelNew') }}';
+
+                if (confirm('정말로 모아시스(신) 엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit(url, $search_form.serializeArray(), 'POST');
                 }
             });

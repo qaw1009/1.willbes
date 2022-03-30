@@ -355,9 +355,9 @@ span {
 
 #Header button.home {
 	background: url("../../../img/willbes/m/main/icon_home.png") no-repeat center center;
-	background-size: 100%;
-	width: 46px;
-	height: 52px;
+	background-size: 150%;
+	width: 30px;
+	height: 30px;
 	border: none;
 }
 
@@ -425,8 +425,8 @@ span {
 #header .logo a {
 	font-weight: bold; display:block; text-align: left; margin-left: 10px;
 }
-#header .logo.intro {width: calc(100% - 190px);}
-#header .logo.intro a {text-align: center;}
+#header .logo.intro {width: calc(100% - 120px);}
+#header .logo.intro a {text-align: center; position: absolute; top:0; left:0; width:100%;}
 #header .logo a.siteTitle {
 	font-size: 18px;
 	color: #000;
@@ -447,7 +447,7 @@ span {
 }
 #header .myLog {
 	position: absolute;
-	top: 10px;
+	top: 0;
 	right: 15px;
 	letter-spacing: -1px;
 	z-index: 10;

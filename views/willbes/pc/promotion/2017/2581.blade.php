@@ -104,6 +104,32 @@
 
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2581_03_03.jpg" alt="환승이벤트"/>
                 <div class="event03-txt01 mb50">
+                    <div id="lecture_box" style="display: none;">
+                        <input name="y_pkg1" type="checkbox" value="188978" checked="checked">
+                        <input name="y_pkg2" type="checkbox" value="191210" checked="checked">
+                        <input name="y_pkg3" type="checkbox" value="189385" checked="checked">
+                        <input name="y_pkg4" type="checkbox" value="189065" checked="checked">
+                        <input name="y_pkg5" type="checkbox" value="190684" checked="checked">
+                        <input name="y_pkg6" type="checkbox" value="188964" checked="checked">
+                        <input name="y_pkg7" type="checkbox" value="191389" checked="checked">
+                        <input name="y_pkg8" type="checkbox" value="189121" checked="checked">
+                        <input name="y_pkg9" type="checkbox" value="191234" checked="checked">
+                        <input name="y_pkg10" type="checkbox" value="188929" checked="checked">
+                        <input name="y_pkg11" type="checkbox" value="188685" checked="checked">
+                        <input name="y_pkg12" type="checkbox" value="188686" checked="checked">
+                        <input name="y_pkg13" type="checkbox" value="189518" checked="checked">
+                        <input name="y_pkg14" type="checkbox" value="188984" checked="checked">
+                        <input name="y_pkg15" type="checkbox" value="191400" checked="checked">
+                        <input name="y_pkg16" type="checkbox" value="189046" checked="checked">
+                        <input name="y_pkg17" type="checkbox" value="188803" checked="checked">
+                        <input name="y_pkg18" type="checkbox" value="189215" checked="checked">
+                        <input name="y_pkg19" type="checkbox" value="188948" checked="checked">
+                        <input name="y_pkg20" type="checkbox" value="191214" checked="checked">
+                        <input name="y_pkg21" type="checkbox" value="189330" checked="checked">
+                        <input name="y_pkg22" type="checkbox" value="189044" checked="checked">
+                        <input name="y_pkg23" type="checkbox" value="191904" checked="checked">
+                    </div>
+
                     <div class="evt_tableA">
                         <table>
                             <col width="8%"/>
@@ -132,7 +158,7 @@
                                 <td>→</td>
                                 <td>1,197,000원</td>
                                 <td><span>133,000원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/188978">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/188978" onclick="goCartNDirectPay('lecture_box', 'y_pkg1', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td>2022(3~11월) 이경범 교육학 Core 패키지</td>
@@ -140,7 +166,7 @@
                                 <td>→</td>
                                 <td>982,800원</td>
                                 <td><span>109,200원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/191210">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/191210" onclick="goCartNDirectPay('lecture_box', 'y_pkg2', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td>정 현</td>
@@ -149,7 +175,7 @@
                                 <td>→</td>
                                 <td>549,000원</td>
                                 <td><span>61,000원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/189385">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/189385" onclick="goCartNDirectPay('lecture_box', 'y_pkg3', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td rowspan="2">신태식</td>
@@ -158,7 +184,7 @@
                                 <td>→</td>
                                 <td>1,147,500원</td>
                                 <td><span>127,500원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/189065">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/189065" onclick="goCartNDirectPay('lecture_box', 'y_pkg4', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td>2022(03~04월 & 07~11월) 신태식 교육학 심화이론 + 문풀 패키지</td>
@@ -166,7 +192,7 @@
                                 <td>→</td>
                                 <td>756,000원</td>
                                 <td><span>84,000원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/190684">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/190684" onclick="goCartNDirectPay('lecture_box', 'y_pkg5', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td rowspan="4">국어</td>
@@ -176,7 +202,7 @@
                                 <td>→</td>
                                 <td>1,503,000원</td>
                                 <td><span>167,000원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188964">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188964" onclick="goCartNDirectPay('lecture_box', 'y_pkg6', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td>2022(3~11월) 전공국어 완전정복 패키지</td>
@@ -184,7 +210,7 @@
                                 <td>→</td>
                                 <td>1,305,000원</td>
                                 <td><span>145,000원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191389">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191389" onclick="goCartNDirectPay('lecture_box', 'y_pkg7', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td rowspan="2">구동언</td>
@@ -193,7 +219,7 @@
                                 <td>→</td>
                                 <td>1,574,100원</td>
                                 <td><span>174,900원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189121">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189121" onclick="goCartNDirectPay('lecture_box', 'y_pkg8', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td>2022(3~11월) 구동언 전공국어 Core 패키지</td>
@@ -201,7 +227,7 @@
                                 <td>→</td>
                                 <td>1,197,900원</td>
                                 <td><span>133,100원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191234">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191234" onclick="goCartNDirectPay('lecture_box', 'y_pkg9', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td>영어</td>
@@ -211,7 +237,7 @@
                                 <td>→</td>
                                 <td>478,800원</td>
                                 <td><span>53,200원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188929">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188929" onclick="goCartNDirectPay('lecture_box', 'y_pkg10', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td rowspan="6">수학</td>
@@ -221,7 +247,7 @@
                                 <td>→</td>
                                 <td>1,304,100원</td>
                                 <td><span>144,900원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188685">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188685" onclick="goCartNDirectPay('lecture_box', 'y_pkg11', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td>2022(1~6월) 김철홍 전공수학 내용학 상반기 패키지</td>
@@ -229,7 +255,7 @@
                                 <td>→</td>
                                 <td>850,500원</td>
                                 <td><span>94,500원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188686">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188686" onclick="goCartNDirectPay('lecture_box', 'y_pkg12', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td>김현웅</td>
@@ -238,7 +264,7 @@
                                 <td>→</td>
                                 <td>1,260,000원</td>
                                 <td><span>140,000원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189518">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189518" onclick="goCartNDirectPay('lecture_box', 'y_pkg13', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td rowspan="2">박태영</td>
@@ -247,7 +273,7 @@
                                 <td>→</td>
                                 <td>1,006,200원</td>
                                 <td><span>111,800원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188984">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188984" onclick="goCartNDirectPay('lecture_box', 'y_pkg14', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td>2022(3~11월) 박태영 수학교육론 core 패키지</td>
@@ -255,7 +281,7 @@
                                 <td>→</td>
                                 <td>875,700원</td>
                                 <td><span>97,300원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191400">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191400" onclick="goCartNDirectPay('lecture_box', 'y_pkg15', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td>박혜향</td>
@@ -264,7 +290,7 @@
                                 <td>→</td>
                                 <td>699,300원</td>
                                 <td><span>77,700원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189046">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189046" onclick="goCartNDirectPay('lecture_box', 'y_pkg16', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td>도덕윤리</td>
@@ -274,7 +300,7 @@
                                 <td>→</td>
                                 <td>993,600원</td>
                                 <td><span>110,400원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188803">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188803" onclick="goCartNDirectPay('lecture_box', 'y_pkg17', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td>일반사회</td>
@@ -284,7 +310,7 @@
                                 <td>→</td>
                                 <td>1,792,800원</td>
                                 <td><span>199,200원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189215">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189215" onclick="goCartNDirectPay('lecture_box', 'y_pkg18', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td rowspan="2">역사</td>
@@ -294,7 +320,7 @@
                                 <td>→</td>
                                 <td>2,073,600원</td>
                                 <td><span>230,400원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188948">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188948" onclick="goCartNDirectPay('lecture_box', 'y_pkg19', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td>2022(3~11월) 김종권 전공역사 Core 패키지</td>
@@ -302,7 +328,7 @@
                                 <td>→</td>
                                 <td>1,684,800원</td>
                                 <td><span>187,200원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191214">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191214" onclick="goCartNDirectPay('lecture_box', 'y_pkg20', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td>체육</td>
@@ -312,7 +338,7 @@
                                 <td>→</td>
                                 <td>1,521,000원</td>
                                 <td><span>169,000원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189330">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189330" onclick="goCartNDirectPay('lecture_box', 'y_pkg21', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td rowspan="2">중국어</td>
@@ -322,7 +348,7 @@
                                 <td>→</td>
                                 <td>3,146,400원</td>
                                 <td><span>349,600원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189044">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189044" onclick="goCartNDirectPay('lecture_box', 'y_pkg22', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
                                 <td>2022(3~11월) 장영희 중국어 N수 트랙 종합반</td>
@@ -330,7 +356,7 @@
                                 <td>→</td>
                                 <td>1,677,600원</td>
                                 <td><span>186,400원 할인</span></td>
-                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191904">결제하기</a></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191904" onclick="goCartNDirectPay('lecture_box', 'y_pkg23', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             </tbody>
                         </table>
@@ -364,6 +390,9 @@
         </div>
     </div>
     <!-- End Container -->
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

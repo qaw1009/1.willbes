@@ -8,12 +8,13 @@
                 <button type="button" class="home" onclick="document.location='{{ front_app_url('/home/index', 'www') }}';">
                     <span class="hidden">통합메인으로 이동</span>
                 </button>
-                <div class="logo">
-                    <a href="{{ front_app_url('/home/index', 'www') }}"><img src="{{ img_url('m/main/logo.png') }}"></a>
-                </div>
                 <button type="button" class="mypage Menu_open" data-navi="mypage">
                     <span class="hidden">내강의실</span>
                 </button>
+                <div class="logo intro">
+                    <a href="{{ front_app_url('/home/index', 'www') }}"><img src="{{ img_url('m/main/logo.png') }}"></a>
+                </div>
+
                 <ul class="myLog tx-black NG">
                     @if(strpos(strtoupper(current_url()), '/MEMBER/JOIN') === false)
                         @if(sess_data('is_login') === true)
@@ -49,8 +50,8 @@
                         <div class="logo">
                             @if(array_has($__cfg['SiteMenu'], 'TreeMenu.GNB') === true)
                                 <a href="{{ array_get($__cfg['SiteMenu'], 'TreeMenu.GNB.MenuUrl', '#none') }}" class="siteTitle NSK-Black">
-                                    {{ array_get($__cfg['SiteMenu'], 'TreeMenu.GNB.MenuName', '') }}
-                                </a>
+                                    {{ array_get($__cfg['SiteMenu'], 'TreeMenu.GNB.MenuName', '') }} 
+                                </a> 
                             @else
                                 <a href="{{ front_url('/home/index') }}" class="siteTitle NSK-Black">
                                     {{ get_var(element('SiteNickName', $__cfg), str_replace_array(['윌비스', '온라인', ' '], '', $__cfg['HeadTitle'])) }}

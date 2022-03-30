@@ -425,6 +425,8 @@ span {
 #header .logo a {
 	font-weight: bold; display:block; text-align: left; margin-left: 10px;
 }
+#header .logo.intro {width: calc(100% - 190px);}
+#header .logo.intro a {text-align: center;}
 #header .logo a.siteTitle {
 	font-size: 18px;
 	color: #000;
@@ -439,12 +441,13 @@ span {
 #header .logo a img {
 	margin-top: 5px;
 }
+
 #Header .Login-List {
 	height: 52px;
 }
 #header .myLog {
 	position: absolute;
-	top: 0;
+	top: 10px;
 	right: 15px;
 	letter-spacing: -1px;
 	z-index: 10;

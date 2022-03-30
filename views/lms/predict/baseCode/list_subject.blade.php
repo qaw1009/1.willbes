@@ -77,7 +77,7 @@
                         sendAjax(_url, data, function(ret) {
                             if (ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
-                                var _replace_url = '{{ site_url('/predict/baseCode/subject/'.$arr_base['predict_idx']) }}';
+                                var _replace_url = '{{ site_url('/predict/baseCode/listSubject/'.$arr_base['predict_idx']) }}';
                                 replaceModal(_replace_url,'');
                             }
                         }, showError, false, 'POST');

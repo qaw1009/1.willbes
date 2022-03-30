@@ -466,7 +466,7 @@ class SurveyModel extends WB_Model
                         SELECT COUNT(*)
                         FROM lms_predict_grades_origin AS a
                         INNER JOIN lms_predict_paper AS b ON a.PpIdx = b.PpIdx
-                        INNER JOIN lms_predict_code_r_subject AS c ON c.SubjectCode = b.SubjectCode AND c.IsStatus = 'Y'
+                        INNER JOIN lms_predict_code_r_subject AS c ON c.SubjectCode = b.SubjectCode AND c.IsUse = 'Y'
                         {$where}
                         GROUP BY a.PrIdx
                     ) AS a
@@ -478,7 +478,7 @@ class SurveyModel extends WB_Model
                     END) AS Pointarea
                     FROM lms_predict_grades_origin AS a
                     INNER JOIN lms_predict_paper AS b ON a.PpIdx = b.PpIdx
-                    INNER JOIN lms_predict_code_r_subject AS c ON c.SubjectCode = b.SubjectCode AND c.IsStatus = 'Y'
+                    INNER JOIN lms_predict_code_r_subject AS c ON c.SubjectCode = b.SubjectCode AND c.IsUse = 'Y'
                     {$where}
                     GROUP BY a.PrIdx
                 ) AS A

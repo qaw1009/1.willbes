@@ -11,7 +11,7 @@
             margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;            
+            background:#fff;
         }
         .evtContent span {vertical-align:middle}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px; position: relative;}
@@ -41,7 +41,7 @@
         .event03-txt01 ul.info li {margin-bottom:10px; list-style-type:decimal; margin-left:20px}
 
         .event03 .btnBox a {width:360px; margin:0 auto; display:inline-block;color:#fff; background:#1f3b8e; font-size:26px; font-weight:bold; height:70px; line-height:70px; border-radius:40px; text-align:center}
-        .event03 .btnBox a:hover {background:#1b233b;}        
+        .event03 .btnBox a:hover {background:#1b233b;}
 
         .evt_table{margin-bottom:30px;}
         .evt_table table{width:100%; border:1px solid #c1c1c1}
@@ -76,327 +76,272 @@
 
         .evtInfo {padding:80px 0; background:#eee; font-size:16px}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
-		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
+        .evtInfoBox h4 {font-size:40px; margin-bottom:20px}
         .evtInfoBox ul {margin-bottom:30px}
         .evtInfoBox li {list-style-type: decimal;margin-left:20px; margin-bottom:10px}
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="eventWrap eventTop" data-aos="fade-up">
-        	<img src="https://static.willbes.net/public/images/promotion/2022/03/2581_top.jpg" alt="합격환승센터"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2581_top.jpg" alt="합격환승센터"/>
             <span data-aos="fade-down"><img src="https://static.willbes.net/public/images/promotion/2022/03/2581_top_img.png" alt=""/></span>
         </div>
 
         <div class="eventWrap event01" data-aos="fade-up">
-        	<img src="https://static.willbes.net/public/images/promotion/2022/03/2581_01.jpg" alt="합격할 수 있습니다."/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2581_01.jpg" alt="합격할 수 있습니다."/>
         </div>
 
         <div class="eventWrap event02" data-aos="fade-up">
-        	<img src="https://static.willbes.net/public/images/promotion/2022/03/2581_02.jpg" alt="윌비스 임용으로 바꾸면 좋은 이유"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2581_02.jpg" alt="윌비스 임용으로 바꾸면 좋은 이유"/>
         </div>
 
         <div class="eventWrap event03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2581_03_01.jpg" alt="환승이벤트"/>
-            <form name="regi_form_register" id="regi_form_register">
-                {!! csrf_field() !!}
-                {!! method_field('POST') !!}
-                <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
-                <input type="hidden" name="register_type" value="promotion"/>
-                <input type="hidden" name="file_chk" value="Y"/>
-                <input type="hidden" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}" readonly="readonly"/>
-
-                <div class="event03Box">                 
-                    <div class="event03-txt01 mb100">                      
-                        <ul class="info">
-                            <li>
-                            개인정보 수집 이용 목적  <br />
-                            - 본 이벤트의 대상자(타학원 수강이력이 있는 수험생) 확인 및 각종 문의사항 응대<br />
-                            - 통계분석 및 기타 마케팅에 활용<br />
-                            - 윌비스 임용고시학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공<br />
-                            </li>
-                            <li>개인정보 수집 항목<br />
-                            - 필수항목 : 성명, 본사ID, 연락처, 타학원의 수강이력 인증파일</li>
-                            <li>개인정보 이용기간 및 보유기간<br />
-                            - 본사의 이용 목적 달성되었거나, 신청자의 해지요청 및 삭제요청 시 바로 파기 </li>
-                            <li>신청자의 개인정보 수집 및 활용 동의 거부 시<br />
-                            - 개인정보 수집에 동의하지 않으시는 경우 수강료 할인 및 기타 서비스 이용에 제한이 있을 수 있습니다.</li>
-                            <li>입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.</li>
-                            <li>이벤트 진행에 따른 저작물에 대한 저작권은 ㈜윌비스에 귀속됩니다.</li>
-                        </ul>
-                        <input name="is_chk" type="checkbox" value="Y" id="is_chk" onclick="loginCheck();"/> <label for="is_chk"> 이벤트참여에 따른 개인정보 및 마케팅활용 동의하기(필수)</label>
-                    </div>
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2581_03_02.jpg" alt="환승이벤트"/>
-                    <div class="event03-txt01 mb100">
-                        <div class="evt_table">
-                            <table>
-                                <col width="190" />
-                                <col width="180" />
-                                <col width="150" />
-                                <col width="200" />
-                                <col width="150" />
-                                <col width="180" />
-                                <tbody>
-                                    <tr>
-                                        <th>이름</th>
-                                        <td>{{ sess_data('mem_name') }}</td>
-                                        <th>윌비스ID</th>
-                                        <td>{{ sess_data('mem_id') }}</td>
-                                        <th>연락처</th>
-                                        <td><input type="text" id="register_tel" name="register_tel" value="{{ sess_data('mem_phone') }}" maxlength="11" /></td>
-                                    </tr>
-                                    <tr>
-                                        <th>타학원 수강이력<br> 인증파일</th>
-                                        <td colspan="5">
-                                            <input type="file" id="attach_file" name="attach_file" style="width:60%"/>&nbsp;&nbsp;
-                                            <a href="javascript:del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/03/2146_btn_del.jpg" style="vertical-align:middle !important" alt="삭제"></a> *10MB 이하의 이미지 파일(png, jpg, gif, bmp)
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <input type="hidden" id="event_code" name="event_code" value="200429"/>
-                        </div>
-                    </div>
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2581_03_03.jpg" alt="환승이벤트"/>
-                    <div class="event03-txt01 mb50">
-                        <div class="evt_tableA">
-                            <table>
-                                <col width="8%"/>
-                                <col width="8%"/>
-                                <col/>                                
-                                <col width="10%"/>
-                                <col width="3%"/>
-                                <col width="10%"/>
-                                <col width="12%"/>
-                                <col width="8%"/>
-                                <thead>
-                                    <tr>
-                                        <th>과목</th>
-                                        <th>교수</th>
-                                        <th>강좌</th>
-                                        <th colspan="4">환승& 재도전 할인 수강료</th>
-                                        <th>수강신청</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                      <td rowspan="5">교육학</td>
-                                      <td rowspan="2">이경범</td>
-                          				<td>2022(1~11월) 교육학 연간 Full 패키지</td>
-                          				<td>1,330,000원</td>
-                          				<td>→</td>
-                          				<td>1,197,000원</td>
-                          				<td><span>133,000원 할인</span></td>
-                                        <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/188978">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>2022(3~11월) 이경범 교육학 Core 패키지</td>
-                                      <td>1,092,000원</td>
-                                      <td>→</td>
-                                      <td>982,800원</td>
-                                      <td><span>109,200원 할인</span></td>
-                                        <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/191210">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>정 현</td>
-                                        <td>2022(1~6월) VZONEdu 정현 교육학 상반기종합반</td>
-                                        <td>610,000원</td>
-                                        <td>→</td>
-                                        <td>549,000원</td>
-                                        <td><span>61,000원 할인</span></td>
-                                        <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/189385">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td rowspan="2">신태식</td>
-                                        <td>2022(01~11월) 신태식 교육학 연간 Full 패키지</td>
-                                        <td>1,275,000원</td>
-                                        <td>→</td>
-                                        <td>1,147,500원</td>
-                                        <td><span>127,500원 할인</span></td>
-                                        <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/189065">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>2022(03~04월 & 07~11월) 신태식 교육학 심화이론 + 문풀 패키지</td>
-                                      <td>840,000원</td>
-                                      <td>→</td>
-                                      <td>756,000원</td>
-                                      <td><span>84,000원 할인</span></td>
-                                      <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/190684">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="4">국어</td>
-                                        <td rowspan="2">송원영/권보민</td>
-                                        <td>2022(1~11월) 전공국어 완전정복 연간 Full 패키지 </td>
-                                        <td>1,670,000원</td>
-                                        <td>→</td>
-                                        <td>1,503,000원</td>
-                                        <td><span>167,000원 할인</span></td>
-                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188964">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2022(3~11월) 전공국어 완전정복 패키지</td>
-                                        <td>1,450,000원</td>
-                                        <td>→</td>
-                                        <td>1,305,000원</td>
-                                        <td><span>145,000원 할인</span></td>
-                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191389">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="2">구동언</td>
-                                        <td>2022(1~11월) 구동언 전공국어 연간 Full 패키지</td>
-                                        <td>1,749,000원</td>
-                                        <td>→</td>
-                                        <td>1,574,100원</td>
-                                        <td><span>174,900원 할인</span></td>
-                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189121">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2022(3~11월) 구동언 전공국어 Core 패키지</td>
-                                        <td>1,331,000원</td>
-                                        <td>→</td>
-                                        <td>1,197,900원</td>
-                                        <td><span>133,100원 할인</span></td>
-                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191234">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>영어</td>
-                                        <td>김영문</td>
-                                        <td>2022 김영문 영어학 연간 패키지</td>
-                                        <td>532,000원</td>
-                                        <td>→</td>
-                                        <td>478,800원</td>
-                                        <td><span>53,200원 할인</span></td>
-                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188929">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="6">수학</td>
-                                        <td rowspan="2">김철홍</td>
-                                        <td>2022(1~11월) 김철홍 전공수학 내용학 All-In-One 패키지</td>
-                                        <td>1,449,000원</td>
-                                        <td>→</td>
-                                        <td>1,304,100원</td>
-                                        <td><span>144,900원 할인</span></td>
-                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188685">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>2022(1~6월) 김철홍 전공수학 내용학 상반기 패키지</td>
-                                      <td>945,000원</td>
-                                      <td>→</td>
-                                      <td>850,500원</td>
-                                      <td><span>94,500원 할인</span></td>
-                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188686">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>김현웅</td>
-                                      <td>2022(1~11월) 김현웅 전공수학 연간 패키지</td>
-                                      <td>1,400,000원</td>
-                                      <td>→</td>
-                                      <td>1,260,000원</td>
-                                      <td><span>140,000원 할인</span></td>
-                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189518">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td rowspan="2">박태영</td>
-                                      <td>2022(1~11월) 박태영 수학교육론 All-In-One 패키지</td>
-                                      <td>1,118,000원</td>
-                                      <td>→</td>
-                                      <td>1,006,200원</td>
-                                      <td><span>111,800원 할인</span></td>
-                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188984">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>2022(3~11월) 박태영 수학교육론 core 패키지</td>
-                                      <td>973,000원</td>
-                                      <td>→</td>
-                                      <td>875,700원</td>
-                                      <td><span>97,300원 할인</span></td>
-                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191400">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>박혜향</td>
-                                      <td>2022(1~11월) 박혜향 수학교육론 연간 패키지</td>
-                                      <td>777,000원</td>
-                                      <td>→</td>
-                                      <td>699,300원</td>
-                                      <td><span>77,700원 할인</span></td>
-                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189046">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>도덕윤리</td>
-                                        <td>김민응</td>
-                                        <td>2022(1~11월) 김민응 도덕윤리 연간 Full 패키지</td>
-                                        <td>1,104,000원</td>
-                                        <td>→</td>
-                                        <td>993,600원</td>
-                                        <td><span>110,400원 할인</span></td>
-                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188803">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>일반사회</td>
-                                        <td>허역팀</td>
-                                        <td>2022(1~11월) 일반사회 허역팀 연간 FULL 패키지</td>
-                                        <td>1,992,000원</td>
-                                        <td>→</td>
-                                        <td>1,792,800원</td>
-                                        <td><span>199,200원 할인</span></td>
-                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189215">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td rowspan="2">역사</td>
-                                      <td rowspan="2">김종권</td>
-                                      <td>2022(1~11월) 김종권 전공역사 연간 패키지</td>
-                                      <td>2,304,000원</td>
-                                      <td>→</td>
-                                      <td>2,073,600원</td>
-                                      <td><span>230,400원 할인</span></td>
-                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188948">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>2022(3~11월) 김종권 전공역사 Core 패키지</td>
-                                      <td>1,872,000원</td>
-                                      <td>→</td>
-                                      <td>1,684,800원</td>
-                                      <td><span>187,200원 할인</span></td>
-                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191214">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>체육</td>
-                                      <td>최규훈</td>
-                                      <td>2022(1~6월) VZONE 최규훈 전공체육 상반기 종합반</td>
-                                      <td>1,690,000원</td>
-                                      <td>→</td>
-                                      <td>1,521,000원</td>
-                                      <td><span>169,000원 할인</span></td>
-                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189330">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td rowspan="2">중국어</td>
-                                      <td rowspan="2">장영희</td>
-                                      <td>2022(1~11월) 장영희 중국어 연간 종합반</td>
-                                      <td>3,496,000원</td>
-                                      <td>→</td>
-                                      <td>3,146,400원</td>
-                                      <td><span>349,600원 할인</span></td>
-                                      <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189044">결제하기</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>2022(3~11월) 장영희 중국어 N수 트랙 종합반</td>
-                                        <td>1,864,000원</td>
-                                        <td>→</td>
-                                        <td>1,677,600원</td>
-                                        <td><span>186,400원 할인</span></td>
-                                        <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191904">결제하기</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        {{--
-                        <div class="btnBox mt50">
-                            <a href="javascript:fn_submit();">신청하기</a>
-                        </div>
-                        --}}
-                    </div>
+            <div class="event03Box">
+                <div class="btnBox mt50">
+                    <a href="javascript:certOpen();">타학원 수강이력 인증하기</a>
                 </div>
-            </form>
+
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2581_03_03.jpg" alt="환승이벤트"/>
+                <div class="event03-txt01 mb50">
+                    <div class="evt_tableA">
+                        <table>
+                            <col width="8%"/>
+                            <col width="8%"/>
+                            <col/>
+                            <col width="10%"/>
+                            <col width="3%"/>
+                            <col width="10%"/>
+                            <col width="12%"/>
+                            <col width="8%"/>
+                            <thead>
+                            <tr>
+                                <th>과목</th>
+                                <th>교수</th>
+                                <th>강좌</th>
+                                <th colspan="4">환승& 재도전 할인 수강료</th>
+                                <th>수강신청</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td rowspan="5">교육학</td>
+                                <td rowspan="2">이경범</td>
+                                <td>2022(1~11월) 교육학 연간 Full 패키지</td>
+                                <td>1,330,000원</td>
+                                <td>→</td>
+                                <td>1,197,000원</td>
+                                <td><span>133,000원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/188978">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td>2022(3~11월) 이경범 교육학 Core 패키지</td>
+                                <td>1,092,000원</td>
+                                <td>→</td>
+                                <td>982,800원</td>
+                                <td><span>109,200원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/191210">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td>정 현</td>
+                                <td>2022(1~6월) VZONEdu 정현 교육학 상반기종합반</td>
+                                <td>610,000원</td>
+                                <td>→</td>
+                                <td>549,000원</td>
+                                <td><span>61,000원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/189385">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">신태식</td>
+                                <td>2022(01~11월) 신태식 교육학 연간 Full 패키지</td>
+                                <td>1,275,000원</td>
+                                <td>→</td>
+                                <td>1,147,500원</td>
+                                <td><span>127,500원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/189065">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td>2022(03~04월 & 07~11월) 신태식 교육학 심화이론 + 문풀 패키지</td>
+                                <td>840,000원</td>
+                                <td>→</td>
+                                <td>756,000원</td>
+                                <td><span>84,000원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/190684">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="4">국어</td>
+                                <td rowspan="2">송원영/권보민</td>
+                                <td>2022(1~11월) 전공국어 완전정복 연간 Full 패키지 </td>
+                                <td>1,670,000원</td>
+                                <td>→</td>
+                                <td>1,503,000원</td>
+                                <td><span>167,000원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188964">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td>2022(3~11월) 전공국어 완전정복 패키지</td>
+                                <td>1,450,000원</td>
+                                <td>→</td>
+                                <td>1,305,000원</td>
+                                <td><span>145,000원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191389">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">구동언</td>
+                                <td>2022(1~11월) 구동언 전공국어 연간 Full 패키지</td>
+                                <td>1,749,000원</td>
+                                <td>→</td>
+                                <td>1,574,100원</td>
+                                <td><span>174,900원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189121">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td>2022(3~11월) 구동언 전공국어 Core 패키지</td>
+                                <td>1,331,000원</td>
+                                <td>→</td>
+                                <td>1,197,900원</td>
+                                <td><span>133,100원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191234">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td>영어</td>
+                                <td>김영문</td>
+                                <td>2022 김영문 영어학 연간 패키지</td>
+                                <td>532,000원</td>
+                                <td>→</td>
+                                <td>478,800원</td>
+                                <td><span>53,200원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188929">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="6">수학</td>
+                                <td rowspan="2">김철홍</td>
+                                <td>2022(1~11월) 김철홍 전공수학 내용학 All-In-One 패키지</td>
+                                <td>1,449,000원</td>
+                                <td>→</td>
+                                <td>1,304,100원</td>
+                                <td><span>144,900원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188685">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td>2022(1~6월) 김철홍 전공수학 내용학 상반기 패키지</td>
+                                <td>945,000원</td>
+                                <td>→</td>
+                                <td>850,500원</td>
+                                <td><span>94,500원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188686">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td>김현웅</td>
+                                <td>2022(1~11월) 김현웅 전공수학 연간 패키지</td>
+                                <td>1,400,000원</td>
+                                <td>→</td>
+                                <td>1,260,000원</td>
+                                <td><span>140,000원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189518">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">박태영</td>
+                                <td>2022(1~11월) 박태영 수학교육론 All-In-One 패키지</td>
+                                <td>1,118,000원</td>
+                                <td>→</td>
+                                <td>1,006,200원</td>
+                                <td><span>111,800원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188984">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td>2022(3~11월) 박태영 수학교육론 core 패키지</td>
+                                <td>973,000원</td>
+                                <td>→</td>
+                                <td>875,700원</td>
+                                <td><span>97,300원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191400">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td>박혜향</td>
+                                <td>2022(1~11월) 박혜향 수학교육론 연간 패키지</td>
+                                <td>777,000원</td>
+                                <td>→</td>
+                                <td>699,300원</td>
+                                <td><span>77,700원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189046">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td>도덕윤리</td>
+                                <td>김민응</td>
+                                <td>2022(1~11월) 김민응 도덕윤리 연간 Full 패키지</td>
+                                <td>1,104,000원</td>
+                                <td>→</td>
+                                <td>993,600원</td>
+                                <td><span>110,400원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188803">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td>일반사회</td>
+                                <td>허역팀</td>
+                                <td>2022(1~11월) 일반사회 허역팀 연간 FULL 패키지</td>
+                                <td>1,992,000원</td>
+                                <td>→</td>
+                                <td>1,792,800원</td>
+                                <td><span>199,200원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189215">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">역사</td>
+                                <td rowspan="2">김종권</td>
+                                <td>2022(1~11월) 김종권 전공역사 연간 패키지</td>
+                                <td>2,304,000원</td>
+                                <td>→</td>
+                                <td>2,073,600원</td>
+                                <td><span>230,400원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/188948">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td>2022(3~11월) 김종권 전공역사 Core 패키지</td>
+                                <td>1,872,000원</td>
+                                <td>→</td>
+                                <td>1,684,800원</td>
+                                <td><span>187,200원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191214">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td>체육</td>
+                                <td>최규훈</td>
+                                <td>2022(1~6월) VZONE 최규훈 전공체육 상반기 종합반</td>
+                                <td>1,690,000원</td>
+                                <td>→</td>
+                                <td>1,521,000원</td>
+                                <td><span>169,000원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189330">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">중국어</td>
+                                <td rowspan="2">장영희</td>
+                                <td>2022(1~11월) 장영희 중국어 연간 종합반</td>
+                                <td>3,496,000원</td>
+                                <td>→</td>
+                                <td>3,146,400원</td>
+                                <td><span>349,600원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189044">결제하기</a></td>
+                            </tr>
+                            <tr>
+                                <td>2022(3~11월) 장영희 중국어 N수 트랙 종합반</td>
+                                <td>1,864,000원</td>
+                                <td>→</td>
+                                <td>1,677,600원</td>
+                                <td><span>186,400원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191904">결제하기</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    {{--
+                    <div class="btnBox mt50">
+                        <a href="javascript:fn_submit();">신청하기</a>
+                    </div>
+                    --}}
+                </div>
+            </div>
         </div><!--//event04-->
 
         <div class="eventWrap evtInfo" data-aos="fade-up">
@@ -405,9 +350,9 @@
                 <ul>
                     <li>본 이벤트의 대상자는 타 학원 또는 윌비스 임용에 수강 이력이 있어야 참여 가능합니다.</li>
                     <li>본 이벤트의 참여를 위해서는 타 학원에서 수강 이력자는 수강사실을 증명해야 합니다.<br>
-                    - 본 이벤트 페이지의 <strong>"타학원 수강이력인증창"</strong>에, 인증서류를 스캔하여 전송하는 절차를 진행한 후 참여 가능니다.<br>
-                    - 본 이벤트 참여를 위한 인증서류는 수강기간이 명기되어 있는 <strong>수강증</strong>, 1개월 이내 발급된 수강확인증 등 입니다.<br>
-                    - 인증 서류의 식별이 불가능한 경우 또는 이미지를 도용한 경우에는 할인혜택이 적용이 불가합니다.</li>
+                        - 본 이벤트 페이지의 <strong>"타학원 수강이력인증창"</strong>에, 인증서류를 스캔하여 전송하는 절차를 진행한 후 참여 가능니다.<br>
+                        - 본 이벤트 참여를 위한 인증서류는 수강기간이 명기되어 있는 <strong>수강증</strong>, 1개월 이내 발급된 수강확인증 등 입니다.<br>
+                        - 인증 서류의 식별이 불가능한 경우 또는 이미지를 도용한 경우에는 할인혜택이 적용이 불가합니다.</li>
                     <li>본 이벤트 참여를 위한 윌비스 임용의 수강생은 별도의 인증 절차를 거치지 않으셔도 됩니다. (신청 시, 자체 검증 가능)</li>
                     <li>본 이벤트는 5월31일(일)까지 진행됩니다. (5월31일까지 신청할 수 있음)</li>
                     <li>본 이벤트에서 타학원 수강이 인증되면, 개별 ID로 할인쿠폰이 발급되며, 7일이내 수강하셔야 합니다. (* 7일후 쿠폰소멸)</li>
@@ -425,95 +370,21 @@
     <script type="text/javascript">
         $(document).ready(function(){
             AOS.init();
-            fnReviewList(1);
         });
     </script>
 
     <script>
         var $regi_form_register = $('#regi_form_register');
-
-        function fn_submit() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-
-            @if(empty($register_count) === false)
-                alert('등록된 신청자 정보가 있습니다.');
-                return;
-            @endif
-
-            var _url = '{!! front_url('/event/registerStore') !!}';
-            var subject_count = 0;
-            var subject_name = '';
-
-            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
-                alert('이벤트참여에 따른 개인정보 및 마케팅 활용에 동의하셔야 합니다.');
-                $regi_form_register.find('input[name="is_chk"]').focus();
-                return;
-            }
-
-            if (!$regi_form_register.find('input[name="register_tel"]').val()) {
-                alert('연락처를 입력해 주세요.');
-                $regi_form_register.find('input[name="register_tel"]').focus();
-                return;
-            }
-
-            if (!$regi_form_register.find('input[name="attach_file"]').val()) {
-                alert('타학원 수강이력 인증 파일을 첨부해 주세요.');
-                $regi_form_register.find('input[name="attach_file"]').focus();
-                return;
-            }
-
-            if ($regi_form_register.find('input[name="register_chk[]"]:checked').length === 0) {
-                alert('강좌를 선택해 주세요.');
-                return;
-            }
-
-            // 강좌 총 3개까지 선택 가능
-            if ($regi_form_register.find('input[name="register_chk[]"]:checked').length > 3) {
-                alert('강좌를 3개까지 선택해 주세요.');
-                return;
-            }
-
-            $regi_form_register.find("input[name^='register_chk']:checked").each(function(k,v) {
-                subject_name = $(this).data('subject-group');
-                if(subject_name === 'edu'){
-                    subject_count++;
-                }
-            });
-
-            // 교육학은 한번만 선택 가능
-            if (subject_count > 1) {
-                alert('강좌는 교육학 1개, 전공강좌 2개 총 3개까지 선택 가능합니다.');
-                return;
-            }
-
-            // 강좌 3개 선택시 추가 검증
-            if ($regi_form_register.find('input[name="register_chk[]"]:checked').length === 3) {
-                if (subject_count !== 1) {
-                    alert('강좌는 교육학 1개, 전공강좌 2개 총 3개까지 선택 가능합니다.');
-                    return;
-                }
-            }
-
-            if (!confirm('신청하시겠습니까?')) { return; }
-            ajaxSubmit($regi_form_register, _url, function(ret) {
-                if(ret.ret_cd) {
-                    alert(ret.ret_msg);
-                    location.reload();
-                }
-            }, showValidateError, null, false, 'alert');
-        }
-
-        function del_file(){
-            if(confirm("첨부파일을 삭제 하시겠습니까?")) {
-                $("#attach_file").val("");
-                return;
-            }
-        }
-
         function loginCheck(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+        }
 
-                return true;
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+                    @if(empty($arr_promotion_params) === false)
+                var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
         }
     </script>
 @stop

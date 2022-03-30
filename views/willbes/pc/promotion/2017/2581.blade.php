@@ -36,6 +36,7 @@
         .event03Box h5 {font-size:24px; color:#202020; text-align:left; padding-bottom:10px; border-bottom:3px solid #000; font-weight:600; margin-bottom:40px}
         .event03Box h5 span {font-size:14px; color:#474747; margin-left:20px; font-weight:normal}
         .event03Box h5 strong {color:#d30000;}
+        .event03Box .mt30 strong {color:#d30000;}
         .event03-txt01 {text-align:left; font-size:14px; margin:20px 33px 10px}
         .event03-txt01 ul.info {border:1px solid #e4e4e4; padding:20px; height:150px; overflow-y:auto; margin-bottom:10px}
         .event03-txt01 ul.info li {margin-bottom:10px; list-style-type:decimal; margin-left:20px}
@@ -98,8 +99,13 @@
         <div class="eventWrap event03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2581_03_01.jpg" alt="환승이벤트"/>
             <div class="event03Box">
-                <div class="btnBox mt50">
+                <div class="btnBox">
                     <a href="javascript:certOpen();">타학원 수강이력 인증하기</a>
+                </div>
+
+                <div class="mt30 mb100">
+                * 윌비스 임용의 본 이벤트 참여를 위해서는 인증 팝업에 명시된 사항을 자세히 읽어 보시고 동의를 해주셔야 가능합니다.<br>
+                * 타학원 수강이력 인증 파일은 수강기간이 명시되어 있는 <strong>수강증</strong>과 <strong>수강확인증</strong>만 가능합니다.
                 </div>
 
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2581_03_03.jpg" alt="환승이벤트"/>

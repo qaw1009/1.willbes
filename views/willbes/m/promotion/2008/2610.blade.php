@@ -1,54 +1,54 @@
-@extends('willbes.pc.layouts.master')
+@extends('willbes.m.layouts.master')
 
 @section('content')
-    @include('willbes.pc.layouts.partial.site_menu')
-    <!-- Container -->
+<!-- Container -->
     <style type="text/css">
-        .evtContent {
-            width:100% !important;
-            min-width:1120px !important;
-            margin-top:20px !important;
-            padding:0 !important;
-            background:#fff;
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
+    .evtCtnsBox img {width:100%; max-width:720px;}
+    /*.evtCtnsBox a {border:1px solid #000}*/
+
+    /************************************************************/
+
+    .evt_01 a {display:block; padding:10px 0; text-align:center; font-size:3vh; color:#fff; background:#ff4617; border-radius:50px; margin:0 20px}
+    .evt_01 a.btn02 {background:#0053e1}
+    .evt_01 a:hover {background:#000}
+    
+
+    .evtInfo {padding:50px 20px; background:#535353; color:#fff; font-size:1.8vh;}
+    .evtInfoBox {text-align:left; line-height:1.5;}
+    .evtInfoBox h4 {font-size:2.6vh; margin-bottom:25px; padding-left:10px;}
+    .evtInfoBox .infoTit {font-size:2vh; margin-bottom:20px}
+    .evtInfoBox .infoTit strong {padding:8px 20px; background:#333; border-radius:20px}
+    .evtInfoBox ul {margin-bottom:30px}
+    .evtInfoBox li {margin-bottom:8px; margin-left:20px; list-style:disc}
+
+
+     /* 폰 가로, 태블릿 세로*/     
+     @@media only screen and (max-width: 374px)  {
+
+    }
+    /* 태블릿 세로 */
+        @@media only screen and (min-width: 375px) and (max-width: 640px) {       
+
         }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}        
-        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+    /* 태블릿 가로, PC */
+        @@media only screen and (min-width: 641px) {
 
-        /************************************************************/
-
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/03/2610_top_bg.jpg) no-repeat center top;}
-
-        .evt_01 a {display:block; padding:20px 0; text-align:center; font-size:40px; color:#fff; background:#ff4617; border-radius:50px;}
-        .evt_01 a.btn02 {background:#0053e1}
-        .evt_01 a:hover {background:#000}
-        
-
-        .evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
-		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.7;}
-		.evtInfoBox h4 {font-size:25px; margin-bottom:25px;padding-left:10px;}
-		.evtInfoBox .infoTit {font-size:16px; margin-bottom:20px}
-		.evtInfoBox .infoTit strong {padding:8px 20px; background:#333; border-radius:20px}
-		.evtInfoBox ul {margin-bottom:30px}
-		.evtInfoBox li {margin-bottom:8px; margin-left:20px; list-style:disc}
-
-        /************************************************************/
+        }
 
     </style>
 
-	<div class="evtContent NSK">
-
-		<div class="evtCtnsBox evt_top" data-aos="fade-down">
+    <div id="Container" class="Container NSK c_both">
+    <div class="evtCtnsBox evt_top" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2610_top.jpg" alt="초시합격 프로젝트"/>
         </div>
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">
             <div class="wrap NSK-Black">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2610_01.jpg" alt="커리큘럼"/>
-                <a href="https://spo.willbes.net/package/show/cate/3100/pack/648002/prod-code/193263" target="_blank">수강신청 바로가기 ></a>
+                <a href="https://spo.willbes.net/m/package/show/cate/3100/pack/648002/prod-code/193263" target="_blank">수강신청 바로가기 ></a>
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2610_02.jpg" alt="전략학습반"/>
-                <a href="https://spo.willbes.net/userPackage/show/cate/3100/prod-code/193329" target="_blank" class="btn02">수강신청 바로가기 ></a>
+                <a href="https://spo.willbes.net/m/userPackage/show/cate/3100/prod-code/193329" target="_blank" class="btn02">수강신청 바로가기 ></a>
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2610_03.jpg" alt="경찰간부 동행팀"/>
             </div>
         </div>    
@@ -101,7 +101,7 @@
 				</ul> 
 			</div>
 		</div> 
-	</div>
+    </div>
     <!-- End Container -->
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -110,43 +110,5 @@
         $(document).ready(function() {
             AOS.init();
         });
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('.tabs').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
-            
-                $content = $($active[0].hash);
-            
-                $links.not($active).each(function () {
-                $(this.hash).hide()});
-            
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                $active.removeClass('active');
-                $content.hide();
-            
-                $active = $(this);
-                $content = $(this.hash);
-            
-                $active.addClass('active');
-                $content.show();
-            
-                e.preventDefault()})})}
-        );
-        /*수강신청 동의*/ 
-        function go_PassLecture(code){
-            if($("input[name='ischk']:checked").size() < 1){
-                alert("이용안내에 동의하셔야 합니다.");
-                return;
-            }
-
-            var url = '{{ site_url('/package/show/cate/3100/pack/648002/prod-code/') }}' + code;
-            location.href = url;
-        }    
-
     </script>
 @stop

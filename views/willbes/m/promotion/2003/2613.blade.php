@@ -36,12 +36,12 @@
     <div class="evtCtnsBox" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2613m_01.jpg" alt="" >
-            <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2087" title="예비순환" target="_blank" style="position: absolute; left: 3.06%; top: 94.46%; width: 13.61%; height: 2.22%; z-index: 2;"></a>
-            <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1410" title="1순환" target="_blank" style="position: absolute; left: 19.44%; top: 94.46%; width: 13.61%; height: 2.22%; z-index: 2;"></a>
-            <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1411" title="2순환" target="_blank" style="position: absolute; left: 35.28%; top: 94.46%; width: 13.61%; height: 2.22%; z-index: 2;"></a>
-            <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1412" title="3순환" target="_blank" style="position: absolute; left: 51.39%; top: 94.46%; width: 13.61%; height: 2.22%; z-index: 2;"></a>
-            <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1413" title="4순환" target="_blank" style="position: absolute; left: 67.36%; top: 94.46%; width: 13.61%; height: 2.22%; z-index: 2;"></a>
-            <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1413" title="5순환" target="_blank" style="position: absolute; left: 83.61%; top: 94.46%; width: 13.61%; height: 2.22%; z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU67JiI67mE7Iic7ZmY&course_idx=" title="예비순환" target="_blank" style="position: absolute; left: 3.06%; top: 94.46%; width: 13.61%; height: 2.22%; z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MeyInO2ZmA%3D%3D" title="1순환" target="_blank" style="position: absolute; left: 19.44%; top: 94.46%; width: 13.61%; height: 2.22%; z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MuyInO2ZmA%3D%3D" title="2순환" target="_blank" style="position: absolute; left: 35.28%; top: 94.46%; width: 13.61%; height: 2.22%; z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6M%2ByInO2ZmA%3D%3D" title="3순환" target="_blank" style="position: absolute; left: 51.39%; top: 94.46%; width: 13.61%; height: 2.22%; z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NOyInO2ZmA%3D%3D" title="4순환" target="_blank" style="position: absolute; left: 67.36%; top: 94.46%; width: 13.61%; height: 2.22%; z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NeyInO2ZmA%3D%3D" title="5순환" target="_blank" style="position: absolute; left: 83.61%; top: 94.46%; width: 13.61%; height: 2.22%; z-index: 2;"></a>
         </div>
     </div> 
 

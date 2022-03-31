@@ -95,8 +95,8 @@
         <div class="evtCtnsBox evt_btn" data-aos="fade-up">
             <div class="wrap">            
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2583_btn.jpg"  alt="워크북 교재받기"/>
-                <a href="javascript:void(0)" title="" style="position: absolute;left: 25.19%;top: 29.53%;width: 49.88%;height: 40.34%;z-index: 2;"></a>
-            </div>                 
+                <a href="javascript:void(0)" title="워크북 교재받기" onclick="fn_promotion_etc_submit(); return false;" style="position: absolute;left: 25.19%;top: 29.53%;width: 49.88%;height: 40.34%;z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt_apply" data-aos="fade-up">     
@@ -109,21 +109,45 @@
     </div>
     <!-- End Container -->
 
+    <form id="add_apply_form" name="add_apply_form">
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+        <input type="hidden" name="msg" value="소문내기 댓글을 입력해 주세요."/>
+    </form>
+
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-    <script>
-          $( document ).ready( function() {
-        AOS.init();
-      } );
-    </script>
     <script type="text/javascript">
-    
+        {{-- 무료 교재지급 --}}
+        var $add_apply_form = $('#add_apply_form');
+        function fn_promotion_etc_submit() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($arr_promotion_params['cart_prod_code']) === false)
+                var _url = '{!! front_url('/event/promotionEtcStore') !!}';
+
+                if (!confirm('장바구니에 담으시겠습니까?')) { return true; }
+                ajaxSubmit($add_apply_form, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        alert(ret.ret_msg);
+                        location.href = '{!! front_url('/cart/index?tab=book') !!}';
+                    }
+                }, function(ret, status, error_view) {
+                    alert(ret.ret_msg);
+                }, null, false, 'alert');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
     </script>
 
-    <script>
-        /*슬라이드*/
+    <script type="text/javascript">
         $(document).ready(function() {
+            AOS.init();
+
+            /*슬라이드*/
             var slidesImg4 = $("#slidesImg4").bxSlider({
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                 auto:false,
@@ -146,7 +170,7 @@
             $("#imgBannerRight4").click(function (){
                 slidesImg4.goToNextSlide();
             });
-        });     
+        });
       </script> 
       
 {{-- 프로모션용 스크립트 include --}}

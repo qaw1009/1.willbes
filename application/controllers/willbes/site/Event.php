@@ -910,7 +910,7 @@ class Event extends \app\controllers\FrontController
         if ($this->validate($rules) === false) return;
 
         $result = $this->eventFModel->procPromotionEtc($this->_reqP(null, false), $this->_site_code);
-        $this->json_result($result, '처리 되었습니다.', $result);
+        $this->json_result($result, '장바구니에 담겼습니다', $result);
     }
 
     /**

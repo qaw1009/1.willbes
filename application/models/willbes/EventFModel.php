@@ -1706,6 +1706,25 @@ class EventFModel extends WB_Model
                 }
             }
 
+            // 댓글 참여 여부 확인
+            if(empty($arr_promotion_params['comment_chk_yn']) === false && $arr_promotion_params['comment_chk_yn'] == 'Y' && empty($arr_promotion_params['comment_ccd']) === false) {
+                $arr_condition = [
+                    'EQ' => [
+                        'a.MemIdx' => $this->session->userdata('mem_idx'),
+                        'a.ElIdx' => element('event_idx', $inputData),
+                        'a.IsStatus' => 'Y',
+                        'a.IsUse' => 'Y',
+                        'a.CommentUiCcd' => $arr_promotion_params['comment_ccd']
+                    ]
+                ];
+                $comment_result = $this->listEventForCommentPromotion(false, $arr_condition, 1, 0, ['a.CIdx' => 'DESC']);
+                if (empty($comment_result) === true) {
+                    // 에러 문구 설정
+                    $err_msg = empty(element('msg', $inputData)) === false ? element('msg', $inputData) : '소문내기 댓글을 등록해 주세요.';
+                    throw new \Exception($err_msg);
+                }
+            }
+
             /**** 상품 장바구니 담기 제한 ***
              * ex:) 1545 프로모션
              * PromotionParams: cart_limit(장바구니 담기 제한치),  cart_limit_count(장바구니 담기 현재값), cart_prod_code(상품 코드)

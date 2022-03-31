@@ -21,10 +21,10 @@
         .evt00 {background:#0A0A0A}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2590_top_bg.jpg) no-repeat center top;}
-
+                
         .evt_pro {background:#06254b}
         .pro_wrap {position:relative;width:1500px;margin:0 auto;}
-        .pro_area {position:absolute;left:200px;top:-850px;}     
+        .pro_area {position:absolute;left:200px;top:-1000px;}     
         .pro_area li {display:inline; float:left;}
         .pro_area li:last-child {margin:0}       
         .pro_area li a img.off {display:block}
@@ -32,7 +32,7 @@
         .pro_area li a:hover img.off {display:none}
         .pro_area li a:hover img.on {display:block}
 
-        .event_ing {font-size:35px;padding:100px;background:#06254b;}
+        .event_ing {font-size:35px;background:#06254b;}
         .event_ing p {color:#fff;}
         .event_ing p span,
         .event_ing span {color:#ffda39; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
@@ -58,36 +58,36 @@
         </div>
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_top.jpg" title="">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_top.jpg" title="치킨 100마리">
         </div>
 
         <div class="evtCtnsBox evt_pro">
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_pro.jpg" title="">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_pro.jpg" title="교수진">
             <div class="pro_wrap">
                 <div class="pro_area">
                     <ul>
                         <li>
                             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2583" target="_blank">
-                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_01.png" class="off" alt="원유철 경찰한국사"  />
-                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_01_on.png" class="on" alt="원유철 경찰한국사"  />
+                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_01.png" class="off" alt="이국령" />
+                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_01_on.png" class="on" alt="이국령on"  />
                             </a>
                         </li>
                         <li>
                             <a href="#none" onclick="javascript:alert('Coming Soon!');">
-                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_02.png" class="off" alt="오태진 경찰한국사"  />
-                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_02_on.png" class="on" alt="오태진 경찰한국사"  />
+                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_02.png" class="off" alt="장정훈"  />
+                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_02_on.png" class="on" alt="장정훈on"  />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2593" target="_blank">
+                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_03.png" class="off" alt="신광은"  />
+                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_03_on.png" class="on" alt="신광은on"  />
                             </a>
                         </li>
                         <li>
                             <a href="#none" onclick="javascript:alert('Coming Soon!');">
-                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_03.png" class="off" alt="김원욱 형법"  />
-                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_03_on.png" class="on" alt="김원욱 형법"  />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#none" onclick="javascript:alert('Coming Soon!');">
-                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_04.png" class="off" alt="신광은 형소법"  />
-                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_04_on.png" class="on" alt="신광은 형소법"  />
+                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_04.png" class="off" alt="김원욱"  />
+                                <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_04_on.png" class="on" alt="김원욱on"  />
                             </a>
                         </li>                      
                     </ul>
@@ -98,13 +98,13 @@
         <div class="evtCtnsBox">
             <div class="event_ing NSK-Black"> 
                 <div>         
-                    <p>교수님과 함께!<span> 적중 소문내기 EVENT 진행중</span></p>      
+                    <p>교수님과 함께!<span> 완벽적중 EVENT</span> 진행중!!</p>      
                 </div>         
             </div>
         </div>
 
         <div class="evtCtnsBox bravo">
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_brovo.jpg" title="">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2590_brovo.jpg" title="bravo your life">
         </div>            
 
 	</div>

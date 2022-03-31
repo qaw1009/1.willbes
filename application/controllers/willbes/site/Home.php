@@ -133,9 +133,6 @@ class Home extends \app\controllers\FrontController
             $data['arr_main_banner'] = $this->_bannerByDispName(['M_메인_경찰캐스트_1', 'M_메인_경찰캐스트_2', 'M_메인_경찰캐스트_3', 'M_메인_베스트강좌'], '0');
             $data['board_lecture_infomation'] = $this->_boardLectureInformation(5, $s_cate_code);
             $data['new_product_book'] = $this->_getlistSalesProductBook(15, $s_cate_code, ['wPublDate' => 'desc']);
-
-            // TODO : 최종반영시 삭제요망
-            $data['best_product'] = $this->_product('on_lecture', 8, $s_cate_code, 'Best');
         }
 
         $data['notice'] = $this->_boardNotice(4, $s_cate_code);

@@ -14,7 +14,6 @@
                 <div class="logo intro">
                     <a href="{{ front_app_url('/home/index', 'www') }}"><img src="{{ img_url('m/main/logo.png') }}"></a>
                 </div>
-
                 <ul class="myLog tx-black NG">
                     @if(strpos(strtoupper(current_url()), '/MEMBER/JOIN') === false)
                         @if(sess_data('is_login') === true)
@@ -49,24 +48,35 @@
                         </button>
                         <div class="logo">
                             @if(array_has($__cfg['SiteMenu'], 'TreeMenu.GNB') === true)
-                                <a href="{{ array_get($__cfg['SiteMenu'], 'TreeMenu.GNB.MenuUrl', '#none') }}" class="siteTitle NSK-Black">
-                                    {{ array_get($__cfg['SiteMenu'], 'TreeMenu.GNB.MenuName', '') }} 
-                                </a> 
+                                <a href="{{ array_get($__cfg['SiteMenu'], 'TreeMenu.GNB.MenuUrl', '#none') }}" class="siteTitle NSK">
+                                    {{ array_get($__cfg['SiteMenu'], 'TreeMenu.GNB.MenuName', '') }}
+                                </a>
                             @else
-                                <a href="{{ front_url('/home/index') }}" class="siteTitle NSK-Black">
+                                <a href="{{ front_url('/home/index') }}" class="siteTitle NSK">
                                     {{ get_var(element('SiteNickName', $__cfg), str_replace_array(['윌비스', '온라인', ' '], '', $__cfg['HeadTitle'])) }}
                                 </a>
                             @endif
                         </div>
-                        @if($__cfg['SiteCode'] == '2017') {{-- 임용추가 --}}
-                            <a href="{{ front_url('/pass/board/schedule') }}">
+                        @if($__cfg['SiteGroupCode'] == '1011')
+                            {{-- 임용그룹추가 --}}
+                            <a href="{{ front_url('/board/schedule', true) }}">
                                 <button type="button" class="classroom"><span>강의실배정표</span></button>
                             </a>
+                        @endif
+                        @if($__cfg['SiteCode'] != '2017' && $__cfg['IsPassSite'] === false)
+                            {{-- 검색영역 (임용, 학원사이트 제외) --}}
+                            <button type="button" class="searchView">
+                                <span class="hidden">검색</span>
+                            </button>
                         @endif
                         <button type="button" class="basket" onclick="document.location='{{ front_url('/cart/index') }}';">
                             <span class="hidden">장바구니</span>
                         </button>
                     </div>
+                    @if($__cfg['SiteCode'] != '2017' && $__cfg['IsPassSite'] === false)
+                        {{-- 검색영역 (임용, 학원사이트 제외) --}}
+                        @include('willbes.m.layouts.topsearch')
+                    @endif
                 </div>
 
                 @if($__cfg['SiteCode'] == '2017' && empty($data['dday']) === false) {{-- 임용추가 --}}
@@ -123,12 +133,7 @@
                         </ul>
                     </div>
                 @else
-                    <div class="c_both {{ $__cfg['IsPassSite'] === false ? 'mb10' : '' }}"></div>
-                @endif
-
-                @if($__cfg['SiteCode'] != '2017') {{-- 임용제외 --}}
-                    {{-- 검색영역 --}}
-                    @include('willbes.m.layouts.topsearch')
+                    {{--<div class="c_both {{ $__cfg['IsPassSite'] === false ? 'mb10' : '' }}"></div>--}}
                 @endif
             </div>
         </div>

@@ -22,7 +22,7 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2614_top_bg.jpg) no-repeat center top; }
 
-        .evtMenu ul {width:1120px; margin:100px auto 0;}
+        .evtMenu ul {width:1120px; margin:0 auto;}
         .evtMenu li {display:inline; float:left; width:25%; position: relative;}
         .evtMenu li a {display:block; text-align:center; padding:30px 0; color:#7d7d7d; font-size:20px; background:#e0dfdf; border-bottom:0; margin-right:4px;border:1px solid #bfbfbf;}
         .evtMenu li:last-child a {margin:0}

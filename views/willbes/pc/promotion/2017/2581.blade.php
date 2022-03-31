@@ -68,7 +68,7 @@
         .evt_tableA table tbody td:last-child {border-right:0; color:#005180}
         .evt_tableA table tbody td:nth-last-child(5) {text-decoration: line-through; text-align:right; border-right:0}
         .evt_tableA table tbody td:nth-last-child(4) {border-right:0}
-        .evt_tableA table tbody td:nth-last-child(3) {text-align:left; font-weight:bold; color:red; border-right:0}
+        .evt_tableA table tbody td:nth-last-child(3) {text-align:right; font-weight:bold; color:red; border-right:0}
         .evt_tableA table tbody td:nth-last-child(2) span {color:blue; border:1px solid blue; display:block}
         .evt_tableA table tbody td:nth-last-child(6) {text-align:left;}
         .evt_tableA table tbody td:nth-last-child(1) a,

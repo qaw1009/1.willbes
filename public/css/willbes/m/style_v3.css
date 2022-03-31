@@ -425,7 +425,8 @@ span {
 #header .logo a {
 	font-weight: bold; display:block; text-align: left; margin-left: 10px;
 }
-#header .logo.intro {width:120px; position: absolute; top:0; left:50%; margin-left:-70px; display: block; }
+#header .logo.intro {width:120px; position: absolute; top:0; left:50%; margin-left:-60px; display: block;}
+#header .logo.intro a {margin:0}
 #header .logo a.siteTitle {
 	font-size: 18px;
 	color: #000;

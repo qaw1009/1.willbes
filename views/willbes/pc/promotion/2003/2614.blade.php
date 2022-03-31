@@ -151,7 +151,7 @@
                         </a>
                     </li>
                     <li>
-                        <a id='tab3' href="@if(time() < strtotime('2022040931140')) javascript:alert('4.03(토)오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/' . $arr_base['promotion_code'] . '/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=3#content_3') }}@endif">
+                        <a id='tab3' href="@if(time() < strtotime('202204091140')) javascript:alert('4.03(토)오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/' . $arr_base['promotion_code'] . '/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=3#content_3') }}@endif">
                             <span>후기 나누고 간식 먹자!</span>
                             <div class="NSK-Black">시험 후기&이벤트</div>
                         </a>

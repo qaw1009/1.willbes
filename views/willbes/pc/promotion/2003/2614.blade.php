@@ -14,7 +14,7 @@
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a {border:1px solid #000}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
         
         /*****************************************************************/
 
@@ -151,13 +151,13 @@
                         </a>
                     </li>
                     <li>
-                        <a id='tab3' href="@if(time() < strtotime('202204091140')) javascript:alert('4.03(토)오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/' . $arr_base['promotion_code'] . '/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=3#content_3') }}@endif">
+                        <a id='tab3' href="@if(time() < strtotime('202204091140')) javascript:alert('4.9(토)오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/' . $arr_base['promotion_code'] . '/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=3#content_3') }}@endif">
                             <span>후기 나누고 간식 먹자!</span>
                             <div class="NSK-Black">시험 후기&이벤트</div>
                         </a>
                     </li>     
                     <li>
-                        <a id='tab4' href="@if(time() < strtotime('202204111600')) javascript:alert('4.05(월)오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/' . $arr_base['promotion_code'] . '/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=4#content_4') }}@endif">
+                        <a id='tab4' href="@if(time() < strtotime('202204111600')) javascript:alert('4.11(월)오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/' . $arr_base['promotion_code'] . '/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=4#content_4') }}@endif">
                             <span>2021 소방직</span>
                             <div class="NSK-Black">기출해설특강</div>
                         </a>

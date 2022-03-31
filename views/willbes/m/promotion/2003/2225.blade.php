@@ -11,7 +11,7 @@
 <div id="Container" class="Container NSK c_both">    
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/03/2225m_top.jpg" alt="공무원 웰컴팩" >
+        <img src="https://static.willbes.net/public/images/promotion/2022/04/2225m_top.jpg" alt="공무원 웰컴팩" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">

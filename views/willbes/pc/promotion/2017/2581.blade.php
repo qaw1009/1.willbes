@@ -134,6 +134,7 @@
                         <input name="y_pkg21" type="checkbox" value="189330" checked="checked">
                         <input name="y_pkg22" type="checkbox" value="189044" checked="checked">
                         <input name="y_pkg23" type="checkbox" value="191904" checked="checked">
+                        <input name="y_pkg24" type="checkbox" value="191903" checked="checked">
                     </div>
 
                     <div class="evt_tableA">
@@ -347,8 +348,8 @@
                                 <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/189330" onclick="goCartNDirectPay('lecture_box', 'y_pkg21', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
-                                <td rowspan="2">중국어</td>
-                                <td rowspan="2">장영희</td>
+                                <td rowspan="3">중국어</td>
+                                <td rowspan="3">장영희</td>
                                 <td>2022(1~11월) 장영희 중국어 연간 종합반</td>
                                 <td>3,496,000원</td>
                                 <td>→</td>
@@ -364,14 +365,18 @@
                                 <td><span>186,400원 할인</span></td>
                                 <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191904" onclick="goCartNDirectPay('lecture_box', 'y_pkg23', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
+                            <tr>
+                                <td>2022(3~11월) 장영희 중국어 초수 트랙 종합반 </td>
+                                <td>2,552,000원</td>
+                                <td>→</td>
+                                <td>2,296,800원</td>
+                                <td><span>225,200원 할인</span></td>
+                                <td><a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/191903" onclick="goCartNDirectPay('lecture_box', 'y_pkg24', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
-                    {{--
-                    <div class="btnBox mt50">
-                        <a href="javascript:fn_submit();">신청하기</a>
-                    </div>
-                    --}}
+
                 </div>
             </div>
         </div><!--//event04-->
@@ -380,17 +385,18 @@
             <div class="evtInfoBox">
                 <h4 class="NSK-Black">환승&재도전 이벤트 유의사항 [필독]</h4>
                 <ul>
-                    <li>본 이벤트의 대상자는 타 학원 또는 윌비스 임용에 수강 이력이 있어야 참여 가능합니다.</li>
-                    <li>본 이벤트의 참여를 위해서는 타 학원에서 수강 이력자는 수강사실을 증명해야 합니다.<br>
-                        - 본 이벤트 페이지의 <strong>"타학원 수강이력인증창"</strong>에, 인증서류를 스캔하여 전송하는 절차를 진행한 후 참여 가능니다.<br>
-                        - 본 이벤트 참여를 위한 인증서류는 수강기간이 명기되어 있는 <strong>수강증</strong>, 1개월 이내 발급된 수강확인증 등 입니다.<br>
-                        - 인증 서류의 식별이 불가능한 경우 또는 이미지를 도용한 경우에는 할인혜택이 적용이 불가합니다.</li>
-                    <li>본 이벤트 참여를 위한 윌비스 임용의 수강생은 별도의 인증 절차를 거치지 않으셔도 됩니다. (신청 시, 자체 검증 가능)</li>
-                    <li>본 이벤트는 5월31일(일)까지 진행됩니다. (5월31일까지 신청할 수 있음)</li>
-                    <li>본 이벤트에서 타학원 수강이 인증되면, 개별 ID로 할인쿠폰이 발급되며, 7일이내 수강하셔야 합니다. (* 7일후 쿠폰소멸)</li>
+                    <li>본 이벤트의 대상자는 타 학원 또는 윌비스 임용에 수강 이력이 있는 수험생 입니다. </li>
+                    <li>본 이벤트의 참여를 위해서는 타 학원 또는 윌비스 임용에서의 수강사실을 증명해야 합니다.<br>
+                    - 수강사실 증명방법은 본 페이지의 “수강이력인증하기”에, 수강 인증 파일을 등록해 주시면 됩니다.<br>
+                    - 타 학원 수강인증파일에는 수강기간이 명기되어 있는 수강증, 1개월 이내 발급된 수강확인증 입니다.<br>
+                    - 윌비스 임용의 수강생인 경우, 홈페이지에 로그인 후 “내강의실＂에서 수강확인증을 발급 받으실 수 있습니다.<br>
+                    - 임용단기에서 오신 교수님의 과목의 혜택을 받고자 하는 경우,  임용단기에서 수강확인증을 발급받으셔야 합니다. </li>
+                    <li>인증 서류의 식별이 불가능한 경우 또는 이미지를 도용한 경우에는 할인혜택이 적용이 불가합니다.</li>
+                    <li>본 이벤트에서 타학원 수강이 인증되면, 개별 ID로 할인쿠폰이 발급되며, 7일이내 수강하셔야 합니다. (* 7일후 쿠폰소멸) </li>
                     <li>본 이벤트를 통하여 수강하고, 환불시에는 할인된 수강료가 아니고, 원수강료에서 기산됩니다. </li>
                     <li>본 이벤트는 교재가 필요하다고 판단되면, 별도로 구매하셔야 합니다. </li>
-                    <li>본 이벤트로 인한 할인강의는 양도 및 매매가 불가능하며, 위반 시 처벌받을 수 있습니다.</li>
+                    <li>본 이벤트로 인한 할인강의는 양도 및 매매가 불가능하며, 위반시 법적 처벌받을 수 있습니다.<br>
+                    - 양도 및 매매가 적발되면 경고 없이 법적처벌 됩니다.</li>
                 </ul>
             </div>
         </div>

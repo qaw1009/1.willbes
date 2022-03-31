@@ -25,7 +25,9 @@
 
         .evtTops {background:#1d2329}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2593_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2593_top_bg.jpg) no-repeat center top;position:relative;}
+        .youtube {position:absolute; top:614px; left:50%;z-index:1;margin-left:-114px}
+        .youtube iframe {width:531px; height:312px}
 
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/03/2593_01_bg.jpg) no-repeat center top;}
 
@@ -41,13 +43,13 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky" id="QuickMenu">
-            <a href="javascript:alert('준비중입니다.')">
+            <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51160?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2593_sky01.png" alt="형사법 신광은">
             </a>  
             <a href="#chicken">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2593_sky02.png" alt="치킨 100마리">
             </a>  
-            <a href="https://www.youtube.com/watch?v=8EaI2UoeU0g&t=9s" target="_blank">
+            <a href="https://www.youtube.com/channel/UCz_3g63yWTYjg6_Ko5QRK1g" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2593_sky03.png" alt="신광은 형사법 티비">
             </a>  
         </div>
@@ -62,6 +64,9 @@
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2593_top.jpg"  alt="적중은 역시"/>
+            <div class="youtube">
+                <iframe src="https://www.youtube.com/embed/8EaI2UoeU0g?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">

@@ -116,17 +116,17 @@
             <div class="wrap">          
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2593_05.jpg"  alt="2022 스페셜 단과"/>
                 <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute;left: 56.29%;top: 68.53%;width: 30.88%;height: 6.34%;z-index: 2;"></a>
-            </div>   
-        </div>      
+            </div>
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+            @endif
+        </div>  
 
         <div class="evtCtnsBox evt06" data-aos="fade-up">
-            <div class="wrap">
-                @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-                @endif
+            <div class="wrap">                
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2593_06.jpg"  alt="pass"/>             
-                <a href="https://police.willbes.net/home/index/cate/3001" target="_blank" title="온라인 인강" style="position: absolute;left: 12.39%;top: 33.23%;width: 36.88%;height: 14.34%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/home/index" target="_blank" title="학원 super" style="position: absolute;left: 50.89%;top: 33.23%;width: 36.88%;height: 14.34%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/home/index/cate/3001" target="_blank" title="온라인 인강" style="position: absolute;left: 12.39%;top: 12.73%;width: 36.88%;height: 17.34%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/home/index" target="_blank" title="학원 super" style="position: absolute;left: 50.89%;top: 12.73%;width: 36.88%;height: 17.34%;z-index: 2;"></a>
             </div>
         </div>       
 

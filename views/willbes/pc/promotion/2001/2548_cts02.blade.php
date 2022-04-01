@@ -11,7 +11,7 @@
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2548_cts02_top.jpg" alt="합격예측 풀서비스">
             @if($arr_promotion_params['start_active_tab2'] <= date('YmdHi'))
-                <a href="{{front_url('/promotion/index/cate/3001/code/2573')}}" target="_blank" style="position: absolute;left: 26.01%;top: 84.07%;width: 48.13%;height: 6.3%;z-index: 2;"></a>
+                <a href="javascript:alert('종료 되었습니다.')"  style="position: absolute;left: 26.01%;top: 84.07%;width: 48.13%;height: 6.3%;z-index: 2;"></a>
             @else
                 @php
                     $set_month = date("n", strtotime($arr_promotion_params['start_active_tab2'].'00'));

@@ -97,8 +97,8 @@
 
         <div class="evtCtnsBox evt05" data-aos="fade-up">    
             <div class="wrap">          
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2583_05.jpg"  alt="소문내기 이벤트"/>
-                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute;left: 56.29%;top: 68.53%;width: 30.88%;height: 6.34%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2583_05.jpg"  alt="소문내기 이벤트"/>
+                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute;left: 56.29%;top: 69.31%;width: 30.88%;height: 6.34%;z-index: 2;"></a>
             </div>   
         </div>
 

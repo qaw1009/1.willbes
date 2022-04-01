@@ -146,7 +146,14 @@
                                                 <span class="NSK ml10 nBox n1">무제한</span>
                                                 <span class="NSK nBox n3">진행중</span>
                                             </dt>
+                                            <dt class="preview">
+                                                맛보기  <a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
+                                            </dt>
                                         </dl>
+                                        <div class="freeLecPass">
+                                            <input type="hidden" id="free_lec_passwd_193354"  name="free_lec_passwd" value="" data-chk="o">
+                                            <a href="#none" class="view bg-gray-purple">무료강의 보기</a>
+                                        </div>
                                         <div class="priceWrap">
                                             <input type="checkbox" id="checkA" name="checkA">
                                             PC+모바일 : 

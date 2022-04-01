@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/public/vendor/bootstrap/datepicker/css/bootstrap-datepicker.standalone.min.css">
     <!-- Custom Theme Style -->
     <link href="/public/css/willbes/basic.css" rel="stylesheet">
-    <link href="/public/css/willbes/m/style_v2.css" rel="stylesheet">
+    <link href="/public/css/willbes/m/style_v3.css" rel="stylesheet">
     
     <!-- Slider jQuery -->
     <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.css">

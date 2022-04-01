@@ -57,24 +57,14 @@
         </div>
 
         <div class="evtCtnsBox evt_04">
-            <!--
-            @if(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3094')
-            <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/161962') }}" target="_blank">
-            @elseif(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3095')
-            <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/161963') }}" target="_blank">
-            @else
-            <a href="{{ site_url('/package/show/cate/' . $__cfg['CateCode'] . '/pack/648001/prod-code/161969') }}" target="_blank">
-            @endif
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/1544_04.jpg" alt="특별 이벤트" />
-            </a>
-            -->
             <img src="https://static.willbes.net/public/images/promotion/2021/04/1544_04.jpg" alt="특별 이벤트" />
-            @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-            @endif
-        </div>       
+        </div>   
+
+        @if(empty($arr_base['display_product_data']) === false)
+            @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+        @endif 
         
-{{--
+        {{--
 		<div class="evtCtnsBox evtInfo NGR">
 			<div class="evtInfoBox">
 				<h4 class="NGEB">상품 이용안내</h4>
@@ -113,7 +103,8 @@
                     <li>아이디 공유 및 불법공유 행위 적발 시 회원자격 박탈 및 고발 조치가 진행될 수 있습니다.</li>
 				</ul>
 			</div>
-		</div>--}}
+		</div>
+        --}}
 	</div>
     <!-- End Container -->
 @stop

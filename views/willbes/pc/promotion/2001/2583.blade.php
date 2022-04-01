@@ -23,14 +23,21 @@
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2583_top_bg.jpg) no-repeat center top;}
 
         .evt01 {padding-bottom:100px;}
-                /*슬라이드*/
+        /*슬라이드*/
         .slide_con {width:930px; margin:0 auto; position:relative}
         .slide_con p {position:absolute; top:50%; margin-top:-45px; width:39px; height:97px; z-index:90}
         .slide_con p a {cursor:pointer}
         .slide_con p.leftBtn {left:-100px;}
         .slide_con p.rightBtn {right:-63px;}
 
+        .mark {width:860px; margin:90px auto 0;}
+        .mark a {display:block; background:#000; font-size:44px; color:#fff; padding:20px; background:#000; border-radius:5px; box-shadow:10px rgba(0,0,0,.5);}
+        .mark a:hover {background:#533fd1}
+
         .evt02 {background:#ededed;}
+
+        .youtube {position:absolute; top:409px; left:50%;z-index:1;margin-left:-490px}
+        .youtube iframe {width:980px; height:490px}
 
         .evt04 {background:#ededed;}      
        
@@ -52,13 +59,19 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2583_01.jpg"  alt="100% 완벽적중"/>
             <div class="slide_con">
                 <ul id="slidesImg4">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/03/2583_01_01.png" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/03/2583_01_01.png" /></li>                  
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/04/2583_01_01.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/04/2583_01_02.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/04/2583_01_03.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/04/2583_01_04.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/04/2583_01_05.jpg" /></li>                                    
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2022/03/2583_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2022/03/2583_right.png"></a></p>
-            </div>         
-        </div>
+            </div>
+            <div class="mark NSK-Black" data-aos="fade-up">
+                <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=396476&" target="_blank" title="이국령 헌법 적중 자세히 보기">이국령 헌법 적중 자세히 보기 ></a>
+            </div>
+        </div>        
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">  
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2583_02.jpg"  alt="오답을 피해가는 능력"/>            
@@ -67,7 +80,9 @@
         <div class="evtCtnsBox evt03" data-aos="fade-up">
             <div class="wrap">          
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2583_03.jpg"  alt="커리큘럼"/>
-                <a href="javascript:alert('준비중입니다.')" title="유튜브" style="position: absolute;left: 5.19%;top: 30.03%;width: 89.88%;height: 39.34%;z-index: 2;"></a>
+                <div class="youtube">
+                    <iframe src="https://www.youtube.com/embed/-uuLC2sLTg0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
                 <a href="https://www.youtube.com/channel/UCDjImsjLcG6H9y9jonFF84Q" target="_blank" title="헌법도약 유튜브" style="position: absolute;left: 15.19%;top: 73.03%;width: 32.88%;height: 9.34%;z-index: 2;"></a>
                 <a href="https://cafe.daum.net/doyag" target="_blank" title="이국령 카페" style="position: absolute;left: 52.19%;top: 73.03%;width: 32.88%;height: 9.34%;z-index: 2;"></a>
             </div>

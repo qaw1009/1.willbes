@@ -26,7 +26,7 @@ class LectureFreeModel extends CommonLectureModel
                             A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
                             ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                             ,Ac.CcdName as ProdTypeCcd_Name
-                            ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply,B.wLecIdx
+                            ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply,B.wLecIdx,B.OrderNum
                             ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
                             ,Bd.CcdName as FreeLecTypeCcd_Name
                             ,Be.wProgressCcd_Name,Be.wUnitCnt, Be.wUnitLectureCnt,Be.wScheduleCount, Be.wAttachPath, Be.wAttachFile, Be.wAttachFileReal

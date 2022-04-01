@@ -191,6 +191,7 @@
     @endphp
     <div class="evtContent NGR" id="evtContainer">
 
+        {{--
         <div class="sky" id="QuickMenu">
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2578" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2548_sky01.png" alt="적중 이벤트">
@@ -199,7 +200,8 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2548_sky02.png" alt="토크쇼">
             </a>         
         </div>
-
+        --}}
+        
         <div class="evtCtnsBox evt_counter" data-aos="fade-down">
             <div class="counter">
                 <div class="left_area NGEB">

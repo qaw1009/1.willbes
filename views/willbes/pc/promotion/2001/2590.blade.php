@@ -25,7 +25,7 @@
 
         .evtTop {}
 
-        .evt01 {display:flex; width:1120px; margin:0 auto}    
+        .evt01 {display:flex; width:1082px; margin:0 auto}    
   
         .evt01 a img.off {display:block}
         .evt01 a img.on {display:none}
@@ -57,27 +57,27 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2590_top.jpg" title="치킨 100마리">
         </div>
                 
-        <div class="evtCtnsBox" data-aos="fade-up">
+        <div class="evtCtnsBox">
             <div class="evt01">
-                <div>
+                <div data-aos="flip-left">
                     <a href="https://police.willbes.net/promotion/index/cate/3001/code/2583" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/2022/04/2590_t01.jpg" class="off" alt="이국령" />
                         <img src="https://static.willbes.net/public/images/promotion/2022/04/2590_t01_on.jpg" class="on" alt="이국령on"  />
                     </a>
                 </div>
-                <div>
+                <div data-aos="flip-left">
                     <a href="#none" onclick="javascript:alert('Coming Soon!');">
                         <img src="https://static.willbes.net/public/images/promotion/2022/04/2590_t02.jpg" class="off" alt="장정훈"  />
                         <img src="https://static.willbes.net/public/images/promotion/2022/04/2590_t02_on.jpg" class="on" alt="장정훈on"  />
                     </a>
                 </div>
-                <div>
+                <div data-aos="flip-left">
                     <a href="https://police.willbes.net/promotion/index/cate/3001/code/2593" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/2022/04/2590_t03.jpg" class="off" alt="신광은"  />
                         <img src="https://static.willbes.net/public/images/promotion/2022/04/2590_t03_on.jpg" class="on" alt="신광은on"  />
                     </a>
                 </div>
-                <div>
+                <div data-aos="flip-left">
                     <a href="#none" onclick="javascript:alert('Coming Soon!');">
                         <img src="https://static.willbes.net/public/images/promotion/2022/04/2590_t04.jpg" class="off" alt="김원욱"  />
                         <img src="https://static.willbes.net/public/images/promotion/2022/04/2590_t04_on.jpg" class="on" alt="김원욱on"  />

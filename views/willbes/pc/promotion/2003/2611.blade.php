@@ -67,14 +67,14 @@
         <div class="evtCtnsBox evt03" data-aos="fade-up" id="evt03">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/04/2611_03.jpg" title=""> 
-                <a href="#none" title="강좌 50% 할인쿠폰 받기" style="position: absolute; left: 22.05%; top: 74.91%; width: 54.82%; height: 8.12%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}'); return false;" title="강좌 50% 할인쿠폰 받기" style="position: absolute; left: 22.05%; top: 74.91%; width: 54.82%; height: 8.12%; z-index: 2;"></a>
             </div>                     
         </div> 
 
         <div class="evtCtnsBox evt04" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/04/2611_04.jpg" title=""> 
-                <a href="#none" title="20% 할인쿠폰 받기" style="position: absolute; left: 16.25%; top: 75.78%; width: 67.86%; height: 7.28%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}'); return false;" title="20% 할인쿠폰 받기" style="position: absolute; left: 16.25%; top: 75.78%; width: 67.86%; height: 7.28%; z-index: 2;"></a>
                 <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2022/04/2611_t2.gif" title="이윤호"></span>
                 <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2022/04/2611_t1.gif" title="박창한"></span>
                 
@@ -87,6 +87,10 @@
 	</div>
     <!-- End Container -->
 
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -97,9 +101,19 @@
 				duration: 500
 			});
         });
-    </script>
 
-    {{-- 프로모션용 스크립트 include --}}
-    @include('willbes.pc.promotion.promotion_script')
-    
+        {{--쿠폰발급--}}
+        function giveCheck(give_idx) {
+            $regi_form = $('#regi_form');
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+            @if(empty($arr_promotion_params) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}&give_idx=' + give_idx;
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    }
+                }, showValidateError, null, false, 'alert');
+            @endif
+        }
+    </script>
 @stop

@@ -33,7 +33,7 @@
     <div class="evtCtnsBox cts02_02">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2548_cts02_02.jpg" alt="신광은 경찰팀">
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2578" target="_blank" style="position: absolute;left: 27.99%;top: 91.07%;width: 44.13%;height: 5.78%;z-index: 2;"></a>
+            <a href="javascript:alert('종료 되었습니다.')"    style="position: absolute;left: 27.99%;top: 91.07%;width: 44.13%;height: 5.78%;z-index: 2;"></a>
         </div>
     </div>
 </div>

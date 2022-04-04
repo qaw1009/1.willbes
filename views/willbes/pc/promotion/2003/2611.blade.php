@@ -107,7 +107,7 @@
             $regi_form = $('#regi_form');
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
             @if(empty($arr_promotion_params) === false)
-                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}&give_idx=' + give_idx;
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&give_type={{$arr_promotion_params['give_type']}}&limit_count={{$arr_promotion_params['limit_count']}}&give_idx=' + give_idx;
                 ajaxSubmit($regi_form, _check_url, function (ret) {
                     if (ret.ret_cd) {
                         alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');

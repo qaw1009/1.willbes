@@ -151,10 +151,18 @@
                                                     </div>
                                                     <dl class="w-info tx-gray">
                                                         <dt>강의촬영(실강) : {{ empty($row['StudyStartDate']) ? '' : substr($row['StudyStartDate'],0,4).'년 '. substr($row['StudyStartDate'],5,2).'월' }}</dt><br>
-                                                        <dt>강의수 : <span class="tx-blue">{{ $row['wUnitLectureCnt'] }}강@if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif</span><span class="row-line">|</span></dt>
+                                                        <dt>강의수 : <span class="tx-blue">{{ $row['wUnitLectureCnt'] }}강@if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif</span>
+                                                            @if(!($pattern == 'free' && $row['FreeLecTypeCcd'] == '652003'))
+                                                                <span class="row-line">|</span>
+                                                            @endif
+                                                        </dt>
+                                                    @if(!($pattern == 'free' && $row['FreeLecTypeCcd'] == '652003'))
                                                         <dt>수강기간 : <span class="tx-blue" data-info="{{ $row['StudyPeriod'] }}">{{ $row['StudyPeriod'] }}일</span>
                                                             <span class="NSK ml10 nBox n1" data-info="{{ $row['MultipleApply'] }}">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
-                                                            <span class="NSK nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}" data-info="{{ substr($row['wLectureProgressCcd'], -1)+1 }}{{ $row['wLectureProgressCcdName'] }}">{{ $row['wLectureProgressCcdName'] }}</span></dt>
+                                                            <span class="NSK nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}" data-info="{{ substr($row['wLectureProgressCcd'], -1)+1 }}{{ $row['wLectureProgressCcdName'] }}">{{ $row['wLectureProgressCcdName'] }}</span>
+                                                        </dt>
+                                                    @endif
+
                                                     </dl>
                                                     @if($pattern == 'free' && ($row['FreeLecTypeCcd'] == '652002' || $row['FreeLecTypeCcd'] == '652003'))
                                                         <div class="freeLecPass">
@@ -169,10 +177,12 @@
                                                                 @endif
                                                             @else
                                                                 <input type="hidden" id="free_lec_passwd_{{ $row['ProdCode'] }}"  name="free_lec_passwd" value="" data-chk="o">
-                                                                <a href="javascript:;" class="view bg-gray-purple" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">무료강의 보기</a>
+                                                                {{-- <a href="javascript:;" class="view bg-gray-purple" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">무료강의 보기</a> --}}
+                                                                @if(empty($row['LectureSampleData']) === false)
+                                                                    <a class="view bg-gray-purple" href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['ProdCode']}}&u={{$row['LectureSampleData'][0]['wUnitIdx']}}&q={{empty($row['LectureSampleData'][0]['wHD']) === false ? 'HD' : 'SD'}}", "{{config_item('starplayer_license')}}");'>무료강의 보기</a>
+                                                                @endif
                                                             @endif
                                                         </div>
-
                                                     @else
                                                         <ul class="priceWrap">
                                                             @if(empty($row['ProdPriceData']) === false)

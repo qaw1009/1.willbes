@@ -1,3 +1,6 @@
+@php
+    $is_except = ($__cfg['SiteGroupCode'] === '1011' ?  'Y' : '');     //임용 사이트 예외처리 변수
+@endphp
 <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
     {!! method_field('POST') !!}
@@ -30,6 +33,17 @@
                             <span class="NSK ml10 nBox n1">{{ $row['MultipleApply'] === '1' ? '무제한' : $row['MultipleApply'].'배수' }}</span>
                             <span class="NSK nBox n{{ substr($row['wLectureProgressCcd'], -1) + 1 }}">{{ $row['wLectureProgressCcdName'] }}</span>
                         </dt>
+                        @if($tab_data_key == 'on_lecture' && $is_except == 'Y' && empty($row['LectureSampleData']) === false)
+                            <dt class="preview">
+                                맛보기
+                                @if(empty($row['LectureSampleData'][0]['wHD']) === false)
+                                    <a class="tBox black NSK" href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['ProdCode']}}&u={{$row['LectureSampleData'][0]['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");'>HIGH</a>
+                                @endif
+                                @if(empty($row['LectureSampleData'][0]['wSD']) === false)
+                                    <a class="tBox gray NSK" href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['ProdCode']}}&u={{$row['LectureSampleData'][0]['wUnitIdx']}}&q=SD", "{{config_item('starplayer_license')}}");'>LOW</a>
+                                @endif
+                            </dt>
+                        @endif
                     </dl>
                 @if(empty($row['ProdPriceData']) === false)
                     <ul class="priceWrap">

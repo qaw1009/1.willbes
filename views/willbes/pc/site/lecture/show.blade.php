@@ -34,12 +34,14 @@
                     <div>강의촬영(실강) : {{ empty($data['StudyStartDate']) ? '' : substr($data['StudyStartDate'],0,4).'년 '. substr($data['StudyStartDate'],5,2).'월' }}</div>
                     <dl>
                         <dt>강의수 : <span class="tx-black">{{ $data['wUnitLectureCnt'] }}강@if($data['wLectureProgressCcd'] != '105002' && empty($data['wScheduleCount'])==false)/{{$data['wScheduleCount']}}강@endif</span></dt>
-                        <dt><span class="row-line">|</span></dt>
-                        <dt>수강기간 : <span class="tx-black">{{ $data['StudyPeriod'] }}일</span></dt>
-                        <dt class="NSK ml15">
-                            <span class="nBox n1">{{ $data['MultipleApply'] === "1" ? '무제한' : $data['MultipleApply'].'배수'}}</span>
-                            <span class="nBox n{{ substr($data['wLectureProgressCcd'], -1)+1 }}">{{ $data['wLectureProgressCcdName'] }}</span>
-                        </dt>
+                        @if(!($pattern == 'free' && $data['FreeLecTypeCcd'] == '652003'))
+                            <dt><span class="row-line">|</span></dt>
+                            <dt>수강기간 : <span class="tx-black">{{ $data['StudyPeriod'] }}일</span></dt>
+                            <dt class="NSK ml15">
+                                <span class="nBox n1">{{ $data['MultipleApply'] === "1" ? '무제한' : $data['MultipleApply'].'배수'}}</span>
+                                <span class="nBox n{{ substr($data['wLectureProgressCcd'], -1)+1 }}">{{ $data['wLectureProgressCcdName'] }}</span>
+                            </dt>
+                        @endif
                     </dl>
 
                     @if(empty($data['wAttachFileReal']) === false)

@@ -126,20 +126,30 @@ class BaseCode extends \app\controllers\BaseController
 
         $arr_base = [];
         $arr_base['predict_idx'] = $params[0];
-        $arr_base['take_mock_part'] = $this->predictModel->getMockPartListForPredict($arr_base['predict_idx']);
-        print_r($arr_base['take_mock_part']);
-
-        $arr_base['codes'] = [
-            ['ccd' => '100001','name' => '형사소송법']
-            ,['ccd' => '100002','name' => '형소법']
-            ,['ccd' => '100003','name' => '형법']
-            ,['ccd' => '100004','name' => '경찰학개론']
-        ];
-
+        $result_take_mock_part = $this->predictModel->getMockPartListForPredict($arr_base['predict_idx']);
+        $arr_take_mock_part = array_pluck($result_take_mock_part, 'MockPart', 'MockPart');
+        $data = $this->predictCodeModel->listAllCodeForPredict($arr_base['predict_idx'], $arr_take_mock_part);
 
         $this->load->view('predict/baseCode/create_subject', [
             'arr_base' => $arr_base
+            ,'data' => $data
         ]);
+    }
+
+    /**
+     * 합격예측의 과목데이터 저장
+     */
+    public function storeSubject()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'predict_idx', 'label' => '합격예측코드', 'rules' => 'trim|required|integer']
+        ];
+        if ($this->validate($rules) === false) return;
+
+
+        $result = $this->predictCodeModel->storeSubjectCode($this->_reqP(null));
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**
@@ -155,5 +165,43 @@ class BaseCode extends \app\controllers\BaseController
 
         $result = $this->predictCodeModel->deleteSubjectCode($this->_reqP(null));
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 과목그룹 변경
+     */
+    public function updateGroupBy()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'predict_idx', 'label' => '합격예측식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->predictCodeModel->updateParams($this->_reqP(null), 'group_by');
+        $this->json_result($result, '적용 되었습니다.', $result);
+    }
+
+    /**
+     * 정렬순서 변경
+     */
+    public function updateOrderNum()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'predict_idx', 'label' => '합격예측식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->predictCodeModel->updateParams($this->_reqP(null), 'order_num');
+        $this->json_result($result, '적용 되었습니다.', $result);
     }
 }

@@ -33,8 +33,10 @@
         <img src="https://static.willbes.net/public/images/promotion/2022/04/2615m_top.jpg" alt="무료 면접반 개강" >
     </div> 
 
-    <div class="evtCtnsBox" data-aos="fade-up">        
-        <img src="https://static.willbes.net/public/images/promotion/2022/04/2615m_01.jpg" alt="면접반 소개" >  
+    <div class="evtCtnsBox" data-aos="fade-up">
+        <a href="javascript:fnPlayerSample('193420', '1348889', 'HD');">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2615m_01.jpg" alt="면접반 소개" >
+        </a>
     </div>
 
     <div class="evtCtnsBox" data-aos="fade-up">
@@ -42,7 +44,7 @@
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <a href="#none">
+        <a href="https://pass.willbes.net/m/pass/offLecture/show/cate/3149/prod-code/192623" target="_blank">
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2615m_03.jpg" alt="접수 바로가기" > 
         </a>
     </div>

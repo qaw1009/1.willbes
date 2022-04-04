@@ -36,7 +36,9 @@
         </div>
 
         <div class="evtCtnsBox wb_01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2615_01.jpg"  alt="면접반 소개"/>
+            <a href="javascript:fnPlayerSample('193420', '1348889', 'HD');">
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2615_01.jpg"  alt="면접반 소개"/>
+            </a>
 		</div>
 
         <div class="evtCtnsBox wb_02" data-aos="fade-up">            
@@ -44,7 +46,7 @@
 		</div>
 
         <div class="evtCtnsBox wb_03" data-aos="fade-up">            
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2022/04/2615_03.jpg" alt="접수 바로가기"/></a>            
+            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3149/prod-code/192623" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/04/2615_03.jpg" alt="접수 바로가기"/></a>            
 		</div>
 
         <div class="evtCtnsBox wb_04" data-aos="fade-up">

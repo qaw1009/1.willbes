@@ -195,13 +195,14 @@
             </div>                     
         </div> 
 
-        <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">         
+        <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">
+            @if(time() < strtotime('202204050000'))     
             <div class="title01 NSK-Black">
                 경찰공무원 합격을 위한 최선의 방법!<br>
                 신광은 경찰 PASS로 합격률을 높이는 전략을 선택하세요!
             </div>
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2595_pass.png" alt="신광은경찰 PASS">
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2595_pass.png" alt="신광은경찰 PASS">
                 <div class="passLecBuy NSK-Black"> 
                     <div>         
                         <p>학습지원금 10만 + <span>10만 포인트 더!</span></p>           
@@ -245,7 +246,9 @@
 
             <div class="totalPrice NSK-Black" data-aos="fade-up">
                 <a href="javascript:void(0);" onclick="termsCheck('is_chk1', 'pass');">패스상품 신청하기 ></a>
-            </div>  
+            </div>
+            @else
+            @endif  
         </div>
         
         <div class="evtCtnsBox evtReview">

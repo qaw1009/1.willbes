@@ -144,10 +144,11 @@
         </div>
         
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
+            @if(time() < strtotime('202204050000'))
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2595m_pass.png"> 
             <div class="evt01_coupon ">  
                 <div class="p_re mt30">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2595m_pass01.png" alt="23년 합격 패스" > 
+                    <img src="https://static.willbes.net/public/images/promotion/2022/04/2595m_pass01.png" alt="23년 합격 패스" > 
                     <div class="price NSK-Black">
                         <p>학습지원금 10만 + <span>10만 포인트 더!</span></p>  
                         <input type="radio" id="y_pkg0" name="y_pkg" value="193035" data-sale-price="920000" onClick=""/>
@@ -191,7 +192,9 @@
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute; left: 52.5%; top: 25.65%; width: 38.75%; height: 34.57%; z-index: 2;"></a>
 
                 <a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" title="패스상품 신청하기" style="position: absolute; left: 6.39%; top: 74.57%; width: 86.53%; height: 24.57%; z-index: 2;"></a>
-            </div> 
+            </div>
+            @else
+            @endif            
         </div>
 
     

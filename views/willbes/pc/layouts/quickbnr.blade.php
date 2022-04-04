@@ -3,7 +3,7 @@
         <div id="QuickMenuC" class="MainQuickMenuSSam NGR">
             <ul class="gobtn NG">
                 <li>
-                    <a href="{{ site_url('/lecture/index/pattern/free?cate_code=') }}">
+                    <a href="{{ site_url('/lecture/index/pattern/free?cate_code=&search_order=regist') }}">
                         <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick00.png" title="무료강의" class="off">
                         <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick00_on.png" title="무료강의" class="on">
                         <p>무료강의</p>

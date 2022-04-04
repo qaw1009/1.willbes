@@ -158,7 +158,7 @@
                     </li>     
                     <li>
                         <a id='tab4' href="@if(time() < strtotime('202204111600')) javascript:alert('4.11(월)오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/' . $arr_base['promotion_code'] . '/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=4#content_4') }}@endif">
-                            <span>2021 소방직</span>
+                            <span>2022 소방직</span>
                             <div class="NSK-Black">기출해설특강</div>
                         </a>
                     </li>

@@ -101,6 +101,23 @@
                         <a href="{{front_url('/professor/show/cate/3035/prof-idx/50145?subject_idx=1119')}}">이덕훈</a>
                     </li>
                 </ul>
+                <h5>검찰직</h5>
+                <ul>
+                    <li>
+                        <span>[국어]</span>
+                        <a href="{{front_url('/professor/show/cate/3148/prof-idx/51220?subject_idx=1107')}}">박재현</a>
+                        <span>[영어]</span>
+                        <a href="{{front_url('/professor/show/cate/3148/prof-idx/50651?subject_idx=1108')}}">박초롱</a>
+                        <span>[한국사]</span>
+                        <a href="{{front_url('/professor/show/cate/3148/prof-idx/50571?subject_idx=1109')}}">임진석</a>
+                    </li>
+                    <li>                      
+                        <span>[형법]</span>
+                        <a href="{{front_url('/professor/show/cate/3148/prof-idx/50073?subject_idx=1116')}}">문형석</a>
+                        <span>[형사소송법]</span>
+                        <a href="{{front_url('/professor/show/cate/3148/prof-idx/50685?subject_idx=1117')}}">유안석</a>
+                    </li>                   
+                </ul>
                 <h5>소방직</h5>
                 <ul>
                     <li>
@@ -464,6 +481,21 @@
                         <a href="{{front_url('/professor/show/prof-idx/50074/?cate_code=3059&subject_idx=1262&subject_name=%ED%98%95%EB%B2%95')}}">문형석</a>
                         <span>[형사소송법]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50686/?cate_code=3059&subject_idx=1263&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95')}}">유안석</a>
+                    </li>
+                </ul>
+                <h5>검찰직</h5>
+                <ul>
+                    <li>
+                        <span>[국어]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/51254?cate_code=3149&subject_idx=1253')}}">박재현</a>
+                        <span>[영어]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/50652?cate_code=3149&subject_idx=1254')}}">박초롱</a>
+                        <span>[한국사]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/50572?cate_code=3149&subject_idx=1255')}}">임진석</a><br>
+                        <span>[형법]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/50074?cate_code=3149&subject_idx=1262')}}">문형석</a>                        
+                        <span>[형사소송법]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/50686?cate_code=3149&subject_idx=1263')}}">유안석</a>              
                     </li>
                 </ul>
                 <h5>소방직</h5>
@@ -864,6 +896,27 @@
                 </ul>
             </div>
             <div class="lec-drop-Box-gosi">
+                <h5>검찰직</h5>
+                <ul>
+                    <li>
+                        <strong>과목</strong>
+                        <a href="{{front_url('/lecture/index/cate/3148/pattern/only?search_order=regist&subject_idx=1107')}}">국어</a>
+                        <a href="{{front_url('/lecture/index/cate/3148/pattern/only?search_order=regist&subject_idx=1108')}}">영어</a>
+                        <a href="{{front_url('/lecture/index/cate/3148/pattern/only?search_order=regist&subject_idx=1109')}}">한국사</a>                    
+                        <a href="{{front_url('/lecture/index/cate/3148/pattern/only?search_order=regist&subject_idx=1116')}}">형법</a>
+                        <a href="{{front_url('/lecture/index/cate/3148/pattern/only?search_order=regist&subject_idx=1117')}}">형사소송법</a>
+                    </li>
+                    <li>
+                        <strong>과정</strong>
+                        <a href="{{front_url('/lecture/index/cate/3148/pattern/only?search_order=regist&subject_idx=&course_idx=1082')}}">기출해설특강 </a>
+                        <a href="{{front_url('/lecture/index/cate/3148/pattern/only?search_order=regist&subject_idx=&course_idx=1409')}}">1순환</a>   
+                        <a href="{{front_url('/lecture/index/cate/3148/pattern/only?search_order=regist&subject_idx=&course_idx=1410')}}">2순환</a>   
+                        <a href="{{front_url('/lecture/index/cate/3148/pattern/only?search_order=regist&subject_idx=&course_idx=1411')}}">3순환</a>   
+                        <a href="{{front_url('/lecture/index/cate/3148/pattern/only?search_order=regist&subject_idx=&course_idx=1412')}}">4순환</a>                       
+                    </li>
+                </ul>
+            </div>
+            <div class="lec-drop-Box-gosi">
                 <h5>소방직</h5>
                 <ul>
                     <li>
@@ -1072,6 +1125,20 @@
                     </li>
                     <li>
                         <a href="{{site_url('/book/index/cate/3035')}}">교재구매</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="lec-drop-Box">
+                <h5>검찰직</h5>
+                <ul>
+                    <li>
+                        <a href="{{front_url('/offPackage/index?cate_code=3149&campus_ccd=605001')}}">종합반</a>
+                    </li>
+                    <li>
+                        <a href="{{front_url('/offLecture/index?cate_code=3149&campus_ccd=605001')}}">단과</a>
+                    </li>
+                    <li>
+                        <a href="{{site_url('/book/index/cate/3035?cate_code=3148')}}">교재구매</a>
                     </li>
                 </ul>
             </div>

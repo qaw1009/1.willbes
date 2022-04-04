@@ -66,7 +66,7 @@
                     </a>
                 </div>
                 <div data-aos="flip-left">
-                    <a href="#none" onclick="javascript:alert('Coming Soon!');">
+                    <a href="https://police.willbes.net/promotion/index/cate/3001/code/2592" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/2022/04/2590_t02.jpg" class="off" alt="장정훈"  />
                         <img src="https://static.willbes.net/public/images/promotion/2022/04/2590_t02_on.jpg" class="on" alt="장정훈on"  />
                     </a>

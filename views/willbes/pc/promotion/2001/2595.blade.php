@@ -195,8 +195,7 @@
             </div>                     
         </div> 
 
-        <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">
-            @if(time() < strtotime('202204050000'))     
+        <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">     
             <div class="title01 NSK-Black">
                 경찰공무원 합격을 위한 최선의 방법!<br>
                 신광은 경찰 PASS로 합격률을 높이는 전략을 선택하세요!
@@ -246,9 +245,7 @@
 
             <div class="totalPrice NSK-Black" data-aos="fade-up">
                 <a href="javascript:void(0);" onclick="termsCheck('is_chk1', 'pass');">패스상품 신청하기 ></a>
-            </div>
-            @else
-            @endif  
+            </div>  
         </div>
         
         <div class="evtCtnsBox evtReview">
@@ -522,7 +519,7 @@
                         </dt>
                         <dd>
                             <ol>
-                                <li>본 상품은 수강기간(12개월) 내 경찰 순경 시험 최종합격 시 수강료 전액 환급, 불합격 시 23년 2차 시험일까지 수강기간 연장되는 상품입니다.</li>
+                                <li>본 상품은 구매일로부터 23년 1차 필기시험일까지 수강 가능하며, 불합격 시 23년 2차 시험일까지 수강기간 연장되는 상품입니다.</li>
                                 <li>본 상품 강좌 구성은 다음과 같습니다.<br>
                                     - 2022년 대비 형사법, 경찰학, 헌법, 범죄학 전 강좌<br>
                                     - 2021년 대비 형사소송법, 경찰학개론, 형법 전 강좌<br>                                
@@ -612,7 +609,7 @@
                                 <li>시험 접수 후 시험에 응시하지 못한 경우 수강기간 갱신 불가합니다.</li>
                                 <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
                                 <li>상품에 등록된 과목 이외의 다른 강의는 추가 제공되지 않습니다.</li>
-                                <li>구매일로부터 12개월(365일)간 유료 수강 가능하며, 갱신 신청한 수강생에 한하여 23년 2차 필기시험일까지 무료 연장됩니다.</li>
+                                <li>구매일로부터 23년 1차 필기시험일까지 유료 수강 가능하며, 갱신 신청한 수강생에 한하여 23년 2차 필기시험일까지 무료 연장됩니다.</li>
                                 <li>갱신되어 제공되는 기간의 강의는 무료 서비스이며, 환불 대상이 아닙니다.</li>
                                 <li>자세한 수강기간 갱신 방법은 공지사항에서 확인 바랍니다.</li>
                             </ol>

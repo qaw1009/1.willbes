@@ -38,8 +38,7 @@
 
         <div class="evtCtnsBox cts03_01">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2548_cts03_01.jpg" alt="" />
-                <a href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" title="이미지 다운로드" style="position: absolute;left: 12.54%;top: 78.05%;width: 74.98%;height: 6.65%;z-index: 2;"></a> 
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/2548_cts03_01.jpg" alt="" />                
             </div>
         </div>
 

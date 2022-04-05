@@ -236,14 +236,14 @@
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2021 [지방직] 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180351" target="_blank">수강신청</a></td>
+						<td>2022 [지방직] 장사원 재배학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193126" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>유료특강</td>
-						<td>2021 장사원 재배학 FINAL 마무리 특강</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180349" target="_blank">수강신청</a></td>
+						<td>장사원 재배학 FINAL 마무리 특강</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/192702" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
 
@@ -276,14 +276,14 @@
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
-						<td>2021 [지방직] 장사원 식용작물 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180352" target="_blank">수강신청</a></td>
+						<td>2022 [지방직] 장사원 식용작물 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193127" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
 						<td>유료특강</td>
-						<td>2021 장사원 식용작물 FINAL 마무리 특강</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180350" target="_blank">수강신청</a></td>
+						<td>장사원 식용작물 FINAL 마무리 특강</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/192701" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
             </div>
@@ -320,14 +320,14 @@
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2021 [지방직] 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180351" target="_blank">수강신청</a></td>
+						<td>2022 [지방직] 장사원 재배학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193126" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>유료특강</td>
-						<td>2021 장사원 재배학 FINAL 마무리 특강</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180349" target="_blank">수강신청</a></td>
+						<td>장사원 재배학 FINAL 마무리 특강</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/192702" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
 
@@ -360,14 +360,14 @@
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
-						<td>2021 [지방직] 장사원 식용작물 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180352" target="_blank">수강신청</a></td>
+						<td>2022 [지방직] 장사원 식용작물 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193127" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
 						<td>유료특강</td>
-						<td>2021 장사원 식용작물 FINAL 마무리 특강</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180350" target="_blank">수강신청</a></td>
+						<td>장사원 식용작물 FINAL 마무리 특강</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/192701" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
 				<p>● 생물학개론</p>
@@ -453,14 +453,14 @@
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2021 [지방직] 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180351" target="_blank">수강신청</a></td>
+						<td>2022 [지방직] 장사원 재배학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193126" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>유료특강</td>
-						<td>2021 장사원 재배학 FINAL 마무리 특강</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180349" target="_blank">수강신청</a></td>
+						<td>장사원 재배학 FINAL 마무리 특강</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/192702" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
 

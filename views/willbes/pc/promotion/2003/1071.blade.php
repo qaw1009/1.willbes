@@ -244,8 +244,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 [지방직] 최우영 전자공학 파이널 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180553" target="_blank">수강신청</a></td>
+                        <td>2022 [지방직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193118" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
 
@@ -348,8 +348,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 [지방직] 최우영 전자공학 파이널 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180553" target="_blank">수강신청</a></td>
+                        <td>2022 [지방직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193118" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
 
@@ -392,14 +392,20 @@
                     <tr>
                         <td>통신공학</td>
                         <td>문제풀이</td>
-                        <td>2021 [지방직/군무원] 최우영 통신공학/통신이론 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180546" target="_blank">수강신청</a></td>
+                        <td>2022 [지방직/군무원] 최우영 통신공학 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193115" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
                         <td>문제풀이</td>
-                        <td>2021 [지방직] 최우영 통신이론  파이널 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180554" target="_blank">수강신청</a></td>
+                        <td>2022 [지방직/군무원] 최우영 통신이론 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193116" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신이론</td>
+                        <td>문제풀이</td>
+                        <td>2022 [지방직] 최우영 통신이론 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193117" target="_blank">수강신청</a></td>
                     </tr>
                 </table>                
             </div>
@@ -445,14 +451,20 @@
                     <tr>
                         <td>통신공학</td>
                         <td>문제풀이</td>
-                        <td>2021 [지방직/군무원] 최우영 통신공학/통신이론 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180546" target="_blank">수강신청</a></td>
+                        <td>2022 [지방직/군무원] 최우영 통신공학 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193115" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
                         <td>문제풀이</td>
-                        <td>2021 [지방직] 최우영 통신이론  파이널 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180554" target="_blank">수강신청</a></td>
+                        <td>2022 [지방직/군무원] 최우영 통신이론 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193116" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>통신이론</td>
+                        <td>문제풀이</td>
+                        <td>2022 [지방직] 최우영 통신이론 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193117" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>● 전기자기학</p>
@@ -470,8 +482,8 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>이론</td>
-                        <td>2021 최우영 전기자기학 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180544" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 전기자기학 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193110" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기자기학</td>
@@ -517,8 +529,8 @@
                     <tr>
                         <td>전기이론</td>
                         <td>문제풀이</td>
-                        <td>2021 [지방직] 최우영 전기이론  파이널 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180552" target="_blank">수강신청</a></td>
+                        <td>2022 [지방직] 최우영 전기이론 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193124" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>● 전기기기</p>
@@ -554,8 +566,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>문제풀이</td>
-                        <td>2021 [지방직] 최우영 전기기기  파이널 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180547" target="_blank">수강신청</a></td>
+                        <td>2022 [지방직] 최우영 전기기기 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193125" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
             </div>
@@ -595,8 +607,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>문제풀이</td>
-                        <td>2021 [지방직] 최우영 전기기기  파이널 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180547" target="_blank">수강신청</a></td>
+                        <td>2022 [지방직] 최우영 전기기기 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193125" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>● 전기자기학</p>
@@ -614,8 +626,8 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>이론</td>
-                        <td>2021 최우영 전기자기학 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180544" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 전기자기학 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193111" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기자기학</td>
@@ -705,8 +717,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 [지방직] 최우영 전자공학 파이널 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180553" target="_blank">수강신청</a></td>
+                        <td>2022 [지방직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193118" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -800,8 +812,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2021 [지방직] 최우영 전자공학 파이널 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180553" target="_blank">수강신청</a></td>
+                        <td>2022 [지방직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193118" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -848,16 +860,22 @@
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/187094" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
+                        <td>통신이론</td>
+                        <td>문제풀이</td>
+                        <td>2022 [지방직/군무원] 최우영 통신공학 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193115" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
                         <td>통신공학</td>
                         <td>문제풀이</td>
-                        <td>2021 [지방직/군무원] 최우영 통신공학/통신이론 단원별문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180546" target="_blank">수강신청</a></td>
+                        <td>2022 [지방직/군무원] 최우영 통신이론 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193116" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
                         <td>문제풀이</td>
-                        <td>2021 [지방직] 최우영 통신이론 파이널 동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180554" target="_blank">수강신청</a></td>
+                        <td>2022 [지방직] 최우영 통신이론 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193117" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>
@@ -887,8 +905,8 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>이론</td>
-                        <td>2021 최우영 전기자기학 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180544" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 전기자기학 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193110" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기자기학</td>

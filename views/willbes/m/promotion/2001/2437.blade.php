@@ -73,13 +73,13 @@
 <div id="Container" class="Container NSK c_both">    
 
     
-    <div class="evtCtnsBox"  data-aos="fade-down">
+    <!-- <div class="evtCtnsBox"  data-aos="fade-down">
         <img src="https://static.willbes.net/public/images/promotion/2022/04/2437m_00.jpg" alt="경찰학원부분 1위" >        
-    </div> 
+    </div>  -->
 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/04/2437m_01.jpg" alt="윌비스 해양경찰 공채 합겨패스" ><br>
+        <img src="https://static.willbes.net/public/images/promotion/2022/04/2437m_01.jpg" alt="윌비스 해양경찰 공채 합격패스" ><br>
     </div> 
 
     <div class="evtCtnsBox evt03" data-aos="fade-up">
@@ -93,7 +93,7 @@
                 <li><img src="https://static.willbes.net/public/images/promotion/2022/04/2437m_01_05.jpg" alt="" /></li>
             </ul>
         </div>
-        <img src="https://static.willbes.net/public/images/promotion/2022/04/2437m_02_01.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2022/04/2437m_02_01.jpg" alt="바로 여러분입니다" >
     </div>
 
     <div class="evtCtnsBox" data-aos="fade-up">

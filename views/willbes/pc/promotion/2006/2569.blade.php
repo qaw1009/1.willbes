@@ -66,10 +66,10 @@
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
             <div class="wrap">
 			    <img src="https://static.willbes.net/public/images/promotion/2022/03/2569_02.jpg" alt="노무패스 신청하기" />                
-                <a href="javascript:void(0);" data-url="https://job.willbes.net/periodPackage/show/cate/309002/pack/648001/prod-code/192321" onclick="go_PassLecture(this)" title="노무패스 1차" style="position: absolute; left: 0%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
-                <a href="javascript:void(0);" data-url="https://job.willbes.net/periodPackage/show/cate/309002/pack/648002/prod-code/192320" onclick="go_PassLecture(this)" title="노무패스 2차" style="position: absolute; left: 25.45%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
-                <a href="javascript:void(0);" data-url="https://job.willbes.net/periodPackage/show/cate/309002/pack/648002/prod-code/192319" onclick="go_PassLecture(this)" title="동차 베이직" style="position: absolute; left: 50.98%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
-                <a href="javascript:void(0);" data-url="https://job.willbes.net/periodPackage/show/cate/309002/pack/648002/prod-code/192318" onclick="go_PassLecture(this)" title="동차 프리미엄" style="position: absolute; left: 76.43%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/193009" onclick="go_PassLecture(this)" title="노무패스 1차" style="position: absolute; left: 0%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/193008" onclick="go_PassLecture(this)" title="노무패스 2차" style="position: absolute; left: 25.45%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/193007" onclick="go_PassLecture(this)" title="동차 베이직" style="position: absolute; left: 50.98%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/193006" onclick="go_PassLecture(this)" title="동차 프리미엄" style="position: absolute; left: 76.43%; top: 90.71%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
             </div>
             <div class="check">
                 <label>
@@ -133,9 +133,10 @@
 			</div>
             <div id="tab08" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2569_03_t08.jpg" alt="인사노무관리"/>
-                <a href="javascript:fnPlayerSample('179003', '1320594', 'HD');" title="" style="position: absolute; left: 77.86%; top: 26.27%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
-                <a href="javascript:fnPlayerSample('178993', '1320597', 'HD');" title="" style="position: absolute; left: 77.86%; top: 59.71%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
-                <a href="javascript:fnPlayerSample('190986', '1340053', 'HD');" title="" style="position: absolute; left: 77.86%; top: 92.83%; width: 18.21%; height: 5.41%; z-index: 2;"></a>          
+                <a href="javascript:fnPlayerSample('179003', '1320594', 'HD');" title="" style="position: absolute;left: 77.86%;top: 19.27%;width: 18.21%;height: 5.41%;z-index: 2;"></a>
+                <a href="javascript:fnPlayerSample('178993', '1320597', 'HD');" title="" style="position: absolute; left: 77.86%; top: 44.21%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
+                <a href="javascript:fnPlayerSample('190986', '1340053', 'HD');" title="" style="position: absolute; left: 77.86%; top: 69.13%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
+                <a href="javascript:fnPlayerSample('179012', '1310282', 'HD');" title="" style="position: absolute; left: 77.86%; top: 94.13%; width: 18.21%; height: 5.41%; z-index: 2;"></a>        
 			</div> 
             <div id="tab09" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2569_03_t09.jpg" alt="경영조직론"/>

@@ -148,7 +148,7 @@
             <a href="#transfer">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2595_sky02.png" alt="최대 30%">
             </a>  
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2467" target="_blank">
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2602" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2595_sky03.png" alt="23년 패스">
             </a>  
         </div>

@@ -76,7 +76,7 @@
         <div class="evtCtnsBox evt02" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/04/2594_02.jpg"  alt="적중 보기"/>
-                <a href="javascript:alert('준비중입니다.')" title="더 많은 적중 보기" style="position: absolute;left: 23.19%;top: 33.25%;width: 53.78%;height: 8.34%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=397980&" target="_blank" title="더 많은 적중 보기" style="position: absolute;left: 23.19%;top: 33.25%;width: 53.78%;height: 8.34%;z-index: 2;"></a>
                 <div class="slide_con">
                     <ul id="slidesImg4">
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/04/2594_02_01.jpg" /></li>

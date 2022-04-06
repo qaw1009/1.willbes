@@ -255,7 +255,7 @@ class DeliveryInfoModel extends BaseOrderModel
         ];
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
-        $column = 'O.OrderIdx, OP.OrderProdIdx, OP.ProdCode
+        $column = 'O.OrderIdx, O.OrderNo, OP.OrderProdIdx, OP.ProdCode
             , current_date() as OutDate
             , ODA.Receiver
             , fn_dec(ODA.ReceiverPhoneEnc) as ReceiverPhone

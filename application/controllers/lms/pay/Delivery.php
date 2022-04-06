@@ -482,10 +482,11 @@ class Delivery extends BaseOrder
             $results[$idx]['SupplyRate'] = 100;
             $results[$idx]['Present'] = '';
             $results[$idx]['DeliveryMemo'] = $row['DeliveryMemo'];
+            $results[$idx]['OrderNo'] = $row['OrderNo'];
         }
 
         // export excel
-        $headers = ['출고번호', '수취인명', '수취인주소', '수취인전화번호', '도서명', 'ISBN', '상품코드', '수량', '공급률', '증정', '비고(택배메시지)'];
+        $headers = ['출고번호', '수취인명', '수취인주소', '수취인전화번호', '도서명', 'ISBN', '상품코드', '수량', '공급률', '증정', '비고(택배메시지)', '주문번호'];
         $this->_makeExcel('교재배송_배송요청', $results, $headers, true, $last_query);
     }
 

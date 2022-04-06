@@ -150,6 +150,46 @@
                                     </a>
                                 </li>
 
+                                <li class="">
+                                    <a href="#tab6">
+                                        <span class="num_box" data-num="6">6</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2022/04/2505_03_s06.jpg" alt="이전의 부사「over」가 포함된 동사구를 알아보자!"></div>
+                                        <div class="text_box">
+                                            <p>이전의 부사「over」가 포함된 동사구를 알아보자!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#tab7">
+                                        <span class="num_box" data-num="7">7</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2022/04/2505_03_s07.jpg" alt="숙고의 부사 「over」가 포함된 동사구를 알아보자!"></div>
+                                        <div class="text_box">
+                                            <p>숙고의 부사 「over」가 포함된 동사구를 알아보자!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#tab8">
+                                        <span class="num_box" data-num="8">8</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2022/04/2505_03_s08.jpg" alt="지탱, 지지의 부사 「up」이 포함된 동사구를 알아보자!"></div>
+                                        <div class="text_box">
+                                            <p>지탱, 지지의 부사 「up」이 포함된 동사구를 알아보자!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#tab9">
+                                        <span class="num_box" data-num="9">9</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2022/04/2505_03_s09.jpg" alt="향상, 증진의 부사「up」이 포함된 동사구를 알아보자!"></div>
+                                        <div class="text_box">
+                                            <p>향상, 증진의 부사「up」이 포함된 동사구를 알아보자!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
                             </ul>
                         </div>
                     </div>          
@@ -218,6 +258,10 @@
         var tab3_url = "https://www.youtube.com/embed/aGnegIlcaZs?rel=0";
         var tab4_url = "https://www.youtube.com/embed/CMAQY5L9O0Q?rel=0"; 
         var tab5_url = "https://www.youtube.com/embed/L8Qgx36delE?rel=0";
+        var tab6_url = "https://www.youtube.com/embed/qbFtvuEkOi4?rel=0";
+        var tab7_url = "https://www.youtube.com/embed/h7BFfXFEMg4?rel=0";
+        var tab8_url = "https://www.youtube.com/embed/EE5tuqTCr6s?rel=0";
+        var tab9_url = "https://www.youtube.com/embed/PuKBhLoy2vM?rel=0";
 
         $(function() {
             $(".preview_list ul li a").click(function(){
@@ -234,6 +278,14 @@
                     video_tab_url = tab4_url;                
                 }else if(activeTab == "#tab5"){
                     video_tab_url = tab5_url;                
+                }else if(activeTab == "#tab6"){
+                    video_tab_url = tab6_url;                
+                }else if(activeTab == "#tab7"){
+                    video_tab_url = tab7_url;                
+                }else if(activeTab == "#tab8"){
+                    video_tab_url = tab8_url;                
+                }else if(activeTab == "#tab9"){
+                    video_tab_url = tab9_url;                
                 }
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");

@@ -59,7 +59,7 @@ class Home extends \app\controllers\FrontController
         ]), null, true);
 
         // 최근수강강좌 3개
-        $data['ing_list'] = $this->classroomFModel->getLecture($cond_arr, ['lastStudyDate' => 'DESC'], false, false, 3);
+        $data['ing_list'] = $this->classroomFModel->getLecture($cond_arr, ['lastStudyDate' => 'DESC'], false, false, 7);
 
         // 수강대기 갯수
         $cond_arr = [

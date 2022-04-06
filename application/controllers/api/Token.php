@@ -17,9 +17,7 @@ class Token extends \app\controllers\RestController
 
     /**
      * 토큰 발급 샘플 메소드
-     * https://api.local.willbes.net/token/issue?username=willbes&password=f8a33fbaa737fa97c77bdd4d8f22cedcae01f9915db556dc2812a721970b9b01&method=get&uri=/sample/server/index&params=acbd18db4cc2f85cedef654fccc4a4d8
-     * password = hash_hmac('sha256', 'password', 'username')
-     * params = md5('파라미터값연결') = md5('foo')
+     * @example https://api.local.willbes.net/token/issue?client_id=willbes&method=get&uri=/sample/server/index&nonce=xyz
      */
     public function issue_get()
     {
@@ -28,11 +26,11 @@ class Token extends \app\controllers\RestController
 
         // 파라미터 체크
         $rules = [
-            ['field' => 'username', 'label' => '사용자명', 'rules' => 'trim|required'],
-            ['field' => 'password', 'label' => '비밀번호', 'rules' => 'trim|required'],
+            ['field' => 'client_id', 'label' => '클라이언트ID', 'rules' => 'trim|required'],
             ['field' => 'method', 'label' => '전송방식', 'rules' => 'trim|required'],
             ['field' => 'uri', 'label' => 'URI', 'rules' => 'trim|required'],
-            ['field' => 'params', 'label' => '파라미터값', 'rules' => 'trim|required'],
+            //['field' => 'state', 'label' => '상태값', 'rules' => 'trim|required'],
+            //['field' => 'nonce', 'label' => '임의값', 'rules' => 'trim|required'],
         ];
 
         if ($this->validate($rules) === false) {
@@ -40,33 +38,37 @@ class Token extends \app\controllers\RestController
         }
 
         // 수신 파라미터
-        $username = $this->_reqG('username');
-        $password = $this->_reqG('password');
+        $client_id = $this->_reqG('client_id');
         $method = $this->_reqG('method');
         $uri = $this->_reqG('uri');
-        $params = $this->_reqG('params');
+        $state = $this->_reqG('state');
+        $nonce = get_var($this->_reqG('nonce'), time());    // timestamp 값
+
+        // 암호화 알고리즘
+        $algo = 'sha256';
 
         // 사용자명 체크
-        if (array_key_exists($username, $valid_logins) === false) {
-            $this->api_error(lang('text_rest_unauthorized'), _HTTP_UNAUTHORIZED);
+        if (array_key_exists($client_id, $valid_logins) === false) {
+            $this->api_error(lang('text_rest_invalid_credentials'), _HTTP_UNAUTHORIZED);
         }
 
-        // 비밀번호 체크
-        $valid_password = hash_hmac('sha256', $valid_logins[$username], $username);
-        if (strcasecmp($valid_password, $password) !== 0) {
+        // 비밀키
+        $client_secret = hash_hmac($algo, $valid_logins[$client_id], $client_id);
+
+        // 토큰 기본 문자열
+        $chk_state = md5(strtoupper($method) . ':' . parse_url($uri, PHP_URL_PATH) . ':' . $nonce);
+
+        // 상태값 비교
+        if (empty($state) === false && $state !== $chk_state) {
             $this->api_error(lang('text_rest_invalid_credentials'), _HTTP_UNAUTHORIZED);
         }
 
         // 토큰 생성
-        $nonce = substr(uniqid(), -6) . time();
-        $secret = hash_hmac('sha256', $valid_logins[$username], $username . $nonce);
-        $md5 = md5(strtoupper($method) . ':' . parse_url($uri, PHP_URL_PATH) . ':' . $params);
-
-        $token = $username . ':' . $nonce . ':' . $md5;
-        $token = md5(hash_hmac('sha256', $token, $secret));
+        $token = $client_id . ':' . config_item('rest_realm') . ':' . $chk_state;
+        $token = md5(hash_hmac($algo, $token, $client_secret));
 
         $results = [
-            config_item('rest_user_name') => $username,
+            config_item('rest_user_name') => $client_id,
             config_item('rest_nonce_name') => $nonce,
             config_item('rest_token_name') => $token
         ];

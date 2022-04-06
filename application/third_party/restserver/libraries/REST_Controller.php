@@ -1781,19 +1781,19 @@ abstract class REST_Controller extends \CI_Controller
                 $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_unauthorized'),
             ], self::HTTP_UNAUTHORIZED);
         } else {
-            $timestamp = substr($nonce, 6);
+            $timestamp = $nonce;    //substr($nonce, 6)
 
-            if (intval($this->config->item('rest_token_limit_time')) < (time() - $timestamp)) {
+            if (is_numeric($timestamp) === true && intval($this->config->item('rest_token_limit_time')) < (time() - $timestamp)) {
                 // Display an error response
                 $this->response([
                     $this->config->item('rest_status_field_name')  => false,
                     $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_token_time_limit'),
                 ], self::HTTP_UNAUTHORIZED);
             } else {
-                $secret = hash_hmac('sha256', $valid_logins[$username], $username . $nonce);
-                $params_value = md5(implode('', array_values($this->{strtolower($this->request->method)}())));
-                $md5 = md5(strtoupper($this->request->method) . ':' . parse_url($this->input->server('REQUEST_URI'), PHP_URL_PATH) . ':' . $params_value);
-                $valid_response = $username . ':' . $nonce . ':' . $md5;
+                $secret = hash_hmac('sha256', $valid_logins[$username], $username);
+                //$params_value = md5(implode('', array_values($this->{strtolower($this->request->method)}())));
+                $md5 = md5(strtoupper($this->request->method) . ':' . parse_url($this->input->server('REQUEST_URI'), PHP_URL_PATH) . ':' . $timestamp);
+                $valid_response = $username . ':' . $this->config->item('rest_realm') . ':' . $md5;
                 $valid_response = md5(hash_hmac('sha256', $valid_response, $secret));
 
                 if (strcasecmp($token, $valid_response) !== 0) {

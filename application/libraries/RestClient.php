@@ -349,13 +349,13 @@ class RestClient
      */
     public function http_token($username, $password, $method, $uri, $params = [])
     {
-        $nonce = substr(uniqid(), -6) . time();
-        $secret = hash_hmac('sha256', $password, $username . $nonce);
+        $nonce = time();  //substr(uniqid(), -6) . time();
+        $secret = hash_hmac('sha256', $password, $username);
 
-        $params_value = md5(implode('', array_values($params)));
-        $md5 = md5(strtoupper($method) . ':' . parse_url($uri, PHP_URL_PATH) . ':' . $params_value);
+        //$params_value = md5(implode('', array_values($params)));
+        $md5 = md5(strtoupper($method) . ':' . parse_url($uri, PHP_URL_PATH) . ':' . $nonce);
 
-        $token = $username . ':' . $nonce . ':' . $md5;
+        $token = $username . ':' . $this->rest_configs['rest_realm'] . ':' . $md5;
         $token = md5(hash_hmac('sha256', $token, $secret));
 
         $this->http_header($this->rest_configs['rest_user_name'], $username);

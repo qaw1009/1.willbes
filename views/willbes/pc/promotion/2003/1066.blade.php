@@ -97,8 +97,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_top.jpg" title="제니스 영어 한덕현" />
         </div>
 
-        <div class="evtCtnsBox wb_cts01" id="wb_cts01_01">
-            <div class="time NGEB" id="newTopDday">
+        <div class="evtCtnsBox wb_cts01" id="newTopDday">
+            <div class="time NGEB">
                 <ul>
                     <li class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }}</span> 마감!</li>
                     <li class="time_txt"><span>남은 시간은</span></li>

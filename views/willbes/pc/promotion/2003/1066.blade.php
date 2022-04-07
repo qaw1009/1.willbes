@@ -25,9 +25,17 @@
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/10/1066_top_bg.jpg) center top no-repeat}
 
-        .wb_tops {background:#1e1c31;}
+        .wb_cts00 {padding:50px 0 150px}
 
-        .wb_cts01 {background:#1e1c31;}        
+        .tabContaier{width:100%;}
+        .tabContaier ul {margin:0 auto; width:980px}		
+        .tabContaier li {display:inline; float:left}	
+        .tabContaier a img.off {display:block}
+        .tabContaier a img.on {display:none}
+        .tabContaier a.active img.off {display:none}
+        .tabContaier a.active img.on {display:block}
+        .tabContaier ul:after {content:""; display:block; clear:both}      
+
 
         .wb_cts02 {background:#00ced1}
 
@@ -55,16 +63,16 @@
         .wb_cts07 .wrap span img {width:100%}
 
  
-
+        .wb_cts01 {background:#1e1c31; padding:20px 0;} 
         /*타이머*/
-        .time {text-align:center; padding:20px 0; background:#fff; border-radius:20px; width:1000px !important; margin:0 auto}
-        .time ul {width:100%;}
+        .time {text-align:center; border-radius:20px; width:1000px !important; margin:0 auto;}
+        .time ul {}
         .time ul:after {content:''; display:block; clear:both}
-        .time li {display:inline; line-height:61px; font-size:28px; margin-right:10px}
+        .time li {display:inline; font-size:28px; margin-right:10px; color:#fff !important}
         .time li:first-child {}
         .time li img {width:44px}
         .time .time_txt {color:#000; letter-spacing:-1px}
-        .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite; vertical-align:text-top}
         @@keyframes upDown{
             from{color:#d63e4d}
             50%{color:#ff6600}
@@ -89,23 +97,6 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_top.jpg" title="제니스 영어 한덕현" />
         </div>
 
-        <div class="evtCtnsBox wb_tops" id="package">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/11/1066_tops.jpg" title="수강신청" />
-                <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/187288" target="_blank" title="신청하기" style="position: absolute;left: 54.95%;top: 81.99%;width: 27.36%;height: 8.82%;z-index: 2;"></a>
-            </div>    
-        </div> 
-
-        {{--
-        <div class="evtCtnsBox wb_cts07" id="evt07">
-            <div class="wrap">
-                <span><img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_01.gif"></span>
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_07.gif" alt="얼리버드 접수하고 교재받기" />
-                <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture" target="_blank" title="접수하기" style="position: absolute; left: 19.55%; top:82.81%; width:60.36%; height:8.52%; z-index: 2;"></a>    
-            </div>
-        </div>
-        --}}
-
         <div class="evtCtnsBox wb_cts01" id="wb_cts01_01">
             <div class="time NGEB" id="newTopDday">
                 <ul>
@@ -124,7 +115,42 @@
                     <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>             
                 </ul>
             </div>
-        </div>          
+        </div>   
+        
+        <div class="evtCtnsBox wb_cts00" data-aos="fade-up">
+			<img src="https://static.willbes.net/public/images/promotion/2022/04/1066_00.jpg" title="합격전략 공개" />
+            <div class="tabContaier">
+				<ul>
+					<li>
+						<a class="active" href="#tab1">
+                            <img src="https://static.willbes.net/public/images/promotion/2021/04/2180_01_tab01.jpg" class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2021/04/2180_01_tab01_on.jpg" class="on"  />
+                        </a>
+                    </li>
+					<li>
+						<a href="#tab2">
+                            <img src="https://static.willbes.net/public/images/promotion/2021/04/2180_01_tab02.jpg"  class="off"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2021/04/2180_01_tab02_on.jpg"  class="on" />
+                        </a>
+					</li>
+					<li>
+						<a href="#tab3">
+                            <img src="https://static.willbes.net/public/images/promotion/2021/04/2180_01_tab03.jpg"  class="off" />
+                            <img src="https://static.willbes.net/public/images/promotion/2021/04/2180_01_tab03_on.jpg"  class="on" />
+                        </a>
+					</li>
+				</ul>
+				<div class="tabContents" id="tab1">
+					<img src="https://static.willbes.net/public/images/promotion/2021/04/2180_01_tab01_cts.jpg" alt="윌비스 영어 40~60점대 강력 추천! " />
+				</div>
+				<div class="tabContents" id="tab2">
+					<img src="https://static.willbes.net/public/images/promotion/2021/04/2180_01_tab02_cts.jpg" alt="윌비스 영어 60~80점대 강력 추천! " />
+				</div>
+				<div class="tabContents" id="tab3">
+					<img src="https://static.willbes.net/public/images/promotion/2021/04/2180_01_tab03_cts.jpg" alt="윌비스 영어 70점 이상 강력 추천! " />
+				</div>
+			</div>
+		</div>
 
         <div class="evtCtnsBox wb_cts02">
             <div class="wrap">
@@ -132,29 +158,6 @@
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1676" target="_blnak" style="position: absolute; left: 22.86%; top: 78.76%; width: 54.02%; height: 9.15%; z-index: 2;"></a>
             </div>
         </div>
-
-        {{--
-        <div class="evtCtnsBox wb_cts02s" id="live">            
-            <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_03_01.jpg" alt="한덕현 라이브" />
-            <div class="tImg">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_01.gif" alt="" />
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_02.gif" alt="" /><br>
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_03.gif" alt="" />
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_04.gif" alt="" />
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_05.gif" alt="" />
-            </div>            
-            <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_03_02.jpg" alt="수강신청"/>
-        </div>
-        --}}
-
-        {{--
-        <div class="evtCtnsBox wb_cts03" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_04.jpg" alt="실시간 소통 댓글" /> 
-            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
-            @endif  
-        </div>
-        --}}
 
         <div class="evtCtnsBox wb_cts04">
             <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_05.jpg" alt="영어는 어려운 과목이 아닙니다." />   
@@ -222,8 +225,8 @@
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145826" target="_blank">열끝생활영어</a>
                         </td>
                         <td>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/190992" target="_blank"><span>NEW [국가직]</span> 아작내기</a>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/192322" target="_blank"><span>NEW</span> 실전동형모의고사</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/192958" target="_blank"><span>NEW [지방직]</span> 아작내기</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/192955" target="_blank"><span>NEW</span> 실전동형모의고사</a>
                         </td>
                     </tr>
                     <tr>
@@ -255,7 +258,24 @@
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
-        });       
+        });      
+        
+        /*tab*/
+		$(document).ready(function(){
+			$(".tabContents").hide(); 
+			$(".tabContents:first").show();
+
+			$(".tabContaier ul li a").click(function(){ 
+
+			var activeTab = $(this).attr("href"); 
+			$(".tabContaier ul li a").removeClass("active"); 
+			$(this).addClass("active"); 
+			$(".tabContents").hide(); 
+			$(activeTab).fadeIn(); 
+
+			return false; 
+			});
+		});	 
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

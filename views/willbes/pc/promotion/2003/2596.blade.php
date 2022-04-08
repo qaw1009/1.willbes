@@ -21,6 +21,11 @@
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/03/2596_top_bg.jpg) no-repeat center top;}
 
+        .wb_tops {background:#9CC1B9}
+        .pass_apply {width:860px; margin:0 auto;}
+        .pass_apply a {display:block; background:#000; font-size:44px; color:#fff; padding:20px; background:#000; border-radius:5px; box-shadow:10px rgba(0,0,0,.5);}
+        .pass_apply a:hover {background:#533fd1}
+
         .wb_01 {background:#eee8df;}
 
         .wb_02 {background:#396659;}
@@ -32,9 +37,15 @@
     <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox wb_top" data-aos="fade-down">            
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2596_top.jpg" alt="무료특강"/>               
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2596_top.jpg" alt="무료특강"/>                    
         </div>
 
+        <div class="evtCtnsBox wb_tops"> 
+            <div class="pass_apply NSK-Black">
+                <a href="https://pass.willbes.net/lecture/index/cate/3148/pattern/free?search_order=regist&course_idx=1082" target="_blank">수강신청 바로가기 ></a>
+            </div>
+        </div>
+        
         <div class="evtCtnsBox wb_01" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2596_01.jpg"  alt="공개일정"/>

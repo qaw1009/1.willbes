@@ -9,20 +9,24 @@
     .evtCtnsBox img {max-width:100%;}
     .evtCtnsBox .wrap { margin:0 auto; position:relative}
     /*.evtCtnsBox .wrap a {border:1px solid #000}*/
-    
+
+    .pass_apply {margin:0 auto;}
+    .pass_apply a {display:block; background:#000; font-size:44px; color:#fff; padding:20px; background:#000; border-radius:5px; box-shadow:10px rgba(0,0,0,.5);}
+    .pass_apply a:hover {background:#533fd1}
+
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
-        
+    .pass_apply a {display:block; background:#000; font-size:24px; color:#fff; padding:20px; background:#000; border-radius:5px; box-shadow:10px rgba(0,0,0,.5);}     
     }
 
     /* 태블릿 세로 */
     @@media only screen and (min-width: 375px) and (max-width: 640px) {       
-
+    .pass_apply a {display:block; background:#000; font-size:34px; color:#fff; padding:20px; background:#000; border-radius:5px; box-shadow:10px rgba(0,0,0,.5);}
     }
     
     /* 태블릿 가로, PC */
     @@media only screen and (min-width: 641px) {
-        
+   
     }
 
 </style>
@@ -31,6 +35,9 @@
 
     <div class="evtCtnsBox" data-aos="fade-down">
         <img src="https://static.willbes.net/public/images/promotion/2022/03/2596_mtop.jpg" alt="" >
+        <div class="pass_apply NSK-Black" data-aos="fade-up">
+            <a href="https://pass.willbes.net/m/lecture/index/cate/3148/pattern/free?search_order=regist&course_idx=1082" target="_blank">수강신청 바로가기 ></a>
+        </div>      
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">

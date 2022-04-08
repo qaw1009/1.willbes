@@ -170,6 +170,7 @@
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> CN플러스 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-cnplus-excel' },
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> CN플러스 (윌스토리제외)', className: 'btn-sm btn-success border-radius-reset mr-15 btn-cnplus-no-willstory-excel' },
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 모아시스 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-target-excel' },
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 배송요청 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-target-excel-new' },
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
@@ -419,6 +420,15 @@
                 var url = '{{ site_url('/pay/delivery/targetExcelNew') }}';
 
                 if (confirm('정말로 배송요청 엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit(url, $search_form.serializeArray(), 'POST');
+                }
+            });
+
+            // CN플러스 (윌스토리제외) 엑셀다운로드 버튼 클릭
+            $('.btn-cnplus-no-willstory-excel').on('click', function(event) {
+                var url = '{{ site_url('/pay/delivery/cnplusExcel/no-willstory') }}';
+
+                if (confirm('정말로 CN플러스(윌스토리제외) 엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit(url, $search_form.serializeArray(), 'POST');
                 }
             });

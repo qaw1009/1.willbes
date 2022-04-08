@@ -570,9 +570,13 @@ class Delivery extends BaseOrder
 
     /**
      * CNPlus 송장등록 주문조회
+     * @param array $params
      */
-    public function cnplusExcel()
+    public function cnplusExcel($params = [])
     {
+        // 데이터 구분 (all, no-willstory)
+        $data_type = element('0', $params, 'all');
+
         // 송장등록 주문조회
         $search_start_date = $this->_reqP('search_start_date');
         $search_start_hour = $this->_reqP('search_start_hour');
@@ -587,15 +591,16 @@ class Delivery extends BaseOrder
         $search_start_datm = $search_start_date . ' ' . $search_start_hour . ':00:00';
         $search_end_datm = $search_end_date . ' ' . $search_end_hour . ':59:59';
 
-        $data = $this->deliveryInfoModel->getDeliveryCNPlusOrderData($search_start_datm, $search_end_datm, $search_site_code);
+        $data = $this->deliveryInfoModel->getDeliveryCNPlusOrderData($search_start_datm, $search_end_datm, $search_site_code, $data_type);
         if (empty($data) === true) {
             show_alert('데이터가 없습니다.', 'back');
         }
         $last_query = $this->deliveryInfoModel->getLastQuery();
 
         // export excel
+        $file_name = '교재배송_CN플러스' . ($data_type == 'no-willstory' ? '(윌스토리제외)' : '');
         $headers = ['수령인명', '전화번호', '핸드폰번호', '우편번호', '배송주소', '배송메시지', '도서코드', '출판사', 'ISBN', '정가', '판매가', '주문수량', '결제금액', '교재명', '주문번호'];
         $numerics = ['wOrgPrice', 'OrderPrice', 'RealPayPrice'];    // 숫자형 변환 대상 컬럼
-        $this->_makeExcel('교재배송_CN플러스', $data, $headers, true, $last_query, $numerics);
+        $this->_makeExcel($file_name, $data, $headers, true, $last_query, $numerics);
     }
 }

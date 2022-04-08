@@ -417,6 +417,7 @@
 
             // 모아시스(신) 엑셀다운로드 버튼 클릭
             $('.btn-target-excel-new').on('click', function(event) {
+                event.preventDefault();
                 var url = '{{ site_url('/pay/delivery/targetExcelNew') }}';
 
                 if (confirm('정말로 배송요청 엑셀다운로드 하시겠습니까?')) {
@@ -426,6 +427,7 @@
 
             // CN플러스 (윌스토리제외) 엑셀다운로드 버튼 클릭
             $('.btn-cnplus-no-willstory-excel').on('click', function(event) {
+                event.preventDefault();
                 var url = '{{ site_url('/pay/delivery/cnplusExcel/no-willstory') }}';
 
                 if (confirm('정말로 CN플러스(윌스토리제외) 엑셀다운로드 하시겠습니까?')) {

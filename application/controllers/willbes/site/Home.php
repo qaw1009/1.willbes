@@ -1007,7 +1007,7 @@ class Home extends \app\controllers\FrontController
         foreach ($data as  $idx => $row) {
             $arr_price_data = $row['ProdPriceData'] != 'N' ? element('0', json_decode($row['ProdPriceData'], true)) : [];
 
-            if (empty($arr_price_data) === false && $arr_price_data['RealSalePrice'] > 0) {
+            if (empty($arr_price_data) === false) {
                 $data[$idx]['ProdPriceData'] = $arr_price_data;
             }
         }

@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+        .evtCtnsBox .wrap a {border:1px solid #000}
 
         /************************************************************/
         .evtTop01 {background:#241B20 url("https://static.willbes.net/public/images/promotion/2020/11/1902_top01_bg.jpg") center top no-repeat}
@@ -70,10 +70,10 @@
 
         <div class="evtCtnsBox evt02" id="evt02"> 
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/10/1902_02.jpg" alt="라이브 모드 직렬변 신청하기" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/1902_02.jpg" alt="라이브 모드 직렬변 신청하기" />
 
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="_blank" title="행정직" style="position: absolute; left: 10.36%; top: 88.27%; width: 17.05%; height: 3.97%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="_blank" title="소방직" style="position: absolute; left: 41.7%; top: 88.27%; width: 17.05%; height: 3.97%; z-index: 2;"></a>
+                {{--<a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="_blank" title="소방직" style="position: absolute; left: 41.7%; top: 88.27%; width: 17.05%; height: 3.97%; z-index: 2;"></a>--}}
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="_blank" title="군무원" style="position: absolute; left: 72.86%; top: 88.27%; width: 17.05%; height: 3.97%; z-index: 2;"></a> 
             </div>
 

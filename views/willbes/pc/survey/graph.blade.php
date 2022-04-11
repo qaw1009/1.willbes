@@ -10,7 +10,7 @@
     .graphWrap:after {content:""; display:block; clear:both}
     .graphbox {width:90%; margin:20px auto; border:1px solid #000;}
     .graphbox .subTit {font-size:120%; color:#F30}
-    .graph {width:20%; float:left; text-align:center; background:url(http://file.willbes.net/new_image/2015/04/graphBg.png) repeat;}
+    .graph {width:20%; float:left; text-align:center;}
     .graph p {padding:10px 0; background:#fff}
     .graph p:last-child {border-top:1px solid #333}
     .graph div {position:relative; width:45px; height:250px; margin:0 auto;}

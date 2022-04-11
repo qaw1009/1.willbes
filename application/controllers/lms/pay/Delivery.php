@@ -443,7 +443,7 @@ class Delivery extends BaseOrder
     }
 
     /**
-     * 모아시스 송장등록 주문조회
+     * 배송요청 엑셀다운로드 (모아시스 신규 버전, 윌스토리제외, 2022-04-11)
      */
     public function targetExcelNew()
     {
@@ -461,7 +461,7 @@ class Delivery extends BaseOrder
         $search_start_datm = $search_start_date . ' ' . $search_start_hour . ':00:00';
         $search_end_datm = $search_end_date . ' ' . $search_end_hour . ':59:59';
 
-        $data = $this->deliveryInfoModel->getDeliveryTargetOrderData($search_start_datm, $search_end_datm, $search_site_code);
+        $data = $this->deliveryInfoModel->getDeliveryTargetOrderData($search_start_datm, $search_end_datm, $search_site_code, 'no-willstory');
         if (empty($data) === true) {
             show_alert('데이터가 없습니다.', 'back');
         }
@@ -491,7 +491,7 @@ class Delivery extends BaseOrder
     }
 
     /**
-     * 모아시스 송장등록 주문조회 (이전버전)
+     * 모아시스 엑셀다운로드 (이전 버전)
      */
     public function targetExcel()
     {
@@ -569,7 +569,7 @@ class Delivery extends BaseOrder
     }
 
     /**
-     * CNPlus 송장등록 주문조회
+     * CN플러스 엑셀다운로드 (+윌스토리제외, 2022-04-08)
      * @param array $params
      */
     public function cnplusExcel($params = [])

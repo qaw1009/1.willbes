@@ -245,14 +245,21 @@ class DeliveryInfoModel extends BaseOrderModel
      * @param string $search_start_datm [조회시작일시 (결제일시)]
      * @param string $search_end_datm [조회종료일시 (결제일시)]
      * @param null|int $site_code [사이트코드]
+     * @param null|$data_type $site_code [데이터구분 (all, no-willstory)]
      * @return array
      */
-    public function getDeliveryTargetOrderData($search_start_datm, $search_end_datm, $site_code = null)
+    public function getDeliveryTargetOrderData($search_start_datm, $search_end_datm, $site_code = null, $data_type = 'all')
     {
         $arr_condition = [
             'EQ' => ['O.SiteCode' => $site_code],
             'IN' => ['O.SiteCode' => get_auth_site_codes()]
         ];
+
+        // 윌스토리 데이터 제외
+        if ($data_type == 'no-willstory') {
+            $arr_condition['NOT']['O.SiteCode'] = '2012';
+        }
+        
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
         $column = 'O.OrderIdx, O.OrderNo, OP.OrderProdIdx, OP.ProdCode

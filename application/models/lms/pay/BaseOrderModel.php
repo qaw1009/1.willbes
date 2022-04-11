@@ -21,6 +21,7 @@ class BaseOrderModel extends WB_Model
         'order_payment' => 'lms_order_payment',
         'order_product_activity_log' => 'lms_order_product_activity_log',
         'order_memo' => 'lms_order_memo',
+        'order_exception' => 'lms_order_exception',
         'product' => 'lms_product',
         'product_lecture' => 'lms_product_lecture',
         'product_lecture_date' => 'lms_product_lecture_date',

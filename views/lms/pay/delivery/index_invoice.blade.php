@@ -415,7 +415,7 @@
                 }
             });
 
-            // 모아시스(신) 엑셀다운로드 버튼 클릭
+            // 배송요청 엑셀다운로드 버튼 클릭 (윌스토리제외)
             $('.btn-target-excel-new').on('click', function(event) {
                 event.preventDefault();
                 var url = '{{ site_url('/pay/delivery/targetExcelNew') }}';

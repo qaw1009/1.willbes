@@ -47,11 +47,12 @@
         .evt_apply .check {width:800px; margin:50px auto 0; padding:20px; font-size:17px; color:#000; letter-spacing:-1px;font-weight:bold;}
         .evt_apply .check a {display:inline-block; padding:10px; color:#fff; background:#000; margin-left:40px; border-radius:20px; font-size:12px}
         .evt_apply .check p {font-size:14px; padding:10px 0 0 20px; line-height:1.4}
+        .evt_apply .check input {width:18px;height:18px;}
         .evt_apply .check input:checked + label {border-bottom:1px dashed #533fd1; color:#533fd1}
 
-        .evt_apply .totalPrice {width:375px; margin:0 auto;padding:50px 0;}
-        .evt_apply .totalPrice a {display:block; font-size:35px; color:#fff; padding:20px; background:#000; border-radius:50px;}
-        .evt_apply .totalPrice a:hover {background:#533fd1}
+        .evt_apply .passbuy {width:375px; margin:0 auto;padding:50px 0;}
+        .evt_apply .passbuy a {display:block; font-size:35px; color:#fff; padding:20px; background:#000; border-radius:50px;}
+        .evt_apply .passbuy a:hover {background:#533fd1}
 
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:17px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.75}
@@ -98,27 +99,29 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/04/2598_apply.jpg"  alt="신청하기" />
                 <div class="passLecBuy NSK-Black"> 
                     <div>                       
-                        <input type="radio" id="y_pkg0" name="y_pkg" value="193836" class="radio_check"/>                
-                        <label for="y_pkg0">해양경찰간부 L-PASS(일반)</label>
+                        <input type="radio" name="y_pkg" id="pass01" value="193836"  class="radio_check"/>
+                        <label for="pass01">해양경찰간부 L-PASS(일반)</label>                     
                     </div> 
                     <div>                          
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="193837" class="radio_check"/> 
-                        <label for="y_pkg1">해양경찰간부 L-PASS(해양)</label>
+                        <input type="radio" name="y_pkg" id="pass02" value="193837" class="radio_check"/> 
+                        <label for="pass02">해양경찰간부 L-PASS(해양)</label>                        
                     </div>                    
                 </div>
-            </div>
-            <div class="check" data-aos="fade-up">
-                <input type="checkbox" id="is_chk1" name="is_chk" value="Y"/>
-                <label for="is_chk1">페이지 하단 해양경찰간부 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
-                <a href="#info">이용안내확인하기 ↓</a>
+            </div>                      
+            <div class="check" id="chkInfo">
+                <label>
+                    <input name="ischk" type="checkbox" value="Y" />
+                    페이지 하단 해양경찰간부 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. 
+                </label>
+                <a href="#info"> 이용안내 확인하기 ↓</a>
                 <p>
                     ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>
                     ※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.<br>                  
                 </p>
+            </div> 
+            <div class="passbuy">
+                <a href="javascript:void(0);" onclick="javascript:go_PassLecture(); return false;">L- PASS 신청하기 ></a>
             </div>
-            <div class="totalPrice NSK-Black" data-aos="fade-up">
-                <a href="javascript:void(0);" onclick="termsCheck('is_chk1', 'pass');">L- PASS 신청하기 ></a>
-            </div>            
         </div>
 
         <div class="evtCtnsBox evt_03" data-aos="fade-up" id="open_event">
@@ -197,7 +200,6 @@
     <script type="text/javascript">
         var $regi_form = $('#regi_form'); 
 
-
          /* 탭 */
          $(document).ready(function(){
             $('.evtTab').each(function(){
@@ -240,72 +242,21 @@
             @endif
         }
 
-        /*약관동의*/
-        function termsCheck(terms_id,ele_id){
-            if($("#" + terms_id).is(":checked") === false){
-                $("#" + terms_id).focus();
-                alert('이용안내에 동의하셔야 합니다.');
-                return;
-            }
-            var _url = '{{ site_url('/periodPackage/show/cate/')}}' + cate + '/pack/648001/prod-code/' + code;
-            location.href = _url;
-        }
-       
-        /*무료 교재지급*/
-        function fn_promotion_etc_submit() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-
-            var order_cnt = {{ $arr_base['order_count'] or 0 }};
-            if(order_cnt === 0){
-                alert('구매자가 아닙니다.');
+        /*수강신청 동의*/ 
+        function go_PassLecture(){
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
                 return;
             }
 
-            @if(empty($arr_promotion_params['arr_prod_code']) === false && empty($arr_promotion_params['cart_prod_code']) === false)
-                var $add_apply_form = $('#add_apply_form');
-                var _url = '{!! front_url('/event/promotionEtcStore') !!}';
-
-                if (!confirm('장바구니에 담으시겠습니까?')) { return true; }
-                ajaxSubmit($add_apply_form, _url, function(ret) {
-                    if(ret.ret_cd) {
-                        alert( getApplyMsg(ret.ret_msg) );
-                        location.href = '{!! front_url('/cart/index?tab=book') !!}';
-                    }
-                }, function(ret, status, error_view) {
-                    alert( getApplyMsg(ret.ret_msg) );
-                }, null, false, 'alert');
-            @else
-                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
-            @endif
-        }
-
-        /* 이벤트 추가 신청 메세지*/
-        function getApplyMsg(ret_msg) {
-            {{-- 해당 프로모션 종속 결과 메세지 --}}
-            var apply_msg = '';
-            var arr_apply_msg = [
-                ['처리 되었습니다.','장바구니에 담겼습니다.'],
-            ];
-
-            for (var i = 0; i < arr_apply_msg.length; i++) {
-                if(arr_apply_msg[i][0] == ret_msg) {
-                    apply_msg = arr_apply_msg[i][1];
-                }
+            code = $('input[name="y_pkg"]:checked').val();
+            if (typeof code == 'undefined' || code == '') {
+                alert('강좌를 선택해 주세요.');
+                return;
             }
-            if(apply_msg == '') apply_msg = ret_msg;
-            return apply_msg;
-        }
-
-    
-        function goDesc(tab){
-            location.href = '#tab';
-            var activeTab = "#"+tab;
-            $(".tabs li a").removeClass("active");
-            $(".tabs li a[href='#"+tab+"']").addClass("active");
-            $(".content_guide_box").hide();
-            $(activeTab).show();
-        }
-
+            location.href = "{{ front_url('/periodPackage/show/cate/3007/pack/648001/prod-code/') }}" + code;
+        }    
+               
     </script>
 
     

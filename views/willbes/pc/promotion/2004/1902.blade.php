@@ -102,129 +102,66 @@
                     <tr>
                         <td>국어</td>
                         <td>오대혁</td>
-                        <td>LIVE 고갱이국어 실전 동형 모고 및 파이널 특강</td>
-                        <td>03/07 ~ 03/24</td>
-                        <td>월/목 9:00~13:00</td>
-                        <td>48000</td>
-                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/191102" target="_blank">신청하기</td>
+                        <td>2022 오대혁 고갱이국어 [지방직] 실전동형모고 및 파이널 특강</td>
+                        <td>04/11 ~ 05/30</td>
+                        <td>월 9:00~13:00</td>
+                        <td>64,000</td>
+                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/192855" target="_blank">신청하기</a></td>
                     </tr>
                     <tr>
                         <td>영어</td>
                         <td>한덕현</td>
-                        <td>LIVE 제니스영어 실전 동형 모의고사</td>
-                        <td>03/07 ~ 03/28</td>
+                        <td>2022 한덕현 제니스영어 [지방직] 실전 동형모의고사</td>
+                        <td>04/11 ~ 05/16</td>
                         <td>월 14:00~18:00</td>
-                        <td>32000</td>
-                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/191105" target="_blank">신청하기</td>
+                        <td>48,000</td>
+                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/192859" target="_blank">신청하기</a></td>
                     </tr>
                     <tr>
                         <td>영어</td>
                         <td>한덕현</td>
-                        <td>LIVE 독해 아작내기 특강</td>
-                        <td>03/04 ~ 03/05</td>
-                        <td>금/토 9:00~13:00</td>
-                        <td>16000</td>
-                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/191107" target="_blank">신청하기</td>
-                    </tr>
-                    <tr>
-                        <td>영어</td>
-                        <td>한덕현</td>
-                        <td>LIVE 문법/어휘/숙어 아작내기 특강</td>
-                        <td>03/11 ~ 03/12</td>
-                        <td>금/토 9:00~13:00</td>
-                        <td>16000</td>
-                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/191108" target="_blank">신청하기</td>
+                        <td>2022 한덕현 영어 지방직 대비 [문법/어휘/숙어] 아작내기 특강</td>
+                        <td>05/23 ~ 05/30</td>
+                        <td>월 14:00~18:00</td>
+                        <td>16,000</td>
+                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/192858" target="_blank">신청하기</a></td>
                     </tr>
                     <tr>
                         <td>한국사</td>
                         <td>김상범</td>
-                        <td>LIVE 한국사 실전 동형 모고 및 파이널 특강</td>
-                        <td>03/10 ~ 03/26</td>
-                        <td>목/토 14:00~18:00</td>
-                        <td>48000</td>
-                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/191103" target="_blank">신청하기</td>
+                        <td>2022 김상범 한국사 [지방직] 실전    동형모고 및 파이널 특강</td>
+                        <td>04/14 ~ 06/02</td>
+                        <td>목 14:00~18:00</td>
+                        <td>64,000</td>
+                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/192854" target="_blank">신청하기</a></td>
                     </tr>
                     <tr>
                         <td>행정학</td>
                         <td>김덕관</td>
-                        <td>LIVE [국가직] 9급 행정학 쌍둥이 모의고사</td>
-                        <td>03/04 ~ 03/18</td>
-                        <td>금 14:00~18:00</td>
-                        <td>24000</td>
-                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/190924" target="_blank">신청하기</td>
+                        <td>김덕관 행정학 [지방직] 쌍둥이    모의고사</td>
+                        <td>04/13 ~ 04/27</td>
+                        <td>수 14:00~18:00</td>
+                        <td>24,000</td>
+                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/192846" target="_blank">신청하기</a></td>
                     </tr>
                     <tr>
                         <td>행정학</td>
                         <td>김철</td>
-                        <td>LIVE 하제누리 행정학 실전 동형 모고 및 파이널 특강</td>
-                        <td>03/07 ~ 03/22</td>
-                        <td>월/화 14:00~18:00</td>
-                        <td>48000</td>
-                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/191110" target="_blank">신청하기</td>
+                        <td>2022 김철 행정학 [지방직] 실전 동형모의고사</td>
+                        <td>04/12 ~ 05/17</td>
+                        <td>화 14:00~18:00</td>
+                        <td>48,000</td>
+                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/192851" target="_blank">신청하기</a></td>
                     </tr>
                     <tr>
                         <td>행정법</td>
                         <td>신기훈</td>
-                        <td>LIVE 행정법 실전 동형 모고 및 파이널 특강</td>
-                        <td>03/08 ~ 03/23</td>
-                        <td>화/수 9:00~13:00</td>
-                        <td>48000</td>
-                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/191109" target="_blank">신청하기</td>
-                    </tr>
-                    <tr>
-                        <td>소방학개론</td>
-                        <td>이종오</td>
-                        <td>LIVE 소방학개론 파이널 실전 동형 모의고사</td>
-                        <td>03/09 ~ 03/30</td>
-                        <td>수 9:00~13:00</td>
-                        <td>32000</td>
-                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/190953" target="_blank">신청하기</td>
-                    </tr>
-                    <tr>
-                        <td>소방관계법규</td>
-                        <td>이종오</td>
-                        <td>LIVE 소방 관계법규 파이널 실전 동형 모의고사</td>
-                        <td>03/09 ~ 03/30</td>
-                        <td>수 14:00~18:00</td>
-                        <td>32000</td>
-                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/190954" target="_blank">신청하기</td>
-                    </tr>
-                    <tr>
-                        <td>소방행정법</td>
-                        <td>이석준</td>
-                        <td>LIVE 소방행정법 파이널 실전 동형 모의고사</td>
-                        <td>03/08 ~ 03/29</td>
-                        <td>화 9:00~18:00</td>
-                        <td>64000</td>
-                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/190955" target="_blank">신청하기</td>
-                    </tr>
-                    <tr>
-                        <td>공채영어</td>
-                        <td>이아림</td>
-                        <td>LIVE 이아림 소방공채 영어 파이널 실전 동형 모의고사</td>
-                        <td>03/11 ~ 04/01</td>
-                        <td>금 9:00~18:00</td>
-                        <td>64000</td>
-                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/190956" target="_blank">신청하기</td>
-                    </tr>
-                    <tr>
-                        <td>경채영어</td>
-                        <td>양익</td>
-                        <td>LIVE 양익 소방경채 생활영어 파이널 실전 동형 모의고사</td>
-                        <td>03/08 ~ 03/29</td>
+                        <td>2022 신기훈 행정법 [지방직] 실전 동형모의고사</td>
+                        <td>04/12 ~ 05/17</td>
                         <td>화 9:00~13:00</td>
-                        <td>32000</td>
-                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/190958" target="_blank">신청하기</td>
-                    </tr>
-                    <tr>
-                        <td>소방한국사</td>
-                        <td>한경준</td>
-                        <td>LIVE 美親(미친) 소방 한국사 파이널 실전 동형 모의고사</td>
-                        <td>03/07 ~ 03/28</td>
-                        <td>월 9:00~18:00</td>
-                        <td>64000</td>
-                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/190957" target="_blank">신청하기</td>
-                    </tr>                      
+                        <td>48,000</td>
+                        <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/192845" target="_blank">신청하기</a></td>
+                    </tr>                     
                     </tbody>
                 </table>
             </div>

@@ -201,7 +201,7 @@
 		<div class="evtCtnsBox wb_07" id="evt_02" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/04/2623_07.jpg"  alt="전국모의고사 소문내기 이벤트"/>
-                <a href="javascript:void(0)" title="할인쿠폰 받기" style="position: absolute; left: 29.48%; top: 81.96%; width: 41.5%; height: 9.84%; z-index: 2;"></a>               
+                <a href="javascript:void(0)" onclick="giveCheck()" title="할인쿠폰 받기" style="position: absolute; left: 29.48%; top: 81.96%; width: 41.5%; height: 9.84%; z-index: 2;"></a>
             </div> 
 		</div>
 

@@ -21,7 +21,10 @@
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/03/2600_top_bg.jpg) no-repeat center top;}
 
-        .wb_tops {background:#211111}
+        .wb_tops {background:#251c1a; padding:50px 0}
+        .pass_apply {width:860px; margin:0 auto;}
+        .pass_apply a {display:block;font-size:44px; color:#000; padding:20px; background:#fff; border-radius:5px; box-shadow:10px rgba(0,0,0,.5);}
+        .pass_apply a:hover {background:#ffdc4e;color:#000;}
 
         .wb_01 {background:#ffdc4e;}
 
@@ -53,6 +56,12 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2600_04.jpg"  alt="연간 커리큘럼"/>              
 		</div>
 
+        <div class="evtCtnsBox wb_tops"> 
+            <div class="pass_apply NSK-Black">
+                <a href="https://pass.willbes.net/lecture/index/cate/3148/pattern/free?search_order=regist&course_idx=1078" target="_blank">수강신청 바로가기 ></a>
+            </div>
+        </div>
+
         <div class="evtCtnsBox wb_05" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2600_05.jpg"  alt="공식 계정"/>
@@ -62,6 +71,7 @@
                 <a href="https://www.instagram.com/willbes_prosecution_team/?r=nametag" title="인스타" target="_blank" style="position: absolute; left: 67.95%; top: 57.14%; width: 8.21%; height: 13.11%; z-index: 2;"></a>               
             </div>
 		</div>
+
     </div>
 
     <!-- End Container -->

@@ -22,7 +22,7 @@
         .evtTop01 {background:#241B20 url("https://static.willbes.net/public/images/promotion/2020/11/1902_top01_bg.jpg") center top no-repeat}
         .evtTop02 {background:#15161A url("https://static.willbes.net/public/images/promotion/2020/11/1902_top02_bg.jpg") center top no-repeat}
         .evt02 {background:#866038; padding-bottom:150px}
-        .evt02 .lecTable {width:1020px; margin:0 auto; background:#fff; font-size:14px}
+        .evt02 .lecTable {width:1000px; margin:0 auto; background:#fff; font-size:14px}
         .evt02 th,
         .evt02 td {padding:15px 5px; line-height:1.3}
         .evt02 td:nth-child(3) {text-align:left; color:#000}
@@ -36,7 +36,7 @@
 
         /* 이용안내 */
         .wb_info {padding:150px 0;}
-        .guide_box{width:1120px; margin:0 auto; border:2px solid #202020; padding:50px; text-align:left; word-break:keep-all}
+        .guide_box{width:1000px; margin:0 auto; border:2px solid #202020; padding:50px; text-align:left; word-break:keep-all}
         .guide_box h2 {font-size:30px; margin-bottom:30px}
         .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:17px;}        
         .guide_box dd{color:#777; margin:0 0 20px 5px; line-height:17px}

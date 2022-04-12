@@ -182,12 +182,15 @@
                     <li>4. 고객 변심으로 인한 환불은 수강 시작일 (당일 포함)로 부터 7일이 경과되면, 해양경찰 간부 L-PASS 결제가 기준으로 계산하여 사용일 수만큼 차감 후 환불됩니다.<br>(단, 가산점 특강, 온라인 모의고사 등 이용 시에도 차감)</li>
                     <li>5. 포인트를 사용하였을 경우 사용한 포인트만큼 차감 후 환불 진행되며, 남은 포인트는 회수됩니다. (포인트 미사용일 경우 추가 차감 없이 포인트 회수 후 환불 진행)</li>
 				</ul>
-                            
 			</div>
 		</div> 
-
     </div>
     <!-- End Container -->
+
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -229,7 +232,6 @@
        /*쿠폰발급 */
         function giveCheck() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-
             @if(empty($arr_promotion_params['give_type']) === false && empty($arr_promotion_params['give_idx']) === false)
                 var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
                 ajaxSubmit($regi_form, _check_url, function (ret) {
@@ -256,11 +258,5 @@
             }
             location.href = "{{ front_url('/periodPackage/show/cate/3007/pack/648001/prod-code/') }}" + code;
         }    
-               
     </script>
-
-    
-    {{-- 프로모션용 스크립트 include --}}
-    @include('willbes.pc.promotion.promotion_script')
-
 @stop

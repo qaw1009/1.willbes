@@ -118,7 +118,8 @@ class PredictFinal extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
-            ['field' => 'predict_idx', 'label' => '합격예측코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'predictidx', 'label' => '합격예측코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'take_mock_part', 'label' => '응시직렬', 'rules' => 'trim|required|integer'],
             ['field' => 'cert_idx', 'label' => '수강인증코드', 'rules' => 'trim|required|integer']
         ];
 
@@ -126,12 +127,12 @@ class PredictFinal extends \app\controllers\BaseController
             return null;
         }
 
-        $input_data = $this->_getInvoiceExcelData();
-        if ($input_data === false) {
+        $params = $this->_getInvoiceExcelData();
+        if ($params === false) {
             return $this->json_error('엑셀파일 읽기에 실패했습니다.');
         }
 
-        $result = $this->predictModel->tempFinalDataUpload($this->_reqP(null), $input_data);
+        $result = $this->predictModel->tempFinalDataUpload($params, $this->_reqP(null));
         return $this->json_result($result, '저장 되었습니다.', $result);
     }
 
@@ -227,9 +228,27 @@ class PredictFinal extends \app\controllers\BaseController
 
     public function sampleDownload()
     {
-        $this->load->helper('download');
+        /*$this->load->helper('download');
         $file_path = STORAGEPATH . 'resources/sample/sample_final_predict.xlsx';
-        force_download($file_path, null);
+        force_download($file_path, null);*/
+
+        $predict_idx = $this->_reqP('predict_idx');
+        $take_mock_part = $this->_reqP('take_mock_part');
+
+        $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
+        $area = $this->predictModel->getArea($sysCode_Area);
+
+        $result_subject = $this->predictCodeModel->getPredictForSubjectAll($predict_idx, $take_mock_part);
+        $headers = ['지역','지역코드','환산점수','체력','가점'];
+        $paper_headers = [];
+        foreach ($result_subject as $row) {
+            $paper_headers[] = $row['CcdName'];
+        }
+        $headers = array_merge($headers,$paper_headers);
+
+        $file_name = 'sample_final_'.$result_subject[0]['TakeMockPartName'];
+        $this->load->library('excel');
+        $this->excel->exportHugeExcel($file_name, $area, $headers);
     }
 
     public function sampleCertDownload()

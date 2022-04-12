@@ -26,13 +26,13 @@
         <label class="control-label col-md-1">검색
         </label>
         <div class="col-md-8 form-inline">
-            <select class="form-control" name="search_take_mock_part" style="width: 130px;">
+            <select class="form-control form-selectbox" name="search_take_mock_part" style="width: 130px;">
                 <option value="">응시직렬</option>
                 @foreach($arr_base['take_mock_part'] as $row)
                     <option class="{{$row['PredictIdx']}}" value="{{$row['TakeMockPart']}}">{{$row['CcdName']}}</option>
                 @endforeach
             </select>
-            <select class="form-control" name="search_take_area" style="width: 130px;">
+            <select class="form-control form-selectbox" name="search_take_area" style="width: 130px;">
                 <option value="">응시지역</option>
                 @foreach($arr_base['take_area'] as $key => $val)
                     <option value="{{$key}}">{{$val}}</option>
@@ -46,7 +46,7 @@
             <thead class="bg-white-gray">
             <tr>
                 <th width="5%">No</th>
-                <th class="searching_take_mock_part">응시직렬</th>
+                <th class="searching_take_mock_part rowspan">응시직렬</th>
                 <th class="searching_take_area">응시지역</th>
                 <th width="10%">합격자 수</th>
                 <th width="10%">사용여부</th>
@@ -94,7 +94,7 @@
             var predict_idx = "{{$predict_idx}}";
 
             // searching: true 옵션일 경우 검색
-            $modal_regi_form.filter('.searching').on('keyup change ifChanged', 'select', function() {
+            $modal_regi_form.filter('.searching').on('keyup change ifChanged', 'select.form-selectbox', function() {
                 datatableSearching();
             });
 
@@ -103,7 +103,8 @@
                 ajax : false,
                 paging: true,
                 pageLength: 17,
-                searching: true
+                searching: true,
+                rowsGroup: ['.rowspan'],
             });
 
             $modal_regi_form.on('click', '.btn-modify-successful', function() {

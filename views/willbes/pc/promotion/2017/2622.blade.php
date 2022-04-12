@@ -22,9 +22,9 @@
 
         .sky {position:fixed; top:150px; right:10px; z-index:10;}
 
-        .evtTop  {background:url("https://static.willbes.net/public/images/promotion/2022/04/2622_top_bg.jpg") no-repeat center top;}
+        .evtTop {background:url("https://static.willbes.net/public/images/promotion/2022/04/2622_top_bg.jpg") no-repeat center top;}
 
-        .evt01  {background:url("https://static.willbes.net/public/images/promotion/2022/04/2622_01_bg.jpg") no-repeat center top;}
+        .evt01 {background:url("https://static.willbes.net/public/images/promotion/2022/04/2622_01_bg.jpg") no-repeat center top;}
 
         .evt03 {background:#edf6f5}
 

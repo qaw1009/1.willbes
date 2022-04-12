@@ -5,16 +5,19 @@
     <!-- content -->
     <style type="text/css">
         .evtContent {
-            position:relative;
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
+            font-size:14px;          
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px}
-        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
-        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5); border-radius:5px}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
@@ -87,9 +90,8 @@
             <div id="tab01">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2021/08/2343_01_01.jpg"  alt="한국사능력검정시험" />
-                    <a href="https://www.historyexam.go.kr/pageLink.do?link=examSchedule&netfunnel_key=948EB88138791B554C1AE9BFE18DD2A00937CDBC98B25DA8DAAC931FD8863A606638697C795123B58B8CFE6468C44E6B0B4F083A8554DA8545A0885C169A872415C2B0916BB30705FB40A46761BAC5BAB258F3EC4E2B229AFD873BE0F99D6EC6376874672F878F1878670FC0666775E22C362C312C302C30" title="한능검 원서접수 바로가기" target="_blank" style="position: absolute; left: 32.77%; top: 47.67%; width: 34.73%; height: 3.7%; z-index: 2;"></a>
-                    <a href="https://www.historyexam.go.kr/pst/list.do?bbs=dat" title="한능검기출문제 확인하기" target="_blank" style="position: absolute; left: 67.68%; top: 78.11%; width: 15.18%; height: 0.96%; z-index: 2;"></a>
-                    <a href="https://www.historyexam.go.kr/" title="원서접수 바로가기"  target="_blank" style="position: absolute; left: 65.27%; top: 91.02%; width: 23.57%; height: 2.59%; z-index: 2;"></a>
+                    <a href="https://www.historyexam.go.kr" title="한능검 원서접수 바로가기" target="_blank" style="position: absolute; left: 32.23%; top: 55.41%; width: 35.27%; height: 3.55%; z-index: 2;"></a>
+                    <a href="https://www.historyexam.go.kr/pst/list.do?bbs=dat" title="한능검기출문제 확인하기" target="_blank" style="position: absolute; left: 68.75%; top: 90.01%; width: 14.38%; height: 1.78%; z-index: 2;"></a>
                 </div>
             </div>
             <div id="tab02">

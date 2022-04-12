@@ -40,7 +40,7 @@
         .youtube_divide .preview_list_area {display:inline-block;vertical-align:top;padding-left:12px;width:304px;text-align:left;}
         .youtube_divide .preview_list_area .preview_list {height:455px;box-sizing:border-box;overflow-y:scroll;}
         .youtube_divide .preview_list_area .preview_list ul li {margin-bottom:10px;}
-        .youtube_divide .preview_list_area .preview_list ul li .num_box {width:20px;display:inline-block; color:#666;padding-right:10px; vertical-align:middle;box-sizing:border-box;}
+        .youtube_divide .preview_list_area .preview_list ul li .num_box {width:25px;display:inline-block; color:#666;padding-right:10px; vertical-align:middle;box-sizing:border-box;}
         .youtube_divide .preview_list_area .preview_list ul li .thum_box {display: inline-block; width: 120px;height: 70px;box-sizing: border-box;vertical-align: middle;overflow: hidden;}
         /*.youtube_divide .preview_list_area .preview_list ul li.on .thum_box {border:3px solid #00E752;}*/
         .youtube_divide .preview_list_area .preview_list ul li .thum_box img {width:100%;transition:0.5s;}
@@ -190,6 +190,16 @@
                                     </a>
                                 </li>
 
+                                <li class="">
+                                    <a href="#tab10">
+                                        <span class="num_box" data-num="10">10</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2022/04/2505_03_s10.jpg" alt="전부, 완성의 부사「up」이 포함된 동사구를 알아보자!"></div>
+                                        <div class="text_box">
+                                            <p>전부, 완성의 부사「up」이 포함된 동사구를 알아보자!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
                             </ul>
                         </div>
                     </div>          
@@ -262,6 +272,7 @@
         var tab7_url = "https://www.youtube.com/embed/h7BFfXFEMg4?rel=0";
         var tab8_url = "https://www.youtube.com/embed/EE5tuqTCr6s?rel=0";
         var tab9_url = "https://www.youtube.com/embed/PuKBhLoy2vM?rel=0";
+        var tab10_url = "https://www.youtube.com/embed/zjjeBmpGCnE?rel=0";
 
         $(function() {
             $(".preview_list ul li a").click(function(){
@@ -285,6 +296,8 @@
                 }else if(activeTab == "#tab8"){
                     video_tab_url = tab8_url;                
                 }else if(activeTab == "#tab9"){
+                    video_tab_url = tab9_url;              
+                }else if(activeTab == "#tab10"){
                     video_tab_url = tab9_url;                
                 }
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'

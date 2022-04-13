@@ -90,7 +90,7 @@
                         <input type="checkbox" id="lec01" name="">
                         <label for="lec01">
                             <ul>
-                                <li><span>교재</span></li>
+                                <li><span>교재</span> <strong class="tx-light-blue">[예약판매]</strong></li>
                                 <li>하승민 영문법 쌩쌩 기초</li>
                                 <li>판매가 <span>90,000원</span> 수량 <span>1</span></li>
                                 <li><span class="amount">2개까지</span> 구매가능</li>

@@ -151,7 +151,7 @@
                                     <tr>
                                         <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                         <td class="w-list tx-left pl20">
-                                            <span class="pBox p3">교재</span>
+                                            <span class="pBox p3">교재</span> <strong class="tx-light-blue">[예약판매]</strong>
                                             2017 정채영 국어 서울시 문제를 알려주마!1
                                         </td>
                                         <td class="w-price tx-light-blue">8,000원</td>

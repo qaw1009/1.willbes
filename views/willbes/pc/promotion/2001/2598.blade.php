@@ -26,15 +26,7 @@
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/04/2598_top_bg.jpg) no-repeat center top;position:relative;}
         .evt_top .ani{position:absolute;left:50%;top:75px;margin-left:-375px}
 
-        .evt_01 {background:#fff;padding-bottom:100px;}
-        .evtTab {width:890px; margin:0 auto}
-        .evtTab li {display:inline; float:left; width:50%}
-        .evtTab li a {display:block; color:#898989; font-size:24px; padding:20px 0; border:5px solid #898989; border-bottom-color:#000; font-weight:bold}       
-        .evtTab li:first-child a {border-right:0}
-        .evtTab li:last-child a {border-left:0}
-        .evtTab li a:hover,
-        .evtTab li a.active {color:#000; border:5px solid #000; border-bottom-color:#fff}
-        .evtTab:after {content:''; display:block; clear:both}
+        .evt_01 {background:#fff;}      
 
         .evt_02 {background:#131719;}
         
@@ -81,13 +73,7 @@
         </div>
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2598_01.jpg"  alt="개편 포인트" />
-            <ul class="evtTab">
-                <li><a href="#tab01">1.필기시험 과목</a></li>
-                <li><a href="#tab02">2.변경된 과목 범위</a></li>
-            </ul>
-            <div id="tab01"><img src="https://static.willbes.net/public/images/promotion/2022/04/2598_01_01.jpg"  alt="필기시험 과목" /></div>
-            <div id="tab02"><img src="https://static.willbes.net/public/images/promotion/2022/04/2598_01_02.jpg"  alt="변경된 과목 범위" /></div>
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2598_01.jpg"  alt="개편 포인트" />         
         </div>
 
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
@@ -201,33 +187,7 @@
     </script>
 
     <script type="text/javascript">
-        var $regi_form = $('#regi_form'); 
-
-         /* 탭 */
-         $(document).ready(function(){
-            $('.evtTab').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
-
-                $content = $($active[0].hash);
-
-                $links.not($active).each(function () {
-                    $(this.hash).hide()});
-
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                    $active.removeClass('active');
-                    $content.hide();
-
-                    $active = $(this);
-                    $content = $(this.hash);
-
-                    $active.addClass('active');
-                    $content.show();
-
-                    e.preventDefault()})})}
-        );
+        var $regi_form = $('#regi_form');         
 
        /*쿠폰발급 */
         function giveCheck() {

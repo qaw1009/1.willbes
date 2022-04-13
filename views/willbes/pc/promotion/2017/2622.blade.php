@@ -5,7 +5,7 @@
     <!-- content -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
             max-width:2000px !important;
             margin:0 auto;
@@ -13,10 +13,10 @@
             padding:0 !important;
             background:#fff;            
         }
-        .evtContent span {vertical-align:middle}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px; position: relative;}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a:hover {border:1px solid #000}*/
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
@@ -51,10 +51,13 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2622_01.jpg" alt="후기"/>
         </div>
 
-        <div class="evtCtnsBox evt02" data-aos="fade-up" id="evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2622_02.jpg" alt="교육학 고득점"/>
-            <a href="https://ssam.willbes.net/professor/show/prof-idx/51312?cate_code=3134&subject_idx=1980&subject_name=%EA%B5%90%EC%9C%A1%ED%95%99&tab=on_only_lecture" title="열공응원 1" target="_blank" style="position: absolute; left: 10.63%; top: 87.15%; width: 32.05%; height: 3.75%; z-index: 2;"></a>
-            <a href="https://ssam.willbes.net/professor/show/prof-idx/51312?cate_code=3134&subject_idx=1980&subject_name=%EA%B5%90%EC%9C%A1%ED%95%99&tab=off_only_lecture" title="영공응원 2" target="_blank" style="position: absolute; left: 56.88%; top: 87.15%; width: 32.05%; height: 3.75%; z-index: 2;"></a>
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2622_02_01.jpg" alt="교육학 고득점 커리큘럼"/>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2622_02_02.jpg" alt="강의신청" id="evt02"/>
+                <a href="https://ssam.willbes.net/lecture/show/cate/3134/pattern/only/prod-code/193839" title="열공응원 1" target="_blank" style="position: absolute; left: 10.89%; top: 75.5%; width: 31.52%; height: 6.75%; z-index: 2;"></a>
+                <a href="#none" onclick="javascript:alert('4월18일(월) 10시부터 신청할 수 있습니다. ');" title="영공응원 2" style="position: absolute; left: 57.59%; top: 75.5%; width: 31.52%; height: 6.75%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-up">

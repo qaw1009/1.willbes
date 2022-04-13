@@ -56,7 +56,7 @@
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/04/2622_02_02.jpg" alt="강의신청" id="evt02"/>
                 <a href="https://ssam.willbes.net/lecture/show/cate/3134/pattern/only/prod-code/193839" title="열공응원 1" target="_blank" style="position: absolute; left: 10.89%; top: 75.5%; width: 31.52%; height: 6.75%; z-index: 2;"></a>
-                <a href="#none" onclick="javascript:alert('4월18일(월) 10시부터 신청할 수 있습니다. ');" title="영공응원 2" style="position: absolute; left: 57.59%; top: 75.5%; width: 31.52%; height: 6.75%; z-index: 2;"></a>
+                <a href="#none" onclick="javascript:alert('4월18일(월) 10시부터 신청할 수 있습니다. ');" title="열공응원 2" style="position: absolute; left: 57.59%; top: 75.5%; width: 31.52%; height: 6.75%; z-index: 2;"></a>
             </div>
         </div>
 

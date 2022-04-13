@@ -44,6 +44,7 @@
                 <thead>
                 <tr>
                     <th>No</th>
+                    <th>ISBN</th>
                     <th>교재코드</th>
                     <th>교재명</th>
                     <th>표지보기</th>
@@ -89,6 +90,7 @@
                         // 리스트 번호
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
+                    {'data' : 'wIsbn'},
                     {'data' : 'wBookIdx'},
                     {'data' : 'wBookName', 'render' : function(data, type, row, meta) {
                         return '<a href="#" class="btn-modify" data-idx="' + row.wBookIdx + '"><u>' + data + '</u></a>';

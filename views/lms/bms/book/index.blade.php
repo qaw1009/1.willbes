@@ -91,23 +91,24 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>복사선택</th>
-                    <th>운영사이트</th>
-                    <th>카테고리</th>
-                    <th>과목/교수정보</th>
-                    <th>교재코드</th>
-                    <th>교재명</th>
-                    <th>출판사</th>
-                    <th>저자</th>
-                    <th>판매가</th>
-                    <th>신규</th>
-                    <th>추천</th>
-                    <th>재고</th>
-                    <th>사용여부</th>
-                    <th>사용여부(W)</th>
-                    <th>판매여부</th>
-                    <th>등록자</th>
-                    <th>등록일</th>
+                    <th class="valign-middle">복사선택</th>
+                    <th class="valign-middle">운영사이트</th>
+                    <th class="valign-middle">카테고리</th>
+                    <th class="valign-middle">과목/교수정보</th>
+                    <th class="valign-middle">ISBN</th>
+                    <th class="valign-middle">교재코드</th>
+                    <th class="valign-middle">교재명</th>
+                    <th class="valign-middle">출판사</th>
+                    <th class="valign-middle">저자</th>
+                    <th class="valign-middle">판매가</th>
+                    <th class="valign-middle">신규</th>
+                    <th class="valign-middle">추천</th>
+                    <th class="valign-middle">재고</th>
+                    <th class="valign-middle">사용여부</th>
+                    <th class="valign-middle">사용여부(W)</th>
+                    <th class="valign-middle">판매여부</th>
+                    <th class="valign-middle">등록자</th>
+                    <th class="valign-middle">등록일</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -149,6 +150,7 @@
                     {'data' : 'ProfSubjectNames', 'render' : function(data, type, row, meta) {
                         return data !== null ? data.replace(/,/g, '<br/>') : '';
                     }},
+                    {'data' : 'wIsbn'},
                     {'data' : 'ProdCode'},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
                         return '<a href="#" class="btn-modify" data-idx="' + row.ProdCode + '"><u class="blue">' + data + '</u></a>';

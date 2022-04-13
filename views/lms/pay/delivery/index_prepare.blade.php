@@ -137,6 +137,7 @@
                     <th rowspan="2" class="rowspan valign-middle">주문번호</th>
                     <th rowspan="2" class="rowspan valign-middle">회원정보</th>
                     <th rowspan="2" class="rowspan valign-middle">결제완료일</th>
+                    <th rowspan="2" class="valign-middle">ISBN</th>
                     <th rowspan="2" class="valign-middle">상품명</th>
                     <th rowspan="2" class="valign-middle">결제금액</th>
                     <th rowspan="2" class="rowspan valign-middle">배송료</th>
@@ -202,6 +203,7 @@
                         return data + '(' + row.MemId + ')<br/>' + row.MemPhone;
                     }},
                     {'data' : 'CompleteDatm'},
+                    {'data' : 'wIsbn'},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
                         return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
                     }},

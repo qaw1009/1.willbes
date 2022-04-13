@@ -273,6 +273,17 @@ class OrderListModel extends BaseOrderModel
                 $excel_column .= ', WPF.wProfName';
             }
 
+            // 교재 정보 추가
+            if (in_array('book', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['product_book'] . ' as PB
+                        on OP.ProdCode = PB.ProdCode
+                    left join ' . $this->_table['bms_book'] . ' as WB
+                        on PB.wBookIdx = WB.wBookIdx and WB.wIsStatus = "Y"';
+                $column .= ', PB.wBookIdx, WB.wIsbn';
+                $excel_column .= ', WB.wIsbn';
+            }
+
             // 배송지 추가
             if (in_array('delivery_address', $arr_add_join) === true) {
                 $from .= '

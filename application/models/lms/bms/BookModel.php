@@ -48,7 +48,7 @@ class BookModel extends WB_Model
         } else {
             $column = '
                 P.ProdCode, B.wBookIdx, P.SiteCode, P.ProdName, PS.SalePrice, PS.RealSalePrice, P.IsNew, P.IsBest, P.IsUse, P.RegDatm, P.RegAdminIdx
-                    , VWB.wPublName, VWB.wAuthorNames, VWB.wStockCnt, VWB.wSaleCcdName, VWB.wIsUse
+                    , VWB.wIsbn, VWB.wPublName, VWB.wAuthorNames, VWB.wStockCnt, VWB.wSaleCcdName, VWB.wIsUse
                     , S.SiteName
                     , if(PC.CateName is not null, PC.CateName, C.CateName) as BCateName
                     , if(PC.CateName is not null, C.CateName, "") as MCateName                                

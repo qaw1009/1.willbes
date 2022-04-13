@@ -139,6 +139,7 @@
                     <th class="rowspan">주문번호</th>
                     <th class="rowspan">회원정보</th>
                     <th class="rowspan">결제완료일</th>
+                    <th class="">ISBN</th>
                     <th class="">상품명</th>
                     <th class="">결제금액</th>
                     <th class="rowspan">배송료</th>
@@ -171,7 +172,7 @@
                 buttons: [
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> CN플러스 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-cnplus-excel' },
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> CN플러스 (윌스토리제외)', className: 'btn-sm btn-success border-radius-reset mr-15 btn-cnplus-no-willstory-excel' },
-                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 모아시스 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-target-excel' },
+                    //{ text: '<i class="fa fa-file-excel-o mr-5"></i> 모아시스 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-target-excel' },
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 배송요청 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-target-excel-new' },
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
@@ -202,6 +203,7 @@
                         return data + '(' + row.MemId + ')<br/>' + row.MemPhone;
                     }},
                     {'data' : 'CompleteDatm'},
+                    {'data' : 'wIsbn'},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
                         return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
                     }},

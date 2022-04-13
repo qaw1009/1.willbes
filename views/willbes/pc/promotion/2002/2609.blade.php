@@ -68,8 +68,8 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2609_01_01.jpg" alt="12개월" />              
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2022/03/2609_01_02.jpg" alt="12개월" />
-                    <a href="https://police.willbes.net/pass/offPackage/show/prod-code/192672" target="_blank" alt="헌법 김원욱" style="position: absolute; left: 18.13%; top: 52.13%; width: 20%; height: 7.1%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/pass/offPackage/show/prod-code/192674" target="_blank" alt="헌법 이국령" style="position: absolute; left: 61.88%; top: 52.13%; width: 20%; height: 7.1%; z-index: 2;"></a>
+                    <a href="https://police.willbes.net/pass/offPackage/show/prod-code/192675" target="_blank" alt="헌법 김원욱" style="position: absolute; left: 18.13%; top: 52.13%; width: 20%; height: 7.1%; z-index: 2;"></a>
+                    <a href="https://police.willbes.net/pass/offPackage/show/prod-code/192677" target="_blank" alt="헌법 이국령" style="position: absolute; left: 61.88%; top: 52.13%; width: 20%; height: 7.1%; z-index: 2;"></a>
                 </div>                                    
             </div>                
 

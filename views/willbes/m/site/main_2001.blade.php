@@ -241,7 +241,7 @@
         {!! banner('M_메인_01', 'MainBnrSlider', $__cfg['SiteCode'], '0') !!}
 
         <div class="groupLink">
-            <a href="https://police.willbes.net/promotion/index/cate/3006/code/2478" target="_blank">경찰승진<img src="https://static.willbes.net/public/images/promotion/m/icon_link.png" ></a>
+            <a href="https://police.willbes.net/m/promotion/index/cate/3006/code/2478" target="_blank">경찰승진<img src="https://static.willbes.net/public/images/promotion/m/icon_link.png" ></a>
             <a href="{{ front_url('/promotion/index/cate/3007/code/2414') }}" target="_blank">해양경찰<img src="https://static.willbes.net/public/images/promotion/m/icon_link.png" ></a>
             <a href="https://police.willbes.net/m/promotion/index/cate/3008/code/2437" target="_blank">해경경채<img src="https://static.willbes.net/public/images/promotion/m/icon_link.png" ></a>
             <a href="{{ front_url('/promotion/index/cate/3001/code/2366') }}" target="_blank">경찰간부<img src="https://static.willbes.net/public/images/promotion/m/icon_link.png" ></a>

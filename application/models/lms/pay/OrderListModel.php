@@ -1085,7 +1085,7 @@ class OrderListModel extends BaseOrderModel
             // 공무원학원
             // 주문상품 조회
             $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]];
-            $data = $this->listAllOrder('O.OrderNo, M.MemName, P.ProdName', $arr_condition, null, null, [], [], false);
+            $data = $this->listAllOrder('O.OrderNo, OOI.CertNo, M.MemName, P.ProdName', $arr_condition, null, null, [], [], false);
             if (empty($data) === true) {
                 return '데이터 조회에 실패했습니다.';
             }

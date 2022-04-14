@@ -31,7 +31,7 @@
                 {{-- 공무원학원 --}}
                 var txt_blank = '{{ str_repeat(' ', 15) }}';
 
-                ctkprint_bar.prt_text_L4 = '{{ $data['MemName'] }}({{ $data['OrderNo'] }})' + ';굴림;10;true;left';
+                ctkprint_bar.prt_text_L4 = '{{ $data['MemName'] }}({{ $data['CertNo'] }})' + ';굴림;10;true;left';
 
                 @for($i = 0; $i <= 8; $i++)
                     @if(empty(element($i, $data['OrderProdNameData'])) === false)

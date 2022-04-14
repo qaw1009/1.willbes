@@ -73,8 +73,12 @@
         <div class="evtCtnsBox wb_04" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2554_04.jpg" alt="이벤트 기간" />
         </div>
+        
+        <div class="evtCtnsBox evt_review" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2554_review.png" alt="수강 후기" />
+        </div>   
 
-         <div class="evt_apply NSK-Black" data-aos="fade-up">
+        <div class="evt_apply NSK-Black" data-aos="fade-up">
             <a href="https://www.willbes.net/classroom/on/list/ongoing" target="_blank" alt="수강후기 쓰기"><span>지금 바로 무료강좌 수강하고</span> 수강후기 쓰기 ></a>
         </div>   
 

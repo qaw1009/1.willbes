@@ -50,7 +50,8 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
-        <div class="sky" id="QuickMenu">          
+        <div class="sky" id="QuickMenu">
+            <a href="#lecbuy03"><img src="https://static.willbes.net/public/images/promotion/2022/04/2531_sky04.png" alt="조경직 티패스" /></a> 
             <a href="#lecbuy01"><img src="https://static.willbes.net/public/images/promotion/2022/02/2531_sky01.jpg" alt="조경직 티패스" /></a>    
             <a href="#lecbuy03"><img src="https://static.willbes.net/public/images/promotion/2022/02/2531_sky02.jpg" alt="조경직 패키지" /></a> 
             <a href="#lecbuy02"><img src="https://static.willbes.net/public/images/promotion/2022/02/2531_sky03.jpg" alt="조경직 단과" /></a>        

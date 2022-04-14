@@ -62,7 +62,7 @@
         <div class="evtCtnsBox wb_02" data-aos="fade-up" id="lecbuy01">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2554_02.jpg" alt="수강신청" />
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/191917" target="_blank">지금 바로 신청하기 ></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/free/prod-code/191918" target="_blank">지금 바로 신청하기 ></a>
             </div>            
         </div>
 

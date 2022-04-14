@@ -98,14 +98,14 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/04/2624_top.jpg" title="커리큘럼 설명회">
             </div>
 
-            <div class="evtCtnsBox evt01" id="evt_01" data-aos="fade-up">
+            <div class="evtCtnsBox evt01" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/04/2624_01.jpg" title="5월 개강">
             </div>
 
-            <div class="evtCtnsBox evt02" data-aos="fade-up">
+            <div class="evtCtnsBox evt02"  data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/04/2624_02.jpg" title="커리큘럼">
                 <div class="request" id="request">
-                    <div class="requestL">
+                    <div class="requestL" id="evt_01">
                         <h3 class="NSK-Black">* <strong>4월</strong> 설명회 이벤트 접수</h3>
                         <table width="0" cellspacing="0" cellpadding="0" class="table_type">
                             <col width="20%" />

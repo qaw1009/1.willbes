@@ -20,7 +20,7 @@
 
         /************************************************************/
 
-        .sky {position:fixed; top:150px; right:10px; z-index:10;}
+        .sky {position:fixed; width:200px; top:150px; right:10px; z-index:5;}
 
         .evtTop  {background:url("https://static.willbes.net/public/images/promotion/2022/03/2580_top_bg.jpg") no-repeat center top;}
 
@@ -36,7 +36,7 @@
         .evtInfoBox li {list-style-type: decimal;margin-left:20px; margin-bottom:10px}
     </style>
 
-    <div class="evtContent NSK">
+    <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
             <a href="https://www.youtube.com/channel/UCUbuqBgYMeqiVR4FuEIgkiw" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/03/2580_sky.png" title="채널구독"></a>
         </div>
@@ -90,7 +90,6 @@
     <script type="text/javascript">
         $(document).ready(function(){
             AOS.init();
-            fnReviewList(1);
         });
     </script>
 @stop

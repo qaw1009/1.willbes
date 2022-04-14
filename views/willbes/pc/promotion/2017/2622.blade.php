@@ -20,8 +20,6 @@
 
         /************************************************************/
 
-        .sky {position:fixed; top:150px; right:10px; z-index:10;}
-
         .evtTop {background:url("https://static.willbes.net/public/images/promotion/2022/04/2622_top_bg.jpg") no-repeat center top;}
 
         .evt01 {background:url("https://static.willbes.net/public/images/promotion/2022/04/2622_01_bg.jpg") no-repeat center top;}
@@ -38,7 +36,7 @@
         .evtInfoBox li {list-style-type: decimal;margin-left:20px; margin-bottom:5px}
     </style>
 
-    <div class="evtContent NSK">
+    <div class="evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <div class="wrap">
@@ -108,7 +106,6 @@
     <script type="text/javascript">
         $(document).ready(function(){
             AOS.init();
-            fnReviewList(1);
         });
     </script>
 @stop

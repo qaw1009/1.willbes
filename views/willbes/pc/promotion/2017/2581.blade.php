@@ -5,22 +5,20 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
             max-width:2000px !important;
             margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:middle}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px; position: relative;}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a:hover {border:1px solid #000}*/
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
-        .btnBox {width:100%; text-align:center}
-
 
         .eventWrap {width:100%; min-width:1120px; margin:0 auto; text-align:center; font-size:14px; line-height:1.4}
         .eventWrap input[type=checkbox] {width:20px; height:20px; vertical-align:middle}

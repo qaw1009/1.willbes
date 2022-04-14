@@ -5,7 +5,7 @@
     <!-- content -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
             max-width:2000px !important;
             margin:0 auto;
@@ -13,16 +13,16 @@
             padding:0 !important;
             background:#fff;            
         }
-        .evtContent span {vertical-align:middle}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px; position: relative;}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a:hover {border:1px solid #000}*/
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
-        .sky {position:fixed; top:150px; right:10px; z-index:10;}
+        .sky {position:fixed; top:150px; right:10px; z-index:1;}
 
-        .evtTop  {background:url("https://static.willbes.net/public/images/promotion/2022/03/2580_top_bg.jpg") no-repeat center top;}
+        .evtTop {background:url("https://static.willbes.net/public/images/promotion/2022/03/2580_top_bg.jpg") no-repeat center top;}
 
         .evt02 {background:#2a387f}
 
@@ -83,7 +83,6 @@
     <script type="text/javascript">
         $(document).ready(function(){
             AOS.init();
-            fnReviewList(1);
         });
     </script>
 @stop

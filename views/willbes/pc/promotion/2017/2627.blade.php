@@ -16,20 +16,20 @@
         .evtContent span {vertical-align:middle}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px; position: relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a:hover {border:1px solid #000}*/
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
         .sky {position:fixed; width:200px; top:150px; right:10px; z-index:5;}
 
-        .evtTop  {background:url("https://static.willbes.net/public/images/promotion/2022/03/2580_top_bg.jpg") no-repeat center top;}
+        .evtTop {background:url("https://static.willbes.net/public/images/promotion/2022/04/2627_top_bg.jpg") no-repeat center top; height: 995px;}
+        .evtTop span {position: absolute; left:50%; width:390px; margin-left:-420px; top:255px; z-index: 1;}
 
-        .evt02 {background:#2a387f}
+        .evt02 {background:#0cb28c}
 
-        .youtube {padding:150px 0}
-        .youtube iframe {width:897px; height:507px}
+        .evt03 iframe {width:897px; height:507px}
 
-        .evtInfo {color:#646464; font-size:16px; background:#e2e2e2 url("https://static.willbes.net/public/images/promotion/2022/03/2580_03_bg.jpg") no-repeat center top; padding-bottom:100px}
+        .evtInfo {color:#fff; font-size:16px; background:#1f2630; padding:100px 0}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
 		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
         .evtInfoBox ul {margin-bottom:30px}
@@ -38,31 +38,33 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
-            <a href="https://www.youtube.com/channel/UCUbuqBgYMeqiVR4FuEIgkiw" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/03/2580_sky.png" title="채널구독"></a>
+            <a href="https://www.youtube.com/channel/UCUbuqBgYMeqiVR4FuEIgkiw" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/04/2627_sky.png" title="채널구독"></a>
         </div>
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2580_top.jpg" alt="신태식 교육학논술"/>
+            <span data-aos="fade-right"><img src="https://static.willbes.net/public/images/promotion/2022/04/2627_top_img.png" alt="신태식 교육학논술 5~6월 기출분석 과정"/></span>
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2580_01.jpg" alt="커리큘럼"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2627_01.jpg" alt="커리큘럼"/>
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2580_02.jpg" alt="학습에 도전"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2627_02.jpg" alt="학습에 도전"/>
         </div>
 
-        <div class="evtCtnsBox youtube" data-aos="fade-up">
+        <div class="evtCtnsBox evt03" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2627_03_01.jpg"/>
             <iframe src="https://www.youtube.com/embed/V4B8cUDEXik?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>           
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2627_03_02.jpg"/>
+                <a href="https://ssam.willbes.net/lecture/show/cate/3134/pattern/only/prod-code/188987" target="_blank" title="인강 수강하기" style="position: absolute; left: 75.89%; top: 22.32%; width: 8.21%; height: 31.5%; z-index: 2;"></a>
+                <a href="https://ssam.willbes.net/pass/offLecture/show/cate/3138/prod-code/188992" target="_blank" title="직강 수강하기" style="position: absolute; left: 84.38%; top: 22.32%; width: 8.21%; height: 31.5%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox evtInfo" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2580_03.jpg"/>
-                <a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/189065" title="인강 수강하기" style="position: absolute; left: 77.5%; top: 58.23%; width: 18.57%; height: 23.18%; z-index: 2;"></a>
-                <a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/189065" title="직강 수강하기" style="position: absolute; left: 77.5%; top: 58.23%; width: 18.57%; height: 23.18%; z-index: 2;"></a>
-            </div>
+
             <div class="evtInfoBox">
                 <h4 class="NSK-Black">신태식 교육학 기출분석반 수강 시 유의 사항</h4>
                 <ul>

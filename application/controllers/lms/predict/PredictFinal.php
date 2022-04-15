@@ -42,9 +42,10 @@ class PredictFinal extends \app\controllers\BaseController
 
         $arr_condition = [
             'EQ' => [
+                'A.PredictIdx' => $this->_reqP('search_PredictIdx'),
+                'A.IsStatus' => 'Y',
                 'A.TakeMockPart' => $this->_reqP('search_take_mock_part'),
                 'A.TakeAreaCcd' => $this->_reqP('search_TakeArea'),
-                'C.PredictIdx' => $this->_reqP('search_PredictIdx'),
                 'C.SiteCode' => $this->_reqP('search_site_code'),
             ],
             'ORG' => [

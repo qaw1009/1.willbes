@@ -46,7 +46,7 @@
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2627_01.jpg" alt="커리큘럼"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2627_01.gif" alt="커리큘럼"/>
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">

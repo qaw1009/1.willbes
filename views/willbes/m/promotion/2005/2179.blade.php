@@ -1,54 +1,46 @@
-@extends('willbes.pc.layouts.master')
+@extends('willbes.m.layouts.master')
 
 @section('content')
-    @include('willbes.pc.layouts.partial.site_menu')
-    <!-- Container -->
+<!-- Container -->
     <style type="text/css">
-        .evtContent {
-            width:100%;
-            min-width:1120px !important;
-            max-width:2000px !important;
-            margin:0 auto;
-            margin-top:20px !important;
-            padding:0 !important;
-            background:#fff;            
-        }
-        .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
-        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
+    .evtCtnsBox .wrap {margin:0 auto; position:relative}
+    /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+    .evtCtnsBox img {width:100%; max-width:720px;}
+    .evtCtnsBox span { vertical-align:top}   
 
-        /************************************************************/        
+    /************************************************************/
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/04/2179_top_bg.jpg) no-repeat center top;}	
-        .evtCtnsBox .title {text-align:left; color:#464646; font-size:40px; margin:100px 0 50px}
+    .evt_apply {padding-bottom:50px;}
 
-        .evt_01 {background:#e9e9e9}	
+    .evtCtnsBox .title {text-align:left; color:#464646; font-size:40px; margin:100px 0 50px}
+
+    .evt_01 {background:#e9e9e9}	
+
+    .evtInfo {padding:60px 20px; background:#333; color:#fff; font-size:14px; margin-top:100px}
+    .evtInfoBox { text-align:left; line-height:1.4}
+    .evtInfoBox h4 {font-size:30px; margin-bottom:40px}
+    .evtInfoBox .infoTit {font-size:18px; margin-bottom:20px}
+    .evtInfoBox .infoTit strong {padding:6px 15px; background:#000; border-radius:30px; font-weight:normal !important}
+    .evtInfoBox ul {margin-bottom:30px}
+    .evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
+    .evtInfoBox span {vertical-align:bottom; color:#fd9999} 
+    </style>
+
+    <div id="Container" class="Container NSK c_both">
         
-        .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:14px; margin-top:100px}
-		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
-		.evtInfoBox h4 {font-size:30px; margin-bottom:40px}
-		.evtInfoBox .infoTit {font-size:18px; margin-bottom:20px}
-		.evtInfoBox .infoTit strong {padding:8px 20px; background:#000; border-radius:20px; font-weight:normal !important}
-		.evtInfoBox ul {margin-bottom:30px}
-        .evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
-        .evtInfoBox span {vertical-align:bottom; color:#fd9999}  
- 
-        /************************************************************/      
-    </style> 
-	<div class="evtContent NSK">
-		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2179_top.jpg" alt="PSAT 동영산 티패스" />
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2179m_top.jpg" alt="PSAT 동영산 티패스" />
 		</div>
 
-        <div class="evtCtnsBox evt_01">  
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2179_01.jpg" alt="단계별 학습 프로그램" />
+        <div class="evtCtnsBox" data-aos="fade-up">  
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2179m_01.jpg" alt="단계별 학습 프로그램" />
         </div>        
 
-        <div class="evtCtnsBox evt_02">  
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2179_02.jpg" alt="티패스" />
+        <div class="evtCtnsBox" data-aos="fade-up">  
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2179m_02.jpg" alt="티패스" />
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
             @endif 
         </div>
 
@@ -104,9 +96,16 @@
                 </ul>               
             </div>
         </div>
-        
-	</div>
-     <!-- End Container -->
+    </div>
+    <!-- End Container -->
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+        $( document ).ready( function() {
+            AOS.init();
+        } );
+    </script>
 
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')

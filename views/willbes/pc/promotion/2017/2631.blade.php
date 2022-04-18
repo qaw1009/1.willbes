@@ -40,7 +40,26 @@
         .evtlecBox_B .total {border:5px solid #000; padding:20px; text-align:center; font-size:30px}
         .evtlecBox_B .total span {color:red}
         .evtlecBox_B .buy {margin-top:50px; position: relative;}
-        .evtlecBox_B .buy a {position: absolute; top:-20px; right:0; display:block; font-size:24px; padding:15px 0; width:200px; text-align:center; background:#000; color:#fff; vertical-align:middle}
+        .evtlecBox_B .buy a {position: absolute; top:-20px; right:0; display:block; font-size:24px; padding:15px 0; width:200px; text-align:center; background:#000; color:#fff; vertical-align:middle; overflow: hidden;}
+        .evtlecBox_B .buy a:after{
+            content:'';
+            position: absolute;
+            top:0;
+            left:0;
+            background-color: #fff;
+            width: 10px;
+            height: 100%;
+            z-index: 1;
+            transform: skewY(129deg) skewX(-60deg);
+        }   
+        .evtlecBox_B .buy a:after{animation:shinyBtn 3s ease-in-out infinite;}
+
+        @@keyframes shinyBtn {
+            0% { transform: scale(0) rotate(45deg); opacity: 0; }
+            80% { transform: scale(0) rotate(45deg); opacity: 0.5; }
+            81% { transform: scale(4) rotate(45deg); opacity: 1; }
+            100% { transform: scale(50) rotate(45deg); opacity: 0; }
+        }
 
         .evtInfo {padding:80px 0; background:#fff; color:#242424; font-size:16px}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}

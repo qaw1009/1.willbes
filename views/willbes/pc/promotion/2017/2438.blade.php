@@ -11,12 +11,12 @@
             margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px}
+        .evtContent span {vertical-align:middle}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px; position: relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a:hover {border:1px solid #000}*/
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/12/2438_top_bg.jpg) no-repeat center top;}

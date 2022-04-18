@@ -151,7 +151,7 @@ class ProductFModel extends WB_Model
                 // 교재상품
                 case 'book' :
                         $column .= ', CateCode, wSaleCcd, wIsUse, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SchoolYear, CourseIdx, CourseName
-                            , SubjectIdx, ProfIdx, OrderLimitCnt, ProdPriceData';
+                            , SubjectIdx, ProfIdx, OrderLimitCnt, wIsbn, ProdPriceData';
                     break;
 
                 // 모의고사

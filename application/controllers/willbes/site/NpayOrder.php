@@ -132,7 +132,7 @@ class NpayOrder extends \app\controllers\FrontController
 
                 $send_xml .= '<product>';
                 $send_xml .= '<id>' . $row['ProdCode'] . '</id>';
-                $send_xml .= '<merchantProductId>' . $row['ProdCode'] . '</merchantProductId>';
+                $send_xml .= '<merchantProductId>' . trim($row['wIsbn']) . '</merchantProductId>';
                 $send_xml .= '<ecMallProductId>' . $row['ProdCode'] . '</ecMallProductId>';
                 $send_xml .= '<name><![CDATA[' . $row['ProdName'] . ']]></name>';
                 $send_xml .= '<basePrice>' . $row['RealSalePrice'] . '</basePrice>';

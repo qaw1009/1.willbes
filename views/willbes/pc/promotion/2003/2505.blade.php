@@ -200,6 +200,16 @@
                                     </a>
                                 </li>
 
+                                <li class="">
+                                    <a href="#tab11">
+                                        <span class="num_box" data-num="11">11</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2022/04/2505_03_s11.jpg" alt="접근의 부사「up」이 포함된 동사구를 알아보자!"></div>
+                                        <div class="text_box">
+                                            <p>접근의 부사「up」이 포함된 동사구를 알아보자!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
                             </ul>
                         </div>
                     </div>          
@@ -273,6 +283,7 @@
         var tab8_url = "https://www.youtube.com/embed/EE5tuqTCr6s?rel=0";
         var tab9_url = "https://www.youtube.com/embed/PuKBhLoy2vM?rel=0";
         var tab10_url = "https://www.youtube.com/embed/zjjeBmpGCnE?rel=0";
+        var tab11_url = "https://www.youtube.com/embed/5p3JeCnmDhk?rel=0";
 
         $(function() {
             $(".preview_list ul li a").click(function(){
@@ -298,7 +309,9 @@
                 }else if(activeTab == "#tab9"){
                     video_tab_url = tab9_url;              
                 }else if(activeTab == "#tab10"){
-                    video_tab_url = tab9_url;                
+                    video_tab_url = tab10_url;                
+                }else if(activeTab == "#tab11"){
+                    video_tab_url = tab11_url;              
                 }
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");

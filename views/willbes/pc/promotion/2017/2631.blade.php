@@ -26,12 +26,21 @@
         .evtLec {width:1120px; margin:0 auto; padding:100px 0;}        
         .evtlecBox_A {display: flex; justify-content: space-between; flex-wrap: wrap;}        
         .evtlecBox_A .lec {border:1px solid #000; padding:30px; flex: 1 1 40%; margin:10px; text-align:left; font-size:16px}
-        .evtlecBox_A .lec a {display:inline-block; padding:5px 10px; background:#333; color:#fff}
-        .evtlecBox_A  label {margin-top:20px; display:block; font-size:20px}
-        .evtlecBox_A  input[type=checkbox] {width:20px; height:20px; vertical-align:top}
+        .evtlecBox_A .lec a {display:inline-block; padding:5px 10px; background:#333; color:#fff; border-radius:8px}
+        .evtLec  label {margin-top:20px; display:block; font-size:20px}
+        .evtLec  input[type=checkbox] {width:20px; height:20px; vertical-align:top}
 
-        .evtlecBox_B {margin-top:50px; text-align:left}
-        .evtlecBox_B h5 {font-size:24px; font-weight:bold;}
+        .evtlecBox_B {margin-top:80px; text-align:left; font-size:18px}
+        .evtlecBox_B h5 {font-size:24px; font-weight:bold; margin-bottom:20px}
+        .evtlecBox_B .lec {border:1px solid #000; padding:20px 50px}
+        .evtlecBox_B .lec strong {background:red; color:#fff; padding:3px 15px; border-radius:30px}
+        .evtlecBox_B .lec div {padding:20px 0; border-bottom:1px solid #d9d9d9}
+        .evtlecBox_B .lec div:last-child {border:0}
+        .evtlecBox_B .lec .price {float:right}
+        .evtlecBox_B .total {border:5px solid #000; padding:20px; text-align:center; font-size:30px}
+        .evtlecBox_B .total span {color:red}
+        .evtlecBox_B .buy {margin-top:50px; position: relative;}
+        .evtlecBox_B .buy a {position: absolute; top:-20px; right:0; display:block; font-size:24px; padding:15px 0; width:200px; text-align:center; background:#000; color:#fff; vertical-align:middle}
 
         .evtInfo {padding:80px 0; background:#fff; color:#242424; font-size:16px}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -112,8 +121,14 @@
             </div>
             <div class="evtlecBox_B">
                 <h5><span>2023 7개월 기간제 연간 PASS</span> 수강신청 내역</h5>
-                <div>
-                    
+                <div class="lec">
+                    <div><span class="tx-blue">[이경범 교육학]</span> 7개월 PASS / 1.2배수 <span class="price">(정가)1,900,000원 <strong>50%할인</strong></span></div>
+                    <div><span class="tx-blue">[허역팀 일반사회]</span> 7개월 PASS / 1.2배수 <span class="price">(정가)2,490,000원 <strong>50%할인</strong></span></div>
+                </div>
+                <div class="total NSK-Black"><span>2과목</span> 결제금액 <span>2,235,000원</span></div>
+                <div class="buy">
+                    <label><input type="checkbox"> 페이지 하단의 상품 관련 유의사항을 모두 확인하였고, 이에 동의합니다.</label>
+                    <a href="#none">결재하기</a>
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/04/2631_top_bg.jpg) no-repeat center top; height:765px}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/04/2632_top_bg.jpg) no-repeat center top; height:765px}
         .evtTop .btnbox {position:absolute; bottom:80px; width:1120px; left:50%; margin-left:-560px}
         .evtTop .btnbox a {display:inline-block; background:#280c7c; color:#fff; font-size:18px; padding:20px 0; margin:0 10px; text-align:center; border-radius:10px; width:45%; border:1px solid #502caa}
         .evtTop .btnbox a strong {font-size:23px; font-weight:bold}
@@ -119,13 +119,13 @@
     <div class="p_re evtContent NSK ssam" id="evtContainer">
         <div class="evtCtnsBox evtTop">
             <div class="btnbox">
-                <a href="#evtLec" class="on">7개월<br> <strong>기간제 PASS 바로가기 ▼</strong></a>
-                <a href="{{front_url('/promotion/index/cate/3140/code/2632')}}">2023+24학년도 대비<br> <strong>얼리버드 PASS 바로가기 ▶</strong></a>
+                <a href="{{front_url('/promotion/index/cate/3140/code/2631')}}">7개월<br> <strong>기간제 PASS 바로가기 ▶</strong></a>
+                <a href="#evtLec" class="on">2023+24학년도 대비<br> <strong>얼리버드 PASS 바로가기 ▼</strong></a>
             </div>
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2631_01.jpg" alt="열공지원금 팡팡"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2632_01.jpg" alt="열공지원금 팡팡"/>
         </div>
 
         <div class="evtCtnsBox evtLec" id="evtLec">
@@ -133,7 +133,7 @@
                 <div class="lec">
                     <label>
                         <div class="txt01">이경범 교육학</div>
-                        <div class="txt02">7개월 기간제 PASS</div>
+                        <div class="txt02">23+24학년도 얼리버드 PASS</div>
                         <div class="txt03">
                             <a href="#none" onclick="openWin('sec-prof-layer'), openWin('Curriculum');">커리큘럼 확인하기</a>
                             <a href="#none" onclick="openWin('sec-prof-layer'), openWin('youtube');">설명회 보기</a>
@@ -144,7 +144,7 @@
                 <div class="lec">
                     <label>
                         <div class="txt01">신태식 교육학</div>
-                        <div class="txt02">7개월 기간제 PASS</div>
+                        <div class="txt02">23+24학년도 얼리버드 PASS</div>
                         <div class="txt03">
                             <a href="#none" onclick="openWin('sec-prof-layer'), openWin('Curriculum');">커리큘럼 확인하기</a>
                             <a href="#none" onclick="openWin('sec-prof-layer'), openWin('youtube');">설명회 보기</a>
@@ -155,7 +155,7 @@
                 <div class="lec">
                     <label>
                         <div class="txt01">허역팀 전공일반사회</div>
-                        <div class="txt02">7개월 기간제 PASS</div>
+                        <div class="txt02">23+24학년도 얼리버드 PASS</div>
                         <div class="txt03">
                             <a href="#none" onclick="openWin('sec-prof-layer'), openWin('Curriculum');">커리큘럼 확인하기</a>
                             <a href="#none" onclick="openWin('sec-prof-layer'), openWin('youtube');">설명회 보기</a>
@@ -166,7 +166,7 @@
                 <div class="lec">
                     <label>
                         <div class="txt01">김종권 전공역사</div>
-                        <div class="txt02">7개월 기간제 PASS</div>
+                        <div class="txt02">23+24학년도 얼리버드 PASS</div>
                         <div class="txt03">
                             <a href="#none" onclick="openWin('sec-prof-layer'), openWin('Curriculum');">커리큘럼 확인하기</a>
                             <a href="#none" onclick="openWin('sec-prof-layer'), openWin('youtube');">설명회 보기</a>
@@ -178,10 +178,10 @@
             <div class="evtlecBox_B">
                 <h5><span>2023 7개월 기간제 연간 PASS</span> 수강신청 내역</h5>
                 <div class="lec">
-                    <div><span class="tx-blue">[이경범 교육학]</span> 7개월 PASS / 1.2배수 <span class="price">(정가)1,900,000원 <strong>50%할인</strong></span></div>
-                    <div><span class="tx-blue">[허역팀 일반사회]</span> 7개월 PASS / 1.2배수 <span class="price">(정가)2,490,000원 <strong>50%할인</strong></span></div>
+                    <div><span class="tx-blue">[이경범 교육학]</span> 얼리버드 Pass / 1.8배수 <span class="price">(정가)3,800,000원 <strong>55%할인</strong></span></div>
+                    <div><span class="tx-blue">[허역팀 일반사회]</span> 얼리버드 Pass / 1.8배수 <span class="price">(정가)5,760,000원 <strong>55%할인</strong></span></div>
                 </div>
-                <div class="total NSK-Black">총 결제금액 : <span>2과목 </span>/<span> 2,235,000원</span></div>
+                <div class="total NSK-Black">총 결제금액 : <span>2과목 </span>/<span> 3,951,000원</span></div>
                 <div class="buy">
                     <label><input type="checkbox"> 페이지 하단의 상품 관련 유의사항을 모두 확인하였고, 이에 동의합니다.</label>
                     <a href="#none">결재하기</a>
@@ -195,18 +195,22 @@
 
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">
-                <h4 class="NSK-Black"><span>7개월 기간제 연간 PASS </span> 상품 이용안내</h4>
+                <h4 class="NSK-Black"><span>2023+24학년도 대비 얼리버드 PASS </span> 상품 이용안내</h4>
                 <ul>
-                    <li>본 패키지는 2022년 11월 30일까지 1차 시험대비 연간 정규 전강좌를 온라인으로 수강할 수 있는 상품입니다. (2차대비는 포함하지 않음)</li>
-                    <li>본 패키지는 파격적인 할인 상품으로 1.2배수로 제공됩니다.</li>
-                    <li>본 패키지의 상품 구성 및 커리큘럼은 변경 될 수 있습니다.</li>
-                    <li>본 패키지의 수강 기간 중 “일시중지” 및 “(유료)연장＂은 할 수 없습니다.</li>
-                    <li>본 패키지 강의는 양도 및 매매가 불가하며, 위반 시 처벌 받을 수 있습니다.</li>
+                    <li>본 패키지의 강의의 제공기간은 아래와 같습니다.<br>
+                    - 2022년 패키지(2023학년도 대비): 2022년 11월 30일까지 제공하고 "불합격 인증을 통하여" 2023년까지 강의를 연장해 드립니다. (2년간 제공)<br>
+                    - 2023년 패키지(2024학년도 대비 신규강의): "불합격 인증을 통하여" 2023년 11월 30일까지 제공합니다. (신규강의 추가 제공)<br>
+                    - 2차시험 대비 강의는 포함되지 않습니다.</li>
+                    <li>본 패키지 상품 구성 및 커리큘럼은 변경될 수 있습니다.</li>
+                    <li>본 패키지의 수강 기간 중 "일시중지” 및 "(유료)연장＂은 할 수 없습니다.</li>
+                    <li>본 패키지 강의는 양도 및 매매가 불가하며, 위반 시 처벌을 받을 수 있습니다. </li>
                 </ul>   
 
                 <h5>[환불 규정]</h5>
                 <ul>
                     <li>본 패키지 강의의 환불은 수강기간, 수강 여부, 자료 다운 유무 등에 따라 금액을 공제하며, 강좌의 원 수강료 기준으로 공제가 됩니다.</li>
+                    <li>본 패키지 환불기준은 2023년11월30일까지 제공되는 강좌입니다.  
+                    (2023년에 제공되는 강의는 "불합격자 대상으로" 추가 지급되는 강의로 환불대상에서 제외합니다.)</li>
                     <li>본 패키지 강의 환불 신청은 홈페이지 1:1게시판을 통하여 가능합니다.</li>
                 </ul>
             </div>

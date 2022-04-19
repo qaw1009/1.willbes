@@ -47,7 +47,7 @@
 		<div class="evtCtnsBox evtTop" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2613_top.jpg" alt="김동진 법원팀" />
             <div class="d_day NSK">
-                <span class="NSK-Black">D-120</span>
+                <span class="NSK-Black">{{ (empty($arr_base['dday_data'][0]['DDay']) === false) ? 'D'.$arr_base['dday_data'][0]['DDay'] : '' }}</span>
             </div>
 		</div>
 

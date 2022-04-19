@@ -84,7 +84,7 @@
 
 		<div class="evtCtnsBox evtInfo" id="notice">
 			<div class="evtInfoBox">
-				<h4 class="NSK-Black">윌비스 한림법학원 박준의 지구과학 T-PASS반 이용안내</h4>
+				<h4 class="NSK-Black">윌비스 한림법학원 박준희 지구과학 T-PASS반 이용안내</h4>
 				<div class="infoTit"><strong>이용안내</strong></div>
 				<ul>
                     <li>1. 본 상품은 2022년 진행되는 2023년대비 변리사 지구과학 1차시험 대비 박준희 교수님 지구과학 강의입니다.</li>

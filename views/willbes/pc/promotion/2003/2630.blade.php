@@ -19,13 +19,10 @@
         /*.evtCtnsBox .wrap a {border:1px solid #fff}*/
         /************************************************************/
 
-        .wb_02 {background:#130c05; padding-bottom:150px}      
-
-         
+        .wb_02 {background:#130c05; padding-bottom:150px}         
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
-
         <div class="evtCtnsBox wb_top" data-aos="fade-down">            
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2630_top.jpg" alt="9급 검찰직 하루 하나!"/>               
         </div>
@@ -41,7 +38,6 @@
         <div class="evtCtnsBox wb_03" data-aos="fade-up">            
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2630_03.jpg" alt=""/></a>            
 		</div>
-
     </div>
 
     <!-- End Container -->

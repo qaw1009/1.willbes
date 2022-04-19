@@ -88,7 +88,7 @@
         <div class="evtCtnsBox wb_cts04" id=apply1 data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2597_04.jpg" alt="슈퍼pass" />
-                <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=386829&" title="슈퍼패스 신청하기" target="_blank" style="position: absolute;left: 19.01%;top: 83.72%;width: 62.01%;height: 6.75%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" title="슈퍼패스 신청하기" target="_blank" style="position: absolute;left: 19.01%;top: 83.72%;width: 62.01%;height: 6.75%;z-index: 2;"></a>
             </div>       	      
         </div>
 

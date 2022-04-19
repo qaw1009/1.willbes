@@ -19,7 +19,9 @@
         /************************************************************/ 
 
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2613_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/04/2613_top_bg.jpg) no-repeat center top;}
+        .evtTop .d_day {position:absolute; left:50%; margin-left:50px; bottom:135px; font-size:78px; color:#fff}
+        .evtTop .d_day span {color:#000; vertical-align:top}
 
         .evt03 {background:#f0f0f0}
 
@@ -42,15 +44,17 @@
     </style> 
 
 	<div class="evtContent NSK">
-		<div class="evtCtnsBox evtTop" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2613_top.jpg" alt="김동진 법원팀" />
+		<div class="evtCtnsBox evtTop" data-aos="fade-down">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2613_top.jpg" alt="김동진 법원팀" />
+            <div class="d_day NSK">
+                <span class="NSK-Black">D-120</span>
+            </div>
 		</div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
             <div class="wrap">            
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2613_01.jpg" alt="연간 커리큘럼">
-                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU67JiI67mE7Iic7ZmY&course_idx=
-" title="예비순환" target="_blank" style="position: absolute; left: 11.88%; top: 93.4%; width: 11.52%; height: 2.26%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU67JiI67mE7Iic7ZmY&course_idx=" title="예비순환" target="_blank" style="position: absolute; left: 11.88%; top: 93.4%; width: 11.52%; height: 2.26%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MeyInO2ZmA%3D%3D" title="1순환" target="_blank" style="position: absolute; left: 24.91%; top: 93.4%; width: 11.52%; height: 2.26%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MuyInO2ZmA%3D%3D" title="2순환" target="_blank" style="position: absolute; left: 38.04%; top: 93.4%; width: 11.52%; height: 2.26%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6M%2ByInO2ZmA%3D%3D" title="3순환" target="_blank" style="position: absolute; left: 50.8%; top: 93.4%; width: 11.52%; height: 2.26%; z-index: 2;"></a>

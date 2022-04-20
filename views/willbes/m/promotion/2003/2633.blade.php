@@ -41,7 +41,8 @@
 <div id="Container" class="Container NSK c_both">
 
     <div class="evtCtnsBox evtTop" data-aos="fade-down">            
-        <img src="https://static.willbes.net/public/images/promotion/2022/04/2633m_top.jpg" alt="9급 검찰직 합격설명회" />            
+        <img src="https://static.willbes.net/public/images/promotion/2022/04/2633m_top.jpg" alt="9급 검찰직 합격설명회" />
+        <a href="https://www.youtube.com/channel/UC2J41ggwL4CTIJfoVBXsWkg/videos" target="_blank" title="유튜브 윌비스 검찰팀" style="position: absolute; left: 9.58%; top: 83.3%; width: 80.69%; height: 7.99%; z-index: 2;"></a>            
     </div>
 
     <div class="evtCtnsBox evt01" data-aos="fade-up">

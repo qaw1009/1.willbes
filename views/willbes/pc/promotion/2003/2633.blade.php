@@ -14,13 +14,13 @@
             background:#fff           
         }
         .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #fff}*/
         /************************************************************/
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/04/2633_top_bg.jpg) no-repeat center top; height:1116px}  
-        .evtTop img {margin-top:200px} 
+        .evtTop span {position: absolute; width:523px; top:210px; left:50%; margin-left:-261px;  z-index: 10;} 
 
         .evt01 {background:#b4172a}
         
@@ -38,7 +38,11 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox evtTop">            
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2633_top_img.png" alt="9급 검찰직 합격설명회" data-aos="fade-down"/>            
+            <span data-aos="fade-down"><img src="https://static.willbes.net/public/images/promotion/2022/04/2633_top_img.png" alt="9급 검찰직 합격설명회"/></span>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2633_top.jpg" alt="9급 검찰직 합격설명회"/>
+                <a href="https://www.youtube.com/channel/UC2J41ggwL4CTIJfoVBXsWkg/videos" target="_blank" title="유튜브 윌비스 검찰팀" style="position: absolute; left: 24.02%; top: 83.87%; width: 51.88%; height: 8.06%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">

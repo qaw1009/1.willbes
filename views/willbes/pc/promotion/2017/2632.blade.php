@@ -21,9 +21,9 @@
         /************************************************************/
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/04/2632_top_bg.jpg) no-repeat center top; height:765px}
         .evtTop .btnbox {position:absolute; bottom:80px; width:1120px; left:50%; margin-left:-560px}
-        .evtTop .btnbox a {display:inline-block; background:#280c7c; color:#fff; font-size:18px; padding:20px 0; margin:0 10px; text-align:center; border-radius:10px; width:45%; border:1px solid #502caa}
+        .evtTop .btnbox a {display:inline-block; background:#6d0d81; color:#fff; font-size:18px; padding:20px 0; margin:0 10px; text-align:center; border-radius:10px; width:45%; border:1px solid #972caa}
         .evtTop .btnbox a strong {font-size:23px; font-weight:bold}
-        .evtTop .btnbox a.on {background:#fff; color:#280c7c;}
+        .evtTop .btnbox a.on {background:#fff; color:#1b1b1b;}
 
 
         .evtLec {width:1120px; margin:0 auto; padding-bottom:100px; }        

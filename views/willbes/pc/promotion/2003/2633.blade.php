@@ -45,7 +45,7 @@
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/04/2633_01.jpg" alt=""/>
                 <a href="https://pass.willbes.net/pass/offLecture/show/cate/3149/prod-code/194556" target="_blank" title="설명회 신청" style="position: absolute; left: 24.64%; top: 42.36%; width: 50.8%; height: 4.82%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3149/prod-code/194556" target="_blank" title="수강신청" style="position: absolute; left: 24.64%; top: 87.16%; width: 50.8%; height: 4.82%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3149/prod-code/194557" target="_blank" title="수강신청" style="position: absolute; left: 24.64%; top: 87.16%; width: 50.8%; height: 4.82%; z-index: 2;"></a>
             </div>
 		</div>
 

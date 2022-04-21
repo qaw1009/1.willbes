@@ -16,11 +16,21 @@
                     </div>
                     <label class="control-label col-md-1" for="search_sale_ccd">조건</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control" id="search_sale_ccd" name="search_sale_ccd">
+                        <select class="form-control" id="search_sale_ccd" name="search_sale_ccd" title="판매여부">
                             <option value="">판매여부</option>
                             @foreach($sale_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
+                        </select>
+                        <select class="form-control" id="search_is_pre_sale" name="search_is_pre_sale" title="예약판매여부">
+                            <option value="">예약판매여부</option>
+                            <option value="Y">Y</option>
+                            <option value="N">N</option>
+                        </select>
+                        <select class="form-control" id="search_is_use" name="search_is_use" title="사용여부">
+                            <option value="">사용여부</option>
+                            <option value="Y">사용</option>
+                            <option value="N">미사용</option>
                         </select>
                     </div>
                 </div>

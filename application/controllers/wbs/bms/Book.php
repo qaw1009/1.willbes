@@ -63,7 +63,9 @@ class Book extends \app\controllers\BaseController
     {
         return [
             'EQ' => [
-                'wSaleCcd' => $this->_reqP('search_sale_ccd')
+                'wSaleCcd' => $this->_reqP('search_sale_ccd'),
+                'wIsPreSale' => $this->_reqP('search_is_pre_sale'),
+                'wIsUse' => $this->_reqP('search_is_use'),
             ],
             'ORG1' => [
                 'LKB' => [

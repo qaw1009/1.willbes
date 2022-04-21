@@ -21,7 +21,8 @@
 
         /************************************************************/
 
-        .sky {position:fixed; top:225px;right:10px;z-index:10;}
+        .sky {position:fixed; top:180px; right:10px; z-index:10;}
+        .sky a {display:block; margin-bottom:10px; text-align:center}
 
         .wb_ctstop {position:relative; overflow:hidden; background:url("https://static.willbes.net/public/images/promotion/2020/08/1767_top_bg.jpg") center top  no-repeat;}
         .wb_cts01 > div {width:1120px; margin:0 auto; position:relative;}
@@ -73,10 +74,13 @@
 
  <div class="evtContent NSK" id="evtContainer">
 
-    <div class="sky">
+    <div class="sky" id="QuickMenu">
         <a href="#apply"> 
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1767_sky.png" alt="" >
-        </a>             
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1767_sky.png" alt="예비전력관리 패스" >
+        </a>    
+        <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1679" target="_blank"> 
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/1767_sky02.png" alt="예비전력 무료특강" >
+        </a>          
     </div>  
 
     <div class="evtCtnsBox wb_ctstop" data-aos="fade-up">

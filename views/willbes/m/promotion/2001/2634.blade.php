@@ -1,141 +1,125 @@
-@extends('willbes.pc.layouts.master')
+@extends('willbes.m.layouts.master')
 
 @section('content')
-    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
+
     <style type="text/css">
-        .evtContent {
-            width:100%;
-            min-width:1120px !important;
-            max-width:2000px !important;
-            margin:20px auto 0;
-            padding:0 !important;
-            background:#fff;     
-            font-size:14px;       
-            line-height:1.3;
-        }
-        .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
-        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000} */
+        .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
+        .evtCtnsBox img {width:100%; max-width:720px;}
+        /*.wrap a {border:1px solid #000} */
 
-        /************************************************************/
+        .dday {font-size:24px !important; padding:10px; background:#ebebeb; color:#000; text-align:left; letter-spacing:-1px}
+        .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
+        .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#3a99f0; font-size:14px !important;}
 
-
-        .sky {position:fixed;top:200px;right:10px;z-index:100;}
-        .sky a {display:block; margin-bottom:10px}
-        
-        .evt00 {background:#0a0a0a}
-
-        .evtTop {background:url("https://static.willbes.net/public/images/promotion/2022/04/2634_top_bg.jpg") no-repeat center top;} 
-
-        .event {background:#fe8c05}
-
-        .evtPass {background:#f5f5f7; padding:140px 0}
-        .evtPass .title01 {font-size:30px; color:#000; margin-bottom:100px}
-        .evtPass .wrap {width:1120px; margin:0 auto}
-        .evtPass .passLecBuy {display:flex; justify-content:space-around; position:absolute; bottom:90px; width:100%; color:#252525}
-        .evtPass .passLecBuy div {width:50%; line-height:30px; font-size:22px; font-weight:bold; text-align:left; padding-left:30px} 
-        .evtPass .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
-        .evtPass .passLecBuy p span,
-        .evtPass .title02 span {color:#ffda39; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
+        .evt01 {background:#f5f5f7; padding-bottom:50px}
+        .evt01 .price {text-align:center; font-size:24px; font-weight:bold; color:#000; letter-spacing:-1px; position:absolute; bottom:5%; width:100%; z-index: 10;}
+        .evt01 .price p {margin-bottom:20px}
+        .evt01 .price p span {color:#ffda39; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
         @@keyframes upDown{
             from{color:#d53a44}
-            50%{color:#f44631}
+            50%{color:#533fd1}
             to{color:#d53a44}
         }
         @@-webkit-keyframes upDown{
             from{color:#d53a44}
-            50%{color:#f44631}
+            50%{color:#533fd1}
             to{color:#d53a44}
         }
-        .evtPass input[type="radio"] {height:22px; width:22px; vertical-align:middle}
-        .evtPass input[type="checkbox"] {height:20px; width:20px; vertical-align:middle}
-        .evtPass input:checked + label {border-bottom:1px dashed #533fd1; color:#533fd1}
 
-        .evtPass .totalPrice {width:860px; margin:90px auto 0;}
-        .evtPass .totalPrice a {display:block; background:#000; font-size:44px; color:#fff; padding:20px; background:#000; border-radius:5px; box-shadow:10px rgba(0,0,0,.5);}
-        .evtPass .totalPrice a:hover {background:#533fd1}
+        .evt01 .price label {display:inline-block}
+        .evt01 .price input:checked + label {color:blue}
+        .evt01 .ext01txt {padding:20px; text-align:left}
+        .evt01 .ext01txt label {font-size:20px; font-weight:bold;}
+        .evt01 input[type="radio"] {height:20px; width:20px; vertical-align:middle}
+        .evt01 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle; margin-right:5px}
+        .evt01 .ext01txt input:checked + label {color:blue}
+        .evt01 .ext01txt ul {margin:10px 0 0 25px;}
 
-        .evtPass .check {width:800px; margin:0 auto; padding:20px; font-size:16px; color:#000; letter-spacing:-1px;}
-        .evtPass .check a {display:inline-block; padding:10px; color:#fff; background:#000; margin-left:40px; border-radius:20px; font-size:12px}
-        .evtPass .check p {font-size:14px; padding:10px 0 0 20px; line-height:1.4}
-        .evtPass .check input:checked + label {border-bottom:1px dashed #533fd1; color:#533fd1}
+        .evt01_coupon .coupon_btn {margin:0 auto; background-color:rgba(255,255,255,0.1)}
 
-        .evtPass .title02 {font-size:28px; color:#000; margin:90px auto 30px}
-        .evtPass .title02 div {font-size:46px}
-
-        .evtReview {background:#f2f2f2; padding:180px 0 0;}
-        .evtReview .title01 {font-size:51px; color:#b6b6b6; margin-bottom:100px}
+        .evtReview {background:#f2f2f2; padding:50px 0 0; border:1px solid #f2f2f2}
+        .evtReview .title01 {font-size:3vh; color:#b6b6b6; margin-bottom:30px}
         .evtReview .title01 strong {color:#000}
-        .reviewWrap .reviewList {position: relative; height:550px }
-        .reviewWrap .reviewList div {width:510px; height:360px; background:#fff; padding:50px 0; border-radius:8px; font-size:20px; line-height:1.4; color:#585858; letter-spacing:-1px; box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.1);/* position: absolute; z-index:10;*/}
-        .reviewList p {color:#000; margin-top:40px; font-weight:bold; position:absolute; top:250px; width:100%;}
+        .reviewWrap .reviewList {position: relative; height:350px }
+        .reviewWrap .reviewList div {width:90%; min-width:300px; margin:0 auto; height:300px; padding:20px 0; border-radius:8px; font-size:1.8vh; line-height:1.4; color:#585858; letter-spacing:-1px; box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.1); background:#fff;}
+        .reviewList p {color:#000; margin-top:40px; font-weight:bold; position:absolute; top:200px; width:90%;}
+        .evtReview .bx-wrapper {border:0; background:none; box-shadow:none}
+      
+        .evt02 {background:#f6f6f6; padding-bottom:10%}
+        /*탭(텍스트)*/     
+        .tabContaier {background:#fff; border-radius:10px; margin:0 3%; box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.1); padding:15px}
+        .tabContaier ul{display:flex;} 
+        .tabContaier li {width:20%;} 
+        .tabContaier li a{display:block; background:#e9e9e9; color:#a6a6a6; font-size:18px; padding:15px 0; margin-right:2px; line-height:1.2}
+        .tabContaier li a.active {color:#fff; background:#cf9c5d;}
+        .tabContaier li a br {display:none}
+        .tabContaier li:last-child a {margin:0}
 
-        .evt02 {background:#f6f6f6; padding-bottom:170px}
+         /*유튜브*/
+        .video-container {position:relative; padding-bottom:56.25%; overflow: hidden; margin-top:-20px !important}
+        .video-container iframe {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
-        /*탭(텍스트)*/
-        .tabContaier {width:990px; margin:0 auto; height:520px; background:#fff; border-radius:10px; box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.1); 
-            display:flex; flex-direction: row-reverse; justify-content: space-between; text-align:left; letter-spacing:-1px; padding:36px 60px; position: relative;}
-        .tabContaier ul{width:196px;} 
-        .tabContaier li {margin-bottom:4px}      
-        .tabContaier li a img.off{display:block;}
-        .tabContaier li a img.on{display:none;}
-        .tabContaier li a:hover img.off,
-        .tabContaier li a.active img.off {display:none;}
-        .tabContaier li a:hover img.on,
-        .tabContaier li a.active img.on {display:block;}
-
-        .tabContaier .tabContents div {font-size:28px; color:#000; font-weight:bold; margin-top:20px; position: relative;}
-        .tabContaier .tabContents div > a {color:#cf9c5d; font-size:16px; background:url("https://static.willbes.net/public/images/promotion/2022/04/2634_icon01.png") no-repeat right center; padding-right:25px}
+        .tabContaier .tabContents div {font-size:3.6vh; color:#000; font-weight:bold; margin-top:20px; text-align:left; position: relative;}
+        .tabContaier .tabContents div > a {color:#cf9c5d; font-size:2vh; background:url("https://static.willbes.net/public/images/promotion/2022/03/2595_icon01.png") no-repeat right center; padding-right:25px}
         .tabContaier .tabContents div span {position: absolute; bottom:0px; right:0}
-        .tabContaier .tabContents div span a {font-size:16px; font-weight:bold; color:#fff; background:#000; border-radius:30px; padding: 5px 15px}
+        .tabContaier .tabContents div span a {font-size:2vh; font-weight:bold; color:#fff; background:#000; border-radius:30px; padding: 2px 10px}
         .tabContaier .tabContents div span a:hover {background:#cf9c5d}
 
-        /*유튜브*/
-        .youtube {width:640px; height:360px; background:#000; margin-top:0 !important}
-        .youtube iframe {width:640px; height:360px}
-
-        .evt04 {background:#f6f9fe}
-        .evt05 {background:#162d3b; position: relative;}
-
-        .passgo {position:absolute; width:500px; height:80px; line-height:80px; bottom:-35px; left:50%; margin-left:-250px; z-index: 10;}
-        .passgo a {display:block; border-radius:50px; color:#fff; background:#000; font-size:40px}
-        .passgo a:hover {box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.2); color:#fff455}
+        .passgo {position:absolute; width:80%; height:60px; line-height:60px; bottom:-30px; left:50%; margin-left:-40%; z-index: 10;}
+        .passgo a {display:block; border-radius:50px; color:#fff; background:#000; font-size:22px}
 
         /* 이용안내 */
-        .content_guide_wrap{background:#f3f3f3; padding:100px 0; font-size:14px}
-        .content_guide_wrap .wrap {width:1120px; margin:0 auto; position:relative}
-        .content_guide_wrap .guide_tit{margin-bottom:50px; text-align:left; font-size:30px;}
-
-        .content_guide_wrap .tabs {width:1120px; margin:0 auto; display:flex; justify-content: space-around;} 
-        .content_guide_wrap .tabs li {width:33.33333%;}
-        .content_guide_wrap .tabs li a {display:block; text-align:center; height:60px; line-height:60px; font-size:140% !important; border:2px solid #f3f3f3; border-bottom:2px solid #202020;}
+        .content_guide_wrap{background:#f3f3f3; padding:100px 20px}
+        .content_guide_wrap .guide_tit{text-align:left; font-size:26px; margin-bottom:30px}
+        .content_guide_wrap .tabs {display:flex; justify-content: space-around;} 
+        .content_guide_wrap .tabs li {width:50%;}
+        .content_guide_wrap .tabs li a {display:block; text-align:center; padding:15px 0; font-size:16px; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
         .content_guide_wrap .tabs li a:hover,
         .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
-        .content_guide_box {width:1120px; margin:0 auto; border:2px solid #202020; border-top:0; padding-top:30px; background:#fff;}
-        .content_guide_box dl{margin:0 20px; word-break:keep-all; padding:30px}
+        .content_guide_wrap .tabs:after {content:""; display:block; clear:both}
+        .content_guide_box{border:2px solid #202020; border-top:0; padding-top:20px; background:#fff}
+        .content_guide_box dl{word-break:keep-all; padding:10px}
         .content_guide_box dt{margin-bottom:10px}
-        .content_guide_box dt h3{color:#fff; background:#333; display:inline-block; padding:3px 7px; margin-right:10px; font-size:120%}
-        .content_guide_box dt img.btn{padding:2px 0 0 0}
+        .content_guide_box dt h3{color:#fff; background:#333; display:inline-block; padding:3px 7px; font-weight:bold; margin-right:10px; font-size:120%}
         .content_guide_box dd{color:#777; margin:0 0 20px 5px; line-height:17px}
         .content_guide_box dd strong {color:#555}
-        .content_guide_box dd li{margin-bottom:5px; list-style:decimal; margin-left:20px; line-height:1.5}
+        .content_guide_box dd li {margin-bottom:3px; list-style:decimal; margin-left:20px}
         .content_guide_box dd:after {content:""; display:block; clear:both}
 
-        /*타이머*/
-        .newTopDday {background:#181818; width:100%; padding:20px 0 25px; color:#fff; font-size:16px;}
-        .newTopDday ul {width:1120px; margin:0 auto; display:flex; justify-content: center; align-items:center;}
-        .newTopDday ul li {margin-right:5px; text-align:center; height:60px;}
-        .newTopDday ul li strong {line-height:60px; font-weight:normal !important}
-        .newTopDday ul li img {width:44px}
-        .newTopDday ul li:first-child {text-align:right; padding-right:20px; font-size:23px;}
-        .newTopDday ul li:first-child span {font-size:16px;}
-        .newTopDday ul li.endday {text-align:left; padding-left:20px;}
-        .newTopDday ul li.endday a {display:block; font-size:23px; margin-top:5px}
-        .newTopDday ul li.endday a:hover {color:#ffaf00}
-        .newTopDday ul li.endday span {display:block; font-size:16px;}
-        .newTopDday ul:after {content:""; display:block; clear:both}
+
+        @@media only screen and (max-width: 374px)  {
+            .dday {font-size:18px !important;}
+            .dday a {padding:5px 10px;}
+            .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
+            .content_guide_wrap .tabs li a {font-size:12px !important; letter-spacing:-1px}
+            .evt01 .ext01txt label {font-size:14px;}
+            .evt01 .price {font-size:16px;}
+
+            .reviewWrap .reviewList {height:300px }
+            .reviewWrap .reviewList div {height:220px;}
+            .reviewList p {top:130px;;}
+
+            .tabContaier li a{font-size:14px; }
+            .tabContaier li a br {display:block} 
+            .tabContaier .tabContents div {font-size:20px;}
+            .tabContaier .tabContents div a {font-size:14px;}
+        }
+
+        @@media only screen and (min-width: 375px) and (max-width: 640px) {
+            .evt01 .price {font-size:20px;}
+            .content_guide_wrap .guide_tit{font-size:24px;}
+            .content_guide_wrap .tabs li a {font-size:15px !important; letter-spacing:-1px}
+            .evt01_coupon .coupon_btn {position:absolute !important;top:8.55% !important;margin:0 auto; background-color:rgba(255,255,255,0.1);}            
+
+            .reviewWrap .reviewList {height:300px }            
+            .reviewWrap .reviewList div {height:220px; font-size:2vh;}
+            
+            .reviewList p {top:130px;}
+
+            .tabContaier li a br {display:block} 
+        }
+
     </style>
 
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
@@ -143,111 +127,77 @@
         {!! method_field('POST') !!}
     </form>
 
-    <div class="evtContent NSK" id="evtContainer">
-        <div class="sky" id="QuickMenu">
-            <a href="#pass">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_sky01.png" alt="0원 패스">
-            </a>  
-            <a href="#transfer">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_sky02.png" alt="최대 30%">
-            </a>  
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2602" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_sky03.png" alt="23년 패스">
-            </a>  
+    <div id="Container" class="Container NSK c_both">
+        <div class="evtCtnsBox dday NSK-Thin">
+            <strong>{{$arr_promotion_params['turn']}}기 마감 <span id="ddayCountText" class="NSK-Black"></span> </strong>
+            <a href="#evt01">신청하기 ></a>
         </div>
 
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/wb_police.jpg" alt="경찰학원부분 1위"/>
+        <div class="evtCtnsBox evt00" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_00.jpg" alt="경찰학원부분 1위" >
         </div>
 
-        <!-- 타이머 -->
-        <div id="newTopDday" class="newTopDday">
-            <div id="ddaytime" data-aos="fade-left">
-                <ul>
-                    <li>
-                        <span>윌비스 신광은 경찰 2022~23대비</span>
-                        <div class="NSK-Black">0원 PASS {{$arr_promotion_params['turn']}}기</div>
-                    </li>
-                    <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><strong>일</strong></li>
-                    <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><strong>:</strong></li>
-                    <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><strong>:</strong></li>
-                    <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li class="endday">                        
-                        <span>{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} {{ $arr_promotion_params['etime'] or '' }} 마감!</span>
-                        <a href="#pass" target="_self" class="NSK-Black">수강하기 ></a>
-                    </li>
-                </ul>
-            </div>
+        <div class="evtCtnsBox evtTop" data-aos="fade-up">         
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_top.jpg" alt="0원 PASS" >                 
         </div>
 
-        <div class="evtCtnsBox evtTop" id="main" data-aos="fade-up">           
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_top.jpg" alt="경찰 pass"/>                        
-        </div> 
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_event01.jpg" alt="쿠폰받기" >
+            <a href="javascript:void(0);" onclick="giveCheck(); return false;" title="쿠폰받기" style="position: absolute; left: 14.31%; top: 82.95%; width: 71.25%; height: 8.03%; z-index: 2;"></a>
+        </div>
         
-        <div class="evtCtnsBox event" data-aos="fade-up">     
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_event01.jpg" alt="32만원 혜택"/>             
-        </div> 
-
-        <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">     
-            <div class="title01 NSK-Black">
-                경찰공무원 합격을 위한 최선의 방법!<br>
-                신광은 경찰 PASS로 합격률을 높이는 전략을 선택하세요!
-            </div>
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_pass.png" alt="신광은경찰 PASS">
-                <div class="passLecBuy NSK-Black"> 
-                    <div>         
-                        <p>학습지원금 10만 + <span>신규가입 시 7만 더!</span></p>           
-                        <input type="radio" id="y_pkg0" name="y_pkg" value="194615"/>                
-                        <label for="y_pkg0">23년 합격 PASS 신청하기</label>
-                    </div> 
-                    <div>   
-                        <p>학습지원금 5만 + <span>신규가입 시 7만 더!</span></p>                 
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="194614"/>                
-                        <label for="y_pkg1">23년 1차 경찰 PASS 신청</label>
+        <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_pass.png"> 
+            <div class="evt01_coupon ">  
+                <div class="p_re">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_pass01.png" alt="23년 합격 패스" > 
+                    <div class="price NSK-Black">
+                        <p>학습지원금 10만 + <span>신규가입 시 7만 더!</span></p>  
+                        <input type="radio" id="y_pkg0" name="y_pkg" value="194615" onClick=""/>
+                        <label for="y_pkg0"> 23년 합격 PASS 신청하기</label>
                     </div>
-                    <div>  
-                        <p><span>&nbsp;</span></p>     
-                        <input type="radio" id="y_pkg2" name="y_pkg" value="194613"/>                
-                        <label for="y_pkg2">22년 2차 경찰 PASS 신청</label>
-                    </div> 
+                </div>
+
+                <div class="p_re">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_pass02.png" alt="23년 1차 패스" > 
+                    <div class="price NSK-Black">
+                        <p>학습지원금 5만 + <span>신규가입 시 7만 더!</span></p>  
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="194614" onClick=""/>
+                        <label for="y_pkg1"> 23년 1차 경찰 PASS 신청하기</label>
+                    </div>
+                </div>
+
+                <div class="p_re">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_pass03.png" alt="22년 2차 패스" >
+                    <div class="price NSK-Black">
+                        <p><span> </span></p>
+                        <input type="radio" id="y_pkg2" name="y_pkg" value="194613" onClick=""/>
+                        <label for="y_pkg2"> 22년 2차 경찰 PASS 신청하기</label>
+                    </div>
+                </div>
+
+                <div class="ext01txt">
+                    <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
+                    <ul>
+                        <li>※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.</li>
+                        <li>※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.</li>
+                        <li>※ 쿠폰은 PASS 결제 후 [내 강의실>결제관리>쿠폰/수강권 관리] 에서 확인 가능합니다.</li>
+                        <li>※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.</li>
+                    </ul>
                 </div>
             </div>
+            
+            <div data-aos="fade-up" class="p_re mt50">
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_pass04.png" alt="할일받고 구매하자">
+                <a href="https://police.willbes.net/m/support/qna/index/cate/3001?s_cate_code=3001&s_is_my_contents=1" target="_blank" title="재수강 쿠폰받기" style="position: absolute; left: 8.47%; top: 25.65%; width: 38.75%; height: 34.57%; z-index: 2;"></a>
 
-            <div class="check" data-aos="fade-up">
-                <input type="checkbox" id="is_chk1" name="is_chk" value="Y"/>
-                <label for="is_chk1">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
-                <a href="javascript:goDesc('tab01')">이용안내확인하기 ↓</a>
-                <p>
-                    ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>
-                    ※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.<br>
-                    ※ 쿠폰은 PASS 결제 후 [내 강의실>결제관리>쿠폰/수강권 관리] 에서 확인 가능합니다.<br>
-                    ※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.
-                </p>
-            </div>
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute; left: 52.5%; top: 25.65%; width: 38.75%; height: 34.57%; z-index: 2;"></a>
 
-            <div class="title02" id="transfer">
-                재수강과 환승 하실 수강생은 모두 주목
-                <div class="NSK-Black">최대 <span>25만원 할인</span> 받고 구매하세요.</div>
-            </div>
-
-            <div class="wrap">
-                <a href="https://www.willbes.net/classroom/qna/index" target="_blank" title="재수강 쿠폰받기"><img src="https://static.willbes.net/public/images/promotion/2022/04/2634_coupon01.png"></a>
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기"><img src="https://static.willbes.net/public/images/promotion/2022/04/2634_coupon02.png"></a>
-            </div>
-
-            <div class="totalPrice NSK-Black" data-aos="fade-up">
-                <a href="javascript:void(0);" onclick="termsCheck('is_chk1', 'pass');">패스상품 신청하기 ></a>
-            </div>  
+                <a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" title="패스상품 신청하기" style="position: absolute; left: 6.39%; top: 74.57%; width: 86.53%; height: 24.57%; z-index: 2;"></a>
+            </div> 
         </div>
-        
+
+    
         <div class="evtCtnsBox evtReview">
             <div class="title01 NSK-Black">
                 윌비스 신광은 경찰팀<br>
@@ -387,133 +337,115 @@
                 </div>
             </div>
         </div>
-         
-        <div class="evtCtnsBox evt01" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_01.jpg" alt="합격할수 없는 이유"/>            
-        </div>        
 
-        <div class="evtCtnsBox evt02" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_02.jpg" alt="전문교수진" />     
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_01.jpg" alt="교수진" >
+        </div>
+
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_02.jpg" alt="" >
             <div class="tabContaier" id="apply">    
                 <ul>    
-                    <li>
-                        <a href="#tab1" class="active">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_02_t01.jpg" alt="형사법 신광은" class="off" >
-                            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_02_t01_on.jpg" alt="" class="on" >
-                        </a>
-                    </li>                            
-                    <li>
-                        <a href="#tab2">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_02_t02.jpg" alt="경찰학 장정훈" class="off" >
-                            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_02_t02_on.jpg" alt="" class="on" >
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab3">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_02_t03.jpg" alt="헌법 김원욱" class="off" >
-                            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_02_t03_on.jpg" alt="" class="on" >
-                        </a>
-                    </li>                            
-                    <li>
-                        <a href="#tab4">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_02_t04.jpg" alt="헌법 이국령" class="off" >
-                            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_02_t04_on.jpg" alt="" class="on" >
-                        </a>
-                    </li>    
-                    <li>
-                        <a href="#tab5">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_02_t05.jpg" alt="범죄학 박상민" class="off" >
-                            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_02_t05_on.jpg" alt="" class="on" >
-                        </a>
-                    </li>             
+                    <li><a href="#tab1" class="active">형사법<br> 신광은</a></li>                            
+                    <li><a href="#tab2">경찰학<br> 장정훈</a></li>
+                    <li><a href="#tab3">헌법<br> 김원욱</a></li>                            
+                    <li><a href="#tab4">헌법<br> 이국령</a></li>  
+                    <li><a href="#tab5">범죄학<br> 박상민</a></li>           
                 </ul>
                 <div id="tab1" class="tabContents">
-                    <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div>
-                        <p class="NSK-Black">형사법 공부방법 & 커리큘럼</p>
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51160?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">형사법 신광은</a>
-                        <span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2593" target="_blank">22년 1차 시험 완벽 적중 보기 ></a></span>
-                    </div>                        
+                    <div class="wrap">                     
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div>
+                            <p class="NSK-Black">형사법 공부방법 & 커리큘럼</p>
+                            <a href="{{front_url('/professor/show/cate/3001/prof-idx/51160?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29')}}" target="_blank">형사법 신광은</a>
+                            <span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2593" target="_blank">적중 보기 ></a></span>
+                        </div>
+                    </div>                         
                 </div>
                 <div id="tab2" class="tabContents">
-                    <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/VHTrL5w2IF4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div>
-                        <p class="NSK-Black">경찰학 공부방법 & 커리큘럼</p>
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51161?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">경찰학 장정훈</a>
-                        <span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2592" target="_blank">22년 1차 시험 완벽 적중 보기 ></a></span>
-                    </div>                        
+                    <div class="wrap">                       
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/VHTrL5w2IF4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div>
+                            <p class="NSK-Black">경찰학 공부방법 & 커리큘럼</p>
+                            <a href="{{front_url('/professor/show/cate/3001/prof-idx/51161?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29')}}" target="_blank">경찰학 장정훈</a>
+                            <span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2592" target="_blank">적중 보기 ></a></span>
+                        </div>
+                    </div>                         
                 </div> 
                 <div id="tab3" class="tabContents">
-                    <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/UB91DCctYgU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div>
-                        <p class="NSK-Black">헌법 김원욱 기본이론 오리엔테이션</p>
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51146?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">헌법 김원욱</a>
-                        <span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2594" target="_blank">22년 1차 시험 완벽 적중 보기 ></a></span>
+                    <div class="wrap">                      
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/UB91DCctYgU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div>
+                            <p class="NSK-Black">헌법 김원욱 기본이론 오리엔테이션</p>
+                            <a href="{{front_url('/professor/show/cate/3001/prof-idx/51146?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29')}}" target="_blank">헌법 김원욱</a>
+                            <span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2594" target="_blank">적중 보기 ></a></span>
+                        </div>>
                     </div>                               
                 </div> 
                 <div id="tab4" class="tabContents">
-                    <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div>
-                        <p class="NSK-Black">NEW 헌법 전문가 경찰 헌법 이국령 교수</p>
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">헌법 이국령</a>
-                        <span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2583" target="_blank">22년 1차 시험 완벽 적중 보기 ></a></span>
-                    </div>                                
+                    <div class="wrap">                       
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div>
+                            <p class="NSK-Black">NEW 헌법 전문가 경찰 헌법 이국령 교수</p>
+                            <a href="{{front_url('/professor/show/cate/3001/prof-idx/51259?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29')}}" target="_blank">헌법 이국령</a>
+                            <span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2583" target="_blank">적중 보기 ></a></span>
+                        </div>
+                    </div>                                 
                 </div> 
                 <div id="tab5" class="tabContents">
-                    <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/8T1HxQ5PPhQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div>
-                        <p class="NSK-Black">[범죄학OT] 범죄학의 혁명! 박상민으로 끝!</p>
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51278?subject_idx=2178&subject_name=%EB%B2%94%EC%A3%84%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">범죄학 박상민</a>
-                    </div>                          
+                    <div class="wrap">                        
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/8T1HxQ5PPhQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div>
+                            <p class="NSK-Black">[범죄학OT] 범죄학의 혁명! 박상민으로 끝!</p>
+                            <a href="{{front_url('/professor/show/cate/3001/prof-idx/51278?subject_idx=2178&subject_name=%EB%B2%94%EC%A3%84%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29')}}" target="_blank">범죄학 박상민</a>
+                        </div>
+                    </div>                        
                 </div>                                
-            </div>    
+            </div>           
+        </div>
+        
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_03.jpg" alt="" >
         </div>
 
-        <div class="evtCtnsBox evt03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_03.jpg"  alt="커리큘럼" />              
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_04.jpg" alt="" >
         </div>
 
-        <div class="evtCtnsBox evt04" data-aos="fade-up">        
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_04.jpg" alt="지텔프, 한능검 특강" />  
-        </div>
-
-        <div class="evtCtnsBox evt05" data-aos="fade-up">
+        <div class="evtCtnsBox wrap" data-aos="fade-up">
             <form id="add_apply_form" name="add_apply_form">
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
-                <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/04/2634_05.jpg"  alt="스폐셜혜택" />
-                    <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 18.39%; top: 41.89%; width: 16.07%; height: 3.11%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="장정훈 경찰학" style="position: absolute;left: 50.98%; top: 39.68%; width: 14.29%; height: 2.58%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180748" target="_blank" title="신광은 형법" style="position: absolute;left: 65.45%; top: 39.68%; width: 14.29%; height: 2.58%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180567" target="_blank" title="김원욱 헌법" style="position: absolute;left: 44.02%; top: 42.32%; width: 14.29%; height: 2.58%; z-index: 2;"></a>
-                    <a href="javascript:alert('Coming Soon!')" title="이국령 헌법" style="position: absolute; left: 58.21%; top: 42.32%; width: 14.29%; height: 2.58%; z-index: 2;"></a>
-                    <a href="javascript:alert('Coming Soon!')" title="박상민 범죄학" style="position: absolute; left: 72.59%; top: 42.32%; width: 14.29%; height: 2.58%; z-index: 2;"></a>
-                </div>
-            </form>   
-            <div class="passgo NSK-Black"><a href="#pass">0원 PASS 신청 ↑</a></div> 
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_05.jpg" alt="교재 신청하기" >
+                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 58.89%; top: 32.29%; width: 25%; height: 2.67%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="경찰학" style="position: absolute; left: 28.06%; top: 51.31%; width: 21.94%; height: 2.22%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180748" target="_blank" title="형사법" style="position: absolute; left: 50.28%; top: 51.31%; width: 21.94%; height: 2.22%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180567" target="_blank" title="헌법(김)" style="position: absolute;left: 16.94%; top: 53.53%; width: 21.94%; height: 2.22%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!')" title="헌법(이)" style="position: absolute; left: 39.03%; top: 53.53%;; width: 21.94%; height: 2.22%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!')" title="범죄학" style="position: absolute; left: 61.39%; top: 53.53%; width: 21.94%; height: 2.22%; z-index: 2;"></a>
+            </form>
+            <div class="passgo NSK-Black"><a href="#evt01">0원 PASS 신청 ↑</a></div> 
         </div>
-
 
         <div class="content_guide_wrap" id="tab">
             <div class="wrap">
                 <p class="guide_tit">윌비스 <span class="NSK-Black tx-blue">신광은 경찰 PASS </span> 이용안내 </p>
                 <ul class="tabs">
-                    <li><a href="#tab01" class="active">23년 합격 PASS</a></li>
-                    <li><a href="#tab02">23년 1차 경찰 PASS</a></li>
-                    <li><a href="#tab03">22년 2차 경찰 PASS</a></li>
+                    <li><a href="#tab01" class="active">23년<br> 합격 PASS</a></li>
+                    <li><a href="#tab02">23년<br> 1차 경찰 PASS</a></li>
+                    <li><a href="#tab03">22년<br> 2차 경찰 PASS</a></li>
                 </ul>
 
                 <div class="content_guide_box" id="tab01">
@@ -872,9 +804,7 @@
             </div>
         </div>
 
-        <!-- content_guide_wrap //-->
-    </div>
-    <!-- End evtContainer -->
+    <!-- End Container -->
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -884,23 +814,57 @@
       } );
     </script>
 
+    <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
+    <script src="/public/vendor/jquery/bxslider/jquery.bxslider.js"></script>
+
     <script type="text/javascript">
-        var $regi_form = $('#regi_form'); 
+        var $regi_form = $('#regi_form');
 
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}', '{{$arr_promotion_params['etime'] or "00:00"}}', 'txt');
+        });
 
-         /* 팝업창 */
-         function certOpen(){
+        function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay) {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
-            @if(empty($arr_promotion_params["page"]) === false && empty($arr_promotion_params["cert"]) === false)
-                var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
-                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
-            @else
-                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
-            @endif
+            var $regi_form = $('#' + ele_id);
+            var $prod_code = $regi_form.find('input[name="' + field_name + '"]:checked');   // 상품코드
+            var $is_chk = $regi_form.find('input[name="is_chk"]');  // 동의여부
+            var params;
+
+            if ($is_chk.length > 0) {
+                if ($is_chk.is(':checked') === false) {
+                    alert('이용안내에 동의하셔야 합니다.');
+                    $is_chk.focus();
+                    return;
+                }
+            }
+
+            if ($prod_code.length < 1) {
+                alert('강좌를 선택해 주세요.');
+                return;
+            }
+
+            // 장바구니 저장 기본 파라미터
+                params = [
+                { 'name' : '{{ csrf_token_name() }}', 'value' : '{{ csrf_token() }}' },
+                { 'name' : '_method', 'value' : 'POST' },
+                { 'name' : 'cart_type', 'value' : cart_type },
+                { 'name' : 'learn_pattern', 'value' : learn_pattern },
+                { 'name' : 'is_direct_pay', 'value' : is_direct_pay }
+            ];
+
+            // 선택된 상품코드 파라미터
+            $prod_code.each(function() {
+                params.push({ 'name' : 'prod_code[]', 'value' : $(this).val() + ':613001:' + $(this).val() });
+            });
+
+            //장바구니 저장 URL로 전송
+            formCreateSubmit('{{ front_url('/cart/store') }}', params, 'POST');
         }
 
-       /*쿠폰발급 */
+        // 쿠폰발급
         function giveCheck() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
@@ -916,49 +880,20 @@
             @endif
         }
 
-        /*약관동의*/
-        function termsCheck(terms_id,ele_id){
-            if($("#" + terms_id).is(":checked") === false){
-                $("#" + terms_id).focus();
-                alert('이용안내에 동의하셔야 합니다.');
-                return;
-            }
-            goCartNDirectPay(ele_id, 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');
+        // 팝업창
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($arr_promotion_params["page"]) === false && empty($arr_promotion_params["cert"]) === false)
+            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @else
+            alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
         }
 
 
-         /*탭(텍스터버전)*/
-        $(document).ready(function(){
-            $(".tabContents").hide();
-            $(".tabContents:first").show();
-            $(".tabContaier ul li a").click(function(){
-            var activeTab = $(this).attr("href");
-            $(".tabContaier ul li a").removeClass("active");
-            $(this).addClass("active");
-            $(".tabContents").hide();
-            $(activeTab).fadeIn();
-            return false;
-            });
-        });
-
-        /*롤링*/
-        $(document).ready(function() {
-            var BxBook = $('.reviewSlide').bxSlider({
-                slideWidth: 510,
-                slideMargin: 40,
-                maxSlides:12,
-                minSlides:1,
-                moveSlides: 1,
-                ticker:true,
-                speed:100000,
-                onSlideAfter: function() {
-                    BxBook.stopAuto();
-                    BxBook.startAuto();
-                }
-            });
-        });
-
-        /*무료 교재지급*/
+        // 무료 교재지급
         function fn_promotion_etc_submit() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
@@ -986,7 +921,7 @@
             @endif
         }
 
-        /* 이벤트 추가 신청 메세지*/
+        // 이벤트 추가 신청 메세지
         function getApplyMsg(ret_msg) {
             {{-- 해당 프로모션 종속 결과 메세지 --}}
             var apply_msg = '';
@@ -1002,6 +937,7 @@
             if(apply_msg == '') apply_msg = ret_msg;
             return apply_msg;
         }
+
 
         /*tab*/
         $(document).ready(function(){
@@ -1030,23 +966,42 @@
             }
         });
 
-        function goDesc(tab){
-            location.href = '#tab';
-            var activeTab = "#"+tab;
-            $(".tabs li a").removeClass("active");
-            $(".tabs li a[href='#"+tab+"']").addClass("active");
-            $(".content_guide_box").hide();
-            $(activeTab).show();
-        }
+        //교수 tab
+        $(document).ready(function(){
+            $(".tabContents").hide();
+            $(".tabContents:first").show();
+            $(".tabContaier ul li a").click(function(){
+            var activeTab = $(this).attr("href");
+            $(".tabContaier ul li a").removeClass("active");
+            $(this).addClass("active");
+            $(".tabContents").hide();
+            $(activeTab).fadeIn();
+            return false;
+            });
+        });
 
-        /*디데이카운트다운*/
+        /*롤링*/
         $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
-        });   
+            var BxBook = $('.reviewSlide').bxSlider({
+                ticker:true,
+                speed:150000,
+                onSlideAfter: function() {
+                    BxBook.stopAuto();
+                    BxBook.startAuto();
+                }
+            });
+        });
     </script>
 
-    
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
+
+    <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->
+    <script language='javascript'>
+        var _AceGID=(function(){var Inf=['gtp14.acecounter.com','8080','AH1A44052179653','AW','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;var _T=new Image(0,0);if(_CI.join('.').indexOf(Inf[3])<0){ _T.src ="https://"+ Inf[0] +'/?cookie'; _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
+        var _AceCounter=(function(){var G=_AceGID;var _sc=document.createElement('script');var _sm=document.getElementsByTagName('script')[0];if(G.o!=0){var _A=G.val[G.o-1];var _G=(_A[0]).substr(0,_A[0].indexOf('.'));var _C=(_A[7]!='0')?(_A[2]):_A[3];var _U=(_A[5]).replace(/\,/g,'_');_sc.src='https:'+'//cr.acecounter.com/Web/AceCounter_'+_C+'.js?gc='+_A[2]+'&py='+_A[4]+'&gd='+_G+'&gp='+_A[1]+'&up='+_U+'&rd='+(new Date().getTime());_sm.parentNode.insertBefore(_sc,_sm);return _sc.src;}})();
+    </script>
+    <noscript><img src='https://gtp14.acecounter.com:8080/?uid=AH1A44052179653&je=n&' border='0' width='0' height='0' alt=''></noscript>
+    <!-- AceCounter Log Gathering Script End -->
 
 @stop

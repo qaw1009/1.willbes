@@ -122,7 +122,7 @@
             <form class="form-horizontal" id="invoice_form" name="invoice_form" method="POST" onsubmit="return false;">
                 {!! csrf_field() !!}
                 <p><i class="fa fa-check-square-o"></i> 결제상태가 ‘결제완료’인 교재 정보만 노출되며, 송장을 등록하는 메뉴 (송장 등록시 ‘발송준비(환불반영)’ 탭으로 자동 이관)</p>
-                <p><i class="fa fa-check-square-o"></i> 교재의‘예약판매여부’가 ‘Y’인 경우 CN플러스, 북존물류 엑셀다운로드에서 제외됩니다. (N으로 변경 시 엑셀다운로드 처리됨)</p>
+                <p><i class="fa fa-check-square-o"></i> 교재의 ‘예약판매여부’가 ‘Y’인 경우 CN플러스, 북존물류 엑셀다운로드에서 제외됩니다. (N으로 변경 시 엑셀다운로드 처리됨)</p>
                 <div class="form-group form-group-sm form-group-bordered">
                     <label class="control-label col-md-1">송장정보</label>
                     <div class="col-md-11 form-inline">

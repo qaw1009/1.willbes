@@ -7,11 +7,14 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;            
-        }	
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        }
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px; position: relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
@@ -60,13 +63,19 @@
         </div>
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
-            <div class="wrap" id="go_02">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/1139_02.jpg" alt="타학원 수강이력 인증"/>
-                <a href="javascript:certOpen();" title="타학원 수강 인증" style="position: absolute;left: 30.78%;top: 88.56%;width: 38.30%;height: 7.71%;z-index: 2;"></a>
-            </div>
-            <div>
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/1139_03.jpg" alt="이벤트 참여" usemap="#Map1139a" border="0" id="go_03"/>
-    </div>
+            @if(time() < strtotime('202204260000'))
+                <div class="wrap" id="go_02">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/03/1139_02.jpg" alt="타학원 수강이력 인증"/>
+                    <a href="javascript:certOpen();" title="타학원 수강 인증" style="position: absolute;left: 30.78%;top: 88.56%;width: 38.30%;height: 7.71%;z-index: 2;"></a>
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2022/03/1139_03.jpg" alt="이벤트 참여" id="go_03"/>
+            @else
+                <div class="wrap" id="go_02">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/04/1139_02.jpg" alt="타학원 수강이력 인증"/>
+                    <a href="javascript:certOpen();" title="타학원 수강 인증" style="position: absolute;left: 30.78%;top: 88.56%;width: 38.30%;height: 7.71%;z-index: 2;"></a>
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/1139_03.jpg" alt="이벤트 참여" id="go_03"/>
+            @endif
         </div>      
               
     </div>

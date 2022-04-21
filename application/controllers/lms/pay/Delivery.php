@@ -84,7 +84,8 @@ class Delivery extends BaseOrder
             'EQ' => [
                 'O.SiteCode' => $this->_reqP('search_site_code'),
                 'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd'),
-                'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd')
+                'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd'),
+                'WB.wIsPreSale' => $this->_reqP('search_w_is_pre_sale'),
             ],
             'IN' => [
                 'P.ProdTypeCcd' => [$this->orderListModel->_prod_type_ccd['book'], $this->orderListModel->_prod_type_ccd['freebie']],
@@ -192,8 +193,8 @@ class Delivery extends BaseOrder
 
         switch ($this->_tab) {
             case 'invoice' :
-                $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제완료일', '상품명', '결제금액', '배송료', '추가배송료', '수령인명', '수령인휴대폰번호', '배송지우편번호', '배송지주소', '배송지상세주소'];
-                $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, CompleteDatm, ProdName, RealPayPrice, tDeliveryPrice, tDeliveryAddPrice, Receiver, ReceiverPhone, ZipCode, Addr1, Addr2';
+                $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제완료일', '상품명', '결제금액', '배송료', '추가배송료', '예약판매여부', '수령인명', '수령인휴대폰번호', '배송지우편번호', '배송지주소', '배송지상세주소'];
+                $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, CompleteDatm, ProdName, RealPayPrice, tDeliveryPrice, tDeliveryAddPrice, wIsPreSale, Receiver, ReceiverPhone, ZipCode, Addr1, Addr2';
                 $file_name = '송장등록';
                 break;
             case 'prepare' :
@@ -487,7 +488,7 @@ class Delivery extends BaseOrder
 
         // export excel
         $headers = ['출고번호', '수취인명', '수취인주소', '수취인전화번호', '도서명', 'ISBN', '상품코드', '수량', '공급률', '증정', '비고(택배메시지)', '주문번호'];
-        $this->_makeExcel('교재배송_배송요청', $results, $headers, true, $last_query);
+        $this->_makeExcel('교재배송_북존물류', $results, $headers, true, $last_query);
     }
 
     /**

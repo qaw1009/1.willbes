@@ -98,6 +98,14 @@ class OrderFModel extends BaseOrderFModel
                             return $check_limit_cnt;
                         }
                     }
+
+                    // 예약판매교재 단일결제 체크
+                    if ($row['wIsPreSale'] == 'Y') {
+                        $check_book_cnt = count(array_filter(array_pluck($cart_rows, 'wIsPreSale')));
+                        if ($check_book_cnt > 1) {
+                            return '[예약판매]인 교재가 포함되어 있습니다. [예약판매] 교재는 단일 결제만 가능합니다.';
+                        }
+                    }
                 }
 
                 // 수강기간설정 > 수강종료일 기준 > 수강기간이 1일보다 작을 경우 (운영자, 기간제패키지만 적용)

@@ -185,7 +185,11 @@
                                             <tr>
                                                 <td class="w-chk"><input type="checkbox" name="cart_idx[]" value="{{ $row['CartIdx'] }}" class="chk-cart"/></td>
                                                 <td class="w-list tx-left pl20">
-                                                    <span class="pBox p3">교재</span> {{ $row['ProdAddInfo'] }} <strong>{{ $row['ProdName'] }}</strong>
+                                                    <span class="pBox p3">교재</span>
+                                                    @if($row['wIsPreSale'] == 'Y')
+                                                        <strong class="tx-light-blue">[예약판매]</strong>
+                                                    @endif
+                                                    {{ $row['ProdAddInfo'] }} <strong>{{ $row['ProdName'] }}</strong>
                                                     @if(empty($row['OrderLimitCnt']) === false)
                                                         <div class="buyinfo">
                                                             <a href="javascript:void(0);"><span>{{ $row['OrderLimitCnt'] }}개까지</span>구매가능</a>

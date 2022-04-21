@@ -62,6 +62,11 @@
                             <option value="normal">일반배송료</option>
                             <option value="add">추가배송료</option>
                         </select>
+                        <select class="form-control mr-10" id="search_w_is_pre_sale" name="search_w_is_pre_sale" title="예약판매여부">
+                            <option value="">예약판매여부</option>
+                            <option value="Y">Y</option>
+                            <option value="N">N</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -143,6 +148,7 @@
                     <th class="">상품명</th>
                     <th class="">결제금액</th>
                     <th class="rowspan">배송료</th>
+                    <th class="">예약판매여부</th>
                     <th class="rowspan">수령인정보</th>
                     <th class="rowspan">배송지</th>
                     <th class="rowspan" width="210">송장번호</th>
@@ -213,6 +219,7 @@
                     {'data' : 'tDeliveryPrice', 'render' : function(data, type, row, meta) {
                         return data > 0 ? '[일반] ' + addComma(data) + (row.tDeliveryAddPrice > 0 ? '<br/>[추가] ' + addComma(row.tDeliveryAddPrice) : '') : '';
                     }},
+                    {'data' : 'wIsPreSale'},
                     {'data' : 'Receiver', 'render' : function(data, type, row, meta) {
                         return data + '<br/>' + row.ReceiverPhone;
                     }},

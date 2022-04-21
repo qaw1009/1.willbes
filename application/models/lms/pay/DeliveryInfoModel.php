@@ -306,6 +306,7 @@ class DeliveryInfoModel extends BaseOrderModel
                     on TA.wBookIdx = WB.wBookIdx
             where O.CompleteDatm between ? and ?
                 and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
+                and WB.wIsPreSale = "N"
                 ' . $where . '
             order by TA.OrderIdx desc, TA.OrderProdIdx asc        
         ';
@@ -362,6 +363,7 @@ class DeliveryInfoModel extends BaseOrderModel
                 ' . $where . '
             ) AS TA
             INNER JOIN ' . $this->_table['bms_book_combine'] . ' AS VBB ON TA.wBookIdx = VBB.wBookIdx
+            WHERE VBB.wIsPreSale = "N"
             ORDER BY TA.OrderIdx DESC, TA.OrderProdIdx ASC
         ';
 

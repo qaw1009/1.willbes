@@ -62,7 +62,7 @@ class BookModel extends WB_Model
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
-        $in_column = 'B.wBookIdx, B.wPublIdx, B.wBookName, B.wIsbn, B.wAttachImgPath, B.wAttachImgName, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wIsUse, B.wRegDatm, B.wRegAdminIdx
+        $in_column = 'B.wBookIdx, B.wPublIdx, B.wBookName, B.wIsbn, B.wAttachImgPath, B.wAttachImgName, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wIsPreSale, B.wIsUse, B.wRegDatm, B.wRegAdminIdx
             , ifnull(A.wAuthorNames, "") as wAuthorNames, P.wPublName, CS.wCcdName as wSaleCcdName, A.wAdminName as wRegAdminName';
 
         $from = '
@@ -156,7 +156,7 @@ class BookModel extends WB_Model
      */
     public function findBookForModify($book_idx)
     {
-        $column = 'B.wBookIdx, B.wBookName, B.wPublIdx, B.wPublDate, B.wIsbn, B.wPageCnt, B.wEditionCcd, B.wEditionCnt, B.wPrintCnt, B.wEditionSize, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wKeyword';
+        $column = 'B.wBookIdx, B.wBookName, B.wPublIdx, B.wPublDate, B.wIsbn, B.wPageCnt, B.wEditionCcd, B.wEditionCnt, B.wPrintCnt, B.wEditionSize, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wIsPreSale, B.wKeyword';
         $column .= ' , B.wBookDesc, B.wAuthorDesc, B.wTableDesc, B.wAttachImgPath, B.wAttachImgName, B.wIsUse, B.wRegDatm, B.wRegAdminIdx, B.wUpdDatm, B.wUpdAdminIdx';
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
         $column .= ' , if(B.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.wUpdAdminIdx and wIsStatus = "Y")) as wUpdAdminName';
@@ -189,6 +189,7 @@ class BookModel extends WB_Model
                 'wOrgPrice' => element('org_price', $input),
                 'wStockCnt' => element('stock_cnt', $input),
                 'wSaleCcd' => element('sale_ccd', $input),
+                'wIsPreSale' => element('is_pre_sale', $input, 'N'),
                 'wKeyword' => element('keyword', $input),
                 'wBookDesc' => element('book_desc', $input),
                 'wAuthorDesc' => element('author_desc', $input),
@@ -293,6 +294,7 @@ class BookModel extends WB_Model
                 'wOrgPrice' => element('org_price', $input),
                 'wStockCnt' => element('stock_cnt', $input),
                 'wSaleCcd' => element('sale_ccd', $input),
+                'wIsPreSale' => element('is_pre_sale', $input, 'N'),
                 'wKeyword' => element('keyword', $input),
                 'wBookDesc' => element('book_desc', $input),
                 'wAuthorDesc' => element('author_desc', $input),
@@ -376,8 +378,8 @@ class BookModel extends WB_Model
 
             $this->_conn->trans_commit();
 
-            // 판매여부, 사용여부가 변경되었을 경우만 단강좌 json 데이터 업데이트
-            if ($row['wIsUse'] != element('is_use', $input) || $row['wSaleCcd'] != element('sale_ccd', $input)) {
+            // 판매여부, 예약판매여부, 사용여부가 변경되었을 경우만 단강좌 json 데이터 업데이트
+            if ($row['wIsUse'] != element('is_use', $input) || $row['wSaleCcd'] != element('sale_ccd', $input) || $row['wIsPreSale'] != element('is_pre_sale', $input)) {
                 $this->_replaceLmsProdJsonData($book_idx);
             }
         } catch (\Exception $e) {

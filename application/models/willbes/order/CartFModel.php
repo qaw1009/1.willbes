@@ -64,7 +64,7 @@ class CartFModel extends BaseOrderFModel
                     else ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate) + 1, ""))
                   end) as StudyPeriod
                 , PL.StudyStartDate, PL.StudyEndDate, PL.StudyApplyCcd, PL.IsPackLecStartType, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName, fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName
-                , PL.LecSaleType, SC.CateName, WB.wAttachImgPath, WB.wAttachImgName as wAttachImgOgName, WB.wIsbn
+                , PL.LecSaleType, SC.CateName, WB.wAttachImgPath, WB.wAttachImgName as wAttachImgOgName, WB.wIsbn, WB.wIsPreSale
                 , PS.SalePrice as OriSalePrice, PS.SaleRate as OriSaleRate, PS.SaleDiscType as OriSaleDiscType, PS.RealSalePrice as OriRealSalePrice
                 , (case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '" and PL.PackTypeCcd = "' . $this->_userpack_lecture_type_ccd['normal'] . '" then fn_product_userpack_price_data(CA.ProdCode, CA.SaleTypeCcd, CA.ProdCodeSub)
                     when CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['retake'] . '" then JSON_OBJECT("RealSalePrice", cast(PS.SalePrice * ((100 - PL.RetakeSaleRate) / 100) as int))

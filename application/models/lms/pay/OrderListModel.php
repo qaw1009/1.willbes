@@ -280,8 +280,8 @@ class OrderListModel extends BaseOrderModel
                         on OP.ProdCode = PB.ProdCode
                     left join ' . $this->_table['bms_book'] . ' as WB
                         on PB.wBookIdx = WB.wBookIdx and WB.wIsStatus = "Y"';
-                $column .= ', PB.wBookIdx, WB.wIsbn';
-                $excel_column .= ', WB.wIsbn';
+                $column .= ', PB.wBookIdx, WB.wIsbn, WB.wIsPreSale';
+                $excel_column .= ', WB.wIsbn, WB.wIsPreSale';
             }
 
             // 배송지 추가

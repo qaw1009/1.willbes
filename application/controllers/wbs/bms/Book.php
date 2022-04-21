@@ -178,6 +178,7 @@ class Book extends \app\controllers\BaseController
 
     /**
      * 교재 등록/수정
+     * @return CI_Output|null
      */
     public function store()
     {
@@ -194,6 +195,7 @@ class Book extends \app\controllers\BaseController
             ['field' => 'org_price', 'label' => '정가', 'rules' => 'trim|required|numeric'],
             ['field' => 'stock_cnt', 'label' => '재고', 'rules' => 'trim|required|numeric'],
             ['field' => 'sale_ccd', 'label' => '판매여부', 'rules' => 'trim|required'],
+            ['field' => 'is_pre_sale', 'label' => '예약판매여부', 'rules' => 'trim|required|in_list[Y,N]'],
         ];
 
         if (empty($this->_reqP('idx')) === true) {
@@ -210,12 +212,17 @@ class Book extends \app\controllers\BaseController
         }
 
         if ($this->validate($rules) === false) {
-            return;
+            return null;
+        }
+
+        // 예약판매여부 체크
+        if ($this->_reqP('sale_ccd') != '112001' && $this->_reqP('is_pre_sale') == 'Y') {
+            return $this->json_error('판매여부가 판매중 일 경우만 예약판매 설정이 가능합니다.', _HTTP_BAD_REQUEST);
         }
 
         $result = $this->bookModel->{$method . 'Book'}($this->_reqP(null, false));
 
-        $this->json_result($result, '저장 되었습니다.', $result);
+        return $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**

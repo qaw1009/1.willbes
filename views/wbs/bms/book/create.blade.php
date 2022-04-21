@@ -143,6 +143,16 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="is_pre_sale">예약판매여부 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-9 item">
+                        <div class="radio">
+                            <input type="radio" id="is_pre_sale_y" name="is_pre_sale" class="flat" value="Y" required="required" title="예약판매여부" @if($data['wIsPreSale'] == 'Y')checked="checked"@endif/> <label for="is_pre_sale_y" class="input-label">Y</label>
+                            <input type="radio" id="is_pre_sale_n" name="is_pre_sale" class="flat" value="N" @if($method == 'POST' || $data['wIsPreSale'] == 'N')checked="checked"@endif/> <label for="is_pre_sale_n" class="input-label">N</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2" for="book_desc">교재소개
                     </label>
                     <div class="col-md-9">
@@ -286,6 +296,25 @@
                         location.replace('{{ site_url('/bms/book/index') }}' + getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
+            });
+
+            // 판매여부 선택
+            $regi_form.on('ifChanged', 'input[name="sale_ccd"]:checked', function() {
+                var sale_ccd_postfix = $(this).val().substr(-1, 1);
+                if (sale_ccd_postfix !== '1') {
+                    $regi_form.find('input[name="is_pre_sale"][value="N"]').iCheck('check');
+                }
+            });
+
+            // 예약판매여부 선택
+            $regi_form.on('ifChanged', 'input[name="is_pre_sale"]:checked', function() {
+                if ($regi_form.find('input[name="sale_ccd"]:checked').length > 0) {
+                    var is_pre_sale = $(this).val();
+                    var sale_ccd_postfix = $regi_form.find('input[name="sale_ccd"]:checked').val().substr(-1, 1);
+                    if (is_pre_sale === 'Y' && sale_ccd_postfix !== '1') {
+                        alert('판매여부가 판매중 일 경우만 예약판매 설정이 가능합니다.');
+                    }
+                }
             });
 
             // 참조 첨부파일 삭제

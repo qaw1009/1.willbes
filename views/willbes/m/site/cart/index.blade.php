@@ -79,7 +79,11 @@
                                     <input type="checkbox" id="cart_{{ $row['CartIdx'] }}" name="cart_idx[]" value="{{ $row['CartIdx'] }}">
                                     <label for="cart_{{ $row['CartIdx'] }}">
                                         <ul>
-                                            <li><span>교재</span></li>
+                                            <li><span>교재</span>
+                                            @if($row['wIsPreSale'] == 'Y')
+                                                <strong class="tx-light-blue">[예약판매]</strong>
+                                            @endif
+                                            </li>
                                             <li>{{ $row['ProdName'] }}</li>
                                             <li>판매가 <span>{{ number_format($row['RealSalePrice'], 0) }}원</span> 수량 <span>{{ $row['ProdQty'] }}</span></li>
                                             @if(empty($row['OrderLimitCnt']) === false)

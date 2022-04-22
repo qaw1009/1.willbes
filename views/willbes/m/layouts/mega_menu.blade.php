@@ -760,6 +760,11 @@
                 <a href="{{ front_url('/offPackage/index?cate_code=3048&campus_ccd=605001') }}">종합반</a>
                 <a href="{{ front_url('/offLecture/index?cate_code=3048&campus_ccd=605001') }}">단과</a>
             </li>
+            <li>
+                <span>검찰직</span>
+                <a href="{{ front_url('/offPackage/index?cate_code=3149&campus_ccd=605001') }}">종합반</a>
+                <a href="{{ front_url('/offLecture/index?cate_code=3149&campus_ccd=605001') }}">단과</a>
+            </li>
         </ul>
     @elseif($__cfg['SiteCode'] == '2005')
         {{-- 고등고시온라인 --}}

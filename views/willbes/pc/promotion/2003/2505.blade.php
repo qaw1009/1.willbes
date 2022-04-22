@@ -63,8 +63,7 @@
                 <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="2505" data-popup-hide-days="">Close</a></li>
             </ul>
         </div>
-        <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
-        
+        <div id="PopupBackWrap" class="willbes-Layer-Black"></div>        
     
         {{--
         <div class="sky" id="QuickMenu">
@@ -210,6 +209,16 @@
                                     </a>
                                 </li>
 
+                                <li class="">
+                                    <a href="#tab12">
+                                        <span class="num_box" data-num="12">12</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2022/04/2505_03_s12.jpg" alt="접근의 부사「up」이 포함된 동사구를 알아보자!"></div>
+                                        <div class="text_box">
+                                            <p>해결, 제조의 부사「out」이 포함된 동사구를 알아보자!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
                             </ul>
                         </div>
                     </div>          
@@ -284,6 +293,7 @@
         var tab9_url = "https://www.youtube.com/embed/PuKBhLoy2vM?rel=0";
         var tab10_url = "https://www.youtube.com/embed/zjjeBmpGCnE?rel=0";
         var tab11_url = "https://www.youtube.com/embed/5p3JeCnmDhk?rel=0";
+        var tab12_url = "https://www.youtube.com/embed/xONg4pHjcUY?rel=0";
 
         $(function() {
             $(".preview_list ul li a").click(function(){
@@ -312,6 +322,8 @@
                     video_tab_url = tab10_url;                
                 }else if(activeTab == "#tab11"){
                     video_tab_url = tab11_url;              
+                }else if(activeTab == "#tab12"){
+                    video_tab_url = tab12_url;              
                 }
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");

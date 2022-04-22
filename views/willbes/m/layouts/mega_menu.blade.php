@@ -595,7 +595,7 @@
 
                 <li>
                     <span>감정평가이론</span>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51367?subject_idx=1500') }}">이아진</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51367?subject_idx=1500') }}">박아리</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50777?subject_idx=1500') }}">어정민</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50778?subject_idx=1500') }}">최동진</a>
                 </li>

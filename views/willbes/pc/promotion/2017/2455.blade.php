@@ -40,8 +40,11 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01.jpg" alt="교수진"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2455_01.jpg" alt="교수진"/>
             <div class="profList">
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('188327','1327812','HD');"><img src="https://static.willbes.net/public/images/promotion/2022/04/2455_01_t30.jpg" alt="민정선 유아"/></a>
+                </div>
                 <div class="profBox">
                     <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t01.jpg" alt="이경범 교육학"/></a>
                 </div>
@@ -76,7 +79,7 @@
                     <a href="javascript:fnPlayerSample('189421','1328364','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t08.jpg" alt="박태영 수학교육론"/></a>
                 </div>
                 <div class="profBox">
-                    <a href="hjavascript:fnPlayerSample('189556','1328681','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t09.jpg" alt="박혜향 수학교육론"/></a>
+                    <a href="javascript:fnPlayerSample('189556','1328681','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t09.jpg" alt="박혜향 수학교육론"/></a>
                 </div>
                 <div class="profBox">
                     <a href="javascript:fnPlayerSample('174880','1258449','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t10.jpg" alt="양혜정 생물교육론"/></a>

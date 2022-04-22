@@ -113,7 +113,7 @@
     <div class="Content p_re">
         <div class="w-Guide">
             <h3 class="NSK-Black">시험방법</h3>
-            <h4 class="NGR">모집인원 및 분야</h4>
+            <h4 class="NGR">선발 분야 및 인원 <span class="tx14 tx-bright-gray normal">※ 연 1회 남·녀 성별 구분 없이 선발함</span></h4>
             <div>
                 <table cellspacing="0" cellpadding="0" class="table-Guided">
                     <colgroup>
@@ -127,379 +127,125 @@
                     <thead>
                         <tr>
                             <th>분야</th>
-                            <th>남.여 통합</th>
+                            <th>계</th>
+                            <th>일반전형</th>
                             <th>세무회계</th>
                             <th>사이버</th>
-                            <th>소계</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>인원(명)</td>
+                            <td>인원</td>
+                            <td>50</td>
                             <td>40</td>
                             <td>5</td>
                             <td>5</td>
-                            <td>50</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <h4 class="NGR mt20">응시자격</h4>
+            <h4 class="NGR mt20">응시자격 <span class="tx14 tx-bright-gray normal">※ 병역/학력 제한 없음</span></h4>
+            <ul class="st01">
+                <li>연령: 21세 이상 ~ 40세 이하 (군복무 기간 1년 미만은 1세, 1년 이상~2년 미만은 2세, 2년 이상은 3세 각각 연장)</li>
+                <li>1종 보통 운전면허 이상 소지해야 함 (원서 접수일부터 면접시험 최종일까지 유효하여야 함)</li>
+                <li>영어·한국사 과목 대체 검정시험 종류와 기준점수 및 유효기간</li>
+            </ul> 
             <div>
-                <table cellspacing="0" cellpadding="0" class="table-Guided">
-                    <colgroup>
-                        <col />
-                        <col />
-                    </colgroup>
+                <table cellspacing="0" cellpadding="0" class="table-Guided mt10">
+                    <col span="4" />
                     <thead>
                         <tr>
                             <th>구분</th>
-                            <th>응시자격조건</th>
+                            <th>과목</th>
+                            <th>검정시험 종류 및 기준점수</th>
+                            <th>유효기간</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th>연령</th>
-                            <td>만 21세이상 40세 이하인 대한민국의 남자·여자<br /></td>
+                            <td rowspan="2">경찰간부 후보생 선발시험</td>
+                            <td>영어</td>
+                            <td>▶토익: 625점 이상<br />
+                            ▶토플: PBT 490점 이상 IBT 58점 이상<br />
+                            ▶텝스: 280점 이상<br />
+                            ▶지텔프: Level 2 50점 이상</td>
+                            <td>3년</td>
                         </tr>
                         <tr>
-                            <th>학력</th>
-                            <td>제한 없음</td>
-                        </tr>
-                        <tr>
-                            <th>병역</th>
-                            <td>남자의 경우 병역을 필하였거나 면제된 사람(면접시험 전일까지 전역 예정자 포함)<br />
-                            ※ 만기전역자 외에 가사사정으로 인한 전역, 직권면직자 중 공상으로 전역한 사람도 응시자격 인정</td>
-                        </tr>
-                        <tr>
-                            <th>신체조건</th>
-                            <td>-시력이 좌·우 각각 0.8이상인 자(교정시력 포함)<br />
-                            - 청력이 완전하고 색신 이상이 아닌 자(약도색신은 예외) <br />
-                            - 고혈압·저혈압이 아니며 사지가 완전하고 난치 질환이 없는 자 <br /></td>
-                        </tr>
-                        <tr>
-                            <th>운전면허</th>
-                            <td>자동차 운전면허 1종보통 이상의 소지자 (원서접수일부터 면접시험 최종일까지 유효하여야 함)</td>
-                        </tr>
-                        <tr>
-                            <th>어학</th>
-                            <td>면접시험일까지 유효하여야 함</td>
+                            <td>한국사</td>
+                            <td>한국사 능력 검정시험 2급 이상</td>
+                            <td>4년</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <h4 class="NGR mt20">원서접수</h4>
-            <ul class="st01">
-                <li>경찰청 인터넷 원서접수 사이트(http://gosi.police.go.kr)로 접수하며, 원서작성 시 최근 1년 이내에 촬영한 상반신 칼라사진(3×4cm) 업로드(원서접수 기간 이후에는 사진 교체 불가)
-                <li>응시자는 영어 능력 검정시험 성적을 입력하고, 해당 어학성적표를 스캔하여 업로드<br>
-                (영어성적은 원서접수 마감일 기준 2년 이내의 성적에 한해 유효하고, 영어성적이 기준점수 미달 시 접수 불가하며, 성적 허위기재 
-                시에는 부정행위로 간주)</li>
-                <li>필기시험 응시지역은 주소지와 상관없이 희망하는 응시지구의 선택이 가능<br>
-                (응시지구-6개소 : 서울, 부산, 대구, 대전, 광주, 경기남부지방경찰청, 필기시험장소는 응시지구별로 지정) (임용시 최초 근무지역은 입교 후 교육성적 등 별도 방법에 의하며, 원서접수 시 선택한 응시지구와는 관련 없음)
-                </li>
-                <li>응시수수료 7,000원</li>
-                <li>응시표는 전형 일정에 따라 인터넷 원서접수 사이트에서 교부 및 시험 장소를 공지<br>
-                (시험 당일 응시표, 신분증, 필기도구를 반드시 지참하여야 함)
-                </li>
-            </ul>    
-            <h4 class="NGR mt20">필기시험</h4>
-            <div>
-                <table cellspacing="0" cellpadding="0" class="table-Guided">
-                    <colgroup>
-                        <col />
-                        <col />
-                        <col />
-                        <col />
-                        <col />
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th rowspan="2" scope="col">시험</th>
-                            <th rowspan="2" scope="col">과목별</th>
-                            <th colspan="3" scope="col">분야</th>
-                        </tr>
-                        <tr>
-                            <th scope="col">일반</th>
-                            <th scope="col">세무/회계</th>
-                            <th scope="col">사이버</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th rowspan="5">1차 시험<br />
-                                (객관식) </th>
-                            <td rowspan="5">필수</td>
-                            <td>한국사</td>
-                            <td>한국사</td>
-                            <td>한국사</td>
-                        </tr>
-                        <tr>
-                            <td>형법</td>
-                            <td>형법</td>
-                            <td>형법</td>
-                        </tr>
-                        <tr>
-                            <td>영어</td>
-                            <td>영어</td>
-                            <td>영어</td>
-                        </tr>
-                        <tr>
-                            <td>행정학</td>
-                            <td>형사소송법</td>
-                            <td>형사소송법</td>
-                        </tr>
-                        <tr>
-                            <td>경찰학개론</td>
-                            <td>세법개론</td>
-                            <td>정보보호론</td>
-                        </tr>
-                        <tr>
-                            <th rowspan="5">2차 시험<br />
-                                (주관식)</th>
-                            <td>필수</td>
-                            <td>형사소송법</td>
-                            <td>회계학</td>
-                            <td>시스템네트워크<br />
-                                보안</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="4">선택<br />
-                                (1개 과목)</td>
-                            <td>행정법</td>
-                            <td>상법총칙</td>
-                            <td rowspan="2">데이터베이스론</td>
-                        </tr>
-                        <tr>
-                            <td>경제학</td>
-                            <td>경제학</td>
-                        </tr>
-                        <tr>
-                            <td>민법총칙</td>
-                            <td>통계학</td>
-                            <td>통신이론</td>
-                        </tr>
-                        <tr>
-                            <td>형사정책</td>
-                            <td>재정학</td>
-                            <td>소프트웨어공학</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div> 
             <div class="mt10">
                 ※ 영어시험은 영어능력 검정시험의 종류 및 기준점수에 의거, 기준점수 이상이면 합격한 것으로 간주한다. 
             </div>
-            <div class="mt20">
-                <table cellspacing="0" cellpadding="0" class="table-Guided">
-                    <colgroup>
-                        <col />
-                        <col />
-                        <col />
-                        <col />
-                        <col />
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th scope="col">구분</th>
-                            <th scope="col">시험과목</th>
-                            <th scope="col">비고</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>1교시<br />
-                                (80분)</th>
-                            <td>전분야 : 한국사, 형법</td>
-                            <td rowspan="2">객관식(필수)</td>
-                        </tr>
-                        <tr>
-                            <th>2교시<br />
-                                (80분)</th>
-                            <td>일반 : 행정학, 경찰학개론 <br />
-                                세무회계 : 형사소송법, 세법개론<br />
-                            사이버 : 형사소송법, 정보보호론</td>
-                        </tr>
-                        <tr>
-                            <th>3교시<br />
-                                (70분)</th>
-                            <td>일반 : 형사소송법<br />
-                                세무회계 : 회계학<br />
-                            사이버 : 시스템네트워크보안</td>
-                            <td>주관식(필수)</td>
-                        </tr>
-                        <tr>
-                            <th>4교시<br />
-                                (70분)</th>
-                            <td>일반 : 행정법, 경제학, 민법총칙, 형사정책 중 택 1<br />
-                                세무회계 : 상법총칙, 경제학, 통계학, 재정학 중 택 1<br />
-                            사이버 ; 테이터베이스론, 통신이론, 소프트웨어공학 중 택 1</td>
-                            <td>주관식 (선택)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="tx-blue strong mt10">
-                영어인증(영어과목을 대체하는 영어능력 검정시험의 종류 및 기준점수(제41조관련) 
-            </div>
-            <div class="mt20">
-                <table cellspacing="0" cellpadding="0" class="table-Guided">
-                    <colgroup>
-                        <col width="10%"/>
-                        <col />
-                        <col width="20%"/>
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th colspan="2" scope="col">시험의 종류</th>
-                            <th scope="col">기준점수</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>토플<br />
-                            (TOFEL)</th>
-                            <td>미국 이.티.에스(E.T.S : Education Testing Service)에서 시행하는 시험<Br>(Test of English as a Foreign Language)으로서
-                            그 실시 방식에 따라 피.비.티(PBT : Paper Based Test)씨.비.티(CBT : Computer Based Test) 및 아이.비.티(IBT:Internet Based Test)로 구분한다.</td>
-                            <td>PBT 490점이상
-                              <br />
-                            IBT 58점이상</td>
-                        </tr>
-                        <tr>
-                            <th>토익<br />
-                            (TOEIC)</th>
-                            <td>미국 이.티.에스(E.T.S : Education Testing Service)에서 시행하는 시험<Br>(Test of English International Communication)을 말한다.</td>
-                            <td>625점이상</td>
-                        </tr>
-                        <tr>
-                            <th>텝스<br />
-                            (TEPS)</th>
-                            <td>서울대 영어능력검정시험(Test of English Proficiency, Seoul National University)을 말한다.</td>
-                            <td>
-                            520점 이상<Br>(2018. 5. 12. 전에 실시된 시험)<Br>
-                            280점 이상<Br>(2018. 5. 12. 이후 실시된 시험)
-							</td>
-                        </tr>
-                        <tr>
-                            <th>지텔프<br />
-                            (G-TELP)</th>
-                            <td>미국 국제테스트연구원(International Testing Services Center)에서 주관하는 시험(General Test of English Language Proficiency)을 말한다.</td>
-                            <td>Level 2의<br />
-                            50점이상</td>
-                        </tr>
-                        <tr>
-                            <th>플렉스<br />
-                            (FLEX)</th>
-                            <td>한국외국어대 어학능력검정시험(Foreign Language EXamination)을 말한다.</td>
-                            <td>520점이상</td>
-                        </tr>
-                        <tr>
-                            <th>펠트<br />
-                            (PELT)</th>
-                            <td>한국외국어평가원에서 시행하는 시험을 말한다.(Practical English Language Test)</td>
-                            <td>PEL Main<br />
-                            254점이상<br /></td>
-                        </tr>
-                        <tr>
-                            <th>토셀<br />
-                            (TOSEL)</th>
-                            <td>한국교육방송공사에서 주관하는 시험을 말한다.(Test of the Skills in the English Language)</td>
-                            <td>Advanced<br />
-                            550점이상</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="mt10" style="border:2px solid #ccc; padding:20px">
+                <p class="strong">2022년 시행 예정인 제72기 경찰간부후보생 선발시험 영어능력 검정시험 유효기간 3년 적용 관련 안내</p>
+                자체 유효기간이 2년인 시험(TOEIC, TOFEL, TEPS, G-TELP)의 경우에는 유효 기간이경과되면  시행기관으로부터 성적을 조회 할 수 없어 지위 여부가 확인되지 않습니다. 따라서 해당 능력검정시험의 유효기간이 만료될 예정인 경우 반드시 유효기간 만료 전 인사혁신처 사이버국가 고시센터에 사전등록을 하시기 바랍니다.  
+                <p>※ 사전등록: 토플(TOEFL), 토익(TOEIC), 텝스(TEPS), 지텔프(G-TELP)</p>
             </div>
 
-            <div class="mt10">
-                ※ 영어성적은 정기시험 성적만 인정하고, 기준점수를 충족하지 못한 경우에는 해당 시험의 영어 과목을 불합격으로 처리(합격한 경우 필기시험 성적에는 미반영)
-            </div>
-            
-            <h4 class="NGR mt20">신체검사</h4>
-            <div class="mt10">
+            <h4 class="NGR mt20">시험방법 <span class="tx14 tx-bright-gray normal">※ 직무수행에 필요한 적성과 자질 등 종합검정</span></h4>
+            <div>
                 <table cellspacing="0" cellpadding="0" class="table-Guided">
-                    <colgroup>
-                        <col width="10%"/>
-                        <col />
-                    </colgroup>
+                    <col span="2" />
                     <thead>
                         <tr>
-                            <th scope="col">구분</th>
-                            <th scope="col">내용 및 기준</th>
+                            <th>시험구분</th>
+                            <th>시험내용</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th>체격</th>
-                            <td>국립ㆍ공립병원 또는 종합병원에서 실시한 경찰공무원 채용시험 신체검사 및 약물검사의 결과 건강상태가 양호하고, <br>
-                            사지가 완전하며, 가슴ㆍ배ㆍ입ㆍ구강 및 내장의 질환이 없어야 한다.</td>
+                            <td>제1차 시험(필기시험)</td>
+                            <td>개관식 필수 4과목 / 선택 1과목</td>
                         </tr>
                         <tr>
-                            <th>시력</th>
-                            <td>시력(교정시력을 포함한다)은 양쪽 눈이 각각 0.8 이상이어야 한다.</td>
+                            <td rowspan="3">제2차 시험<br />
+                            (신체·체력·적성검사)</td>
+                            <td>직무수행에 필요한 신체조건 및 건강상태 등 검정</td>
                         </tr>
                         <tr>
-                            <th>색신</th>
-                            <td>색신이상(약도 색신이상은 제외한다)이 아니어야 한다.</td>
+                            <td>50m달리기, 왕복오래달리기, 윗몸일으키기, 팔굽혀펴기, 좌·우 악력(총 5개 종목)</td>
                         </tr>
                         <tr>
-                            <th>청력</th>
-                            <td>청력이 정상[좌우 각각 40데시벨(dB) 이하의 소리를 들을 수 있는 경우를 말한다]이어야 한다.</td>
+                            <td>직무수행에 필요한 적성과 자질 등 종합검정</td>
                         </tr>
                         <tr>
-                            <th>혈압</th>
-                            <td>고혈압[수축기혈압이 145수은주밀리미터(mmHg)을 초과하거나 확장기혈압이 90수은주밀리미터(mmHg)을 초과하는 경우를 말한다] <br>
-                            또는 저혈압[수축기혈압이 90수은주밀리미터(mmHg) 미만이거나 확장기혈압이 60수은주밀리미터(mmHg) 미만인 경우를 말한다]이 아니어야 한다.</td>
-                        </tr>
-                        <tr>
-                            <th>사시</th>
-                            <td>검안기 측정 결과 수평사위 20프리즘 이상이거나 수직사위 10프리즘 이상이 아니어야 한다. <br>
-                            다만, 안과전문의의 정상 판단을 받은 경우에는 그러하지 아니하다.</td>
-                        </tr>
-                        <tr>
-                            <th>문신</th>
-                            <td>시술동기, 의미 및 크기가 경찰공무원의 명예를 훼손할 수 있다고 판단되는 문신이 없어야 한다</td>
+                            <td>제3차 시험(면접시험)</td>
+                            <td>직무수행에 필요한 능력, 발전성 및 적격성 등 검정</td>
                         </tr>
                     </tbody>
                 </table>
             </div> 
-            <h4 class="NGR mt20">체력검사</h4>
-            <div class="mt10">
-                <strong>2021년도 경찰간부후보생 공개경쟁선발시험(제70기) 체력검사 평가기준</strong><br/>
-                - 2021년도 경찰간부후보생 공개경쟁선발시험(제70기)부터는 남녀 통합선발하게 됩니다.<br/>
-                - 경찰공무원임용령 시행규칙 제34조의 2가 개정됨에 따라 체력검사 종목 및 체력기준이 변경되오니 확인하시기 바랍니다.
-            </div>
-            <h5 class="NGR mt10 tx-blue">변경후</h4>
-            <div class="mt10">
-                ■ 경찰공무원 임용령 시행규칙 [별표 5의3] <신설 2019. 7.2> [시행일 2020. 1. 1.]<br/>
-                경찰간부후보생 공개경쟁선발시험 체력검사의 평가기준 및 방법<br/>
-                (제34조의2제2항 관련)
-            </div>
-            <div class="mt10">
+            <div class="mt10">※ 시험방법은 72기 개편에 따라 변경될 수 있으며, 변경 사항이 있을시 별도 공지예정</div>
+
+            <h4 class="NGR mt20">경찰간부후보생 공개경쟁선발시험 체력검사 평가기준</h4>
+            <div>
                 <table cellspacing="0" cellpadding="0" class="table-Guided">
-                    <colgroup>
-                        <col width="8%"/>
-                        <col />
-                    </colgroup>
                     <thead>
                         <tr>
                             <th colspan="2">구분</th>
-                            <th>10점</th>
-                            <th>9점</th>
-                            <th>8점</th>
-                            <th>7점</th>
-                            <th>6점</th>
-                            <th>5점</th>
-                            <th>4점</th>
-                            <th>3점</th>
-                            <th>2점</th>
-                            <th>1점</th>
+                            <th>10</th>
+                            <th>9</th>
+                            <th>8</th>
+                            <th>7</th>
+                            <th>6</th>
+                            <th>5</th>
+                            <th>4</th>
+                            <th>3</th>
+                            <th>2</th>
+                            <th>1</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <th rowspan="5">남자</th>
-                            <th>50m달리기
-                            (초)</th>
+                            <td>50m달리기<br />
+                            (초)</td>
                             <td>7.0
                             이하</td>
                             <td>7.01~
@@ -522,8 +268,8 @@
                             이상</td>
                         </tr>
                         <tr>
-                            <th>왕복오래달리기(회)</th>
-                            <td>77이상</td>
+                            <td>왕복오래달리기<br />(회)</td>
+                            <td>77 이상</td>
                             <td>76~72</td>
                             <td>71~67</td>
                             <td>66~62</td>
@@ -532,13 +278,12 @@
                             <td>51~47</td>
                             <td>46~41</td>
                             <td>40~35</td>
-                            <td>34이하</td>
+                            <td>34 이하</td>
                         </tr>
                         <tr>
-                            <th>윗몸일으키기
-                            (회/1분)</th>
-                            <td>58
-                            이상</td>
+                            <td>윗몸일으키기<br />
+                            (회/1분)</td>
+                            <td>58 이상</td>
                             <td>57~55</td>
                             <td>54~52</td>
                             <td>51~49</td>
@@ -547,12 +292,11 @@
                             <td>42~40</td>
                             <td>39~36</td>
                             <td>35~32</td>
-                            <td>31
-                            이하</td>
+                            <td>31 이하</td>
                         </tr>
                         <tr>
-                            <th>좌우 악력(kg)</th>
-                            <td>64이상</td>
+                            <td>좌우 악력<br />(kg)</td>
+                            <td>64 이상</td>
                             <td>63~61</td>
                             <td>60~58</td>
                             <td>57~55</td>
@@ -561,11 +305,11 @@
                             <td>48~46</td>
                             <td>45~43</td>
                             <td>42~40</td>
-                            <td>39이하</td>
+                            <td>39 이하</td>
                         </tr>
                         <tr>
-                            <th>팔굽혀펴기(회/1분)</th>
-                            <td>61이상</td>
+                            <td>팔굽혀펴기<br />(회/1분)</td>
+                            <td>61 이상</td>
                             <td>60~56</td>
                             <td>55~51</td>
                             <td>50~46</td>
@@ -574,12 +318,12 @@
                             <td>33~28</td>
                             <td>27~22</td>
                             <td>21~16</td>
-                            <td>15이하</td>
+                            <td>15 이하</td>
                         </tr>
                         <tr>
                             <th rowspan="5">여자</th>
-                            <th>50m달리기
-                            (초)</th>
+                            <td>50m달리기<br />
+                            (초)</td>
                             <td>8.23
                             이하</td>
                             <td>8.24~
@@ -602,8 +346,8 @@
                             이상</td>
                         </tr>
                         <tr>
-                            <th>왕복오래달리기(회)</th>
-                            <td>51이상</td>
+                            <td>왕복오래달리기<br />(회)</td>
+                            <td>51 이상</td>
                             <td>50~47</td>
                             <td>46~44</td>
                             <td>43~41</td>
@@ -612,13 +356,12 @@
                             <td>34~32</td>
                             <td>31~28</td>
                             <td>27~24</td>
-                            <td>23이하</td>
+                            <td>23 이하</td>
                         </tr>
                         <tr>
-                            <th>윗몸일으키기
-                            (회/1분)</th>
-                            <td>55
-                            이상</td>
+                            <td>윗몸일으키기<br />
+                            (회/1분)</td>
+                            <td>55 이상</td>
                             <td>54~51</td>
                             <td>50~47</td>
                             <td>46~43</td>
@@ -627,12 +370,11 @@
                             <td>34~31</td>
                             <td>30~27</td>
                             <td>26~23</td>
-                            <td>22
-                            이하</td>
+                            <td>22 이하</td>
                         </tr>
                         <tr>
-                            <th>좌우 악력(kg)</th>
-                            <td>44이상</td>
+                            <td>좌우 악력<br />(kg)</td>
+                            <td>44 이상</td>
                             <td>43~42</td>
                             <td>41~40</td>
                             <td>39~38</td>
@@ -641,11 +383,11 @@
                             <td>33~31</td>
                             <td>30~28</td>
                             <td>27~25</td>
-                            <td>24이하</td>
+                            <td>24 이하</td>
                         </tr>
                         <tr>
-                            <th>팔굽혀펴기(회/1분)</th>
-                            <td>31이상</td>
+                            <td>팔굽혀펴기<br />(회/1분)</td>
+                            <td>31 이상</td>
                             <td>30~28</td>
                             <td>27~25</td>
                             <td>24~22</td>
@@ -654,43 +396,210 @@
                             <td>15~13</td>
                             <td>12~10</td>
                             <td>9~7</td>
-                            <td>6이하</td>
+                            <td>6 이하</td>
                         </tr>
                     </tbody>
                 </table>
+            </div> 
+            <div class="mt10">
+                <p class="strong">※ 평가방법</p>
+                - 체력검사의 평가종목 중 1종목이상 1점을 받은 경우에는 불합격으로 한다. <br>
+                - 50미터 달리기의 경우에는 측정된 수치 중 소수점 셋째자리 이하는 버리고, 좌우 악령의 경우에는 소수 첫 번째자리에서 반올림 한다. <br>
+                - 체력검사의 평가종목별 구체적인 측정방법은 경찰청장이 정한다.
+            </div>
+
+
+            <h4 class="NGR mt20">수험생들이 많이 취득하는 가산점</h4>
+            <div>
+                <table cellspacing="0" cellpadding="0" class="table-Guided">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">분야</th>
+                            <th colspan="3">관련 자격증 및 가산점</th>
+                        </tr>  
+                        <tr>
+                            <th>5</th>
+                            <th>4</th>
+                            <th>2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>정보처리</td>
+                            <td>
+                            -
+                            </td>
+                            <td>
+                            -
+                            </td>
+                            <td>컴퓨터활용능력1·2급<br />
+                            워드프로세서1급</td>
+                        </tr>
+                        <tr>
+                            <td>국어</td>
+                            <td>한국실용글쓰기검정 750점 이상</td>
+                            <td>한국실용글쓰기검정 630점 이상</td>
+                            <td>한국실용글쓰기검정 550점 이상</td>
+                        </tr>
+                        <tr>
+                            <td>영어</td>
+                            <td>TOEIC 900이상<br />
+                            G-TELP Level 2 89 이상</td>
+                            <td>TOEIC 800이상<br />
+                            G-TELP Level 2 75 이상</td>
+                            <td>TOEIC 600이상<br />
+                            G-TELP Level 2 48 이상</td>
+                        </tr>
+                        <tr>
+                            <td>무도</td>
+                            <td rowspan="2">
+                            -
+                            </td>
+                            <td>무도 4단 이상</td>
+                            <td>무도 2·3단</td>
+                        </tr>
+                        <tr>
+                            <td>재난·안전관리</td>
+                            <td>경비지도사</td>
+                            <td>1종대형면허</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> 
+            <div class="mt10">
+                ※ 「경찰공무원 채용시험에 관한 규칙」 제23조 제3항 (별표6)
+            </div>
+
+           
+            <h4 class="NGR mt20">선발필기시험 과목개편</h4>
+            <div class="mt10">
+                <table cellspacing="0" cellpadding="0" class="table-Guided">
+                    <col width="12%">
+                    <col width="10%">
+                    <col>
+                    <theady>
+                        <tr>
+                            <th colspan="2">구 분</th>
+                            <th>현 행</th>
+                            <th>개정안</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="6">간부후보생</td>
+                            <td rowspan="2">일반</td>
+                            <td class="tx-left">▶ 1차 객관식: 5개 과목<br />
+                            ▶ 영어(검정제), 한국사, 형법, 행정학,경찰학개론</td>
+                            <td rowspan="2" class="tx-left">▶ 1차 + 2차 → 7개 객관식<br />
+                            ▶ 필수: 영어(검정제), 한국사(검정제),형사법, 헌법, 경찰학, 범죄학<br />
+                            ▶ 선택: 행정법, 행정학, 민법총칙 중 택1</td>
+                        </tr>
+                        <tr>
+                            <td class="tx-left">▶ 2차 주관식: 필수 1개 + 선택 1개<br />
+                            ▶ 필수: 형사소송법<br />
+                            ▶ 선택: 행정법, 경제학, 민법총칙, 형사정책 중 택1</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">세무회계</td>
+                            <td class="tx-left">▶ 영어(검정제), 한국사, 형법, 형사소송법, 세법개론</td>
+                            <td rowspan="2" class="tx-left">▶ 1차+2차 → 7개 객관식<br />
+                            ▶ 필수: 영어(검정제), 한국사(검정제), 형사법, 헌법, 세법, 회계학<br />
+                            ▶ 선택: 상법총칙, 경제학, 통계학, 재정학 중 택1</td>
+                        </tr>
+                        <tr>
+                            <td class="tx-left">▶필수: 회계학<br />
+                            ▶선택: 상법총칙, 경제학, 통계학 재정학 중 택1</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">사이버</td>
+                            <td class="tx-left">▶ 영어(검정제), 한국사, 형법, 형사소송법, 정보보호론</td>
+                            <td rowspan="2" class="tx-left">▶ 1차+2차 → 7개 객관식<br />
+                            ▶ 필수: 영어(검정제), 한국사(검정제), 형사법, 헌법, 정보보호론, 시스템, 네트워크 보안<br />
+                            ▶ 선택: 데이터베이스론, 통신이론, 소프트웨어공학 중 택1</td>
+                        </tr>
+                        <tr>
+                            <td class="tx-left">▶ 필수: 시스템, 네트워크 보안<br />
+                            ▶ 선택: 데이터베이스론, 통신이론, 소프트웨어공학 중 택1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> 
+
+            <h5 class="NGR mt20 tx-blue">과목 간 비중 및 출제비율</h4>
+
+            <div class="mt10">
+                <table cellspacing="0" cellpadding="0" class="table-Guided">
+                    <thead>
+                        <tr>
+                            <th>분야</th>
+                            <th>출제비율</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>일반</td>
+                            <td>형사법·경찰학개론 각 30%, 헌법·범죄학 각 15%, 선택과목 10%</td>
+                        </tr>
+                        <tr>
+                            <td>세무회계</td>
+                            <td>형사법 30%, 세법개론·회계학 각 20%, 헌법·선택과목 각 15%</td>
+                        </tr>
+                        <tr>
+                            <td>사이버</td>
+                            <td>형사법 30%, 시스템보안·정보보호론 각 20%, 헌법·선택과목 각 15%</td>
+                        </tr>
+                    <tbody>
+                </table>
             </div>
             <div class="mt10">
-                * 평가방법<br>
-                1. 체력검사의 평가종목 중 1종목이상 1점을 받은 경우에는 불합격으로 한다.<br>
-                2. 50미터 달리기의 경우에는 측정된 수치 중 소수점 셋째자리 이하는 버리고, 좌우 악력의 경우에는 소수 첫째자리에서 반올림한다.<br>
-                3. 체력검사의 평가종목별 구체적인 측정방법은 경찰청장이 정한다. 
+                <table cellspacing="0" cellpadding="0" class="table-Guided">
+                    <thead>
+                        <tr>
+                            <th>과목</th>
+                            <th>출제비율</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>경찰학<br />
+                            배점 3점 120점</td>
+                            <td>경찰행정법 35% 내외, 경찰학의 기초이론 30% 내외, 경찰행정학 15% 내외, 분야별 경찰활동 15% 내외, 한국경찰의 역사와 비교경찰 5% 내외</td>
+                        </tr>
+                        <tr>
+                            <td>형사법<br />
+                            배점 3점 120점</td>
+                            <td>형법총론 35% 내외, 형법각론 35% 내외, 형사소송법 30% 내외
+                            (수사·증거 각 15% 내외)</td>
+                        </tr>
+                        <tr>
+                            <td>헌법<br />
+                            배점 1.5점 60점</td>
+                            <td>기본권 총론·각론 80% 내외, 헌법총론·한국 헌법의 기본질서 20% 내외</td>
+                        </tr>
+                        <tr>
+                            <td>범죄학<br />
+                            배점 1.5점 60점</td>
+                            <td>범죄원인론 50% 내외, 범죄대책혼 30% 내외, 
+                            범죄유형론·범죄학 일반 각 10% 내외</td>
+                        </tr>
+                    <tbody>
+                </table>
             </div>
-            <h4 class="NGR mt20">적성검사</h4>
-            <div>
-                적성검사는 경찰관으로서의 적격성(인성·적성)에 대한 평가이다. <br>
-                경찰공무원으로서의 직무수행에 필요한 적격성 여부와 자질을 종합 검정하는 것으로서 인성검사와 정밀신원조회로 구분하여 실시한다. 
-                종합적성검사의 실시 결과에 따른 합격 판정은 해당 시험위원 3분의 2 이상의 찬성에 의한다. <br>
-                <span class="tx-blue">기초능력</span> : 직업의 종류에 관계없이 사회인으로서의 기본 능력으로 그 직업에 꼭 필요한 정신적 · 육체적인 능력을 말한다. <br>
-                <span class="tx-blue">성격 및 흥미</span> : 기초능력을 가지고 있어도 이를 뒷받침해 주는 차분한 성격 및 그 일에 대한 흥미를 알아보는 것 또한 중요하다. 
+
+            <div class="mt10">
+                ※ 선택과목 배점 1문제당 1점 40점
             </div>
-            <h4 class="NGR mt20">면접시험</h4>
-            <div>
-                경찰관으로서 직무수행에 필요한 능력, 발전성, 적격성 등 검정 <br>
-                평정요소<br>
-                - 제1호: 경찰공무원으로서의 적성 (제4차시험 적성검사 점수반영) <br>
-                - 제2호: 의사발표의 정확성과 논리성 및 전문지식 <br>
-                - 제3호: 용모,품행, 예의 봉사성, 정직성, 성실성, 발전가능성<br>
-                - 제4호: 자격증 등 경찰업무관련 특수기술 능력 <br>
-                합격자의 결정 : 총점의 4할이상의 득점자<br>
-                제1호(적성관련항) 과 제4호(자격증 관련항)을 제외한 제2호와 제3호의 평정점<br>
-                <br>
-                ※ 면접시험 불합격 기준<br>
-                · 면접시험 총점이 4할 미만인 경우<br>
-                · 제2호 및 제3호의 평정요소에 대하여 면접위원의 과반수가 1점을 준 경우 
-            </div>
-            <h4 class="NGR mt20">최종합격자 결정</h4>
-            <div>
-                <span class="tx-blue">필기시험(50%) + 체력검사(25%) + 면접시험(20%) + 가산점(5%)</span>를 합산한 성적의 고득점 순으로 선발예정인원을 최종합격자로 결정
+
+            <h5 class="NGR mt20 tx-blue">합격자 처우 및 임용</h5>
+            <ul class="st01">
+                <li>최종합격자는 경찰대학에서 1년간 간부후보생과정 교육 수료 후 경위로 임용됩니다.</li>
+                <li>경찰대학 재학 중 피복 및 숙식을 제공하여 매월 소정의 수당을 지급합니다.</li>
+                <li>임용 후 지구대 또는 파출소 6개월, 경찰서 수사부서(경제팀)2년 등 총 2년 6개월간 필수현장보직에서  근무하여야 합니다.(경찰공무원 인사운영규칙 제32조 제1항). 또한, 세무회계, 사이버 분야는 필수현장보직기간 만료 후 3년간 다음 각 호 중 어느 하나의 부서에서 근무하여야 합니다(경찰공무원 인사운영규칙 제35조).<br>
+                1)세무회계: 수사,재정,감사 관련 부사<br>
+                2)사이버: 사이버,수사,정보통신 관련 부서</li>
+            </ul> 
+            <div class="mt10">
+                ※ 자세한 사항은 경찰인재개발원 교무과 교육지원센터(041-536-2452, 2454)로 문의 바랍니다.
             </div>
         </div>      
     </div>

@@ -30,22 +30,44 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_00.jpg" alt="경찰학원부분 1위" >        
     </div> 
 
-    <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/03/2602m_top.jpg" alt="4월 신규가입 이벤트" >
-    </div> 
+    @if(time() < strtotime('202204260000'))
+        {{--4월--}}
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2602m_top.jpg" alt="4월 신규가입 이벤트" >
+        </div> 
 
-    <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/03/2602m_01.jpg" alt="경찰전문강의 20년" >
-    </div> 
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2602m_01.jpg" alt="경찰전문강의 20년" >
+        </div> 
 
-    <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/03/2602m_02.jpg" alt="웰컴팩" >
-        <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" title="웰컴팩 모두 받기" style="position: absolute; left: 7.5%; top: 82.5%; width: 85%; height: 8.71%; z-index: 2;"></a>
-    </div> 
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2602m_02.jpg" alt="웰컴팩" >
+            <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" title="웰컴팩 모두 받기" style="position: absolute; left: 7.5%; top: 82.5%; width: 85%; height: 8.71%; z-index: 2;"></a>
+        </div> 
 
-    <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/03/2602m_03.jpg" alt="" >
-    </div> 
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/03/2602m_03.jpg" alt="" >
+        </div> 
+    @else
+        {{--5월--}}
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2602m_top.jpg" alt="4월 신규가입 이벤트" >
+        </div> 
+
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2602m_01.jpg" alt="경찰전문강의 20년" >
+        </div> 
+
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2602m_02.jpg" alt="웰컴팩" >
+            <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" title="웰컴팩 모두 받기" style="position: absolute; left: 7.5%; top: 82.5%; width: 85%; height: 8.71%; z-index: 2;"></a>
+        </div> 
+
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2602m_03.jpg" alt="" >
+        </div> 
+    @endif
+
 
     <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/03/2602m_04.jpg" alt="" >

@@ -159,13 +159,21 @@
                         <table id="list_order_table" class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th width="150">날짜</th>
-                                <th width="">결제건수</th>
-                                <th width="">결제금액</th>
-                                <th width="">환불건수</th>
-                                <th width="">환불금액</th>
-                                <th width="">매출건수</th>
-                                <th width="">매출금액</th>
+                                <th width="13%"  style="text-align: center;"  rowspan="2" class="valign-middle">날짜</th>
+                                <th colspan="3" style="text-align: center;">결제</th>
+                                <th colspan="3" style="text-align: center;">환불</th>
+                                <th colspan="3" style="text-align: center;">매출</th>
+                            </tr>
+                            <tr>
+                                <td width="10%">건수</td>
+                                <td width="10%">금액</td>
+                                <td width="9%">비율(%)</td>
+                                <td width="10%">건수</td>
+                                <td width="10%">금액</td>
+                                <td width="9%">비율(%)</td>
+                                <td width="10%">건수</td>
+                                <td width="10%">금액</td>
+                                <td width="9%">비율(%)</td>
                             </tr>
                             </thead>
                             <tbody>
@@ -173,6 +181,9 @@
                             <tfoot>
                             <tr>
                                 <th>합계</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -277,23 +288,35 @@
                 <div class="col-md-12 form-inline">
                     <strong>[사이트별 주문현황]</strong>
                     <div class="x_content">
-                        <table id="list_site_table" class="table table-striped table-bordered">
+                        <table id="list_site_table" class="table table-striped table-bordered" width="100%">
                             <thead>
                             <tr>
-                                <th width="150">사이트</th>
-                                <th width="">결제건수</th>
-                                <th width="">결제금액</th>
-                                <th width="">환불건수</th>
-                                <th width="">환불금액</th>
-                                <th width="">매출건수</th>
-                                <th width="">매출금액</th>
+                                <th width="3%" style="text-align: center;"  rowspan="2" class="valign-middle">No</th>
+                                <th width="13%" style="text-align: center;"  rowspan="2" class="valign-middle">사이트</th>
+                                <th colspan="3" style="text-align: center;">결제</th>
+                                <th colspan="3" style="text-align: center;">환불</th>
+                                <th colspan="3" style="text-align: center;">매출</th>
+                            </tr>
+                            <tr>
+                                <td width="10%">건수</td>
+                                <td width="10%">금액</td>
+                                <td width="8%">비율(%)</td>
+                                <td width="10%">건수</td>
+                                <td width="10%">금액</td>
+                                <td width="8%">비율(%)</td>
+                                <td width="10%">건수</td>
+                                <td width="10%">금액</td>
+                                <td width="8%">비율(%)</td>
                             </tr>
                             </thead>
                             <tbody>
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>합계</th>
+                                <th colspan="2">합계</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -327,9 +350,15 @@
 
             {{--각 항목의 데이터 결과 변수--}}
             var $order_info=[], $order_sex=[], $order_site=[], $order_channel=[], $order_method=[];
+            var $total_array = {};
+
+            function total_sum(arr) {
+                return arr.reduce(function(a, b) {
+                    return parseInt(a) + parseInt(b);
+                },0)
+            }
 
             function chartExe() {
-
                 var chartColors = window.chartColors;
                 var color = Chart.helpers.color;
 
@@ -345,6 +374,13 @@
                     $real_count.push($order_info[key]['real_count']);
                     $real_pay.push($order_info[key]['real_pay']);
                 }
+
+                $total_array['order_count_sum'] = total_sum($order_count)
+                $total_array['order_pay_sum'] = total_sum($order_pay)
+                $total_array['refund_count_sum'] = total_sum($refund_count)
+                $total_array['refund_pay_sum'] = total_sum($refund_pay)
+                $total_array['real_count_sum'] = total_sum($real_count)
+                $total_array['real_pay_sum'] = total_sum($real_pay)
 
                 $var_info = [['$order_pay',  '$refund_pay', '$real_pay'],['$order_count', '$refund_count', '$real_count']]
                 for($k = 0; $k < $var_info.length; $k++) {
@@ -770,6 +806,7 @@
             var $datatable_order, $datatable_site, $datatable_sex, $datatable_channel, $datatable_method;
 
             function datatableExe() {
+
                 $datatable_order = $("#list_order_table").DataTable({
                     order: [[0, 'asc']],
                     ordering: true,
@@ -787,29 +824,42 @@
                         {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (data == 0) ? '0' : '<b><font color=\'#eb7f36\'>' + addComma(data) + '</font></b>';
                             }},
+                        {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (data == 0) ? '0 %' : '<b><font color=\'#eb7f36\'>' + (parseInt(data)/parseInt($total_array['order_pay_sum']) * 100).toFixed(2) + ' %</font></b>';
+                            }},
                         {'data': 'refund_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (data == 0) ? '0' : '<b><font color=\'#4bc0c0\'>' + addComma(data) + '</font></b>';
                             }},
                         {'data': 'refund_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (data == 0) ? '0' : '<b><font color=\'#4bc0c0\'>' + addComma(data) + '</font></b>';
                             }},
+                        {'data': 'refund_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (data == 0) ? '0 %' : '<b><font color=\'#4bc0c0\'>' + (parseInt(data)/parseInt($total_array['refund_pay_sum']) * 100).toFixed(2) + ' %</font></b>';
+                            }},
                         {'data': 'real_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (data == 0)  ? '0' : ((data > 0) ? '<b><font color=\'red\'>' + addComma(data) + '</font></b>' : '<b><font color=\'blue\'>' + addComma(data) + '</font><b>') ;
+                                return (data == 0)  ? '0' :  '<b>' + ( (data > 0) ? '<font color=\'red\'>'  : '<font color=\'blue\'>' ) + addComma(data) + '</font><b>' ;
                             }},
                         {'data': 'real_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return  (data == 0)  ? '0' : ((data > 0) ? '<b><font color=\'red\'>' + addComma(data) + '</font><b>' : '<b><font color=\'blue\'>' + addComma(data) + '</font><b>') ;
+                                return  (data == 0)  ? '0' : '<b>' + ( (data > 0) ? '<font color=\'red\'>'  : '<font color=\'blue\'>' ) + addComma(data) + '</font><b>' ;
+                            }},
+                        {'data': 'real_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return  (data == 0)  ? '0 %' : '<b>' + ( (data > 0) ? '<font color=\'red\'>'  : '<font color=\'blue\'>' ) +  (parseInt(data)/parseInt($total_array['real_pay_sum']) * 100).toFixed(2) + ' %</font><b>' ;
                             }}
                     ],
                     footerCallback: function( tfoot, data, start, end, display ) {
                         var api = this.api();
-                        for($i=1;$i<7;$i++) {
-                            $(api.column($i).footer()).html($font+
-                                addComma(
-                                    api.column($i).data().reduce(function (a, b) {
-                                        return (parseInt(a) + parseInt(b));
-                                    }, 0)
-                                )
-                                +"</font>");
+                        for($i=1;$i<10;$i++) {
+                            if( [1,2,4,5,7,8].indexOf($i) > -1) {
+                                $(api.column($i).footer()).html($font+
+                                    addComma(
+                                        api.column($i).data().reduce(function (a, b) {
+                                            return (parseInt(a) + parseInt(b));
+                                        }, 0)
+                                    )
+                                    +"</font>");
+                            } else {
+                                $(api.column($i).footer()).html('100 %');
+                            }
                         }
                     }
                 });
@@ -928,9 +978,11 @@
                 });
 
                 $datatable_site = $("#list_site_table").DataTable({
-                    /*
+                    "aoColumnDefs": [
+                        { 'bSortable': false, 'aTargets': [1] }
+                    ],
                     order: [[0, 'asc']],
-                    ordering: true,*/
+                    ordering: true,
                     dom: 'T<"clear">rtip',
                     paging: false,
                     serverSide: false,
@@ -939,8 +991,11 @@
                     info : '',
                     data: $order_site,
                     columns: [
+                        {'data': null, 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return '<font color="black">' + (meta.row + 1) + '</font>';
+                            }},
                         {'data': 'SiteName', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return '<font color="black">' + data+ '</font>';
+                                return '<font color="black">' + data + '</font>';
                             }},
                         {'data': 'order_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (data == 0) ? '0' : '<b><font color=\'#eb7f36\'>' + addComma(data) + '</font></b>';
@@ -948,29 +1003,43 @@
                         {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (data == 0) ? '0' : '<b><font color=\'#eb7f36\'>' + addComma(data) + '</font></b>';
                             }},
+                        {'data': 'order_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (data == 0) ? '0' : '<b><font color=\'#eb7f36\'>' + (parseInt(data)/parseInt($total_array['order_pay_sum']) * 100).toFixed(2) + '%</font></b>';
+                            }},
                         {'data': 'refund_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (data == 0) ? '0' : '<b><font color=\'#4bc0c0\'>' + addComma(data) + '</font></b>';
                             }},
                         {'data': 'refund_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
                                 return (data == 0) ? '0' : '<b><font color=\'#4bc0c0\'>' + addComma(data) + '</font></b>';
                             }},
+                        {'data': 'refund_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return (data == 0) ? '0' : '<b><font color=\'#4bc0c0\'>' + (parseInt(data)/parseInt($total_array['refund_pay_sum']) * 100).toFixed(2) + '%</font></b>';
+                            }},
                         {'data': 'real_count', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (data == 0) ? '0' : (data > 0) ? '<b><font color=\'red\'>' + addComma(data) + '</font></b>' : '<b><font color=\'blue\'>' + addComma(data) + '</font></b>' ;
+                                return (data == 0)  ? '0' :  '<b>' + ( (data > 0) ? '<font color=\'red\'>'  : '<font color=\'blue\'>' ) + addComma(data) + '</font><b>' ;
                             }},
                         {'data': 'real_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
-                                return (data == 0) ? '0' : (data > 0) ? '<b><font color=\'red\'>' + addComma(data) + '</font></b>' : '</b><font color=\'blue\'>' + addComma(data) + '</font></b>' ;
-                            }}
+                                return  (data == 0)  ? '0' : '<b>' + ( (data > 0) ? '<font color=\'red\'>'  : '<font color=\'blue\'>' ) + addComma(data)  + '</font><b>' ;
+                            }},
+                        {'data': 'real_pay', 'class': 'text-center', 'render': function (data, type, row, meta) {
+                                return  (data == 0)  ? '0' : '<b>' + ( (data > 0) ? '<font color=\'red\'>'  : '<font color=\'blue\'>' ) + (parseInt(data)/parseInt($total_array['real_pay_sum']) * 100).toFixed(2) + '%</font><b>' ;
+                            }},
+
                     ],
                     footerCallback: function( tfoot, data, start, end, display ) {
                         var api = this.api();
-                        for($i=1;$i<7;$i++) {
-                            $(api.column($i).footer()).html($font+
-                                addComma(
-                                    api.column($i).data().reduce(function (a, b) {
-                                        return (parseInt(a) + parseInt(b));
-                                    }, 0)
-                                )
-                                +"</font>");
+                        for($i=2;$i<11;$i++) {
+                            if( [2,3,5,6,8,9].indexOf($i) > -1) {
+                                $(api.column($i).footer()).html($font+
+                                    addComma(
+                                        api.column($i).data().reduce(function (a, b) {
+                                            return (parseInt(a) + parseInt(b));
+                                        }, 0)
+                                    )
+                                    +"</font>");
+                            } else {
+                                $(api.column($i).footer()).html('100 %');
+                            }
                         }
                     }
                 });

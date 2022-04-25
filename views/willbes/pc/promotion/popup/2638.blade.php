@@ -46,7 +46,7 @@
 </style>
 
 <div class="willbes-Layer-PassBox NGR">
-    <h1>2022년 경찰시험 최종 합격수기 등록하기</h1>
+    <h1>PSAT 전과목 시험관리반 참여후기 등록하기</h1>
     <div id="popup" class="Layerpop" >
         <form name="regi_form_register" id="regi_form_register" enctype="multipart/form-data">
             {!! csrf_field() !!}
@@ -109,18 +109,18 @@
                         </li>
                         <li>
                             <strong>합격 인증 파일</strong>
-                            <input type="radio" id="AddContent11" name="AddContent1" value="1차 경찰시험합격" {{($addcontent1 == '1차 경찰시험합격' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent11"  class="mr10">1차 경찰시험합격</label>
+                            <input type="radio" id="AddContent11" name="AddContent1" value="1차 시험합격" {{($addcontent1 == '1차 시험합격' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent11"  class="mr10">1차 시험합격</label>
                             <input type="file" name="attachfile" id="attachfile" style="width:300px">
                             <div class="mt10">
-                                - 합격생을 증빙할 수 있는 합격생 지원청별 합격자 발표 공고를 응시표와 함께 캡쳐하거나,
+                                - 합격생을 증빙할 수 있는 합격생 합격자 발표 공고를 응시표와 함께 캡쳐하거나,
                                 핸드폰으로 응시표와 함께 사진을 찍어서 등록해 주세요.<br>
                                 - 이미지 파일(jpg, png) 또는 PDF 파일 첨부
                             </div>
                         </li>
                     </ul>
 
-                    <h3  class="tit">[합격수기 공모]</h3>
-                    <a href="{{ (empty($arr_base['arr_file']) === true) ? '' : front_url('/promotion/download?file_idx='.$arr_base['arr_file']['EfIdx'].'&event_idx='.$arr_base['data']['ElIdx']) }}"  class="file">합격수기 양식 파일 다운로드 ↓</a><br>
+                    <h3  class="tit">[PSAT 전과목 시험관리반 참여후기 작성]</h3>
+                    <a href="{{ (empty($arr_base['arr_file']) === true) ? '' : front_url('/promotion/download?file_idx='.$arr_base['arr_file']['EfIdx'].'&event_idx='.$arr_base['data']['ElIdx']) }}"  class="file">PSAT 전과목 시험관리반 참여후기양식 다운로드 ↓</a><br>
                     <input type="file" name="attach_file" id="attach_file" style="width:250px; margin-top:5px">
                     @if(empty($arr_base['regist_member']['FileFullPath']) === false)
                     <input type="button" onclick="javascript:modifyFile();" value="파일수정">

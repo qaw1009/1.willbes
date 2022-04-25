@@ -22,7 +22,7 @@
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/04/2638_top_bg.jpg) no-repeat center top;}   
 
-        .evt01 {background:#fff3e9;}
+        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/04/2638_01_bg.jpg) no-repeat center top;}
 
         .evt03 {background:#ded5c9}
 

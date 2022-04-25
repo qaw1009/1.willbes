@@ -20,7 +20,7 @@
 
 		/************************************************************/
 		
-		.sky {position:fixed; top:120px; right:10px;z-index:10;}
+		.sky {position:fixed; top:100px; right:10px;z-index:10;}
 		.sky a {display:block; margin-bottom:10px}	
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/08/1068_top_bg.jpg) no-repeat center top;}
@@ -105,16 +105,19 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">	
 		<div class="sky" id="QuickMenu">
+			<a href="https://pass.willbes.net/promotion/index/cate/3024/code/2637" target="_blank">
+				<img src="https://static.willbes.net/public/images/promotion/2022/04/1068_sky.png"/>				
+			</a>	
 			<a href="#to_go">
-				<img src="https://static.willbes.net/public/images/promotion/2022/01/1068_sky2.png" usemap="#map1068_sky" border="0" />
+				<img src="https://static.willbes.net/public/images/promotion/2022/04/1068_sky_2.png" usemap="#map1068_sky" border="0" />
 				<map name="map1068_sky" id="map1068_sky">
-					<area shape="rect" coords="11,121,132,195" href="#" class="r_btn_tab" data-tab-id="1"/>
-					<area shape="rect" coords="11,209,131,264" href="#" class="r_btn_tab" data-tab-id="2"/>
-					<area shape="rect" coords="11,279,131,332" href="#" class="r_btn_tab" data-tab-id="3"/>
-					<area shape="rect" coords="12,344,132,400" href="#" class="r_btn_tab" data-tab-id="4"/>
-					<area shape="rect" coords="12,409,131,472" href="#" class="r_btn_tab" data-tab-id="5"/>
+					<area shape="rect" coords="6,9,127,83" href="#" class="r_btn_tab" data-tab-id="1"/>
+					<area shape="rect" coords="10,92,130,147" href="#" class="r_btn_tab" data-tab-id="2"/>
+					<area shape="rect" coords="10,165,130,218" href="#" class="r_btn_tab" data-tab-id="3"/>
+					<area shape="rect" coords="9,232,129,288" href="#" class="r_btn_tab" data-tab-id="4"/>				
+					<area shape="rect" coords="7,297,132,364" href="#" class="r_btn_tab" data-tab-id="5"/>
 				</map>
-			</a>
+			</a>		
 			<a href="#transfer">
 				<img src="https://static.willbes.net/public/images/promotion/2022/01/1068_sky1.png"/>				
 			</a>			  

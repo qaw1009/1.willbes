@@ -227,6 +227,7 @@ class EventFModel extends WB_Model
             LEFT JOIN (
                 SELECT ErIdx, COUNT(ErIdx) AS MemCount
                 FROM {$this->_table['event_member']}
+                WHERE IsStatus = 'Y'
                 GROUP BY ErIdx
             ) AS B ON A.ErIdx = B.ErIdx
             LEFT JOIN {$this->_table['event_register_r_product']} AS C ON A.ErIdx = C.ErIdx AND C.IsStatus = 'Y'
@@ -369,7 +370,8 @@ class EventFModel extends WB_Model
 
             //인원제한체크를 위한 특강별 회원 수
             $arr_condition = [
-                'IN' => ['ErIdx' => $inputData['register_chk']]
+                'EQ' => ['IsStatus' => 'Y']
+                ,'IN' => ['ErIdx' => $inputData['register_chk']]
             ];
             $result_register_member_info = $this->getRegisterMemberCount($arr_condition);
             $arr_register_member = array_pluck($result_register_member_info,'MemCount','ErIdx');
@@ -663,7 +665,11 @@ class EventFModel extends WB_Model
                 throw new \Exception('수정할 파일을 선택해 주세요.');
             }
 
-            $is_update = $this->_conn->set($input_data)->where('MemIdx', $this->session->userdata('mem_idx'))->where('ErIdx', element('register_chk', $inputData)[0])->update($this->_table['event_member']);
+            $is_update = $this->_conn->set($input_data)
+                ->where('MemIdx', $this->session->userdata('mem_idx'))
+                ->where('ErIdx', element('register_chk', $inputData)[0])
+                ->where('IsStatus', 'Y')
+                ->update($this->_table['event_member']);
 
             if ($is_update === false) {
                 throw new \Exception('파일 수정에 실패했습니다.');
@@ -927,7 +933,7 @@ class EventFModel extends WB_Model
         $column = 'count(*) AS numrows';
         $from = "
             FROM {$this->_table['event_member']} as a
-            INNER JOIN {$this->_table['event_register']} as b ON a.ErIdx = b.ErIdx AND b.ElIdx = '{$el_idx}' AND b.IsStatus = 'Y'
+            INNER JOIN {$this->_table['event_register']} as b ON a.ErIdx = b.ErIdx AND b.ElIdx = '{$el_idx}' AND a.IsStatus = 'Y' AND b.IsStatus = 'Y'
         ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
@@ -1935,7 +1941,7 @@ class EventFModel extends WB_Model
                         FROM {$this->_table['event_member']} A
                         LEFT OUTER JOIN {$this->_table['event_register']} B ON A.ErIdx = B.ErIdx
                         LEFT OUTER JOIN {$this->_table['event_lecture']} C ON B.ElIdx = C.ElIdx
-                        WHERE C.ElIdx = ?
+                        WHERE A.IsStatus = 'Y' AND C.ElIdx = ?
                     ) AS em ON CHAR_LENGTH ( em.EtcValue ) - CHAR_LENGTH ( REPLACE ( em.EtcValue, ',', '' ))>= numbers.n-1
                 WHERE SUBSTRING_INDEX (SUBSTRING_INDEX(em.EtcValue,',',numbers.n),',',-1) != ''
             ) ST

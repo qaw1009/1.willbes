@@ -73,6 +73,7 @@ class Event extends \app\controllers\FrontController
     {
         $arr_condition = [
             'EQ' => [
+                'a.IsStatus' => 'Y',
                 'b.IsStatus' => 'Y',
                 'c.IsUse' => 'Y',
                 'c.IsStatus' => 'Y'

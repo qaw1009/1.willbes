@@ -115,8 +115,13 @@
             <div class="col-md-1">
                 <input type="text" name="order_num" class="form-control" value="{{ $data['OrderNum'] }}" style="width: 60px;" />
             </div>
-            <div class="col-md-9 form-control-static">
+            <div class="col-md-3 form-control-static">
                 # 미 입력시 마지막 DP
+            </div>
+            <label class="control-label col-md-2" for="cate_etc">세부항목값
+            </label>
+            <div class="col-md-3 item">
+                <input type="text" id="cate_etc" name="cate_etc" class="form-control" title="세부항목값" value="{{ $data['CateEtc'] }}">
             </div>
         </div>
         <div class="form-group form-group-sm">

@@ -18,9 +18,42 @@ class SiteCategory
      */
     public function index()
     {
-        $list = $this->_CI->categoryModel->listAllCategory();
-
         $this->_CI->load->view('sys/site_category/index', [
+            'def_site_code' => element('0', get_auth_site_codes())
+        ]);
+    }
+
+    /**
+     * 사이트 카테고리 목록 조회
+     * @return mixed
+     */
+    public function listAjax()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'SiteCode' => $this->_CI->_reqP('search_site_code'),
+                'LastIsUse' => $this->_CI->_reqP('search_is_use'),
+                'LastIsFrontUse' => $this->_CI->_reqP('search_is_front_use'),
+                'LastIsDisp' => $this->_CI->_reqP('search_is_disp')
+            ],
+            'ORG' => [
+                'EQ' => [
+                    'BCateCode' => $this->_CI->_reqP('search_value'),
+                    'MCateCode' => $this->_CI->_reqP('search_value'),
+                ],
+                'LKB' => [
+                    'BCateName' => $this->_CI->_reqP('search_value'),
+                    'MCateName' => $this->_CI->_reqP('search_value')
+                ]
+            ]
+        ];
+
+        $list = $this->_CI->categoryModel->listAllCategory($arr_condition);
+        $count = count($list);
+
+        return $this->_CI->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
             'data' => $list
         ]);
     }

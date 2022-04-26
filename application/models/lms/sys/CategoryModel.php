@@ -279,7 +279,7 @@ class CategoryModel extends WB_Model
      */
     public function findCategoryForModify($cate_code)
     {
-        $column = 'C.CateCode, C.SiteCode, C.CateName, C.ParentCateCode, C.GroupCateCode, C.CateDepth, C.OrderNum, C.IsDefault, C.IsUse, C.IsFrontUse, C.IsDisp, C.RegDatm, C.UpdDatm';
+        $column = 'C.CateCode, C.SiteCode, C.CateName, C.ParentCateCode, C.GroupCateCode, C.CateDepth, C.OrderNum, C.CateEtc, C.IsDefault, C.IsUse, C.IsFrontUse, C.IsDisp, C.RegDatm, C.UpdDatm';
         $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $column .= '    , if(C.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName';
 
@@ -342,6 +342,7 @@ class CategoryModel extends WB_Model
                 'GroupCateCode' => $_group_cate_code,
                 'CateDepth' => $_cate_depth,
                 'OrderNum' => (empty(element('order_num', $input)) === true) ? $this->getCategoryOrderNum(element('site_code', $input), $parent_cate_code) : element('order_num', $input),
+                'CateEtc' => element('cate_etc', $input),
                 'IsDefault' => element('is_default', $input),
                 'IsUse' => element('is_use', $input),
                 'IsFrontUse' => element('is_front_use', $input),
@@ -386,6 +387,7 @@ class CategoryModel extends WB_Model
             $data = [
                 'CateName' => element('cate_name', $input),
                 'OrderNum' => (empty(element('order_num', $input)) === true) ? $this->getCategoryOrderNum($row['SiteCode'], $row['ParentCateCode']) : element('order_num', $input),
+                'CateEtc' => element('cate_etc', $input),
                 'IsDefault' => element('is_default', $input),
                 'IsUse' => element('is_use', $input),
                 'IsFrontUse' => element('is_front_use', $input),

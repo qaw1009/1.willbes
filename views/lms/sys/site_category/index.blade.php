@@ -7,9 +7,10 @@
         <li role="presentation" class="active"><a href="{{ site_url('/sys/site/index/category') }}" class="cs-pointer"><strong>사이트 카테고리 관리</strong></a></li>
     </ul>
     <h5>- 윌비스 사용자 운영 사이트 카테고리를 생성하는 메뉴입니다.</h5>
-    <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_site_tabs('tabs_site_code', 'tab', true, [], false) !!}
-        <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
+    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+        {!! csrf_field() !!}
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', true, [], false) !!}
+        <input type="hidden" id="search_site_code" name="search_site_code" value="{{ $def_site_code }}"/>
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -22,17 +23,17 @@
                     </div>
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control" id="search_is_use" name="search_is_use">
+                        <select class="form-control" id="search_is_use" name="search_is_use" title="사용여부">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
-                        <select class="form-control" id="search_is_front_use" name="search_is_front_use">
+                        <select class="form-control" id="search_is_front_use" name="search_is_front_use" title="Front 사용여부">
                             <option value="">Front 사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
-                        <select class="form-control" id="search_is_disp" name="search_is_disp">
+                        <select class="form-control" id="search_is_disp" name="search_is_disp" title="노출여부">
                             <option value="">노출여부</option>
                             <option value="Y">노출</option>
                             <option value="N">미노출</option>
@@ -54,54 +55,17 @@
                 <table id="list_table" class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th class="searching searching_site_code rowspan">사이트 [<span class="blue">코드</span>]</th>
-                        <th class="searching rowspan">대분류 [<span class="blue">코드</span>]</th>
-                        <th class="searching">중분류 [<span class="blue">코드</span>] <button type="button" class="btn btn-xs btn-success ml-10 btn-regist" data-cate-depth="2">추가</button></th>
-                        <th class="searching_is_use" width="120">사용여부</th>
-                        <th class="searching_is_front_use" width="120">Front 사용여부</th>
-                        <th class="searching_is_disp" width="120">노출여부</th>
+                        <th class="rowspan">사이트 [<span class="blue">코드</span>]</th>
+                        <th class="rowspan">대분류 [<span class="blue">코드</span>]</th>
+                        <th class="">중분류 [<span class="blue">코드</span>] <button type="button" class="btn btn-xs btn-success ml-10 btn-regist" data-cate-depth="2">추가</button></th>
+                        <th class="" width="120">사용여부</th>
+                        <th class="" width="120">Front 사용여부</th>
+                        <th class="" width="120">노출여부</th>
                         <th>등록자</th>
                         <th>등록일</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($data as $row)
-                        <tr>
-                            <td>{{ $row['SiteName'] }} [<span class="blue">{{ $row['SiteCode'] }}</span>]</td>
-                            <td>
-                                <div class="form-group form-group-sm no-border-bottom">
-                                    <input type="text" name="order_num" class="form-control" value="{{ $row['BOrderNum'] }}" data-origin-order-num="{{ $row['BOrderNum'] }}" data-idx="{{ $row['BCateCode'] }}" style="width: 30px;" />
-                                    <input type="radio" name="cate_code" value="{{ $row['BCateCode'] }}" data-cate-depth="{{ $row['BCateDepth'] }}" data-site-code="{{ $row['SiteCode'] }}" class="flat"/>
-                                    <a href="#none" class="btn-modify" data-idx="{{ $row['BCateCode'] }}"><u>{{ $row['BCateName'] }}</u></a>
-                                    [<span class="blue">{{ $row['BCateCode'] }}</span>]
-                                    @if($row['BIsUse'] == 'Y') (사용) @elseif($row['BIsUse'] == 'N') (<span class="red">미사용</span>) @endif
-                                    @if($row['BIsDisp'] == 'N') <span class="red pl-5">[미노출]</span> @endif
-                                    @if($row['BIsDefault'] == 'Y') <span class="red pl-5">[디폴트]</span> @endif
-                                </div>
-                            </td>
-                            <td>
-                                @if(empty($row['MCateCode']) === false)
-                                    <div class="form-group form-group-sm no-border-bottom">
-                                        <input type="text" name="order_num" class="form-control" value="{{ $row['MOrderNum'] }}" data-origin-order-num="{{ $row['MOrderNum'] }}" data-idx="{{ $row['MCateCode'] }}" style="width: 30px;" />
-                                        <a href="#none" class="btn-modify" data-idx="{{ $row['MCateCode'] }}"><u>{{ $row['MCateName'] }}</u></a>
-                                        [<span class="blue">{{ $row['MCateCode'] }}</span>]
-                                    </div>
-                                @endif
-                                @if($row['MIsDefault'] == 'Y') <span class="red">[디폴트]</span> @endif
-                            </td>
-                            <td>@if($row['LastIsUse'] == 'Y') 사용 @elseif($row['LastIsUse'] == 'N') <span class="red">미사용</span> @endif
-                                <span class="hide">{{ $row['LastIsUse'] }}</span>
-                            </td>
-                            <td>@if($row['LastIsFrontUse'] == 'Y') 사용 @elseif($row['LastIsFrontUse'] == 'N') <span class="red">미사용</span> @endif
-                                <span class="hide">{{ $row['LastIsFrontUse'] }}</span>
-                            </td>
-                            <td>@if($row['LastIsDisp'] == 'Y') 노출 @elseif($row['LastIsDisp'] == 'N') <span class="red">미노출</span> @endif
-                                <span class="hide">{{ $row['LastIsDisp'] }}</span>
-                            </td>
-                            <td>{{ $row['LastRegAdminName'] }}</td>
-                            <td>{{ $row['LastRegDatm'] }}</td>
-                        </tr>
-                    @endforeach
                     </tbody>
                 </table>
             </form>
@@ -116,13 +80,82 @@
         $(document).ready(function() {
             // datatable setting
             $datatable = $list_table.DataTable({
-                ajax: false,
+                serverSide: true,
                 paging: false,
-                searching: true,
-                rowsGroup: ['.rowspan'],
                 buttons: [
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 대분류 등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
+                ],
+                ajax: {
+                    'url' : '{{ site_url('/sys/site/listAjax/category') }}',
+                    'type' : 'POST',
+                    'data' : function(data) {
+                        return $.extend(arrToJson($search_form.serializeArray()), {});
+                    }
+                },
+                rowsGroup: ['.rowspan'],
+                columns: [
+                    {'data' : 'SiteName', 'render' : function(data, type, row, meta) {
+                        return data + ' [<span class="blue">' + row.SiteCode + '</span>]';
+                    }},
+                    {'data' : 'BCateCode', 'render' : function(data, type, row, meta) {
+                        var b_html = '';
+                        b_html += '<div class="form-group form-group-sm no-border-bottom">';
+                        b_html += ' <input type="text" name="order_num" class="form-control" value="' + row.BOrderNum + '" data-origin-order-num="' + row.BOrderNum + '" data-idx="' + data + '" style="width: 30px;" />';
+                        b_html += ' <input type="radio" name="cate_code" value="' + data + '" data-cate-depth="' + row.BCateDepth + '" data-site-code="' + row.SiteCode + '" class="flat"/>';
+                        b_html += ' <a href="#none" class="btn-modify" data-idx="' + data + '"><u>' + row.BCateName + '</u></a>';
+                        b_html += ' [<span class="blue">' + data + '</span>]';
+                        if (row.BIsUse === 'Y') {
+                            b_html += ' (사용)';
+                        } else if (data === 'N') {
+                            b_html += ' (<span class="red">미사용</span>)';
+                        }
+                        if (row.BIsDisp === 'N') {
+                            b_html += ' <span class="red pl-5">[미노출]</span>';
+                        }
+                        if (row.BIsDefault === 'Y') {
+                            b_html += ' <span class="red pl-5">[디폴트]</span>';
+                        }
+                        b_html += '</div>';
+                        return b_html;
+                    }},
+                    {'data' : 'MCateCode', 'render' : function(data, type, row, meta) {
+                        var m_html = '';
+                        if (data !== null) {
+                            m_html += '<div class="form-group form-group-sm no-border-bottom">';
+                            m_html += ' <input type="text" name="order_num" class="form-control" value="' + row.MOrderNum + '" data-origin-order-num="' + row.MOrderNum + '" data-idx="' + data + '" style="width: 30px;" />';
+                            m_html += ' <a href="#none" class="btn-modify" data-idx="' + data + '"><u>' + row.MCateName + '</u></a>';
+                            m_html += ' [<span class="blue">' + data + '</span>]';
+                            m_html += '</div>';
+                        }
+                        if (row.MIsDefault === 'Y') {
+                            m_html += ' <span class="red">[디폴트]</span>';
+                        }
+                        return m_html;
+                    }},
+                    {'data' : 'LastIsUse', 'render' : function(data, type, row, meta) {
+                        if (data === 'Y') {
+                            return '사용';
+                        } else if (data === 'N') {
+                            return '<span class="red">미사용</span>';
+                        }
+                    }},
+                    {'data' : 'LastIsFrontUse', 'render' : function(data, type, row, meta) {
+                        if (data === 'Y') {
+                            return '사용';
+                        } else if (data === 'N') {
+                            return '<span class="red">미사용</span>';
+                        }
+                    }},
+                    {'data' : 'LastIsDisp', 'render' : function(data, type, row, meta) {
+                        if (data === 'Y') {
+                            return '노출';
+                        } else if (data === 'N') {
+                            return '<span class="red">미노출</span>';
+                        }
+                    }},
+                    {'data' : 'LastRegAdminName'},
+                    {'data' : 'LastRegDatm'}
                 ]
             });
 
@@ -163,7 +196,7 @@
             });
 
             // 카테고리 등록/수정 모달창 오픈
-            $('.btn-regist, .btn-modify').click(function() {
+            $list_form.on('click', '.btn-regist, .btn-modify', function() {
                 var is_regist = ($(this).prop('class').indexOf('btn-regist') !== -1) ? true : false;
                 var uri_param = '';
 
@@ -192,16 +225,5 @@
                 });
             });
         });
-
-        // datatable searching
-        function datatableSearching() {
-            $datatable
-                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                .column('.searching_site_code').search($search_form.find('input[name="search_site_code"]').val())
-                .column('.searching_is_front_use').search($search_form.find('select[name="search_is_front_use"]').val())
-                .column('.searching_is_disp').search($search_form.find('select[name="search_is_disp"]').val())
-                .draw();
-        }
     </script>
 @stop

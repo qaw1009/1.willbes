@@ -148,7 +148,7 @@
                 'prod_type' => '2'
                 ,'title' => '허역팀 전공일반사회'
                 ,'youtube' => 'https://www.youtube.com/embed/7L0WiPrb5xk'
-                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '51316' : '51316')
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '51013' : '51316')
                 ,'prof_name' => '허역팀 일반사회'
                 ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159826' : '194607')
                 ,'prod_name' => '얼리버드 PASS'

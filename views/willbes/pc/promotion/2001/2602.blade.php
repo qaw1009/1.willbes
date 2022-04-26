@@ -78,7 +78,7 @@
         @else
             {{--5월--}}
             <div class="sky" id="QuickMenu">
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/2595" target="_blank">
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/2634" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_sky01.png" alt="0원 패스">
                 </a>  
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank">

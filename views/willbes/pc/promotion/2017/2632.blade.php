@@ -214,7 +214,7 @@
                 <div class="total NSK-Black">총 결제금액 : <span class="prod-cnt">-과목 </span> / <span class="sale-price"> -원</span></div>
                 <div class="buy">
                     <label><input type="checkbox" id="is_chk" name="is_chk" value="Y"> 페이지 하단의 상품 관련 유의사항을 모두 확인하였고, 이에 동의합니다.</label>
-                    <a href="javascript:void(0);" onclick="directPay('online'); return false;">결재하기</a>
+                    <a href="javascript:void(0);" onclick="directPay('online'); return false;">결제하기</a>
                 </div>
             </div>
         </div>

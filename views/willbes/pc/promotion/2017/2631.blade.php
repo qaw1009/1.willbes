@@ -119,6 +119,102 @@
         .ssam .willbes-Layer-youtube iframe {width:860px; height:484px}
     </style>
 
+    @php
+        $arr_product = [
+            [
+                'prod_type' => '1'
+                ,'title' => '이경범 교육학'
+                ,'youtube' => 'https://www.youtube.com/embed/KCX6VS8WyHc'
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '51019' : '51312')
+                ,'prof_name' => '이경범 교육학'
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159817' : '194596')
+                ,'prod_name' => '7개월 PASS'
+                ,'expt_pay_price' => '1900000'
+                ,'expt_disc_price' => '950000'
+                ,'expt_disc_rate' => '50'
+                ,'multiple_apply' => '1.2'
+            ],
+            [
+                'prod_type' => '1'
+                ,'title' => '신태식 교육학'
+                ,'youtube' => 'https://www.youtube.com/embed/V4B8cUDEXik'
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '51026' : '51336')
+                ,'prof_name' => '신태식 교육학'
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159818' : '194366')
+                ,'prod_name' => '7개월 PASS'
+                ,'expt_pay_price' => '1700000'
+                ,'expt_disc_price' => '850000'
+                ,'expt_disc_rate' => '50'
+                ,'multiple_apply' => '1.2'
+            ],
+            [
+                'prod_type' => '2'
+                ,'title' => '김철홍/박태영 전공수학'
+                ,'youtube' => 'https://www.youtube.com/embed/rNslov8PzaY'
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '50969' : '51084')
+                ,'prof_name' => '김철홍 수학'
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159819' : '194586')
+                ,'prod_name' => '7개월 PASS'
+                ,'expt_pay_price' => '4430000'
+                ,'expt_disc_price' => '1550000'
+                ,'expt_disc_rate' => '65'
+                ,'multiple_apply' => '1.2'
+            ],
+            [
+                'prod_type' => '2'
+                ,'title' => '허역팀 전공일반사회'
+                ,'youtube' => 'https://www.youtube.com/embed/7L0WiPrb5xk'
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '51013' : '51316')
+                ,'prof_name' => '허역팀 일반사회'
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159820' : '194600')
+                ,'prod_name' => '7개월 PASS'
+                ,'expt_pay_price' => '2490000'
+                ,'expt_disc_price' => '1245000'
+                ,'expt_disc_rate' => '50'
+                ,'multiple_apply' => '1.2'
+            ],
+            [
+                'prod_type' => '2'
+                ,'title' => '김종권 전공역사'
+                ,'youtube' => 'https://www.youtube.com/embed/FXGg_Och9Uo'
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '51022' : '51315')
+                ,'prof_name' => '김종권 역사'
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159821' : '194604')
+                ,'prod_name' => '7개월 PASS'
+                ,'expt_pay_price' => '2880000'
+                ,'expt_disc_price' => '1440000'
+                ,'expt_disc_rate' => '50'
+                ,'multiple_apply' => '1.2'
+            ],
+            [
+                'prod_type' => '2'
+                ,'title' => '최우영 전기'
+                ,'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '50976' : '51091')
+                ,'prof_name' => '최우영 전기'
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159822' : '194602')
+                ,'prod_name' => '7개월 PASS'
+                ,'expt_pay_price' => '2690000'
+                ,'expt_disc_price' => '1200000'
+                ,'expt_disc_rate' => '55'
+                ,'multiple_apply' => '1.2'
+            ],
+            [
+                'prod_type' => '2'
+                ,'title' => '최우영 전자'
+                ,'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '50976' : '51091')
+                ,'prof_name' => '최우영 전자'
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159823' : '194603')
+                ,'prod_name' => '7개월 PASS'
+                ,'expt_pay_price' => '2990000'
+                ,'expt_disc_price' => '1200000'
+                ,'expt_disc_rate' => '59'
+                ,'multiple_apply' => '1.2'
+            ]
+        ];
+    @endphp
+
     <div class="p_re evtContent NSK ssam" id="evtContainer">
         <div class="evtCtnsBox evtTop">
             <div class="btnbox">
@@ -133,94 +229,34 @@
 
         <div class="evtCtnsBox evtLec" id="evtLec">
             <div class="evtlecBox_A">
-                <div class="lec">
-                    <label>
-                        <div class="txt01">이경범 교육학</div>
-                        <div class="txt02">7개월 기간제 PASS</div>
-                        <div class="txt03">
-                            <a href="#none" onclick="openWin('sec-prof-layer'), openWin('Curriculum');">커리큘럼 확인하기</a>
-                            <a href="#none" onclick="openWin('sec-prof-layer'), openWin('youtube');">설명회 보기</a>
-                        </div>
-                        <input type="checkbox"> 신청하기
-                    </label>
-                </div>
-                <div class="lec">
-                    <label>
-                        <div class="txt01">신태식 교육학</div>
-                        <div class="txt02">7개월 기간제 PASS</div>
-                        <div class="txt03">
-                            <a href="#none" onclick="openWin('sec-prof-layer'), openWin('Curriculum');">커리큘럼 확인하기</a>
-                            <a href="#none" onclick="openWin('sec-prof-layer'), openWin('youtube');">설명회 보기</a>
-                        </div>
-                        <input type="checkbox"> 신청하기
-                    </label>
-                </div>
-                <div class="lec">
-                    <label>
-                        <div class="txt01">김철홍/박태영 전공수학</div>
-                        <div class="txt02">7개월 기간제 PASS</div>
-                        <div class="txt03">
-                            <a href="#none" onclick="openWin('sec-prof-layer'), openWin('Curriculum');">커리큘럼 확인하기</a>
-                            <a href="#none" onclick="openWin('sec-prof-layer'), openWin('youtube');">설명회 보기</a>
-                        </div>
-                        <input type="checkbox"> 신청하기
-                    </label>
-                </div>
-                <div class="lec">
-                    <label>
-                        <div class="txt01">허역팀 전공일반사회</div>
-                        <div class="txt02">7개월 기간제 PASS</div>
-                        <div class="txt03">
-                            <a href="#none" onclick="openWin('sec-prof-layer'), openWin('Curriculum');">커리큘럼 확인하기</a>
-                            <a href="#none" onclick="openWin('sec-prof-layer'), openWin('youtube');">설명회 보기</a>
-                        </div>
-                        <input type="checkbox"> 신청하기
-                    </label>
-                </div>
-                <div class="lec">
-                    <label>
-                        <div class="txt01">김종권 전공역사</div>
-                        <div class="txt02">7개월 기간제 PASS</div>
-                        <div class="txt03">
-                            <a href="#none" onclick="openWin('sec-prof-layer'), openWin('Curriculum');">커리큘럼 확인하기</a>
-                            <a href="#none" onclick="openWin('sec-prof-layer'), openWin('youtube');">설명회 보기</a>
-                        </div>
-                        <input type="checkbox"> 신청하기
-                    </label>
-                </div>
-                <div class="lec">
-                    <label>
-                        <div class="txt01">최우영 전기</div>
-                        <div class="txt02">7개월 기간제 PASS</div>
-                        <div class="txt03">
-                            <a href="#none" onclick="openWin('sec-prof-layer'), openWin('Curriculum');">커리큘럼 확인하기</a>
-                            <a href="#none" onclick="openWin('sec-prof-layer'), openWin('youtube');">설명회 보기</a>
-                        </div>
-                        <input type="checkbox"> 신청하기
-                    </label>
-                </div>
-                <div class="lec">
-                    <label>
-                        <div class="txt01">최우영 전자</div>
-                        <div class="txt02">7개월 기간제 PASS</div>
-                        <div class="txt03">
-                            <a href="#none" onclick="openWin('sec-prof-layer'), openWin('Curriculum');">커리큘럼 확인하기</a>
-                            <a href="#none" onclick="openWin('sec-prof-layer'), openWin('youtube');">설명회 보기</a>
-                        </div>
-                        <input type="checkbox"> 신청하기
-                    </label>
-                </div>
+                @foreach($arr_product as $row)
+                    <div class="lec">
+                        <label>
+                            <div class="txt01">{{$row['title']}}</div>
+                            <div class="txt02">{{$row['prod_name']}}</div>
+                            <div class="txt03">
+                                <a href="javascript:void(0);" onclick="openWin('sec-prof-layer'); fnOpenProfCurriculum('{{$row['prof_code']}}'); return false;">커리큘럼 확인하기</a>
+                                <a href="javascript:void(0);" onclick="fnOpenYoutube('{{$row['youtube']}}'); return false;">설명회 보기</a>
+                            </div>
+                            <input class="btn-add-product prod-type-{{$row['prod_type']}}" type="checkbox" name="productCode"
+                                   data-prod-type="{{$row['prod_type']}}" data-prof-name="{{$row['prof_name']}}"
+                                   data-learn-pattern="615003" data-prod-code="{{$row['prod_code']}}" data-prod-name="{{$row['prod_name']}}"
+                                   data-expt-pay-price="{{$row['expt_pay_price']}}" data-expt-disc-price="{{$row['expt_disc_price']}}"
+                                   data-expt-disc-rate="{{$row['expt_disc_rate']}}" data-multiple-apply="{{$row['multiple_apply']}}"> 신청하기
+                        </label>
+                    </div>
+                @endforeach
             </div>
-            <div class="evtlecBox_B">
+            <div class="evtlecBox_B" id="order_box_online">
                 <h5><span>2023 7개월 기간제 연간 PASS</span> 수강신청 내역</h5>
                 <div class="lec">
-                    <div><span class="tx-blue">[이경범 교육학]</span> 7개월 PASS / 1.2배수 <span class="price">(정가)1,900,000원 <strong>50%할인</strong></span></div>
-                    <div><span class="tx-blue">[허역팀 일반사회]</span> 7개월 PASS / 1.2배수 <span class="price">(정가)2,490,000원 <strong>50%할인</strong></span></div>
+                    {{--<div><span class="tx-blue">[이경범 교육학]</span> 7개월 PASS / 1.2배수 <span class="price">(정가)1,900,000원 <strong>50%할인</strong></span></div>
+                    <div><span class="tx-blue">[허역팀 일반사회]</span> 7개월 PASS / 1.2배수 <span class="price">(정가)2,490,000원 <strong>50%할인</strong></span></div>--}}
                 </div>
-                <div class="total NSK-Black">총 결제금액 : <span>2과목 </span>/<span> 2,235,000원</span></div>
+                <div class="total NSK-Black">총 결제금액 : <span class="prod-cnt">-과목 </span> / <span class="sale-price"> -원</span></div>
                 <div class="buy">
-                    <label><input type="checkbox"> 페이지 하단의 상품 관련 유의사항을 모두 확인하였고, 이에 동의합니다.</label>
-                    <a href="#none">결재하기</a>
+                    <label><input type="checkbox" id="is_chk" name="is_chk" value="Y"> 페이지 하단의 상품 관련 유의사항을 모두 확인하였고, 이에 동의합니다.</label>
+                    <a href="javascript:void(0);" onclick="directPay('online'); return false;">결재하기</a>
                 </div>
             </div>
         </div>
@@ -248,41 +284,148 @@
             </div>
         </div>
 
+        {{--교수 커리큘럼 팝업 --}}
+        <div id="curriculum_box" class="willbes-Layer-CurriBox"></div>
+
         {{--교수 youtube 팝업 --}}
         <div id="youtube" class="willbes-Layer-youtube">
             <div class="popupWrap">
-                <a class="closeBtn" href="javascript:void(0);" onclick="closeWin('sec-prof-layer'),closeWin('youtube')">
+                <a class="closeBtn" href="javascript:void(0);" onclick="fnCloseYoutube()">
                     <img src="{{ img_url('prof/close.png') }}">
                 </a>
-                <iframe src="https://www.youtube.com/embed/mG3dim4NgKI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        {{--교수 커리큘럼 팝업 --}}
-        <div id="Curriculum" class="willbes-Layer-CurriBox">
-            <div class="popupWrap">
-                <a class="closeBtn" href="javascript:void(0);" onclick="closeWin('sec-prof-layer'),closeWin('Curriculum')">
-                    <img src="{{ img_url('prof/close.png') }}">
-                </a>
-                <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">민정선</span> 교수님 커리큘럼</div>
-                <div class="Layer-Cont">
-                    <img src="https://ssam.willbes.net/public/uploads/willbes/board/92/2020/1127/board_305025_01_20201127150717.jpg"/>
-                </div>
+                <iframe src="" id="youtube_frame" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
         <div id="sec-prof-layer" class="willbes-Layer-Black"></div>
     </div>
     <!-- End Container -->
 
+    <div id="order_div_online" style="display: none"></div>
+    <form name="exptpay_form_online" id="exptpay_form_online">
+        {!! csrf_field() !!}
+    </form>
+
     <script type="text/javascript">
         $(document).ready(function () {
-            /* 핫클립 상품 페이지 로드 */
-            var _url = '{!! front_url('/promotion/ajaxHotClipProduct') !!}';
-            _url += '?online_disc_code={{ (empty($arr_promotion_params["online_disc_code"]) === false ? $arr_promotion_params["online_disc_code"] : '') }}';
-            _url += '&off_disc_code={{ (empty($arr_promotion_params["off_disc_code"]) === false ? $arr_promotion_params["off_disc_code"] : '') }}';
-            sendAjax(_url, '', function(ret) {
-                $('#hotclip_box').html(ret);
-            }, null, false, 'GET', 'html');
+            $(".btn-add-product").on('click', function () {
+                var this_learn_pattern = ($(this).data("learn-pattern") == '615007') ? 'off' : 'online';
+                var this_prod_type = $(this).data("prod-type");
+                var this_prod_code = $(this).data("prod-code");
+                var this_prof_name = $(this).data("prof-name");
+                var this_prod_name = $(this).data("prod-name");
+                var this_expt_pay_price = $(this).data("expt-pay-price");
+                var this_expt_disc_price = $(this).data("expt-disc-price");
+                var this_expt_disc_rate = $(this).data("expt-disc-rate");
+                var this_multiple_apply = $(this).data("multiple-apply");
+                var param_check = $("#exptpay_form_"+this_learn_pattern).find('#_exptpay_'+this_prod_code).val();
+
+                if ($(".prod-type-"+this_prod_type+":checked").length > 1) {
+                    $(".prod-type-"+this_prod_type).prop('checked',false);
+                    $(this).prop('checked',true);
+                    $(".box-type-"+this_prod_type).remove();
+                }
+
+                if (typeof param_check === 'undefined') {
+                    $("#exptpay_form_"+this_learn_pattern).append('<input class="box-type-'+this_prod_type+'" type="hidden" name="prod_code[]" id="_exptpay_' + this_prod_code + '" value="' + this_prod_code + '" data-expt-pay-price="'+this_expt_pay_price+'" data-expt-disc-price="'+this_expt_disc_price+'" data-expt-disc-rate="'+this_expt_disc_rate+'"/>');
+                    $("#order_div_"+this_learn_pattern).append('<input class="box-type-'+this_prod_type+'" type="checkbox" name="y_pkg" id="_order_' + this_prod_code + '" value="' + this_prod_code + '" checked="checked"/>');
+                    var html = '<div class="box-type-'+this_prod_type+'" id=prod_box_'+this_prod_code+'>';
+                    html += '<span class="tx-blue">['+this_prof_name+']</span> ';
+                    html += this_prod_name+' / '+this_multiple_apply+'배수';
+                    html += '<span class="price target-price" id="_price_'+this_prod_code+'"></span>';
+                    html += '</div>';
+                    $("#order_box_"+this_learn_pattern+" > .lec").append(html);
+                    getExptPayPrice(this_learn_pattern);
+                }
+
+                // 체크해제(상품삭제)
+                if ($(this).is(":checked") === false) {
+                    $("#exptpay_form_"+this_learn_pattern).find('#_exptpay_'+this_prod_code).remove();
+                    $("#order_div_"+this_learn_pattern).find('#_order_'+this_prod_code).remove();
+                    $("#prod_box_"+this_prod_code).remove();
+                    getExptPayPrice(this_learn_pattern)
+                }
+            });
         });
+
+        function getExptPayPrice(learn_pattern) {
+            var prod_cnt = $("#exptpay_form_"+learn_pattern).find("input[name='prod_code[]']").length;
+            if (prod_cnt > 0) {
+                var target_prod_html = '';
+                var sale_price = 0;
+                $.each($("#exptpay_form_"+learn_pattern).find("input[name='prod_code[]']"), function (index, item) {
+                    target_prod_html = '(정가)'+parseInt($(this).data("expt-pay-price")).toLocaleString()+'원 ';
+                    target_prod_html += '<strong>'+$(this).data("expt-disc-rate")+'%할인</strong>';
+                    $("#_price_"+$(this).val()).html(target_prod_html);
+                    sale_price += parseInt($(this).data("expt-disc-price"));
+                });
+                $("#order_box_"+learn_pattern).find('.prod-cnt').text(prod_cnt+'과목');
+                $("#order_box_"+learn_pattern).find('.sale-price').text(parseInt(sale_price).toLocaleString()+'원');
+            } else {
+                $("#order_box_"+learn_pattern).find('.expt-disc').text('-할인');
+                $("#order_box_"+learn_pattern).find('.prod-cnt').text('-과목');
+                $("#order_box_"+learn_pattern).find('.sale-price').text('-원');
+            }
+        }
+
+        function directPay(_learn_pattern)
+        {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.', 'Y') !!}
+
+            var prod_cnt = $("#exptpay_form_"+_learn_pattern).find("input[name='prod_code[]']").length;
+            var cart_type = '', learn_pattern = '', is_direct_pay = '', cart_onoff_type = '';
+            if (_learn_pattern == 'off') {
+                cart_type = 'off_lecture';
+                learn_pattern = 'off_pack_lecture';
+                is_direct_pay = 'Y';
+                cart_onoff_type = 'off';
+            } else {
+                cart_type = 'on_lecture'
+                learn_pattern = 'adminpack_lecture'
+                is_direct_pay = 'Y'
+                cart_onoff_type = '';
+            }
+
+            if (prod_cnt <= 0) {
+                alert('결제할 상품을 선택해주세요.');
+                return;
+            }
+
+            if ($("#is_chk").is(':checked') === false) {
+                alert('상품 관련 유의사항 안내에 동의하셔야 합니다.');
+                return;
+            }
+
+            //결제하기
+            goCartNDirectPay('order_div_'+_learn_pattern, 'y_pkg', cart_type, learn_pattern, is_direct_pay, cart_onoff_type);
+        }
+
+        function fnOpenProfCurriculum(prof_idx) {
+            var ele_id = 'curriculum_box';
+            var _url = '{{ front_url('/professor/layerCurriculum/prof-idx/') }}'+prof_idx;
+            var data = {
+                'ele_id' : ele_id,
+                'close_id' : 'sec-prof-layer'
+            }
+            sendAjax(_url, data, function(ret) {
+                console.log(ret);
+                $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+            }, showAlertError, false, 'GET', 'html');
+        }
+
+        function fnOpenYoutube(url) {
+            var youtube_url = url + '?' + 'enablejsapi=1&version=3&playerapiid=ytplayer';
+            $("#youtube_frame").attr('src',youtube_url);
+            openWin('sec-prof-layer');
+            openWin('youtube');
+        }
+        function fnCloseYoutube() {
+            $('#youtube_frame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+            $("#youtube_frame").attr('src',"");
+            closeWin('sec-prof-layer')
+            closeWin('youtube');
+        }
     </script>
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

@@ -206,7 +206,7 @@
                 @endforeach
             </div>
             <div class="evtlecBox_B" id="order_box_online">
-                <h5><span>2023 7개월 기간제 연간 PASS</span> 수강신청 내역</h5>
+                <h5><span>2023+24학년도 대비 얼리버드 PASS</span> 수강신청 내역</h5>
                 <div class="lec">
                     {{--<div><span class="tx-blue">[이경범 교육학]</span> 얼리버드 Pass / 1.8배수 <span class="price">(정가)3,800,000원 <strong>55%할인</strong></span></div>
                     <div><span class="tx-blue">[허역팀 일반사회]</span> 얼리버드 Pass / 1.8배수 <span class="price">(정가)5,760,000원 <strong>55%할인</strong></span></div>--}}

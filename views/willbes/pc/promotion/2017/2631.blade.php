@@ -125,9 +125,9 @@
                 'prod_type' => '1'
                 ,'title' => '이경범 교육학'
                 ,'youtube' => 'https://www.youtube.com/embed/KCX6VS8WyHc'
-                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '51019' : '51312')
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'development' ? '51019' : '51312')
                 ,'prof_name' => '이경범 교육학'
-                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159817' : '194596')
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'development' ? '159817' : '194596')
                 ,'prod_name' => '7개월 PASS'
                 ,'expt_pay_price' => '1900000'
                 ,'expt_disc_price' => '950000'
@@ -138,9 +138,9 @@
                 'prod_type' => '1'
                 ,'title' => '신태식 교육학'
                 ,'youtube' => 'https://www.youtube.com/embed/V4B8cUDEXik'
-                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '51026' : '51336')
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'development' ? '51026' : '51336')
                 ,'prof_name' => '신태식 교육학'
-                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159818' : '194366')
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'development' ? '159818' : '194366')
                 ,'prod_name' => '7개월 PASS'
                 ,'expt_pay_price' => '1700000'
                 ,'expt_disc_price' => '850000'
@@ -151,9 +151,9 @@
                 'prod_type' => '2'
                 ,'title' => '김철홍/박태영 전공수학'
                 ,'youtube' => 'https://www.youtube.com/embed/rNslov8PzaY'
-                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '50969' : '51084')
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'development' ? '50969' : '51084')
                 ,'prof_name' => '김철홍 수학'
-                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159819' : '194586')
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'development' ? '159819' : '194586')
                 ,'prod_name' => '7개월 PASS'
                 ,'expt_pay_price' => '4430000'
                 ,'expt_disc_price' => '1550000'
@@ -164,9 +164,9 @@
                 'prod_type' => '2'
                 ,'title' => '허역팀 전공일반사회'
                 ,'youtube' => 'https://www.youtube.com/embed/7L0WiPrb5xk'
-                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '51013' : '51316')
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'development' ? '51013' : '51316')
                 ,'prof_name' => '허역팀 일반사회'
-                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159820' : '194600')
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'development' ? '159820' : '194600')
                 ,'prod_name' => '7개월 PASS'
                 ,'expt_pay_price' => '2490000'
                 ,'expt_disc_price' => '1245000'
@@ -177,9 +177,9 @@
                 'prod_type' => '2'
                 ,'title' => '김종권 전공역사'
                 ,'youtube' => 'https://www.youtube.com/embed/FXGg_Och9Uo'
-                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '51022' : '51315')
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'development' ? '51022' : '51315')
                 ,'prof_name' => '김종권 역사'
-                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159821' : '194604')
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'development' ? '159821' : '194604')
                 ,'prod_name' => '7개월 PASS'
                 ,'expt_pay_price' => '2880000'
                 ,'expt_disc_price' => '1440000'
@@ -190,9 +190,9 @@
                 'prod_type' => '2'
                 ,'title' => '최우영 전기'
                 ,'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
-                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '50976' : '51091')
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'development' ? '50976' : '51091')
                 ,'prof_name' => '최우영 전기'
-                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159822' : '194602')
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'development' ? '159822' : '194602')
                 ,'prod_name' => '7개월 PASS'
                 ,'expt_pay_price' => '2690000'
                 ,'expt_disc_price' => '1200000'
@@ -203,9 +203,9 @@
                 'prod_type' => '2'
                 ,'title' => '최우영 전자'
                 ,'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
-                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '50976' : '51091')
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'development' ? '50976' : '51091')
                 ,'prof_name' => '최우영 전자'
-                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159823' : '194603')
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'development' ? '159823' : '194603')
                 ,'prod_name' => '7개월 PASS'
                 ,'expt_pay_price' => '2990000'
                 ,'expt_disc_price' => '1200000'

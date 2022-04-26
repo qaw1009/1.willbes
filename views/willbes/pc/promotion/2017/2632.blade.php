@@ -122,9 +122,9 @@
                 'prod_type' => '1'
                 ,'title' => '이경범 교육학'
                 ,'youtube' => 'https://www.youtube.com/embed/KCX6VS8WyHc'
-                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '51019' : '51312')
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'development' ? '51019' : '51312')
                 ,'prof_name' => '이경범 교육학'
-                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159824' : '194606')
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'development' ? '159824' : '194606')
                 ,'prod_name' => '얼리버드 PASS'
                 ,'expt_pay_price' => '3800000'
                 ,'expt_disc_price' => '1710000'
@@ -135,9 +135,9 @@
                 'prod_type' => '1'
                 ,'title' => '신태식 교육학'
                 ,'youtube' => 'https://www.youtube.com/embed/V4B8cUDEXik'
-                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '51026' : '51336')
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'development' ? '51026' : '51336')
                 ,'prof_name' => '신태식 교육학'
-                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159825' : '189065')
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'development' ? '159825' : '189065')
                 ,'prod_name' => '얼리버드 PASS'
                 ,'expt_pay_price' => '3400000'
                 ,'expt_disc_price' => '1530000'
@@ -148,9 +148,9 @@
                 'prod_type' => '2'
                 ,'title' => '허역팀 전공일반사회'
                 ,'youtube' => 'https://www.youtube.com/embed/7L0WiPrb5xk'
-                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '51013' : '51316')
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'development' ? '51013' : '51316')
                 ,'prof_name' => '허역팀 일반사회'
-                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159826' : '194607')
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'development' ? '159826' : '194607')
                 ,'prod_name' => '얼리버드 PASS'
                 ,'expt_pay_price' => '4980000'
                 ,'expt_disc_price' => '2241000'
@@ -161,9 +161,9 @@
                 'prod_type' => '2'
                 ,'title' => '김종권 전공역사'
                 ,'youtube' => 'https://www.youtube.com/embed/FXGg_Och9Uo'
-                ,'prof_code' => (ENVIRONMENT == 'local' || 'dev' ? '51022' : '51315')
+                ,'prof_code' => (ENVIRONMENT == 'local' || 'development' ? '51022' : '51315')
                 ,'prof_name' => '김종권 역사'
-                ,'prod_code' => (ENVIRONMENT == 'local' || 'dev' ? '159827' : '194608')
+                ,'prod_code' => (ENVIRONMENT == 'local' || 'development' ? '159827' : '194608')
                 ,'prod_name' => '얼리버드 PASS'
                 ,'expt_pay_price' => '5760000'
                 ,'expt_disc_price' => '2592000'

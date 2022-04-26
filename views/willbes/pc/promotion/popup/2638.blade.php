@@ -63,8 +63,9 @@
             <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$arr_cert['cert_data']['CertTypeCcd']}}">
 
             <input type="hidden" name="check_take_no" value="N">    {{-- 응시번호 합격여부 체크 --}}
+            <input type="hidden" name="TakeArea" value="712018">
 
-            <div id="request">                
+            <div id="request">
                 <div class="termsBx">
                     <h3 class="tit">[합격생 인증 정보]</h3>
                     <ul>
@@ -97,14 +98,14 @@
                                 @endforeach
 
                             </select>
-                            <select id="TakeArea" name="TakeArea" {{empty($takearea) === false ? 'disabled="disabled"' : ''}}>
+                            {{--<select id="TakeArea" name="TakeArea" {{empty($takearea) === false ? 'disabled="disabled"' : ''}}>
                                 <option value="">지역구분</option>
                                 @foreach($arr_cert['area_ccd'] as $key => $val)
-                                    @if($key != '712018') {{--전국제외--}}
+                                    @if($key != '712018') --}}{{--전국제외--}}{{--
                                         <option value="{{$key}}" {{($key == $takearea ? 'selected="selected"' : '')}}>{{$val}}</option>
                                     @endif
                                 @endforeach
-                            </select>
+                            </select>--}}
                             <input type="text" name="TakeNo" id="TakeNo"  numberOnly value="{{ $takeno }}" placeholder="응시번호" {{empty($takeno) === false ? 'disabled="disabled"' : ''}}>
                         </li>
                         <li>
@@ -189,11 +190,11 @@
                 $('#TakeKind').focus();
                 return;
             }
-            if ($('#TakeArea').val() == '') {
+            /*if ($('#TakeArea').val() == '') {
                 alert('지역을 선택해 주세요.');
                 $('#TakeArea').focus();
                 return;
-            }
+            }*/
             if ($('#TakeNo').val() == '') {
                 alert('응시번호를 등록해 주세요.');
                 $('#TakeNo').focus();

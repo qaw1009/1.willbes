@@ -549,9 +549,9 @@ class BasePromotion extends \app\controllers\FrontController
                 $arr_cert['apply_result'] = $this->certApplyFModel->findApplyByCertIdx($cert_idx);
             }
 
-            $codes = $this->codeModel->getCcdInArray(['711','712']);
-            $arr_cert['kind_ccd'] = $codes['711'];
-            $arr_cert['area_ccd'] = $codes['712'];
+            //사이트그룹코드 (고등고시인경우에만 해당)
+            $arr_cert['kind_ccd'] = $this->codeModel->getCcd('711','', ['EQ' => ['CcdEtc' => config_app('SiteGroupCode')]]);
+            $arr_cert['area_ccd'] = $this->codeModel->getCcd('712');
         }
 
         if (empty($arr_base['promotion_code']) === true) {
@@ -1091,7 +1091,10 @@ class BasePromotion extends \app\controllers\FrontController
     {
         $data = [];
         $get_register_idxs = array_pluck($register_list, 'Name', 'ErIdx');
-        $arr_condition = ['IN' => ['ErIdx' => array_keys($get_register_idxs)]];
+        $arr_condition = [
+            'EQ' => ['IsStatus' => 'Y']
+            ,'IN' => ['ErIdx' => array_keys($get_register_idxs)]
+        ];
         $arr_register_member_cnt = $this->eventFModel->getRegisterMemberCount($arr_condition);
         $arr_register_member_cnt = array_pluck($arr_register_member_cnt, 'MemCount', 'ErIdx');
 

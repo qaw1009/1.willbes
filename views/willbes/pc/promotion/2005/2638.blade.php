@@ -53,7 +53,7 @@
 
         <div class="evtCtnsBox evt04"  data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2638_04.jpg" alt="참여 후기 작성하기">
-            <a href="#none" onclick="javascript:popup();">참여 후기 작성하기  ▶</a>
+            <a href="javascript:void(0);" onclick="popup();">참여 후기 작성하기  ▶</a>
         </div> 
 
     </div>

@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px; position: relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a {border:1px solid #000}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
 		/************************************************************/ 
 		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/04/2187_top_bg.jpg) no-repeat center top;}	

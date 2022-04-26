@@ -22,7 +22,7 @@
 
 
 
-        .sky {position:fixed;top:125px;right:10px;z-index:10; text-align:center}
+        .sky {position:fixed;top:100px;right:10px;z-index:10; text-align:center}
         .sky a {display:block; margin-bottom:5px}
 
         /*타이머*/
@@ -102,8 +102,10 @@
     <div class="p_re evtContent NSK" id="evtContainer">  
               
         <div class="sky" id="QuickMenu">  
+            <a href="javascript:alert('Coming Soon!')"> 
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2639_sky.png" alt="동형팩 바로가기" >
+            </a>            
             <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2256" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/10/1071_sky02.png" alt="t-pass 바로가기"/> </a>
-
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky01.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0">
             <map name="Map1071A" id="Map1071A" >
                 <area shape="rect" coords="5,137,116,189" href="#" class="r_btn_tab" data-tab-id="1" />
@@ -112,8 +114,7 @@
                 <area shape="rect" coords="5,334,116,384" href="#" class="r_btn_tab" data-tab-id="4"/>
                 <area shape="rect" coords="5,390,116,457" href="#" class="r_btn_tab" data-tab-id="5"/>
                 <area shape="rect" coords="5,462,116,511" href="#" class="r_btn_tab" data-tab-id="6"/>
-            </map>
-       
+            </map>       
         </div>  
         
         <div class="evtCtnsBox wb_top" >

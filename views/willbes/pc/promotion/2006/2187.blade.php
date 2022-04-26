@@ -7,18 +7,21 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px; position: relative;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a {border:1px solid #000}
 
 		/************************************************************/ 
-		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/04/2187_top_bg.jpg) no-repeat center top;}	
-        .evt_01 {background:url(https://static.willbes.net/public/images/promotion/2021/04/2187_01_bg.jpg) no-repeat center top;}
-        .evt_02 {background:#f0f1ef; padding-bottom:50px}
-        .evt_02 > div {width:1120px; margin:0 auto; position:relative}
+		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/04/2187_top_bg.jpg) no-repeat center top;}	
+        .evt_01 {background:url(https://static.willbes.net/public/images/promotion/2022/04/2187_01_bg.jpg) no-repeat center top;}
+        .evt_02 {background:#f0f1ef; padding-bottom:150px}
         
         .check {letter-spacing:3; color:#fff; margin-top:30px}
         .check label {cursor:pointer; font-size:15px;color:#000;font-weight:bold;}
@@ -37,22 +40,22 @@
     </style> 
 	<div class="evtContent NSK">
 
-		<div class="evtCtnsBox evt_top">
-			<img src="https://static.willbes.net/public/images/promotion/2021/04/2187_top.jpg" alt="2022 감평패스" />
+		<div class="evtCtnsBox evt_top" data-aos="fade-up">
+			<img src="https://static.willbes.net/public/images/promotion/2022/04/2187_top.jpg" alt="2022 감평패스" />
 		</div>
 
-        <div class="evtCtnsBox evt_01">
-			<img src="https://static.willbes.net/public/images/promotion/2021/04/2187_01.jpg" alt="합격의 기준" />
+        <div class="evtCtnsBox evt_01" data-aos="fade-up">
+			<img src="https://static.willbes.net/public/images/promotion/2022/04/2187_01.jpg" alt="합격의 기준" />
 		</div>
 
-        <div class="evtCtnsBox evt_02">
-            <div>
-			    <img src="https://static.willbes.net/public/images/promotion/2021/04/2187_02.jpg" alt="합격의 기준" />
+        <div class="evtCtnsBox evt_02" data-aos="fade-up">
+            <div class="wrap">
+			    <img src="https://static.willbes.net/public/images/promotion/2022/04/2187_02.jpg" alt="합격의 기준" />
                 <a href="javascript:void(0);" data-url="https://job.willbes.net/pass/offPackage/index" onclick="go_PassLecture(this)" title="학원참석 모의고사" style="position: absolute; left: 0.18%; top: 42.43%; width: 30.71%; height: 48.85%; z-index: 2;"></a>
                 <a href="javascript:void(0);" data-url="https://job.willbes.net/book/index/cate/309002" onclick="go_PassLecture(this)" title="모의고사 문제지주문" style="position: absolute; left: 34.29%; top: 42.43%; width: 30.71%; height: 48.85%; z-index: 2;"></a>
                 <a href="javascript:void(0);" data-url="https://job.willbes.net/pass/mockTestNew/apply/cate" onclick="go_PassLecture(this)" title="온라인 모의고사" style="position: absolute; left: 69.29%; top: 42.43%; width: 30.71%; height: 48.85%; z-index: 2;"></a>
             </div>
-            <div class="check mb100">
+            <div class="check">
                 <label>
                     <input name="ischk"  type="checkbox" value="Y" />
                     페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
@@ -61,12 +64,12 @@
             </div>
 		</div>        
 
-		<div class="evtCtnsBox evtInfo" id="careful">
+		<div class="evtCtnsBox evtInfo" id="careful" data-aos="fade-up">
 			<div class="evtInfoBox">
 				<h4 class="NSK-Black">상품 이용안내</h4>
 				<div class="infoTit"><strong>상품구성</strong></div>
 				<ul>				
-                    <li>1차 실전모의고사 상품구성은 학원참석 모의고사, 모의고사 문제지수령, 온라인 모의고사로 구성됩니다.
+                    <li>1차 실전모의고사 상품구성은 학원참석 모의고사, 모의고사 문제지수령, 온라인 모의고사로 구성됩니다.</li>
                     <li>1차 실전모의고사 신청 시 A/B형의 강사진을 확인 후 신청하시기 바랍니다.<br>
                         A형 : 노동법(김광훈), 민법(황보수정), 사회보험법, 경영학<br>
                         B형 : 노동법(이수진), 민법(김춘환), 사회보험법, 경영학</li>
@@ -74,9 +77,9 @@
 
 				<div class="infoTit"><strong>모의고사관련</strong></div>
 				<ul>
-					<li>학원참석 모의고사의 경우 시간을 엄수해주시기 바랍니다.(4/30(금) 9시까지 입실완료)</li>
-                    <li>모의고사 문제지주문(교재) 선택 시 4월 26일(월)부터 순차 배송됩니다.</li>
-                    <li>온라인 모의고사는 4월 30일(금) 09:30분부터 응시가 가능합니다.</li>
+					<li>학원참석 모의고사의 경우 시간을 엄수해주시기 바랍니다.(4/30(토) 9시까지 입실완료)</li>
+                    <li>모의고사 문제지주문(교재) 선택 시 4월 29일(금)부터 순차 배송됩니다.</li>
+                    <li>온라인 모의고사는 4월 30일(토) 09:30분부터 응시가 가능합니다.</li>
 				</ul>
 
 				<div class="infoTit"><strong>결제/환불관련</strong></div>
@@ -96,6 +99,14 @@
 		</div>
 	</div>
     <!-- End Container -->
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      $(document).ready(function(){
+        AOS.init();
+      });
+    </script>
 
     <script type="text/javascript">
         /*수강신청 동의*/ 

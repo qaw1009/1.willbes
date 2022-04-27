@@ -28,7 +28,7 @@
 
         .evtLec { padding-bottom:100px;}        
         .evtlecBox_A {width:1020px; margin:0 auto; text-align:center; display: flex; flex-wrap: wrap; justify-content: space-between;}     
-        .evtlecBox_A .lec {margin:0 10px;}
+        .evtlecBox_A .lec {margin:0 10px; }
         .evtlecBox_A .lec:nth-child(1) {background:url(https://static.willbes.net/public/images/promotion/2022/04/2631_t01.jpg) no-repeat right bottom;}
         .evtlecBox_A .lec:nth-child(2) {background:url(https://static.willbes.net/public/images/promotion/2022/04/2631_t02.jpg) no-repeat right bottom;}
         .evtlecBox_A .lec:nth-child(3) {background:url(https://static.willbes.net/public/images/promotion/2022/04/2631_t05.jpg) no-repeat right bottom;}
@@ -36,11 +36,12 @@
         .evtlecBox_A .lec:nth-child(5) {background:url(https://static.willbes.net/public/images/promotion/2022/04/2631_t04.jpg) no-repeat right bottom;}
         .evtlecBox_A .lec:nth-child(6),
         .evtlecBox_A .lec:last-child {background:url(https://static.willbes.net/public/images/promotion/2022/04/2631_t06.jpg) no-repeat right bottom;}
-        .evtlecBox_A .lec label {border:1px solid #c9c9c9; text-align:left; font-size:16px; width:490px; height:229px; padding:25px 30px; box-sizing:border-box; display:inline-block}
+        .evtlecBox_A .lec label {border:1px solid #c9c9c9; text-align:left; font-size:16px; width:490px; height:229px; padding:25px 30px; box-sizing:border-box; display:inline-block; position:relative}
         .evtlecBox_A .lec .txt01 {font-size:24px; color:#000; margin-bottom:5px; font-weight:600}
         .evtlecBox_A .lec .txt02 {font-size:27px; color:#4f26e7; margin-bottom:20px; font-weight:600}
-        .evtlecBox_A .lec .txt03 {margin-bottom:40px;}
-        .evtlecBox_A .txt03 a {display:inline-block; padding:5px 10px; color:#000; border:1px solid #000; font-size:14px;}
+        .evtlecBox_A .lec .txt03 {}
+        .evtlecBox_A .lec .apply {position: absolute; bottom:30px}
+        .evtlecBox_A .txt03 a {display:inline-block; padding:5px 10px; color:#000; border:1px solid #000; font-size:14px; margin-bottom:5px}
         .evtlecBox_A .txt03 a:hover {color:#fff; background:#000 }
         .evtLec label {margin-top:20px; display:block; font-size:20px}
         .evtLec input[type=checkbox] {width:20px; height:20px; vertical-align:top}
@@ -237,12 +238,19 @@
                             <div class="txt03">
                                 <a href="javascript:void(0);" onclick="openWin('sec-prof-layer'); fnOpenProfCurriculum('{{$row['prof_code']}}'); return false;">커리큘럼 확인하기</a>
                                 <a href="javascript:void(0);" onclick="fnOpenYoutube('{{$row['youtube']}}'); return false;">설명회 보기</a>
+                                {{-- 박태영 
+                                <br>
+                                <a href="#">커리큘럼 확인하기</a>
+                                <a href="#">설명회 보기</a>
+                                --}}
                             </div>
-                            <input class="btn-add-product prod-type-{{$row['prod_type']}}" type="checkbox" name="productCode"
+                            <div class="apply">
+                                <input class="btn-add-product prod-type-{{$row['prod_type']}}" type="checkbox" name="productCode"
                                    data-prod-type="{{$row['prod_type']}}" data-prof-name="{{$row['prof_name']}}"
                                    data-learn-pattern="615003" data-prod-code="{{$row['prod_code']}}" data-prod-name="{{$row['prod_name']}}"
                                    data-expt-pay-price="{{$row['expt_pay_price']}}" data-expt-disc-price="{{$row['expt_disc_price']}}"
                                    data-expt-disc-rate="{{$row['expt_disc_rate']}}" data-multiple-apply="{{$row['multiple_apply']}}"> 신청하기
+                            </div>
                         </label>
                     </div>
                 @endforeach

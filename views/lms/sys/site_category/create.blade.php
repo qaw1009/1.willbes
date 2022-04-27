@@ -103,8 +103,8 @@
             </label>
             <div class="col-md-4 item form-inline">
                 <div class="radio">
-                    <input type="radio" id="is_default_y" name="is_default" class="flat" value="Y" required="required" title="디폴트여부" @if($method == 'POST' || $data['IsDefault']=='Y')checked="checked"@endif/> <label for="is_default_y" class="input-label">디폴트</label>
-                    <input type="radio" id="is_default_n" name="is_default" class="flat" value="N" @if($data['IsDefault']=='N')checked="checked"@endif/> <label for="is_default_n" class="input-label">일반</label>
+                    <input type="radio" id="is_default_y" name="is_default" class="flat" value="Y" required="required" title="디폴트여부" @if($data['IsDefault']=='Y')checked="checked"@endif/> <label for="is_default_y" class="input-label">디폴트</label>
+                    <input type="radio" id="is_default_n" name="is_default" class="flat" value="N" @if($method == 'POST' || $data['IsDefault']=='N')checked="checked"@endif/> <label for="is_default_n" class="input-label">일반</label>
                 </div>
                 <span class="red pl-10"># 사이트별 1개만 설정</span>
             </div>

@@ -149,15 +149,15 @@
                     <p>무선/통신 공통이론에서  <span>『변조이론』</span><br/> 제일 중요한 거 알지!?</p>
                 </li>
                 <li>
-                    <a href="javascript:load('https://youtube.com/embed/37yjw2mC8wY')">><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_04.jpg" alt=""></a>
+                    <a href="javascript:load('https://youtube.com/embed/37yjw2mC8wY')"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_04.jpg" alt=""></a>
                     <p><span>『RLC회로의 특성』</span><br/> 바로 이거야!!</p>
                 </li>
                 <li>
-                    <a href="javascript:load('https://youtube.com/embed/eiAKjkFjwtE')">><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_05.jpg" alt=""></a>
+                    <a href="javascript:load('https://youtube.com/embed/eiAKjkFjwtE')"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_05.jpg" alt=""></a>
                     <p>빈출개념 콕 찝기! <br/><span>연산증폭기(Op-Amp)</span> 기출 포인트야~</p>
                 </li>
                 <li>
-                    <a href="javascript:load('https://youtube.com/embed/wSaPEaVIbbo')">><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_06.jpg" alt=""></a>
+                    <a href="javascript:load('https://youtube.com/embed/wSaPEaVIbbo')"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_06.jpg" alt=""></a>
                     <p>합격하고자 하면~ 기출을 풀어라!<br/> 직접FM  <span>기출 문풀 정리하기~</span></p>
                 </li>                
             </ul>

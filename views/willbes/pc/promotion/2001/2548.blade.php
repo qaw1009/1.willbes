@@ -129,7 +129,7 @@
         }
         .evt04 {background:#f6f6f6;}
         .evt05 {background:#fff;}
-        .comingsoon {background:url("https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon_bg.jpg") no-repeat center top; text-align:center}
+        .comingsoon {background:#171717; text-align:center}
 
     </style>
     @php

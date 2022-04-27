@@ -8,7 +8,7 @@
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both; position:relative}
     .evtCtnsBox img {max-width:100%;}
     .evtCtnsBox .wrap {margin:0 auto; position:relative}
-    .evtCtnsBox .wrap a {border:1px solid #000}
+    /*.evtCtnsBox .wrap a {border:1px solid #000}*/
     
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   

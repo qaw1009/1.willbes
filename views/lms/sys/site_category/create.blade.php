@@ -77,8 +77,8 @@
             </label>
             <div class="col-md-4 item form-inline">
                 <div class="radio">
-                    <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
-                    <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
+                    <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if(($method == 'POST' && $cate_depth > 1) || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                    <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if(($method == 'POST' && $cate_depth == 1) || $data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                 </div>
             </div>
             <label class="control-label col-md-2" for="is_front_use_y">Front 사용 여부 <span class="required">*</span>

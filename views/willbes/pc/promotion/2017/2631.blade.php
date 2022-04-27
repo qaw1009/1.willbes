@@ -248,7 +248,7 @@
                 @endforeach
             </div>
             <div class="evtlecBox_B" id="order_box_online">
-                <h5><span>2023 7개월 기간제 연간 PASS</span> 수강신청 내역</h5>
+                <h5><span>2023학년도 대비 7개월 기간제 연간 PASS</span> 수강신청 내역</h5>
                 <div class="lec">
                     {{--<div><span class="tx-blue">[이경범 교육학]</span> 7개월 PASS / 1.2배수 <span class="price">(정가)1,900,000원 <strong>50%할인</strong></span></div>
                     <div><span class="tx-blue">[허역팀 일반사회]</span> 7개월 PASS / 1.2배수 <span class="price">(정가)2,490,000원 <strong>50%할인</strong></span></div>--}}

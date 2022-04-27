@@ -30,7 +30,8 @@ class Login extends \app\controllers\BaseController
         }
 
         $this->load->view('lcms/auth/login', [
-            'saved_admin_id' => $saved_admin_id
+            'saved_admin_id' => $saved_admin_id,
+            'return_url' => rawurldecode($this->_reqG('return_url'))
         ], false);
     }
 

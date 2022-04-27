@@ -540,6 +540,24 @@ class EventLecture extends \app\controllers\BaseController
     }
 
     /**
+     * 이벤트 신청자 정보 삭제
+     */
+    public function deleteRegisterMember()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+            ,['field' => 'em_idx', 'label' => '신청자회원식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventLectureModel->deleteRegisterMember($this->_reqP('em_idx'));
+        $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
      * 접수관리 회원 신청 수
      * @param $params
      */
@@ -1284,8 +1302,9 @@ class EventLecture extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'B.ElIdx' => $el_idx,
+                'B.ErIdx' => $this->_reqP('search_register_idx'),
+                'A.IsStatus' => 'Y',
                 'B.IsStatus' => 'Y',
-                'B.ErIdx' => $this->_reqP('search_register_idx')
             ],
             'ORG1' => [
                 'LKB' => [

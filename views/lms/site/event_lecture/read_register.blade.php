@@ -71,6 +71,7 @@
                 <th>신청일</th>
                 <th class="rowspan">신청특강/설명회</th>
                 <th>총신청수</th>
+                <th>삭제</th>
             </tr>
             </thead>
             <tbody>
@@ -166,7 +167,10 @@
                     }},
                 {'data' : 'RegDatm'},
                 {'data' : 'RegisterName'},
-                {'data' : 'registerCnt'}
+                {'data' : 'registerCnt'},
+                {'data' : 'EmIdx', 'render' : function(data, type, row, meta) {
+                        return '<a href="javascript:void(0);" class="red btn-register-member-delete" data-register-member="'+data+'"><u>삭제</u></a>';
+                    }}
             ]
         });
 
@@ -214,12 +218,33 @@
             }, showError, false, 'GET');
         });
 
+
+
         $('input:checkbox[name="add_data_ssn"]').click(function () {
             if ($(this).is(":checked") === true) {
                 notifyAlert('error', '알림', '주민번호 데이터가 "추가"되었습니다.');
             } else {
                 notifyAlert('success', '알림', '주민번호 데이터가 "제거"되었습니다.');
             }
+        });
+
+        // 신청자 정보 삭제
+        $list_regitster_table.on('click', '.btn-register-member-delete', function() {
+            var _url = '{{ site_url("/site/eventLecture/deleteRegisterMember") }}';
+            var data = {
+                '{{ csrf_token_name() }}' : $search_register_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'DELETE',
+                'em_idx' : $(this).data('register-member')
+            };
+            if (!confirm('정말로 삭제하시겠습니까?')) {
+                return;
+            }
+            sendAjax(_url, data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    $datatable_register.draw();
+                }
+            }, showError, false, 'POST');
         });
 
         // 엑셀다운로드 버튼 클릭

@@ -794,13 +794,13 @@ class EventLectureModel extends WB_Model
             A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, A.FileFullPath, A.FileRealName, A.FileFullPath2, A.FileRealName2, A.IsStatus,
             O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode,
             fn_dec(A.UserSsnEnc) AS UserSsn
-            ,(SELECT COUNT(*) FROM lms_event_member AS em WHERE A.ErIdx = em.ErIdx) AS registerCnt
+            ,(SELECT COUNT(*) FROM lms_event_member AS em WHERE A.ErIdx = em.ErIdx AND em.IsStatus = \'Y\') AS registerCnt
             ';
 
             if ($is_count == 'excel') {
                 $column = '
                     A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, A.EtcValue, A.RegDatm, B.Name AS RegisterName
-                    ,(SELECT COUNT(*) FROM lms_event_member AS em WHERE A.ErIdx = em.ErIdx) AS registerCnt
+                    ,(SELECT COUNT(*) FROM lms_event_member AS em WHERE A.ErIdx = em.ErIdx AND em.IsStatus = \'Y\') AS registerCnt
                     , O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode,
                     CASE C.Sex WHEN "M" THEN "남" WHEN "F" THEN "여" END AS MemSex
                 ';
@@ -842,6 +842,39 @@ class EventLectureModel extends WB_Model
 
         // 쿼리 실행
         return $this->_conn->query('select ' . $column . $from . $where, [$er_idx])->result_array();
+    }
+
+    /**
+     * 이벤트 신청자 정보 삭제
+     * @param $em_idx
+     * @return array|bool
+     */
+    public function deleteRegisterMember($em_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+            $result = $this->_findRegisterMember($em_idx);
+
+            if (empty($result)) {
+                throw new \Exception('필수 데이터 누락입니다.');
+            }
+
+            $is_update = $this->_conn->set([
+                'IsStatus' => 'N',
+                'DelAdminIdx' => $admin_idx,
+            ])->where('EmIdx', $em_idx)->where('IsStatus', 'Y')->update($this->_table['event_member']);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 
     /**
@@ -1089,32 +1122,6 @@ class EventLectureModel extends WB_Model
             return error_result($e);
         }
         return true;
-    }
-
-    /**
-     * 단일 이벤트 댓글 데이터 조회(데이터 update 발생 시 idx 검증)
-     * @param $idx
-     * @return mixed
-     */
-    private function _findEventCommentData($idx)
-    {
-        $column = 'CIdx';
-        $from = "
-            FROM {$this->_table['event_comment']}
-        ";
-        $where = $this->_conn->makeWhere([
-            'EQ' => [
-                'CIdx' => $idx,
-                'IsStatus' => 'Y'
-            ]
-        ]);
-        $where = $where->getMakeWhere(false);
-
-        // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from . $where);
-        $query = $query->row_array();
-
-        return $query;
     }
 
     /**
@@ -1512,6 +1519,59 @@ class EventLectureModel extends WB_Model
         }
 
         return true;
+    }
+
+
+    /**
+     * 이벤트 신청자 단일 데이터 조회
+     * @param $em_idx
+     * @return mixed
+     */
+    private function _findRegisterMember($em_idx)
+    {
+        $column = 'EmIdx';
+        $from = "
+            FROM {$this->_table['event_member']}
+        ";
+        $where = $this->_conn->makeWhere([
+            'EQ' => [
+                'EmIdx' => $em_idx,
+                'IsStatus' => 'Y'
+            ]
+        ]);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        $query = $query->row_array();
+
+        return $query;
+    }
+
+    /**
+     * 단일 이벤트 댓글 데이터 조회(데이터 update 발생 시 idx 검증)
+     * @param $idx
+     * @return mixed
+     */
+    private function _findEventCommentData($idx)
+    {
+        $column = 'CIdx';
+        $from = "
+            FROM {$this->_table['event_comment']}
+        ";
+        $where = $this->_conn->makeWhere([
+            'EQ' => [
+                'CIdx' => $idx,
+                'IsStatus' => 'Y'
+            ]
+        ]);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        $query = $query->row_array();
+
+        return $query;
     }
 
     /**

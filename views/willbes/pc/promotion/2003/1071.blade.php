@@ -101,7 +101,7 @@
 
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2639" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2639_sky.png" alt="동형팩 바로가기" >
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/1071_sky.png" alt="동형팩 바로가기" >
             </a>            
             <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2256" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/1071_sky02.png" alt="t-pass 바로가기"/>

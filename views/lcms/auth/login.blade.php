@@ -66,10 +66,14 @@
             // 로그인
             $login_form.submit(function() {
                 var _url = '{{ site_url('/lcms/auth/login/login') }}';
+                var _ret_url = '{!! $return_url !!}';
+                if (_ret_url === '') {
+                    _ret_url = '{{ site_url('/home/main') }}';
+                }
 
                 ajaxSubmit($login_form, _url, function(ret) {
                     if(ret.ret_cd) {
-                        location.replace('{{ site_url('/home/main') }}');
+                        location.replace(_ret_url);
                     }
                 }, function(result, status) {
                     showValidateError(result, status);

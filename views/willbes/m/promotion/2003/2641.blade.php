@@ -71,7 +71,7 @@
     <div class="evtCtnsBox" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2641m_06.jpg" alt="" >
-            <a href="#none" style="position: absolute; left: 26.81%; top: 77.32%; width: 48.89%; height: 7.92%; z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3059" style="position: absolute; left: 26.81%; top: 77.32%; width: 48.89%; height: 7.92%; z-index: 2;"></a>
         </div>    
     </div> 
 

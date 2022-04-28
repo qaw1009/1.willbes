@@ -66,7 +66,7 @@
         <div class="evtCtnsBox evt06" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/04/2641_06.jpg" alt="종합반 신청" />
-                <a href="#none" style="position: absolute; left: 34.55%; top: 75.57%; width: 31.52%; height: 7.45%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" style="position: absolute; left: 34.55%; top: 75.57%; width: 31.52%; height: 7.45%; z-index: 2;"></a>
             </div>
 		</div>
 	</div>

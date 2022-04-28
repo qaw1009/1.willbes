@@ -23,6 +23,9 @@
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/04/2225_top_bg.jpg) no-repeat center top;}
 
+        .wb_top2 {background:url(https://static.willbes.net/public/images/promotion/2022/04/2225_top_bg2.jpg) no-repeat center top; height: 1222px;}
+        .wb_top2 img {position: absolute; top:330px; left:50%; margin-left:-206px; z-index: 2;}
+
         .wb_cts02 {background:#ebebeb}
 
         .wb_cts03 {background:#303132}
@@ -30,11 +33,16 @@
     </style>
 
 
-    <div class="evtContent NSK" id="evtContainer">     
-
-        <div class="evtCtnsBox wb_top" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2225_top.jpg" alt="공무원 웰컴팩" />
-        </div>
+    <div class="evtContent NSK" id="evtContainer"> 
+        @if(time() < strtotime('202204291750'))
+            <div class="evtCtnsBox wb_top" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2225_top.jpg" alt="공무원 웰컴팩" />
+            </div>
+        @else
+            <div class="evtCtnsBox wb_top2" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2225_top_img.png" alt="공무원 웰컴팩" data-aos="flip-up" data-aos-duration="2000"/>
+            </div>
+        @endif
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/08/2225_01.jpg" alt="아직도 고민만 하고 계세요?"/>

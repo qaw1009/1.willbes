@@ -21,7 +21,8 @@
 
         /************************************************************/
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/04/2225_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/04/2225_top_bg2.jpg) no-repeat center top; height:1222px;}
+        .wb_top img {position: absolute; left:50%; margin-left:-206px; top:330px}
 
         .wb_cts02 {background:#ebebeb}
 
@@ -33,7 +34,7 @@
     <div class="evtContent NSK" id="evtContainer">     
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2225_top.jpg" alt="공무원 웰컴팩" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2225_top_img.png" alt="공무원 웰컴팩" data-aos="flip-left" data-aos-duration="2000"/>
         </div>
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up">

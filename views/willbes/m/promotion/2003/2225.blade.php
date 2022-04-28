@@ -11,7 +11,11 @@
 <div id="Container" class="Container NSK c_both">    
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/04/2225m_top.jpg" alt="공무원 웰컴팩" >
+        @if(time() < strtotime('202204291750'))
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2225m_top.jpg" alt="공무원 웰컴팩" >
+        @else
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2225m_top2.jpg" alt="공무원 웰컴팩" >
+        @endif
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">

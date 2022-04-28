@@ -280,6 +280,8 @@ class SsamCalcModel extends BaseOrderModel
 				    , PL.LearnPatternCcd, PL.PackTypeCcd
 				    , ifnull(json_value(CPM.CcdEtc, if(O.PgCcd != "", concat("$.fee.", O.PgCcd), "$.fee")), 0) as PgFee
 				from ' . $this->_table['order'] . ' as O
+                    left join ' . $this->_table['order_exception'] . ' as OE
+                        on O.OrderIdx = OE.OrderIdx and OE.IsStatus = "Y"
 					inner join ' . $this->_table['order_product'] . ' as OP
 						on O.OrderIdx = OP.OrderIdx		
 					inner join ' . $this->_table['product'] . ' as P
@@ -296,6 +298,7 @@ class SsamCalcModel extends BaseOrderModel
 					and O.SiteCode = ' . $this->_conn->escape($site_code) . '
 					and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['free'] . '")
 					and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
+					and OE.OrderExcIdx is null
                 ' . $where . '
                 union all
                 select O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, ifnull(OSP.ProdCodeSub, OP.ProdCode) as ProdCodeSub
@@ -314,6 +317,8 @@ class SsamCalcModel extends BaseOrderModel
                 from ' . $this->_table['order_product_refund'] . ' as OPR
                     inner join ' . $this->_table['order'] . ' as O
                         on OPR.OrderIdx = O.OrderIdx
+                    left join ' . $this->_table['order_exception'] . ' as OE
+                        on O.OrderIdx = OE.OrderIdx and OE.IsStatus = "Y"                        
                     inner join ' . $this->_table['order_product'] . ' as OP
                         on OPR.OrderIdx = OP.OrderIdx and OPR.OrderProdIdx = OP.OrderProdIdx		
                     inner join ' . $this->_table['product'] . ' as P
@@ -327,6 +332,7 @@ class SsamCalcModel extends BaseOrderModel
                     and O.SiteCode = ' . $this->_conn->escape($site_code) . '	
                     and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['free'] . '")	
                     and OP.PayStatusCcd = "' . $this->_pay_status_ccd['refund'] . '"
+                    and OE.OrderExcIdx is null
                 ' . $where . '                                                  					
             ) as TA
 				inner join ' . $this->_table['product'] . ' as SP

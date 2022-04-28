@@ -121,8 +121,12 @@
             [
                 'prod_type' => '1'
                 ,'title' => '이경범 교육학'
-                ,'youtube' => 'https://www.youtube.com/embed/KCX6VS8WyHc'
-                ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51019' : '51312'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/KCX6VS8WyHc'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51019' : '51312'
+                    ]
+                ]
                 ,'prof_name' => '이경범 교육학'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159824' : '194606'
                 ,'prod_name' => '얼리버드 PASS'
@@ -134,8 +138,12 @@
             [
                 'prod_type' => '1'
                 ,'title' => '신태식 교육학'
-                ,'youtube' => 'https://www.youtube.com/embed/V4B8cUDEXik'
-                ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51026' : '51336'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/V4B8cUDEXik'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51026' : '51336'
+                    ]
+                ]
                 ,'prof_name' => '신태식 교육학'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159825' : '189065'
                 ,'prod_name' => '얼리버드 PASS'
@@ -147,8 +155,12 @@
             [
                 'prod_type' => '2'
                 ,'title' => '허역팀 전공일반사회'
-                ,'youtube' => 'https://www.youtube.com/embed/7L0WiPrb5xk'
-                ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51013' : '51316'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/7L0WiPrb5xk'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51013' : '51316'
+                    ]
+                ]
                 ,'prof_name' => '허역팀 일반사회'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159826' : '194607'
                 ,'prod_name' => '얼리버드 PASS'
@@ -160,8 +172,12 @@
             [
                 'prod_type' => '2'
                 ,'title' => '김종권 전공역사'
-                ,'youtube' => 'https://www.youtube.com/embed/FXGg_Och9Uo'
-                ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51022' : '51315'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/FXGg_Och9Uo'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51022' : '51315'
+                    ]
+                ]
                 ,'prof_name' => '김종권 역사'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159827' : '194608'
                 ,'prod_name' => '얼리버드 PASS'
@@ -193,8 +209,11 @@
                             <div class="txt01">{{$row['title']}}</div>
                             <div class="txt02">{{$row['prod_name']}}</div>
                             <div class="txt03">
-                                <a href="javascript:void(0);" onclick="openWin('sec-prof-layer'); fnOpenProfCurriculum('{{$row['prof_code']}}'); return false;">커리큘럼 확인하기</a>
-                                <a href="javascript:void(0);" onclick="fnOpenYoutube('{{$row['youtube']}}'); return false;">설명회 보기</a>
+                                @foreach($row['button'] as $index => $buttons)
+                                    {!! ($loop->first === false) ? '<br>' : '' !!}
+                                    <a href="javascript:void(0);" onclick="openWin('sec-prof-layer'); fnOpenProfCurriculum('{{$buttons['prof_code']}}'); return false;">커리큘럼 확인하기</a>
+                                    <a href="javascript:void(0);" onclick="fnOpenYoutube('{{$buttons['youtube']}}'); return false;">설명회 보기</a>
+                                @endforeach
                             </div>
                             <input class="btn-add-product prod-type-{{$row['prod_type']}}" type="checkbox" name="productCode"
                                    data-prod-type="{{$row['prod_type']}}" data-prof-name="{{$row['prof_name']}}"

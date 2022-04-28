@@ -122,11 +122,19 @@
 
     @php
         $arr_product = [
+
+        ];
+
+        $arr_product = [
             [
                 'prod_type' => '1'
                 ,'title' => '이경범 교육학'
-                ,'youtube' => 'https://www.youtube.com/embed/KCX6VS8WyHc'
-                ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51019' : '51312'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/KCX6VS8WyHc'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51019' : '51312'
+                    ]
+                ]
                 ,'prof_name' => '이경범 교육학'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159817' : '194596'
                 ,'prod_name' => '7개월 PASS'
@@ -138,8 +146,12 @@
             [
                 'prod_type' => '1'
                 ,'title' => '신태식 교육학'
-                ,'youtube' => 'https://www.youtube.com/embed/V4B8cUDEXik'
-                ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51026' : '51336'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/V4B8cUDEXik'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51026' : '51336'
+                    ]
+                ]
                 ,'prof_name' => '신태식 교육학'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159818' : '194366'
                 ,'prod_name' => '7개월 PASS'
@@ -151,8 +163,16 @@
             [
                 'prod_type' => '2'
                 ,'title' => '김철홍/박태영 전공수학'
-                ,'youtube' => 'https://www.youtube.com/embed/rNslov8PzaY'
-                ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50969' : '51084'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/rNslov8PzaY'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50969' : '51084'
+                    ],
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/Jv0C0NI9OHA'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50970' : '51085'
+                    ]
+                ]
                 ,'prof_name' => '김철홍 수학'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159819' : '194586'
                 ,'prod_name' => '7개월 PASS'
@@ -164,8 +184,12 @@
             [
                 'prod_type' => '2'
                 ,'title' => '허역팀 전공일반사회'
-                ,'youtube' => 'https://www.youtube.com/embed/7L0WiPrb5xk'
-                ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51013' : '51316'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/7L0WiPrb5xk'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51013' : '51316'
+                    ]
+                ]
                 ,'prof_name' => '허역팀 일반사회'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159820' : '194600'
                 ,'prod_name' => '7개월 PASS'
@@ -177,8 +201,12 @@
             [
                 'prod_type' => '2'
                 ,'title' => '김종권 전공역사'
-                ,'youtube' => 'https://www.youtube.com/embed/FXGg_Och9Uo'
-                ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51022' : '51315'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/FXGg_Och9Uo'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51022' : '51315'
+                    ]
+                ]
                 ,'prof_name' => '김종권 역사'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159821' : '194604'
                 ,'prod_name' => '7개월 PASS'
@@ -190,8 +218,12 @@
             [
                 'prod_type' => '2'
                 ,'title' => '최우영 전기'
-                ,'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
-                ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                    ]
+                ]
                 ,'prof_name' => '최우영 전기'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159822' : '194602'
                 ,'prod_name' => '7개월 PASS'
@@ -203,8 +235,12 @@
             [
                 'prod_type' => '2'
                 ,'title' => '최우영 전자'
-                ,'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
-                ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                    ]
+                ]
                 ,'prof_name' => '최우영 전자'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '194603'
                 ,'prod_name' => '7개월 PASS'
@@ -236,13 +272,11 @@
                             <div class="txt01">{{$row['title']}}</div>
                             <div class="txt02">{{$row['prod_name']}}</div>
                             <div class="txt03">
-                                <a href="javascript:void(0);" onclick="openWin('sec-prof-layer'); fnOpenProfCurriculum('{{$row['prof_code']}}'); return false;">커리큘럼 확인하기</a>
-                                <a href="javascript:void(0);" onclick="fnOpenYoutube('{{$row['youtube']}}'); return false;">설명회 보기</a>
-                                {{-- 박태영 
-                                <br>
-                                <a href="#">커리큘럼 확인하기</a>
-                                <a href="#">설명회 보기</a>
-                                --}}
+                                @foreach($row['button'] as $index => $buttons)
+                                    {!! ($loop->first === false) ? '<br>' : '' !!}
+                                    <a href="javascript:void(0);" onclick="openWin('sec-prof-layer'); fnOpenProfCurriculum('{{$buttons['prof_code']}}'); return false;">커리큘럼 확인하기</a>
+                                    <a href="javascript:void(0);" onclick="fnOpenYoutube('{{$buttons['youtube']}}'); return false;">설명회 보기</a>
+                                @endforeach
                             </div>
                             <div class="apply">
                                 <input class="btn-add-product prod-type-{{$row['prod_type']}}" type="checkbox" name="productCode"

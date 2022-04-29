@@ -46,7 +46,7 @@
 
         .evt_List {margin-top:100px; border-top:2px solid #333; padding-top:40px}
         .evt_List li {display:inline; float:left; width:calc(20% - 20px); margin:0 10px; font-size:14px; line-height:1.5; margin-bottom:40px}
-        .evt_List .imgBox {border-radius:15px; background:#333; padding:20px; margin-bottom:10px; height:240px; position:relative}
+        .evt_List .imgBox {border-radius:15px; background:#333; padding:20px; margin-bottom:10px; overflow:hidden; height:240px; position:relative}
         .evt_List .imgBox div {border:20px solid #333; position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; overflow:hidden; }
         .evt_List .imgBox img {max-width:150px;}
         .evt_List .smsTxt {border-left:4px solid #999; padding-left:20px; color:#999; text-align:left; position:relative}}

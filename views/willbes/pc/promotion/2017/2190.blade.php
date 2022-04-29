@@ -5,16 +5,18 @@
     <!-- content -->
     <style type="text/css">
         .evtContent {
-            position:relative;
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
-            color:#3a3a3a;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:middle}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px; position: relative;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
   
@@ -44,9 +46,9 @@
 
         .evt_List {margin-top:100px; border-top:2px solid #333; padding-top:40px}
         .evt_List li {display:inline; float:left; width:calc(20% - 20px); margin:0 10px; font-size:14px; line-height:1.5; margin-bottom:40px}
-        .evt_List .imgBox {border-radius:15px; background:#333; padding:20px; margin-bottom:10px; height:240px; overflow:hidden; position:relative}
-        .evt_List .imgBox div {border:24px solid #333; position:absolute; top:0; left:0; width:100%; height:100%; z-index:1}
-        .evt_List .imgBox img {max-width:150px}
+        .evt_List .imgBox {border-radius:15px; background:#333; padding:20px; margin-bottom:10px; height:240px; position:relative}
+        .evt_List .imgBox div {border:20px solid #333; position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; overflow:hidden; }
+        .evt_List .imgBox img {max-width:150px;}
         .evt_List .smsTxt {border-left:4px solid #999; padding-left:20px; color:#999; text-align:left; position:relative}}
         .evt_List .smsTxt strong {color:#819f84}
         .evt_List ul:after {content:''; display:block; clear:both}
@@ -62,16 +64,16 @@
         #del_btn { position:absolute; bottom:0; right:0; background:#333; color:#fff; font-size:14px; width:20px; line-height:20px; border-radius:4px; text-align: center}
     </style>
 
-    <div class="p_re evtContent NSK">
-        <div class="evtCtnsBox eventTop">
+    <div class="evtContent NSK">
+        <div class="evtCtnsBox eventTop" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2021/04/2190_top.jpg" alt="합격축하 이벤트"/>
         </div>
 
-        <div class="evtCtnsBox event01">
+        <div class="evtCtnsBox event01" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2021/04/2190_01.jpg" alt="이벤트 하나"/>
         </div>        
 
-        <div class="evtCtnsBox event02">
+        <div class="evtCtnsBox event02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_02.jpg"/>
             <div class="title NSK-Black">감사 인증 게시판</div>
             <div class="s-title">감사 인사 인증하기</div>
@@ -134,23 +136,33 @@
             </form>
         </div> 
 
-        <div class="evtCtnsBox evtInfo">
+        <div class="evtCtnsBox evtInfo" data-aos="fade-up">
             <div class="evtInfoBox">
-                <h4 class="NSK-Black">이벤트 유의사항</h4>
+                <h4 class="NSK-Black">이벤트 유의 사항(필독)</h4>
                 <ul>
-                    <li>이벤트 기간: 4월 29일 ~ 5월 28일</li>
-                    <li>당첨자 발표: 5월 31일</li>
-                    <li>상품 증정: 6월 3일</li>
-                    <li>이벤트 선물의 중복 제공은 되지 않습니다.</li>
-                    <li>감사의 인사가 들어가지 않은 내용은 이벤트에서 제외됩니다.</li>
-                    <li>선물은 모바일 기프티콘으로 제공됩니다.</li>
-                    <li>이벤트 참여자 수가 기준보다 적은 경우 모든 상품이 증정되지 않을 수 있습니다.</li>
+                    <li>본 감사의 달 이벤트는 5월 22일(일)까지 진행됩니다.</li>
+                    <li>당첨자 발표는 05월25일(수) 홈페이지를 통해 게시됩니다.</li>
+                    <li>당첨자 선물은 05본 31일(화)에 개별적으로 지급할 예정입니다.</li>
+                    <li>이벤트 선물은 중복적으로 제공되지 않습니다.</li>
+                    <li>감사인사가 포함되지 않은 내용은 이벤트 대상에서 제외됩니다.</li>
+                    <li>감사인사를 하고, 수신자로부터 답신을 포함하여 인증하는 경우에는 선물을 받을 수 있는 확률이 높아집니다.</li>
+                    <li>본 이벤트에 참여해 주신 선생님들께 윌비스 임용의 (7월) 문제풀이 단과 (10%) 할인권을 개별 ID로 지급합니다.<br>
+                        (할인대상강의: 이경범 교육학, 신태식교육학, 송원영 국어, 권보민 국어, 구동언 국어, 김영문 영어, 김철홍 수학, 김현웅 수학, 
+                        박태영 수교론, 박혜향 수교론, 허역팀 일반사회, 김민응 도덕윤리, 김종권 역사 장영희 중국어)</li>
                 </ul>
             </div>
         </div>  
 
     </div>
     <!-- End Container -->
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      $(document).ready(function(){
+        AOS.init();
+      });
+    </script>
 
     <script>
         var $regi_form_register = $('#regi_form_register');

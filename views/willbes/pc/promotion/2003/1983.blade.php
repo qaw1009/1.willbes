@@ -42,6 +42,7 @@
         .wb_cts05 a {display:block; color:#fff; text-align:center;}        
         .wb_cts05 .linkbtn01 {display:block;width:434px; margin:50px auto 0; }
         .wb_cts05 .linkbtn01 a {background:#010f1a; font-size:23px; padding:20px 0; border-radius:40px }
+        .wb_cts05 .linkbtn01 a:hover {background:#ffdd00; color:#432f2e}
         .wb_cts05 .linkbtn02 {display:block;width:150px; margin:30px auto 0; }
         .wb_cts05 .linkbtn02 a {padding:10px 0; border:2px solid #959595; color:#333; font-size:14px; font-weight:bold}
 
@@ -127,8 +128,8 @@
         </div>
 
         <div class="sky" id="QuickMenu">
-            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1531" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/01/1983_sky01.png"  title="" /></a>
-            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2022/01/1983_sky03.png"  title="재도전" /></a>
+            <a href="#evt05" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/05/1983_sky01.png"  title="" /></a>
+            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2022/05/1983_sky03.png"  title="재도전" /></a>
             <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2022/01/1983_sky02.png"  title="환승" /></a>
         </div>      
 
@@ -167,66 +168,52 @@
 
         <div class="evtCtnsBox wb_cts05" id="evt05" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/01/1983_05.jpg" alt="커리큘럼" />
-            <div class="linkbtn01 NGEB"><a href="javascript:certOpen();">재도전 & 환승 인증하기 →</a></div>
+            <div class="linkbtn01 NGEB"><a href="javascript:certOpen();">인증 EVENT 참여하기 →</a></div>
             <div class="linkbtn02"><a href="#tip">유의사항 확인하기 →</a></div>
         </div>
 
         <div class="evtCtnsBox wb_cts06" id="apply" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/1983_06.jpg" title="신청하기" />
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1531" target=_blank title="신청하기" style="position: absolute; left: 48.93%; top: 82%; width: 32.77%; height: 12.05%; z-index: 2;"></a>
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/1983_06.jpg" title="신청하기" />
             <table>
                 <col />
-                <col width="30%" />
-                <col width="30%" />
-                <col width="30%" />
+                <col width="40%" />
+                <col width="40%" />
                 <thead>
                     <tr>
                         <th>구분</th>
-                        <th>2022~2023 세무직 <strong>PASS</strong></th>
-                        <th>2021~2022 세무직 <strong>PASS</strong></th>
+                        <th>2023 세무직 <strong>PASS</strong></th>
                         <th>윌비스 세무직 <strong>전공과목 T-PASS</strong></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th>과목/교수진</th>                        
-                        <td colspan="2">국어 <strong>오대혁</strong>, 영어 <strong>한덕현</strong>, 한국사 <strong>김상범</strong><br />
+                        <td>국어 <strong>오대혁</strong>, 영어 <strong>한덕현</strong>, 한국사 <strong>김상범</strong><br />
                         회계학 <strong>이윤호</strong>, 세법 <strong>박창한</strong></td>
                         <td>회계학 <strong>이윤호</strong>, 세법 <strong>박창한</strong></td>
                     </tr>
                     <tr>
                         <th>수강기간</th>
-                        <td>2023 국가직 시험일까지<br />
+                        <td>2023년 4월까지<br />
                         배수 제한 없는 <strong>무제한 수강</strong></td>
-                        <td colspan="2">2022 지방직 시험일까지<br />
-                        배수 제한 없는 <strong>무제한 수강</strong></td>
+                        <td>&nbsp;</td>
                     </tr>
                     <tr>
                         <th>기기대수</th>
-                        <td colspan="3">PC or 모바일 <strong>총 2대지원</strong></td>
+                        <td colspan="2">PC or 모바일 <strong>총 2대지원</strong></td>
                     </tr>
                     <tr>
                         <th>혜택</th>
                         <td class="bg tx-left">
-                        ① 노량진 캠퍼스 무편집 LIVE 제공 </strong><span class="point">LIVE</span><br />
-                        ② 2022~2023 대비 신규 진행 전 과정<br />
+                        ①  무편집 LIVE 제공 </strong><span class="point">LIVE</span><br />
+                        ② 2023 대비 신규 진행 전 과정<br />
                         ③ 온라인 모의고사 진행 시 무료 응시</td>
-                        <td colspan="2" class="bg tx-left">
-                        ① 윌비스 공무원학원 <strong>국어 / 영어 / 한국사 무편집 LIVE 강의 제공</strong><span class="point">LIVE</span><br />
-                        ② 2022 대비 신규 진행<strong> ALL 과정 업데이트</strong><br />
-                        ③ 직렬별 온라인 모의고사 진행 시 <strong>무료 제공</strong></td>
+                        <td class="bg tx-left">① 2023 대비 신규 진행 전 과정</td>
                     </tr>
                     <tr>
                         <th>이벤트 가격</th>
                         <td class="NSK-Black">
                             <div><input type="radio" id="y_pkg3" name="y_pkg" value="189939" onClick=""/><label for="y_pkg3">490,000원</label></div>
-                            <div class="tx-red">   
-                            * 지금 구매 시 3만포인트 추가 제공!</div>
-                        </td>
-                        <td class="NSK-Black">
-                            <div><input type="radio" id="y_pkg1" name="y_pkg" value="176432" onClick=""/><label for="y_pkg1">390,000원</label></div>
                             <div class="tx-red">   
                             * 지금 구매 시 3만포인트 추가 제공!</div>
                         </td>
@@ -262,16 +249,13 @@
                     <dt>상품구성</dt>
                     <dd>
                         <ul>
-                            <li>2022 대비 상품의 경우 2021~2022 대비 진행 강의 제공,  2022~2023 대비 상품의 경우 2022~2023 대비 진행 강의 제공</li>
+                            <li>2022~2023 대비로 진행된 전 강좌 제공 (진행 예정 신규강좌 포함)</li>
                             <li>수강 가능 교수진<br>
                             · 세무직 : 국어 오대혁, 영어 한덕현, 한국사 김상범, 회계학 이윤호, 세법 박창한<br>
                             (*영어 한덕현 교수의 경우, [기본문법>제니스문법>기출리뷰>스나이퍼32>실전동형모의고사] 과정만 제공.)<br>
                             (* 교수진별 커리큘럼 진행은 상이할 수 있으며 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있습니다.<br>신규 과정이 진행되지 않는 경우에는 이전 연도 과정을 대체 제공 해드립니다.)
                             </li>
-                            <li>수강기간<br>
-                            · 2022 대비 PASS : 2022년 6월 30일까지<br>
-                            · 2022~2023 대비 PASS : 2023년 4월 30일까지
-                            </li>
+                            <li>수강기간 : 2023년 4월까지</li>
                         </ul>
                     </dd>
 
@@ -289,7 +273,7 @@
                         <ul>
                             <li>공무원학원 실강 중 LIVE로 진행되는 강좌만 제공 (*일부 특강 제외)                        
                                 <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a><br>
-                                · 국어 오대혁, 영어 한덕현, 한국사 김상범, 행정법 신기훈, 행정학 김덕관/김철</li>
+                                · 국어 오대혁, 영어 한덕현, 한국사 김상범</li>
                             </li>                       
                         </ul>
                     </dd>  
@@ -310,13 +294,17 @@
                         </ul>
                     </dd>
 
-                    <dt>재도전/환승 인증</dt>
+                    <dt>재도전 / 환승 / 대학생 인증</dt>
                     <dd>
                         <ul>
                             <li>1아이디당 1회만 참여 가능.</li>
                             <li>인증 완료 처리는 신청 후, 24시간 이내에 처리. 단, 주말 및 공휴일 인증 건의 경우 평일 오전 중 처리.</li>
-                            <li>1) 재도전 인증<br> · 본인의 이름이 명시된 수험표 또는 윌비스 PASS 수강생의 경우 [내강의실] 페이지 내 이름과 PASS명이 명시된 이미지 캡쳐 후 업로드 시 인증 가능<br>
-                                  2) 환승 인증<br> · 본인의 이름, 수강내역, 결제내역 등이 명확하게 기재된 수강증 등의 캡쳐를 통해서만 인증 가능<br> (결제내역을 통한 인증 시, 수강자 이름과 결제 금액, 강좌명 필수)
+                            <li>1) 재도전 인증<br>
+                                · 본인의 이름이 명시된 수험표 또는 윌비스 PASS 수강생의 경우 [내강의실] 페이지 내 이름과 PASS명이 명시된 이미지 캡쳐 후 업로드 시 인증 가능<br>
+                                2) 환승 인증<br>
+                                · 본인의 이름, 수강내역, 결제내역 등이 명확하게 기재된 수강증 등의 캡쳐를 통해서만 인증 가능<br> (결제내역을 통한 인증 시, 수강자 이름과 결제 금액, 강좌명 필수)<br>
+                                3) 대학생 인증<br>
+                                · 본인의 이름, 학번이 명시된 학생증 등의 사진을 통해서만 인증 가능
                             </li>
                             <li>본 이벤트는 이벤트 참여자가 본인의 명의로 구매/응시한 내용에 한합니다.</li>
                             <li>등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>

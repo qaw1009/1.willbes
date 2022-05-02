@@ -6,15 +6,18 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
+            max-width:2000px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
+            margin:0 auto;
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
-        br { font-family:dotum;}   
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
@@ -111,7 +114,7 @@
             </div>
         </div>
 
-        <div class="sky">
+        <div class="sky" id="QuickMenu">
             <a href="#apply"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2014_sky.png" alt="환경직 패스 신청하기" >
             </a>             
@@ -181,15 +184,15 @@
                         <th>혜택</th>
                         <td colspan="2" class="bg">
                         ① 윌비스 공무원학원 <strong>국어 / 영어 / 한국사 무편집 LIVE 강의 제공</strong><span>LIVE</span><br />
-                        ② 2022 대비 신규 진행<strong> 전 과정 업데이트</strong><br />
+                        ② 신규 진행<strong> 전 과정 업데이트</strong><br />
                         ③ 직렬별 온라인 모의고사 진행 시 <strong>무료 제공</strong></td>
-                        <td>2021 대비 신규 진행<br> <strong>전 과정 업데이트</strong></td>
+                        <td>신규 진행<br> <strong>전 과정 업데이트</strong></td>
                     </tr>
                     <tr>
                         <th>가격</th>
-                        <td class="NSK-Black"><input type="radio" id="y_pkg1" name="y_pkg" value="176411" onClick=""/><label for="y_pkg1"> 693,000원</label></td>
-                        <td class="NSK-Black"><input type="radio" id="y_pkg2" name="y_pkg" value="176398" onClick=""/><label for="y_pkg2"> 590,000원</label></td>
-                        <td class="NSK-Black"><input type="radio" id="y_pkg3" name="y_pkg" value="176409" onClick=""/><label for="y_pkg3"> 665,000원</label></td>
+                        <td class="NSK-Black"><input type="radio" id="y_pkg1" name="y_pkg" value="176411" onClick=""/><label for="y_pkg1"> 990,000원</label></td>
+                        <td class="NSK-Black"><input type="radio" id="y_pkg2" name="y_pkg" value="176398" onClick=""/><label for="y_pkg2"> 890,000원</label></td>
+                        <td class="NSK-Black"><input type="radio" id="y_pkg3" name="y_pkg" value="176409" onClick=""/><label for="y_pkg3"> 950,000원</label></td>
                     </tr>
                 </tbody>
             </table>

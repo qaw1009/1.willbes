@@ -20,9 +20,9 @@
 
         /************************************************************/
   
-        .eventTop {background:url(https://static.willbes.net/public/images/promotion/2021/04/2190_top_bg.jpg) no-repeat center top;}
+        .eventTop {background:url(https://static.willbes.net/public/images/promotion/2022/05/2190_top_bg.jpg) no-repeat center top;}
 
-        .event01 {background:#fe8475;}
+        .event01 {background:url(https://static.willbes.net/public/images/promotion/2022/05/2190_01_bg.jpg) repeat-x left top;}
 
         .event02 {width:1120px; margin:0 auto 120px}
         .event02 .title {color:#383838; font-size:30px; text-align:left; margin-bottom:40px}
@@ -66,15 +66,14 @@
 
     <div class="evtContent NSK">
         <div class="evtCtnsBox eventTop" data-aos="fade-up">
-        	<img src="https://static.willbes.net/public/images/promotion/2021/04/2190_top.jpg" alt="합격축하 이벤트"/>
+        	<img src="https://static.willbes.net/public/images/promotion/2022/05/2190_top.jpg" alt="합격축하 이벤트"/>
         </div>
 
         <div class="evtCtnsBox event01" data-aos="fade-up">
-        	<img src="https://static.willbes.net/public/images/promotion/2021/04/2190_01.jpg" alt="이벤트 하나"/>
+        	<img src="https://static.willbes.net/public/images/promotion/2022/05/2190_01.jpg" alt="이벤트 하나"/>
         </div>        
 
         <div class="evtCtnsBox event02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_02.jpg"/>
             <div class="title NSK-Black">감사 인증 게시판</div>
             <div class="s-title">감사 인사 인증하기</div>
             <form name="regi_form_register" id="regi_form_register">

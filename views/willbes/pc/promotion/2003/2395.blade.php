@@ -28,7 +28,7 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/04/2395_top_bg.jpg) no-repeat center top;}
 
-        .evt01 {background:#6ad135;}     
+        .evt01 {background:#e5459f;}     
 
         .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/11/2395_03_bg.jpg) repeat-x center top; padding-bottom:100px;}
         
@@ -94,8 +94,8 @@
             </div>        
         </div>
 
-        <div class="evtCtnsBox evt01"> 
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2395_01.jpg" alt="이런 수험생이라면" data-aos="fade-up"/>
+        <div class="evtCtnsBox evt01" data-aos="fade-up"> 
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2395_01.jpg" alt="이런 수험생이라면"/>
         </div>                 
 
         <div class="evtCtnsBox evt02" data-aos="fade-up"> 

@@ -70,10 +70,10 @@
             </map>  
         </div>
 
-        @if(time() < strtotime('202204250000'))
+        @if(time() < strtotime('202205160000'))
             <div class="evtCtnsBox evttop_banners" data-aos="fade-down">
                 <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/1676_top_banner.jpg">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/05/1676_top_banner.jpg">
                     <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="" style="position: absolute; left: 53.57%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>
                     <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" title="" style="position: absolute; left: 74.29%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>  
                 </div>        
@@ -110,10 +110,12 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">                  
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/03/1676_02_april.jpg" /></li>
-                </ul>    
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/05/1676_02_may.jpg" /></li>
+                </ul>
+                {{--  
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p> 
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p>
+                --}}
             </div> 
 
         </div>           
@@ -135,8 +137,8 @@
             </div>
             --}}
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/1676_03_03.jpg" name="evt3" id="evt3">
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/192965" target="_blank" title="3월방송 다시보기" style="position: absolute; left: 11.7%; top: 75.72%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/1676_03_03.jpg" name="evt3" id="evt3">
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/192967" target="_blank" title="5월방송 다시보기" style="position: absolute; left: 11.7%; top: 75.72%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/190443" target="_blank" title="다시보기" style="position: absolute; left: 38.93%; top: 75.57%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" title="tpass" style="position: absolute; left: 66.88%; top: 75.86%; width: 21.34%; height: 9.34%; z-index: 2;"></a>                
             </div>
@@ -243,9 +245,9 @@
                             - PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br>
                             - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.</li>
                             <li>열공 출첵 이벤트 관련<br>
-                            - 본 이벤트는 로그인 후 참여 가능하며, 4/4(월)~4/29(금)까지 총 20회 진행됩니다. (*토/일 제외)<br>
-                            - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (4/11(월), 4/25(월) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
-                            - 당첨자 안내 공지는 5/3(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
+                            - 본 이벤트는 로그인 후 참여 가능하며, 5/9(월)~6/3(금)까지 총 20회 진행됩니다. (*토/일 제외)<br>
+                            - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (5/16(월), 5/30(월) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
+                            - 당첨자 안내 공지는 6/7(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
                         </ol>
                     </dd>
                 </dl>

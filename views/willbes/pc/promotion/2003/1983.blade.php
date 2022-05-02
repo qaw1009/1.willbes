@@ -128,7 +128,7 @@
         </div>
 
         <div class="sky" id="QuickMenu">
-            <a href="#evt05" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/05/1983_sky01.png"  title="" /></a>
+            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2022/05/1983_sky01.png"  title="" /></a>
             <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2022/05/1983_sky03.png"  title="재도전" /></a>
             <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2022/01/1983_sky02.png"  title="환승" /></a>
         </div>      

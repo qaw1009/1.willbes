@@ -35,7 +35,7 @@
         .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%; line-height:60px}
         .newTopDday ul:after {content:""; display:block; clear:both}
  
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/01/2502_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/05/2502_top_bg.jpg) no-repeat center top;}
 
         /*교수 롤링*/
         .section_pro {
@@ -124,20 +124,20 @@
         </div>
 
         <div class="sky" id="QuickMenu">
-            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2022/05/1983_sky01.png"  title="" /></a>
-            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2022/05/1983_sky03.png"  title="재도전" /></a>
-            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2022/01/1983_sky02.png"  title="환승" /></a>
+            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2022/05/2502_sky1.png"  title="대학생할인" /></a>
+            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2022/05/2502_sky2.png"  title="재도전" /></a>
+            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2022/05/2502_sky3.png"  title="환승" /></a>
         </div>  
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2502_top.jpg" alt="윌비스 9급 패스"  />
-                <a href="#lecBuy2022" title="2023 대비 9급 직렬별PASS 구매하기" style="position: absolute;left: 4.91%;top: 82.61%;width: 34.78%;height: 8.31%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2502_top.jpg" alt="윌비스 9급 패스"  />
+                <a href="#lecBuy2023" title="2023 대비 9급 직렬별PASS 구매하기" style="position: absolute; left: 5.8%; top: 78.73%; width: 47.41%; height: 9.72%; z-index: 2;"></a>
             </div>     
         </div>
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2502_01.jpg" alt="꼭 필요한 혜택"  />    
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2502_01.jpg" alt="꼭 필요한 혜택"  />    
         </div>
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
@@ -163,8 +163,8 @@
 
         <div class="evtCtnsBox wb_cts04" data-aos="fade-up" id="evt05">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2502_04.jpg" alt="재도전&환승 이벤트" />    
-                <a href="javascript:certOpen();" title="인증 EVENT 참여하기" style="position: absolute; left: 29.64%; top: 89.97%; width: 40.09%; height: 6.83%; z-index: 2;"></a>                  
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2502_04.jpg" alt="재도전&환승 이벤트" />    
+                <a href="javascript:certOpen();" title="인증 EVENT 참여하기" style="position: absolute; left: 30%; top: 90.3%; width: 40.71%; height: 7.3%; z-index: 2;"></a>                  
             </div>   
             <a href="#careful" class="txtBtn">유의사항 확인하기 →</a>   
         </div>

@@ -135,7 +135,7 @@
 
         <div class="evtCtnsBox wb_tops" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/1983_tops.jpg" alt="독점공개" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/1983_tops.jpg" alt="독점공개" />
                 <a href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/184117" title="이윤호 회계학" target="_blank" style="position: absolute;left: 0;top: 16.97%;width: 49.5%;height: 29.19%;z-index: 2;"></a>
                 <a href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/184118" title="박창한 세법" target="_blank" style="position: absolute;left: 50%;top: 16.97%;width: 49.5%;height: 29.19%;z-index: 2;"></a>
             </div>
@@ -167,7 +167,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="evt05" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/1983_05.jpg" alt="커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/1983_05.jpg" alt="커리큘럼" />
             <div class="linkbtn01 NGEB"><a href="javascript:certOpen();">인증 EVENT 참여하기 →</a></div>
             <div class="linkbtn02"><a href="#tip">유의사항 확인하기 →</a></div>
         </div>

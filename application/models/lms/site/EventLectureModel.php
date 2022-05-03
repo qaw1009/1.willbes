@@ -799,7 +799,7 @@ class EventLectureModel extends WB_Model
 
             if ($is_count == 'excel') {
                 $column = '
-                    A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, A.EtcValue, A.RegDatm, B.Name AS RegisterName
+                    A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, A.EtcTitle, A.EtcValue, A.RegDatm, B.Name AS RegisterName
                     ,(SELECT COUNT(*) FROM lms_event_member AS em WHERE A.ErIdx = em.ErIdx AND em.IsStatus = \'Y\') AS registerCnt
                     , O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode,
                     CASE C.Sex WHEN "M" THEN "남" WHEN "F" THEN "여" END AS MemSex
@@ -1518,6 +1518,57 @@ class EventLectureModel extends WB_Model
             return error_result($e);
         }
 
+        return true;
+    }
+
+    /**
+     * 임용 모의고사 프로모션
+     * 신청현황 데이터 엑셀파일 업로드 (수험번호 생성)
+     * @param null $form_data
+     * @param array $excel_data
+     * @return bool
+     */
+    public function registerMemberSsamDataUpload($form_data = null, $excel_data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            // 기존 신청자 정보 전체 삭제
+            $is_update = $this->_conn->set([
+                'IsStatus' => 'N',
+                'DelAdminIdx' => $this->session->userdata('admin_idx'),
+            ])
+                ->where('ErIdx', element('register_idx', $form_data))
+                ->where('RegType', '2')
+                ->where('IsStatus', 'Y')
+                ->update($this->_table['event_member']);
+            if ($is_update === false) {
+                throw new \Exception('기존 데이터 삭제에 실패했습니다.');
+            }
+
+            $register_member = [];
+            foreach ($excel_data as $key => $row) {
+                if (empty($row['A']) === false) {
+                    $register_member[$key]['RegType'] = 2;
+                    $register_member[$key]['ErIdx'] = element('register_idx', $form_data);
+                    $register_member[$key]['MemIdx'] = $row['A'];
+                    $register_member[$key]['UserName'] = "'" . $row['B'] . "'";
+                    $register_member[$key]['UserTelEnc'] = "fn_enc('" . $row['C'] . "')";
+                    $register_member[$key]['EtcTitle'] = "'" . $row['D'] . "'";
+                    $register_member[$key]['EtcValue'] = $row['E'];
+                    $register_member[$key]['IsStatus'] = "'Y'";
+                    $register_member[$key]['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                }
+            }
+
+            if ($this->_conn->insert_batch($this->_table['event_member'], $register_member, false) === false) {
+                throw new \Exception('저장에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
         return true;
     }
 

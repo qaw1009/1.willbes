@@ -185,7 +185,7 @@
                 </div>
             </div>
 
-            <div class="form-group text-center btn-wrap mt-50">
+            <div class="form-group text-center btn-wrap mt-20">
                 <button type="button" class="btn btn-success mr-10" id="btn_modify">수정</button>
                 <button type="button" class="btn btn-primary" id="btn_list">목록</button>
             </div>
@@ -193,7 +193,7 @@
         </form>
     </div>
 
-    <div class="x_panel">
+    <div class="x_panel mt-30">
         <div class="form-group">
             <ul class="nav nav-tabs nav-justified">
                 <li class="active"><a data-toggle="tab" href="#list_register" class="send_type" data-content-type="1">신청현황</a></li>

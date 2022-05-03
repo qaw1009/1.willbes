@@ -462,12 +462,10 @@ class EventLecture extends \app\controllers\BaseController
         $data['data_option_ccd'] = array_flip(explode(',', $data['OptionCcds']));   // 관리옵션 데이터 가공처리
 
         // 정원제한 다중리스트 데이터 조회
-        $data_register_LM = [];
-        if ($data['LimitType'] == 'M') {
-            $listRegister = $this->eventLectureModel->listEventForRegister($el_idx);
-            if (empty($listRegister) === false) {
-                $data_register_LM = array_pluck($listRegister, 'Name', 'ErIdx');
-            }
+        $data_register = [];
+        $listRegister = $this->eventLectureModel->listEventForRegister($el_idx);
+        if (empty($listRegister) === false) {
+            $data_register = array_pluck($listRegister, 'Name', 'ErIdx');
         }
 
         //응시직렬
@@ -505,7 +503,7 @@ class EventLecture extends \app\controllers\BaseController
             'el_idx' => $el_idx,
             'file_data' => $file_data,
             'file_data_promotion' => $file_data_promotion,
-            'data_register_LM' => $data_register_LM,
+            'data_register' => $data_register,
             'wAdmin_info' => $wAdmin_info,
             'ms_datas' => $ms_datas,
             'arr_cate_code' => $arr_cate_code
@@ -961,7 +959,7 @@ class EventLecture extends \app\controllers\BaseController
     public function registerExcel($params = [])
     {
         $file_name = '이벤트_신청현황_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
-        $headers = ['이름', '아이디', '연락처', '이메일', '추가데이터', '신청일', '신청특강/설명회', '총신청수', '주소', '상세주소', '우편번호', '성별'];
+        $headers = ['이름', '아이디', '연락처', '이메일', '제목', '추가데이터', '신청일', '신청특강/설명회', '총신청수', '주소', '상세주소', '우편번호', '성별'];
 
         if ($this->_reqP('data_ssn') == 'Y') {
             array_push($headers, '주민번호');
@@ -1227,6 +1225,53 @@ class EventLecture extends \app\controllers\BaseController
         public_download($file_path, $file_name);
     }
 
+    /**
+     * 임용 모의고사 프로모션
+     * 신청현황 데이터 샘플 다운로드 (수험번호 생성)
+     */
+    public function sampleRegisterMemberForSsamDownload()
+    {
+        $this->load->helper('download');
+        $file_path = STORAGEPATH . 'resources/sample/sample_promotion_ssam_register_member.xlsx';
+        force_download($file_path, null);
+    }
+
+    /**
+     * 임용 모의고사 프로모션
+     * 신청현황 데이터 엑셀파일 업로드 (수험번호 생성)
+     * @return CI_Output|null
+     */
+    public function excelRegisterMemberForSsamDataUpload()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'register_idx', 'label' => '접수관리식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return null;
+        }
+
+        $input_data = $this->_getRegisterMemberSsamExcelData();
+        if ($input_data === false) {
+            return $this->json_error('엑셀파일 읽기에 실패했습니다.');
+        }
+
+        $result = $this->eventLectureModel->registerMemberSsamDataUpload($this->_reqP(null), $input_data);
+        return $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+
+    private function _getRegisterMemberSsamExcelData()
+    {
+        try {
+            $this->load->library('excel');
+            $data = $this->excel->readExcel($_FILES['attach_file']['tmp_name']);
+        } catch (\Exception $e) {
+            return false;
+        }
+        return $data;
+    }
 
     /**
      * 검색 조건 셋팅

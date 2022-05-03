@@ -1,18 +1,18 @@
-<div class="row">
+<div class="x_content">
     <form class="form-horizontal" id="search_register_form" name="search_register_form" method="POST">
         {!! csrf_field() !!}
         <input type="hidden" name="data_ssn" value="N">
         <div class="form-group">
-            <label class="control-label col-md-2">다중특강정보</label>
+            <label class="control-label col-md-2">신청리스트(특강) 정보</label>
             <div class="col-md-2 form-inline">
                 <select class="form-control" id="search_register_idx" name="search_register_idx">
-                    <option value="">다중특강정보</option>
-                    @foreach($data_register_LM as $key => $val)
+                    <option value="">신청리스트(특강) 정보</option>
+                    @foreach($data_register as $key => $val)
                         <option value="{{$key}}">{{$val}}</option>
                     @endforeach
                 </select>
             </div>
-            <label class="control-label col-md-3">신청자 / 정원</label>
+            <label class="control-label col-md-2 col-lg-offset-2">신청자 / 정원</label>
             <div class="col-md-2">
                 <p class="form-control-static" id="member_total_info"></p>
             </div>
@@ -44,14 +44,40 @@
         </div>
     </form>
 </div>
-<div class="row mt-10 mb-20">
+<div class="x_content mt-10 mb-20">
     <div class="col-xs-12 text-right">
         <button type="button" class="btn btn-primary btn-search-register"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
         <button type="button" class="btn btn-default mr-20 btn-reset-register">검색초기화</button>
     </div>
 </div>
 
-<div class="x_panel mt-20">
+@if ($data['SiteCode'] == '2017')
+    {{-- 임용온라인 : 수험번호 생성 기능 --}}
+    <div class="x_panel col-md-12 mt-20" style="background-color: #f7f7f7">
+        <form class="form-horizontal" id="_register_ssam_member_form" name="_register_ssam_member_form" method="POST" enctype="multipart/form-data" onsubmit="return false;">
+            {!! csrf_field() !!}
+            <div class="x_title">
+                <span class="link-cursor" data-toggle="collapse" data-target="#addbox_register_ssam_excel" style="color: red">수험번호등록</span> (임용전용)
+                <span class="ml-20">#등록된 데이터 삭제 후 일괄 등록</span>
+            </div>
+            <div class="x_content collapse multi-collapse" id="addbox_register_ssam_excel">
+                <div class="col-md-12 form-inline">
+                    <select class="form-control" id="register_idx" name="register_idx">
+                        <option value="">신청리스트(특강) 정보</option>
+                        @foreach($data_register as $key => $val)
+                            <option value="{{$key}}">{{$val}}</option>
+                        @endforeach
+                    </select>
+                    <input type="file" id="attach_file" name="attach_file" class="form-control" title="엑셀파일" value="">
+                    <button type="button" class="btn btn-primary btn-sm mb-0 ml-10 mr-10 btn-excel-upload">엑셀 업로드</button>
+                    <button type="button" class="btn btn-success btn-sm mb-0 btn-excel-download">샘플엑셀 다운로드</button>
+                </div>
+            </div>
+        </form>
+    </div>
+@endif
+
+<div class="x_panel mt-30">
     <div class="x_content">
         <table id="list_ajax_register_table" class="table table-striped table-bordered">
             <thead>
@@ -113,7 +139,7 @@
     var $datatable_register;
     var $search_register_form = $('#search_register_form');
     var $list_regitster_table = $('#list_ajax_register_table');
-
+    var $_register_ssam_member_form = $('#_register_ssam_member_form');
     var $datatable_apply;
     var $list_apply_table = $('#list_ajax_apply_table');
 
@@ -218,8 +244,6 @@
             }, showError, false, 'GET');
         });
 
-
-
         $('input:checkbox[name="add_data_ssn"]').click(function () {
             if ($(this).is(":checked") === true) {
                 notifyAlert('error', '알림', '주민번호 데이터가 "추가"되었습니다.');
@@ -265,6 +289,38 @@
         $list_regitster_table.on('click', '.file-register-download', function() {
             var _url = '{{ site_url("/site/eventLecture/download") }}/' + '?path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
             window.open(_url, '_blank');
+        });
+
+        // 수험번호생성 샘플엑셀 다운로드
+        $('.btn-excel-download').on('click', function() {
+            location.replace('{{ site_url('/site/eventLecture/sampleRegisterMemberForSsamDownload') }}');
+        });
+
+        // 수험번호 엑셀 업로드
+        $('.btn-excel-upload').on('click', function(event) {
+            var data, is_file, files;
+            var register_idx = $_register_ssam_member_form.find('select[name="register_idx"]').val();
+            files = $_register_ssam_member_form.find('input[name="attach_file"]')[0].files[0];
+
+            if (register_idx == '' || register_idx == null) { alert('신청리스트(특강) 정보를 선택해 주세요.'); return; }
+            if (typeof files === 'undefined') { alert('엑셀파일을 선택해 주세요.'); return; }
+
+            data = new FormData();
+            data.append('{{ csrf_token_name() }}', $_register_ssam_member_form.find('input[name="{{ csrf_token_name() }}"]').val());
+            data.append('_method', 'POST');
+            data.append('register_idx', register_idx);
+            data.append('attach_file', files);
+            is_file = true;
+
+            if (!confirm('업로드 하시겠습니까?')) { return; }
+            event.preventDefault();
+            sendAjax('{{ site_url('/site/eventLecture/excelRegisterMemberForSsamDataUpload') }}', data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    $datatable_register.draw();
+                    $_register_ssam_member_form.find('input[name="attach_file"]').val('');
+                }
+            }, showError, false, 'POST', 'json', is_file);
         });
 
         // *** 이벤트 추가 신청 리스트 ***

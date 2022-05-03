@@ -1,4 +1,4 @@
-<div class="row">
+<div class="x_content">
     <form class="form-horizontal" id="search_comment_form" name="search_comment_form" method="POST">
         {!! csrf_field() !!}
         <div class="form-group">
@@ -39,14 +39,14 @@
         </div>
     </form>
 </div>
-<div class="row mt-10 mb-20">
+<div class="x_content mt-10 mb-20">
     <div class="col-xs-12 text-right">
         <button type="button" class="btn btn-primary btn-search-comment"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
         <button type="button" class="btn btn-default mr-20 btn-reset-comment">검색초기화</button>
     </div>
 </div>
 
-<div class="row mt-20">
+<div class="x_content mt-20">
     <form class="form-horizontal" id="regi_comment_form" name="regi_comment_form" method="POST">
     {!! csrf_field() !!}
         <input type="hidden" name="comment_el_idx" value="{{$el_idx}}">

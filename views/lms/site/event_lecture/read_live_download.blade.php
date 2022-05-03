@@ -1,4 +1,4 @@
-<div class="row">
+<div class="x_content">
     <form class="form-horizontal" id="search_live_download_form" name="search_live_download_form" method="POST">
         {!! csrf_field() !!}
         <div class="form-group">
@@ -12,7 +12,7 @@
         </div>
     </form>
 </div>
-<div class="row mt-10 mb-20">
+<div class="x_content mt-10 mb-20">
     <div class="col-xs-12 text-right">
         <button type="button" class="btn btn-primary btn-search-live-download"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
         <button type="button" class="btn btn-default mr-20 btn-reset-live-download">검색초기화</button>

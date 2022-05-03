@@ -47,7 +47,10 @@
         <div class="evtCtnsBox evt_01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2642_01_01.jpg" alt="모의고사 + 라이브 동영상" />
             <div class="lecinfo">
-                ‣ 강의시간_(시험지 출력) 오전 8:00~8:20 (시험) 오전 8:30~9:30 (강의) 9:50~12:00
+                [강의시간]<br>
+                (실시간 라이브 동영상 수강자, 시험지 출력) 오전 8:00~8:20<br>
+                (실시간 라이브 동영상 수강자, 해설지 출력) 오전 9:30~9:50<br>
+                (시험) 오전 8:30~9:30 (강의) 9:50~12:00
                 <p>※ 자세한 진행방식은 수강안내를 참조하시기 바랍니다. </p>               
                 <a href="https://pass.willbes.net/m/support/notice/show/cate/3019?board_idx=335962&s_cate_code=3103" target="_blank" title="">실시간온라인모의고사+라이브동영상 <span>수강안내 바로가기 ></span></a>
             </div>

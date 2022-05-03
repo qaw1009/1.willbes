@@ -27,6 +27,7 @@
         .event02 {width:1120px; margin:0 auto 120px}
         .event02 .title {color:#383838; font-size:30px; text-align:left; margin-bottom:40px}
         .event02 .s-title {color:#383838; font-size:24px; text-align:left; padding-bottom:20px; border-bottom:2px solid #333; margin-bottom:20px}
+        .event02 .s-title span {font-size:16px; float:right}
         .evt_table table{width:100%;border-top:1px solid #e9e9e9}
         .evt_table table tr {border-bottom:1px solid #e9e9e9}
         .evt_table table th,
@@ -75,7 +76,7 @@
 
         <div class="evtCtnsBox event02" data-aos="fade-up">
             <div class="title NSK-Black">감사 인증 게시판</div>
-            <div class="s-title">감사 인사 인증하기</div>
+            <div class="s-title">감사 인사 인증하기 <span>*로그인 후 참여가능합니다.</span></div>
             <form name="regi_form_register" id="regi_form_register">
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}

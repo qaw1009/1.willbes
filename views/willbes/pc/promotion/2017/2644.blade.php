@@ -196,13 +196,12 @@
         }
 
         function fn_submit() {
-            @if(ENVIRONMENT == 'production')
+            {{--@if(ENVIRONMENT == 'production')
                 @if(date('YmdHi') < '202104290000' || date('YmdHi') > '202105290000')
                     alert('종료된 이벤트 입니다.');
                     return;
                 @endif
-            @endif
-
+            @endif--}}
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
             var _url = '{!! front_url('/event/registerStore') !!}';

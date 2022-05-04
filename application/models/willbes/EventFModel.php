@@ -234,17 +234,24 @@ class EventFModel extends WB_Model
      */
     public function listEventForApply($arr_condition=[])
     {
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        unset($arr_condition['EQ']);
+        $where_sub = $this->_conn->makeWhere($arr_condition);
+        $where_sub = $where_sub->getMakeWhere(false);
+
         $column = 'A.*, IFNULL(B.MemCount, \'0\') AS MemCount';
         $from = "
             FROM {$this->_table['event_add_apply']} AS A
             LEFT JOIN (
-                SELECT EaaIdx, COUNT(EaaIdx) AS MemCount
-                FROM {$this->_table['event_add_apply_member']}
-                GROUP BY EaaIdx
+                SELECT A.EaaIdx, COUNT(A.EaaIdx) AS MemCount
+                FROM {$this->_table['event_add_apply']} AS A
+		        INNER JOIN {$this->_table['event_add_apply_member']} AS B ON A.EaaIdx = B.EaaIdx
+		        {$where_sub}
+                GROUP BY A.EaaIdx
             ) AS B ON A.EaaIdx = B.EaaIdx
         ";
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
         $query = $this->_conn->query('SELECT ' . $column . $from . $where);
         return $query->result_array();
     }

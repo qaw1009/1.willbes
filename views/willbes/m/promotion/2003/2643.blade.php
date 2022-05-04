@@ -60,7 +60,7 @@
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2643m_04.jpg" alt="신청하기" /> 
             <a href="https://pass.willbes.net/m/pass/offLecture/show/cate/3149/prod-code/194557" target="_blank" title="학원 연간종합반" style="position: absolute; left: 12.06%; top: 38.11%; width: 76.03%; height: 5.98%; z-index: 2;"></a>
-            <a href="https://job.willbes.net/m/periodPackage/show/cate/3148/pack/648001/prod-code/194775" target="_blank" title="온라인" style="position: absolute; left: 12.06%; top: 83.71%; width: 76.03%; height: 5.98%; z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3148/pack/648001/prod-code/194775" target="_blank" title="온라인" style="position: absolute; left: 12.06%; top: 83.71%; width: 76.03%; height: 5.98%; z-index: 2;"></a>
         </div>
     </div>
 

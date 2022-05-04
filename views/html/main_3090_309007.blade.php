@@ -484,16 +484,16 @@
             <li>   
                 <div class="QuickSlider">      
                     <div class="sliderNum">
-                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
-                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
+                        <div><a href="#none" target="_blank"><img src="https://police.willbes.net/public/uploads/willbes/banner/2019/0324/banner_20190324165210.jpg" title="배너명"></a></div>
+                        <div><a href="#none" target="_blank"><img src="https://police.willbes.net/public/uploads/willbes/banner/2019/0324/banner_20190324165210.jpg" title="배너명"></a></div>
                     </div>
                 </div>
             </li>
             <li>   
                 <div class="QuickSlider">      
                     <div class="sliderNum">
-                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
-                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
+                        <div><a href="#none" target="_blank"><img src="https://police.willbes.net/public/uploads/willbes/banner/2019/0324/banner_20190324165210.jpg" title="배너명"></a></div>
+                        <div><a href="#none" target="_blank"><img src="https://police.willbes.net/public/uploads/willbes/banner/2019/0324/banner_20190324165210.jpg" title="배너명"></a></div>
                     </div>
                 </div>
             </li>

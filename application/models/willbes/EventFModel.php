@@ -1444,26 +1444,30 @@ class EventFModel extends WB_Model
         $from = "
             FROM {$this->_table['event_add_apply']} AS A
             LEFT OUTER JOIN	(
-                SELECT EaaIdx, COUNT(*) AS MemberCnt
-                FROM {$this->_table['event_add_apply_member']}
-                WHERE IsStatus = 'Y'
-                AND IsWin = 'Y'
-                GROUP BY EaaIdx
+                SELECT a1.EaaIdx, COUNT(*) AS MemberCnt                
+                FROM {$this->_table['event_add_apply']} AS a1
+	            INNER JOIN {$this->_table['event_add_apply_member']} AS b1 ON a1.EaaIdx = b1.EaaIdx
+                WHERE a1.ElIdx = ?
+                AND b1.IsStatus = 'Y'
+                AND b1.IsWin = 'Y' 
+                GROUP BY a1.EaaIdx
             ) AS B ON A.EaaIdx = B.EaaIdx
             LEFT OUTER JOIN (
-                SELECT EaaIdx, COUNT(*) AS MemberLoginCnt
-                FROM {$this->_table['event_add_apply_member']}
-                WHERE IsStatus = 'Y'
-                AND IsWin = 'Y'
-                AND MemIdx = ?
-                GROUP BY EaaIdx
+                SELECT a1.EaaIdx, COUNT(*) AS MemberLoginCnt
+                FROM {$this->_table['event_add_apply']} AS a1
+	            INNER JOIN {$this->_table['event_add_apply_member']} AS b1 ON a1.EaaIdx = b1.EaaIdx
+                WHERE a1.ElIdx = ?
+                AND b1.IsStatus = 'Y'
+                AND b1.IsWin = 'Y'
+                AND b1.MemIdx = ?
+                GROUP BY b1.EaaIdx
             ) AS C ON A.EaaIdx = C.EaaIdx    
         ";
         $where = ' WHERE A.ElIdx = ? and A.IsUse = "Y" and A.IsStatus = "Y"';
         $order_by_offset_limit = ' ORDER BY A.ApplyEndDatm, A.EaaIdx ASC';
 
         // 쿼리 실행
-        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit, [$this->session->userdata('mem_idx'), $el_idx])->result_array();
+        return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit, [$el_idx,$el_idx,$this->session->userdata('mem_idx'),$el_idx])->result_array();
     }
 
     /**

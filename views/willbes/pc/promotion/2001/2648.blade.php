@@ -44,8 +44,15 @@
         .evtCtnsBox input[type=checkbox] {width:20px; height:20px} 
 
         .btn a {display:block; height:64px; line-height:64px; color:#fff; font-size:28px; font-weight:bold; text-align:center; border-radius:50px; 
-            background:#000; width:460px; margin:50px auto}
+            background:#000; width:460px; margin:50px auto 100px}
         .btn a:hover {background:#80AE40}
+
+        .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:17px}
+		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.5}
+		.evtInfoBox h4 {font-size:40px; margin-bottom:30px}
+		.evtInfoBox .infoTit {font-size:20px; margin-bottom:20px;color:#fffea7;}
+		.evtInfoBox ul {margin-bottom:30px}
+        .evtInfoBox ul li {margin-bottom:10px; font-size:14px; margin-left:20px; list-style:decimal}
 
     </style>
 
@@ -137,6 +144,36 @@
             <div class="btn" data-aos="fade-up">
                 <a href="#none">형법 교재 선착순 신청하기 ></a>
             </div> 
+
+            <div class="evtCtnsBox evtInfo" id="info" data-aos="fade-up">
+			<div class="evtInfoBox">
+				<h4 class="NSK-Black">[한정판 5,000부교재] 출간기념 이벤트</h4>
+				<div class="infoTit">
+                    <span>🔔 기간 :</span> 2022.5.3(화) ~ 2022.5.7(토) 매일 23시<br>
+                    <span>🔔 대상 :</span> 신규 회원 및 기존회원 누구나<br>
+                    <span>🔔 내용 :</span> 매일 선착순 1.000명에게  형법기본서 선구매 이벤트
+                </div>
+				<ul>               
+                    <li>한 ID당 1회만 참여 가능합니다. (당첨시 참여 불가)</li>
+                    <li>본인 ID로만 참여 가능하며, 타인의 ID로는 참여가 불가능합니다.</li>
+                    <li>회원탈퇴 후 재가입하여 참여하시는 분은 이벤트 당첨에서 제외됩니다.</li>
+                    <li>회원정보 오류로 인해 미발송된 경우 재발송이 불가하오니, 이벤트 참여 전 정확한 확인을 부탁드립니다.</li>
+                    <li>이벤트 상품 발송 후에는 환불이 불가능합니다.</li>
+                    <li>당첨된 교재는 당첨 즉시 [로그인] > [장바구니] > [교재 ]  에서 확인하실 수 있습니다.</li>
+                    <li>배송비 2,500원을 결제해야 하며 이후, 교재 재 지급은 불가능합니다.<br>
+                    *기한 내 배송비를 결제하지 않을 경우, 장바구니에 지급된 교재는 7일 이후 삭제됩니다.<br>
+                    *무료배포 상품의 경우, 마이페이지 장바구니 상에서 포인트 결제 및 쿠폰 사용이 불가하며 판매용 교재와는 합배송 불가합니다.</li>
+                    <li>배송비 결제 완료하신 분들에 한해 순차적으로 배송됩니다.<br>
+                    * 발송일정은 내부사정에 의해 변동될 수 있습니다.<br>
+                    * 물품을 받을 배송지는 반드시 이벤트 참여 전에 다시 확인해주세요.<br>
+                    * 배송은 배송비 결제 시 입력한 배송 주소지로 발송되며, 입력된 배송지가 잘못되어있으면 배송이 되지 않을 수도 있습니다. 이 경우에는 윌비스에서 책임 지지 않습니다.<br>
+                    * 배송 주소지 변경은 불가합니다.</li>
+                    <li>탈퇴, 타인의 개인정보 도용 등의 부정한 방법으로 이벤트 참여 시, 혜택 제공 대상자에서 제외됩니다.</li>
+				</ul>       
+
+
+			</div>
+		</div> 
         </div>
 
                       

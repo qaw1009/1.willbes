@@ -165,7 +165,7 @@
                     <input type="radio" name="y_pkg" id="pass03" value="194804"><label for="pass03">2023 소방직 공채</label>
                 </div>
                 <div>
-                    <input type="radio" name="y_pkg" id="pass04" value="198403"><label for="pass04">2023 소방직 경채</label>
+                    <input type="radio" name="y_pkg" id="pass04" value="194803"><label for="pass04">2023 소방직 경채</label>
                 </div>
             </div>
             <div class="check" id="chkInfo">

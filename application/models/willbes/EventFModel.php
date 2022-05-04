@@ -174,7 +174,7 @@ class EventFModel extends WB_Model
             A.OptionCcds, A.ReadCnt + A.AdjuReadCnt AS ReadCnt, A.IsRegister, A.IsUse, A.RegDatm, DATE_FORMAT(A.RegDatm, \'%Y-%m-%d\') AS RegDay,
             A.SendTel, A.SmsContent, A.Link,
             G.SiteName, J.CcdName AS CampusName,
-            IFNULL(H.CCount,\'0\') AS CommentCount,
+            (SELECT COUNT(*) FROM '.$this->_table['event_comment'].' AS c1 WHERE c1.ElIdx = A.ElIdx AND IsUse = \'Y\' AND IsStatus = \'Y\') AS CommentCount,
             CASE A.RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequestTypeName,
             CASE A.IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
             CASE A.TakeType WHEN 1 THEN \'회원\' WHEN 2 THEN \'회원+비회원\' END AS TakeTypeName,
@@ -183,13 +183,6 @@ class EventFModel extends WB_Model
 
         $from = "
             FROM {$this->_table['event_lecture']} AS A
-            LEFT JOIN (
-                SELECT CIdx, ElIdx, COUNT(CIdx) AS CCount
-                FROM {$this->_table['event_comment']}
-                WHERE IsUse = 'Y' 
-                AND IsStatus = 'Y'
-                GROUP BY ElIdx
-            ) AS H ON H.ElIdx = A.ElIdx
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
             LEFT OUTER JOIN {$this->_table['sys_code']} AS J ON A.CampusCcd = J.Ccd
             LEFT OUTER JOIN {$this->_table['product_subject']} as P ON A.SubjectIdx = P.SubjectIdx
@@ -217,19 +210,13 @@ class EventFModel extends WB_Model
     {
         $column = '
             A.ErIdx, A.PersonLimitType, A.PersonLimit, A.Name, A.RegisterExpireStatus, A.RegisterStartDatm, A.RegisterEndDatm,
-            IFNULL(B.MemCount, \'0\') AS MemCount,
+            (SELECT COUNT(*) FROM '.$this->_table['event_member'].' AS m1 WHERE m1.ErIdx = A.ErIdx AND m1.IsStatus = \'Y\') AS MemCount,
             C.ProdCode,
             D.LearnPatternCcd,
             E.ProfIdx, E.ProfNickName, E.SubjectIdx, E.SubjectName, E.ProdName, E.StudyPeriod
             ';
         $from = "
             FROM {$this->_table['event_register']} AS A
-            LEFT JOIN (
-                SELECT ErIdx, COUNT(ErIdx) AS MemCount
-                FROM {$this->_table['event_member']}
-                WHERE IsStatus = 'Y'
-                GROUP BY ErIdx
-            ) AS B ON A.ErIdx = B.ErIdx
             LEFT JOIN {$this->_table['event_register_r_product']} AS C ON A.ErIdx = C.ErIdx AND C.IsStatus = 'Y'
             LEFT JOIN {$this->_table['product_lecture']} AS D ON C.ProdCode = D.ProdCode 
             LEFT JOIN {$this->_table['product_on_lecture']} AS E ON D.ProdCode = E.ProdCode AND E.IsSaleEnd = 'N' AND E.IsUse = 'Y' AND E.SaleStatusCcd = '618001' AND E.LecSaleType = 'N' AND E.wIsUse = 'Y'

@@ -26,7 +26,7 @@
     .evt_top .ani{position:absolute;left:50%;top:275px;margin-left:-310px} 
     /**/
     .evt_top .roll_wave {position:relative;overflow:hidden;width:1120px;margin:-100px auto 0;left:275px;bottom:975px;}       
-	.evt_top .wr_waves .slide {padding:15px 0; text-align:center; font-size:30px; color:#fff; line-height:1.5}
+	.evt_top .wr_waves .slide {padding:25px 0;}
 
     </style>
 
@@ -81,7 +81,7 @@
             infinite: true,
             autoplay:true,
             autoplaySpeed:0,
-            speed: 700,
+            speed: 2500,
             slidesToShow: 5,
             slidesToScroll: 1,
             adaptiveHeight: true,

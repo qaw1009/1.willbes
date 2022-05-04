@@ -173,7 +173,7 @@ class EventFModel extends WB_Model
             A.RegisterStartDate, A.RegisterEndDate, DATE_FORMAT(A.RegisterStartDate, \'%Y-%m-%d\') AS RegisterStartDay, DATE_FORMAT(A.RegisterEndDate, \'%Y-%m-%d\') AS RegisterEndDay,
             A.OptionCcds, A.ReadCnt + A.AdjuReadCnt AS ReadCnt, A.IsRegister, A.IsUse, A.RegDatm, DATE_FORMAT(A.RegDatm, \'%Y-%m-%d\') AS RegDay,
             A.SendTel, A.SmsContent, A.Link,
-            G.SiteName, J.CcdName AS CampusName,
+            G.SiteName, fn_ccd_name(A.CampusCcd) AS CampusName,
             (SELECT COUNT(*) FROM '.$this->_table['event_comment'].' AS c1 WHERE c1.ElIdx = A.ElIdx AND IsUse = \'Y\' AND IsStatus = \'Y\') AS CommentCount,
             CASE A.RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequestTypeName,
             CASE A.IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
@@ -184,7 +184,6 @@ class EventFModel extends WB_Model
         $from = "
             FROM {$this->_table['event_lecture']} AS A
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
-            LEFT OUTER JOIN {$this->_table['sys_code']} AS J ON A.CampusCcd = J.Ccd
             LEFT OUTER JOIN {$this->_table['product_subject']} as P ON A.SubjectIdx = P.SubjectIdx
             LEFT OUTER JOIN {$this->_table['professor']} as Q ON A.ProfIdx = Q.ProfIdx
             LEFT JOIN {$this->_table['pms_professor']} as R ON Q.wProfIdx = R.wProfIdx

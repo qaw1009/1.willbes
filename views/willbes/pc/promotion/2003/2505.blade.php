@@ -219,6 +219,16 @@
                                     </a>
                                 </li>
 
+                                <li class="">
+                                    <a href="#tab13">
+                                        <span class="num_box" data-num="13">13</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2022/05/2505_03_s13.jpg" alt="조사, 참견의 전치사「into」가 포함된 동사구를 알아보자!"></div>
+                                        <div class="text_box">
+                                            <p>조사, 참견의 전치사「into」가 포함된 동사구를 알아보자!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
                             </ul>
                         </div>
                     </div>          
@@ -294,6 +304,7 @@
         var tab10_url = "https://www.youtube.com/embed/zjjeBmpGCnE?rel=0";
         var tab11_url = "https://www.youtube.com/embed/5p3JeCnmDhk?rel=0";
         var tab12_url = "https://www.youtube.com/embed/xONg4pHjcUY?rel=0";
+        var tab13_url = "https://www.youtube.com/embed/j5vOgjlYmA0?rel=0";
 
         $(function() {
             $(".preview_list ul li a").click(function(){
@@ -323,7 +334,9 @@
                 }else if(activeTab == "#tab11"){
                     video_tab_url = tab11_url;              
                 }else if(activeTab == "#tab12"){
-                    video_tab_url = tab12_url;              
+                    video_tab_url = tab12_url;    
+                }else if(activeTab == "#tab13"){
+                    video_tab_url = tab13_url;           
                 }
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");

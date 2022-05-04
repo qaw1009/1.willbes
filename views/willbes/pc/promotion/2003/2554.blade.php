@@ -45,7 +45,7 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">          
             <a href="#lecbuy01"><img src="https://static.willbes.net/public/images/promotion/2022/03/2554_sky.png" alt="조경직 티패스" /></a>
-            <a href="#lecbuy02"><img src="https://static.willbes.net/public/images/promotion/2022/04/2554_sky2.png" alt="" /></a>       
+            {{--<a href="#lecbuy02"><img src="https://static.willbes.net/public/images/promotion/2022/04/2554_sky2.png" alt="" /></a>--}}    
         </div>
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
@@ -66,6 +66,7 @@
             </div>            
         </div>
 
+        {{--
         <div class="evtCtnsBox wb_03" data-aos="fade-up" id="lecbuy02">
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2554_03.jpg" alt="수강후기 이벤트" />
         </div>      
@@ -80,8 +81,9 @@
 
         <div class="evt_apply NSK-Black" data-aos="fade-up">
             <a href="https://www.willbes.net/classroom/on/list/ongoing" target="_blank" alt="수강후기 쓰기"><span>지금 바로 무료강좌 수강하고</span> 수강후기 쓰기 ></a>
-        </div>   
-
+        </div>
+        --}}
+        
         <div class="evtCtnsBox wb_05" data-aos="fade-up" id="lecbuy02">
             <div class="wrap">
                 <div class="sTitle NSK-Black">단과 수강신청</div>           

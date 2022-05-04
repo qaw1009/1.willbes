@@ -162,10 +162,10 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2503_05.jpg" alt="소방직 패스 수강신청" />
             <div class="passlec">
                 <div id="lecBuy2023">
-                    <input type="radio" name="y_pkg" id="pass03" value="190146"><label for="pass03">2023 소방직 공채</label>
+                    <input type="radio" name="y_pkg" id="pass03" value="194804"><label for="pass03">2023 소방직 공채</label>
                 </div>
                 <div>
-                    <input type="radio" name="y_pkg" id="pass04" value="190147"><label for="pass04">2023 소방직 경채</label>
+                    <input type="radio" name="y_pkg" id="pass04" value="198403"><label for="pass04">2023 소방직 경채</label>
                 </div>
             </div>
             <div class="check" id="chkInfo">

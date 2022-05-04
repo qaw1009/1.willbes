@@ -53,12 +53,14 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2622_02_01.jpg" alt="교육학 고득점 커리큘럼"/>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/04/2622_02_02.jpg" alt="강의신청" id="evt02"/>
+                {{--
                 <a href="https://ssam.willbes.net/lecture/show/cate/3134/pattern/only/prod-code/193839" title="열공응원 1" target="_blank" style="position: absolute; left: 10.89%; top: 75.5%; width: 31.52%; height: 6.75%; z-index: 2;"></a>
                 @if(time() < strtotime('202204181000'))
                 <a href="#none" onclick="javascript:alert('4월18일(월) 10시부터 신청할 수 있습니다. ');" title="열공응원 2" style="position: absolute; left: 57.59%; top: 75.5%; width: 31.52%; height: 6.75%; z-index: 2;"></a>
                 @else
                 <a href="https://ssam.willbes.net/pass/offLecture/show/cate/3138/prod-code/193840" target="_blank" title="열공응원 2" style="position: absolute; left: 57.59%; top: 75.5%; width: 31.52%; height: 6.75%; z-index: 2;"></a>
                 @endif
+                --}}
             </div>
         </div>
 

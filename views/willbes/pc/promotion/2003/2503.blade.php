@@ -21,18 +21,18 @@
 
         /************************************************************/
 
-        .sky {position:fixed; top:200px; right:10px; width:180px; z-index:1; text-align:right}
+        .sky {position:fixed; top:200px; right:10px; width:137px; z-index:1; text-align:right}
         .sky a {display:block; margin-bottom:10px;}
-        .sky img {width:100%}
  
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/01/2503_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/05/2503_top_bg.jpg) no-repeat center top;}
         
         .wb_cts02 {
             background:#323943; padding-bottom:150px;
         }
-        .wb_cts02 .box-prof { width:100%;}
+        .wb_cts02 .box-prof {width:100%; }
         .wb_cts02 .box-prof .bx-wrapper{max-width:100% !important;}
-        .wb_cts02 .box-prof li {display:inline; float:left;}
+        .wb_cts02 .box-prof ul {display:flex; justify-content: center; }
+        .wb_cts02 .box-prof li {margin-right:20px}
         .wb_cts02 .box-prof li img {
             width: 289px;
             height: 411px;
@@ -47,10 +47,8 @@
         .wb_cts05 .passlec {display:flex; width:930px; margin:auto; justify-content: space-between; flex-wrap: wrap;}
         .wb_cts05 .passlec div {width:452px; height:563px; position:relative; margin-bottom:20px}
         .wb_cts05 .passlec div label {display:block; width:452px; height:563px; font-size:0; cursor: pointer;}
-        .wb_cts05 .passlec div:nth-child(1) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/01/2503_05_01.png)}
-        .wb_cts05 .passlec div:nth-child(2) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/01/2503_05_02.png)}
-        .wb_cts05 .passlec div:nth-child(3) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/01/2503_05_03.png)}
-        .wb_cts05 .passlec div:nth-child(4) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/01/2503_05_04.png)}
+        .wb_cts05 .passlec div:nth-child(1) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/05/2503_05_03.png)}
+        .wb_cts05 .passlec div:nth-child(2) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/05/2503_05_04.png)}
 
         .wb_cts05 .passlec input[type="radio"] {height:26px; width:26px; position:absolute; top:20px; left:20px; visibility: hidden;}
         .wb_cts05 .passlec input:checked + label {background-position:right top}
@@ -121,21 +119,20 @@
         </div>
 
         <div class="sky" id="QuickMenu">
-            <a href="https://pass.willbes.net/promotion/index/cate/3023/code/1656" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/2127_sky.png"  title="소방 문풀" /></a>
-            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/04/2127_sky01.png"  title="인증하고 할인받기" /></a>
-            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/04/2127_sky02.png"  title="갈아타고 할일받기" /></a>
+            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2022/05/2503_sky.jpg" title="대학생 할인" /></a>
+            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2022/05/2503_sky2.jpg" title="재도전 할인" /></a>
+            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2022/05/2503_sky3.jpg" title="환승 헐안" /></a>
         </div>
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2503_top.jpg" alt="소방 패스"  />
-                <a href="#lecBuy2022" title="22년 패스" style="position: absolute; left: 17.05%; top: 82.61%; width: 32.68%; height: 6.31%; z-index: 2;"></a>
-                <a href="#lecBuy2023" title="22~23년 패스" style="position: absolute; left: 50.71%; top: 82.61%; width: 32.68%; height: 6.31%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2503_top.jpg" alt="소방 패스"  />
+                <a href="#lecBuy2023" title="22년 패스" style="position: absolute; left: 20.8%; top: 81.55%; width: 57.86%; height: 8.41%; z-index: 2;"></a>
             </div>
         </div>
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2503_01.jpg" alt="소방직 시험 변화" />          
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2503_01.jpg" alt="소방직 시험 변화" />          
         </div>
 
         <div class="evtCtnsBox wb_cts02"  data-aos="fade-up">
@@ -144,10 +141,6 @@
                 <ul class="slidesProf">
                     <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2503_02_01.jpg" alt="이종오"/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2503_02_02.jpg" alt="이석준"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2503_02_03.jpg" alt="이아림"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2503_02_04.jpg" alt="양익"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2503_02_05.jpg" alt="한경준"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2503_02_06.jpg" alt="오대혁"/></li>
                 </ul>
             </div>  
         </div> 
@@ -159,21 +152,15 @@
 
         <div class="evtCtnsBox wb_cts04" id="transfer" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2503_04.jpg" alt="재도전/환승 이벤트" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2503_04.jpg" alt="재도전/환승 이벤트" />
                 <a href="javascript:certOpen();" title="인증하기" style="position: absolute; left: 30%; top: 74.34%; width: 39.29%; height: 8.53%; z-index: 2;"></a>
                 <a href="#careful" title="유의사항" style="position: absolute; left: 42.14%; top: 84.83%; width: 15%; height: 4.01%; z-index: 2;"></a>
             </div>    
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="lecBuy" data-aos="fade-up">            
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2503_05.jpg" alt="소방직 패스 수강신청" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2503_05.jpg" alt="소방직 패스 수강신청" />
             <div class="passlec">
-                <div id="lecBuy2022">
-                    <input type="radio" name="y_pkg" id="pass01" value="180408"><label for="pass01">2022 소방직 공채</label>
-                </div>
-                <div>
-                    <input type="radio" name="y_pkg" id="pass02" value="180413"><label for="pass02">2022 소방직 경채</label>
-                </div>
                 <div id="lecBuy2023">
                     <input type="radio" name="y_pkg" id="pass03" value="190146"><label for="pass03">2023 소방직 공채</label>
                 </div>
@@ -200,15 +187,12 @@
                     <dt>상품구성</dt>
                     <dd>
                         <ol>
-                            <li>2022 대비 상품의 경우 2021~2022 대비 진행 강의 제공,  2022~2023 대비 상품의 경우 2022~2023 대비 진행 강의 제공</li>
+                            <li>2023 대비 상품의 경우 2022~2023 대비 진행 강의 제공</li>
                             <li>수강 가능 교수진<br>
-                            · 소방 [공채] : 소방학 이종오/김종상, 소방관계법규 이종오/김종상, 행정법 이석준, 영어 [공채] 이아림, 한국사 한경준<br>
-                            · 소방 [경채] : 소방학 이종오/김종상, 소방관계법규 이종오/김종상, 영어 [경채] 양익, 국어 오대혁<br>
+                            · 소방 [공채] : 소방학 이종오, 소방관계법규 이종오, 행정법 이석준, G-TELP 김혜진, 한능검 오태진<br>
+                            · 소방 [경채] : 소방학 이종오, 소방관계법규 이종오, G-TELP 김혜진, 한능검 오태진<br>
                             (* 교수진별 커리큘럼 진행은 상이할 수 있으며 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있습니다. 신규 과정이 진행되지 않는 경우에는 이전 연도 과정을 대체 제공 해드립니다.)</li>
-                            <li>수강기간<br>
-                            · 2022 대비 PASS : 2022년 4월 30일까지<br>
-                            · 2022~2023 대비 PASS : 2023년 4월 30일까지
-                            </li>
+                            <li>수강기간 : 2022년 4월까지</li>
                         </ol>
                     </dd>
 
@@ -226,7 +210,7 @@
                         <ol>
                             <li>공무원학원 실강 중 LIVE로 진행되는 강좌만 제공 (*일부 특강 제외)
                                 <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a><br>
-                                · 소방학개론/소방관계법규 이종오, 행정법 이석준, 영어[공채] 이아림, 영어 [경채] 양익, 한국사 한경준, 국어 오대혁
+                                · 소방학개론/소방관계법규 이종오, 행정법 이석준
                             </li>
                         </ol>
                     </dd>  
@@ -255,7 +239,9 @@
                             1) 재도전 인증<br>
                             · 본인의 이름이 명시된 수험표 또는 윌비스 PASS 수강생의 경우 [내강의실] 페이지 내 이름과 PASS명이 명시된 이미지 캡쳐 후 업로드 시 인증 가능<br>
                             2) 환승 인증<br>
-                            · 본인의 이름, 수강내역, 결제내역 등이 명확하게 기재된 수강증 등의 캡쳐를 통해서만 인증 가능 (결제내역을 통한 인증 시, 수강자 이름과 결제 금액, 강좌명 필수)</li>
+                            · 본인의 이름, 수강내역, 결제내역 등이 명확하게 기재된 수강증 등의 캡쳐를 통해서만 인증 가능 (결제내역을 통한 인증 시, 수강자 이름과 결제 금액, 강좌명 필수)<br>
+                            3) 대학생 인증<br>
+                            · 본인의 이름, 학번이 명시된 학생증 등의 사진을 통해서만 인증 가능</li>
                             <li>이벤트 참여자가 본인의 명의로 구매/응시한 내용에 한합니다.</li>
                             <li>등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>
                             <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>
@@ -289,7 +275,8 @@
         } );
     </script>
 
-    <script>    
+    <script>   
+    /* 
         $(document).ready(function() {
             var BxProf = $('.slidesProf').bxSlider({
                 slideWidth: 289,
@@ -304,7 +291,7 @@
                     BxProf.startAuto();
                 }
             });
-        });
+        });*/
 
         /*수강신청 동의*/ 
         function go_PassLecture(){

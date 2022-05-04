@@ -152,17 +152,17 @@
                                         기출문제
                                     </div>
                                     <div class="btn">
-                                        <div class="btn-sbj"><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1010') }}" target="_blank">+ &nbsp; 문제 더 보기</a></div>
+                                        <div class="btn-sbj"><a href="{{ site_url('/support/examQuestion/index/cate/' . $__cfg['CateCode']) }}" target="_blank">+ &nbsp; 문제 더 보기</a></div>
                                         <div class="btn-lec mt5"><a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">+ &nbsp; 강의 더 보기</a></div>
                                     </div>
                                 </div>
                                 <div class="infoList">
                                     <ul class="List-Table">
+                                        <li><p><span>[2021년 하반기]</span>해양경찰 하반기 채용 및 해경 간부후보 선발 필기시험문제 및 정답</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/' . $__cfg['CateCode'] . '?board_idx=367951') }}" target="_blank">바로가기 ></a></span></li>  
                                         <li><p><span>[2020년 3차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3007?board_idx=326965') }}" target="_blank">바로가기 ></a></span></li>
                                         <li><p><span>[2020년 1차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3007?board_idx=283615') }}" target="_blank">바로가기 ></a></span></li>
                                         <li><p><span>[2019년 3차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3007?board_idx=258432') }}" target="_blank">바로가기 ></a></span></li>                                                           
-                                        <li><p><span>[2019년 1차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3007?board_idx=229416') }}" target="_blank">바로가기 ></a></span></li>    
-                                        <li><p><span>[2018년 3차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3007?board_idx=162332') }}" target="_blank">바로가기 ></a></span></li>                     
+                                        <li><p><span>[2019년 1차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/support/examQuestion/show/cate/3007?board_idx=229416') }}" target="_blank">바로가기 ></a></span></li>  
                                     </ul>
                                 </div>
                             </div>

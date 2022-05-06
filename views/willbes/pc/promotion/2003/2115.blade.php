@@ -96,7 +96,10 @@
 
         <div class="sky" id="QuickMenu">
             <a href="#evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2114_sky01.png" alt="타사 수강증 인증">
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2114_sky.png" alt="대학생 할인">
+            </a>
+            <a href="#evt05">
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2114_sky01.png" alt="재도전">
             </a>
             <a href="#evt05">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2114_sky02.png" alt="타사 수강증 인증">
@@ -127,7 +130,7 @@
 
         <div class="evtCtnsBox wb_cts05" id="evt05">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/09/2115_05.jpg" alt="학습 커리큘럼" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2115_05.jpg" alt="학습 커리큘럼" />
                 <a href="javascript:certOpen();" title="인증하기" style="position: absolute; left: 29.29%; top: 73.47%; width: 40.09%; height: 7.92%; z-index: 2;"></a>
                 <a href="#tip" title="유의사항" style="position: absolute; left: 41.88%; top: 83.1%; width: 15.27%; height: 4.57%; z-index: 2;"></a>
             </div>
@@ -135,8 +138,8 @@
 
         <div class="evtCtnsBox wb_cts06" id="transfer">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2115_06.jpg" alt="수강신청 하기"/>
-                <a href="javascript:go_PassLecture('179743');" title="" style="position: absolute; left: 58.3%; top: 84.5%; width: 27.95%; height: 7.31%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2115_06.jpg" alt="수강신청 하기"/>
+                <a href="javascript:go_PassLecture('194968');" title="" style="position: absolute; left: 58.3%; top: 84.5%; width: 27.95%; height: 7.31%; z-index: 2;"></a>
             </div>
             <div class="check" id="chkInfo">               
                 <label>
@@ -155,14 +158,13 @@
                     <dd>
                         <ol>
                             <li>본 PASS는 9급 축산직 대비 과정으로, 참여 교수진의 전 강좌를 배수 제한 없이 무제한으로 수강 가능합니다.<br>
-                            * 국어 기미진 [새벽실전모의고사] 제외, 영어 한덕현 [기본문법>제니스문법>기출리뷰>스나이퍼32>실전동형모의고사] 과정만 제공.</li>
-                            <li>수강 가능 교수진 : 국어 오대혁/기미진, 영어 한덕현, 한국사 김상범/조민주, 가축사양학/가축육종학 윤용범<br>
-                            * 국어 기미진, 한국사 조민주 교수의 경우 9급 일반행정직 신규 과정 진행하지 않으므로 기존 과정만 제공됩니다.</li>
-                            <li>2020년 7월부터 진행된 2021년 대비 전 과정 및 2022년 대비로 진행되는 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.<br>
+                            * 영어 한덕현 [기본문법>제니스문법>기출리뷰>스나이퍼32>실전동형모의고사] 과정만 제공.</li>
+                            <li>수강 가능 교수진 : 국어 오대혁, 영어 한덕현, 한국사 김상범, 가축사양학/가축육종학 윤용범</li>
+                            <li>2022~2023 대비로 진행된 전 강좌 제공 (진행 예정 신규강좌 포함)<br>
                             (일부 교수진의 경우, 신규 과정이 업데이트 되지 않을 수 있으며 해당 경우에는 이전 연도 과정을 제공해드립니다.)</li>
                             <li>참여 교수진의 일정 및 진행 방식은 상이하게 진행될 수 있으며, 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있다는 점 숙지 부탁드립니다.<br>
                             (과목별 교수진의 제공 과정은 수강신청 상세안내 화면을 참고해주시기 바랍니다.)</li>
-                            <li>이벤트 해당 상품 (전과목PASS) 구매 시  지급되는 추가 포인트의 경우, 교재 구매 시 사용할 수 있으며 결제완료 후 익일 담당자 확인 후에 지급해드릴 예정입니다.</li>
+                            <li>이벤트 해당 상품 (전과목PASS) 구매 시  지급되는 추가 포인트의 경우, 교재 구매 시 사용할 수 있으며 결제완료 후 자동으로 [내강의실]에서 확인 가능하오나, 누락된 경우 1:1 상담게시판에 문의 바랍니다.</li>
                         </ol>
                     </dd>
 
@@ -228,7 +230,7 @@
                         </ol>
                     </dd>
 
-                    <dt>재도전&환승 인증 이벤트 유의사항</dt>
+                    <dt>재도전/환승/대학생 인증 이벤트 유의사항</dt>
                     <dd>
                         <ol>
                             <li>본 이벤트는 1아이디당 1회만 참여 가능합니다.</li>
@@ -237,7 +239,9 @@
                             - 본인의 이름이 명시된 수험표 또는 윌비스 PASS 수강생의 경우 [내강의실] 페이지 내 이름과 PASS명이 명시된 이미지 캡쳐 후 업로드 시 인증 가능합니다.<br>
                             2) 환승 인증<br>
                             - 본인의 이름, 수강내역, 결제내역 등이 명확하게 기재된 수강증 등의 캡쳐를 통해서만 인증이 가능합니다.<br>
-                            (결제내역을 통한 인증 시, 수강자 이름과 결제 금액, 강좌명이 필수로 기재되어 있어야 합니다.)</li>
+                            (결제내역을 통한 인증 시, 수강자 이름과 결제 금액, 강좌명이 필수로 기재되어 있어야 합니다.)<br>
+                            3) 대학생 인증<br>
+                            - 본인의 이름, 학번이 명시된 학생증 등의 사진을 통해서만 인증 가능</li>
                             <li>본 이벤트는 이벤트 참여자가 본인의 명의로 구매/응시한 내용에 한합니다.</li>
                             <li>등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>
                             <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>

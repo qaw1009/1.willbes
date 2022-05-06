@@ -305,6 +305,8 @@
                 <li><a href="{{ site_url('/home/html/guide_309005_03') }}" target="_blank"> 시험안내 > 관세사 > 합격자현황</a></li>
                 <li><a href="{{ site_url('/home/html/guide_309005_04') }}" target="_blank"> 시험안내 > 관세사 > 연간커리큘럼</a></li>
                 <li><a href="{{ site_url('/home/html/guide_309005_05') }}" target="_blank"> 시험안내 > 관세사 > 과목별 공부방법론</a></li>
+                <li><a href="{{ site_url('/home/html/guide_309007_01') }}" target="_blank"> 시험안내 > 손해평가사 > 손해평가사란</a></li>
+                <li><a href="{{ site_url('/home/html/guide_309007_02') }}" target="_blank"> 시험안내 > 손해평가사 > 시험안내</a></li>
                 <li><a href="{{ site_url('/home/html/guide_310101_01') }}" target="_blank"> 시험안내 > 소프트웨어자산관리사</a></li>
                 <li><a href="{{ site_url('/home/html/guide_310101_02') }}" target="_blank"> 자격정보 > 소프트웨어자산관리사</a></li>
                 <li><a href="{{ site_url('/home/html/guide_310102_01') }}" target="_blank"> 자격정보 > 경제교육지도사</a></li>

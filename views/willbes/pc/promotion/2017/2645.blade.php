@@ -37,6 +37,7 @@
         .evt_table table th,
         .evt_table table td {margin:10px 0; font-size:16px; color:#666}
         .evt_table table th {background:#f9f9f9; color:#000;}
+        .evt_table thead th {background:#d9d9d9; color:#000; font-size:24px; font-weight:bold; padding:20px; border:1px solid #000}
         .evt_table table td{text-align:left; padding:15px}
         .evt_table label {margin-right:10px; line-height:28px;}
         .evt_table input {vertical-align:middle}
@@ -57,8 +58,6 @@
         .evt_table .btns a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#42425b; margin:0 10px; border-radius:40px; padding:0 50px}
         .evt_table .btns a:hover {background:#fe544a}
 
-        .event01 .txtinfo {width:1030px; margin:0 auto; color:#fff; background:#42425b; line-height:1.5; padding:50px; text-align:left; font-size:14px}
-        .txtinfo .addbtn { display:inline-block; padding:0 20px; background:#ffe401; color:#42425b; border-radius:10px }
 
         .evt_table .popup {position:absolute; top:0; left:0; width:100%; height: 100%; background-color:rgba(0,0,0,.7); display: flex; justify-content: center;
 align-items: center;}
@@ -66,7 +65,7 @@ align-items: center;}
 
         .event02 {background:#dcf9f7}
 
-        .event03 {padding-bottom:100px}
+        .event03 {padding-bottom:100px; line-height:1.3}
 
         .event04 {background:#05c2b1}
 
@@ -77,9 +76,6 @@ align-items: center;}
         .urlWrap .evt_table {width:100%; background-color:#fff !important; padding:20px 0}
         .urlWrap .evt_table table td {font-size:14px; text-align:center}
         .urlWrap .evt_table table td:nth-child(2) {text-align:left}
-        .urlWrap .txtinfo {line-height:1.4; text-align:left; font-size:16px; margin-top:50px; color:#fff}
-        .urlWrap .txtinfo h4 {font-size:30px; margin-bottom:20px; font-weight:bold}
-        .urlWrap .txtinfo li {list-style-type: disc; margin-left:20px; margin-bottom:5px}
 
 
 
@@ -94,14 +90,14 @@ align-items: center;}
     </style>
 
     <div class="evtContent NSK">
-        <div class="evtCtnsBox eventTop">
+        <div class="evtCtnsBox eventTop" data-aos="fade-up">
             <div class="wrap">
         	    <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_top.jpg" alt="비대면 실전 모의고사"/>
                 <a href="http://naver.me/Ffp78XLz" target="_blank" title="위치" style="position: absolute; left: 65%; top: 75.44%; width: 7.86%; height: 3.11%; z-index: 2;"></a>
             </div>
         </div>
 
-        <div class="evtCtnsBox event01">
+        <div class="evtCtnsBox event01" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01.jpg" alt="실전모의고사 응시"/>
             <ul class="tabs NSK-Black">
                 <li><a href="#tab01">실전 감각 극대화</a></li>
@@ -120,12 +116,14 @@ align-items: center;}
         </div>       
         
 
-        <div class="evtCtnsBox event02">
+        <div class="evtCtnsBox event02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_02.jpg" alt="소문내기 이벤트"/>            
         </div> 
 
-        <div class="evtCtnsBox event03">
+        <div class="evtCtnsBox event03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_03.jpg" alt="이벤트 참여방법"/>
+
+            {{--접수전 화면--}}
             <form name="regi_form_register" id="regi_form_register" method="POST" onsubmit="return false;" novalidate="">
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
@@ -134,7 +132,7 @@ align-items: center;}
                 <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
                 <div class="evt_table p_re">
-                    <table border="0" cellspacing="2" cellpadding="2">
+                    <table cellspacing="2" cellpadding="2">
                         <col width="15%" />
                         <col/>
                         <col width="15%" />
@@ -196,14 +194,70 @@ align-items: center;}
                     </div>
                     {{--<div class="popup"><span class="NSK-Black">마감되었습니다.</span></div>--}}
                 </div>
-            </form>           
+            </form> 
+            
+
+            {{--접수완료 화면--}}
+            <div class="evt_table">
+                <div class="tx-blue tx-left mb10">※  접수 완료하였습니다. </div>
+                <table cellspacing="2" cellpadding="2">
+                    <col width="15%" />
+                    <col/>
+                    <col width="15%" />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th colspan="4">교원임용 Real 모의고사 접수 현황</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>시험명</th>
+                            <td colspan="3">2023학년도 대비 중등임용 Real 모의고사 (주관: 윌비스 임용)</td>
+                        </tr>
+                        <tr>
+                            <th>응시과목</th>
+                            <td>국어</td>
+                            <th>출제 교수진</th>
+                            <td>이경범 교수, 송원영/권보민 교수</td>
+                        </tr>
+                        <tr>
+                            <th>수험번호</th>
+                            <td colspan="3">(6월7일(화) 11:00 부터 확인 가능)</td>
+                        </tr>
+                        <tr>
+                            <th>성명</th>
+                            <td>홍길동</td>
+                            <th>연락처</th>
+                            <td>010-1234-5678</td>
+                        </tr>
+                        <tr>
+                            <th>접수일자</th>
+                            <td>2022.04.25 15:30</td>
+                            <th>생년월일</th>
+                            <td>1995.03.01</td>
+                        </tr> 
+                    </tbody>
+                </table>
+                <div class="mt50 tx16">2022. 06. 12</div>
+                <div class="mt30 tx16">위와 같이 접수하고, 교원임용 Real 모의고사에 응시하고자 합니다.</div>
+                <div class="mt50"> <img src="https://static.willbes.net/public/images/promotion/2022/05/stamp.png" alt=""/></div>
+                <div class="btns">
+                    <a href="/support/qna/index" target="_blank">모의고사 취소요청 하기</a>
+                    <a href="#none" onclick="javascript:popup();">모의고사 응시표 출력하기</a>
+                </div>
+                <div class="mt30">
+                    ※ 모의고사 취소기한은 6월 6일(월)까지이며, 1:1상담게시판에 글을 남겨주시면 됩니다.<br>
+                    ※ 응시표는 06월07일(화)부터 11:00부터 출력가능
+                </div>
+            </div>
         </div>
 
-        <div class="evtCtnsBox event04">
+        <div class="evtCtnsBox event04" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_04.jpg"/>
         </div>
 
-        <div class="evtCtnsBox event05">
+        <div class="evtCtnsBox event05" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_05.jpg"/>
                 <a href="https://cafe.daum.net/teacherexam" title="다음카페" target="_blank" style="position: absolute; left: 31.7%; top: 29.66%; width: 5.36%; height: 50%; z-index: 2;"></a>
@@ -253,7 +307,7 @@ align-items: center;}
 
                 <h4 class="NSK-Black mt80">소문내기 이벤트 관련 유의사항</h4>
                 <ul>
-                    <li>SNS는 페이스북, 인스타그램이 해당되며, 카페와 블로그의 경우 정상적으로 운영 및 활동이 진행되는 곳이어야 합니다. 
+                    <li>SNS는 페이스북, 인스타그램이 해당되며, 카페와 블로그의 경우 정상적으로 운영 및 활동이 진행되는 곳이어야 합니다. <br>
                         (검색 창에 ‘교원 임용’ 검색 시, 상단에 노출되는 카페)</li>
                     <li>모의고사 이벤트 안내 링크 또는 캡처된 이미지가 포함되어 있을 경우에만 이벤트 참여로 인정됩니다.</li>
                     <li>윌비스 실전 모의고사와 관계가 없는 글이나, 삭제 및 비공개로 설정 되어 있는 경우에는 당첨에서 제외될 수 있습니다.</li>
@@ -264,6 +318,14 @@ align-items: center;}
         </div>  
     </div>
     <!-- End Container -->
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      $(document).ready(function(){
+        AOS.init();
+      });
+    </script>
 
     <script src="/public/js/willbes/product_util.js"></script>
     <script type="text/javascript">  
@@ -299,6 +361,12 @@ align-items: center;}
 
             var $regi_form_register = $('#regi_form_register');
             addCartNDirectPay($regi_form_register, 'Y', 'Y', 'on');
+        }
+
+        function popup(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            var url = "https://www.dev.willbes.net/home/html/promotion/2282_popup";
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=980,height=630');
         }
     </script>
 

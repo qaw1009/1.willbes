@@ -106,6 +106,11 @@
                 🚍지선버스 한강대교북단 0017 도보 10분                 
             </div>
         </div>
+
+        <div class="btns">
+            <a href="#none">출력하기</a>
+        </div>
+
     </div>
 </form>
 

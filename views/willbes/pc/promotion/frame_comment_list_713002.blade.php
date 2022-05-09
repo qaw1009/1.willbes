@@ -39,8 +39,8 @@
         @endforeach
 
         <div class="urladd">
-            <input type="text" name="event_comment" id="event_comment" placeholder="소문내기 URL 남기기" >
-            <a href="javascript:void(0);" id="btn_submit_comment">내가 낸 소문 인증하기</a>
+            <input type="text" name="event_comment" id="event_comment" placeholder="인증주소입력" >
+            <a href="javascript:void(0);" id="btn_submit_comment">인증주소입력</a>
         </div>
         <div class="evt_table">
             <table>

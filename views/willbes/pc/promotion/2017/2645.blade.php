@@ -365,7 +365,7 @@ align-items: center;}
 
         function popup(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            var url = "https://www.local.willbes.net/home/html/promotion/2645_popup";
+            var url = "https://www.dev.willbes.net/home/html/promotion/2645_popup";
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=600,height=630');
         }
     </script>

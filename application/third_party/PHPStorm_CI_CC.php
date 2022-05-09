@@ -90,7 +90,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property Pg $pg                                            Pg Driver Class
  * @property SendSms $sendsms                           Send Sms Class
  * @property SKBsignurl $skbsignurl                     SKB Sign Url Class
- * * @property DbTableBackup $dbtablebackup             DB Table Backup Class
+ * @property DbTableBackup $dbtablebackup               DB Table Backup Class
+ * @property Captcha $captcha                           Captcha Class
+ * @property PageCache $pagecache                       Page Cache File Create Class
  ***************** MY MODELS ************************************************************************
  * @property SampleModel $sampleModel                       Sample Model Class
  ***************** WBS ******************************************************************************

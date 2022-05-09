@@ -96,7 +96,7 @@
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2022/03/2588_03_02.jpg" alt="온라인" />
                     <a href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/192579" title="동영상 패키지" target="_blank" style="position: absolute;left: 63.91%;top: 9.82%;width: 18.01%;height: 2.75%;z-index: 2;"></a>
-                    <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192570" title="김동진" target="_blank" style="position: absolute;left: 69.41%;top: 31.27;top: 30.97%;width: 18.01%;height: 2.79%;z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/194642" title="김동진" target="_blank" style="position: absolute;left: 69.41%;top: 31.27;top: 30.97%;width: 18.01%;height: 2.79%;z-index: 2;"></a>
                     <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192576" title="박초롱" target="_blank" style="position: absolute;left: 69.41%;top: 31.27;top: 39.67%;width: 18.01%;height: 2.79%;z-index: 2;"></a>
                     <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192571" title="이덕훈" target="_blank" style="position: absolute;left: 69.41%;top: 31.27;top: 48.47%;width: 18.01%;height: 2.79%;z-index: 2;"></a>
                     <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/192577" title="임진석" target="_blank" style="position: absolute;left: 69.41%;top: 31.27;top: 57.17%;width: 18.01%;height: 2.79%;z-index: 2;"></a>

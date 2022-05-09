@@ -19,11 +19,11 @@
     .evt_table input[type=checkbox] {height:20px; width:20px}
     .evt_table td li {display:inline-block; float:left; width:50%; margin-bottom:10px}
 
-    .evt_table .btns {margin-top:40px}
+    .evt_table .btns {margin:30px auto}
     .evt_table .btns a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#42425b; margin:0 10px; border-radius:40px; padding:0 50px}
     .evt_table .btns a:hover {background:#fe544a}
 
-    .evt_table .map {border-top:1px solid #ccc; margin-top:50px; padding:50px 0; }
+    .evt_table .map {border-top:1px solid #ccc; margin-top:50px; padding-top:50px; }
     .evt_table .map li {list-style-type:decimal;margin-left:20px; margin-bottom:10px}
     .evt_table .map > div {text-align:left}
     .evt_table .map h5 {font-size:18px; margin-bottom:10px; margin-top:30px}

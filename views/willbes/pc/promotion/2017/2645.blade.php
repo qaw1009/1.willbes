@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px; position: relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a {border:1px solid #000}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
   
@@ -92,23 +92,23 @@ align-items: center;}
     <div class="evtContent NSK">
         <div class="evtCtnsBox eventTop" data-aos="fade-up">
             <div class="wrap">
-        	    <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_top.jpg" alt="비대면 실전 모의고사"/>
+        	    <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_top.jpg" alt="리얼 모의고사"/>
                 <a href="http://naver.me/Ffp78XLz" target="_blank" title="위치" style="position: absolute; left: 65%; top: 75.44%; width: 7.86%; height: 3.11%; z-index: 2;"></a>
             </div>
         </div>
 
         <div class="evtCtnsBox event01" data-aos="fade-up">
-        	<img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01.jpg" alt="실전모의고사 응시"/>
+        	<img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01.jpg" alt="리얼 모의고사 응시"/>
             <ul class="tabs NSK-Black">
                 <li><a href="#tab01">실전 감각 극대화</a></li>
                 <li><a href="#tab02">경쟁자 사이 나의 위치 파악</a></li>
                 <li><a href="#tab03">취약점 파악 및 보완</a></li>
             </ul>
             <div id="tab01" class="tabCts">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01_01.jpg" alt="실전 감각 기르기"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01_01.jpg" alt="실전 감각 극대화"/>
             </div>
             <div id="tab02" class="tabCts">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01_02.jpg" alt="현재 나의 위치 파악"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01_02.jpg" alt="경쟁자 사이 나의 위치 파악"/>
             </div>
             <div id="tab03" class="tabCts">
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01_03.jpg" alt="취약점 파악 및 보완"/>
@@ -117,11 +117,11 @@ align-items: center;}
         
 
         <div class="evtCtnsBox event02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_02.jpg" alt="소문내기 이벤트"/>            
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_02.jpg" alt="교수진"/>            
         </div> 
 
         <div class="evtCtnsBox event03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_03.jpg" alt="이벤트 참여방법"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_03.jpg" alt="동일한 환경"/>
 
             {{--접수전 화면--}}
             <form name="regi_form_register" id="regi_form_register" method="POST" onsubmit="return false;" novalidate="">
@@ -254,12 +254,12 @@ align-items: center;}
         </div>
 
         <div class="evtCtnsBox event04" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_04.jpg"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_04.jpg" alt="소문내기 이벤트"/>
         </div>
 
         <div class="evtCtnsBox event05" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_05.jpg"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_05.jpg" alt="sns"/>
                 <a href="https://cafe.daum.net/teacherexam" title="다음카페" target="_blank" style="position: absolute; left: 31.7%; top: 29.66%; width: 5.36%; height: 50%; z-index: 2;"></a>
                 <a href="https://cafe.naver.com/teacherexam2" title="네이버카페" target="_blank" style="position: absolute; left: 37.77%; top: 29.66%; width: 5.36%; height: 50%; z-index: 2;"></a>
                 <a href="https://www.facebook.com" title="페이스북" target="_blank" style="position: absolute; left: 43.84%; top: 29.66%; width: 5.36%; height: 50%; z-index: 2;"></a>
@@ -365,8 +365,8 @@ align-items: center;}
 
         function popup(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            var url = "https://www.dev.willbes.net/home/html/promotion/2282_popup";
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=980,height=630');
+            var url = "https://www.local.willbes.net/home/html/promotion/2645_popup";
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=600,height=630');
         }
     </script>
 

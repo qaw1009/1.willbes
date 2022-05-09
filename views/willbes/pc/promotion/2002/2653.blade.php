@@ -17,7 +17,6 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
-
         /************************************************************/        
 
         .sky {position:fixed; top:200px; right:10px; z-index:10;}
@@ -34,10 +33,10 @@
         .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:70px}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
-        .wb_police {background:#0A0A0A}
+        .wb_police {background:#0A0A0A; z-index: 2;}
 
-        .evt_top {background:#00c73c;position:relative}
-        .evt_top .ani{position:absolute;left:50%;top:-75px;margin-left:-75px}
+        .evt_top {background:#2784d2;}
+        .evt_top .ani{position:absolute; left:50%; top:-75px; margin-left:-75px; z-index: 1;}
 
         .wb_01 {position: relative; background:#f6f6f6}
         .wb_01 iframe {position:absolute; top:341px; left:50%; margin-left:-450px; width:900px; height:569px; z-index: 2;}     
@@ -107,8 +106,8 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
-            <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2022/04/2623_sky01.png" alt="일정안내" ></a>
-            <a href="#evt_02"><img src="https://static.willbes.net/public/images/promotion/2022/04/2623_sky02.png" alt="신청하기" ></a>
+            <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2022/05/2653_sky01.png" alt="일정안내" ></a>
+            <a href="#evt_02"><img src="https://static.willbes.net/public/images/promotion/2022/05/2653_sky02.png" alt="신청하기" ></a>
         </div>        
 
         <!-- 타이머 -->
@@ -141,33 +140,33 @@
 		</div>
 
         <div class="evtCtnsBox evt_top" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2623_top.jpg" alt="전국모의고사">
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2653_top.jpg" alt="전국모의고사">
             <div class="ani">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2623_top_book.png" alt="5월" data-aos="zoom-in">
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2653_top_omr.png" alt="5월" data-aos="zoom-in">
             </div>
         </div>
 
         <div class="evtCtnsBox wb_01" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/04/2623_01.jpg"  alt="본것과 안본것의 차이"/>
+			<img src="https://static.willbes.net/public/images/promotion/2022/05/2653_01.jpg"  alt="본것과 안본것의 차이"/>
             <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/Ks0XNnezIGQ?rel=0"></iframe>            
 		</div>
 
         <div class="evtCtnsBox wb_02" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/04/2623_02.jpg"  alt="과목개편"/>           
+			<img src="https://static.willbes.net/public/images/promotion/2022/05/2653_02.jpg"  alt="과목개편"/>           
 		</div>
 
         <div class="evtCtnsBox wb_03" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/04/2623_03.jpg"  alt="출제비율"/>           
+			<img src="https://static.willbes.net/public/images/promotion/2022/05/2653_03.jpg"  alt="출제비율"/>           
 		</div>
 
         <div class="evtCtnsBox wb_04" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/04/2623_04.jpg"  alt="지금 응시하세요"/>           
+			<img src="https://static.willbes.net/public/images/promotion/2022/05/2653_04.jpg"  alt="지금 응시하세요"/>           
 		</div>
 
      
         <div class="evtCtnsBox wb_05" id="evt_01" data-aos="fade-up" >
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2623_05.jpg"  alt="시간표 및 장소" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2653_05.jpg"  alt="시간표 및 장소" />
                 <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=355437&" target="_blank" title="응시방법 안내" style="position: absolute; left: 20.29%; top: 86.68%; width: 28.55%; height: 6.59%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/pass/mockTestNew/apply/cate/" target="_blank" title="신청하기" style="position: absolute; left: 51.29%; top: 86.68%; width: 28.55%; height: 6.59%; z-index: 2;"></a>
             </div>
@@ -175,7 +174,7 @@
        
 		<div class="evtCtnsBox wb_06" id="table" data-aos="fade-up">			
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2623_06.jpg"  alt="전국모의고사 시험문의" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2653_06.jpg"  alt="전국모의고사 시험문의" />
                 <p class="NSK-Black">2022년 2차 대비 <strong>전국모의고사</strong> 시험문의</p>
                 <ul>
                     <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="노량진" onmouseover="$('span.area01').addClass('on');" onmouseleave="$('span.area01').removeClass('on');">신청하기</a></li>
@@ -202,14 +201,14 @@
 
 		<div class="evtCtnsBox wb_07" id="evt_02" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2623_07.jpg"  alt="전국모의고사 소문내기 이벤트"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2653_07.jpg"  alt="전국모의고사 소문내기 이벤트"/>
                 <a href="javascript:void(0)" onclick="giveCheck()" title="할인쿠폰 받기" style="position: absolute; left: 29.48%; top: 81.96%; width: 41.5%; height: 9.84%; z-index: 2;"></a>
             </div> 
 		</div>
 
         <div class="evtCtnsBox wb_08" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2623_08.jpg"  alt="이미지 다운받기"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2653_08.jpg"  alt="이미지 다운받기"/>
                 <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute; left: 56.88%; top: 19.46%; width: 29.5%; height: 13.84%; z-index: 2;"></a>               
             </div> 
 		</div>

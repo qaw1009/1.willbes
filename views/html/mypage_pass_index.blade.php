@@ -119,7 +119,8 @@
                             <div class="Tit tx-light-blue NSK">학원강좌<br/>현황</div>
                             <div class="TableInfo">
                                 <dl>
-                                    <dt><div class="subTit">수강신청</div><div><a class="tx-blue" href="#none">5</a>개</div></dt>
+                                    <dt><div class="subTit">수강중</div><div><a class="tx-blue" href="#none">5</a>개</div></dt>
+                                    <dt><div class="subTit">직강보강</div><div><a class="tx-blue" href="#none">1</a>개</div></dt>
                                 </dl>
                             </div>
                         </li>

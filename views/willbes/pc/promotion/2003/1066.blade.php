@@ -23,7 +23,7 @@
         .skybanner {position:fixed;top:100px;right:10px;width:259px; text-align:center; z-index:11;}   
         .skybanner a {display:block;margin-bottom:5px;}          
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/10/1066_top_bg.jpg) center top no-repeat}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/05/1066_top_bg.jpg) center top no-repeat}
 
         .wb_cts00 {padding:50px 0 150px}
 
@@ -42,7 +42,7 @@
         .wb_cts02s {background:#e35330;}
         .wb_cts02s .tImg img {margin:0 5px 10px;width:302px;height:166px;border:2px solid #28364a;}
 
-        .wb_cts03 {padding-bottom:150px}
+        .wb_cts03 {background:#e35330}
 
         .wb_cts04 {background:#e35330;}
 
@@ -93,11 +93,17 @@
             </a>        
         </div>
       
-        <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/1066_top.jpg" title="제니스 영어 한덕현" />
+        <div class="evtCtnsBox wb_top" data-aos="fade-up">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/1066_top.jpg" title="제니스 영어 한덕현" />
+                <a href="#evt02" title="반반똑똑영어" style="position: absolute; left: 70.45%; top: 42.79%; width: 19.82%; height: 4.59%; z-index: 2;"></a>
+                <a href="#cts05" title="영어 커리큘럼" style="position: absolute; left: 70.45%; top: 53.91%; width: 19.82%; height: 4.59%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1067" target="_blank" title="독해첨삭반" style="position: absolute; left: 70.45%; top: 64.9%; width: 19.82%; height: 4.59%; z-index: 2;"></a>
+                <a href="#evt03" title="열공합격" style="position: absolute; left: 80%; top: 75.66%; width: 14.82%; height: 11.63%; z-index: 2;"></a>
+            </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts01" id="newTopDday">
+        <div class="evtCtnsBox wb_cts01" id="newTopDday" data-aos="fade-up">
             <div class="time NGEB">
                 <ul>
                     <li class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }}</span> 마감!</li>
@@ -116,6 +122,13 @@
                 </ul>
             </div>
         </div>   
+
+        <div class="evtCtnsBox wb_cts03" id="evt03" data-aos="fade-up">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/1066_30pack.jpg" title="30일 완성 pack" />
+                <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/194835" target="_blnak" style="position: absolute; left: 22.86%; top: 76.75%; width: 53.66%; height: 7.67%; z-index: 2;"></a>
+            </div>
+        </div>
         
         <div class="evtCtnsBox wb_cts00" data-aos="fade-up">
 			<img src="https://static.willbes.net/public/images/promotion/2022/04/1066_00.jpg" title="합격전략 공개" />
@@ -152,18 +165,18 @@
 			</div>
 		</div>
 
-        <div class="evtCtnsBox wb_cts02">
+        <div class="evtCtnsBox wb_cts02" id="evt02" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_02.jpg" title="반반한 모의고사 무료방송" />
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1676" target="_blnak" style="position: absolute; left: 22.86%; top: 78.76%; width: 54.02%; height: 9.15%; z-index: 2;"></a>
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts04">
+        <div class="evtCtnsBox wb_cts04" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_05.jpg" alt="영어는 어려운 과목이 아닙니다." />   
         </div>
 
-        <div class="evtCtnsBox wb_cts05" id="cts05">
+        <div class="evtCtnsBox wb_cts05" id="cts05" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1066_06.jpg" alt="커리큘럼"/>   
             <table>
                 <col />
@@ -253,6 +266,14 @@
 
     </div>
     <!-- End Container -->
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      $(document).ready(function(){
+        AOS.init();
+      });
+    </script>
 
     <script>  
         /*디데이카운트다운*/

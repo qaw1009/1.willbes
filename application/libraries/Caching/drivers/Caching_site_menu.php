@@ -183,12 +183,13 @@ class Caching_site_menu extends CI_Driver
                     , if(SC.CateDepth = 1, 0, SC.OrderNum) as OrderNum
                 from ' . $_table['category'] . ' as SC
                     left join ' . $_table['category'] . ' as PC
-                        on SC.ParentCateCode = PC.CateCode and PC.IsStatus = "Y"			
+                        on SC.ParentCateCode = PC.CateCode			
                 where SC.SiteCode = ?
                     and SC.IsUse = "Y"
                     and SC.IsFrontUse = "Y"
                     and SC.IsDisp = "Y"                    
                     and SC.IsStatus = "Y"
+                    and (PC.CateCode is null or (PC.IsUse = "Y" and PC.IsFrontUse = "Y" and PC.IsDisp = "Y" and PC.IsStatus = "Y"))
             ) as U
             order by GroupOrderNum asc, OrderNum asc   
         ';

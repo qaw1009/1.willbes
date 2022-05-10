@@ -49,14 +49,15 @@ class Token extends \app\controllers\RestController
 
         // 사용자명 체크
         if (array_key_exists($client_id, $valid_logins) === false) {
-            $this->api_error(lang('text_rest_invalid_credentials'), _HTTP_UNAUTHORIZED);
+            $this->api_error(lang('text_rest_unauthorized'), _HTTP_UNAUTHORIZED);
         }
 
         // 비밀키
         $client_secret = hash_hmac($algo, $valid_logins[$client_id], $client_id);
 
-        // 토큰 기본 문자열
-        $chk_state = md5(strtoupper($method) . ':' . parse_url($uri, PHP_URL_PATH) . ':' . $nonce);
+        // 토큰 상태값
+        $chk_state = md5($client_id . ':' . strtoupper($method) . ':' . parse_url($uri, PHP_URL_PATH) . ':' . $nonce);
+        $chk_state = hash_hmac($algo, $chk_state, $client_secret);
 
         // 상태값 비교
         if (empty($state) === false && $state !== $chk_state) {
@@ -64,13 +65,10 @@ class Token extends \app\controllers\RestController
         }
 
         // 토큰 생성
-        $token = $client_id . ':' . config_item('rest_realm') . ':' . $chk_state;
-        $token = md5(hash_hmac($algo, $token, $client_secret));
+        $token = base64_encode($client_id . ':' . $nonce . ':' . $chk_state);
 
         $results = [
-            config_item('rest_user_name') => $client_id,
-            config_item('rest_nonce_name') => $nonce,
-            config_item('rest_token_name') => $token
+            'Authorization' => config_item('rest_realm') . ' ' . $token
         ];
 
         return $this->api_success($results);

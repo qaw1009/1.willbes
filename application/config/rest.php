@@ -121,6 +121,7 @@ $config['rest_realm'] = 'WILL-API';
 | 'session' Check for a PHP session variable. See 'auth_source' to set the
 |           authorization key
 | 'token'   Custom token authentication method
+| 'oauth'   Custom oauth authentication method
 |
 */
 //$config['rest_auth'] = false;
@@ -657,16 +658,62 @@ $config['rest_server'] = 'https://api' . ENV_DOMAIN . '.' . config_item('base_do
 
 /*
 |--------------------------------------------------------------------------
-| REST API Token Auth Variable
-|--------------------------------------------------------------------------
-*/
-$config['rest_user_name'] = 'X-API-USER';
-$config['rest_nonce_name'] = 'X-API-NONCE';
-$config['rest_token_name'] = 'X-API-TOKEN';
-
-/*
-|--------------------------------------------------------------------------
 | REST API Token available time (second)
 |--------------------------------------------------------------------------
 */
 $config['rest_token_limit_time'] = 60;
+
+/*
+|--------------------------------------------------------------------------
+| REST OAuth Client Info
+|--------------------------------------------------------------------------
+|
+| response_type : 인증코드 발급구분 (code : 인증코드 발급 => 인증코드 인증 => 토큰 발급, token : 직접 토큰 발급)
+| callback_url : 인증코드 또는 토큰이 전달되는 클라이언트 리다이렉트 URL
+|
+*/
+$config['rest_oauth_client_info'] = [
+    'willbes' => ['response_type' => 'code', 'callback_url' => 'https:' . site_url('/sso/client/callback')],
+];
+
+/*
+|--------------------------------------------------------------------------
+| REST OAuth Client Table Name (refresh token을 사용할 경우 필수)
+|--------------------------------------------------------------------------
+| Default table schema:
+|   CREATE TABLE `wb_api_client` (
+|       `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '클라이언트식별자',
+|       `client_id` VARCHAR(20) NOT NULL COMMENT '클라이언트아이디',
+|       `client_secret` VARCHAR(200) NOT NULL COMMENT '클라이언트비밀키',
+|       `response_type` VARCHAR(20) NOT NULL COMMENT '권한부여요청응답구분(code, token)',
+|       `redirect_uri` VARCHAR(200) DEFAULT NULL COMMENT '리다이렉트URI',
+|       `refresh_token` VARCHAR(200) DEFAULT NULL COMMENT '리프레시토큰',
+|       `refresh_token_expired_at` INT(11) DEFAULT NULL COMMENT '리프레시토큰만료일시',
+|       `date_created` datetime NOT NULL DEFAULT current_timestamp() COMMENT '등록일시',
+|       `date_modified` datetime DEFAULT NULL ON UPDATE current_timestamp() COMMENT '수정일시',
+|       PRIMARY KEY (`id`),
+|       UNIQUE KEY `UIX_wb_api_client` (`client_id`)
+|   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+*/
+$config['rest_oauth_client_table'] = 'wb_api_client';
+
+/*
+|--------------------------------------------------------------------------
+| REST OAuth Enable Refresh Token (클라이언트 테이블 생성 필수)
+|--------------------------------------------------------------------------
+*/
+$config['rest_oauth_enable_refresh_token'] = false;
+
+/*
+|--------------------------------------------------------------------------
+| REST OAuth Authorization Header Token Type (Header 양식 => Authorization: Bearer `access token`)
+|--------------------------------------------------------------------------
+*/
+$config['rest_oauth_token_type'] = 'bearer';
+
+/*
+|--------------------------------------------------------------------------
+| REST OAuth Client Access Token Cookie Name (클라이언트가 access token값을 저장하는 쿠키명)
+|--------------------------------------------------------------------------
+*/
+$config['rest_oauth_client_access_token_name'] = 'api_oauth_access_token';

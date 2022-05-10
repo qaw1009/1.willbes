@@ -96,9 +96,10 @@ abstract class RestController extends \restserver\libraries\REST_Controller
     /**
      * REST API parameter validation check
      * @param array $rules [validation rules]
+     * @param null|string $error_response [validation error response type]
      * @return bool
      */
-    public function validate($rules = array())
+    public function validate($rules = array(), $error_response = null)
     {
         $this->load->library('form_validation');
         $rule_fields = array_fill_keys(array_pluck($rules, 'field'), '');
@@ -108,7 +109,16 @@ abstract class RestController extends \restserver\libraries\REST_Controller
         $this->form_validation->set_rules($rules);
 
         if ($this->form_validation->run() === false) {
-            $this->api_error(lang('text_rest_validation_error'), _HTTP_VALIDATION_ERROR, $this->form_validation->error_array());
+            if (empty($error_response) === false) {
+                $error_msg = current($this->form_validation->error_array());
+                if ($error_response == 'error_msg') {
+                    return $error_msg;
+                } else {
+                    show_alert($error_msg, $error_response, false);
+                }
+            } else {
+                $this->api_error(lang('text_rest_validation_error'), _HTTP_VALIDATION_ERROR, $this->form_validation->error_array());
+            }
             return false;
         }
 

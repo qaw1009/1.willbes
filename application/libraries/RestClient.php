@@ -34,7 +34,7 @@ class RestClient
     protected $http_user = null;
     protected $http_pass = null;
 
-    protected $api_key_name = null;
+    protected $api_key_name = 'X-API-KEY';
     protected $api_key = null;
 
     protected $ssl_verify_peer = false;
@@ -76,19 +76,16 @@ class RestClient
     public function initialize($config = [])
     {
         // get global config
-        if (empty($this->rest_configs) === true) {
-            $config_file = isset($config['config']) === true ? $config['config'] : $this->config_file;
-            $this->_CI->load->config($config_file, true, true);
-            $this->rest_configs = element($config_file, $this->_CI->config->config);
-        }
+        $config_file = element('config', $config, $this->config_file);
+        $this->_CI->load->config($config_file, true);
+        $this->rest_configs = element($config_file, $this->_CI->config->config);
 
-        $this->rest_server = rtrim(isset($config['server']) === true ? $config['server'] : $this->rest_configs['rest_server'], '/');
+        $this->rest_server = rtrim(element('server', $config, $this->rest_configs['rest_server']), '/');
+        $this->http_auth = element('http_auth', $config, $this->rest_configs['rest_auth']);
+        $this->http_user = element('http_user', $config, key($this->rest_configs['rest_valid_logins']));
+        $this->http_pass = element('http_pass', $config, current($this->rest_configs['rest_valid_logins']));
 
-        $this->http_auth = isset($config['http_auth']) === true ? $config['http_auth'] : $this->rest_configs['rest_auth'];
-        $this->http_user = isset($config['http_user']) === true ? $config['http_user'] : key($this->rest_configs['rest_valid_logins']);
-        $this->http_pass = isset($config['http_pass']) === true ? $config['http_pass'] : current($this->rest_configs['rest_valid_logins']);
-
-        $this->api_key_name = isset($config['api_key_name']) === true ? $config['api_key_name'] : $this->rest_configs['rest_key_name'];
+        $this->api_key_name = element('api_key_name', $config, $this->rest_configs['rest_key_name']);
         isset($config['api_key']) === true && $this->api_key = $config['api_key'];
 
         isset($config['ssl_verify_peer']) === true && $this->ssl_verify_peer = $config['ssl_verify_peer'];
@@ -192,6 +189,8 @@ class RestClient
         if ($this->http_auth !== false && empty($this->http_user) === false) {
             if ($this->http_auth == 'token') {
                 $this->http_token($this->http_user, $this->http_pass, $method, $uri, $params);
+            } elseif ($this->http_auth == 'oauth') {
+                $this->http_oauth();
             } else {
                 $this->http_login($this->http_user, $this->http_pass, $this->http_auth);
             }
@@ -204,7 +203,7 @@ class RestClient
 
         // Send cookies with curl
         if ($this->send_cookies === true) {
-            $this->_CI->curl->setCookies($_COOKIE);
+            $this->_CI->curl->setCookies($this->_CI->input->cookie());
         }
 
         // Set the Content-Type (contributed by https://github.com/eriklharper)
@@ -285,7 +284,7 @@ class RestClient
     public function api_key($key, $name = '')
     {
         if (empty($name) === true) {
-            $name = 'X-API-KEY';
+            $name = $this->api_key_name;
         }
 
         $this->http_header($name, $key);
@@ -353,14 +352,20 @@ class RestClient
         $secret = hash_hmac('sha256', $password, $username);
 
         //$params_value = md5(implode('', array_values($params)));
-        $md5 = md5(strtoupper($method) . ':' . parse_url($uri, PHP_URL_PATH) . ':' . $nonce);
+        $state = md5($username . ':' . strtoupper($method) . ':' . parse_url($uri, PHP_URL_PATH) . ':' . $nonce);
+        $state = hash_hmac('sha256', $state, $secret);
+        $token = base64_encode($username . ':' . $nonce . ':' . $state);
 
-        $token = $username . ':' . $this->rest_configs['rest_realm'] . ':' . $md5;
-        $token = md5(hash_hmac('sha256', $token, $secret));
+        $this->http_header('Authorization', $this->rest_configs['rest_realm'] . ' ' . $token);
+    }
 
-        $this->http_header($this->rest_configs['rest_user_name'], $username);
-        $this->http_header($this->rest_configs['rest_nonce_name'], $nonce);
-        $this->http_header($this->rest_configs['rest_token_name'], $token);
+    /**
+     * Set http oauth (auth => oauth)
+     */
+    public function http_oauth()
+    {
+        $access_token = $this->_CI->input->cookie($this->_CI->config->item('cookie_prefix') . $this->rest_configs['rest_oauth_client_access_token_name']);
+        $this->http_header('Authorization', ucfirst($this->rest_configs['rest_oauth_token_type']) . ' ' . $access_token);
     }
 
     /**

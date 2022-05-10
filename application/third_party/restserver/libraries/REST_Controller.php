@@ -409,10 +409,7 @@ abstract class REST_Controller extends \CI_Controller
         // Only allow ajax requests
         if ($this->input->is_ajax_request() === false && $this->config->item('rest_ajax_only')) {
             // Display an error response
-            $this->response([
-                $this->config->item('rest_status_field_name')  => false,
-                $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_ajax_only'),
-            ], self::HTTP_NOT_ACCEPTABLE);
+            $this->_error_response($this->lang->line('text_rest_ajax_only'), self::HTTP_NOT_ACCEPTABLE);
         }
 
         // When there is no specific override for the current class/method, use the default auth value set in the config
@@ -438,6 +435,9 @@ abstract class REST_Controller extends \CI_Controller
                     break;
                 case 'token':
                     $this->_check_token();
+                    break;
+                case 'oauth':
+                    $this->_check_access_token();
                     break;
             }
         }
@@ -511,10 +511,8 @@ abstract class REST_Controller extends \CI_Controller
     {
         // Should we answer if not over SSL?
         if ($this->config->item('force_https') && $this->request->ssl === false) {
-            $this->response([
-                $this->config->item('rest_status_field_name')  => false,
-                $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_unsupported'),
-            ], self::HTTP_FORBIDDEN);
+            // Display an error response
+            $this->_error_response($this->lang->line('text_rest_unsupported'), self::HTTP_FORBIDDEN);
         }
 
         // Remove the supported format from the function name e.g. index.json => index
@@ -544,10 +542,8 @@ abstract class REST_Controller extends \CI_Controller
                 exit;
             }
 
-            $this->response([
-                $this->config->item('rest_status_field_name')  => false,
-                $this->config->item('rest_message_field_name') => sprintf($this->lang->line('text_rest_invalid_api_key'), $this->rest->key),
-            ], self::HTTP_FORBIDDEN);
+            // Display an error response
+            $this->_error_response(sprintf($this->lang->line('text_rest_invalid_api_key'), $this->rest->key), self::HTTP_FORBIDDEN);
         }
 
         // Check to see if this key has access to the requested controller
@@ -556,26 +552,22 @@ abstract class REST_Controller extends \CI_Controller
                 $this->_log_request();
             }
 
-            $this->response([
-                $this->config->item('rest_status_field_name')  => false,
-                $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_api_key_unauthorized'),
-            ], self::HTTP_UNAUTHORIZED);
+            // Display an error response
+            $this->_error_response($this->lang->line('text_rest_api_key_unauthorized'), self::HTTP_UNAUTHORIZED);
         }
 
         // Sure it exists, but can they do anything with it?
         if (!method_exists($this, $controller_method)) {
-            $this->response([
-                $this->config->item('rest_status_field_name')  => false,
-                $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_unknown_method'),
-            ], self::HTTP_METHOD_NOT_ALLOWED);
+            // Display an error response
+            $this->_error_response($this->lang->line('text_rest_unknown_method'), self::HTTP_METHOD_NOT_ALLOWED);
         }
 
         // Doing key related stuff? Can only do it if they have a key right?
         if ($this->config->item('rest_enable_keys') && empty($this->rest->key) === false) {
             // Check the limit
             if ($this->config->item('rest_enable_limits') && $this->_check_limit($controller_method) === false) {
-                $response = [$this->config->item('rest_status_field_name') => false, $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_api_key_time_limit')];
-                $this->response($response, self::HTTP_UNAUTHORIZED);
+                // Display an error response
+                $this->_error_response($this->lang->line('text_rest_api_key_time_limit'), self::HTTP_UNAUTHORIZED);
             }
 
             // If no level is set use 0, they probably aren't using permissions
@@ -589,15 +581,14 @@ abstract class REST_Controller extends \CI_Controller
             }
             if ($authorized === false) {
                 // They don't have good enough perms
-                $response = [$this->config->item('rest_status_field_name') => false, $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_api_key_permissions')];
-                $this->response($response, self::HTTP_UNAUTHORIZED);
+                $this->_error_response($this->lang->line('text_rest_api_key_permissions'), self::HTTP_UNAUTHORIZED);
             }
         }
 
         //check request limit by ip without login
         elseif ($this->config->item('rest_limits_method') == 'IP_ADDRESS' && $this->config->item('rest_enable_limits') && $this->_check_limit($controller_method) === false) {
-            $response = [$this->config->item('rest_status_field_name') => false, $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_ip_address_time_limit')];
-            $this->response($response, self::HTTP_UNAUTHORIZED);
+            // Display an error response
+            $this->_error_response($this->lang->line('text_rest_ip_address_time_limit'), self::HTTP_UNAUTHORIZED);
         }
 
         // No key stuff, but record that stuff is happening
@@ -734,6 +725,26 @@ abstract class REST_Controller extends \CI_Controller
     public function set_response($data = null, $http_code = null)
     {
         $this->response($data, $http_code, true);
+    }
+
+    /**
+     * error response
+     *
+     * @param string $error_msg
+     * @param null|int $http_code
+     * @param bool $is_return_msg
+     * @return mixed|void
+     */
+    private function _error_response($error_msg, $http_code = null, $is_return_msg = false)
+    {
+        if ($is_return_msg === true) {
+            return $error_msg;
+        } else {
+            $this->response([
+                $this->config->item('rest_status_field_name')  => false,
+                $this->config->item('rest_message_field_name') => $error_msg,
+            ], $http_code);
+        }
     }
 
     /**
@@ -1746,10 +1757,7 @@ abstract class REST_Controller extends \CI_Controller
         // If false, then the user isn't logged in
         if (!$this->session->userdata($key)) {
             // Display an error response
-            $this->response([
-                $this->config->item('rest_status_field_name')  => false,
-                $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_unauthorized'),
-            ], self::HTTP_UNAUTHORIZED);
+            $this->_error_response($this->lang->line('text_rest_unauthorized'), self::HTTP_UNAUTHORIZED);
         }
     }
 
@@ -1765,45 +1773,115 @@ abstract class REST_Controller extends \CI_Controller
             $this->_check_whitelist_auth();
         }
 
-        $rest_user_name = $this->config->item('rest_user_name');
-        $rest_nonce_name = $this->config->item('rest_nonce_name');
-        $rest_token_name = $this->config->item('rest_token_name');
+        $http_auth = $this->input->server('HTTP_AUTHORIZATION') ?: $this->head('Authorization');
+        if (empty($http_auth) === true) {
+            // Display an error response
+            $this->_error_response($this->lang->line('text_rest_unauthorized'), self::HTTP_UNAUTHORIZED);
+        }
 
-        $username = isset($this->_args[$rest_user_name]) === true ? $this->_args[$rest_user_name] : $this->head(ucwords(strtolower($rest_user_name), '-'));
-        $nonce = isset($this->_args[$rest_nonce_name]) === true ? $this->_args[$rest_nonce_name] : $this->head(ucwords(strtolower($rest_nonce_name), '-'));
-        $token = isset($this->_args[$rest_token_name]) === true ? $this->_args[$rest_token_name] : $this->head(ucwords(strtolower($rest_token_name), '-'));
+        $rest_realm = substr($http_auth, 0, strpos($http_auth, ' '));
+        $token = base64_decode(substr($http_auth, strpos($http_auth, ' ') + 1));
         $valid_logins = (array) $this->config->item('rest_valid_logins');
 
-        if (array_key_exists($username, $valid_logins) === false) {
+        // 토큰 타입 체크
+        if ($rest_realm != $this->config->item('rest_realm')) {
             // Display an error response
-            $this->response([
-                $this->config->item('rest_status_field_name')  => false,
-                $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_unauthorized'),
-            ], self::HTTP_UNAUTHORIZED);
-        } else {
-            $timestamp = $nonce;    //substr($nonce, 6)
+            $this->_error_response($this->lang->line('text_rest_unauthorized'), self::HTTP_UNAUTHORIZED);
+        }
 
-            if (is_numeric($timestamp) === true && intval($this->config->item('rest_token_limit_time')) < (time() - $timestamp)) {
-                // Display an error response
-                $this->response([
-                    $this->config->item('rest_status_field_name')  => false,
-                    $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_token_time_limit'),
-                ], self::HTTP_UNAUTHORIZED);
-            } else {
-                $secret = hash_hmac('sha256', $valid_logins[$username], $username);
-                //$params_value = md5(implode('', array_values($this->{strtolower($this->request->method)}())));
-                $md5 = md5(strtoupper($this->request->method) . ':' . parse_url($this->input->server('REQUEST_URI'), PHP_URL_PATH) . ':' . $timestamp);
-                $valid_response = $username . ':' . $this->config->item('rest_realm') . ':' . $md5;
-                $valid_response = md5(hash_hmac('sha256', $valid_response, $secret));
+        // token 체크
+        if (substr_count($token, ':') != 2) {
+            // Display an error response
+            $this->_error_response($this->lang->line('text_rest_unauthorized'), self::HTTP_UNAUTHORIZED);
+        }
 
-                if (strcasecmp($token, $valid_response) !== 0) {
-                    // Display an error response
-                    $this->response([
-                        $this->config->item('rest_status_field_name')  => false,
-                        $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_unauthorized'),
-                    ], self::HTTP_UNAUTHORIZED);
-                }
-            }
+        // token 세부값 셋팅
+        list($client_id, $nonce, $state) = explode(':', $token);
+
+        // 클라이언트 아이디 체크
+        if (array_key_exists($client_id, $valid_logins) === false) {
+            // Display an error response
+            $this->_error_response($this->lang->line('text_rest_unauthorized'), self::HTTP_UNAUTHORIZED);
+        }
+
+        // token state값 체크
+        $secret = hash_hmac('sha256', $valid_logins[$client_id], $client_id);
+        //$params_value = md5(implode('', array_values($this->{strtolower($this->request->method)}())));
+        $chk_state = md5($client_id . ':' . strtoupper($this->request->method) . ':' . parse_url($this->input->server('REQUEST_URI'), PHP_URL_PATH) . ':' . $nonce);
+        $chk_state = hash_hmac('sha256', $chk_state, $secret);
+        if (hash_equals($state, $chk_state) === false) {
+            // Display an error response
+            $this->_error_response($this->lang->line('text_rest_invalid_credentials'), self::HTTP_UNAUTHORIZED);
+        }
+
+        // token 유효기간 체크 (substr($nonce, 6))
+        if (is_numeric($nonce) === true && intval($this->config->item('rest_token_limit_time')) < (time() - $nonce)) {
+            // Display an error response
+            $this->_error_response($this->lang->line('text_rest_token_time_limit'), self::HTTP_UNAUTHORIZED);
+        }
+    }
+
+    /**
+     * Check to see if the user is logged in with api access token
+     *
+     * @param bool $is_return
+     * @return bool|mixed|string|void
+     */
+    protected function _check_access_token($is_return = false)
+    {
+        // If whitelist is enabled it has the first chance to kick them out
+        if ($this->config->item('rest_ip_whitelist_enabled')) {
+            $this->_check_whitelist_auth();
+        }
+
+        $http_auth = $this->input->server('HTTP_AUTHORIZATION') ?: $this->head('Authorization');
+        if (empty($http_auth) === true) {
+            // Display an error response
+            return $this->_error_response($this->lang->line('text_rest_unauthorized'), self::HTTP_UNAUTHORIZED, $is_return);
+        }
+
+        $token_type = strtolower(substr($http_auth, 0, strpos($http_auth, ' ')));
+        $access_token = base64_decode(substr($http_auth, strpos($http_auth, ' ') + 1));
+        $valid_logins = (array) $this->config->item('rest_valid_logins');
+
+        // 토큰 타입 체크
+        if ($token_type != $this->config->item('rest_oauth_token_type')) {
+            // Display an error response
+            return $this->_error_response($this->lang->line('text_rest_unauthorized'), self::HTTP_UNAUTHORIZED, $is_return);
+        }
+
+        // access token 체크
+        if (substr_count($access_token, '.') != 4) {
+            // Display an error response
+            return $this->_error_response($this->lang->line('text_rest_unauthorized'), self::HTTP_UNAUTHORIZED, $is_return);
+        }
+
+        // access token 세부값 셋팅
+        list($client_id, $code, $issued_at, $expired_at, $signature) = explode('.', $access_token);
+
+        // 클라이언트 아이디 체크
+        if (array_key_exists($client_id, $valid_logins) === false) {
+            // Display an error response
+            return $this->_error_response($this->lang->line('text_rest_unauthorized'), self::HTTP_UNAUTHORIZED, $is_return);
+        }
+
+        // access token signature값 체크
+        $client_secret = hash_hmac('sha256', $valid_logins[$client_id], $client_id);    // 비밀키
+        $chk_signature = hash_hmac('sha256', substr($access_token, 0, strrpos($access_token, '.')), $client_secret);
+        if (hash_equals($signature, $chk_signature) === false) {
+            // Display an error response
+            return $this->_error_response($this->lang->line('text_rest_invalid_credentials'), self::HTTP_UNAUTHORIZED, $is_return);
+        }
+
+        // access token 유효기간 체크
+        $mktime = time();
+        if ($mktime < $issued_at || $mktime > $expired_at) {
+            // Display an error response
+            return $this->_error_response($this->lang->line('text_rest_token_time_limit'), self::HTTP_UNAUTHORIZED, $is_return);
+        }
+
+        if ($is_return === true) {
+            return true;
         }
     }
 
@@ -1892,10 +1970,7 @@ abstract class REST_Controller extends \CI_Controller
         // Check if the string don't compare (case-insensitive)
         if (strcasecmp($digest['response'], $valid_response) !== 0) {
             // Display an error response
-            $this->response([
-                $this->config->item('rest_status_field_name')  => false,
-                $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_invalid_credentials'),
-            ], self::HTTP_UNAUTHORIZED);
+            $this->_error_response($this->lang->line('text_rest_invalid_credentials'), self::HTTP_UNAUTHORIZED);
         }
     }
 
@@ -1912,10 +1987,7 @@ abstract class REST_Controller extends \CI_Controller
         // Returns 1, 0 or FALSE (on error only). Therefore implicitly convert 1 to TRUE
         if (preg_match($pattern, $this->config->item('rest_ip_blacklist'))) {
             // Display an error response
-            $this->response([
-                $this->config->item('rest_status_field_name')  => false,
-                $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_ip_denied'),
-            ], self::HTTP_UNAUTHORIZED);
+            $this->_error_response($this->lang->line('text_rest_ip_denied'), self::HTTP_UNAUTHORIZED);
         }
     }
 
@@ -1943,10 +2015,8 @@ abstract class REST_Controller extends \CI_Controller
         }
 
         if (in_array($this->input->ip_address(), $whitelist) === false) {
-            $this->response([
-                $this->config->item('rest_status_field_name')  => false,
-                $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_ip_unauthorized'),
-            ], self::HTTP_UNAUTHORIZED);
+            // Display an error response
+            $this->_error_response($this->lang->line('text_rest_ip_unauthorized'), self::HTTP_UNAUTHORIZED);
         }
     }
 
@@ -1979,10 +2049,7 @@ abstract class REST_Controller extends \CI_Controller
         }
 
         // Display an error response
-        $this->response([
-            $this->config->item('rest_status_field_name')  => false,
-            $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_unauthorized'),
-        ], self::HTTP_UNAUTHORIZED);
+        $this->_error_response($this->lang->line('text_rest_unauthorized'), self::HTTP_UNAUTHORIZED);
     }
 
     /**

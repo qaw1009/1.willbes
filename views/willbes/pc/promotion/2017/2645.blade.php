@@ -203,7 +203,7 @@ align-items: center;}
                     </div>
                     <div class="btns">
                         <input type="checkbox" name="is_chk" id="is_chk" style="display: none;" checked/>
-                        <a href="javascript:void(0);" onclick="directPayment();">결제하기 ></a>
+                        <a href="javascript:void(0);" onclick="directPayment();">신청하기 ></a>
                         {{--<a href="#none">모의고사 마감</a>--}}
                     </div>
                     {{--<div class="popup"><span class="NSK-Black">마감되었습니다.</span></div>--}}

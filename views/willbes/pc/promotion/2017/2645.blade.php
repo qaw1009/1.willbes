@@ -58,10 +58,15 @@
         .evt_table .btns a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#42425b; margin:0 10px; border-radius:40px; padding:0 50px}
         .evt_table .btns a:hover {background:#fe544a}
 
-
         .evt_table .popup {position:absolute; top:0; left:0; width:100%; height: 100%; background-color:rgba(0,0,0,.7); display: flex; justify-content: center;
 align-items: center;}
         .evt_table .popup span {display:block; font-size:48px; color:#fff; text-shadow: 0 5px 5px rgba(0,0,0,.5);}
+
+        .evt_table .txtinfo {display:flex; text-align:left; margin-bottom:50px; background:#444; color:#fff}
+        .evt_table .txtinfo div,
+        .evt_table .txtinfo ul {padding:20px;}
+        .evt_table .txtinfo div {font-size:16px; font-weight:bold; background:#222; display:flex; justify-content: center; align-items: center; text-align:center; width:15%}
+        .evt_table .txtinfo li {list-style: dimical; margin-left:15px}
 
         .event02 {background:#dcf9f7}
 
@@ -77,8 +82,6 @@ align-items: center;}
         .urlWrap .evt_table table td {font-size:14px; text-align:center}
         .urlWrap .evt_table table td:nth-child(2) {text-align:left}
 
-
-
         .evtBox {width:1120px; margin:0 auto; position:relative}
         .evtBox a:hover {background:rgba(0,0,0,.2)}
 
@@ -87,6 +90,12 @@ align-items: center;}
 		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
         .evtInfoBox ul {margin-bottom:30px}
         .evtInfoBox li {list-style-type: decimal;margin-left:20px; margin-bottom:10px}
+        .evtInfoBox li table {margin-top:10px; border:1px solid #ccc}
+        .evtInfoBox li tr {border-bottom:1px solid #ccc}
+        .evtInfoBox li th,
+        .evtInfoBox li td {font-size:12px; padding:8px; text-align:center; border-right:1px solid #ccc;}
+        .evtInfoBox li th {font-size:13px; font-weight:bold; background:#111}
+        .evtInfoBox li tbody th {background:#222}
     </style>
 
     <div class="evtContent NSK">
@@ -99,18 +108,13 @@ align-items: center;}
 
         <div class="evtCtnsBox event01" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01.jpg" alt="리얼 모의고사 응시"/>
-            <ul class="tabs NSK-Black">
-                <li><a href="#tab01">실전 감각 극대화</a></li>
-                <li><a href="#tab02">경쟁자 사이 나의 위치 파악</a></li>
-                <li><a href="#tab03">취약점 파악 및 보완</a></li>
-            </ul>
-            <div id="tab01" class="tabCts">
+            <div>
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01_01.jpg" alt="실전 감각 극대화"/>
             </div>
-            <div id="tab02" class="tabCts">
+            <div>
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01_02.jpg" alt="경쟁자 사이 나의 위치 파악"/>
             </div>
-            <div id="tab03" class="tabCts">
+            <div>
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01_03.jpg" alt="취약점 파악 및 보완"/>
             </div>
         </div>       
@@ -132,6 +136,16 @@ align-items: center;}
                 <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
                 <div class="evt_table p_re">
+                    <div class="txtinfo">
+                        <div>모의고사<br>신청 관련<br>안내사항</div>
+                        <ul>
+                            <li>모의고사 신청을 위해서는 반드시 로그인을 하셔야 합니다.</li>
+                            <li>모의고사는 원하는 출제교수진의 과목을 체크하시면 됩니다.</li>
+                            <li>모의고사는 신청은 교육학과 전공과목 각각 하나씩 체크하시면 됩니다.</li>
+                            <li>모의고사 응시료는 20,000원입니다. 윌비스임용의 수강생인 경우, 1만원 할인 쿠폰이 발행되었습니다. (할인권을 이용하여 접수하시면 됩니다)</li>
+                            <li>시험장의 특성을 고려하여 과목별로 조기 마감할 수 있습니다.</li>
+                        </ul> 
+                    </div>
                     <table cellspacing="2" cellpadding="2">
                         <col width="15%" />
                         <col/>
@@ -302,7 +316,119 @@ align-items: center;}
                     <li>수험생은 시험도중 질문을 할 수 없 수험생은 수험표, 신분증, 필기도구, 아날로그 손목시계 이외의 물품은 일절 소지(반입)할 수 없습니다. 소지 금지 물품을 소지한 경우, 부정행위자로 간주되니, 시험 시작 전에 가방에 넣어서 앞쪽으로 제출해 주시기 바랍니다.</li>
                     <li>시험 실시중 별도의 점심시간이 없으므로 준비하신 도시락 또는 간식은 휴식시간을 이용하여 드신 후, 반드시 뒷정리를 해 주 시기 바랍니다.</li>
                     <li>부정행위자의 답안지는 무효로 하고 퇴장시키며, 부정행위자는 관계 법령에 의거 제재를 받습니다. </li>
-                    <li>본 Real 모의고사 종료 후, 홈페이지를 통하여 해설강의 및 성적통계가 제공됩니다. (공개일정은 추후 공개)</li>
+                    <li>본 Real 모의고사 종료 후, 과목에 따라서 채점기준표(해설지)제공, 채점서비스, 해설강의가 제공됩니다. (해설강의 일정은 추후 공개)
+                        <table cellspacing="0" cellpadding="0">
+                            <col />
+                            <col span="3" />
+                            <col />
+                            <col />
+                            <col span="2" />
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">구분</th>
+                                    <th colspan="3">교육학</th>
+                                    <th colspan="2">국어</th>
+                                    <th colspan="2">수학</th>
+                                </tr>
+                                <tr>
+                                    <th>이경범</th>
+                                    <th>정현</th>
+                                    <th>신태식</th>
+                                    <th>송원영/권보민</th>
+                                    <th>구동언</th>
+                                    <th>김철홍/박태영</th>
+                                    <th>김현웅/박혜향</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>해설지제공</th>
+                                    <td>O</td>
+                                    <td>O</td>
+                                    <td>O</td>
+                                    <td>O</td>
+                                    <td>O</td>
+                                    <td>O</td>
+                                    <td>O</td>
+                                </tr>
+                                <tr>
+                                    <th>해설강의</th>
+                                    <td>O</td>
+                                    <td>O</td>
+                                    <td>O</td>
+                                    <td>O</td>
+                                    <td>X</td>
+                                    <td>O</td>
+                                    <td>O</td>
+                                </tr>
+                                <tr>
+                                    <th>채점서비스</th>
+                                    <td>O</td>
+                                    <td>O</td>
+                                    <td>O</td>
+                                    <td>O<br />
+                                    (국교/문학파트만 채점)<br />
+                                    (선착순 100명 채점)</td>
+                                    <td>O</td>
+                                    <td>O</td>
+                                    <td>O<br />
+                                    (선착순 30명 채점)</td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">구분</th>
+                                    <th colspan="2">도덕윤리</th>
+                                    <th>일반사회</th>
+                                    <th>역사</th>
+                                    <th>음악</th>
+                                    <th>전기.전자</th>
+                                    <th>중국어</th>
+                                </tr>
+                                <tr>
+                                    <th>김병찬</th>
+                                    <th>김민응</th>
+                                    <th>허역 팀</th>
+                                    <th>김종권</th>
+                                    <th>다이애나</th>
+                                    <th>최우영</th>
+                                    <th>장영희</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>해설지제공</th>
+                                    <td></td>
+                                    <td>X</td>
+                                    <td>O</td>
+                                    <td>O</td>
+                                    <td></td>
+                                    <td>O</td>
+                                    <td>O</td>
+                                </tr>
+                                <tr>
+                                    <th>해설강의</th>
+                                    <td></td>
+                                    <td>O</td>
+                                    <td>X</td>
+                                    <td>X</td>
+                                    <td></td>
+                                    <td>X</td>
+                                    <td>O</td>
+                                </tr>
+                                <tr>
+                                    <th>채점서비스</th>
+                                    <td></td>
+                                    <td>X</td>
+                                    <td>X</td>
+                                    <td>O</td>
+                                    <td></td>
+                                    <td>X</td>
+                                    <td>O</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
                 </ul>
 
                 <h4 class="NSK-Black mt80">소문내기 이벤트 관련 유의사항</h4>

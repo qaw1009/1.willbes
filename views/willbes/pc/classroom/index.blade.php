@@ -43,7 +43,9 @@
                                 <div class="TableInfo">
                                     <dl>
                                         <dt><div class="subTit">수강중</div><div><a class="tx-blue" href="{{front_url('/classroom/off/list/ongoing')}}">{{$data['off_cnt']}}</a>개</div></dt>
-                                        <dt><div class="subTit">직강보강</div><div><a class="tx-blue" href="{{front_url('/classroom/on/bogang')}}">{{$data['bogang_cnt']}}</a>개</div></dt>
+                                        @if(sess_data('mem_interest') == '718009')
+                                            <dt><div class="subTit">직강보강</div><div><a class="tx-blue" href="{{front_url('/classroom/on/bogang')}}">{{$data['bogang_cnt']}}</a>개</div></dt>
+                                        @endif
                                     </dl>
                                 </div>
                             </li>

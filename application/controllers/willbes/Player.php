@@ -2174,7 +2174,7 @@ class Player extends \app\controllers\FrontController
         $date = element('date', $input); // 시간
         $online = element('online', $input); // online 시 yes offlien 시 no
         
-        $play_type = element('play_time', $input); // streaming / download
+        $play_type = element('play_type', $input); // streaming / download
         $content_id = element('content_id', $input); // $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^{$logidx}^";
         $content_url = element('content_url', $input); // 강의 URL
         

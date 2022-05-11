@@ -706,6 +706,22 @@ span {
 	color: #666;
 }
 
+#Header .sMenuList .willstory {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#Header .sMenuList .willstory a {
+	flex: 1 1 30%;
+	padding: 8px 10px;
+}
+
+@media only screen and (max-width: 320px) {
+	#Header .sMenuList .willstory a {
+		flex: 1 1 40%;
+	}
+}
+
 #Header .sMenuList:nth-child(1) .dropBox2 ul,
 #Header .sMenuList:nth-child(2) .dropBox2 ul,
 #Header .sMenuList:nth-child(3) .dropBox2 ul,

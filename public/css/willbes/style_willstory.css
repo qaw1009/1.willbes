@@ -2,18 +2,45 @@
 .dropdown:hover .drop-Box-wsBook {
     display: block;
 }
+
 .drop-Box-wsBook {
     display: none;
     position: absolute;
     background: #fff;
-    width:1120px;
-    padding:20px;
-    left:-763px;
+    width: 1120px;
+    padding: 20px;
+    left: -763px;
     border: 1px solid #acacac;
-    box-shadow: 5px 5px 25px #e1e1e1;   
-    z-index: 900; 
+    box-shadow: 5px 5px 25px #e1e1e1;
+    z-index: 900;
 }
-_:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
+
+.wsBook2 {
+    width: 450px;
+    left: -93px;
+}
+
+.wsBook2 .bookmenu2 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wsBook2 .bookmenu2 a {
+    flex-basis: 33.33333%;
+    padding: 0 15px;
+    font-size: 14px;
+}
+
+.wsBook2 .bookmenu2 a:hover {
+    background: #0dbe00;
+    color: #fff
+}
+
+_:-ms-fullscreen,
+:root .drop-Box-wsBook {
+    left: -635px;
+}
+
 .drop-Box-wsBook:after,
 .drop-Box-wsBook:before {
     content: '';
@@ -23,6 +50,7 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
     height: 0;
     border-style: solid;
 }
+
 .drop-Box-wsBook:before {
     top: -12px;
     left: 50%;
@@ -30,6 +58,7 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
     border-color: transparent transparent #acacac;
     border-width: 6px;
 }
+
 .drop-Box-wsBook:after {
     top: -10px;
     left: 50%;
@@ -37,45 +66,168 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
     border-color: transparent transparent #fff;
     border-width: 5px;
 }
+
 .Menu .drop-Box-wsBook:after,
 .Menu .drop-Box-wsBook:before {
     display: none;
 }
-.drop-Box-wsBook table {border-top:1px solid #f0f0f0}
-.drop-Box-wsBook tr {border-bottom:1px solid #f0f0f0}
-.drop-Box-wsBook tbody th {font-size: 14px; vertical-align: top; border-right:1px solid #f0f0f0; background: #f9f9f9; text-align: right; padding-right:20px}
 
-.two-depth {display: inline-block; position: relative;}
-.two-depth > a {font-size: 14px; padding:0 10px; color:#666; display:block;}
-.two-depth > a span {font-size:12px; color:#ccc; margin-left:10px}
-.two-depth:hover {background: #0dbe00;} 
-.two-depth:hover > a,
-.two-depth:hover > a span {color:#fff}
-.three-depth {display:none; position:absolute; width:400px; border:2px solid #0dbe00; padding:5px 10px; background:#fff; z-index:1;} 
-.two-depth:hover .three-depth {display:block}
-.three-depth li {display:inline !important; float:left; width:25%; margin:0 !important; padding:0 !important; }
-.three-depth li a {display:block; font-size:12px; text-align:center}
-.three-depth li a:hover {color:#0dbe00}
-.three-depth:after {content: ""; display: block; clear:both}
+.drop-Box-wsBook table {
+    border-top: 1px solid #f0f0f0
+}
+
+.drop-Box-wsBook tr {
+    border-bottom: 1px solid #f0f0f0
+}
+
+.drop-Box-wsBook tbody th {
+    font-size: 14px;
+    vertical-align: top;
+    border-right: 1px solid #f0f0f0;
+    background: #f9f9f9;
+    text-align: right;
+    padding-right: 20px
+}
+
+.two-depth {
+    display: inline-block;
+    position: relative;
+}
+
+.two-depth>a {
+    font-size: 14px;
+    padding: 0 10px;
+    color: #666;
+    display: block;
+}
+
+.two-depth>a span {
+    font-size: 12px;
+    color: #ccc;
+    margin-left: 10px
+}
+
+.two-depth:hover {
+    background: #0dbe00;
+}
+
+.two-depth:hover>a,
+.two-depth:hover>a span {
+    color: #fff
+}
+
+.three-depth {
+    display: none;
+    position: absolute;
+    width: 400px;
+    border: 2px solid #0dbe00;
+    padding: 5px 10px;
+    background: #fff;
+    z-index: 1;
+}
+
+.two-depth:hover .three-depth {
+    display: block
+}
+
+.three-depth li {
+    display: inline !important;
+    float: left;
+    width: 25%;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.three-depth li a {
+    display: block;
+    font-size: 12px;
+    text-align: center
+}
+
+.three-depth li a:hover {
+    color: #0dbe00
+}
+
+.three-depth:after {
+    content: "";
+    display: block;
+    clear: both
+}
 
 /*검색*/
-.wsSearch {width:700px; margin:40px auto 15px; padding:10px 0; padding-left:20px; border:10px solid #0b9d00; border-radius:40px; position:relative}
-.wsSearch select {        
-    background:url('/public/img/willbes/common/icon_arrow_green.png') no-repeat right center;
-    color:#0dbe00; border:0; font-size:18px; padding:0; padding-right:20px; margin-right:10px; height:30px;
-    vertical-align:middle;
-    -webkit-appearance: none !important;  /* 네이티브 외형 감추기 */
-    -moz-appearance: none !important;
-    appearance: none !important;             
+.wsSearch {
+    width: 700px;
+    margin: 40px auto 15px;
+    padding: 10px 0;
+    padding-left: 20px;
+    border: 10px solid #0b9d00;
+    border-radius: 40px;
+    position: relative
 }
-.wsSearch select::-ms-expand { display: none; }   
-.wsSearch input[type="text"] {border:0; width:420px; height:30px; color:#ccc; font-size:16px}
-.wsSearch input:focus {border:0 !important; color:#1087ef}
-.wsSearch button {width:85px; height:28px; font-size: 20px; color:#0dbe00; background:none;
-    vertical-align:top; display: inline-block; position: absolute; right:20px; z-index: 1;}
-.wsSearchWrap .keyword {width:700px; margin:0 auto; text-align:center}
-.wsSearchWrap .keyword strong {color:#0b9d00; margin-right:10px; display:inline-block}
-.wsSearchWrap .keyword a {color:#6d6d6d; margin-right:10px; display:inline-block}
+
+.wsSearch select {
+    background: url('/public/img/willbes/common/icon_arrow_green.png') no-repeat right center;
+    color: #0dbe00;
+    border: 0;
+    font-size: 18px;
+    padding: 0;
+    padding-right: 20px;
+    margin-right: 10px;
+    height: 30px;
+    vertical-align: middle;
+    -webkit-appearance: none !important;
+    /* 네이티브 외형 감추기 */
+    -moz-appearance: none !important;
+    appearance: none !important;
+}
+
+.wsSearch select::-ms-expand {
+    display: none;
+}
+
+.wsSearch input[type="text"] {
+    border: 0;
+    width: 420px;
+    height: 30px;
+    color: #ccc;
+    font-size: 16px
+}
+
+.wsSearch input:focus {
+    border: 0 !important;
+    color: #1087ef
+}
+
+.wsSearch button {
+    width: 85px;
+    height: 28px;
+    font-size: 20px;
+    color: #0dbe00;
+    background: none;
+    vertical-align: top;
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    z-index: 1;
+}
+
+.wsSearchWrap .keyword {
+    width: 700px;
+    margin: 0 auto;
+    text-align: center
+}
+
+.wsSearchWrap .keyword strong {
+    color: #0b9d00;
+    margin-right: 10px;
+    display: inline-block
+}
+
+.wsSearchWrap .keyword a {
+    color: #6d6d6d;
+    margin-right: 10px;
+    display: inline-block
+}
 
 /*퀵배너*/
 .wsBookQuick {
@@ -86,14 +238,53 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
     height: auto;
     z-index: 100;
 }
-.wsBookQuick li {text-align:center; margin-bottom: 8px;}
-.wsBookQuick .bookimg {border:1px solid #cacaca; height:190px; overflow:hidden; background:#fff;}
-.wsBookQuick .lastBook {height:30px; line-height: 30px; text-align: center; background:#f0f0f0;}
-.wsBookQuick .lastBook span {color:#1a8ccb}
-.wsBookQuick .QuickSlider {padding:10px 20px}
-.wsBookQuick .QuickSlider .sliderNum {width:90px; position:relative;}
-.wsBookQuick .QuickSlider .sliderNum div {position:absolute; left:0; top:0; width:90px; height:115px; overflow:hidden; z-index:10;}
-.wsBookQuick .QuickSlider .sliderNum img {width: 90px !important;}
+
+.wsBookQuick li {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.wsBookQuick .bookimg {
+    border: 1px solid #cacaca;
+    height: 190px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.wsBookQuick .lastBook {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #f0f0f0;
+}
+
+.wsBookQuick .lastBook span {
+    color: #1a8ccb
+}
+
+.wsBookQuick .QuickSlider {
+    padding: 10px 20px
+}
+
+.wsBookQuick .QuickSlider .sliderNum {
+    width: 90px;
+    position: relative;
+}
+
+.wsBookQuick .QuickSlider .sliderNum div {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 90px;
+    height: 115px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.wsBookQuick .QuickSlider .sliderNum img {
+    width: 90px !important;
+}
+
 .wsBookQuick .QuickSlider .bx-wrapper .bx-controls-direction {
     position: absolute;
     bottom: -22px;
@@ -103,10 +294,12 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
     height: 14px;
     margin: 0 auto;
 }
+
 .wsBookQuick .QuickSlider .bx-wrapper .bx-controls-direction a {
     width: 12px;
     height: 13px;
 }
+
 .wsBookQuick .QuickSlider .bx-wrapper .bx-pager {
     width: auto;
     position: absolute;
@@ -120,18 +313,57 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
     padding: 0;
     letter-spacing: 0;
 }
-.wsBookQuick .cart {margin:0}
-.wsBookQuick .cart a {display:block; background:#46be4f; color:#fff; height:28px; line-height:28px}
-.wsBookQuick .order a {display:block; background:#003e7c; color:#fff; height:28px; line-height:28px}
-.wsBookQuick .top a {display:block; color:#000; height:28px; line-height:28px; border:1px solid #d9d9d9; background: #fff;}
 
-.wsBook-buyBtn ul {float:right;}
-.wsBook-buyBtn ul li {float:left; display: inline-block; margin-left:10px;}
+.wsBookQuick .cart {
+    margin: 0
+}
+
+.wsBookQuick .cart a {
+    display: block;
+    background: #46be4f;
+    color: #fff;
+    height: 28px;
+    line-height: 28px
+}
+
+.wsBookQuick .order a {
+    display: block;
+    background: #003e7c;
+    color: #fff;
+    height: 28px;
+    line-height: 28px
+}
+
+.wsBookQuick .top a {
+    display: block;
+    color: #000;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #d9d9d9;
+    background: #fff;
+}
+
+.wsBook-buyBtn ul {
+    float: right;
+}
+
+.wsBook-buyBtn ul li {
+    float: left;
+    display: inline-block;
+    margin-left: 10px;
+}
+
 .wsBook-buyBtn:after,
-.wsBook-buyBtn ul:after {content: ""; display:block; clear:both}
+.wsBook-buyBtn ul:after {
+    content: "";
+    display: block;
+    clear: both
+}
 
 /***********************메인**************************/
-.wsBook .tx-color {color:#0b9d00}
+.wsBook .tx-color {
+    color: #0b9d00
+}
 
 .wsBook .bx-wrapper .bx-pager.bx-default-pager a {
     background: #d7d7d7;
@@ -140,7 +372,11 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
     margin: 0 2px;
     border-radius: 6px;
 }
-.wsBook .bx-wrapper .bx-pager.bx-default-pager a:hover {background: #0b9d00 !important;} 
+
+.wsBook .bx-wrapper .bx-pager.bx-default-pager a:hover {
+    background: #0b9d00 !important;
+}
+
 .wsBook .bx-wrapper .bx-pager.bx-default-pager a.active,
 .wsBook .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #0b9d00 !important;
@@ -150,115 +386,343 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
 
 /*상단배너*/
 .wsBook .MaintabBox {
-	width:1120px;
-	height: 400px;
-	margin:20px auto 0;
-    position:relative;
+    width: 1120px;
+    height: 400px;
+    margin: 20px auto 0;
+    position: relative;
     z-index: 1;
 }
-.wsBook .MaintabBox .MaintabSlider {position:absolute; width:1120px; height: 400px; overflow:hidden; z-index: 1 !important;}
-.wsBook .MaintabBox p {position:absolute; top:50%; margin-top:-28px; width:32px; height:57px; cursor:pointer; 
-    background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat; z-index:10;}
-.wsBook .MaintabBox p a {display: none;}
-.wsBook .MaintabBox p.leftBtn {left:-50px;}
-.wsBook .MaintabBox p.rightBtn {right:-50px; background-position: right center;}	
 
-.wsBook .MaintabList {			
-	position:absolute;
-	bottom: 20px;		
-	width:1040px;
-	left:50%;
-	margin-left:-520px;			
-	text-align:center;				
-	z-index: 10;	
+.wsBook .MaintabBox .MaintabSlider {
+    position: absolute;
+    width: 1120px;
+    height: 400px;
+    overflow: hidden;
+    z-index: 1 !important;
+}
+
+.wsBook .MaintabBox p {
+    position: absolute;
+    top: 50%;
+    margin-top: -28px;
+    width: 32px;
+    height: 57px;
+    cursor: pointer;
+    background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat;
+    z-index: 10;
+}
+
+.wsBook .MaintabBox p a {
+    display: none;
+}
+
+.wsBook .MaintabBox p.leftBtn {
+    left: -50px;
+}
+
+.wsBook .MaintabBox p.rightBtn {
+    right: -50px;
+    background-position: right center;
+}
+
+.wsBook .MaintabList {
+    position: absolute;
+    bottom: 20px;
+    width: 1040px;
+    left: 50%;
+    margin-left: -520px;
+    text-align: center;
+    z-index: 10;
 }
 
 .wsBook .MaintabList .Maintab {
-	display: inline-block;	
-	border-radius:30px;	
-	background: #fff;
-	-webkit-box-shadow: 0px 0px 20px 10px rgba(0,0,0,0.12);
-	-moz-box-shadow: 0px 0px 20px 10px rgba(0,0,0,0.12);
-	box-shadow: 0px 0px 20px 10px rgba(0,0,0,0.12);
-	width:95%;
-	padding:0 2.5%;
+    display: inline-block;
+    border-radius: 30px;
+    background: #fff;
+    -webkit-box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.12);
+    width: 95%;
+    padding: 0 2.5%;
 }
-.wsBook .MaintabList .Maintab li {display:inline; float:left; width:20%;}
+
+.wsBook .MaintabList .Maintab li {
+    display: inline;
+    float: left;
+    width: 20%;
+}
+
 .wsBook .MaintabList .Maintab li a {
-	display:block;
-	height:40px;
-	font-size:14px !important;
-	color:#666;
-	line-height:40px;
-	border-right:1px solid #e1e1e1;
-	width:90%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
-	padding:0 10px;
-    margin:0 auto;
-    font-weight:bold;
+    display: block;
+    height: 40px;
+    font-size: 14px !important;
+    color: #666;
+    line-height: 40px;
+    border-right: 1px solid #e1e1e1;
+    width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 10px;
+    margin: 0 auto;
+    font-weight: bold;
 }
 
 .wsBook .MaintabSlider img {
-	width: 100%;
-	height: 100%;
-}		
+    width: 100%;
+    height: 100%;
+}
+
 .wsBook .MaintabList .Maintab a:hover,
-.wsBook .MaintabList .Maintab a.active {color:#0b9d00; }
-.wsBook .MaintabList .Maintab li:last-child a {border:0}
-.wsBook .MaintabList .Maintab:after {content:""; display:block; clear:both}
+.wsBook .MaintabList .Maintab a.active {
+    color: #0b9d00;
+}
+
+.wsBook .MaintabList .Maintab li:last-child a {
+    border: 0
+}
+
+.wsBook .MaintabList .Maintab:after {
+    content: "";
+    display: block;
+    clear: both
+}
 
 /*메인-도서목록*/
-.wsBook .bookListWrap {margin-top:30px; position: relative;}
-.wsbookTabMenu {position:absolute; top:250px; width: 100%; height: 41px; border-bottom: 1px solid #0b9d00;}
-.wsBook .bookListWrap .wsbookTab {border:0}
-.wsBook .bookListWrap .wsbookTab li {display:inline; float:left; margin-right:1px}
-.wsBook .bookListWrap .wsbookTab li a { display:block; border:0; background:#dadada; color:#838383; padding:0 20px; height: 40px; line-height:40px; font-size:14px}
-.wsBook .bookListWrap div.more { position:absolute; top:0; right:0; width: 150px; text-align: center; height: 40px; line-height:40px;
-    border:1px solid #0b9d00; border-bottom:0; color:#0b9d00; font-size: 14px;}
-.wsBook .bookListWrap div.more a {display:block}
+.wsBook .bookListWrap {
+    margin-top: 30px;
+    position: relative;
+}
+
+.wsbookTabMenu {
+    position: absolute;
+    top: 250px;
+    width: 100%;
+    height: 41px;
+    border-bottom: 1px solid #0b9d00;
+}
+
+.wsBook .bookListWrap .wsbookTab {
+    border: 0
+}
+
+.wsBook .bookListWrap .wsbookTab li {
+    display: inline;
+    float: left;
+    margin-right: 1px
+}
+
+.wsBook .bookListWrap .wsbookTab li a {
+    display: block;
+    border: 0;
+    background: #dadada;
+    color: #838383;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px
+}
+
+.wsBook .bookListWrap div.more {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #0b9d00;
+    border-bottom: 0;
+    color: #0b9d00;
+    font-size: 14px;
+}
+
+.wsBook .bookListWrap div.more a {
+    display: block
+}
+
 .wsBook .bookListWrap div.more a:hover,
 .wsBook .bookListWrap .wsbookTab li a.on,
-.wsBook .bookListWrap .wsbookTab li a:hover {background:#0b9d00 !important; color:#fff !important}
-.wsBook .bookListWrap .wsbookTab:after {content: ""; display:block; clear:both}
-.wsBook .bookContent {margin-bottom:50px}
-.wsBook .booktitle {text-align: center; padding-top:40px; letter-spacing: normal; }
-.wsBook .booktitle span {position:relative; display:block; width:70px; height:70px; line-height: 70px; margin:0 auto;}
-.wsBook .booktitle div {font-size: 36px; color:#444}
-.wsBook .booktitle p {margin-top:10px; font-size: 14px; color:#afafaf;line-height: 1.4;}
-.wsBook .bookList {margin-top: 130px; margin-left:-17px; font-size:14px}
-.wsBook .bookList li {display:inline; float:left; width:210px; text-align: center; line-height: 1.5; margin-bottom:30px; margin-left:17px}
-.wsBook .bookList .bookImg {position: relative; width:210px; height:290px; overflow: hidden; margin-bottom:20px; border:1px solid #f0f0f0;}
-.wsBook .bookList li img {
-    position: absolute; left:50%; top:50%; max-width:210px;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);   
+.wsBook .bookListWrap .wsbookTab li a:hover {
+    background: #0b9d00 !important;
+    color: #fff !important
 }
-.wsBook .bookList p span {text-decoration: line-through;}
-.wsBook .bookList p strong {color:#0b9d00}
-.wsBook .bookList p:nth-of-type(2) {width:95%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
-.wsBook .bookList:after {content:""; display:block; clear:both}
 
-/*메인-오늘의책,MD추천*/
-.wsBook .todayBook {position:relative; border:1px solid #c2c2c2; float:left; width:879px; padding:20px; min-height:420px;}
-.wsBook .todayBook .bookList {top:0; margin:0; padding:0}
-.wsBook .todayBook .bookList .bookimgB {float:left; width:275px; height:375px; position: relative;}
-.wsBook .todayBook .bookList .bookimgB img {
-    position: absolute; left:50%; top:50%; max-width:275px;
+.wsBook .bookListWrap .wsbookTab:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+.wsBook .bookContent {
+    margin-bottom: 50px
+}
+
+.wsBook .booktitle {
+    text-align: center;
+    padding-top: 40px;
+    letter-spacing: normal;
+}
+
+.wsBook .booktitle span {
+    position: relative;
+    display: block;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    margin: 0 auto;
+}
+
+.wsBook .booktitle div {
+    font-size: 36px;
+    color: #444
+}
+
+.wsBook .booktitle p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #afafaf;
+    line-height: 1.4;
+}
+
+.wsBook .bookList {
+    margin-top: 130px;
+    margin-left: -17px;
+    font-size: 14px
+}
+
+.wsBook .bookList li {
+    display: inline;
+    float: left;
+    width: 210px;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    margin-left: 17px
+}
+
+.wsBook .bookList .bookImg {
+    position: relative;
+    width: 210px;
+    height: 290px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid #f0f0f0;
+}
+
+.wsBook .bookList li img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    max-width: 210px;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
-.wsBook .todayBook .bookList .summary {float:right; width:530px;}
-.wsBook .todayBook .bookList .summary li {color:#333; display: block; width: 100%; text-align: left; margin:0; padding:0}
-.wsBook .todayBook .bookList .summary li:nth-child(1) {color:#000; font-size:20px}
-.wsBook .todayBook .bookList .summary li:nth-child(2) {border-bottom:1px solid #000; line-height:56px; margin-bottom:20px;}
-.wsBook .todayBook .bookList .summary li:nth-child(2) a {display:block; color:#000; font-weight:bold !important; font-size:26px; width:95%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
-.wsBook .todayBook .bookList .summary li:nth-child(2) a span {display:inline-block; color:#0b9d00; margin-right:10px; vertical-align: bottom}
-.wsBook .todayBook .bookList .summary li.introduction {margin-bottom:20px;
+
+.wsBook .bookList p span {
+    text-decoration: line-through;
+}
+
+.wsBook .bookList p strong {
+    color: #0b9d00
+}
+
+.wsBook .bookList p:nth-of-type(2) {
+    width: 95%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.wsBook .bookList:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+/*메인-오늘의책,MD추천*/
+.wsBook .todayBook {
+    position: relative;
+    border: 1px solid #c2c2c2;
+    float: left;
+    width: 879px;
+    padding: 20px;
+    min-height: 420px;
+}
+
+.wsBook .todayBook .bookList {
+    top: 0;
+    margin: 0;
+    padding: 0
+}
+
+.wsBook .todayBook .bookList .bookimgB {
+    float: left;
+    width: 275px;
+    height: 375px;
+    position: relative;
+}
+
+.wsBook .todayBook .bookList .bookimgB img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    max-width: 275px;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.wsBook .todayBook .bookList .summary {
+    float: right;
+    width: 530px;
+}
+
+.wsBook .todayBook .bookList .summary li {
+    color: #333;
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    padding: 0
+}
+
+.wsBook .todayBook .bookList .summary li:nth-child(1) {
+    color: #000;
+    font-size: 20px
+}
+
+.wsBook .todayBook .bookList .summary li:nth-child(2) {
+    border-bottom: 1px solid #000;
+    line-height: 56px;
+    margin-bottom: 20px;
+}
+
+.wsBook .todayBook .bookList .summary li:nth-child(2) a {
+    display: block;
+    color: #000;
+    font-weight: bold !important;
+    font-size: 26px;
+    width: 95%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.wsBook .todayBook .bookList .summary li:nth-child(2) a span {
+    display: inline-block;
+    color: #0b9d00;
+    margin-right: 10px;
+    vertical-align: bottom
+}
+
+.wsBook .todayBook .bookList .summary li.introduction {
+    margin-bottom: 20px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -266,69 +730,260 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
     width: 100%;
     text-overflow: ellipsis;
     height: 80px;
-    word-break: keep-all; 
+    word-break: keep-all;
 }
-.wsBook .todayBook .bookList .summary li:last-child {font-size:14px}
-.wsBook .todayBook .bookList .summary li:last-child span {text-decoration:line-through}
-.wsBook .todayBook .bookList .summary li:last-child strong {font-size:18px; font-weight:bold; color:#0b9d00}
-.wsBook .todayBook .bookList:after {content:""; display:block; clear:both}
 
-.todayBook #bx-pager-today {position:absolute; bottom:20px; left:320px}
-.todayBook #bx-pager-today li {display:inline; float:left; margin-right:20px; background:#000;}
-.todayBook #bx-pager-today a {cursor:pointer !important}
-.todayBook #bx-pager-today a img {width:85px; height:124px; opacity:0.3} 
-.todayBook #bx-pager-today a.active img {opacity:1}
+.wsBook .todayBook .bookList .summary li:last-child {
+    font-size: 14px
+}
 
-.todayBook p {position:absolute; top:50%; margin-top:-10px; width:15px; height:57px; cursor:pointer; 
-    background:url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat;
-    background-size: 30px; z-index:100;}
-.todayBook p a {display: none;}
-.todayBook p.leftBtn {left:10px;}
-.todayBook p.rightBtn {right:10px; background-position: right center;}
+.wsBook .todayBook .bookList .summary li:last-child span {
+    text-decoration: line-through
+}
+
+.wsBook .todayBook .bookList .summary li:last-child strong {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0b9d00
+}
+
+.wsBook .todayBook .bookList:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+.todayBook #bx-pager-today {
+    position: absolute;
+    bottom: 20px;
+    left: 320px
+}
+
+.todayBook #bx-pager-today li {
+    display: inline;
+    float: left;
+    margin-right: 20px;
+    background: #000;
+}
+
+.todayBook #bx-pager-today a {
+    cursor: pointer !important
+}
+
+.todayBook #bx-pager-today a img {
+    width: 85px;
+    height: 124px;
+    opacity: 0.3
+}
+
+.todayBook #bx-pager-today a.active img {
+    opacity: 1
+}
+
+.todayBook p {
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    width: 15px;
+    height: 57px;
+    cursor: pointer;
+    background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat;
+    background-size: 30px;
+    z-index: 100;
+}
+
+.todayBook p a {
+    display: none;
+}
+
+.todayBook p.leftBtn {
+    left: 10px;
+}
+
+.todayBook p.rightBtn {
+    right: 10px;
+    background-position: right center;
+}
 
 
-.mdBook {position:relative; float:right; border:1px solid #c2c2c2; width:229px; height:420px; background:url(https://static.willbes.net/public/images/promotion/main/2012_main_img05.png) no-repeat 35px 15px}
-.mdBook h4 {color:#2d2d2d; font-size:24px; font-weight:bold; line-height:56px; margin:20px 0 0 90px; padding:0}
-.mdBook .mdList {width:180px; margin:10px auto 0; text-align:center; height:350px}
-.mdBook .mdList ul {margin-top:20px; line-height: 1.4;}
-.mdBook .mdList li:first-child {font-size:11px; color:#737373}
-.mdBook .mdList img {width:154px; height:207px; margin:0 auto}
-.mdBook .mdList li a {width:153px; overflow:hidden;white-space:nowrap; text-overflow:ellipsis; margin:0 auto; color:#000; font-size:14px}
-.mdBook .mdList li:last-child strong {font-size:14px; color:#ab1217}
-.mdBook .mdList li:last-child span {color:#000; font-weight:normal; text-decoration:line-through}
+.mdBook {
+    position: relative;
+    float: right;
+    border: 1px solid #c2c2c2;
+    width: 229px;
+    height: 420px;
+    background: url(https://static.willbes.net/public/images/promotion/main/2012_main_img05.png) no-repeat 35px 15px
+}
+
+.mdBook h4 {
+    color: #2d2d2d;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 56px;
+    margin: 20px 0 0 90px;
+    padding: 0
+}
+
+.mdBook .mdList {
+    width: 180px;
+    margin: 10px auto 0;
+    text-align: center;
+    height: 350px
+}
+
+.mdBook .mdList ul {
+    margin-top: 20px;
+    line-height: 1.4;
+}
+
+.mdBook .mdList li:first-child {
+    font-size: 11px;
+    color: #737373
+}
+
+.mdBook .mdList img {
+    width: 154px;
+    height: 207px;
+    margin: 0 auto
+}
+
+.mdBook .mdList li a {
+    width: 153px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0 auto;
+    color: #000;
+    font-size: 14px
+}
+
+.mdBook .mdList li:last-child strong {
+    font-size: 14px;
+    color: #ab1217
+}
+
+.mdBook .mdList li:last-child span {
+    color: #000;
+    font-weight: normal;
+    text-decoration: line-through
+}
 
 .mdBook .bx-wrapper .bx-pager {
     float: right;
     width: auto;
-    right:40px;
+    right: 40px;
     bottom: 20px;
     text-align: right;
-    z-index:90;
+    z-index: 90;
 }
-.wsBook .List-Table li a span {background:#0b9d00 !important}
+
+.wsBook .List-Table li a span {
+    background: #0b9d00 !important
+}
 
 
 /***********************************서브**************************************/
+
+.CurriVer2 {
+    border: 1px solid #0d74ae;
+    padding: 20px
+}
+
+.CurriVer2Tabs {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #0d74ae;
+    padding-bottom: 20px;
+}
+
+.CurriVer2 a {
+    display: block;
+    /*flex-basis: 20%;*/
+    flex: 1 1 16.6666%;
+    padding: 8px 10px;
+}
+
+.CurriVer2 a:hover {
+    color: #0d74ae
+}
+
+.CurriVer2 .inputBox span {
+    display: inline-block;
+    color: #0d74ae;
+    vertical-align: middle;
+    line-height: 30px
+}
 
 /*도서목록*/
 .wsBook-Subject {
     font-size: 20px;
     font-weight: 600;
     line-height: 32px;
-    padding-bottom:20px;
+    padding-bottom: 20px;
 }
-.wsBookWrap {position:relative; clear:both;}
-.wsBookWrap .amount {font-weight: bold; position: absolute; top:25px;}
-.wsBookWrap .amount span {color:#1087ef}
-.wsBookListBox {border-top:2px solid #000; display: flex; justify-content: space-between; align-items: stretch; flex-wrap: wrap; width:100%}
-.wsBookListBox .wsBook {flex: 1 1 40%; padding:30px; border-bottom:1px solid #c9c9c9; position:relative;}
-.wsBookListBox .wsBookImg {width:120px; position:absolute;}
-.wsBookListBox .wsBookImg img {width:100%;}
-.wsBookListBox .wsBookInfo {line-height:1.4; margin-left:140px;}
-.wsBookListBox .wsBookInfo li {letter-spacing: normal; margin-bottom:5px}
-.wsBookListBox .wsBookInfo li:last-child {margin-top:10px}
-.wsBookListBox .wsBookInfo li a:hover {color:#0b9d00}
-.wsBookListBox .wsBookInfo .bookTitle {font-size:16px; color:#1a8ccc; margin-bottom:10px; 
+
+.wsBookWrap {
+    position: relative;
+    clear: both;
+}
+
+.wsBookWrap .amount {
+    font-weight: bold;
+    position: absolute;
+    top: 25px;
+}
+
+.wsBookWrap .amount span {
+    color: #1087ef
+}
+
+.wsBookListBox {
+    border-top: 2px solid #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    width: 100%
+}
+
+.wsBookListBox .wsBook {
+    flex: 1 1 40%;
+    padding: 30px;
+    border-bottom: 1px solid #c9c9c9;
+    position: relative;
+}
+
+.wsBookListBox .wsBookImg {
+    width: 120px;
+    position: absolute;
+}
+
+.wsBookListBox .wsBookImg img {
+    width: 100%;
+}
+
+.wsBookListBox .wsBookInfo {
+    line-height: 1.4;
+    margin-left: 140px;
+}
+
+.wsBookListBox .wsBookInfo li {
+    letter-spacing: normal;
+    margin-bottom: 5px
+}
+
+.wsBookListBox .wsBookInfo li:last-child {
+    margin-top: 10px
+}
+
+.wsBookListBox .wsBookInfo li a:hover {
+    color: #0b9d00
+}
+
+.wsBookListBox .wsBookInfo .bookTitle {
+    font-size: 16px;
+    color: #1a8ccc;
+    margin-bottom: 10px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -336,90 +991,311 @@ _:-ms-fullscreen, :root .drop-Box-wsBook {left:-635px;}
     width: 100%;
     text-overflow: ellipsis;
     height: 80px;
-    word-break: keep-all; 
+    word-break: keep-all;
 }
-.wsBookListBox .wsBookInfo .bookTitle a {margin-top:5px; display:block}
-.wsBookListBox .wsBookInfo label {cursor: pointer;}
-.wsBookListBox .wsBookInfo li strong {display:inline-block; width:60px; font-weight:normal !important}
-.wsBookListBox .wsBookInfo input[type="checkbox"] {width:20px; height:20px;}
-.wsBookListBox .wsBookInfo select {width: 50px; height: 24px; border: 1px solid #d4d4d4; vertical-align: middle}
-.wsBookListBox .wsBookInfo .bookLecBtn .lecViewBtn {display:inline-block; text-align:left; color:#fff; background:#00b22a; padding:10px 15px}
+
+.wsBookListBox .wsBookInfo .bookTitle a {
+    margin-top: 5px;
+    display: block
+}
+
+.wsBookListBox .wsBookInfo label {
+    cursor: pointer;
+}
+
+.wsBookListBox .wsBookInfo li strong {
+    display: inline-block;
+    width: 60px;
+    font-weight: normal !important
+}
+
+.wsBookListBox .wsBookInfo input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+.wsBookListBox .wsBookInfo select {
+    width: 50px;
+    height: 24px;
+    border: 1px solid #d4d4d4;
+    vertical-align: middle
+}
+
+.wsBookListBox .wsBookInfo .bookLecBtn .lecViewBtn {
+    display: inline-block;
+    text-align: left;
+    color: #fff;
+    background: #00b22a;
+    padding: 10px 15px
+}
 
 .wsBookListBox:after,
-.wsBook:after {content:""; display:block; clear:both;}
+.wsBook:after {
+    content: "";
+    display: block;
+    clear: both;
+}
 
 /*도서상세보기*/
-.wsBookViewWrap {border-top:1px solid #e1e1e1}
-.wsBookView {margin:45px 0}
-.wsBookView .wsBookImg {display:inline-block; float:left; width:45%;}
-.wsBookView .wsBookImg .imgWrap {width:250px; margin:0 auto;}
-.wsBookView .wsBookImg .imgWrap img {width:100%}
-.wsBookView .wsBookImg .bookView {position:absolute; width:calc(100% - 2px); bottom:0; display:block; z-index: 2; padding:10px; background-color: rgba(255,255,255,0.5); margin: 1px; font-size:14px; text-align:center}
-.wsBookView .wsBookImg .bookView:hover {background-color: #000; color:#fff}
+.wsBookViewWrap {
+    border-top: 1px solid #e1e1e1
+}
 
-.wsBookView .bookLecBtn .lecViewBtn {display:block; text-align:center;}
+.wsBookView {
+    margin: 45px 0
+}
+
+.wsBookView .wsBookImg {
+    display: inline-block;
+    float: left;
+    width: 45%;
+}
+
+.wsBookView .wsBookImg .imgWrap {
+    width: 250px;
+    margin: 0 auto;
+}
+
+.wsBookView .wsBookImg .imgWrap img {
+    width: 100%
+}
+
+.wsBookView .wsBookImg .bookView {
+    position: absolute;
+    width: calc(100% - 2px);
+    bottom: 0;
+    display: block;
+    z-index: 2;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 1px;
+    font-size: 14px;
+    text-align: center
+}
+
+.wsBookView .wsBookImg .bookView:hover {
+    background-color: #000;
+    color: #fff
+}
+
+.wsBookView .bookLecBtn .lecViewBtn {
+    display: block;
+    text-align: center;
+}
 
 .sliderBookPlay {
-	clear: both;
-    width:250px;
-	height: auto;
+    clear: both;
+    width: 250px;
+    height: auto;
 }
+
 .sliderBookPlay .bx-wrapper .bx-pager {
-    bottom:-20px;
+    bottom: -20px;
 }
+
 .sliderBookPlay .bx-wrapper .bx-pager.bx-default-pager a {
-	background: #b7b7b7;
-	width: 20px;
-	height: 5px;
-	margin: 0 2px;
+    background: #b7b7b7;
+    width: 20px;
+    height: 5px;
+    margin: 0 2px;
     border-radius: 0;
 }
+
 .sliderBookPlay .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .sliderBookPlay .bx-wrapper .bx-pager.bx-default-pager a.active,
 .sliderBookPlay .bx-wrapper .bx-pager.bx-default-pager a:focus {
-	background: #000;
+    background: #000;
 }
 
-.sliderBookPlay .youtube iframe {width:250px; height:140px} 
-.sliderBookPlay .youtube {position:absolute; width:250px; z-index:1;}  
+.sliderBookPlay .youtube iframe {
+    width: 250px;
+    height: 140px
+}
+
+.sliderBookPlay .youtube {
+    position: absolute;
+    width: 250px;
+    z-index: 1;
+}
 
 
-.wsBookView .wsBookInfo {display: inline-block; float:left; width:55%; letter-spacing: normal;}
-.wsBookView .wsBookInfo h5 {font-size:18px; margin-bottom:10px}
-.wsBookView .wsBooktxt {border-top:1px solid #d9d9d9}
-.wsBookView .wsBooktxt li {border-bottom:1px solid #d9d9d9; padding:15px 0}
-.wsBookView .wsBooktxt li strong.shead {display:inline-block; width:13.5%}
-.wsBookView .wsBooktxt a.another {display:inline-block; font-weight: bold; color:#0b9d00}
-.wsBookView .wsBooktxt span {display:inline-block; min-width:36%}
-.wsBookView .wsBooktxt li.total {text-align:right; font-size:16px}
-.wsBookView .wsBooktxt li.total strong {display: inline-block; width: 40%;  color:#0b9d00}
-.wsBookView .wsBooktxt a.more {display:inline-block; height: 18px; line-height: 18px; width:18px; text-align: center; font-size: 11px;
-    background:#0b9d00; color:#fff; border-radius: 4px; vertical-align: middle; margin-left:10px;}
-.wsBookView .wsBooktxt a.more .delivery {display:none;}
-.wsBookView .wsBooktxt a.more:hover .delivery {display:block; position: absolute; top:40px; left:0; text-align: left; font-size: 12px;
-    border:2px solid #0b9d00; background:#fff; color:#333; padding:20px; width: 520px; line-height: 1.5; z-index: 5;}
-.wsBookView .wsBooktxt select {width: 50px; height: 24px; border: 1px solid #d4d4d4; vertical-align: middle}
-.wsBookView .wsBook-buyBtn {margin-top:20px}
-.wsBookView .wsBookInfo .naver {margin-top:10px; text-align: right;}
+.wsBookView .wsBookInfo {
+    display: inline-block;
+    float: left;
+    width: 55%;
+    letter-spacing: normal;
+}
+
+.wsBookView .wsBookInfo h5 {
+    font-size: 18px;
+    margin-bottom: 10px
+}
+
+.wsBookView .wsBooktxt {
+    border-top: 1px solid #d9d9d9
+}
+
+.wsBookView .wsBooktxt li {
+    border-bottom: 1px solid #d9d9d9;
+    padding: 15px 0
+}
+
+.wsBookView .wsBooktxt li strong.shead {
+    display: inline-block;
+    width: 13.5%
+}
+
+.wsBookView .wsBooktxt a.another {
+    display: inline-block;
+    font-weight: bold;
+    color: #0b9d00
+}
+
+.wsBookView .wsBooktxt span {
+    display: inline-block;
+    min-width: 36%
+}
+
+.wsBookView .wsBooktxt li.total {
+    text-align: right;
+    font-size: 16px
+}
+
+.wsBookView .wsBooktxt li.total strong {
+    display: inline-block;
+    width: 40%;
+    color: #0b9d00
+}
+
+.wsBookView .wsBooktxt a.more {
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    width: 18px;
+    text-align: center;
+    font-size: 11px;
+    background: #0b9d00;
+    color: #fff;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.wsBookView .wsBooktxt a.more .delivery {
+    display: none;
+}
+
+.wsBookView .wsBooktxt a.more:hover .delivery {
+    display: block;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    text-align: left;
+    font-size: 12px;
+    border: 2px solid #0b9d00;
+    background: #fff;
+    color: #333;
+    padding: 20px;
+    width: 520px;
+    line-height: 1.5;
+    z-index: 5;
+}
+
+.wsBookView .wsBooktxt select {
+    width: 50px;
+    height: 24px;
+    border: 1px solid #d4d4d4;
+    vertical-align: middle
+}
+
+.wsBookView .wsBook-buyBtn {
+    margin-top: 20px
+}
+
+.wsBookView .wsBookInfo .naver {
+    margin-top: 10px;
+    text-align: right;
+}
+
 .wsBookView .wsBookInfo:after,
-.wsBookView:after {content:""; display:block; clear:both;}
+.wsBookView:after {
+    content: "";
+    display: block;
+    clear: both;
+}
 
-.wsBookDetailBox {line-height: 1.7; padding:20px 0; color:#666}
-.wsBookDetailBox-img {margin:20px 0}
-.wsBookDetailBox-img img {max-width:940px}
-.wsBookDetailBox .guidanceBox {margin-bottom:30px}
-.wsBookDetailBox .guidanceBox strong {font-size:18px; padding:8px 16px; background: #0b9d00; color:#fff; display: inline-block; margin-bottom:20px}
-.wsBookDetailBox .guidanceBox li {list-style-type: disc; margin-left:20px}
+.wsBookDetailBox {
+    line-height: 1.7;
+    padding: 20px 0;
+    color: #666
+}
+
+.wsBookDetailBox-img {
+    margin: 20px 0
+}
+
+.wsBookDetailBox-img img {
+    max-width: 940px
+}
+
+.wsBookDetailBox .guidanceBox {
+    margin-bottom: 30px
+}
+
+.wsBookDetailBox .guidanceBox strong {
+    font-size: 18px;
+    padding: 8px 16px;
+    background: #0b9d00;
+    color: #fff;
+    display: inline-block;
+    margin-bottom: 20px
+}
+
+.wsBookDetailBox .guidanceBox li {
+    list-style-type: disc;
+    margin-left: 20px
+}
 
 /*저자모집*/
-.wsBook_recruit {width:668px; margin:0 auto; border:1px solid #303030; padding:50px; line-height: 2; letter-spacing: normal;}
-.wsBook_recruit strong {display:block; font-size:14px;}
+.wsBook_recruit {
+    width: 668px;
+    margin: 0 auto;
+    border: 1px solid #303030;
+    padding: 50px;
+    line-height: 2;
+    letter-spacing: normal;
+}
+
+.wsBook_recruit strong {
+    display: block;
+    font-size: 14px;
+}
 
 /*검색결과*/
-.wsBookWrap .bookSearch {font-size:18px; text-align: center; margin: 100px 0;}
-.wsBookWrap .bookSearch span {color:#0b9d00}
+.wsBookWrap .bookSearch {
+    font-size: 18px;
+    text-align: center;
+    margin: 100px 0;
+}
+
+.wsBookWrap .bookSearch span {
+    color: #0b9d00
+}
 
 /*메인유튜브*/
-.youtubeWrap {margin:50px auto 0; background:#f4f4f4; padding:50px 0}
-.youtubeWrap div {width:1120px; margin:0 auto; box-shadow: 0 10px 25px rgba(0,0,0,.4);}
-.youtubeWrap div iframe {width:1120px; height:630px;}
+.youtubeWrap {
+    margin: 50px auto 0;
+    background: #f4f4f4;
+    padding: 50px 0
+}
+
+.youtubeWrap div {
+    width: 1120px;
+    margin: 0 auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .4);
+}
+
+.youtubeWrap div iframe {
+    width: 1120px;
+    height: 630px;
+}

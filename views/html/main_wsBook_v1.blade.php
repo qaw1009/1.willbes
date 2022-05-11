@@ -2,9 +2,7 @@
 
 @section('content')
 
-<link href="/public/css/willbes/style_willstory.css??ver={{time()}}" rel="stylesheet">
 <!-- Container -->
-
 <div id="Container" class="Container hanlim3094 wsBook NSK c_both">
     <div class="Section widthAuto">
         <div class="wsSearchWrap">
@@ -37,7 +35,7 @@
         </div>
     </div>
 
-    @include('html.wsBook_menu')
+    @include('html.wsBook_menu_v1')
 
     <div class="Section">
         <div id="MainRollingSlider" class="MaintabBox">

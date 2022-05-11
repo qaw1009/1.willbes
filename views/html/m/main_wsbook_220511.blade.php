@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/public/vendor/bootstrap/datepicker/css/bootstrap-datepicker.standalone.min.css">
     <!-- Custom Theme Style -->
     <link href="/public/css/willbes/basic.css" rel="stylesheet">
-    <link href="/public/css/willbes/m/style_v3.css" rel="stylesheet">
+    <link href="/public/css/willbes/m/style_v2.css" rel="stylesheet">
     
     <!-- Slider jQuery -->
     <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.css">
@@ -29,7 +29,9 @@
     <!--// JAVASCRIPT -->
     <!-- Custom Script -->
     <script src="/public/js/willbes/mobile.js?ver=1594952526"></script>  
+    <style>
 
+        </style>
 </head>
 <body id="goTop">
     <!-- Gnb -->
@@ -102,38 +104,38 @@
                 <li class="sMenuList">
                     <a href="#none" class="moreMenu">도서<br>구매</a>
                     <div class="dropBox">
-                        <div class="willstory">
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3154">고등고시/로스쿨</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3155">공무원</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3156">자격증</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3157">초등학교 참고서</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3158">중학교 참고서</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3159">고등학교 참고서</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3160">청소년</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3161">검정/편입/독학사</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3162">가정/요리</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3163">건강</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3164">경제/경영</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3165">만화</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3166">사회/정치</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3167">소설</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3168">시/에세이</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3169">어린이</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3170">여행</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3171">역사</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3172">예술/대중문화</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3173">외국도서</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3174">외국어</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3175">유아</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3176">인문</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3177">자기계발</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3178">자연/과학</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3179">장르소설</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3180">종교</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3181">취미/레저</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3182">컴퓨터/IT</a>
-                            <a href="https://book.willbes.net/m/bookStore/index/pattern/all?cate_code=3183">한국어</a>
-                        </div>
+                        <ul>
+                            <li>
+                                <a href="#none">공무원</a>
+                            </li>
+                            <li>
+                                <a href="#none">고시/로스쿨</a>
+                            </li>
+                            <li>
+                                <a href="#none">경찰</a>
+                            </li>
+                            <li>
+                                <a href="#none">임용</a>
+                            </li>
+                            <li>
+                                <a href="#none">전문자격</a>
+                            </li>
+                            <li>
+                                <a href="#none">취업/자격증</a>
+                            </li>
+                            <li>
+                                <a href="#none">어학</a>
+                            </li>
+                            <li>                                
+                                <a href="#none">학점/편입/독학사</a>
+                            </li>
+                            <li>
+                                <a href="#none">일반서적</a>
+                            </li>
+                            <li>
+                                <a href="#none">유아/어린이</a>
+                            </li>
+                        </ul>
                     </div>
                 </li>
                 <li class="sMenuList">

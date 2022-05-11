@@ -35,64 +35,42 @@
 </style>
 
 <div id="Container" class="Container NSK c_both">
-    <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/01/2498m_01.jpg" alt="석치수의 확실한 처방!" >
+
+    <div class="evtCtnsBox" data-aos="fade-down">
+        <img src="https://static.willbes.net/public/images/promotion/2022/05/2498m_01.jpg" alt="" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/01/2498m_02.jpg" alt="올바른 방향설정" >
+        <img src="https://static.willbes.net/public/images/promotion/2022/05/2498m_02.jpg" alt="" >
+        <a href="https://pass.willbes.net/m/support/notice/show/cate/3019?board_idx=335962&s_cate_code=3103" title="" target="_blank" style="position: absolute; left: 23.83%; top: 48.53%; width: 55.06%; height: 3.1%; z-index: 2;"></a>
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/01/2498m_03.jpg" alt="석치수 자료해석" >
-        <a href="http://naver.me/5CvH8cmy" title="진단평가&긴급처방+정답기입" target="_blank" style="position: absolute; left: 5.83%; top: 88.63%; width: 88.06%; height: 8.1%; z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2022/05/2498m_03.jpg" alt="" >
+       
     </div> 
     <div class="evtCtnsBox mb50" data-aos="fade-up">
         <div class="lecwrap mt50">
             <span>학원실강+동영상</span>
             <div>
-                7급 Advanced  PSAT CLASS PASS 반
+                7급 PSAT MASTER CLASS PASS반
                 <a href="https://pass.willbes.net/m/pass/offPackage/index?cate_code=3143" target="_blank">수강신청</a>
             </div>
             <div>
-                7급 석치수 자료해석 Advanced  CLASS
-                <a href="https://pass.willbes.net/m/pass/offLecture/show/cate/3143/prod-code/190126" target="_blank">수강신청</a>
-            </div>
-            <div>
-                7급 박준범 상황판단 Advanced  CLASS
-                <a href="https://pass.willbes.net/m/pass/offLecture/show/cate/3143/prod-code/190127" target="_blank">수강신청</a>
-            </div>
-            <div>
-                7급 이나우 언어논리 Advanced  CLASS  
-                <a href="https://pass.willbes.net/m/pass/offLecture/show/cate/3143/prod-code/190128" target="_blank">수강신청</a>
-            </div>
-            <div>
-                7급 한승아 언어논리 Advanced  CLASS  
-                <a href="https://pass.willbes.net/m/pass/offLecture/show/cate/3143/prod-code/190129" target="_blank">수강신청</a>
-            </div>
+                7급 PSAT MASTER CLASS 단과반
+                <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3143" target="_blank">수강신청</a>
+            </div>         
         </div>
 
         <div class="lecwrap mt50">
             <span>동영상</span>
             <div>
-                7급 Advanced  PSAT CLASS PASS 반
-                <a href="https://gosi.willbes.net/m/package/show/cate/3103/pack/648002/prod-code/190120" target="_blank">수강신청</a>
+                7급 PSAT MASTER CLASS PASS반
+                <a href="https://pass.willbes.net/m/package/show/cate/3103/pack/648002/prod-code/194897" target="_blank">수강신청</a>
             </div>
             <div>
-                7급 석치수 자료해석 Advanced  CLASS
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3103/pattern/only/prod-code/190115" target="_blank">수강신청</a>
-            </div>
-            <div>
-                7급 박준범 상황판단 Advanced  CLASS
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3103/pattern/only/prod-code/190116" target="_blank">수강신청</a>
-            </div>
-            <div>
-                7급 이나우 언어논리 Advanced  CLASS  
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3103/pattern/only/prod-code/190117" target="_blank">수강신청</a>
-            </div>
-            <div>
-                7급 한승아 언어논리 Advanced  CLASS  
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3103/pattern/only/prod-code/190118" target="_blank">수강신청</a>
+                7급 PSAT MASTER CLASS 단과반
+                <a href="https://pass.willbes.net/m/userPackage/show/cate/3103/prod-code/194900" target="_blank">수강신청</a>
             </div>
         </div>
     </div> 

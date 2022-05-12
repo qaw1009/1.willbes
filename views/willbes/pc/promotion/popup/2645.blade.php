@@ -10,7 +10,7 @@
     .evt_table table th,
     .evt_table table td {margin:10px 0; color:#666}
     .evt_table table th {background:#f9f9f9; color:#000;}
-    .evt_table thead th {background:#d9d9d9; color:#000; font-size:24px; font-weight:bold; padding:20px; border:1px solid #000}
+    .evt_table thead th {background:#d9d9d9; color:#000; font-size:20px; font-weight:bold; padding:20px 10px; border:1px solid #000}
     .evt_table table td{text-align:left; padding:15px}
     .evt_table label {margin-right:10px; line-height:28px;}
     .evt_table input {vertical-align:middle}
@@ -23,18 +23,19 @@
     .evt_table .btns a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#42425b; margin:0 10px; border-radius:40px; padding:0 50px}
     .evt_table .btns a:hover {background:#fe544a}
 
-    .evt_table .map {border-top:1px solid #ccc; margin-top:50px; padding-top:50px; }
-    .evt_table .map li {list-style-type:decimal;margin-left:20px; margin-bottom:10px}
+    .evt_table .map {border-top:1px solid #ccc; margin-top:40px; padding-top:40px;}
+    .evt_table .map li {list-style-type:decimal;margin-left:20px; margin-bottom:5px}
     .evt_table .map > div {text-align:left}
     .evt_table .map h5 {font-size:18px; margin-bottom:10px; margin-top:30px}
     .evt_table .map img {width:500px; height:500px}
     @@media print {
-        .evt_table {font-size:20px;}
-        .evt_table thead th {font-size:30px;}
-        .evt_table .map { display:flex;}
-        .evt_table .map > div {margin-left:20px;}
-        .evt_table .map h5 {font-size:26px;}
+        .evt_table {font-size:16px;}
+        .evt_table thead th {font-size:26px;}
+        .evt_table .map {display:flex;}
+        .evt_table .map > div {margin-left:20px; font-size:12px}
+        .evt_table .map h5 {font-size:20px;}
         .evt_table .map h5:nth-child(1) {margin-top:0}
+        .evt_table .map img {width:200px; height:200px}
     }
 </style>
 
@@ -115,7 +116,6 @@
 @endphp
 
 <div class="evt_table NSK" id="layer_print">
-    <div class="tx-blue tx-left mb10">※  접수 완료하였습니다. </div>
     <table cellspacing="2" cellpadding="2">
         <col width="15%" />
         <col/>
@@ -123,13 +123,13 @@
         <col />
         <thead>
             <tr>
-                <th colspan="4">교원임용 Real 모의고사 접수 현황</th>
+                <th colspan="4">2023학년도 중등임용 시험대비 Real 모의고사 응시표</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <th>시험명</th>
-                <td colspan="3">2023학년도 대비 중등임용 Real 모의고사 (주관: 윌비스 임용)</td>
+                <th>시험주관</th>
+                <td colspan="3">윌비스 임용</td>
             </tr>
             <tr>
                 <th>응시과목</th>
@@ -169,9 +169,8 @@
             </tr>
         </tbody>
     </table>
-    <div class="mt50">2022. 06. 12</div>
-    <div class="mt30">위와 같이 접수하고, 교원임용 Real 모의고사에 응시하고자 합니다.</div>
-    <div class="mt50"><img src="https://static.willbes.net/public/images/promotion/2022/05/stamp.png" alt=""/></div>
+    <div class="mt40">2022. 06. 12</div>
+    <div class="mt30"><img src="https://static.willbes.net/public/images/promotion/2022/05/stamp.png" alt=""/></div>
     <div class="map">
         <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_map.jpg" alt=""/>
         <div>

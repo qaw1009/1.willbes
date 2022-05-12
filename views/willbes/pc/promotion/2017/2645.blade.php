@@ -194,86 +194,86 @@ align-items: center;}
 
         <div class="evtCtnsBox event03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_03.jpg" alt="동일한 환경"/>
-            {{--접수전 화면--}}
-            <div class="evt_table p_re">
-                <div class="txtinfo">
-                    <div>모의고사<br>신청 관련<br>안내사항</div>
-                    <ul>
-                        <li>모의고사 신청을 위해서는 반드시 로그인을 하셔야 합니다.</li>
-                        <li>모의고사는 원하는 출제교수진의 과목을 체크하시면 됩니다.</li>
-                        <li>모의고사는 신청은 교육학과 전공과목 각각 하나씩 체크하시면 됩니다.</li>
-                        <li>모의고사 응시료는 20,000원입니다. 윌비스임용의 수강생인 경우, 1만원 할인 쿠폰이 발행되었습니다. (할인권을 이용하여 접수하시면 됩니다)</li>
-                        <li>시험장의 특성을 고려하여 과목별로 조기 마감할 수 있습니다.</li>
-                    </ul>
+            @if (empty($arr_base['order_product']) === true)
+                {{--접수전 화면--}}
+                <div class="evt_table p_re">
+                    <div class="txtinfo">
+                        <div>모의고사<br>신청 관련<br>안내사항</div>
+                        <ul>
+                            <li>모의고사 신청을 위해서는 반드시 로그인을 하셔야 합니다.</li>
+                            <li>모의고사는 원하는 출제교수진의 과목을 체크하시면 됩니다.</li>
+                            <li>모의고사는 신청은 교육학과 전공과목 각각 하나씩 체크하시면 됩니다.</li>
+                            <li>모의고사 응시료는 20,000원입니다. 윌비스임용의 수강생인 경우, 1만원 할인 쿠폰이 발행되었습니다. (할인권을 이용하여 접수하시면 됩니다)</li>
+                            <li>시험장의 특성을 고려하여 과목별로 조기 마감할 수 있습니다.</li>
+                        </ul>
+                    </div>
+                    <table cellspacing="2" cellpadding="2">
+                        <col width="15%" />
+                        <col/>
+                        <col width="15%" />
+                        <col width="15%" />
+                        <tbody>
+                            <tr>
+                                <th>ID</th>
+                                <td>{{sess_data('mem_id')}}</td>
+                                <th>이름</th>
+                                <td>{{sess_data('mem_name')}}</td>
+                            </tr>
+                            <tr>
+                                <th>연락처</th>
+                                <td colspan="3"><input type="text" placeholder="{{sess_data('mem_phone')}}" readonly></td>
+                            </tr>
+                            <tr>
+                                <th>교육학 선택<br>(택 1)</th>
+                                <td colspan="3">
+                                    <ul>
+                                        <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194830' : '159829' }}" autocomplete="off"/> 교육학논술 (이경범 교수 출제)</label></li>
+                                        <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194828' : '159831' }}" autocomplete="off"/> 교육학논술 (정   현 교수 출제)</label></li>
+                                        <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194829' : '159830' }}" autocomplete="off"/> 교육학논술 (신태식 교수 출제)</label></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>전공과목 선택<br>(택 1)</th>
+                                <td colspan="3">
+                                    <ul>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194783' : '159832' }}" autocomplete="off"/> 국  어 (송원영/권보민 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194784' : '159833' }}" autocomplete="off"/> 국  어 (구동언 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194785' : '159834' }}" autocomplete="off"/> 수  학 (김철홍/박태영 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194786' : '159835' }}" autocomplete="off"/> 수  학 (김현웅/박혜향 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194787' : '_159836' }}" autocomplete="off"/> 도덕·윤리 (김병찬 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194788' : '_159837' }}" autocomplete="off"/> 도덕·윤리 (김민응 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194789' : '_159838' }}" autocomplete="off"/> 일반사회 (허역 교수팀 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194790' : '_159839' }}" autocomplete="off"/> 역  사 (김종권 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194791' : '_159840' }}" autocomplete="off"/> 음  악 (다이애나 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194792' : '_159841' }}" autocomplete="off"/> 전  기 (최우영 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194793' : '_159842' }}" autocomplete="off"/> 전  자 (최우영 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194794' : '_159843' }}" autocomplete="off"/> 중국어 (장영희 교수 출제)</label></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="tx-blue tx-right mt20">※  응시료: 수강생 10,000원 / 비수강생 20,000</div>
+                    <div class="check" id="chkInfo">
+                        <label>
+                            <input name="is_chk" id="is_chk" type="checkbox" value="Y" />
+                            페이지 하단의 모의고사 관련 유의사항을 모두 확인하였고, 이에 동의합니다.
+                        </label>
+                        <a href="#careful" class="infotxt" > 이용안내 확인하기 ↓</a>
+                    </div>
+                    <div class="btns">
+                        @if (empty($arr_base['order_product']) === false)
+                            <a href="javascript:void(0);" onclick="alert('구매한 상품이 있습니다.'); return false;">신청하기 ></a>
+                        @else
+                            <a href="javascript:void(0);" onclick="directPay('off'); return false;">신청하기 ></a>
+                        @endif
+                        {{--<a href="javascript:void(0);">모의고사 마감</a>--}}
+                    </div>
+                    {{--<div class="popup"><span class="NSK-Black">마감되었습니다.</span></div>--}}
                 </div>
-                <table cellspacing="2" cellpadding="2">
-                    <col width="15%" />
-                    <col/>
-                    <col width="15%" />
-                    <col width="15%" />
-                    <tbody>
-                        <tr>
-                            <th>ID</th>
-                            <td>{{sess_data('mem_id')}}</td>
-                            <th>이름</th>
-                            <td>{{sess_data('mem_name')}}</td>
-                        </tr>
-                        <tr>
-                            <th>연락처</th>
-                            <td colspan="3"><input type="text" placeholder="{{sess_data('mem_phone')}}" readonly></td>
-                        </tr>
-                        <tr>
-                            <th>교육학 선택<br>(택 1)</th>
-                            <td colspan="3">
-                                <ul>
-                                    <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194830' : '159829' }}" autocomplete="off"/> 교육학논술 (이경범 교수 출제)</label></li>
-                                    <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194828' : '159831' }}" autocomplete="off"/> 교육학논술 (정   현 교수 출제)</label></li>
-                                    <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194829' : '159830' }}" autocomplete="off"/> 교육학논술 (신태식 교수 출제)</label></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>전공과목 선택<br>(택 1)</th>
-                            <td colspan="3">
-                                <ul>
-                                    <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194783' : '159832' }}" autocomplete="off"/> 국  어 (송원영/권보민 교수 출제)</label></li>
-                                    <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194784' : '159833' }}" autocomplete="off"/> 국  어 (구동언 교수 출제)</label></li>
-                                    <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194785' : '159834' }}" autocomplete="off"/> 수  학 (김철홍/박태영 교수 출제)</label></li>
-                                    <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194786' : '159835' }}" autocomplete="off"/> 수  학 (김현웅/박혜향 교수 출제)</label></li>
-                                    <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194787' : '_159836' }}" autocomplete="off"/> 도덕·윤리 (김병찬 교수 출제)</label></li>
-                                    <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194788' : '_159837' }}" autocomplete="off"/> 도덕·윤리 (김민응 교수 출제)</label></li>
-                                    <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194789' : '_159838' }}" autocomplete="off"/> 일반사회 (허역 교수팀 출제)</label></li>
-                                    <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194790' : '_159839' }}" autocomplete="off"/> 역  사 (김종권 교수 출제)</label></li>
-                                    <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194791' : '_159840' }}" autocomplete="off"/> 음  악 (다이애나 교수 출제)</label></li>
-                                    <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194792' : '_159841' }}" autocomplete="off"/> 전  기 (최우영 교수 출제)</label></li>
-                                    <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194793' : '_159842' }}" autocomplete="off"/> 전  자 (최우영 교수 출제)</label></li>
-                                    <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194794' : '_159843' }}" autocomplete="off"/> 중국어 (장영희 교수 출제)</label></li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="tx-blue tx-right mt20">※  응시료: 수강생 10,000원 / 비수강생 20,000</div>
-                <div class="check" id="chkInfo">
-                    <label>
-                        <input name="is_chk" id="is_chk" type="checkbox" value="Y" />
-                        페이지 하단의 모의고사 관련 유의사항을 모두 확인하였고, 이에 동의합니다.
-                    </label>
-                    <a href="#careful" class="infotxt" > 이용안내 확인하기 ↓</a>
-                </div>
-                <div class="btns">
-                    @if (empty($arr_base['order_product']) === false)
-                        <a href="javascript:void(0);" onclick="alert('구매한 상품이 있습니다.'); return false;">신청하기 ></a>
-                    @else
-                        <a href="javascript:void(0);" onclick="directPay('off'); return false;">신청하기 ></a>
-                    @endif
-                    {{--<a href="javascript:void(0);">모의고사 마감</a>--}}
-                </div>
-                {{--<div class="popup"><span class="NSK-Black">마감되었습니다.</span></div>--}}
-            </div>
-
-            {{--접수완료 화면--}}
-            @if (empty($arr_base['order_product']) === false)
+            @else
+                {{--접수완료 화면--}}
                 @php
                     $params_d_day_strtotime = strtotime($arr_promotion_params['d_day']);
                     $order_product_list = array_pluck($arr_base['order_product'], 'OrderProdIdx', 'ProdCode');
@@ -372,7 +372,6 @@ align-items: center;}
                 <a href="https://www.facebook.com" title="페이스북" target="_blank" style="position: absolute; left: 43.84%; top: 29.66%; width: 5.36%; height: 50%; z-index: 2;"></a>
                 <a href="https://www.instagram.com" title="인스타그램" target="_blank" style="position: absolute; left: 50.89%; top: 29.66%; width: 5.36%; height: 50%; z-index: 2;"></a>
                 <a href="https://section.blog.naver.com" title="블로그" target="_blank" style="position: absolute; left: 55.89%; top: 29.66%; width: 5.36%; height: 50%; z-index: 2;"></a>
-
                 <a href="javascript:void(0);" title="주소복사하기" onclick="copyTxt();"  style="position: absolute; left: 62.41%; top: 29.66%; width: 13.13%; height: 50%; z-index: 2;"></a>
                 <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute; left: 76.16%; top: 29.66%; width: 13.13%; height: 50%; z-index: 2;"></a>
 

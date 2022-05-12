@@ -149,7 +149,7 @@
                             </div-->
                             @if($method == 'PUT')
                                 <div class="mt-5">
-                                    <img src="{{$data['BannerFullPath']}}{{$data['BannerImgName']}}">
+                                    <img src="{{$data['BannerFullPath']}}{{$data['BannerImgName']}}" style="max-width:100%">
                                     <div class="mt-5 bold">{{$data['BannerImgRealName']}}</div>
                                 </div>
                             @endif

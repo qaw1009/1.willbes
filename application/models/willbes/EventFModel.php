@@ -263,7 +263,7 @@ class EventFModel extends WB_Model
      */
     public function getRegisterMember($arr_condition=[])
     {
-        $column = 'A.EmIdx, A.ErIdx, A.MemIdx, A.UserName, A.UserTelEnc, A.UserMailEnc, A.FileFullPath, A.FileRealName';
+        $column = 'A.EmIdx, A.ErIdx, A.MemIdx, A.UserName, A.UserTelEnc, A.UserMailEnc, A.FileFullPath, A.FileRealName, A.EtcTitle, A.EtcValue';
         /*
         $from = "
             FROM {$this->_table['event_member']} AS A

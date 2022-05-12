@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class BasePromotion extends \app\controllers\FrontController
 {
     protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF',
-        '_lms/sys/code', 'dDayF', 'product/lectureF', 'eventsurvey/survey', '_lms/product/base/subject', 'memberF', 'professorHotClipF', 'promotionBoardF');
+        '_lms/sys/code', 'dDayF', 'product/lectureF', 'eventsurvey/survey', '_lms/product/base/subject', 'memberF', 'professorHotClipF', 'promotionBoardF', 'order/orderListF');
     protected $helpers = array('download');
     protected $_arr_paging_limit = [10,15];
     protected $_paging_count = 10;
@@ -36,6 +36,7 @@ class BasePromotion extends \app\controllers\FrontController
 
     // 프로모션게시판 파일 사용여부
     private $_is_use_promotion_board_file = false;
+    private $_yoil = ["일","월","화","수","목","금","토"];
 
     public function __construct()
     {
@@ -66,6 +67,7 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['spidx'] = (empty($params['spidx']) === false) ? $params['spidx'] : '';
         $arr_base['SsIdx'] = (empty($params['SsIdx']) === false) ? $params['SsIdx'] : '';
         $arr_base['get_data'] = $this->_reqG(null);
+        $arr_base['yoil'] = $this->_yoil;
 
         //인증식별자
         //$cert_idx = element('cert', $this->_reqG(null), '');
@@ -220,7 +222,6 @@ class BasePromotion extends \app\controllers\FrontController
             // 상품 구매여부 체크
             if(empty($arr_promotion_params['prod_chk_yn']) === false && $arr_promotion_params['prod_chk_yn'] == 'Y'){
                 $arr_base['order_count'] = 0;
-
                 if(empty($arr_promotion_params['arr_prod_code']) === false){
                     $arr_prod_code = explode(',', $arr_promotion_params['arr_prod_code']);
                     foreach ($arr_prod_code as $prod_code){
@@ -241,6 +242,18 @@ class BasePromotion extends \app\controllers\FrontController
             if(empty($arr_promotion_params['member_recipient']) === false && $arr_promotion_params['member_recipient'] == 'Y'){
                 $arr_condition = ['EQ' => ['PromotionCode' => $data['PromotionCode'], 'IsStatus' => 'Y', 'MemIdx' => $this->session->userdata('mem_idx')]];
                 $arr_base['member_recipient'] = $this->eventFModel->findPromotionMemberRecipient($arr_condition);
+            }
+
+            // 상품구매정보 조회
+            if (empty($arr_promotion_params['arr_order_prod_code']) === false) {
+                $arr_order_prod_code = explode(',', $arr_promotion_params['arr_order_prod_code']);
+                $arr_base['order_product'] = $this->orderListFModel->listOrderProduct(false, [
+                    'EQ' => [
+                        'O.MemIdx' => $this->session->userdata('mem_idx')
+                        ,'OP.PayStatusCcd' => '676001'
+                    ]
+                    ,'IN' => ['OP.ProdCode' => $arr_order_prod_code]
+                ], 2, null, ['O.OrderIdx' => 'DESC']);
             }
         }
 
@@ -268,7 +281,7 @@ class BasePromotion extends \app\controllers\FrontController
             'lec_type' => $this->_lec_type_ccd,
             'pattern_ccd' => $this->_pattern_ccd,
             'survey_count' => $survey_count,
-            'register_count' => $register_count,
+            'register_count' => $register_count
         ], false);
     }
 
@@ -528,10 +541,16 @@ class BasePromotion extends \app\controllers\FrontController
 
     public function popup($param = [])
     {
+        if ($this->isLogin() !== true) {
+            show_alert('로그인 후 이용해 주세요.', 'close');
+        }
+
+        $sess_mem_idx = $this->session->userdata('mem_idx');
         $arr_base['promotion_code'] = $param[0];
         $arr_base['selected'] = element('selected', $this->_reqG(null));
         $test_type = element('type', $this->_reqG(null), '0');
         $arr_base['method'] = 'POST';
+        $arr_base['yoil'] = $this->_yoil;
 
         /**
          * 인증정보 추가
@@ -545,7 +564,7 @@ class BasePromotion extends \app\controllers\FrontController
             $arr_cert['cert_idx'] = $cert_idx;
             $arr_cert['cert_data'] = $this->certApplyFModel->findCertByCertIdx($cert_idx,$arr_condition);
 
-            if(empty($this->session->userdata('mem_idx')) == false) {
+            if(empty($sess_mem_idx) == false) {
                 $arr_cert['apply_result'] = $this->certApplyFModel->findApplyByCertIdx($cert_idx);
             }
 
@@ -563,6 +582,9 @@ class BasePromotion extends \app\controllers\FrontController
             show_alert('프로모션 조회에 실패했습니다.', '');
         }
 
+        // 프로모션 추가 파라미터 배열처리
+        $arr_promotion_params = $this->_getPromotionParams($arr_base['data']['PromotionParams']);
+
         //이벤트 신청리스트 조회
         $arr_condition = ['EQ' => ['A.ElIdx' => $arr_base['data']['ElIdx'], 'A.IsStatus' => 'Y']];
         $arr_base['register_list'] = $this->eventFModel->listEventForRegister($arr_condition);
@@ -572,19 +594,34 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 등록파일 데이터 조회
         $list_event_file = $this->eventFModel->listEventForFile($arr_base['data']['ElIdx']);
-        if (empty($list_event_file) === false) {
-            $arr_base['arr_file'] = $list_event_file[0];
-        }
+        $arr_base['arr_file'] = element('0', $list_event_file);
 
         //이벤트 신청 여부 조회
-        $regist_member = $this->eventFModel->getRegisterMember(['EQ' => ['B.ElIdx' => $arr_base['data']['ElIdx'], 'A.MemIdx' => $this->session->userdata('mem_idx')]]);
-        if (empty($regist_member) === false) {
-            $arr_base['regist_member'] = $regist_member[0];
+        $regist_member = $this->eventFModel->getRegisterMember(['EQ' => ['B.ElIdx' => $arr_base['data']['ElIdx'], 'A.MemIdx' => $sess_mem_idx]]);
+        $arr_base['regist_member'] = element('0', $regist_member);
+
+        if(empty($arr_promotion_params['member_info_chk_yn']) === false && $arr_promotion_params['member_info_chk_yn'] == 'Y'){
+            $arr_base['member_info'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
+        }
+
+        // 상품구매정보 조회 (추가 파라미터의 arr_order_prod_code 값이 있는경우)
+        if (empty($arr_promotion_params['arr_order_prod_code']) === false && empty($this->_reqG('order_no')) === false){
+            $result_order = $this->orderListFModel->findOrderByOrderNo($this->_reqG('order_no'), $sess_mem_idx);
+            if (empty($result_order) === true) {
+                show_alert('주문정보 데이터가 없습니다.', 'close');
+            }
+            $order_idx = $result_order['OrderIdx']; // 주문식별자
+            $arr_base['order_product'] = $this->orderListFModel->listOrderProduct(false, [
+                'EQ' => [
+                    'O.OrderIdx' => $order_idx, 'O.MemIdx' => $sess_mem_idx, 'OP.PayStatusCcd' => '676001'
+                ]
+            ], null, null, ['OP.OrderProdIdx' => 'asc']);
         }
 
         $this->load->view('willbes/pc/promotion/popup/' . $arr_base['promotion_code'], [
             'arr_base' => $arr_base,
-            'arr_cert' => $arr_cert
+            'arr_cert' => $arr_cert,
+            'arr_promotion_params' => $arr_promotion_params
         ], false);
     }
 

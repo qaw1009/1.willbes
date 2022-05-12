@@ -19,7 +19,7 @@
         /*.evtCtnsBox .wrap a {border:1px solid #fff}*/
         /************************************************************/
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/04/2615_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/05/2615_top_bg.jpg) no-repeat center top;}
 
         .wb_01 {background:#01bdbf; padding-bottom:150px}
 
@@ -32,7 +32,7 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox wb_top" data-aos="fade-down">            
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2615_top.jpg" alt="무료 면접반 개강"/>               
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2615_top.jpg" alt="무료 면접반 개강"/>               
         </div>
 
         <div class="evtCtnsBox wb_01" data-aos="fade-up">
@@ -42,12 +42,12 @@
 		</div>
 
         <div class="evtCtnsBox wb_02" data-aos="fade-up">            
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2615_02.jpg"  alt="관리형 종합반"/>              
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2615_02.jpg"  alt="관리형 종합반"/>              
 		</div>
-
+{{--
         <div class="evtCtnsBox wb_03" data-aos="fade-up">            
             <a href="https://pass.willbes.net/pass/offLecture/show/cate/3149/prod-code/192623" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/04/2615_03.jpg" alt="접수 바로가기"/></a>            
-		</div>
+		</div>--}}
 
         <div class="evtCtnsBox wb_04" data-aos="fade-up">
             <div class="wrap">

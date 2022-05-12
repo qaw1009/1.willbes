@@ -30,7 +30,7 @@
 <div id="Container" class="Container NSK c_both">
 
     <div class="evtCtnsBox" data-aos="fade-down">
-        <img src="https://static.willbes.net/public/images/promotion/2022/04/2615m_top.jpg" alt="무료 면접반 개강" >
+        <img src="https://static.willbes.net/public/images/promotion/2022/05/2615m_top.jpg" alt="무료 면접반 개강" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
@@ -40,14 +40,14 @@
     </div>
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/04/2615m_02.jpg" alt="관리형 종합반" > 
+        <img src="https://static.willbes.net/public/images/promotion/2022/05/2615m_02.jpg" alt="관리형 종합반" > 
     </div> 
-
+{{--
     <div class="evtCtnsBox" data-aos="fade-up">
         <a href="https://pass.willbes.net/m/pass/offLecture/show/cate/3149/prod-code/192623" target="_blank">
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2615m_03.jpg" alt="접수 바로가기" > 
         </a>
-    </div>
+    </div>--}}
 
     <div class="evtCtnsBox" data-aos="fade-up">
         <div class="wrap">

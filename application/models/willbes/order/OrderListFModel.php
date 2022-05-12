@@ -117,10 +117,10 @@ class OrderListFModel extends BaseOrderFModel
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'OP.OrderProdIdx, O.SiteCode, OP.ProdCode, OP.SaleTypeCcd, OP.PayStatusCcd, CPS.CcdName as PayStatusCcdName
+            $column = 'O.OrderNo, OP.OrderProdIdx, O.SiteCode, OP.ProdCode, OP.SaleTypeCcd, OP.PayStatusCcd, CPS.CcdName as PayStatusCcdName
                 , OP.RealPayPrice, OP.OrderPrice, OP.DiscPrice, OP.UsePoint, OP.SavePoint, OP.SavePointType, OP.SalePatternCcd
                 , if(OP.IsUseCoupon = "Y", concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원"), " 할인권"), "") as UseCoupon
-                , OPR.RefundDatm             
+                , OPR.RefundDatm, O.OrderDatm
                 , concat(P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", fn_ccd_name(OP.SalePatternCcd), ")"), "")) as ProdName
                 , P.ProdTypeCcd, PL.LearnPatternCcd
                 , (case when PL.LearnPatternCcd in ("' . $this->_learn_pattern_ccd['adminpack_lecture'] . '", "' . $this->_learn_pattern_ccd['periodpack_lecture'] . '") and PL.StudyPeriodCcd = "' . $this->_study_period_ccd['end_date'] . '" 

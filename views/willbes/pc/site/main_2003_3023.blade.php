@@ -8,7 +8,7 @@
         .gosi .will-nTit {border:0; font-size:46px}
         .gosi .will-nTit span {color:#ba5610}
 
-        .gosi .Menu h3 {border:0}
+        .gosi .Menu h3 {border-bottom:2px solid #000}
 
         /**/
         .gosi-bnfull-Sec {position:relative; margin:0; height: 90px !important;}
@@ -218,10 +218,8 @@
     <div id="Container" class="Container gosi NGR c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')    
-        <div class="Section">
-            <div class="widthAuto">
-                <img src="https://static.willbes.net/public/images/promotion/main/2003/3023_the_top.jpg" alt="과목 개편">
-            </div>
+        <div class="Section tx-center">
+            <img src="https://static.willbes.net/public/images/promotion/main/2003/3023_the_top.jpg" alt="과목 개편">
         </div>   
         <div class="gosi-bnfull-Sec">
             <div class="gosi-bnfull">

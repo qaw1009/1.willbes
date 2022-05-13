@@ -56,8 +56,8 @@
     <div class="evtCtnsBox" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2658m_03.jpg" alt="" >
-            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/195715" target="_blank" style="position: absolute; left: 20.97%; top: 46.36%; width: 60.28%; height: 4.2%; z-index: 2;"></a>
-            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/195716" target="_blank" style="position: absolute; left: 20.97%; top: 87.94%; width: 60.28%; height: 4.2%; z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/195716" target="_blank" style="position: absolute; left: 20.97%; top: 46.36%; width: 60.28%; height: 4.2%; z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/195715" target="_blank" style="position: absolute; left: 20.97%; top: 87.94%; width: 60.28%; height: 4.2%; z-index: 2;"></a>
         </div>    
     </div> 
 

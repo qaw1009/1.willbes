@@ -81,8 +81,8 @@
         <div class="evtCtnsBox evt03" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2658_03.jpg" alt="온라인 패스" />
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/195715" target="_blank" style="position: absolute; left: 10.8%; top: 78.43%; width: 31.43%; height: 7.04%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/195716" target="_blank" style="position: absolute; left: 58.93%; top: 78.43%; width: 31.43%; height: 7.04%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/195716" target="_blank" style="position: absolute; left: 10.8%; top: 78.43%; width: 31.43%; height: 7.04%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/195715" target="_blank" style="position: absolute; left: 58.93%; top: 78.43%; width: 31.43%; height: 7.04%;z-index: 2;"></a>
             </div>
             {{--
             <div class="check" id="chkInfo">   

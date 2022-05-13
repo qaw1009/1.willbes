@@ -10,8 +10,8 @@
     .evt_table table th,
     .evt_table table td {margin:10px 0; color:#666}
     .evt_table table th {background:#f9f9f9; color:#000;}
-    .evt_table thead th {background:#d9d9d9; color:#000; font-size:24px; font-weight:bold; padding:20px; border:1px solid #000}
-    .evt_table table td{text-align:left; padding:15px}
+    .evt_table thead th {background:#d9d9d9; color:#000; font-size:20px; font-weight:bold; padding:15px; border:1px solid #000}
+    .evt_table table td{text-align:left; padding:10px}
     .evt_table label {margin-right:10px; line-height:28px;}
     .evt_table input {vertical-align:middle}
     .evt_table input[type=text] {height:28px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; background:#f5f5f5; vertical-align:middle; width:80%; margin-bottom:5px}
@@ -23,24 +23,26 @@
     .evt_table .btns a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#42425b; margin:0 10px; border-radius:40px; padding:0 50px}
     .evt_table .btns a:hover {background:#fe544a}
 
-    .evt_table .map {border-top:1px solid #ccc; margin-top:50px; padding-top:50px; }
-    .evt_table .map li {list-style-type:decimal;margin-left:20px; margin-bottom:10px}
-    .evt_table .map > div {text-align:left}
-    .evt_table .map h5 {font-size:18px; margin-bottom:10px; margin-top:30px}
-    .evt_table .map img {width:500px; height:500px}
+    .evt_table .mapWrap {border-top:1px solid #ccc; margin-top:30px; padding-top:20px; text-align:left}
+    .evt_table .map {margin-top:20px}
+    .evt_table .mapWrap li {list-style-type:decimal;margin-left:20px; margin-bottom:5px}
+    .evt_table .mapWrap h5 {font-size:16px; margin-bottom:10px;}
+    .evt_table .map {display:flex;}
+    .evt_table .map > div {margin-left:10px;}
+    .evt_table .map img {width:45%; height:auto}
+    @@page {size:21cm 29.7cm; margin:15px; border:1px solid #000}
     @@media print {
-        .evt_table {font-size:20px;}
-        .evt_table thead th {font-size:30px;}
-        .evt_table .map { display:flex;}
-        .evt_table .map > div {margin-left:20px;}
-        .evt_table .map h5 {font-size:26px;}
-        .evt_table .map h5:nth-child(1) {margin-top:0}
+        .evt_table {font-size:12px;}
+        .evt_table thead th {font-size:26px;}       
+        .evt_table .map > div {font-size:11px}
+        .evt_table .map h5 {font-size:12px;}
+        .evt_table .btns {display:none}
+        .evt_table .map img {max-width:500px}
     }
 </style>
 
-<form id="" name="" method="post"  action="">
+<form id="" name="" method="post" action="">
     <div class="evt_table NSK">
-        <div class="tx-blue tx-left mb10">※  접수 완료하였습니다. </div>
         <table cellspacing="2" cellpadding="2">
             <col width="15%" />
             <col/>
@@ -48,13 +50,13 @@
             <col />
             <thead>
                 <tr>
-                    <th colspan="4">교원임용 Real 모의고사 접수 현황</th>
+                    <th colspan="4">2023학년도 중등임용 시험대비 Real 모의고사 응시표</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th>시험명</th>
-                    <td colspan="3">2023학년도 대비 중등임용 Real 모의고사 (주관: 윌비스 임용)</td>
+                    <th>시험주관</th>
+                    <td colspan="3">윌비스 임용</td>
                 </tr>
                 <tr>
                     <th>응시과목</th>
@@ -80,11 +82,9 @@
                 </tr> 
             </tbody>
         </table>
-        <div class="mt50">2022. 06. 12</div>
-        <div class="mt30">위와 같이 접수하고, 교원임용 Real 모의고사에 응시하고자 합니다.</div>
-        <div class="mt50"><img src="https://static.willbes.net/public/images/promotion/2022/05/stamp.png" alt=""/></div>
-        <div class="map">
-            <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_map.jpg" alt=""/>
+        <div class="mt40">2022. 06. 12</div>
+        <div class="mt40"><img src="https://static.willbes.net/public/images/promotion/2022/05/stamp.png" alt=""/></div>
+        <div class="mapWrap">
             <div>
                 <h5>📌 유의사항</h5>
                 <ul>
@@ -94,21 +94,25 @@
                     <li>시험이 시작되면, 종료 시까지 고사장에서 퇴장할 수 없으며, 화장실 등 불가피한 사정으로 퇴실할 경우에도 재입실이 불가합니다.</li>
                     <li>시험 응시에 필요한 준비물은 수험표, 신분증, 필기도구, (아날로그)손목시계 입니다. <br>
                         * 수험표와 신분증 미소지 시, 시험에 응시할 수 없습니다. </li>
-                </ul>
-
-                <h5>📌 시험장 오시는 길</h5>
-                🚇지하철 1호선 및 경의중앙선 용산역 1번출구 도보 15분<br>
-                🚇지하철 4호선 신용산역 2번출구 도보 15분<br>
-                🚇지하철 4호선 및 경의중앙선 이촌역 5번출구 도보 15분 <br>
-                <br>
-                🚍간선버스 한강대교북단, 신용산역 100, 150, 151, 152, 500, 501, 504, 506, 507, 605, 750A, 750B, 751, 751, N15 도보 10분<br>
-                🚍간선버스 용산철도고등학교 400, 502 도보 5분 <br>
-                🚍지선버스 한강대교북단 0017 도보 10분                 
+                </ul>          
+            </div>
+            <div class="map">
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_map.jpg" alt=""/>
+                <div>
+                    <h5>📌 시험장 오시는 길</h5>
+                    🚇지하철 1호선 및 경의중앙선 용산역 1번출구 도보 15분<br>
+                    🚇지하철 4호선 신용산역 2번출구 도보 15분<br>
+                    🚇지하철 4호선 및 경의중앙선 이촌역 5번출구 도보 15분 <br>
+                    <br>
+                    🚍간선버스 한강대교북단, 신용산역 100, 150, 151, 152, 500, 501, 504, 506, 507, 605, 750A, 750B, 751, 751, N15 도보 10분<br>
+                    🚍간선버스 용산철도고등학교 400, 502 도보 5분 <br>
+                    🚍지선버스 한강대교북단 0017 도보 10분                 
+                </div>
             </div>
         </div>
 
         <div class="btns">
-            <a href="#none">출력하기</a>
+            <a href="javascript:window.print();">출력하기</a>
         </div>
 
     </div>

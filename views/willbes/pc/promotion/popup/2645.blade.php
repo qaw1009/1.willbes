@@ -10,8 +10,8 @@
     .evt_table table th,
     .evt_table table td {margin:10px 0; color:#666}
     .evt_table table th {background:#f9f9f9; color:#000;}
-    .evt_table thead th {background:#d9d9d9; color:#000; font-size:20px; font-weight:bold; padding:20px 10px; border:1px solid #000}
-    .evt_table table td{text-align:left; padding:15px}
+    .evt_table thead th {background:#d9d9d9; color:#000; font-size:20px; font-weight:bold; padding:15px; border:1px solid #000}
+    .evt_table table td{text-align:left; padding:10px}
     .evt_table label {margin-right:10px; line-height:28px;}
     .evt_table input {vertical-align:middle}
     .evt_table input[type=text] {height:28px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; background:#f5f5f5; vertical-align:middle; width:80%; margin-bottom:5px}
@@ -23,19 +23,21 @@
     .evt_table .btns a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#42425b; margin:0 10px; border-radius:40px; padding:0 50px}
     .evt_table .btns a:hover {background:#fe544a}
 
-    .evt_table .map {border-top:1px solid #ccc; margin-top:40px; padding-top:40px;}
-    .evt_table .map li {list-style-type:decimal;margin-left:20px; margin-bottom:5px}
-    .evt_table .map > div {text-align:left}
-    .evt_table .map h5 {font-size:18px; margin-bottom:10px; margin-top:30px}
-    .evt_table .map img {width:500px; height:500px}
+    .evt_table .mapWrap {border-top:1px solid #ccc; margin-top:30px; padding-top:20px; text-align:left}
+    .evt_table .map {margin-top:20px}
+    .evt_table .mapWrap li {list-style-type:decimal;margin-left:20px; margin-bottom:5px}
+    .evt_table .mapWrap h5 {font-size:16px; margin-bottom:10px;}
+    .evt_table .map {display:flex;}
+    .evt_table .map > div {margin-left:10px;}
+    .evt_table .map img {width:45%; height:auto}
+    @@page {size:21cm 29.7cm; margin:15px; border:1px solid #000}
     @@media print {
-        .evt_table {font-size:16px;}
-        .evt_table thead th {font-size:26px;}
-        .evt_table .map {display:flex;}
-        .evt_table .map > div {margin-left:20px; font-size:12px}
-        .evt_table .map h5 {font-size:20px;}
-        .evt_table .map h5:nth-child(1) {margin-top:0}
-        .evt_table .map img {width:200px; height:200px}
+        .evt_table {font-size:12px;}
+        .evt_table thead th {font-size:26px;}       
+        .evt_table .map > div {font-size:11px}
+        .evt_table .map h5 {font-size:12px;}
+        .evt_table .btns {display:none}
+        .evt_table .map img {max-width:500px}
     }
 </style>
 

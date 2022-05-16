@@ -417,12 +417,11 @@ align-items: center;}
                             <thead>
                                 <tr>
                                     <th rowspan="2">구분</th>
-                                    <th colspan="3">교육학</th>
+                                    <th colspan="2">교육학</th>
                                     <th colspan="2">국어</th>
                                     <th colspan="2">수학</th>
                                 </tr>
                                 <tr>
-                                    <th>이경범</th>
                                     <th>정현</th>
                                     <th>신태식</th>
                                     <th>송원영/권보민</th>
@@ -440,11 +439,9 @@ align-items: center;}
                                     <td>O</td>
                                     <td>O</td>
                                     <td>O</td>
-                                    <td>O</td>
                                 </tr>
                                 <tr>
                                     <th>해설강의</th>
-                                    <td>O</td>
                                     <td>O</td>
                                     <td>O</td>
                                     <td>O</td>
@@ -454,7 +451,6 @@ align-items: center;}
                                 </tr>
                                 <tr>
                                     <th>채점서비스</th>
-                                    <td>O</td>
                                     <td>O</td>
                                     <td>O</td>
                                     <td>O<br />
@@ -469,7 +465,7 @@ align-items: center;}
                             <thead>
                                 <tr>
                                     <th rowspan="2">구분</th>
-                                    <th colspan="2">도덕윤리</th>
+                                    <th>도덕윤리</th>
                                     <th>일반사회</th>
                                     <th>역사</th>
                                     <th>음악</th>
@@ -477,7 +473,6 @@ align-items: center;}
                                     <th>중국어</th>
                                 </tr>
                                 <tr>
-                                    <th>김병찬</th>
                                     <th>김민응</th>
                                     <th>허역 팀</th>
                                     <th>김종권</th>
@@ -489,7 +484,6 @@ align-items: center;}
                             <tbody>
                                 <tr>
                                     <th>해설지제공</th>
-                                    <td>O</td>
                                     <td>X</td>
                                     <td>O</td>
                                     <td>O</td>
@@ -499,7 +493,6 @@ align-items: center;}
                                 </tr>
                                 <tr>
                                     <th>해설강의</th>
-                                    <td>X</td>
                                     <td>O</td>
                                     <td>X</td>
                                     <td>X</td>
@@ -509,7 +502,6 @@ align-items: center;}
                                 </tr>
                                 <tr>
                                     <th>채점서비스</th>
-                                    <td>X</td>
                                     <td>X</td>
                                     <td>X</td>
                                     <td>O</td>

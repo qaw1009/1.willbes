@@ -26,7 +26,7 @@
 
         .evt00 {background:#f4f1f3}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/05/2657_top_bg.jpg) no-repeat center top;}     
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/05/2661_top_bg.jpg) no-repeat center top;}     
 
         .evt03 {background:#f4f4f4;padding-bottom:50px;}
         
@@ -38,7 +38,7 @@
         .time li:last-child {line-height:1.3; color:#363635}
         .time li:first-child {margin-right:20px}
         .time li:last-child {margin-left:20px}
-        .time li:first-child span {line-height:2.5;color:#5013DC;}        
+        .time li:first-child span {line-height:2.5;color:#FF5D49;}        
         .time li:last-child span {line-height:2.5; color:#363635;font-weight:bold;} 
         .time li:last-child a {display:block; color:#fff; background:#242424; padding:10px 20px; margin-top:20px}
         .time li img {width:44px}
@@ -56,7 +56,7 @@
 
         <div class="sky" id="QuickMenu">
             <a href="#apply">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2657_sky.png" alt="바로가기">
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2661_sky.png" alt="바로가기">
             </a>
         </div>
 
@@ -85,22 +85,22 @@
         </div>
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/05/2657_top.jpg" alt="세무직 이론+기출 선행"/>              
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2661_top.jpg" alt="소방직 이론+기출 선행"/>              
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up"> 
-            <img src="https://static.willbes.net/public/images/promotion/2022/05/2657_01.jpg" alt="끝을 결정합니다"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2661_01.jpg" alt="끝을 결정합니다"/>
         </div>                 
 
         <div class="evtCtnsBox evt02" data-aos="fade-up"> 
-            <img src="https://static.willbes.net/public/images/promotion/2022/05/2657_02.jpg" alt="미리 앞서가세요" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2661_02.jpg" alt="미리 앞서가세요" />
         </div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-up" id="apply">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2657_03.jpg" alt="선행 패키지" />
-                <a href="https://pass.willbes.net/package/show/cate/3022/pack/648001/prod-code/195017" title="신청하기" target="_blank" style="position: absolute;left: 64.66%;top: 69.12%;width: 18.43%;height: 6.14%;z-index: 2;"></a>
-            </div>      
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2661_03.jpg" alt="선행 패키지" />
+                <a href="https://pass.willbes.net/package/show/cate/3023/pack/648001/prod-code/195567" title="신청하기" target="_blank" style="position: absolute;left: 64.66%;top: 69.32%;width: 18.43%;height: 6.14%;z-index: 2;"></a>
+            </div>
         </div>
     </div>
 

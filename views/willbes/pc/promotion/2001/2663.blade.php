@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a {border:1px solid #000}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
@@ -121,6 +121,10 @@
             </div>
         </div>
 
+        <div class="evtCtnsBox wb_03">
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2663_03.jpg"  alt="2022 기본종합반" />
+		</div>
+
         <div class="evtCtnsBox wb_play NSK-Black" data-aos="fade-up">
             <div class="stitle">형사법 신광은 교수님<br>
             강의의 <span>새로운 신세계</span>를 보여드리겠습니다.</div>
@@ -148,11 +152,6 @@
                 <iframe src="https://www.youtube.com/embed/8T1HxQ5PPhQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 		</div>
-
-        <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2022/05/2663_03.jpg"  alt="2022 기본종합반" />
-		</div>
-
 
         <div class="evtCtnsBox wb_04" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2663_04.jpg"  alt="신규강사"/>

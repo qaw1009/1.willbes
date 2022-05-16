@@ -93,7 +93,7 @@ align-items: center;}
         .evtInfoBox li table {margin-top:10px; border:1px solid #ccc}
         .evtInfoBox li tr {border-bottom:1px solid #ccc}
         .evtInfoBox li th,
-        .evtInfoBox li td {font-size:12px; padding:8px; text-align:center; border-right:1px solid #ccc;}
+        .evtInfoBox li td {font-size:12px; padding:8px 2px; text-align:center; border-right:1px solid #ccc;}
         .evtInfoBox li th {font-size:13px; font-weight:bold; background:#111}
         .evtInfoBox li tbody th {background:#222}
     </style>
@@ -410,10 +410,13 @@ align-items: center;}
                     <li>본 Real 모의고사 종료 후, 과목에 따라서 채점기준표(해설지)제공, 채점서비스, 해설강의가 제공됩니다. (해설강의 일정은 추후 공개)
                         <table cellspacing="0" cellpadding="0">
                             <col />
-                            <col span="3" />
-                            <col />
-                            <col />
-                            <col span="2" />
+                            <col width="13%"/>
+                            <col width="13%"/>
+                            <col width="13%"/>
+                            <col width="13%"/>
+                            <col width="13%"/>
+                            <col width="13%"/>
+                            <col width="13%"/>
                             <thead>
                                 <tr>
                                     <th rowspan="2">구분</th>

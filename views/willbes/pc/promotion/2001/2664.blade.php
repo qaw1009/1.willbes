@@ -235,7 +235,7 @@
 
             <div class="title02" id="transfer">
                 재수강과 환승 하실 수강생은 모두 주목
-                <div class="NSK-Black">최대 <span>25만원 할인</span> 받고 구매하세요.</div>
+                <div class="NSK-Black">최대 <span>30만원 할인</span> 받고 구매하세요.</div>
             </div>
 
             <div class="wrap">

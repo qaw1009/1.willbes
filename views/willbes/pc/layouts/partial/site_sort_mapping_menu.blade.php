@@ -7,7 +7,7 @@
         </colgroup>
         <tbody>
             {{-- 대분류 카테고리 --}}
-            @foreach($_sort_mapping_menu as $sm_lg_idx => $sm_lg_row)
+            @foreach($_menu_sub_data as $sm_lg_idx => $sm_lg_row)
                 <tr>
                     <th>{{ $sm_lg_row['MenuName'] }}</th>
                     <td>

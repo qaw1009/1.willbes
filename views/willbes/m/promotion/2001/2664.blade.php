@@ -136,19 +136,19 @@
         </div>
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">         
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_top.jpg" alt="0원 PASS" >                 
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664m_top.jpg" alt="0원 PASS" >                 
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_event01.jpg" alt="쿠폰받기" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664m_event01.jpg" alt="쿠폰받기" >
             <a href="javascript:void(0);" onclick="giveCheck(); return false;" title="쿠폰받기" style="position: absolute; left: 14.31%; top: 82.95%; width: 71.25%; height: 8.03%; z-index: 2;"></a>
         </div>
         
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_pass.png"> 
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664m_pass.png"> 
             <div class="evt01_coupon ">  
                 <div class="p_re">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_pass01.png" alt="23년 합격 패스" > 
+                    <img src="https://static.willbes.net/public/images/promotion/2022/05/2664m_pass01.png" alt="23년 합격 패스" > 
                     <div class="price NSK-Black">
                         <p>학습지원금 <span>5만 포인트 지급!</span></p>  
                         <input type="radio" id="y_pkg0" name="y_pkg" value="196054" onClick=""/>
@@ -157,7 +157,7 @@
                 </div>
 
                 <div class="p_re">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_pass02.png" alt="23년 1차 패스" > 
+                    <img src="https://static.willbes.net/public/images/promotion/2022/05/2664m_pass02.png" alt="23년 1차 패스" > 
                     <div class="price NSK-Black">
                         <p>학습지원금 <span>5만 포인트 지급!</span></p>  
                         <input type="radio" id="y_pkg1" name="y_pkg" value="196053" onClick=""/>
@@ -166,7 +166,7 @@
                 </div>
 
                 <div class="p_re">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_pass03.png" alt="22년 2차 패스" >
+                    <img src="https://static.willbes.net/public/images/promotion/2022/05/2664m_pass03.png" alt="22년 2차 패스" >
                     <div class="price NSK-Black">
                         <p><span> </span></p>
                         <input type="radio" id="y_pkg2" name="y_pkg" value="196050" onClick=""/>
@@ -186,7 +186,7 @@
             </div>
             
             <div data-aos="fade-up" class="p_re mt50">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_pass04.png" alt="할일받고 구매하자">
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2664m_pass04.png" alt="할일받고 구매하자">
                 <a href="https://police.willbes.net/m/support/qna/index/cate/3001?s_cate_code=3001&s_is_my_contents=1" target="_blank" title="재수강 쿠폰받기" style="position: absolute; left: 8.47%; top: 25.65%; width: 38.75%; height: 34.57%; z-index: 2;"></a>
 
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute; left: 52.5%; top: 25.65%; width: 38.75%; height: 34.57%; z-index: 2;"></a>
@@ -337,11 +337,11 @@
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_01.jpg" alt="교수진" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664m_01.jpg" alt="교수진" >
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_02.jpg" alt="" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664m_02.jpg" alt="" >
             <div class="tabContaier" id="apply">    
                 <ul>    
                     <li><a href="#tab1" class="active">형사법<br> 신광은</a></li>                            
@@ -437,11 +437,11 @@
         </div>
         
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_03.jpg" alt="" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664m_03.jpg" alt="" >
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_04.jpg" alt="" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664m_04.jpg" alt="" >
         </div>
 
         <div class="evtCtnsBox wrap" data-aos="fade-up">
@@ -450,7 +450,7 @@
                 {!! method_field('POST') !!}
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2634m_05.jpg" alt="교재 신청하기" >
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2664m_05.jpg" alt="교재 신청하기" >
                 <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 58.89%; top: 32.29%; width: 25%; height: 2.67%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="경찰학" style="position: absolute; left: 28.06%; top: 51.31%; width: 21.94%; height: 2.22%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180748" target="_blank" title="형사법" style="position: absolute; left: 50.28%; top: 51.31%; width: 21.94%; height: 2.22%; z-index: 2;"></a>

@@ -28,8 +28,9 @@
         .evt00 {background:#0a0a0a}
 
         .evtTop {background:url("https://static.willbes.net/public/images/promotion/2022/05/2664_top_bg.jpg") no-repeat center top;} 
+        .evtTop span {position: absolute; top:30px; left:50%; width:570px; z-index: 2;}
 
-        .event {background:#fe8c05}
+        .event {background:#3e75ff}
 
         .evtPass {background:#f5f5f7; padding:140px 0}
         .evtPass .title01 {font-size:30px; color:#000; margin-bottom:100px}
@@ -77,14 +78,12 @@
         /*탭(텍스트)*/
         .tabContaier {width:990px; margin:0 auto; height:520px; background:#fff; border-radius:10px; box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.1); 
             display:flex; flex-direction: row-reverse; justify-content: space-between; text-align:left; letter-spacing:-1px; padding:36px 60px; position: relative;}
-        .tabContaier ul{width:216px; height:450px; overflow-y: scroll} 
-        .tabContaier li {margin-bottom:4px}      
-        .tabContaier li a img.off{display:block;}
-        .tabContaier li a img.on{display:none;}
-        .tabContaier li a:hover img.off,
-        .tabContaier li a.active img.off {display:none;}
-        .tabContaier li a:hover img.on,
-        .tabContaier li a.active img.on {display:block;}
+        .tabContaier ul{width:216px; /*height:450px; overflow-y: scroll*/} 
+        .tabContaier li {margin-bottom:5px}    
+        .tabContaier li a {display:block; background:#ebebeb; color:#999; height:60px; line-height:60px; text-align:center; font-size:24px}
+        .tabContaier li a span {font-size:16px}
+        .tabContaier li a:hover,
+        .tabContaier li a.active {background:#cf9c5d; color:#fff; }
 
         .tabContaier .tabContents div {font-size:28px; color:#000; font-weight:bold; margin-top:20px; position: relative;}
         .tabContaier .tabContents div > a {color:#cf9c5d; font-size:16px; background:url("https://static.willbes.net/public/images/promotion/2022/05/2664_icon01.png") no-repeat right center; padding-right:25px}
@@ -188,7 +187,8 @@
         </div>
 
         <div class="evtCtnsBox evtTop" id="main" data-aos="fade-up">           
-            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_top.jpg" alt="경찰 pass"/>                        
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_top.jpg" alt="경찰 pass"/>   
+            <span data-aos="flip-left" data-aos-delay="300"><img src="https://static.willbes.net/public/images/promotion/2022/05/2664_top_img.png" alt="경찰 pass 교수진"/></span>                     
         </div> 
         
         <div class="evtCtnsBox event" data-aos="fade-up">     
@@ -398,44 +398,37 @@
                 <ul>    
                     <li>
                         <a href="#tab1" class="active">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_02_t01.jpg" alt="형사법 신광은" class="off" >
-                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_02_t01_on.jpg" alt="" class="on" >
+                            <span>형사법</span> 신광은
                         </a>
                     </li>                            
                     <li>
                         <a href="#tab2">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_02_t02.jpg" alt="경찰학 장정훈" class="off" >
-                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_02_t02_on.jpg" alt="" class="on" >
+                         <span>경찰학</span> 장정훈
                         </a>
                     </li>
                     <li>
                         <a href="#tab3">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_02_t03.jpg" alt="헌법 김원욱" class="off" >
-                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_02_t03_on.jpg" alt="" class="on" >
+                         <span>헌법</span> 김원욱
                         </a>
                     </li>                            
                     <li>
                         <a href="#tab4">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_02_t04.jpg" alt="헌법 이국령" class="off" >
-                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_02_t04_on.jpg" alt="" class="on" >
+                         <span>헌법</span> 이국령
                         </a>
                     </li>    
                     <li>
                         <a href="#tab5">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_02_t05.jpg" alt="헌법 문태환" class="off" >
-                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_02_t05_on.jpg" alt="" class="on" >
+                         <span>헌법</span> 문태환
                         </a>
                     </li>  
                     <li>
                         <a href="#tab6">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_02_t06.jpg" alt="헌법 신기훈" class="off" >
-                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_02_t06_on.jpg" alt="" class="on" >
+                         <span>헌법</span> 신기훈
                         </a>
                     </li>  
                     <li>
                         <a href="#tab7">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_02_t07.jpg" alt="범죄학 박상민" class="off" >
-                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_02_t07_on.jpg" alt="" class="on" >
+                            <span>범죄학</span> 박상민
                         </a>
                     </li>             
                 </ul>

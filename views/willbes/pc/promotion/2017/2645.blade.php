@@ -38,13 +38,13 @@
         .evt_table table td {margin:10px 0; font-size:16px; color:#666}
         .evt_table table th {background:#f9f9f9; color:#000;}
         .evt_table thead th {background:#d9d9d9; color:#000; font-size:24px; font-weight:bold; padding:20px; border:1px solid #000}
-        .evt_table table td{text-align:left; padding:15px}
+        .evt_table table td{text-align:left; padding:15px 10px}
         .evt_table label {margin-right:10px; line-height:28px;}
         .evt_table input {vertical-align:middle}
         .evt_table input[type=text] {height:28px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; background:#f5f5f5; vertical-align:middle; width:80%; margin-bottom:5px}
         .evt_table td input[type=text]:last-child {margin-bottom:0}
         .evt_table input[type=checkbox] {height:20px; width:20px}
-        .evt_table td li {display:inline-block; float:left; width:50%; margin-bottom:10px}
+        .evt_table td li {display:inline-block; float:left; width:50%; margin-bottom:10px; letter-spacing:-1px}
 
         .check {margin:30px auto; text-align:left}
         .check p {margin-bottom:50px;padding-top:75px;}
@@ -242,7 +242,7 @@ align-items: center;}
                                         <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194786' : '159835' }}" autocomplete="off"/> 수  학 (김현웅/박혜향 교수 출제)</label></li>
                                         {{--<li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194787' : '_159836' }}" autocomplete="off"/> 도덕·윤리 (김병찬 교수 출제)</label></li>--}}
                                         <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194788' : '_159837' }}" autocomplete="off"/> 도덕·윤리 (김민응 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194789' : '_159838' }}" autocomplete="off"/> 일반사회 (허역 교수팀 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194789' : '_159838' }}" autocomplete="off"/> 일반사회 (허역/정인홍/이웅재/김현중 교수팀 출제)</label></li>
                                         <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194790' : '_159839' }}" autocomplete="off"/> 역  사 (김종권 교수 출제)</label></li>
                                         <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194791' : '_159840' }}" autocomplete="off"/> 음  악 (다이애나 교수 출제)</label></li>
                                         <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194792' : '_159841' }}" autocomplete="off"/> 전  기 (최우영 교수 출제)</label></li>

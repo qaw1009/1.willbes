@@ -303,19 +303,20 @@ class BookFModel extends ProductFModel
                         ,concat(\'https://'.$cur_url.'\', A.wAttachImgPath, A.wAttachImgOgName) as image_link
                         ,A.ProdCateName as category_name1
                         ,null as category_name2
-                        ,null as category_name3
-                        ,\'50005992\' as naver_category
+                        ,null as category_name3                                                
+                        ,if(ifnull(SC.CateEtc, \'\') = \'\', \'50005992\', SC.CateEtc) as naver_category
                         ,\'신상품\' as \'condition\'
                         ,A.wAuthorNames as brand
                         ,A.wPublName as maker
                         ,concat(\'윌비스|willbes|willstory|윌스토리|\', replace(ifnull(A.keyword,\'\'),\' \',\'\')) as search_tag
-                         ,(
+                        ,(
                         	if(A.rwRealSalePrice >= B.DeliveryFreePrice,0, (if(A.IsFreebiesTrans=\'N\', 0, B.DeliveryPrice)))
 						) as shipping
-                    ';
+        ';
         $from = '
                     from vw_product_book A
-	                        join lms_site B on A.SiteCode = B.SiteCode
+                        inner join lms_site B on A.SiteCode = B.SiteCode
+                        left join lms_sys_category as SC on A.CateCode = SC.CateCode and SC.IsStatus = \'Y\'
                     where 1=1 
         ';
 

@@ -17,69 +17,49 @@
 
         <div class="curriWrap c_both">
             @if($is_sort_mapping === true)
-                {{-- 대분류 카테고리 --}}
-                <ul class="curriTabs c_both">
-                    @foreach($arr_base['category_d1'] as $idx => $row)
-                        <li><a href="#none" onclick="goReUrl('cate_code', '{{ $row['CateCode'] }}', 'subject_idx');" class="@if($arr_base['cate_code_d1'] == $row['CateCode']) on @endif">{{ $row['CateName'] }}</a></li>
-                    @endforeach
-                </ul>
+                <div class="CurriVer2 mb20">
+                    <div class="CurriVer2Tabs">
+                        {{-- 대분류 카테고리 --}}
+                        @if(empty($arr_base['category_d1']) === false)
+                            @foreach($arr_base['category_d1'] as $idx => $row)
+                                <a href="javascript:void(0);" onclick="goReUrl('cate_code', '{{ $row['CateCode'] }}', 'subject_idx');" class="@if($arr_base['cate_code_d1'] == $row['CateCode']) on @endif">{{ $row['CateName'] }}</a>
+                            @endforeach
 
-                <div class="CurriBox mb20">
-                    <table cellspacing="0" cellpadding="0" class="curriTable">
-                        <colgroup>
-                            <col width="*">
-                            <col width="*">
-                            <col width="*">
-                            <col width="*">
-                            <col width="*">
-                            <col width="*">
-                            <col width="*">
-                            <col width="*">
-                            <col width="*">
-                            <col width="*">
-                        </colgroup>
-                        <tbody>
-                        @if(empty($arr_base['category_d2']) === false)
-                            <tr>
-                                <th class="tx-gray">카테고리</th>
-                                <td colspan="9">
-                                    {{-- 중분류 카테고리 --}}
-                                    <ul class="curriSelect">
+                            {{-- 대분류 카테고리 마지막 라인 빈칸 채우기 --}}
+                            @php $category_d1_mod_cnt = 6 - (count($arr_base['category_d1']) % 6); @endphp
+                            @if($category_d1_mod_cnt != 6)
+                                @for($i = 0; $i < $category_d1_mod_cnt; $i++)
+                                    <a href="javascript:void(0);"></a>
+                                @endfor
+                            @endif
+                        @endif
+                    </div>
+                    <div class="willbes-Lec-Search p_re mt20">
+                        <div class="inputBox p_re">
+                            <div class="selectBox">
+                                <select id="cate_code_d2" name="cate_code_d2" title="카테고리 선택" onchange="goReUrl('cate_code', this.value, 'subject_idx');">
+                                    <option value="{{ element('cate_code_d1', $arr_base, '') }}">카테고리 선택</option>
+                                    @if(empty($arr_base['category_d2']) === false)
                                         @foreach($arr_base['category_d2'] as $idx => $row)
-                                            <li><a href="#none" onclick="goReUrl('cate_code', '{{ $row['CateCode'] }}', 'subject_idx');" class="@if($arr_base['cate_code_d2'] == $row['CateCode']) on @endif">{{ $row['CateName'] }}</a></li>
+                                            <option value="{{ $row['CateCode'] }}" @if($arr_base['cate_code_d2'] == $row['CateCode']) selected="selected" @endif>{{ $row['CateName'] }}</option>
                                         @endforeach
-                                    </ul>
-                                </td>
-                            </tr>
-                        @else
-                            <tr>
-                                <th class="tx-gray">카테고리</th>
-                                <td colspan="9" class="tx-blue tx-left">* 상위 카테고리 선택시 카테고리를 확인하실 수 있습니다. 상위 카테고리를 먼저 선택해 주세요!</td>
-                            </tr>
-                        @endif
-                        @if(empty($arr_base['subject']) === false)
-                            <tr>
-                                <th class="tx-gray">과목선택</th>
-                                <td colspan="9">
-                                    {{-- 과목 --}}
-                                    <ul class="curriSelect">
-                                        <li><a href="#none" onclick="goUrl('subject_idx', '');" class="@if(empty(element('subject_idx', $arr_input)) === true) on @endif">전체</a></li>
+                                    @endif
+                                </select>
+                            </div>
+                            <div class="selectBox">
+                                <select id="subject_idx" name="subject_idx" title="과목 선택" onchange="goUrl('subject_idx', this.value);">
+                                    <option value="">과목 선택</option>
+                                    @if(empty($arr_base['subject']) === false)
                                         @foreach($arr_base['subject'] as $idx => $row)
-                                            <li><a href="#none" onclick="goUrl('subject_idx', '{{ $row['SubjectIdx'] }}');" class="@if(element('subject_idx', $arr_input) == $row['SubjectIdx']) on @endif">{{ $row['SubjectName'] }}</a></li>
+                                            <option value="{{ $row['SubjectIdx'] }}" @if(element('subject_idx', $arr_input) == $row['SubjectIdx']) selected="selected" @endif>{{ $row['SubjectName'] }}</option>
                                         @endforeach
-                                    </ul>
-                                </td>
-                            </tr>
-                        @else
-                            <tr>
-                                <th class="tx-gray">과목선택</th>
-                                <td colspan="9" class="tx-blue tx-left">* 카테고리 선택시 카테고리별 과목을 확인하실 수 있습니다. 카테고리를 먼저 선택해 주세요!</td>
-                            </tr>
-                        @endif
-                        </tbody>
-                    </table>
+                                    @endif
+                                </select>
+                            </div>
+                            <span>* 상위 카테고리 선택시 카테고리를 확인할 수 있습니다. 상위 카테고리를 먼저 선택해 주세요!</span>
+                        </div>
+                    </div>
                 </div>
-                <!-- curriWrap -->
             @else
                 {{-- 타이틀 텍스트 --}}
                 <div class="wsBook-Subject tx-dark-black NG">
@@ -216,6 +196,7 @@
                 {!! $paging['pagination'] !!}
             </form>
         </div>
+        <!-- curriWrap -->
     </div>
     <!--//Content-->
 

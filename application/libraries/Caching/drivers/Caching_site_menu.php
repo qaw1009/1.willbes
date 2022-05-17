@@ -140,10 +140,13 @@ class Caching_site_menu extends CI_Driver
                 // 생성된 배열 키로 값 설정
                 array_set($data, $child_key, $arr_menu);
 
-                // 일반메뉴(전체보기) > 전체메뉴(소트매핑) 메뉴일 경우 하위 메뉴 설정
-                if (isset($arr_menu['MenuSubType']) === true && $arr_menu['MenuSubType'] == 'sort_mapping') {
-                    $sort_mapping_data = $this->_getSortMappingData($row['SiteCode'], $menu_url);
-                    array_set($data, $child_key . '.Children', $sort_mapping_data);
+                // 일반메뉴(전체보기) > 전체메뉴 유형일 경우 하위 메뉴 설정
+                if (isset($arr_menu['MenuSubType']) === true) {
+                    // 전체메뉴(소트매핑), 전체메뉴(1차카테고리)
+                    if (in_array($arr_menu['MenuSubType'], ['sort_mapping', 'category1']) === true) {
+                        $sub_type_menu_data = $this->{'_get_' . $arr_menu['MenuSubType'] . '_data'}($row['SiteCode'], $menu_url, $arr_menu['UrlRouteName']);
+                        array_set($data, $child_key . '.Children', $sub_type_menu_data);
+                    }
                 }
             } else {
                 array_set($data, $base_key . '.' . $row['MenuIdx'], $arr_menu);
@@ -157,12 +160,61 @@ class Caching_site_menu extends CI_Driver
     }
 
     /**
+     * 사이트별 1차 카테고리 데이터 조회
+     * @param int $site_code [사이트코드]
+     * @param string $base_url [기준URL]
+     * @param string $base_url_route_name [기준URL라우트명]
+     * @return array
+     */
+    private function _get_category1_data($site_code, $base_url, $base_url_route_name = '')
+    {
+        $results = [];
+        $_table = ['category' => 'lms_sys_category'];
+        $base_url = array_get(explode('?', $base_url), '0', $base_url);     // 쿼리스트링 제거
+        if (empty($base_url_route_name) === false) {
+            $base_url_route_name .= '>';
+        }
+
+        // 1차 카테고리 정보 조회
+        $column = 'CateCode, CateName';
+        $from = '
+            from ' . $_table['category'] . '
+            where SiteCode = ?
+                and CateDepth = "1"
+                and IsUse = "Y"
+                and IsFrontUse = "Y"
+                and IsDisp = "Y"                    
+                and IsStatus = "Y"
+            order by OrderNum asc
+        ';
+
+        $category_data = $this->_db->query('select ' . $column . $from, [$site_code])->result_array();
+
+        // 1차 카테고리 메뉴 셋팅
+        foreach ($category_data as $idx => $row) {
+            $menu_url = $base_url . '?cate_code=' . $row['CateCode'];
+            $arr_menu = [
+                'MenuType' => 'GN',
+                'MenuName' => $row['CateName'],
+                'MenuUrl' => $menu_url,
+                'UrlTarget' => 'self',
+                'UrlRouteName' => $base_url_route_name . $row['CateName']
+            ];
+
+            array_set($results, $row['CateCode'], $arr_menu);
+        }
+
+        return $results;
+    }
+
+    /**
      * 사이트별 소트매핑 데이터 조회
      * @param int $site_code [사이트코드]
      * @param string $base_url [기준URL]
+     * @param string $base_url_route_name [기준URL라우트명]
      * @return array
      */
-    public function _getSortMappingData($site_code, $base_url)
+    private function _get_sort_mapping_data($site_code, $base_url, $base_url_route_name = '')
     {
         $results = [];
         $_table = [
@@ -171,6 +223,9 @@ class Caching_site_menu extends CI_Driver
             'subject' => 'lms_product_subject'
         ];
         $base_url = array_get(explode('?', $base_url), '0', $base_url);     // 쿼리스트링 제거
+        if (empty($base_url_route_name) === false) {
+            $base_url_route_name .= '>';
+        }
 
         // 카테고리 정보 조회 (윌스토리 > 온라인서점 1차 카테고리 제외)
         $column = 'CateCode, CateName, CateRouteIdx, CateRouteName';
@@ -223,7 +278,7 @@ class Caching_site_menu extends CI_Driver
                 'MenuName' => $row['CateName'],
                 'MenuUrl' => $menu_url,
                 'UrlTarget' => 'self',
-                'UrlRouteName' => $row['CateRouteName']
+                'UrlRouteName' => $base_url_route_name . $row['CateRouteName']
             ];
 
             // 카테고리 메뉴
@@ -240,7 +295,7 @@ class Caching_site_menu extends CI_Driver
                             'MenuName' => $subject_name,
                             'MenuUrl' => $menu_url . '&subject_idx=' . $subject_idx,
                             'UrlTarget' => 'self',
-                            'UrlRouteName' => $row['CateRouteName'] . '>' . $subject_name
+                            'UrlRouteName' => $base_url_route_name . $row['CateRouteName'] . '>' . $subject_name
                         ];
 
                         array_set($results, $arr_subject_key, $arr_subject_menu);

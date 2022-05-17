@@ -23,10 +23,10 @@
                             @endif
                         </a>
                         @if($menu_row['MenuType'] == 'GM' && empty($menu_row['MenuSubType']) === false)
-                            @if($menu_row['MenuSubType'] == 'sort_mapping')
-                                {{-- 일반메뉴 (전체보기) > 전체메뉴(소트매핑) 메뉴 --}}
+                            @if(in_array($menu_row['MenuSubType'], ['sort_mapping', 'category1']) === true)
+                                {{-- 일반메뉴 (전체보기) > 전체메뉴(소트매핑), 전체메뉴(1차카테고리) 메뉴 --}}
                                 @if(empty($menu_row['Children']) === false)
-                                    @include('willbes.pc.layouts.partial.site_sort_mapping_menu', ['_sort_mapping_menu' => $menu_row['Children']])
+                                    @include('willbes.pc.layouts.partial.site_' . $menu_row['MenuSubType'] . '_menu', ['_menu_sub_data' => $menu_row['Children']])
                                 @endif
                             @else
                                 {{-- 일반메뉴 (전체보기) > 교수진소개, 수강신청 메뉴 --}}

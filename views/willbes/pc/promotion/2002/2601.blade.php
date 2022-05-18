@@ -71,11 +71,11 @@
         <div class="evtCtnsBox evt00" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/wb_police.jpg" alt="경찰학원부분 1위"/>
         </div>
-
+        {{--
         <div class="evtCtnsBox wb_tops" data-aos="fade-up">           
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2601_tops.jpg"  alt="신광은 경찰학원" />        
 		</div>
-
+        --}}
         <div class="evtCtnsBox wb_top" data-aos="fade-up">           
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2601_top.jpg"  alt="기본이론 관리반" />        
 		</div>

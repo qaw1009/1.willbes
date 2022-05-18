@@ -80,12 +80,12 @@
             <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2022/05/2663_sky01.png" alt="개편과목" ></a>
         </div>      
 
-        <!-- 타이머 
+        <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
             <div>
                 <ul>
                     <li>
-                    사전접수<br>EVENT 마감까지
+                    기본이론종합반<br>이벤트 마감 
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -103,7 +103,7 @@
                     </li>
                 </ul>
             </div>
-        </div>  -->
+        </div>  
         
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2663_top.jpg"  alt="2022 기본종합반" />

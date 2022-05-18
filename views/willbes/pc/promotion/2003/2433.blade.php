@@ -83,10 +83,9 @@
         <div class="evtCtnsBox evt04" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2433_04.jpg" alt=""/>
             <div class="wrap" id="evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/2433_04_01.jpg" alt="수강신청" />
-                <a href="javascript:go_PassLecture('190917');" title="2023 지방직 시험일까지" style="position: absolute; left: 18.21%; top: 79.78%; width: 21.25%; height: 15.22%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('185704');" title="2022 지방직 시험일까지" style="position: absolute; left: 59.11%; top: 79.78%; width: 21.25%; height: 15.22%; z-index: 2;"></a>
-            </div>  
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2433_04_01.jpg" alt="수강신청" />                
+                <a href="javascript:go_PassLecture('190917');" title="국어 오대혁 T-PASS" style="position: absolute; left: 58.79%; top: 64.78%; width: 20.25%; height: 17.22%; z-index: 2;"></a>
+            </div> 
             <div class="check" id="chkInfo">   
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />
@@ -108,9 +107,8 @@
                     <dt>상품구성</dt>
                     <dd>
                         <ol>
-                            <li>제공과정<br>
-                                - 2022 대비 T-PASS : 2022 대비로 진행된 오대혁 국어 전 과정 제공<br>
-                                - 2022~2023 대비 T-PASS : 2022~2023 대비로 진행된 오대혁 국어 전 과정 제공</li>
+                            <li>제공과정<br>                                
+                                - 2022~2023 대비로 진행되는 신규과정 포함 오대혁 국어 전 과정 제공</li>
                             <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                             <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>
                             <li>본 상품은 결제가 완료되는 즉시 수강이 시작됩니다.</li>

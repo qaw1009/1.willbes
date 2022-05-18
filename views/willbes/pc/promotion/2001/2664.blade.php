@@ -35,7 +35,7 @@
         .evtPass {background:#f5f5f7; padding:140px 0}
         .evtPass .title01 {font-size:30px; color:#000; margin-bottom:100px}
         .evtPass .wrap {width:1120px; margin:0 auto}
-        .evtPass .passLecBuy {display:flex; justify-content:space-around; position:absolute; bottom:90px; width:100%; color:#252525}
+        .evtPass .passLecBuy {display:flex; justify-content:space-around; position:absolute; bottom:90px; width:100%; color:#252525; letter-spacing:-1px}
         .evtPass .passLecBuy div {width:50%; line-height:30px; font-size:22px; font-weight:bold; text-align:left; padding-left:30px} 
         .evtPass .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
         .evtPass .passLecBuy p span,
@@ -211,12 +211,12 @@
                     <div>   
                         <p>학습지원금 <span>5만 포인트 지급</span></p>                 
                         <input type="radio" id="y_pkg1" name="y_pkg" value="196053"/>                
-                        <label for="y_pkg1">23년 1차 경찰 PASS 신청</label>
+                        <label for="y_pkg1">23년 1차 경찰 PASS 신청하기</label>
                     </div>
                     <div>  
                         <p><span>&nbsp;</span></p>     
                         <input type="radio" id="y_pkg2" name="y_pkg" value="196050"/>                
-                        <label for="y_pkg2">22년 2차 경찰 PASS 신청</label>
+                        <label for="y_pkg2">22년 2차 경찰 PASS 신청하기</label>
                     </div> 
                 </div>
             </div>

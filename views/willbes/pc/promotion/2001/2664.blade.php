@@ -204,12 +204,12 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2664_pass.png" alt="신광은경찰 PASS">
                 <div class="passLecBuy NSK-Black"> 
                     <div>         
-                        <p>학습지원금 <span>5만 포인트 지금</span></p>           
+                        <p>학습지원금 <span>5만 포인트 지급</span></p>           
                         <input type="radio" id="y_pkg0" name="y_pkg" value="196054"/>                
                         <label for="y_pkg0">23년 합격 PASS 신청하기</label>
                     </div> 
                     <div>   
-                        <p>학습지원금 <span>5만 포인트 지금</span></p>                 
+                        <p>학습지원금 <span>5만 포인트 지급</span></p>                 
                         <input type="radio" id="y_pkg1" name="y_pkg" value="196053"/>                
                         <label for="y_pkg1">23년 1차 경찰 PASS 신청</label>
                     </div>

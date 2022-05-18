@@ -47,7 +47,7 @@
         <div class="evtCtnsBox evt01">            
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2199_01_01.jpg" alt="이석준 커리큘럼">
             <div>
-                <iframe width="720" height="405" src="https://www.youtube.com/embed/ZqMMVLxxFqw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                <iframe width="720" height="405" src="https://www.youtube.com/embed/LHNROeN2acQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2199_01_02.jpg" alt="실전에서도 더 강해집니다.">
         </div>
@@ -72,7 +72,7 @@
 				<h4 class="NSK-Black">이용안내 및 유의사항</h4>
 				<div class="infoTit"><strong>상품구성</strong></div>
 				<ul>
-					<li>제공과정 : 2021~2022 대비 이석준 행정법 전 과정</li>
+					<li>제공과정 : 2022~2023 이석준 교수 소방직 대비 행정법 전 과정</li>
                     <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                     <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>
                     <li>본 상품은 결제가 완료되는 즉시 수강이 시작됩니다.</li>                     

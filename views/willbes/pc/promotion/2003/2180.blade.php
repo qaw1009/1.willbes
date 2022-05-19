@@ -6,19 +6,21 @@
 	<!-- Container -->
     <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
-            margin-top:20px !important;
+            max-width:2000px !important;
+            margin:20px auto 0;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtContent span {vertical-align:auto}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
-        .sky{position: fixed; top:250px; right:10px; width:151px; z-index:10;}
+        .sky{position: fixed; top:250px; right:10px; width:120px; z-index:10;}
 
 		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/02/2180_top_bg.jpg) no-repeat center top; height:1124px; position:relative}
         .evtTop span { position:absolute; top:900px; left:50%; margin-left:-483px; animation:iptimg1 0.5s ease-in;-webkit-animation:iptimg1 0.5s ease-in;}
@@ -172,12 +174,8 @@
 
         <div class="evtCtnsBox evt03" id="event" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/2180_03.jpg" title="수험생들이 선택하고 인정한 영어정복 노하우!" />
-                <a href="javascript:go_PassLecture('190916');" title="22~23 전과정 티패스" style="position: absolute;left: 16.45%;top: 55.34%;width: 20.56%;height: 4.25%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('180928');" title="22 전과정 티패스" style="position: absolute;left: 16.45%;top: 77.44%;width: 20.56%;height: 4.25%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('186803');" title="실전1 티패스" style="position: absolute;left: 62.45%;top: 54.34%;width: 20.56%;height: 4.25%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('190505');" title="실전2 티패스" style="position: absolute;left: 62.45%;top: 72.14%;width: 20.56%;height: 4.25%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('185702');" title="새벽모의고사 티패스" style="position: absolute;left: 62.45%;top: 90.14%;width: 20.56%;height: 4.25%;z-index: 2;"></a>           
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2180_03.jpg" title="수험생들이 선택하고 인정한 영어정복 노하우!" />
+                <a href="javascript:go_PassLecture('190916');" title="22~23 전과정 티패스" style="position: absolute; left: 52.14%; top: 74.39%; width: 30.27%; height: 11.89%; z-index: 2;"></a>       
             </div>
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
@@ -191,11 +189,7 @@
                 <div class="infoTit"><strong>상품구성</strong></div>
                 <ul>
                     <li>제공과정<br>
-                        - 22~23 전과정 T-PASS : 2023년 6월까지 진행되는 한덕현 영어 신규강좌 전 과정 (반반/똑똑영어 다시보기 + 새벽모의고사 포함)<br>
-                        - 22 전과정 T-PASS : 2022년 6월까지 진행되는 한덕현 영어 신규강좌 전 과정 (반반/똑똑영어 다시보기 + 새벽모의고사 포함)<br>
-                        - 실전Ⅰ T-PASS : 2022 대비로 진행된 한덕현 실전464, 스나이퍼32, 새벽모의고사 (2021.7월~2022.6월) 과정 제공<br>
-                        - 실전Ⅱ T-PASS : 2022 대비로 진행된 한덕현 실전464, 독해기적, 스나이퍼32, 아작내기 특강, 새벽모의고사 (2021.7월~2022.6월) 과정 제공<br>
-                        - [지방직 대비] 새벽모의고사 T-PASS : 2022 대비로 진행된 한덕현 영어 새벽실전모의고사 (2021.7월~2022.6월)
+                        - 2023년 6월까지 진행되는 한덕현 영어 신규강좌 전 과정 (반반똑똑영어 다시보기, 새벽모의고사 포함)
                     </li>
                     <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                     <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>

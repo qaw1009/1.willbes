@@ -78,7 +78,7 @@
         <div class="evtCtnsBox wb_cts03" data-aos="fade-up" id="lecbuy01">
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2378_03_01.jpg" alt="" />  
             <div class="wrap">
-                <a href="javascript:go_PassLecture('191149');" title="티패스">
+                <a href="javascript:go_PassLecture('195584');" title="티패스">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2378_03_02.jpg" alt="티패스" />   
                 </a>                
             </div>
@@ -112,7 +112,7 @@
                     <dd>
                         <ol>
                             <li>제공과정<br>
-                                - 2022 대비로 진행된 윤용범 가축육종학/가축사양학의 신규 전 과정</li>
+                            - 2023 대비로 진행된 가축육종학/가축사양학 축산직 전문과목 신규 전 과정</li>
                             <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                             <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>
                             <li>본 상품은 결제가 완료되는 즉시 수강이 시작됩니다.</li>

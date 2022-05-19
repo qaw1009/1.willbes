@@ -75,7 +75,7 @@
         <div class="evtCtnsBox wb_03" data-aos="fade-up" id="lecbuy01">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2531_03.jpg" alt="수강신청" />
-                <a href="javascript:go_PassLecture('191148');" title="조경직 이윤주 티패스" style="position: absolute; left: 72.32%; top: 73.47%; width: 14.82%; height: 8.53%;  z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('195583');" title="조경직 이윤주 티패스" style="position: absolute; left: 72.32%; top: 73.47%; width: 14.82%; height: 8.53%;  z-index: 2;"></a>
             </div>
             <div class="check" id="chkInfo">   
                 <label>
@@ -110,7 +110,7 @@
                     <dd>
                         <ol>
                             <li>제공과정<br>
-                                - 2022 대비로 진행된 이윤주 조경학/조경계획 및 설계/조경관리 및 생태계관리/조경식재 및 시공 파트가 포함된 조경직의 신규 전 과정
+                            - 2023 대비로 진행된 이윤주 조경학/조경계획 및 설계/조경관리 및 생태계관리/조경식재 및 시공 파트가 포함된 조경직 전문과목 신규 전 과정
                             </li>
                             <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                             <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>

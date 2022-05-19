@@ -46,7 +46,7 @@
             to{color:#d53a44}
         }
 
-        .evt03 {background:#cf9c5d;padding-bottom:50px;}
+        .evt03 {background:#F5F5F7;padding-bottom:50px;}
         .lecbuybtn {width:935px; margin:50px auto}
         .lecbuybtn a {display:block; padding:20px 0; text-align:center; color:#fff; background:#000; font-size:30px; font-weight:600; border-radius:60px}
 

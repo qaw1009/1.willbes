@@ -55,7 +55,7 @@ padding:5px 20px; font-weight:bold; font-size:17px; border-radius:30px}
 
     <div class="evtContent NSK" id="evtContainer"> 
         <div class="sky" id="QuickMenu">          
-            <a href="#lecbuy01"><img src="https://static.willbes.net/public/images/promotion/2022/02/2207_sky1.png" alt="" /></a>    
+            <a href="#lecbuy01"><img src="https://static.willbes.net/public/images/promotion/2022/05/2207_sky1.png" alt="" /></a>    
             <a href="#lecbuy02"><img src="https://static.willbes.net/public/images/promotion/2022/02/2207_sky2.png" alt="" /></a>       
         </div>
 
@@ -80,8 +80,8 @@ padding:5px 20px; font-weight:bold; font-size:17px; border-radius:30px}
 
         <div class="evtCtnsBox evt04" data-aos="fade-up" id="lecbuy01">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/2207_04.jpg" alt="수강신청">
-                <a href="javascript:go_PassLecture('191692');" title="수강신청" style="position: absolute; left: 72.41%; top: 85.09%; width: 14.46%; height: 9.27%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2207_04.jpg" alt="수강신청">
+                <a href="javascript:go_PassLecture('195585');" title="수강신청" style="position: absolute; left: 72.41%; top: 85.09%; width: 14.46%; height: 9.27%; z-index: 2;"></a>
             </div>
 
             <div class="check">
@@ -108,7 +108,7 @@ padding:5px 20px; font-weight:bold; font-size:17px; border-radius:30px}
                     <dd>
                         <ol>
                             <li>제공과정<br>
-                                - 2022~2023 대비 선석 영어 전 과정</li>
+                                - 2022~2023 대비 선석 영어 국가직 대비 전 과정</li>
                             <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                             <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>
                             <li>본 상품은 결제가 완료되는 즉시 수강이 시작됩니다.</li>

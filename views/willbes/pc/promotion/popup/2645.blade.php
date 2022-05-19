@@ -83,7 +83,7 @@
                 ,'subject_name' => '도덕/윤리'
             ]
             ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194789' : '_159838' => [
-                'prof_name' => '허역'
+                'prof_name' => '허역/정인홍/이웅재/김현중'
                 ,'subject_name' => '일반사회'
             ]
             ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194790' : '_159839' => [
@@ -119,9 +119,9 @@
 
 <div class="evt_table NSK" id="layer_print">
     <table cellspacing="2" cellpadding="2">
-        <col width="15%" />
+        <col width="12%" />
         <col/>
-        <col width="15%" />
+        <col width="12%" />
         <col />
         <thead>
             <tr>

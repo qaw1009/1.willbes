@@ -140,7 +140,7 @@ align-items: center;}
                     ,'subject_name' => '도덕/윤리'
                 ]
                 ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194789' : '_159838' => [
-                    'prof_name' => '허역'
+                    'prof_name' => '허역/정인홍/이웅재/김현중'
                     ,'subject_name' => '일반사회'
                 ]
                 ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194790' : '_159839' => [
@@ -207,10 +207,10 @@ align-items: center;}
                         </ul>
                     </div>
                     <table cellspacing="2" cellpadding="2">
-                        <col width="15%" />
+                        <col width="12%" />
                         <col/>
-                        <col width="15%" />
-                        <col width="15%" />
+                        <col width="12%" />
+                        <col />
                         <tbody>
                             <tr>
                                 <th>ID</th>
@@ -473,16 +473,16 @@ align-items: center;}
                             <thead>
                                 <tr>
                                     <th rowspan="2">구분</th>
-                                    <th colspan="2">도덕윤리</th>
-                                    <th>일반사회</th>
+                                    <th colspan="2">일반사회</th>
+                                    <th>도덕윤리</th>
                                     <th>역사</th>
                                     <th>음악</th>
                                     <th>전기.전자</th>
                                     <th>중국어</th>
                                 </tr>
                                 <tr>
-                                    <th colspan="2">김민응</th>
-                                    <th>허역 팀</th>
+                                    <th colspan="2">허역 / 정인홍 / 이웅재 / 김현중</th>
+                                    <th>김민웅</th>
                                     <th>김종권</th>
                                     <th>다이애나</th>
                                     <th>최우영</th>
@@ -492,8 +492,8 @@ align-items: center;}
                             <tbody>
                                 <tr>
                                     <th>해설지제공</th>
-                                    <td colspan="2">X</td>
-                                    <td>O</td>
+                                    <td colspan="2">O</td>
+                                    <td>X</td>
                                     <td>O</td>
                                     <td>O</td>
                                     <td>O</td>
@@ -501,8 +501,8 @@ align-items: center;}
                                 </tr>
                                 <tr>
                                     <th>해설강의</th>
-                                    <td colspan="2">O</td>
-                                    <td>X</td>
+                                    <td colspan="2">X</td>
+                                    <td>O</td>
                                     <td>X</td>
                                     <td>X</td>
                                     <td>X</td>

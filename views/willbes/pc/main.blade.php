@@ -72,6 +72,7 @@
                                 <li><a href="#none" class="favor-cate-each" data-key="2006_309004" data-url="{{ front_app_url('/home/index/cate/309004', 'job') }}"> 변리사</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2006_309006" data-url="{{ front_app_url('/home/index/cate/309006', 'job') }}"> 세무사</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2006_309001" data-url="{{ front_app_url('/home/index/cate/309001', 'job') }}"> 스포츠지도사</a></li>
+                                <li><a href="#none" class="favor-cate-each" data-key="2006_309001" data-url="{{ front_app_url('/home/index/cate/309007', 'job') }}"> 손해평가사</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2006_309001" data-url="{{ front_app_url('/home/index/cate/308906', 'job') }}"> 빅데이터분석기사</a></li>
                             </ul>
                         </div>
@@ -204,6 +205,7 @@
                                 <a href="{{ front_app_url('/home/index/cate/309004', 'job') }}" target="_blank">변리사</a>
                                 <a href="{{ front_app_url('/home/index/cate/309006', 'job') }}" target="_blank">세무사</a>
                                 <a href="{{ front_app_url('/home/index/cate/309001', 'job') }}" target="_blank">스포츠지도사</a>
+                                <a href="{{ front_app_url('/home/index/cate/309007', 'job') }}" target="_blank">손해평가사</a>
                                 <a href="{{ front_app_url('/home/index/cate/308906', 'job') }}" target="_blank">빅데이터분석기사</a>
                             </td>
                         </tr>

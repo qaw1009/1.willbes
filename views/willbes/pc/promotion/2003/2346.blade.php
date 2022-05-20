@@ -152,9 +152,9 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-    $(document).ready(function() {
-        AOS.init();
-    });
+        $(document).ready(function() {
+            AOS.init();
+        });
     </script>
 
     <script type="text/javascript"> 

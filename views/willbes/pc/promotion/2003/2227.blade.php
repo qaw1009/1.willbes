@@ -179,20 +179,7 @@
                     e.preventDefault()
                 });
             });
-        });
-
-        $(document).ready(function(){
-            $(".tabCts").hide(); 
-            $(".tabCts:first").show();        
-            $(".evttab ul li a").click(function(){             
-                var activeTab = $(this).attr("href"); 
-                $(".evttab ul li a").removeClass("active"); 
-                $(this).addClass("active"); 
-                $(".tabCts").hide(); 
-                $(activeTab).fadeIn();             
-                return false; 
-            });
-        });       
+        });   
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

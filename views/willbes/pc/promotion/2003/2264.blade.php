@@ -80,7 +80,7 @@
             </a>                   
         </div>
 
-        <div class="evtCtnsBox evtTop">          
+        <div class="evtCtnsBox evtTop" data-aos="fade-up">          
             <div class="wrap">       
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2264_top.jpg" title="신기훈 행정법">
                 <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/51206/?subject_idx=1111" title="교수홈" target="_blank" style="position: absolute; left: 84.11%; top: 82.62%; width: 9.29%; height: 8.12%; z-index: 2;"></a>
@@ -88,26 +88,26 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox pt100">
+        <div class="evtCtnsBox pt100" data-aos="fade-up">
             <iframe width="800" height="400" src="https://www.youtube.com/embed/nQFyta6T3SM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-        <div class="evtCtnsBox evt01">
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2264_01.jpg" title="필수가 된 행정법의 난이도를 잡아라">              
         </div> 
 
-        <div class="evtCtnsBox evt02">
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2264_02.jpg" title="신기훈 행정법을 선택해야하는 이유">              
         </div> 
 
-        <div class="evtCtnsBox evt03">
+        <div class="evtCtnsBox evt03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2264_03.jpg" title="커리큘럼">                
         </div> 
 
-        <div class="evtCtnsBox evt04">
+        <div class="evtCtnsBox evt04" data-aos="fade-up">
             <div class="wrap" id="lec01"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2264_04.jpg" title="행정법 기본이론"> 
-                <a href="javascript:go_PassLecture('185706');" title="수강신청" style="position: absolute; left: 9.46%; top: 72.61%; width: 33.75%; height: 8.08%; z-index: 2;"></a>     
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2264_04.jpg" title="행정법 기본이론"> 
+                <a href="javascript:go_PassLecture('185706');" title="수강신청" style="position: absolute; left: 12.32%; top: 75.22%; width: 34.55%; height: 7.96%; z-index: 2;"></a>     
             </div> 
             <div class="check" id="chkInfo">   
                 <label><input name="ischk" type="checkbox" value="Y" /> 페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
@@ -130,7 +130,7 @@
                     <dd>
                         <ol>
                             <li>제공과정<br>
-                                - 2022 대비 T-PASS : 2022 대비로 진행된 신기훈 행정법 전 과정 제공</li>
+                            - 2022~2023 대비로 진행된 신기훈 행정법 전 과정 제공</li>
                             <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                             <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>
                             <li>본 상품은 결제가 완료되는 즉시 수강이 시작됩니다.</li>

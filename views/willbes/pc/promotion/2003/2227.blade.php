@@ -8,14 +8,16 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
-        .evt_wrap {width:1120px; margin:0 auto; position: relative;}
-        br { font-family:dotum;}   
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
@@ -24,13 +26,11 @@
         .wb_cts01 {background:#B29E5F}
         /*탭(이미지)*/
         .tabs{width:1025px;margin:0 auto;}
-        .tabs ul {width:1120px;margin:0 auto;}		
-        .tabs li {display:inline; float:left;}	
+        .tabs ul {width:1120px;margin:0 auto; display:flex; justify-content: center; }		
         .tabs a img.off {display:block}
         .tabs a img.on {display:none}
         .tabs a.active img.off {display:none}
         .tabs a.active img.on {display:block}
-        .tabs ul:after {content:""; display:block; clear:both}
         .tabcts {background:#F2F2F2;}
 
         .wb_cts03 {background:#303132}
@@ -47,88 +47,60 @@
 
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">    
+    <div class="evtContent NSK" id="evtContainer">    
 
-        <div class="evtCtnsBox wb_top">
+        <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_top.jpg" alt="불꽃소방 티패스" />
         </div>
 
-        <div class="evtCtnsBox wb_cts01">
+        <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_01.jpg" alt="10% 할인쿠폰" />
             <div class="tabs"> 
                 <ul>
                     <li>
                         <a href="#tab1" class="active">
-                            <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_01_tab01.png" alt="" class="off"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_01_tab01_on.png" alt="" class="on"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2227_01_tab01.png" alt="이종오" class="off"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2227_01_tab01_on.png" alt="" class="on"/>
                         </a>
                     </li>
                     <li>
                         <a href="#tab2">
-                            <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_01_tab02.png" alt="" class="off"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_01_tab02_on.png" alt="" class="on"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab3">
-                            <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_01_tab03.png" alt="" class="off"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_01_tab03_on.png" alt="" class="on"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab4">
-                            <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_01_tab04.png" alt="" class="off"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_01_tab04_on.png" alt="" class="on"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab5">
-                            <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_01_tab05.png" alt="" class="off"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_01_tab05_on.png" alt="" class="on"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2227_01_tab02.png" alt="이석준" class="off"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2022/05/2227_01_tab02_on.png" alt="" class="on"/>
                         </a>
                     </li>
                 </ul>
             </div>    
             <div id="tab1" class="tabcts"> 
-                <div class="evt_wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_tab_c1.jpg" alt=""/>
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/05/2227_tab_c1.jpg" alt=""/>
                     <a href="https://pass.willbes.net/promotion/index/cate/3023/code/2196" target="_blank" title="이종오" style="position: absolute;left: 17.77%;top: 79%;width: 65.27%;height: 4.8%;z-index: 2;"></a>
                 </div>
             </div>
             <div id="tab2" class="tabcts"> 
-                <div class="evt_wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_tab_c2.jpg" alt=""/>
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/05/2227_tab_c2.jpg" alt=""/>
                     <a href="https://pass.willbes.net/promotion/index/cate/3023/code/2199" target="_blank" title="이석준" style="position: absolute;left: 72.77%;top: 71%;width: 14.27%;height: 8.8%;z-index: 2;"></a>
-                </div>     
-            </div>
-            <div id="tab3" class="tabcts">
-                <div class="evt_wrap"> 
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_tab_c3.jpg" alt=""/>
-                    <a href="https://pass.willbes.net/promotion/index/cate/3023/code/2200" target="_blank" title="이아림" style="position: absolute;left: 72.77%;top: 71%;width: 14.27%;height: 8.8%;z-index: 2;"></a>
-                </div>    
-            </div>
-            <div id="tab4" class="tabcts">
-                <div class="evt_wrap"> 
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_tab_c4.jpg" alt=""/>
-                    <a href="https://pass.willbes.net/promotion/index/cate/3023/code/2201" target="_blank" title="한경준" style="position: absolute;left: 72.77%;top: 71%;width: 14.27%;height: 8.8%;z-index: 2;"></a>
-                </div>    
-            </div>
-            <div id="tab5" class="tabcts">
-                <div class="evt_wrap"> 
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2227_tab_c5.jpg" alt=""/>
-                    <a href="https://pass.willbes.net/promotion/index/cate/3023/code/2197" target="_blank" title="김종상" style="position: absolute;left: 17.77%;top: 79%;width: 65.27%;height: 4.8%;z-index: 2;"></a>
                 </div>     
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_info" id="careful">
+        <div class="evtCtnsBox wb_02" data-aos="fade-up">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2227_02.jpg" alt="불꽃소방 티패스" />
+                <a href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/51348?subject_idx=1177&subject_name=G-TELP&tab=open_lecture" title="G-TELP" style="position: absolute; left: 25.27%; top: 66.86%; width: 20%; height: 7.47%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/50027?subject_idx=1237&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC%EA%B2%80%EC%A0%95%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98" title="한능검" style="position: absolute; left: 55.63%; top: 66.86%; width: 20%; height: 7.47%; z-index: 2;"></a>
+            </div>
+        </div>
+
+        <div class="evtCtnsBox wb_info" id="careful" data-aos="fade-up">
             <div class="guide_box">
                 <h2 class="NSK-Black">이용안내 및 유의사항</h2>
                 <dl>
                     <dt>상품구성</dt>
                     <dd>
                         <ol>
-                            <li>제공과정 : 각 교수의 2021~2022 대비 과목별 전 과정</li>
+                            <li>제공과정 : 각 교수의 2022~2023 대비 과목별 전 과정</li>
                             <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                             <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>
                             <li>본 상품은 결제가 완료되는 즉시 수강이 시작됩니다.</li>
@@ -173,6 +145,15 @@
 
     </div>
     <!-- End Container -->
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        $(document).ready(function() {
+            AOS.init();
+        });
+    </script>
+
 
     <script type="text/javascript">    
         /*탭(이미지버전)*/

@@ -33,7 +33,7 @@
                             <div class="drop-Box list-drop-Box">
                                 <ul>
                                     <li><a href="{{ front_url('/pass/home/index') }}">노량진(본원)</a></li>
-                                    <li><a href="{{ front_url('/pass/campus/show/code/605003') }}">부산</a></li>
+                                    <li><a href="http://busan.willbes.net" target="_blank">부산</a></li>
                                     <li><a href="{{ front_url('/pass/campus/show/code/605004') }}">대구</a></li>
                                     <li><a href="{{ front_url('/pass/campus/show/code/605005') }}">인천</a></li>
                                     <li><a href="{{ front_url('/pass/campus/show/code/605006') }}">광주</a></li>

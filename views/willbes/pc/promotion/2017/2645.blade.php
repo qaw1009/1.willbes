@@ -68,11 +68,13 @@ align-items: center;}
         .evt_table .txtinfo div {font-size:16px; font-weight:bold; background:#222; display:flex; justify-content: center; align-items: center; text-align:center; width:15%}
         .evt_table .txtinfo li {list-style: dimical; margin-left:15px}
 
-        .event02 {background:#dcf9f7}
+        .event02 {background:#dcf9f7;}
 
         .event03 {padding-bottom:100px; line-height:1.3}
 
-        .event04 {background:#05c2b1}
+        .event04 {background:#05c2b1;}
+
+        .event05 {padding:100px 0}
 
         .urlWrap {width:1030px; margin:0 auto}
         .urlWrap .urladd {padding:20px; background:#2e2e3c; color:#fff; margin:0 auto 20px; font-size:14px}
@@ -373,7 +375,6 @@ align-items: center;}
                 <a href="https://section.blog.naver.com" title="블로그" target="_blank" style="position: absolute; left: 55.89%; top: 29.66%; width: 5.36%; height: 50%; z-index: 2;"></a>
                 <a href="javascript:void(0);" title="주소복사하기" onclick="copyTxt();"  style="position: absolute; left: 62.41%; top: 29.66%; width: 13.13%; height: 50%; z-index: 2;"></a>
                 <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute; left: 76.16%; top: 29.66%; width: 13.13%; height: 50%; z-index: 2;"></a>
-
             </div>
             <div class="urlWrap">
                 @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

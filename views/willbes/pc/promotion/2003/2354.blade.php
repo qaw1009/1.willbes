@@ -26,7 +26,7 @@
         .sky a:hover {background:#cfff00; color:#5300fe}
         .sky a span {font-size:12px; display:block}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/02/2354_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/05/2354_top_bg.jpg) no-repeat center top;}
         .wb_top a {display: block; width:1112px; position: absolute; top:850px; left:50%; margin-left:-500px}
 
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2022/02/2354_01_bg.jpg) no-repeat center top;}
@@ -51,23 +51,20 @@
 
 
     <div class="evtContent NSK" id="evtContainer">
+
         <div class="sky" id="QuickMenu">          
             <a href="#pass01"><span>국어</span>오대혁</a>    
             <a href="#pass02"><span>영어</span>한덕현</a>
             <a href="#pass03"><span>영어</span>선 석</a>   
-            <a href="#pass04"><span>한국사</span>김상범</a>   
-            <a href="#pass05"><span>한국사</span>오태진</a>   
+            <a href="#pass04"><span>한국사</span>김상범</a>  
+            <a href="#pass05"><span>행정학</span>김 철</a>           
             <a href="#pass06"><span>행정법</span>신기훈</a>   
-            <a href="#pass07"><span>행정법/헌법</span>황남기</a>   
-            <a href="#pass08"><span>행정학</span>김덕관</a>   
-            <a href="#pass09"><span>행정학</span>김 철</a>   
-            <a href="#pass10"><span>교정학</span>함다올</a> 
+            <a href="#pass07"><span>행정법/헌법</span>황남기</a>         
         </div>
 
-
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2354_top.gif" alt="윌비스 T-pass" />                
-            <a href="#wb_cts02"><img src="https://static.willbes.net/public/images/promotion/2022/02/2354_top_img.png" alt="윌비스 T-pass"  data-aos="fade-left" /></a>          
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2354_top.jpg" alt="윌비스 T-pass" />                
+            <a href="#wb_cts02"><img src="https://static.willbes.net/public/images/promotion/2022/05/2354_top_img.png" alt="윌비스 T-pass"  data-aos="fade-left" /></a>          
         </div>
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up"> 
@@ -77,21 +74,15 @@
         <div class="evtCtnsBox wb_cts02" id="wb_cts02">
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2354_02_title.png" alt="원하는 교수님의 커리큘럼 무제한 수강!"/> 
             <div class="wrap">
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2433" target="_blank" id="pass01"><img src="https://static.willbes.net/public/images/promotion/2022/02/2354_02_01.png" alt="국어 오대혁"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" id="pass02"><img src="https://static.willbes.net/public/images/promotion/2022/02/2354_02_02.png" alt="영어 한덕현"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2207" target="_blank" id="pass03"><img src="https://static.willbes.net/public/images/promotion/2022/02/2354_02_03.png" alt="영어 선석"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2434" target="_blank" id="pass04"><img src="https://static.willbes.net/public/images/promotion/2022/02/2354_02_04.png" alt="한국사 김상범"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1392" target="_blank" id="pass05"><img src="https://static.willbes.net/public/images/promotion/2022/02/2354_02_05.png" alt="한국사 오태진"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2264" target="_blank" id="pass06"><img src="https://static.willbes.net/public/images/promotion/2022/02/2354_02_06.png" alt="행정법 신기훈"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1077" target="_blank" id="pass07"><img src="https://static.willbes.net/public/images/promotion/2022/02/2354_02_07.png" alt="행접법/헌법 황남기"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2184" target="_blank" id="pass08"><img src="https://static.willbes.net/public/images/promotion/2022/02/2354_02_08.png" alt="행정학 김덕관"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2346" target="_blank" id="pass09"><img src="https://static.willbes.net/public/images/promotion/2022/02/2354_02_09.png" alt="행정학 김철"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2283" target="_blank" id="pass10"><img src="https://static.willbes.net/public/images/promotion/2022/02/2354_02_10.png" alt="교정학 함다올"></a>
-            </div>  
-   
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2433" target="_blank" id="pass01"><img src="https://static.willbes.net/public/images/promotion/2022/05/2354_02_01.png" alt="국어 오대혁"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" id="pass02"><img src="https://static.willbes.net/public/images/promotion/2022/05/2354_02_02.png" alt="영어 한덕현"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2207" target="_blank" id="pass03"><img src="https://static.willbes.net/public/images/promotion/2022/05/2354_02_03.png" alt="영어 선석"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2434" target="_blank" id="pass04"><img src="https://static.willbes.net/public/images/promotion/2022/05/2354_02_04.png" alt="한국사 김상범"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2346" target="_blank" id="pass05"><img src="https://static.willbes.net/public/images/promotion/2022/05/2354_02_05.png" alt="행정학 김철"></a>               
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2264" target="_blank" id="pass06"><img src="https://static.willbes.net/public/images/promotion/2022/05/2354_02_06.png" alt="행정법 신기훈"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1077" target="_blank" id="pass07"><img src="https://static.willbes.net/public/images/promotion/2022/05/2354_02_07.png" alt="행접법/헌법 황남기"></a>
+            </div>     
         </div>
-
-
 
         <div class="evtCtnsBox wb_info" id="careful">
             <div class="guide_box">

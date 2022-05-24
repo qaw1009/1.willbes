@@ -30,7 +30,7 @@
             @elseif($data['ViewType'] == 'G')
                 {{-- 공무원학원 --}}
                 //var txt_blank = '{{ str_repeat(' ', 15) }}';  // L, left blank, left
-                var txt_blank = '{{ str_repeat(' ', 62) }}';
+                var txt_blank = '{{ str_repeat(' ', 70) }}';
 
                 ctkprint_bar.prt_text_L4 = '{{ $data['MemName'] }}({{ $data['CertNo'] }})' + ';굴림;10;true;left';
 

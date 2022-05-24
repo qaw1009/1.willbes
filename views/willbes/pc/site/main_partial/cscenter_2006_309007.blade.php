@@ -34,7 +34,7 @@
             </ul>
         </dt>
         <dt class="willbesCenter">
-            <div class="centerTit">인천 고시학원 사이트에 물어보세요!</div>
+            <div class="centerTit">인천 윌비스 고시학원 사이트에 물어보세요!</div>
             <ul>
                 <li>
                     <a href="{{ site_url('/support/faq/index') }}">

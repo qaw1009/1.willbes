@@ -3,9 +3,11 @@
 .incheon .tx-color {
     color: #0c5dc0;
 }
+
 .incheon .Menu .menu-List li.Acad a {
     color: #0c5dc0;
 }
+
 .incheon .Menu .menu-List li.Acad a .arrow-Btn {
     background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
     float: right;
@@ -13,25 +15,27 @@
     height: 8px;
     margin: 15px 5px 0;
 }
+
 .incheon .will-acadTit {
     font-size: 19px;
     font-weight: 600;
     color: #363636;
     line-height: 60px;
 }
+
 .incheon .will-acadTit span {
     vertical-align: baseline;
 }
 
 /*상단 메뉴*/
-.Menu .menu-List li.willbesedu > a {
+.Menu .menu-List li.willbesedu>a {
     font-size: 16px;
     color: #0c5dc0;
-    display:inline-block;
+    display: inline-block;
     vertical-align: middle;
 }
 
-.Menu .menu-List li.willbesedu > a .arrow-Btn {
+.Menu .menu-List li.willbesedu>a .arrow-Btn {
     background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat left center;
     float: right;
     width: 4px;
@@ -44,7 +48,7 @@
     float: left;
     width: 1120px;
     height: 380px;
-    overflow: hidden;    
+    overflow: hidden;
 }
 
 .incheon .VisualBox .MaintabList {
@@ -55,9 +59,10 @@
     z-index: 99;
     text-align: center;
 }
+
 .incheon .VisualBox .MaintabList ul li {
     background: #251c1c;
-    display: inline-block; 
+    display: inline-block;
     height: 28px;
     font-size: 14px;
     color: #fff;
@@ -66,27 +71,35 @@
     margin: 0 -2px;
     width: 180px;
 }
+
 .incheon .VisualBox .MaintabList.three ul li {
     width: 209px;
 }
+
 .incheon .VisualBox .MaintabList.four ul li {
     width: 156px;
 }
+
 .incheon .VisualBox .MaintabList.five ul li {
     width: 188px;
 }
+
 .incheon .VisualBox .MaintabList ul li a {
     display: block;
     width: 100%;
     height: 100%;
 }
+
 .incheon .VisualBox .MaintabSlider li img {
     width: 100%;
     height: 100%;
 }
 
 .incheon .VisualBox .MaintabList ul li a:hover,
-.incheon .VisualBox .MaintabList ul li a.active { background:#FFF; color:#251c1c}
+.incheon .VisualBox .MaintabList ul li a.active {
+    background: #FFF;
+    color: #251c1c
+}
 
 
 .incheon .VisualsubBox {
@@ -96,11 +109,13 @@
     height: 160px;
     overflow: hidden;
 }
+
 .incheon .VisualsubBox ul li {
     float: left;
     width: 370px;
     margin-left: 5px;
 }
+
 .incheon .VisualsubBox ul li:first-child {
     margin-left: 0;
 }
@@ -109,7 +124,8 @@
 .incheon .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #b7b7b7;
 }
-.incheon .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+
+.incheon .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .incheon .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a.active,
 .incheon .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #0c5dc0;
@@ -121,7 +137,8 @@
     width: 9px;
     height: 9px;
 }
-.incheon .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+
+.incheon .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .incheon .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .incheon .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #313131;
@@ -134,14 +151,16 @@
     width: 350px;
     height: 328px;
 }
+
 .incheon .campus_info .btn {
     position: absolute;
     left: 0;
     bottom: 0;
 }
+
 .incheon .campus_info .btn a {
-    display: inline-block; 
-    font-size: 17px; 
+    display: inline-block;
+    font-size: 17px;
     font-weight: bold;
     height: 40px;
     line-height: 40px;
@@ -150,40 +169,80 @@
     margin-right: 5px;
     color: #0c5dc0;
     text-align: center;
-    border: 1px solid #0c5dc0;    
+    border: 1px solid #0c5dc0;
 }
+
 .incheon .campus_info .btn a img {
     vertical-align: middle;
 }
 
 /*학원둘러보기*/
-.incheon .acadview {position:relative; height:234px; width:1120px; margin: 0 auto;}
-.incheon .acadview .avslider {height:180px; overflow: hidden;}
-.incheon .acadview .avslider li {display:inline; float:left; width: 25%;}
-.incheon .acadview .avslider li a {display:block;} 
-.incheon .acadview .avslider:after {content: ""; display: block; clear:both}
-.incheon .acadview p {position:absolute; top:40%; margin-top:-22px; width:44px; height:45px; z-index:10}
-.incheon .acadview p.leftBtn {left:-30px}
-.incheon .acadview p.rightBtn {right:-50px}
+.incheon .acadview {
+    position: relative;
+    height: 234px;
+    width: 1120px;
+    margin: 0 auto;
+}
+
+.incheon .acadview .avslider {
+    height: 180px;
+    overflow: hidden;
+}
+
+.incheon .acadview .avslider li {
+    display: inline;
+    float: left;
+    width: 25%;
+}
+
+.incheon .acadview .avslider li a {
+    display: block;
+}
+
+.incheon .acadview .avslider:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+.incheon .acadview p {
+    position: absolute;
+    top: 40%;
+    margin-top: -22px;
+    width: 44px;
+    height: 45px;
+    z-index: 10
+}
+
+.incheon .acadview p.leftBtn {
+    left: -30px
+}
+
+.incheon .acadview p.rightBtn {
+    right: -50px
+}
 
 
 /* Main Container : Notice : noticeTabs */
 .incheon .noticeTabs {
     width: 345px !important;
-    float:left;
-    margin-right:40px;
+    float: left;
+    margin-right: 40px;
 }
+
 .incheon .tabBox.noticeBox a.btn-add {
     position: absolute;
     top: -30px;
     right: 0;
 }
+
 .incheon .tabBox.noticeBox .List-Table {
-    width: 100%;    
-    border-top:2px solid #000;
-    padding:0;
-    margin-top:-10px;
+    width: 100%;
+    border-top: 2px solid #000;
+    padding: 0;
+    margin-top: -10px;
 }
+
 .incheon .tabBox.noticeBox .List-Table li {
     position: relative;
     font-size: 13px;
@@ -192,6 +251,7 @@
     line-height: 37px;
     border-bottom: 1px solid #e3e3e3;
 }
+
 .incheon .tabBox.noticeBox .List-Table li a {
     display: inline-block;
     width: 80%;
@@ -200,16 +260,27 @@
     overflow: hidden;
     letter-spacing: 0;
 }
+
 .incheon .tabBox.noticeBox .List-Table li a span {
     background: #0c5dc0;
-    color:#fff;
+    color: #fff;
     padding: 0 10px;
     border-radius: 10px;
     margin-right: 5px;
 }
+
 .incheon .willbesNumber ul li {
-    margin-left: 40px;
+    margin-left: 0px;
     vertical-align: top;
+}
+
+.incheon .willbesNumber ul li {
+    margin-left: 50px;
+    vertical-align: top;
+}
+
+.incheon .willbesNumber ul li:first-child {
+    margin-left: -25px;
 }
 
 /*학원 오시는 길*/
@@ -217,10 +288,16 @@
     width: 1120px !important;
     margin: auto;
 }
-.Section4_ic .will-acadTit {border-bottom:2px solid #000; margin-bottom:20px}
+
+.Section4_ic .will-acadTit {
+    border-bottom: 2px solid #000;
+    margin-bottom: 20px
+}
+
 .Section4_ic .noticeTabs {
     width: 100% !important;
 }
+
 .Section4_ic .map_img {
     position: relative;
     float: left !important;
@@ -228,10 +305,11 @@
     height: 328px;
     overflow: hidden;
 }
+
 .Section4_ic .map_img img {
     position: absolute;
-    left:50%;
-    margin-left:-349px;
+    left: 50%;
+    margin-left: -349px;
 }
 
 .Section4_ic .campus_info {
@@ -240,17 +318,20 @@
     width: 320px;
     height: 328px;
 }
+
 .Section4_ic .campus_info dl dt {
     border-top: 1px solid #e3e3e3;
     padding: 25px 0;
 }
+
 .Section4_ic .campus_info dl dt:first-child {
     border-top: none;
     padding: 0 0 25px;
 }
+
 .Section4_ic .campus_info .btn a {
-    display: inline-block; 
-    font-size: 17px; 
+    display: inline-block;
+    font-size: 17px;
     font-weight: bold;
     height: 40px;
     line-height: 40px;
@@ -259,7 +340,7 @@
     margin-right: 5px;
     color: #000;
     text-align: center;
-    border: 1px solid #000;    
+    border: 1px solid #000;
 }
 
 /* Main Container : QuickMenu : iccheon 
@@ -321,7 +402,7 @@
     background-image: url("../../img/willbes/cop_acad/icon_rq08.png");
 }*/
 
-/* Main Container : QuickMenu*/ 
+/* Main Container : QuickMenu*/
 .incheon .MainQuickMenu {
     position: fixed;
     top: 180px;
@@ -330,6 +411,7 @@
     height: auto;
     z-index: 100;
 }
+
 .incheon .MainQuickMenu ul li {
     background: #fff;
     margin-bottom: 8px;
@@ -340,15 +422,18 @@
     min-height: 238px;
     overflow: hidden;
 }
+
 .incheon .MainQuickMenu .bx-wrapper .bx-prev {
     background: url("../../img/willbes/cop/btn_quick_prev.jpg") no-repeat 0 0;
     left: 0;
 }
+
 .incheon .MainQuickMenu .bx-wrapper .bx-next {
     background: url("../../img/willbes/cop/btn_quick_next.jpg") no-repeat 0 0;
     right: 0;
     left: auto;
 }
+
 .incheon .MainQuickMenu .bx-wrapper .bx-controls-direction {
     position: absolute;
     bottom: 5px;
@@ -358,10 +443,12 @@
     height: 14px;
     margin: 0 auto;
 }
+
 .incheon .MainQuickMenu .bx-wrapper .bx-controls-direction a {
     width: 12px;
     height: 13px;
 }
+
 .incheon .MainQuickMenu .bx-wrapper .bx-pager {
     width: auto;
     position: absolute;
@@ -377,52 +464,68 @@
 }
 
 .incheon .MainQuickMenu .gobtn {
-    padding:0 8px !important;
+    padding: 0 8px !important;
     background: #ececec;
-    width:100%;
-    margin-bottom:8px;
+    width: 100%;
+    margin-bottom: 8px;
 }
+
 .incheon .MainQuickMenu .gobtn li {
-    border-top:1px solid #f6f6f6;
-    border-bottom:1px solid #d4d4d4;
+    border-top: 1px solid #f6f6f6;
+    border-bottom: 1px solid #d4d4d4;
     height: 40px;
     line-height: 40px;
     background: url("../../img/willbes/cop_acad/icon_arrow02.png") no-repeat 95% center;
     margin: 0;
 }
+
 .incheon .MainQuickMenu .gobtn li:first-child {
-    border-top:0;
+    border-top: 0;
 }
+
 .incheon .MainQuickMenu .gobtn li:last-child {
-    border-bottom:0;
+    border-bottom: 0;
 }
+
 .incheon .MainQuickMenu .gobtn li a {
-    display: block; padding-left:30px; background-position: 5px center; background-repeat:no-repeat;
+    display: block;
+    padding-left: 30px;
+    background-position: 5px center;
+    background-repeat: no-repeat;
 }
+
 .incheon .MainQuickMenu .gobtn li a:hover {
-    color:#00acec; 
+    color: #00acec;
 }
+
 .incheon .MainQuickMenu .gobtn li:nth-child(1) a {
     background-image: url("../../img/willbes/cop_acad/icon_rq01.png");
 }
+
 .incheon .MainQuickMenu .gobtn li:nth-child(2) a {
     background-image: url("../../img/willbes/cop_acad/icon_rq07.png");
 }
+
 .incheon .MainQuickMenu .gobtn li:nth-child(3) a {
     background-image: url("../../img/willbes/cop_acad/icon_rq02.png");
 }
+
 .incheon .MainQuickMenu .gobtn li:nth-child(4) a {
     background-image: url("../../img/willbes/cop_acad/icon_rq03.png");
 }
+
 .incheon .MainQuickMenu .gobtn li:nth-child(5) a {
     background-image: url("../../img/willbes/cop_acad/icon_rq05.png");
 }
+
 .incheon .MainQuickMenu .gobtn li:nth-child(6) a {
     background-image: url("../../img/willbes/cop_acad/icon_rq10.png");
 }
+
 .incheon .MainQuickMenu .gobtn li:nth-child(7) a {
     background-image: url("../../img/willbes/cop_acad/icon_rq06.png");
 }
+
 .incheon .MainQuickMenu .gobtn li:nth-child(8) a {
     background-image: url("../../img/willbes/cop_acad/icon_rq08.png");
 }

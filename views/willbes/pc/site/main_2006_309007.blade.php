@@ -126,7 +126,11 @@
             color: #000;
             text-align: center;
             border: 1px solid #000;
-        }
+        }        
+        .totalPrice {width:860px; margin:90px auto 0;}
+        .totalPrice a {display:block; background:#000; font-size:44px; color:#fff; padding:20px; background:#000; border-radius:5px; box-shadow:10px rgba(0,0,0,.5);text-align:center;}
+        .totalPrice a:hover {background:#533fd1}
+        
     </style>
 
     <!-- Container -->
@@ -180,14 +184,13 @@
             </div>
         </div>
 
-        {{-- 합격상담예약
         <div class="Section mt80">
             <div class="widthAuto">
-                <a href="http://job.willbes.net/pass/consult/visitConsult/index"><img src="https://static.willbes.net/public/images/promotion/main/2006/309007_main01.jpg" alt="합격상담예약"></a>
+                <div class="totalPrice NSK-Black">
+                    <a href="http://job.willbes.net/pass/consult/visitConsult/index" target="_blank">합격 상담 예약 ></a>
+                </div>
             </div>
         </div>
-        --}}
-       
 
         <div class="Section mt50 c_both">
             <div class="widthAuto">

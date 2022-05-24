@@ -1084,14 +1084,20 @@ class OrderListModel extends BaseOrderModel
         } elseif ($site_code == '2004') {
             // 공무원학원
             // 주문상품 조회
-            $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]];
-            $data = $this->listAllOrder('O.OrderNo, OOI.CertNo, M.MemName, P.ProdName', $arr_condition, null, null, [], [], false);
+            $arr_condition = [
+                'EQ' => ['O.OrderIdx' => $order_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']],
+                'NOT' => ['OP.SalePatternCcd' => $this->_sale_pattern_ccd['auto']]
+            ];
+            $data = $this->listAllOrder('O.OrderNo, OOI.CertNo, M.MemName, P.ProdName, P.ProdNameShort', $arr_condition, null, null, [], [], false);
             if (empty($data) === true) {
                 return '데이터 조회에 실패했습니다.';
             }
 
             // 주문상품명 추출
-            $add_data['OrderProdNameData'] = array_pluck($data, 'ProdName');
+            $add_data = [];
+            foreach ($data as $row) {
+                $add_data['OrderProdNameData'][] = get_var($row['ProdNameShort'], $row['ProdName']);
+            }
             
             // 주문정보 추출
             $data = element('0', $data);

@@ -29,13 +29,14 @@
                 startPrint();
             @elseif($data['ViewType'] == 'G')
                 {{-- 공무원학원 --}}
-                var txt_blank = '{{ str_repeat(' ', 15) }}';
+                //var txt_blank = '{{ str_repeat(' ', 15) }}';  // L, left blank, left
+                var txt_blank = '{{ str_repeat(' ', 62) }}';
 
                 ctkprint_bar.prt_text_L4 = '{{ $data['MemName'] }}({{ $data['CertNo'] }})' + ';굴림;10;true;left';
 
                 @for($i = 0; $i <= 8; $i++)
                     @if(empty(element($i, $data['OrderProdNameData'])) === false)
-                        ctkprint_bar.prt_text_L{{ 8 + ($i * 3) }} = txt_blank + '{!! str_mb_pad(element($i, $data['OrderProdNameData']), 21) !!}' + ';굴림;8;false;left';
+                        ctkprint_bar.prt_text_R{{ 8 + ($i * 3) }} = '{!! str_mb_pad(element($i, $data['OrderProdNameData']), 21) !!}' + txt_blank + ';굴림;8;false;right';
                     @endif
                 @endfor
 

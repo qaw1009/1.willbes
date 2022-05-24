@@ -180,6 +180,15 @@
             </div>
         </div>
 
+        {{-- 합격상담예약
+        <div class="Section mt80">
+            <div class="widthAuto">
+                <a href="http://job.willbes.net/pass/consult/visitConsult/index"><img src="https://static.willbes.net/public/images/promotion/main/2006/309007_main01.jpg" alt="합격상담예약"></a>
+            </div>
+        </div>
+        --}}
+       
+
         <div class="Section mt50 c_both">
             <div class="widthAuto">
                 <div class="will-acadTit">학원 <span class="tx-color">둘러보기</span></div>

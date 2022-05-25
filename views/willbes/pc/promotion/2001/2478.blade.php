@@ -131,7 +131,7 @@
                     <div class="item">
                         <p>경감</p>
                         2023<br>
-                        신광은 형소법 <strong>&</strong><br>
+                        신광은 형법 <strong>&</strong><br>
                         장정훈/오현웅<br>
                         실무종합
                         <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/189904" target="_blank">PASS 수강신청</a>

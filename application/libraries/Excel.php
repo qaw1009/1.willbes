@@ -14,6 +14,10 @@ class Excel
      */
     public function readExcel($file_path)
     {
+        // 엑셀파일 체크
+        $this->_checkReadExcel($file_path);
+
+        // 엑셀파일 읽기
         $inputFileType = IOFactory::identify($file_path);
         $reader = IOFactory::createReader($inputFileType);
         $spreadsheet = $reader->load($file_path);
@@ -26,7 +30,29 @@ class Excel
     }
 
     /**
-     * export 엑셀 파일
+     * 엑셀파일 체크
+     * @param $file_path
+     * @throws \PhpOffice\PhpSpreadsheet\Exception
+     */
+    private function _checkReadExcel($file_path)
+    {
+        try {
+            if (@is_file($file_path) === false || ($file_size = @filesize($file_path)) === false) {
+                throw new \Exception('선택된 파일이 없습니다.');
+            }
+
+            $max_file_size = 2097152;   // 2MB (2 * 1024 * 1024 바이트)
+            if ($max_file_size < $file_size) {
+                throw new \Exception('허용된 엑셀파일 용량(2MB)을 초과하였습니다.');
+            }
+        } catch (\Exception $e) {
+            log_message('ERROR', '[Excel] ' . $e->getMessage());
+            throw new \PhpOffice\PhpSpreadsheet\Exception($e->getMessage());
+        }
+    }
+
+    /**
+     * export 엑셀파일
      * @param string $file_name [확장자를 제외한 파일명]
      * @param array $data [데이터 배열]
      * @param array $headers [헤드 타이틀 배열]

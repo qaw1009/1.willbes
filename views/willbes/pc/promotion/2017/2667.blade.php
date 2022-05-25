@@ -227,6 +227,10 @@ align-items: center;}
                                 <td colspan="3"><input type="text" placeholder="{{sess_data('mem_phone')}}" readonly></td>
                             </tr>
                             <tr>
+                                <th>배송지</th>
+                                <td colspan="3">서울 동작구 노량진로 202 남강타워 5층</td>
+                            </tr>
+                            <tr>
                                 <th>교육학 선택<br>(택 1)</th>
                                 <td colspan="3">
                                     <ul>

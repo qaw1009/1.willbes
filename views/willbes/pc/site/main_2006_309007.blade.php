@@ -59,6 +59,10 @@
         .Area03 {background:#e8e8e8; padding:80px 0}
         .Area03 .widthAuto {display: flex; justify-content: space-around;}
 
+        .Area04 {margin-top:80px}
+        .Area04 a {width:1120px; margin:0 auto; display:block; background:#000; font-size:44px; color:#fff; padding:30px 0; border-radius:8px; box-shadow:10px rgba(0,0,0,.5);text-align:center;}
+        .Area04 a:hover {background:#533fd1}
+
         .job309007 .acadview {position:relative; height:234px; width:1120px; margin: 0 auto;}
         .job309007 .acadview .avslider {height:180px; overflow: hidden;}
         .job309007 .acadview .avslider li {display:inline; float:left; width: 25%;}
@@ -127,9 +131,7 @@
             text-align: center;
             border: 1px solid #000;
         }        
-        .totalPrice {width:860px; margin:90px auto 0;}
-        .totalPrice a {display:block; background:#000; font-size:44px; color:#fff; padding:20px; background:#000; border-radius:5px; box-shadow:10px rgba(0,0,0,.5);text-align:center;}
-        .totalPrice a:hover {background:#533fd1}
+
         
     </style>
 
@@ -184,11 +186,9 @@
             </div>
         </div>
 
-        <div class="Section mt80">
-            <div class="widthAuto">
-                <div class="totalPrice NSK-Black">
-                    <a href="http://job.willbes.net/pass/consult/visitConsult/index" target="_blank">합격 상담 예약 ></a>
-                </div>
+        <div class="Section Area04">
+            <div class="widthAuto NSK-Black">
+                <a href="http://job.willbes.net/pass/consult/visitConsult/index" target="_blank">📅 합격 상담 예약 👉</a>
             </div>
         </div>
 

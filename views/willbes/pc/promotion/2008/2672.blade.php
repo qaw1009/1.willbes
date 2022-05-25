@@ -45,7 +45,7 @@
 
 	<div class="evtContent NGR">
 
-		<div class="evtCtnsBox evt_top" data-aos="fade-down">
+		<div class="evtCtnsBox evt_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2672_top.jpg" alt=""/>
         </div>
 
@@ -87,8 +87,7 @@
 				<ul>
                     <li>본 상품 실전 모의고사 문제는 무료로 제공됩니다.(배송비 별도)</li>
                     <li>모의고사 문제지는 1,2차로 나누어 배송됩니다.( 1차_3회분, 2차_2회분, 2차 배송비는 별도의 쿠폰 제공)</li>
-                    <li>본 상품 모의고사 문제지는 강의리스트 중 4순환 실전모의고사 신청강의★★★를 확인하신 후 강의에 첨부된 수강생
-                        교재를 확인하시고 선택하신 후 구매하실 수 있습니다.</li>
+                    <li>본 상품 모의고사 문제지는 강의리스트 중 4순환 실전모의고사 신청강의★★★를 확인하신 후 강의에 첨부된 수강생 교재를 확인하시고 선택하신 후 구매하실 수 있습니다.</li>
 				</ul>
 				<div class="infoTit NG"><strong>결제/환불 관련</strong></div>
 				<ul>

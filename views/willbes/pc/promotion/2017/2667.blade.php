@@ -92,6 +92,7 @@ align-items: center;}
         .evt_table .txtinfo ul {padding:20px;}
         .evt_table .txtinfo div {font-size:16px; font-weight:bold; background:#222; display:flex; justify-content: center; align-items: center; text-align:center; width:15%}
         .evt_table .txtinfo li {list-style: dimical; margin-left:15px}
+        .evt_table .txtinfo li a {display:inline-block; font-size:12px; color:#ffff00; border:1px solid #ffff00; border-radius:20px; padding:2px 10px}
     </style>
 
     @php
@@ -205,7 +206,7 @@ align-items: center;}
                             <li>모의고사 신청을 위해 반드시 로그인을 하셔야 합니다.</li>
                             <li>모의고사 신청은 교육학과 전공과목을 각각 체크하셔야 하며, 출제 교수진을 선택해 주시면 됩니다.</li>
                             <li>모의고사 접수비용은 1만원입니다.</li>
-                            <li>모의고사 신청 전 배송지를 다시 한번 확인하시기 바랍니다. (회원정보에서 변경가능)</li>
+                            <li>모의고사 신청 전 배송지를 다시 한번 확인하시기 바랍니다. (회원정보에서 변경가능) <a href="https://www.willbes.net/member/change/index/info" target="_blank">배송지 변경 ></a></li>
                             <li>모의고사는 를 응시할 때, 시간 체크 버튼을 클릭하고 시작해 주시기 바랍니다.(시험 시간관리에 도움이 됩니다.)</li>
                         </ul>
                     </div>
@@ -306,6 +307,10 @@ align-items: center;}
                                 <td>{{ $arr_result_2['subject_name'] }}</td>
                                 <th>출제 교수진</th>
                                 <td>{{ $arr_result_1['prof_name'] . ' 교수, ' . $arr_result_2['prof_name'] . ' 교수' }}</td>
+                            </tr>
+                            <tr>
+                                <th>배송지</th>
+                                <td colspan="3">서울 동작구 노량진로 202 남강타워 5층</td>
                             </tr>
                             <tr>
                                 <th>수험번호</th>

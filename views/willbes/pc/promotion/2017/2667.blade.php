@@ -20,18 +20,43 @@
 
         /************************************************************/
   
-        .eventTop {background:url(https://static.willbes.net/public/images/promotion/2022/05/2645_top_bg.jpg) no-repeat center top;}
-        .event01 {padding-bottom:100px; background:#f8f8f8}
-        .event01 .tabs {width:920px; margin:0 auto 10px}
-        .event01 .tabs li {display:inline; float:left; width:33.3333%}
-        .event01 .tabs a {display:block; text-align:center; background:#fff; color:#3b393c; height:80px; line-height:80px; margin-right:10px; font-size:24px; border:1px solid #3b393c}
-        .event01 .tabs a.active,
-        .event01 .tabs a:hover {background:#3b393c; color:#fff}
-        .event01 .tabs li:last-child a {margin:0}
-        .event01 .tabs:after {content:''; display:block; clear:both}
+        .eventTop {background:url(https://static.willbes.net/public/images/promotion/2022/05/2667_top_bg.jpg) no-repeat center top;}
+        .eventTop span {position: absolute; top:350px; left:50%; width:810px; z-index: 10;}
+        .event01 {background:#f4f4f4}
+
         .event01 .title {color:#383838; font-size:30px; margin-bottom:40px}
 
-        .evt_table {width:980px; margin:50px auto 0; border:1px solid #333; padding:50px}
+        .event02 {background:#ffc227; padding-bottom:150px}
+        .event02 .tabs {width:980px; margin:0 auto 30px; display:flex}
+        .event02 .tabs li {width:33.3333%}
+        .event02 .tabs a {display:block; text-align:center; background:#d3a01d; color:#2e2e2e; height:80px; line-height:80px; margin-right:10px; font-size:24px; border-radius:60px; font-weight:bold}
+        .event02 .tabs a.active,
+        .event02 .tabs a:hover {background:#1b1b1b; color:#fff}
+        .event02 .tabs li:last-child a {margin:0}
+
+        .event03 {padding:150px 0; line-height:1.3; }
+        .event03 .tabBtns {display:flex; width:980px; margin:0 auto}
+        .event03 .tabBtns a {display:block; width:50%; font-size:30px; border:2px solid #000; padding:20px 0}
+        .event03 .tabBtns a.on,
+        .event03 .tabBtns a:hover {background:#000; color:#fff}
+        .event03 .tabBtns p {font-size:16px}
+
+        .evtBox {width:1120px; margin:0 auto; position:relative}
+        .evtBox a:hover {background:rgba(0,0,0,.2)}
+
+        .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
+		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
+		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
+        .evtInfoBox ul {margin-bottom:30px}
+        .evtInfoBox li {list-style-type: decimal;margin-left:20px; margin-bottom:10px}
+        .evtInfoBox li table {margin-top:10px; border:1px solid #ccc}
+        .evtInfoBox li tr {border-bottom:1px solid #ccc}
+        .evtInfoBox li th,
+        .evtInfoBox li td {font-size:12px; padding:8px 2px; text-align:center; border-right:1px solid #ccc;}
+        .evtInfoBox li th {font-size:13px; font-weight:bold; background:#111}
+        .evtInfoBox li tbody th {background:#222}
+
+        .evt_table {width:980px; margin:0 auto; border:1px solid #000; padding:50px}
         .evt_table table{width:100%;border-top:1px solid #e9e9e9;}
         .evt_table table tr {border-bottom:1px solid #e9e9e9}
         .evt_table table th,
@@ -67,37 +92,6 @@ align-items: center;}
         .evt_table .txtinfo ul {padding:20px;}
         .evt_table .txtinfo div {font-size:16px; font-weight:bold; background:#222; display:flex; justify-content: center; align-items: center; text-align:center; width:15%}
         .evt_table .txtinfo li {list-style: dimical; margin-left:15px}
-
-        .event02 {background:#dcf9f7;}
-
-        .event03 {padding-bottom:100px; line-height:1.3}
-
-        .event04 {background:#05c2b1;}
-
-        .event05 {padding:100px 0}
-
-        .urlWrap {width:1030px; margin:0 auto}
-        .urlWrap .urladd {padding:20px; background:#2e2e3c; color:#fff; margin:0 auto 20px; font-size:14px}
-        .urlWrap .urladd input[type=text] {height:28px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; background:#f5f5f5; vertical-align:middle; width:70%; margin:0 10px; color:#000}
-        .urlWrap .urladd a {display:inline-block; height:28px; line-height:28px; color:#2e2e3c; background:#ffc943; padding:0 20px; vertical-align:middle}
-        .urlWrap .evt_table {width:100%; background-color:#fff !important; padding:20px 0}
-        .urlWrap .evt_table table td {font-size:14px; text-align:center}
-        .urlWrap .evt_table table td:nth-child(2) {text-align:left}
-
-        .evtBox {width:1120px; margin:0 auto; position:relative}
-        .evtBox a:hover {background:rgba(0,0,0,.2)}
-
-        .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
-		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
-		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
-        .evtInfoBox ul {margin-bottom:30px}
-        .evtInfoBox li {list-style-type: decimal;margin-left:20px; margin-bottom:10px}
-        .evtInfoBox li table {margin-top:10px; border:1px solid #ccc}
-        .evtInfoBox li tr {border-bottom:1px solid #ccc}
-        .evtInfoBox li th,
-        .evtInfoBox li td {font-size:12px; padding:8px 2px; text-align:center; border-right:1px solid #ccc;}
-        .evtInfoBox li th {font-size:13px; font-weight:bold; background:#111}
-        .evtInfoBox li tbody th {background:#222}
     </style>
 
     @php
@@ -171,26 +165,37 @@ align-items: center;}
 
     <div class="evtContent NSK">
         <div class="evtCtnsBox eventTop" data-aos="fade-up">
-            <div class="wrap">
-        	    <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_top.jpg" alt="리얼 모의고사"/>
-                <a href="http://naver.me/Ffp78XLz" target="_blank" title="위치" style="position: absolute; left: 65%; top: 75.44%; width: 7.86%; height: 3.11%; z-index: 2;"></a>
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2667_top.jpg" alt="온라인 모의고사"/>
+            <span data-aos="fade-left" data-aos-offset="500"><img src="https://static.willbes.net/public/images/promotion/2022/05/2667_top_img.png" alt=""/></span>
         </div>
 
         <div class="evtCtnsBox event01" data-aos="fade-up">
-        	<img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01.jpg" alt="리얼 모의고사 응시"/>
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01_01.jpg" alt="실전 감각 극대화"/>
-            </div>
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01_02.jpg" alt="경쟁자 사이 나의 위치 파악"/>
-            </div>
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2645_01_03.jpg" alt="취약점 파악 및 보완"/>
-            </div>
+        	<img src="https://static.willbes.net/public/images/promotion/2022/05/2667_01.jpg" alt="온라인 모의고사 응시"/>
+        </div>
+
+        <div class="evtCtnsBox event02" data-aos="fade-up">
+        	<img src="https://static.willbes.net/public/images/promotion/2022/05/2667_02.jpg" alt="온라인 모의고사 응시"/>
+            <ul class="tabs">
+                <li><a href="#tab01">1교시 : 교육학 60분</a></li>
+                <li><a href="#tab02">2교시 : 전공A 90분</a></li>
+                <li><a href="#tab03">3교시 : 전공B 90분</a></li>
+            </ul>
+            <div id="tab01">1교시 타이머 영상</div>
+            <div id="tab02">2교시 타이머 영상</div>
+            <div id="tab03">3교시 타이머 영상</div>
         </div>
 
         <div class="evtCtnsBox event03" data-aos="fade-up">
+            <div class="tabBtns">
+                <a href="https://ssam.willbes.net/promotion/index/cate/3137/code/2645" target="_blank">
+                    <strong>Real</strong> 모의고사 <strong>신청</strong>
+                    <p>(용산철도고등학교에서 응시)</p>
+                </a>
+                <a href="#none" class="on">
+                    <strong>온라인</strong> 모의고사 <strong>신청</strong>
+                    <p>시험지와 답안지 배송 후 개인별 응시)</p>
+                </a>
+            </div>
             @if (empty($arr_base['order_product']) === true)
                 {{--접수전 화면--}}
                 <div class="evt_table p_re">
@@ -359,7 +364,7 @@ align-items: center;}
 
         <div class="evtCtnsBox evtInfo" id="careful" data-aos="fade-up">
             <div class="evtInfoBox">
-                <h4 class="NSK-Black">모의고사 접수 시, 유의사항(필독)</h4>
+                <h4 class="NSK-Black">[필독] 온라인 모의고사 접수 시, 유의사항</h4>
                 <ul>
                     <li>본 실전 모의고사는 한 ID별 1회만 신청 가능합니다.</li>
                     <li>본 실전 모의고사 접수비는 1만원입니다. (교육학+전공A,B+답안지)</li>

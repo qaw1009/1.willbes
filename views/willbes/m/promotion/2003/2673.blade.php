@@ -10,16 +10,9 @@
     .evtCtnsBox .wrap { margin:0 auto; position:relative}
     /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
-    /* 이용안내 */
-    .evtInfo {padding:50px 20px; background:#f4f4f4; color:#363636; line-height:1.5}
-    .guide_box{text-align:left; word-break:keep-all; font-size:14px; color:#555;}
-    .guide_box h2 {font-size:30px; margin-bottom:30px; color:#000}
-    .guide_box dt{margin-bottom:10px; color:#fff; background:#000; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:16px;}        
-    .guide_box dd{margin-bottom:50px;}
-    .guide_box dd li{margin-bottom:5px; list-style:decimal; margin-left:20px;}
-    .guide_box dd li.none {list-style:none; margin-left:0}
-    .guide_box dd:last-child {margin:0}
-    .evtInfo p {font-size:16px; color:#000; font-weight:bold; margin-top:30px}
+    .event02 {background:#e4d8c8; padding-bottom:100px}
+    .event02 a {width:94%; margin:0 auto; display: block; font-size:2.8vh; background:#003b39; color:#fff; padding:20px 0; border-radius:60px}
+    .event02 a:hover {background:#000}
     
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
@@ -48,11 +41,9 @@
         <img src="https://static.willbes.net/public/images/promotion/2022/05/2673m_01.jpg" alt="연간수강권" />  
     </div>
 
-    <div class="evtCtnsBox" data-aos="fade-up">
-        <div class="wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2022/05/2673m_02.jpg" alt="참석신청 바로가기" />
-            <a href="https://pass.willbes.net/m/pass/offLecture/show/cate/3149/prod-code/196776" title="" style="position: absolute; left: 6.53%; top: 90.7%; width: 86.67%; height: 3.36%; z-index: 2;"></a>
-        </div>
+    <div class="evtCtnsBox event02" data-aos="fade-up">
+        <img src="https://static.willbes.net/public/images/promotion/2022/05/2673m_02_01.jpg" alt="참석신청 바로가기" />
+        <a href="https://pass.willbes.net/m/pass/offLecture/show/cate/3149/prod-code/196776" title=""><strong>동반합격플랜</strong>강의 수강신청 →</a>
     </div>
 </div>
 

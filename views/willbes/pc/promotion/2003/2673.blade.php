@@ -25,12 +25,13 @@
 
         .wb_cts01 {background:url("https://static.willbes.net/public/images/promotion/2022/05/2673_01_bg.jpg") no-repeat center top;}   
         
-        .wb_cts02 {background:#e4d8c8}
+        .wb_cts02 {background:#e4d8c8; padding-bottom:150px}
+        .wb_cts02 a {width:900px; margin:0 auto; display: block; font-size:40px; background:#003b39; color:#fff; padding:20px; border-radius:60px}
+        .wb_cts02 a:hover {background:#000}
    
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2673_top.jpg" alt="동반 합격플랜"/>    
         </div>
@@ -40,13 +41,9 @@
         </div>  
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2673_02.jpg" alt="커리큘럼"/>
-                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3149/prod-code/196776" title="수강신청" style="position: absolute; left: 16.34%; top: 91.04%; width: 67.05%; height: 2.76%; z-index: 2;"></a>
-            </div>
-        </div>
-
-                         
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2673_02_01.jpg" alt="커리큘럼"/>
+            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3149/prod-code/196776" title="수강신청"><strong>동반합격플랜</strong>강의 수강신청 →</a>
+        </div>             
 
     </div>
     <!-- End Container -->

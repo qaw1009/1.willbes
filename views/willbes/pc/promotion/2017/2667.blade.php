@@ -98,65 +98,61 @@ align-items: center;}
     @php
         $_arr_product = [
             'type1' => [
-                ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194830' : '159829' => [
+                ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196788' : '159829' => [
                     'prof_name' => '이경범'
                     ,'subject_name' => '교육학'
                 ]
-                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194829' : '159830' => [
+                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196789' : '159830' => [
                     'prof_name' => '신태식'
                     ,'subject_name' => '교육학'
                 ]
-                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194828' : '159831' => [
+                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196790' : '159831' => [
                     'prof_name' => '정현'
                     ,'subject_name' => '교육학'
                 ]
             ]
             ,'type2' => [
-                ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194783' : '159832' => [
+                ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196791' : '159832' => [
                     'prof_name' => '송원영/권보민'
                     ,'subject_name' => '국어'
                 ]
-                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194784' : '159833' => [
+                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196792' : '159833' => [
                     'prof_name' => '구동언'
                     ,'subject_name' => '국어'
                 ]
-                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194785' : '159834' => [
+                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196795' : '159834' => [
                     'prof_name' => '김철홍/박태영'
                     ,'subject_name' => '수학'
                 ]
-                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194786' : '159835' => [
+                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196796' : '159835' => [
                     'prof_name' => '김현웅/박혜향'
                     ,'subject_name' => '수학'
                 ]
-                /*,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194787' : '_159836' => [
-                    'prof_name' => '김병찬'
-                    ,'subject_name' => '도덕/윤리'
-                ]*/
-                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194788' : '_159837' => [
+                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196797' : '_159837' => [
                     'prof_name' => '김민응'
                     ,'subject_name' => '도덕/윤리'
                 ]
-                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194789' : '_159838' => [
-                    'prof_name' => '허역/정인홍/이웅재/김현중'
+                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196798' : '_159838' => [
+                    'prof_name' => '허역 교수팀 출제'
                     ,'subject_name' => '일반사회'
                 ]
-                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194790' : '_159839' => [
+                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196799' : '_159839' => [
                     'prof_name' => '김종권'
                     ,'subject_name' => '역사'
                 ]
-                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194791' : '_159840' => [
+                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196800' : '_159840' => [
                     'prof_name' => '다이애나'
                     ,'subject_name' => '음악'
                 ]
-                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194792' : '_159841' => [
+                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196801' : '_159841' => [
                     'prof_name' => '최우영'
                     ,'subject_name' => '전기'
                 ]
-                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194793' : '_159842' => [
+                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196802' : '_159842' => [
                     'prof_name' => '최우영'
                     ,'subject_name' => '전자'
                 ]
-                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194794' : '_159843' => [
+                ,ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196803' : '_159843' => [
                     'prof_name' => '장영희'
                     ,'subject_name' => '중국어'
                 ]
@@ -188,11 +184,11 @@ align-items: center;}
 
         <div class="evtCtnsBox event03" data-aos="fade-up">
             <div class="tabBtns">
-                <a href="https://ssam.willbes.net/promotion/index/cate/3137/code/2645" target="_blank">
+                <a href="{{ front_url('/promotion/index/cate/3137/code/2645') }}" target="_blank">
                     <strong>Real</strong> 모의고사 <strong>신청</strong>
                     <p>(용산철도고등학교에서 응시)</p>
                 </a>
-                <a href="#none" class="on">
+                <a href="javascript:void(0)" class="on">
                     <strong>온라인</strong> 모의고사 <strong>신청</strong>
                     <p>시험지와 답안지 배송 후 개인별 응시)</p>
                 </a>
@@ -206,7 +202,7 @@ align-items: center;}
                             <li>모의고사 신청을 위해 반드시 로그인을 하셔야 합니다.</li>
                             <li>모의고사 신청은 교육학과 전공과목을 각각 체크하셔야 하며, 출제 교수진을 선택해 주시면 됩니다.</li>
                             <li>모의고사 접수비용은 1만원입니다.</li>
-                            <li>모의고사 신청 전 배송지를 다시 한번 확인하시기 바랍니다. (회원정보에서 변경가능) <a href="https://www.willbes.net/member/change/index/info" target="_blank">배송지 변경 ></a></li>
+                            <li>모의고사 신청 전 배송지를 다시 한번 확인하시기 바랍니다. (회원정보에서 변경가능) <a href="{{ app_url('/member/change/index/info', 'www') }}" target="_blank">배송지 변경 ></a></li>
                             <li>모의고사는 를 응시할 때, 시간 체크 버튼을 클릭하고 시작해 주시기 바랍니다.(시험 시간관리에 도움이 됩니다.)</li>
                         </ul>
                     </div>
@@ -228,15 +224,18 @@ align-items: center;}
                             </tr>
                             <tr>
                                 <th>배송지</th>
-                                <td colspan="3">서울 동작구 노량진로 202 남강타워 5층</td>
+                                <td colspan="3">
+                                    <input type="hidden" id="addr_type" value="{{ (empty($arr_base['member_info']['Addr1']) === false ? 'Y' : 'N') }}">
+                                    {{ (sess_data('is_login') == true) ? $arr_base['member_info']['Addr1'] . ' ' . $arr_base['member_info']['Addr2'] : '' }}
+                                </td>
                             </tr>
                             <tr>
                                 <th>교육학 선택<br>(택 1)</th>
                                 <td colspan="3">
                                     <ul>
-                                        <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194830' : '159829' }}" autocomplete="off"/> 교육학논술 (이경범 교수 출제)</label></li>
-                                        <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194828' : '159831' }}" autocomplete="off"/> 교육학논술 (정   현 교수 출제)</label></li>
-                                        <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194829' : '159830' }}" autocomplete="off"/> 교육학논술 (신태식 교수 출제)</label></li>
+                                        <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196788' : '159829' }}" autocomplete="off"/> 교육학논술 (이경범 교수 출제)</label></li>
+                                        <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196789' : '159831' }}" autocomplete="off"/> 교육학논술 (정   현 교수 출제)</label></li>
+                                        <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196790' : '159830' }}" autocomplete="off"/> 교육학논술 (신태식 교수 출제)</label></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -244,18 +243,17 @@ align-items: center;}
                                 <th>전공과목 선택<br>(택 1)</th>
                                 <td colspan="3">
                                     <ul>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194783' : '159832' }}" autocomplete="off"/> 국  어 (송원영/권보민 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194784' : '159833' }}" autocomplete="off"/> 국  어 (구동언 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194785' : '159834' }}" autocomplete="off"/> 수  학 (김철홍/박태영 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194786' : '159835' }}" autocomplete="off"/> 수  학 (김현웅/박혜향 교수 출제)</label></li>
-                                        {{--<li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194787' : '_159836' }}" autocomplete="off"/> 도덕·윤리 (김병찬 교수 출제)</label></li>--}}
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194788' : '_159837' }}" autocomplete="off"/> 도덕·윤리 (김민응 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194789' : '_159838' }}" autocomplete="off"/> 일반사회 (허역/정인홍/이웅재/김현중 교수팀 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194790' : '_159839' }}" autocomplete="off"/> 역  사 (김종권 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194791' : '_159840' }}" autocomplete="off"/> 음  악 (다이애나 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194792' : '_159841' }}" autocomplete="off"/> 전  기 (최우영 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194793' : '_159842' }}" autocomplete="off"/> 전  자 (최우영 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '194794' : '_159843' }}" autocomplete="off"/> 중국어 (장영희 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196791' : '159832' }}" autocomplete="off"/> 국  어 (송원영/권보민 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196792' : '159833' }}" autocomplete="off"/> 국  어 (구동언 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196795' : '159834' }}" autocomplete="off"/> 수  학 (김철홍/박태영 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196796' : '159835' }}" autocomplete="off"/> 수  학 (김현웅/박혜향 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196797' : '_159837' }}" autocomplete="off"/> 도덕·윤리 (김민응 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196798' : '_159838' }}" autocomplete="off"/> 일반사회 (허역 교수팀 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196799' : '_159839' }}" autocomplete="off"/> 역  사 (김종권 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196800' : '_159840' }}" autocomplete="off"/> 음  악 (다이애나 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196801' : '_159841' }}" autocomplete="off"/> 전  기 (최우영 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196802' : '_159842' }}" autocomplete="off"/> 전  자 (최우영 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196803' : '_159843' }}" autocomplete="off"/> 중국어 (장영희 교수 출제)</label></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -282,7 +280,6 @@ align-items: center;}
             @else
                 {{--접수완료 화면--}}
                 @php
-                    $params_d_day_strtotime = strtotime($arr_promotion_params['d_day']);
                     $order_product_list = array_pluck($arr_base['order_product'], 'OrderProdIdx', 'ProdCode');
                     $search_key_type1 = array_intersect(array_keys($order_product_list), array_keys($_arr_product['type1']));
                     $search_key_type2 = array_intersect(array_keys($order_product_list), array_keys($_arr_product['type2']));
@@ -298,13 +295,13 @@ align-items: center;}
                         <col />
                         <thead>
                             <tr>
-                                <th colspan="4">교원임용 Real 모의고사 접수 현황</th>
+                                <th colspan="4">교원임용 모의고사 접수 현황</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <th>시험명</th>
-                                <td colspan="3">2023학년도 대비 중등임용 Real 모의고사 (주관: 윌비스 임용)</td>
+                                <td colspan="3">2023학년도 대비 중등임용 모의고사 (주관: 윌비스 임용)</td>
                             </tr>
                             <tr>
                                 <th>응시과목</th>
@@ -314,21 +311,7 @@ align-items: center;}
                             </tr>
                             <tr>
                                 <th>배송지</th>
-                                <td colspan="3">서울 동작구 노량진로 202 남강타워 5층</td>
-                            </tr>
-                            <tr>
-                                <th>수험번호</th>
-                                <td colspan="3">
-                                    @if (empty($register_count) === false && $arr_promotion_params['d_day'] <= date('YmdHis'))
-                                        {{ $register_count[0]['EtcValue'] }}
-                                    @else
-                                        {{ '('.date('n', $params_d_day_strtotime) . '월'
-                                            . date('j', $params_d_day_strtotime) . '일'
-                                            . '(' . $arr_base['yoil'][date('w', $params_d_day_strtotime)] . ') '
-                                            . date('H', $params_d_day_strtotime) . ':'
-                                            . date('i', $params_d_day_strtotime) . ' 부터 확인 가능)' }}
-                                    @endif
-                                </td>
+                                <td colspan="3">{{ $arr_base['member_info']['Addr1'] . ' ' . $arr_base['member_info']['Addr2'] }}</td>
                             </tr>
                             <tr>
                                 <th>성명</th>
@@ -350,23 +333,12 @@ align-items: center;}
                             </tr>
                         </tbody>
                     </table>
-                    <div class="mt50 tx16">2022. 06. 12</div>
                     <div class="mt30 tx16">위와 같이 접수하고, 교원임용 Real 모의고사에 응시하고자 합니다.</div>
                     <div class="mt50"> <img src="https://static.willbes.net/public/images/promotion/2022/05/stamp.png" alt=""/></div>
                     <div class="btns">
                         <a href="{{ front_url('/support/qna/index') }}" target="_blank">모의고사 취소요청 하기</a>
-                        @if (empty($register_count) === false && $arr_promotion_params['d_day'] <= date('YmdHis'))
-                            <a href="javascript:void(0);" onclick="popup('{{ $arr_base['order_product'][0]['OrderNo'] }}'); return false;">모의고사 응시표 출력하기</a>
-                        @endif
                     </div>
-                    <div class="mt30">
-                        ※ 모의고사 취소기한은 6월 6일(월)까지이며, 1:1상담게시판에 글을 남겨주시면 됩니다.<br>
-                        ※ 응시표는 {{ date('m', $params_d_day_strtotime) . '월'
-                                    . date('d', $params_d_day_strtotime) . '일'
-                                    . '(' . $arr_base['yoil'][date('w', $params_d_day_strtotime)] . ') '
-                                    . date('H', $params_d_day_strtotime) . ':'
-                                    . date('i', $params_d_day_strtotime) . '부터 출력가능' }}
-                    </div>
+                    <div class="mt30">※ 모의고사 취소기한은 6월 6일(월)까지이며, 1:1상담게시판에 글을 남겨주시면 됩니다.</div>
                 </div>
             @endif
         </div>
@@ -555,6 +527,11 @@ align-items: center;}
                 learn_pattern = 'adminpack_lecture'
                 is_direct_pay = 'Y'
                 cart_onoff_type = '';
+            }
+
+            if ($("#addr_type").val() == 'N') {
+                alert('배송지 주소가 없습니다.\n개인정보에서 배송지 저장 후 진행하시기 바랍니다.');
+                return;
             }
 
             if (cnt_1 < 1) { alert('교육학 신청은 필수입니다.'); return; }

@@ -239,6 +239,16 @@
                                     </a>
                                 </li>
 
+                                <li class="">
+                                    <a href="#tab15">
+                                        <span class="num_box" data-num="15">15</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2022/05/2505_03_s15.png" alt="분리의 부사 「away」가 포함된 동사구를 알아보자!"></div>
+                                        <div class="text_box">
+                                            <p>분리의 부사 「away」가 포함된 동사구를 알아보자!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
                             </ul>
                         </div>
                     </div>          
@@ -316,6 +326,7 @@
         var tab12_url = "https://www.youtube.com/embed/xONg4pHjcUY?rel=0";
         var tab13_url = "https://www.youtube.com/embed/j5vOgjlYmA0?rel=0";
         var tab14_url = "https://www.youtube.com/embed/J2pu3DCvqlA?rel=0";
+        var tab15_url = "https://www.youtube.com/embed/_qUiLoyII0Q?rel=0";
 
         $(function() {
             $(".preview_list ul li a").click(function(){
@@ -350,6 +361,8 @@
                     video_tab_url = tab13_url;           
                 }else if(activeTab == "#tab14"){
                     video_tab_url = tab14_url;           
+                }else if(activeTab == "#tab15"){
+                    video_tab_url = tab15_url;           
                 }
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");

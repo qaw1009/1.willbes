@@ -83,8 +83,7 @@
         .evt_table .btns a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#42425b; margin:0 10px; border-radius:40px; padding:0 50px}
         .evt_table .btns a:hover {background:#fe544a}
 
-        .evt_table .popup {position:absolute; top:0; left:0; width:100%; height: 100%; background-color:rgba(0,0,0,.7); display: flex; justify-content: center;
-align-items: center;}
+        .evt_table .popup {position:absolute; top:0; left:0; width:100%; height: 100%; background-color:rgba(0,0,0,.7); display: flex; justify-content: center; align-items: center;}
         .evt_table .popup span {display:block; font-size:48px; color:#fff; text-shadow: 0 5px 5px rgba(0,0,0,.5);}
 
         .evt_table .txtinfo {display:flex; text-align:left; margin-bottom:50px; background:#444; color:#fff}
@@ -543,12 +542,6 @@ align-items: center;}
             }
             //결제하기
             goCartNDirectPay('order_div_'+_learn_pattern, 'y_pkg', cart_type, learn_pattern, is_direct_pay, cart_onoff_type);
-        }
-
-        function popup(order_no){
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            var url = "{{ site_url('/pass/promotion/popup/' . $arr_base['promotion_code']) }}?order_no="+order_no;
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=600,height=630');
         }
     </script>
 

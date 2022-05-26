@@ -23,7 +23,7 @@
 
         .wb_top {background:url("https://static.willbes.net/public/images/promotion/2022/05/2673_top_bg.jpg") no-repeat center top;}      
 
-        .wb_cts01 {background:url("https://static.willbes.net/public/images/promotion/2022/05/2673_01_bg.jpg") no-repeat center top;}   
+        .wb_cts01 {background:url("https://static.willbes.net/public/images/promotion/2022/05/2676_01_bg.jpg") no-repeat center top;}   
         
         .wb_cts02 {background:#e4d8c8; padding-bottom:150px}
         .wb_cts02 a {width:900px; margin:0 auto; display: block; font-size:40px; background:#003b39; color:#fff; padding:20px; border-radius:60px}
@@ -37,7 +37,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
-            <img  src="https://static.willbes.net/public/images/promotion/2022/05/2673_01.jpg" alt="윌비스 검찰팀"/>
+            <img  src="https://static.willbes.net/public/images/promotion/2022/05/2676_01.jpg" alt="윌비스 검찰팀"/>
         </div>  
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">

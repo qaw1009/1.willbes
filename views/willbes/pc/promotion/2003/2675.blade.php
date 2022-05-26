@@ -23,7 +23,7 @@
 
         .wb_top {background:url("https://static.willbes.net/public/images/promotion/2022/05/2676_top_bg.jpg") no-repeat center top;}      
 
-        .wb_cts01 {background:url("https://static.willbes.net/public/images/promotion/2022/05/2673_01_bg.jpg") no-repeat center top;}   
+        .wb_cts01 {background:url("https://static.willbes.net/public/images/promotion/2022/05/2676_01_bg.jpg") no-repeat center top;}   
         
         .wb_cts02 {background:#e4d8c8; padding-bottom:150px}
         .wb_cts02 a {width:900px; margin:0 auto; display: block; font-size:40px; background:#003b39; color:#fff; padding:20px; border-radius:60px}
@@ -34,16 +34,16 @@
     <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/05/2676_top.jpg" alt="장학생 선발 모의고사"/>    
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2676_top.jpg" alt="2년차 관리형 종합반"/>    
         </div>
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
-            <img  src="https://static.willbes.net/public/images/promotion/2022/05/2673_01.jpg" alt="윌비스 검찰팀"/>
+            <img  src="https://static.willbes.net/public/images/promotion/2022/05/2676_01.jpg" alt="윌비스 검찰팀"/>
         </div>  
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2673_02_01.jpg" alt="커리큘럼"/>
-            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3149/prod-code/196775" title="수강신청"><strong>장학생 선발 모의고사</strong> 응시신청 →</a>
+            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3149/prod-code/196777" title="수강신청"><strong>2년차 관리형 독학반</strong> 수강신청 →</a>
         </div>                        
 
     </div>

@@ -34,15 +34,15 @@
 <div id="Container" class="Container NSK c_both">
 
     <div class="evtCtnsBox" data-aos="fade-down">            
-        <img src="https://static.willbes.net/public/images/promotion/2022/05/2676m_top.jpg" alt="합격설명회" />        
+        <img src="https://static.willbes.net/public/images/promotion/2022/05/2676m_top.jpg" alt="장학생 선발 모의고사" />        
     </div>
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/05/2676m_01.jpg" alt="연간수강권" />  
+        <img src="https://static.willbes.net/public/images/promotion/2022/05/2676m_01.jpg" alt="윌비스 검찰팀" />  
     </div>
 
     <div class="evtCtnsBox event02" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/05/2673m_02_01.jpg" alt="참석신청 바로가기" />
+        <img src="https://static.willbes.net/public/images/promotion/2022/05/2673m_02_01.jpg" alt="커리큘럼" />
         <a href="https://pass.willbes.net/m/pass/offLecture/show/cate/3149/prod-code/196775" title=""><strong>장학생 선발 모의고사 </strong> 응시신청 →</a>
     </div>
 </div>

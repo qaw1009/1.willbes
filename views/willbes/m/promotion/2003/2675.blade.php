@@ -34,11 +34,11 @@
 <div id="Container" class="Container NSK c_both">
 
     <div class="evtCtnsBox" data-aos="fade-down">            
-        <img src="https://static.willbes.net/public/images/promotion/2022/05/2676m_top.jpg" alt="관리형 독학반" />        
+        <img src="https://static.willbes.net/public/images/promotion/2022/05/2675m_top.jpg" alt="관리형 독학반" />        
     </div>
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/05/2676m_01.jpg" alt="윌비스 검찰팀" />  
+        <img src="https://static.willbes.net/public/images/promotion/2022/05/2675m_01.jpg" alt="윌비스 검찰팀" />  
     </div>
 
     <div class="evtCtnsBox event02" data-aos="fade-up">

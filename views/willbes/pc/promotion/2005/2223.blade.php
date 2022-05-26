@@ -4,16 +4,20 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
+    <style type="text/css">
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
-            position: relative;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtContent span {vertical-align:auto}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/   
 
@@ -39,7 +43,7 @@
         to{color:#d63e4d}
         }      
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/05/2223_top_bg.jpg) no-repeat center top;}	
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/05/2223_top_bg.jpg) no-repeat center top;}	
         .evtCtnsBox .title {color:#11153a; font-size:36px; margin:100px 0 50px;}
         .evt_01 {width:1120px; margin:0 auto;}
 
@@ -68,29 +72,25 @@
         </div>
 
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/05/2223_top.jpg" alt="합격응원 동영상 이벤트" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/05/2223_top.jpg" alt="합격응원 동영상 이벤트" />
 		</div>       
 
         <div class="evtCtnsBox evt_01">  
-            <div><img src="https://static.willbes.net/public/images/promotion/2021/05/2223_01_01.jpg" alt="예비순환+GS1순환" /></div>
+            <div class="mt100 mb20"><img src="https://static.willbes.net/public/images/promotion/2022/05/2223_01_01.jpg" alt="예비순환+GS1순환" /></div>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif 
-            <div><img src="https://static.willbes.net/public/images/promotion/2021/05/2223_01_02.jpg" alt="GS2순환" /></div>          
+            <div class="mt100 mb20"><img src="https://static.willbes.net/public/images/promotion/2022/05/2223_01_02.jpg" alt="GS2순환" /></div>          
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))            
             @endif  
-            <div><img src="https://static.willbes.net/public/images/promotion/2021/05/2223_01_03.jpg" alt="GS3순환" /></div>          
+            <div class="mt100 mb20"><img src="https://static.willbes.net/public/images/promotion/2022/05/2223_01_03.jpg" alt="GS3순환" /></div>          
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))            
             @endif 
-            <div><img src="https://static.willbes.net/public/images/promotion/2021/05/2223_01_04.jpg" alt="5급헌법 기본+PSAT" /></div>          
+            <div class="mt100 mb20"><img src="https://static.willbes.net/public/images/promotion/2022/05/2223_01_04.jpg" alt="황종휴 경제학" /></div>          
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))            
-            @endif 
-            <div><img src="https://static.willbes.net/public/images/promotion/2021/05/2223_01_05.jpg" alt="황종휴 경제학" /></div>          
-            @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>5))            
             @endif 
         </div>        
 	</div>

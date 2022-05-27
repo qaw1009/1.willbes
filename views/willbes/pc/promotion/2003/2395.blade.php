@@ -14,7 +14,7 @@
             background:#fff;
             margin:0 auto;
         }
-        .evtContent span {vertical-align:auto}
+        .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
@@ -27,10 +27,13 @@
         .evt00 {background:#f4f1f3}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/04/2395_top_bg.jpg) no-repeat center top;}
+        .evtTop2 {background:url(https://static.willbes.net/public/images/promotion/2022/06/2395_top_bg.jpg) no-repeat center top;}
 
         .evt01 {background:#e5459f;}     
 
         .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/11/2395_03_bg.jpg) repeat-x center top; padding-bottom:100px;}
+
+        .evt04 {background:#00a8ff;}  
         
         /*타이머*/
         .time {width:1120px; margin:0 auto; text-align:center; padding:20px 0}
@@ -54,7 +57,7 @@
 
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
         {{--
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2401" target="_blank">
@@ -87,27 +90,56 @@
             </div> 
         </div>
 
-        <div class="evtCtnsBox evtTop" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2395_top.jpg" alt="원데이특강 0원배포"/>
-                <a href="#special_lecture" title="특강 바로보기" style="position: absolute;left: 32.98%;top: 33.33%;width: 33.46%;height: 5.77%;z-index: 2;"></a>       
-            </div>        
-        </div>
+        
+        @if(time() < strtotime('202206010000'))
+            {{--5월--}}
+            <div class="evtCtnsBox evtTop" data-aos="fade-up">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/04/2395_top.jpg" alt="원데이특강 0원배포"/>
+                    <a href="#special_lecture" title="특강 바로보기" style="position: absolute;left: 32.98%;top: 33.33%;width: 33.46%;height: 5.77%;z-index: 2;"></a>       
+                </div>        
+            </div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-up"> 
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2395_01.jpg" alt="이런 수험생이라면"/>
-        </div>                 
+            <div class="evtCtnsBox evt01" data-aos="fade-up"> 
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2395_01.jpg" alt="이런 수험생이라면"/>
+            </div>                 
 
-        <div class="evtCtnsBox evt02" data-aos="fade-up"> 
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2395_02.jpg" alt="특강 활용 팁" />
-        </div>
+            <div class="evtCtnsBox evt02" data-aos="fade-up"> 
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2395_02.jpg" alt="특강 활용 팁" />
+            </div>
 
-        <div class="evtCtnsBox evt03" data-aos="fade-up" id="special_lecture">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2395_03.jpg" alt="신청하기" />
-            @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-            @endif
-        </div>
+            <div class="evtCtnsBox evt03" data-aos="fade-up" id="special_lecture">
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2395_03.jpg" alt="신청하기" />
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                @endif
+            </div> 
+        @else
+            {{--6월--}}
+            <div class="evtCtnsBox evtTop2" data-aos="fade-up">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/06/2395_top.jpg" alt="원데이특강 0원배포"/>
+                    <a href="#special_lecture" title="특강 바로보기" style="position: absolute;left: 32.98%;top: 33.33%;width: 33.46%;height: 5.77%;z-index: 2;"></a>       
+                </div>        
+            </div>
+
+            <div class="evtCtnsBox evt04" data-aos="fade-up"> 
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/2395_01.jpg" alt="이런 수험생이라면"/>
+            </div>                 
+
+            <div class="evtCtnsBox evt02" data-aos="fade-up"> 
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/2395_02.jpg" alt="특강 활용 팁" />
+            </div>
+
+            <div class="evtCtnsBox evt03" data-aos="fade-up" id="special_lecture">
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/2395_03.jpg" alt="신청하기" />
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                @endif
+            </div>
+        @endif
+
+
         
     </div>
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>

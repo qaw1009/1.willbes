@@ -522,6 +522,7 @@
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51069?subject_idx=1511') }}">오은지</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50799?subject_idx=1511') }}">정준모</a>                    
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51117?subject_idx=1511') }}">박건민</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51355?subject_idx=1511') }}">신현표</a>
                 </li>
 
                 <li>

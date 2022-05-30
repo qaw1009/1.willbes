@@ -30,9 +30,41 @@ class Excel
     }
 
     /**
+     * export 대용량 엑셀 데이터 리턴 by box/spout library
+     * @param $file_path
+     * @return array
+     * @throws \Box\Spout\Common\Exception\IOException
+     * @throws \Box\Spout\Common\Exception\UnsupportedTypeException
+     * @throws \Box\Spout\Reader\Exception\ReaderNotOpenedException
+     */
+    public function readHugeExcel($file_path)
+    {
+        // 엑셀파일 체크
+        $this->_checkReadExcel($file_path);
+
+        // 엑셀파일 읽기
+        $reader = Box\Spout\Reader\ReaderFactory::create(Box\Spout\Common\Type::XLSX);
+        $reader->open($file_path);
+        $sheet_data = [];
+
+        foreach ($reader->getSheetIterator() as $sheet) {
+            foreach ($sheet->getRowIterator() as $idx => $row) {
+                if ($idx > 1) {
+                    $sheet_data[] = $row;   // row별 컬럼 인덱스는 0부터 시작
+                }
+            }
+            break;
+        }
+
+        $reader->close();
+
+        return $sheet_data;
+    }
+
+    /**
      * 엑셀파일 체크
      * @param $file_path
-     * @throws \PhpOffice\PhpSpreadsheet\Exception
+     * @throws Exception
      */
     private function _checkReadExcel($file_path)
     {
@@ -47,7 +79,7 @@ class Excel
             }
         } catch (\Exception $e) {
             log_message('ERROR', '[Excel] ' . $e->getMessage());
-            throw new \PhpOffice\PhpSpreadsheet\Exception($e->getMessage());
+            throw new \Exception($e->getMessage());
         }
     }
 

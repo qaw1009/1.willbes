@@ -46,7 +46,7 @@
         .evtInfo {padding:80px 0; background:#626262; color:#fff; font-size:17px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.75}
 		.evtInfoBox h4 {font-size:40px; margin-bottom:30px}
-		.evtInfoBox .infoTit {font-size:20px; margin-bottom:20px;color:#FDF300;}
+		.evtInfoBox .infoTit {font-size:20px; margin-bottom:20px;}
 		.evtInfoBox ul {margin-bottom:30px}
         .evtInfoBox ul li {margin-bottom:10px; font-size:14px; list-style:decimal; margin-left:20px}
 
@@ -147,12 +147,25 @@
                     <li>로그인 후 [내 강의실]에서 [무한PASS존]으로 접속합니다.</li>
                     <li>구매한 PASS 상품 선택 후 [강좌추가하기]를 클릭, 원하시는 강좌를 등록한 후 수강할 수 있습니다.</li>
                     <li>신광은 경찰 PASS는 일시 정지, 수강 연장, 재수강 불가합니다.</li>
-                    <>신광은 경찰 PASS 수강 시 이용 가능한 기기 대수는 다음과 같이 제한됩니다.<br>
+                    <li>신광은 경찰 PASS 수강 시 이용 가능한 기기 대수는 다음과 같이 제한됩니다.<br>
                     총 수강 기기 대수 2대 : PC 2대 또는 PC 1대 모바일 1대 또는 모바일 2대 (신광은 경찰PASS PMP강의는 제공하지 않습니다.)</li>
                     <li>PC, 모바일 기기에 대한 초기화가 필요할 경우 최초 초기화에 한해서는 수강생 본인이 초기화가 가능합니다. 다만 추후 초기화가 필요할 시
                     내용 확인 후 가능하오니 고객센터로 문의하시기 바랍니다. ([내 강의실] 내 [무한PASS존]에서 등록기기정보 확인)</li>
                     <li>일부 강좌의 경우 자료 출력 횟수 제한이 적용됩니다. (2단계 동형 모의고사, 3단계 파이널 모의고사 등)</li>
 				</ul>
+
+                <div class="infoTit NSK-Black">유의사항</div>
+				<ul>
+                    <li>본 상품은 특별할인기획 상품으로 쿠폰 할인, 다다익선 할인, 포인트 사용 등 혜택이 적용되지 않으니 양해 및 참고 부탁드립니다.<br>
+                    (단,이벤트 시 쿠폰사용가능)</li>
+                    <li>신광은 경찰PASS 강좌 (부가 서비스 등) 중 불가피한 사정에 의해 부득이 진행되지 않을 경우 대체 강좌로 제공 예정이며, 이로 인한 환불은 불가합니다.</li>
+                    <li>아이디 공유, 타인에게 양도 및 판매 등 부정 사용 적발 시 수강 중인 PASS 강좌는 즉시 정지, 회원 자격이 박탈됩니다.<br>
+                    이로 인한 강의 환불은 절대 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 발생할 수 있습니다.</li>
+                    <li>온,오프라인 동시 시행되는 이벤트, 무료특강 등의 경우 해당 강좌는 PASS에 미지급 되거나, 이벤트 종료 후 제공될 수 있습니다.</li>
+                    <li>PASS 관련 발급된 쿠폰은 이벤트가 변경되거나 종료될 경우 자동 회수될 수 있으며, 동일 혜택이 적용되지 않을 수 있습니다.</li>
+				</ul>
+
+                <div class="infoTit">※ 이용문의 : 고객센터 1544-5006 / 사이트 내 1:1 상담 게시판</div>
 			</div>
 		</div> 
     </div>

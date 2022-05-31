@@ -24,7 +24,7 @@
         .skybanner a {display:block; margin-bottom:10px}
 
         /*타이머*/
-        .newTopDday {clear:both;background:#f5f5f5; width:100%; padding:20px 0; font-size:26px;}
+        .newTopDday {clear:both;background:#0c1e2a; width:100%; padding:20px 0; font-size:26px;}
         .newTopDday ul {width:1120px; margin:0 auto}
         .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-weight:600; color:#000}
         .newTopDday ul li strong {line-height:70px}
@@ -38,38 +38,12 @@
         .wb_top span.img01 {width:577px; margin-left:-480px; top:170px}
         .wb_top span.img02 {width:597px; margin-left:40px; top:100px}
 
-        .wb_02 {background:#f2f2f2}     
+        .wb_01 {background:#f5f5f7}     
         
-        .wb_play {font-size:40px; color:#191919; line-height:1.4; padding-bottom:150px} 
-        .wb_play .stitle {margin:150px 0 40px}
-        .wb_play span {color:#ff7e00}  
-        .wb_play .youtube {width:840px; height:484px; margin:0 auto; position:relative; background: #333;} 
-        .wb_play .youtube:before,
-        .wb_play .youtube:after{
-            z-index: 0;
-            width:800px;
-            position: absolute;
-            content: "";
-            bottom: 35px;
-            left: 5px;
-            top: 80%;            
-            box-shadow: 0 20px 15px rgba(0,0,0,.3);
-            transform: rotate(-5deg);
-        }
-        .wb_play .youtube:after{
-            transform: rotate(5deg);
-            right: 5px;
-            left: auto;
-        }
-        .wb_play .youtube iframe {position: absolute; left:0; width:840px; height:484px; z-index: 2;}  
+        .wb_03 {background:#f6f9fe;}   
 
-
-        .wb_03 {background:url(https://static.willbes.net/public/images/promotion/2022/05/2680_03_bg.jpg) no-repeat center;}   
-
-        .wb_04 {background:#f2f2f2}  
- 
-        
-        .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:17px}
+      
+        .evtInfo {padding:80px 0; background:#626262; color:#fff; font-size:17px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.75}
 		.evtInfoBox h4 {font-size:40px; margin-bottom:30px}
 		.evtInfoBox .infoTit {font-size:20px; margin-bottom:20px;color:#FDF300;}
@@ -81,18 +55,16 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="skybanner" id="QuickMenu">
-            <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2022/05/2680_sky01.png" alt="파이널패스" ></a>
-            <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2022/05/2680_sky02.png" alt="최대10만원할인" ></a>
-            <a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/196772" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/05/2680_sky03.png" alt="5만원이벤트" ></a>
+            <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2022/05/2680_sky01.jpg" alt="파이널패스" ></a>
+            <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2022/05/2680_sky02.jpg" alt="최대10만원할인" ></a>
+            <a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/196772" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/05/2680_sky03.jpg" alt="5만원이벤트" ></a>
         </div>      
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
             <div>
                 <ul>
-                    <li>
-                    FINAL PASS<br>판매종료까지
-                    </li>
+                    <li>FINAL PASS<br>판매종료까지</li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><strong>일</strong></li>
@@ -104,18 +76,16 @@
                     <li><strong>:</strong></li>
                     <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li>
-                        남았습니다.
-                    </li>
+                    <li>남았습니다.</li>
                 </ul>
             </div>
         </div>  
         
-        <div class="evtCtnsBox wb_top">
+        <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2680_top.jpg" alt="2022 파이널 패스" />
 		</div>
 
-        <div class="evtCtnsBox wb_01">
+        <div class="evtCtnsBox wb_01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2680_01.jpg" alt="파이널 패스 하나면 끝" />
 		</div>
 
@@ -123,7 +93,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2680_02.jpg" alt="" />
         </div>
 
-        <div class="evtCtnsBox wb_03">
+        <div class="evtCtnsBox wb_03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2680_03.jpg"  alt="지텔프,한능컴 특강" />
 		</div>
 

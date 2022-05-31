@@ -24,14 +24,14 @@
         .skybanner a {display:block; margin-bottom:10px}
 
         /*타이머*/
-        .newTopDday {clear:both;background:#0c1e2a; width:100%; padding:20px 0; font-size:26px;}
-        .newTopDday ul {width:1120px; margin:0 auto}
-        .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-weight:600; color:#000}
+        .newTopDday {clear:both; background:#0c1e2a; width:100%; padding:20px 0; font-size:26px;}
+        .newTopDday ul {width:1120px; margin:0 auto; display:flex; justify-content: center;}
+        .newTopDday ul li {margin-right:5px; text-align:center; font-weight:600; color:#fff}
         .newTopDday ul li strong {line-height:70px}
         .newTopDday ul li img {width:50px}
         .newTopDday ul li:first-child {line-height:none; text-align:center; padding-left:110px; padding-top:10px; width:28%}
         .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:70px}
-        .newTopDday ul:after {content:""; display:block; clear:both}
+
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/05/2680_top_bg.jpg) no-repeat center;}
         .wb_top span {position:absolute; left:50%; z-index: 10;}
@@ -48,7 +48,7 @@
 		.evtInfoBox h4 {font-size:40px; margin-bottom:30px}
 		.evtInfoBox .infoTit {font-size:20px; margin-bottom:20px;color:#FDF300;}
 		.evtInfoBox ul {margin-bottom:30px}
-        .evtInfoBox ul li {margin-bottom:10px; font-size:14px}
+        .evtInfoBox ul li {margin-bottom:10px; font-size:14px; list-style: demical;}
 
     </style>
 
@@ -108,24 +108,24 @@
 
         <div class="evtCtnsBox evtInfo" id="info" data-aos="fade-up">
 			<div class="evtInfoBox">
-				<h4 class="NSK-Black">[윌비스 X 등불쌤] 해양경찰 간부 L-PASS 이용안내</h4>
-				<div class="infoTit NSK-Black">▶ 해양경찰 간부 L-PASS</div>
+				<h4 class="NSK-Black">신광은 경찰팀 FINAL PASS 이용안내</h4>
+				<div class="infoTit NSK-Black">강좌 기본</div>
 				<ul>               
-                    <li>1. 본 상품은 구매일로부터 1년간 들을 수 있는 기간제 해경간부 PASS입니다.</li>
-                    <li>2. 본 상품 강좌 구성은 다음과 같습니다.<br>
-                        1 )해경 간부(일반) : 해양경찰학개론, 형법, 형소법, 범죄학, 행정학, 헌법<br>
-                        2) 해경 간부(해양) : 해양경찰학개론, 형법, 형소법, 해사법규, 항해학, 기관학<br><br>
-                        - 형법, 형소법 : 신광은 교수님<br>
-                        - 헌법: 김원욱, 이국령 교수님<br>
-                        - 해양경찰학개론, 해사법규, 항해학, 기관학 : 등불쌤<br>
-                        - 범죄학 : 박상민 교수님<br>
-                        - 행정학 : 이동호 교수님<br>
-                        - G-TELP : 김준기 교수님<br>
-                        - 한능검 : 오태진 교수님                
-                    </li>
-                    <li>3. 선택한 해양경찰 간부 L-PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강할 수 있습니다.</li>
-                    <li>4. 해양경찰 간부 L-PASS 강좌는 결제 완료 시 수강이 시작됩니다. (결제완료자에 한함)</li>
-                    <li>5. 강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
+                    <li>본 상품은 구매일로부터 22년 2차 필기시험일까지 수강 가능한 기간제 PASS입니다.
+                    2. 본 상품 강좌 구성은 다음과 같습니다.
+                    - 2022년 대비 형사법, 경찰학, 헌법 전 강좌
+                    - 2021년 대비 형사소송법, 경찰학개론, 형법 전 강좌
+                    *형사소송법/형사법 : 신광은 교수님
+                    *경찰학개론/경찰학(개편) : 장정훈 교수님
+                    *형법 : 신광은 교수님 / 김원욱 교수님
+                    *헌법 : 김원욱 교수님 / 이국령 교수님 / 문태환 교수님 / 신기훈 교수님
+                    *범죄학 : 박상민 교수님
+                    *G-TELP : 김준기 교수님
+                    *한능검 : 오태진 교수님
+                    3. 선택한 신광은 경찰 PASS 상품의 표기된 기간 동안 동영상 강좌를 3배수로 수강할 수 있습니다.
+                    4. 각 강좌 별 3배수 수강 후에는 추가 수강이 불가합니다. (배수 제한 공지 자세히 보기>)
+                    5. 신광은 경찰 PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다. (결제 완료자에 한함)
+                    6. 강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
 				</ul>
 
                 <div class="infoTit NSK-Black">▶ 교재 및 포인트</div>

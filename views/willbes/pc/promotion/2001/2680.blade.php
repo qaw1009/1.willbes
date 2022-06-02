@@ -38,17 +38,25 @@
         .wb_top span.img01 {width:577px; margin-left:-480px; top:170px}
         .wb_top span.img02 {width:597px; margin-left:40px; top:100px}
 
-        .wb_01 {background:#f5f5f7}     
+        .wb_01 {background:#f5f5f7}
         
-        .wb_03 {background:#f6f9fe;}   
-
+        .wb_03 {background:#f6f9fe;}
+        .wb_04 {padding-bottom:100px;}
+        .wb_04 .check {width:800px; margin:0 auto; padding:20px; font-size:16px; color:#000; letter-spacing:-1px;}
+        .wb_04 .check a {display:inline-block; padding:10px; color:#fff; background:#000; margin-left:40px; border-radius:20px; font-size:12px}
+        .wb_04 .check p {font-size:14px; padding:50px 0 50px 20px; line-height:1.4; text-align:left; width:600px; margin:0 auto;}
+        .wb_04 .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
+        .wb_04 .check input:checked + label {border-bottom:1px dashed #533fd1; color:#533fd1}
+        .wb_04 > a {font-size:30px; display:block; padding:30px 0; color:#fff; background:#000; width:850px; margin:0 auto; border-radius:50px}
+        .wb_04 > a:hover {background:#ac0811}
       
-        .evtInfo {padding:80px 0; background:#626262; color:#fff; font-size:17px}
-		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.75}
+        .evtInfo {padding:80px 0; background:#626262; color:#fff; font-size:17px; line-height:1.4}
+		.evtInfoBox {width:1000px; margin:0 auto; text-align:left;}
 		.evtInfoBox h4 {font-size:40px; margin-bottom:30px}
 		.evtInfoBox .infoTit {font-size:20px; margin-bottom:20px;}
 		.evtInfoBox ul {margin-bottom:30px}
-        .evtInfoBox ul li {margin-bottom:10px; font-size:14px; list-style:decimal; margin-left:20px}
+        .evtInfoBox ul li {margin-bottom:5px; font-size:14px; list-style:decimal; margin-left:20px}
+        .evtInfoBox ul li a {color:#ecfc80}
 
     </style>
 
@@ -104,6 +112,17 @@
                 <a href="https://www.willbes.net/classroom/qna/index" target="_blank" title="재수강" style="position: absolute; left: 37.59%; top: 79.52%; width: 24.91%; height: 10.75%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="타학원 수강이력" style="position: absolute; left: 62.59%; top: 79.52%; width: 24.91%; height: 10.75%; z-index: 2;"></a>
             </div>
+            <div class="check">
+                <input name="ischk"  type="checkbox" value="Y" />
+                <label for="is_chk1">페이지 하단 신광은 경찰팀 FINAL PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                <a href="#info">이용안내확인하기 ↓</a>
+                <p>
+                    ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신 및 환급이 불가합니다.<br>
+                    ※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.<br>
+                    ※ 본 상품은 신광은 경찰팀의 모든 강의를 3배수로 수강할 수 있는 상품입니다.
+                </p>
+            </div>
+            <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/197572" onclick="go_PassLecture(this)" class="NSK-Black">2022년 2차 합격! FINAL PASS 수강신청하기 ></a>
         </div>
 
         <div class="evtCtnsBox evtInfo" id="info" data-aos="fade-up">
@@ -186,18 +205,14 @@
         });
 
         /*수강신청 동의*/ 
-        function go_PassLecture(){
+        function go_PassLecture(obj){
             if($("input[name='ischk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");
                 return;
+            }else{
+                var _url = $(obj).data('url');
+                window.open(_url);
             }
-
-            code = $('input[name="y_pkg"]:checked').val();
-            if (typeof code == 'undefined' || code == '') {
-                alert('강좌를 선택해 주세요.');
-                return;
-            }
-            location.href = "{{ front_url('/periodPackage/show/cate/3007/pack/648001/prod-code/') }}" + code;
         } 
     </script>
 

@@ -47,7 +47,7 @@
     <div id="Container" class="Container NSK c_both">
         <div class="evtCtnsBox dday NSK-Thin">
             <strong>마감까지 <span id="ddayCountText" class="NSK-Black"></span> </strong>
-            <a href="#evt01">신청하기 ></a>
+            <a href="#evt04">신청하기 ></a>
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
@@ -66,7 +66,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2680m_03.jpg" alt="">
         </div>
         
-        <div class="evtCtnsBox evt_04" data-aos="fade-up">
+        <div class="evtCtnsBox evt_04" data-aos="fade-up" id="evt04">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2680m_04.jpg" alt="">
             <div class="lecBtns">
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/2602" target="_blank"><strong>신규가입</strong>하고<br> 5만원 할인 받기 ></a>

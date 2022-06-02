@@ -63,18 +63,18 @@
         </div>
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
-            @if(time() < strtotime('202204260000'))
-                <div class="wrap" id="go_02">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/1139_02.jpg" alt="타학원 수강이력 인증"/>
-                    <a href="javascript:certOpen();" title="타학원 수강 인증" style="position: absolute;left: 30.78%;top: 88.56%;width: 38.30%;height: 7.71%;z-index: 2;"></a>
-                </div>
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/1139_03.jpg" alt="이벤트 참여" id="go_03"/>
-            @else
-                <div class="wrap" id="go_02">
+            @if(time() < strtotime('202206021800'))
+            <div class="wrap" id="go_02">
                     <img src="https://static.willbes.net/public/images/promotion/2022/04/1139_02.jpg" alt="타학원 수강이력 인증"/>
                     <a href="javascript:certOpen();" title="타학원 수강 인증" style="position: absolute;left: 30.78%;top: 88.56%;width: 38.30%;height: 7.71%;z-index: 2;"></a>
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/2022/04/1139_03.jpg" alt="이벤트 참여" id="go_03"/>
+            @else
+                <div class="wrap" id="go_02">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/06/1139_02.jpg" alt="타학원 수강이력 인증"/>
+                    <a href="javascript:certOpen();" title="타학원 수강 인증" style="position: absolute;left: 30.78%;top: 88.56%;width: 38.30%;height: 7.71%;z-index: 2;"></a>
+                </div>
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/1139_03.jpg" alt="이벤트 참여" id="go_03"/>
             @endif
         </div>      
               

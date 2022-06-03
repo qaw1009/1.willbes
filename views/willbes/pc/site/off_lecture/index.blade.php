@@ -137,22 +137,22 @@
                             <tbody>
                             <tr>
                                 <td> 
-                                    <h4 class="NG mb10 tx16 tx-dark-blue"><span class="tx-shadow">[ GS2순환 선등록 안내사항 ]</span></h4>
+                                    <h4 class="NG mb10 tx16 tx-dark-blue"><span class="tx-shadow">[ GS2순환 단과선등록 안내사항  ]</span></h4>
                                     <strong>1. 신청 대상자</strong><br>
-                                    1) 22년대비 GS1순환 이수진 노동법 [실강/실영상] 수강생<br>
-                                    2) 22년대비 GS1순환 문일  행정쟁송법 [실강/실영상] 수강생<br>
-                                    3) 22년대비 GS1순환 오은지 인사노무관리, 경영조직론 [실강/실영상] 수강생<br>
+                                    1) 22년대비 GS2순환 이수진 노동법 [실강/실영상] 수강생<br>
+                                    2) 22년대비 GS2순환 문일  행정쟁송법 [실강/실영상] 수강생<br>
+                                    3) 22년대비 GS2순환 오은지 인사노무관리, 경영조직론 [실강/실영상] 수강생<br>
                                     <span class="tx-red">※ [온라인첨삭반/동영상] 강의 수강자는 선접수 대상자가 아닙니다.</span><br>
                                     <br>
-                                    <strong>2. 신청 기간 : <span class="tx-shadow">3/22(화) 11시 ~ 3/27(일) 24시</span></strong><br>                                 
+                                    <strong>2. 신청 기간 : <span class="tx-shadow">6/8(수) 11시 ~ 6/12(일) 24시</span></strong><br>                                 
                                     <br>
-                                    <strong>3. 신청 강의 : GS2순환 강의</strong><br>
+                                    <strong>3. 신청 강의 : GS3순환 강의</strong><br>
                                     <br>
                                     <strong>4. 신청 방법 : 홈페이지(PC, 모바일, 태블릿) / 방문 신청</strong><br>
                                     ▶ 홈페이지 신청방법: 홈페이지 로그인 → 학원수강신청 → 단과 선등록<br>
-                                    ▶ <span class="tx-shadow">코로나바이러스-19 예방을 위해 가급적 온라인으로 수강신청</span> 부탁드립니다.<br>
+                                    ▶ <span class="tx-shadow">코로나바이러스-19 예방을 위해 가급적 홈페이지 수강신청</span> 부탁드립니다.<br>
                                     <br>
-                                    <strong>5. 선등록 해당강의 외 다른 GS2순환강의 동시등록 가능(GS1순환 수강이력에 따라 동시등록 가능한 강의 상이)</strong><br>
+                                    <strong>5. 선등록 해당강의 외 다른 GS3순환 강의 동시등록 가능(GS2순환 수강이력에 따라 동시등록 가능한 강의 상이)</strong><br>
                                     ▶ 이수진T 강의 선등록 대상자 → 이수진T[실강/실영상/온라인첨삭] + 문일T[실영상/온라인첨삭] 신청 가능<br>
                                     <span class="tx-red">※문일T 실강반 신청 불가</span><br>
                                     <br>

@@ -145,25 +145,25 @@
             <div class="evtMenu" id="evtMenu">
                 <ul>
                     <li>
-                        <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/2682/SsIdx/123' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=1#content_1') }}">
+                        <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/2682/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=1#content_1') }}">
                             <span>지방직 대비</span>
                             <div class="NSK-Black">온라인모의고사 무료!</div>
                         </a>
                     </li>
                     <li>
-                        <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/2682/SsIdx/123' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=2#content_2') }}">
+                        <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/2682/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=2#content_2') }}">
                             <span>지난 지방직으로</span>
                             <div class="NSK-Black">올해의 지방직을 알아보자!</div>
                         </a>
                     </li>
                     <li>
-                        <a id='tab3' href="@if(time() < strtotime('202106051140')) javascript:alert('6.5(토)오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/' . $arr_base['promotion_code'] . '/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=3#content_3') }}@endif">
+                        <a id='tab3' href="@if(time() < strtotime('202206181140')) javascript:alert('6.18(토)오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/' . $arr_base['promotion_code'] . '/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=3#content_3') }}@endif">
                             <span>체감난이도 투표하고</span>
                             <div class="NSK-Black">맛있는 간식 먹자!</div>
                         </a>
                     </li>
                     <li>
-                        <a id='tab4' href="@if(time() < strtotime('202106071600')) javascript:alert('6.7(월)오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/' . $arr_base['promotion_code'] . '/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=4#content_4') }}@endif">
+                        <a id='tab4' href="@if(time() < strtotime('202206201600')) javascript:alert('6.20(월)오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/' . $arr_base['promotion_code'] . '/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=4#content_4') }}@endif">
                             <span>2022 지방직 9급</span>
                             <div class="NSK-Black">기출해설특강</div>
                         </a>

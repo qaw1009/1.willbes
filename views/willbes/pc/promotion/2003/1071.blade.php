@@ -489,8 +489,14 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 전기자기학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/183000" target="_blank">수강신청</a></td>
+                        <td>최우영 전기자기학 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174791" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전기자기학</td>
+                        <td>문제풀이</td>
+                        <td>최우영 전기자기학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183000" target="_blank">수강신청</a></td>
                     </tr>
                 </table>              
             </div>
@@ -612,6 +618,7 @@
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193125" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
+
                 <p>● 전기자기학</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
@@ -633,10 +640,17 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 전기자기학 실전동형모의고사</td>
+                        <td>최우영 전기자기학 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174791" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전기자기학</td>
+                        <td>문제풀이</td>
+                        <td>최우영 전기자기학 실전동형모의고사</td>
                         <td><a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/183000" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
+
                 <p>● 회로이론</p>
                 <table cellspacing="0" cellpadding="0">
                     <col width="15%"/>
@@ -652,8 +666,8 @@
                     <tr>
                         <td>회로이론</td>
                         <td>이론</td>
-                        <td>2021 최우영 회로이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179040" target="_blank">수강신청</a></td>
+                        <td>2022 최우영 회로이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/190201" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>회로이론</td>
@@ -906,8 +920,14 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>문제풀이</td>
-                        <td>2021 최우영 전기자기학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/183000" target="_blank">수강신청</a></td>
+                        <td>최우영 전기자기학 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174791" target="_blank">수강신청</a></td>
+                    </tr>
+                    <tr>
+                        <td>전기자기학</td>
+                        <td>문제풀이</td>
+                        <td>최우영 전기자기학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183000" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
             </div>

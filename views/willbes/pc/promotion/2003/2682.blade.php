@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+        .evtCtnsBox .wrap a {border:1px solid #000}
 
         /*****************************************************************/ 
 
@@ -31,8 +31,8 @@
         .evtMenu li a span {font-size:20px}
         .evtMenu li a div {margin-top:8px;color:#7d7d7d}
         .evtMenu li:hover a,
-        .evtMenu li a.active {background:#fff; color:#363636; border:2px solid #806ae9;}
-        .evtMenu li:hover:after {content:"▼"; display:block; clear:both;color:#806ae9; font-size:25px; position: absolute; text-align:center; padding-left:45%}
+        .evtMenu li a.active {background:#fff; color:#363636; border:2px solid #000;}
+        .evtMenu li:hover:after {content:"▼"; display:block; clear:both;color:#000; font-size:25px; position: absolute; text-align:center; padding-left:45%}
 
         .evtMenu li:hover a span,
         .evtMenu li a.active span {color:#363636;font-weight:bold;}
@@ -172,9 +172,11 @@
             </div>
         </div>
 
-        <div id="content_1" class="tabCts">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2682_01_01.jpg" title="" />
-            <a href="javascript:void(0);" title="적중 경험하기" onclick="javascript:fn_submit();" style="position: absolute; left: 26.98%; top: 49.73%; width: 46.86%; height: 3.93%; z-index: 2;"></a>
+        <div id="content_1" class="evtCtnsBox tabCts">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/2682_01_01.jpg" title="" />
+                <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="온라인 응시하기" onclick="javascript:fn_submit();" style="position: absolute; left: 27.32%; top: 76.17%; width: 45.27%; height: 9.05%; z-index: 2;"></a>
+            </div>
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2682_01_03.jpg" title="" />
         </div>
 
@@ -182,7 +184,7 @@
         <div id="content_2" class="tabCts Cts02">
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2682_02_01.jpg" title="" id="content_2_01" />
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2682_02_02.jpg" title="" />
-            <div class="mt20 mb100">
+            <div class="mb100">
                 <p class="download">
                    * 2022 지방직 시험문제&가답안 다운로드 <a href="https://www.gosi.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000138" target="_blank">바로가기 ></a>
                 </p>
@@ -550,20 +552,6 @@
             var url = "{{front_url('/eventSurvey/index/' . $arr_promotion_params['SsIdx'])}}";
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
             @endif
-        }
-
-        {{--무료 강좌발급--}}
-        $regi_form = $('#regi_form');
-        function fn_submit() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            var _url = '{!! front_url('/event/registerStore') !!}?event_code={{$data["ElIdx"]}}';
-
-            ajaxSubmit($regi_form, _url, function(ret) {
-                if(ret.ret_cd) {
-                    alert('강좌가 지급되었습니다. \n\n내강의실에서 확인해 주세요.');
-                    location.reload();
-                }
-            }, showValidateError, null, false, 'alert');
         }
     </script>
 @stop

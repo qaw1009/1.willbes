@@ -142,7 +142,7 @@
                             <tbody>
                             <tr>
                                 <td> 
-                                    <h4 class="NG mb10 tx16 tx-dark-blue"><span class="tx-shadow">[ GS2순환 단과선등록 안내사항  ]</span></h4>
+                                    <h4 class="NG mb10 tx16 tx-dark-blue"><span class="tx-shadow">[ GS3순환 단과선등록 안내사항  ]</span></h4>
                                     <strong>1. 신청 대상자</strong><br>
                                     1) 22년대비 GS2순환 이수진 노동법 [실강/실영상] 수강생<br>
                                     2) 22년대비 GS2순환 문일  행정쟁송법 [실강/실영상] 수강생<br>

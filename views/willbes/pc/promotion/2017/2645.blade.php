@@ -514,7 +514,7 @@ align-items: center;}
                                     <td colspan="2">X</td>
                                     <td>X</td>
                                     <td>O</td>
-                                    <td>X</td>
+                                    <td>O</td>
                                     <td>X</td>
                                     <td>O</td>
                                 </tr>

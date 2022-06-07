@@ -271,12 +271,14 @@ align-items: center;}
                         <a href="#careful" class="infotxt" > 이용안내 확인하기 ↓</a>
                     </div>
                     <div class="btns">
+                        {{--
                         @if (empty($arr_base['order_product']) === false)
                             <a href="javascript:void(0);" onclick="alert('구매한 상품이 있습니다.'); return false;">신청하기 ></a>
                         @else
                             <a href="javascript:void(0);" onclick="directPay('off'); return false;">신청하기 ></a>
                         @endif
-                        {{--<a href="javascript:void(0);">모의고사 마감</a>--}}
+                        --}}
+                        <a href="#">모의고사 접수마감</a>
                     </div>
                     {{--<div class="popup"><span class="NSK-Black">마감되었습니다.</span></div>--}}
                 </div>

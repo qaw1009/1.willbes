@@ -647,7 +647,7 @@
                         <td>전기자기학</td>
                         <td>문제풀이</td>
                         <td>최우영 전기자기학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/183000" target="_blank">수강신청</a></td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193111" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
 
@@ -890,13 +890,13 @@
                         <td>통신공학</td>
                         <td>문제풀이</td>
                         <td>2021 [군무원] 최우영 9급 통신공학 실전모의고사</td>
-                        <td><a href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/182993" target="_blank">수강신청</a></td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/182993" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신공학</td>
                         <td>문제풀이</td>
                         <td>2021 [군무원] 최우영 7급 통신공학 실전모의고사</td>
-                        <td><a href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/182999" target="_blank">수강신청</a></td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/182999" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>● 전기자기학</p>

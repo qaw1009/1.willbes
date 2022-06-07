@@ -43,71 +43,36 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div> 
 
-        @if(time() < strtotime('202204260000'))
-            {{--4월--}}
-            <div class="sky" id="QuickMenu">
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/2664" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2602_sky01.png" alt="0원 패스">
-                </a>  
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2602_sky02.png" alt="최대 30%">
-                </a>  
-                <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2602_sky03.png" alt="23년 패스">
-                </a>  
-            </div>   
+        <div class="sky" id="QuickMenu">
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2664" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_sky01.png" alt="0원 패스">
+            </a>  
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_sky02.png" alt="최대 30%">
+            </a>  
+            <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_sky03.png" alt="23년 패스">
+            </a>  
+        </div>
 
-            <div class="evtCtnsBox wb_top" data-aos="fade-up">            
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2602_top.jpg" alt="5월 신규가입"/>             
-            </div>    
-            
-            <div class="evtCtnsBox wb_01" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2602_01.jpg"  alt="20년 경력"/>            	
-            </div>
+        <div class="evtCtnsBox wb_top2" data-aos="fade-up">            
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_top.jpg" alt="5월 신규가입"/>             
+        </div>    
+        
+        <div class="evtCtnsBox wb_11" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_01.jpg"  alt="20년 경력"/>            	
+        </div>
 
-            <div class="evtCtnsBox wb_02" data-aos="fade-up">
-                <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/03/2602_02.jpg"  alt="웰컴팩"/>    
-                    <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" title="웰컴팩 모두 받기" style="position: absolute; left: 20.36%; top: 80.35%; width: 59.38%; height: 9.87%; z-index: 2;"></a>    
-                </div>   	
-            </div>   
-            
-            <div class="evtCtnsBox wb_03" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2602_03.jpg"  alt="웰컴팩"/>            	
-            </div>
-        @else
-            {{--5월--}}
-            <div class="sky" id="QuickMenu">
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/2664" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_sky01.png" alt="0원 패스">
-                </a>  
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_sky02.png" alt="최대 30%">
-                </a>  
-                <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_sky03.png" alt="23년 패스">
-                </a>  
-            </div>
-
-            <div class="evtCtnsBox wb_top2" data-aos="fade-up">            
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_top.jpg" alt="5월 신규가입"/>             
-            </div>    
-            
-            <div class="evtCtnsBox wb_11" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_01.jpg"  alt="20년 경력"/>            	
-            </div>
-
-            <div class="evtCtnsBox wb_12" data-aos="fade-up">
-                <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_02.jpg"  alt="웰컴팩"/>    
-                    <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" title="웰컴팩 모두 받기" style="position: absolute; left: 20.36%; top: 80.35%; width: 59.38%; height: 9.87%; z-index: 2;"></a>    
-                </div>   	
-            </div>   
-            
-            <div class="evtCtnsBox wb_03" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_03.jpg"  alt="웰컴팩"/>            	
-            </div>
-        @endif
+        <div class="evtCtnsBox wb_12" data-aos="fade-up">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_02.jpg"  alt="웰컴팩"/>    
+                <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" title="웰컴팩 모두 받기" style="position: absolute; left: 20.36%; top: 80.35%; width: 59.38%; height: 9.87%; z-index: 2;"></a>    
+            </div>   	
+        </div>   
+        
+        <div class="evtCtnsBox wb_03" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_03.jpg"  alt="웰컴팩"/>            	
+        </div>
 
         <div class="evtCtnsBox wb_04" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2602_04.jpg"  alt=""/>            	

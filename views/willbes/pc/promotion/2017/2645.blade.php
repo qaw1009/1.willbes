@@ -46,6 +46,10 @@
         .evt_table input[type=checkbox] {height:20px; width:20px}
         .evt_table td li {display:inline-block; float:left; width:50%; margin-bottom:10px; letter-spacing:-1px}
 
+        .evt_table .close {position: absolute; display:flex; background:rgba(0,0,0,0.5); width:100%; height: 100%; left:0; top:0; z-index: 10;justify-content: center;
+align-items: center;}
+        .evt_table .close span {border:10px double #cc0000; color:#cc0000; font-size:50px; padding:40px; transform: rotate(-20deg)}
+
         .check {margin:30px auto; text-align:left}
         .check p {margin-bottom:50px;padding-top:75px;}
         .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#163C57; text-align:center; border-radius:90px;}
@@ -199,6 +203,9 @@ align-items: center;}
             @if (empty($arr_base['order_product']) === true)
                 {{--접수전 화면--}}
                 <div class="evt_table p_re">
+                    <div class="close NSK-Black">
+                        <span>모의고사<br>접수마감</span>
+                    </div>
                     <div class="txtinfo">
                         <div>모의고사<br>신청 관련<br>안내사항</div>
                         <ul>

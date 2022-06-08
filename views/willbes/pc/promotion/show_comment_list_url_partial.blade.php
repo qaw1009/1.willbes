@@ -9,7 +9,7 @@
             @if($__cfg['SiteGroupCode'] == '1011') {{-- 임용 --}}
                 iframe.height = (iframe.contentWindow.document.body.scrollHeight + 350) + "px";
                 if(iframe.contentWindow.document.body.scrollHeight > 450){
-                    iframe.height = "544px";    //강제초기화
+                    iframe.height = "780px";    //강제초기화
                 }
             @else
                 iframe.height = (iframe.contentWindow.document.body.scrollHeight + 250) + "px";

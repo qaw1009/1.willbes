@@ -19,15 +19,15 @@
         /************************************************************/
 
         .sky {position:fixed;top:150px;right:10px;z-index:1;} 
-        .sky a {display:block; margin-bottom:10px}
+        .sky a {display:block; margin-bottom:10px; box-shadow:0 5px 5px rgba(0,0,0,.1);}
 
         .evtTop00 {background:#0a0a0a}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/05/2666_top_bg.jpg) no-repeat center top;}     
 
         .evt01 {background:#fff;position:relative;}
-        .youtube {position:absolute; top:398px; left:50%;z-index:1;margin-left:-367px}
-        .youtube iframe {width:731px; height:400px}
+        .youtube {position:absolute; top:397px; left:50%; z-index:1;margin-left:-430px}
+        .youtube iframe {width:860px; height:484px}
 
         .evt02 {background:#f8f8f8;}
 
@@ -82,7 +82,7 @@
             </a>
         </div> 
 
-        <div class="evtCtnsBox evtTop00" data-aos="fade-down"> 
+        <div class="evtCtnsBox evtTop00"> 
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_first.jpg" title="대한민국 경찰학원 1위">        
         </div>
 
@@ -92,11 +92,9 @@
 
         <div class="evtCtnsBox evt01" data-aos="fade-up"> 
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2666_01.jpg" title="유튜브">
-            {{--
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/1_R8WySNAVA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/pk4OGsOavys?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            --}}
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up"> 

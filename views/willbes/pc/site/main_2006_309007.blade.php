@@ -63,6 +63,11 @@
         .Area04 a {width:1120px; margin:0 auto; display:block; background:#000; font-size:44px; color:#fff; padding:30px 0; border-radius:8px; box-shadow:10px rgba(0,0,0,.5);text-align:center;}
         .Area04 a:hover {background:#533fd1}
 
+        .Area05 {margin-bottom:150px}
+        .Area05 div {display: flex; justify-content: center;}
+        .Area05 .youtube {width: 480px; box-shadow:0 10px 20px rgba(0,0,0,.3); margin:0 auto}    
+        .Area05 .youtube iframe {width:480px; height:270px} 
+
         .job309007 .acadview {position:relative; height:234px; width:1120px; margin: 0 auto;}
         .job309007 .acadview .avslider {height:180px; overflow: hidden;}
         .job309007 .acadview .avslider li {display:inline; float:left; width: 25%;}
@@ -173,6 +178,17 @@
         <div class="Section">
             <div class="widthAuto">
                 <img src="https://static.willbes.net/public/images/promotion/main/2006/309007_main01.jpg" alt="최적의 합격 커리큘럼">
+            </div>
+        </div>
+
+        <div class="Section Area05">
+            <div class="widthAuto">
+                <span class="youtube">
+                    <iframe src="https://www.youtube.com/embed/CWs7EdhMWGQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </span>
+                <span class="youtube">
+                    <iframe src="https://www.youtube.com/embed/xGZ5guPSVf8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </span>
             </div>
         </div>
 

@@ -16,22 +16,17 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+        .evtCtnsBox .wrap a {border:1px solid #000}
 
         /************************************************************/
 
-        .sky{position: fixed; top:250px; right:10px; width:120px; z-index:10;}
+        .sky {position: fixed; top:250px; right:10px; width:200px; z-index:10;}
+        .sky a {margin-bottom:5px; display:block}
+
+        .evt00 {background:#4007b6}
 
 		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/02/2180_top_bg.jpg) no-repeat center top; height:1124px; position:relative}
-        .evtTop span { position:absolute; top:900px; left:50%; margin-left:-483px; animation:iptimg1 0.5s ease-in;-webkit-animation:iptimg1 0.5s ease-in;}
-        @@keyframes iptimg1{
-            from{margin-left:-1200px; opacity: 0;}
-            to{margin-left:-483px; opacity: 1;}
-        }
-        @@-webkit-keyframes iptimg1{
-            from{margin-left:-1200px; opacity: 0;}
-            to{margin-left:-483px; opacity: 1;}
-        }
+        .evtTop span { position:absolute; top:880px; left:50%; width:1120px; margin-left:-560px; z-index: 10;}
 
         .evt01 {padding-bottom:150px}
 
@@ -43,7 +38,7 @@
         .section_pro .box_pro .bx-wrapper{max-width:100% !important;}
         .section_pro .box_pro li {display:inline; float:left; height: 380px;}    
 
-		.evt03 {background:#e8e8e8; padding-bottom:100px}   
+		.evt03 {background:#e8e8e8; padding-bottom:150px}   
         .evt03 .p_re {width:1120px; margin:0 auto}
         .evt03 .check {font-size:16px; text-align:center; line-height:1.5;margin-top:40px;font-weight:bold;}
         .evt03 .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
@@ -72,25 +67,34 @@
 
         .evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
-		.evtInfoBox h4 {font-size:20px; margin-bottom:20px}
+		.evtInfoBox h4 {font-size:30px; margin-bottom:50px}
 		.evtInfoBox .infoTit {font-size:16px; margin-bottom:20px}
 		.evtInfoBox .infoTit strong {padding:8px 20px; background:#333; border-radius:20px; font-weight:normal !important}
-		.evtInfoBox ul {margin-bottom:30px}
+		.evtInfoBox ul {margin-bottom:50px}
         .evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
         .evtInfoBox span {color:#ff6d6d;vertical-align:bottom}
-
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky" id="QuickMenu">
+            <a href="#evt-first">
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/2180_sky1.png" title="구매하기 바로가기" />    
+            </a>
+            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1067" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/2180_sky2.png" title="구매하기 바로가기" />    
+            </a>  
             <a href="#event">
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/2180_sky.png" title="구매하기 바로가기" />    
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/2180_sky3.png" title="구매하기 바로가기" />    
             </a>        
         </div>
 
-        <div class="evtCtnsBox evtTop" data-aos="fade-down">
-			<span>
+        <div class="evtCtnsBox evt00" data-aos="fade-down" id="evt-first">
+            <img src="https://static.willbes.net/public/images/promotion/2022/06/2180_00.jpg" title="6월 이벤트" />		
+		</div>	
+
+        <div class="evtCtnsBox evtTop" data-aos="fade-up">
+			<span data-aos="fade-right" data-aos-duration="500">
                 <a href="#event">
                     <img src="https://static.willbes.net/public/images/promotion/2022/02/2180_apply.gif" title="합격하기 이벤트" />
                 </a>
@@ -174,9 +178,14 @@
 
         <div class="evtCtnsBox evt03" id="event" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2180_03.jpg" title="수험생들이 선택하고 인정한 영어정복 노하우!" />
-                <a href="javascript:go_PassLecture('190916');" title="22~23 전과정 티패스" style="position: absolute; left: 52.14%; top: 74.39%; width: 30.27%; height: 11.89%; z-index: 2;"></a>       
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/2180_03.jpg" />
+                <a href="javascript:go_PassLecture('190916');" title="22~23 전과정 티패스" style="position: absolute; left: 52.95%; top: 82.02%; width: 29.38%; height: 8.56%; z-index: 2;"></a>
+                {{--
+                <img src="https://static.willbes.net/public/images/promotion/2022/05/2180_03.jpg" />
+                <a href="javascript:go_PassLecture('190916');" title="22~23 전과정 티패스" style="position: absolute; left: 52.14%; top: 74.39%; width: 30.27%; height: 11.89%; z-index: 2;"></a>      
+                --}} 
             </div>
+            
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
                 <a href="#notice">이용안내확인하기 ↓</a>               
@@ -185,7 +194,17 @@
         
         <div class="evtCtnsBox evtInfo" id="notice" data-aos="fade-up">
             <div class="evtInfoBox">
-                <h4 class="NGEB">이용안내 및 유의사항</h4>
+                <h4 class="NSK-Black">이용안내 및 유의사항</h4>
+                <div class="infoTit"><strong>6월 한정 EVENT</strong></div>
+                <ul>
+                    <li>본 이벤트는 2022년 6월 30일 (목)까지 2023 영어 한덕현 T-PASS를 결제완료하신 분에 한하여 적용됩니다.</li>
+                    <li>제공 혜택<br>
+                    - 2023 제니스 영어 Grammar 교재 제공 (신간 출시 후 문자를 통해 신청방법 안내 예정)<br>
+                    - 2023 제니스 영어 스나이퍼 32 교재 제공 (신간 출시 후 문자를 통해 신청방법 안내 예정)<br>
+                    - 1:1 온라인독해첨삭 지도반 1개월 무료 (수강기간 내 원하는 시기에 한덕현 교수 Q&A 게시판을 통해 신청 및 교수님 개별 상담 후 기수에 맞추어 진행 예정) <br>
+                    - 기존 판매가 79만원 (10만원 기간 한정 할인) → 이벤트 판매가 69만원</li>
+                </ul>
+
                 <div class="infoTit"><strong>상품구성</strong></div>
                 <ul>
                     <li>제공과정<br>

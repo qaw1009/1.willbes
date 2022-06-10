@@ -20,7 +20,7 @@
     .evt02 {background:#c71544;}
     .evt03 {background:#175583;}
 
-    .video-container {position:relative; padding-bottom:56.25%; overflow:hidden; margin:0 30px}
+    .video-container {position:relative; padding-bottom:56.25%; overflow:hidden; margin:0 4.03%}
     .video-container iframe {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
     

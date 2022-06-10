@@ -1007,6 +1007,10 @@
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1557') }}">상표법</a>
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1558') }}">특허법</a>
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1559') }}">회로이론</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=2203') }}">디자인보호법</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=2176') }}">물리 </a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=2187') }}">화학 </a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=2189') }}">지구과학 </a>
                 </li>
             </ul>
         @endif

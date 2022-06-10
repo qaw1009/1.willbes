@@ -1628,7 +1628,7 @@ class SurveyModel extends WB_Model
             $from = "
                 FROM {$this->_table['predictRegister']} AS pr
                 JOIN {$this->_table['predictRegisterR']} AS prc ON pr.PrIdx = prc.PrIdx
-                INNER JOIN {$this->_table['predictPaper']} AS pp ON prc.SubjectCode = pp.SubjectCode
+                INNER JOIN {$this->_table['predictPaper']} AS pp ON prc.SubjectCode = pp.SubjectCode AND pp.IsStatus = 'Y' AND pp.IsUse = 'Y'
                 INNER JOIN {$this->_table['predictCode']} AS pc ON pp.SubjectCode = pc.Ccd
             ";
             $arr_condition = [

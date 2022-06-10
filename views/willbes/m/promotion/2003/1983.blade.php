@@ -12,6 +12,10 @@
 
     .gifimg img {width:33%}
 
+    .dday {font-size:2.5vh; padding:10px; background:#ebebeb; color:#000; text-align:left; letter-spacing:-1px}
+    .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
+    .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#3a99f0; font-size:1.5vh;}
+
     .passWrap {display:flex; margin:5vh 0; font-size:1.7vh; text-align:left}
     .passLec {margin:0 5px; padding:20px; border:3px solid #a47002; width:50%}
     .passLec h5 {font-size:2.4vh; text-align:center; margin-bottom:20px; font-weight:bold; color:#a47002}
@@ -44,6 +48,8 @@
     @@media only screen and (max-width: 374px)  {  
         .passWrap {display:block;}
         .passLec {width:95%; margin:10px auto}
+
+        .dday a {padding:5px 10px;}
     }
 
     /* 태블릿 세로 */
@@ -60,6 +66,11 @@
     </style>
 
     <div id="Container" class="Container NSK">
+        <div class="evtCtnsBox dday NSK-Thin">
+            <strong>{{$arr_promotion_params['turn']}}기 마감 <span id="ddayCountText" class="NSK-Black"></span> </strong>
+            <a href="#evt01">신청하기 ></a>
+        </div>
+
         <div class="evtCtnsBox" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/06/1983m_00.jpg" alt="독점공개">
         </div>
@@ -90,7 +101,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/06/1983m_04.jpg" alt="커리큘럼">              
         </div>
 
-        <div class="evtCtnsBox" data-aos="fade-up">
+        <div class="evtCtnsBox" data-aos="fade-up" id="evt01">
             <div class="passWrap">
                 <div class="passLec">
                     <h5>2023 세무직 PASS</h5>
@@ -186,6 +197,11 @@
     </script>
 
     <script type="text/javascript">
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}', '{{$arr_promotion_params['etime'] or "00:00"}}', 'txt');
+        });
+
         /*수강신청 동의*/ 
         function go_PassLecture(code){
             if($("input[name='ischk']:checked").size() < 1){
@@ -202,4 +218,8 @@
             location.href = "{{ front_url('/periodPackage/show/cate/3022/pack/648001/prod-code/') }}" + code;
         }
     </script>
+
+    
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

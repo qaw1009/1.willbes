@@ -101,10 +101,10 @@ class Book extends \app\controllers\BaseController
         ini_set('memory_limit', $this->_memory_limit_size);
 
         $arr_condition = $this->_getListConditions();
-        $column = 'wBookIdx, wBookName, wPublName, wAuthorNames, wIsbn, wOrgPrice, wStockCnt, wSaleCcdName, wIsUse, wRegAdminName, wRegDatm';
+        $column = 'wBookIdx, wBookName, wPublName, wAuthorNames, wIsbn, wOrgPrice, wPublDate, wStockCnt, wSaleCcdName, wIsUse, wRegAdminName, wRegDatm';
         $list = $this->bookModel->listBook($column, $arr_condition, null, null, $this->_getListOrderBy());
 
-        $headers = ['교재코드', '교재명', '출판사', '저자', 'ISBN', '가격', '재고', '판매여부', '사용여부', '등록자', '등록일'];
+        $headers = ['교재코드', '교재명', '출판사', '저자', 'ISBN', '가격', '출판일', '재고', '판매여부', '사용여부', '등록자', '등록일'];
         $numerics = ['wOrgPrice', 'wStockCnt'];    // 숫자형 변환 대상 컬럼
         $file_name = '교재목록(WBS)_' . $this->session->userdata('admin_idx') . '_' . date('YmdHis');
 

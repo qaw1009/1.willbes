@@ -62,7 +62,7 @@ class BookModel extends WB_Model
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
-        $in_column = 'B.wBookIdx, B.wPublIdx, B.wBookName, B.wIsbn, B.wAttachImgPath, B.wAttachImgName, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wIsPreSale, B.wIsUse, B.wRegDatm, B.wRegAdminIdx
+        $in_column = 'B.wBookIdx, B.wPublIdx, B.wBookName, B.wPublDate, B.wIsbn, B.wAttachImgPath, B.wAttachImgName, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wIsPreSale, B.wIsUse, B.wRegDatm, B.wRegAdminIdx
             , ifnull(A.wAuthorNames, "") as wAuthorNames, P.wPublName, CS.wCcdName as wSaleCcdName, A.wAdminName as wRegAdminName';
 
         $from = '

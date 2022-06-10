@@ -61,7 +61,7 @@
                     <th>출판사</th>
                     <th>저자</th>
                     <th>가격</th>
-                    <th>재고</th>
+                    <th>출판일</th>
                     <th>판매여부</th>
                     <th>사용여부</th>
                     <th>등록자</th>
@@ -124,9 +124,7 @@
                     {'data' : 'wOrgPrice', 'render' : function(data, type, row, meta) {
                         return addComma(data) + '원';
                     }},
-                    {'data' : 'wStockCnt', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
-                    }},
+                    {'data' : 'wPublDate'},
                     {'data' : 'wSaleCcdName'},
                     {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {
                         return (data == 'Y') ? '사용' : '<span class="red">미사용</span>';

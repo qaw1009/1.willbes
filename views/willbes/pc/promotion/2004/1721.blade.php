@@ -29,7 +29,6 @@
         .wb_cts03 {padding-top:50px;}
         .wb_cts04 {background:#f4f4f4;padding-bottom:150px;}
         .wb_cts05 {background:#9fa75e;padding-bottom:150px;}
-        .wb_cts05 .wrap img {border-bottom:3px solid #343b6f}
 
         /*탭(텍스트)*/
         .tabContaier{width:100%;background:#f4f4f4;margin-top:50px;}
@@ -72,8 +71,8 @@
         .youtube_divide .preview_list_area .preview_list ul li .text_box span {font-size:12px;font-weight:400;line-height:18px;color:#666;}
 
          /* tip */
-         .wb_cts_notice {background:#fff; text-align:left; padding:100px 0}
-        .wb_tipBox {border:1px solid #333; padding:30px; width:980px; margin:0 auto; }
+        .wb_cts_notice {background:#ccc; text-align:left; padding:150px 0}
+        .wb_tipBox {border:1px solid #333; padding:30px; width:980px; margin:0 auto; background:#fff; }
         .wb_tipBox > strong {font-size:16px !important; font-weight:bold; color:#333; display:block; margin-bottom:20px}
         .wb_tipBox p {font-size:24px !important; font-weight:bold;  letter-spacing:-3px; margin:30px 0 10px; color:#111}	
         .wb_tipBox ol li {margin-bottom:10px; line-height:1.3; list-style:decimal; margin-left:15px}
@@ -99,10 +98,9 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky" id="QuickMenu">
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB&subject_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/04/1721_sky_title.png" alt="개강강의"></a>
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE6riw" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/04/1721_sky1.png" alt="전기직"></a>
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE7J6Q" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/04/1721_sky2.png" alt="전자직"></a>
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67Ya17Iug&subject_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/04/1721_sky3.png" alt="통신직"></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB&subject_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/06/1721_sky_title.png" alt="개강강의"></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE6riw" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/06/1721_sky1.png" alt="전기직"></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67Ya17Iug&subject_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/06/1721_sky3.png" alt="통신직"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            
@@ -269,6 +267,7 @@
 
         <div class="evtCtnsBox wb_cts05" id="t_pass_go" >
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1721_05.jpg" alt="통신/전기/전자작의 대세" />
+            {{--
             <div class="tabs" id="buyLec">                
                 <ul>
                     <li>
@@ -285,16 +284,19 @@
                     </li>                  
                 </ul>
             </div>
+            --}}
 
             <div id="tab01s" class="wrap">            
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/1721_05_cts1.png" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/1721_05_cts1.png" />
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="" style="position: absolute;left: 26.46%;top: 76.99%;width: 47.23%;height: 14.57%;z-index: 2;"></a>
             </div> 
 
+            {{--
             <div id="tab02s" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/04/1721_05_cts2.png" />
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="" style="position: absolute;left: 26.46%;top: 76.99%;width: 47.23%;height: 14.57%;z-index: 2;"></a>
             </div>
+            --}}
         </div>
 
         <div class="evtCtnsBox wb_cts_notice">

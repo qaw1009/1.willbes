@@ -46,7 +46,7 @@
 
         .wb_cts08 {background:#ECECEC;}
 
-        .wb_cts09 {background:#ECECEC;}
+        .wb_cts09 {background:#ECECEC; padding-top:100px}
 
         .wb_cts10 {background:#ECECEC;}
 
@@ -75,8 +75,8 @@
         .youtube_divide .preview_list_area .preview_list ul li .text_box span {font-size:12px;font-weight:400;line-height:18px;color:#666;}              
 
         /* tip */
-        .wb_cts_notice {background:#fff; text-align:left; padding:100px 0}
-        .wb_tipBox {border:1px solid #333; padding:30px; width:980px; margin:0 auto; }
+        .wb_cts_notice {background:#ccc; text-align:left; padding:150px 0}
+        .wb_tipBox {border:1px solid #333; padding:30px; width:980px; margin:0 auto; background:#fff}
         .wb_tipBox > strong {font-size:16px !important; font-weight:bold; color:#333; display:block; margin-bottom:20px}
         .wb_tipBox p {font-size:24px !important; font-weight:bold;  letter-spacing:-3px; margin:30px 0 10px; color:#111}	
         .wb_tipBox ol li {margin-bottom:10px; line-height:1.3; list-style:decimal; margin-left:15px}
@@ -111,8 +111,7 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
-            <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/03/2241_sky.png" alt="7월 new"></a>
-            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/03/2241_sky2.png" alt="최우영 t"></a>
+            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/06/2241_sky2.png" alt="최우영 t"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            
@@ -122,7 +121,7 @@
         <div class="evtCtnsBox wb_cts01" >
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2241_01.jpg" alt="군무원 모집"/>
         </div>
-
+<!--
         <nav class="evtMenu">
             <div class="widthAuto">
                 <ul>
@@ -131,21 +130,25 @@
                             수강신청 &<br>시간표 
                         </a>
                     </li>
+                    {{--
                     <li>
                         <a href="javascript:void(0);" onClick="scrolling('.wb_cts05')"  class="tab">
                             연간&특강<br>합격 커리
                         </a>
                     </li>
+                    --}}
                     <li>
                         <a href="javascript:void(0);" onClick="scrolling('.wb_cts04')"  class="tab">
                             수강&합격<br>후기
                         </a>
                     </li>
+                    {{--
                     <li>
                         <a href="javascript:void(0);" onClick="scrolling('.wb_cts03')"  class="tab">
                             라이브모드<br>신청
                         </a>
                     </li>
+                    --}}
                     <li>
                         <a href="javascript:void(0);" onClick="scrolling('.wb_cts07')"  class="tab">
                             교수진<br>YOUTUBE
@@ -161,23 +164,17 @@
                 </ul>
             </div>
         </nav>
-
-        <section class="evtCtnsBox wb_cts09" >   
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2241_08.jpg" alt="기본 이론 종합반 클라쓰"/>        
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2023/03/2241_09.jpg" alt="수강 신청하기"/>
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001" target="_blank" title="수강신청하기" style="position: absolute; left: 25.54%; top: 67.52%; width: 48.66%; height: 12.08%;z-index: 2;"></a>
-            </div>
-        </section> 
-        
+                    -->
+       
         <div class="evtCtnsBox wb_cts09" > 
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2241_10.jpg" alt="전기/통신 수강신청하기"/>
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZk5pY2tOYW1lOuy1nOyasOyYgQ%3D%3D" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 37.75%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 69.27%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/2241_10.jpg" alt="전기/통신 수강신청하기"/>
+                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3048/prod-code/198193" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 37.75%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/198194" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 69.27%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
             </div>
         </div>
 
+        {{--
         <section class="evtCtnsBox wb_cts05">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2241_05.gif" alt="커리큘럼"/>
             <div class="wrap">
@@ -185,6 +182,7 @@
                 <a href="javascript:alert('Coming Soon');" title="신기훈" style="position: absolute; left: 86.34%; top: 33.75%; width: 9.82%; height: 25.25%; z-index: 2;"></a>
             </div>
         </section> 
+        --}}
 
         <section class="evtCtnsBox wb_cts04">
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2241_04_top.jpg" alt="소방직 합격"/>
@@ -199,12 +197,14 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2241_04_bottom.jpg"  alt="이모티콘"/>
         </section>
 
+        {{--
         <section class="evtCtnsBox wb_cts03">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2241_03.jpg" alt="라이브 모드 구매하기"/>
                 <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank" title="군무원 구매하기" style="position: absolute; left: 22.32%; top: 76.33%; width: 55.27%; height: 6.52%; z-index: 2;"></a>
             </div>
-        </section>        
+        </section>      
+        --}}  
        
         <section class="evtCtnsBox wb_cts07" >
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_07.jpg" alt="합격을 이끌어낸 그 과정"/>

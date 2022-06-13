@@ -317,8 +317,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2021 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179643" target="_blank">수강신청</a></td>
+						<td>2022 [국가직] 장사원 재배학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/190666" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -490,8 +490,8 @@
 					<tr>
 						<td>작물생리학</td>
 						<td>문제풀이</td>
-						<td>2021 장사원 작물생리학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/182723" target="_blank">수강신청</a></td>
+						<td>2022 장사원 작물생리학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/197354" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
 
@@ -546,8 +546,8 @@
 					<tr>
 						<td>농촌지도론</td>
 						<td>문제풀이</td>
-						<td>2021 장사원 농촌지도론 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/182724" target="_blank">수강신청</a></td>
+						<td>2022 장사원 농촌지도론 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/197356" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
 

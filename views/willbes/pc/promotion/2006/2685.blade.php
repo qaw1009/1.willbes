@@ -64,8 +64,7 @@
 		</div>   
         
         <div class="evtCtnsBox evt_03" data-aos="fade-up">             
-            <a href="javascript:void(0);" data-url="https://job.willbes.net/userPackage/show/cate/309002/prod-code/197936" class="NSK-Black" onclick="go_PassLecture(this)" title="노무패스 1차"
->수강신청 바로가기 ></a>
+            <a href="javascript:void(0);" data-url="https://job.willbes.net/userPackage/show/cate/309002/prod-code/197936" class="NSK-Black" onclick="go_PassLecture(this)" title="노무패스 1차">수강신청 바로가기 ></a>
 
             <div class="check">
                 <label>
@@ -88,7 +87,7 @@
 				</ul>
 				<div class="infoTit"><strong>수강관련</strong></div>
 				<ul></li>
-					<li>본 상품 신청 시 컴퓨터, 스마트 기기를 이용하</li>여 자유롭게 수강하실 수 있습니다.
+					<li>본 상품 신청 시 컴퓨터, 스마트 기기를 이용하여 자유롭게 수강하실 수 있습니다.</li>
                     <li>본 상품은 2배수 수강제한이 되어있습니다.</li>
                     <li>본 상품의 수강시작일은 30일 범위 내에서 지정하실 수 있습니다.</li>
                     <li>본 상품은 수강기간 조정 및 일시 정지가 불가합니다.</li>

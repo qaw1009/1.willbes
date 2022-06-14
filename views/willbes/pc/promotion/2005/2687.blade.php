@@ -23,15 +23,15 @@
 
     .evt01 {padding:100px 0;}
 
-    .evt_tab {padding-bottom:100px;width:1120px; margin:auto}
+    .evt_tab {padding-bottom:100px;}
     .tabs {width:1120px; margin:0 auto}
     .tabs li {display:inline; float:left; width:25%;} 
     .tabs li a {display:block; color:#fff; background:#000; height:50px; line-height:50px; text-align:center; margin-right:1px; font-size:18px;font-weight:bold;}
     .tabs li a:hover,
-    .tabs li a.active {background:#0055e0;color:#fff;}    
+    .tabs li a.active {background:#2260ff;}
     .tabs li:last-child a {margin:0}
-    .tabs:after {content:""; display:block; clear:both}
-
+    .tabs:after {content:""; display:block; clear:both}        
+    
     </style>
 
     <!-- Container -->
@@ -48,24 +48,24 @@
 
         <div class="evtCtnsBox evt_tab" data-aos="fade-up">
             <ul class="tabs">
-				<li><a href="javascript:tabMove(1);" id="mt1">메인</a></li>
-				<li><a href="javascript:tabMove(2);" id="mt2">기본정보 및 답안입력</a></li>
-				<li><a href="javascript:tabMove(3);" id="mt3">성적확인 및 분석</a></li>
-				<li><a href="javascript:tabMove(4);" id="mt4">합격예측</a></li>			
+				<li><a href="#tab01">메인</a></li>
+				<li><a href="#tab02">기본정보 및 답안입력</a></li>
+				<li><a href="#tab03">성적확인 및 분석</a></li>
+				<li><a href="#tab04">합격예측</a></li>			
 			</ul>
 			<div id="tab01">
-           
+                1
 			</div>
 			<div id="tab02">
-            
+                2
 			</div>
 			<div id="tab03">
-           
+                3
 			</div>
 			<div id="tab04">
-             
+                4
 			</div>
-        </div>        
+        </div>
 
     </div>
     <!-- End Container -->
@@ -87,18 +87,30 @@
         function loginAlert() {
             {!! login_check_inner_script('로그인 후 이벤트에 참여해주세요.','Y') !!}
         }
-        /*탭*/
-        function tabMove(num) {
-        if(num == 1){
-            var url = "{{ site_url('/promotion/index/cate/3095/code/2687') }}";
-        } else if(num == 2) {
-            var url = "{{ site_url('/promotion/index/cate/3095/code/2688') }}";
-        } else if(num == 3) {
-            var url = "{{ site_url('/promotion/index/cate/3095/code/2689') }}";
-        } else {
-            var url = "{{ site_url('/promotion/index/cate/3095/code/2690') }}";
-        }
-        location.href = url;
-    }
+
+        $(document).ready(function(){
+            $('.tabs').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+            
+                $content = $($active[0].hash);
+            
+                $links.not($active).each(function () {
+                $(this.hash).hide()});
+            
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                $active.removeClass('active');
+                $content.hide();
+            
+                $active = $(this);
+                $content = $(this.hash);
+            
+                $active.addClass('active');
+                $content.show();
+            
+                e.preventDefault()})})}
+        );
     </script>
 @stop

@@ -35,11 +35,8 @@
         .event02 .tabs li:last-child a {margin:0}
 
         .event03 {padding:150px 0; line-height:1.3; }
-        .event03 .tabBtns {display:flex; width:980px; margin:0 auto}
-        .event03 .tabBtns a {display:block; width:50%; font-size:30px; border:2px solid #000; padding:20px 0}
-        .event03 .tabBtns a.on,
-        .event03 .tabBtns a:hover {background:#000; color:#fff}
-        .event03 .tabBtns p {font-size:16px}
+        .event03 .tabBtns {width:980px; margin:0 auto; display:block; font-size:30px; border:2px solid #000; padding:20px; background:#000; color:#fff }
+        .event03 .tabBtns strong {color:#ffc227}
 
         .evtBox {width:1120px; margin:0 auto; position:relative}
         .evtBox a:hover {background:rgba(0,0,0,.2)}
@@ -182,33 +179,26 @@
         </div>
 
         <div class="evtCtnsBox event03" data-aos="fade-up">
-            <div class="tabBtns">
-                <a href="{{ front_url('/promotion/index/cate/3137/code/2645') }}" target="_blank">
-                    <strong>Real</strong> 모의고사 <strong>신청</strong>
-                    <p>(용산철도고등학교에서 응시)</p>
-                </a>
-                <a href="javascript:void(0)" class="on">
-                    <strong>온라인</strong> 모의고사 <strong>신청</strong>
-                    <p>시험지와 답안지 배송 후 개인별 응시)</p>
-                </a>
+            <div class="tabBtns NSK-Black">
+                윌비스 임용 <strong>실전 모의고사 </strong> 접수
             </div>
             @if (empty($arr_base['order_product']) === true)
                 {{--접수전 화면--}}
                 <div class="evt_table p_re">
                     <div class="txtinfo">
-                        <div>온라인<br>모의고사<br>신청 관련<br>안내사항</div>
+                        <div>실전<br>모의고사<br>신청 관련<br>안내사항</div>
                         <ul>
                             <li>모의고사 신청을 위해 반드시 로그인을 하셔야 합니다.</li>
-                            <li>모의고사 신청은 교육학과 전공과목을 각각 체크하셔야 하며, 출제 교수진을 선택해 주시면 됩니다.</li>
-                            <li>모의고사 접수비용은 1만원입니다.</li>
-                            <li>모의고사 신청 전 배송지를 다시 한번 확인하시기 바랍니다. (회원정보에서 변경가능) <a href="{{ app_url('/member/change/index/info', 'www') }}" target="_blank">배송지 변경 ></a></li>
+                            <li>모의고사 과목별, 출제교수별 중복선택이 가능합니다.</li>
+                            <li>모의고사 접수비용은 과목별 5천원입니다.</li>
+                            <li>모의고사 신청 전 배송지를 다시 한번 확인하시기 바랍니다. <a href="{{ app_url('/member/change/index/info', 'www') }}" target="_blank">배송지 변경 ></a></li>
                             <li>모의고사는 를 응시할 때, 시간 체크 버튼을 클릭하고 시작해 주시기 바랍니다.(시험 시간관리에 도움이 됩니다.)</li>
                         </ul>
                     </div>
                     <table cellspacing="2" cellpadding="2">
-                        <col width="12%" />
+                        <col width="14%" />
                         <col/>
-                        <col width="12%" />
+                        <col width="14%" />
                         <col />
                         <tbody>
                             <tr>
@@ -229,7 +219,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>교육학 선택<br>(택 1)</th>
+                                <th>교육학 선택<br>(중복선택 가능)</th>
                                 <td colspan="3">
                                     <ul>
                                         <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196788' : '159829' }}" autocomplete="off"/> 교육학논술 (이경범 교수 출제)</label></li>
@@ -239,7 +229,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>전공과목 선택<br>(택 1)</th>
+                                <th>전공과목 선택<br>(중복선택 가능)</th>
                                 <td colspan="3">
                                     <ul>
                                         <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196791' : '159832' }}" autocomplete="off"/> 국  어 (송원영/권보민 교수 출제)</label></li>
@@ -344,18 +334,16 @@
 
         <div class="evtCtnsBox evtInfo" id="careful" data-aos="fade-up">
             <div class="evtInfoBox">
-                <h4 class="NSK-Black">[필독] 온라인 모의고사 접수 시, 유의사항</h4>
+                <h4 class="NSK-Black">[필독] 실전 모의고사 접수 시, 유의사항</h4>
                 <ul>
                     <li>본 실전 모의고사는 한 ID별 1회만 신청 가능합니다.</li>
-                    <li>본 실전 모의고사 접수비는 1만원입니다. (교육학+전공A,B+답안지)</li>
-                    <li>본 실전 모의고사ㄹ 응시를 위해서 6월6일(월)까지 접수(결제)를 완료하셔야 합니다.</li>
-                    <li>본 실전 모의고사는 접수시에는 교육학과 전공과목의 출제 교수진을 반드시 선택하셔야 합니다.</li>
+                    <li>본 실전 모의고사 접수비는 과목별 5천원이며, 중복접수가 가능합니다.</li>
+                    <li>본 실전 모의고사의 접수기간(결제완료)은 6월27일(월)까지 입니다.</li>
                     <li>본 실전 모의고사의 환불은 홈페이지 1:1상담 게시판을 통하여 요청하시면 됩니다.</li>
-                    <li>본 실전 모의고사 접수 마감일 이후에는 환불 및 출제교수진 변경이 불가합니다.</li>
-                    <li>본 실전 모의고사의 출제 교수진 변경 방법은 환불 후, 재 신청하는 방식이며, 접수 마감일 후에는 변경할 수 없습니다.</li>
+                    <li>본 실전 모의고사 접수 마감일  (6월27일) 이후에는 환불이 불가합니다. </li>
                     <li>본 실전 모의고사를 응시할 때에는 본 페이지의 타임을 재생하시고 응시하면 시간관리에 도움이 됩니다.</li>
                     <li>본 실전 모의고사는 별도의 채점 서비스는 실시하지 않습니다.</li>
-                    <li>본 실전 모의고사 응시 후, 해설자료와 해설강의를 청강할 수 있습니다. (과목별 확인)
+                    <li>본 실전 모의고사 응시 후, 해설자료와 해설강의를 청강할 수 있습니다. (신청자 ID로 지급)<br>
                         <table cellspacing="0" cellpadding="0">
                             <col />
                             <col width="13%"/>

@@ -258,7 +258,7 @@
         <div class="willbes-Class p_re c_both">
             <a id="Class" name="Class" class="sticky-top"></a>
             <div class="willbes-Lec-Tit NG tx-black">강좌정보</div>
-            <div class="classInfoTable GM">
+            <div class="classInfoTable NSK">
                 <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
                     <colgroup>
                         <col style="width: 140px;">

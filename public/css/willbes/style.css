@@ -4981,14 +4981,14 @@ table.profTable tr td.automatic ul {
 
 table.classTable {
 	width: 100%;
-	font-size: 12px;
+	font-size: 13px;
 	text-align: center;
 	letter-spacing: 0;
 }
 
 table.classTable tr td {
 	/*height: 100px;*/
-	line-height: 16px !important;
+	line-height: 1.5 !important;
 	padding-top: 20px;
 	padding-bottom: 20px;
 }

@@ -6,11 +6,14 @@
     <style type="text/css">
         .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
         .evtCtnsBox img {width:100%; max-width:720px;}
-        /*.wrap a {border:1px solid #000} */
+        .wrap a {border:1px solid #000}
 
         .dday {font-size:24px !important; padding:10px; background:#ebebeb; color:#000; text-align:left; letter-spacing:-1px}
         .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
         .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#3a99f0; font-size:14px !important;}
+
+        .evt01 .txtinfo {margin:10% 8%; padding:40px 20px 20px; border:1px solid #000; border-radius:10px; margin-bottom:50px; font-size:1.6vh; text-align:left}
+        .evt01 .txtinfo p {background:#000; color:#fff; padding:10px 5px; border-radius:30px; margin-top:-60px; margin-bottom:20px; font-size:1.8vh; text-align:center}
 
         .evt01 {background:#f5f5f7; padding-bottom:50px}
         .evt01 .price {text-align:center; font-size:24px; font-weight:bold; color:#000; letter-spacing:-1px; position:absolute; bottom:5%; width:100%; z-index: 10;}
@@ -146,6 +149,14 @@
         
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2664m_pass.png"> 
+
+            <div class="txtinfo">
+                <p class="NSK-Black">※ 구매 전, 확인! [23년 1차 패스  안내]</p>         
+                -22년 2차 시험까지만 신광은 경찰팀(이국령/김원욱 교수 제외) 강의가 제공됩니다.<br>
+                -8월 31일 이후, 심화 및 문제풀이는 윌비스 경찰의 신규 교수진 강의로 제공됩니다.<br>
+                -신광은 경찰팀의 구 강의는  전 커리큘럼 제공 
+            </div>
+
             <div class="evt01_coupon ">  
                 <div class="p_re">
                     <img src="https://static.willbes.net/public/images/promotion/2022/06/2664m_pass02.png" alt="23년 1차 패스" > 

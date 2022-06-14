@@ -66,6 +66,9 @@
         .evtPass .title02 {font-size:28px; color:#000; margin:90px auto 30px}
         .evtPass .title02 div {font-size:46px}
 
+        .evtPass .txtinfo {width:1006px; margin:0 auto; padding:40px; border:1px solid #000; border-radius:10px; margin-bottom:50px; font-size:16px}
+        .evtPass .txtinfo p {background:#000; color:#fff; padding:10px; border-radius:30px; margin-top:-60px; margin-bottom:20px; font-size:20px}
+
         .evtReview {background:#f2f2f2; padding:180px 0 0;}
         .evtReview .title01 {font-size:51px; color:#b6b6b6; margin-bottom:100px}
         .evtReview .title01 strong {color:#000}
@@ -198,6 +201,12 @@
             <div class="title01 NSK-Black">
                 경찰공무원 합격을 위한 최선의 방법!<br>
                 신광은 경찰 PASS로 합격률을 높이는 전략을 선택하세요!
+            </div>
+            <div class="txtinfo">
+                <p class="NSK-Black">※ 구매 전, 확인! [23년 1차 패스  안내]</p>         
+                -22년 2차 시험까지만 신광은 경찰팀(이국령/김원욱 교수 제외) 강의가 제공됩니다.<br>
+                -8월 31일 이후, 심화 및 문제풀이는 윌비스 경찰의 신규 교수진 강의로 제공됩니다.<br>
+                -신광은 경찰팀의 구 강의는  전 커리큘럼 제공 
             </div>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/2664_02.jpg" alt="신광은경찰 PASS">

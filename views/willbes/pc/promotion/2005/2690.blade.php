@@ -57,7 +57,7 @@
            
 			</div>
 			<div id="tab02">
-                @include('willbes.pc.predict2.iframe_promotion_partial')
+            
 			</div>
 			<div id="tab03">
            

@@ -481,11 +481,11 @@
                 var this_prod_code = $(this).val();
                 var param_check = $("#order_div_"+this_learn_pattern).find('#_product_'+this_prod_code).val();
 
-                if ($(".prod-type-"+this_prod_type+":checked").length > 1) {
+                /*if ($(".prod-type-"+this_prod_type+":checked").length > 1) {
                     $(".prod-type-"+this_prod_type).prop('checked',false);
                     $(this).prop('checked',true);
                     $("#order_div_"+this_learn_pattern).find(".box-type-"+this_prod_type).remove();
-                }
+                }*/
 
                 if (typeof param_check === 'undefined') {
                     $("#order_div_"+this_learn_pattern).append('<input class="box-type-'+this_prod_type+' order-id-'+this_prod_code+'" type="checkbox" name="y_pkg" id="_product_' + this_prod_code + '" value="' + this_prod_code + '" checked="checked"/>');
@@ -521,8 +521,8 @@
                 return;
             }
 
-            if (cnt_1 < 1) { alert('교육학 신청은 필수입니다.'); return; }
-            if (cnt_2 < 1) { alert('전공과목 신청은 필수입니다.'); return; }
+            /*if (cnt_1 < 1) { alert('교육학 신청은 필수입니다.'); return; }
+            if (cnt_2 < 1) { alert('전공과목 신청은 필수입니다.'); return; }*/
 
             if ($("#is_chk").is(':checked') === false) {
                 alert('모의고사 관련 유의사항 안내에 동의하셔야 합니다.');

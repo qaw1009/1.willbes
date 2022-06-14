@@ -8,7 +8,7 @@
         if (first_height == '') {
             iframe.height = (iframe.contentWindow.document.body.scrollHeight + 255) + "px";
             if (iframe.contentWindow.document.body.scrollHeight < 100 || iframe.contentWindow.document.body.scrollHeight > 580) {
-                iframe.height = '580px';    //강제초기화
+                iframe.height = '950px';    //강제초기화
             }
         }
         first_height = iframe.height;

@@ -9712,7 +9712,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 	color: #666;
 }
 
-.willbes-Leclist-txt a {
+.willbes-Leclist-txt a.print {
 	position: absolute;
 	top: 20px;
 	right: 20px;

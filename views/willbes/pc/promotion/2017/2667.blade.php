@@ -26,15 +26,18 @@
 
         .event01 .title {color:#383838; font-size:30px; margin-bottom:40px}
 
-        .event02 {background:#ffc227; padding-bottom:150px}
-        .event02 .tabs {width:980px; margin:0 auto 30px; display:flex}
-        .event02 .tabs li {width:33.3333%}
-        .event02 .tabs a {display:block; text-align:center; background:#d3a01d; color:#2e2e2e; height:80px; line-height:80px; margin-right:10px; font-size:24px; border-radius:60px; font-weight:bold}
-        .event02 .tabs a.active,
-        .event02 .tabs a:hover {background:#1b1b1b; color:#fff}
-        .event02 .tabs li:last-child a {margin:0}
+        .event02 {background:#ffc227; padding-bottom:100px}
+        .event02 .youtubeWrap {width:980px; margin:0 auto; background:none}
+        .event02 .youtubetab {display:flex; margin-bottom:30px}
+        .event02 .youtubetab li {width:33.3333%}
+        .event02 .youtubetab a {display:block; text-align:center; background:#d3a01d; color:#2e2e2e; height:80px; line-height:80px; margin-right:10px; font-size:24px; border-radius:60px; font-weight:bold}
+        .event02 .youtubetab a.active,
+        .event02 .youtubetab a:hover {background:#1b1b1b; color:#fff}
+        .event02 .youtubetab li:last-child a {margin:0}
+        .event02 .youtubeBox {position:relative; padding-bottom:56.25%; overflow: hidden; max-width: 100%; }
+        .event02 .youtubeBox iframe {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
-        .event03 {padding:150px 0; line-height:1.3; }
+        .event03 {padding:150px 0; line-height:1.3;}
         .event03 .tabBtns {width:980px; margin:0 auto; display:block; font-size:30px; border:2px solid #000; padding:20px; background:#000; color:#fff }
         .event03 .tabBtns strong {color:#ffc227}
 
@@ -168,14 +171,16 @@
 
         <div class="evtCtnsBox event02" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2022/05/2667_02.jpg" alt="온라인 모의고사 응시"/>
-            <ul class="tabs">
-                <li><a href="#tab01">1교시 : 교육학 60분</a></li>
-                <li><a href="#tab02">2교시 : 전공A 90분</a></li>
-                <li><a href="#tab03">3교시 : 전공B 90분</a></li>
-            </ul>
-            <div id="tab01">1교시 타이머 영상</div>
-            <div id="tab02">2교시 타이머 영상</div>
-            <div id="tab03">3교시 타이머 영상</div>
+            <div class="youtubeWrap">
+                <ul class="youtubetab">
+                    <li><a href="#tab1" class="active">1교시 : 교육학 60분</a></li>
+                    <li><a href="#tab2">2교시 : 전공A 90분</a></li>
+                    <li><a href="#tab3">3교시 : 전공B 90분</a></li>
+                </ul>
+                <div id="tab1" class="youtubeBox"><iframe src='https://www.youtube.com/embed/cC3v33lSAIk' frameborder='0' allowfullscreen></iframe></div>
+                <div id="tab2" class="youtubeBox">2교시 타이머 영상</div>
+                <div id="tab3" class="youtubeBox">3교시 타이머 영상</div>
+            </div>
         </div>
 
         <div class="evtCtnsBox event03" data-aos="fade-up">
@@ -451,8 +456,9 @@
 
     <script src="/public/js/willbes/product_util.js"></script>
     <script type="text/javascript">
+        /*
         $(document).ready(function(){
-            $('.tabs').each(function(){
+            $('.youtubeBox').each(function(){
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
                 $active.addClass('active');
@@ -471,7 +477,34 @@
                     e.preventDefault()
                 });
             });
-        });
+        });*/
+
+        var tab1_url = "https://www.youtube.com/embed/cC3v33lSAIk?rel=0&modestbranding=1&showinfo=0";
+        var tab2_url = "https://www.youtube.com/embed/vGoMjM8GEPk?rel=0&modestbranding=1&showinfo=0";        
+        var tab3_url = "https://www.youtube.com/embed/7tNxcCSe-WA?rel=0&modestbranding=1&showinfo=0";
+
+        $(function() {
+        $(".youtubeBox").hide(); 
+        $(".youtubeBox:first").show();
+        $(".youtubetab li a").click(function(){ 
+                var activeTab = $(this).attr("href"); 
+                var html_str = "";
+                if(activeTab == "#tab1"){
+                    html_str = "<iframe src='"+tab1_url+"' frameborder='0' allowfullscreen></iframe>";
+                }else if(activeTab == "#tab2"){
+                    html_str = "<iframe src='"+tab2_url+"' frameborder='0' allowfullscreen></iframe>";
+                }else if(activeTab == "#tab3"){
+                    html_str = "<iframe src='"+tab3_url+"' frameborder='0' allowfullscreen></iframe>";                   
+                }
+                $(".youtubetab a").removeClass("active"); 
+                $(this).addClass("active"); 
+                $(".youtubeBox").hide(); 
+                $(".youtubeBox").html(''); 
+                $(activeTab).html(html_str);
+                $(activeTab).fadeIn(); 
+                return false; 
+                });
+            });
 
         $(document).ready(function(){
             // 상품클릭

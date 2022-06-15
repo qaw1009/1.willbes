@@ -48,9 +48,9 @@
         <div class="evtCtnsBox wb_04" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/2691_04.jpg"  alt="공식 계정"/>
-                <a href="https://cafe.naver.com/theprosecution" title="네이버카페" target="_blank" style="position: absolute; left: 20.45%; top: 58.5%; width: 8.21%; height: 13.11%; z-index: 2;"></a>
-                <a href="https://www.youtube.com/channel/UC2J41ggwL4CTIJfoVBXsWkg" title="유튜브" target="_blank" style="position: absolute; left: 37.23%; top: 58.5%; width: 8.21%; height: 13.11%; z-index: 2;"></a>
-                <a href="https://open.kakao.com/o/sm2o7cVd" title="카카오톡" target="_blank" style="position: absolute; left: 54.29%; top: 58.5%; width: 8.21%; height: 13.11%;z-index: 2;"></a>
+                <a href="https://open.kakao.com/o/sm2o7cVd" title="카카오톡" target="_blank" style="position: absolute; left: 20.45%; top: 58.5%; width: 8.21%; height: 13.11%; z-index: 2;"></a>
+                <a href="https://cafe.naver.com/theprosecution" title="네이버카페" target="_blank" style="position: absolute; left: 37.23%; top: 58.5%; width: 8.21%; height: 13.11%; z-index: 2;"></a>
+                <a href="https://www.youtube.com/channel/UC2J41ggwL4CTIJfoVBXsWkg" title="유튜브" target="_blank" style="position: absolute; left: 54.29%; top: 58.5%; width: 8.21%; height: 13.11%;z-index: 2;"></a>
                 <a href="https://www.instagram.com/willbes_prosecution_team/?r=nametag" title="인스타" target="_blank" style="position: absolute; left: 71.16%; top: 58.5%; width: 8.21%; height: 13.11%; z-index: 2;"></a>               
             </div>
 		</div>

@@ -253,7 +253,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="tx-blue tx-right mt20">※  모의고사신청 비용: 10,000원</div>
+                    
                     <div class="check" id="chkInfo">
                         <label>
                             <input name="is_chk" id="is_chk" type="checkbox" value="Y" />

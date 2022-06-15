@@ -120,7 +120,7 @@
                     ※ 해당 강좌는 회차별 자료 인쇄 제한이 있는 강좌 입니다.<br>
                     샘플파일로 프린터 연결상태, 설정(용지크기)등을 확인 후 출력하시기 바랍니다.<br>
                     인쇄 제한이 있는 파일 인쇄시 안될 경우 파일 > 인쇄 > 왼쪽 하단 이미지로 인쇄 체크후 인쇄해 주세요.<br>
-                    ※ 출력이 안되는 경우 '<a href="https://pass.willbes.net/support/faq/index?s_faq=626" target="_blank" class="strong tx-blue">고객센터 자주하는 질문>온라인 수강</a>'에서 확인 바랍니다.
+                    ※ 출력이 안되는 경우 '<a href="https://pass.willbes.net/support/faq/index?s_faq=626" target="_blank" class="strong tx-blue underline">고객센터 자주하는 질문>온라인 수강</a>'에서 확인 바랍니다.
                 </p>
                 <a href="javascript:;" onclick="pdfSample();" class="print">샘플 인쇄</a>
             </div>

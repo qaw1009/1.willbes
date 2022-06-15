@@ -81,7 +81,7 @@ padding:5px 20px; font-weight:bold; font-size:17px; border-radius:30px}
         <div class="evtCtnsBox evt04" data-aos="fade-up" id="lecbuy01">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2207_04.jpg" alt="수강신청">
-                <a href="javascript:go_PassLecture('195585');" title="수강신청" style="position: absolute; left: 72.41%; top: 85.09%; width: 14.46%; height: 9.27%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('191692');" title="수강신청" style="position: absolute; left: 72.41%; top: 85.09%; width: 14.46%; height: 9.27%; z-index: 2;"></a>
             </div>
 
             <div class="check">

@@ -32,7 +32,7 @@
 
     .event05 {padding:50px 0}
 
-    .lecWrap {display:flex; flex-wrap: wrap; line-height:1.5; font-size:1.4vh; width:100%}
+    .lecWrap {display:flex; flex-wrap: wrap; line-height:1.5; font-size:1.5vh; width:100%}
     .lecWrap .pass {margin:0 10px 10px; flex: 1 1 100%; position: relative;}
     .lecWrap .pass div {font-size:2vh}
     .lecWrap .pass div:nth-child(1) {font-size:2.2vh; font-weight:600; color:#c23227}
@@ -62,12 +62,12 @@
     .event05 .passbuy a:hover {background:#c23227; color:#fff;}
 
     /* 이용안내 */
-    .evtInfo {padding:50px 20px; background:#f4f4f4; color:#3a3a3a; font-size:16px}
+    .evtInfo {padding:50px 20px; background:#f4f4f4; color:#3a3a3a; font-size:1.6vh}
+    .evtInfoBox h4 {font-size:2.6vh; margin-bottom:30px}
     .evtInfoBox {text-align:left; line-height:1.4}
-    .evtInfoBox li {list-style:disc; margin-left:20px; font-size:14px}
-    .evtInfoBox h4 {font-size:35px; margin-bottom:50px}
-    .evtInfoBox .infoTit {font-size:16px; margin-bottom:10px;}
-    .evtInfoBox .infoTit strong {padding:5px 20px; border-radius:50px; background:#333; color:#fff}
+    .evtInfoBox li {list-style:disc; margin-left:20px;}
+    .evtInfoBox .infoTit {font-size:1.8vh; margin-bottom:10px;}
+    .evtInfoBox .infoTit strong {padding:5px 10px; border-radius:30px; background:#333; color:#fff}
     .evtInfoBox ul {margin-bottom:30px}
 
     @@keyframes shinyBtn {

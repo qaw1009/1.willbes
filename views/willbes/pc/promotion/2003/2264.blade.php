@@ -53,7 +53,7 @@
         .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
         .check a.infotxt:hover {background:#543135;}  
 
-        .evt05 {padding:100px 0}
+        .evt05 {padding:0 0 100px 0}
         .evt05 .sTitle {width:1120px; margin:0 auto; padding-bottom:20px; font-size:40px; font-weight:bold; text-align:left; color:#e55b4e}   
 
         /* 이용안내 */
@@ -71,6 +71,7 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">  
+        {{--
         <div class="sky" id="QuickMenu">
             <a href="#lec01"> 
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2264_sky01.jpg" alt="티패스" >
@@ -79,6 +80,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2264_sky02.jpg" alt="단과" >
             </a>                   
         </div>
+        --}}
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">          
             <div class="wrap">       
@@ -104,6 +106,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2264_03.jpg" title="커리큘럼">                
         </div> 
 
+        {{--
         <div class="evtCtnsBox evt04" data-aos="fade-up">
             <div class="wrap" id="lec01"> 
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2264_04.jpg" title="행정법 기본이론"> 
@@ -114,6 +117,7 @@
                 <a href="#info" class="infotxt">이용안내확인하기 ↓</a>
             </div>       
         </div> 
+        --}}
 
         <div class="evtCtnsBox evt05" data-aos="fade-up">
             <div class="sTitle NSK-Black" id="lec02">* 단과 수강신청</div>
@@ -122,6 +126,7 @@
             @endif 
         </div>
 
+        {{--
         <div class="evtCtnsBox evtInfo" id="info" data-aos="fade-up">
             <div class="guide_box">
                 <h2 class="NSK-Black">이용안내 및 유의사항</h2>
@@ -172,6 +177,7 @@
                 <div class="inquire">※ 이용 문의 : 윌비스 고객만족센터 1544-5006</div>
             </div>
         </div>
+        --}}
 
 	</div>
     <!-- End Container -->

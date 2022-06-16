@@ -100,8 +100,10 @@
         <div class="evtCtnsBox wb_02" data-aos="fade-up">
             <div class="wrap NSK-Black">
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/2692_02.jpg" alt="" />
+                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51146?subject_idx=1049" title="김원욱 홈" style="position: absolute; left: 9.38%; top: 63.54%; width: 16.07%; height: 3.98%; z-index: 2;"></a>
                 <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/196773" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 9.73%; top: 78.67%; width: 34.55%; height: 8.07%; z-index: 2;">김원욱 헌법 T-PASS 신청하기 ></a>
-                <a href="javascript:void(0);" data-url="https://police.willbes.net/m/periodPackage/show/cate/3001/pack/648001/prod-code/196774" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 55.71%; top: 78.67%; width: 34.55%; height: 8.07%; z-index: 2;">이국령 헌법 T-PASS 신청하기 ></a>
+                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049" title="이국령 홈" style="position: absolute; left: 9.38%; top: 63.54%; width: 16.07%; height: 3.98%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/196774" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 55.71%; top: 78.67%; width: 34.55%; height: 8.07%; z-index: 2;">이국령 헌법 T-PASS 신청하기 ></a>
             </div>
             <div class="check">
                 <input name="ischk" type="checkbox" id="is_chk1" value="Y" />

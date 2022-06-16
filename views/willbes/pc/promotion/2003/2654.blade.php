@@ -9,7 +9,7 @@
             min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff}
+            background:#fff
         }
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
@@ -68,9 +68,9 @@
             </div>
 		</div>
 
-        <div class="evtCtnsBox evtInfo">
+        <div class="evtCtnsBox evtInfo" data-aos="fade-up">
             <div class="guide_box">
-                <h2 class="NSK-Black" data-aos="fade-up">1~4순환 연간반 상품안내</h2>
+                <h2 class="NSK-Black">1~4순환 연간반 상품안내</h2>
                 <dl>
                     <dt>(1) 상품구성</dt>
                     <dd>

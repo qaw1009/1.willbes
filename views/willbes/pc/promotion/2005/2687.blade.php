@@ -43,6 +43,7 @@
     .avg {background:#FBE5D6}
     .current {border:3px solid red;}
     .careful {color:red;text-align:right;width:720px;margin:0 auto;line-height:1.25;}
+    .chart a {display:inline-block;margin:10px;}
     .table_type {width:720px; margin:1em auto; border-top:#464646 1px solid; border-bottom:#464646 1px solid; border-left:#cdcdcd 1px solid}
     .table_type caption {display:none}	
     .table_type th,
@@ -92,6 +93,13 @@
     .markTab a.active {background:#333}
     .markTab li:last-child a {margin-right:0}
     .markTab:after {content:""; display:block; clear:both}
+
+    .markTab2 {width:720px;margin:0 auto;margin-top:10px; /*border-bottom:1px solid #333*/}
+    .markTab2 li {display:inline; float:left; width:25%}
+    .markTab2 a {display:block; padding:1em 0; background:#999; color:#fff; margin-right:1px; font-weight:bold; letter-spacing:2px; text-align:center}
+    .markTab2 a.active {background:#333}
+    .markTab2 li:last-child a {margin-right:0}
+    .markTab2:after {content:""; display:block; clear:both}
 
     .total td:nth-child(odd) {background:#F2F2F2;}
     .first {background:#F2F2F2;font-weight:bold;}
@@ -1574,6 +1582,176 @@
                     ※ 데이터 집계중일 때는 나의 위치가 수시로 변동될 수 있습니다.<br>
                     ※ 직렬 구분 없이 풀서비스 이용자 전체의 과목별 성적 분포입니다.
                 </div>
+                <ul class="markTab2">
+                    <li><a href="#tab4">전체평균</a></li>
+                    <li><a href="#tab5">언어논리</a></li>
+                    <li><a href="#tab6">상황판단</a></li>
+                    <li><a href="#tab7">자료해석</a></li>                    
+                </ul>
+                <div class="bold chart">
+                    <a href="javascript:void(0)">표 영역</a>                 
+                </div>
+                <table cellspacing="0" cellpadding="0" class="table_type">
+                    <col width="88" span="7" />
+                    <col width="72" />
+                    <tr class="bold gray">
+                        <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+                        <td rowspan="2" dir="ltr" width="88">구간비율</td>
+                        <td rowspan="2" dir="ltr" width="88">누적인원</td>
+                        <td rowspan="2" dir="ltr" width="88">누적비율</td>
+                        <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+                        <td rowspan="2" dir="ltr" width="88">구간비율</td>
+                        <td rowspan="2" dir="ltr" width="88">누적인원</td>
+                        <td rowspan="2" dir="ltr" width="72">누적비율</td>
+                    </tr>
+                    <tr> </tr>
+                    <tr>
+                        <td dir="ltr" width="88" class="bold blue">96점~</td>
+                        <td dir="ltr" width="88">0.00%</td>
+                        <td dir="ltr" width="88"> - </td>
+                        <td dir="ltr" width="88">0.00%</td>
+                        <td dir="ltr" width="88" class="bold blue">64점~68점</td>
+                        <td dir="ltr" width="88">13.95%</td>
+                        <td dir="ltr" width="88">2,270</td>
+                        <td dir="ltr" width="72">55.75%</td>
+                    </tr>
+                    <tr>
+                        <td dir="ltr" width="88" class="bold blue">92점~96점</td>
+                        <td dir="ltr" width="88">0.22%</td>
+                        <td dir="ltr" width="88">9</td>
+                        <td dir="ltr" width="88">0.22%</td>
+                        <td dir="ltr" width="88" class="bold blue">60점~64점</td>
+                        <td dir="ltr" width="88">12.40%</td>
+                        <td dir="ltr" width="88">2,775</td>
+                        <td dir="ltr" width="72">68.15%</td>
+                    </tr>
+                    <tr>
+                        <td dir="ltr" width="88" class="bold blue">88점~92점</td>
+                        <td dir="ltr" width="88">0.64%</td>
+                        <td dir="ltr" width="88">35</td>
+                        <td dir="ltr" width="88">0.86%</td>
+                        <td dir="ltr" width="88" class="bold blue">56점~60점</td>
+                        <td dir="ltr" width="88">9.92%</td>
+                        <td dir="ltr" width="88">3,179</td>
+                        <td dir="ltr" width="72">78.07%</td>
+                    </tr>
+                    <tr>
+                        <td dir="ltr" width="88" class="bold blue">84점~88점</td>
+                        <td dir="ltr" width="88">1.65%</td>
+                        <td dir="ltr" width="88">102</td>
+                        <td dir="ltr" width="88">2.50%</td>
+                        <td dir="ltr" width="88" class="bold blue">52점~56점</td>
+                        <td dir="ltr" width="88">7.88%</td>
+                        <td dir="ltr" width="88">3,500</td>
+                        <td dir="ltr" width="72">85.95%</td>
+                    </tr>
+                    <tr>
+                        <td dir="ltr" width="88" class="bold blue">80점~84점</td>
+                        <td dir="ltr" width="88">4.35%</td>
+                        <td dir="ltr" width="88">279</td>
+                        <td dir="ltr" width="88">6.85%</td>
+                        <td dir="ltr" width="88" class="bold blue">48점~52점</td>
+                        <td dir="ltr" width="88">5.13%</td>
+                        <td dir="ltr" width="88">3,709</td>
+                        <td dir="ltr" width="72">91.09%</td>
+                    </tr>
+                    <tr>
+                        <td dir="ltr" width="88" class="bold blue">76점~80점</td>
+                        <td dir="ltr" width="88">8.67%</td>
+                        <td dir="ltr" width="88">632</td>
+                        <td dir="ltr" width="88">15.52%</td>
+                        <td dir="ltr" width="88" class="bold blue">44점~48점</td>
+                        <td dir="ltr" width="88">3.27%</td>
+                        <td dir="ltr" width="88">3,842</td>
+                        <td dir="ltr" width="72">94.35%</td>
+                    </tr>
+                    <tr>
+                        <td dir="ltr" width="88" class="bold blue">72점~76점</td>
+                        <td dir="ltr" width="88">11.37%</td>
+                        <td dir="ltr" width="88">1,095</td>
+                        <td dir="ltr" width="88">26.89%</td>
+                        <td dir="ltr" width="88" class="bold blue">40점~44점</td>
+                        <td dir="ltr" width="88">1.47%</td>
+                        <td dir="ltr" width="88">3,902</td>
+                        <td dir="ltr" width="72">95.83%</td>
+                    </tr>
+                    <tr>
+                        <td dir="ltr" width="88" class="bold blue">68점~72점</td>
+                        <td dir="ltr" width="88">14.91%</td>
+                        <td dir="ltr" width="88">1,702</td>
+                        <td dir="ltr" width="88">41.80%</td>
+                        <td colspan="4" dir="ltr" width="336" class="bold blue"></td>
+                    </tr>
+                </table>
+                <div class="stage">
+                    <span class="bold">전체 직렬별 나의 성적 위치</span>
+                </div>              
+                <table cellspacing="0" cellpadding="0" class="table_type">
+                    <col width="88" span="6" />
+                    <tr class="bold">
+                        <td dir="ltr" width="88">등수</td>
+                        <td dir="ltr" width="88">PSAT 평균</td>
+                        <td dir="ltr" width="88">언어논리</td>
+                        <td dir="ltr" width="88">상황판단</td>
+                        <td dir="ltr" width="88">자료해석</td>
+                        <td dir="ltr" width="88">상위(%)</td>
+                    </tr>
+                    <tr>
+                        <td dir="ltr" width="88" class="bold">1306</td>
+                        <td dir="ltr" width="88">21.33점</td>
+                        <td dir="ltr" width="88">36점</td>
+                        <td dir="ltr" width="88">24점</td>
+                        <td dir="ltr" width="88">4점</td>
+                        <td dir="ltr" width="88">94.09</td>
+                    </tr>
+                    <tr>
+                        <td dir="ltr" width="88" class="bold">1306</td>
+                        <td dir="ltr" width="88">20.33점</td>
+                        <td dir="ltr" width="88">23점</td>
+                        <td dir="ltr" width="88">19점</td>
+                        <td dir="ltr" width="88">19점</td>
+                        <td dir="ltr" width="88">94.09</td>
+                    </tr>
+                    <tr class="current">
+                        <td dir="ltr" width="88" class="bold">1306</td>
+                        <td dir="ltr" width="88">20.00점</td>
+                        <td dir="ltr" width="88">12점</td>
+                        <td dir="ltr" width="88">28점</td>
+                        <td dir="ltr" width="88">20점</td>
+                        <td dir="ltr" width="88">94.09</td>
+                    </tr>
+                    <tr>
+                        <td dir="ltr" width="88" class="bold">1306</td>
+                        <td dir="ltr" width="88">18.66점</td>
+                        <td dir="ltr" width="88">16점</td>
+                        <td dir="ltr" width="88">16점</td>
+                        <td dir="ltr" width="88">24점</td>
+                        <td dir="ltr" width="88">94.09</td>
+                    </tr>
+                    <tr>
+                        <td dir="ltr" width="88" class="bold">1306</td>
+                        <td dir="ltr" width="88">18.66점</td>
+                        <td dir="ltr" width="88">16점</td>
+                        <td dir="ltr" width="88">24점</td>
+                        <td dir="ltr" width="88">16점</td>
+                        <td dir="ltr" width="88">94.09</td>
+                    </tr>
+                </table>
+                <div class="stage">
+                    <span class="bold">동일 직렬에서의 내 위치</span>
+                </div>
+                <div class="careful">
+                    ※ 데이터 집계중일 때는 나의 위치가 수시로 변동될 수 있습니다.
+                </div>
+                <ul class="markTab2">
+                    <li><a href="#tab4">전체평균</a></li>
+                    <li><a href="#tab5">언어논리</a></li>
+                    <li><a href="#tab6">상황판단</a></li>
+                    <li><a href="#tab7">자료해석</a></li>                    
+                </ul>
+                <div class="bold chart">
+                    <a href="javascript:void(0)">표 영역</a>                 
+                </div>
                 <table cellspacing="0" cellpadding="0" class="table_type">
                     <col width="88" span="7" />
                     <col width="72" />
@@ -1668,9 +1846,6 @@
                 </table>
                 <div class="stage">
                     <span class="bold">동일 직렬에서의 내 위치</span>
-                </div>
-                <div class="careful">
-                    ※ 데이터 집계중일 때는 나의 위치가 수시로 변동될 수 있습니다.
                 </div>
                 <table cellspacing="0" cellpadding="0" class="table_type">
                     <col width="88" span="6" />
@@ -1827,6 +2002,31 @@
     /*하단 tab*/
     $(document).ready(function(){
         $('.markTab').each(function(){
+            var $active, $content, $links = $(this).find('a');
+            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+            $active.addClass('active');
+        
+            $content = $($active[0].hash);
+        
+            $links.not($active).each(function () {
+            $(this.hash).hide()});
+        
+            // Bind the click event handler
+            $(this).on('click', 'a', function(e){
+            $active.removeClass('active');
+            $content.hide();
+        
+            $active = $(this);
+            $content = $(this.hash);
+        
+            $active.addClass('active');
+            $content.show();
+        
+            e.preventDefault()})})}
+        ); 
+
+        $(document).ready(function(){
+        $('.markTab2').each(function(){
             var $active, $content, $links = $(this).find('a');
             $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
             $active.addClass('active');

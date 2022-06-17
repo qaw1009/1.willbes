@@ -57,11 +57,11 @@
 
 <div id="Container" class="Container NSK c_both"> 
 
-    <div class="evtCtnsBox">
+    <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_top.jpg" alt="장사원" > 
     </div> 
     
-    <div class="evtCtnsBox evt00">
+    <div class="evtCtnsBox evt00"  data-aos="fade-up">
         <div class="video-container-box">
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/chEceiSyKOg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -70,7 +70,7 @@
         <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_00.jpg" alt="합격 전략의 중심" > 
     </div> 
 
-    <div class="evtCtnsBox evt01s">
+    <div class="evtCtnsBox evt01s" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_01.jpg" alt="합격 전략의 중심" > 
         <div class="slide_con">
             <ul id="slidesImg1">
@@ -82,27 +82,26 @@
         </div> 
     </div> 
     
-    <div class="evtCtnsBox evt02">
+    <div class="evtCtnsBox evt02" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_02.jpg" alt="농업직 4관왕" > 
     </div>
 
-    <div class="evtCtnsBox wrap">
-        <img src="https://static.willbes.net/public/images/promotion/2022/02/1068m_06.jpg" alt="농촌지도사 이론 패키지" >
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/187658" style="position: absolute; left: 15.28%; top: 22.88%; width: 27.78%; height: 1.42%; z-index: 2;" target="_blank" title="재배학/식용작물 기출문제"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/191139" style="position: absolute; left: 56.16%; top: 22.88%; width: 27.78%; height: 1.42%; z-index: 2;" target="_blank" title="재배학/식용작물 동형모고"></a>
+    <div class="evtCtnsBox">
+        <img src="https://static.willbes.net/public/images/promotion/2022/06/1068m_06.gif" alt="농촌지도사 이론 패키지" >
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/198483" target="_blank" title="기본/심화이론 패키지" style="position: absolute; left: 14.58%; top: 34.62%; width: 28.61%; height: 2.19%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/198575" target="_blank" title="7급 농업직 이론 패키지" style="position: absolute; left: 56.25%; top: 34.62%; width: 28.61%; height: 2.19%; z-index: 2;"></a>
 
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185386" target="_blank" title="기본심화이론" style="position: absolute;left: 14.86%; top: 39.34%; width: 28.61%;height: 1.65%;z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185387" target="_blank" title="농업직이론" style="position: absolute;left: 56.16%;top: 39.34%;width: 28.61%;height: 1.65%;z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185390" target="_blank" title="농촌지도사이론" style="position: absolute;left: 14.86%;top: 55.83%;width: 28.61%;height: 1.65%;z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185391" target="_blank" title="농촌지도사이론" style="position: absolute;left: 56.16%;top: 55.83%;width: 28.61%;height: 1.65%;z-index: 2;"></a>
-
-        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/186520" target="_blank" title="9급 농업직" style="position: absolute;left: 14.86%;top: 73.05%;width: 28.61%;height: 1.65%;z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/186521" target="_blank" title="7급 농업직" style="position: absolute;left: 55.86%;top: 73.05%;width: 28.61%;height: 1.65%;z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/186529" target="_blank" title="경기/인천외" style="position: absolute;left: 14.86%;top: 89.57%;width: 28.61%;height: 1.65%;z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/186530" target="_blank" title="경기/인천" style="position: absolute;left: 56.86%;top: 89.57%;width: 28.61%;height: 1.65%;z-index: 2;"></a>
-
-        <a href="https://pass.willbes.net/m/professor/show/cate/3028/prof-idx/50429/?subject_idx=1171&subject_name=%EC%9E%AC%EB%B0%B0%ED%95%99" target="_blank" title="단과" style="position: absolute; left: 64.86%; top: 94.47%; width: 20%; height: 2.04%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185390" target="_blank" title="농촌지도사 이론 패키지" style="position: absolute; left: 14.58%; top: 63.35%; width: 28.61%; height: 2.19%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185391" target="_blank" title="농촌지도사 이론 패키지 경기인천" style="position: absolute; left: 56.25%; top: 63.35%; width: 28.61%; height: 2.19%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/186530" target="_blank" title="농촌지도사 이론+기출문풀 패키지 " style="position: absolute; left: 14.58%; top: 90.92%; width: 28.61%; height: 2.19%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/186529" target="_blank" title="농촌지도사 이론+기출문풀 패키지 경기인천" style="position: absolute; left: 56.25%; top: 90.92%; width: 28.61%; height: 2.19%; z-index: 2;"></a>
     </div>   
+
+    <div class="evtCtnsBox" data-aos="fade-up">
+        <a href="https://pass.willbes.net/m/professor/show/cate/3028/prof-idx/50429/?subject_idx=1171" target="_blank">
+            <img src="https://static.willbes.net/public/images/promotion/2022/06/1068m_07.jpg" alt="단과" > 
+        </a>
+    </div>
 </div>
 
 <!-- End Container -->
@@ -122,12 +121,15 @@
     });
 </script>
 
-<!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->
-<script language='javascript'>
-    var _AceGID=(function(){var Inf=['gtp14.acecounter.com','8080','AH1A44052179653','AW','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;var _T=new Image(0,0);if(_CI.join('.').indexOf(Inf[3])<0){ _T.src ="https://"+ Inf[0] +'/?cookie'; _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
-    var _AceCounter=(function(){var G=_AceGID;var _sc=document.createElement('script');var _sm=document.getElementsByTagName('script')[0];if(G.o!=0){var _A=G.val[G.o-1];var _G=(_A[0]).substr(0,_A[0].indexOf('.'));var _C=(_A[7]!='0')?(_A[2]):_A[3];var _U=(_A[5]).replace(/\,/g,'_');_sc.src='https:'+'//cr.acecounter.com/Web/AceCounter_'+_C+'.js?gc='+_A[2]+'&py='+_A[4]+'&gd='+_G+'&gp='+_A[1]+'&up='+_U+'&rd='+(new Date().getTime());_sm.parentNode.insertBefore(_sc,_sm);return _sc.src;}})();
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    $( document ).ready( function() {
+    AOS.init();
+    } );
 </script>
-<noscript><img src='https://gtp14.acecounter.com:8080/?uid=AH1A44052179653&je=n&' border='0' width='0' height='0' alt=''></noscript>
-<!-- AceCounter Log Gathering Script End -->
+
+{{-- 프로모션용 스크립트 include --}}
+@include('willbes.pc.promotion.promotion_script')
 
 @stop

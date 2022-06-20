@@ -413,7 +413,7 @@
                                     <td class="w-site" rowspan="3">윌비스 공무원</td>
                                     <td rowspan="2" class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                     <td class="w-call">
-                                        9급/7급/세무직/법원직 등<br>
+                                        9급 / 7급 / 세무직 등<br>
                                         1544-5006 </td>
                                     <td rowspan="2" class="w-time tx-left pl25">
                                         평일 9:00~18:00 <br/>
@@ -422,7 +422,7 @@
                                 </tr>
                                 <tr>
                                     <td class="w-call">
-                                        7급 PSAT<br>
+                                        7급 PSAT / 법원직<br>
                                         1566-4770
                                     </td>
                                 </tr>
@@ -472,7 +472,7 @@
                                     <td class="w-site" rowspan="4">전문자격증</td>
                                     <td rowspan="2" class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                     <td class="w-call">
-                                        공인노무사/감평/변리사<br>
+                                        공인노무사 / 감평 / 변리사<br>
                                         1566-4770
                                     </td>
                                     <td rowspan="2" class="w-time tx-left pl25">
@@ -481,7 +481,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-call">세무사/국가자격 등<br>
+                                    <td class="w-call">세무사 / 국가자격 등<br>
                                     1544-5006 </td>
                                 </tr>
                                 <tr>

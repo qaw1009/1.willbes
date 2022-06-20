@@ -149,7 +149,7 @@
                             <th>이름</th>
                             <td>
                                 <label>
-                                    <input type="text" name="textfield" id="textfield"> 
+                                    한주연
                                 </label>
                             </td>                                                            
                         </tr>

@@ -14,6 +14,14 @@
     .wb_03 a {display:block; width:80%; margin:3vh auto 0; font-size:2.2vh; background:#000; color:#fff; padding:2vh 0; text-align:center; border-radius:50px; animation: colorBlink 1s ease-in-out infinite}
     .wb_04 {background:#335ce8;}
 
+    /* 이용안내 */
+    .wb_info {padding:50px 20px; color:#3a3a3a; line-height:1.4; background:#f4f4f4}
+    .guide_box{text-align:left; word-break:keep-all}
+    .guide_box h2 {font-size:3vh; margin-bottom:30px;}
+    .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:18px;}        
+    .guide_box dd{color:#3a3a3a; margin:0 0 20px 5px;}
+    .guide_box dd li{margin-bottom:3px; list-style:decimal; margin-left:20px;font-size:1.5vh;font-weight:bold;}
+
     @@keyframes colorBlink {
         0% {background:#335ce8;}
         80% {background:#000;}
@@ -63,6 +71,25 @@
     @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.m.promotion.show_comment_list_url_partial')
     @endif
+
+    <div class="evtCtnsBox wb_info" id="info">
+        <div class="guide_box">
+            <h2 class="NSK-Black">이벤트 유의사항</h2>
+            <dl>
+                <dd>
+                    <ol>
+                        <li>본 이벤트는 2022년 6월 30일까지 진행됩니다.</li>
+                        <li>이벤트 대상 강좌 리스트 (*수강기간 30일)<br>
+                        · 2023 오대혁 국어 기초입문 강의<br>
+                        · 한덕현 영어 기초입문 강의 [쌩기초 탈출 프로젝트]<br>
+                        · 2023 김상범 한국사 기초입문 강의<br>
+                        <li>지급된 강좌는 [내강의실]-[온라인강좌]-[관리자부여강좌]에서 수강할 수 있습니다.</li>
+                        <li>소문내기 이벤트의 경우, 중복된 게시글이나 삭제된 게시글은 정상 참여로 카운트 되지 않습니다.</li>
+                    </ol>
+                </dd>
+            </dl>
+        </div>
+    </div>
 </div>
 
 <!-- End Container -->

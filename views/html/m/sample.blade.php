@@ -41,6 +41,7 @@
             <a href="{{ site_url('/home/html/m/main2_v2_309003') }}" target="_blank">메인-감정평가사</a>
             <a href="{{ site_url('/home/html/m/main2_v2_309004') }}" target="_blank">메인-변리사</a>
             <a href="{{ site_url('/home/html/m/main2_v2_308906') }}" target="_blank">메인-빅데이터분석기사</a>
+            <a href="{{ site_url('/home/html/m/main2_v2_309007') }}" target="_blank">메인-손해평가사</a>
             <br><br>
             <a href="{{ site_url('/home/html/m/main_2014_v2') }}" target="_blank">메인-창업</a>
             <br><br>

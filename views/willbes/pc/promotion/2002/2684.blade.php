@@ -99,14 +99,8 @@
                 시험에 나올 <strong>핵심만!</strong> 최단시간 <strong>만점!</strong></p>
             <div class="youtube yu03">
                 <iframe src="https://www.youtube.com/embed/WeOyg1YPDfw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>	
-
-            <p>헌법 신기훈 교수님<br>
-                <strong>자신만의 수험 노하우</strong>로 시간을 줄여줍니다.</p>
-            <div class="youtube yu04">
-                <iframe src="https://www.youtube.com/embed/A9Vcvs072l8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-
+                                    
             <p>범죄학 박상민 교수님<br>
                 <strong>저스티스 박상민 범죄학</strong>으로 통한다.</p>
             <div class="youtube yu05">
@@ -136,7 +130,7 @@
 				<div>
                     형사법 - 신광은 교수님<br>
                     경찰학 - 장정훈 교수님<br>
-                    헌법 - 문태환 교수님<br>
+                    헌법 - 문태환 교수님
 				</div>
 				<div class="infoTit">종합반 안내</div>
 				<ul>

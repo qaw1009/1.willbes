@@ -16,6 +16,9 @@
             break;
 
         case "3035":
+            $online_tel = '1566-4770 ▶ 6';
+            $school_tel = '1544-0330';
+
             $_arr_cs = [
                 'on_qna_link' => front_url('/support/qna/index/cate/'.$__cfg['CateCode'].'?s_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y'),
                 'off_qna_link' => front_url('/support/qna/index/?'.(empty($data['mapping_cate_data']['CateCode']) === false ? 's_cate_code='.$data['mapping_cate_data']['CateCode'] : '').'&on_off_link_cate_code='.$__cfg['CateCode'].'&s_cate_code_disabled=Y', true),

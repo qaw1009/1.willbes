@@ -26,7 +26,7 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/06/2681_top_bg.jpg) no-repeat center top;} 
       
-        .evt01 {background:#000; padding-bottom:150px} 
+        .evt01 {background:#000;} 
         .evt02 {padding-bottom:150px} 
         .evt02 .tabs {width:860px; margin:0 auto; display:flex}		
         .evt02 .tabs li {width:50%; text-align:center}
@@ -225,7 +225,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox evt03" data-aos="fade-up">
+        <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2681_02.jpg" alt="" />
             <div class="wrap">
                 <ul class="tabBig">

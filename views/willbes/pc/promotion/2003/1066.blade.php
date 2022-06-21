@@ -23,7 +23,10 @@
         .skybanner {position:fixed;top:100px;right:10px;width:259px; text-align:center; z-index:11;}   
         .skybanner a {display:block;margin-bottom:5px;}          
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/05/1066_top_bg.jpg) center top no-repeat}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/06/1066_top_bg.jpg) center top no-repeat}
+        .wb_top .wrap a {position: absolute; left: 50%; bottom: 120px; width: 700px; margin-left:-350px; z-index: 2; display:block; color:#4106b6; background:#eaff00; border-radius:50px; font-size:30px; padding:20px; font-weight:bold; border:3px solid #5e28cf}
+        .wb_top .wrap a:hover {color:#eaff00; background:#4106b6; border-color:#eaff00}
+
 
         .wb_cts00 {padding:50px 0 150px}
 
@@ -34,10 +37,13 @@
         .tabContaier a img.on {display:none}
         .tabContaier a.active img.off {display:none}
         .tabContaier a.active img.on {display:block}
-        .tabContaier ul:after {content:""; display:block; clear:both}      
+        .tabContaier ul:after {content:""; display:block; clear:both}  
 
+        .wb_cts01 {background:#1e1c31; padding:20px 0;} 
 
-        .wb_cts02 {background:#00ced1}
+        .wb_cts02 {background:#00ced1; padding-bottom:150px}
+        .wb_cts02 a {width: 700px; margin:auto; display:block; color:#fff; background:#2f353b; border-radius:50px; font-size:30px; padding:20px; font-weight:bold;}
+        .wb_cts02 a:hover {color:#2f353b; background:#fff;}
 
         .wb_cts02s {background:#e35330;}
         .wb_cts02s .tImg img {margin:0 5px 10px;width:302px;height:166px;border:2px solid #28364a;}
@@ -58,12 +64,7 @@
         .wb_cts05 table td a:hover {background:#ffede8}
         .wb_cts05 table td span {vertical-align:top; color:#e55425;}
 
-        .wb_cts07 {background:#f1f1f1;}
-        .wb_cts07 .wrap span {position: absolute; top:549px; left:50%; width:302px; margin-left:-427px} 
-        .wb_cts07 .wrap span img {width:100%}
 
- 
-        .wb_cts01 {background:#1e1c31; padding:20px 0;} 
         /*타이머*/
         .time {text-align:center; border-radius:20px; width:1000px !important; margin:0 auto;}
         .time ul {}
@@ -95,11 +96,8 @@
       
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/1066_top.jpg" title="제니스 영어 한덕현" />
-                <a href="#evt02" title="반반똑똑영어" style="position: absolute; left: 70.45%; top: 42.79%; width: 19.82%; height: 4.59%; z-index: 2;"></a>
-                <a href="#cts05" title="영어 커리큘럼" style="position: absolute; left: 70.45%; top: 53.91%; width: 19.82%; height: 4.59%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1067" target="_blank" title="독해첨삭반" style="position: absolute; left: 70.45%; top: 64.9%; width: 19.82%; height: 4.59%; z-index: 2;"></a>
-                <a href="#evt03" title="열공합격" style="position: absolute; left: 80%; top: 75.66%; width: 14.82%; height: 11.63%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/1066_top.jpg" title="제니스 영어 한덕현" />                
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank">2023 대비 한덕현 영어 T-PASS 구매하기 ></a>
             </div>
         </div>
 
@@ -121,15 +119,8 @@
                     <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>             
                 </ul>
             </div>
-        </div>   
+        </div> 
 
-        <div class="evtCtnsBox wb_cts03" id="evt03" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/1066_30pack.jpg" title="30일 완성 pack" />
-                <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/194835" target="_blnak" style="position: absolute; left: 22.86%; top: 76.75%; width: 53.66%; height: 7.67%; z-index: 2;"></a>
-            </div>
-        </div>
-        
         <div class="evtCtnsBox wb_cts00" data-aos="fade-up">
 			<img src="https://static.willbes.net/public/images/promotion/2022/04/1066_00.jpg" title="합격전략 공개" />
             <div class="tabContaier">
@@ -166,10 +157,8 @@
 		</div>
 
         <div class="evtCtnsBox wb_cts02" id="evt02" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_02.jpg" title="반반한 모의고사 무료방송" />
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1676" target="_blnak" style="position: absolute; left: 22.86%; top: 78.76%; width: 54.02%; height: 9.15%; z-index: 2;"></a>
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2022/06/1066_02.jpg" title="반반한 모의고사 무료방송" />
+            <a href="#none">2022.8. Coming soon!</a>
         </div>
 
         <div class="evtCtnsBox wb_cts04" data-aos="fade-up">
@@ -177,7 +166,12 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="cts05" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/1066_06.jpg" alt="커리큘럼"/>   
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/1066_06.jpg" alt="커리큘럼"/>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/1066_06_02.gif" alt=""/>
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2694" target="_blank" title="기초영어" style="position: absolute; left: 5.89%; top: 31.97%; width: 43.39%; height: 56.15%; z-index: 2;"></a>
+                <a href="#none" onclick="javascript:alert('7월 Coming Soon!');"  title="grammar" style="position: absolute; left: 50.45%; top: 31.97%; width: 43.39%; height: 56.15%; z-index: 2;"></a>
+            </div>
             <table>
                 <col />
                 <col />
@@ -218,7 +212,7 @@
                         </td>
                         <td>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/186620" target="_blank">스나이퍼32</a>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/192323" target="_blank"><span>NEW</span> 새벽모의고사</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/192323" target="_blank">새벽모의고사</a>
                         </td>
                     </tr>
                     <tr>
@@ -238,8 +232,8 @@
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145826" target="_blank">열끝생활영어</a>
                         </td>
                         <td>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/192958" target="_blank"><span>NEW [지방직]</span> 아작내기</a>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/192955" target="_blank"><span>NEW</span> 실전동형모의고사</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/192958" target="_blank"><span>[지방직]</span> 아작내기</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/192955" target="_blank">실전동형모의고사</a>
                         </td>
                     </tr>
                     <tr>

@@ -10,7 +10,7 @@ class Home extends \app\controllers\FrontController
     private $_category_mobile = [
         '2003' => ['3019','3020','3023','3024','3035','3028','3103','3148'],
         '2005' => 'all',
-        '2006' => ['309002','309003','309004', '308906'],
+        '2006' => ['309002','309003','309004','309007', '308906'],
         '2008' => ['3100'],
         '2016' => ['3147'],
     ];
@@ -1107,21 +1107,45 @@ class Home extends \app\controllers\FrontController
                 // 캠퍼스 코드
                 $arr_campus = $this->_getCampusCcdArray();
             } else {
-                if (empty($this->_cate_code) === true) {
-                    if ($this->_site_code == '2003') {
-                        // 공무원온라인일 경우 인트로 페이지로 리다이렉트
-                        redirect(front_url('/intro/indexTest'));
-                    } else {
-                        // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트
-                        redirect(site_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));
+                if (in_array($this->_site_code, $this->_no_pc_cate_main) === true) {
+                    // 카테고리 메인이 없는 사이트일 경우
+                    $_view_path = $this->_site_code;
+                } else {
+                    if (empty($this->_cate_code) === true) {
+                        if ($this->_site_code == '2003') {
+                            // 공무원온라인일 경우 인트로 페이지로 리다이렉트
+                            redirect(front_url('/intro/indexTest'));
+                        } else {
+                            // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트
+                            redirect(site_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));
+                        }
                     }
-                }
 
-                $_view_path = $this->_site_code . '_' . $cate_code;
+                    $_view_path = $this->_site_code . '_' . $cate_code;
+                }
             }
         } else {
-            // 모바일, APP
-            $_view_path = $this->_site_code;
+            // 모바일카테고리적용
+            if (empty($this->_category_mobile[$this->_site_code]) === false) {
+                if (($this->_category_mobile[$this->_site_code] == 'all') || in_array($this->_cate_code, $this->_category_mobile[$this->_site_code])) {
+                    if ($this->_is_pass_site === true) {
+                        $_view_path = $this->_site_code;
+
+                        // 캠퍼스 코드
+                        $arr_campus = $this->_getCampusCcdArray();
+                    } else {
+                        if (empty($this->_cate_code) === true) {
+                            // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트
+                            redirect(front_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));
+                        }
+                        $_view_path = $this->_site_code . '_' . $cate_code;
+                    }
+                } else {
+                    $_view_path = $this->_site_code;
+                }
+            } else {
+                $_view_path = $this->_site_code;
+            }
         }
 
         // get data

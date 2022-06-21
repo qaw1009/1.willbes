@@ -55,6 +55,10 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2643_02.jpg" alt="합격에서 필요한 것들만 한다" />
 		</div>
 
+        <div class="evtCtnsBox evt05" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/06/2643_05.jpg" alt="온라인 관리 전격 실시" />
+		</div>
+
         <div class="evtCtnsBox evt03" data-aos="fade-up">                      
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2643_03.jpg" alt="윌비스 검찰팀">             
 		</div>

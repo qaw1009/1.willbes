@@ -82,7 +82,7 @@
                 
                 @if($__cfg['CateCode'] == '3095') 
                     <a href="https://gosi.willbes.net/userPackage/show/cate/3095/prod-code/194692" target="_blank" title="국립외교원 pc수강" style="position: absolute; left: 14.55%; top: 67.27%; width: 34.91%; height: 6.01%; z-index: 2;"></a>
-                    <a href="https://gosi.willbes.net/m/userPackage/show/cate/3094/prod-code/194692" target="_blank" title="국립외교원 모바일수강" style="position: absolute; left: 50.27%; top: 67.27%; width: 34.91%; height: 6.01%; z-index: 2;"></a>
+                    <a href="https://gosi.willbes.net/m/userPackage/show/cate/3095/prod-code/194692" target="_blank" title="국립외교원 모바일수강" style="position: absolute; left: 50.27%; top: 67.27%; width: 34.91%; height: 6.01%; z-index: 2;"></a>
                 @endif
             </div>
         </div>        

@@ -62,16 +62,21 @@
                 <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
                     <thead class="bg-white-gray">
                     <tr>
-                        <th class="text-center">선택</th>
-                        <th class="text-center">NO</th>
-                        <th class="text-center">합격예측명</th>
-                        <th class="text-center">직렬</th>
-                        <th class="text-center">과목</th>
-                        <th class="text-center">과목별문제지명</th>
-                        <th class="text-center">문제보기</th>
-                        <th class="text-center">사용여부</th>
-                        <th class="text-center">등록자</th>
-                        <th class="text-center" style="width:130px">등록일</th>
+                        <th rowspan="2" class="text-center">선택</th>
+                        <th rowspan="2" class="text-center">NO</th>
+                        <th rowspan="2" class="text-center">합격예측명</th>
+                        <th rowspan="2" class="text-center">직렬</th>
+                        <th rowspan="2" class="text-center">과목</th>
+                        <th rowspan="2" class="text-center">과목별문제지명</th>
+                        <th rowspan="2" class="text-center">문제보기</th>
+                        <th colspan="2" class="text-center">문항수</th>
+                        <th rowspan="2" class="text-center">사용여부</th>
+                        <th rowspan="2" class="text-center">등록자</th>
+                        <th rowspan="2" class="text-center" style="width:130px">등록일</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center">가형</th>
+                        <th class="text-center bdr-line">나형</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -85,6 +90,7 @@
         var $search_form = $('#search_form');
         var $list_form = $('#list_form');
         var $list_table = $('#list_table');
+        var default_file_path = '{{$default_file_path}}';
 
         $(document).ready(function() {
             // 합격예측서비스명 자동 변경
@@ -130,9 +136,10 @@
                         return '<span class="blue underline-link act-edit">[' + row.PpIdx + '] ' + row.PaperName + '</span>';
                     }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        upImgUrl = '{{$upImgUrl}}' + row.PpIdx + '/';
-                        return '<a href="'+ row.FilePath + row.RealQuestionFile+'" target="_blank" class="blue underline_link">'+row.QuestionFile+'</span>';
+                        return '<a href="'+ default_file_path + row.PpIdx + '/' + row.RealQuestionFile+'" target="_blank" class="blue underline_link">'+row.QuestionFile+'</span>';
                     }},
+                    {'data' : 'QuestionCnt1', 'class': 'text-center'},
+                    {'data' : 'QuestionCnt2', 'class': 'text-center'},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},

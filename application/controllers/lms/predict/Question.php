@@ -52,6 +52,7 @@ class Question extends \app\controllers\BaseController
         $arr_subject_list = $this->predictCodeModel->getPredictForSubjectAll();
 
         $this->load->view('predict/question/index', [
+            'default_file_path' => $this->predictModel->upload_url_predict,
             'predictList' => $data,
             'def_site_code' => $def_site_code,
             'arr_site_code' => $arr_site_code,
@@ -117,14 +118,14 @@ class Question extends \app\controllers\BaseController
         $data = null;
         if(empty($idx) === true){
             $method = "POST";
-            $qData = array();
             $subject = "";
             $PredictIdx = "";
             $filepath = "";
+            $arr_question_type_count = null;
         } else {
             $method = "PUT";
 
-            list($data, $qData) = $this->predictModel->getExamBase($param[0]);
+            $data = $this->predictModel->getExamBase($param[0]);
             if (!$data) {
                 $this->json_error('데이터 조회에 실패했습니다.');
                 return;
@@ -133,6 +134,9 @@ class Question extends \app\controllers\BaseController
             $PredictIdx = $data['PredictIdx'];
             $filepath = $this->config->item('upload_url_predict', 'predict');
             $filepath = $filepath.$idx."/";
+
+            //문항정보 카운트수
+            $arr_question_type_count = $this->predictModel->countExamQuestions($idx);
         }
 
         $this->load->view('predict/question/question_create', [
@@ -145,9 +149,9 @@ class Question extends \app\controllers\BaseController
             'subject' => $subject,
             'PredictIdx' => $PredictIdx,
             'data' => $data,
-            'qData' => $qData,
             'filepath' => $filepath,
-            'isDeny' => !empty($qData) ? true : false
+            'arr_question_type_count' => $arr_question_type_count,
+            'isDeny' => (empty($arr_question_type_count['QuestionType1']) === true && empty($arr_question_type_count['QuestionType2']) === true) ? false : true
 
         ]);
     }
@@ -205,6 +209,32 @@ class Question extends \app\controllers\BaseController
     }
 
     /**
+     * 문제문항리스트 모달팝업
+     */
+    public function questionListModal()
+    {
+        if (empty($this->_reqG('pp_idx')) === true || empty($this->_reqG('question_type')) === true || empty($this->_reqG('total_score')) === true) {
+            show_error('잘못된 접근입니다.');
+        }
+
+        $method = 'PUT';
+        $pp_idx = $this->_reqG('pp_idx');
+        $question_type = $this->_reqG('question_type');
+        $total_score = $this->_reqG('total_score');
+
+        //문항정보
+        $question_data = $this->predictModel->listExamQuestions(['EQ' => ['PQ.PpIdx' => $pp_idx,'PQ.QuestionType' => $question_type,'PQ.IsStatus' => 'Y']]);
+
+        $this->load->view('predict/question/question_modal', [
+            'method' => $method
+            ,'pp_idx' => $pp_idx
+            ,'question_type' => $question_type
+            ,'total_score' => $total_score
+            ,'question_data' => $question_data
+        ]);
+    }
+
+    /**
      * 문항정보 등록,수정
      */
     public function storeQuestion()
@@ -213,8 +243,7 @@ class Question extends \app\controllers\BaseController
         if(!is_object($Info) || !isset($Info->chapterTotal) || !isset($Info->chapterExist) || !isset($Info->chapterDel)) {
             $this->json_error("입력오류");
             return;
-        }
-        else {
+        } else {
             $_POST['chapterTotal'] = $Info->chapterTotal;
             $_POST['chapterExist'] = $Info->chapterExist;
             $_POST['chapterDel'] = $Info->chapterDel;
@@ -254,6 +283,21 @@ class Question extends \app\controllers\BaseController
 
         $result = $this->predictModel->storePPQuestion();
         $this->json_result($result['ret_cd'], '저장되었습니다.', $result, $result);
+    }
+
+    /**
+     * 문항 전체 삭제
+     */
+    public function deleteQuestion()
+    {
+        $rules = [
+            ['field' => 'idx', 'label' => '과목식별자', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'question_type', 'label' => '문제유형', 'rules' => 'trim|required'],
+        ];
+        if ($this->validate($rules) === false) return;
+
+        $result = $this->predictModel->deleteQuestion($this->_reqP('idx'), $this->_reqP('question_type'));
+        $this->json_result($result, '삭제되었습니다.', $result);
     }
 
     /**

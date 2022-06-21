@@ -167,6 +167,8 @@ class PredictModel extends WB_Model
         $column = "
 	        PP.PpIdx, PP.PaperName, PP.AnswerNum, PP.TotalScore, PP.QuestionFile, PP.RealQuestionFile, PP.RegDate, PP.PredictIdx, PP.SubjectCode, PP.Type, 
 	        A.wAdminName, A2.wAdminName AS wAdminName2, PP.IsUse, PD.ProdName
+	        ,(SELECT COUNT(*) FROM {$this->_table['predictQuestion']} AS EQ WHERE PP.PpIdx = EQ.PpIdx AND EQ.QuestionType = 1 AND EQ.IsStatus = 'Y') AS QuestionCnt1
+            ,(SELECT COUNT(*) FROM {$this->_table['predictQuestion']} AS EQ WHERE PP.PpIdx = EQ.PpIdx AND EQ.QuestionType = 2 AND EQ.IsStatus = 'Y') AS QuestionCnt2
 	        ,(SELECT CcdName FROM lms_predict_code AS a WHERE a.Ccd = PP.TakeMockPart) AS TakeMockPartName
 	        ,(SELECT CcdName FROM lms_predict_code AS a WHERE a.Ccd = PP.SubjectCode) AS SubjectName
         ";
@@ -185,11 +187,7 @@ class PredictModel extends WB_Model
         //echo "<pre>". 'select' . $column . $from . $where . $order . $offset_limit . "</pre>";
 
         $data = $this->_conn->query('SELECT' . $column . $from . $where . $order . $offset_limit)->result_array();
-        foreach($data as $key => &$val){
-            $data[$key]['FilePath'] = $this->upload_url_predict.$val['PpIdx']."/";
-        }
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
-
         return array($data, $count);
     }
 
@@ -467,8 +465,8 @@ class PredictModel extends WB_Model
             // lms_mock_questions 복사
             $sql = /** @lang text */"
                 INSERT INTO {$this->_table['predictQuestion']}
-                    (PpIdx, QuestionNO, RightAnswer, Scoring, RegIp, RegAdminIdx, RegDatm)
-                SELECT ?, QuestionNO, RightAnswer, Scoring, ?, ?, ?
+                    (PpIdx, QuestionType, QuestionNO, RightAnswer, Scoring, RegIp, RegAdminIdx, RegDatm)
+                SELECT ?, QuestionType, QuestionNO, RightAnswer, Scoring, ?, ?, ?
                 FROM {$this->_table['predictQuestion']}
                 WHERE PpIdx = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($nowIdx, $RegIp, $RegAdminIdx, $RegDatm, $idx));
@@ -493,6 +491,25 @@ class PredictModel extends WB_Model
         }
 
         return ['ret_cd' => true, 'dt' => ['idx' => $nowIdx]];
+    }
+
+    /**
+     * 문항리스트
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function listExamQuestions($arr_condition = [])
+    {
+        $column = 'PQ.*, ADMIN.wAdminName AS RegAdminName, ADMIN2.wAdminName AS UpdAdminName';
+        $from = "
+            FROM {$this->_table['predictQuestion']} AS PQ
+            LEFT OUTER JOIN {$this->_table['admin']} as ADMIN ON PQ.RegAdminIdx = ADMIN.wAdminIdx and ADMIN.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table['admin']} as ADMIN2 ON PQ.UpdAdminIdx = ADMIN2.wAdminIdx and ADMIN2.wIsStatus='Y'
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select ' . $column . $from . $where)->result_array();
     }
 
     /**
@@ -912,13 +929,7 @@ class PredictModel extends WB_Model
         $order = " ORDER BY PP.RegDate DESC";
 
         $data = $this->_conn->query('SELECT' . $column . $from . $where . $order)->row_array();
-        if(empty($data)) return false;
-
-        $where = array('PpIdx' => $idx, 'IsStatus' => 'Y');
-        // 문항정보
-        $qData = $this->_conn->order_by('QuestionNO ASC')->get_where($this->_table['predictQuestion'], $where)->result_array();
-
-        return array($data, $qData);
+        return $data;
     }
 
     /**
@@ -1233,6 +1244,20 @@ class PredictModel extends WB_Model
     }
 
     /**
+     * 문제유형 수
+     * @param $pp_idx
+     * @return mixed
+     */
+    public function countExamQuestions($pp_idx)
+    {
+        $query_string = "
+            (SELECT COUNT(*) AS cnt FROM {$this->_table['predictQuestion']} WHERE PpIdx = '{$pp_idx}' AND QuestionType = 1 AND IsStatus = 'Y') AS QuestionType1
+            ,(SELECT COUNT(*) AS cnt FROM {$this->_table['predictQuestion']} WHERE PpIdx = '{$pp_idx}' AND QuestionType = 2 AND IsStatus = 'Y') AS QuestionType2
+        ";
+        return $this->_conn->query('select ' . $query_string)->row_array();
+    }
+
+    /**
      * 문항정보 등록,수정
      *
      * (주의) 저장파일에 Q1_~ 로 번호 붙으나 삭제를 하게 되면 index가 변경됨으로 번호가 안 맞을 수도 있음 (중복은 안됨)
@@ -1242,40 +1267,32 @@ class PredictModel extends WB_Model
         try {
             $this->_conn->trans_begin();
 
+            $dataReg = $dataMod = $dataDel = [];
             if( !empty($this->input->post('chapterTotal')) ) {
                 foreach ($this->input->post('chapterTotal') as $k => $v) {
-                    if ( empty($this->input->post('chapterExist')) || !in_array($v, $this->input->post('chapterExist')) ) { // 신규등록
-
-                        $dataReg = array(
+                    if ( empty($this->input->post('chapterExist')) || !in_array($v, $this->input->post('chapterExist')) ) {
+                        // 등록
+                        $dataReg[$k] = [
                             'PpIdx' => $this->input->post('idx'),
+                            'QuestionType' => $this->input->post('question_type'),
                             'QuestionNO' => $_POST['QuestionNO'][$k],
                             'RightAnswer' => $_POST['RightAnswer'][$k],
                             'Scoring' => $_POST['Scoring'][$k],
                             'RegIp' => $this->input->ip_address(),
                             'RegDatm' => date("Y-m-d H:i:s"),
                             'RegAdminIdx' => $this->session->userdata('admin_idx'),
-                        );
-
-                        $this->_conn->insert($this->_table['predictQuestion'], $dataReg);
-                        if(!$this->_conn->affected_rows()) {
-                            throw new Exception('저장에 실패했습니다(1).');
-                        }
+                        ];
                     }
-                    else { // 수정
-                        $dataMod = array(
+                    else {
+                        // 수정
+                        $dataMod[$k] = [
+                            'PqIdx' => $v,
                             'QuestionNO' => $_POST['QuestionNO'][$k],
                             'RightAnswer' => $_POST['RightAnswer'][$k],
                             'Scoring' => $_POST['Scoring'][$k],
                             'UpdDatm' => date("Y-m-d H:i:s"),
                             'UpdAdminIdx' => $this->session->userdata('admin_idx'),
-                        );
-
-                        $where = array('PqIdx' => $v);
-                        $this->_conn->update($this->_table['predictQuestion'], $dataMod, $where);
-
-                        if(!$this->_conn->affected_rows()) {
-                            throw new Exception('저장에 실패했습니다(2).');
-                        }
+                        ];
                     }
                 }
             }
@@ -1283,19 +1300,19 @@ class PredictModel extends WB_Model
             // 삭제 (IsStatus Update)
             if( !empty($this->input->post('chapterDel')) ) {
                 foreach ($this->input->post('chapterDel') as $k => $v) {
-                    $dataDel = array(
+                    $dataDel[$k] = [
+                        'PqIdx' => $v,
                         'IsStatus' => 'N',
                         'UpdDatm' => date("Y-m-d H:i:s"),
                         'UpdAdminIdx' => $this->session->userdata('admin_idx'),
-                    );
-
-                    $where = array('PqIdx' => $v);
-                    $this->_conn->update($this->_table['predictQuestion'], $dataDel, $where);
-                    if(!$this->_conn->affected_rows()) {
-                        throw new Exception('저장에 실패했습니다(3).');
-                    }
-
+                    ];
                 }
+            }
+            if($dataReg) $this->_conn->insert_batch($this->_table['predictQuestion'], $dataReg);
+            if($dataMod) $this->_conn->update_batch($this->_table['predictQuestion'], $dataMod, 'PqIdx');
+            if($dataDel) $this->_conn->update_batch($this->_table['predictQuestion'], $dataDel, 'PqIdx');
+            if ($this->_conn->trans_status() === false) {
+                throw new Exception('저장에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();
@@ -1306,6 +1323,31 @@ class PredictModel extends WB_Model
         }
 
         return ['ret_cd' => true, 'dt' => ['idx' => $this->input->post('idx')]];
+    }
+
+    /**
+     * 문항 전체 삭제
+     * @param $pp_idx
+     * @param $question_type
+     * @return bool
+     */
+    public function deleteQuestion($pp_idx, $question_type)
+    {
+        try {
+            $input = [
+                'IsStatus' => 'N',
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s'),
+            ];
+
+            $this->_conn->set($input)->where('PpIdx', $pp_idx)->where('QuestionType', $question_type);
+            if ($this->_conn->update($this->_table['predictQuestion']) === false) {
+                throw new \Exception('삭제 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
     }
 
     /**

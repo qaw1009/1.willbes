@@ -27,15 +27,11 @@
         .Area01 .gosi-bntop .GositabBox p.leftBtn {margin-left:-620px;}
         .Area01 .gosi-bntop .GositabBox p.rightBtn {margin-left:588px; background-position: right center;}
         .Area01 .gosi-bntop .GositabBox p:hover {opacity:100; filter:alpha(opacity=100);}
-
-
         .job308906 .article1 {background:url(https://static.willbes.net/public/images/promotion/main/2006/308906_top_bg.jpg) no-repeat center top; margin-top:20px; text-align:center}
-
         .job308906 .article2 {width:979px; margin:100px auto; box-shadow:10px 10px 20px rgba(0,0,0,.3);}
         .job308906 .article3 {background:#c7ecff; text-align:center; padding-bottom:100px}
         .job308906 .article3 a {display:block; width:450px; margin:50px auto; padding:20px 0; font-size:24px; border-radius:50px; background:#363636; color:#fff}
         .job308906 .article3 a:hover {background:#000}
-
         .job308906 .article4 {background:#efefef; padding-bottom:100px}
         .job308906 .article4 .wrap {width:1120px; margin:0 auto; position:relative}
         .job308906 .article5 .wrap {width:1120px; margin:0 auto; position:relative}
@@ -57,9 +53,9 @@
     <!-- Container -->
     <div id="Container" class="Container job308906 c_both">
         <!-- site nav -->
-        @include('willbes.pc.layouts.partial.site_menu')
+    @include('willbes.pc.layouts.partial.site_menu')
 
-        <!-- 타이머 -->
+    <!-- 타이머 -->
         @if(empty($data['dday']) === false)
             <div id="newTopDday" class="newTopDday">
                 <div class="d_day NSK">
@@ -105,12 +101,12 @@
                     <a href="https://job.willbes.net/lecture/index/cate/308906/pattern/only?search_order=regist&subject_idx=2171"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_01.jpg" title="훈쌤 전격입성"></a>
                     <a href="https://job.willbes.net/lecture/index/cate/308906/pattern/only?search_order=regist&subject_idx=2172" class="f_right"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_02.jpg" title="훈쌤 전격입성"></a>
                     <a href="https://job.willbes.net/Package/index/cate/308906/pack/648001"><img class="mt30" src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_03.jpg" title="훈쌤 전격입성"></a>
-                </div>     
+                </div>
 
                 <div class="csTel NSK">
                     빅테이터분석기사 자격증 문의 <span class="NSK-Black">1544-1661</span>
                 </div>
-            </div>  
+            </div>
         </div>
     </div>
     <!-- End Container -->

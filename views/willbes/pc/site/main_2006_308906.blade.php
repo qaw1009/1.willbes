@@ -27,15 +27,11 @@
         .Area01 .gosi-bntop .GositabBox p.leftBtn {margin-left:-620px;}
         .Area01 .gosi-bntop .GositabBox p.rightBtn {margin-left:588px; background-position: right center;}
         .Area01 .gosi-bntop .GositabBox p:hover {opacity:100; filter:alpha(opacity=100);}
-
-
         .job308906 .article1 {background:url(https://static.willbes.net/public/images/promotion/main/2006/308906_top_bg.jpg) no-repeat center top; margin-top:20px; text-align:center}
-
         .job308906 .article2 {width:979px; margin:100px auto; box-shadow:10px 10px 20px rgba(0,0,0,.3);}
         .job308906 .article3 {background:#c7ecff; text-align:center; padding-bottom:100px}
         .job308906 .article3 a {display:block; width:450px; margin:50px auto; padding:20px 0; font-size:24px; border-radius:50px; background:#363636; color:#fff}
         .job308906 .article3 a:hover {background:#000}
-
         .job308906 .article4 {background:#efefef; padding-bottom:100px}
         .job308906 .article4 .wrap {width:1120px; margin:0 auto; position:relative}
         .job308906 .article5 .wrap {width:1120px; margin:0 auto; position:relative}

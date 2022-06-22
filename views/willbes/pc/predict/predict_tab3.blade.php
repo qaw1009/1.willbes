@@ -88,239 +88,107 @@
 </ul>
 
 <div id="sub1_tab1">
-    <div class="bold chart">
-        <div class="graph graph_type">
-            <table>
-                <tbody>
-                    <tr>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">7%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">10%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">13%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">16%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">25%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">31%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">42%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">49%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">51%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">55%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">58%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">61%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">63%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">68%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">75%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">78%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>                 
-                    </tr>
-                </tbody> 
-            </table>
-        </div>     
+    <div class="bold chart graph_area">
+        <div class="graph_area">
+            <ul class="graph">
+                <li>
+                    <div>
+                        <span style="height:0.00%;"><i>0.00%</i></span>
+                    </div>
+                    <p>96점~</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.22%;"><i>0.22%</i></span>
+                    </div>
+                    <p>92점~96점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.64%;"><i>0.64%</i></span>
+                    </div>
+                    <p>88점~92점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.65%;"><i>1.65%</i></span>
+                    </div>
+                    <p>84점~88점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:4.35%;"><i>4.35%</i></span>
+                    </div>
+                    <p>80점~84점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:8.67%;"><i>8.67%</i></span>
+                    </div>
+                    <p>76점~80점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:11.37%;"><i>11.37%</i></span>
+                    </div>
+                    <p>72점~76점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:14.91%;"><i>14.91%</i></span>
+                    </div>
+                    <p>68점~72점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:13.95%;"><i>13.95%</i></span>
+                    </div>
+                    <p>64점~68점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:12.40%;"><i>12.40%</i></span>
+                    </div>
+                    <p>60점~64점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:9.92%;"><i>9.92%</i></span>
+                    </div>
+                    <p>56점~60점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:7.88%;"><i>7.88%</i></span>
+                    </div>
+                    <p>52점~56점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:5.13%;"><i>5.13%</i></span>
+                    </div>
+                    <p>48점~52점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:3.27%;"><i>3.27%</i></span>
+                    </div>
+                    <p>44점~48점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.47%;"><i>1.47%</i></span>
+                    </div>
+                    <p>40점~44점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.27%;"><i>1.27%</i></span>
+                    </div>
+                    <p>~40점</p>
+                </li>
+            </ul>
+        </div>    
     </div>
     <table cellspacing="0" cellpadding="0" class="table_type">
         <col width="88" span="7" />
@@ -417,568 +285,107 @@
 </div>
 
 <div id="sub1_tab2">
-    <div class="bold chart">
-        <div class="graph graph_type">
-            <table>
-                <tbody>
-                    <tr>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">7%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">10%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">13%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">16%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">25%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">31%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">42%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">49%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">51%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">55%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">58%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">61%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">63%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">68%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">75%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">78%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>                 
-                    </tr>
-                </tbody> 
-            </table>
-        </div>     
-    </div>
-    <table cellspacing="0" cellpadding="0" class="table_type">
-        <col width="88" span="7" />
-        <col width="72" />
-        <tr class="bold gray">
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
-            <td rowspan="2" dir="ltr" width="88">구간비율</td>
-            <td rowspan="2" dir="ltr" width="88">누적인원</td>
-            <td rowspan="2" dir="ltr" width="88">누적비율</td>
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
-            <td rowspan="2" dir="ltr" width="88">구간비율</td>
-            <td rowspan="2" dir="ltr" width="88">누적인원</td>
-            <td rowspan="2" dir="ltr" width="72">누적비율</td>
-        </tr>
-        <tr> </tr>
-        <tr>
-            <td dir="ltr" width="88" class="bold blue">96점~</td>
-            <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88"> - </td>
-            <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
-            <td dir="ltr" width="88">13.95%</td>
-            <td dir="ltr" width="88">2,270</td>
-            <td dir="ltr" width="72">55.75%</td>
-        </tr>
-        <tr>
-            <td dir="ltr" width="88" class="bold blue">92점~96점</td>
-            <td dir="ltr" width="88">0.22%</td>
-            <td dir="ltr" width="88">9</td>
-            <td dir="ltr" width="88">0.22%</td>
-            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
-            <td dir="ltr" width="88">12.40%</td>
-            <td dir="ltr" width="88">2,775</td>
-            <td dir="ltr" width="72">68.15%</td>
-        </tr>
-        <tr>
-            <td dir="ltr" width="88" class="bold blue">88점~92점</td>
-            <td dir="ltr" width="88">0.64%</td>
-            <td dir="ltr" width="88">35</td>
-            <td dir="ltr" width="88">0.86%</td>
-            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
-            <td dir="ltr" width="88">9.92%</td>
-            <td dir="ltr" width="88">3,179</td>
-            <td dir="ltr" width="72">78.07%</td>
-        </tr>
-        <tr>
-            <td dir="ltr" width="88" class="bold blue">84점~88점</td>
-            <td dir="ltr" width="88">1.65%</td>
-            <td dir="ltr" width="88">102</td>
-            <td dir="ltr" width="88">2.50%</td>
-            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
-            <td dir="ltr" width="88">7.88%</td>
-            <td dir="ltr" width="88">3,500</td>
-            <td dir="ltr" width="72">85.95%</td>
-        </tr>
-        <tr>
-            <td dir="ltr" width="88" class="bold blue">80점~84점</td>
-            <td dir="ltr" width="88">4.35%</td>
-            <td dir="ltr" width="88">279</td>
-            <td dir="ltr" width="88">6.85%</td>
-            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
-            <td dir="ltr" width="88">5.13%</td>
-            <td dir="ltr" width="88">3,709</td>
-            <td dir="ltr" width="72">91.09%</td>
-        </tr>
-        <tr>
-            <td dir="ltr" width="88" class="bold blue">76점~80점</td>
-            <td dir="ltr" width="88">8.67%</td>
-            <td dir="ltr" width="88">632</td>
-            <td dir="ltr" width="88">15.52%</td>
-            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
-            <td dir="ltr" width="88">3.27%</td>
-            <td dir="ltr" width="88">3,842</td>
-            <td dir="ltr" width="72">94.35%</td>
-        </tr>
-        <tr>
-            <td dir="ltr" width="88" class="bold blue">72점~76점</td>
-            <td dir="ltr" width="88">11.37%</td>
-            <td dir="ltr" width="88">1,095</td>
-            <td dir="ltr" width="88">26.89%</td>
-            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
-            <td dir="ltr" width="88">1.47%</td>
-            <td dir="ltr" width="88">3,902</td>
-            <td dir="ltr" width="72">95.83%</td>
-        </tr>
-        <tr>
-            <td dir="ltr" width="88" class="bold blue">68점~72점</td>
-            <td dir="ltr" width="88">14.91%</td>
-            <td dir="ltr" width="88">1,702</td>
-            <td dir="ltr" width="88">41.80%</td>
-            <td colspan="4" dir="ltr" width="336" class="bold blue"></td>
-        </tr>
-    </table>    
-</div>
-
-<div id="sub1_tab3">
-    <div class="bold chart">
-        <div class="graph graph_type">
-            <table>
-                <tbody>
-                    <tr>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">7%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">10%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">13%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">16%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">25%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">31%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">42%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">49%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">51%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">55%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">58%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">61%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">63%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">68%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">75%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">78%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>                 
-                    </tr>
-                </tbody> 
-            </table>
-        </div>     
+    <div class="bold chart graph_area">
+        <div class="graph_area">
+            <ul class="graph">
+                <li>
+                    <div>
+                        <span style="height:0.00%;"><i>0.00%</i></span>
+                    </div>
+                    <p>96점~</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.22%;"><i>0.22%</i></span>
+                    </div>
+                    <p>92점~96점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.64%;"><i>0.64%</i></span>
+                    </div>
+                    <p>88점~92점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.65%;"><i>1.65%</i></span>
+                    </div>
+                    <p>84점~88점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:4.35%;"><i>4.35%</i></span>
+                    </div>
+                    <p>80점~84점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:8.67%;"><i>8.67%</i></span>
+                    </div>
+                    <p>76점~80점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:11.37%;"><i>11.37%</i></span>
+                    </div>
+                    <p>72점~76점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:14.91%;"><i>14.91%</i></span>
+                    </div>
+                    <p>68점~72점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:13.95%;"><i>13.95%</i></span>
+                    </div>
+                    <p>64점~68점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:12.40%;"><i>12.40%</i></span>
+                    </div>
+                    <p>60점~64점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:9.92%;"><i>9.92%</i></span>
+                    </div>
+                    <p>56점~60점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:7.88%;"><i>7.88%</i></span>
+                    </div>
+                    <p>52점~56점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:5.13%;"><i>5.13%</i></span>
+                    </div>
+                    <p>48점~52점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:3.27%;"><i>3.27%</i></span>
+                    </div>
+                    <p>44점~48점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.47%;"><i>1.47%</i></span>
+                    </div>
+                    <p>40점~44점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.27%;"><i>1.27%</i></span>
+                    </div>
+                    <p>~40점</p>
+                </li>
+            </ul>
+        </div>    
     </div>
     <table cellspacing="0" cellpadding="0" class="table_type">
         <col width="88" span="7" />
@@ -1073,241 +480,304 @@
         </tr>
     </table>
 </div>
-
+<div id="sub1_tab3">
+    <div class="bold chart graph_area">
+        <div class="graph_area">
+            <ul class="graph">
+                <li>
+                    <div>
+                        <span style="height:0.00%;"><i>0.00%</i></span>
+                    </div>
+                    <p>96점~</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.22%;"><i>0.22%</i></span>
+                    </div>
+                    <p>92점~96점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.64%;"><i>0.64%</i></span>
+                    </div>
+                    <p>88점~92점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.65%;"><i>1.65%</i></span>
+                    </div>
+                    <p>84점~88점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:4.35%;"><i>4.35%</i></span>
+                    </div>
+                    <p>80점~84점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:8.67%;"><i>8.67%</i></span>
+                    </div>
+                    <p>76점~80점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:11.37%;"><i>11.37%</i></span>
+                    </div>
+                    <p>72점~76점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:14.91%;"><i>14.91%</i></span>
+                    </div>
+                    <p>68점~72점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:13.95%;"><i>13.95%</i></span>
+                    </div>
+                    <p>64점~68점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:12.40%;"><i>12.40%</i></span>
+                    </div>
+                    <p>60점~64점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:9.92%;"><i>9.92%</i></span>
+                    </div>
+                    <p>56점~60점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:7.88%;"><i>7.88%</i></span>
+                    </div>
+                    <p>52점~56점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:5.13%;"><i>5.13%</i></span>
+                    </div>
+                    <p>48점~52점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:3.27%;"><i>3.27%</i></span>
+                    </div>
+                    <p>44점~48점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.47%;"><i>1.47%</i></span>
+                    </div>
+                    <p>40점~44점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.27%;"><i>1.27%</i></span>
+                    </div>
+                    <p>~40점</p>
+                </li>
+            </ul>
+        </div>    
+    </div>
+    <table cellspacing="0" cellpadding="0" class="table_type">
+        <col width="88" span="7" />
+        <col width="72" />
+        <tr class="bold gray">
+            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">구간비율</td>
+            <td rowspan="2" dir="ltr" width="88">누적인원</td>
+            <td rowspan="2" dir="ltr" width="88">누적비율</td>
+            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">구간비율</td>
+            <td rowspan="2" dir="ltr" width="88">누적인원</td>
+            <td rowspan="2" dir="ltr" width="72">누적비율</td>
+        </tr>
+        <tr> </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">96점~</td>
+            <td dir="ltr" width="88">0.00%</td>
+            <td dir="ltr" width="88"> - </td>
+            <td dir="ltr" width="88">0.00%</td>
+            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
+            <td dir="ltr" width="88">13.95%</td>
+            <td dir="ltr" width="88">2,270</td>
+            <td dir="ltr" width="72">55.75%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">92점~96점</td>
+            <td dir="ltr" width="88">0.22%</td>
+            <td dir="ltr" width="88">9</td>
+            <td dir="ltr" width="88">0.22%</td>
+            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
+            <td dir="ltr" width="88">12.40%</td>
+            <td dir="ltr" width="88">2,775</td>
+            <td dir="ltr" width="72">68.15%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">88점~92점</td>
+            <td dir="ltr" width="88">0.64%</td>
+            <td dir="ltr" width="88">35</td>
+            <td dir="ltr" width="88">0.86%</td>
+            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
+            <td dir="ltr" width="88">9.92%</td>
+            <td dir="ltr" width="88">3,179</td>
+            <td dir="ltr" width="72">78.07%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">84점~88점</td>
+            <td dir="ltr" width="88">1.65%</td>
+            <td dir="ltr" width="88">102</td>
+            <td dir="ltr" width="88">2.50%</td>
+            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
+            <td dir="ltr" width="88">7.88%</td>
+            <td dir="ltr" width="88">3,500</td>
+            <td dir="ltr" width="72">85.95%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">80점~84점</td>
+            <td dir="ltr" width="88">4.35%</td>
+            <td dir="ltr" width="88">279</td>
+            <td dir="ltr" width="88">6.85%</td>
+            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
+            <td dir="ltr" width="88">5.13%</td>
+            <td dir="ltr" width="88">3,709</td>
+            <td dir="ltr" width="72">91.09%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">76점~80점</td>
+            <td dir="ltr" width="88">8.67%</td>
+            <td dir="ltr" width="88">632</td>
+            <td dir="ltr" width="88">15.52%</td>
+            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
+            <td dir="ltr" width="88">3.27%</td>
+            <td dir="ltr" width="88">3,842</td>
+            <td dir="ltr" width="72">94.35%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">72점~76점</td>
+            <td dir="ltr" width="88">11.37%</td>
+            <td dir="ltr" width="88">1,095</td>
+            <td dir="ltr" width="88">26.89%</td>
+            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
+            <td dir="ltr" width="88">1.47%</td>
+            <td dir="ltr" width="88">3,902</td>
+            <td dir="ltr" width="72">95.83%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">68점~72점</td>
+            <td dir="ltr" width="88">14.91%</td>
+            <td dir="ltr" width="88">1,702</td>
+            <td dir="ltr" width="88">41.80%</td>
+            <td colspan="4" dir="ltr" width="336" class="bold blue"></td>
+        </tr>
+    </table>
+</div>
 <div id="sub1_tab4">
-    <div class="bold chart">
-        <div class="graph graph_type">
-            <table>
-                <tbody>
-                    <tr>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">7%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">10%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">13%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">16%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">25%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">31%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">42%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">49%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">51%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">55%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">58%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">61%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">63%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">68%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">75%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td width="13" align="center">
-                            <table border="0" cellspacing="0" cellpadding="0" width="13">
-                                <tbody>
-                                    <tr class="subject">
-                                        <td height="184.75" valign="bottom">
-                                            <div class="percent" name="">78%</div>
-                                        </td>
-                                    </tr>
-                                    <tr class="sub_bot">
-                                        <td height="15.25" width="13"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>                 
-                    </tr>
-                </tbody> 
-            </table>
-        </div>     
+    <div class="bold chart graph_area">
+        <div class="graph_area">
+            <ul class="graph">
+                <li>
+                    <div>
+                        <span style="height:0.00%;"><i>0.00%</i></span>
+                    </div>
+                    <p>96점~</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.22%;"><i>0.22%</i></span>
+                    </div>
+                    <p>92점~96점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.64%;"><i>0.64%</i></span>
+                    </div>
+                    <p>88점~92점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.65%;"><i>1.65%</i></span>
+                    </div>
+                    <p>84점~88점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:4.35%;"><i>4.35%</i></span>
+                    </div>
+                    <p>80점~84점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:8.67%;"><i>8.67%</i></span>
+                    </div>
+                    <p>76점~80점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:11.37%;"><i>11.37%</i></span>
+                    </div>
+                    <p>72점~76점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:14.91%;"><i>14.91%</i></span>
+                    </div>
+                    <p>68점~72점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:13.95%;"><i>13.95%</i></span>
+                    </div>
+                    <p>64점~68점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:12.40%;"><i>12.40%</i></span>
+                    </div>
+                    <p>60점~64점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:9.92%;"><i>9.92%</i></span>
+                    </div>
+                    <p>56점~60점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:7.88%;"><i>7.88%</i></span>
+                    </div>
+                    <p>52점~56점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:5.13%;"><i>5.13%</i></span>
+                    </div>
+                    <p>48점~52점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:3.27%;"><i>3.27%</i></span>
+                    </div>
+                    <p>44점~48점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.47%;"><i>1.47%</i></span>
+                    </div>
+                    <p>40점~44점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.27%;"><i>1.27%</i></span>
+                    </div>
+                    <p>~40점</p>
+                </li>
+            </ul>
+        </div>    
     </div>
     <table cellspacing="0" cellpadding="0" class="table_type">
         <col width="88" span="7" />
@@ -1474,8 +944,107 @@
 </ul>
 
 <div id="sub2_tab1">
-    <div class="bold chart">
-        <a href="javascript:void(0)">표 영역</a>
+    <div class="bold chart graph_area">
+        <div class="graph_area">
+            <ul class="graph">
+                <li>
+                    <div>
+                        <span style="height:0.00%;"><i>0.00%</i></span>
+                    </div>
+                    <p>96점~</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.22%;"><i>0.22%</i></span>
+                    </div>
+                    <p>92점~96점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.64%;"><i>0.64%</i></span>
+                    </div>
+                    <p>88점~92점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.65%;"><i>1.65%</i></span>
+                    </div>
+                    <p>84점~88점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:4.35%;"><i>4.35%</i></span>
+                    </div>
+                    <p>80점~84점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:8.67%;"><i>8.67%</i></span>
+                    </div>
+                    <p>76점~80점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:11.37%;"><i>11.37%</i></span>
+                    </div>
+                    <p>72점~76점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:14.91%;"><i>14.91%</i></span>
+                    </div>
+                    <p>68점~72점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:13.95%;"><i>13.95%</i></span>
+                    </div>
+                    <p>64점~68점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:12.40%;"><i>12.40%</i></span>
+                    </div>
+                    <p>60점~64점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:9.92%;"><i>9.92%</i></span>
+                    </div>
+                    <p>56점~60점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:7.88%;"><i>7.88%</i></span>
+                    </div>
+                    <p>52점~56점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:5.13%;"><i>5.13%</i></span>
+                    </div>
+                    <p>48점~52점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:3.27%;"><i>3.27%</i></span>
+                    </div>
+                    <p>44점~48점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.47%;"><i>1.47%</i></span>
+                    </div>
+                    <p>40점~44점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.27%;"><i>1.27%</i></span>
+                    </div>
+                    <p>~40점</p>
+                </li>
+            </ul>
+        </div>    
     </div>
     <table cellspacing="0" cellpadding="0" class="table_type">
         <col width="88" span="7" />
@@ -1570,9 +1139,594 @@
         </tr>
     </table>
 </div>
-<div id="sub2_tab2">2</div>
-<div id="sub2_tab3">3</div>
-<div id="sub2_tab4">4</div>
+<div id="sub2_tab2">
+    <div class="bold chart graph_area">
+        <div class="graph_area">
+            <ul class="graph">
+                <li>
+                    <div>
+                        <span style="height:0.00%;"><i>0.00%</i></span>
+                    </div>
+                    <p>96점~</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.22%;"><i>0.22%</i></span>
+                    </div>
+                    <p>92점~96점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.64%;"><i>0.64%</i></span>
+                    </div>
+                    <p>88점~92점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.65%;"><i>1.65%</i></span>
+                    </div>
+                    <p>84점~88점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:4.35%;"><i>4.35%</i></span>
+                    </div>
+                    <p>80점~84점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:8.67%;"><i>8.67%</i></span>
+                    </div>
+                    <p>76점~80점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:11.37%;"><i>11.37%</i></span>
+                    </div>
+                    <p>72점~76점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:14.91%;"><i>14.91%</i></span>
+                    </div>
+                    <p>68점~72점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:13.95%;"><i>13.95%</i></span>
+                    </div>
+                    <p>64점~68점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:12.40%;"><i>12.40%</i></span>
+                    </div>
+                    <p>60점~64점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:9.92%;"><i>9.92%</i></span>
+                    </div>
+                    <p>56점~60점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:7.88%;"><i>7.88%</i></span>
+                    </div>
+                    <p>52점~56점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:5.13%;"><i>5.13%</i></span>
+                    </div>
+                    <p>48점~52점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:3.27%;"><i>3.27%</i></span>
+                    </div>
+                    <p>44점~48점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.47%;"><i>1.47%</i></span>
+                    </div>
+                    <p>40점~44점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.27%;"><i>1.27%</i></span>
+                    </div>
+                    <p>~40점</p>
+                </li>
+            </ul>
+        </div>    
+    </div>
+    <table cellspacing="0" cellpadding="0" class="table_type">
+        <col width="88" span="7" />
+        <col width="72" />
+        <tr class="bold gray">
+            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">구간비율</td>
+            <td rowspan="2" dir="ltr" width="88">누적인원</td>
+            <td rowspan="2" dir="ltr" width="88">누적비율</td>
+            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">구간비율</td>
+            <td rowspan="2" dir="ltr" width="88">누적인원</td>
+            <td rowspan="2" dir="ltr" width="72">누적비율</td>
+        </tr>
+        <tr> </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">96점~</td>
+            <td dir="ltr" width="88">0.00%</td>
+            <td dir="ltr" width="88"> - </td>
+            <td dir="ltr" width="88">0.00%</td>
+            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
+            <td dir="ltr" width="88">13.95%</td>
+            <td dir="ltr" width="88">2,270</td>
+            <td dir="ltr" width="72">55.75%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">92점~96점</td>
+            <td dir="ltr" width="88">0.22%</td>
+            <td dir="ltr" width="88">9</td>
+            <td dir="ltr" width="88">0.22%</td>
+            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
+            <td dir="ltr" width="88">12.40%</td>
+            <td dir="ltr" width="88">2,775</td>
+            <td dir="ltr" width="72">68.15%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">88점~92점</td>
+            <td dir="ltr" width="88">0.64%</td>
+            <td dir="ltr" width="88">35</td>
+            <td dir="ltr" width="88">0.86%</td>
+            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
+            <td dir="ltr" width="88">9.92%</td>
+            <td dir="ltr" width="88">3,179</td>
+            <td dir="ltr" width="72">78.07%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">84점~88점</td>
+            <td dir="ltr" width="88">1.65%</td>
+            <td dir="ltr" width="88">102</td>
+            <td dir="ltr" width="88">2.50%</td>
+            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
+            <td dir="ltr" width="88">7.88%</td>
+            <td dir="ltr" width="88">3,500</td>
+            <td dir="ltr" width="72">85.95%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">80점~84점</td>
+            <td dir="ltr" width="88">4.35%</td>
+            <td dir="ltr" width="88">279</td>
+            <td dir="ltr" width="88">6.85%</td>
+            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
+            <td dir="ltr" width="88">5.13%</td>
+            <td dir="ltr" width="88">3,709</td>
+            <td dir="ltr" width="72">91.09%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">76점~80점</td>
+            <td dir="ltr" width="88">8.67%</td>
+            <td dir="ltr" width="88">632</td>
+            <td dir="ltr" width="88">15.52%</td>
+            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
+            <td dir="ltr" width="88">3.27%</td>
+            <td dir="ltr" width="88">3,842</td>
+            <td dir="ltr" width="72">94.35%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">72점~76점</td>
+            <td dir="ltr" width="88">11.37%</td>
+            <td dir="ltr" width="88">1,095</td>
+            <td dir="ltr" width="88">26.89%</td>
+            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
+            <td dir="ltr" width="88">1.47%</td>
+            <td dir="ltr" width="88">3,902</td>
+            <td dir="ltr" width="72">95.83%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">68점~72점</td>
+            <td dir="ltr" width="88">14.91%</td>
+            <td dir="ltr" width="88">1,702</td>
+            <td dir="ltr" width="88">41.80%</td>
+            <td colspan="4" dir="ltr" width="336" class="bold blue"></td>
+        </tr>
+    </table>
+</div>
+<div id="sub2_tab3">
+    <div class="bold chart graph_area">
+        <div class="graph_area">
+            <ul class="graph">
+                <li>
+                    <div>
+                        <span style="height:0.00%;"><i>0.00%</i></span>
+                    </div>
+                    <p>96점~</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.22%;"><i>0.22%</i></span>
+                    </div>
+                    <p>92점~96점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.64%;"><i>0.64%</i></span>
+                    </div>
+                    <p>88점~92점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.65%;"><i>1.65%</i></span>
+                    </div>
+                    <p>84점~88점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:4.35%;"><i>4.35%</i></span>
+                    </div>
+                    <p>80점~84점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:8.67%;"><i>8.67%</i></span>
+                    </div>
+                    <p>76점~80점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:11.37%;"><i>11.37%</i></span>
+                    </div>
+                    <p>72점~76점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:14.91%;"><i>14.91%</i></span>
+                    </div>
+                    <p>68점~72점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:13.95%;"><i>13.95%</i></span>
+                    </div>
+                    <p>64점~68점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:12.40%;"><i>12.40%</i></span>
+                    </div>
+                    <p>60점~64점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:9.92%;"><i>9.92%</i></span>
+                    </div>
+                    <p>56점~60점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:7.88%;"><i>7.88%</i></span>
+                    </div>
+                    <p>52점~56점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:5.13%;"><i>5.13%</i></span>
+                    </div>
+                    <p>48점~52점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:3.27%;"><i>3.27%</i></span>
+                    </div>
+                    <p>44점~48점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.47%;"><i>1.47%</i></span>
+                    </div>
+                    <p>40점~44점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.27%;"><i>1.27%</i></span>
+                    </div>
+                    <p>~40점</p>
+                </li>
+            </ul>
+        </div>    
+    </div>
+    <table cellspacing="0" cellpadding="0" class="table_type">
+        <col width="88" span="7" />
+        <col width="72" />
+        <tr class="bold gray">
+            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">구간비율</td>
+            <td rowspan="2" dir="ltr" width="88">누적인원</td>
+            <td rowspan="2" dir="ltr" width="88">누적비율</td>
+            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">구간비율</td>
+            <td rowspan="2" dir="ltr" width="88">누적인원</td>
+            <td rowspan="2" dir="ltr" width="72">누적비율</td>
+        </tr>
+        <tr> </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">96점~</td>
+            <td dir="ltr" width="88">0.00%</td>
+            <td dir="ltr" width="88"> - </td>
+            <td dir="ltr" width="88">0.00%</td>
+            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
+            <td dir="ltr" width="88">13.95%</td>
+            <td dir="ltr" width="88">2,270</td>
+            <td dir="ltr" width="72">55.75%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">92점~96점</td>
+            <td dir="ltr" width="88">0.22%</td>
+            <td dir="ltr" width="88">9</td>
+            <td dir="ltr" width="88">0.22%</td>
+            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
+            <td dir="ltr" width="88">12.40%</td>
+            <td dir="ltr" width="88">2,775</td>
+            <td dir="ltr" width="72">68.15%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">88점~92점</td>
+            <td dir="ltr" width="88">0.64%</td>
+            <td dir="ltr" width="88">35</td>
+            <td dir="ltr" width="88">0.86%</td>
+            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
+            <td dir="ltr" width="88">9.92%</td>
+            <td dir="ltr" width="88">3,179</td>
+            <td dir="ltr" width="72">78.07%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">84점~88점</td>
+            <td dir="ltr" width="88">1.65%</td>
+            <td dir="ltr" width="88">102</td>
+            <td dir="ltr" width="88">2.50%</td>
+            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
+            <td dir="ltr" width="88">7.88%</td>
+            <td dir="ltr" width="88">3,500</td>
+            <td dir="ltr" width="72">85.95%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">80점~84점</td>
+            <td dir="ltr" width="88">4.35%</td>
+            <td dir="ltr" width="88">279</td>
+            <td dir="ltr" width="88">6.85%</td>
+            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
+            <td dir="ltr" width="88">5.13%</td>
+            <td dir="ltr" width="88">3,709</td>
+            <td dir="ltr" width="72">91.09%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">76점~80점</td>
+            <td dir="ltr" width="88">8.67%</td>
+            <td dir="ltr" width="88">632</td>
+            <td dir="ltr" width="88">15.52%</td>
+            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
+            <td dir="ltr" width="88">3.27%</td>
+            <td dir="ltr" width="88">3,842</td>
+            <td dir="ltr" width="72">94.35%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">72점~76점</td>
+            <td dir="ltr" width="88">11.37%</td>
+            <td dir="ltr" width="88">1,095</td>
+            <td dir="ltr" width="88">26.89%</td>
+            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
+            <td dir="ltr" width="88">1.47%</td>
+            <td dir="ltr" width="88">3,902</td>
+            <td dir="ltr" width="72">95.83%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">68점~72점</td>
+            <td dir="ltr" width="88">14.91%</td>
+            <td dir="ltr" width="88">1,702</td>
+            <td dir="ltr" width="88">41.80%</td>
+            <td colspan="4" dir="ltr" width="336" class="bold blue"></td>
+        </tr>
+    </table>
+</div>
+<div id="sub2_tab4">
+    <div class="bold chart graph_area">
+        <div class="graph_area">
+            <ul class="graph">
+                <li>
+                    <div>
+                        <span style="height:0.00%;"><i>0.00%</i></span>
+                    </div>
+                    <p>96점~</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.22%;"><i>0.22%</i></span>
+                    </div>
+                    <p>92점~96점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:0.64%;"><i>0.64%</i></span>
+                    </div>
+                    <p>88점~92점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.65%;"><i>1.65%</i></span>
+                    </div>
+                    <p>84점~88점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:4.35%;"><i>4.35%</i></span>
+                    </div>
+                    <p>80점~84점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:8.67%;"><i>8.67%</i></span>
+                    </div>
+                    <p>76점~80점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:11.37%;"><i>11.37%</i></span>
+                    </div>
+                    <p>72점~76점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:14.91%;"><i>14.91%</i></span>
+                    </div>
+                    <p>68점~72점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:13.95%;"><i>13.95%</i></span>
+                    </div>
+                    <p>64점~68점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:12.40%;"><i>12.40%</i></span>
+                    </div>
+                    <p>60점~64점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:9.92%;"><i>9.92%</i></span>
+                    </div>
+                    <p>56점~60점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:7.88%;"><i>7.88%</i></span>
+                    </div>
+                    <p>52점~56점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:5.13%;"><i>5.13%</i></span>
+                    </div>
+                    <p>48점~52점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:3.27%;"><i>3.27%</i></span>
+                    </div>
+                    <p>44점~48점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.47%;"><i>1.47%</i></span>
+                    </div>
+                    <p>40점~44점</p>
+                </li>
+                <li>
+                    <div>
+                        <span style="height:1.27%;"><i>1.27%</i></span>
+                    </div>
+                    <p>~40점</p>
+                </li>
+            </ul>
+        </div>    
+    </div>
+    <table cellspacing="0" cellpadding="0" class="table_type">
+        <col width="88" span="7" />
+        <col width="72" />
+        <tr class="bold gray">
+            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">구간비율</td>
+            <td rowspan="2" dir="ltr" width="88">누적인원</td>
+            <td rowspan="2" dir="ltr" width="88">누적비율</td>
+            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">구간비율</td>
+            <td rowspan="2" dir="ltr" width="88">누적인원</td>
+            <td rowspan="2" dir="ltr" width="72">누적비율</td>
+        </tr>
+        <tr> </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">96점~</td>
+            <td dir="ltr" width="88">0.00%</td>
+            <td dir="ltr" width="88"> - </td>
+            <td dir="ltr" width="88">0.00%</td>
+            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
+            <td dir="ltr" width="88">13.95%</td>
+            <td dir="ltr" width="88">2,270</td>
+            <td dir="ltr" width="72">55.75%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">92점~96점</td>
+            <td dir="ltr" width="88">0.22%</td>
+            <td dir="ltr" width="88">9</td>
+            <td dir="ltr" width="88">0.22%</td>
+            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
+            <td dir="ltr" width="88">12.40%</td>
+            <td dir="ltr" width="88">2,775</td>
+            <td dir="ltr" width="72">68.15%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">88점~92점</td>
+            <td dir="ltr" width="88">0.64%</td>
+            <td dir="ltr" width="88">35</td>
+            <td dir="ltr" width="88">0.86%</td>
+            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
+            <td dir="ltr" width="88">9.92%</td>
+            <td dir="ltr" width="88">3,179</td>
+            <td dir="ltr" width="72">78.07%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">84점~88점</td>
+            <td dir="ltr" width="88">1.65%</td>
+            <td dir="ltr" width="88">102</td>
+            <td dir="ltr" width="88">2.50%</td>
+            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
+            <td dir="ltr" width="88">7.88%</td>
+            <td dir="ltr" width="88">3,500</td>
+            <td dir="ltr" width="72">85.95%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">80점~84점</td>
+            <td dir="ltr" width="88">4.35%</td>
+            <td dir="ltr" width="88">279</td>
+            <td dir="ltr" width="88">6.85%</td>
+            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
+            <td dir="ltr" width="88">5.13%</td>
+            <td dir="ltr" width="88">3,709</td>
+            <td dir="ltr" width="72">91.09%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">76점~80점</td>
+            <td dir="ltr" width="88">8.67%</td>
+            <td dir="ltr" width="88">632</td>
+            <td dir="ltr" width="88">15.52%</td>
+            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
+            <td dir="ltr" width="88">3.27%</td>
+            <td dir="ltr" width="88">3,842</td>
+            <td dir="ltr" width="72">94.35%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">72점~76점</td>
+            <td dir="ltr" width="88">11.37%</td>
+            <td dir="ltr" width="88">1,095</td>
+            <td dir="ltr" width="88">26.89%</td>
+            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
+            <td dir="ltr" width="88">1.47%</td>
+            <td dir="ltr" width="88">3,902</td>
+            <td dir="ltr" width="72">95.83%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">68점~72점</td>
+            <td dir="ltr" width="88">14.91%</td>
+            <td dir="ltr" width="88">1,702</td>
+            <td dir="ltr" width="88">41.80%</td>
+            <td colspan="4" dir="ltr" width="336" class="bold blue"></td>
+        </tr>
+    </table>
+</div>
 
 <div class="stage">
     <span class="bold">동일 직렬에서의 내 위치</span>

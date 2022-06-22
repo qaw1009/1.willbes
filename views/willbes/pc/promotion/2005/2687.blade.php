@@ -57,22 +57,15 @@
     .table_type td span.redB {font-weight:bold; color:#C00}
     .table_type td label {margin-right:10px}
     .table_type .lineNo {border-right:none}
+    .sel_info li {display:inline-block;margin-right:10px;margin-bottom:5px;vertical-align:bottom;}
 
-    .graph_type {width:720px; margin:1em auto; border-top:#464646 1px solid; border-bottom:#464646 1px solid; border-left:#cdcdcd 1px solid;border-right:#cdcdcd 1px solid}
-    .graph_type caption {display:none}	
-    .graph_type th,
-    .graph_type td {letter-spacing:normal; text-align:center; padding:10px 8px}
-    .graph_type th {color:#464646; background:#f3f3f3; font-weight:400; border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid}
-    .graph_type th.th2 {background:#fffcd1}
-    .graph_type td {border-bottom:#cdcdcd 1px solid;vertical-align:middle;}
-    .graph_type td input {vertical-align:middle}
-    .graph_type td span.blueB {font-weight:bold; color:#33F}
-    .graph_type td span.redB {font-weight:bold; color:#C00}
-    .graph_type td label {margin-right:10px}
-    .graph_type .lineNo {border-right:none}
-
-    .subject td .percent{position:absolute;margin-left:-10px;margin-top:-100px;}
-    .sub_bot td {background:#ccc;}
+    .graph_area {padding-top:10px;} 
+    .graph {display:flex;left:50%;top:50%;}
+    .graph li {padding:0 2px;text-align:center;}
+    .graph li div {position:relative;margin:0 auto;width:40px;height:400px;background:#8f52ff;border-radius:4px 4px 0 0 ;}
+    .graph li div span {position:absolute;left:0;bottom:0;right:0;background:#ccc;border-radius:4px 4px 0 0 ;}
+    .graph li div i {display:none;}
+    .graph li p {font-size:14px;}   
 
     .eventPopS3 {padding:20px;}
     .eventPopS3 p {font-weight:bold; margin-bottom:10px}

@@ -44,9 +44,14 @@
         </div>
     </div> 
 
-    <div class="Section article1">
-        <img src="https://static.willbes.net/public/images/promotion/main/2006/308906m_top.jpg" title="빅데이터 분석기사">
-    </div>
+    <div class="MainSlider swiper-container swiper-container-page">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2006/308906_720x400.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2006/308906_720x400.jpg"></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>  
 
     <div class="Section article2" data-aos="fade-left">
         <img src="https://static.willbes.net/public/images/promotion/main/2006/308906m_01.jpg" title="향후 5년 내 데이터 산업의 빅데이터 필요 인력">

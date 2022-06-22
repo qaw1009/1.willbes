@@ -3,9 +3,35 @@
 @section('content')
 <style type="text/css">
     /* 빅데이터분석기사 */
+    .Area01 {
+        width: 100%;
+        max-width: 2000px;
+        margin-top:20px
+    }
+    .Area01 .gosi-bntop {position:relative; margin:0; height: 460px !important;}
+    .Area01 .gosi-bntop .GositabBox {
+        position: absolute;
+        top:0;
+        left:50%;
+        margin-left:-1000px;
+        width: 2000px;
+        min-width: 1120px;
+        max-width: 2000px;
+        height: 460px; 
+        overflow: hidden;
+    }
+
+    .Area01 .gosi-bntop .GositabBox p {position:absolute; top:50%; left:50%; margin-top:-28px; width:32px; height:50px; cursor:pointer; 
+        background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;  opacity:0.2; filter:alpha(opacity=20);}
+    .Area01 .gosi-bntop .GositabBox p a {display:none;}
+    .Area01 .gosi-bntop .GositabBox p.leftBtn {margin-left:-620px;}
+    .Area01 .gosi-bntop .GositabBox p.rightBtn {margin-left:588px; background-position: right center;}	
+    .Area01 .gosi-bntop .GositabBox p:hover {opacity:100; filter:alpha(opacity=100);}
+
+
     .job308906 .article1 {background:url(https://static.willbes.net/public/images/promotion/main/2006/308906_top_bg.jpg) no-repeat center top; margin-top:20px; text-align:center}
     
-    .job308906 .article2 {width:979px; margin:-87px auto 120px; box-shadow:10px 10px 20px rgba(0,0,0,.3);} 
+    .job308906 .article2 {width:979px; margin:100px auto; box-shadow:10px 10px 20px rgba(0,0,0,.3);} 
     .job308906 .article3 {background:#c7ecff; text-align:center; padding-bottom:100px}
     .job308906 .article3 a {display:block; width:450px; margin:50px auto; padding:20px 0; font-size:24px; border-radius:50px; background:#363636; color:#fff}
     .job308906 .article3 a:hover {background:#000}
@@ -79,22 +105,32 @@
         </div>
     </div>
 
-    <div class="Section article1">
-        <img src="https://static.willbes.net/public/images/promotion/main/2006/308906_top.jpg" title="빅데이터 분석기사">
+    <div class="Section Area01" data-aos="fade-up">
+        <div class="gosi-bntop">                        
+            <div id="TechRollingSlider" class="GositabBox">
+                <ul class="GositabSlider">
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_2000x460.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_2000x460.jpg" alt="배너명"></a></li>
+                </ul>                  
+                <p class="leftBtn" id="imgBannerLeft"><a href="#none">이전</a></p>
+                <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p> 
+            </div>            
+          
+        </div>        
     </div>
 
     <div class="Section article2" data-aos="fade-left">
         <img src="https://static.willbes.net/public/images/promotion/main/2006/308906_01.jpg" title="빅데이터 분석기사 진로와 전망">
     </div>
 
-    <div class="Section article3">
+    <div class="Section article3" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/main/2006/308906_02.jpg" title="시험일정">
         <a href="https://job.dev.willbes.net/landing/show/lcode/1043/cate/308906/preview/Y" target="_blank" class="NSK-Black">빅데이터 분석기사 더 자세히 알아보기 ></a>
     </div>
 
-    <div class="Section article4">
+    <div class="Section article4" data-aos="fade-up">
         <div class="widthAuto">
-            <img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03.jpg" title="왜 훈샘인가?"  data-aos="fade-left">
+            <img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03.jpg" title="왜 훈샘인가?">
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/efr9iOZ57gM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_03_01.jpg" title="훈쌤 전격입성"></a>
@@ -112,6 +148,30 @@
     $( document ).ready( function() {
     AOS.init();
     } );
+
+        //상단 메인 배너
+        $(function(){ 
+        var slidesImg = $(".GositabSlider").bxSlider({
+            mode:'horizontal',
+            touchEnabled: false,
+            speed:400,
+            pause:3000,
+            sliderWidth:2000,
+            auto : true,	
+            autoHover: true,
+            controls:false, 				
+            onSliderLoad: function(){
+                $("#TechRollingSlider").css("visibility", "visible").animate({opacity:1}); 
+            }
+        });	
+        $("#imgBannerRight").click(function (){
+            slidesImg.goToPrevSlide();
+        });
+    
+        $("#imgBannerLeft").click(function (){
+            slidesImg.goToNextSlide();
+        });			
+    }); 
 </script>
 
 

@@ -23,7 +23,10 @@
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/06/2668_top_bg.jpg) no-repeat center top;}
 
         .evt02 {padding-bottom:100px}
-        .comment {font-size:15px;font-weight:bold;padding-right:670px;}
+
+        .survey {width:670px; margin:50px auto 0;}
+        .survey a {display:block;font-size:44px; color:#fff; padding:20px; background:#000; border-radius:50px;}
+        .survey a:hover {background:#533fd1}
 
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -53,14 +56,11 @@
             </div>         
         </div>
 
-        <div class="evtCtnsBox evt02" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2668_02.jpg" alt="모의고사 설문조사"/>
-                <a href="javascript:void(0);" onclick="showPopup();" title="설문 참여" style="position: absolute;left: 19.64%;top: 84.14%;width: 60.79%;height: 8.76%;z-index: 2;"></a>         
-            </div>
-            <div class="comment">
-                📣 <span>Real 모의고사 응시후, 후기평을 남겨주세요.</span>
-            </div>
+        <div class="evtCtnsBox evt02" data-aos="fade-up">            
+            <img src="https://static.willbes.net/public/images/promotion/2022/06/2668_02.jpg" alt="모의고사 설문조사"/>              
+            <div class="survey NSK-Black" data-aos="fade-up">
+                <a href="javascript:void(0);" onclick="showPopup();" title="설문 참여">설문조사 참여하기 ></a>
+            </div>  
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')

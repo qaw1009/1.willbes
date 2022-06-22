@@ -22,7 +22,8 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/06/2668_top_bg.jpg) no-repeat center top;}
 
-        .evt01 {padding-bottom:100px}
+        .evt02 {padding-bottom:100px}
+        .comment {font-size:15px;font-weight:bold;padding-right:670px;}
 
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -38,21 +39,28 @@
 
         <input type="hidden" name="msg" value="아래 체험팩 수강후기를 등록해 주세요.">
     </form>
-    
+
     <div class="evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox evtTop">
+
+        <div class="evtCtnsBox evtTop" data-aos="fade-down">            
+            <img src="https://static.willbes.net/public/images/promotion/2022/06/2668_top.jpg" alt="설문조사 시험후기"/>                      
+        </div>
+        
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2668_top.jpg" alt="5일 체험팩"/>
-                <a href="javascript:void(0);" onclick="showPopup();" title="설문 참여" style="position: absolute; left: 34.64%; top: 76.44%; width: 30.09%; height: 8.76%; z-index: 2;"></a>
-            </div>
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/2668_01.jpg" alt="시험장 영상스케치 파일 삽입"/>
+                <a href="javascript:alert('Coming Soon!')" title="영상스케치" style="position: absolute;left: 8.64%;top: 16.44%;width: 83.09%;height: 75.76%;z-index: 2;"></a>         
+            </div>         
         </div>
 
-        <div class="evtCtnsBox evt01">
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2668_01.jpg" alt="후기쓰고 쿠폰받기" data-aos="fade-right"/>
-                <a href="javascript:void(0);" onclick="giveCheck();" title="쿠폰받기" style="position: absolute; left: 50.89%; top: 71.2%; width: 30.09%; height: 12.92%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/2668_02.jpg" alt="모의고사 설문조사"/>
+                <a href="javascript:void(0);" onclick="showPopup();" title="설문 참여" style="position: absolute;left: 19.64%;top: 84.14%;width: 60.79%;height: 8.76%;z-index: 2;"></a>         
             </div>
-
+            <div class="comment">
+                📣 <span>Real 모의고사 응시후, 후기평을 남겨주세요.</span>
+            </div>
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')

@@ -124,6 +124,7 @@
         .content_guide_box dd strong {color:#555}
         .content_guide_box dd li{margin-bottom:5px; list-style:decimal; margin-left:20px; line-height:1.5}
         .content_guide_box dd:after {content:""; display:block; clear:both}
+        .together {color:#FF0000;font-weight:bold;}
 
         /*타이머*/
         .newTopDday {background:#181818; width:100%; padding:20px 0 25px; color:#fff; font-size:16px;}
@@ -204,9 +205,10 @@
             </div>
             <div class="txtinfo">
                 <p class="NSK-Black">※ 구매 전, 확인! [23년 1차 패스  안내]</p>         
-                -22년 2차 시험 까지만 신광은 경찰팀 강의가 제공됩니다.<br>
-                -8월 31일 이후, 심화 및 문제풀이는 윌비스 경찰의 신규 교수진 (이국령 교수 포함)  강의로 제공됩니다.<br>
-                -신광은 경찰팀의 구 강의는  전 커리큘럼 제공 됩니다.
+                ① 22년 8월30일까지 촬영되는 신광은 경찰팀 과목별 모든 강좌<br>
+                - 기본이론/심화이론/심화기출/문제풀이 1,2,3단계 +22년 1차 대비 전과목 특강 전부<br>
+                ② 22년 9월이후 윌비스 신규 강사진(이국령 헌법  포함 과목별 복수 강사진)의 전과목 신규 촬영 모든 강좌<br>
+                <span class="together">위 모든 강좌를 수강기간동안(23년 3월 1차 시험까지) 동시수강 및 무제한 반복수강이 가능한 상품입니다.</span>
             </div>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/2664_02.jpg" alt="신광은경찰 PASS">
@@ -560,8 +562,10 @@
                                         * 범죄학 : 박상민 교수님<br>
                                         * G-TELP : 김준기 교수님<br>
                                         * 한능검 : 오태진 교수님<br>
-                                        ※ 신광은 경찰팀의 신규 강의는 22년 2차 시험까지만 진행되며, 이후에는 헌법 이국령 교수님과 새로운 경찰팀의 강의가  업데이트됩니다.<br>
-                                        (신광은경찰팀 구 강의는 전 커리 제공됩니다.)
+                                        ① 22년 8월30일까지 촬영되는 신광은 경찰팀 과목별 모든 강좌<br>
+                                        - 기본이론/심화이론/심화기출/문제풀이 1,2,3단계 +22년 1차 대비 전과목 특강 전부<br>
+                                        ② 22년 9월이후 윌비스 신규 강사진(이국령 헌법  포함 과목별 복수 강사진)의 전과목 신규 촬영 모든 강좌<br>
+                                        <span class="together">위 모든 강좌를 수강기간동안(23년 3월 1차 시험까지) 동시수강 및 무제한 반복수강이 가능한 상품입니다.</span>
                                     </div>
                                 </li>
                                 <li>선택한 신광은 경찰 PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강할 수 있습니다.</li>

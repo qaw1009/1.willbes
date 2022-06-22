@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-
+        {{--
         <div class="Section Section5 mt50">
             <div class="widthAuto">
                 <div class="will-nTit tx30 NSK-Black tx-center mb30 pd20"><span class="tx-color">72기 대비 </span>공부방법론 및 지금! 해야 할 것들</div>
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-
+        --}}
         <div class="Section mt80">
             <div class="widthAuto">
                 {{-- board include --}}

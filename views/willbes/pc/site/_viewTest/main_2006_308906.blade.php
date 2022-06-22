@@ -111,44 +111,42 @@
                     빅테이터분석기사 자격증 문의 <span class="NSK-Black">1544-1661</span>
                 </div>
             </div>  
-
-        </div>        
-        
+        </div>
     </div>
     <!-- End Container -->
 
     {{-- popup --}}
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-    $( document ).ready( function() {
-        AOS.init();
-    } );
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        $( document ).ready( function() {
+            AOS.init();
+        } );
 
-    //상단 메인 배너
-    $(function(){
-        var slidesImg = $(".GositabSlider").bxSlider({
-            mode:'horizontal',
-            touchEnabled: false,
-            speed:400,
-            pause:3000,
-            sliderWidth:2000,
-            auto : true,
-            autoHover: true,
-            controls:false,
-            onSliderLoad: function(){
-                $("#TechRollingSlider").css("visibility", "visible").animate({opacity:1});
-            }
-        });
-        $("#imgBannerRight").click(function (){
-            slidesImg.goToPrevSlide();
-        });
+        //상단 메인 배너
+        $(function(){
+            var slidesImg = $(".GositabSlider").bxSlider({
+                mode:'horizontal',
+                touchEnabled: false,
+                speed:400,
+                pause:3000,
+                sliderWidth:2000,
+                auto : true,
+                autoHover: true,
+                controls:false,
+                onSliderLoad: function(){
+                    $("#TechRollingSlider").css("visibility", "visible").animate({opacity:1});
+                }
+            });
+            $("#imgBannerRight").click(function (){
+                slidesImg.goToPrevSlide();
+            });
 
-        $("#imgBannerLeft").click(function (){
-            slidesImg.goToNextSlide();
+            $("#imgBannerLeft").click(function (){
+                slidesImg.goToNextSlide();
+            });
         });
-    });
-</script>
+    </script>
 @stop

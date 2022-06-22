@@ -80,7 +80,11 @@
             <div class="gosi-bntop">
                 @if(empty($data['arr_main_banner']['메인_빅배너']) === false)
                     <div id="TechRollingSlider" class="GositabBox">
-                        {!! banner_html($data['arr_main_banner']['메인_빅배너'], 'GositabSlider') !!}
+                        <ul class="GositabSlider">
+                            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_2000x460.jpg" alt="배너명"></a></li>
+                            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2006/308906_2000x460.jpg" alt="배너명"></a></li>
+                        </ul>
+                        {{--{!! banner_html($data['arr_main_banner']['메인_빅배너'], 'GositabSlider') !!}--}}
 
                         <p class="leftBtn" id="imgBannerLeft"><a href="javascript:void(0);">이전</a></p>
                         <p class="rightBtn" id="imgBannerRight"><a href="javascript:void(0);">다음</a></p>

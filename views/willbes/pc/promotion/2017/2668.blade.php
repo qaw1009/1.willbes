@@ -95,8 +95,14 @@
             alert('설문정보가 없습니다.');
             return;
           @else
-              var url = "{{front_url('/eventSurvey/index/' . $arr_promotion_params['SsIdx'])}}";
-              window.open(url,'survey_event', 'top=150,left=150,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
+              /*var url = "{{front_url('/eventSurvey/index/' . $arr_promotion_params['SsIdx'])}}";
+              window.open(url,'survey_event', 'top=150,left=150,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');*/
+                var url = "{{front_url('/eventSurvey/index/' . $arr_promotion_params['SsIdx'])}}";
+                var windowW = 800; // 창의 가로 길이
+                var windowH = 700; // 창의 세로 길이
+                var left = Math.ceil((window.screen.width - windowW)/2);
+                var top = Math.ceil((window.screen.height - windowH)/2);
+                window.open(url,"survey_event","top="+top+", left="+left+", height="+windowH+", width="+windowW);
           @endif
       }
 

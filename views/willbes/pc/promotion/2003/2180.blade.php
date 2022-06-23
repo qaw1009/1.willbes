@@ -72,7 +72,7 @@
 		.evtInfoBox .infoTit strong {padding:8px 20px; background:#333; border-radius:20px; font-weight:normal !important}
 		.evtInfoBox ul {margin-bottom:50px}
         .evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
-        .evtInfoBox span {color:#ff6d6d;vertical-align:bottom}
+        .evtInfoBox span {color:#ff6d6d; vertical-align:bottom}
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -199,10 +199,12 @@
                 <ul>
                     <li>본 이벤트는 2022년 6월 30일 (목)까지 2023 영어 한덕현 T-PASS를 결제완료하신 분에 한하여 적용됩니다.</li>
                     <li>제공 혜택<br>
+                    <span>📢 무료 제공 교재는 한덕현 교수 직접 구매 후 증정되는 상품입니다.</span><br>
                     - 2023 제니스 영어 Grammar 교재 제공 (신간 출시 후 문자를 통해 신청방법 안내 예정)<br>
                     - 2023 제니스 영어 스나이퍼 32 교재 제공 (신간 출시 후 문자를 통해 신청방법 안내 예정)<br>
                     - 1:1 온라인독해첨삭 지도반 1개월 무료 (수강기간 내 원하는 시기에 한덕현 교수 Q&A 게시판을 통해 신청 및 교수님 개별 상담 후 기수에 맞추어 진행 예정) <br>
-                    - 기존 판매가 79만원 (10만원 기간 한정 할인) → 이벤트 판매가 69만원</li>
+                    - 기존 판매가 79만원 (10만원 기간 한정 할인) → 이벤트 판매가 69만원<br>                    
+                </li>
                 </ul>
 
                 <div class="infoTit"><strong>상품구성</strong></div>

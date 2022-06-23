@@ -995,10 +995,14 @@ body.memBody #Footer {
 	margin-right: 5px;
 }
 
+.introBox3 .bigType {
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .introBox3 .bigType li {
-	display: inline;
-	float: left;
-	width: 50%;
+	width: calc(33.33333% - 8px);
+	margin: 0 4px;
 }
 
 .introBox3 .bigType li.full {
@@ -1009,7 +1013,7 @@ body.memBody #Footer {
 	display: block;
 	padding: 0 10px;
 	border: 1px solid #808080;
-	margin: 0 8px 8px 0;
+	margin: 0 0 8px 0;
 	height: 40px;
 	line-height: 40px;
 	font-size: 14px;
@@ -1060,20 +1064,6 @@ body.memBody #Footer {
 	}
 }
 
-.introBox3 .bigType li:nth-of-type(even) a {
-	margin-right: 0;
-}
-
-/*.introBox3 .bigType li:last-child {width:100%}*/
-.introBox3 .bigType li:last-child a {
-	margin-right: 0;
-}
-
-.introBox3 .bigType:after {
-	content: "";
-	display: block;
-	clear: both;
-}
 
 .introBox3 .etc>a {
 	display: block;
@@ -1081,7 +1071,7 @@ body.memBody #Footer {
 	border: 1px solid #808080;
 	font-size: 14px;
 	color: #fff;
-	margin-bottom: 10px;
+	margin: 0 4px 10px;
 }
 
 .introBox3 .etc>a:hover {
@@ -9681,6 +9671,10 @@ span.calendar_btn {
 		display: block;
 	}
 
+	.introBox3 .bigType li {
+		width: calc(50% - 8px);
+	}
+
 	.csCenter .link li a {
 		font-size: 14px;
 	}
@@ -9913,6 +9907,10 @@ span.calendar_btn {
 
 	.thisMonth .swiper-slide img {
 		bottom: -40px;
+	}
+
+	.introBox3 .bigType li {
+		width: calc(50% - 8px);
 	}
 
 	.location_map {

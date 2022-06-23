@@ -8,7 +8,7 @@
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both}
     .evtCtnsBox img {max-width:100%;}
     .evtCtnsBox .wrap {position:relative}
-    .evtCtnsBox .wrap a {border:1px solid #000}
+    /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
     /* 이용안내 */
     .wb_info {padding:50px 20px; color:#fff; line-height:1.4; background:#333}

@@ -90,16 +90,20 @@
             <div id="tab01">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2021/08/2343_01_01.jpg"  alt="한국사능력검정시험" />
+                    {{--
                     <a href="https://www.historyexam.go.kr" title="한능검 원서접수 바로가기" target="_blank" style="position: absolute; left: 32.23%; top: 55.41%; width: 35.27%; height: 3.55%; z-index: 2;"></a>
                     <a href="https://www.historyexam.go.kr/pst/list.do?bbs=dat" title="한능검기출문제 확인하기" target="_blank" style="position: absolute; left: 68.75%; top: 90.01%; width: 14.38%; height: 1.78%; z-index: 2;"></a>
+                    --}}
                 </div>
             </div>
             <div id="tab02">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2021/08/2343_01_02.jpg"  alt="국제공인영어시험 지텔프" />
+                    {{--
                     <a href="https://www.g-telp.co.kr:335/receipt/schedule.asp" title="지텔프 시험일정" target="_blank" style="position: absolute; left: 32.5%; top: 55.29%; width: 35.27%; height: 2.84%; z-index: 2;"></a>
                     <a href="https://www.g-telp.co.kr:335/info/info7.asp" title="샘플테스트" target="_blank" style="position: absolute; left: 68.57%; top: 81.8%; width: 15.18%; height: 0.9%; z-index: 2;"></a>
                     <a href="https://www.g-telp.co.kr:335/" title="지텔프 원서접수 바로가기" target="_blank" style="position: absolute; left: 19.55%; top: 94.04%; width: 22.41%; height: 1.99%; z-index: 2;"></a>
+                    --}}
                 </div>
             </div>    
             <div id="tab03">
@@ -115,7 +119,7 @@
             <div id="tab05">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2021/08/2343_01_05.jpg"  alt="헌법" />
-                    <a href="https://police.willbes.net/promotion/index/cate/3001/code/2284" title="경찰헌법 학습 tip자세히보기" target="_blank" style="position: absolute; left: 67.14%; top: 78.15%; width: 22.77%; height: 4.31%; z-index: 2;"></a>
+                    <a href="https://police.willbes.net/promotion/index/cate/3001/code/2284" title="경찰헌법 학습 tip자세히보기" target="_blank" style="position: absolute;left: 14.14%;top: 82.75%;width: 20.27%;height: 4.81%;z-index: 2;"></a>
                 </div>            
             </div>    
             <div id="tab06">

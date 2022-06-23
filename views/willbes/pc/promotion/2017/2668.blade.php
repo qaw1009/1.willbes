@@ -22,11 +22,17 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/06/2668_top_bg.jpg) no-repeat center top;}
 
-        .evt02 {padding-bottom:100px}
+        .evt01 {padding:100px 0;background:#fff2cc}  
+        .evt01 > div{ width:800px; margin:auto; }      
+        .evt01 .embed-container {position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; }
+        .evt01 .embed-container iframe {position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        .evt02 {padding-bottom:100px;}
 
         .survey {width:670px; margin:50px auto 0;}
         .survey a {display:block;font-size:44px; color:#fff; padding:20px; background:#000; border-radius:50px;}
         .survey a:hover {background:#533fd1}
+
 
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -50,10 +56,11 @@
         </div>
         
         <div class="evtCtnsBox evt01" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2668_01.jpg" alt="시험장 영상스케치 파일 삽입"/>
-                <a href="javascript:alert('Coming Soon!')" title="영상스케치" style="position: absolute;left: 8.64%;top: 16.44%;width: 83.09%;height: 75.76%;z-index: 2;"></a>         
-            </div>         
+            <div >
+                <div class="embed-container">
+                    <iframe src='https://www.youtube.com/embed/7xpgMZcwSmI' frameborder='0' allowfullscreen></iframe>
+                </div>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">            

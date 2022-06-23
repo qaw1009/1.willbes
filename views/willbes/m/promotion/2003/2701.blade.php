@@ -7,8 +7,8 @@
 
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both}
     .evtCtnsBox img {max-width:100%;}
-    .evtCtnsBox .wrap {position:relative}
-    .evtCtnsBox .wrap a {border:1px solid #000}
+    .evtCtnsBox.wrap {position:relative}
+    /*.evtCtnsBox.wrap a {border:1px solid #000}*/
 
     /* 이용안내 */
     .wb_info {padding:50px 20px; color:#fff; line-height:1.4; background:#333}
@@ -36,39 +36,38 @@
 </style>
 
 <div id="Container" class="Container NSK c_both">
-
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2698m_top.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_top.jpg" alt="법원직 연간종합반" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-left">
-        <div class="wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2698m_01.jpg" alt="" />
-            <a href="#none" title="" style="position: absolute; left: 24.58%; top: 23.95%; width: 51.25%; height: 2.38%; z-index: 2;"></a>
-            <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="더 많은 합격수기 보기" style="position: absolute; left: 24.31%; top: 95.41%; width: 51.25%; height: 2.38%; z-index: 2;"></a>
-        </div>
+        <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_01.jpg" alt="합격생 배출 압도적 1위" />
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-right">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2698m_02.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_02.jpg" alt="커리큘럼" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2698m_03_01.jpg" alt="예비순환 온라인"/>
-                <a href="https://pass.willbes.net/m/pass/promotion/index/cate/3059/code/2119" title="온라인 관리반이란?" style="position: absolute; left: 62.22%; top: 27.55%; width: 32.36%; height: 12.86%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3059" target="_blank" title="수강신청" style="position: absolute; left: 58.89%; top: 47.45%; width: 35.56%; height: 8.37%;z-index: 2;"></a>
-            </div>
-            <div class="wrap">                
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2698m_03_02.jpg" alt="온오프라인 상품 "/>
-                <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3059" title="학원 종합반" style="position: absolute; left: 16.67%; top: 23.53%; width: 66.81%; height: 3.39%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/m/pass/promotion/index/cate/3059/code/2119" title="온라인 관리반이란?" style="position: absolute; left: 60.56%; top: 27.62%; width: 25.56%; height: 3.92%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3059" title="온라인 관리반" style="position: absolute; left: 16.67%; top: 40.13%; width: 66.81%; height: 3.39%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/m/promotion/index/cate/3035/code/2658" title="온라인 패스" style="position: absolute; left: 16.67%; top: 56.15%; width: 66.81%; height: 3.39%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/m/package/index/cate/3035/pack/648001" title="온라인 패키지" style="position: absolute; left: 16.67%; top: 90.63%; width: 66.81%; height: 3.39%; z-index: 2;"></a>
-            </div>  
+        <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_03.jpg" alt="면접스터디"/>
     </div> 
 
+    <div class="evtCtnsBox wrap" data-aos="fade-up">
+        <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_04.jpg" alt="후기 "/>
+        <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="" style="position: absolute; left: 18.89%; top: 92.55%; width: 62.08%; height: 3.58%; z-index: 2;"></a>
+    </div>
+
+    <div class="evtCtnsBox wrap" data-aos="fade-up">
+        <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_05.jpg" alt="수강신청 "/>
+        <a href="#none" style="position: absolute; left: 26.39%; top: 78.38%; width: 48.33%; height: 8.02%; z-index: 2;"></a>
+    </div>
+
+    <div class="evtCtnsBox wrap" data-aos="fade-up">
+        <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_06.jpg" alt="설문 "/>
+        <a href="javascript:void(0);" onclick="showPopup();" title="설문조사" style="position: absolute; left: 7.92%; top: 67.1%; width: 48.33%; height: 12.38%; z-index: 2;"></a>
+    </div>
+
+{{--
     <div class="evtCtnsBox wb_info" id="info">
         <div class="guide_box">
             <h2 class="NSK-Black">2023대비 예비순환 온라인관리반 Light 이용안내</h2>
@@ -131,7 +130,7 @@
             </dl>
         </div>
     </div>
-
+    --}}
 </div>
 
 <!-- End Container -->
@@ -142,9 +141,37 @@
       $( document ).ready( function() {
         AOS.init();
       } );
-</script>
 
+      var $regi_form = $('#regi_form');
+
+      function showPopup(){
+          @if(empty($arr_promotion_params['SsIdx']) === true)
+            alert('설문정보가 없습니다.');
+            return;
+          @else
+            var url = "{{front_url('/eventSurvey/index/' . $arr_promotion_params['SsIdx'])}}";
+            window.open(url,'survey_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes');
+          @endif
+      }
+
+      {{--쿠폰발급--}}
+      function giveCheck() {
+          {!! login_check_inner_script('로그인 후 이용해주세요.','Y') !!}
+
+          @if(empty($arr_promotion_params) === false)
+              var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
+              ajaxSubmit($regi_form, _check_url, function (ret) {
+                  if (ret.ret_cd) {
+                      alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                  }
+              }, showValidateError, null, false, 'alert');
+          @else
+            alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+          @endif
+      }
+    </script>
 
 {{-- 프로모션용 스크립트 include --}}
 @include('willbes.pc.promotion.promotion_script')
+
 @stop

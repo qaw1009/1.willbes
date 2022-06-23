@@ -191,95 +191,106 @@
         </div>    
     </div>
     <table cellspacing="0" cellpadding="0" class="table_type">
-        <col width="88" span="7" />
-        <col width="72" />
+        <col width="88" span="4" />
         <tr class="bold gray">
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">원점수<br>(이상~미만)</td>
             <td rowspan="2" dir="ltr" width="88">구간비율</td>
             <td rowspan="2" dir="ltr" width="88">누적인원</td>
             <td rowspan="2" dir="ltr" width="88">누적비율</td>
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
-            <td rowspan="2" dir="ltr" width="88">구간비율</td>
-            <td rowspan="2" dir="ltr" width="88">누적인원</td>
-            <td rowspan="2" dir="ltr" width="72">누적비율</td>
         </tr>
         <tr> </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">96점~</td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88"> - </td>
+            <td dir="ltr" width="88">- </td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
-            <td dir="ltr" width="88">13.95%</td>
-            <td dir="ltr" width="88">2,270</td>
-            <td dir="ltr" width="72">55.75%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">92점~96점</td>
             <td dir="ltr" width="88">0.22%</td>
             <td dir="ltr" width="88">9</td>
             <td dir="ltr" width="88">0.22%</td>
-            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
-            <td dir="ltr" width="88">12.40%</td>
-            <td dir="ltr" width="88">2,775</td>
-            <td dir="ltr" width="72">68.15%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">88점~92점</td>
             <td dir="ltr" width="88">0.64%</td>
             <td dir="ltr" width="88">35</td>
             <td dir="ltr" width="88">0.86%</td>
-            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
-            <td dir="ltr" width="88">9.92%</td>
-            <td dir="ltr" width="88">3,179</td>
-            <td dir="ltr" width="72">78.07%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">84점~88점</td>
             <td dir="ltr" width="88">1.65%</td>
             <td dir="ltr" width="88">102</td>
             <td dir="ltr" width="88">2.50%</td>
-            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
-            <td dir="ltr" width="88">7.88%</td>
-            <td dir="ltr" width="88">3,500</td>
-            <td dir="ltr" width="72">85.95%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">80점~84점</td>
             <td dir="ltr" width="88">4.35%</td>
             <td dir="ltr" width="88">279</td>
             <td dir="ltr" width="88">6.85%</td>
-            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
-            <td dir="ltr" width="88">5.13%</td>
-            <td dir="ltr" width="88">3,709</td>
-            <td dir="ltr" width="72">91.09%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">76점~80점</td>
             <td dir="ltr" width="88">8.67%</td>
             <td dir="ltr" width="88">632</td>
             <td dir="ltr" width="88">15.52%</td>
-            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
-            <td dir="ltr" width="88">3.27%</td>
-            <td dir="ltr" width="88">3,842</td>
-            <td dir="ltr" width="72">94.35%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">72점~76점</td>
             <td dir="ltr" width="88">11.37%</td>
             <td dir="ltr" width="88">1,095</td>
             <td dir="ltr" width="88">26.89%</td>
-            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
-            <td dir="ltr" width="88">1.47%</td>
-            <td dir="ltr" width="88">3,902</td>
-            <td dir="ltr" width="72">95.83%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">68점~72점</td>
             <td dir="ltr" width="88">14.91%</td>
             <td dir="ltr" width="88">1,702</td>
             <td dir="ltr" width="88">41.80%</td>
-            <td colspan="4" dir="ltr" width="336" class="bold blue"></td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
+            <td dir="ltr" width="88">13.95%</td>
+            <td dir="ltr" width="88">2,270</td>
+            <td dir="ltr" width="88">55.75%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
+            <td dir="ltr" width="88">12.40%</td>
+            <td dir="ltr" width="88">2,775</td>
+            <td dir="ltr" width="88">68.15%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
+            <td dir="ltr" width="88">9.92%</td>
+            <td dir="ltr" width="88">3,179</td>
+            <td dir="ltr" width="88">78.07%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
+            <td dir="ltr" width="88">7.88%</td>
+            <td dir="ltr" width="88">3,500</td>
+            <td dir="ltr" width="88">85.95%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
+            <td dir="ltr" width="88">5.13%</td>
+            <td dir="ltr" width="88">3,709</td>
+            <td dir="ltr" width="88">91.09%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
+            <td dir="ltr" width="88">3.27%</td>
+            <td dir="ltr" width="88">3,842</td>
+            <td dir="ltr" width="88">94.35%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
+            <td dir="ltr" width="88">1.47%</td>
+            <td dir="ltr" width="88">3,902</td>
+            <td dir="ltr" width="88">95.83%</td>
+        </tr>
+        <tr>
+            <td colspan="4" dir="ltr" width="352" class="bold blue">~40점</td>
         </tr>
     </table>
 </div>
@@ -388,95 +399,106 @@
         </div>    
     </div>
     <table cellspacing="0" cellpadding="0" class="table_type">
-        <col width="88" span="7" />
-        <col width="72" />
+        <col width="88" span="4" />
         <tr class="bold gray">
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">원점수<br>(이상~미만)</td>
             <td rowspan="2" dir="ltr" width="88">구간비율</td>
             <td rowspan="2" dir="ltr" width="88">누적인원</td>
             <td rowspan="2" dir="ltr" width="88">누적비율</td>
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
-            <td rowspan="2" dir="ltr" width="88">구간비율</td>
-            <td rowspan="2" dir="ltr" width="88">누적인원</td>
-            <td rowspan="2" dir="ltr" width="72">누적비율</td>
         </tr>
         <tr> </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">96점~</td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88"> - </td>
+            <td dir="ltr" width="88">- </td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
-            <td dir="ltr" width="88">13.95%</td>
-            <td dir="ltr" width="88">2,270</td>
-            <td dir="ltr" width="72">55.75%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">92점~96점</td>
             <td dir="ltr" width="88">0.22%</td>
             <td dir="ltr" width="88">9</td>
             <td dir="ltr" width="88">0.22%</td>
-            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
-            <td dir="ltr" width="88">12.40%</td>
-            <td dir="ltr" width="88">2,775</td>
-            <td dir="ltr" width="72">68.15%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">88점~92점</td>
             <td dir="ltr" width="88">0.64%</td>
             <td dir="ltr" width="88">35</td>
             <td dir="ltr" width="88">0.86%</td>
-            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
-            <td dir="ltr" width="88">9.92%</td>
-            <td dir="ltr" width="88">3,179</td>
-            <td dir="ltr" width="72">78.07%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">84점~88점</td>
             <td dir="ltr" width="88">1.65%</td>
             <td dir="ltr" width="88">102</td>
             <td dir="ltr" width="88">2.50%</td>
-            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
-            <td dir="ltr" width="88">7.88%</td>
-            <td dir="ltr" width="88">3,500</td>
-            <td dir="ltr" width="72">85.95%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">80점~84점</td>
             <td dir="ltr" width="88">4.35%</td>
             <td dir="ltr" width="88">279</td>
             <td dir="ltr" width="88">6.85%</td>
-            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
-            <td dir="ltr" width="88">5.13%</td>
-            <td dir="ltr" width="88">3,709</td>
-            <td dir="ltr" width="72">91.09%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">76점~80점</td>
             <td dir="ltr" width="88">8.67%</td>
             <td dir="ltr" width="88">632</td>
             <td dir="ltr" width="88">15.52%</td>
-            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
-            <td dir="ltr" width="88">3.27%</td>
-            <td dir="ltr" width="88">3,842</td>
-            <td dir="ltr" width="72">94.35%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">72점~76점</td>
             <td dir="ltr" width="88">11.37%</td>
             <td dir="ltr" width="88">1,095</td>
             <td dir="ltr" width="88">26.89%</td>
-            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
-            <td dir="ltr" width="88">1.47%</td>
-            <td dir="ltr" width="88">3,902</td>
-            <td dir="ltr" width="72">95.83%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">68점~72점</td>
             <td dir="ltr" width="88">14.91%</td>
             <td dir="ltr" width="88">1,702</td>
             <td dir="ltr" width="88">41.80%</td>
-            <td colspan="4" dir="ltr" width="336" class="bold blue"></td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
+            <td dir="ltr" width="88">13.95%</td>
+            <td dir="ltr" width="88">2,270</td>
+            <td dir="ltr" width="88">55.75%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
+            <td dir="ltr" width="88">12.40%</td>
+            <td dir="ltr" width="88">2,775</td>
+            <td dir="ltr" width="88">68.15%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
+            <td dir="ltr" width="88">9.92%</td>
+            <td dir="ltr" width="88">3,179</td>
+            <td dir="ltr" width="88">78.07%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
+            <td dir="ltr" width="88">7.88%</td>
+            <td dir="ltr" width="88">3,500</td>
+            <td dir="ltr" width="88">85.95%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
+            <td dir="ltr" width="88">5.13%</td>
+            <td dir="ltr" width="88">3,709</td>
+            <td dir="ltr" width="88">91.09%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
+            <td dir="ltr" width="88">3.27%</td>
+            <td dir="ltr" width="88">3,842</td>
+            <td dir="ltr" width="88">94.35%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
+            <td dir="ltr" width="88">1.47%</td>
+            <td dir="ltr" width="88">3,902</td>
+            <td dir="ltr" width="88">95.83%</td>
+        </tr>
+        <tr>
+            <td colspan="4" dir="ltr" width="352" class="bold blue">~40점</td>
         </tr>
     </table>
 </div>
@@ -584,95 +606,106 @@
         </div>    
     </div>
     <table cellspacing="0" cellpadding="0" class="table_type">
-        <col width="88" span="7" />
-        <col width="72" />
+        <col width="88" span="4" />
         <tr class="bold gray">
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">원점수<br>(이상~미만)</td>
             <td rowspan="2" dir="ltr" width="88">구간비율</td>
             <td rowspan="2" dir="ltr" width="88">누적인원</td>
             <td rowspan="2" dir="ltr" width="88">누적비율</td>
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
-            <td rowspan="2" dir="ltr" width="88">구간비율</td>
-            <td rowspan="2" dir="ltr" width="88">누적인원</td>
-            <td rowspan="2" dir="ltr" width="72">누적비율</td>
         </tr>
         <tr> </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">96점~</td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88"> - </td>
+            <td dir="ltr" width="88">- </td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
-            <td dir="ltr" width="88">13.95%</td>
-            <td dir="ltr" width="88">2,270</td>
-            <td dir="ltr" width="72">55.75%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">92점~96점</td>
             <td dir="ltr" width="88">0.22%</td>
             <td dir="ltr" width="88">9</td>
             <td dir="ltr" width="88">0.22%</td>
-            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
-            <td dir="ltr" width="88">12.40%</td>
-            <td dir="ltr" width="88">2,775</td>
-            <td dir="ltr" width="72">68.15%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">88점~92점</td>
             <td dir="ltr" width="88">0.64%</td>
             <td dir="ltr" width="88">35</td>
             <td dir="ltr" width="88">0.86%</td>
-            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
-            <td dir="ltr" width="88">9.92%</td>
-            <td dir="ltr" width="88">3,179</td>
-            <td dir="ltr" width="72">78.07%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">84점~88점</td>
             <td dir="ltr" width="88">1.65%</td>
             <td dir="ltr" width="88">102</td>
             <td dir="ltr" width="88">2.50%</td>
-            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
-            <td dir="ltr" width="88">7.88%</td>
-            <td dir="ltr" width="88">3,500</td>
-            <td dir="ltr" width="72">85.95%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">80점~84점</td>
             <td dir="ltr" width="88">4.35%</td>
             <td dir="ltr" width="88">279</td>
             <td dir="ltr" width="88">6.85%</td>
-            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
-            <td dir="ltr" width="88">5.13%</td>
-            <td dir="ltr" width="88">3,709</td>
-            <td dir="ltr" width="72">91.09%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">76점~80점</td>
             <td dir="ltr" width="88">8.67%</td>
             <td dir="ltr" width="88">632</td>
             <td dir="ltr" width="88">15.52%</td>
-            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
-            <td dir="ltr" width="88">3.27%</td>
-            <td dir="ltr" width="88">3,842</td>
-            <td dir="ltr" width="72">94.35%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">72점~76점</td>
             <td dir="ltr" width="88">11.37%</td>
             <td dir="ltr" width="88">1,095</td>
             <td dir="ltr" width="88">26.89%</td>
-            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
-            <td dir="ltr" width="88">1.47%</td>
-            <td dir="ltr" width="88">3,902</td>
-            <td dir="ltr" width="72">95.83%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">68점~72점</td>
             <td dir="ltr" width="88">14.91%</td>
             <td dir="ltr" width="88">1,702</td>
             <td dir="ltr" width="88">41.80%</td>
-            <td colspan="4" dir="ltr" width="336" class="bold blue"></td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
+            <td dir="ltr" width="88">13.95%</td>
+            <td dir="ltr" width="88">2,270</td>
+            <td dir="ltr" width="88">55.75%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
+            <td dir="ltr" width="88">12.40%</td>
+            <td dir="ltr" width="88">2,775</td>
+            <td dir="ltr" width="88">68.15%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
+            <td dir="ltr" width="88">9.92%</td>
+            <td dir="ltr" width="88">3,179</td>
+            <td dir="ltr" width="88">78.07%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
+            <td dir="ltr" width="88">7.88%</td>
+            <td dir="ltr" width="88">3,500</td>
+            <td dir="ltr" width="88">85.95%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
+            <td dir="ltr" width="88">5.13%</td>
+            <td dir="ltr" width="88">3,709</td>
+            <td dir="ltr" width="88">91.09%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
+            <td dir="ltr" width="88">3.27%</td>
+            <td dir="ltr" width="88">3,842</td>
+            <td dir="ltr" width="88">94.35%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
+            <td dir="ltr" width="88">1.47%</td>
+            <td dir="ltr" width="88">3,902</td>
+            <td dir="ltr" width="88">95.83%</td>
+        </tr>
+        <tr>
+            <td colspan="4" dir="ltr" width="352" class="bold blue">~40점</td>
         </tr>
     </table>
 </div>
@@ -780,95 +813,106 @@
         </div>    
     </div>
     <table cellspacing="0" cellpadding="0" class="table_type">
-        <col width="88" span="7" />
-        <col width="72" />
+        <col width="88" span="4" />
         <tr class="bold gray">
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">원점수<br>(이상~미만)</td>
             <td rowspan="2" dir="ltr" width="88">구간비율</td>
             <td rowspan="2" dir="ltr" width="88">누적인원</td>
             <td rowspan="2" dir="ltr" width="88">누적비율</td>
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
-            <td rowspan="2" dir="ltr" width="88">구간비율</td>
-            <td rowspan="2" dir="ltr" width="88">누적인원</td>
-            <td rowspan="2" dir="ltr" width="72">누적비율</td>
         </tr>
         <tr> </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">96점~</td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88"> - </td>
+            <td dir="ltr" width="88">- </td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
-            <td dir="ltr" width="88">13.95%</td>
-            <td dir="ltr" width="88">2,270</td>
-            <td dir="ltr" width="72">55.75%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">92점~96점</td>
             <td dir="ltr" width="88">0.22%</td>
             <td dir="ltr" width="88">9</td>
             <td dir="ltr" width="88">0.22%</td>
-            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
-            <td dir="ltr" width="88">12.40%</td>
-            <td dir="ltr" width="88">2,775</td>
-            <td dir="ltr" width="72">68.15%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">88점~92점</td>
             <td dir="ltr" width="88">0.64%</td>
             <td dir="ltr" width="88">35</td>
             <td dir="ltr" width="88">0.86%</td>
-            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
-            <td dir="ltr" width="88">9.92%</td>
-            <td dir="ltr" width="88">3,179</td>
-            <td dir="ltr" width="72">78.07%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">84점~88점</td>
             <td dir="ltr" width="88">1.65%</td>
             <td dir="ltr" width="88">102</td>
             <td dir="ltr" width="88">2.50%</td>
-            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
-            <td dir="ltr" width="88">7.88%</td>
-            <td dir="ltr" width="88">3,500</td>
-            <td dir="ltr" width="72">85.95%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">80점~84점</td>
             <td dir="ltr" width="88">4.35%</td>
             <td dir="ltr" width="88">279</td>
             <td dir="ltr" width="88">6.85%</td>
-            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
-            <td dir="ltr" width="88">5.13%</td>
-            <td dir="ltr" width="88">3,709</td>
-            <td dir="ltr" width="72">91.09%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">76점~80점</td>
             <td dir="ltr" width="88">8.67%</td>
             <td dir="ltr" width="88">632</td>
             <td dir="ltr" width="88">15.52%</td>
-            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
-            <td dir="ltr" width="88">3.27%</td>
-            <td dir="ltr" width="88">3,842</td>
-            <td dir="ltr" width="72">94.35%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">72점~76점</td>
             <td dir="ltr" width="88">11.37%</td>
             <td dir="ltr" width="88">1,095</td>
             <td dir="ltr" width="88">26.89%</td>
-            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
-            <td dir="ltr" width="88">1.47%</td>
-            <td dir="ltr" width="88">3,902</td>
-            <td dir="ltr" width="72">95.83%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">68점~72점</td>
             <td dir="ltr" width="88">14.91%</td>
             <td dir="ltr" width="88">1,702</td>
             <td dir="ltr" width="88">41.80%</td>
-            <td colspan="4" dir="ltr" width="336" class="bold blue"></td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
+            <td dir="ltr" width="88">13.95%</td>
+            <td dir="ltr" width="88">2,270</td>
+            <td dir="ltr" width="88">55.75%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
+            <td dir="ltr" width="88">12.40%</td>
+            <td dir="ltr" width="88">2,775</td>
+            <td dir="ltr" width="88">68.15%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
+            <td dir="ltr" width="88">9.92%</td>
+            <td dir="ltr" width="88">3,179</td>
+            <td dir="ltr" width="88">78.07%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
+            <td dir="ltr" width="88">7.88%</td>
+            <td dir="ltr" width="88">3,500</td>
+            <td dir="ltr" width="88">85.95%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
+            <td dir="ltr" width="88">5.13%</td>
+            <td dir="ltr" width="88">3,709</td>
+            <td dir="ltr" width="88">91.09%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
+            <td dir="ltr" width="88">3.27%</td>
+            <td dir="ltr" width="88">3,842</td>
+            <td dir="ltr" width="88">94.35%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
+            <td dir="ltr" width="88">1.47%</td>
+            <td dir="ltr" width="88">3,902</td>
+            <td dir="ltr" width="88">95.83%</td>
+        </tr>
+        <tr>
+            <td colspan="4" dir="ltr" width="352" class="bold blue">~40점</td>
         </tr>
     </table>
 </div>
@@ -1047,95 +1091,106 @@
         </div>    
     </div>
     <table cellspacing="0" cellpadding="0" class="table_type">
-        <col width="88" span="7" />
-        <col width="72" />
+        <col width="88" span="4" />
         <tr class="bold gray">
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">원점수<br>(이상~미만)</td>
             <td rowspan="2" dir="ltr" width="88">구간비율</td>
             <td rowspan="2" dir="ltr" width="88">누적인원</td>
             <td rowspan="2" dir="ltr" width="88">누적비율</td>
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
-            <td rowspan="2" dir="ltr" width="88">구간비율</td>
-            <td rowspan="2" dir="ltr" width="88">누적인원</td>
-            <td rowspan="2" dir="ltr" width="72">누적비율</td>
         </tr>
         <tr> </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">96점~</td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88"> - </td>
+            <td dir="ltr" width="88">- </td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
-            <td dir="ltr" width="88">13.95%</td>
-            <td dir="ltr" width="88">2,270</td>
-            <td dir="ltr" width="72">55.75%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">92점~96점</td>
             <td dir="ltr" width="88">0.22%</td>
             <td dir="ltr" width="88">9</td>
             <td dir="ltr" width="88">0.22%</td>
-            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
-            <td dir="ltr" width="88">12.40%</td>
-            <td dir="ltr" width="88">2,775</td>
-            <td dir="ltr" width="72">68.15%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">88점~92점</td>
             <td dir="ltr" width="88">0.64%</td>
             <td dir="ltr" width="88">35</td>
             <td dir="ltr" width="88">0.86%</td>
-            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
-            <td dir="ltr" width="88">9.92%</td>
-            <td dir="ltr" width="88">3,179</td>
-            <td dir="ltr" width="72">78.07%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">84점~88점</td>
             <td dir="ltr" width="88">1.65%</td>
             <td dir="ltr" width="88">102</td>
             <td dir="ltr" width="88">2.50%</td>
-            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
-            <td dir="ltr" width="88">7.88%</td>
-            <td dir="ltr" width="88">3,500</td>
-            <td dir="ltr" width="72">85.95%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">80점~84점</td>
             <td dir="ltr" width="88">4.35%</td>
             <td dir="ltr" width="88">279</td>
             <td dir="ltr" width="88">6.85%</td>
-            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
-            <td dir="ltr" width="88">5.13%</td>
-            <td dir="ltr" width="88">3,709</td>
-            <td dir="ltr" width="72">91.09%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">76점~80점</td>
             <td dir="ltr" width="88">8.67%</td>
             <td dir="ltr" width="88">632</td>
             <td dir="ltr" width="88">15.52%</td>
-            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
-            <td dir="ltr" width="88">3.27%</td>
-            <td dir="ltr" width="88">3,842</td>
-            <td dir="ltr" width="72">94.35%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">72점~76점</td>
             <td dir="ltr" width="88">11.37%</td>
             <td dir="ltr" width="88">1,095</td>
             <td dir="ltr" width="88">26.89%</td>
-            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
-            <td dir="ltr" width="88">1.47%</td>
-            <td dir="ltr" width="88">3,902</td>
-            <td dir="ltr" width="72">95.83%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">68점~72점</td>
             <td dir="ltr" width="88">14.91%</td>
             <td dir="ltr" width="88">1,702</td>
             <td dir="ltr" width="88">41.80%</td>
-            <td colspan="4" dir="ltr" width="336" class="bold blue"></td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
+            <td dir="ltr" width="88">13.95%</td>
+            <td dir="ltr" width="88">2,270</td>
+            <td dir="ltr" width="88">55.75%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
+            <td dir="ltr" width="88">12.40%</td>
+            <td dir="ltr" width="88">2,775</td>
+            <td dir="ltr" width="88">68.15%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
+            <td dir="ltr" width="88">9.92%</td>
+            <td dir="ltr" width="88">3,179</td>
+            <td dir="ltr" width="88">78.07%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
+            <td dir="ltr" width="88">7.88%</td>
+            <td dir="ltr" width="88">3,500</td>
+            <td dir="ltr" width="88">85.95%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
+            <td dir="ltr" width="88">5.13%</td>
+            <td dir="ltr" width="88">3,709</td>
+            <td dir="ltr" width="88">91.09%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
+            <td dir="ltr" width="88">3.27%</td>
+            <td dir="ltr" width="88">3,842</td>
+            <td dir="ltr" width="88">94.35%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
+            <td dir="ltr" width="88">1.47%</td>
+            <td dir="ltr" width="88">3,902</td>
+            <td dir="ltr" width="88">95.83%</td>
+        </tr>
+        <tr>
+            <td colspan="4" dir="ltr" width="352" class="bold blue">~40점</td>
         </tr>
     </table>
 </div>
@@ -1243,95 +1298,106 @@
         </div>    
     </div>
     <table cellspacing="0" cellpadding="0" class="table_type">
-        <col width="88" span="7" />
-        <col width="72" />
+        <col width="88" span="4" />
         <tr class="bold gray">
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">원점수<br>(이상~미만)</td>
             <td rowspan="2" dir="ltr" width="88">구간비율</td>
             <td rowspan="2" dir="ltr" width="88">누적인원</td>
             <td rowspan="2" dir="ltr" width="88">누적비율</td>
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
-            <td rowspan="2" dir="ltr" width="88">구간비율</td>
-            <td rowspan="2" dir="ltr" width="88">누적인원</td>
-            <td rowspan="2" dir="ltr" width="72">누적비율</td>
         </tr>
         <tr> </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">96점~</td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88"> - </td>
+            <td dir="ltr" width="88">- </td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
-            <td dir="ltr" width="88">13.95%</td>
-            <td dir="ltr" width="88">2,270</td>
-            <td dir="ltr" width="72">55.75%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">92점~96점</td>
             <td dir="ltr" width="88">0.22%</td>
             <td dir="ltr" width="88">9</td>
             <td dir="ltr" width="88">0.22%</td>
-            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
-            <td dir="ltr" width="88">12.40%</td>
-            <td dir="ltr" width="88">2,775</td>
-            <td dir="ltr" width="72">68.15%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">88점~92점</td>
             <td dir="ltr" width="88">0.64%</td>
             <td dir="ltr" width="88">35</td>
             <td dir="ltr" width="88">0.86%</td>
-            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
-            <td dir="ltr" width="88">9.92%</td>
-            <td dir="ltr" width="88">3,179</td>
-            <td dir="ltr" width="72">78.07%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">84점~88점</td>
             <td dir="ltr" width="88">1.65%</td>
             <td dir="ltr" width="88">102</td>
             <td dir="ltr" width="88">2.50%</td>
-            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
-            <td dir="ltr" width="88">7.88%</td>
-            <td dir="ltr" width="88">3,500</td>
-            <td dir="ltr" width="72">85.95%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">80점~84점</td>
             <td dir="ltr" width="88">4.35%</td>
             <td dir="ltr" width="88">279</td>
             <td dir="ltr" width="88">6.85%</td>
-            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
-            <td dir="ltr" width="88">5.13%</td>
-            <td dir="ltr" width="88">3,709</td>
-            <td dir="ltr" width="72">91.09%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">76점~80점</td>
             <td dir="ltr" width="88">8.67%</td>
             <td dir="ltr" width="88">632</td>
             <td dir="ltr" width="88">15.52%</td>
-            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
-            <td dir="ltr" width="88">3.27%</td>
-            <td dir="ltr" width="88">3,842</td>
-            <td dir="ltr" width="72">94.35%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">72점~76점</td>
             <td dir="ltr" width="88">11.37%</td>
             <td dir="ltr" width="88">1,095</td>
             <td dir="ltr" width="88">26.89%</td>
-            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
-            <td dir="ltr" width="88">1.47%</td>
-            <td dir="ltr" width="88">3,902</td>
-            <td dir="ltr" width="72">95.83%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">68점~72점</td>
             <td dir="ltr" width="88">14.91%</td>
             <td dir="ltr" width="88">1,702</td>
             <td dir="ltr" width="88">41.80%</td>
-            <td colspan="4" dir="ltr" width="336" class="bold blue"></td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
+            <td dir="ltr" width="88">13.95%</td>
+            <td dir="ltr" width="88">2,270</td>
+            <td dir="ltr" width="88">55.75%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
+            <td dir="ltr" width="88">12.40%</td>
+            <td dir="ltr" width="88">2,775</td>
+            <td dir="ltr" width="88">68.15%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
+            <td dir="ltr" width="88">9.92%</td>
+            <td dir="ltr" width="88">3,179</td>
+            <td dir="ltr" width="88">78.07%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
+            <td dir="ltr" width="88">7.88%</td>
+            <td dir="ltr" width="88">3,500</td>
+            <td dir="ltr" width="88">85.95%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
+            <td dir="ltr" width="88">5.13%</td>
+            <td dir="ltr" width="88">3,709</td>
+            <td dir="ltr" width="88">91.09%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
+            <td dir="ltr" width="88">3.27%</td>
+            <td dir="ltr" width="88">3,842</td>
+            <td dir="ltr" width="88">94.35%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
+            <td dir="ltr" width="88">1.47%</td>
+            <td dir="ltr" width="88">3,902</td>
+            <td dir="ltr" width="88">95.83%</td>
+        </tr>
+        <tr>
+            <td colspan="4" dir="ltr" width="352" class="bold blue">~40점</td>
         </tr>
     </table>
 </div>
@@ -1439,95 +1505,106 @@
         </div>    
     </div>
     <table cellspacing="0" cellpadding="0" class="table_type">
-        <col width="88" span="7" />
-        <col width="72" />
+        <col width="88" span="4" />
         <tr class="bold gray">
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">원점수<br>(이상~미만)</td>
             <td rowspan="2" dir="ltr" width="88">구간비율</td>
             <td rowspan="2" dir="ltr" width="88">누적인원</td>
             <td rowspan="2" dir="ltr" width="88">누적비율</td>
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
-            <td rowspan="2" dir="ltr" width="88">구간비율</td>
-            <td rowspan="2" dir="ltr" width="88">누적인원</td>
-            <td rowspan="2" dir="ltr" width="72">누적비율</td>
         </tr>
         <tr> </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">96점~</td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88"> - </td>
+            <td dir="ltr" width="88">- </td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
-            <td dir="ltr" width="88">13.95%</td>
-            <td dir="ltr" width="88">2,270</td>
-            <td dir="ltr" width="72">55.75%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">92점~96점</td>
             <td dir="ltr" width="88">0.22%</td>
             <td dir="ltr" width="88">9</td>
             <td dir="ltr" width="88">0.22%</td>
-            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
-            <td dir="ltr" width="88">12.40%</td>
-            <td dir="ltr" width="88">2,775</td>
-            <td dir="ltr" width="72">68.15%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">88점~92점</td>
             <td dir="ltr" width="88">0.64%</td>
             <td dir="ltr" width="88">35</td>
             <td dir="ltr" width="88">0.86%</td>
-            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
-            <td dir="ltr" width="88">9.92%</td>
-            <td dir="ltr" width="88">3,179</td>
-            <td dir="ltr" width="72">78.07%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">84점~88점</td>
             <td dir="ltr" width="88">1.65%</td>
             <td dir="ltr" width="88">102</td>
             <td dir="ltr" width="88">2.50%</td>
-            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
-            <td dir="ltr" width="88">7.88%</td>
-            <td dir="ltr" width="88">3,500</td>
-            <td dir="ltr" width="72">85.95%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">80점~84점</td>
             <td dir="ltr" width="88">4.35%</td>
             <td dir="ltr" width="88">279</td>
             <td dir="ltr" width="88">6.85%</td>
-            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
-            <td dir="ltr" width="88">5.13%</td>
-            <td dir="ltr" width="88">3,709</td>
-            <td dir="ltr" width="72">91.09%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">76점~80점</td>
             <td dir="ltr" width="88">8.67%</td>
             <td dir="ltr" width="88">632</td>
             <td dir="ltr" width="88">15.52%</td>
-            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
-            <td dir="ltr" width="88">3.27%</td>
-            <td dir="ltr" width="88">3,842</td>
-            <td dir="ltr" width="72">94.35%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">72점~76점</td>
             <td dir="ltr" width="88">11.37%</td>
             <td dir="ltr" width="88">1,095</td>
             <td dir="ltr" width="88">26.89%</td>
-            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
-            <td dir="ltr" width="88">1.47%</td>
-            <td dir="ltr" width="88">3,902</td>
-            <td dir="ltr" width="72">95.83%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">68점~72점</td>
             <td dir="ltr" width="88">14.91%</td>
             <td dir="ltr" width="88">1,702</td>
             <td dir="ltr" width="88">41.80%</td>
-            <td colspan="4" dir="ltr" width="336" class="bold blue"></td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
+            <td dir="ltr" width="88">13.95%</td>
+            <td dir="ltr" width="88">2,270</td>
+            <td dir="ltr" width="88">55.75%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
+            <td dir="ltr" width="88">12.40%</td>
+            <td dir="ltr" width="88">2,775</td>
+            <td dir="ltr" width="88">68.15%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
+            <td dir="ltr" width="88">9.92%</td>
+            <td dir="ltr" width="88">3,179</td>
+            <td dir="ltr" width="88">78.07%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
+            <td dir="ltr" width="88">7.88%</td>
+            <td dir="ltr" width="88">3,500</td>
+            <td dir="ltr" width="88">85.95%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
+            <td dir="ltr" width="88">5.13%</td>
+            <td dir="ltr" width="88">3,709</td>
+            <td dir="ltr" width="88">91.09%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
+            <td dir="ltr" width="88">3.27%</td>
+            <td dir="ltr" width="88">3,842</td>
+            <td dir="ltr" width="88">94.35%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
+            <td dir="ltr" width="88">1.47%</td>
+            <td dir="ltr" width="88">3,902</td>
+            <td dir="ltr" width="88">95.83%</td>
+        </tr>
+        <tr>
+            <td colspan="4" dir="ltr" width="352" class="bold blue">~40점</td>
         </tr>
     </table>
 </div>
@@ -1635,95 +1712,106 @@
         </div>    
     </div>
     <table cellspacing="0" cellpadding="0" class="table_type">
-        <col width="88" span="7" />
-        <col width="72" />
+        <col width="88" span="4" />
         <tr class="bold gray">
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
+            <td rowspan="2" dir="ltr" width="88">원점수<br>(이상~미만)</td>
             <td rowspan="2" dir="ltr" width="88">구간비율</td>
             <td rowspan="2" dir="ltr" width="88">누적인원</td>
             <td rowspan="2" dir="ltr" width="88">누적비율</td>
-            <td rowspan="2" dir="ltr" width="88">&nbsp;&nbsp;원점수<br>(이상~미만)</td>
-            <td rowspan="2" dir="ltr" width="88">구간비율</td>
-            <td rowspan="2" dir="ltr" width="88">누적인원</td>
-            <td rowspan="2" dir="ltr" width="72">누적비율</td>
         </tr>
         <tr> </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">96점~</td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88"> - </td>
+            <td dir="ltr" width="88">- </td>
             <td dir="ltr" width="88">0.00%</td>
-            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
-            <td dir="ltr" width="88">13.95%</td>
-            <td dir="ltr" width="88">2,270</td>
-            <td dir="ltr" width="72">55.75%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">92점~96점</td>
             <td dir="ltr" width="88">0.22%</td>
             <td dir="ltr" width="88">9</td>
             <td dir="ltr" width="88">0.22%</td>
-            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
-            <td dir="ltr" width="88">12.40%</td>
-            <td dir="ltr" width="88">2,775</td>
-            <td dir="ltr" width="72">68.15%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">88점~92점</td>
             <td dir="ltr" width="88">0.64%</td>
             <td dir="ltr" width="88">35</td>
             <td dir="ltr" width="88">0.86%</td>
-            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
-            <td dir="ltr" width="88">9.92%</td>
-            <td dir="ltr" width="88">3,179</td>
-            <td dir="ltr" width="72">78.07%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">84점~88점</td>
             <td dir="ltr" width="88">1.65%</td>
             <td dir="ltr" width="88">102</td>
             <td dir="ltr" width="88">2.50%</td>
-            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
-            <td dir="ltr" width="88">7.88%</td>
-            <td dir="ltr" width="88">3,500</td>
-            <td dir="ltr" width="72">85.95%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">80점~84점</td>
             <td dir="ltr" width="88">4.35%</td>
             <td dir="ltr" width="88">279</td>
             <td dir="ltr" width="88">6.85%</td>
-            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
-            <td dir="ltr" width="88">5.13%</td>
-            <td dir="ltr" width="88">3,709</td>
-            <td dir="ltr" width="72">91.09%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">76점~80점</td>
             <td dir="ltr" width="88">8.67%</td>
             <td dir="ltr" width="88">632</td>
             <td dir="ltr" width="88">15.52%</td>
-            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
-            <td dir="ltr" width="88">3.27%</td>
-            <td dir="ltr" width="88">3,842</td>
-            <td dir="ltr" width="72">94.35%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">72점~76점</td>
             <td dir="ltr" width="88">11.37%</td>
             <td dir="ltr" width="88">1,095</td>
             <td dir="ltr" width="88">26.89%</td>
-            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
-            <td dir="ltr" width="88">1.47%</td>
-            <td dir="ltr" width="88">3,902</td>
-            <td dir="ltr" width="72">95.83%</td>
         </tr>
         <tr>
             <td dir="ltr" width="88" class="bold blue">68점~72점</td>
             <td dir="ltr" width="88">14.91%</td>
             <td dir="ltr" width="88">1,702</td>
             <td dir="ltr" width="88">41.80%</td>
-            <td colspan="4" dir="ltr" width="336" class="bold blue"></td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">64점~68점</td>
+            <td dir="ltr" width="88">13.95%</td>
+            <td dir="ltr" width="88">2,270</td>
+            <td dir="ltr" width="88">55.75%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">60점~64점</td>
+            <td dir="ltr" width="88">12.40%</td>
+            <td dir="ltr" width="88">2,775</td>
+            <td dir="ltr" width="88">68.15%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">56점~60점</td>
+            <td dir="ltr" width="88">9.92%</td>
+            <td dir="ltr" width="88">3,179</td>
+            <td dir="ltr" width="88">78.07%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">52점~56점</td>
+            <td dir="ltr" width="88">7.88%</td>
+            <td dir="ltr" width="88">3,500</td>
+            <td dir="ltr" width="88">85.95%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">48점~52점</td>
+            <td dir="ltr" width="88">5.13%</td>
+            <td dir="ltr" width="88">3,709</td>
+            <td dir="ltr" width="88">91.09%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">44점~48점</td>
+            <td dir="ltr" width="88">3.27%</td>
+            <td dir="ltr" width="88">3,842</td>
+            <td dir="ltr" width="88">94.35%</td>
+        </tr>
+        <tr>
+            <td dir="ltr" width="88" class="bold blue">40점~44점</td>
+            <td dir="ltr" width="88">1.47%</td>
+            <td dir="ltr" width="88">3,902</td>
+            <td dir="ltr" width="88">95.83%</td>
+        </tr>
+        <tr>
+            <td colspan="4" dir="ltr" width="352" class="bold blue">~40점</td>
         </tr>
     </table>
 </div>

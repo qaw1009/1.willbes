@@ -6,7 +6,7 @@
 <div class="stage"><span class="phase">1단계</span> <span class="bold">기본정보 입력</span><br>
     기본 정보를 입력하시면 합격예측 서비스 이용이 가능합니다.
 </div>
-<form name="frm" id="frm" action="" method="post">
+<form name="" id="" action="" method="post">
     <table cellspacing="0" cellpadding="0" class="table_type">
         <col width="30%" />
         <col width="*" />
@@ -22,7 +22,7 @@
             <th>연락처</th>
             <td>
                 <label>
-                    <input type="text" name="textfield" id="textfield" onkeyup="fn_OnlyNumber(this);">
+                    <input type="text" name="textfield" id="" onkeyup="fn_OnlyNumber(this);">
                 </label>
             </td>
         </tr>
@@ -46,7 +46,7 @@
             <th>시험응시번호</th>
             <td>
                 <label>
-                    <input type="text" name="textfield" id="textfield" onkeyup="fn_OnlyNumber(this);">
+                    <input type="text" name="textfield" id="" onkeyup="fn_OnlyNumber(this);">
                 </label>
             </td>
         </tr>
@@ -55,8 +55,7 @@
             <td>
                 <ul class="sel_info">
                     <li><input type="radio" name="lec1" id="lec1" value="A" /> <label for="lec1">가형</label></li>
-                    <li><input type="radio" name="lec2" id="lec2" value="B" />
-                        나형</li>
+                    <li><input type="radio" name="lec2" id="lec2" value="B" /> <label for="lec2">나형</label></li>                       
                 </ul>
             </td>
         </tr>
@@ -115,7 +114,7 @@
 <div class="stage">
     <span class="phase">2단계</span> <span class="bold">체감난이도 입력</span>
 </div>
-<form name="frm2" id="frm2" action="" method="post">
+<form name="" id="" action="" method="post">
     <table cellspacing="0" cellpadding="0" class="table_type">
         <col width="30%" />
         <col width="*" />
@@ -123,22 +122,22 @@
             <th>언어논리</th>
             <td>
                 <ul class="sel_info">
-                    <li><input type="radio" name="lev1" id="lev1" value="A" />
+                    <li><input type="radio" name="" id="" value="A" />
                         매우 어려움
                     </li>
-                    <li><input type="radio" name="lev2" id="lev2" value="B" />
+                    <li><input type="radio" name="" id="" value="B" />
                         어려움
                     </li>
                     <li>
-                        <input type="radio" name="lev3" id="lev3" value="C" />
+                        <input type="radio" name="" id="" value="C" />
                         보통
                     </li>
                     <li>
-                        <input type="radio" name="lev4" id="lev4" value="D" />
+                        <input type="radio" name="" id="" value="D" />
                         쉬움
                     </li>
                     <li>
-                        <input type="radio" name="lev5" id="lev5" value="E" />
+                        <input type="radio" name="" id="" value="E" />
                         매우 쉬움
                     </li>
                 </ul>
@@ -149,19 +148,19 @@
             <td>
                 <ul class="sel_info">
                     <li>
-                        <input type="radio" name="lev1" id="lev1" value="A" />
+                        <input type="radio" name="" id="" value="A" />
                         매우 어려움 </li>
                     <li>
-                        <input type="radio" name="lev2" id="lev2" value="B" />
+                        <input type="radio" name="" id="" value="B" />
                         어려움 </li>
                     <li>
-                        <input type="radio" name="lev3" id="lev3" value="C" />
+                        <input type="radio" name="" id="" value="C" />
                         보통 </li>
                     <li>
-                        <input type="radio" name="lev4" id="lev4" value="D" />
+                        <input type="radio" name="" id="" value="D" />
                         쉬움 </li>
                     <li>
-                        <input type="radio" name="lev5" id="lev5" value="E" />
+                        <input type="radio" name="" id="" value="E" />
                         매우 쉬움 </li>
                 </ul>
             </td>
@@ -171,19 +170,19 @@
             <td>
                 <ul class="sel_info">
                     <li>
-                        <input type="radio" name="lev1" id="lev1" value="A" />
+                        <input type="radio" name="" id="" value="A" />
                         매우 어려움 </li>
                     <li>
-                        <input type="radio" name="lev2" id="lev2" value="B" />
+                        <input type="radio" name="" id="" value="B" />
                         어려움 </li>
                     <li>
-                        <input type="radio" name="lev3" id="lev3" value="C" />
+                        <input type="radio" name="" id="" value="C" />
                         보통 </li>
                     <li>
-                        <input type="radio" name="lev4" id="lev4" value="D" />
+                        <input type="radio" name="" id="" value="D" />
                         쉬움 </li>
                     <li>
-                        <input type="radio" name="lev5" id="lev5" value="E" />
+                        <input type="radio" name="" id="" value="E" />
                         매우 쉬움 </li>
                 </ul>
             </td>
@@ -193,19 +192,19 @@
             <td>
                 <ul class="sel_info">
                     <li>
-                        <input type="radio" name="lev1" id="lev1" value="A" />
+                        <input type="radio" name="" id="" value="A" />
                         매우 어려움 </li>
                     <li>
-                        <input type="radio" name="lev2" id="lev2" value="B" />
+                        <input type="radio" name="" id="" value="B" />
                         어려움 </li>
                     <li>
-                        <input type="radio" name="lev3" id="lev3" value="C" />
+                        <input type="radio" name="" id="" value="C" />
                         보통 </li>
                     <li>
-                        <input type="radio" name="lev4" id="lev4" value="D" />
+                        <input type="radio" name="" id="" value="D" />
                         쉬움 </li>
                     <li>
-                        <input type="radio" name="lev5" id="lev5" value="E" />
+                        <input type="radio" name="" id="" value="E" />
                         매우 쉬움 </li>
                 </ul>
             </td>
@@ -215,14 +214,14 @@
             <td>
                 <ul class="sel_info">
                     <li>
-                        <input type="radio" name="lec3" id="lec3" value="A" />
+                        <input type="radio" name="" id="" value="A" />
                         언어논리
                     </li>
                     <li>
-                        <input type="radio" name="lec4" id="lec4" value="B" />
+                        <input type="radio" name="" id="" value="B" />
                         상황판단</li>
                     <li>
-                        <input type="radio" name="lec5" id="lec5" value="C" />
+                        <input type="radio" name="" id="" value="C" />
                         자료해석</li>
                 </ul>
             </td>
@@ -236,7 +235,7 @@
 <div class="stage">
     <span class="phase">3단계</span> <span class="bold">답안 입력 / 채점결과 확인</span>
 </div>
-<form name="frm3" id="frm3" action="" method="post">
+<form name="" id="grading_result" action="" method="post">
     <div>
         <div class="marking">
             <h5>헌법</h5>
@@ -244,7 +243,7 @@
                 <li>
                     <div>
                         <label>번호</label>
-                        <input value="" name="답안입력" id="답안입력" placeholder="답안입력" disabled>
+                        <input value="" name="답안입력" id="" placeholder="답안입력" disabled>
                     </div>
                 </li>
                 <li>
@@ -285,7 +284,7 @@
                 <li>
                     <div>
                         <label>번호</label>
-                        <input value="" name="답안입력" id="답안입력" placeholder="답안입력" disabled>
+                        <input value="" name="답안입력" id="" placeholder="답안입력" disabled>
                     </div>
                 </li>
                 <li>
@@ -326,7 +325,7 @@
                 <li>
                     <div>
                         <label>번호</label>
-                        <input value="" name="답안입력" id="답안입력" placeholder="답안입력" disabled>
+                        <input value="" name="답안입력" id="" placeholder="답안입력" disabled>
                     </div>
                 </li>
                 <li>
@@ -370,7 +369,7 @@
 <div class="stage">
     <span class="phase">3단계</span> <span class="bold">답안 입력 / 채점결과 확인</span>
 </div>
-<form name="frm4"  id="frm4" action="" method="post">
+<form name=""  id="" action="" method="post">
     <ul class="markTab">
         <li><a href="#tab1">언어논리</a></li>
         <li><a href="#tab2">상황판단</a></li>

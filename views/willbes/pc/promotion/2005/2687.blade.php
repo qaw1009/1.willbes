@@ -62,7 +62,7 @@
     .graph_area {padding-top:10px;} 
     .graph {display:flex;left:50%;top:50%;}
     .graph li {padding:0 2px;text-align:center;}
-    .graph li div {position:relative;margin:0 auto;width:40px;height:400px;background:#8f52ff;border-radius:4px 4px 0 0 ;}
+    .graph li div {position:relative;margin:0 auto;width:40px;height:250px;background:#8f52ff;border-radius:4px 4px 0 0 ;}
     .graph li div span {position:absolute;left:0;bottom:0;right:0;background:#ccc;border-radius:4px 4px 0 0 ;}
     .graph li div i {display:none;}
     .graph li p {font-size:14px;}   
@@ -85,7 +85,7 @@
     .markSbtn3 {display:inline;float:left;width:50%;}
     .recheck_area {margin:50px;}
 
-    #frm3 {width:720px;margin:0 auto;}
+    #grading_result {width:720px;margin:0 auto;}
 
     .marking {margin:10px; padding:10px; border:1px dashed #e4e4e4}
     .marking h5 {font-size:17px; margin-bottom:10px;text-align:left;font-weight:bold;}

@@ -96,7 +96,7 @@
             return;
           @else
               var url = "{{front_url('/eventSurvey/index/' . $arr_promotion_params['SsIdx'])}}";
-              window.open(url,'survey_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
+              window.open(url,'survey_event', 'top=150,left=150,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
           @endif
       }
 

@@ -111,8 +111,12 @@ class Request extends \app\controllers\BaseController
             $prod_data = $this->predictModel->_getPredictProduct($PredictIdx);
         }
 
+        //직렬 조회
+        $arr_mock_part = $this->predictModel->getSerial(0);
+
         $this->load->view('predict/request/request_create', [
             'method' => $method,
+            'arr_mock_part' => $arr_mock_part,
             'siteCodeDef' => '',
             'data' => $data,
             'prod_data' => $prod_data,
@@ -178,7 +182,7 @@ class Request extends \app\controllers\BaseController
     public function update()
     {
         $rules = [
-            ['field' => 'SiteCode', 'label' => '사이트', 'rules' => 'trim|required|is_natural_no_zero'],
+            /*['field' => 'SiteCode', 'label' => '사이트', 'rules' => 'trim|required|is_natural_no_zero'],*/
             ['field' => 'ProdName', 'label' => '서비스명', 'rules' => 'trim|required'],
             ['field' => 'MockYear', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockRotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
@@ -223,23 +227,4 @@ class Request extends \app\controllers\BaseController
         $result = $this->predictModel->update();
         $this->json_result($result['ret_cd'], '저장되었습니다.', $result, $result);
     }
-
-    /**
-     * 영역선택 ajax
-     * @return object|string
-     */
-    public function getSerialAjax()
-    {
-
-        $GroupCcd = $this->_req("GroupCcd");
-
-        $list = $this->predictModel->getSerial($GroupCcd);
-
-        return $this->response([
-            'data' => $list
-        ]);
-
-    }
-
-
 }

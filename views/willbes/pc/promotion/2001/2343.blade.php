@@ -23,10 +23,8 @@
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/08/2343_top_bg.jpg) no-repeat center top;}
 
-        .evt_01 {background:#1f1f1f;position:relative;}   
-        .evt_02 #tab02{padding-top:70px;}
-        .evt_02 #tab04{padding-top:70px;}
-        
+        .evt_01 {background:#1f1f1f;position:relative;}
+             
         .evtTab {
             width:1120px; margin:0 auto;
             display: flex;

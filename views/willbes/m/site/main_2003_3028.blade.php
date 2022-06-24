@@ -2,19 +2,32 @@
 
 @section('content')
     <style>
-        .gosi .swiper-sec04 {position: relative;overflow: hidden;max-height:620px;background:#c0bcb0;margin-top:30px;}
-        .gosi .swiper-sec04 .gosiTitle {text-align:left; margin-left:24px; color:#fff}
-        .gosi .swiper-sec04 .swiper-wrapper {display: flex; justify-content: space-between; padding-left:20px }
-        .gosi .swiper-sec04 .swiper-container-sec04 .swiper-slide {width: 208px; max-height:407px; margin-right:20px; align-items: flex-start; background:none;}
-        .gosi .swiper-sec04 .swiper-slide a {display: block;}
-        .gosi .swiper-sec04 .swiper-slide img {max-width: 100%;}
+         .gosi .swiper-sec04 {
+            position: relative;
+            overflow: hidden;
+            background:#c0bcb0;  
+            margin-top:30px;
+            padding-bottom:3vh;
+        }
+         .gosi .swiper-sec04 .gosiTitle {color:#fff}
+         .gosi .swiper-sec04 .swiper-wrapper {display: flex; justify-content: space-between; padding-left:20px; height: auto;}
+         .gosi .swiper-sec04 .swiper-container-sec04 .swiper-slide {
+            width: 208px; margin-right:20px; align-items: flex-start; background:none;
+        }
+         .gosi .swiper-sec04 .swiper-slide a {
+            display: block;
+        }
+         .gosi .swiper-sec04 .swiper-slide img {
+            max-width: 100%;
+        }
 
         /* iPhone 5/SE */
         @@media only screen and (max-width: 374px) {
-            .gosi .swiper-sec04 {max-height:400px;}
-            .gosi .swiper-sec04 .gosiTitle {margin-left:10px; font-size:18px; padding-top:30px}
+            .gosi .swiper-sec04 .gosiTitle {padding-top:30px}
             .gosi .swiper-sec04 .swiper-wrapper {padding-left:10px}
-            .gosi .swiper-sec04 .swiper-container-sec04 .swiper-slide {width: 130px; max-height:auto; margin-right:10px;}
+            .gosi .swiper-sec04 .swiper-container-sec04 .swiper-slide {
+                width: 130px; margin-right:10px;
+            }
         }
     </style>
 

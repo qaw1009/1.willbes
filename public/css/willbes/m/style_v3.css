@@ -6456,6 +6456,14 @@ body.memBody #Footer {
 	color: #3a3a3a;
 }
 
+.lec-info-tab .tabBox img {
+	display: block;
+	width: 100%;
+	max-width: 680px;
+	height: auto;
+	margin-bottom: 20px;
+}
+
 .lec-info-tab .tabBox2 {
 	border-top: 1px solid #c9c9c9;
 	margin-top: -1px;

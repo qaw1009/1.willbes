@@ -173,7 +173,7 @@
                             <li><span>출판사</span> {{ $row['wPublName'] }}</li>
                             <li><span>판형/쪽수</span> {{ $row['wEditionSize'] }} / {{ $row['wPageCnt'] }}</li>
                             <li><span>출판일</span> {{ $row['wPublDate'] }}</li>
-                            <li><span>교재비</span> <strong class="tx-blue">{{ number_format($row['RealSalePrice']) }}원</strong> (↓{{ $row['SaleRate'] . $row['SaleRateUnit'] }})
+                            <li><span>교재비</span> <strong class="tx-blue">{{ number_format($row['RealSalePrice']) }}원</strong> (↓{{ $row['SaleRate'] . $row['SaleRateUnit'] }})
                                 <strong>[{{ $row['wSaleCcdName'] }}]</strong></li>
                         </ul>
                     @endforeach

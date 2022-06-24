@@ -59,13 +59,12 @@
 
         .intro .swiper-sec02 {
             position: relative;
-            overflow: hidden;    
-            height: 250px;    
-            margin-left:20px;
+            overflow: hidden;
+            margin-left:20px;              
         }
-        .intro .swiper-sec02 .swiper-wrapper { display: flex; justify-content:flex-start;}
+        .intro .swiper-sec02 .swiper-wrapper { display: flex; justify-content:flex-start; height: auto;}
         .intro .swiper-sec02 .swiper-container-sec02 .swiper-slide {
-            width:220px; margin-right:20px; align-items: flex-start;
+            max-width:220px; margin-right:20px; align-items: flex-start; 
         }
         .intro .swiper-sec02 .swiper-slide a {
             display: block;
@@ -80,9 +79,8 @@
             font-size: 12px;
         }
         .intro .swiper-sec02 .swiper-slide img {
-            max-width: 220px;
+            width:100%; max-width: 220px;
         }
-
 
         .intro .swiper-sec03 {padding-bottom:35px;}
         .intro .swiper-sec03 .swiper-pagination {
@@ -101,15 +99,15 @@
 
         .intro .swiper-sec04 {
             position: relative;
-            overflow: hidden;  
-            max-height:620px;
+            overflow: hidden;
             background:#c0bcb0;  
             margin-top:30px;
+            padding-bottom:3vh;
         }
         .intro .swiper-sec04 .gosiTitle {color:#fff}
-        .intro .swiper-sec04 .swiper-wrapper {display: flex; justify-content: space-between; padding-left:20px }
+        .intro .swiper-sec04 .swiper-wrapper {display: flex; justify-content: space-between; padding-left:20px; height: auto;}
         .intro .swiper-sec04 .swiper-container-sec04 .swiper-slide {
-            width: 208px; max-height:407px; margin-right:20px; align-items: flex-start; background:none;
+            width: 208px; margin-right:20px; align-items: flex-start; background:none;
         }
         .intro .swiper-sec04 .swiper-slide a {
             display: block;
@@ -124,12 +122,9 @@
             overflow: hidden;
             position: relative;
         }
-        .intro .swiper-sec05 .swiper-container-prof {
-            height: 420px;
-        }
+        .intro .swiper-sec05 .swiper-wrapper {height: auto;}
         .intro .swiper-sec05 .swiper-slide {
             width: 350px;
-            height: calc((100% - 10px) / 2);
             display: -webkit-box;
             display: -ms-flexbox;
             display: -webkit-flex;
@@ -161,29 +156,25 @@
             .swiper-main-Banner .MaintabControl div {font-size:12px}
             .swiper-main-Banner .MaintabControl div.MaintabAll a {font-size:20px;}
 
-            .intro .swiper-sec02 {  
-            height: 170px; 
-            }
-            .intro .swiper-sec02 .swiper-container-sec02 .swiper-slide {
-                width:140px; margin-right:10px
-            }
-
             .intro .gosiTitle,
             .intro .swiper-sec02 {margin-left:10px}
             .intro .gosiTitle {font-size:18px}
 
+            .intro .swiper-sec05 .swiper-container-prof {height:185px;}
+            .intro .swiper-sec05 .swiper-slide {width: 160px;}
+        }
 
-            .intro .swiper-sec04 {max-height:400px;}
+        @@media only screen and (max-width: 719px) {
+            .intro .swiper-sec02 .swiper-container-sec02 .swiper-slide {
+                width:40%; margin-right:10px
+            }
+
             .intro .swiper-sec04 .gosiTitle {padding-top:30px}
             .intro .swiper-sec04 .swiper-wrapper {padding-left:10px}
             .intro .swiper-sec04 .swiper-container-sec04 .swiper-slide {
-                width: 130px; max-height:auto; margin-right:10px;
+                width: 130px; margin-right:10px;
             }
-
-            .intro .swiper-sec05 .swiper-container-prof {height:180px;}
-            .intro .swiper-sec05 .swiper-slide {width: 140px;}
         }
-
     </style>
 </head>
 <body id="goTop">
@@ -746,7 +737,7 @@
 
 </div>
 
-{{--모달팝업--}}
+{{--모달팝업
 <div class="popupBox NSK" id="modalPopup">
     <div class="popupContent">
         <div class="popbanner"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/popup_sp01.jpg"></a></div>
@@ -757,7 +748,7 @@
         <div><button onclick="closeWin('modalPopup')">닫기</button></div>
     </div>
 </div>
-{{--모달팝업//--}}
+모달팝업//--}}
 <!-- End Container -->
 
 

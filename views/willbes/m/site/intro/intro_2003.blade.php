@@ -24,27 +24,45 @@
         .Container .MaintabAllView img {max-width:100%;}
         .fixed {position:fixed; top:0; left:0; width:100%; border-bottom:1px solid #ccc; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10}
         .intro .gosiTitle {text-align:left; margin-left:24px}
-        .intro .swiper-sec02 {position: relative;overflow: hidden;height: 250px;margin-left:20px;}
-        .intro .swiper-sec02 .swiper-wrapper { display: flex; justify-content:flex-start;}
-        .intro .swiper-sec02 .swiper-container-sec02 .swiper-slide {width:220px; margin-right:20px; align-items: flex-start;}
+
+        .intro .swiper-sec02 {
+            position: relative;
+            overflow: hidden;
+            margin-left:20px;              
+        }
+        .intro .swiper-sec02 .swiper-wrapper { display: flex; justify-content:flex-start; height: auto;}
+        .intro .swiper-sec02 .swiper-container-sec02 .swiper-slide {
+            max-width:220px; margin-right:20px; align-items: flex-start; 
+        }
         .intro .swiper-sec02 .swiper-slide a {display: block;}
         .intro .swiper-sec02 .swiper-slide .bnTit {display: block;width: 100%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;margin: 10px auto 0;font-size: 12px;}
         .intro .swiper-sec02 .swiper-slide img {max-width: 220px;}
+
         .intro .swiper-sec03 {padding-bottom:35px;}
         .intro .swiper-sec03 .swiper-pagination {top:90%;float:none;text-align:center}
         .intro .swiper-pagination .swiper-pagination-bullet {background:#d1d0ce !important;opacity: 1;}
         .intro .swiper-pagination .swiper-pagination-bullet-active {background:#2b2b2b !important;}
-        .intro .swiper-sec04 {position: relative;overflow: hidden;max-height:620px;background:#c0bcb0;margin-top:30px;}
+        
+        .intro .swiper-sec04 {
+            position: relative;
+            overflow: hidden;
+            background:#c0bcb0;  
+            margin-top:30px;
+            padding-bottom:3vh;
+        }
         .intro .swiper-sec04 .gosiTitle {color:#fff}
-        .intro .swiper-sec04 .swiper-wrapper {display: flex; justify-content: space-between; padding-left:20px }
-        .intro .swiper-sec04 .swiper-container-sec04 .swiper-slide {width: 208px; max-height:407px; margin-right:20px; align-items: flex-start; background:none;}
+        .intro .swiper-sec04 .swiper-wrapper {display: flex; justify-content: space-between; padding-left:20px; height: auto;}
+        .intro .swiper-sec04 .swiper-container-sec04 .swiper-slide {
+            width: 208px; margin-right:20px; align-items: flex-start; background:none;
+        }
         .intro .swiper-sec04 .swiper-slide a {display: block;}
         .intro .swiper-sec04 .swiper-slide img {max-width: 100%;}
+
         .intro .swiper-sec05 {padding-bottom: 20px;overflow: hidden;position: relative;}
+        .intro .swiper-sec05 .swiper-wrapper {height: auto;}
         .intro .swiper-sec05 .swiper-container-prof {height: 420px;}
         .intro .swiper-sec05 .swiper-slide {
             width: 350px;
-            height: calc((100% - 10px) / 2);
             display: -webkit-box;
             display: -ms-flexbox;
             display: -webkit-flex;
@@ -60,22 +78,35 @@
         }
         .intro .swiper-sec05 .swiper-slide a {display: block;}
         .intro .swiper-sec05 .swiper-slide img {width: 100%;}
+
+
         /* iPhone 5/SE */
         @@media only screen and (max-width: 374px) {
-            .swiper-main-Banner .swiper-slide .small-banner {width:calc(100% - 20px); margin:-10px 10px 0; padding:10px 0; border-radius:10px;}
+            .swiper-main-Banner .swiper-slide .small-banner {
+            width:calc(100% - 20px); margin:-10px 10px 0; padding:10px 0; border-radius:10px; 
+            }
+
             .swiper-main-Banner .MaintabControl div {font-size:12px}
             .swiper-main-Banner .MaintabControl div.MaintabAll a {font-size:20px;}
-            .intro .swiper-sec02 {height: 170px;}
-            .intro .swiper-sec02 .swiper-container-sec02 .swiper-slide {width:140px; margin-right:10px}
+
             .intro .gosiTitle,
             .intro .swiper-sec02 {margin-left:10px}
             .intro .gosiTitle {font-size:18px}
-            .intro .swiper-sec04 {max-height:400px;}
+
+            .intro .swiper-sec05 .swiper-container-prof {height:185px;}
+            .intro .swiper-sec05 .swiper-slide {width: 160px;}
+        }
+
+        @@media only screen and (max-width: 719px) {
+            .intro .swiper-sec02 .swiper-container-sec02 .swiper-slide {
+                width:40%; margin-right:10px
+            }
+
             .intro .swiper-sec04 .gosiTitle {padding-top:30px}
             .intro .swiper-sec04 .swiper-wrapper {padding-left:10px}
-            .intro .swiper-sec04 .swiper-container-sec04 .swiper-slide {width: 130px; max-height:auto; margin-right:10px;}
-            .intro .swiper-sec05 .swiper-container-prof {height:180px;}
-            .intro .swiper-sec05 .swiper-slide {width: 140px;}
+            .intro .swiper-sec04 .swiper-container-sec04 .swiper-slide {
+                width: 130px; margin-right:10px;
+            }
         }
     </style>
 

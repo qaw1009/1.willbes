@@ -10145,16 +10145,19 @@ ul li.profList .willbes-Layer-ProfileBox {
 	color: #959595;
 }
 
-.willbes-program dl dt {
-	float: left;
-	width: 68px;
-	text-align: center;
-	margin-top: 25px;
-	margin-left: 4px;
+.willbes-program dl {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin-top: 15px;
 }
 
-.willbes-program dl dt:first-child {
-	margin-left: 0;
+.willbes-program dl dt {
+	width: calc(25% - 4px);
+	text-align: center;
+	margin: auto;
+	margin-bottom: 4px;
 }
 
 .willbes-program dl dt a {
@@ -10163,7 +10166,6 @@ ul li.profList .willbes-Layer-ProfileBox {
 	height: 100%;
 	border: 5px solid #eaeaea;
 	padding: 10px 0;
-
 }
 
 .willbes-program dl dt div {

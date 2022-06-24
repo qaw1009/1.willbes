@@ -32,7 +32,7 @@
         .survey {width:670px; margin:50px auto 0;}
         .survey a {display:block;font-size:44px; color:#fff; padding:20px; background:#000; border-radius:50px;}
         .survey a:hover {background:#533fd1}
-
+        .evt02 .txtinfo {margin-top:20px; color:red}
 
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -65,9 +65,10 @@
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">            
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2668_02.jpg" alt="모의고사 설문조사"/>              
-            <div class="survey NSK-Black" data-aos="fade-up">
+            <div class="survey NSK-Black">
                 <a href="javascript:void(0);" onclick="showPopup();" title="설문 참여">설문조사 참여하기 ></a>
-            </div>  
+            </div>
+            <div class="txtinfo">* 시험후기를 남기기 전, 간단한 설문조사참여를 부탁드립니다.</div>  
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')

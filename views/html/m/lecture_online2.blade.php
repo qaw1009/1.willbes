@@ -168,7 +168,7 @@
                                 <li><a href="#none" class="btn_black_line">WIDE</a></li>
                                 <li><a href="#none" class="btn_blue">HIGH</a></li>
                                 <li><a href="#none" class="btn_gray">LOW</a></li>
-                                <li><a href="#none" class="f_right"><img src="{{ img_url('m/mypage/icon_lec.png') }}"> <span class="underline">강의자료</span></a></li>
+                                <li><a href="#none" class="f_right"><img src="{{ img_url('m/mypage/icon_lec.png') }}" class="dataIcon"> <span class="underline">강의자료</span></a></li>
                             </ul>
                         </li>
                         <li>
@@ -178,7 +178,7 @@
                                 <li><a href="#none" class="btn_black_line">WIDE</a></li>
                                 <li><a href="#none" class="btn_blue">HIGH</a></li>
                                 <li><a href="#none" class="btn_gray">LOW</a></li>
-                                <li><a href="#none" class="f_right"><img src="{{ img_url('m/mypage/icon_lec.png') }}"> <span class="underline">강의자료</span></a></li>
+                                <li><a href="#none" class="f_right"><img src="{{ img_url('m/mypage/icon_lec.png') }}" class="dataIcon"> <span class="underline">강의자료</span></a></li>
                             </ul>
                         </li>
                         <li>
@@ -188,7 +188,7 @@
                                 <li><a href="#none" class="btn_black_line">WIDE</a></li>
                                 <li><a href="#none" class="btn_blue">HIGH</a></li>
                                 <li><a href="#none" class="btn_gray">LOW</a></li>
-                                <li><a href="#none" class="f_right"><img src="{{ img_url('m/mypage/icon_lec.png') }}"> <span class="underline">강의자료</span></a></li>
+                                <li><a href="#none" class="f_right"><img src="{{ img_url('m/mypage/icon_lec.png') }}" class="dataIcon"> <span class="underline">강의자료</span></a></li>
                             </ul>
                         </li>
                     </ul>

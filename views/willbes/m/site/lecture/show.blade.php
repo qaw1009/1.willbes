@@ -201,9 +201,9 @@
                                         <li>
                                             @if(empty($row['wUnitAttachFile']) === false)
                                                 @if($pattern == 'free' && ($data['FreeLecTypeCcd'] == '652002' || $data['FreeLecTypeCcd'] == '652003'))
-                                                    <a href="{{front_url('/lecture/download/').'?filename='.urlencode(str_replace( '//', '/', $row['wAttachPath'].'/'.$row['wUnitAttachFile'])).'&filename_ori='.urlencode($row['wUnitAttachFileReal'])}}"  class="f_right"><img src="{{ img_url('m/mypage/icon_lec.png') }}"> <span class="underline">강의자료</span></a>
+                                                    <a href="{{front_url('/lecture/download/').'?filename='.urlencode(str_replace( '//', '/', $row['wAttachPath'].'/'.$row['wUnitAttachFile'])).'&filename_ori='.urlencode($row['wUnitAttachFileReal'])}}" class="f_right"><img src="{{ img_url('m/mypage/icon_lec.png') }}" class="dataIcon"> <span class="underline">강의자료</span></a>
                                                 @else
-                                                    <div class="f_right"><img src="{{ img_url('m/mypage/icon_lec.png') }}" > <span class="underline">강의자료</span></div>
+                                                    <div class="f_right"><img src="{{ img_url('m/mypage/icon_lec.png') }}" class="dataIcon"> <span class="underline">강의자료</span></div>
                                                 @endif
                                             @endif
                                         </li>

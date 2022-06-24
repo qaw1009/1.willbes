@@ -6536,6 +6536,11 @@ body.memBody #Footer {
 	float: right;
 }
 
+.lec-info-tab .lec-list .dataIcon {
+	width: 15px;
+	margin: auto;
+}
+
 .lec-info-tab .lec-list li a {
 	display: inline-block;
 	width: 80px;

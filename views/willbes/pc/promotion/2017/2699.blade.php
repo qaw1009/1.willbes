@@ -34,7 +34,7 @@
         .slide_con p.rightBtn {right:0;}
 
         .evt02 .gobtn {width:450px; margin:150px auto 0; }
-        .evt02 .gobtn a {display:block; color:#fff; background:#f12929; font-size:26px; border-radius:40px; padding:25px 0; font-weight:bold}
+        .evt02 .gobtn a {display:block; color:#fff; background:#209dcb; font-size:26px; border-radius:40px; padding:25px 0; font-weight:bold}
         .evt02 .gobtn a:hover {background:#000}
 
         .evt03 {width:1120px; margin:0 auto; padding:100px 0; display: flex; justify-content: space-between;}

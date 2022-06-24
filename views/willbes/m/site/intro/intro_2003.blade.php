@@ -92,12 +92,9 @@
             .intro .gosiTitle,
             .intro .swiper-sec02 {margin-left:10px}
             .intro .gosiTitle {font-size:18px}
-
-            .intro .swiper-sec05 .swiper-container-prof {height:185px;}
-            .intro .swiper-sec05 .swiper-slide {width: 160px;}
         }
 
-        @@media only screen and (max-width: 719px) {
+        @@media only screen and (max-width: 640px) {
             .intro .swiper-sec02 .swiper-container-sec02 .swiper-slide {
                 width:40%; margin-right:10px
             }
@@ -107,6 +104,9 @@
             .intro .swiper-sec04 .swiper-container-sec04 .swiper-slide {
                 width: 130px; margin-right:10px;
             }
+
+            .intro .swiper-sec05 .swiper-container-prof {height:185px;}
+            .intro .swiper-sec05 .swiper-slide {width: 160px;}
         }
     </style>
 

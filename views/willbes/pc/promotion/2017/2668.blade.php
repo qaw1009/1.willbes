@@ -32,7 +32,7 @@
         .survey {width:670px; margin:50px auto 0;}
         .survey a {display:block;font-size:44px; color:#fff; padding:20px; background:#000; border-radius:50px;}
         .survey a:hover {background:#533fd1}
-        .evt02 .txtinfo {margin-top:20px; color:red}
+        .evt02 .txtinfo {margin-top:20px; color:red; font-size:18px}
 
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}

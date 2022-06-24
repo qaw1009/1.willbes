@@ -33,7 +33,7 @@
 }
 .replyWrite .btnrwt {    
     position: absolute; bottom:0; right:0;
-    width:70px; border-left:1px solid #eaeaea; display:block; height:42px; line-height:42px; color:#333; background:#fff;
+    width:70px; border-left:1px solid #eaeaea; display:block; height:42px; line-height:42px; color:red; background:#eaeaea; font-weight:bold
 }
 .replyWrite span {position:absolute; bottom:10px; right:80px; color:#999;}
 

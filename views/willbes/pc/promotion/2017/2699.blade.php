@@ -14,17 +14,27 @@
             background:#fff;            
         }
         .evtContent span {vertical-align:middle}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px; position: relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px; position: relative; }
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/12/2438_top_bg.jpg) no-repeat center top;}
-        .evt01 {background:#002643;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/06/2699_top_bg.jpg) no-repeat center top; height: 1325px;}
+        .evtTop span {position:absolute; top:220px; left:50%; margin-left:-445px; z-index: 10;}
 
-        .evt02 {background:url(https://static.willbes.net/public/images/promotion/2021/09/2367_03_bg.jpg) no-repeat center top; height:949px}
-        .evt02 .gobtn {width:380px; margin: 50px auto 0; height:92px; line-height:92px}
-        .evt02 .gobtn a {display:block; color:#fff; background:#37b5ff; font-size:26px}
+        .evt01 {background:#209dcb;}
+
+        .evt02 {background:#d8d8d8 url(https://static.willbes.net/public/images/promotion/2022/06/2699_02.jpg) no-repeat center top; padding-bottom:150px; padding-top:600px}
+
+        .slide_con {position:relative; width:940px; margin:0 auto;}
+        .slide_con p {position:absolute; top:40%; width:57px; height:57px; z-index:100}
+        .slide_con p a {cursor:pointer; display: block; opacity: .5;}
+        .slide_con p a:hover {opacity:1;}
+        .slide_con p.leftBtn {left:0;}
+        .slide_con p.rightBtn {right:0;}
+
+        .evt02 .gobtn {width:450px; margin:150px auto 0; }
+        .evt02 .gobtn a {display:block; color:#fff; background:#f12929; font-size:26px; border-radius:40px; padding:25px 0; font-weight:bold}
         .evt02 .gobtn a:hover {background:#000}
 
         .evt03 {width:1120px; margin:0 auto; padding:100px 0; display: flex; justify-content: space-between;}
@@ -46,11 +56,11 @@
             line-height: 50px;
             padding-left: 20px;
             position:relative;
-            background:#e4e4e4 url("https://static.willbes.net/public/images/promotion/2021/12/2438_arrowDown.png") no-repeat 90% center;
+            background:#e4e4e4 url("https://static.willbes.net/public/images/promotion/2022/06/2699_arrowDown.png") no-repeat 90% center;
         }
         .ssam-Lnb .lnb-List .ssam-lnb-List-Tit.hover a {
             color: #0d74ae;
-            background-image: url("https://static.willbes.net/public/images/promotion/2021/12/2438_arrowUp.png");
+            background-image: url("https://static.willbes.net/public/images/promotion/2022/06/2699_arrowUp.png");
         }
 
         .ssam-Lnb .lnb-List .lnb-List-Depth {
@@ -119,9 +129,8 @@
         .tabCts .buyWrap .checkWrap input {width:18px; height:18px}
         .tabCts .buyWrap .checkWrap label {cursor: pointer}
 
-        .evt04 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2438_04_bg.jpg) no-repeat center top;}
-        .evt05 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2438_05_bg.jpg) no-repeat center top;}
-
+        .evt04 {background:#005fca;}
+        
         .evtInfo {padding:80px 0; background:#fff; color:#242424; font-size:16px}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
         .evtInfoBox h4 {font-size:40px; margin-bottom:20px}
@@ -154,31 +163,24 @@
             right: -2px;
         }
         .ssam .willbes-Layer-youtube iframe {width:860px; height:484px}
-
-        .slide_con {position:relative; width:1121px; margin:0 auto; padding-top:293px}
-        .slide_con p {position:absolute; top:50%; width:57px; height:57px; z-index:100}
-        .slide_con p a {cursor:pointer; display: block; opacity: .5;}
-        .slide_con p a:hover {opacity:1;}
-        .slide_con p.leftBtn {left:15px; top:72%;}
-        .slide_con p.rightBtn {right:15px;top:72%;}
     </style>
 
-    <div class="p_re evtContent NSK ssam" id="evtContainer">
-        <div class="evtCtnsBox evtTop" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2438_top.jpg" alt="2022학년도 연간패키지"/>
+    <div class="evtContent NSK ssam" id="evtContainer">
+        <div class="evtCtnsBox evtTop">
+            <span data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/06/2699_top_img.png" alt="하반기 패키지"/></span>
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/12/2438_01.jpg" alt="열공지원금 팡팡"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/06/2699_01.jpg" alt="문제풀이 중요성"/>
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">
             <div class="slide_con">
                 <ul id="slidesImg3">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/09/2367_03_01.jpg" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/09/2367_03_02.jpg" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/09/2367_03_03.jpg" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/09/2367_03_04.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/06/2699_02_01.png" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/06/2699_02_02.png" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/06/2699_02_03.png" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/06/2699_02_04.png" alt="" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2021/09/2367_arrowL.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2021/09/2367_arrowR.png"></a></p>
@@ -191,7 +193,7 @@
         <div id="hotclip_box"></div>
 
         <div class="evtCtnsBox evt04" data-aos="fade-up">
-            <a href="https://ssam.willbes.net/support/notice/show?board_idx=416076&s_cate_code_disabled=Y" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2438_04.jpg" alt="초심을 잃지 마세요~!"/></a>
+            <a href="https://ssam.willbes.net/support/notice/show?board_idx=416076&s_cate_code_disabled=Y" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/06/2699_03.jpg" alt="7~8월 강의 일정"/></a>
         </div>
 
         <div class="evtCtnsBox evtInfo" data-aos="fade-up">
@@ -222,6 +224,7 @@
                 <iframe src="https://www.youtube.com/embed/Y2W3lUrn3aI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
+
         {{--교수 커리큘럼 팝업 --}}
         <div id="Curriculum" class="willbes-Layer-CurriBox">
             <div class="popupWrap">
@@ -234,6 +237,7 @@
                 </div>
             </div>
         </div>
+
         <div id="sec-prof-layer" class="willbes-Layer-Black"></div>
     </div>
     <!-- End Container -->

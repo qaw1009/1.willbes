@@ -13,6 +13,8 @@
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/02/2093_top_bg.jpg) no-repeat center top;}
@@ -33,12 +35,12 @@
     </style>
 
     <div class="evtContent NSK mb100">      
-        <div class="evtCtnsBox evtTop">                       
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2093_top.jpg" usemap="#Map2093a" title="W 플래너" border="0">
-            <map name="Map2093a" id="Map2093a">
-                <area shape="rect" coords="199,974,544,1040" href="https://pass.willbes.net/promotion/index/cate/3035/code/2701" target="_blank" />
-                <area shape="rect" coords="578,974,920,1042" href="https://pass.willbes.net/promotion/index/cate/3035/code/2696" target="_blank" />
-            </map> 
+        <div class="evtCtnsBox evtTop">
+            <div class="wrap">            
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2093_top.jpg" title="W 플래너">
+                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2701" target="_blank" alt="오프라인 종합반" style="position: absolute;left: 17.61%;top: 82.01%;width: 31.01%;height: 5.25%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2696" target="_blank" alt="온라인 패스" style="position: absolute;left: 51.51%;top: 82.01%;width: 31.01%;height: 5.25%;z-index: 2;"></a>
+            </div>            
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -59,11 +61,11 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2093_02.jpg" usemap="#Map2093b" title="W 플래너 연계 학습관리" border="0">
-            <map name="Map2093b" id="Map2093b">
-                <area shape="rect" coords="146,1289,497,1358" href="https://pass.willbes.net/promotion/index/cate/3035/code/2701" target="_blank" />
-                <area shape="rect" coords="624,1289,976,1356" href="https://pass.willbes.net/promotion/index/cate/3035/code/2696" target="_blank" />
-            </map> 
+            <div class="wrap"> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2093_02.jpg" title="W 플래너 연계 학습관리">
+                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2701" target="_blank" alt="오프라인 종합반" style="position: absolute;left: 13.21%;top: 81.01%;width: 31.01%;height: 4.25%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2696" target="_blank" alt="온라인 패스" style="position: absolute;left: 56.01%;top: 81.01%;width: 31.01%;height: 4.25%;z-index: 2;"></a>
+            </div>           
         </div>
 
         <div class="evtCtnsBox evt03">

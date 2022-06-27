@@ -12,6 +12,8 @@
     background:#fff;
 }	
 .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+.evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+/*.evtCtnsBox .wrap a {border:1px solid #000}*/
 /*****************************************************************/  
 
 .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/05/2212_top_bg.jpg) no-repeat center top;}
@@ -21,8 +23,6 @@
 .evt03 {background:#14192b;}
 
 .evt04 {background:#eeeef1;}
-.evt04 .wrap {width:1120px; margin:0 auto;position:relative;}
-.evt04 .wrap a:hover {background:rgba(0,0,0,.25)} 
 
 </style>
 
@@ -46,11 +46,12 @@
 
         <div class="evtCtnsBox evt04">            
             <div class="wrap"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/05/2212_04.jpg" alt="바로가기">       
-                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1412" target="_blank" title="" style="position: absolute; left: 18.55%; top: 27.14%; width: 19.54%; height: 4.86%; z-index: 2;"></a>
-                <a href="https://www.youtube.com/watch?v=Y0NgcFSokU8" target="_blank" title="" style="position: absolute; left: 63.55%; top: 27.14%; width: 19.54%; height: 4.86%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2087" target="_blank" title="" style="position: absolute; left: 31.55%; top: 52.14%; width: 19.54%; height: 4.86%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3059/code/2119" target="_blank" title="" style="position: absolute; left: 31.55%; top: 75.14%; width: 19.54%; height: 4.86%; z-index: 2;"></a>  
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/2212_04.jpg" alt="바로가기">       
+                <a href="" target="_blank" title="" style="position: absolute;left: 30.55%;top: 24.34%;width: 38.74%;height: 2.56%;z-index: 2;"></a>
+                <a href="" target="_blank" title="" style="position: absolute;left: 63.45%;top: 28.04%;width: 17.54%;height: 4.36%;z-index: 2;"></a>
+                <a href="" target="_blank" title="" style="position: absolute;left: 30.55%;top: 41.94%;width: 38.74%;height: 2.56%;z-index: 2;"></a>
+                <a href="" target="_blank" title="" style="position: absolute;left: 30.55%;top: 59.54%;width: 38.74%;height: 2.56%;z-index: 2;"></a>
+                <a href="" target="_blank" title="" style="position: absolute;left: 30.55%;top: 88.14%;width: 38.74%;height: 2.56%;z-index: 2;"></a>  
             </div>   
         </div>                      
               

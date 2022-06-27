@@ -46,7 +46,7 @@
     <div class="evtCtnsBox" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2625m_03.jpg" alt="합격수기 참여하는 방법" >
-            <a href="#none" onclick="javascript:popup();" title="내 합격수기 등록하기" style="position: absolute; left: 21.86%; top: 92.65%; width: 56.56%; height: 3.47%; z-index: 2;"></a>
+            <a href="javascript:void(0);" onclick="javascript:popup(); return false;" title="내 합격수기 등록하기" style="position: absolute; left: 21.86%; top: 92.65%; width: 56.56%; height: 3.47%; z-index: 2;"></a>
         </div>
     </div>
 
@@ -55,18 +55,23 @@
 <!-- End Container -->
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      $( document ).ready( function() {
-        AOS.init();
-      } );
-    </script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  $( document ).ready( function() {
+    AOS.init();
+  } );
+</script>
 
-    <script>
+<script type="text/javascript">
     function popup(){
-        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-        var url = "{{ site_url('/pass/promotion/popup/' . $arr_base['promotion_code']) .'?cert='. $arr_promotion_params['cert'] }}";
-        window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=868,height=630');
+        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+        @if(empty($arr_promotion_params['cert']) === false)
+            var url = "{{ front_url('/promotion/popup/' . $arr_base['promotion_code'] .'?cert='. $arr_promotion_params['cert'], true) }}";
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=868,height=630');
+        @else
+            alert('인증 정보를 찾을 수 없습니다.');
+            return;
+        @endif
     }
 </script>
 @stop

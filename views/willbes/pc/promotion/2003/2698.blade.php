@@ -64,11 +64,11 @@
             </div>
             <div class="wrap">                
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/2698_03_02.jpg" alt="온오프라인 상품 "/>
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" title="학원 종합반" style="position: absolute; left: 31.79%; top: 22.43%; width: 36.79%; height: 2.6%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3059/code/2119" title="온라인 관리반이란?" style="position: absolute; left: 56.96%; top: 26.21%; width: 16.79%; height: 4.19%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" title="온라인 관리반" style="position: absolute; left: 31.79%; top: 38.62%; width: 36.79%; height: 2.6%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2658" title="온라인 패스" style="position: absolute; left: 31.79%; top: 54.95%; width: 36.79%; height: 2.6%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/package/index/cate/3035/pack/648001" title="온라인 패키지" style="position: absolute; left: 31.79%; top: 88.64%; width: 36.79%; height: 2.6%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" title="학원 종합반" style="position: absolute; left: 31.79%; top: 22.43%; width: 36.79%; height: 2.6%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/promotion/index/cate/3059/code/2119" target="_blank" title="온라인 관리반이란?" style="position: absolute; left: 56.96%; top: 26.21%; width: 16.79%; height: 4.19%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" title="온라인 관리반" style="position: absolute; left: 31.79%; top: 38.62%; width: 36.79%; height: 2.6%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2658" target="_blank" title="온라인 패스" style="position: absolute; left: 31.79%; top: 54.95%; width: 36.79%; height: 2.6%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/package/index/cate/3035/pack/648001" target="_blank" title="온라인 패키지" style="position: absolute; left: 31.79%; top: 88.64%; width: 36.79%; height: 2.6%; z-index: 2;"></a>
             </div>
 		</div>
 

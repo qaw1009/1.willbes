@@ -36,8 +36,8 @@
         <div class="evtCtnsBox evtTop">                       
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2093_top.jpg" usemap="#Map2093a" title="W 플래너" border="0">
             <map name="Map2093a" id="Map2093a">
-                <area shape="rect" coords="199,974,544,1040" href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/2096" target="_blank" />
-                <area shape="rect" coords="578,974,920,1042" href="https://pass.willbes.net/promotion/index/cate/3035/code/2087" target="_blank" />
+                <area shape="rect" coords="199,974,544,1040" href="https://pass.willbes.net/promotion/index/cate/3035/code/2701" target="_blank" />
+                <area shape="rect" coords="578,974,920,1042" href="https://pass.willbes.net/promotion/index/cate/3035/code/2696" target="_blank" />
             </map> 
         </div>
 
@@ -61,8 +61,8 @@
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2093_02.jpg" usemap="#Map2093b" title="W 플래너 연계 학습관리" border="0">
             <map name="Map2093b" id="Map2093b">
-                <area shape="rect" coords="146,1289,497,1358" href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/2096" target="_blank" />
-                <area shape="rect" coords="624,1289,976,1356" href="https://pass.willbes.net/promotion/index/cate/3035/code/2087" target="_blank" />
+                <area shape="rect" coords="146,1289,497,1358" href="https://pass.willbes.net/promotion/index/cate/3035/code/2701" target="_blank" />
+                <area shape="rect" coords="624,1289,976,1356" href="https://pass.willbes.net/promotion/index/cate/3035/code/2696" target="_blank" />
             </map> 
         </div>
 

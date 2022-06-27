@@ -71,6 +71,9 @@
         .evt_table input[type=checkbox] {height:20px; width:20px}
         .evt_table td li {display:inline-block; float:left; width:50%; margin-bottom:10px; letter-spacing:-1px}
 
+        .evt_table .close {position: absolute; display:flex; background:rgba(0,0,0,0.5); width:100%; height: 100%; left:0; top:0; z-index: 10;justify-content: center;align-items: center;}
+        .evt_table .close span {border:10px double #cc0000; color:#cc0000; font-size:50px; padding:40px; transform: rotate(-20deg)}
+        
         .check {margin:30px auto; text-align:left}
         .check p {margin-bottom:50px;padding-top:75px;}
         .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#163C57; text-align:center; border-radius:90px;}
@@ -190,6 +193,9 @@
             @if (empty($arr_base['order_product']) === true)
                 {{--접수전 화면--}}
                 <div class="evt_table p_re">
+                    <div class="close NSK-Black">
+                        <span>모의고사<br>접수마감</span>
+                    </div>
                     <div class="txtinfo">
                         <div>실전<br>모의고사<br>신청 관련<br>안내사항</div>
                         <ul>
@@ -227,9 +233,9 @@
                                 <th>교육학 선택<br>(중복선택 가능)</th>
                                 <td colspan="3">
                                     <ul>
-                                        <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196788' : '159829' }}" autocomplete="off"/> 교육학논술 (이경범 교수 출제)</label></li>
-                                        <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196789' : '159831' }}" autocomplete="off"/> 교육학논술 (정   현 교수 출제)</label></li>
-                                        <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196790' : '159830' }}" autocomplete="off"/> 교육학논술 (신태식 교수 출제)</label></li>
+                                        <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" disabled name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196788' : '159829' }}" autocomplete="off"/> 교육학논술 (이경범 교수 출제)</label></li>
+                                        <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" disabled name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196789' : '159831' }}" autocomplete="off"/> 교육학논술 (정   현 교수 출제)</label></li>
+                                        <li><label><input class="btn-add-product prod-type-1" data-prod-type="1" type="checkbox" disabled name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196790' : '159830' }}" autocomplete="off"/> 교육학논술 (신태식 교수 출제)</label></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -237,17 +243,17 @@
                                 <th>전공과목 선택<br>(중복선택 가능)</th>
                                 <td colspan="3">
                                     <ul>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196791' : '159832' }}" autocomplete="off"/> 국  어 (송원영/권보민 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196792' : '159833' }}" autocomplete="off"/> 국  어 (구동언 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196795' : '159834' }}" autocomplete="off"/> 수  학 (김철홍/박태영 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196796' : '159835' }}" autocomplete="off"/> 수  학 (김현웅/박혜향 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196797' : '_159837' }}" autocomplete="off"/> 도덕·윤리 (김민응 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196798' : '_159838' }}" autocomplete="off"/> 일반사회 (허역 교수팀 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196799' : '_159839' }}" autocomplete="off"/> 역  사 (김종권 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196800' : '_159840' }}" autocomplete="off"/> 음  악 (다이애나 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196801' : '_159841' }}" autocomplete="off"/> 전  기 (최우영 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196802' : '_159842' }}" autocomplete="off"/> 전  자 (최우영 교수 출제)</label></li>
-                                        <li><label><input type="checkbox" class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196803' : '_159843' }}" autocomplete="off"/> 중국어 (장영희 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" disabled class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196791' : '159832' }}" autocomplete="off"/> 국  어 (송원영/권보민 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" disabled class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196792' : '159833' }}" autocomplete="off"/> 국  어 (구동언 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" disabled class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196795' : '159834' }}" autocomplete="off"/> 수  학 (김철홍/박태영 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" disabled class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196796' : '159835' }}" autocomplete="off"/> 수  학 (김현웅/박혜향 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" disabled class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196797' : '_159837' }}" autocomplete="off"/> 도덕·윤리 (김민응 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" disabled class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196798' : '_159838' }}" autocomplete="off"/> 일반사회 (허역 교수팀 출제)</label></li>
+                                        <li><label><input type="checkbox" disabled class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196799' : '_159839' }}" autocomplete="off"/> 역  사 (김종권 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" disabled class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196800' : '_159840' }}" autocomplete="off"/> 음  악 (다이애나 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" disabled class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196801' : '_159841' }}" autocomplete="off"/> 전  기 (최우영 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" disabled class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196802' : '_159842' }}" autocomplete="off"/> 전  자 (최우영 교수 출제)</label></li>
+                                        <li><label><input type="checkbox" disabled class="btn-add-product prod-type-2" data-prod-type="2" name="prod_code" value="{{ ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '196803' : '_159843' }}" autocomplete="off"/> 중국어 (장영희 교수 출제)</label></li>
                                     </ul>
                                 </td>
                             </tr>

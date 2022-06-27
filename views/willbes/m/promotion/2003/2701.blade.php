@@ -54,12 +54,12 @@
 
     <div class="evtCtnsBox wrap" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_04.jpg" alt="후기 "/>
-        <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="" style="position: absolute; left: 18.89%; top: 92.55%; width: 62.08%; height: 3.58%; z-index: 2;"></a>
+        <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="" style="position: absolute; left: 18.89%; top: 92.65%; width: 62.08%; height: 3.58%; z-index: 2;"></a>
     </div>
 
     <div class="evtCtnsBox wrap" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_05.jpg" alt="수강신청 "/>
-        <a href="#none" style="position: absolute; left: 26.39%; top: 78.38%; width: 48.33%; height: 8.02%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3059" target="_blank" style="position: absolute; left: 26.39%; top: 78.38%; width: 48.33%; height: 8.02%; z-index: 2;"></a>
     </div>
 
     <div class="evtCtnsBox wrap" data-aos="fade-up">

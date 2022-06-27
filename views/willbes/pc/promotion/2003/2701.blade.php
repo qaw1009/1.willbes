@@ -66,14 +66,14 @@
         <div class="evtCtnsBox evt04" data-aos="fade-right">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/2701_04.jpg" alt="절대 만족 후기"/>
-                <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="더 많은 합격수기 보기" style="position: absolute; left: 34.46%; top: 81%; width: 30.89%; height: 5.55%; z-index: 2;"></a>
+                <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="더 많은 합격수기 보기" style="position: absolute; left: 34.46%; top: 80.45%; width: 30.89%; height: 5.55%; z-index: 2;"></a>
             </div>
 		</div>
 
         <div class="evtCtnsBox evt05" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/2701_05.jpg" alt="학원종합반" />
-                <a href="#none" style="position: absolute; left: 35.09%; top: 74.15%; width: 30.98%; height: 8.72%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" style="position: absolute; left: 35.09%; top: 74.15%; width: 30.98%; height: 8.72%; z-index: 2;"></a>
             </div>
 		</div>
 

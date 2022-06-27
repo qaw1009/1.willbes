@@ -106,7 +106,7 @@
         <div class="titleTrend NSK-Black">전국 모집인원(경쟁률, 합격선) 현황 및 최근 10년간 모집 동향 분석</div>
         <ul>
             @foreach($data['exam']['subject_list'] as $key => $val)
-                <li><a href="#Container" class="btn-exam-layer" data-id="{{$key}}">{{$val['subject_name']}}</a></li>
+                <li><a href="#subject_title" class="btn-exam-layer" data-id="{{$key}}">{{$val['subject_name']}}</a></li>
             @endforeach
         </ul>
     </div>

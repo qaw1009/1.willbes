@@ -91,10 +91,16 @@
                     <li><strong>STEP2</strong> 2일 이내 내강의실 > 쿠폰 현황 확인</li>
                     <li><strong>STEP3</strong> <span>안다르(www.andar.co.kr)</span> 회원가입 후 30% 할인 쿠폰등록</li>
                 </ul>
+                {{--
                 <div class="coupon">
                     <p>📌 쿠폰 등록 방법</p> 
                     월비스 장바구니에서 쿠폰 번호 확인 (16자리) > 안다르 공식몰 로그인 > 마이페이지 > 쿠폰 > 쿠폰인증번호 등록하기 > 쿠폰번호 인증 > 쿠폰등록 후 주문서에서 사용
                 </div>
+                --}}
+                <div class="infoTit NSK-Black">쿠폰 등록 방법</div>
+				<ul>
+                    <li>월비스 장바구니에서 <strong>쿠폰 번호 확인</strong> (16자리) > 안다르 공식몰 <strong>로그인</strong> > <strong>마이페이지</strong> > <strong>쿠폰</strong> > <strong>쿠폰인증번호 등록하기</strong> > <strong>쿠폰번호 인증</strong> > <strong>쿠폰등록</strong> 후 주문서에서 사용</li>
+				</ul>
                 <div class="infoTit NSK-Black">쿠폰 이용안내</div>
 				<ul>
                     <li>30% 추가 할인 쿠폰 1매당 구매할 수 있는 최대 품목은 30개 입니다. (안다르 상품 장바구니 적용시)</li>

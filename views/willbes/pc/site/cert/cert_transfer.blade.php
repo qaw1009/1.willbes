@@ -150,12 +150,6 @@
                 alert("이미 '승인'된 인증입니다.");return;
                 @endif
 
-                // if ($('#EtcContent').val() == '') {
-                //     alert('수강사이트를 입력해 주세요.');
-                //     $('#EtcContent').focus();
-                //     return;
-                // }
-
                 if ($('#attachfile').val() == '') {
                     alert('첨부파일을 등록해 주세요.');
                     return;
@@ -169,7 +163,6 @@
                 if (!confirm('저장하시겠습니까?')) { return true; }
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
-                        //notifyAlert('success', '알림', ret.ret_msg);
                         alert('인증 신청이 등록되었습니다.');
                         opener.location.reload();
                         self.close();

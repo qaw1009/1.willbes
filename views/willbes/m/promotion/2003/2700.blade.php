@@ -47,27 +47,33 @@
     <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/06/2700m_02.jpg" alt="쿠폰 받고 열공" >
     </div>
-
+    @php
+        // 다수의 인증코드 사용
+        $cert_array = [];
+        if (empty($arr_promotion_params["cert"]) === false) {
+            $cert_array = explode(',', $arr_promotion_params["cert"]);
+        }
+    @endphp
     <div class="evtCtnsBox" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2700m_03.jpg" alt="할인 및 구매하기" >
-            <a href="javascript:certOpen();" title="9급 인증받고 할인받기" style="position: absolute;left: 10.08%;top: 12.59%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
+            <a href="javascript:certOpen('{{element("page", $arr_promotion_params)}}', '{{element(0, $cert_array)}}');" title="9급 인증받고 할인받기" style="position: absolute;left: 10.08%;top: 12.59%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="https://pass.willbes.net/m/promotion/index/cate/3019/code/2502" target="_blank" title="9급 구매하기" style="position: absolute;left: 10.08%;top: 15.23%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
-            <a href="javascript:certOpen();" title="세무직 인증받고 할인받기" style="position: absolute;left: 60.08%;top: 12.59%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
+            <a href="javascript:certOpen('{{element("page", $arr_promotion_params)}}', '{{element(1, $cert_array)}}');" title="세무직 인증받고 할인받기" style="position: absolute;left: 60.08%;top: 12.59%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="https://pass.willbes.net/m/promotion/index/cate/3022/code/1983" target="_blank" title="세무직 구매하기" style="position: absolute;left: 60.08%;top: 15.23%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
-            <a href="javascript:certOpen();" title="소방직 인증받고 할인받기" style="position: absolute;left: 11.28%;top: 31.69%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
+            <a href="javascript:certOpen('{{element("page", $arr_promotion_params)}}', '{{element(2, $cert_array)}}');" title="소방직 인증받고 할인받기" style="position: absolute;left: 11.28%;top: 31.69%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="https://pass.willbes.net/m/promotion/index/cate/3023/code/2503" target="_blank" title="소방직 구매하기" style="position: absolute;left: 11.28%;top: 34.35%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
-            <a href="javascript:certOpen();" title="농업직 인증받고 할인받기" style="position: absolute;left: 59.91%;top: 31.69%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
+            <a href="javascript:certOpen('{{element("page", $arr_promotion_params)}}', '{{element(3, $cert_array)}}');" title="농업직 인증받고 할인받기" style="position: absolute;left: 59.91%;top: 31.69%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="https://pass.willbes.net/m/promotion/index/cate/3028/code/1068" target="_blank" title="농업직 구매하기" style="position: absolute;left: 59.91%;top: 34.35%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
-            <a href="javascript:certOpen();" title="조경직 인증받고 할인받기" style="position: absolute;left: 11.38%;top: 50.79%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
+            <a href="javascript:certOpen('{{element("page", $arr_promotion_params)}}', '{{element(4, $cert_array)}}');" title="조경직 인증받고 할인받기" style="position: absolute;left: 11.38%;top: 50.79%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2115" target="_blank" title="조경직 구매하기" style="position: absolute;left: 11.38%;top: 53.53%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
-            <a href="javascript:certOpen();" title="축산직 인증받고 할인받기" style="position: absolute;left: 60.08%;top: 50.79%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
+            <a href="javascript:certOpen('{{element("page", $arr_promotion_params)}}', '{{element(5, $cert_array)}}');" title="축산직 인증받고 할인받기" style="position: absolute;left: 60.08%;top: 50.79%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2114" target="_blank" title="축산직 구매하기" style="position: absolute;left: 60.08%;top: 53.53%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
-            <a href="javascript:certOpen();" title="통신직 인증받고 할인받기" style="position: absolute;left: 11.38%;top: 69.51%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
+            <a href="javascript:certOpen('{{element("page", $arr_promotion_params)}}', '{{element(6, $cert_array)}}');" title="통신직 인증받고 할인받기" style="position: absolute;left: 11.38%;top: 69.51%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="https://pass.willbes.net/m/promotion/index/cate/3028/code/2256" target="_blank" title="통신직 구매하기" style="position: absolute;left: 11.38%;top: 72.21%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
-            <a href="javascript:certOpen();" title="전기직 인증받고 할인받기" style="position: absolute;left: 60.08%;top: 69.51%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
+            <a href="javascript:certOpen('{{element("page", $arr_promotion_params)}}', '{{element(7, $cert_array)}}');" title="전기직 인증받고 할인받기" style="position: absolute;left: 60.08%;top: 69.51%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="https://pass.willbes.net/m/promotion/index/cate/3028/code/2256" target="_blank" title="전기직 구매하기" style="position: absolute;left: 60.08%;top: 72.21%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
-            <a href="javascript:certOpen();" title="전자직 인증받고 할인받기" style="position: absolute;left: 37.08%;top: 89.05%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
+            <a href="javascript:certOpen('{{element("page", $arr_promotion_params)}}', '{{element(8, $cert_array)}}');" title="전자직 인증받고 할인받기" style="position: absolute;left: 37.08%;top: 89.05%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="https://pass.willbes.net/m/promotion/index/cate/3028/code/2256" target="_blank" title="전자직 구매하기" style="position: absolute;left: 37.08%;top: 91.75%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
         </div>
     </div>
@@ -109,13 +115,16 @@
     </script>
     <script>
     /* 팝업창 */ 
-    function certOpen(){
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            @if(empty($arr_promotion_params) === false)
-            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
-            @endif
+    function certOpen(type, code){
+        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+        if(type == '' || code == '') {
+            alert("인증정보가 정확하지 않습니다.");return;
         }
+        @if(empty($arr_promotion_params) === false)
+        var url = '/certApply/index/page/'+type+'/cert/'+code;
+        window.open(url, 'cert', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+        @endif
+    }
     </script>
 
 {{-- 프로모션용 스크립트 include --}}

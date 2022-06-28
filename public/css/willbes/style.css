@@ -4998,7 +4998,7 @@ table.classTable tr td.w-data {
 }
 
 table.classTable tr td img {
-	width: 100%;
+	/*width: 100%;*/
 	max-width: 760px;
 	display: block;
 }

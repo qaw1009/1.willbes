@@ -122,7 +122,7 @@
         }
         @if(empty($arr_promotion_params) === false)
         var url = '/certApply/index/page/'+type+'/cert/'+code;
-        window.open(url, 'cert', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+        window.open(url, 'cert', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=800');
         @endif
     }
     </script>

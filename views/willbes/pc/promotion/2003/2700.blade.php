@@ -121,7 +121,7 @@
             alert("인증정보가 정확하지 않습니다.");return;
         }
         var url = '/certApply/index/page/'+type+'/cert/'+code;
-        window.open(url, 'cert', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+        window.open(url, 'cert', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=800');
     }
     </script>
     

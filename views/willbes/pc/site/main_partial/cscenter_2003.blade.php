@@ -1,3 +1,10 @@
+@php
+    $_cs_number = [
+        '3103' => '1566-4770 <span>▶</span> 2'
+        ,'3035' => '1566-4770 <span>▶</span> 6'
+        ,'3148' => '1566-4770 <span>▶</span> 6'
+    ];
+@endphp
 <div class="CScenterBox">
     <dl>
         <dt class="willbesNumber">
@@ -5,7 +12,7 @@
                 <li>
                     <div class="nTit">온라인 수강문의</div>
                     <div class="nNumber tx-color">
-                        {!! ($__cfg['CateCode'] == '3103') ? '1566-4770 <span>▶</span> 2' : (($__cfg['CateCode'] == '3035') ? '1566-4770 <span>▶</span> 6' : '1544-5006 <span>▶</span> 2') !!}
+                        {!! (array_key_exists($__cfg['CateCode'], $_cs_number) === true ? $_cs_number[$__cfg['CateCode']] : '1544-5006 <span>▶</span> 2') !!}
                     </div>
                     <div class="nTxt">
                         [운영시간]<br/>

@@ -15,6 +15,11 @@
             $school_tel = '1544-1881';
             break;
 
+        case "3148":
+            $online_tel = '1566-4770';
+            $school_tel = '1544-0330';
+            break;
+
         case "3035":
             $online_tel = '1566-4770 ▶ 6';
             $school_tel = '1544-0330';

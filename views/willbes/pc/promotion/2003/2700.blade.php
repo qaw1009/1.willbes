@@ -53,6 +53,7 @@
                 $cert_array = explode(',', $arr_promotion_params["cert"]);
             }
         @endphp
+        
         <div class="evtCtnsBox wb_03" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/2700_03.jpg" alt="할인 및 구매하기"/>

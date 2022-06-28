@@ -100,7 +100,7 @@
                 --}}
                 <div class="infoTit NSK-Black">쿠폰 등록 방법</div>
 				<ul>
-                    <li>월비스 장바구니에서 <strong>쿠폰 번호 확인</strong> (16자리) > 안다르 공식몰 <strong>로그인</strong> > <strong>마이페이지</strong> > <strong>쿠폰</strong> > <strong>쿠폰인증번호 등록하기</strong> > <strong>쿠폰번호 인증</strong> > <strong>쿠폰등록</strong> 후 주문서에서 사용</li>
+                    <li>월비스 <strong>내강의실</strong> > <strong>쿠폰현황</strong>에서 <strong>쿠폰 번호 확인</strong> (16자리) > 안다르 공식몰 <strong>로그인</strong> > <strong>마이페이지</strong> > <strong>쿠폰</strong> > <strong>쿠폰인증번호 등록하기</strong> > <strong>쿠폰번호 인증</strong> > <strong>쿠폰등록</strong> 후 주문서에서 사용</li>
 				</ul>
                 <div class="infoTit NSK-Black">쿠폰 이용안내</div>
 				<ul>

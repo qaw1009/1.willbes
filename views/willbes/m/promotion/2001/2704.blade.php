@@ -27,7 +27,7 @@
     .evtInfoBox .infoTit {font-size:3vh; margin-bottom:10px;}
     .evtInfoBox .coupon {border:1px solid #fff; padding:10px; margin-bottom:20px}
     .evtInfoBox .coupon p {font-size:2vh; margin-bottom:10px}
-    .evtInfoBox ul {margin-bottom:20px}
+    .evtInfoBox ul {margin-bottom:30px}
     .evtInfoBox li {margin-bottom:5px; list-style-type: disc; margin-left:20px;  }
     .evtInfoBox strong {color:#ffe78e}
     .evtInfoBox span {color:#ffc000}

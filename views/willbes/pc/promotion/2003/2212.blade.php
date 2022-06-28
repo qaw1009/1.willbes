@@ -47,10 +47,10 @@
         <div class="evtCtnsBox evt04">            
             <div class="wrap"> 
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/2212_04.jpg" alt="바로가기">       
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" title="학원 종합반" style="position: absolute;left: 30.55%;top: 24.34%;width: 38.74%;height: 2.56%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2701" target="_blank" title="학원 종합반" style="position: absolute;left: 30.55%;top: 24.34%;width: 38.74%;height: 2.56%;z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/promotion/index/cate/3059/code/2119" target="_blank" title="온라인 관리반이란?" style="position: absolute;left: 63.45%;top: 28.04%;width: 17.54%;height: 4.36%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" title="온라인 관리반" style="position: absolute;left: 30.55%;top: 41.94%;width: 38.74%;height: 2.56%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2658" target="_blank" title="온라인 패스" style="position: absolute;left: 30.55%;top: 59.54%;width: 38.74%;height: 2.56%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/promotion/index/cate/3059/code/2119" target="_blank" title="온라인 관리반" style="position: absolute;left: 30.55%;top: 41.94%;width: 38.74%;height: 2.56%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2696" target="_blank" title="온라인 패스" style="position: absolute;left: 30.55%;top: 59.54%;width: 38.74%;height: 2.56%;z-index: 2;"></a>
                 <a href="https://pass.willbes.net/package/index/cate/3035/pack/648001" target="_blank" title="온라인 패키지" style="position: absolute;left: 30.55%;top: 88.14%;width: 38.74%;height: 2.56%;z-index: 2;"></a>  
             </div>
         </div>                      

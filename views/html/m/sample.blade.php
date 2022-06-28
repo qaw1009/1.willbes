@@ -72,6 +72,7 @@
             <a href="{{ site_url('/home/html/m/mypage_online7') }}" target="_blank">내강의실 > 온라인강좌 > 수강연장</a>
             <br><br>
             <a href="{{ site_url('/home/html/m/mypage_acad1') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌</a>
+            <a href="{{ site_url('/home/html/m/mypage_acad1_8') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌 > 단과반 모바일 수강증</a>
             <a href="{{ site_url('/home/html/m/mypage_acad1_1') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌 > 강사선택</a>
             <a href="{{ site_url('/home/html/m/mypage_acad1_2') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌 > 강사선택현황</a>
             <a href="{{ site_url('/home/html/m/mypage_acad1_3') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌 > 온라인첨삭</a>

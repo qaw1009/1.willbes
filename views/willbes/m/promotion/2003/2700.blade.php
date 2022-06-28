@@ -60,9 +60,9 @@
             <a href="javascript:certOpen();" title="농업직 인증받고 할인받기" style="position: absolute;left: 59.91%;top: 31.69%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="https://pass.willbes.net/m/promotion/index/cate/3028/code/1068" target="_blank" title="농업직 구매하기" style="position: absolute;left: 59.91%;top: 34.35%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="javascript:certOpen();" title="조경직 인증받고 할인받기" style="position: absolute;left: 11.38%;top: 50.79%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
-            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2114" target="_blank" title="조경직 구매하기" style="position: absolute;left: 11.38%;top: 53.53%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2115" target="_blank" title="조경직 구매하기" style="position: absolute;left: 11.38%;top: 53.53%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="javascript:certOpen();" title="축산직 인증받고 할인받기" style="position: absolute;left: 60.08%;top: 50.79%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
-            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2115" target="_blank" title="축산직 구매하기" style="position: absolute;left: 60.08%;top: 53.53%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2114" target="_blank" title="축산직 구매하기" style="position: absolute;left: 60.08%;top: 53.53%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="javascript:certOpen();" title="통신직 인증받고 할인받기" style="position: absolute;left: 11.38%;top: 69.51%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="https://pass.willbes.net/m/promotion/index/cate/3028/code/2256" target="_blank" title="통신직 구매하기" style="position: absolute;left: 11.38%;top: 72.21%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="javascript:certOpen();" title="전기직 인증받고 할인받기" style="position: absolute;left: 60.08%;top: 69.51%;width: 29.25%;height: 2.38%;z-index: 2;"></a>

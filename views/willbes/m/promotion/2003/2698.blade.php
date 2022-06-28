@@ -44,7 +44,7 @@
     <div class="evtCtnsBox" data-aos="fade-left">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2698m_01.jpg" alt="" />
-            <a href="https://pass.willbes.net/m/support/notice/show/cate/3035?board_idx=402977&s_cate_code=3035&s_campus=&s_keyword=%EC%8B%9C%EA%B0%84%ED%91%9C&prof_idx=&subject_idx=&view_type=&page=&s_cate_code_disabled=" target="_blank" title="시간표" style="position: absolute; left: 24.58%; top: 23.95%; width: 51.25%; height: 2.38%; z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/support/notice/show/cate/3035?board_idx=417537" target="_blank" title="시간표" style="position: absolute; left: 24.58%; top: 23.95%; width: 51.25%; height: 2.38%; z-index: 2;"></a>
             <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="더 많은 합격수기 보기" style="position: absolute; left: 24.31%; top: 95.41%; width: 51.25%; height: 2.38%; z-index: 2;"></a>
         </div>
     </div> 

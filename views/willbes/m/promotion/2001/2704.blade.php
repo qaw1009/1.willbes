@@ -23,10 +23,12 @@
 
 
     .evtInfo {width: calc(100% - 10%); background:#555; color:#fff; border-radius:10px; padding:5%; margin:5%}
-    .evtInfoBox {margin:0 auto; text-align:left; line-height:1.4;}
+    .evtInfoBox {margin:0 auto; text-align:left; line-height:1.4; font-size:1.6vh;}
     .evtInfoBox .infoTit {font-size:3vh; margin-bottom:10px;}
+    .evtInfoBox .coupon {border:1px solid #fff; padding:10px; margin-bottom:20px}
+    .evtInfoBox .coupon p {font-size:2vh; margin-bottom:10px}
     .evtInfoBox ul {margin-bottom:20px}
-    .evtInfoBox li {margin-bottom:5px; list-style-type: disc; margin-left:20px; font-size:1.6vh; }
+    .evtInfoBox li {margin-bottom:5px; list-style-type: disc; margin-left:20px;  }
     .evtInfoBox strong {color:#ffe78e}
     .evtInfoBox span {color:#ffc000}
 
@@ -51,14 +53,14 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2704m_01.jpg" alt="">
         </div>
 
-        <div class="evtCtnsBox evt_02" data-aos="fade-up">
-            <div class="link">
+        <div class="evtCtnsBox evt_02">
+            <div class="link" data-aos="fade-left">
                 <a href="https://www.andar.co.kr/product/list.html?cate_no=2084" target="_blank">
                     <p class="NSK-Black">andar.com</p> 
                     바로가기(회원가입)
                 </a>
             </div>
-            <div class="link">    
+            <div class="link" data-aos="fade-right">    
                 <a href="https://www.andar.co.kr/myshop/coupon/coupon.html" target="_blank">
                     <p class="NSK-Black">Extra 30% OFF</p> 
                     쿠폰등록
@@ -89,14 +91,16 @@
                     <li><strong>STEP2</strong> 2일 이내 내강의실 > 쿠폰 현황 확인</li>
                     <li><strong>STEP3</strong> <span>안다르(www.andar.co.kr)</span> 회원가입 후 30% 할인 쿠폰등록</li>
                 </ul>
+                <div class="coupon">
+                    <p>📌 쿠폰 등록 방법</p> 
+                    월비스 장바구니에서 쿠폰 번호 확인 (16자리) > 안다르 공식몰 로그인 > 마이페이지 > 쿠폰 > 쿠폰인증번호 등록하기 > 쿠폰번호 인증 > 쿠폰등록 후 주문서에서 사용
+                </div>
                 <div class="infoTit NSK-Black">쿠폰 이용안내</div>
 				<ul>
-                    <li>30% 추가 할인 쿠폰 1매당 구매할 수 있는 최대 품목은 30개 입니다.<br>
-                    (안다르 상품 장바구니 적용시)</li>
-                    <li>아울렛 특가상품 및 1+1세트상품 등 일부 상품은 추가 30% 할인 쿠폰의
-                    사용이 불가합니다.</li>
-                    <li>30% 추가 할인 쿠폰은 1인 1매, 1회에 한하여 사용 가능합니다.<br>
-                    (쿠폰 등록 후 30일 이후 소멸 됩니다 )</li>
+                    <li>30% 추가 할인 쿠폰 1매당 구매할 수 있는 최대 품목은 30개 입니다. (안다르 상품 장바구니 적용시)</li>
+                    <li>아울렛 특가상품 및 1&1, 1+1 등 세트 상품 등 일부 상품은 추가 30% 할인 쿠폰 사용이 불가합니다.</li>
+                    <li>30% 추가 할인 쿠폰은 1인 1매, 1회 주문에 한하여 사용 가능하며, 부분 취소/교환/반품 시 복원되지 않습니다.(쿠폰 등록 후 30일 이후 자동 소멸됩니다)</li>
+                    <li>구매한 재화에 대한 상업적 목적의 재판매, 도소매를 포함한 허가 받지 않은 재판매 적발 시 불이익을 당할 수 있습니다.</li>
 				</ul>
 			</div>
 		</div> 

@@ -95,11 +95,11 @@
                 <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NeyInO2ZmA%3D%3D" alt="5순환" target="_blank" style="position: absolute;left: 74.88%;top: 93.77%;width: 11.03%;height: 3.84%;z-index: 2;"></a>            
             </div>
         </div>
-        
+        {{--
         <div class="evtCtnsBox evt05" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2706_05.jpg" alt="동행 면접스터디" />
-		</div>
-
+        </div>
+        --}}
         <div class="evtCtnsBox evt06" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/2706_06.jpg" alt="절대 만족 후기" />

@@ -58,11 +58,11 @@
     <div class="evtCtnsBox" data-aos="fade-top">      
         <img src="https://static.willbes.net/public/images/promotion/2022/06/2706m_04.jpg" alt="교수진 및 순환별 맛보기 강의" >           
     </div> 
-
+    {{--
     <div class="evtCtnsBox" data-aos="fade-top">
         <img src="https://static.willbes.net/public/images/promotion/2022/06/2706m_05.jpg" alt="동행 면접스터디" >
     </div> 
-
+    --}}
     <div class="evtCtnsBox" data-aos="fade-top">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2706m_06.jpg" alt="절대 만족 후기" >

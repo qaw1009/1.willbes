@@ -422,7 +422,7 @@
                                 </tr>
                                 <tr>
                                     <td class="w-call">
-                                        7급 PSAT / 법원직<br>
+                                        7급 PSAT / 법원직 / 검찰직<br>
                                         1566-4770
                                     </td>
                                 </tr>

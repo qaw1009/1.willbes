@@ -32,7 +32,8 @@
                 <table id="list_table" class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th class="searching_view_type">유형</th>
+                        <th class="searching_view_type rowspan">유형</th>
+                        <th class="rowspan">프로모션코드</th>
                         <th>정렬</th>
                         <th>그룹명</th>
                         <th>사용여부</th>
@@ -48,6 +49,7 @@
                                     {{ ($row['ViewType'] == '1') ? '메인' : '이벤트' }}
                                     <span class="hide">{{ $row['ViewType'] }}</span>
                                 </td>
+                                <td>{{ $row['PromotionCode'] }}</td>
                                 <td>
                                     <input type="text" name="order_num" value="{{ $row['OrderNum'] }}" class="order-num" data-order-num-idx="{{ $row['PhcgIdx'] }}" data-origin-order-num="{{ $row['OrderNum'] }}" style="width: 60px;" maxlength="3" autocomplete="off">
                                     <span class="hide">{{ $row['ViewType'] }}</span>
@@ -74,15 +76,16 @@
             $datatable = $list_table.DataTable({
                 serverSide: false,
                 ajax : false,
-                paging: true,
-                pageLength: 20,
+                paging: false,
+                /*pageLength: 20,*/
                 searching: true,
+                rowsGroup: ['.rowspan'],
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-5"></i> 핫클립관리 이동', className: 'btn-sm btn-info border-radius-reset mr-15', action: function(e, dt, node, config) {
+                    { text: '<i class="fa fa-pencil mr-5"></i> 메인 페이지', className: 'btn-sm btn-info border-radius-reset mr-15', action: function(e, dt, node, config) {
                             location.href = '{{ site_url('/site/etc/professorHotClip/index') }}';
                         }},
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' },
-                    { text: '<i class="fa fa-pencil mr-5"></i> 등록', className: 'btn-sm btn-primary border-radius-reset mr-15', action: function(e, dt, node, config) {
+                    { text: '<i class="fa fa-pencil mr-5"></i> 그룹 등록', className: 'btn-sm btn-primary border-radius-reset mr-15', action: function(e, dt, node, config) {
                             location.href = '{{ site_url('/site/etc/professorHotClip/groupCreate') }}';
                         }},
                 ]

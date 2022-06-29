@@ -35,10 +35,10 @@ class ProfessorHotClipModel extends WB_Model
      */
     public function listGroup($arr_condition = [])
     {
-        $order_by = $this->_conn->makeOrderBy(['a.ViewType' => 'ASC', 'a.OrderNum' => 'ASC'])->getMakeOrderBy();
+        $order_by = $this->_conn->makeOrderBy(['a.ViewType' => 'ASC', 'a.PromotionCode' => 'ASC', 'a.OrderNum' => 'ASC'])->getMakeOrderBy();
         $arr_condition['IN']['a.SiteCode'] = get_auth_site_codes();
 
-        $column = "a.PhcgIdx,a.ViewType,a.SiteCode,a.Title,a.OrderNum,a.IsUse,a.RegDatm,b.wAdminName AS RegAdminName";
+        $column = "a.PhcgIdx,a.ViewType,a.PromotionCode,a.SiteCode,a.Title,a.OrderNum,a.IsUse,a.RegDatm,b.wAdminName AS RegAdminName";
         $from = "
             FROM {$this->_table['professor_hot_clip_group']} AS a
             INNER JOIN {$this->_table['admin']} AS b ON a.RegAdminIdx = b.wAdminIdx AND b.wIsStatus = 'Y'
@@ -51,7 +51,7 @@ class ProfessorHotClipModel extends WB_Model
 
     public function findProfessorHotClipGroup($arr_condition = [])
     {
-        $column = "a.PhcgIdx,a.ViewType,a.SiteCode,a.Title,a.OrderNum,a.IsUse,a.RegDatm,a.UpdDatm
+        $column = "a.PhcgIdx,a.ViewType,a.PromotionCode,a.SiteCode,a.Title,a.OrderNum,a.IsUse,a.RegDatm,a.UpdDatm
             ,admin.wAdminName AS RegAdminName,admin2.wAdminName AS UpdAdminName
         ";
         $from = "
@@ -75,6 +75,7 @@ class ProfessorHotClipModel extends WB_Model
         try {
             $input_data = [
                 'ViewType' => element('view_type',$form_data),
+                'PromotionCode' => element('promotion_code',$form_data),
                 'SiteCode' => element('site_code',$form_data),
                 'Title' => element('title',$form_data),
                 'IsUse' => element('is_use',$form_data),
@@ -84,7 +85,13 @@ class ProfessorHotClipModel extends WB_Model
             ];
 
             $query_string = "Max(OrderNum) as MaxOrderNum FROM {$this->_table['professor_hot_clip_group']} WHERE SiteCode = ? AND ViewType = ?";
-            $result = $this->_conn->query('select '.$query_string,[element('site_code',$form_data), element('view_type',$form_data)])->row_array();
+            $query_string .= (element('view_type',$form_data) == 2) ? ' AND PromotionCode = ?' : '';
+            $arr_where = [
+                element('site_code',$form_data)
+                ,element('view_type',$form_data)
+            ];
+            $where = (element('view_type',$form_data) == 2) ? array_merge($arr_where, [element('promotion_code',$form_data)]) : $arr_where;
+            $result = $this->_conn->query('select '.$query_string, $where)->row_array();
 
             $input_data = array_merge($input_data,[
                 'OrderNum' => (empty($result['MaxOrderNum']) === true) ? 1 : $result['MaxOrderNum'] + 1
@@ -202,6 +209,26 @@ class ProfessorHotClipModel extends WB_Model
      * @return mixed
      */
     public function list($arr_condition = [])
+    {
+        $arr_condition['IN']['a.SiteCode'] = get_auth_site_codes();
+
+        $column = "
+            a.ViewType, IF(a.ViewType = 1, '메인', '이벤트') AS Title, IFNULL(a.PromotionCode,'') AS PromotionCode, IF(a.ViewType = 1, '핫클립 메인 전용(이벤트X)', b.EventName) AS EventName
+        ";
+        $from = "
+            FROM {$this->_table['professor_hot_clip_group']} AS a
+            LEFT JOIN lms_event_lecture AS b ON a.PromotionCode = b.PromotionCode
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $group_by = ' group by a.PromotionCode ';
+        $query = $this->_conn->query('select '. $column . $from . $where . $group_by);
+
+        return $query->result_array();
+    }
+
+    public function detail($arr_condition = [])
     {
         $order_by = $this->_conn->makeOrderBy(['hcg.ViewType' => 'ASC', 'hcg.OrderNum' => 'ASC', 'hc.OrderNum' => 'ASC'])->getMakeOrderBy();
         $arr_condition['IN']['hc.SiteCode'] = get_auth_site_codes();

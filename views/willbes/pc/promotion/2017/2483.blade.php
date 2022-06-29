@@ -285,7 +285,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             /* 핫클립 상품 페이지 로드 */
-            var _url = '{!! front_url('/promotion/ajaxHotClipProduct_test') !!}';
+            var _url = '{!! front_url('/promotion/ajaxHotClipProduct_test'.$arr_base['promotion_code']) !!}';
             _url += '?online_disc_code={{ (empty($arr_promotion_params["online_disc_code"]) === false ? $arr_promotion_params["online_disc_code"] : '') }}';
             _url += '&off_disc_code={{ (empty($arr_promotion_params["off_disc_code"]) === false ? $arr_promotion_params["off_disc_code"] : '') }}';
             sendAjax(_url, '', function(ret) {

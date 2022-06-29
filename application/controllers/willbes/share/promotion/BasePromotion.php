@@ -737,9 +737,14 @@ class BasePromotion extends \app\controllers\FrontController
 
     /**
      * 핫클립 상품 ajax 페이지
+     * @param array $arr_param  프로모션 코드
      */
-    public function ajaxHotClipProduct()
+    public function ajaxHotClipProduct($arr_param = [])
     {
+        if (empty($arr_param[0]) === true) {
+            show_alert('잘못된 접근입니다.', 'back');
+        }
+        $promotion_code = $arr_param[0];
         $params['off_disc_code'] = (empty($this->_reqG('off_disc_code')) === true ? [] : explode(',', $this->_reqG('off_disc_code')));
         $params['online_disc_code'] = (empty($this->_reqG('online_disc_code')) === true ? [] : explode(',', $this->_reqG('online_disc_code')));
 
@@ -747,6 +752,7 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_condition = [
             'EQ' => [
                 'g.ViewType' => '2'
+                ,'g.PromotionCode' => $promotion_code
                 ,'g.IsUse' => 'Y'
                 ,'g.IsStatus' => 'Y'
                 ,'hc.SiteCode' => $this->_site_code
@@ -783,8 +789,12 @@ class BasePromotion extends \app\controllers\FrontController
         ], false);
     }
 
-    public function ajaxHotClipProduct_test()
+    public function ajaxHotClipProduct_test($arr_param = [])
     {
+        if (empty($arr_param[0]) === true) {
+            show_alert('잘못된 접근입니다.', 'back');
+        }
+        $promotion_code = $arr_param[0];
         $params['off_disc_code'] = (empty($this->_reqG('off_disc_code')) === true ? [] : explode(',', $this->_reqG('off_disc_code')));
         $params['online_disc_code'] = (empty($this->_reqG('online_disc_code')) === true ? [] : explode(',', $this->_reqG('online_disc_code')));
 
@@ -792,6 +802,7 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_condition = [
             'EQ' => [
                 'g.ViewType' => '2'
+                ,'g.PromotionCode' => $promotion_code
                 ,'g.IsUse' => 'Y'
                 ,'g.IsStatus' => 'Y'
                 ,'hc.SiteCode' => $this->_site_code

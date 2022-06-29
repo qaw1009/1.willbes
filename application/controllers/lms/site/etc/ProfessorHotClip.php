@@ -11,6 +11,32 @@ class ProfessorHotClip extends \app\controllers\BaseController
         parent::__construct();
     }
 
+    /**
+     * 핫클립 부모 리스트
+     */
+    public function index()
+    {
+        $this->load->view("site/etc/professor_hot_clip/index", []);
+    }
+
+    public function listAjax()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'a.SiteCode' => $this->_reqP('search_site_code'),
+                'a.IsStatus' => 'Y',
+                'a.ViewType' => $this->_reqP('search_view_type')
+            ]
+        ];
+
+        $list = $this->professorHotClipModel->list($arr_condition);
+        return $this->response([
+            'recordsTotal' => count($list),
+            'recordsFiltered' => count($list),
+            'data' => $list
+        ]);
+    }
+
     public function group()
     {
         $arr_condition = [
@@ -64,6 +90,7 @@ class ProfessorHotClip extends \app\controllers\BaseController
             ['field' => 'site_code', 'label' => '사이트코드', 'rules' => 'trim|required'],
             ['field' => 'title', 'label' => '그룹명', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'promotion_code', 'label' => '프로모션코드', 'rules' => 'callback_validateRequiredIf[view_type,2]']
         ];
 
         $method = 'add';
@@ -111,22 +138,28 @@ class ProfessorHotClip extends \app\controllers\BaseController
     /**
      * 핫클립 리스트
      */
-    public function index()
+    public function detail($params = [])
     {
-        $this->load->view("site/etc/professor_hot_clip/index", []);
+        $arr_base['view_type'] = $params[0];
+        $arr_base['promotion_code'] = element(1, $params, '');
+
+        $this->load->view("site/etc/professor_hot_clip/detail", [
+            'arr_base' => $arr_base
+        ]);
     }
 
-    public function listAjax()
+    public function detailAjax()
     {
         $arr_condition = [
             'EQ' => [
                 'hc.SiteCode' => $this->_reqP('search_site_code'),
                 'hc.IsStatus' => 'Y',
-                'hcg.ViewType' => $this->_reqP('search_view_type')
+                'hcg.ViewType' => $this->_reqP('search_view_type'),
+                'hcg.PromotionCode' => $this->_reqP('search_promotion_code')
             ]
         ];
 
-        $list = $this->professorHotClipModel->list($arr_condition);
+        $list = $this->professorHotClipModel->detail($arr_condition);
         return $this->response([
             'recordsTotal' => count($list),
             'recordsFiltered' => count($list),
@@ -142,10 +175,14 @@ class ProfessorHotClip extends \app\controllers\BaseController
         $list_product = null;
         $idx = null;
         $prod_item_ccd = $this->codeModel->getCcd('747');
+        $arr_base['view_type'] = $this->_reqG('view_type');
+        $arr_base['promotion_code'] = $this->_reqG('promotion_code');
 
         $arr_condition = [
             'EQ' => [
-                'a.IsStatus' => 'Y'
+                'a.IsStatus' => 'Y',
+                'a.ViewType' => $arr_base['view_type'],
+                'a.PromotionCode' => $arr_base['promotion_code'],
             ]
         ];
         $group_list = $this->professorHotClipModel->listGroup($arr_condition);
@@ -170,6 +207,7 @@ class ProfessorHotClip extends \app\controllers\BaseController
 
         $this->load->view("site/etc/professor_hot_clip/create", [
             'method' => $method,
+            'arr_base' => $arr_base,
             'prod_item_ccd' => $prod_item_ccd,
             'group_list' => $group_list,
             'data' => $data,

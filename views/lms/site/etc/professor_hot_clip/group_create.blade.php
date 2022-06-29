@@ -23,8 +23,8 @@
                     </label>
                     <div class="col-md-4 item form-inline">
                         <div class="radio">
-                            <input type="radio" id="view_type_main" name="view_type" class="flat" value="1" required="required" title="메인,이벤트 유형" @if($method == 'POST' || $data['ViewType']=='1')checked="checked"@endif/> <label for="view_type_main" class="input-label">메인</label>
-                            <input type="radio" id="view_type_event" name="view_type" class="flat" value="2" @if($data['ViewType']=='2')checked="checked"@endif/> <label for="view_type_event" class="input-label">이벤트</label>
+                            <input type="radio" class="flat" id="view_type_main" name="view_type" value="1" required="required" title="메인,이벤트 유형" @if($method == 'POST' || $data['ViewType']=='1')checked="checked"@endif/> <label for="view_type_main" class="input-label">메인</label>
+                            <input type="radio" class="flat" id="view_type_event" name="view_type" value="2" @if($data['ViewType']=='2')checked="checked"@endif/> <label for="view_type_event" class="input-label">이벤트</label>
                         </div>
                     </div>
                 </div>
@@ -33,6 +33,12 @@
                     </label>
                     <div class="col-md-4 item form-inline">
                         <input type="text" class="form-control" name="title" value="{{ $data['Title'] }}" required="required" title="그룹명">
+                    </div>
+                    <div class="promotion_code_box" style="display: none;">
+                        <label class="control-label col-md-1-1">프로모션코드</label>
+                        <div class="col-md-4 form-inline">
+                            <input type="text" class="form-control" name="promotion_code" value="{{ $data['PromotionCode'] }}" title="프로모션코드">
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -81,6 +87,14 @@
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         $(document).ready(function() {
+            $regi_form.on('ifChanged ifCreated', 'input[name="view_type"]:checked', function(evt) {
+                if ($(this).val() == 2) {
+                    $('.promotion_code_box').show().css('display', 'block');
+                } else {
+                    $('.promotion_code_box').show().css('display', 'none');
+                }
+            });
+
             $regi_form.submit(function() {
                 var _url = '{{ site_url("/site/etc/professorHotClip/groupStore") }}' + getQueryString();
                 ajaxSubmit($regi_form, _url, function(ret) {

@@ -33,28 +33,29 @@
                     <div class="col-md-9 form-inline item">
                         <select class="form-control" id="hotclip_group_idx" name="hotclip_group_idx" required="required" title="그룹">
                             <option value="">그룹선택</option>
-                            <optgroup label="==메인==">
-                                @foreach($group_list as $row)
-                                    @if($row['ViewType'] == 1)
+                            @if($arr_base['view_type'] == 1)
+                                <optgroup label="==메인==">
+                                    @foreach($group_list as $row)
+                                        @if($row['ViewType'] == 1)
+                                            <option class="{{ $row['SiteCode'] }}"
+                                                    data-view-type="{{ $row['ViewType'] }}"
+                                                    value="{{ $row['PhcgIdx'] }}" {{ ($row['PhcgIdx'] == $data['PhcgIdx'] ? 'selected="selected"' : '') }}>
+                                                {{ $row['Title'] }} [{{ ($row['IsUse'] == 'Y' ? '사용' : '미사용') }}]
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </optgroup>
+                            @else
+                                <optgroup label="==이벤트==">
+                                    @foreach($group_list as $row)
                                         <option class="{{ $row['SiteCode'] }}"
                                                 data-view-type="{{ $row['ViewType'] }}"
                                                 value="{{ $row['PhcgIdx'] }}" {{ ($row['PhcgIdx'] == $data['PhcgIdx'] ? 'selected="selected"' : '') }}>
                                             {{ $row['Title'] }} [{{ ($row['IsUse'] == 'Y' ? '사용' : '미사용') }}]
                                         </option>
-                                    @endif
-                                @endforeach
-                            </optgroup>
-                            <optgroup label="==이벤트==">
-                                @foreach($group_list as $row)
-                                    @if($row['ViewType'] == 2)
-                                        <option class="{{ $row['SiteCode'] }}"
-                                                data-view-type="{{ $row['ViewType'] }}"
-                                                value="{{ $row['PhcgIdx'] }}" {{ ($row['PhcgIdx'] == $data['PhcgIdx'] ? 'selected="selected"' : '') }}>
-                                            {{ $row['Title'] }} [{{ ($row['IsUse'] == 'Y' ? '사용' : '미사용') }}]
-                                        </option>
-                                    @endif
-                                @endforeach
-                            </optgroup>
+                                    @endforeach
+                                </optgroup>
+                            @endif
                         </select>
                     </div>
                 </div>
@@ -577,7 +578,7 @@
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url("/site/etc/professorHotClip/index") }}' + getQueryString());
+                        location.replace('{{ site_url("/site/etc/professorHotClip/detail/".$arr_base['view_type'].'/'.$arr_base['promotion_code']) }}');
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });
@@ -593,14 +594,14 @@
                 sendAjax(_url, data, function(ret) {
                     if (ret.ret_cd) {
                         alert('삭제되었습니다.');
-                        location.replace('{{ site_url("/site/etc/professorHotClip/index") }}');
+                        location.replace('{{ site_url("/site/etc/professorHotClip/detail/".$arr_base['view_type'].'/'.$arr_base['promotion_code']) }}');
                     }
                 }, showError, false, 'POST');
             });
 
             //목록
             $('#btn_list').click(function() {
-                location.href='{{ site_url("/site/etc/professorHotClip/index") }}' + getQueryString();
+                location.href='{{ site_url("/site/etc/professorHotClip/detail/".$arr_base['view_type'].'/'.$arr_base['promotion_code']) }}';
             });
         });
 

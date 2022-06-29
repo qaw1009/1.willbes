@@ -6,9 +6,10 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            width:100%;
+            
             min-width:1120px !important;
             max-width:2000px !important;
+            width:100%;
             margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
@@ -20,14 +21,23 @@
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
-
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/06/2225_top_bg.jpg) no-repeat center top; height: 1222px;}
         .wb_top img {position: absolute; top:330px; left:50%; margin-left:-206px; z-index: 2;}
 
-        .wb_top2 {background:url(https://static.willbes.net/public/images/promotion/2022/04/2225_top_bg2.jpg) no-repeat center top; height: 1222px;}
-        .wb_top2 img {position: absolute; top:330px; left:50%; margin-left:-206px; z-index: 2;}
+        .wb_top2 {background:url(https://static.willbes.net/public/images/promotion/2022/07/2225_top_bg.jpg) no-repeat center top; height: 1154px; overflow: hidden;}
+        .wb_top2 span {position: absolute; z-index: 2; -webkit-animation:swing 3s linear infinite; animation:swing 3s linear infinite}
+        @@keyframes swing{
+            0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+            25%{-webkit-transform:rotate3d(0,0,1,5deg);transform:rotate3d(0,0,1,5deg)}
+            50%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+            75%{-webkit-transform:rotate3d(0,0,1,-5deg);transform:rotate3d(0,0,1,-5deg)}
+            100%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+        }
+        .wb_top2 span.imgA {left:-50px; top:-80px}
+        .wb_top2 span.imgB {left:50%; margin-left:350px; bottom:-80px}
 
         .wb_cts02 {background:#ebebeb}
+        .topimg {position: absolute; top:930px; left:50%; margin-left:-634px; z-index: 10;}
 
         .wb_cts03 {background:#303132}
 
@@ -36,31 +46,26 @@
 
     <div class="evtContent NSK" id="evtContainer"> 
 
-        {{--5월--}}
-        @if(time() < strtotime('202206010000'))
-            <div class="evtCtnsBox wb_top2" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2225_top_img.png" alt="공무원 웰컴팩" data-aos="flip-up" data-aos-duration="2000"/>
-            </div>
-
-            <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2225_01.jpg" alt="아직도 고민만 하고 계세요?"/>
-            </div>
-
-            <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2225_02.jpg" alt="모든 혜택이 0원"/>
-            </div>
+        {{--6월--}}
+        @if(time() < strtotime('202206301700'))
+        <div class="evtCtnsBox wb_top" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/06/2225_top_img.png" alt="공무원 웰컴팩" data-aos="flip-up" data-aos-duration="2000"/>
+        </div>
         @else
-        {{--6월--}}            
-            <div class="evtCtnsBox wb_top" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2225_top_img.png" alt="공무원 웰컴팩" data-aos="flip-up" data-aos-duration="2000"/>
-            </div>
-            <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2225_01.jpg" alt="아직도 고민만 하고 계세요?"/>
-            </div>
-            <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2225_02.jpg" alt="모든 혜택이 0원"/>
-            </div>  
-        @endif        
+        {{--7월--}}            
+        <div class="evtCtnsBox wb_top2" data-aos="fade-up">
+            <span class="imgA"><img src="https://static.willbes.net/public/images/promotion/2022/07/2225_img_01.png" alt=""/></span>
+            <span class="imgB"><img src="https://static.willbes.net/public/images/promotion/2022/07/2225_img_02.png" alt=""/></span>
+        </div>
+        <div class="topimg" data-aos="flip-up" data-aos-duration="1000"><img src="https://static.willbes.net/public/images/promotion/2022/07/2225_img_03.png" alt="공무원 웰컴팩"/></div>
+        @endif   
+
+        <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/06/2225_01.jpg" alt="아직도 고민만 하고 계세요?"/>
+        </div>
+        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/06/2225_02.jpg" alt="모든 혜택이 0원"/>
+        </div>      
 
 
         <div class="evtCtnsBox wb_cts03" data-aos="fade-up">

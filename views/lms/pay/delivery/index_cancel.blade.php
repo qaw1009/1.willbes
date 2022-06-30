@@ -43,6 +43,7 @@
                             <option value="ProdCode">상품코드</option>
                             <option value="ProdName">상품명</option>
                             <option value="InvoiceNo">운송장번호</option>
+                            <option value="wIsbn">ISBN</option>
                         </select>
                         <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" style="width: 72%;" title="상품검색어">
                     </div>

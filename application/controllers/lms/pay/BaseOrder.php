@@ -263,8 +263,8 @@ class BaseOrder extends \app\controllers\BaseController
     protected function _getListProdConditions($search_keyword, $search_value = '')
     {
         $arr_condition = [];
-        $arr_alias = ['OrderIdx' => 'O', 'OrderNo' => 'O', 'ProdCode' => 'P', 'ProdName' => 'P', 'CertNo' => 'OOI', 'InvoiceNo' => 'OPD'];
-        $arr_operator = ['OrderIdx' => 'EQ', 'OrderNo' => 'EQ', 'ProdCode' => 'EQ', 'ProdName' => 'LKB', 'CertNo' => 'EQ', 'InvoiceNo' => 'EQ'];
+        $arr_alias = ['OrderIdx' => 'O', 'OrderNo' => 'O', 'ProdCode' => 'P', 'ProdName' => 'P', 'CertNo' => 'OOI', 'InvoiceNo' => 'OPD', 'wIsbn' => 'WB'];
+        $arr_operator = ['OrderIdx' => 'EQ', 'OrderNo' => 'EQ', 'ProdCode' => 'EQ', 'ProdName' => 'LKB', 'CertNo' => 'EQ', 'InvoiceNo' => 'EQ', 'wIsbn' => 'EQ'];
 
         if (strlen($search_value) > 0 && array_key_exists($search_keyword, $arr_alias) === true) {
             $column = $arr_alias[$search_keyword] . '.' . $search_keyword;

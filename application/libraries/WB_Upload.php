@@ -72,6 +72,9 @@ class WB_Upload extends CI_Upload
                 throw new \Exception($is_created);
             }
 
+            // 파일 업로드 URL 설정
+            $upload_url = rtrim($this->_upload_url . ltrim($sub_dir, '/'), '/') . '/';
+
             // 파일 업로드
             $input_files = $_FILES;
             $idx = 0;
@@ -93,8 +96,99 @@ class WB_Upload extends CI_Upload
 
                             if ($this->do_upload($input_name) === true) {
                                 $results[$idx] = $this->data();
+
+                                // 파일 업로드 URL 추가
+                                $results[$idx]['file_url'] = $upload_url;
+                                $results[$idx]['full_url'] = $upload_url . $results[$idx]['file_name'];
                             } else {
                                 throw new \Exception(sprintf('%s 파일(%d번째)은 %s', $_FILES[$input_name]['name'], ($idx + 1), $this->error_msg[0]));
+                            }
+                        }
+                        $idx++;
+                    }
+                } else {
+                    $idx++;
+                }
+            }
+        } catch (\Exception $e) {
+            // 파일업로드가 실패한 경우 이전에 업로드 성공한 파일 삭제
+            $is_deleted = $this->_uploadedFileDelete($results);
+            if ($is_deleted !== true) {
+                return $e->getMessage() . PHP_EOL . $is_deleted;
+            }
+            return $e->getMessage();
+        }
+
+        return $results;
+    }
+
+    /**
+     * base64 인코딩 이미지 업로드
+     * @param array|string $input_names [이미지 인코딩 문자열 input name]
+     * @param array|string $file_names [저장할 파일명 배열, 값이 없을 경우 랜덤값 사용]
+     * @param null|string $sub_dir [기본 업로드 디렉토리 하위 디렉토리 경로]
+     * @return array|string
+     */
+    public function uploadEncImg($input_names = [], $file_names = [], $sub_dir = null)
+    {
+        $results = [];
+
+        try {
+            // 허용된 이미지 확장자
+            $allowed_types = explode('|', ltrim($this->_rules['img'], 'allowed_types:'));
+
+            // 파일 업로드 경로 설정 및 디렉토리 생성
+            $upload_path = rtrim($this->_upload_path . ltrim($sub_dir, '/'), '/') . '/';
+            $is_created = $this->_createDir($upload_path);
+            if ($is_created !== true) {
+                throw new \Exception($is_created);
+            }
+
+            // 파일 업로드 URL 설정
+            $upload_url = rtrim($this->_upload_url . ltrim($sub_dir, '/'), '/') . '/';
+
+            $idx = 0;
+            foreach ((array) $input_names as $input_name) {
+                $results[$idx] = [];
+
+                if (isset($_POST[$input_name]) === true) {
+                    $arr_enc_img = (array) $_POST[$input_name];     // data:image/png;base64,xxxxxxxxx
+
+                    foreach ($arr_enc_img as $enc_img) {
+                        if (empty($enc_img) === false) {
+                            if (preg_match('#^(data:(\s*image/(\w+));base64,)#i', $enc_img, $matches)) {
+                                $file_type = element('2', $matches);    // 이미지 타입 (image/png)
+                                $file_ext = element('3', $matches);     // 이미지 확장자 (png)
+
+                                // 이미지 확장자 체크
+                                if (in_array($file_ext, $allowed_types) === true) {
+                                    $raw_name = element($idx, (array) $file_names, md5(uniqid(mt_rand())));
+                                    $file_name = $raw_name . '.' . $file_ext;
+                                    $full_path = $upload_path . $file_name;
+                                    $file_contents = base64_decode(str_replace(element('1', $matches), '', $enc_img));  // `data:image/png;base64,` 제거 후 base64 디코딩
+
+                                    // 이미지 업로드
+                                    if (file_put_contents($full_path, $file_contents) !== false) {
+                                        $img_wh = getimagesize($full_path);
+
+                                        $results[$idx] = [
+                                            'file_name' => $file_name,
+                                            'file_type' => $file_type,
+                                            'file_path' => $upload_path,
+                                            'full_path' => $full_path,
+                                            'raw_name' => $raw_name,
+                                            'file_ext' => $file_ext,
+                                            'file_size' => filesize($full_path),
+                                            'image_width' => $img_wh[0],
+                                            'image_height' => $img_wh[1],
+                                            'image_type' => ltrim($file_type, 'image/'),
+                                            'file_url' => $upload_url,
+                                            'full_url' => $upload_url . $file_name
+                                        ];
+                                    } else {
+                                        throw new \Exception(sprintf('%s 파일(%d번째) 업로드에 실패했습니다.', $file_name, ($idx + 1)));
+                                    }
+                                }
                             }
                         }
                         $idx++;

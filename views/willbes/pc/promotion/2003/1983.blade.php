@@ -288,7 +288,7 @@
                             <div><span>회계학 이윤호, 세법 박창한</span></div>
                             <div><strong class="NSK-Black">29</strong>만원</div>
                             <ul>
-                                <li>2023. 6월까지 전기직 9급 전 강좌 제공 <span>(9급 국가직/지방직 대비 가능)</span></li>
+                                <li>2023. 6월까지 제공 <span>(9급 국가직/지방직 대비 가능)</span></li>
                                 <li>PC+모바일 총 2대</li>
                                 <li>3배수 제한</li>
                                 <li>수강지원 포인트 5만점 <span>(교재 구매 시 사용 가능)</span></li>

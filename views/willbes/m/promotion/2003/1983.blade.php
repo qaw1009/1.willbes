@@ -211,6 +211,7 @@
                             <div><span>회계학 이윤호, 세법 박창한</span></div>
                             <div><strong class="NSK-Black">29</strong>만원</div>
                             <ul>
+                                <li><span>* 7월 한정 이벤트 5만원 추가할인 적용</span></li>
                                 <li>2023. 6월까지 제공 <span>(9급 국가직/지방직 대비 가능)</span></li>
                                 <li>PC+모바일 총 2대</li>
                                 <li>3배수 제한</li>

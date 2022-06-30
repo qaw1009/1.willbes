@@ -186,7 +186,7 @@
             <div>
                 <div class="lecWrap">
                     <div class="pass">
-                        <input type="radio" name="y_pkg" id="pass01" value="198399">
+                        <input type="radio" name="y_pkg" id="pass01" value="189939">
                         <label for="pass01">
                             <div>2023 세무직</div>
                             <div>PASS</div>
@@ -204,7 +204,7 @@
                     </div>
 
                     <div class="pass">
-                        <input type="radio" name="y_pkg" id="pass02" value="198398">
+                        <input type="radio" name="y_pkg" id="pass02" value="176415">
                         <label for="pass02">
                             <div>윌비스 세무직</div>
                             <div>전공과목 T-PASS</div>

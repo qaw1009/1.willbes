@@ -15,7 +15,7 @@
     .dday {font-size:2.5vh; padding:10px; background:#ebebeb; color:#000; text-align:left; letter-spacing:-1px}
     .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
     .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#3a99f0; font-size:1.5vh;}
-
+/*
     .passWrap {display:flex; margin:5vh 0; font-size:1.7vh; text-align:left}
     .passLec {margin:0 5px; padding:20px; border:3px solid #a47002; width:50%}
     .passLec h5 {font-size:2.4vh; text-align:center; margin-bottom:20px; font-weight:bold; color:#a47002}
@@ -33,7 +33,38 @@
     .check label {cursor:pointer;color:#000;font-weight:bold;font-size:15px;}
     .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
     .check a.infotxt {display:inline-block; padding:5px 10px;color:#fff; background:#000; margin-left:10px; border-radius:20px}
-    .check a.infotxt:hover {background:#a47002}   
+    .check a.infotxt:hover {background:#a47002}   */
+
+    .event05 {padding:10vh 0}
+
+    .lecWrap {display:flex; flex-wrap: wrap; line-height:1.5; font-size:1.5vh; width:100%}
+    .lecWrap .pass {margin:0 10px 10px; flex: 1 1 100%; position: relative;}
+    .lecWrap .pass div {font-size:2vh}
+    .lecWrap .pass div:nth-child(1) {font-size:2.2vh; font-weight:600; color:#b47607}
+    .lecWrap .pass div:nth-child(2) {font-size:2.2vh; font-weight:600;}
+    .lecWrap .pass div:nth-child(3) {font-size:1.4vh; font-weight:600;}
+    .lecWrap .pass div:nth-child(4) {font-size:2.2vh; color:#b47607}
+    .lecWrap .pass div:nth-child(4) strong {font-size:3vh;}
+    .lecWrap .pass div span {box-shadow:inset 0 -10px 0 #fbeacb; color:#b47607}
+    .lecWrap .pass ul {margin-top:30px; display:none}
+    .lecWrap .pass li {list-style:disc; margin-left:20px; margin-bottom:10px; font-weight:bold}
+    .lecWrap .pass li span {color:#b47607; vertical-align:top}
+
+    .lecWrap .pass input[type="radio"] {height:26px; width:26px; position:absolute; top:20px; left:20px; visibility: hidden;}
+    .lecWrap .pass label{display:block; border:1px solid #d7d7d7; padding:20px; text-align:left; box-sizing: border-box; height: 100%; }
+    .lecWrap .pass label:hover {cursor: pointer;}
+    .lecWrap .pass input:checked + label {border:1px solid #b47607; background:#b47607; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3)}
+    .lecWrap .pass input:checked + label div,
+    .lecWrap .pass input:checked + label span{color:#fff; box-shadow:none}
+    .lecWrap .pass input:checked + label ul {margin-top:30px; display:block}
+
+    .check {margin:50px auto;}
+    .check label {cursor:pointer; font-size:1.5vh;color:#000;font-weight:bold;}
+    .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
+    .check a {display:inline-block; padding:5px 10px; color:#fff; background:#2d2d2d; margin-left:10px; border-radius:4px;font-size:1.2vh;} 
+
+    .event05 .passbuy a {display:block; width:80%; margin:0 auto; background:#1c2127; color:#fff; font-size:2.4vh; border-radius:40px; padding:10px 0; font-weight:bold}  
+    .event05 .passbuy a:hover {background:#b47607; color:#fff;}
 
     .evtInfo {padding:50px 20px; background:#535353; color:#fff; font-size:14px}
     .evtInfoBox {margin:0 auto; text-align:left; line-height:1.4}
@@ -60,7 +91,11 @@
     
     /* 태블릿 가로, PC */
     @@media only screen and (min-width: 641px) {
-        
+        .lecWrap .pass {margin:0 5px 10px; flex: 1 1 40%;}
+        .lecWrap .pass div:nth-child(2) { margin-bottom:20px}
+        .lecWrap .pass:nth-child(even) {margin-right:0}
+        .lecWrap .pass ul {display:block}
+        .check br {display:none}
     }
 
     </style>
@@ -101,7 +136,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/06/1983m_04.jpg" alt="커리큘럼">              
         </div>
 
-        <div class="evtCtnsBox" data-aos="fade-up" id="evt01">
+        <div class="evtCtnsBox event05" data-aos="fade-up" id="evt01">
+            {{--
             <div class="passWrap">
                 <div class="passLec">
                     <h5>2023 세무직 PASS</h5>
@@ -138,12 +174,6 @@
                 </div>
             </div>
             
-            {{--
-            <a href="javascript:go_PassLecture('194323');" >
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/1983m_05.jpg" alt="세무직 패스">
-            </a>
-            --}}
-
             <div class="check" id="chkInfo">               
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />
@@ -152,9 +182,59 @@
                 <a href="#tip" class="infotxt" > 유의사항 자세히보기 ↓</a>
                 <p class="NGEB"><a onclick="go_PassLecture(1);" target="_blank">지금 바로 신청하기 ></a></p>     
             </div>   
+            --}}
+            <div>
+                <div class="lecWrap">
+                    <div class="pass">
+                        <input type="radio" name="y_pkg" id="pass01" value="198399">
+                        <label for="pass01">
+                            <div>2023 세무직</div>
+                            <div>PASS</div>
+                            <div><span>국어 오대혁, 영어 한덕현, 한국사 김상범, 회계학 이윤호, 세법 박창한</span></div>
+                            <div><strong class="NSK-Black">49</strong>만원</div>
+                            <ul>
+                                <li><span>* 지금 구매 시 3만포인트 추가 제공!</span></li>
+                                <li><span>2023년 4월</span>까지 배수 제한 없는 <span>무제한 수강</span></li>
+                                <li>PC+모바일 총 2대 지원</li>
+                                <li>무편집 <span>LIVE</span> 제공</li>
+                                <li>2023 대비 신규 진행 전 과정</li>
+                                <li>온라인 모의고사 진행 시 무료 응시</li>
+                            </ul>
+                        </label>
+                    </div>
+
+                    <div class="pass">
+                        <input type="radio" name="y_pkg" id="pass02" value="198398">
+                        <label for="pass02">
+                            <div>윌비스 세무직</div>
+                            <div>전공과목 T-PASS</div>
+                            <div><span>회계학 이윤호, 세법 박창한</span></div>
+                            <div><strong class="NSK-Black">29</strong>만원</div>
+                            <ul>
+                                <li>2023. 6월까지 전기직 9급 전 강좌 제공 <span>(9급 국가직/지방직 대비 가능)</span></li>
+                                <li>PC+모바일 총 2대</li>
+                                <li>3배수 제한</li>
+                                <li>수강지원 포인트 5만점 <span>(교재 구매 시 사용 가능)</span></li>
+                            </ul>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="check">
+                    <label>
+                        <input name="ischk"  type="checkbox" value="Y" />
+                        페이지 하단 T-PASS 이용안내를 모두 확인하였고, <br>이에 동의합니다.
+                    </label>
+                    <a href="#careful">이용안내확인 ↓</a>
+                </div>
+
+                <div class="passbuy">
+                    <a href="javascript:void(0);" onclick="javascript:go_PassLecture(); return false;">지금 바로 신청하기 ></a>
+                </div>
+            </div>
         </div>
 
-        <div class="evtCtnsBox evtInfo" id="tip">
+        <div class="evtCtnsBox evtInfo" id="careful">
 			<div class="evtInfoBox">
 				<h4 class="NSK-Black">세무직 PASS반 이용안내</h4>
 				<div class="infoTit"><strong>상품구성</strong></div>
@@ -203,6 +283,21 @@
         });
 
         /*수강신청 동의*/ 
+        function go_PassLecture(){
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
+                return;
+            }
+
+            code = $('input[name="y_pkg"]:checked').val();
+            if (typeof code == 'undefined' || code == '') {
+                alert('강좌를 선택해 주세요.');
+                return;
+            }
+            location.href = "{{ front_url('/periodPackage/show/cate/3022/pack/648001/prod-code/') }}" + code;
+        } 
+
+        /*수강신청 동의 
         function go_PassLecture(code){
             if($("input[name='ischk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");
@@ -216,7 +311,7 @@
                 }
             }
             location.href = "{{ front_url('/periodPackage/show/cate/3022/pack/648001/prod-code/') }}" + code;
-        }
+        }*/
     </script>
 
     

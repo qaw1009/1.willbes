@@ -36,14 +36,14 @@
     <div class="evtCtnsBox" data-aos="fade-top">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2706m_01.jpg" alt="1~5순환 티패스" >
-            <a href="https://job.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199180" alt="김동진" target="_blank" style="position: absolute;left: 19.28%;top: 31.53%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
-            <a href="https://job.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199181" alt="이덕훈" target="_blank" style="position: absolute;left: 56.68%;top: 31.53%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
-            <a href="https://job.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199182" alt="문형석" target="_blank" style="position: absolute;left: 19.28%;top: 51.53%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
-            <a href="https://job.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199183" alt="유안석" target="_blank" style="position: absolute;left: 56.68%;top: 51.53%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
-            <a href="https://job.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199184" alt="이국령" target="_blank" style="position: absolute;left: 19.28%;top: 71.53%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
-            <a href="https://job.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199185" alt="박재현" target="_blank" style="position: absolute;left: 56.68%;top: 71.53%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
-            <a href="https://job.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199186" alt="박초롱" target="_blank" style="position: absolute;left: 19.28%;top: 92.03%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
-            <a href="https://job.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199187" alt="임진석" target="_blank" style="position: absolute;left: 56.68%;top: 92.03%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199180" alt="김동진" target="_blank" style="position: absolute;left: 19.28%;top: 31.53%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199181" alt="이덕훈" target="_blank" style="position: absolute;left: 56.68%;top: 31.53%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199182" alt="문형석" target="_blank" style="position: absolute;left: 19.28%;top: 51.53%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199183" alt="유안석" target="_blank" style="position: absolute;left: 56.68%;top: 51.53%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199184" alt="이국령" target="_blank" style="position: absolute;left: 19.28%;top: 71.53%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199185" alt="박재현" target="_blank" style="position: absolute;left: 56.68%;top: 71.53%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199186" alt="박초롱" target="_blank" style="position: absolute;left: 19.28%;top: 92.03%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3035/pack/648001/prod-code/199187" alt="임진석" target="_blank" style="position: absolute;left: 56.68%;top: 92.03%;width: 24.13%;height: 2.34%;z-index: 2;"></a>
         </div>        
     </div>
 

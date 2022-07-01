@@ -89,10 +89,6 @@
             </a>        
         </div>
 
-        <div class="evtCtnsBox evt00" data-aos="fade-down" id="evt-first">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2180_00.jpg" title="6월 이벤트" />		
-		</div>	
-
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
 			<span data-aos="fade-right" data-aos-duration="500">
                 <a href="#event">
@@ -178,12 +174,8 @@
 
         <div class="evtCtnsBox evt03" id="event" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2180_03.jpg" />
-                <a href="javascript:go_PassLecture('190916');" title="22~23 전과정 티패스" style="position: absolute; left: 52.95%; top: 82.02%; width: 29.38%; height: 8.56%; z-index: 2;"></a>
-                {{--
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2180_03.jpg" />
-                <a href="javascript:go_PassLecture('190916');" title="22~23 전과정 티패스" style="position: absolute; left: 52.14%; top: 74.39%; width: 30.27%; height: 11.89%; z-index: 2;"></a>      
-                --}} 
+                <img src="https://static.willbes.net/public/images/promotion/2022/07/2180_03.jpg" />
+                <a href="javascript:go_PassLecture('190916');" title="22~23 전과정 티패스" style="position: absolute; left: 52.95%; top: 79.00%; width: 29.38%; height: 8.56%; z-index: 2;"></a>
             </div>
             
             <div class="check">
@@ -195,17 +187,6 @@
         <div class="evtCtnsBox evtInfo" id="notice" data-aos="fade-up">
             <div class="evtInfoBox">
                 <h4 class="NSK-Black">이용안내 및 유의사항</h4>
-                <div class="infoTit"><strong>6월 한정 EVENT</strong></div>
-                <ul>
-                    <li>본 이벤트는 2022년 6월 30일 (목)까지 2023 영어 한덕현 T-PASS를 결제완료하신 분에 한하여 적용됩니다.</li>
-                    <li>제공 혜택<br>
-                    <span>📢 무료 제공 교재는 한덕현 교수 직접 구매 후 증정되는 상품입니다.</span><br>
-                    - 2023 제니스 영어 Grammar 교재 제공 (신간 출시 후 문자를 통해 신청방법 안내 예정)<br>
-                    - 2023 제니스 영어 스나이퍼 32 교재 제공 (신간 출시 후 문자를 통해 신청방법 안내 예정)<br>
-                    - 1:1 온라인독해첨삭 지도반 1개월 무료 (수강기간 내 원하는 시기에 한덕현 교수 Q&A 게시판을 통해 신청 및 교수님 개별 상담 후 기수에 맞추어 진행 예정) <br>
-                    - 기존 판매가 79만원 (10만원 기간 한정 할인) → 이벤트 판매가 69만원<br>                    
-                </li>
-                </ul>
 
                 <div class="infoTit"><strong>상품구성</strong></div>
                 <ul>

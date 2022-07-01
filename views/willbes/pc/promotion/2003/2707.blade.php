@@ -166,7 +166,7 @@
         <div class="evtCtnsBox wb_cts03" id="apply" data-aos="fade-up">
             <div class="title">
             낯선 회계학/세법도 이제  <span>윌비스 세무Team</span>과 함께면 걱정 끝!
-                <p class="NSK-Black">윌비스 <span>계학/세법 T-PASS</span> 수강신청</p>
+                <p class="NSK-Black">윌비스 <span>회계학/세법 T-PASS</span> 수강신청</p>
             </div>
 
             <div>

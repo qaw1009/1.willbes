@@ -106,7 +106,7 @@
                     @endif
                 </div>
                 @if(empty($row['thumbnail_data']) === false)<span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>@endif
-                <img src="{{$row['ProfBgImagePath'].$row['ProfBgImageName']}}" title="{{$row['SubjectName']}} {{$row['ProfNickName']}}">
+                <a href="#none"><img src="{{$row['ProfBgImagePath'].$row['ProfBgImageName']}}" title="{{$row['SubjectName']}} {{$row['ProfNickName']}}"></a>
             </div>
         @endforeach
     @endif

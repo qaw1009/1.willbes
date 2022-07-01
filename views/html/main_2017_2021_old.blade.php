@@ -456,7 +456,7 @@ no-repeat 5px center}
                         </div>
                     </div>
                     <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51076.jpg" title="유아 민정선">
+                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51076?cate_code=3135&subject_idx=1981"><img src="https://static.willbes.net/public/images/promotion/main/2018/51076.jpg" title="유아 민정선"></a>
                 </div>
 
                 <div class="prof-Tab-Cts" id="tab02">

@@ -179,7 +179,6 @@
                             <div><span>회계학 이윤호</span></div>
                             <div><strong class="NSK-Black">19</strong>만원</div>
                             <ul>
-                                <li><span>* 7월 한정 5만원 추가할인 적용</span></li>
                                 <li><span>2023년 6월</span>까지 배수 제한 없는 <span>무제한 수강</span></li>
                                 <li>PC or 모바일 총 2대 지원</li>
                                 <li>2023 대비 회계학 전 과정</li>
@@ -195,7 +194,6 @@
                             <div><span>세법 박창한</span></div>
                             <div><strong class="NSK-Black">19</strong>만원</div>
                             <ul>
-                                <li><span>* 7월 한정 5만원 추가할인 적용</span></li>
                                 <li><span>2023년 6월</span>까지 배수 제한 없는 <span>무제한 수강</span></li>
                                 <li>PC or 모바일 총 2대 지원</li>
                                 <li>2023 대비 세법 전 과정</li>
@@ -211,7 +209,6 @@
                             <div><span>회계학 이윤호, 세법 박창한</span></div>
                             <div><strong class="NSK-Black">29</strong>만원</div>
                             <ul>
-                                <li><span>* 7월 한정 이벤트 5만원 추가할인 적용</span></li>
                                 <li><span>2023년 6월</span>까지 배수 제한 없는 <span>무제한 수강</span></li>
                                 <li>PC or 모바일 총 2대 지원</li>
                                 <li>2023 대비 회계학/세법 전 과정</li>

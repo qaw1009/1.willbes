@@ -278,8 +278,7 @@
                             <li>아이디 공유 적발 시 회원 자격 박탈 및 환불이 불가하오니 유의 바랍니다.</li>
                         </ul>
                     </dd>          
-                </dl>
-               
+                </dl>               
             </div>
         </div>
     </div>
@@ -288,14 +287,12 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-    $(document).ready(function(){
-        AOS.init();
-    });
+        $(document).ready(function(){
+            AOS.init();
+        });
     </script>
 
     <script>  
-
-
         /*수강신청 동의*/ 
         function go_PassLecture(){
             if($("input[name='ischk']:checked").size() < 1){
@@ -340,7 +337,6 @@
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
-
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

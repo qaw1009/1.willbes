@@ -276,7 +276,7 @@ class ProfessorHotClipModel extends WB_Model
             #,hc.ViewType
             ,hc.SiteCode,hc.PhcgIdx
             ,hc.CateCode,hc.OrderNum
-            ,hc.ProfBgImagePath,hc.ProfBgImageName,hc.ProfBgImageRealName
+            ,hc.ProfBgImagePath,hc.ProfBgImageName,hc.ProfBgImageRealName,hc.ProfBgLinkUrlType,hc.ProfBgLinkUrl
             ,hc.ProfBtnIsUse,hc.CurriculumBtnIsUse,hc.StudyCommentBtnIsUse,hc.IsUse,hc.RegDatm,hc.UpdDatm
             ,c.CateName AS CateRouteName,ps.SubjectName,wp.wProfName
             ,CONCAT(ps.SubjectName,'>',wp.wProfName) AS ProfSubjectName
@@ -695,6 +695,8 @@ class ProfessorHotClipModel extends WB_Model
             'ProfBtnIsUse' => element('prof_btn_isUse',$form_data),
             'CurriculumBtnIsUse' => element('curriculum_btn_is_use',$form_data),
             'StudyCommentBtnIsUse' => element('studycomment_btn_is_use',$form_data),
+            'ProfBgLinkUrlType' => element('profbg_link_url_type',$form_data),
+            'ProfBgLinkUrl' => element('profbg_link_url',$form_data),
             'IsUse' => element('is_use',$form_data,'Y'),
             'IsStatus' => element('is_status',$form_data,'Y'),
         ];

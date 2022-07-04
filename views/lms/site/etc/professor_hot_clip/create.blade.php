@@ -102,6 +102,20 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-1-1">링크 주소</label>
+                    <div class="col-md-10 form-inline">
+                        <div class="radio">
+                            <input type="radio" id="profbg_link_url_type_N" name="profbg_link_url_type" class="flat" value="N" title="외내부 링크타입" @if($method == 'POST' || $data['ProfBgLinkUrlType']=='N')checked="checked"@endif/> <label for="profbg_link_url_type_N" class="input-label">미사용</label>
+                            <input type="radio" id="profbg_link_url_type_I" name="profbg_link_url_type" class="flat" value="I" title="외내부 링크타입" @if($data['ProfBgLinkUrlType']=='I')checked="checked"@endif/> <label for="profbg_link_url_type_I" class="input-label">내부링크</label>
+                            <input type="radio" id="profbg_link_url_type_O" name="profbg_link_url_type" class="flat" value="O" @if($data['ProfBgLinkUrlType']=='O')checked="checked"@endif/> <label for="profbg_link_url_type_O" class="input-label">외부링크</label>
+                        </div>
+                        <input type="text" id="profbg_link_url" name="profbg_link_url" class="form-control ml-20" maxlength="255" title="링크주소" value="{{ (($method == 'POST') ? '' : $data['ProfBgLinkUrl']) }}" placeholder="링크주소" style="width: 40%; margin-top: 2px;">
+                        <div class="mt-10">• 내부링크 : 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (예: police.willbes.net/home/index/cate/3001)</span></div>
+                        <div class="mt-5">• 외부링크 : 프로토콜 (http, https) <span class="red bold">입력 필수 (예: http://www.hanlimgosi.co.kr)</span></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1">교수홈버튼 노출여부<span class="required">*</span>
                     </label>
                     <div class="col-md-4 item form-inline">

@@ -537,7 +537,6 @@ class Home extends \app\controllers\FrontController
         if(APP_DEVICE == 'pc'){
             $data['new_product'] = $this->_getlistSalesProductBook(5, $s_cate_code);
             $data['prof_hot_clip'] = $this->_getlistProfHotClip();
-            $data['prof_hot_clip_test'] = $this->_getlistProfHotClip_test($data['prof_hot_clip']);  /** todo : 개발/테스트 완료 후 실제 함수에 대입 (2021.12.06) */
         }else{
             $data['new_product'] = $this->_product('on_lecture', 16, $s_cate_code, 'New');
             $data['event'] = $this->_getlistEvent(5, $s_cate_code);
@@ -1057,32 +1056,6 @@ class Home extends \app\controllers\FrontController
             ]
         ];
         $data = $this->professorHotClipFModel->listHotClip($arr_condition, $order_by);
-        return $data;
-    }
-
-    /**
-     * todo : 개발/테스트 완료 후 실제 함수에 대입 (2021.12.06)
-     * TEST 강사 핫클립 데이터 리스트
-     */
-    private function _getlistProfHotClip_test($result)
-    {
-        $data = [];
-        if (empty($result) === false) {
-            foreach ($result as $row) {
-                $data[$row['group_title']][$row['PhcIdx']]['PhcIdx'] = $row['PhcIdx'];
-                $data[$row['group_title']][$row['PhcIdx']]['ProfIdx'] = $row['ProfIdx'];
-                $data[$row['group_title']][$row['PhcIdx']]['wProfName'] = $row['wProfName'];
-                $data[$row['group_title']][$row['PhcIdx']]['SubjectName'] = $row['SubjectName'];
-                $data[$row['group_title']][$row['PhcIdx']]['SubjectIdx'] = $row['SubjectIdx'];
-                $data[$row['group_title']][$row['PhcIdx']]['CateCode'] = $row['CateCode'];
-                $data[$row['group_title']][$row['PhcIdx']]['ProfBtnIsUse'] = $row['ProfBtnIsUse'];
-                $data[$row['group_title']][$row['PhcIdx']]['CurriculumBtnIsUse'] = $row['CurriculumBtnIsUse'];
-                $data[$row['group_title']][$row['PhcIdx']]['StudyCommentBtnIsUse'] = $row['StudyCommentBtnIsUse'];
-                $data[$row['group_title']][$row['PhcIdx']]['ProfBgImagePath'] = $row['ProfBgImagePath'];
-                $data[$row['group_title']][$row['PhcIdx']]['ProfBgImageName'] = $row['ProfBgImageName'];
-                $data[$row['group_title']][$row['PhcIdx']]['thumbnail_data'] = $row['thumbnail_data'];
-            }
-        }
         return $data;
     }
 

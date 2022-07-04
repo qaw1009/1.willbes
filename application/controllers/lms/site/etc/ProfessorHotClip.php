@@ -226,18 +226,22 @@ class ProfessorHotClip extends \app\controllers\BaseController
             ['field' => 'cate_code', 'label' => '카테고리', 'rules' => 'trim|required'],
             ['field' => 'prof_subject_idx[]', 'label' => '과목/교수', 'rules' => 'trim|required'],
             ['field' => 'temp_view_type', 'label' => '메인,이벤트 유형', 'rules' => 'trim|required|in_list[1,2]'],
-
             ['field' => 'prof_btn_isUse', 'label' => '교수홈버튼 노출여부', 'rules' => 'trim|required'],
             ['field' => 'curriculum_btn_is_use', 'label' => '커리큘럼버튼 노출여부', 'rules' => 'trim|required'],
             ['field' => 'studycomment_btn_is_use', 'label' => '수강후기버튼 노출여부', 'rules' => 'trim|required'],
-
-            ['field' => 'prod_code[]', 'label' => '상품코드', 'rules' => 'callback_validateRequiredIf[temp_view_type,2]'],
+            ['field' => 'prod_code[]', 'label' => '상품코드', 'rules' => 'callback_validateRequiredIf[temp_view_type,2]']
         ];
+
+        if ($this->_reqP('profbg_link_url_type') != 'N') {
+            $rules = array_merge($rules, [
+                ['field' => 'profbg_link_url', 'label' => '미사용이 아닌 경우 링크주소', 'rules' => 'trim|required']
+            ]);
+        }
 
         if (empty($this->_reqP('idx')) === true) {
             $method = 'add';
             $rules = array_merge($rules, [
-                ['field' => 'professor_bg_image', 'label' => '교수배경이미지', 'rules' => 'callback_validateFileRequired[professor_bg_image]'],
+                ['field' => 'professor_bg_image', 'label' => '교수배경이미지', 'rules' => 'callback_validateFileRequired[professor_bg_image]']
             ]);
         } else {
             $method = 'modify';

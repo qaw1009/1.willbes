@@ -31,7 +31,7 @@ class ProfessorHotClipFModel extends WB_Model
         $column = "
             g.PhcgIdx AS group_code,g.Title AS group_title
             ,hc.PhcIdx,hc.SiteCode,hc.CateCode,hc.ProfIdx,hc.SubjectIdx,hc.OrderNum
-            ,hc.ProfBgImagePath,hc.ProfBgImageName,hc.ProfBgImageRealName
+            ,hc.ProfBgImagePath,hc.ProfBgImageName,hc.ProfBgImageRealName,hc.ProfBgLinkUrlType, hc.ProfBgLinkUrl
 	        ,hc.ProfBtnIsUse,hc.CurriculumBtnIsUse,hc.StudyCommentBtnIsUse,hc.RegDatm
 	        ,ps.SubjectName,wp.wProfName,pf.ProfNickName
 	        ,(

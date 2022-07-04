@@ -143,7 +143,6 @@ class Certificate extends \app\controllers\FrontController
 
     }
 
-    
     /**
      * 수강확인증 출력
      * @return object|string
@@ -191,4 +190,39 @@ class Certificate extends \app\controllers\FrontController
         ]);
     }
 
+    /**
+     * 학원강좌 수강증 보기
+     * @return object|string
+     */
+    public function offLecture()
+    {
+        $order_idx = $this->_req('o');
+        $order_prod_idx = $this->_req('op');
+        $prod_code = $this->_req('p');
+        $prod_code_sub = $this->_req('ps');
+
+        if (empty($order_idx) === true || empty($order_prod_idx) === true || empty($prod_code) === true || empty($prod_code_sub) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+        }
+
+        // 주문정보 조회
+        $arr_condition = [
+            'EQ' => [
+                'OrderIdx' => $order_idx,
+                'OrderProdIdx' => $order_prod_idx,
+                'ProdCode' => $prod_code,
+                'ProdCodeSub' => $prod_code_sub,
+                'MemIdx' => $this->session->userdata('mem_idx')
+            ]
+        ];
+
+        $data = $this->classroomFModel->getLecture($arr_condition, [],false, true, 1, 0);
+        if (empty($data) === true) {
+            show_alert('수강정보가 없습니다.', 'back');
+        }
+
+        return $this->load->view('/classroom/certificate/off_lecture', [
+            'data' => element('0', $data)
+        ]);
+    }
 }

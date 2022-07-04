@@ -204,7 +204,7 @@
                                     <span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span>
                                     {{$row['subProdName']}}
                                 </div>
-                                <dl class="w-info acad tx-gray">
+                                <dl class="w-info acad tx-gray mb10">
                                     @if(in_array($row['SiteCode'], ['2010','2011','2013']))
                                         <dt>
                                             (수강증번호 : {{$row['CertNo']}})<span class="row-line">|</span>
@@ -234,7 +234,7 @@
                                         <input type="hidden" id="prod_code_N_0_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['ProdCodeMaster'] }}">
                                         <input type="hidden" id="prod_code_sub_N_0_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['ProdCodeSub'] }}">
 
-                                        <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray">
+                                        <div class="w-info bg-light-gray pd10 bdb-bright-gray">
                                             <ul class="mb10">
                                                 <li>[강의실명]
                                                     <span class="tx-light-blue">{{ $listLectureRoom[$row['ProdCode']]['LectureRoomName'] }}</span>
@@ -268,6 +268,10 @@
 
                                 @if(empty($row['SuppProdCode']) == false && $row['SuppIsUse'] == 'Y' && $row['IsDisp'] != 'N')
                                     <div class="mb10"><a href="#none" onclick="fnBogang('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}', '')" class="btnStfull03">보강/복습동영상 신청 ></a></div>
+                                @endif
+
+                                @if(in_array($row['SiteCode'], ['2018']))
+                                    <div class="mb10"><a href="javascript:void(0);" onclick="fnCertificate('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}');" class="btnStfull04">수강증 보기 &gt;</a></div>
                                 @endif
                             </td>
                         </tr>
@@ -471,6 +475,12 @@
             $('#ps').val(ps);
             $('#t').val(t);
             $("#bogangForm").attr("action", "{{ front_url("/classroom/off/layerBogang/") }}").submit();
+        }
+
+        function fnCertificate(o, op, p, ps)
+        {
+            var params = 'o=' + o + '&op=' + op + '&p=' + p + '&ps=' + ps;
+            location.href = '{{ front_url('/classroom/certificate/offLecture?') }}' + params;
         }
     </script>
 @stop

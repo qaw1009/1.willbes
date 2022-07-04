@@ -8,7 +8,7 @@ class Book extends BaseOrder
     protected $models = array('pay/orderList', 'pay/order', 'member/manageMember', 'service/point', 'sys/code');
     protected $helpers = array();
     private $_book_prod_type_ccd = array();
-    private $_list_add_join = array('delivery_info', 'refund');
+    private $_list_add_join = array('book', 'delivery_info', 'refund');
 
     public function __construct()
     {

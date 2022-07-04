@@ -61,15 +61,19 @@
 
     <div class="evtCtnsBox wb_03" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/06/2694m_03.jpg" alt="" >
-        <a href="https://pass.willbes.net/m/package/show/cate/3019/pack/648001/prod-code/198488" class="NSK-Black">지금 바로 무료로 받기 ▶</a>  
+        <a href="https://pass.willbes.net/m/package/show/cate/3019/pack/648001/prod-code/199343" class="NSK-Black">지금 바로 무료로 받기 ▶</a>  
     </div> 
+
+    @if(empty($arr_base['display_product_data']) === false)
+        @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
+    @endif
 
     <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/06/2694m_04.jpg" alt="" > 
     </div> 
 
     @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.m.promotion.show_comment_list_url_partial')
+            @include('willbes.m.promotion.show_comment_list_normal_partial')
     @endif
 
     <div class="evtCtnsBox wb_info" id="info">
@@ -78,13 +82,22 @@
             <dl>
                 <dd>
                     <ol>
-                        <li>본 이벤트는 2022년 6월 30일까지 진행됩니다.</li>
+                        <li>본 이벤트는 2022년 7월 31일까지 진행됩니다.</li>
                         <li>이벤트 대상 강좌 리스트 (*수강기간 30일)<br>
                         · 2023 오대혁 국어 기초입문 강의<br>
                         · 한덕현 영어 기초입문 강의 [쌩기초 탈출 프로젝트]<br>
                         · 2023 김상범 한국사 기초입문 강의<br>
-                        <li>지급된 강좌는 [내강의실]-[온라인강좌]-[관리자부여강좌]에서 수강할 수 있습니다.</li>
-                        <li>소문내기 이벤트의 경우, 중복된 게시글이나 삭제된 게시글은 정상 참여로 카운트 되지 않습니다.</li>
+                        · 2023 김철 행정학 기초입문 강의<br>
+                        · 2023 이윤호 회계학 기초입문 강의<br>
+                        · 2023 박창한 세법 기초입문 강의<br>
+                        · 2023 이석준 소방행정법 기초입문 강의<br>
+                        · 2023 이종오 소방학개론 기초입문 강의<br>
+                        · 2023 이종오 소방관계법규 기초입문 강의<br>
+                        · 2023 이윤주 조경직 기초입문 강의<br>
+                        · 2023 윤용범 가축사양학 기초입문 강의<br>
+                        · 2023 윤용범 가축육종학 기초입문 강의</li>
+                        <li>원하는 강좌를 선택 후 0원으로 결제한 후 [내강의실]-[수강중강의]에서 수강할 수 있습니다.</li>
+                        <li>같은 내용을 반복적으로 작성하거나 수강후기와 연관없는 댓글로 이벤트 참여 시 무통보 삭제 및 이벤트 정상 참여로 인정되지 않습니다.</li>
                     </ol>
                 </dd>
             </dl>

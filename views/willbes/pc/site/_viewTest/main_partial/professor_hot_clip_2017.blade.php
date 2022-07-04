@@ -48,8 +48,8 @@
                         @endif
                     </div>
                     @if(empty($row['thumbnail_data']) === false)<span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>@endif
-                    <a href="{!! (($row['ProfBgLinkUrlType'] == 'N') ? 'javascript:void(0);' : ($row['ProfBgLinkUrlType'] == 'I' ? '//' . (strpos($row['ProfBgLinkUrl'], config_item('base_domain')) === false ? $row['ProfBgLinkUrl'] : app_to_env_url($row['ProfBgLinkUrl'])) : $row['ProfBgLinkUrl'])) !!}">
-                        <img src="{{$row['ProfBgImagePath'].$row['ProfBgImageName']}}" title="{{$row['SubjectName']}} {{$row['ProfNickName']}}" class="aaaa_{{$row['ProfBgLinkUrlType']}}">
+                    <a href="{!! (($row['ProfBgLinkUrlType'] == 'N') ? 'javascript:void(0);' : ($row['ProfBgLinkUrlType'] == 'I' ? '//'.(strpos($row['ProfBgLinkUrl'], config_item('base_domain')) === false ? $row['ProfBgLinkUrl'] : app_to_env_url($row['ProfBgLinkUrl'])) : $row['ProfBgLinkUrl'])) !!}">
+                        <img src="{{$row['ProfBgImagePath'].$row['ProfBgImageName']}}" title="{{$row['SubjectName']}} {{$row['ProfNickName']}}" class="url-type-{{$row['ProfBgLinkUrlType']}}">
                     </a>
                 </div>
             @endforeach

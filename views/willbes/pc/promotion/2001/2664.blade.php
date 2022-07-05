@@ -220,7 +220,7 @@
                     </div>
                     <div>  
                         <p><span>&nbsp;</span></p>     
-                        <input type="radio" id="y_pkg2" name="y_pkg" value="196050"/>                
+                        <input type="radio" id="y_pkg2" name="y_pkg" value="197572"/>
                         <label for="y_pkg2">FINAL PASS 신청하기</label>
                     </div> 
                 </div>

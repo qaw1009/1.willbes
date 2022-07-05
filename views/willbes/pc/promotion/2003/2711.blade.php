@@ -27,18 +27,18 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox wb_top" data-aos="fade-down">            
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2708_top.jpg" alt="기출변형 모의고사"/>                         
+            <img src="https://static.willbes.net/public/images/promotion/2022/06/2708_top.jpg" alt="한승아 언어논리 "/>                         
         </div>
 
         <div class="evtCtnsBox wb_01" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2708_01.jpg" alt="선착순 150명">
-                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3143/prod-code/198725" target="_blank" title="수강신청" style="position: absolute;left: 70.45%;top: 93.84%;width: 28.3%;height: 3.46%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/06/2708_01.jpg" alt="">
+                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3143/prod-code/199385" target="_blank" title="수강신청" style="position: absolute;left: 70.45%;top: 93.84%;width: 28.3%;height: 3.46%;z-index: 2;"></a>
             </div>
 		</div>
 
         <div class="evtCtnsBox wb_02" data-aos="fade-up"> 
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2708_02.jpg" alt="psat so easy">              
+            <img src="https://static.willbes.net/public/images/promotion/2022/06/2708_02.jpg" alt="">              
 		</div>
     </div>
 

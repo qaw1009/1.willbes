@@ -172,7 +172,7 @@
         <div class="evtCtnsBox evt03" id="event" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/07/2180_03.jpg" />
-                <a href="javascript:go_PassLecture('190916');" title="22~23 전과정 티패스" style="position: absolute; left: 52.95%; top: 79.00%; width: 29.38%; height: 8.56%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('199386');" title="22~23 전과정 티패스" style="position: absolute; left: 52.95%; top: 79.00%; width: 29.38%; height: 8.56%; z-index: 2;"></a>
             </div>
             
             <div class="check">

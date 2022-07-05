@@ -270,11 +270,11 @@
                             <div><span>국어 오대혁, 영어 한덕현, 한국사 김상범, 회계학 이윤호, 세법 박창한</span></div>
                             <div><strong class="NSK-Black">49</strong>만원</div>
                             <ul>
-                                <li><span>* 지금 구매 시 3만포인트 추가 제공!</span></li>
+                                <li><span>교재 구매 시 사용가능한 수강지원 포인트 3만점 증정!</span></li>
                                 <li><span>2023년 4월</span>까지 배수 제한 없는 <span>무제한 수강</span></li>
                                 <li>PC+모바일 총 2대 지원</li>
                                 <li>무편집 <span>LIVE</span> 제공</li>
-                                <li>2023 대비 신규 진행 전 과정</li>
+                                <li><span>2023 국가직 대비</span> 신규 진행 전 과정</li>
                                 <li>온라인 모의고사 진행 시 무료 응시</li>
                             </ul>
                         </label>
@@ -288,11 +288,11 @@
                             <div><span>회계학 이윤호, 세법 박창한</span></div>
                             <div><strong class="NSK-Black">29</strong>만원</div>
                             <ul>
-                                <li><span>* 7월 한정 이벤트 5만원 추가할인 적용</span></li>
-                                <li><span>2023. 6월</span>까지 제공 (9급 국가직/지방직 대비 가능)</li>
-                                <li>PC+모바일 총 2대</li>
+                                <li><span>&lt;&lt;7월 한정 이벤트 5만원 추가할인 적용가 &gt;&gt;</span></li>
+                                <li><span>2023. 6월</span>까지 배수 제한 없는 <span>무제한 수강</span></li>
+                                <li><span>PC+모바일 총 2대 지원</span></li>
                                 <li>3배수 제한</li>
-                                <li>수강지원 포인트 <span>5만점</span> (교재 구매 시 사용 가능)</li>
+                                <li><span>2023 국가직/지방직 대비</span> 신규 진행 전 과정</li>
                             </ul>
                         </label>
                     </div>
@@ -378,7 +378,7 @@
                             </li>
                             <li>본 이벤트는 이벤트 참여자가 본인의 명의로 구매/응시한 내용에 한합니다.</li>
                             <li>등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>
-                            <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>
+                            <li>발급된 쿠폰의 사용 기간은 3일로, [2023 윌비스 세무직 PASS (전과목)] 상품에만 적용됩니다.</li>
                         </ul>
                     </dd>        
 

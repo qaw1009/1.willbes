@@ -93,7 +93,7 @@
                                             수강기간 : 2018-00-00~2018-00-00<br>
                                             요일/회차 : 월화수목금 10회차<span class="row-line">|</span>2018-00-00 개강
                                         </div>
-                                        <div class="supplementBtn"><a href="mypage_acad1_7">보강/복습동영상 신청 ></a></div>
+                                        <div class="supplementBtn"><a href="mypage_acad1_7">보강/복습동영상 신청 ></a> <a href="mypage_acad1_8" class="type2">수강증 보기 ></a></div> 
                                     </li>
                                     <li>
                                         <div>영어<span class="row-line">|</span>한덕현교수님</div>
@@ -104,7 +104,7 @@
                                             수강기간 : 2018-00-00~2018-00-00<br>
                                             요일/회차 : 월화수목금 10회차<span class="row-line">|</span>2018-00-00 개강
                                         </div>
-                                        <div class="supplementBtn"><a href="mypage_acad1_7">보강/복습동영상 신청 ></a></div>
+                                        <div class="supplementBtn"><a href="mypage_acad1_7">보강/복습동영상 신청 ></a> <a href="mypage_acad1_8" class="type2">수강증 보기 ></a></div>
                                     </li>
                                     <li>
                                         <div>영어<span class="row-line">|</span>한덕현교수님</div>
@@ -115,7 +115,7 @@
                                             수강기간 : 2018-00-00~2018-00-00<br>
                                             요일/회차 : 월화수목금 10회차<span class="row-line">|</span>2018-00-00 개강
                                         </div>
-                                        <div class="supplementBtn"><a href="mypage_acad1_7">보강/복습동영상 신청 ></a></div>
+                                        <div class="supplementBtn"><a href="mypage_acad1_7">보강/복습동영상 신청 ></a> <a href="mypage_acad1_8" class="type2">수강증 보기 ></a></div>
                                     </li>                                   
                                 </ul>                            
                             </div> 
@@ -182,7 +182,7 @@
                             <div class="w-info bg-light-gray pd10 pb0 mt10 bdb-bright-gray">  
                                 <div class="mb10"><a href="#none" class="btnStfull02">온라인첨삭 ></a></div>    
                                 <div class="mb10"><a href="#none" class="btnStfull03">보강/복습동영상 신청 ></a></div>     
-                                <div class="mb10"><a href="#none" class="btnStfull04">수강증 보기 ></a></div>                       
+                                <div class="mb10"><a href="mypage_acad1_8" class="btnStfull04">수강증 보기 ></a></div>                       
                             </div>
                         </td>
                     </tr>

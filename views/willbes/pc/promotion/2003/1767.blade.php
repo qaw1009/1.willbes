@@ -77,10 +77,7 @@
     <div class="sky" id="QuickMenu">
         <a href="#apply"> 
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1767_sky.png" alt="예비전력관리 패스" >
-        </a>    
-        <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1679" target="_blank"> 
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/1767_sky02.png" alt="예비전력 무료특강" >
-        </a>          
+        </a>            
     </div>  
 
     <div class="evtCtnsBox wb_ctstop" data-aos="fade-up">
@@ -274,9 +271,10 @@
                 <li>2. 구매하신 무한PASS 상품명 옆의 [강좌추가] 버튼을 클릭,원하는 과목/교수님/강좌를 선택 등록 후 수강할 수 있습니다.</li> 
                 <li>3. 본 PASS를 이용 중에는 일시 정지 기능을 사용할 수 없습니다.</li> 
                 <li>4. 본 PASS 수강 시 이용가능한 기기는 다음과 같이 제한됩니다.<br>
-                - PC 2대 or 모바일 2대 or PC 1대+모바일 1대 (총 2대)
+                - PC 3대 or 모바일 3대 or PC 1대+모바일 2대 or PC 2대+모바일 1대 (총 3대)
                 </li> 
-                <li>5. PC/모바일 기기변경 등 단말기 초기화가 필요한 경우, 내용 확인 후 진행 가능하오니 고객센터로 문의주시기 바랍니다.</li> 
+                <li>5. PC/모바일 기기변경 등 단말기 초기화가 필요한 경우, 내용 확인 후 진행 가능하오니 고객센터로 문의주시기 바랍니다.</li>
+                <li>※ 본 상품 구매 전/후, 담당자(서진원 과장 : 070-4006-7176)와의 상담을 통한 교재 및 모의고사 발송 안내 반드시 진행 요망</li> 
             </ul>   
             <div class="infoTit"><strong>교재관련</strong></div>
             <ul>

@@ -956,6 +956,16 @@
         }
     });
 
+    var swiper = new Swiper(".swiper-sec01'", {
+        effect : "fade",
+        spaceBetween:0,//각 좌우 공간
+        centeredSlides:true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable:true,
+        },
+    });
+
     //입성
     var swiper = new Swiper('.swiper-sec02', {
       slidesPerView: 'auto',
@@ -967,7 +977,10 @@
         }, //3초에 한번씩 자동 넘김
     });
 
+
+
     // bar 배너
+    /*
     var swiper = new Swiper('.swiper-sec03', {
       slidesPerView: 'auto',
       slidesPerColumn: 1,
@@ -976,7 +989,7 @@
             delay: 3000,
             disableOnInteraction: false,
         }, //3초에 한번씩 자동 넘김
-    });
+    });*/
 
     //무제한 수강 교수진
     var swiper = new Swiper('.swiper-sec04', {

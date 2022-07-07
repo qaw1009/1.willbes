@@ -112,6 +112,7 @@ class Captcha
             // captcha 문자열 저장
             $enc_captcha_word = $this->_CI->encrypt->encode(element('word', $results));
             set_cookie($this->_ck_captcha_word, $enc_captcha_word, 7200, '', '/', '', true, true);
+            logger('[Captcha] Created result', $results);
             return element('image', $results);
         }
 

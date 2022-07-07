@@ -58,8 +58,8 @@
                         </label>
                     </div>
                     <div class="col-md-12 mt-10" id="preview_wrap" style="display: none;">
-                        <img src="#" id="preview_img" alt="이미지 미리보기">
-                        <img src="#" id="upload_img" alt="업로드 이미지" style="display: none;">
+                        <img id="preview_img" alt="이미지 미리보기">
+                        <img id="upload_img" alt="업로드 이미지" style="display: none;">
                     </div>
                     <div class="col-md-12 mt-10">
                         <button type="submit" class="btn btn-success">저장</button>
@@ -157,5 +157,4 @@
             });
         });
     </script>
-
 @stop

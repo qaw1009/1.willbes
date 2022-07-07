@@ -62,13 +62,6 @@ class Captcha
         isset($config['pool_type']) === true && $this->_pool_type = $config['pool_type'];
         // captcha img color (백그라운드, 외곽선, 텍스트, 그리드)
         isset($config['colors']) === true && $this->_colors = $config['colors'];
-
-        // img 생성 디렉토리 생성
-        if (is_dir($this->_img_path) === false && is_null($this->_img_path) === false) {
-            if (mkdir($this->_img_path, 0707, true) === false) {
-                log_message('ERROR', '[Captcha] Unable to create directory (' . $this->_img_path . ')');
-            }
-        }
     }
 
     /**
@@ -106,6 +99,14 @@ class Captcha
             'colors' => $this->_colors
         ];
 
+        // captcha 이미지 디렉토리 생성
+        $is_created_dir = $this->_createDir($this->_img_path);
+        if ($is_created_dir !== true) {
+            log_message('ERROR', '[Captcha] Unable to create directory (' . $this->_img_path . ')');
+            return false;
+        }
+
+        // captcha 이미지 생성
         $results = create_captcha($config);
 
         if ($results !== false) {
@@ -128,5 +129,25 @@ class Captcha
         $dec_word = $this->_CI->encrypt->decode(get_cookie($this->_ck_captcha_word));
         
         return $word == $dec_word;
+    }
+
+    /**
+     * Captcha 이미지 디렉토리 생성
+     * @param string $dir
+     * @return bool|string
+     */
+    private function _createDir($dir)
+    {
+        try {
+            if (is_dir($dir) === false && is_null($dir) === false) {
+                if (mkdir($dir, 0707, true) === false) {
+                    throw new \Exception(sprintf('디렉토리 생성에 실패했습니다. (%s)', $dir));
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
     }
 }

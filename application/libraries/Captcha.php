@@ -109,7 +109,7 @@ class Captcha
         $results = create_captcha($config);
 
         logger('[Captcha] Created result', $results);
-        logger('[Captcha] Created result', extension_loaded('gd'));
+        logger('[Captcha] Created result', $config);
 
         if ($results !== false) {
             // captcha 문자열 저장

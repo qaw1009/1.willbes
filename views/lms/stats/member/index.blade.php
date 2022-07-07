@@ -76,7 +76,7 @@
                         <select class="form-control mr-10" id="search_stats_type" name="search_stats_type">
                             <option value="gather" selected>집계통계 [5분지연]</option>
                             <option value="">실시간통계 [속도저하]</option>
-                        </select>
+                        </select> * 로그인 현황 - 다량의 데이터로 인해 1시간 단위 갱신
                     </div>
                 </div>
             </div>

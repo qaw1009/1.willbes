@@ -62,9 +62,9 @@
                     <label class="control-label col-md-1" for="search_stats_type"><span class="red">통계형식</span></label>
                     <div class="col-md-10 form-inline">
                         <select class="form-control mr-10" id="search_stats_type" name="search_stats_type">
-                            <option value="gather" selected>집계통계 [5분지연]</option>
+                            <option value="gather" selected>집계통계 [1시간 지연]</option>
                             <option value="" >실시간통계 [속도저하]</option>
-                        </select>
+                        </select> * 다량의 데이터로 인해 1시간 단위 갱신
                     </div>
                 </div>
             </div>

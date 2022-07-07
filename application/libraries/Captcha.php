@@ -67,6 +67,7 @@ class Captcha
     /**
      * Captcha 생성
      * @param string $word_length [문자열 길이]
+     * @param string $img_sub_path [이미지 생성 하위 디렉토리]
      * @param string $img_width [이미지 가로 사이즈]
      * @param string $img_height [이미지 세로 사이즈]
      * @param string $img_id [이미지 태그 아이디]
@@ -74,7 +75,7 @@ class Captcha
      * @param string $pool_type [문자열 생성구분 (num, alpha, alphanum)]
      * @return mixed [word => 생성문자열, time => 생성시간, image => 이미지 태그, filename => 이미지 파일명]
      */
-    public function create($word_length = '', $img_width = '', $img_height = '', $img_id = '', $font_size = '', $pool_type = '')
+    public function create($word_length = '', $img_sub_path = '', $img_width = '', $img_height = '', $img_id = '', $font_size = '', $pool_type = '')
     {
         $word_length = get_var($word_length, $this->_word_length);
         $img_width = get_var($img_width, $this->_img_width);
@@ -83,11 +84,19 @@ class Captcha
         $font_size = get_var($font_size, $this->_font_size);
         $pool_type = get_var($pool_type, $this->_pool_type);
 
+        // captcha 이미지 디렉토리 설정
+        $img_path = $this->_img_path;
+        $img_url = $this->_img_url;
+        if (empty($img_sub_path) === false) {
+            $img_path .= trim($img_sub_path, '/') . '/';
+            $img_url .= trim($img_sub_path, '/') . '/';
+        }
+
         // captcha 생성
         $config = [
             'word' => '',
-            'img_path' => $this->_img_path,
-            'img_url' => $this->_img_url,
+            'img_path' => $img_path,
+            'img_url' => $img_url,
             'font_path' => $this->_font_path,
             'expiration' => $this->_expiration,
             'img_id' => $img_id,
@@ -100,9 +109,9 @@ class Captcha
         ];
 
         // captcha 이미지 디렉토리 생성
-        $is_created_dir = $this->_createDir($this->_img_path);
+        $is_created_dir = $this->_createDir($img_path);
         if ($is_created_dir !== true) {
-            log_message('ERROR', '[Captcha] Unable to create directory (' . $this->_img_path . ')');
+            log_message('ERROR', '[Captcha] Unable to create directory (' . $img_path . ')');
             return false;
         }
 

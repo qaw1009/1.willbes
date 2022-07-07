@@ -18,8 +18,10 @@
     <!-- Slider jQuery -->
     <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.css">
     <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.min.css">
+    <!-- <link rel="stylesheet" href="https://www.njobler.net/public/vendor/jquery/swiper/v.7.3.3/swiper-bundle.min.css"> -->
     <script src="/public/vendor/jquery/swiper/swiper.js"></script>
     <script src="/public/vendor/jquery/swiper/swiper.min.js"></script>
+    <!-- <script src="https://www.njobler.net/public/vendor/jquery/swiper/v.7.3.3/swiper.min.js"></script> -->
     <!-- JAVASCRIPT -->
     <!--// CSS -->
     <!-- jQuery -->
@@ -65,7 +67,7 @@
         .intro .newsWrap {margin-top:6%; position: relative; display:flex; justify-content: space-between; align-items: top}
         .intro .newsWrap .swiper-sec01 {width:320px; padding-bottom:30px;}
         .intro .newsWrap .swiper-wrapper img {border-radius:10px;}
-        .intro .newsWrap .swiper-sec01 .swiper-pagination {
+        .intro .newsWrap .swiper-sec01 .swiper-pagination01 {
             bottom:8px;
             float:none;
             text-align:center
@@ -587,14 +589,14 @@
     </div>
 
     <div class="newsWrap">
-        <div class="swiper-container swiper-container-page swiper-sec01">
+        <div class="swiper-container swiper-sec01">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_320x400_01.jpg" alt="배너명"></div>
                 <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_320x400_02.jpg" alt="배너명"></div>
                 <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_320x400_03.jpg" alt="배너명"></div>
             </div>
             <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
+            <div class="swiper-pagination01 swiper-pagination"></div>
         </div>
 
         <div class="swiper-sec02-wrap">
@@ -957,22 +959,26 @@
     });
 
     var swiper1 = new Swiper(".swiper-sec01", {
+        slidesPerView: '1',
         effect : "fade",
         fadeEffect: {
             crossFade: true
         },
-
         allowTouchMove: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        }, 
+        loop: true,
         spaceBetween:0,//각 좌우 공간
-        centeredSlides:true,
         pagination: {
-            el: ".swiper-sec01 .swiper-pagination",
-            clickable:true,
+            el: ".swiper-pagination01",
+            clickable:true
         },
     });
 
     //입성
-    var swiper = new Swiper('.swiper-sec02', {
+    var swiper2 = new Swiper('.swiper-sec02', {
       slidesPerView: 'auto',
       slidesPerColumn: 1,
       spaceBetween: 0,
@@ -984,7 +990,7 @@
 
 
     // bar 배너
-    var swiper = new Swiper('.swiper-sec03', {
+    var swiper3 = new Swiper('.swiper-sec03', {
       slidesPerView: 'auto',
       slidesPerColumn: 1,
       spaceBetween: 0,
@@ -995,7 +1001,7 @@
     });
 
     //무제한 수강 교수진
-    var swiper = new Swiper('.swiper-sec04', {
+    var swiper4 = new Swiper('.swiper-sec04', {
       slidesPerView: 'auto',
       slidesPerColumn: 1,
       spaceBetween: 0,
@@ -1006,7 +1012,7 @@
     });
 
     //YOUTUBE 영상
-    var swiper = new Swiper('.swiper-container-prof', {
+    var swiper5 = new Swiper('.swiper-container-prof', {
       slidesPerView: 'auto',
       slidesPerColumn: 2,
       spaceBetween: 5,
@@ -1016,7 +1022,7 @@
         }, //3초에 한번씩 자동 넘김
       // init: false,
       pagination: {
-        el: '.swiper-pagination',
+        el: '.swiper-container-prof .swiper-pagination',
         clickable: true,
       },
       breakpoints: {
@@ -1027,7 +1033,7 @@
     });
 
     //교수진
-    var swiper = new Swiper('.swiper-sec06', {
+    var swiper6 = new Swiper('.swiper-sec06', {
       slidesPerView: 'auto',
       slidesPerColumn: 1,
       spaceBetween: 10,

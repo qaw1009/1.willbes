@@ -18,10 +18,10 @@
     <!-- Slider jQuery -->
     <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.css">
     <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.min.css">
-    <!-- <link rel="stylesheet" href="https://www.njobler.net/public/vendor/jquery/swiper/v.7.3.3/swiper-bundle.min.css"> -->
+
     <script src="/public/vendor/jquery/swiper/swiper.js"></script>
     <script src="/public/vendor/jquery/swiper/swiper.min.js"></script>
-    <!-- <script src="https://www.njobler.net/public/vendor/jquery/swiper/v.7.3.3/swiper.min.js"></script> -->
+
     <!-- JAVASCRIPT -->
     <!--// CSS -->
     <!-- jQuery -->
@@ -100,7 +100,7 @@
         }
 
         .intro .swiper-sec03 {margin-top:10%; padding-bottom:30px;}
-        .intro .swiper-sec03 .swiper-pagination {
+        .intro .swiper-sec03 .swiper-pagination03 {
             bottom:10px;
             float:none;
             text-align:center
@@ -121,7 +121,7 @@
         .tpassWrap .swiper-sec04 .swiper-wrapper {border-radius:20px;}
         .tpassWrap .swiper-sec04 .swiper-slide {background:#f4f7fe;}
         .tpassWrap .swiper-sec04 .swiper-slide img {border-radius:20px; width:100%;}
-        .tpassWrap .swiper-sec04 .swiper-pagination {
+        .tpassWrap .swiper-sec04 .swiper-pagination04 {
             bottom:8px;
             float:none;
             text-align:center
@@ -625,27 +625,27 @@
         </div>
     </div>
 
-    <div class="swiper-container swiper-container-page swiper-sec03">
+    <div class="swiper-container swiper-sec03">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_m_720.jpg" alt="배너명"></div>
             <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_m_720.jpg" alt="배너명"></div>
             <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_m_720.jpg" alt="배너명"></div>
         </div>
         <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
+        <div class="swiper-pagination03 swiper-pagination"></div>
     </div>
 
     <div class="tpassWrap">
         <div class="gosiTitle NSK">
             <strong class="NSK-Black">원하는 교수님</strong>의 과정을 무제한 수강
         </div>
-        <div class="swiper-container swiper-sec04 swiper-container-page">
+        <div class="swiper-container swiper-sec04">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_m_660_01.jpg" alt="배너명"></div>
                 <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_m_660_02.jpg" alt="배너명"></div>
             </div>
             <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
+            <div class="swiper-pagination04 swiper-pagination"></div>
         </div>
 
         <div class="prfoWrap">
@@ -991,24 +991,42 @@
 
     // bar 배너
     var swiper3 = new Swiper('.swiper-sec03', {
-      slidesPerView: 'auto',
-      slidesPerColumn: 1,
-      spaceBetween: 0,
-      autoplay: {
+        slidesPerView: '1',
+        effect : "fade",
+        fadeEffect: {
+            crossFade: true
+        },
+        allowTouchMove: true,
+        autoplay: {
             delay: 3000,
             disableOnInteraction: false,
-        }, //3초에 한번씩 자동 넘김
+        }, 
+        loop: true,
+        spaceBetween:0,//각 좌우 공간
+        pagination: {
+            el: ".swiper-pagination03",
+            clickable:true
+        },
     });
 
     //무제한 수강 교수진
     var swiper4 = new Swiper('.swiper-sec04', {
-      slidesPerView: 'auto',
-      slidesPerColumn: 1,
-      spaceBetween: 0,
-      autoplay: {
+        slidesPerView: '1',
+        effect : "fade",
+        fadeEffect: {
+            crossFade: true
+        },
+        allowTouchMove: true,
+        autoplay: {
             delay: 3000,
             disableOnInteraction: false,
-        }, //3초에 한번씩 자동 넘김
+        }, 
+        loop: true,
+        spaceBetween:0,//각 좌우 공간
+        pagination: {
+            el: ".swiper-pagination04",
+            clickable:true
+        },
     });
 
     //YOUTUBE 영상

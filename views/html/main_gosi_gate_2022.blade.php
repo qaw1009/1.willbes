@@ -82,9 +82,9 @@
 .gosi-gate-v3 .rightWrap .banner a {display:block; margin-right:10px;}
 .gosi-gate-v3 .rightWrap  img {border-radius:10px}
 
-.gosi-bnfull02 {position: relative; width:100%; overflow:hidden; margin-top:100px;}
-.gosi-bnfull02 .slider {position:absolute; width:2000px; top:0; left:50%; margin-left:-1000px; overflow:hidden; padding-bottom:20px}
-.gosi-bnfull02 .slider img {width:2000px; margin-bottom:20px}
+.gosi-bnfull02 {position: relative; width:100%;  overflow:hidden; margin-top:100px;}
+.gosi-bnfull02 .slider {position:absolute; width:2000px; top:0; left:50%; margin-left:-1000px; padding-bottom:20px}
+.gosi-bnfull02 .slider img {width:2000px; margin-bottom:20px;}
 .gosi-bnfull02 .bx-pager {
         width: auto;
         position: absolute;
@@ -1064,15 +1064,33 @@ height: calc(2.4em); /* line-height 가 1.2em 이고 3라인을 자르기 때문
             });
         });
 
+        //bar 배너
+        $(function() {
+            $('.gosi-bnfull02 .slider').bxSlider({
+                mode: 'fade', 
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideMargin:0,
+                autoHover:true,
+                moveSlides:1,
+            });
+        });
+
         //무제한 수강
         $(function() {
             $('.tpassWrap .slider').bxSlider({
                 mode: 'horizontal', 
-                auto: true,
-                touchEnabled: false,
-                controls: false,
-                pause: 3000,
-                autoHover: true,
+                auto:true,
+                speed:350,
+                pause:4000,
+                controls:false,
+                slideMargin:0,
+                autoHover:true,
                 pager:true,
             });
         });
@@ -1080,7 +1098,7 @@ height: calc(2.4em); /* line-height 가 1.2em 이고 3라인을 자르기 때문
         //새로운소식
         $(function() {
             var newsImg = $(".newsSlider").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                mode:'fade', //option : 'horizontal', 'vertical', 'fade'
                 auto:true,
                 speed:350,
                 pause:4000,

@@ -47,12 +47,12 @@ $(function () {
 });
 
 // GNB 검색창
-$(function() {
-    $('#Header .Menu-List .searchView').click(function() {
+$(function () {
+    $('#Header .Menu-List .searchView').click(function () {
         $('#Header .Menu-List .searchWrap').show().css('display', 'block');
     });
 
-    $('#Header .Menu-List .searchClose').click(function() {
+    $('#Header .Menu-List .searchClose').click(function () {
         $('#Header .Menu-List .searchWrap').hide().css('display', 'none');
     });
 });
@@ -301,6 +301,7 @@ function link_go() {
 }
 
 // 반응형 이미지맵
+/*
 $(function () {
     $(document).ready(function (e) {
         // IOS에서는 이미지맵을 스크립트로 조절하면 안먹히는 이슈 있음.
@@ -308,4 +309,4 @@ $(function () {
             $('img[usemap]').rwdImageMaps();
         }
     });
-});
+});*/

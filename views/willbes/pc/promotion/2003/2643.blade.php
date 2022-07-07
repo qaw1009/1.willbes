@@ -18,9 +18,11 @@
 
         /************************************************************/ 
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/04/2643_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/07/2643_top_bg.jpg) no-repeat center top;}
 
-        .evt01 , .evt02 {background:#fbfbfb;}
+        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/07/2643_01_bg.jpg) no-repeat center top;}
+
+        .evt05 {background:#fbfbfb}
 
         .evt03 {background:#020100;}
 
@@ -44,19 +46,15 @@
 	<div class="evtContent NSK">
     
 		<div class="evtCtnsBox evtTop" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2643_top.jpg" alt="연간 종합반 선접수 이벤트" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2643_top.jpg" alt="런칭 이벤트" />
 		</div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2643_01.jpg" alt="법원직에서 인증된 강의력과 시스템" />
-		</div>
-
-        <div class="evtCtnsBox evt02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2643_02.jpg" alt="합격에서 필요한 것들만 한다" />
-		</div>
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2643_01.jpg" alt="법원직에서 인증된 강의력과 시스템" />
+		</div>      
 
         <div class="evtCtnsBox evt05" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2643_05.jpg" alt="온라인 관리 전격 실시" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2643_03.jpg" alt="온라인 관리 전격 실시" />
 		</div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-up">                      
@@ -65,14 +63,14 @@
 
         <div class="evtCtnsBox evt04" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2643_04.jpg" alt="신청하기"/>
-                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3149/prod-code/194557" target="_blank" title="학원 연간종합반" style="position: absolute; left: 25.73%; top: 38.05%; width: 48.38%; height: 6.06%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3148/pack/648001/prod-code/194775" target="_blank" title="온라인" style="position: absolute; left: 25.73%; top: 80.85%; width: 48.38%; height: 6.06%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/07/2643_04.jpg" alt="신청하기"/>                
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3148/pack/648001/prod-code/194775" target="_blank" title="온라인" style="position: absolute;left: 25.73%;top: 64.45%;width: 48.38%;height: 8.76%;z-index: 2;"></a>
             </div>
 		</div>
 
         <div class="evtCtnsBox evtInfo">
             <div class="guide_box">
+                {{--
                 <h2 class="NSK-Black" data-aos="fade-up">1~4순환 연간반(실강반) 상품안내</h2>
                 <dl>
                     <dt>(1) 상품구성</dt>
@@ -121,7 +119,8 @@
                     </dd>                    
                 </dl>
                 <p>※ 이용문의 : 학원 1544-0330</p>
-                <h2 class="NSK-Black" style="padding-top:100px;" data-aos="fade-up">온라인 PASS 상품안내</h2>
+                --}}
+                <h2 class="NSK-Black" data-aos="fade-up">온라인 PASS 상품안내</h2>
                 <dl>
                     <dt>(1) 상품구성</dt>
                     <dd>

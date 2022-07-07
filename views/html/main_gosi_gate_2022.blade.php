@@ -82,13 +82,13 @@
 .gosi-gate-v3 .rightWrap .banner a {display:block; margin-right:10px;}
 .gosi-gate-v3 .rightWrap  img {border-radius:10px}
 
-.gosi-bnfull02 {position: relative; width:100%;  overflow:hidden; margin-top:100px;}
-.gosi-bnfull02 .slider {position:absolute; width:2000px; top:0; left:50%; margin-left:-1000px; padding-bottom:20px}
-.gosi-bnfull02 .slider img {width:2000px; margin-bottom:20px;}
+.gosi-bnfull02 {position:relative; width:100%; overflow:hidden; margin-top:100px; padding-bottom:30px;}
+.gosi-bnfull02 .slider {position:absolute; width:2000px !important; top:0; left:50%; height: 220px; margin-left:-1000px; z-index: 2;}
+.gosi-bnfull02 .slider img {min-width:2000px !important; height:220px;}
 .gosi-bnfull02 .bx-pager {
         width: auto;
         position: absolute;
-        bottom: 0;
+        bottom: -20px;
         left:0;
         right:0;
         z-index: 100;

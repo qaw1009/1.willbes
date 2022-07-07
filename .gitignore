@@ -50,6 +50,7 @@ readme.rst
 /storage/cache/memcached
 !/storage/cache/index.html
 !/storage/cache/views/index.html
+!/storage/cache/page/index.html
 /storage/logs/*
 !/storage/logs/index.html
 !/storage/logs/cron/index.html

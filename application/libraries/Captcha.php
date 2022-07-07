@@ -108,11 +108,13 @@ class Captcha
 
         $results = create_captcha($config);
 
+        logger('[Captcha] Created result', $results);
+        logger('[Captcha] Created result', extension_loaded('gd'));
+
         if ($results !== false) {
             // captcha 문자열 저장
             $enc_captcha_word = $this->_CI->encrypt->encode(element('word', $results));
             set_cookie($this->_ck_captcha_word, $enc_captcha_word, 7200, '', '/', '', true, true);
-            logger('[Captcha] Created result', $results);
             return element('image', $results);
         }
 

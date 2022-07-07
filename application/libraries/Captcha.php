@@ -109,7 +109,10 @@ class Captcha
         $results = create_captcha($config);
 
         logger('[Captcha] Created result', $results);
-        logger('[Captcha] Created result', $config);
+        logger('[Captcha] Created result', is_dir($this->_img_path));
+        logger('[Captcha] Created result', is_really_writable($this->_img_path));
+        logger('[Captcha] Created result', function_exists('imagejpeg'));
+        logger('[Captcha] Created result', function_exists('imagepng'));
 
         if ($results !== false) {
             // captcha 문자열 저장

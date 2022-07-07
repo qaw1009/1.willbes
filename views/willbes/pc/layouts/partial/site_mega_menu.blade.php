@@ -338,22 +338,11 @@
                     </li>
                     <li>
                         <span>[행정법]</span>
-                        <a href="{{front_url('/professor/show/cate/3024/prof-idx/51206?subject_idx=1111')}}">신기훈</a>                      
-                        <a href="{{front_url('/professor/show/cate/3024/prof-idx/50407?subject_idx=1111')}}">임병주</a>
+                        <a href="{{front_url('/professor/show/cate/3024/prof-idx/51206?subject_idx=1111')}}">신기훈</a>                   
                         <span>[행정학]</span>
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/51266?subject_idx=1112')}}">김철</a>
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/50559?subject_idx=1112')}}">김덕관</a>
-                    </li>
-                    <li>
-                        <span>[경영학]</span>
-                        <a href="{{front_url('/professor/show/cate/3024/prof-idx/50609?subject_idx=1185')}}">황선호</a>
-                    </li>
-                    <li>
-                        <span>[국가정보학]</span>
-                        <a href="{{front_url('/professor/show/cate/3024/prof-idx/50563?subject_idx=1236')}}">민진규</a>
-                        <span>[정보사회론]</span>
-                        <a href="{{front_url('/professor/show/cate/3024/prof-idx/50609?subject_idx=2151')}}">황선호</a>
-                    </li>
+                    </li>                  
                     <li>
                         <span>[G-TELP]</span>
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/50713?subject_idx=1177')}}">서민지</a>

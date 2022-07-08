@@ -225,4 +225,48 @@ class Certificate extends \app\controllers\FrontController
             'data' => element('0', $data)
         ]);
     }
+
+    /**
+     * 학원강좌 종합반 서브강좌 수강증 보기
+     * @return object|string
+     */
+    public function offPackage()
+    {
+        $order_idx = $this->_req('o');
+        $order_prod_idx = $this->_req('op');
+        $prod_code = $this->_req('p');
+        $prod_code_sub = $this->_req('ps');
+
+        if (empty($order_idx) === true || empty($order_prod_idx) === true || empty($prod_code) === true || empty($prod_code_sub) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+        }
+
+        // 주문정보 조회
+        $arr_condition = [
+            'EQ' => [
+                'OrderIdx' => $order_idx,
+                'OrderProdIdx' => $order_prod_idx,
+                'ProdCode' => $prod_code,
+                'MemIdx' => $this->session->userdata('mem_idx')
+            ]
+        ];
+
+        $pkg_data = element('0', $this->classroomFModel->getPackage($arr_condition, [], false, true));
+        if (empty($pkg_data) === true) {
+            show_alert('수강정보가 없습니다.', 'back');
+        }
+
+        // 서브강좌 셋팅
+        $sub_lec_data = array_pluck(json_decode($pkg_data['OrderSubProdData'], true), 'ProdName', 'ProdCode');
+
+        // 수강증 데이터
+        $data = [
+            'CertNo' => $pkg_data['CertNo'],
+            'ProdName' => element($prod_code_sub, $sub_lec_data)
+        ];
+
+        return $this->load->view('/classroom/certificate/off_lecture', [
+            'data' => $data
+        ]);
+    }
 }

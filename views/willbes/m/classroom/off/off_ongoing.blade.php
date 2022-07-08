@@ -80,9 +80,14 @@
                                                                 진행중
                                                             @endif
                                                         </div>
-                                                        @if(empty($subrow['SuppProdCode']) == false && $subrow['SuppIsUse'] == 'Y' && $subrow['IsDisp'] != 'N')
-                                                            <div class="supplementBtn"><a href="#none" onclick="fnBogang('{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}', 'P')" >보강/복습동영상 신청</a></div>
-                                                        @endif
+                                                        <div class="supplementBtn">
+                                                            @if(empty($subrow['SuppProdCode']) == false && $subrow['SuppIsUse'] == 'Y' && $subrow['IsDisp'] != 'N')
+                                                                <a href="javascript:void(0);" onclick="fnBogang('{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}', 'P')">보강/복습동영상 신청 ></a>
+                                                            @endif
+                                                            @if(in_array($subrow['SiteCode'], ['2018']))
+                                                                <a href="javascript:void(0);" onclick="fnCertificate('Package', '{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}');" class="type2">수강증 보기 ></a>
+                                                            @endif
+                                                        </div>
                                                     </li>
                                                 @endforeach
                                             @endif
@@ -271,7 +276,7 @@
                                 @endif
 
                                 @if(in_array($row['SiteCode'], ['2018']))
-                                    <div class="mb10"><a href="javascript:void(0);" onclick="fnCertificate('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}');" class="btnStfull04">수강증 보기 &gt;</a></div>
+                                    <div class="mb10"><a href="javascript:void(0);" onclick="fnCertificate('Lecture', '{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}');" class="btnStfull04">수강증 보기 ></a></div>
                                 @endif
                             </td>
                         </tr>
@@ -477,10 +482,10 @@
             $("#bogangForm").attr("action", "{{ front_url("/classroom/off/layerBogang/") }}").submit();
         }
 
-        function fnCertificate(o, op, p, ps)
+        function fnCertificate(t, o, op, p, ps)
         {
             var params = 'o=' + o + '&op=' + op + '&p=' + p + '&ps=' + ps;
-            location.href = '{{ front_url('/classroom/certificate/offLecture?') }}' + params;
+            location.href = '{{ front_url('/classroom/certificate/off') }}' + t + '?' + params;
         }
     </script>
 @stop

@@ -288,7 +288,7 @@
 
             <div id="tab01s" class="wrap">            
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/1721_05_cts1.png" />
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="" style="position: absolute;left: 26.46%;top: 76.99%;width: 47.23%;height: 14.57%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="" style="position: absolute;left: 26.46%;top: 79.99%;width: 47.23%;height: 12.57%;z-index: 2;"></a>
             </div> 
 
             {{--

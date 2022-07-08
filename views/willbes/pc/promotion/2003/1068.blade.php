@@ -105,10 +105,10 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">	
 		<div class="sky" id="QuickMenu">
-			<a href="https://pass.willbes.net/promotion/index/cate/3024/code/2637" target="_blank">
+			<a href="#transfer2">
 				<img src="https://static.willbes.net/public/images/promotion/2022/06/1068_sky.png"/>				
 			</a>	
-			<a href="#to_go">
+			<a href="#tab">
 				<img src="https://static.willbes.net/public/images/promotion/2022/04/1068_sky_2.png" usemap="#map1068_sky" border="0" />
 				<map name="map1068_sky" id="map1068_sky">
 					<area shape="rect" coords="6,9,127,83" href="#" class="r_btn_tab" data-tab-id="1"/>
@@ -160,7 +160,7 @@
         </div>
 
 {{--
-		<div class="evtCtnsBox wb_02_02" id="transfer2">
+		<div class="evtCtnsBox wb_02_02">
 			<div class="wrap">
 				<img src="https://static.willbes.net/public/images/promotion/2022/06/1068_02_02.gif" alt="">
 				<a href="javascript:go_PassLecture('188905')" title="농업직 패스" style="position: absolute; left: 9.02%; top: 41.95%; width: 17.23%; height: 5.85%; z-index: 2;"></a>
@@ -181,9 +181,9 @@
         </div>
 --}}
 
-		<div class="evtCtnsBox wb_02" id="to_go">
+		<div class="evtCtnsBox wb_02" id="transfer2">
 			<div class="wrap">
-				<img src="https://static.willbes.net/public/images/promotion/2022/06/1068_02_02.gif" alt=""/>
+				<img src="https://static.willbes.net/public/images/promotion/2022/06/1068_02_02.gif" alt="" />
 				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/198483" target="_blank" title="기본/심화이론 패키지" style="position: absolute; left: 26.96%; top: 41.98%; width: 18.39%; height: 3.77%; z-index: 2;"></a>
 				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/198575" target="_blank" title="7급 이론" style="position: absolute; left: 74.46%; top: 41.98%; width: 18.39%; height: 3.77%; z-index: 2;"></a>
 

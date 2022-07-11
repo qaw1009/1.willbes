@@ -82,6 +82,7 @@
         }
 
         .intro .swiper-sec03 {margin-top:10%; padding-bottom:30px;}
+        .intro .swiper-sec03 img {width:100%}
 
         .intro .swiper-pagination .swiper-pagination-bullet {
             background:#d1d0ce !important;
@@ -123,7 +124,7 @@
             color:#fff
         }
         .intro .swiper-sec05 .gosiTitle strong {color:#ff554d}
-        .intro .swiper-sec05 .swiper-container-prof {margin-left:4%}
+        .intro .swiper-sec05 .swiper-container-prof {margin-left:3%}
         .intro .swiper-sec05 .swiper-wrapper {height:auto;}
         .intro .swiper-sec05 .swiper-slide {
             width: 330px;
@@ -139,6 +140,8 @@
             -ms-flex-align: flex-start;
             -webkit-align-items: flex-start;
             align-items: flex-start;
+            margin-right:20px;
+            margin-bottom:15px
         }
         .intro .swiper-sec05 .swiper-slide a {
             display: block;
@@ -179,9 +182,9 @@
                 margin-left:0;
                 margin-top:10%
             }
-            .intro .swiper-sec02-wrap .gosiTitle {margin-left:4%}
+
             .intro .swiper-sec02-wrap .swiper-sec02 .swiper-slide {
-                width:150px; margin-right:1%; 
+                width:60%; margin-right:1%; 
             }
 
             .tpassWrap .prfoWrap a {font-size:1.4vh; width:calc(20% - 6px); margin:0 3px 20px;}
@@ -206,16 +209,17 @@
                 margin-left:0;
                 margin-top:10%
             }
-            .intro .swiper-sec02-wrap .gosiTitle {margin-left:4%}
+
             .intro .swiper-sec02-wrap .swiper-sec02 .swiper-slide {
-                width:32.5%; margin-right:1%; 
+                width:60%; margin-right:1%; 
             }
             .intro .swiper-sec02-wrap .swiper-sec02 .swiper-slide:last-child {margin-right:0}
 
             .tpassWrap .prfoWrap a {font-size:1.5vh; width:calc(20% - 6px); margin:0 3px 20px;}
             .tpassWrap .prfoWrap a img {border-radius:20px;}
 
-            .intro .swiper-sec05 .swiper-slide {width: 180px;}
+            .intro .swiper-sec05 .swiper-slide {width: 165px;}
+
             .intro .swiper-sec06-Wrap .swiper-slide {
                 width: 150px; 
             }
@@ -823,7 +827,7 @@
 
 </div>
 
-{{--모달팝업
+
 <div class="popupBox NSK" id="modalPopup">
     <div class="popupContent">
         <div class="popbanner"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/popup_sp01.jpg"></a></div>
@@ -834,7 +838,7 @@
         <div><button onclick="closeWin('modalPopup')">닫기</button></div>
     </div>
 </div>
-모달팝업//--}}
+
 <!-- End Container -->
 
 
@@ -842,11 +846,6 @@
     //swiper 메인 슬라이드
     $(document).ready(function(){
         var mainslider = new Swiper('.mainSlider01', {
-            /*direction: 'horizontal',
-            loop: true,
-            observer: true,
-            observeParents: true,
-            slidesPerView : 'auto',*/
             spaceBetween: 0,
             effect: "fade",
             pagination: {
@@ -946,7 +945,7 @@
     var swiper5 = new Swiper('.swiper-container-prof', {
       slidesPerView: 'auto',
       slidesPerColumn: 2,
-      spaceBetween: 15,
+      spaceBetween: 0,
       autoplay: {
             delay: 3000,
             disableOnInteraction: false,
@@ -958,10 +957,10 @@
       },
       breakpoints: {
         375: {
-          spaceBetween: 20,
+          spaceBetween: 0,
         },
         640: {
-          spaceBetween: 20,
+          spaceBetween: 0,
         },
       }
     });

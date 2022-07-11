@@ -133,9 +133,9 @@ class Order extends \app\controllers\FrontController
         // 회원정보 조회
         $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
 
-        // 결제완료 광고스크립트 데이터 생성 (경찰온라인/학원, 임용온라인/학원만)
+        // 결제완료 광고스크립트 데이터 생성 (경찰온라인/학원, 공무원온라인/학원, 임용온라인/학원만)
         $ad_data = [];
-        if (in_array($results['order']['SiteCode'], ['2001', '2002', '2017', '2018']) === true) {
+        if (in_array($results['order']['SiteCode'], ['2001', '2002', '2003', '2004', '2017', '2018']) === true) {
             // 주문정보
             $ad_data = [
                 'OrderNo' => $results['order']['OrderNo'],
@@ -151,9 +151,14 @@ class Order extends \app\controllers\FrontController
                 $ad_data['Adn'] = ['uid' => '102299'];                  // ADN Tracker
                 $ad_data['Enliple'] = ['uid' => 'willpolice'];          // Enliple Tracker
                 $ad_data['Kakao'] = ['uid' => '2420477028898879027'];    // kakaoPixel
+            } elseif (in_array($results['order']['SiteCode'], ['2003', '2004']) === true) {
+                // 공무원
+                $ad_data['Gtag'] = ['uid' => 'AW-966587654', 'send_to' => 'AW-966587654/0gheCN3i2WQQhurzzAM'];  // 구글 애널리틱스
+                $ad_data['Kakao2'] = ['uid' => '8760977232968567433', 'purc_text' => '공무원 구매완료'];    // kakaoPixel
+                $ad_data['Naver'] = ['uid' => 's_1511b04be813', 'cnv_type' => '1'];     // Naver
             } else {
                 // 임용
-                $ad_data['Gtag'] = ['uid' => 'AW-966587654', 'send_to' => 'AW-966587654/1p9iCMavgowDEIbq88wD'];  // 구글 애널리틱스
+                //$ad_data['Gtag'] = ['uid' => 'AW-966587654', 'send_to' => 'AW-966587654/1p9iCMavgowDEIbq88wD'];  // 구글 애널리틱스
                 $ad_data['Enliple2'] = ['uid' => 'ssam', 'device' => ($this->_is_mobile === true ? 'M' : 'W')];   // Enliple Tracker v2
             }
 

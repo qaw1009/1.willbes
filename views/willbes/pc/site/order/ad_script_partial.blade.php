@@ -77,5 +77,22 @@
         </script>
         <!--// Kakao 구매완료 end -->
     @endif
+    @if(empty($ad_data['Kakao2']) === false)
+        <!-- Kakao 구매완료 start -->
+        <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/kas/static/kp.js"></script>
+        <script type="text/javascript">
+            kakaoPixel('{{ $ad_data['Kakao2']['uid'] }}').purchase('{{ $ad_data['Kakao2']['purc_text'] }}');
+        </script>
+        <!--// Kakao 구매완료 end -->
+    @endif
+    @if(empty($ad_data['Naver']) === false)
+        <!-- Naver 구매완료 start -->
+        <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+        <script type="text/javascript">
+            var _nasa = {};
+            if(window.wcs) _nasa['cnv'] = wcs.cnv('{{ $ad_data['Naver']['cnv_type'] }}', '{{ $ad_data['tRealPayPrice'] }}');
+        </script>
+        <!--// Naver 구매완료 end -->
+    @endif
     <!--// AD script end -->
 @endif

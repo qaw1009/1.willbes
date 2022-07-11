@@ -54,7 +54,7 @@
 .gosi-gate-Sec .MaintabControl div.swiper-btn-prev {background: url("https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAL.png") no-repeat center center}
 
 .gosi-gate-Sec .MaintabList {background:#fff; padding-top:30px}
-.gosi-gate-Sec .MaintabWrap {max-width:1120px; position: relative;}
+.gosi-gate-Sec .MaintabWrap {max-width:1080px; margin:0 auto; position: relative;}
 .gosi-gate-Sec .Maintab {display:flex;}
 .gosi-gate-Sec .Maintab li {
     font-size: 16px; 
@@ -346,14 +346,7 @@ height: calc(2.4em); /* line-height 가 1.2em 이고 3라인을 자르기 때문
                         </a>
                     </li>
                 </ul> 
-            </div> 
-            {{--
-            <div class="MaintabControl">
-                <div class="swiper-btn-prev"></div>
-                <div class="swiper-pagination-gate"></div>                
-                <div class="swiper-btn-next"></div>                    
-            </div> 
-            --}}                   
+            </div>                  
         </div>   
 
         <div class="MaintabList">
@@ -361,31 +354,31 @@ height: calc(2.4em); /* line-height 가 1.2em 이고 3라인을 자르기 때문
                 <div class="MaintabWrap">
                     <ul class="Maintab">
                         <li><a data-swiper-slide-index="0" href="javascript:void(0);" class="active">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">
                             9급<br>pass</a></li>
                         <li><a data-swiper-slide-index="1" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">
                             7급<br>pass</a></li>
                         <li><a data-swiper-slide-index="2" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">    
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">    
                         세무직<br>pass</a></li>
                         <li><a data-swiper-slide-index="3" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">    
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">    
                         법원직<br>pass</a></li>
                         <li><a data-swiper-slide-index="4" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">    
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">    
                         농업직<br>pass</a></li>
                         <li><a data-swiper-slide-index="5" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">    
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">    
                         통신/전기<br>pass</a></li>
                         <li><a data-swiper-slide-index="6" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">    
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">    
                         전산직<br>pass</a></li>
                         <li><a data-swiper-slide-index="7" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">    
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">    
                         환경직<br>pass</a></li>
                         <li><a data-swiper-slide-index="8" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">    
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">    
                         산림자원직<br>pass</a></li>
                     </ul>
                 </div>                

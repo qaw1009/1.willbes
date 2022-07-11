@@ -107,6 +107,14 @@
         _nasa["cnv"] = wcs.cnv("2","10");
     </script>
 
+    @if(sess_data('mem_interest') == '718002')
+        <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/kas/static/kp.js"></script>
+        <script type="text/javascript">
+            kakaoPixel('8760977232968567433').pageView();
+            kakaoPixel('8760977232968567433').completeRegistration('회원가입');
+        </script>
+    @endif
+
     @if(sess_data('mem_interest') == '718001')
         {{-- 회원가입 경찰일때만   W.A 실장 윤지훈 요청 20210309 --}}
         <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>

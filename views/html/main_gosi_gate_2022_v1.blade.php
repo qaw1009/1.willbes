@@ -100,7 +100,7 @@
 .gosi-bnfull02 a {display:block; position:absolute; width:2000px !important; height:220px; top:0; left:50%; margin-left:-1000px; z-index: 2;}
 
 
-.gosi-gate-v3 .tpassWrap {margin-top:100px; }
+.gosi-gate-v3 .tpassWrap {margin-top:100px; background:#f4f7fe; padding:100px 0}
 .gosi-gate-v3 .tpassWrap .slider {width:100%; height:275px; overflow:hidden;}
 .gosi-gate-v3 .tpassWrap .slider > div {width:100%; display:flex !important; flex-wrap:wrap; justify-content:space-between;}        
 .gosi-gate-v3 .tpassWrap .slider a {display:inline-block; margin-bottom:30px !important; width:550px}
@@ -159,7 +159,7 @@
 
 
 
-.gosi-gate-v3 .castWrap {margin-top:100px; background:#21262c; padding:100px 0; color:#fff}
+.gosi-gate-v3 .castWrap {background:#21262c; padding:100px 0; color:#fff}
 .gosi-gate-v3 .castWrap .will-nTit {color:#fff}
 .gosi-gate-v3 .castWrap .will-nTit span {color:#d44a45}
 .gosi-gate-v3 .castBox {position:relative; margin-top:30px}   
@@ -294,55 +294,55 @@ height: calc(2.4em); /* line-height 가 1.2em 이고 3라인을 자르기 때문
                     <li class="swiper-slide">
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_01.jpg" alt="배너명">
-                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_01_s.jpg" alt="배너명"></span>
+                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_01_s.jpg" alt="배너명"></span>--}}
                         </a>
                     </li>
                     <li class="swiper-slide">
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_02.jpg" alt="배너명">
-                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_02_s.jpg" alt="배너명"></span>
+                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_02_s.jpg" alt="배너명"></span>--}}
                         </a>
                     </li>
                     <li class="swiper-slide">
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_03.jpg" alt="배너명">
-                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_03_s.jpg" alt="배너명"></span>
+                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_03_s.jpg" alt="배너명"></span>--}}
                         </a>
                     </li>
                     <li class="swiper-slide">
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_01.jpg" alt="배너명">
-                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_02_s.jpg" alt="배너명"></span>
+                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_02_s.jpg" alt="배너명"></span>--}}
                         </a>
                     </li>
                     <li class="swiper-slide">
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_02.jpg" alt="배너명">
-                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_03_s.jpg" alt="배너명"></span>
+                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_03_s.jpg" alt="배너명"></span>--}}
                         </a>
                     </li>
                     <li class="swiper-slide">
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_03.jpg" alt="배너명">
-                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_01_s.jpg" alt="배너명"></span>
+                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_01_s.jpg" alt="배너명"></span>--}}
                         </a>
                     </li>
                     <li class="swiper-slide">
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_01.jpg" alt="배너명">
-                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_02_s.jpg" alt="배너명"></span>
+                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_02_s.jpg" alt="배너명"></span>--}}
                         </a>
                     </li>
                     <li class="swiper-slide">
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_02.jpg" alt="배너명">
-                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_03_s.jpg" alt="배너명"></span>
+                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_03_s.jpg" alt="배너명"></span>--}}
                         </a>
                     </li>
                     <li class="swiper-slide">
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_03.jpg" alt="배너명">
-                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_01_s.jpg" alt="배너명"></span>
+                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_01_s.jpg" alt="배너명"></span>--}}
                         </a>
                     </li>
                 </ul> 

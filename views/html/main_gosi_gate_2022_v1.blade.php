@@ -37,7 +37,7 @@
 
 
 .gate-bntop-Slider .swiper-slide span {position:absolute; top:40px; left:50%; margin-left:65px; width:350px; height:350px; overflow: hidden;}
-.gate-bntop-Slider .swiper-slide span img {animation: zoom-out 1s linear backwards;}
+.gate-bntop-Slider .swiper-slide.swiper-slide-active span img {animation: zoom-out 1s linear backwards;}
 @@keyframes zoom-out {
   0% {
     transform: scale(1.125);

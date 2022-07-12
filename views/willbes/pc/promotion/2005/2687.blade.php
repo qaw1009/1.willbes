@@ -67,7 +67,8 @@
     .graph li div i {display:none;}
     .graph li p {font-size:14px;}   
 
-    .eventPopS3 {padding:20px;}
+    /*.eventPopS3 {padding:20px;}*/
+    .eventPopS3 {padding:20px 20px 0px 20px;}
     .eventPopS3 p {font-weight:bold; margin-bottom:10px}
     .eventPopS3 ul {border:1px solid #adadad; padding:10px 4px;text-align:left;line-height:1.5;}
     .eventPopS3 ul {width:720px;margin:0 auto;}
@@ -85,7 +86,7 @@
     .markSbtn3 {display:inline;float:left;width:50%;}
     .recheck_area {margin:50px;}
 
-    #grading_result {width:720px;margin:0 auto;}
+    .grading_result {width:720px;margin:0 auto;}
 
     .marking {margin:10px; padding:10px; border:1px dashed #e4e4e4}
     .marking h5 {font-size:17px; margin-bottom:10px;text-align:left;font-weight:bold;}
@@ -120,7 +121,8 @@
     <!-- Container -->
 
     <div class="evtContent NSK" id="evtContainer">
-
+        <input type="hidden" id="_exam_type" name="_exam_type" value="N">
+        <input type="hidden" id="_pr_id" name="_pr_id">
         <div class="evtCtnsBox evt_top" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2687_top.jpg" alt="psat 합격을 예측하다">
         </div>
@@ -134,24 +136,15 @@
 				<li><a href="#tab01">메인</a></li>
 				<li><a href="#tab02">기본정보 및 답안입력</a></li>
 				<li><a href="#tab03">성적확인 및 분석</a></li>
-				<li><a href="#tab04">합격예측</a></li>			
+				<li><a href="#tab04">합격예측</a></li>
 			</ul>
-            
-			<div id="tab01">
-                추후 디자인             
+            <div class="main_content" id="tab01">
+                추후 디자인
             </div>
 
-            <div id="tab02">
-                @include('willbes.pc.predict.predict_tab2')
-            </div>
-
-            <div id="tab03">
-                @include('willbes.pc.predict.predict_tab3')
-            </div>
-
-            <div id="tab04">
-                @include('willbes.pc.predict.predict_tab4')
-            </div>
+            <div class="main_content" id="tab02"></div>
+            <div class="main_content" id="tab03"></div>
+            <div class="main_content" id="tab04"></div>
         </div>
 
     </div>
@@ -159,91 +152,57 @@
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        $(document).ready(function() {
-            AOS.init();
-        });
-    </script>
+    <!-- googlechart -->
+    {{--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>--}}
+
+    <script src="/public/vendor/Nwagon/Nwagon.js"></script>
+    <link rel="stylesheet" href="/public/vendor/Nwagon/Nwagon.css">
 
     <script type="text/javascript">
         $(document).ready(function(){
-            loginAlert();   {{-- 비로그인시 로그인 메세지 --}}
-        });
-
-        {{-- 초기 로그인 얼럿 --}}
-        function loginAlert() {
-            {!! login_check_inner_script('로그인 후 이벤트에 참여해주세요.','Y') !!}
-        }
-
-        /*상단 tab*/
-        $(document).ready(function(){
+            AOS.init();
+            /*상단 tab*/
             $('.tabs').each(function(){
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
                 $active.addClass('active');
-            
                 $content = $($active[0].hash);
-            
                 $links.not($active).each(function () {
                 $(this.hash).hide()});
             
                 // Bind the click event handler
                 $(this).on('click', 'a', function(e){
-                $active.removeClass('active');
-                $content.hide();
-            
-                $active = $(this);
-                $content = $(this.hash);
-            
-                $active.addClass('active');
-                $content.show();
-            
-                e.preventDefault()})})}
-        );
+                    if ($(this).attr('href') == '#tab03' || $(this).attr('href') == '#tab04') {
+                        if ($("#_pr_id").val() == '') {
+                            alert('기본정보 및 답안입력 후 확인 가능합니다.');
+                            return false;
+                        }
 
-        /*하단 tab*/
-            $(document).ready(function(){
-                $('.markTab').each(function(){
-                    var $active, $content, $links = $(this).find('a');
-                    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                        if ($("#_exam_type").val() != 'Y') {
+                            alert('답안채점 후 확인 가능합니다.');
+                            return false;
+                        }
+                    }
+
+                    $links.removeClass('active');
+                    $('.main_content').hide();
+                    $active = $(this);
+                    $content = $(this.hash);
                     $active.addClass('active');
-                    $content = $($active[0].hash);
-                    $links.not($active).each(function () {
-                        $(this.hash).hide()
-                    });
-
-                    // Bind the click event handler
-                    $(this).on('click', 'a', function(e){
-                        $active.removeClass('active');
-                        $content.hide();
-                        $active = $(this);
-                        $content = $(this.hash);
-                        $active.addClass('active');
-                        $content.show();
-                        e.preventDefault();
-                    });
-                });
-
-                $('.markTab2').each(function(){
-                    var $active, $content, $links = $(this).find('a');
-                    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                    $active.addClass('active');
-                    $content = $($active[0].hash);
-                    $links.not($active).each(function(){
-                        $(this.hash).hide()
-                    });
-
-                    // Bind the click event handler
-                    $(this).on('click', 'a', function(e){
-                        $active.removeClass('active');
-                        $content.hide();
-                        $active = $(this);
-                        $content = $(this.hash);
-                        $active.addClass('active');
-                        $content.show();
-                        e.preventDefault();
-                    });
+                    $content.show();
+                    e.preventDefault();
                 });
             });
+            ajaxHtml2('{{$arr_promotion_params['PredictIdx']}}');
+        });
+
+        function ajaxHtml2(predict_idx) {
+            var data = {
+                'predict_idx' : predict_idx
+            };
+            sendAjax('{{front_url('/fullService/ajaxHtml2')}}', data, function(d) {
+                $("#tab02").html(d);
+            }, showAlertError, false, 'GET', 'html', false);
+        }
     </script>
 @stop

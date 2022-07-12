@@ -256,6 +256,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property Predict2Model $predict2Model                                    Predict2 Model Class
  * @property CountManageModel $countManageModel                   CountManage  Model Class
  * @property SurveyModel $surveyModel                                      Survey Model Class
+ * @property FullServiceFModel $fullServiceFModel                          FullService Model Class
  ***************** FRONT *******************************************************************************
  * @property BaseProductFModel $baseProductFModel                            Product Base Model Class
  * @property ProfessorFModel $professorFModel                                    Professor Model Class

@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">응시번호 중복체크 사용여부<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="TakeNumRedundancyCheckIsUse">응시번호 중복체크 사용여부<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
                         <div class="radio mt-5">
                             <input type="radio" name="TakeNumRedundancyCheckIsUse" class="flat" value="Y" @if($method == 'PUT' && $data['TakeNumRedundancyCheckIsUse'] == 'Y') checked="checked" @endif> <span class="flat-text mr-20">사용</span>
@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">서비스기간<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="PreServiceIsUse">서비스기간<span class="required">*</span></label>
                     <div class="col-md-10 form-inline">
                         <div class="col-md-12 form-inline">
                             사전예약 :
@@ -242,14 +242,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">해설강의 여부<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="ExplainLectureIsUse">해설강의 여부<span class="required">*</span></label>
                     <div class="col-md-4 form-inline">
                         <div class="radio mt-5">
                             <input type="radio" name="ExplainLectureIsUse" class="flat" value="Y" @if($method == 'PUT' && $data['ExplainLectureIsUse'] == 'Y') checked="checked" @endif> <span class="flat-text mr-20">사용</span>
                             <input type="radio" name="ExplainLectureIsUse" class="flat" value="N" @if($method == 'PUT' && $data['ExplainLectureIsUse'] == 'N') checked="checked" @endif> <span class="flat-text">미사용</span>
                         </div>
                     </div>
-                    <label class="control-label col-md-1-1" for="">설문</label>
+                    <label class="control-label col-md-1-1" for="SpIdx">설문</label>
                     <div class="col-md-4 form-inline">
                         <select name="SpIdx" class="form-control">
                             <option value="">선택</option>
@@ -261,18 +261,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">필기합격자수</label>
+                    <label class="control-label col-md-1-1" for="SuccessfulCount">필기합격자수</label>
                     <div class="col-md-4 form-inline">
                         <input type="text" class="form-control" name="SuccessfulCount" value="@if($method == 'PUT'){{ $data['SuccessfulCount'] }}@endif" style="width:50px;">
                     </div>
-                    <label class="control-label col-md-1-1" for="">인증코드</label>
+                    <label class="control-label col-md-1-1" for="CertIdxArr">인증코드</label>
                     <div class="col-md-4 form-inline">
                         <input type="text" class="form-control" name="CertIdxArr" value="@if($method == 'PUT'){{ $data['CertIdxArr'] }}@endif" style="width:150px;">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">사용여부<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="IsUse">사용여부<span class="required">*</span></label>
                     <div class="col-md-4 form-inline">
                         <div class="radio mt-5">
                             <input type="radio" name="IsUse" class="flat" value="Y" @if($method == 'PUT' && $data['IsUse'] == 'Y') checked="checked" @endif> <span class="flat-text mr-20">사용</span>
@@ -282,7 +282,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">자동지급강좌 설정</label>
+                    <label class="control-label col-md-1-1" for="product">자동지급강좌 설정</label>
                     <div class="col-md-10 form-inline">
                         <div class="col-md-12 form-inline">
                             <span class="form-control-static"># 지급정보 1부터 3까지 지급기간의 날짜는 중복되지 않도록 입력해 주세요.</span>

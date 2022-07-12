@@ -51,8 +51,7 @@
                 $(document).ready(function() {
                     $datatable_modal = $_list_table.DataTable({
                         ajax: false,
-                        paging: true,
-                        pageLength: 20,
+                        paging: false,
                         lengthChange: false,
                         searching: true,
                         rowsGroup: ['.rowspan'],

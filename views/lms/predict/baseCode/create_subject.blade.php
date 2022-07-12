@@ -48,8 +48,7 @@
                 $_sub_datatable = $_sub_list_table.DataTable({
                     serverSide: false,
                     ajax : false,
-                    paging: true,
-                    pageLength: 50,
+                    paging: false,
                     searching: true,
                     rowsGroup: ['.rowspan'],
                     buttons: []

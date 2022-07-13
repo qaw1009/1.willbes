@@ -26,6 +26,9 @@ class BaseFullService extends \app\controllers\FrontController
     {
         $arr_base = [];
         $arr_base['method'] = 'POST';
+        if (empty((int)$this->_reqG('predict_idx')) === true) {
+            show_alert('합격예측코드가 없습니다.','back');
+        }
 
         $arr_condition = ['EQ' => ['PredictIdx' => element('predict_idx',$this->_reqG(null)),'IsUse' => 'Y']];
         $predict_data = $this->fullServiceFModel->findPredictData($arr_condition);

@@ -56,7 +56,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">          
             <a href="#lecbuy01"><img src="https://static.willbes.net/public/images/promotion/2022/02/2378_sky01.jpg" alt="축산직 티패스" /></a>    
-            <a href="#lecbuy02"><img src="https://static.willbes.net/public/images/promotion/2022/02/2378_sky02.jpg" alt="축산직 패키지" /></a> 
+            {{--<a href="#lecbuy02"><img src="https://static.willbes.net/public/images/promotion/2022/02/2378_sky02.jpg" alt="축산직 패키지" /></a>--}}
             <a href="#lecbuy03"><img src="https://static.willbes.net/public/images/promotion/2022/02/2378_sky03.jpg" alt="축산직 단과" /></a>        
         </div>
 
@@ -75,7 +75,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2378_02.jpg" alt="q&a"/>        
         </div>    
 
-        <div class="evtCtnsBox wb_cts03" data-aos="fade-up" id="lecbuy01">
+        <div class="evtCtnsBox wb_cts03 pb50" data-aos="fade-up" id="lecbuy01">
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2378_03_01.jpg" alt="" />  
             <div class="wrap">
                 <a href="javascript:go_PassLecture('195584');" title="티패스">
@@ -88,12 +88,14 @@
                     페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#info" class="infotxt">이용안내확인하기 ↓</a>
-            </div>  
+            </div>
+            {{--
             <div class="wrap" id="lecbuy02">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2378_03_03.jpg" alt="패키지" />   
                 <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/186238" title="이론패키지" target="_blank" style="position: absolute; left: 16.52%; top: 62.79%; width: 27.32%; height: 8.99%; z-index: 2;"></a> 
                 <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/187659" title="기출문제패키지" target="_blank" style="position: absolute; left: 55.63%; top: 62.79%; width: 27.32%; height: 8.99%; z-index: 2;"></a>
             </div>
+            --}}
         </div>  
         
         <div class="evtCtnsBox wb_cts04" data-aos="fade-up" id="lecbuy03">

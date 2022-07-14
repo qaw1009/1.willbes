@@ -101,14 +101,18 @@ class Gradeprocessing extends \app\controllers\BaseController
      */
     public function scoreMakeStep1Ajax()
     {
-        $formData = $this->_reqP(null, false);
-        $PredictIdx = element('PredictIdx', $formData);
-        $TakeMockPart = element('TakeMockPart', $formData);
+        $rules = [
+            ['field' => 'PredictIdx', 'label' => '합격예측코드', 'rules' => 'trim|required|integer']
+        ];
 
-        $result = $this->predictModel->scoreMakeStep1($PredictIdx,'web',$TakeMockPart);
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->predictModel->scoreMakeStep1($this->_reqP(null));
         $this->json_result($result, '저장되었습니다.', $result, $result);
     }
-
+    
     /**
      * 조정점수입력
      * @return object|string

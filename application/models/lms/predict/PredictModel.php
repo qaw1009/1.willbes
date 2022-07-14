@@ -1928,7 +1928,9 @@ class PredictModel extends WB_Model
                 (
                     SELECT pa.PrIdx, pa.PpIdx, pa.PqIdx, IF(pa.Answer = pq.RightAnswer,'Y','N') AS targetIsWrong
                     FROM lms_predict_answerpaper AS pa
-                    INNER JOIN lms_predict_questions AS pq ON pa.PqIdx = pq.PqIdx
+                    INNER JOIN lms_predict_paper AS pp ON pa.PredictIdx = pp.PredictIdx AND pa.PpIdx = pp.PpIdx AND pp.IsStatus = 'Y' AND pp.IsUse = 'Y'
+                    INNER JOIN lms_predict_register_r_code AS rc ON pa.PredictIdx = rc.PredictIdx AND pa.PrIdx = rc.PrIdx AND pp.SubjectCode = rc.SubjectCode
+                    INNER JOIN lms_predict_questions AS pq ON pa.PqIdx = pq.PqIdx AND rc.QuestionType = pq.QuestionType
                     WHERE pa.PredictIdx = ?
                 ) AS b
                 SET a.IsWrong = b.targetIsWrong
@@ -1950,128 +1952,79 @@ class PredictModel extends WB_Model
 
     /**
      * 원점수입력
-     * @param $predict_idx
-     * @param $mode
-     * @param $take_mock_part
+     * @param array $form_data
      * @return array|bool
      */
-    public function scoreMakeStep1($PredictIdx, $mode, $TakeMockPart)
+    public function scoreMakeStep1($form_data = [])
     {
+        $this->_conn->trans_begin();
         try {
-            $this->_conn->trans_begin();
+            $predict_idx = element('PredictIdx', $form_data);
+            $take_mock_part = element('TakeMockPart', $form_data);
 
-            if(empty($PredictIdx) == true){
-                throw new \Exception('합격예측상품 미등록 상태입니다.');
-            }
-
-            // 데이터 입력
-            if ($mode == 'web') {
-                $data = [
-                    'MemId' => (empty($this->session->userdata('admin_id')) === true ? 'systemcron' : $this->session->userdata('admin_id')),
-                    'Step' => '1',
-                    'PredictIdx' => $PredictIdx
-                ];
-            } else {
-                $data = [
-                    'MemId' => 'systemcron',
-                    'Step' => '1',
-                    'PredictIdx' => $PredictIdx
-                ];
-            }
-
+            $data = [
+                'MemId' => $this->session->userdata('admin_id'),
+                'Step' => '1',
+                'PredictIdx' => $predict_idx
+            ];
             $is_insert = $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictGradesLog']);
             if ($is_insert === false) {
                 throw new \Exception('로그생성실패.');
             }
 
-            $addQuery = "";
-            if(empty($TakeMockPart) == false){
-                $addQuery = " AND pr.TakeMockPart = ".$TakeMockPart;
-            }
+            $arr_condition = [
+                'EQ' => [
+                    'a.PredictIdx' => $predict_idx
+                    ,'a.TakeMockPart' => $take_mock_part
+                ]
+            ];
 
-            //시험코드
             $column = "
-            pr.TakeMockPart, pr.TakeArea, pg.PpIdx, pp.Type
-        ";
-
+                a.MemIdx, a.PrIdx, a.PredictIdx, d.PpIdx
+                ,a.TakeMockPart, a.TakeArea
+                ,SUM(IF(FIND_IN_SET(d.Answer, e.RightAnswer) > 0, e.Scoring, '0')) AS OrgPoint
+            ";
             $from = "
-            FROM
-                
-                {$this->_table['predictAnswerPaper']} AS pg
-                JOIN {$this->_table['predictRegister']} AS pr ON pg.PrIdx = pr.PrIdx
-                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
-        ";
-
-            $order_by = " GROUP BY PpIdx ORDER BY pg.PpIdx";
-            $where = " WHERE pg.PredictIdx = " . $PredictIdx . $addQuery;
-            //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
-            $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-            $result = $query->result_array();
-
-            foreach($result AS $key => $val){
-                $PpIdx = $val['PpIdx'];
-                // 응시자 개별과목 / 점수
-                $column = "
-                MQ.PqIdx,
-                MP.PpIdx,
-                AnswerNum, 
-                Scoring,
-                QuestionNO, 
-                MA.MemIdx,
-                MA.Answer,
-                MA.IsWrong,
-                MA.PrIdx,
-                MA.PredictIdx,
-                MR.TakeMockPart,
-                MR.TakeArea,
-                #SUM(IF(MA.IsWrong = 'Y', Scoring, '0')) AS OrgPoint
-                SUM(IF(FIND_IN_SET(MA.Answer, MQ.RightAnswer) > 0, Scoring, '0')) AS OrgPoint
+                FROM lms_predict_register AS a
+                INNER JOIN lms_predict_register_r_code AS b ON a.PrIdx = b.PrIdx
+                INNER JOIN lms_predict_paper AS c ON b.SubjectCode = c.SubjectCode AND c.IsStatus = 'Y' AND c.IsUse = 'Y'
+                INNER JOIN lms_predict_answerpaper AS d ON a.PredictIdx = d.PredictIdx AND a.PrIdx = d.PrIdx AND c.PpIdx = d.PpIdx
+                INNER JOIN lms_predict_questions AS e ON d.PpIdx = e.PpIdx AND d.PqIdx = e.PqIdx AND b.QuestionType = e.QuestionType
             ";
 
-                $from = "
-                FROM
-                    {$this->_table['predictPaper']} AS MP
-                    JOIN {$this->_table['predictQuestion']} AS MQ ON MQ.PpIdx = MP.PpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y'
-                    LEFT OUTER JOIN {$this->_table['predictAnswerPaper']} AS MA ON MQ.PqIdx = MA.PqIdx AND MA.PpIdx = " . $PpIdx . "
-                    JOIN {$this->_table['predictRegister']} AS MR ON MR.PrIdx = MA.PrIdx AND MR.IsStatus = 'Y' 
-            ";
+            $where = $this->_conn->makeWhere($arr_condition);
+            $where = $where->getMakeWhere(false);
 
-                $order_by = " GROUP BY PrIdx  ORDER BY OrgPoint DESC";
-                $where = " WHERE MP.PpIdx = " . $PpIdx;
-                $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-                $result = $query->result_array();
-                foreach ($result AS $key => $val) {
-                    if(empty($TakeMockPart) == false) {
-                        $where = ['PrIdx' => $val['PrIdx'], 'PpIdx' => $val['PpIdx'], 'PredictIdx' => $val['PredictIdx'], 'TakeMockPart' => $TakeMockPart];
-                    } else {
-                        $where = ['PrIdx' => $val['PrIdx'], 'PpIdx' => $val['PpIdx'], 'PredictIdx' => $val['PredictIdx']];
-                    }
-                    try {
-                        if($this->_conn->delete($this->_table['predictGradesOrigin'], $where) === false){
-                            throw new \Exception('삭제에 실패했습니다.');
-                        }
-                    } catch (\Exception $e) {
-                        return error_result($e);
-                    }
+            $group_by = " GROUP BY a.PrIdx, d.PpIdx ";
+            $order_by = $this->_conn->makeOrderBy(['a.PrIdx' => 'ASC', 'd.PpIdx' => 'ASC'])->getMakeOrderBy();
 
-                    $orgPoint = $val['OrgPoint'];
-                    // 데이터 입력
-                    $data = [
-                        'MemIdx' => $val['MemIdx'],
-                        'PrIdx' => $val['PrIdx'],
-                        'PredictIdx' => $val['PredictIdx'],
-                        'PpIdx' => $val['PpIdx'],
-                        'OrgPoint' => $orgPoint,
-                        'TakeMockPart' => $val['TakeMockPart'],
-                        'TakeArea' => $val['TakeArea']
+            $target_data = $this->_conn->query('select ' . $column . $from . $where . $group_by . $order_by)->result_array();
+            $del_data = [];
+            $ins_data = [];
+
+            if (empty($target_data) === false) {
+                foreach ($target_data as $row) {
+                    $del_data[$row['PrIdx']] = $row['PrIdx'];
+                    $ins_data[] = [
+                        'MemIdx' => $row['MemIdx'],
+                        'PrIdx' => $row['PrIdx'],
+                        'PredictIdx' => $row['PredictIdx'],
+                        'PpIdx' => $row['PpIdx'],
+                        'OrgPoint' => $row['OrgPoint'],
+                        'TakeMockPart' => $row['TakeMockPart'],
+                        'TakeArea' => $row['TakeArea']
                     ];
-
-                    if ($this->_conn->set($data)->insert($this->_table['predictGradesOrigin']) === false) {
-                        throw new \Exception('시험데이터가 없습니다.');
-                    }
-
                 }
 
+                $this->_conn->where('PredictIdx', $predict_idx);
+                $this->_conn->where_in('PrIdx', $del_data);
+                if ($this->_conn->delete($this->_table['predictGradesOrigin']) === false) {
+                    throw new \Exception('삭제에 실패했습니다.');
+                }
+
+                if ($this->_conn->insert_batch($this->_table['predictGradesOrigin'], $ins_data) === false) {
+                    throw new \Exception('원점수 저장 실패입니다.');
+                }
             }
 
             $this->_conn->trans_commit();

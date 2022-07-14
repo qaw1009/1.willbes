@@ -156,6 +156,7 @@ class Order extends \app\controllers\FrontController
                 $ad_data['Gtag'] = ['uid' => 'AW-966587654', 'send_to' => 'AW-966587654/0gheCN3i2WQQhurzzAM'];  // 구글 애널리틱스
                 $ad_data['Kakao2'] = ['uid' => '8760977232968567433', 'purc_text' => '공무원 구매완료'];    // kakaoPixel
                 $ad_data['Naver'] = ['uid' => 's_1511b04be813', 'cnv_type' => '1'];     // Naver
+                $ad_data['Facebook'] = ['uid' => '757464248917693'];     // Facebook
             } else {
                 // 임용
                 //$ad_data['Gtag'] = ['uid' => 'AW-966587654', 'send_to' => 'AW-966587654/1p9iCMavgowDEIbq88wD'];  // 구글 애널리틱스

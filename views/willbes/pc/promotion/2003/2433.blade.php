@@ -73,7 +73,7 @@
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <div class="wrap">       
                 <img src="https://static.willbes.net/public/images/promotion/2022/07/2433_top.jpg" alt="오대혁 국어"/>
-                <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50157?subject_idx=1107" title="교수님홈 바로가기" target="_blank" style="position: absolute;left: 30.25%;top: 72.99%;width: 17.3%;height: 5.25%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50157?subject_idx=1107" title="교수님홈 바로가기" target="_blank" style="position: absolute; left: 32.77%; top: 73.84%; width: 16.07%; height: 5.55%; z-index: 2;"></a>
             </div>       
         </div>
 

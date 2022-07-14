@@ -180,21 +180,21 @@
                 <p>한덕현 영어만의 매력을 직접 확인해보세요.</p>
             </div> 
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/esMJC6D0mjE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/esMJC6D0mjE?rel=0 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="youtube01">
                 <div>
-                    <iframe src="https://www.youtube.com/embed/PBEk2L0lE5g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/PBEk2L0lE5g?rel=0 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <p>1강 8품사</p>
                 </div>
 
                 <div>
-                    <iframe src="https://www.youtube.com/embed/SH403mAeTBQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/SH403mAeTBQ?rel=0 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <p>2강 단어의 형태가 변화될 수 있는 품사</p>
                 </div>
 
                 <div>
-                    <iframe src="https://www.youtube.com/embed/fxmHKFgJc_4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/fxmHKFgJc_4?rel=0 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <p>3강 분사로 변형이 있는 동사</p>
                 </div>
             </div>

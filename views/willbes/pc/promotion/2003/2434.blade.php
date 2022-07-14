@@ -29,6 +29,15 @@
 
         .evt_02 {background:#c9c92d}
 
+        .wb_cts06 {padding-top:120px; background:#fff}
+        .wb_cts06 .title {font-size:34px; line-height:1.4; margin-bottom:20px;color:#525252;}
+        .wb_cts06 .title p {color:#93930e; font-weight:bold}                
+        .youtube,
+        .youtube01 {width:939px; margin:0 auto;}
+        .youtube iframe {width:939px; height:454px}
+        .youtube01 {display:flex; margin-top:20px; justify-content: space-between; font-size:16px}
+        .youtube01 p {margin-top:10px}
+
         .evt_03 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2434_03_bg.jpg) no-repeat center top;}
         
         .evt_04 {background:#f3f3f3; padding-bottom:50px}
@@ -81,8 +90,34 @@
         </div>
         
         <div class="evtCtnsBox evt_02" data-aos="fade-up">      
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2434_02.jpg" alt="무료수강 찬스" />
-        </div> 
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2434_02.jpg" alt="무료수강 찬스" />
+        </div>
+
+        <div class="evtCtnsBox wb_cts06" data-aos="fade-up">
+            <div class="title">
+                쉽고 재미있는 한국사, 김상범 통쾌한국사로
+                <p>속이 뻥 뚫리는 한국사를 경험해보세요!</p>
+            </div> 
+            <div class="youtube">
+                <iframe src="https://www.youtube.com/embed/61ifRZrU_eI?rel=0 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="youtube01">
+                <div>
+                    <iframe src="https://www.youtube.com/embed/EvjlIlJK7Aw?rel=0 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>1강 선사시대</p>
+                </div>
+
+                <div>
+                    <iframe src="https://www.youtube.com/embed/9t-dCTz1YEE?rel=0 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>2강 청동기&철기시대</p>
+                </div>
+
+                <div>
+                    <iframe src="https://www.youtube.com/embed/RuEMDM7XkwE?rel=0 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>3강 분사로 변형이 있는 동사</p>
+                </div>
+            </div>
+        </div>
 
         <div class="evtCtnsBox evt_03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2434_03.jpg" alt="선행과정"/>            

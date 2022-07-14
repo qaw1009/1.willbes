@@ -22,11 +22,20 @@
         .sky {position:fixed; top:200px; width:131px; text-align:center; right:10px; z-index:10;}
         .sky a {display:block; margin-bottom:10px}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/02/2433_top_bg.jpg) no-repeat center top; background-size:cover} 
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/07/2433_top_bg.jpg) no-repeat center top; background-size:cover} 
 
         .evt02 {background:#65778d}
 
         .evt04 {padding-bottom:100px; background:url(https://static.willbes.net/public/images/promotion/2022/02/2433_04_bg.jpg) repeat-x left top}
+
+        .evt05 {padding-bottom:120px;}
+
+        .youtube,
+        .youtube01 {width:939px; margin:0 auto;}
+        .youtube iframe {width:939px; height:454px}
+        .youtube01 {display:flex; margin-top:20px; justify-content: space-between; font-size:16px}
+        .youtube01 p {margin-top:10px}
+
         .check {color:#000; font-size:15px;font-weight:bold; width:1000px; margin:30px auto 0; text-align:center}
         .check label {cursor:pointer}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
@@ -63,7 +72,7 @@
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <div class="wrap">       
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/2433_top.jpg" alt="오대혁 국어"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/07/2433_top.jpg" alt="오대혁 국어"/>
                 <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50157?subject_idx=1107" title="교수님홈 바로가기" target="_blank" style="position: absolute;left: 30.25%;top: 72.99%;width: 17.3%;height: 5.25%;z-index: 2;"></a>
             </div>       
         </div>
@@ -72,12 +81,35 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2433_01.jpg" alt="망설이지 마세요"/>
         </div>
 
+        <div class="evtCtnsBox evt05" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2433_05.jpg" alt="망설이지 마세요"/>
+            <div class="youtube">
+                <iframe src="https://www.youtube.com/embed/r8sOeBFLW10?rel=0 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="youtube01">
+                <div>
+                    <iframe src="https://www.youtube.com/embed/BtTVsEYno14?rel=0 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>1강 언어와 국어의 특질</p>
+                </div>
+
+                <div>
+                    <iframe src="https://www.youtube.com/embed/PKL6CISZdA4?rel=0 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>2강 형태론</p>
+                </div>
+
+                <div>
+                    <iframe src="https://www.youtube.com/embed/jWkk1YaFSNI?rel=0 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>3강 음운론</p>
+                </div>
+            </div>
+        </div>
+
         <div class="evtCtnsBox evt02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2433_02.jpg" alt="정통 커리큘럼"/>
         </div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/11/2433_03.jpg" alt="후기"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2433_03.jpg" alt="후기"/>
         </div>
 
         <div class="evtCtnsBox evt04" data-aos="fade-up">

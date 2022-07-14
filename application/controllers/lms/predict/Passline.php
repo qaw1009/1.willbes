@@ -18,17 +18,6 @@ class Passline extends \app\controllers\BaseController
     public function __construct()
     {
         parent::__construct();
-
-        $this->applyType = $this->config->item('sysCode_applyType', 'mock');
-        $this->applyArea1 = $this->config->item('sysCode_applyArea1', 'mock');
-        $this->applyArea2 = $this->config->item('sysCode_applyArea2', 'mock');
-        $this->addPoint = $this->config->item('sysCode_addPoint', 'mock');
-        $this->applyType_on = $this->config->item('sysCode_applyType_on', 'mock');
-        $this->applyType_off = $this->config->item('sysCode_applyType_off', 'mock');
-        $this->acceptStatus = $this->config->item('sysCode_acceptStatus', 'mock');
-
-        // 공통코드 셋팅
-        //$this->_groupCcd = $this->regGoodsModel->_groupCcd;
     }
 
     /**
@@ -47,38 +36,17 @@ class Passline extends \app\controllers\BaseController
 
     public function listAjax()
     {
-        $s_type = $this->input->post('search_AcceptStatus');
-
-        if($s_type == 1){
-            $searchdate1 = '(PP.TakeStartDatm > "';
-            $searchdate2 = date('Y-m-d H:i:s') . '")';
-        } else if($s_type == 2) {
-            $searchdate1 = '(PP.TakeStartDatm < "';
-            $searchdate2 = date('Y-m-d H:i:s') . '" AND PP.TakeEndDatm > "' . date('Y-m-d H:i:s') . '")';
-        } else {
-            $searchdate1 = '1';
-            $searchdate2 = '1';
-        }
-
         $condition = [
             'EQ' => [
                 'PP.SiteCode' => $this->input->post('search_site_code'),
-                'PP.CateCode' => $this->input->post('search_cateD1'),
-                'PP.MockYear' => $this->input->post('search_year'),
-                'PP.MockRotationNo' => $this->input->post('search_round'),
-                'PP.IsUse' => $this->input->post('search_use'),
-            ],
-            'LKB' => [
-                'PP.MockPart' => $this->input->post('search_cateD2'),
-                'PP.TakeFormsCcd' => $this->input->post('search_TakeFormsCcd'),
+                'PP.IsUse' => $this->input->post('search_use')
             ],
             'ORG' => [
                 'LKB' => [
                     'PP.ProdName' => $this->input->post('search_fi', true),
                     'PP.PredictIdx' => $this->input->post('search_fi', true)
                 ]
-            ],
-            'RAW' => [ $searchdate1 => $searchdate2 ],
+            ]
         ];
         list($data, $count) = $this->predictModel->mainList($condition, $this->input->post('length'), $this->input->post('start'));
 

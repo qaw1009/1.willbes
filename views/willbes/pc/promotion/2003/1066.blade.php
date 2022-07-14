@@ -23,7 +23,7 @@
         .skybanner {position:fixed;top:100px;right:10px;width:259px; text-align:center; z-index:11;}   
         .skybanner a {display:block;margin-bottom:5px;}          
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/06/1066_top_bg.jpg) center top no-repeat}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/07/1066_top_bg.jpg) center top no-repeat}
         .wb_top .wrap a {position: absolute; left: 50%; bottom: 120px; width: 700px; margin-left:-350px; z-index: 2; display:block; color:#4106b6; background:#eaff00; border-radius:50px; font-size:30px; padding:20px; font-weight:bold; border:3px solid #5e28cf}
         .wb_top .wrap a:hover {color:#eaff00; background:#4106b6; border-color:#eaff00}
 
@@ -64,6 +64,15 @@
         .wb_cts05 table td a:hover {background:#ffede8}
         .wb_cts05 table td span {vertical-align:top; color:#e55425;}
 
+        .wb_cts06 {padding:120px 0; background:#fceae5}
+        .wb_cts06 .title {font-size:34px; line-height:1.4; margin-bottom:20px}
+        .wb_cts06 .title p {color:#f26522; font-weight:bold}
+
+        .youtube,
+        .youtube01 {width:939px; margin:0 auto;}
+        .youtube iframe {width:939px; height:454px}
+        .youtube01 {display:flex; margin-top:20px; justify-content: space-between; font-size:16px}
+        .youtube01 p {margin-top:10px}
 
         /*타이머*/
         .time {text-align:center; border-radius:20px; width:1000px !important; margin:0 auto;}
@@ -96,8 +105,8 @@
       
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/1066_top.jpg" title="제니스 영어 한덕현" />                
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank">2023 대비 한덕현 영어 T-PASS 구매하기 ></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/07/1066_top.jpg" title="제니스 영어 한덕현" />                
+                <a href="#cts05">지금 바로 신규 과정 확인하기 ></a>
             </div>
         </div>
 
@@ -165,12 +174,38 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/05/1066_05.jpg" alt="영어는 어려운 과목이 아닙니다." />   
         </div>
 
+        <div class="evtCtnsBox wb_cts06" data-aos="fade-up">
+            <div class="title">
+                합격한 수험생들이 후배 수험생들에게 추천하는
+                <p>한덕현 영어만의 매력을 직접 확인해보세요.</p>
+            </div> 
+            <div class="youtube">
+                <iframe src="https://www.youtube.com/embed/esMJC6D0mjE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="youtube01">
+                <div>
+                    <iframe src="https://www.youtube.com/embed/PBEk2L0lE5g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>1강 8품사</p>
+                </div>
+
+                <div>
+                    <iframe src="https://www.youtube.com/embed/SH403mAeTBQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>2강 단어의 형태가 변화될 수 있는 품사</p>
+                </div>
+
+                <div>
+                    <iframe src="https://www.youtube.com/embed/fxmHKFgJc_4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>3강 분사로 변형이 있는 동사</p>
+                </div>
+            </div>
+        </div>
+
         <div class="evtCtnsBox wb_cts05" id="cts05" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1066_06.jpg" alt="커리큘럼"/>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/1066_06_02.gif" alt=""/>
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2694" target="_blank" title="기초영어" style="position: absolute; left: 5.89%; top: 31.97%; width: 43.39%; height: 56.15%; z-index: 2;"></a>
-                <a href="#none" onclick="javascript:alert('7월 Coming Soon!');"  title="grammar" style="position: absolute; left: 50.45%; top: 31.97%; width: 43.39%; height: 56.15%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/169567" target="_blank" title="기초영어" style="position: absolute; left: 5.89%; top: 31.97%; width: 43.39%; height: 56.15%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/199288" target="_blank" title="grammar" style="position: absolute; left: 50.45%; top: 31.97%; width: 43.39%; height: 56.15%; z-index: 2;"></a>
             </div>
             <table>
                 <col />
@@ -200,12 +235,12 @@
                         <th><strong>기본</strong></th>
                         <td>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/169567" target="_blank" >기초입문</a>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183409" target="_blank">제니스문법</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/199288" target="_blank">제니스문법</a>
                         </td>
                         <td>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154894" target="_blank">제니스 독해</a>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/185366" target="_blank">필살기출비법</a>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/184920" target="_blank">첨삭독해</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/199289" target="_blank">첨삭독해</a>
                         </td>
                         <td>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/157581" target="_blank">제니스 보카</a>
@@ -241,7 +276,7 @@
                             <strong>실전</strong>
                         </th>
                         <td>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/146100" target="_blank">제니스 PICK263</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/186676" target="_blank">ONEDAY 문법요약서</a>
                         </td>
                         <td></td>
                         <td>

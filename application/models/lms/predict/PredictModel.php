@@ -2448,6 +2448,69 @@ class PredictModel extends WB_Model
     }
 
     /**
+     * 엑셀파일 업로드
+     * @param null $form_data
+     * @param array $excel_data
+     */
+    public function passlineStoreForExcel($form_data = null, $excel_data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $predict_idx = element('predict_idx', $form_data);
+
+            //기존데이터 삭제
+            $this->_conn->where(['PredictIdx' => $predict_idx]);
+            if ($this->_conn->delete($this->_table['predictGradesLine']) === false) {
+                throw new \Exception('합격선 데이터 삭제에 실패했습니다.');
+            }
+
+            $input_data = [];
+            foreach ($excel_data as $key => $row) {
+                if (empty($row['A']) === false) {
+                    $input_data[$key]['PredictIdx'] = $predict_idx;
+                    $input_data[$key]['TakeMockPart'] = $row['A'];
+                    $input_data[$key]['TakeArea'] = $row['C'];
+                    $input_data[$key]['PickNum'] = $row['E'];
+                    $input_data[$key]['TakeNum'] = $row['F'];
+                    $input_data[$key]['CompetitionRateNow'] = $row['G'];
+                    $input_data[$key]['CompetitionRateAgo'] = $row['H'];
+                    $input_data[$key]['PassLineAgo'] = $row['I'];
+                    $input_data[$key]['AvrPointAgo'] = $row['J'];
+
+                    $input_data[$key]['ExpectAvrPercent'] = $row['K'];
+                    $input_data[$key]['ExpectAvrPoint1'] = $row['L'];
+                    $input_data[$key]['ExpectAvrPoint1Ref'] = '';
+                    $input_data[$key]['ExpectAvrPoint2'] = $row['M'];
+                    $input_data[$key]['ExpectAvrPoint2Ref'] = '';
+
+                    $input_data[$key]['StrongAvrPercent'] = $row['N'];
+                    $input_data[$key]['StrongAvrPoint1'] = $row['O'];
+                    $input_data[$key]['StrongAvrPoint1Ref'] = '';
+                    $input_data[$key]['StrongAvrPoint2'] = $row['P'];
+                    $input_data[$key]['StrongAvrPoint2Ref'] = '';
+
+                    $input_data[$key]['StabilityAvrPercent'] = $row['Q'];
+                    $input_data[$key]['StabilityAvrPoint'] = $row['R'];
+                    $input_data[$key]['StabilityAvrPointRef'] = '';
+
+                    $input_data[$key]['IsUse'] = $row['S'];
+                }
+            }
+
+            if ($this->_conn->insert_batch($this->_table['predictGradesLine'], $input_data) === false) {
+                throw new Exception('저장에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
      * todo 사용하지 않음(권순현대리 개발건) : 2019-08-13 조규호
      * 합격예측카운트관리 조회
      * @param $arr_condition
@@ -3023,6 +3086,40 @@ class PredictModel extends WB_Model
         $where = $where->getMakeWhere(false);
         return $this->_conn->query('select ' . $column . $from . $where)->result_array();
     }
+
+    /**
+     * 합격예측의 직렬별 지역 코드 리스트
+     * 합격선 셈플 데이터 다운로드
+     * @param string $predict_idx
+     * @return mixed
+     */
+    public function areaForMockPartCodelist($predict_idx = '')
+    {
+        $column = "pp.PredictIdx, pp.MockPart AS TakeMockPart, pp.TakeMockPartName, pp.AreaGroupCode, ar.TakeArea, ar.TakeAreaName, pp.RowNum";
+        $from = "
+            FROM (
+                SELECT
+                Ccd AS TakeArea, GroupCcd, CcdName AS TakeAreaName
+                FROM lms_sys_code
+                WHERE GroupCcd = '712' AND Ccd != '712018' #전국제외
+            ) AS ar
+            INNER JOIN (
+                SELECT p.PredictIdx, p.MockPart, pc.CcdName AS TakeMockPartName, '712' AS AreaGroupCode,(@rownum1 := @rownum1 + 1) AS RowNum
+                FROM (
+                    SELECT PredictIdx, SUBSTRING_INDEX(SUBSTRING_INDEX(a.MockPart, ',', TN.num), ',', -1) AS MockPart
+                    FROM tmp_numbers AS TN, lms_product_predict AS a
+                    WHERE a.PredictIdx = ?
+                    AND CHAR_LENGTH(a.MockPart) - CHAR_LENGTH(REPLACE(a.MockPart, ',', '')) >= TN.num - 1
+                ) AS p
+                INNER JOIN lms_predict_code AS pc ON p.MockPart = pc.Ccd AND pc.IsUse = 'Y' AND pc.GroupCcd = 0
+                ,(SELECT @rownum1 := 0) AS tmp
+            ) AS pp ON ar.GroupCcd = pp.AreaGroupCode AND CASE WHEN pp.MockPart = '400' THEN ar.TakeArea = '712001' ELSE TRUE END #400인경우 서울만 조인
+        ";
+
+        $order_by = $this->_conn->makeOrderBy(['pp.RowNum' => 'ASC', 'pp.MockPart' => 'ASC', 'ar.TakeArea' => 'ASC'])->getMakeOrderBy();
+        return $this->_conn->query('select ' . $column . $from . $order_by, [$predict_idx])->result_array();
+    }
+
 
     /**
      * 과목별 표준편차계산

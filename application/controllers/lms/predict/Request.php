@@ -17,17 +17,6 @@ class Request extends \app\controllers\BaseController
     public function __construct()
     {
         parent::__construct();
-
-        $this->applyType = $this->config->item('sysCode_applyType', 'mock');
-        $this->applyArea1 = $this->config->item('sysCode_applyArea1', 'mock');
-        $this->applyArea2 = $this->config->item('sysCode_applyArea2', 'mock');
-        $this->addPoint = $this->config->item('sysCode_addPoint', 'mock');
-        $this->applyType_on = $this->config->item('sysCode_applyType_on', 'mock');
-        $this->applyType_off = $this->config->item('sysCode_applyType_off', 'mock');
-        $this->acceptStatus = $this->config->item('sysCode_acceptStatus', 'mock');
-
-        // 공통코드 셋팅
-        //$this->_groupCcd = $this->regGoodsModel->_groupCcd;
     }
 
     /**

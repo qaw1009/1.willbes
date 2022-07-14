@@ -112,7 +112,7 @@ class Gradeprocessing extends \app\controllers\BaseController
         $result = $this->predictModel->scoreMakeStep1($this->_reqP(null));
         $this->json_result($result, '저장되었습니다.', $result, $result);
     }
-    
+
     /**
      * 조정점수입력
      * @return object|string

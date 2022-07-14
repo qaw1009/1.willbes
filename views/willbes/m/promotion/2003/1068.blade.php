@@ -87,14 +87,12 @@
     </div>
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/1068m_06.gif" alt="농촌지도사 이론 패키지" >
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/198483" target="_blank" title="기본/심화이론 패키지" style="position: absolute; left: 14.58%; top: 34.62%; width: 28.61%; height: 2.19%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/198575" target="_blank" title="7급 농업직 이론 패키지" style="position: absolute; left: 56.25%; top: 34.62%; width: 28.61%; height: 2.19%; z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2022/07/1068m_06.gif" alt="농촌지도사 이론 패키지" >
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/198483" target="_blank" title="기본/심화이론 패키지" style="position: absolute; left: 13.75%; top: 50.61%; width: 30.14%; height: 3.25%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/198575" target="_blank" title="7급 농업직 이론 패키지" style="position: absolute; left: 55.56%; top: 50.61%; width: 30.14%; height: 3.25%; z-index: 2;"></a>
 
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185390" target="_blank" title="농촌지도사 이론 패키지" style="position: absolute; left: 14.58%; top: 63.35%; width: 28.61%; height: 2.19%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/185391" target="_blank" title="농촌지도사 이론 패키지 경기인천" style="position: absolute; left: 56.25%; top: 63.35%; width: 28.61%; height: 2.19%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/186530" target="_blank" title="농촌지도사 이론+기출문풀 패키지 " style="position: absolute; left: 14.58%; top: 90.92%; width: 28.61%; height: 2.19%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/186529" target="_blank" title="농촌지도사 이론+기출문풀 패키지 경기인천" style="position: absolute; left: 56.25%; top: 90.92%; width: 28.61%; height: 2.19%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/199703" target="_blank" title="농촌지도사 이론 패키지" style="position: absolute; left: 13.89%; top: 87.74%; width: 30.14%; height: 3.25%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/199704" target="_blank" title="농촌지도사 이론 패키지 경기인천" style="position: absolute; left: 56.94%; top: 87.74%; width: 30.14%; height: 3.25%; z-index: 2;"></a>
     </div>   
 
     <div class="evtCtnsBox" data-aos="fade-up">

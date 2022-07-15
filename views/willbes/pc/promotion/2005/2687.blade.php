@@ -19,7 +19,7 @@
 
     /************************************************************/
 
-    .evt_top {background:url("https://static.willbes.net/public/images/promotion/2022/06/2687_top_bg.jpg") no-repeat center top;}
+    .evt_top {background:url("https://static.willbes.net/public/images/promotion/2022/07/2687_top_bg.jpg") no-repeat center top;}
 
     .evt01 {padding:100px 0;}
 
@@ -124,7 +124,7 @@
         <input type="hidden" id="_exam_type" name="_exam_type" value="N">
         <input type="hidden" id="_pr_id" name="_pr_id">
         <div class="evtCtnsBox evt_top" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2687_top.jpg" alt="psat 합격을 예측하다">
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2687_top.jpg" alt="psat 합격을 예측하다">
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
@@ -138,10 +138,7 @@
 				<li><a href="#tab03">성적확인 및 분석</a></li>
 				<li><a href="#tab04">합격예측</a></li>
 			</ul>
-            <div class="main_content" id="tab01">
-                추후 디자인
-            </div>
-
+            <div class="main_content" id="tab01"></div>
             <div class="main_content" id="tab02"></div>
             <div class="main_content" id="tab03"></div>
             <div class="main_content" id="tab04"></div>

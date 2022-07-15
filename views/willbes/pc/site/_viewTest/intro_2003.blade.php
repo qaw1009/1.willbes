@@ -300,7 +300,7 @@
         .gosi-gate-v3 .tpassWrap {margin-top:100px; background:#f4f7fe; padding:100px 0;}
         .gosi-gate-v3 .tpassWrap .slider {width:100%; height:245px; overflow:hidden; display:flex; flex-wrap: wrap;}    
         .gosi-gate-v3 .tpassWrap .slider a {width:550px !important; margin-right:20px;}
-        .gosi-gate-v3 .tpassWrap .slider img {width:550px; border-radius:18px; }
+        .gosi-gate-v3 .tpassWrap .slider img {width:550px; height: 245px; border-radius:18px; }
         .gosi-gate-v3 .tpassWrap .bx-wrapper .bx-pager {
             width: auto;
             position: absolute;
@@ -799,7 +799,7 @@
         //무제한 수강
         $(function() {
             $('.tpassWrap .slider').bxSlider({
-                mode: 'horizontal',
+                mode: 'horizontal', 
                 auto:true,
                 speed:350,
                 pause:4000,

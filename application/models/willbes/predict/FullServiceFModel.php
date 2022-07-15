@@ -91,26 +91,28 @@ class FullServiceFModel extends WB_Model
 
     /**
      * 합격예측 접수데이터 조회
+     * 막대그래프 Y축 MAX 값
      * @param array $arr_condition
      * @return mixed
      */
-    public function findRegisterData($arr_condition = [])
+    public function findRegisterData($arr_condition = [], $add_column = '')
     {
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
         $column = "
             a.PrIdx, a.TakeNumber, a.TakeMockPart, a.TakeArea, a.AddPoint, a.LectureType, a.Period, a.PointDelCnt
             ,b.MemName, c.CcdName AS TakeMockPartName
             ,gl.PickNum, gl.TakeNum, gl.CompetitionRateNow
-            ,(SELECT QuestionType FROM {$this->_table['predict_register_r_code']} AS prc WHERE a.PrIdx = prc.PrIdx LIMIT 1) AS QuestionType
+            ,(SELECT QuestionType FROM {$this->_table['predict_register_r_code']} AS prc WHERE a.PrIdx = prc.PrIdx LIMIT 1) AS QuestionType            
         ";
+        $column .= $add_column;
         $from = "
             FROM {$this->_table['predict_register']} AS a
             INNER JOIN {$this->_table['lms_member']} AS b ON a.MemIdx = b.MemIdx
             INNER JOIN {$this->_table['predict_code']} AS c ON a.TakeMockPart = c.Ccd AND c.GroupCcd = 0
             LEFT JOIN {$this->_table['predict_grades_line']} AS gl ON a.PredictIdx = gl.PredictIdx AND a.TakeMockPart = gl.TakeMockPart AND a.TakeArea = gl.TakeArea AND gl.IsUse = 'Y'
         ";
-
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
 
         return $this->_conn->query('select ' . $column . $from . $where)->row_array();
     }
@@ -784,10 +786,12 @@ class FullServiceFModel extends WB_Model
                 ,ROUND((cnt / total) * 100,2) AS avgCnt
                 ,cntCumsum
                 ,ROUND((cntCumsum / total) * 100,2) AS avgCumsum
-                , {$this->_setColumnForChartData()['title']} AS title
+                ,m.my_OrgPoint
+                ,{$this->_setColumnForChartData()['title']} AS title
             FROM (
                 SELECT a.GroupBy, a.n, IFNULL(b.cnt,0) AS cnt
                     ,IFNULL(SUM(b.cnt) OVER(PARTITION BY a.GroupBy ORDER BY a.GroupBy ASC, a.n DESC),'-') AS cntCumsum #누적인원
+                    ,my.OrgPoint AS my_OrgPoint
                     ,(
                         SELECT total
                         FROM (
@@ -822,6 +826,19 @@ class FullServiceFModel extends WB_Model
                     ) AS a
                     GROUP BY a.numberForScore
                 ) AS b ON a.n = b.numberForScore
+                LEFT JOIN (
+                    SELECT a.GroupBy, a.OrgPoint, a.PrIdx
+                    , {$this->_setColumnForChartData()['numberForScore']} as numberForScore
+                    FROM (
+                        SELECT a.PrIdx, '0' AS GroupBy, ROUND(AVG(a.OrgPoint),2) AS OrgPoint
+                        FROM {$this->_table['predict_grades_origin']} AS a
+                        INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx
+                        INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode
+                        WHERE a.PredictIdx = '{$predict_idx}' AND PrIdx = '{$pr_idx}'
+                        GROUP BY a.PrIdx
+                    ) AS a
+                ) AS my ON a.GroupBy = my.GroupBy AND a.n = my.numberForScore
+                        
                 ORDER BY a.n DESC
             ) AS m
             
@@ -832,10 +849,12 @@ class FullServiceFModel extends WB_Model
                 ,ROUND((cnt / total) * 100,2) AS avgCnt
                 ,cntCumsum
                 ,ROUND((cntCumsum / total) * 100,2) AS avgCumsum
-                , {$this->_setColumnForChartData()['title']} AS title
+                ,m.my_OrgPoint
+                ,{$this->_setColumnForChartData()['title']} AS title
             FROM (
                 SELECT a.GroupBy, a.n, IFNULL(b.cnt,0) AS cnt
                     ,IFNULL(SUM(b.cnt) OVER(PARTITION BY a.GroupBy ORDER BY a.GroupBy ASC, a.n DESC),'-') AS cntCumsum #누적인원
+                    ,my.OrgPoint AS my_OrgPoint
                     ,(
                         SELECT total
                         FROM (
@@ -864,6 +883,19 @@ class FullServiceFModel extends WB_Model
                     ) AS a
                     GROUP BY a.GroupBy, a.numberForScore
                 ) AS b ON a.GroupBy = b.GroupBy AND a.n = b.numberForScore
+                LEFT JOIN (
+                    SELECT a.GroupBy, a.OrgPoint, a.PrIdx
+                    , {$this->_setColumnForChartData()['numberForScore']} as numberForScore
+                    FROM (
+                        SELECT a.PrIdx, c.GroupBy, ROUND(AVG(a.OrgPoint),2) AS OrgPoint
+                        FROM {$this->_table['predict_grades_origin']} AS a
+                        INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx
+                        INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode
+                        WHERE a.PredictIdx = '{$predict_idx}' AND PrIdx = '{$pr_idx}'
+                        GROUP BY a.PrIdx, c.GroupBy
+                    ) AS a
+                ) AS my ON a.GroupBy = my.GroupBy AND a.n = my.numberForScore
+                
                 ORDER BY a.GroupBy ASC, a.n DESC
             ) AS m
         ";

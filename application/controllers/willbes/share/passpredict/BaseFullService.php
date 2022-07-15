@@ -140,6 +140,21 @@ class BaseFullService extends \app\controllers\FrontController
             show_alert('잘못된 접근 입니다.');
         }
 
+        $add_column = "
+            ,(
+                SELECT IF(CEIL(COUNT(*) * (1+10 / 100)) < 100, 100, CEIL(COUNT(*) * (1+10 / 100))) AS total
+                FROM ( SELECT PrIdx FROM lms_predict_grades_origin WHERE PredictIdx = {$predict_idx} GROUP BY PrIdx ) AS cnt
+            ) AS MaxForTotalChart
+            ,(
+                SELECT IF(CEIL(COUNT(*) * (1+10 / 100)) < 100, 100, CEIL(COUNT(*) * (1+10 / 100))) AS total
+                FROM ( SELECT PrIdx FROM lms_predict_grades_origin WHERE PredictIdx = {$predict_idx}
+                    AND TakeMockPart = (
+                        SELECT TakeMockPart FROM lms_predict_register WHERE PredictIdx = {$predict_idx} AND PrIdx = {$pr_idx}
+                    )
+                    GROUP BY PrIdx
+                ) AS cnt
+            ) AS MaxForTakeMockPartChart
+        ";
         $arr_condition = [
             'EQ' => [
                 'a.PredictIdx' => $predict_idx
@@ -148,7 +163,7 @@ class BaseFullService extends \app\controllers\FrontController
                 ,'a.IsStatus' => 'Y'
             ]
         ];
-        $regi_data = $this->fullServiceFModel->findRegisterData($arr_condition);
+        $regi_data = $this->fullServiceFModel->findRegisterData($arr_condition, $add_column);
 
         if (empty($regi_data) === true) {
             show_alert('조회된 기본 정보가 없습니다.');
@@ -387,6 +402,7 @@ class BaseFullService extends \app\controllers\FrontController
                 ,'avgCnt' => $row['avgCnt']
                 ,'cntCumsum' => $row['cntCumsum']
                 ,'avgCumsum' => $row['avgCumsum']
+                ,'my_OrgPoint' => $row['my_OrgPoint']
             ];
         }
 
@@ -397,6 +413,7 @@ class BaseFullService extends \app\controllers\FrontController
                 ,'avgCnt' => $row['avgCnt']
                 ,'cntCumsum' => $row['cntCumsum']
                 ,'avgCumsum' => $row['avgCumsum']
+                ,'my_OrgPoint' => $row['my_OrgPoint']
             ];
         }
 
@@ -409,6 +426,7 @@ class BaseFullService extends \app\controllers\FrontController
                         ,'avgCnt' => $data['avgCnt']
                         ,'cntCumsum' => $data['cntCumsum']
                         ,'avgCumsum' => $data['avgCumsum']
+                        ,'my_OrgPoint' => $data['my_OrgPoint']
                     ];
                 }
                 $sort[$data_key] = $data_key;
@@ -425,6 +443,7 @@ class BaseFullService extends \app\controllers\FrontController
                         ,'avgCnt' => $data['avgCnt']
                         ,'cntCumsum' => $data['cntCumsum']
                         ,'avgCumsum' => $data['avgCumsum']
+                        ,'my_OrgPoint' => $data['my_OrgPoint']
                     ];
                 }
                 $sort[$data_key] = $data_key;

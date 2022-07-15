@@ -100,18 +100,17 @@
 .gosi-bnfull02 a {display:block; position:absolute; width:2000px !important; height:220px; top:0; left:50%; margin-left:-1000px; z-index: 2;}
 
 
-.gosi-gate-v3 .tpassWrap {margin-top:100px; background:#f4f7fe; padding:100px 0}
-.gosi-gate-v3 .tpassWrap .slider {width:100%; height:275px; overflow:hidden;}
-.gosi-gate-v3 .tpassWrap .slider > div {width:100%; display:flex !important; flex-wrap:wrap; justify-content:space-between;}        
-.gosi-gate-v3 .tpassWrap .slider a {display:inline-block; margin-bottom:30px !important; width:550px}
+.gosi-gate-v3 .tpassWrap {margin-top:100px; background:#f4f7fe; padding:100px 0; overflow:hidden;}
+.gosi-gate-v3 .tpassWrap .slider {height:275px; display:flex; margin-bottom:30px !important; }    
+.gosi-gate-v3 .tpassWrap .slider a {width:550px !important; margin-right:20px}
 .gosi-gate-v3 .tpassWrap .slider img {width:550px; border-radius:18px; }
 .gosi-gate-v3 .tpassWrap .bx-wrapper .bx-pager {
-        width: auto;
-        position: absolute;
-        bottom: 0;
-        left:0;
-        right: 0;
-    }
+    width: auto;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    right: 0;
+}
 .tpassWrap .prfoWrap {margin-top:50px; display:flex; flex-wrap: wrap; justify-content: space-between;}
 .tpassWrap .prfoWrap a {font-size:16px; font-weight:bold; text-align:center}
 .tpassWrap .prfoWrap a img {border:1px solid #e6e6e6; border-radius:30px; overflow: hidden; display:block; margin-bottom:20px}
@@ -430,18 +429,10 @@ height: calc(2.4em); /* line-height 가 1.2em 이고 3라인을 자르기 때문
         <div class="widthAuto">
             <div class="will-nTit NSK-Black tx-left mb40"><span>원하는 교수님</span>의 과정을 무제한 수강</div>
             <div class="slider">
-                <div>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_01.jpg" alt="배너명"></a>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_02.jpg" alt="배너명"></a>
-                </div>
-                <div>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_02.jpg" alt="배너명"></a>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_01.jpg" alt="배너명"></a>
-                </div>
-                <div>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_01.jpg" alt="배너명"></a>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_02.jpg" alt="배너명"></a>
-                </div>
+                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_01.jpg" alt="배너명"></a>               
+                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_02.jpg" alt="배너명"></a>
+                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_01.jpg" alt="배너명"></a>
+                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_02.jpg" alt="배너명"></a>
             </div>
             <div class="prfoWrap">
                 <a href="#none">

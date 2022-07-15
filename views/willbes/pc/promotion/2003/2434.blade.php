@@ -114,7 +114,7 @@
 
                 <div>
                     <iframe src="https://www.youtube.com/embed/RuEMDM7XkwE?rel=0 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <p>3강 분사로 변형이 있는 동사</p>
+                    <p>3강 초기국가</p>
                 </div>
             </div>
         </div>

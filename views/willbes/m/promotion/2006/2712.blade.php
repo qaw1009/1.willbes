@@ -46,27 +46,31 @@
     <div id="Container" class="Container NSK c_both">
 
         <div class="evtCtnsBox evt_top" data-aos="fade-down">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_top.jpg" alt="김영식 경영학" />
+			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_top.jpg" alt="전수환 경영학" />
 		</div>
 
-        <div class="evtCtnsBox evt_01" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_01.jpg" alt="김영식 교수" />
+        <div class="evtCtnsBox" data-aos="fade-up">
+			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_01.jpg" alt="수강특전" />
 		</div>
 
-        <div class="evtCtnsBox evt_02" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_02.jpg" alt="경영학원론 대비 포인트" />
+        <div class="evtCtnsBox" data-aos="fade-up">
+			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_02.jpg" alt="전수환 교수" />
 		</div>
 
-        <div class="evtCtnsBox evt_03" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_03.jpg" alt="선택해야 하는 이유" />
+        <div class="evtCtnsBox" data-aos="fade-up">
+			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_03.jpg" alt="1차 시험 대비 포인트" />
 		</div>
 
-        <div class="evtCtnsBox evt_04" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_04.jpg" alt="커리큘럼" />
+        <div class="evtCtnsBox" data-aos="fade-up">
+			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_04.jpg" alt="압도적인 명강의" />
 		</div>
 
-        <div class="evtCtnsBox evt_05" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_05.jpg" alt="특별 서비스" />
+        <div class="evtCtnsBox" data-aos="fade-up">
+			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_05.jpg" alt="선행학습 + 1차 강의 제공" />
+		</div>
+
+        <div class="evtCtnsBox" data-aos="fade-up">
+			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_06.jpg" alt="특별 서비스" />
 		</div>
 
         <div class="evtCtnsBox evt_apply" data-aos="fade-up">

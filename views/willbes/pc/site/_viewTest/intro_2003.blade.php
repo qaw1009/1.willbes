@@ -523,7 +523,9 @@
                 <div class="prfoWrap">
                 @if(isset($data['banner']['게이트_과목별교수']))
                     @foreach(element('게이트_과목별교수', $data['banner']) as $row)
+                        <div>
                         {!! banner_html(array($row), '', '', false, 'none', '', 'castTitle') !!}
+                        </div>
                     @endforeach
                 @endif
                 </div>

@@ -9,13 +9,14 @@
     /************************************************************/
 
     .evt_apply > a {display:block; font-size:2vh; width:85%; font-weight:bold; margin:auto; background:#191919; padding:10px 0; color:#fff; border-radius:50px; margin:0 auto 50px} 
+    .evt_apply > a:hover {background-color:#451789; }
 
     .evtCtnsBox .check{width:100%; margin:30px auto 50px; font-size:14px; text-align:center;line-height:1.5;
 					  letter-spacing:-1px;font-weight:bold;}
     .evtCtnsBox .check label{color:#000}
     .evtCtnsBox .check input {border: 2px solid #000;margin-right: 8px;height: 20px; width: 20px;} 
     .evtCtnsBox .check a {display: block; width:30%; padding:5px 20px; color: #fff;background: #000;border-radius:20px; margin:20px auto}
-    .evtCtnsBox .check a:hover {background-color:#00574E; color:#fff}
+    .evtCtnsBox .check a:hover {background-color:#451789; color:#fff}
 
     .evtInfo {padding:50px 20px; background:#535353; color:#fff; font-size:14px}
     .evtInfoBox {text-align:left; line-height:1.4}
@@ -45,39 +46,39 @@
     <div id="Container" class="Container NSK c_both">
 
         <div class="evtCtnsBox evt_top" data-aos="fade-down">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2715m_top.jpg" alt="김영식 경영학" />
+			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_top.jpg" alt="김영식 경영학" />
 		</div>
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2715m_01.jpg" alt="김영식 교수" />
+			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_01.jpg" alt="김영식 교수" />
 		</div>
 
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2715m_02.jpg" alt="경영학원론 대비 포인트" />
+			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_02.jpg" alt="경영학원론 대비 포인트" />
 		</div>
 
         <div class="evtCtnsBox evt_03" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2715m_03.jpg" alt="선택해야 하는 이유" />
+			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_03.jpg" alt="선택해야 하는 이유" />
 		</div>
 
         <div class="evtCtnsBox evt_04" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2715m_04.jpg" alt="커리큘럼" />
+			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_04.jpg" alt="커리큘럼" />
 		</div>
 
         <div class="evtCtnsBox evt_05" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2715m_05.jpg" alt="특별 서비스" />
+			<img src="https://static.willbes.net/public/images/promotion/2022/07/2712m_05.jpg" alt="특별 서비스" />
 		</div>
 
         <div class="evtCtnsBox evt_apply" data-aos="fade-up">
             <div class="check">
                 <label>
                     <input type="checkbox" name="ischk" value="Y">
-                    페이지 하단 경영학 MASTER PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#careful">이용안내확인하기 ↓</a>
             </div>
-            <a href="javascript:go_PassLecture('199395');" >
-                민법 MASTER PASS 수강신청 바로가기  ▶
+            <a href="javascript:go_PassLecture('199388');" >
+            경영학 MASTER PASS 수강신청  ▶
             </a>
         </div>
 

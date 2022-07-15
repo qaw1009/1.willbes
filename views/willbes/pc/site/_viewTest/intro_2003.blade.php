@@ -100,15 +100,14 @@
         .gosi-bnfull02 a {display:block; position:absolute; width:2000px !important; height:220px; top:0; left:50%; margin-left:-1000px; z-index: 2;}
 
 
-        .gosi-gate-v3 .tpassWrap {margin-top:100px; background:#f4f7fe; padding:100px 0}
-        .gosi-gate-v3 .tpassWrap .slider {width:100%; height:275px; overflow:hidden;}
-        .gosi-gate-v3 .tpassWrap .slider > div {width:100%; display:flex !important; flex-wrap:wrap; justify-content:space-between;}
-        .gosi-gate-v3 .tpassWrap .slider a {display:inline-block; margin-bottom:30px !important; width:550px}
+        .gosi-gate-v3 .tpassWrap {margin-top:100px; background:#f4f7fe; padding:100px 0;}
+        .gosi-gate-v3 .tpassWrap .slider {width:100%; height:245px; overflow:hidden; display:flex; flex-wrap: wrap;}
+        .gosi-gate-v3 .tpassWrap .slider a {width:550px !important; margin-right:20px;}
         .gosi-gate-v3 .tpassWrap .slider img {width:550px; border-radius:18px; }
         .gosi-gate-v3 .tpassWrap .bx-wrapper .bx-pager {
             width: auto;
             position: absolute;
-            bottom: 0;
+            bottom: -20px;
             left:0;
             right: 0;
         }
@@ -202,7 +201,6 @@
         #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px; display: block;}
     </style>
 
-    <!-- Container -->
 
     <div id="Container" class="Container gosi-gate-v3 NSK c_both">
 
@@ -321,66 +319,17 @@
             </div>
         </div>
 
-{{--        {{dd(element('게이트_무제한수강', $data['banner']))}}--}}
         <div class="Section tpassWrap">
             <div class="widthAuto">
-
                 <div class="will-nTit NSK-Black tx-left mb40"><span>원하는 교수님</span>의 과정을 무제한 수강</div>
-                <div class="slider">
-{{--                    <div class=""><img src="/public/uploads/willbes/banner/2022/0714/banner_20220714182047.jpg" alt="1" usemap="#BannerImgMap4288"></div>--}}
-{{--                    <div class=""><img src="/public/uploads/willbes/banner/2022/0714/banner_20220714182109.jpg" alt="2" usemap="#BannerImgMap4289"></div>--}}
-                        {!! banner_html(element('게이트_무제한수강', $data['banner'])) !!}
-{{--                    <div>--}}
-{{--                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_01.jpg" alt="배너명"></a>--}}
-{{--                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_02.jpg" alt="배너명"></a>--}}
-{{--                    </div>--}}
-{{--                    <div>--}}
-{{--                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_02.jpg" alt="배너명"></a>--}}
-{{--                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_01.jpg" alt="배너명"></a>--}}
-{{--                    </div>--}}
-{{--                    <div>--}}
-{{--                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_01.jpg" alt="배너명"></a>--}}
-{{--                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_550_02.jpg" alt="배너명"></a>--}}
-{{--                    </div>--}}
-                </div>
+                {!! banner_html(element('게이트_무제한수강', $data['banner']), '','' , false, 'none') !!}
+
                 <div class="prfoWrap">
-                    {!! banner_html(element('게이트_과목별교수', $data['banner']), '', '', false, '', '', 'castTitle') !!}
-{{--                    <a href="#none">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">--}}
-{{--                        국어 오대혁--}}
-{{--                    </a>--}}
-{{--                    <a href="#none">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">--}}
-{{--                        영어 한덕현--}}
-{{--                    </a>--}}
-{{--                    <a href="#none">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">--}}
-{{--                        한국사 김상범--}}
-{{--                    </a>--}}
-{{--                    <a href="#none">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">--}}
-{{--                        행정법 황남기--}}
-{{--                    </a>--}}
-{{--                    <a href="#none">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">--}}
-{{--                        행정학 김철--}}
-{{--                    </a>--}}
-{{--                    <a href="#none">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">--}}
-{{--                        소방직 이종오--}}
-{{--                    </a>--}}
-{{--                    <a href="#none">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">--}}
-{{--                        행정법 이석준--}}
-{{--                    </a>--}}
-{{--                    <a href="#none">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">--}}
-{{--                        조경직 이윤주--}}
-{{--                    </a>--}}
-{{--                    <a href="#none">--}}
-{{--                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">--}}
-{{--                        축산직 윤용범--}}
-{{--                    </a>--}}
+                @if(isset($data['banner']['게이트_과목별교수']))
+                    @foreach(element('게이트_과목별교수', $data['banner']) as $row)
+                        {!! banner_html(array($row), '', '', false, 'none', '', 'castTitle') !!}
+                    @endforeach
+                @endif
                 </div>
             </div>
         </div>

@@ -33,6 +33,8 @@
     .tabs li:last-child a {margin:0}
     .tabs:after {content:""; display:block; clear:both}
 
+    .evt01_01, .evt01_01_url, .evt01_02, .evt01_03 {background:#eee;}
+
      /*2번째 탭*/
     .step {font-size:17px;line-height:2;padding-bottom:50px;}
     .stage {font-size:17px;line-height:1.5;text-align:left;width:720px;margin:0 auto;padding-bottom:5px;}
@@ -115,7 +117,8 @@
     .first {background:#F2F2F2;font-weight:bold;}
     .wrong {color:red !important;}
     .pass {color:#0070C0 !important;}
-                
+    #score {position:absolute;left:50%;top:67%;margin-left:33px;width:110px;height:45px;border:2px solid #bfbfbf;}
+
     </style>
 
     <!-- Container -->
@@ -138,14 +141,55 @@
 				<li><a href="#tab03">성적확인 및 분석</a></li>
 				<li><a href="#tab04">합격예측</a></li>
 			</ul>
-            <div class="main_content" id="tab01"></div>
+            <div class="main_content" id="tab01">
+
+                <div class="evtCtnsBox evt01_01" data-aos="fade-up">
+                    <div class="wrap">
+                        <img src="https://static.willbes.net/public/images/promotion/2022/07/2687_01_01.jpg" alt="event1">
+                        <a href="#url" title="UP!" style="position: absolute;left: 47.87%;top: 28.27%;width: 20.99%;height: 7.45%;z-index: 2;"></a>                       
+                    </div>
+                </div>
+
+                <div class="evtCtnsBox evt01_01_url" data-aos="fade-up" id="url">
+                    <div class="wrap">
+                        <img src="https://static.willbes.net/public/images/promotion/2022/07/2687_01_01_url.jpg" alt="이벤트 참여방법">                    
+                        <a href="javascript:void(0);" title="링크복사" onclick="copyTxt();" style="position: absolute;left: 17.87%;top: 50.27%;width: 31.41%;height: 7.15%;z-index: 2;"></a>
+                        <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="소문내기 다운" style="position: absolute;left: 50.87%;top: 50.27%;width: 31.41%;height: 7.15%;z-index: 2;"></a>
+                    </div>
+                </div>
+
+                {{--홍보url--}}
+                @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                    @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N', 'login_url'=>app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www'), 'is_public' => true)){{--기존SNS예외처리시, 로그인페이지 이동--}}
+                @endif
+
+                <div class="evtCtnsBox evt01_02" data-aos="fade-up">
+                    <div class="wrap">
+                        <img src="https://static.willbes.net/public/images/promotion/2022/07/2687_01_02.jpg" alt="event2">
+                        <a href="javascript:alert('이벤트 참여가 완료되었습니다.')" title="합격 점수 예상하기" style="position: absolute;left: 31.87%;top: 71.27%;width: 36.41%;height: 5.15%;z-index: 2;"></a>
+                        <div class="d_day NSK">
+                            <span class="NSK-Black">
+                                <input value="" type="number" maxlength="3" name="" id="score">                        
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="evtCtnsBox evt01_03 pb100" data-aos="fade-up">
+                    <div class="wrap">
+                        <img src="https://static.willbes.net/public/images/promotion/2022/07/2687_01_03.jpg" alt="event3">
+                        <a href="javascript:void(0);" onclick="popup();" title="인증+등록하기" style="position: absolute;left: 23.07%;top: 71.07%;width: 53.99%;height: 9.45%;z-index: 2;"></a>     
+                    </div>
+                </div>
+
+            </div>
+
             <div class="main_content" id="tab02"></div>
             <div class="main_content" id="tab03"></div>
             <div class="main_content" id="tab04"></div>
         </div>
 
     </div>
-    <!-- End Container -->
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -202,5 +246,18 @@
                 $("#tab02").html(d);
             }, showAlertError, false, 'GET', 'html', false);
         }
-    </script>
+        </script>        
+        <script>
+            /*팝업 */
+            function popup(){
+                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+                var url = "{{ site_url('/promotion/popup/' . $arr_base['promotion_code']) .'?cert='. $arr_promotion_params['cert'] }}";
+                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=868,height=630');
+            }
+        </script>
+    
+<!-- End Container -->
+
+{{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

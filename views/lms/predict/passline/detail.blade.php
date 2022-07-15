@@ -195,12 +195,11 @@
                 if (!confirm('저장하시겠습니까?')) { return true; }
 
                 var _url = '{{ site_url('/predict/passline/store') }}';
-                ajaxSubmit($regi_form, _url, function(ret) {
+                ajaxLoadingSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        $datatable.draw();
                     }
-                }, showValidateError, null, false, 'alert');
+                }, showValidateError, null, 'alert', $regi_form);
             });
 
             //엑셀 셈플 다운로드 버튼 클릭

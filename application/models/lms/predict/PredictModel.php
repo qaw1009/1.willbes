@@ -2350,8 +2350,8 @@ class PredictModel extends WB_Model
      */
     public function storeLine($form_data)
     {
+        $this->_conn->trans_begin();
         try {
-            $this->_conn->trans_begin();
             $this->_conn->where(['PredictIdx' => $this->input->post('PredictIdx')]);
             if ($this->_conn->delete($this->_table['predictGradesLine']) === false) {
                 throw new \Exception('성적 삭제에 실패했습니다.');
@@ -2363,26 +2363,26 @@ class PredictModel extends WB_Model
                 $input_data[$key]['PredictIdx'] = element('PredictIdx',$form_data);
                 $input_data[$key]['TakeMockPart'] = element('TakeMockPart',$form_data)[$key];
                 $input_data[$key]['TakeArea'] = element('TakeArea',$form_data)[$key];
-                $input_data[$key]['PickNum'] = element('PickNum',$form_data)[$key];
-                $input_data[$key]['TakeNum'] = element('TakeNum',$form_data)[$key];
-                $input_data[$key]['CompetitionRateNow'] = element('CompetitionRateNow',$form_data)[$key];
-                $input_data[$key]['CompetitionRateAgo'] = element('CompetitionRateAgo',$form_data)[$key];
-                $input_data[$key]['PassLineAgo'] = element('PassLineAgo',$form_data)[$key];
-                $input_data[$key]['AvrPointAgo'] = element('AvrPointAgo',$form_data)[$key];
-                $input_data[$key]['StabilityAvrPoint'] = (float)element('StabilityAvrPoint',$form_data)[$key];
-                $input_data[$key]['StabilityAvrPointRef'] = (float)element('StabilityAvrPointRef',$form_data)[$key];
-                $input_data[$key]['StabilityAvrPercent'] = (float)element('StabilityAvrPercent',$form_data)[$key];
-                $input_data[$key]['StrongAvrPoint1'] = (float)element('StrongAvrPoint1',$form_data)[$key];
-                $input_data[$key]['StrongAvrPoint1Ref'] = (float)element('StrongAvrPoint1Ref',$form_data)[$key];
-                $input_data[$key]['StrongAvrPoint2'] = (float)element('StrongAvrPoint2',$form_data)[$key];
-                $input_data[$key]['StrongAvrPoint2Ref'] = (float)element('StrongAvrPoint2Ref',$form_data)[$key];
-                $input_data[$key]['StrongAvrPercent'] = (float)element('StrongAvrPercent',$form_data)[$key];
-                $input_data[$key]['ExpectAvrPoint1'] = (float)element('ExpectAvrPoint1',$form_data)[$key];
-                $input_data[$key]['ExpectAvrPoint1Ref'] = (float)element('ExpectAvrPoint1Ref',$form_data)[$key];
-                $input_data[$key]['ExpectAvrPoint2'] = (float)element('ExpectAvrPoint2',$form_data)[$key];
-                $input_data[$key]['ExpectAvrPoint2Ref'] = (float)element('ExpectAvrPoint2Ref',$form_data)[$key];
-                $input_data[$key]['ExpectAvrPercent'] = (float)element('ExpectAvrPercent',$form_data)[$key];
-                $input_data[$key]['IsUse'] = element('IsUse',$form_data)[$key];
+                $input_data[$key]['PickNum'] = (empty(element('PickNum',$form_data)[$key]) === false ? element('PickNum',$form_data)[$key] : '');
+                $input_data[$key]['TakeNum'] = (empty(element('TakeNum',$form_data)[$key]) === false ? element('TakeNum',$form_data)[$key] : '');
+                $input_data[$key]['CompetitionRateNow'] = (empty(element('CompetitionRateNow',$form_data)[$key]) === false ? element('CompetitionRateNow',$form_data)[$key] : '');
+                $input_data[$key]['CompetitionRateAgo'] = (empty(element('CompetitionRateAgo',$form_data)[$key]) === false ? element('CompetitionRateAgo',$form_data)[$key] : '');
+                $input_data[$key]['PassLineAgo'] = (empty(element('PassLineAgo',$form_data)[$key]) === false ? element('PassLineAgo',$form_data)[$key] : '');
+                $input_data[$key]['AvrPointAgo'] = (empty(element('AvrPointAgo',$form_data)[$key]) === false ? element('AvrPointAgo',$form_data)[$key] : '');
+                $input_data[$key]['StabilityAvrPoint'] = (empty(element('StabilityAvrPoint',$form_data)[$key]) === false ? (float)element('StabilityAvrPoint',$form_data)[$key] : '');
+                $input_data[$key]['StabilityAvrPointRef'] = (empty(element('StabilityAvrPointRef',$form_data)[$key]) === false ? (float)element('StabilityAvrPointRef',$form_data)[$key] : '');
+                $input_data[$key]['StabilityAvrPercent'] = (empty(element('StabilityAvrPercent',$form_data)[$key]) === false ? (float)element('StabilityAvrPercent',$form_data)[$key] : '');
+                $input_data[$key]['StrongAvrPoint1'] = (empty(element('StrongAvrPoint1',$form_data)[$key]) === false ? (float)element('StrongAvrPoint1',$form_data)[$key] : '');
+                $input_data[$key]['StrongAvrPoint1Ref'] = (empty(element('StrongAvrPoint1Ref',$form_data)[$key]) === false ? (float)element('StrongAvrPoint1Ref',$form_data)[$key] : '');
+                $input_data[$key]['StrongAvrPoint2'] = (empty(element('StrongAvrPoint2',$form_data)[$key]) === false ? (float)element('StrongAvrPoint2',$form_data)[$key] : '');
+                $input_data[$key]['StrongAvrPoint2Ref'] = (empty(element('StrongAvrPoint2Ref',$form_data)[$key]) === false ? (float)element('StrongAvrPoint2Ref',$form_data)[$key] : '');
+                $input_data[$key]['StrongAvrPercent'] = (empty(element('StrongAvrPercent',$form_data)[$key]) === false ? (float)element('StrongAvrPercent',$form_data)[$key] : '');
+                $input_data[$key]['ExpectAvrPoint1'] = (empty(element('ExpectAvrPoint1',$form_data)[$key]) === false ? (float)element('ExpectAvrPoint1',$form_data)[$key] : '');
+                $input_data[$key]['ExpectAvrPoint1Ref'] = (empty(element('ExpectAvrPoint1Ref',$form_data)[$key]) === false ? (float)element('ExpectAvrPoint1Ref',$form_data)[$key] : '');
+                $input_data[$key]['ExpectAvrPoint2'] = (empty(element('ExpectAvrPoint2',$form_data)[$key]) === false ? (float)element('ExpectAvrPoint2',$form_data)[$key] : '');
+                $input_data[$key]['ExpectAvrPoint2Ref'] = (empty(element('ExpectAvrPoint2Ref',$form_data)[$key]) === false ? (float)element('ExpectAvrPoint2Ref',$form_data)[$key] : '');
+                $input_data[$key]['ExpectAvrPercent'] = (empty(element('ExpectAvrPercent',$form_data)[$key]) === false ? (float)element('ExpectAvrPercent',$form_data)[$key] : '');
+                $input_data[$key]['IsUse'] = (empty(element('IsUse',$form_data)[$key]) === false ? element('IsUse',$form_data)[$key] : '');;
             }
 
             if($input_data) $this->_conn->insert_batch($this->_table['predictGradesLine'], $input_data);

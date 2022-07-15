@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseFullService extends \app\controllers\FrontController
 {
-    protected $models = array('_lms/sys/code', 'predict/fullServiceF');
+    protected $models = array('_lms/sys/code', 'predict/fullServiceF', 'survey/fullServiceSurveyF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -26,11 +26,15 @@ class BaseFullService extends \app\controllers\FrontController
     {
         $arr_base = [];
         $arr_base['method'] = 'POST';
-        if (empty((int)$this->_reqG('predict_idx')) === true) {
+        $arr_input = $this->_reqG(null);
+        $predict_idx = element('predict_idx', $arr_input);
+        $ss_idx = element('ss_idx', $arr_input);
+
+        if (empty((int)$predict_idx) === true) {
             show_alert('합격예측코드가 없습니다.','back');
         }
 
-        $arr_condition = ['EQ' => ['PredictIdx' => element('predict_idx',$this->_reqG(null)),'IsUse' => 'Y']];
+        $arr_condition = ['EQ' => ['PredictIdx' => $predict_idx,'IsUse' => 'Y']];
         $predict_data = $this->fullServiceFModel->findPredictData($arr_condition);
         if (empty($predict_data) === true) {
             show_alert('조회된 합격예측 정보가 없습니다.','back');
@@ -58,6 +62,8 @@ class BaseFullService extends \app\controllers\FrontController
         $regi_subject_data = [];    //기본정보의 과목
         $list_question = [];        //과목의 항목 리스트
         $regi_question_data = [];   //과목별,항목별 통계
+        $survey_data = [];          //설문정보
+        $member_answer_data = [];   //회원 설문 응답 내역
 
         if ($this->isLogin() === true) {
             $mem_idx = $this->session->userdata('mem_idx');
@@ -73,13 +79,18 @@ class BaseFullService extends \app\controllers\FrontController
 
             if (empty($regi_data) === false) {
                 $arr_base['method'] = 'MOD';
-                $this->_arr_member_step[2] = 'on';
-
 
                 //설문데이터 조회 (2단계) /** todo : 3단계 오픈 임의 설정, 설문데이터 개발 완료 후 조건 추가 */
-                $this->_arr_member_step[3] = 'on';
+                $this->_arr_member_step[2] = 'on';
+                if(empty($ss_idx) === false){
+                    $survey_data = $this->_getSurveyQuestion($ss_idx);
+                    $member_answer_data = $this->_getMemberSurveyAnswer($ss_idx);
 
-
+                    if(empty($member_answer_data) === false){
+                        $this->_arr_member_step[3] = 'on';
+                    }
+                }
+                
                 //답안입력 (3단계)
                 if ($this->_arr_member_step[3] == 'on') {
                     //과목조회
@@ -102,12 +113,15 @@ class BaseFullService extends \app\controllers\FrontController
 
         $this->load->view('fullService/predict_tab2', [
             'predict_idx' => $predict_idx
+            ,'ss_idx' => $ss_idx
             ,'arr_member_step' => $this->_arr_member_step
             ,'arr_base' => $arr_base
             ,'regi_data' => $regi_data
             ,'regi_subject_data' => $regi_subject_data
             ,'list_question' => $list_question
             ,'regi_question_data' => $regi_question_data
+            ,'survey_data' => $survey_data
+            ,'member_answer_data' => $member_answer_data
         ]);
     }
 
@@ -119,6 +133,7 @@ class BaseFullService extends \app\controllers\FrontController
     {
         $predict_idx = (int)$this->_reqG('predict_idx');
         $pr_idx = (int)$this->_reqG('pr_idx');
+        $ss_idx = (int)$this->_reqG('ss_idx');
         $mem_idx = $this->session->userdata('mem_idx');
         
         if (empty($predict_idx) === true || empty($pr_idx) === true) {
@@ -158,6 +173,10 @@ class BaseFullService extends \app\controllers\FrontController
         //동일 직렬별 나의 성적 위치 (회원 기준 직렬)
         $arr_statsForTakeMockPartAvgData = $this->_statsForAvgData($predict_idx, $pr_idx, 'takemockpart');
 
+        //설문 데이터
+        $arr_surveyChartData = $this->_getSurveyChartData($ss_idx);
+
+
         $this->load->view('fullService/predict_tab3', [
             'regi_data' => $regi_data
             ,'arr_statsForGradesData' => $arr_statsForGradesData
@@ -166,6 +185,7 @@ class BaseFullService extends \app\controllers\FrontController
             ,'arr_statsForChartData' => $arr_statsForChartData
             ,'arr_statsForTotalAvgData' => $arr_statsForTotalAvgData
             ,'arr_statsForTakeMockPartAvgData' => $arr_statsForTakeMockPartAvgData
+            ,'arr_surveyChartData' => $arr_surveyChartData
         ]);
     }
 
@@ -240,6 +260,23 @@ class BaseFullService extends \app\controllers\FrontController
         }
 
         $result = $this->fullServiceFModel->storeAnswerPaper($this->_reqP(null, false));
+        $this->json_result($result, '저장되었습니다.', $result, $result);
+    }
+
+    /**
+     * 설문제출
+     */
+    public function storeSurveyAnswer()
+    {
+        $rules = [
+            ['field' => 'ss_idx', 'label' => '설문조사식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->fullServiceSurveyFModel->storeSurvey($this->_reqP(null, false));
         $this->json_result($result, '저장되었습니다.', $result, $result);
     }
 
@@ -409,4 +446,126 @@ class BaseFullService extends \app\controllers\FrontController
         $return = array_merge($result2, $result1, $result3);
         return $return;
     }
+
+    /**
+     * 설문항목 조회
+     * @param integer $ss_idx
+     * @return mixed
+     */
+    private function _getSurveyQuestion($ss_idx)
+    {
+        $data = [];
+
+        // 설문
+        $data['survey'] = $this->fullServiceSurveyFModel->findSurvey($ss_idx,$this->_site_code);
+        if(empty($data['survey']) === true){
+            show_alert('설문 기간이 아닙니다.','back');
+        }
+
+        // 설문항목
+        $arr_condition = ['EQ' => ['A.SsIdx' => $ss_idx, 'A.IsStatus' => 'Y', 'A.IsUse' => 'Y']];
+        $data['question'] = $this->fullServiceSurveyFModel->listSurveyForQuestion($arr_condition);
+        if(empty($data['question']) === true){
+            show_alert('등록되지 않은 설문입니다.','back');
+        }
+
+        $data['total_cnt'] = 0;
+        foreach ($data['question'] as $key => $row){
+            $data['question'][$key]['SqJsonData'] = json_decode($row['SqJsonData'], true);
+
+            // 설문 총 갯수
+            $data['total_cnt'] += count($data['question'][$key]['SqJsonData']);
+        }
+
+        return $data;
+    }
+
+    /**
+     * 회원별 설문응답 내역 조회
+     * @param integer $ss_idx
+     * @return mixed
+     */
+    private function _getMemberSurveyAnswer($ss_idx)
+    {
+        $data = $this->fullServiceSurveyFModel->findSurveyForAnswer($ss_idx);
+
+        if(empty($data) == false){
+            $data['AnswerInfo'] = json_decode($data['AnswerInfo'], true);
+        }
+
+        return $data;
+    }
+
+    /**
+     * 설문응답 차트 데이타 가공
+     * @param integer $ss_idx
+     * @return mixed
+     */
+    private function _getSurveyChartData($ss_idx)
+    {
+        $arr_decode_question = [];
+        $arr_question_title = [];
+        $arr_reset_question = []; // 문항 초기화
+        $answer_rate_data = []; // 최종 응답 비율
+
+        // 그래프 노출 문항
+        $arr_condition = [
+            'EQ' => ['A.SsIdx' => $ss_idx, 'A.IsStatus' => 'Y', 'A.IsUse' => 'Y'],
+            'IN' => ['A.SqComment' => ['graph1','graph2']]
+        ];
+        $question_data = $this->fullServiceSurveyFModel->listSurveyForQuestion($arr_condition);
+
+        // 문항 초기화
+        foreach ($question_data as $question_key => $question_val){
+            $question_decode_data = json_decode($question_val['SqJsonData'], true);
+
+            foreach ($question_decode_data as $item_k => $item_v){
+                foreach ($item_v['item'] as $k => $v){
+                    $arr_reset_question[$question_val['SqComment']][$question_val['SsqIdx']][$item_k][$k] = 0;
+                }
+            }
+
+            $arr_decode_question[$question_val['SsqIdx']] = $question_decode_data;
+            $arr_question_title[$question_val['SsqIdx']] = $question_val['SqTitle'];
+        }
+
+        // 설문응답 내역
+        $arr_condition = ['EQ' => ['A.SsIdx' => $ss_idx, 'A.IsStatus' => 'Y']];
+        $answer_data = $this->fullServiceSurveyFModel->listSurveyForAnswer($arr_condition);
+
+        foreach ($answer_data as $key => $row){
+            $answer_data[$key] = json_decode($row['AnswerInfo'], true);
+        }
+
+        // 응답횟수 누적
+        foreach ($arr_reset_question as $graph_key => $graph_val){
+            foreach ($answer_data as $answer_key => $answer_val){
+                foreach ($answer_val as $item_k => $item_v){
+                    if(empty($arr_reset_question[$graph_key][$item_k]) === false){
+                        foreach ($item_v as $k => $v){
+                            $arr_reset_question[$graph_key][$item_k][$k][$v] += 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 응답 비율 계산
+        foreach ($arr_reset_question as $graph_key => $graph_val){
+            foreach ($graph_val as $question_key => $question_val){
+                foreach ($question_val as $item_k => $item_v) {
+                    $arr_sum_question = array_sum($item_v);
+
+                    foreach ($item_v as $k => $v) {
+                        $question_title = $arr_question_title[$question_key];
+                        $question_item = $arr_decode_question[$question_key][$item_k]['item'][$k];
+                        $answer_rate_data[$graph_key][$question_title][$item_k][$question_item] = round(($v / $arr_sum_question) * 100, 0);
+                    }
+                }
+            }
+        }
+
+        return $answer_rate_data;
+    }
+    
 }

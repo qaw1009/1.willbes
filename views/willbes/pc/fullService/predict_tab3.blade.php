@@ -200,11 +200,13 @@
 <div class="graph_area">
     <div class="markSbtn3 bold">
         <a href="javascript:void(0)">PSAT 체감 난이도는?</a><br>
-        그래프 영역1
+        <div id="levelSubject1"></div>
+        <div id="levelSubject2"></div>
+        <div id="levelSubject3"></div>
     </div>
     <div class="markSbtn3 bold">
         <a href="javascript:void(0)">가장 어려웠던 과목은?</a><br>
-        그래프 영역2
+        <div id="hardSubject"></div>
     </div>
 </div>
 
@@ -232,7 +234,89 @@
         });
 
         drawVisualization();
+
+        // 가장 어려웠던 과목은?
+        hardSubject();
+        levelSubject();
     });
+
+    // 체감 난이도는?
+    function levelSubject() {
+        @if(empty($arr_surveyChartData['graph1']) === false)
+            var json_data = {!! json_encode($arr_surveyChartData['graph1']) !!};
+        @else
+            return;
+        @endif
+
+        var title, fields, values;
+        var options = [];
+        var cnt = 1;
+        $.each(json_data, function(key, val) {
+            title = key;
+            fields = [];
+            values = [];
+            $.each(val, function(item_k, item_v) {
+                $.each(item_v, function(k, v) {
+                    fields.push(k);
+                    values.push(v);
+                });
+            });
+
+            options = {
+                'dataset':{
+                    title: title,
+                    values: values,
+                    colorset: ['#4e67c8', '#a7ea52', "#5dceaf", "#ff8021", "#f14124"],
+                    fields: fields
+                },
+                'donut_width' : 85,
+                'core_circle_radius':0,
+                'chartDiv': 'levelSubject' + cnt,
+                'chartType': 'pie',
+                'chartSize': {width:400, height:300}
+            };
+            Nwagon.chart(options);
+
+            cnt++;
+        });
+    }
+
+    // 가장 어려웠단 과목은?
+    function hardSubject() {
+        @if(empty($arr_surveyChartData['graph2']) === false)
+            var json_data = {!! json_encode($arr_surveyChartData['graph2']) !!};
+        @else
+            return;
+        @endif
+
+        var fields = [];
+        var values = [];
+        var title = '';
+        $.each(json_data, function(key, val) {
+            title = key;
+            $.each(val, function(item_k, item_v) {
+                $.each(item_v, function(k, v) {
+                    fields.push(k);
+                    values.push(v);
+                });
+            });
+        });
+
+        var options = {
+            'dataset':{
+                title: title,
+                values: values,
+                colorset: ['#9c1f0a', '#ad4a00', "#ff8021"],
+                fields: fields
+            },
+            'donut_width' : 85,
+            'core_circle_radius':0,
+            'chartDiv': 'hardSubject',
+            'chartType': 'pie',
+            'chartSize': {width:700, height:300}
+        };
+        Nwagon.chart(options);
+    }
 
     function drawVisualization() {
         var arr_total_point = {!! json_encode($arr_statsForChartData['chart_total']) !!};

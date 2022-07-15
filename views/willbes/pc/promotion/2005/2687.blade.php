@@ -193,12 +193,13 @@
                     e.preventDefault();
                 });
             });
-            ajaxHtml2('{{$arr_promotion_params['PredictIdx']}}');
+            ajaxHtml2('{{$arr_promotion_params['PredictIdx']}}', '{{$arr_promotion_params['SsIdx']}}');
         });
 
-        function ajaxHtml2(predict_idx) {
+        function ajaxHtml2(predict_idx, ss_idx) {
             var data = {
-                'predict_idx' : predict_idx
+                'predict_idx' : predict_idx,
+                'ss_idx' : ss_idx
             };
             sendAjax('{{front_url('/fullService/ajaxHtml2')}}', data, function(d) {
                 $("#tab02").html(d);

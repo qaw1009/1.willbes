@@ -381,7 +381,7 @@ class SurveyModel extends WB_Model
      */
     public function listAnswerPopupData($ss_idx=null)
     {
-        $arr_condition = ['EQ' => ['A.SsIdx' => $ss_idx]];
+        $arr_condition = ['EQ' => ['A.SsIdx' => $ss_idx, 'A.IsStatus' => 'Y']];
         $column = "A.AnswerInfo, A.RegDatm, B.MemName, B.MemId";
         $from = "
             FROM {$this->_table['survey_set_answer']} AS A
@@ -401,7 +401,7 @@ class SurveyModel extends WB_Model
      */
     public function listAnswerGraphData($ss_idx=null)
     {
-        $arr_condition = ['EQ' => ['A.SsIdx' => $ss_idx]];
+        $arr_condition = ['EQ' => ['A.SsIdx' => $ss_idx, 'A.IsStatus' => 'Y']];
         $column = "A.AnswerInfo";
         $from = "
             FROM {$this->_table['survey_set_answer']} AS A

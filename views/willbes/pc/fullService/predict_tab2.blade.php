@@ -120,123 +120,46 @@
     <div class="stage">
         <span class="phase">2단계</span> <span class="bold">체감난이도 입력</span>
     </div>
-    <form id="" name="" method="POST" onsubmit="return false;" novalidate>
+    <form id="survey_answer_form" name="survey_answer_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        <input type="hidden" name="ss_idx" value="{{ $survey_data['survey']['SsIdx'] or '' }}">
+
         <table cellspacing="0" cellpadding="0" class="table_type">
             <col width="30%" />
             <col width="*" />
-            <tr>
-                <th>언어논리</th>
-                <td>
-                    <ul class="sel_info">
-                        <li><input type="radio" name="" id="" value="A" />
-                            매우 어려움
-                        </li>
-                        <li><input type="radio" name="" id="" value="B" />
-                            어려움
-                        </li>
-                        <li>
-                            <input type="radio" name="" id="" value="C" />
-                            보통
-                        </li>
-                        <li>
-                            <input type="radio" name="" id="" value="D" />
-                            쉬움
-                        </li>
-                        <li>
-                            <input type="radio" name="" id="" value="E" />
-                            매우 쉬움
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <th>상황판단</th>
-                <td>
-                    <ul class="sel_info">
-                        <li>
-                            <input type="radio" name="" id="" value="A" />
-                            매우 어려움 </li>
-                        <li>
-                            <input type="radio" name="" id="" value="B" />
-                            어려움 </li>
-                        <li>
-                            <input type="radio" name="" id="" value="C" />
-                            보통 </li>
-                        <li>
-                            <input type="radio" name="" id="" value="D" />
-                            쉬움 </li>
-                        <li>
-                            <input type="radio" name="" id="" value="E" />
-                            매우 쉬움 </li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <th>자료해석</th>
-                <td>
-                    <ul class="sel_info">
-                        <li>
-                            <input type="radio" name="" id="" value="A" />
-                            매우 어려움 </li>
-                        <li>
-                            <input type="radio" name="" id="" value="B" />
-                            어려움 </li>
-                        <li>
-                            <input type="radio" name="" id="" value="C" />
-                            보통 </li>
-                        <li>
-                            <input type="radio" name="" id="" value="D" />
-                            쉬움 </li>
-                        <li>
-                            <input type="radio" name="" id="" value="E" />
-                            매우 쉬움 </li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <th>전체</th>
-                <td>
-                    <ul class="sel_info">
-                        <li>
-                            <input type="radio" name="" id="" value="A" />
-                            매우 어려움 </li>
-                        <li>
-                            <input type="radio" name="" id="" value="B" />
-                            어려움 </li>
-                        <li>
-                            <input type="radio" name="" id="" value="C" />
-                            보통 </li>
-                        <li>
-                            <input type="radio" name="" id="" value="D" />
-                            쉬움 </li>
-                        <li>
-                            <input type="radio" name="" id="" value="E" />
-                            매우 쉬움 </li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <th><p>가장 어려웠던 과목</p></th>
-                <td>
-                    <ul class="sel_info">
-                        <li>
-                            <input type="radio" name="" id="" value="A" />
-                            언어논리
-                        </li>
-                        <li>
-                            <input type="radio" name="" id="" value="B" />
-                            상황판단</li>
-                        <li>
-                            <input type="radio" name="" id="" value="C" />
-                            자료해석</li>
-                    </ul>
-                </td>
-            </tr>
+            {{-- 단일선택형 --}}
+            @if(empty($survey_data['question']) === false)
+                @foreach($survey_data['question'] as $key => $row)
+                    <tr>
+                        <th>{{ $row['SqTitle'] }}</th>
+                        <td>
+                            <ul class="sel_info">
+                                @if(empty($row['SqJsonData']) === false)
+                                    @foreach($row['SqJsonData'] as $k => $v)
+                                        @for($i=1; $i<=$row['SqCnt']; $i++)
+                                            <li><input type="radio" name="survey_answer[{{$row['SsqIdx']}}][{{$k}}]" class="survey_answer_group" value="{{$i}}"
+                                                @if($member_answer_data['AnswerInfo'][$row['SsqIdx']][$k] == $i) checked="checked" @endif/>
+                                                {{ $v['item'][$i] }}
+                                            </li>
+                                        @endfor
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </td>
+                    </tr>
+                @endforeach
+            @endif
         </table>
     </form>
-    <div class="markSbtn1">
-        <a href="javascript:void(0)">설 문 완 료</a>
-    </div>
+    @if(empty($member_answer_data) === true)
+        <div class="markSbtn1">
+            <a href="javascript:void(0);" onclick="surveyAnswerSubmit(); return false;">설 문 완 료</a>
+        </div>
+    @else
+        <div class="markSbtn1">
+            <a href="javascript:alert('이미 설문에 참여하셨습니다.');">설 문 완 료</a>
+        </div>
+    @endif
 @endif
 
 @if ($arr_member_step[3] == 'on')
@@ -360,6 +283,7 @@
 <script type="text/javascript">
     var $regi_form = $('#regi_form');
     var $answer_form = $('#answer_form');
+    var $survey_answer_form = $('#survey_answer_form');
 
     $(document).ready(function() {
         $('.markTab').each(function(){
@@ -419,7 +343,7 @@
         var step_4 = '{{$arr_member_step[4]}}';
         if (step_4 == 'on') {
             parent.document.getElementById('_exam_type').value = 'Y';
-            ajaxHtml3('{{$predict_idx}}', pr_idx);
+            ajaxHtml3('{{$predict_idx}}', pr_idx, '{{$ss_idx}}');
             ajaxHtml4('{{$predict_idx}}', pr_idx);
         }
     });
@@ -454,7 +378,7 @@
         ajaxSubmit($regi_form, _url, function(ret) {
             if(ret.ret_cd) {
                 alert(ret.ret_msg);
-                ajaxHtml2('{{$predict_idx}}');
+                ajaxHtml2('{{$predict_idx}}', '{{$ss_idx}}');
             }
         }, showValidateError, null, false, 'alert');
     }
@@ -479,6 +403,36 @@
             return false;
         }
         return true;
+    }
+
+    /**
+     * 설문
+     */
+    function surveyAnswerSubmit() {
+        var vali_msg = '';
+
+        $('.survey_answer_group').each(function() {
+            if($(this).is(':visible')){
+                if($('input:radio[name="' + $(this).prop('name') + '"]').is(':checked') === false){
+                    alert($(this).prop('name'));
+                    vali_msg = '응답하지 않은 설문이 있습니다.' +  $(this).prop('name');
+                }
+            }else{
+                $(this).prop("checked",false);
+            }
+        });
+
+        if(vali_msg){ alert(vali_msg); return; }
+
+        if (confirm('설문을 제출하시겠습니까?')) {
+            var _url = '{{ front_url('/fullService/storeSurveyAnswer') }}';
+            ajaxSubmit($survey_answer_form, _url, function (ret) {
+                if (ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    ajaxHtml2('{{$predict_idx}}', '{{$ss_idx}}');
+                }
+            }, showValidateError, null, false, 'alert');
+        }
     }
 
     /**
@@ -514,7 +468,7 @@
             ajaxSubmit($answer_form, _url, function (ret) {
                 if (ret.ret_cd) {
                     alert(ret.ret_msg);
-                    ajaxHtml2('{{$predict_idx}}');
+                    ajaxHtml2('{{$predict_idx}}', '{{$ss_idx}}');
                 }
             }, showValidateError, null, false, 'alert');
         }
@@ -529,7 +483,7 @@
             ajaxSubmit($regi_form, _url, function (ret) {
                 if (ret.ret_cd) {
                     alert(ret.ret_msg);
-                    ajaxHtml2('{{$predict_idx}}');
+                    ajaxHtml2('{{$predict_idx}}', '{{$ss_idx}}');
                 }
             }, showValidateError, null, false, 'alert');
         }
@@ -545,10 +499,11 @@
     }
 
     //성적확인 및 분석 탭
-    function ajaxHtml3(predict_idx, pr_idx) {
+    function ajaxHtml3(predict_idx, pr_idx, ss_idx) {
         var data = {
             'predict_idx' : predict_idx
             ,'pr_idx' : pr_idx
+            ,'ss_idx' : ss_idx
         };
         if (pr_idx == '') { return false; }
 

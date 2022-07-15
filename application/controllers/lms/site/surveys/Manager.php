@@ -282,7 +282,9 @@ class Manager extends \app\controllers\BaseController
 
         // 설문 항목 매칭
         foreach ($answer_data as $key => $val){
-            $answer_data[$key]['AnswerInfo'] = $this->_matchingQuestionData($question_data,$val['AnswerInfo']);
+            if(empty($val['AnswerInfo']) === false){
+                $answer_data[$key]['AnswerInfo'] = $this->_matchingQuestionData($question_data,$val['AnswerInfo']);
+            }
         }
 
         $this->load->view('site/survey/survey_data_popup', [
@@ -297,7 +299,8 @@ class Manager extends \app\controllers\BaseController
      * @param $answer_data
      * @return mixed
      */
-    private function _matchingQuestionData($question_data=[],$answer_data=[]){
+    private function _matchingQuestionData($question_data=[],$answer_data=[])
+    {
         $data = [];
         $new_question_info = [];
 
@@ -306,20 +309,22 @@ class Manager extends \app\controllers\BaseController
         }
 
         foreach ($answer_data as $question_key => $answer){
-            $SqTitle = $new_question_info[$question_key]['SqTitle'];
-            $SqType = $new_question_info[$question_key]['SqType'];
-            $typeName = $this->surveyModel->_selection_type[$SqType];
+            if(empty($new_question_info[$question_key]) === false){
+                $SqTitle = $new_question_info[$question_key]['SqTitle'];
+                $SqType = $new_question_info[$question_key]['SqType'];
+                $typeName = $this->surveyModel->_selection_type[$SqType];
 
-            foreach ((array)$answer as $key => $val){
-                $question_data = $new_question_info[$question_key]['SqJsonData'][$key];
+                foreach ((array)$answer as $key => $val){
+                    $question_data = $new_question_info[$question_key]['SqJsonData'][$key];
 
-                if($SqType == 'D'){ // 서술형
-                    $question_data['item'][$val] = $val;
-                }else if(in_array($SqType,array('M','T'))){ // 선택형(그룹), 복수형
-                    $typeName = $question_data['title'];
+                    if($SqType == 'D'){ // 서술형
+                        $question_data['item'][$val] = $val;
+                    }else if(in_array($SqType,array('M','T'))){ // 선택형(그룹), 복수형
+                        $typeName = $question_data['title'];
+                    }
+
+                    $data[$SqTitle][$SqType][$typeName] = $question_data['item'][$val];
                 }
-
-                $data[$SqTitle][$SqType][$typeName] = $question_data['item'][$val];
             }
         }
 
@@ -377,10 +382,12 @@ class Manager extends \app\controllers\BaseController
     private function _countSurveyRecords($answer_data=[],$reset_data=[])
     {
         foreach ($answer_data as $key => $val){
-            foreach ($val['AnswerInfo'] as $question_key => $answer){
-                if(empty($reset_data[$question_key]) === false && $reset_data[$question_key] != 'D'){ // 서술형 제외
-                    foreach ($answer as $k => $v){
-                        $reset_data[$question_key][$k][$v] += 1;
+            if(empty($val['AnswerInfo']) === false){
+                foreach ($val['AnswerInfo'] as $question_key => $answer){
+                    if(empty($reset_data[$question_key]) === false && $reset_data[$question_key] != 'D'){ // 서술형 제외
+                        foreach ($answer as $k => $v){
+                            $reset_data[$question_key][$k][$v] += 1;
+                        }
                     }
                 }
             }
@@ -399,21 +406,23 @@ class Manager extends \app\controllers\BaseController
     {
         $data = [];
         foreach ($answer_data as $question_key => $answer){
-            $SqType = $new_question_data[$question_key]['SqType'];
-            $SqTitle = $new_question_data[$question_key]['SqTitle'];
-            if($SqType != 'D'){ // 서술형 제외
-                foreach ((array)$answer as $key => $val){
-                    $question_info = $new_question_data[$question_key]['SqJsonData'][$key];
-                    $item_sum = array_sum($val);
+            if(empty($new_question_data[$question_key]) === false){
+                $SqType = $new_question_data[$question_key]['SqType'];
+                $SqTitle = $new_question_data[$question_key]['SqTitle'];
+                if($SqType != 'D'){ // 서술형 제외
+                    foreach ((array)$answer as $key => $val){
+                        $question_info = $new_question_data[$question_key]['SqJsonData'][$key];
+                        $item_sum = array_sum($val);
 
-                    if($item_sum > 0){
-                        foreach ($val as $k => $v){
-                            if(in_array($SqType,array('M','T'))) { // 선택형(그룹), 복수형
-                                $data[$SqTitle][$question_info['title']][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
-                                $data[$SqTitle][$question_info['title']][$question_info['item'][$k]]['count'] = $v;
-                            }else{
-                                $data[$SqTitle][$SqType][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
-                                $data[$SqTitle][$SqType][$question_info['item'][$k]]['count'] = $v;
+                        if($item_sum > 0){
+                            foreach ($val as $k => $v){
+                                if(in_array($SqType,array('M','T'))) { // 선택형(그룹), 복수형
+                                    $data[$SqTitle][$question_info['title']][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
+                                    $data[$SqTitle][$question_info['title']][$question_info['item'][$k]]['count'] = $v;
+                                }else{
+                                    $data[$SqTitle][$SqType][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
+                                    $data[$SqTitle][$SqType][$question_info['item'][$k]]['count'] = $v;
+                                }
                             }
                         }
                     }
@@ -519,21 +528,23 @@ class Manager extends \app\controllers\BaseController
         $survey_data = [];
         foreach ($series_data as $series_key => $series_val){
             foreach ($series_val as $question_key => $answer) {
-                $SqType = $new_question_data[$question_key]['SqType'];
-                $SqTitle = $new_question_data[$question_key]['SqTitle'];
+                if(empty($new_question_data[$question_key]) === false){
+                    $SqType = $new_question_data[$question_key]['SqType'];
+                    $SqTitle = $new_question_data[$question_key]['SqTitle'];
 
-                foreach ($answer as $answer_key => $answer_val) {
-                    $question_info = $new_question_data[$question_key]['SqJsonData'][$answer_key];
-                    $item_sum = array_sum($answer_val);
+                    foreach ($answer as $answer_key => $answer_val) {
+                        $question_info = $new_question_data[$question_key]['SqJsonData'][$answer_key];
+                        $item_sum = array_sum($answer_val);
 
-                    if($item_sum > 0){
-                        foreach ($answer_val as $k => $v){
-                            if(in_array($SqType,array('M','T'))) { // 선택형(그룹), 복수형
-                                $survey_data[$series_info[$series_key]][$SqTitle][$question_info['title']][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
-                                $survey_data[$series_info[$series_key]][$SqTitle][$question_info['title']][$question_info['item'][$k]]['count'] = $v;
-                            }else{
-                                $survey_data[$series_info[$series_key]][$SqTitle][$SqType][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
-                                $survey_data[$series_info[$series_key]][$SqTitle][$SqType][$question_info['item'][$k]]['count'] = $v;
+                        if($item_sum > 0){
+                            foreach ($answer_val as $k => $v){
+                                if(in_array($SqType,array('M','T'))) { // 선택형(그룹), 복수형
+                                    $survey_data[$series_info[$series_key]][$SqTitle][$question_info['title']][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
+                                    $survey_data[$series_info[$series_key]][$SqTitle][$question_info['title']][$question_info['item'][$k]]['count'] = $v;
+                                }else{
+                                    $survey_data[$series_info[$series_key]][$SqTitle][$SqType][$question_info['item'][$k]]['spread'] = round(($v / $item_sum) * 100, 0);
+                                    $survey_data[$series_info[$series_key]][$SqTitle][$SqType][$question_info['item'][$k]]['count'] = $v;
+                                }
                             }
                         }
                     }

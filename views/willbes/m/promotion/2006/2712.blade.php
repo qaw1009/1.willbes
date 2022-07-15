@@ -45,7 +45,7 @@
     <div id="Container" class="Container NSK c_both">
 
         <div class="evtCtnsBox evt_top" data-aos="fade-down">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2715m_top.jpg" alt="김영식 경제학" />
+			<img src="https://static.willbes.net/public/images/promotion/2022/07/2715m_top.jpg" alt="김영식 경영학" />
 		</div>
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">
@@ -53,7 +53,7 @@
 		</div>
 
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2715m_02.jpg" alt="경제학원론 대비 포인트" />
+			<img src="https://static.willbes.net/public/images/promotion/2022/07/2715m_02.jpg" alt="경영학원론 대비 포인트" />
 		</div>
 
         <div class="evtCtnsBox evt_03" data-aos="fade-up">
@@ -72,12 +72,12 @@
             <div class="check">
                 <label>
                     <input type="checkbox" name="ischk" value="Y">
-                    페이지 하단 경제학 MASTER PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+                    페이지 하단 경영학 MASTER PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#careful">이용안내확인하기 ↓</a>
             </div>
             <a href="javascript:go_PassLecture('199395');" >
-            경제학 MASTER PASS 수강신청 ▶
+                민법 MASTER PASS 수강신청 바로가기  ▶
             </a>
         </div>
 
@@ -86,8 +86,8 @@
 				<h4 class="NSK-Black">상품 이용안내</h4>
 				<div class="infoTit"><strong>상품구성</strong></div>
 				<ul>				
-                    <li>2022년 8월에 진행되는 2023 경제학 여름방학 선행학습 기본이론 강의와<br>
-                        2023년 2월 ~ 5월까지 진행되는 2023 경제학 기본이론, 문제풀이, 최종정리 강의가 제공됩니다.
+                    <li>2022년 8월에 진행되는 2023 경영학 여름방학 선행학습 기본이론 강의와<br>
+                        2023년 2월 ~ 5월까지 진행되는 2023 경영학 기본이론, 문제풀이, 최종정리 강의가 제공됩니다.
                     </li>                   
 				</ul>
 				<div class="infoTit"><strong>수강관련</strong></div>

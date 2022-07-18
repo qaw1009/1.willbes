@@ -85,7 +85,7 @@
     .markSbtn2 {display:inline;padding:10px;background:#2260ff; color:#fff;margin:0 5px}
     .graph_area {font-size:17px;line-height:1.5;text-align:left;width:720px;margin:0 auto;padding-bottom:5px;text-align:center;}
     .graph_area::after {content:'';display:block;clear:both;}
-    .markSbtn3 {display:inline;float:left;width:50%;}
+    .markSbtn3 {display:inline;width:100%;}
     .recheck_area {margin:50px;}
 
     .grading_result {width:720px;margin:0 auto;}
@@ -124,7 +124,7 @@
         -webkit-appearance: none;
         margin: 0;
     }
-    
+
     </style>
 
     <!-- Container -->

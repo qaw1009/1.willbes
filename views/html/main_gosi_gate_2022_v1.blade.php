@@ -23,7 +23,7 @@
     .gosi-gate-v3 .will-nTit span {color:#000}
 
     .gosi-gate-secTop {position:relative; padding-top:56px;  }
-    .gosi-gate-secTop .gosi-gate-search {position:absolute; top:25px;}
+    .gosi-gate-secTop .gosi-gate-search {position:absolute; top:35px;}
 
     .topMenu {position: absolute; width:1120px; left:50%; margin-left:-560px; top:40px;  z-index: 0;}
     .topMenu .banner {margin-top:10px}

@@ -308,7 +308,7 @@
             });
         });
 
-        $('.btn-open-tab4').on('click', function () {
+        $('.btn-open-tab4').on('click', function (e) {
             $('.tabs').each(function(){
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[1] || $links[1]);
@@ -491,7 +491,7 @@
 
     function answerDataMaxLengthCheck(object) {
         if($(object).prop('type') == 'number') {
-            object.value = object.value.replace(/[^0-9.]/g, "");
+            object.value = object.value.replace(/[^1-5.]/g, "");
         }
         if (object.value.length > object.maxLength) {
             object.value = object.value.slice(0, object.maxLength);

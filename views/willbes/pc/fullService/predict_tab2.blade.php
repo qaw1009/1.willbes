@@ -49,12 +49,16 @@
                 @endforeach
                 <span class="_subject_box"></span>
 
+                @if ($__cfg['SiteCode'] == '2005')
+                    <input type="hidden" name="take_area" id="take_area" value="{{array_key_first($arr_base['arr_area'])}}">
+                @else
                 <select title="지역구분" name="take_area" id="take_area">
                     <option value="">지역</option>
                     @foreach($arr_base['arr_area'] as $key => $val)
                         <option value="{{ $key }}" @if($regi_data['TakeArea'] == $key) selected="selected" @endif>{{ $val }}</option>
                     @endforeach
                 </select>
+                @endif
             </td>
         </tr>
         <tr>

@@ -255,7 +255,7 @@ class PredictModel extends WB_Model
 
         $def_column = "
             PR.ApplyType,MemName,PR.MemIdx,MemId,AddPoint,fn_dec(M.PhoneEnc) AS Phone,
-            (SELECT CcdValue FROM lms_predict_code WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
+            (SELECT IFNULL(CcdValue,CcdName) FROM lms_predict_code WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
             (SELECT CcdValue FROM lms_sys_code WHERE Ccd = PR.TaKeArea) AS TaKeArea,
             TaKeNumber,IF(LectureType = 1, '온라인강의', IF(LectureType = 2, '학원강의', IF(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
             IF(Period = 1, '6개월 이하', IF(Period = 2, '1년 이하', IF(Period = 3, '2년 이하', '2년 이상'))) AS Period,

@@ -188,7 +188,7 @@
                                 <div>
                                     <label>{{$no_val}}번</label>
                                     <input type="number" class="txt-answer" id="target_{{$_id}}" data-input-id="{{$_id}}" name="answer[{{$row['PpIdx']}}][]" maxlength="5"
-                                           oninput="answerDataMaxLengthCheck(this)" value="{{ $list_question['answer'][$row['PpIdx']][$no_key] }}">
+                                           oninput="answerDataMaxLengthCheck(this)" value="{{ $list_question['answer'][$row['PpIdx']][$no_key] }}" {{ ($arr_member_step[4] == 'on' ? 'disabled' : '') }}>
                                 </div>
                             </li>
                             @php $_id++; @endphp
@@ -198,8 +198,10 @@
             @endforeach
         </div>
     </form>
-    <div class="markSbtn1">
-        <a href="javascript:void(0)" onclick="answerSubmit(); return false;">채 점 하 기</a>
+    <div class="markSbtn1 mb35">
+        @if ($arr_member_step[4] != 'on')
+            <a href="javascript:void(0)" onclick="answerSubmit(); return false;">채 점 하 기</a>
+        @endif
     </div>
 @endif
 

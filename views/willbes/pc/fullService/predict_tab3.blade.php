@@ -1,5 +1,5 @@
 <div class="stage">
-    <span class="bold">OOO님의 응시 정보</span>
+    <span class="bold">{{sess_data('mem_name')}}님의 응시 정보</span>
 </div>
 <table cellspacing="0" cellpadding="0" class="table_type">
     <col width="153" span="4" />

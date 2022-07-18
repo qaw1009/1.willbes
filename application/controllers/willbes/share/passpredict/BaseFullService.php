@@ -169,6 +169,7 @@ class BaseFullService extends \app\controllers\FrontController
             show_alert('조회된 기본 정보가 없습니다.');
         }
         $arr_statsForGradesData = $this->fullServiceFModel->statsForGradesData($predict_idx, $pr_idx);
+
         $arr_subject[0] = '전체평균';
         foreach ($arr_statsForGradesData['list'] as $row) {
             $arr_subject[$row['GroupBy']] = $row['SubjectName'];

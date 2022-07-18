@@ -25,7 +25,7 @@
 
 
         .intro .newsWrap {margin-top:6%; position: relative; display:flex; justify-content: space-between; align-items: top}
-        .intro .newsWrap .swiper-wrapper img {border-radius:10px;} 
+        .intro .newsWrap .swiper-wrapper img {border-radius:10px;}
         .intro .newsWrap .swiper-sec02-wrap {
             overflow: hidden;
             width:calc(100%);
@@ -34,7 +34,7 @@
         .intro .swiper-sec02-wrap .gosiTitle {margin-left:0}
         .intro .swiper-sec02-wrap .swiper-wrapper {display: flex; justify-content:flex-start; height: auto;}
         .intro .swiper-sec02-wrap .swiper-sec02 .swiper-slide {
-            width:420px; margin-right:1.3%; align-items: flex-start; 
+            width:420px; margin-right:1.3%; align-items: flex-start;
         }
         .intro .swiper-sec02-wrap .swiper-slide a {
             display: block;
@@ -49,7 +49,7 @@
             font-size: 12px;
         }
         .intro .swiper-sec02-wrap .swiper-slide img {
-            width:100%; 
+            width:100%;
         }
 
         .intro .swiper-sec03 {margin-top:10%; padding-bottom:30px;}
@@ -119,7 +119,7 @@
         }
         .intro .swiper-sec05 .swiper-slide img {
             width: 100%;
-        }        
+        }
 
 
         .intro .swiper-sec06-Wrap {
@@ -155,7 +155,7 @@
             }
 
             .intro .swiper-sec02-wrap .swiper-sec02 .swiper-slide {
-                width:60%; margin-right:1%; 
+                width:60%; margin-right:1%;
             }
 
             .tpassWrap .prfoWrap > div {font-size:1.4vh; width:calc(20% - 6px); margin:0 3px 20px;}
@@ -163,8 +163,8 @@
 
             .intro .swiper-sec05 .swiper-slide {width: 160px;}
             .intro .swiper-sec06-Wrap .swiper-slide {
-                width: 150px; 
-            }            
+                width: 150px;
+            }
         }
 
         @@media only screen and (min-width: 375px) and (max-width: 640px) {
@@ -182,7 +182,7 @@
             }
 
             .intro .swiper-sec02-wrap .swiper-sec02 .swiper-slide {
-                width:60%; margin-right:1%; 
+                width:60%; margin-right:1%;
             }
             .intro .swiper-sec02-wrap .swiper-sec02 .swiper-slide:last-child {margin-right:0}
 
@@ -192,7 +192,7 @@
             .intro .swiper-sec05 .swiper-slide {width: 165px;}
 
             .intro .swiper-sec06-Wrap .swiper-slide {
-                width: 150px; 
+                width: 150px;
             }
         }
     </style>
@@ -206,8 +206,8 @@
                         @if(isset($data['banner']['M_게이트_메인배너']) === true)
                             @for($i=0; $i<count($data['banner']['M_게이트_메인배너']); $i++)
                                 <li class="swiper-slide">
-{{--                                    {!! banner_html(array($data['banner']['M_게이트_메인배너'][$i])) !!}--}}
-                                    {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($data['banner']['M_게이트_메인배너'][$i]))) !!}
+                                    {!! banner_html(array($data['banner']['M_게이트_메인배너'][$i])) !!}
+                                    {{--                                    {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($data['banner']['M_게이트_메인배너'][$i]))) !!}--}}
                                 </li>
                             @endfor
                         @endif
@@ -218,32 +218,32 @@
             <div class="mainTopBnList">
                 <ul class="mainTopBn">
                     <li><a data-swiper-slide-index="0" href="javascript:void(0);" class="active">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_01.jpg" alt="배너명">
-                                    9급PASS<br>할인</a></li>
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_01.jpg" alt="배너명">
+                            9급PASS<br>할인</a></li>
                     <li><a data-swiper-slide-index="1" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_02.jpg" alt="배너명">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_02.jpg" alt="배너명">
                             윌비스<br>세무팀</a></li>
                     <li><a data-swiper-slide-index="2" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_03.jpg" alt="배너명">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_03.jpg" alt="배너명">
                             불꽃소방<br>신규개강</a></li>
                     <li><a data-swiper-slide-index="3" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_04.jpg" alt="배너명">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_04.jpg" alt="배너명">
                             농업직<br>통신직</a></li>
                     <li><a data-swiper-slide-index="4" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_05.jpg" alt="배너명">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_05.jpg" alt="배너명">
                             축산직<br>조경직</a></li>
                     <li><a data-swiper-slide-index="5" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_06.jpg" alt="배너명">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_06.jpg" alt="배너명">
                             군무원<br>행정직</a></li>
                     <li><a data-swiper-slide-index="6" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_07.jpg" alt="배너명">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_07.jpg" alt="배너명">
                             검찰직<br>신규런칭</a></li>
                     <li><a data-swiper-slide-index="7" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_08.jpg" alt="배너명">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_08.jpg" alt="배너명">
                             7급<br>PSAT</a></li>
                     <li><a data-swiper-slide-index="8" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_09.jpg" alt="배너명">
-                                    김동진<br>법원팀</a></li>
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_09.jpg" alt="배너명">
+                            김동진<br>법원팀</a></li>
                 </ul>
             </div>
         </div>
@@ -256,13 +256,20 @@
                 <div class="swiper-sec02">
                     <div class="swiper-wrapper">
 
-                        @if(isset($data['banner']['M_게이트_주목']) === true)
-                            @for($i=0; $i<count($data['banner']['M_게이트_주목']); $i++)
+                        @if(empty($data['banner']['M_게이트_주목']) === false)
+                            @foreach($data['banner']['M_게이트_주목'] as $key => $row)
                                 <div class="swiper-slide">
-{{--                                    {!! banner_html(array($data['banner']['M_게이트_주목'][$i])) !!}--}}
-                                    {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($data['banner']['M_게이트_주목'][$i]))) !!}
+                                    @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
+                                        <a href="javascript:void(0);">
+                                            <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                        </a>
+                                    @else
+                                        <a href="{{front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www')}}" target="{{$row['LinkType']}}">
+                                            <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                        </a>
+                                    @endif
                                 </div>
-                            @endfor
+                            @endforeach
                         @endif
 
                     </div>
@@ -271,8 +278,8 @@
         </div>
 
         <div class="swiper-container swiper-sec03">
-            {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(element('M_게이트_초보가이드', $data['banner']))) !!}
-{{--            {!! banner_html(element('M_게이트_초보가이드', $data['banner'])) !!}--}}
+            {{--            {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(element('M_게이트_초보가이드', $data['banner']))) !!}--}}
+            {!! banner_html(element('M_게이트_초보가이드', $data['banner'])) !!}
         </div>
 
         <div class="tpassWrap">
@@ -281,14 +288,20 @@
             </div>
             <div class="swiper-container swiper-sec04">
                 <div class="swiper-wrapper">
-
-                    @if(isset($data['banner']['M_게이트_무제한수강']) === true)
-                        @for($i=0; $i<count($data['banner']['M_게이트_무제한수강']); $i++)
+                    @if(empty($data['banner']['M_게이트_무제한수강']) === false)
+                        @foreach($data['banner']['M_게이트_무제한수강'] as $key => $row)
                             <div class="swiper-slide">
-                                {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($data['banner']['M_게이트_무제한수강'][$i])) ) !!}
-{{--                                {!! banner_html(array($data['banner']['M_게이트_무제한수강'][$i])) !!}--}}
+                                @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
+                                    <a href="javascript:void(0);">
+                                        <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                    </a>
+                                @else
+                                    <a href="{{front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www')}}" target="{{$row['LinkType']}}">
+                                        <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                    </a>
+                                @endif
                             </div>
-                        @endfor
+                        @endforeach
                     @endif
 
                 </div>
@@ -297,11 +310,19 @@
             </div>
 
             <div class="prfoWrap">
-                @if(isset($data['banner']['M_게이트_과목별교수']))
-                    @foreach(element('M_게이트_과목별교수', $data['banner']) as $row)
+                @if(empty($data['banner']['M_게이트_과목별교수']) === false)
+                    @foreach($data['banner']['M_게이트_과목별교수'] as $key => $row)
                         <div>
-                            {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($row), '', '', false, 'none', '', 'castTitle') ) !!}
-{{--                            {!! banner_html(array($row), '', '', false, 'none', '', 'castTitle') !!}--}}
+                            @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
+                                <a href="javascript:void(0);">
+                                    <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                </a>
+                            @else
+                                <a href="{{front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www')}}" target="{{$row['LinkType']}}">
+                                    <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                </a>
+                            @endif
+                            <div class="castTitle">{{$row['BannerName']}}</div>
                         </div>
                     @endforeach
                 @endif
@@ -358,7 +379,6 @@
                             </div>
                         @endforeach
                     @endif
-
                 </div>
             </div>
         </div>
@@ -416,7 +436,7 @@
             @include('willbes.m.site.main_partial.app_player')
         </div>
     </div>
-
+    <script src="/public/vendor/jquery/swiper/swiper.min.js"></script>
     <script>
         //swiper 메인 슬라이드
         $(document).ready(function(){
@@ -483,14 +503,14 @@
                 })}, 200);
             }
         });
-        
+
 
         //입성
         var swiper2 = new Swiper('.swiper-sec02', {
-        slidesPerView: 'auto',
-        slidesPerColumn: 1,
-        spaceBetween: 0,
-        autoplay: {
+            slidesPerView: 'auto',
+            slidesPerColumn: 1,
+            spaceBetween: 0,
+            autoplay: {
                 delay: 3000,
                 disableOnInteraction: false,
             }, //3초에 한번씩 자동 넘김

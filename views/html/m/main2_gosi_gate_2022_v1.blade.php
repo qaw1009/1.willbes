@@ -110,9 +110,9 @@
             left:0;
             right: 0;
         }
-        .tpassWrap .prfoWrap {margin:6% auto; display:flex; flex-wrap: wrap; justify-content: center;}
-        .tpassWrap .prfoWrap a {font-size:1.6vh; font-weight:bold; text-align:center; display:block; width:calc(20% - 8px); margin:0 4px 20px;}
-        .tpassWrap .prfoWrap a img {border:1px solid #e6e6e6; border-radius:30px; overflow: hidden; display:block; margin:0 auto 10px; max-width:100%}
+        .tpassWrap .prfoWrap {margin:6% auto; display:flex; flex-wrap: wrap; flex-wrap: wrap; justify-content: space-between;}
+        .tpassWrap .prfoWrap > div {font-size:1.6vh; font-weight:bold; text-align:center; width:calc(20% - 8px); margin:0 4px 20px;}
+        .tpassWrap .prfoWrap div img {border:1px solid #e6e6e6; border-radius:30px; overflow: hidden; display:block; margin:0 auto 10px; max-width:100%}
 
 
 
@@ -187,8 +187,8 @@
                 width:60%; margin-right:1%; 
             }
 
-            .tpassWrap .prfoWrap a {font-size:1.4vh; width:calc(20% - 6px); margin:0 3px 20px;}
-            .tpassWrap .prfoWrap a img {border-radius:10px;}
+            .tpassWrap .prfoWrap div {font-size:1.4vh; width:calc(20% - 6px); margin:0 3px 20px;}
+            .tpassWrap .prfoWrap div img {border-radius:10px;}
 
             .intro .swiper-sec05 .swiper-slide {width: 160px;}
             .intro .swiper-sec06-Wrap .swiper-slide {
@@ -215,8 +215,8 @@
             }
             .intro .swiper-sec02-wrap .swiper-sec02 .swiper-slide:last-child {margin-right:0}
 
-            .tpassWrap .prfoWrap a {font-size:1.5vh; width:calc(20% - 6px); margin:0 3px 20px;}
-            .tpassWrap .prfoWrap a img {border-radius:20px;}
+            .tpassWrap .prfoWrap div {font-size:1.5vh; width:calc(20% - 6px); margin:0 3px 20px;}
+            .tpassWrap .prfoWrap div img {border-radius:20px;}
 
             .intro .swiper-sec05 .swiper-slide {width: 165px;}
 
@@ -565,7 +565,7 @@
     <div class="newsWrap">
         <div class="swiper-sec02-wrap">
             <div class="gosiTitle NSK">
-            지금 윌비스에서<strong class="NSK-Black">주목해야 할 강의!</strong>
+            지금 윌비스에서 <strong class="NSK-Black">주목해야 할 강의!</strong>
             </div>
             <div class="swiper-sec02">
                 <div class="swiper-wrapper">
@@ -607,46 +607,66 @@
         </div>
 
         <div class="prfoWrap">
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">
-                국어<br>오대혁
-            </a>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">
-                영어<br>한덕현
-            </a>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">
-                한국사<br>김상범
-            </a>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">
-                행정법<br>황남기
-            </a>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">
-                행정학<br>김철
-            </a>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">
-                소방직<br>이종오
-            </a>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">
-                행정법<br>이석준
-            </a>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">
-                조경직<br>이윤주
-            </a>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">
-                축산직<br>윤용범
-            </a>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">
-                축산직<br>윤용범
-            </a>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">                        
+                </a>
+                <div class="castTitle">국어 오대혁</div>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">                        
+                </a>
+                <div class="castTitle">국어 오대혁</div>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">                        
+                </a>
+                <div class="castTitle">국어 오대혁</div>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">                        
+                </a>
+                <div class="castTitle">국어 오대혁</div>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">                        
+                </a>
+                <div class="castTitle">국어 오대혁</div>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">                        
+                </a>
+                <div class="castTitle">국어 오대혁</div>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">                        
+                </a>
+                <div class="castTitle">국어 오대혁</div>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">                        
+                </a>
+                <div class="castTitle">국어 오대혁</div>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">                        
+                </a>
+                <div class="castTitle">국어 오대혁</div>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_100.jpg" alt="배너명">                        
+                </a>
+                <div class="castTitle">국어 오대혁</div>
+            </div>
         </div>
     </div>
 

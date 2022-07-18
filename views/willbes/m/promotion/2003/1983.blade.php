@@ -15,25 +15,6 @@
     .dday {font-size:2.5vh; padding:10px; background:#ebebeb; color:#000; text-align:left; letter-spacing:-1px}
     .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
     .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#3a99f0; font-size:1.5vh;}
-/*
-    .passWrap {display:flex; margin:5vh 0; font-size:1.7vh; text-align:left}
-    .passLec {margin:0 5px; padding:20px; border:3px solid #a47002; width:50%}
-    .passLec h5 {font-size:2.4vh; text-align:center; margin-bottom:20px; font-weight:bold; color:#a47002}
-    .passLec li { list-style-type: disc; margin-left:20px; margin-bottom:10px}
-    .passLec li:first-child {list-style:none; font-size:2vh; margin-top:20px; text-align:center}
-
-    .passLec input {height:24px; width:24px; vertical-align:middle}
-    .passLec label {font-size:2.2vh; color:#a47002; font-weight:bold; margin-left:10px}
-    .passLec p {font-size:1.4vh;color:red;}
-
-    .check {padding:0 10px}
-    .check p {margin-bottom:50px;padding:40px 10px 0;}
-    .check p a {display:block; width:80%; margin:0 auto; font-size:2.6vh; color:#fff; background:#111; text-align:center; border-radius:50px; padding:10px 0}
-    .check p a:hover {background:#a47002;}
-    .check label {cursor:pointer;color:#000;font-weight:bold;font-size:15px;}
-    .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-    .check a.infotxt {display:inline-block; padding:5px 10px;color:#fff; background:#000; margin-left:10px; border-radius:20px}
-    .check a.infotxt:hover {background:#a47002}   */
 
     .event05 {padding:10vh 0}
 
@@ -137,52 +118,7 @@
         </div>
 
         <div class="evtCtnsBox event05" data-aos="fade-up" id="evt01">
-            {{--
-            <div class="passWrap">
-                <div class="passLec">
-                    <h5>2023 세무직 PASS</h5>
-                    <ul>
-                        <li>
-                            <div><input type="radio" id="y_pkg3" name="y_pkg" value="189939" onClick=""/><label for="y_pkg3">490,000원</label></div>
-                            <p>* 지금 구매 시 3만포인트 추가 제공!</p>
-                        </li>
-                        <li>과목/교수진<br>
-                            - 국어 오대혁, 영어 한덕현, 한국사 김상범, 회계학 이윤호, 세법 박창한</li>
-                        <li>수강기간<br>
-                            - 2023년 4월까지 배수 제한 없는 <strong>무제한 수강</strong></li>
-                        <li>기기대수<br>
-                            - PC or 모바일 총 2대지원</li>
-                        <li>혜택<br>
-                            ① 무편집 LIVE 제공<br>
-                            ② 2023 대비 신규 진행 전 과정<br>
-                            ③ 온라인 모의고사 진행 시 무료 응시</li>
-                    </ul>
-                </div>
-                <div class="passLec">
-                    <h5>세무직 전공과목 T-PASS</h5>
-                    <ul>
-                        <li>
-                            <div><input type="radio" id="y_pkg2" name="y_pkg" value="176415" onClick=""/><label for="y_pkg2">340,000원</label></div>
-                        </li>
-                        <li>과목/교수진<br>
-                            - 회계학 이윤호, 세법 박창한</li>
-                        <li>기기대수<br>
-                            - PC or 모바일 총 2대지원</li>
-                        <li>혜택<br>
-                            ① 2023 대비 신규 진행 전 과정</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="check" id="chkInfo">               
-                <label>
-                    <input name="ischk" type="checkbox" value="Y" />
-                    페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
-                </label>
-                <a href="#tip" class="infotxt" > 유의사항 자세히보기 ↓</a>
-                <p class="NGEB"><a onclick="go_PassLecture(1);" target="_blank">지금 바로 신청하기 ></a></p>     
-            </div>   
-            --}}
+
             <div>
                 <div class="lecWrap">
                     <div class="pass">
@@ -211,10 +147,9 @@
                             <div><span>회계학 이윤호, 세법 박창한</span></div>
                             <div><strong class="NSK-Black">29</strong>만원</div>
                             <ul>
-                                <li><span>&lt;&lt;7월 한정 이벤트 5만원 추가할인 적용가 &gt;&gt;</span></li>
+                                <li><span>7월 한정 이벤트 5만원 추가할인 적용가</span></li>
                                 <li><span>2023. 6월</span>까지 배수 제한 없는 <span>무제한 수강</span></li>
                                 <li><span>PC+모바일 총 2대 지원</span></li>
-                                <li>3배수 제한</li>
                                 <li><span>2023 국가직/지방직 대비</span> 신규 진행 전 과정</li>
                             </ul>
                         </label>

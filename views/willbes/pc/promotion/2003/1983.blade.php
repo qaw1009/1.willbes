@@ -50,20 +50,6 @@
         .wb_cts06 .title {font-size:30px; color:#898989; line-height:1.2; margin-bottom:50px}
         .wb_cts06 .title p {font-size:56px}
         .wb_cts06 .title span {color:#b47607}
-        .wb_cts06 table {width:860px; margin:50px auto; border-top:1px solid #828282}
-        .wb_cts06 table th,
-        .wb_cts06 table td {font-size:14px; padding:20px 5px; text-align:center; line-height:1.5; border-right:1px solid #828282;position:relative;}
-        .wb_cts06 table th:last-child,
-        .wb_cts06 table td:last-child {border-right:0}
-        .wb_cts06 table tr {border-bottom:1px solid #828282}
-        .wb_cts06 table thead th { font-size:18px; font-weight:bold; background:#f6f6f6}
-        .wb_cts06 table thead th strong {color:#a47002}
-        .wb_cts06 table tbody th {font-weight:bold;}
-        .wb_cts06 table td.bg {background:#ececf3}
-        .wb_cts06 table td span.point {color:#fff; padding:2px 6px; background:red; font-size:11px; border-radius:4px; margin-left:5px}
-        .wb_cts06 table td input {height:24px; width:24px; vertical-align:middle}
-        .wb_cts06 table td label {font-size:30px; color:#a47002; font-weight:bold; margin-left:10px}
-        .wb_cts06 table td p {font-size:22px;color:#464646;text-decoration:line-through;}
 
         .wb_cts06 .passbuy a {display:block; width:400px; margin:0 auto; background:#1c2127; color:#fff; font-size:30px; border-radius:50px; padding:20px 0; font-weight:bold}  
         .wb_cts06 .passbuy a:hover {background:#b47607; color:#fff;}
@@ -200,66 +186,7 @@
                 단기간에 끝내는 <span>세무직 필승전략</span>
                 <p class="NSK-Black">윌비스 <span>세무직 PASS 수강신청</span></p>
             </div>
-            {{--
-            <table>
-                <col />
-                <col width="40%" />
-                <col width="40%" />
-                <thead>
-                    <tr>
-                        <th>구분</th>
-                        <th>2023 세무직 <strong>PASS</strong></th>
-                        <th>윌비스 세무직 <strong>전공과목 T-PASS</strong></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>과목/교수진</th>                        
-                        <td>국어 <strong>오대혁</strong>, 영어 <strong>한덕현</strong>, 한국사 <strong>김상범</strong><br />
-                        회계학 <strong>이윤호</strong>, 세법 <strong>박창한</strong></td>
-                        <td>회계학 <strong>이윤호</strong>, 세법 <strong>박창한</strong></td>
-                    </tr>
-                    <tr>
-                        <th>수강기간</th>
-                        <td>2023년 4월까지<br />
-                        배수 제한 없는 <strong>무제한 수강</strong></td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <th>기기대수</th>
-                        <td colspan="2">PC or 모바일 <strong>총 2대지원</strong></td>
-                    </tr>
-                    <tr>
-                        <th>혜택</th>
-                        <td class="bg tx-left">
-                        ①  무편집 LIVE 제공 </strong><span class="point">LIVE</span><br />
-                        ② 2023 대비 신규 진행 전 과정<br />
-                        ③ 온라인 모의고사 진행 시 무료 응시</td>
-                        <td class="bg tx-left">① 2023 대비 신규 진행 전 과정</td>
-                    </tr>
-                    <tr>
-                        <th>이벤트 가격</th>
-                        <td class="NSK-Black">
-                            <div><input type="radio" id="y_pkg3" name="y_pkg" value="189939" onClick=""/><label for="y_pkg3">490,000원</label></div>
-                            <div class="tx-red">   
-                            * 지금 구매 시 3만포인트 추가 제공!</div>
-                        </td>
-                        <td class="NSK-Black">
-                            <input type="radio" id="y_pkg2" name="y_pkg" value="176415" onClick=""/><label for="y_pkg2">340,000원</label>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
 
-            <div class="check" id="chkInfo">               
-                <label>
-                    <input name="ischk" type="checkbox" value="Y" />
-                    페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
-                </label>
-                <a href="#tip" class="infotxt" > 유의사항 자세히보기 ↓</a>
-                <p class="NSK-Black"><a onclick="go_PassLecture(1);" target="_blank">지금 바로 신청하기 ></a></p>     
-            </div>  
-            --}}
             <div>
                 <div class="lecWrap">
                     <div class="pass">
@@ -288,10 +215,9 @@
                             <div><span>회계학 이윤호, 세법 박창한</span></div>
                             <div><strong class="NSK-Black">29</strong>만원</div>
                             <ul>
-                                <li><span>&lt;&lt;7월 한정 이벤트 5만원 추가할인 적용가 &gt;&gt;</span></li>
+                                <li><span>7월 한정 이벤트 5만원 추가할인 적용가</span></li>
                                 <li><span>2023. 6월</span>까지 배수 제한 없는 <span>무제한 수강</span></li>
                                 <li><span>PC+모바일 총 2대 지원</span></li>
-                                <li>3배수 제한</li>
                                 <li><span>2023 국가직/지방직 대비</span> 신규 진행 전 과정</li>
                             </ul>
                         </label>

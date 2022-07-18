@@ -36,7 +36,8 @@
         .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%; line-height:60px}
         .newTopDday ul:after {content:""; display:block; clear:both}
          
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/06/2256_top_bg.jpg) no-repeat center top;}       
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/06/2256_top_bg.jpg) no-repeat center top;}   
+        .wb_cts00 {background:#000;}    
 
         .wb_cts02 {background:#f4f4f4;}  
 
@@ -94,6 +95,10 @@
             <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>
         </div>
         --}}
+
+        <div class="evtCtnsBox wb_cts00" data-aos="fade-down">
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2256_00.jpg" alt="" />
+        </div>
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday NG">        

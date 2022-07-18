@@ -4,31 +4,15 @@
 <!-- Container -->
 
 <style type="text/css">
-
-    .evtCtnsBox {position:relative; width:100%; max-width:720px; margin:0 auto; text-align:center; line-height:1.5; clear:both}
+    @@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both}
     .evtCtnsBox img {max-width:100%;}
-    .evtCtnsBox .wrap {margin:0 auto; position:relative}
-    /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+    .evtCtnsBox.wrap {position:relative}
+    .evtCtnsBox.wrap a {border:1px solid #000}
 
     .dday {font-size:2.4vh !important; padding:10px; background:#ebebeb; color:#000; text-align:left; letter-spacing:-1px}
-    .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
-    .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#3a99f0; font-size:1.4vh !important;}
-
-    .evtTop p {color:#e80127; margin-bottom:10px}
-    .evtTop .shinyBtn a {position: relative; overflow: hidden; display:block; width:80%; margin:0 auto; background:#e80127; color:#fff; font-size:2vh; padding:15px; text-align:center; border-radius:30px}
-    .evtTop .shinyBtn a:after{
-        content:'';
-        position: absolute;
-        top:0;
-        left:0;
-        background-color: #fff;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        transform: skewY(129deg) skewX(-60deg);
-    }
-    .evtTop .shinyBtn a:after{animation:shinyBtn 3s ease-in-out infinite;}
-
+    .dday span {color:#75a612; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
+    .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#3a99f0; font-size:1.4px !important;}
 
     .event05 {padding:50px 0}
 
@@ -37,21 +21,46 @@
     .lecWrap .pass div {font-size:2vh}
     .lecWrap .pass div:nth-child(1) {font-size:2.2vh; font-weight:600; color:#fb6250}
     .lecWrap .pass div:nth-child(2) {font-size:2.2vh; font-weight:600;}
-    .lecWrap .pass div:nth-child(3) {font-size:1.4vh; font-weight:600;}
-    .lecWrap .pass div:nth-child(4) {font-size:2.2vh; color:#fb6250}
-    .lecWrap .pass div:nth-child(4) strong {font-size:3vh;}
+    .lecWrap .pass div:nth-child(3) {font-size:2.2vh; color:#fb6250}
+    .lecWrap .pass div:nth-child(3) strong {font-size:3vh; font-family: 'Oswald', sans-serif;}
     .lecWrap .pass div span {box-shadow:inset 0 -10px 0 #fde1df; color:#fb6250}
     .lecWrap .pass ul {margin-top:30px; display:none}
     .lecWrap .pass li {list-style:disc; margin-left:20px; margin-bottom:10px; font-weight:bold}
-    .lecWrap .pass li span {font-weight:normal; color:#666; vertical-align:top}
+    .lecWrap .pass li span {color:#fb6250; vertical-align:top}
 
     .lecWrap .pass input[type="radio"] {height:26px; width:26px; position:absolute; top:20px; left:20px; visibility: hidden;}
-    .lecWrap .pass label{display:block; border:1px solid #d7d7d7; padding:20px; text-align:left; box-sizing: border-box; height: 100%; }
+    .lecWrap .pass label{display:block; border:1px solid #d7d7d7; border-radius:20px; padding:20px; text-align:left; box-sizing: border-box; height: 100%; }
     .lecWrap .pass label:hover {cursor: pointer;}
     .lecWrap .pass input:checked + label {border:1px solid #fb6250; background:#fb6250; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3)}
     .lecWrap .pass input:checked + label div,
     .lecWrap .pass input:checked + label span{color:#fff; box-shadow:none}
     .lecWrap .pass input:checked + label ul {margin-top:30px; display:block}
+
+    .lecWrapB {font-size:2vh; background:#f3f3f3; border-radius:20px; margin-bottom:30px; padding:30px 50px; text-align:left; line-height:1.3; border:5px solid #fb6250; animation:bdColor 2s infinite;-webkit-animation:bdColor 2s infinite;}
+    @@keyframes bdColor{
+    from{border-color:#000}
+    50%{border-color:#fb6250}
+    to{border-color:#000}
+    }
+    @@-webkit-keyframes bdColor{
+    from{border-color:#000}
+    50%{border-color:#fb6250}
+    to{border-color:#000}
+    }
+    .lecWrapB .txtInfo p {margin-top:10px; font-size:34px}
+    .lecWrapB .price {text-align:right}
+    .lecWrapB .price strong {font-size:4vh; font-family: 'Oswald', sans-serif;}
+    .lecWrapB .price a {display:block; background:#fb6250; color:#fff; border-radius:30px; padding:10px 20px; margin-top:10px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite; text-align:center}
+    @@keyframes upDown{
+    from{background:#000}
+    50%{background:#fb6250}
+    to{background:#000}
+    }
+    @@-webkit-keyframes upDown{
+    from{background:#000}
+    50%{background:#fb6250}
+    to{background:#000}
+    }
 
     .check {margin:50px auto;}
     .check label {cursor:pointer; font-size:1.5vh;color:#000;font-weight:bold;}
@@ -61,32 +70,29 @@
     .event05 .passbuy a {display:block; width:80%; margin:0 auto; background:#1c2127; color:#fff; font-size:2.4vh; border-radius:40px; padding:10px 0; font-weight:bold}  
     .event05 .passbuy a:hover {background:#fb6250; color:#fff;}
 
-    /* 이용안내 */
-    .evtInfo {padding:50px 20px; background:#f4f4f4; color:#3a3a3a; font-size:1.6vh}
-    .evtInfoBox h4 {font-size:2.6vh; margin-bottom:30px}
-    .evtInfoBox {text-align:left; line-height:1.4}
-    .evtInfoBox li {list-style:disc; margin-left:20px;}
-    .evtInfoBox .infoTit {font-size:1.8vh; margin-bottom:10px;}
-    .evtInfoBox .infoTit strong {padding:5px 10px; border-radius:30px; background:#333; color:#fff}
-    .evtInfoBox ul {margin-bottom:30px}
+    
 
-    @@keyframes shinyBtn {
-        0% { transform: scale(0) rotate(45deg); opacity: 0.1; }
-        80% { transform: scale(0) rotate(45deg); opacity: 0.5; }
-        81% { transform: scale(4) rotate(45deg); opacity: 0.8; }
-        100% { transform: scale(50) rotate(45deg); opacity: 0.1; }
-    }
-   
+    /* 이용안내 */
+    .evtInfo {padding:50px 20px; background:#f4f4f4; color:#3a3a3a; font-size:1.6vh;}
+    .evtInfoBox {text-align:left; line-height:1.4}
+    .evtInfoBox li {list-style:disc; margin-left:20px; font-size:1.4vh}
+    .evtInfoBox h4 {font-size:3.5vh; margin-bottom:50px}
+    .evtInfoBox .infoTit {margin-bottom:10px;}
+    .evtInfoBox .infoTit strong {padding:5px 20px; border-radius:50px; background:#333; color:#fff}
+    .evtInfoBox ul {margin-bottom:30px}   
+    
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
         .lecWrap .pass div:nth-child(3) {position:absolute; top:20px; right:20px; z-index: 2;}
         .lecWrap .pass div:nth-child(4) {position:absolute; top:40px; right:20px; z-index: 2;}
+        .lecWrapB {margin:10px}
     }
 
     /* 태블릿 세로 */
     @@media only screen and (min-width: 375px) and (max-width: 640px) {       
         .lecWrap .pass div:nth-child(3) {position:absolute; top:20px; right:20px; z-index: 2;}
         .lecWrap .pass div:nth-child(4) {position:absolute; top:40px; right:20px; z-index: 2;}
+        .lecWrapB {margin:10px}
     }
     
     /* 태블릿 가로, PC */
@@ -102,94 +108,76 @@
 
 <div id="Container" class="Container NSK c_both">
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/07/2256m_00.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2022/07/2719m_00.jpg" alt="" >
     </div> 
 
     <div class="evtCtnsBox dday NSK-Thin">
-        <strong>마감까지 <span id="ddayCountText" class="NSK-Black"></span></strong>
-    </div>
-
-
-    <div class="evtCtnsBox evtTop" data-aos="fade-down">            
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2256m_top.jpg" alt=" " />
-    </div>
-
-    <div class="evtCtnsBox" data-aos="fade-up"> 
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2256m_01.gif" alt="" />
-    </div>
+        <strong>{{$arr_promotion_params['turn']}}기 마감 <span id="ddayCountText" class="NSK-Black"></span> </strong>      
+    </div>   
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2256m_02.jpg" alt="" />
-    </div>
+        <img src="https://static.willbes.net/public/images/promotion/2022/07/2719m_top.jpg" alt="장사원 T-PASS" >
+    </div> 
+
+    <div class="evtCtnsBox" data-aos="fade-left">
+        <img src="https://static.willbes.net/public/images/promotion/2022/07/2719m_01.jpg" alt="" />
+    </div> 
+
+    <div class="evtCtnsBox" data-aos="fade-right">
+        <img src="https://static.willbes.net/public/images/promotion/2022/07/2719m_02.jpg" alt="" >
+    </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2256m_03.jpg" alt="" />
+        <img src="https://static.willbes.net/public/images/promotion/2022/07/2719m_03.jpg" alt=""/>
+    </div> 
+
+    <div class="evtCtnsBox wrap" data-aos="fade-up">
+        <img src="https://static.willbes.net/public/images/promotion/2022/07/2719m_04.jpg" alt=" "/>
     </div>
 
     <div class="evtCtnsBox event05" id="transfer" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2256_05.jpg" alt="" />
+        <img src="https://static.willbes.net/public/images/promotion/2022/07/2719m_05.jpg" alt="" />
+
+        <div class="lecWrapB" data-aos="fade-up">
+            <div class="txtInfo">
+                타 기술직 대비 커트라인이 높은 농업직, 가산점은 필수!<br>
+                가산점 자격증도 농업직렬 최고에게 배우세요!
+                <p class="NSK-Black">장사원 유기농업기능사 [필기]</p>
+            </div>
+            <div class="price">
+                <strong>120,000</strong>원
+                <a href="https://pass.willbes.net/m/lecture/show/cate/3028/pattern/only/prod-code/189289" target="_blank">지금 바로 신청하기</a>
+            </div>
+        </div>
+
         <div>
             <div class="lecWrap">
-                <div class="pass">
-                    <input type="radio" name="y_pkg" id="pass01" value="198399">
+                <div class="pass" data-aos="fade-right">
+                    <input type="radio" name="y_pkg" id="pass01" value="199734">
                     <label for="pass01">
-                        <div>통신직 9급</div>
-                        <div>전과목 T-PASS</div>
-                        <div><span>★ 7월 한정 포인트 혜택 ★</span></div>
-                        <div><strong class="NSK-Black">120</strong>만원</div>
+                        <div>장사원 농업직 9급</div>
+                        <div>[국가직 대비] T-PASS</div>
+                        <div><strong>94</strong>만원</div>
                         <ul>
-                            <li>2023. 7월까지 통신직 9급 전 강좌 제공 <span>(9급 국가직/지방직/군무원 대비 가능)</span></li>
+                            <li>2023.4월까지 농업직 9급 전 강좌 제공 (국가직 대비 과정)</li>
                             <li>PC+모바일 총 2대</li>
                             <li>3배수 제한</li>
-                            <li>수강지원 포인트 5만점 <span>(교재 구매 시 사용 가능)</span></li>
+                            <li><span>인증 EVENT 참여 시 3만원 추가 할인</span></li>
                         </ul>
                     </label>
                 </div>
 
-                <div class="pass">
-                    <input type="radio" name="y_pkg" id="pass02" value="198398">
+                <div class="pass" data-aos="fade-left">
+                    <input type="radio" name="y_pkg" id="pass02" value="199733">
                     <label for="pass02">
-                        <div>전기직 9급</div>
-                        <div>전과목 T-PASS</div>
-                        <div><span>★ 7월 한정 포인트 혜택 ★</span></div>
-                        <div><strong class="NSK-Black">76</strong>만원</div>
+                        <div>장사원 농업직 9급</div>
+                        <div>[지방직 대비] T-PASS</div>
+                        <div><strong>99</strong>만원</div>
                         <ul>
-                            <li>2023. 6월까지 전기직 9급 전 강좌 제공 <span>(9급 국가직/지방직 대비 가능)</span></li>
+                            <li>2023.6월까지 농업직 9급 전 강좌 제공 (지방직 대비 과정)</li>
                             <li>PC+모바일 총 2대</li>
                             <li>3배수 제한</li>
-                            <li>수강지원 포인트 5만점 <span>(교재 구매 시 사용 가능)</span></li>
-                        </ul>
-                    </label>
-                </div>
-
-                <div class="pass">
-                    <input type="radio" name="y_pkg" id="pass03" value="198401">
-                    <label for="pass03">
-                        <div>전기직 9·7급</div>
-                        <div>전과목 T-PASS</div>
-                        <div><span>★ 7월 한정 포인트 혜택 ★</span></div>
-                        <div><strong class="NSK-Black">100</strong>만원</div>
-                        <ul>
-                            <li>2023. 10월까지 전기직 9·7급 전 강좌 제공 <span>(9급 국가직/지방직 대비 가능)</span></li>
-                            <li>PC+모바일 총 2대</li>
-                            <li>3배수 제한</li>
-                            <li>수강지원 포인트 5만점 <span>(교재 구매 시 사용 가능)</span></li>
-                        </ul>
-                    </label>
-                </div>
-
-                <div class="pass">
-                    <input type="radio" name="y_pkg" id="pass04" value="198400">
-                    <label for="pass04">
-                        <div>전자직 9급</div>
-                        <div>전과목 T-PASS</div>
-                        <div><span>★ 7월 한정 포인트 혜택 ★</span></div>
-                        <div><strong class="NSK-Black">70</strong>만원</div>
-                        <ul>
-                            <li>2023. 7월까지 전자직 9급 전 강좌 제공 <span>(9급 전자직 대비 가능)</span></li>
-                            <li>PC+모바일 총 2대</li>
-                            <li>3배수 제한</li>
-                            <li>수강지원 포인트 5만점 <span>(교재 구매 시 사용 가능)</span></li>
+                            <li><span>인증 EVENT 참여 시 3만원 추가 할인</span></li>
                         </ul>
                     </label>
                 </div>
@@ -210,16 +198,16 @@
         </div>
     </div>
 
+
     <div class="evtCtnsBox evtInfo" id="careful" data-aos="fade-up">
         <div class="evtInfoBox">
             <h4 class="NSK-Black">T-PASS 이용안내 및 유의사항</h4>
 
             <div class="infoTit"><strong>상품구성</strong></div>
             <ul>
-                <li>최우영 T-PASS 제공 과정<br>
-                - 통신직 : 2022년도 대비 이론+2023년도 9급 국가직·지방직/군무원 대비 신규 개강 전 과정<br>
-                - 전기직 : 2022년도 대비 이론 및 문제풀이+2023년도 9/7급 국가직·지방직/군무원 전기직 대비 신규 개강 전 과정<br>
-                - 전자직 : 2022년도 대비 이론 및 문제풀이+2023년도 군무원 전자직 대비 신규 개강 전 과정
+                <li>장사원 T-PASS 제공 과정<br>
+                - 2023 9급 장사원 농업직 [국가직 대비] T-PASS : 2022년도 국가직 대비 전 과정+2023년도 국가직 대비 신규 개강 전 과정<br>
+                - 2023 9급 장사원 농업직 [지방직 대비] T-PASS : 2022년도 지방직 대비 전 과정+2023년도 지방직 대비 신규 개강 전 과정
                     </li>   
                 <li>개강 일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>
                 <li>본 T-PASS 내 제공되는 과정 중 신규 개강이 진행되지 않는 경우, 전년도 진행 과정으로 대체 제공될 수 있습니다.</li>
@@ -253,10 +241,9 @@
                 </li>
                 <li>아이디 공유 적발 시 회원 자격 박탈 및 환불이 불가하오니 유의 바랍니다.</li>             				
             </ul>
-
             <div class="infoTit"><strong>윌비스 고객만족센터 1544-5006</strong></div>
         </div>
-    </div> 
+    </div>
 
 </div>
 
@@ -266,19 +253,8 @@
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
     $( document ).ready( function() {
-    AOS.init();
-    } );
-</script>
-
-<script>    
-    /* 팝업창 */ 
-    function certOpen(){
-        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-        @if(empty($arr_promotion_params) === false)
-        var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
-        window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
-        @endif
-    }
+        AOS.init();
+    });
 
     /*수강신청 동의*/ 
     function go_PassLecture(){
@@ -295,13 +271,14 @@
         location.href = "{{ front_url('/periodPackage/show/cate/3028/pack/648001/prod-code/') }}" + code;
     }     
     
+
     /*디데이카운트다운*/
     $(document).ready(function() {
         dDayCountDown('{{$arr_promotion_params['edate']}}', '{{$arr_promotion_params['etime'] or "00:00"}}', 'txt');
     });
 </script>
 
-
 {{-- 프로모션용 스크립트 include --}}
 @include('willbes.pc.promotion.promotion_script')
+
 @stop

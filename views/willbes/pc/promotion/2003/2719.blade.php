@@ -16,10 +16,10 @@
             padding:0 !important;
             background:#fff;  
         }
-        .evtContent span {vertical-align:auto}
+        .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a {border:1px solid #000}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
@@ -38,61 +38,62 @@
         .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%; line-height:60px}
         .newTopDday ul:after {content:""; display:block; clear:both}
          
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/06/2256_top_bg.jpg) no-repeat center top;}       
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/07/2719_top_bg.jpg) no-repeat center top;}  
+        .wb_cts00 {background:#1b1b1b;} 
+        
+        .wb_cts01 {background:#ebebeb;}  
 
         .wb_cts02 {background:#f4f4f4;}  
 
-        .wb_cts04 {background:url(https://static.willbes.net/public/images/promotion/2022/06/2256_04_bg.jpg) no-repeat center top;}
+        .wb_cts04 {background:url(https://static.willbes.net/public/images/promotion/2022/07/2719_04_bg.jpg) no-repeat center top;}
 
         .wb_cts05 {padding-bottom:150px; background:#fff; width:1120px; margin:0 auto}
-        .wb_cts05 .title {font-size:40px; line-height:1.4; margin-bottom:40px}
-        .wb_cts05 .title p {color:#f26522; font-weight:bold}
-
+        .wb_cts05 .title {font-size:50px; line-height:1.2; margin-bottom:40px; color:#373737}
 
         .lecWrap {display:flex; width:1120px; margin:auto; line-height:1.5; font-size:14px}
         .lecWrap .pass {width:calc(50% - 10px); margin-bottom:10px; margin-right:10px;}
         .lecWrap .pass:last-child {width:calc(50%); margin-right:0}
         .lecWrap .pass div {font-size:22px}
-        .lecWrap .pass div:nth-child(1) {font-size:22px; font-weight:600; color:#c23227}
+        .lecWrap .pass div:nth-child(1) {font-size:22px; font-weight:600; color:#fb6250}
         .lecWrap .pass div:nth-child(2) {font-size:22px; font-weight:600; margin-bottom:20px}
-        .lecWrap .pass div:nth-child(3) {font-size:22px; color:#c23227}
+        .lecWrap .pass div:nth-child(3) {font-size:22px; color:#fb6250}
         .lecWrap .pass div:nth-child(3) strong {font-size:30px; font-family: 'Oswald', sans-serif;}
-        .lecWrap .pass div span {box-shadow:inset 0 -10px 0 #fde1df; color:#c23227}
+        .lecWrap .pass div span {box-shadow:inset 0 -10px 0 #fde1df; color:#fb6250}
         .lecWrap .pass ul {margin-top:30px}
         .lecWrap .pass li {list-style:disc; margin-left:20px; margin-bottom:5px; font-weight:bold}
-        .lecWrap .pass li span {color:#c23227; vertical-align:top}
+        .lecWrap .pass li span {color:#fb6250; vertical-align:top}
 
         .lecWrap .pass input[type="radio"] {height:26px; width:26px; position:absolute; top:20px; left:20px; visibility: hidden;}
         .lecWrap .pass label{display:block; border:1px solid #d7d7d7; padding:20px; text-align:left;  box-sizing: border-box; height: 100%; border-radius:20px;}
         .lecWrap .pass label:hover {cursor: pointer;}
-        .lecWrap .pass input:checked + label {border:1px solid #c23227; background:#c23227; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3)}
+        .lecWrap .pass input:checked + label {border:1px solid #fb6250; background:#fb6250; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3)}
         .lecWrap .pass input:checked + label div,
         .lecWrap .pass input:checked + label span{color:#fff; box-shadow:none}
 
-        .lecWrapB {display:flex; justify-content: space-between; font-size:20px; background:#f3f3f3; border-radius:20px; margin-bottom:30px; padding:30px 50px; text-align:left; line-height:1.3; border:5px solid #c23227; animation:bdColor 2s infinite;-webkit-animation:bdColor 2s infinite;}
+        .lecWrapB {display:flex; justify-content: space-between; font-size:20px; background:#f3f3f3; border-radius:20px; margin-bottom:30px; padding:30px 50px; text-align:left; line-height:1.3; border:5px solid #fb6250; animation:bdColor 2s infinite;-webkit-animation:bdColor 2s infinite;}
         @@keyframes bdColor{
         from{border-color:#000}
-        50%{border-color:#c23227}
+        50%{border-color:#fb6250}
         to{border-color:#000}
         }
         @@-webkit-keyframes bdColor{
         from{border-color:#000}
-        50%{border-color:#c23227}
+        50%{border-color:#fb6250}
         to{border-color:#000}
         }
         .lecWrapB .txtInfo p {margin-top:10px; font-size:34px}
 
         .lecWrapB .price {text-align:right}
         .lecWrapB .price strong {font-size:40px; font-family: 'Oswald', sans-serif;}
-        .lecWrapB .price a {display:block; background:#c23227; color:#fff; border-radius:30px; padding:10px 30px; margin-top:10px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        .lecWrapB .price a {display:block; background:#fb6250; color:#fff; border-radius:30px; padding:10px 30px; margin-top:10px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
         @@keyframes upDown{
         from{background:#000}
-        50%{background:#c23227}
+        50%{background:#fb6250}
         to{background:#000}
         }
         @@-webkit-keyframes upDown{
         from{background:#000}
-        50%{background:#c23227}
+        50%{background:#fb6250}
         to{background:#000}
         }
 
@@ -103,7 +104,7 @@
         .check a {display:inline-block; padding:5px 10px; color:#fff; background:#2d2d2d; margin-left:50px; border-radius:4px;font-size:12px;} 
 
         .wb_cts05 .passbuy a {display:block; width:400px; margin:0 auto; background:#1c2127; color:#fff; font-size:30px; border-radius:50px; padding:20px 0; font-weight:bold}  
-        .wb_cts05 .passbuy a:hover {background:#c23227; color:#fff;}
+        .wb_cts05 .passbuy a:hover {background:#fb6250; color:#fff;}
 
         .wb_cts06 {background:#fb6250;}       
         
@@ -125,6 +126,10 @@
             <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>
         </div>
         --}}
+
+        <div class="evtCtnsBox wb_cts00" data-aos="fade-down">
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2719_00.jpg" alt="" />
+        </div>
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday NG">        
@@ -153,19 +158,19 @@
         </div>
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2256_top.jpg" alt="최우영 T-PASS" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2719_top.jpg" alt="장사원 T-PASS" />
         </div>
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2256_01.jpg" alt="시간 단축" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2719_01.jpg" alt="시간 단축" />
         </div>
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2256_02.jpg" alt="커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2719_02.jpg" alt="커리큘럼" />
         </div>
 
         <div class="evtCtnsBox wb_cts03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2256_03.jpg" alt="믿고 따라만 오세요" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2719_03.jpg" alt="믿고 따라만 오세요" />
         </div>
 
         <div class="evtCtnsBox wb_cts06" id="cts06" data-aos="fade-up">
@@ -177,13 +182,13 @@
         </div>
 
         <div class="evtCtnsBox wb_cts04" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2256_04.jpg" alt="절호의 기회" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2719_04.jpg" alt="절호의 기회" />
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="transfer">
             <div class="title" data-aos="fade-down">
-                2023년도, 농업직렬의 대세
-                <p class="NSK-Black">장사원 교수님과 함께 하세요!</p>
+                2023년도, <span class="NSK-Black">농업직렬의 대세<br>
+                장사원 교수님</span>과 함께 하세요!
             </div>
             <div class="lecWrapB" data-aos="fade-up">
                 <div class="txtInfo">

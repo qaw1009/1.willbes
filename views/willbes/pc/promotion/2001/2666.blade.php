@@ -223,14 +223,14 @@
                 </div>                                                                        
             </div>   
         </div>
-
+        {{--
         <div class="evtCtnsBox evt06" data-aos="fade-up"> 
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2666_06.jpg" title="경찰 pass 바로가기">
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/2664" title="바로가기" target="_blank" style="position: absolute;left: 4.39%;top: 59.53%;width: 45.88%;height: 13.34%;z-index: 2;"></a>                
             </div>           
         </div>
-
+        --}}
         <div class="evtCtnsBox evtInfo" id="careful" data-aos="fade-up"> 
 			<div class="evtInfoBox">
 				<h4 class="NSK-Black">윌비스신광은 경찰 문제풀이 이용안내</h4>

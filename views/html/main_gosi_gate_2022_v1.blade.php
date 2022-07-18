@@ -403,7 +403,7 @@
             <p class="rightBtn"><a id="newsSliderRight"></a></p>                              
         </div>
         <div class="rightWrap">
-            <div class="will-nTit NSK-Black">지금 윌비스에서<span>주목해야 할 강의!</span></div> 
+            <div class="will-nTit NSK-Black">지금 윌비스에서 <span>주목해야 할 강의!</span></div> 
             <div class="banner">
                 <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_220x280_01.jpg" alt="배너명"></a>
                 <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_220x280_02.jpg" alt="배너명"></a>

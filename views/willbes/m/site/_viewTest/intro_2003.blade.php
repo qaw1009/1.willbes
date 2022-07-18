@@ -206,8 +206,8 @@
                         @if(isset($data['banner']['M_게이트_메인배너']) === true)
                             @for($i=0; $i<count($data['banner']['M_게이트_메인배너']); $i++)
                                 <li class="swiper-slide">
-{{--                                    {!! banner_html(array($data['banner']['M_게이트_메인배너'][$i])) !!}--}}
-                                    {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($data['banner']['M_게이트_메인배너'][$i]))) !!}
+                                    {!! banner_html(array($data['banner']['M_게이트_메인배너'][$i])) !!}
+{{--                                    {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($data['banner']['M_게이트_메인배너'][$i]))) !!}--}}
                                 </li>
                             @endfor
                         @endif
@@ -259,8 +259,8 @@
                         @if(isset($data['banner']['M_게이트_주목']) === true)
                             @for($i=0; $i<count($data['banner']['M_게이트_주목']); $i++)
                                 <div class="swiper-slide">
-{{--                                    {!! banner_html(array($data['banner']['M_게이트_주목'][$i])) !!}--}}
-                                    {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($data['banner']['M_게이트_주목'][$i]))) !!}
+                                    {!! banner_html(array($data['banner']['M_게이트_주목'][$i])) !!}
+{{--                                    {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($data['banner']['M_게이트_주목'][$i]))) !!}--}}
                                 </div>
                             @endfor
                         @endif
@@ -271,8 +271,8 @@
         </div>
 
         <div class="swiper-container swiper-sec03">
-            {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(element('M_게이트_초보가이드', $data['banner']))) !!}
-{{--            {!! banner_html(element('M_게이트_초보가이드', $data['banner'])) !!}--}}
+{{--            {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(element('M_게이트_초보가이드', $data['banner']))) !!}--}}
+            {!! banner_html(element('M_게이트_초보가이드', $data['banner'])) !!}
         </div>
 
         <div class="tpassWrap">
@@ -285,8 +285,8 @@
                     @if(isset($data['banner']['M_게이트_무제한수강']) === true)
                         @for($i=0; $i<count($data['banner']['M_게이트_무제한수강']); $i++)
                             <div class="swiper-slide">
-                                {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($data['banner']['M_게이트_무제한수강'][$i])) ) !!}
-{{--                                {!! banner_html(array($data['banner']['M_게이트_무제한수강'][$i])) !!}--}}
+{{--                                {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($data['banner']['M_게이트_무제한수강'][$i])) ) !!}--}}
+                                {!! banner_html(array($data['banner']['M_게이트_무제한수강'][$i])) !!}
                             </div>
                         @endfor
                     @endif
@@ -299,8 +299,8 @@
             <div class="prfoWrap">
                 @if(isset($data['banner']['M_게이트_과목별교수']))
                     @foreach(element('M_게이트_과목별교수', $data['banner']) as $row)
-                            {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($row), '', '', false, 'none', '', 'castTitle') ) !!}
-{{--                            {!! banner_html(array($row), '', '', false, 'none', '', 'castTitle') !!}--}}
+{{--                            {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($row), '', '', false, 'none', '', 'castTitle') ) !!}--}}
+                            {!! banner_html(array($row), '', '', false, 'none', '', 'castTitle') !!}
                     @endforeach
                 @endif
 
@@ -317,12 +317,11 @@
                     @if(isset($data['banner']['M_게이트_유튜브']))
                         @foreach(element('M_게이트_유튜브', $data['banner']) as $row)
                             <div class="swiper-slide">
-                        {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($row)) ) !!}
-{{--                           {!! banner_html(element(array($row), '', '', false, '', '', 'castTitle') !!}--}}
+{{--                        {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($row)) ) !!}--}}
+                           {!! banner_html(array($row), '', '', false, '', '', 'castTitle') !!}
                             </div>
                         @endforeach
                     @endif
-
                 </div>
             </div>
         </div>
@@ -337,8 +336,8 @@
                     @if(isset($data['banner']['M_게이트_교수진']))
                         @foreach(element('M_게이트_교수진', $data['banner']) as $row)
                             <div class="swiper-slide">
-                                {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($row)) ) !!}
-                                {{--                           {!! banner_html(array($row), '', '', false, '', '', 'castTitle') !!}--}}
+{{--                                {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($row)) ) !!}--}}
+                                {!! banner_html(array($row), '', '', false, '', '', 'castTitle') !!}
                             </div>
                         @endforeach
                     @endif

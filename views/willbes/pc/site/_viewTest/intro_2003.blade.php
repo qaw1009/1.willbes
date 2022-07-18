@@ -298,7 +298,7 @@
                 <p class="rightBtn @if(!( isset($data['banner']['게이트_주목1']) === true && count($data['banner']['게이트_주목1']) > 1)) d_none @endif"><a id="newsSliderRight"></a></p>
             </div>
             <div class="rightWrap">
-                <div class="will-nTit NSK-Black">지금 윌비스에서<span>주목해야 할 강의!</span></div>
+                <div class="will-nTit NSK-Black">지금 윌비스에서 <span>주목해야 할 강의!</span></div>
                 <div class="banner">
                     {!! banner_html(element('게이트_주목2', $data['banner'])) !!}
                     {!! banner_html(element('게이트_주목3', $data['banner'])) !!}

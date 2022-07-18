@@ -119,6 +119,12 @@
     .pass {color:#0070C0 !important;}
     #score {position:absolute;left:50%;top:67%;margin-left:33px;width:110px;height:45px;border:2px solid #bfbfbf;}
 
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    
     </style>
 
     <!-- Container -->

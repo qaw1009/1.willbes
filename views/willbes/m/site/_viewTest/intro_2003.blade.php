@@ -82,8 +82,8 @@
             right: 0;
         }
         .tpassWrap .prfoWrap {margin:6% auto; display:flex; flex-wrap: wrap; justify-content: center;}
-        .tpassWrap .prfoWrap a {font-size:1.6vh; font-weight:bold; text-align:center; display:block; width:calc(20% - 8px); margin:0 4px 20px;}
-        .tpassWrap .prfoWrap a img {border:1px solid #e6e6e6; border-radius:30px; overflow: hidden; display:block; margin:0 auto 10px; max-width:100%}
+        .tpassWrap .prfoWrap > div {font-size:1.6vh; font-weight:bold; text-align:center; display:block; width:calc(20% - 8px); margin:0 4px 20px;}
+        .tpassWrap .prfoWrap div img {border:1px solid #e6e6e6; border-radius:30px; overflow: hidden; display:block; margin:0 auto 10px; max-width:100%}
 
 
 
@@ -158,8 +158,8 @@
                 width:60%; margin-right:1%; 
             }
 
-            .tpassWrap .prfoWrap a {font-size:1.4vh; width:calc(20% - 6px); margin:0 3px 20px;}
-            .tpassWrap .prfoWrap a img {border-radius:10px;}
+            .tpassWrap .prfoWrap > div {font-size:1.4vh; width:calc(20% - 6px); margin:0 3px 20px;}
+            .tpassWrap .prfoWrap div img {border-radius:10px;}
 
             .intro .swiper-sec05 .swiper-slide {width: 160px;}
             .intro .swiper-sec06-Wrap .swiper-slide {
@@ -186,8 +186,8 @@
             }
             .intro .swiper-sec02-wrap .swiper-sec02 .swiper-slide:last-child {margin-right:0}
 
-            .tpassWrap .prfoWrap a {font-size:1.5vh; width:calc(20% - 6px); margin:0 3px 20px;}
-            .tpassWrap .prfoWrap a img {border-radius:20px;}
+            .tpassWrap .prfoWrap > div {font-size:1.5vh; width:calc(20% - 6px); margin:0 3px 20px;}
+            .tpassWrap .prfoWrap div img {border-radius:20px;}
 
             .intro .swiper-sec05 .swiper-slide {width: 165px;}
 
@@ -218,31 +218,31 @@
             <div class="mainTopBnList">
                 <ul class="mainTopBn">
                     <li><a data-swiper-slide-index="0" href="javascript:void(0);" class="active">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_01.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_01.jpg" alt="배너명">
                                     9급PASS<br>할인</a></li>
                     <li><a data-swiper-slide-index="1" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_02.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_02.jpg" alt="배너명">
                             윌비스<br>세무팀</a></li>
                     <li><a data-swiper-slide-index="2" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_03.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_03.jpg" alt="배너명">
                             불꽃소방<br>신규개강</a></li>
                     <li><a data-swiper-slide-index="3" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_04.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_04.jpg" alt="배너명">
                             농업직<br>통신직</a></li>
                     <li><a data-swiper-slide-index="4" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_05.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_05.jpg" alt="배너명">
                             축산직<br>조경직</a></li>
                     <li><a data-swiper-slide-index="5" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_06.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_06.jpg" alt="배너명">
                             군무원<br>행정직</a></li>
                     <li><a data-swiper-slide-index="6" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_07.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_07.jpg" alt="배너명">
                             검찰직<br>신규런칭</a></li>
                     <li><a data-swiper-slide-index="7" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_08.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_08.jpg" alt="배너명">
                             7급<br>PSAT</a></li>
                     <li><a data-swiper-slide-index="8" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_09.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_09.jpg" alt="배너명">
                                     김동진<br>법원팀</a></li>
                 </ul>
             </div>

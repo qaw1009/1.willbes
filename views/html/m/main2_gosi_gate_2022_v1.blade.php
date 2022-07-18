@@ -532,33 +532,33 @@
         <div class="mainTopBnList">
             <ul class="mainTopBn">
                 <li><a data-swiper-slide-index="0" href="javascript:void(0);" class="active">
-                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">
-                    9급<br>pass</a></li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_01.jpg" alt="배너명">
+                                9급PASS<br>할인</a></li>
                 <li><a data-swiper-slide-index="1" href="javascript:void(0);">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">
-                    7급<br>pass</a></li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_02.jpg" alt="배너명">
+                        윌비스<br>세무팀</a></li>
                 <li><a data-swiper-slide-index="2" href="javascript:void(0);">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">    
-                세무직<br>pass</a></li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_03.jpg" alt="배너명">
+                        불꽃소방<br>신규개강</a></li>
                 <li><a data-swiper-slide-index="3" href="javascript:void(0);">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">    
-                법원직<br>pass</a></li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_04.jpg" alt="배너명">
+                        농업직<br>통신직</a></li>
                 <li><a data-swiper-slide-index="4" href="javascript:void(0);">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">    
-                농업직<br>pass</a></li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_05.jpg" alt="배너명">
+                        축산직<br>조경직</a></li>
                 <li><a data-swiper-slide-index="5" href="javascript:void(0);">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">    
-                통신/전기<br>pass</a></li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_06.jpg" alt="배너명">
+                        군무원<br>행정직</a></li>
                 <li><a data-swiper-slide-index="6" href="javascript:void(0);">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">    
-                전산직<br>pass</a></li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_07.jpg" alt="배너명">
+                        검찰직<br>신규런칭</a></li>
                 <li><a data-swiper-slide-index="7" href="javascript:void(0);">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">    
-                환경직<br>pass</a></li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_08.jpg" alt="배너명">
+                        7급<br>PSAT</a></li>
                 <li><a data-swiper-slide-index="8" href="javascript:void(0);">
-                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum.jpg" alt="배너명">    
-                산림자원직<br>pass</a></li>
-            </ul>         
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_09.jpg" alt="배너명">
+                                김동진<br>법원팀</a></li>
+            </ul>       
         </div> 
     </div>
 

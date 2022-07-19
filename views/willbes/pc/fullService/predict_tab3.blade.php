@@ -351,7 +351,7 @@
                 },
                 'chartDiv': 'chart_div1_'+div_key,
                 'chartType': 'multi_column',
-                'chartSize': { width: 700, height: 330 },
+                'chartSize': { width: 757, height: 330 },
                 'maxValue': max_value_total,
                 'increment': increment_total
             };
@@ -378,7 +378,7 @@
                 },
                 'chartDiv': 'chart_div2_'+div_key,
                 'chartType': 'multi_column',
-                'chartSize': { width: 700, height: 330 },
+                'chartSize': { width: 757, height: 330 },
                 'maxValue': max_value_takemockpart,
                 'increment': increment_takemockpart
             };

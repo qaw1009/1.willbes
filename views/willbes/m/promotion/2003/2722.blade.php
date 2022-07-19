@@ -24,7 +24,7 @@
 
     /* 태블릿 세로 */
     @@media only screen and (min-width: 375px) and (max-width: 640px) {       
-        .evt01 a {display:block; position: relative; margin-top:5px; top:0}
+
     }
     
     /* 태블릿 가로, PC */

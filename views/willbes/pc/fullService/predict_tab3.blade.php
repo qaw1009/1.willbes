@@ -321,13 +321,22 @@
     function drawVisualization() {
         var arr_total_point = {!! json_encode($arr_statsForChartData['chart_total']) !!};
         var arr_takemockpart_point = {!! json_encode($arr_statsForChartData['chart_takemockpart']) !!};
+        var max_value_total = '{{$regi_data['MaxForTotalChart']}}';
+        var max_value_takemockpart = '{{$regi_data['MaxForTakeMockPartChart']}}';
+        var _temp, increment_total, increment_takemockpart = '';    //그래프 y축 간격 값 초기화
+
+        _temp = (max_value_total / 100);
+        increment_total = (_temp <= 1) ? 1 * 10 : Math.floor(_temp) * 10;
+
+        _temp = (max_value_takemockpart / 100);
+        increment_takemockpart = (_temp <= 1) ? 1 * 10 : Math.floor(_temp) * 10;
 
         $.each(arr_total_point,function(div_key, row) {
             var arr_title = [];
             var arr_line = [];
             $.each(row,function(row_key, row_val) {
                 arr_title.push(row_val['title']);
-                arr_line.push(parseInt((isNaN(parseInt(row_val['cntCumsum'])) === false ? row_val['cntCumsum'] : 0)));
+                arr_line.push([parseInt((isNaN(parseInt(row_val['cntCumsum'])) === false ? row_val['cntCumsum'] : 0)), row_val['my_OrgPoint']]);
             });
 
             var options = {
@@ -335,15 +344,16 @@
                     names: arr_title
                 },
                 'dataset': {
-                    title: 'Playing time per day',
+                    title : '전체 직렬별 나의 성적 위치',
                     values: arr_line,
-                    colorset: ['#30a1ce','#DC143C']
+                    colorset: ['#30a1ce','#DC143C'],
+                    fields : ['전체', '내평균']
                 },
                 'chartDiv': 'chart_div1_'+div_key,
-                'chartType': 'column',
+                'chartType': 'multi_column',
                 'chartSize': { width: 700, height: 330 },
-                'maxValue': 10,
-                'increment': 1
+                'maxValue': max_value_total,
+                'increment': increment_total
             };
             Nwagon.chart(options);
         });
@@ -353,7 +363,7 @@
             var arr_line = [];
             $.each(row,function(row_key, row_val) {
                 arr_title.push(row_val['title']);
-                arr_line.push(parseInt((isNaN(parseInt(row_val['cntCumsum'])) === false ? row_val['cntCumsum'] : 0)));
+                arr_line.push([parseInt((isNaN(parseInt(row_val['cntCumsum'])) === false ? row_val['cntCumsum'] : 0)), row_val['my_OrgPoint']]);
             });
 
             var options = {
@@ -361,18 +371,20 @@
                     names: arr_title
                 },
                 'dataset': {
-                    title: 'Playing time per day',
+                    title : '동일 직렬별 나의 성적 위치',
                     values: arr_line,
-                    colorset: ['#30a1ce','#DC143C']
+                    colorset: ['#30a1ce','#DC143C'],
+                    fields : ['전체', '내평균']
                 },
                 'chartDiv': 'chart_div2_'+div_key,
-                'chartType': 'column',
+                'chartType': 'multi_column',
                 'chartSize': { width: 700, height: 330 },
-                'maxValue': 10,
-                'increment': 1
+                'maxValue': max_value_takemockpart,
+                'increment': increment_takemockpart
             };
             Nwagon.chart(options);
         });
+
 
     }
 </script>

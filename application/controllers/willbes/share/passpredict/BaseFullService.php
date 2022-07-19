@@ -140,6 +140,7 @@ class BaseFullService extends \app\controllers\FrontController
             show_alert('잘못된 접근 입니다.');
         }
 
+        //전체직렬, 동일직렬 체점자 수
         $add_column = "
             ,(
                 SELECT IF(CEIL(COUNT(*) * (1+10 / 100)) < 100, 100, CEIL(COUNT(*) * (1+10 / 100))) AS total

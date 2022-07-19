@@ -22,6 +22,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 */
 /*Developed by Insook Choe (choe.insook@nhn.com), Inho Jung(inho.jung@nhn.com)*/
 
+/*
+ * customizing 옵션 추가
+ * multi_column 인 경우 : 2번째 배열 막대 그래프 높이 변경
+ * @type {string}
+ */
+
 var CONST_SVG_URL = 'http://www.w3.org/2000/svg';
 var VML_NAME_SPACE = 'urn:schemas-microsoft-com:vml'
 var CONST_MAX_RADIUS = 100;
@@ -92,6 +98,7 @@ var Nwagon = {
                 if (options.hasOwnProperty('rightOffsetValue')) chartObj.rightOffsetValue = options['rightOffsetValue'];
                 if (options['maxValue']) chartObj.highest = options['maxValue'];
                 if (options['increment']) chartObj.increment = options['increment'];
+                if (options['customizing']) chartObj.customizing = options['customizing'];
 
                 isIE_old ? Nwagon_ie.column.drawColumnChart(chartObj) : this.column.drawColumnChart(chartObj);
                 break;
@@ -614,7 +621,6 @@ var Nwagon = {
     column:{
 
         drawColumnChart: function(obj){
-
             var width = obj.width, height = obj.height;
             var values = obj.dataset['values'];
             var LeftOffsetAbsolute =  obj.hasOwnProperty('leftOffsetValue') ? obj.leftOffsetValue : 50;
@@ -629,7 +635,7 @@ var Nwagon = {
             var max = obj.highest ? obj.highest : Nwagon.getMax(values);
 
             this.drawBackground(svg, obj.legend['names'].length, obj.dataset, obj.increment, max, width-LeftOffsetAbsolute-RightOffsetAbsolute, height-BottomOffsetAbsolute-TopOffsetAbsolute);
-            this.drawColumnForeground(obj.chart_div, svg, obj.legend, obj.dataset, obj.increment, max, width-LeftOffsetAbsolute-RightOffsetAbsolute, height-BottomOffsetAbsolute-TopOffsetAbsolute, obj.chartType);
+            this.drawColumnForeground(obj.chart_div, svg, obj.legend, obj.dataset, obj.increment, max, width-LeftOffsetAbsolute-RightOffsetAbsolute, height-BottomOffsetAbsolute-TopOffsetAbsolute, obj.chartType, obj.customizing);
 
         },
 
@@ -663,8 +669,7 @@ var Nwagon = {
             return colors;
         },
 
-        drawColumnForeground: function(parentDiv, parentSVG, legend, dataset, increment, max, width, height, chartType){
-
+        drawColumnForeground: function(parentDiv, parentSVG, legend, dataset, increment, max, width, height, chartType, customizing){
             var names = legend['names'];
             var numOfCols = names.length;
             var colWidth = (width/numOfCols).toFixed(3);
@@ -766,7 +771,15 @@ var Nwagon = {
 
                     for(var index = 0; index < one_data.length; index++){
                         var pxx = px+ (index*(cw));
-                        ch = one_data[index]/yLimit*height;
+                        if (typeof customizing !== 'undefined') {
+                            if (index == 1 && customizing['isGuideLineNeeded'] == 'Y' && one_data[index] > 0) {
+                                ch = customizing['myLineHeight'];
+                            } else {
+                                ch = one_data[index] / yLimit * height;
+                            }
+                        } else {
+                            ch = one_data[index] / yLimit * height;
+                        }
                         drawColGroups(columns, ch, pxx, colors[index], one_data[index], false, 0);
                         chart_data[fields[index]].push('Label ' + names[i] + ', Value  '+ one_data[index]);
                     }
@@ -796,8 +809,6 @@ var Nwagon = {
                         chart_data[fields[index]].push('Label ' + names[i] + ', Value  '+ one_data[index]);
                         yValue +=ch;
                     }
-
-
                     var text = Nwagon.column.drawLabels(px + cw/2, 15, names[i]);
                     labels.appendChild(text);
                 }

@@ -47,52 +47,52 @@
             <div>
                 <p>2023 대비 <strong>법원직 동행6기 전체설명회</strong></p>
                 진행 : 김동진 교수
-                <a href="javascript:fnPlayerSample('181196', '1305141', 'HD');">바로가기 👉</a>
+                <a href="javascript:fnPlayerSample('199878', '1368411', 'HD');">바로가기 👉</a>
             </div>
             <div>
                 <p>2023 대비 <strong>법원직 동행6기 생활규칙안내</strong></p>
                 진행 : 문형석 교수
-                <a href="javascript:fnPlayerSample('181196', '1305141', 'HD');">바로가기 👉</a>
+                <a href="javascript:fnPlayerSample('199879', '1368252', 'HD');">바로가기 👉</a>
             </div>
             <div>
                 <p>2023 대비 <strong>법원직 민법 커리큘럼안내</strong></p>
                 진행 : 김동진 교수
-                <a href="javascript:fnPlayerSample('181196', '1305141', 'HD');">바로가기 👉</a>
+                <a href="javascript:fnPlayerSample('199881', '1368262', 'HD');">바로가기 👉</a>
             </div>
             <div>
                 <p>2023 대비 <strong>법원직 민사소송법 커리큘럼안내</strong></p>
                 진행 : 이덕훈 교수
-                <a href="javascript:fnPlayerSample('181196', '1305141', 'HD');">바로가기 👉</a>
+                <a href="javascript:fnPlayerSample('199882', '1368242', 'HD');">바로가기 👉</a>
             </div>
             <div>
                 <p>2023 대비 <strong>법원직 형법 커리큘럼안내</strong></p>
                 진행 : 이덕훈 교수
-                <a href="javascript:fnPlayerSample('181196', '1305141', 'HD');">바로가기 👉</a>
+                <a href="javascript:fnPlayerSample('199883', '1368406', 'HD');">바로가기 👉</a>
             </div>
             <div>
                 <p>2023 대비 <strong>법원직 형사소송법 커리큘럼안내</strong></p>
                 진행 : 유안석 교수
-                <a href="javascript:fnPlayerSample('181196', '1305141', 'HD');">바로가기 👉</a>
+                <a href="javascript:fnPlayerSample('199884', '1368244', 'HD');">바로가기 👉</a>
             </div>
             <div>
                 <p>2023 대비 <strong>법원직 헌법 커리큘럼안내</strong></p>
                 진행 : 이국령 교수
-                <a href="javascript:fnPlayerSample('181196', '1305141', 'HD');">바로가기 👉</a>
+                <a href="javascript:fnPlayerSample('199886', '1368417', 'HD');">바로가기 👉</a>
             </div>
             <div>
                 <p>2023 대비 <strong>법원직 국어 커리큘럼안내</strong></p>
                 진행 : 박재현 교수
-                <a href="javascript:fnPlayerSample('181196', '1305141', 'HD');">바로가기 👉</a>
+                <a href="javascript:fnPlayerSample('199888', '1368243', 'HD');">바로가기 👉</a>
             </div>
             <div>
                 <p>2023 대비 <strong>법원직 영어 커리큘럼안내</strong></p>
                 진행 : 박초롱 교수
-                <a href="javascript:fnPlayerSample('181196', '1305141', 'HD');">바로가기 👉</a>
+                <a href="javascript:fnPlayerSample('199889', '1368245', 'HD');">바로가기 👉</a>
             </div>
             <div>
                 <p>2023 대비 <strong>법원직 한국사 커리큘럼안내</strong></p>
                 진행 : 임진석 교수
-                <a href="javascript:fnPlayerSample('181196', '1305141', 'HD');">바로가기 👉</a>
+                <a href="javascript:fnPlayerSample('199890', '1368418', 'HD');">바로가기 👉</a>
             </div>
 		</div>
 

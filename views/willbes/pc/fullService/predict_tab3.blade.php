@@ -277,6 +277,11 @@
             };
             Nwagon.chart(options);
 
+            /*if (cnt <= 2) {
+                var chartSvg = document.getElementById('levelSubject' + cnt).getElementsByTagName('svg')[0];
+                var fields = chartSvg.getElementsByClassName('fields')[0];
+                chartSvg.removeChild(fields);
+            }*/
             cnt++;
         });
     }

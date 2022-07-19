@@ -273,7 +273,7 @@
                 'core_circle_radius':0,
                 'chartDiv': 'levelSubject' + cnt,
                 'chartType': 'pie',
-                'chartSize': {width:400, height:300}
+                'chartSize': {width:330, height:200}
             };
             Nwagon.chart(options);
 
@@ -313,7 +313,7 @@
             'core_circle_radius':0,
             'chartDiv': 'hardSubject',
             'chartType': 'pie',
-            'chartSize': {width:700, height:300}
+            'chartSize': {width:330, height:200}
         };
         Nwagon.chart(options);
     }

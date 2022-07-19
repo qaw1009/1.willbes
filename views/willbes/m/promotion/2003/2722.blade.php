@@ -47,52 +47,52 @@
         <div>
             <p>2023 대비 <strong>법원직 동행6기 전체설명회</strong></p>
             진행 : 김동진 교수
-            <a href="javascript:fnMobile('https://www.willbes.net/m/Player/getMobileSample/?m=&id=&p=199878&u=1368411&q=HD', '70FBCADA-CE5A-4786-BCD3-960EAC8B4EA1');">바로가기 👉</a>
+            <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/free/prod-code/199878">바로가기 👉</a>
         </div>
         <div>
             <p>2023 대비 <strong>법원직 동행6기 생활규칙안내</strong></p>
             진행 : 문형석 교수
-            <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/free/prod-code/199879">바로가기 👉</a>
+            <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/free/prod-code/199879">바로가기 👉</a>
         </div>
         <div>
             <p>2023 대비 <strong>법원직 민법 커리큘럼안내</strong></p>
             진행 : 김동진 교수
-            <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/free/prod-code/199881">바로가기 👉</a>
+            <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/free/prod-code/199881">바로가기 👉</a>
         </div>
         <div>
             <p>2023 대비 <strong>법원직 민사소송법 커리큘럼안내</strong></p>
             진행 : 이덕훈 교수
-            <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/free/prod-code/199882">바로가기 👉</a>
+            <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/free/prod-code/199882">바로가기 👉</a>
         </div>
         <div>
             <p>2023 대비 <strong>법원직 형법 커리큘럼안내</strong></p>
             진행 : 이덕훈 교수
-            <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/free/prod-code/199883">바로가기 👉</a>
+            <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/free/prod-code/199883">바로가기 👉</a>
         </div>
         <div>
             <p>2023 대비 <strong>법원직 형사소송법 커리큘럼안내</strong></p>
             진행 : 유안석 교수
-            <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/free/prod-code/199884">바로가기 👉</a>
+            <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/free/prod-code/199884">바로가기 👉</a>
         </div>
         <div>
             <p>2023 대비 <strong>법원직 헌법 커리큘럼안내</strong></p>
             진행 : 이국령 교수
-            <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/free/prod-code/199886">바로가기 👉</a>
+            <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/free/prod-code/199886">바로가기 👉</a>
         </div>
         <div>
             <p>2023 대비 <strong>법원직 국어 커리큘럼안내</strong></p>
             진행 : 박재현 교수
-            <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/free/prod-code/199888">바로가기 👉</a>
+            <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/free/prod-code/199888">바로가기 👉</a>
         </div>
         <div>
             <p>2023 대비 <strong>법원직 영어 커리큘럼안내</strong></p>
             진행 : 박초롱 교수
-            <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/free/prod-code/199889">바로가기 👉</a>
+            <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/free/prod-code/199889">바로가기 👉</a>
         </div>
         <div>
             <p>2023 대비 <strong>법원직 한국사 커리큘럼안내</strong></p>
             진행 : 임진석 교수
-            <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/free/prod-code/199890">바로가기 👉</a>
+            <a href="https://pass.willbes.net/m/lecture/show/cate/3035/pattern/free/prod-code/199890">바로가기 👉</a>
         </div>
     </div>
 

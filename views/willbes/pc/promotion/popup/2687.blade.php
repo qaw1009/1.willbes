@@ -88,6 +88,9 @@
                             if(empty($arr_cert['apply_result']['AddContent1']) === false) {
                                 $addcontent1 = $arr_cert['apply_result']['AddContent1'];
                             }
+                            if(empty($arr_cert['apply_result']['AddContent2']) === false) {
+                                $addcontent1 = $arr_cert['apply_result']['AddContent2'];
+                            }
                         @endphp
 
                         <li><strong>회원명(아이디)</strong> <span>{{sess_data('mem_name')}}({{ substr(sess_data('mem_id'),0, (strlen(sess_data('mem_id'))-3)) }}***)</span></li>
@@ -96,7 +99,8 @@
                         </li>
                         <li>
                             <strong>합격 인증 파일</strong>
-                            <input type="radio" id="AddContent11" name="AddContent1" value="1차 시험합격" {{($addcontent1 == '1차 시험합격' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent11"  class="mr10">1차 시험합격</label>
+                            <input type="radio" id="AddContent11" name="AddContent1" value="실강" {{($addcontent1 == '실강' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent11"  class="mr10">실강 </label>
+                            <input type="radio" id="AddContent22" name="AddContent2" value="인강" {{($addcontent1 == '인강' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent22"  class="mr10">인강</label>
                             <input type="file" name="attachfile" id="attachfile" style="width:300px">
                             <div class="mt10">
                                 - 합격생을 증빙할 수 있는 합격생 합격자 발표 공고를 응시표와 함께 캡쳐하거나,
@@ -178,6 +182,11 @@
             if ($("input:radio[name='AddContent1']").is(':checked') == false) {
                 alert('합격구분을 선택해 주세요.');
                 $('#AddContent11').focus();
+                return;
+            }
+            if ($("input:radio[name='AddContent2']").is(':checked') == false) {
+                alert('합격구분을 선택해 주세요.');
+                $('#AddContent22').focus();
                 return;
             }
             if ($('#attachfile').val() == '') {

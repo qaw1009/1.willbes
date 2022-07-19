@@ -117,14 +117,13 @@
     .first {background:#F2F2F2;font-weight:bold;}
     .wrong {color:red !important;}
     .pass {color:#0070C0 !important;}
-    #score {position:absolute;left:50%;top:67%;margin-left:33px;width:110px;height:45px;border:2px solid #bfbfbf;}
+    .score {position:absolute;left:50%;top:67%;margin-left:33px;width:110px;height:45px;border:2px solid #bfbfbf;}
 
     input[type="number"]::-webkit-outer-spin-button,
     input[type="number"]::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
     }
-
     </style>
 
     <!-- Container -->
@@ -169,25 +168,39 @@
                     @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N', 'login_url'=>app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www'), 'is_public' => true)){{--기존SNS예외처리시, 로그인페이지 이동--}}
                 @endif
 
-                <div class="evtCtnsBox evt01_02" data-aos="fade-up">
-                    <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2022/07/2687_01_02.jpg" alt="event2">
-                        <a href="javascript:alert('이벤트 참여가 완료되었습니다.')" title="합격 점수 예상하기" style="position: absolute;left: 31.87%;top: 71.27%;width: 36.41%;height: 5.15%;z-index: 2;"></a>
-                        <div class="d_day NSK">
-                            <span class="NSK-Black">
-                                <input value="" type="number" maxlength="3" name="" id="score">                        
-                            </span>
+                <form name="regi_form_register" id="regi_form_register">
+                    {!! csrf_field() !!}
+                    {!! method_field('POST') !!}
+                    <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+                    <input type="hidden" name="register_type" value="promotion"/>
+                    <input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/> {{-- 하나수강만 선택 가능할시 --}}
+
+                    <input type="hidden" id="userId" name="userId" value="{{sess_data('mem_id')}}">
+                    <input type="hidden" name="register_name" value="{{sess_data('mem_name')}}">
+                    <input type="hidden" name="register_tel" value="{{sess_data('mem_phone')}}">
+                    <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
+                    <input type="hidden" name="target_param_names[]" value="예상 합격 점수"/> {{-- 체크 항목 전송 --}}
+                    <input type="hidden" name="register_chk[]" id="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
+
+                    <div class="evtCtnsBox evt01_02" data-aos="fade-up">
+                        <div class="wrap">
+                            <img src="https://static.willbes.net/public/images/promotion/2022/07/2687_01_02.jpg" alt="event2">
+                            <a href="javascript:void(0);" title="합격 점수 예상하기" onclick="fn_submit(); return false;" style="position: absolute;left: 31.87%;top: 71.27%;width: 36.41%;height: 5.15%;z-index: 2;"></a>
+                            <div class="d_day NSK">
+                                <span class="NSK-Black">
+                                    <input class="score" type="number" maxlength="3" name="register_data1" oninput="maxLengthCheck(this);" value="{{ (empty($register_count[0]['EtcValue']) === false ? $register_count[0]['EtcValue'] : '') }}">
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
 
                 <div class="evtCtnsBox evt01_03 pb100" data-aos="fade-up">
                     <div class="wrap">
                         <img src="https://static.willbes.net/public/images/promotion/2022/07/2687_01_03.jpg" alt="event3">
-                        <a href="javascript:void(0);" onclick="popup();" title="인증+등록하기" style="position: absolute;left: 23.07%;top: 71.07%;width: 53.99%;height: 9.45%;z-index: 2;"></a>     
+                        <a href="javascript:void(0);" onclick="popup();" title="인증+등록하기" style="position: absolute;left: 23.07%;top: 71.07%;width: 53.99%;height: 9.45%;z-index: 2;"></a>
                     </div>
                 </div>
-
             </div>
 
             <div class="main_content" id="tab02"></div>
@@ -202,8 +215,8 @@
     <!-- googlechart -->
     {{--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>--}}
 
-    <script src="/public/vendor/Nwagon/Nwagon.js"></script>
-    <link rel="stylesheet" href="/public/vendor/Nwagon/Nwagon.css">
+    <script src="/public/vendor/Nwagon/Nwagon.js?ver={{time()}}"></script>
+    <link rel="stylesheet" href="/public/vendor/Nwagon/Nwagon.css?ver={{time()}}">
 
     <script type="text/javascript">
         $(document).ready(function(){
@@ -252,15 +265,62 @@
                 $("#tab02").html(d);
             }, showAlertError, false, 'GET', 'html', false);
         }
-        </script>        
-        <script>
-            /*팝업 */
-            function popup(){
-                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-                var url = "{{ site_url('/promotion/popup/' . $arr_base['promotion_code']) .'?cert='. $arr_promotion_params['cert'] }}";
-                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=868,height=630');
+
+        /*팝업 */
+        /*function popup(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            var url = "{{ site_url('/promotion/popup/' . $arr_base['promotion_code']) .'?cert='. $arr_promotion_params['cert'] }}";
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=868,height=630');
+        }*/
+
+        function fn_submit() {
+            var $regi_form_register = $('#regi_form_register');
+            var _url = '{!! front_url('/event/registerStore') !!}';
+
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
+
+            if ($regi_form_register.find('input[name="register_data1"]').val() == '') {
+                alert('예상되는 합격 점수를 입력해 주세요.');
+                return;
             }
-        </script>
+
+            if (!confirm('이벤트에 참여 하시겠습니까?')) { return; }
+            ajaxSubmit($regi_form_register, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert( getApplyMsg(ret.ret_msg) );
+                    location.reload();
+                }
+            }, showValidateError, null, false, 'alert');
+        }
+
+        function getApplyMsg(ret_msg) {
+            {{-- 해당 프로모션 종속 결과 메세지 --}}
+            var apply_msg = '';
+            var arr_apply_msg = [
+                ['이미 신청하셨습니다.','이미 신청하셨습니다.'],
+                ['신청 되었습니다.','이벤트 참여가 완료되었습니다.'],
+                ['처리 되었습니다.','처리 되었습니다.'],
+                ['마감되었습니다.','마감되었습니다.']
+            ];
+            for (var i = 0; i < arr_apply_msg.length; i++) {
+                if(arr_apply_msg[i][0] == ret_msg) {
+                    apply_msg = arr_apply_msg[i][1];
+                }
+            }
+            if(apply_msg == '') apply_msg = ret_msg;
+            return apply_msg;
+        }
+
+        function maxLengthCheck(object) {
+            if($(object).prop('type') == 'number') {
+                object.value = object.value.replace(/[^0-9.]/g, "");
+            }
+            if (object.value > 100) {
+                object.value = '';
+            }
+        }
+    </script>
     
 <!-- End Container -->
 

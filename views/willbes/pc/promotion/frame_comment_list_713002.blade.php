@@ -299,6 +299,7 @@
                         alert('쿠폰 발급 도중 오류가 발생하였습니다.');
                     }
                 @else
+                    window.parent.$(".iframe-box-713002").height(803);
                     location.reload();
                 @endif
             }

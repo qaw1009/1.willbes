@@ -2,67 +2,103 @@
 
 @section('content')
     <style>
-        .swiper-main-Banner {position:relative;}
-        .swiper-main-Banner .swiper-slide {display:block; width:100%; padding-bottom:35%; height:auto}
-        .swiper-main-Banner .swiper-slide .small-banner-wrap {position: absolute; width:100%; z-index: 2;}
-        .swiper-main-Banner .swiper-slide .small-banner {
-            width:calc(100% - 40px); margin:-20px 20px 0; padding:20px 0;
-            display: flex; justify-content:space-around; border:1px solid #535353;
-            background:#fff; box-shadow:0 0 10px rgba(0,0,0,.5); border-radius:20px;
-        }
-        .swiper-main-Banner .small-banner div {flex-basis: auto; flex-grow: 1; border-right:1px solid #e1e1e1;}
-        .swiper-main-Banner .small-banner div:last-child {border:0}
-        .swiper-main-Banner .MaintabControl {position: absolute; right:2.5%; top: 48%; width: 25%; height: 8.59%; z-index: 99;}
-        .swiper-main-Banner .MaintabControl div {float:left;  display: flex; justify-content: center; align-items: center; height:100%; width:30%; font-size: 16px; color:#666; background:rgba(255,255,255,.8); margin-right:1px}
-        .swiper-main-Banner .MaintabControl .swiper-pagination-current {font-weight: 600; color:#000}
-        .swiper-main-Banner .MaintabControl div.MaintabAll {margin-left:2%; border-radius:50%}
-        .swiper-main-Banner .MaintabControl div.MaintabAll a {font-size:30px; color:#000; font-weight: 600;}
-        .Container .MaintabAllView {position:absolute; top:0; left:0; width:100%; height:100%; z-index: 999; background:rgba(0,0,0,.5); display:none}
-        .Container .MaintabAllView .title {background:#fff; text-align:center; padding:10px; font-size:16px}
-        .Container .MaintabAllView .title span {float:right}
-        .Container .MaintabAllView .title:after {content:''; display:block; clear:block}
-        .Container .MaintabAllView img {max-width:100%;}
-        .fixed {position:fixed; top:0; left:0; width:100%; border-bottom:1px solid #ccc; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10}
-        .intro .gosiTitle {text-align:left; margin-left:24px}
+        .intro .swiper-wrapper {height:auto;}
+        .intro .gosiTitle {text-align:left; margin-left:4%; font-size:2.4vh; padding:0 0 20px}
 
-        .intro .swiper-sec02 {
-            position: relative;
+        .gosi-gate-Sec {overflow: hidden;}
+        .gosi-gate-Sec .gosi-gate-bntop-img {position:relative;}
+
+        .gosi-gate-Sec .mainTopBnList {position:relative; margin-top:4%}
+        .gosi-gate-Sec .mainTopBn {display:flex; margin-left:4%}
+        .gosi-gate-Sec .mainTopBn li a {
+            display: block;
+            color:#b4b4b4;
+            text-align:center;
+            line-height: 1.2;
+            font-size: 1.8vh;
+            width:110px;
+            margin-right:30px
+        }
+        .gosi-gate-Sec .mainTopBn li a.active {color:#000; font-weight:bold;}
+        .gosi-gate-Sec .mainTopBn li a img {display:block; margin:auto auto 18px; border-radius:18px; width:100%; max-width:110px}
+        .gosi-gate-Sec .mainTopBn li a.active img {box-shadow:3px 3px 5px rgba(0,0,0,.2); }
+
+
+        .intro .newsWrap {margin-top:6%; position: relative; display:flex; justify-content: space-between; align-items: top}
+        .intro .newsWrap .swiper-wrapper img {border-radius:10px;}
+        .intro .newsWrap .swiper-sec02-wrap {
             overflow: hidden;
-            margin-left:20px;              
+            width:calc(100%);
+            margin-left:20px
         }
-        .intro .swiper-sec02 .swiper-wrapper { display: flex; justify-content:flex-start; height: auto;}
-        .intro .swiper-sec02 .swiper-container-sec02 .swiper-slide {
-            max-width:220px; margin-right:20px; align-items: flex-start; 
+        .intro .swiper-sec02-wrap .gosiTitle {margin-left:0}
+        .intro .swiper-sec02-wrap .swiper-wrapper {display: flex; justify-content:flex-start; height: auto;}
+        .intro .swiper-sec02-wrap .swiper-sec02 .swiper-slide {
+            width:420px; margin-right:1.3%; align-items: flex-start;
         }
-        .intro .swiper-sec02 .swiper-slide a {display: block;}
-        .intro .swiper-sec02 .swiper-slide .bnTit {display: block;width: 100%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;margin: 10px auto 0;font-size: 12px;}
-        .intro .swiper-sec02 .swiper-slide img {max-width: 220px;}
-
-        .intro .swiper-sec03 {padding-bottom:35px;}
-        .intro .swiper-sec03 .swiper-pagination {top:90%;float:none;text-align:center}
-        .intro .swiper-pagination .swiper-pagination-bullet {background:#d1d0ce !important;opacity: 1;}
-        .intro .swiper-pagination .swiper-pagination-bullet-active {background:#2b2b2b !important;}
-        
-        .intro .swiper-sec04 {
-            position: relative;
+        .intro .swiper-sec02-wrap .swiper-slide a {
+            display: block;
+        }
+        .intro .swiper-sec02-wrap .swiper-slide .bnTit {
+            display: block;
+            width: 100%;
             overflow: hidden;
-            background:#c0bcb0;  
-            margin-top:30px;
-            padding-bottom:3vh;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin: 10px auto 0;
+            font-size: 12px;
         }
-        .intro .swiper-sec04 .gosiTitle {color:#fff}
-        .intro .swiper-sec04 .swiper-wrapper {display: flex; justify-content: space-between; padding-left:20px; height: auto;}
-        .intro .swiper-sec04 .swiper-container-sec04 .swiper-slide {
-            width: 208px; margin-right:20px; align-items: flex-start; background:none;
+        .intro .swiper-sec02-wrap .swiper-slide img {
+            width:100%;
         }
-        .intro .swiper-sec04 .swiper-slide a {display: block;}
-        .intro .swiper-sec04 .swiper-slide img {max-width: 100%;}
 
-        .intro .swiper-sec05 {padding-bottom: 20px;overflow: hidden;position: relative;}
-        .intro .swiper-sec05 .swiper-wrapper {height: auto;}
-        .intro .swiper-sec05 .swiper-container-prof {height: 420px;}
+        .intro .swiper-sec03 {margin-top:10%; padding-bottom:30px;}
+        .intro .swiper-sec03 img {width:100%}
+
+        .intro .swiper-pagination .swiper-pagination-bullet {
+            background:#d1d0ce !important;
+            opacity: 1;
+        }
+        .intro .swiper-pagination .swiper-pagination-bullet-active {
+            background:#2b2b2b !important;
+        }
+
+        .tpassWrap {margin-top:10%; background:#f4f7fe; padding:10% 4% 2%; }
+        .tpassWrap .gosiTitle {margin-left:0}
+        .tpassWrap .swiper-sec04 {padding-bottom:30px;}
+        .tpassWrap .swiper-sec04 .swiper-wrapper {border-radius:20px;}
+        .tpassWrap .swiper-sec04 .swiper-slide {background:#f4f7fe;}
+        .tpassWrap .swiper-sec04 .swiper-slide img {border-radius:20px; width:100%;}
+        .tpassWrap .swiper-sec04 .swiper-pagination04 {
+            bottom:8px;
+            float:none;
+            text-align:center
+        }
+        .tpassWrap .bx-wrapper .bx-pager {
+            width: auto;
+            position: absolute;
+            bottom: 0;
+            left:0;
+            right: 0;
+        }
+        .tpassWrap .prfoWrap {margin:6% auto; display:flex; flex-wrap: wrap; justify-content: center;}
+        .tpassWrap .prfoWrap > div {font-size:1.6vh; font-weight:bold; text-align:center; display:block; width:calc(20% - 8px); margin:0 4px 20px;}
+        .tpassWrap .prfoWrap div img {border:1px solid #e6e6e6; border-radius:30px; overflow: hidden; display:block; margin:0 auto 10px; max-width:100%}
+
+
+
+        .intro .swiper-sec05 {
+            padding: 10% 0;
+            overflow: hidden;
+            position: relative;
+            background:#21262c;
+            color:#fff
+        }
+        .intro .swiper-sec05 .gosiTitle strong {color:#ff554d}
+        .intro .swiper-sec05 .swiper-container-prof {margin-left:3%}
+        .intro .swiper-sec05 .swiper-wrapper {height:auto;}
         .intro .swiper-sec05 .swiper-slide {
-            width: 350px;
+            width: 330px;
             display: -webkit-box;
             display: -ms-flexbox;
             display: -webkit-flex;
@@ -75,137 +111,208 @@
             -ms-flex-align: flex-start;
             -webkit-align-items: flex-start;
             align-items: flex-start;
+            margin-right:20px;
+            margin-bottom:15px
         }
-        .intro .swiper-sec05 .swiper-slide a {display: block;}
-        .intro .swiper-sec05 .swiper-slide img {width: 100%;}
+        .intro .swiper-sec05 .swiper-slide a {
+            display: block;
+        }
+        .intro .swiper-sec05 .swiper-slide img {
+            width: 100%;
+        }
 
+
+        .intro .swiper-sec06-Wrap {
+            position: relative;
+            overflow: hidden;
+            padding:10% 0;
+        }
+        .intro .swiper-sec06-Wrap .swiper-wrapper {display: flex; justify-content: space-between; height: auto; margin-left:4%}
+        .intro .swiper-sec06-Wrap .swiper-slide {
+            width: 210px; align-items: flex-start; margin-right:10px;
+        }
+        .intro .swiper-sec06-Wrap .swiper-slide a {
+            display: block;
+        }
+        .intro .swiper-sec06-Wrap .swiper-slide img {
+            max-width: 100%;
+        }
 
         /* iPhone 5/SE */
         @@media only screen and (max-width: 374px) {
-            .swiper-main-Banner .swiper-slide .small-banner {
-            width:calc(100% - 20px); margin:-10px 10px 0; padding:10px 0; border-radius:10px; 
+            .gosi-gate-Sec .mainTopBn li a {
+                font-size:1.6vh;
+                width:55px;
+                margin-right:16px
             }
 
-            .swiper-main-Banner .MaintabControl div {font-size:12px}
-            .swiper-main-Banner .MaintabControl div.MaintabAll a {font-size:20px;}
+            .intro .newsWrap {display:block; width:320px; margin:10% auto 0}
+            .intro .newsWrap .swiper-sec02-wrap {
+                overflow: hidden;
+                width:100%;
+                margin-left:0;
+                margin-top:10%
+            }
 
-            .intro .gosiTitle,
-            .intro .swiper-sec02 {margin-left:10px}
-            .intro .gosiTitle {font-size:18px}
+            .intro .swiper-sec02-wrap .swiper-sec02 .swiper-slide {
+                width:60%; margin-right:1%;
+            }
+
+            .tpassWrap .prfoWrap > div {font-size:1.4vh; width:calc(20% - 6px); margin:0 3px 20px;}
+            .tpassWrap .prfoWrap div img {border-radius:10px;}
+
+            .intro .swiper-sec05 .swiper-slide {width: 160px;}
+            .intro .swiper-sec06-Wrap .swiper-slide {
+                width: 150px;
+            }
         }
 
-        @@media only screen and (max-width: 640px) {
-            .intro .swiper-sec02 .swiper-container-sec02 .swiper-slide {
-                width:40%; margin-right:10px
+        @@media only screen and (min-width: 375px) and (max-width: 640px) {
+            .gosi-gate-Sec .mainTopBn li a {
+                width:80px;
+                margin-right:16px
             }
 
-            .intro .swiper-sec04 .gosiTitle {padding-top:30px}
-            .intro .swiper-sec04 .swiper-wrapper {padding-left:10px}
-            .intro .swiper-sec04 .swiper-container-sec04 .swiper-slide {
-                width: 130px; margin-right:10px;
+            .intro .newsWrap {display:block; width:92%; margin:10% auto 0}
+            .intro .newsWrap .swiper-sec02-wrap {
+                overflow: hidden;
+                width:100%;
+                margin-left:0;
+                margin-top:10%
             }
 
-            .intro .swiper-sec05 .swiper-container-prof {height:185px;}
-            .intro .swiper-sec05 .swiper-slide {width: 160px;}
+            .intro .swiper-sec02-wrap .swiper-sec02 .swiper-slide {
+                width:60%; margin-right:1%;
+            }
+            .intro .swiper-sec02-wrap .swiper-sec02 .swiper-slide:last-child {margin-right:0}
+
+            .tpassWrap .prfoWrap > div {font-size:1.5vh; width:calc(20% - 6px); margin:0 3px 20px;}
+            .tpassWrap .prfoWrap div img {border-radius:20px;}
+
+            .intro .swiper-sec05 .swiper-slide {width: 165px;}
+
+            .intro .swiper-sec06-Wrap .swiper-slide {
+                width: 150px;
+            }
         }
     </style>
 
     <div id="Container" class="Container NSK gosi intro mb40 p_re">
-        <div class="MainSlider swiper-container swiper-container-page mt20">
-            <div class="swiper-wrapper">
-                {{--banner_html 사용시 UI 깨짐--}}
-                @if(empty($data['banner']['M_게이트_상단배너']) === false)
-                    @foreach($data['banner']['M_게이트_상단배너'] as $key => $row)
-                        <div class="swiper-slide">
-                            @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
-                                <a href="javascript:void(0);"><img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}"></a>
-                            @else
-                                <a href="{{front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www')}}" target="{{$row['LinkType']}}">
-                                    <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
-                                </a>
-                            @endif
-                        </div>
-                    @endforeach
-                @endif
+
+        <div class="gosi-gate-Sec">
+            <div class="gosi-gate-bntop-img">
+                <div class="gate-bntop-Slider mainSlider01">
+                    <ul class="swiper-wrapper">
+                        @if(isset($data['banner']['M_게이트_메인배너']) === true)
+                            @for($i=0; $i<count($data['banner']['M_게이트_메인배너']); $i++)
+                                <li class="swiper-slide">
+                                    {!! banner_html(array($data['banner']['M_게이트_메인배너'][$i])) !!}
+                                    {{--                                    {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(array($data['banner']['M_게이트_메인배너'][$i]))) !!}--}}
+                                </li>
+                            @endfor
+                        @endif
+                    </ul>
+                </div>
             </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
+
+            <div class="mainTopBnList">
+                <ul class="mainTopBn">
+                    <li><a data-swiper-slide-index="0" href="javascript:void(0);" class="active">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_01.jpg" alt="배너명">
+                            9급PASS<br>할인</a></li>
+                    <li><a data-swiper-slide-index="1" href="javascript:void(0);">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_02.jpg" alt="배너명">
+                            윌비스<br>세무팀</a></li>
+                    <li><a data-swiper-slide-index="2" href="javascript:void(0);">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_03.jpg" alt="배너명">
+                            불꽃소방<br>신규개강</a></li>
+                    <li><a data-swiper-slide-index="3" href="javascript:void(0);">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_04.jpg" alt="배너명">
+                            농업직<br>통신직</a></li>
+                    <li><a data-swiper-slide-index="4" href="javascript:void(0);">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_05.jpg" alt="배너명">
+                            축산직<br>조경직</a></li>
+                    <li><a data-swiper-slide-index="5" href="javascript:void(0);">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_06.jpg" alt="배너명">
+                            군무원<br>행정직</a></li>
+                    <li><a data-swiper-slide-index="6" href="javascript:void(0);">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_07.jpg" alt="배너명">
+                            검찰직<br>신규런칭</a></li>
+                    <li><a data-swiper-slide-index="7" href="javascript:void(0);">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_08.jpg" alt="배너명">
+                            7급<br>PSAT</a></li>
+                    <li><a data-swiper-slide-index="8" href="javascript:void(0);">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_09.jpg" alt="배너명">
+                            김동진<br>법원팀</a></li>
+                </ul>
+            </div>
         </div>
 
-        <div class="MainSlider swiper-container swiper-main-Banner">
-            <div class="MaintabControl">
-                <div class="swiper-pagination-gate"></div>
-                <div class="start" style="display:none;"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconPlay.png" alt="재생"></div>
-                <div class="stop"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconStop.png" alt="정지"></div>
-                <div class="MaintabAll"><a href="javascript:void(0);">+</a></div>
-            </div>
+        <div class="newsWrap">
+            <div class="swiper-sec02-wrap">
+                <div class="gosiTitle NSK">
+                    지금 윌비스에서 <strong class="NSK-Black">주목해야 할 강의!</strong>
+                </div>
+                <div class="swiper-sec02">
+                    <div class="swiper-wrapper">
 
-            <div class="swiper-wrapper">
-                @for($i=0; $i<=9; $i++)
-                    @if(isset($data['banner']['M_게이트_메인배너'.$i]) === true)
-                        <div class="swiper-slide">
-                            {!! banner_html(element('M_게이트_메인배너'.$i, $data['banner']), '', '' , false, '', 'big-banner') !!}
-                            <div class="small-banner-wrap">
-                                <div class="small-banner">
-                                    @for($s=1;$s<=3;$s++)
-                                        <div>{!! banner_html(element('M_게이트_서브배너'.$i.'_'.$s, $data['banner'])) !!}</div>
-                                    @endfor
+                        @if(empty($data['banner']['M_게이트_주목']) === false)
+                            @foreach($data['banner']['M_게이트_주목'] as $key => $row)
+                                <div class="swiper-slide">
+                                    @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
+                                        <a href="javascript:void(0);">
+                                            <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                        </a>
+                                    @else
+                                        <a href="{{front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www')}}" target="{{$row['LinkType']}}">
+                                            <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
+                                        </a>
+                                    @endif
                                 </div>
-                            </div>
-                        </div>
-                    @endif
-                @endfor
+                            @endforeach
+                        @endif
+
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="MaintabAllView" style="display:none">
-            <div class="title">
-                전체보기 <span><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/btnClose.png" alt="닫기"></a></span>
-            </div>
-            @for($i=0; $i<=9; $i++)
-                @if(isset($data['banner']['M_게이트_메인배너'.$i]) === true)
-                    <div>{!! banner_html(element('M_게이트_메인배너'.$i, $data['banner'])) !!}</div>
-                @endif
-            @endfor
+        <div class="swiper-container swiper-sec03">
+            {{--            {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(element('M_게이트_초보가이드', $data['banner']))) !!}--}}
+            {!! banner_html(element('M_게이트_초보가이드', $data['banner'])) !!}
         </div>
 
-        <div class="gosiTitle NSK">
-            지금 바로 주목해야 할 <strong class="NSK-Black">새로운 소식!</strong>
-        </div>
-        <div class="swiper-sec02">
-            <div class="swiper-container-sec02">
+        <div class="tpassWrap">
+            <div class="gosiTitle NSK">
+                <strong class="NSK-Black">원하는 교수님</strong>의 과정을 무제한 수강
+            </div>
+            <div class="swiper-container swiper-sec04">
                 <div class="swiper-wrapper">
-                    {{--banner_html 사용시 UI 깨짐--}}
-                    @if(empty(element('M_게이트_새소식', $data['banner'])) === false)
-                        @foreach(element('M_게이트_새소식', $data['banner']) as $key => $row)
+                    @if(empty($data['banner']['M_게이트_무제한수강']) === false)
+                        @foreach($data['banner']['M_게이트_무제한수강'] as $key => $row)
                             <div class="swiper-slide">
                                 @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
                                     <a href="javascript:void(0);">
                                         <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
-                                        <div class="bnTit">{{$row['Desc']}}</div>
                                     </a>
                                 @else
                                     <a href="{{front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www')}}" target="{{$row['LinkType']}}">
                                         <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
-                                        <div class="bnTit">{{$row['Desc']}}</div>
                                     </a>
                                 @endif
                             </div>
                         @endforeach
                     @endif
-                </div>
-            </div>
-        </div>
 
-        <div class="gosiTitle NSK">
-            <strong class="NSK-Black">초보 수험생</strong>이라면, 꼭 확인!
-        </div>
-        <div class="MainSlider swiper-container swiper-sec03 swiper-container-page">
-            <div class="swiper-wrapper">
-                {{--banner_html 사용시 UI 깨짐--}}
-                @if(empty($data['banner']['M_게이트_초보가이드']) === false)
-                    @foreach($data['banner']['M_게이트_초보가이드'] as $key => $row)
-                        <div class="swiper-slide">
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination04 swiper-pagination"></div>
+            </div>
+
+            <div class="prfoWrap">
+                @if(empty($data['banner']['M_게이트_과목별교수']) === false)
+                    @foreach($data['banner']['M_게이트_과목별교수'] as $key => $row)
+                        <div>
                             @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
                                 <a href="javascript:void(0);">
                                     <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
@@ -215,24 +322,24 @@
                                     <img src="{{$row['BannerFullPath'] . $row['BannerImgName']}}" alt="{{$row['BannerName']}}">
                                 </a>
                             @endif
+                            <div class="castTitle">{{$row['BannerName']}}</div>
                         </div>
                     @endforeach
                 @endif
+
             </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
         </div>
 
-        <div class="swiper-sec04">
+        <div class="swiper-sec05">
             <div class="gosiTitle NSK">
-                합격을 책임지는 <strong class="NSK-Black">윌비스 교수진</strong>
+                보기만 해도 열공 되는 <strong class="NSK-Black">YOUTUBE</strong>
             </div>
 
-            <div class="swiper-container-sec04">
+            <div class="swiper-container-prof">
                 <div class="swiper-wrapper">
                     {{--banner_html 사용시 UI 깨짐--}}
-                    @if(empty($data['banner']['M_게이트_교수진']) === false)
-                        @foreach($data['banner']['M_게이트_교수진'] as $key => $row)
+                    @if(empty($data['banner']['M_게이트_유튜브']) === false)
+                        @foreach($data['banner']['M_게이트_유튜브'] as $key => $row)
                             <div class="swiper-slide">
                                 @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
                                     <a href="javascript:void(0);">
@@ -250,15 +357,15 @@
             </div>
         </div>
 
-        <div class="gosiTitle NSK">
-            쉬면서도 열공되는 <strong class="NSK-Black">YOUTUBE 영상</strong> 시청하기!
-        </div>
-        <div class="swiper-sec05">
-            <div class="swiper-container-prof">
+        <div class="swiper-sec06-Wrap">
+            <div class="gosiTitle NSK">
+                합격을 책임지는 <strong class="NSK-Black">윌비스 교수진</strong>
+            </div>
+
+            <div class="swiper-sec06">
                 <div class="swiper-wrapper">
-                    {{--banner_html 사용시 UI 깨짐--}}
-                    @if(empty($data['banner']['M_게이트_유튜브']) === false)
-                        @foreach($data['banner']['M_게이트_유튜브'] as $key => $row)
+                    @if(empty($data['banner']['M_게이트_교수진']) === false)
+                        @foreach($data['banner']['M_게이트_교수진'] as $key => $row)
                             <div class="swiper-slide">
                                 @if(empty($row['LinkUrl']) === true || $row['LinkUrl'] == '#')
                                     <a href="javascript:void(0);">
@@ -329,119 +436,142 @@
             @include('willbes.m.site.main_partial.app_player')
         </div>
     </div>
-
+    <script src="/public/vendor/jquery/swiper/swiper.min.js"></script>
     <script>
         //swiper 메인 슬라이드
         $(document).ready(function(){
-            var mainslider = new Swiper('.swiper-main-Banner', {
-                direction: 'horizontal',
-                loop: true,
-                observer: true,
-                observeParents: true,
-                slidesPerView : 'auto',
+            var mainslider = new Swiper('.mainSlider01', {
+                spaceBetween: 0,
+                effect: "fade",
                 pagination: {
                     el: ".swiper-pagination-gate",
                     type: "fraction",
                 },
                 autoplay: {
-                    delay: 3000,
+                    delay: 4000,
                     disableOnInteraction: false,
-                }, //3초에 한번씩 자동 넘김
-            });
-
-            //슬라이드 재생, 스탑 버튼
-            $('.start').on('click', function() {
-                mainslider.autoplay.start();
-                $(this).hide();
-                $('.stop').show();
-                return false;
-            });
-            $('.stop').on('click', function() {
-                mainslider.autoplay.stop();
-                $(this).hide();
-                $('.start').show();
-                return false;
-            });
-
-            //진행중인 모든 이벤트 닫기, 열기
-            $('.MaintabControl .MaintabAll a').on('click', function() {
-                $('.MaintabAllView').css("display","block");
-            });
-
-            $('.MaintabAllView span a').on('click', function() {
-                $('.MaintabAllView').css("display","none");
-            });
-
-            //입성
-            var swiper = new Swiper('.swiper-container-sec02', {
-                slidesPerView: 'auto',
-                slidesPerColumn: 1,
-                spaceBetween: 0,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                }, //3초에 한번씩 자동 넘김
-            });
-
-            //교수진
-            var swiper = new Swiper('.swiper-container-sec04', {
-                slidesPerView: 'auto',
-                slidesPerColumn: 1,
-                spaceBetween: 0,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                }, //3초에 한번씩 자동 넘김
-            });
-
-            //YOUTUBE 영상
-            var swiper = new Swiper('.swiper-container-prof', {
-                slidesPerView: 'auto',
-                slidesPerColumn: 2,
-                spaceBetween: 10,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                }, //3초에 한번씩 자동 넘김
-                // init: false,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
+                }, //5초에 한번씩 자동 넘김
+                navigation: {
+                    nextEl: ".swiper-btn-next",
+                    prevEl: ".swiper-btn-prev",
                 },
-                breakpoints: {
-                    640: {
-                        spaceBetween: 10,
-                    },
+                on: {
+                    slideChange: function () {
+                        $('.mainTopBn li > a').removeClass('active');
+                        $('.mainTopBn li > a').eq(this.realIndex).addClass('active').trigger('click');
+                        if($('.mainTopBn li:eq(0) > a').hasClass('active')){
+                            // mainslider.update();
+                            // location.reload();
+                        }
+                    }
                 }
             });
+
+            //메인 슬라이드 메뉴1
+            $('.mainTopBn li > a').on('click', function(){
+                $('.mainTopBn li > a').removeClass('active');
+                $(this).addClass('active');
+                var num = $(this).attr('data-swiper-slide-index');
+                mainslider.slideTo(num);
+                var target = $(this);
+                muCenter(target);
+            });
+
+            //슬라이드 메뉴1 클릭시 위치조정
+            function muCenter(target){
+                var snbwrap = $('.mainTopBn');
+                var targetPos = target.position();
+                var box = $('.mainTopBnList');
+                var boxHarf = box.width()/2;
+                var pos;
+                var listWidth=0;
+
+                snbwrap.find('li').each(function(){ listWidth += $(this).outerWidth(); })
+
+                var selectTargetPos = targetPos.left + target.outerWidth()/2;
+                if (selectTargetPos <= boxHarf) { // left
+                    pos = 0;
+                }else if ((listWidth - selectTargetPos) <= boxHarf) { //right
+                    pos = listWidth-box.width();
+                }else {
+                    pos = selectTargetPos - boxHarf;
+                }
+
+                setTimeout(function(){snbwrap.css({
+                    "transform": "translateX("+ (pos*-1) +"px)",
+                    "transition-duration": "500ms"
+                })}, 200);
+            }
         });
 
-        //배너 전체보기
-        $(function() {
-            var nav = $('.title');
-            var navTop = nav.offset().top+50;
-            var navHeight = nav.height()+10;
-            var showFlag = false;
-            nav.css('top', -navHeight+'px');
-            $(window).scroll(function () {
-                var winTop = $(this).scrollTop();
-                if (winTop >= navTop) {
-                    if (showFlag == false) {
-                        showFlag = true;
-                        nav
-                            .addClass('fixed')
-                            .stop().animate({'top' : '0px'}, 50);
-                    }
-                } else if (winTop <= navTop) {
-                    if (showFlag) {
-                        showFlag = false;
-                        nav.stop().animate({'top' : -navHeight+'px'}, 100, function(){
-                            nav.removeClass('fixed');
-                        });
-                    }
-                }
-            });
+
+        //입성
+        var swiper2 = new Swiper('.swiper-sec02', {
+            slidesPerView: 'auto',
+            slidesPerColumn: 1,
+            spaceBetween: 0,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
         });
+
+
+        //무제한 수강 교수진
+        var swiper4 = new Swiper('.swiper-sec04', {
+            slidesPerView: '1',
+            effect : "fade",
+            fadeEffect: {
+                crossFade: true
+            },
+            allowTouchMove: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            loop: true,
+            spaceBetween:0,//각 좌우 공간
+            pagination: {
+                el: ".swiper-pagination04",
+                clickable:true
+            },
+        });
+
+        //YOUTUBE 영상
+        var swiper5 = new Swiper('.swiper-container-prof', {
+            slidesPerView: 'auto',
+            slidesPerColumn: 2,
+            spaceBetween: 0,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
+            // init: false,
+            pagination: {
+                el: '.swiper-container-prof .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                375: {
+                    spaceBetween: 0,
+                },
+                640: {
+                    spaceBetween: 0,
+                },
+            }
+        });
+
+        //교수진
+        var swiper6 = new Swiper('.swiper-sec06', {
+            slidesPerView: 'auto',
+            slidesPerColumn: 1,
+            spaceBetween: 10,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
+        });
+
     </script>
-    {!! popup('657008', $__cfg['SiteCode'], '0') !!}
+
 @stop

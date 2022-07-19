@@ -1,171 +1,343 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    <link href="/public/css/willbes/style_gosi_gate_2021.css??ver={{time()}}" rel="stylesheet">
+    <style type="text/css">
+        .gosi-gate-v3 .tx-color {
+            color: #ba560e;
+        }
 
-    <!-- Container -->
+        .bx-wrapper .bx-pager.bx-default-pager a {
+            background: #d1d0ce;
+            width: 12px;
+            height: 12px;
+            margin: 0 4px;
+            border-radius:6px;
+        }
+        .bx-wrapper .bx-pager.bx-default-pager a:hover,
+        .bx-wrapper .bx-pager.bx-default-pager a.active,
+        .bx-wrapper .bx-pager.bx-default-pager a:focus {
+            background: #2b2b2b;
+        }
 
-    <div id="Container" class="Container gosi-gate-v2 NSK c_both">
+        .gosi-gate-v3 .will-nTit {border:0; font-size:28px; color:#5c5c5c}
+        .gosi-gate-v3 .will-nTit span {color:#000}
+
+        .gosi-gate-secTop {position:relative; padding-top:56px;}
+        .gosi-gate-secTop .gosi-gate-search {position:absolute; top:35px;}
+
+        .topMenu {position: absolute; width:1120px; left:50%; margin-left:-560px; top:40px;  z-index: 0;}
+        .topMenu .banner {margin-top:10px}
+        .gosiLogo {position: absolute; top:20px; left:50%; margin-left:-105px;}
+        .menuList {display:flex; font-size:16px; width:1080px; margin:20px auto 0; justify-content: center; align-items: center; font-weight:bold}
+        .menuList div {width:11.1111%}
+        .menuList a {display:block; text-align:center}
+
+        .gosi-gate-Sec {margin-top:100px; padding:0; text-align:center; background:none}
+        .gosi-gate-Sec .gosi-gate-bntop-img {position:relative;}
+
+
+        .gate-bntop-Slider .swiper-slide span {position:absolute; top:40px; left:50%; margin-left:65px; width:350px; height:350px; overflow: hidden;}
+        .gate-bntop-Slider .swiper-slide.swiper-slide-active span img {animation: zoom-out 1s linear backwards;}
+        @@keyframes zoom-out {
+             0% {
+                 transform: scale(1.125);
+             }
+             100% {
+                 transform: scale(1);
+             }
+         }
+
+        .gosi-gate-Sec .MaintabControl {display:flex; justify-content: space-around; align-items: center; position: absolute; left:50%; margin-left:-420px; bottom:50px; z-index: 100; border-radius:30px; background-color:rgba(0,0,0,.4)}
+        .gosi-gate-Sec .MaintabControl div {height:34px !important; width:38px !important; font-size: 14px; display: flex; justify-content: center; align-items: center; margin:0; padding:0; color:#fff; letter-spacing:1px }
+        .gosi-gate-Sec .MaintabControl .swiper-pagination-current {font-weight: 600; color:#fff}
+        .gosi-gate-Sec .MaintabControl div.swiper-btn-next {background: url("https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAR.png") no-repeat center center}
+        .gosi-gate-Sec .MaintabControl div.swiper-btn-prev {background: url("https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAL.png") no-repeat center center}
+
+        .gosi-gate-Sec .MaintabList {background:#fff; padding-top:30px}
+        .gosi-gate-Sec .MaintabWrap {max-width:1080px; margin:0 auto; position: relative;}
+        .gosi-gate-Sec .Maintab {display:flex;}
+        .gosi-gate-Sec .Maintab li {
+            font-size: 16px;
+            width:11.11111%
+        }
+        .gosi-gate-Sec .Maintab li a {
+            display: block;
+            color:#b4b4b4;
+            text-align:center
+        }
+        .gosi-gate-Sec .Maintab li a.active {color:#000; font-weight:bold;}
+        .gosi-gate-Sec .Maintab li a img {display:block; margin:auto auto 18px; border-radius:18px; }
+        .gosi-gate-Sec .Maintab li a.active img {box-shadow:3px 3px 5px rgba(0,0,0,.2); }
+
+
+        .gosi-gate-Sec .tabCts a {display:inline-block; border:2px solid #ccc; padding:5px 15px; border-radius: 20px; font-size:14px; margin-right:10px; margin-bottom:10px}
+        .gosi-gate-Sec .tabCts a.active {color:#000; border-color:#000}
+
+        .gosi-gate-Sec p {position:absolute; top:70%; left:50%; margin-top:-28px; width:32px; height:50px; cursor:pointer; z-index:99;}
+        .gosi-gate-Sec p a {display:none;}
+        .gosi-gate-Sec p.leftBtn {background: url(https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAL.png) no-repeat left center; }
+        .gosi-gate-Sec p.rightBtn {background: url(https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAR.png) no-repeat left center; }
+        .gosi-gate-Sec p:hover {opacity:100; filter:alpha(opacity=100);}
+
+
+
+        .gosi-gate-v3 .newsWrap {width:1120px; margin:80px auto 0; display:flex}
+        .gosi-gate-v3 .newsBox {position:relative; width:320px; margin-left:28px;}
+        .gosi-gate-v3 .newsBox .bx-viewport {border-radius:10px;}
+        .gosi-gate-v3 .newsSlider {width:320px; margin:0 auto; height:400px; overflow:hidden;border-radius:10px;}
+        .gosi-gate-v3 .newsSlider li a {display:block; width:320px; margin:0 auto; }
+        .gosi-gate-v3 .newsSlider li div.newsTitle {height:40px; line-height:40px; font-size:14px; text-align:center; width:80%; overflow:hidden;white-space:nowrap; text-overflow:ellipsis; margin:0 auto}
+        .gosi-gate-v3 .newsBox p {position:absolute; top:50%; margin-top:-30px; width:60px; z-index:10}
+        .gosi-gate-v3 .newsBox p.leftBtn {left:-60px; background: url(https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAL2.png) no-repeat center center; }
+        .gosi-gate-v3 .newsBox p.rightBtn {right:-60px; background: url(https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAR2.png) no-repeat center center; }
+        .gosi-gate-v3 .newsBox p a {display:block; height:60px;}
+        .gosi-gate-v3 .rightWrap {width:700px; margin-left:70px; overflow: hidden;}
+        .gosi-gate-v3 .rightWrap .banner {display:flex; margin-top:45px}
+        .gosi-gate-v3 .rightWrap .banner a {display:block; margin-right:10px;}
+        .gosi-gate-v3 .rightWrap  img {border-radius:10px}
+
+        .gosi-bnfull02 {position:relative; width:100%; margin-top:100px; height:220px;}
+        .gosi-bnfull02 a {display:block; position:absolute; width:2000px !important; height:220px; top:0; left:50%; margin-left:-1000px; z-index: 2;}
+
+
+        .gosi-gate-v3 .tpassWrap {margin-top:100px; background:#f4f7fe; padding:100px 0;}
+        .gosi-gate-v3 .tpassWrap .slider {width:100%; height:245px; overflow:hidden; display:flex; flex-wrap: wrap;}
+        .gosi-gate-v3 .tpassWrap .slider a {width:550px !important; margin-right:20px;}
+        .gosi-gate-v3 .tpassWrap .slider img {width:550px; height: 245px; border-radius:18px; }
+        .gosi-gate-v3 .tpassWrap .bx-wrapper .bx-pager {
+            width: auto;
+            position: absolute;
+            bottom: -20px;
+            left:0;
+            right: 0;
+        }
+        .tpassWrap .prfoWrap {margin-top:50px; display:flex; flex-wrap: wrap; justify-content: space-between;}
+        .tpassWrap .prfoWrap div {font-size:16px; font-weight:bold; text-align:center}
+        .tpassWrap .prfoWrap div img {border:1px solid #e6e6e6; border-radius:30px; overflow: hidden; display:block; margin-bottom:20px}
+
+        /*교수진*/
+        .gosi-gate-profWrap {padding:100px 0;}
+        .gosi-tabs-prof{width:1120px; margin:65px auto 45px; display:flex; flex-wrap: wrap; justify-content: space-between;}
+        .gosi-tabs-prof li{width:16.66666%}
+        .gosi-tabs-prof li a {display:block; height:45px; line-height:45px; text-align:center; color:#2b2b2b; font-size:20px; border:1px solid #e2e2e3; border-right:0}
+        .gosi-tabs-prof li a.active {color: #fff; box-shadow:5px 5px 10px rgba(0,0,0,.2); background:#282828; border-color:#282828}
+        .gosi-tabs-prof li:last-child a {border-right:1px solid #e2e2e3}
+
+
+        .gosi-tabs-contents-wrap {width:1120px; height:350px; overflow:hidden}
+        .gosi-gate-prof {width:1120px; display:flex !important; /*flex-wrap: wrap !important; justify-content: space-between !important;*/}
+        .gosi-gate-prof li {
+            width: 210px;
+            height:350px;
+            margin-right:14px;
+        }
+        .gosi-gate-prof li:last-child {margin:0}
+
+        .gosi-gate-prof .nSlider .sliderProf div {width: 210px !important; height:350px; position:relative;}
+        .gosi-gate-prof .nSlider .bx-wrapper .bx-controls-direction {
+            position: absolute;
+            top: 320px;
+            left:0;
+            right: 0;
+            width: 100%;
+            height: 20px;
+            text-align:center;
+        }
+        .gosi-gate-prof .nSlider .bx-wrapper .bx-controls-direction a {
+            width: 20px;
+            height: 20px;
+        }
+        .gosi-gate-prof .nSlider .bx-wrapper a.bx-prev {
+            background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat right top;
+            left:180px !important;
+        }
+        .gosi-gate-prof .nSlider .bx-wrapper a.bx-next {
+            background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat left top;
+            left:158px !important;
+        }
+
+
+
+        .gosi-gate-v3 .castWrap {background:#21262c; padding:100px 0; color:#fff}
+        .gosi-gate-v3 .castWrap .will-nTit {color:#fff}
+        .gosi-gate-v3 .castWrap .will-nTit span {color:#d44a45}
+        .gosi-gate-v3 .castBox {position:relative; margin-top:30px}
+        .gosi-gate-v3 .castslider {width:1120px; margin: 0 auto; display:flex; flex-wrap: wrap; justify-content: space-between;}
+        .gosi-gate-v3 .castslider li {width:calc(225px - 10px); margin-bottom:10px; background:#434343; padding-bottom:10px}
+        .gosi-gate-v3 .castslider li div {display:block;}
+        .gosi-gate-v3 .castslider li img {width:215px;}
+        .gosi-gate-v3 .castslider li div.castTitle {font-size:15px; text-align:left; overflow:hidden; padding:10px 10px 0;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* 라인수 */
+            -webkit-box-orient: vertical;
+            word-wrap:break-word;
+            line-height: 1.2em;
+            height: calc(3.2em); /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+        }
+
+
+        .gosi-gate-v3 .noticeList .List-Table li a {
+            display: inline-block;
+            width: 75%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            letter-spacing: 0;
+        }
+        .gosi-gate-v3 .noticeList .List-Table li img {display: inline-block; vertical-align: top; margin-top: 8px;}
+        .gosi-gate-v3 .noticeList .List-Table li a span {
+            background: #ba560e;
+            color:#fff;
+            padding: 0 10px;
+            border-radius: 10px;
+            margin-top:3px;
+            margin-right: 5px;
+            height: 19px; line-height: 19px;
+        }
+
+        //모달베너 추가
+          #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px; display: block;}
+    </style>
+
+
+    <div id="Container" class="Container gosi-gate-v3 NSK c_both">
 
         <div class="widthAuto gosi-gate-secTop">
             <div class="gosi-gate-search">
                 {{-- 온라인강의 검색 --}}
                 @include('willbes.pc.layouts.partial.site_search')
             </div>
+        </div>
 
-            <div class="Menu widthAuto NSK c_both">
-                <h3>
-                    <div class="menu-Tit">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/2003_logo_2021.png" alt="윌비스공무원">
-                    </div>
-                    <ul class="menu-List">
-                        <div><a href="{{ front_url('/home/index/cate/3019') }}">9급</a></div>                        
-                        <div><a href="{{ front_url('/home/index/cate/3020') }}">7급</a></div>
-                        <div><a href="{{ front_url('/home/index/cate/3103') }}">7급PSAT</a></div>
-                        <div><a href="{{ front_url('/home/index/cate/3022') }}">세무직</a></div>
-                        <div><a href="{{ front_url('/home/index/cate/3035') }}">법원직</a></div>
-                        <div><a href="{{ front_url('/home/index/cate/3148') }}">검찰직</a></div>
-                        <div><a href="{{ front_url('/home/index/cate/3023') }}">소방직</a></div>
-                        <div><a href="{{ front_url('/home/index/cate/3028') }}">기술직</a></div>
-                        <div><a href="{{ front_url('/home/index/cate/3024') }}">군무원</a></div>
-                        <div class="dropdown">
-                            <a href="{{ front_url('/pass/home/index') }}"><span></span>학원</a>
-                            <div class="drop-Box list-drop-Box">
-                                <ul>
-                                    <li><a href="{{ front_url('/pass/home/index') }}">노량진(본원)</a></li>
-                                    <li><a href="http://busan.willbes.net" target="_blank">부산</a></li>
-                                    <li><a href="{{ front_url('/pass/campus/show/code/605004') }}">대구</a></li>
-                                    <li><a href="{{ front_url('/pass/campus/show/code/605005') }}">인천</a></li>
-                                    <li><a href="{{ front_url('/pass/campus/show/code/605006') }}">광주</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </ul>
-                    <div class="menu-banner">{!! banner_html(element('게이트_우측상단배너', $data['banner'])) !!}</div>
-                </h3>
+        <div class="topMenu">
+            <div class="p_re">
+                <div class="banner">
+                    {!! banner_html(element('게이트_우측상단배너', $data['banner'])) !!}
+                </div>
+                <div class="gosiLogo">
+                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/2003_logo_2021.png" alt="윌비스공무원">
+                </div>
             </div>
+            <ul class="menuList">
+                <div><a href="{{ front_url('/home/index/cate/3019') }}">9급</a></div>
+                <div><a href="{{ front_url('/home/index/cate/3020') }}">7급</a></div>
+                <div><a href="{{ front_url('/home/index/cate/3103') }}">7급PSAT</a></div>
+                <div><a href="{{ front_url('/home/index/cate/3022') }}">세무직</a></div>
+                <div><a href="{{ front_url('/home/index/cate/3023') }}">소방직</a></div>
+                <div><a href="{{ front_url('/home/index/cate/3035') }}">법원직</a></div>
+                <div><a href="{{ front_url('/home/index/cate/3028') }}">기술직</a></div>
+                <div><a href="{{ front_url('/home/index/cate/3148') }}">검찰직</a></div>
+                <div><a href="{{ front_url('/home/index/cate/3024') }}">군무원</a></div>
+            </ul>
         </div>
 
         <div class="Section gosi-gate-Sec">
             <div class="gosi-gate-bntop-img">
                 <div class="gate-bntop-Slider mainSlider01">
                     <ul class="swiper-wrapper">
-                        @for($i=0; $i<=9; $i++)
-                            @if(isset($data['banner']['게이트_메인배너'.$i]) === true)
+                        @if(isset($data['banner']['게이트_메인배너']) === true)
+                            @for($i=0; $i<count($data['banner']['게이트_메인배너']); $i++)
                                 <li class="swiper-slide">
-                                    {!! banner_html(element('게이트_메인배너'.$i, $data['banner']), '', '' , false, '', 'bnBig') !!}
-                                    @if(empty($data['banner']['게이트_서브배너'.$i.'_1']) === false)
-                                        <div class="bnSm">
-                                            @for($s=1;$s<=3;$s++)
-                                                <div>{!! banner_html(element('게이트_서브배너'.$i.'_'.$s, $data['banner'])) !!}</div>
-                                            @endfor
-                                        </div>
-                                    @endif
+                                    {!! banner_html(array($data['banner']['게이트_메인배너'][$i])) !!}
                                 </li>
-                            @endif
-                        @endfor
+                            @endfor
+                        @endif
                     </ul>
                 </div>
             </div>
+
             <div class="MaintabList">
                 <div class="widthAuto p_re">
-                    <div class="MaintabControl">
-                        <div class="swiper-pagination-gate"></div>
-                        <div class="start" style="display:none;"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconPlay.png" alt="재생"></div>
-                        <div class="stop"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconStop.png" alt="정지"></div>
-                        <div class="swiper-btn-prev"></div>
-                        <div class="swiper-btn-next"></div>
-                    </div>
                     <div class="MaintabWrap">
                         <ul class="Maintab">
-                            @php $j=0; @endphp
-                            @for($i=0; $i<=9; $i++)
-                                @if(isset($data['banner']['게이트_메인배너'.$i]) === true)
-                                    <li><a data-swiper-slide-index="{{ $j }}" data-aaaaaaa="asdf" href="javascript:void(0);" @if($j == 0) class="active" @endif>
-                                            {{ $data['banner']['게이트_메인배너'.$i][0]['BannerName'] }}</a></li>
-                                    @php $j++; @endphp
-                                @endif
-                            @endfor
+                            <li><a data-swiper-slide-index="0" href="javascript:void(0);" class="active">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_01.jpg" alt="배너명">
+                                    9급PASS<br>할인</a></li>
+                            <li><a data-swiper-slide-index="1" href="javascript:void(0);">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_02.jpg" alt="배너명">
+                                    윌비스<br>세무팀</a></li>
+                            <li><a data-swiper-slide-index="2" href="javascript:void(0);">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_03.jpg" alt="배너명">
+                                    불꽃소방<br>신규개강</a></li>
+                            <li><a data-swiper-slide-index="3" href="javascript:void(0);">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_04.jpg" alt="배너명">
+                                    농업직<br>통신직</a></li>
+                            <li><a data-swiper-slide-index="4" href="javascript:void(0);">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_05.jpg" alt="배너명">
+                                    축산직<br>조경직</a></li>
+                            <li><a data-swiper-slide-index="5" href="javascript:void(0);">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_06.jpg" alt="배너명">
+                                    군무원<br>행정직</a></li>
+                            <li><a data-swiper-slide-index="6" href="javascript:void(0);">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_07.jpg" alt="배너명">
+                                    검찰직<br>신규런칭</a></li>
+                            <li><a data-swiper-slide-index="7" href="javascript:void(0);">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_08.jpg" alt="배너명">
+                                    7급<br>PSAT</a></li>
+                            <li><a data-swiper-slide-index="8" href="javascript:void(0);">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_09.jpg" alt="배너명">
+                                    김동진<br>법원팀</a></li>
                         </ul>
-                    </div>
-                    <div class="MaintabAll">
-                        <a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/btnAB.png" alt="전체보기"></a>
-                    </div>
-                    <div class="MaintabAllView" style="display:none;">
-                        <div class="title">
-                            <span>진행중인 모든 이벤트</span>
-                            <span><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/btnClose.png" alt="닫기"></a></span>
-                        </div>
-                        <div class="tabCts">
-                            @php $j=0; @endphp
-                            @for($i=0; $i<=9; $i++)
-                                @if(isset($data['banner']['게이트_메인배너'.$i]) === true)
-                                    <a data-swiper-slide-index="{{ $j }}" @if($j == 0) class="active" @endif>{{ $data['banner']['게이트_메인배너'.$i][0]['BannerName'] }}</a>
-                                    @php $j++; @endphp
-                                @endif
-                            @endfor
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="Section newsWrap">
-            <div class="widthAuto">
-                <div class="will-nTit NSK-Black">지금 바로 주목해야 할 <span>새로운 소식!</span></div>
-                <div class="newsBox">
-                    <ul class="newsSlider">
-                        @for($i=1; $i<=10; $i++)
-                            @if(isset($data['banner']['게이트_새소식'.$i]) === true)
-                                <li>
-                                    <div>{!! banner_html(element('게이트_새소식'.$i, $data['banner'])) !!}</div>
-                                    <div class="newsTitle">{{ $data['banner']['게이트_새소식'.$i][0]['BannerName'] or "" }}</div>
-                                </li>
-                            @endif
+            <div class="newsBox">
+                <ul class="newsSlider">
+                    @if(isset($data['banner']['게이트_주목1']) === true)
+                        @for($i=0; $i<count($data['banner']['게이트_주목1']); $i++)
+                            <li class="swiper-slide">
+                                {!! banner_html(array($data['banner']['게이트_주목1'][$i])) !!}
+                            </li>
                         @endfor
-                    </ul>
-                    <p class="leftBtn"><a id="newsSliderLeft"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconAL60.png"></a></p>
-                    <p class="rightBtn"><a id="newsSliderRight"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconAR60.png"></a></p>
+                    @endif
+                </ul>
+                <p class="leftBtn @if(!( isset($data['banner']['게이트_주목1']) === true && count($data['banner']['게이트_주목1']) > 1)) d_none @endif"><a id="newsSliderLeft"></a></p>
+                <p class="rightBtn @if(!( isset($data['banner']['게이트_주목1']) === true && count($data['banner']['게이트_주목1']) > 1)) d_none @endif"><a id="newsSliderRight"></a></p>
+            </div>
+            <div class="rightWrap">
+                <div class="will-nTit NSK-Black">지금 윌비스에서 <span>주목해야 할 강의!</span></div>
+                <div class="banner">
+                    {!! banner_html(element('게이트_주목2', $data['banner'])) !!}
+                    {!! banner_html(element('게이트_주목3', $data['banner'])) !!}
+                    {!! banner_html(element('게이트_주목4', $data['banner'])) !!}
                 </div>
             </div>
         </div>
 
         <div class="Section gosi-bnfull02">
-            <div class="widthAuto">
-                <div class="will-nTit NSK-Black"><span>초보 수험생</span>이라면, <span>꼭</span> 확인해보세요!</div>
-            </div>
-            {!! banner_html(element('게이트_초보가이드', $data['banner']), 'slider') !!}
+            {!! banner_html(element('게이트_초보가이드', $data['banner'])) !!}
         </div>
 
         <div class="Section mt80">
-            <div class="widthAuto tx-center">
-                <div class="will-nTit NSK-Black mb40 tx-left">지금 이 시기, <span>합격</span> 할 수 있는 <span>문제풀이 스킬</span>이 중요합니다.</div>
+            <div class="widthAuto">
+                <div class="will-nTit NSK-Black tx-left">합격을 향한 <span>빈틈없는 커리큘럼</span></div>
                 {!! banner_html(element('게이트_단기합격자', $data['banner'])) !!}
             </div>
         </div>
 
         <div class="Section tpassWrap">
             <div class="widthAuto">
-                <div class="will-nTit NSK-Black tx-left mb40">자신 있는 주력 과목을 만들고 싶다면, <span>윌비스 T-PASS!</span></div>
-                <div class="tpassLeft">
-                    {!! banner_html(element('게이트_티패스1', $data['banner']), 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
-                </div>
-                <div class="tpassRight">
-                    {{-- 티패스2 --}}
-                    <div class="tpassRightTop">
-                        {!! banner_html(element('게이트_티패스2', $data['banner']), 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
-                    </div>
-                    <div class="tpassRightBottom">
-                        {!! banner_html(element('게이트_티패스3', $data['banner']), 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
-                        {!! banner_html(element('게이트_티패스4', $data['banner']), 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
-                    </div>
+                <div class="will-nTit NSK-Black tx-left mb40"><span>원하는 교수님</span>의 과정을 무제한 수강</div>
+                {!! banner_html(element('게이트_무제한수강', $data['banner']), '','' , false, 'none') !!}
+
+                <div class="prfoWrap">
+                    @if(isset($data['banner']['게이트_과목별교수']))
+                        @foreach(element('게이트_과목별교수', $data['banner']) as $row)
+                            <div>
+                                {!! banner_html(array($row), '', '', false, 'none', '', 'castTitle') !!}
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
 
         <div class="Section castWrap">
             <div class="widthAuto">
-                <div class="will-nTit NSK-Black">쉬면서도 열공이 되는 <span>윌비스 YOUTUBE 영상</span>을 시청해보세요!</div>
+                <div class="will-nTit NSK-Black">보기만 해도 열공이 되는 <span>YOUTUBE</span></div>
                 <div class="castBox">
                     <ul class="castslider">
                         @for($i=1;$i<=10;$i++)
@@ -180,7 +352,7 @@
 
         <div class="Section gosi-gate-profWrap">
             <div class="widthAuto">
-                <div class="will-nTit NSK-Black">합격을 끝까지 책임지는 윌비스 교수진을 만나보세요!</div>
+                <div class="will-nTit NSK-Black">언제나 <span>합격</span>만을 고민하는 <span>교수진</span></div>
                 <ul class="gosi-tabs-prof">
                     <li><a href="#item01" class="on">9/7급</a></li>
                     <li><a href="#item02">세무직</a></li>
@@ -201,6 +373,7 @@
                                     </li>
                                 @endif
                             @endfor
+
                         </ul>
                     </div>
                     <div id="item02" class="gosi-tabs-content">
@@ -272,22 +445,8 @@
             </div>
         </div>
 
-        <div class="Section gosi-gate-bn02">
-            <div class="widthAuto pick">
-                <div class="will-nTit NSK-Black mb40">윌비스 공무원학원 <span>노량진 캠퍼스</span>에서는 무엇을 개강하나요?</div>
-                {!! banner_html(element('게이트_학원개강정보', $data['banner']), 'slider') !!}
 
-                <ul>
-                    @for($i=1;$i<=3;$i++)
-                        <li class="nSlider">
-                            {!! banner_html(element('게이트_실강안내'.$i, $data['banner']), 'sliderNum'); !!}
-                        </li>
-                    @endfor
-                </ul>
-            </div>
-        </div>
-
-        <div class="Section mt100">
+        <div class="Section">
             <div class="widthAuto">
                 <div class="nNoticeBox three">
                     <div class="noticeList widthAuto530 f_left">
@@ -332,9 +491,8 @@
             </div>
         </div>
 
-        <div class="Section NSK mt50 mb90">
+        <div class="Section NSK mt80 mb90">
             <div class="widthAuto">
-                {{-- cscenter --}}
                 @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
             </div>
         </div>
@@ -376,7 +534,6 @@
         </div>
     </div>
     <!-- End Container -->
-
     {!! popup('657005', $__cfg['SiteCode'], '0', '') !!}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
@@ -385,11 +542,6 @@
         //swiper 메인 슬라이드
         $(document).ready(function(){
             var mainslider = new Swiper('.mainSlider01', {
-                /*direction: 'horizontal',
-                loop: true,
-                observer: true,
-                observeParents: true,
-                slidesPerView : 'auto',*/
                 spaceBetween: 30,
                 effect: "fade",
                 pagination: {
@@ -397,13 +549,9 @@
                     type: "fraction",
                 },
                 autoplay: {
-                    delay: 5000,
+                    delay: 3000,
                     disableOnInteraction: false,
-                }, //5초에 한번씩 자동 넘김
-                navigation: {
-                    nextEl: ".swiper-btn-next",
-                    prevEl: ".swiper-btn-prev",
-                },
+                }, //3초에 한번씩 자동 넘김
                 on: {
                     slideChange: function () {
                         $('.Maintab li > a').removeClass('active');
@@ -432,21 +580,10 @@
             function muCenter(target){
                 var snbwrap = $('.Maintab');
                 var targetPos = target.position();
-                var box = $('.MaintabWrap');
-                var boxHarf = box.width()/2;
                 var pos;
                 var listWidth=0;
 
                 snbwrap.find('li').each(function(){ listWidth += $(this).outerWidth(); })
-
-                var selectTargetPos = targetPos.left + target.outerWidth()/2;
-                if (selectTargetPos <= boxHarf) { // left
-                    pos = 0;
-                }else if ((listWidth - selectTargetPos) <= boxHarf) { //right
-                    pos = listWidth-box.width();
-                }else {
-                    pos = selectTargetPos - boxHarf;
-                }
 
                 setTimeout(function(){snbwrap.css({
                     "transform": "translateX("+ (pos*-1) +"px)",
@@ -461,41 +598,34 @@
                 var num = $(this).attr('data-swiper-slide-index');
                 mainslider.slideTo(num);
             });
-            //슬라이드 재생, 스탑 버튼
-            $('.start').on('click', function() {
-                mainslider.autoplay.start();
-                $(this).hide();
-                $('.stop').show();
-                return false;
-            });
-            $('.stop').on('click', function() {
-                mainslider.autoplay.stop();
-                $(this).hide();
-                $('.start').show();
-                return false;
-            });
+        });
 
-            //진행중인 모든 이벤트 닫기, 열기
-            $('.MaintabAll a').on('click', function() {
-                $('.MaintabAllView').slideToggle("fast");
-            });
-            $('.MaintabAllView span a').on('click', function() {
-                $('.MaintabAllView').hide();
+
+        //무제한 수강
+        $(function() {
+            $('.tpassWrap .slider').bxSlider({
+                mode: 'horizontal',
+                auto:true,
+                speed:350,
+                pause:4000,
+                controls:false,
+                slideMargin:0,
+                autoHover:true,
+                pager:true,
             });
         });
 
         //새로운소식
         $(function() {
             var newsImg = $(".newsSlider").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                mode:'fade', //option : 'horizontal', 'vertical', 'fade'
                 auto:true,
                 speed:350,
                 pause:4000,
                 pager:false,
                 controls:false,
-                slideWidth: 224,
-                minSlides:5,
-                maxSlides:5,
+                minSlides:1,
+                maxSlides:1,
                 slideMargin:0,
                 autoHover:true,
                 moveSlides:1,
@@ -541,14 +671,15 @@
                 auto: true,
                 controls: true,
                 pause: 4000,
-                pager: true,
+                pager: false,
                 pagerType: 'short',
-                slideWidth: 208,
+                slideWidth: 210,
                 minSlides:1,
                 maxSlides:1,
                 moveSlides:1,
                 adaptiveHeight: true,
                 infiniteLoop: true,
+                slideMargin:0,
                 touchEnabled: false,
                 autoHover: true,
                 onSliderLoad: function(){

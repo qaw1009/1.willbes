@@ -43,6 +43,7 @@
     .Layerpop .btn a {width:100px; display:inline-block; font-size:16px; text-align:center; background:#c14842; color:#fff; height:40px; line-height:40px}
     .Layerpop .btn a:hover {background:#000;}
     .Layerpop .btn a:last-child {background:#333;}
+
 </style>
 
 <div class="willbes-Layer-PassBox NGR">
@@ -104,18 +105,7 @@
                             </div>
                         </li>
                     </ul>
-
-                    <h3  class="tit">[PSAT 전과목 시험관리반 참여후기 작성]</h3>
-                    <a href="{{ (empty($arr_base['arr_file']) === true) ? '' : front_url('/promotion/download?file_idx='.$arr_base['arr_file']['EfIdx'].'&event_idx='.$arr_base['data']['ElIdx']) }}"  class="file">수강 후기 양식 다운로드 ↓</a><br>
-                    <input type="file" name="attach_file" id="attach_file" style="width:250px; margin-top:5px">
-                    @if(empty($arr_base['regist_member']['FileFullPath']) === false)
-                    <input type="button" onclick="javascript:modifyFile();" value="파일수정">
-                    @endif
-                    <div class="mt10">
-                        - 반드시 위의 합격수기 양식 파일을 다운로드 받아서 작성해 주세요.<Br>
-                        - 합격수기 양식은 개별 상황에 맞게 워드, 한글 파일 양식 중 하나를 첨부해 주시면 됩니다.<Br>
-                        - 합격수기 장석 시 문서 내 항목을 모두 작성하셔야 하며, 무성의한 내용 및 허위 내용은 당첨에서 제외될 수 있습니다. 
-                    </div>
+                                                                               
                 </div>
 
                 <h3>[개인정보 수집/이용 동의 안내]</h3>

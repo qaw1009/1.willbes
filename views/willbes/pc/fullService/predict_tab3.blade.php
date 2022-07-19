@@ -340,8 +340,12 @@
             });
 
             var options = {
+                'customizing': {
+                    isGuideLineNeeded: 'Y'
+                    ,myLineHeight : '233'
+                },
                 'legend': {
-                    names: arr_title
+                    names: arr_title,
                 },
                 'dataset': {
                     title : '전체 직렬별 나의 성적 위치',
@@ -367,6 +371,10 @@
             });
 
             var options = {
+                'customizing': {
+                    isGuideLineNeeded: 'Y'
+                    ,myLineHeight : '233'
+                },
                 'legend': {
                     names: arr_title
                 },

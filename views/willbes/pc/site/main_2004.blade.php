@@ -39,14 +39,6 @@
             </div>
         </div>
 
-        <div class="Section mt50">
-            <div class="widthAuto">
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank"> 
-                    <img src="https://static.willbes.net/public/images/promotion/main/live_banner.gif" title="라이브모드" />
-                </a>    
-            </div>    
-        </div>
-
         {{-- on air include --}}
         @include('willbes.pc.site.main_partial.on_air')
 

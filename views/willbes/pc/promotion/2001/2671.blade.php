@@ -35,13 +35,7 @@
 
     </style>
 
-    <div class="evtContent NSK" id="evtContainer">
-
-        <div class="sky" id="QuickMenu">
-            <a href="#event01">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2671_sky.png" alt="소문내기">
-            </a>         
-        </div>
+    <div class="evtContent NSK" id="evtContainer">      
 
         <div class="evtCtnsBox evt00"  data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
@@ -65,18 +59,6 @@
         <div class="evtCtnsBox evt03" data-aos="fade-up">      
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2671_03.jpg"  alt="필요한 만큼만"/>    
         </div>
-
-        <div class="evtCtnsBox evt04" data-aos="fade-up" id="event01">
-            <div class="wrap">          
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2671_04.jpg"  alt="이벤트 홍보"/>
-                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute;left: 51.39%;top: 75.93%;width: 33.88%;height: 4.34%;z-index: 2;"></a>
-            </div>     
-        </div>     
-
-        {{--홍보url--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'Y'))
-        @endif      
 
         <div class="evtCtnsBox evt05 pb100" data-aos="fade-up">                     
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2671_05.jpg"  alt="신규 개설 강좌"/>             

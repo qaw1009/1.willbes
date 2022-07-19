@@ -278,7 +278,6 @@
         </div>
 
         <div class="swiper-container swiper-sec03">
-            {{--            {!! str_replace('/public/', 'https://pass.willbes.net/public/', banner_html(element('M_게이트_초보가이드', $data['banner']))) !!}--}}
             {!! banner_html(element('M_게이트_초보가이드', $data['banner'])) !!}
         </div>
 

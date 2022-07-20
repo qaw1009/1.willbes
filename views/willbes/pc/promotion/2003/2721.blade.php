@@ -24,15 +24,31 @@
         .sky {position:fixed; top:200px; right:10px; z-index:1;}
         .sky a {display:block; margin-bottom:10px;}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2099_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/07/2721_top_bg.jpg) no-repeat center top; height: 962px;}
+        .wb_top span {position:absolute; left:50%}
+        .wb_top .img01 {position:absolute; width:1461px; margin-left:-700px; z-index: 1;}
+        .wb_top .img02 {position:absolute; width:723px; top:300px; margin-left:-361px; z-index: 2;}
+  
+        .wb_cts01 {padding-top:100px}
 
-        .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2099_01_bg.jpg) no-repeat center top;}
-    
-        .wb_cts02 {background:#fff;}
+        .wb_cts02 {width:1120px; margin:0 auto}
+        .tabs {width:980px; margin:0 auto; display:flex; justify-content: space-between;}
+		.tabs a {display:block;}
+        .tabs img.on {display:none}
+        .tabs img.off {display:block}
+        .tabs a.active img.on {display:block}
+        .tabs a.active img.off {display:none}
+        .tabCts {position:relative; height: 877px;}
+        .tabCts:nth-child(1) {background:url(https://static.willbes.net/public/images/promotion/2022/07/2721_02_tab01_img.jpg) no-repeat center top; }
+        .tabCts:nth-child(2) {background:url(https://static.willbes.net/public/images/promotion/2022/07/2721_02_tab02_img.jpg) no-repeat center top; }
+        .tabCts:nth-child(3) {background:url(https://static.willbes.net/public/images/promotion/2022/07/2721_02_tab03_img.jpg) no-repeat center top; }
+        .tabCts iframe {position:absolute; top:435px; left:50%; margin-left:-50px; width:512px; height:288px; background:#000}
 
-        .wb_cts03 {background:#4D62DF; position: relative;}
+        .wb_cts03 {background:#f2f2f2}
 
-        .check {position:absolute; bottom:50px; left:50%; margin-left:-490px; width:980px; padding:20px 0px 20px 10px; letter-spacing:3; color:#fff; z-index:5}
+        .wb_cts04 {background:#4d62df; position: relative;padding-bottom:100px}
+
+        .check {width:980px; margin:0 auto; padding:20px 0px 20px 10px; letter-spacing:3; color:#fff; z-index:5}
         .check label {cursor:pointer; font-size:15px;color:#FFF;font-weight:bold;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
         .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#2d2d2d; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
@@ -97,31 +113,57 @@
             </div>
         </div>    
 
-        <div class="evtCtnsBox wb_top" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2099_top.jpg" alt="윌비스 x 민족군무원"  />
+        <div class="evtCtnsBox wb_top">
+            <span class="img02" data-aos-offset="300" data-aos="zoom-in"><img src="https://static.willbes.net/public/images/promotion/2022/07/2721_top02.png" alt="군무원 패스"/></span>
+            <span class="img01" data-aos="fade-down"><img src="https://static.willbes.net/public/images/promotion/2022/07/2721_top01.png" alt="군무원 패스"/></span>
         </div>
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2099_01.jpg" alt="직렬별 교수진" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2721_01.jpg" alt="혜택" />
         </div>
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2099_02.jpg" alt="커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2721_02.jpg" alt="직렬별 교수진" />
+            <div class="tabs">
+                <a href="#tab01" class="active">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/07/2721_02_tab01.jpg" alt="오대혁" class="off"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2022/07/2721_02_tab01_on.jpg" alt="오대혁" class="on"/>
+                </a>
+                <a href="#tab02">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/07/2721_02_tab02.jpg" alt="김철" class="off"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2022/07/2721_02_tab02_on.jpg" alt="김철" class="on"/>
+                </a>
+                <a href="#tab03">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/07/2721_02_tab03.jpg" alt="임병주" class="off"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2022/07/2721_02_tab03_on.jpg" alt="임병주" class="on"/>
+                </a>
+            </div>
+            <div >
+                <div id="tab01" class="tabCts">
+                    <iframe src="https://www.youtube.com/embed/r8sOeBFLW10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div id="tab02" class="tabCts">
+                    <iframe width="512" height="288" src="https://www.youtube.com/embed/hXd1wL6nURY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div id="tab03" class="tabCts">
+                    {{--<iframe width="512" height="288" src="https://www.youtube.com/embed/r8sOeBFLW10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>--}}
+                </div>
+            </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts03" id="apply" data-aos="fade-up">
+        <div class="evtCtnsBox wb_cts03" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2721_03.jpg" alt="혜택" />
+        </div>
+
+        <div class="evtCtnsBox wb_cts04" id="apply" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2099_03.jpg" alt="수강신청"/>    
-                <a href="https://pass.willbes.net/promotion/index/cate/3024/code/1655" target="_blank" alt="신청하기" style="position: absolute;left: 45.61%;top: 31.38%;width: 40.07%;height: 4.85%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('179756');" alt="윌비스 행정직" style="position: absolute;left: 20.61%;top: 57.99%;width: 19.07%;height: 3.55%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('179754');" alt="군무원 행정직" title="" style="position: absolute;left: 60.61%;top: 57.99%;width: 19.07%;height: 3.55%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('178824');" alt="군수직" title="" style="position: absolute;left: 20.61%;top: 84.69%;width: 19.07%;height: 3.55%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('178825');" alt="정보직" style="position: absolute;left: 60.61%;top: 84.69%;width: 19.07%;height: 3.55%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/07/2721_04.jpg" alt="수강신청"/>    
+                <a href="javascript:go_PassLecture('179756');" style="position: absolute; left: 50.71%; top: 79.63%; width: 20.63%; height: 9.03%; z-index: 2;"></a>
             </div>    
             <div class="check">
                 <label>
                     <input name="ischk"  type="checkbox" value="Y" />
-                    페이지 하단 윌비스 군무원 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#careful">이용안내확인하기 ↓</a>
             </div>
@@ -222,6 +264,31 @@
     </script>
 
     <script>    
+        var tab1_url = "https://www.youtube.com/embed/r8sOeBFLW10";
+        var tab2_url = "https://www.youtube.com/embed/hXd1wL6nURY";        
+        var tab3_url = "https://www.youtube.com/embed/VEmBnYu8tcc";
+        $(function() {
+        $(".tabCts").hide(); 
+        $(".tabCts:first").show();
+        $(".tabs a").click(function(){ 
+                var activeTab = $(this).attr("href"); 
+                var html_str = "";
+                if(activeTab == "#tab01"){
+                    html_str = "<iframe src='"+tab1_url+"' frameborder='0' allowfullscreen></iframe>";
+                }else if(activeTab == "#tab02"){
+                    html_str = "<iframe src='"+tab2_url+"' frameborder='0' allowfullscreen></iframe>";
+                }else if(activeTab == "#tab03"){
+                    html_str = "";                   
+                }
+                $(".tabs a").removeClass("active"); 
+                $(this).addClass("active"); 
+                $(".tabCts").hide(); 
+                $(".tabCts").html(''); 
+                $(activeTab).html(html_str);
+                $(activeTab).fadeIn(); 
+                return false; 
+                });
+            });	
 
         /*수강신청 동의*/ 
         function go_PassLecture(code){

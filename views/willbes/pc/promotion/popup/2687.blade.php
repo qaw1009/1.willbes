@@ -36,7 +36,7 @@
 	.termsBx01{padding:0px 20px; height:100px; overflow:hidden; overflow-y:scroll; border:1px solid #cecece}
 	.termsBx01 h2{margin:10px 0;font-weight:bold;font-size:14px}
 	.termsBx01 .st  {margin-top:15px}
-	.termsBx01 ul li {margin-bottom:10px}
+	.termsBx01 ul li {margin-bottom:5px}
 	.termsBx01 .span { height:60px; text-align:right}   
 
     .Layerpop .btn {text-align:center; border-top:1px solid #ccc; padding-top:20px; margin-top:20px}
@@ -47,7 +47,7 @@
 </style>
 
 <div class="willbes-Layer-PassBox NGR">
-    <h1>PSAT 전과목 시험관리반 참여후기 등록하기</h1>
+    <h1>7급 PSAT 수강내역 인증 </h1>
     <div id="popup" class="Layerpop" >
         <form name="regi_form_register" id="regi_form_register" enctype="multipart/form-data">
             {!! csrf_field() !!}
@@ -58,7 +58,7 @@
             <input type="hidden" name="check_take_no" value="N">    {{-- 응시번호 합격여부 체크 --}}
             <div id="request">
                 <div class="termsBx">
-                    <h3 class="tit">[합격생 인증 정보]</h3>
+                    <h3 class="tit">[인증 정보]</h3>
                     <ul>
                         @php
                             $takekind = '';
@@ -103,13 +103,12 @@
                             <input type="text" name="TakeNo" id="TakeNo" numberOnly value="{{ $takeno }}" placeholder="응시번호" {{empty($takeno) === false ? 'disabled="disabled"' : ''}}>
                         </li>
                         <li>
-                            <strong>합격 인증 파일</strong>
+                            <strong>수강내역 인증</strong>
                             <input type="radio" id="AddContent11" name="AddContent1" value="실강" {{($addcontent1 == '실강' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent11"  class="mr10">실강 </label>
                             <input type="radio" id="AddContent22" name="AddContent1" value="인강" {{($addcontent1 == '인강' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent22"  class="mr10">인강</label>
                             <input type="file" name="attachfile" id="attachfile" style="width:300px">
                             <div class="mt10">
-                                - 합격생을 증빙할 수 있는 합격생 합격자 발표 공고를 응시표와 함께 캡쳐하거나,
-                                핸드폰으로 응시표와 함께 사진을 찍어서 등록해 주세요.<br>
+                                - 수강증 또는 결제내역(내강의실 – 결제관리 – 주문/배송조회) 캡처 화면을 올려주세요.<br>
                                 - 이미지 파일(jpg, png) 또는 PDF 파일 첨부
                             </div>
                         </li>
@@ -121,25 +120,17 @@
                 <div class="termsBx01">
                     <ul>
                         <li>
-                        1. 개인정보 수집 이용 목적<br>
-                        - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 합격수기 이벤트 참여<br>
-                        - 개인정보 수집 항목<Br>
-                        공모전 신청 : 회원명, 휴대폰 번호, 이메일 주소, 응시정보 (직렬 및 지역, 응시번호, 응시표)<Br>
-                        합격수기 양식 : 이름, 아이디, 성별, 나이, 수험기간, 응시과목 및 모의고사, 2차 시험 필기 점수 
+                            1. 개인정보 수집 이용 목적<br>
+                            - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 수강내역 인증 이벤트 참여             
                         </li>
+                        <li>2. 개인정보 수집 항목 : 회원명, 아이디, 응시번호</li>
                         <li>
-                        2. 개인정보 이용기간 및 보유기간<br>
-                        - 본 수집, 활용목적 달성 후 바로 파기 
-                        </li>
+                            3. 개인정보 이용기간 및 보유기간<br>
+                            - 본 수집, 활용목적 달성 후 바로 파기
+                        </li>    
                         <li>
-                        3. 개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
-                        - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 
-                        위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부 시 이벤트 신청이 불가능함을 알려드립니다.
-                        </li>
-                        <li>
-                        4. 저작재산권 이용 허락<br>
-                        - 제공해주신 합격수기 및 설문은 당사의 마케팅에 활용되며, 
-                        귀하의 승인으로 회사는 합격수기 등과 관련된 저작재산권 등 일체의 권리를 영구적으로 이용할 수 있습니다.
+                            4. 개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
+                            - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나,<br>&nbsp;&nbsp;위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부 시 이벤트 신청이 불가능함을 알려드립니다.
                         </li>
                     </ul>                    
                 </div>

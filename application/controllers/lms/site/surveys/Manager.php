@@ -204,11 +204,6 @@ class Manager extends \app\controllers\BaseController
         $count = $this->surveyModel->listAllSurvey(true,$arr_condition);
         if ($count > 0) {
             $list = $this->surveyModel->listAllSurvey(false, $arr_condition, $this->input->post('length'), $this->input->post('start'), ['SsIdx' => 'desc']);
-
-            foreach ($list as $key => $val){
-                $list[$key]['link'] = 'https://www.'.ENVIRONMENT.'.willbes.net/eventSurvey/index/'.$val['SsIdx'];
-                $list[$key]['include'] = "프로모션 페이지 URL + /SsIdx /".$val['SsIdx'];
-            }
         }
 
         return $this->response([

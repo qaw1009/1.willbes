@@ -2,8 +2,6 @@
 
 @section('content')
     <h5 class="mt-20">- 설문을 등록하고 관리하는 메뉴입니다.</h5>
-    <h5 class="mt-20 red">- 설문링크 와 프로모션페이지 내 그래프를 willbes/pc/eventSurvey/index+SsIdx 와 willbes/pc/eventSurvey/graph+SsIdx 경로에 생성해주세요.</h5>
-    <h5 class="mt-20 red">- 프로모션 블레이드에 &#64;include('willbes.pc.eventsurvey.show_graph_partial') </h5>
 
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
@@ -57,20 +55,16 @@
                 {!! csrf_field() !!}
                 <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
                     <colgroup>
-                        <col style="width:4%">
-                        <col style="">
-                        <col style="width:20%">
-                        <col style="width:17%">
-                        <col style="width:17%">
-                        <col style="width:7%">
-                        <col style="width:7%">
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
                     </colgroup>
                     <thead class="bg-white-gray">
                         <tr>
                             <th class="text-center">NO</th>
-                            <th class="text-center">제목</th>
-                            <th class="text-center">설문팝업링크</th>
-                            <th class="text-center">그래프추가시</th>
+                            <th>제목</th>
                             <th class="text-center">시작일 / 종료일</th>
                             <th class="text-center">결과</th>
                             <th class="text-center">사용유무</th>
@@ -116,8 +110,6 @@
                     {'data' : 'SurveyTitle', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.SsIdx + '"><u class="blue">' + row.SurveyTitle + '</u></a>';
                         }},
-                    {'data' : 'link', 'class': 'text-center'},
-                    {'data' : 'include', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             var date = row.StartDate + ' / ' + row.EndDate;
                             return date;

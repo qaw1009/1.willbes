@@ -277,7 +277,7 @@
                 'dataset':{
                     title: title,
                     values: values,
-                    colorset: ['#4e67c8', '#a7ea52', "#5dceaf", "#ff8021", "#f14124"],
+                    colorset: ['#8faadc', '#f4b183', "#a9d18e", "#ffd966", "#cc99ff"],
                     fields: fields
                 },
                 'donut_width' : 85,
@@ -320,7 +320,7 @@
             'dataset':{
                 title: title,
                 values: values,
-                colorset: ['#9c1f0a', '#ad4a00', "#ff8021"],
+                colorset: ['#f47aa2', '#4d9ef0', "#9f4ef1"],
                 fields: fields
             },
             'donut_width' : 100,

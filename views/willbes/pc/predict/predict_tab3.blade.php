@@ -1874,9 +1874,11 @@
     <div class="markSbtn3 bold">
         <a href="javascript:void(0)">PSAT 체감 난이도는?</a><br>
         그래프 영역1
-    </div>
-    <div class="markSbtn3 bold">
+    </div>   
+</div>
+<div class="graph_area">
+    <div class="markSbtn4 bold">
         <a href="javascript:void(0)">가장 어려웠던 과목은?</a><br>
         그래프 영역2
     </div>
-</div>
+</div>    

@@ -200,14 +200,22 @@
 <div class="graph_area">
     <div class="markSbtn3 bold">
         <a href="javascript:void(0)">PSAT 체감 난이도는?</a><br>
-        @foreach($arr_surveyChartData['graph1'] as $subject_name => $row)
-            <div class="">
-                <span class="">{{$subject_name}}</span>
-                <div class="" id="levelSubject{{$loop->index}}"></div>
-            </div>
-        @endforeach
-    </div>
-    <div class="markSbtn3 bold">
+        <div class="markSbtn3_combine">
+            <div id="levelSubject1" class="subject"></div>
+            <div id="levelSubject2" class="subject"></div>
+            <div id="levelSubject3" class="subject"></div>
+        </div>
+        <div class="level">
+            <div><span class="level5"></span>매우 어려움</div>
+            <div><span class="level4"></span>어려움</div>
+            <div><span class="level3"></span>보통</div>
+            <div><span class="level2"></span>쉬움</div>
+            <div><span class="level1"></span>매우 쉬움</div>
+        </div>
+    </div> 
+</div>
+<div class="graph_area">
+    <div class="markSbtn4 bold">
         <a href="javascript:void(0)">가장 어려웠던 과목은?</a><br>
         <div id="hardSubject"></div>
     </div>

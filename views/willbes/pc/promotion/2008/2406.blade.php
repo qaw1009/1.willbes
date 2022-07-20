@@ -15,7 +15,7 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,1);}*/
+        .evtCtnsBox .wrap a {border:1px solid #000}
 
         /************************************************************/
         
@@ -154,10 +154,9 @@
 				<h4 class="NGEB">상품 이용안내</h4>
 				<div class="infoTit NG"><strong>상품구성</strong></div>
 				<ul>
-                    <li>상품구성은 2021년 11월부터 2022년 10월까지 진행될 까지 진행될 과목 교수님별 GS1순환, GS2순환, GS3순환, GS4순환 강좌로 구성됩니다.</li>
+                    <li>상품구성은 2021년 11월부터 2022년 7월까지 진행된 과목 교수님별 GS1순환, GS2순환, GS3순환 강좌로 구성됩니다.</li>
                     <li>본 상품은 수강신청 시 수강료(교재 제외) 최대 60% 할인 혜택이 적용됩니다.</li>
-                    <li>강사배정 및 학원사정에 따라 강의가 진행이 되지 않을 경우 다른 강사님의 강의로 변경될 수 있습니다.<br>
-                    강의는 순차적으로 업로드 예정이며, 강의 일시와 횟수는 변경될 수 있습니다.
+                    <li>강의는 전 강좌가 업로드 되었으며, 강의 일시와 횟수는 상이할 수 있습니다. <br>
                     (패스상품의 대폭할인으로 인하여 강의 회차 변동에 따른 환불은 진행되지 않습니다.)</li>
 				</ul>
                 <div class="infoTit NG"><strong>수강관련</strong></div>

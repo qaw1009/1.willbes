@@ -52,20 +52,10 @@
         <form name="regi_form_register" id="regi_form_register" enctype="multipart/form-data">
             {!! csrf_field() !!}
             {!! method_field($arr_base['method']) !!}
-            <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $arr_base['data']['ElIdx'] }}"/>
-            <input type="hidden" id="register_name" name="register_name" value="{{sess_data('mem_name')}}">
-            <input type="hidden" id="userId" name="userId" value="{{sess_data('mem_id')}}">
-            <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
-            <input type="hidden" name="register_type" value="promotion"/>
-            <input type="hidden" name="file_chk" value="Y"/>
-            <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] }}"/>
-
             <input type="hidden" name="CertIdx" id="CertIdx" value="{{$arr_cert['cert_idx']}}">
             <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$arr_cert['cert_data']['CertTypeCcd']}}">
-
+            <input type="hidden" name="file_chk" value="Y"/>
             <input type="hidden" name="check_take_no" value="N">    {{-- 응시번호 합격여부 체크 --}}
-            <input type="hidden" name="TakeArea" value="712018">
-
             <div id="request">
                 <div class="termsBx">
                     <h3 class="tit">[합격생 인증 정보]</h3>
@@ -94,13 +84,28 @@
                         @endphp
 
                         <li><strong>회원명(아이디)</strong> <span>{{sess_data('mem_name')}}({{ substr(sess_data('mem_id'),0, (strlen(sess_data('mem_id'))-3)) }}***)</span></li>
-                        <li><strong>응시 시험정보</strong>                                                   
-                            <input type="text" name="TakeNo" id="TakeNo"  numberOnly value="{{ $takeno }}" placeholder="응시번호" {{empty($takeno) === false ? 'disabled="disabled"' : ''}}>
+                        <li><strong>응시 시험정보</strong>
+                            {{--<select  name="TakeKind" id="TakeKind" {{empty($takekind) === false ? 'disabled="disabled"' : ''}}>
+                                <option value="">직렬선택</option>
+                                @foreach($arr_cert['kind_ccd'] as $key => $val)
+                                    <option value="{{$key}}" {{($key == $takekind ? 'selected="selected"' : '')}} >{{$val}}</option>
+                                @endforeach
+
+                            </select>
+                            <select id="TakeArea" name="TakeArea" {{empty($takearea) === false ? 'disabled="disabled"' : ''}}>
+                                <option value="">지역구분</option>
+                                @foreach($arr_cert['area_ccd'] as $key => $val)
+                                    @if($key != '712018') --}}{{--전국제외--}}{{--
+                                    <option value="{{$key}}" {{($key == $takearea ? 'selected="selected"' : '')}}>{{$val}}</option>
+                                    @endif
+                                @endforeach
+                            </select>--}}
+                            <input type="text" name="TakeNo" id="TakeNo" numberOnly value="{{ $takeno }}" placeholder="응시번호" {{empty($takeno) === false ? 'disabled="disabled"' : ''}}>
                         </li>
                         <li>
                             <strong>합격 인증 파일</strong>
                             <input type="radio" id="AddContent11" name="AddContent1" value="실강" {{($addcontent1 == '실강' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent11"  class="mr10">실강 </label>
-                            <input type="radio" id="AddContent22" name="AddContent2" value="인강" {{($addcontent1 == '인강' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent22"  class="mr10">인강</label>
+                            <input type="radio" id="AddContent22" name="AddContent1" value="인강" {{($addcontent1 == '인강' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent22"  class="mr10">인강</label>
                             <input type="file" name="attachfile" id="attachfile" style="width:300px">
                             <div class="mt10">
                                 - 합격생을 증빙할 수 있는 합격생 합격자 발표 공고를 응시표와 함께 캡쳐하거나,
@@ -146,8 +151,8 @@
                 </div>
 
                 <div class="btn">
-                    <a href="#none" onclick="javascript:fn_submit();" style="{{ (empty($arr_cert['apply_result']) === false) ? 'display: none;' : '' }}">등록</a>
-                    <a href="#none" onclick="javascript:self.close();">취소</a>
+                    <a href="javascript:void(0);" onclick="fn_submit(); return false;" style="{{ (empty($arr_cert['apply_result']) === false) ? 'display: none;' : '' }}">등록</a>
+                    <a href="javascript:void(0);" onclick="self.close(); return false;">{{ (empty($arr_cert['apply_result']) === false) ? '닫기' : '취소' }}</a>
                 </div>
             </div>
         </form>  
@@ -184,11 +189,6 @@
                 $('#AddContent11').focus();
                 return;
             }
-            if ($("input:radio[name='AddContent2']").is(':checked') == false) {
-                alert('합격구분을 선택해 주세요.');
-                $('#AddContent22').focus();
-                return;
-            }
             if ($('#attachfile').val() == '') {
                 alert('인증파일을 등록해 주세요.');
                 $('#attachfile').focus();
@@ -196,12 +196,12 @@
             }
         @endif
 
-        if ($('#attach_file').val() == '') {
+        if ($('#attachfile').val() == '') {
             alert('합격수기 파일을 등록해 주세요.');
-            $('#attach_file').focus();
+            $('#attachfile').focus();
             return;
         } else {
-            if(fileExtCheck($('#attach_file').val()) == false) {
+            if(fileExtCheck($('#attachfile').val()) == false) {
                 return;
             }
         }
@@ -216,58 +216,30 @@
         @if($arr_cert['cert_data']['ApprovalStatus'] != 'Y' )
             @if($arr_cert['cert_data']["IsCertAble"] == 'Y')
                 {{-- 인증 프로세스 --}}
-                var _check_url = '{!! front_url('/CertApply/checkTakeNumber/') !!}';
-                    ajaxSubmit($regi_form_register, _check_url, function(ret) {
+                /*var _check_url = '{!! front_url('/CertApply/checkTakeNumber/') !!}';*/
+                var _check_url = '{!! front_url('/CertApply/store/') !!}';
+                ajaxSubmit($regi_form_register, _check_url, function(ret) {
                     if(ret.ret_cd) {
-                        //alert('정상적으로 등록되었습니다.');
-                        submitEnd();
+                        alert('정상적으로 등록되었습니다.');
+                        location.reload();
                     } else {
                         alert("인증 확인이 불가합니다. 운영자에게 문의하여 주십시오.");
                         return;
                     }
                 }, showValidateError, null, false, 'alert');
                 {{-- 인증 프로세스 --}}
-            @else
-                submitEnd();
             @endif
-        @else
-                submitEnd();
         @endif
     }
 
     function fileExtCheck(strfile) {
         if( strfile != "" ){
             var ext = strfile.split('.').pop().toLowerCase();
-            if($.inArray(ext, ['hwp','doc','docx','pdf']) == -1) {
-                alert('hwp,doc,docx,pdf 파일만 업로드 할수 있습니다.');
+            if($.inArray(ext, ['jpg','png','pdf']) == -1) {
+                alert('jpg,png,pdf 파일만 업로드 할수 있습니다.');
                 return false;
             }
         }
-    }
-
-    function submitEnd() {
-        var _url = '{!! front_url('/event/registerStore') !!}';
-
-        ajaxSubmit($regi_form_register, _url, function(ret) {
-            if(ret.ret_cd) {
-                alert(ret.ret_msg);
-                window.close();
-            }
-        }, showValidateError, null, false, 'alert');
-    }
-
-    function modifyFile()
-    {
-        var _url = '{!! front_url('/event/registerStoreForModifyFile') !!}';
-
-        if (!confirm('합격수기 파일이 이미 등록되어 있습니다. \n재등록하시면 기존 파일은 삭제됩니다. \n재등록하시겠습니까?')) { return true; }
-
-        ajaxSubmit($regi_form_register, _url, function(ret) {
-            if(ret.ret_cd) {
-                alert(ret.ret_msg);
-                window.close();
-            }
-        }, showValidateError, null, false, 'alert');
     }
 
     $("input:text[numberOnly]").on("keyup", function() {

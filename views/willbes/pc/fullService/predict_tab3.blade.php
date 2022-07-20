@@ -201,9 +201,9 @@
     <div class="markSbtn3 bold">
         <a href="javascript:void(0)">PSAT 체감 난이도는?</a><br>
         <div class="markSbtn3_combine">
-            <div id="levelSubject1" class="subject"></div>
-            <div id="levelSubject2" class="subject"></div>
-            <div id="levelSubject3" class="subject"></div>
+            <div id="levelSubject1" class="subject"><span class="subject_detail">언어논리</span></div>
+            <div id="levelSubject2" class="subject"><span class="subject_detail">상황판단</span></div>
+            <div id="levelSubject3" class="subject"><span class="subject_detail">자료해석</span></div>
         </div>
         <div class="level">
             <div><span class="level5"></span>매우 어려움</div>

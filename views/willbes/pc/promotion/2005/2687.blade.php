@@ -86,8 +86,9 @@
     .graph_area {font-size:17px;line-height:1.5;text-align:left;width:720px;margin:0 auto;padding-bottom:5px;text-align:center;}
     .graph_area::after {content:'';display:block;clear:both;}  
     .recheck_area {margin:50px;}
-    .markSbtn3_combine {display:flex;margin-left:-50px;}
+    .markSbtn3_combine {display:flex;margin-left:-50px;padding-top:50px;}
     .subject {width:33.3333%}
+    .subject_detail {padding-left:50px;}
     .level {display:flex;justify-content:space-evenly;position:relative;}
     .level span.level5:before{content:"";position:absolute;top:34%;width:17px;height:17px;margin-top:-3px;margin-left:-30px;background-color:#8faadc}
     .level span.level4:before{content:"";position:absolute;top:34%;width:17px;height:17px;margin-top:-3px;margin-left:-30px;background-color:#f4b183}

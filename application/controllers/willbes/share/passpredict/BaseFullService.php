@@ -193,8 +193,6 @@ class BaseFullService extends \app\controllers\FrontController
         //설문 데이터
         $arr_surveyChartData = $this->_getSurveyChartData($ss_idx);
 
-        print_r($arr_statsForChartData['chart_total']);
-
         $this->load->view('fullService/predict_tab3', [
             'regi_data' => $regi_data
             ,'arr_statsForGradesData' => $arr_statsForGradesData

@@ -200,9 +200,12 @@
 <div class="graph_area">
     <div class="markSbtn3 bold">
         <a href="javascript:void(0)">PSAT 체감 난이도는?</a><br>
-        <div id="levelSubject1"></div>
-        <div id="levelSubject2"></div>
-        <div id="levelSubject3"></div>
+        @foreach($arr_surveyChartData['graph1'] as $subject_name => $row)
+            <div class="">
+                <span class="">{{$subject_name}}</span>
+                <div class="" id="levelSubject{{$loop->index}}"></div>
+            </div>
+        @endforeach
     </div>
     <div class="markSbtn3 bold">
         <a href="javascript:void(0)">가장 어려웠던 과목은?</a><br>
@@ -273,15 +276,13 @@
                 'core_circle_radius':0,
                 'chartDiv': 'levelSubject' + cnt,
                 'chartType': 'pie',
-                'chartSize': {width:330, height:200}
+                'chartSize': {width:450, height:230}
             };
             Nwagon.chart(options);
 
-            /*if (cnt <= 2) {
-                var chartSvg = document.getElementById('levelSubject' + cnt).getElementsByTagName('svg')[0];
-                var fields = chartSvg.getElementsByClassName('fields')[0];
-                chartSvg.removeChild(fields);
-            }*/
+            var chartSvg = document.getElementById('levelSubject' + cnt).getElementsByTagName('svg')[0];
+            var fields = chartSvg.getElementsByClassName('fields')[0];
+            chartSvg.removeChild(fields);
             cnt++;
         });
     }
@@ -314,11 +315,11 @@
                 colorset: ['#9c1f0a', '#ad4a00', "#ff8021"],
                 fields: fields
             },
-            'donut_width' : 85,
+            'donut_width' : 100,
             'core_circle_radius':0,
             'chartDiv': 'hardSubject',
             'chartType': 'pie',
-            'chartSize': {width:330, height:200}
+            'chartSize': {width:450, height:250}
         };
         Nwagon.chart(options);
     }

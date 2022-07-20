@@ -193,6 +193,8 @@ class BaseFullService extends \app\controllers\FrontController
         //설문 데이터
         $arr_surveyChartData = $this->_getSurveyChartData($ss_idx);
 
+        print_r($arr_statsForChartData['chart_total']);
+
         $this->load->view('fullService/predict_tab3', [
             'regi_data' => $regi_data
             ,'arr_statsForGradesData' => $arr_statsForGradesData
@@ -400,7 +402,8 @@ class BaseFullService extends \app\controllers\FrontController
         foreach ($result as $row) {
             $temp['total'][$row['GroupBy']][] = [
                 'title' => $row['title']
-                ,'avgCnt' => $row['avgCnt']
+                ,'cntSection' => $row['cntSection']
+                ,'avgSection' => $row['avgSection']
                 ,'cntCumsum' => $row['cntCumsum']
                 ,'avgCumsum' => $row['avgCumsum']
                 ,'my_OrgPoint' => $row['my_OrgPoint']
@@ -411,7 +414,8 @@ class BaseFullService extends \app\controllers\FrontController
         foreach ($result as $row) {
             $temp['takemockpart'][$row['GroupBy']][] = [
                 'title' => $row['title']
-                ,'avgCnt' => $row['avgCnt']
+                ,'cntSection' => $row['cntSection']
+                ,'avgSection' => $row['avgSection']
                 ,'cntCumsum' => $row['cntCumsum']
                 ,'avgCumsum' => $row['avgCumsum']
                 ,'my_OrgPoint' => $row['my_OrgPoint']
@@ -424,7 +428,7 @@ class BaseFullService extends \app\controllers\FrontController
                 if ($data_key <= 14) {
                     $return['total'][$key][$data_key] = [
                         'title' => $data['title']
-                        ,'avgCnt' => $data['avgCnt']
+                        ,'avgSection' => $data['avgSection']
                         ,'cntCumsum' => $data['cntCumsum']
                         ,'avgCumsum' => $data['avgCumsum']
                         ,'my_OrgPoint' => $data['my_OrgPoint']
@@ -441,7 +445,7 @@ class BaseFullService extends \app\controllers\FrontController
                 if ($data_key <= 14) {
                     $return['takemockpart'][$key][$data_key] = [
                         'title' => $data['title']
-                        ,'avgCnt' => $data['avgCnt']
+                        ,'avgSection' => $data['avgSection']
                         ,'cntCumsum' => $data['cntCumsum']
                         ,'avgCumsum' => $data['avgCumsum']
                         ,'my_OrgPoint' => $data['my_OrgPoint']

@@ -805,7 +805,8 @@ class FullServiceFModel extends WB_Model
         $query_string = /** @lang text */ "
             SELECT
                 m.GroupBy, m.n
-                ,ROUND((cnt / total) * 100,2) AS avgCnt
+                ,cnt AS cntSection
+                ,ROUND((cnt / total) * 100,2) AS avgSection
                 ,cntCumsum
                 ,ROUND((cntCumsum / total) * 100,2) AS avgCumsum
                 ,m.my_OrgPoint
@@ -870,7 +871,8 @@ class FullServiceFModel extends WB_Model
         
             SELECT
                 m.GroupBy, m.n
-                ,ROUND((cnt / total) * 100,2) AS avgCnt
+                ,cnt AS cntSection
+                ,ROUND((cnt / total) * 100,2) AS avgSection
                 ,cntCumsum
                 ,ROUND((cntCumsum / total) * 100,2) AS avgCumsum
                 ,m.my_OrgPoint

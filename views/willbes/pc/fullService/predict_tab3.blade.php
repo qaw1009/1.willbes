@@ -91,7 +91,7 @@
                     @foreach($arr_statsForChartData['total'][$key] as $g_k => $row)
                         <tr>
                             <td dir="ltr" width="88" class="bold blue">{{$row['title']}}</td>
-                            <td dir="ltr" width="88">{{$row['avgCnt']}}%</td>
+                            <td dir="ltr" width="88">{{$row['avgSection']}}%</td>
                             <td dir="ltr" width="88">{{$row['cntCumsum']}}</td>
                             <td dir="ltr" width="88">{{$row['avgCumsum']}}%</td>
                         </tr>
@@ -160,7 +160,7 @@
                     @foreach($arr_statsForChartData['takemockpart'][$key] as $g_k => $row)
                         <tr>
                             <td dir="ltr" width="88" class="bold blue">{{$row['title']}}</td>
-                            <td dir="ltr" width="88">{{$row['avgCnt']}}%</td>
+                            <td dir="ltr" width="88">{{$row['avgSection']}}%</td>
                             <td dir="ltr" width="88">{{$row['cntCumsum']}}</td>
                             <td dir="ltr" width="88">{{$row['avgCumsum']}}%</td>
                         </tr>
@@ -350,7 +350,7 @@
             var arr_line = [];
             $.each(row,function(row_key, row_val) {
                 arr_title.push(row_val['title']);
-                arr_line.push([parseInt((isNaN(parseInt(row_val['cntCumsum'])) === false ? row_val['cntCumsum'] : 0)), row_val['my_OrgPoint']]);
+                arr_line.push([parseInt((isNaN(parseInt(row_val['cntSection'])) === false ? row_val['cntSection'] : 0)), row_val['my_OrgPoint']]);
             });
 
             var options = {
@@ -381,7 +381,7 @@
             var arr_line = [];
             $.each(row,function(row_key, row_val) {
                 arr_title.push(row_val['title']);
-                arr_line.push([parseInt((isNaN(parseInt(row_val['cntCumsum'])) === false ? row_val['cntCumsum'] : 0)), row_val['my_OrgPoint']]);
+                arr_line.push([parseInt((isNaN(parseInt(row_val['cntSection'])) === false ? row_val['cntSection'] : 0)), row_val['my_OrgPoint']]);
             });
 
             var options = {

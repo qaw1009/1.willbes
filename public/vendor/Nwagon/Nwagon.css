@@ -12,7 +12,7 @@ v\:fill {
 v\: * {behavior : url(#default#VML);}
 /*common*/
 .background text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px}
-ul.accessibility {font-size: 1px;height: 1px; line-height: 1px; overflow: hidden; width: 1px;}
+ul.accessibility {font-size:0;height: 1px; line-height: 1px; overflow: hidden; width: 1px;}
 .background .fields text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px}
 .foreground .labels text{fill:#666;font-family:'나눔고딕', '돋움', Dotum;font-size:11px}
 .tooltip text{fill:#777;font-family:'나눔고딕', '돋움', Dotum;font-size: 11px;}

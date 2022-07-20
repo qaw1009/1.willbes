@@ -8685,7 +8685,7 @@ body.memBody #Footer {
 }
 
 .newLecList li {
-	padding: 12px;
+	padding: 10px;
 	line-height: 1.4;
 	border-bottom: 1px dashed #e4e4e4;
 }
@@ -8715,7 +8715,7 @@ body.memBody #Footer {
 
 .newLecList li div span {
 	color: #ccc;
-	margin: 0 10px;
+	margin: 0 5px;
 }
 
 .newLecList li div strong {
@@ -8732,7 +8732,8 @@ body.memBody #Footer {
 	color: #55676b;
 	border-radius: 16px;
 	text-align: center;
-	padding: 8px 0;
+	padding: 4px 0;
+	margin-bottom: 4px
 }
 
 .newLecList li a:hover {

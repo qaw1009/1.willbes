@@ -106,6 +106,8 @@
             letter-spacing: 0;
         }
 
+        .gosi .sec03 {background:#fbfbfb}
+
         .Section4_hl {margin:100px auto 50px}
         .Section4_hl .will-acadTit {font-size:19px;font-weight:600;color:#363636;line-height:60px;border-bottom: 2px solid #000;margin-bottom:20px;}
         .Section4_hl .tx-color {color:#643fb5;}
@@ -141,9 +143,9 @@
             </div>
         </div>
 
-        <div class="Section">
+        <div class="Section sec03">
             <div class="widthAuto">
-                <img src="https://static.willbes.net/public/images/promotion/main/2003/3148_02.jpg" alt="합격을 위한 운영방식">
+                <img src="https://static.willbes.net/public/images/promotion/2022/07/2643_03.jpg" alt="합격을 위한 운영방식">
             </div>
         </div>
 

@@ -45,10 +45,7 @@
         <div class="sky" id="QuickMenu">
             <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51160?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2593_sky01.png" alt="형사법 신광은">
-            </a>  
-            <a href="#chicken">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2593_sky02.png" alt="치킨 100마리">
-            </a>  
+            </a>          
             <a href="https://www.youtube.com/channel/UCz_3g63yWTYjg6_Ko5QRK1g" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2593_sky03.png" alt="신광은 형사법 티비">
             </a>  
@@ -90,28 +87,7 @@
                 </div>
             </div>                 
         </div>
-
-        <div class="evtCtnsBox evt03" data-aos="fade-up" id="chicken">      
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2593_03.jpg"  alt="감사 이벤트"/>    
-        </div>
-        
-        {{--기본댓글--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_normal_partial')
-        @endif
-
-        <div class="evtCtnsBox evt04" data-aos="fade-up">
-            <div class="wrap">          
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2593_04.jpg"  alt="소문내기 이벤트"/>
-                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute;left: 56.39%;top: 62.53%;width: 30.88%;height: 7.34%;z-index: 2;"></a>
-            </div>     
-        </div>
-
-        {{--홍보url--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'Y'))
-        @endif       
-
+                
         <div class="evtCtnsBox evt05" data-aos="fade-up">    
             <div class="wrap">          
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2593_05.jpg"  alt="2022 스페셜 단과"/>

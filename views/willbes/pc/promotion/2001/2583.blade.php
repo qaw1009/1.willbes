@@ -93,26 +93,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2583_04.jpg"  alt="교재구매"/>
                 <a href="https://police.willbes.net/book/index/cate/3001?cate_code=3001&subject_idx=1049&prof_idx=51259" target="_blank" title="교재구매 바로가기" style="position: absolute;left: 31.19%;top: 47.53%;width: 37.88%;height: 5.34%;z-index: 2;"></a>
             </div>     
-        </div>
-
-        <div class="evtCtnsBox evt05" data-aos="fade-up">    
-            <div class="wrap">          
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2583_05.jpg"  alt="소문내기 이벤트"/>
-                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute;left: 56.29%;top: 69.31%;width: 30.88%;height: 6.34%;z-index: 2;"></a>
-            </div>   
-        </div>
-
-        {{--홍보url--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'Y'))
-        @endif
-
-        <div class="evtCtnsBox evt_btn" data-aos="fade-up">
-            <div class="wrap">            
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2583_btn.jpg"  alt="워크북 교재받기"/>
-                <a href="javascript:void(0)" title="워크북 교재받기" onclick="fn_promotion_etc_submit(); return false;" style="position: absolute;left: 25.19%;top: 29.53%;width: 49.88%;height: 40.34%;z-index: 2;"></a>
-            </div>
-        </div>
+        </div>      
 
         <div class="evtCtnsBox evt_apply" data-aos="fade-up">     
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2583_apply.jpg"  alt="수강신청"/>

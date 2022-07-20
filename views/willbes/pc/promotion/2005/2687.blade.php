@@ -89,11 +89,11 @@
     .markSbtn3_combine {display:flex;margin-left:-50px;}
     .subject {width:33.3333%}
     .level {display:flex;justify-content:space-evenly;position:relative;}
-    .level span.level5:before{content:"";position:absolute;top:34%;width:17px;height:17px;margin-top:-3px;margin-left:-30px;background-color:#8faadc}
-    .level span.level4:before{content:"";position:absolute;top:34%;width:17px;height:17px;margin-top:-3px;margin-left:-30px;background-color:#f4b183}
-    .level span.level3:before{content:"";position:absolute;top:34%;width:17px;height:17px;margin-top:-3px;margin-left:-30px;background-color:#a9d18e}
-    .level span.level2:before{content:"";position:absolute;top:34%;width:17px;height:17px;margin-top:-3px;margin-left:-30px;background-color:#ffd966}
-    .level span.level1:before{content:"";position:absolute;top:34%;width:17px;height:17px;margin-top:-3px;margin-left:-30px;background-color:#cc99ff}
+    .level span.level5:before{content:"";position:absolute;top:34%;width:17px;height:17px;margin-top:-3px;margin-left:-30px;background-color:#4e67c8}
+    .level span.level4:before{content:"";position:absolute;top:34%;width:17px;height:17px;margin-top:-3px;margin-left:-30px;background-color:#a7ea52}
+    .level span.level3:before{content:"";position:absolute;top:34%;width:17px;height:17px;margin-top:-3px;margin-left:-30px;background-color:#5dceaf}
+    .level span.level2:before{content:"";position:absolute;top:34%;width:17px;height:17px;margin-top:-3px;margin-left:-30px;background-color:#ff8021}
+    .level span.level1:before{content:"";position:absolute;top:34%;width:17px;height:17px;margin-top:-3px;margin-left:-30px;background-color:#f14124}
     .markSbtn4 {padding-top:50px;}
 
     .grading_result {width:720px;margin:0 auto;}

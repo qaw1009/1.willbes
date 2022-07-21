@@ -22,7 +22,7 @@
     .gosi-gate-v3 .will-nTit {border:0; font-size:28px; color:#5c5c5c}
     .gosi-gate-v3 .will-nTit span {color:#000}
 
-    .gosi-gate-secTop {position:relative; padding-top:56px;  }
+    .gosi-gate-secTop {position:relative; padding-top:56px;}
     .gosi-gate-secTop .gosi-gate-search {position:absolute; top:35px;}
 
     .topMenu {position: absolute; width:1120px; left:50%; margin-left:-560px; top:40px;  z-index: 0;}
@@ -35,8 +35,13 @@
     .gosi-gate-Sec {margin-top:100px; padding:0; text-align:center; background:none}
     .gosi-gate-Sec .gosi-gate-bntop-img {position:relative;}
 
-
-    .gate-bntop-Slider .swiper-slide span {position:absolute; top:40px; left:50%; margin-left:65px; width:350px; height:350px; overflow: hidden;}
+    .gate-bntop-Slider .swiper-slide {height:430px}
+    .gate-bntop-Slider .swiper-slide .txtBox {width:450px; position:absolute; top:50px; left:50%; margin-left:-450px; font-size:16px; text-align:left; color:#fff; line-height:1.2; letter-spacing:1px}
+    .gate-bntop-Slider .swiper-slide .txtBox .title01 {color:#fefd0d; margin-bottom:16px}
+    .gate-bntop-Slider .swiper-slide .txtBox .title02 {font-size:44px; font-family: "Noto Sans KR Black"; margin-bottom:38px}
+    .gate-bntop-Slider .swiper-slide .txtBox .title03 {margin-bottom:56px}
+    .gate-bntop-Slider .swiper-slide .txtBox .title04 strong {color:#fefd0d; background:rgba(0,0,0,.5); border-radius:30px; padding:8px 25px;}
+    .gate-bntop-Slider .swiper-slide span {position:absolute; top:40px; left:50%; margin-left:120px; width:350px; height:350px; overflow: hidden;}
     .gate-bntop-Slider .swiper-slide.swiper-slide-active span img {animation: zoom-out 1s linear backwards;}
     @@keyframes zoom-out {
     0% {
@@ -78,7 +83,6 @@
     .gosi-gate-Sec p.leftBtn {background: url(https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAL.png) no-repeat left center; }
     .gosi-gate-Sec p.rightBtn {background: url(https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAR.png) no-repeat left center; }	
     .gosi-gate-Sec p:hover {opacity:100; filter:alpha(opacity=100);}
-
 
 
     .gosi-gate-v3 .newsWrap {width:1120px; margin:80px auto 0; display:flex}
@@ -155,8 +159,6 @@
         background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat left top;   
         left:158px !important;     
     }
-
-
 
     .gosi-gate-v3 .castWrap {background:#21262c; padding:100px 0; color:#fff}
     .gosi-gate-v3 .castWrap .will-nTit {color:#fff}
@@ -290,58 +292,117 @@
         <div class="gosi-gate-bntop-img">
             <div class="gate-bntop-Slider mainSlider01">
                 <ul class="swiper-wrapper">
-                    <li class="swiper-slide">
+                    <li class="swiper-slide" style="background-color:#391ac0">
                         <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_01.jpg" alt="배너명">
-                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_01_s.jpg" alt="배너명"></span>--}}
+                            <div class="txtBox">
+                                <div class="title01">재도전/환승/대학생 5만원 할인</div>
+                                <div class="title02">2023 대비 9급 PASS</div>
+                                <div class="title03">행정직 / 세무직 / <br>
+                                    교육행정직 / 사회복지직</div>
+                                <div class="title04"><strong>인증하고 할인받기 ✔</strong></div>
+                            </div>
+                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_350x350_01.jpg" alt="배너명"></span>
                         </a>
                     </li>
-                    <li class="swiper-slide">
+                    <li class="swiper-slide" style="background-color:#432f2e">
                         <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_02.jpg" alt="배너명">
-                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_02_s.jpg" alt="배너명"></span>--}}
+                            <div class="txtBox">
+                                <div class="title01">세무직의 전설, 이윤호/박창한 TEAM</div>
+                                <div class="title02">2023 세무직 PASS</div>
+                                <div class="title03">세무직 전과목 PASS<br>
+                                    전문과목 T-PASS</div>
+                                <div class="title04"><strong>인증하고 할인받기 ✔</strong></div>
+                            </div>
+                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_350x350_02.jpg" alt="배너명"></span>
                         </a>
                     </li>
-                    <li class="swiper-slide">
+                    <li class="swiper-slide" style="background-color:#16151b">
                         <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_03.jpg" alt="배너명">
-                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_03_s.jpg" alt="배너명"></span>--}}
+                            <div class="txtBox">
+                                <div class="title01">소방공무원 업계 역대급 최저가</div>
+                                <div class="title02">2023 소방 PASS</div>
+                                <div class="title03">최종혜택가<br>
+                                    공채 20만원 | 경채 19만원</div>
+                                <div class="title04"><strong>인증하고 할인받기 ✔</strong></div>
+                            </div>
+                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_350x350_03.jpg" alt="배너명"></span>
                         </a>
                     </li>
-                    <li class="swiper-slide">
+                    <li class="swiper-slide" style="background-color:#efefef">
                         <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_01.jpg" alt="배너명">
-                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_02_s.jpg" alt="배너명"></span>--}}
+                            <div class="txtBox">
+                                <div class="title01">기술직 LEGEND 교수진의 합격비법</div>
+                                <div class="title02">농업직렬 장사원<br>
+                                    전기/통신 최우영
+                                </div>
+                                <div class="title03">행정직 / 세무직 / <br>
+                                    교육행정직 / 사회복지직</div>
+                                <div class="title04"><strong>인증하고 할인받기 ✔</strong></div>
+                            </div>
+                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_350x350_01.jpg" alt="배너명"></span>
                         </a>
                     </li>
-                    <li class="swiper-slide">
+                    <li class="swiper-slide" style="background-color:#d7ff83">
                         <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_02.jpg" alt="배너명">
-                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_03_s.jpg" alt="배너명"></span>--}}
+                            <div class="txtBox">
+                                <div class="title01">수준 높은 노하루로 기술직 합격까지!</div>
+                                <div class="title02">
+                                    축산직 윤용범<br>
+                                    조경직 이윤주
+                                </div>
+                                <div class="title03">생소한 전공과목, 초시생도 걱정 NO!</div>
+                                <div class="title04"><strong>인증 이벤트 참여 후 할인받기 ✔</strong></div>
+                            </div>
+                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_350x350_01.jpg" alt="배너명"></span>
                         </a>
                     </li>
-                    <li class="swiper-slide">
+                    <li class="swiper-slide" style="background-color:#556ab9">
                         <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_03.jpg" alt="배너명">
-                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_01_s.jpg" alt="배너명"></span>--}}
+                            <div class="txtBox">
+                                <div class="title01">2023 군무원 합격도 윌비스!</div>
+                                <div class="title02">윌비스 군무원</div>
+                                <div class="title03">변화하는 군무원 시험에<br>
+                                    최적화된 2023 커리큘럼</div>
+                                <div class="title04"><strong>런칭 기념 이벤트 ✔</strong></div>
+                            </div>
+                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_350x350_02.jpg" alt="배너명"></span>
                         </a>
                     </li>
-                    <li class="swiper-slide">
+                    <li class="swiper-slide" style="background-color:#46535c">
                         <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_01.jpg" alt="배너명">
-                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_02_s.jpg" alt="배너명"></span>--}}
+                            <div class="txtBox">
+                                <div class="title01">2023년도 검찰직 9급 대비</div>
+                                <div class="title02">검찰직 연간종합반</div>
+                                <div class="title03">오직 수험생의 합격만을 위한<br>
+                                    최단기 합격비법 대공개</div>
+                                <div class="title04"><strong>인증하고 할인받기 ✔</strong></div>
+                            </div>
+                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_350x350_03.jpg" alt="배너명"></span>
                         </a>
                     </li>
-                    <li class="swiper-slide">
+
+                    <li class="swiper-slide" style="background-color:#573ecd">
                         <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_02.jpg" alt="배너명">
-                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_03_s.jpg" alt="배너명"></span>--}}
+                            <div class="txtBox">
+                                <div class="title01">7급 PAST, 누구랑 시작할지 고민된다면?</div>
+                                <div class="title02">윌비스 7급PSAT</div>
+                                <div class="title03">윌비스 한림법학원의 명성 그대로!<br>
+                                    7급PSAT도 윌비스로 시작하세요! </div>
+                                <div class="title04"><strong>지금바로 확인하기 ✔</strong></div>
+                            </div>
+                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_350x350_02.jpg" alt="배너명"></span>
                         </a>
                     </li>
-                    <li class="swiper-slide">
+                    <li class="swiper-slide" style="background-color:#0a2328">
                         <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_03.jpg" alt="배너명">
-                            {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_2000x430_01_s.jpg" alt="배너명"></span>--}}
+                            <div class="txtBox">
+                                <div class="title01">2023년 7월까지 무제한 수강</div>
+                                <div class="title02">김동진법원팀 PASS</div>
+                                <div class="title03">법원직 최종합격자 2명 중 1명은<br>
+                                    윌비스 김동진법학원팀 수강생</div>
+                                <div class="title04"><strong>할인받고 시작하기 ✔</strong></div>
+                            </div>
+                            <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_350x350_03.jpg" alt="배너명"></span>
                         </a>
                     </li>
                 </ul> 
@@ -353,31 +414,31 @@
                 <div class="MaintabWrap">
                     <ul class="Maintab">
                         <li><a data-swiper-slide-index="0" href="javascript:void(0);" class="active">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_01.jpg" alt="배너명">
                             9급<br>pass</a></li>
                         <li><a data-swiper-slide-index="1" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_02.jpg" alt="배너명">
                             7급<br>pass</a></li>
                         <li><a data-swiper-slide-index="2" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">    
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_03.jpg" alt="배너명">    
                         세무직<br>pass</a></li>
                         <li><a data-swiper-slide-index="3" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">    
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_04.jpg" alt="배너명">    
                         법원직<br>pass</a></li>
                         <li><a data-swiper-slide-index="4" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">    
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_05.jpg" alt="배너명">    
                         농업직<br>pass</a></li>
                         <li><a data-swiper-slide-index="5" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">    
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_06.jpg" alt="배너명">    
                         통신/전기<br>pass</a></li>
                         <li><a data-swiper-slide-index="6" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">    
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_07.jpg" alt="배너명">    
                         전산직<br>pass</a></li>
                         <li><a data-swiper-slide-index="7" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">    
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_08.jpg" alt="배너명">    
                         환경직<br>pass</a></li>
                         <li><a data-swiper-slide-index="8" href="javascript:void(0);">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80.jpg" alt="배너명">    
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_sum_80x80_09.jpg" alt="배너명">    
                         산림자원직<br>pass</a></li>
                     </ul>
                 </div>                

@@ -140,13 +140,13 @@
             </div>
             <div >
                 <div id="tab01" class="tabCts">
-                    <iframe src="https://www.youtube.com/embed/r8sOeBFLW10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/r8sOeBFLW10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div id="tab02" class="tabCts">
-                    <iframe width="512" height="288" src="https://www.youtube.com/embed/hXd1wL6nURY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="512" height="288" src="https://www.youtube.com/embed/hXd1wL6nURY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div id="tab03" class="tabCts">
-                    {{--<iframe width="512" height="288" src="https://www.youtube.com/embed/r8sOeBFLW10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>--}}
+                    {{--<iframe width="512" height="288" src="https://www.youtube.com/embed/r8sOeBFLW10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>--}}
                 </div>
             </div>
         </div>

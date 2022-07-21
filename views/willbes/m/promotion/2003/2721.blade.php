@@ -7,42 +7,44 @@
     @@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both}
     .evtCtnsBox img {max-width:100%;}
-    .evtCtnsBox.wrap {position:relative}
-    .evtCtnsBox.wrap a {border:1px solid #000}
+    .evtCtnsBox .wrap {position:relative}
+    /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
     .dday {font-size:2.4vh !important; padding:10px; background:#ebebeb; color:#000; text-align:left; letter-spacing:-1px}
     .dday span {color:#75a612; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
     .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#3a99f0; font-size:1.4px !important;}
 
     .tabs {display:flex; justify-content: space-between;}
-		.tabs a {display:block;}
-        .tabs img.on {display:none}
-        .tabs img.off {display:block}
-        .tabs a.active img.on {display:block}
-        .tabs a.active img.off {display:none}
-        .tabCts {position:relative; height: 877px;}
-        .tabCts:nth-child(1) {background:url(https://static.willbes.net/public/images/promotion/2022/07/2721_02_tab01_img.jpg) no-repeat center top; }
-        .tabCts:nth-child(2) {background:url(https://static.willbes.net/public/images/promotion/2022/07/2721_02_tab02_img.jpg) no-repeat center top; }
-        .tabCts:nth-child(3) {background:url(https://static.willbes.net/public/images/promotion/2022/07/2721_02_tab03_img.jpg) no-repeat center top; }
-        .tabCts iframe {position:absolute; top:435px; left:50%; margin-left:-50px; width:512px; height:288px; background:#000}
+    .tabs a {display:block; margin-right:2px}
+    .tabs img.on {display:none}
+    .tabs img.off {display:block}
+    .tabs a.active img.on {display:block}
+    .tabs a.active img.off {display:none}
+    .tabs a:last-child {margin-right:0}
+    .tabCts {position:relative; padding-top:43.5%; }
+    .tabCts:nth-child(1) {background:url(https://static.willbes.net/public/images/promotion/2022/07/2721m_02_tab01_img.jpg) no-repeat center top; background-size:100%; }
+    .tabCts:nth-child(2) {background:url(https://static.willbes.net/public/images/promotion/2022/07/2721m_02_tab02_img.jpg) no-repeat center top; background-size:100%; }
+    .tabCts:nth-child(3) {background:#000 url(https://static.willbes.net/public/images/promotion/2022/07/2721m_02_tab03_img.jpg) no-repeat center top; background-size:100%; }
+    .embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } 
+    .embed-container iframe {position: absolute; top: 0; left: 0; width: 100%; height: 100%; background:#000;}
+    .tabCts:nth-child(3)  .embed-container {color:#fff; justify-content: center; align-items: center; font-size:3vh; padding:25% 0 30%}
 
     .wb_cts04 {background:#4d62df; position: relative; padding-bottom:100px}
 
-    .check label {cursor:pointer; font-size:1.5vh;color:#fff;font-weight:bold;}
+    .check label {cursor:pointer; font-size:1.6vh;color:#fff;font-weight:bold;}
     .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-    .check a {display:inline-block; padding:5px 10px; color:#fff; background:#2d2d2d; margin-left:10px; border-radius:4px;font-size:1.2vh;} 
+    .check a {display:inline-block; padding:5px 10px; color:#fff; background:#2d2d2d; margin-left:10px; border-radius:4px;font-size:1.4vh;} 
 
     .event05 .passbuy a {display:block; width:80%; margin:0 auto; background:#1c2127; color:#fff; font-size:2.4vh; border-radius:40px; padding:10px 0; font-weight:bold}  
     .event05 .passbuy a:hover {background:#fb6250; color:#fff;}
-
     
 
     /* 이용안내 */
     .evtInfo {padding:50px 20px; background:#f4f4f4; color:#3a3a3a; font-size:1.6vh;}
     .evtInfoBox {text-align:left; line-height:1.4}
-    .evtInfoBox li {list-style:disc; margin-left:20px; font-size:1.4vh}
-    .evtInfoBox h4 {font-size:3.5vh; margin-bottom:50px}
-    .evtInfoBox .infoTit {margin-bottom:10px;}
+    .evtInfoBox li {list-style:disc; margin-left:20px;}
+    .evtInfoBox h4 {font-size:3vh; margin-bottom:50px}
+    .evtInfoBox .infoTit {margin-bottom:10px; font-size:1.8vh;}
     .evtInfoBox .infoTit strong {padding:5px 20px; border-radius:50px; background:#333; color:#fff}
     .evtInfoBox ul {margin-bottom:30px}   
     
@@ -95,13 +97,20 @@
         </div>
         <div >
             <div id="tab01" class="tabCts">
-                <iframe src="https://www.youtube.com/embed/r8sOeBFLW10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="embed-container">
+                    <iframe src="https://www.youtube.com/embed/r8sOeBFLW10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
             <div id="tab02" class="tabCts">
-                <iframe width="512" height="288" src="https://www.youtube.com/embed/hXd1wL6nURY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="embed-container">
+                    <iframe width="512" height="288" src="https://www.youtube.com/embed/hXd1wL6nURY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
             <div id="tab03" class="tabCts">
-                {{--<iframe width="512" height="288" src="https://www.youtube.com/embed/r8sOeBFLW10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>--}}
+                <div class="embed-container">
+                    Coming soon! 
+                {{--<iframe width="512" height="288" src="https://www.youtube.com/embed/r8sOeBFLW10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>--}}
+                </div>
             </div>
         </div>
     </div>
@@ -113,7 +122,7 @@
     <div class="evtCtnsBox wb_cts04" id="apply" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/07/2721m_04.jpg" alt="수강신청"/>    
-            <a href="javascript:go_PassLecture('179756');" style="position: absolute; left: 50.71%; top: 79.63%; width: 20.63%; height: 9.03%; z-index: 2;"></a>
+            <a href="javascript:go_PassLecture('179756');" style="position: absolute; left: 50.69%; top: 78.58%; width: 36.39%; height: 11.77%;z-index: 2;"></a>
         </div>    
         <div class="check">
             <label>
@@ -214,11 +223,11 @@
             var activeTab = $(this).attr("href"); 
             var html_str = "";
             if(activeTab == "#tab01"){
-                html_str = "<iframe src='"+tab1_url+"' frameborder='0' allowfullscreen></iframe>";
+                html_str = "<div class='embed-container'><iframe src='"+tab1_url+"' frameborder='0' allowfullscreen></iframe></div>";
             }else if(activeTab == "#tab02"){
-                html_str = "<iframe src='"+tab2_url+"' frameborder='0' allowfullscreen></iframe>";
+                html_str = "<div class='embed-container'><iframe src='"+tab2_url+"' frameborder='0' allowfullscreen></iframe></div>";
             }else if(activeTab == "#tab03"){
-                html_str = "";                   
+                html_str = "<div class='embed-container'>Coming soon!</div>";                   
             }
             $(".tabs a").removeClass("active"); 
             $(this).addClass("active"); 

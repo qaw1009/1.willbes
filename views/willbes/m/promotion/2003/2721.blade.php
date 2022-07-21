@@ -11,7 +11,7 @@
     /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
     .dday {font-size:2.4vh !important; padding:10px; background:#ebebeb; color:#000; text-align:left; letter-spacing:-1px}
-    .dday span {color:#75a612; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
+    .dday span {color:#4e62df; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
     .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#3a99f0; font-size:1.4px !important;}
 
     .tabs {display:flex; justify-content: space-between;}

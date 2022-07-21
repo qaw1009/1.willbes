@@ -171,7 +171,7 @@
 
         <div class="evtCtnsBox wb_info" id="careful" data-aos="fade-up">
             <div class="guide_box">
-                <h2 class="NSK-Black">윌비스 군무원PASS 이용안내</h2>
+                <h2 class="NSK-Black">윌비스 군무원 PASS 이용안내</h2>
                 <dl>
                     <dt>상품구성</dt>
                     <dd>

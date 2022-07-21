@@ -4,7 +4,6 @@
 <!-- Container -->
 
 <style type="text/css">
-    @@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both}
     .evtCtnsBox img {max-width:100%;}
     .evtCtnsBox .wrap {position:relative}
@@ -140,7 +139,7 @@
             <div class="infoTit"><strong>상품구성</strong></div>
             <ul>
                 <li>본 PASS는 군무원 행정직 9급 대비 과정으로, 참여 교수진의 2022~2023 대비 전 강좌를 배수 제한 없이 무제한으로 수강 가능합니다.<br>
-                - 국어 오대혁, 행정학 김철/김덕관, 행정법 임병주/신기훈<br>
+                - 국어 오대혁, 행정학 김철/김덕관, 행정법 L교수 (8월 초 공개)/신기훈<br>
                     (행정학 김덕관, 행정법 신기훈 교수의 강의는 2022 대비 과정만 제공합니다.)</li>
                 <li>2022년 7월부터 진행된 2022년 대비 전 과정 및 2023년 대비로 진행되는 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.<br>
                 (일부 교수진의 경우, 신규 과정이 업데이트 되지 않을 수 있으며 해당 경우에는 이전 연도 과정을 제공해드립니다.)
@@ -216,7 +215,7 @@
     var tab1_url = "https://www.youtube.com/embed/r8sOeBFLW10";
     var tab2_url = "https://www.youtube.com/embed/hXd1wL6nURY";        
     var tab3_url = "https://www.youtube.com/embed/VEmBnYu8tcc";
-    $(function() {
+    $(document).ready(function() {
     $(".tabCts").hide(); 
     $(".tabCts:first").show();
     $(".tabs a").click(function(){ 

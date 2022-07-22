@@ -273,14 +273,6 @@
     </div>
     <!-- End Container -->
 
-    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
-    <script src="/public/js/willbes/dist/aos.js"></script>
-    <script>
-      $(document).ready( function() {
-        AOS.init();
-      });
-    </script>
-
     <script>    
         var tab1_url = "https://www.youtube.com/embed/r8sOeBFLW10";
         var tab2_url = "https://www.youtube.com/embed/hXd1wL6nURY";        
@@ -332,6 +324,14 @@
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });     
         
+    </script>
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+      $(document).ready( function() {
+        AOS.init();
+      });
     </script>
 
 {{-- 프로모션용 스크립트 include --}}

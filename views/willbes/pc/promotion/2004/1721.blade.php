@@ -97,7 +97,7 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky" id="QuickMenu">
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB&subject_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/06/1721_sky_title.png" alt="개강강의"></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB&subject_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/07/1721_sky_title.png" alt="개강강의"></a>
             <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE6riw" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/06/1721_sky1.png" alt="전기직"></a>
             <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67Ya17Iug&subject_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/06/1721_sky3.png" alt="통신직"></a>
         </div>

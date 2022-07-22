@@ -23,19 +23,18 @@
         .sky {position:fixed;top:200px;right:10px; width:120px; z-index:1;}
         .sky a {display:block; margin-bottom:10px}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/07/1721_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:#ffd0d6}
         .wb_cts01 {background:#343b6f;}
         .wb_cts01s {background:#fff8f2;}
         .wb_cts03 {padding-top:50px;}
         .wb_cts04 {background:#f4f4f4;padding-bottom:150px;}
-        .wb_cts05 {background:#9fa75e;padding-bottom:150px;}
+        .wb_cts05 {background:#008ce4;}
 
         /*탭(텍스트)*/
         .tabContaier{width:100%;background:#f4f4f4;margin-top:50px;}
-        .tabContaier ul{width:980px;margin:0 auto;height:75px;} 
-        .tabContaier li{display:inline-block;width:326px;line-height:75px;background:#f4f4f4;color:#021f44;float:left;font-size:25px;font-weight:bold;}
-        .tabContaier:after {content:""; display:block; clear:both}
-        .tabContaier li a{display:block; color:#fff; background:#021f44; border-radius:13px 13px 0 0; border:3px solid #021f44; border-bottom:0}
+        .tabContaier ul{width:977px;margin:0 auto; height:75px; display:flex; justify-content: space-between;} 
+        .tabContaier li {width:33.3333%; }
+        .tabContaier li a{display:block; line-height:75px; color:#fff; background:#021f44; border-radius:13px 13px 0 0; border:3px solid #021f44; border-bottom:0;  font-size:25px; font-weight:bold;}
         .tabContaier li a:hover,
         .tabContaier li a.active {color:#021f44;font-size:35px;background:#fff;}
 
@@ -72,17 +71,17 @@
 
          /* tip */
         .wb_cts_notice {background:#ccc; text-align:left; padding:150px 0}
-        .wb_tipBox {border:1px solid #333; padding:30px; width:980px; margin:0 auto; background:#fff; }
+        .wb_tipBox {border:1px solid #333; padding:30px; width:980px; margin:0 auto; background:#fff; font-size:14px}
         .wb_tipBox > strong {font-size:16px !important; font-weight:bold; color:#333; display:block; margin-bottom:20px}
-        .wb_tipBox p {font-size:24px !important; font-weight:bold;  letter-spacing:-3px; margin:30px 0 10px; color:#111}	
-        .wb_tipBox ol li {margin-bottom:10px; line-height:1.3; list-style:decimal; margin-left:15px}
+        .wb_tipBox p {font-size:24px !important; font-weight:bold;  letter-spacing:-1px; margin:30px 0; color:#111}	
+        .wb_tipBox ol li {margin-bottom:20px; line-height:1.4; list-style:decimal; margin-left:15px}
         .wb_tipBox ul {margin-top:20px}
         .wb_tipBox ul li {margin-bottom:5px}
         .wb_tipBox table {width:100%; border-spacing:0px; border:1px solid #c9c7ca; border-top:2px solid #464646; border-bottom:1px solid #464646; table-layout:auto}
         .wb_tipBox th,
         .wb_tipBox td {text-align:center; padding:7px 10px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4}
         .wb_tipBox th {font-weight:bold; color:#333; background:#f6f0ec;}	
-        .wb_tip_orange {font-size:12px; color:#c03011;}
+        .wb_tip_orange {color:#c03011;}
 
         /*TAB_tip*/
         .tab02 {margin-bottom:20px}
@@ -104,15 +103,15 @@
         </div>
 
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/1721_top.jpg" alt="역대급 성적상승"/>      
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/1721_top.jpg" alt="역대급 성적상승"/>      
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/1721_01.jpg" alt="신청하기"/>
-                <a href="https://cafe.daum.net/sharkchoi" target="_blank" style="position: absolute;left: 13.46%;top: 73.99%;width: 14.23%;height: 9.57%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/07/1721_01.jpg" alt="신청하기"/>
+                <a href="https://cafe.daum.net/sharkchoi" target="_blank" title="카페" style="position: absolute;left: 13.46%;top: 73.99%;width: 14.23%;height: 9.57%;z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="단과강의" style="position: absolute;left: 43.46%;top: 73.99%;width: 14.23%;height: 9.57%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU6VC1QYXNz" target="_blank" title="t-pass" style="position: absolute;left: 72.96%;top: 73.99%;width: 14.23%;height: 9.57%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU6cGFzcw%3D%3D" target="_blank" title="t-pass" style="position: absolute;left: 72.96%;top: 73.99%;width: 14.23%;height: 9.57%;z-index: 2;"></a>
             </div>    
         </div>
 
@@ -145,7 +144,7 @@
                                 </li>
                                 
                                 <li class=>
-                                    <a href="#tab2" class="active">
+                                    <a href="#tab2">
                                         <span class="num_box" data-num="2">2</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
@@ -246,7 +245,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts04" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/1721_04.jpg" alt="커리큘럼"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/1721_04.jpg" alt="커리큘럼"/>
             <div class="tabContaier" id="apply">    
                 <ul class="NSK-Black">    
                     <li><a href="#tab1" class="active">전기</a></li>                            
@@ -255,48 +254,22 @@
                 </ul>
             </div> 
             <div id="tab1" class="tabContents">   
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/1721_04_cts1.png" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/07/1721_04_cts1.jpg" />
             </div>
             <div id="tab2" class="tabContents">    
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/1721_04_cts2.png" />                                     
+                <img src="https://static.willbes.net/public/images/promotion/2022/07/1721_04_cts2.jpg" />                                     
             </div>  
             <div id="tab3" class="tabContents">    
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/1721_04_cts3.png" />                                     
+                <img src="https://static.willbes.net/public/images/promotion/2022/07/1721_04_cts3.jpg" />                                     
             </div>    
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="t_pass_go" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/1721_05.jpg" alt="통신/전기/전자작의 대세" />
-            {{--
-            <div class="tabs" id="buyLec">                
-                <ul>
-                    <li>
-                        <a href="#tab01s" class="active">
-                            <img src="https://static.willbes.net/public/images/promotion/2021/07/1721_05_tab1_on.png" class="on"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2021/07/1721_05_tab1.png" class="off"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab02s">
-                            <img src="https://static.willbes.net/public/images/promotion/2021/07/1721_05_tab2_on.png" class="on"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2021/07/1721_05_tab2.png" class="off"/>
-                        </a>
-                    </li>                  
-                </ul>
-            </div>
-            --}}
-
             <div id="tab01s" class="wrap">            
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/1721_05_cts1.png" />
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="" style="position: absolute;left: 26.46%;top: 79.99%;width: 47.23%;height: 12.57%;z-index: 2;"></a>
-            </div> 
-
-            {{--
-            <div id="tab02s" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/1721_05_cts2.png" />
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="" style="position: absolute;left: 26.46%;top: 76.99%;width: 47.23%;height: 14.57%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/07/1721_05.jpg" />
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="" style="position: absolute; left: 33.39%; top: 72.57%; width: 33.04%; height: 7.01%; z-index: 2;"></a>
             </div>
-            --}}
+
         </div>
 
         <div class="evtCtnsBox wb_cts_notice">
@@ -349,13 +322,12 @@
                     </tr>
                     </table>
                     <br />
-                    ▷ 총 교습 시간은 개강월로부터 종강월까지의 수업 개월 수를 말하며, 환불은 1개월을 기준으로 합니다.<br />
-                    ▷ 환불 접수는 학원 방문 접수만 가능하며, 수강증을 필히 제출하여야 합니다.<br />
-                    ▷ 카드로 결제하신 경우 결제 하셨던 카드를 지참하셔야 하며, 현금/계좌이체로 결제하신 경우 수강생 본인 명의의 통장으로만 환불금 입금 처리됩니다.<br />
-                    ▷ 환불 기준일은 실제 수강 여부와 상관없이 환불 신청 날짜 (환불 신청서 작성 날짜)를 기준으로 합니다.<br />           		
-                    ▷ 개강 이후 종합반 과목 수 변경을 원하실 경우, 구매하신 상품을 환불 규정에 의거 환불한 후 재등록 하셔야 합니다.<br />
-                    ▷ 친구추천할인 이벤트 적용 대상자의 경우, 추천/피추천인 환불 시 다른 피추천/추천인이 정상금액으로 재결제 해야 환불이 진행됩니다.<br />
-                    ▷ 개강일이 지난 후에 강의 결제시, 지난 강의는 동영상으로 제공이 되며, 이후 강의 환불은 결제일과 상관없이 개강일을 기준으로 환불금이 산정됩니다.<br />
+                    ▷ 총 교습 시간은 개강월로부터 종강월까지의 수업 개월 수를 말하며, 환불은 1개월을 기준으로 합니다.<br>
+                    ▷ 환불 접수는 전화상담 후 진행 됩니다.<br>
+                    ▷ 카드로 결제하신 경우 부분취소 가능하며, 현금/계좌이체로 결제하신 경우 수강생 본인 명의의 통장으로만 환불금 입금 처리됩니다.<br>
+                    ▷ 환불 기준일은 실제 수강 여부와 상관없이 환불 신청 날짜 (환불 신청서 작성 날짜)를 기준으로 합니다.<br>
+                    ▷ 개강 이후 종합반 과목 수 변경을 원하실 경우, 구매하신 상품을 환불 규정에 의거 환불한 후 재등록 하셔야 합니다.<br>
+                    ▷ 개강일이 지난 후에 강의 결제시, 지난 강의는 동영상으로 제공이 되며, 이후 강의 환불은 결제일과 상관없이 개강일을 기준으로 환불금이 산정됩니다.<br>
                     ▷ 이미 개강한 강의를 구매하더라도 수강료는 동일합니다.<br />	
                 </li>
                 </ol>
@@ -373,12 +345,7 @@
                 ▷ 윌비스 고시학원에서 진행되는 윌비스 Real 모의고사가 제공됩니다.<br />
                 ▷ 선택과목/응시직렬에 따라 몇몇 과목의 모의고사가 제공되지 않을 수 있습니다.<br />
                 </li>
-                <li><strong>사물함</strong><br />           
-                ▷ 무단 사용 적발 시, 사용기간에 대한 임대료(월 5,000원)를 지불하셔야 하며, 즉시 회수합니다. 잔여 물품은 폐기처리 되며, 폐기된 물품에 대해서는 학원에서 책임지지않습니다.<br />
-                ▷ 중도 수강 취소 시 지정된 사물함은 회수되며, 잔여 물품은 폐기처리 됩니다. 폐기된 물품에 대해서는 학원에서 책임지지않습니다.<br />
-                ▷ 개인 사물함 관리의 책임은 개인이 지며, 분실/훼손된 개인 물품에 대해서는 학원에서 책임지지 않습니다.<br />
-                ▷ 제공된 사물함는 학원의 재산입니다. 사용 부주의에 의한 고장/훼손 시 수강생에게 배상의 책임이 있습니다.<br />
-                </li>		 
+ 
                 <li><strong>공통 사항</strong><br />
                 ▷ 개인 사유에 의해 이용하지 못한 혜택에 대해서는 학원에서 별도로 보상하지 않습니다.<br />
                 ▷ 제공된 혜택은 수강생 본인만 사용할 수 있습니다. 본인 이외의 인원에게 판매/대여/양도할 수 없으며, 적발 시 법적 책임이 있습니다<br />
@@ -394,26 +361,19 @@
                 <li><strong>강사진</strong><br />
                 ▷ 강사진은 강사 개인사정이나 학원사정에 따라 변경될 수 있습니다.<br />
                 </li>
-                <li><strong>자습실 및 학원 운영시간</strong><br />
-                ▷ 학원 운영 시간: <span class="wb_tip_orange">월~토 7:30~21:00, 일 8:30~21:00 </span> (자습실 운영시간은 학원 운영 시간과 동일합니다.)<br />
-                ▷ 데스크 운영 시간: <span class="wb_tip_orange"> 평일 8:30~18:00 </span><br />
-                ▷ 사물함 등록/연장/반납, 교재구매, 수강환불 관련 업무시간 : <span class="wb_tip_orange"> 평일 8:30~18:00 </span><br />
-                ▷ 연휴 당일은 건물 휴무로 운영되지 않습니다.<br />
+                <li><strong>학원 운영시간</strong><br />
                 ▷ 기술직 강의는 남강빌딩에서 진행 됩니다.<br />
                 </li>
                 <li><strong>TEST 프로그램(전국 모의고사 포함)</strong><br />
-                ▷ TEST 프로그램은 일일, 월간 TEST가 제공됩니다.<br />
-                ▷ DAILY, MONTHLY TEST 의 경우, 강사의 강의 계획에 따라 제공되지 않을 수 있습니다.<br />
-                ▷ 전국모의고사는 2~3개월에 한번 진행 될 예정이나, 학원사정이나 시험 일정에 따라 기간이 변경될 수 있습니다.<br />
-                ▷ 전국모의고사는 학원에서 진행되는 올백모의고사반과 다른 프로그램입니다.<br />
+                ▷ 전국모의고사는 4~5회 진행 될 예정이나, 학원사정이나 시험 일정에 따라 기간이 변경될 수 있습니다.<br />
                 </li>
                 <li><strong>강의 수강</strong><br />
                 ▷ 수강 신청한 강의만 수강하실 수 있으며, 무단 청강 적발 시 전액등록조치 혹은 퇴실 조치가 이루어 질 수 있으며, 추가적인 학원 상품 등록이 불가할 수 있습니다.<br />
-                ▷ 등록하신 강좌는 본인만 수강이 가능하며, 본인 이외의 인원에게 판매/대여/양도할 수 없으며, 적발 시 법적 책임이 있습니다. <br />
-                ▷ 선택과목 변경(전반)은 개강 주에만 가능하며, 이후에는 불가능합니다. <br />
-                ▷ 강의는 학원/강사 사정에 의해 폐강될 수 있으며, 시간과 교수진이 변경 될 수 있으며 폐강될 수도 있습니다. <br />(폐강 시, 환불 규정에 의거 환불 처리됩니다.)<br />
-                ▷ 개인 사유로 인하여 결석/조퇴하는 경우, 환불 및 별도의 보강 진행은 불가하며 해당 교습시간을 이월하실 수 없습니다. <br />
-                ▷ 수강 확인은 수강증 검사가 수시로 진행되니 꼭 지참하시고 수강하시기 바랍니다.  (수강증 분실 및 미지참 등으로 강의 수강에 불편함이 발생할 수 있습니다.)<br />
+                ▷ 등록하신 강좌는 본인만 수강이 가능하며, 본인 이외의 인원에게 판매/대여/양도할 수 없으며, 적발 시 법적 책임이 있습니다.<br />
+                ▷ 선택과목 변경(전반)은 개강 주에만 가능하며, 이후에는 불가능합니다.<br />
+                ▷ 강의는 학원/강사 사정에 의해 폐강될 수 있으며, 시간과 교수진이 변경 될 수 있으며 폐강될 수도 있습니다.
+                (폐강 시, 환불 규정에 의거 환불 처리됩니다.)<br />
+                ▷ 개인 사유로 인하여 결석/조퇴하는 경우, 환불 및 별도의 보강 진행은 불가하며 해당 교습시간을 이월하실 수 없습니다.<br />
                 </li>
                 <li><strong>교재</strong><br />
                 ▷ 교재는 별도 구매입니다. <br />

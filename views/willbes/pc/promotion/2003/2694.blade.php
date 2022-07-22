@@ -72,9 +72,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2694_04.jpg"  alt="소문내기 이벤트" />  
 		</div>
 
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_normal_partial')
-        @endif
+        <div class="evtCtnsBox pb100">
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_normal_partial')
+            @endif
+        </div>
 
 
         <div class="evtCtnsBox wb_info" id="info">
@@ -110,10 +112,12 @@
 
     <!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
-        $(document).ready(function(){AOS.init();});
-    </script>   
+      $(document).ready( function() {
+        AOS.init();
+      });
+    </script>
     
 @stop

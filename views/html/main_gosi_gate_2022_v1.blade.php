@@ -36,6 +36,7 @@
     .gosi-gate-Sec .gosi-gate-bntop-img {position:relative;}
 
     .gate-bntop-Slider .swiper-slide {height:430px}
+    .gate-bntop-Slider .swiper-slide a {display:block; height:100%;}
     .gate-bntop-Slider .swiper-slide .txtBox {width:450px; position:absolute; top:50px; left:50%; margin-left:-450px; font-size:16px; text-align:left; color:#fff; line-height:1.2; letter-spacing:1px}
     .gate-bntop-Slider .swiper-slide .txtBox .title01 {color:#fefd0d; margin-bottom:16px}
     .gate-bntop-Slider .swiper-slide .txtBox .title02 {font-size:44px; font-family: "Noto Sans KR Black"; margin-bottom:38px}

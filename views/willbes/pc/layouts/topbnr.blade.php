@@ -126,12 +126,12 @@
     </div>
 @endif
 @if($__cfg['SiteCode'] == '2004')
-    {{-- 공무원 학원 --}}
+    {{-- 공무원 학원
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902"><img src="https://static.willbes.net/public/images/promotion/main/2004_top_bn.gif" alt=""></a>
         </div>
-    </div>
+    </div> --}}
 @endif
 @if($__cfg['SiteCode'] == '2014')
     {{-- 엔잡

@@ -239,7 +239,7 @@
                             <p class="NSK-Black">헌법 김원욱 기본이론 오리엔테이션</p>
                             <a href="{{front_url('/professor/show/cate/3001/prof-idx/51146?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29')}}" target="_blank">헌법 김원욱</a>
                             <span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2594" target="_blank">적중 보기 ></a></span>
-                        </div>>
+                        </div>
                     </div>                               
                 </div>               
                 <div id="tab5" class="tabContents">
@@ -649,13 +649,7 @@
 
     <!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      $( document ).ready( function() {
-        AOS.init();
-      } );
-    </script>
+
 
     <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
     <script src="/public/vendor/jquery/bxslider/jquery.bxslider.js"></script>
@@ -823,6 +817,14 @@
             });
         });
                
+    </script>
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+      $(document).ready( function() {
+        AOS.init();
+      });
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

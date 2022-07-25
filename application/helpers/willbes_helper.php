@@ -125,7 +125,7 @@ if (!function_exists('banner_html')) {
                     }
                 }
             } else {
-                $a_start = '<a href="javascrip:void(0);">';
+                $a_start = '<a href="javascript:void(0);">';
                 $a_end = '</a>';
             }
             $a_start .= ($row['IsUseViewHtml'] == 'Y') ? $row['ViewHtml'] : '';

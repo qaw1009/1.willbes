@@ -121,7 +121,7 @@
     <div class="evtCtnsBox wb_cts04" id="apply" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/07/2721m_04.jpg" alt="수강신청"/>    
-            <a href="javascript:go_PassLecture('179756');" style="position: absolute; left: 50.69%; top: 78.58%; width: 36.39%; height: 11.77%;z-index: 2;"></a>
+            <a href="javascript:go_PassLecture('199872');" style="position: absolute; left: 50.69%; top: 78.58%; width: 36.39%; height: 11.77%;z-index: 2;"></a>
         </div>    
         <div class="check">
             <label>

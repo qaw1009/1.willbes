@@ -121,7 +121,7 @@
     </form>
 
     <div id="Container" class="Container NSK c_both">
-        <div class="evtCtnsBox dday NSK-Thin" data-aos="fade-down">
+        <div class="evtCtnsBox dday NSK-Thin">
             <strong>{{$arr_promotion_params['turn']}}기 마감 <span id="ddayCountText" class="NSK-Black"></span> </strong>
             <a href="#pass">신청하기 ></a>
         </div>  
@@ -650,9 +650,6 @@
     <!-- End Container -->
 
 
-
-    <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
-    <script src="/public/vendor/jquery/bxslider/jquery.bxslider.js"></script>
 
     <script type="text/javascript">
         var $regi_form = $('#regi_form');

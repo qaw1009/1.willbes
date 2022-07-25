@@ -152,7 +152,7 @@
         </div>        
 
         <!-- 타이머 -->
-        <div id="newTopDday" class="newTopDday" data-aos="fade-down"> 
+        <div id="newTopDday" class="newTopDday"> 
             <div id="ddaytime">
                 <ul>
                     <li>
@@ -420,8 +420,10 @@
                         </dt>
                         <dd>
                             <ol>
-                                <li>최종합격 인증 완료 시 부모님(2인) 2박 3일 제주도 여행권이 지급됩니다.<br>
-                                    <span class="tx-red">※ 70만원 상당 / 제세공과금 22%는  윌비스 경찰이 부담합니다.</span></li>
+                                <li>본 상품은 최종합격시 현금환급과 제주여행권 중 택1이 가능한 상품입니다 <br>
+                                    1)현금 환급의 경우 환급금은 구매 금액으로 100%환급되며 제세공과금22%는 윌비스 경찰이 부담합니다.<br>
+                                    2) 제주여행권을 선택하실 경우, 인증 완료 시  부모님(2인) 2박 3일 제주도 여행권이 지급됩니다.<br>
+                                    <span class="tx-red">※ 여행권 70만원 상당 / 제세공과금 22%는 윌비스 경찰이 부담합니다.</span></li>
                                 <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 여행권 지급 대상이 됩니다.<br>
                                     ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채</li>
                                 <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. (22년 2차 또는 23년 1차·2차 최종합격)</li>
@@ -544,8 +546,10 @@
                         </dt>
                         <dd>
                            <ol>
-                                <li>최종합격 인증 완료 시 부모님(2인) 제주도 2박 3일 여행권이 지급됩니다.<br>
-                                    <span class="tx-red">60만원 상당/ 제세공과금22%는 윌비스 경찰 부담합니다.</span></li>
+                                <li>본 상품은 최종합격시 현금환급과 제주여행권 중 택1이 가능한 상품입니다.<br>
+                                    1)현금 환급의 경우 환급금은 구매 금액으로 100%환급되며 제세공과금22%는 윌비스 경찰이 부담합니다.<br>
+                                    2) 제주여행권을 선택하실 경우, 인증 완료 시  부모님(2인) 2박 3일 제주도 여행권이 지급됩니다.<br>
+                                    <span class="tx-red">※ 여행권 60만원 상당 / 제세공과금 22%는 윌비스 경찰이 부담합니다.</span></li>
                                 <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 여행권 지급 대상이 됩니다.<br>
                                 ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채</li>
                                 <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. (22년 2차 또는 23년 1차 최종합격)</li>
@@ -718,12 +722,12 @@
     </div>
     <!-- End evtContainer -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
-      $( document ).ready( function() {
+      $(document).ready( function() {
         AOS.init();
-      } );
+      });
     </script>
 
     <script type="text/javascript">

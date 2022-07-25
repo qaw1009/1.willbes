@@ -114,11 +114,11 @@
 </style>
 
 <div id="Container" class="Container NSK c_both">       
-    <div class="evtCtnsBox evtTop">
+    <div class="evtCtnsBox evtTop" data-aos="fade-down">
         <img src="https://static.willbes.net/public/images/promotion/2022/02/1676m_top.jpg" alt="" > 
     </div>  
 
-    <div class="evtMenu">
+    <div class="evtMenu" data-aos="fade-up">
         <ul class="tabs">
             <li><a href="#tab01" data-tab="tab01" class="top-tab">반반&똑똑이란?</a></li>
             <li><a href="#tab02" data-tab="tab02" class="top-tab">다시보기</a></li>
@@ -127,11 +127,11 @@
         </ul>
     </div> 
     
-    <div class="evtCtnsBox evt01" id="tab01">
+    <div class="evtCtnsBox evt01" id="tab01" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1676m_01.jpg" alt="" >
     </div>
 
-    <div class="evtCtnsBox evt03" id="tab02">
+    <div class="evtCtnsBox evt03" id="tab02" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1676m_02.jpg" alt="" >
         <ul>
             <li>
@@ -161,7 +161,7 @@
         </ul>
     </div>
 
-    <div class="evtCtnsBox evt04" id="tab03">
+    <div class="evtCtnsBox evt04" id="tab03" data-aos="fade-up">
         <ul>
             <li>
                 <a href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif">
@@ -179,7 +179,7 @@
     </div>
 
     {{-- 라이브 방송 --}}
-    <div class="evtCtnsBox evt05">
+    <div class="evtCtnsBox evt05" data-aos="fade-up">
         @if(empty($data['PromotionLivePlayer']) === false && $data['PromotionLivePlayer'] == 'youtube')
             @include('willbes.m.promotion.live_video_youtube_partial')
         @else
@@ -205,7 +205,7 @@
     </form>
 
     {{-- 출석체크 --}}
-    <div class="evtCtnsBox evt06">
+    <div class="evtCtnsBox evt06" data-aos="fade-up">
         <div>개근 시 출석 <span>선물 증정!</span></div>
         <ul>
             <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1676m_05_txt.png" alt="" ></li>
@@ -237,7 +237,7 @@
         <p>*출석체크 경품에 대한 자세한 사항은<br> PC버전을 통해 확인해주시기 바랍니다.</p>
     </div>
 
-    <div class="evtCtnsBox evtFooter" id="tab04">
+    <div class="evtCtnsBox evtFooter" id="tab04" data-aos="fade-up">
         <h3 class="NSK-Black">반반&똑똑 유의사항 꼭! 확인하기</h3>
         <div class="infoBox">
             <p class="NSK-Black"><span>●</span> 더켠의 반반&똑똑영어 과정 진행 안내 (총 20회)</p>
@@ -268,6 +268,14 @@
     </div>
 </div>
 <!-- End Container -->
+
+<link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+<script src="/public/js/willbes/dist/aos.js"></script>
+<script>
+    $(document).ready( function() {
+    AOS.init();
+    });
+</script>
 
 <script type="text/javascript">
     /*스크롤고정*/

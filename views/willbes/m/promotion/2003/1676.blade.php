@@ -135,24 +135,24 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1676m_02.jpg" alt="" >
         <ul>
             <li>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/192967" target="_blank">
+                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/199950" target="_blank">
                     <span>반반모고&똑똑영어</span>
-                    <span>5월 방송</span>
+                    <span>8월 방송</span>
                     <span>다시보기</span>
                     <span><strong>6만원으로</strong>방송 다시보기 ></span>
                 </a>
             </li>
             <li>
-                <a href="https://pass.willbes.net/m/periodPackage/show/cate/3019/pack/648001/prod-code/190443" target="_blank">
-                    <span>2021.07.~2022.05. 진행</span>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/199952" target="_blank">
+                    <span>2023 대비</span>
                     <span>반반똑똑</span>
                     <span>다시보기 PASS</span>
-                    <span><strong>25만원으로 </strong>방송 다시보기 ></span>
+                    <span><strong>2023 지방직까지 </strong>방송 다시 보기 ></span>
                 </a>
             </li>
             <li>
                 <a href="https://pass.willbes.net/m/promotion/index/cate/3019/code/2180" target="_blank">
-                    <span>2022 지방직 대비</span>
+                    <span>2023 대비</span>
                     <span>한덕현 영어<br></span>
                     <span>T-PASS</span>
                     <span><strong>더켠쌤과 함께</strong>열공하고 합격하기 ></span>
@@ -260,9 +260,9 @@
 
             <p class="NSK-Black"><span>●</span> 열공 출첵 이벤트 관련</p>
             <ul>
-                <li>본 이벤트는 로그인 후 참여 가능하며, 5/9(월)~6/3(금)까지 총 20회 진행됩니다. (*토/일 제외)</li>
-                <li>출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (5/16(월), 5/30(월) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.</li>
-                <li>당첨자 안내 공지는 6/7(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
+                <li>본 이벤트는 로그인 후 참여 가능하며, 8/8(월)~9/2(금)까지 총 20회 진행됩니다. (*토~일 제외)</li>
+                <li>출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (8/16(화), 8/29(월) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.</li>
+                <li>당첨자 안내 공지는 9/5(월) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
             </ul>
         </div>
     </div>

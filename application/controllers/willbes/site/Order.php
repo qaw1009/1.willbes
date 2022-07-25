@@ -116,10 +116,9 @@ class Order extends \app\controllers\FrontController
 
         // 가상계좌 결제가 아닐 경우 영수증 출력 URL 조회
         if ($results['order']['PayRouteCcd'] == $this->orderListFModel->_pay_route_ccd['pg'] && $is_vbank == 'N') {
-            $pg_config_file = 'pg_' . config_app('PgDriver', 'inisis');
-            $this->load->config($pg_config_file, true, true);
-
-            $results['order']['ReceiptUrl'] = str_replace('{{$tid$}}', $results['order']['PgTid'], config_get($pg_config_file . '.receipt_url'));
+            // 결제완료 로그 데이터 조회
+            $pay_log_data = $this->orderListFModel->getPaidOrderPaymentData($order_no, $results['order']['PgCcd'], $results['order']['PayMethodCcd']);
+            $results['order']['ReceiptUrl'] = element('PgReceiptUrl', $pay_log_data);
         }
 
         // 주문상품 목록 조회

@@ -986,34 +986,39 @@ class OrderListModel extends BaseOrderModel
     }
 
     /**
-     * Pg사 결제상세코드명 리턴 (카드사명/은행명)
+     * 결제완료주문 결제로그 데이터 리턴 (영수증URL/카드사명/은행명)
      * @param string $order_no [주문번호]
      * @param string $pg_ccd [PG사공통코드]
      * @param string $pay_method_ccd [결제방법공통코드]
-     * @return mixed
+     * @return array
      */
-    public function getPgPayDetailCodeName($order_no, $pg_ccd, $pay_method_ccd)
+    public function getPaidOrderPaymentData($order_no, $pg_ccd, $pay_method_ccd)
     {
         $ccd_key = $pay_method_ccd == $this->_pay_method_ccd['card'] ? 'Card' : 'Bank';
         $arr_condition = [
             'EQ' => ['PA.OrderNo' => get_var($order_no, '0')],
-            'IN' => ['PA.PayType' => ['PA', 'MP'], 'PA.ResultCode' => ['0000', '00']],
-            'LKL' => ['PayMethod' => $ccd_key]
+            'IN' => ['PA.PayType' => ['PA', 'MP'], 'PA.ResultCode' => ['0000', '00']]
         ];
 
         $column = 'PA.OrderNo
-            , (select ifnull(CcdName, "") 
-                from ' . $this->_table['code'] . ' 
+            , ifnull((
+                case PA.PgDriver
+                    when "inisis" then (select replace(CcdDesc, "{{$tid$}}", PA.PgTid) from ' . $this->_table['code'] . ' where Ccd = "' . $pg_ccd . '")
+                    else json_value(PA.ResultAddData, "$.receipt_url")
+                end
+              ), "") as PgReceiptUrl
+            , ifnull((
+                select ifnull(CcdName, "") 
+                from ' . $this->_table['code'] . '
                 where GroupCcd = "' . $this->_group_ccd[$ccd_key] . '" 
                     and json_value(CcdEtc, "$.' . $pg_ccd . '") = PA.PayDetailCode
                     and CcdEtc is not null
                     and IsStatus = "Y"
                 order by OrderNum asc limit 1               
-              ) as PayDetailCodeName';
+              ), PA.PayDetailCode) as PayDetailCodeName
+        ';
 
-        $data = $this->_conn->getFindResult($this->_table['order_payment'] . ' as PA', $column, $arr_condition);
-
-        return array_get($data, 'PayDetailCodeName', '');
+        return $this->_conn->getFindResult($this->_table['order_payment'] . ' as PA', $column, $arr_condition);
     }
 
     /**

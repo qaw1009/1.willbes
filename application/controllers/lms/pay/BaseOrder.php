@@ -56,15 +56,17 @@ class BaseOrder extends \app\controllers\BaseController
 
         $order_data = element('0', $data, []);
 
-        // PG사 결제완료일 경우 영수증 출력 URL 조회
+        // PG사 결제완료일 경우 결제로그 조회
         if ($order_data['PayRouteCcd'] === $this->orderListModel->_pay_route_ccd['pg'] && empty($order_data['CompleteDatm']) === false) {
-            $pg_config_file = 'pg_' . $order_data['PgDriver'];
-            $this->load->config($pg_config_file, true, true);
-            $order_data['ReceiptUrl'] = str_replace('{{$tid$}}', $order_data['PgTid'], config_get($pg_config_file . '.receipt_url'));
+            // 결제완료 로그 데이터 조회
+            $pay_log_data = $this->orderListModel->getPaidOrderPaymentData($order_data['OrderNo'], $order_data['PgCcd'], $order_data['PayMethodCcd']);
+
+            // 영수증 출력 URL
+            $order_data['ReceiptUrl'] = element('PgReceiptUrl', $pay_log_data);
 
             // 결제승인 신용카드명 조회
             if ($order_data['PayMethodCcd'] == $this->orderListModel->_pay_method_ccd['card']) {
-                $order_data['PgPayDetailCodeName'] = $this->orderListModel->getPgPayDetailCodeName($order_data['OrderNo'], $order_data['PgCcd'], $order_data['PayMethodCcd']);
+                $order_data['PgPayDetailCodeName'] = element('PayDetailCodeName', $pay_log_data);
             }
         }
 

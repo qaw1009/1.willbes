@@ -158,6 +158,43 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-1-1" for="is_use_view_html_n">배너표시HTML</label>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="form-group form-inline">
+                                <label class="control-label col-md-1-1" for="is_use_view_html_n">사용여부</label>
+                                <div class="col-md-2">
+                                    <div class="radio">
+                                        <input type="radio" id="is_use_view_html_y" name="is_use_view_html" class="flat" value="Y" required="required" title="사용여부" @if($data['IsUseViewHtml']=='Y')checked="checked"@endif/> <label for="is_use_view_html_y" class="input-label">사용</label>
+                                        <input type="radio" id="is_use_view_html_n" name="is_use_view_html" class="flat" value="N" @if($method == 'POST' || $data['IsUseViewHtml']=='N')checked="checked"@endif/> <label for="is_use_view_html_n" class="input-label">미사용</label>
+                                    </div>
+                                </div>
+                                <label class="control-label col-md-1-1" for="bg_color">BG 컬러값</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="bg_color" name="bg_color" class="form-control" maxlength="10" title="BG컬러" value="{{ $data['BgColor'] }}" style="width: 200px;">
+                                    <small class="ml-5">• 컬러값 입력 (예: <a class="red bold">#ffffff</a>)</small>
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label class="col-md-1-1 col-sm-2 col-xs-12 control-label" for="view_html">배너표시HTML</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12 form-inline-block">
+                                    <textarea id="view_html" name="view_html" class="form-control" rows="8" cols="60" style="width: 500px;">{!! $data['ViewHtml'] !!}</textarea>
+                                    <p class="ml-5 mt-10">
+                                        <a class="bold">• 규칙 태그</a><br>
+                                        &lt;div class="txtBox"&gt;   <br>
+                                        &nbsp;&nbsp; &lt;div class="title01"&gt;첫번째 문장&lt;/div&gt; <br>
+                                        &nbsp;&nbsp; &lt;div class="title02"&gt;두번째 문장&lt;/div&gt; <br>
+                                        &nbsp;&nbsp; &lt;div class="title03"&gt;3번째 문장&lt;br&gt;3번째 문장&lt;/div&gt; <br>
+                                        &nbsp;&nbsp; &lt;div class="title04"&gt;&lt;strong&gt;4번째 문장&lt;/strong&gt;&lt;/div&gt; <br>
+                                        &lt;/div&gt;
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1" for="image_map">이미지맵</label>
                     <div class="col-md-9 item">
                         <div class="x_panel mb-0">

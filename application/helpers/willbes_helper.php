@@ -97,10 +97,17 @@ if (!function_exists('banner_html')) {
 
         $map_data = '';
         foreach ($data as $row) {
-            $banner_img = '<img src="' . $row['BannerFullPath'] . $row['BannerImgName'] . '" alt="' . $row['BannerName'] . '" usemap="#BannerImgMap' . $row['BIdx'] . '">';
+            $add_span_open = '';
+            $add_span_close = '';
             $a_start = '';
             $a_end = '';
             $tag_html = '';
+
+            if ($row['IsUseViewHtml'] == 'Y') {
+                $add_span_open = '<span>';
+                $add_span_close = '</span>';
+            }
+            $banner_img = $add_span_open.'<img src="' . $row['BannerFullPath'] . $row['BannerImgName'] . '" alt="' . $row['BannerName'] . '" usemap="#BannerImgMap' . $row['BIdx'] . '">'.$add_span_close;
 
             if(empty($row['LinkUrl']) === false && $row['LinkUrl'] != '#') {
                 if ($row['LinkType'] == 'layer') {
@@ -117,7 +124,11 @@ if (!function_exists('banner_html')) {
                         $a_start = $tag_html.'<a href="' . $link_url . '" target="_' . $row['LinkType'] . '" class="' . $a_class . '">';
                     }
                 }
+            } else {
+                $a_start = '<a href="javascrip:void(0);">';
+                $a_end = '</a>';
             }
+            $a_start .= ($row['IsUseViewHtml'] == 'Y') ? $row['ViewHtml'] : '';
 
             if (empty($row['BannerImgMapData']) === false) {
                 $map_data .= "<map name='BannerImgMap{$row['BIdx']}' id='BannerImgMap{$row['BIdx']}'>";

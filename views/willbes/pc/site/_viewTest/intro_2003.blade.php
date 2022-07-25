@@ -7,17 +7,17 @@
         }
 
         .bx-wrapper .bx-pager.bx-default-pager a {
-                background: #d1d0ce;
-                width: 12px;
-                height: 12px;
-                margin: 0 4px;
-                border-radius:6px;
-            }
+            background: #d1d0ce;
+            width: 12px;
+            height: 12px;
+            margin: 0 4px;
+            border-radius:6px;
+        }
         .bx-wrapper .bx-pager.bx-default-pager a:hover,
         .bx-wrapper .bx-pager.bx-default-pager a.active,
         .bx-wrapper .bx-pager.bx-default-pager a:focus {
-                background: #2b2b2b;
-            }
+            background: #2b2b2b;
+        }
 
         .gosi-gate-v3 .will-nTit {border:0; font-size:28px; color:#5c5c5c}
         .gosi-gate-v3 .will-nTit span {color:#000}
@@ -35,17 +35,23 @@
         .gosi-gate-Sec {margin-top:100px; padding:0; text-align:center; background:none}
         .gosi-gate-Sec .gosi-gate-bntop-img {position:relative;}
 
-
-        .gate-bntop-Slider .swiper-slide span {position:absolute; top:40px; left:50%; margin-left:65px; width:350px; height:350px; overflow: hidden;}
+        .gate-bntop-Slider .swiper-slide {height:430px}
+        .gate-bntop-Slider .swiper-slide a {display:block; height:100%;}
+        .gate-bntop-Slider .swiper-slide .txtBox {width:450px; position:absolute; top:50px; left:50%; margin-left:-450px; font-size:16px; text-align:left; color:#fff; line-height:1.2; letter-spacing:1px}
+        .gate-bntop-Slider .swiper-slide .txtBox .title01 {color:#fefd0d; margin-bottom:16px}
+        .gate-bntop-Slider .swiper-slide .txtBox .title02 {font-size:44px; font-family: "Noto Sans KR Black"; margin-bottom:38px}
+        .gate-bntop-Slider .swiper-slide .txtBox .title03 {margin-bottom:56px}
+        .gate-bntop-Slider .swiper-slide .txtBox .title04 strong {color:#fefd0d; background:rgba(0,0,0,.5); border-radius:30px; padding:8px 25px;}
+        .gate-bntop-Slider .swiper-slide span {position:absolute; top:40px; left:50%; margin-left:120px; width:350px; height:350px; overflow: hidden;}
         .gate-bntop-Slider .swiper-slide.swiper-slide-active span img {animation: zoom-out 1s linear backwards;}
         @@keyframes zoom-out {
-        0% {
-            transform: scale(1.125);
-        }
-        100% {
-            transform: scale(1);
-        }
-        }
+             0% {
+                 transform: scale(1.125);
+             }
+             100% {
+                 transform: scale(1);
+             }
+         }
 
         .gosi-gate-Sec .MaintabControl {display:flex; justify-content: space-around; align-items: center; position: absolute; left:50%; margin-left:-420px; bottom:50px; z-index: 100; border-radius:30px; background-color:rgba(0,0,0,.4)}
         .gosi-gate-Sec .MaintabControl div {height:34px !important; width:38px !important; font-size: 14px; display: flex; justify-content: center; align-items: center; margin:0; padding:0; color:#fff; letter-spacing:1px }
@@ -57,7 +63,7 @@
         .gosi-gate-Sec .MaintabWrap {max-width:1080px; margin:0 auto; position: relative;}
         .gosi-gate-Sec .Maintab {display:flex;}
         .gosi-gate-Sec .Maintab li {
-            font-size: 16px; 
+            font-size: 16px;
             width:11.11111%
         }
         .gosi-gate-Sec .Maintab li a {
@@ -76,16 +82,15 @@
         .gosi-gate-Sec p {position:absolute; top:70%; left:50%; margin-top:-28px; width:32px; height:50px; cursor:pointer; z-index:99;}
         .gosi-gate-Sec p a {display:none;}
         .gosi-gate-Sec p.leftBtn {background: url(https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAL.png) no-repeat left center; }
-        .gosi-gate-Sec p.rightBtn {background: url(https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAR.png) no-repeat left center; }	
+        .gosi-gate-Sec p.rightBtn {background: url(https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAR.png) no-repeat left center; }
         .gosi-gate-Sec p:hover {opacity:100; filter:alpha(opacity=100);}
 
 
-
         .gosi-gate-v3 .newsWrap {width:1120px; margin:80px auto 0; display:flex}
-        .gosi-gate-v3 .newsBox {position:relative; width:320px; margin-left:28px;}   
+        .gosi-gate-v3 .newsBox {position:relative; width:320px; margin-left:28px;}
         .gosi-gate-v3 .newsBox .bx-viewport {border-radius:10px;}
         .gosi-gate-v3 .newsSlider {width:320px; margin:0 auto; height:400px; overflow:hidden;border-radius:10px;}
-        .gosi-gate-v3 .newsSlider li a {display:block; width:320px; margin:0 auto; } 
+        .gosi-gate-v3 .newsSlider li a {display:block; width:320px; margin:0 auto; }
         .gosi-gate-v3 .newsSlider li div.newsTitle {height:40px; line-height:40px; font-size:14px; text-align:center; width:80%; overflow:hidden;white-space:nowrap; text-overflow:ellipsis; margin:0 auto}
         .gosi-gate-v3 .newsBox p {position:absolute; top:50%; margin-top:-30px; width:60px; z-index:10}
         .gosi-gate-v3 .newsBox p.leftBtn {left:-60px; background: url(https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAL2.png) no-repeat center center; }
@@ -101,7 +106,7 @@
 
 
         .gosi-gate-v3 .tpassWrap {margin-top:100px; background:#f4f7fe; padding:100px 0;}
-        .gosi-gate-v3 .tpassWrap .slider {width:100%; height:245px; overflow:hidden; display:flex; flex-wrap: wrap;}    
+        .gosi-gate-v3 .tpassWrap .slider {width:100%; height:245px; overflow:hidden; display:flex; flex-wrap: wrap;}
         .gosi-gate-v3 .tpassWrap .slider a {width:550px !important; margin-right:20px;}
         .gosi-gate-v3 .tpassWrap .slider img {width:550px; height: 245px; border-radius:18px; }
         .gosi-gate-v3 .tpassWrap .bx-wrapper .bx-pager {
@@ -126,11 +131,11 @@
 
         .gosi-tabs-contents-wrap {width:1120px; height:350px; overflow:hidden}
         .gosi-gate-prof {width:1120px; display:flex !important; /*flex-wrap: wrap !important; justify-content: space-between !important;*/}
-        .gosi-gate-prof li {        
+        .gosi-gate-prof li {
             width: 210px;
-            height:350px;  
-            margin-right:14px;      
-        }   
+            height:350px;
+            margin-right:14px;
+        }
         .gosi-gate-prof li:last-child {margin:0}
 
         .gosi-gate-prof .nSlider .sliderProf div {width: 210px !important; height:350px; position:relative;}
@@ -145,36 +150,35 @@
         }
         .gosi-gate-prof .nSlider .bx-wrapper .bx-controls-direction a {
             width: 20px;
-            height: 20px; 
+            height: 20px;
         }
         .gosi-gate-prof .nSlider .bx-wrapper a.bx-prev {
             background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat right top;
             left:180px !important;
         }
         .gosi-gate-prof .nSlider .bx-wrapper a.bx-next {
-            background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat left top;   
-            left:158px !important;     
+            background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat left top;
+            left:158px !important;
         }
-
-
 
         .gosi-gate-v3 .castWrap {background:#21262c; padding:100px 0; color:#fff}
         .gosi-gate-v3 .castWrap .will-nTit {color:#fff}
         .gosi-gate-v3 .castWrap .will-nTit span {color:#d44a45}
-        .gosi-gate-v3 .castBox {position:relative; margin-top:30px}   
+        .gosi-gate-v3 .castBox {position:relative; margin-top:30px}
         .gosi-gate-v3 .castslider {width:1120px; margin: 0 auto; display:flex; flex-wrap: wrap; justify-content: space-between;}
         .gosi-gate-v3 .castslider li {width:calc(225px - 10px); margin-bottom:10px; background:#434343; padding-bottom:10px}
-        .gosi-gate-v3 .castslider li div {display:block;} 
+        .gosi-gate-v3 .castslider li div {display:block;}
         .gosi-gate-v3 .castslider li img {width:215px;}
-        .gosi-gate-v3 .castslider li div.castTitle {font-size:15px; text-align:left; overflow:hidden; padding:10px 10px 0;  
+        .gosi-gate-v3 .castslider li div.castTitle {font-size:15px; text-align:left; overflow:hidden; padding:10px 10px 0;
             text-overflow: ellipsis;
             display: -webkit-box;
             -webkit-line-clamp: 2; /* 라인수 */
             -webkit-box-orient: vertical;
-            word-wrap:break-word; 
+            word-wrap:break-word;
             line-height: 1.2em;
             height: calc(3.2em); /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
         }
+
 
 
         .gosi-gate-v3 .noticeList .List-Table li a {
@@ -193,11 +197,11 @@
             border-radius: 10px;
             margin-top:3px;
             margin-right: 5px;
-            height: 19px; line-height: 19px;    
+            height: 19px; line-height: 19px;
         }
 
         //모달베너 추가
-        #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px; display: block;}
+          #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px; display: block;}
     </style>
 
 
@@ -238,9 +242,9 @@
                     <ul class="swiper-wrapper">
                         @if(isset($data['banner']['게이트_메인배너']) === true)
                             @for($i=0; $i<count($data['banner']['게이트_메인배너']); $i++)
-                            <li class="swiper-slide">
-                                {!! banner_html(array($data['banner']['게이트_메인배너'][$i])) !!}
-                            </li>
+                                <li class="swiper-slide" style="@if($data['banner']['게이트_메인배너'][$i]['IsUseViewHtml'] == 'Y')background-color: {{$data['banner']['게이트_메인배너'][$i]['BgColor']}}@endif">
+                                    {!! banner_html(array($data['banner']['게이트_메인배너'][$i])) !!}
+                                </li>
                             @endfor
                         @endif
                     </ul>

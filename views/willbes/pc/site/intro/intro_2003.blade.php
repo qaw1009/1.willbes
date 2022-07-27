@@ -24,19 +24,24 @@
 
         .gosi-gate-secTop {position:relative; padding-top:56px;}
         .gosi-gate-secTop .gosi-gate-search {position:absolute; top:35px;}
-
-        .topMenu {position: absolute; width:1120px; left:50%; margin-left:-560px; top:40px;  z-index: 0;}
-        .topMenu .banner {margin-top:10px}
-        .gosiLogo {position: absolute; top:20px; left:50%; margin-left:-105px;}
-        .menuList {display:flex; font-size:16px; width:1080px; margin:20px auto 0; justify-content: center; align-items: center; font-weight:bold}
+        .topMenu {position: absolute; width:1120px; left:50%; margin-left:-560px; top:40px;}
+        .topMenu .banner {position: absolute; top:10px; z-index: 9999;}
+        .gosiLogo {position: absolute; top:20px; left:50%; margin-left:-105px; border:1px solid #fff}
+        .menuList {display:flex; font-size:16px; width:1080px; margin:120px auto 0; justify-content: center; align-items: center; font-weight:bold}
         .menuList div {width:11.1111%}
         .menuList a {display:block; text-align:center}
 
         .gosi-gate-Sec {margin-top:100px; padding:0; text-align:center; background:none}
         .gosi-gate-Sec .gosi-gate-bntop-img {position:relative;}
 
-
-        .gate-bntop-Slider .swiper-slide span {position:absolute; top:40px; left:50%; margin-left:65px; width:350px; height:350px; overflow: hidden;}
+        .gate-bntop-Slider .swiper-slide {height:430px}
+        .gate-bntop-Slider .swiper-slide a {display:block; height:100%;}
+        .gate-bntop-Slider .swiper-slide .txtBox {width:450px; position:absolute; top:50px; left:50%; margin-left:-450px; font-size:16px; text-align:left; color:#fff; line-height:1.2; letter-spacing:1px}
+        .gate-bntop-Slider .swiper-slide .txtBox .title01 {color:#fefd0d; margin-bottom:16px}
+        .gate-bntop-Slider .swiper-slide .txtBox .title02 {font-size:44px; font-family: "Noto Sans KR Black"; margin-bottom:38px}
+        .gate-bntop-Slider .swiper-slide .txtBox .title03 {margin-bottom:56px}
+        .gate-bntop-Slider .swiper-slide .txtBox .title04 strong {color:#fefd0d; background:rgba(0,0,0,.5); border-radius:30px; padding:8px 25px;}
+        .gate-bntop-Slider .swiper-slide span {position:absolute; top:40px; left:50%; margin-left:120px; width:350px; height:350px; overflow: hidden;}
         .gate-bntop-Slider .swiper-slide.swiper-slide-active span img {animation: zoom-out 1s linear backwards;}
         @@keyframes zoom-out {
              0% {
@@ -78,7 +83,6 @@
         .gosi-gate-Sec p.leftBtn {background: url(https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAL.png) no-repeat left center; }
         .gosi-gate-Sec p.rightBtn {background: url(https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAR.png) no-repeat left center; }
         .gosi-gate-Sec p:hover {opacity:100; filter:alpha(opacity=100);}
-
 
 
         .gosi-gate-v3 .newsWrap {width:1120px; margin:80px auto 0; display:flex}
@@ -156,8 +160,6 @@
             left:158px !important;
         }
 
-
-
         .gosi-gate-v3 .castWrap {background:#21262c; padding:100px 0; color:#fff}
         .gosi-gate-v3 .castWrap .will-nTit {color:#fff}
         .gosi-gate-v3 .castWrap .will-nTit span {color:#d44a45}
@@ -175,6 +177,7 @@
             line-height: 1.2em;
             height: calc(3.2em); /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
         }
+
 
 
         .gosi-gate-v3 .noticeList .List-Table li a {
@@ -238,7 +241,7 @@
                     <ul class="swiper-wrapper">
                         @if(isset($data['banner']['게이트_메인배너']) === true)
                             @for($i=0; $i<count($data['banner']['게이트_메인배너']); $i++)
-                                <li class="swiper-slide">
+                                <li class="swiper-slide" style="@if($data['banner']['게이트_메인배너'][$i]['IsUseViewHtml'] == 'Y')background-color: {{$data['banner']['게이트_메인배너'][$i]['BgColor']}}@endif">
                                     {!! banner_html(array($data['banner']['게이트_메인배너'][$i])) !!}
                                 </li>
                             @endfor
@@ -324,13 +327,13 @@
                 {!! banner_html(element('게이트_무제한수강', $data['banner']), '','' , false, 'none') !!}
 
                 <div class="prfoWrap">
-                    @if(isset($data['banner']['게이트_과목별교수']))
-                        @foreach(element('게이트_과목별교수', $data['banner']) as $row)
-                            <div>
-                                {!! banner_html(array($row), '', '', false, 'none', '', 'castTitle') !!}
-                            </div>
-                        @endforeach
-                    @endif
+                @if(isset($data['banner']['게이트_과목별교수']))
+                    @foreach(element('게이트_과목별교수', $data['banner']) as $row)
+                        <div>
+                        {!! banner_html(array($row), '', '', false, 'none', '', 'castTitle') !!}
+                        </div>
+                    @endforeach
+                @endif
                 </div>
             </div>
         </div>
@@ -604,7 +607,7 @@
         //무제한 수강
         $(function() {
             $('.tpassWrap .slider').bxSlider({
-                mode: 'horizontal',
+                mode: 'horizontal', 
                 auto:true,
                 speed:350,
                 pause:4000,

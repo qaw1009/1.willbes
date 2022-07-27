@@ -41,10 +41,10 @@
 
     .gate-bntop-Slider .swiper-slide {height:430px;}
     .gate-bntop-Slider .swiper-slide a {display:block; height:100%;}
-    .gate-bntop-Slider .swiper-slide .txtBox {width:450px; position:absolute; top:50px; left:50%; margin-left:-450px; font-size:16px; text-align:left; color:#fff; line-height:1.2; letter-spacing:0}
-    .gate-bntop-Slider .swiper-slide .txtBox .title01 {color:#fefd0d; margin-bottom:16px}
-    .gate-bntop-Slider .swiper-slide .txtBox .title02 {font-size:44px; margin-bottom:38px; font-weight:900}
-    .gate-bntop-Slider .swiper-slide .txtBox .title03 {margin-bottom:56px; font-weight:500}
+    .gate-bntop-Slider .swiper-slide .txtBox {width:500px; position:absolute; top:50px; left:50%; margin-left:-450px; font-size:18px; text-align:left; color:#fff; line-height:1.2; letter-spacing:0;}
+    .gate-bntop-Slider .swiper-slide .txtBox .title01 {color:#fefd0d; margin-bottom:20px}
+    .gate-bntop-Slider .swiper-slide .txtBox .title02 {font-size:46px; margin-bottom:38px; font-weight:900}
+    .gate-bntop-Slider .swiper-slide .txtBox .title03 {margin-bottom:58px; font-weight:500}
     .gate-bntop-Slider .swiper-slide .txtBox .title04 strong {color:#fefd0d; background:rgba(0,0,0,.5); border-radius:30px; padding:8px 25px;}
     .gate-bntop-Slider .swiper-slide span {position:absolute; top:40px; left:50%; margin-left:120px; width:350px; height:350px; overflow: hidden;}
     .gate-bntop-Slider .swiper-slide.swiper-slide-active span img {animation: zoom-out 1s linear backwards;}

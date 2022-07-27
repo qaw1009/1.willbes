@@ -27,7 +27,7 @@
     .cop-gate .Section02 .title02 {font-size:82px; margin-bottom:90px; text-shadow:0 8px 0 rgba(0,0,0,.4);}
     .cop-gate .Section02 .bnBox {position:relative; width:986px; margin:0 auto}
     .cop-gate .Section02 .bnBox a {position: absolute; width: 13%; z-index: 2; background:#fff; color:#24262d; font-size:16px; font-weight:bold; font-size:16px; border-radius:10px; padding:10px 0}
-    .cop-gate .Section02 .bnBox a:hover {background:#083381; color:#fff; }
+    .cop-gate .Section02 .bnBox a:hover {background:#083381; color:#fff;}
 </style>
 
 <!-- Container -->
@@ -118,7 +118,15 @@
         </div>
         <div class="bnBox" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/main/cop_gate/sec02_img.png" alt="배너명">
-            <a href="" title="" style="left: 51%; top: 41.49%;">확인하기 ></a>
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2236" title="이국령" style="left: 51%; top: 41.49%;">확인하기 ></a>
+            {{--
+            <a href="#none" title="" style="left: 18%; top: 41.49%;">확인하기 ></a>            
+            <a href="#none" title="" style="left:  84.5%; top: 41.49%;">확인하기 ></a>
+            
+            <a href="#none" title="" style="left: 12.3%; top: 84.57%;">확인하기 ></a>
+            <a href="#none" title="" style="left: 35.8%; top: 84.57%;">확인하기 ></a>
+            <a href="#none" title="" style="left: 60.5%; top: 84.57%;">확인하기 ></a>
+            --}}
         </div>
     </div>
 

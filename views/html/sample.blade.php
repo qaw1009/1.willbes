@@ -31,6 +31,7 @@
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_v3') }}" target="_blank">통합메인-2020-01</a></li>
                 <li class="c_both"></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_cop_gate') }}" target="_blank">경찰 인트로</a></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_online_combine') }}" target="_blank">일반,경행,통합 메인</a></li> 
                 {{--
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_online') }}" target="_blank">경찰 온라인 메인</a></li>

@@ -17,10 +17,71 @@ class NpayProduct extends \app\controllers\FrontController
 
     /**
      * 윌스토리 네이버페이 상품DB 연동
+     * 생성규칙 : https://join.shopping.naver.com/misc/download/book_ep_guide.nhn
+     * @param array $params
+     * @return array|bool|void
+     */
+    public function index($params = [])
+    {
+        try {
+            $type = element('0', $params, '');
+            $write = '';
+
+            // 상품 조회
+            $add_condition = [
+                'EQ' => ['A.SiteCode' => $this->_site_code]
+            ];
+            $data = $this->bookFModel->NpayListBookStoreProduct($add_condition);
+
+            foreach ($data as $row) {
+                $arr_line = [
+                    'id' => $row['id'],                             // 상품코드
+                    'goods_type' => 'P',                            // 상품타입 (지류도서)
+                    'title' => $row['title'] . '^^',                // 도서명^권호정보^버전정보
+                    'normal_price' => $row['normal_price'],         // 원가
+                    'price_pc' => $row['price_pc'],                 // 판매가
+                    //'price_mobile' => $row['price_mobile'],
+                    'link' => $row['link'],                         // 상품URL
+                    'mobile_link' => $row['mobile_link'],           // 모바일 상품URL
+                    'image_link' => $row['image_link'],             // 이미지URL
+                    'category_name1' => $row['category_name1'],     // 카테고리명
+                    //'naver_category' => $row['naver_category'],
+                    //'condition' => $row['condition'],
+                    'author' => explode(', ', (str_replace(',', '^,', $row['brand']) . '^')),   // 저자명^저자코드 배열
+                    'publisher' => $row['maker'],                   // 출판사
+                    'search_tag' => array_filter(explode('|', $row['search_tag'])),     // 검색태그 배열
+                    'shipping' => $row['shipping'],                 // 배송료
+                ];
+
+                $write .= json_encode($arr_line, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES) . PHP_EOL;  // 유니코드 변환안함, 역슬래시 추가안함
+            }
+
+            if ($type == 'file') {
+                // 파일 생성 후 리다이렉트 처리
+                $this->load->helper('file');
+                $dir = public_to_upload_path(config_item('upload_prefix_dir') . '/npay');
+                if (is_dir($dir) === false && is_null($dir) === false) {
+                    if (mkdir($dir, 0707, true) === false) {
+                        throw new \Exception(sprintf('디렉토리 생성에 실패했습니다. (%s)', $dir));
+                    }
+                }
+                $real_file_path = $dir.'/product'.$this->_site_code.'.txt';
+                write_file($real_file_path, $write);
+                header('Location:'.upload_path_to_public($real_file_path));
+            } else {
+                echo $write;
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+    }
+
+    /**
+     * 윌스토리 네이버페이 상품DB 연동 (이전버전)
      * @param array $params
      * @return array|bool
      */
-    public function index($params=[])
+    public function listText($params = [])
     {
         try {
             $add_condition = [

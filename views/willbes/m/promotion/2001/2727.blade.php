@@ -11,33 +11,44 @@
     /************************************************************/
 
     /*탭(텍스트)*/     
-    .tabContaier {background:#fff; border-radius:10px; margin:0 3%; box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.1); padding:15px}
-    .tabContaier ul{display:flex;padding-top:50px;} 
-    .tabContaier li {width:20%;} 
-    .tabContaier li a{display:block; background:#e1e1e1; color:#b9b9b9; font-size:16px; padding:15px 0; margin-right:2px; line-height:1.2;border:1px solid #d2d2d2;}
-    .tabContaier li a.active {color:#fff; background:#3bc0f3;}
-    .tabContaier li:last-child a {margin:0}
+        .tabContaier {box-shadow: 10px 10px 20px 1px rgba(0,0,0,0.1);}
+        .tabContaier ul{display:flex;padding-top:25px;} 
+        .tabContaier li {width:20%;}      
+        .tabContaier li a{display:block; background:#e9e9e9; color:#a6a6a6;padding:15px 0; margin-right:2px; line-height:1.2;border:1px solid #d2d2d2;}
+        .tabContaier li a.active {color:#fff; background:#3bc0f3;font-weight:bold;}
+        .tabContaier li:last-child a {margin:0}
+        .evt_youtube li span {font-size:16px;}  
 
     /*유튜브*/
-    .video-container {position:relative; padding-bottom:56.25%; overflow: hidden; margin-top:-20px !important}
-    .video-container iframe {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
+        .video-container {position:relative; padding-bottom:56.25%; overflow: hidden; margin-top:-20px !important}
+        .video-container iframe {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
-    .tabContaier .tabContents div {font-size:3.6vh; color:#000; font-weight:bold; margin-top:20px; text-align:left; position: relative;}
-    .tabContaier .tabContents div > a {color:#3bc0f3; font-size:2vh; background:url("https://static.willbes.net/public/images/promotion/2022/03/2595_icon01.png") no-repeat right center; padding-right:25px}
-    .tabContaier .tabContents div span {position: absolute; bottom:0px; right:0}
-    .tabContaier .tabContents div span a {font-size:2vh; font-weight:bold; color:#fff; background:#000; border-radius:30px; padding: 2px 10px}
-    .tabContaier .tabContents div span a:hover {background:#3bc0f3}
+        .tabContaier .tabContents div {font-size:3.6vh; color:#000; font-weight:bold; margin-top:20px; text-align:left; position: relative;}
+        .tabContaier .tabContents div > a {color:#3bc0f3; font-size:2vh; background:url("https://static.willbes.net/public/images/promotion/2022/03/2595_icon01.png") no-repeat right center; padding-right:25px}
+        .tabContaier .tabContents div span {position: absolute; bottom:0px; right:0}
+        .tabContaier .tabContents div span a {font-size:2vh; font-weight:bold; color:#fff; background:#000; border-radius:30px; padding: 2px 10px}
+        .tabContaier .tabContents div span a:hover {background:#3bc0f3;}
+
+     /* 폰 가로, 태블릿 세로*/
+        @@media only screen and (max-width: 374px)  {   
+        .tabContaier li a{font-size:13px;}
+        .evt_youtube li span {font-size:12px;} 
+        .tabContaier .tabContents div {font-size:20px;}
+        .tabContaier .tabContents div a {font-size:14px;}        
+    }
+
+    /* 태블릿 세로 */
+        @@media only screen and (min-width: 375px) and (max-width: 640px) {       
+        .tabContaier li a{font-size:16px;}
+        .evt_youtube li span {font-size:15px;} 
+    }
 
     /* 태블릿 가로, PC */
-    @@media only screen and (max-width: 374px)  {
-        .tabContaier li a{font-size:12px;}
-        .tabContaier .tabContents div {font-size:20px;}
-        .tabContaier .tabContents div a {font-size:14px;}
+        @@media only screen and (min-width: 641px) {
+        .tabContaier li a{font-size:24px;}
+        .evt_youtube li span {font-size:16px;}  
     }
 
-    @@media only screen and (min-width: 375px) and (max-width: 640px) {
-        .tabContaier li a{font-size:12px;}
-    }
     </style>
 
 <div class="evtContent NSK" id="evtContainer">  
@@ -50,46 +61,46 @@
         <img src="https://static.willbes.net/public/images/promotion/2022/07/2727m_youtube.jpg" alt="각 교수 유튜브" />
         <div class="tabContaier" id="apply">           
             <div id="tab1" class="tabContents">
-                <div class="wrap">                       
+                <div class="youtubeBox">                       
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>                   
                 </div>                                 
             </div>
             <div id="tab2" class="tabContents">
-                <div class="wrap">                       
+                <div class="youtubeBox">                       
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/VHTrL5w2IF4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>                   
                 </div>                                 
             </div>      
             <div id="tab3" class="tabContents">
-                <div class="wrap">                       
+                <div class="youtubeBox">                       
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>                   
                 </div>                                 
             </div>      
             <div id="tab4" class="tabContents">
-                <div class="wrap">                       
+                <div class="youtubeBox">                       
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/8T1HxQ5PPhQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>                   
                 </div>                                 
             </div>      
             <div id="tab5" class="tabContents">
-                <div class="wrap">                       
+                <div class="youtubeBox">                       
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/WeOyg1YPDfw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>                   
                 </div>                                 
             </div>
             <ul>
-                <li><a href="#tab1"  class="active">헌법<br> 이국령</a></li> 
-                <li><a href="#tab2">경찰학<br> OOO</a></li>                            
-                <li><a href="#tab3">형사법<br> OOO</a></li>
-                <li><a href="#tab4">범죄학<br> OOO</a></li>        
-                <li><a href="#tab5">G-TELP<br> OOO</a></li>               
+                <li><a href="#tab1"  class="active"><span>헌법</span><br> 이국령</a></li> 
+                <li><a href="#tab2"><span>경찰학</span><br> OOO</a></li>                            
+                <li><a href="#tab3"><span>형사법</span><br> OOO</a></li>
+                <li><a href="#tab4"><span>범죄학</span><br> OOO</a></li>        
+                <li><a href="#tab5"><span>G-TELP</span><br> OOO</a></li>               
             </ul>                
         </div>      
     </div>

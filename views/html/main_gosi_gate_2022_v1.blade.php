@@ -29,7 +29,7 @@
     .gosi-gate-secTop {position:relative; padding-top:56px;}
     .gosi-gate-secTop .gosi-gate-search {position:absolute; top:35px;}
     .topMenu {position: absolute; width:1120px; left:50%; margin-left:-560px; top:40px;}
-    .topMenu .banner {position: absolute; top:10px; z-index: 9999;}
+    .topMenu .banner {position: absolute; top:10px; z-index: 10;}
     .gosiLogo {position: absolute; top:20px; left:50%; margin-left:-105px; border:1px solid #fff}
     .menuList {display:flex; font-size:16px; width:1080px; margin:120px auto 0; justify-content: center; align-items: center; font-weight:bold}
     .menuList div {width:11.1111%}

@@ -1,7 +1,11 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard-dynamic-subset.css" />
+
 <style type="text/css">
+    @@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard-dynamic-subset.css");
+
     .gosi-gate-v3 .tx-color {
         color: #ba560e;
     }
@@ -24,23 +28,23 @@
 
     .gosi-gate-secTop {position:relative; padding-top:56px;}
     .gosi-gate-secTop .gosi-gate-search {position:absolute; top:35px;}
-
-    .topMenu {position: absolute; width:1120px; left:50%; margin-left:-560px; top:40px;  z-index: 0;}
-    .topMenu .banner {margin-top:10px}
-    .gosiLogo {position: absolute; top:20px; left:50%; margin-left:-105px;}
-    .menuList {display:flex; font-size:16px; width:1080px; margin:20px auto 0; justify-content: center; align-items: center; font-weight:bold}
+    .topMenu {position: absolute; width:1120px; left:50%; margin-left:-560px; top:40px;}
+    .topMenu .banner {position: absolute; top:10px; z-index: 9999;}
+    .gosiLogo {position: absolute; top:20px; left:50%; margin-left:-105px; border:1px solid #fff}
+    .menuList {display:flex; font-size:16px; width:1080px; margin:120px auto 0; justify-content: center; align-items: center; font-weight:bold}
     .menuList div {width:11.1111%}
     .menuList a {display:block; text-align:center}
 
-    .gosi-gate-Sec {margin-top:100px; padding:0; text-align:center; background:none}
+    .gosi-gate-Sec {margin-top:100px; padding:0; text-align:center; background:none;
+        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;}
     .gosi-gate-Sec .gosi-gate-bntop-img {position:relative;}
 
-    .gate-bntop-Slider .swiper-slide {height:430px}
+    .gate-bntop-Slider .swiper-slide {height:430px;}
     .gate-bntop-Slider .swiper-slide a {display:block; height:100%;}
-    .gate-bntop-Slider .swiper-slide .txtBox {width:450px; position:absolute; top:50px; left:50%; margin-left:-450px; font-size:16px; text-align:left; color:#fff; line-height:1.2; letter-spacing:1px}
+    .gate-bntop-Slider .swiper-slide .txtBox {width:450px; position:absolute; top:50px; left:50%; margin-left:-450px; font-size:16px; text-align:left; color:#fff; line-height:1.2; letter-spacing:0}
     .gate-bntop-Slider .swiper-slide .txtBox .title01 {color:#fefd0d; margin-bottom:16px}
-    .gate-bntop-Slider .swiper-slide .txtBox .title02 {font-size:44px; font-family: "Noto Sans KR Black"; margin-bottom:38px}
-    .gate-bntop-Slider .swiper-slide .txtBox .title03 {margin-bottom:56px}
+    .gate-bntop-Slider .swiper-slide .txtBox .title02 {font-size:44px; margin-bottom:38px; font-weight:900}
+    .gate-bntop-Slider .swiper-slide .txtBox .title03 {margin-bottom:56px; font-weight:500}
     .gate-bntop-Slider .swiper-slide .txtBox .title04 strong {color:#fefd0d; background:rgba(0,0,0,.5); border-radius:30px; padding:8px 25px;}
     .gate-bntop-Slider .swiper-slide span {position:absolute; top:40px; left:50%; margin-left:120px; width:350px; height:350px; overflow: hidden;}
     .gate-bntop-Slider .swiper-slide.swiper-slide-active span img {animation: zoom-out 1s linear backwards;}
@@ -55,7 +59,7 @@
 
     .gosi-gate-Sec .MaintabControl {display:flex; justify-content: space-around; align-items: center; position: absolute; left:50%; margin-left:-420px; bottom:50px; z-index: 100; border-radius:30px; background-color:rgba(0,0,0,.4)}
     .gosi-gate-Sec .MaintabControl div {height:34px !important; width:38px !important; font-size: 14px; display: flex; justify-content: center; align-items: center; margin:0; padding:0; color:#fff; letter-spacing:1px }
-    .gosi-gate-Sec .MaintabControl .swiper-pagination-current {font-weight: 600; color:#fff}
+    .gosi-gate-Sec .MaintabControl .swiper-pagination-current {font-weight: 600; color:#fff;}
     .gosi-gate-Sec .MaintabControl div.swiper-btn-next {background: url("https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAR.png") no-repeat center center}
     .gosi-gate-Sec .MaintabControl div.swiper-btn-prev {background: url("https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/iconAL.png") no-repeat center center}
 
@@ -258,7 +262,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/2003_logo_2021.png" alt="윌비스공무원">
             </div>
         </div>
-        <ul class="menuList">
+        <div class="menuList">
             <div>
                 <a href="#none">9급</a>
             </div>
@@ -286,7 +290,7 @@
             <div>
                 <a href="#none">군무원</a>
             </div>
-        </ul>
+        </div>
     </div>
 
     <div class="Section gosi-gate-Sec">                

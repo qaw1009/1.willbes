@@ -151,7 +151,7 @@ class SupportBoardFModel extends BaseSupportFModel
         $set_query .= $from . $where;
         $set_query .= ') AS m ';
         $set_query .= $order_by_offset_limit;
-        $query = $this->_conn->query('select STRAIGHT_JOIN ' . $def_column . $set_query);
+        $query = $this->_conn->query('select ' . $def_column . $set_query);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }

@@ -25,15 +25,18 @@
         
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/07/2727_top_bg.jpg) no-repeat center top;}
 
-        .evt_youtube {background:#f6f6f6;padding-bottom:150px;}
-        .evt_youtube .tabs {width:860px; margin:0 auto; display:flex}		
-        .evt_youtube .tabs li {width:50%; text-align:center;margin-right:10px}
-        .evt_youtube .tabs li span {font-size:16px;vertical-align:middle;}
-        .evt_youtube .tabs li a {color:#b9b9b9;background:#e1e1e1; font-size:24px; border:1px solid #d2d2d2;padding:20px 0; text-align:center; display:block; letter-spacing:-2px}
-        .evt_youtube .tabs li a:hover,
-        .evt_youtube .tabs li a.active {color:#fff;background:#3bc0f3;border-color:#3bc0f3;font-weight:bold;}
-        .evt_youtube .youtubeBox {width:860px; margin:50px auto 0;position:absolute;left:50%;margin-left:-430px;margin-top:-543px;}
-        .evt_youtube .youtube iframe {width:860px; height:484px;}
+        .evt_youtube {background:#f6f6f6; padding-bottom:100px}
+        .evt_youtube .youtubeWraps {margin:0 auto;width:860px;}
+        .evt_youtube .youtubetab {display:flex;padding-top:50px;}
+        .evt_youtube .youtubetab li {width:50%; text-align:center;margin-right:10px}
+        .evt_youtube .youtubetab li span {font-size:16px;vertical-align:middle;}   
+        .evt_youtube .youtubetab li {width:20%}
+        .evt_youtube .youtubetab a {color:#b9b9b9;background:#e1e1e1; font-size:24px; border:1px solid #d2d2d2;padding:20px 0; text-align:center; display:block; letter-spacing:-2px}
+        .evt_youtube .youtubetab a.active,
+        .evt_youtube .youtubetab a:hover {color:#fff;background:#3bc0f3;border-color:#3bc0f3;font-weight:bold;}
+        .evt_youtube .youtubetab li:last-child a {margin:0}
+        .evt_youtube .youtubeBox {position:relative; padding-bottom:56.25%; overflow: hidden; max-width: 100%; }
+        .evt_youtube .youtubeBox iframe {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
                 
     </style>
 
@@ -50,53 +53,24 @@
 
         <div class="evtCtnsBox evt_top" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2022/07/2727_top.jpg"  alt="happy event"/>
-        </div>      
+        </div>
 
         <div class="evtCtnsBox evt_youtube" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/07/2727_youtube.jpg" alt="각 교수 유튜브" />          
-            <div id="tab1">
-                <div class="youtubeBox">
-                    <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>                 
-                </div>
-             
+        	<img src="https://static.willbes.net/public/images/promotion/2022/07/2727_youtube.jpg" alt=""/>
+            <div class="youtubeWraps">                
+                <div id="tab1" class="youtubeBox"><iframe src='https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0' frameborder='0' allowfullscreen></iframe></div>
+                <div id="tab2" class="youtubeBox">2교시 타이머 영상</div>
+                <div id="tab3" class="youtubeBox">3교시 타이머 영상</div>
+                <div id="tab4" class="youtubeBox">4교시 타이머 영상</div>
+                <div id="tab5" class="youtubeBox">5교시 타이머 영상</div>
+                <ul class="youtubetab">                 
+                    <li><a href="#tab1"  class="active"><span>헌법</span> 이국령</a></li> 
+                    <li><a href="#tab2"><span>경찰학</span> OOO</a></li>                            
+                    <li><a href="#tab3"><span>형사법</span> OOO</a></li>
+                    <li><a href="#tab4"><span>범죄학</span> OOO</a></li>        
+                    <li><a href="#tab5"><span>G-TELP</span> OOO</a></li> 
+                </ul>
             </div>
-            <div id="tab2">
-                <div class="youtubeBox">
-                    <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/VHTrL5w2IF4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>                 
-                </div>
-            </div>
-            <div id="tab3">
-                <div class="youtubeBox">
-                    <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>                 
-                </div>
-            </div>
-            <div id="tab4">
-                <div class="youtubeBox">
-                    <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/8T1HxQ5PPhQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>                 
-                </div>
-            </div>
-            <div id="tab5">
-                <div class="youtubeBox">
-                    <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/WeOyg1YPDfw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>                 
-                </div>
-            </div>
-            <ul class="tabs">
-                <li><a href="#tab1"><span>헌법</span>&nbsp;&nbsp; 이국령</a></li>
-                <li><a href="#tab2"><span>경찰학</span>&nbsp;&nbsp; OOO</a></li>
-                <li><a href="#tab3"><span>형사법</span>&nbsp;&nbsp; OOO</a></li>
-                <li><a href="#tab4"><span>범죄학</span>&nbsp;&nbsp; OOO</a></li>
-                <li><a href="#tab5"><span>G-TELP</span>&nbsp;&nbsp; OOO</a></li>                
-            </ul>
         </div>
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up" id="evt_01">
@@ -130,34 +104,41 @@
       });
     </script>
 
-    <script type="text/javascript">  
-        $(document).ready(function(){
-            $('.tabs').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
+    <script type="text/javascript">
 
-                $content = $($active[0].hash);
+        var tab1_url = "https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0";
+        var tab2_url = "https://www.youtube.com/embed/vGoMjM8GEPk?rel=0&modestbranding=1&showinfo=0";        
+        var tab3_url = "https://www.youtube.com/embed/7tNxcCSe-WA?rel=0&modestbranding=1&showinfo=0";
+        var tab4_url = "https://www.youtube.com/embed/vGoMjM8GEPk?rel=0&modestbranding=1&showinfo=0";        
+        var tab5_url = "https://www.youtube.com/embed/7tNxcCSe-WA?rel=0&modestbranding=1&showinfo=0";
 
-                $links.not($active).each(function () {
-                    $(this.hash).hide()});
-
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                    $active.removeClass('active');
-                    $content.hide();
-
-                    $active = $(this);
-                    $content = $(this.hash);
-
-                    $active.addClass('active');
-                    $content.show();
-
-                    e.preventDefault()}
-                )}
-            )}
-        );
-
+       $(function() {
+        $(".youtubeBox").hide(); 
+        $(".youtubeBox:first").show();
+        $(".youtubetab li a").click(function(){ 
+                var activeTab = $(this).attr("href"); 
+                var html_str = "";
+                if(activeTab == "#tab1"){
+                    html_str = "<iframe src='"+tab1_url+"' frameborder='0' allowfullscreen></iframe>";
+                }else if(activeTab == "#tab2"){
+                    html_str = "<iframe src='"+tab2_url+"' frameborder='0' allowfullscreen></iframe>";
+                }else if(activeTab == "#tab3"){
+                    html_str = "<iframe src='"+tab3_url+"' frameborder='0' allowfullscreen></iframe>";                   
+                }else if(activeTab == "#tab4"){
+                    html_str = "<iframe src='"+tab4_url+"' frameborder='0' allowfullscreen></iframe>";                   
+                }else if(activeTab == "#tab5"){
+                    html_str = "<iframe src='"+tab5_url+"' frameborder='0' allowfullscreen></iframe>";                   
+                }
+                $(".youtubetab a").removeClass("active"); 
+                $(this).addClass("active"); 
+                $(".youtubeBox").hide(); 
+                $(".youtubeBox").html(''); 
+                $(activeTab).html(html_str);
+                $(activeTab).fadeIn(); 
+                return false; 
+                });
+            });      
+        
     </script>
 
 @stop

@@ -25,8 +25,8 @@
         
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/07/2727_top_bg.jpg) no-repeat center top;}
 
-        .evt_youtube {background:#f6f6f6; padding-bottom:100px}
-        .evt_youtube .youtubeWraps {margin:0 auto;width:860px;}
+        .evt_youtube {background:#f6f6f6; padding-bottom:150px}
+        .evt_youtube .youtubeWraps {width:860px;position:absolute;left:50%;margin-left:-430px;margin-top:-538px;}
         .evt_youtube .youtubetab {display:flex;padding-top:50px;}
         .evt_youtube .youtubetab li {width:50%; text-align:center;margin-right:10px}
         .evt_youtube .youtubetab li span {font-size:16px;vertical-align:middle;}   
@@ -64,11 +64,11 @@
                 <div id="tab4" class="youtubeBox">4교시 타이머 영상</div>
                 <div id="tab5" class="youtubeBox">5교시 타이머 영상</div>
                 <ul class="youtubetab">                 
-                    <li><a href="#tab1"  class="active"><span>헌법</span> 이국령</a></li> 
-                    <li><a href="#tab2"><span>경찰학</span> OOO</a></li>                            
-                    <li><a href="#tab3"><span>형사법</span> OOO</a></li>
-                    <li><a href="#tab4"><span>범죄학</span> OOO</a></li>        
-                    <li><a href="#tab5"><span>G-TELP</span> OOO</a></li> 
+                    <li><a href="#tab1"  class="active"><span>헌법</span>&nbsp;&nbsp;이국령</a></li> 
+                    <li><a href="#tab2"><span>경찰학</span>&nbsp;&nbsp;OOO</a></li>                            
+                    <li><a href="#tab3"><span>형사법</span>&nbsp;&nbsp;OOO</a></li>
+                    <li><a href="#tab4"><span>범죄학</span>&nbsp;&nbsp;OOO</a></li>        
+                    <li><a href="#tab5"><span>G-TELP</span>&nbsp;&nbsp;OOO</a></li>
                 </ul>
             </div>
         </div>
@@ -121,13 +121,13 @@
                 if(activeTab == "#tab1"){
                     html_str = "<iframe src='"+tab1_url+"' frameborder='0' allowfullscreen></iframe>";
                 }else if(activeTab == "#tab2"){
-                    html_str = "<iframe src='"+tab2_url+"' frameborder='0' allowfullscreen></iframe>";
+                    html_str = "";
                 }else if(activeTab == "#tab3"){
-                    html_str = "<iframe src='"+tab3_url+"' frameborder='0' allowfullscreen></iframe>";                   
+                    html_str = "";                   
                 }else if(activeTab == "#tab4"){
-                    html_str = "<iframe src='"+tab4_url+"' frameborder='0' allowfullscreen></iframe>";                   
+                    html_str = "";                   
                 }else if(activeTab == "#tab5"){
-                    html_str = "<iframe src='"+tab5_url+"' frameborder='0' allowfullscreen></iframe>";                   
+                    html_str = "";                   
                 }
                 $(".youtubetab a").removeClass("active"); 
                 $(this).addClass("active"); 

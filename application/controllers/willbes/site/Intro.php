@@ -35,15 +35,32 @@ class Intro extends \app\controllers\FrontController
     }
 
     /**
-     * 온라인공무원 데이터 조회
-     * @return mixed
+     * 경찰온라인 데이터 조회
+     * @param string $cate_code
+     * @return array
      */
-    private function _getSite2003Data()
+    private function _getSite2001Data($cate_code = null)
     {
         $data['banner'] = $this->_banner();
-        $data['notice'] = $this->_board('notice', 5);
-        $data['exam_announcement'] = $this->_boardForSiteGroup('exam_announcement', 5);
-        $data['exam_news'] = $this->_boardForSiteGroup('exam_news', 5);
+        $data['notice'] = $this->_board('notice', $cate_code, 5);
+        $data['exam_announcement'] = $this->_boardForSiteGroup($cate_code,'exam_announcement', 5);
+        $data['exam_news'] = $this->_boardForSiteGroup($cate_code,'exam_news', 5);
+        $data['dday'] = array_data_pluck($this->_dday(), ['DayTitle', 'DayDatm', 'DDay'], 'DIdx');  // 중복제거
+
+        return $data;
+    }
+
+    /**
+     * 온라인공무원 데이터 조회
+     * @param string $cate_code
+     * @return array
+     */
+    private function _getSite2003Data($cate_code = null)
+    {
+        $data['banner'] = $this->_banner();
+        $data['notice'] = $this->_board('notice', $cate_code, 5);
+        $data['exam_announcement'] = $this->_boardForSiteGroup($cate_code,'exam_announcement', 5);
+        $data['exam_news'] = $this->_boardForSiteGroup($cate_code,'exam_news', 5);
         $data['dday'] = array_data_pluck($this->_dday(), ['DayTitle', 'DayDatm', 'DDay'], 'DIdx');  // 중복제거
 
         return $data;
@@ -81,11 +98,14 @@ class Intro extends \app\controllers\FrontController
 
     /**
      * 일반게시판 조회
-     * @param string $bm_type [게시판구분]
+     *
+     *
+     * @param $bm_type [게시판구분]
+     * @param $cate_code [카테고리코드]
      * @param int $limit_cnt [조회건수]
      * @return array|mixed
      */
-    private function _board($bm_type, $limit_cnt = 5)
+    private function _board($bm_type, $cate_code = null, $limit_cnt = 5)
     {
         $arr_bm_type = ['notice' => 45];    // 공지사항
         $bm_idx = array_get($arr_bm_type, $bm_type);
@@ -96,14 +116,14 @@ class Intro extends \app\controllers\FrontController
 
         // 게시글 조회
         $column = 'b.BoardIdx, b.Title, b.IsBest, b.BestOrderNum, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $order_by = ['IsBest' => 'desc', 'BestOrderNum' => 'desc', 'BoardIdx' => 'desc'];
+        $order_by = ['CAST(IsBest AS SIGNED)' => 'desc', 'BestOrderNum' => 'desc', 'BoardIdx' => 'desc'];
         $arr_condition = [
             'EQ' => [
                 'b.BmIdx' => $bm_idx, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'
             ],
         ];
 
-        return $this->supportBoardFModel->listBoard(false, $arr_condition, null, $column, $limit_cnt,0, $order_by);
+        return $this->supportBoardFModel->listBoard(false, $arr_condition, $cate_code, $column, $limit_cnt,0, $order_by);
     }
 
     /**
@@ -112,7 +132,7 @@ class Intro extends \app\controllers\FrontController
      * @param int $limit_cnt [조회건수]
      * @return array|mixed
      */
-    private function _boardForSiteGroup($bm_type, $limit_cnt = 5)
+    private function _boardForSiteGroup($cate_code = '', $bm_type, $limit_cnt = 5)
     {
         $arr_bm_type = ['exam_announcement' => 54, 'exam_news' => 57];  // 시험공고, 수험뉴스
         $bm_idx = array_get($arr_bm_type, $bm_type);
@@ -123,20 +143,21 @@ class Intro extends \app\controllers\FrontController
 
         // 게시글 조회
         $column = 'b.BoardIdx, b.Title, b.IsBest, b.AreaCcd_Name, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $order_by = ['IsBest' => 'desc', 'BoardIdx' => 'desc'];
+        $order_by = ['CAST(IsBest AS SIGNED)' => 'desc', 'BoardIdx' => 'desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => $bm_idx, 'b.IsUse' => 'Y']];
 
-        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, null, $arr_condition, $column, $limit_cnt, 0, $order_by);
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 
     public function indexTest(){
         $_view_path = $this->_site_code;
+        $cate_code = $this->_cate_code;
         $_data_method = '_getSite' . $this->_site_code . 'Data';
-        $data = [];
 
         // get data
+        $data = [];
         if (method_exists($this, $_data_method) === true) {
-            $data = $this->{$_data_method}();
+            $data = $this->{$_data_method}($cate_code);
         } else {
             show_404(strtolower(get_class($this)) . '/' . $_data_method);
         }

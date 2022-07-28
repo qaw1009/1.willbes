@@ -685,10 +685,11 @@ class PredictModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         $Res = $query->row_array();
 
-        $Res['MobileServiceIsArr'] = explode(',',$Res['MobileServiceIs']);
-        $Res['SurveyIsArr'] = explode(',',$Res['SurveyIs']);
-        $Res['MockPartArr'] = explode(',',$Res['MockPart']);
-
+        if (empty($Res) === false) {
+            $Res['MobileServiceIsArr'] = (empty($Res['MobileServiceIs']) === false) ? explode(',', $Res['MobileServiceIs']) : [];
+            $Res['SurveyIsArr'] = (empty($Res['SurveyIsArr']) === false) ? explode(',', $Res['SurveyIsArr']) : [];
+            $Res['MockPartArr'] = (empty($Res['MockPartArr']) === false) ? explode(',', $Res['MockPartArr']) : [];
+        }
         return $Res;
     }
 
@@ -708,7 +709,7 @@ class PredictModel extends WB_Model
                     $addRegData = [
                         'PredictIdx' => element('predictidx', $form_data),
                         'MemIdx' => 1000000,
-                        'SiteCode' => 2001,
+                        'SiteCode' => element('site_code', $form_data),
                         'TakeMockPart' => element('take_mock_part', $form_data),
                         'TakeNumber' => '999',
                         'TakeArea' => $take_area,
@@ -788,90 +789,6 @@ class PredictModel extends WB_Model
             ";
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->result_array();
-    }
-    public function tempDataUpload_backup($PredictIdx, $params = [])
-    {
-        //print_r($params);
-
-        $this->_conn->trans_begin();
-
-        try {
-            $column = "PpIdx";
-            $from = " FROM {$this->_table['predictPaper']} ";
-
-            $order_by = " ORDER BY PpIdx";
-            $where = " WHERE PredictIdx = ".$PredictIdx." AND IsStatus = 'Y' AND IsUse = 'Y'";
-            //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
-
-            $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-            $ArrPpIdx = $query->result_array();
-
-            foreach ($params as $key => $val) {
-                $TakeMockPart = $val['A'];
-                if(empty($TakeMockPart)===false){
-                    $TakeArea = $val['B'];
-
-                    $arrPoint[] = $val['C'];
-                    $arrPoint[] = $val['D'];
-                    $arrPoint[] = $val['E'];
-                    $arrPoint[] = $val['F'];
-                    $arrPoint[] = $val['G'];
-                    $arrPoint[] = $val['H'];
-                    $arrPoint[] = $val['I'];
-                    $arrPoint[] = $val['J'];
-                    $arrPoint[] = $val['K'];
-                    $arrPoint[] = $val['L'];
-                    $arrPoint[] = $val['M'];
-
-                    // 데이터 등록
-                    $addData = [
-                        'PredictIdx' => $PredictIdx,
-                        'MemIdx' => 1000000,
-                        'SiteCode' => 2001,
-                        'TakeMockPart' => $TakeMockPart,
-                        'TakeNumber' => '999',
-                        'TakeArea' => $TakeArea,
-                        'AddPoint' => 0,
-                        'IsStatus' => 'Y',
-                        'LectureType' => 1,
-                        'Period' => 1,
-                        'IsTake' => 'N'
-                    ];
-
-                    if ($this->_conn->set($addData)->set('RegDatm', 'NOW()', false)->insert($this->_table['predictRegister']) === false) {
-                        throw new \Exception('등록에 실패했습니다.');
-                    }
-                    $idx = $this->_conn->insert_id();
-
-                    for($i=0; $i<count($arrPoint); $i++){
-                        // 데이터 등록
-                        if ($arrPoint[$i] > 0) {
-                            $addData2 = [
-                                'MemIdx' => 1000000,
-                                'PrIdx' => $idx,
-                                'PredictIdx' => $PredictIdx,
-                                'PpIdx' => $ArrPpIdx[$i]['PpIdx'],
-                                'TakeMockPart' => $TakeMockPart,
-                                'TakeArea' => $TakeArea,
-                                'OrgPoint' => $arrPoint[$i],
-                            ];
-
-                            if ($this->_conn->set($addData2)->insert($this->_table['predictGradesOrigin']) === false) {
-                                throw new \Exception('점수등록에 실패했습니다.');
-                            }
-                        }
-                    }
-                    unset($arrPoint);
-                }
-            }
-
-            $this->_conn->trans_commit();
-        } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
-            return error_result($e);
-        }
-
-        return true;
     }
 
     /**

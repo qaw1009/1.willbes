@@ -8,6 +8,7 @@
                 <form class="form-horizontal" id="invoice_form" name="invoice_form" method="POST" onsubmit="return false;">
                     {!! csrf_field() !!}
                     <input type="hidden" name="predict_idx" value="{{$PredictIdx}}">
+                    <input type="hidden" name="site_code" value="{{$data['SiteCode']}}">
 
                     <div class="form-group form-group-sm form-group-bordered">
                         <label class="control-label col-md-1">엑셀정보</label>
@@ -20,7 +21,7 @@
                                 @endforeach
                             </select>
                             <button type="button" name="btn_file_download" class="btn btn-success btn-sm mb-0">직렬별 샘플엑셀 다운로드</button>
-                            <button type="button" name="btn_file_upload" class="btn btn-primary btn-sm mb-0 mr-20" onClick="registData({{ $PredictIdx }})">엑셀 업로드</button>
+                            <button type="button" name="btn_file_upload" class="btn btn-primary btn-sm mb-0 mr-20" onClick="registData()">엑셀 업로드</button>
                             <button type="button" name="btn_fakedata_download" class="btn btn-dark btn-sm mb-0">가데이터 엑셀 다운로드</button>
                         </div>
                     </div>
@@ -150,7 +151,7 @@
         });
 
         // 가데이터 등록
-        var registData = function(predictidx) {
+        var registData = function() {
             var data, is_file, files;
 
             files = $invoice_form.find('input[name="attach_file"]')[0].files[0];
@@ -167,7 +168,8 @@
             data = new FormData();
             data.append('{{ csrf_token_name() }}', $invoice_form.find('input[name="{{ csrf_token_name() }}"]').val());
             data.append('_method', 'POST');
-            data.append('predictidx', predictidx);
+            data.append('predictidx', $invoice_form.find('input[name="predict_idx"]').val());
+            data.append('site_code', $invoice_form.find('input[name="site_code"]').val());
             data.append('take_mock_part', $invoice_form.find('select[name="take_mock_part"]').val());
             data.append('attach_file', $invoice_form.find('input[name="attach_file"]')[0].files[0]);
             is_file = true;

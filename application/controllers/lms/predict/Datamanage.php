@@ -40,22 +40,19 @@ class Datamanage extends \app\controllers\BaseController
     public function register($param)
     {
         if($param) $PredictIdx = $param[0];
-        $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
+
+        $data = $this->predictModel->getProduct($PredictIdx);
+        if (empty($data) === true) {
+            show_alert('조회된 합격예측 정보가 없습니다.', 'back');
+        }
+
         //직렬리스트
         $arr_take_mock_part_list = $this->predictCodeModel->getPredictForTakeMockPart($PredictIdx);
-        $area = $this->predictModel->getArea($sysCode_Area);
-
-        if(empty($PredictIdx) === true){
-            $method = "CREATE";
-            $data = array();
-            $data['SiteCode'] = '2001';
-            $data['MockPart'] = '';
-        } else {
-            $method = "PUT";
-        }
+        $area = $this->predictModel->getArea($this->config->item('sysCode_Area', 'predict'));
 
         $this->load->view('predict/datamanage/register', [
             'PredictIdx' => $PredictIdx,
+            'data' => $data,
             'arr_take_mock_part_list' => $arr_take_mock_part_list,
             'area' => $area,
         ]);
@@ -102,7 +99,8 @@ class Datamanage extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST,PUT]'],
-            ['field' => 'predictidx', 'label' => '직렬', 'rules' => 'trim|required'],
+            ['field' => 'predictidx', 'label' => '합격예측코드', 'rules' => 'trim|required'],
+            ['field' => 'site_code', 'label' => '사이트코드', 'rules' => 'trim|required'],
             ['field' => 'attach_file', 'label' => '가데이터 엑셀파일', 'rules' => 'callback_validateFileRequired[attach_file]'],
             ['field' => 'take_mock_part', 'label' => '직렬', 'rules' => 'trim|required'],
         ];
@@ -116,7 +114,6 @@ class Datamanage extends \app\controllers\BaseController
             return $this->json_error('엑셀파일 읽기에 실패했습니다.');
         }
 
-        /*$result = $this->predictModel->tempDataUpload($predictidx, $params);*/
         $result = $this->predictModel->tempDataUpload($params, $this->_reqP(null));
         return $this->json_result($result, '저장 되었습니다.', $result);
     }

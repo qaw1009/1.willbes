@@ -146,8 +146,7 @@
                     <li>맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능</li>
                     <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주</li>
                     <li>본 상품은 특별 기획 상품으로, 수강시작일(결제 당일 포함)로부터 7일 경과 후 환불 시에는 할인 되기 전 정가를 기준으로 사용일수만큼 차감하고 환불됩니다.<br>
-                    · 결제금액 - (강좌 정상가의 1일 이용대금*이용일수)<br>
-                    (* 수강지원 포인트 포함 상품 환불 시 포인트를 미사용한 경우는 회수 후 환불 처리하오나, 포인트를 사용하였다면 사용분만큼 결제금액에서 차감 후 환불됩니다.)</li>
+                    · 결제금액 - (강좌 정상가의 1일 이용대금*이용일수)<br></li>
 				</ul>
 
                 <div class="infoTit"><span>※ 그 외 수강방법 및 인증 이벤트 참여 관련 사항에 대해서는 PC 버전으로 확인 부탁드립니다.</span></div>
@@ -157,12 +156,12 @@
     </div>
     <!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script>
-        $( document ).ready( function() {
-            AOS.init();
-        } );
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+      $(document).ready( function() {
+        AOS.init();
+      });
     </script>
 
     <script type="text/javascript">

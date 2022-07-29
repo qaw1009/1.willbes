@@ -205,16 +205,6 @@
                         </ol>
                     </dd>
 
-                    <dt>노량진 LIVE모드</dt>
-                    <dd>
-                        <ol>
-                            <li>공무원학원 실강 중 LIVE로 진행되는 강좌만 제공 (*일부 특강 제외)
-                                <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a><br>
-                                · 소방학개론/소방관계법규 이종오, 행정법 이석준
-                            </li>
-                        </ol>
-                    </dd>  
-
                     <dt>교재관련</dt>
                     <dd>
                         <ol>
@@ -256,7 +246,6 @@
                             <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주</li>
                             <li>본 상품은 특별 기획 상품으로, 수강시작일(결제 당일 포함)로부터 7일 경과 후 환불 시에는 할인 되기 전 정가를 기준으로 사용일수만큼 차감하고 환불됩니다.<br>
                             · 결제금액 - 강좌 정상가의 1일 이용대금*이용일수<br>
-                            * 수강지원 포인트 포함 상품 환불 시 포인트를 미사용한 경우는 회수 후 환불 처리하오나, 포인트를 사용하였다면 사용분만큼 결제금액에서 차감 후 환불됩니다.
                             </li>
                         </ol>
                     </dd>     
@@ -267,12 +256,12 @@
     </div>
     <!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
-        $( document ).ready( function() {
-            AOS.init();
-        } );
+      $(document).ready( function() {
+        AOS.init();
+      });
     </script>
 
     <script>   

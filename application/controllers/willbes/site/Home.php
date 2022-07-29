@@ -47,8 +47,9 @@ class Home extends \app\controllers\FrontController
                 } else {
                     if (empty($this->_cate_code) === true) {
                         if ($this->_site_code == '2003') {
-                            // 공무원온라인일 경우 인트로 페이지로 리다이렉트
-                            redirect(front_url('/intro/index'));
+                            // 공무원온라인일 경우 인트로 페이지로 리다이렉트 (네이버광고 쿼리스트링 추가)
+                            $qs = empty($this->input->server('QUERY_STRING')) === true ? '' : '?' . $this->input->server('QUERY_STRING');
+                            redirect(front_url('/intro/index' . $qs));
                         } else {
                             // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트
                             redirect(front_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));

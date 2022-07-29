@@ -18,6 +18,17 @@
     .cop-gate .Section01 .Sec01_01 {background: url(https://static.willbes.net/public/images/promotion/main/cop_gate/sec01_bg_01.jpg) no-repeat left top; height:670px; padding-top:60px}
     .cop-gate .Section01 .bnBox {position:absolute; width:1030px; top:560px; left:50%; margin-left:-515px; display:flex; justify-content: space-between;}
     .cop-gate .Section01 .bnBox img {box-shadow:10px 10px 26px rgba(0,0,0,.2);}
+    .cop-gate .Section01 .bnBox a:hover {animation:iptimg1 0.5s ease-in;-webkit-animation:iptimg1 0.5s ease-in;}
+    @@keyframes iptimg1{
+        0%{margin-top:0;}
+        50%{margin-top:-10px;}
+        100%{margin-top:0;}
+    }
+    @@-webkit-keyframes iptimg1{
+        0%{margin-top:0;}
+        50%{margin-top:-10px;}
+        100%{margin-top:0;}
+    }
 
     .cop-gate .Section01 .Sec01_02 {background: url(https://static.willbes.net/public/images/promotion/main/cop_gate/sec01_bg_02.jpg) no-repeat left top; height:748px; padding-top:60px}
     .cop-gate .Section01 .titleBox {color:#fff; margin-top:150px; line-height:1.2}
@@ -76,8 +87,7 @@
                 </div>
             </form>
         </div> 
-    </div>
-    
+    </div>    
 
     <div class="topMenu">
         <div>

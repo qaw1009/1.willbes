@@ -104,8 +104,8 @@
             left:50%;
             margin-left:-361px;
             z-index:10;
-            animation:flipInX 2s infinite;
             -webkit-animation:flipInX 2s infinite;
+            animation:flipInX 2s infinite;            
             -webkit-animation-fill-mode: both;
             animation-fill-mode: both;
         }
@@ -157,17 +157,20 @@
 
         .wb_cts07 span.sp01 {left:100px; animation: sp01 1.5s linear infinite;}
         @@keyframes sp01{
-		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
+		    from{transform:scale(1)}
+            50%{transform:scale(0.9)}
+            to{transform:scale(1)}
         }
-        .wb_cts07 span.sp02 {left:100px; animation: sp02 1.5s linear infinite;}
+        
+        .wb_cts07 span.sp02 {left:100px; animation: sp02 1.5s linear infinite; -webkit-animation: sp02 1.5s linear infinite;}
         @@keyframes sp02{
-        0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}
-        30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}
-        40%{-webkit-transform:scale3d(0.75,1.25,1);transform:scale3d(0.75,1.25,1)}
-        50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}
-        65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}
-        75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}
-        100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}
+            0%{transform:scale3d(1,1,1); -webkit-transform:scale3d(1,1,1);}
+            30%{transform:scale3d(1.25,.75,1); -webkit-transform:scale3d(1.25,.75,1);}
+            40%{transform:scale3d(0.75,1.25,1); -webkit-transform:scale3d(0.75,1.25,1);}
+            50%{transform:scale3d(1.15,.85,1); -webkit-transform:scale3d(1.15,.85,1);}
+            65%{transform:scale3d(.95,1.05,1); -webkit-transform:scale3d(.95,1.05,1);}
+            75%{transform:scale3d(1.05,.95,1); -webkit-transform:scale3d(1.05,.95,1);}
+            100%{transform:scale3d(1,1,1); -webkit-transform:scale3d(1,1,1);}
         }
 
         .lecBanner {background: url("https://static.willbes.net/public/images/promotion/main/3094_lecBanner_bg.jpg") no-repeat center center fixed; padding:100px 0 90px;}

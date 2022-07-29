@@ -14,17 +14,20 @@
     .topMenu div a {display:block; text-align:center; width:15%; padding-bottom:10px}
     .topMenu div a:last-child {text-align:right; width:25%; background: url(https://static.willbes.net/public/images/promotion/main/cop_gate/icon_cop01.png) no-repeat 50% 0; color:#0041b5}
 
-    .cop-gate .Section01 {background: url(https://static.willbes.net/public/images/promotion/main/cop_gate/sec01_bg.jpg) no-repeat left center; margin-top:50px; border-top:4px solid #ffc100; min-height:1418px; text-align:center; padding-top:90px}
-    .cop-gate .Section01 .bnBox {width:1030px; margin:30px auto 0; display:flex; justify-content: space-between;}
+    .cop-gate .Section01 {margin-top:50px; border-top:4px solid #ffc100; text-align:center; position:relative}
+    .cop-gate .Section01 .Sec01_01 {background: url(https://static.willbes.net/public/images/promotion/main/cop_gate/sec01_bg_01.jpg) no-repeat left top; height:670px; padding-top:60px}
+    .cop-gate .Section01 .bnBox {position:absolute; width:1030px; top:560px; left:50%; margin-left:-515px; display:flex; justify-content: space-between;}
     .cop-gate .Section01 .bnBox img {box-shadow:10px 10px 26px rgba(0,0,0,.2);}
+
+    .cop-gate .Section01 .Sec01_02 {background: url(https://static.willbes.net/public/images/promotion/main/cop_gate/sec01_bg_02.jpg) no-repeat left top; height:748px; padding-top:60px}
     .cop-gate .Section01 .titleBox {color:#fff; margin-top:150px; line-height:1.2}
-    .cop-gate .Section01 .title01 {font-size:26px; color:#dee0e7}
-    .cop-gate .Section01 .title02 {font-size:100px; margin-top:55px; text-shadow:0 8px 0 rgba(0,0,0,.4);}
-    .cop-gate .Section01 .title03 {font-size:128px; text-shadow:0 10px 0 rgba(0,0,0,.4);}
+    .cop-gate .Section01 .title01 {font-size:26px; color:rgba(0,0,0,.8);}
+    .cop-gate .Section01 .title02 {font-size:100px; margin-top:55px; color:#191919}
+    .cop-gate .Section01 .title03 {font-size:128px; color:#191919}
 
     .cop-gate .Section02 {text-align:center; background:#525252; padding:150px 0; color:#fff; height: auto;}
     .cop-gate .Section02 .title01 {font-size:26px; margin-bottom:10px}
-    .cop-gate .Section02 .title02 {font-size:82px; margin-bottom:90px; text-shadow:0 8px 0 rgba(0,0,0,.4);}
+    .cop-gate .Section02 .title02 {font-size:82px; margin-bottom:90px;}
     .cop-gate .Section02 .bnBox {position:relative; width:986px; margin:0 auto}
     .cop-gate .Section02 .bnBox a {position: absolute; width: 13%; z-index: 2; background:#fff; color:#24262d; font-size:16px; font-weight:bold; font-size:16px; border-radius:10px; padding:10px 0}
     .cop-gate .Section02 .bnBox a:hover {background:#083381; color:#fff;}
@@ -92,20 +95,26 @@
 
 
     <div class="Section Section01">
-        <div data-aos="fade-right"><img src="https://static.willbes.net/public/images/promotion/main/cop_gate/sec01_img.png" alt="컴팩트한 강의, 확실한 합격!"></div>
+        <div class="Sec01_01">
+            <div data-aos="fade-right"><img src="https://static.willbes.net/public/images/promotion/main/cop_gate/sec01_img.png" alt="컴팩트한 강의, 확실한 합격!"></div>
+        </div>        
+       
         <div class="bnBox" data-aos="fade-left">
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2718"><img src="https://static.willbes.net/public/images/promotion/main/cop_gate/bn_250_01.png" alt="경찰PASS"></a>
             <a href="https://police.willbes.net/promotion/index/cate/3006/code/2478"><img src="https://static.willbes.net/public/images/promotion/main/cop_gate/bn_250_02.png" alt="승진PASS"></a>
             <a href="https://police.willbes.net/promotion/index/cate/3007/code/2414"><img src="https://static.willbes.net/public/images/promotion/main/cop_gate/bn_250_03.png" alt="합격PASS"></a>
             <a href="https://police.willbes.net/promotion/index/cate/3007/code/2598"><img src="https://static.willbes.net/public/images/promotion/main/cop_gate/bn_250_04.png" alt="해경간부리더"></a>
         </div>
-        <div class="titleBox NSK-Black" data-aos="fade-right">
-            <div class="title01">
-                NEW 윌비스 경찰은<br>
-                여러분의 경찰 합격을 최상위 목표로 합니다.
+
+        <div class="Sec01_02">
+            <div class="titleBox NSK-Black" data-aos="fade-right">
+                <div class="title01">
+                    NEW 윌비스 경찰은<br>
+                    여러분의 경찰 합격을 최상위 목표로 합니다.
+                </div>
+                <div class="title02">젊다, 간결하다.</div>
+                <div class="title03">그렇지만 정확하다!</div>
             </div>
-            <div class="title02">젊다, 간결하다.</div>
-            <div class="title03">그렇지만 정확하다!</div>
         </div>
     </div>
 

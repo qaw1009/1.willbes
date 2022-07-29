@@ -97,9 +97,9 @@ class Cart extends \app\controllers\FrontController
             $npay_enable_yn = 'Y';
         }
 
-        // 장바구니 광고스크립트 데이터 생성 (임용온라인/학원만)
+        // 장바구니 광고스크립트 데이터 생성 (공무원온라인/학원, 임용온라인/학원만)
         $ad_data = [];
-        if (in_array($this->_site_code, ['2017', '2018']) === true) {
+        if (in_array($this->_site_code, ['2003', '2004', '2017', '2018']) === true) {
             // 장바구니 데이터가 있을 경우만
             if (empty($results['list']) === false) {
                 // 장바구니 정보
@@ -109,7 +109,13 @@ class Cart extends \app\controllers\FrontController
                 ];
 
                 // 광고스크립트 설정
-                $ad_data['Enliple2'] = ['uid' => 'ssam', 'device' => ($this->_is_mobile === true ? 'M' : 'W')];   // Enliple Tracker v2
+                if (in_array($this->_site_code, ['2003', '2004']) === true) {
+                    // 공무원
+                    $ad_data['Naver'] = ['uid' => 's_1511b04be813', 'cnv_type' => '3'];     // Naver
+                } else {
+                    // 임용
+                    $ad_data['Enliple2'] = ['uid' => 'ssam', 'device' => ($this->_is_mobile === true ? 'M' : 'W')];   // Enliple Tracker v2   
+                }
 
                 // 장바구니 상품정보 가공
                 $ad_prod_data_keys = ['Enliple2'];

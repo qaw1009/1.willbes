@@ -17,5 +17,14 @@
         </script>
         <!-- Enliple Tracker End -->
     @endif
+    @if(empty($ad_data['Naver']) === false)
+        <!-- Naver 장바구니 start -->
+        <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+        <script type="text/javascript">
+            var _nasa = {};
+            if(window.wcs) _nasa['cnv'] = wcs.cnv('{{ $ad_data['Naver']['cnv_type'] }}', '1');
+        </script>
+        <!--// Naver 장바구니 end -->
+    @endif
     <!--// AD script end -->
 @endif

@@ -28,14 +28,6 @@
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/01/1983_top_bg.jpg) no-repeat center top;}
 
-        .wb_cts01 {background:#fff;}       
-
-        .wb_cts02 {background:#f4f4f4; position:relative}
-        .wb_cts02 .tImg {position:absolute; top:390px; left:50%; margin-left:-415px; padding:0 18px}
-        .wb_cts02 .tImg img {margin-right:10px; width:264px;height:153px;}
-
-        .wb_cts03 {background:#fff}
-
         .wb_cts04 {background:#323943}
 
         .wb_cts05 {background:#f4f4f4; padding-bottom:150px}
@@ -158,15 +150,6 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/01/1983_01.jpg" alt="전격출시"  />
         </div>
 
-        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/1983_02.jpg" alt="라이브로 만나다" />
-            <div class="tImg">
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_01.gif" alt="강의1" />
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_02.gif" alt="강의2" />
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_04.gif" alt="강의4" />
-            </div>
-        </div>
-
         <div class="evtCtnsBox wb_cts03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/01/1983_03.jpg" alt="교수진" />
         </div>
@@ -178,7 +161,7 @@
         <div class="evtCtnsBox wb_cts05" id="evt05" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/1983_05.jpg" alt="커리큘럼" />
             <div class="linkbtn01 NSK-Black"><a href="javascript:certOpen();">인증 EVENT 참여하기 →</a></div>
-            <div class="linkbtn02"><a href="#tip">유의사항 확인하기 →</a></div>
+            <div class="linkbtn02"><a href="#careful">유의사항 확인하기 →</a></div>
         </div>
 
         <div class="evtCtnsBox wb_cts06" id="apply" data-aos="fade-up">
@@ -200,7 +183,6 @@
                                 <li><span>교재 구매 시 사용가능한 수강지원 포인트 3만점 증정!</span></li>
                                 <li><span>2023년 4월</span>까지 배수 제한 없는 <span>무제한 수강</span></li>
                                 <li>PC+모바일 총 2대 지원</li>
-                                <li>무편집 <span>LIVE</span> 제공</li>
                                 <li><span>2023 국가직 대비</span> 신규 진행 전 과정</li>
                                 <li>온라인 모의고사 진행 시 무료 응시</li>
                             </ul>
@@ -264,16 +246,6 @@
                         </ul>
                     </dd>
 
-                    <dt>노량진 LIVE모드</dt>
-                    <dd>
-                        <ul>
-                            <li>공무원학원 실강 중 LIVE로 진행되는 강좌만 제공 (*일부 특강 제외)                        
-                                <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a><br>
-                                · 국어 오대혁, 영어 한덕현, 한국사 김상범</li>
-                            </li>                       
-                        </ul>
-                    </dd>  
-
                     <dt>교재관련</dt>
                     <dd>
                         <ul>
@@ -326,16 +298,15 @@
     </div>
     <!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
-    $( document ).ready( function() {
+      $(document).ready( function() {
         AOS.init();
-    } );
+      });
     </script>
 
-    <script>   
-    
+    <script>     
         /*수강신청 동의
         function go_PassLecture(code){
             if($("input[name='ischk']:checked").size() < 1){
@@ -380,6 +351,8 @@
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
     </script>
+
+
 
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')

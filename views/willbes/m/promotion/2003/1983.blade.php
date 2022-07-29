@@ -100,16 +100,6 @@
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/1983m_02_01.jpg" alt="무편집 라이브">
-            <div class="gifimg">
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_01.gif" alt="국어 오대혁">
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_02.gif" alt="영어 한덕현">
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_03.gif" alt="한국사 김상범">
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/1983m_02_02.jpg" alt="실시간 강의">
-        </div>
-
-        <div class="evtCtnsBox" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/06/1983m_03.jpg" alt="교수진">              
         </div>
 
@@ -132,7 +122,6 @@
                                 <li><span>교재 구매 시 사용가능한 수강지원 포인트 3만점 증정!</span></li>
                                 <li><span>2023년 4월</span>까지 배수 제한 없는 <span>무제한 수강</span></li>
                                 <li>PC+모바일 총 2대 지원</li>
-                                <li>무편집 <span>LIVE</span> 제공</li>
                                 <li><span>2023 국가직 대비</span> 신규 진행 전 과정</li>
                                 <li>온라인 모의고사 진행 시 무료 응시</li>
                             </ul>

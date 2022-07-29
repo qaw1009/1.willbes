@@ -27,9 +27,6 @@
 
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2114_01_bg.jpg) no-repeat center top;}
 
-        .wb_cts03 {background:#F1F1F1;}
-        .wb_cts03 .tImg img {margin:0 5px 10px;width:343px;height:188px;}
-
         .wb_cts05 {background:url(https://static.willbes.net/public/images/promotion/2021/09/2114_05_bg.jpg) no-repeat center top;}
 
          /*타이머*/
@@ -106,7 +103,7 @@
             </a>
         </div>
 
-        <div class="evtCtnsBox wb_top">
+        <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2114_top.jpg" alt="조경직 패스" />
         </div>
 
@@ -114,21 +111,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2114_01.jpg" alt="이윤주 교수" />
         </div>
 
-        <div class="evtCtnsBox wb_cts02">
+        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2114_02.jpg" alt="학습 커리큘럼" />
         </div>
 
-        <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2114_03.jpg" alt="라이브로 만나다" />
-            <div class="tImg">
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t01.gif" alt="강의1" />
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t02.gif" alt="강의2" />
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t04.gif" alt="강의3" />
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2114_04.jpg" alt="합격이 앞당겨집니다" />
-        </div>
-
-        <div class="evtCtnsBox wb_cts05" id="evt05">
+        <div class="evtCtnsBox wb_cts05" id="evt05" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2114_05.jpg" alt="학습 커리큘럼" />
                 <a href="javascript:certOpen();" title="인증하기" style="position: absolute; left: 32.14%; top: 73.55%; width: 39.02%; height: 8%; z-index: 2;"></a>
@@ -136,7 +123,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts06" id="transfer">
+        <div class="evtCtnsBox wb_cts06" id="transfer" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2114_06.jpg" alt="수강신청 하기"/>
                 <a href="javascript:go_PassLecture('194958');" title="" style="position: absolute; left: 58.57%; top: 85.86%; width: 27.95%; height: 7.47%; z-index: 2;"></a>
@@ -150,7 +137,7 @@
             </div>      
         </div> 
 
-        <div class="evtCtnsBox wb_info" id="tip">
+        <div class="evtCtnsBox wb_info" id="tip" data-aos="fade-up">
             <div class="guide_box">
                 <h2 class="NSK-Black">윌비스 조경직 PASS 이용안내</h2>
                 <dl>
@@ -216,20 +203,6 @@
                         </ol>
                     </dd>
 
-                    <dt>라이브모드 수강관련</dt>
-                    <dd>
-                        <ol>
-                            <li>공무원학원 실강 내 LIVE로 진행되는 강좌만 제공됩니다. (* 일부 특강 제외)<br>
-                                - 국어 기미진, 영어 한덕현, 한국사 조민주
-                            </li>
-                            <li>제공되는 강좌 및 진행일정은 우측 버튼 클릭 후 페이지 하단에서 확인 가능합니다.
-                            <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a>
-                            </li>
-                            <li>본 상품은 실시간 진행되므로 일시정지/연장/재수강은 제공되지 않습니다. 촬영 및 편집된 강의는 익일 오후 2시 이전까지 업로드됩니다.</li>
-                            <li>해당 혜택은 PASS 수강기간 내에만 이용 가능합니다. (* 이전 구매자 소급 적용)</li>
-                        </ol>
-                    </dd>
-
                     <dt>재도전/환승/대학생 인증 이벤트 유의사항</dt>
                     <dd>
                         <ol>
@@ -255,8 +228,7 @@
     </div>
     <!-- End Container -->
 
-    <script>    
-    
+    <script>     
         /*수강신청 동의*/ 
         function go_PassLecture(code){
             if($("input[name='ischk']:checked").size() < 1){
@@ -285,6 +257,14 @@
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
+    </script>
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+      $(document).ready( function() {
+        AOS.init();
+      });
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

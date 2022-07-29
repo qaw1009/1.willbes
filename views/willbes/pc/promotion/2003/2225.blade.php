@@ -5,8 +5,7 @@
     <!-- content -->
     <!-- Container -->
     <style type="text/css">
-        .evtContent {
-            
+        .evtContent {            
             min-width:1120px !important;
             max-width:2000px !important;
             width:100%;
@@ -21,8 +20,8 @@
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/06/2225_top_bg.jpg) no-repeat center top; height: 1222px;}
-        .wb_top img {position: absolute; top:330px; left:50%; margin-left:-206px; z-index: 2;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/08/2225_top_bg.jpg) no-repeat center top; height: 1222px;}
+        .wb_top .imgA {position: absolute; top:350px; left:50%; margin-left:-211px; z-index: 2;}
 
         .wb_top2 {background:url(https://static.willbes.net/public/images/promotion/2022/07/2225_top_bg.jpg) no-repeat center top; height: 1154px; overflow: hidden;}
         .wb_top2 span {position: absolute; z-index: 2; -webkit-animation:swing 3s linear infinite; animation:swing 3s linear infinite}
@@ -46,18 +45,18 @@
 
     <div class="evtContent NSK" id="evtContainer"> 
 
-        {{--6월--}}
-        @if(time() < strtotime('202206301700'))
-        <div class="evtCtnsBox wb_top" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2225_top_img.png" alt="공무원 웰컴팩" data-aos="flip-up" data-aos-duration="2000"/>
-        </div>
-        @else
-        {{--7월--}}            
+        {{--7월--}}
+        @if(time() < strtotime('202207312400'))
         <div class="evtCtnsBox wb_top2" data-aos="fade-up">
             <span class="imgA"><img src="https://static.willbes.net/public/images/promotion/2022/07/2225_img_01.png" alt=""/></span>
             <span class="imgB"><img src="https://static.willbes.net/public/images/promotion/2022/07/2225_img_02.png" alt=""/></span>
         </div>
         <div class="topimg" data-aos="flip-up" data-aos-duration="1000"><img src="https://static.willbes.net/public/images/promotion/2022/07/2225_img_03.png" alt="공무원 웰컴팩"/></div>
+        @else
+        {{--8월--}}            
+        <div class="evtCtnsBox wb_top">
+           <span class="imgA" data-aos="flip-up" data-aos-duration="1000"><img src="https://static.willbes.net/public/images/promotion/2022/08/2225_top_img.png" alt=""/></span>-
+        </div>
         @endif   
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
@@ -83,15 +82,12 @@
     </div>
     <!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
-      $(document).ready(function(){
+      $(document).ready( function() {
         AOS.init();
       });
     </script>
-
-    {{-- 프로모션용 스크립트 include --}}
-    @include('willbes.pc.promotion.promotion_script')
 
 @stop

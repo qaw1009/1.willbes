@@ -94,7 +94,7 @@
             <span class="copLogo">
                 <img src="https://static.willbes.net/public/images/promotion/main/cop_gate/logo_cop.jpg" alt="윌비스경찰">
             </span>
-            <a href="#none">일반.경찰</a>
+            <a href="#none">일반ㆍ경행</a>
             <a href="#none">경찰승진</a>
             <a href="#none">해양경찰</a>
             <a href="#none">해양경채</a>

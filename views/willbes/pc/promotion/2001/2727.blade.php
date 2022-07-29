@@ -59,10 +59,10 @@
         	<img src="https://static.willbes.net/public/images/promotion/2022/07/2727_youtube.jpg" alt=""/>
             <div class="youtubeWraps">                
                 <div id="tab1" class="youtubeBox"><iframe src='https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0' frameborder='0' allowfullscreen></iframe></div>
-                <div id="tab2" class="youtubeBox">2교시 타이머 영상</div>
-                <div id="tab3" class="youtubeBox">3교시 타이머 영상</div>
-                <div id="tab4" class="youtubeBox">4교시 타이머 영상</div>
-                <div id="tab5" class="youtubeBox">5교시 타이머 영상</div>
+                <div id="tab2" class="youtubeBox"></div>
+                <div id="tab3" class="youtubeBox"></div>
+                <div id="tab4" class="youtubeBox"></div>
+                <div id="tab5" class="youtubeBox"></div>
                 <ul class="youtubetab">                 
                     <li><a href="#tab1"  class="active"><span>헌법</span>&nbsp;&nbsp;이국령</a></li> 
                     <li><a href="#tab2"><span>경찰학</span>&nbsp;&nbsp;OOO</a></li>                            
@@ -107,10 +107,10 @@
     <script type="text/javascript">
 
         var tab1_url = "https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0";
-        var tab2_url = "https://www.youtube.com/embed/vGoMjM8GEPk?rel=0&modestbranding=1&showinfo=0";        
-        var tab3_url = "https://www.youtube.com/embed/7tNxcCSe-WA?rel=0&modestbranding=1&showinfo=0";
-        var tab4_url = "https://www.youtube.com/embed/vGoMjM8GEPk?rel=0&modestbranding=1&showinfo=0";        
-        var tab5_url = "https://www.youtube.com/embed/7tNxcCSe-WA?rel=0&modestbranding=1&showinfo=0";
+        var tab2_url = "";        
+        var tab3_url = "";
+        var tab4_url = "";        
+        var tab5_url = "";
 
        $(function() {
         $(".youtubeBox").hide(); 

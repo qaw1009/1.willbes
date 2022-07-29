@@ -220,12 +220,12 @@
                 </li>
                 <li>
                     <div class="QuickSlider">
-                        {!! banner_html(element('게이트_우측퀵1', $data['banner']), 'sliderNum') !!}
+                        {!! banner_html(element('게이트_우측퀵2', $data['banner']), 'sliderNum') !!}
                     </div>
                 </li>
                 <li>
                     <div class="QuickSlider">
-                        {!! banner_html(element('게이트_우측퀵1', $data['banner']), 'sliderNum') !!}
+                        {!! banner_html(element('게이트_우측퀵3', $data['banner']), 'sliderNum') !!}
                     </div>
                 </li>
             </ul>

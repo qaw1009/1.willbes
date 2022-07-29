@@ -166,17 +166,15 @@
     </div>
     <!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script>
-        $( document ).ready( function() {
-            AOS.init();
-        } );
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+      $(document).ready( function() {
+        AOS.init();
+      });
     </script>
 
-    <script type="text/javascript">
-
-   
+    <script type="text/javascript">   
    /*디데이카운트다운*/
    $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}', '{{$arr_promotion_params['etime'] or "00:00"}}', 'txt');

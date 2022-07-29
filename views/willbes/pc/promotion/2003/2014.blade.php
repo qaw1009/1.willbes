@@ -25,12 +25,7 @@
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/01/2014_top_bg.jpg) no-repeat center top;}
 
-        .wb_cts01 {background:#F1F1F1;}
-        .wb_cts01 .tImg img {margin:0 5px 10px;width:343px;height:188px;}
-
         .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1717_02_bg.jpg) no-repeat center top;}
-
-        .wb_cts03 {background:#fff}
 
         .wb_cts04 {background:#3F3F3F}
 
@@ -87,7 +82,7 @@
     </style>
 
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday NG">        
             <div>
@@ -128,16 +123,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2014_01.jpg" alt="전격출시"  />
         </div>
 
-        <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2014_02.jpg" alt="라이브로 만나다" />
-            <div class="tImg">
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t01.gif" alt="강의1" />
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t02.gif" alt="강의2" />
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t04.gif" alt="강의3" />
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2014_03.jpg" alt="합격이 앞당겨집니다" />
-        </div>
-    
+   
         <div class="evtCtnsBox wb_cts04">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2014_04.jpg" alt="커리큘럼" />
         </div>
@@ -179,14 +165,6 @@
                         <td>PC or 모바일 <strong>총 2대지원</strong></td>
                         <td>PC or 모바일 <strong>총 2대지원</strong></td>
                         <td>PC or 모바일 <strong>총 2대지원</strong></td>
-                    </tr>
-                    <tr>
-                        <th>혜택</th>
-                        <td colspan="2" class="bg">
-                        ① 윌비스 공무원학원 <strong>국어 / 영어 / 한국사 무편집 LIVE 강의 제공</strong><span>LIVE</span><br />
-                        ② 신규 진행<strong> 전 과정 업데이트</strong><br />
-                        ③ 직렬별 온라인 모의고사 진행 시 <strong>무료 제공</strong></td>
-                        <td>신규 진행<br> <strong>전 과정 업데이트</strong></td>
                     </tr>
                     <tr>
                         <th>가격</th>
@@ -280,19 +258,7 @@
                             <li>선택한 교수의 강의가 학원 사정에 의해 부득이하게 진행되지 않을 경우 대체 강의가 제공되며, 이로 인한 환불은 불가합니다.</li>
                             <li>아이디 공유 적발 시 회원 자격 박탈 및 환불 불가하며, 추가적인 불법 공유 행위 적발 시 형사 고발 조치가 단행될 수 있습니다.</li>
                         </ol>
-                    </dd>
-
-                    <dt>라이브모드 수강관련</dt>
-                    <dd>
-                        <ol>
-                            <li>공무원학원 실강 내 LIVE로 진행되는 강좌만 제공됩니다. (* 일부 특강 제외)<br>
-                                - 국어 오대혁, 영어 한덕현, 한국사 김상범</li>
-                            <li>제공되는 강좌 및 진행일정은 우측 버튼 클릭 후 페이지 하단에서 확인 가능합니다.
-                            <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a></li>
-                            <li>본 상품은 실시간 진행되므로 일시정지/연장/재수강은 제공되지 않습니다. 촬영 및 편집된 강의는 익일 오후 2시 이전까지 업로드됩니다.</li>
-                            <li>해당 혜택은 PASS 수강기간 내에만 이용 가능합니다.</li>
-                        </ol>
-                    </dd>                
+                    </dd>               
                 </dl>
                 <div class="inquire">※ 이용 문의 : 윌비스 고객만족센터 1544-5006</div>
             </div>
@@ -330,6 +296,14 @@
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
+    </script>
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+      $(document).ready( function() {
+        AOS.init();
+      });
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

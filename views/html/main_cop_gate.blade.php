@@ -319,7 +319,22 @@
 <script src="/public/js/willbes/dist/aos.js"></script>
 <script>
     $(document).ready( function() {
-    AOS.init();
+        AOS.init();
+    });
+
+    //협력기관
+    $(document).ready(function() {
+        var collaboslides = $("#collaboslides ul").bxSlider({
+            mode:'fade', //option : 'horizontal', 'vertical', 'fade'
+            auto:true,
+            speed:750,
+            pause:3000,
+            pager:false,
+            controls:false,
+            minSlides:1,
+            maxSlides:1,
+            moveSlides:1,
+        });
     });
 </script>
 

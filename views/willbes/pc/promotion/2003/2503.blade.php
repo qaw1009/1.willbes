@@ -139,8 +139,9 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2503_02.jpg" alt="교수진" />
             <div class="box-prof">
                 <ul class="slidesProf">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2503_02_01.jpg" alt="이종오"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2503_02_02.jpg" alt="이석준"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/08/2503_02_01.jpg" alt="이종오"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/08/2503_02_02.jpg" alt="이석준"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/08/2503_02_03.jpg" alt="이종오"/></li>
                 </ul>
             </div>  
         </div> 

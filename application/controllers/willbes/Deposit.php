@@ -11,17 +11,17 @@ class Deposit extends \app\controllers\FrontController
     public function __construct()
     {
         parent::__construct();
-        
-        // pg 라이브러리 로드
-        $this->load->driver('pg', ['driver' => config_app('PgDriver', 'inisis')]);
     }
 
     /**
-     * PG사 가상계좌 입금통보 결과 수신 후 결제완료 업데이트
+     * PG사 가상계좌 입금통보 결과 수신 후 결제완료 업데이트 (이니시스 전용)
      * @return mixed
      */
     public function results()
     {
+        // pg 라이브러리 로드
+        $this->load->driver('pg', ['driver' => 'inisis']);
+
         // 가상계좌 입금통보 결과 리턴
         $deposit_results = $this->pg->depositResult();
 
@@ -41,7 +41,6 @@ class Deposit extends \app\controllers\FrontController
 
     /**
      * 입금통보 연동 테스트 폼
-     * TODO : 추후 삭제 가능
      */
     /*public function form()
     {

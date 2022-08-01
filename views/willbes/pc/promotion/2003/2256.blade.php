@@ -90,15 +90,12 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+
         {{--
         <div class="sky" id="QuickMenu">            
             <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>
         </div>
         --}}
-
-        <div class="evtCtnsBox wb_cts00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2022/07/2256_00.jpg" alt="" />
-        </div>
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday NG">        
@@ -162,14 +159,12 @@
                         <input type="radio" name="y_pkg" id="pass01" value="198399">
                         <label for="pass01">
                             <div>통신직 9급</div>
-                            <div>전과목 T-PASS</div>
-                            <div><span>★ 7월 한정 포인트 혜택 ★</span></div>
+                            <div>전과목 T-PASS</div>                           
                             <div><strong class="NSK-Black">120</strong>만원</div>
                             <ul>
                                 <li>2023. 7월까지 통신직 9급 전 강좌 제공 <span>(9급 국가직/지방직/군무원 대비 가능)</span></li>
                                 <li>PC+모바일 총 2대</li>
-                                <li>3배수 제한</li>
-                                <li>수강지원 포인트 5만점 <span>(교재 구매 시 사용 가능)</span></li>
+                                <li>3배수 제한</li>                               
                             </ul>
                         </label>
                     </div>
@@ -178,14 +173,12 @@
                         <input type="radio" name="y_pkg" id="pass02" value="198398">
                         <label for="pass02">
                             <div>전기직 9급</div>
-                            <div>전과목 T-PASS</div>
-                            <div><span>★ 7월 한정 포인트 혜택 ★</span></div>
+                            <div>전과목 T-PASS</div>                          
                             <div><strong class="NSK-Black">76</strong>만원</div>
                             <ul>
                                 <li>2023. 6월까지 전기직 9급 전 강좌 제공 <span>(9급 국가직/지방직 대비 가능)</span></li>
                                 <li>PC+모바일 총 2대</li>
-                                <li>3배수 제한</li>
-                                <li>수강지원 포인트 5만점 <span>(교재 구매 시 사용 가능)</span></li>
+                                <li>3배수 제한</li>                            
                             </ul>
                         </label>
                     </div>
@@ -194,14 +187,12 @@
                         <input type="radio" name="y_pkg" id="pass03" value="198401">
                         <label for="pass03">
                             <div>전기직 9·7급</div>
-                            <div>전과목 T-PASS</div>
-                            <div><span>★ 7월 한정 포인트 혜택 ★</span></div>
+                            <div>전과목 T-PASS</div>                          
                             <div><strong class="NSK-Black">100</strong>만원</div>
                             <ul>
                                 <li>2023. 10월까지 전기직 9·7급 전 강좌 제공 <span>(9급 국가직/지방직 대비 가능)</span></li>
                                 <li>PC+모바일 총 2대</li>
-                                <li>3배수 제한</li>
-                                <li>수강지원 포인트 5만점 <span>(교재 구매 시 사용 가능)</span></li>
+                                <li>3배수 제한</li>                              
                             </ul>
                         </label>
                     </div>
@@ -210,14 +201,12 @@
                         <input type="radio" name="y_pkg" id="pass04" value="198400">
                         <label for="pass04">
                             <div>전자직 9급</div>
-                            <div>전과목 T-PASS</div>
-                            <div><span>★ 7월 한정 포인트 혜택 ★</span></div>
+                            <div>전과목 T-PASS</div>                           
                             <div><strong class="NSK-Black">70</strong>만원</div>
                             <ul>
                                 <li>2023. 7월까지 전자직 9급 전 강좌 제공 <span>(9급 전자직 대비 가능)</span></li>
                                 <li>PC+모바일 총 2대</li>
-                                <li>3배수 제한</li>
-                                <li>수강지원 포인트 5만점 <span>(교재 구매 시 사용 가능)</span></li>
+                                <li>3배수 제한</li>                              
                             </ul>
                         </label>
                     </div>

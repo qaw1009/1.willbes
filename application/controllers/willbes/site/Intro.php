@@ -35,6 +35,7 @@ class Intro extends \app\controllers\FrontController
 
         $this->load->view('site/intro/intro_'. $_view_path, [
             'data' => $data
+            ,'cate_code' => $cate_code
         ]);
     }
 
@@ -171,6 +172,7 @@ class Intro extends \app\controllers\FrontController
 
         $this->load->view('site/_viewTest/intro_'. $_view_path, [
             'data' => $data
+            ,'cate_code' => $cate_code
         ]);
     }
 }

@@ -39,7 +39,7 @@
                 {!! banner_html(element('메인_띠배너2', $data['arr_main_banner'])) !!}
                 {!! banner_html(element('메인_띠배너3', $data['arr_main_banner'])) !!}
                 {{--
-                <div><a href="{{ site_url('/professor/show/cate/3007/prof-idx/50547/?subject_idx=1004&subject_name=형사소송법') }}"><img src="{{ img_url('cop_sea/banner/bnr_1120_01.jpg') }}" title="신광은 형사소송법"></a></div>
+                <div><a href="{{ site_url('/professor/show/cate/3007/prof-idx/50547/?subject_idx=1004&subject_name=형사소송법') }}"><img src="{{ img_url('cop_sea/banner/bnr_1120_01.jpg') }}" title="형사소송법"></a></div>
                 <div><a href="{{ site_url('/professor/show/cate/3007/prof-idx/50742/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}"><img src="{{ img_url('cop_sea/banner/bnr_1120_02.jpg') }}" title="공득인 해양경찰학개론"></a></div>
                 <div><a href="https://police.willbes.net/professor/show/cate/3007/prof-idx/50759/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0"><img src="https://static.willbes.net/public/images/promotion/main/bnr_1120_03.jpg" title="송광호 해양경찰학개론"></a></div>
                 --}}
@@ -50,11 +50,11 @@
             <div class="widthAuto">
                 <div class="will-big-Tit">
                     <div class="small NSK-Thin">여러분의 꿈과 목표를 위해,</div>
-                    <div class="big NSK-Thin">오늘도 최선을 다하는 <span class="cop-color NSK-Black">윌비스 신광은 경찰팀</span></div>
+                    <div class="big NSK-Thin">오늘도 최선을 다하는 <span class="cop-color NSK-Black">윌비스 경찰</span></div>
                 </div>
                 <ul class="ProfCopBox mt60 mb100">
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/prof_ske_184.jpg" title="신광은">
+                        <img src="https://static.willbes.net/public/images/promotion/main/prof_ske_184.jpg" title="">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50547', 'OT');">▶</a></li>
                             <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}">교수소개</a></li>

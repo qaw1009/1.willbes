@@ -1,7 +1,7 @@
 <div class="CScenterBox">
     <dl>
         <dt class="willbesCenter">
-            <div class="centerTit">신광은 경찰 사이트에 물어보세요!</div>
+            <div class="centerTit">윌비스 경찰 사이트에 물어보세요!</div>
             <ul>
                 <li>
                     <a href="{{ front_url('/support/faq/index') }}">

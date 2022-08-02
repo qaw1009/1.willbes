@@ -105,7 +105,7 @@
         <div class="Section passCurri mt50">
             <div class="widthAuto">
                 <img src="https://static.willbes.net/public/images/promotion/main/2002/2002_img_1120.jpg" title="합격 프로그램">
-                <div><a href="{{ front_url('/offinfo/boardInfo/index/78') }}" class="NSK-Black">신광은 경찰학원 일정보기 ></a></div>
+                <div><a href="{{ front_url('/offinfo/boardInfo/index/78') }}" class="NSK-Black">윌비스 경찰학원 일정보기 ></a></div>
             </div>
         </div>
 
@@ -115,7 +115,7 @@
         <div class="Section mt40">
             <div class="widthAuto">
                 <div class="sliderSuccess">
-                    <div class="will-acadTit"><span class="tx-color">신광은경찰</span> 학원소식</div>
+                    <div class="will-acadTit">윌비스 <span class="tx-color">경찰</span> 학원소식</div>
                     <div class="sliderSuccessPlay">
                         {!! banner_html(element('메인_학원소식1', $data['arr_main_banner'])) !!}
                     </div>

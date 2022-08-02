@@ -1,6 +1,6 @@
 <div class="widthAuto">
     <a name="map_campus"></a>
-    <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰</span> 학원</div>
+    <div class="will-acadTit">윌비스 <span class="tx-color">경찰</span> 학원</div>
     <div class="noticeTabs campus c_both">
         <ul class="tabWrap noticeWrap_campus">
             @foreach($data['arr_campus_info'] as $campus_ccd => $row)

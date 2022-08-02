@@ -146,7 +146,7 @@
 
                 @if (empty(element('메인_유튜브', $data['arr_main_banner'])) === false)
                     <div class="will-nTit NSK-Black mt100">
-                        신광은경찰팀 유튜브 채널 모음
+                        윌비스 경찰 유튜브 채널 모음
                     </div>
 
                     <div class="tube_box">

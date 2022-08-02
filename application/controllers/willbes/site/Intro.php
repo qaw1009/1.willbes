@@ -19,12 +19,16 @@ class Intro extends \app\controllers\FrontController
     public function index()
     {
         $_view_path = $this->_site_code;
+        $cate_code = '';
+        if ($this->_site_code == '2001') {
+            $cate_code = '3001';
+        }
         $_data_method = '_getSite' . $this->_site_code . 'Data';
-        $data = [];
 
         // get data
+        $data = [];
         if (method_exists($this, $_data_method) === true) {
-            $data = $this->{$_data_method}();
+            $data = $this->{$_data_method}($cate_code);
         } else {
             show_404(strtolower(get_class($this)) . '/' . $_data_method);
         }
@@ -151,7 +155,10 @@ class Intro extends \app\controllers\FrontController
 
     public function indexTest(){
         $_view_path = $this->_site_code;
-        $cate_code = $this->_cate_code;
+        $cate_code = '';
+        if ($this->_site_code == '2001') {
+            $cate_code = '3001';
+        }
         $_data_method = '_getSite' . $this->_site_code . 'Data';
 
         // get data

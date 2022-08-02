@@ -101,7 +101,7 @@
             </div>
             <div class="bnBox" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/main/cop_gate/sec02_img.png" alt="배너명">
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/2236" title="이국령" style="left: 51%; top: 41.49%;">확인하기 ></a>
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/2236" title="이국령" style="left: 51%; top: 28.98%;">확인하기 ></a>
                 {{--
                 <a href="javascript:void(0);" title="" style="left: 18%; top: 41.49%;">확인하기 ></a>
                 <a href="javascript:void(0);" title="" style="left:  84.5%; top: 41.49%;">확인하기 ></a>

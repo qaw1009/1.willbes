@@ -303,7 +303,7 @@
                 var is_check = true;
 
                 $order_idx.each(function(idx) {
-                    if ($(this).is(':checked') === true) {
+                    if ($(this).is(':checked') === true && $(this).closest('td').css('display') !== 'none') {
                         invoice_no = $invoice_no.eq(idx).val();
                         if (invoice_no.trim().length < 1 || $invoice_no.eq(idx).prop('disabled') === true) {
                             is_check = false;

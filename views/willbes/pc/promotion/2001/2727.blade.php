@@ -76,13 +76,14 @@
         <div class="evtCtnsBox evt_01" data-aos="fade-up" id="evt_01">
             <div class="wrap">            
                 <img src="https://static.willbes.net/public/images/promotion/2022/07/2727_01.jpg"  alt="소문내기 이벤트"/>
-                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="그랜드 오픈 이미지" style="position: absolute;left: 57.49%;top: 58.22%;width: 28.69%;height: 3.48%;z-index: 2;"></a>
-                {{--홍보url--}}
-                @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                    @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'Y'))
-                @endif
+                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="그랜드 오픈 이미지" style="position: absolute;left: 57.49%;top: 72.12%;width: 28.69%;height: 4.18%;z-index: 2;"></a>               
             </div>    
         </div>
+
+        {{--홍보url--}}
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'Y'))
+        @endif
 
         <div class="evtCtnsBox evt_02 pb100" data-aos="fade-up" id="evt_02">
             <img src="https://static.willbes.net/public/images/promotion/2022/07/2727_02.jpg"  alt="기대평 이벤트"/>
@@ -90,7 +91,7 @@
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')
             @endif
-        </div>     
+        </div>   
 
     </div>
 

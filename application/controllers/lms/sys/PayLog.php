@@ -56,7 +56,7 @@ class PayLog extends \app\controllers\BaseController
 
         $arr_condition = [
             'BDT' => ['PL.RegDatm' => [$search_start_date, $search_end_date]],
-            'EQ' => ['PL.PgMid' => $this->_reqP('search_pg_mid')]
+            'EQ' => ['PL.PgMid' => $this->_reqP('search_pg_mid'), 'PL.PgDriver' => $this->_reqP('search_pg_driver')]
         ];
 
         // 검색어

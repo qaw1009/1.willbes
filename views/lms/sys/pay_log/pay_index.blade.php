@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">주문검색</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control mr-10" id="search_keyword" name="search_keyword">
+                        <select class="form-control mr-10" id="search_keyword" name="search_keyword" title="주문검색키워드">
                             <option value="OrderNo">주문번호</option>
                             <option value="PgMid">상점아이디</option>
                             <option value="PgTid">TID</option>
@@ -23,30 +23,35 @@
                             <option value="ResultMsg">결과메시지</option>
                             <option value="ReqReason">요청사유</option>
                         </select>
-                        <input type="text" class="form-control" id="search_value" name="search_value" style="width: 260px;">
+                        <input type="text" class="form-control" id="search_value" name="search_value" style="width: 260px;" title="주문검색어">
                     </div>
                     <label class="control-label col-md-1">구분</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control mr-10" id="search_pg_mid" name="search_pg_mid">
+                        <select class="form-control mr-10" id="search_pg_driver" name="search_pg_driver" title="PG구분">
+                            <option value="">PG구분</option>
+                            <option value="inisis">이니시스</option>
+                            <option value="toss">토스</option>
+                        </select>
+                        <select class="form-control mr-10" id="search_pg_mid" name="search_pg_mid" title="상점아이디">
                             <option value="">상점아이디</option>
                             @foreach($codes['PgMid'] as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_method" name="search_pay_method">
+                        <select class="form-control mr-10" id="search_pay_method" name="search_pay_method" title="결제방법">
                             <option value="">결제방법</option>
                             @foreach($codes['PayMethod'] as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_type" name="search_pay_type">
+                        <select class="form-control mr-10" id="search_pay_type" name="search_pay_type" title="연동구분">
                             <option value="">연동구분</option>
                             @foreach($codes['PayType'] as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_is_result" name="search_is_result">
-                            <option value="">연동성공여부</option>
+                        <select class="form-control mr-10" id="search_is_result" name="search_is_result" title="성공여부">
+                            <option value="">성공여부</option>
                             <option value="Y">연동성공</option>
                             <option value="N">연동실패</option>
                         </select>
@@ -59,12 +64,20 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off" title="조회시작일">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off" title="조회종료일">
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-weeks">1주일</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="15-days">15일</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-months">1개월</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="3-months">3개월</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="6-months">6개월</button>
                         </div>
                     </div>
                 </div>
@@ -83,6 +96,7 @@
                 <tr>
                     <th class="valign-middle">No</th>
                     <th class="valign-middle">주문번호</th>
+                    <th class="valign-middle">PG구분</th>
                     <th class="valign-middle">결제구분</th>
                     <th class="valign-middle">상점아이디</th>
                     <th class="valign-middle">TID<br/>(부분환불TID)</th>
@@ -134,6 +148,7 @@
                     {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
                         return row.OrderIdx === null ? data : '<a href="{{ site_url('/pay/order/show/') }}' + row.OrderIdx + '" target="_blank"><u class="blue">' + data + '</u></a>';
                     }},
+                    {'data' : 'PgDriver'},
                     {'data' : 'PayType', 'render' : function(data, type, row, meta) {
                         return meta.settings.json.codes.PayType[data];
                     }},

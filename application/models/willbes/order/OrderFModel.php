@@ -2268,6 +2268,10 @@ class OrderFModel extends BaseOrderFModel
         $this->_conn->trans_begin();
 
         try {
+            if (empty($order_no) === true) {
+                throw new \Exception('잘못된 접근입니다.', _HTTP_BAD_REQUEST);
+            }
+
             // 주문정보 조회
             $order_row = $this->orderListFModel->findOrder([
                 'EQ' => ['O.OrderNo' => $order_no, 'O.PgMid' => $deposit_results['mid']]

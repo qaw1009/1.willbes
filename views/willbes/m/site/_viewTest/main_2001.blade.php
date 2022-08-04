@@ -256,7 +256,7 @@
         {!! banner('M_메인_이벤트', 'swiper-sec swiper-sec01', $__cfg['SiteCode'], '0') !!}
 
         <div class="conTitle">
-            <div class="NSK-Black">경찰 개편시험대비 <strong class="mainColor">전문교수진</strong></div>
+            <div class="NSK-Black">경찰 시험대비 <strong class="mainColor">전문교수진</strong></div>
         </div>
         {!! banner('M_메인_전문교수진', 'swiper-sec swiper-sec02', $__cfg['SiteCode'], '0') !!}
 

@@ -73,9 +73,8 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2656_01_02.jpg" alt="" />          
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2022/05/2656_01_03.jpg" alt="" />
-                    <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" alt="" style="position: absolute; left: 12.63%; top: 60.13%; width: 17%; height: 4.87%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" alt="" style="position: absolute; left: 41.63%; top: 60.13%; width: 17%; height: 4.87%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" alt="" style="position: absolute; left: 6.63%; top: 75.13%; width: 87%; height: 15.27%; z-index: 2;"></a>
+                    <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1045" target="_blank" alt="일반" style="position: absolute;left: 12.63%;top: 79.13%;width: 17%;height: 6.87%;z-index: 2;"></a>
+                    <a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3011&campus_ccd=605001&course_idx=1045" target="_blank" alt="경행" style="position: absolute;left: 41.63%;top: 79.13%;width: 17%;height: 6.87%;z-index: 2;"></a>                  
                 </div>
             </div>                 
             {{--

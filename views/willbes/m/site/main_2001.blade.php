@@ -258,7 +258,7 @@
         {!! banner('M_메인_전문교수진', 'swiper-sec swiper-sec02', $__cfg['SiteCode'], '0') !!}
 
         <div class="conTitle">
-            <div class="NSK-Black">신광은 <strong class="mainColor">경찰 캐스트</strong><a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/m/icon_more.png" alt="더보기" class="moreBtn"></a></div>
+            <div class="NSK-Black">윌비스 <strong class="mainColor">경찰 캐스트</strong><a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/m/icon_more.png" alt="더보기" class="moreBtn"></a></div>
         </div>
         <div class="sec-cast">
             @for($i = 1; $i <= 3; $i++)
@@ -281,7 +281,7 @@
         </div>
 
         <div class="conTitle">
-            <div class="NSK-Black">신광은 <strong class="mainColor">경찰팀 TV</strong><a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/m/icon_more.png" alt="더보기" class="moreBtn"></a></div>
+            <div class="NSK-Black">윌비스 <strong class="mainColor">경찰팀 TV</strong><a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/m/icon_more.png" alt="더보기" class="moreBtn"></a></div>
         </div>
         {!! banner('M_메인_유튜브', 'swiper-sec swiper-sec02', $__cfg['SiteCode'], '0', 'bnTitle') !!}
 
@@ -295,7 +295,7 @@
         </div>
 
         <div class="conTitle">
-            <div class="NSK-Black">신광은 경찰학원 <strong class="mainColor">개강 소식</strong><a href="{{ front_url('/offinfo/boardInfo/index/78', true) }}" target="_blank"><img src="https://static.willbes.net/public/images/promotion/m/icon_more.png" alt="더보기" class="moreBtn"></a></div>
+            <div class="NSK-Black">윌비스 경찰학원 <strong class="mainColor">개강 소식</strong><a href="{{ front_url('/offinfo/boardInfo/index/78', true) }}" target="_blank"><img src="https://static.willbes.net/public/images/promotion/m/icon_more.png" alt="더보기" class="moreBtn"></a></div>
         </div>
         <div class="noticeBoard">
             <ul>
@@ -315,7 +315,7 @@
         </div>
 
         <div class="conTitle">
-            <div class="NSK-Black">신광은경찰 <strong class="mainColor">베스트 강좌</strong></div>
+            <div class="NSK-Black">윌비스경찰 <strong class="mainColor">베스트 강좌</strong></div>
         </div>
         @if(empty(element('M_메인_베스트강좌', $data['arr_main_banner'])) === false)
             <div class="swiper-best mySwiper">

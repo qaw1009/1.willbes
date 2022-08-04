@@ -8,7 +8,7 @@
             <div>
                 <!--h4 class="NSK"><img src="{{ img_url('m/intro/icon_playlec.png') }}" alt="신광은경찰"> 동영상 수강신청 바로가기</h4-->
                 <ul class="bigType">
-                    <li><a href="https://police.willbes.net/m/home/index" target="_blank">신광은경찰</a></li>
+                    <li><a href="https://police.willbes.net/m/home/index" target="_blank">경찰</a></li>
                     <li><a href="https://gosi.willbes.net/m/home/index/cate/3094" target="_blank">5급행정</a></li>
                     <li><a href="https://pass.willbes.net/m/home/index" target="_blank">공무원</a></li>
                     <li><a href="https://gosi.willbes.net/m/home/index/cate/3095" target="_blank">국립외교원</a></li>

@@ -158,6 +158,7 @@
                     <th>접수기간</th>
                     <th>접수상태</th>
                     <th>사용</th>
+                    <th>노출</th>
                     <th>정산입력</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -249,6 +250,9 @@
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},//사용여부
+                    {'data' : 'IsDisp', 'render' : function(data, type, row, meta) {
+                            return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
+                        }},//노출여부
                     {'data' : 'DivisionCount','render' : function(data, type, row, meta) {
                             return (data !== '0') ? '입력' : '<span class="red">미입력</span>';
                         }},//정산입력

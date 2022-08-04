@@ -1106,13 +1106,17 @@ class CommonLectureModel extends WB_Model
 
             //상품복사
             $insert_column = 'ProdCode, SiteCode, ProdName, ProdNameShort, ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, IsSaleEnd, IsCoupon, IsPoint, 
-                    PointApplyCcd, PointSaveType, PointSavePrice, IsBest, IsNew, IsCart, IsRefund, IsFreebiesTrans, IsSms, IsUse, IsDeliveryInfo, Keyword, IsAllianceDisc, RegAdminIdx, RegIp';
+                    PointApplyCcd, PointSaveType, PointSavePrice, IsBest, IsNew, IsCart, IsRefund, IsFreebiesTrans, IsSms, IsUse, IsDisp, IsDeliveryInfo, Keyword, IsAllianceDisc, RegAdminIdx, RegIp';
 
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
             $select_column= str_replace('RegAdminIdx','\''.$admin_idx.'\' as RegAdminIdx',$select_column);
             $select_column= str_replace('RegIp','\''.$reg_ip.'\' as RegIp',$select_column);
             //$select_column= str_replace('ProdName','concat(\'[복사]\',ProdName)',$select_column);
             $select_column= str_replace('IsUse','\'N\' As IsUse',$select_column);
+
+//            if($prodtype !== 'packageuser' && $prodtype !=='packageperiod') {
+//                $select_column = str_replace('IsDisp', '\'N\' As IsDisp', $select_column);    //특정상품만 적용되기에 제외
+//            }
 
             $query = 'insert into '.$this->_table['product'].' ('. $insert_column .')SELECT '.$select_column.' FROM '.$this->_table['product'].' where ProdCode='.$prodcode;
             if($this->_conn->query($query) === false) {

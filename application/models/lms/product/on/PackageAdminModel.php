@@ -22,7 +22,7 @@ class PackageAdminModel extends CommonLectureModel
         } else {
 
             $column = ' 
-                    A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
+                    A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.IsDisp,A.RegDatm
                     ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                     ,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply,B.OrderNum
                     ,Bc.CcdName as LearnPatternCcd_Name
@@ -452,6 +452,7 @@ class PackageAdminModel extends CommonLectureModel
             ,'IsSms'=>element('IsSms',$input,'N')
             ,'IsDeliveryInfo'=>element('IsDeliveryInfo',$input,'N')
             ,'IsUse'=>element('IsUse',$input)
+            ,'IsDisp'=>element('IsDisp',$input, 'N')
             ,'Keyword'=>element('Keyword',$input)
         ];
 

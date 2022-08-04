@@ -74,6 +74,7 @@ Class OffPackageAdmin extends CommonLecture
                 //'A.IsSaleEnd' =>$this->_reqP('search_issaleend'),
                 'B.AcceptStatusCcd' =>$this->_reqP('search_acceptccd'),
                 'A.IsUse' =>$this->_reqP('search_is_use'),
+                'A.IsDisp' =>$this->_reqP('search_is_disp'),
                 'B.CampusCcd' => $this->_reqP('search_campus_code'),
             ],
             'LKR' => [

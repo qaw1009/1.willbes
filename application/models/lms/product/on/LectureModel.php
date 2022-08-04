@@ -24,7 +24,7 @@ class LectureModel extends CommonLectureModel
         } else {
 
             $column = ' STRAIGHT_JOIN
-                   A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
+                   A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.IsDisp,A.RegDatm
                     ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                     ,Ac.CcdName as ProdTypeCcd_Name
                     ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply,B.wLecIdx,B.StudyStartDate, B.LecSaleType, B.StudyPeriod, B.OrderNum
@@ -37,7 +37,7 @@ class LectureModel extends CommonLectureModel
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
                     ,E.ProfIdx_String,E.wProfName_String
                     ,IFNULL(F.DivisionCount,0) AS DivisionCount
-                        #,fn_product_count_cart(A.ProdCode) as CartCnt
+                    #,fn_product_count_cart(A.ProdCode) as CartCnt
                     #,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
                     #,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
                     ,0 as CartCnt       #장바구니테이블 스캔으로 인해 쿼리속도 저하    19.02.18 최진영 차장님 협의
@@ -511,6 +511,7 @@ class LectureModel extends CommonLectureModel
             ,'IsSms'=>element('IsSms',$input,'N')
             ,'IsDeliveryInfo'=>element('IsDeliveryInfo',$input,'N')
             ,'IsUse'=>element('IsUse',$input)
+            ,'IsDisp'=>element('IsDisp',$input, 'N')
             ,'Keyword'=>element('Keyword',$input)
         ];
 

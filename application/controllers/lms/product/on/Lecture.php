@@ -68,6 +68,7 @@ Class Lecture extends CommonLecture
                 'A.IsBest' =>$this->_reqP('search_best'),
                 'A.SaleStatusCcd' =>$this->_reqP('search_sales_ccd'),
                 'Be.wIsUse'=>$this->_reqP('search_w_is_use'),
+                'A.IsDisp' =>$this->_reqP('search_is_disp'),
             ],
             'LKR' => [
                 'C.CateCode' => $this->_reqP('search_lg_cate_code'),

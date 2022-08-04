@@ -23,7 +23,7 @@ class LectureFreeModel extends CommonLectureModel
         } else {
 
             $column = ' STRAIGHT_JOIN
-                            A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
+                            A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.IsDisp,A.RegDatm
                             ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                             ,Ac.CcdName as ProdTypeCcd_Name
                             ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply,B.wLecIdx,B.OrderNum
@@ -379,6 +379,7 @@ class LectureFreeModel extends CommonLectureModel
             ,'IsSms'=>element('IsSms',$input,'N')
             ,'IsDeliveryInfo'=>element('IsDeliveryInfo',$input,'N')
             ,'IsUse'=>element('IsUse',$input)
+            ,'IsDisp'=>element('IsDisp',$input, 'N')
             ,'Keyword'=>element('Keyword',$input)
         ];
 

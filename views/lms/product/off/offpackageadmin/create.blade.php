@@ -786,7 +786,7 @@
                     <div class="col-md-4 form-inline item" >
                         <div class="radio">
                             <input type="radio" name="IsLecOpen" class="flat" value="Y" required="required" title="개설여부" @if($method == 'POST' || $data['IsLecOpen'] == 'Y')checked="checked"@endif/> 개설
-                            &nbsp;&nbsp;
+                            &nbsp;
                             <input type="radio" name="IsLecOpen" class="flat" value="N" required="required" title="개설여부" @if($data['IsLecOpen'] == 'N')checked="checked"@endif/> 폐강
                         </div>
                     </div>
@@ -800,6 +800,14 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="IsUse">노출여부 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="IsDisp" class="flat" value="Y" required="required" title="노출여부" @if($data['IsDisp']=='Y')checked="checked"@endif/> 노출
+                            &nbsp; <input type="radio" name="IsDisp" class="flat" value="N" title="노출여부" @if($method == 'POST' || $data['IsDisp']=='N')checked="checked"@endif/> 숨김
+                        </div>
+                    </div>
                     <label class="control-label col-md-2" for="IsUse">정렬순서 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item" >

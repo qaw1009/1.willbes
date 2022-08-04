@@ -968,12 +968,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="IsAllianceDisc">독서실제휴할인 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="IsUse">노출여부 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item" >
                         <div class="radio">
-                            <input type="radio" name="IsAllianceDisc" class="flat" value="Y" required="required" title="독서실제휴할인" @if($method == 'POST' || $data['IsAllianceDisc']=='Y')checked="checked"@endif/> 적용
-                            &nbsp; <input type="radio" name="IsAllianceDisc" class="flat" value="N" @if($data['IsAllianceDisc']=='N')checked="checked"@endif/> 미적용
+                            <input type="radio" name="IsDisp" class="flat" value="Y" required="required" title="노출여부" @if($data['IsDisp']=='Y')checked="checked"@endif/> 노출
+                            &nbsp; <input type="radio" name="IsDisp" class="flat" value="N" title="노출여부" @if($method == 'POST' || $data['IsDisp']=='N')checked="checked"@endif/> 숨김
                         </div>
                     </div>
                     <label class="control-label col-md-2" for="IsUse">정렬순서 <span class="required">*</span>
@@ -982,6 +982,17 @@
                         <div class="item inline-block">
                             <input type="text" name="OrderNum" id="OrderNum" class="form-control" title="정렬순서" style="width: 30px" value="{{empty($data['OrderNum']) ==true ? '0' : $data['OrderNum']}}">
                             [숫자가 높을수록 상위노출 - 필요시에만 입력]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="IsAllianceDisc">독서실제휴할인 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="IsAllianceDisc" class="flat" value="Y" required="required" title="독서실제휴할인" @if($method == 'POST' || $data['IsAllianceDisc']=='Y')checked="checked"@endif/> 적용
+                            &nbsp; <input type="radio" name="IsAllianceDisc" class="flat" value="N" @if($data['IsAllianceDisc']=='N')checked="checked"@endif/> 미적용
                         </div>
                     </div>
                 </div>

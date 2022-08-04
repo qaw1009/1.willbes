@@ -68,6 +68,7 @@ Class LectureFree extends CommonLecture
                 'A.IsNew' =>$this->_reqP('search_new'),
                 'A.IsBest' =>$this->_reqP('search_best'),
                 'A.SaleStatusCcd' =>$this->_reqP('search_sales_ccd'),
+                'A.IsDisp' =>$this->_reqP('search_is_disp'),
             ],
             'LKR' => [
                 'C.CateCode' => $this->_reqP('search_lg_cate_code'),

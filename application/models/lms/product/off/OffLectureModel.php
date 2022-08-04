@@ -23,7 +23,7 @@ class OffLectureModel extends CommonLectureModel
         } else {
 
             $column = ' STRAIGHT_JOIN
-                            A.ProdCode,A.ProdName,A.ProdNameShort,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
+                            A.ProdCode,A.ProdName,A.ProdNameShort,A.IsNew,A.IsBest,A.IsUse,A.IsDisp,A.RegDatm
                             ,DATE_FORMAT(SaleStartDatm,\'%Y-%m-%d\') as SaleStartDatm
                             ,DATE_FORMAT(SaleEndDatm,\'%Y-%m-%d\') as SaleEndDatm
                             ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
@@ -451,6 +451,7 @@ class OffLectureModel extends CommonLectureModel
                 ,'IsSms'=>element('IsSms',$input,'N')
                 ,'IsDeliveryInfo'=>element('IsDeliveryInfo',$input,'N')
                 ,'IsUse'=>element('IsUse',$input)
+                ,'IsDisp'=>element('IsDisp',$input, 'N')
                 ,'Keyword'=>element('Keyword',$input)
                 ,'IsAllianceDisc'=>element('IsAllianceDisc',$input,'N')
                 ,'OptionCcds'=>$option_ccds

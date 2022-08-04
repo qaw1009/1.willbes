@@ -73,6 +73,11 @@
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
+                        <select class="form-control" id="search_is_disp" name="search_is_disp" title="노출여부">
+                            <option value="">노출여부</option>
+                            <option value="Y">노출</option>
+                            <option value="N">숨김</option>
+                        </select>
                         <select class="form-control" id="search_is_use" name="search_is_use" title="사용여부">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
@@ -141,6 +146,7 @@
                     <th width="5%">제공상태</th>
                     <th>정렬</th>
                     <th>사용</th>
+                    <th>노출</th>
                     <th width="5%">신청자</th>
                     <th width="5%">등록자</th>
                     <th width="8%">등록일</th>
@@ -216,6 +222,9 @@
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},//사용여부
+                    {'data' : 'IsDisp', 'render' : function(data, type, row, meta) {
+                            return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
+                        }},//노출여부
                     {'data' : 'PayEndCnt'},//신청자
                     {'data' : 'wAdminName'},//등록자
                     {'data' : 'RegDatm'},//등록일

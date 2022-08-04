@@ -23,7 +23,7 @@ class OffPackageAdminModel extends CommonLectureModel
         } else {
 
             $column = ' 
-                     A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
+                     A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.IsDisp,A.RegDatm
                     ,DATE_FORMAT(SaleStartDatm,\'%Y-%m-%d\') as SaleStartDatm
                     ,DATE_FORMAT(SaleEndDatm,\'%Y-%m-%d\') as SaleEndDatm
                     ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
@@ -379,6 +379,7 @@ class OffPackageAdminModel extends CommonLectureModel
             ,'IsSms'=>element('IsSms',$input,'N')
             ,'IsDeliveryInfo'=>element('IsDeliveryInfo',$input,'N')
             ,'IsUse'=>element('IsUse',$input)
+            ,'IsDisp'=>element('IsDisp',$input, 'N')
             ,'Keyword'=>element('Keyword',$input)
         ];
 

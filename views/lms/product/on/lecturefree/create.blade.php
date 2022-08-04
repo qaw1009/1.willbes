@@ -598,6 +598,14 @@
                             &nbsp; <input type="radio" name="IsOpenwUnitNum" class="flat" value="N" title="회차노출여부" @if($method == 'POST' || $data['IsOpenwUnitNum']=='N')checked="checked"@endif/> 숨김
                         </div>
                     </div>
+                    <label class="control-label col-md-2" for="IsUse">노출여부 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="IsDisp" class="flat" value="Y" required="required" title="노출여부" @if($data['IsDisp']=='Y')checked="checked"@endif/> 노출
+                            &nbsp; <input type="radio" name="IsDisp" class="flat" value="N" title="노출여부" @if($method == 'POST' || $data['IsDisp']=='N')checked="checked"@endif/> 숨김
+                        </div>
+                    </div>
                 </div>
 
                 @if($method === 'PUT')

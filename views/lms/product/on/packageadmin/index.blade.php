@@ -30,27 +30,28 @@
                                 <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
-                        &nbsp;
                         <select class="form-control" id="search_packtype_ccd" name="search_packtype_ccd">
                             <option value="">패키지유형</option>
                             @foreach($Packtype_ccd as $key=>$val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        &nbsp;
                         <select class="form-control" id="search_sales_ccd" name="search_sales_ccd">
                             <option value="">판매여부</option>
                             @foreach($Sales_ccd as $key=>$val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        &nbsp;
                         <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
-                        &nbsp;
+                        <select class="form-control" id="search_is_disp" name="search_is_disp" title="노출여부">
+                            <option value="">노출여부</option>
+                            <option value="Y">노출</option>
+                            <option value="N">숨김</option>
+                        </select>
                         <select class="form-control" id="search_calc" name="search_calc">
                             <option value="">정산입력여부</option>
                             <option value="Y">입력</option>
@@ -102,17 +103,18 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th width="4%">복사<br>선택</th>
-                    <th width="10%">대분류</th>
-                    <th width="8%">대비학년도</th>
+                    <th>복사<br>선택</th>
+                    <th>대분류</th>
+                    <th>대비학년도</th>
                     <th width="6%">패키지<BR>유형</th>
                     <th>운영자패키지명</th>
                     <th width="6%">판매가</th>
-                    <th width="5%">신규</th>
-                    <th width="5%">추천</th>
-                    <th width="5%">배수</th>
-                    <th width="5%">판매여부</th>
-                    <th width="5%">사용여부</th>
+                    <th>신규</th>
+                    <th>추천</th>
+                    <th>배수</th>
+                    <th>판매여부</th>
+                    <th>사용</th>
+                    <th>노출</th>
                     <th>정산입력</th>
                     <!--
                     <th width="5%">장바구니</th>
@@ -196,6 +198,9 @@
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},//사용여부
+                    {'data' : 'IsDisp', 'render' : function(data, type, row, meta) {
+                            return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
+                        }},//노출여부
                     {'data' : 'DivisionCount','render' : function(data, type, row, meta) {
                             return (data !== '0') ? '입력' : '<span class="red">미입력</span>';
                         }},//정산입력

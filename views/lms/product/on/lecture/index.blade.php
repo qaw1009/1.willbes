@@ -89,6 +89,11 @@
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
+                        <select class="form-control" id="search_is_disp" name="search_is_disp" title="노출여부">
+                            <option value="">노출여부</option>
+                            <option value="Y">노출</option>
+                            <option value="N">숨김</option>
+                        </select>
                         <select class="form-control" id="search_calc" name="search_calc" title="정산입력여부">
                             <option value="">정산입력여부</option>
                             <option value="Y">입력</option>
@@ -160,6 +165,7 @@
                     <th>판매여부</th>
                     <th>정렬</th>
                     <th>사용</th>
+                    <th>노출</th>
                     <th>정산입력</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -239,6 +245,9 @@
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},//사용여부
+                    {'data' : 'IsDisp', 'render' : function(data, type, row, meta) {
+                            return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
+                        }},//노출여부
                     {'data' : 'DivisionCount','render' : function(data, type, row, meta) {
                             return (data !== '0') ? '입력' : '<span class="red">미입력</span>';
                         }},//정산입력

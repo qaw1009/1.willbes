@@ -90,7 +90,7 @@
                         <span class="tx16 NSK-Thin pt10 ml20">경찰 합격을 위한 선택! 최고의 교수진으로 수험생의 합격을 돕겠습니다.</span>
                     </div>
                     <ul class="pro_box">
-                        @for($i=1;$i<=10;$i++)
+                        @for($i=1;$i<=15;$i++)
                             @if(isset($data['arr_main_banner']['메인_전문교수진' . $i]) === true)
                                 <li class="bSlider">
                                     {!! banner_html(element('메인_전문교수진'.$i, $data['arr_main_banner']),'slider') !!}

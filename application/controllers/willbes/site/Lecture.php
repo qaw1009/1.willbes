@@ -110,7 +110,8 @@ class Lecture extends \app\controllers\FrontController
         }
 
         // 상품 기본조회 조건
-        $arr_condition = ['EQ' => ['SiteCode' => $this->_site_code], 'LKR' => ['CateCode' => $cate_code]];
+        #$arr_condition = ['EQ' => ['SiteCode' => $this->_site_code], 'LKR' => ['CateCode' => $cate_code]];
+        $arr_condition = ['EQ' => ['SiteCode' => $this->_site_code, 'IsDisp' => 'Y'], 'LKR' => ['CateCode' => $cate_code]];
 
         // 과정 조회
         if ($this->_learn_pattern == 'on_lecture') {

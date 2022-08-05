@@ -45,7 +45,7 @@ class Package extends \app\controllers\FrontController
         }
 
         // 상품 기본조회 조건
-        $arr_condition = ['EQ' => ['SiteCode' => $this->_site_code, 'PackTypeCcd' => $pack], 'LKR' => ['CateCode' => $cate_code]];
+        $arr_condition = ['EQ' => ['SiteCode' => $this->_site_code, 'PackTypeCcd' => $pack,  'IsDisp' => 'Y'], 'LKR' => ['CateCode' => $cate_code]];
 
         // 사이트별 과정 조회 (카테고리 소트매핑된 과정 조회 => 상품에 설정된 과정 조회)
         //$arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $this->_cate_code);

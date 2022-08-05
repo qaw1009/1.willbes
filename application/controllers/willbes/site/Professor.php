@@ -961,7 +961,7 @@ class Professor extends \app\controllers\FrontController
     {
         // 기본조건
         $arr_condition = [
-            'EQ' => ['SiteCode' => $this->_site_code, 'Is' . ucfirst($is_best_new) => 'Y'],
+            'EQ' => ['SiteCode' => $this->_site_code, 'Is' . ucfirst($is_best_new) => 'Y', 'IsDisp' => 'Y'],
             'LKR' => ['CateCode' => $this->_def_cate_code]
         ];
 
@@ -1030,7 +1030,8 @@ class Professor extends \app\controllers\FrontController
                 'ProfIdx' => $prof_idx,
                 'SiteCode' => $site_code,
                 'CourseIdx' => element('course_idx', $arr_input),
-                'LecTypeCcd' => element('lec_type_ccd', $arr_input)
+                'LecTypeCcd' => element('lec_type_ccd', $arr_input),
+                'IsDisp' => 'Y'
             ]
         ];
 
@@ -1090,7 +1091,7 @@ class Professor extends \app\controllers\FrontController
         $arr_pack_type_ccd = ['on_pack_normal' => '648001', 'on_pack_choice' => '648002', 'on_userpack_normal' => '743001', 'on_userpack_fixed' => '743002'];
         $pack_type_ccd = array_get($arr_pack_type_ccd, $pack_type);
 
-        $arr_condition = ['EQ' => ['SiteCode' => $site_code, 'PackTypeCcd' => $pack_type_ccd], 'LKB' => ['ProfIdx_String' => $prof_idx]];
+        $arr_condition = ['EQ' => ['SiteCode' => $site_code, 'PackTypeCcd' => $pack_type_ccd, 'IsDisp' => 'Y'], 'LKB' => ['ProfIdx_String' => $prof_idx]];
         if ($this->_is_pass_site === false) {
             // 온라인 사이트일 경우 카테고리 조건 추가
             $arr_condition['LKR']['CateCode'] = $this->_def_cate_code;
@@ -1128,7 +1129,8 @@ class Professor extends \app\controllers\FrontController
                 'SiteCode' => $site_code,
                 'CampusCcd' => element('campus_ccd', $arr_input),
                 'StudyPatternCcd' => element('study_pattern_ccd', $arr_input),
-                'CourseIdx' => element('course_idx', $arr_input)
+                'CourseIdx' => element('course_idx', $arr_input),
+                'IsDisp' => 'Y'
             ],
             'NOT' => [
                 'CourseIdx' => element('not_course_idx', $arr_input)    // 특정 과정식별자 제외

@@ -77,6 +77,7 @@ class OffPackage extends \app\controllers\FrontController
                 'SiteCode' => $this->_site_code,
                 'CampusCcd' => element('campus_ccd', $arr_input),
                 'CourseIdx' => element('course_idx', $arr_input),
+                'IsDisp' => 'Y'
             ],
             'LKR' => [
                 'CateCode' => $cate_code,

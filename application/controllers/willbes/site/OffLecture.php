@@ -100,6 +100,7 @@ class OffLecture extends \app\controllers\FrontController
                 'SubjectIdx' => element('subject_idx', $arr_input),
                 'ProfIdx' => element('prof_idx', $arr_input),
                 'StudyPatternCcd' => element('study_pattern_ccd', $arr_input),
+                'IsDisp' => 'Y'
             ],
             'LKR' => [
                 'CateCode' => $cate_code,

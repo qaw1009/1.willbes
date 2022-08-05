@@ -146,6 +146,10 @@ class BaseSearch extends \app\controllers\FrontController
 
         $limit = ($this->_site_code === '2000' ? '200' : null);
 
+        # 노출 설정 상품만 검색
+        $common_condition = array_merge_recursive($common_condition, ['EQ' => ['IsDisp' => 'Y']]);
+        $common_off_condition = array_merge_recursive($common_off_condition, ['EQ' => ['IsDisp' => 'Y']]);
+
         //단강좌
         $data_lecture = $this->searchFModel->findSearchProduct('on_lecture', false, array_merge_recursive($common_condition, ['ORG1' => ['LKB' => ['ProfNickName' => element('searchfull_text', $arr_search_input)]]]), $order_by, $limit);
         //무료강좌

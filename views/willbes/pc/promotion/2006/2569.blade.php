@@ -20,7 +20,7 @@
 
 		/************************************************************/
 
-		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/05/2569_top_bg.jpg) no-repeat center top;}
+		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/08/2569_top_bg.jpg) no-repeat center top;}
 
         .evt_01 {background:#00CDB6}
 
@@ -58,20 +58,20 @@
 	<div class="evtContent NSK">
 
 		<div class="evtCtnsBox evt_top" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/05/2569_top.jpg" alt="2022 노무패스" />
+			<img src="https://static.willbes.net/public/images/promotion/2022/08/2569_top.jpg" alt="2022 노무패스" />
 		</div>
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/05/2569_01.jpg" alt="합격의 기준" />
+			<img src="https://static.willbes.net/public/images/promotion/2022/08/2569_01.jpg" alt="합격의 기준" />
 		</div>
 
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
             <div class="wrap">
-			    <img src="https://static.willbes.net/public/images/promotion/2022/05/2569_02.jpg" alt="노무패스 신청하기" />                
-                <a href="javascript:void(0);" data-url="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/193009" onclick="go_PassLecture(this)" title="노무패스 1차" style="position: absolute; left: 0%; top: 90.91%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
-                <a href="javascript:void(0);" data-url="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/193008" onclick="go_PassLecture(this)" title="노무패스 2차" style="position: absolute; left: 25.45%; top: 90.91%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
-                <a href="javascript:void(0);" data-url="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/193007" onclick="go_PassLecture(this)" title="동차 베이직" style="position: absolute; left: 50.98%; top: 90.91%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
-                <a href="javascript:void(0);" data-url="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/193006" onclick="go_PassLecture(this)" title="동차 프리미엄" style="position: absolute; left: 76.43%; top: 90.91%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
+			    <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_02.jpg" alt="노무패스 신청하기" />                
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/200222" onclick="go_PassLecture(this)" title="노무패스 1차" style="position: absolute; left: 0%; top: 90.91%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/200221" onclick="go_PassLecture(this)" title="노무패스 2차" style="position: absolute; left: 25.45%; top: 90.91%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/200220" onclick="go_PassLecture(this)" title="동차 베이직" style="position: absolute; left: 50.98%; top: 90.91%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/package/show/cate/309002/pack/648002/prod-code/200219" onclick="go_PassLecture(this)" title="동차 프리미엄" style="position: absolute; left: 76.43%; top: 90.91%; width: 23.3%; height: 9.29%; z-index: 2;"></a>
             </div>
             <div class="check">
                 <label>
@@ -83,7 +83,7 @@
         </div>
 
         <div class="evtCtnsBox evt_03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/05/2569_03_01.jpg" alt="학습 커리큘럼" /> 
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_01.jpg" alt="학습 커리큘럼" /> 
             <ul class="tabs">
 				<li><a href="#tab01">민법</a></li>                
 				<li><a href="#tab02">노동법</a></li>
@@ -92,28 +92,28 @@
                 <li><a href="#tab05">경영학개론</a></li>
 			</ul>
 			<div id="tab01" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2569_03_t01.png" alt="민법"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_t01.png" alt="민법"/>
                 <a href="javascript:fnPlayerSample('178934', '1328806', 'HD');" title="" style="position: absolute; left: 78.04%; top: 39.9%; width: 17.77%; height: 7.45%; z-index: 2;"></a>
                 <a href="javascript:fnPlayerSample('178938', '1328830', 'HD');" title="" style="position: absolute; left: 78.04%; top: 89.9%; width: 17.77%; height: 7.45%; z-index: 2;"></a>
 			</div>
 			<div id="tab02" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2569_03_t02.png" alt="노동법"/>                      
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_t02.png" alt="노동법"/>                      
                 <a href="javascript:fnPlayerSample('178945', '1337920', 'HD');" title="" style="position: absolute; left: 77.86%; top: 80.13%; width: 17.77%; height: 14.9%; z-index: 2;"></a>
 			</div>
 			<div id="tab03" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2569_03_t03.png" alt="사회보험법"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_t03.png" alt="사회보험법"/>
                 <a href="javascript:fnPlayerSample('178957', '1341680', 'HD');" title="" style="position: absolute; left: 77.75%; top: 77.81%; width: 18.23%; height: 17.22%; z-index: 2;"></a>            
 			</div>
             <div id="tab04" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2569_03_t04.png" alt="경영학개론"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_t04.png" alt="경영학개론"/>
                 <a href="javascript:fnPlayerSample('182626', '1333158', 'HD');" title="" style="position: absolute; left: 77.84%; top: 79.11%; width: 17.69%; height: 13.98%; z-index: 2;"></a>               
 			</div>
             <div id="tab05" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2569_03_t05.png" alt="경영학개론"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_t05.png" alt="경영학개론"/>
                 <a href="javascript:fnPlayerSample('178960', '1333162', 'HD');" title="" style="position: absolute; left: 77.84%; top: 79.11%; width: 17.69%; height: 13.98%; z-index: 2;"></a>               
 			</div>
 
-            <img src="https://static.willbes.net/public/images/promotion/2022/05/2569_03_02.jpg" alt="수험전략 수립 2차" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_02.jpg" alt="수험전략 수립 2차" />
 
             <ul class="tabs six">
 				<li><a href="#tab06">노동법</a></li>
@@ -124,35 +124,35 @@
                 <li><a href="#tab11">민사소송법</a></li>
 			</ul>
             <div id="tab06" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2569_03_t06.png" alt="노동법"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_t06.png" alt="노동법"/>
                 <a href="javascript:fnPlayerSample('178952', '1310632', 'HD');" title="" style="position: absolute; left: 77.75%; top: 39.4%; width: 18.23%; height: 8.11%; z-index: 2;"></a>
                 <a href="javascript:fnPlayerSample('178967', '1310629', 'HD');" title="" style="position: absolute; left: 77.75%; top: 89.4%; width: 18.23%; height: 8.11%; z-index: 2;"></a>            
 			</div>
             <div id="tab07" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2569_03_t07.png" alt="행정쟁송법"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_t07.png" alt="행정쟁송법"/>
                 <a href="javascript:fnPlayerSample('178987', '1317039', 'HD');" title="" style="position: absolute;left: 77.75%;top: 39.9%;width: 18.23%;height: 7.06%;z-index: 2;"></a>
                 <a href="javascript:fnPlayerSample('178977', '1317081', 'HD');" title="" style="position: absolute;left: 77.75%;top: 89.9%;width: 18.23%;height: 7.06%;z-index: 2;"></a>             
 			</div>
             <div id="tab08" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2569_03_t08.png" alt="인사노무관리"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_t08.png" alt="인사노무관리"/>
                 <a href="javascript:fnPlayerSample('179003', '1320594', 'HD');" title="" style="position: absolute; left: 77.86%; top: 19.27%; width: 18.21%; height: 5.41% ;z-index: 2;"></a>
                 <a href="javascript:fnPlayerSample('178993', '1320597', 'HD');" title="" style="position: absolute; left: 77.86%; top: 44.21%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
                 <a href="javascript:fnPlayerSample('190986', '1340053', 'HD');" title="" style="position: absolute; left: 77.86%; top: 69.13%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
                 <a href="javascript:fnPlayerSample('179012', '1310282', 'HD');" title="" style="position: absolute; left: 77.86%; top: 94.13%; width: 18.21%; height: 5.41%; z-index: 2;"></a>        
 			</div> 
             <div id="tab09" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2569_03_t09.png" alt="경영조직론"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_t09.png" alt="경영조직론"/>
                 <a href="javascript:fnPlayerSample('179008', '1323542', 'HD');" title="" style="position: absolute; left: 77.86%; top: 19.27%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
                 <a href="javascript:fnPlayerSample('178998', '1323544', 'HD');" title="" style="position: absolute; left: 77.86%; top: 44.21%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
                 <a href="javascript:fnPlayerSample('190986', '1340053', 'HD');" title="" style="position: absolute; left: 77.86%; top: 69.13%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
                 <a href="javascript:fnPlayerSample('179016', '1310286', 'HD');" title="" style="position: absolute; left: 77.86%; top: 94.13%; width: 18.21%; height: 5.41%; z-index: 2;"></a>           
 			</div>
             <div id="tab10" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2569_03_t10.png" alt="민사소송법"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_t10.png" alt="민사소송법"/>
                 <a href="javascript:fnPlayerSample('187937', '1343829', 'HD');" title="" style="position: absolute; left: 77.86%; top: 78.81%; width: 18.21%; height: 16.23%; z-index: 2;"></a>            
 			</div> 
             <div id="tab11" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2569_03_t11.png" alt="민사소송법"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_t11.png" alt="민사소송법"/>
                 <a href="javascript:fnPlayerSample('178941', '1323547', 'HD');" title="" style="position: absolute; left: 77.86%; top: 78.81%; width: 18.21%; height: 16.23%; z-index: 2;"></a>            
 			</div>
 		</div>         
@@ -162,20 +162,21 @@
 				<h4 class="NSK-Black">상품 이용안내</h4>
 				<div class="infoTit"><strong>상품구성</strong></div>
 				<ul>				
-                    <li>1차 상품구성은 2022년 1월부터 2023년 5월까지 진행될 2022/2023년 대비 공인노무사 1차 대비 강좌로 구성됩니다.</li>
-                    <li>2차 GS순환 강의는 순환별로 강의가 개설 된 후 순차적으로 업로드 됩니다.<br>
-                    * (GS0순환-2021/2022년 9월, GS1순환-2022/2023년 1월, GS2순환-2022/2023년 4월, GS3순환-2022/2023년 6월)<br>
-                    * 동영상 강의는 실강 진행 후 다음날 동영상 업로드 됩니다.</li>
-                    <li>강사 및 학원사정에 따라 강의가 진행이 되지 않을 경우 다른 강사님의 강의로 변경될 수 있습니다.</li>
+                    <li>1차 상품구성은 2023년 1월부터 2023년 5월까지 진행될 2023년 대비공인노무사 1차 대비강좌로 구성됩니다.</li>
+                    <li>2차 GS순환강의는 순환별로 강의가 개설 된 후 순차적으로 업로드 됩니다.<br>
+                        ＊ (GS0순환-2022년 9월, GS1순환-2023년 1월, GS2순환-2023년 4월, GS3순환-2023년 6월)<br>
+                        ＊ 동영상강의는 실강 진행 후 다음날 동영상 업로드 됩니다.<br>
+                        ＊ 강사 및 학원사정에 따라 강의가 진행이 되지 않을 경우 다른 강사님의 강의로 변경될 수 있습니다.
+                    </li>                   
                     <li>강의는 순차적으로 업로드 예정이며, 강의 일시와 횟수는 변경될 수 있습니다.</li>
                     <li>순환별 강의 중 주말반과 평일반 두 개의 과정이 개설된 경우, 한 개의 과정만 제공됩니다.</li>
 				</ul>
 				<div class="infoTit"><strong>수강관련</strong></div>
 				<ul>
-					<li>본 패스 상품 신청 시 컴퓨터, 스마트 기기를 이용하여 자유롭게 수강하실 수 있습니다.</li>
-                    <li>본 패스 상품 강의의 경우 배수 제한 없이 무제한 수강이 가능합니다.</li>
-                    <li>본 패스 상품 수강기간은 각 상품의 시험일까지 입니다.</li>
-                    <li>본 패스 상품은 구매일로부터 바로 수강이 진행되며, 수강기간 조정 및 정지가 불가합니다.</li>
+                    <li>본 패스상품 신청 시 컴퓨터, 스마트기기를 이용하여 자유롭게 수강하실 수 있습니다.</li>
+                    <li>본 패스상품 강의의 경우 배수 제한 없이 무제한 수강이 가능합니다.(기기대수 제한 2대)</li>
+                    <li>본 패스상품 수강기간은 각 상품의 시험일까지 입니다.</li>
+                    <li>본 패스상품은 구매일로부터 바로 수강이 진행되며,수강기간조정 및 정지가 불가합니다.</li>
 				</ul>
 				<div class="infoTit"><strong>교재관련</strong></div>
 				<ul>

@@ -8,6 +8,12 @@ class Intro extends \app\controllers\FrontController
     protected $auth_controller = false;
     protected $auth_methods = array();
 
+    //사이트 카테고리 사용여부
+    private $_def_cate_code = [
+        '2001' => true
+        ,'2003' => false
+    ];
+
     public function __construct()
     {
         parent::__construct();
@@ -19,10 +25,7 @@ class Intro extends \app\controllers\FrontController
     public function index()
     {
         $_view_path = $this->_site_code;
-        $cate_code = '';
-        if ($this->_site_code == '2001') {
-            $cate_code = '3001';
-        }
+        $cate_code = ($this->_def_cate_code[$this->_site_code] === true) ? config_app('DefCateCode') : '';
         $_data_method = '_getSite' . $this->_site_code . 'Data';
 
         // get data
@@ -156,10 +159,7 @@ class Intro extends \app\controllers\FrontController
 
     public function indexTest(){
         $_view_path = $this->_site_code;
-        $cate_code = '';
-        if ($this->_site_code == '2001') {
-            $cate_code = '3001';
-        }
+        $cate_code = ($this->_def_cate_code[$this->_site_code] === true) ? config_app('DefCateCode') : '';
         $_data_method = '_getSite' . $this->_site_code . 'Data';
 
         // get data

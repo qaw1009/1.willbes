@@ -17,14 +17,10 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; font-size:14px; position: relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
-
+        
         /************************************************************/
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/04/2631_top_bg.jpg) no-repeat center top; height:765px}
-        .evtTop .btnbox {position:absolute; bottom:80px; width:1120px; left:50%; margin-left:-560px}
-        .evtTop .btnbox a {display:inline-block; background:#280c7c; color:#fff; font-size:18px; padding:20px 0; margin:0 10px; text-align:center; border-radius:10px; width:45%; border:1px solid #502caa}
-        .evtTop .btnbox a strong {font-size:23px; font-weight:bold}
-        .evtTop .btnbox a.on {background:#fff; color:#280c7c;}
 
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/08/2736_top_bg.jpg) no-repeat center;}
 
         .evtLec { padding-bottom:100px;}        
         .evtlecBox_A {width:1020px; margin:0 auto; text-align:center; display: flex; flex-wrap: wrap; justify-content: space-between;}     
@@ -90,12 +86,12 @@
         .evtInfo {padding:100px 0; background:#1b1a1f; color:#9494a2; font-size:16px}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
         .evtInfoBox h4 {font-size:40px; margin-bottom:20px; color:#fff}
-        .evtInfoBox h4 span {color:#c6e6f4; vertical-align: top;}
-        .evtInfoBox h5 {font-size:18px; margin-bottom:10px; font-weight:bold}
-        .evtInfoBox ul {margin-bottom:30px}
+        .evtInfoBox h4 span {color:#FFFF00; vertical-align: top;}
+        .evtInfoBox h5 {font-size:18px; margin-bottom:10px; font-weight:bold;color:#fff;}
+        .evtInfoBox ul {margin-bottom:30px;color:#fff;}     
         .evtInfoBox li {list-style-type: decimal;margin-left:30px; margin-bottom:10px}
 
-        .willbes-Layer-CurriBox {top:2000px; margin-left: -560px;}
+        .willbes-Layer-CurriBox {top:2800px; margin-left: -560px;}
 
         .ssam .willbes-Layer-youtube {
             display: none;
@@ -104,7 +100,7 @@
             display:flex; justify-content: center;align-items: center;
             background:#000;
             position: absolute;
-            top: 2000px;
+            top: 2800px;
             z-index: 110;
             width: 860px;
             height: 484px;
@@ -137,7 +133,7 @@
                 ]
                 ,'prof_name' => '이경범 교육학'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159817' : '194596'
-                ,'prod_name' => '7개월 PASS'
+                ,'prod_name' => '막판역전 FULL PASS'
                 ,'expt_pay_price' => '1900000'
                 ,'expt_disc_price' => '950000'
                 ,'expt_disc_rate' => '50'
@@ -154,7 +150,7 @@
                 ]
                 ,'prof_name' => '신태식 교육학'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159818' : '194366'
-                ,'prod_name' => '7개월 PASS'
+                ,'prod_name' => '막판역전 FULL PASS'
                 ,'expt_pay_price' => '1700000'
                 ,'expt_disc_price' => '850000'
                 ,'expt_disc_rate' => '50'
@@ -175,7 +171,7 @@
                 ]
                 ,'prof_name' => '김철홍 수학'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159819' : '194586'
-                ,'prod_name' => '7개월 PASS'
+                ,'prod_name' => '막판역전 FULL PASS'
                 ,'expt_pay_price' => '4430000'
                 ,'expt_disc_price' => '1550000'
                 ,'expt_disc_rate' => '65'
@@ -192,7 +188,7 @@
                 ]
                 ,'prof_name' => '허역팀 일반사회'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159820' : '194600'
-                ,'prod_name' => '7개월 PASS'
+                ,'prod_name' => '막판역전 FULL PASS'
                 ,'expt_pay_price' => '2490000'
                 ,'expt_disc_price' => '1245000'
                 ,'expt_disc_rate' => '50'
@@ -209,7 +205,7 @@
                 ]
                 ,'prof_name' => '김종권 역사'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159821' : '194604'
-                ,'prod_name' => '7개월 PASS'
+                ,'prod_name' => '막판역전 FULL PASS'
                 ,'expt_pay_price' => '2880000'
                 ,'expt_disc_price' => '1440000'
                 ,'expt_disc_rate' => '50'
@@ -226,7 +222,7 @@
                 ]
                 ,'prof_name' => '최우영 전기'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159822' : '194602'
-                ,'prod_name' => '7개월 PASS'
+                ,'prod_name' => '막판역전 FULL PASS'
                 ,'expt_pay_price' => '2690000'
                 ,'expt_disc_price' => '1200000'
                 ,'expt_disc_rate' => '55'
@@ -243,7 +239,7 @@
                 ]
                 ,'prof_name' => '최우영 전자'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '194603'
-                ,'prod_name' => '7개월 PASS'
+                ,'prod_name' => '막판역전 FULL PASS'
                 ,'expt_pay_price' => '2990000'
                 ,'expt_disc_price' => '1200000'
                 ,'expt_disc_rate' => '59'
@@ -253,18 +249,16 @@
     @endphp
 
     <div class="p_re evtContent NSK ssam" id="evtContainer">
-        <div class="evtCtnsBox evtTop">
-            <div class="btnbox">
-                <a href="#evtLec" class="on">7개월<br> <strong>기간제 PASS 바로가기 ▼</strong></a>
-                <a href="{{front_url('/promotion/index/cate/3140/code/2632')}}">2023+24학년도 대비<br> <strong>얼리버드 PASS 바로가기 ▶</strong></a>
-            </div>
+
+        <div class="evtCtnsBox wb_top" data-aos="fade-down">           
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/2736_top.jpg"  alt="막판역전 풀패스" />        
         </div>
 
-        <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2631_01.jpg" alt="열공지원금 팡팡"/>
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/2736_01.jpg" alt="준비가 필요한 이유"/>
         </div>
 
-        <div class="evtCtnsBox evtLec" id="evtLec">
+        <div class="evtCtnsBox evtLec" id="evtLec" data-aos="fade-up">
             <div class="evtlecBox_A">
                 @foreach($arr_product as $row)
                     <div class="lec">
@@ -290,10 +284,10 @@
                 @endforeach
             </div>
             <div class="evtlecBox_B" id="order_box_online">
-                <h5><span>2023학년도 대비 7개월 기간제 연간 PASS</span> 수강신청 내역</h5>
+                <h5><span>2023학년도 대비 막판역전 FULL PASS</span> 수강신청 내역</h5>
                 <div class="lec">
-                    {{--<div><span class="tx-blue">[이경범 교육학]</span> 7개월 PASS / 1.2배수 <span class="price">(정가)1,900,000원 <strong>50%할인</strong></span></div>
-                    <div><span class="tx-blue">[허역팀 일반사회]</span> 7개월 PASS / 1.2배수 <span class="price">(정가)2,490,000원 <strong>50%할인</strong></span></div>--}}
+                    {{--<div><span class="tx-blue">[이경범 교육학]</span> 막판역전 FULL PASS / 1.2배수 <span class="price">(정가)1,900,000원 <strong>50%할인</strong></span></div>
+                    <div><span class="tx-blue">[허역팀 일반사회]</span> 막판역전 FULL PASS / 1.2배수 <span class="price">(정가)2,490,000원 <strong>50%할인</strong></span></div>--}}
                 </div>
                 <div class="total NSK-Black">총 결제금액 : <span class="prod-cnt">-과목 </span> / <span class="sale-price"> -원</span></div>
                 <div class="buy">
@@ -303,21 +297,20 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2631_02.jpg" alt="초심을 잃지 마세요~!"/>
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/2736_02.jpg" alt="풀패스로 도전하세요"/>
         </div>
 
-        <div class="evtCtnsBox evtInfo">
+        <div class="evtCtnsBox evtInfo" data-aos="fade-up">
             <div class="evtInfoBox">
-                <h4 class="NSK-Black"><span>7개월 기간제 연간 PASS </span> 상품 이용안내</h4>
+                <h4 class="NSK-Black"><span>막판역전 FULL PASS </span> 상품 이용안내 및 유의사항</h4>
                 <ul>
                     <li>본 패키지는 2022년 11월 30일까지 1차 시험대비 연간 정규 전강좌를 온라인으로 수강할 수 있는 상품입니다. (2차대비는 포함하지 않음)</li>
-                    <li>본 패키지는 파격적인 할인 상품으로 1.2배수로 제공됩니다.</li>
+                    <li>본 패키지는 파격적인 할인 상품으로 1배수로 제공됩니다.</li>
                     <li>본 패키지의 상품 구성 및 커리큘럼은 변경 될 수 있습니다.</li>
-                    <li>본 패키지의 수강 기간 중 "일시중지" 및 "(유료)연장＂은 할 수 없습니다.</li>
+                    <li>본 패키지의 수강 기간 중 “일시중지” 및 “(유료)연장＂은 할 수 없습니다.</li>
                     <li>본 패키지 강의는 양도 및 매매가 불가하며, 위반 시 처벌 받을 수 있습니다.</li>
-                </ul>   
-
+                </ul>
                 <h5>[환불 규정]</h5>
                 <ul>
                     <li>본 패키지 강의의 환불은 수강기간, 수강 여부, 자료 다운 유무 등에 따라 금액을 공제하며, 강좌의 원 수강료 기준으로 공제가 됩니다.</li>
@@ -340,7 +333,15 @@
         </div>
         <div id="sec-prof-layer" class="willbes-Layer-Black"></div>
     </div>
-    <!-- End Container -->
+   <!-- End Container -->
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+        $(document).ready( function() {
+        AOS.init();
+        });
+    </script>
 
     <div id="order_div_online" style="display: none"></div>
     <form name="exptpay_form_online" id="exptpay_form_online">

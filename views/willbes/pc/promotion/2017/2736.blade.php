@@ -25,13 +25,13 @@
         .evtLec { padding-bottom:100px;}        
         .evtlecBox_A {width:1020px; margin:0 auto; text-align:center; display: flex; flex-wrap: wrap; justify-content: space-between;}     
         .evtlecBox_A .lec {margin:0 10px; }
-        .evtlecBox_A .lec:nth-child(1) {background:url(https://static.willbes.net/public/images/promotion/2022/04/2631_t01.jpg) no-repeat right bottom;}
-        .evtlecBox_A .lec:nth-child(2) {background:url(https://static.willbes.net/public/images/promotion/2022/04/2631_t02.jpg) no-repeat right bottom;}
-        .evtlecBox_A .lec:nth-child(3) {background:url(https://static.willbes.net/public/images/promotion/2022/04/2631_t05.jpg) no-repeat right bottom;}
-        .evtlecBox_A .lec:nth-child(4) {background:url(https://static.willbes.net/public/images/promotion/2022/04/2631_t03.jpg) no-repeat right bottom;}
-        .evtlecBox_A .lec:nth-child(5) {background:url(https://static.willbes.net/public/images/promotion/2022/04/2631_t04.jpg) no-repeat right bottom;}
+        .evtlecBox_A .lec:nth-child(1) {background:url(https://static.willbes.net/public/images/promotion/2022/08/2736_t01.jpg) no-repeat right bottom;}
+        .evtlecBox_A .lec:nth-child(2) {background:url(https://static.willbes.net/public/images/promotion/2022/08/2736_t02.jpg) no-repeat right bottom;}
+        .evtlecBox_A .lec:nth-child(3) {background:url(https://static.willbes.net/public/images/promotion/2022/08/2736_t05.jpg) no-repeat right bottom;}
+        .evtlecBox_A .lec:nth-child(4) {background:url(https://static.willbes.net/public/images/promotion/2022/08/2736_t03.jpg) no-repeat right bottom;}
+        .evtlecBox_A .lec:nth-child(5) {background:url(https://static.willbes.net/public/images/promotion/2022/08/2736_t04.jpg) no-repeat right bottom;}
         .evtlecBox_A .lec:nth-child(6),
-        .evtlecBox_A .lec:last-child {background:url(https://static.willbes.net/public/images/promotion/2022/04/2631_t06.jpg) no-repeat right bottom;}
+        .evtlecBox_A .lec:last-child {background:url(https://static.willbes.net/public/images/promotion/2022/08/2736_t06.jpg) no-repeat right bottom;}
         .evtlecBox_A .lec label {border:1px solid #c9c9c9; text-align:left; font-size:16px; width:490px; height:229px; padding:25px 30px; box-sizing:border-box; display:inline-block; position:relative}
         .evtlecBox_A .lec .txt01 {font-size:24px; color:#000; margin-bottom:5px; font-weight:600}
         .evtlecBox_A .lec .txt02 {font-size:27px; color:#4f26e7; margin-bottom:20px; font-weight:600}

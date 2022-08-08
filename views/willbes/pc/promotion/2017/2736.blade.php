@@ -123,42 +123,42 @@
 
     @php
         $arr_product = [
-
-        ];
-
-        $arr_product = [
             [
                 'prod_type' => '1'
                 ,'title' => '이경범 교육학'
                 ,'button' => [
                     [
-                        'youtube' => 'https://www.youtube.com/embed/KCX6VS8WyHc'
+                        'youtube' => 'https://www.youtube.com/watch?v=KCX6VS8WyHc'
                         ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51019' : '51312'
                     ]
                 ]
                 ,'prof_name' => '이경범 교육학'
-                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159817' : '194596'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159817' : '200261'
                 ,'prod_name' => '막판역전 FULL PASS'
                 ,'expt_pay_price' => '1900000'
-                ,'expt_disc_price' => '950000'
-                ,'expt_disc_rate' => '50'
+                ,'expt_disc_price' => '703000'
+                ,'expt_disc_rate' => '63'
                 ,'multiple_apply' => '1.2'
             ],
             [
-                'prod_type' => '1'
+                'prod_type' => '2'
                 ,'title' => '송원영 전공국어'
                 ,'button' => [
                     [
-                        'youtube' => 'https://www.youtube.com/embed/V4B8cUDEXik'
-                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51026' : '51336'
+                        'youtube' => 'https://www.youtube.com/watch?v=NH8iLXKXvBY'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51026' : '51100'
+                    ],
+                    [
+                        'youtube' => 'https://www.youtube.com/watch?v=r131TOlh_BA'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51026' : '51100'
                     ]
                 ]
                 ,'prof_name' => '송원영 전공국어'
-                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159818' : '194366'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159818' : '200287'
                 ,'prod_name' => '막판역전 FULL PASS'
-                ,'expt_pay_price' => '1700000'
-                ,'expt_disc_price' => '850000'
-                ,'expt_disc_rate' => '50'
+                ,'expt_pay_price' => '1180000'
+                ,'expt_disc_price' => '472000'
+                ,'expt_disc_rate' => '60'
                 ,'multiple_apply' => '1.2'
             ],
             [
@@ -166,20 +166,16 @@
                 ,'title' => '구동언 전공국어'
                 ,'button' => [
                     [
-                        'youtube' => 'https://www.youtube.com/embed/rNslov8PzaY'
-                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50969' : '51084'
-                    ],
-                    [
-                        'youtube' => 'https://www.youtube.com/embed/Jv0C0NI9OHA'
-                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50970' : '51085'
+                        'youtube' => 'https://www.youtube.com/watch?v=JO-7dSd6YRA'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50969' : '51313'
                     ]
                 ]
                 ,'prof_name' => '구동언 전공국어'
-                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159819' : '194586'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159819' : '200262'
                 ,'prod_name' => '막판역전 FULL PASS'
-                ,'expt_pay_price' => '4430000'
-                ,'expt_disc_price' => '1550000'
-                ,'expt_disc_rate' => '65'
+                ,'expt_pay_price' => '3180000'
+                ,'expt_disc_price' => '954000'
+                ,'expt_disc_rate' => '70'
                 ,'multiple_apply' => '1.2'
             ],
             [
@@ -187,16 +183,16 @@
                 ,'title' => '김영문 전공영어'
                 ,'button' => [
                     [
-                        'youtube' => 'https://www.youtube.com/embed/7L0WiPrb5xk'
-                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51013' : '51316'
+                        'youtube' => 'https://www.youtube.com/watch?v=x8QTx6siJD0'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51013' : '51082'
                     ]
                 ]
                 ,'prof_name' => '김영문 전공영어'
-                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159820' : '194600'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159820' : '200286'
                 ,'prod_name' => '막판역전 FULL PASS'
-                ,'expt_pay_price' => '2490000'
-                ,'expt_disc_price' => '1245000'
-                ,'expt_disc_rate' => '50'
+                ,'expt_pay_price' => '760000'
+                ,'expt_disc_price' => '228000'
+                ,'expt_disc_rate' => '70'
                 ,'multiple_apply' => '1.2'
             ],
             [
@@ -204,16 +200,16 @@
                 ,'title' => '허역팀 전공일반사회'
                 ,'button' => [
                     [
-                        'youtube' => 'https://www.youtube.com/embed/FXGg_Och9Uo'
-                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51022' : '51315'
+                        'youtube' => 'https://www.youtube.com/watch?v=7L0WiPrb5xk'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51022' : '51316'
                     ]
                 ]
                 ,'prof_name' => '허역팀 일반사회'
-                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159821' : '194604'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159821' : '200263'
                 ,'prod_name' => '막판역전 FULL PASS'
-                ,'expt_pay_price' => '2880000'
-                ,'expt_disc_price' => '1440000'
-                ,'expt_disc_rate' => '50'
+                ,'expt_pay_price' => '2490000'
+                ,'expt_disc_price' => '996000'
+                ,'expt_disc_rate' => '60'
                 ,'multiple_apply' => '1.2'
             ],
             [
@@ -221,16 +217,16 @@
                 ,'title' => '김종권 전공역사'
                 ,'button' => [
                     [
-                        'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
-                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                        'youtube' => 'https://www.youtube.com/watch?v=FXGg_Och9Uo'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51315'
                     ]
                 ]
                 ,'prof_name' => '김종권 역사'
-                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159822' : '194602'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159822' : '200264'
                 ,'prod_name' => '막판역전 FULL PASS'
-                ,'expt_pay_price' => '2690000'
-                ,'expt_disc_price' => '1200000'
-                ,'expt_disc_rate' => '55'
+                ,'expt_pay_price' => '2880000'
+                ,'expt_disc_price' => '1094400'
+                ,'expt_disc_rate' => '62'
                 ,'multiple_apply' => '1.2'
             ],
             [
@@ -238,33 +234,33 @@
                 ,'title' => '김철홍 전공수학'
                 ,'button' => [
                     [
-                        'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
-                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                        'youtube' => 'https://www.youtube.com/watch?v=rNslov8PzaY'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51084'
                     ]
                 ]
                 ,'prof_name' => '김철홍 전공수학'
-                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '194603'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '200283'
                 ,'prod_name' => '막판역전 FULL PASS'
-                ,'expt_pay_price' => '2990000'
-                ,'expt_disc_price' => '1200000'
-                ,'expt_disc_rate' => '59'
+                ,'expt_pay_price' => '2710000'
+                ,'expt_disc_price' => '813000'
+                ,'expt_disc_rate' => '70'
                 ,'multiple_apply' => '1.2'
             ],
             [
                 'prod_type' => '2'
-                ,'title' => '박태영 수학교육론'
+                ,'title' => '김태영 수학교육론'
                 ,'button' => [
                     [
-                        'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
-                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                        'youtube' => 'https://www.youtube.com/watch?v=Jv0C0NI9OHA'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51085'
                     ]
                 ]
                 ,'prof_name' => '박태영 수학교육론'
-                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '194603'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '200284'
                 ,'prod_name' => '막판역전 FULL PASS'
-                ,'expt_pay_price' => '2990000'
-                ,'expt_disc_price' => '1200000'
-                ,'expt_disc_rate' => '59'
+                ,'expt_pay_price' => '1720000'
+                ,'expt_disc_price' => '516000'
+                ,'expt_disc_rate' => '70'
                 ,'multiple_apply' => '1.2'
             ],
             [
@@ -272,16 +268,16 @@
                 ,'title' => '김현웅 전공수학'
                 ,'button' => [
                     [
-                        'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
-                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                        'youtube' => 'https://www.youtube.com/watch?v=Ae976vy72WQ'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51338'
                     ]
                 ]
                 ,'prof_name' => '김현웅 전공수학'
-                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '194603'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '200265'
                 ,'prod_name' => '막판역전 FULL PASS'
-                ,'expt_pay_price' => '2990000'
-                ,'expt_disc_price' => '1200000'
-                ,'expt_disc_rate' => '59'
+                ,'expt_pay_price' => '1770000'
+                ,'expt_disc_price' => '743400'
+                ,'expt_disc_rate' => '58'
                 ,'multiple_apply' => '1.2'
             ],
             [
@@ -289,16 +285,16 @@
                 ,'title' => '박혜향 수학교육론'
                 ,'button' => [
                     [
-                        'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
-                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                        'youtube' => 'https://www.youtube.com/watch?v=xekFrp8s4bo'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51314'
                     ]
                 ]
                 ,'prof_name' => '박혜향 수학교육론'
-                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '194603'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '200267'
                 ,'prod_name' => '막판역전 FULL PASS'
-                ,'expt_pay_price' => '2990000'
-                ,'expt_disc_price' => '1200000'
-                ,'expt_disc_rate' => '59'
+                ,'expt_pay_price' => '1110000'
+                ,'expt_disc_price' => '388500'
+                ,'expt_disc_rate' => '65'
                 ,'multiple_apply' => '1.2'
             ],
             [
@@ -306,33 +302,33 @@
                 ,'title' => '장영희 전공중국어'
                 ,'button' => [
                     [
-                        'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
-                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                        'youtube' => 'https://www.youtube.com/watch?v=nXC4KosrbmQ'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51318'
                     ]
                 ]
                 ,'prof_name' => '장영희 전공중국어'
-                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '194603'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '200268'
                 ,'prod_name' => '막판역전 FULL PASS'
-                ,'expt_pay_price' => '2990000'
-                ,'expt_disc_price' => '1200000'
-                ,'expt_disc_rate' => '59'
+                ,'expt_pay_price' => '4370000'
+                ,'expt_disc_price' => '1311000'
+                ,'expt_disc_rate' => '70'
                 ,'multiple_apply' => '1.2'
             ],
             [
                 'prod_type' => '2'
-                ,'title' => '최김민응 전공도덕윤리'
+                ,'title' => '김민응 도덕윤리'
                 ,'button' => [
                     [
-                        'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
-                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                        'youtube' => 'https://www.youtube.com/watch?v=zX_ax7V7-6o'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51317'
                     ]
                 ]
-                ,'prof_name' => '김민응 전공도덕윤리'
-                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '194603'
+                ,'prof_name' => '김민응 도덕윤리'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '200269'
                 ,'prod_name' => '막판역전 FULL PASS'
-                ,'expt_pay_price' => '2990000'
-                ,'expt_disc_price' => '1200000'
-                ,'expt_disc_rate' => '59'
+                ,'expt_pay_price' => '1840000'
+                ,'expt_disc_price' => '496800'
+                ,'expt_disc_rate' => '73'
                 ,'multiple_apply' => '1.2'
             ]
         ];

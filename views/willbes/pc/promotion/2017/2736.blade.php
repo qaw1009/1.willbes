@@ -146,14 +146,14 @@
             ],
             [
                 'prod_type' => '1'
-                ,'title' => '신태식 교육학'
+                ,'title' => '송원영 전공국어'
                 ,'button' => [
                     [
                         'youtube' => 'https://www.youtube.com/embed/V4B8cUDEXik'
                         ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51026' : '51336'
                     ]
                 ]
-                ,'prof_name' => '신태식 교육학'
+                ,'prof_name' => '송원영 전공국어'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159818' : '194366'
                 ,'prod_name' => '막판역전 FULL PASS'
                 ,'expt_pay_price' => '1700000'
@@ -163,7 +163,7 @@
             ],
             [
                 'prod_type' => '2'
-                ,'title' => '김철홍/박태영 전공수학'
+                ,'title' => '구동언 전공국어'
                 ,'button' => [
                     [
                         'youtube' => 'https://www.youtube.com/embed/rNslov8PzaY'
@@ -174,7 +174,7 @@
                         ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50970' : '51085'
                     ]
                 ]
-                ,'prof_name' => '김철홍 수학'
+                ,'prof_name' => '구동언 전공국어'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159819' : '194586'
                 ,'prod_name' => '막판역전 FULL PASS'
                 ,'expt_pay_price' => '4430000'
@@ -184,14 +184,14 @@
             ],
             [
                 'prod_type' => '2'
-                ,'title' => '허역팀 전공일반사회'
+                ,'title' => '김영문 전공영어'
                 ,'button' => [
                     [
                         'youtube' => 'https://www.youtube.com/embed/7L0WiPrb5xk'
                         ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51013' : '51316'
                     ]
                 ]
-                ,'prof_name' => '허역팀 일반사회'
+                ,'prof_name' => '김영문 전공영어'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159820' : '194600'
                 ,'prod_name' => '막판역전 FULL PASS'
                 ,'expt_pay_price' => '2490000'
@@ -201,14 +201,14 @@
             ],
             [
                 'prod_type' => '2'
-                ,'title' => '김종권 전공역사'
+                ,'title' => '허역팀 전공일반사회'
                 ,'button' => [
                     [
                         'youtube' => 'https://www.youtube.com/embed/FXGg_Och9Uo'
                         ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51022' : '51315'
                     ]
                 ]
-                ,'prof_name' => '김종권 역사'
+                ,'prof_name' => '허역팀 일반사회'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159821' : '194604'
                 ,'prod_name' => '막판역전 FULL PASS'
                 ,'expt_pay_price' => '2880000'
@@ -218,14 +218,14 @@
             ],
             [
                 'prod_type' => '2'
-                ,'title' => '최우영 전기'
+                ,'title' => '김종권 전공역사'
                 ,'button' => [
                     [
                         'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
                         ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
                     ]
                 ]
-                ,'prof_name' => '최우영 전기'
+                ,'prof_name' => '김종권 역사'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159822' : '194602'
                 ,'prod_name' => '막판역전 FULL PASS'
                 ,'expt_pay_price' => '2690000'
@@ -235,14 +235,99 @@
             ],
             [
                 'prod_type' => '2'
-                ,'title' => '최우영 전자'
+                ,'title' => '김철홍 전공수학'
                 ,'button' => [
                     [
                         'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
                         ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
                     ]
                 ]
-                ,'prof_name' => '최우영 전자'
+                ,'prof_name' => '김철홍 전공수학'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '194603'
+                ,'prod_name' => '막판역전 FULL PASS'
+                ,'expt_pay_price' => '2990000'
+                ,'expt_disc_price' => '1200000'
+                ,'expt_disc_rate' => '59'
+                ,'multiple_apply' => '1.2'
+            ],
+            [
+                'prod_type' => '2'
+                ,'title' => '박태영 수학교육론'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                    ]
+                ]
+                ,'prof_name' => '박태영 수학교육론'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '194603'
+                ,'prod_name' => '막판역전 FULL PASS'
+                ,'expt_pay_price' => '2990000'
+                ,'expt_disc_price' => '1200000'
+                ,'expt_disc_rate' => '59'
+                ,'multiple_apply' => '1.2'
+            ],
+            [
+                'prod_type' => '2'
+                ,'title' => '김현웅 전공수학'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                    ]
+                ]
+                ,'prof_name' => '김현웅 전공수학'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '194603'
+                ,'prod_name' => '막판역전 FULL PASS'
+                ,'expt_pay_price' => '2990000'
+                ,'expt_disc_price' => '1200000'
+                ,'expt_disc_rate' => '59'
+                ,'multiple_apply' => '1.2'
+            ],
+            [
+                'prod_type' => '2'
+                ,'title' => '박혜향 수학교육론'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                    ]
+                ]
+                ,'prof_name' => '박혜향 수학교육론'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '194603'
+                ,'prod_name' => '막판역전 FULL PASS'
+                ,'expt_pay_price' => '2990000'
+                ,'expt_disc_price' => '1200000'
+                ,'expt_disc_rate' => '59'
+                ,'multiple_apply' => '1.2'
+            ],
+            [
+                'prod_type' => '2'
+                ,'title' => '장영희 전공중국어'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                    ]
+                ]
+                ,'prof_name' => '장영희 전공중국어'
+                ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '194603'
+                ,'prod_name' => '막판역전 FULL PASS'
+                ,'expt_pay_price' => '2990000'
+                ,'expt_disc_price' => '1200000'
+                ,'expt_disc_rate' => '59'
+                ,'multiple_apply' => '1.2'
+            ],
+            [
+                'prod_type' => '2'
+                ,'title' => '최김민응 전공도덕윤리'
+                ,'button' => [
+                    [
+                        'youtube' => 'https://www.youtube.com/embed/mZDUnozVMB8'
+                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51091'
+                    ]
+                ]
+                ,'prof_name' => '김민응 전공도덕윤리'
                 ,'prod_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '159823' : '194603'
                 ,'prod_name' => '막판역전 FULL PASS'
                 ,'expt_pay_price' => '2990000'
@@ -273,7 +358,7 @@
                             <div class="txt03">
                                 @foreach($row['button'] as $index => $buttons)
                                     {!! ($loop->first === false) ? '<br>' : '' !!}
-                                    <a href="javascript:void(0);" onclick="openWin('sec-prof-layer'); fnOpenProfCurriculum('{{$buttons['prof_code']}}'); return false;">커리큘럼 확인하기</a>
+                                    <a href="javascript:void(0);" onclick="openWin('sec-prof-layer'); fnOpenProfCurriculum('{{$buttons['prof_code']}}'); return false;">커리큘럼 확인</a>
                                     <a href="javascript:void(0);" onclick="fnOpenYoutube('{{$buttons['youtube']}}'); return false;">설명회 보기</a>
                                 @endforeach
                             </div>

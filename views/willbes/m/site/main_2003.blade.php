@@ -1,6 +1,7 @@
 @php
     //인트로 페이지 리다이렉트
-    redirect(front_url('/intro/index')); exit;
+    $qs = empty($_SERVER['QUERY_STRING']) === true ? '' : '?' . $_SERVER['QUERY_STRING'];
+    redirect(front_url('/intro/index' . $qs)); exit;
 @endphp
 
 @extends('willbes.m.layouts.master')

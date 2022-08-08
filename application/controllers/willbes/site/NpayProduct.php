@@ -38,8 +38,8 @@ class NpayProduct extends \app\controllers\FrontController
                     'id' => $row['id'],                             // 상품코드
                     'goods_type' => 'P',                            // 상품타입 (지류도서)
                     'title' => $row['title'] . '^^',                // 도서명^권호정보^버전정보
-                    'normal_price' => $row['normal_price'],         // 원가
-                    'price_pc' => $row['price_pc'],                 // 판매가
+                    'normal_price' => (int)$row['normal_price'],         // 원가
+                    'price_pc' => (int)$row['price_pc'],                 // 판매가
                     //'price_mobile' => $row['price_mobile'],
                     'link' => $row['link'],                         // 상품URL
                     'mobile_link' => $row['mobile_link'],           // 모바일 상품URL
@@ -50,7 +50,7 @@ class NpayProduct extends \app\controllers\FrontController
                     'author' => explode(', ', (str_replace(',', '^,', $row['brand']) . '^')),   // 저자명^저자코드 배열
                     'publisher' => $row['maker'],                   // 출판사
                     'search_tag' => array_filter(explode('|', $row['search_tag'])),     // 검색태그 배열
-                    'shipping' => $row['shipping'],                 // 배송료
+                    'shipping' => (int)$row['shipping'],                 // 배송료
                 ];
 
                 $write .= json_encode($arr_line, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES) . PHP_EOL;  // 유니코드 변환안함, 역슬래시 추가안함

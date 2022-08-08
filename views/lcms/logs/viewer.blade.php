@@ -37,8 +37,8 @@
                     <form class="form-horizontal" id="search_form" name="search_form" method="GET">
                         <input type="hidden" name="sort_idx" value="{{ $sort_idx }}"/>
                         <input type="hidden" name="sort_dir" value="{{ $sort_dir }}"/>
-                        <div class="col-xs-1" style="padding-left: 0;">
-                            <select class="form-control" id="log_type" name="log_type" required="required">
+                        <div class="col-xs-2" style="padding-left: 0;">
+                            <select class="form-control" id="log_type" name="log_type" required="required" title="로그구분">
                                 <option value="">TYPE</option>
                                 <option value="willbes">willbes</option>
                                 <option value="lms">lms</option>
@@ -47,14 +47,17 @@
                                 <option value="api">api</option>
                                 <option value="cli">cli</option>
                                 <option value="cron">cron</option>
-                                <option value="pg">PG결제</option>
-                                <option value="deposit">PG입금통보</option>
-                                <option value="pg_mobile">PG모바일결제</option>
-                                <option value="deposit_mobile">PG모바일승인통보</option>
+                                <option value="pg_inisis">PG결제(이니시스)</option>
+                                <option value="deposit_inisis">PG입금통보(이니시스)</option>
+                                <option value="pg_inisis_mobile">PG모바일결제(이니시스)</option>
+                                <option value="deposit_inisis_mobile">PG모바일승인통보(이니시스)</option>
+                                <option value="pg_toss">PG결제(토스)</option>
+                                <option value="deposit_toss">PG입금통보(토스)</option>
+                                <option value="escrow_toss">PG에스크로(토스)</option>
                             </select>
                         </div>
                         <div class="col-xs-1" style="padding-left: 0;">
-                            <select class="form-control" id="log_pattern" name="log_pattern" required="required">
+                            <select class="form-control" id="log_pattern" name="log_pattern" required="required" title="로그패턴">
                                 <option value="">PATTERN</option>
                                 <option value="log">log</option>
                                 <option value="query">query</option>
@@ -62,7 +65,7 @@
                             </select>
                         </div>
                         <div class="col-xs-1" style="padding-left: 0;">
-                            <select class="form-control" id="log_level" name="log_level">
+                            <select class="form-control" id="log_level" name="log_level" title="로그레벨">
                                 <option value="ALL">Level</option>
                                 <option value="DEBUG">DEBUG</option>
                                 <option value="ERROR">ERROR</option>
@@ -70,7 +73,7 @@
                         </div>
                         <div class="col-xs-2">
                             <div class="input-group">
-                                <input type="text" id="log_date" name="log_date" class="form-control datepicker" value="{{ date('Y-m-d') }}" required="required" autocomplete="off"/>
+                                <input type="text" id="log_date" name="log_date" class="form-control datepicker" value="{{ date('Y-m-d') }}" required="required" autocomplete="off" title="조회일자"/>
                                 <span class="input-group-btn">
                                     <button class="btn btn-primary" type="submit" id="btn_search">Search</button>
                                 </span>
@@ -81,7 +84,7 @@
                                 <label><input type="checkbox" id="is_404_except" name="is_404_except" value="Y" style="width: 16px; height: 16px;" {!! $is_404_except == 'Y' ? 'checked="checked"' : '' !!}/> 404 Page Not Found 제외</label>
                             </div>
                         </div>
-                        <div class="col-xs-5 text-right" style="padding-right: 0;">
+                        <div class="col-xs-4 text-right" style="padding-right: 0;">
                             <button class="btn btn-success" type="button" id="btn_download">Download</button>
                         </div>
                     </form>

@@ -204,16 +204,15 @@ class LogViewer
         empty($log_type) === false && $this->log_type = strtolower($log_type);
         empty($log_pattern) === false && $this->log_pattern = strtolower($log_pattern);
 
-        switch ($this->log_type) {
+        $log_group = str_first_pos_before($this->log_type, '_');
+
+        switch ($log_group) {
             case 'pg' :
             case 'deposit' :
-                $log_path = 'pg/inisis';
-                $log_file = ($this->log_type == 'deposit' ? 'deposit' : 'log') . '-' . $log_date . '.log';
-                break;
-            case 'pg_mobile' :
-            case 'deposit_mobile' :
-                $log_path = 'pg/inisis_mobile';
-                $log_file = ($this->log_type == 'deposit_mobile' ? 'deposit' : 'log') . '-' . $log_date . '.log';
+            case 'escrow' :
+                $pg_driver = str_first_pos_after($this->log_type, '_');
+                $log_path = 'pg/' . $pg_driver;
+                $log_file = ($log_group == 'pg' ? 'log' : $log_group) . '-' . $log_date . '.log';
                 break;
             default :
                 $log_path = strtolower($this->log_type) . ($this->log_pattern == 'log' ? '' : '/sql');

@@ -480,18 +480,25 @@
                     for(i=0; i<groupArray.length;i++) {
                         $checked = "";
                         $ess_checked_count = 0;
+                        $fail = "";
                         $(".lec-essential").find('.essSubGroup-'+groupArray[i]).each(function (){
                             if ($(this).is(':checked')) {
                                 $checked = "Y";
                                 $ess_checked_count += 1;
                             }
+                            if($checked === "") {
+                                $fail = "Y";
+                                alert("필수과목은 과목별 1개씩 선택하셔야 합니다.");
+                                return;
+                            }
+                            if($ess_checked_count > 1) {
+                                $fail = "Y";
+                                alert("필수과목은 과목별 1개씩 선택하셔야 합니다. 현재 2개 이상의 과목이 선택되었습니다.");
+                                return;
+                            }
                         });
-                        if($checked === "") {
-                            alert("필수과목은 과목별 1개씩 선택하셔야 합니다.");
-                            return;
-                        }
-                        if($ess_checked_count > 1) {
-                            alert("필수과목은 과목별 1개씩 선택하셔야 합니다. 현재 2개 이상의 과목이 선택되었습니다.");
+
+                        if($fail === "Y") {
                             return;
                         }
                     }

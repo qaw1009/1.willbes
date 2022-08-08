@@ -664,6 +664,7 @@ class Pg_inisis extends CI_Driver
             return [
                 'result' => true,
                 'result_msg' => '정상완료',
+                'next_method' => 'DepositComplete', // 다음 실행 메소드
                 'order_no' => $returns['no_oid'],   // 주문번호
                 'seq' => $returns['no_msgseq'],     // 전문 일련번호
                 'mid' => $returns['id_merchant'],   // 상점아이디
@@ -683,6 +684,7 @@ class Pg_inisis extends CI_Driver
             return [
                 'result' => false,
                 'result_msg' => $e->getMessage(),
+                'next_method' => '',
                 'order_no' => $returns['no_oid']
             ];
         }
@@ -705,7 +707,9 @@ class Pg_inisis extends CI_Driver
             $this->_parent->saveFileLog('가상계좌 입금통보 처리 오류 발생 : ' . $err_msg, null, 'error', $log_type);
 
             // 로그 에러 메시지 업데이트
-            $this->_saveLog(['err_msg' => $err_msg], $log_type, $log_idx);
+            if (empty($log_idx) === false) {
+                $this->_saveLog(['err_msg' => $err_msg], $log_type, $log_idx);
+            }
 
             $ret_msg = strpos($err_msg, 'ERR_') === false ? 'ERR_DB' : $err_msg;
         }

@@ -363,7 +363,9 @@ class Pg_inisis_mobile extends CI_Driver
             $this->_parent->saveFileLog('결제 승인결과 통보 처리 오류 발생 : ' . $err_msg, null, 'error', $log_type);
 
             // 로그 에러 메시지 업데이트
-            $this->_saveLog(['err_msg' => $err_msg], $log_type, $log_idx);
+            if (empty($log_idx) === false) {
+                $this->_saveLog(['err_msg' => $err_msg], $log_type, $log_idx);
+            }
 
             $ret_msg = strpos($err_msg, 'ERR_') === false ? 'ERR_DB' : $err_msg;
         }

@@ -4,6 +4,7 @@
     <ul class="nav nav-tabs bar_tabs mb-20" role="tablist">
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/pay') }}">결제/취소</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/deposit') }}">가상계좌입금통보</a></li>
+        <li role="presentation"><a href="{{ site_url('/sys/payLog/index/escrow') }}">에스크로</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/stats') }}">승인완료통계</a></li>
         <li role="presentation" class="active"><a href="{{ site_url('/sys/payLog/cancelStats') }}" class="cs-pointer"><strong>결제취소통계</strong></a></li>
     </ul>

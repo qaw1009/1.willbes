@@ -4,6 +4,7 @@
     <ul class="nav nav-tabs bar_tabs mb-20" role="tablist">
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/pay') }}">결제/취소</a></li>
         <li role="presentation" class="active"><a href="{{ site_url('/sys/payLog/index/deposit') }}" class="cs-pointer"><strong>가상계좌입금통보</strong></a></li>
+        <li role="presentation"><a href="{{ site_url('/sys/payLog/index/escrow') }}">에스크로</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/stats') }}">승인완료통계</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/cancelStats') }}">결제취소통계</a></li>
     </ul>
@@ -27,8 +28,9 @@
                     <div class="col-md-5 form-inline">
                         <select class="form-control mr-10" id="search_pg_driver" name="search_pg_driver" title="PG구분">
                             <option value="">PG구분</option>
-                            <option value="inisis">이니시스</option>
-                            <option value="toss">토스</option>
+                            @foreach($codes['PgDriver'] as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
                         </select>
                         <select class="form-control mr-10" id="search_pg_mid" name="search_pg_mid" title="상점아이디">
                             <option value="">상점아이디</option>

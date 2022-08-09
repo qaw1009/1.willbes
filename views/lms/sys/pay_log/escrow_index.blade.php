@@ -2,13 +2,13 @@
 
 @section('content')
     <ul class="nav nav-tabs bar_tabs mb-20" role="tablist">
-        <li role="presentation" class="active"><a href="{{ site_url('/sys/payLog/index/pay') }}" class="cs-pointer"><strong>결제/취소</strong></a></li>
+        <li role="presentation"><a href="{{ site_url('/sys/payLog/index/pay') }}">결제/취소</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/deposit') }}">가상계좌입금통보</a></li>
-        <li role="presentation"><a href="{{ site_url('/sys/payLog/index/escrow') }}">에스크로</a></li>
+        <li role="presentation" class="active"><a href="{{ site_url('/sys/payLog/index/escrow') }}" class="cs-pointer"><strong>에스크로</strong></a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/stats') }}">승인완료통계</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/cancelStats') }}">결제취소통계</a></li>
     </ul>
-    <h5>- 결제/취소 연동 로그를 확인하는 메뉴입니다.</h5>
+    <h5>- 에스크로 연동 로그를 확인하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
@@ -19,36 +19,15 @@
                         <select class="form-control mr-10" id="search_keyword" name="search_keyword" title="주문검색키워드">
                             <option value="OrderNo">주문번호</option>
                             <option value="PgMid">상점아이디</option>
-                            <option value="PgTid">TID</option>
-                            <option value="ApprovalNo">승인번호</option>
-                            <option value="ResultMsg">결과메시지</option>
-                            <option value="ReqReason">요청사유</option>
+                            <option value="EscrowParam2">송장번호</option>
                         </select>
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width: 260px;" title="주문검색어">
                     </div>
                     <label class="control-label col-md-1">구분</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control mr-10" id="search_pg_driver" name="search_pg_driver" title="PG구분">
-                            <option value="">PG구분</option>
-                            @foreach($codes['PgDriver'] as $key => $val)
-                                <option value="{{ $key }}">{{ $val }}</option>
-                            @endforeach
-                        </select>
                         <select class="form-control mr-10" id="search_pg_mid" name="search_pg_mid" title="상점아이디">
                             <option value="">상점아이디</option>
-                            @foreach($codes['PgMid'] as $key => $val)
-                                <option value="{{ $key }}">{{ $val }}</option>
-                            @endforeach
-                        </select>
-                        <select class="form-control mr-10" id="search_pay_method" name="search_pay_method" title="결제방법">
-                            <option value="">결제방법</option>
-                            @foreach($codes['PayMethod'] as $key => $val)
-                                <option value="{{ $key }}">{{ $val }}</option>
-                            @endforeach
-                        </select>
-                        <select class="form-control mr-10" id="search_pay_type" name="search_pay_type" title="연동구분">
-                            <option value="">연동구분</option>
-                            @foreach($codes['PayType'] as $key => $val)
+                            @foreach($codes['PgBookMid'] as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
@@ -99,18 +78,14 @@
                     <th class="valign-middle">No</th>
                     <th class="valign-middle">주문번호</th>
                     <th class="valign-middle">PG구분</th>
-                    <th class="valign-middle">결제구분</th>
                     <th class="valign-middle">상점아이디</th>
-                    <th class="valign-middle">TID<br/>(부분환불TID)</th>
-                    <th class="valign-middle">결제수단</th>
-                    <th class="valign-middle">결제상세코드</th>
-                    <th class="valign-middle">결제(취소)금액<br/>(부분환불남은금액)</th>
-                    <th class="valign-middle">승인번호</th>
-                    <th class="valign-middle">승인일시</th>
+                    <th class="valign-middle">택배사</th>
+                    <th class="valign-middle">송장번호</th>
+                    <th class="valign-middle">발송일시</th>
                     <th class="valign-middle">결과코드</th>
                     <th class="valign-middle">결과메시지</th>
-                    <th class="valign-middle">요청사유</th>
                     <th class="valign-middle">등록일시</th>
+                    <th class="valign-middle">재전송</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -151,25 +126,42 @@
                         return row.OrderIdx === null ? data : '<a href="{{ site_url('/pay/order/show/') }}' + row.OrderIdx + '" target="_blank"><u class="blue">' + data + '</u></a>';
                     }},
                     {'data' : 'PgDriver'},
-                    {'data' : 'PayType', 'render' : function(data, type, row, meta) {
-                        return meta.settings.json.codes.PayType[data];
-                    }},
                     {'data' : 'PgMid'},
-                    {'data' : 'PgTid', 'render' : function(data, type, row, meta) {
-                        return (data !== null ? data : '') + (row.ResultPgTid !== null ? '<br/>' + row.ResultPgTid : '');
-                    }},
-                    {'data' : 'PayMethod'},
-                    {'data' : 'PayDetailCode'},
-                    {'data' : 'ReqPayPrice', 'render' : function(data, type, row, meta) {
-                        return (data != null ? addComma(data) : '') + (row.ResultPayPrice !== null ? '<br/>' + addComma(row.ResultPayPrice) : '');
-                    }},
-                    {'data' : 'ApprovalNo'},
-                    {'data' : 'ApprovalDatm'},
+                    {'data' : 'EscrowParam1Name'},
+                    {'data' : 'EscrowParam2'},
+                    {'data' : 'EscrowDatm'},
                     {'data' : 'ResultCode'},
-                    {'data' : 'ResultMsg'},
-                    {'data' : 'ReqReason'},
-                    {'data' : 'RegDatm'}
+                    {'data' : 'ResultMsg', 'render' : function(data, type, row, meta) {
+                        return '<div style="max-width: 580px; word-break: break-all;">' + data + '</div>';
+                    }},
+                    {'data' : 'RegDatm'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                        if (row.IsSuccess === 'N' && row.IsResend !== 'Y') {
+                            return '<button name="btn_resend" class="btn btn-xs btn-danger" data-idx="' + row.EscrowIdx + '">재전송</button>';
+                        } else {
+                            return '';
+                        }
+                    }}
                 ]
+            });
+
+            // 재전송 버튼 클릭
+            $list_table.on('click', 'button[name="btn_resend"]', function() {
+                if (!confirm('정말로 재전송 하시겠습니까?')) {
+                    return;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'POST',
+                    'idx' : $(this).data('idx')
+                };
+                sendAjax('{{ site_url('/sys/payLog/escrowResend') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
             });
         });
     </script>

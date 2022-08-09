@@ -6,15 +6,20 @@ class PayLog extends \app\controllers\BaseController
     protected $models = array('sys/payLog');
     protected $helpers = array();
     private $_grp_codes = [
-        'pay' => ['PgMid', 'PayType', 'PayMethod'],
-        'deposit' => ['PgMid', 'DepositType'],
+        'pay' => ['PgDriver', 'PgMid', 'PayType', 'PayMethod'],
+        'deposit' => ['PgDriver', 'PgMid', 'DepositType'],
+        'escrow' => ['PgBookMid'],
         'stats' => ['PgMid', 'PayDepositMethod'],
         'cancel_stats' => ['PgMid', 'CancelType'],
     ];
     private $_codes = [
+        'PgDriver' => ['inisis' => '이니시스', 'toss' => '토스'],
         'PgMid' => [
             'willbes015' => '동영상(willbes015)', 'willbes515' => '교재(willbes515)', 'willbes018' => '임용동영상(willbes018)', 'willbes518' => '임용교재(willbes518)',
-            'willbes006' => '인천학원(willbes006)', 'INIpayTest' => '테스트상점아이디'
+            'willbes006' => '인천학원(willbes006)', 'INIpayTest' => '테스트(이니시스)', 'tvivarepublica' => '테스트(토스)'
+        ],
+        'PgBookMid' => [
+            'willbes515' => '교재(willbes515)', 'willbes518' => '임용교재(willbes518)', 'INIpayTest' => '테스트(이니시스)', 'tvivarepublica' => '테스트(토스)'
         ],
         'PayType' => ['PA' => '결제요청', 'CA' => '결제취소', 'NC' => '망취소', 'RP' => '부분환불', 'MP' => '결제요청(모바일)'],
         'CancelType' => ['CA' => '결제취소', 'NC' => '망취소', 'RP' => '부분환불'],
@@ -93,13 +98,13 @@ class PayLog extends \app\controllers\BaseController
         $search_is_result = $this->_reqP('search_is_result');
         if (empty($search_is_result) === false) {
             if ($search_is_result == 'Y') {
-                if ($log_type == 'pay') {
+                if (in_array($log_type, ['pay', 'escrow']) === true) {
                     $arr_condition['IN']['PL.ResultCode'] = ['0000', '00'];
                 } elseif ($log_type == 'deposit') {
                     $arr_condition['RAW']['PL.ErrorMsg is'] = ' null';
                 }
             } else {
-                if ($log_type == 'pay') {
+                if (in_array($log_type, ['pay', 'escrow']) === true) {
                     $arr_condition['NOTIN']['PL.ResultCode'] = ['0000', '00'];
                 } elseif ($log_type == 'deposit') {
                     $arr_condition['RAW']['PL.ErrorMsg is'] = ' not null';
@@ -198,5 +203,48 @@ class PayLog extends \app\controllers\BaseController
             'data' => $list,
             'codes' => array_filter_keys($this->_codes, $this->_grp_codes['cancel_stats'])
         ]);
+    }
+
+    /**
+     * 에스크로 배송등록 재전송
+     * @return CI_Output
+     */
+    public function escrowResend()
+    {
+        $escrow_idx = $this->_reqP('idx');
+        if (empty($escrow_idx) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        // 에스크로 로그 조회
+        $arr_condition = ['EQ' => ['EscrowIdx' => $escrow_idx]];
+        $row = element('0', $this->payLogModel->listPayLog('escrow', false, $arr_condition, 1, 0));
+        if (empty($row) === true) {
+            return $this->json_error('에스크로 배송등록 정보 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+        }
+
+        // 에스크로 배송등록 재전송
+        $this->load->driver('pg', ['driver' => $row['PgDriver']]);
+
+        $escrow_resend_data[0] = [
+            'order_no' => $row['OrderNo'],
+            'mid' => $row['PgMid'],
+            'delivery_comp_ccd' => $row['EscrowParam1'],
+            'invoice_no' => $row['EscrowParam2'],
+            'delivery_send_datm' => $row['EscrowDatm']
+        ];
+
+        $escrow_resend_result = $this->pg->escrowDeliveryRegist($escrow_resend_data);
+        if ($escrow_resend_result === false) {
+            return $this->json_error('에스크로 배송등록 연동 중 오류가 발생했습니다.');
+        }
+
+        // 에스크로 배송등록 재전송여부 업데이트
+        $is_resend_update = $this->payLogModel->modifyEscrowIsResend($escrow_idx);
+        if ($is_resend_update !== true) {
+            return $this->json_error('에스크로 배송등록 정보 수정에 실패했습니다.');
+        }
+
+        return $this->json_result(true, '에스크로 배송등록 연동이 완료되었습니다.');
     }
 }

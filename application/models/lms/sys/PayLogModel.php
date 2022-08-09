@@ -6,6 +6,7 @@ class PayLogModel extends WB_Model
     private $_table = [
         'pay' => 'lms_order_payment',
         'deposit' => 'lms_order_deposit',
+        'escrow' => 'lms_order_escrow',
         'order' => 'lms_order'
     ];    
 
@@ -16,7 +17,7 @@ class PayLogModel extends WB_Model
 
     /**
      * 결제관련 로그 조회
-     * @param string $log_type [로그타입 (pay : 결제/취소, deposit : 가상계좌입금통보)
+     * @param string $log_type [로그타입 (pay : 결제/취소, deposit : 가상계좌입금통보, escrow : 에스크로)
      * @param $is_count
      * @param array $arr_condition
      * @param null $limit
@@ -33,7 +34,10 @@ class PayLogModel extends WB_Model
                 'pay' => 'PL.PayIdx, PL.OrderNo, PL.PayType, PL.PgDriver, PL.PgMid, PL.PgTid, PL.PayMethod, PL.PayDetailCode, PL.ReqPayPrice, PL.ApprovalNo, PL.ApprovalDatm
                     , PL.ResultCode, PL.ResultMsg, PL.ResultPgTid, PL.ResultPayPrice, PL.ReqReason, PL.RegDatm',
                 'deposit' => 'PL.DepositIdx, PL.OrderNo, PL.MsgSeq, PL.PgDriver, PL.PgMid, PL.PgTid, PL.RealPayPrice, PL.VBankCode, PL.VBankAccountNo
-                    , PL.DepositBankName, PL.DepositName, PL.DepositDatm, PL.ErrorMsg, PL.RegDatm, PL.RegIp'
+                    , PL.DepositBankName, PL.DepositName, PL.DepositDatm, PL.ErrorMsg, PL.RegDatm, PL.RegIp',
+                'escrow' => 'PL.EscrowIdx, PL.OrderNo, PL.PgDriver, PL.PgMid, PL.EscrowParam1, PL.EscrowParam2, PL.EscrowDatm, PL.ResultCode, PL.ResultMsg, PL.IsResend, PL.RegDatm
+                    , if(PL.ResultCode = "0000", "Y", "N") as IsSuccess
+                    , fn_ccd_name(PL.EscrowParam1) as EscrowParam1Name'
             ];
 
             $column = element($log_type, $defined_column, 'PL.*') . ', O.OrderIdx';
@@ -120,5 +124,24 @@ class PayLogModel extends WB_Model
         ';
 
         return $this->_conn->query('select ' . $column . $from, [$search_start_date, $search_end_date])->result_array();
+    }
+
+    /**
+     * 에스크로 재발송여부 컬럼 업데이트
+     * @param int $escrow_idx [에스크로식별자]
+     * @return array|bool
+     */
+    public function modifyEscrowIsResend($escrow_idx)
+    {
+        try {
+            $is_update = $this->_conn->set('IsResend', 'Y')->where('EscrowIdx', $escrow_idx)->update($this->_table['escrow']);
+            if ($is_update === false) {
+                throw new \Exception('에스크로 로그 수정에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e, true);
+        }
+
+        return true;
     }
 }

@@ -42,7 +42,8 @@
         .evtlecBox_A .lec:nth-child(1) label {width:100%}
         .evtlecBox_A .lec .txt01 {font-size:24px; color:#000; margin-bottom:5px; font-weight:600}
         .evtlecBox_A .lec .txt02 {font-size:27px; color:#4f26e7; margin-bottom:20px; font-weight:600}
-        .evtlecBox_A .lec .txt03 {}
+        .evtlecBox_A .lec:nth-child(1) .txt01,
+        .evtlecBox_A .lec:nth-child(1) .txt02 {display:inline-block; margin-bottom:20px; font-size:27px; }
         .evtlecBox_A .lec .apply {position: absolute; bottom:30px}
         .evtlecBox_A .txt03 a {display:inline-block; padding:5px 10px; color:#000; border:1px solid #000; font-size:14px; margin-bottom:5px}
         .evtlecBox_A .txt03 a:hover {color:#fff; background:#000 }
@@ -148,10 +149,6 @@
                 ,'button' => [
                     [
                         'youtube' => 'https://www.youtube.com/embed/NH8iLXKXvBY'
-                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51026' : '51100'
-                    ],
-                    [
-                        'youtube' => 'https://www.youtube.com/embed/r131TOlh_BA'
                         ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '51026' : '51100'
                     ]
                 ]
@@ -322,10 +319,6 @@
                 ,'button' => [
                     [
                         'youtube' => 'https://www.youtube.com/embed/cMuHRiMFm5o'
-                        ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51090'
-                    ],
-                    [
-                        'youtube' => 'https://www.youtube.com/embed/YVCnyLqoFs4'
                         ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51090'
                     ]
                 ]

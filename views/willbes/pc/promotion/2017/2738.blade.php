@@ -14,46 +14,22 @@
             background:#fff;            
         }
         .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative; font-size:14px; line-height:1.4}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
-        .eventWrap {width:100%; min-width:1120px; margin:0 auto; text-align:center; font-size:14px; line-height:1.4}
-        .eventWrap input[type=checkbox] {width:20px; height:20px; vertical-align:middle}
-
-        .eventTop {background:url("https://static.willbes.net/public/images/promotion/2022/03/2581_top_bg.jpg") no-repeat center top;}
-        .eventTop span {position: absolute; top:1100px; left:50%; margin-left:-520px; width:661px; z-index: 2;}
-
-        .event01 {background:url("https://static.willbes.net/public/images/promotion/2022/03/2581_01_bg.jpg") no-repeat center top;}
-        .event02 {background:#ff707c}
+        .eventTop {background:url("https://static.willbes.net/public/images/promotion/2022/08/2738_top_bg.jpg") no-repeat center top;}
 
         .event03 {padding-bottom:100px; width:1120px; margin:0 auto;}
-        .event03Box h4 {font-size:64px; font-weight:bold; margin-bottom:50px; text-align:center; color:#474747}
         .event03Box h5 {font-size:24px; color:#202020; text-align:left; padding-bottom:10px; border-bottom:3px solid #000; font-weight:600; margin-bottom:40px}
-        .event03Box h5 span {font-size:14px; color:#474747; margin-left:20px; font-weight:normal}
+        .event03Box h5 span {font-size:14px; color:#474747; margin-left:20px; font-weight:normal; vertical-align:bottom}
         .event03Box h5 strong {color:#d30000;}
-        .event03Box .mt30 strong {color:#d30000;}
-        .event03-txt01 {text-align:left; font-size:14px; margin:20px 33px 10px}
-        .event03-txt01 ul.info {border:1px solid #e4e4e4; padding:20px; height:150px; overflow-y:auto; margin-bottom:10px}
-        .event03-txt01 ul.info li {margin-bottom:10px; list-style-type:decimal; margin-left:20px}
+        .event03-txt01 {text-align:left; font-size:14px; margin:20px 0 10px}
 
         .event03 .btnBox a {width:360px; margin:0 auto; display:inline-block;color:#fff; background:#1f3b8e; font-size:26px; font-weight:bold; height:70px; line-height:70px; border-radius:40px; text-align:center}
         .event03 .btnBox a:hover {background:#1b233b;}
-
-        .evt_table{margin-bottom:30px;}
-        .evt_table table{width:100%; border:1px solid #c1c1c1}
-        .evt_table table tr{border-bottom:1px solid #c1c1c1}
-        .evt_table table tr:last-of-type{border-bottom:1px solid #c1c1c1}
-        .evt_table table thead th,
-        .evt_table table tbody th{background:#f6f6f6; color:#333; font-size:16px; font-weight:300; border-bottom:1px solid #c1c1c1; padding:8px}
-        .evt_table table tbody th {text-align:center; border-right:1px solid #c1c1c1;}
-        .evt_table table tbody td{font-size:14px; color:#000; font-weight:300; text-align:left; padding:8px; border-right:1px solid #c1c1c1;}
-        .evt_table table tbody td:last-of-type{border-right:0}
-        .evt_table table tbody td.num{color:#999; font-weight:200}
-        .evt_table input[type=text] {height:28px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; vertical-align:middle}
-        .evt_table input[type=file] {height:30px; color:#494a4d; vertical-align:middle}
 
         .evt_tableA {margin-bottom:30px;}
         .evt_tableA table{width:100%;}
@@ -72,42 +48,37 @@
         .evt_tableA table tbody td:nth-last-child(1) a,
         .evt_tableA table tbody td a.btn02 {display:block; padding:5px; background:#ff5200; color:#fff; border-radius:4px; font-size:12px;}
         .evt_tableA table tbody td a:hover {background:#000}
+        .evt_tableA table tbody td p {color:#666}
 
-        .evtInfo {padding:80px 0; background:#eee; font-size:16px}
+        
+        .event04 {background:#c6e6f4}
+
+        .evtInfo {padding:100px 0; background:#1b1a1f; font-size:16px; color:#fff}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
         .evtInfoBox h4 {font-size:40px; margin-bottom:20px}
         .evtInfoBox ul {margin-bottom:30px}
-        .evtInfoBox li {list-style-type: decimal;margin-left:20px; margin-bottom:10px}
+        .evtInfoBox li {list-style-type: decimal; margin-left:20px; margin-bottom:10px}
+        .evtInfoBox li:last-child {margin-bottom:0}
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
-        <div class="eventWrap eventTop" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2581_top.jpg" alt="합격환승센터"/>
-            <span data-aos="fade-down"><img src="https://static.willbes.net/public/images/promotion/2022/03/2581_top_img.png" alt=""/></span>
+        <div class="evtCtnsBox eventTop" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/2738_top.jpg" alt="막판정리 이론 패스"/>
         </div>
 
-        <div class="eventWrap event01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2581_01.jpg" alt="합격할 수 있습니다."/>
+        <div class="evtCtnsBox event01" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/2738_01.jpg" alt="방대한 이론, 핵심 개념"/>
         </div>
 
-        <div class="eventWrap event02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2581_02.jpg" alt="윌비스 임용으로 바꾸면 좋은 이유"/>
+        <div class="evtCtnsBox event02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/2738_02.jpg" alt="반복, 정리, 준비"/>
         </div>
 
-        <div class="eventWrap event03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/03/2581_03_01.jpg" alt="환승이벤트"/>
+        <div class="evtCtnsBox event03" data-aos="fade-up">
+
             <div class="event03Box">
-                <div class="btnBox">
-                    <a href="javascript:certOpen();">타학원 수강이력 인증하기</a>
-                </div>
-
-                <div class="mt30 mb100">
-                * 윌비스 임용의 본 이벤트 참여를 위해서는 인증 팝업에 명시된 사항을 자세히 읽어 보시고 동의를 해주셔야 가능합니다.<br>
-                * 타학원 수강이력 인증 파일은 수강기간이 명시되어 있는 <strong>수강증</strong>과 <strong>수강확인증</strong>만 가능합니다.
-                </div>
-
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2581_03_03.jpg" alt="환승이벤트"/>
-                <div class="event03-txt01 mb50">
+                <h5>강좌선택 <span>윌비스 임용 막판정리 이론PASS는 <strong>인강만 진행</strong>하고 있습니다. (모든 강의는 1.1배수로 제공 되며, 강의 중 일시정지 및 연장은 불가합니다)</span></h5>
+                <div class="event03-txt01">
                     <div id="lecture_box" style="display: none;">
                         <input name="y_pkg1" type="checkbox" value="188978" checked="checked">
                         <input name="y_pkg2" type="checkbox" value="191210" checked="checked">
@@ -149,8 +120,8 @@
                             <tr>
                                 <th>과목</th>
                                 <th>교수</th>
-                                <th>강좌</th>
-                                <th colspan="4">환승& 재도전 할인 수강료</th>
+                                <th>과정명</th>
+                                <th colspan="4">환승 & 재도전 할인 수강료</th>
                                 <th>수강신청</th>
                             </tr>
                             </thead>
@@ -158,8 +129,8 @@
                             <tr>
                                 <td rowspan="5">교육학</td>
                                 <td rowspan="2">이경범</td>
-                                <td>2022(1~4월) 교육학 필수 이론 PASS<br>
-                                    기본이론 / 심화이론
+                                <td>2022(1~4월) 교육학 필수 이론 PASS
+                                    <p>기본이론 / 심화이론</p> 
                                 </td>
                                 <td>880,000원</td>
                                 <td>→</td>
@@ -168,13 +139,13 @@
                                 <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/188978" onclick="goCartNDirectPay('lecture_box', 'y_pkg1', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
-                                <td>2022(1~6월) 교육학 막판역전 이론 PASS<br>
-                                    기본이론 / 심화이론 / 기출분석
+                                <td>2022(1~6월) 교육학 막판정리 이론 PASS
+                                <p>기본이론 / 심화이론 / 기출분석</p>
                                 </td>
                                 <td>1,092,000원</td>
                                 <td>→</td>
-                                <td>982,800원</td>
-                                <td><span>109,200원 할인</span></td>
+                                <td>982,000원</td>
+                                <td><span>10% 할인</span></td>
                                 <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/191210" onclick="goCartNDirectPay('lecture_box', 'y_pkg2', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">결제하기</a></td>
                             </tr>
                             <tr>
@@ -381,16 +352,19 @@
 
                 </div>
             </div>
-        </div><!--//event04-->
+        </div>
 
-        <div class="eventWrap evtInfo" data-aos="fade-up">
+        <div class="evtCtnsBox event04" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/2738_03.jpg" alt=""/>
+        </div>
+
+        <div class="evtCtnsBox evtInfo" data-aos="fade-up">
             <div class="evtInfoBox">
-                <h4 class="NSK-Black">막판역전 이론 PASS 상품 이용안내 및 유의사항</h4>
+                <h4 class="NSK-Black">막판정리 이론 PASS 상품 이용안내 및 유의사항</h4>
                 <ul>
-                    <li>본 패키지는 2022년 11월 30일까지 1차 시험대비 연간 정규 전강좌를 온라인으로 수강할 수 있는 상품입니다. (2차대비는 포함하지 않음)</li>
-                    <li>본 패키지는 파격적인 할인 상품으로 1배수로 제공됩니다. </li>
-                    <li>본 패키지의 상품 구성 및 커리큘럼은 변경 될 수 있습니다.</li>
-                    <li>본 패키지의 수강 기간 중 "일시중지" 및 "(유료)연장"은 할 수 없습니다.</li>
+                    <li>본 패키지는 구매하신 상품은 온라인으로 수강할 수 있는 상품입니다.</li>
+                    <li>본 패키지의 제공되는 기간 및 배수 등을 꼼꼼히 확인하기 바랍니다. (과목별 상이합니다.)</li>
+                    <li>본 패키지의 수강 기간 중 “일시중지” 및 “(유료)연장＂은 할 수 없습니다.</li>
                     <li>본 패키지 강의는 양도 및 매매가 불가하며, 위반 시 처벌 받을 수 있습니다.</li>
                 </ul>
                 <h5>[환불 규정]</h5>
@@ -412,16 +386,5 @@
         $(document).ready( function() {
         AOS.init();
         });
-    </script>
-
-    <script>
-        var $regi_form_register = $('#regi_form_register');
-        function certOpen(){
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-            @if(empty($arr_promotion_params) === false)
-                var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
-                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
-            @endif
-        }
     </script>
 @stop

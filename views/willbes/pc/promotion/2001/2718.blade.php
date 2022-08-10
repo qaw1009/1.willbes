@@ -104,7 +104,7 @@
         .content_guide_wrap .guide_tit{margin-bottom:50px; text-align:left; font-size:30px;}
 
         .content_guide_wrap .tabs {width:1120px; margin:0 auto; display:flex; justify-content: space-around;} 
-        .content_guide_wrap .tabs li {width:33.33333%;}
+        .content_guide_wrap .tabs li {width:50%;}
         .content_guide_wrap .tabs li a {display:block; text-align:center; height:60px; line-height:60px; font-size:140% !important; border:2px solid #f3f3f3; border-bottom:2px solid #202020;}
         .content_guide_wrap .tabs li a:hover,
         .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
@@ -188,20 +188,16 @@
 
         <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">         
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/07/2718_02.jpg" alt="윌비스 경찰 PASS">
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/2718_02.jpg" alt="윌비스 경찰 PASS">
                 <div class="passLecBuy NSK-Black"> 
                     <div>                                       
                         <input type="radio" id="y_pkg1" name="y_pkg" value="199729"/>                
                         <label for="y_pkg1">23년 2차 PASS 신청하기</label>
                     </div>
-                    <div>                    
+                    <div style="margin-left:-150px;">                    
                         <input type="radio" id="y_pkg2" name="y_pkg" value="199728"/>
                         <label for="y_pkg2">23년 1차 PASS 신청하기</label>
-                    </div>
-                    <div>                      
-                        <input type="radio" id="y_pkg3" name="y_pkg" value="199727"/>                
-                        <label for="y_pkg3">FINAL PASS 신청하기</label>
-                    </div>
+                    </div>                 
                 </div>
             </div>
 
@@ -368,8 +364,7 @@
                 <p class="guide_tit">윌비스 <span class="NSK-Black tx-blue">경찰 PASS </span> 이용안내 </p>
                 <ul class="tabs">
                     <li><a href="#tab01" class="active">23년 2차 경찰 PASS</a></li>
-                    <li><a href="#tab02">23년 1차 PASS</a></li>
-                    <li><a href="#tab03">FINAL PASS</a></li>
+                    <li><a href="#tab02">23년 1차 PASS</a></li>                  
                 </ul>
 
                 <div class="content_guide_box" id="tab01">
@@ -623,98 +618,7 @@
                         </dd>
                     </dl>
                 </div>
-
-                <div class="content_guide_box" id="tab03">
-                    <dl>
-                        <dt>
-                            <h3>FINAL PASS</h3>
-                        </dt>
-                        <dd>
-                            <ol>
-                                <li>본 상품은 구매일로부터 22년 2차 필기시험일까지 수강 가능한 기간제 PASS입니다.</li>
-                                <li>본 상품 강좌 구성은 다음과 같습니다.<br>
-                                - 2022년 대비 형사법, 경찰학, 헌법 전 강좌<br>
-                                - 2021년 대비 형사소송법, 경찰학개론, 형법 전 강좌<br>
-                                    <div class="tx-blue">
-                                    * 형사소송법/형사법 : 신광은 교수님<br>
-                                    * 경찰학개론/경찰학(개편) : 장정훈 교수님<br>
-                                    * 형법 : 신광은 교수님 / 김원욱 교수님<br>
-                                    * 헌법 : 김원욱 교수님 / 이국령 교수님 / 문태환 교수님 / 신기훈 교수님<br>
-                                    * 범죄학 : 박상민 교수님<br>
-                                    * G-TELP : 김준기 교수님<br>
-                                    * 한능검 : 오태진 교수님
-                                    </div>
-                                </li>
-                                <li>선택한 윌비스 경찰 PASS 상품의 표기된 기간 동안 동영상 강좌를 3배수로 수강할 수 있습니다.</li>
-                                <li>각 강좌 별 3배수 수강 후에는 추가 수강이 불가합니다. (<a href="https://police.willbes.net/support/notice/show?board_idx=250648&s_keyword=%EB%B0%B0%EC%88%98" target="_banlk" class="tx-blue">배수 제한 공지 자세히 보기></a>)</li>
-                                <li>윌비스 경찰 PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다. (결제 완료자에 한함)</li>
-                                <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
-                            </ol>
-                        </dd>
-
-                        <dt>
-                            <h3>교재 및 포인트</h3>
-                        </dt>
-                        <dd>
-                            <ol>
-                                <li>윌비스 경찰 PASS 수강에 필요한 교재는 별도로 구매하셔야 하며, 각 강좌 별 교재는 강좌 소개 및 교재 구매 메뉴에서 별도 구매 가능합니다.</li>
-                                <li>중도 환불 시 제공받은 입문서는 판매가 기준으로 차감 후 환불됩니다.</li>
-                                <li>포인트가 포함된 상품을 구매할 경우 익일 오전 일괄 지급됩니다. (금요일~일요일 구매 시 월요일 오전 일괄지급)</li>
-                                <li>포인트는 구매일로부터 1년 동안 사용 가능하며, 1년이 지날 경우 자동 소멸됩니다.</li>
-                            </ol>
-                        </dd>
-
-                        <dt>
-                            <h3>환불</h3>
-                        </dt>
-                        <dd>
-                            <ol>
-                                <li>결제 후 7일 이내 3강 이하 수강시에만 전액 환불 가능합니다.</li>
-                                <li>결제 후 7일 이내 환불 요청 시 수강한 각 강의 정가 기준으로 수강 부분만큼 차감 후 나머지 부분에 대해 환불이 진행됩니다.</li>
-                                <li>강좌 내 학습 자료 및 모바일 다운로드 이용 시에는 수강한 것으로 간주됩니다.</li>
-                                <li>환불은 수강 시작일 (당일 포함)로부터 7일이 경과되면, 윌비스 경찰PASS 결제가 기준으로 계산하여 
-                                사용일 수 만큼 차감 후 환불됩니다. (단, 가산점 특강, 온라인 모의고사 등 이용 시에도 차감)</li>
-                                <li>포인트를 사용하였을 경우 사용한 포인트 만큼 차감 후 환불 진행되며, 남은 포인트는 회수됩니다.<br>
-                                (포인트 미사용일 경우 추가 차감 없이 포인트 회수 후 환불 진행)</li>
-                            </ol>
-                        </dd>
-
-                        <dt>
-                            <h3>PASS 수강</h3>
-                        </dt>
-                        <dd>
-                            <ol>
-                                <li>로그인 후 [내 강의실]에서 [무한PASS존]으로 접속합니다.</li>
-                                <li>구매한 PASS 상품 선택 후 [강좌추가하기]를 클릭, 원하시는 강좌를 등록한 후 수강할 수 있습니다.</li>
-                                <li>윌비스 경찰 PASS는 일시 정지, 수강 연장, 재수강 불가합니다.</li>
-                                <li>윌비스 경찰 PASS 수강 시 이용 가능한 기기 대수는 다음과 같이 제한됩니다.<br>
-                                총 수강 기기 대수 2대 : PC 2대 또는 PC 1대 모바일 1대 또는 모바일 2대 (윌비스 경찰PASS PMP강의는 제공하지 않습니다.)</li>
-                                <li>PC, 모바일 기기에 대한 초기화가 필요할 경우 최초 초기화에 한해서는 수강생 본인이 초기화가 가능합니다. 다만 추후 초기화가
-                                    필요할 시 내용 확인 후 가능하오니 고객센터로 문의하시기 바랍니다. ([내 강의실] 내 [무한PASS존]에서 등록기기정보 확인)</li>
-                                <li>일부 강좌의 경우 자료 출력 횟수 제한이 적용됩니다. (2단계 동형 모의고사, 3단계 파이널 모의고사 등)</li>
-                            </ol>
-                        </dd>
-
-                        <dt>
-                            <h3>유의사항</h3>
-                        </dt>
-                        <dd>
-                            <ol>
-                                <li>본 상품은 특별할인기획 상품으로 쿠폰 할인, 다다익선 할인, 포인트 사용 등 혜택이 적용되지 않으니 양해 및 참고 부탁드립니다.<br>
-                                    (단,이벤트시 쿠폰사용가능)</li>
-                                <li>윌비스 경찰PASS 강좌 (부가 서비스 등) 중 불가피한 사정에 의해 부득이 진행되지 않을 경우 대체 강좌로 제공 예정이며, 이로 인한 환불은 불가합니다.</li>
-                                <li>아이디 공유, 타인에게 양도 및 판매 등 부정 사용 적발 시 수강 중인 PASS 강좌는 즉시 정지, 회원 자격이 박탈됩니다. <br>
-                                이로 인한 강의 환불은 절대 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 발생할 수 있습니다.</li>
-                                <li>온,오프라인 동시 시행되는 이벤트, 무료특강 등의 경우 해당 강좌는 PASS에 미지급 되거나, 이벤트 종료 후 제공될 수 있습니다.</li>
-                                <li>PASS 관련 발급된 쿠폰은 이벤트가 변경되거나 종료될 경우 자동 회수될 수 있으며, 동일 혜택이 적용되지 않을 수 있습니다.</li>
-                            </ol>
-                        </dd>
-
-                        <dd>
-                            <p>※ 이용문의 : 고객센터 1544-5006 / 사이트 내 1:1 상담 게시판</p>
-                        </dd>
-                    </dl>
-                </div>
+                
             </div>
         </div>
 

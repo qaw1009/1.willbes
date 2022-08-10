@@ -9,7 +9,7 @@ class Pg extends CI_Driver_Library
     protected $valid_drivers = array(
         'inisis',
         'inisis_mobile',
-        'lgu'
+        'toss'
     );
 
     /**
@@ -31,6 +31,11 @@ class Pg extends CI_Driver_Library
      * @var string 가상계좌 입금통보 결과 저장 테이블
      */
     public $_log_deposit_table = 'lms_order_deposit';
+
+    /**
+     * @var string 에스크로 결과 저장 테이블
+     */
+    public $_log_escrow_table = 'lms_order_escrow';
 
     /**
      * Pg constructor.
@@ -121,6 +126,16 @@ class Pg extends CI_Driver_Library
     public function depositReturn($ret_cd, $err_msg = '', $log_idx = '')
     {
         return $this->{$this->_driver}->depositReturn($ret_cd, $err_msg, $log_idx);
+    }
+
+    /**
+     * 에스크로 배송등록
+     * @param array $params
+     * @return mixed
+     */
+    public function escrowDeliveryRegist($params = [])
+    {
+        return $this->{$this->_driver}->escrowDeliveryRegist($params);
     }
 
     /**

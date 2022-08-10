@@ -640,7 +640,7 @@ class OrderFModel extends BaseOrderFModel
                 // PG사 은행코드에 해당하는 공통코드 조회
                 $ccd_row = $this->_conn->getFindResult($this->_table['code'], 'Ccd', [
                     'EQ' => ['GroupCcd' => $this->_bank_group_ccd],
-                    'RAW' => ['json_value(CcdEtc, "$.' . $post_row['PgCcd'] . '") = ' => $pay_results['vbank_code']]
+                    'RAW' => ['json_value(CcdEtc, "$.' . $post_row['PgCcd'] . '") = ' => '"' . $pay_results['vbank_code'] . '"']
                 ]);
                 $vbank_ccd = empty($ccd_row) === true ? $pay_results['vbank_name'] : $ccd_row['Ccd'];
 

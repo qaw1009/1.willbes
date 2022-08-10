@@ -15,18 +15,55 @@ class Payment extends \app\controllers\FrontController
 
     /**
      * load PG Driver
-     * @param bool $is_cancel [결제취소 사용여부]
-     * @return string [PG 드라이버 object명]
+     * @param string $load_type [PG드라이버 로드구분 (auto/pc/mobile)]
+     * @param bool $is_cancel [결제취소사용여부]
+     * @return string [PG드라이버 object명]
      */
-    private function _loadPgDriver($is_cancel = false)
+    private function _loadPgDriver($load_type = 'auto', $is_cancel = false)
     {
         $driver = config_app('PgDriver', 'inisis');
+
+        if ($driver == 'inisis') {
+            return $this->_loadPgInisisDriver($load_type, $is_cancel);
+        } else {
+            return $this->_loadPgNormalDriver($driver);
+        }
+    }
+
+    /**
+     * load PG Normal Driver
+     * @param string $driver [PG드라이버]
+     * @return string [PG드라이버 object명]
+     */
+    private function _loadPgNormalDriver($driver)
+    {
+        $this->load->driver('pg', ['driver' => $driver]);
+        return 'pg';
+    }
+
+    /**
+     * load PG Inisis Driver
+     * @param string $load_type [PG드라이버 로드구분 (auto/pc/mobile)]
+     * @param bool $is_cancel [결제취소사용여부]
+     * @return string [PG드라이버 object명]
+     */
+    private function _loadPgInisisDriver($load_type = 'auto', $is_cancel = false)
+    {
+        $driver = 'inisis';
+        $is_mobile = false;
         $object_name = 'pg';
 
-        if (APP_DEVICE == 'pc') {
-            // PC 드라이버 로드
-            $this->load->driver('pg', ['driver' => $driver]);
+        if ($load_type == 'auto') {
+            if (APP_DEVICE != 'pc') {
+                $is_mobile = true;
+            }
         } else {
+            if ($load_type == 'mobile') {
+                $is_mobile = true;
+            }
+        }
+
+        if ($is_mobile === true) {
             // 모바일 드라이버 로드
             $object_name = 'pg_mobile';
             $this->load->driver('pg', ['driver' => $driver . '_mobile'], $object_name);
@@ -35,6 +72,9 @@ class Payment extends \app\controllers\FrontController
             if ($is_cancel === true) {
                 $this->load->driver('pg', ['driver' => $driver], 'pg');
             }
+        } else {
+            // PC 드라이버 로드
+            $this->load->driver('pg', ['driver' => $driver]);
         }
 
         return $object_name;
@@ -208,7 +248,7 @@ class Payment extends \app\controllers\FrontController
     public function returns()
     {
         // PG 드라이버 로드
-        $pg_object = $this->_loadPgDriver(true);
+        $pg_object = $this->_loadPgDriver('auto', true);
 
         // 결제연동 결과 리턴
         $pay_results = $this->{$pg_object}->returnResult();
@@ -237,14 +277,14 @@ class Payment extends \app\controllers\FrontController
     }
 
     /**
-     * PG사 결제요청 취소 (PC 전용)
+     * PG사 결제요청 취소 (이니시스 PC 전용, 토스 PC/모바일 공통)
      * @param array $params
      * @return mixed
      */
     public function close($params = [])
     {
         // PG 드라이버 로드
-        $pg_object = $this->_loadPgDriver();
+        $pg_object = $this->_loadPgDriver('pc');
 
         // 주문요청 데이터 삭제
         $order_no = $this->orderFModel->checkSessOrderNo();
@@ -253,11 +293,11 @@ class Payment extends \app\controllers\FrontController
         // 주문번호 세션삭제
         $this->orderFModel->destroySessOrderNo();
 
-        return $this->pg->requestCancel(['order_no' => $order_no, 'is_post_data_delete' => $is_delete]);
+        return $this->{$pg_object}->requestCancel(['order_no' => $order_no, 'is_post_data_delete' => $is_delete]);
     }
 
     /**
-     * PG사 결제취소 (PC 전용)
+     * 가상계좌 주문취소 (PG사 연동없음)
      * @param array $params
      * @return CI_Output
      */
@@ -275,15 +315,43 @@ class Payment extends \app\controllers\FrontController
     }
 
     /**
-     * PG사 승인결과 통보 (모바일 전용)
-     * @return mixed|null
+     * 가상계좌 입금통보 (토스 전용)
+     * @param array $params [드라이버구분 (driver/toss)]
+     * @return mixed
+     */
+    public function deposit($params = [])
+    {
+        // 드라이버 구분
+        $driver = element('driver', $params, 'toss');
+
+        // PG 드라이버 로드
+        $pg_object = $this->_loadPgNormalDriver($driver);
+
+        // 가상계좌 입금통보 처리
+        return $this->_procDeposit($pg_object);
+    }
+
+    /**
+     * 가상계좌 입금통보 (이니시스 모바일 전용)
+     * @return mixed
      */
     public function notiMobile()
     {
         // PG 드라이버 로드
-        $pg_object = $this->_loadPgDriver();
+        $pg_object = $this->_loadPgInisisDriver('mobile');
 
-        // 승인결과 통보 결과 리턴
+        // 가상계좌 입금통보 처리
+        return $this->_procDeposit($pg_object);
+    }
+
+    /**
+     * 가상계좌 입금통보 처리
+     * @param string $pg_object [PG드라이버 object명]
+     * @return mixed
+     */
+    private function _procDeposit($pg_object)
+    {
+        // 가상계좌 입금통보 결과 리턴
         $deposit_results = $this->{$pg_object}->depositResult();
 
         if ($deposit_results['result'] === true) {
@@ -303,7 +371,7 @@ class Payment extends \app\controllers\FrontController
     }
 
     /**
-     * PG사 모바일 결제연동 미사용 메소드 (이니시스 모바일 결제 프로세스 확인용)
+     * 이니시스 모바일 결제연동 미사용 메소드 (프로세스 확인용)
      * @param array $params
      */
     public function nothingMobile($params = [])

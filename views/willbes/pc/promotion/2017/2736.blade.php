@@ -361,7 +361,7 @@
         </div>
 
         <div class="evtCtnsBox evtLec" id="evtLec" data-aos="fade-up">
-            <div class="evtlecBox_A">
+            <div class="evtlecBox_A" id="prof">
                 @foreach($arr_product as $row)
                     <div class="lec">
                         <label>
@@ -370,8 +370,8 @@
                             <div class="txt03">
                                 @foreach($row['button'] as $index => $buttons)
                                     {!! ($loop->first === false) ? '<br>' : '' !!}
-                                    <a href="javascript:void(0);" onclick="openWin('sec-prof-layer'); fnOpenProfCurriculum('{{$buttons['prof_code']}}'); return false;">커리큘럼 확인</a>
-                                    <a href="javascript:void(0);" onclick="fnOpenYoutube('{{$buttons['youtube']}}'); return false;">설명회 보기</a>
+                                    <a href="#prof" onclick="openWin('sec-prof-layer'); fnOpenProfCurriculum('{{$buttons['prof_code']}}');">커리큘럼 확인</a>
+                                    <a href="#prof" onclick="fnOpenYoutube('{{$buttons['youtube']}}');">설명회 보기</a>
                                 @endforeach
                             </div>
                             <div class="apply">

@@ -40,6 +40,7 @@
                     </li>
                     <li>
                         <span>[행정법]</span>
+                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50407?subject_idx=1111')}}">임병주</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/51206?subject_idx=1111')}}">신기훈</a>                        
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50615?subject_idx=1111')}}">이석준</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50109?subject_idx=1111')}}">황남기</a>                     
@@ -119,13 +120,11 @@
                 <ul>
                     <li>
                         <span>[소방학개론]</span>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51068?subject_idx=1113')}}">이종오</a>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51059?subject_idx=1113')}}">이중희</a>                        
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51068?subject_idx=1113')}}">이종오</a>                                           
                     </li>
                     <li>
                         <span>[소방관계법규]</span>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51068?subject_idx=1138')}}">이종오</a>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51059?subject_idx=1138')}}">이중희</a>                       
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51068?subject_idx=1138')}}">이종오</a>                                             
                     </li>
                     <li>
                         <span>[행정법]</span>

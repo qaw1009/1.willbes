@@ -165,7 +165,7 @@ class Pg_toss extends CI_Driver
             $data = [
                 'client_key' => $client_key,
                 'pay_method' => $pay_method,
-                'pay_params' => json_encode($pay_params, JSON_UNESCAPED_UNICODE),
+                'pay_params' => json_encode($pay_params, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES),
                 'close_url' => $return_prefix_url . $this->_mode_config['close_method']
             ];
 

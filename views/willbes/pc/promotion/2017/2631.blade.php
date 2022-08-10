@@ -279,7 +279,7 @@
                                 @endforeach
                             </div>
                             <div class="apply">
-                                <input class="btn-add-product prod-type-{{$row['prod_type']}}" type="checkbox" name="productCode"
+                                <input class="btn-add-product prod-type-{{$row['prod_type']}}" type="checkbox" name="productCode" autocomplete="off"
                                    data-prod-type="{{$row['prod_type']}}" data-prof-name="{{$row['prof_name']}}"
                                    data-learn-pattern="615003" data-prod-code="{{$row['prod_code']}}" data-prod-name="{{$row['prod_name']}}"
                                    data-expt-pay-price="{{$row['expt_pay_price']}}" data-expt-disc-price="{{$row['expt_disc_price']}}"

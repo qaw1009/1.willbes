@@ -29,7 +29,7 @@
 
         .evt_01 {background:#f5f5f7;}
 
-        .evtPass {background:#f5f5f7; padding:140px 0}
+        .evtPass {background:#F1F1F3; padding:140px 0}
         .evtPass .title01 {font-size:30px; color:#000; margin-bottom:100px}
         .evtPass .wrap {width:1120px; margin:0 auto}
         .evtPass .passLecBuy {display:flex; justify-content:space-around; position:absolute; bottom:90px; width:100%; color:#252525; letter-spacing:-1px}

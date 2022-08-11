@@ -343,7 +343,7 @@
                                             <div class="subject">전공수학 박태영</div>
                                         </div>
                                     </td>
-                                    <td><p>2022 1-6월 박태영수학교육론 막판정리 이론 PASS</p>
+                                    <td><p>2022 1-6월 박태영 학교육론 막판정리 이론 PASS</p>
                                         1. 신기한(신론과 기출을 결합한) 이론반<br />
                                     2. 수학교육과정과 교재연구<br />
                                     3. 수학교육론 기출 100선</td>
@@ -366,7 +366,7 @@
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200383" onclick="goCartNDirectPay('lecture_box', 'y_pkg19', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
                                 <tr>
-                                    <td><p>2022 1-6월 박혜향수학교육론 막판정리 이론 PASS</p>
+                                    <td><p>2022 1-6월 박혜향 수학교육론 막판정리 이론 PASS</p>
                                         1. 수학교육론 기본이론반<br />
                                     2. 수학교육론 교직수학반<br />
                                     3. 수학교육론 각론서반</td>
@@ -480,7 +480,7 @@
                                     2. 개념 구조화 수업반<br />
                                     3. 기변하라(기출문제 및 변형 풀이반)</td>
                                     <td>100일</td>
-                                    <td>1,620,000원 → <strong>567,000(65%↓)</span></strong></td>
+                                    <td>1,620,000원 → <strong>567,000원<span>(65%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200387" onclick="goCartNDirectPay('lecture_box', 'y_pkg28', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
                                 <tr>
@@ -493,7 +493,7 @@
                                     <td><p>2022 3-6월 다이애나 전공음악 필수 이론 PASS</p>
                                         1. 전공음악 개.강.총.회.반(한줄정리)</td>
                                     <td>100일</td>
-                                    <td>500,000원 → <strong>250,000(50%↓)</span></strong></td>
+                                    <td>500,000원 → <strong>250,000원<span>(50%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200386" onclick="goCartNDirectPay('lecture_box', 'y_pkg29', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
                                 <tr>

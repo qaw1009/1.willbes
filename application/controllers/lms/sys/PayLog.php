@@ -8,7 +8,7 @@ class PayLog extends \app\controllers\BaseController
     private $_grp_codes = [
         'pay' => ['PgDriver', 'PgMid', 'PayType', 'PayMethod'],
         'deposit' => ['PgDriver', 'PgMid', 'DepositType'],
-        'escrow' => ['PgBookMid'],
+        'escrow' => ['PgDriver', 'PgBookMid'],
         'stats' => ['PgMid', 'PayDepositMethod'],
         'cancel_stats' => ['PgMid', 'CancelType'],
     ];

@@ -25,6 +25,12 @@
                     </div>
                     <label class="control-label col-md-1">구분</label>
                     <div class="col-md-5 form-inline">
+                        <select class="form-control mr-10" id="search_pg_driver" name="search_pg_driver" title="PG구분">
+                            <option value="">PG구분</option>
+                            @foreach($codes['PgDriver'] as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control mr-10" id="search_pg_mid" name="search_pg_mid" title="상점아이디">
                             <option value="">상점아이디</option>
                             @foreach($codes['PgBookMid'] as $key => $val)

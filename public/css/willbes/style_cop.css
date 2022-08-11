@@ -112,7 +112,9 @@
 .cop .VisualBox .Maintab {
 	width: 100%;
 	margin: 0 auto;
-	text-align: center
+	text-align: center;
+	display: flex;
+	justify-content: center;
 }
 
 .cop .VisualBox .Maintab span {
@@ -120,7 +122,8 @@
 	height: 50px;
 	font-size: 15px;
 	line-height: 50px;
-	width: 200px;
+	padding: 0 20px;
+	/*width: 200px;*/
 	color: #fff
 }
 

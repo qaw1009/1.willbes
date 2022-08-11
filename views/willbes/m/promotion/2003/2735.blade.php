@@ -25,7 +25,9 @@
     <div class="evtCtnsBox" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/08/2735m_02.jpg" alt="혜택 및 제공" />
+            <a href="https://m.blog.naver.com/pwjg85/222783521989" target="_blank" title="제휴고시식당" style="position: absolute;left: 2.53%;top: 17.44%;width: 94.93%;height: 15.19%;z-index: 2;"></a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4tbxQj7FcxPG2vEDh0VE4kGS_4h8n8t_B66dK8CEYzs6q5Q/viewform?usp=sf_link" target="_blank" title="사전조사서 작성 바로기기" style="position: absolute;left: 10.23%;top: 75.34%;width: 78.99%;height: 2.39%;z-index: 2;"></a>
+            <a href="https://naver.me/GZ0UmeUa" target="_blank" title="체험이벤트 신청" style="position: absolute;left: 2.53%;top: 85.44%;width: 94.93%;height: 8.89%;z-index: 2;"></a>
         </div>
     </div>
 

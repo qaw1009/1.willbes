@@ -34,7 +34,8 @@
         .evt_tableA {margin-bottom:30px;}
         .evt_tableA table{width:100%;}
         .evt_tableA table tr{border-bottom:1px solid #e6e6e8}
-        .evt_tableA table tr:last-of-type{border-bottom:1px solid #e6e6e8}
+        .evt_tableA table tr.bd2px,
+        .evt_tableA table tr:last-of-type{border-bottom:2px solid #000}
         .evt_tableA table thead th,
         .evt_tableA table tbody th{background:#dedede; font-size:16px; font-weight:300; text-align:center; color:#333; padding:10px 0; border-right:1px solid #fff}
         .evt_tableA table thead th {text-align:center}
@@ -148,7 +149,7 @@
                                     <td>680,000원 → <strong>306,000원<span>(55%↓)</span></></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200356" onclick="goCartNDirectPay('lecture_box', 'y_pkg1', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td>
                                         <p>2022 1~6월 이경범 교육학 막판정리 이론 PASS</p>
                                         1. 기본이론반<br />
@@ -173,7 +174,7 @@
                                     <td>700,000원 → <strong>315,000원<span>(55%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200358" onclick="goCartNDirectPay('lecture_box', 'y_pkg3', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td>
                                         <p>2022 1~6월 신태식 교육학 막판정리 이론 PASS</p>
                                         1. 기본이론(개념이해)반<br />
@@ -197,7 +198,7 @@
                                     <td>380,000원 → <strong>190,000원<span>(50%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200364" onclick="goCartNDirectPay('lecture_box', 'y_pkg5', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td><p>2022 3-6월 송원영 문학교육론 막판정리 이론 PASS</p>
                                         1. 문학교육론 변환 문제풀이 및 작품 분석반(현대문학분석)<br />
                                     2. 문학 교과서 학습 활동 밑 작품분석반(고전문학)</td>
@@ -217,7 +218,7 @@
                                     2. 중세문법 기초 다지기<br />
                                     3. 현대문법+중세문법 강화하기(심화)</td>
                                     <td>100일</td>
-                                    <td>600,000원 → <strong>240,000(60%↓)</span></strong></td>
+                                    <td>600,000원 → <strong>240,000원<span>(60%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200367" onclick="goCartNDirectPay('lecture_box', 'y_pkg7', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
                                 <tr>
@@ -229,7 +230,7 @@
                                     <td>150,000원 → <strong>75,000원<span>(50%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200368" onclick="goCartNDirectPay('lecture_box', 'y_pkg8', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td><p>2022 1-4월 권보민 국어문법 기출분석 PASS</p>
                                         1. 기출문제 분석 및 응용반 1<br />
                                     2. 기출문제 분석 및 응용반 2</td>
@@ -261,7 +262,7 @@
                                     <td>600,000원 → <strong>240,000원<span>(60%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200375" onclick="goCartNDirectPay('lecture_box', 'y_pkg11', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td><p>2022 1-6월 구동언 국어문법 막판정리 이론 PASS</p>
                                         1. 학교문법의 이해(현대국어 체계)<br />
                                     2. 현대국어(심화)+중세국어(기초)<br />
@@ -270,7 +271,7 @@
                                     <td>540,000원 → <strong>216,000원<span>(60%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200376" onclick="goCartNDirectPay('lecture_box', 'y_pkg12', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td>
                                         <div class="profImg">
                                             <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51082/prof_detail_51082.png">
@@ -307,7 +308,7 @@
                                     <td>720,000원 → <strong>180,000원<span>(75%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200379" onclick="goCartNDirectPay('lecture_box', 'y_pkg15', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td><p>2022 김철홍 미분기하학 중심 막판정리 이론 PASS</p>
                                         1. 미분기하학(인강전용+집중관리반)<br />
                                     2. 위상수학(인강전용)</td>
@@ -315,7 +316,7 @@
                                     <td>390,000원 → <strong>117,000원<span>(70%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200380" onclick="goCartNDirectPay('lecture_box', 'y_pkg16', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td>
                                         <div class="profImg">
                                             <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51338/prof_detail_51338.png">
@@ -336,7 +337,7 @@
                                     <td>960,000원    → <strong>576,000원<span>(40%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200382" onclick="goCartNDirectPay('lecture_box', 'y_pkg17', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td>
                                         <div class="profImg">
                                             <img src="https://ssam.stage.willbes.net/public/uploads/willbes/professor/51085/prof_detail_51085.png">
@@ -374,7 +375,7 @@
                                     <td>640,000원 → <strong>224,000원<span>(65%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200384" onclick="goCartNDirectPay('lecture_box', 'y_pkg20', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td><p>2022 1-6월 박혜향 수학교육론 막판정리 이론+글쓰기 PASS</p>
                                         1. 수학교육론 기본이론반<br />
                                     2. 수학교육론 교직수학반<br />
@@ -385,7 +386,7 @@
                                     <td>940,000원 → <strong>282,000원<span>(70%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200385" onclick="goCartNDirectPay('lecture_box', 'y_pkg21', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td>
                                         <div class="profImg">
                                             <img src="https://ssam.stage.willbes.net/public/uploads/willbes/professor/51310/prof_detail_51310.png">
@@ -401,7 +402,7 @@
                                     <td>1,200,000원 → <strong>360,000원<span>(70%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200390" onclick="goCartNDirectPay('lecture_box', 'y_pkg22', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td>
                                         <div class="profImg">
                                             <img src="https://ssam.stage.willbes.net/public/uploads/willbes/professor/51088/prof_detail_51088.png">
@@ -432,7 +433,7 @@
                                     <td>680,000원    → <strong>238,000원<span>(65%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200393" onclick="goCartNDirectPay('lecture_box', 'y_pkg24', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td><p>2022 1-6월 김민응 도덕윤리 막판정리 이론 PASS</p>
                                         1. 서양윤리사상 및 윤리학(이론ㆍ응용)<br />
                                     2. 정치ㆍ사회사상 및 통일교육<br />
@@ -443,7 +444,7 @@
                                     <td>1,020,000원    → <strong>306,000원<span>(70%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200391" onclick="goCartNDirectPay('lecture_box', 'y_pkg25', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td>
                                         <div class="profImg">
                                             <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51316/prof_detail_51316.png">
@@ -474,7 +475,7 @@
                                     <td>1,080,000원 → <strong>432,000원<span>(60%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200388" onclick="goCartNDirectPay('lecture_box', 'y_pkg27', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td><p>2022 1-6월 김종권 전공역사 막판정리 이론 PASS</p>
                                         1. 전공서 발췌 강독 수업반<br />
                                     2. 개념 구조화 수업반<br />
@@ -483,7 +484,7 @@
                                     <td>1,620,000원 → <strong>567,000원<span>(65%↓)</span></strong></td>
                                     <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/200387" onclick="goCartNDirectPay('lecture_box', 'y_pkg28', 'on_lecture', 'adminpack_lecture', 'Y'); return false;">신청하기</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="bd2px">
                                     <td>
                                         <div class="profImg">
                                             <img src="https://ssam.stage.willbes.net/public/uploads/willbes/professor/51090/prof_detail_51090_1606459468.png">

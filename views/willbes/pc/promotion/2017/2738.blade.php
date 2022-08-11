@@ -41,7 +41,6 @@
         .evt_tableA table tbody td {font-size:14px; color:#555; text-align:left; padding:10px; border-right:0; }
         .evt_tableA table tbody td strong {color:red; font-size:16px;}
         .evt_tableA table tbody td span {font-size:12px; vertical-align:bottom}
-        .evt_tableA table tbody td:nth-child(1) {vertical-align:top; }
         .evt_tableA table tbody td:nth-last-child(1) a,
         .evt_tableA table tbody td a.btn02 {display:block; padding:5px; background:#ff5200; color:#fff; border-radius:4px; font-size:12px; text-align:center;}
         .evt_tableA table tbody td a:hover {background:#000}
@@ -213,7 +212,7 @@
                                             <div class="subject">전공국어 권보민</div>
                                         </div>
                                     </td>
-                                    <td><p>2022 1-4월 권보민 국어교육론 막판정리 이론 PASS</p>
+                                    <td><p>2022 1-4월 권보민 국어문법 막판정리 이론 PASS</p>
                                         1. 현대문법 기초 다지기<br />
                                     2. 중세문법 기초 다지기<br />
                                     3. 현대문법+중세문법 강화하기(심화)</td>

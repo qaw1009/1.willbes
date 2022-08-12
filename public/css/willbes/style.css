@@ -17330,6 +17330,7 @@ table.acadlecInfoPackageTable tr.Top td {
 	color: #fff;
 }
 
+.ssamLecTable td:last-child a,
 .ssamLecTable td a.btnSt02 {
 	background: #2e898e;
 	color: #fff

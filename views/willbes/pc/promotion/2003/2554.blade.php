@@ -40,10 +40,11 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
-
+        {{--
         <div class="sky" id="QuickMenu">          
             <a href="#lecbuy01"><img src="https://static.willbes.net/public/images/promotion/2022/03/2554_sky.png" alt="생물학 이벤트" /></a>               
         </div>
+        --}}
         
         <div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2022/08/2554_top_img.png"  alt="생물학 강치욱" data-aos="fade-down" class="main_img"/>

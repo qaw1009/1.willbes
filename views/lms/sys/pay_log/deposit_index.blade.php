@@ -97,8 +97,8 @@
                     <th>입금금액</th>
                     <th>입금은행코드</th>
                     <th>입금계좌번호</th>
-                    <th>입금은행명</th>
-                    <th>입금자명</th>
+                    {{--<th>입금은행명</th>
+                    <th>입금자명</th>--}}
                     <th>입금일시</th>
                     <th>에러메시지</th>
                     <th>등록일시</th>
@@ -151,8 +151,8 @@
                     }},
                     {'data' : 'VBankCode'},
                     {'data' : 'VBankAccountNo'},
-                    {'data' : 'DepositBankName'},
-                    {'data' : 'DepositName'},
+                    //{'data' : 'DepositBankName'},
+                    //{'data' : 'DepositName'},
                     {'data' : 'DepositDatm'},
                     {'data' : 'ErrorMsg'},
                     {'data' : 'RegDatm'},

@@ -222,7 +222,7 @@
             </ul>
         </div>
     </div>
-    {!! popup('657005', $__cfg['SiteCode'], $cate_code, '') !!}
+    {!! popup('657005', $__cfg['SiteCode'], '0', '') !!}
 
     <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
     <script src="/public/js/willbes/dist/aos.js"></script>

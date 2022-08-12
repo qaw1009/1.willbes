@@ -187,7 +187,7 @@
                                 <tr>
                                     <td rowspan="2">
                                         <div class="profImg">
-                                            <img src="https://ssam.stage.willbes.net/public/uploads/willbes/professor/51078/prof_detail_51078.png">
+                                            <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51078/prof_detail_51078.png">
                                             <div class="subject">전공국어 송원영</div>
                                         </div>
                                     </td>
@@ -241,7 +241,7 @@
                                 <tr>
                                     <td rowspan="3">
                                         <div class="profImg">
-                                            <img src="https://ssam.stage.willbes.net/public/uploads/willbes/professor/51313/prof_detail_51313.png">
+                                            <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51313/prof_detail_51313.png">
                                             <div class="subject">전공국어 구동언</div>
                                         </div>
                                     </td>
@@ -289,7 +289,7 @@
                                 <tr>
                                     <td rowspan="3">
                                         <div class="profImg">
-                                            <img src="https://ssam.stage.willbes.net/public/uploads/willbes/professor/51084/prof_detail_51084.png">
+                                            <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51084/prof_detail_51084.png">
                                             <div class="subject">전공수학 김철홍</div>
                                         </div>
                                     </td>
@@ -340,7 +340,7 @@
                                 <tr class="bd2px">
                                     <td>
                                         <div class="profImg">
-                                            <img src="https://ssam.stage.willbes.net/public/uploads/willbes/professor/51085/prof_detail_51085.png">
+                                            <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51085/prof_detail_51085.png">
                                             <div class="subject">전공수학 박태영</div>
                                         </div>
                                     </td>
@@ -389,7 +389,7 @@
                                 <tr class="bd2px">
                                     <td>
                                         <div class="profImg">
-                                            <img src="https://ssam.stage.willbes.net/public/uploads/willbes/professor/51310/prof_detail_51310.png">
+                                            <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51310/prof_detail_51310.png">
                                             <div class="subject">전공화학 강철</div>
                                         </div>
                                     </td>
@@ -405,7 +405,7 @@
                                 <tr class="bd2px">
                                     <td>
                                         <div class="profImg">
-                                            <img src="https://ssam.stage.willbes.net/public/uploads/willbes/professor/51088/prof_detail_51088.png">
+                                            <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51088/prof_detail_51088.png">
                                             <div class="subject">도덕윤리 김병찬</div>
                                         </div>
                                     </td>
@@ -420,7 +420,7 @@
                                 <tr>
                                     <td rowspan="2">
                                         <div class="profImg">
-                                            <img src="https://ssam.stage.willbes.net/public/uploads/willbes/professor/51317/prof_detail_51317.png">
+                                            <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51317/prof_detail_51317.png">
                                             <div class="subject">도덕윤리 김민응</div>
                                         </div>
                                     </td>
@@ -464,7 +464,7 @@
                                 <tr>
                                     <td rowspan="2">
                                         <div class="profImg">
-                                            <img src="https://ssam.stage.willbes.net/public/uploads/willbes/professor/51315/prof_detail_51315.png">
+                                            <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51315/prof_detail_51315.png">
                                             <div class="subject">전공역사 김종권</div>
                                         </div>
                                     </td>
@@ -487,7 +487,7 @@
                                 <tr class="bd2px">
                                     <td>
                                         <div class="profImg">
-                                            <img src="https://ssam.stage.willbes.net/public/uploads/willbes/professor/51090/prof_detail_51090_1606459468.png">
+                                            <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51090/prof_detail_51090_1606459468.png">
                                             <div class="subject">전공음악 다이애나</div>
                                         </div>
                                     </td>
@@ -500,7 +500,7 @@
                                 <tr>
                                     <td rowspan="3">
                                         <div class="profImg">
-                                            <img src="https://ssam.stage.willbes.net/public/uploads/willbes/professor/51318/prof_detail_51318.png">
+                                            <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51318/prof_detail_51318.png">
                                             <div class="subject">전공중국어 장영희</div>
                                         </div>
                                     </td>

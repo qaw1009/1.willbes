@@ -77,4 +77,4 @@ if(ENVIRONMENT == "production" || ENVIRONMENT == "testing"){
     $config['starplayer_license_admin'] = 'A8FB1258-DF98-403F-B07A-7D047D3F7368';
 }
 
-$config['privacy_excel_down_msg'] = '해당 엑셀 데이터는 개인정보등 민감한 정보가 포함되어 있습니다.\n개인정보 유출로 인한 문제 발생 시 법적인 제제가 있을 수 있습니다.\n해당 엑셀을 다운 받으 실 경우 동의로 간주합니다.\n엑셀을 다운 받으시겠습니까?';
+$config['privacy_excel_down_msg'] = '해당 엑셀 데이터는 개인정보등 민감한 정보가 포함되어 있습니다.\n개인정보 유출로 인한 문제 발생 시 법적인 제재가 있을 수 있습니다.\n해당 엑셀을 다운 받으 실 경우 동의로 간주합니다.\n엑셀을 다운 받으시겠습니까?';

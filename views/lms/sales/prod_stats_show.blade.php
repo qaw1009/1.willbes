@@ -55,7 +55,7 @@
                     <label class="control-label col-md-1">결제조건</label>
                     <div class="col-md-11 form-inline">
                         @if(empty($arr_learn_pattern_ccd) === false)
-                            <select class="form-control mr-10" id="search_learn_pattern_ccd" name="search_learn_pattern_ccd" title="결제채널">
+                            <select class="form-control" id="search_learn_pattern_ccd" name="search_learn_pattern_ccd" title="결제채널">
                                 <option value="">강좌구분</option>
                                 @foreach($arr_learn_pattern_ccd as $key => $val)
                                     <option value="{{ $key }}">{{ $val }}</option>
@@ -63,7 +63,7 @@
                             </select>
                         @endif
                         @if(empty($arr_pay_channel_ccd) === false)
-                            <select class="form-control mr-10" id="search_pay_channel_ccd" name="search_pay_channel_ccd" title="결제채널">
+                            <select class="form-control" id="search_pay_channel_ccd" name="search_pay_channel_ccd" title="결제채널">
                                 <option value="">결제채널</option>
                                 @foreach($arr_pay_channel_ccd as $key => $val)
                                     <option value="{{ $key }}">{{ $val }}</option>
@@ -71,7 +71,7 @@
                             </select>
                         @endif
                         @if(empty($arr_pay_route_ccd) === false)
-                            <select class="form-control mr-10" id="search_pay_route_ccd" name="search_pay_route_ccd" title="결제루트">
+                            <select class="form-control" id="search_pay_route_ccd" name="search_pay_route_ccd" title="결제루트">
                                 <option value="">결제루트</option>
                                 @foreach($arr_pay_route_ccd as $key => $val)
                                     <option value="{{ $key }}">{{ $val }}</option>
@@ -79,7 +79,7 @@
                             </select>
                         @endif
                         @if(empty($arr_pay_method_ccd) === false)
-                            <select class="form-control mr-10" id="search_pay_method_ccd" name="search_pay_method_ccd" title="결제수단">
+                            <select class="form-control" id="search_pay_method_ccd" name="search_pay_method_ccd" title="결제수단">
                                 <option value="">결제수단</option>
                                 @foreach($arr_pay_method_ccd as $key => $val)
                                     <option value="{{ $key }}">{{ $val }}</option>
@@ -87,7 +87,7 @@
                             </select>
                         @endif
                         @if(empty($arr_pay_status_ccd) === false)
-                            <select class="form-control mr-10" id="search_pay_status_ccd" name="search_pay_status_ccd" title="결제상태">
+                            <select class="form-control" id="search_pay_status_ccd" name="search_pay_status_ccd" title="결제상태">
                                 <option value="">결제상태</option>
                                 @foreach($arr_pay_status_ccd as $key => $val)
                                     <option value="{{ $key }}">{{ $val }}</option>
@@ -286,7 +286,8 @@
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
-                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                var confirm_msg = '{{ config_get('privacy_excel_down_msg', '정말로 엑셀다운로드 하시겠습니까?') }}';
+                if (confirm(confirm_msg)) {
                     formCreateSubmit('{{ site_url('/sales/prodTypeStats/orderListExcel') }}', $search_form.serializeArray(), 'POST');
                 }
             });

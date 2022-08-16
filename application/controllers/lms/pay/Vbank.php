@@ -27,7 +27,7 @@ class Vbank extends BaseOrder
     public function index()
     {
         // 사용하는 코드값 조회
-        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayChannel', 'ProdType', 'LearnPattern', 'PayStatus']);
+        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayChannel', 'Pg', 'ProdType', 'LearnPattern', 'PayStatus']);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
         
         // 결제상태에서 무통장입금 관련 값만 필터링
@@ -35,6 +35,7 @@ class Vbank extends BaseOrder
         
         $this->load->view('pay/vbank/index', [
             'arr_pay_channel_ccd' => $codes[$this->_group_ccd['PayChannel']],
+            'arr_pg_ccd' => $codes[$this->_group_ccd['Pg']],
             'arr_prod_type_ccd' => $codes[$this->_group_ccd['ProdType']],
             'arr_learn_pattern_ccd' => $codes[$this->_group_ccd['LearnPattern']],
             'arr_pay_status_ccd' => $arr_pay_status_ccd
@@ -76,6 +77,7 @@ class Vbank extends BaseOrder
                 'O.PayMethodCcd' => $this->orderListModel->_pay_method_ccd['vbank'],
                 'O.SiteCode' => $this->_reqP('search_site_code'),
                 'O.PayChannelCcd' => $this->_reqP('search_pay_channel_ccd'),
+                'O.PgCcd' => $this->_reqP('search_pg_ccd'),
                 'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd'),
                 'PL.LearnPatternCcd' => $this->_reqP('search_learn_pattern_ccd'),
                 'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd'),

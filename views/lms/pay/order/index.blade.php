@@ -23,6 +23,12 @@
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
+                        <select class="form-control" id="search_pg_ccd" name="search_pg_ccd" title="PG사">
+                            <option value="">PG사</option>
+                        @foreach($arr_pg_ccd as $key => $val)
+                            <option value="{{ $key }}">{{ $val }}</option>
+                        @endforeach
+                        </select>
                         <select class="form-control" id="search_pay_method_ccd" name="search_pay_method_ccd" title="결제수단">
                             <option value="">결제수단</option>
                         @foreach($arr_pay_method_ccd as $key => $val)

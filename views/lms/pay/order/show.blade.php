@@ -58,7 +58,11 @@
                                 {{ $data['order']['IsEscrow'] == 'Y' ? '(e)' : '' }}
                             </td>
                             <th class="bg-odd">결제루트</th>
-                            <td class="bg-white-only">{{ $data['order']['PayRouteCcdName'] }}</td>
+                            <td class="bg-white-only">{{ $data['order']['PayRouteCcdName'] }}
+                                @if(empty($data['order']['PgCcdName']) === false)
+                                    | {{ $data['order']['PgCcdName'] }}
+                                @endif
+                            </td>
                             <th class="bg-odd">결제완료일</th>
                             <td class="bg-white-only">{{ $data['order']['CompleteDatm'] }}</td>
                         </tr>

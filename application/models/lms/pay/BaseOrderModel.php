@@ -94,6 +94,9 @@ class BaseOrderModel extends WB_Model
     // 포인트적용 공통코드 (전체, 강좌, 교재)
     public $_point_apply_ccd = ['all' => '635001', 'lecture' => '635002', 'book' => '635003'];
 
+    // PG사 공통코드 (이니시스, 토스)
+    public $_pg_ccd = ['inisis' => '603001', 'toss' => '603002'];
+
     // 결제채널 공통코드
     public $_pay_channel_ccd = ['pc' => '669001', 'm' => '669002', 'app' => '669003'];
 

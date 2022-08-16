@@ -48,7 +48,7 @@ class OrderListModel extends BaseOrderModel
                     , OP.TargetOrderIdx as dTargetOrderIdx, OP.TargetProdCode as dTargetProdCode
                     , P.ProdTypeCcd, PL.LearnPatternCcd, PL.PackTypeCcd, PL.PackSelCount
                     , P.ProdName, P.ProdNameShort, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName                                        
-                    , CPG.CcdEtc as PgDriver, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
+                    , CPG.CcdEtc as PgDriver, CPG.CcdName as PgCcdName, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
                     , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPA.CcdName as PackTypeCcdName, CPS.CcdName as PayStatusCcdName
                     , CST.CcdName as StudyPatternCcdName, if(PL.LecTypeCcd = "' . $this->_worker_lec_type_ccd . '", CLT.CcdName, "") as LecTypeCcdName';
 
@@ -606,7 +606,8 @@ class OrderListModel extends BaseOrderModel
      */
     public function findOrderProductDeliveryInfo($order_prod_idx)
     {
-        $column = 'O.OrderIdx, O.OrderNo, O.MemIdx, O.SiteCode, O.ReprProdName, OP.OrderProdIdx, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice
+        $column = 'O.OrderIdx, O.OrderNo, O.MemIdx, O.SiteCode, O.ReprProdName, O.PgCcd, O.PgMid, O.IsEscrow
+            , OP.OrderProdIdx, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice
             , OPD.OrderProdDeliveryIdx, OPD.DeliveryCompCcd, OPD.DeliveryStatusCcd, OPD.InvoiceNo
             , ODA.Receiver, fn_dec(ODA.ReceiverPhoneEnc) as ReceiverPhone, ODA.ZipCode, ODA.Addr1, fn_dec(ODA.Addr2Enc) as Addr2, ODA.DeliveryMemo
             , CDC.CcdName as DeliveryCompCcdName, CDS.CcdName as DeliveryStatusCcdName';

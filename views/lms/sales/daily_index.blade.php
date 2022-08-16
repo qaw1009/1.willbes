@@ -11,19 +11,19 @@
                     <label class="control-label col-md-1">상품기본정보</label>
                     <div class="col-md-5 form-inline">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                        <select class="form-control mr-10" id="search_learn_prod_type_ccd" name="search_learn_prod_type_ccd">
+                        <select class="form-control" id="search_learn_prod_type_ccd" name="search_learn_prod_type_ccd" title="상품구분">
                             <option value="">상품구분</option>
                             @foreach($arr_learn_prod_type_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
+                        <select class="form-control" id="search_lg_cate_code" name="search_lg_cate_code" title="대분류">
                             <option value="">대분류</option>
                             @foreach($arr_lg_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_campus_ccd" name="search_campus_ccd">
+                        <select class="form-control" id="search_campus_ccd" name="search_campus_ccd" title="캠퍼스">
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)
                                 <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" >{{$row['CampusName']}}</option>
@@ -32,7 +32,7 @@
                     </div>
                     <label class="control-label col-md-1">상품검색</label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value">
+                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" title="상품검색어">
                     </div>
                     <div class="col-md-2 pt-5">
                         명칭, 코드 검색 가능
@@ -45,9 +45,9 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off" title="조회시작일">
                         </div>
-                        <select class="form-control" id="search_start_hour" name="search_start_hour">
+                        <select class="form-control" id="search_start_hour" name="search_start_hour" title="조회시작시간">
                             @for($i = 0; $i <= 23; $i++)
                                 <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}">{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}</option>
                             @endfor
@@ -57,9 +57,9 @@
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off" title="조회종료일">
                         </div>
-                        <select class="form-control" id="search_end_hour" name="search_end_hour">
+                        <select class="form-control" id="search_end_hour" name="search_end_hour" title="조회종료시간">
                             @for($i = 0; $i <= 23; $i++)
                                 <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}" {{ $i == 23 ? 'selected="selected"' : '' }}>{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}</option>
                             @endfor
@@ -213,7 +213,8 @@
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
-                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                var confirm_msg = '{{ config_get('privacy_excel_down_msg', '정말로 엑셀다운로드 하시겠습니까?') }}';
+                if (confirm(confirm_msg)) {
                     formCreateSubmit('{{ site_url('/sales/dailySales/excel') }}', $search_form.serializeArray(), 'POST');
                 }
             });

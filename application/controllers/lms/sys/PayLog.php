@@ -16,10 +16,10 @@ class PayLog extends \app\controllers\BaseController
         'PgDriver' => ['inisis' => '이니시스', 'toss' => '토스'],
         'PgMid' => [
             'willbes015' => '동영상(willbes015)', 'willbes515' => '교재(willbes515)', 'willbes018' => '임용동영상(willbes018)', 'willbes518' => '임용교재(willbes518)',
-            'willbes006' => '인천학원(willbes006)', 'INIpayTest' => '테스트(이니시스)', 'tvivarepublica' => '테스트(토스)'
+            'willbes006' => '인천학원(willbes006)'
         ],
         'PgBookMid' => [
-            'willbes515' => '교재(willbes515)', 'willbes518' => '임용교재(willbes518)', 'INIpayTest' => '테스트(이니시스)', 'tvivarepublica' => '테스트(토스)'
+            'willbes515' => '교재(willbes515)', 'willbes518' => '임용교재(willbes518)'
         ],
         'PayType' => ['PA' => '결제요청', 'CA' => '결제취소', 'NC' => '망취소', 'RP' => '부분환불', 'MP' => '결제요청(모바일)'],
         'CancelType' => ['CA' => '결제취소', 'NC' => '망취소', 'RP' => '부분환불'],

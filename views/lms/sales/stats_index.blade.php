@@ -478,7 +478,8 @@
                     return;
                 }
 
-                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                var confirm_msg = '{{ config_get('privacy_excel_down_msg', '정말로 엑셀다운로드 하시겠습니까?') }}';
+                if (confirm(confirm_msg)) {
                     var data = [
                         { 'name' : '{{ csrf_token_name() }}', 'value' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val() },
                         { 'name' : 'site_code', 'value' : $search_form.find('select[name="search_site_code"]').val() },

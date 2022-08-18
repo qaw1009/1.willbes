@@ -41,6 +41,11 @@
         <img src="https://static.willbes.net/public/images/promotion/2022/08/2742m_02s.jpg" alt="이벤트 유의사항"/>       
     </div>
 
+    {{--기본댓글--}}
+    @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+        @include('willbes.m.promotion.show_comment_list_normal_partial')
+    @endif
+
     <div class="evtCtnsBox evt03 pb50" id="evt_03" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/08/2742m_03.jpg" alt="기출해설 특강"/>
         @if(empty($arr_base['display_product_data']) === false)

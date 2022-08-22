@@ -20,6 +20,9 @@
 
         /************************************************************/
 
+        .sky {position:fixed;top:200px;right:10px; width:188px; z-index:1;}
+        .sky a {display:block;margin-bottom:10px}
+
         .evtTop,
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2022/08/2740_bg.jpg);}
        
@@ -29,6 +32,10 @@
 
 
     <div class="evtContent NSK" id="evtContainer">
+        <div class="sky" id="QuickMenu">
+            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2022/08/2740_sky.png" alt="최종점검 모의고사" ></a>      
+        </div>
+
         <div class="evtCtnsBox evtTop" data-aos="fade-right">
             <img src="https://static.willbes.net/public/images/promotion/2022/08/2740_top.jpg" alt="신승철 면접캠프" />
 		</div>
@@ -44,7 +51,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/08/2740_02.jpg" alt="왜 신승철 면접인가?"/>          
 		</div> 
 
-        <div class="evtCtnsBox evt03">
+        <div class="evtCtnsBox evt03" id="apply">
             <div class="wrap" data-aos="fade-right">
                 <img src="https://static.willbes.net/public/images/promotion/2022/08/2740_03.jpg" alt="면접캠프 스케쥴"/>                
                 <a href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1069&course_idx=1047&campus_ccd=605001" target="_blank" title="인적성 검사" style="position: absolute; left: 59.64%; top: 27.94%; width: 22.95%; height: 9.63%;z-index: 2;"></a>

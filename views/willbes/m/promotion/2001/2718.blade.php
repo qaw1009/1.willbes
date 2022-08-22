@@ -6,7 +6,7 @@
     <style type="text/css">
         .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
         .evtCtnsBox img {width:100%; max-width:720px;}
-        /*.wrap a {border:1px solid #000}*/
+        .wrap a {border:1px solid #000}
 
         .dday {font-size:24px !important; padding:10px; background:#ebebeb; color:#000; text-align:left; letter-spacing:-1px}
         .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
@@ -134,16 +134,16 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/07/2718m_01.jpg" alt="합격률을 높이는 전략"/>
             <div class="evt01_coupon" id="pass">
                 <div class="p_re">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/07/2718m_02_01.jpg" alt="23년 2차 PASS 신청하기" > 
+                    <img src="https://static.willbes.net/public/images/promotion/2022/08/2718m_02_01.jpg" alt="23년 2차 PASS 신청하기" > 
                     <div class="price NSK-Black">                       
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="199729" onClick=""/>
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="200655" onClick=""/>
                         <label for="y_pkg1"> 23년 2차 PASS 신청하기</label>
                     </div>
                 </div>
                 <div class="p_re">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/07/2718m_02_02.jpg" alt="23년 1차 PASS 신청하기" > 
+                    <img src="https://static.willbes.net/public/images/promotion/2022/08/2718m_02_02.jpg" alt="23년 1차 PASS 신청하기" > 
                     <div class="price NSK-Black">                       
-                        <input type="radio" id="y_pkg2" name="y_pkg" value="199728" onClick=""/>
+                        <input type="radio" id="y_pkg2" name="y_pkg" value="200654" onClick=""/>
                         <label for="y_pkg2"> 23년 1차 PASS 신청하기</label>
                     </div>
                 </div>               
@@ -274,13 +274,13 @@
                 {!! method_field('POST') !!}
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
-                <img src="https://static.willbes.net/public/images/promotion/2022/07/2718m_09.jpg" alt="교재 신청하기" >
-                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 58.89%; top: 32.29%; width: 25%; height: 2.67%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="경찰학" style="position: absolute; left: 28.06%; top: 51.31%; width: 21.94%; height: 2.22%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180748" target="_blank" title="형사법" style="position: absolute; left: 50.28%; top: 51.31%; width: 21.94%; height: 2.22%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180567" target="_blank" title="헌법(김)" style="position: absolute;left: 16.94%; top: 53.53%; width: 21.94%; height: 2.22%; z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!')" title="헌법(이)" style="position: absolute; left: 39.03%; top: 53.53%;; width: 21.94%; height: 2.22%; z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!')" title="범죄학" style="position: absolute; left: 61.39%; top: 53.53%; width: 21.94%; height: 2.22%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/2718m_09.jpg" alt="교재 신청하기" >
+                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 58.47%; top: 47.91%; width: 25%; height: 3.97%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="경찰학" style="position: absolute; left: 27.92%; top: 76.38%; width: 22.22%; height: 2.96%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180748" target="_blank" title="형사법" style="position: absolute; left: 50.14%; top: 76.31%; width: 22.22%; height: 2.96%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180567" target="_blank" title="헌법(김)" style="position: absolute; left: 16.53%; top: 79.61%; width: 22.22%; height: 2.96%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!')" title="헌법(이)" style="position: absolute; left: 38.61%; top: 79.54%; width: 22.22%; height: 2.96%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!')" title="범죄학" style="position: absolute; left: 61.25%; top: 79.61%; width: 22.22%; height: 2.96%; z-index: 2;"></a>
             </form>
             <div class="passgo NSK-Black"><a href="#pass">PASS 신청 ↑</a></div>
         </div>
@@ -322,7 +322,9 @@
                                 </li>
                                 <li>선택한 윌비스 경찰 PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강할 수 있습니다.</li>
                                 <li>윌비스 경찰 PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다. (결제완료자에 한함)</li>
-                                <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>                              
+                                <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>   
+                                <li>수강 기간내에 불합격시 24년 1차까지 연장(추후 공지사항 확인)</li> 
+                                <li>신규교수님 기본서 증정부분은 추후 공지사항 확인</li>                              
                             </ol>
                         </dd>
 
@@ -344,7 +346,7 @@
                                 <li>본 상품은 최종합격시 현금환급과 제주여행권 중 택1이 가능한 상품입니다 <br>
                                     1)현금 환급의 경우 환급금은 구매 금액으로 100%환급되며 제세공과금22%는 윌비스 경찰이 부담합니다.<br>
                                     2) 제주여행권을 선택하실 경우, 인증 완료 시  부모님(2인) 2박 3일 제주도 여행권이 지급됩니다.<br>
-                                    <span class="tx-red">※ 여행권 70만원 상당 / 제세공과금 22%는 윌비스 경찰이 부담합니다.</span></li>
+                                    <span class="tx-red">※ 여행상품권 60만원 상당 / 제세공과금 22%는 윌비스경찰이 부담합니다.</span></li>
                                 <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 여행권 지급 대상이 됩니다.<br>
                                     ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채</li>
                                 <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. (22년 2차 또는 23년 1차·2차 최종합격)</li>
@@ -449,6 +451,8 @@
                                 <li>선택한 윌비스 경찰 PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강할 수 있습니다.</li>
                                 <li>윌비스 경찰 PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다. (결제완료자에 한함)</li>
                                 <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
+                                <li>수강 기간안에 불합격시 23년 2차까지 연장(추후 공지사항인)</li>
+                                <li>신규교수님 기본서 증정부분은 추후 공지사항 확인</li>
                             </ol>
                         </dd>
 
@@ -470,7 +474,7 @@
                                 <li>본 상품은 최종합격시 현금환급과 제주여행권 중 택1이 가능한 상품입니다.<br>
                                     1)현금 환급의 경우 환급금은 구매 금액으로 100%환급되며 제세공과금22%는 윌비스 경찰이 부담합니다.<br>
                                     2) 제주여행권을 선택하실 경우, 인증 완료 시  부모님(2인) 2박 3일 제주도 여행권이 지급됩니다.<br>
-                                    <span class="tx-red">※ 여행권 60만원 상당 / 제세공과금 22%는 윌비스 경찰이 부담합니다.</span></li>
+                                    <span class="tx-red">※ 여행상품권 50만원 상당 / 제세공과금 22%는 윌비스경찰이 부담합니다.</span></li>
                                 <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 여행권 지급 대상이 됩니다.<br>
                                 ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채</li>
                                 <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. (22년 2차 또는 23년 1차 최종합격)</li>

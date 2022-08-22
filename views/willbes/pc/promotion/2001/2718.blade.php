@@ -191,11 +191,11 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/08/2718_02.jpg" alt="윌비스 경찰 PASS">
                 <div class="passLecBuy NSK-Black"> 
                     <div>                                       
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="199729"/>                
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="200655"/>                
                         <label for="y_pkg1">23년 2차 PASS 신청하기</label>
                     </div>
                     <div style="margin-left:-150px;">                    
-                        <input type="radio" id="y_pkg2" name="y_pkg" value="199728"/>
+                        <input type="radio" id="y_pkg2" name="y_pkg" value="200654"/>
                         <label for="y_pkg2">23년 1차 PASS 신청하기</label>
                     </div>                 
                 </div>
@@ -215,7 +215,7 @@
 
             <div class="title02" id="transfer">
                 재수강과 환승 하실 수강생은 모두 주목
-                <div class="NSK-Black">최대 <span>30% 할인</span> 받고 구매하세요.</div>
+                <div class="NSK-Black">최대 <span>40% 할인</span> 받고 구매하세요.</div>
             </div>
 
             <div class="wrap">
@@ -347,13 +347,13 @@
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
                 <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/07/2718_09.jpg"  alt="스폐셜혜택" />
-                    <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 18.39%; top: 41.89%; width: 16.07%; height: 3.11%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="장정훈 경찰학" style="position: absolute;left: 50.98%; top: 39.68%; width: 14.29%; height: 2.58%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180748" target="_blank" title="신광은 형법" style="position: absolute;left: 65.45%; top: 39.68%; width: 14.29%; height: 2.58%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180567" target="_blank" title="김원욱 헌법" style="position: absolute;left: 44.02%; top: 42.32%; width: 14.29%; height: 2.58%; z-index: 2;"></a>
-                    <a href="javascript:alert('Coming Soon!')" title="이국령 헌법" style="position: absolute; left: 58.21%; top: 42.32%; width: 14.29%; height: 2.58%; z-index: 2;"></a>
-                    <a href="javascript:alert('Coming Soon!')" title="박상민 범죄학" style="position: absolute; left: 72.59%; top: 42.32%; width: 14.29%; height: 2.58%; z-index: 2;"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/2022/08/2718_09.jpg"  alt="스폐셜혜택" />
+                    <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 18.3%; top: 74.21%; width: 16.07%; height: 5.61%; z-index: 2;"></a>
+                    <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="장정훈 경찰학" style="position: absolute;left: 51.16%; top: 70.47%; width: 14.29%; height: 4.39%; z-index: 2;"></a>
+                    <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180748" target="_blank" title="신광은 형법" style="position: absolute;left: 65.45%; top: 70.37%; width: 14.29%; height: 4.39%; z-index: 2;"></a>
+                    <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180567" target="_blank" title="김원욱 헌법" style="position: absolute;left: 43.75%; top: 75.33%; width: 14.29%; height: 4.39%; z-index: 2;"></a>
+                    <a href="javascript:alert('Coming Soon!')" title="이국령 헌법" style="position: absolute; left: 58.13%; top: 75.23%; width: 14.29%; height: 4.39%;z-index: 2;"></a>
+                    <a href="javascript:alert('Coming Soon!')" title="박상민 범죄학" style="position: absolute; left: 72.5%; top: 75.14%; width: 14.29%; height: 4.39%;z-index: 2;"></a>
                 </div>
             </form>   
             <div class="passgo NSK-Black"><a href="#pass">PASS 신청 ↑</a></div> 
@@ -396,7 +396,9 @@
                                 </li>
                                 <li>선택한 윌비스 경찰 PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강할 수 있습니다.</li>
                                 <li>윌비스 경찰 PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다. (결제완료자에 한함)</li>
-                                <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>                              
+                                <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>      
+                                <li>수강 기간내에 불합격시 24년 1차까지 연장(추후 공지사항 확인)</li> 
+                                <li>신규교수님 기본서 증정부분은 추후 공지사항 확인</li>                      
                             </ol>
                         </dd>
 
@@ -418,7 +420,7 @@
                                 <li>본 상품은 최종합격시 현금환급과 제주여행권 중 택1이 가능한 상품입니다 <br>
                                     1)현금 환급의 경우 환급금은 구매 금액으로 100%환급되며 제세공과금22%는 윌비스 경찰이 부담합니다.<br>
                                     2) 제주여행권을 선택하실 경우, 인증 완료 시  부모님(2인) 2박 3일 제주도 여행권이 지급됩니다.<br>
-                                    <span class="tx-red">※ 여행권 70만원 상당 / 제세공과금 22%는 윌비스 경찰이 부담합니다.</span></li>
+                                    <span class="tx-red">※ 여행상품권 60만원 상당 / 제세공과금 22%는 윌비스경찰이 부담합니다.</span></li>
                                 <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 여행권 지급 대상이 됩니다.<br>
                                     ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채</li>
                                 <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. (22년 2차 또는 23년 1차·2차 최종합격)</li>
@@ -523,6 +525,8 @@
                                 <li>선택한 윌비스 경찰 PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강할 수 있습니다.</li>
                                 <li>윌비스 경찰 PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다. (결제완료자에 한함)</li>
                                 <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
+                                <li>수강 기간안에 불합격시 23년 2차까지 연장(추후 공지사항인)</li>
+                                <li>신규교수님 기본서 증정부분은 추후 공지사항 확인</li>
                             </ol>
                         </dd>
 
@@ -544,7 +548,7 @@
                                 <li>본 상품은 최종합격시 현금환급과 제주여행권 중 택1이 가능한 상품입니다.<br>
                                     1)현금 환급의 경우 환급금은 구매 금액으로 100%환급되며 제세공과금22%는 윌비스 경찰이 부담합니다.<br>
                                     2) 제주여행권을 선택하실 경우, 인증 완료 시  부모님(2인) 2박 3일 제주도 여행권이 지급됩니다.<br>
-                                    <span class="tx-red">※ 여행권 60만원 상당 / 제세공과금 22%는 윌비스 경찰이 부담합니다.</span></li>
+                                    <span class="tx-red">※ 여행상품권 50만원 상당 / 제세공과금 22%는 윌비스경찰이 부담합니다.</span></li>
                                 <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 여행권 지급 대상이 됩니다.<br>
                                 ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채</li>
                                 <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. (22년 2차 또는 23년 1차 최종합격)</li>

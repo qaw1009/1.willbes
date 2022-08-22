@@ -54,7 +54,7 @@ class LoginLogModel extends WB_Model
         } else {
             $in_column = 'L.wLogIdx, L.wAdminId, L.wLoginIp, L.wLoginDatm, L.wLoginLogCcd
                 , ifnull(A.wAdminName, "비운영자") as wAdminName, A.wAdminDeptCcd, A.wAdminPositionCcd, A.wRoleIdx, A.wIsUse
-                , fn_mask(L.wAdminId, "id", "N") as wAdminIdMask
+                , fn_mask(L.wAdminId, "id", "Y") as wAdminIdMask
                 , R.wRoleName
                 , WCD.wCcdName as wAdminDeptCcdName, WCP.wCcdName as wAdminPositionCcdName, WCL.wCcdName as wLoginLogCcdName';
 

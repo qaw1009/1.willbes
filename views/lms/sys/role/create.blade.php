@@ -31,21 +31,22 @@
                 </div>
                 @if(empty($arr_sub_role) === false)
                     {{-- 운영자권한유형 세부항목 --}}
-                    @foreach($arr_sub_role as $key => $val)
+                    @foreach($arr_sub_role as $key => $row)
                         <div class="form-group">
-                            <label class="control-label col-md-2" for="{{ $key }}_y">{{ $val }} <span class="required">*</span>
+                            <label class="control-label col-md-2" for="{{ $key }}_1">{{ $row['SubRoleName'] }} <span class="required">*</span>
                             </label>
                             <div class="col-md-9 item">
                                 <div class="radio">
-                                    <input type="radio" id="{{ $key }}_y" name="sub_role[{{ $key }}]" class="flat" value="Y" title="{{ $val }}" required="required" @if($method == 'POST' || array_get($data, 'SubRoleData.' . $key) == 'Y')checked="checked"@endif/> <label for="{{ $key }}_y" class="input-label">노출</label>
-                                    <input type="radio" id="{{ $key }}_n" name="sub_role[{{ $key }}]" class="flat" value="N" @if(array_get($data, 'SubRoleData.' . $key) == 'N')checked="checked"@endif/> <label for="{{ $key }}_n" class="input-label">미노출</label>
+                                @foreach($row['SubRoleList'] as $skey => $sval)
+                                    <input type="radio" id="{{ $key }}_{{ $loop->index }}" name="sub_role[{{ $key }}]" class="flat" value="{{ $sval }}" @if($loop->first === true) title="{{ $row['SubRoleName'] }}" required="required" @endif @if(($loop->first === true && $method == 'POST') || array_get($data, 'SubRoleData.' . $key) == $sval) checked="checked" @endif/> <label for="{{ $key }}_{{ $loop->index }}" class="input-label">{{ $skey }}</label>
+                                @endforeach
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 @endif
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="is_use">사용여부 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="is_use_y">사용여부 <span class="required">*</span>
                     </label>
                     <div class="col-md-9 item">
                         <div class="radio">

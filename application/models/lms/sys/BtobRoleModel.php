@@ -258,7 +258,7 @@ class BtobRoleModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = 'BA.AdminIdx, BA.AdminId, BA.AdminName, BA.RegDatm, BA.LastLoginDatm, A.wAdminName as RegAdminName
-                ,fn_mask(BA.AdminId, "id", "N") as AdminIdMask';
+                ,fn_mask(BA.AdminId, "id", "Y") as AdminIdMask';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

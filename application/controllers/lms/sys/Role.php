@@ -56,7 +56,13 @@ class Role extends \app\controllers\BaseController
         $menus = $this->roleModel->listRoleMenu($idx);
 
         // 권한유형별 세부항목 공통코드 조회
-        $arr_sub_role = $this->codeModel->getCcd('748');
+        $arr_sub_role = $this->codeModel->getCcd('748', 'CcdEtc');
+        foreach ($arr_sub_role as $key => $val) {
+            $arr_sub_role[$key] = [
+                'SubRoleName' => str_first_pos_before($val, ':'),
+                'SubRoleList' => json_decode(str_first_pos_after($val, ':'), true)
+            ];
+        }
 
         // 복사 설정
         if (isset($params[1]) === true && $params[1] == 'copy') {

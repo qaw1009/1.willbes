@@ -33,7 +33,7 @@ class ExcelDownLogModel extends WB_Model
                 $column = '
                     a.*
                     ,b.wAdminId,b.wAdminName
-                    ,fn_mask(b.wAdminId, "id", "N") as wAdminIdMask
+                    ,fn_mask(b.wAdminId, "id", "Y") as wAdminIdMask
                     ,c.CcdName,c.CcdValue,c.CcdDesc
                 ';
             } else {

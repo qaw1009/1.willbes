@@ -228,6 +228,8 @@
             // 쿠폰발급 목록
             $datatable = $list_table.DataTable({
                 serverSide: true,
+                displayStart: 0,
+                displayLength: 20,
                 buttons: [
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-undo mr-5"></i> 쿠폰발급회수', className: 'btn-sm btn-success border-radius-reset mr-15 btn-retire' },

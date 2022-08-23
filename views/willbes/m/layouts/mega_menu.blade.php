@@ -658,7 +658,7 @@
     @endif
 @endsection
 
-{{-- 수강신청 --}}
+{{-- 수강신청, 동영상강의 --}}
 @section('mega_menu_lecture')
     @if($__cfg['SiteCode'] == '2003')
         {{-- 공무원온라인 --}}
@@ -698,9 +698,9 @@
                 <li>
                     <span>순환별</span>
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=regist&subject_idx=&course_idx=1409') }}">1순환(기본)</a>
-                    <a href="#none">2순환(심화)</a>
-                    <a href="#none">3순환(진도별모고)</a>
-                    <a href="#none">4순환(실전모고)</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=regist&subject_idx=&course_idx=1410') }}">2순환(심화)</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=regist&subject_idx=1107&course_idx=1411') }}">3순환(진도별모고)</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=regist&subject_idx=1107&course_idx=1412') }}">4순환(실전모고)</a>
                 </li>
                 <li>
                     <span>과목별</span>

@@ -692,6 +692,31 @@
                 </li>
             </ul>
         @endif
+        @if($menu_cate_code == '3148')
+            {{-- 검찰직 --}}
+            <ul>
+                <li>
+                    <span>순환별</span>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=regist&subject_idx=&course_idx=1409') }}">1순환(기본)</a>
+                    <a href="#none">2순환(심화)</a>
+                    <a href="#none">3순환(진도별모고)</a>
+                    <a href="#none">4순환(실전모고)</a>
+                </li>
+                <li>
+                    <span>과목별</span>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1107') }}">국어</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1108') }}">영어</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1109') }}">한국사</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1116') }}">형법</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?subject_idx=1117') }}">형사소송법</a>
+                </li>
+                <li>
+                    <span>패키지</span>
+                    <a href="{{ front_url('/package/index/cate/' . $menu_cate_code . '/pack/648001') }}">순환별패키지</a>
+                    <a href="{{ front_url('/periodPackage/show/cate/' . $menu_cate_code . '/pack/648001/prod-code/179624') }}">검찰직PASS</a>
+                </li>
+            </ul>
+        @endif
     @elseif($__cfg['SiteCode'] == '2004')
         {{-- 공무원학원 --}}
         <ul>

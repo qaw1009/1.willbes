@@ -28,8 +28,9 @@
         .evt_top {background:url("https://static.willbes.net/public/images/promotion/2022/07/2718_top_bg.jpg") no-repeat center top;}   
 
         .evt_01 {background:#f5f5f7;}
+        .evt_01_01 {}
 
-        .evtPass {background:#F1F1F3; padding:140px 0}
+        .evtPass {background:#F1F1F3; padding:100px 0}
         .evtPass .title01 {font-size:30px; color:#000; margin-bottom:100px}
         .evtPass .wrap {width:1120px; margin:0 auto}
         .evtPass .passLecBuy {display:flex; justify-content:space-around; position:absolute; bottom:90px; width:100%; color:#252525; letter-spacing:-1px}
@@ -183,7 +184,11 @@
 		</div>
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">     
-            <img src="https://static.willbes.net/public/images/promotion/2022/07/2718_01.jpg" alt="합격률을 높이는 전략"/>             
+            <img src="https://static.willbes.net/public/images/promotion/2022/07/2718_01.jpg" alt="합격률을 높이는 전략"/>    
+        </div> 
+
+        <div class="evtCtnsBox evt_01_01" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/2718_02_superweek.jpg" alt=""/>          
         </div> 
 
         <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">         

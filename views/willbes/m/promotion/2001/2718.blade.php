@@ -132,6 +132,7 @@
 
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01"> 
             <img src="https://static.willbes.net/public/images/promotion/2022/07/2718m_01.jpg" alt="합격률을 높이는 전략"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/2718m_02_superweek.jpg" alt=""/>
             <div class="evt01_coupon" id="pass">
                 <div class="p_re">
                     <img src="https://static.willbes.net/public/images/promotion/2022/08/2718m_02_01.jpg" alt="23년 2차 PASS 신청하기" > 

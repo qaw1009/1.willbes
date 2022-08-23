@@ -188,10 +188,11 @@
     </script>
 
     <script type="text/javascript">
+           
         /*디데이카운트다운*/
         $(document).ready(function() {
-            dDayCountDown('@if(empty($arr_promotion_params['edate'])===false) {{$arr_promotion_params['edate']}} @endif');
-        });
+            dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
+        });   
 
         /*수강신청 동의*/ 
         function go_PassLecture(obj){

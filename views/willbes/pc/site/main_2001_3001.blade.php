@@ -143,7 +143,7 @@
                         @endif
                     @endfor
                 </ul>
-
+                <!--
                 @if (empty(element('메인_유튜브', $data['arr_main_banner'])) === false)
                     <div class="will-nTit NSK-Black mt100">
                         윌비스 경찰 유튜브 채널 모음
@@ -172,8 +172,8 @@
                         <p class="leftBtn"><a id="tube_slider_left"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_left.png"></a></p>
                         <p class="rightBtn"><a id="tube_slider_right"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_right.png"></a></p>
                     </div>
-
                 @endif
+                -->
             </div>
         </div>
 

@@ -33,8 +33,8 @@ class PayLogModel extends WB_Model
             $defined_column = [
                 'pay' => 'PL.PayIdx, PL.OrderNo, PL.PayType, PL.PgDriver, PL.PgMid, PL.PgTid, PL.PayMethod, PL.PayDetailCode, PL.ReqPayPrice, PL.ApprovalNo, PL.ApprovalDatm
                     , PL.ResultCode, PL.ResultMsg, PL.ResultPgTid, PL.ResultPayPrice, PL.ReqReason, PL.RegDatm',
-                'deposit' => 'PL.DepositIdx, PL.OrderNo, PL.MsgSeq, PL.PgDriver, PL.PgMid, PL.PgTid, PL.RealPayPrice, PL.VBankCode, PL.VBankAccountNo
-                    , PL.DepositBankName, PL.DepositName, PL.DepositDatm, PL.ErrorMsg, PL.RegDatm, PL.RegIp',
+                'deposit' => 'PL.DepositIdx, PL.OrderNo, PL.MsgSeq, PL.PgDriver, O.PgMid, PL.PgTid, if(PL.RealPayPrice = 0, O.RealPayPrice, PL.RealPayPrice) as RealPayPrice
+                    , PL.VBankCode, PL.VBankAccountNo, PL.DepositBankName, PL.DepositName, PL.DepositDatm, PL.ErrorMsg, PL.RegDatm, PL.RegIp',
                 'escrow' => 'PL.EscrowIdx, PL.OrderNo, PL.PgDriver, PL.PgMid, PL.EscrowParam1, PL.EscrowParam2, PL.EscrowDatm, PL.ResultCode, PL.ResultMsg, PL.IsResend, PL.RegDatm
                     , if(PL.ResultCode = "0000", "Y", "N") as IsSuccess
                     , fn_ccd_name(PL.EscrowParam1) as EscrowParam1Name'
@@ -65,27 +65,29 @@ class PayLogModel extends WB_Model
             from (
                 select PgMid
                     , (case 
-                        when PayMethod in ("Card", "VCard", "CARD") then "Card"
-                        when PayMethod in ("DirectBank", "BANK") then "DirectBank"
+                        when PayMethod in ("Card", "VCard", "CARD", "ECard") then "Card"
+                        when PayMethod in ("DirectBank", "BANK", "Bank") then "DirectBank"
                         when PayMethod in ("VBank", "VBANK") then "VBank"
                         else "etc"
                       end) as PayMethod
                     , ReqPayPrice		  
-                    , if(PayDetailCode in ("97", "98"), 0, ReqPayPrice) as CardPayPrice
+                    , if(PayDetailCode in ("93", "94", "96", "97", "98"), 0, ReqPayPrice) as CardPayPrice
                     , left(RegDatm, 10) as RegDate
                 from ' . $this->_table['pay'] . '
                 where PayType in ("PA", "MP")
                     and ResultCode in ("0000", "00")
                     and RegDatm between ? and ?
                 union all
-                select PgMid
+                select O.PgMid
                     , "VDeposit" as PayMethod
-                    , RealPayPrice as ReqPayPrice
+                    , O.RealPayPrice as ReqPayPrice
                     , 0 as CardPayPrice
-                    , left(RegDatm, 10) as RegDate
-                from ' . $this->_table['deposit'] . '
-                where RegDatm between ? and ?
-                    and ErrorMsg is null
+                    , left(OD.RegDatm, 10) as RegDate
+                from ' . $this->_table['deposit'] . ' as OD
+                    left join ' . $this->_table['order'] . ' as O
+                        on OD.OrderNo = O.OrderNo                
+                where OD.RegDatm between ? and ?
+                    and OD.ErrorMsg is null
             ) as U
             ' . $where . '
             group by RegDate, PgMid, PayMethod

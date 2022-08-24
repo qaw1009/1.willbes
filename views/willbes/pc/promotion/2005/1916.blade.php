@@ -7,65 +7,60 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
+            max-width:2000px !important;
+            margin:0 auto;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;
+            background:#fff;            
         }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
-        /************************************************************/ 
+        /************************************************************/
 
-        .evt_top {background:#39056A url(https://static.willbes.net/public/images/promotion/2020/11/1916_top_bg.jpg) no-repeat center top;}	
+        .evt_top {background:#39056A url(https://static.willbes.net/public/images/promotion/2022/08/1916_top_bg.jpg) no-repeat center top;}	
         
-        .evt_01 {background:#303030 url(https://static.willbes.net/public/images/promotion/2020/11/1916_01_bg.jpg) no-repeat center top;}	
-        
-        .evt_02 {background:#F9F9F9 url(https://static.willbes.net/public/images/promotion/2020/11/1916_02_bg.jpg) no-repeat center top;}	
+        .evt_01 {background:#343434; height:1500px}	
+        .evt_01 .img01 {position:absolute; top:-350px; left:50%; margin-left:200px; z-index: 1;}
+        .evt_01 .img02 {position:absolute; top:120px; left:50%; margin-left:-510px; z-index: 2;}
+        .evt_02 {background:#2a2726}	
 
-        .evt_03 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/11/1916_03_bg.jpg) no-repeat center top;}
-
-        .evt_04 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/09/1848_04_bg.jpg) repeat-x center top;padding-bottom:25px;}
-        .evt_04 .title {width:1120px; font-size:36px;  margin:0 auto 20px; text-align:left; color:#65069b;padding-top:50px;}
-        .evt_04 .evt_04box {width:1120px; padding:20px 0; margin:0 auto 50px; background:#fff;} 
-
-        .evt_05 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/09/1848_05_bg.jpg) repeat-x center top;padding-bottom:25px;}
 
         /************************************************************/      
     </style> 
-	<div class="evtContent NGR">
-		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1916_top.jpg" alt="" />
+	<div class="evtContent NSK" id="evtContainer">
+		<div class="evtCtnsBox evt_top" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/1916_top.jpg" alt="" />
 		</div>
 
 		<div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1916_01.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/1916_01_01.png" alt="" class="img01" data-aos="fade-left"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/1916_01_02.png" alt="" class="img02" data-aos="fade-right"/>
 		</div>
 
-        <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1916_02.jpg" alt="" />
+        <div class="evtCtnsBox evt_02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/1916_02.jpg" alt="" />
         </div>
 
-        <div class="evtCtnsBox evt_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1916_03.jpg" alt="" />
-        </div>
-
-        <div class="evtCtnsBox evt_04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1916_04.jpg" title="">
-            <div class="title NSK-Black">기간제 패키지 강좌</div>
-            <div class="evt_04box">                
-                @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-                @endif                
+        <div class="evtCtnsBox evt_03" data-aos="fade-up">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/1916_03.jpg" alt="" />
+                <a href="https://gosi.willbes.net/package/show/cate/3094/pack/648002/prod-code/200730" title="예비순환" style="position: absolute; left: 58.75%; top: 38.35%; width: 32.14%; height: 8.23%; z-index: 2;"></a>
+                <a href="https://gosi.willbes.net/package/show/cate/3094/pack/648002/prod-code/200731" title="GS1순환" style="position: absolute; left: 58.75%; top: 55.2%; width: 32.14%; height: 8.23%; z-index: 2;"></a>
+                <a href="https://gosi.willbes.net/package/show/cate/3094/pack/648002/prod-code/200732" title="예비+GS1" style="position: absolute; left: 58.75%; top: 72.35%; width: 32.14%; height: 8.23%; z-index: 2;"></a>
             </div>
-        </div>
-
-        <div class="evtCtnsBox evt_05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1916_05.jpg" alt="" usemap="#Map1916a" border="0" />
-            <map name="Map1916a" id="Map1916a">
-                <area shape="rect" coords="849,113,1064,178" href="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/174697" target="_blank" />
-            </map>
         </div>
 
 	</div>
     <!-- End Container -->
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+      $(document).ready( function() {
+        AOS.init();
+      });
+    </script>
 @stop

@@ -58,7 +58,7 @@
 		.evtInfoBox ul {margin-bottom:30px}
         .evtInfoBox ul li {margin-bottom:5px; font-size:14px; list-style:decimal; margin-left:20px}
         .evtInfoBox ul li a {color:#ecfc80}
-        
+
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -126,7 +126,7 @@
 				<h4 class="NSK-Black">2023윌비스경찰 헌법 T-PASS 이용안내</h4>
 				<div class="infoTit NSK-Black">강좌 기본</div>
 				<ul>               
-                    <li>본 상품은 구매일로부터 12개월 동안 무제한으로 수강 가능한 기간제 PASS입니다.</li>
+                    <li>본 상품은 구매일로부터 12개월/6개월 동안 무제한으로 수강 가능한 기간제 패스입니다.</li>
                     <li>헌법 T-PASS는 결제가 완료되는 즉시 수강이 시작됩니다. (결제 완료자에 한함)</li>
                     <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
                     <li>헌법 T-PASS 상품 구성은 다음과 같습니다.<br>                    

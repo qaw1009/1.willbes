@@ -301,7 +301,7 @@
                 ,'title' => '장영희 전공중국어'
                 ,'button' => [
                     [
-                        'youtube' => 'https://www.youtube.com/embed/nXC4KosrbmQ'
+                        'youtube' => 'https://www.youtube.com/embed/9sT31wLIWPw'
                         ,'prof_code' => (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? '50976' : '51318'
                     ]
                 ]

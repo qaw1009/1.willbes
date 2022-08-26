@@ -151,7 +151,7 @@
                     <iframe width="512" height="288" src="https://www.youtube.com/embed/4jqSvpDe900?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div id="tab03" class="tabCts">
-                    {{--<iframe width="512" height="288" src="https://www.youtube.com/embed/r8sOeBFLW10?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>--}}
+                    <iframe width="512" height="288" src="https://www.youtube.com/embed/Ma8d0QFnhEg?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -276,7 +276,7 @@
     <script>    
         var tab1_url = "https://www.youtube.com/embed/dKr_BWdDT7g?rel=0";
         var tab2_url = "https://www.youtube.com/embed/4jqSvpDe900?rel=0";        
-        var tab3_url = "https://www.youtube.com/embed/VEmBnYu8tcc?rel=0";
+        var tab3_url = "https://www.youtube.com/embed/Ma8d0QFnhEg?rel=0";
         $(document).ready(function() {
             $(".tabCts").hide(); 
             $(".tabCts:first").show();
@@ -288,7 +288,7 @@
                 }else if(activeTab == "#tab02"){
                     html_str = "<iframe src='"+tab2_url+"' frameborder='0' allowfullscreen></iframe>";
                 }else if(activeTab == "#tab03"){
-                    html_str = "";
+                    html_str = "<iframe src='"+tab3_url+"' frameborder='0' allowfullscreen></iframe>";
                 }
                 $(".tabs a").removeClass("active");
                 $(this).addClass("active");

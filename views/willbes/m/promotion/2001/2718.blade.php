@@ -6,7 +6,7 @@
     <style type="text/css">
         .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
         .evtCtnsBox img {width:100%; max-width:720px;}
-        .wrap a {border:1px solid #000}
+        /*.wrap a {border:1px solid #000}*/
 
         .dday {font-size:24px !important; padding:10px; background:#ebebeb; color:#000; text-align:left; letter-spacing:-1px}
         .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
@@ -16,7 +16,7 @@
         .evt01 .txtinfo p {background:#000; color:#fff; padding:10px 5px; border-radius:30px; margin-top:-60px; margin-bottom:20px; font-size:1.8vh; text-align:center}
 
         .evt01 {background:#f5f5f7; padding-bottom:50px}
-        .evt01 .price {text-align:center; font-size:25px; font-weight:bold; color:#000; letter-spacing:-1px; position:absolute; bottom:7%; width:100%; z-index: 10;}
+        .evt01 .price {text-align:center; font-size:35px; font-weight:bold; color:#000; letter-spacing:-1px; position:absolute; bottom:3.5%; width:100%; z-index: 10;}
         .evt01 .price p {margin-bottom:20px}
         .evt01 .price p span {color:#ffda39; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
         @@keyframes upDown{
@@ -34,7 +34,7 @@
         .evt01 .price input:checked + label {color:blue}
         .evt01 .ext01txt {padding:20px; text-align:left}
         .evt01 .ext01txt label {font-size:20px; font-weight:bold;}
-        .evt01 input[type="radio"] {height:20px; width:20px; vertical-align:middle}
+        .evt01 input[type="radio"] {height:35px; width:35px; vertical-align:middle}
         .evt01 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle; margin-right:5px}
         .evt01 .ext01txt input:checked + label {color:blue}
         .evt01 .ext01txt ul {margin:10px 0 0 25px;}
@@ -88,7 +88,8 @@
             .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
             .content_guide_wrap .tabs li a {font-size:12px !important; letter-spacing:-1px}
             .evt01 .ext01txt label {font-size:14px;}
-            .evt01 .price {font-size:16px;}
+            .evt01 .price {font-size:20px;}
+            .evt01 input[type="radio"] {height:20px; width:20px; vertical-align:middle}
 
             .reviewWrap .reviewList {height:300px}
             .reviewWrap .reviewList div {height:220px;}
@@ -100,10 +101,11 @@
         }
 
         @@media only screen and (min-width: 375px) and (max-width: 640px) {
-            .evt01 .price {font-size:20px;}
+            .evt01 .price {font-size:25px;}
             .content_guide_wrap .guide_tit{font-size:24px;}
             .content_guide_wrap .tabs li a {font-size:15px !important; letter-spacing:-1px}
-            .evt01_coupon .coupon_btn {position:absolute !important;top:8.55% !important;margin:0 auto; background-color:rgba(255,255,255,0.1);}            
+            .evt01_coupon .coupon_btn {position:absolute !important;top:8.55% !important;margin:0 auto; background-color:rgba(255,255,255,0.1);}
+            .evt01 input[type="radio"] {height:25px; width:25px; vertical-align:middle}          
 
             .reviewWrap .reviewList {height:300px }            
             .reviewWrap .reviewList div {height:220px; font-size:2vh;}
@@ -127,22 +129,22 @@
         </div>  
 
         <div class="evtCtnsBox evt_top" data-aos="fade-up">         
-            <img src="https://static.willbes.net/public/images/promotion/2022/07/2718m_top.jpg" alt="제주 여행 보내드리자" >                 
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_top.jpg" alt="올인원 경찰 패스" >                 
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01"> 
-            <img src="https://static.willbes.net/public/images/promotion/2022/07/2718m_01.jpg" alt="합격률을 높이는 전략"/>
-            <img src="https://static.willbes.net/public/images/promotion/2022/08/2718m_02_superweek.jpg" alt=""/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_01.jpg" alt="구매전 안내"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/2718m_02_superweek.jpg" alt="슈퍼위크"/>
             <div class="evt01_coupon" id="pass">
                 <div class="p_re">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/08/2718m_02_01.jpg" alt="23년 2차 PASS 신청하기" > 
+                    <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_02_01.jpg" alt="23년 2차 PASS 신청하기" > 
                     <div class="price NSK-Black">                       
                         <input type="radio" id="y_pkg1" name="y_pkg" value="200655" onClick=""/>
                         <label for="y_pkg1"> 23년 2차 PASS 신청하기</label>
                     </div>
                 </div>
                 <div class="p_re">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/08/2718m_02_02.jpg" alt="23년 1차 PASS 신청하기" > 
+                    <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_02_02.jpg" alt="23년 1차 PASS 신청하기" > 
                     <div class="price NSK-Black">                       
                         <input type="radio" id="y_pkg2" name="y_pkg" value="200654" onClick=""/>
                         <label for="y_pkg2"> 23년 1차 PASS 신청하기</label>
@@ -160,7 +162,7 @@
             </div>
             
             <div data-aos="fade-up" class="p_re mt50">
-                <img src="https://static.willbes.net/public/images/promotion/2022/08/2718m_03.jpg" alt="할일받고 구매하자">
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_03.jpg" alt="할일받고 구매하자">
                 <a href="https://police.willbes.net/m/support/qna/index/cate/3001?s_cate_code=3001&s_is_my_contents=1" target="_blank" title="재수강 쿠폰받기" style="position: absolute; left: 8.47%; top: 25.65%; width: 38.75%; height: 34.57%; z-index: 2;"></a>
 
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute; left: 52.5%; top: 25.65%; width: 38.75%; height: 34.57%; z-index: 2;"></a>
@@ -170,15 +172,15 @@
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/07/2718m_04.jpg" alt="제주도 여행권" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_04.jpg" alt="올인원 패스" >
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/07/2718m_05.jpg" alt="교수진" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_05.jpg" alt="커리큘럼" >
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/07/2718m_06.jpg" alt="3법 전문가 경찰팀" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_06.jpg" alt="3법 모두" >
             <div class="tabContaier" id="apply">    
                 <ul>
                     <li><a href="#tab4"  class="active">헌법<br> 이국령</a></li> 
@@ -262,11 +264,11 @@
         </div>
         
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/07/2718m_07.jpg" alt="커리큘럼" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_07.jpg" alt="지금이 적기" >
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/07/2718m_08.jpg" alt="한능검특강" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_08.jpg" alt="한능검특강" >
         </div>
 
         <div class="evtCtnsBox wrap" data-aos="fade-up">
@@ -275,13 +277,15 @@
                 {!! method_field('POST') !!}
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
-                <img src="https://static.willbes.net/public/images/promotion/2022/08/2718m_09.jpg" alt="교재 신청하기" >
-                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 58.47%; top: 47.91%; width: 25%; height: 3.97%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_09.jpg" alt="스폐셜혜택" >
+                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute;left: 58.77%;top: 49.71%;width: 25%;height: 3.97%;z-index: 2;"></a>
+                {{--
                 <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="경찰학" style="position: absolute; left: 27.92%; top: 76.38%; width: 22.22%; height: 2.96%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180748" target="_blank" title="형사법" style="position: absolute; left: 50.14%; top: 76.31%; width: 22.22%; height: 2.96%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180567" target="_blank" title="헌법(김)" style="position: absolute; left: 16.53%; top: 79.61%; width: 22.22%; height: 2.96%; z-index: 2;"></a>
                 <a href="javascript:alert('Coming Soon!')" title="헌법(이)" style="position: absolute; left: 38.61%; top: 79.54%; width: 22.22%; height: 2.96%; z-index: 2;"></a>
                 <a href="javascript:alert('Coming Soon!')" title="범죄학" style="position: absolute; left: 61.25%; top: 79.61%; width: 22.22%; height: 2.96%; z-index: 2;"></a>
+                --}}
             </form>
             <div class="passgo NSK-Black"><a href="#pass">PASS 신청 ↑</a></div>
         </div>
@@ -291,7 +295,7 @@
                 <p class="guide_tit">윌비스 <span class="NSK-Black tx-blue">경찰 PASS </span> 이용안내 </p>
                 <ul class="tabs">
                     <li><a href="#tab01" class="active">23년 2차 경찰 PASS</a></li>
-                    <li><a href="#tab02">23년 1차 PASS</a></li>                   
+                    <li><a href="#tab02">23년 1차 경찰 PASS</a></li>                  
                 </ul>
 
                 <div class="content_guide_box" id="tab01">
@@ -303,16 +307,16 @@
                             <ol>
                                 <li>본 상품은 구매일로부터 23년 2차 필기시험일까지 수강 가능한 기간제 PASS입니다.</li>
                                 <li>본 상품 강좌 구성은 다음과 같습니다.<br>
-                                    - 2022년 대비 형사법, 경찰학, 헌법, 범죄학 전 강좌<br>
-                                    - 2021년 대비 형사소송법, 경찰학개론, 형법 전 강좌<br>                                
+                                    - 2023년 대비 형사법, 경찰학, 헌법, 범죄학 전 강좌<br>
+                                    - 2022년 대비 형사법, 경찰학, 헌법, 범죄학 전 강좌<br>                                
                                     <div class="tx-blue">
-                                        *형사소송법/형사법 : 신광은 교수님<br>
-                                        *경찰학개론/경찰학(개편) : 장정훈 교수님<br>
-                                        *형법 : 김원욱 교수님 / 신광은 교수님<br>
-                                        *헌법 : 김원욱 교수님 / 이국령 교수님 / 문태환 교수님<br>
-                                        *범죄학 : 박상민 교수님<br>
-                                        *G-TELP : 김준기 교수님<br>
-                                        *한능검 : 오태진 교수님<br>
+                                        * 형사법  임종희 교수님<br>
+                                        * 형사법 : 형법 : 문형석 교수님 / 형사 소송법 :김한기 교수님<br>
+                                        * 경찰학개론 : 박우찬교수님<br> 
+                                        * 헌법 : 이국령 교수님 / 선동주 교수님<br> 
+                                        * 범죄학 : 김한기 교수님<br> 
+                                        * G-TELP : 제니 교수님<br>
+                                        * 한능검 : 오태진 교수님<br>
                                         <span class="tx-red">
                                             ① 22년 8월30일까지 촬영되는 신광은 경찰팀 과목별 모든 강좌<br>
                                             - 기본이론/심화이론/심화기출/문제풀이 1,2,3단계 +22년 1차 대비 전과목 특강 전부<br>
@@ -323,9 +327,7 @@
                                 </li>
                                 <li>선택한 윌비스 경찰 PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강할 수 있습니다.</li>
                                 <li>윌비스 경찰 PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다. (결제완료자에 한함)</li>
-                                <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>   
-                                <li>수강 기간내에 불합격시 24년 1차까지 연장(추후 공지사항 확인)</li> 
-                                <li>신규교수님 기본서 증정부분은 추후 공지사항 확인</li>                              
+                                <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>            
                             </ol>
                         </dd>
 
@@ -340,32 +342,29 @@
                         </dd>
 
                         <dt>
-                            <h3>최종합격 시 여행권 지급 안내</h3>
+                            <h3>최종합격 시 승진패스 지급 안내</h3>
                         </dt>
                         <dd>
                             <ol>
-                                <li>본 상품은 최종합격시 현금환급과 제주여행권 중 택1이 가능한 상품입니다 <br>
-                                    1)현금 환급의 경우 환급금은 구매 금액으로 100%환급되며 제세공과금22%는 윌비스 경찰이 부담합니다.<br>
-                                    2) 제주여행권을 선택하실 경우, 인증 완료 시  부모님(2인) 2박 3일 제주도 여행권이 지급됩니다.<br>
-                                    <span class="tx-red">※ 여행상품권 60만원 상당 / 제세공과금 22%는 윌비스경찰이 부담합니다.</span></li>
-                                <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 여행권 지급 대상이 됩니다.<br>
-                                    ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채</li>
-                                <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. (22년 2차 또는 23년 1차·2차 최종합격)</li>
+                                <li>최종합격 인증 완료 시 경찰 승진 패스가 제공됩니다 _ <span class="tx-red">80만원 상당</span></li>
+                                <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 승진패스 지급 대상이 됩니다.<br>
+                                ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채</li>
+                                <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다 (23년 1차·2차 최종합격)</li>
                                 <li>패스 수강 기간 내에 합격예측 서비스 1회 이상 참여 해주셔야 합니다.<br>
-                                    (해당 서비스는 시즌성 이벤트로 일정 기간이 지나면 확인 불가하니, 참여 후 캡쳐해서 추후 증빙자료로 제출하셔야 합니다.)</li>
+                                (해당 서비스는 시즌성 이벤트로 일정 기간이 지나면 확인 불가하니, 참여 후 캡쳐해서 추후 증빙자료로 제출하셔야 합니다.)</li>
                                 <li>패스 수강기간 내에 모든 전국 모의고사 및 빅매치 모의고사를 모두 응시하여야 합니다.<br>
-                                    (온/오프 무관하며, 추후 응시내역 파일첨부 제출해 주셔야 합니다.)</li>
-                                <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 여행권 지급이 가능합니다.<br>
+                                (온/오프 무관하며, 추후 응시내역 파일첨부 제출해 주셔야 합니다.)</li>
+                                <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 승진패스 지급이 가능합니다.<br>
                                 - 제출 서류 (모든 제출 서류는 반드시 윌비스 경찰 아이디 수강생 본인 명의이여야 합니다.)<br>
                                 ① 응시표 사본 : 응시번호 기재 필수, 응시원서/응시접수증/응시표출력 전체화면 등 대체 가능<br>
                                 ② 최종 합격증명서 : 최종 합격 확인 증명 가능한 관련 사이트 전체 화면 캡쳐본 등 대체 가능<br>
-                                ③ 신분증 사본 : 여행권 지급 세무 증빙을 위해 주민등록번호 앞/뒷자리 전체가 보여야 함<br>
+                                ③ 신분증 사본 : 승진패스 지급 세무 증빙을 위해 주민등록번호 앞/뒷자리 전체가 보여야 함<br>
                                 ④ 합격수기 : 공지 글 내 첨부된 파일을 다운 후 양식에 맞추어 작성 후 첨부 (한글 또는 워드 파일)<br>
                                 ⑤ 개인정보 수집 및 활용 동의서 : 공지 글 내 첨부된 파일을 프린트하여 자필 서명 후 사진 또는 스캔하여 이미지 첨부<br>
                                 ⑥ 윌비스 경찰 합격예측 서비스 & 모의고사 내역 : 시험 후 오픈되는 합격예측서비스 참여 인증 캡쳐 및 윌비스 경찰 모의고사 전체 응시 내역<br>
                                 * 전국모의고사 및 빅매치 모의고사 중 온라인 경행경채 직렬이 없다면 온라인 일반경찰로 응시를 꼭 하시기 바랍니다.<br>
                                 (* 학원 모의고사에 따라 진행)</li>
-                                <li>최종합격자 발표일로부터 1개월 경과 후 요청 시에는 여행권 지급이 불가합니다.</li>
+                                <li>최종합격자 발표일로부터 1개월 경과 후 요청 시에는 승진패스 지급이 불가합니다.</li>
                                 <li>자세한 신청 방법은 공지사항에서 확인 바랍니다.</li>
                             </ol>
                         </dd>
@@ -425,35 +424,33 @@
                 <div class="content_guide_box" id="tab02">
                     <dl>
                         <dt>
-                            <h3>23년 1차 PASS</h3>
+                            <h3>23년 1차 경찰 PASS</h3>
                         </dt>
                         <dd>
                             <ol>
                                 <li>본 상품은 구매일로부터 23년 1차 필기시험일까지 수강 가능한 기간제 PASS입니다.</li>
                                 <li>본 상품 강좌 구성은 다음과 같습니다.<br>
-                                    - 2022년 대비 형사법, 경찰학, 헌법, 범죄학 전 강좌<br>
-                                    - 2021년 대비 형사소송법, 경찰학개론, 형법 전 강좌<br>                                
+                                    - 2023년 대비 형사법, 경찰학, 헌법, 범죄학 전 강좌<br>
+                                    - 2022년 대비 형사법, 경찰학, 헌법, 범죄학 전 강좌<br>                          
                                     <div class="tx-blue">
-                                        * 형사소송법/형사법 : 신광은 교수님<br>
-                                        * 경찰학개론/경찰학(개편) : 장정훈 교수님<br>
-                                        * 형법 : 김원욱 교수님 / 신광은 교수님<br>
-                                        * 헌법 : 김원욱 교수님 / 이국령 교수님 / 문태환 교수님<br>
-                                        * 범죄학 : 박상민 교수님<br>
-                                        * G-TELP : 김준기 교수님<br>
+                                        * 형사법  임종희 교수님<br>
+                                        * 형사법 : 형법 : 문형석 교수님 / 형사 소송법 :김한기 교수님<br>
+                                        * 경찰학개론 : 박우찬교수님<br>
+                                        * 헌법 : 이국령 교수님 / 선동주 교수님<br>
+                                        * 범죄학 : 김한기 교수님<br>
+                                        * G-TELP : 제니 교수님<br>
                                         * 한능검 : 오태진 교수님<br>
                                         <span class="tx-red">
-                                        ① 22년 8월30일까지 촬영되는 신광은 경찰팀 과목별 모든 강좌<br>
-                                        - 기본이론/심화이론/심화기출/문제풀이 1,2,3단계 +22년 1차 대비 전과목 특강 전부<br>
-                                        ② 22년 9월 이후 윌비스 신규 강사진(이국령 헌법 포함 과목별 복수 강사진)의 전과목 신규 촬영 모든 강좌<br>
-                                        위 모든 강좌를 수강기간동안(23년 1차 필기시험까지) 동시수강 및 무제한 반복 수강이 가능한 상품입니다.
+                                            ① 22년 8월30일까지 촬영되는 신광은 경찰팀 과목별 모든 강좌<br>
+                                            - 기본이론/심화이론/심화기출/문제풀이 1,2,3단계 +22년 1차 대비 전과목 특강 전부<br>
+                                            ② 22년 9월 이후 윌비스 신규 강사진(이국령 헌법 포함 과목별 복수 강사진)의 전과목 신규 촬영 모든 강좌<br>
+                                            위 모든 강좌를 수강기간동안(23년 1차 필기시험까지) 동시수강 및 무제한 반복 수강이 가능한 상품입니다.
                                         </span>
                                     </div>
                                 </li>
                                 <li>선택한 윌비스 경찰 PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강할 수 있습니다.</li>
                                 <li>윌비스 경찰 PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다. (결제완료자에 한함)</li>
                                 <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
-                                <li>수강 기간안에 불합격시 23년 2차까지 연장(추후 공지사항인)</li>
-                                <li>신규교수님 기본서 증정부분은 추후 공지사항 확인</li>
                             </ol>
                         </dd>
 
@@ -468,32 +465,29 @@
                         </dd>
 
                         <dt>
-                            <h3>최종합격 시 여행권 지급 안내</h3>
+                            <h3>최종합격 승진패스 지급 안내</h3>
                         </dt>
                         <dd>
                            <ol>
-                                <li>본 상품은 최종합격시 현금환급과 제주여행권 중 택1이 가능한 상품입니다.<br>
-                                    1)현금 환급의 경우 환급금은 구매 금액으로 100%환급되며 제세공과금22%는 윌비스 경찰이 부담합니다.<br>
-                                    2) 제주여행권을 선택하실 경우, 인증 완료 시  부모님(2인) 2박 3일 제주도 여행권이 지급됩니다.<br>
-                                    <span class="tx-red">※ 여행상품권 50만원 상당 / 제세공과금 22%는 윌비스경찰이 부담합니다.</span></li>
-                                <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 여행권 지급 대상이 됩니다.<br>
+                                <li>최종합격 인증 완료 시 경찰 승진 패스가 제공됩니다 _ <span class="tx-red">60만원 상당</span></li>
+                                <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 승진패스 지급 대상이 됩니다.<br>
                                 ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채</li>
-                                <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. (22년 2차 또는 23년 1차 최종합격)</li>
+                                <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다 (23년 1차·2차 최종합격)</li>
                                 <li>패스 수강 기간 내에 합격예측 서비스 1회 이상 참여 해주셔야 합니다.<br>
                                 (해당 서비스는 시즌성 이벤트로 일정 기간이 지나면 확인 불가하니, 참여 후 캡쳐해서 추후 증빙자료로 제출하셔야 합니다.)</li>
                                 <li>패스 수강기간 내에 모든 전국 모의고사 및 빅매치 모의고사를 모두 응시하여야 합니다.<br>
                                 (온/오프 무관하며, 추후 응시내역 파일첨부 제출해 주셔야 합니다.)</li>
-                                <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 여행권 지급이 가능합니다.<br>
+                                <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 승진패스 지급이 가능합니다.<br>
                                 - 제출 서류 (모든 제출 서류는 반드시 윌비스 경찰 아이디 수강생 본인 명의이여야 합니다.)<br>
                                 ① 응시표 사본 : 응시번호 기재 필수, 응시원서/응시접수증/응시표출력 전체화면 등 대체 가능<br>
                                 ② 최종 합격증명서 : 최종 합격 확인 증명 가능한 관련 사이트 전체 화면 캡쳐본 등 대체 가능<br>
-                                ③ 신분증 사본 : 여행권 지급 세무 증빙을 위해 주민등록번호 앞/뒷자리 전체가 보여야 함<br>
+                                ③ 신분증 사본 : 승진패스 지급 세무 증빙을 위해 주민등록번호 앞/뒷자리 전체가 보여야 함<br>
                                 ④ 합격수기 : 공지 글 내 첨부된 파일을 다운 후 양식에 맞추어 작성 후 첨부 (한글 또는 워드 파일)<br>
                                 ⑤ 개인정보 수집 및 활용 동의서 : 공지 글 내 첨부된 파일을 프린트하여 자필 서명 후 사진 또는 스캔하여 이미지 첨부<br>
-                                ⑥ 윌비스 경찰 합격예측 서비스 & 모의고사 내역 : 시험 후 오픈되는 합격예측 서비스 참여 인증 캡쳐 및 윌비스 경찰 모의고사 전체 응시 내역<br>
+                                ⑥ 윌비스 경찰 합격예측 서비스 & 모의고사 내역 : 시험 후 오픈되는 합격예측서비스 참여 인증 캡쳐 및 윌비스 경찰 모의고사 전체 응시 내역<br>
                                 * 전국모의고사 및 빅매치 모의고사 중 온라인 경행경채 직렬이 없다면 온라인 일반경찰로 응시를 꼭 하시기 바랍니다.<br>
                                 (* 학원 모의고사에 따라 진행)</li>
-                                <li>최종합격자 발표일로부터 1개월 경과 후 요청 시에는 여행권 지급이 불가합니다.</li>
+                                <li>최종합격자 발표일로부터 1개월 경과 후 요청 시에는 승진패스 지급이 불가합니다.</li>
                                 <li>자세한 신청 방법은 공지사항에서 확인 바랍니다.</li>
                             </ol>
                         </dd>
@@ -549,7 +543,7 @@
                         </dd>
                     </dl>
                 </div>
-                               
+                
             </div>
         </div>
 

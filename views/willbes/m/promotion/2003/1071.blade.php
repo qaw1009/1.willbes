@@ -8,7 +8,6 @@
     /*.evtCtnsBox a {box-shadow:0 5px 20px rgba(0,0,0,.5); border-radius:6px}*/
 
 
-
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {
 
@@ -49,13 +48,12 @@
     </div>  
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2022/02/1071m_04.jpg" alt="">
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/186551" target="_blank" title="전자공학" style="position: absolute; left: 51.81%; top: 24.17%; width: 29.44%; height: 2.2%;z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/184023" target="_blank" title="통신기술직" style="position: absolute; left: 51.81%; top: 37.18%; width: 29.44%; height: 2.2%;z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/184024" target="_blank" title="전송기술직" style="position: absolute; left: 51.81%; top: 50.16%; width: 29.44%; height: 2.2%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/184021" target="_blank" title="전기직이론" style="position: absolute; left: 51.81%; top: 63.22%; width: 29.44%; height: 2.2%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/188423" target="_blank" title="전기직 단원별문 패키지" style="position: absolute; left: 51.81%; top: 76.2%; width: 29.44%; height: 2.2%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/190962" target="_blank" title="통신기술직 단원별문 패키지" style="position: absolute; left: 51.81%; top: 91.33%; width: 29.44%; height: 2.2%; z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2022/08/1071m_04.jpg" alt="">
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/200840" target="_blank" title="통신기술직" style="position: absolute; left: 52.78%; top: 40.52%; width: 27.5%; height: 3.89%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/200841
+" target="_blank" title="전송기술직" style="position: absolute; left: 52.5%; top: 62.35%; width: 27.5%; height: 3.89%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/200846
+" target="_blank" title="전기직이론" style="position: absolute; left: 52.64%; top: 84.24%; width: 27.5%; height: 3.89%; z-index: 2;"></a>
     </div>
 </div>
 <!-- End Container -->

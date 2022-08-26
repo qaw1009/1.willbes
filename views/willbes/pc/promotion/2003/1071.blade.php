@@ -97,7 +97,7 @@
         input[id="cb1"]:checked + label {background-color: red;}      
 
     </style>
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky" id="QuickMenu">                
             <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2256" target="_blank">
@@ -166,14 +166,10 @@
 
         <div class="evtCtnsBox wb_cts04" id="pkglec">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/1071_04_01.jpg" alt=""/>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/186551" target="_blank"  title="전자공학" style="position: absolute;left: 11.64%;top: 53.93%;width: 20.36%;height: 4.06%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/184023" target="_blank"  title="통신기술직" style="position: absolute;left: 39.64%;top: 53.93%;width: 20.36%;height: 4.06%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/184024" target="_blank"  title="전기직" style="position: absolute; left: 68.64%;top: 53.93%;width: 20.36%;height: 4.06%;z-index: 2;"></a>
-
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/184021" target="_blank"  title="이론 패키지" style="position: absolute; left: 12.05%; top: 91.13%; width: 20.36%;height: 4.06%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/188423" target="_blank"  title="단원별문풀 패키지" style="position: absolute; left: 39.64%; top: 91.13%; width: 20.36%;height: 4.06%; z-index: 2;"></a>           
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/190962" target="_blank"  title="국가직 통신기술직" style="position: absolute; left: 68.64%; top: 91.13%; width: 20.36%;height: 4.06%; z-index: 2;"></a>      
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/1071_04_01.jpg" alt=""/>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/200840" target="_blank"  title="통신기술직" style="position: absolute;left: 12.14%; top: 85.22%; width: 18.84%; height: 6.33%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/200841" target="_blank"  title="전기직" style="position: absolute; left: 40.54%; top: 85.44%; width: 18.84%; height: 6.33%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/200846" target="_blank"  title="이론 패키지" style="position: absolute; left: 68.93%; top: 85.22%; width: 18.84%; height: 6.33%; z-index: 2;"></a>  
             </div>
         </div>       
 
@@ -206,8 +202,8 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2022 최우영 기초전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183992" target="_blank">수강신청</a></td>
+                        <td>2023 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/199306" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -262,8 +258,8 @@
                     <tr>
                         <td>무선공학</td>
                         <td>이론</td>
-                        <td>2022 최우영 무선/통신 공통 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183993" target="_blank">수강신청</a></td>
+                        <td>2023 최우영 무선/통신 공통 이론</td>
+                        <td><a href="hthttps://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/199305" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>무선공학</td>
@@ -310,8 +306,8 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2022 최우영 기초전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183992" target="_blank">수강신청</a></td>
+                        <td>2023 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/199306" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -366,8 +362,8 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
-                        <td>2022 최우영 무선/통신 공통 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183993" target="_blank">수강신청</a></td>
+                        <td>2023 최우영 무선/통신 공통 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/199305" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
@@ -425,8 +421,8 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
-                        <td>2022 최우영 무선/통신 공통 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/186254" target="_blank">수강신청</a></td>
+                        <td>2023 최우영 무선/통신 공통 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/199306" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
@@ -487,7 +483,7 @@
                         <td>전기자기학</td>
                         <td>문제풀이</td>
                         <td>최우영 전기자기학 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174791" target="_blank">수강신청</a></td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/200134" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기자기학</td>
@@ -515,8 +511,8 @@
                     <tr>
                         <td>전기이론</td>
                         <td>이론</td>
-                        <td>2022 최우영 전기이론 기본강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183991" target="_blank">수강신청</a></td>
+                        <td>2023 최우영 전기이론 기본강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/199303" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기이론</td>
@@ -638,7 +634,7 @@
                         <td>전기자기학</td>
                         <td>문제풀이</td>
                         <td>최우영 전기자기학 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174791" target="_blank">수강신청</a></td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/200135" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기자기학</td>
@@ -693,8 +689,8 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2022 최우영 기초전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183992" target="_blank">수강신청</a></td>
+                        <td>2023 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/199306" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -788,8 +784,8 @@
                     <tr>
                         <td>기초전기전자</td>
                         <td>이론</td>
-                        <td>2022 최우영 기초전기전자 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183992" target="_blank">수강신청</a></td>
+                        <td>2023 최우영 기초전기전자 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/199306" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -844,8 +840,8 @@
                     <tr>
                         <td>통신이론</td>
                         <td>이론</td>
-                        <td>2022 최우영 무선/통신 공통 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/183993" target="_blank">수강신청</a></td>
+                        <td>2023 최우영 무선/통신 공통 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/199305" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>통신이론</td>
@@ -918,7 +914,7 @@
                         <td>전기자기학</td>
                         <td>문제풀이</td>
                         <td>최우영 전기자기학 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174791" target="_blank">수강신청</a></td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/200135" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기자기학</td>

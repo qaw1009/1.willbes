@@ -185,6 +185,7 @@
                                 <li>PC+모바일 총 2대 지원</li>
                                 <li><span>2023 국가직 대비</span> 신규 진행 전 과정</li>
                                 <li>온라인 모의고사 진행 시 무료 응시</li>
+                                <li>재도전/환승 대학생 인증 시 추가 <span>5만원 할인</span></li>
                             </ul>
                         </label>
                     </div>
@@ -196,9 +197,8 @@
                             <div>전공과목 T-PASS</div>
                             <div><span>회계학 이윤호, 세법 박창한</span></div>
                             <div><strong class="NSK-Black">29</strong>만원</div>
-                            <ul>
-                                <li><span>7월 한정 이벤트 5만원 추가할인 적용가</span></li>
-                                <li><span>2023. 6월</span>까지 배수 제한 없는 <span>무제한 수강</span></li>
+                            <ul>                            
+                                <li><span>2023년 6월</span>까지 배수 제한 없는 <span>무제한 수강</span></li>
                                 <li><span>PC+모바일 총 2대 지원</span></li>
                                 <li><span>2023 국가직/지방직 대비</span> 신규 진행 전 과정</li>
                             </ul>

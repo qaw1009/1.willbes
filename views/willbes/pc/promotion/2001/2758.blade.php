@@ -25,7 +25,7 @@
         .sky {position:fixed;top:200px;right:10px;z-index:100;}
         .sky a {display:block; margin-bottom:10px}
 
-        .evt_top {background:url("https://static.willbes.net/public/images/promotion/2022/09/2718_top_bg.jpg") no-repeat center top;}   
+        .evt_top {background:url("https://static.willbes.net/public/images/promotion/2022/09/2758_top_bg.jpg") no-repeat center top;}   
 
         .evt_01 {background:#f5f5f7;}
         .evt_01_01 {}
@@ -67,7 +67,7 @@
         .evtPass .txtinfo {width:1006px; margin:0 auto; padding:40px; border:1px solid #000; border-radius:10px; margin-bottom:50px; font-size:16px}
         .evtPass .txtinfo p {background:#000; color:#fff; padding:10px; border-radius:30px; margin-top:-60px; margin-bottom:20px; font-size:20px}
 
-        .evt_04 {background:url("https://static.willbes.net/public/images/promotion/2022/09/2718_04_bg.jpg") no-repeat center top;}
+        .evt_04 {background:url("https://static.willbes.net/public/images/promotion/2022/09/2758_04_bg.jpg") no-repeat center top;}
 
         .evt_06 {background:#f6f6f6;}
 
@@ -143,13 +143,13 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
             <a href="#pass">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2718_sky01.png" alt="올인원 패스">
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_sky01.png" alt="올인원 패스">
             </a>  
             <a href="#transfer">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2718_sky02.png" alt="최대 40% 할인">
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_sky02.png" alt="최대 40% 할인">
             </a>  
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2602" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2718_sky03.png" alt="30% 할인받자">
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_sky03.png" alt="30% 할인받자">
             </a>  
         </div>        
 
@@ -181,11 +181,11 @@
         </div>
 
         <div class="evtCtnsBox evt_top" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718_top.jpg" alt="올인원 경찰 패스"/>           
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_top.jpg" alt="올인원 경찰 패스"/>           
 		</div>
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">     
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718_01.jpg" alt="구매전 안내"/>    
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_01.jpg" alt="구매전 안내"/>    
         </div> 
 
         <div class="evtCtnsBox evt_01_01" data-aos="fade-up">
@@ -194,7 +194,7 @@
 
         <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">         
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2718_02.jpg" alt="윌비스 경찰 PASS">
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_02.jpg" alt="윌비스 경찰 PASS">
                 <div class="passLecBuy NSK-Black"> 
                     <div>                                       
                         <input type="radio" id="y_pkg1" name="y_pkg" value="200655"/>                
@@ -235,15 +235,15 @@
         </div>      
          
         <div class="evtCtnsBox evt_04" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718_04.jpg" alt="합격후엔 승진까지"/>            
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_04.jpg" alt="합격후엔 승진까지"/>            
         </div>
 
          <div class="evtCtnsBox evt_05" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718_05.jpg" alt="커리큘럼 및 교수진"/>            
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_05.jpg" alt="커리큘럼 및 교수진"/>            
         </div>         
 
         <div class="evtCtnsBox evt_06 pb100" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718_06.jpg" alt="올인원 커리큘럼" />     
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_06.jpg" alt="올인원 커리큘럼" />     
             <div class="tabContaier" id="apply">    
                 <ul>
                     <li>
@@ -339,11 +339,11 @@
         </div>
                             
         <div class="evtCtnsBox evt_07" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718_07.jpg"  alt="지금이 적기" />              
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_07.jpg"  alt="지금이 적기" />              
         </div>
 
         <div class="evtCtnsBox evt_08" data-aos="fade-up">        
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718_08.jpg" alt="지텔프, 한능검 특강" />  
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_08.jpg" alt="지텔프, 한능검 특강" />  
         </div>
 
         <div class="evtCtnsBox evt_09" data-aos="fade-up">
@@ -353,7 +353,7 @@
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
                 <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/09/2718_09.jpg"  alt="스폐셜혜택" />
+                    <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_09.jpg"  alt="스폐셜혜택" />
                     <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 18.3%; top: 74.21%; width: 16.07%; height: 5.61%; z-index: 2;"></a>
                     {{--
                     <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="장정훈 경찰학" style="position: absolute;left: 51.16%; top: 70.47%; width: 14.29%; height: 4.39%; z-index: 2;"></a>

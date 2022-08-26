@@ -129,22 +129,22 @@
         </div>  
 
         <div class="evtCtnsBox evt_top" data-aos="fade-up">         
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_top.jpg" alt="올인원 경찰 패스" >                 
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_top.jpg" alt="올인원 경찰 패스" >                 
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01"> 
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_01.jpg" alt="구매전 안내"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_01.jpg" alt="구매전 안내"/>
             <img src="https://static.willbes.net/public/images/promotion/2022/08/2718m_02_superweek.jpg" alt="슈퍼위크"/>
             <div class="evt01_coupon" id="pass">
                 <div class="p_re">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_02_01.jpg" alt="23년 2차 PASS 신청하기" > 
+                    <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_02_01.jpg" alt="23년 2차 PASS 신청하기" > 
                     <div class="price NSK-Black">                       
                         <input type="radio" id="y_pkg1" name="y_pkg" value="200655" onClick=""/>
                         <label for="y_pkg1"> 23년 2차 PASS 신청하기</label>
                     </div>
                 </div>
                 <div class="p_re">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_02_02.jpg" alt="23년 1차 PASS 신청하기" > 
+                    <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_02_02.jpg" alt="23년 1차 PASS 신청하기" > 
                     <div class="price NSK-Black">                       
                         <input type="radio" id="y_pkg2" name="y_pkg" value="200654" onClick=""/>
                         <label for="y_pkg2"> 23년 1차 PASS 신청하기</label>
@@ -162,7 +162,7 @@
             </div>
             
             <div data-aos="fade-up" class="p_re mt50">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_03.jpg" alt="할일받고 구매하자">
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_03.jpg" alt="할일받고 구매하자">
                 <a href="https://police.willbes.net/m/support/qna/index/cate/3001?s_cate_code=3001&s_is_my_contents=1" target="_blank" title="재수강 쿠폰받기" style="position: absolute; left: 8.47%; top: 25.65%; width: 38.75%; height: 34.57%; z-index: 2;"></a>
 
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute; left: 52.5%; top: 25.65%; width: 38.75%; height: 34.57%; z-index: 2;"></a>
@@ -172,15 +172,15 @@
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_04.jpg" alt="올인원 패스" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_04.jpg" alt="올인원 패스" >
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_05.jpg" alt="커리큘럼" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_05.jpg" alt="커리큘럼" >
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_06.jpg" alt="3법 모두" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_06.jpg" alt="3법 모두" >
             <div class="tabContaier" id="apply">    
                 <ul>
                     <li><a href="#tab4"  class="active">헌법<br> 이국령</a></li> 
@@ -264,11 +264,11 @@
         </div>
         
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_07.jpg" alt="지금이 적기" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_07.jpg" alt="지금이 적기" >
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_08.jpg" alt="한능검특강" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_08.jpg" alt="한능검특강" >
         </div>
 
         <div class="evtCtnsBox wrap" data-aos="fade-up">
@@ -277,7 +277,7 @@
                 {!! method_field('POST') !!}
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2718m_09.jpg" alt="스폐셜혜택" >
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_09.jpg" alt="스폐셜혜택" >
                 <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute;left: 58.77%;top: 49.71%;width: 25%;height: 3.97%;z-index: 2;"></a>
                 {{--
                 <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180566" target="_blank" title="경찰학" style="position: absolute; left: 27.92%; top: 76.38%; width: 22.22%; height: 2.96%; z-index: 2;"></a>

@@ -82,7 +82,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/08/2756_01.jpg" title="설명회">
                 <div class="request" id="request">
                     <div class="requestL">
-                        <h3 class="NSK-Black">* 9월 설명회 신청접수(노량진)</h3>
+                        <h3 class="NSK-Black">* 9월 설명회 신청접수(유튜브 라이브)</h3>
                         <table width="0" cellspacing="0" cellpadding="0" class="table_type">
                             <col width="25%" />
                             <col  />

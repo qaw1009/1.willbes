@@ -97,18 +97,18 @@
         <div >
             <div id="tab01" class="tabCts">
                 <div class="embed-container">
-                    <iframe src="https://www.youtube.com/embed/r8sOeBFLW10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/dKr_BWdDT7g?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <div id="tab02" class="tabCts">
                 <div class="embed-container">
-                    <iframe width="512" height="288" src="https://www.youtube.com/embed/hXd1wL6nURY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="512" height="288" src="https://www.youtube.com/embed/4jqSvpDe900?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <div id="tab03" class="tabCts">
                 <div class="embed-container">
                     Coming soon! 
-                {{--<iframe width="512" height="288" src="https://www.youtube.com/embed/r8sOeBFLW10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>--}}
+                {{--<iframe width="512" height="288" src="https://www.youtube.com/embed/r8sOeBFLW10?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>--}}
                 </div>
             </div>
         </div>
@@ -212,9 +212,9 @@
         AOS.init();
     });
 
-    var tab1_url = "https://www.youtube.com/embed/r8sOeBFLW10";
-    var tab2_url = "https://www.youtube.com/embed/hXd1wL6nURY";        
-    var tab3_url = "https://www.youtube.com/embed/VEmBnYu8tcc";
+    var tab1_url = "https://www.youtube.com/embed/dKr_BWdDT7g?rel=0";
+    var tab2_url = "https://www.youtube.com/embed/4jqSvpDe900?rel=0";   
+    var tab3_url = "https://www.youtube.com/embed/VEmBnYu8tcc?rel=0";
     $(document).ready(function() {
     $(".tabCts").hide(); 
     $(".tabCts:first").show();

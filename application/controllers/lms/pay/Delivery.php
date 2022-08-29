@@ -34,13 +34,14 @@ class Delivery extends BaseOrder
     public function index()
     {
         // 사용하는 코드값 조회
-        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['ProdType', 'PayStatus']);
+        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['ProdType', 'Pg', 'PayStatus']);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
 
         $arr_prod_type_ccd = array_filter_keys($codes[$this->_group_ccd['ProdType']], array_filter_keys($this->orderListModel->_prod_type_ccd, ['book', 'freebie']));
         $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], $this->_delivery_pay_status_ccd);
 
         $this->load->view('pay/delivery/index_' . $this->_tab, [
+            'arr_pg_ccd' => $codes[$this->_group_ccd['Pg']],
             'arr_prod_type_ccd' => $arr_prod_type_ccd,
             'arr_pay_status_ccd' => $arr_pay_status_ccd
         ]);
@@ -83,6 +84,8 @@ class Delivery extends BaseOrder
         $arr_condition = [
             'EQ' => [
                 'O.SiteCode' => $this->_reqP('search_site_code'),
+                'O.PgCcd' => $this->_reqP('search_pg_ccd'),
+                'O.IsEscrow' => $this->_reqP('search_is_escrow'),
                 'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd'),
                 'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd'),
                 'WB.wIsPreSale' => $this->_reqP('search_w_is_pre_sale'),

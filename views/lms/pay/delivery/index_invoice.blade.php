@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_member_value">회원검색</label>
                     <div class="col-md-3 form-inline">
-                        <select class="form-control mr-10" id="search_member_keyword" name="search_member_keyword" style="width: 26%;" title="회원검색키워드">
+                        <select class="form-control" id="search_member_keyword" name="search_member_keyword" style="width: 26%;" title="회원검색키워드">
                             <option value="MemId">회원아이디</option>
                             <option value="MemIdx">회원식별자</option>
                             <option value="MemName">회원명</option>
@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_prod_value">상품검색</label>
                     <div class="col-md-3 form-inline">
-                        <select class="form-control mr-10" id="search_prod_keyword" name="search_prod_keyword" style="width: 26%;" title="상품검색키워드">
+                        <select class="form-control" id="search_prod_keyword" name="search_prod_keyword" style="width: 26%;" title="상품검색키워드">
                             <option value="OrderNo">주문번호</option>
                             <option value="OrderIdx">주문식별자</option>
                             <option value="ProdCode">상품코드</option>
@@ -52,19 +52,30 @@
                     </div>
                     <label class="control-label col-md-1" for="">조건검색</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control mr-10" id="search_prod_type_ccd" name="search_prod_type_ccd" title="상품구분">
+                        <select class="form-control" id="search_pg_ccd" name="search_pg_ccd" title="PG사">
+                            <option value="">PG사</option>
+                            @foreach($arr_pg_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control" id="search_prod_type_ccd" name="search_prod_type_ccd" title="상품구분">
                             <option value="">상품구분</option>
                             @foreach($arr_prod_type_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_delivery_price_type" name="search_delivery_price_type" title="배송료구분">
+                        <select class="form-control" id="search_delivery_price_type" name="search_delivery_price_type" title="배송료구분">
                             <option value="">배송료구분</option>
                             <option value="normal">일반배송료</option>
                             <option value="add">추가배송료</option>
                         </select>
-                        <select class="form-control mr-10" id="search_w_is_pre_sale" name="search_w_is_pre_sale" title="예약판매여부">
+                        <select class="form-control" id="search_w_is_pre_sale" name="search_w_is_pre_sale" title="예약판매여부">
                             <option value="">예약판매여부</option>
+                            <option value="Y">Y</option>
+                            <option value="N">N</option>
+                        </select>
+                        <select class="form-control" id="search_is_escrow" name="search_is_escrow" title="에스크로여부">
+                            <option value="">에스크로여부</option>
                             <option value="Y">Y</option>
                             <option value="N">N</option>
                         </select>
@@ -73,7 +84,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">날짜검색</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_date_type" name="search_date_type" title="날짜구분">
+                        <select class="form-control" id="search_date_type" name="search_date_type" title="날짜구분">
                             <option value="paid">결제완료일</option>
                         </select>
                         <div class="input-group mb-0">
@@ -128,7 +139,7 @@
                     <label class="control-label col-md-1">송장정보</label>
                     <div class="col-md-11 form-inline">
                         <input type="file" id="attach_invoice_file" name="attach_invoice_file" class="form-control" title="송장엑셀파일" value="">
-                        <button type="button" name="btn_invoice_file_upload" class="btn btn-primary btn-sm mb-0 ml-10 mr-10">송장엑셀업로드</button>
+                        <button type="button" name="btn_invoice_file_upload" class="btn btn-primary btn-sm mb-0 ml-10">송장엑셀업로드</button>
                         <button type="button" name="btn_invoice_file_download" class="btn btn-success btn-sm mb-0">송장엑셀다운로드</button>
                     </div>
                 </div>

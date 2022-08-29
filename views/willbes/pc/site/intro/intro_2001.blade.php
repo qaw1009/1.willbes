@@ -74,7 +74,7 @@
             </div>
 
             <div class="bnBox" data-aos="fade-left">
-                <a href="{{front_url('/promotion/index/cate/3001/code/2718')}}"><img src="https://static.willbes.net/public/images/promotion/main/cop_gate/bn_250_01.png" alt="경찰PASS"></a>
+                <a href="{{front_url('/promotion/index/cate/3001/code/2758')}}"><img src="https://static.willbes.net/public/images/promotion/main/cop_gate/bn_250_01.png" alt="경찰PASS"></a>
                 <a href="{{front_url('/promotion/index/cate/3006/code/2478')}}"><img src="https://static.willbes.net/public/images/promotion/main/cop_gate/bn_250_02.png" alt="승진PASS"></a>
                 <a href="{{front_url('/promotion/index/cate/3007/code/2414')}}"><img src="https://static.willbes.net/public/images/promotion/main/cop_gate/bn_250_03.png" alt="합격PASS"></a>
                 <a href="{{front_url('/promotion/index/cate/3007/code/2598')}}"><img src="https://static.willbes.net/public/images/promotion/main/cop_gate/bn_250_04.png" alt="해경간부리더"></a>

@@ -147,6 +147,7 @@
                     <td>수강종료일</td>
                     <th>휴대폰정보</th>
                     <th>E-mail정보</th>
+                    <th>상태</th>
                     <th>자동로그인</th>
                 </tr>
                 </thead>
@@ -204,8 +205,15 @@
 
                     {'data' : 'PayDate'}, // 결제일
                     {'data' : 'EndDate'}, // 종료일
-                    {'data' : 'Phone'},// 휴대폰
-                    {'data' : 'Mail'},//이메일
+                    {'data' : 'Phone', 'render' : function( data, type, row, meta){
+                        return (data + ' (' + row.SmsRcvStatus + ')');
+                        }},// 휴대폰
+                    {'data' : 'Mail', 'render' : function( data, type, row, meta){
+                            return (data + ' (' + row.MailRcvStatus + ')');
+                        }},//이메일
+                    {'data' : null, 'render' : function(data, type, row, meta){
+                            return (row.IsStatus === 'Y' ? '정상회원' : '탈퇴회원(' + row.OutDatm + ')');
+                        }}, // 상태
                     {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="{{site_url('/member/manage/setMemberLogin/')}}'+data+'/" target="_blank">[자동로그인]</a>';
                         }} //자동로그인

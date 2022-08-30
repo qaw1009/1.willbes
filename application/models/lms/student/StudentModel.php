@@ -139,7 +139,7 @@ class StudentModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
 
-            $column = "  M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
+            $column = "  M.MemIdx, M.MemName, M.MemId, M.IsStatus, MOUT.OutDatm, fn_dec(M.PhoneEnc) as Phone, MI.SmsRcvStatus, fn_dec(M.MailEnc) as Mail, MI.MailRcvStatus
                 ,OP.SalePatternCcd, OPa.CcdName as SalePatternCcd_Name, OP.RealPayPrice as Price
                 ,O.OrderIdx, O.payRouteCcd, Oa.CcdName as PayRouteCcd_Name, O.PayMethodCcd, Ob.CcdName as PayMethodCcd_Name
                 ,O.CompleteDatm as PayDate, ifnull(A.wAdminName, '') as AdminName
@@ -165,6 +165,7 @@ class StudentModel extends WB_Model
                             left outer join wbs_sys_admin A on A.wAdminIdx = O.RegAdminIdx
                         join lms_member as M on M.MemIdx = O.MemIdx
                         join lms_member_otherinfo AS MI ON MI.MemIdx = M.MemIdx
+                        left join lms_member_out_log AS MOUT ON M.MemIdx = MOUT.MemIdx
                         join lms_product_lecture AS PL ON PL.ProdCode = P.ProdCode
                         ".
                         ($isdan == true ? "join lms_product AS P1 ON P1.ProdCode = OP.ProdCode
@@ -262,7 +263,7 @@ class StudentModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
 
-            $column = "  M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
+            $column = "  M.MemIdx, M.MemName, M.MemId, M.IsStatus, MOUT.OutDatm, fn_dec(M.PhoneEnc) as Phone, MI.SmsRcvStatus, fn_dec(M.MailEnc) as Mail, MI.MailRcvStatus
                 ,OP.OrderProdIdx, OP.SalePatternCcd, OPa.CcdName as SalePatternCcd_Name, OP.RealPayPrice as Price
                 ,O.OrderIdx, O.payRouteCcd, Oa.CcdName as PayRouteCcd_Name, O.PayMethodCcd, Ob.CcdName as PayMethodCcd_Name
                 ,O.CompleteDatm as PayDate, ifnull(A.wAdminName, '') as AdminName,
@@ -288,6 +289,7 @@ class StudentModel extends WB_Model
                             left outer join wbs_sys_admin A on A.wAdminIdx = O.RegAdminIdx
                         join lms_member AS M on M.MemIdx = O.MemIdx
                         join lms_member_otherinfo AS MI ON MI.MemIdx = M.MemIdx
+                        left join lms_member_out_log AS MOUT ON M.MemIdx = MOUT.MemIdx
                         join lms_product_lecture AS P ON P.ProdCode = OP.ProdCode
                         join lms_product AS P1 ON P1.ProdCode = OP.ProdCode
                         join lms_my_lecture AS ML ON ML.OrderIdx = OP.OrderIdx 

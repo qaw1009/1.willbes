@@ -20,7 +20,7 @@
 
 		/************************************************************/ 
         
-		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/04/2628_top_bg.jpg) no-repeat center top}	
+		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/09/2628_top_bg.jpg) no-repeat center top}	
       
         .evt_02 {background:#ffe5cf}
 
@@ -50,7 +50,7 @@
 	<div class="evtContent NSK">
 
 		<div class="evtCtnsBox evt_top" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2628_top.jpg" alt="박준희 티패스" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2628_top.jpg" alt="박준희 티패스" />
 		</div>
 
 		<div class="evtCtnsBox evt_01" data-aos="fade-up">
@@ -58,7 +58,7 @@
         </div>
 
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/04/2628_02.jpg" alt="only.1" />            
+			<img src="https://static.willbes.net/public/images/promotion/2022/09/2628_02.jpg" alt="only.1" />            
         </div>
 
         <div class="evtCtnsBox evt_03" data-aos="fade-up">
@@ -70,7 +70,7 @@
 
         <div class="evtCtnsBox evt_04" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2628_04.jpg" alt="신청하기" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2628_04.jpg" alt="신청하기" />
                 <a href="javascript:go_PassLecture('194323');" title="신청하기" style="position: absolute;left: 71.05%;top: 76.63%;width: 22.87%;height: 13.32%;z-index: 2;"></strong></a>
             </div> 
             <div class="check">
@@ -80,7 +80,14 @@
                 </label>
                 <a href="#notice">이용안내확인하기 ↓</a>
             </div>            
-        </div>    
+        </div>
+
+        <div class="evtCtnsBox evt_05 pb100" data-aos="fade-up">
+            <div class="wrap">
+			    <img src="https://static.willbes.net/public/images/promotion/2022/09/2628_05.jpg" alt="지구과학 티패스 신청하기" />
+                <a href="https://job.willbes.net/periodPackage/show/cate/309004/pack/648001/prod-code/200911" target="_blank" title="지구과학 신청하기" style="position: absolute;left: 73.05%;top: 9.63%;width: 22.87%;height: 44.32%;z-index: 2;"></strong></a>
+            </div>               
+        </div>
 
 		<div class="evtCtnsBox evtInfo" id="notice">
 			<div class="evtInfoBox">
@@ -134,14 +141,15 @@
 			</div>
 		</div>
 	</div>
-    <!-- End Container -->
-
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+   <!-- End Container -->
+    
+   <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
-      $( document ).ready( function() {
+        $(document).ready( function() {
         AOS.init();
-      } );
+        });
     </script>
 
 	<script type="text/javascript">

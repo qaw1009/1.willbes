@@ -32,7 +32,7 @@
     <div id="Container" class="Container NSK c_both">
 
         <div class="evtCtnsBox" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2628m_top.jpg" alt="박준희 태패스">
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2628m_top.jpg" alt="박준희 태패스">
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
@@ -40,7 +40,7 @@
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/04/2628m_02.jpg" alt="only.1">
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2628m_02.jpg" alt="only.1">
         </div>
 
         <div class="evtCtnsBox youtube_area" data-aos="fade-up">
@@ -52,7 +52,7 @@
 
         <div class="evtCtnsBox" data-aos="fade-up">
             <a href="javascript:go_PassLecture('194323');" >
-                <img src="https://static.willbes.net/public/images/promotion/2022/04/2628m_04.jpg" alt="신청하기">
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2628m_04.jpg" alt="신청하기">
             </a>
             <div class="check">
                 <label>
@@ -61,6 +61,13 @@
                 </label>
                 <a href="#notice">이용안내확인하기 ↓</a>
             </div>
+        </div>
+
+        <div class="evtCtnsBox evt_05 pb50" data-aos="fade-up">
+            <div class="wrap">
+			    <img src="https://static.willbes.net/public/images/promotion/2022/09/2628m_05.jpg" alt="지구과학 티패스 신청하기" />
+                <a href="https://job.willbes.net/m/periodPackage/show/cate/309004/pack/648001/prod-code/200911" target="_blank" title="지구과학 신청하기" style="position: absolute;left: 73.75%;top: 2.63%;width: 23.87%;height: 28.82%;z-index: 2;"></strong></a>
+            </div>               
         </div>
 
         <div class="evtCtnsBox evtInfo" id="notice">
@@ -115,14 +122,15 @@
 			</div>
 		</div>
     </div>
-    <!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script>
-        $( document ).ready( function() {
-            AOS.init();
-        } );
+    <!-- End Container -->
+    
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+        $(document).ready( function() {
+        AOS.init();
+        });
     </script>
 
     <script type="text/javascript">

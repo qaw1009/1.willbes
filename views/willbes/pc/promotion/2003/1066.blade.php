@@ -167,7 +167,7 @@
 
         <div class="evtCtnsBox wb_cts02" id="evt02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/06/1066_02.jpg" title="반반한 모의고사 무료방송" />
-            <a href="#none">2022.8. Coming soon!</a>
+            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1676" target="_blank">매일 밤 9시 무료로 만나기 !</a>
         </div>
 
         <div class="evtCtnsBox wb_cts04" data-aos="fade-up">
@@ -204,8 +204,9 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1066_06.jpg" alt="커리큘럼"/>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/1066_06_02.gif" alt=""/>
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/169567" target="_blank" title="기초영어" style="position: absolute; left: 5.89%; top: 31.97%; width: 43.39%; height: 56.15%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/199288" target="_blank" title="grammar" style="position: absolute; left: 50.45%; top: 31.97%; width: 43.39%; height: 56.15%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/200760
+" target="_blank" title="기초영어" style="position: absolute; left: 5.89%; top: 31.97%; width: 43.39%; height: 56.15%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/200787" target="_blank" title="grammar" style="position: absolute; left: 50.45%; top: 31.97%; width: 43.39%; height: 56.15%; z-index: 2;"></a>
             </div>
             <table>
                 <col />
@@ -239,7 +240,7 @@
                         </td>
                         <td>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/154894" target="_blank">제니스 독해</a>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/185366" target="_blank">필살기출비법</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/200772" target="_blank">필살기출비법 <span>new</span></a>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/199289" target="_blank">첨삭독해</a>
                         </td>
                         <td>
@@ -247,7 +248,7 @@
                         </td>
                         <td>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/186620" target="_blank">스나이퍼32</a>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/192323" target="_blank">새벽모의고사</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/200787" target="_blank">새벽모의고사 <span>new</span></a>
                         </td>
                     </tr>
                     <tr>
@@ -255,7 +256,7 @@
                             <strong>심화</strong>
                         </th>
                         <td>
-                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183412" target="_blank">실전문법 464</a>
+                            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/200760" target="_blank">실전문법 464 <span>new</span></a>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145823" target="_blank">실전영작 215</a>
                             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/186619" target="_blank">기출리뷰</a>
                         </td>

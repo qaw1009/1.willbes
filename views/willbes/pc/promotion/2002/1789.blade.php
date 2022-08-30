@@ -26,8 +26,8 @@
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1789_top.jpg" usemap="#Map1789" title="카톡 실시간 상담 오픈" border="0" />
             <map name="Map1789">
-              <area shape="rect" coords="197,718,550,812" href="https://pf.kakao.com/_qAxoYC" target="_blank" alt="카톡 친구 추가하기">
-              <area shape="rect" coords="571,717,921,810" href="https://accounts.kakao.com/login?continue=http%3A//pf.kakao.com/_kcZIu/chat" target="_blank" alt="바로 상담하기">
+              <area shape="rect" coords="197,718,550,812" href="http://pf.kakao.com/_pJIVxj" target="_blank" alt="카톡 친구 추가하기">
+              <area shape="rect" coords="571,717,921,810" href="http://pf.kakao.com/_pJIVxj/chat" target="_blank" alt="바로 상담하기">
             </map>
         </div>
 

@@ -203,13 +203,6 @@
         }
 
         function fn_submit() {
-            @if(ENVIRONMENT == 'production')
-                @if(date('YmdHi') > '202210010000')
-                alert('종료된 이벤트 입니다.');
-                return;
-                @endif
-            @endif
-
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
             var _url = '{!! front_url('/event/registerStore') !!}';
@@ -217,6 +210,11 @@
             if (!$regi_form_register.find('input[name="attach_file"]').val()) {
                 alert('이미지를 등록해 주세요.');
                 $regi_form_register.find('input[name="attach_file"]').focus();
+                return;
+            }
+
+            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+                alert('개인정보 제공 동의는 필수입니다.');
                 return;
             }
 

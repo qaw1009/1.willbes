@@ -20,15 +20,16 @@
 
         /************************************************************/
   
-        .eventTop {background:#00c0df url(https://static.willbes.net/public/images/promotion/2021/07/2286_top_bg.jpg) no-repeat center top;}
+        .eventTop {background:#00c0df url(https://static.willbes.net/public/images/promotion/2022/08/2761_top_bg.jpg) no-repeat center top;}
 
 
-        .event02 {width:1120px; margin:0 auto; padding:100px 64px; background:#fff}
-        .evt_table table{width:100%;border-top:1px solid #01bfdf; border-left:1px solid #01bfdf}
-        .evt_table table tr {border-bottom:1px solid #01bfdf}
+        .event03 {width:1120px; margin:0 auto; padding:100px 64px; background:#fff}
+        .event03 h4 {font-size:40px; margin-bottom:50px}
+        .evt_table table{width:100%;border-top:1px solid #333; border-left:1px solid #333}
+        .evt_table table tr {border-bottom:1px solid #333}
         .evt_table table th,
-        .evt_table table td {margin:10px 0; font-size:16px; color:#666; line-height:1.5; padding:10px; border-right:1px solid #01bfdf;}
-        .evt_table table th {background:#14a0b7; color:#fff; }
+        .evt_table table td {margin:10px 0; font-size:16px; color:#666; line-height:1.5; padding:10px; border-right:1px solid #333;}
+        .evt_table table th {background:#f2f2f2; color:#000; }
         .evt_table table th.st02 {background:#e5f8fc; color:#000;  vertical-align:top}
         .evt_table table th.st02 div {margin-bottom:10px; color:#14a0b7}
         .evt_table table td {text-align:left; padding:15px 40px}
@@ -38,21 +39,26 @@
         .evt_table table th .btnDel {display:block; background:#000; color:#fff; border-radius:4px; width:50px; padding:4px 0; margin:10px auto 0; font-size:12px}
 
         .evt_table input {vertical-align:middle}
-        .evt_table input[type=file] {height:30px; color:#494a4d; vertical-align:top; border:1px solid #ccc;}
+        .evt_table input[type=file] {height:30px; color:#494a4d; vertical-align:top; border:1px solid #666;}
 
-        .evt_table .textarBx textarea {width:100%; padding:20px; border:1px solid #7cdfef; color:#666}
+        .evt_table .textarBx textarea {width:100%; padding:20px; border:1px solid #999; color:#666}
         .evt_table .btns {margin-top:40px}
-        .evt_table .btns a {display:inline-block; width:200px; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#0052a4; margin:0 10px;}
+        .evt_table .btns a {display:inline-block; width:300px; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#ee454a; margin:0 10px; border-radius:30px}
         .evt_table .btns a:last-child {background:#a4a4a4}
-        .evt_table .btns a:hover {background:#ffca26}
+        .evt_table .btns a:hover {background:#000}
+
+        .evt_table .txtInfo {padding:20px; text-align:left; font-size:14px; line-height:1.2; color:#999}
+        .evt_table .txtInfo input[type=checkbox] {width:20px; height:20px}
+        .evt_table .txtInfo p {margin-top:20px; color:#333; font-size:16px; border-top:1px solid #333; padding-top:10px}
 
         .evtSearch {margin-top:50px; font-size:14px}
         .evtSearch select,
         .evtSearch input {height:40px; line-height:40px; vertical-align:middle; padding:0 5px }
         .evtSearch input {width:300px; background:#f6f6f6; border:0}
-        .evtSearch .search-Btn {display:inline-block; height:40px; line-height:40px; padding:0 20px; background:#0052a4; color:#fff; vertical-align:middle;}
+        .evtSearch .search-Btn {display:inline-block; height:40px; line-height:40px; padding:0 20px; background:#ee454a; color:#fff; vertical-align:middle;}
 
-        .event02 .Paging a.on {color:#fe544a; text-decoration:none}
+
+        .event03 .Paging a.on {color:#fe544a; text-decoration:none}
 
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -65,14 +71,19 @@
 
     <div class="p_re evtContent NSK">
         <div class="evtCtnsBox eventTop" data-aos="fade-up">
-        	<img src="https://static.willbes.net/public/images/promotion/2021/07/2286_top.jpg" alt="합격축하 이벤트"/>
+        	<img src="https://static.willbes.net/public/images/promotion/2022/08/2761_top.jpg" alt="합격축하 이벤트"/>
         </div>
 
         <div class="evtCtnsBox event01" data-aos="fade-up">
-        	<img src="https://static.willbes.net/public/images/promotion/2021/07/2286_01.jpg" alt="이벤트 하나"/>
-        </div>        
-
+        	<img src="https://static.willbes.net/public/images/promotion/2022/08/2761_01.jpg" alt="이벤트 하나"/>
+        </div>   
+        
         <div class="evtCtnsBox event02" data-aos="fade-up">
+        	<img src="https://static.willbes.net/public/images/promotion/2022/08/2761_02.jpg" alt="이벤트 둘"/>
+        </div>  
+
+        <div class="evtCtnsBox event03" data-aos="fade-up">
+            <h4 class="NSK-Black">학습 인증샷 이벤트 참여하기</h4>
             <form name="regi_form_register" id="regi_form_register">
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
@@ -90,13 +101,13 @@
                         <col  />
                         <tbody>
                             <tr>
-                                <th>공부 인증 첨부 (필수!)</th>
+                                <th>학습 인증 첨부 (필수!)</th>
                                 <td>
                                     <div>
                                         @if(sess_data('is_login') === true)
                                             <input type="file" id="attach_file" name="attach_file" onchange="chkUploadFile(this);" style="width:60%"/>&nbsp;&nbsp;
                                             <a href="javascript:void(0);" onclick="del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" alt="삭제"></a>
-                                            {{--<p class="tx12 mt10">*파일의 크기는 2MB까지 업로드 가능, 이미지파일 (jpg, png등)만 가능합니다.</p>--}}
+                                            <p class="tx12 mt10">* 첨부파일은 최대 10MB 이하의 이미지 파일(png, jpg, gif, bmp) 만 가능합니다. </p>
                                         @else
                                             <span onclick="loginCheck();">로그인 후 이용하여 주십시오.</span>
                                         @endif
@@ -105,9 +116,8 @@
                             </tr>
                             <tr>
                                 <th>
-                                    나만의 슬럼프<br/>
-                                    극복법 작성<br/>
-                                    (당첨 확률 높이기~!)
+                                학습상황에 관한<br>
+                                단한 글 작성 
                                 </th>
                                 <td>
                                     <div class="textarBx">
@@ -117,8 +127,23 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="txtInfo">
+                        1. 개인정보 수집 이용 목적<br>
+                            - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대<br>
+                            - 이벤트 참여에 따른 선물 추첨 시 활용<br>
+                            <br>
+                        2. 개인정보 수집 항목<br>
+                            - 신청인의 이름, 연락처 <br>
+                            <br>
+                        3. 개인정보 이용기간 및 보유기간<br>
+                            - 본 수집, 활용목적 달성 후 바로 파기<br>
+                            <br>
+                        4. 개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
+                        - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
+                        <p><input name="is_chk" id="is_chk" type="checkbox" value="Y"> <label for="is_chk">윌비스에 개인정보 제공 동의하기(필수)</label></p>
+                    </div>
                     <div class="btns NSK-Black">
-                        <a href="javascript:void(0);" onclick="fn_submit();">등록하기</a>
+                        <a href="javascript:void(0);" onclick="fn_submit();">학습 인증샷 올리기</a>
                         <a href="javascript:void(0);" onclick="reset_form(this);">초기화</a>
                     </div>
                 </div>
@@ -127,10 +152,6 @@
                 </div>
             </form>
         </div> 
-
-        <div class="evtCtnsBox event03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2286_02.jpg"/>
-        </div>
 
 
         <div class="evtCtnsBox evtInfo">

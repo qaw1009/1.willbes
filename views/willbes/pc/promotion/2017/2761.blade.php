@@ -121,7 +121,7 @@
                                 </th>
                                 <td>
                                     <div class="textarBx">
-                                        <textarea id="etc_data" name="etc_data" cols="30" rows="5" maxlength="250" title="댓글" placeholder="더위를 이기는 법, 체력 관리 법,&#10;좋은 휴식 추천, 집중력을 높이는 법 등 &#10;추천하고 싶은 나만의 슬럼프 극복법을 남겨 주세요~~!" onclick="loginCheck();"></textarea>
+                                        <textarea id="etc_data" name="etc_data" cols="30" rows="5" maxlength="250" title="댓글" placeholder="학습상황에 관한 간단한 글을 작성해 주세요! &#10;(현재 공부과목, 합격 다짐, 계획대로 진행여부 등)" onclick="loginCheck();"></textarea>
                                     </div>
                                 </td>
                             </tr>

@@ -28,7 +28,9 @@
        
         .evt01 iframe {width:860px; height:484px; margin:0 auto; border:1px solid #000}
         .evt03 {background:#eaeff5;}
-        
+
+        .evt05 {background:#0071ca;}
+                
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -64,8 +66,12 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/08/2740_04.jpg" alt="면접 무료특강"/>   
                 <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/179389" target="_blank" title="무료특강" style="position: absolute; left: 24.29%; top: 40.37%; width: 20.98%; height: 6.18%; z-index: 2;"></a>       
             </div>
-		</div> 
-       
+		</div>
+
+        <div class="evtCtnsBox evt05" data-aos="fade-right">
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2759_05.jpg" alt="q&a"/>            
+		</div>
+
 	</div>
     <!-- End Container -->
 

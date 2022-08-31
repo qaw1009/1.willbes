@@ -204,7 +204,7 @@
 
         function fn_submit() {
             @if(ENVIRONMENT == 'production')
-                @if(date('YmdHi') > '202108160000')
+                @if(date('YmdHi') > '202210010000')
                 alert('종료된 이벤트 입니다.');
                 return;
                 @endif

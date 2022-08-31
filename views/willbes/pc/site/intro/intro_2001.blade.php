@@ -100,16 +100,20 @@
                 윌비스 경찰 교수진
             </div>
             <div class="bnBox" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/main/cop_gate/sec02_img.png" alt="배너명">
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/2236" title="이국령" style="left: 51%; top: 28.98%;">확인하기 ></a>
-                {{--
-                <a href="javascript:void(0);" title="" style="left: 18%; top: 41.49%;">확인하기 ></a>
-                <a href="javascript:void(0);" title="" style="left:  84.5%; top: 41.49%;">확인하기 ></a>
+                <img src="https://static.willbes.net/public/images/promotion/main/cop_gate/sec02_img.png" alt="윌비스 경찰 교수진">
 
-                <a href="javascript:void(0);" title="" style="left: 12.3%; top: 84.57%;">확인하기 ></a>
-                <a href="javascript:void(0);" title="" style="left: 35.8%; top: 84.57%;">확인하기 ></a>
-                <a href="javascript:void(0);" title="" style="left: 60.5%; top: 84.57%;">확인하기 ></a>
-                --}}
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/2737" title="경찰학 박우찬" style="left: 19.03%; top: 23.98%;">확인하기 ></a>
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/2236" title="헌법 이국령" style="left: 53.03%; top: 23.98%;">확인하기 ></a>
+                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51396?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2823%EB%85%84%EB%8C%80%EB%B9%84%29" title="헌법 선동주" style="left: 86.03%; top: 23.98%;">확인하기 ></a>
+               
+                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51394?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2823%EB%85%84%EB%8C%80%EB%B9%84%29" title="형사법 임종희" style="left: 12.3%; top: 57.57%;">확인하기 ></a>
+                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51392?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2823%EB%85%84%EB%8C%80%EB%B9%84%29" title="형사법 문형석" style="left: 35.8%; top: 57.57%;">확인하기 ></a>
+                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51393?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2823%EB%85%84%EB%8C%80%EB%B9%84%29" title="형사법 김효범" style="left: 60.5%; top: 57.57%;">확인하기 ></a>
+
+                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51398?subject_idx=2178&subject_name=%EB%B2%94%EC%A3%84%ED%95%99%2823%EB%85%84%EB%8C%80%EB%B9%84%29" title="범죄학 김한기" style="left: 12.3%; top: 86.57%;">확인하기 ></a>
+                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51397?subject_idx=2012&subject_name=G-TELP" title="지텔프 제니" style="left: 35.8%; top: 86.57%;">확인하기 ></a>
+                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51126?subject_idx=2088&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC%EB%8A%A5%EB%A0%A5%EA%B2%80%EC%A0%95%EC%8B%9C%ED%97%98" title="한능검 오태진" style="left: 60.5%; top: 86.57%;">확인하기 ></a>
+
             </div>
         </div>
 

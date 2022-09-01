@@ -1,110 +1,53 @@
-@extends('willbes.pc.layouts.master')
+@extends('willbes.m.layouts.master')
 
 @section('content')
-    @include('willbes.pc.layouts.partial.site_menu')
-    <!-- Container -->
+<!-- Container -->
     <style type="text/css">
-        .evtContent {
-            width:100%;
-            min-width:1120px !important;
-            max-width:2000px !important;
-            margin:20px auto 0;
-            padding:0 !important;
-            background:#fff;     
-            font-size:14px;       
-        }
-        .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
-        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:1.6vh; line-height:1.5; clear:both}
+    .evtCtnsBox .wrap {margin:0 auto; position:relative}
+    .evtCtnsBox .wrap a {border:1px solid #000}
+    .evtCtnsBox img {width:100%; max-width:720px;}
+    .evtCtnsBox span { vertical-align:top}   
 
-        /************************************************************/
+    /************************************************************/
 
-        /*타이머*/
-        .time {width:1120px; margin:0 auto; text-align:center; padding:20px 0}
-        .time ul {width:100%; display:flex; justify-content: center;}
-        .time li {line-height:61px; font-size:24px; margin-right:10px; position: relative;}
-        .time li:first-child,
-        .time li:last-child {line-height:1.3; color:#363635}
-        .time li:first-child {margin-right:20px}
-        .time li:last-child {margin-left:20px}
-        .time li:first-child span {color:#C82F25}        
-        .time li:last-child span {line-height:2.5; color:#363635;font-weight:bold;} 
-        .time li:last-child a {display:block; color:#fff; background:#242424; padding:10px 20px; margin-top:20px}
-        .time li img {width:44px}
-        .time .time_txt {color:#000; letter-spacing:-1px}
-        .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
-        .time .d_day {color:#fff;font-size:30px;}
+    .evt_02 {padding-bottom:5vh}
+    .check {padding:2vh 0; color:#fff; z-index:5}
+    .check label {cursor:pointer; font-size:1.8vh; color:#000; font-weight:bold;}
+    .check input {border:2px solid #000; margin-right:5px; height:20px; width:20px}
+    .check a {display:block; width:60%; margin:10px auto; padding:1vh 0; color:#fff; background:#393939; border-radius:20px; font-weight:bold;}
+    .check a:hover {background-color:#f1d188; color:#272a31}
 
-        .evt_top {background:#0C1D23 url(https://static.willbes.net/public/images/promotion/2022/09/2386_top_bg.jpg) no-repeat center top; height:1370px}
-        .evt_top span {position:absolute; left:50%; top:270px; margin-left:-280px}
+    .evtInfo {padding:4vh 3vw; background:#222; color:#fff;}
+    .evtInfoBox { text-align:left; line-height:1.5;}
+    .evtInfoBox h4 {font-size:3vh; margin-bottom:40px}
+    .evtInfoBox .infoTit {font-size:1.8vh; margin-bottom:20px}
+    .evtInfoBox .infoTit strong {padding:8px 20px; background:#000; border-radius:20px; font-weight:normal !important}
+    .evtInfoBox ul {margin-bottom:30px}
+    .evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
+    span.red {color:red; vertical-align:top}
+    .original {text-decoration:line-through;}
 
-        .evt_01 {background:#b9a78f}
-        .evt_02 {padding-bottom:150px}
-        .check {width:980px; margin:0 auto; padding:20px 0px 20px 10px; letter-spacing:3; color:#fff; z-index:5}
-        .check label {cursor:pointer; font-size:15px;color:#000;font-weight:bold;}
-        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-        .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#393939 ; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
-        .check a:hover {background-color:#f1d188; color:#272a31}
+    </style>
 
-        .evtInfo {padding:80px 0; background:#222; color:#fff; font-size:14px;}
-		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.5;}
-		.evtInfoBox h4 {font-size:30px; margin-bottom:40px}
-		.evtInfoBox .infoTit {font-size:18px; margin-bottom:20px}
-		.evtInfoBox .infoTit strong {padding:8px 20px; background:#000; border-radius:20px; font-weight:normal !important}
-		.evtInfoBox ul {margin-bottom:30px}
-        .evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
-        span.red {color:red; vertical-align:top}
-        .original {text-decoration:line-through;}
+    <div id="Container" class="Container NSK c_both">
         
-        /************************************************************/      
-    </style> 
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2386m_top.jpg" alt="황종휴 경제한 e-pass">
+        </div>
 
-	<div class="evtContent NSK">
-
-        {{--
-        <div class="evtCtnsBox">       
-            <div class="time NSK-Black" id="newTopDday">
-                <ul>
-                    <li>
-                        <span>성원에 감사드립니다</span><br>
-                              마감까지
-                    </li>
-                    <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li class="time_txt">일</li>
-                    <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li class="time_txt">:</li>
-                    <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li class="time_txt">:</li>
-                    <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li>
-                        <span class="NSK">남았습니다.</span>                        
-                    </li>          
-                </ul>
-            </div> 
-        </div>   
-        --}}
-        
-		<div class="evtCtnsBox evt_top">
-            <span data-aos="fade-down"><img src="https://static.willbes.net/public/images/promotion/2022/09/2386_top_img.png" alt="황종휴 경제학"/></span>
-		</div>
-
-        <div class="evtCtnsBox evt_01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2386_01.jpg" alt="특별혜택"/>            
-		</div>
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2386m_01.jpg" alt="특별혜택">
+        </div>
 
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2386_02.jpg" alt="수강 신청하기" />
-                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/periodPackage/show/cate/3094/pack/648001/prod-code/200932" onclick="go_PassLecture(this)" style="position: absolute; left: 71.61%; top: 13.39%; width: 23.66%; height: 14.06%; z-index: 2;"></a> 
-                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/periodPackage/show/cate/3094/pack/648001/prod-code/200933" onclick="go_PassLecture(this)" style="position: absolute; left: 71.61%; top: 30.37%; width: 23.66%; height: 14.06%; z-index: 2;"></a> 
-                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/periodPackage/show/cate/3094/pack/648001/prod-code/200934" onclick="go_PassLecture(this)" style="position: absolute; left: 71.61%; top: 47.59%; width: 23.66%; height: 14.06%; z-index: 2;"></a> 
-                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/periodPackage/show/cate/3094/pack/648001/prod-code/200935" onclick="go_PassLecture(this)" style="position: absolute; left: 71.61%; top: 64.48%; width: 23.66%; height: 14.06%; z-index: 2;"></a> 
-                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/200949" onclick="go_PassLecture(this)" style="position: absolute; left: 71.61%; top: 81.45%; width: 23.66%; height: 14.06%; z-index: 2;"></a>           
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2386m_02.jpg" alt="수강 신청하기" />
+                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/m/periodPackage/show/cate/3094/pack/648001/prod-code/200932" onclick="go_PassLecture(this)" style="position: absolute; left: 73.06%;top: 15.09%; width: 23.66%; height: 13.62%; z-index: 2;"></a> 
+                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/m/periodPackage/show/cate/3094/pack/648001/prod-code/200933" onclick="go_PassLecture(this)" style="position: absolute; left: 73.06%;top: 32.27%; width: 23.66%; height: 13.62%; z-index: 2;"></a> 
+                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/m/periodPackage/show/cate/3094/pack/648001/prod-code/200934" onclick="go_PassLecture(this)" style="position: absolute; left: 73.06%;top: 49.59%; width: 23.66%; height: 13.62%; z-index: 2;"></a> 
+                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/m/periodPackage/show/cate/3094/pack/648001/prod-code/200935" onclick="go_PassLecture(this)" style="position: absolute; left: 73.06%;top: 66.48%; width: 23.66%; height: 13.62%; z-index: 2;"></a> 
+                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/m/userPackage/show/cate/3094/prod-code/200949" onclick="go_PassLecture(this)" style="position: absolute; left: 73.06%;top: 83.45%; width: 23.66%; height: 13.62%; z-index: 2;"></a>           
             </div>    
             <div class="check">
                 <label>
@@ -175,7 +118,7 @@
             </div>
         </div>
 
-	</div>
+    </div>
     <!-- End Container -->
 
     <script type="text/javascript">

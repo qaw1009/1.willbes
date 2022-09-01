@@ -133,8 +133,7 @@
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01"> 
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_01.jpg" alt="구매전 안내"/>
-            <img src="https://static.willbes.net/public/images/promotion/2022/08/2718m_02_superweek.jpg" alt="슈퍼위크"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_01.jpg" alt="구매전 안내"/>            
             <div class="evt01_coupon" id="pass">
                 <div class="p_re">
                     <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_02_01.jpg" alt="23년 2차 PASS 신청하기" > 

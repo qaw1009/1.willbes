@@ -27,8 +27,7 @@
 
         .evt_top {background:url("https://static.willbes.net/public/images/promotion/2022/09/2758_top_bg.jpg") no-repeat center top;}   
 
-        .evt_01 {background:#f5f5f7;}
-        .evt_01_01 {}
+        .evt_01 {background:#f5f5f7;}        
 
         .evtPass {background:#F5F5F7; padding:100px 0}
         .evtPass .title01 {font-size:30px; color:#000; margin-bottom:100px}
@@ -186,12 +185,8 @@
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">     
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_01.jpg" alt="구매전 안내"/>    
-        </div> 
-
-        <div class="evtCtnsBox evt_01_01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/08/2718_02_superweek.jpg" alt="슈퍼위크"/>          
-        </div> 
-
+        </div>
+        
         <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">         
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_02.jpg" alt="윌비스 경찰 PASS">

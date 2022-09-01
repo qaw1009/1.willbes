@@ -5,7 +5,7 @@
     <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:1.6vh; line-height:1.5; clear:both}
     .evtCtnsBox .wrap {margin:0 auto; position:relative}
-    .evtCtnsBox .wrap a {border:1px solid #000}
+    /*.evtCtnsBox .wrap a {border:1px solid #000}*/
     .evtCtnsBox img {width:100%; max-width:720px;}
     .evtCtnsBox span { vertical-align:top}   
 

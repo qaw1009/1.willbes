@@ -90,7 +90,7 @@
                 </ul>
                 <div class="infoTit"><strong>교재</strong></div>
                 <ul>
-                    <li>강의배부자료 및 강의를 위해 제작된 교재는 <span class="red">해당 강의에서 모두 무료로 주문</span>하실 수 있습니다.<span class="red">(등록된 제본교재에 한함, 정식출간교재 및 자유선택PACK 강의 제외)</span></li>
+                    <li>강의배부자료 및 강의를 위해 제작된 교재는 <span class="red">해당 강의에서 모두 무료로 주문</span>하실 수 있습니다.<span class="red">(등록된 제본교재에 한함)</span></li>
                 </ul>
 
                 <div class="infoTit"><strong>환불</strong></div>

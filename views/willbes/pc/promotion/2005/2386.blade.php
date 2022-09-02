@@ -62,7 +62,6 @@
 
 	<div class="evtContent NSK">
 
-        {{--
         <div class="evtCtnsBox">       
             <div class="time NSK-Black" id="newTopDday">
                 <ul>
@@ -87,7 +86,7 @@
                 </ul>
             </div> 
         </div>   
-        --}}
+
         
 		<div class="evtCtnsBox evt_top">
             <span data-aos="fade-down"><img src="https://static.willbes.net/public/images/promotion/2022/09/2386_top_img.png" alt="황종휴 경제학"/></span>
@@ -188,7 +187,12 @@
                 var _url = $(obj).data('url');
                 window.open(_url);
             }
-        }    
+        }   
+        
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
+        });   
     </script>
 
     <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">

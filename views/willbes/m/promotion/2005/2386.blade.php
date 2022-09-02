@@ -11,6 +11,10 @@
 
     /************************************************************/
 
+    .dday {font-size:24px !important; padding:10px; background:#f5f5f5; color:#000; text-align:left; letter-spacing:-1px}
+    .dday span {color:#cf1425; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
+    .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#000; font-size:1.4vh;}  
+
     .evt_02 {padding-bottom:5vh}
     .check {padding:2vh 0; color:#fff; z-index:5}
     .check label {cursor:pointer; font-size:1.8vh; color:#000; font-weight:bold;}
@@ -28,9 +32,26 @@
     span.red {color:red; vertical-align:top}
     .original {text-decoration:line-through;}
 
+        /* 폰 가로, 태블릿 세로*/     
+        @@media only screen and (max-width: 374px)  {
+        .dday a {padding:5px 10px;}
+        }
+    /* 태블릿 세로 */
+        @@media only screen and (min-width: 375px) and (max-width: 640px) {
+
+        }
+    /* 태블릿 가로, PC */
+        @@media only screen and (min-width: 641px) {
+
+        } 
+
     </style>
 
     <div id="Container" class="Container NSK c_both">
+        <div class="evtCtnsBox dday NSK-Thin" data-aos="fade-down">
+            <strong class="NSK-Black">이벤트 마감까지 <span id="ddayCountText"></span> </strong>
+            <a href="#apply">수강신청 ></a>
+        </div>
         
         <div class="evtCtnsBox" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2386m_top.jpg" alt="황종휴 경제한 e-pass">
@@ -40,7 +61,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2386m_01.jpg" alt="특별혜택">
         </div>
 
-        <div class="evtCtnsBox evt_02" data-aos="fade-up">
+        <div class="evtCtnsBox evt_02" data-aos="fade-up" id="apply">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2386m_02.jpg" alt="수강 신청하기" />
                 <a href="javascript:void(0);" data-url="https://gosi.willbes.net/m/periodPackage/show/cate/3094/pack/648001/prod-code/200932" onclick="go_PassLecture(this)" style="position: absolute; left: 73.06%;top: 15.09%; width: 23.66%; height: 13.62%; z-index: 2;"></a> 
@@ -131,7 +152,7 @@
                 var _url = $(obj).data('url');
                 window.open(_url);
             }
-        }    
+        }
     </script>
 
     <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
@@ -139,9 +160,12 @@
     <script>
       $(document).ready( function() {
         AOS.init();
-      });
+
+        dDayCountDown('{{$arr_promotion_params['edate']}}', '{{$arr_promotion_params['etime'] or "00:00"}}', 'txt');
+      });        
+      
     </script>
 
-    {{-- 프로모션용 스크립트 include --}}
+{{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
 @stop

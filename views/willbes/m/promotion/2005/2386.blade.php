@@ -11,7 +11,7 @@
 
     /************************************************************/
 
-    .dday {font-size:24px !important; padding:10px; background:#f5f5f5; color:#000; text-align:left; letter-spacing:-1px}
+    .dday {font-size:2.2vh !important; padding:10px 5px; background:#f5f5f5; color:#000; text-align:left; letter-spacing:-1px}
     .dday span {color:#cf1425; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
     .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#000; font-size:1.4vh;}  
 

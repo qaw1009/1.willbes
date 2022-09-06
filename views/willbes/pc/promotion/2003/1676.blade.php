@@ -23,8 +23,14 @@
         .sky {position:fixed;top:150px; right:10px; width:169px; text-align:center; z-index:1;}
         .sky a {display:block; margin-bottom:5px;}
 
-        .evttop_banners {background:#060606;} 
-        .evttop_banners a:hover {border:1px solid #fef200}
+        .evttop_banners {background:#060606; color:#fff; padding:30px 0; line-height:1.4} 
+        .evttop_banners .wrap {display:flex; justify-content: center;}
+        .evttop_banners .txtInfo p:nth-child(2) {font-size:34px; font-weight:bold}
+        .evttop_banners .txtInfo strong {color:#d5a54e}
+        .evttop_banners .btns {display:flex; color:#fef200; font-size:16px; margin-left:100px}
+        .evttop_banners .btns div {margin-left:40px}
+        .evttop_banners .btns a {display:block; background:#fef200; color:#000; margin-top:10px; border-radius:10px; padding:10px; font-size:18px; font-weight:bold}
+        .evttop_banners .btns a:hover {background:#000; color:#fef200; border:1px solid #fef200}
 
         .evttop {background:url(https://static.willbes.net/public/images/promotion/2022/02/1676_top_bg.jpg) no-repeat center top; }
 
@@ -58,25 +64,44 @@
         .guide_box dd:last-child {margin:0}    	
     </style>
 
-    <div class="evtContent NGR" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky" id="QuickMenu">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/1676_sky.png" usemap="#Map1676_sky" title="반반한 모의고사" border="0">
             <map name="Map1676_sky">
                 <area shape="rect" coords="6,12,152,106" href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank"/>
                 <area shape="rect" coords="6,116,157,211" href="#detail" />
-                <area shape="rect" coords="5,216,153,319" href="#evt1" />               
+                <area shape="rect" coords="5,216,153,319" href="#to_go" />               
               	<area shape="rect" coords="5,328,159,434" href="#evt3" />
             </map>  
         </div>
 
-        @if(time() < strtotime('202208290000'))
-            <div class="evtCtnsBox evttop_banners" data-aos="fade-down">
-                <div class="wrap">
+        @if(time() < strtotime('202209190000'))
+            <div class="evtCtnsBox evttop_banners" >
+                <div class="wrap" data-aos="fade-left">
+                    {{--
                     <img src="https://static.willbes.net/public/images/promotion/2022/08/1676_top_banner.jpg">
                     <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="" style="position: absolute; left: 53.57%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>
                     <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" title="" style="position: absolute; left: 74.29%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>  
-                </div>        
+                    --}}
+
+                    <div class="txtInfo">
+                        <p>2주에 1번! 무료로 찾아오는 실력점검 Chance</p>
+                        <p>더켠의 반반한 온라인 모의고사</p>
+                        <p?>모의고사 응시 후 <strong>월요일 저녁 7시 LIVE 해설방송</strong> 잊지말고 함께해요!</p>
+                    </div> 
+                    <div class="btns">
+                        <div>
+                            9/12(월) ~ 9/16(금)
+                            <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank">접수하기 ></a>
+                        </div>
+                        <div>
+                            9/17(토) ~ 9/18(일)
+                            <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank">응시하기 ></a>
+                        </div>
+                    </div>
+                </div>      
+
             </div>        
         @else        
         @endif     
@@ -110,43 +135,29 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">                  
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/07/1676_02_august.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/09/1676_02_09.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/09/1676_02_10.jpg" /></li>
                 </ul>
-                {{--  
+
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p>
-                --}}
+
             </div> 
 
         </div>           
 
         {{-- 출석체크 --}}
-        <div class="evtCtnsBox evt03" data-aos="fade-up">
+        <div class="evtCtnsBox evt03">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/07/1676_03_01.jpg" name="evt1" id="evt1">
-                <a href="#to_go" title="출석체크하러 가기" style="position: absolute; left: 30.71%; top: 88.13%; width: 38.48%; height: 6.07%; z-index: 2;"></a>
-            </div>
-            {{--
-            <div class="wrap" id="evt4">
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_03_02.jpg">
-                <a href="https://gall.dcinside.com/board/lists/?id=government" target="_blank" title="공갤" style="position: absolute; left: 15.36%; top: 89.51%; width: 14.64%; height: 7.91%; z-index: 2;"></a>
-                <a href="https://cafe.daum.net/9glade" target="_blank" title="9꿈사" style="position: absolute; left: 30.09%; top: 89.51%; width: 14.64%; height: 7.91%; z-index: 2;"></a>
-                <a href="https://cafe.naver.com/gugrade" target="_blank" title="공드림" style="position: absolute; left: 44.46%; top: 89.51%; width: 14.64%; height: 7.91%; z-index: 2;"></a>
-                <a href="https://www.instagram.com" target="_blank" title="인스타" style="position: absolute; left: 58.93%; top: 89.51%; width: 14.64%; height: 7.91%; z-index: 2;"></a>
-                <a href="https://www.willbes.net/classroom/home/index" target="_blank" title="수강후기" style="position: absolute; left: 73.84%; top: 89.51%; width: 14.64%; height: 7.91%; z-index: 2;"></a>
-            </div>
-            --}}
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/07/1676_03_03.jpg" name="evt3" id="evt3">
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/199950" target="_blank" title="8월방송 다시보기" style="position: absolute; left: 11.7%; top: 75.99%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/1676_03_02.jpg" name="evt3" id="evt3">
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/201014" target="_blank" title="9월방송 다시보기" style="position: absolute; left: 11.7%; top: 75.99%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/199952" target="_blank" title="다시보기" style="position: absolute; left: 38.93%; top: 75.59%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" title="tpass" style="position: absolute; left: 66.88%; top: 75.99%; width: 21.34%; height: 9.34%; z-index: 2;"></a>                
             </div>
-
         </div>
 
 
-        <div class="evtCtnsBox evt04" data-aos="fade-up">
+        <div class="evtCtnsBox evt04" id="evt1">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_03_04.jpg">
                 <a href="#pairing" title="편성표" style="position: absolute; left: 14.29%; top: 29.03%; width: 35%; height: 46.54%; z-index: 2;"></a>
@@ -178,7 +189,7 @@
         </form>
 
         {{-- 출석체크 --}}
-        <div class="evtCtnsBox evt05" id="to_go" data-aos="fade-up">
+        <div class="evtCtnsBox evt05" id="to_go">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_05.jpg" title="출석 횟수">
 
             <span class="NSK-Black">
@@ -217,7 +228,7 @@
         @endif
        
 
-        <div class="evtCtnsBox evtInfo" id="ctsInfo" data-aos="fade-up">
+        <div class="evtCtnsBox evtInfo" id="ctsInfo">
             <div class="guide_box">
                 <h2 class="NSK-Black">유의사항</h2>
                 <dl>
@@ -232,7 +243,7 @@
                             - 매주 화/목 21:00~21:40 똑똑영어 (어휘), 8회분<br>
                             - 1주차/3주차 월~금 : 무료 온라인 모의고사 접수 진행<br>
                             - 1주차/3주차 토~일 : 무료 온라인 모의고사 응시 기간<br>
-                            - 2주차/4주차 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE), 2회분
+                            - 9/19(월), 10/4(화) 오후 7~8시 :  모의고사 해설 방송 진행 (실시간 LIVE), 2회분
                             </li>
 
                             <li>본 방송은 방송 종료 후 유료 동영상 강의로 전환됩니다.<br>
@@ -245,8 +256,8 @@
                             - PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br>
                             - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.</li>
                             <li>열공 출첵 이벤트 관련<br>
-                            - 본 이벤트는 로그인 후 참여 가능하며, 8/8(월)~9/2(금)까지 총 20회 진행됩니다. (*토~일 제외)<br>
-                            - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (8/16(화), 8/29(월) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
+                            - 본 이벤트는 로그인 후 참여 가능하며, 9/12(월)~10/7(금)까지 총 20회 진행됩니다. (*토~일 제외)<br>
+                            - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (9/19(월), 10/4(화) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
                             - 당첨자 안내 공지는 9/5(월) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
                         </ol>
                     </dd>

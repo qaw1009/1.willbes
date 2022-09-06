@@ -82,13 +82,13 @@
     .video-container embed {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}    
 
     .evtFooter {margin:0 auto; padding:30px 0; text-align:left; color:#666; line-height:1.4;background:#2a2a2a }
-    .evtFooter h3 {font-size:20px; margin:0 20px 20px; color:#f3f3f3; background:#161616; text-align:center; padding:10px 0}
+    .evtFooter h3 {font-size:2vh; margin:0 20px 20px; color:#f3f3f3; background:#161616; text-align:center; padding:10px 0}
     .evtFooter .infoBox {padding:0 20px}
-    .evtFooter p {margin-bottom:10px; color:#ccc; font-size:16px;}
-    .evtFooter p span {display:inline-block; font-size:10px; padding-bottom:5px; vertical-align:middle}
+    .evtFooter p {margin-bottom:10px; color:#ccc; font-size:1.6vh;}
+    .evtFooter p span {display:inline-block; font-size:1.1vh; padding-bottom:5px; vertical-align:middle}
     .evtFooter div,
-    .evtFooter ul {margin-bottom:20px; padding:0 10px}
-    .evtFooter li {margin-left:20px; list-style-type: decimal; color:#b8b8b8}
+    .evtFooter ul {margin-bottom:20px; padding:0 10px; font-size:1.6vh}
+    .evtFooter li {margin-left:20px; list-style-type: decimal; color:#ccc; margin-bottom:10px}
     .evtFooter li span {color:#777}
 
     .fixed {position:fixed; width:100%; left:0; z-index:10; border:0; opacity: .95;} 
@@ -135,15 +135,15 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1676m_02.jpg" alt="" >
         <ul>
             <li>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/199950" target="_blank">
+                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/201014" target="_blank">
                     <span>반반모고&똑똑영어</span>
-                    <span>8월 방송</span>
+                    <span>9월 방송</span>
                     <span>다시보기</span>
                     <span><strong>6만원으로</strong>방송 다시보기 ></span>
                 </a>
             </li>
             <li>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/199952" target="_blank">
+                <a href="https://pass.willbes.net/m/periodPackage/show/cate/3019/pack/648001/prod-code/199952" target="_blank">
                     <span>2023 대비</span>
                     <span>반반똑똑</span>
                     <span>다시보기 PASS</span>
@@ -240,29 +240,32 @@
     <div class="evtCtnsBox evtFooter" id="tab04" data-aos="fade-up">
         <h3 class="NSK-Black">반반&똑똑 유의사항 꼭! 확인하기</h3>
         <div class="infoBox">
-            <p class="NSK-Black"><span>●</span> 더켠의 반반&똑똑영어 과정 진행 안내 (총 20회)</p>
             <ul>
-                <li>
-                매주 월/수/금 21:00~22:00 반반한 모의고사 (모의고사 10문항), 10회분<br>
-                매주 화/목 21:00~21:40 똑똑영어 (어휘), 8회분<br>
-                1주차/3주차 월~금 : 무료 온라인 모의고사 접수 진행<br>
-                1주차/3주차 토~일 : 무료 온라인 모의고사 응시 기간<br>
-                2주차/4주차 월 오후 7~8시 : 모의고사 해설방송 진행 (실시간 LIVE), 2회분
+                <li>더켠의 반반&똑똑영어는 사전에 촬영, 촬영분을 실시간으로 송출해드리는 방송이오니 방송 시간에 맞추어 본 페이지에 접속 후 수강하시면 됩니다.
+                (*2주에 1회 진행하는 온라인 모의고사에 대한 해설 방송은 실시간 LIVE로 진행됩니다.)</li>
+                <li>윌비스 통합사이트에 로그인한 회원이라면 누구나 온라인 무료수강 가능합니다.</li>
+
+                <li>더켠의 반반&똑똑영어 과정 진행 안내 (총 20회)<br>
+                - 매주 월/수/금 21:00~22:00 반반한 모의고사 (모의고사 10문항), 10회분<br>
+                - 매주 화/목 21:00~21:40 똑똑영어 (어휘), 8회분<br>
+                - 1주차/3주차 월~금 : 무료 온라인 모의고사 접수 진행<br>
+                - 1주차/3주차 토~일 : 무료 온라인 모의고사 응시 기간<br>
+                - 9/19(월), 10/4(화) 오후 7~8시 :  모의고사 해설 방송 진행 (실시간 LIVE), 2회분
                 </li>
-            </ul>
 
-            <p class="NSK-Black"><span>●</span> 강의 자료 제공 일정 안내</p>
-            <ul>
-                <li>방송 당일 오후 12시~21시 40분 : 문제 자료<br>
-                    * 사전에 인쇄하여 풀어본 후 수업 참여 권장</li>
-                <li>방송 당일 21시40분~자정 : 문제+해설 자료</li>
-            </ul>
+                <li>본 방송은 방송 종료 후 유료 동영상 강의로 전환됩니다.<br>
+                단, 정규방송과의 형평성을 고려하여 방송 후 1주일 뒤 동영상 서비스가 제공됩니다.</li>
 
-            <p class="NSK-Black"><span>●</span> 열공 출첵 이벤트 관련</p>
-            <ul>
-                <li>본 이벤트는 로그인 후 참여 가능하며, 8/8(월)~9/2(금)까지 총 20회 진행됩니다. (*토~일 제외)</li>
-                <li>출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (8/16(화), 8/29(월) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.</li>
-                <li>당첨자 안내 공지는 9/5(월) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
+                <li>강의 자료 제공 일정 안내<br>
+                - 방송 당일 오후 12시~오후 21시40분 : 문제 자료 (사전에 인쇄하여 풀어보신 후 수업에 참여바랍니다.)<br>
+                - 방송 당일 오후 21시40분~자정 : 문제+해설+스터디 자료</li>
+                <li>본 방송은 PC 및 모바일로 시청 가능합니다.<br>
+                - PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br>
+                - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.</li>
+                <li>열공 출첵 이벤트 관련<br>
+                - 본 이벤트는 로그인 후 참여 가능하며, 9/12(월)~10/7(금)까지 총 20회 진행됩니다. (*토~일 제외)<br>
+                - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (9/19(월), 10/4(화) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
+                - 당첨자 안내 공지는 9/5(월) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
             </ul>
         </div>
     </div>

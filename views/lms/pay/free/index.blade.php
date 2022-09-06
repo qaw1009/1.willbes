@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_member_value">회원검색</label>
                     <div class="col-md-3 form-inline">
-                        <select class="form-control" id="search_member_keyword" name="search_member_keyword" title="회원검색구분" style="width: 26%;">
+                        <select class="form-control" id="search_member_keyword" name="search_member_keyword" title="회원검색키워드" style="width: 26%;">
                             <option value="MemId">회원아이디</option>
                             <option value="MemIdx">회원식별자</option>
                             <option value="MemName">회원명</option>
@@ -64,7 +64,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_prod_value">상품검색</label>
                     <div class="col-md-3 form-inline">
-                        <select class="form-control" id="search_prod_keyword" name="search_prod_keyword" title="상품검색구분" style="width: 26%;">
+                        <select class="form-control" id="search_prod_keyword" name="search_prod_keyword" title="상품검색키워드" style="width: 26%;">
                             <option value="OrderNo">주문번호</option>
                             <option value="OrderIdx">주문식별자</option>
                             <option value="ProdCode">상품코드</option>
@@ -196,7 +196,8 @@
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
-                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                var confirm_msg = '{{ config_get('privacy_excel_down_msg', '정말로 엑셀다운로드 하시겠습니까?') }}';
+                if (confirm(confirm_msg)) {
                     formCreateSubmit('{{ site_url('/pay/free/excel') }}', $search_form.serializeArray(), 'POST');
                 }
             });

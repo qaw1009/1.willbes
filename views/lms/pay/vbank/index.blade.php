@@ -232,7 +232,8 @@
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
-                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                var confirm_msg = '{{ config_get('privacy_excel_down_msg', '정말로 엑셀다운로드 하시겠습니까?') }}';
+                if (confirm(confirm_msg)) {
                     formCreateSubmit('{{ site_url('/pay/vbank/excel') }}', $search_form.serializeArray(), 'POST');
                 }
             });

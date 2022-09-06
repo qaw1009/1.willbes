@@ -11,7 +11,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_member_value">주문(등록)자 검색</label>
                     <div class="col-md-3 form-inline">
-                        <select class="form-control mr-10" id="search_member_keyword" name="search_member_keyword" style="width: 26%;">
+                        <select class="form-control" id="search_member_keyword" name="search_member_keyword" style="width: 26%;" title="주문(등록)자검색키워드">
                             <option value="MemId">회원아이디</option>
                             <option value="MemIdx">회원식별자</option>
                             <option value="MemName">회원명</option>
@@ -19,7 +19,7 @@
                             <option value="wAdminId">관리자아이디</option>
                             <option value="wAdminName">관리자명</option>
                         </select>
-                        <input type="text" class="form-control" id="search_member_value" name="search_member_value" style="width: 72%;">
+                        <input type="text" class="form-control" id="search_member_value" name="search_member_value" style="width: 72%;" title="주문(등록)자검색어">
                     </div>
                     <div class="col-md-8">
                         <p class="form-control-static">이름, 아이디, 휴대폰번호 검색 가능</p>
@@ -28,11 +28,11 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_prod_value">상품검색</label>
                     <div class="col-md-3 form-inline">
-                        <select class="form-control mr-10" id="search_prod_keyword" name="search_prod_keyword" style="width: 26%;">
+                        <select class="form-control" id="search_prod_keyword" name="search_prod_keyword" style="width: 26%;" title="상품검색키워드">
                             <option value="ProdName">상품명</option>
                             <option value="ProdCode">상품코드</option>
                         </select>
-                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" style="width: 72%;">
+                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" style="width: 72%;" title="상품검색어">
                     </div>
                     <div class="col-md-2">
                         <p class="form-control-static">상품명 검색 가능</p>
@@ -45,12 +45,12 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" title="조회시작일">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" title="조회종료일">
                         </div>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>
@@ -171,7 +171,8 @@
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
-                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                var confirm_msg = '{{ config_get('privacy_excel_down_msg', '정말로 엑셀다운로드 하시겠습니까?') }}';
+                if (confirm(confirm_msg)) {
                     formCreateSubmit('{{ site_url('/pay/cart/excel') }}', $search_form.serializeArray(), 'POST');
                 }
             });

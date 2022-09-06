@@ -11,43 +11,43 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">결제기본정보</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_pay_route_ccd" name="search_pay_route_ccd" title="결제루트">
+                        <select class="form-control" id="search_pay_route_ccd" name="search_pay_route_ccd" title="결제루트">
                             <option value="">결제루트</option>
                         @foreach($arr_pay_route_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
-                         <select class="form-control mr-10" id="search_prod_type_ccd" name="search_prod_type_ccd" title="상품구분">
+                         <select class="form-control" id="search_prod_type_ccd" name="search_prod_type_ccd" title="상품구분">
                             <option value="">상품구분</option>
                         @foreach($arr_prod_type_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_learn_pattern_ccd" name="search_learn_pattern_ccd" title="상품상세구분">
+                        <select class="form-control" id="search_learn_pattern_ccd" name="search_learn_pattern_ccd" title="상품상세구분">
                             <option value="">상품상세구분</option>
                         @foreach($arr_learn_pattern_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_status_ccd" name="search_pay_status_ccd" title="결제상태">
+                        <select class="form-control" id="search_pay_status_ccd" name="search_pay_status_ccd" title="결제상태">
                             <option value="">결제상태</option>
                         @foreach($arr_pay_status_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_delivery_status_ccd" name="search_delivery_status_ccd" title="배송상태">
+                        <select class="form-control" id="search_delivery_status_ccd" name="search_delivery_status_ccd" title="배송상태">
                             <option value="">배송상태</option>
                         @foreach($arr_delivery_status_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_admin_reason_ccd" name="search_admin_reason_ccd" title="부여사유유형">
+                        <select class="form-control" id="search_admin_reason_ccd" name="search_admin_reason_ccd" title="부여사유유형">
                             <option value="">부여사유유형</option>
                         @foreach($arr_admin_reason_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_is_lec_unit" name="search_is_lec_unit" title="회차등록여부">
+                        <select class="form-control" id="search_is_lec_unit" name="search_is_lec_unit" title="회차등록여부">
                             <option value="">회차등록여부</option>
                             <option value="Y">회차등록</option>
                             <option value="N">일반등록</option>
@@ -57,7 +57,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_member_value">회원검색</label>
                     <div class="col-md-3 form-inline">
-                        <select class="form-control mr-10" id="search_member_keyword" name="search_member_keyword" style="width: 26%;" title="회원검색키워드">
+                        <select class="form-control" id="search_member_keyword" name="search_member_keyword" style="width: 26%;" title="회원검색키워드">
                             <option value="MemId">회원아이디</option>
                             <option value="MemIdx">회원식별자</option>
                             <option value="MemName">회원명</option>
@@ -72,7 +72,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_prod_value">상품검색</label>
                     <div class="col-md-3 form-inline">
-                        <select class="form-control mr-10" id="search_prod_keyword" name="search_prod_keyword" style="width: 26%;" title="상품검색키워드">
+                        <select class="form-control" id="search_prod_keyword" name="search_prod_keyword" style="width: 26%;" title="상품검색키워드">
                             <option value="OrderNo">주문번호</option>
                             <option value="OrderIdx">주문식별자</option>
                             <option value="CertNo">수강증번호</option>
@@ -88,7 +88,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">날짜검색</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_date_type" name="search_date_type" title="날짜구분">
+                        <select class="form-control" id="search_date_type" name="search_date_type" title="날짜구분">
                             <option value="paid">결제완료일</option>
                             <option value="refund">환불완료일</option>
                             <option value="delivery_send">발송완료일</option>
@@ -218,7 +218,8 @@
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
-                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                var confirm_msg = '{{ config_get('privacy_excel_down_msg', '정말로 엑셀다운로드 하시겠습니까?') }}';
+                if (confirm(confirm_msg)) {
                     formCreateSubmit('{{ site_url('/pay/zeroPay/excel') }}', $search_form.serializeArray(), 'POST');
                 }
             });

@@ -26,19 +26,16 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox evttop">           
+        <div class="evtCtnsBox evttop" data-aos="fade-up">           
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2766_top.jpg" title="한가위 드림 이벤트">   
         </div>
 
-        <div class="evtCtnsBox evt01">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2766_01.jpg" title="드림 패키지" data-aos="fade-left">
-                <a href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/185994" target="_blank" title="패키지 신청하기" style="position: absolute; left: 22.5%; top: 90.29%; width: 54.82%; height: 5.33%; z-index: 2;"></a>
-            </div>
+        <div class="evtCtnsBox evt01" data-aos="fade-left">
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2766_01.jpg" title="드림 패키지">
         </div>
 
-        <div class="evtCtnsBox wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2766_02.jpg" title="소문내기 이벤트" data-aos="fade-right">
+        <div class="evtCtnsBox wrap" data-aos="fade-right">
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2766_02.jpg" title="소문내기 이벤트">
             <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이벤트 이미지 다운로드" style="position: absolute; left: 22.86%; top: 65.8%; width: 54.82%; height: 5.6%; z-index: 2;"></a>
         </div> 
         

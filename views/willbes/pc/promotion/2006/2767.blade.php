@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position: relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+        .evtCtnsBox .wrap a {border:1px solid #000}
 
 		/************************************************************/ 
 
@@ -24,6 +24,7 @@
         .evt_top img {position: absolute; top:100px; left:50%; margin-left:-400px}
 
         .evt_02 {background:#e6e6e6}
+        
         .evt_04 {width:1120px; margin:0 auto; padding:100px; text-align:left; font-size:24px; line-height:1.4 }
         .evt_04 li {list-style-type: disc; margin-left:20px; margin-bottom:20px; }
         .evt_04 li div {font-size:20px; color:#666}
@@ -49,14 +50,21 @@
 			<img src="https://static.willbes.net/public/images/promotion/2022/09/2767_02.jpg" alt="10월 7일 개강" />			  
 		</div>   
 
-        <div class="evtCtnsBox evt_03" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2767_03.jpg" alt="손해평가사 수강신청" />			  
+
+        <div class="evtCtnsBox evt_03">
+            <div class="wrap" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2767_03.jpg" alt="손해평가사 학원 수강신청" />			  
                 <a href="#none" title="1차 대비 종합반" style="position: absolute; left: 63.39%; top: 66.3%; width: 21.7%; height: 8.79%; z-index: 2;"></a>
                 <a href="#none" title="2차 대비 종합반" style="position: absolute; left: 63.39%; top: 76.08%; width: 21.7%; height: 8.79%; z-index: 2;"></a>
                 <a href="#none" title="1차 + 2차 대비 종합반" style="position: absolute; left: 63.39%; top: 86.15%; width: 21.7%; height: 8.79%; z-index: 2;"></a>
-            </div>
-		</div>   
+            </div> 
+            <div class="wrap" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2767_04.jpg" alt="손해평가사 동영상 수강신청" />			  
+                <a href="#none" title="1차 대비 종합반" style="position: absolute; left: 63.39%; top: 22.75%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
+                <a href="#none" title="2차 대비 종합반" style="position: absolute; left: 63.39%; top: 44.84%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
+                <a href="#none" title="1차 + 2차 대비 종합반" style="position: absolute; left: 63.39%; top: 67.19%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
+            </div>            
+		</div> 
 
         <div class="loadmap">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2238.5189534842293!2d126.72321452519192!3d37.49037028993977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7c45f64466a5%3A0x41ad2be6af1f3f59!2zKOyjvCnsnIzruYTsiqTqs7XrrLTsm5Dqsr3ssLDtlZnsm5A!5e0!3m2!1sko!2skr!4v1662530065277!5m2!1sko!2skr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

@@ -20,9 +20,8 @@
     .VisualBox .RollingTab a{
         display: block;
         width:20%;
-        height: 64px;
         font-size: 2vh;
-        line-height: 64px;
+        padding:15px 0;
         color: #cdcdcd;
         background:#363636;
         text-align: center;
@@ -75,11 +74,11 @@
             </div> 
             <div id="RollingDiv" class="tabList">
                 <div class="RollingTab">
-                    <a data-slide-index="0" href="javascript:void(0);" class="active">헌법 이국령</a>
-                    <a data-slide-index="1" href="javascript:void(0);" class="">형사법 임종희</a>
-                    <a data-slide-index="2" href="javascript:void(0);" class="">신광은 형사법</a>
-                    <a data-slide-index="3" href="javascript:void(0);" class="">장정훈 경찰학</a>
-                    <a data-slide-index="4" href="javascript:void(0);" class="">김원욱 헌법</a>
+                    <a data-slide-index="0" href="javascript:void(0);" class="active">헌법<br> 이국령</a>
+                    <a data-slide-index="1" href="javascript:void(0);" class="">형사법<br> 임종희</a>
+                    <a data-slide-index="2" href="javascript:void(0);" class="">형사법<br> 문형석</a>
+                    <a data-slide-index="3" href="javascript:void(0);" class="">형사법<br> 김한기</a>
+                    <a data-slide-index="4" href="javascript:void(0);" class="">경찰학<br> 박우찬</a>
                 </div>
             </div>           
         </div>        

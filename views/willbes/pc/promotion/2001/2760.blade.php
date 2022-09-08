@@ -94,16 +94,16 @@
                         <li><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51394?subject_idx=2127" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/09/2760_04_02.jpg" alt="형사법 임종희"></a></li>
                         <li><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51392?subject_idx=2127" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/09/2760_04_03.jpg" alt="배너명"></a></li>
                         <li><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51389?subject_idx=2127" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/09/2760_04_04.jpg" alt="배너명"></a></li>
-                        <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/2737"><img src="https://static.willbes.net/public/images/promotion/2022/09/2760_04_05.jpg" alt="배너명"></a></li>
+                        <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/2737" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/09/2760_04_05.jpg" alt="배너명"></a></li>
                     </ul>
                 </div> 
                 <div id="RollingDiv" class="tabList">
                     <div class="RollingTab">
                         <a data-slide-index="0" href="javascript:void(0);" class="active">헌법 이국령</a>
                         <a data-slide-index="1" href="javascript:void(0);" class="">형사법 임종희</a>
-                        <a data-slide-index="2" href="javascript:void(0);" class="">신광은 형사법</a>
-                        <a data-slide-index="3" href="javascript:void(0);" class="">장정훈 경찰학</a>
-                        <a data-slide-index="4" href="javascript:void(0);" class="">김원욱 헌법</a>
+                        <a data-slide-index="2" href="javascript:void(0);" class="">형사법 문형석</a>
+                        <a data-slide-index="3" href="javascript:void(0);" class="">형사법 김한기</a>
+                        <a data-slide-index="4" href="javascript:void(0);" class="">경찰학 박우찬</a>
                     </div>
                 </div>           
             </div>        

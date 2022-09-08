@@ -6,7 +6,7 @@
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14vh; line-height:1.5; clear:both}
     .evtCtnsBox img {width:100%; max-width:720px;}
-    .evtCtnsBox a {border:1px solid #000}
+    /*.evtCtnsBox a {border:1px solid #000}*/
 
     .Visual {padding:0 20px 50px; width:100%; background:#000; text-align:center;}
     .VisualBox .tabSlider img {width:100%; max-width:650px; margin:0 auto}

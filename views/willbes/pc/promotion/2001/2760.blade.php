@@ -119,7 +119,7 @@
         <div class="evtCtnsBox" data-aos="fade-right" id="evt06">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2760_06.jpg" title="소문내기 이벤트">
-                <a href="" title="할인쿠폰받기" style="position: absolute; left: 27.32%; top: 57.02%; width: 45.18%; height: 5.05%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck(); return false;" title="쿠폰받기" style="position: absolute; left: 27.32%; top: 57.02%; width: 45.18%; height: 5.05%; z-index: 2;"></a>
                 <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이벤트 이미지 다운로드" style="position: absolute; left: 57.32%; top: 73.93%; width: 29.46%; height: 5.05%; z-index: 2;"></a>
             </div>
         </div> 
@@ -141,6 +141,11 @@
 
 	</div>
     <!-- End Container -->
+
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
 
     <script type="text/javascript"> 
         //상단배너
@@ -167,6 +172,21 @@
     <script>
       $( document ).ready( function() {
         AOS.init();
-      } );      
+      } );
+
+      var $regi_form = $('#regi_form');
+      function giveCheck() {
+          {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+          @if(empty($arr_promotion_params['give_type']) === false && empty($arr_promotion_params['give_idx']) === false)
+              var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
+              ajaxSubmit($regi_form, _check_url, function (ret) {
+                  if (ret.ret_cd) {
+                      alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                  }
+              }, showValidateError, null, false, 'alert');
+          @else
+            alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+          @endif
+      }
     </script>
 @stop

@@ -92,7 +92,7 @@
     <div class="evtCtnsBox evt06" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2760m_06.jpg" alt="이미지 다운받기"/>
-            <a href="#none" title="할인쿠폰받기" style="position: absolute;left: 14.72%; top: 53.79%; width: 70.97%; height: 4.8%; z-index: 2;"></a>
+            <a href="javascript:void(0);" onclick="giveCheck(); return false;" title="할인쿠폰받기" style="position: absolute;left: 14.72%; top: 53.79%; width: 70.97%; height: 4.8%; z-index: 2;"></a>
             <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute;left: 9.31%; top: 75.19%; width: 81.25%; height: 4.8%; z-index: 2;"></a>
         </div>    
     </div>
@@ -117,6 +117,11 @@
     </div>
     
 </div>
+
+<form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+    {!! csrf_field() !!}
+    {!! method_field('POST') !!}
+</form>
 <!-- End Container -->
 
 <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
@@ -136,7 +141,22 @@
                     $("#RollingSlider").css("visibility", "visible").animate({opacity:1}); 
                 }
             });			
-        }); 
+        });
+
+        var $regi_form = $('#regi_form');
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+            @if(empty($arr_promotion_params['give_type']) === false && empty($arr_promotion_params['give_idx']) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    }
+                }, showValidateError, null, false, 'alert');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
     </script>
 
 <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">

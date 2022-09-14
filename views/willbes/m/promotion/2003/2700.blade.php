@@ -7,15 +7,17 @@
 
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
     .evtCtnsBox img {width:100%; max-width:720px;}
+    .evtCtnsBox .wrap {position:relative}
     /*.evtCtnsBox a {border:1px solid #000}*/
+    
 
     /* 이용안내 */
     .wb_info {padding:50px 20px; color:#3a3a3a; line-height:1.4; background:#f4f4f4}
     .guide_box{text-align:left; word-break:keep-all}
     .guide_box h2 {font-size:3vh; margin-bottom:30px;}
-    .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:18px;}        
+    .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:1.8vh;}        
     .guide_box dd{color:#3a3a3a; margin:0 0 20px 5px;}
-    .guide_box dd li{margin-bottom:3px; list-style:decimal; margin-left:20px;font-size:1.5vh;font-weight:bold;} 
+    .guide_box dd li{margin-bottom:3px; list-style:decimal; margin-left:20px;font-size:1.6vh;font-weight:bold;} 
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
@@ -41,22 +43,19 @@
     </div>
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2700m_01.jpg" alt="지금 바로 윌비스로 시작할 때" >
-    </div>
+        <img src="https://static.willbes.net/public/images/promotion/2022/06/2700m_01.jpg" alt="지금 바로 윌비스로 시작할 때" ><br>
+        <img src="https://static.willbes.net/public/images/promotion/2022/06/2700m_02.jpg" alt="쿠폰 받고 열공" ><br>
 
-    <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2700m_02.jpg" alt="쿠폰 받고 열공" >
-    </div>
-    @php
-        // 다수의 인증코드 사용
-        $cert_array = [];
-        if (empty($arr_promotion_params["cert"]) === false) {
-            $cert_array = explode(',', $arr_promotion_params["cert"]);
-        }
-    @endphp
-    <div class="evtCtnsBox" data-aos="fade-up">
+        @php
+            // 다수의 인증코드 사용
+            $cert_array = [];
+            if (empty($arr_promotion_params["cert"]) === false) {
+                $cert_array = explode(',', $arr_promotion_params["cert"]);
+            }
+        @endphp
+
         <div class="wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2700m_03.jpg" alt="할인 및 구매하기" >
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2700m_03.jpg" alt="할인 및 구매하기" >
             <a href="javascript:certOpen('{{element("page", $arr_promotion_params)}}', '{{element(0, $cert_array)}}');" title="9급 인증받고 할인받기" style="position: absolute;left: 10.08%;top: 12.59%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="https://pass.willbes.net/m/promotion/index/cate/3019/code/2502" target="_blank" title="9급 구매하기" style="position: absolute;left: 10.08%;top: 15.23%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="javascript:certOpen('{{element("page", $arr_promotion_params)}}', '{{element(1, $cert_array)}}');" title="세무직 인증받고 할인받기" style="position: absolute;left: 60.08%;top: 12.59%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
@@ -74,7 +73,7 @@
             <a href="javascript:certOpen('{{element("page", $arr_promotion_params)}}', '{{element(7, $cert_array)}}');" title="전기직 인증받고 할인받기" style="position: absolute;left: 60.08%;top: 69.51%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="https://pass.willbes.net/m/promotion/index/cate/3028/code/2256" target="_blank" title="전기직 구매하기" style="position: absolute;left: 60.08%;top: 72.21%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
             <a href="javascript:certOpen('{{element("page", $arr_promotion_params)}}', '{{element(8, $cert_array)}}');" title="전자직 인증받고 할인받기" style="position: absolute;left: 37.08%;top: 89.05%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
-            <a href="https://pass.willbes.net/m/promotion/index/cate/3028/code/2256" target="_blank" title="전자직 구매하기" style="position: absolute;left: 37.08%;top: 91.75%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/promotion/index/cate/3028/code/2256" target="_blank" title="군무원 구매하기" style="position: absolute;left: 37.08%;top: 91.75%;width: 29.25%;height: 2.38%;z-index: 2;"></a>
         </div>
     </div>
     

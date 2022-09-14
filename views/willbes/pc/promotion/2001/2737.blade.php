@@ -70,8 +70,7 @@
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/08/2737_02.jpg"  alt="학습요령"/>
-               
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/2737_02.jpg"  alt="학습요령"/>               
         </div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-up">      
@@ -85,7 +84,10 @@
         <div class="evtCtnsBox evt05" data-aos="fade-up" id="lec">                     
             <img src="https://static.willbes.net/public/images/promotion/2022/08/2737_05.jpg"  alt="신규 개설 강좌"/>    
             <div class="title">박우찬 경찰학 단과강의 신청 > </div>        
-            <img src="https://static.willbes.net/public/images/promotion/2022/08/2737_05_01.jpg"  alt="곧 공개"/>  
+            {{--<img src="https://static.willbes.net/public/images/promotion/2022/08/2737_05_01.jpg"  alt="곧 공개"/>  --}}
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+            @endif
             <div class="title mt100">박우찬 경찰학 무료강의 신청 > </div>  
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))

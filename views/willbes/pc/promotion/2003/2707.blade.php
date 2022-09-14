@@ -111,11 +111,13 @@
             <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2022/07/2707_sky04.jpg" title="전문과목" /></a>
         </div>      
 
+        {{--
         <div class="evtCtnsBox wb_00" data-aos="fade-up">
             <a href="#apply">
                 <img src="https://static.willbes.net/public/images/promotion/2022/07/2707_00.png" alt="" />
             </a>
         </div>
+        --}}
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/07/2707_top.jpg" alt="세무직 티패스"  />

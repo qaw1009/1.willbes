@@ -10,7 +10,7 @@
     /*.evtCtnsBox a:hover {box-shadow:0 10px 10px rgba(0,0,0,.5);}*/
 
     .evt06 {text-align:left}
-    .evt06 .title {font-size:25px; font-weight:bold; margin-left:20px;padding:50px 0;}
+    .evt06 .title {font-size:25px; font-weight:bold; margin-left:20px;padding:50px 0 0;}
 
 </style>
 
@@ -45,13 +45,14 @@
 
     <div class="evtCtnsBox evt06 pb50" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/08/2741m_06.jpg" alt="신규 개설 강좌" >  
-        <div class="title">제니 G-TELP 단과강의 신청 ></div>   
+        <div class="title">제니 G-TELP 단과강의 신청 ></div>
+        {{--    
         <img src="https://static.willbes.net/public/images/promotion/2022/08/2741m_06_cms.jpg" alt="곧 공개됩니다" >
-        {{--         
+        --}} 
         @if(empty($arr_base['display_product_data']) === false)
             @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
         @endif
-        --}}
+        
     </div>   
     
 </div>

@@ -38,7 +38,7 @@
         .evt05 {background:#f4f4f4}
 
         .evt06 { width:1120px; margin:0 auto}
-        .evt06 .title {font-size:30px; font-weight:bold; margin-bottom:10px; text-align:left;padding:50px 0;}
+        .evt06 .title {font-size:30px; font-weight:bold; margin-bottom:10px; text-align:left;padding:50px 0 20px;}
                 
     </style>
 
@@ -87,12 +87,13 @@
         <div class="evtCtnsBox evt06 pb100" data-aos="fade-up" id="apply">                     
             <img src="https://static.willbes.net/public/images/promotion/2022/08/2741_06.jpg"  alt="신규 개설 강좌"/>    
             <div class="title">제니 G-TELP 단과강의 신청 > </div>        
+            {{--
             <img src="https://static.willbes.net/public/images/promotion/2022/08/2741_06_cms.jpg"  alt="곧 공개됩니다"/>  
-           {{--
+            --}}
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif
-            --}}
+            
         </div>
 
     </div>

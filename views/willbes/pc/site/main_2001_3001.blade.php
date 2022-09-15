@@ -1,12 +1,15 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
 <link href="/public/css/willbes/style_cop.css??ver={{time()}}" rel="stylesheet">
+<style>
+    .cop .Menu h3 {border:0}
+</style>
     <!-- Container -->
     <div id="Container" class="Container cop NGR c_both combine">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
-        <div class="Section MainVisual mt20">
+        <div class="Section MainVisual">
             <div class="VisualBox p_re">
                 @if(empty($data['arr_main_banner']['메인_빅배너']) === false)
                     <div id="MainRollingSlider" class="MaintabBox">

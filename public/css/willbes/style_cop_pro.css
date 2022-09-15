@@ -1,21 +1,51 @@
 .pro .tx-color {
-	color: #0c5dc0;
+    color: #0c5dc0;
 }
-.pro .will-nTit {font-size:35px !important; border:0 !important; margin-bottom:30px;}
 
-.pro .ProfProBox {margin-left:-5px}
-.pro .ProfProBox > li {
+.pro .will-nTit {
+    font-size: 35px !important;
+    border: 0 !important;
+    margin-bottom: 30px;
+}
+
+.pro .ProfProBox {
+    margin-left: -5px
+}
+
+.pro .ProfProBox>li {
     position: relative;
     display: inline;
     float: left;
     width: 220px;
     height: 327px;
     margin-left: 5px;
-    margin-bottom:5px
+    margin-bottom: 5px
 }
-.pro .mouBox span {display:inline; float:left; margin-right:6px}
-.pro .mouBox:after {content:''; display:block; clear:both}
 
-.pro .Sec01 {background:#0a0a0a; margin-top:20px}
-.pro .Sec02 {position:relative; height:390px}
-.pro .Sec02 div {position:absolute; top:0; left:50%; margin-left:-1000px}
+.pro .mouBox span {
+    display: inline;
+    float: left;
+    margin-right: 6px
+}
+
+.pro .mouBox:after {
+    content: '';
+    display: block;
+    clear: both
+}
+
+.pro .Sec01 {
+    background: #0a0a0a;
+}
+
+.pro .Sec02 {
+    position: relative;
+    height: 390px
+}
+
+.pro .Sec02 div {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -1000px
+}

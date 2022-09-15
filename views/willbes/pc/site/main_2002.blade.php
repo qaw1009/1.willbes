@@ -1,11 +1,14 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+<style>
+    .cop_acad .Menu h3 {border:0}
+</style>
     <!-- Container -->
     <div id="Container" class="Container cop_acad NGR c_both">
         @include('willbes.pc.layouts.partial.site_menu')
 
-        <div class="Section1 mt20">
+        <div class="Section1">
             <div class="MainVisualAcad">
                 <div class="VisualBoxAcad">
                     <div class="bSlider">

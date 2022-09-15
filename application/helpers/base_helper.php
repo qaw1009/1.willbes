@@ -670,6 +670,55 @@ if (!function_exists('starts_with')) {
     }
 }
 
+if (!function_exists('str_between')) {
+    /**
+     * haystack(대상 문자열)에서 from(시작 문자열)과 to(종료 문자열) 사이의 문자열 리턴
+     * @param $haystack
+     * @param $from
+     * @param $to
+     * @return string
+     */
+    function str_between($haystack, $from, $to)
+    {
+        if ($from == '' || $to == '') {
+            return $haystack;
+        }
+        return str_last_pos_before(str_first_pos_after($haystack, $from), $to);
+    }
+}
+
+if (!function_exists('str_left')) {
+    /**
+     * haystack(대상 문자열)에서 좌측부터 length 길이만큼의 문자열 리턴
+     * @param $haystack
+     * @param $length
+     * @return string
+     */
+    function str_left($haystack, $length)
+    {
+        if ($length < 1) {
+            return $haystack;
+        }
+        return mb_substr($haystack, 0, $length);
+    }
+}
+
+if (!function_exists('str_right')) {
+    /**
+     * haystack(대상 문자열)에서 우측부터 length 길이만큼의 문자열 리턴
+     * @param $haystack
+     * @param $length
+     * @return string
+     */
+    function str_right($haystack, $length)
+    {
+        if ($length < 1) {
+            return $haystack;
+        }
+        return mb_substr($haystack, ($length * -1));
+    }
+}
+
 if (!function_exists('str_first_pos_before')) {
     /**
      * haystack(대상 문자열)에서 첫번째 needle(찾을 문자열)의 위치 이전까지의 문자열 리턴

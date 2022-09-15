@@ -572,4 +572,61 @@ class AdminModel extends WB_Model
 
         return true;
     }
+
+    /**
+     * 운영자 비밀번호 변경 로그 조회
+     * @param bool|string $is_count
+     * @param array $arr_condition
+     * @param null|int $limit
+     * @param null|int $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listAdminPasswdChangeLog($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $in_column = 'count(0) AS numrows';
+            $column = 'numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $in_column = 'PCL.wApcIdx, PCL.wAdminIdx, PCL.wPasswdChgRoute, PCL.wRegDatm, PCL.wRegAdminIdx, PCL.wRegIp
+                , (case PCL.wPasswdChgRoute
+                    when "MY" then if(PCL.wPrevAdminPasswd is null, "사용자등록", "사용자수정")
+                    when "SY" then if(PCL.wPrevAdminPasswd is null, "관리자등록", "관리자수정")
+                    when "PW" then "비밀번호만료"
+                    else "자동등록"
+                  end) as wPasswdChgRouteName
+                , A.wAdminId, A.wAdminName, fn_mask(A.wAdminId, "id", "Y") as wAdminIdMask
+                , AR.wRoleName
+                , RA.wAdminId as wRegAdminId, RA.wAdminName as wRegAdminName
+            ';
+
+            if (is_bool($is_count) === true) {
+                $column = '*';
+            } else {
+                $column = $is_count;
+            }
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+            from ' . $this->_table['admin_passwd_change_log'] . ' as PCL
+                left join ' . $this->_table['admin'] . ' as A
+                    on PCL.wAdminIdx = A.wAdminIdx
+                left join ' . $this->_table['admin_role'] . ' as AR
+                    on A.wRoleIdx = AR.wRoleIdx
+                left join ' . $this->_table['admin'] . ' as RA
+                    on PCL.wRegAdminIdx = RA.wAdminIdx
+        ';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
 }

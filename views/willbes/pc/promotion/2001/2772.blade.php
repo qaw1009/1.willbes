@@ -86,12 +86,12 @@
             <div class="passLecBuy">
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2772_01.jpg" alt="신청하기" />
                 <div class="price price01">                 
-                    <input type="radio" id="y_pkg1" name="y_pkg" value="{{ (ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '186166' : '159718') }}" data-sale-price="970000"/> <label for="y_pkg1">신광은경찰간부 L-PASS</label>
+                    <input type="radio" id="y_pkg1" name="y_pkg" value="{{ (ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '186166' : '159718') }}" data-sale-price="970000"/> <label for="y_pkg1">윌비스 경찰간부 L-PASS</label>
                 </div>
             </div>
             <div class="check">
                 <input type="checkbox" id="is_chk1" name="is_chk" value="Y"/>
-                <label for="is_chk1">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                <label for="is_chk1">페이지 하단 윌비스 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                 <a href="#info">이용안내확인하기 ↓</a>
                 <p>
                     ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>
@@ -196,7 +196,7 @@
                             <li>결제 후 7일 이내 3강 이하 수강시에만 전액 환불 가능합니다.</li>
                             <li>결제 후 7일 이내 환불 요청 시 수강한 각 강의 정가 기준으로 수강 부분만큼 차감 후 나머지 부분에 대해 환불이 진행됩니다.</li>
                             <li>강좌 내 학습 자료 및 모바일 다운로드 이용 시에는 수강한 것으로 간주됩니다.</li>
-                            <li>고객 변심으로 인한 환불은 수강 시작일 (당일 포함)로부터 7일이 경과되면, 신광은 경찰PASS 결제가 기준으로 계산하여
+                            <li>고객 변심으로 인한 환불은 수강 시작일 (당일 포함)로부터 7일이 경과되면, 윌비스 경찰PASS 결제가 기준으로 계산하여
                                 사용일 수만큼 차감 후 환불됩니다. (단, 가산점 특강, 온라인 모의고사 등 이용 시에도 차감)</li>
                             <li>포인트를 사용하였을 경우 사용한 포인트만큼 차감 후 환불 진행되며, 남은 포인트는 회수됩니다.<br>(포인트 미사용일 경우 추가 차감 없이 포인트 회수 후 환불 진행)</li>
                         </ol>
@@ -206,8 +206,8 @@
                         <ol>
                             <li>로그인 후 [내 강의실]에서 [무한PASS존]으로 접속합니다.</li>
                             <li>구매한 PASS 상품 선택 후 [강좌추가하기]를 클릭, 원하시는 강좌를 등록한 후 수강할 수 있습니다.</li>
-                            <li>신광은 경찰간부 PASS는 일시 정지, 수강 연장, 재수강 불가합니다.</li>
-                            <li>신광은 경찰간부 PASS 수강 시 이용 가능한 기기 대수는 다음과 같이 제한됩니다.<br>
+                            <li>윌비스 경찰간부 PASS는 일시 정지, 수강 연장, 재수강 불가합니다.</li>
+                            <li>윌비스 경찰간부 PASS 수강 시 이용 가능한 기기 대수는 다음과 같이 제한됩니다.<br>
                                 총 수강 기기 대수 2대 : PC 2대 또는 PC 1대 모바일 1대 또는 모바일 2대 (윌비스 경찰PASS PMP강의는 제공하지 않습니다.)
                             </li>
                             <li>PC, 모바일 기기에 대한 초기화가 필요할 경우 최초 초기화에 한해서는 수강생 본인이 초기화가 가능합니다. 다만 추후 초기화가 필요할 시 내용 확인 후 가능하오니 고객센터로 문의하시기 바랍니다.<br>

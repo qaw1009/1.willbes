@@ -3,7 +3,7 @@
         <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
     @endforeach
 </form>
-<div class="willbes-Lec-Tit NG bd-none tx-black pt-zero">· 심층 {{ $consult_name }} 예약</div>
+<div class="willbes-Lec-Tit NG bd-none tx-black pt-zero">{{$arr_base['title']}}</div>
 
 <div id="RESERVEPASS"></div>
 

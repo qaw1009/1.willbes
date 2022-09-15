@@ -23,7 +23,10 @@ class BaseConsult extends \app\controllers\FrontController
         $arr_base['depth'] = 1;
         $arr_base['comment'] = $this->_depth_comment($arr_base['depth']);
         $arr_base['site_code'] = $this->_site_code;
-        // 캠퍼스 조회
+        $consult_name = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? '상담' : $this->_consult_name;
+        $arr_base['title'] = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? '· GS0순환 이수진 노동법 1:1 대면상담 예약' : '· 심층 ' . $consult_name . ' 예약';
+
+            // 캠퍼스 조회
         $arr_base['campus'] = [];
         if (config_app('CampusCcdArr') != 'N') {
             $arr_base['campus'] = array_map(function ($var) {
@@ -34,7 +37,7 @@ class BaseConsult extends \app\controllers\FrontController
 
         $this->load->view('site/consult/index', [
             'default_path' => $this->_default_path,
-            'consult_name' => $this->_consult_name,
+            'consult_name' => $consult_name,
             'arr_input' => $arr_input,
             'arr_base' => $arr_base
         ]);
@@ -92,7 +95,7 @@ class BaseConsult extends \app\controllers\FrontController
 
         $this->load->view('site/consult/show_schedule', [
             'default_path' => $this->_default_path,
-            'consult_name' => $this->_consult_name,
+            'consult_name' => ($this->_site_code == '2011' && $this->_consult_type == 'T') ? '상담' : $this->_consult_name,
             'base_data' => $base_data,
             'arr_schedule_list' => $arr_schedule_list,
             'yoil' => $this->consultFModel->yoil
@@ -152,6 +155,9 @@ class BaseConsult extends \app\controllers\FrontController
         $arr_base['memo'] =  $this->_site_code == '2013'? '' : $this->_default_memo();
 
         $arr_base['site_code'] = $this->_site_code;
+        $consult_name = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? '상담' : $this->_consult_name;
+        $arr_base['title'] = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? '· GS0순환 이수진 노동법 1:1 대면상담 예약' : '· 심층 ' . $consult_name . ' 예약';
+
         $arr_base['campus'] = [];
         if (config_app('CampusCcdArr') != 'N') {
             $arr_base['campus'] = array_map(function ($var) {
@@ -162,7 +168,7 @@ class BaseConsult extends \app\controllers\FrontController
 
         $this->load->view('site/consult/create', [
             'default_path' => $this->_default_path,
-            'consult_name' => $this->_consult_name,
+            'consult_name' => $consult_name,
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
             'yoil' => $this->consultFModel->yoil
@@ -197,6 +203,9 @@ class BaseConsult extends \app\controllers\FrontController
     {
         $arr_base['depth'] = 3;
         $arr_base['comment'] = $this->_depth_comment($arr_base['depth']);
+        $consult_name = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? '상담' : $this->_consult_name;
+        $arr_base['title'] = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? '· GS0순환 이수진 노동법 1:1 대면상담 예약' : '· 심층 ' . $consult_name . ' 예약';
+
         $arr_input = $this->_reqP(null);
         $arr_input['s_campus'] = $this->_reqG('s_campus');
 
@@ -229,7 +238,7 @@ class BaseConsult extends \app\controllers\FrontController
 
         $this->load->view('site/consult/success', [
             'default_path' => $this->_default_path,
-            'consult_name' => $this->_consult_name,
+            'consult_name' => $consult_name,
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
             'yoil' => $this->consultFModel->yoil
@@ -261,11 +270,12 @@ class BaseConsult extends \app\controllers\FrontController
     {
         $arr_input = $this->_reqG(null, false);
         $arr_base['list'] = $this->consultFModel->listConsultScheduleForMember($this->_site_code, element('s_campus', $arr_input), $this->_consult_type);
+        $consult_name = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? '상담' : $this->_consult_name;
 
         $this->load->view('site/consult/popup_show_my_schedule', [
             'default_path' => $this->_default_path,
             'consult_type' => $this->_consult_type,
-            'consult_name' => $this->_consult_name,
+            'consult_name' => $consult_name,
             'consult_status' => $this->_consult_status,
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
@@ -288,8 +298,7 @@ class BaseConsult extends \app\controllers\FrontController
         $data = $this->consultFModel->getScheduleDataForMonth($site_code, $campus_code, $target_month, $this->_consult_type);
         $member_data = $this->consultFModel->getScheduleDataForMemberIsConsult($site_code, $campus_code, $this->_consult_type);
         $isCount_cnt = $member_data['cnt'];
-//
-//        print_r($member_data); die;
+
         //조회된 데이터 가공처리
         foreach ($data as $row) {
             $str_ConsultDay = str_replace('-','',$row['ConsultDate']);
@@ -326,24 +335,36 @@ class BaseConsult extends \app\controllers\FrontController
         return $month_data;
     }
 
+    // 상담 문구
     private function _depth_comment($depth = 1) {
         switch ($depth) {
             case "1" :
-                // 상담시간 문구
-                switch ($this->_consult_type) {
-                    case 'V' :
-                        $time_comment = '· 상담은 월~토요일 오전 9시부터 오후 6시까지 진행됩니다.<br/>';      // 방문 상담
-                        break;
-                    case 'T' :
-                        $time_comment = '· 상담은 월~일요일 오전 10시부터 오후 5시까지 진행됩니다.<br/>';     // 전화 상담
-                        break;
-                    default : $time_comment = '';
+                // 자격증 & 전화상담인 경우
+                if ($this->_site_code == '2011' && $this->_consult_type == 'T') {
+                    $comment = '· 2023대비 GS0순환 이수진 노동법, 실강 및 실영상반 수강생에 한해 예약가능합니다.<br/>
+                                · 9/19(월) 13:00까지 예약 가능하며, 선착순으로 예약 마감됩니다.<br/>
+                                · 상담 일시<br/>
+                                <span class="ml20"></span>- 9/26(월)~10/14(금) 14:00~21:00 (마지막타임 20:30~21:00)<br/>
+                                <span class="ml20"></span>- 9/23(금), 10/21(금), 10/28(금) 14:00~17:30 (마지막타임 17:00~17:30)<br/>
+                                · 예약 완료 이후에는 변경이 어려울 수 있으니, 신중히 선택해주시기 바랍니다.<br/>
+                                · 진행 강의실 및 안내사항은 9/22(목) 문자공지드립니다.<br/>';
+                } else {
+                    switch ($this->_consult_type) {
+                        case 'V' :
+                            $time_comment = '· 상담은 월~토요일 오전 9시부터 오후 6시까지 진행됩니다.<br/>'; // 방문 상담
+                            break;
+                        case 'T' :
+                            $time_comment = '· 상담은 월~일요일 오전 10시부터 오후 5시까지 진행됩니다.<br/>'; // 전화 상담
+                            break;
+                        default :
+                            $time_comment = '';
+                    }
+                    $comment = $time_comment . '
+                        · 원하시는 상담일자를 선택하여 예약가능 버튼을 클릭해 주세요.<br/>
+                        · 예약이 마감된 경우 또는 상담시간 이외 시간대는 예약신청이 불가능 합니다. (예약취소 발생시 ‘ 예약가능 ’ 버튼 재활성화)<br/>
+                        · 예약하기를 신청하신후 반드시 사전정보 입력을 해 주셔야 상담신청이 완료됩니다.<br/>
+                    ';
                 }
-                $comment = $time_comment . '
-                    · 원하시는 상담일자를 선택하여 예약가능 버튼을 클릭해 주세요.<br/>
-                    · 예약이 마감된 경우 또는 상담시간 이외 시간대는 예약신청이 불가능 합니다. (예약취소 발생시 ‘ 예약가능 ’ 버튼 재활성화)<br/>
-                    · 예약하기를 신청하신후 반드시 사전정보 입력을 해 주셔야 상담신청이 완료됩니다.<br/>
-                ';
                 break;
             case "2" :
                 $comment = '
@@ -356,10 +377,10 @@ class BaseConsult extends \app\controllers\FrontController
                 // 상담취소 안내 문구
                 switch ($this->_consult_type) {
                     case 'V' :
-                        $cancel_comment = '· 예약하신 날짜 및 시간에 도착하지 않으실 경우 상담이 취소될 수 있습니다.<br/>';      // 방문 상담
+                        $cancel_comment = '· 예약하신 날짜 및 시간에 도착하지 않으실 경우 상담이 취소될 수 있습니다.<br/>'; // 방문 상담
                         break;
                     case 'T' :
-                        $cancel_comment = '· 예약하신 날짜 및 시간에 부재중이실 경우 상담이 취소될 수 있습니다.<br/>';     // 전화 상담
+                        $cancel_comment = '· 예약하신 날짜 및 시간에 부재중이실 경우 상담이 취소될 수 있습니다.<br/>'; // 전화 상담
                         break;
                     default : $cancel_comment = '';
                 }

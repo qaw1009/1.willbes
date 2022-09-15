@@ -49,7 +49,7 @@
                                             <p>
                                                 {!! ($row['IsReg'] == 'Y') ? '예약완료' : '예약취소' !!}
                                                 @if($row['IsReg'] == 'Y' && $row['IsConsult'] == 'N')
-                                                    <a href="#none" class="btn whiteBox btn-my-cancel" data-csm-id="{{$row['CsmIdx']}}">예약취소</a>
+                                                    <a href="javascript:void(0);" class="btn whiteBox btn-my-cancel" data-csm-id="{{$row['CsmIdx']}}">예약취소</a>
                                                 @endif
                                             </p>
                                         </div>
@@ -143,6 +143,11 @@
             sendAjax(_url, _data, function (ret) {
                 alert(ret.ret_msg);
                 mySchedule();
+                if (typeof show_calendar == 'function') {
+                    show_calendar('');
+                } else {
+                    location.replace('{{ front_url($default_path . '/index') }}' + '?s_campus=' + '{{element('s_campus', $arr_input)}}');
+                }
             }, showError, false, 'POST');
         });
     });

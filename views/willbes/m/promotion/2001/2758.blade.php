@@ -129,7 +129,7 @@
         </div>  
 
         <div class="evtCtnsBox evt_top" data-aos="fade-up">         
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_top.jpg" alt="올인원 경찰 패스" >                 
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_top.png" alt="올인원 경찰 패스" >                 
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01"> 

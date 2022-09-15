@@ -1,9 +1,10 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
-<link href="/public/css/willbes/style_cop.css??ver={{time()}}" rel="stylesheet">
-<style>
-    .cop .Menu h3 {border:0}
-</style>
+    <link href="/public/css/willbes/style_cop.css??ver={{time()}}" rel="stylesheet">
+    <style>
+        .cop .Menu h3 {border:0}
+    </style>
+    
     <!-- Container -->
     <div id="Container" class="Container cop NGR c_both combine">
         <!-- site nav -->

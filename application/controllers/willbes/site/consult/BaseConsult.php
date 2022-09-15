@@ -139,6 +139,8 @@ class BaseConsult extends \app\controllers\FrontController
             $serial_ccd = $codes['614'];    //공무원 온라인, 공무원 학원
         } else if($this->_site_code == '2013') {
             $serial_ccd = $codes['729'];    //경찰간부 학원
+        } else if($this->_site_code == '2011') {
+            $serial_ccd = $codes['749'];    //자격증
         } else {
             $serial_ccd = $codes['666'];    //경찰 학원
         }
@@ -152,7 +154,7 @@ class BaseConsult extends \app\controllers\FrontController
         $arr_base['data'] = $data;
         $arr_base['depth'] = 2;
         $arr_base['comment'] = $this->_depth_comment($arr_base['depth']);
-        $arr_base['memo'] =  $this->_site_code == '2013'? '' : $this->_default_memo();
+        $arr_base['memo'] =  ($this->_site_code == '2013' || $this->_site_code == '2011') ? '' : $this->_default_memo();
 
         $arr_base['site_code'] = $this->_site_code;
         $consult_name = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? '상담' : $this->_consult_name;

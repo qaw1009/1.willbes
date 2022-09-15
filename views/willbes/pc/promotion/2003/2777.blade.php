@@ -21,6 +21,9 @@
 
         /************************************************************/
 
+        .sky {position:fixed; top:200px; width:171px; text-align:center; right:10px; z-index:10;}
+        .sky a {display:block; margin-bottom:10px}
+
         .wb_top {background:#01c73c url(https://static.willbes.net/public/images/promotion/2022/09/2777_top.jpg) no-repeat center top; height: 1352px;}
         .wb_top a {display:block; width:720px; font-size:30px; background:#f2f2f2; color:#00611d; border-radius:50px; text-align:center; padding:28px 0; position: absolute; top:1100px; left:50%; margin-left:-360px}
         .wb_top span {color:#ff0000}
@@ -41,6 +44,15 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
+        <div class="sky" id="QuickMenu">
+            <a href="#evt01"> 
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2777_sky01.jpg" alt="네이버페이" >
+            </a>   
+            <a href="#evt02"> 
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2777_sky02.jpg" alt="윌비스 드림팩" >
+            </a>                   
+        </div>
+
         <div class="evtCtnsBox wb_top">
             <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2003" target="_blank" data-aos="fade-right" class="NSK-Black">지금 바로 윌비스 공무원으로 <span>합격의 꿈</span> 시작하기  →</a>
         </div>

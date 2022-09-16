@@ -56,10 +56,7 @@
         </div>
 
         <div class="evtCtnsBox wb_top" data-aos="fade-down">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2531_top.jpg" alt="조경직 이윤주"/>
-                <a href="#lecbuy01" title="지금 바로 신청하기" style="position: absolute;left: 24.73%;top: 85.86%;width: 50.7%;height: 5.93%;z-index: 2;"></a>
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2531_top.jpg" alt="조경직 이윤주"/>
         </div>
 
         <div class="evtCtnsBox wb_01" data-aos="fade-up">

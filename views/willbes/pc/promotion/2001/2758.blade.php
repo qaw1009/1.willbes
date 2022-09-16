@@ -25,7 +25,7 @@
         .sky {position:fixed;top:200px;right:10px;z-index:100;}
         .sky a {display:block; margin-bottom:10px}
 
-        .evt_top {background:#434537;}   
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/09/2758_top_bg.jpg) no-repeat center top;}   
 
         .evt_01 {background:#f5f5f7;}        
 

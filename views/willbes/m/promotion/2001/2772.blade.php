@@ -120,7 +120,7 @@
     <div class="evtCtnsBox evt07" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2772m_07.jpg" alt="할인쿠폰받기및 이미지다운" >
-            <a href="javascript:void(0);" title="할일쿠폰받기" style="position: absolute;left: 10.53%;top: 47.91%;width: 79.22%;height: 5.46%;z-index: 2;"></a>
+            <a href="javascript:void(0);" onclick="giveCheck(); return false;" title="할인쿠폰받기" style="position: absolute;left: 10.53%;top: 47.91%;width: 79.22%;height: 5.46%;z-index: 2;"></a>
             <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지다운" style="position: absolute;left: 10.53%;top: 69.99%;width: 79.22%;height: 5.46%;z-index: 2;"></a>
         </div>
     </div>
@@ -224,9 +224,12 @@
             </dl>
         </div>
     </div>
-
 </div>
 
+<form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+    {!! csrf_field() !!}
+    {!! method_field('POST') !!}
+</form>
 <!-- End Container -->
 
 <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
@@ -237,13 +240,7 @@
     } );
 </script>
 
-<form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
-    {!! csrf_field() !!}
-    {!! method_field('POST') !!}
-</form>
-
 <script type="text/javascript">
-
     {{-- 쿠폰발급 --}}
     var $regi_form = $('#regi_form');
     function giveCheck() {

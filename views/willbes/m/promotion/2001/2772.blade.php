@@ -7,16 +7,22 @@
 
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
     .evtCtnsBox img {width:100%; max-width:720px;}
-    .evt01 .price {position:absolute; left:375px; width:250px; text-align:left; line-height:30px; font-size:20px; font-weight:bold; color:#333; z-index: 2;}
-    .evt01 .price01 {top:1015px}
-    .evt01 .ext01txt {padding:20px;}
-    .evt01 .ext01txt label {font-size:18px; font-weight:bold}
-    .evt01 input[type="radio"] {height:18px; width:18px; vertical-align:middle}
+
+    .evt01 .txtinfo {margin:10% 8%; padding:40px 20px 20px; border:1px solid #000; border-radius:10px; margin-bottom:50px; font-size:1.6vh; text-align:left}
+    .evt01 .txtinfo p {background:#000; color:#fff; padding:10px 5px; border-radius:30px; margin-top:-60px; margin-bottom:20px; font-size:1.8vh; text-align:center}
+
+    .evt01 {background:#f5f5f7; padding-bottom:50px}
+    .evt01 .price {text-align:center; font-size:25px; font-weight:bold; color:#333; letter-spacing:-1px; position:absolute; bottom:8.5%;left:20%;width:100%; z-index: 10;}
+    .evt01 .price p {margin-bottom:20px}    
+    .evt_01 .price label {display:inline-block}
+    .evt01 .price input:checked + label {color:#333399;}
+    .evt01 .ext01txt {padding:20px; text-align:left}
+    .evt01 .ext01txt label {font-size:20px; font-weight:bold;}
+    .evt01 input[type="radio"] {height:25px; width:25px; vertical-align:middle}
     .evt01 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle; margin-right:5px}
-    .evt01 input:checked + label {color:#4045AD}
-    .evt01 .ext01txt ul {margin:10px 0 0 25px}
-    .apply_btn {padding-bottom:50px;}
-    .evt01 a {display:block; width:90%; margin:20px auto 0; background:#000; color:#fff; border-radius:30px; padding:10px 0; font-size:20px; font-weight:bold; text-align:center}
+    .evt01 .ext01txt input:checked + label {color:blue}
+    .evt01 .ext01txt ul {margin:10px 0 0 25px;}
+    .evt01 a {display:block;width:90%;margin:20px auto 0;background:#000;color:#fff;border-radius:30px;padding:10px 0;font-size:20px;font-weight:bold;text-align:center;}
 
     /*evt02 {background:#f8f8f8;padding-bottom:125px;}*/
     
@@ -47,25 +53,20 @@
     .guide_box dd {margin-bottom:5px}
     .guide_box .only {color:#E80000;vertical-align:top;}
 
-    /* 폰 가로, 태블릿 세로*/
-    @@media only screen and (max-width: 374px) {
-        .dday {font-size:18px !important;}
-        .dday a {padding:5px 10px;}
-        .evt06 .slide_con {margin:0 10px; padding-bottom:40px}  
-        .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
-        .content_guide_wrap .tabs li a {font-size:14px !important; letter-spacing:-1px}
-        .btnbuy a {width:31%;}
+    @@media only screen and (max-width: 374px)  {
+        .evt01 .ext01txt label {font-size:14px;}
+        .evt01 .price {font-size:15px;}
+        .evt01 input[type="radio"] {height:15px; width:15px; vertical-align:middle}
     }
 
-    /* 태블릿 세로 */
-    @@media only screen and (min-width: 375px) and (max-width: 640px) {
-        .dday {font-size:18px !important;}
-        .dday a {padding:5px 10px;}
-        .btnbuy a {width:31%;}
+    @@media only screen and (min-width: 375px) and (max-width: 500px) {
+        .evt01 .price {font-size:18px;}      
+        .evt01 input[type="radio"] {height:18px; width:18px; vertical-align:middle}  
     }
-    /* 태블릿 가로, PC */
-    @@media only screen and (min-width: 641px) {
-        .content_guide_wrap .tabs li a br {display:none}
+
+    @@media only screen and (min-width: 501px) and (max-width: 719px) {
+        .evt01 .price {font-size:22px;}      
+        .evt01 input[type="radio"] {height:22px; width:22px; vertical-align:middle}  
     }
 
 </style>
@@ -79,24 +80,28 @@
     <div class="evtCtnsBox evt_tops" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/09/2772m_tops.jpg" alt="지금 신청해야 최저가" >
     </div>
-    
-    <div class="evtCtnsBox evt01" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/09/2772m_01.jpg" alt="신청하기" >
-        <div class="price price01">                 
-            <input type="radio" id="y_pkg1" name="y_pkg" value="{{ (ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '186166' : '159718') }}" data-sale-price="970000"/> <label for="y_pkg1">윌비스 경찰간부 L-PASS</label>
-        </div>
-        <div class="ext01txt">
-            <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
-            <ul>
-                <li>※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.</li>
-                <li>※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.</li>
-            </ul>
-        </div>
-        <div class="apply_btn totalPrice NSK-Black"> 
-            <a href="javascript:void(0);" onclick="goCartNDirectPay('event01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">경찰간부 L-PASS 신청하기 ></a>
-        </div>
-    </div>
-    
+
+    <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01">            
+        <div id="pass">
+            <div class="p_re">
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2772m_01.jpg" alt="23년 2차 PASS 신청하기" > 
+                <div class="price NSK-Black">                       
+                    <input type="radio" id="y_pkg1" name="y_pkg" value="201174" onClick=""/>
+                    <label for="y_pkg1"> 23년 2차 PASS 신청</label>
+                </div>
+            </div>                    
+            <div class="ext01txt">
+                <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 윌비스 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
+                <ul>
+                    <li>※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.</li>
+                    <li>※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.</li>
+                </ul>
+            </div>
+        </div>      
+        <div class="NSK-Black">            
+            <a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">경찰간부 L-PASS 신청하기 ></a>
+        </div>       
+    </div>        
     <div class="evtCtnsBox evt02" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/09/2772m_02.jpg" alt="곧 공개" >
         {{--

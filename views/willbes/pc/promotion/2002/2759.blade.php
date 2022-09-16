@@ -63,8 +63,9 @@
 
         <div class="evtCtnsBox evt04" data-aos="fade-right">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/08/2740_04.jpg" alt="면접 무료특강"/>   
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/179389" target="_blank" title="무료특강" style="position: absolute; left: 24.29%; top: 40.37%; width: 20.98%; height: 6.18%; z-index: 2;"></a>       
+                <img src="https://static.willbes.net/public/images/promotion/2022/08/2740_04_01.jpg" alt="면접 무료특강"/>   
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/200889" target="_blank" title="전화답변요령" style="position: absolute; left: 24.46%; top: 34.78%; width: 20.27%; height: 5.51%;z-index: 2;"></a>       
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/200890" target="_blank" title="서류작성법" style="position: absolute; left: 24.46%; top: 46.69%; width: 20.27%; height: 5.51%;z-index: 2;"></a> 
             </div>
 		</div>
 

@@ -65,7 +65,7 @@
 
         <div class="sky" id="QuickMenu">
             <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2022/08/2692_sky01.png" alt="이국령 헌번 티패스" ></a>
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2718" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/08/2692_sky02.png" alt="윌비스 경찰 패스 신청하기" ></a>
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2758" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/08/2692_sky02.png" alt="윌비스 경찰 패스 신청하기" ></a>
         </div>      
 
         <!-- 타이머 -->

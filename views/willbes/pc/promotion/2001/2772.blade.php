@@ -20,21 +20,25 @@
 
         .evt_tops {background:#252525;}
 
-        .evt01 {background:#F5F5F7;}
-        .evt01 .passLecBuy {position:relative; width:1120px; margin:0 auto;}
-        .evt01 .passLecBuy .price {position:absolute; left:575px; width:250px; text-align:left; line-height:30px; font-size:20px; font-weight:bold; color:#333; z-index: 2;}
-        .evt01 .passLecBuy .price01 {top:785px}     
-        .evt01 .passLecBuy .price strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}
-        .evt01 input[type="radio"] {height:18px; width:18px; vertical-align:middle}
-        .evt01 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle}
-        .evt01 input:checked + label {border-bottom:1px dashed #4045AD; color:#4045AD}
-        .evt01 .totalPrice {width:600px; margin:0 auto;padding-bottom:60px;}
-        .evt01 .totalPrice a {display:block; font-size:36px; color:#fff; padding:0 30px; background:#000; border-radius:60px; height:80px; line-height:80px; box-shadow:10px rgba(0,0,0,.5);}
-        .evt01 .totalPrice a:hover {background:#4045AD}
-        .evt01 .check {width:800px; margin:0 auto; padding:20px; font-size:16px; color:#000; letter-spacing:-1px;}
-        .evt01 .check a {display:inline-block; padding:10px; color:#fff; background:#000; margin-left:40px; border-radius:20px; font-size:12px}
-        .evt01 .check p {font-size:14px; padding:10px 0 0 20px; line-height:1.4}
-        .evt01 .check input:checked + label {border-bottom:1px dashed #4d0721; color:#4d0721}
+        .evtPass {background:#F5F5F7; padding:100px 0}
+        .evtPass .title01 {font-size:30px; color:#000; margin-bottom:100px}
+        .evtPass .wrap {width:1120px; margin:0 auto}
+        .evtPass .passLecBuy {display:flex; justify-content:space-around; position:absolute;left:225px;bottom:80px; width:100%; color:#252525; letter-spacing:-1px}
+        .evtPass .passLecBuy div {width:50%; line-height:30px; font-size:22px; font-weight:bold; text-align:center; padding-left:0} 
+        .evtPass .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
+
+        .evtPass input[type="radio"] {height:22px; width:22px; vertical-align:middle}
+        .evtPass input[type="checkbox"] {height:20px; width:20px; vertical-align:middle}
+        .evtPass input:checked + label {border-bottom:1px dashed #533fd1; color:#533fd1}
+
+        .evtPass .totalPrice {width:860px; margin:30px auto 0;}
+        .evtPass .totalPrice a {display:block;width:90%;height:100px;line-height:80px;margin:20px auto 0;background:#000;color:#fff;border-radius:50px;padding:10px 0;font-size:40px;font-weight:bold;text-align:center;}
+        .evtPass .totalPrice a:hover {background:#533fd1}
+
+        .evtPass .check {width:800px; margin:0 auto; padding:20px; font-size:16px; color:#000; letter-spacing:-1px;}
+        .evtPass .check a {display:inline-block; padding:10px; color:#fff; background:#000; margin-left:40px; border-radius:20px; font-size:12px}
+        .evtPass .check p {font-size:14px; padding:10px 0 0 20px; line-height:1.4}
+        .evtPass .check input:checked + label {border-bottom:1px dashed #533fd1; color:#533fd1}
 
         .evt02 {background:#6569FE;}
         .youtube {position:absolute; top:451px; left:50%;z-index:1;margin-left:-349px}
@@ -82,25 +86,30 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2772_tops.jpg" alt="지금 신청해야 최저가" />
         </div>
 
-        <div class="evtCtnsBox evt01" id="event01" data-aos="fade-up">
-            <div class="passLecBuy">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2772_01.jpg" alt="신청하기" />
-                <div class="price price01">                 
-                    <input type="radio" id="y_pkg1" name="y_pkg" value="{{ (ENVIRONMENT == 'production' || ENVIRONMENT == "testing" ? '186166' : '159718') }}" data-sale-price="970000"/> <label for="y_pkg1">윌비스 경찰간부 L-PASS</label>
+        <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">         
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2772_01.jpg" alt="윌비스 경찰 PASS">
+                <div class="passLecBuy NSK-Black"> 
+                    <div>                                       
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="201174"/>                
+                        <label for="y_pkg1">23년 2차 PASS 신청하기</label>
+                    </div>                             
                 </div>
             </div>
-            <div class="check">
+
+            <div class="check" data-aos="fade-up">
                 <input type="checkbox" id="is_chk1" name="is_chk" value="Y"/>
-                <label for="is_chk1">페이지 하단 윌비스 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                <label for="is_chk1">페이지 하단 윌비스 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
                 <a href="#info">이용안내확인하기 ↓</a>
                 <p>
                     ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>
                     ※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.
                 </p>
-            </div>
-            <div class="totalPrice NSK-Black">
-                <a href="javascript:void(0);" onclick="goCartNDirectPay('event01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">경찰간부 L-PASS 신청하기 ></a>
-            </div>
+            </div>    
+
+            <div class="totalPrice NSK-Black" data-aos="fade-up">
+                <a href="javascript:void(0);" onclick="termsCheck('is_chk1', 'pass');">경찰간부 L-PASS 신청하기 ></a>
+            </div>  
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">
@@ -266,6 +275,16 @@
             @else
                 alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
             @endif
+        }
+
+        /*약관동의*/
+        function termsCheck(terms_id,ele_id){
+            if($("#" + terms_id).is(":checked") === false){
+                $("#" + terms_id).focus();
+                alert('이용안내에 동의하셔야 합니다.');
+                return;
+            }
+            goCartNDirectPay(ele_id, 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');
         }
     </script>
 

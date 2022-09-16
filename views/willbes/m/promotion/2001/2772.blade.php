@@ -101,7 +101,8 @@
         <div class="NSK-Black">            
             <a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">경찰간부 L-PASS 신청하기 ></a>
         </div>       
-    </div>        
+    </div>
+    
     <div class="evtCtnsBox evt02" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/09/2772m_02.jpg" alt="곧 공개" >
         {{--

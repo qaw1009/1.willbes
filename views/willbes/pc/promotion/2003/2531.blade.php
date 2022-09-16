@@ -22,7 +22,7 @@
         .sky {position:fixed;top:100px;right:10px ;width:131px; text-align:center; z-index:111;}    
         .sky a {display: block; margin-bottom:10px}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/02/2531_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/09/2531_top_bg.jpg) no-repeat center top;}
 
         .wb_03 {background:#222}
         .check {color:#fff; font-size:15px;font-weight:bold;position:absolute; left:50%; top:950px; margin-left:-345px;}
@@ -51,20 +51,19 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">         
-            <a href="#lecbuy01"><img src="https://static.willbes.net/public/images/promotion/2022/02/2531_sky01.jpg" alt="조경직 티패스" /></a>    
-            <a href="#lecbuy03"><img src="https://static.willbes.net/public/images/promotion/2022/02/2531_sky02.jpg" alt="조경직 패키지" /></a> 
+            <a href="#lecbuy01"><img src="https://static.willbes.net/public/images/promotion/2022/02/2531_sky01.jpg" alt="조경직 티패스" /></a>
             <a href="#lecbuy02"><img src="https://static.willbes.net/public/images/promotion/2022/02/2531_sky03.jpg" alt="조경직 단과" /></a>        
         </div>
 
         <div class="evtCtnsBox wb_top" data-aos="fade-down">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/02/2531_top.jpg" alt="조경직 이윤주"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2531_top.jpg" alt="조경직 이윤주"/>
                 <a href="#lecbuy01" title="지금 바로 신청하기" style="position: absolute;left: 24.73%;top: 85.86%;width: 50.7%;height: 5.93%;z-index: 2;"></a>
             </div>
         </div>
 
         <div class="evtCtnsBox wb_01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/2531_01.jpg" alt="적극적인 채용"/>           
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2531_01.jpg" alt="적극적인 채용"/>           
         </div>
 
         <div class="evtCtnsBox wb_02" data-aos="fade-up">
@@ -157,8 +156,8 @@
     <!-- End Container -->
 
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
       $( document ).ready( function() {
         AOS.init();

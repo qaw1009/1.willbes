@@ -87,7 +87,7 @@
         </div>
 
         <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">         
-            <div class="wrap">
+            <div class="wrap" id="event01">
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2772_01.jpg" alt="윌비스 경찰 PASS">
                 <div class="passLecBuy NSK-Black"> 
                     <div>                                       

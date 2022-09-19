@@ -15,6 +15,7 @@
     </div> 
 
     <div class="cardWrap">
+        {{--임용--}}
         <ul class="cardBox">
             <li><span>합격을 부르는 윌비스 임용</span></li>
             <li>
@@ -33,6 +34,27 @@
             <li>윌비스임용고시학원은 교육청의 수강료 반환기준을 준수합니다.</li>
             <li>수강 등록 후, 학원의 제반 규정을 준수해야 합니다. </li>
             <li>학원 관계자의 요구시 본 수강증을 제시하셔야 합니다. (미 지참시 강의실 입실 불가)</li>
+        </ul>
+        
+        <br>
+        <br>
+        <br>
+        <br>
+
+        {{--경찰--}}
+        <ul class="cardBox">
+            <li><span>경찰이 된다! 윌비스 경찰</span></li>
+            <li>
+                <div>[문/김]6개월 PASS</div>
+                <div>04/04 ~ 08/20</div>
+                <div>한주연 <span>(lilstar)</span></div>
+            </li>
+            <li class="tx-right">
+                1,249,500원 (카드)<br>
+                20220331121524137442<br>
+                2022-03-31 12:18<br>
+            </li>
+            <li><img src="https://static.willbes.net/public/images/promotion/m/ssam_card_logo.jpg"></li>
         </ul>
     </div> 
 

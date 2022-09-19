@@ -129,11 +129,11 @@ class Home extends \app\controllers\FrontController
             $data['new_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'New');
             $data['arr_main_banner'] = array_merge($this->_banner($s_cate_code), $this->_banner('0'));
             $data['lecture_update_info'] = $this->_getlectureUpdateInfo(10, $s_cate_code);
-            $data['new_product_book'] = $this->_getlistSalesProductBook(20, $s_cate_code, ['wPublDate' => 'desc']);
+            $data['new_product_book'] = $this->_getlistSalesProductBook(20, $s_cate_code, [], ['wPublDate' => 'desc']);
         } else {
             $data['arr_main_banner'] = $this->_bannerByDispName(['M_메인_경찰캐스트_1', 'M_메인_경찰캐스트_2', 'M_메인_경찰캐스트_3', 'M_메인_베스트강좌'], '0');
             $data['board_lecture_infomation'] = $this->_boardLectureInformation(5, $s_cate_code);
-            $data['new_product_book'] = $this->_getlistSalesProductBook(15, $s_cate_code, ['wPublDate' => 'desc']);
+            $data['new_product_book'] = $this->_getlistSalesProductBook(15, $s_cate_code, [], ['wPublDate' => 'desc']);
         }
 
         $data['notice'] = $this->_boardNotice(4, $s_cate_code);
@@ -536,7 +536,7 @@ class Home extends \app\controllers\FrontController
 
         $data = [];
         if(APP_DEVICE == 'pc'){
-            $data['new_product'] = $this->_getlistSalesProductBook(5, $s_cate_code);
+            $data['new_product'] = $this->_getlistSalesProductBook(10, $s_cate_code, ['IsBest' => 'Y']);
             $data['prof_hot_clip'] = $this->_getlistProfHotClip();
         }else{
             $data['new_product'] = $this->_product('on_lecture', 16, $s_cate_code, 'New');
@@ -981,7 +981,7 @@ class Home extends \app\controllers\FrontController
      * @param string[] $order_by [ProdCode:등록순, wPublDate:교재 출판일순]
      * @return array|int
      */
-    private function _getlistSalesProductBook($limit_cnt = 5, $cate_code = '', $order_by = ['P.ProdCode' => 'desc'])
+    private function _getlistSalesProductBook($limit_cnt = 5, $cate_code = '', $add_condition = [], $order_by = ['P.ProdCode' => 'desc'])
     {
         $arr_condition = [
             'EQ' => [
@@ -994,6 +994,7 @@ class Home extends \app\controllers\FrontController
                 'DispTypeCcd' => ['619001', '619003']
             ],
         ];
+        $arr_condition['EQ'] = array_merge($arr_condition['EQ'], $add_condition);
 
         /*$data = $this->bookFModel->listBookStoreProduct(false, $arr_condition, $limit_cnt, 0, $order_by);
         foreach ($data as $key => $row){

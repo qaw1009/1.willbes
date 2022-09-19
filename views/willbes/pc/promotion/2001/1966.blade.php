@@ -63,7 +63,7 @@
         </div>     
 
         <div class="skybanner">
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1786" target="_blank"> 
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2741" target="_blank"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1966_sky.png" alt="" >
             </a>             
         </div>   

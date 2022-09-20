@@ -4,10 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config = [
     'mode' => 'real',
     'test' => [
-        'mid' => 'tvivarepublica',
-        'client_key' => 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq',
-        'secret_key' => 'test_sk_zXLkKEypNArWmo50nX3lmeaxYG5R',
-        'mert_key' => '9fd0de8489b4dc4af0dc40459958cd70',
+        'mid' => 'hanlimgosi',
+        'client_key' => 'test_ck_4vZnjEJeQVxOvvJQOWP3PmOoBN0k',
+        'secret_key' => 'test_sk_7DLJOpm5QrlaooLK1Eo8PNdxbWnY',
+        'mert_key' => 'cd944b4d359a2030179fdf6ce74b34cf',
         'success_method' => 'returns',
         'fail_method' => 'returns',
         'close_method' => 'close',

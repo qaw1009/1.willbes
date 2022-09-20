@@ -145,6 +145,7 @@ class DeliveryInfoModel extends BaseOrderModel
             $sess_admin_idx = $this->session->userdata('admin_idx');
             $delivery_status_ccd = $this->_delivery_status_ccd[$delivery_status];   // 배송상태공통코드
             $sms_send_invoice_no = [];   // 발송완료 SMS를 발송한 운송장번호 배열
+            $escrow_send_data = [];     // 에스크로 배송등록 데이터
 
             if ($delivery_status == 'complete') {
                 $column_prefix = 'DeliverySend';
@@ -197,6 +198,33 @@ class DeliveryInfoModel extends BaseOrderModel
                             $delivery_address = ( empty($order_prod_row['Addr1']) === false ? $order_prod_row['Addr1'] : '' ) . ' ' . ( empty($order_prod_row['Addr2']) === false ? $order_prod_row['Addr2'] : '' );
                             $this->_sendDeliverySendSms($order_prod_row['ReceiverPhone'], $order_prod_row['DeliveryCompCcdName'], $order_prod_row['InvoiceNo'], $order_prod_row['ReprProdName'], $delivery_address, date('Y-m-d H:i:s'));
                             $sms_send_invoice_no[] = $order_prod_row['InvoiceNo'];
+                        }
+
+                        // 에스크로 배송등록 데이터 설정
+                        if ($order_prod_row['IsEscrow'] == 'Y' && $order_prod_row['PgCcd'] == $this->_pg_ccd['toss']) {
+                            if (array_key_exists($order_prod_row['OrderIdx'], element($order_prod_row['PgCcd'], $escrow_send_data, [])) === false) {
+                                $escrow_send_data[$order_prod_row['PgCcd']][$order_prod_row['OrderIdx']] = [
+                                    'order_no' => $order_prod_row['OrderNo'],
+                                    'mid' => $order_prod_row['PgMid'],
+                                    'delivery_comp_ccd' => $order_prod_row['DeliveryCompCcd'],
+                                    'invoice_no' => $order_prod_row['InvoiceNo'],
+                                    'delivery_send_datm' => date('Y-m-d H:i:s')
+                                ];
+                            }
+                        }
+                    }
+                }
+            }
+
+            // 에스크로 배송등록 PG 연동
+            if (empty($escrow_send_data) === false) {
+                foreach ($this->_pg_ccd as $pg_driver => $pg_ccd) {
+                    if (empty($escrow_send_data[$pg_ccd]) === false) {
+                        $this->load->driver('pg', ['driver' => $pg_driver]);
+
+                        $escrow_send_result = $this->pg->escrowDeliveryRegist($escrow_send_data[$pg_ccd]);
+                        if ($escrow_send_result === false) {
+                            throw new \Exception('에스크로 배송등록 연동 중 오류가 발생했습니다.');
                         }
                     }
                 }

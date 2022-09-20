@@ -668,6 +668,8 @@ class Pg_toss extends CI_Driver
                     'hashdata' => $hashdata
                 ];
 
+                $this->_parent->saveFileLog('에스크로 배송등록 연동 파라미터[' . $idx . ']', $api_params, 'debug', $log_type);
+
                 $this->_CI->curl->setHeader('Content-Type', 'application/x-www-form-urlencoded');
                 $this->_CI->curl->setOpt(CURLOPT_RETURNTRANSFER, true);
                 $this->_CI->curl->setOpt(CURLOPT_TIMEOUT, 10);

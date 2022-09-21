@@ -435,6 +435,8 @@
             @include('willbes.m.site.main_partial.app_player')
         </div>
     </div>
+    {!! popup('657008', $__cfg['SiteCode']) !!}
+
     <script src="/public/vendor/jquery/swiper/swiper.min.js"></script>
     <script>
         //swiper 메인 슬라이드

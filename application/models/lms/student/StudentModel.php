@@ -201,6 +201,7 @@ class StudentModel extends WB_Model
     public function getStudentExcelList($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $isdan = false)
     {
         $in_column = " P.ProdName, M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
+            ,MI.SmsRcvStatus, MI.MailRcvStatus, if(M.IsStatus = 'Y', '정상회원', '탈퇴회원') as MemStatus
             ,OP.SalePatternCcd, OPa.CcdName as SalePatternCcd_Name, OP.RealPayPrice as Price
             ,O.OrderIdx, O.payRouteCcd, Oa.CcdName as PayRouteCcd_Name, O.PayMethodCcd, Ob.CcdName as PayMethodCcd_Name
             ,O.CompleteDatm as PayDate, A.wAdminName as AdminName, OP.OrderProdIdx, OP.ProdCode
@@ -327,6 +328,7 @@ class StudentModel extends WB_Model
     {
 
         $in_column = "  M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
+            ,MI.SmsRcvStatus, MI.MailRcvStatus, if(M.IsStatus = 'Y', '정상회원', '탈퇴회원') as MemStatus
             ,OP.SalePatternCcd, OPa.CcdName as SalePatternCcd_Name, OP.RealPayPrice as Price
             ,O.OrderIdx, O.payRouteCcd, Oa.CcdName as PayRouteCcd_Name, O.PayMethodCcd, Ob.CcdName as PayMethodCcd_Name
             ,O.CompleteDatm as PayDate, A.wAdminName as AdminName, OP.OrderProdIdx, OP.ProdCode,

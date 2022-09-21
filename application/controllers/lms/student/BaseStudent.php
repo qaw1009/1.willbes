@@ -114,7 +114,6 @@ class BaseStudent extends \app\controllers\BaseController
                 'B.SchoolStartMonth' =>$this->_reqP('search_schoolstartmonth'),
                 'B.IsLecOpen' =>$this->_reqP('search_islecopen'),
                 'B.AcceptStatusCcd' =>$this->_reqP('search_acceptccd'),
-                'A.IsUse' =>$this->_reqP('search_is_use'),
                 'B.CampusCcd' => $this->_reqP('search_campus_code')
             ],
             'LKR' => [
@@ -449,39 +448,40 @@ class BaseStudent extends \app\controllers\BaseController
         if( $this->LearnPattern == 'freelecture' ||
             $this->LearnPattern == 'periodpkg' ) {
             $headers = ['회원번호', '회원명', '아이디', '상품구분', '주문번호', '결제루트', '결제수단', '결제금액',
-                '결제자', '결제일', '종료일', '휴대폰', '이메일'];
+                '결제자', '결제일', '종료일', '휴대폰', '이메일', 'SMS수신동의', '이메일수신동의', '상태'];
             $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
-            ,ifnull(AdminName, MemName) AS AdminName, PayDate, EndDate, Phone, Mail';
+            ,ifnull(AdminName, MemName) AS AdminName, PayDate, EndDate, Phone, Mail, SmsRcvStatus, MailRcvStatus, MemStatus';
 
         } else if($this->LearnPattern == 'lecture' ) {
             $headers = ['회원번호', '회원명', '아이디', '상품구분', '종합반여부', '주문번호', '결제루트', '결제수단', '결제금액',
-                '결제자', '결제일', '종료일', '휴대폰', '이메일'];
+                '결제자', '결제일', '종료일', '휴대폰', '이메일', 'SMS수신동의', '이메일수신동의', '상태'];
             $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, IsPkg, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
-            ,ifnull(AdminName, MemName) AS AdminName, PayDate, EndDate, Phone, Mail';
+            ,ifnull(AdminName, MemName) AS AdminName, PayDate, EndDate, Phone, Mail, SmsRcvStatus, MailRcvStatus, MemStatus';
 
         } else if($this->LearnPattern == 'adminpkg'){
             $headers = ['회원번호', '회원명', '아이디', '상품구분', '선택강좌', '주문번호', '결제루트', '결제수단', '결제금액',
-                '결제자', '결제일', '종료일', '휴대폰', '이메일'];
+                '결제자', '결제일', '종료일', '휴대폰', '이메일', 'SMS수신동의', '이메일수신동의', '상태'];
             $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderSubProdData, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
-            ,ifnull(AdminName, MemName) AS AdminName, PayDate, EndDate, Phone, Mail';
+            ,ifnull(AdminName, MemName) AS AdminName, PayDate, EndDate, Phone, Mail, SmsRcvStatus, MailRcvStatus, MemStatus';
 
         } else if($this->LearnPattern == 'userpkg'){
             $headers = ['회원번호', '회원명', '아이디', '상품구분', '선택강좌', '주문번호', '결제루트', '결제수단', '결제금액',
-                '결제자', '결제일', '휴대폰', '이메일'];
+                '결제자', '결제일', '휴대폰', '이메일', 'SMS수신동의', '이메일수신동의', '상태'];
             $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderSubProdData, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
-            ,ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail';
+            ,ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail, SmsRcvStatus, MailRcvStatus, MemStatus';
 
         } else if($this->LearnPattern == 'offpkg'){
             $headers = ['회원번호', '회원명', '아이디', '상품구분', '선택강좌', '주문번호', '주문상태', '수강증번호', '결제루트', '결제수단', '결제금액',
-                '결제자', '결제일', '환불태일', '휴대폰', '이메일', '할인사유', '주문메모', '주소'];
+                '결제자', '결제일', '환불일', '휴대폰', '이메일', '할인사유', '주문메모', '주소', 'SMS수신동의', '이메일수신동의', '상태'];
             $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderSubProdData, OrderIdx, PayStatusName, CertNo, PayRouteCcd_Name, PayMethodCcd_Name, Price
-            ,ifnull(AdminName, MemName) AS AdminName, PayDate, RefundDatm, Phone, Mail, DiscReason, OrderMemo, CONCAT( \'(\', ZipCode, \') \', Addr1, \' \', Addr2) AS Addr';
+            ,ifnull(AdminName, MemName) AS AdminName, PayDate, RefundDatm, Phone, Mail, DiscReason, OrderMemo, CONCAT( \'(\', ZipCode, \') \', Addr1, \' \', Addr2) AS Addr
+            ,SmsRcvStatus, MailRcvStatus, MemStatus';
 
         } else {
             $headers = [ '회원번호', '회원명', '아이디', '상품구분', '주문번호', '결제루트', '결제수단', '결제금액',
-                '결제자', '결제일', '휴대폰', '이메일'];
+                '결제자', '결제일', '휴대폰', '이메일', 'SMS수신동의', '이메일수신동의', '상태'];
             $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
-            ,ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail';
+            ,ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail, SmsRcvStatus, MailRcvStatus, MemStatus';
         }
 
         $ProdCode_arr = $this->studentModel->getProdCode($ProdCode);// 해당 단과가 속한 종합반 코드

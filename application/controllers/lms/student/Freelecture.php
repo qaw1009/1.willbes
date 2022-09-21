@@ -15,8 +15,8 @@ class Freelecture extends BaseStudent
      */
     public function excel()
     {
-        $headers = [ '회원번호', '회원명', '아이디', '주문번호', '결제일', '휴대폰', '이메일'];
-        $column = 'MemIdx, MemName, MemId, OrderIdx, PayDate, Phone, Mail';
+        $headers = [ '회원번호', '회원명', '아이디', '주문번호', '결제일', '휴대폰', '이메일', 'SMS수신동의', '이메일수신동의', '상태'];
+        $column = 'MemIdx, MemName, MemId, OrderIdx, PayDate, Phone, Mail, SmsRcvStatus, MailRcvStatus, MemStatus';
 
         $lec = $this->studentModel->getListLecture(false, ['EQ' => [ 'A.ProdCode' => $this->_reqP('ProdCode')]]);
         $lec = $lec[0];

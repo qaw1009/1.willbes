@@ -22,8 +22,6 @@
         .sky {position:fixed; top:200px; right:10px; z-index:10;}
         .sky a {display:block; margin-bottom:10px}
 
-        .evt00 {background:#0a0a0a}
-
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/01/2515_top_bg.jpg) no-repeat center top;}
 
         .evt_01 {background:#fff6ed;}
@@ -37,10 +35,6 @@
         <div class="sky" id="QuickMenu">
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2467" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/01/2515_sky2.png" alt="즉시 할인"/></a>
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2516" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/01/2515_sky1.png" alt="기프티콘 받자"/></a>                      
-        </div>
-
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>
 
         <div class="evtCtnsBox evt_top" data-aos="fade-up">

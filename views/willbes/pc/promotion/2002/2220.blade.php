@@ -29,9 +29,7 @@
         .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:70px}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
-        .evt_wrap {width:1120px; margin:0 auto; position: relative;}
-
-        .evtTop00 {background:#0a0a0a}
+        .evt_wrap {width:1120px; margin:0 auto; position: relative;}    
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/05/2220_top_bg.jpg) repeat-y center top;}  
 
@@ -141,10 +139,6 @@
                     </li>
                 </ul>
             </div>
-        </div>                   
-        
-        <div class="evtCtnsBox evtTop00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_first.jpg" title="대한민국 경찰학원 1위">        
         </div>
 
         <div class="evtCtnsBox evtTop">

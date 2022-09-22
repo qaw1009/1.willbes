@@ -16,9 +16,7 @@
 
         /************************************************************/        
         .sky {position:fixed;top:150px;right:10px;z-index:1;} 
-        .sky a {display:block; margin-bottom:10px}
-
-        .evtTop00 {background:#0a0a0a}
+        .sky a {display:block; margin-bottom:10px}    
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/04/2177_top_bg.jpg) repeat-y center top;}     
 
@@ -122,11 +120,7 @@
                     </li>
                 </ul>
             </div>
-        </div>                   
-        
-        <div class="evtCtnsBox evtTop00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_first.jpg" title="대한민국 경찰학원 1위">        
-        </div>
+        </div>       
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2177_top.jpg" title="문제풀이 풀패키지">                    

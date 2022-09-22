@@ -16,9 +16,7 @@
 
         /************************************************************/
         .sky {position:fixed; top:225px; right:0; z-index:10;}
-        .sky a {display:block; margin-bottom:5px}
-       
-        .evt00 {background:#0a0a0a}
+        .sky a {display:block; margin-bottom:5px}     
 
         /*타이머*/
         .time {width:100%; text-align:center; background:#f5f5f5;}
@@ -56,11 +54,7 @@
         
         <div class="sky">               
             <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2021/08/2342_sky.png" title="올공반 1기 모집"></a>
-        </div>
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>
+        </div>     
 
         <div class="evtCtnsBox time NSK-Black" id="newTopDday">
             <div>

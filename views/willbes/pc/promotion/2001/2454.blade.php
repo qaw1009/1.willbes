@@ -19,9 +19,7 @@
         /************************************************************/
 
         .sky {position:fixed;top:150px;right:10px;z-index:1;} 
-        .sky a {display:block; margin-bottom:10px}
-
-        .evtTop00 {background:#0a0a0a}
+        .sky a {display:block; margin-bottom:10px}        
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/12/2454_top_bg.jpg) no-repeat center top;}     
 
@@ -61,11 +59,7 @@
             <a href="#tip">
                 <img src="https://static.willbes.net/public/images/promotion/2021/12/2454_sky.png" alt="경찰학 학습팁" >
             </a>          
-        </div>
-
-        <div class="evtCtnsBox evtTop00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_first.jpg" title="대한민국 경찰학원 1위">
-        </div>
+        </div>        
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2454_top.jpg" title="장정훈 경찰학">                    

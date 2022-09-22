@@ -24,8 +24,7 @@
 
         .skybanner {position:fixed;top:300px;right:0; width:180px; z-index:1;}
         .skybanner a {display:block; margin-bottom:5px}
-
-        .evt00 {background:#0a0a0a}
+       
         .wb_top {background:#0e0b00 url(https://static.willbes.net/public/images/promotion/2020/08/1770_top_bg.jpg) no-repeat center top; }   
 
         .wb_cts01 {background:#fff}
@@ -59,9 +58,8 @@
         from{color:#000}
         50%{color:#424ac7}
         to{color:#000}
-        } 
+        }
 
-        
         /*탭(텍스트)*/
         .tabContaier{width:100%;background:#fff;padding-bottom:35px;}
         .tabContaier ul{width:1050px;margin:0 auto;height:70px;} 
@@ -71,7 +69,7 @@
         .tabContaier li a{display:block;}
         .tabContaier li a:hover,
         .tabContaier li a.active {color:#fff;font-size:26px;background:#e8432d}
-
+        
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
@@ -97,15 +95,13 @@
                 </table>                
             </div>
         </div>
+
         <!-- 타이머 //-->
-        <div class="skybanner" >
+
+        <div class="skybanner">
             <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2020/08/1770_sky01.jpg" alt="슈퍼패스 12개월" ></a>
             <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1773" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1770_sky02.jpg" alt="패키지" ></a>
-        </div>               
-
-		<div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>
+        </div>	
 
         <div class="evtCtnsBox wb_top" >
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1770_top.jpg" alt="슈퍼pass" />

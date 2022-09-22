@@ -18,9 +18,7 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
-    /*****************************************************************/
-
-        .evt00 {background:#0a0a0a}
+    /*****************************************************************/     
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/04/2625_top_bg.jpg) no-repeat center top;}   
 
@@ -35,11 +33,7 @@
 
     </style>
 
-    <div class="evtContent NSK" id="evtContainer">
-
-        <div class="evtCtnsBox evt00"  data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div> 
+    <div class="evtContent NSK" id="evtContainer">     
 
         <div class="evtCtnsBox evt_top"  data-aos="fade-up">  
             <div><img src="https://static.willbes.net/public/images/promotion/2022/04/2625_top.jpg" alt="경찰 합격수기 공모"></div>

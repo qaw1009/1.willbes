@@ -23,8 +23,6 @@
         .sky {position:fixed; top:200px;right:0;z-index:1;}
         .sky a {display: block; margin-bottom:10px}
 
-        .evt00 {background:#0a0a0a}
-
         .evt_tops {background:#9a9ca9}
    
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/03/2570_top_bg.jpg) no-repeat center top;}        
@@ -43,11 +41,7 @@
             <a href="#apply1"><img src="https://static.willbes.net/public/images/promotion/2022/03/2570_sky01.png" alt="단과반" ></a>
             <a href="#apply2"><img src="https://static.willbes.net/public/images/promotion/2022/03/2570_sky02.png" alt="종합반" ></a>
         </div>
-
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>
-
+      
         <div class="evtCtnsBox evt_tops" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2553_tops.jpg" title="신광은 경찰학원">
         </div>

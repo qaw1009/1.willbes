@@ -22,9 +22,7 @@
         /************************************************************/
 
         .sky {position:fixed; top:225px;right:25px;z-index:10;}
-        .sky li{padding-bottom:10px;}
-
-        .evtTop00 {background:#0a0a0a}
+        .sky li{padding-bottom:10px;}       
 
         .evtTop {background: url(https://static.willbes.net/public/images/promotion/2021/02/2077_top_bg.jpg) no-repeat center top;}
 
@@ -51,11 +49,7 @@
                     <img src="https://static.willbes.net/public/images/promotion/2021/02/2077_sky.png" alt="심화과정 바로가기" >
                 </a>
             </li>            
-        </ul>       
-        
-        <div class="evtCtnsBox evtTop00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg" title="대한민국 경찰학원 1위">        
-        </div>
+        </ul>
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2077_top.jpg" title="심화이론 이론.기출 패키지">        

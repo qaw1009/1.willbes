@@ -18,9 +18,7 @@
 
         /************************************************************/
         .sky {position:fixed; width:130px; top:200px; right:10px; z-index:10;}
-        .sky a {display:block; margin-bottom:10px}
-
-        .evt00 {background:#0a0a0a}
+        .sky a {display:block; margin-bottom:10px}      
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/08/2345_top_bg.jpg) no-repeat center top;}
 
@@ -73,11 +71,7 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky">
             <a href="#evt_pass"><img src="https://static.willbes.net/public/images/promotion/2021/08/2345_sky.png" alt="파이널 패스 신청하기"/></a>
-        </div>
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>
+        </div>      
 
         <div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2021/08/2345_top.jpg"  alt="파이널 패스" />

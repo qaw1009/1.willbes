@@ -16,9 +16,7 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
 
-        /************************************************************/
-
-        .evt00 {background:#0a0a0a}
+        /************************************************************/     
 
         .sky {position:fixed; top:225px;right:10px; width:120px; z-index:2;}
         .sky a{display:block; margin-bottom:15px}
@@ -39,11 +37,7 @@
         {!! method_field('POST') !!}
     </form>
 
-    <div class="evtContent NSK" id="evtContainer">
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>   
+    <div class="evtContent NSK" id="evtContainer">        
 
         <div class="sky">
             <a href="#evt_01"> 

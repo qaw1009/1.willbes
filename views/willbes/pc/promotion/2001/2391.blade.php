@@ -17,10 +17,8 @@
         /************************************************************/
 
         .sky {position:fixed;top:200px;right:10px; width:120px; z-index:1;}
-        .sky a {display:block; margin-bottom:10px}
+        .sky a {display:block; margin-bottom:10px}       
         
-        .evt00 {background:#0a0a0a}
-
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/10/2391_top_bg.jpg) no-repeat center top;}
 
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/10/2391_01_bg.jpg) no-repeat center top;} 
@@ -40,11 +38,7 @@
             <a href="#event04">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2391_sky02.jpg" alt="추천강좌">
             </a>  
-        </div>
-            
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div> 
+        </div>     
         
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2391_top.jpg" title="경찰 11월 추천강좌"><br>      

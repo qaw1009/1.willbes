@@ -20,8 +20,8 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .skyBanner {position:fixed; top:200px;right:10px;z-index:10;}
-        .evtTop00 {background:#0a0a0a}
+
+        .skyBanner {position:fixed; top:200px;right:10px;z-index:10;}        
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/12/1969_top_bg.jpg) repeat-y center top;}     
 
@@ -119,11 +119,7 @@
                     </li>
                 </ul>
             </div>
-        </div>                   
-        
-        <div class="evtCtnsBox evtTop00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_first.jpg" title="대한민국 경찰학원 1위">        
-        </div>
+        </div>    
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1969_top.jpg" title="문제풀이 풀패키지">                    

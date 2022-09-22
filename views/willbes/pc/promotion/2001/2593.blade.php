@@ -19,9 +19,7 @@
         /************************************************************/
 
         .sky {position:fixed;top:200px;right:10px;z-index:100;}
-        .sky a {display:block; margin-bottom:10px}
-
-        .evt00 {background:#0a0a0a}
+        .sky a {display:block; margin-bottom:10px}     
 
         .evtTops {background:#1d2329}
 
@@ -49,11 +47,7 @@
             <a href="https://www.youtube.com/channel/UCz_3g63yWTYjg6_Ko5QRK1g" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/2593_sky03.png" alt="신광은 형사법 티비">
             </a>  
-        </div>
-
-        <div class="evtCtnsBox evt00"  data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>
+        </div>        
 
         <div class="evtCtnsBox evtTops" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2593_tops.jpg"  alt="신광은 경찰학원"/>

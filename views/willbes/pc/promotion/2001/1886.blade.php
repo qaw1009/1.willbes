@@ -23,9 +23,7 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed; top:225px;right:10px;z-index:10;}
-
-        .evt00 {background:#0a0a0a}
+        .skybanner {position:fixed; top:225px;right:10px;z-index:10;}   
 
         .evt_top {background:#151515 url(https://static.willbes.net/public/images/promotion/2020/10/1886_top_bg.jpg) no-repeat center}
         
@@ -40,15 +38,12 @@
     </form>
 
     <div class="evtContent NSK" id="evtContainer">
+
         <div class="skybanner">
             <a href="#signature"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1886_sky.png" alt="" >
             </a>             
-        </div>   
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>   
+        </div>       
 
         <div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1886_top.jpg" usemap="#Map1886_top" title="" border="0" />

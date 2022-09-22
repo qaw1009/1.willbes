@@ -18,9 +18,7 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
-        /************************************************************/
-
-        .evt00 {background:#0a0a0a}
+        /************************************************************/       
 
         .sky {position:fixed; top:225px;right:10px; width:120px; z-index:2;}
         .sky a{display:block; margin-bottom:10px}
@@ -97,11 +95,7 @@
             <a href="#evt_01"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2236_sky.jpg" alt="go 헌법 시작부터 제대로!" >
             </a>  
-        </div>
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg" alt="경찰학원부분 1위"/>
-        </div>     
+        </div>          
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2236_top.jpg" alt="이국령 형법"/>

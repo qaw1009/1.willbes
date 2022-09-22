@@ -17,9 +17,8 @@
 
         /************************************************************/
         .skyBanner {position:fixed; top:200px;right:0;z-index:10;}
-        .skyBanner ul li{padding-bottom:10px;}
-       
-        .top_police{background:#0a0a0a}
+        .skyBanner ul li{padding-bottom:10px;}      
+        
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/06/1670_top_bg.jpg) no-repeat center top;}
         .top_youtube {background:#e0e0e0;position:relative;}
         .youtubeGod{position:absolute;top:290px;left:50%;margin-left:-351px;}
@@ -69,11 +68,7 @@
                     </li>
                 </ul>               
             </div>
-            --}}
-
-            <div class="evtCtnsBox top_police">
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-            </div>
+            --}}            
 
             <div class="evtCtnsBox evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1670_top.jpg" title="신광은 형사법 무료특강">

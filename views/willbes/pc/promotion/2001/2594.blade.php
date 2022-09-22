@@ -20,9 +20,7 @@
 
         .sky {position:fixed;top:200px;right:10px;z-index:100;}
         .sky a {display:block; margin-bottom:10px}
-
-        .evt00 {background:#0a0a0a}
-
+        
         .evtTops {background:#1d2329}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/04/2594_top_bg.jpg) no-repeat center top;position:relative;}
@@ -52,11 +50,7 @@
             <a href="https://www.youtube.com/channel/UCMVc2RbvQeJ_574VzzpPzpg" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2022/04/2594_sky03.png" alt="김원욱 헌법 tv">
             </a>  
-        </div>
-
-        <div class="evtCtnsBox evt00"  data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>
+        </div>      
 
         <div class="evtCtnsBox evtTops" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2594_tops.jpg"  alt="신광은 경찰학원"/>

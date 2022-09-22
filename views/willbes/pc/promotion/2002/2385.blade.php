@@ -17,12 +17,10 @@
         /************************************************************/
 
         .sky {position:fixed;  top:200px; right:10px; z-index:10;}
-        .sky a {display:block; margin-bottom:15px}
-        
-        .evt00 {background:#0a0a0a}  
+        .sky a {display:block; margin-bottom:15px}        
 
-         /*타이머*/
-         .time {width:100%; text-align:center; background:#ebebeb}
+        /*타이머*/
+        .time {width:100%; text-align:center; background:#ebebeb}
         .time {text-align:center; padding:20px 0}
         .time table {width:1120px; margin:0 auto}
         .time table td {line-height:1.2}        
@@ -73,11 +71,7 @@
         <div class="sky" id="QuickMenu">
             <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/10/2385_sky01.png" alt="심화기출 패키지" ></a>
             <a href="#evt_02"><img src="https://static.willbes.net/public/images/promotion/2021/10/2385_sky02.png" alt="서전접수 재등록" ></a>
-        </div>     
-            
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>
+        </div>    
 
         <!-- 타이머 -->
         <div class="evtCtnsBox time NGEB" id="newTopDday">

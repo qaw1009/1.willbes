@@ -151,7 +151,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2767_03.jpg" alt="손해평가사 학원 수강신청" />			  
                 <a href="https://job.willbes.net/pass/offLecture/index?cate_code=3184&course_idx=1257" target="_blank" title="1차 대비 종합반" style="position: absolute; left: 63.39%; top: 26.21%; width: 21.61%; height: 18.93%;; z-index: 2;"></a>
                 <a href="https://job.willbes.net/pass/offLecture/index?cate_code=3184&course_idx=1388" target="_blank" title="2차 대비 종합반" style="position: absolute; left: 63.39%; top: 47.83%; width: 21.61%; height: 18.93%;z-index: 2;"></a>
-                <a href=" https://job.willbes.net/pass/offPackage/index?cate_code=3184&campus_ccd=605013&course_idx=1466" target="_blank" title="1차 + 2차 대비 종합반" style="position: absolute; left: 63.39%; top: 69.95%; width: 21.61%; height: 18.93%; z-index: 2;"></a>
+                <a href="https://job.willbes.net/pass/offPackage/index?cate_code=3184&campus_ccd=605013&course_idx=1466" target="_blank" title="1차 + 2차 대비 종합반" style="position: absolute; left: 63.39%; top: 69.95%; width: 21.61%; height: 18.93%; z-index: 2;"></a>
             </div> 
             <div class="wrap" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2767_04.jpg" alt="손해평가사 동영상 수강신청" />			  

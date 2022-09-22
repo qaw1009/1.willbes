@@ -43,9 +43,7 @@
         } 
 
         .sky li{position:fixed; top:200px;right:15px;z-index:10;}
-
-        .evtTop00 {background:#0a0a0a;}
-
+        
         .evtTop {background:#281276 url(https://static.willbes.net/public/images/promotion/2020/08/1773_top_bg.jpg) no-repeat center top;}
 
         .evt01 {background:#8D85FF;}
@@ -155,11 +153,7 @@
                 </a>
             </li>
             --}}               
-        </ul>       
-        
-        <div class="evtCtnsBox evtTop00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg" title="대한민국 경찰학원 1위">        
-        </div>
+        </ul>   
         
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1773_top.jpg" title="심화 이론.기출 패키지">        

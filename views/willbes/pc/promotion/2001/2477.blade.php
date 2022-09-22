@@ -22,9 +22,7 @@
 
         .skyBanner {position:fixed; top:200px; right:10px; z-index:10;}
         .skyBanner a {display:block; margin-bottom:10px}
-
-        .evt00 {background:#0a0a0a}
-
+        
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/03/2477_top_bg.jpg) no-repeat center top;}
 
         .evt_01 {background:#ececec;}
@@ -46,13 +44,10 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
+
         <div class="skyBanner" id="QuickMenu">
             <a href="#evt07"><img src="https://static.willbes.net/public/images/promotion/2021/12/2477_sky01.jpg" alt="이벤트"/></a>        
-        </div>
-        
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>    
+        </div>     
 
         <div class="evtCtnsBox evt_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2477_top.jpg"  alt="하승민 경찰 지텔프 맞춤형 강의" />

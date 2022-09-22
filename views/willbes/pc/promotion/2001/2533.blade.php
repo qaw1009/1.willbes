@@ -31,9 +31,7 @@
         .newTopDday ul li img {width:50px}
         .newTopDday ul li:first-child {line-height:none; text-align:right; padding-right:10px; padding-top:10px; width:28%;text-align:center;}
         .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:70px}
-        .newTopDday ul:after {content:""; display:block; clear:both}
-
-        .evt00 {background:#0a0a0a}
+        .newTopDday ul:after {content:""; display:block; clear:both}        
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/02/2533_top_bg.jpg) no-repeat center top;}
 
@@ -112,10 +110,6 @@
                     </li>
                 </ul>
             </div>
-        </div>  
-
-        <div class="evtCtnsBox evt00" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>
 
         <div class="evtCtnsBox evt_top" data-aos="fade-up">

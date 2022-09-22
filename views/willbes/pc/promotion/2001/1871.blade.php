@@ -19,8 +19,7 @@
 
         .sky {position:fixed; width:160px; top:200px;right:10px;z-index:1;}
         .sky a {display:block; margin-bottom:10px}
-
-        .evt00 {background:#0a0a0a}
+                      
         /*타이머*/
         .time {width:100%; text-align:center; background:#F5F5F5;}
         .time {text-align:center; padding:20px 0}
@@ -86,10 +85,6 @@
             </div>
         </div>
         <!-- 타이머 //-->
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>     
 
         <div class="evtCtnsBox wb_cts_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1871_top.jpg"  alt="한능검 패스" />

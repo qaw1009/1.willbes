@@ -22,9 +22,7 @@
         /************************************************************/
 
         .skybanner {position:fixed;top:200px; width:120px; right:10px; z-index:1;}        
-        .skybanner a {display:block;}
-
-        .evt00 {background:#0a0a0a}
+        .skybanner a {display:block;}     
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/12/2469_top_bg.jpg) no-repeat center;}  
         .evt_top span {position:absolute; top:1274px; left:50%; z-index:10;}
@@ -47,10 +45,7 @@
         .evt_03 .title span {color:#fc5777;  box-shadow:inset 0 -20px 0 rgba(252,87,119,.1)}
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer"> 
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>    
+    <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox evt_top" data-aos="fade-up">    
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2469_top.jpg" alt="새해 추천강좌"/>

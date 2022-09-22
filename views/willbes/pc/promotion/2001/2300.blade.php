@@ -18,9 +18,7 @@
         /************************************************************/
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         .evtCtnsBox .wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.5); border-radius:30px}
-
-        .evt00 {background:#0a0a0a}
-
+        
         .sky {position:fixed; top:200px;right:10px; width:120px; z-index:10;}
         .sky a {display:block; margin-bottom:10px}
 
@@ -41,11 +39,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2300_sky02.png" alt="학원강좌" >
             </a>          
         </div> 
-        --}}
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg" alt="경찰학원부분 1위"/>
-        </div>              
+        --}}                  
 
         <div class="evtCtnsBox evtTop"  data-aos="fade-left">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2300_top.jpg" alt="마무리 특강"/>

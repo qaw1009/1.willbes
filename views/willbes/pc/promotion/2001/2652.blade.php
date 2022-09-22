@@ -17,9 +17,7 @@
         /*.evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}*/
 
         /************************************************************/
-
-        .evt00 {background:#0a0a0a}
-
+        
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/05/2652_top_bg.jpg) no-repeat center top;position:relative;}
         .evtTop .ani{position:absolute;left:50%;top:250px;margin-left:-371px}
 
@@ -33,11 +31,7 @@
 
     </style>
 
-    <div class="evtContent NSK" id="evtContainer">
-
-        <div class="evtCtnsBox evt00"  data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>       
+    <div class="evtContent NSK" id="evtContainer">         
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2652_top.jpg"  alt="출간이벤트"/>

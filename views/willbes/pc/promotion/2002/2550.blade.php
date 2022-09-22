@@ -20,9 +20,7 @@
 
         .sky {position:fixed; top:200px;right:0;z-index:1;}
         .sky a {display: block; margin-bottom:10px}
-
-        .evt00 {background:#0a0a0a}
-
+        
         .wb_tops {background:#00c73c}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/02/2550_top_bg.jpg) no-repeat center top;}   
@@ -53,12 +51,8 @@
         <div class="sky" id="QuickMenu">
             <a href="#apply1"><img src="https://static.willbes.net/public/images/promotion/2022/02/2550_sky01.png" alt="슈퍼패스 사전접수" ></a>
             <a href="#apply2"><img src="https://static.willbes.net/public/images/promotion/2022/02/2550_sky02.png" alt="추가할인" ></a>
-        </div>               
-
-		<div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>
-
+        
         <div class="evtCtnsBox wb_tops" data-aos="fade-up">           
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2550_tops.jpg"  alt="신광은 경찰학원" />        
 		</div>

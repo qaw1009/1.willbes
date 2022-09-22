@@ -17,9 +17,7 @@
         /************************************************************/
 
         .skybanner {position:fixed; top:225px;right:10px;z-index:10;}
-        .skybanner a{display:block; margin-bottom:10px;}
-
-        .evt00 {background:#0a0a0a}
+        .skybanner a{display:block; margin-bottom:10px;}       
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/1786_top_bg.jpg) no-repeat center}
         
@@ -56,13 +54,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/1786_sky01.png" alt="10월 지텔프" >
             </a>         
         </div>   
-        --}}s
-
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div> 
-
+        --}}        
         <div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1786_top.jpg" title="추천강좌" />
         </div>

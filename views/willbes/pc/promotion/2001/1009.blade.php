@@ -21,9 +21,8 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:220px;right:10px;z-index:1;}
-        
-        .evt00 {background:#0a0a0a}
+        .skybanner {position:fixed;top:220px;right:10px;z-index:1;}        
+      
         .evt_top {background:#023032} 
        
         .evt01 {padding-bottom:100px; background:#fff !important}
@@ -195,11 +194,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>
+        </div>        
 
         <div class="evtCtnsBox evt_top" id="main">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_top.jpg"  alt="PASS" usemap="#Map1009A" border="0" />

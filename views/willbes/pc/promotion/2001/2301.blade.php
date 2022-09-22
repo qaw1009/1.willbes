@@ -20,9 +20,7 @@
         /************************************************************/
 
         .sky {position:fixed; top:200px;right:10px; width:120px; z-index:10;}
-        .sky a {display:block; margin-bottom:10px}
-        
-        .evt00 {background:#0a0a0a}       
+        .sky a {display:block; margin-bottom:10px}         
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/08/2301_top_bg.jpg) no-repeat center top; position:relative; height:1183px}
         .evtTop span {position:absolute; top:525px; left:50%; width:775px; margin-left:-387px}       
@@ -42,11 +40,7 @@
             <a href="#evt04"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2301_sky.jpg" alt="1+5 혜택 받기" >
             </a>       
-        </div> 
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg" alt="경찰학원부분 1위"/>
-        </div>              
+        </div>
 
         <div class="evtCtnsBox evtTop">
             <span data-aos="fade-left"><img src="https://static.willbes.net/public/images/promotion/2021/08/2301_top_img.png" alt="기초 입문서 무료 배포 이벤트"/></span>            

@@ -22,9 +22,7 @@
         /************************************************************/
 
         .sky {position:fixed; top:200px;right:0;z-index:10;}
-        .sky li{padding-bottom:25px;}
-
-        .evtTop00 {background:#0a0a0a}
+        .sky li{padding-bottom:25px;}      
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/12/1967_top_bg.jpg) repeat-y center top;}     
 
@@ -78,11 +76,7 @@
                     <img src="https://static.willbes.net/public/images/promotion/2020/12/1967_sky2.jpg" alt="실전문풀 풀패키지" >
                 </a>
             </li>                
-        </ul> 
-        
-        <div class="evtCtnsBox evtTop00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_first.jpg" title="대한민국 경찰학원 1위">        
-        </div>
+        </ul>      
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1967_top.jpg" title="문제풀이 풀패키지">                    

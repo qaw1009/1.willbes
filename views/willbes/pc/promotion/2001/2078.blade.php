@@ -14,9 +14,9 @@
             background:#fff;
         }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
-        /************************************************************/
-        .evt00 {background:#0a0a0a}
 
+        /************************************************************/
+        
         .sky {position:fixed; top:225px;right:10px;z-index:10;}
 
         .evtTop {background:url("https://static.willbes.net/public/images/promotion/2021/02/2078_top_bg.jpg") no-repeat center top;}
@@ -100,10 +100,6 @@
                 </ul>
             </div>
         </div> 
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>       
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2078_top.jpg"  alt="개편패스"/>

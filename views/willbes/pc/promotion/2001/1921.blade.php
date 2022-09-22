@@ -16,8 +16,7 @@
     /*****************************************************************/ 
     .skybanner {position:fixed; top:225px; width:170px; right:10px;z-index:1;}
     .skybanner a {display:block; margin-bottom:10px}
-
-    .evt00 {background:#0a0a0a}
+ 
     .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/11/1921_top_bg.jpg) no-repeat center top;}   
     .evt01 {background:#272a39}    
     .evt02 {background:#555; padding-bottom:150px}
@@ -30,11 +29,7 @@
         <div class="skybanner">
             <a href="#evt02"><img src="https://static.willbes.net/public/images/promotion/2020/11/1921_sky.png" alt="신광은 형법 심화이론"/></a>
             <a href="#evt03"><img src="https://static.willbes.net/public/images/promotion/2020/11/1921_sky2.png" alt="형사법 1일 1제 소문내기"/></a>
-        </div>
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div> 
+        </div>    
 
         <div class="evtCtnsBox evt_top">  
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1921_top.jpg" alt="신광은 형사법 1일 1제" usemap="#Map1921_01" border="0">

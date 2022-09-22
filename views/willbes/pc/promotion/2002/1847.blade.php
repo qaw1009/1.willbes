@@ -15,11 +15,10 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
 
         /************************************************************/
-        .skyBanner {position:fixed; width:170px; top:200px; right:10px; z-index:10;}
-        .skyBanner a {display:block; margin-bottom:5px}
-       
-        .evt00 {background:#0a0a0a}
 
+        .skyBanner {position:fixed; width:170px; top:200px; right:10px; z-index:10;}
+        .skyBanner a {display:block; margin-bottom:5px}              
+        
         /*타이머*/
         .time {width:100%; text-align:center; background:#f5f5f5;}
         .time {text-align:center; padding:20px 0}
@@ -88,11 +87,7 @@
             <div class="skyBanner">               
                 <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2021/02/1847_sky.png" title="올공반 베너"></a>
             </div>
-            --}}
-
-            <div class="evtCtnsBox evt00">
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-            </div>
+            --}}           
             
             <div class="evtCtnsBox time NSK-Black" id="newTopDday">
                 <div>

@@ -22,7 +22,7 @@
 
         .sky {position:fixed;top:200px; width:120px; right:10px;z-index:1;}        
         .sky a {display:block;margin-bottom:15px;}
-        .evt00 {background:#0a0a0a}
+      
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_bf_top_bg.jpg) no-repeat center top;}
         .wb_01 {background:url(https://static.willbes.net/public/images/promotion/2021/12/2453_01_bg.jpg) no-repeat center top;}
         .wb_02 {background:#4f3030;}
@@ -58,15 +58,12 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+    
         <div class="sky" id="QuickMenu">
             <a href="#chris"><img src="https://static.willbes.net/public/images/promotion/2021/12/2453_sky01.png" alt="크리스마스 이벤트" ></a>
             <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/12/2453_sky02.png" alt="매일 선착순" ></a>
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2416" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/12/2453_sky03.png" alt="14일 무료체험" ></a>
-        </div> 
-
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>    
+        </div>         
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">           
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2453_bf_top.jpg" alt="777"/>              

@@ -20,20 +20,16 @@
 
         /************************************************************/
 
-        .evt00 {background:#0a0a0a}
-
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2582_top_bg.jpg) no-repeat center; background-size:2000px 1050px; height:1050px; position: relative;}
 
         .evtTop span {position:absolute; bottom:0px; left:50%; margin-left:-670px;}        
         .evt01 iframe {width:740px; height:378px; margin:0 auto; border:1px solid #000}
         .evt02 {background:#eaeff5;}
+        
     </style>
 
 
-    <div class="evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>
+    <div class="evtContent NSK" id="evtContainer">           
 
         <div class="evtCtnsBox evtTop">
             <span data-aos="fade-right">

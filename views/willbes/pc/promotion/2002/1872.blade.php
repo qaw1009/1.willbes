@@ -24,9 +24,7 @@
         /************************************************************/
 
         .skybanner {position:fixed; top:225px;right:10px;z-index:10;}
-        .skybanner a{display:block; margin-bottom:10px;}
-
-        .evt00 {background:#0a0a0a}
+        .skybanner a{display:block; margin-bottom:10px;} 
 
         .evt_top {background:#71D3F8 url(https://static.willbes.net/public/images/promotion/2020/10/1872_top_bg.jpg) no-repeat center}
         
@@ -77,13 +75,8 @@
             </a> 
             <a href="https://www.youtube.com/channel/UCz_3g63yWTYjg6_Ko5QRK1g?view_as=subscriber" target="_blank"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_sky_2.png" alt="" >
-            </a>   
-                    
-        </div>   
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>   
+            </a>                    
+        </div>         
 
         <div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_top.jpg" usemap="#Map1872_go" title="" border="0" />

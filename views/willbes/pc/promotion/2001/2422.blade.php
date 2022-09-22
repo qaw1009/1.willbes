@@ -21,9 +21,7 @@
         /************************************************************/
 
         .skybanner {position:fixed;top:200px; width:120px; right:10px;z-index:1;}        
-        .skybanner a {display:block;}
-
-        .evt00 {background:#0a0a0a}
+        .skybanner a {display:block;}       
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/12/2422_top_bg.jpg) no-repeat center; position:relative}  
         .wb_top .youtube {position:absolute; top:946px; left:50%; width:978px; z-index:1;margin-left:-489px; box-shadow:0 10px 20px rgba(0,0,0,.3);}
@@ -55,11 +53,7 @@
             <a href="https://police.willbes.net/book/index/cate/3001?cate_code=3001&subject_idx=1049&search_text=d0F1dGhvck5hbWVzOuq5gOybkOyasQ%3D%3D" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/2422_sky03.jpg" alt="교재확인" ></a>
             <a href="https://www.youtube.com/channel/UCMVc2RbvQeJ_574VzzpPzpg" class="mt10" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/2422_sky04.jpg" alt="유튜브" ></a>
             <a href="https://cafe.naver.com/wonwook2021" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/2422_sky05.jpg" alt="카페" ></a>
-        </div>  
-
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>    
+        </div>      
 
         <div class="evtCtnsBox wb_top" id="main">            
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2422_top.jpg" alt="김원욱 경찰헌법"/>             

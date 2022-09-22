@@ -21,9 +21,7 @@
         /************************************************************/
 
         .sky {position:fixed; top:200px;right:0;z-index:1;}
-        .sky a {display: block; margin-bottom:10px}
-
-        .evt00 {background:#0a0a0a}
+        .sky a {display: block; margin-bottom:10px}        
 
         .evt_tops {background:#9a9ca9}       
 
@@ -82,10 +80,6 @@
         <div class="sky" id="QuickMenu">
             <a href="#apply1"><img src="https://static.willbes.net/public/images/promotion/2022/03/2553_sky1.png" alt="종합반 신청하기" ></a>
             <a href="#apply2"><img src="https://static.willbes.net/public/images/promotion/2022/03/2553_sky2.png" alt="단과반 신청하기" ></a>
-        </div>
-
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>
 
         <div class="evtCtnsBox evt_tops" data-aos="fade-up">

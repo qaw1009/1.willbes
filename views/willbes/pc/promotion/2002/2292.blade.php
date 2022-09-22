@@ -18,8 +18,7 @@
 
         .skybanner {position:fixed; top:200px;right:0; width:182px; z-index:1;}
         .skybanner a {display: block; margin-bottom:10px}
-
-        .evt00 {background:#0a0a0a}
+       
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/11/2292_top_bg.jpg) no-repeat center top; }   
 
         .wb_cts01 {background:#fff}
@@ -93,12 +92,8 @@
         <div class="skybanner" id="QuickMenu">
             <a href="#wb_cts04_a"><img src="https://static.willbes.net/public/images/promotion/2021/11/2292_sky01.png" alt="슈퍼패스 선접수" ></a>
             <a href="#wb_cts04_b"><img src="https://static.willbes.net/public/images/promotion/2021/11/2292_sky02.png" alt="환승재등록" ></a>
-        </div>               
-
-		<div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>
-
+        
         <div class="evtCtnsBox wb_top" >
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2292_top.jpg" alt="슈퍼pass" />
         </div>

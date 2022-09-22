@@ -17,8 +17,7 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         .evtCtnsBox .wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.5); border-radius:30px}
 
-        /************************************************************/
-        .evt00 {background:#0a0a0a}
+        /************************************************************/    
 
         .sky {position:fixed; top:200px; right:10px; width:148px; z-index:10;}
         .sky a {display:block; margin-bottom:5px}
@@ -41,11 +40,6 @@
             <a href="#evt04"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2334_sky2.png" alt="종합반" >
             </a>          
-        </div> 
-
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg" alt="경찰학원부분 1위" data-aos="fade-right"/>
         </div>              
 
         <div class="evtCtnsBox evtTop">

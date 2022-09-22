@@ -21,14 +21,11 @@
         /************************************************************/
 
         .sky {position:fixed;top:200px;right:10px; width:130px; z-index:1;}     
-        .sky a {display:block; margin-bottom:10px}  
-
-        .evt00 {background:#0a0a0a}
+        .sky a {display:block; margin-bottom:10px}    
 
         .wb_top span {position:absolute; left:50%; top:0; width:442px; z-index: 2;}
 
-        .wb_cts01 {background:#121212;}
-        
+        .wb_cts01 {background:#121212;}       
 
         .wb_cts02 {background:#272727;}
 
@@ -72,11 +69,7 @@
             <a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/2022/04/2478_sky01.png" alt="현직경찰 인증하기"></a>
             <a href="#apply_01"><img src="https://static.willbes.net/public/images/promotion/2022/04/2478_sky02.png" alt="계급별 패스"></a>
             <a href="#apply_02"><img src="https://static.willbes.net/public/images/promotion/2022/04/2478_sky03.png" alt="교수님 패스"></a>
-        </div>
-
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg" alt="경찰학원부분 1위"/>
-        </div>    
+        </div>          
 
         <div class="evtCtnsBox wb_top" id="main" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2478_top.jpg" alt="신광은 경찰 승진 패스" />

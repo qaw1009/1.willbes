@@ -39,9 +39,7 @@
         from{color:#000}
         50%{color:#424ac7}
         to{color:#000}
-        } 
-
-        .evt00 {background:#0a0a0a}  
+        }      
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/08/2335_top_bg.jpg) no-repeat center top;}
         .evtTop .iconNew{
@@ -106,11 +104,7 @@
                </table>                
            </div>
         </div>
-        <!-- 타이머 //-->
-            
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>       
+        <!-- 타이머 //-->         
         
         <div class="evtCtnsBox evtTop" data-aos="fade-left">
             <div class="wrap">

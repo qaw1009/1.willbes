@@ -16,9 +16,7 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}*/
 
-        /************************************************************/
-
-        .evt00 {background:#0a0a0a}
+        /************************************************************/       
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2583_top_bg.jpg) no-repeat center top;}
 
@@ -45,11 +43,7 @@
 
     </style>
 
-    <div class="evtContent NSK" id="evtContainer">
-
-        <div class="evtCtnsBox evt00"  data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>       
+    <div class="evtContent NSK" id="evtContainer">         
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2583_top.jpg"  alt="경찰헌법 이국령"/>

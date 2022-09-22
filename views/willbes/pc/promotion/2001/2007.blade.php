@@ -24,9 +24,7 @@
         /************************************************************/
 
         .skybanner {position:fixed; top:225px;right:10px;z-index:10;}
-        .skybanner a{display:block; margin-bottom:10px;}
-
-        .evt00 {background:#0a0a0a}
+        .skybanner a{display:block; margin-bottom:10px;}    
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/12/2007_top_bg.jpg) no-repeat center}
         
@@ -58,11 +56,7 @@
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/1786" target="_blank"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/2007_sky02.png" alt="" >
             </a>                       
-        </div>   
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div> 
+        </div>      
 
         <div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/2007_top.jpg" alt="" />

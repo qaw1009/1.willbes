@@ -14,8 +14,8 @@
             background:#fff;
         }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
-        /************************************************************/
-        .evt00 {background:#0a0a0a}
+
+        /************************************************************/        
 
         .sky {position:fixed; top:225px;right:10px;z-index:10;}
 
@@ -24,10 +24,7 @@
         .evtLec {width:1120px; margin:0 auto; text-align:left}
     </style>
 
-    <div class="evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>     
+    <div class="evtContent NSK" id="evtContainer">      
 
         <div class="sky">
             <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1881" target="_blank"> 

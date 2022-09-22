@@ -18,8 +18,7 @@
         /************************************************************/
 
         .skybanner {position:fixed;top:300px;right:0;z-index:1;}
-
-        .evt00 {background:#0a0a0a}
+      
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/12/1980_top_bg.jpg) no-repeat center top; }   
 
         .wb_cts01 {background:#fff}
@@ -98,11 +97,7 @@
 
         <div class="skybanner" >
             <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2020/12/1980_sky.png" alt="스카이베너" ></a>
-        </div>               
-
-		<div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>
+        </div>	
 
         <div class="evtCtnsBox wb_top" >
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1980_top.jpg" alt="슈퍼pass" />

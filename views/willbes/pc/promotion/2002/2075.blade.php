@@ -18,23 +18,20 @@
         /************************************************************/
 
         .sky {position:fixed;top:300px;right:10px;z-index:1;}
-        .evt00 {background:#0a0a0a}  
+
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/02/2075_top_bg.jpg) no-repeat center top;}
         .evt01 {background:#282D40}
         .evt02 {background:#E9E9E9}  
-        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/02/2075_03_bg.jpg) no-repeat center top;} 
-        
+        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/02/2075_03_bg.jpg) no-repeat center top;}
+                
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
+
         <div class="sky" >
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2085" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/02/2075_sky.png" alt="스카이베너" ></a>
-        </div>               
-
-		<div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>
-
+        
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2075_top.jpg"  alt="3월 추천강좌" usemap="#Map2075_top" border="0" />
             <map name="Map2075_top" id="Map2075_top">

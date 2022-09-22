@@ -34,9 +34,7 @@
         .newTopDday ul li:last-child a:hover {background:#666}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
-        .sky {position:fixed;top:200px;right:0;z-index:1;}
-
-        .evtTop00 {background:#0a0a0a}
+        .sky {position:fixed;top:200px;right:0;z-index:1;}       
 
         .evtTop {background:#363A43 url(https://static.willbes.net/public/images/promotion/2020/06/1699_top_bg.jpg) no-repeat center top;}
 
@@ -88,11 +86,7 @@
 
         <div class="sky">
             <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2020/06/1699_sky.png" alt="필합생 전용 이벤트"></a>
-        </div>
-
-        <div class="evtCtnsBox evtTop00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_first.jpg" title="대한민국 경찰학원 1위">    
-        </div>       
+        </div>    
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1699_top.jpg" title="문제풀이 풀패키지">

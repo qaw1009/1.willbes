@@ -20,9 +20,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .sky {position:fixed; top:200px;right:10px;z-index:10;}
-
-        .evtTop00 {background:#0a0a0a;}
+        .sky {position:fixed; top:200px;right:10px;z-index:10;}    
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/09/1848_top_bg.jpg) no-repeat center top;}
 
@@ -33,15 +31,12 @@
         .evt02 .evt02box {width:1120px; padding:20px 0; margin:0 auto 50px; background:#fff;} 
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">  
+    <div class="p_re evtContent NSK" id="evtContainer">
+
         <div class="sky">
             <a href="#evt02">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1848_sky.jpg" alt="할인쿠폰 바로보기" >
             </a>        
-        </div>       
-        
-        <div class="evtCtnsBox evtTop00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg" title="대한민국 경찰학원 1위">        
         </div>
         
         <div class="evtCtnsBox evtTop">

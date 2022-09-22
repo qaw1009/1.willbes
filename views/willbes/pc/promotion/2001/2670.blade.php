@@ -19,9 +19,7 @@
         /************************************************************/
 
         .sky {position:fixed;top:200px;right:10px;z-index:100;}
-        .sky a {display:block; margin-bottom:10px}
-
-        .evt00 {background:#0a0a0a}       
+        .sky a {display:block; margin-bottom:10px}         
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/05/2670_top_bg.jpg) no-repeat center top;}
        
@@ -35,11 +33,7 @@
 
     </style>
 
-    <div class="evtContent NSK" id="evtContainer">
-    
-        <div class="evtCtnsBox evt00"  data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>   
+    <div class="evtContent NSK" id="evtContainer">    
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2670_top.jpg"  alt="문태환 헌법"/>           

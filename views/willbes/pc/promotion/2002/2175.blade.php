@@ -16,9 +16,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
 
         /************************************************************/
-        .sky {position:fixed;top:300px;right:10px;z-index:1;}
-
-        .evt00 {background:#0a0a0a}  
+        .sky {position:fixed;top:300px;right:10px;z-index:1;}     
         
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/04/2175_top_bg.jpg) no-repeat center top;}
 
@@ -27,13 +25,10 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
+    
         <div class="sky" >
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2178" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2175_sky.png" alt="스카이베너" ></a>
-        </div>               
-
-		<div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>
+        </div>	
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2175_top.jpg"  alt="5월 추천강좌" />

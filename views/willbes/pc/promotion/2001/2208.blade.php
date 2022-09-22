@@ -18,9 +18,7 @@
 
         /************************************************************/
         .skyBanner {position:fixed; width:130px; top:200px; right:10px; z-index:10;}
-        .skyBanner a {display:block; margin-bottom:10px}
-
-        .evt00 {background:#0a0a0a}
+        .skyBanner a {display:block; margin-bottom:10px}   
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/05/2208_top_bg.jpg) no-repeat center top;}
         .evt_01 {background:url(https://static.willbes.net/public/images/promotion/2021/05/2208_01_bg.jpg) no-repeat center top; position:relative;}
@@ -74,11 +72,7 @@
             <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2021/05/2208_sky02.jpg" alt="이벤트 둘"/></a>
             <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2021/05/2208_sky03.jpg" alt="이벤트 셋"/></a>
         </div>
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>
-
+    
         <div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2208_top.jpg"  alt="해양경찰 등불쌤 합격패스" />
         </div>

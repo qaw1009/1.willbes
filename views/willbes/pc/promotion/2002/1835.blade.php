@@ -16,9 +16,7 @@
 
         /************************************************************/
         .skybanner {position:fixed; top:200px; right:0; width:150px; z-index:1;}
-        .skybanner a {display:block; margin-bottom:5px;}
-
-        .evt00 {background:#0a0a0a}
+        .skybanner a {display:block; margin-bottom:5px;}       
 
         .evtTop {background: url(https://static.willbes.net/public/images/promotion/2020/09/1835_top_bg.jpg) no-repeat center top;}   
         .nameBox {position:absolute; top:259px; left:50%; margin-left:-435px; width:870px; height:189px; 
@@ -127,10 +125,6 @@
 
             <div class="skybanner">
                <a href="#evt07Tab"><img src="https://static.willbes.net/public/images/promotion/2020/09/1835_sky.jpg"  title="면접캠프 설명회" /></a>
-            </div>
-
-            <div class="evtCtnsBox evt00">
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
             </div>
 
             <div class="evtCtnsBox evtTop">

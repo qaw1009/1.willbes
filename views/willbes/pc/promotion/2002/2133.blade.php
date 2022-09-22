@@ -16,26 +16,22 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .sky {position:fixed;top:300px;right:10px;z-index:1;}
 
-        .evt00 {background:#0a0a0a}  
+        .sky {position:fixed;top:300px;right:10px;z-index:1;}  
         
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/03/2133_top_bg.jpg) no-repeat center top;}
 
         .evt01 .check {width:800px; margin:0 auto; padding:20px; font-size:16px; color:#000; text-align:left; letter-spacing:-1px;}
         .evt01 .check a {display:inline-block; padding:25px; color:#fff; background:#000; margin-left:250px; border-radius:50px; font-size:17px}
 
-        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2133_03_bg.jpg) no-repeat center top;} 
+        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2133_03_bg.jpg) no-repeat center top;}
         
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
+
         <div class="sky" >
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2135" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/03/2133_sky.png" alt="스카이베너" ></a>
-        </div>               
-
-		<div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>
 
         <div class="evtCtnsBox evtTop">

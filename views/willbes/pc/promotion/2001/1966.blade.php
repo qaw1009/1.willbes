@@ -19,8 +19,7 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
-        /************************************************************/
-        .evt00 {background:#0a0a0a}
+        /************************************************************/        
 
         .skybanner{position:fixed; top:225px;right:10px;z-index:10;}
 
@@ -57,10 +56,7 @@
         .popuptable th {font-weight:bold}
     </style>
 
-    <div class="evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>     
+    <div class="evtContent NSK" id="evtContainer">     
 
         <div class="skybanner">
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2741" target="_blank"> 

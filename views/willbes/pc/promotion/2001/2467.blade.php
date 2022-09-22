@@ -21,9 +21,7 @@
         /************************************************************/
 
         .skybanner {position:fixed;top:200px; width:120px; right:10px;z-index:1;}        
-        .skybanner a {display:block;}
-
-        .evt00 {background:#0a0a0a}
+        .skybanner a {display:block;}    
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/12/2467_top_bg.jpg) no-repeat center; position:relative}  
         .wb_top .youtube {position:absolute; top:946px; left:50%; width:978px; z-index:1;margin-left:-489px; box-shadow:0 10px 20px rgba(0,0,0,.3);}
@@ -35,10 +33,7 @@
    
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer"> 
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>    
+    <div class="p_re evtContent NSK" id="evtContainer">        
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">            
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2467_top.jpg" alt="새해 합격기원"/>             

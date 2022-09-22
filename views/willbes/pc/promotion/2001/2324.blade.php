@@ -14,8 +14,8 @@
             background:#fff;
         }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
-        /************************************************************/
-        .evt00 {background:#0a0a0a}
+        
+        /************************************************************/   
 
         .sky {position:fixed; top:200px;right:10px; width:120px; z-index:10;}
         .sky a {display:block; margin-bottom:10px}
@@ -45,12 +45,7 @@
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2360" target="_blank"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2324_sky2.png" alt="경찰pass" >
             </a>          
-        </div> 
-
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg" alt="경찰학원부분 1위" data-aos="fade-right"/>
-        </div>              
+        </div>                
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2021/08/2324_top.jpg" alt="9월 추천강좌" data-aos="fade-left">

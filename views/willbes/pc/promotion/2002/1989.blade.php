@@ -18,20 +18,17 @@
         /************************************************************/
 
         .skybanner {position:fixed;top:300px;right:10px;z-index:1;}
-
-        .evt00 {background:#0a0a0a}  
+      
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/12/1989_top_bg.jpg) no-repeat center top;}
         .evt01 {background:#282D41}
-        .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1989_02_bg.jpg) no-repeat center top; }   
+        .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1989_02_bg.jpg) no-repeat center top;}
+                
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
+
         <div class="skybanner" >
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2004" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/12/1989_sky.png" alt="스카이베너" ></a>
-        </div>               
-
-		<div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>
 
         <div class="evtCtnsBox evtTop">

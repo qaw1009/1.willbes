@@ -14,9 +14,9 @@
             background:#fff;
         }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
-        /************************************************************/
-        .evt00 {background:#0a0a0a}
 
+        /************************************************************/
+             
         .sky {position:fixed; top:225px;right:10px; width:120px; z-index:2;}
         .sky a{display:block; margin-bottom:10px}
 
@@ -47,10 +47,7 @@
         <input type="hidden" name="msg" value="신쌤에게 전하고 싶은 말을 적어주세요.">
     </form>
 
-    <div class="evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>     
+    <div class="evtContent NSK" id="evtContainer">          
 
         <div class="sky">
             <a href="#evt01"> 

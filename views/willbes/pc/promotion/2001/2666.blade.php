@@ -20,9 +20,7 @@
 
         .sky {position:fixed;top:150px;right:10px;z-index:1;} 
         .sky a {display:block; margin-bottom:10px; box-shadow:0 5px 5px rgba(0,0,0,.1);}
-
-        .evtTop00 {background:#0a0a0a}
-
+      
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/05/2666_top_bg.jpg) no-repeat center top;}     
 
         .evt01 {background:#fff;position:relative;}
@@ -80,11 +78,7 @@
             <a href="#apply">
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2666_sky04.png" alt="단계별 종합반" >
             </a>
-        </div> 
-
-        <div class="evtCtnsBox evtTop00"> 
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1009_first.jpg" title="대한민국 경찰학원 1위">        
-        </div>
+        </div>               
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up"> 
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2666_top.jpg" title="문제풀이 1+2+3단계">                    

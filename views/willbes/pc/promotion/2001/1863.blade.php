@@ -15,9 +15,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; margin:0 auto;}
 
         /************************************************************/
-
-        .evt00 {background:#0a0a0a}
-
+        
         .wb_top {position:relative; height:1177px}
         .wb_top li {position:absolute; left:50%; z-index:1}
         .wb_top li:nth-child(1) {top:62px; margin-left:-180px; animation:slidein1 0.5s ease-in; -webkit-animation:slidein1 0.5s ease-in;}
@@ -90,9 +88,6 @@
     </form>
 
     <div class="p_re evtContent NGR" id="evtContainer">
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>
 
         <div class="evtCtnsBox wb_top">
             <ul>

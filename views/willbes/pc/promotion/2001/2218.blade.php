@@ -13,8 +13,7 @@
     }	
     .evtContent span {vertical-align:auto}
     .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
-    /*****************************************************************/ 
-    .evt00 {background:#0a0a0a}
+    /*****************************************************************/  
     .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/05/2218_top_bg.jpg) no-repeat center top;}   
 
     .evt02 {background:url(https://static.willbes.net/public/images/promotion/2021/05/2218_02_bg.jpg) no-repeat center top;}
@@ -24,10 +23,7 @@
     .evt03 a:hover {background:#31d4ff}
     </style>
 
-    <div class="evtContent NSK" id="evtContainer">  
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div> 
+    <div class="evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox evt_top">  
             <div><img src="https://static.willbes.net/public/images/promotion/2021/05/2218_top.jpg" alt="경찰 합격수기 공모"></div>

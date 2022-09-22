@@ -21,9 +21,7 @@
         /************************************************************/
 
         .sky {position:fixed;top:200px; width:120px; right:10px;z-index:1;}        
-        .sky a {display:block; margin-bottom:-1px}
-
-        .evt00 {background:#0a0a0a}
+        .sky a {display:block; margin-bottom:-1px}      
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/03/2602_top_bg.jpg) no-repeat center top;}   
         
@@ -38,10 +36,7 @@
    
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer"> 
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div> 
+    <div class="p_re evtContent NSK" id="evtContainer">    
 
         <div class="sky" id="QuickMenu">
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2664" target="_blank">

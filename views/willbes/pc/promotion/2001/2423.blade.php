@@ -21,9 +21,7 @@
         /************************************************************/
 
         .skybanner {position:fixed;top:200px; width:120px; right:10px;z-index:1;}        
-        .skybanner a {display:block;}
-
-        .evt00 {background:#0a0a0a}
+        .skybanner a {display:block;}      
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/11/2423_top_bg.jpg) no-repeat center top; position:relative}  
         .wb_top .star {position:absolute; top:1350px; left:50%; width:716px; z-index:1; margin-left:-358px;}
@@ -58,14 +56,11 @@
         .Pstyle .content {height:auto; width:auto;}
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">   
+    <div class="p_re evtContent NSK" id="evtContainer">
+
         <div class="skybanner" id="QuickMenu">
             <a href="https://www.youtube.com/channel/UCDjImsjLcG6H9y9jonFF84Q" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/11/2423_sky.png" alt="교수소개" ></a>
-        </div> 
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>    
+        </div>       
 
         <div class="evtCtnsBox wb_top" id="main" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2423_top.jpg" alt=""/>

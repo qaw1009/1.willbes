@@ -15,10 +15,9 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px}
 
         /************************************************************/
-        .skyBanner {position:fixed; width:130px; top:200px; right:10px; z-index:10;}
-        .skyBanner a {display:block; margin-bottom:10px}
 
-        .evt00 {background:#0a0a0a}
+        .skyBanner {position:fixed; width:130px; top:200px; right:10px; z-index:10;}
+        .skyBanner a {display:block; margin-bottom:10px}        
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/04/2161_top_bg.jpg) no-repeat center top;}
         .evt_01 {background:#3252a9; padding-bottom:150px; font-size:14px; line-height:1.4}
@@ -71,16 +70,12 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
+
         <div class="skyBanner">
             <a href="#evt01"><img src="https://static.willbes.net/public/images/promotion/2021/04/2161_sky01.png" alt="이벤트 하나"/></a>
             <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2021/04/2161_sky02.png" alt="이벤트 둘"/></a>
             <a href="#evt06"><img src="https://static.willbes.net/public/images/promotion/2021/04/2161_sky03.png" alt="이벤트 셋"/></a>
         </div>
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>     
-
 
         <div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2161_top.jpg"  alt="기초 입문서 무료배포 " />

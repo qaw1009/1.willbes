@@ -18,9 +18,7 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
-    /*****************************************************************/
-
-        .evt00 {background:#0a0a0a}
+    /*****************************************************************/        
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/05/2648_top_bg.jpg) no-repeat center top; height:1650px}   
         .evt_top span {position: absolute; top:350px; left:50%; margin-left:-560px}
@@ -56,11 +54,7 @@
 
     </style>
 
-    <div class="evtContent NSK" id="evtContainer">
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
-        </div> 
+    <div class="evtContent NSK" id="evtContainer">      
 
         <div class="evtCtnsBox evt_top" data-aos="fade-up">  
             <span data-aos="flip-left" data-aos-delay="500" data-aos-duration="1500"><img src="https://static.willbes.net/public/images/promotion/2022/05/2648_top_img.png" alt="신광은 형법 각론"></span>

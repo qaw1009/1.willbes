@@ -17,10 +17,9 @@
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
+
         .sky {position:fixed;top:225px; width:206px; right:0; z-index:1;} 
-        .sky a {display:block; margin-bottom:10px}
-       
-        .evt00 {background:#0a0a0a}
+        .sky a {display:block; margin-bottom:10px}    
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/10/2393_top_bg.jpg) no-repeat center top;}
         
@@ -53,16 +52,13 @@
 
     </style>
     
-    <div class="evtContent NSK" id="evtContainer">     
+    <div class="evtContent NSK" id="evtContainer"
+    >     
         <div class="sky" id="QuickMenu">               
             <a href="#event01"><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_sky01.png" title="초시생"></a>
             <a href="#event02"><img src="https://static.willbes.net/public/images/promotion/2021/10/2393_sky02.png" title="유튜브"></a>
             <a href="#event03"><img src="https://static.willbes.net/public/images/promotion/2021/12/2393_sky03.png" title="합격 설명회"></a>
-        </div> 
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
-        </div>
+        </div>       
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2393_top.jpg" alt="신규가입 이벤트" />

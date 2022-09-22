@@ -17,10 +17,9 @@
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
+
         .sky {position:fixed;top:225px; width:206px; right:0; z-index:1;} 
-        .sky a {display:block; margin-bottom:10px}
-       
-        .evt00 {background:#0a0a0a}
+        .sky a {display:block; margin-bottom:10px}    
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/12/2484_top_bg.jpg) no-repeat center top;}
         
@@ -53,17 +52,14 @@
 
     </style>
     
-    <div class="evtContent NSK" id="evtContainer">     
+    <div class="evtContent NSK" id="evtContainer">
+
         <div class="sky" id="QuickMenu">               
             <a href="#event01"><img src="https://static.willbes.net/public/images/promotion/2021/12/2484_sky01.png" title="상담"></a>
             <a href="#event02"><img src="https://static.willbes.net/public/images/promotion/2021/12/2484_sky02.png" title="후기"></a>
             <a href="#event03"><img src="https://static.willbes.net/public/images/promotion/2021/12/2484_sky03.png" title="강의 신청"></a>
-        </div> 
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
         </div>
-
+      
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/12/2484_top.jpg" alt="상담자 뽑기" />
         </div>

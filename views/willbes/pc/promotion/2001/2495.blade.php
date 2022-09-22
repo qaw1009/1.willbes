@@ -20,9 +20,7 @@
 
         /************************************************************/
 
-        .skyBanner {position:fixed; width:150px; top:200px; right:10px; z-index:10;}
-       
-        .evt00 {background:#0a0a0a}
+        .skyBanner {position:fixed; width:150px; top:200px; right:10px; z-index:10;}     
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/01/2495_top_bg.jpg) no-repeat center top;} 
       
@@ -64,15 +62,12 @@
         .slide_con li p {font-weight:bold; font-size:20px; margin-bottom:30px}
     </style>
 
-    <div class="evtContent NSK" id="evtContainer">  
+    <div class="evtContent NSK" id="evtContainer">
+
         <div class="skyBanner" id="QuickMenu">
             <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/2426" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/01/2495_sky01.jpg" alt="문제풀이 실강"></a>
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2446" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/01/2495_sky02.jpg" alt="문제풀이 인강"></a>
-        </div> 
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
-        </div>
+        </div>      
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2495_top.jpg" alt="고득점 합격이야기" />

@@ -22,9 +22,7 @@
 
         .sky {position:fixed;top:150px; right:10px; z-index:10;}
         .sky a {display:block; margin-bottom:15px}
-
-        .evt00 {background:#0a0a0a}
-
+                                                        
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/05/2656_top_bg.jpg) no-repeat center top;}
 
         .evt01 {padding-top:150px}
@@ -51,11 +49,7 @@
             <a href="#none">
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2656_sky02.png" alt="타학원 환승"/>
             </a>                      
-        </div>
-
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
-        </div>
+        </div>       
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/05/2656_top.jpg" alt="추천강좌" />

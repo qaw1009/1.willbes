@@ -12,7 +12,7 @@
         /************************************************************/
         .sky {position:fixed;top:150px; right:10px; z-index:10;}
         .sky a {display:block; margin-bottom:10px; text-align:center}
-        .evt00 {background:#0a0a0a}
+                
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/10/2375_top_bg.jpg) no-repeat center top;}
         .evt01 {background:#40273c}
 
@@ -47,11 +47,7 @@
             <a href="#event03">
                 <img src="https://static.willbes.net/public/images/promotion/2021/10/2375_sky03.png" alt=""/>
             </a>
-        </div>
-
-        <div class="evtCtnsBox evt00" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
-        </div>
+        </div>      
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/10/2375_top.gif" alt="리얼 후기"/>

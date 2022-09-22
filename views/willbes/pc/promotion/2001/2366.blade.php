@@ -12,7 +12,7 @@
         /************************************************************/
         .sky {position:fixed;top:150px; right:10px; z-index:10;}
         .sky a {display:block; margin-bottom:10px}
-        .evt00 {background:#0a0a0a}
+               
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/09/2366_top_bg.jpg) no-repeat center top;}
         .evt01 .passLecBuy {position:relative; width:1120px; margin:0 auto;}
         .evt01 .passLecBuy .price {position:absolute; left:715px; width:250px; text-align:left; line-height:30px; font-size:16px; font-weight:bold; color:#fff; z-index: 2;}
@@ -63,11 +63,7 @@
             <a href="#event02">
                 <img src="https://static.willbes.net/public/images/promotion/2021/09/2366_sky01.png" alt="오픈기념 이벤트"/>
             </a>
-        </div>
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
-        </div>
+        </div>      
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2366_top.jpg" alt="경찰간부" />

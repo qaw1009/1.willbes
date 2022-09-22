@@ -21,9 +21,7 @@
         /************************************************************/
       
         .sky {position:fixed;top:150px; right:10px; z-index:10;}
-        .sky a {display:block; margin-bottom:15px}
-       
-        .evt00 {background:#0a0a0a}
+        .sky a {display:block; margin-bottom:15px}       
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/03/2496_top_bg.jpg) no-repeat center top;}
         .evtTop span {position: absolute; left:50%; z-index: 2;}
@@ -82,10 +80,6 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2496_sky02.png" alt="추가할인 이벤트"/>
             </a>           
         </div>    
-
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
-        </div>
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2496_top.jpg" alt="2022 슈퍼 pass" />

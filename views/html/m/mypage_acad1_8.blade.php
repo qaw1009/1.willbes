@@ -54,7 +54,7 @@
                 20220331121524137442<br>
                 2022-03-31 12:18<br>
             </li>
-            <li><img src="https://static.willbes.net/public/images/promotion/m/ssam_card_logo.jpg"></li>
+            <li><img src="https://static.willbes.net/public/images/promotion/m/police_card_logo.jpg"></li>
         </ul>
     </div> 
 

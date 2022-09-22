@@ -53,8 +53,8 @@
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/08/2692m_02.jpg" alt="">
                 <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51259?subject_idx=1049" target="_blank" title="김원욱 홈" style="position: absolute;left: 18.89%;top: 66.63%;width: 17.81%;height: 3.26%;z-index: 2;"></a>
-                <a href="javascript:void(0);" data-url="https://police.willbes.net/m/periodPackage/show/cate/3001/pack/648001/prod-code/200716" onclick="go_PassLecture(this)" style="position: absolute;left: 11.75%;top: 73.27%;width: 76.83%;height: 8.12%;z-index: 2;" title=""></a>               
-                <a href="javascript:void(0);" data-url="https://police.willbes.net/m/periodPackage/show/cate/3001/pack/648001/prod-code/200717" onclick="go_PassLecture(this)" style="position: absolute;left: 11.75%;top: 82.17%;width: 76.83%;height: 8.12%;z-index: 2;" title=""></a>
+                <a href="javascript:void(0);" data-url="https://police.willbes.net/m/periodPackage/show/cate/3001/pack/648001/prod-code/196774" onclick="go_PassLecture(this)" style="position: absolute;left: 11.75%;top: 73.27%;width: 76.83%;height: 8.12%;z-index: 2;" title=""></a>               
+                <a href="javascript:void(0);" data-url="https://police.willbes.net/m/periodPackage/show/cate/3001/pack/648001/prod-code/201411" onclick="go_PassLecture(this)" style="position: absolute;left: 11.75%;top: 82.17%;width: 76.83%;height: 8.12%;z-index: 2;" title=""></a>
             </div>
             <div class="check">
                 <label>

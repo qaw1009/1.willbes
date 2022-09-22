@@ -100,10 +100,10 @@
 
         <div class="evtCtnsBox wb_02" data-aos="fade-up" id="apply">
             <div class="wrap NSK-Black">
-                <img src="https://static.willbes.net/public/images/promotion/2022/08/2692_02.jpg" alt="" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2692_02.jpg" alt="" />
                 <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049" target="_blank" title="이국령 홈" style="position: absolute;left: 17.38%;top: 86.54%;width: 11.07%;height: 3.98%;z-index: 2; background:none"></a>
-                <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/200716" onclick="go_PassLecture(this)" title="" style="position: absolute;left: 58.97%;top: 72.47%;width: 28.55%;height: 8.65%;z-index: 2;">25만원 신청하기 ></span></a>              
-                <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/200717" onclick="go_PassLecture(this)" title="" style="position: absolute;left: 58.97%;top: 82.05%;width: 28.55%;height: 8.65%;z-index: 2;">18만원 신청하기 ></span></a>
+                <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/196774" onclick="go_PassLecture(this)" title="" style="position: absolute;left: 58.97%;top: 72.47%;width: 28.55%;height: 8.65%;z-index: 2;">25만원 신청하기 ></span></a>              
+                <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/201411" onclick="go_PassLecture(this)" title="" style="position: absolute;left: 58.97%;top: 82.05%;width: 28.55%;height: 8.65%;z-index: 2;">18만원 신청하기 ></span></a>
             </div>
             <div class="check">
                 <input name="ischk" type="checkbox" id="is_chk1" value="Y" />

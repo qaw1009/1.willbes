@@ -12,9 +12,7 @@
         /************************************************************/
 
         .sky {position:fixed;top:150px; right:10px; z-index:10;}
-        .sky a {display:block; margin-bottom:10px}
-
-        .evt00 {background:#0a0a0a}
+        .sky a {display:block; margin-bottom:10px}    
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/02/2524_top_bg.jpg) no-repeat center top;}
 
@@ -58,11 +56,7 @@
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2469" target="_blank"  >
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2524_sky.png" alt="온라인 추천강좌"/>
             </a>                      
-        </div>
-
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
-        </div>
+        </div>       
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2524_top.jpg" alt="추천강좌" />

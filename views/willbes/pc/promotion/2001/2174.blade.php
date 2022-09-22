@@ -17,9 +17,7 @@
         /************************************************************/
 
         .sky {position:fixed;top:150px; right:10px; z-index:10;}
-        .sky a {display:block; margin-bottom:10px}
-       
-        .evt00 {background:#0a0a0a}
+        .sky a {display:block; margin-bottom:10px}    
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/04/2174_top_bg.jpg) no-repeat center top;} 
       
@@ -126,10 +124,6 @@
                     </li>
                 </ul>
             </div>
-        </div>
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
         </div>
 
         <div class="evtCtnsBox evtTop">

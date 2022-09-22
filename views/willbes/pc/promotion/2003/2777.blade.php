@@ -52,15 +52,15 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2777_sky02.jpg" alt="윌비스 드림팩" >
             </a>                   
         </div>
-
+        
         <div class="evtCtnsBox wb_top">
-            <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2003" target="_blank" data-aos="fade-right" class="NSK-Black">지금 바로 윌비스 공무원으로 <span>합격의 꿈</span> 시작하기  →</a>
+            {{--<a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2003" target="_blank" data-aos="fade-right" class="NSK-Black">지금 바로 윌비스 공무원으로 <span>합격의 꿈</span> 시작하기  →</a>--}}
         </div>
 
         <div class="evtCtnsBox wb_01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2777_01_01.jpg" alt="" data-aos="fade-up"/>
             <div>
-                <a href="#evt01" data-aos="fade-right"><img src="https://static.willbes.net/public/images/promotion/2022/09/2777_01_02.jpg" alt="네이버페이"/></a>
+                <a href="javascript:alert('마감 되었습니다.')" data-aos="fade-right"><img src="https://static.willbes.net/public/images/promotion/2022/09/2777_01_02.jpg" alt="네이버페이"/></a>
                 <a href="#evt02" data-aos="fade-left"><img src="https://static.willbes.net/public/images/promotion/2022/09/2777_01_03.jpg" alt="윌비스 드림팩"/></a>
             </div>
         </div>

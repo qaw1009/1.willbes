@@ -17,6 +17,10 @@
         /*.evtCtnsBox .wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.5);}*/
 
         /************************************************************/
+
+        .sky {position:fixed;top:200px;right:10px;z-index:11;}
+        .sky a {display:block; margin-bottom:10px}
+        
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2119_top_bg.jpg) no-repeat center;}    
 
         .wb_01 {background:#fff}
@@ -27,6 +31,16 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
+
+        <div class="sky" id="QuickMenu">
+            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3059/prod-code/194747" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2119_sky01.png" alt="1~5순환">
+            </a>
+            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3059/prod-code/201306" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2119_sky02.png" alt="2~5순환">
+            </a>
+        </div>
+
         <div class="evtCtnsBox wb_top" data-aos="fade-up">             
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2119_top.jpg" alt="김동진법원팀 동행5기 온라인관리반" />  
         </div>       
@@ -43,14 +57,15 @@
             <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" title="수강신청하기">온라인관리반 상품 확인하기 ></a>
         </div>
     </div>
-    <!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- End Container -->
+    
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
-        $(document).ready(function() {
-            AOS.init();
-        });
+      $(document).ready( function() {
+        AOS.init();
+      });
     </script>
 
 @stop

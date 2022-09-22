@@ -20,8 +20,6 @@
 
         .sky {position:fixed;top:225px; width:199px; right:0; z-index:1;} 
         .sky a {display:block; margin-bottom:10px}
-       
-        .evt00 {background:#0a0a0a}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/11/2349_top_bg.jpg) no-repeat center top;}
 
@@ -41,11 +39,7 @@
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2021/11/2349_sky.png" title="타학원 환승 인증">
             </a>
-        </div>     
-
-        <div class="evtCtnsBox evt00" data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
-        </div>
+        </div>      
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2349_top.jpg" alt="신규가입 이벤트" />

@@ -15,14 +15,9 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
 
-        /************************************************************/
-       
-        .evt00 {background:#0a0a0a}
+        /************************************************************/   
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/09/2368_top_bg.jpg) no-repeat center top;}
-
-        .evt01 {}
-
 
         .evt02 {background:#3b3d41}
 
@@ -31,16 +26,11 @@
         .evtCtnsBox .slide_con p.leftBtn {left:-60px}
         .evtCtnsBox .slide_con p.rightBtn {right:-60px}
 
-
         .evt03 {background:#e7e4dd; padding-top:100px}
-
+        
     </style>
     
-    <div class="evtContent NSK" id="evtContainer">      
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
-        </div>
+    <div class="evtContent NSK" id="evtContainer">    
 
         <div class="evtCtnsBox evtTop" data-aos="fade-left">
             <img src="https://static.willbes.net/public/images/promotion/2021/09/2368_top.jpg" alt="신규가입 이벤트" />

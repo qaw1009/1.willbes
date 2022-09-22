@@ -16,9 +16,8 @@
 
         /************************************************************/
         .sky {position:fixed; width:160px; top:200px;right:10px;z-index:1;}
-        .sky a {display:block; margin-bottom:10px}
-        
-        .evt00 {background:#0a0a0a}
+        .sky a {display:block; margin-bottom:10px}        
+
         .evtTop {background:url("https://static.willbes.net/public/images/promotion/2021/03/2101_top_bg.jpg") no-repeat center top;} 
         .evtTop .topimg {}
         .evtTop span {position:absolute; left:50%; z-index:2;}
@@ -263,11 +262,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
-
-        <div class="evtCtnsBox evt00">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위"/>
-        </div>
+        </div>     
 
         <div class="evtCtnsBox evtTop" id="main">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2101_top.jpg" alt="PASS"/>

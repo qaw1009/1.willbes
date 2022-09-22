@@ -39,12 +39,12 @@
 
 <div id="Container" class="Container NSK c_both">
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2777m_top.jpg" alt="네이버페이 드림"/>
-            <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2003" title="회원가입" style="position: absolute; left: 5.42%; top: 79.59%; width: 89.03%; height: 7.1%; z-index: 2;"></a>
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2777m_top.png" alt="네이버페이 드림"/>
+            {{--<a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2003" title="회원가입" style="position: absolute; left: 5.42%; top: 79.59%; width: 89.03%; height: 7.1%; z-index: 2;"></a>--}}
         </div>
 
         <div class="evtCtnsBox wb_01" data-aos="fade-up">
-            <a href="#evt01"><img src="https://static.willbes.net/public/images/promotion/2022/09/2777m_01_01.jpg" alt="네이버페이"/></a>
+            <a href="javascript:alert('마감 되었습니다.')"><img src="https://static.willbes.net/public/images/promotion/2022/09/2777m_01_01.jpg" alt="네이버페이"/></a>
             <a href="#evt02"><img src="https://static.willbes.net/public/images/promotion/2022/09/2777m_01_02.jpg" alt="윌비스드림팩"/></a>
         </div>
 

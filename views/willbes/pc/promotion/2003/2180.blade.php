@@ -171,8 +171,9 @@
 
         <div class="evtCtnsBox evt03" id="event" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/07/2180_03.jpg" />
-                <a href="javascript:go_PassLecture('199386');" title="22~23 전과정 티패스" style="position: absolute; left: 52.95%; top: 79.00%; width: 29.38%; height: 8.56%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2180_03.jpg" />
+                <a href="javascript:go_PassLecture('199386');" title="한덕현 티패스" style="position: absolute;left: 13.95%;top: 82%;width: 27.98%;height: 8.96%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('201425');" title="새벽모고 티패스" style="position: absolute;left: 57.95%;top: 82%;width: 27.98%;height: 8.96%;z-index: 2;"></a>
             </div>
             
             <div class="check">
@@ -188,7 +189,8 @@
                 <div class="infoTit"><strong>상품구성</strong></div>
                 <ul>
                     <li>제공과정<br>
-                        - 2023년 6월까지 진행되는 한덕현 영어 신규강좌 전 과정 (반반똑똑영어 다시보기, 새벽모의고사 포함)
+                        - 전과정 T-PASS : 2023년 6월까지 진행되는 한덕현 영어 신규강좌 전 과정 (반반똑똑영어 다시보기, 새벽모의고사 포함)<br>
+                        - 새벽모고 T-PASS : 2023년 대비 신규과정(2022.9월~2023.5월) 제공되며 , 2022년 대비 과정 중 9-10월 과정만 제외 제공됩니다.<br>
                     </li>
                     <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                     <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>

@@ -26,8 +26,9 @@
         .evtTop,
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2022/08/2740_bg.jpg);}
        
-        .evt01 iframe {width:860px; height:484px; margin:0 auto; border:1px solid #000}
+        .evt01 object {width:860px; height:484px; margin:0 auto; border:1px solid #000}
         .evt03 {background:#eaeff5;}
+
     </style>
 
 
@@ -41,9 +42,8 @@
 		</div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-left">
-            <img src="https://static.willbes.net/public/images/promotion/2022/08/2740_01_01.jpg" alt=""/><br>
-            <img src="https://static.willbes.net/public/images/promotion/2022/08/2740_01_bg.jpg" alt=""/><br>
-            {{--<iframe src="https://www.youtube.com/embed/ylgelTRQ69U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>--}}
+            <img src="https://static.willbes.net/public/images/promotion/2022/08/2740_01_01.jpg" alt=""/><br>            
+            <object data="https://www.youtube.com/embed/KNUV0otKQ1c?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object><br>
             <img src="https://static.willbes.net/public/images/promotion/2022/08/2740_01_02.jpg" alt=""/>
 		</div> 
         

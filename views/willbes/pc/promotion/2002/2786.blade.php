@@ -111,34 +111,34 @@
         <div class="evtCtnsBox evt_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2786_top.jpg" alt="전국모의고사">
             <div class="ani">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2786_top_omr.png" alt="5월" data-aos="zoom-in">
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2786_top_omr.png" alt="10월" data-aos="zoom-in">
             </div>
         </div>
 
         <div class="evtCtnsBox wb_01" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/09/2786_01.jpg"  alt="과목개편"/>           
+			<img src="https://static.willbes.net/public/images/promotion/2022/09/2786_01.jpg"  alt="전 경찰채용 출제위원"/>           
 		</div>
 
         <div class="evtCtnsBox wb_02" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/09/2786_02.jpg"  alt="출제비율"/>           
+			<img src="https://static.willbes.net/public/images/promotion/2022/09/2786_02.jpg"  alt="과목개편"/>           
 		</div>
 
         <div class="evtCtnsBox wb_03" data-aos="fade-up" id="evt_01" >
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2786_03.jpg"  alt="출제비율"/>  
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2786_03.jpg"  alt="전국모의고사 시간표"/>  
                 <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=355437&" target="_blank" title="응시방법 안내" style="position: absolute; left: 20.09%; top: 86.71%; width: 29.29%; height: 6.47%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/pass/mockTestNew/apply/cate/" target="_blank" title="신청하기" style="position: absolute; left: 50.8%; top: 86.65%; width: 29.29%; height: 6.47%;  z-index: 2;"></a>  
             </div>       
 		</div>
 
         <div class="evtCtnsBox wb_04" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/09/2786_04.jpg"  alt="지금 응시하세요"/>           
+			<img src="https://static.willbes.net/public/images/promotion/2022/09/2786_04.jpg"  alt="지역 캠퍼스"/>           
 		</div>
 
      
         <div class="evtCtnsBox wb_05" data-aos="fade-up" id="evt_02">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2786_05.jpg"  alt="시간표 및 장소" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2786_05.jpg"  alt="이벤트" />
                 <a href="javascript:void(0)" onclick="giveCheck()" title="할인쿠폰 받기" style="position: absolute; left: 29.91%; top: 48.2%; width: 39.82%; height: 4.7%; z-index: 2;"></a>
                 <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute; left: 57.14%; top: 66.24%; width: 29.29%; height: 6.26%; z-index: 2;"></a> 
             </div>

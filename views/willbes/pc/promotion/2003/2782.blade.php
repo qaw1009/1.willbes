@@ -17,14 +17,14 @@
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a:hover {border:1px solid #000}*/
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
-        .wb_top {background:#c0ebfe; overflow: hidden;}
+        .wb_top {background:#fed6bb; overflow: hidden;}
         .wb_top img {z-index: 100;}
         .wb_top span {position:absolute; display:block}
-        .wb_top span.circle01 {background:#93ddfe; opacity:0.8; width:800px; height:800px; border-radius:50%; top:-400px; left:-200px; z-index: 0; animation:upDown 5s infinite;-webkit-animation:upDown 5s infinite;}
+        .wb_top span.circle01 {background:#febc8f; opacity:0.8; width:800px; height:800px; border-radius:50%; top:-400px; left:-200px; z-index: 0; animation:upDown 5s infinite;-webkit-animation:upDown 5s infinite;}
         @@keyframes upDown{
             from{transform:scale(1)}
             50%{transform:scale(1.5)}
@@ -36,7 +36,7 @@
             to{transform:scale(1)}
         }
 
-        .wb_top span.circle02 {background:#1194f0; opacity:0.3; width:600px; height:600px; border-radius:50%; bottom:-300px; left:60%; z-index: 0; animation:upDown02 3s infinite;-webkit-animation:upDown02 3s infinite;}
+        .wb_top span.circle02 {background:#febc90; opacity:0.3; width:600px; height:600px; border-radius:50%; bottom:-300px; left:60%; z-index: 0; animation:upDown02 3s infinite;-webkit-animation:upDown02 3s infinite;}
         @@keyframes upDown02{
             from{transform:scale(1)}
             50%{transform:scale(0.8)}
@@ -75,36 +75,46 @@
             <span class="circle01"></span>
             <span class="circle02"></span>
             <span class="circle03"></span>
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2783_top.png" alt="법원 9급 2~5순환 종합반" data-aos="fade-up"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2782_top.png" alt="법원 9급 2~5순환 종합반" data-aos="fade-up"/>
         </div>
 
         <div class="evtCtnsBox wb_01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2783_01.jpg" alt="합격생 배출 1위" data-aos="fade-up"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2782_01.jpg" alt="합격생 배출 1위" data-aos="fade-up"/>
         </div>
 
         <div class="evtCtnsBox wb_02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2783_02.jpg" alt="동행의 힘"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2782_02.jpg" alt="동행의 힘"/>
         </div>
 
         <div class="evtCtnsBox wb_03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2783_03.jpg" alt="당신의 합격 우리가 만들어 드립니다."/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2782_03.jpg" alt="당신의 합격 우리가 만들어 드립니다."/>
         </div>
 
         <div class="evtCtnsBox wb_04" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2783_04.jpg" alt="커리큘럼"/>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2782_04.jpg" alt="커리큘럼"/>
+                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2696" title="pass 자세히 보기" target="_blank" style="position: absolute; left: 9.02%; top: 83.49%; width: 26.52%; height: 10.09%; z-index: 2;"></a>
+
+                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU67JiI67mE7Iic7ZmY&course_idx=" title="예비순환" style="position: absolute; left: 0.63%; top: 76.61%; width: 15.98%; height: 8.62%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MeyInO2ZmA%3D%3D" title="1순환" style="position: absolute; left: 17.5%; top: 76.61%; width: 15.98%; height: 8.62%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MuyInO2ZmA%3D%3D" title="2순환" style="position: absolute; left: 33.93%; top: 76.61%; width: 15.98%; height: 8.62%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6M%2ByInO2ZmA%3D%3D" title="3순환" style="position: absolute; left: 50.18%; top: 76.61%; width: 15.98%; height: 8.62%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NOyInO2ZmA%3D%3D" title="4순환" style="position: absolute; left: 66.61%; top: 76.61%; width: 15.98%; height: 8.62%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NeyInO2ZmA%3D%3D" title="5순환" style="position: absolute; left: 83.04%; top: 76.61%; width: 15.98%; height: 8.62%; z-index: 2;" target="_blank"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_05" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2783_05.jpg" alt="면접합격률 99%"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2782_05.jpg" alt="면접합격률 99%"/>
         </div>
 
         <div class="evtCtnsBox wb_06" data-aos="fade-up">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2783_06.jpg" alt=""/><br>
+                <img src="https://static.willbes.net/public/images/promotion/2022/09/2782_06.jpg" alt=""/><br>
                 <a href="http://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" data-aos="fade-right" class="NSK-Black">더 많은 합격수기 확인하기  →</a>
             </div>
-            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3059/prod-code/201303" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/09/2783_07.jpg" alt=""/></a>
-            <p class="mt150"><a href="javascript:void(0);" onclick="showPopup();" title="설문 참여"><img src="https://static.willbes.net/public/images/promotion/2022/09/2783_08.jpg" alt=""/></a></p>
+            <a href="https://pass.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/201311" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/09/2782_07.jpg" alt=""/></a>
+            <p class="mt150"><a href="javascript:void(0);" onclick="showPopup();" title="설문 참여"><img src="https://static.willbes.net/public/images/promotion/2022/09/2782_08.jpg" alt=""/></a></p>
         </div>
     </div>
     <!-- End Container -->

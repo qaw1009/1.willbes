@@ -76,10 +76,10 @@
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2785_05.jpg" alt="이미지 다운 및 소문내기" />
                 <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute;left: 28.73%;top: 58.35%;width: 42.38%;height: 5.06%;z-index: 2;"></a>
-                <a href="#none" title="네이버" style="position: absolute;left: 8.73%;top: 90.95%;width: 15.38%;height: 7.06%;z-index: 2;"></a>
-                <a href="#none" title="다음" style="position: absolute;left: 27.23%;top: 90.95%;width: 15.38%;height: 7.06%;z-index: 2;"></a>
-                <a href="#none" title="디씨" style="position: absolute;left: 46.73%;top: 90.95%;width: 20.38%;height: 7.06%;z-index: 2;"></a>
-                <a href="#none" title="인스타그램" style="position: absolute;left: 68.73%;top: 90.95%;width: 21.88%;height: 7.06%;z-index: 2;"></a>
+                <a href="https://cafe.naver.com/gugrade" target="_blank" title="네이버" style="position: absolute;left: 8.73%;top: 90.95%;width: 15.38%;height: 7.06%;z-index: 2;"></a>
+                <a href="https://cafe.daum.net/9glade" target="_blank" title="다음" style="position: absolute;left: 27.23%;top: 90.95%;width: 15.38%;height: 7.06%;z-index: 2;"></a>
+                <a href="https://gall.dcinside.com/board/lists/?id=government_new1" target="_blank" title="디씨" style="position: absolute;left: 46.73%;top: 90.95%;width: 20.38%;height: 7.06%;z-index: 2;"></a>
+                <a href="https://www.instagram.com/willbes_prosecution_team/" target="_blank" title="인스타그램" style="position: absolute;left: 68.73%;top: 90.95%;width: 21.88%;height: 7.06%;z-index: 2;"></a>
             </div>
 		</div>
 

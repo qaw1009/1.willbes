@@ -19,7 +19,7 @@
         /************************************************************/ 
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/09/2785_top_bg.jpg) no-repeat center top; height: 1363px;}        
-        .wb_top .imgA {position: absolute; top:225px; left:50%; margin-left:-466.5px; z-index: 2;}
+        .wb_top .imgA {position: absolute; top:225px; left:52.5%; margin-left:-466.5px; z-index: 2;}
 
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/09/2785_01_bg.jpg) no-repeat center top;}
 

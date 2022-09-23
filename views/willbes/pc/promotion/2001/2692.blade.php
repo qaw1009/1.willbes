@@ -38,7 +38,7 @@
 
         .wb_01 {background:#F5F5F7}
 
-        .wb_02 {background:#333; padding-bottom:100px}
+        .wb_02 {background:#313131; padding-bottom:100px}
         .wb_02 .wrap a {background:#3333cc; color:#fff; font-size:35px;display:flex; justify-content: center; align-items: center;}
         .wb_02 .wrap a:hover {background:#FF5D00;}   
         .wb_02 .wrap a span {font-size:20px; margin-left:20px}   

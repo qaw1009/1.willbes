@@ -2,7 +2,7 @@
 <div class="loadMap">
     <p class="start"><span>START</span></p>
     <ul>
-        <li class="lmTitle"><a href="#none">예비순환 기초이론(1~3월)</a>
+        <li class="lmTitle"><a href="#none">예비순환 기초이론(5~7월)</a>
             <div class="lmCts">
                 <div>
                         <span><‘기초’의 과정><br>
@@ -31,7 +31,7 @@
                 <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU67JiI67mE7Iic7ZmY" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
-        <li class="lmTitle"><a href="#none">1순환 기본이론(4~5월)</a>
+        <li class="lmTitle"><a href="#none">1순환 기본이론(8~9월)</a>
             <div class="lmCts">
                 <div>
                         <span>
@@ -61,7 +61,7 @@
                 <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MeyInO2ZmA%3D%3D" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
-        <li class="lmTitle"><a href="#none">2순환 심화이론(6~8월)</a>
+        <li class="lmTitle"><a href="#none">2순환 심화이론(10~12월)</a>
             <div class="lmCts">
                 <div>
                     <span>
@@ -92,7 +92,7 @@
                 <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MuyInO2ZmA%3D%3D" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
-        <li class="lmTitle"><a href="#none">3순환 연결과정(9월)</a>
+        <li class="lmTitle"><a href="#none">3순환 연결과정(1월)</a>
             <div class="lmCts">
                 <div>
                     <span>
@@ -123,7 +123,7 @@
                 <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6M%2ByInO2ZmA%3D%3D" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
-        <li class="lmTitle"><a href="#none">4순환 진도별 모의고사(10~12월)</a>
+        <li class="lmTitle"><a href="#none">4순환 진도별 모의고사(2~4월)</a>
             <div class="lmCts">
                 <div>
                     <span>
@@ -155,7 +155,7 @@
                 <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NOyInO2ZmA%3D%3D" class="moreBtn">강의 바로보기 ></a>
             </div>
         </li>
-        <li class="lmTitle"><a href="#none">5순환 전범위 모의고사(1~2월)</a>
+        <li class="lmTitle"><a href="#none">5순환 전범위 모의고사(5~6월)</a>
             <div class="lmCts">
                 <div>
                     <span>

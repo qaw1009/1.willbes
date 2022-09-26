@@ -55,18 +55,14 @@
                     <colgroup>
                         <col style="width: 70px;">
                         <col style="width: 160px;">
-                        <col style="width: 350px;">
-                        <col style="width: 120px;">
-                        <col style="width: 120px;">
+                        <col style="width: auto;">
                         <col style="width: 120px;">
                     </colgroup>
                     <thead>
                     <tr>
                         <th>NO<span class="row-line">|</span></th>
                         <th colspan="2">이벤트 정보<span class="row-line">|</span></th>
-                        <th>진행상태<span class="row-line">|</span></th>
-                        <th>참여대상<span class="row-line">|</span></th>
-                        <th>조회수</th>
+                        <th>진행상태</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -107,8 +103,10 @@
                                 <span class="off">마감</span>
                             @endif
                         </td>
+                        {{-- 22-09-26주석
                         <td class="w-user">{{$row['TakeTypeName']}}</td>
                         <td class="w-view">{{$row['ReadCnt']}}</td>
+                        --}}
                     </tr>
                     @php $paging['rownum']-- @endphp
                     @endforeach

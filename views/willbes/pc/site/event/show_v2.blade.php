@@ -18,7 +18,6 @@
                                 <col>
                                 <col style="width: 150px;">
                                 <col style="width: 120px;">
-                                <col style="width: 120px;">
                             </colgroup>
                             <thead>
                             <tr>
@@ -39,8 +38,10 @@
                                         <a href="//{{$data['Link']}}" class="btnstA" target="_blank">바로가기 ></a><span class="row-line">|</span>
                                     @endif
                                 </td>
-                                <td class="w-date">{{$data['RegDay']}}<span class="row-line">|</span></td>
+                                <td class="w-date">{{$data['RegDay']}}</td>
+                                {{-- 22-09-26주석 
                                 <td class="w-click"><strong>조회수</strong> {{$data['ReadCnt']}}</td>
+                                --}}
                             </tr>
                             </thead>
                             <tbody>

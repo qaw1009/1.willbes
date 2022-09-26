@@ -16,7 +16,7 @@
                         <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                             <colgroup>
                                 <col>
-                                <col style="width: 150px;">
+                                <col style="width: auto;">
                                 <col style="width: 120px;">
                             </colgroup>
                             <thead>

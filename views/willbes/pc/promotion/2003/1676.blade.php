@@ -76,7 +76,7 @@
             </map>  
         </div>
 
-        @if(time() < strtotime('202209190000'))
+        @if(time() < strtotime('202210030000'))
             <div class="evtCtnsBox evttop_banners" >
                 <div class="wrap" data-aos="fade-left">
                     {{--
@@ -92,11 +92,11 @@
                     </div> 
                     <div class="btns">
                         <div>
-                            9/12(월) ~ 9/16(금)
+                            9/26(월)~9/30(금)
                             <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank">접수하기 ></a>
                         </div>
                         <div>
-                            9/17(토) ~ 9/18(일)
+                            10/1(토)~10/2(일)
                             <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank">응시하기 ></a>
                         </div>
                     </div>

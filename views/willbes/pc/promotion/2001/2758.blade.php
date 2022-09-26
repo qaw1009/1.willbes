@@ -92,7 +92,7 @@
 
         /*유튜브*/
         .youtube {width:640px; height:360px; background:#000; margin-top:0 !important}
-        .youtube iframe {width:640px; height:360px}  
+        .youtube object {width:640px; height:360px}  
 
         .passgo {position:absolute; width:500px; height:80px; line-height:80px; bottom:-35px; left:50%; margin-left:-250px; z-index: 10;}
         .passgo a {display:block; border-radius:50px; color:#fff; background:#000; font-size:40px}
@@ -242,93 +242,93 @@
             <div class="tabContaier" id="apply">    
                 <ul>
                     <li>
-                        <a href="#tab4" class="active">
+                        <a href="#tab1" class="active">
                          <span>헌법</span> 이국령
                         </a>
                     </li>   
                     <li>
-                        <a href="#tab1">
-                            <span>형사법</span> 신광은
+                        <a href="#tab2">
+                            <span>형사법</span> 임종희
                         </a>
                     </li>                            
                     <li>
-                        <a href="#tab2">
-                         <span>경찰학</span> 장정훈
+                        <a href="#tab3">
+                         <span>형법</span> 문형석
                         </a>
                     </li>
                     <li>
-                        <a href="#tab3">
-                         <span>헌법</span> 김원욱
+                        <a href="#tab4">
+                         <span>형소법</span> 김한기
                         </a>
                     </li>            
                     <li>
                         <a href="#tab5">
-                         <span>헌법</span> 문태환
+                         <span>경찰학</span> 박우찬
                         </a>
                     </li>                 
                     <li>
-                        <a href="#tab7">
-                            <span>범죄학</span> 박상민
+                        <a href="#tab6">
+                            <span>범죄학</span> 김한기
                         </a>
                     </li>             
-                </ul>
-                <div id="tab4" class="tabContents">
-                    <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div>
-                        <p class="NSK-Black">NEW 헌법 전문가 경찰 헌법 이국령 교수</p>
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">헌법 이국령</a>
-                        <span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2583" target="_blank">22년 1차 시험 완벽 적중 보기 ></a></span>
-                    </div>                                
-                </div> 
+                </ul>                
                 <div id="tab1" class="tabContents">
                     <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <object data="https://www.youtube.com/embed/ueqN7v3wgKc?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
-                        <p class="NSK-Black">형사법 공부방법 & 커리큘럼</p>
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51160?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">형사법 신광은</a>
-                        <span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2593" target="_blank">22년 1차 시험 완벽 적중 보기 ></a></span>
+                        <p class="NSK-Black">NEW ALL in One 헌법</p>
+                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">헌법 이국령</a>
+                        {{--<span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2593" target="_blank">22년 1차 시험 완벽 적중 보기 ></a></span>--}}
                     </div>                        
                 </div>
                 <div id="tab2" class="tabContents">
                     <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/VHTrL5w2IF4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <object data="https://www.youtube.com/embed/6zd2TPGVf84?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
-                        <p class="NSK-Black">경찰학 공부방법 & 커리큘럼</p>
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51161?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">경찰학 장정훈</a>
-                        <span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2592" target="_blank">22년 1차 시험 완벽 적중 보기 ></a></span>
+                        <p class="NSK-Black">NEW ALL in One 형사법</p>
+                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51394?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">형사법 임종희</a>
+                        {{--<span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2592" target="_blank">22년 1차 시험 완벽 적중 보기 ></a></span>--}}
                     </div>                        
                 </div> 
                 <div id="tab3" class="tabContents">
                     <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/UB91DCctYgU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <object data="https://www.youtube.com/embed/c_cRv4ZclJo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
-                        <p class="NSK-Black">헌법 김원욱 기본이론 오리엔테이션</p>
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51146?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">헌법 김원욱</a>
-                        <span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2594" target="_blank">22년 1차 시험 완벽 적중 보기 ></a></span>
+                        <p class="NSK-Black">NEW ALL in One 형법</p>
+                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51392?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">형법 문형석</a>
+                        {{--<span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2594" target="_blank">22년 1차 시험 완벽 적중 보기 ></a></span>--}}
                     </div>                               
-                </div>              
+                </div>
+                <div id="tab4" class="tabContents">
+                    <div class="youtube">
+                        <object data="https://www.youtube.com/embed/iQQRQEYkoIE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
+                    </div>
+                    <div>
+                        <p class="NSK-Black">NEW ALL in One 형소법</p>
+                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51389?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">형소법 김한기</a>
+                        {{--<span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2583" target="_blank">22년 1차 시험 완벽 적중 보기 ></a></span>--}}
+                    </div>                                
+                </div> 
                 <div id="tab5" class="tabContents">
                     <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/WeOyg1YPDfw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <object data="https://www.youtube.com/embed/zj9uAPnA618?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
-                        <p class="NSK-Black">헌법 문태환 기본이론 오리엔테이션</p>
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51369?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">헌범 문태환</a>
+                        <p class="NSK-Black">NEW ALL in One 경찰학</p>
+                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51395?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">경찰학 박우찬</a>
                     </div>                          
                 </div>              
-                <div id="tab7" class="tabContents">
+                <div id="tab6" class="tabContents">
                     <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/8T1HxQ5PPhQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <object data="https://www.youtube.com/embed/4xZM-lm67Bw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
-                        <p class="NSK-Black">[범죄학OT] 범죄학의 혁명! 박상민으로 끝!</p>
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51278?subject_idx=2178&subject_name=%EB%B2%94%EC%A3%84%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">범죄학 박상민</a>
-                    </div>                          
+                        <p class="NSK-Black">NEW ALL in One 범죄학</p>
+                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51398?subject_idx=2178&subject_name=%EB%B2%94%EC%A3%84%ED%95%99%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">범죄학 김한기</a>
+                    </div>                        
                 </div>                                
             </div>    
         </div>

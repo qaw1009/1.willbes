@@ -53,7 +53,7 @@
     </div>
 
     <div class="evtCtnsBox evt03" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/04/2643m_03.jpg" alt="윌비스 검찰팀" />  
+        <img src="https://static.willbes.net/public/images/promotion/2022/09/2643m_03.jpg" alt="윌비스 검찰팀" />  
     </div>
 
     <div class="evtCtnsBox evt04" data-aos="fade-up">

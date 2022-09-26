@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Certificate extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF','memberF');
+    protected $models = array('classroomF', 'memberF', 'order/orderListF');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -200,19 +200,20 @@ class Certificate extends \app\controllers\FrontController
         $order_prod_idx = $this->_req('op');
         $prod_code = $this->_req('p');
         $prod_code_sub = $this->_req('ps');
+        $sess_mem_idx = $this->session->userdata('mem_idx');
 
         if (empty($order_idx) === true || empty($order_prod_idx) === true || empty($prod_code) === true || empty($prod_code_sub) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        // 주문정보 조회
+        // 수강정보 조회
         $arr_condition = [
             'EQ' => [
                 'OrderIdx' => $order_idx,
                 'OrderProdIdx' => $order_prod_idx,
                 'ProdCode' => $prod_code,
                 'ProdCodeSub' => $prod_code_sub,
-                'MemIdx' => $this->session->userdata('mem_idx')
+                'MemIdx' => $sess_mem_idx
             ]
         ];
 
@@ -220,14 +221,36 @@ class Certificate extends \app\controllers\FrontController
         if (empty($data) === true) {
             show_alert('수강정보가 없습니다.', 'back');
         }
+        $data = element('0', $data);
+
+        // 경찰학원
+        if ($data['SiteCode'] == '2002') {
+            // 주문정보 조회
+            $order_data = $this->orderListFModel->findOrderByOrderIdx($order_idx, $sess_mem_idx);
+            if (empty($order_data) === true) {
+                show_alert('주문정보가 없습니다.', 'back');
+            }
+
+            $cert_data = [
+                'SiteCode' => $data['SiteCode'],
+                'ProdName' => get_var($data['subProdNameShort'], $data['subProdName']),
+                'MinStudyStartDate' => date('m/d', strtotime($data['StudyStartDate'])),
+                'MaxStudyEndDate' => date('m/d', strtotime($data['StudyEndDate'])),
+                'OrderNo' => $order_data['OrderNo'],
+                'PayMethodCcdName' => str_replace_array(['결제(방문)', '실시간 ', '입금(가상계좌)', '(간편결제)'], '', $order_data['PayMethodCcdName']),
+                'RealPayPrice' => $order_data['RealPayPrice'],
+            ];
+        } else {
+            $cert_data = $data;
+        }
 
         return $this->load->view('/classroom/certificate/off_lecture', [
-            'data' => element('0', $data)
+            'data' => $cert_data
         ]);
     }
 
     /**
-     * 학원강좌 종합반 서브강좌 수강증 보기
+     * 학원강좌 종합반 수강증 보기 (경찰 : 종합반, 임용 : 서브강좌)
      * @return object|string
      */
     public function offPackage()
@@ -236,18 +259,19 @@ class Certificate extends \app\controllers\FrontController
         $order_prod_idx = $this->_req('op');
         $prod_code = $this->_req('p');
         $prod_code_sub = $this->_req('ps');
+        $sess_mem_idx = $this->session->userdata('mem_idx');
 
-        if (empty($order_idx) === true || empty($order_prod_idx) === true || empty($prod_code) === true || empty($prod_code_sub) === true) {
+        if (empty($order_idx) === true || empty($order_prod_idx) === true || empty($prod_code) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        // 주문정보 조회
+        // 수강정보 조회
         $arr_condition = [
             'EQ' => [
                 'OrderIdx' => $order_idx,
                 'OrderProdIdx' => $order_prod_idx,
                 'ProdCode' => $prod_code,
-                'MemIdx' => $this->session->userdata('mem_idx')
+                'MemIdx' => $sess_mem_idx
             ]
         ];
 
@@ -256,17 +280,52 @@ class Certificate extends \app\controllers\FrontController
             show_alert('수강정보가 없습니다.', 'back');
         }
 
-        // 서브강좌 셋팅
-        $sub_lec_data = array_pluck(json_decode($pkg_data['OrderSubProdData'], true), 'ProdName', 'ProdCode');
+        // 경찰학원
+        if ($pkg_data['SiteCode'] == '2002') {
+            // 주문정보 조회
+            $order_data = $this->orderListFModel->findOrderByOrderIdx($order_idx, $sess_mem_idx);
+            if (empty($order_data) === true) {
+                show_alert('주문정보가 없습니다.', 'back');
+            }
 
-        // 수강증 데이터
-        $data = [
-            'CertNo' => $pkg_data['CertNo'],
-            'ProdName' => element($prod_code_sub, $sub_lec_data)
-        ];
+            // 서브강좌 수강정보 조회
+            $sub_lec_data = $this->classroomFModel->getLecture($arr_condition, [],false, true);
+            if (empty($sub_lec_data) === true) {
+                show_alert('서브강좌 수강정보가 없습니다.', 'back');
+            }
+
+            // 서브강좌의 최소 수강시작일, 최대 수강종료일 조회
+            $min_study_start_date = date('m/d', strtotime(min(array_pluck($sub_lec_data, 'StudyStartDate'))));
+            $max_study_end_date = date('m/d', strtotime(max(array_pluck($sub_lec_data, 'StudyEndDate'))));
+            
+            $cert_data = [
+                'SiteCode' => $pkg_data['SiteCode'],
+                'ProdName' => get_var($pkg_data['ProdNameShort'], $pkg_data['ProdName']),
+                'MinStudyStartDate' => $min_study_start_date,
+                'MaxStudyEndDate' => $max_study_end_date,
+                'OrderNo' => $order_data['OrderNo'],
+                'PayMethodCcdName' => str_replace_array(['결제(방문)', '실시간 ', '입금(가상계좌)', '(간편결제)'], '', $order_data['PayMethodCcdName']),
+                'RealPayPrice' => $order_data['RealPayPrice'],
+                'CertTitle' => '종합반'
+            ];
+        } else {
+            if (empty($prod_code_sub) === true) {
+                show_alert('필수 파라미터 오류입니다.', 'back');
+            }
+
+            // 서브강좌 상품명 조회
+            $sub_lec_data = array_pluck(json_decode($pkg_data['OrderSubProdData'], true), 'ProdName', 'ProdCode');
+
+            $cert_data = [
+                'SiteCode' => $pkg_data['SiteCode'],
+                'CertNo' => $pkg_data['CertNo'],
+                'ProdName' => element($prod_code_sub, $sub_lec_data),
+                'CertTitle' => '단과반'
+            ];
+        }
 
         return $this->load->view('/classroom/certificate/off_lecture', [
-            'data' => $data
+            'data' => $cert_data
         ]);
     }
 }

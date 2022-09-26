@@ -27,6 +27,11 @@
                                         <li>(수강증번호 : {{$row['CertNo']}})</li>
                                     </ul>
                                 @endif
+
+                                @if(in_array($row['SiteCode'], ['2002']))
+                                    <div class="btnblue02 mt5"><a href="javascript:void(0);" onclick="fnCertificate('Package', '{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '');">수강증 보기 ></a></div>
+                                @endif
+
                                 @if($row['PackTypeCcd'] == '648003')
                                     <div class="btnblue02 mt5"><a href="javascript:;" onclick="ViewAssignProf('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')">강사선택현황보기 ></a></div>
                                 @endif
@@ -275,7 +280,7 @@
                                     <div class="mb10"><a href="#none" onclick="fnBogang('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}', '')" class="btnStfull03">보강/복습동영상 신청 ></a></div>
                                 @endif
 
-                                @if(in_array($row['SiteCode'], ['2018']))
+                                @if(in_array($row['SiteCode'], ['2002', '2018']))
                                     <div class="mb10"><a href="javascript:void(0);" onclick="fnCertificate('Lecture', '{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}');" class="btnStfull04">수강증 보기 ></a></div>
                                 @endif
                             </td>

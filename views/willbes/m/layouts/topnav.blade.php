@@ -62,6 +62,11 @@
                             <a href="{{ front_url('/board/schedule', true) }}">
                                 <button type="button" class="classroom"><span>강의실배정표</span></button>
                             </a>
+                        @elseif($__cfg['SiteGroupCode'] == '1001')
+                            {{-- 경찰그룹추가 --}}
+                            <a href="{{ front_app_url('/classroom/off/list/ongoing', 'www', false, true) }}">
+                                <button type="button" class="classroom"><span>수강증</span></button>
+                            </a>
                         @endif
                         @if($__cfg['SiteCode'] != '2017' && $__cfg['IsPassSite'] === false)
                             {{-- 검색영역 (임용, 학원사이트 제외) --}}

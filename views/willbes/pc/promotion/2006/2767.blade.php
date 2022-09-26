@@ -155,9 +155,9 @@
             </div> 
             <div class="wrap" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2767_04.jpg" alt="손해평가사 동영상 수강신청" />			  
-                <a href="#none" onclick="javascript:alert('준비중입니다.');" title="1차 대비 종합반" style="position: absolute; left: 63.39%; top: 22.75%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
-                <a href="#none" onclick="javascript:alert('준비중입니다.');" title="2차 대비 종합반" style="position: absolute; left: 63.39%; top: 44.84%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
-                <a href="#none" onclick="javascript:alert('준비중입니다.');" title="1차 + 2차 대비 종합반" style="position: absolute; left: 63.39%; top: 67.19%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
+                <a href="https://job.willbes.net/lecture/index/cate/309007/pattern/only" target="_blank" title="1차 대비 종합반" style="position: absolute; left: 63.39%; top: 22.75%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
+                <a href="https://job.willbes.net/lecture/index/cate/309007/pattern/only" target="_blank" style="position: absolute; left: 63.39%; top: 44.84%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
+                <a href="https://job.willbes.net/Package/index/cate/309007/pack/648001" target="_blank" title="1차 + 2차 대비 종합반" style="position: absolute; left: 63.39%; top: 67.19%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
             </div>            
 		</div> 
 

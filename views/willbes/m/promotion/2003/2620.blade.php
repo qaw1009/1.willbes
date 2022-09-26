@@ -34,11 +34,11 @@
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/04/2620m_01.jpg" alt="공부법이 존재" >
+        <img src="https://static.willbes.net/public/images/promotion/2022/09/2620m_01.jpg" alt="공부법이 존재" >
     </div>
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/04/2620m_02.jpg" alt="윌비스 검찰팀" > 
+        <img src="https://static.willbes.net/public/images/promotion/2022/09/2620m_02.jpg" alt="윌비스 검찰팀" > 
     </div> 
 </div>
 

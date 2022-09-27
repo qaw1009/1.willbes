@@ -27,14 +27,14 @@
                                 <td>{{$val}}</td>
                                 <td>
                                     @if(empty($arr_download_list[$key]) === false && empty($arr_download_list[$key][0]) === false)
-                                        <a class="btn01" href="{{front_url('/examInfo/download?path='.urlencode($arr_download_list[$key][0]['file_path']).'&fname='.urlencode($arr_download_list[$key][0]['file_real_name']))}}">자료받기 ></a>
+                                        <a class="btn01" href="{{front_url('/examInfo/download?path='.urlencode($arr_download_list[$key][0]['file_path']).'&fname='.urlencode($arr_download_list[$key][0]['file_real_name']))}}">공고문 보기 ></a>
                                     @else
                                         준비중
                                     @endif
                                 </td>
                                 <td>
                                     @if(empty($arr_download_list[$key]) === false && empty($arr_download_list[$key][1]) === false)
-                                        <a class="btn01" href="{{front_url('/examInfo/download?path='.urlencode($arr_download_list[$key][1]['file_path']).'&fname='.urlencode($arr_download_list[$key][1]['file_real_name']))}}">자료받기 ></a>
+                                        <a class="btn01" href="{{front_url('/examInfo/download?path='.urlencode($arr_download_list[$key][1]['file_path']).'&fname='.urlencode($arr_download_list[$key][1]['file_real_name']))}}">공고문 보기 ></a>
                                     @else
                                         준비중
                                     @endif

@@ -70,27 +70,27 @@
         .youtube_divide .preview_list_area .preview_list ul li .text_box span {font-size:12px;font-weight:400;line-height:18px;color:#666;}
 
          /* tip */
-        .wb_cts_notice {background:#ccc; text-align:left; padding:150px 0}
-        .wb_tipBox {border:1px solid #333; padding:30px; width:980px; margin:0 auto; background:#fff; font-size:14px}
+        .wb_cts_notice {background:#f3f3f3; font-size:14px; padding:150px 0}
+        .wb_tipBox {width:900px; margin:0 auto; text-align:left;}
         .wb_tipBox > strong {font-size:16px !important; font-weight:bold; color:#333; display:block; margin-bottom:20px}
         .wb_tipBox p {font-size:24px !important; font-weight:bold;  letter-spacing:-1px; margin:30px 0; color:#111}	
         .wb_tipBox ol li {margin-bottom:20px; line-height:1.4; list-style:decimal; margin-left:15px}
         .wb_tipBox ul {margin-top:20px}
         .wb_tipBox ul li {margin-bottom:5px}
-        .wb_tipBox table {width:100%; border-spacing:0px; border:1px solid #c9c7ca; border-top:2px solid #464646; border-bottom:1px solid #464646; table-layout:auto}
+        .wb_tipBox table {width:100%; border-spacing:0px; border:1px solid #c9c7ca; border-top:2px solid #464646; border-bottom:1px solid #464646; table-layout:auto; background:#fff}
         .wb_tipBox th,
         .wb_tipBox td {text-align:center; padding:7px 10px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4}
         .wb_tipBox th {font-weight:bold; color:#333; background:#f6f0ec;}	
         .wb_tip_orange {color:#c03011;}
 
         /*TAB_tip*/
-        .tab02 {margin-bottom:20px}
-        .tab02 li {display:inline; float:left; width:33.33333%;}
-        .tab02 li a { display:block; text-align:center; font-size:14px; font-weight:bold; background:#323232; color:#fff; padding:14px 0; border:1px solid #323232; margin-right:2px}
+        .tab02 {margin-bottom:20px; display:flex}
+        .tab02 li {width:33.33333%;}
+        .tab02 li a { display:block; text-align:center; background:#323232; color:#fff; padding:14px 0; border:1px solid #323232; margin-right:2px}
         .tab02 li a:hover,
-        .tab02 li a.active {background:#fff; color:#000; border:1px solid #666; border-bottom:1px solid #fff;}
+        .tab02 li a.active {background:#f3f3f3; color:#000; border:1px solid #666; border-bottom:1px solid #f3f3f3; font-weight:bold; }
         .tab02 li:last-child a {margin:0}
-        .tab02:after {content:""; display:block; clear:both}
+
 
     </style>
 
@@ -99,14 +99,14 @@
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB&subject_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/07/1721_sky_title.png" alt="개강강의"></a>
             <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE6riw" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/06/1721_sky1.png" alt="전기직"></a>
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67Ya17Iug&subject_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/06/1721_sky3.png" alt="통신직"></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU66rO17ZWZ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/06/1721_sky3.png" alt="통신직"></a>
         </div>
 
-        <div class="evtCtnsBox wb_top" >            
+        <div class="evtCtnsBox wb_top" data-aos="fade-up">            
             <img src="https://static.willbes.net/public/images/promotion/2022/07/1721_top.jpg" alt="역대급 성적상승"/>      
         </div>
 
-        <div class="evtCtnsBox wb_cts01" >
+        <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/07/1721_01.jpg" alt="신청하기"/>
                 <a href="https://cafe.daum.net/sharkchoi" target="_blank" title="카페" style="position: absolute;left: 13.46%;top: 73.99%;width: 14.23%;height: 9.57%;z-index: 2;"></a>
@@ -115,11 +115,11 @@
             </div>    
         </div>
 
-        <div class="evtCtnsBox wb_cts01s" >
+        <div class="evtCtnsBox wb_cts01s" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1721_01_guide.jpg" alt="수험과목 안내"/>
         </div>
         
-        <div class="evtCtnsBox wb_cts02" >
+        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1721_02.jpg" alt="합경을 이끌어낸 그 과정"/>
             <div class="youtube_contents">
                 <div class="youtube_divide">             
@@ -240,11 +240,11 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts03" >
+        <div class="evtCtnsBox wb_cts03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1721_03.jpg" alt="믿고 따라만 오세요"/>
         </div>
 
-        <div class="evtCtnsBox wb_cts04" >
+        <div class="evtCtnsBox wb_cts04" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/07/1721_04.jpg" alt="커리큘럼"/>
             <div class="tabContaier" id="apply">    
                 <ul class="NSK-Black">    
@@ -264,7 +264,7 @@
             </div>    
         </div>
 
-        <div class="evtCtnsBox wb_cts05" id="t_pass_go" >
+        <div class="evtCtnsBox wb_cts05" id="t_pass_go" data-aos="fade-up">
             <div id="tab01s" class="wrap">            
                 <img src="https://static.willbes.net/public/images/promotion/2022/07/1721_05.jpg" />
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="" style="position: absolute; left: 33.39%; top: 72.57%; width: 33.04%; height: 7.01%; z-index: 2;"></a>
@@ -272,116 +272,115 @@
 
         </div>
 
-        <div class="evtCtnsBox wb_cts_notice">
+        <div class="evtCtnsBox wb_cts_notice" data-aos="fade-up">
             <div class="wb_tipBox">
-            <ul class="tab02">
-                <li><a href="#txt1">수강료 환불규정</a></li>
-                <li><a href="#txt2">수강생 혜택상세</a></li>
-                <li><a href="#txt3">기타</a></li>
-            </ul>
-            <div id="txt1">
-                <p>수강료 환불규정</p>
-                <ol>
-                <li><strong>수강료 환불규정<span class="wb_tip_gray"> (학원의 설립 및 과외교습에 관한 법률 시행령 제 18조 제 3항 별표 4)</span></strong><br />
-                    <br />
-                    <table>
-                    <col />
-                    <col />
-                    <col />
-                    <tr>
-                        <th>수강료징수기간</th>
-                        <th>반환 사유발생일</th>
-                        <th>반환금액</th>
-                    </tr>
-                    <tr>
-                        <td rowspan="4">1개월 이내인 경우</td>
-                        <td>교습개시 이전</td>
-                        <td>이미 납부한 수강료 전액</td>
-                    </tr>
-                    <tr>
-                        <td>총 교습 시간의 1/3 경과 전</td>
-                        <td>이미 납부한수강료의 2/3 해당</td>
-                    </tr>
-                    <tr>
-                        <td>총 교습 시간의 1/2 경과 전</td>
-                        <td>이미 납부한수강료의 1/2 해당</td>
-                    </tr>
-                    <tr>
-                        <td>총 교습 시간의 1/2 경과 후</td>
-                        <td>반환하지아니함</td>
-                    </tr>
-                    <tr>
-                        <td rowspan="2">1개월 초과인 경우</td>
-                        <td>교습 개시 이전</td>
-                        <td>이미 납부한 수강료 전액</td>
-                    </tr>
-                    <tr>
-                        <td>교습 개시 이후</td>
-                        <td>반환 사유가발생한 당해 월의 반환대상 수강료와</br />
-                        나머지 월의 수강료 전액을 합산한 금액</td>
-                    </tr>
-                    </table>
-                    <br />
-                    ▷ 총 교습 시간은 개강월로부터 종강월까지의 수업 개월 수를 말하며, 환불은 1개월을 기준으로 합니다.<br>
-                    ▷ 환불 접수는 전화상담 후 진행 됩니다.<br>
-                    ▷ 카드로 결제하신 경우 부분취소 가능하며, 현금/계좌이체로 결제하신 경우 수강생 본인 명의의 통장으로만 환불금 입금 처리됩니다.<br>
-                    ▷ 환불 기준일은 실제 수강 여부와 상관없이 환불 신청 날짜 (환불 신청서 작성 날짜)를 기준으로 합니다.<br>
-                    ▷ 개강 이후 종합반 과목 수 변경을 원하실 경우, 구매하신 상품을 환불 규정에 의거 환불한 후 재등록 하셔야 합니다.<br>
-                    ▷ 개강일이 지난 후에 강의 결제시, 지난 강의는 동영상으로 제공이 되며, 이후 강의 환불은 결제일과 상관없이 개강일을 기준으로 환불금이 산정됩니다.<br>
-                    ▷ 이미 개강한 강의를 구매하더라도 수강료는 동일합니다.<br />	
-                </li>
-                </ol>
-            </div>
-            <div id="txt2">
-                <p>수강생 혜택상세</p>
-                <ol>        
-                <li><strong>복습 동영상</strong><br />
-                ▷ 종합반 수강 기간 내에 신청 가능합니다.<br />
-                ▷ 현재 진행중인 실강에 대한 복습동영상이 제공되며, 다른 과정은 제공되지 않습니다.<br />
-                ▷ 복습동영상은 최대 30일까지 신청할 수 있습니다.<br />
-                ▷ 복습 동영상은 학원에 직접 방문하여 신청하는 것이 원칙이며, 전화로는 신청이 불가합니다.<br />
-                </li>
-                <li><strong>전국 모의고사</strong><br />
-                ▷ 윌비스 고시학원에서 진행되는 윌비스 Real 모의고사가 제공됩니다.<br />
-                ▷ 선택과목/응시직렬에 따라 몇몇 과목의 모의고사가 제공되지 않을 수 있습니다.<br />
-                </li>
- 
-                <li><strong>공통 사항</strong><br />
-                ▷ 개인 사유에 의해 이용하지 못한 혜택에 대해서는 학원에서 별도로 보상하지 않습니다.<br />
-                ▷ 제공된 혜택은 수강생 본인만 사용할 수 있습니다. 본인 이외의 인원에게 판매/대여/양도할 수 없으며, 적발 시 법적 책임이 있습니다<br />
-                </li>
-                </ol>
-            </div>
-            <div id="txt3">
-                <p>기타</p>
-                <ol>
-                <li><strong>커리큘럼</strong><br />
-                ▷ 커리큘럼은 시험일정이나 학원/강사의 사정에 따라 일부 수정될 수 있습니다.<br />
-                </li>
-                <li><strong>강사진</strong><br />
-                ▷ 강사진은 강사 개인사정이나 학원사정에 따라 변경될 수 있습니다.<br />
-                </li>
-                <li><strong>학원 운영시간</strong><br />
-                ▷ 기술직 강의는 남강빌딩에서 진행 됩니다.<br />
-                </li>
-                <li><strong>TEST 프로그램(전국 모의고사 포함)</strong><br />
-                ▷ 전국모의고사는 4~5회 진행 될 예정이나, 학원사정이나 시험 일정에 따라 기간이 변경될 수 있습니다.<br />
-                </li>
-                <li><strong>강의 수강</strong><br />
-                ▷ 수강 신청한 강의만 수강하실 수 있으며, 무단 청강 적발 시 전액등록조치 혹은 퇴실 조치가 이루어 질 수 있으며, 추가적인 학원 상품 등록이 불가할 수 있습니다.<br />
-                ▷ 등록하신 강좌는 본인만 수강이 가능하며, 본인 이외의 인원에게 판매/대여/양도할 수 없으며, 적발 시 법적 책임이 있습니다.<br />
-                ▷ 선택과목 변경(전반)은 개강 주에만 가능하며, 이후에는 불가능합니다.<br />
-                ▷ 강의는 학원/강사 사정에 의해 폐강될 수 있으며, 시간과 교수진이 변경 될 수 있으며 폐강될 수도 있습니다.
-                (폐강 시, 환불 규정에 의거 환불 처리됩니다.)<br />
-                ▷ 개인 사유로 인하여 결석/조퇴하는 경우, 환불 및 별도의 보강 진행은 불가하며 해당 교습시간을 이월하실 수 없습니다.<br />
-                </li>
-                <li><strong>교재</strong><br />
-                ▷ 교재는 별도 구매입니다. <br />
-                ▷ 강사의 강의계획에 따라 추가적인 교재가 사용될 수도 있습니다.<br />
-                </li>
-                </ol>
-            </div>
-            
+                <ul class="tab02">
+                    <li><a href="#txt1">수강료 환불규정</a></li>
+                    <li><a href="#txt2">수강생 혜택상세</a></li>
+                    <li><a href="#txt3">기타</a></li>
+                </ul>
+                <div id="txt1">
+                    <p>수강료 환불규정</p>
+                    <ol>
+                    <li><strong>수강료 환불규정<span class="wb_tip_gray"> (학원의 설립 및 과외교습에 관한 법률 시행령 제 18조 제 3항 별표 4)</span></strong><br />
+                        <br />
+                        <table>
+                        <col />
+                        <col />
+                        <col />
+                        <tr>
+                            <th>수강료징수기간</th>
+                            <th>반환 사유발생일</th>
+                            <th>반환금액</th>
+                        </tr>
+                        <tr>
+                            <td rowspan="4">1개월 이내인 경우</td>
+                            <td>교습개시 이전</td>
+                            <td>이미 납부한 수강료 전액</td>
+                        </tr>
+                        <tr>
+                            <td>총 교습 시간의 1/3 경과 전</td>
+                            <td>이미 납부한수강료의 2/3 해당</td>
+                        </tr>
+                        <tr>
+                            <td>총 교습 시간의 1/2 경과 전</td>
+                            <td>이미 납부한수강료의 1/2 해당</td>
+                        </tr>
+                        <tr>
+                            <td>총 교습 시간의 1/2 경과 후</td>
+                            <td>반환하지아니함</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">1개월 초과인 경우</td>
+                            <td>교습 개시 이전</td>
+                            <td>이미 납부한 수강료 전액</td>
+                        </tr>
+                        <tr>
+                            <td>교습 개시 이후</td>
+                            <td>반환 사유가발생한 당해 월의 반환대상 수강료와</br />
+                            나머지 월의 수강료 전액을 합산한 금액</td>
+                        </tr>
+                        </table>
+                        <br />
+                        ▷ 총 교습 시간은 개강월로부터 종강월까지의 수업 개월 수를 말하며, 환불은 1개월을 기준으로 합니다.<br>
+                        ▷ 환불 접수는 전화상담 후 진행 됩니다.<br>
+                        ▷ 카드로 결제하신 경우 부분취소 가능하며, 현금/계좌이체로 결제하신 경우 수강생 본인 명의의 통장으로만 환불금 입금 처리됩니다.<br>
+                        ▷ 환불 기준일은 실제 수강 여부와 상관없이 환불 신청 날짜 (환불 신청서 작성 날짜)를 기준으로 합니다.<br>
+                        ▷ 개강 이후 종합반 과목 수 변경을 원하실 경우, 구매하신 상품을 환불 규정에 의거 환불한 후 재등록 하셔야 합니다.<br>
+                        ▷ 개강일이 지난 후에 강의 결제시, 지난 강의는 동영상으로 제공이 되며, 이후 강의 환불은 결제일과 상관없이 개강일을 기준으로 환불금이 산정됩니다.<br>
+                        ▷ 이미 개강한 강의를 구매하더라도 수강료는 동일합니다.<br />	
+                    </li>
+                    </ol>
+                </div>
+                <div id="txt2">
+                    <p>수강생 혜택상세</p>
+                    <ol>        
+                    <li><strong>복습 동영상</strong><br />
+                    ▷ 종합반 수강 기간 내에 신청 가능합니다.<br />
+                    ▷ 현재 진행중인 실강에 대한 복습동영상이 제공되며, 다른 과정은 제공되지 않습니다.<br />
+                    ▷ 복습동영상은 최대 30일까지 신청할 수 있습니다.<br />
+                    ▷ 복습 동영상은 학원에 직접 방문하여 신청하는 것이 원칙이며, 전화로는 신청이 불가합니다.<br />
+                    </li>
+                    <li><strong>전국 모의고사</strong><br />
+                    ▷ 윌비스 고시학원에서 진행되는 윌비스 Real 모의고사가 제공됩니다.<br />
+                    ▷ 선택과목/응시직렬에 따라 몇몇 과목의 모의고사가 제공되지 않을 수 있습니다.<br />
+                    </li>
+    
+                    <li><strong>공통 사항</strong><br />
+                    ▷ 개인 사유에 의해 이용하지 못한 혜택에 대해서는 학원에서 별도로 보상하지 않습니다.<br />
+                    ▷ 제공된 혜택은 수강생 본인만 사용할 수 있습니다. 본인 이외의 인원에게 판매/대여/양도할 수 없으며, 적발 시 법적 책임이 있습니다<br />
+                    </li>
+                    </ol>
+                </div>
+                <div id="txt3">
+                    <p>기타</p>
+                    <ol>
+                    <li><strong>커리큘럼</strong><br />
+                    ▷ 커리큘럼은 시험일정이나 학원/강사의 사정에 따라 일부 수정될 수 있습니다.<br />
+                    </li>
+                    <li><strong>강사진</strong><br />
+                    ▷ 강사진은 강사 개인사정이나 학원사정에 따라 변경될 수 있습니다.<br />
+                    </li>
+                    <li><strong>학원 운영시간</strong><br />
+                    ▷ 기술직 강의는 남강빌딩에서 진행 됩니다.<br />
+                    </li>
+                    <li><strong>TEST 프로그램(전국 모의고사 포함)</strong><br />
+                    ▷ 전국모의고사는 4~5회 진행 될 예정이나, 학원사정이나 시험 일정에 따라 기간이 변경될 수 있습니다.<br />
+                    </li>
+                    <li><strong>강의 수강</strong><br />
+                    ▷ 수강 신청한 강의만 수강하실 수 있으며, 무단 청강 적발 시 전액등록조치 혹은 퇴실 조치가 이루어 질 수 있으며, 추가적인 학원 상품 등록이 불가할 수 있습니다.<br />
+                    ▷ 등록하신 강좌는 본인만 수강이 가능하며, 본인 이외의 인원에게 판매/대여/양도할 수 없으며, 적발 시 법적 책임이 있습니다.<br />
+                    ▷ 선택과목 변경(전반)은 개강 주에만 가능하며, 이후에는 불가능합니다.<br />
+                    ▷ 강의는 학원/강사 사정에 의해 폐강될 수 있으며, 시간과 교수진이 변경 될 수 있으며 폐강될 수도 있습니다.
+                    (폐강 시, 환불 규정에 의거 환불 처리됩니다.)<br />
+                    ▷ 개인 사유로 인하여 결석/조퇴하는 경우, 환불 및 별도의 보강 진행은 불가하며 해당 교습시간을 이월하실 수 없습니다.<br />
+                    </li>
+                    <li><strong>교재</strong><br />
+                    ▷ 교재는 별도 구매입니다. <br />
+                    ▷ 강사의 강의계획에 따라 추가적인 교재가 사용될 수도 있습니다.<br />
+                    </li>
+                    </ol>
+                </div>            
             </div>
         </div> 
 
@@ -500,6 +499,14 @@
                 e.preventDefault()})})}
         ); 
 
+    </script>
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+        $(document).ready( function() {
+        AOS.init();
+        });
     </script>
 
 @stop

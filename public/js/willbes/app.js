@@ -228,6 +228,16 @@ $(function() {
     });
 });
 
+// 게시판 input enter 기능
+$(function() {
+    $('.labelSearch').on('keydown', function(e) {
+        if(e.keyCode == 13) {
+            var param_name = $(this).attr('name');
+            goUrl(param_name, this.value);
+        }
+    });
+});
+
 /**
  * 바로가기 이벤트 팝업 [사용처 : 배너]
  * @param url

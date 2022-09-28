@@ -1295,11 +1295,11 @@ class OrderListModel extends BaseOrderModel
             $data = element('0', $data);
 
             // 출력상품명 설정
-            if ($site_code == '2010') {
-                // 고등고시 (대비년도-과정명(종합반)-과목명-교수명-수강형태)
+            if ($site_code == '2010' || $site_code == '2004') {
+                // 고등고시, 공무원 (대비년도-과정명(종합반)-과목명-교수명-수강형태)
                 $_prod_name = $data['SchoolYear'] . '_' . $data['CourseName'] . '(종합반)_' . $data['SubjectName'] . '_' . $data['ProfName'] . '_' . $data['StudyPatternCcdName'];
             } else {
-                // 자격증, 경찰간부, 공무원 (대비년도-카테고리-상품명(종합반)-수강형태)
+                // 자격증, 경찰간부 (대비년도-카테고리-상품명(종합반)-수강형태)
                 $_prod_name = $data['SchoolYear'] . '_' . $data['LgCateName'] . '_' . $data['ProdName'] . '(종합반)' . '_' . $data['StudyPatternCcdName'];
             }
 

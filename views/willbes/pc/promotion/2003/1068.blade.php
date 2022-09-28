@@ -214,8 +214,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>이론</td>
-						<td>2022 장사원 재배학 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/185329" target="_blank">수강신청</a></td>
+						<td>2023 장사원 재배학 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/198485" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -254,8 +254,8 @@
 					<tr>
 						<td>식용작물</td>
 						<td>이론</td>
-						<td>2022 장사원 식용작물 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/185330" target="_blank">수강신청</a></td>
+						<td>2023 장사원 식용작물 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/198486" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
@@ -298,8 +298,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>이론</td>
-						<td>2022 장사원 재배학 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/188933" target="_blank">수강신청</a></td>
+						<td>2023 장사원 재배학 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/198485" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -399,8 +399,8 @@
 					<tr>
 						<td>토양학</td>
 						<td>이론</td>
-						<td>2022 장사원 토양학 이론강의</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/185331" target="_blank">수강신청</a></td>
+						<td>2023 장사원 토양학 이론강의</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/198576" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>토양학</td>
@@ -431,8 +431,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>이론</td>
-						<td>2022 장사원 재배학 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/185329" target="_blank">수강신청</a></td>
+						<td>2023 장사원 재배학 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/198485" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -555,8 +555,8 @@
 					<tr>
 						<td>토양학</td>
 						<td>이론</td>
-						<td>2022 장사원 토양학 이론강의</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/185331" target="_blank">수강신청</a></td>
+						<td>2023 장사원 토양학 이론강의</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/198576" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>토양학</td>

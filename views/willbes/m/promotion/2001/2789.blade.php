@@ -12,15 +12,15 @@
 <div id="Container" class="Container NSK c_both">
 
     <div class="evtCtnsBox evt_top" data-aos="fade-down">
-        <img src="https://static.willbes.net/public/images/promotion/2022/09/2789m_top.jpg"  alt="기출해서 무료특강" />        
+        <img src="https://static.willbes.net/public/images/promotion/2022/09/2789m_top.jpg"  alt="소통 프로젝트" />        
     </div>
 
     <div class="evtCtnsBox evt01" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/09/2789m_01.jpg" alt="경찰총평 이벤트1"/>      
+        <img src="https://static.willbes.net/public/images/promotion/2022/09/2789m_01.jpg" alt="01. 자료실 무료 개방"/>      
     </div>
 
     <div class="evtCtnsBox evt02" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/09/2789m_02.jpg" alt="경찰총평 이벤트2"/>   
+        <img src="https://static.willbes.net/public/images/promotion/2022/09/2789m_02.jpg" alt="02. 과목별 질문게시판 운영"/>   
         <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51395?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2823%EB%85%84%EB%8C%80%EB%B9%84%29&tab=qna" title="박우찬 경찰학" target="_blank" style="position: absolute; left: 32.78%; top: 33.49%; width: 15.14%; height: 2.78%; z-index: 2;"></a>
         <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2823%EB%85%84%EB%8C%80%EB%B9%84%29&tab=qna" title="이국령 헌법" target="_blank" style="position: absolute; left: 66.11%; top: 33.49%; width: 15.14%; height: 2.78%; z-index: 2;"></a>
 
@@ -35,12 +35,12 @@
     </div>
 
     <div class="evtCtnsBox evt03" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/09/2789m_03.jpg" alt="이벤트 유의사항"/>
+        <img src="https://static.willbes.net/public/images/promotion/2022/09/2789m_03.jpg" alt="03. 공부 루틴"/>
         <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" title="윌비스경찰 채널" target="_blank" style="position: absolute; left: 22.5%; top: 73.75%; width: 55%; height: 9.68%; z-index: 2;"></a>      
     </div>
 
     <div class="evtCtnsBox evt04" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/09/2789m_04.jpg" alt="이벤트 유의사항"/>       
+        <img src="https://static.willbes.net/public/images/promotion/2022/09/2789m_04.jpg" alt="04. 학습강의 지원"/>       
     </div>
 
     {{--기본댓글--}}

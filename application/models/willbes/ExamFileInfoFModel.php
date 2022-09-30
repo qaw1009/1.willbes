@@ -12,24 +12,26 @@ class ExamFileInfoFModel extends WB_Model
         parent::__construct('lms');
     }
 
-    public function fileList($arr_condition = [], $arr_sub_condition = [])
+    public function getYearTarget($arr_condition = [])
     {
-        $column = '
-            b.YearTarget,a.AreaCcd
-            ,CONCAT("[",GROUP_CONCAT(JSON_OBJECT("FileType", a.FileType, "FilePath", a.FilePath, "FileName", a.FileName, "FileRealName", a.FileRealName) ORDER BY a.FileType ASC),"]")
-            AS FileInfo
-        ';
-        $where_sub = $this->_conn->makeWhere($arr_sub_condition)->getMakeWhere(false);
-        $from = "
-            from {$this->_table['exam_file_info']} as a
-            INNER JOIN (
-                SELECT GroupCode,YearTarget FROM {$this->_table['exam_file_info']} {$where_sub}
-                ORDER BY GroupCode DESC LIMIT 1
-            ) AS b ON a.GroupCode = b.GroupCode
-        ";
+        $column = 'GroupCode,YearTarget';
+        $from = " from {$this->_table['exam_file_info']}";
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
-        $query = $this->_conn->query('select '. $column . $from . $where . ' group by a.AreaCcd');
+        $query = $this->_conn->query('select '. $column . $from . $where . 'ORDER BY GroupCode DESC');
+        return $query->result_array();
+    }
+
+    public function fileList($arr_condition = [])
+    {
+        $column = '
+            DataType, GroupCode, AreaCcd
+            ,CONCAT("[",GROUP_CONCAT(JSON_OBJECT("FileType", FileType, "FilePath", FilePath, "FileName", FileName, "FileRealName", FileRealName) ORDER BY FileType ASC),"]") AS FileInfo
+        ';
+        $from = " from {$this->_table['exam_file_info']}";
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        $query = $this->_conn->query('select '. $column . $from . $where . ' group by AreaCcd');
         return $query->result_array();
     }
 }

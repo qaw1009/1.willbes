@@ -16,7 +16,7 @@ class ExamInfo extends \app\controllers\FrontController
     /**
      * 지역별 공고문
      */
-    public function notice()
+    /*public function notice()
     {
         $codes = $this->codeModel->getCcd('734');
         unset($codes['734001']);    //전국제외
@@ -55,6 +55,50 @@ class ExamInfo extends \app\controllers\FrontController
             'exam_area_ccd' => $codes
             ,'year_target' => $year_target
             ,'arr_download_list' => $arr_download_list,
+        ]);
+    }*/
+    public function notice()
+    {
+        $arr_input = $this->_reqG(null);
+        $codes = $this->codeModel->getCcd('734');
+        unset($codes['734001']);    //전국제외
+
+        $arr_condition = [
+            'EQ' => [
+                'SiteCode' => $this->_site_code
+                ,'DataType' => '0'
+                ,'IsStatus' => 'Y'
+                ,'IsUse' => 'Y'
+            ]
+        ];
+        $data['arr_year'] = $this->examFileInfoFModel->getYearTarget($arr_condition);
+        $year_target = empty($data['arr_year']) === false ? $data['arr_year'][0]['GroupCode'] : 'null';
+        $group_code = element('group_code', $arr_input, $year_target);
+
+        $arr_condition = [
+            'EQ' => [
+                'DataType' => '1'
+                ,'GroupCode' => $group_code
+                ,'IsStatus' => 'Y'
+                ,'IsUse' => 'Y'
+            ]
+        ];
+        $result = $this->examFileInfoFModel->fileList($arr_condition);
+        $data['arr_download_list'] = [];
+
+        if (empty($result) === false) {
+            foreach ($result as $row) {
+                $temp_file_info = json_decode($row['FileInfo'],true);
+                foreach ($temp_file_info as $f_row) {
+                    $data['arr_download_list'][$row['AreaCcd']][$f_row['FileType']]['file_real_name'] = $f_row['FileRealName'];
+                    $data['arr_download_list'][$row['AreaCcd']][$f_row['FileType']]['file_path'] = $f_row['FilePath'].$f_row['FileName'];
+                }
+            }
+        }
+        $this->load->view('site/examinfo/notice',[
+            'arr_input' => $arr_input
+            ,'exam_area_ccd' => $codes
+            ,'data' => $data
         ]);
     }
 

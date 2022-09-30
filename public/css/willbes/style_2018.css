@@ -1347,7 +1347,7 @@
     vertical-align: top;
 }
 
-.ssam .willbesNumber .nTit {
+보기 .ssam .willbesNumber .nTit {
     font-size: 17px;
     color: #464646;
 }
@@ -1387,24 +1387,26 @@
 }
 
 .ssam .mapWrap .mapR .traffic {
-    margin-top: 20px;
-    height: 324px;
-    overflow-y: auto
+    margin-top: 10px;
+    height: 130px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px
 }
 
-.ssam .mapWrap .mapR img {
+.ssam .mapWrap .mapR li img {
     vertical-align: middle;
-    margin-right: 10px
+    margin: 0 5px
 }
 
 .ssam .mapWrap .mapR p {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold
 }
 
 .ssam .mapWrap .mapR .line {
     margin: 20px 0;
-    border-top: 1px solid #c6c6c6
+    border-top: 1px solid #f0f0f0
 }
 
 .ssam .mapWrap .mapR ul {

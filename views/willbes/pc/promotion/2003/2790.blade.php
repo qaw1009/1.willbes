@@ -21,8 +21,8 @@
 
         .evt01 {background:#222327;}
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/10/2790_01_bg.jpg) no-repeat center top; height: 1137px;}        
-        .evt01 .imgA {position: absolute; top:1265px; left:50%; margin-left:-450px; z-index: 2;}
-        .evt01 .imgB {position: absolute; top:1350px; left:50%; margin-left:-380px; z-index: 2;}
+        .evt01 .imgA {position: absolute; top:1365px; left:50%; margin-left:-450px; z-index: 2;}
+        .evt01 .imgB {position: absolute; top:1450px; left:50%; margin-left:-380px; z-index: 2;}
 
         .deadline {            
             animation:upDown 1s infinite;

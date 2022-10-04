@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <!--
+        
         <div class="Section gosi-Sec NSK">
             <div class="gosi-bntop">
                 <div id="TechRollingSlider" class="GositabBox">
@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-
+<!--
         <div class="Section gosi-bn03">
             <div class="widthAuto">
                 <div class="tx16 mb20">교수님 추천강좌 / 이벤트 / 최신소식</div>

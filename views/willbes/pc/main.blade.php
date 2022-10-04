@@ -435,7 +435,7 @@
                                   </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-site" rowspan="2">신광은 경찰</td>
+                                    <td class="w-site" rowspan="2">윌비스 경찰</td>
                                     <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                     <td class="w-call">1544-5006</td>
                                     <td class="w-time tx-left pl25">

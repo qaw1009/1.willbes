@@ -32,8 +32,8 @@
         .evtPass {background:#F5F5F7; padding:100px 0}
         .evtPass .title01 {font-size:30px; color:#000; margin-bottom:100px}
         .evtPass .wrap {width:1120px; margin:0 auto}
-        .evtPass .passLecBuy {display:flex; justify-content:space-around; position:absolute; bottom:45px; width:100%; color:#252525; letter-spacing:-1px}
-        .evtPass .passLecBuy div {width:50%; line-height:30px; font-size:22px; font-weight:bold; text-align:center; padding-left:0} 
+        .evtPass .passLecBuy {display:flex; justify-content:space-around; position:absolute; bottom:60px; width:736px; left:50%; margin-left:-368px; color:#252525; letter-spacing:-1px}
+        .evtPass .passLecBuy div {width:50%; line-height:30px; font-size:22px; font-weight:bold; text-align:center;} 
         .evtPass .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
         .evtPass .passLecBuy p span,
         .evtPass .title02 span {color:#ffda39; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
@@ -179,15 +179,14 @@
             </div>
         </div>
 
+        {{--9월--}}
+        @if(time() < strtotime('202210041001'))
         <div class="evtCtnsBox evt_top" data-aos="fade-up">    
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_top.png" alt="올인원 경찰 패스"/>           
 		</div>
 
-        <div class="evtCtnsBox evt_01" data-aos="fade-up">     
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_01.jpg" alt="구매전 안내"/>    
-        </div>
-
-        <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">         
+        <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_01.jpg" alt="구매전 안내"/>           
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_02.jpg" alt="윌비스 경찰 PASS">
                 <div class="passLecBuy NSK-Black"> 
@@ -195,14 +194,14 @@
                         <input type="radio" id="y_pkg1" name="y_pkg" value="200655"/>                
                         <label for="y_pkg1">23년 2차 PASS 신청하기</label>
                     </div>
-                    <div style="margin-left:-370px;">                    
+                    <div>                    
                         <input type="radio" id="y_pkg2" name="y_pkg" value="200654"/>
                         <label for="y_pkg2">23년 1차 PASS 신청하기</label>
                     </div>                 
                 </div>
             </div>
 
-            <div class="check" data-aos="fade-up">
+            <div class="check">
                 <input type="checkbox" id="is_chk1" name="is_chk" value="Y"/>
                 <label for="is_chk1">페이지 하단 윌비스 경찰PASS 이용안내를 모두 확인하였고,이에 동의합니다. </label>
                 <a href="javascript:goDesc('tab01')">이용안내확인하기 ↓</a>
@@ -224,10 +223,59 @@
                 <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기"><img src="https://static.willbes.net/public/images/promotion/2022/07/2718_03_02.png"></a>
             </div>
 
-            <div class="totalPrice NSK-Black" data-aos="fade-up">
+            <div class="totalPrice NSK-Black">
                 <a href="javascript:void(0);" onclick="termsCheck('is_chk1', 'pass');">패스상품 신청하기 ></a>
             </div>  
-        </div>      
+        </div> 
+        @else
+        {{--10월--}}  
+        <div class="evtCtnsBox evt_top" data-aos="fade-up">    
+            <img src="https://static.willbes.net/public/images/promotion/2022/10/2758_top.jpg" alt="올인원 경찰 패스"/>           
+		</div>
+
+        <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_01.jpg" alt="구매전 안내"/>           
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2758_02.jpg" alt="윌비스 경찰 PASS">
+                <div class="passLecBuy NSK-Black"> 
+                    <div>                                       
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="201561"/>                
+                        <label for="y_pkg1">23년 2차 PASS 신청하기</label>
+                    </div>
+                    <div>                    
+                        <input type="radio" id="y_pkg2" name="y_pkg" value="201560"/>
+                        <label for="y_pkg2">23년 1차 PASS 신청하기</label>
+                    </div>                 
+                </div>
+            </div>
+
+            <div class="check">
+                <input type="checkbox" id="is_chk1" name="is_chk" value="Y"/>
+                <label for="is_chk1">페이지 하단 윌비스 경찰PASS 이용안내를 모두 확인하였고,이에 동의합니다. </label>
+                <a href="javascript:goDesc('tab01')">이용안내확인하기 ↓</a>
+                <p>
+                    ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>
+                    ※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.<br>
+                    ※ 쿠폰은 PASS 결제 후 [내 강의실>결제관리>쿠폰/수강권 관리] 에서 확인 가능합니다.<br>
+                    ※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.
+                </p>
+            </div>
+
+            <div class="title02" id="transfer">
+                재수강과 환승 하실 수강생은 모두 주목
+                <div class="NSK-Black">최대 <span>35% 할인</span> 받고 구매하세요.</div>
+            </div>
+
+            <div class="wrap">
+                <a href="https://www.willbes.net/classroom/qna/index" target="_blank" title="재수강 쿠폰받기"><img src="https://static.willbes.net/public/images/promotion/2022/07/2718_03_01.png"></a>
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기"><img src="https://static.willbes.net/public/images/promotion/2022/07/2718_03_02.png"></a>
+            </div>
+
+            <div class="totalPrice NSK-Black">
+                <a href="javascript:void(0);" onclick="termsCheck('is_chk1', 'pass');">패스상품 신청하기 ></a>
+            </div>  
+        </div>   
+        @endif  
          
         <div class="evtCtnsBox evt_04" data-aos="fade-up">    
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_04.jpg" alt="합격후엔 승진까지"/>            

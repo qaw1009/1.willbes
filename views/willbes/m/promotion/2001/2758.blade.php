@@ -15,8 +15,8 @@
         .evt01 .txtinfo {margin:10% 8%; padding:40px 20px 20px; border:1px solid #000; border-radius:10px; margin-bottom:50px; font-size:1.6vh; text-align:left}
         .evt01 .txtinfo p {background:#000; color:#fff; padding:10px 5px; border-radius:30px; margin-top:-60px; margin-bottom:20px; font-size:1.8vh; text-align:center}
 
-        .evt01 {background:#f5f5f7; padding-bottom:50px}
-        .evt01 .price {text-align:center; font-size:35px; font-weight:bold; color:#000; letter-spacing:-1px; position:absolute; bottom:3.5%; width:100%; z-index: 10;}
+        .evt01 {background:#f5f5f7; padding-bottom:8vh}
+        .evt01 .price {text-align:center; font-size:35px; font-weight:bold; color:#000; letter-spacing:-1px; position:absolute; top:90%; width:100%; z-index: 10;}
         .evt01 .price p {margin-bottom:20px}
         .evt01 .price p span {color:#ffda39; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
         @@keyframes upDown{
@@ -128,6 +128,8 @@
             <a href="#pass">신청하기 ></a>
         </div>  
 
+        {{--9월--}}
+        @if(time() < strtotime('202210041001'))
         <div class="evtCtnsBox evt_top" data-aos="fade-up">         
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_top.png" alt="올인원 경찰 패스" >                 
         </div>
@@ -169,6 +171,50 @@
                 <a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" title="패스상품 신청하기" style="position: absolute; left: 6.39%; top: 74.57%; width: 86.53%; height: 24.57%; z-index: 2;"></a>
             </div> 
         </div>
+        @else
+        {{--10월--}}  
+        <div class="evtCtnsBox evt_top" data-aos="fade-up">         
+            <img src="https://static.willbes.net/public/images/promotion/2022/10/2758m_top.jpg" alt="올인원 경찰 패스" >                 
+        </div>
+
+        <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01"> 
+            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_01.jpg" alt="구매전 안내"/>            
+            <div class="evt01_coupon" id="pass">
+                <div class="p_re">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/10/2758m_02_01.jpg" alt="23년 2차 PASS 신청하기" > 
+                    <div class="price NSK-Black">                       
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="201561" onClick=""/>
+                        <label for="y_pkg1"> 23년 2차 PASS 신청하기</label>
+                    </div>
+                </div>
+                <div class="p_re">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/10/2758m_02_02.jpg" alt="23년 1차 PASS 신청하기" > 
+                    <div class="price NSK-Black">                       
+                        <input type="radio" id="y_pkg2" name="y_pkg" value="201560" onClick=""/>
+                        <label for="y_pkg2"> 23년 1차 PASS 신청하기</label>
+                    </div>
+                </div>               
+                <div class="ext01txt">
+                    <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 윌비스 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
+                    <ul>
+                        <li>※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.</li>
+                        <li>※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.</li>
+                        <li>※ 쿠폰은 PASS 결제 후 [내 강의실>결제관리>쿠폰/수강권 관리] 에서 확인 가능합니다.</li>
+                        <li>※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div data-aos="fade-up" class="p_re mt50">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2758m_03.jpg" alt="할일받고 구매하자">
+                <a href="https://police.willbes.net/m/support/qna/index/cate/3001?s_cate_code=3001&s_is_my_contents=1" target="_blank" title="재수강 쿠폰받기" style="position: absolute; left: 8.47%; top: 25.65%; width: 38.75%; height: 34.57%; z-index: 2;"></a>
+
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute; left: 52.5%; top: 25.65%; width: 38.75%; height: 34.57%; z-index: 2;"></a>
+
+                <a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" title="패스상품 신청하기" style="position: absolute; left: 6.39%; top: 74.57%; width: 86.53%; height: 24.57%; z-index: 2;"></a>
+            </div> 
+        </div>
+        @endif
 
         <div class="evtCtnsBox" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2758m_04.jpg" alt="올인원 패스" >

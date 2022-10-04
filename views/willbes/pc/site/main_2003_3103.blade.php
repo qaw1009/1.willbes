@@ -10,7 +10,7 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}        
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}        
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         
         /************************************************************/     
@@ -19,8 +19,8 @@
 
         .evt01 {background:#222327;}
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/10/2790_01_bg.jpg) no-repeat center top; height: 1137px;}        
-        .evt01 .imgA {position: absolute; top:1445px; left:50%; margin-left:-460px; z-index: 2;}
-        .evt01 .imgB {position: absolute; top:1540px; left:50%; margin-left:-390px; z-index: 2;}
+        .evt01 .imgA {position: absolute; top:610px; left:50%; margin-left:-460px; z-index: 2;}
+        .evt01 .imgB {position: absolute; top:750px; left:50%; margin-left:-390px; z-index: 2;}
 
         .deadline {            
             animation:upDown 1s infinite;

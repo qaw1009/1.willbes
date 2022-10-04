@@ -25,14 +25,11 @@
     }
 </style>
 
-<div id="Container" class="Container NSK c_both">  
-    <div class="evtCtnsBox"  data-aos="fade-down">
-        <img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_00.jpg" alt="경찰학원부분 1위" >        
-    </div> 
+<div id="Container" class="Container NSK c_both">   
 
     @if(time() < strtotime('202204260000'))
         {{--4월--}}
-        <div class="evtCtnsBox" data-aos="fade-up">
+        <div class="evtCtnsBox" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2022/03/2602m_top.jpg" alt="4월 신규가입 이벤트" >
         </div> 
 
@@ -50,7 +47,7 @@
         </div> 
     @else
         {{--5월--}}
-        <div class="evtCtnsBox" data-aos="fade-up">
+        <div class="evtCtnsBox" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2022/04/2602m_top.jpg" alt="4월 신규가입 이벤트" >
         </div> 
 

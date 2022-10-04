@@ -17,7 +17,7 @@ class PgKey extends \app\controllers\BaseController
      */
     public function index()
     {
-        $list = $this->pgKeyModel->listPgKey([], null, null, ['PgDriver' => 'asc', 'PgMid' => 'asc']);
+        $list = $this->pgKeyModel->listPgKey([], null, null, ['PgDriver' => 'asc', 'PgKeyIdx' => 'asc']);
 
         // PG사 공통코드 조회
         $arr_pg_ccd = $this->codeModel->getCcd($this->_pg_group_ccd, 'CcdEtc');

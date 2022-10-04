@@ -577,7 +577,8 @@ class BoardModel extends WB_Model
             FROM {$this->_table} as LB
             INNER JOIN {$this->_table_master} as MST ON LB.BmIdx = MST.BmIdx AND MST.IsUse = 'Y' AND MST.IsStatus = 'Y'
             LEFT OUTER JOIN (
-                select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
+                select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName
+                    , GROUP_CONCAT(replace(AttachRealFileName, ',', '_')) AS AttachRealFileName
                 from {$this->_table_attach} {$file_where}
                 ";
                 if (isset($arr_condition_file['reg_type']) === true) {

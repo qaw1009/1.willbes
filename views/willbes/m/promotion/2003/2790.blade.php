@@ -7,7 +7,7 @@
     .Container {font-size:62.5%;}
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size: calc(1.4rem + (((100vw - 1.4rem) / (90 - 20))) * (2.0 - 1.4)); line-height:1.5; clear:both}
     .evtCtnsBox img {max-width:100%;}
-    .evtCtnsBox a {border:1px solid #000}
+    /*.evtCtnsBox a {border:1px solid #000}*/
 
     .lecInfo {font-size:1.8vh; padding:5vh}
     .lecInfo h5 {font-size:3vh; text-align:center; background:#1c318b; color:#fff; padding:20px; margin:5vh auto 3vh}

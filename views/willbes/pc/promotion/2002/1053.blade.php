@@ -38,12 +38,11 @@
         .tabs a img.on {display:none}
         .tabs a.active img.off {display:none}
         .tabs a.active img.on {display:block}
-        .tabs ul:after {content:""; display:block; clear:both}
 
         /* 탭 */
         .evttab {border-bottom:10px solid #0c5dc0}
-        .evttab ul {width:1120px; margin:0 auto}	
-        .evttab li {display:inline; float:left; margin-right:5px}	
+        .evttab ul {width:1120px; margin:0 auto; display:flex}	
+        .evttab li {margin-right:5px}	
         .evttab li a {
             display:block;
             width:370px;
@@ -67,23 +66,14 @@
         .evttab li a.active {
             background-position:right top;
         } 
-        .evttab ul:after {
-            content:'';
-            display:block;
-            clear:both;
-        }     
+   
         .tabCts {
             position: relative;
-            width:1120px; margin:0 auto; 
+            width:1120px; margin:0 auto 150px;             
         }
-        .tabCts div {
-            display:block; width:80px; top:3076px; z-index:1;
-        }
-        .tabCts div a {
-            display:block; height:24px; line-height:24px; background:#0c5dc0; color:#fff; text-align:center;
-        }
+
    
-        .btngo a {width:1000px; margin:50px auto 0; display:block; font-size:34px; background:#0f44a0; color:#fff; padding:20px 0; border-radius:50px;}
+        .btngo a {width:1000px; margin:0 auto; display:block; font-size:34px; background:#0f44a0; color:#fff; padding:20px 0; border-radius:50px;}
         .btngo a:hover {background:#333;}
 
         .wb_cts03 {background:#FFF;}  
@@ -92,17 +82,17 @@
 
           /* tip */
         .wb_cts09 {text-align:left; padding:100px 0; background:#f4f4f4}
-        .wb_tipBox {width:1000px; margin:0 auto;}
-        .wb_tipBox > strong {font-size:16px !important; font-weight:bold; color:#333; display:block; margin-bottom:20px}
+        .wb_tipBox {width:1000px; margin:0 auto; font-size:16px; line-height:1.4}
+        .wb_tipBox > strong { font-weight:bold; color:#333; display:block; margin-bottom:20px}
         .wb_tipBox p {font-size:24px !important; font-weight:bold;  letter-spacing:-3px; margin-bottom:10px; color:#111}	
-        .wb_tipBox ol li {margin:25px 0 10px; line-height:1.5; list-style:decimal; margin-left:15px;font-size:14px;}
+        .wb_tipBox ol li {margin:25px 0 10px; list-style:decimal; margin-left:15px;}
         .wb_tipBox ul {margin-top:20px}
         .wb_tipBox ul li {margin-bottom:5px}
         .wb_tipBox table {width:100%; border-spacing:0px; background:#fff; border:1px solid #c9c7ca; border-top:2px solid #464646; border-bottom:1px solid #464646; table-layout:auto}
         .wb_tipBox th,
-        .wb_tipBox td {text-align:center; padding:7px 10px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4}
+        .wb_tipBox td {text-align:center; padding:15px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4}
         .wb_tipBox th {font-weight:bold; color:#333; background:#f6f0ec;}	
-        .wb_tip_orange {font-size:14px; color:#c03011;}
+        .wb_tip_orange {color:#c03011;}
         .wb_tipBox b{vertical-align:top;}  
         
         .EventBox {width:960px; margin:100px auto; position:relative}
@@ -193,16 +183,16 @@
                 </ul>
             </div>
 
-            <div id="tab01s" class="pb100">            
+            <div id="tab01s" class="tabCts">            
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/1053_tab1_con.jpg">                
-                <div class="btngo"><a href="https://police.willbes.net/pass/offPackage/index/type/life?cate_code=3010&campus_ccd=605001&course_idx=1093" target="_blank" >신청하기 ></a></div>                            
+                <div class="btngo"><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=&subject_idx=1473" target="_blank" >신청하기 ></a></div>                            
             </div> 
 
-            <div id="tab02s" class="pb100">
+            <div id="tab02s" class="tabCts">
                 <img src="https://static.willbes.net/public/images/promotion/2022/03/1053_tab2_con.jpg" /> 
             </div>
 
-            <div id="tab03s" class="pb100">
+            <div id="tab03s" class="tabCts">
                 <div class="EventBox">            
                     <div id="evtRollingSlider" class="evtBigimg">
                         <div><img id="result_slide_img" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info1.jpg" alt="배너명"></div>

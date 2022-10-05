@@ -73,7 +73,7 @@ class ExamInfo extends \app\controllers\FrontController
         ];
         $data['arr_year'] = $this->examFileInfoFModel->getYearTarget($arr_condition);
         $year_target = empty($data['arr_year']) === false ? $data['arr_year'][0]['GroupCode'] : 'null';
-        $group_code = element('group_code', $arr_input, $year_target);
+        $group_code = element('s_group_code', $arr_input, $year_target);
 
         $arr_condition = [
             'EQ' => [

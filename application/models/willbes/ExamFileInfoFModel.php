@@ -26,7 +26,7 @@ class ExamFileInfoFModel extends WB_Model
     {
         $column = '
             DataType, GroupCode, AreaCcd
-            ,CONCAT("[",GROUP_CONCAT(JSON_OBJECT("FileType", FileType, "FilePath", FilePath, "FileName", FileName, "FileRealName", FileRealName) ORDER BY FileType ASC),"]") AS FileInfo
+            ,CONCAT("[",GROUP_CONCAT(JSON_OBJECT("FileType", FileType, "FilePath", FilePath, "FileName", FileName, "FileRealName", FileRealName) ORDER BY FileType ASC, ExamFileIdx ASC),"]") AS FileInfo
         ';
         $from = " from {$this->_table['exam_file_info']}";
 

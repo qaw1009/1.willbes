@@ -73,7 +73,7 @@
                         <td>@if($row['IsCampus'] == 'Y') 있음 @elseif($row['IsCampus'] == 'N') <span class="red">없음</span> @endif<span class="hide">{{ $row['IsCampus'] }}</span></td>
                         <td>{{ $row['SiteUrl'] }}</td>
                         <td>{{ $row['SiteGroupName'] }}</td>
-                        <td>{{ $row['PgName'] }}</td>
+                        <td>{{ $row['PgName'] }}<br/>({{ $row['PgMid'] }} / {{ $row['PgBookMid'] }})</td>
                         <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif<span class="hide">{{ $row['IsUse'] }}</span></td>
                         <td>@if($row['IsFrontUse'] == 'Y') 사용 @elseif($row['IsFrontUse'] == 'N') <span class="red">미사용</span> @endif<span class="hide">{{ $row['IsFrontUse'] }}</span></td>
                         <td>{{ $row['RegAdminName'] }}</td>

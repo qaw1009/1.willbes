@@ -45,7 +45,7 @@ class SiteModel extends WB_Model
      */
     public function listAllSite($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $column = 'S.SiteCode, S.SiteGroupCode, S.SiteName, S.SiteNickName, S.SiteUrl, S.PgCcd, S.IsCampus, S.IsUse, S.IsFrontUse, S.RegDatm, S.RegAdminIdx, G.SiteGroupName';
+        $column = 'S.SiteCode, S.SiteGroupCode, S.SiteName, S.SiteNickName, S.SiteUrl, S.PgCcd, S.PgMid, S.PgBookMid, S.IsCampus, S.IsUse, S.IsFrontUse, S.RegDatm, S.RegAdminIdx, G.SiteGroupName';
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
         $arr_condition['EQ']['G.IsStatus'] = 'Y';

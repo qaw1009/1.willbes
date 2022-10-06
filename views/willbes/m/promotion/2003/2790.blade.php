@@ -101,6 +101,14 @@
     
     <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/10/2790m_v2_05.jpg" alt="" >
+    </div>
+
+    <div class="evtCtnsBox" data-aos="fade-up">
+        <div class="wrap">
+            <img src="https://static.willbes.net/public/images/promotion/2022/10/2790m_07.jpg" alt="수강신청 바로가기" >
+            <a href="https://pass.willbes.net/m/pass/offPackage/show/prod-code/201485" target="_blank" title="학원실강" style="position: absolute;left: 66.63%;top: 52.95%;width: 29.58%;height: 11.96%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/Package/index/cate/3103/pack/648001" target="_blank" title="온라인" style="position: absolute;left: 66.63%;top: 67.35%;width: 29.58%;height: 11.96%;z-index: 2;"></a>
+        </div>
     </div> 
 
 </div>

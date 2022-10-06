@@ -25,10 +25,11 @@
         .wb_top .topimg {display:block; position: absolute; left:50%; margin-left:-395px; width:790px; top:150px; z-index: 2; position:relative}
         .wb_top .no7 {position: absolute; width:780px; left:50%; margin-left:-385px; top:700px; z-index: 1;}
         .wb_01 {background:#477e82}
-        .wb_02 {background:#f2f2f2; font-size:16px; padding:50px; line-height:1.5}
+        .wb_02 {background:#f2f2f2; font-size:16px; padding:80px 0; line-height:1.5}
         .wb_02 ul {width:980px; margin:0 auto; text-align:left}
         .wb_02 li {margin-bottom:10px}
         .wb_02 li span {color:red}
+        .wb_03 {padding:100px 0}
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -54,7 +55,7 @@
             </ul>
         </div>
 
-        <div>
+        <div class="evtCtnsBox wb_03">
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')

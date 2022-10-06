@@ -96,7 +96,16 @@
                     <img src="https://static.willbes.net/public/images/promotion/2022/10/2790m_05.jpg" alt="수강신청 바로가기" >
                     <a href="https://pass.willbes.net/m/pass/offLecture/show/cate/3143/prod-code/201562" title="바로가기" target="_blank" style="position: absolute;left: 14.92%;top: 79.12%;width: 70.39%;height: 9.28%;z-index: 2;"></a>
                 </div>
-            </div>  
+            </div>
+
+             <div class="evtCtnsBox" data-aos="fade-up">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/10/2790m_07.jpg" alt="수강신청 바로가기" >
+                    <a href="https://pass.willbes.net/m/pass/offPackage/show/prod-code/201485" title="학원실강" target="_blank" style="position: absolute;left: 66.92%;top: 53.42%;width: 29.39%;height: 11.28%;z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/m/Package/index/cate/3103/pack/648001" title="온라인" target="_blank" style="position: absolute;left: 66.92%;top: 67.42%;width: 29.39%;height: 11.28%;z-index: 2;"></a>
+                </div>
+            </div>
+
         </div>
 
         {{-- 게시판 --}}

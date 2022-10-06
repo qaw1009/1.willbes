@@ -45,7 +45,9 @@
         .evt05 {background:#D4F0F1;}
 
         .evt06 {background:#1D318A;}
-
+        
+        .evt07 {background:#89092F;}
+        
     </style>
 
     <div id="Container" class="Container gosi NGR c_both">
@@ -199,15 +201,23 @@
             </div>
 
             <div class="evtCtnsBox evt05" data-aos="fade-up">
-                <div>
+                <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2022/10/2790_05.jpg" title="welcome event">
-                    <a href="https://pass.willbes.net/pass/offLecture/show/cate/3143/prod-code/201562" target="_blank" title="바로가기" style="position: absolute;left: 32.63%;top: 72.95%;width: 34.58%;height: 10.06%;z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/pass/offLecture/show/cate/3143/prod-code/201562" target="_blank" title="바로가기" style="position: absolute;left: 26.63%;top: 72.95%;width: 46.58%;height: 10.26%;z-index: 2;"></a>
                 </div>
             </div>
 
             <div class="evtCtnsBox evt06" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/10/2790_06.jpg" title="psat so easy">
             </div>
+
+            <div class="evtCtnsBox evt07" data-aos="fade-up">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/10/2790_07.jpg" title="수강신청 바로가기">
+                    <a href="https://pass.willbes.net/pass/offPackage/show/prod-code/201485" target="_blank" title="학원실강" style="position: absolute;left: 66.63%;top: 50.95%;width: 29.58%;height: 13.06%;z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/Package/index/cate/3103/pack/648001" target="_blank" title="온라인" style="position: absolute;left: 66.63%;top: 67.85%;width: 29.58%;height: 13.06%;z-index: 2;"></a>
+                </div>
+            </div>           
 
         </div>
         <!-- End Container -->

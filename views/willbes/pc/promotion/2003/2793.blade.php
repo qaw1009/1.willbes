@@ -34,8 +34,8 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox wb_top">
-            <span class="topimg">
-                <img src="https://static.willbes.net/public/images/promotion/2022/10/2793_top01.png" alt="검찰직 체험 팩" data-aos="fade-up"/>
+            <span class="topimg" data-aos="fade-up"/>
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2793_top01.png" alt="검찰직 체험 팩">
                 <a href="javascript:void(0);" onclick="showPopup();" title="설문 참여"  style="position: absolute; left: 0%; top: 81.53%; width: 98.23%; height: 12.09%; z-index: 2;"></a>
             </span>
             <span class="no7"><img src="https://static.willbes.net/public/images/promotion/2022/10/2793_top02.png" alt="7" data-aos="fade-up" /></span>

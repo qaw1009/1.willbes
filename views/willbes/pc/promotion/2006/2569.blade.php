@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position: relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+        .evtCtnsBox .wrap a {border:1px solid #000}
 
 		/************************************************************/
 
@@ -134,18 +134,16 @@
                 <a href="javascript:fnPlayerSample('178977', '1317081', 'HD');" title="" style="position: absolute;left: 77.75%;top: 89.9%;width: 18.23%;height: 7.06%;z-index: 2;"></a>             
 			</div>
             <div id="tab08" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_t08.png" alt="인사노무관리"/>
-                <a href="javascript:fnPlayerSample('179003', '1320594', 'HD');" title="" style="position: absolute; left: 77.86%; top: 19.27%; width: 18.21%; height: 5.41% ;z-index: 2;"></a>
-                <a href="javascript:fnPlayerSample('178993', '1320597', 'HD');" title="" style="position: absolute; left: 77.86%; top: 44.21%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
-                <a href="javascript:fnPlayerSample('190986', '1340053', 'HD');" title="" style="position: absolute; left: 77.86%; top: 69.13%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
-                <a href="javascript:fnPlayerSample('179012', '1310282', 'HD');" title="" style="position: absolute; left: 77.86%; top: 94.13%; width: 18.21%; height: 5.41%; z-index: 2;"></a>        
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2569_03_t08.png" alt="인사노무관리"/>
+                <a href="javascript:fnPlayerSample('179003', '1320594', 'HD');" title="" style="position: absolute; left: 77.86%; top: 26.38%; width: 18.21%; height: 5.41% ;z-index: 2;"></a>
+                <a href="javascript:fnPlayerSample('178993', '1320597', 'HD');" title="" style="position: absolute; left: 77.86%; top: 59.71%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
+                <a href="javascript:fnPlayerSample('190986', '1340053', 'HD');" title="" style="position: absolute; left: 77.86%; top: 93.16%; width: 18.21%; height: 5.41%; z-index: 2;"></a>     
 			</div> 
             <div id="tab09" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_t09.png" alt="경영조직론"/>
-                <a href="javascript:fnPlayerSample('179008', '1323542', 'HD');" title="" style="position: absolute; left: 77.86%; top: 19.27%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
-                <a href="javascript:fnPlayerSample('178998', '1323544', 'HD');" title="" style="position: absolute; left: 77.86%; top: 44.21%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
-                <a href="javascript:fnPlayerSample('190986', '1340053', 'HD');" title="" style="position: absolute; left: 77.86%; top: 69.13%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
-                <a href="javascript:fnPlayerSample('179016', '1310286', 'HD');" title="" style="position: absolute; left: 77.86%; top: 94.13%; width: 18.21%; height: 5.41%; z-index: 2;"></a>           
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2569_03_t09.png" alt="경영조직론"/>
+                <a href="javascript:fnPlayerSample('179008', '1323542', 'HD');" title="" style="position: absolute; left: 77.86%; top: 26.38%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
+                <a href="javascript:fnPlayerSample('178998', '1323544', 'HD');" title="" style="position: absolute; left: 77.86%; top: 59.71%; width: 18.21%; height: 5.41%; z-index: 2;"></a>
+                <a href="javascript:fnPlayerSample('190986', '1340053', 'HD');" title="" style="position: absolute; left: 77.86%; top: 93.16%; width: 18.21%; height: 5.41%; z-index: 2;"></a>          
 			</div>
             <div id="tab10" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/08/2569_03_t10.png" alt="민사소송법"/>

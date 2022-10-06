@@ -103,6 +103,7 @@
             </div>
         </div>
 
+        {{--
         <div class="Section mb50">
             <div class="widthAuto">
                 <div class="sliderSuccess">
@@ -134,6 +135,7 @@
                 </div>
             </div>
         </div>
+        --}}
 
         <div class="Section Section4 mb50">
             @include('willbes.pc.site.main_partial.campus_' . $__cfg['SiteCode'])

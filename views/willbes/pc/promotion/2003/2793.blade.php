@@ -23,7 +23,6 @@
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/10/2793_top_bg.jpg) no-repeat center top; height:1553px; overflow:hidden;}
         .wb_top .topimg {display:block; position: absolute; left:50%; margin-left:-395px; width:790px; top:150px; z-index: 2; position:relative}
-        .wb_top .topimg a {border:1px solid #000}
         .wb_top .no7 {position: absolute; width:780px; left:50%; margin-left:-385px; top:700px; z-index: 1;}
         .wb_01 {background:#477e82}
         .wb_02 {background:#f2f2f2; font-size:16px; padding:50px; line-height:1.5}

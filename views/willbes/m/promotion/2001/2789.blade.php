@@ -39,7 +39,7 @@
         <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" title="윌비스경찰 채널" target="_blank" style="position: absolute; left: 22.5%; top: 73.75%; width: 55%; height: 9.68%; z-index: 2;"></a>      
     </div>
 
-    <div class="evtCtnsBox evt04" data-aos="fade-up">
+    <div class="evtCtnsBox evt04" data-aos="fade-up" id="special_lecture">
         <img src="https://static.willbes.net/public/images/promotion/2022/09/2789m_04.jpg" alt="04. 학습강의 지원"/>       
     </div>
 

@@ -64,7 +64,7 @@
             </div> 
         </div>
 
-        <div class="evtCtnsBox evt04">
+        <div class="evtCtnsBox evt04" id="special_lecture">
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2789_04.jpg"  alt="04. 학습강의 지원" data-aos="fade-up"/>  
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

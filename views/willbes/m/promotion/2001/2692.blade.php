@@ -51,10 +51,9 @@
 
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/08/2692m_02.jpg" alt="">
-                <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51259?subject_idx=1049" target="_blank" title="김원욱 홈" style="position: absolute;left: 18.89%;top: 66.63%;width: 17.81%;height: 3.26%;z-index: 2;"></a>
-                <a href="javascript:void(0);" data-url="https://police.willbes.net/m/periodPackage/show/cate/3001/pack/648001/prod-code/196774" onclick="go_PassLecture(this)" style="position: absolute;left: 11.75%;top: 73.27%;width: 76.83%;height: 8.12%;z-index: 2;" title=""></a>               
-                <a href="javascript:void(0);" data-url="https://police.willbes.net/m/periodPackage/show/cate/3001/pack/648001/prod-code/201411" onclick="go_PassLecture(this)" style="position: absolute;left: 11.75%;top: 82.17%;width: 76.83%;height: 8.12%;z-index: 2;" title=""></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2692m_02.jpg" alt="">
+                <a href="https://police.willbes.net/m/professor/show/cate/3001/prof-idx/51259?subject_idx=1049" target="_blank" title="김원욱 홈" style="position: absolute;left: 18.89%;top: 65.43%;width: 17.81%;height: 4.26%;z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://police.willbes.net/m/periodPackage/show/cate/3001/pack/648001/prod-code/196774" onclick="go_PassLecture(this)" style="position: absolute;left: 11.75%;top: 74.27%;width: 76.83%;height: 13.12%;z-index: 2;" title=""></a>               
             </div>
             <div class="check">
                 <label>
@@ -80,7 +79,7 @@
 				<h4 class="NSK-Black">2023윌비스경찰 헌법 T-PASS 이용안내</h4>
 				<div class="infoTit NSK-Black"><strong>강좌 기본</strong></div>
 				<ul>               
-                    <li>본 상품은 구매일로부터 12개월/6개월 동안 무제한으로 수강 가능한 기간제 패스입니다.</li>
+                    <li>본 상품은 구매일로부터 12개월 동안 무제한으로 수강 가능한 기간제 패스입니다.</li>
                     <li>헌법 T-PASS는 결제가 완료되는 즉시 수강이 시작됩니다. (결제 완료자에 한함)</li>
                     <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
                     <li>헌법 T-PASS 상품 구성은 다음과 같습니다.<br>                   

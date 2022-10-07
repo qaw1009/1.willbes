@@ -102,10 +102,9 @@
 
         <div class="evtCtnsBox wb_02" data-aos="fade-up" id="apply">
             <div class="wrap NSK-Black">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2692_02.jpg" alt="" />
-                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049" target="_blank" title="이국령 홈" style="position: absolute;left: 17.38%;top: 86.54%;width: 11.07%;height: 3.98%;z-index: 2; background:none"></a>
-                <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/196774" onclick="go_PassLecture(this)" title="" style="position: absolute;left: 58.97%;top: 72.47%;width: 28.55%;height: 8.65%;z-index: 2; border-radius:0 6px 6px 0">34만원 <span>신청하기 ></span></a>              
-                <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/201411" onclick="go_PassLecture(this)" title="" style="position: absolute;left: 58.97%;top: 82.05%;width: 28.55%;height: 8.65%;z-index: 2; border-radius:0 6px 6px 0">27만원 <span>신청하기 ></span></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2692_02.jpg" alt="" />
+                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049" target="_blank" title="이국령 홈" style="position: absolute;left: 17.38%;top: 81.14%;width: 11.07%;height: 4.98%;z-index: 2; background:none"></a>
+                <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/196774" onclick="go_PassLecture(this)" title="" style="position: absolute;left: 58.97%;top: 61.07%;width: 28.55%;height: 12.21%;z-index: 2; border-radius:0 6px 6px 0">34만원 <span>신청하기 ></span></a>
             </div>
             <div class="check">
                 <input name="ischk" type="checkbox" id="is_chk1" value="Y" />
@@ -128,7 +127,7 @@
 				<h4 class="NSK-Black">2023윌비스경찰 헌법 T-PASS 이용안내</h4>
 				<div class="infoTit NSK-Black">강좌 기본</div>
 				<ul>               
-                    <li>본 상품은 구매일로부터 12개월/6개월 동안 무제한으로 수강 가능한 기간제 패스입니다.</li>
+                    <li>본 상품은 구매일로부터 12개월 동안 무제한으로 수강 가능한 기간제 패스입니다.</li>
                     <li>헌법 T-PASS는 결제가 완료되는 즉시 수강이 시작됩니다. (결제 완료자에 한함)</li>
                     <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
                     <li>헌법 T-PASS 상품 구성은 다음과 같습니다.<br>                    

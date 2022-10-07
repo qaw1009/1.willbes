@@ -164,7 +164,7 @@
                 <div class="tabCts" id="tab05">
                     <img src="https://static.willbes.net/public/images/promotion/2022/10/2792_04_p05.jpg" alt="" />
                     <div class="request">
-                        <p><strong class="NSK-Black">27</strong>만원</p>
+                        <p><strong class="NSK-Black">29</strong>만원</p>
                         <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/201686" onclick="go_PassLecture(this)">정진천 경찰학 T-PASS 신청하기 👉</a>
                     </div>
                 </div>

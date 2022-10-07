@@ -102,9 +102,9 @@
 
         <div class="evtCtnsBox wb_02" data-aos="fade-up" id="apply">
             <div class="wrap NSK-Black">
-                <img src="https://static.willbes.net/public/images/promotion/2022/10/2692_02.jpg" alt="" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2692_02.png" alt="" />
                 <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049" target="_blank" title="이국령 홈" style="position: absolute;left: 17.38%;top: 81.14%;width: 11.07%;height: 4.98%;z-index: 2; background:none"></a>
-                <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/196774" onclick="go_PassLecture(this)" title="" style="position: absolute;left: 58.97%;top: 61.07%;width: 28.55%;height: 12.21%;z-index: 2; border-radius:0 6px 6px 0">34만원 <span>신청하기 ></span></a>
+                <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/196774" onclick="go_PassLecture(this)" title="" style="position: absolute;left: 58.97%;top: 68.37%;width: 28.55%;height: 12.21%;z-index: 2; border-radius:0 6px 6px 0">34만원 <span>신청하기 ></span></a>
             </div>
             <div class="check">
                 <input name="ischk" type="checkbox" id="is_chk1" value="Y" />

@@ -65,7 +65,7 @@
                 <a href="https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0" target="_blank" title="개인블로그" style="position:absolute;left: 15.36%;top: 66.45%;width: 14.46%;height: 19.32%; z-index:2;"></a>
                 <a href="https://www.instagram.com/willbes_gong" target="_blank" title="인스타그램" style="position:absolute;left: 33.36%;top: 65.45%;width: 14.46%;height: 19.32%; z-index:2;"></a>
                 <a href="https://cafe.naver.com/gugrade" target="_blank" title="공드림" style="position:absolute;left: 51.36%;top: 65.45%;width: 12.46%;height: 19.32%; z-index:2;"></a>
-                <a href="https://cafe379.daum.net/_c21_/home?grpid=8mGI" target="_blank" title="디시" style="position:absolute;left: 70.36%;top: 65.45%;width: 17.46%;height: 19.32%; z-index:2;"></a>
+                <a href="https://gall.dcinside.com/board/lists?id=7th" target="_blank" title="디시" style="position:absolute;left: 70.36%;top: 65.45%;width: 17.46%;height: 19.32%; z-index:2;"></a>
             </div>
         </div>
 

@@ -372,10 +372,6 @@
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50959?subject_idx=1738') }}">이재철</a>
                 </li>
                 <li>
-                    <span>상법</span>                    
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50952?subject_idx=1738') }}">김남훈</a>
-                </li>
-                <li>
                     <span>행정법</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51380?subject_idx=1481') }}">서창교</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50962?subject_idx=1481') }}">임웅찬</a>

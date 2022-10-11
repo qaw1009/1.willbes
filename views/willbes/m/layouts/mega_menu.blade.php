@@ -343,7 +343,7 @@
                 </li>
                 <li>
                     <span>부동산등기법</span>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51373?subject_idx=1481') }}">오영관</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51373?subject_idx=2239') }}">오영관</a>
                 </li>
                 <li>
                     <span>민법</span>                   

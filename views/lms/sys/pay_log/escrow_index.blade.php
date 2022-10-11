@@ -16,28 +16,29 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">주문검색</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control mr-10" id="search_keyword" name="search_keyword" title="주문검색키워드">
+                        <select class="form-control" id="search_keyword" name="search_keyword" title="주문검색키워드">
                             <option value="OrderNo">주문번호</option>
                             <option value="PgMid">상점아이디</option>
                             <option value="EscrowParam2">송장번호</option>
+                            <option value="ResultMsg">결과메시지</option>
                         </select>
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width: 260px;" title="주문검색어">
                     </div>
                     <label class="control-label col-md-1">구분</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control mr-10" id="search_pg_driver" name="search_pg_driver" title="PG구분">
+                        <select class="form-control" id="search_pg_driver" name="search_pg_driver" title="PG구분">
                             <option value="">PG구분</option>
                             @foreach($codes['PgDriver'] as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pg_mid" name="search_pg_mid" title="상점아이디">
+                        <select class="form-control" id="search_pg_mid" name="search_pg_mid" title="상점아이디">
                             <option value="">상점아이디</option>
                             @foreach($codes['PgBookMid'] as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_is_result" name="search_is_result" title="성공여부">
+                        <select class="form-control" id="search_is_result" name="search_is_result" title="성공여부">
                             <option value="">성공여부</option>
                             <option value="Y">연동성공</option>
                             <option value="N">연동실패</option>

@@ -21,23 +21,23 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off" title="조회시작일">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off" title="조회종료일">
                         </div>
                     </div>
                     <label class="control-label col-md-1">구분</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control mr-10" id="search_pg_mid" name="search_pg_mid">
+                        <select class="form-control selectpicker" id="search_pg_mid" name="search_pg_mid" title="상점아이디" data-size="10" data-live-search="true">
                             <option value="">상점아이디</option>
                             @foreach($codes['PgMid'] as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_method" name="search_pay_method">
+                        <select class="form-control" id="search_pay_method" name="search_pay_method" title="결제방법">
                             <option value="">결제방법</option>
                             @foreach($codes['PayDepositMethod'] as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>

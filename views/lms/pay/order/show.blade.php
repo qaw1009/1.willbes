@@ -61,6 +61,9 @@
                             <td class="bg-white-only">{{ $data['order']['PayRouteCcdName'] }}
                                 @if(empty($data['order']['PgCcdName']) === false)
                                     | {{ $data['order']['PgCcdName'] }}
+                                    @if(is_sys_admin() === true)
+                                        | {{ $data['order']['PgMid'] }}
+                                    @endif
                                 @endif
                             </td>
                             <th class="bg-odd">결제완료일</th>

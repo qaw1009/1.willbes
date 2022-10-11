@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PayLog extends \app\controllers\BaseController
 {
-    protected $models = array('sys/payLog');
+    protected $models = array('sys/payLog', 'sys/pgKey');
     protected $helpers = array();
     private $_grp_codes = [
         'pay' => ['PgDriver', 'PgMid', 'PayType', 'PayMethod'],
@@ -19,7 +19,7 @@ class PayLog extends \app\controllers\BaseController
             'willbes006' => '인천학원(willbes006)'
         ],
         'PgBookMid' => [
-            'willbes515' => '교재(willbes515)', 'willbes518' => '임용교재(willbes518)'
+            'willbes515' => '교재(willbes515)', 'willbes518' => '임용교재(willbes518)', 'willbes107' => '윌스토리(교재)(willbes107)'
         ],
         'PayType' => ['PA' => '결제요청', 'CA' => '결제취소', 'NC' => '망취소', 'RP' => '부분환불', 'MP' => '결제요청(모바일)'],
         'CancelType' => ['CA' => '결제취소', 'NC' => '망취소', 'RP' => '부분환불'],
@@ -40,10 +40,10 @@ class PayLog extends \app\controllers\BaseController
     public function index($params = [])
     {
         $log_type = element('0', $params, 'pay');
-        
+
         $this->load->view('sys/pay_log/' . $log_type . '_index', [
             'log_type' => $log_type,
-            'codes' => array_filter_keys($this->_codes, $this->_grp_codes[$log_type])
+            'codes' => $this->_getLogTypeCodes($log_type)
         ]);
     }
 
@@ -123,7 +123,7 @@ class PayLog extends \app\controllers\BaseController
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list,
-            'codes' => array_filter_keys($this->_codes, $this->_grp_codes[$log_type])
+            'codes' => $this->_getLogTypeCodes($log_type, false)
         ]);
     }
 
@@ -134,7 +134,7 @@ class PayLog extends \app\controllers\BaseController
     public function stats($params = [])
     {
         $this->load->view('sys/pay_log/stats_index', [
-            'codes' => array_filter_keys($this->_codes, $this->_grp_codes['stats'])
+            'codes' => $this->_getLogTypeCodes('stats')
         ]);
     }
 
@@ -162,7 +162,7 @@ class PayLog extends \app\controllers\BaseController
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list,
-            'codes' => array_filter_keys($this->_codes, $this->_grp_codes['stats'])
+            'codes' => $this->_getLogTypeCodes('stats', false)
         ]);
     }
 
@@ -173,7 +173,7 @@ class PayLog extends \app\controllers\BaseController
     public function cancelStats($params = [])
     {
         $this->load->view('sys/pay_log/cancel_stats_index', [
-            'codes' => array_filter_keys($this->_codes, $this->_grp_codes['cancel_stats'])
+            'codes' => $this->_getLogTypeCodes('cancel_stats')
         ]);
     }
 
@@ -201,8 +201,41 @@ class PayLog extends \app\controllers\BaseController
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list,
-            'codes' => array_filter_keys($this->_codes, $this->_grp_codes['cancel_stats'])
+            'codes' => $this->_getLogTypeCodes('cancel_stats', false)
         ]);
+    }
+
+    /**
+     * 로그타입별 사용하는 코드 리턴
+     * @param string $log_type [로그타입]
+     * @param bool $is_add_code [코드추가여부]
+     * @return array
+     */
+    private function _getLogTypeCodes($log_type, $is_add_code = true)
+    {
+        // 로그타입별 사용하는 코드 조회
+        $codes = array_filter_keys($this->_codes, $this->_grp_codes[$log_type]);
+
+        if ($is_add_code === true) {
+            // 상점아이디를 사용하는 경우 PG키 데이터 추가
+            if (in_array('PgMid', $this->_grp_codes[$log_type]) === true) {
+                $arr_condition = [
+                    'EQ' => ['PgDriver' => 'toss'],
+                    'LKR' => ['PgMid' => 'willbes']
+                ];
+                $data = $this->pgKeyModel->listPgKey($arr_condition, null, null, ['PgKeyIdx' => 'asc']);
+
+                if (empty($data) === false) {
+                    $arr_pg_mid = [];
+                    foreach ($data as $row) {
+                        $arr_pg_mid[$row['PgMid']] = $row['PgMName'] . '(' . $row['PgMid'] . ')';
+                    }
+                    $codes['PgMid'] = array_merge($arr_pg_mid, ['divider' => '-------------------------'], $codes['PgMid']);
+                }
+            }
+        }
+
+        return $codes;
     }
 
     /**

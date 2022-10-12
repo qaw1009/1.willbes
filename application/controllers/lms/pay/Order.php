@@ -114,6 +114,11 @@ class Order extends BaseOrder
             ],*/
         ];
 
+        // 포인트 사용
+        if ($this->_reqP('search_chk_is_use_point') == 'Y') {
+            $arr_condition['GT']['OP.UsePoint'] = '0';
+        }
+
         // 추가정보 조건
         if ($this->_reqP('search_chk_is_remark') == 'Y') {
             $arr_condition['RAW']['OP.Remark is'] = ' not null';

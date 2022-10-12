@@ -111,6 +111,7 @@
                         <div class="checkbox">
                             <input type="checkbox" id="search_chk_is_escrow" name="search_chk_is_escrow" class="flat" value="Y"/> <label for="search_chk_is_escrow" class="input-label">에스크로(e)</label>
                             <input type="checkbox" id="search_chk_is_coupon" name="search_chk_is_coupon" class="flat" value="Y"/> <label for="search_chk_is_coupon" class="input-label">쿠폰적용</label>
+                            <input type="checkbox" id="search_chk_is_use_point" name="search_chk_is_use_point" class="flat" value="Y"/> <label for="search_chk_is_use_point" class="input-label">포인트사용</label>
                             <input type="checkbox" id="search_chk_is_approval" name="search_chk_is_approval" class="flat" value="Y"/> <label for="search_chk_is_approval" class="input-label">지결환불</label>
                             <input type="checkbox" id="search_chk_is_remark" name="search_chk_is_remark" class="flat" value="Y"/> <label for="search_chk_is_remark" class="input-label">추가정보</label>
                         </div>

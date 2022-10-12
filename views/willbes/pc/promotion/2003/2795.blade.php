@@ -53,26 +53,29 @@
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">
-            <div class="wrpa">
+            <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/10/2795_02.jpg" title="참여방법">
-                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="소문내기 이미지 다운" style="position:absolute;left: 26.36%;top: 35.75%;width: 9.66%;height: 3.82%; z-index:2;"></a>
+                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="소문내기 이미지 다운" style="position:absolute;left: 2.56%;top: 11.15%;width: 31.01%;height: 29.82%; z-index:2;"></a>
+                <a href="#sns" title="소문내기 및 인증하기" style="position:absolute;left: 34.56%;top: 11.15%;width: 31.01%;height: 29.82%; z-index:2;"></a>
+                <a href="#comment" title="댓글로 링크 남기기" style="position:absolute;left: 66.76%;top: 11.15%;width: 31.01%;height: 29.82%; z-index:2;"></a>
             </div>
         </div>
 
-        <div class="evtCtnsBox evt03" data-aos="fade-up">
+        <div class="evtCtnsBox evt03" data-aos="fade-up" id="sns">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/10/2795_03.jpg" title="소문내기">
-                <a href="https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0" target="_blank" title="개인블로그" style="position:absolute;left: 15.36%;top: 66.45%;width: 14.46%;height: 19.32%; z-index:2;"></a>
-                <a href="https://www.instagram.com/willbes_gong" target="_blank" title="인스타그램" style="position:absolute;left: 33.36%;top: 65.45%;width: 14.46%;height: 19.32%; z-index:2;"></a>
-                <a href="https://cafe.naver.com/gugrade" target="_blank" title="공드림" style="position:absolute;left: 51.36%;top: 65.45%;width: 12.46%;height: 19.32%; z-index:2;"></a>
-                <a href="https://gall.dcinside.com/board/lists?id=7th" target="_blank" title="디시" style="position:absolute;left: 70.36%;top: 65.45%;width: 17.46%;height: 19.32%; z-index:2;"></a>
+                <a href="https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0" target="_blank" title="개인블로그" style="position:absolute;left: 13.36%;top: 62.45%;width: 15.46%;height: 22.32%; z-index:2;"></a>
+                <a href="https://www.instagram.com/willbes_gong" target="_blank" title="인스타그램" style="position:absolute;left: 33.16%;top: 62.45%;width: 15.46%;height: 22.32%; z-index:2;"></a>
+                <a href="https://cafe.naver.com/gugrade" target="_blank" title="공드림" style="position:absolute;left: 53.06%;top: 62.45%;width: 15.46%;height: 22.32%; z-index:2;"></a>
             </div>
         </div>
 
-        {{--홍보url--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
-        @endif
+        <div class="evtCtnsBox evt03_comment" data-aos="fade-up" id="comment">
+            {{--홍보url--}}
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
+            @endif
+        </div>
 
         <div class="evtCtnsBox evt04" data-aos="fade-up">
             <div class="wrap">

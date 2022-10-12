@@ -65,6 +65,7 @@
         .evtCtnsBox .passLecBuy div {width:50%; line-height:40px; font-size:22px; font-weight:bold; text-align:center;} 
         .evtCtnsBox .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
         input[type="radio"] {width:20px;height:20px;}
+        .sort {margin-left:-15px;}
 
         /*수강신청 체크*/
         .check { width:930px; margin:30px auto 50px;}
@@ -178,11 +179,11 @@
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/10/2502_05_apply.jpg" alt="신청하기">
                 <div class=" passLecBuy passLecBuy1 NSK-Black"> 
-                    <div>                               
+                    <div class="sort">                                
                         <label for="y_pkg1">행정직 PASS</label>
                         <input type="radio" id="y_pkg1" name="y_pkg" value="201798"/>
                     </div>
-                    <div>                        
+                    <div class="sort">               
                         <label for="y_pkg2">세무직 PASS</label>
                         <input type="radio" id="y_pkg2" name="y_pkg" value="201800"/>
                     </div>
@@ -196,11 +197,11 @@
                     </div>                
                 </div>
                 <div class="passLecBuy passLecBuy2 NSK-Black"> 
-                    <div>                               
+                    <div class="sort">                                
                         <label for="y_pkg5">행정직 PASS</label>
                         <input type="radio" id="y_pkg5" name="y_pkg" value="201797"/>
                     </div>
-                    <div>                        
+                    <div class="sort">                        
                         <label for="y_pkg6">세무직 PASS</label>
                         <input type="radio" id="y_pkg6" name="y_pkg" value="201799"/>
                     </div>
@@ -214,11 +215,11 @@
                     </div>               
                 </div>
                 <div class="passLecBuy passLecBuy3 NSK-Black"> 
-                    <div>                               
+                    <div class="sort">                                
                         <label for="y_pkg9">행정직 PASS</label>
                         <input type="radio" id="y_pkg9" name="y_pkg" value="189930"/>
                     </div>
-                    <div>                        
+                    <div class="sort">                         
                         <label for="y_pkg10">세무직 PASS</label>
                         <input type="radio" id="y_pkg10" name="y_pkg" value="189939"/>
                     </div>

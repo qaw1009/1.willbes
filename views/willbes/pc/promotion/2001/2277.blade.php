@@ -38,7 +38,7 @@
         .snslink li {
             display: inline;
             float: left;
-            width: 25%;
+            width: 50%;
             text-align: center;
         }
         .snslink:after {
@@ -81,9 +81,7 @@
             </div>         
             <ul class="snslink">
                 <li><a href="http://cafe.daum.net/policeacademy" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/02/snsline01.png"alt="다음카페 경사모" /></a></li>
-                <li><a href="http://cafe.naver.com/polstudy" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/02/snsline02.png" alt="네이버카페 경꿈사" /></a></li>
-                <li><a href="https://gall.dcinside.com/board/lists/?id=government" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/02/snsline03.png" alt="디시 공무원 갤러리" /></a></li>
-                <li><a href="https://gall.dcinside.com/mgallery/board/lists/?id=policeofficer" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/02/snsline04.png" alt="디시 순경마이너 갤러리" /></a></li>
+                <li><a href="http://cafe.naver.com/polstudy" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/02/snsline02.png" alt="네이버카페 경꿈사" /></a></li>               
             </ul>
         </div>
 

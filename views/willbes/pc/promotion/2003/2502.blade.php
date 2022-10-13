@@ -65,7 +65,7 @@
         .evtCtnsBox .passLecBuy div {width:50%; line-height:40px; font-size:22px; font-weight:bold; text-align:center;} 
         .evtCtnsBox .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
         input[type="radio"] {width:20px;height:20px;}
-        .sort {margin-left:-15px;}
+        .sort {margin-left:19px;}
 
         /*수강신청 체크*/
         .check { width:930px; margin:30px auto 50px;}
@@ -151,9 +151,7 @@
                     <ul class="slide_pro">
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro1.png" alt=""/></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro2.png" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro3.png" alt=""/></li>  
-                        <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro4.png" alt=""/></li>  
-                        <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro5.png" alt=""/></li>  
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro3.png" alt=""/></li>                      
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro6.png" alt=""/></li>  
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro7.png" alt=""/></li>  
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro8.png" alt=""/></li>                    

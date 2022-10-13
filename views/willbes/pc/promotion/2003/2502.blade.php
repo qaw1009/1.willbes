@@ -151,11 +151,11 @@
                     <ul class="slide_pro">
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro1.png" alt=""/></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro2.png" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro3.png" alt=""/></li>                      
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro3.png" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/10/2502_pro9.png" alt=""/></li>               
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro6.png" alt=""/></li>  
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro7.png" alt=""/></li>  
-                        <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro8.png" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2022/10/2502_pro9.png" alt=""/></li>                   
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro8.png" alt=""/></li>                                           
                     </ul>
                 </div>  
             </div>

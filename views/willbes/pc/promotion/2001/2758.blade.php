@@ -179,23 +179,23 @@
             </div>
         </div>
 
-        {{--9월--}}
-        @if(time() < strtotime('202210041001'))
+        {{--10월 13일 11시까지--}}
+        @if(time() < strtotime('202210131100'))
         <div class="evtCtnsBox evt_top" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_top.png" alt="올인원 경찰 패스"/>           
+            <img src="https://static.willbes.net/public/images/promotion/2022/10/2758_top.jpg" alt="올인원 경찰 패스"/>           
 		</div>
 
         <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_01.jpg" alt="구매전 안내"/>           
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_02.jpg" alt="윌비스 경찰 PASS">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2758_02.jpg" alt="윌비스 경찰 PASS">
                 <div class="passLecBuy NSK-Black"> 
                     <div>                                       
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="200655"/>                
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="201561"/>                
                         <label for="y_pkg1">23년 2차 PASS 신청하기</label>
                     </div>
                     <div>                    
-                        <input type="radio" id="y_pkg2" name="y_pkg" value="200654"/>
+                        <input type="radio" id="y_pkg2" name="y_pkg" value="201560"/>
                         <label for="y_pkg2">23년 1차 PASS 신청하기</label>
                     </div>                 
                 </div>
@@ -215,7 +215,7 @@
 
             <div class="title02" id="transfer">
                 재수강과 환승 하실 수강생은 모두 주목
-                <div class="NSK-Black">최대 <span>40% 할인</span> 받고 구매하세요.</div>
+                <div class="NSK-Black">최대 <span>35% 할인</span> 받고 구매하세요.</div>
             </div>
 
             <div class="wrap">
@@ -228,22 +228,22 @@
             </div>  
         </div> 
         @else
-        {{--10월--}}  
+        {{--10월 13일 11시이후--}}  
         <div class="evtCtnsBox evt_top" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/10/2758_top.jpg" alt="올인원 경찰 패스"/>           
+            <img src="https://static.willbes.net/public/images/promotion/2022/10/2758_top_v2.jpg" alt="올인원 경찰 패스"/>           
 		</div>
 
         <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_01.jpg" alt="구매전 안내"/>           
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/10/2758_02.jpg" alt="윌비스 경찰 PASS">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2758_02_v2.jpg" alt="윌비스 경찰 PASS">
                 <div class="passLecBuy NSK-Black"> 
                     <div>                                       
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="201561"/>                
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="201860"/>                
                         <label for="y_pkg1">23년 2차 PASS 신청하기</label>
                     </div>
                     <div>                    
-                        <input type="radio" id="y_pkg2" name="y_pkg" value="201560"/>
+                        <input type="radio" id="y_pkg2" name="y_pkg" value="201859"/>
                         <label for="y_pkg2">23년 1차 PASS 신청하기</label>
                     </div>                 
                 </div>

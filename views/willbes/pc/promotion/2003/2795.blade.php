@@ -120,7 +120,7 @@
                 <div>
                     [동영상]
                     <p class="NSK-Black">7급 Main PSAT Class(기본이론강의)</p>
-                    <a href="https://pass.willbes.net/lecture/index/cate/3103/pattern/only?search_order=regist&subject_idx=1147&course_idx=1364&school_year=2022" target="_blank">수강신청 ></a>
+                    <a href="https://pass.willbes.net/lecture/index/cate/3103/pattern/only?search_order=regist&subject_idx=&course_idx=1364&school_year=2022" target="_blank">수강신청 ></a>
                 </div>
             </div>
         </div>  

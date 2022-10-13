@@ -71,7 +71,7 @@
                         </tr>
                         <tr>
                             <th class="bg-odd">실결제금액</th>
-                            <td class="bg-white-only">{{ number_format($data['order']['tRealPayPrice']) }}원</td>
+                            <td class="bg-white-only">{{ number_format($data['order']['tRealPayPrice']) }}원 <del>({{ number_format($data['order']['tOrderPrice']) }}원)</del></td>
                             <th class="bg-odd">포인트사용금액</th>
                             <td class="bg-white-only">{{ number_format($data['order']['tUseLecPoint'] + $data['order']['tUseBookPoint']) }}p
                                 (잔액 : 강좌 {{ number_format($data['mem_point']['lecture']) }}p | 교재 {{ number_format($data['mem_point']['book']) }}p)

@@ -151,11 +151,11 @@
                     <ul class="slide_pro">
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro1.png" alt=""/></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro2.png" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro3.png" alt=""/></li>                      
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro3.png" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/10/2502_pro9.png" alt=""/></li>               
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro6.png" alt=""/></li>  
                         <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro7.png" alt=""/></li>  
-                        <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro8.png" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2022/10/2502_pro9.png" alt=""/></li>                   
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/01/2502_pro8.png" alt=""/></li>                                           
                     </ul>
                 </div>  
             </div>
@@ -176,7 +176,7 @@
         <div class="evtCtnsBox wb_cts05" id="lecBuy2023" data-aos="fade-up">            
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2502_05.jpg" alt="수강신청" />
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/10/2502_05_apply.jpg" alt="신청하기">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2502_05_apply.png" alt="신청하기">
                 <div class=" passLecBuy passLecBuy1 NSK-Black"> 
                     <div class="sort">                                
                         <label for="y_pkg1">행정직 PASS</label>

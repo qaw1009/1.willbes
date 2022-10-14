@@ -93,7 +93,7 @@
 
 
     /* 이용안내 */
-    .content_guide_wrap{background:#f3f3f3; padding:100px 20px; font-size:1.6vh; line-height:1.5}
+    .content_guide_wrap{padding:8vh 2vw; font-size:1.6vh; line-height:1.5}
     .content_guide_wrap .guide_tit{text-align:left; font-size:2.6vh; margin-bottom:30px}
     .content_guide_wrap .tabs {display:flex; justify-content: space-around;} 
     .content_guide_wrap .tabs li {width:50%;}
@@ -101,7 +101,7 @@
     .content_guide_wrap .tabs li a:hover,
     .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
     .content_guide_wrap .tabs:after {content:""; display:block; clear:both}
-    .content_guide_box{border:2px solid #202020; border-top:0; padding-top:20px; background:#fff}
+    .content_guide_box{padding-top:20px; background:#fff}
     .content_guide_box dl{word-break:keep-all; padding:10px}
     .content_guide_box dt{margin-bottom:10px}
     .content_guide_box dt h3{color:#fff; background:#333; display:inline-block; padding:3px 7px; font-weight:bold; margin-right:10px; font-size:1.8vh}

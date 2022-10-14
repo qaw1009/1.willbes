@@ -499,13 +499,13 @@
                                     <div class="tx-blue">
                                         - 윌비스공무원 고객센터 >1:1 상담 게시판<br>
                                         - 아래 2개 카페의 합격수기 게시판에 작성 후, 해당 url 제출<br>
-                                        <a href="http://cafe.daum.net/9glad" target="blank">○ 구꿈사 : http://cafe.daum.net/9glad<br></a>
-                                        <a href="https://cafe.naver.com/gugrade" target="blank">○ 공드림 : https://cafe.naver.com/gugrade<br></a>
+                                        <a href="http://cafe.daum.net/9glad" target="blank">○ 구꿈사 : http://cafe.daum.net/9glad</a><br>
+                                        <a href="https://cafe.naver.com/gugrade" target="blank">○ 공드림 : https://cafe.naver.com/gugrade</a><br>
                                         <span class="tx-red">
                                         - 총 3군데에 합격수기를 작성, 환급 심사 시점에 3군데에 작성한 합격수기가 모두 확인되어야 합니다.
                                         </span>
                                     </div>
-                                </li>                                
+                                </li>                                   
                                 <li>합격수기 url은 반드시 전체공개로 작성이 되어야 하며, 비공개 또는 일부 공개 시 환급 불가합니다.</li>
                             </ol>
                         </dd>

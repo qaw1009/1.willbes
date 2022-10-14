@@ -56,12 +56,12 @@
 
     .wb_cts05 {background:#43AAF7;padding:10vh 0;}
     .wb_cts05 .ctTilte {color:#fff; letter-spacing:-1px; font-size:2vh; margin-bottom:5vh}
-    .wb_cts05 .ctTilte h5 {font-size:4.8vh;}
+    .wb_cts05 .ctTilte h5 {font-size:4.4vh;}
     .wb_cts05 .ctTilte p {font-size:3.6vh;}
     .wb_cts05 .ctTilte strong {color:#fff901}
 
     .lecWrap {display:flex; justify-content: center; line-height:1.5; font-size:1.6vh; color:#333; padding:0 1vh}
-    .lecWrap .pass {width:calc(49% - 10px); margin-bottom:10px; margin-right:10px; display:block; border-radius:10px; background:#fff; padding:20px; text-align:left; height: 100%; font-size:2.2vh}
+    .lecWrap .pass {width:calc(49% - 10px); margin-bottom:10px; margin-right:10px; display:block; border-radius:10px; background:#fff; padding:20px 40px; text-align:left; height: 100%; font-size:2.2vh; }
     .lecWrap .pass:last-child {margin-right:0} 
     .lecWrap .titleBox div:nth-child(1) {font-weight:300; color:#0065ef}
     .lecWrap .titleBox div:nth-child(2) {margin-bottom:20px; font-size:3vh}
@@ -159,7 +159,7 @@
         <div class="evtCtnsBox wb_cts05" data-aos="fade-up" id="lecBuy2023">
         <div class="ctTilte">
                 지금부터 목표하는 시험일까지
-                <h5 class="NSK-Black">윌비스 직렬별 전 강좌를 합리적인 가격에!</h5>
+                <h5 class="NSK-Black">윌비스 직렬별 전 강좌를<br> 합리적인 가격에!</h5>
                 <p>최종 합격시 <strong class="NSK-Black">100% 환급</strong>까지!!</p>
             </div>
             <div>
@@ -175,7 +175,7 @@
                             <li><span>~24년 6월까지 수강</span></li>
                             <li><span>최종합격시 100% 환급</span></li>
                             <li><span>교재포인트 3만점 제공</span></li>
-                            <li>온라인모의고사 무료 (전국모의고사 시행시 제공)</li>
+                            <li>온라인모의고사 무료 <br>(전국모의고사 시행시 제공)</li>
                             <li>배속제한 없는 무제한수강</li>
                         </ul>
                         <div class="sort">
@@ -209,7 +209,7 @@
                             <li><span>23년 6월까지 수강</span></li>
                             <li><span>최종합격시 100% 환급</span></li>
                             <li><span>교재포인트 3만점 제공</span></li>
-                            <li>온라인모의고사 무료 (전국모의고사 시행시 제공)</li>
+                            <li>온라인모의고사 무료 <br>(전국모의고사 시행시 제공)</li>
                             <li>배속제한 없는 무제한수강</li>
                         </ul>
                         <div class="sort">

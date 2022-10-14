@@ -70,8 +70,8 @@
         .evtCtnsBox .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}*/
         input[type="radio"] {width:20px;height:20px;}
 
-        .lecWrap {display:flex; width:1120px; margin:auto; line-height:1.5; font-size:14px; color:#333}
-        .lecWrap .pass {width:calc(33.33333% - 10px); margin-bottom:10px; margin-right:10px; display:block; border-radius:10px; background:#fff; padding:20px; text-align:left; box-sizing: border-box; height: 100%; font-size:22px}
+        .lecWrap {display:flex; width:1000px; margin:auto; line-height:1.5; font-size:14px; color:#333}
+        .lecWrap .pass {width:calc(33.33333% - 10px); margin-bottom:10px; margin-right:10px; display:block; border-radius:10px; background:#fff; padding:20px 30px 20px 40px; text-align:left; box-sizing: border-box; height: 100%; font-size:22px}
         .lecWrap .pass:last-child {margin-right:0} 
         .lecWrap .titleBox div:nth-child(1) {font-weight:300; color:#0065ef}
         .lecWrap .titleBox div:nth-child(2) {margin-bottom:20px; font-size:30px}

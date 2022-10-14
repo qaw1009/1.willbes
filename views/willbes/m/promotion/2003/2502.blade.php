@@ -145,7 +145,7 @@
         <div class="evtCtnsBox" data-aos="fade-down">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/2502m_top.jpg" alt="9급 패스">
-                <a href="#lecBuy2023" title="2023 대비 9급 직렬별PASS 구매하기" style="position: absolute;left: 5.8%;top: 79.73%;width: 48.41%;height: 9.72%;z-index: 2;"></a>
+                <a href="#lecBuy2023" title="2023 대비 9급 직렬별PASS 구매하기" style="position: absolute;left: 5.8%;top: 79.73%;width: 49.41%;height: 10.72%;z-index: 2;"></a>
             </div>
         </div>
 

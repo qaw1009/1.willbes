@@ -63,11 +63,11 @@
         .wb_cts05 .ctTilte h5 {font-size:48px;}
         .wb_cts05 .ctTilte p {font-size:36px;}
         .wb_cts05 .ctTilte strong {color:#fff901}
-        .evtCtnsBox .passLecBuy1 {position:absolute; bottom:75px; width:470px; left:50%; margin-left:-470px; color:#252525; letter-spacing:-1px}
+        /*.evtCtnsBox .passLecBuy1 {position:absolute; bottom:75px; width:470px; left:50%; margin-left:-470px; color:#252525; letter-spacing:-1px}
         .evtCtnsBox .passLecBuy2 {position:absolute; bottom:75px; width:470px; left:50%; margin-left:-130px; color:#252525; letter-spacing:-1px}
         .evtCtnsBox .passLecBuy3 {position:absolute; bottom:120px; width:470px; left:50%; margin-left:225px; color:#252525; letter-spacing:-1px}
         .evtCtnsBox .passLecBuy div {width:50%; line-height:40px; font-size:22px; font-weight:bold; text-align:center;} 
-        .evtCtnsBox .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
+        .evtCtnsBox .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}*/
         input[type="radio"] {width:20px;height:20px;}
 
         .lecWrap {display:flex; width:1120px; margin:auto; line-height:1.5; font-size:14px; color:#333}
@@ -91,15 +91,11 @@
         .lecWrap .pass input[type="radio"] {position: absolute; top:30%; left:10px; height:20px; width:20px; vertical-align:center /*position:absolute; top:20px; left:20px; visibility: hidden;*/}
         .lecWrap .pass label {padding:5px 0 5px 35px; display:block; font-weight:bold}
         .lecWrap .pass:hover {cursor: pointer;}
-        .lecWrap .pass input:checked + label {background:#0065ef; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3); color:#fff; border-radius:10px}
-        
+        .lecWrap .pass input:checked + label {background:#0065ef; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3); color:#fff; border-radius:10px}        
 
 
         /*수강신청 체크*/
         .check { width:930px; margin:30px auto 50px;}
-        .check p {margin-bottom:50px;padding-top:75px;}
-        .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#163C57; text-align:center; border-radius:90px;}
-        .check p a:hover {color:#8d0033; background:#eee53b;}
         .check label {cursor:pointer;color:#fff; font-weight:bold; font-size:15px;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
         .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#1c2127; margin-left:50px; border-radius:20px;font-size:15px;font-weight:bold;}
@@ -672,9 +668,9 @@
     <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
     <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
-      $(document).ready( function() {
-        AOS.init();
-      });
+        $(document).ready( function() {
+            AOS.init();
+        });
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

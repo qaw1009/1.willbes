@@ -30,6 +30,9 @@
     .wb_06 .buylec div {display:flex; justify-content: center; }
     .wb_06 .buylec a {height:100%; width:40%; text-align:center; display:block; font-size:2vh; font-weight:bold; color:#fff; background:#555edf; margin:0 1vh; padding:2vh; border-radius:10px}
     .wb_06 .buylec a:last-child {background:#792886}
+    .wb_06 .buylec2 span {color:#cf3c3c}
+    .wb_06 .buylec2 a {background:#0dabbe}
+    .wb_06 .buylec2 a:last-child {background:#cf3c3c}
     .wb_06 .buylec a:hover {background:#000}
 
 
@@ -82,6 +85,14 @@
             <div>
                 <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3143&course_idx=1427" target="_blank">학원 실강<br>수강신청 ></a>
                 <a href="https://pass.willbes.net/m/lecture/index/cate/3103/pattern/only?search_order=regist&subject_idx=&course_idx=1364&school_year=2022" target="_blank">동영상 강의 <br>수강신청 ></a>
+            </div>
+        </div>
+        <div class="buylec buylec2 mt80">
+            시작부터 끝까지 최고와 함께!
+            <p class="NSK-Black">Perfect <span>PSAT</span><br> Program <span>PASS</span></p>
+            <div>
+                <a href="https://pass.willbes.net/m/pass/offPackage/index?cate_code=3143" target="_blank">학원 실강<br>수강신청 ></a>
+                <a href="https://pass.willbes.net/m/Package/index/cate/3103/pack/648001" target="_blank">동영상 강의<br>수강신청 ></a>
             </div>
         </div>
     </div>

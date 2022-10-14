@@ -3,18 +3,35 @@
 @section('content')
 <style type="text/css">
     .Container {font-size:62.5%;}
-    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size: calc(1.4rem + (((100vw - 1.4rem) / (90 - 20))) * (2.0 - 1.4)); line-height:1.5; clear:both}
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both}
     .evtCtnsBox img {max-width:100%;}
     /*.evtCtnsBox a {border:1px solid #000}*/
 
-    .lecInfo {font-size:1.8vh; padding:5vh}
-    .lecInfo h5 {font-size:3vh; text-align:center; background:#1c318b; color:#fff; padding:20px; margin:5vh auto 3vh}
-    .lecInfo p {font-size:1.6vh; color:red}
-    .lecInfo .fs24 {font-size:2.4vh;}
-    .lecInfo li {text-align:left; margin-left:4vh;}
-    .lecInfo ol li {list-style-type: demical;}
-    .lecInfo ul li {list-style-type: disc; margin-bottom:10px}
-    .lecInfo ul li strong {font-size:2vh; display:block}
+
+    .wb_top p {font-size:5vh; position: absolute; width:100%; left:0; bottom:5vh; color:#fff; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite; letter-spacing:-1px; text-align:center; z-index: 1;}
+    @@keyframes upDown{
+        from{color:#fff}
+        50%{color:#ffe87d; scale:1.1}
+        to{color:#fff}
+    }
+    @@-webkit-keyframes upDown{
+        from{color:#fff}
+        50%{color:#ffe87d; scale:1.1}
+        to{color:#fff}
+    }       
+
+
+    .wb_06 {padding:10vh 0}
+    .wb_06 .buylec {font-size:2.4vh; line-height:1.3;}
+    .wb_06 .buylec p {font-size:4vh; margin-bottom:30px}
+    .wb_06 .buylec span {color:#484baf}
+    .wb_06 .buylec div {display:flex; justify-content: center; }
+    .wb_06 .buylec a {height:100%; width:40%; text-align:center; display:block; font-size:2vh; font-weight:bold; color:#fff; background:#555edf; margin:0 1vh; padding:2vh; border-radius:10px}
+    .wb_06 .buylec a:last-child {background:#792886}
+    .wb_06 .buylec2 span {color:#cf3c3c}
+    .wb_06 .buylec2 a {background:#0dabbe}
+    .wb_06 .buylec2 a:last-child {background:#cf3c3c}
+    .wb_06 .buylec a:hover {background:#000}
 
 </style>
 
@@ -45,67 +62,49 @@
         -->
 
         <div id="Container" class="Container NSK c_both">
-            <div class="evtCtnsBox" data-aos="fade-down">
-                <img src="https://static.willbes.net/public/images/promotion/2022/10/2790m_01.jpg" alt="선착순" >
+            <div class="evtCtnsBox wb_top" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2794m_top.jpg" alt="법원 9급 2~5순환 종합반"/>
+                <p class="NSK-Black">"선착순 150명 마감"</p>
             </div>
 
-            <div class="evtCtnsBox" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/10/2790m_02.jpg" alt="빅4" >
+            <div class="evtCtnsBox wb_01" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2794m_01.jpg" alt="합격생 배출 1위" data-aos="fade-up"/>
             </div>
 
-            <div class="evtCtnsBox lecInfo" data-aos="fade-up" >
-                <h5 class="NSK-Black">강의일정 및 장소</h5>
-                <div class="fs24">2022년 10/10(월)  ~ 10/14(금),<br>
-                총 5회 (강의시간 오후 2:00 ~ 5:30) / 신림동 한림법학원</div>
-                <p>※ 동영상업로드 : 실강 다음날 오전 11시까지 업로드</p>
-
-                <h5 class="NSK-Black">수강대상</h5>
-                <ol>
-                    <li>PSAT 기출을 풀어보고 자료해석에서 심각한 좌절감을 느끼는 수험생</li>
-                    <li>표•그래프만 보면 심장 박동수가 증가하는 수험생</li>
-                    <li>표•그래프의 주제를 예상할 수 없는 수험생</li>
-                    <li>표•그래프가 여러 개 등장할 때, 항목 간의 관계 파악이 느리거나 어려움을 겪는 수험생</li>
-                    <li>계산에 대한 두려움으로 자료해석 과목 자체가 자신 없는 수험생</li>
-                </ol>
-
-                <h5 class="NSK-Black">강의교재</h5>
-                <p>※ 실강 수강자는 합격을 향한 열정과 필기구만 준비하여 참여하시면 됩니다!</p>
-                <ol style="margin-top:2vh">
-                    <li>표•그래프 뽀개기 프린트(무료제공)</li>
-                    <li>석치수의 합격하는 계산 훈련용 교재(제본집, 무료제공)</li>
-                    <li>계산능력 향상을 위한 계산 마스터 프린트(무료제공)</li>
-                </ol>
-
-                <h5 class="NSK-Black">강의계획</h5>
-                <ul style="margin-top:2vh">
-                    <li><strong>제1회 10/10(월)</strong>
-                    표•그래프 읽기 + 특징 + 주제 + 선택지 예상하기</li>
-                    <li><strong>제2회 10/11(화)</strong>
-                    계산의 기초 1: 사칙연산, 분수비교, 곱셈비교, 기초개념</li>
-                    <li><strong>제3회 10/12(수)</strong>
-                    계산의 기초 2: 증가율, 비중, 어림산 응용</li>
-                    <li><strong>제4회 10/13(목)</strong>
-                    기출식 세우기, 가중평균</li>
-                    <li><strong>제5회 10/14(금)</strong>
-                    가중평균</li>
-                </ul>
+            <div class="evtCtnsBox wb_02" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2794m_02.jpg" alt="동행의 힘"/>
             </div>
 
-            <div class="evtCtnsBox" data-aos="fade-up">
-                <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/10/2790m_05.jpg" alt="수강신청 바로가기" >
-                    <a href="https://pass.willbes.net/m/pass/offLecture/show/cate/3143/prod-code/201562" title="바로가기" target="_blank" style="position: absolute;left: 14.92%;top: 79.12%;width: 70.39%;height: 9.28%;z-index: 2;"></a>
+            <div class="evtCtnsBox wb_03" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2794m_03.jpg" alt="당신의 합격 우리가 만들어 드립니다."/>
+            </div>
+
+            <div class="evtCtnsBox wb_04" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2794m_04.jpg" alt="커리큘럼"/>
+            </div>
+
+            <div class="evtCtnsBox wb_05" data-aos="fade-up">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2794m_05.jpg" alt="면접합격률 99%"/>
+            </div>
+
+            <div class="evtCtnsBox wb_06" data-aos="fade-up">
+                <div class="buylec">
+                    합격을 위한 이유 있는 선택!
+                    <p class="NSK-Black">MAIN <span>PSAT</span> CLASS <span><br>기본이론강의</span></p>
+                    <div>
+                        <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3143&course_idx=1427" target="_blank">학원 실강<br>수강신청 ></a>
+                        <a href="https://pass.willbes.net/m/lecture/index/cate/3103/pattern/only?search_order=regist&subject_idx=&course_idx=1364&school_year=2022" target="_blank">동영상 강의 <br>수강신청 ></a>
+                    </div>
+                </div>
+                <div class="buylec buylec2 mt80">
+                    시작부터 끝까지 최고와 함께!
+                    <p class="NSK-Black">Perfect <span>PSAT</span><br> Program <span>PASS</span></p>
+                    <div>
+                        <a href="https://pass.willbes.net/m/pass/offPackage/index?cate_code=3143" target="_blank">학원 실강<br>수강신청 ></a>
+                        <a href="https://pass.willbes.net/m/Package/index/cate/3103/pack/648001" target="_blank">동영상 강의<br>수강신청 ></a>
+                    </div>
                 </div>
             </div>
-
-             <div class="evtCtnsBox" data-aos="fade-up">
-                <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/10/2790m_07.jpg" alt="수강신청 바로가기" >
-                    <a href="https://pass.willbes.net/m/pass/offPackage/show/prod-code/201485" title="학원실강" target="_blank" style="position: absolute;left: 66.92%;top: 53.42%;width: 29.39%;height: 11.28%;z-index: 2;"></a>
-                    <a href="https://pass.willbes.net/m/Package/index/cate/3103/pack/648001" title="온라인" target="_blank" style="position: absolute;left: 66.92%;top: 67.42%;width: 29.39%;height: 11.28%;z-index: 2;"></a>
-                </div>
-            </div>
-
         </div>
 
         {{-- 게시판 --}}

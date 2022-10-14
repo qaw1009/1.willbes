@@ -10,19 +10,17 @@
     /*.evtCtnsBox a {border:1px solid #000}*/
 
 
-    .wb_top p {font-size:8vw; position: absolute; width:100%; left:0; bottom:5vw; color:#fff; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite; letter-spacing:-1px; text-align:center; z-index: 1;}
-        @@keyframes upDown{
-            from{color:#fff}
-            50%{color:#ffe87d; scale:1.1}
-            to{color:#fff}
-        }
-        @@-webkit-keyframes upDown{
-            from{color:#fff}
-            50%{color:#ffe87d; scale:1.1}
-            to{color:#fff}
-        }
-
-        
+    .wb_top p {font-size:5vh; position: absolute; width:100%; left:0; bottom:5vh; color:#fff; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite; letter-spacing:-1px; text-align:center; z-index: 1;}
+    @@keyframes upDown{
+        from{color:#fff}
+        50%{color:#ffe87d; scale:1.1}
+        to{color:#fff}
+    }
+    @@-webkit-keyframes upDown{
+        from{color:#fff}
+        50%{color:#ffe87d; scale:1.1}
+        to{color:#fff}
+    }       
 
 
     .wb_06 {padding:10vh 0}

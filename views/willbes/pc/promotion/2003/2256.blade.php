@@ -91,11 +91,17 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
 
-        {{--
-        <div class="sky" id="QuickMenu">            
-            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/12/2160_sky01.png"  title="12월의기적" /></a>
+        <div class="sky" id="QuickMenu">
+            <a href="#certification"> 
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2256_sky1.jpg" alt="대학생" >
+            </a>   
+            <a href="#certification"> 
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2256_sky2.jpg" alt="재도전" >
+            </a>
+            <a href="#certification"> 
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2256_sky3.jpg" alt="환승시" >
+            </a>                   
         </div>
-        --}}
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday NG">        
@@ -139,7 +145,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2256_03.jpg" alt="믿고 따라만 오세요" />
         </div>
 
-        <div class="evtCtnsBox wb_cts06" id="cts06" data-aos="fade-up">
+        <div class="evtCtnsBox wb_cts06" id="certification" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/01/2256_06.jpg" alt="바로 신청하기" />
                 <a href="javascript:certOpen();" title="재도전&환승하기" style="position:absolute; left:29.91%; top:77.06%; width:39.46%; height:5.85%; z-index:2;"></a>

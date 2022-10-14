@@ -91,7 +91,7 @@
             시작부터 끝까지 최고와 함께!
             <p class="NSK-Black">Perfect <span>PSAT</span><br> Program <span>PASS</span></p>
             <div>
-                <a href="https://pass.willbes.net/m/pass/offPackage/index?cate_code=3143" target="_blank">학원 실강<br>수강신청 ></a>
+                <a href="https://pass.willbes.net/m/pass/offPackage/show/prod-code/201485" target="_blank">학원 실강<br>수강신청 ></a>
                 <a href="https://pass.willbes.net/m/Package/index/cate/3103/pack/648001" target="_blank">동영상 강의<br>수강신청 ></a>
             </div>
         </div>

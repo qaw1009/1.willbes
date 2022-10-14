@@ -65,6 +65,9 @@
             </a>   
             <a href="#evt02"> 
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2739_sky02.jpg" alt="단과" >
+            </a>
+            <a href="#evt02"> 
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2739_sky3.jpg" alt="1만원 이벤트" >
             </a>                   
         </div>
 

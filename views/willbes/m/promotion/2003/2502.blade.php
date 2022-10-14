@@ -93,15 +93,15 @@
 
 
     /* 이용안내 */
-    .content_guide_wrap{padding:8vh 2vw; font-size:1.6vh; line-height:1.5}
+    .content_guide_wrap{background:#f3f3f3; padding:4vh 2vw; font-size:1.6vh; line-height:1.5}
     .content_guide_wrap .guide_tit{text-align:left; font-size:2.6vh; margin-bottom:30px}
     .content_guide_wrap .tabs {display:flex; justify-content: space-around;} 
     .content_guide_wrap .tabs li {width:50%;}
-    .content_guide_wrap .tabs li a {display:block; text-align:center; padding:15px 0; font-size:2vh; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
+    .content_guide_wrap .tabs li a {display:block; text-align:center; padding:15px 0; font-size:1.8vh; border:2px solid #f3f3f3; border-bottom:2px solid #202020; }
     .content_guide_wrap .tabs li a:hover,
-    .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
+    .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #f3f3f3; color:#202020; font-weight:600}
     .content_guide_wrap .tabs:after {content:""; display:block; clear:both}
-    .content_guide_box{padding-top:20px; background:#fff}
+    .content_guide_box{padding-top:20px;}
     .content_guide_box dl{word-break:keep-all; padding:10px}
     .content_guide_box dt{margin-bottom:10px}
     .content_guide_box dt h3{color:#fff; background:#333; display:inline-block; padding:3px 7px; font-weight:bold; margin-right:10px; font-size:1.8vh}

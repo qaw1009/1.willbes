@@ -518,7 +518,24 @@
                 $(activeTab).fadeIn();
                 return false;
             });
+
+            var url = window.location.href;
+            if(url.indexOf("tab3") > -1){
+                var activeTab = "#tab3";
+                $(".tabsl li a").removeClass("active");
+                $(".tabs li a[href='#tab03']").addClass("active");
+                $(".tabContents").hide();
+                $(activeTab).show();
+                return false;
+            }else{
+                $(".tabs li a").removeClass("active");
+                $(".tabs li a[href='#tab01']").addClass("active");
+                $(".content_guide_box").hide();
+                $(".content_guide_box:first").show();
+            }
         });
+
+
                
     </script>
 

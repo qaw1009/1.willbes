@@ -3,7 +3,7 @@
 @section('content')
 <!-- Container -->
     <style type="text/css">
-    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both}
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; font-size:1.6vh clear:both}
     .evtCtnsBox img {max-width:100%;}
     .evtCtnsBox .wrap { margin:0 auto; position:relative}
     /*.evtCtnsBox .wrap a {border:1px solid #000}*/
@@ -11,16 +11,16 @@
     /************************************************************/
 
     /*타이머*/
-    .dday {font-size:24px !important; padding:10px; background:#ebebeb; color:#000; text-align:left; letter-spacing:-1px}
+    .dday {font-size:2.4vh !important; padding:10px; background:#ebebeb; color:#000; text-align:left; letter-spacing:-1px}
     .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
-    .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#3a99f0; font-size:14px !important;}
+    .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#3a99f0; font-size:1.4vh !important;}
 
     .apply_bg {background:#43AAF9;padding-bottom:50px}
 
     .wb_cts05m {background:#43aaf8;padding-bottom:100px}
 
     .wb_cts05m .txtinfo {margin:10% 8%; padding:40px 20px 20px; border:1px solid #000; border-radius:10px; margin-bottom:50px; font-size:1.6vh; text-align:left}
-    .wb_cts05m .txtinfo p {background:#000; color:#fff; padding:10px 5px; border-radius:30px; margin-top:-60px; margin-bottom:20px; font-size:1.8vh; text-align:center}
+    .wb_cts05m .txtinfo p {background:#000; color:#fff; padding:10px 5px; border-radius:30px; margin-bottom:20px; font-size:1.8vh; text-align:center}
 
     .wb_cts05m {background:#f5f5f7; padding-bottom:8vh}
     .wb_cts05m .price {text-align:center; font-size:35px; font-weight:bold; color:#000; letter-spacing:-1px; position:absolute; top:90%; width:100%; z-index: 10;}
@@ -38,100 +38,53 @@
     }
 
     .wb_cts05m {background:#43AAF7;padding-bottom:100px;}    
-    .wb_cts05m .passLecBuy2 {display:flex;position:absolute; bottom:70px; width:650px; left:50%; margin-left:-305px; color:#252525; letter-spacing:-1px;}  
-    .wb_cts05m .passLecBuy div {line-height:40px; font-size:20px; font-weight:bold; text-align:center;padding-right:10px;} 
+    .wb_cts05m .passLecBuy2 {position:absolute; bottom:85px; width:470px; left:50%; margin-left:-130px; color:#252525; letter-spacing:-1px}  
+    .wb_cts05m .passLecBuy div {width:50%; line-height:40px; font-size:22px; font-weight:bold; text-align:center;} 
     .wb_cts05m .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
     input[type="radio"] {width:20px;height:20px;}
+    .sorts {margin-left:19px;}
 
     /*수강신청 체크*/
-    .check { width:720px; margin:30px auto 50px;}
-    .check p {margin-bottom:50px;padding-top:75px;}
-    .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#163C57; text-align:center; border-radius:90px;}
-    .check p a:hover {color:#8d0033; background:#eee53b;}
-    .check label {cursor:pointer;color:#fff;font-weight:bold;font-size:20px;}
-    .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-    .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#1c2127; margin-left:50px; border-radius:20px;font-size:15px;font-weight:bold;}
-    .wb_cts05m .passbuy a {display:block; width:400px; margin:0 auto; background:#1c2127; color:#fff; font-size:30px; border-radius:50px; padding:20px 0; font-weight:bold}  
-    .wb_cts05m .passbuy a:hover {background:#fff; color:#1c2127;}
+    .check {margin:3vh 1vh 50px;}
+    .check label {cursor:pointer;color:#fff;font-weight:bold;font-size:2vh;}
+    .check input {border:1px solid #000; margin-right:10px; height:24px; width:24px; }
+    .check a.infotxt {display:inline-block; padding:10px 20px;color:#fff; background:#1c2127; margin-left:20px; border-radius:20px; font-weight:bold; font-size:1.6vh}
+    .wb_cts05m .passbuy a {display:block; width:80%; margin:0 auto; background:#1c2127; color:#fff; font-size:2.6vh; border-radius:50px; padding:15px; font-weight:bold}
 
 
     /* 이용안내 */
-    .content_guide_wrap{background:#f3f3f3; padding:100px 20px}
-    .content_guide_wrap .guide_tit{text-align:left; font-size:26px; margin-bottom:30px}
+    .content_guide_wrap{background:#f3f3f3; padding:100px 20px; font-size:1.6vh; line-height:1.5}
+    .content_guide_wrap .guide_tit{text-align:left; font-size:2.6vh; margin-bottom:30px}
     .content_guide_wrap .tabs {display:flex; justify-content: space-around;} 
     .content_guide_wrap .tabs li {width:50%;}
-    .content_guide_wrap .tabs li a {display:block; text-align:center; padding:15px 0; font-size:16px; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
+    .content_guide_wrap .tabs li a {display:block; text-align:center; padding:15px 0; font-size:2vh; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
     .content_guide_wrap .tabs li a:hover,
     .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
     .content_guide_wrap .tabs:after {content:""; display:block; clear:both}
     .content_guide_box{border:2px solid #202020; border-top:0; padding-top:20px; background:#fff}
     .content_guide_box dl{word-break:keep-all; padding:10px}
     .content_guide_box dt{margin-bottom:10px}
-    .content_guide_box dt h3{color:#fff; background:#333; display:inline-block; padding:3px 7px; font-weight:bold; margin-right:10px; font-size:120%}
-    .content_guide_box dd{color:#777; margin:0 0 20px 5px; line-height:17px}
+    .content_guide_box dt h3{color:#fff; background:#333; display:inline-block; padding:3px 7px; font-weight:bold; margin-right:10px; font-size:1.8vh}
+    .content_guide_box dd{color:#777; margin:0 0 20px 5px;}
     .content_guide_box dd strong {color:#555}
-    .content_guide_box dd li {margin-bottom:3px; list-style:decimal; margin-left:20px}
+    .content_guide_box dd li {margin-bottom:10px; list-style:decimal; margin-left:20px}
     .content_guide_box dd:after {content:""; display:block; clear:both}
 
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {
-        .wb_cts05m .passLecBuy2 {display:flex;position:absolute; bottom:50px; width:290px; left:50%; margin-left:-140px; color:#252525; letter-spacing:-1px;}  
-        .wb_cts05m .passLecBuy div {line-height:20px; font-size:16px; font-weight:bold; text-align:center;padding-right:10px;} 
-        .wb_cts05m .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
-        input[type="radio"] {width:15px;height:15px;}
-        .check { width:250px; margin:30px auto -30px;}
-        .check label {font-size:16px;}
-        .check p {margin-bottom:50px;padding:40px 10px 0;}
-        .check p a {display:block;margin:0 auto;color:#fff; background:#111; text-align:center; border-radius:50px; padding:10px 0;font-size:17px;}
-        .check a.infotxt {margin-top:10px;margin:75px;border-radius:75px;}
-        .wb_cts05m .passbuy a {width:250px;font-size:25px;}
-        .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
-        .content_guide_wrap .tabs li a {font-size:12px !important; letter-spacing:-1px}
-    }
 
-     /**/
-     @@media only screen and (min-width: 375px) and (max-width: 499px) {
-        .wb_cts05m .passLecBuy2 {display:flex;position:absolute; bottom:50px; width:290px; left:50%; margin-left:-140px; color:#252525; letter-spacing:-1px;}  
-        .wb_cts05m .passLecBuy div {line-height:20px; font-size:16px; font-weight:bold; text-align:center;padding-right:10px;} 
-        .wb_cts05m .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
-        input[type="radio"] {width:15px;height:15px;}
-        .check { width:325px; margin:30px auto -30px;}
-        .check label {font-size:16px;}
-        .check p {margin-bottom:50px;padding:40px 10px 0;}
-        .check p a {display:block;margin:0 auto;color:#fff; background:#111; text-align:center; border-radius:50px; padding:10px 0;font-size:17px;}
-        .check a.infotxt {margin-top:10px;margin:75px;border-radius:75px;}
-        .wb_cts05m .passbuy a {width:250px;font-size:25px;}
-        .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
-        .content_guide_wrap .tabs li a {font-size:12px !important; letter-spacing:-1px}
     }  
 
     /* 태블릿 세로 */
-    @@media only screen and (min-width: 500px) and (max-width: 640px) {
-        .wb_cts05m .passLecBuy2 {display:flex;position:absolute; bottom:60px; width:455px; left:50%; margin-left:-210px; color:#252525; letter-spacing:-1px;}  
-        .wb_cts05m .passLecBuy div {line-height:20px; font-size:16px; font-weight:bold; text-align:center;padding-right:10px;} 
-        .wb_cts05m .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
-        .check { width:540px; margin:30px auto -20px;}
-        .check label {font-size:17px;}
-        .check p {margin-bottom:50px;padding:40px 10px 0;}
-        .check p a {display:block;margin:0 auto;color:#fff; background:#111; text-align:center; border-radius:50px; padding:10px 0;font-size:17px;}
-        .check a.infotxt {margin-top:10px;margin:75px;border-radius:75px;}
-        .wb_cts05m .passbuy a {width:250px;font-size:25px;}
-        .content_guide_wrap .guide_tit{font-size:24px;}
-        .content_guide_wrap .tabs li a {font-size:15px !important; letter-spacing:-1px}
+    @@media only screen and (min-width: 375px) and (max-width: 640px) {
+
 
     }
     
     /* 태블릿 가로, PC */
     @@media only screen and (min-width: 641px) {        
-        .check { width:719px; margin:30px auto -30px;}
-        .check label {font-size:19px;}
-        .check p {margin-bottom:50px;padding:40px 10px 0;}
-        .check p a {display:block;margin:0 auto;color:#fff; background:#111; text-align:center; border-radius:50px; padding:10px 0;font-size:17px;}
-        .check a.infotxt {margin-top:10px;margin:75px;border-radius:75px;}
-        .wb_cts05m .passbuy a {width:250px;font-size:25px;}
-        .content_guide_wrap .guide_tit{font-size:26px;}
-        .content_guide_wrap .tabs li a {font-size:17px !important; letter-spacing:-1px}
+
     }
 
     </style>
@@ -145,7 +98,7 @@
         <div class="evtCtnsBox" data-aos="fade-down">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/2502m_top.jpg" alt="9급 패스">
-                <a href="#lecBuy2023" title="2023 대비 9급 직렬별PASS 구매하기" style="position: absolute;left: 5.8%;top: 79.73%;width: 49.41%;height: 10.72%;z-index: 2;"></a>
+                <a href="#lecBuy2023" title="2023 대비 9급 직렬별PASS 구매하기" style="position: absolute;left: 5.8%;top: 79.73%;width: 48.41%;height: 9.72%;z-index: 2;"></a>
             </div>
         </div>
 
@@ -160,14 +113,14 @@
         <div class="evtCtnsBox wb_cts05m" data-aos="fade-up" id="lecBuy2023">
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2502m_05.jpg" alt="">
             <div class="p_re apply_bg">
-                <img src="https://static.willbes.net/public/images/promotion/2022/10/2502m_apply01.png" alt="" > 
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2502_05m_apply01.png" alt="" > 
                 <div class=" passLecBuy passLecBuy2 NSK-Black"> 
-                    <div>                             
-                        <label for="y_pkg1">행정직&nbsp; PASS</label>
+                    <div class="sorts">                                
+                        <label for="y_pkg1">행정직 PASS</label>
                         <input type="radio" id="y_pkg1" name="y_pkg" value="201798"/>
                     </div>
-                    <div>               
-                        <label for="y_pkg2">세무직&nbsp; PASS</label>
+                    <div class="sorts">               
+                        <label for="y_pkg2">세무직 PASS</label>
                         <input type="radio" id="y_pkg2" name="y_pkg" value="201800"/>
                     </div>
                     <div>                
@@ -181,14 +134,14 @@
                 </div>
             </div>
             <div class="p_re apply_bg">
-                <img src="https://static.willbes.net/public/images/promotion/2022/10/2502m_apply02.png" alt="" >
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2502_05m_apply02.png" alt="" >
                 <div class="passLecBuy passLecBuy2 NSK-Black"> 
-                    <div>                               
-                        <label for="y_pkg5">행정직&nbsp; PASS</label>
+                    <div class="sorts">                                
+                        <label for="y_pkg5">행정직 PASS</label>
                         <input type="radio" id="y_pkg5" name="y_pkg" value="201797"/>
                     </div>
-                    <div>                      
-                        <label for="y_pkg6">세무직&nbsp; PASS</label>
+                    <div class="sorts">                        
+                        <label for="y_pkg6">세무직 PASS</label>
                         <input type="radio" id="y_pkg6" name="y_pkg" value="201799"/>
                     </div>
                     <div>                
@@ -204,7 +157,7 @@
             <div class="check" id="chkInfo">
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />
-                    페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#careful" class="infotxt" > 이용안내 확인하기 ↓</a>
             </div> 

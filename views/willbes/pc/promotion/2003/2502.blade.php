@@ -14,7 +14,7 @@
             background:#fff;            
         }
         .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative; line-height:1.4; font-size:14px}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
@@ -58,21 +58,49 @@
         .wb_cts04 .txtBtn {background:#444; color:#fff; padding:10px 20px; display:inline-block} 
         .wb_cts04 .txtBtn:hover {background:#000}
 
-        .wb_cts05 {background:#43AAF7;padding-bottom:100px;}
+        .wb_cts05 {background:#43AAF7;padding:150px 0;}
+        .wb_cts05 .ctTilte {color:#fff; letter-spacing:-1px; font-size:26px; margin-bottom:50px}
+        .wb_cts05 .ctTilte h5 {font-size:48px;}
+        .wb_cts05 .ctTilte p {font-size:36px;}
+        .wb_cts05 .ctTilte strong {color:#fff901}
         .evtCtnsBox .passLecBuy1 {position:absolute; bottom:75px; width:470px; left:50%; margin-left:-470px; color:#252525; letter-spacing:-1px}
         .evtCtnsBox .passLecBuy2 {position:absolute; bottom:75px; width:470px; left:50%; margin-left:-130px; color:#252525; letter-spacing:-1px}
         .evtCtnsBox .passLecBuy3 {position:absolute; bottom:120px; width:470px; left:50%; margin-left:225px; color:#252525; letter-spacing:-1px}
         .evtCtnsBox .passLecBuy div {width:50%; line-height:40px; font-size:22px; font-weight:bold; text-align:center;} 
         .evtCtnsBox .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
         input[type="radio"] {width:20px;height:20px;}
-        .sort {margin-left:19px;}
+
+        .lecWrap {display:flex; width:1120px; margin:auto; line-height:1.5; font-size:14px; color:#333}
+        .lecWrap .pass {width:calc(33.33333% - 10px); margin-bottom:10px; margin-right:10px; display:block; border-radius:10px; background:#fff; padding:20px; text-align:left; box-sizing: border-box; height: 100%; font-size:22px}
+        .lecWrap .pass:last-child {margin-right:0} 
+        .lecWrap .titleBox div:nth-child(1) {font-weight:300; color:#0065ef}
+        .lecWrap .titleBox div:nth-child(2) {margin-bottom:20px; font-size:30px}
+        .lecWrap .titleBox div:nth-child(3) {font-size:18px; font-weight:600;}
+        .lecWrap .titleBox div:nth-child(4) {font-size:28px; color:#0065ef}
+        .lecWrap .titleBox div:nth-child(4) strong {font-size:40px;}
+        .lecWrap .titleBox div span {box-shadow:inset 0 -14px 0 #c5ddfd; color:#0065ef}
+        .lecWrap .pass ul {margin-top:30px; font-size:16px}
+        .lecWrap .pass li {list-style:disc; margin-left:20px; margin-bottom:10px; font-weight:bold}
+        .lecWrap .pass li:nth-child(1),
+        .lecWrap .pass li:nth-child(2),
+        .lecWrap .pass li:nth-child(3) {font-size:20px;}
+        .lecWrap .pass li span {color:#0065ef; vertical-align:top}
+
+        .lecWrap .sort {width:80%; margin:50px auto 30px;}
+        .lecWrap .sort p {position: relative;}
+        .lecWrap .pass input[type="radio"] {position: absolute; top:30%; left:10px; height:20px; width:20px; vertical-align:center /*position:absolute; top:20px; left:20px; visibility: hidden;*/}
+        .lecWrap .pass label {padding:5px 0 5px 35px; display:block; font-weight:bold}
+        .lecWrap .pass:hover {cursor: pointer;}
+        .lecWrap .pass input:checked + label {background:#0065ef; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3); color:#fff; border-radius:10px}
+        
+
 
         /*수강신청 체크*/
         .check { width:930px; margin:30px auto 50px;}
         .check p {margin-bottom:50px;padding-top:75px;}
         .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#163C57; text-align:center; border-radius:90px;}
         .check p a:hover {color:#8d0033; background:#eee53b;}
-        .check label {cursor:pointer;color:#fff;font-weight:bold;font-size:15px;}
+        .check label {cursor:pointer;color:#fff; font-weight:bold; font-size:15px;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
         .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#1c2127; margin-left:50px; border-radius:20px;font-size:15px;font-weight:bold;}
         .wb_cts05 .passbuy a {display:block; width:400px; margin:0 auto; background:#1c2127; color:#fff; font-size:30px; border-radius:50px; padding:20px 0; font-weight:bold}  
@@ -173,8 +201,129 @@
             <a href="#careful" class="txtBtn">유의사항 확인하기 →</a>   
         </div>
 
-        <div class="evtCtnsBox wb_cts05" id="lecBuy2023" data-aos="fade-up">            
-            <img src="https://static.willbes.net/public/images/promotion/2022/10/2502_05.jpg" alt="수강신청" />
+        <div class="evtCtnsBox wb_cts05" id="lecBuy2023" data-aos="fade-up">
+            <div class="ctTilte">
+                지금부터 목표하는 시험일까지
+                <h5 class="NSK-Black">윌비스 직렬별 전 강좌를 합리적인 가격에!</h5>
+                <p>최종 합격시 <strong class="NSK-Black">100% 환급</strong>까지!!</p>
+            </div>
+            <div>
+                <div class="lecWrap">
+                    <div class="pass">
+                        <div class="titleBox">
+                            <div>2023 ~ 24대비</div>
+                            <div class="NSK-Black">9급 0원 PASS</div>
+                            <div><span>인증 EVENT 5만원 할인</span></div>
+                            <div>64만원 👉 <strong class="NSK-Black">59</strong>만원</div>
+                        </div>
+                        <ul>
+                            <li><span>~24년 6월까지 수강</span></li>
+                            <li><span>최종합격시 100% 환급</span></li>
+                            <li><span>교재포인트 3만점 제공</span></li>
+                            <li>온라인모의고사 무료<br>(전국모의고사 시행시 제공)</li>
+                            <li>배속제한 없는 무제한수강</li>
+                        </ul>
+                        <div class="sort">
+                            <p>                                
+                                <input type="radio" id="y_pkg1" name="y_pkg" value="201798"/> 
+                                <label for="y_pkg1"> 행정직 PASS</label>
+                            </p>
+                            <p>               
+                                <input type="radio" id="y_pkg2" name="y_pkg" value="201800"/>
+                                <label for="y_pkg2"> 세무직 PASS</label>
+                            </p>
+                            <p>
+                                <input type="radio" id="y_pkg3" name="y_pkg" value="201802"/>
+                                <label for="y_pkg3"> 교육행정직 PASS</label>
+                            </p>
+                            <p>                               
+                                <input type="radio" id="y_pkg4" name="y_pkg" value="201804"/>
+                                <label for="y_pkg4"> 사회복지직 PASS</label>
+                            </p>
+                        </div>                        
+                    </div>
+
+                    <div class="pass">
+                        <div class="titleBox">
+                            <div>2023대비</div>
+                            <div class="NSK-Black">9급 0원 PASS</div>
+                            <div><span>인증 EVENT 5만원 할인</span></div>
+                            <div>54만원 👉 <strong class="NSK-Black">49</strong>만원</div>
+                        </div>
+                        <ul>
+                            <li><span>23년 6월까지 수강</span></li>
+                            <li><span>최종합격시 100% 환급</span></li>
+                            <li><span>교재포인트 3만점 제공</span></li>
+                            <li>온라인모의고사 무료<br>(전국모의고사 시행시 제공)</li>
+                            <li>배속제한 없는 무제한수강</li>
+                        </ul>
+                        <div class="sort">
+                            <p>                                
+                                <input type="radio" id="y_pkg5" name="y_pkg" value="201797"/> 
+                                <label for="y_pkg5"> 행정직 PASS</label>
+                            </p>
+                            <p>               
+                                <input type="radio" id="y_pkg6" name="y_pkg" value="201799"/>
+                                <label for="y_pkg6"> 세무직 PASS</label>
+                            </p>
+                            <p>
+                                <input type="radio" id="y_pkg7" name="y_pkg" value="201801"/>
+                                <label for="y_pkg7"> 교육행정직 PASS</label>
+                            </p>
+                            <p>                               
+                                <input type="radio" id="y_pkg8" name="y_pkg" value="201803"/>
+                                <label for="y_pkg8"> 사회복지직 PASS</label>
+                            </p>
+                        </div>                        
+                    </div>
+
+                    <div class="pass">
+                        <div class="titleBox">
+                            <div>2023대비</div>
+                            <div class="NSK-Black">9급 국가직 PASS</div>
+                            <div><span>인증 EVENT 5만원 할인</span></div>
+                            <div>54만원 👉 <strong class="NSK-Black">49</strong>만원</div>
+                        </div>
+                        <ul>
+                            <li><span>23년 4월까지 수강</span></li>
+                            <li><span>최종합격시 100% 환급</span></li>
+                            <li><span>교재포인트 3만점 제공</span></li>
+                            <li>온라인모의고사 무료<br>(전국모의고사 시행시 제공)</li>
+                            <li>배속제한 없는 무제한수강</li>
+                        </ul>
+                        <div class="sort">
+                            <p>                                
+                                <input type="radio" id="y_pkg9" name="y_pkg" value="189930"/> 
+                                <label for="y_pkg9"> 행정직 PASS</label>
+                            </p>
+                            <p>               
+                                <input type="radio" id="y_pkg10" name="y_pkg" value="189939"/>
+                                <label for="y_pkg10"> 세무직 PASS</label>
+                            </p>
+                            <p>
+                                <input type="radio" id="y_pkg11" name="y_pkg" value="190056"/>
+                                <label for="y_pkg11"> 교육행정직 PASS</label>
+                            </p>
+                            <p>
+                                <label for=""> &nbsp;</label>
+                            </p>
+                        </div>                        
+                    </div>
+                </div>
+
+                <div class="check" id="chkInfo">
+                    <label>
+                        <input name="ischk"  type="checkbox" value="Y" />
+                        페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
+                    </label>
+                    <a href="#careful" class="infotxt">이용안내확인하기 ↓</a>
+                </div>
+
+                <div class="passbuy">
+                    <a href="javascript:void(0);" onclick="javascript:go_PassLecture(); return false;">지금 바로 신청하기 ></a>
+                </div>
+            </div>
+            {{--
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/10/2502_05_apply.png" alt="신청하기">
                 <div class=" passLecBuy passLecBuy1 NSK-Black"> 
@@ -225,9 +374,10 @@
                     <div>                
                         <label for="y_pkg11">교육행정직 PASS</label>
                         <input type="radio" id="y_pkg11" name="y_pkg" value="190056"/>
-                    </div>                             
+                    </div>                            
                 </div>
             </div>
+            
             <div class="check" id="chkInfo">
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />
@@ -235,9 +385,11 @@
                 </label>
                 <a href="#careful" class="infotxt" > 이용안내 확인하기 ↓</a>
             </div> 
+            
             <div class="passbuy">
                 <a href="javascript:void(0);" onclick="javascript:go_PassLecture(); return false;">지금 바로 신청하기 ></a>
             </div>
+            --}}
         </div>
 
         <div class="content_guide_wrap" id="tab">

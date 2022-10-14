@@ -67,16 +67,6 @@
     .content_guide_box dd li {margin-bottom:10px; list-style:decimal; margin-left:20px}
     .content_guide_box dd:after {content:""; display:block; clear:both}
 
-    /*
-    .evtInfo {padding:50px 20px; background:#535353; color:#fff; font-size:14px}
-    .evtInfoBox {margin:0 auto; text-align:left; line-height:1.4}
-    .evtInfoBox h4 {font-size:22px; margin-bottom:20px}
-    .evtInfoBox .infoTit {font-size:16px; margin-bottom:20px}
-    .evtInfoBox .infoTit strong {padding:8px 20px; background:#333; border-radius:20px;}
-    .evtInfoBox ul {margin-bottom:30px}
-    .evtInfoBox li {margin-bottom:8px; list-style-type: decimal; margin-left:20px}  
-    .evtInfoBox span {color:#fff100;}*/
-
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {  
         .passWrap {display:block;}
@@ -218,10 +208,7 @@
                                 <li>2022~2024 대비로 진행된 전 강좌 제공 (진행 예정 신규강좌 포함)</li>
                                 <li>수강 가능 교수진<br>                                                            
                                     <div class="tx-blue">
-                                    · 행정직 : 국어 오대혁, 영어 한덕현, 한국사 김상범, 행정법 임병주, 행정학 김철<br>
                                     · 세무직 : 국어 오대혁, 영어 한덕현, 한국사 김상범, 회계학 이윤호, 세법 박창한<br>
-                                    · 교육행정직 : 국어 오대혁, 영어 한덕현, 한국사 김상범, 행정법 임병주, 교육학 손영민<br>
-                                    · 사회복지직 : 국어 오대혁, 영어 한덕현, 한국사 김상범, 행정법 임병주, 사회복지학 정형윤<br>
                                         <span class="tx-red">
                                         (*영어 한덕현 교수의 경우, [기본문법>제니스문법>기출리뷰>스나이퍼32>실전동형모의고사] 과정만 제공)<br>
                                         (*교수진별 커리큘럼 진행은 상이할 수 있으며 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있습니다)<br>

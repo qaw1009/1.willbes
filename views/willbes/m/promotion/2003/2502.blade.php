@@ -38,11 +38,10 @@
     }
 
     .wb_cts05m {background:#43AAF7;padding-bottom:100px;}    
-    .wb_cts05m .passLecBuy2 {position:absolute; bottom:85px; width:470px; left:50%; margin-left:-130px; color:#252525; letter-spacing:-1px}  
-    .wb_cts05m .passLecBuy div {width:50%; line-height:40px; font-size:22px; font-weight:bold; text-align:center;} 
+    .wb_cts05m .passLecBuy2 {display:flex;position:absolute; bottom:70px; width:650px; left:50%; margin-left:-305px; color:#252525; letter-spacing:-1px;}  
+    .wb_cts05m .passLecBuy div {line-height:40px; font-size:20px; font-weight:bold; text-align:center;padding-right:10px;} 
     .wb_cts05m .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
     input[type="radio"] {width:20px;height:20px;}
-    .sorts {margin-left:19px;}
 
     /*수강신청 체크*/
     .check { width:720px; margin:30px auto 50px;}
@@ -77,23 +76,46 @@
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {
+        .wb_cts05m .passLecBuy2 {display:flex;position:absolute; bottom:50px; width:290px; left:50%; margin-left:-140px; color:#252525; letter-spacing:-1px;}  
+        .wb_cts05m .passLecBuy div {line-height:20px; font-size:16px; font-weight:bold; text-align:center;padding-right:10px;} 
+        .wb_cts05m .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
+        input[type="radio"] {width:15px;height:15px;}
+        .check { width:250px; margin:30px auto -30px;}
+        .check label {font-size:16px;}
+        .check p {margin-bottom:50px;padding:40px 10px 0;}
+        .check p a {display:block;margin:0 auto;color:#fff; background:#111; text-align:center; border-radius:50px; padding:10px 0;font-size:17px;}
+        .check a.infotxt {margin-top:10px;margin:75px;border-radius:75px;}
+        .wb_cts05m .passbuy a {width:250px;font-size:25px;}
+        .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
+        .content_guide_wrap .tabs li a {font-size:12px !important; letter-spacing:-1px}
+    }
+
+     /**/
+     @@media only screen and (min-width: 375px) and (max-width: 499px) {
+        .wb_cts05m .passLecBuy2 {display:flex;position:absolute; bottom:50px; width:290px; left:50%; margin-left:-140px; color:#252525; letter-spacing:-1px;}  
+        .wb_cts05m .passLecBuy div {line-height:20px; font-size:16px; font-weight:bold; text-align:center;padding-right:10px;} 
+        .wb_cts05m .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
+        input[type="radio"] {width:15px;height:15px;}
         .check { width:325px; margin:30px auto -30px;}
         .check label {font-size:16px;}
         .check p {margin-bottom:50px;padding:40px 10px 0;}
         .check p a {display:block;margin:0 auto;color:#fff; background:#111; text-align:center; border-radius:50px; padding:10px 0;font-size:17px;}
-        .check a.infotxt {display:flow-root;margin-top:10px;margin:75px;border-radius:75px;}
+        .check a.infotxt {margin-top:10px;margin:75px;border-radius:75px;}
         .wb_cts05m .passbuy a {width:250px;font-size:25px;}
         .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
         .content_guide_wrap .tabs li a {font-size:12px !important; letter-spacing:-1px}
     }  
 
     /* 태블릿 세로 */
-    @@media only screen and (min-width: 375px) and (max-width: 640px) {
-        .check { width:640px; margin:30px auto -20px;}
+    @@media only screen and (min-width: 500px) and (max-width: 640px) {
+        .wb_cts05m .passLecBuy2 {display:flex;position:absolute; bottom:60px; width:455px; left:50%; margin-left:-210px; color:#252525; letter-spacing:-1px;}  
+        .wb_cts05m .passLecBuy div {line-height:20px; font-size:16px; font-weight:bold; text-align:center;padding-right:10px;} 
+        .wb_cts05m .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
+        .check { width:540px; margin:30px auto -20px;}
         .check label {font-size:17px;}
         .check p {margin-bottom:50px;padding:40px 10px 0;}
         .check p a {display:block;margin:0 auto;color:#fff; background:#111; text-align:center; border-radius:50px; padding:10px 0;font-size:17px;}
-        .check a.infotxt {display:flow-root;margin-top:10px;margin:75px;border-radius:75px;}
+        .check a.infotxt {margin-top:10px;margin:75px;border-radius:75px;}
         .wb_cts05m .passbuy a {width:250px;font-size:25px;}
         .content_guide_wrap .guide_tit{font-size:24px;}
         .content_guide_wrap .tabs li a {font-size:15px !important; letter-spacing:-1px}
@@ -106,7 +128,7 @@
         .check label {font-size:19px;}
         .check p {margin-bottom:50px;padding:40px 10px 0;}
         .check p a {display:block;margin:0 auto;color:#fff; background:#111; text-align:center; border-radius:50px; padding:10px 0;font-size:17px;}
-        .check a.infotxt {display:flow-root;margin-top:10px;margin:75px;border-radius:75px;}
+        .check a.infotxt {margin-top:10px;margin:75px;border-radius:75px;}
         .wb_cts05m .passbuy a {width:250px;font-size:25px;}
         .content_guide_wrap .guide_tit{font-size:26px;}
         .content_guide_wrap .tabs li a {font-size:17px !important; letter-spacing:-1px}
@@ -123,7 +145,7 @@
         <div class="evtCtnsBox" data-aos="fade-down">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/2502m_top.jpg" alt="9급 패스">
-                <a href="#lecBuy2023" title="2023 대비 9급 직렬별PASS 구매하기" style="position: absolute;left: 5.8%;top: 79.73%;width: 48.41%;height: 9.72%;z-index: 2;"></a>
+                <a href="#lecBuy2023" title="2023 대비 9급 직렬별PASS 구매하기" style="position: absolute;left: 5.8%;top: 79.73%;width: 49.41%;height: 10.72%;z-index: 2;"></a>
             </div>
         </div>
 
@@ -138,14 +160,14 @@
         <div class="evtCtnsBox wb_cts05m" data-aos="fade-up" id="lecBuy2023">
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2502m_05.jpg" alt="">
             <div class="p_re apply_bg">
-                <img src="https://static.willbes.net/public/images/promotion/2022/10/2502_05m_apply01.png" alt="" > 
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2502m_apply01.png" alt="" > 
                 <div class=" passLecBuy passLecBuy2 NSK-Black"> 
-                    <div class="sorts">                                
-                        <label for="y_pkg1">행정직 PASS</label>
+                    <div>                             
+                        <label for="y_pkg1">행정직&nbsp; PASS</label>
                         <input type="radio" id="y_pkg1" name="y_pkg" value="201798"/>
                     </div>
-                    <div class="sorts">               
-                        <label for="y_pkg2">세무직 PASS</label>
+                    <div>               
+                        <label for="y_pkg2">세무직&nbsp; PASS</label>
                         <input type="radio" id="y_pkg2" name="y_pkg" value="201800"/>
                     </div>
                     <div>                
@@ -159,14 +181,14 @@
                 </div>
             </div>
             <div class="p_re apply_bg">
-                <img src="https://static.willbes.net/public/images/promotion/2022/10/2502_05m_apply02.png" alt="" >
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2502m_apply02.png" alt="" >
                 <div class="passLecBuy passLecBuy2 NSK-Black"> 
-                    <div class="sorts">                                
-                        <label for="y_pkg5">행정직 PASS</label>
+                    <div>                               
+                        <label for="y_pkg5">행정직&nbsp; PASS</label>
                         <input type="radio" id="y_pkg5" name="y_pkg" value="201797"/>
                     </div>
-                    <div class="sorts">                        
-                        <label for="y_pkg6">세무직 PASS</label>
+                    <div>                      
+                        <label for="y_pkg6">세무직&nbsp; PASS</label>
                         <input type="radio" id="y_pkg6" name="y_pkg" value="201799"/>
                     </div>
                     <div>                

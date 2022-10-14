@@ -32,7 +32,7 @@
         .evttop_banners .btns a {display:block; background:#fef200; color:#000; margin-top:10px; border-radius:10px; padding:10px; font-size:18px; font-weight:bold}
         .evttop_banners .btns a:hover {background:#000; color:#fef200; border:1px solid #fef200}
 
-        .evttop {background:url(https://static.willbes.net/public/images/promotion/2022/02/1676_top_bg.jpg) no-repeat center top; }
+        .evttop {background:url(https://static.willbes.net/public/images/promotion/2022/10/1676_top_bg.jpg) no-repeat center top; }
 
         .box_book{width:920px; margin:50px auto;border-top:2px solid #22197f;}
 
@@ -54,12 +54,12 @@
         .evt05 a {position:absolute; top:30px; left:50%; margin-left:280px}               
 	
         /* 이용안내 */
-        .evtInfo {padding:100px 0; background:#555; color:#fff; line-height:1.5; margin-top:100px}
+        .evtInfo {padding:100px 0; background:#555; color:#fff; line-height:1.5; margin-top:100px; font-size:16px;}
         .guide_box{width:1000px; margin:0 auto; padding:0 50px; text-align:left; word-break:keep-all}
         .guide_box h2 {font-size:30px; margin-bottom:30px;}
         .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:16px;}        
         .guide_box dd{margin-bottom:50px;}
-        .guide_box dd li{margin-bottom:10px; list-style:decimal; margin-left:20px;font-size:14px;}
+        .guide_box dd li{margin-bottom:15px; list-style:decimal; margin-left:20px; }
         .guide_box dd li.none {list-style:none; margin-left:0}
         .guide_box dd:last-child {margin:0}    	
     </style>
@@ -76,15 +76,9 @@
             </map>  
         </div>
 
-        @if(time() < strtotime('202210030000'))
+        @if(time() < strtotime('202210220000'))
             <div class="evtCtnsBox evttop_banners" >
                 <div class="wrap" data-aos="fade-left">
-                    {{--
-                    <img src="https://static.willbes.net/public/images/promotion/2022/08/1676_top_banner.jpg">
-                    <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="" style="position: absolute; left: 53.57%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>
-                    <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" title="" style="position: absolute; left: 74.29%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>  
-                    --}}
-
                     <div class="txtInfo">
                         <p>2주에 1번! 무료로 찾아오는 실력점검 Chance</p>
                         <p>더켠의 반반한 온라인 모의고사</p>
@@ -92,11 +86,11 @@
                     </div> 
                     <div class="btns">
                         <div>
-                            9/26(월)~9/30(금)
+                            10/17(월)~10/21(금)
                             <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank">접수하기 ></a>
                         </div>
                         <div>
-                            10/1(토)~10/2(일)
+                            10/22(토)~10/23(일)
                             <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank">응시하기 ></a>
                         </div>
                     </div>
@@ -107,7 +101,7 @@
         @endif     
         
         <div class="evtCtnsBox evttop" data-aos="fade-up">                 
-            <img src="https://static.willbes.net/public/images/promotion/2022/02/1676_top.jpg"  title="더켠의 반반한 밤">                        
+            <img src="https://static.willbes.net/public/images/promotion/2022/10/1676_top.jpg"  title="더켠의 반반한 밤">                        
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
@@ -126,7 +120,6 @@
                 </div>        
             </div>   
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_01_02.jpg" title="더켠읜 반반한 모의고사" id="watch"><br>
-            {{--<iframe src="https://www.youtube.com/embed/8T84bvoKd28?rel=0M" frameborder="0" allowfullscreen="" id="youtube_watch"></iframe>--}}
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_01_03.jpg" title="더켠읜 반반한 모의고사">         
         </div> 
 
@@ -134,14 +127,12 @@
         <div class="evtCtnsBox evt02" id="pairing" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
-                <ul id="slidesImg4">                  
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/09/1676_02_09.jpg" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/09/1676_02_10.jpg" /></li>
+                <ul id="slidesImg4">               
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/10/1676_02_10.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/10/1676_02_11.jpg" /></li>
                 </ul>
-
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p>
-
             </div> 
 
         </div>           
@@ -149,8 +140,12 @@
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt03">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/1676_03_02.jpg" name="evt3" id="evt3">
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/201014" target="_blank" title="9월방송 다시보기" style="position: absolute; left: 11.7%; top: 75.99%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/1676_03_01.jpg">
+                <a href="#to_go" title="출석체크하러가기" style="position: absolute; left: 30.18%; top: 87.85%; width: 39.64%; height: 6.5%; z-index: 2;"></a>
+            </div>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/1676_03_02.jpg" name="evt3" id="evt3">
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/201886" target="_blank" title="10월방송 다시보기" style="position: absolute; left: 11.7%; top: 75.99%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/199952" target="_blank" title="다시보기" style="position: absolute; left: 38.93%; top: 75.59%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" title="tpass" style="position: absolute; left: 66.88%; top: 75.99%; width: 21.34%; height: 9.34%; z-index: 2;"></a>                
             </div>
@@ -193,7 +188,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_05.jpg" title="출석 횟수">
 
             <span class="NSK-Black">
-                @if(time() < strtotime('202108070000'))
+                @if(time() < strtotime('202210140000'))
                     {{$arr_base['add_apply_member_login_count'] + 1}}
                 @else
                     {{$arr_base['add_apply_member_login_count']}}
@@ -243,8 +238,7 @@
                             - 매주 화/목 21:00~21:40 똑똑영어 (어휘), 8회분<br>
                             - 1주차/3주차 월~금 : 무료 온라인 모의고사 접수 진행<br>
                             - 1주차/3주차 토~일 : 무료 온라인 모의고사 응시 기간<br>
-                            - 9/19(월), 10/4(화) 오후 7~8시 :  모의고사 해설 방송 진행 (실시간 LIVE), 2회분
-                            </li>
+                            - 10/24(월), 11/7(월) 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE), 2회분</li>
 
                             <li>본 방송은 방송 종료 후 유료 동영상 강의로 전환됩니다.<br>
                             단, 정규방송과의 형평성을 고려하여 방송 후 1주일 뒤 동영상 서비스가 제공됩니다.</li>
@@ -256,9 +250,9 @@
                             - PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br>
                             - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.</li>
                             <li>열공 출첵 이벤트 관련<br>
-                            - 본 이벤트는 로그인 후 참여 가능하며, 9/12(월)~10/7(금)까지 총 20회 진행됩니다. (*토~일 제외)<br>
-                            - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (9/19(월), 10/4(화) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
-                            - 당첨자 안내 공지는 9/5(월) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
+                            - 본 이벤트는 로그인 후 참여 가능하며, 10/17(월)~11.11(금)까지 총 20회 진행됩니다. (*토~일 제외)<br>
+                            - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (10/24(월), 11/7(월) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
+                            - 당첨자 안내 공지는 11/16(수) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
                         </ol>
                     </dd>
                 </dl>
@@ -320,8 +314,8 @@
         {{-- 출석 체크 --}}
         function fn_add_apply_submit() {
 
-            @if(date('YmdHi') < '202004132100' && ENVIRONMENT == 'production')
-                alert('4월13일 21:00 부터 이벤트 참여 가능합니다.');
+            @if(date('YmdHi') < '202210140000' && ENVIRONMENT == 'production')
+                alert('10월17일 00:00 부터 이벤트 참여 가능합니다.');
                 return;
             @endif
 

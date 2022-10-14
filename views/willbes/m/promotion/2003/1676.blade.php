@@ -16,11 +16,9 @@
     .tabs li a.active {box-shadow:inset 0 -5px 0 rgba(0,0,0,1); color:#000}
     .tabs:after {content:""; display:block; clear:both}
 
-    .evt01 {}
 
-    .evt02 {}
     .evt03 {padding-bottom:50px}
-    .evt03 p {margin:0 10px 30px; background:#363636; color:#ffcc00; padding:10px; font-size:20px; font-weight:bold;
+    .evt03 p {margin:0 10px 30px; background:#363636; color:#ffcc00; padding:10px; font-size:2vh; font-weight:bold;
         animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
         @@keyframes upDown{
         from{color:#fff}
@@ -35,15 +33,15 @@
 
     .evt03 ul {margin:0 10px}
     .evt03 li {display:flex; justify-content: center; padding-bottom: 5%;}
-    .evt03 li a {display:block; padding:20px 0; margin-left:5px; border-radius:10px; border:3px solid #000; font-size:16px; width:90%;}
+    .evt03 li a {display:block; padding:20px 0; margin-left:5px; border-radius:10px; border:3px solid #000; font-size:1.6vh; width:90%;}
     .evt03 li span {display:block; color:#BA2933}
-    .evt03 li span:nth-child(2) {font-size:30px; font-weight:bold; color:#BA2933;}
+    .evt03 li span:nth-child(2) {font-size:3vh; font-weight:bold; color:#BA2933;}
     .evt03 li span:nth-child(3) { color:#777777; font-size: 30px; font-weight:bold;}
     .evt03 li:last-child span:nth-child(2) { color:#777777;}
     .evt03 li:last-child span:nth-child(3) { color:#BA2933;}
-    .evt03 li span:last-child {background:#BA2933; color:#fff; padding:10px 0; margin:10px 10px 0; border-radius:5px;font-size:14px; letter-spacing:-1px}
+    .evt03 li span:last-child {background:#BA2933; color:#fff; padding:10px 0; margin:10px 10px 0; border-radius:5px;font-size:2vh;}
     .evt03 li span:last-child a {margin:0; font-size: 22px; }
-    .evt03 li strong {font-size:14px;font-weight:bold;display: block; color: #DBCB99;}
+    .evt03 li strong {font-size:1.6vh;font-weight:bold;display: block; color: #DBCB99;}
 
     .evt04 {padding:30px 0; background:#2a2a2a}    
     .evt04 li {display:inline; float:left; width:50%; font-size:16px; font-weight:bold}
@@ -115,7 +113,7 @@
 
 <div id="Container" class="Container NSK c_both">       
     <div class="evtCtnsBox evtTop" data-aos="fade-down">
-        <img src="https://static.willbes.net/public/images/promotion/2022/02/1676m_top.jpg" alt="" > 
+        <img src="https://static.willbes.net/public/images/promotion/2022/10/1676m_top.jpg" alt="" > 
     </div>  
 
     <div class="evtMenu" data-aos="fade-up">
@@ -135,9 +133,9 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1676m_02.jpg" alt="" >
         <ul>
             <li>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/201014" target="_blank">
+                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/201886" target="_blank">
                     <span>반반모고&똑똑영어</span>
-                    <span>9월 방송</span>
+                    <span>10월 방송</span>
                     <span>다시보기</span>
                     <span><strong>6만원으로</strong>방송 다시보기 ></span>
                 </a>
@@ -234,7 +232,7 @@
                 @endif
             <li>
         </ul>
-        <p>*출석체크 경품에 대한 자세한 사항은<br> PC버전을 통해 확인해주시기 바랍니다.</p>
+        <p>* 출석체크 경품에 대한 자세한 사항은<br> PC버전을 통해 확인해주시기 바랍니다.</p>
     </div>
 
     <div class="evtCtnsBox evtFooter" id="tab04" data-aos="fade-up">
@@ -250,7 +248,7 @@
                 - 매주 화/목 21:00~21:40 똑똑영어 (어휘), 8회분<br>
                 - 1주차/3주차 월~금 : 무료 온라인 모의고사 접수 진행<br>
                 - 1주차/3주차 토~일 : 무료 온라인 모의고사 응시 기간<br>
-                - 9/19(월), 10/4(화) 오후 7~8시 :  모의고사 해설 방송 진행 (실시간 LIVE), 2회분
+                - 10/24(월), 11/7(월) 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE), 2회분
                 </li>
 
                 <li>본 방송은 방송 종료 후 유료 동영상 강의로 전환됩니다.<br>
@@ -263,9 +261,9 @@
                 - PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br>
                 - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.</li>
                 <li>열공 출첵 이벤트 관련<br>
-                - 본 이벤트는 로그인 후 참여 가능하며, 9/12(월)~10/7(금)까지 총 20회 진행됩니다. (*토~일 제외)<br>
-                - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (9/19(월), 10/4(화) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
-                - 당첨자 안내 공지는 9/5(월) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
+                - 본 이벤트는 로그인 후 참여 가능하며, 10/17(월)~11.11(금)까지 총 20회 진행됩니다. (*토~일 제외)<br>
+                - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (10/24(월), 11/7(월) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
+                - 당첨자 안내 공지는 11/16(수) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
             </ul>
         </div>
     </div>

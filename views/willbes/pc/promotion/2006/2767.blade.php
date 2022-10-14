@@ -144,9 +144,9 @@
                     </table>	
                 </li>	       
             </ul>
-            <h5 class="NSK-Black">손해평가사 자격증 취득반 강의시간표</h5>
+            <h5 class="NSK-Black pt50">손해평가사 자격증 취득반 강의시간표</h5>
             <ul>              
-                <li>                                    
+                <li style="list-style:none;">                                    
                     <table>
                         <tr>
                             <th>시간</th>

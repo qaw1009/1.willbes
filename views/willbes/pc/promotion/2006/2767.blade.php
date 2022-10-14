@@ -39,7 +39,7 @@
         
         .evt_05 {width:1120px; margin:0 auto; padding:100px; text-align:left; font-size:24px; line-height:1.4 }
         .evt_05 li {list-style-type: disc; margin-left:20px; margin-bottom:20px;}
-        .evt_05 li div {font-size:20px; color:#666}
+        .evt_05 li div {font-size:20px; color:#666}   
 
         .loadmap {position: relative; /*padding-bottom:56.25%;*/ overflow: hidden; max-width:100%; height:500px; }
         .loadmap iframe {position:absolute; top: 0; left: 0; width:100%; height:100%;}
@@ -143,6 +143,36 @@
                         </tr>
                     </table>	
                 </li>	       
+            </ul>
+            <h5 class="NSK-Black">손해평가사 자격증 취득반 강의시간표</h5>
+            <ul>              
+                <li>                                    
+                    <table>
+                        <tr>
+                            <th>시간</th>
+                            <th>매주 금요일</th>
+                            <th>매주 토요일</th>                            
+                        </tr>
+                        <tr>
+                            <td>10:00-13:00</td>
+                            <td>자습실 사용 가능</td>
+                            <td>2차 1과목<br>(홍덕기 교수님)</td>                           
+                        </tr>
+                        <tr>
+                            <td>14:00-17:00</td>
+                            <td>자습실 사용 가능</td>
+                            <td>2차 1과목<br>(이영진 교수님)</td>                           
+                        </tr>
+                        <tr>
+                            <td>18:00-21:00</td>
+                            <td>1차 대비반<br>(한용호 교수님)</td>
+                            <td>자습실 사용 가능</td>                           
+                        </tr>
+                    </table>	
+                </li>
+                <p>
+                    * 홍덕기 교수님의 2차 1과목은 교수님의 개인사정으로 11월 5일(토) 개강합니다. (보강 일정 11월 공지 예정)               
+                </p>   
             </ul>
 		</div> 
 

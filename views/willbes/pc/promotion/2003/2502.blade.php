@@ -280,7 +280,7 @@
                             <div>2023대비</div>
                             <div class="NSK-Black">9급 국가직 PASS</div>
                             <div><span>인증 EVENT 5만원 할인</span></div>
-                            <div>54만원 👉 <strong class="NSK-Black">49</strong>만원</div>
+                            <div>49만원 👉 <strong class="NSK-Black">44</strong>만원</div>
                         </div>
                         <ul>
                             <li><span>23년 4월까지 수강</span></li>

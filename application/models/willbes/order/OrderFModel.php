@@ -751,7 +751,7 @@ class OrderFModel extends BaseOrderFModel
         $n = 0;
 
         foreach ($cart_rows as $idx => $row) {
-            if ($row['CartProdType'] == 'on_lecture' || $row['CartProdType'] == 'book') {
+            if (($row['CartProdType'] == 'on_lecture' || $row['CartProdType'] == 'book') && $row['RealPayPrice'] > 0) {
                 $rate = round($row['RealPayPrice'] / $total_use_point_target_price, 7);
                 $cart_rows[$idx]['RealUsePoint'] = round($use_point * $rate);
                 $total_div_point += $cart_rows[$idx]['RealUsePoint'];
@@ -759,6 +759,8 @@ class OrderFModel extends BaseOrderFModel
                 if ($n == 0) {
                     $min_price = $row['RealPayPrice'];
                     $max_price = $row['RealPayPrice'];
+                    $min_idx = $idx;
+                    $max_idx = $idx;
                 } else {
                     if ($min_price > $row['RealPayPrice']) {
                         $min_price = $row['RealPayPrice'];

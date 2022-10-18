@@ -11,7 +11,7 @@
     /*.evtCtnsBox .wrap a {border:1px solid #000}*/
     .evt03 {background:#010E2D}
     .evt03 div {padding:2% 5% 10%;}
-    
+
 </style>
 
 <div id="Container" class="Container NSK c_both">
@@ -31,7 +31,7 @@
     <div class="evtCtnsBox evt03" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/10/2798m_03.jpg" alt="최종합격률" />
         <div>
-            <img src="https://static.willbes.net/public/images/promotion/2022/10/2798_pass.png"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/10/2798_name.png"/>
         </div>
     </div>    
 </div>

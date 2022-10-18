@@ -27,7 +27,7 @@
         .evt_02 {background:#FBFBFB}
 
         .evt_03 {background:url(https://static.willbes.net/public/images/promotion/2022/10/2798_03_bg.jpg) no-repeat center top; position:relative}
-        .ev_winner {position:absolute; width:690px; height:380px; top:1270px; left:50%; margin-left:-345px; z-index:10; overflow:hidden;}
+        .ev_winner {position:absolute; width:742px; height:124px; top:1350px; left:50%; margin-left:-371px; z-index:10; overflow:hidden;}
 
     </style>
 
@@ -49,7 +49,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2798_03.jpg" alt="최종합격률"/>
             <div class="ev_winner">
                 <ul id="slider1" class="bxslider">
-                    <li class="mb10"><img src="https://static.willbes.net/public/images/promotion/2022/10/2798_pass.png"/></li>					
+                    <li class="mb10"><img src="https://static.willbes.net/public/images/promotion/2022/10/2798_name.png"/></li>					
                 </ul>
             </div>
         </div>
@@ -69,7 +69,7 @@
                 ticker: true,
                 mode: 'vertical',
                 tickerHover: true,
-                speed:50000*bx_num01
+                speed:5000*bx_num01
             });
         });
     </script>

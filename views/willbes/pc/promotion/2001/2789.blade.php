@@ -65,7 +65,10 @@
         </div>
 
         <div class="evtCtnsBox evt04" id="special_lecture">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2789_04.jpg"  alt="04. 학습강의 지원" data-aos="fade-up"/>  
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2789_04.jpg"  alt="04. 학습강의 지원" data-aos="fade-up"/>
+                <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/free?search_order=course&course_idx=1072&subject_idx=2127&prof_idx=51393" title="온라인 무료특강 바로가기"  target="_blank" style="position: absolute;left: 27.04%;top: 86.36%;width: 45.94%;height: 7.81%;z-index: 2;"></a>
+            </div>
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_normal_partial')

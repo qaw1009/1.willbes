@@ -39,8 +39,9 @@
         <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" title="윌비스경찰 채널" target="_blank" style="position: absolute; left: 22.5%; top: 73.75%; width: 55%; height: 9.68%; z-index: 2;"></a>      
     </div>
 
-    <div class="evtCtnsBox evt04" data-aos="fade-up" id="special_lecture">
-        <img src="https://static.willbes.net/public/images/promotion/2022/09/2789m_04.jpg" alt="04. 학습강의 지원"/>       
+    <div class="evtCtnsBox evt04" data-aos="fade-up" id="special_lecture">        
+        <img src="https://static.willbes.net/public/images/promotion/2022/10/2789m_04.jpg" alt="04. 학습강의 지원"/>
+        <a href="https://police.willbes.net/m/lecture/index/pattern/free?search_order=course&course_idx=1072&subject_idx=2127&prof_idx=51393" title="무료특강" target="_blank" style="position: absolute;left: 14.98%;top: 89.49%;width: 70.14%;height: 6.98%;z-index: 2;"></a>       
     </div>
 
     {{--기본댓글--}}

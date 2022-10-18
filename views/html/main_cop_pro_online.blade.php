@@ -1,6 +1,9 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
 <link href="/public/css/willbes/style_cop_pro.css?ver={{time()}}" rel="stylesheet">
+<style>
+    .pro .Menu h3 {border:0}
+</style>
 
 <!-- Container -->
 <div id="Container" class="Container pro NGR c_both">
@@ -55,17 +58,32 @@
         </h3>
     </div>
 
-    <div class="Section Sec01">   
-        <div class="widthAuto">  
-            <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_1120x76.jpg" alt="대한민국 1등 경찰학원">  
-        </div> 
+    <div class="Section MainVisual">
+        <div class="VisualBox p_re">            
+            <div id="MainRollingSlider" class="MaintabBox">
+                <ul class="MaintabSlider">
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_2000x440_01.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_2000x440_02.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_2000x440_03.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_2000x440_04.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_2000x440_05.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_2000x440_06.jpg" alt="배너명"></a></li>
+                </ul>                  
+                <p class="leftBtn" id="imgBannerLeft"><a href="#none">이전</a></p>
+                <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p> 
+            </div> 
+            <div id="MainRollingDiv" class="MaintabList NSK">
+                <div class="Maintab">
+                    <span><a data-slide-index="0" href="javascript:void(0);" class="active">0원 무제한 패스</a></span>
+                    <span><a data-slide-index="1" href="javascript:void(0);" class="">개편과목 프리패스</a></span>
+                    <span><a data-slide-index="2" href="javascript:void(0);" class="">신광은 형사법</a></span>
+                    <span><a data-slide-index="3" href="javascript:void(0);" class="">장정훈 경찰학</a></span>
+                    <span><a data-slide-index="4" href="javascript:void(0);" class="">김원욱 헌법</a></span>
+                    <span><a data-slide-index="5" href="javascript:void(0);" class="">환승할인</a></span>
+                </div>
+            </div>           
+        </div>        
     </div>
-
-    <div class="Section Sec02">
-        <div>       
-            <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_2000x390.jpg" alt="합격패스">  
-        </div>
-    </div> 
 
     <div class="Section mt40">   
         <div class="widthAuto">  
@@ -446,6 +464,31 @@
 <!-- End Container -->
 
 <script type="text/javascript">
+    //상단배너
+    $(function(){ 
+        var slidesImg = $(".MaintabSlider").bxSlider({
+            mode:'horizontal',
+            touchEnabled: false,
+            speed:400,
+            pause:5000,
+            sliderWidth:2000,
+            auto : true,	
+            autoHover: true,						
+            pagerCustom: '#MainRollingDiv',
+            controls:false, 				
+            onSliderLoad: function(){
+                $("#MainRollingSlider").css("visibility", "visible").animate({opacity:1}); 
+            }
+        });	
+        $("#imgBannerLeft").click(function (){
+            slidesImg.goToPrevSlide();
+        });
+    
+        $("#imgBannerRight").click(function (){
+            slidesImg.goToNextSlide();
+        });			
+    });
+
     $(function(){ 
         $('.mou ul').bxSlider({ 
             speed:800,  

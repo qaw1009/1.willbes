@@ -2,6 +2,9 @@
 @section('content')
 <!-- Container -->
 <link href="/public/css/willbes/style_cop.css??ver={{time()}}" rel="stylesheet">
+<style>
+    .cop .Menu h3 {border:0}
+</style>
 
 <div id="Container" class="Container cop NGR c_both">
     <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
@@ -92,7 +95,7 @@
         </h3>
     </div>    
 
-    <div class="Section MainVisual mt20">
+    <div class="Section MainVisual">
         <div class="VisualBox p_re">            
             <div id="MainRollingSlider" class="MaintabBox">
                 <ul class="MaintabSlider">

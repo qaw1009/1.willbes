@@ -8,6 +8,130 @@
     margin-bottom: 30px;
 }
 
+/*Main Container : 상단 배너*/
+.pro .MainVisual {
+    width: 100%;
+    min-width: 1120px;
+    max-width: 2000px;
+    height: 440px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.pro .MaintabBox {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -1000px;
+    width: 2000px;
+    min-width: 1120px;
+    max-width: 2000px;
+    height: 440px;
+    overflow: hidden;
+}
+
+.pro .MaintabBox p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -28px;
+    width: 32px;
+    height: 50px;
+    cursor: pointer;
+    background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+}
+
+.pro .MaintabBox p a {
+    display: none;
+}
+
+.pro .MaintabBox p.leftBtn {
+    margin-left: -620px;
+}
+
+.pro .MaintabBox p.rightBtn {
+    margin-left: 588px;
+    background-position: right center;
+}
+
+.pro .MaintabBox p:hover {
+    opacity: 100;
+    filter: alpha(opacity=100);
+}
+
+.pro .MaintabList {
+    position: absolute;
+    top: 390px;
+    width: 100%;
+    height: 50px;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.pro .VisualBox .Maintab {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.pro .VisualBox .Maintab span {
+    display: inline-block;
+    height: 50px;
+    font-size: 15px;
+    line-height: 50px;
+    padding: 0 20px;
+    /*width: 200px;*/
+    color: #fff
+}
+
+.pro .VisualBox .Maintab span a.active,
+.pro .VisualBox .Maintab span a:hover {
+    color: #f9dd74;
+    font-weight: 600
+}
+
+.pro .VisualBox .Maintab:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+.pro .VisualBox .MaintabList.three span {
+    width: 209px;
+}
+
+.pro .VisualBox .MaintabList.four span {
+    width: 156px;
+}
+
+.pro .VisualBox .MaintabList.five span {
+    width: 188px;
+}
+
+.pro .VisualBox .MaintabList span a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.pro .VisualBox .MaintabSlider li img {
+    width: 100%;
+    height: 100%;
+}
+
+.pro .VisualBox .Maintab li a:hover,
+.pro .VisualBox .Maintab li a.active {
+    color: #fff;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+}
+
 .pro .ProfProBox {
     margin-left: -5px
 }

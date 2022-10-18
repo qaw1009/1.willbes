@@ -2056,17 +2056,26 @@ class OrderModel extends BaseOrderModel
                 'DiscPrice' => $disc_price,
                 'DiscRate' => $disc_rate,
                 'DiscType' => $disc_type,
-                'DiscReason' => $disc_reason,
-                'PayStatusCcd' => $this->_pay_status_ccd['paid'],
-                'UpdAdminIdx' => $sess_admin_idx
+                'DiscReason' => $disc_reason
             ];
 
-            $is_update = $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)
+            $is_update = $this->_conn->set($data)
                 ->where('OrderIdx', $order_idx)->where('OrderProdIdx', $order_prod_idx)->where('MemIdx', $mem_idx)
                 ->where('PayStatusCcd', $this->_pay_status_ccd['receipt_wait'])
                 ->update($this->_table['order_product']);
-            if ($is_update === false || $this->_conn->affected_rows() < 1) {
+            if ($is_update === false) {
                 throw new \Exception('주문상품 정보 수정에 실패했습니다.');
+            }
+
+            // 주문상품 결제완료 업데이트 (자동지급 강좌, 사은품 포함)
+            $is_paid_update = $this->_conn->set('PayStatusCcd', $this->_pay_status_ccd['paid'])
+                ->set('UpdDatm', 'NOW()', false)
+                ->set('UpdAdminIdx', $sess_admin_idx)
+                ->where('OrderIdx', $order_idx)->where('MemIdx', $mem_idx)
+                ->where('PayStatusCcd', $this->_pay_status_ccd['receipt_wait'])
+                ->update($this->_table['order_product']);
+            if ($is_paid_update === false || $this->_conn->affected_rows() < 1) {
+                throw new \Exception('주문상품 결제완료 업데이트에 실패했습니다.');
             }
 
             // 자동지급 쿠폰 데이터 등록 (0원결제(방문)일 경우 지급 안함)

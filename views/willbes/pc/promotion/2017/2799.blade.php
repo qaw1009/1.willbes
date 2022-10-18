@@ -477,10 +477,10 @@
             if ( window.pageYOffset > section02.offsetTop ) {
                 navBar.classList.add('fixed');
                 if(window.pageYOffset > evt03.offsetTop){
-                    $('.evtMenu').css('opacity', '0');
+                    $('.evtMenu').css('display', 'none');
                 }
                 else{
-                    $('.evtMenu').css('opacity', '1');
+                    $('.evtMenu').css('display', 'block');
                 }
             } else {
                 navBar.classList.remove('fixed'); 

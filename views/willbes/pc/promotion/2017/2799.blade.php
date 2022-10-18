@@ -40,9 +40,9 @@
         .evtMenu li a.on {border-bottom:1px solid #fff; color:#454545; background:#fff}
         .evtMenu li:last-child a {margin:0}
        
-        .tabCts {width:1120px; margin:0 auto; /*margin-top:100px;*/ padding-top:80px}
+        .tabCts {width:1120px; margin:0 auto; /*margin-top:100px;*/ padding-top:100px}
         .tabCts .sTitle {font-size:18px; font-weight:bold; margin-bottom:10px}
-        .tabCts:first-child {margin-top:0; padding-top:0}
+        .tabCts:first-child {margin-top:30px; padding-top:0}
 
         .fixed {position:fixed; top:0; left:50%; width:1120px; margin-left:-560px; background:#fff; z-index:10}
         

@@ -69,7 +69,9 @@
         .freelecbox .lecimg div p:nth-child(3) {font-size:18px; font-weight:bold}
         .freelecbox ul {margin-top:10px; font-size:16px}
         .freelecbox li {margin-bottom:5px;}
-        .freelecbox label:hover {cursor:pointer}     
+        .freelecbox label:hover {cursor:pointer}    
+        
+        .evt04 {margin-bottom:150px}
 
         .evtInfo {padding:150px 0; background:#333; color:#fff; font-size:16px}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -384,6 +386,16 @@
                 <div class="btns">
                     <a href="#none">인강 무료체험 신청하기</a>
                 </div>
+            </div>
+        </div>
+
+        <div class="evtCtnsBox evt04">
+            <div class="wrap">
+        	    <img src="https://static.willbes.net/public/images/promotion/2022/10/2799_05.jpg" alt="웜업 클래스란?"/>
+                <a href="https://ssam.willbes.net/landing/show/lcode/1035/cate/3134/preview/Y" target="_blank" title="임용시험이란?" style="position: absolute; left: 40.89%; top: 17.05%; width: 12.77%; height: 68.18%; z-index: 2;"></a>
+                <a href="https://ssam.willbes.net/examInfo/notice" target="_blank" title="시험공고문 확인" style="position: absolute; left: 54.02%; top: 17.05%; width: 12.77%; height: 68.18%; z-index: 2;"></a>
+                <a href="https://ssam.willbes.net/support/examQuestion/index" target="_blank" title="임용시험 기출문제" style="position: absolute; left: 67.23%; top: 17.05%; width: 12.77%; height: 68.18%; z-index: 2;"></a>
+                <a href="https://ssam.willbes.net/examInfo/trend" target="_blank" title="최근 10년 동향" style="position: absolute; left: 81.07%; top: 17.05%; width: 12.77%; height: 68.18%; z-index: 2;"></a>
             </div>
         </div>
 

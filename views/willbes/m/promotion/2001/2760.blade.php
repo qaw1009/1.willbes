@@ -89,6 +89,7 @@
         <a href="https://police.willbes.net/m/pass/offinfo/boardInfo/index/80" title="강의시간표 확인" target="_blank" style="position: absolute; left: 18.75%; top: 84.62%; width: 61.94%; height: 7.22%; z-index: 2;"></a>     
     </div>
 
+    {{--
     <div class="evtCtnsBox evt06" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/09/2760m_06.jpg" alt="이미지 다운받기"/>
@@ -96,13 +97,15 @@
             <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute;left: 9.31%; top: 75.19%; width: 81.25%; height: 4.8%; z-index: 2;"></a>
         </div>    
     </div>
+    --}}
 
-    {{--홍보url--}}
+    {{--홍보url
     @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
         @include('willbes.m.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'Y'))
     @endif
+    --}}
 
-    <div class="evtCtnsBox evt07" data-aos="fade-up">
+    <div class="evtCtnsBox evt07 mt50" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/09/2760m_07_01.jpg" alt="경찰총평 이벤트2"/>  
         @if(empty($arr_base['display_product_data']) === false)
             @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))

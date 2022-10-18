@@ -60,12 +60,14 @@
         }
 
         .evt05 {background:#373737}
-        .evt07 {padding-bottom:100px}
+        .evt07 {padding:100px 0}
+
+        .endpop {position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.9); color:#fff; font-size:80px; display:flex; justify-content: center; align-items: center; z-index: 10; }
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
-            <a href="#evt06"><img src="https://static.willbes.net/public/images/promotion/2022/09/2760_sky_02.png" title="소문내기 이벤트"></a>               
+            {{--<a href="#evt06"><img src="https://static.willbes.net/public/images/promotion/2022/09/2760_sky_02.png" title="소문내기 이벤트"></a>--}}
             <a href="#evt07"><img src="https://static.willbes.net/public/images/promotion/2022/09/2760_sky_01.png" title="이론완성반"></a>            
         </div>
 
@@ -116,17 +118,18 @@
             </div>
         </div>
 
+        {{--
         <div class="evtCtnsBox" data-aos="fade-right" id="evt06">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2760_06.jpg" title="소문내기 이벤트">
                 <a href="javascript:void(0);" onclick="giveCheck(); return false;" title="쿠폰받기" style="position: absolute; left: 27.32%; top: 57.02%; width: 45.18%; height: 5.05%; z-index: 2;"></a>
                 <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이벤트 이미지 다운로드" style="position: absolute; left: 57.32%; top: 73.93%; width: 29.46%; height: 5.05%; z-index: 2;"></a>
             </div>
+            <div class="endpop NSK-Black">이벤트 종료</div>
         </div> 
+        --}}
 
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial')
-        @endif 
+
 
         <div class="evtCtnsBox evt07" id="evt07" data-aos="fade-up">
             <div class="mb20"><img src="https://static.willbes.net/public/images/promotion/2022/09/2760_07_01.jpg" title="단과"></div>

@@ -470,11 +470,18 @@
 
     <script type="text/javascript">
         let section02 = document.querySelector('.tab01');
+        let evt03 = document.querySelector('.evt03');
         let navBar = document.querySelector('nav');
         window.addEventListener('scroll', function(){
             // nav 아래로 스크롤시 nav 상단고정
             if ( window.pageYOffset > section02.offsetTop ) {
                 navBar.classList.add('fixed');
+                if(window.pageYOffset > evt03.offsetTop){
+                    $('.evtMenu').css('opacity', '0');
+                }
+                else{
+                    $('.evtMenu').css('opacity', '1');
+                }
             } else {
                 navBar.classList.remove('fixed'); 
             }

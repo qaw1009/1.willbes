@@ -34,11 +34,17 @@
 
         .evt02 {width:1120px; margin:0 auto 50px; position:relative; text-align:left}
         .evt02 h5 {font-size:30px; margin-bottom:20px}
-        .evt02 .tabs {display:flex; flex-wrap: wrap;  justify-content: space-between; margin-bottom:20px}
-        .evt02 .tabs li a {display:block; border:1px solid #fc384c; background:#ff6376; color:#fff; font-size:14px; text-align:center; margin-right:1px; padding:15px 10px; line-height:1.4}
-        .evt02 .tabs li a:hover,
-        .evt02 .tabs li a.active {border-bottom:1px solid #fff; color:#454545; background:#fff}
-        .evt02 .tabs li:last-child a {margin:0}
+        .evtMenu ul {display:flex; flex-wrap: wrap; justify-content: space-between; margin-bottom:20px; width:1120px; margin:0 auto}
+        .evtMenu li a {display:block; border:1px solid #fc384c; background:#ff6376; color:#fff; font-size:14px; text-align:center; margin-right:1px; padding:15px 10px; line-height:1.4}
+        .evtMenu li a:hover,
+        .evtMenu li a.on {border-bottom:1px solid #fff; color:#454545; background:#fff}
+        .evtMenu li:last-child a {margin:0}
+       
+        .tabCts {width:1120px; margin:0 auto; /*margin-top:100px;*/ padding-top:80px}
+        .tabCts .sTitle {font-size:18px; font-weight:bold; margin-bottom:10px}
+        .tabCts:first-child {margin-top:0; padding-top:0}
+
+        .fixed {position:fixed; top:0; left:50%; width:1120px; margin-left:-560px; background:#fff; z-index:10}
         
         .evt03 {width:1120px; margin:0 auto 150px; position:relative; text-align:left}
         .evt03 h5 {font-size:30px; margin-bottom:20px; border-bottom:1px solid #333; padding-bottom:10px}
@@ -78,6 +84,8 @@
         .evtInfoBox h4 {font-size:40px; margin-bottom:20px;}
         .evtInfoBox ul {margin-bottom:30px}
         .evtInfoBox li {list-style-type: decimal;margin-left:20px; margin-bottom:10px}
+
+
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -96,94 +104,122 @@
             </a>  
         </div>  
 
-        <div class="evtCtnsBox eventTop" data-aos="fade-up">
+        <div class="evtCtnsBox eventTop">
         	<img src="https://static.willbes.net/public/images/promotion/2022/10/2799_top.jpg" alt="웜업 클래스"/>
         </div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-up">
+        <div class="evtCtnsBox evt01">
         	<img src="https://static.willbes.net/public/images/promotion/2022/10/2799_01.jpg" alt="웜업 클래스란?"/>
         </div>
 
-        <div class="evtCtnsBox evt02" id="warm_up" data-aos="fade-right">
+        <div class="evtCtnsBox evt02" id="warm_up">
         	<img src="https://static.willbes.net/public/images/promotion/2022/10/2799_02.jpg" alt="웜업 클래스 수강신청"/>
             <h5 class="NSK-Black">강좌선택</h5>
-            <ul class="tabs">
-                <li><a href="#tab01">전공국어<br>송원영 교수</a></li>
-                <li><a href="#tab02">전공국어<br>권보민 교수</a></li>
-                <li><a href="#tab03">전공국어<br>구동언 교수</a></li>
-                <li><a href="#tab04">전공영어<br>김유석 교수</a></li>
-                <li><a href="#tab05">전공영어<br>김영문 교수</a></li>
-                <li><a href="#tab06">전공수학<br>김철홍 교수</a></li>
-                <li><a href="#tab07">수학교육론<br>박태영 교수</a></li>
-                <li><a href="#tab08">전공화학<br>강 철 교수</a></li>
-                <li><a href="#tab09">도덕윤리<br>김병찬 교수</a></li>
-                <li><a href="#tab010">전공역사<br>김종권 교수</a></li>
-                <li><a href="#tab011">전기.전자.통신<br>최우영 교수</a></li>
-                <li><a href="#tab012">전공중국어<br>장영희 교수</a></li>
+        </div>
+
+        <nav class="evtMenu">
+            <ul>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab01')" class="tab">전공국어<br>송원영 교수</a></li>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab02')" class="tab">전공국어<br>권보민 교수</a></li>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab03')" class="tab">전공국어<br>구동언 교수</a></li>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab04')" class="tab">전공영어<br>김유석 교수</a></li>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab05')" class="tab">전공영어<br>김영문 교수</a></li>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab06')" class="tab">전공수학<br>김철홍 교수</a></li>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab07')" class="tab">수학교육론<br>박태영 교수</a></li>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab08')" class="tab">전공화학<br>강 철 교수</a></li>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab09')" class="tab">도덕윤리<br>김병찬 교수</a></li>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab10')" class="tab">전공역사<br>김종권 교수</a></li>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab11')" class="tab">전기.전자.통신<br>최우영 교수</a></li>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab12')" class="tab">전공중국어<br>장영희 교수</a></li>
             </ul>
-            <div id="tab01">
+        </nav>
+
+            <section class="tabCts tab01">
+                <div class="sTitle">전공국어 송원영 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
                 @endif    
-            </div>
-            <div id="tab02">
+            </section>
+
+            <section class="tabCts tab02">
+                <div class="sTitle">전공국어 권보민 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
                 @endif    
-            </div>
-            <div id="tab03">
+            </section>
+
+            <section class="tabCts tab03">
+                <div class="sTitle">전공국어 구동언 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
                 @endif    
-            </div>
-            <div id="tab04">
+            </section>
+            
+            <section class="tabCts tab04">
+                <div class="sTitle">전공영어 김유석 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))
                 @endif    
-            </div>
-            <div id="tab05">
+            </section>
+
+            <section class="tabCts tab05">
+                <div class="sTitle">전공영어 김영문 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>5))
                 @endif    
-            </div>
-            <div id="tab06">
+            </section>
+
+            <section class="tabCts tab06">
+                <div class="sTitle">전공수학 김철홍 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>6))
                 @endif    
-            </div>
-            <div id="tab07">
+            </section>
+
+            <section class="tabCts tab07">
+                <div class="sTitle">수학교육론 박태영 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>7))
                 @endif    
-            </div>
-            <div id="tab08">
+            </section>
+
+            <section class="tabCts tab08">
+                <div class="sTitle">전공화학 강 철 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>8))
                 @endif    
-            </div>
-            <div id="tab09">
+            </section>
+
+            <section class="tabCts tab09">
+                <div class="sTitle">도덕윤리 김병찬 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>9))
                 @endif    
-            </div>
-            <div id="tab10">
+            </section>
+
+            <section class="tabCts tab10">
+                <div class="sTitle">전공역사 김종권 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>10))
                 @endif    
-            </div>
-            <div id="tab11">
+            </section>
+
+            <section class="tabCts tab11">
+                <div class="sTitle">전기.전자.통신 최우영 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>11))
                 @endif    
-            </div>
-            <div id="tab12">
+            </section>
+
+            <section class="tabCts tab12">
+                <div class="sTitle">전공중국어 장영희 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>12))
                 @endif    
-            </div>
-        </div>
+            </section>
 
-        <div class="evtCtnsBox evt03" id="freelec" data-aos="fade-left">
+
+        <div class="evtCtnsBox evt03" id="freelec">
         	<img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03.jpg" alt="인강 무료체험 신청"/>
             <h5 class="NSK-Black">이벤트참여 사전 동의사항 <span class="NSK">* 윌비스임용의 본 이벤트 참여를 위해서는 아래 명시된 사항을 자세히 읽어 보시고 동의를 해주셔야 가능합니다.</span></h5>
             <ul class="infotext">
@@ -431,38 +467,32 @@
     </div>
     <!-- End Container -->
 
-    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
-    <script src="/public/js/willbes/dist/aos.js"></script>
-    <script>
-      $(document).ready( function() {
-        AOS.init();
-      });
+    <script type="text/javascript">
+        let section02 = document.querySelector('.tab01');
+        let navBar = document.querySelector('nav');
+        window.addEventListener('scroll', function(){
+            // nav 아래로 스크롤시 nav 상단고정
+            if ( window.pageYOffset > section02.offsetTop ) {
+                navBar.classList.add('fixed');
+            } else {
+                navBar.classList.remove('fixed'); 
+            }
+
+            let tabs = $('.tab');
+            let sections = $('section')
+            sections.each( function(i,el){
+                if(window.pageYOffset >= el.offsetTop && window.pageYOffset < el.offsetTop + el.offsetHeight){
+                    tabs.eq(i).addClass('on');
+                    tabs.eq(i).parent('li').siblings().children().removeClass('on');
+                }
+            })
+        })
+        
+        function scrolling(target){
+            $('html, body').stop().animate({scrollTop: $(target).offset().top});
+        }
+        
     </script>
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('.tabs').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
-            
-                $content = $($active[0].hash);
-            
-                $links.not($active).each(function () {
-                $(this.hash).hide()});
-            
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                $active.removeClass('active');
-                $content.hide();
-            
-                $active = $(this);
-                $content = $(this.hash);
-            
-                $active.addClass('active');
-                $content.show();
-            
-                e.preventDefault()})})}
-        );
-    </script>
+
 @stop

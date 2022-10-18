@@ -46,7 +46,7 @@
 
         .fixed {position:fixed; top:0; left:50%; width:1120px; margin-left:-560px; background:#fff; z-index:10}
         
-        .evt03 {width:1120px; margin:0 auto 150px; position:relative; text-align:left}
+        .evt03 {width:1120px; margin:100px auto 150px; position:relative; text-align:left}
         .evt03 h5 {font-size:30px; margin-bottom:20px; border-bottom:1px solid #333; padding-bottom:10px}
         .evt03 h5 strong {color:#ff6376}
         .evt03 h5 span {font-size:14px; vertical-align:bottom}
@@ -134,6 +134,7 @@
             </ul>
         </nav>
 
+        <div>
             <section class="tabCts tab01">
                 <div class="sTitle">전공국어 송원영 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
@@ -217,7 +218,7 @@
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>12))
                 @endif    
             </section>
-
+        </div>
 
         <div class="evtCtnsBox evt03" id="freelec">
         	<img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03.jpg" alt="인강 무료체험 신청"/>

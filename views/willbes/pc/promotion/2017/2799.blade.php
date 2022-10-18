@@ -102,7 +102,7 @@
         	<img src="https://static.willbes.net/public/images/promotion/2022/10/2799_01.jpg" alt="웜업 클래스란?"/>
         </div>
 
-        <div class="evtCtnsBox evt02" id="warm_up" data-aos="fade-up">
+        <div class="evtCtnsBox evt02" id="warm_up" data-aos="fade-right">
         	<img src="https://static.willbes.net/public/images/promotion/2022/10/2799_02.jpg" alt="웜업 클래스 수강신청"/>
             <h5 class="NSK-Black">강좌선택</h5>
             <ul class="tabs">
@@ -181,7 +181,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox evt03" id="freelec" data-aos="fade-up">
+        <div class="evtCtnsBox evt03" id="freelec" data-aos="fade-left">
         	<img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03.jpg" alt="인강 무료체험 신청"/>
             <h5 class="NSK-Black">이벤트참여 사전 동의사항 <span class="NSK">* 윌비스임용의 본 이벤트 참여를 위해서는 아래 명시된 사항을 자세히 읽어 보시고 동의를 해주셔야 가능합니다.</span></h5>
             <ul class="infotext">

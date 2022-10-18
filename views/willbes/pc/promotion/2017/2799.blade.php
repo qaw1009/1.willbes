@@ -18,7 +18,7 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /************************************************************/
 
-        .sky {position:fixed;top:200px;right:10px; width:120px; z-index:100;}
+        .sky {position:fixed;top:250px;right:10px; width:120px; z-index:100;}
         .sky a {display:block; margin-bottom:10px; background:#fff; border:3px solid #ff384f; color:#ff384f; padding:15px; text-align:center; font-size:16px}
         .sky a:hover {color:#fff; background:#ff384f}
 

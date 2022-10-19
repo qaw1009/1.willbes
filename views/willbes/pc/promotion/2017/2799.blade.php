@@ -13,7 +13,7 @@
             font-size:14px;
             line-height:1.4;
         }
-        .evtContent span {vertical-align:top}
+        .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /************************************************************/
@@ -33,12 +33,13 @@
         .evt01 .wrap01 h4 {font-size:30px; color:#000; text-align:left; margin:50px 0 20px; padding-left:20px}
 
         .evt02 {width:1120px; margin:0 auto 50px; position:relative; text-align:left}
-        .evt02 h5 {font-size:30px; margin-bottom:20px}
+        .evt02 h5 {font-size:30px; margin-bottom:20px; }
         .evtMenu ul {display:flex; flex-wrap: wrap; justify-content: space-between; margin-bottom:20px; width:1120px; margin:0 auto}
-        .evtMenu li a {display:block; border:1px solid #fc384c; background:#ff6376; color:#fff; font-size:14px; text-align:center; margin-right:1px; padding:15px 10px; line-height:1.4}
+        .evtMenu li {background:#000; margin-right:1px; width:calc(100% / 11 - 1px)}
+        .evtMenu li a {display:block; width:100%; border:1px solid #fc384c; background:#ff6376; color:#fff; font-size:14px; text-align:center; padding:15px 0; line-height:1.4}
         .evtMenu li a:hover,
         .evtMenu li a.on {border-bottom:1px solid #fff; color:#454545; background:#fff}
-        .evtMenu li:last-child a {margin:0}
+        .evtMenu li:last-child {margin:0}
        
         .tabCts {width:1120px; margin:0 auto; /*margin-top:100px;*/ padding-top:100px}
         .tabCts .sTitle {font-size:18px; font-weight:bold; margin-bottom:10px}
@@ -62,19 +63,20 @@
         .evt03 input[type=text] {height:28px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; vertical-align:middle}
         .evt03 input[type=file] {height:30px; color:#494a4d; vertical-align:middle;}
         .evt03 .btns {margin-top:40px; text-align:center}
-        .evt03 .btns a {display:inline-block; width:260px; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#7f7f7f; margin:0 10px; border-radius:40px}
+        .evt03 .btns a {display:inline-block; min-width:260px; text-align:center; font-size:20px; color:#fff; background:#7f7f7f; margin:0 10px; border-radius:40px; padding:15px 30px}
         .evt03 .btns a:first-child {background:#ff6376; }
         .evt03 .btns a:hover {background:#000}
         .freelecList {margin-top:100px}        
-        .freelecwrap {display:flex; flex-flow: row wrap; justify-content: space-between; padding-left:40px; background:url(https://static.willbes.net/public/images/promotion/2022/10/2799_04.jpg) no-repeat 90% 85%;}   
+        .freelecwrap {display:flex; flex-flow: row wrap; justify-content: space-between; padding-left:40px; /*background:url(https://static.willbes.net/public/images/promotion/2022/10/2799_04.jpg) no-repeat 90% 85%;*/}   
         .freelecbox  {margin-bottom:30px; width:25%}   
         .freelecbox .lecimg {position: relative;}
         .freelecbox .lecimg div {position: absolute; top:15px; left:15px}
         .freelecbox .lecimg div p {margin-bottom:10px; color:#010101; text-shadow:1px 1px 1px #fff}
         .freelecbox .lecimg div p:nth-child(2) {font-size:18px; color:#b42235; font-weight:bold}
         .freelecbox .lecimg div p:nth-child(3) {font-size:18px; font-weight:bold}
-        .freelecbox ul {margin-top:10px; font-size:16px}
-        .freelecbox li {margin-bottom:5px;}
+        .freelecbox ul {margin-top:10px;}
+        .freelecbox li {margin-bottom:5px; font-size:16px; letter-spacing:-1px;}
+        .freelecbox label span {color:#b42235; vertical-align:top}
         .freelecbox label:hover {cursor:pointer}    
         
         .evt04 {margin-bottom:150px}
@@ -126,11 +128,10 @@
                 <li><a href="javascript:void(0);" onClick="scrolling('.tab05')" class="tab">전공영어<br>김영문 교수</a></li>
                 <li><a href="javascript:void(0);" onClick="scrolling('.tab06')" class="tab">전공수학<br>김철홍 교수</a></li>
                 <li><a href="javascript:void(0);" onClick="scrolling('.tab07')" class="tab">수학교육론<br>박태영 교수</a></li>
-                <li><a href="javascript:void(0);" onClick="scrolling('.tab08')" class="tab">전공화학<br>강 철 교수</a></li>
-                <li><a href="javascript:void(0);" onClick="scrolling('.tab09')" class="tab">도덕윤리<br>김병찬 교수</a></li>
-                <li><a href="javascript:void(0);" onClick="scrolling('.tab10')" class="tab">전공역사<br>김종권 교수</a></li>
-                <li><a href="javascript:void(0);" onClick="scrolling('.tab11')" class="tab">전기.전자.통신<br>최우영 교수</a></li>
-                <li><a href="javascript:void(0);" onClick="scrolling('.tab12')" class="tab">전공중국어<br>장영희 교수</a></li>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab08')" class="tab">도덕윤리<br>김병찬 교수</a></li>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab09')" class="tab">전공역사<br>김종권 교수</a></li>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab10')" class="tab">전기.전자.통신<br>최우영 교수</a></li>
+                <li><a href="javascript:void(0);" onClick="scrolling('.tab11')" class="tab">전공중국어<br>장영희 교수</a></li>
             </ul>
         </nav>
 
@@ -185,37 +186,30 @@
             </section>
 
             <section class="tabCts tab08">
-                <div class="sTitle">전공화학 강 철 교수</div>
+                <div class="sTitle">도덕윤리 김병찬 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>8))
                 @endif    
             </section>
 
             <section class="tabCts tab09">
-                <div class="sTitle">도덕윤리 김병찬 교수</div>
+                <div class="sTitle">전공역사 김종권 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>9))
                 @endif    
             </section>
 
             <section class="tabCts tab10">
-                <div class="sTitle">전공역사 김종권 교수</div>
+                <div class="sTitle">전기.전자.통신 최우영 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>10))
                 @endif    
             </section>
 
             <section class="tabCts tab11">
-                <div class="sTitle">전기.전자.통신 최우영 교수</div>
-                @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>11))
-                @endif    
-            </section>
-
-            <section class="tabCts tab12">
                 <div class="sTitle">전공중국어 장영희 교수</div>
                 @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>12))
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>11))
                 @endif    
             </section>
         </div>
@@ -277,7 +271,7 @@
                 <a href="javascript:void(0);" onclick="reset_form(this);">취소</a>
             </div>
             <div class="freelecList">
-                <h5 class="NSK-Black">인강 <strong>7일 무료체험</strong> 강좌 <span class="NSK">* 본 무료체험 최대 4개강좌까지 신청이 가능합니다.</span></h5>
+                <h5 class="NSK-Black">인강 <strong>2주 무료체험</strong> 강좌 <span class="NSK">* 본 무료체험 최대 4개강좌까지 신청이 가능합니다.</span></h5>
                 <div class="freelecwrap">
                     <div class="freelecbox">
                         <div class="lecimg">
@@ -285,12 +279,11 @@
                             <div>
                                 <p>합격할 수 있는<br> 구체적 방법 제시!!</p>
                                 <p>국어교육론<br> 문학교육론</p>
-                                <p>송원영 <span>교수</span></p>
+                                <p>송원영 교수</p>
                             </div>
                         </div>
                         <ul>
-                            <li><label><input type="checkbox"> 문학교육론 이론정리</label></li>
-                            <li><label><input type="checkbox"> 국어교육론 이론정리</label></li>
+                            <li><label><input type="checkbox" value="202061"> 국어/문학교육론 이론정리 <span>[20강]</span></label></li>
                         </ul>
                     </div>
                     <div class="freelecbox">
@@ -299,12 +292,11 @@
                             <div>
                                 <p>시험 출제 교수진의<br> 의도가 잘 반영된 강의! </p>
                                 <p>국어문법</p>
-                                <p>권보민 <span>교수</span></p>
+                                <p>권보민 교수</p>
                             </div>
                         </div>
                         <ul>
-                            <li><label><input type="checkbox"> 현대 국어문법 기초 </label></li>
-                            <li><label><input type="checkbox"> 중세 국어 문법 기초 </label></li>
+                            <li><label><input type="checkbox" value="202062"> 현대 국어 문법 기초다지기 <span>[8강]</span></label></li>
                         </ul>
                     </div>
                     <div class="freelecbox">
@@ -313,13 +305,13 @@
                             <div>
                                 <p>지금, 여기!!<br> 깨어있는 국어교육!</p>
                                 <p>전공국어</p>
-                                <p>구동언 <span>교수</span></p>
+                                <p>구동언 교수</p>
                             </div>
                         </div>
                         <ul>
-                            <li><label><input type="checkbox"> 학교문법의 이해</label></li>
-                            <li><label><input type="checkbox"> 국어교육의 이해</label></li>
-                            <li><label><input type="checkbox"> 문학교육의 이해</label></li>
+                            <li><label><input type="checkbox" value="202063"> 국어교육의 이해 <span>[6강]</span></label></li>
+                            <li><label><input type="checkbox" value="202064"> 학교문법의 이해(현대국어 체계) <span>[6강]</span></label></li>
+                            <li><label><input type="checkbox" value="202065"> 문학교육의 이해(현대시) <span>[6강]</span></label></li>
                         </ul>
                     </div>
                     <div class="freelecbox">
@@ -328,12 +320,12 @@
                             <div>
                                 <p>합격생이 추천하는<br> 명품강의!!</p>
                                 <p>일반영어<br> 영미문학</p>
-                                <p>김유석 <span>교수</span></p>
+                                <p>김유석 교수</p>
                             </div>
                         </div>
                         <ul>
-                            <li><label><input type="checkbox"> 영미문학, 영미시의 이해</label></li>
-                            <li><label><input type="checkbox"> 일반영어 Power Reading Skills</label></li>
+                            <li><label><input type="checkbox" value="202069"> 영미문학 영미시의 이해 <span>[11강]</span></label></li>
+                            <li><label><input type="checkbox" value="202066"> 일반영어 Power Reading Skills <span>[4강]</span></label></li>
                         </ul>
                     </div>
                     <div class="freelecbox">
@@ -342,11 +334,11 @@
                             <div>
                                 <p>영어학의 정석!<br>합격의 가장 빠른 길!!</p>
                                 <p>영어학</p>
-                                <p>김영문 <span>교수</span></p>
+                                <p>김영문 교수</p>
                             </div>
                         </div>
                         <ul>
-                            <li><label><input type="checkbox"> 영어학 기본이론 </label></li>
+                            <li><label><input type="checkbox" value="202070"> 영어학 기본이론 1 <span>[4강]</span></label></li>
                         </ul>
                     </div>
                     <div class="freelecbox">
@@ -355,12 +347,11 @@
                             <div>
                                 <p>합격 전략에 기반을 둔,<br> 명쾌한 전공수학!</p>
                                 <p>전공수학</p>
-                                <p>김철홍 <span>교수</span></p>
+                                <p>김철홍 교수</p>
                             </div>
                         </div>
                         <ul>
-                            <li><label><input type="checkbox"> 대수학과 정수론</label></li>
-                            <li><label><input type="checkbox"> 해석학</label></li>
+                            <li><label><input type="checkbox" value="202071"> 대수학과 정수론 <span>[24강]</span></label></li>
                         </ul>
                     </div>
                     <div class="freelecbox">
@@ -369,12 +360,24 @@
                             <div>
                                 <p>학습방법. 시기,<br>학습량의 균형!!<br>최적의 커리큘럼!</p>
                                 <p>수학교육론</p>
-                                <p>박태영 <span>교수</span></p>
+                                <p>박태영 교수</p>
                             </div>
                         </div>
                         <ul>
-                            <li><label><input type="checkbox"> 신론과 기출을 결합한 이론 </label></li>
-                            <li><label><input type="checkbox"> 수학교육론 지도서 정리반 </label></li>
+                            <li><label><input type="checkbox" value="202072"> 신론과 기출을 결합한 이론 <span>[13강]</span></label></li>
+                        </ul>
+                    </div>
+                    <div class="freelecbox">
+                        <div class="lecimg">
+                            <img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03_t11.jpg" alt=""/>
+                            <div>
+                                <p>방대한 학습범위를<br> 효과적으로 정리!</p>
+                                <p>도덕윤리</p>
+                                <p>김병찬 교수</p>
+                            </div>
+                        </div>
+                        <ul>
+                            <li><label><input type="checkbox" value="202073"> 교과내용학(서양,동양,한국윤리) <span>[14강]</span></label></li>
                         </ul>
                     </div>
                     <div class="freelecbox">
@@ -383,11 +386,11 @@
                             <div>
                                 <p>학적중!<br> 신뢰의 이름!!</p>
                                 <p>전공역사</p>
-                                <p>김종권 <span>교수</span></p>
+                                <p>김종권 교수</p>
                             </div>
                         </div>
                         <ul>
-                            <li><label><input type="checkbox"> 전공역사 개념 구조화 </label></li>
+                            <li><label><input type="checkbox" value="202074"> 전공역사 개념 구조화 <span>[20강]</span></label></li>
                         </ul>
                     </div>
                     <div class="freelecbox">
@@ -396,11 +399,11 @@
                             <div>
                                 <p>합격으로 가는<br>가장 빠르고<br> 안전한 방법!!</p>
                                 <p>전기.전자.통신</p>
-                                <p>최우영 <span>교수</span></p>
+                                <p>최우영 교수</p>
                             </div>
                         </div>
                         <ul>
-                            <li><label><input type="checkbox"> 기초 전기전자/회로이론</label></li>
+                            <li><label><input type="checkbox" value="202078"> 기초 전기전자/회로이론 <span>[10강]</span></label></li>
                         </ul>
                     </div>
                     <div class="freelecbox">
@@ -409,19 +412,19 @@
                             <div>
                                 <p>20년 강의 경력,<br> 임용 중국어<br> 합격의 기준!!</p>
                                 <p>전공중국어</p>
-                                <p>장영희 <span>교수</span></p>
+                                <p>장영희 교수</p>
                             </div>
                         </div>
                         <ul>
-                            <li><label><input type="checkbox"> 임용 중국어 입문반</label></li>
-                            <li><label><input type="checkbox"> 중국어 독해 입문반</label></li>
+                            <li><label><input type="checkbox" value="202081"> 중국어 이론 입문 <span>[12강]</span></label></li>
+                            <li><label><input type="checkbox" value="202080"> 중국어 독해 입문 <span>[10강]</span></label></li>
                         </ul>
                     </div>
                     <div class="freelecbox"></div>
                     <div class="freelecbox"></div>
                 </div>
                 <div class="btns">
-                    <a href="#none">인강 무료체험 신청하기</a>
+                    <a href="#none">인강 2주 무료체험 신청하기 ></a>
                 </div>
             </div>
         </div>
@@ -449,7 +452,7 @@
                     <li>본 강좌에 필요한 교재는 별도로 구매하셔야 합니다. </li>
                     <li>본 이벤트로 인한 할인 결제한 강의는 양도 및 매매가 불가능하며, 위반(적발)시 처벌받을 수 있습니다.</li>
                 </ul>
-                <h4 class="NSK-Black mt100">[인강 무료 체험하기] 유의사항</h4>
+                <h4 class="NSK-Black mt100">[인강 2주 무료 체험하기] 유의사항</h4>
                 <ul>
                     <li>본 이벤트는 교원임용시험을 처음 도전하는 대학교(원) 재학생만 참여 가능한 이벤트 입니다. (기존 수강생은 참여할 수 없습니다)<br>
                         - 본 이벤트는 상단의 “재학생 인증창”에 학교명과 학과명을 표기하고, 인증서류를 스캔하여 전송하는 절차를 진행한 후 참여 가능합니다.<br>
@@ -457,7 +460,7 @@
                     <li>강의제공 방식<br>
                         - 재학생 인증절차 후, 체험하고자 하는 강의를 신청하시면 됩니다. (강의는 최대 4개 까지만 가능합니다)<br>
                         - 강좌별 체험기간은 7일이며, 강의시간은 1배수로 제공됩니다. (※ 1배수란? 강의진행 시간만큼만 재생이 가능합니다)<br>
-                        - 강좌체험을 신청하면, 일정기간 심사 후, 개별 ID에 신청하신 과목의 강의가 7일간 제공됩니다.</li>
+                        - 강좌체험을 신청하면, 일정기간 심사 후, 개별 ID에 신청하신 과목의 강의가 14일간 제공됩니다.</li>
                     <li>본 이벤트는 재학중인 학과와 관련된 강좌만 제공받을 수 있습니다. </li>
                     <li>본 이벤트는 중등과정만 진행됩니다. (유치원, 초등은 진행되지 않습니다)</li>
                     <li>본 강의체험에 필요한 교재는 별도로 구매하셔야 합니다.</li>

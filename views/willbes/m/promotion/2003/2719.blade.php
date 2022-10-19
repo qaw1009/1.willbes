@@ -107,16 +107,16 @@
 </style>
 
 <div id="Container" class="Container NSK c_both">
-    <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/07/2719m_00.jpg" alt="" >
-    </div> 
-
-    <div class="evtCtnsBox dday NSK-Thin">
+<div class="evtCtnsBox dday NSK-Thin">
         <strong>{{$arr_promotion_params['turn']}}기 마감 <span id="ddayCountText" class="NSK-Black"></span> </strong>      
     </div>   
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/07/2719m_top.jpg" alt="장사원 T-PASS" >
+        <img src="https://static.willbes.net/public/images/promotion/2022/10/2719m_00.jpg" alt="" >
+    </div> 
+
+    <div class="evtCtnsBox" data-aos="fade-up">
+        <img src="https://static.willbes.net/public/images/promotion/2022/10/2719m_top.jpg" alt="장사원 T-PASS" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-left">
@@ -124,7 +124,7 @@
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-right">
-        <img src="https://static.willbes.net/public/images/promotion/2022/07/2719m_02.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2022/10/2719m_02.jpg" alt="" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
@@ -175,6 +175,36 @@
                         <div><strong>99</strong>만원</div>
                         <ul>
                             <li>2023.6월까지 농업직 9급 전 강좌 제공 (지방직 대비 과정)</li>
+                            <li>PC+모바일 총 2대</li>
+                            <li>3배수 제한</li>
+                            <li><span>인증 EVENT 참여 시 3만원 추가 할인</span></li>
+                        </ul>
+                    </label>
+                </div>
+
+                <div class="pass" data-aos="fade-right">
+                    <input type="radio" name="y_pkg" id="pass03" value="202015">
+                    <label for="pass03">
+                        <div>장사원 농촌지도사</div>
+                        <div>[경기/인천] T-PASS</div>
+                        <div><strong>120</strong>만원</div>
+                        <ul>
+                            <li>2023.10월까지 농촌지도사 전 강좌</li>
+                            <li>PC+모바일 총 2대</li>
+                            <li>3배수 제한</li>
+                            <li><span>인증 EVENT 참여 시 3만원 추가 할인</span></li>
+                        </ul>
+                    </label>
+                </div>
+
+                <div class="pass" data-aos="fade-left">
+                    <input type="radio" name="y_pkg" id="pass04" value="202013">
+                    <label for="pass04">
+                        <div>장사원 농촌지도사</div>
+                        <div>[경기/인천 외] T-PASS</div>
+                        <div><strong>120</strong>만원</div>
+                        <ul>
+                            <li>2023.10월까지 농촌지도사 전 강좌</li>
                             <li>PC+모바일 총 2대</li>
                             <li>3배수 제한</li>
                             <li><span>인증 EVENT 참여 시 3만원 추가 할인</span></li>

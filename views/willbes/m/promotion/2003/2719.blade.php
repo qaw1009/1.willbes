@@ -38,48 +38,46 @@
 
     .lecWrapB {font-size:2vh; background:#f3f3f3; border-radius:20px; margin-bottom:30px; padding:30px 50px; text-align:left; line-height:1.3; border:5px solid #fb6250; animation:bdColor 2s infinite;-webkit-animation:bdColor 2s infinite;}
     @@keyframes bdColor{
-    from{border-color:#000}
-    50%{border-color:#fb6250}
-    to{border-color:#000}
+        from{border-color:#000}
+        50%{border-color:#fb6250}
+        to{border-color:#000}
     }
     @@-webkit-keyframes bdColor{
-    from{border-color:#000}
-    50%{border-color:#fb6250}
-    to{border-color:#000}
+        from{border-color:#000}
+        50%{border-color:#fb6250}
+        to{border-color:#000}
     }
     .lecWrapB .txtInfo p {margin-top:10px; font-size:34px}
     .lecWrapB .price {text-align:right}
     .lecWrapB .price strong {font-size:4vh; font-family: 'Oswald', sans-serif;}
     .lecWrapB .price a {display:block; background:#fb6250; color:#fff; border-radius:30px; padding:10px 20px; margin-top:10px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite; text-align:center}
     @@keyframes upDown{
-    from{background:#000}
-    50%{background:#fb6250}
-    to{background:#000}
+        from{background:#000}
+        50%{background:#fb6250}
+        to{background:#000}
     }
     @@-webkit-keyframes upDown{
-    from{background:#000}
-    50%{background:#fb6250}
-    to{background:#000}
+        from{background:#000}
+        50%{background:#fb6250}
+        to{background:#000}
     }
 
     .check {margin:50px auto;}
-    .check label {cursor:pointer; font-size:1.5vh;color:#000;font-weight:bold;}
+    .check label {cursor:pointer; font-size:1.6vh;color:#000;font-weight:bold;}
     .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-    .check a {display:inline-block; padding:5px 10px; color:#fff; background:#2d2d2d; margin-left:10px; border-radius:4px;font-size:1.2vh;} 
+    .check a {display:inline-block; padding:5px 10px; color:#fff; background:#2d2d2d; margin-left:10px; border-radius:4px;font-size:1.4vh;} 
 
     .event05 .passbuy a {display:block; width:80%; margin:0 auto; background:#1c2127; color:#fff; font-size:2.4vh; border-radius:40px; padding:10px 0; font-weight:bold}  
-    .event05 .passbuy a:hover {background:#fb6250; color:#fff;}
-
-    
+    .event05 .passbuy a:hover {background:#fb6250; color:#fff;}    
 
     /* 이용안내 */
     .evtInfo {padding:50px 20px; background:#f4f4f4; color:#3a3a3a; font-size:1.6vh;}
-    .evtInfoBox {text-align:left; line-height:1.4}
-    .evtInfoBox li {list-style:disc; margin-left:20px; font-size:1.4vh}
-    .evtInfoBox h4 {font-size:3.5vh; margin-bottom:50px}
-    .evtInfoBox .infoTit {margin-bottom:10px;}
-    .evtInfoBox .infoTit strong {padding:5px 20px; border-radius:50px; background:#333; color:#fff}
-    .evtInfoBox ul {margin-bottom:30px}   
+    .evtInfo {text-align:left; line-height:1.4}
+    .evtInfo h4 {font-size:3.5vh; margin-bottom:50px}
+    .evtInfo .infoTit {margin-bottom:10px;}
+    .evtInfo .infoTit strong {padding:5px 20px; border-radius:50px; background:#333; color:#fff}
+    .evtInfo ul {margin-bottom:30px}   
+    .evtInfo li {list-style:disc; margin-left:20px;}
     
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
@@ -216,7 +214,7 @@
             <div class="check">
                 <label>
                     <input name="ischk"  type="checkbox" value="Y" />
-                    페이지 하단 T-PASS 이용안내를 모두 확인하였고, <br>이에 동의합니다.
+                    페이지 하단 이용안내를 모두 확인하였고, <br>이에 동의합니다.
                 </label>
                 <a href="#careful">이용안내확인 ↓</a>
             </div>

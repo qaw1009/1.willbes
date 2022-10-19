@@ -274,7 +274,7 @@
                 <div class="check">
                     <label>
                         <input name="ischk"  type="checkbox" value="Y" />
-                        페이지 하단 T-PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+                        페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
                     </label>
                     <a href="#careful">이용안내확인하기 ↓</a>
                 </div>

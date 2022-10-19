@@ -20,12 +20,11 @@
 
 		/************************************************************/
 
-		.evt_top {background:#28aa8c}
+		.evt_top {background:#28aa8c; height:704px; display:flex; justify-content: center; align-items: center;}
 
         .evt_01 {background:#000}
-        .evt_02 {background:#e7e8e8}
 
-        .evt_apply {padding:50px 0 75px;}  
+        .evt_apply {padding:50px 0 120px;}  
         .evt_apply > a {display:block; font-size:34px; width:1000px; margin:auto; background:#191919; padding:30px 0; color:#fff; border-radius:50px; margin:0 auto 50px} 
         .evt_apply > a:hover {background:#28aa8c}   
 
@@ -35,12 +34,12 @@
         .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#28aa8c; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
         .check a:hover {background:#2f3241}
         
-		.evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
+		.evtInfo {padding:100px 0; background:#535353; color:#fff; font-size:16px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
-		.evtInfoBox h4 {font-size:20px; margin-bottom:20px}
-		.evtInfoBox .infoTit {font-size:16px; margin-bottom:20px}
+		.evtInfoBox h4 {font-size:30px; margin-bottom:30px}
+		.evtInfoBox .infoTit {margin-bottom:20px}
 		.evtInfoBox .infoTit strong {padding:8px 20px; background:#333; border-radius:20px}
-		.evtInfoBox ul {margin-bottom:30px}
+		.evtInfoBox ul {margin-bottom:40px}
 		.evtInfoBox li {margin-bottom:8px; list-style:demical; margin-left:20px}
         
         /************************************************************/
@@ -49,28 +48,17 @@
 
 	<div class="evtContent NSK">
 
-		<div class="evtCtnsBox evt_top" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2713_top.jpg" alt="김광훈 노동법" />
+		<div class="evtCtnsBox evt_top">
+			<img src="https://static.willbes.net/public/images/promotion/2022/10/2713_top.png" alt="김광훈 노동법"  data-aos="fade-up"/>
 		</div>
 
-        <div class="evtCtnsBox evt_01" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2713_01.jpg" alt="수강특전" />
+        <div class="evtCtnsBox evt_01" data-aos="fade-left">
+			<img src="https://static.willbes.net/public/images/promotion/2022/10/2713_01.jpg" alt="수강특전" />
 		</div>
 
-        <div class="evtCtnsBox evt_02" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2713_02.jpg" alt="김광훈 노동법" />
-		</div>
-
-        <div class="evtCtnsBox evt_03" data-aos="fade-left">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2713_03.jpg" alt="선택해야 하는 이유" />
-		</div>
-
-        <div class="evtCtnsBox evt_04" data-aos="fade-right">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2713_04.jpg" alt="선택해야 하는 이유" />
-		</div>
-
-        <div class="evtCtnsBox evt_05" data-aos="fade-left">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2713_05.jpg" alt="선택해야 하는 이유" />
+        <div class="evtCtnsBox evt_02" data-aos="fade-right">
+			<div><img src="https://static.willbes.net/public/images/promotion/2022/10/2713_02.jpg" alt="김광훈 노동법" /></div>
+			<div><img src="https://static.willbes.net/public/images/promotion/2022/10/2713_03.jpg" alt="선택해야 하는 이유" /></div>
 		</div>
         
         <div class="evtCtnsBox evt_apply" data-aos="fade-up">             
@@ -139,12 +127,12 @@
 	</div>
     <!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
-        $(document).ready(function() {
-            AOS.init();
-        });
+      $(document).ready( function() {
+        AOS.init();
+      });
     </script>
 
 	<script type="text/javascript">

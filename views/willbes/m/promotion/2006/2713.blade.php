@@ -48,7 +48,7 @@
 		</div>
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2713m_01.jpg" alt="수강특전" />
+			<img src="https://static.willbes.net/public/images/promotion/2022/10/2713m_01.jpg" alt="수강특전" />
 		</div>
 
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
@@ -60,11 +60,11 @@
 		</div>
 
         <div class="evtCtnsBox evt_04" data-aos="fade-right">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2713m_04.jpg" alt="선택해야 하는 이유" />
+			<img src="https://static.willbes.net/public/images/promotion/2022/10/2713m_04.jpg" alt="선택해야 하는 이유" />
 		</div>
 
         <div class="evtCtnsBox evt_05" data-aos="fade-left">
-			<img src="https://static.willbes.net/public/images/promotion/2022/07/2713m_05.jpg" alt="선택해야 하는 이유" />
+			<img src="https://static.willbes.net/public/images/promotion/2022/10/2713m_05.jpg" alt="선택해야 하는 이유" />
 		</div>
 
         <div class="evtCtnsBox evt_apply" data-aos="fade-up">

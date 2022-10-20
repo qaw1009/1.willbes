@@ -9205,6 +9205,8 @@ span.calendar_btn {
 	color: #000;
 }
 
+.w-Guide-Ssam .tabSsam li:nth-child(3) a,
+.w-Guide-Ssam .tabSsam li:nth-child(4) a,
 .w-Guide-Ssam .tabSsam li a.temp {
 	color: #fff;
 	text-indent: -9999px;

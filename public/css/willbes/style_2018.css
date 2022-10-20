@@ -1466,16 +1466,18 @@
     font-size: 12px;
 }
 
+.w-Guide-Ssam .tabShow {}
+
 .w-Guide-Ssam .tabTrend {
     display: flex;
     flex-wrap: wrap;
     font-size: 12px;
+    border: 0;
+    height: auto;
 }
 
-.w-Guide-Ssam .tabShow {
-    height: auto;
-    border: 0;
-}
+
+
 
 .w-Guide-Ssam .tabTrend li {
     width: calc(100% / 11 - 2px);

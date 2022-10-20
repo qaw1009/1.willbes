@@ -2,28 +2,26 @@
             <ul class="tabShow tabSsam">
                 <li><a href="#trend_guide1" class="on">유아</a></li>
                 <li><a href="#trend_guide2">초등</a></li>
-                <li><a href="#none" class="temp">temp</a></li>
-                <li><a href="#none" class="temp">temp</a></li>
+                <li><a href="#none">temp</a></li>
+                <li><a href="#none">temp</a></li>
                 <li><a href="#trend_guide3">중등전체</a></li>
                 <li><a href="#trend_guide4">국어</a></li>
                 <li><a href="#trend_guide5">영어</a></li>
                 <li><a href="#trend_guide6">수학</a></li>
                 <li><a href="#trend_guide7">도덕윤리</a></li>
-                <li><a href="#trend_guide9">역사</a></li>
                 <li><a href="#trend_guide8">일반사회</a></li>
+                <li><a href="#trend_guide9">역사</a></li>   
+                <li><a href="#trend_guide10">음악</a></li>  
+
+                <li><a href="#trend_guide11">체육</a></li>    
+                <li><a href="#trend_guide12">생물</a></li>    
+                <li><a href="#trend_guide13">화학</a></li>   
                 <li><a href="#trend_guide14">전기전자통신</a></li>
-                <li><a href="#trend_guide15">정보컴퓨터</a></li>                
-                <li><a href="#trend_guide10">음악</a></li>
-                <li><a href="#trend_guide11">미술</a></li>
-                <li><a href="#trend_guide11">체육</a></li>
-                <li><a href="#trend_guide13">화학</a></li>
-                <li><a href="#trend_guide12">생물</a></li>                
-                <li><a href="#trend_guide9">지구과학</a></li>
-                <li><a href="#trend_guide16">중국어</a></li>
+
+                <li><a href="#trend_guide15">정보컴퓨터</a></li>  
+                <li><a href="#trend_guide16">중국어</a></li>              
                 <li><a href="#trend_guide17">보건</a></li>
                 <li><a href="#trend_guide18">특수</a></li>
-                <li><a href="#trend_guide9">중국어</a></li>
-                <li><a href="#none" class="temp">temp</a></li>
             </ul>             
         </div>
         <div class="tabContent GM">

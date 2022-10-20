@@ -6,20 +6,25 @@
                 <li><a href="#none">temp</a></li>
                 <li><a href="#trend_guide3">중등전체</a></li>
                 <li><a href="#trend_guide4">국어</a></li>
-                <li><a href="#trend_guide4">영어</a></li>
-                <li><a href="#trend_guide4">수학</a></li>
-                <li><a href="#trend_guide4">도덕윤리</a></li>
-                <li><a href="#trend_guide4">체육</a></li>
-                <li><a href="#trend_guide4">음악</a></li>
-                <li><a href="#trend_guide4">생물</a></li>
-                <li><a href="#trend_guide4">중국어</a></li>
-                <li><a href="#trend_guide4">전기전자통신</a></li>
-                <li><a href="#trend_guide4">정보컴퓨터</a></li>
-                <li><a href="#trend_guide4">보건</a></li>
+                <li><a href="#trend_guide5">영어</a></li>
+                <li><a href="#trend_guide6">수학</a></li>
+                <li><a href="#trend_guide7">도덕윤리</a></li>
+                <li><a href="#trend_guide8">일반사회</a></li>
+                <li><a href="#trend_guide9">역사</a></li>
+                <li><a href="#trend_guide10">음악</a></li>
+                <li><a href="#trend_guide11">체육</a></li>
+                <li><a href="#trend_guide12">생물</a></li>
+                <li><a href="#trend_guide13">화학</a></li>
+                <li><a href="#trend_guide14">전기전자통신</a></li>
+                <li><a href="#trend_guide15">정보컴퓨터</a></li>
+                <li><a href="#trend_guide16">중국어</a></li>
+                <li><a href="#trend_guide17">보건</a></li>
+                <li><a href="#trend_guide18">특수</a></li>
             </ul>             
         </div>
         <div class="tabContent GM">
-            <div id="trend_guide1">                    
+            <div id="trend_guide1"> 
+                유아                   
                 <div>
                     그래프 1
                 </div>
@@ -112,5 +117,6 @@
                         </tbody>
                     </table>
                 </div>
-            </div>  
+            </div> 
+            <div id="trend_guide2">초등</div>  
         </div>

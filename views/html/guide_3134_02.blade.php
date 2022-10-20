@@ -123,27 +123,35 @@
         <div class="w-Guide-Ssam">
             <h4 class="NG">임용시험 최근 10년 동향</h4>
             <div class="tabBox NG">
-                <ul class="tabShow tabSsam">
+                <ul class="tabShow tabTrend">
                     <li><a href="#trend_guide1" class="on">유아</a></li>
                     <li><a href="#trend_guide2">초등</a></li>
                     <li><a href="#trend_guide3">중등전체</a></li>
                     <li><a href="#trend_guide4">국어</a></li>
-                    <li><a href="#trend_guide4">영어</a></li>
-                    <li><a href="#trend_guide4">수학</a></li>
-                    <li><a href="#trend_guide4">도덕윤리</a></li>
-                    <li><a href="#trend_guide4">체육</a></li>
-                    <li><a href="#trend_guide4">음악</a></li>
-                    <li><a href="#trend_guide4">생물</a></li>
-                    <li><a href="#trend_guide4">중국어</a></li>
-                    <li><a href="#trend_guide4">전기전자통신</a></li>
-                    <li><a href="#trend_guide4">정보컴퓨터</a></li>
-                    <li><a href="#trend_guide4">보건</a></li>
+                    <li><a href="#trend_guide5">영어</a></li>
+                    <li><a href="#trend_guide6">수학</a></li>
+                    <li><a href="#trend_guide7">도덕윤리</a></li>
+                    <li><a href="#trend_guide8">역사</a></li>
+                    <li><a href="#trend_guide9">일반사회</a></li>
+                    <li><a href="#trend_guide10">전기전자통신</a></li>
+                    <li><a href="#trend_guide11">정보컴퓨터</a></li>                    
+                    <li><a href="#trend_guide12">음악</a></li>
+                    <li><a href="#trend_guide13">미술</a></li>
+                    <li><a href="#trend_guide14">체육</a></li>                    
+                    <li><a href="#trend_guide15">물리</a></li>
+                    <li><a href="#trend_guide16">화학</a></li>
+                    <li><a href="#trend_guide17">생물</a></li>
+                    <li><a href="#trend_guide18">지구과학</a></li>
+                    <li><a href="#trend_guide19">보건</a></li>
+                    <li><a href="#trend_guide20">특수</a></li>
+                    <li><a href="#trend_guide21">중국어</a></li>            
                 </ul>             
             </div>
             <div class="tabContent GM">
-                <div id="trend_guide1">                    
+                <div id="trend_guide1"> 
+                    유아                   
                     <div>
-                        그래프 1
+                     그래프 1
                     </div>
                     <div>
                         그래프 2
@@ -234,7 +242,9 @@
                             </tbody>
                         </table>
                     </div>
-                </div>  
+                </div>
+                <div id="trend_guide2">초등</div> 
+                <div id="trend_guide3">중등전체</div>  
             </div>
         </div>      
     </div>

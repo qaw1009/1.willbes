@@ -1466,6 +1466,43 @@
     font-size: 12px;
 }
 
+.w-Guide-Ssam .tabTrend {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 12px;
+}
+
+.w-Guide-Ssam .tabShow {
+    height: auto;
+    border: 0;
+}
+
+.w-Guide-Ssam .tabTrend li {
+    width: calc(100% / 11 - 2px);
+    margin: 0 2px 2px 0;
+    height: auto;
+    border: 0;
+}
+
+.w-Guide-Ssam .tabTrend li a {
+    display: block;
+    padding: 10px 0;
+    background: #f9f9f9;
+    color: #a29595;
+    text-align: center;
+    height: auto;
+    line-height: 1.4;
+    border: 1px solid #e1e1e1
+}
+
+.w-Guide-Ssam .tabTrend li a.on {
+    border-color: #000;
+    height: auto;
+    color: #000;
+    line-height: 1.4;
+    background: #fff
+}
+
 .w-Guide-Ssam .tabBox .guideBtn {
     position: absolute;
     top: 0;

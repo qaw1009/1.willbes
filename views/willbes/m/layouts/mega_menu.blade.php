@@ -701,10 +701,11 @@
             <ul>
                 <li>
                     <span>순환별</span>
-                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=regist&subject_idx=&course_idx=1409') }}">1순환(기본)</a>
-                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=regist&subject_idx=&course_idx=1410') }}">2순환(심화)</a>
-                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=regist&subject_idx=1107&course_idx=1411') }}">3순환(진도별모고)</a>
-                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=regist&subject_idx=1107&course_idx=1412') }}">4순환(실전모고)</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/package/show/cate/3148/pack/648001/prod-code/202102') }}">연간패키지</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/package/show/cate/3148/pack/648001/prod-code/199162') }}">1순환(기본)</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/package/show/cate/3148/pack/648001/prod-code/201805') }}">2순환(심화)</a>
+                    <a href="javascript:alert('Coming Soon!')">3순환(진도별모고)</a>
+                    <a href="javascript:alert('Coming Soon!')">4순환(실전모고)</a>
                 </li>
                 <li>
                     <span>과목별</span>

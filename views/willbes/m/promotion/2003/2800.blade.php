@@ -44,15 +44,15 @@
 
 <div id="Container" class="Container NSK c_both">
 
-    <div class="evtCtnsBox wb_top" >            
+    <div class="evtCtnsBox wb_top"  data-aos="fade-down">            
         <img src="https://static.willbes.net/public/images/promotion/2022/10/2800m_top.jpg" alt="선등록 이벤트" />            
     </div>
 
-    <div class="evtCtnsBox wb_cts01" >
+    <div class="evtCtnsBox wb_cts01"  data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/10/2800m_01.jpg" alt="명성"/>
     </div>
 
-    <div class="evtCtnsBox wb_cts01_special" >
+    <div class="evtCtnsBox wb_cts01_special"  data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/10/2800m_01_special.jpg" alt="특전"/>
     </div>
 
@@ -77,37 +77,37 @@
         </div>
     </div>
 
-    <div class="evtCtnsBox wb_cts03" >
+    <div class="evtCtnsBox wb_cts03"  data-aos="fade-up" >
         <img src="https://static.willbes.net/public/images/promotion/2022/10/2800m_03.jpg" alt="윌비스 한림법학원"/>
     </div>
 
-    <div class="evtCtnsBox wb_cts04" >
+    <div class="evtCtnsBox wb_cts04"  data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/10/2800m_04.jpg" alt="psat so easy"/>
     </div>   
 
-    <div class="evtCtnsBox wb_cts05 pb50" >
+    <div class="evtCtnsBox wb_cts05 pb50"  data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/10/2800m_05.jpg" alt="전격개설"/>
         <div class="totalPrice NSK-Black">
             <a href="https://pass.willbes.net/m/pass/offPackage/show/prod-code/201485" target="_blank">수강신청 바로가기 ></a>
         </div>
     </div>
 
-    <div class="evtCtnsBox wb_cts06">
+    <div class="evtCtnsBox wb_cts06"  data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/10/2800m_06.jpg" alt="마감유의"/>
     </div>
 
-    <div class="evtCtnsBox wb_cts07" >
+    <div class="evtCtnsBox wb_cts07"  data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/10/2800m_07.jpg" alt="온라인 pass반"/>
     </div>
 
-    <div class="evtCtnsBox wb_cts08" >
+    <div class="evtCtnsBox wb_cts08"  data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/10/2800m_08.jpg" alt="선등록 특전 및 기간제 패키지"/>
         @if(empty($arr_base['display_product_data']) === false)
             @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
         @endif 
     </div>
 
-    <div class="evtCtnsBox wb_cts09" >
+    <div class="evtCtnsBox wb_cts09"  data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/10/2800m_09.jpg" alt="10월 24일 개강"/>
     </div>
 

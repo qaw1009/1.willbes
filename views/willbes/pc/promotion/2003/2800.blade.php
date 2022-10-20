@@ -64,19 +64,19 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
 
-        <div class="evtCtnsBox wb_top" >            
+        <div class="evtCtnsBox wb_top" data-aos="fade-down">            
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2800_top.jpg" alt="선등록 이벤트" />            
         </div>
 
-        <div class="evtCtnsBox wb_cts01" >
+        <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2800_01.jpg" alt="명성"/>
         </div>
 
-        <div class="evtCtnsBox wb_cts01_special" >
+        <div class="evtCtnsBox wb_cts01_special" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2800_01_special.jpg" alt="특전"/>
         </div>
 
-        <div class="evtCtnsBox wb_cts02" >
+        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2800_02.jpg" alt="시작부터 다릅니다"/>
             <div class="tabBox">
                 <ul class="tab">
@@ -97,11 +97,11 @@
             </div> 
         </div>
 
-        <div class="evtCtnsBox wb_cts03" >
+        <div class="evtCtnsBox wb_cts03">
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2800_03.jpg" alt="윌비스 한림법학원"/>
         </div>
 
-        <div class="evtCtnsBox wb_cts04" >
+        <div class="evtCtnsBox wb_cts04">
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2800_04.jpg" alt="psat so easy"/>  
             <div class="slide_con">
                 <ul id="slidesImg4">
@@ -115,29 +115,29 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts05" >
+        <div class="evtCtnsBox wb_cts05">
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2800_05.jpg" alt="전격개설"/>
             <div class="totalPrice NSK-Black">
                 <a href="https://pass.willbes.net/pass/offPackage/show/prod-code/201485" target="_blank">수강신청 바로가기 ></a>
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts06" >
+        <div class="evtCtnsBox wb_cts06">
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2800_06.jpg" alt="마감유의"/>
         </div>
 
-        <div class="evtCtnsBox wb_cts07" >
+        <div class="evtCtnsBox wb_cts07">
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2800_07.jpg" alt="온라인 pass반"/>
         </div>
 
-        <div class="evtCtnsBox wb_cts08" >
+        <div class="evtCtnsBox wb_cts08">
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2800_08.jpg" alt="선등록 특전 및 기간제 패키지"/>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif 
         </div>
 
-        <div class="evtCtnsBox wb_cts09" >
+        <div class="evtCtnsBox wb_cts09">
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2800_09.jpg" alt="10월 24일 개강"/>
         </div>
 
@@ -211,7 +211,15 @@
         </div>
 
     </div>
-    <!-- End Container -->
+   <!-- End Container -->
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+        $(document).ready( function() {
+        AOS.init();
+        });
+    </script>
     <script type="text/javascript">
         /*탭*/
         $(document).ready(function(){

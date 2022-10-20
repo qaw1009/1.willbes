@@ -245,7 +245,14 @@
                                             <br/><a class="cs-pointer btn-user-coupon-info" data-toggle="popover" data-html="true" data-content="" data-user-coupon-idx="{{ $order_prod_row['UserCouponIdx'] }}">({{ $order_prod_row['UserCouponIdx'] }})</a>
                                         @endif
                                     </td>
-                                    <td>{{ $order_prod_row['DiscRate'] }}</td>
+                                    <td>{{ $order_prod_row['DiscRate'] }}
+                                        @if(empty($order_prod_row['UsePoint']) === false)
+                                            @if(empty($order_prod_row['DiscRate']) === false)
+                                                <br/>
+                                            @endif
+                                            {{ number_format($order_prod_row['UsePoint']) . 'p' }}
+                                        @endif
+                                    </td>
                                     <td>{{ $order_prod_row['PayStatusCcdName'] }}</td>
                                     <td>{{ $order_prod_row['InvoiceNo'] }}</td>
                                     <td>{{ $order_prod_row['DiscReason'] }}</td>

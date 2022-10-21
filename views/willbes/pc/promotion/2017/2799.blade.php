@@ -266,10 +266,12 @@
                 </table>
             </div>
             <div class="mt10">* 재학생 인증 파일은 <strong>재학증명서, 성적증명서 등 재학생임을 인증할 수 있는 서류</strong>만 인정됩니다. (학생증 X)</div>
+            {{--
             <div class="btns">
                 <a href="javascript:void(0);" onclick="fn_submit();">확인</a>
                 <a href="javascript:void(0);" onclick="reset_form(this);">취소</a>
             </div>
+            --}}
             <div class="freelecList">
                 <h5 class="NSK-Black">인강 <strong>2주 무료체험</strong> 강좌 <span class="NSK">* 본 무료체험 최대 4개강좌까지 신청이 가능합니다.</span></h5>
                 <div class="freelecwrap">

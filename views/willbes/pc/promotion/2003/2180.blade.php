@@ -53,14 +53,15 @@
 		.evt03 {background:#e8e8e8; padding-bottom:150px} 
 
         .evt03 .lecwrap {width:1120px; margin:0 auto; display:flex; justify-content: space-between; font-size:16px; line-height:1.4}
-        .evt03 .lecbox {border:2px solid #454c54; background:#fff; padding:20px 20px 60px 20px; width:calc(20%); margin-right:10px; text-align:left; position: relative;}
+        .evt03 .lecbox {border:2px solid #454c54; background:#fff; padding:20px; width:calc(20%); height:280px; margin-right:10px; position: relative;}
         .evt03 .lecbox:hover {box-shadow:10px 10px 10px rgba(0,0,0,.2); border:2px solid #f06524;}
         .evt03 .lecbox li {margin-bottom:5px}
         .evt03 .lecbox li:nth-child(1) {font-size:22px; color:#f06524; margin-bottom:15px}
         .evt03 .lecbox li:nth-child(2) {font-size:13px}
         .evt03 .lecbox li:nth-child(3) {font-weight:bold}
+        .evt03 .lecbox div {position: absolute; bottom:15px; left:15px; width:85%; z-index: 1;}
         .evt03 .lecbox p {font-size:30px; margin-bottom:15px}
-        .evt03 .lecbox a {background:#30353b; color:#fff; padding:8px; font-size:16px; display:block; text-align:center; position: absolute; bottom:15px; left:15px; width:85%; z-index: 1;}
+        .evt03 .lecbox a {background:#30353b; color:#fff; padding:8px; font-size:16px; display:block; text-align:center; }
         .evt03 .lecbox a:hover {background:#f06524;}
 
         .evt03 .p_re {width:1120px; margin:0 auto}
@@ -81,7 +82,7 @@
         .tabContaier ul:after {content:""; display:block; clear:both}
 
         .evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
-		.evtInfoBox { width:1100px; margin:0 auto; text-align:left; line-height:1.4}
+		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
 		.evtInfoBox h4 {font-size:30px; margin-bottom:50px}
 		.evtInfoBox .infoTit {font-size:16px; margin-bottom:20px}
 		.evtInfoBox .infoTit strong {padding:8px 20px; background:#333; border-radius:20px; font-weight:normal !important}
@@ -270,7 +271,8 @@
                 <ul>
                     <li>제공과정<br>
                         - 전과정 T-PASS : 2023년 6월까지 진행되는 한덕현 영어 신규강좌 전 과정 (반반똑똑영어 다시보기, 새벽모의고사 포함)<br>
-                        - 실전Ⅰ T-PASS : 2023대비 실전 464, 독해기적, 스나이퍼32, 아작내기 특강, 새벽모의고사 전과정 [2022 과정 및 2023 신규과정(독해기적은 신규 촬영없이 지존과정 제공)]<br>
+                        - 실전Ⅰ T-PASS : 2023대비 실전 464, 독해기적, 스나이퍼32, 아작내기 특강, 새벽모의고사 전과정<br>
+                        &nbsp;&nbsp;[2022 과정 및 2023 신규과정(독해기적은 신규 촬영없이 지존과정 제공)]<br>
                         - 실전Ⅱ T-PASS : 2023대비 실전 464, 스나이퍼32, 새벽모의고사 전과정(2022 과정 및 2023 신규과정)<br>
                         - 새벽모고 T-PASS : 2023년 대비 신규과정(2022.9월~2023.5월) 제공되며 , 2022년 대비 과정 중 9-10월 과정만 제외 제공됩니다.<br>
                         - 반반똑똑 T-PASS : 2023년 대비 반반똑똑영어 방송 다시보기 전과정 제공됩니다.<br>

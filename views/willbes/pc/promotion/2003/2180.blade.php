@@ -23,7 +23,8 @@
         .sky {position: fixed; top:250px; right:10px; width:200px; z-index:10;}
         .sky a {margin-bottom:5px; display:block}
 
-        .evt00 {background:#4007b6}
+
+
 
 		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/02/2180_top_bg.jpg) no-repeat center top; height:1124px; position:relative}
         .evtTop span { position:absolute; top:880px; left:50%; width:1120px; margin-left:-560px; z-index: 10;}
@@ -32,18 +33,11 @@
 
         /* 롤링*/
         .section_pro {
-        background:url(https://static.willbes.net/public/images/promotion/2022/02/2180_02_bg.jpg) no-repeat center top; 
-                   position:relative;height:895px;clear:both;}      
+        background:url(https://static.willbes.net/public/images/promotion/2022/02/2180_02_bg.jpg) no-repeat center top; position:relative;height:895px;clear:both;}      
         .section_pro .box_pro {position:absolute; top:380px; left:0; width:100%; z-index:1}
         .section_pro .box_pro .bx-wrapper{max-width:100% !important;}
         .section_pro .box_pro li {display:inline; float:left; height: 380px;}    
 
-		.evt03 {background:#e8e8e8; padding-bottom:150px}   
-        .evt03 .p_re {width:1120px; margin:0 auto}
-        .evt03 .check {font-size:16px; text-align:center; line-height:1.5;margin-top:40px;font-weight:bold;}
-        .evt03 .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
-        .evt03 .check a {display:inline-block; padding:5px 20px; color:#fff; background:#000; margin-left:20px; border-radius:20px}
-        .evt03 .check a:hover {color:#333; background:#f26522;}
 
         /*타이머*/
         .newTopDday {clear:both;background:#f5f5f5; width:100%; padding:20px 0; font-size:26px;}
@@ -54,6 +48,27 @@
         .newTopDday ul li:first-child {text-align:right; padding-right:10px; padding-top:5px; width:28%; line-height:60px}
         .newTopDday ul li:last-child {text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:60px}
         .newTopDday ul:after {content:""; display:block; clear:both}
+
+
+		.evt03 {background:#e8e8e8; padding-bottom:150px} 
+
+        .evt03 .lecwrap {width:1120px; margin:0 auto; display:flex; justify-content: space-between; font-size:16px; line-height:1.4}
+        .evt03 .lecbox {border:2px solid #454c54; background:#fff; padding:20px 20px 60px 20px; width:calc(20%); margin-right:10px; text-align:left; position: relative;}
+        .evt03 .lecbox:hover {box-shadow:10px 10px 10px rgba(0,0,0,.2); border:2px solid #f06524;}
+        .evt03 .lecbox li {margin-bottom:5px}
+        .evt03 .lecbox li:nth-child(1) {font-size:22px; color:#f06524; margin-bottom:15px}
+        .evt03 .lecbox li:nth-child(2) {font-size:13px}
+        .evt03 .lecbox li:nth-child(3) {font-weight:bold}
+        .evt03 .lecbox p {font-size:30px; margin-bottom:15px}
+        .evt03 .lecbox a {background:#30353b; color:#fff; padding:8px; font-size:16px; display:block; text-align:center; position: absolute; bottom:15px; left:15px; width:85%; z-index: 1;}
+        .evt03 .lecbox a:hover {background:#f06524;}
+
+        .evt03 .p_re {width:1120px; margin:0 auto}
+        .evt03 .check {font-size:16px; text-align:center; line-height:1.5;margin-top:40px;font-weight:bold;}
+        .evt03 .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
+        .evt03 .check a {display:inline-block; padding:5px 20px; color:#fff; background:#000; margin-left:20px; border-radius:20px}
+        .evt03 .check a:hover {color:#333; background:#f26522;}
+
 		
 		/* tab */
         .tabContaier{width:100%;}
@@ -66,7 +81,7 @@
         .tabContaier ul:after {content:""; display:block; clear:both}
 
         .evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
-		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
+		.evtInfoBox { width:1100px; margin:0 auto; text-align:left; line-height:1.4}
 		.evtInfoBox h4 {font-size:30px; margin-bottom:50px}
 		.evtInfoBox .infoTit {font-size:16px; margin-bottom:20px}
 		.evtInfoBox .infoTit strong {padding:8px 20px; background:#333; border-radius:20px; font-weight:normal !important}
@@ -79,11 +94,17 @@
 
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1067" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2180_sky2.png" title="구매하기 바로가기" />    
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2180_sky1.png" title="독해첨삭지도" />    
             </a>  
             <a href="#event">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2180_sky3.png" title="구매하기 바로가기" />    
-            </a>        
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2180_sky2.png" title="전과정 T-PASS" />    
+            </a>  
+            <a href="#event">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2180_sky3.png" title="실전 T-PASS" />    
+            </a>  
+            <a href="#event">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2180_sky4.png" title="새벽모고 T-PASS" />    
+            </a>       
         </div>
 
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
@@ -129,7 +150,7 @@
 			</div>
 		</div>
 
-        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
+        <div class="evtCtnsBox" data-aos="fade-up">
             <div class="section_pro">                
                 <div class="box_pro">
                     <ul class="slide_pro">
@@ -170,11 +191,70 @@
         </div>   
 
         <div class="evtCtnsBox evt03" id="event" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/09/2180_03.jpg" />
-                <a href="javascript:go_PassLecture('199386');" title="한덕현 티패스" style="position: absolute;left: 13.95%;top: 82%;width: 27.98%;height: 8.96%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('201425');" title="새벽모고 티패스" style="position: absolute;left: 57.95%;top: 82%;width: 27.98%;height: 8.96%;z-index: 2;"></a>
+            <img src="https://static.willbes.net/public/images/promotion/2022/10/2180_03_01.jpg" />
+            <div class="lecwrap">
+                <div class="lecbox">
+                    <ul>
+                        <li class="NSK-Black">전과정 T-PASS</li>
+                        <li>2023 국가직/지방직 완벽대비</li>
+                        <li>전과정 무제한 수강</li>
+                        
+                        
+                    </ul>
+                    <div>
+                        <p class="NSK-Black">69만원</p>
+                        <a href="javascript:go_PassLecture('199386');">수강신청</a>
+                    </div>
+                </div>
+                <div class="lecbox">
+                    <ul>
+                        <li class="NSK-Black">실전 I T-PASS</li> 
+                        <li>2023 국가직/지방직 실전대비</li>
+                        <li>실전464 / 독해기적 /<br>스나이퍼32 / 아작내기 /<br>새벽모의고사</li>
+                                               
+                    </ul>
+                    <div>
+                        <p class="NSK-Black">49만원</p>
+                        <a href="javascript:go_PassLecture('201426');">수강신청</a>
+                    </div>
+                </div>
+                <div class="lecbox">
+                    <ul>
+                        <li class="NSK-Black">실전 II T-PASS</li> 
+                        <li>2023 국가직/지방직 실전대비</li>
+                        <li>실전464/스나이퍼32 /<br>새벽모의고사</li>
+                                               
+                    </ul>
+                    <div>
+                        <p class="NSK-Black">39만원</p>
+                        <a href="javascript:go_PassLecture('202103');">수강신청</a>
+                    </div>
+                </div>
+                <div class="lecbox">
+                    <ul>
+                        <li class="NSK-Black">새벽모고 T-PASS</li>  
+                        <li>2023 국가직/지방직 실전대비</li>
+                        <li>새벽모의고사 전과정</li>                                                
+                    </ul>
+                    <div>
+                        <p class="NSK-Black">29만원</p>
+                        <a href="javascript:go_PassLecture('199386');">수강신청</a>
+                    </div>
+                </div>
+                <div class="lecbox">
+                    <ul>
+                        <li class="NSK-Black">반반똑똑 T-PASS</li> 
+                        <li>2023 국가직/지방직 대비</li>
+                        <li>반반똑똑 영어 전과정</li>                                               
+                    </ul>
+                    <div>
+                        <p class="NSK-Black">25만원</p>
+                        <a href="javascript:go_PassLecture('199952');">수강신청</a>
+                    </div>
+                </div>
+
             </div>
+
             
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
@@ -189,8 +269,12 @@
                 <div class="infoTit"><strong>상품구성</strong></div>
                 <ul>
                     <li>제공과정<br>
-                        - 전과정 T-PASS : 2023년 6월까지 진행되는 한덕현 영어 신규강좌 전 과정 (반반똑똑영어 다시보기, 새벽모의고사 포함)<br>
+                        - 전과정 T-PASS : 2023년 6월까지 진행되는 한덕현 영어 신규강좌 전 과정 (반반똑똑영어 다시보기, 새벽모의고사 포함)<br>
+                        - 실전Ⅰ T-PASS : 2023대비 실전 464, 독해기적, 스나이퍼32, 아작내기 특강, 새벽모의고사 전과정 [2022 과정 및 2023 신규과정(독해기적은 신규 촬영없이 지존과정 제공)]<br>
+                        - 실전Ⅱ T-PASS : 2023대비 실전 464, 스나이퍼32, 새벽모의고사 전과정(2022 과정 및 2023 신규과정)<br>
                         - 새벽모고 T-PASS : 2023년 대비 신규과정(2022.9월~2023.5월) 제공되며 , 2022년 대비 과정 중 9-10월 과정만 제외 제공됩니다.<br>
+                        - 반반똑똑 T-PASS : 2023년 대비 반반똑똑영어 방송 다시보기 전과정 제공됩니다.<br>
+                        - 수강기간 : 2023년 6월까지 입니다.<br>
                     </li>
                     <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                     <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>

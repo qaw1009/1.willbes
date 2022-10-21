@@ -63,7 +63,7 @@
 
     <div class="evtCtnsBox evt01">
         <div class="wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2022/07/1721m_01.jpg" alt="신청하기">
+            <img src="https://static.willbes.net/public/images/promotion/2022/10/1721m_01.jpg" alt="신청하기">
             <a href="https://m.cafe.daum.net/sharkchoi/_rec" target="_blank" title="우영이집" style="position: absolute; left: 2.22%; top: 49.69%; width: 30.97%; height: 34.76%; z-index: 2;"></a>
             <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="단과강의" style="position: absolute; left: 34.86%; top: 49.9%; width: 30.97%; height: 34.76%; z-index: 2;"></a>
             <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU6cGFzcw%3D%3D" target="_blank" title="t-pass" style="position: absolute; left: 67.08%; top: 49.9%; width: 30.97%; height: 34.76%; z-index: 2;"></a>
@@ -91,8 +91,8 @@
 
     <div class="evtCtnsBox" >
         <div class="wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2022/07/1721m_05.jpg" alt="">
-            <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="공무원" style="position: absolute; left: 23.19%; top: 76.97%; width: 54.03%; height: 8.33%; z-index: 2;"></a>    
+            <img src="https://static.willbes.net/public/images/promotion/2022/10/1721m_05.jpg" alt="">
+            <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="공무원" style="position: absolute;left: 24.29%;top: 77.77%;width: 52.53%;height: 7.33%;z-index: 2;"></a>    
         </div>
     </div>
 

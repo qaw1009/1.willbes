@@ -238,7 +238,7 @@
                     </ul>
                     <div>
                         <p class="NSK-Black">29만원</p>
-                        <a href="javascript:go_PassLecture('199386');">수강신청</a>
+                        <a href="javascript:go_PassLecture('201425');">수강신청</a>
                     </div>
                 </div>
                 <div class="lecbox">

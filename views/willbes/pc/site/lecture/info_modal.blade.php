@@ -21,7 +21,7 @@
                     <dt>강의수 : <span class="tx-blue">{{ $data['lecture']['wUnitLectureCnt'] }}강@if($data['lecture']['wLectureProgressCcd'] != '105002' && empty($data['lecture']['wScheduleCount'])==false)/{{$data['lecture']['wScheduleCount']}}강@endif</span></dt>
                     @if($opener != 'package')
                         <dt><span class="row-line">|</span></dt>
-                        <dt>수강기간 : <span class="tx-blue">{{ $data['lecture']['StudyPeriod'] }}일</span></dt>
+                        <dt>수강기간 : <span class="tx-blue">{{ $data['lecture']['StudyPeriodCcd'] == '616002' ? $data['lecture']['StudyEndDate'] . ' 까지' : $data['lecture']['StudyPeriod'] . '일' }}</span></dt>
                     @endif
                     <dt class="NSK ml15">
                         <span class="nBox n1">{{ $data['lecture']['MultipleApply'] === "1" ? '무제한' : $data['lecture']['MultipleApply'].'배수'}}</span>

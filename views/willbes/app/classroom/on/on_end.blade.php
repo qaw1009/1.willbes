@@ -89,15 +89,13 @@
                                     <dl class="w-info tx-gray">
                                         <dt>수강기간 : <span class="tx-black">{{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}}</span></dt>
                                     </dl>
-                                    <div class="w-start tx-gray">
-                                        <ul class="f_left two">
-                                            {{--
+                                    {{--<div class="w-start tx-gray">
+                                        <ul class="two">
                                             <li class="btn_white"><a href="#none">후기등록</a></li>
                                             <li class="btn_blue"><a href="#none">재수강신청</a></li>
-                                            --}}
                                         </ul>
-                                    </div>
-                                    <div class="w-line">-</div>
+                                    </div>--}}
+                                    <div class="w-line mt20">-</div>
                                 </td>
                             </tr>
                         @empty
@@ -121,17 +119,17 @@
                                     <td class="w-data tx-left pb-zero">
                                         <div class="w-tit">
                                             {{$row['ProdName']}}
+                                            <div class="MoreBtn f_right tx-right">
+                                                <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
+                                            </div>
                                         </div>
                                         <dl class="w-info tx-gray">
                                             <dt>수강기간 : <span class="tx-black">{{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}}</span></dt>
                                         </dl>
                                         <div class="w-start tx-gray">
-                                            <ul class="f_left two">
+                                            <ul class="two">
                                                 <li class="btn_white"><a href="javascript:;">재수강불가</a></li>
                                             </ul>
-                                            <div class="MoreBtn f_right tx-right">
-                                                <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
-                                            </div>
                                         </div>
                                         <div class="w-line">-</div>
                                     </td>
@@ -161,11 +159,11 @@
                                             <dl class="w-info tx-gray">
                                                 <dt>수강기간 : <span class="tx-black">{{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}}</span></dt>
                                             </dl>
-                                            <div class="w-start tx-gray">
-                                                <ul class="f_left two">
+                                            {{--<div class="w-start tx-gray">
+                                                <ul class="two">
                                                 </ul>
-                                            </div>
-                                            <div class="w-line">-</div>
+                                            </div>--}}
+                                            <div class="w-line mt20">-</div>
                                         </td>
                                     </tr>
                                 @endforeach

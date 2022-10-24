@@ -76,7 +76,7 @@
                                             </dt>
                                             <dt>강의수 : <span class="tx-blue">{{ $row['wUnitLectureCnt'] }}강{{ $row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount']) === false ? '/' . $row['wScheduleCount'] . '강' : '' }}</span></dt>
                                             <dt><span class="row-line">|</span></dt>
-                                            <dt>수강기간 : <span class="tx-blue">{{ $row['StudyPeriod'] }}일</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">{{ $row['StudyPeriodCcd'] == '616002' ? $row['StudyEndDate'] . ' 까지' : $row['StudyPeriod'] . '일' }}</span></dt>
                                             <dt class="NSK ml15">
                                                 <span class="nBox n1">{{ $row['MultipleApply'] === '1' ? '무제한' : $row['MultipleApply'] . '배수'}}</span>
                                                 <span class="nBox n{{ substr($row['wLectureProgressCcd'], -1) + 1 }}">{{ $row['wLectureProgressCcdName'] }}</span>
@@ -108,11 +108,11 @@
                                                     @else
                                                         <span class="chkBox" style="width: 14px;"></span>
                                                     @endif
-{{--                                                    <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>--}}
+                                                    {{--<span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>--}}
 
                                                     @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
                                                         <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
-                                                            <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span>
+                                                        <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span>
                                                     @endif
                                                     <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
                                                 </div>

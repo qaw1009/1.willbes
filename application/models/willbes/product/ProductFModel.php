@@ -98,10 +98,13 @@ class ProductFModel extends WB_Model
                             , wLecIdx, wUnitLectureCnt, wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo
                             , wScheduleCount, ProfReferData, ProdPriceData, IsOpenwUnitNum, IsOpenStudyComment, AppellationCcdName 
                             , ProfNickNameAppellation, wAttachFileReal, wAttachFile, wAttachPath, LecTypeCcd, SiteUrl, SiteName, ProdCateName, OrderNum';
-                        
-                        // 온라인 무료강좌 컬럼 추가 (무료강좌타입, 보강동영상 비밀번호)
+
                         if ($learn_pattern == 'on_free_lecture') {
+                            // 온라인 무료강좌 컬럼 추가 (무료강좌타입, 보강동영상 비밀번호)
                             $column .= ', FreeLecTypeCcd, FreeLecPasswd';
+                        } else {
+                            // 온라인 단강좌 컬럼 추가 (수강기간옵션, 수강종료일)
+                            $column .= ', StudyPeriodCcd, StudyEndDate';
                         }
                     break;
                 
@@ -383,7 +386,7 @@ class ProductFModel extends WB_Model
     public function findProductLectureInfo($prod_code = [])
     {
         $arr_prod_code = get_arr_var($prod_code, '0');
-        $learn_pattern_ccd_to_end_date = '"615003", "615004"';  // 수강기간설정 > 수강종료일 기준이 적용되는 학습형태 (운영자, 기간제패키지)
+        $learn_pattern_ccd_to_end_date = '"615001", "615003", "615004"';  // 수강기간설정 > 수강종료일 기준이 적용되는 학습형태 (단강좌, 운영자, 기간제패키지)
         $study_period_end_date_ccd = '616002';  // 수강기간설정 > 수강종료일 기준
         $multiple_lec_time_ccd = '612002';  // 배수제한타입 > 전체 강의시간에 배수 적용
         $column = 'P.ProdCode, P.ProdTypeCcd, PL.LearnPatternCcd, if(PL.StudyPeriodCcd = "' . $study_period_end_date_ccd . '", "N", ifnull(PL.IsLecStart, "N")) as IsLecStart

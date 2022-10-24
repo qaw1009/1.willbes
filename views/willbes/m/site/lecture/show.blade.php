@@ -32,7 +32,7 @@
                                     <dt><strong>강의촬영(실강)</strong>{{ empty($data['StudyStartDate']) ? '' : substr($data['StudyStartDate'],0,4).'년 '. substr($data['StudyStartDate'],5,2).'월' }}</dt>
                                     <dt><strong>강의수</strong>{{ $data['wUnitLectureCnt'] }}강@if($data['wLectureProgressCcd'] != '105002' && empty($data['wScheduleCount'])==false) / {{$data['wScheduleCount']}}강@endif</dt>
                                     @if(!($pattern == 'free' && $data['FreeLecTypeCcd'] == '652003'))
-                                    <dt><strong>수강기간</strong><span class="tx-blue">{{ $data['StudyPeriod'] }}일</span>
+                                    <dt><strong>수강기간</strong><span class="tx-blue">{{ $data['StudyPeriodCcd'] == '616002' ? $data['StudyEndDate'] . ' 까지' : $data['StudyPeriod'] . '일' }}</span>
                                         <span class="NSK ml10 nBox n1">{{ $data['MultipleApply'] === "1" ? '무제한' : $data['MultipleApply'].'배수'}}</span>
                                         <span class="NSK nBox n{{ substr($data['wLectureProgressCcd'], -1)+1 }}">{{ $data['wLectureProgressCcdName'] }}</span>
                                     </dt>

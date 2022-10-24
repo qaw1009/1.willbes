@@ -100,11 +100,17 @@
                                     </div>
                                     <dl class="w-info tx-gray">
                                         <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span><span class="row-line">|</span></dt>
-                                        <dt>잔여기간 : <span class="tx-blue">{{$row['RealLecExpireDay']}}</span>일<span class="row-line">|</span></dt>
+                                        <dt>잔여기간 :
+                                            @if($row['StudyPeriodCcd'] == '616002')
+                                                <span class="tx-blue">{{str_replace('-', '.', $row['RealLecEndDate'])}} 까지</span><span class="row-line">|</span>
+                                            @else
+                                                <span class="tx-blue">{{$row['RealLecExpireDay']}}</span>일<span class="row-line">|</span>
+                                            @endif
+                                        </dt>
                                         <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
                                     </dl>
                                     <div class="w-start tx-gray">
-                                        <ul class="f_left two">
+                                        <ul class="two">
                                             {{-- @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0) --}}
                                             @if($row['SalePatternCcd'] == '694003')
                                                 <li class="btn_white"><a>일시정지불가</a></li>
@@ -155,6 +161,9 @@
                                     <td class="w-data tx-left pb-zero">
                                         <div class="w-tit">
                                             {{$row['ProdName']}}
+                                            <div class="MoreBtn f_right tx-right">
+                                                <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
+                                            </div>
                                         </div>
                                         <dl class="w-info tx-gray">
                                             <dt>잔여기간 :
@@ -166,7 +175,7 @@
                                             </dt>
                                         </dl>
                                         <div class="w-start tx-gray">
-                                            <ul class="f_left two">
+                                            <ul class="two">
                                             @if(false)
                                                 <!-- 패키지강의 일시중지 불가 -->
                                                 @elseif($row['IsPause'] == 'N')
@@ -188,11 +197,7 @@
                                                     <li class="btn_blue"><a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','','P');">수강연장({{$row['RebuyCount']}})</a></li>
                                                 @endif
                                                 --}}
-
                                             </ul>
-                                            <div class="MoreBtn f_right tx-right">
-                                                <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
-                                            </div>
                                         </div>
                                         <div class="w-line">-</div>
                                     </td>
@@ -338,7 +343,13 @@
                                     <dl class="w-info tx-gray">
                                         <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span><span class="row-line">|</span></dt>
                                         <dt>진도율 : <span class="tx-blue">{{$row['StudyRate']}}%</span><span class="row-line">|</span></dt>
-                                        <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}</span>일<span class="row-line">|</span></dt>
+                                        <dt>잔여기간 :
+                                            @if($row['StudyPeriodCcd'] == '616002')
+                                                <span class="tx-blue">{{str_replace('-', '.', $row['RealLecEndDate'])}} 까지</span><span class="row-line">|</span>
+                                            @else
+                                                <span class="tx-blue">{{$row['remainDays']}}</span>일<span class="row-line">|</span>
+                                            @endif
+                                        </dt>
                                         <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
                                     </dl>
                                     <div class="w-line mt20">-</div>
@@ -359,16 +370,14 @@
                                     <td class="w-data tx-left pb-zero">
                                         <div class="w-tit">
                                             <span class="tx-red">[{{$row['PayRouteCcdName']}}]</span> {{$row['ProdName']}}
-                                        </div>
-                                        <dl class="w-info tx-gray">
-                                            <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}</span>일 ({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
-                                        </dl>
-                                        <div class="w-start tx-gray">
                                             <div class="MoreBtn f_right tx-right">
                                                 <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
                                             </div>
                                         </div>
-                                        <div class="w-line">-</div>
+                                        <dl class="w-info tx-gray">
+                                            <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}</span>일 ({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
+                                        </dl>
+                                        <div class="w-line mt20">-</div>
                                     </td>
                                 </tr>
                                 </tbody>

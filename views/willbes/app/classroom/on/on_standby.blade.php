@@ -97,7 +97,13 @@
                                         </div>
                                         <dl class="w-info tx-gray">
                                             <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span><span class="row-line">|</span></dt>
-                                            <dt>잔여기간 : <span class="tx-blue">{{$row['RealLecExpireDay']}}</span>일</dt>
+                                            <dt>잔여기간 :
+                                                @if($row['StudyPeriodCcd'] == '616002')
+                                                    <span class="tx-blue">{{str_replace('-', '.', $row['RealLecEndDate'])}} 까지</span>
+                                                @else
+                                                    <span class="tx-blue">{{$row['RealLecExpireDay']}}</span>일
+                                                @endif
+                                            </dt>
                                         </dl>
                                         <div class="w-start tx-gray">
                                             <span class="w-subtxt">수강시작일 : {{$row['LecStartDate']}}</span>
@@ -142,6 +148,9 @@
                                         <td class="w-data tx-left pb-zero">
                                             <div class="w-tit">
                                                 {{$row['ProdName']}}
+                                                <div class="MoreBtn f_right tx-right">
+                                                    <a href="javascript:;"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
+                                                </div>
                                             </div>
                                             <dl class="w-info tx-gray">
                                                 <dt>잔여기간 :
@@ -153,7 +162,7 @@
                                                 </dt>
                                             </dl>
                                             <div class="w-start tx-gray">
-                                                <ul class="f_left two">
+                                                <ul class="two">
                                                     @if($row['SalePatternCcd'] == '694003')
                                                         <li class="btn_black_line"><a>시작일변경 불가</a></li>
                                                     @elseif($row['IsLecStart'] == 'Y')
@@ -167,9 +176,6 @@
                                                         <li class="btn_black_line"><a>시작일변경 불가</a></li>
                                                     @endif
                                                 </ul>
-                                                <div class="MoreBtn f_right tx-right">
-                                                    <a href="javascript:;"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
-                                                </div>
                                             </div>
                                             <div class="w-line">-</div>
                                         </td>
@@ -304,7 +310,13 @@
                                         </div>
                                         <dl class="w-info tx-gray">
                                             <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span><span class="row-line">|</span></dt>
-                                            <dt>잔여기간 : <span class="tx-blue">{{$row['RealLecExpireDay']}}</span>일</dt>
+                                            <dt>잔여기간 :
+                                                @if($row['StudyPeriodCcd'] == '616002')
+                                                    <span class="tx-blue">{{str_replace('-', '.', $row['RealLecEndDate'])}} 까지</span>
+                                                @else
+                                                    <span class="tx-blue">{{$row['RealLecExpireDay']}}</span>일
+                                                @endif
+                                            </dt>
                                         </dl>
                                         <div class="w-start tx-gray">
                                             <span class="w-subtxt">수강시작일 : {{$row['LecStartDate']}}</span>
@@ -345,6 +357,9 @@
                                             <td class="w-data tx-left pb-zero">
                                                 <div class="w-tit">
                                                     {{$row['ProdName']}}
+                                                    <div class="MoreBtn f_right tx-right">
+                                                        <a href="javascript:;"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
+                                                    </div>
                                                 </div>
                                                 <dl class="w-info tx-gray">
                                                     <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}</span>일 ({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
@@ -362,9 +377,6 @@
                                                             <li class="btn_black_line"><a>시작일변경 불가</a></li>
                                                         @endif
                                                     </ul>
-                                                    <div class="MoreBtn f_right tx-right">
-                                                        <a href="javascript:;"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
-                                                    </div>
                                                 </div>
                                                 <div class="w-line">-</div>
                                             </td>

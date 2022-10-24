@@ -14,7 +14,7 @@
                 </span>
                 @if($opener != 'package')
                     <span class="row-line ml10">|</span>
-                    수강기간 <span class="tx-blue">{{$data['lecture']['StudyPeriod']}}일</span>
+                    수강기간 <span class="tx-blue">{{ $data['lecture']['StudyPeriodCcd'] == '616002' ? $data['lecture']['StudyEndDate'] . ' 까지' : $data['lecture']['StudyPeriod'] . '일' }}</span>
                 @endif
                 <span class="NSK ml10 nBox n1">{{ $data['lecture']['MultipleApply'] === "1" ? '무제한' : $data['lecture']['MultipleApply'].'배수'}}</span>
                 <span class="NSK nBox n{{ substr($data['lecture']['wLectureProgressCcd'], -1)+1 }}">{{ $data['lecture']['wLectureProgressCcdName'] }}</span>

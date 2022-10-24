@@ -188,10 +188,11 @@
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="radio">
+                            <!--
                             <input type="hidden" name="StudyPeriodCcd" value="616001">{{--수강기간으로 고정 : 20200825 - 한주연--}}
                             수강기간 <input type="number" name="StudyPeriod" id="StudyPeriod" class="form-control" required="required" title="수강일" value='@if($data['LecTypeCcd'] !== '607003'){{$data['StudyPeriod']}}@endif' style="width:70px;">일&nbsp;&nbsp;&nbsp;
                             [개강일] <input type="text" name="StudyStartDate" id="StudyStartDate" class="form-control datepicker" title="개강일" value='@if($data['LecTypeCcd'] != '607003'){{$data['StudyStartDate']}}@endif' style="width:100px;" readonly required="required">&nbsp;&nbsp;&nbsp;
-                            <!--
+                            //-->
                             @foreach($studyterm_ccd as $key => $val)
                                 <input type="radio" name="StudyPeriodCcd" id="StudyPeriodCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || ($data['StudyPeriodCcd'] == $key))checked="checked"@endif> {{ $val }}&nbsp;&nbsp;
                                 @if($key == "616001")
@@ -201,7 +202,6 @@
                                     <input type="text" name="StudyEndDate" id="StudyEndDate" class="form-control datepicker" title="수강종료일" style="width:100px"  value="{{$data['StudyEndDate']}}" readonly>
                                 @endif
                             @endforeach
-                            //-->
                         </div>
                     </div>
                 </div>
@@ -1453,9 +1453,9 @@
             }
 
             function addValidate() {
-                if($('input:radio[name="StudyPeriodCcd"]:checked').val() == '616002') {
-                    if($('#StudyEndDate').val()=='') {
-                        alert('수강종료일을 입력하여 주십시오.');return;
+                if($('input:radio[name="StudyPeriodCcd"]:checked').val() === '616002') {
+                    if($('#StudyEndDate').val()==='') {
+                        alert('수강종료일을 입력하여 주십시오.');$('input:radio[name="StudyPeriodCcd"]:eq(1)').focus();return;
                     }
                 }
                 if(checkPointSave() === true) {
@@ -1504,6 +1504,27 @@
                     $('#ExternalLinkCode').val(external_link_code+':'+$(this).data('casej'));
                 }
             });
+
+            // 수강기간설정 옵션 선택
+            studyPeriodCheck = function(val) {
+                var $radio_name = ['IsLecStart','IsPause','IsExten','IsRetake'];
+
+                if(val === '616002') {
+                    for($i = 0;$i < $radio_name.length; $i++) {
+                        $('input[name="'+$radio_name[$i]+'"]:eq(1)').iCheck('check');
+                        $('input[name="'+$radio_name[$i]+'"]:eq(0)').iCheck('disable');
+                    }
+                } else {
+                    for($i = 0;$i < $radio_name.length; $i++) {
+                        $('input[name="'+$radio_name[$i]+'"]:eq(0)').iCheck('enable');
+                    }
+                }
+            }
+
+            $regi_form.on('ifChecked', 'input[name="StudyPeriodCcd"]', function () {
+                studyPeriodCheck($(this).val());
+            });
+            studyPeriodCheck($('input[name="StudyPeriodCcd"]:checked').val());
 
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/on/lecture/') }}' + getQueryString());

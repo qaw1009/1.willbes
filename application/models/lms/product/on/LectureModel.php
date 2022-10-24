@@ -525,7 +525,8 @@ class LectureModel extends CommonLectureModel
             ,'StudyPeriodCcd'=>element('StudyPeriodCcd',$input,'616001')
             ,'StudyPeriod'=>$commonStudyPeriod
             ,'StudyStartDate'=>get_var($commonStudyStartDate,null)
-            ,'StudyEndDate'=>get_var(element('StudyEndDate',$input,''),null)
+            //,'StudyEndDate'=>get_var(element('StudyEndDate',$input,''),null)
+            ,'StudyEndDate'=>element('StudyPeriodCcd',$input, '616001') === '616001' ? null : get_var(element('StudyEndDate',$input,''),null)
             ,'WorkBaseStudyPeriod'=>get_var(element('WorkBaseStudyPeriod',$input),0)         //정상수강시간
             ,'WorkMultipleApply'=>element('WorkMultipleApply',$input)                   //배수제한값
             ,'WorkWeekDayStartTime'=>element('WorkWeekDayStartTime',$input)     //수강적용시간 : 평일 시작시간

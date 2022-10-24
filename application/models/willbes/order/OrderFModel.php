@@ -108,8 +108,8 @@ class OrderFModel extends BaseOrderFModel
                     }
                 }
 
-                // 수강기간설정 > 수강종료일 기준 > 수강기간이 1일보다 작을 경우 (운영자, 기간제패키지만 적용)
-                if (in_array($row['LearnPatternCcd'], [$this->_learn_pattern_ccd['adminpack_lecture'], $this->_learn_pattern_ccd['periodpack_lecture']]) === true
+                // 수강기간설정 > 수강종료일 기준 > 수강기간이 1일보다 작을 경우 (단강좌, 운영자, 기간제패키지만 적용)
+                if (in_array($row['LearnPatternCcd'], [$this->_learn_pattern_ccd['on_lecture'], $this->_learn_pattern_ccd['adminpack_lecture'], $this->_learn_pattern_ccd['periodpack_lecture']]) === true
                     && $row['StudyPeriodCcd'] == $this->_study_period_ccd['end_date'] && intval($row['StudyPeriod']) < 1) {
                     return '수강기간은 1일보다 작을 수 없습니다.';
                 }
@@ -1513,8 +1513,8 @@ class OrderFModel extends BaseOrderFModel
             case 'adminpack_lecture' :
             case 'periodpack_lecture' :
                 // 단강좌, 운영자패키지, 기간제패키지
-                if (in_array($learn_pattern, ['adminpack_lecture', 'periodpack_lecture']) === true && $study_period_ccd == $this->_study_period_ccd['end_date']) {
-                    // 수강기간설정 > 수강종료일 기준일 경우 (운영자, 기간제패키지만 적용)
+                if (in_array($learn_pattern, ['on_lecture', 'adminpack_lecture', 'periodpack_lecture']) === true && $study_period_ccd == $this->_study_period_ccd['end_date']) {
+                    // 수강기간설정 > 수강종료일 기준일 경우 (단강좌, 운영자, 기간제패키지만 적용)
                     $lec_start_date = $today_date;
                     $lec_end_date = empty($study_end_date) === false ? $study_end_date : $today_date;
                 } else {

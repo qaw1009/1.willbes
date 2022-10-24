@@ -116,7 +116,13 @@
                                                 <dl class="w-info tx-gray">
                                                     <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
-                                                    <dt>잔여기간 : <span class="tx-blue">{{intval((strtotime($row['RealLecEndDate'])-strtotime($row['lastPauseEndDate']))/86400)}}일</span>({{ str_replace('-', '.', date("Y-m-d", strtotime($row['lastPauseEndDate'].'+1day'))) }}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
+                                                    <dt>잔여기간 :
+                                                        @if($row['StudyPeriodCcd'] == '616002')
+                                                            <span class="tx-blue">{{str_replace('-', '.', $row['RealLecEndDate'])}} 까지</span>
+                                                        @else
+                                                            <span class="tx-blue">{{intval((strtotime($row['RealLecEndDate'])-strtotime($row['lastPauseEndDate']))/86400)}}일</span>({{ str_replace('-', '.', date("Y-m-d", strtotime($row['lastPauseEndDate'].'+1day'))) }}~{{str_replace('-', '.', $row['RealLecEndDate'])}})
+                                                        @endif
+                                                    </dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
                                                 </dl>

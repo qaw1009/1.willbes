@@ -51,7 +51,7 @@
                                 <dt><span class="row-line">|</span></dt>
                                 <dt>강의수 : <span class="unit-lecture-cnt tx-blue" data-info="{{ $row['wUnitLectureCnt'] }}">{{ $row['wUnitLectureCnt'] }}강@if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif</span></dt>
                                 <dt><span class="row-line">|</span></dt>
-                                <dt>수강기간 : <span class="study-period tx-blue" data-info="{{ $row['StudyPeriod'] }}">{{ $row['StudyPeriod'] }}일</span></dt>
+                                <dt>수강기간 : <span class="study-period tx-blue" data-info="{{ $row['StudyPeriod'] }}">{{ $row['StudyPeriodCcd'] == '616002' ? $row['StudyEndDate'] . ' 까지' : $row['StudyPeriod'] . '일' }}</span></dt>
                                 <dt class="NSK ml15">
                                     <span class="multiple-apply nBox n1" data-info="{{ $row['MultipleApply'] }}">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                     <span class="lecture-progress nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}" data-info="{{ substr($row['wLectureProgressCcd'], -1)+1 }}{{ $row['wLectureProgressCcdName'] }}">{{ $row['wLectureProgressCcdName'] }}</span>
@@ -91,8 +91,8 @@
                                                 <span class="chkBox" style="width: 14px;"></span>
                                             @endif
                                             <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
-{{--                                            <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>--}}
-{{--                                            <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>--}}
+                                            {{--<span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>--}}
+                                            {{--<span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>--}}
 
                                             @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
                                                 <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
@@ -125,17 +125,17 @@
                                         <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
                                         <span class="w-subtit">{{ $book_row['ProdBookName'] }}</span>
                                         <span class="chk buybtn p_re">
-                                                                            <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
-                                                                            [{{ $book_row['wSaleCcdName'] }}]
-                                                                            </label>
-                                                                             @if($row['IsCart'] == 'Y' || $pattern == 'free')
+                                            <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
+                                                [{{ $book_row['wSaleCcdName'] }}]
+                                            </label>
+                                            @if($row['IsCart'] == 'Y' || $pattern == 'free')
                                                 <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
                                             @endif
-                                                                        </span>
+                                        </span>
                                         <span class="priceWrap">
-                                                                            <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
-                                                                            <span class="discount">(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</span>
-                                                                        </span>
+                                            <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
+                                            <span class="discount">(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</span>
+                                        </span>
                                     </div>
                                 @endforeach
                                 @if($pattern == 'only')
@@ -162,5 +162,4 @@
     </div>
     <!-- willbes-Lec-Table -->
 @endforeach
-
 <!-- willbes-Lec -->

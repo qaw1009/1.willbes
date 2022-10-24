@@ -50,7 +50,7 @@
 
         <div class="sky" id="QuickMenu">
             <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2022/10/2805_sky01.jpg" title="헌번 실강 T-PASS"></a>    
-            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2022/10/2805_sky02.jpg" title="4개월 PASS"></a>              
+            <a href="https://police.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=437175&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/10/2805_sky02.jpg" title="4개월 PASS"></a>              
         </div>
 
         <div class="evtCtnsBox wb_00">

@@ -56,7 +56,7 @@
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2341_top_txt.png" title="윌비스 스파르타 독서실" data-aos="fade-down">     
             </div> 
-            <img src="https://static.willbes.net/public/images/promotion/2022/08/2341_top.jpg" title="교수진">                
+            <img src="https://static.willbes.net/public/images/promotion/2022/10/2341_top.jpg" title="교수진">                
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
@@ -115,8 +115,8 @@
         
         <div class="evtCtnsBox evt04" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/08/2341_04.jpg" title="6개월 할인 패키지">
-                <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3130/prod-code/200137" target="_blank" title="바로가기" style="position: absolute;left: 33.13%;top: 73.44%;width: 33.73%;height: 11.89%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2341_04.jpg" title="6개월 할인 패키지">
+                <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3130/prod-code/202237" target="_blank" title="바로가기" style="position: absolute;left: 33.13%;top: 73.44%;width: 33.73%;height: 11.89%;z-index: 2;"></a>
             </div>
         </div>
 

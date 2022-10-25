@@ -268,7 +268,7 @@
                                 </ul>
                             </div>
                             <div class="noticeList widthAuto350 f_left ml35">
-                                <div class="will-nlistTit p_re">강의계획서 <a href="{{front_url('/support/examNews/index/cate/'.$__cfg['CateCode'])}}" target="_blank" class="btn-add">
+                                <div class="will-nlistTit p_re">강의계획서/자료 <a href="{{front_url('/support/examNews/index/cate/'.$__cfg['CateCode'])}}" target="_blank" class="btn-add">
                                         <img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                 </div>
                                 <ul class="List-Table">

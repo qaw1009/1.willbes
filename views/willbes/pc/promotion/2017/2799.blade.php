@@ -214,222 +214,7 @@
             </section>
         </div>
 
-        <div class="evtCtnsBox evt03" id="freelec">
-        	<img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03.jpg" alt="인강 무료체험 신청"/>
-            <h5 class="NSK-Black">이벤트참여 사전 동의사항 <span class="NSK">* 윌비스임용의 본 이벤트 참여를 위해서는 아래 명시된 사항을 자세히 읽어 보시고 동의를 해주셔야 가능합니다.</span></h5>
-            <ul class="infotext">
-                <li>개인정보 수집 이용 목적<br>
-                - 본 이벤트의 대상자(대학교(원)의 재학생) 확인 및 각종 문의사항 응대<br>
-                - 통계분석 및 기타 마케팅에 활용<br>
-                - 윌비스 임용고시학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공 </li>
-                <li>개인정보 수집 항목<br>
-                - 필수 항목 : 성명, 본사ID, 연락처, 재학중인 학교와 학과(학부)의 재학생 임을 인증할 수 있는 서류(재학증명서, 성적증명서 등)<br>
-                - 문화상품권 수령자: 주민등록증 사본 </li>
-                <li>개인정보 이용기간 및 보유기간<br>
-                - 본사의 이용 목적 달성되었거나, 신청자의 해지 요청 및 삭제요청 시 바로 파기 </li>
-                <li>신청자의 개인정보 수집 및 활용 동의 거부 시<br>
-                - 개인정보 수집에 동의하지 않으시는 경우 설명회 접수 및 서비스 이용에 제한이 있을 수 있습니다. </li>
-                <li>입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3자에게 제공되지 않으며 개인정보 처리 방침에 따라 보호되고 있습니다.</li>
-                <li>이벤트 진행에 따른 저작물에 대한 저작권은 ㈜윌비스에 귀속됩니다.</li>
-            </ul>
-            <div class="checkinfo"><label><input type="checkbox"> 이벤트참여에 따른 개인정보 및 마케팅활용 동의하기(필수)</lebal></div>
-            <h5 class="NSK-Black mt50">재학생 인증 <span class="NSK">* 윌비스임용의 본 이벤트의 대상자는 임용시험준비를 시작하는 대학교(원)의 재학생입니다.</span></h5>
-            <div>
-                <table>
-                    <col width="18%">
-                    <col width="25%">
-                    <col width="15%">
-                    <col width="20%">
-                    <col width="15%">
-                    <col>
-                    <tr>
-                        <th>이름</th>
-                        <td>&nbsp;</td>
-                        <th>윌비스 ID</th>
-                        <td>&nbsp;</td>
-                        <th>연락처</th>
-                        <td><input type="text" placeholder="{{sess_data('mem_phone')}}" readonly></td>
-                    </tr>
-                    <tr>
-                        <th>대학교(원)/학부(학과)</th>
-                        <td><input type="text" style="width:100%" name="register_data2" id="register_data2" disabled maxlength="10"></td>
-                        <th>재학생인증 파일</th>
-                        <td colspan="3">
-                            <div>
-                                <input type="file" id="attach_file" name="attach_file" onchange="chkUploadFile(this);" style="width:60%"/>&nbsp;&nbsp;
-                                <a href="javascript:void(0);" onclick="del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" alt="삭제"></a>
-
-                                <p class="tx12 mt10">*파일의 크기는 2MB까지 업로드 가능, 이미지파일 (jpg, png등)만 가능합니다.</p>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="mt10">* 재학생 인증 파일은 <strong>재학증명서, 성적증명서 등 재학생임을 인증할 수 있는 서류</strong>만 인정됩니다. (학생증 X)</div>
-            {{--
-            <div class="btns">
-                <a href="javascript:void(0);" onclick="fn_submit();">확인</a>
-                <a href="javascript:void(0);" onclick="reset_form(this);">취소</a>
-            </div>
-            --}}
-            <div class="freelecList">
-                <h5 class="NSK-Black">인강 <strong>2주 무료체험</strong> 강좌 <span class="NSK">* 본 무료체험 최대 4개강좌까지 신청이 가능합니다.</span></h5>
-                <div class="freelecwrap">
-                    <div class="freelecbox">
-                        <div class="lecimg">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03_t01.jpg" alt=""/>
-                            <div>
-                                <p>합격할 수 있는<br> 구체적 방법 제시!!</p>
-                                <p>국어교육론<br> 문학교육론</p>
-                                <p>송원영 교수</p>
-                            </div>
-                        </div>
-                        <ul>
-                            <li><label><input type="checkbox" value="202061"> 국어/문학교육론 이론정리 <span>[20강]</span></label></li>
-                        </ul>
-                    </div>
-                    <div class="freelecbox">
-                        <div class="lecimg">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03_t02.jpg" alt=""/>
-                            <div>
-                                <p>시험 출제 교수진의<br> 의도가 잘 반영된 강의! </p>
-                                <p>국어문법</p>
-                                <p>권보민 교수</p>
-                            </div>
-                        </div>
-                        <ul>
-                            <li><label><input type="checkbox" value="202062"> 현대 국어 문법 기초다지기 <span>[8강]</span></label></li>
-                        </ul>
-                    </div>
-                    <div class="freelecbox">
-                        <div class="lecimg">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03_t03.jpg" alt=""/>
-                            <div>
-                                <p>지금, 여기!!<br> 깨어있는 국어교육!</p>
-                                <p>전공국어</p>
-                                <p>구동언 교수</p>
-                            </div>
-                        </div>
-                        <ul>
-                            <li><label><input type="checkbox" value="202063"> 국어교육의 이해 <span>[6강]</span></label></li>
-                            <li><label><input type="checkbox" value="202064"> 학교문법의 이해(현대국어 체계) <span>[6강]</span></label></li>
-                            <li><label><input type="checkbox" value="202065"> 문학교육의 이해(현대시) <span>[6강]</span></label></li>
-                        </ul>
-                    </div>
-                    <div class="freelecbox">
-                        <div class="lecimg">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03_t04.jpg" alt=""/>
-                            <div>
-                                <p>합격생이 추천하는<br> 명품강의!!</p>
-                                <p>일반영어<br> 영미문학</p>
-                                <p>김유석 교수</p>
-                            </div>
-                        </div>
-                        <ul>
-                            <li><label><input type="checkbox" value="202069"> 영미문학 영미시의 이해 <span>[11강]</span></label></li>
-                            <li><label><input type="checkbox" value="202066"> 일반영어 Power Reading Skills <span>[4강]</span></label></li>
-                        </ul>
-                    </div>
-                    <div class="freelecbox">
-                        <div class="lecimg">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03_t05.jpg" alt=""/>
-                            <div>
-                                <p>영어학의 정석!<br>합격의 가장 빠른 길!!</p>
-                                <p>영어학</p>
-                                <p>김영문 교수</p>
-                            </div>
-                        </div>
-                        <ul>
-                            <li><label><input type="checkbox" value="202070"> 영어학 기본이론 1 <span>[4강]</span></label></li>
-                        </ul>
-                    </div>
-                    <div class="freelecbox">
-                        <div class="lecimg">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03_t06.jpg" alt=""/>
-                            <div>
-                                <p>합격 전략에 기반을 둔,<br> 명쾌한 전공수학!</p>
-                                <p>전공수학</p>
-                                <p>김철홍 교수</p>
-                            </div>
-                        </div>
-                        <ul>
-                            <li><label><input type="checkbox" value="202071"> 대수학과 정수론 <span>[24강]</span></label></li>
-                        </ul>
-                    </div>
-                    <div class="freelecbox">
-                        <div class="lecimg">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03_t07.jpg" alt=""/>
-                            <div>
-                                <p>학습방법. 시기,<br>학습량의 균형!!<br>최적의 커리큘럼!</p>
-                                <p>수학교육론</p>
-                                <p>박태영 교수</p>
-                            </div>
-                        </div>
-                        <ul>
-                            <li><label><input type="checkbox" value="202072"> 신론과 기출을 결합한 이론 <span>[13강]</span></label></li>
-                        </ul>
-                    </div>
-                    <div class="freelecbox">
-                        <div class="lecimg">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03_t11.jpg" alt=""/>
-                            <div>
-                                <p>방대한 학습범위를<br> 효과적으로 정리!</p>
-                                <p>도덕윤리</p>
-                                <p>김병찬 교수</p>
-                            </div>
-                        </div>
-                        <ul>
-                            <li><label><input type="checkbox" value="202073"> 교과내용학(서양,동양,한국윤리) <span>[14강]</span></label></li>
-                        </ul>
-                    </div>
-                    <div class="freelecbox">
-                        <div class="lecimg">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03_t08.jpg" alt=""/>
-                            <div>
-                                <p>학적중!<br> 신뢰의 이름!!</p>
-                                <p>전공역사</p>
-                                <p>김종권 교수</p>
-                            </div>
-                        </div>
-                        <ul>
-                            <li><label><input type="checkbox" value="202074"> 전공역사 개념 구조화 <span>[20강]</span></label></li>
-                        </ul>
-                    </div>
-                    <div class="freelecbox">
-                        <div class="lecimg">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03_t09.jpg" alt=""/>
-                            <div>
-                                <p>합격으로 가는<br>가장 빠르고<br> 안전한 방법!!</p>
-                                <p>전기.전자.통신</p>
-                                <p>최우영 교수</p>
-                            </div>
-                        </div>
-                        <ul>
-                            <li><label><input type="checkbox" value="202078"> 기초 전기전자/회로이론 <span>[10강]</span></label></li>
-                        </ul>
-                    </div>
-                    <div class="freelecbox">
-                        <div class="lecimg">
-                            <img src="https://static.willbes.net/public/images/promotion/2022/10/2799_03_t10.jpg" alt=""/>
-                            <div>
-                                <p>20년 강의 경력,<br> 임용 중국어<br> 합격의 기준!!</p>
-                                <p>전공중국어</p>
-                                <p>장영희 교수</p>
-                            </div>
-                        </div>
-                        <ul>
-                            <li><label><input type="checkbox" value="202081"> 중국어 이론 입문 <span>[12강]</span></label></li>
-                            <li><label><input type="checkbox" value="202080"> 중국어 독해 입문 <span>[10강]</span></label></li>
-                        </ul>
-                    </div>
-                    <div class="freelecbox"></div>
-                    <div class="freelecbox"></div>
-                </div>
-                <div class="btns">
-                    <a href="#none">인강 2주 무료체험 신청하기 ></a>
-                </div>
-            </div>
-        </div>
+        <div class="evtCtnsBox evt03" id="freelec"></div>
 
         <div class="evtCtnsBox evt04">
             <div class="wrap">
@@ -474,38 +259,55 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        let section02 = document.querySelector('.tab01');
-        let evt03 = document.querySelector('.evt03');
-        let navBar = document.querySelector('nav');
-        window.addEventListener('scroll', function(){
-            // nav 아래로 스크롤시 nav 상단고정
-            if ( window.pageYOffset > section02.offsetTop ) {
-                navBar.classList.add('fixed');
-                if(window.pageYOffset > evt03.offsetTop){
-                    $('.evtMenu').css('display', 'none');
+        $(document).ready(function (){
+            let section02 = document.querySelector('.tab01');
+            let evt03 = document.querySelector('.evt03');
+            let navBar = document.querySelector('nav');
+            window.addEventListener('scroll', function(){
+                // nav 아래로 스크롤시 nav 상단고정
+                if ( window.pageYOffset > section02.offsetTop ) {
+                    navBar.classList.add('fixed');
+                    if(window.pageYOffset > evt03.offsetTop){
+                        $('.evtMenu').css('display', 'none');
+                    }
+                    else{
+                        $('.evtMenu').css('display', 'block');
+                    }
+                } else {
+                    navBar.classList.remove('fixed');
                 }
-                else{
-                    $('.evtMenu').css('display', 'block');
-                }
-            } else {
-                navBar.classList.remove('fixed'); 
-            }
 
-            let tabs = $('.tab');
-            let sections = $('section')
-            sections.each( function(i,el){
-                if(window.pageYOffset >= el.offsetTop && window.pageYOffset < el.offsetTop + el.offsetHeight){
-                    tabs.eq(i).addClass('on');
-                    tabs.eq(i).parent('li').siblings().children().removeClass('on');
-                }
-            })
-        })
-        
+                let tabs = $('.tab');
+                let sections = $('section')
+                sections.each( function(i,el){
+                    if(window.pageYOffset >= el.offsetTop && window.pageYOffset < el.offsetTop + el.offsetHeight){
+                        tabs.eq(i).addClass('on');
+                        tabs.eq(i).parent('li').siblings().children().removeClass('on');
+                    }
+                })
+            });
+
+            //무료인강 html 호출
+            var url = "{{ front_url("/authGive/index/cate/3134/code/{$arr_promotion_params['ag_idx']}/promo/{$arr_base['promotion_code']}") }}";
+            var data = '';
+            sendAjax(url,
+                data,
+                function(d){
+                    $("#freelec").html(d).end();
+                },
+                function(ret, status){
+                    //alert('진행중인 인강 무료체험 강좌가 없습니다. 관리자에게 문의해주세요.');
+                    //location.href = '{{ front_url('/') }}';
+                }, false, 'GET', 'html');
+        });
+
         function scrolling(target){
             $('html, body').stop().animate({scrollTop: $(target).offset().top});
         }
-        
+
+        {{-- 강좌지급 인증 ajax 로 호출 시 사용--}}
+        function fn_login_check() {
+            {!! sess_data('is_login') !== true ?  login_check_inner_script('로그인 후 이용하여 주십시오.','Y') : 'return true;' !!}
+        }
     </script>
-
-
 @stop

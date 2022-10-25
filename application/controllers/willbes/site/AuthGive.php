@@ -89,6 +89,7 @@ class AuthGive extends \app\controllers\FrontController
 
         $this->load->view('site/auth_give/' . $data['SiteCode'] .'/'. $ag_code .(empty($promotion) ? '' : '_'.$promotion), [
             'data' => $data,
+            'list_product' => $data_product,
             'data_product' => [
                 'subject' => $subject_group,
                 'prof_name' => $subject_prof_group,

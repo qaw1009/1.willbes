@@ -550,7 +550,7 @@
                                                         <tr>
                                                             <td>
                                                                 <select name='event_display_product_group_order[]' data-ccd = "{{$row['LearnPatternCcd']}}" class="form-control mr-10" style="min-width: 50px;">
-                                                                    @for($ii=1;$ii<10;$ii++)
+                                                                    @for($ii=1;$ii<16;$ii++)
                                                                         <option value='{{$ii}}' @if($ii ==$row['GroupOrderNum']) selected="selected" @endif>{{$ii}}</option>
                                                                     @endfor
                                                                 </select>

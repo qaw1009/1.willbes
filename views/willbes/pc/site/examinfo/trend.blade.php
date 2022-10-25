@@ -16,7 +16,7 @@
             <div class="w-Guide-Ssam">
                 <h4 class="NG">임용시험 최근 10년 동향</h4>
                 <div class="tabBox NG">
-                    <ul class="tabShow tabSsam">
+                    <ul class="tabShow tabTrend">
                         @foreach($arr_base['subject_list'] as $key => $val)
                             <li><a href="#trend_guide{{$loop->index}}" data-subject-id="{{$key}}" class="btn-subject {{($loop->first === true) ? 'on' : ''}}">{{$val['subject_name']}}</a></li>
                         @endforeach

@@ -538,6 +538,7 @@ class Home extends \app\controllers\FrontController
         if(APP_DEVICE == 'pc'){
             $data['new_product'] = $this->_getlistSalesProductBook(10, $s_cate_code, ['IsBest' => 'Y']);
             $data['prof_hot_clip'] = $this->_getlistProfHotClip();
+            $data['exam']['subject_list'] = $this->examTakeInfoFModel->getCcdForSubject(['RAW' => ['JSON_EXTRACT(CcdEtc,\'$.is_pc_main\') = ' => '\'Y\'']]);
         }else{
             $data['new_product'] = $this->_product('on_lecture', 16, $s_cate_code, 'New');
             $data['event'] = $this->_getlistEvent(5, $s_cate_code);
@@ -551,7 +552,6 @@ class Home extends \app\controllers\FrontController
         $data['top_order_lecture'] = $this->orderListFModel->getTopOrderOnLectureData( $this->_site_code, 3);
 
         $data['exam']['subject_select_box'] = $this->examTakeInfoFModel->getCcdForSubject();
-        $data['exam']['subject_list'] = $this->examTakeInfoFModel->getCcdForSubject(['RAW' => ['JSON_EXTRACT(CcdEtc,\'$.is_pc\') = ' => '\'Y\'']]);
         $data['exam']['total_exam_info'] = $this->examTakeInfoFModel->totalExamInfo($this->_site_code);
         return $data;
     }

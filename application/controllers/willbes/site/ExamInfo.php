@@ -16,47 +16,6 @@ class ExamInfo extends \app\controllers\FrontController
     /**
      * 지역별 공고문
      */
-    /*public function notice()
-    {
-        $codes = $this->codeModel->getCcd('734');
-        unset($codes['734001']);    //전국제외
-
-        $arr_condition = [
-            'EQ' => [
-                'a.DataType' => '1'
-                ,'a.IsStatus' => 'Y'
-                ,'a.IsUse' => 'Y'
-            ]
-        ];
-        $arr_sub_condition = [
-            'EQ' => [
-                'SiteCode' => $this->_site_code
-                ,'DataType' => '0'
-                ,'IsStatus' => 'Y'
-                ,'IsUse' => 'Y'
-            ]
-        ];
-        $result = $this->examFileInfoFModel->fileList($arr_condition, $arr_sub_condition);
-        $arr_download_list = [];
-        $year_target = date('Y');
-
-        if (empty($result) === false) {
-            $year_target = $result[0]['YearTarget'];
-            foreach ($result as $row) {
-                $temp_file_info = json_decode($row['FileInfo'],true);
-                foreach ($temp_file_info as $f_row) {
-                    $arr_download_list[$row['AreaCcd']][$f_row['FileType']]['file_real_name'] = $f_row['FileRealName'];
-                    $arr_download_list[$row['AreaCcd']][$f_row['FileType']]['file_path'] = $f_row['FilePath'].$f_row['FileName'];
-                }
-            }
-        }
-        $file_type = element('file_type', $this->_reqG(null));
-        $this->load->view('site/examinfo/' . $file_type . 'notice',[
-            'exam_area_ccd' => $codes
-            ,'year_target' => $year_target
-            ,'arr_download_list' => $arr_download_list,
-        ]);
-    }*/
     public function notice()
     {
         $arr_input = $this->_reqG(null);
@@ -108,7 +67,7 @@ class ExamInfo extends \app\controllers\FrontController
      */
     public function mainTrend()
     {
-        $arr_base['subject_list'] = $this->examTakeInfoFModel->getCcdForSubject(['RAW' => ['JSON_EXTRACT(CcdEtc,\'$.is_mobile\') = ' => '\'Y\'']]);
+        $arr_base['subject_list'] = $this->examTakeInfoFModel->getCcdForSubject(['RAW' => ['JSON_EXTRACT(CcdEtc,\'$.is_mobile_main\') = ' => '\'Y\'']]);
         $arr_condition = [
             'EQ' => [
                 'SiteCode' => $this->_site_code,
@@ -140,7 +99,12 @@ class ExamInfo extends \app\controllers\FrontController
      */
     public function trend()
     {
-        $arr_base['subject_list'] = $this->examTakeInfoFModel->getCcdForSubject(['RAW' => ['JSON_EXTRACT(CcdEtc,\'$.is_mobile\') = ' => '\'Y\'']]);
+        if ($this->_is_mobile === true) {
+            $arr_where = ['JSON_EXTRACT(CcdEtc,\'$.is_mobile_page\') = ' => '\'Y\''];
+        } else {
+            $arr_where = ['JSON_EXTRACT(CcdEtc,\'$.is_pc_page\') = ' => '\'Y\''];
+        }
+        $arr_base['subject_list'] = $this->examTakeInfoFModel->getCcdForSubject(['RAW' => $arr_where]);
         $arr_condition = [
             'EQ' => [
                 'SiteCode' => $this->_site_code,

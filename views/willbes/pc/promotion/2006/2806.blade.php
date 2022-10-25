@@ -38,7 +38,7 @@
 			<div class="wrap">
 				<img src="https://static.willbes.net/public/images/promotion/2022/10/2806_01.jpg" alt="이벤트 참여" />
 				<a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운로드" style="position: absolute; left: 25%; top: 20.36%; width: 48.04%; height: 8.27%; z-index: 2;"></a>	
-				<a href="href="javascript:void(0);" title="링크복사" onclick="copyTxt();" title="" style="position: absolute; left: 70.18%; top: 66.67%; width: 12.86%; height: 8.27%; z-index: 2;"></a>
+				<a href="javascript:void(0);" title="링크복사" onclick="copyTxt();" title="" style="position: absolute; left: 70.18%; top: 66.67%; width: 12.86%; height: 8.27%; z-index: 2;"></a>
 
 				<a href="https://m.facebook.com" title="페이스북" style="position: absolute; left: 25%; top: 80.66%; width: 7.32%; height: 13.49%; z-index: 2;"></a>
 				<a href="https://www.instagram.com" title="인스타그램" style="position: absolute; left: 35.71%; top: 80.66%; width: 7.32%; height: 13.49%; z-index: 2;"></a>

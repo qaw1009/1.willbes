@@ -1,19 +1,32 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-<link href="/public/css/willbes/style_cop_pro.css?ver={{time()}}" rel="stylesheet">
-<style>
-    .pro .Menu h3 {border:0}
-</style>
+    <link href="/public/css/willbes/style_cop_pro.css?ver={{time()}}" rel="stylesheet">
+    <style>
+        .pro .Menu h3 {border:0}
+    </style>
 
     <!-- Container -->
     <div id="Container" class="Container pro NGR c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
-        <div class="Section Sec02">
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_2000x390.jpg" alt="합격패스">
+        <div class="Section MainVisual">
+            <div class="VisualBox p_re">
+                @if(empty($data['arr_main_banner']['메인_빅배너']) === false)
+                    <div id="MainRollingSlider" class="MaintabBox">
+                        {!! banner_html($data['arr_main_banner']['메인_빅배너'], 'MaintabSlider') !!}
+                        <p class="leftBtn" id="imgBannerLeft"><a href="javascript:void(0);">이전</a></p>
+                        <p class="rightBtn" id="imgBannerRight"><a href="javascript:void(0);">다음</a></p>
+                        <div id="MainRollingDiv" class="MaintabList">
+                            <div class="Maintab">
+                                @foreach($data['arr_main_banner']['메인_빅배너'] as $row)
+                                    <span><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{{ $row['BannerName'] }}</a></span>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
 
@@ -106,6 +119,30 @@
     <!-- End Container -->
 
     <script type="text/javascript">
+        $(function(){
+            var slidesImg = $(".MaintabSlider").bxSlider({
+                mode:'horizontal',
+                touchEnabled: false,
+                speed:400,
+                pause:5000,
+                sliderWidth:2000,
+                auto : true,
+                autoHover: true,
+                pagerCustom: '#MainRollingDiv',
+                controls:false,
+                onSliderLoad: function(){
+                    $("#MainRollingSlider").css("visibility", "visible").animate({opacity:1});
+                }
+            });
+            $("#imgBannerLeft").click(function (){
+                slidesImg.goToPrevSlide();
+            });
+
+            $("#imgBannerRight").click(function (){
+                slidesImg.goToNextSlide();
+            });
+        });
+
         $(function(){
             $('.mou ul').bxSlider({
                 speed:800,

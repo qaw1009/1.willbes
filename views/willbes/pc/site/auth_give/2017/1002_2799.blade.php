@@ -108,9 +108,9 @@
                 </div>
                 <ul>
                     <li><label><input type="checkbox" name="app_prod_code[]" value="{{$list_product[2]['ProdCode']}}" id="{{$list_product[2]['GroupNum'].'-'.$list_product[2]['ProdCode']}}">
-                            국어교육의 이해 <span>[{{ $list_product[2]['wUnitLectureCnt'] }}강]</span></label></li>
+                            학교문법의 이해(현대국어 체계)<span>[{{ $list_product[2]['wUnitLectureCnt'] }}강]</span></label></li>
                     <li><label><input type="checkbox" name="app_prod_code[]" value="{{$list_product[3]['ProdCode']}}" id="{{$list_product[3]['GroupNum'].'-'.$list_product[3]['ProdCode']}}">
-                            학교문법의 이해(현대국어 체계) <span>[{{ $list_product[3]['wUnitLectureCnt'] }}강]</span></label></li>
+                            국어교육의 이해 <span>[{{ $list_product[3]['wUnitLectureCnt'] }}강]</span></label></li>
                     <li><label><input type="checkbox" name="app_prod_code[]" value="{{$list_product[4]['ProdCode']}}" id="{{$list_product[4]['GroupNum'].'-'.$list_product[4]['ProdCode']}}">
                             문학교육의 이해(현대시) <span>[{{ $list_product[4]['wUnitLectureCnt'] }}강]</span></label></li>
                 </ul>

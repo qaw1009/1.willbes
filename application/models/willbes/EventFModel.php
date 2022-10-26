@@ -1955,7 +1955,7 @@ class EventFModel extends WB_Model
      */
     public function getProductOnLecture($arr_prod_idx){
         $column = "
-            ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData, 
+            ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriodCcd, StudyEndDate, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData, 
             IsCart, ProfNickName, SubjectName, wLectureProgressCcd, wLectureProgressCcdName, wUnitLectureCnt, wScheduleCount, ProdBookData, LectureSampleData, ProfReferData, LecTypeCcd
         ";
 
@@ -1994,7 +1994,7 @@ class EventFModel extends WB_Model
      */
     public function getProductAdminpackLecture($arr_prod_idx){
         $column = " 
-            ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData,
+            ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriodCcd, StudyEndDate, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData,
             StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
         ";
 
@@ -2031,7 +2031,7 @@ class EventFModel extends WB_Model
      */
     public function getProductPeriodpacklecture($arr_prod_idx){
         $column = "
-            ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData, 
+            ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriodCcd, StudyEndDate, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData, 
             StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
         ";
 

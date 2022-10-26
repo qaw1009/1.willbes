@@ -39,7 +39,7 @@
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>강의수 : <span class="tx-blue">{{ $row['wUnitLectureCnt'] }}강@if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif</span></dt>
                                                 <dt><span class="row-line">|</span></dt>
-                                                <dt>수강기간 : <span class="tx-blue">{{ $row['StudyPeriod'] }}일</span></dt>
+                                                <dt>수강기간 : <span class="tx-blue">{{ $row['StudyPeriodCcd'] == '616002' ? $row['StudyEndDate'] . ' 까지' : $row['StudyPeriod'] . '일' }}</span></dt>
                                             </dl>
                                             <dl class="w-info mt10">
                                                 <dt class="NSK">
@@ -164,7 +164,8 @@
                                                 <a href="{{ site_url('/package/show/cate/').$__cfg['CateCode'].'/pack/'.$row['PackTypeCcd'].'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
                                             </div>
                                             <dl class="w-info">
-                                                <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDateYM']}}</span> <span class="row-line">|</span>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
+                                                <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDateYM']}}</span> <span class="row-line">|</span>
+                                                    수강기간 : <span class="tx-blue">{{ $row['StudyPeriodCcd'] == '616002' ? $row['StudyEndDate'] . ' 까지' : $row['StudyPeriod'] . '일' }}</span></dt>
                                                 <dt class="NSK">
                                                     <span class="nBox n1">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                                 </dt>
@@ -205,7 +206,8 @@
                                                     <a href="{{ site_url('/periodPackage/show/cate/').$__cfg['CateCode'].'/pack/'.$row['PackTypeCcd'].'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
                                                 </div>
                                                 <dl class="w-info">
-                                                    <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDateYM']}}</span> <span class="row-line">|</span>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
+                                                    <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDateYM']}}</span> <span class="row-line">|</span>
+                                                        수강기간 : <span class="tx-blue">{{ $row['StudyPeriodCcd'] == '616002' ? $row['StudyEndDate'] . ' 까지' : $row['StudyPeriod'] . '일' }}</span></dt>
                                                     <dt class="NSK">
                                                         <span class="nBox n1">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                                     </dt>

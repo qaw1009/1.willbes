@@ -21,7 +21,7 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/10/2807_top_bg.jpg) no-repeat center top;}
 
-        .evt01 {background:#D8D4D5;}
+        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/10/2807_01_bg.jpg) no-repeat center top;}
 
         /*선착순 이벤트*/
         .evt04 {background:#F5F5F5;}
@@ -48,7 +48,11 @@
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/10/2807_01.jpg" title="스페셜 이벤트">            
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/10/2807_01.jpg" title="스페셜 이벤트">
+                <a href="#comment" title="사전질문 하러가기" style="position: absolute;left: 19.05%;top: 72.87%;width: 25.11%;height: 7.72%;z-index: 2;"></a>
+                <a href="#first_come" title="선착순 50명 클릭" style="position: absolute;left: 59.15%;top: 72.87%;width: 25.11%;height: 7.72%;z-index: 2;"></a>
+            </div>
         </div>   
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">
@@ -82,7 +86,7 @@
                 @endif
             @endforeach
 
-            <div class="evtCtnsBox evt04" data-aos="fade-up">
+            <div class="evtCtnsBox evt04" data-aos="fade-up" id="first_come">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2022/10/2807_04.jpg" alt="무료증정 이벤트"/>
                     <div class="attend {{time() .' '. strtotime($row['ApplyEndDatm'])}}" data-aos="fade-right">

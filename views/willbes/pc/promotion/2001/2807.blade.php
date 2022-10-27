@@ -25,7 +25,7 @@
 
         /*선착순 이벤트*/
         .evt04 {background:#F5F5F5;}
-        .evt04 .attend {position:absolute; bottom:475px; left:50%; width:850px; margin-left:-425px; z-index:1; display: flex; justify-content: space-between; flex-wrap: wrap;}
+        .evt04 .attend {position:absolute; bottom:475px; left:50%; width:850px; margin-left:-425px; z-index:1; display: flex; justify-content: space-evenly; flex-wrap: wrap;}
         .evt04 .attend span {background:url(https://static.willbes.net/public/images/promotion/2022/10/2807_as.png) no-repeat center top; width:176px; height:176px;
         font-size:18px; padding-top:30px; font-family: Impact,  "Noto Sans KR Regular", Haettenschweiler, 'Arial Narrow Bold', sans-serif; color:#425A94; margin-bottom:10px}
         .evt04 .attend span.end {background-image:url(https://static.willbes.net/public/images/promotion/2022/10/2807_as_off.png); font-size:0;}
@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox evt03" data-aos="fade-up" id="comment">
+        <div class="evtCtnsBox evt03 pb100" data-aos="fade-up" id="comment">
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2807_03.jpg" title="q&a">
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

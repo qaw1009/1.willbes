@@ -133,7 +133,7 @@
     <script type="text/javascript">
         // 무료 당첨
         function fn_add_apply_submit() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
             var $add_apply_form = $('#add_apply_form');
             var _url = '{!! front_url('/event/addApplyStore') !!}';
 
@@ -160,7 +160,7 @@
                 ['이미 신청하셨습니다.','이미 당첨되셨습니다.'],
                 ['신청 되었습니다.','당첨을 축하합니다. 장바구니를 확인해 주세요.'],
                 //['이벤트 신청후 이용 가능합니다.','봉투모의고사 신청후 이용 가능합니다.'],
-                ['마감되었습니다.','내일 20시에 다시 도전해 주세요.']
+                ['마감되었습니다.','내일 21시에 다시 도전해 주세요.']
             ];
             for (var i = 0; i < arr_apply_msg.length; i++) {
                 if(arr_apply_msg[i][0] == ret_msg) {

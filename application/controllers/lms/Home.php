@@ -99,9 +99,9 @@ class Home extends \app\controllers\BaseController
         $today_his = date('His');
         $result = true;
 
-        // 작업스케줄러 실행 (시스템관리자 and 8 ~ 10시 사이)
+        // 작업스케줄러 실행 (시스템관리자 and 8 ~ 10시 30분 사이)
         if (is_sys_admin() === true) {
-            if ($today_his > '080000' && $today_his < '100000') {
+            if ($today_his > '080000' && $today_his < '103000') {
                 $run_result = $this->cronModel->runScheduler();
                 if ($run_result === null) {
                     $succ_msg = '모든 작업이 이미 실행되었습니다.';

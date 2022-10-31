@@ -9,6 +9,8 @@
     .evtCtnsBox img {max-width:100%;}
     /*.evtCtnsBox a {border:1px solid #000}*/
 
+    .wb_cts05 {background:#E1E9FF;padding-bottom:50px;}
+
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
         
@@ -52,7 +54,7 @@
         <img src="https://static.willbes.net/public/images/promotion/2022/10/2808m_05_cycle.jpg" alt="순환별 커리큘럼" >           
     </div>
 
-    <div class="evtCtnsBox" data-aos="fade-up">        
+    <div class="evtCtnsBox wb_cts05" data-aos="fade-up">        
         <img src="https://static.willbes.net/public/images/promotion/2022/10/2808m_05s.jpg" alt="학습효과 극대화" >           
     </div>
 

@@ -1,9 +1,118 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+
+
+<link href="/public/vendor/starplayer/css/starplayer.css?token={{time()}}" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/public/vendor/starplayer/js/hls.js?token={{time()}}"></script>
+<script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_config_live.js?token={{time()}}"></script>
+<script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_live.js?token={{time()}}"></script>
+<script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_ui_live.js?token={{time()}}"></script>
+<script type="text/javascript" src="/public/js/willbes/player_live.js?token={{time()}}"></script>
 <!-- Container -->
 <div id="Container" class="subContainer widthAuto">
     <div class="mt40">
+        <div id="videoPopup" class="videoPopup">
+            <div class="view p_re">                
+                <div class="viewList">
+                    <span class="Tit NGR"><span class="NG">1회 10강 </span>1월 18일 : Unit 05. 5형식 문형: S + V + O + O·C [불완전타동사] p100~102</span>
+                    <ul class="btnList">
+                        <li class="lecCtr"><a href="#none" class="pre noLec">이전 강의</a><a href="#none" class="next">다음 강의</a></li>
+                        <li><a class="iconBtn btnSetting" href="#none" onclick="openWin('settingPOP')">버튼 설정</a></li>
+                        <li><span class="btnFAQ"><a href="#none">동영상 FAQ</a></span></li>
+                    </ul>
+                </div>
+                <div id="settingPOP" class="settingPOP">
+                    <img src="{{ img_url('player/player_keyH.png') }}" usemap="#player_key" style="border: 0;"> 
+                    <map name="player_key">
+                        <area shape="rect" coords="930,10,960,36" href="#none" onclick="closeWin('settingPOP')" target="" alt="" onfocus="blur();" />
+                    </map>
+                </div>   
+                <div id="player-container">
+                    <div id="video-container">
+                        <video id="starplayer" style="width:640px" preload="" src="https://static.willbes.net/public/images/njob/promotion/2021/12/1034_video_01.mp4"></video> 
+                    </div>
+                    <div id="controller-container2" class="starplayer_script_ui">
+                        <div class="top_area">
+                            <div class="seekbar_l">
+                                <div class="currentbar"></div>
+                                <div class="repeatbar"></div>
+                                <div class="seekbar_area">
+                                    <a class="btn_common btn_seek"></a>
+                                    <a class="btn_common btn_repeatA"></a>
+                                    <a class="btn_common btn_repeatB"></a>
+                                </div>
+                            </div>
+                            <div class="seekbar_r">
+                                <a class="btn_common btn_repeat"></a>
+                                <a class="btn_common btn_fullscreen"></a>
+                                <a class="btn_common btn_mute"></a>
+                                <div class="volumebar">
+                                    <div class="current_volumebar"></div>
+                                    <div class="volumebar_area">
+                                        <a class="btn_common btn_volume"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bottom_area">
+                            <div class="control_l">
+                                <div class="basic_controls">
+                                    <a class="btn_common btn_play"></a>
+                                    <a class="btn_common btn_stop"></a>
+                                    <a class="btn_common btn_backward"></a>
+                                    <a class="btn_common btn_forward"></a>
+                                </div>
+                                <div class="control_text_status">준비</div>
+                                <div class="control_text_time"><span id="text_currentTime">00:00:00</span> / <span id="text_duration">00:00:00</span></div>
+                            </div>
+                            <div class="control_r">
+                                {{--
+                                <ul class="speed_controls">
+                                    <li><a class="btn_common btn_speed06"></a></li>
+                                    <li><a class="btn_common btn_speed08"></a></li>
+                                    <li><a class="btn_common btn_speed10"></a></li>
+                                    <li><a class="btn_common btn_speed12"></a></li>
+                                    <li><a class="btn_common btn_speed14"></a></li>
+                                    <li><a class="btn_common btn_speed16"></a></li>
+                                    <li><a class="btn_common btn_speed18"></a></li>
+                                    <li><a class="btn_common btn_speed20"></a></li>
+                                </ul>
+                                --}}
+                                <div class="speed_controls_num">
+                                    <div class="speed_controls_btn">
+                                        <a href="#">-</a>
+                                        <a href="#">1.0</a>
+                                        <a href="#">+</a>
+                                    </div>
+                                    <div class="speed_controls_pop">
+                                        <a href="#">0.6</a>
+                                        <a href="#">0.7</a>
+                                        <a href="#">0.8</a>
+                                        <a href="#">0.9</a>
+                                        <a href="#">1.0</a>
+                                        <a href="#">1.0</a>
+                                        <a href="#">1.2</a>
+                                        <a href="#">1.3</a>
+                                        <a href="#">1.4</a>
+                                        <a href="#">1.5</a>
+                                        <a href="#">1.6</a>
+                                        <a href="#">1.7</a>
+                                        <a href="#">1.8</a>
+                                        <a href="#">1.9</a>
+                                        <a href="#">2.0</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+            <iframe frameborder="0" scrolling="no" width="400px" height="100%" onload="resizeIframe(this)" src="{{ site_url('/home/html/test_video_iframe') }}"></iframe>
+        </div>
+
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
         <div>iFrame버젼</div>
         <!-- iFrame Ver -->
         <div id="videoPopup" class="videoPopup">
@@ -179,6 +288,14 @@
         <br/><br/>      
         <div id="videoPopup" class="videoPopup">      
             <div class="view p_re">
+                <div class="viewList">
+                    <span class="Tit NGR"><span class="NG">1회 10강 </span>1월 18일 : Unit 05. 5형식 문형: S + V + O + O·C [불완전타동사] p100~102</span>
+                    <ul class="btnList">
+                        <li class="lecCtr"><a href="#none" class="pre noLec">이전 강의</a><a href="#none" class="next">다음 강의</a></li>
+                        <li><a class="iconBtn btnSetting" href="#none" onclick="openWin('settingPOP')">버튼 설정</a></li>
+                        <li><span class="btnFAQ"><a href="#none">동영상 FAQ</a></span></li>
+                    </ul>
+                </div>
                 <span class="tx-white">video Player</span>
             </div>    
             <div class="vodTabs p_re">

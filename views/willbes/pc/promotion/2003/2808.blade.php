@@ -4,21 +4,19 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
-            background:#ccc;
-            margin-top:20px !important;
+            max-width:2000px !important;
+            margin:20px auto 0;
             padding:0 !important;
-            background:#fff;
+            background:#fff;     
+            font-size:14px;       
         }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position: relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
@@ -81,9 +79,9 @@
         
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
 
-        <div class="evtCtnsBox wb_top" data-aos="fade-down">            
+        <div class="evtCtnsBox wb_top" data-aos="fade-up">            
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2808_top.jpg" alt="개편된 시험 제도" />            
         </div>
 
@@ -92,10 +90,10 @@
         </div>
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
-            <div class="Wrap">
+            <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/10/2808_02.jpg" alt="gs-1순환"/>
-                <a href="javascript:alert('Coming Soon!')" title="gs1 순환" style="position: absolute;left: 11.63%;top: 88.95%;width: 36.98%;height: 5.06%;z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!')" title="2차 올패스" style="position: absolute;left: 51.23%;top: 88.95%;width: 36.98%;height: 5.06%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3143&search_text=UHJvZE5hbWU6MeyInO2ZmA%3D%3D" target="_blank" title="gs1 순환" style="position: absolute; left: 0%; top: 88.65%; width: 49.02%; height: 5.59%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offPackage/show/prod-code/202350" target="_blank" title="2차 올패스" style="position: absolute; left: 50.98%; top: 88.71%; width: 49.02%; height: 5.59%;  z-index: 2;"></a>
             </div>
         </div>
 
@@ -110,25 +108,25 @@
                 <div id="tab01">
                     <div class="wrap">
                         <img src="https://static.willbes.net/public/images/promotion/2022/10/2808_03_01.jpg" alt="헌법 선동주">
-                        <a href="javascript:alert('Coming Soon!')" title="헌법 선동주" style="position: absolute;left: 38.23%;top: 75.95%;width: 51.48%;height: 13.46%;z-index: 2;"></a>
+                        <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/202356" target="_blank" title="헌법 선동주" style="position: absolute;left: 38.23%;top: 75.95%;width: 51.48%;height: 13.46%;z-index: 2;"></a>
                     </div>
                 </div>
                 <div id="tab02">
                     <div class="wrap">
                         <img src="https://static.willbes.net/public/images/promotion/2022/10/2808_03_02.jpg" alt="행정법 이승민">
-                        <a href="javascript:alert('Coming Soon!')" title="행정법 이승민" style="position: absolute;left: 38.23%;top: 75.95%;width: 51.48%;height: 13.46%;z-index: 2;"></a>
+                        <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/202359" target="_blank" title="행정법 이승민" style="position: absolute;left: 38.23%;top: 75.95%;width: 51.48%;height: 13.46%;z-index: 2;"></a>
                     </div>    
                 </div>
                 <div id="tab03">
                     <div class="wrap">
                         <img src="https://static.willbes.net/public/images/promotion/2022/10/2808_03_03.jpg" alt="행정학 김철">
-                        <a href="javascript:alert('Coming Soon!')" title="행정학 김철" style="position: absolute;left: 38.23%;top: 75.95%;width: 51.48%;height: 13.46%;z-index: 2;"></a>
+                        <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/202358" target="_blank" title="행정학 김철" style="position: absolute;left: 38.23%;top: 75.95%;width: 51.48%;height: 13.46%;z-index: 2;"></a>
                     </div>     
                 </div>
                 <div id="tab04">
                     <div class="wrap">
                         <img src="https://static.willbes.net/public/images/promotion/2022/10/2808_03_04.jpg" alt="경제학 박태천">
-                        <a href="javascript:alert('Coming Soon!')" title="경제학 박태천" style="position: absolute;left: 38.23%;top: 75.95%;width: 51.48%;height: 13.46%;z-index: 2;"></a>
+                        <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/202357" target="_blank" title="경제학 박태천" style="position: absolute;left: 38.23%;top: 75.95%;width: 51.48%;height: 13.46%;z-index: 2;"></a>
                     </div>    
                 </div>
             </div> 
@@ -189,18 +187,9 @@
 
    <!-- End Container -->
 
-    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
-    <script src="/public/js/willbes/dist/aos.js"></script>
-    <script>
-        $(document).ready( function() {
-        AOS.init();
-        });
-    </script>
-
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script>
-
-     /*레이어팝업*/     
+     /*레이어팝업*/   
 
      function go_popup1() {
             $('#popup1').bPopup();
@@ -260,6 +249,14 @@
             });
         });        
 
+    </script>
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+        $(document).ready( function() {
+        AOS.init();
+        });
     </script>
     
 @stop

@@ -7,6 +7,9 @@
     .evtCtnsBox img {width:100%; max-width:720px;} 
 
     /************************************************************/
+
+    .evt_02 .title {font-size:25px; margin-bottom:20px; text-align:center; color:#7d3bb0;}
+
     .evtInfo {padding:60px 20px; background:#333; color:#fff; font-size:14px; margin-top:50px}
     .evtInfoBox {text-align:left; line-height:1.4}
     .evtInfoBox h4 {font-size:30px; margin-bottom:40px}
@@ -22,8 +25,9 @@
         <div class="evtCtnsBox" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2413m_top.jpg" alt="psat 합격을 예측하다">
         </div>
-        <div class="evtCtnsBox" data-aos="fade-up">
+        <div class="evtCtnsBox evt_02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2021/11/2413m_01.jpg" alt="이벤트">
+            <div class="title NSK-Black">5급행정/국립외교원</div>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
             @endif 
@@ -35,7 +39,7 @@
                 <h4 class="NSK-Black">윌비스 한림법학원 <strong>5급행정/국립외교원대비 GS2순환 합격</strong> 이벤트 안내</h4>
                 <div class="infoTit"><strong>이벤트 내용</strong></div>
                 <ul>
-                    <li>2021년 11월 11일부터 진행되는 GS2순환 강의 자유 선택<br>
+                    <li>2022년 10월 31일부터 진행되는 GS2순환 강의 자유 선택<br>
                     - 2과목결제 : 10%할인<br>
                     - 3과목결제 : 15%할인<br>
                     - 4과목결제 : 25%할인</li> 

@@ -66,15 +66,10 @@
         </div>   
 
         <div class="evtCtnsBox evt_02" id="lecwrap">
-            <div class="title NSK-Black">5급행정</div>
+            <div class="title NSK-Black">5급행정/국립외교원</div>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-            @endif 
-
-            <div class="title NSK-Black mt50">국립외교원</div>
-            @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
-            @endif 
+            @endif                       
         </div>       
         
         <div class="evtCtnsBox evtInfo">
@@ -82,7 +77,7 @@
                 <h4 class="NSK-Black">윌비스 한림법학원 <strong>5급행정/국립외교원대비 GS2순환 합격</strong> 이벤트 안내</h4>
                 <div class="infoTit"><strong>이벤트 내용</strong></div>
                 <ul>
-                    <li>2021년 11월 11일부터 진행되는 GS2순환 강의 자유 선택<br>
+                    <li>2022년 10월 31일부터 진행되는 GS2순환 강의 자유 선택<br>
                     - 2과목결제 : 10%할인<br>
                     - 3과목결제 : 15%할인<br>
                     - 4과목결제 : 25%할인</li> 

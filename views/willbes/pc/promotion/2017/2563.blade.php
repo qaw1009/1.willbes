@@ -58,8 +58,8 @@
                     <iframe src="https://www.youtube.com/embed/nXC4KosrbmQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
                 <li>
-                    <div><span>장영희 전공중국어 </span>강의 미리보기</div>
-                    <iframe src="https://www.youtube.com/embed/ceCi_5BpYNU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div><span>최종 모의고사 & 2차반 </span>설명회</div>
+                    <iframe src="https://www.youtube.com/embed/C7Fe_Yu_0tw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
             </ul>            
         </div>

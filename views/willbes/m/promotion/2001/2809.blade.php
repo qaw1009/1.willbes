@@ -4,12 +4,12 @@
 <!-- Container -->
 
 <style type="text/css">
-    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:1rem; line-height:1.4; clear:both}
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:1.4vh; line-height:1.4; clear:both}
     .evtCtnsBox img {width:100%; max-width:720px;}
     .evtCtnsBox .wrap {position:relative}
-    .evtCtnsBox a {border:1px solid #000}
+    /*.evtCtnsBox a {border:1px solid #000}*/
 
-    .evt02 {background:#0b3130; padding-bottom:8rem}
+    .evt02 {background:#0b3130; padding-bottom:8vh}
     .slide_con {padding:0 30px 30px}
     .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0}
     .slide_con .bx-wrapper .bx-pager {
@@ -37,21 +37,20 @@
     }
 
     .evt05 {background:#ececec; padding-bottom:50px}
-    .evt05 .lecbuy {display:flex; justify-content:center; flex-wrap: wrap; margin:0 2rem}
+    .evt05 .lecbuy {display:flex; justify-content:center; flex-wrap: wrap; margin:0 2vh}
     .evt05 .lecbuy a {width:50%; margin-bottom:20px; position: relative;}
-    .evt05 .lecbuy a span {position: absolute; bottom:1.3rem; left:50%; width:70%; display:block; background:#000; color:#fff; font-size:1.4rem; padding:1rem; margin-left:-35%; border-radius:2rem}
     .evt05 .lecbuy a img {max-width:317px;}
-    .evt05 .check {font-size:1.2rem; text-align:center; line-height:1.4;margin-top:40px;font-weight:bold;}
+    .evt05 .check {font-size:1.6vh; text-align:center; line-height:1.4;margin-top:40px;font-weight:bold;}
     .evt05 .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
-    .evt05 .check a {display:block; padding:5px 0; color:#fff; background:#000; width:60%; margin:20px auto 0; border-radius:20px}
+    .evt05 .check a {display:block; padding:5px 0; color:#fff; background:#000; width:60%; margin:20px auto 0; border-radius:20px; font-size:1.8vh;}
     .evt05 .check a:hover {color:#333; background:#35fffa;}
-    .evt05 .info {margin:20px auto 50px; padding:10px;line-height:1.4; font-size:1rem; font-weight:bold;}
+    .evt05 .info {margin:20px auto 50px; padding:10px;line-height:1.4; font-size:1.6vh; font-weight:bold;}
 
 
-    .evtInfo {padding:40px 20px; background:#333; color:#fff;}
+    .evtInfo {padding:40px 20px; background:#333; color:#fff; font-size:1.6vh;}
     .evtInfoBox { text-align:left;}
-    .evtInfoBox h4 {font-size:1.5rem; margin-bottom:30px}
-    .evtInfoBox .infoTit {font-size:1.3rem; margin-bottom:20px; color:#ffe56e}
+    .evtInfoBox h4 {font-size:2vh; margin-bottom:30px}
+    .evtInfoBox .infoTit {font-size:1.8vh; margin-bottom:20px; color:#ffe56e}
     .evtInfoBox ul {margin-bottom:30px}
     .evtInfoBox ul li {list-style-type: disc; margin-left:20px; margin-bottom:10px;}
 
@@ -113,10 +112,10 @@
     <div class="evtCtnsBox evt05" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05.jpg" alt="2022 해양경찰 채용" >
         <div class="lecbuy">
-            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187597);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_01.png" alt="스폐셜 01" ><span>신청하기</span></a>
-            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187598);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_02.png" alt="스폐셜 02" ><span>신청하기</span></a>
-            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187599);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_03.png" alt="스폐셜 03" ><span>신청하기</span></a>
-            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 190512);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_04.png" alt="스폐셜 04" ><span>신청하기</span></a>
+            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187597);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_01.png" alt="스폐셜 01" ></a>
+            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187598);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_02.png" alt="스폐셜 02" ></a>
+            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187599);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_03.png" alt="스폐셜 03" ></a>
+            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 190512);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_04.png" alt="스폐셜 04" ></a>
         </div>
         <div class="check">
             <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 합격PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>

@@ -93,8 +93,8 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
-            <a href="#evt06"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809_sky01.png" alt="합격패스"/></a> 
-            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809_sky02.png" alt="할인쿠폰"/></a>                       
+            <a href="#pass"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809_sky01.png" alt="합격패스"/></a> 
+            <a href="#evt06"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809_sky02.png" alt="할인쿠폰"/></a>                       
         </div>     
 
         <div class="evtCtnsBox evt_top" data-aos="fade-up">
@@ -185,9 +185,9 @@
             </div>  
         </div>
 
-        <div class="evtCtnsBox evt_06" id="evt06" data-aos="fade-up">
+        <div class="evtCtnsBox evt_06" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2809_06_01.jpg"  alt="합격패스 런칭 이벤트" />
-            <div class="wrap">
+            <div class="wrap" id="evt06">
                 <img src="https://static.willbes.net/public/images/promotion/2022/11/2809_06_02.jpg"  alt="합격패스 런칭 이벤트" />
                 <a href="javascript:void(0);" onclick="giveCheck();" title="할인쿠폰받기" style="position: absolute; left: 23.04%; top: 81.83%; width: 53.75%; height: 8.14%; z-index: 2;"></a>
             </div> 

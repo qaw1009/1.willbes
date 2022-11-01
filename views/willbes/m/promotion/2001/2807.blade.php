@@ -18,7 +18,7 @@
     .evt04 div table th,
     .evt04 div table td {padding:10px 3px; border-bottom:1px solid #fff; border-right:1px solid #fff; text-align: center; font-weight: 600; font-size:20px}
     .evt04 div table th {background: #252525; color:#fff;}
-    .evt04 div table td {font-size:18px; color:#fff;}
+    .evt04 div table td {font-size:17px; color:#fff;}
     .evt04 div table td div {position:relative}
     .evt04 div table td span {position:absolute; width:100%; top:0; left:0; z-index:5}
     .evt04 div table td span.first_come {position:absolute;width:100%;left:48%;margin-left:-59px;margin-top:-59px;}

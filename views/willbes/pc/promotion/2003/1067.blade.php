@@ -4,19 +4,22 @@
 @include('willbes.pc.layouts.partial.site_menu')
 <!-- Container -->
 <style type="text/css">
-    .subContainer {
-        min-height: auto !important;
-        margin-bottom:0 !important;
-    }
     .evtContent {
-        width:100% !important;
+        width:100%;
         min-width:1120px !important;
-        margin-top:20px !important;
+        max-width:2000px !important;
+        margin:20px auto 0;
         padding:0 !important;
-        background:#fff;
+        background:#fff;     
+        font-size:14px;       
+        line-height:1.3;
     }
-    .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
-    /************************************************************/
+    .evtContent span {vertical-align:top}
+    .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+    .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+    /*.evtCtnsBox .wrap a {border:1px solid #000} */
+
+    
     .wb_top {background:#1e1e1e url(https://static.willbes.net/public/images/promotion/2019/05/1067_top_bg.jpg) no-repeat center top; position:relative; }
     .wb_cts01 {background:#fff;}
     .wb_cts01 .youtube {width:800px; margin:50px auto 0}
@@ -70,12 +73,12 @@
         @if (empty($arr_base['register_member_list']) === false)
             @if ($arr_base['register_list'][0]['PersonLimit'] <= $arr_base['register_member_list'][$arr_base['register_list'][0]['ErIdx']]['mem_cnt'])
                 {{--선착순 20명 마감되었을때 보여지는 이미지와 문구--}}
-                <img src="https://static.willbes.net/public/images/promotion/2019/12/1067_04_end.jpg" title="선찬순 20명 마감되었습니다." usemap="#Map1067" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/11/1067_04_end.jpg" title="선찬순 20명 마감되었습니다." usemap="#Map1067" />
                 <map name="Map1067" id="Map1067">
                     <area shape="rect" coords="619,672,893,775" href="#none" onclick="javascript:alert('선착순 20명 마감되었습니다.');" />
                 </map>
             @else
-                <img src="https://static.willbes.net/public/images/promotion/2019/12/1067_04.jpg" title="예약 접수" usemap="#Map1067" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/11/1067_04.jpg" title="예약 접수" usemap="#Map1067" />
                 <map name="Map1067" id="Map1067">
                     <area shape="rect" coords="619,672,893,775" href="#none" onclick="{{ $goSubmit }}" />
                 </map>

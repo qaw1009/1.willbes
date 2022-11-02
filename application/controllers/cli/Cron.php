@@ -32,7 +32,7 @@ class Cron extends \app\controllers\BaseController
         $scheduler = new crontask\Scheduler();
 
         $scheduler->addTasks([
-            (new crontask\tasks\EduIfSalesMstTask())->setExpression('10 2 * * *')   // 매일 2시 10분 실행
+            (new crontask\tasks\EduIfSalesMstTask())->setExpression('10 1 * * *')   // 매일 1시 10분 실행
             /* 사용안함
             , (new crontask\tasks\SampleTask())->setExpression('10 0 * * *')                // 매일 0시 10분 실행
             , (new crontask\tasks\MemberPointExpireTask())->setExpression('10 0 * * *')     // 매일 0시 10분 실행

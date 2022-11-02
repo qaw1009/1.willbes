@@ -8,7 +8,7 @@
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both}
     .evtCtnsBox img {max-width:100%;}
     .evtCtnsBox .wrap {position:relative}
-    /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+    .evtCtnsBox .wrap a {border:1px solid #000}
     .evt03 {background:#010E2D}
     .evt03 div {padding:2% 5% 10%;}
 
@@ -17,7 +17,10 @@
 <div id="Container" class="Container NSK c_both">
 
     <div class="evtCtnsBox" data-aos="fade-down">
-        <img src="https://static.willbes.net/public/images/promotion/2022/10/2798m_top.jpg" alt="3~4순환 개강" />
+        <div class="wrap">
+            <img src="https://static.willbes.net/public/images/promotion/2022/10/2798m_top.jpg" alt="3~4순환 개강" />
+            <a href="https://pass.willbes.net/m/package/show/cate/3148/pack/648001/prod-code/202102" title="" style="position: absolute; left: 12.64%; top: 88.52%; width: 75%; height: 8.68%; z-index: 2;"></a>
+        </div>
     </div>
 
     <div class="evtCtnsBox" data-aos="fade-up">

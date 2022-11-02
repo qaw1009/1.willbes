@@ -34,7 +34,10 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox evt_top" data-aos="fade-down">
+            <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2798_top.jpg" alt="3~4순환 개강"/>
+            <a href="https://pass.willbes.net/package/show/cate/3148/pack/648001/prod-code/202102" title="" style="position: absolute; left: 25.71%; top: 87.42%; width: 48.21%; height: 7.55%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">

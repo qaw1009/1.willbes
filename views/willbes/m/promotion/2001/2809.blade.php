@@ -112,10 +112,10 @@
     <div class="evtCtnsBox evt05" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05.jpg" alt="2022 해양경찰 채용" >
         <div class="lecbuy">
-            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187597);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_01.png" alt="스폐셜 01" ></a>
-            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187598);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_02.png" alt="스폐셜 02" ></a>
-            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 187599);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_03.png" alt="스폐셜 03" ></a>
-            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 190512);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_04.png" alt="스폐셜 04" ></a>
+            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 202218);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_01.png" alt="스폐셜 01" ></a>
+            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 202213);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_02.png" alt="스폐셜 02" ></a>
+            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 202202);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_03.png" alt="스폐셜 03" ></a>
+            <a href="javascript:void(0);" onclick="go_PassLecture(3007, 202219);"><img src="https://static.willbes.net/public/images/promotion/2022/11/2809m_05_04.png" alt="스폐셜 04" ></a>
         </div>
         <div class="check">
             <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 합격PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>

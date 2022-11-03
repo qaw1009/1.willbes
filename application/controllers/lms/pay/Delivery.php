@@ -159,30 +159,49 @@ class Delivery extends BaseOrder
         }
 
         // 날짜 검색
-        $search_start_hour = get_var($this->_reqP('search_start_hour'), '00');
-        $search_end_hour = get_var($this->_reqP('search_end_hour'), '23');
-        $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-01')) . ' ' . $search_start_hour . ':00:00';
-        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-t')) . ' ' . $search_end_hour . ':59:59';
+        $search_start_datm = get_var($this->_reqP('search_start_date'), date('Y-m-01')) . ' ' . get_var($this->_reqP('search_start_hour'), '00') . ':00:00';
+        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-t'));
+        $search_end_hour = get_var($this->_reqP('search_end_hour'), '24');
+        $search_end_datm = $this->_getSearchEndDatm($search_end_date, $search_end_hour);
 
         switch ($this->_reqP('search_date_type')) {
             case 'invoice' :
-                $arr_condition['BET'] = ['OPD.InvoiceRegDatm' => [$search_start_date, $search_end_date]];
+                $search_date_column = 'OPD.InvoiceRegDatm';
                 break;
             case 'complete' :
-                $arr_condition['BET'] = ['OPD.DeliverySendDatm' => [$search_start_date, $search_end_date]];
+                $search_date_column = 'OPD.DeliverySendDatm';
                 break;
             case 'cancel' :
-                $arr_condition['BET'] = ['OPD.StatusUpdDatm' => [$search_start_date, $search_end_date]];
+                $search_date_column = 'OPD.StatusUpdDatm';
                 break;
             case 'refund' :
-                $arr_condition['BET'] = ['OPR.RefundDatm' => [$search_start_date, $search_end_date]];
+                $search_date_column = 'OPR.RefundDatm';
                 break;
             default :
-                $arr_condition['BET'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
+                $search_date_column = 'O.CompleteDatm';
                 break;
         }
 
+        $arr_condition['GTE'][$search_date_column] = $search_start_datm;
+        $arr_condition['LT'][$search_date_column] = $search_end_datm;
+
         return $arr_condition;
+    }
+
+    /**
+     * 조회종료일자 리턴 (해당날짜 24시일 경우 익일 0시로 변경)
+     * @param string $date [날짜]
+     * @param int $hour [시간 (00 ~ 24)]
+     * @return string
+     */
+    private function _getSearchEndDatm($date, $hour)
+    {
+        if ($hour == '24') {
+            $date = date_compute($date, '1 day', 'Y-m-d');
+            $hour = '00';
+        }
+
+        return $date . ' ' . $hour . ':00:00';
     }
 
     /**
@@ -447,7 +466,7 @@ class Delivery extends BaseOrder
     }
 
     /**
-     * 배송요청 엑셀다운로드 (모아시스 신규 버전, 윌스토리제외, 2022-04-11 => 윌스토리 포함, 2022-11-01)
+     * 배송요청 엑셀다운로드 (모아시스 신규 버전, 윌스토리제외, 2022-04-11 => 윌스토리 포함, 2022-11-01 => 윌스토리제외, 2022-11-03)
      */
     public function targetExcelNew()
     {
@@ -463,10 +482,10 @@ class Delivery extends BaseOrder
         }
 
         $search_start_datm = $search_start_date . ' ' . $search_start_hour . ':00:00';
-        $search_end_datm = $search_end_date . ' ' . $search_end_hour . ':59:59';
+        $search_end_datm = $this->_getSearchEndDatm($search_end_date, $search_end_hour);
 
         // 데이터 구분 (all, no-willstory)
-        $data = $this->deliveryInfoModel->getDeliveryTargetOrderData($search_start_datm, $search_end_datm, $search_site_code);
+        $data = $this->deliveryInfoModel->getDeliveryTargetOrderData($search_start_datm, $search_end_datm, $search_site_code, 'no-willstory');
         if (empty($data) === true) {
             show_alert('데이터가 없습니다.', 'back');
         }
@@ -512,7 +531,7 @@ class Delivery extends BaseOrder
         }
 
         $search_start_datm = $search_start_date . ' ' . $search_start_hour . ':00:00';
-        $search_end_datm = $search_end_date . ' ' . $search_end_hour . ':59:59';
+        $search_end_datm = $this->_getSearchEndDatm($search_end_date, $search_end_hour);
 
         $data = $this->deliveryInfoModel->getDeliveryTargetOrderData($search_start_datm, $search_end_datm, $search_site_code);
         if (empty($data) === true) {
@@ -594,7 +613,7 @@ class Delivery extends BaseOrder
         }
 
         $search_start_datm = $search_start_date . ' ' . $search_start_hour . ':00:00';
-        $search_end_datm = $search_end_date . ' ' . $search_end_hour . ':59:59';
+        $search_end_datm = $this->_getSearchEndDatm($search_end_date, $search_end_hour);
 
         $data = $this->deliveryInfoModel->getDeliveryCNPlusOrderData($search_start_datm, $search_end_datm, $search_site_code, $data_type);
         if (empty($data) === true) {

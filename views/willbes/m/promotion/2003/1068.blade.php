@@ -87,13 +87,14 @@
     </div>
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2022/07/1068m_06.gif" alt="농촌지도사 이론 패키지" >
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/198483" target="_blank" title="기본/심화이론 패키지" style="position: absolute; left: 13.75%; top: 50.61%; width: 30.14%; height: 3.25%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/198575" target="_blank" title="7급 농업직 이론 패키지" style="position: absolute; left: 55.56%; top: 50.61%; width: 30.14%; height: 3.25%; z-index: 2;"></a>
-
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/199703" target="_blank" title="농촌지도사 이론 패키지" style="position: absolute; left: 13.89%; top: 87.74%; width: 30.14%; height: 3.25%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/199704" target="_blank" title="농촌지도사 이론 패키지 경기인천" style="position: absolute; left: 56.94%; top: 87.74%; width: 30.14%; height: 3.25%; z-index: 2;"></a>
-    </div>   
+        <img src="https://static.willbes.net/public/images/promotion/2022/11/1068m_06.gif" alt="농촌지도사 이론 패키지" >
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/198483" target="_blank" title="기본/심화이론 패키지" style="position: absolute;left: 13.99%;top: 38.29%;width: 30.14%;height: 2.75%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/198575" target="_blank" title="7급 농업직 이론 패키지" style="position: absolute;left: 55.55%;top: 38.29%;width: 30.14%;height: 2.75%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/202441" target="_blank" title="9급 농업직 이론" style="position: absolute;left: 13.99%;top: 64.79%;width: 30.14%;height: 2.75%;z-index: 2"></a>
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/202449" target="_blank" title="7급 농업직 이론" style="position: absolute;left: 57.05%;top: 64.79%;width: 30.14%;height: 2.75%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/199703" target="_blank" title="농촌지도사 이론 패키지" style="position: absolute;left: 13.99%;top: 91.79%;width: 30.14%;height: 2.75%;z-index: 2"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/199704" target="_blank" title="농촌지도사 이론 패키지 경기인천" style="position: absolute;left: 57.05%;top: 91.79%;width: 30.14%;height: 2.75%;z-index: 2;"></a>
+    </div>
 
     <div class="evtCtnsBox" data-aos="fade-up">
         <a href="https://pass.willbes.net/m/professor/show/cate/3028/prof-idx/50429/?subject_idx=1171" target="_blank">

@@ -318,7 +318,7 @@ class DeliveryInfoModel extends BaseOrderModel
                         on OP.ProdCode = PB.ProdCode
                     left join ' . $this->_table['product_freebie'] . ' as PF
                         on OP.ProdCode = PF.ProdCode and PF.wBookIdx IS NOT NULL
-                where O.CompleteDatm between ? and ?
+                where O.CompleteDatm >= ? and O.CompleteDatm < ?
                     and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
                     and OPD.DeliveryStatusCcd is null
                     ' . $where . '
@@ -332,7 +332,7 @@ class DeliveryInfoModel extends BaseOrderModel
                     on TA.OrderIdx = ODA.OrderIdx
                 inner join ' . $this->_table['bms_book'] . ' as WB
                     on TA.wBookIdx = WB.wBookIdx
-            where O.CompleteDatm between ? and ?
+            where O.CompleteDatm >= ? and O.CompleteDatm < ?
                 and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
                 and WB.wIsPreSale = "N"
                 ' . $where . '
@@ -385,7 +385,7 @@ class DeliveryInfoModel extends BaseOrderModel
                 INNER JOIN ' . $this->_table['order_delivery_address'] . ' AS ODA ON O.OrderIdx = ODA.OrderIdx
                 LEFT JOIN ' . $this->_table['product_book'] . ' AS PB ON OP.ProdCode = PB.ProdCode
                 LEFT JOIN ' . $this->_table['product_freebie'] . ' AS PF ON OP.ProdCode = PF.ProdCode AND PF.wBookIdx IS NOT NULL
-                WHERE O.CompleteDatm BETWEEN ? AND ?
+                WHERE O.CompleteDatm >= ? AND O.CompleteDatm < ?
                 AND OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
                 AND OPD.DeliveryStatusCcd IS NULL
                 ' . $where . '

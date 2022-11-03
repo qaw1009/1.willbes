@@ -106,10 +106,10 @@
                             <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off" title="조회종료일자">
                         </div>
                         <select class="form-control" id="search_end_hour" name="search_end_hour" title="조회종료시간" style="width: 60px;">
-                            @for($i = 0; $i <= 23; $i++)
-                                <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}" {{ $i == 23 ? 'selected="selected"' : '' }}>{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}</option>
+                            @for($i = 0; $i <= 24; $i++)
+                                <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}" {{ $i == 24 ? 'selected="selected"' : '' }}>{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}</option>
                             @endfor
-                        </select> 시 59분 59초
+                        </select> 시 00분 00초
                         <div class="btn-group ml-20" role="group">
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-weeks">1주일</button>
@@ -183,7 +183,7 @@
         $(document).ready(function() {
             // 날짜검색 디폴트 셋팅
             if ($search_form.find('input[name="search_start_date"]').val().length < 1 || $search_form.find('input[name="search_end_date"]').val().length < 1) {
-                setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');
+                setDefaultDatepicker(-14, 'days', 'search_start_date', 'search_end_date');
             }
 
             $datatable = $list_table.DataTable({

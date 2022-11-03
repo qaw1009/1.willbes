@@ -48,12 +48,13 @@
     </div>  
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2022/08/1071m_04.jpg" alt="">
-        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/200840" target="_blank" title="통신기술직" style="position: absolute; left: 52.78%; top: 40.52%; width: 27.5%; height: 3.89%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/200841
-" target="_blank" title="전송기술직" style="position: absolute; left: 52.5%; top: 62.35%; width: 27.5%; height: 3.89%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/200846
-" target="_blank" title="전기직이론" style="position: absolute; left: 52.64%; top: 84.24%; width: 27.5%; height: 3.89%; z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2022/11/1071m_04.jpg" alt="">
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/200840" target="_blank" title="통신기술직" style="position: absolute;left: 52.78%;top: 24.12%;width: 27.5%;height: 2.39%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/200841" target="_blank" title="전송기술직" style="position: absolute;left: 52.78%;top: 37.12%;width: 27.5%;height: 2.39%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/200846" target="_blank" title="전기직이론" style="position: absolute;left: 52.78%;top: 50.12%;width: 27.5%;height: 2.39%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/202125" target="_blank"  title="국가직" style="position: absolute;left: 52.78%;top: 63.12%;width: 27.5%;height: 2.39%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/202381" target="_blank"  title="전자직" style="position: absolute;left: 52.78%;top: 76.12%;width: 27.5%;height: 2.39%;z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/202124 " target="_blank"  title="전기직" style="position: absolute;left: 52.78%;top: 89.12%;width: 27.5%;height: 2.39%;z-index: 2;"></a>  
     </div>
 </div>
 <!-- End Container -->

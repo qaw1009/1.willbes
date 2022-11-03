@@ -166,10 +166,13 @@
 
         <div class="evtCtnsBox wb_cts04" id="pkglec">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/08/1071_04_01.jpg" alt=""/>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/200840" target="_blank"  title="통신기술직" style="position: absolute;left: 12.14%; top: 85.22%; width: 18.84%; height: 6.33%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/200841" target="_blank"  title="전기직" style="position: absolute; left: 40.54%; top: 85.44%; width: 18.84%; height: 6.33%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/200846" target="_blank"  title="이론 패키지" style="position: absolute; left: 68.93%; top: 85.22%; width: 18.84%; height: 6.33%; z-index: 2;"></a>  
+                <img src="https://static.willbes.net/public/images/promotion/2022/11/1071_04_01.jpg" alt=""/>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/200840" target="_blank"  title="통신기술직" style="position: absolute;left: 12.14%;top: 53.82%;width: 18.84%;height: 4.33%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/200841" target="_blank"  title="전기직" style="position: absolute;left: 40.64%;top: 53.82%;width: 18.84%;height: 4.33%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/200846" target="_blank"  title="이론 패키지" style="position: absolute;left: 68.94%;top: 53.82%;width: 18.84%;height: 4.33%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/202125" target="_blank"  title="국가직" style="position: absolute;left: 12.14%;top: 89.22%;width: 18.84%;height: 4.33%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/202381" target="_blank"  title="전자직" style="position: absolute;left: 40.64%;top: 89.22%;width: 18.84%;height: 4.33%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/202124 " target="_blank"  title="전기직" style="position: absolute;left: 68.94%;top: 89.22%;width: 18.84%;height: 4.33%;z-index: 2;"></a>  
             </div>
         </div>       
 

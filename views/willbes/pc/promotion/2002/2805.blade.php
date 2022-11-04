@@ -42,8 +42,9 @@
         .wb_04 .wrap a {display:block; color:#fff; font-size:40px; background:#0f0c1c; padding:20px 50px; width:60%; margin:0 auto 30px; border-radius:10px}
         .wb_04 .wrap a strong {font-size:120px}
         .wb_04 .wrap a:hover{box-shadow:0 10px 20px rgba(0,0,0,.3); background:#413bbf}
-        .wb_04 .wrap p {font-size:40px; color:#fff}
-        .wb_04 .wrap p span {font-size:24px; vertical-align:middle}
+        .wb_04 .wrap p {font-size:40px; color:#fff;padding-bottom:15px;}
+        .wb_04 .wrap p span {font-size:24px; vertical-align:middle}      
+
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -82,7 +83,8 @@
         <div class="evtCtnsBox wb_04" id="apply" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/10/2805_04.jpg"  alt="기본종합반"/>
-                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/202087" target="_blank"><strong class="NSK-Black">39</strong>만원 신청하기 ></a>
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/202087" target="_blank"><strong class="NSK-Black">44</strong>만원 신청하기 ></a>
+                <p class="NSK-Black"><span class="NSK">* 온라인 이국령 헌법 T-PASS 보유시 22만원 구매가능!!!</span></p>
                 <p class="NSK-Black">2022.11.14<span class="NSK">(월)</span> 개강</p>
             </div>
         </div>

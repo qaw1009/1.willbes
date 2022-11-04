@@ -193,6 +193,7 @@
                     //{ text: '<i class="fa fa-file-excel-o mr-5"></i> CN플러스 (윌스토리제외)', className: 'btn-sm btn-success border-radius-reset mr-15 btn-cnplus-no-willstory-excel' },
                     //{ text: '<i class="fa fa-file-excel-o mr-5"></i> 모아시스 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-target-excel' },
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 북존물류 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-target-excel-new' },
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 북존물류 엑셀다운로드(윌스토리)', className: 'btn-sm btn-success border-radius-reset mr-15 btn-target-excel-new-willstory' },
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-sms' },
@@ -420,7 +421,7 @@
                 }
             });
 
-            // 모아시스, CN플러스 엑셀다운로드 버튼 클릭
+            // 모아시스 (사용안함), CN플러스 엑셀다운로드 버튼 클릭
             $('.btn-target-excel, .btn-cnplus-excel').on('click', function(event) {
                 event.preventDefault();
                 /*if ($search_form.find('input[name="search_site_code"]').val().length < 1) {
@@ -438,7 +439,7 @@
                 }
             });
 
-            // 배송요청 엑셀다운로드 버튼 클릭
+            // 북존물류 엑셀다운로드 버튼 클릭 (윌스토리제외)
             $('.btn-target-excel-new').on('click', function(event) {
                 event.preventDefault();
                 var url = '{{ site_url('/pay/delivery/targetExcelNew') }}';
@@ -448,7 +449,23 @@
                 }
             });
 
-            // CN플러스 (윌스토리제외) 엑셀다운로드 버튼 클릭
+            // 북존물류 엑셀다운로드(윌스토리) 버튼 클릭
+            $('.btn-target-excel-new-willstory').on('click', function(event) {
+                event.preventDefault();
+
+                if ($search_form.find('input[name="search_site_code"]').val().length > 0) {
+                    alert('전체 사이트탭에서만 엑셀다운로드 가능합니다.');
+                    return;
+                }
+
+                var url = '{{ site_url('/pay/delivery/targetExcelNew/willstory') }}';
+
+                if (confirm('정말로 북존물류 엑셀다운로드(윌스토리) 하시겠습니까?')) {
+                    formCreateSubmit(url, $search_form.serializeArray(), 'POST');
+                }
+            });
+
+            // CN플러스(윌스토리제외) 엑셀다운로드 버튼 클릭 (사용안함)
             $('.btn-cnplus-no-willstory-excel').on('click', function(event) {
                 event.preventDefault();
                 var url = '{{ site_url('/pay/delivery/cnplusExcel/no-willstory') }}';

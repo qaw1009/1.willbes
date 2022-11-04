@@ -466,10 +466,14 @@ class Delivery extends BaseOrder
     }
 
     /**
-     * 배송요청 엑셀다운로드 (모아시스 신규 버전, 윌스토리제외, 2022-04-11 => 윌스토리 포함, 2022-11-01 => 윌스토리제외, 2022-11-03)
+     * 북존물류 엑셀다운로드 (no-willstory, willstory)
+     * @param array $params
      */
-    public function targetExcelNew()
+    public function targetExcelNew($params = [])
     {
+        // 데이터 구분 (all, no-willstory, willstory)
+        $data_type = element('0', $params, 'no-willstory');
+
         // 송장등록 주문조회
         $search_start_date = $this->_reqP('search_start_date');
         $search_start_hour = $this->_reqP('search_start_hour');
@@ -484,8 +488,7 @@ class Delivery extends BaseOrder
         $search_start_datm = $search_start_date . ' ' . $search_start_hour . ':00:00';
         $search_end_datm = $this->_getSearchEndDatm($search_end_date, $search_end_hour);
 
-        // 데이터 구분 (all, no-willstory)
-        $data = $this->deliveryInfoModel->getDeliveryTargetOrderData($search_start_datm, $search_end_datm, $search_site_code, 'no-willstory');
+        $data = $this->deliveryInfoModel->getDeliveryTargetOrderData($search_start_datm, $search_end_datm, $search_site_code, $data_type);
         if (empty($data) === true) {
             show_alert('데이터가 없습니다.', 'back');
         }
@@ -510,8 +513,9 @@ class Delivery extends BaseOrder
         }
 
         // export excel
+        $file_name = '교재배송_북존물류' . ($data_type == 'willstory' ? '(윌스토리)' : '');
         $headers = ['출고번호', '수취인명', '수취인주소', '수취인전화번호', '도서명', 'ISBN', '상품코드', '수량', '공급률', '증정', '비고(택배메시지)', '주문번호'];
-        $this->_makeExcel('교재배송_북존물류', $results, $headers, true, $last_query);
+        $this->_makeExcel($file_name, $results, $headers, true, $last_query);
     }
 
     /**
@@ -593,7 +597,7 @@ class Delivery extends BaseOrder
     }
 
     /**
-     * CN플러스 엑셀다운로드 (+윌스토리제외, 2022-04-08)
+     * CN플러스 엑셀다운로드 (all)
      * @param array $params
      */
     public function cnplusExcel($params = [])

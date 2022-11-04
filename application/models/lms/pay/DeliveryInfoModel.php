@@ -282,10 +282,13 @@ class DeliveryInfoModel extends BaseOrderModel
             'EQ' => ['O.SiteCode' => $site_code],
             'IN' => ['O.SiteCode' => get_auth_site_codes()]
         ];
-
-        // 윌스토리 데이터 제외
+        
         if ($data_type == 'no-willstory') {
+            // 윌스토리 데이터 제외
             $arr_condition['NOT']['O.SiteCode'] = '2012';
+        } elseif ($data_type == 'willstory') {
+            // 윌스토리만 조회
+            $arr_condition['EQ']['O.SiteCode'] = '2012';
         }
         
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);

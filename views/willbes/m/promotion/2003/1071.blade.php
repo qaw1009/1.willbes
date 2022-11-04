@@ -55,7 +55,7 @@
         <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/202125" target="_blank"  title="국가직" style="position: absolute;left: 52.78%;top: 63.12%;width: 27.5%;height: 2.39%;z-index: 2;"></a>
         <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/202381" target="_blank"  title="전자직" style="position: absolute;left: 52.78%;top: 76.12%;width: 27.5%;height: 2.39%;z-index: 2;"></a>
         <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/202124 " target="_blank"  title="전기직" style="position: absolute;left: 52.78%;top: 89.12%;width: 27.5%;height: 2.39%;z-index: 2;"></a>  
-    </div>
+    </div> 
 </div>
 <!-- End Container -->
 

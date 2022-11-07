@@ -43,7 +43,7 @@
         <div class="evtCtnsBox evt02" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/10/2803_02.jpg" title="상담 고고">
-                <a href="http://open.kakao.com/o/s3fKkLrc" target="_blank" title="바로가기" style="position: absolute;left: 22.99%;top: 78.53%;width: 54.03%;height: 10.79%;z-index: 2;"></a>
+                <a href="http://open.kakao.com/o/s3fKkLrc" target="_blank" title="바로가기" style="position: absolute;left: 22.99%;top: 63.63%;width: 54.03%;height: 7.79%;z-index: 2;"></a>
             </div>
         </div>
 

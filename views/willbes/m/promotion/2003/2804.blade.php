@@ -8,28 +8,20 @@
     .evtCtnsBox img {width:100%; max-width:720px;}
     /*.evtCtnsBox a {border:1px solid #000}*/
 
+    .youtubeWrap {position:relative; padding-bottom:56.25%; overflow: hidden; margin-top:-20px !important}
+    .youtubeWrap iframe {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
+
     .wb_cts02 {margin-bottom:50px;}
-
-
-    /* 폰 가로, 태블릿 세로*/
-    @@media only screen and (max-width: 374px)  {       
-
-    }
-    /* 태블릿 세로 */
-    @@media only screen and (min-width: 375px) and (max-width: 640px) {       
-
-    }    
-    /* 태블릿 가로, PC */
-    @@media only screen and (min-width: 641px) {    
-      
-    }
-
 </style>
 
 <div id="Container" class="Container NSK c_both">
 
     <div class="evtCtnsBox wb_top"  data-aos="fade-down">            
-        <img src="https://static.willbes.net/public/images/promotion/2022/11/2804m_top.jpg" alt="W 아카데미" />            
+        <img src="https://static.willbes.net/public/images/promotion/2022/11/2804m_top_01.jpg" alt="W 아카데미" /> 
+        <div class="youtubeWrap">
+            <iframe src="https://www.youtube.com/embed/hHymjMNgFis" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div> 
+        <img src="https://static.willbes.net/public/images/promotion/2022/11/2804m_top_02.jpg" alt="W 아카데미" />           
     </div>
 
     <div class="evtCtnsBox wb_cts01"  data-aos="fade-up">

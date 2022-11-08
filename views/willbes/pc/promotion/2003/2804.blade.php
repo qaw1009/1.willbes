@@ -19,8 +19,8 @@
 
     .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/11/2804_top_bg.jpg) no-repeat center top; height:1665px}
     .evt_top span {width:864px; position: absolute; top:30px; left:50%; margin-left:-432px; z-index: 2;}
-
-    .evt01 {} 
+    .evt_top .youtubeWrap {width:922px; height:500px; position: absolute; top:720px; left:50%; margin-left:-461px; background:#000}
+    .evt_top .youtubeWrap iframe {width:922px; height:500px}
 
     .evt02 {background:url(https://static.willbes.net/public/images/promotion/2022/11/2804_02_bg.jpg) no-repeat center top;}
 
@@ -32,6 +32,9 @@
 
         <div class="evtCtnsBox evt_top">
             <span data-aos="fade-down"><img src="https://static.willbes.net/public/images/promotion/2022/11/2804_top.png" title="W 아카데미"></span>
+            <div class="youtubeWrap">
+                <iframe src="https://www.youtube.com/embed/hHymjMNgFis" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">

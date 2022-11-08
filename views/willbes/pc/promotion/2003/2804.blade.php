@@ -19,8 +19,8 @@
 
     .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/11/2804_top_bg.jpg) no-repeat center top; height:1665px}
     .evt_top span {width:864px; position: absolute; top:30px; left:50%; margin-left:-432px; z-index: 2;}
-    .evt_top .youtubeWrap {width:922px; height:500px; position: absolute; top:720px; left:50%; margin-left:-461px; background:#000}
-    .evt_top .youtubeWrap iframe {width:922px; height:500px}
+    .evt_top .youtubeWrap {width:922px; height:520px; position: absolute; top:750px; left:50%; margin-left:-461px; background:#000}
+    .evt_top .youtubeWrap iframe {width:922px; height:100%}
 
     .evt02 {background:url(https://static.willbes.net/public/images/promotion/2022/11/2804_02_bg.jpg) no-repeat center top;}
 

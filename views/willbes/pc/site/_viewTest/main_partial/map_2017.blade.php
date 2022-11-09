@@ -1,3 +1,13 @@
+<style type="text/css">
+.ssam .mapWrap .mapR .traffic {
+    margin-top: 10px;
+    /*height: 130px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px*/
+}
+</style>
+
 <div class="Section">
     <div class="mapWrap">
         <div class="will-nTit">

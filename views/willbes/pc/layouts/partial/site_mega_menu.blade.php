@@ -394,13 +394,13 @@
                 <ul>
                     <li>
                         <span>[국어]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50158?cate_code=3046&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">오대혁</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50158?cate_code=3046&subject_idx=1253')}}">오대혁</a>
                         <span>[영어]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50500?cate_code=3046&subject_idx=1254&subject_name=영어')}}">한덕현</a>
                     </li>
                     <li>
                         <span>[한국사]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50620?cate_code=3046&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">김상범</a>                       
+                        <a href="{{front_url('/professor/show/prof-idx/50620?cate_code=3046&subject_idx=1255')}}">김상범</a>                       
                         <span>[세법]</span>
                         <a href="{{front_url('/professor/show/prof-idx/51239?cate_code=3046&subject_idx=1269&subject_name=%EC%84%B8%EB%B2%95')}}">박창한</a>
                     </li>
@@ -413,7 +413,7 @@
                 <ul>
                     <li>
                         <span>[국어]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50158?cate_code=3048&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">오대혁</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50158?cate_code=3048&subject_idx=1253')}}">오대혁</a>
                         <span>[행정법]</span>
                         <a href="{{front_url('/professor/show/prof-idx/51215?cate_code=3048&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">신기훈</a><br>
                         <span>[행정학]</span>
@@ -421,9 +421,9 @@
                     </li>
                     <li>
                         <span>[전자공학]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50164/?cate_code=3052&subject_idx=1339&subject_name=%EC%A0%84%EC%9E%90%EA%B3%B5%ED%95%99')}}">최우영</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50164/?cate_code=3052&subject_idx=1339')}}">최우영</a>
                         <span>[통신이론]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50164?cate_code=3052&subject_idx=1341&subject_name=%ED%86%B5%EC%8B%A0%EC%9D%B4%EB%A1%A0')}}">최우영</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50164?cate_code=3052&subject_idx=1341')}}">최우영</a>
                     </li>
                 </ul>
             </div>
@@ -473,18 +473,14 @@
                 <ul>
                     <li>
                         <span>[소방학개론]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/51055/?cate_code=3050&subject_idx=1259&subject_name=%EC%86%8C%EB%B0%A9%ED%95%99%EA%B0%9C%EB%A1%A0')}}">이종오</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51055/?cate_code=3050&subject_idx=1259')}}">이종오</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51422/?cate_code=3050&subject_idx=1259')}}">권나라</a><br>
                         <span>[소방관계법규]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/51055?cate_code=3050&subject_idx=1284&subject_name=%EC%86%8C%EB%B0%A9%EA%B4%80%EA%B3%84%EB%B2%95%EA%B7%9C')}}">이종오</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51055?cate_code=3050&subject_idx=1284')}}">이종오</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51423?cate_code=3050&subject_idx=1284')}}">오도희</a><br>
                         <span>[행정법]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50616?cate_code=3050&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">이석준</a><br>
-                        <span>[영어]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50310?cate_code=3050&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">이아림</a>
-                        <a href="{{front_url('/professor/show/prof-idx/50072?cate_code=3050&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">양익</a><br>
-                        <span>[한국사]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50306?cate_code=3050&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">한경준</a>
-                        <span>[국어]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50158?cate_code=3050&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">오대혁</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51215?cate_code=3050&subject_idx=1257')}}">신기훈</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50616?cate_code=3050&subject_idx=1257')}}">이석준</a>
                     </li>
                 </ul>
             </div>
@@ -494,35 +490,35 @@
                 <ul>
                     <li>
                         <span>[국어]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50158?cate_code=3052&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">오대혁</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50158?cate_code=3052&subject_idx=1253')}}">오대혁</a>
                         <span>[영어]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50500/?cate_code=3052&subject_idx=1254')}}">한덕현</a>
                     </li>
                     <li>
                         <span>[한국사]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50620?cate_code=3043&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">김상범</a>                       
+                        <a href="{{front_url('/professor/show/prof-idx/50620?cate_code=3043&subject_idx=1255')}}">김상범</a>                       
                     </li>
                     <li>
                         <span>[전기기기]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50719/?cate_code=3052&subject_idx=1314&subject_name=%EC%A0%84%EA%B8%B0%EA%B8%B0%EA%B8%B0')}}">최우영</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50719/?cate_code=3052&subject_idx=1314')}}">최우영</a>
                         <span>[전기이론]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50719/?cate_code=3052&subject_idx=1319&subject_name=%EC%A0%84%EA%B8%B0%EC%9D%B4%EB%A1%A0')}}">최우영</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50719/?cate_code=3052&subject_idx=1319')}}">최우영</a>
                         <span>[전자공학]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50164/?cate_code=3052&subject_idx=1339&subject_name=%EC%A0%84%EC%9E%90%EA%B3%B5%ED%95%99')}}">최우영</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50164/?cate_code=3052&subject_idx=1339')}}">최우영</a>
                     </li>
                     <li>
                         <span>[무선공학]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50164/?cate_code=3052&subject_idx=1340&subject_name=%EB%AC%B4%EC%84%A0%EA%B3%B5%ED%95%99')}}">최우영</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50164/?cate_code=3052&subject_idx=1340')}}">최우영</a>
                         <span>[통신이론]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50164/?cate_code=3052&subject_idx=1341&subject_name=%ED%86%B5%EC%8B%A0%EC%9D%B4%EB%A1%A0')}}">최우영</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50164/?cate_code=3052&subject_idx=1341')}}">최우영</a>
                         <span>[회로이론]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50719/?cate_code=3052&subject_idx=1344&subject_name=%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A0')}}">최우영</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50719/?cate_code=3052&subject_idx=1344')}}">최우영</a>
                     </li>
                     <li>
                         <span>[전자이론]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50164/?cate_code=3052&subject_idx=1342')}}">최우영</a>
                         <span>[전기자기학]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50164/?cate_code=3052&subject_idx=1356&subject_name=%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%99')}}">최우영</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50164/?cate_code=3052&subject_idx=1356')}}">최우영</a>
                     </li>
                     <li>
                         <span>[재배학]</span>
@@ -534,31 +530,31 @@
                     </li>
                     <li>
                         <span>[생물]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50430/?cate_code=3052&subject_idx=1327&subject_name=%EC%83%9D%EB%AC%BC')}}">장사원</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50430/?cate_code=3052&subject_idx=1327')}}">장사원</a>
                         <span>[농촌지도론]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50430/?cate_code=3052&subject_idx=1376&subject_name=%EB%86%8D%EC%B4%8C%EC%A7%80%EB%8F%84%EB%A1%A0')}}">장사원</a><br>
+                        <a href="{{front_url('/professor/show/prof-idx/50430/?cate_code=3052&subject_idx=1376')}}">장사원</a><br>
                         <span>[토양학]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50430/?cate_code=3052&subject_idx=1389&subject_name=%ED%86%A0%EC%96%91%ED%95%99')}}">장사원</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50430/?cate_code=3052&subject_idx=1389')}}">장사원</a>
                     </li>
                     <li>
                         <span>[유기농업기능사]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50430/?cate_code=3052&subject_idx=1378&subject_name=%EC%9C%A0%EA%B8%B0%EB%86%8D%EC%97%85%EA%B8%B0%EB%8A%A5%EC%82%AC')}}">장사원</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50430/?cate_code=3052&subject_idx=1378')}}">장사원</a>
                         <span>[응용역학]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50436/?cate_code=3052&subject_idx=1360&subject_name=%EC%9D%91%EC%9A%A9%EC%97%AD%ED%95%99%EA%B0%9C%EB%A1%A0')}}">장성국</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50436/?cate_code=3052&subject_idx=1360')}}">장성국</a>
                         <span>[토목설계]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50436/?cate_code=3052&subject_idx=1361&subject_name=%ED%86%A0%EB%AA%A9%EC%84%A4%EA%B3%84')}}">장성국</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50436/?cate_code=3052&subject_idx=1361')}}">장성국</a>
                         <span>[가축사양학]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/51151?cate_code=3052&subject_idx=2113&subject_name=%EA%B0%80%EC%B6%95%EC%82%AC%EC%96%91%ED%95%99')}}">윤용범</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51151?cate_code=3052&subject_idx=2113')}}">윤용범</a>
                         <span>[가축육종학]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/51151?cate_code=3052&subject_idx=2114&subject_name=%EA%B0%80%EC%B6%95%EC%9C%A1%EC%A2%85%ED%95%99')}}">윤용범</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51151?cate_code=3052&subject_idx=2114')}}">윤용범</a>
                         <span>[기계일반]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/51149?cate_code=3052&subject_idx=1362&subject_name=%EA%B8%B0%EA%B3%84%EC%9D%BC%EB%B0%98')}}">윤황현</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51149?cate_code=3052&subject_idx=1362')}}">윤황현</a>
                         <span>[기계설계]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/51149?cate_code=3052&subject_idx=1363&subject_name=%EA%B8%B0%EA%B3%84%EC%84%A4%EA%B3%84')}}">윤황현</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51149?cate_code=3052&subject_idx=1363')}}">윤황현</a>
                         <span>[조경학]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/51153?cate_code=3052&subject_idx=2120&subject_name=%EC%A1%B0%EA%B2%BD%ED%95%99')}}">이윤주</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51153?cate_code=3052&subject_idx=2120')}}">이윤주</a>
                         <span>[조경계획 및 설계/생태계관리]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/51153?cate_code=3052&subject_idx=2120&subject_name=%EC%A1%B0%EA%B2%BD%ED%95%99')}}">이윤주</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51153?cate_code=3052&subject_idx=2120')}}">이윤주</a>
                     </li>
                 </ul>
             </div>

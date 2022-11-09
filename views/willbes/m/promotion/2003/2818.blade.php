@@ -24,7 +24,7 @@
 
     <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2818m_02.jpg" alt="무료증정"/>
-        <a href="https://pass.willbes.net/support/qna/index" target="_blank" title="1:1 상담게시판" style="position: absolute; left: 21.94%; top: 77.65%; width: 58.19%; height: 8.52%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/support/qna/index" target="_blank" title="1:1 상담게시판" style="position: absolute; left: 21.94%; top: 77.65%; width: 58.19%; height: 8.52%; z-index: 2;"></a>
     </div>
 
     <div class="evtCtnsBox evt02" data-aos="fade-up">

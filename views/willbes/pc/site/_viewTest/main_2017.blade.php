@@ -403,7 +403,7 @@
             </div>
         </div>
 
-        @include('willbes.pc.site.main_partial.map_' . $__cfg['SiteCode'])
+        @include('willbes.pc.site._viewTest.main_partial.map_' . $__cfg['SiteCode'])
     </div>
     <!-- End Container -->
 

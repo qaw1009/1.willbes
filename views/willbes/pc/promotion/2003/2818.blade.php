@@ -41,7 +41,7 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2818_01.jpg" title="합격이야기">                
+            <img src="https://static.willbes.net/public/images/promotion/2022/11/2818_01.jpg" title="공부이야기">                
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">
@@ -60,7 +60,7 @@
                     <li>욕설, 비방 또는 한림법학원 7급과 무관한 글은 삭제되며, 참여 인정되지 않습니다.</li>
                     <li>한 ID당 최대 1권만 지급되며, 동일한 아이디로 여러 개 작성시 하나의 글로 인정됩니다. (중복 지급 불가)</li>
                     <li>교재 주문시(무료주문/무료배송) 주소 및 연락처를 정확히 기입하셔야 정상 배송됩니다.</li>
-                    <li>합격이야기는 이벤트 참여자 및 유료 강의 수강자에 한하여만 무료 제공되며, 한 ID당 1권만 신청 가능합니다.</li>
+                    <li>공부이야기는 이벤트 참여자 및 유료 강의 수강자에 한하여만 무료 제공되며, 한 ID당 1권만 신청 가능합니다.</li>
                     <li>이벤트에 남겨주신 기대평 또는 강의평은 이후 한림법학원 7급 강의 홍보용으로 사용될 수 있습니다.</li>
                     <li>유의사항을 읽지 않고 발생한 모든 상황에 대해 한림법학원 7급팀은 책임지지 않습니다.</li>
                 </ul>          

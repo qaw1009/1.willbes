@@ -245,7 +245,13 @@
                         return data + '(' + row.MemId + ')<br/>' + row.MemPhone;
                     }},
                     {'data' : 'PayChannelCcdName'},
+                    @if(is_sys_admin() === true)
+                    {'data' : 'PayRouteCcdName', 'render' : function(data, type, row, meta) {
+                        return data + (row.PgMid !== '' ? '<br/>(' + row.PgMid + ')' : '');
+                    }},
+                    @else
                     {'data' : 'PayRouteCcdName'},
+                    @endif
                     {'data' : 'PayMethodCcdName'},
                     {'data' : 'CompleteDatm', 'render' : function(data, type, row, meta) {
                         return data !== null ? data : '' + (row.VBankOrderDatm !== null ? '<br/>(' + row.VBankOrderDatm + ')' : row.OrderDatm);

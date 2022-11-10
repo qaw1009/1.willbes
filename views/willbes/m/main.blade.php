@@ -17,6 +17,7 @@
                         <li><a href="{{ front_app_url('/home/index/cate/3148', 'pass') }}" target="_blank">검찰직</a></li>                    
                         <li><a href="{{ front_app_url('/home/index/cate/3097', 'gosi') }}" target="_blank">5급헌법</a></li> 
                         <li><a href="{{ front_app_url('/home/index/cate/3103', 'pass') }}" target="_blank">7급PSAT</a></li> 
+                        <li><a href="{{ front_app_url('/home/index/cate/3103', 'pass') }}" target="_blank">7급전문과목</a></li> 
                         <li><a href="{{ front_app_url('/home/index/cate/3098', 'gosi') }}" target="_blank">법원행시</a></li> 
                         <li><a href="{{ front_app_url('/home/index/cate/3099', 'gosi') }}" target="_blank">변호사시험</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/309002', 'job') }}" target="_blank">공인노무사</a></li>                  

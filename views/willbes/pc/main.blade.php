@@ -24,7 +24,7 @@
                             <h5>ㆍ 공무원</h5>
                             <ul>
                                 <li><a href="#none" class="favor-cate-each" data-key="2003_3019" data-url="{{ front_app_url('/home/index/cate/3019', 'pass') }}">9급 공무원</a></li>
-                                <li><a href="#none" class="favor-cate-each" data-key="2003_3020" data-url="{{ front_app_url('/home/index/cate/3020', 'pass') }}">7급 공무원</a></li>
+                                <li><a href="#none" class="favor-cate-each" data-key="2003_3020" data-url="{{ front_app_url('/home/index/cate/3020', 'pass') }}">7급 전문과목</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2003_3103" data-url="{{ front_app_url('/home/index/cate/3103', 'pass') }}">7급PSAT</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2003_3022" data-url="{{ front_app_url('/home/index/cate/3022', 'pass') }}">세무직</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2003_3035" data-url="{{ front_app_url('/home/index/cate/3035', 'pass') }}">법원직</a></li>
@@ -158,7 +158,7 @@
                             <td colspan="5">
                                 <a href="{{ front_app_url('/intro/index', 'pass') }}" target="_blank">메인(통합) <img src="https://static.willbes.net/public/images/promotion/main/gate_icon03.png"></a>
                                 <a href="{{ front_app_url('/home/index/cate/3019', 'pass') }}" target="_blank">9급 공무원</a>
-                                <a href="{{ front_app_url('/home/index/cate/3020', 'pass') }}" target="_blank">7급 공무원</a>
+                                <a href="{{ front_app_url('/home/index/cate/3020', 'pass') }}" target="_blank">7급 전문과목</a>
                                 <a href="{{ front_app_url('/home/index/cate/3103', 'pass') }}" target="_blank">7급PSAT</a>
                                 <a href="{{ front_app_url('/home/index/cate/3022', 'pass') }}" target="_blank">세무직</a>
                                 <a href="{{ front_app_url('/home/index/cate/3035', 'pass') }}" target="_blank">법원직</a>

@@ -7,18 +7,20 @@
 
         <div class="Section MainVisual mt20">
             <div class="widthAuto">
-                <div class="VisualBox p_re">
-                    <div id="MainRollingDiv" class="MaintabList">
-                        <ul class="Maintab">
-                            @foreach($data['arr_main_banner']['메인_빅배너'] as $row)
-                                <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{{ $row['BannerName'] }}</a></li>
-                            @endforeach
-                        </ul>
+                @if(isset($data['arr_main_banner']['메인_빅배너']) === true)
+                    <div class="VisualBox p_re">
+                        <div id="MainRollingDiv" class="MaintabList">
+                            <ul class="Maintab">
+                                @foreach($data['arr_main_banner']['메인_빅배너'] as $row)
+                                    <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{{ $row['BannerName'] }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div id="MainRollingSlider" class="MaintabBox">
+                            {!! banner_html($data['arr_main_banner']['메인_빅배너'], 'MaintabSlider') !!}
+                        </div>
                     </div>
-                    <div id="MainRollingSlider" class="MaintabBox">
-                        {!! banner_html($data['arr_main_banner']['메인_빅배너'], 'MaintabSlider') !!}
-                    </div>
-                </div>
+                @endif
                 <div class="VisualsubBox mt40">
                     <ul>
                         <li>

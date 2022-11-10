@@ -333,9 +333,10 @@ class BasePromotion extends \app\controllers\FrontController
             $arr_base['login_url'] = element('login_url', $arr_input);
         }
 
-        $arr_base['max_byte'] = element('max_byte', $arr_input);
-        $arr_base['write_yn'] = element('write_yn', $arr_input);
-        $arr_base['survey_chk_yn'] = element('survey_chk_yn', $arr_input);
+        $arr_base['min_byte'] = element('min_byte', $arr_input);    //댓글 글자 최소 바이트
+        $arr_base['max_byte'] = element('max_byte', $arr_input);    //댓글 글자 최대 바이트
+        $arr_base['write_yn'] = element('write_yn', $arr_input);    //글쓰기 허용
+        $arr_base['survey_chk_yn'] = element('survey_chk_yn', $arr_input);  //설문조사 등록 여부 체크
         $arr_base['survey_count'] = element('survey_count', $arr_input);
         $arr_base['page_url'] = '/promotion/frameCommentList/' . $comment_type;
         $arr_base['comment_create_type'] = $comment_create_type;

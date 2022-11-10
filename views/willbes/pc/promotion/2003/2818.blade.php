@@ -66,8 +66,14 @@
                 </ul>          
             </div>
 
+            {{--
+                기본댓글 todo : (조건 없을 경우 인자 제거 후 호출)
+                login_url : 로그인 리턴 url
+                min_byte : 댓글 글자 최소 바이트
+                max_byte : 댓글 글자 최대 바이트
+            --}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_normal_partial')
+                @include('willbes.pc.promotion.show_comment_list_normal_partial',['login_url'=>app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www'), 'min_byte'=>50])
             @endif
         </div>
     </div>

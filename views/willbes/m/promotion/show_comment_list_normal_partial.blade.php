@@ -1,5 +1,5 @@
 {{-- 하단 카페 링크 사용여부 --}}
-<iframe frameborder="0" scrolling="no" width="100%" onload="resizeIframe713001(this)" src="{{front_url('/promotion/frameCommentList/713001?'.$arr_base['frame_params']).'&login_url='.(empty($login_url) === false ? urlencode($login_url) : '').'&max_byte='.(empty($max_byte) ? '' : $max_byte).'&write_yn='.(empty($write_yn) ? '' : $write_yn)}}"></iframe>
+<iframe frameborder="0" scrolling="no" width="100%" onload="resizeIframe713001(this)" src="{{front_url('/promotion/frameCommentList/713001?'.$arr_base['frame_params']).'&login_url='.(empty($login_url) === false ? urlencode($login_url) : '').'&min_byte='.(empty($min_byte) ? '' : $min_byte).'&max_byte='.(empty($max_byte) ? '' : $max_byte).'&write_yn='.(empty($write_yn) ? '' : $write_yn)}}"></iframe>
 <div id="NOTICEPASS" class="willbes-Layer-Black"></div>
 
 <script type="text/javascript">

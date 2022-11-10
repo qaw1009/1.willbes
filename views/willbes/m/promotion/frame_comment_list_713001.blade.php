@@ -93,6 +93,8 @@
             // 설문조사 체크여부
             var survey_count = "{{$arr_base['survey_count'] or 0}}";
             var survey_chk_yn = "{{$arr_base['survey_chk_yn']}}";
+            var min_byte = "{{empty($arr_base['min_byte']) === true ? 'null' : $arr_base['min_byte']}}";
+            var max_byte = "{{empty($arr_base['max_byte']) === true ? 'null' : $arr_base['max_byte']}}";
 
             if(survey_chk_yn == 'Y'){
                 if(survey_count == 0){
@@ -106,22 +108,18 @@
                 return false;
             }
 
-            var max_byte = "{{$arr_base['max_byte'] or 0}}";
-            if(max_byte > 0){
-                return chk_max_byte(max_byte);
-            }
-
+            return chk_byte(min_byte, max_byte);
             return true;
         }
 
-        // byte 체크
-        function chk_max_byte(max_byte){
+        function chk_byte(min_byte, max_byte){
             var str = $('#event_comment').val();
             var rbyte = 0;
             var strTxt = "";
             var strComment = "";
             var one_char = "";
             var check = false;
+            var msg = '';
 
             for (i = 0; i < str.length; i++){
                 //체크 하는 문자를 저장
@@ -133,24 +131,22 @@
                 }else{
                     rbyte++;    //영문 등 나머지 1Byte
                 }
+            }
 
-                if(rbyte > max_byte){ //제한 길이 확인
-                    if(escape(one_char).length > 4){
-                        rbyte -= 2;
-                    }else{
-                        rbyte--;
-                    }
-                    check = true;
-                    break;
-                }else{
-                    strComment += strTxt;
-                }
+            if (min_byte != 'null' && rbyte < min_byte) {
+                check = true;
+                msg = min_byte + 'byte 이상 입력해 주세요.';
+            }
+
+            if (max_byte != 'null' && rbyte > max_byte) {
+                check = true;
+                msg = '댓글은 ' + max_byte + 'byte이내로 입력 가능합니다.';
             }
 
             if(check === true){
-                $('#event_comment').val(strComment);
-                $('#content_byte i').text(rbyte);
-                alert('댓글은 ' + max_byte + 'byte이내로 입력 가능합니다.');
+                /*$('#event_comment').val(strComment);
+                $('#content_byte i').text(0);*/
+                alert(msg);
                 return false;
             }else{
                 return true;

@@ -35,7 +35,7 @@
     .evt_tab {padding-bottom:150px}
     .tabs {width:1120px; margin:0 auto;}
     .tabs li {display:inline; float:left; width:25%;} 
-    .tabs li a {display:block; color:#fff; background:#000; height:50px; line-height:50px; text-align:center; margin-right:1px; font-size:20px;font-weight:bold;}
+    .tabs li a {display:block; color:#fff; background:#5918cc; height:50px; line-height:50px; text-align:center; margin-right:1px; font-size:20px;font-weight:bold;}
     .tabs li a:hover,
     .tabs li a.active {background:#fff; color:#000}
     .tabs li:last-child a {margin:0}

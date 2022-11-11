@@ -21,40 +21,6 @@
                         </div>
                     </div>
                 @endif
-                <div class="VisualsubBox mt40">
-                    <ul>
-                        <li>
-                            <div class="bSlider acad">
-                                <div class="slider">
-                                    <div><a href="http://willbes.com"><img src="{{ img_url('gosi_acad/visual/visualsub_190129.jpg') }}" alt="배너명"></a></div>
-                                    <div>
-                                        <img src="https://www.willbes.net/public/img/willbes/gosi_acad/visual/visualsub_190131.jpg" usemap="#Mapaaaaa" border="0" />
-                                        <map name="Mapaaaaa" id="Mapaaaaa">
-                                            <area shape="rect" coords="24,17,162,142" href="http://www.naver.com" />
-                                            <area shape="rect" coords="172,21,360,144" href="http://www.daum.net" />
-                                        </map>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="bSlider acad">
-                                <div class="slider">
-                                    <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190130.jpg') }}" alt="배너명"></a></div>
-                                    <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190129.jpg') }}" alt="배너명"></a></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="bSlider acad">
-                                <div class="slider">
-                                    <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190131.jpg') }}" alt="배너명"></a></div>
-                                    <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190130.jpg') }}" alt="배너명"></a></div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
 

@@ -155,7 +155,7 @@
         </div>
 
         <!-- 타이머 -->
-        <div id="newTopDday" class="newTopDday"> 
+        <div id="newTopDday" class="newTopDday" data-aos="fade-down"> 
             <div id="ddaytime">
                 <ul>
                     <li>

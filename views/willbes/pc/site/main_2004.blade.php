@@ -5,7 +5,60 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
-        <div class="Section mt20">
+        <div class="Section MainVisual mt20">
+            <div class="widthAuto">
+                @if(isset($data['arr_main_banner']['메인_빅배너']) === true)
+                    <div class="VisualBox p_re">
+                        <div id="MainRollingDiv" class="MaintabList">
+                            <ul class="Maintab">
+                                @foreach($data['arr_main_banner']['메인_빅배너'] as $row)
+                                    <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{{ $row['BannerName'] }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div id="MainRollingSlider" class="MaintabBox">
+                            {!! banner_html($data['arr_main_banner']['메인_빅배너'], 'MaintabSlider') !!}
+                        </div>
+                    </div>
+                @endif
+                <div class="VisualsubBox mt40">
+                    <ul>
+                        <li>
+                            <div class="bSlider acad">
+                                <div class="slider">
+                                    <div><a href="http://willbes.com"><img src="{{ img_url('gosi_acad/visual/visualsub_190129.jpg') }}" alt="배너명"></a></div>
+                                    <div>
+                                        <img src="https://www.willbes.net/public/img/willbes/gosi_acad/visual/visualsub_190131.jpg" usemap="#Mapaaaaa" border="0" />
+                                        <map name="Mapaaaaa" id="Mapaaaaa">
+                                            <area shape="rect" coords="24,17,162,142" href="http://www.naver.com" />
+                                            <area shape="rect" coords="172,21,360,144" href="http://www.daum.net" />
+                                        </map>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="bSlider acad">
+                                <div class="slider">
+                                    <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190130.jpg') }}" alt="배너명"></a></div>
+                                    <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190129.jpg') }}" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="bSlider acad">
+                                <div class="slider">
+                                    <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190131.jpg') }}" alt="배너명"></a></div>
+                                    <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190130.jpg') }}" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {{--<div class="Section mt20">
             <div class="widthAuto">
                 <ul class="bnSecTop">
                     @for($i=1; $i<=5; $i++)
@@ -17,12 +70,12 @@
                     @endfor
                 </ul>
             </div>
-        </div>
+        </div>--}}
 
         <div class="Section">
             <div class="widthAuto bnSec01">
                 <div class="will-acadTit">합격생 추천 단과 시리즈</div>
-                    <ul>
+                <ul>
                     <li>{!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}</li>
                     <li>{!! banner_html(element('메인_서브2', $data['arr_main_banner'])) !!}</li>
                     <li>{!! banner_html(element('메인_서브3', $data['arr_main_banner'])) !!}</li>

@@ -42,7 +42,7 @@
     .tabContaier li a.active {color:#fff; background:#cf9c5d;}
     .tabContaier li:last-child a {margin:0}
 
-        /*유튜브*/
+    /*유튜브*/
     .video-container {position:relative; padding-bottom:56.25%; overflow: hidden; margin-top:-20px !important}
     .video-container object {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
@@ -81,11 +81,7 @@
         .evt01 .ext01txt label {font-size:17px;}
         .evt01 input[type="radio"] {height:20px; width:20px; vertical-align:middle}
 
-        .evt01 .lecbuy a {width: calc(50% - 10px);}
-
-        .reviewWrap .reviewList {height:300px }            
-        .reviewWrap .reviewList div {height:220px; font-size:2vh;}        
-        .reviewList p {top:130px;}
+        .evt01 .lecbuy a {width: calc(50% - 10px);}       
 
         .tabContaier li a{font-size:13px;}
         .tabContaier .tabContents div {font-size:22px;}
@@ -104,11 +100,7 @@
         .evt01 .ext01txt label {font-size:14px;}
         .evt01 input[type="radio"] {height:15px; width:15px; vertical-align:middle}    
 
-        .evt01 .lecbuy a {width: calc(50% - 10px);}
-
-        .reviewWrap .reviewList {height:300px}
-        .reviewWrap .reviewList div {height:220px;}
-        .reviewList p {top:130px;;}
+        .evt01 .lecbuy a {width: calc(50% - 10px);} 
 
         .tabContaier li a{font-size:12px;}
         .tabContaier .tabContents div {font-size:20px;}

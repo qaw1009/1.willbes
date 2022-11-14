@@ -38,7 +38,7 @@
             </div>
         </div>--}}
 
-        <div class="Section">
+        <div class="Section mt50">
             <div class="widthAuto bnSec01">
                 <div class="will-acadTit">합격생 추천 단과 시리즈</div>
                 <ul>

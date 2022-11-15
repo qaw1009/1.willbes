@@ -11,6 +11,8 @@
     .question div.qBox div {margin-bottom:1vh}
     .question div.qBox ul {padding:0; margin:1vh 0}
     .question li {display:inline-block; margin-right:1vh; margin-bottom:5px; font-size:1.6vh}
+    .question input[type="radio"],
+    .question input[type="checkbox"] {width:16px; height:16px}
     .question .tab li {display:inline; float:left; margin-right:1px}
     .question .tab:after {content:""; display:block; clear:both}
     .question .tab a {display:block; padding:5px 10px}

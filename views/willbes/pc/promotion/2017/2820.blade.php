@@ -91,10 +91,10 @@
             <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
             <input type="hidden" name="register_type" value="promotion"/>
             <input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/> {{-- 하나수강만 선택 가능할시 --}}
-            <input type="hidden" id="register_name" name="register_name" value="{{$arr_base['member_info']['MemName']}}">
+            <input type="hidden" id="register_name" name="register_name" value="{{(sess_data('is_login') === true) ? $arr_base['member_info']['MemName'] : ''}}">
             <input type="hidden" id="userId" name="userId" value="{{sess_data('mem_id')}}">
-            <input type="hidden" id="register_tel" name="register_tel" value="{{$arr_base['member_info']['Phone']}}">
-            <input type="hidden" id="register_email" name="register_email" value="{{$arr_base['member_info']['Mail']}}">
+            <input type="hidden" id="register_tel" name="register_tel" value="{{(sess_data('is_login') === true && empty($arr_base['member_info']['Phone']) === false) ? $arr_base['member_info']['Phone'] : ''}}">
+            <input type="hidden" id="register_email" name="register_email" value="{{(sess_data('is_login') === true && empty($arr_base['member_info']['Mail']) === false) ? $arr_base['member_info']['Mail'] : ''}}">
 
             <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
@@ -148,7 +148,7 @@
                                 </td>
                                 <th>연락처</th>
                                 <td>
-                                    {{$arr_base['member_info']['Phone']}}
+                                    {{(sess_data('is_login') === true && empty($arr_base['member_info']['Phone']) === false) ? $arr_base['member_info']['Phone'] : ''}}
                                 </td>
                             </tr>
                             <tr>

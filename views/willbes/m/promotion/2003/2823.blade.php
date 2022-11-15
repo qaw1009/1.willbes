@@ -88,7 +88,7 @@
         <div class="sTilte NSK-Black">수강내역 인증하기</div>    
         <div class="request" id="request">
             <div class="requestL">
-                <h3>* 수강내역 인증하기</h3>
+                <h3>* 수강내역 인증하기 - 로그인 후 참여</h3>
                 <table width="0" cellspacing="0" cellpadding="0" class="table_type">
                     <col width="25%" />
                     <col  />
@@ -101,7 +101,7 @@
                     <tr>
                         <th>* 아이디</th>
                         <td>
-                            <input type="text">
+                            willbes
                         </td>
                     </tr>
                     <tr>

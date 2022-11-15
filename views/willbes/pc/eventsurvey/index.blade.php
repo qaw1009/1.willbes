@@ -2,16 +2,15 @@
 <link href="/public/css/willbes/basic.css" rel="stylesheet">
 <link href="/public/css/willbes/style.css" rel="stylesheet">
 <style type="text/css">
-    .popcontent {padding:20px}
-    .popcontent h3 {font-size:18px; border-bottom:2px solid #353348; color:#d39004; padding-bottom:10px}
-    .question {margin-top:1em}
-    .question p {padding:10px; background:#898989; border-bottom:1px solid #666; color:#fff; margin-bottom:1em}
-    .question div.qBox {padding:5px 10px}
+    .popcontent {padding:2vh; }
+    .popcontent h3 {font-size:2vh; border-bottom:2px solid #353348; color:#d39004; padding-bottom:1vh}
+    .question {margin-top:1vh}
+    .question p {padding:1vh; background:#898989; border-bottom:1px solid #666; color:#fff; margin-bottom:1vh}
+    .question div.qBox {padding:5px 10px; font-size:1.6vh}
     .question span {color:#000; width:50px; display:block; font-weight:bold}
-    .question div.qBox div {margin-bottom:10px}
-    .question div.qBox ul {padding:0; margin:10px 0}
-    .question li {display:inline; float:left; margin-right:10px}
-    .question ul:after {content:""; display:block; clear:both}
+    .question div.qBox div {margin-bottom:1vh}
+    .question div.qBox ul {padding:0; margin:1vh 0}
+    .question li {display:inline-block; margin-right:1vh; margin-bottom:5px; font-size:1.6vh}
     .question .tab li {display:inline; float:left; margin-right:1px}
     .question .tab:after {content:""; display:block; clear:both}
     .question .tab a {display:block; padding:5px 10px}

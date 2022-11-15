@@ -128,7 +128,7 @@
                     </div>
                     <div class="check" id="chkInfo">
                         <label>
-                            <input name="is_chk" id="is_chk" type="checkbox" value="Y" />
+                            <input class="btn-login-check" name="is_chk" id="is_chk" type="checkbox" value="Y" />
                             윌비스에 개인정보 제공 동의하기 (필수)
                         </label>
                     </div>
@@ -154,7 +154,7 @@
                             <tr>
                                 <th>출신학교/<br />
                                 학부/학년</th>
-                                <td><input type="text" name="register_data1" maxlength="100"></td>
+                                <td><input class="btn-login-check" type="text" name="register_data1" maxlength="100"></td>
                                 <th>이메일</th>
                                 <td>
                                     @if(sess_data('is_login') === true)
@@ -170,26 +170,26 @@
                                 <th><p>희망하는<br />홍보 활동 과목<br />(교수진)<br />선택</p></th>
                                 <td colspan="3">
                                     <ul>
-                                        <li><label><input type="radio" name="register_data2" value="교육학 이경범 교수"/>교육학 이경범 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="교육학 정현 교수"/>교육학 정현 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="전공국어 송원영 교수"/>전공국어 송원영 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="전공국어 권보민 교수"/>전공국어 권보민 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="전공국어 구동언 교수"/>전공국어 구동언 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="전공영어 김유석 교수"/>전공영어 김유석 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="전공영어 김영문</"/>전공영어 김영문</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="전공수학 김철홍 교수"/>전공수학 김철홍 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="전공수학 김현웅 교수"/>전공수학 김현웅 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="수학교육론 박태영 교수"/>수학교육론 박태영 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="수학교육론 박혜향 교수"/>수학교육론 박혜향 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="전공생물 강치욱 교수"/>전공생물 강치욱 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="생물교육론 양혜정 교수"/>생물교육론 양혜정 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="전공화학 강철 교수"/>전공화학 강철 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="도덕윤리 김병찬 교수"/>도덕윤리 김병찬 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="일반사회 허역 교수팀"/>일반사회 허역 교수팀</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="전공역사 김종권 교수"/>전공역사 김종권 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="전공음악 다이애나 교수"/>전공음악 다이애나 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="전기전자통신 최우영 교수"/>전기전자통신 최우영 교수</label></li>
-                                        <li><label><input type="radio" name="register_data2" value="전공중국어 장영희 교수"/>전공중국어 장영희 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="교육학 이경범 교수"/>교육학 이경범 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="교육학 정현 교수"/>교육학 정현 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공국어 송원영 교수"/>전공국어 송원영 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공국어 권보민 교수"/>전공국어 권보민 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공국어 구동언 교수"/>전공국어 구동언 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공영어 김유석 교수"/>전공영어 김유석 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공영어 김영문</"/>전공영어 김영문</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공수학 김철홍 교수"/>전공수학 김철홍 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공수학 김현웅 교수"/>전공수학 김현웅 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="수학교육론 박태영 교수"/>수학교육론 박태영 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="수학교육론 박혜향 교수"/>수학교육론 박혜향 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공생물 강치욱 교수"/>전공생물 강치욱 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="생물교육론 양혜정 교수"/>생물교육론 양혜정 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공화학 강철 교수"/>전공화학 강철 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="도덕윤리 김병찬 교수"/>도덕윤리 김병찬 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="일반사회 허역 교수팀"/>일반사회 허역 교수팀</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공역사 김종권 교수"/>전공역사 김종권 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공음악 다이애나 교수"/>전공음악 다이애나 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전기전자통신 최우영 교수"/>전기전자통신 최우영 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공중국어 장영희 교수"/>전공중국어 장영희 교수</label></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -199,10 +199,10 @@
                                   SNS 채널</th>
                                 <td colspan="3">
                                     <ul>
-                                        <li><label><input type="radio" name="register_data3" value="블로그"/>블로그</label></li>
-                                        <li><label><input type="radio" name="register_data3" value="인스타그램"/>인스타그램</label></li>
-                                        <li><label><input type="radio" name="register_data3" value="페이스북"/>페이스북</label></li>
-                                        <li><label><input type="radio" name="register_data3" value="기타"/>기타</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data3" value="블로그"/>블로그</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data3" value="인스타그램"/>인스타그램</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data3" value="페이스북"/>페이스북</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data3" value="기타"/>기타</label></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -210,7 +210,7 @@
                                 <th>SNS 계정<br>
                                 URL</th>
                                 <td colspan="3">
-                                    <input type="text" name="register_data4" maxlength="100">
+                                    <input class="btn-login-check" type="text" name="register_data4" maxlength="100">
                                 </td>
                             </tr>
                         </tbody>
@@ -232,13 +232,17 @@
     <script>
         $(document).ready(function() {
             AOS.init();
+
+            $('.btn-login-check').on('click', function () {
+                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+            });
         });
 
         function fn_submit() {
             var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
 
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
                 alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');

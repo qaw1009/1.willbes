@@ -19,7 +19,7 @@
     .question .tab a:hover,
     .question .tab a.active {background:#464646; color:#fff}
     .btnsSt3 {text-align:center; margin-top:20px}
-    .btnsSt3 a {display:inline-block; padding:8px 16px; background:#d39004; color:#fff !important; font-weight:400; border:1px solid #d39004}
+    .btnsSt3 a {display:inline-block; padding:1vh 2vh; font-size:1.8vh; background:#d39004; color:#fff !important; font-weight:400; border:1px solid #d39004}
     .btnsSt3 a:hover {background:#fff; color:#d39004 !important}
 </style>
 @section('content')

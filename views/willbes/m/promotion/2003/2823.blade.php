@@ -53,7 +53,7 @@
 
 <div id="Container" class="Container NSK c_both">
     <div class="evtCtnsBox evt_top">
-        <img src="https://static.willbes.net/public/images/promotion/2022/11/2823m_top.jpg" alt=""/>
+        <img src="https://static.willbes.net/public/images/promotion/2022/11/2823m_top.gif" alt=""/>
     </div>
 
     <div class="evtCtnsBox evt01">
@@ -78,9 +78,9 @@
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2823m_02.jpg" alt=""/>
             <a href="https://pass.willbes.net/m/lecture/show/cate/3103/pattern/only/prod-code/201672" target="_blank" title="석치수" style="position: absolute; left: 64.31%; top: 63.51%; width: 30.56%; height: 4.51%;  z-index: 2;"></a>
-            <a href="https://pass.willbes.net/m/lecture/show/cate/3103/pattern/only/prod-code/202468" target="_blank" title="박준범" style="position: absolute; left: 64.31%; top: 71.29%; width: 30.56%; height: 4.51%;  z-index: 2;"></a>
-            <a href="https://pass.willbes.net/m/lecture/show/cate/3103/pattern/only/prod-code/202469" target="_blank" title="이나우" style="position: absolute; left: 64.31%; top: 79.07%; width: 30.56%; height: 4.51%;  z-index: 2;"></a>
-            <a href="https://pass.willbes.net/m/lecture/show/cate/3103/pattern/only/prod-code/202470" target="_blank" title="한승아" style="position: absolute; left: 64.31%; top: 87.05%; width: 30.56%; height: 4.51%;  z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/lecture/show/cate/3103/pattern/free/prod-code/202468" target="_blank" title="박준범" style="position: absolute; left: 64.31%; top: 71.29%; width: 30.56%; height: 4.51%;  z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/lecture/show/cate/3103/pattern/free/prod-code/202469" target="_blank" title="이나우" style="position: absolute; left: 64.31%; top: 79.07%; width: 30.56%; height: 4.51%;  z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/lecture/show/cate/3103/pattern/free/prod-code/202470" target="_blank" title="한승아" style="position: absolute; left: 64.31%; top: 87.05%; width: 30.56%; height: 4.51%;  z-index: 2;"></a>
         </div>
     </div>
 

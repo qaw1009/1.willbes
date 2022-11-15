@@ -68,7 +68,7 @@
     
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2823_top.jpg" alt=""/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/11/2823_top.gif" alt=""/>
             <span data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/11/2823_top_img.png" alt=""/></span>
         </div>
 
@@ -95,9 +95,9 @@
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/11/2823_02.jpg" alt=""/>
                 <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/only/prod-code/201672" target="_blank" title="석치수" style="position: absolute; left: 70.63%; top: 65.75%; width: 20%; height: 4.16%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/only/prod-code/202468" target="_blank" title="박준범" style="position: absolute; left: 70.63%; top: 72.92%; width: 20%; height: 4.16%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/only/prod-code/202469" target="_blank" title="이나우" style="position: absolute; left: 70.63%; top: 79.96%; width: 20%; height: 4.16%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/only/prod-code/202470" target="_blank" title="한승아" style="position: absolute; left: 70.63%; top: 86.94%; width: 20%; height: 4.16%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/202468" target="_blank" title="박준범" style="position: absolute; left: 70.63%; top: 72.92%; width: 20%; height: 4.16%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/202469" target="_blank" title="이나우" style="position: absolute; left: 70.63%; top: 79.96%; width: 20%; height: 4.16%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/202470" target="_blank" title="한승아" style="position: absolute; left: 70.63%; top: 86.94%; width: 20%; height: 4.16%; z-index: 2;"></a>
             </div>
         </div>
 

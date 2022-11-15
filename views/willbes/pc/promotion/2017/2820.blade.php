@@ -158,7 +158,7 @@
                                 <th>이메일</th>
                                 <td>
                                     @if(sess_data('is_login') === true)
-                                        @if (empty(sess_data('mem_mail')) === true)
+                                        @if (empty($arr_base['member_info']['Mail']) === true)
                                             <a href="{{app_url('/member/change/index/info','www')}}" target="_blank">개인정보수정</a>
                                         @else
                                             {{$arr_base['member_info']['Mail']}}

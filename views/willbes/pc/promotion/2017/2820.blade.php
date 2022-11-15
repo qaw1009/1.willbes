@@ -69,7 +69,7 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
             <a href="#runningMate">
-                재학생<br>
+                임고생<br>
                 Running<br>
                 Mate<br>
                 지원하기 👇

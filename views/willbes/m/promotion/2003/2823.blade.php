@@ -154,7 +154,7 @@
             최적화된 단계별 학습 프로그램으로 시작부터 앞서 가십시오!
         </div>
         @if(empty($arr_base['display_product_data']) === false)
-            @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+            @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
         @endif 
     </div>
 </div>

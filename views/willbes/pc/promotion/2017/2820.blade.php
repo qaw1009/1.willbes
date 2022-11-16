@@ -48,6 +48,7 @@
         .evt_table td ul {display:flex; flex-wrap: wrap;}
         .evt_table td li {width:33.333%; margin-bottom:10px; letter-spacing:-1px}
         .evt_table tr:nth-child(4) li {width:25%;}
+        .evt_table td .editBtn {padding:5px 15px; background:#5e46c0; color:#fff; border-radius:30px}
 
        
         .check {margin:10px auto 30px; text-align:left}
@@ -136,8 +137,8 @@
                     <table cellspacing="2" cellpadding="2">
                         <col width="14%" />
                         <col/>
-                        <col width="10%" />
-                        <col />
+                        <col width="14%" />
+                        <col width="34%" />
                         <tbody>
                             <tr>
                                 <th>ID / 이름</th>
@@ -159,7 +160,7 @@
                                 <td>
                                     @if(sess_data('is_login') === true)
                                         @if (empty($arr_base['member_info']['Mail']) === true)
-                                            <a href="{{app_url('/member/change/index/info','www')}}" target="_blank">개인정보수정</a>
+                                            <a href="{{app_url('/member/change/index/info','www')}}" target="_blank" class="editBtn">개인정보수정 ></a>
                                         @else
                                             {{$arr_base['member_info']['Mail']}}
                                         @endif

@@ -56,16 +56,8 @@
         .evt05 {padding:100px 0}
         .evt05 .sTilte {font-size:40px; margin-bottom:50px; line-height:1.4; color:#474747}
         .evt05 .sTilte div {color:#7d7d7d}
-
     </style>
 
-    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
-        {!! csrf_field() !!}
-        {!! method_field('POST') !!}
-
-        <input type="hidden" name="msg" value="설문조사를 참여해 주세요.">
-    </form>
-    
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2823_top.gif" alt=""/>
@@ -84,7 +76,7 @@
                 <div id="tab02"><img src="https://static.willbes.net/public/images/promotion/2022/11/2823_01_02.jpg" alt=""/></div>
                 <div id="tab03"><img src="https://static.willbes.net/public/images/promotion/2022/11/2823_01_03.jpg" alt=""/></div>
             </div>
-            <a href="#" class="btn NSK-Black" href="javascript:void(0);" onclick="showPopup();">설문조사 참여하기</a>
+            <a href="javascript:void(0);" class="btn NSK-Black" onclick="showPopup(); return false;">설문조사 참여하기</a>
             <p>
                 ※ 설문조사 참여일 기준 다음날 평일 오후 1시 전까지 아이디로 무료수강권이 발급됩니다.<br>
                 ※ 쿠폰 사용 방법 : 로그인 > [7급 PSAT 자료해석 표,그래프 계산특강] > 바로결제 > 쿠폰적용 > 결제완료
@@ -102,59 +94,70 @@
         </div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-up">
-            <div class="sTilte NSK-Black">수강내역 인증하기</div>    
-            <div class="request" id="request">
-                <div class="requestL">
-                    <h3>* 수강내역 인증하기 - 로그인 후 참여</h3>
-                    <table width="0" cellspacing="0" cellpadding="0" class="table_type">
-                        <col width="25%" />
-                        <col  />
-                        <tr>
-                            <th>* 이름</th>
-                            <td scope="col">
-                                홍길동
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>* 아이디</th>
-                            <td>
-                                willbes
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>* 이미지 등록</th>
-                            <td>
-                                <input type="file" name="attach_file" id="attach_file"/>
-                            </td>
-                        </tr>
-                    </table>
-                    <p>* 이미지 (jpg, gif, png 파일만 등록 가능)</p>
-                </div>
-                <div class="requestR">
-                    <h3>* 개인정보 수집 및 이용에 대한 안내</h3>
-                    <ul>
-                        <li>
-                            <strong>1. 개인정보 수집 이용 목적</strong> <br>
-                            - 신청자 본인 확인 및 신청 접수 및 문의사항 응대<br>
-                            - 윌비스 한림법학원 7급공채 이벤트, 신규 강의 안내 등 최신 정보 및 광고성 정보 제공
-                        </li>
-                        <li><strong>2. 개인정보 수집 항목</strong> <br>
-                        - 필수항목 : 성명, 아이디
-                        </li>
-                        <li><strong>3. 개인정보 이용기간 및 보유기간</strong><br>
-                        - 이용 목적 달성 또는 신청자의 신청 해지 및 삭제 요청 시 파기
-                        </li>
-                        <li>4. 신청자의 개인정보 수집 및 활용에 동의하지 않으실 경우 이벤트 참여 및 서비스 이용에 제한이 있을 수 있습니다.</li>
-                        <li>5. 입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3 자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.</li>
-                    </ul>
-                    <div>
-                        <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+            <form name="regi_form_register" id="regi_form_register" enctype="multipart/form-data">
+                {!! csrf_field() !!}
+                <input type="hidden" name="event_idx" id ="event_idx" value="{{ $data['ElIdx'] }}"/>
+                <input type="hidden" name="register_type" value="promotion"/>
+                <input type="hidden" name="file_chk" value="Y"/>
+                <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
+                <input type="hidden" id="register_name" name="register_name" value="{{sess_data('mem_name')}}">
+                <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
+                <input type="hidden" name="register_overlap_chk" value="Y"> {{-- 중복 신청 가능여부 --}}
+
+                <div class="sTilte NSK-Black">수강내역 인증하기</div>
+                <div class="request" id="request">
+                    <div class="requestL">
+                        <h3>* 수강내역 인증하기 - 로그인 후 참여</h3>
+                        <table width="0" cellspacing="0" cellpadding="0" class="table_type">
+                            <col width="25%" />
+                            <col  />
+                            <tr>
+                                <th>* 이름</th>
+                                <td scope="col">
+                                    {{sess_data('mem_name')}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>* 아이디</th>
+                                <td>
+                                    {{sess_data('mem_id')}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>* 이미지 등록</th>
+                                <td>
+                                    <input type="file" name="attach_file" id="attach_file"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <p>* 이미지 (jpg, gif, png 파일만 등록 가능)</p>
+                    </div>
+                    <div class="requestR">
+                        <h3>* 개인정보 수집 및 이용에 대한 안내</h3>
+                        <ul>
+                            <li>
+                                <strong>1. 개인정보 수집 이용 목적</strong> <br>
+                                - 신청자 본인 확인 및 신청 접수 및 문의사항 응대<br>
+                                - 윌비스 한림법학원 7급공채 이벤트, 신규 강의 안내 등 최신 정보 및 광고성 정보 제공
+                            </li>
+                            <li><strong>2. 개인정보 수집 항목</strong> <br>
+                            - 필수항목 : 성명, 아이디
+                            </li>
+                            <li><strong>3. 개인정보 이용기간 및 보유기간</strong><br>
+                            - 이용 목적 달성 또는 신청자의 신청 해지 및 삭제 요청 시 파기
+                            </li>
+                            <li>4. 신청자의 개인정보 수집 및 활용에 동의하지 않으실 경우 이벤트 참여 및 서비스 이용에 제한이 있을 수 있습니다.</li>
+                            <li>5. 입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3 자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.</li>
+                        </ul>
+                        <div>
+                            <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div>
-                <a href="#none" onclick="javascript:fn_submit();" class="btn NSK-Black">인증하기</a>
-            </div> 
+                <div>
+                    <a href="javascript:void(0);" onclick="fn_submit(); return false;" class="btn NSK-Black">인증하기</a>
+                </div>
+            </form>
         </div>
 
         <div class="evtCtnsBox evt04" data-aos="fade-up">
@@ -173,6 +176,8 @@
     </div>
     <!-- End Container -->
 
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
         /*탭*/
         $(document).ready(function(){
@@ -198,9 +203,8 @@
                     $content.show();
 
                     e.preventDefault()})})}
-        );   
-
-        var $regi_form = $('#regi_form');
+        );
+        AOS.init();
 
         function showPopup(){
             @if(empty($arr_promotion_params['SsIdx']) === true)
@@ -211,13 +215,36 @@
                 window.open(url,'survey_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
             @endif
         }
-    </script>
 
-    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
-    <script src="/public/js/willbes/dist/aos.js"></script>
-    <script>
-        $(document).ready( function() {
-            AOS.init();
-        });
+        function fn_submit() {
+            var $regi_form_register = $('#regi_form_register');
+            var _url = '{!! front_url('/event/registerStore') !!}';
+            {!! login_check_inner_script('로그인 후 이용해 주세요.','Y') !!}
+
+            var files = $('#attach_file')[0].files[0];
+            if (files === undefined || files == null || files == '') {
+                alert('이미지를 등록해 주세요.');
+                return;
+            } else {
+                var ext = $('#attach_file').val().split('.').pop().toLowerCase();
+                if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('등록 할수 없는 파일 확장자입니다.');
+                    return;
+                }
+            }
+
+            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+                alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+                return;
+            }
+
+            if (!confirm('신청하시겠습니까?')) { return true; }
+            ajaxSubmit($regi_form_register, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    location.reload();
+                }
+            }, showValidateError, null, false, 'alert');
+        }
     </script>
 @stop

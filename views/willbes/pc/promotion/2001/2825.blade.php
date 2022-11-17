@@ -46,11 +46,11 @@
         .evt05 .infoText {margin-top:50px; color:#fff; font-size:30px}
         /* 슬라이드배너 */
         .slide_con {position:relative ; width:533px; margin:0 auto}
-        .slide_con p {position:absolute; top:50%; width:533px;margin-top:-41px; z-index:100}
+        .slide_con p {position:absolute; top:50%; width:533px;height:492px;margin-top:-41px; z-index:100}
         .slide_con p a {cursor:pointer}
         .slide_con p.leftBtn {left:-350px}
         .slide_con p.rightBtn {right:-350px}
-        #slidesImg4 {margin:0 auto; overflow:hidden}
+        #slidesImg4 {width:553px; height:492px; margin:0 auto; overflow:hidden}
         #slidesImg4 li {display:inline; float:left}
         #slidesImg4:after {content::""; display:block; clear:both}
 

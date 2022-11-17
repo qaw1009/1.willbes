@@ -57,7 +57,7 @@
                 24년 소방공무원 시험도 완벽대비<br>
                 <strong>인천윌비스</strong>는 여러분의 <strong>합격</strong>을 위해 <strong>최선</strong>을 다합니다.
                 <a href="https://willbesedu.willbes.net/pass/offPackage/index?cate_code=3126&search_text=UHJvZE5hbWU6MjM%3D" target="_blank">23년 개편 소방반 수강신청 ></a>
-                <a href="https://willbesedu.willbes.net/pass/offPackage/index?cate_code=3126&search_text=UHJvZE5hbWU6MjQ%3D" target="_blank">24년 대비 소방 관리반 수강신청(선착순 소수정예) ></a>
+                <a href="https://willbesedu.willbes.net/pass/offPackage/show/prod-code/201609" target="_blank">24년 대비 소방 관리반 수강신청(선착순 소수정예) ></a>
             </div>
         </div>
 

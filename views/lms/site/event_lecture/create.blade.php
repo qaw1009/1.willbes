@@ -610,9 +610,9 @@
                                             <colgroup>
                                                 <col style="width:13%">
                                                 <col style="">
-                                                <col style="width:15%">
-                                                <col style="width:17%">
-                                                <col style="width:17%">
+                                                <col style="width:20%">
+                                                <col style="width:18%">
+                                                <col style="width:18%">
                                                 <col style="width:6%">
                                                 <col style="width:3%">
                                             </colgroup>
@@ -662,7 +662,7 @@
                                                             </span>
                                                         </td>
                                                         <td>
-                                                            <input type="text" name="event_add_apply_name[]" id="event_add_apply_name_{{$add_apply_index}}" value="{{$row['Name']}}" style="min-width: 170px;">
+                                                            <input type="text" name="event_add_apply_name[]" id="event_add_apply_name_{{$add_apply_index}}" value="{{$row['Name']}}" style="width: 95%;">
                                                         </td>
                                                         <td>
                                                             <div class="input-group mb-0">

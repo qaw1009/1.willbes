@@ -41,23 +41,7 @@
     }
     .slide_con .bx-wrapper .bx-pager.bx-default-pager a.active {
         width: 30px;
-    }
-
-     /*레이어팝업*/
-     .Pstyle {
-        opacity: 0;
-        display: none;
-        position: relative;
-        width: auto;
-    }
-    .b-close {
-        right: 10px;
-        top: 50px;
-        padding: 5px;
-        display: inline-block;
-        cursor: pointer;
-    }
-    .Pstyle .content {height:auto; width:auto;}
+    }    
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
@@ -101,13 +85,8 @@
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2825m_03.jpg"  alt="커리큘럼"/>               
     </div>
 
-    <div class="evtCtnsBox" data-aos="fade-up">
-        <div class="wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2825m_04.jpg"  alt="경찰학 교재"/>  
-            <a href="javascript:go_popup1()" title="핵심 서브노트" style="position: absolute;left: 39.96%;top: 45.25%;width: 15.69%;height: 3.19%;z-index: 2;"></a>
-            <a href="javascript:go_popup2()" title="21개년 총알기출 ox" style="position: absolute;left: 39.96%;top: 66.45%;width: 15.69%;height: 3.19%;z-index: 2;"></a>
-            <a href="javascript:go_popup3()" title="플러스 100제" style="position: absolute;left: 39.96%;top: 87.65%;width: 15.69%;height: 3.19%;z-index: 2;"></a>
-        </div>             
+    <div class="evtCtnsBox" data-aos="fade-up">        
+        <img src="https://static.willbes.net/public/images/promotion/2022/11/2825m_04.jpg"  alt="경찰학 교재"/>                
     </div>
 
     <div class="evtCtnsBox evt05" data-aos="fade-up">
@@ -132,27 +111,7 @@
 
     <div class="evtCtnsBox">
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2825m_07.jpg"  alt="후회없는 선택"/>               
-    </div>
-
-     <!--레이어팝업-->
-     <div id="popup1" class="Pstyle">
-        <span class="b-close"></span>
-        <div class="content1">                  
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2825_textbook01.png" class="off" alt="" />    
-        </div> 
-    </div>    
-    <div id="popup2" class="Pstyle">
-        <span class="b-close"></span>   
-        <div class="content2">         
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2825_textbook02.png" class="off" alt="" />  
-        </div> 
-    </div>
-    <div id="popup3" class="Pstyle">    
-        <span class="b-close"></span>
-        <div class="content3">            
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2825_textbook03.png" class="off" alt="" />  
-        </div>
-    </div>
+    </div>   
 
 </div>
 
@@ -168,7 +127,6 @@
 
 <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
 <script src="/public/vendor/jquery/bxslider/jquery.bxslider.js"></script>
-<script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
 <script type="text/javascript">
 
     /*슬라이드*/
@@ -182,18 +140,7 @@
             controls:false,
             pager:true,
         });
-    });
-
-    /*레이어팝업*/
-    function go_popup1() {
-            $('#popup1').bPopup();
-        }   
-        function go_popup2() {
-            $('#popup2').bPopup();
-        }
-        function go_popup3() {
-            $('#popup3').bPopup();
-        }
+    });   
 
 </script>
 

@@ -12,7 +12,7 @@
     /*.evtCtnsBox a {border:1px solid #000}*/
 
     
-    a.btn {width:80%; margin:0 auto; display:block; background:#010a2b; color:#fff; font-size:2.2vh; padding:2vh; border-radius:2vh}
+    a.btn {width:80%; margin:0 auto; display:block; background:#010a2b; color:#fff; font-size:2vh; padding:2vh; border-radius:2vh}
     a.btn:hover,
     .evt03 a.btn:hover {background:#06f4f6; color:#010a2b}
 
@@ -23,8 +23,8 @@
     .evt03 .attend {margin:2vh; font-size:1.4vh; display:flex; flex-wrap: wrap;}
     .evt03 .attend > div {background:url(https://static.willbes.net/public/images/promotion/2022/11/2827_date_bg.png) no-repeat center center; background-size:100%; display:flex; justify-content: center; align-items: center; width:25%; margin-bottom:1.5vh; position: relative; height:calc(100%); min-height:183px;}
     .evt03 .attend > div:hover {cursor: pointer;}
-    .evt03 .attend > div p {display:block; font-size:2vh; width:100%; margin:0; padding:0; line-height:1.2}
-    .evt03 .attend > div p strong {font-size:2.4vh; font-weight:bold;}
+    .evt03 .attend > div p {display:block; font-size:1.8vh; width:100%; margin:0; padding:0; line-height:1.2}
+    .evt03 .attend > div p strong {font-size:2.2vh; font-weight:bold;}
     .evt03 .attend > div div {position: absolute; width:100%; height:100%; background:rgba(0,0,0,.8); color:#fff; font-size:3.6vh; border-radius:2vh; display:flex; justify-content: center; align-items: center; font-weight:bold;}
     /*
     .evt03 div table {table-layout: auto; border-top:1px solid #fff;}

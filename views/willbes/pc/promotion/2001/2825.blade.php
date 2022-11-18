@@ -42,17 +42,19 @@
 
         .evt03 {background:#F5F5F5}
 
-        .evt05 {background:#F5F5F5;}
-        .evt05 .infoText {margin-top:50px; color:#fff; font-size:30px}
-        /* 슬라이드배너 */
-        .slide_con {position:relative ; width:533px; margin:0 auto}
-        .slide_con p {position:absolute; top:50%; width:533px;height:492px;margin-top:-41px; z-index:100}
-        .slide_con p a {cursor:pointer}
-        .slide_con p.leftBtn {left:-350px}
-        .slide_con p.rightBtn {right:-350px}
-        #slidesImg4 {width:553px; height:492px; margin:0 auto; overflow:hidden}
-        #slidesImg4 li {display:inline; float:left}
-        #slidesImg4:after {content::""; display:block; clear:both}
+        .evt05 {background:#F5F5F5;padding-bottom:250px;}
+        .evt05 .infoText {margin-top:50px; color:#fff; font-size:30px}        
+        /*교수 롤링*/
+        .section_pro {
+        background:url(https://static.willbes.net/public/images/promotion/2022/11/2825_05_bg.jpg) no-repeat center top; 
+                   position:relative;height:1000px;clear:both;}      
+        .section_pro .box_pro {position:absolute; top:700px; left:0; width:100%; z-index:1}
+        .section_pro .box_pro .bx-wrapper{max-width:100% !important;}
+        .section_pro .box_pro li {display:inline; float:left;height:492px;}
+        .section_pro .box_pro li img {
+        width: 100%;
+        height: 100%;        
+        }
 
         .evt06 {background:#F5F5F5;}
 
@@ -96,8 +98,8 @@
         <div class="evtCtnsBox evt01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2825_01.jpg"  alt="오리지날 경찰학"/>    
             <div class="youtube">
-                {{--<iframe src="https://www.youtube.com/embed/DNmn4xIMyTU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>--}}
-            </div>          
+                <iframe src="https://www.youtube.com/embed/ojZcGpQXrcs?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>         
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">
@@ -118,20 +120,19 @@
         </div>
 
         <div class="evtCtnsBox evt05" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2825_05.jpg"  alt="리얼 수강후기" />
-            <div class="slide_con">
-                <ul id="slidesImg4">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment01.png" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment02.png" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment03.png" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment04.png" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment05.png" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment06.png" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment07.png" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment08.png" alt="" /></li>                 
-                </ul>
-                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2022/11/arrow_left.png" alt="left" /></a></p>
-                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2022/11/arrow_right.png" alt="right" /></a></p>
+            <div class="section_pro">                
+                <div class="box_pro">
+                    <ul class="slide_pro">
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment01.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment02.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment03.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment04.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment05.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment06.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment07.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_comment08.png" alt="" /></li>                                                           
+                    </ul>
+                </div>  
             </div>
         </div>
 
@@ -185,31 +186,22 @@
       $(document).ready( function() {
         AOS.init();
       });
-      /* 슬라이드배너 */
+
+      /*롤링*/
       $(document).ready(function() {
-            var slidesImg4 = $("#slidesImg4").bxSlider({
-                mode:'horizontal',
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
+            var BxBook = $('.slide_pro').bxSlider({
+                slideWidth: 533,
+                slideMargin: 40,
+                maxSlides:10,
                 minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
+                moveSlides: 1,
+                ticker:true,
+                speed:40000,
+                onSlideAfter: function() {
+                    BxBook.stopAuto();
+                    BxBook.startAuto();
+                }
             });
-
-            $("#imgBannerLeft4").click(function (){
-                slidesImg4.goToPrevSlide();
-            });
-
-            $("#imgBannerRight4").click(function (){
-                slidesImg4.goToNextSlide();
-            });
-            
         });
 
         /*레이어팝업*/     

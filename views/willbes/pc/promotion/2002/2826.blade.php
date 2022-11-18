@@ -77,7 +77,7 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky" id="QuickMenu">
-            <a href="#lec"><img src="https://static.willbes.net/public/images/promotion/2022/11/2826_sky01.png" alt="경찰학 스페셜 이벤트"></a>
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2827" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/11/2826_sky01.png" alt="경찰학 스페셜 이벤트"></a>
             <a href="#lec"><img src="https://static.willbes.net/public/images/promotion/2022/11/2826_sky02.png" title="경찰학 완성반 신청하기"></a> 
         </div>
 

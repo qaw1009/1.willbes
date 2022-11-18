@@ -108,132 +108,17 @@
                 @endif
             @endforeach
 
-
             <div class="attend">
-                <div>
-                    <p>11/21(월)<br>
-                    경찰학<br>
-                    2총기<br>
-                    <strong>50명</strong></p>
-                    <div>마감</div>
-                </div>
-                <div>
-                    <p>11/22(화)<br>
-                    경찰학<br>
-                    2총기<br>
-                    <strong>50명</strong></p>
-                </div>
-                <div>
-                    <p>11/23(수)<br>
-                    경찰학<br>
-                    2총기<br>
-                    <strong>50명</strong></p>
-                </div>
-                <div>
-                    <p>11/24(목)<br>
-                    경찰학<br>
-                    2총기<br>
-                    <strong>50명</strong></p>
-                </div>
-                <div>
-                    <p>11/25(금)<br>
-                    경찰학<br>
-                    2총기<br>
-                    <strong>50명</strong></p>
-                </div>
-                <div>
-                    <p>11/28(월)<br>
-                    경찰학<br>
-                    서브노트<br>
-                    <strong>50명</strong></p>
-                </div>
-                <div>
-                    <p>11/29(화)<br>
-                    경찰학<br>
-                    서브노트<br>
-                    <strong>50명</strong></p>
-                </div>
-                <div>
-                    <p>11/30(수)<br>
-                    경찰학<br>
-                    서브노트<br>
-                    <strong>50명</strong></p>
-                </div>
-                <div>
-                    <p>12/1(목)<br>
-                    경찰학<br>
-                    서브노트<br>
-                    <strong>50명</strong></p>
-                </div>
-                <div>
-                    <p>12/2(금)<br>
-                    경찰학<br>
-                    서브노트<br>
-                    <strong>50명</strong></p>
-                </div>
+                @if(empty($arr_base['add_apply_data']) === false)
+                    @foreach($arr_base['add_apply_data'] as $key => $row)
+                        <div>
+                            {!! $row['Name'] !!}
+                            {!! (time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'] ? '<div>마감</div>' : '') !!}
+                        </div>
+                    @endforeach
+                @endif
             </div>
-            <a href="#none" class="btn NSK-Black">김재규 교수님 스탬프 랠리 신청하기 ></a>
-            <!--
-            <div>
-                <table cellspacing="0" cellpadding="0">
-                    <tbody>
-                        @if(empty($arr_base['add_apply_data']) === false)
-                            @php $col_cnt = 4; @endphp
-                            @for($i=0; $i < count($arr_base['add_apply_data']); $i++)
-                                @if($i==0 || $i%$col_cnt == 0)
-                                    @php $tr_i = $i; @endphp
-                                    <tr>
-                                        @endif
-                                        <td>{{$arr_base['add_apply_data'][$i]['Name']}}</td>
-                                        @if($i==($tr_i+$col_cnt-1) || $i == (count($arr_base['add_apply_data']))-1)
-                                            @if($i == (count($arr_base['add_apply_data']))-1) {{-- 마지막일때 --}}
-                                            @php
-                                                $remain_cnt = $col_cnt - (count($arr_base['add_apply_data'])%$col_cnt);
-                                                if($remain_cnt == $col_cnt) $remain_cnt = 0;
-                                            @endphp
-                                            @if($remain_cnt != 0)
-                                                @for($r=0; $r < $remain_cnt; $r++)
-                                                    <td></td>
-                                                @endfor
-                                            @endif
-                                            @endif
-                                    </tr>
-                                    @php $temp_j = 0; @endphp
-                                    @for($j=($i-$col_cnt+1+(empty($remain_cnt)? 0 : $remain_cnt)); $j <= $i; $j++)
-                                        @if($j==0 || ($j%$col_cnt == 0  && $temp_j == 0) || ($i == (count($arr_base['add_apply_data']))-1 && $temp_j == 0) )
-                                            <tr>
-                                                @endif
-                                                <td>
-                                                    <div>
-                                                        @if(time() >= strtotime($arr_base['add_apply_data'][$j]['ApplyEndDatm']) || $arr_base['add_apply_data'][$j]['PersonLimit'] <= $arr_base['add_apply_data'][$j]['MemberCnt'])
-                                                            <span><img src="https://static.willbes.net/public/images/promotion/2022/11/2827m_as_off.png" alt="마감"></span>
-                                                        @endif
-                                                        <img src="https://static.willbes.net/public/images/promotion/2022/11/2827m_as.png" alt="진행중">
-                                                    </div>
-                                                </td>
-                                                @if($j==($tr_i+$col_cnt-1) || $j == (count($arr_base['add_apply_data']))-1)
-                                                    @if(empty($remain_cnt) === false && $remain_cnt != 0)
-                                                        @for($r=0; $r < $remain_cnt; $r++)
-                                                            <td></td>
-                                                        @endfor
-                                                    @endif
-                                            </tr>
-                                        @endif
-                                        @php $temp_j++; @endphp
-                                    @endfor
-                                @endif
-                            @endfor
-                        @endif
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="btn">
-                <a href="javascript:void(0);" onclick="javascript:fn_add_apply_submit(); return false;">
-                    <img src="https://static.willbes.net/public/images/promotion/2022/10/2807_04_btn.png"  alt="이벤트신청"/>
-                </a>
-            </div>
-            -->
+            <a href="javascript:void(0);" class="btn NSK-Black" onclick="fn_add_apply_submit(); return false;">김재규 교수님 스탬프 랠리 신청하기 ></a>
         </form>
     </div> 
 
@@ -260,7 +145,7 @@
     // 무료 당첨
     function fn_add_apply_submit() {
         {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-            var $add_apply_form = $('#add_apply_form');
+        var $add_apply_form = $('#add_apply_form');
         var _url = '{!! front_url('/event/addApplyStore') !!}';
 
         if (typeof $add_apply_form.find('input[name="add_apply_chk[]"]').val() === 'undefined') {

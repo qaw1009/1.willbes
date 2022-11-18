@@ -90,81 +90,16 @@
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2022/11/2827_03.png" alt="무료증정 이벤트"/>
                     <div class="attend">
-                        <div>
-                            <p>11/21(월)<br>
-                            경찰학<br>
-                            2총기<br>
-                            <strong>50명</strong></p>
-                            <div>마감</div>
-                        </div>
-                        <div>
-                            <p>11/22(화)<br>
-                            경찰학<br>
-                            2총기<br>
-                            <strong>50명</strong></p>
-                        </div>
-                        <div>
-                            <p>11/23(수)<br>
-                            경찰학<br>
-                            2총기<br>
-                            <strong>50명</strong></p>
-                        </div>
-                        <div>
-                            <p>11/24(목)<br>
-                            경찰학<br>
-                            2총기<br>
-                            <strong>50명</strong></p>
-                        </div>
-                        <div>
-                            <p>11/25(금)<br>
-                            경찰학<br>
-                            2총기<br>
-                            <strong>50명</strong></p>
-                        </div>
-                        <div>
-                            <p>11/28(월)<br>
-                            경찰학<br>
-                            서브노트<br>
-                            <strong>50명</strong></p>
-                        </div>
-                        <div>
-                            <p>11/29(화)<br>
-                            경찰학<br>
-                            서브노트<br>
-                            <strong>50명</strong></p>
-                        </div>
-                        <div>
-                            <p>11/30(수)<br>
-                            경찰학<br>
-                            서브노트<br>
-                            <strong>50명</strong></p>
-                        </div>
-                        <div>
-                            <p>12/1(목)<br>
-                            경찰학<br>
-                            서브노트<br>
-                            <strong>50명</strong></p>
-                        </div>
-                        <div>
-                            <p>12/2(금)<br>
-                            경찰학<br>
-                            서브노트<br>
-                            <strong>50명</strong></p>
-                        </div>
-                    </div>
-                    <a href="#none" class="btn NSK-Black">김재규 교수님 스탬프 랠리 신청하기 ></a>
-
-
-                    {{--
-                    <div class="attend {{time() .' '. strtotime($row['ApplyEndDatm'])}}" data-aos="fade-right">
                         @if(empty($arr_base['add_apply_data']) === false)
                             @foreach($arr_base['add_apply_data'] as $key => $row)
-                                <span class="{{ (time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'] ? 'end' : '') }}">{{$row['Name']}}</span>
+                                <div>
+                                    {!! $row['Name'] !!}
+                                    {!! (time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'] ? '<div>마감</div>' : '') !!}
+                                </div>
                             @endforeach
                         @endif
                     </div>
-                    <a href="javascript:void(0);" title="신청하기" onclick="fn_add_apply_submit(); return false;" style="position: absolute;left: 21.05%;top: 83.77%;width: 54.11%;height: 5.02%;z-index: 2;"></a>
-                    --}}
+                    <a href="javascript:void(0);" class="btn NSK-Black" onclick="fn_add_apply_submit(); return false;">김재규 교수님 스탬프 랠리 신청하기 ></a>
                 </div>
             </div>
         </form> 

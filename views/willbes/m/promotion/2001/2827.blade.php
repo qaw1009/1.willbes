@@ -18,10 +18,9 @@
 
     .evt01 {padding:5vh 0}
 
-    .evt03 {background:#000728;}
-    .evt03 > div {padding:0 2vh 5vh}
+    .evt03 {background:#000728; padding-bottom:8vh}
     .evt03 a.btn {background:#000;}
-    .evt03 .attend {margin:50px 2vh; font-size:1.4vh; display:flex; flex-wrap: wrap;}
+    .evt03 .attend {margin:2vh; font-size:1.4vh; display:flex; flex-wrap: wrap;}
     .evt03 .attend > div {background:url(https://static.willbes.net/public/images/promotion/2022/11/2827_date_bg.png) no-repeat center center; background-size:100%; display:flex; justify-content: center; align-items: center; width:25%; margin-bottom:1.5vh; position: relative; height:calc(100%); min-height:183px;}
     .evt03 .attend > div:hover {cursor: pointer;}
     .evt03 .attend > div p {display:block; font-size:2vh; width:100%; margin:0; padding:0; line-height:1.2}

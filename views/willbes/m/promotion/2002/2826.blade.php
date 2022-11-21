@@ -106,7 +106,7 @@
     <div class="evtCtnsBox">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2826m_07.jpg"  alt="후회없는 선택"/>
-            <a href="https://police.willbes.net/m/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank" title="신청하기" style="position: absolute;left: 25.47%;top: 87.65%;width: 49.55%;height: 5.57%;z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" title="신청하기" style="position: absolute;left: 25.47%;top: 87.65%;width: 49.55%;height: 5.57%;z-index: 2;"></a>
         </div>      
     </div>
 

@@ -6,6 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Server extends \app\controllers\RestController
 {
+    // 컨트롤러별 인증방식 설정
+    //protected $rest_auth = 'basic';
     // 메소드별 인증방식 설정
     /*protected $methods = [
         'index_get' => ['auth' => 'digest'],

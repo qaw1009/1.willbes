@@ -66,6 +66,13 @@ abstract class REST_Controller extends \CI_Controller
     protected $rest = null;
 
     /**
+     * This defines the rest auth (1st option, Custom)
+     *
+     * @var null|string|bool
+     */
+    protected $rest_auth = null;
+
+    /**
      * The arguments for the GET request method.
      *
      * @var array
@@ -386,6 +393,11 @@ abstract class REST_Controller extends \CI_Controller
             $this->_check_whitelist_auth($this->_check_ip_whitelist);
         }
 
+        // Check client's user agent (Custom)
+        if ($this->config->item('rest_user_agent_enabled') === true) {
+            $this->_check_user_agent_auth();
+        }
+
         // Load DB if its enabled
         if ($this->config->item('rest_database_group') && ($this->config->item('rest_enable_keys') || $this->config->item('rest_enable_logging'))) {
             $this->rest->db = $this->load->database($this->config->item('rest_database_group'), true);
@@ -416,12 +428,17 @@ abstract class REST_Controller extends \CI_Controller
         if ($this->auth_override === false &&
             (!($this->config->item('rest_enable_keys') && $this->_allow === true) ||
                 ($this->config->item('allow_auth_and_keys') === true && $this->_allow === true))) {
-            $controller_method = $this->router->method.'_'.$this->request->method;  // controller method name
-            if (isset($this->methods[$controller_method]['auth']) === true) {
-                // Authentication method setting by controller method (Custom)
-                $rest_auth = strtolower($this->methods[$controller_method]['auth']);
+            if (is_null($this->rest_auth) === false) {
+                // Authentication method setting by controller (Custom)
+                $rest_auth = strtolower($this->rest_auth);
             } else {
-                $rest_auth = strtolower($this->config->item('rest_auth'));
+                $controller_method = $this->router->method.'_'.$this->request->method;  // controller method name
+                if (isset($this->methods[$controller_method]['auth']) === true) {
+                    // Authentication method setting by controller method (Custom)
+                    $rest_auth = strtolower($this->methods[$controller_method]['auth']);
+                } else {
+                    $rest_auth = strtolower($this->config->item('rest_auth'));
+                }
             }
             switch ($rest_auth) {
                 case 'basic':
@@ -1783,13 +1800,13 @@ abstract class REST_Controller extends \CI_Controller
         $token = base64_decode(substr($http_auth, strpos($http_auth, ' ') + 1));
         $valid_logins = (array) $this->config->item('rest_valid_logins');
 
-        // 토큰 타입 체크
+        // token 인증타입 체크
         if ($rest_realm != $this->config->item('rest_realm')) {
             // Display an error response
             $this->_error_response($this->lang->line('text_rest_unauthorized'), self::HTTP_UNAUTHORIZED);
         }
 
-        // token 체크
+        // token 체크 (클라이언트아이디:요청타임스탬프:검증해시값)
         if (substr_count($token, ':') != 2) {
             // Display an error response
             $this->_error_response($this->lang->line('text_rest_unauthorized'), self::HTTP_UNAUTHORIZED);
@@ -1814,7 +1831,7 @@ abstract class REST_Controller extends \CI_Controller
             $this->_error_response($this->lang->line('text_rest_invalid_credentials'), self::HTTP_UNAUTHORIZED);
         }
 
-        // token 유효기간 체크 (substr($nonce, 6))
+        // token 유효기간 체크
         if (is_numeric($nonce) === true && intval($this->config->item('rest_token_limit_time')) < (time() - $nonce)) {
             // Display an error response
             $this->_error_response($this->lang->line('text_rest_token_time_limit'), self::HTTP_UNAUTHORIZED);
@@ -1844,7 +1861,7 @@ abstract class REST_Controller extends \CI_Controller
         $access_token = base64_decode(substr($http_auth, strpos($http_auth, ' ') + 1));
         $valid_logins = (array) $this->config->item('rest_valid_logins');
 
-        // 토큰 타입 체크
+        // token 인증타입 체크
         if ($token_type != $this->config->item('rest_oauth_token_type')) {
             // Display an error response
             return $this->_error_response($this->lang->line('text_rest_unauthorized'), self::HTTP_UNAUTHORIZED, $is_return);
@@ -2017,6 +2034,30 @@ abstract class REST_Controller extends \CI_Controller
         if (in_array($this->input->ip_address(), $whitelist) === false) {
             // Display an error response
             $this->_error_response($this->lang->line('text_rest_ip_unauthorized'), self::HTTP_UNAUTHORIZED);
+        }
+    }
+
+    /**
+     * Checks if the client's user agent is in the 'rest_user_agent' config and generates a 401 response.
+     *
+     * @return void
+     */
+    protected function _check_user_agent_auth()
+    {
+        $user_agent = $this->input->server('HTTP_USER_AGENT') ?: $this->head('User-Agent');
+        $valid_user_agents = (array) $this->config->item('rest_user_agent');
+        $is_valid_user_agent = false;
+
+        foreach ($valid_user_agents as $valid_user_agent) {
+            if (strpos($user_agent, $valid_user_agent) !== false) {
+                $is_valid_user_agent = true;
+                break;
+            }
+        }
+
+        if ($is_valid_user_agent === false) {
+            // Display an error response
+            $this->_error_response($this->lang->line('text_rest_invalid_credentials'), self::HTTP_UNAUTHORIZED);
         }
     }
 

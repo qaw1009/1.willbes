@@ -188,10 +188,18 @@
             $regi_form.on('click', 'button[name="btn_product_search"]', function() {
                 var site_code = $regi_form.find('select[name="site_code"]').val();
                 var is_campus = $regi_form.find('select[name="site_code"] option:selected').data('is-campus');
-                var learn_pattern_ccd = is_campus === 'Y' ? '{{ $arr_search_learn_pattern_ccd['off'] }}' : '{{ $arr_search_learn_pattern_ccd['on'] }}';
                 var cond_type = $(this).data('cond-type');
                 var target_id = 'selected_product_' + cond_type;
                 var target_field = 'prod_code_' + cond_type;
+                var learn_pattern_ccd, prod_tabs = '', hide_tabs = '';
+
+                if (is_campus === 'Y') {
+                    learn_pattern_ccd = '{{ $arr_search_learn_pattern_ccd['off'] }}';
+                } else {
+                    learn_pattern_ccd = '{{ $arr_search_learn_pattern_ccd['on'] }}';
+                    prod_tabs = 'on';
+                    hide_tabs = 'on_lecture,periodpack_lecture,on_free_lecture';
+                }
 
                 if (!site_code) {
                     alert('운영사이트를 먼저 선택해 주십시오.');
@@ -199,7 +207,7 @@
                 }
 
                 $('button[name="btn_product_search"]').setLayer({
-                    'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&LearnPatternCcd=' + learn_pattern_ccd + '&return_type=inline&target_id=' + target_id + '&target_field=' + target_field + '&is_event=Y',
+                    'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&LearnPatternCcd=' + learn_pattern_ccd + '&prod_tabs=' + prod_tabs + '&hide_tabs=' + hide_tabs + '&return_type=inline&target_id=' + target_id + '&target_field=' + target_field + '&is_event=Y',
                     'width' : 1200
                 });
             });

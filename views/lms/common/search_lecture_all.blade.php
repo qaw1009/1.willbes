@@ -38,6 +38,7 @@
             @if($prod_type === 'on' || in_array('on', $prod_tabs) === true)
                 <li class="{{$LearnPatternCcd == '615001' ? 'active':''}} {{ in_array('on_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615001');"><strong>단강좌</strong></a></li>
                 <li class="{{$LearnPatternCcd == '615003' ? 'active':''}} {{ in_array('adminpack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615003');"><strong>운영자패키지</strong></a></li>
+                <li class="{{$LearnPatternCcd == '615002' ? 'active':''}} {{ in_array('userpack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615002');"><strong>사용자패키지</strong></a></li>
                 <li class="{{$LearnPatternCcd == '615004' ? 'active':''}} {{ in_array('periodpack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615004');"><strong>기간제패키지</strong></a></li>
                 <li class="{{$LearnPatternCcd == '615005' ? 'active':''}} {{ in_array('on_free_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615005');"><strong>무료특강</strong></a></li>
             @endif
@@ -164,6 +165,12 @@
                         <th width="7%">판매가</th>
                         <th width="4%">배수</th>
                         <th width="6%">판매여부</th>
+                    @elseif($LearnPatternCcd === "615002")
+                        <th>대분류</th>
+                        <th>대비학년도</th>
+                        <th>패키지유형</th>
+                        <th>사용자패키지명</th>
+                        <th>판매여부</th>
                     @elseif($LearnPatternCcd === "615003" || $LearnPatternCcd === "615004")
                         <th width="6%">패키지유형</th>
                         <th>패키지명</th>
@@ -268,6 +275,16 @@
                         return row.RealSalePrice === '' ? '' : (addComma(row.RealSalePrice))+'원<BR><u>'+(addComma(row.SalePrice))+'원</u>';
                     }},
                     {'data' : 'MultipleApply'},//배수
+                    {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
+                        return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
+                    }},//판매여부
+                @elseif($LearnPatternCcd === "615002")
+                    {'data' : 'CateName'},//대분류
+                    {'data' : 'SchoolYear'},//대비학년도
+                    {'data' : 'PackTypeCcd_Name'},//패키지유형
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                        return '['+row.ProdCode+ '] ' + row.ProdName + '';
+                    }},//패키지명
                     {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
                         return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
                     }},//판매여부

@@ -32,6 +32,7 @@ class PackageUserModel extends CommonLectureModel
                                 ,C.CateCode
                                 ,Ca.CateName, Cb.CateName as CateName_Parent
                                 ,D.CourseName
+                                ,E.SalePrice, E.SaleRate, E.RealSalePrice
                                 ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
                                 ,Z.wAdminName
                                 
@@ -52,6 +53,7 @@ class PackageUserModel extends CommonLectureModel
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
                         left outer join lms_product_course D on B.CourseIdx = D.CourseIdx and D.IsStatus = \'Y\'
+                        left outer join lms_product_sale E on A.ProdCode = E.ProdCode and E.SaleTypeCcd=\'613001\' and E.IsStatus=\'Y\'
                         left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
                      where A.IsStatus=\'Y\'

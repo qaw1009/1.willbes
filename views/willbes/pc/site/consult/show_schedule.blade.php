@@ -63,7 +63,22 @@
                         st = i;
                         et = (i + z) - break_time;
 
-                        if (et <= consult_end_min) {
+                        if (et<=consult_end_min) {
+                            if (st >= lunch_start_min && et <= lunch_end_min) {
+                                if (lunch_count == 0) {
+                                    list_schedule_lunch = add_schedule_row_lunch(lunch_start_min, lunch_end_min);
+                                } else {
+                                    list_schedule_lunch = '';
+                                }
+                                lunch_count++;
+                                list_schedule += list_schedule_lunch;
+                            } else {
+                                list_schedule += add_schedule_row(st, et, base_data, list_count, arr_schedule_list);
+                                list_count++;
+                            }
+                        }
+
+                        /*if (et <= consult_end_min) {
                             if ((st >= lunch_start_min || et >= lunch_start_min) && (st <= lunch_end_min || et <= lunch_end_min) && (lunch_end_min > 0)) {
                                 if (lunch_count == 0) {
                                     list_schedule_lunch = add_schedule_row_lunch(lunch_start_min, lunch_end_min);
@@ -78,7 +93,7 @@
                                 list_count++;
                             }
                             list_schedule += list_schedule_lunch;
-                        }
+                        }*/
                     }
                     $('#schedule_list_table').html(list_schedule);
                 }

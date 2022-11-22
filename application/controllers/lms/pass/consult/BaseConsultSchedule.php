@@ -147,7 +147,7 @@ class BaseConsultSchedule extends \app\controllers\BaseController
             $method = 'modify';
             $rules = [
                 ['field'=>'is_use', 'label'=>'사용여부', 'rules'=>'trim|required|in_list[Y,N]'],
-                ['field'=>'add_schedule_idx[]', 'label'=>'시간표 식별자', 'rules'=>'trim|required'],
+                /*['field'=>'add_schedule_idx[]', 'label'=>'시간표 식별자', 'rules'=>'trim|required'],*/
                 ['field'=>'add_schedule_time[]', 'label'=>'시간표 시간', 'rules'=>'trim|required'],
                 ['field'=>'add_person_count[]', 'label'=>'시간표 상담인원', 'rules'=>'trim|required'],
                 ['field'=>'add_target_type[]', 'label'=>'시간표 상담대상', 'rules'=>'trim|required'],

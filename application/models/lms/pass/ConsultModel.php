@@ -605,19 +605,41 @@ class ConsultModel extends WB_Model
             //시간대별 관리 테이블 수정
             //상담시간표 변수 셋팅
             $arr_schedule_idx = element('add_schedule_idx', $input);
+            $arr_schedule_time = element('add_schedule_time', $input);
             $arr_person_count = element('add_person_count', $input);
             $arr_target_type = element('add_target_type', $input);
             $arr_is_use = element('add_is_use', $input);
 
-            foreach ($arr_schedule_idx as $key => $val) {
-                $time_data['ConsultPersonCount'] = $arr_person_count[$key];
-                $time_data['ConsultTargetType'] = $arr_target_type[$key];
-                $time_data['IsUse'] = $arr_is_use[$key];
-                $time_data['UpdAdminIdx'] = $admin_idx;
-                if ($this->_modifyConsultScheduleTime($val, $time_data) === false) {
-                    throw new \Exception('상담예약시간 수정에 실패했습니다.');
+            $dataReg = $dataMod = [];
+            $_order_num = 1;
+            foreach ($arr_target_type as $key => $val) {
+                if (empty($arr_schedule_idx[$key]) === false) {
+                    $dataMod[] = [
+                        'CstIdx' => $arr_schedule_idx[$key],
+                        'TimeValue' => $arr_schedule_time[$key],
+                        'OrderNum' => $_order_num,
+                        'ConsultPersonCount' => $arr_person_count[$key],
+                        'ConsultTargetType' => $arr_target_type[$key],
+                        'IsUse' => $arr_is_use[$key],
+                        'UpdAdminIdx' => $admin_idx,
+                    ];
+                } else {
+                    $dataReg[] = [
+                        'CsIdx' => $cs_idx,
+                        'TimeValue' => $arr_schedule_time[$key],
+                        'OrderNum' => $_order_num,
+                        'ConsultPersonCount' => $arr_person_count[$key],
+                        'ConsultTargetType' => $arr_target_type[$key],
+                        'IsUse' => $arr_is_use[$key],
+                        'RegAdminIdx' => $admin_idx,
+                        'RegIp' => $this->input->ip_address()
+                    ];
                 }
+                $_order_num++;
             }
+
+            if($dataReg) $this->_conn->insert_batch($this->_table['consult_schedule_time'], $dataReg);
+            if($dataMod) $this->_conn->update_batch($this->_table['consult_schedule_time'], $dataMod, 'CstIdx');
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {

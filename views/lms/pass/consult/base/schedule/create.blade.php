@@ -387,6 +387,21 @@
                     et = (i + z) - break_time;
 
                     if (et<=consult_end_min) {
+                        if (st >= lunch_start_min && et <= lunch_end_min) {
+                            if (lunch_count == 0) {
+                                list_schedule_lunch = add_schedule_row_lunch(lunch_start_min, lunch_end_min);
+                            } else {
+                                list_schedule_lunch = '';
+                            }
+                            lunch_count++;
+                            list_schedule += list_schedule_lunch;
+                        } else {
+                            list_schedule += add_schedule_row(st, et, list_count, arr_schedule_list);
+                            list_count++;
+                        }
+                    }
+
+                    /*if (et<=consult_end_min) {
                         if ((st>=lunch_start_min || et >=lunch_start_min) && (st<=lunch_end_min || et<=lunch_end_min) && (lunch_end_min > 0)) {
                             if (lunch_count == 0) {
                                 list_schedule_lunch = add_schedule_row_lunch(lunch_start_min, lunch_end_min);
@@ -399,7 +414,7 @@
                             list_count++;
                         }
                         list_schedule += list_schedule_lunch;
-                    }
+                    }*/
                 }
                 $('#schedule_list_table > tbody').html(list_schedule);
             });
@@ -443,10 +458,15 @@
 
             if (arr_schedule_list != null) {
                 //수정 (스케줄 리스트정보가 있을 경우)
-                schedule_idx = arr_schedule_list[list_count]['CstIdx'];
+                schedule_idx = (arr_schedule_list[list_count] == null) ? '' : arr_schedule_list[list_count]['CstIdx'];
+                consult_person_count = (arr_schedule_list[list_count] == null) ? '' : arr_schedule_list[list_count]['ConsultPersonCount'];
+                consult_target_type = (arr_schedule_list[list_count] == null) ? $('#consult_target_type').val() : arr_schedule_list[list_count]['ConsultTargetType'];
+                is_use = (arr_schedule_list[list_count] == null) ? $('input[name="is_use"]:checked').val() : arr_schedule_list[list_count]['IsUse'];
+
+                /*schedule_idx = arr_schedule_list[list_count]['CstIdx'];
                 consult_person_count = arr_schedule_list[list_count]['ConsultPersonCount'];
                 consult_target_type = arr_schedule_list[list_count]['ConsultTargetType'];
-                is_use = arr_schedule_list[list_count]['IsUse'];
+                is_use = arr_schedule_list[list_count]['IsUse'];*/
             } else {
                 //등록
                 schedule_idx = '';
@@ -492,8 +512,8 @@
         {
             var lunch_start_time = toHHMM(lunch_start_min);
             var lunch_end_time = toHHMM(lunch_end_min);
-
             var add_lists;
+
             add_lists = '<tr role="row">';
             add_lists += '  <td><p class="form-control-static">'+lunch_start_time+'~'+lunch_end_time+'</p></td>';
             add_lists += '  <td class="bg-gray" colspan="4">점심시간</td>';

@@ -164,93 +164,101 @@
     <div class="evtCtnsBox evt04" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2827m_04.jpg" title="스탬프랠리">
     </div>
-   
-    <div class="evtCtnsBox" data-aos="fade-up">
-        <div class="sec05">
-            <div class="title NSK-Black">              
-                <div>
-                    김재규 교수님 공개강의 무료신청<br>
-                    (노량진 본원)
+
+    <form name="regi_form_register" id="regi_form_register" style="display: {{ (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? 'block' : 'none'}}">
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
+        <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
+        <input type="hidden" name="target_param_names[]" value="직렬"/> {{-- 체크 항목 전송 --}}
+        <input type="hidden" name="register_type" value="promotion"/>
+
+        <div class="evtCtnsBox" data-aos="fade-up">
+            <div class="sec05">
+                <div class="title NSK-Black">
+                    <div>
+                        김재규 교수님 공개강의 무료신청<br>
+                        (노량진 본원)
+                    </div>
+                </div>
+
+                <div class="request">
+                    <div>
+                        <input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" placeholder="이름" title="이름" {{(sess_data('is_login') === true) ? 'readonly="readonly"' : ''}}/>
+                    </div>
+                    <div><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" placeholder="연락처" /></div>
+
+                    <div>
+                        <div class="ad_apply">
+                            {{--<input type="checkbox" name="register_chk" id="campus0" value=""> <label for="campus0">11.14(일) 오후 2시(노량진 신광은 경찰학원)</label>--}}
+                            @foreach($arr_base['register_list'] as $key => $val)
+                                @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
+                                    @php
+                                        // 강의 기간 지나면 자동 disabled 처리
+                                        // 신청강의 날짜 형식. ex) 12.14 프리미엄올공반2차 설명회
+                                        //                         2.8(토) 초시생을 위한 합격커리큘럼 설명회
+                                        $reg_year = date('Y');
+                                        $temp_date = explode(' ', $val['Name'])[0];
+                                        if(strpos($temp_date, '(') !== false) {
+                                            $temp_date = substr($temp_date, 0, strpos($temp_date, '('));
+                                        }
+                                        $reg_month_day = explode('.', $temp_date);
+                                        $reg_month = mb_strlen($reg_month_day[0], 'utf-8') == 1 ? '0'.$reg_month_day[0] : $reg_month_day[0] ;
+                                        $reg_day = mb_strlen($reg_month_day[1], 'utf-8') == 1 ? '0'.$reg_month_day[1] : $reg_month_day[1] ;
+                                        $reg_date = $reg_year.$reg_month.$reg_day.'0000';
+                                        //echo date('YmdHi', strtotime($reg_date. '+1 days'));
+                                    @endphp
+                                    @if(time() >= strtotime($reg_date. '+1 days'))
+                                        <input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled"/> <label for="campus{{$key}}">{{$val['Name']}}</label>
+                                    @else
+                                        <input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label>
+                                    @endif
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="sTitle">* 직렬</div>
+                    <div class="ad_List">
+                        <div><input type="radio" name="register_data1" id="CT1" value="일반남자" /> <label for="CT1">일반남자</label></div>
+                        <div><input type="radio" name="register_data1" id="CT2" value="일반여자" /> <label for="CT2">일반여자</label></div>
+                        <div><input type="radio" name="register_data1" id="CT3" value="101단" /> <label for="CT3">101단</label></div>
+                        <div><input type="radio" name="register_data1" id="CT4" value="경행경채" /> <label for="CT4">경행경채 </label></div>
+                        <div><input type="radio" name="register_data1" id="CT5" value="전의경경채" /> <label for="CT5">전의경경채</label></div>
+                        <div><input type="radio" name="register_data1" id="CT4" value="법학경채" /> <label for="CT4">법학경채 </label></div>
+                        <div><input type="radio" name="register_data1" id="CT5" value="기타" /> <label for="CT5">기타</label></div>
+                    </div>
+
+                    <div class="sTitle">* 개인정보 수집 및 이용에 대한 안내</div>
+                    <div class="txtBox">
+                        <ul>
+                            <li>1. 개인정보 수집 이용 목적<br>
+                            - 신청자 본인 확인 및 신청 접수 및 문의사항 응대 - 통계분석 및 마케팅 - 윌비스 한림법학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공</li>
+                            <li>2. 개인정보 수집 항목<br>
+                            - 필수항목 : 성명, 연락처, 무료특강 확인 경로</li>
+                            <li>3. 개인정보 이용기간 및 보유기간<br>
+                            - 이용 목적 달성 또는 신청자의 신청 해지 및 삭제 요청 시 파기</li>
+                            <li>4. 신청자의 개인정보 수집 및 활용 동의 거부 시<br>
+                            - 개인정보 수집에 동의하지 않으시는 경우 설명회 접수 및 서비스 이용에 제한이 있을 수 있습니다.</li>
+                            <li>5. 입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3 자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.</li>
+                            <li>6. 본 이벤트 진행에 따른 단체사진 및 영상 촬영에 대한 귀하의 초상권 사용을 동의하며, 해당 저작물에 대한 저작권은 윌비스에 귀속됩니다.</li>
+                        </ul>
+                        <div>
+                            <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+                        </div>
+                    </div>
+
+                    <div class="btn NSK-Black">
+                        <a href="javascript:void(0);" onclick="fn_submit(); return false;">학원 공개강의 신청하기 >></a>
+                    </div>
                 </div>
             </div>
-
-            <div class="request">
-                <div>
-                    <input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" placeholder="이름" title="이름" {{(sess_data('is_login') === true) ? 'readonly="readonly"' : ''}}/>
-                </div>
-                <div><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" placeholder="연락처" /></div>
-
-                <div>
-                    <div class="ad_apply">
-                        {{--<input type="checkbox" name="register_chk" id="campus0" value=""> <label for="campus0">11.14(일) 오후 2시(노량진 신광은 경찰학원)</label>--}}
-                        @foreach($arr_base['register_list'] as $key => $val)
-                            @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
-                                @php
-                                    // 강의 기간 지나면 자동 disabled 처리
-                                    // 신청강의 날짜 형식. ex) 12.14 프리미엄올공반2차 설명회
-                                    //                         2.8(토) 초시생을 위한 합격커리큘럼 설명회
-                                    $reg_year = date('Y');
-                                    $temp_date = explode(' ', $val['Name'])[0];
-                                    if(strpos($temp_date, '(') !== false) {
-                                        $temp_date = substr($temp_date, 0, strpos($temp_date, '('));
-                                    }
-                                    $reg_month_day = explode('.', $temp_date);
-                                    $reg_month = mb_strlen($reg_month_day[0], 'utf-8') == 1 ? '0'.$reg_month_day[0] : $reg_month_day[0] ;
-                                    $reg_day = mb_strlen($reg_month_day[1], 'utf-8') == 1 ? '0'.$reg_month_day[1] : $reg_month_day[1] ;
-                                    $reg_date = $reg_year.$reg_month.$reg_day.'0000';
-                                    //echo date('YmdHi', strtotime($reg_date. '+1 days'));
-                                @endphp
-                                @if(time() >= strtotime($reg_date. '+1 days'))
-                                    <input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled"/> <label for="campus{{$key}}">{{$val['Name']}}</label>
-                                @else
-                                    <input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label>
-                                @endif
-                            @endif
-                        @endforeach
-                    </div>
-                </div>
-                
-                <div class="sTitle">* 직렬</div>
-                <div class="ad_List">
-                    <div><input type="radio" name="register_data1" id="CT1" value="일반남자" /> <label for="CT1">일반남자</label></div>
-                    <div><input type="radio" name="register_data1" id="CT2" value="일반여자" /> <label for="CT2">일반여자</label></div>
-                    <div><input type="radio" name="register_data1" id="CT3" value="101단" /> <label for="CT3">101단</label></div>
-                    <div><input type="radio" name="register_data1" id="CT4" value="경행경채" /> <label for="CT4">경행경채 </label></div>
-                    <div><input type="radio" name="register_data1" id="CT5" value="전의경경채" /> <label for="CT5">전의경경채</label></div>
-                    <div><input type="radio" name="register_data1" id="CT4" value="법학경채" /> <label for="CT4">법학경채 </label></div>
-                    <div><input type="radio" name="register_data1" id="CT5" value="기타" /> <label for="CT5">기타</label></div>                    
-                </div>
-               
-                <div class="sTitle">* 개인정보 수집 및 이용에 대한 안내</div>
-                <div class="txtBox">
-                    <ul>
-                        <li>1. 개인정보 수집 이용 목적<br>
-                        - 신청자 본인 확인 및 신청 접수 및 문의사항 응대 - 통계분석 및 마케팅 - 윌비스 한림법학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공</li>
-                        <li>2. 개인정보 수집 항목<br>
-                        - 필수항목 : 성명, 연락처, 무료특강 확인 경로</li>
-                        <li>3. 개인정보 이용기간 및 보유기간<br>
-                        - 이용 목적 달성 또는 신청자의 신청 해지 및 삭제 요청 시 파기</li>
-                        <li>4. 신청자의 개인정보 수집 및 활용 동의 거부 시<br>
-                        - 개인정보 수집에 동의하지 않으시는 경우 설명회 접수 및 서비스 이용에 제한이 있을 수 있습니다.</li>
-                        <li>5. 입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3 자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.</li>
-                        <li>6. 본 이벤트 진행에 따른 단체사진 및 영상 촬영에 대한 귀하의 초상권 사용을 동의하며, 해당 저작물에 대한 저작권은 윌비스에 귀속됩니다.</li>
-                    </ul>
-                    <div>
-                        <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
-                    </div>
-                </div>
-
-                <div class="btn NSK-Black">
-                    <a href="javascript:void(0);" onclick="javascript:fn_submit();">학원 공개강의 신청하기 >></a>
-                </div>
-            </div>            
         </div>
-    </div>
+    </form>
 
     <div class="evtCtnsBox evt05" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2827m_05.jpg" title="런칭 기념">
     </div>
-
 </div>
 
  <!-- End Container -->
@@ -308,7 +316,6 @@
 
     function fn_submit() {
           {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-
           var $regi_form_register = $('#regi_form_register');
           var _url = '{!! front_url('/event/registerStore') !!}';
 
@@ -331,7 +338,7 @@
               return;
           }
           if ($regi_form_register.find('input[name="register_data1"]').is(':checked') === false) {
-              alert('무료특강 확인경로를 선택하셔야 합니다.');
+              alert('직렬을 선택하셔야 합니다.');
               return;
           }
 

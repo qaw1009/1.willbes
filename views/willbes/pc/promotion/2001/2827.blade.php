@@ -132,6 +132,7 @@
             <input type="hidden" name="register_type" value="promotion"/>
 
             <div class="evtCtnsBox evt_apply">
+                <img src="https://static.willbes.net/public/images/promotion/2022/11/2827_apply.jpg" title="100일의 기적 시작합니다">    
                 <div class="request" id="request">
                     <div class="requestL">
                         <h3 class="NSK-Black">* 김재규 교수님 공개강의 무료신청(노량진 본원)</h3>

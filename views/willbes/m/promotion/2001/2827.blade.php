@@ -26,7 +26,8 @@
     .request > div {margin-bottom:5px}
 
     .request .sTitle {font-size:110%; margin-top:30px; font-weight:bold; border-bottom:1px solid #ccc; padding-bottom:5px; margin-bottom:0}
-    .request .ad_apply {display:flex;font-size:15px;justify-content: center;} 
+    .request .ad_date {font-size:90%;text-align:center;}
+    .request .ad_List div {width:100%}
     .request .ad_List {display: flex; flex-wrap: wrap; margin-top:10px}
     .request .ad_List div {width:33.3333%}
     .request .mt10 {font-size:80%}
@@ -165,6 +166,10 @@
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2827m_04.jpg" title="스탬프랠리">
     </div>
 
+    <div class="evtCtnsBox evt_apply" data-aos="fade-up">
+        <img src="https://static.willbes.net/public/images/promotion/2022/11/2827m_apply.jpg" title="100일의 기적 시작합니다">
+    </div>
+
     <form name="regi_form_register" id="regi_form_register">
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
@@ -189,7 +194,7 @@
                     <div><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" placeholder="연락처" /></div>
 
                     <div>
-                        <div class="ad_apply">
+                        <div class="ad_date">
                             {{--<input type="checkbox" name="register_chk" id="campus0" value=""> <label for="campus0">11.14(일) 오후 2시(노량진 신광은 경찰학원)</label>--}}
                             @foreach($arr_base['register_list'] as $key => $val)
                                 @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
@@ -209,9 +214,9 @@
                                         //echo date('YmdHi', strtotime($reg_date. '+1 days'));
                                     @endphp
                                     @if(time() >= strtotime($reg_date. '+1 days'))
-                                        <input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled"/> <label for="campus{{$key}}">{{$val['Name']}}</label>
+                                        <div></div><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled"/> <label for="campus{{$key}}">{{$val['Name']}}</label></div>
                                     @else
-                                        <input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label>
+                                        <div><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></div>
                                     @endif
                                 @endif
                             @endforeach

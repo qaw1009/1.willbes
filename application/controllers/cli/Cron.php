@@ -30,9 +30,7 @@ class Cron extends \app\controllers\BaseController
         ini_set('memory_limit', $this->_memory_limit_size);
 
         $scheduler = new crontask\Scheduler();
-
-        $scheduler->addTasks([
-            (new crontask\tasks\EduIfSalesMstTask())->setExpression('10 1 * * *')   // 매일 1시 10분 실행
+        $tasks = [
             /* 사용안함
             , (new crontask\tasks\SampleTask())->setExpression('10 0 * * *')                // 매일 0시 10분 실행
             , (new crontask\tasks\MemberPointExpireTask())->setExpression('10 0 * * *')     // 매일 0시 10분 실행
@@ -40,9 +38,23 @@ class Cron extends \app\controllers\BaseController
             , (new crontask\tasks\MockGradeMakeTask())->setExpression('10 1 * * *')         // 매일 1시 10분 실행
             , (new crontask\tasks\VisitorStatsRegistTask())->setExpression('10 4 * * *')    // 매일 4시 10분 실행
             */
-        ]);
+        ];
 
-        $scheduler->run();
+        $scheduler->_writeLog('Start scheduler');
+
+        // 스테이지 환경에서만 실행
+        if (ENVIRONMENT == 'testing') {
+            $tasks[] = (new crontask\tasks\EduIfSalesMstTask())->setExpression('10 1 * * *');   // 매일 1시 10분 실행
+        }
+
+        if (empty($tasks) === false) {
+            $scheduler->addTasks($tasks);
+            $scheduler->run();
+        } else {
+            $scheduler->_writeLog('No tasks');
+        }
+
+        $scheduler->_writeLog('End scheduler');
     }
 
     /**

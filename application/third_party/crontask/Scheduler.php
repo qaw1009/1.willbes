@@ -159,7 +159,7 @@ class Scheduler
      * @param array $output
      * @return null
      */
-    private function _writeLog($output = [])
+    public function _writeLog($output = [])
     {
         if (empty($output) === false) {
             $log_path = $this->logFileDir . 'log-' . date('Y-m-d') . '.log';

@@ -19,7 +19,8 @@ class BookModel extends WB_Model
         'professor' => 'lms_professor',
         'pms_professor' => 'wbs_pms_professor',
         'admin' => 'wbs_sys_admin',
-        'product_json_data' => 'lms_product_json_data'
+        'product_json_data' => 'lms_product_json_data',
+        'product_r_product' => 'lms_product_r_product'
     ];
     private $_prod_type_ccd = '636003'; // 상품타입 > 교재
     private $_sale_status_ccd = '618001'; // 판매상태 > 판매가능 고정값  (WBS > BMS > 판매여부 컬럼으로 판매상태 제어)
@@ -663,11 +664,21 @@ class BookModel extends WB_Model
 
             // 교재식별자와 연결된 강좌상품 코드 조회
             $column = 'distinct(ProdCode) as ProdLecCode';
+
+            /* TODO product_json_data 에 데이터가 존재하지 않을 경우 정보 수정 불가로 인해 아래 쿼리로 대체함 : 2022.11.22
             $from = '
                         from ' . $this->_table['product_json_data'] . ' as pjd
                         where pjd.ProdBookData LIKE ? ';
-            // 쿼리 실행
             $results = $this->_conn->query('select ' . $column . $from, '%'.$prod_code.'%')->result_array();
+            */
+
+            $from = '
+                        from '. $this->_table['product_r_product'] .' as prp
+                        where prp.ProdCodeSub =  ? and prp.ProdTypeCcd = ? and prp.IsStatus=\'Y\' 
+            ';
+            
+            // 쿼리 실행
+            $results = $this->_conn->query('select ' . $column . $from, [$prod_code, $this->_prod_type_ccd])->result_array();
 
             if (empty($results) === true) {
                 return true;

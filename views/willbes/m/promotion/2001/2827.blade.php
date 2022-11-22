@@ -165,7 +165,7 @@
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2827m_04.jpg" title="스탬프랠리">
     </div>
 
-    <form name="regi_form_register" id="regi_form_register" style="display: {{ (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? 'block' : 'none'}}">
+    <form name="regi_form_register" id="regi_form_register">
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
         <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
@@ -225,8 +225,8 @@
                         <div><input type="radio" name="register_data1" id="CT3" value="101단" /> <label for="CT3">101단</label></div>
                         <div><input type="radio" name="register_data1" id="CT4" value="경행경채" /> <label for="CT4">경행경채 </label></div>
                         <div><input type="radio" name="register_data1" id="CT5" value="전의경경채" /> <label for="CT5">전의경경채</label></div>
-                        <div><input type="radio" name="register_data1" id="CT4" value="법학경채" /> <label for="CT4">법학경채 </label></div>
-                        <div><input type="radio" name="register_data1" id="CT5" value="기타" /> <label for="CT5">기타</label></div>
+                        <div><input type="radio" name="register_data1" id="CT6" value="법학경채" /> <label for="CT6">법학경채 </label></div>
+                        <div><input type="radio" name="register_data1" id="CT7" value="기타" /> <label for="CT7">기타</label></div>
                     </div>
 
                     <div class="sTitle">* 개인정보 수집 및 이용에 대한 안내</div>

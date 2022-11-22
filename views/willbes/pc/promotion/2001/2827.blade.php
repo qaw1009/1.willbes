@@ -123,7 +123,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2827_04.jpg" title="총알 스탬프랠리">
         </div>
 
-        <form name="regi_form_register" id="regi_form_register" style="display: {{ (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') ? 'block' : 'none'}}">
+        <form name="regi_form_register" id="regi_form_register">
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
             <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>

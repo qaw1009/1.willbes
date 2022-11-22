@@ -189,7 +189,7 @@
                     <div class="col-md-10 form-inline item">
                         <div class="radio">
                             <!--
-                            <input type="hidden" name="StudyPeriodCcd" value="616001">{{--수강기간으로 고정 : 20200825 - 한주연--}}
+                            <input type="hidden" name="StudyPeriodCcd" value="616001">{{--수강기간으로 고정 : 20200825 - 한주연 -> 다시 아래 제어로 원복 : 20221024 한주연 --}}
                             수강기간 <input type="number" name="StudyPeriod" id="StudyPeriod" class="form-control" required="required" title="수강일" value='@if($data['LecTypeCcd'] !== '607003'){{$data['StudyPeriod']}}@endif' style="width:70px;">일&nbsp;&nbsp;&nbsp;
                             [개강일] <input type="text" name="StudyStartDate" id="StudyStartDate" class="form-control datepicker" title="개강일" value='@if($data['LecTypeCcd'] != '607003'){{$data['StudyStartDate']}}@endif' style="width:100px;" readonly required="required">&nbsp;&nbsp;&nbsp;
                             //-->

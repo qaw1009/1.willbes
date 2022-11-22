@@ -19,6 +19,9 @@
 
         /************************************************************/        
 
+        .sky {position:fixed;top:200px;right:10px;z-index:100;}
+        .sky a {display:block; margin-bottom:10px}
+
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/11/2827_top_bg.jpg) no-repeat center top; height:1428px;}
         .evtTop span {position: absolute; top:300px; left:50%; margin-left:-380px; z-index: 2;}
 
@@ -66,6 +69,13 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
+        <div class="sky" id="QuickMenu">
+            <a href="#reply"><img src="https://static.willbes.net/public/images/promotion/2022/11/2827_sky01.jpg" alt=""></a>   
+            <a href="#evt02"><img src="https://static.willbes.net/public/images/promotion/2022/11/2827_sky02.jpg" alt=""></a>   
+            <a href="#first_come"><img src="https://static.willbes.net/public/images/promotion/2022/11/2827_sky03.jpg" alt=""></a>   
+            <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2022/11/2827_sky04.jpg" alt=""></a>          
+        </div>
+
         <div class="evtCtnsBox evtTop">
             <span data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/11/2827_top_img.png" title="극한 퀴즈쇼  "></span>
         </div>
@@ -81,7 +91,7 @@
             </div> 
         </div>   
 
-        <div class="evtCtnsBox evt02" data-aos="fade-up">
+        <div class="evtCtnsBox evt02" data-aos="fade-up" id="evt02">
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2827_02.jpg" title="라이브 방송">
             <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank" class="btn NSK-Black">윌비스경찰 유튜브 채널 바로가기 ></a>
         </div>
@@ -119,7 +129,7 @@
             </div>
         </form> 
 
-        <div class="evtCtnsBox evt04" data-aos="fade-up">
+        <div class="evtCtnsBox evt04" data-aos="fade-up" id="evt04">
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2827_04.jpg" title="총알 스탬프랠리">
         </div>
 

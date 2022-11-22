@@ -257,48 +257,48 @@
                                 <th>중등</th>
                                 <td colspan="5">
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="교육학 이경범 교수"/><span class="subjct_title">교육학 논술</span> 이경범 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="교육학 정현 교수"/><span class="subjct_title">교육학 논술</span> 정현 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="교육학 이경범 교수"/><span class="subjct_title">교육학 논술</span> 이경범 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="교육학 정현 교수"/><span class="subjct_title">교육학 논술</span> 정현 교수</label></li>
                                     </ul>
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공국어 송원영 교수"/><span class="subjct_title">전공 국어</span> 송원영 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공국어 권보민 교수"/><span class="subjct_title">전공 국어</span> 권보민 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="교육학 구동언 교수"/><span class="subjct_title">전공 국어</span> 구동언 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공국어 송원영 교수"/><span class="subjct_title">전공 국어</span> 송원영 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공국어 권보민 교수"/><span class="subjct_title">전공 국어</span> 권보민 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="교육학 구동언 교수"/><span class="subjct_title">전공 국어</span> 구동언 교수</label></li>
                                     </ul>  
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="일반영어 김유석 교수"/><span class="subjct_title">일반영어/영미문학</span> 김유석 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="영어학 깅영문 교수"/><span class="subjct_title">영어학</span> 김영문 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="일반영어 김유석 교수"/><span class="subjct_title">일반영어/영미문학</span> 김유석 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="영어학 깅영문 교수"/><span class="subjct_title">영어학</span> 김영문 교수</label></li>
                                     </ul>  
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공 수학 김철홍 교수"/><span class="subjct_title">전공 수학</span> 김철홍 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공 수학 김현웅 교수"/><span class="subjct_title">전공 수학</span> 김현웅 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 수학 김철홍 교수"/><span class="subjct_title">전공 수학</span> 김철홍 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 수학 김현웅 교수"/><span class="subjct_title">전공 수학</span> 김현웅 교수</label></li>
                                     </ul>  
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="수학 교육론 박태영 교수"/><span class="subjct_title">수학 교육론</span> 박태영 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="수학 교육론 박혜향 교수"/><span class="subjct_title">수학 교육론</span> 박혜향 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="수학 교육론 박태영 교수"/><span class="subjct_title">수학 교육론</span> 박태영 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="수학 교육론 박혜향 교수"/><span class="subjct_title">수학 교육론</span> 박혜향 교수</label></li>
                                     </ul>  
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공 생물 강치욱 교수"/><span class="subjct_title">전공 생물</span> 강치욱 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="생물 교육론 앙혜정 교수"/><span class="subjct_title">생물 교육론</span> 앙혜정 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공 화학 강철 교수"/><span class="subjct_title">전공 화학</span> 강철 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 생물 강치욱 교수"/><span class="subjct_title">전공 생물</span> 강치욱 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="생물 교육론 앙혜정 교수"/><span class="subjct_title">생물 교육론</span> 앙혜정 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 화학 강철 교수"/><span class="subjct_title">전공 화학</span> 강철 교수</label></li>
                                     </ul>  
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="도덕 윤리 김병찬 교수"/><span class="subjct_title">도덕 윤리</span> 김병찬 교수</label></li>                                      
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="도덕 윤리 김병찬 교수"/><span class="subjct_title">도덕 윤리</span> 김병찬 교수</label></li>                                      
                                     </ul>  
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="일반 사회 허역 교수팀"/><span class="subjct_title">일반 사회</span> 허역 교수팀</label></li>
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공 역사 김정권 교수"/><span class="subjct_title">전공 역사</span> 김종권 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="일반 사회 허역 교수팀"/><span class="subjct_title">일반 사회</span> 허역 교수팀</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 역사 김정권 교수"/><span class="subjct_title">전공 역사</span> 김종권 교수</label></li>
                                     </ul>  
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공 음악 다이애나 교수"/><span class="subjct_title">전공 음악</span> 다이애나 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공 체육 최규훈 교수"/><span class="subjct_title">전공 체육</span> 최규훈 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 음악 다이애나 교수"/><span class="subjct_title">전공 음악</span> 다이애나 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 체육 최규훈 교수"/><span class="subjct_title">전공 체육</span> 최규훈 교수</label></li>
                                     </ul>  
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전자직 최우영 교수"/><span class="subjct_title">전기·전자·통신</span> 최우영 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="정컴 교육론 장순선 교수"/><span class="subjct_title">정컴 교육론</span> 장순선 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전자직 최우영 교수"/><span class="subjct_title">전기·전자·통신</span> 최우영 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="정컴 교육론 장순선 교수"/><span class="subjct_title">정컴 교육론</span> 장순선 교수</label></li>
                                     </ul>  
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="전공 중국어 장영희 교수"/><span class="subjct_title">전공 중국어</span> 장영희 교수</label></li>                                        
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 중국어 장영희 교수"/><span class="subjct_title">전공 중국어</span> 장영희 교수</label></li>                                        
                                     </ul>                                                                               
                                  </td>                              
                             </tr>

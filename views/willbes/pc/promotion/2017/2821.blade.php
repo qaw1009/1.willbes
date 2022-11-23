@@ -30,12 +30,13 @@
         .evt03 {width:1120px; margin:0 auto 150px;}        
         .evt_table {width:980px; margin:0 auto; border:1px solid #000; padding:50px}
         .evt_table table{width:100%;border-top:1px solid #e9e9e9;}
+        .evt_table table tr.elementary {border-bottom:1px solid #666}
         .evt_table table tr {border-bottom:1px solid #e9e9e9}
         .evt_table table th,
         .evt_table table td {margin:10px 0; font-size:16px; color:#666}
         .evt_table table th {background:#f9f9f9; color:#000;}
         .evt_table thead th {background:#d9d9d9; color:#000; font-size:24px; font-weight:bold; padding:20px; border:1px solid #000}
-        .evt_table table td{text-align:left; padding:15px 10px}
+        .evt_table table td{text-align:left; padding:17px 10px}
         .evt_table label {margin-right:10px; line-height:28px;}
         .evt_table input {vertical-align:middle}
         .evt_table input[type=text] {height:28px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; background:#f5f5f5; vertical-align:middle; width:90%; margin-bottom:5px}
@@ -47,17 +48,21 @@
         .evt_table tr:nth-child(3) li {width:33.3333%;}
         .evt_table tr:nth-child(4) li {width:33.3333%;}
         .evt_table td .editBtn {padding:5px 15px; background:#5e46c0; color:#fff; border-radius:30px}
-        .subject_line {border-bottom:1px solid #666;}
+        .middle {background:#0070C0;color:#fff;display:inline-block;padding:0 10px;}
+        .subject_line {border-bottom:1px solid #E9E9E9;}
         .subjct_title {font-weight:bold;vertical-align:unset;}
-       
+        .cms {font-weight:100;vertical-align:text-top;font-size:11px;background:#666;color:#fff;padding:0px 5px;margin-left:3px;}
         .check {margin:10px auto 30px; text-align:left}
         .check p {margin-bottom:50px;padding-top:75px;}
         .check label {cursor:pointer; font-weight:bold;font-size:15px;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
 
-        .evt_table .btns {margin-top:40px}
-        .evt_table .btns a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#000; margin:0 10px; border-radius:40px; padding:0 50px}
-        .evt_table .btns a:hover {background:#5d46c0}
+        .evt_table .btns_apply {margin-top:40px}
+        .evt_table .btns_apply a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#000; margin:0 10px; border-radius:40px; padding:0 50px}
+        .evt_table .btns_apply a:hover {background:#5d46c0}
+        .evt_table .btns_cancel {margin-top:40px}
+        .evt_table .btns_cancel a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#000; margin:0 10px; border-radius:40px; padding:0 50px}
+        .evt_table .btns_cancel a:hover {background:#af1e2d}
 
         .evt_table .txtinfo {text-align:left;}
         .evt_table .txtinfo div {font-size:18px; font-weight:bold; margin-bottom:20px}
@@ -68,6 +73,7 @@
         .evt04 {background:#FFE7E7;}
 
         .maps {padding:50px 0;}
+        .parking {margin-left:600px;}
       
         .evt05 {background:#eee;}
 
@@ -119,10 +125,12 @@
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2022/11/2821_02.jpg" alt="타임 테이블"/>
+            {{--
             <div class="btns">
                 <a href="javascript:go_popup1()" title="">유아 설명회 강의실 배정 현황 확인 ></a>
                 <a href="javascript:go_popup2()" title="">중등 설명회 강의실 배정 현황 확인 ></a>        
-            </div>        
+            </div>
+            --}}
         </div>
 
         <form name="regi_form_register" id="regi_form_register">
@@ -244,12 +252,12 @@
                                     </select>
                                 </td>                 
                             </tr>
-                            <tr>
+                            <tr class="elementary">
                                 <th>유•초등</th>
                                 <td colspan="5">
                                     <ul>
                                         <li><label><input class="btn-login-check" type="radio" name="register_data2" value="유아 민정선 교수"/><span class="subjct_title">유아</span> 민정선 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="초등 배재민 교수"/><span class="subjct_title">초등</span> 배재민 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="초등 배재민 교수"/><span class="subjct_title">초등</span> 배재민 교수<em class="cms">일정추후공지</em></label></li>
                                     </ul>   
                                 </td>                                                            
                             </tr>
@@ -259,53 +267,50 @@
                                     <ul class="subject_line">
                                         <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="교육학 이경범 교수"/><span class="subjct_title">교육학 논술</span> 이경범 교수</label></li>
                                         <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="교육학 정현 교수"/><span class="subjct_title">교육학 논술</span> 정현 교수</label></li>
+                                        <li><p class="middle">※ 중등은 교육학을 반드시 선택!</p></li>                                        
                                     </ul>
                                     <ul class="subject_line">
                                         <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공국어 송원영 교수"/><span class="subjct_title">전공 국어</span> 송원영 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공국어 권보민 교수"/><span class="subjct_title">전공 국어</span> 권보민 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공국어 권보민 교수"/><span class="subjct_title">전공 국어</span>권보민 교수<em class="cms">일정추후공지</em></label></li>
                                         <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="교육학 구동언 교수"/><span class="subjct_title">전공 국어</span> 구동언 교수</label></li>
                                     </ul>  
                                     <ul class="subject_line">
                                         <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="일반영어 김유석 교수"/><span class="subjct_title">일반영어/영미문학</span> 김유석 교수</label></li>
                                         <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="영어학 깅영문 교수"/><span class="subjct_title">영어학</span> 김영문 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 수학 김철홍 교수"/><span class="subjct_title">전공 수학</span>김철홍 교수<em class="cms">일정추후공지</em></label></li>
                                     </ul>  
-                                    <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 수학 김철홍 교수"/><span class="subjct_title">전공 수학</span> 김철홍 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 수학 김현웅 교수"/><span class="subjct_title">전공 수학</span> 김현웅 교수</label></li>
-                                    </ul>  
-                                    <ul class="subject_line">
+                                    <ul class="subject_line">                                
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 수학 김현웅 교수"/><span class="subjct_title">전공 수학</span> 김현웅 교수<em class="cms">일정추후공지</em></label></li>
                                         <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="수학 교육론 박태영 교수"/><span class="subjct_title">수학 교육론</span> 박태영 교수</label></li>
                                         <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="수학 교육론 박혜향 교수"/><span class="subjct_title">수학 교육론</span> 박혜향 교수</label></li>
-                                    </ul>  
+                                    </ul>                                  
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 생물 강치욱 교수"/><span class="subjct_title">전공 생물</span> 강치욱 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="생물 교육론 앙혜정 교수"/><span class="subjct_title">생물 교육론</span> 앙혜정 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 생물 강치욱 교수"/><span class="subjct_title">전공 생물</span> 강치욱 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="생물 교육론 앙혜정 교수"/><span class="subjct_title">생물 교육론</span> 앙혜정 교수<em class="cms">일정추후공지</em></label></li>
                                         <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 화학 강철 교수"/><span class="subjct_title">전공 화학</span> 강철 교수</label></li>
                                     </ul>  
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="도덕 윤리 김병찬 교수"/><span class="subjct_title">도덕 윤리</span> 김병찬 교수</label></li>                                      
-                                    </ul>  
-                                    <ul class="subject_line">
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="도덕 윤리 김병찬 교수"/><span class="subjct_title">도덕 윤리</span> 김병찬 교수<em class="cms">일정추후공지</em></label></li>
                                         <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="일반 사회 허역 교수팀"/><span class="subjct_title">일반 사회</span> 허역 교수팀</label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 역사 김정권 교수"/><span class="subjct_title">전공 역사</span> 김종권 교수</label></li>
-                                    </ul>  
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 역사 김정권 교수"/><span class="subjct_title">전공 역사</span> 김종권 교수</label></li>                               
+                                    </ul>                       
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 음악 다이애나 교수"/><span class="subjct_title">전공 음악</span> 다이애나 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 체육 최규훈 교수"/><span class="subjct_title">전공 체육</span> 최규훈 교수</label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 음악 다이애나 교수"/><span class="subjct_title">전공 음악</span> 다이애나 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 체육 최규훈 교수"/><span class="subjct_title">전공 체육</span> 최규훈 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 중국어 장영희 교수"/><span class="subjct_title">전공 중국어</span> 장영희 교수</label></li>
                                     </ul>  
                                     <ul class="subject_line">
                                         <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전자직 최우영 교수"/><span class="subjct_title">전기·전자·통신</span> 최우영 교수</label></li>
                                         <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="정컴 교육론 장순선 교수"/><span class="subjct_title">정컴 교육론</span> 장순선 교수</label></li>
-                                    </ul>  
-                                    <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 중국어 장영희 교수"/><span class="subjct_title">전공 중국어</span> 장영희 교수</label></li>                                        
-                                    </ul>                                                                               
+                                    </ul>                                                                                                         
                                  </td>                              
                             </tr>
                         </tbody>
                     </table>
-                    <div class="btns">
+                    <div class="btns_apply">
                         <a href="javascript:void(0);" onclick="javascript:fn_submit(); return false;">설명회 참석 신청하기 ></a>
+                    </div>    
+                    <div class="btns_cancel">
                         <a href="javascript:void(0);" onclick="javascript:fn_submit(); return false;">설명회 참석 취소하기 ></a>
                     </div>                    
                 </div>
@@ -318,6 +323,13 @@
             
         <div id="Container" class="Container ssam NGR c_both maps">
             @include('willbes.pc.site.main_partial.map_' . $__cfg['SiteCode'])
+            <div class="evtCtnsBox">
+                <p class="parking">
+                    윌비스 임용고시학원은<br>
+                    별도의 <strong>무료 주차장</strong>이 없습니다.<br>
+                    가급적 대중교통을 이용해 주시기 바랍니다!
+                </p>
+            </div>
         </div>    
         
         <div class="evtCtnsBox evt05" data-aos="fade-up">

@@ -72,8 +72,7 @@
 
         .evt04 {background:#FFE7E7;}
 
-        .maps {padding:50px 0;}
-        .parking {margin-left:600px;}
+        .maps {padding:50px 0;}        
       
         .evt05 {background:#eee;}
 
@@ -322,15 +321,8 @@
         </div>
             
         <div id="Container" class="Container ssam NGR c_both maps">
-            @include('willbes.pc.site.main_partial.map_' . $__cfg['SiteCode'])
-            <div class="evtCtnsBox">
-                <p class="parking">
-                    윌비스 임용고시학원은<br>
-                    별도의 <strong>무료 주차장</strong>이 없습니다.<br>
-                    가급적 대중교통을 이용해 주시기 바랍니다!
-                </p>
-            </div>
-        </div>    
+            @include('willbes.pc.site.main_partial.map_' . $__cfg['SiteCode'])           
+        </div>
         
         <div class="evtCtnsBox evt05" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2022/11/2821_05.jpg" alt="소문내기 이벤트"/>

@@ -70,6 +70,9 @@
         .evt_table .txtinfo li {list-style: dimical; margin-left:15px; margin-bottom:10px;line-height:1.25;}
         .evt_table .txtinfo li a {display:inline-block; font-size:12px; color:#ffff00; border:1px solid #ffff00; border-radius:20px; padding:2px 10px}
 
+        .evt_table .close {position: absolute; display:flex; background:rgba(0,0,0,0.5); width:100%; height: 100%; left:0; top:0; z-index: 10;justify-content: center;align-items: center;}
+        .evt_table .close span {border:10px double #cc0000; color:#cc0000; font-size:50px; padding:40px; transform: rotate(-20deg)}
+
         .evt04 {background:#FFE7E7;}
 
         .maps {padding:50px 0;}        
@@ -156,7 +159,9 @@
             <div class="evtCtnsBox evt03" id="runningMate" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/11/2821_03.jpg" alt="설명회 신청"/>
                 <div class="evt_table p_re">
-
+                    <div class="close NSK-Black">
+                        <span>설명회<br>신청 완료</span>
+                    </div>
                     <div class="txtinfo">
                         <div>개인정보 제공 동의 문구</div>
                         <ul>

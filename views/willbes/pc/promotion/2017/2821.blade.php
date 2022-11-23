@@ -27,8 +27,8 @@
         .evt02 .btns a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#000; margin:0 10px; border-radius:40px; padding:0 50px}
         .evt02 .btns a:hover {background:#5d46c0}
 
-        .evt03 {width:1120px; margin:0 auto 150px;}        
-        .evt_table {width:980px; margin:0 auto; border:1px solid #000; padding:50px}
+        .evt03 {width:1120px; margin:0 auto;}        
+        .evt_table {width:980px; margin:0 auto; border:1px solid #000; padding:50px}       
         .evt_table table{width:100%;border-top:1px solid #e9e9e9;}
         .evt_table table tr.elementary {border-bottom:1px solid #666}
         .evt_table table tr {border-bottom:1px solid #e9e9e9}
@@ -60,9 +60,11 @@
         .evt_table .btns_apply {margin-top:40px}
         .evt_table .btns_apply a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#000; margin:0 10px; border-radius:40px; padding:0 50px}
         .evt_table .btns_apply a:hover {background:#5d46c0}
-        .evt_table .btns_cancel {margin-top:40px}
-        .evt_table .btns_cancel a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#000; margin:0 10px; border-radius:40px; padding:0 50px}
-        .evt_table .btns_cancel a:hover {background:#af1e2d}
+
+        .evt_cancle_table {width:980px; margin:0 auto;padding:50px}
+        .evt_cancle_table .btns_cancel {text-align:center;}
+        .evt_cancle_table .btns_cancel a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#000; margin:0 10px; border-radius:40px; padding:0 50px}
+        .evt_cancle_table .btns_cancel a:hover {background:#af1e2d}
 
         .evt_table .txtinfo {text-align:left;}
         .evt_table .txtinfo div {font-size:18px; font-weight:bold; margin-bottom:20px}
@@ -313,12 +315,14 @@
                     </table>
                     <div class="btns_apply">
                         <a href="javascript:void(0);" onclick="javascript:fn_submit(); return false;">설명회 참석 신청하기 ></a>
-                    </div>    
-                    <div class="btns_cancel">
-                        <a href="javascript:void(0);" onclick="javascript:fn_submit(); return false;">설명회 참석 취소하기 ></a>
-                    </div>                    
+                    </div>                                
                 </div>
             </div>
+            <div class="evt_cancle_table p_re">
+                <div class="btns_cancel">
+                    <a href="javascript:void(0);" onclick="javascript:fn_submit(); return false;">설명회 참석 취소하기 ></a>
+                </div>
+            </div>       
         </form>
 
         <div class="evtCtnsBox evt04" data-aos="fade-up">

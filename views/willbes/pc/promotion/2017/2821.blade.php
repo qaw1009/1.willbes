@@ -56,10 +56,11 @@
         .check p {margin-bottom:50px;padding-top:75px;}
         .check label {cursor:pointer; font-weight:bold;font-size:15px;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
-
-        .evt_table .btns_apply {margin-top:40px}
-        .evt_table .btns_apply a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#000; margin:0 10px; border-radius:40px; padding:0 50px}
-        .evt_table .btns_apply a:hover {background:#5d46c0}
+        
+        .evt_apply_table {width:980px; margin:0 auto;padding:50px}
+        .evt_apply_table .btns_apply {text-align:center;}
+        .evt_apply_table .btns_apply a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#000; margin:0 10px; border-radius:40px; padding:0 50px}
+        .evt_apply_table .btns_apply a:hover {background:#af1e2d}
 
         .evt_cancle_table {width:980px; margin:0 auto;padding:50px}
         .evt_cancle_table .btns_cancel {text-align:center;}
@@ -312,12 +313,14 @@
                                  </td>                              
                             </tr>
                         </tbody>
-                    </table>
-                    <div class="btns_apply">
-                        <a href="javascript:void(0);" onclick="javascript:fn_submit(); return false;">설명회 참석 신청하기 ></a>
-                    </div>                                
+                    </table>                                                  
                 </div>
             </div>
+            <div class="evt_apply_table p_re">
+                <div class="btns_apply">
+                    <a href="javascript:void(0);" onclick="javascript:fn_submit(); return false;">설명회 참석 신청하기 ></a>
+                </div>  
+            </div>     
             <div class="evt_cancle_table p_re">
                 <div class="btns_cancel">
                     <a href="javascript:void(0);" onclick="javascript:fn_submit(); return false;">설명회 참석 취소하기 ></a>

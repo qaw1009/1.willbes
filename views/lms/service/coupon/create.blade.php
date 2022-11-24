@@ -151,7 +151,7 @@
                         <div class="form-item-nm-input mr-5 item" style="display: inline-block;">
                             <select class="form-control" id="apply_school_year" name="apply_school_year" title="대비학년도">
                                 <option value="">대비학년도</option>
-                                @for($i = (date('Y')+1); $i >= 2010; $i--)
+                                @for($i = (date('Y')+2); $i >= 2010; $i--)
                                     <option value="{{ $i }}" @if($i == $data['ApplySchoolYear']) selected="selected" @endif>{{ $i }}</option>
                                 @endfor
                             </select>

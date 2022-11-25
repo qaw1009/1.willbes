@@ -101,7 +101,7 @@ class ConsultManagement extends \app\controllers\FrontController
             show_alert('조회된 데이터가 없습니다. 다시 시도해 주세요.', 'back');
         }
 
-        if ($data['consultType'] != 'Y') {
+        if ($data['consultType'] != 'Y' || $data['ConsultPersonCount'] <= $data['memCnt']) {
             show_alert('예약할 수 있는 정원이 초과된 상태입니다. 다른 시간대를 선택해 주세요.', 'back');
         }
 
@@ -378,10 +378,10 @@ class ConsultManagement extends \app\controllers\FrontController
         ]);
         $arr_sub_condition = ([
             'RAW' => [
-                'CstIdx = ' => (empty($cst_idx) === true) ? '\'\'' : '\''.$cst_idx.'\''
+                'a.CstIdx = ' => (empty($cst_idx) === true) ? '\'\'' : '\''.$cst_idx.'\''
             ],
             'EQ'=>[
-                'IsReg' => 'Y'
+                'b.IsReg' => 'Y'
             ]
         ]);
 

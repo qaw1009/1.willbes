@@ -210,8 +210,9 @@ class ConsultFModel extends WB_Model
             FROM {$this->_table['consult_schedule_time']} AS a
             INNER JOIN {$this->_table['consult_schedule']} AS b ON a.CsIdx = b.CsIdx AND b.IsUse = 'Y' AND b.IsStatus = 'Y'
             LEFT JOIN (
-                SELECT CstIdx, COUNT(*) AS memCnt
-                FROM {$this->_table['consult_schedule_member']}
+                SELECT a.CstIdx, COUNT(*) AS memCnt
+                FROM {$this->_table['consult_schedule_time']} as a
+                INNER JOIN {$this->_table['consult_schedule_member']} as b ON a.CstIdx = b.CstIdx
                 {$sub_where}
             ) AS c ON a.CstIdx = c.CstIdx
         ";
@@ -227,7 +228,7 @@ class ConsultFModel extends WB_Model
      * @param $consult_type
      * @return array|bool
      */
-    public function addConsultSchedule($inputData = [], $site_code, $consult_type = '')
+    public function addConsultSchedule($inputData = [], $site_code = '', $consult_type = '')
     {
         $this->_conn->trans_begin();
         try {
@@ -235,6 +236,30 @@ class ConsultFModel extends WB_Model
             $isCount_cnt = $member_data['cnt'];
             if ($isCount_cnt > 0) {
                 throw new \Exception('등록된 상담예약건이 존재합니다. 취소 후 다시 예약해 주세요.');
+            }
+
+            $arr_condition = ([
+                'RAW' => [
+                    'a.CstIdx = ' => element('cst_idx', $inputData, ''),
+                    'b.CampusCcd =' => element('s_campus', $inputData, ''),
+                ],
+                'EQ'=>[
+                    'b.SiteCode' => $site_code,
+                    'a.IsUse' => 'Y',
+                    'a.IsStatus' => 'Y'
+                ]
+            ]);
+            $arr_sub_condition = ([
+                'RAW' => ['a.CstIdx = ' => element('cst_idx', $inputData, '')],
+                'EQ'=>['b.IsReg' => 'Y']
+            ]);
+            $column = '
+                STRAIGHT_JOIN a.CstIdx, b.CsIdx, b.ConsultDate, a.TimeValue, a.ConsultTargetType, a.ConsultPersonCount, IFNULL(c.memCnt, 2) AS memCnt
+                , IF (a.ConsultPersonCount <= IFNULL(c.memCnt, 0), \'N\', \'Y\') AS consultType
+            ';
+            $data = $this->findConsultScheduleTimeForOnly($arr_condition, $arr_sub_condition, $column);
+            if ($data['consultType'] != 'Y' || $data['ConsultPersonCount'] <= $data['memCnt']) {
+                throw new \Exception('예약할 수 있는 정원이 초과된 상태입니다. 다른 시간대를 선택해 주세요.');
             }
 
             $arr_serial_ccd = element('serial_ccd', $inputData);

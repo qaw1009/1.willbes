@@ -5,7 +5,7 @@ class Event extends \app\controllers\FrontController
 {
     protected $models = array('eventF', 'siteF', 'downloadF', 'memberF', '/support/supportBoardF');
     protected $helpers = array('download');
-    protected $auth_controller = array('deleteRegister');
+    protected $auth_controller = array('deleteRegister','deleteAllRegister');
     protected $auth_methods = array();
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
@@ -984,6 +984,24 @@ class Event extends \app\controllers\FrontController
 
         $result = $this->eventFModel->delEventRegister(element('em_idx', $this->_reqP(null)));
         $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
+     * 신청내역 전체 삭제
+     */
+    public function deleteAllRegister()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'em_idx[]', 'label' => '이벤트접수식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return $this->json_error('필수 데이터 누락입니다.');
+        }
+
+        $result = $this->eventFModel->delAllEventRegister($this->_reqP(null));
+        $this->json_result($result, '취소 되었습니다.', $result);
     }
 
     /**

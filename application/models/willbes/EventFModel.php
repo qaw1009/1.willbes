@@ -2269,4 +2269,46 @@ class EventFModel extends WB_Model
         }
         return true;
     }
+
+    /**
+     * 신청리스트 전체 삭제
+     * @param array $form_data
+     * @return array|bool
+     */
+    public function delAllEventRegister($form_data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $arr_condition = [
+                'EQ' => [
+                    'A.MemIdx' => $this->session->userdata('mem_idx'),
+                    'A.IsStatus' => 'Y',
+                    'B.IsStatus' => 'Y',
+                ],
+
+                'IN' => [
+                    'A.EmIdx' => element('em_idx', $form_data)
+                ]
+            ];
+            $result = $this->listRegisterMember(true, $arr_condition);
+            if (empty($result) === true) {
+                throw new \Exception('삭제할 데이터가 없습니다.');
+            }
+
+            $is_update = $this->_conn->set([
+                'IsStatus' => 'N',
+                'UpdMemIdx' => $this->session->userdata('mem_idx')
+            ])->where_in('EmIdx', element('em_idx', $form_data))->update($this->_table['event_member']);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
 }

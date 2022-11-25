@@ -142,37 +142,33 @@
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
             <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
-            <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
             <input type="hidden" name="register_type" value="promotion"/>
-            <input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/> {{-- 하나수강만 선택 가능할시 --}}
             <input type="hidden" id="register_name" name="register_name" value="{{(sess_data('is_login') === true) ? $arr_base['member_info']['MemName'] : ''}}">
-            <input type="hidden" id="userId" name="userId" value="{{sess_data('mem_id')}}">
             <input type="hidden" id="register_tel" name="register_tel" value="{{(sess_data('is_login') === true && empty($arr_base['member_info']['Phone']) === false) ? $arr_base['member_info']['Phone'] : ''}}">
-            <input type="hidden" id="register_email" name="register_email" value="{{(sess_data('is_login') === true && empty($arr_base['member_info']['Mail']) === false) ? $arr_base['member_info']['Mail'] : ''}}">
 
             <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_params[]" value="register_data3"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_params[]" value="register_data4"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_param_names[]" value="출신학교/학부/학년"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="과목"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="SNS채널"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="SNS계정URL"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="희망응시지역"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="응시횟수"/> {{-- 체크 항목 전송 --}}
 
             <div class="evtCtnsBox evt03" id="runningMate" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/11/2821_03.jpg" alt="설명회 신청"/>
                 <div class="evt_table p_re">
-                    <div class="close NSK-Black">
-                        <span>설명회<br>신청 완료</span>
-                    </div>
+                    {{-- 신청완료 --}}
+                    @if (empty($register_count) === false)
+                        <div class="close NSK-Black"><span>설명회<br>신청 완료</span></div>
+                    @endif
+
                     <div class="txtinfo">
                         <div>개인정보 제공 동의 문구</div>
                         <ul>
                             <li>개인정보 수집 이용 목적<br>
                                 - 신청자 본인 확인 및 신청 접수 및 문의사항 응대<br>
                                 - 통계분석 및 마케팅 <br>
-                                - 윌비스 임용의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공 
-                            </li> 
+                                - 윌비스 임용의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공
+                            </li>
                             <li>개인정보 수집 항목<br>
                                 - 필수항목 : 성명, 연락처, 출신학교, 출신학과, 시험응시횟수, 희망응시지역
                             </li>
@@ -188,14 +184,14 @@
                     </div>
                     <div class="check" id="chkInfo">
                         <label>
-                            <input class="btn-login-check" name="is_chk" id="is_chk" type="checkbox" value="Y" />
+                            <input name="is_chk" id="is_chk" type="checkbox" value="Y"/>
                             윌비스에 개인정보 제공 동의하기 (필수)
                         </label>
                     </div>
 
                     <table>
                         <col width="10%" />
-                        <col width="23%" />            
+                        <col width="23%" />
                         <col width="10%" />
                         <col width="23%" />
                         <col width="10%" />
@@ -203,17 +199,9 @@
                         <tbody>
                             <tr>
                                 <th>윌비스 ID</th>
-                                <td>
-                                    @if(sess_data('is_login') === true)
-                                        {{sess_data('mem_id')}}
-                                    @endif
-                                </td>
+                                <td>{{sess_data('mem_id')}}</td>
                                 <th>이 름</th>
-                                <td>
-                                    @if(sess_data('is_login') === true)
-                                        {{$arr_base['member_info']['MemName']}}
-                                    @endif
-                                </td>
+                                <td>{{sess_data('mem_name')}}</td>
                                 <th>연락처</th>
                                 <td>
                                     {{(sess_data('is_login') === true && empty($arr_base['member_info']['Phone']) === false) ? $arr_base['member_info']['Phone'] : ''}}
@@ -224,12 +212,12 @@
                                     학부/학년
                                 </th>
                                 <td>
-                                    <input class="btn-login-check" type="text" name="register_data1" maxlength="100">
+                                    <input type="text" name="register_data1" maxlength="100">
                                 </td>
                                 <th>희망응시지역</th>
                                 <td>
-                                    <select id="area" name="area" title="지역 선택" class="seleArea">
-                                        <option selected="selected">지역 선택</option>
+                                    <select id="register_data2" name="register_data2" title="지역선택">
+                                        <option value="">지역선택</option>
                                         <option value="서울">서울</option>
                                         <option value="경기">경기</option>
                                         <option value="인천">인천</option>
@@ -249,91 +237,103 @@
                                         <option value="제주">제주</option>
                                     </select>
                                 </td>
-                                <th>응시회수</th>
+                                <th>응시횟수</th>
                                 <td>
-                                    <select id="area" name="area" title="응시회수" class="seleArea">
-                                        <option selected="selected">응시 회수</option>
+                                    <select id="register_data3" name="register_data3" title="응시횟수">
+                                        <option value="">응시횟수</option>
                                         <option value="초수">초수</option>
                                         <option value="재수">재수</option>
                                         <option value="삼수 이상">삼수 이상</option>
                                     </select>
-                                </td>                 
+                                </td>
                             </tr>
                             <tr class="elementary">
                                 <th>유•초등</th>
                                 <td colspan="5">
                                     <ul>
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="유아 민정선 교수"/><span class="subjct_title">유아</span> 민정선 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="radio" name="register_data2" value="초등 배재민 교수"/><span class="subjct_title">초등</span> 배재민 교수<em class="cms">일정추후공지</em></label></li>
-                                    </ul>   
-                                </td>                                                            
+                                        <li><label><input class="btn-product-check" type="radio" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] or ''}}" data-product-group="1"/><span class="subjct_title">유아</span> 민정선 교수</label></li>
+                                        <li><label><input class="btn-product-check" type="radio" name="register_chk[]" value="{{ $arr_base['register_list'][1]['ErIdx'] or ''}}" data-product-group="1"/><span class="subjct_title">초등</span> 배재민 교수<em class="cms">일정추후공지</em></label></li>
+                                    </ul>
+                                </td>
                             </tr>
                             <tr>
                                 <th>중등</th>
                                 <td colspan="5">
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="교육학 이경범 교수"/><span class="subjct_title">교육학 논술</span> 이경범 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="교육학 정현 교수"/><span class="subjct_title">교육학 논술</span> 정현 교수</label></li>
-                                        <li><p class="middle">※ 중등은 교육학을 반드시 선택!</p></li>                                        
+                                        <li><label><input class="btn-product-check" type="radio" name="register_chk[]" value="{{ $arr_base['register_list'][2]['ErIdx'] or ''}}" data-product-group="2"/><span class="subjct_title">교육학 논술</span> 이경범 교수</label></li>
+                                        <li><label><input class="btn-product-check" type="radio" name="register_chk[]" value="{{ $arr_base['register_list'][3]['ErIdx'] or ''}}" data-product-group="2"/><span class="subjct_title">교육학 논술</span> 정현 교수</label></li>
+                                        <li><p class="middle">※ 중등은 교육학을 반드시 선택!</p></li>
                                     </ul>
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공국어 송원영 교수"/><span class="subjct_title">전공 국어</span> 송원영 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공국어 권보민 교수"/><span class="subjct_title">전공 국어</span>권보민 교수<em class="cms">일정추후공지</em></label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="교육학 구동언 교수"/><span class="subjct_title">전공 국어</span> 구동언 교수</label></li>
-                                    </ul>  
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][4]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 국어</span> 송원영 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][5]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 국어</span>권보민 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][6]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 국어</span> 구동언 교수</label></li>
+                                    </ul>
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="일반영어 김유석 교수"/><span class="subjct_title">일반영어/영미문학</span> 김유석 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="영어학 깅영문 교수"/><span class="subjct_title">영어학</span> 김영문 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 수학 김철홍 교수"/><span class="subjct_title">전공 수학</span>김철홍 교수<em class="cms">일정추후공지</em></label></li>
-                                    </ul>  
-                                    <ul class="subject_line">                                
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 수학 김현웅 교수"/><span class="subjct_title">전공 수학</span> 김현웅 교수<em class="cms">일정추후공지</em></label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="수학 교육론 박태영 교수"/><span class="subjct_title">수학 교육론</span> 박태영 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="수학 교육론 박혜향 교수"/><span class="subjct_title">수학 교육론</span> 박혜향 교수</label></li>
-                                    </ul>                                  
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][7]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">일반영어/영미문학</span> 김유석 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][8]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">영어학</span> 김영문 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 수학</span>김철홍 교수<em class="cms">일정추후공지</em></label></li>
+                                    </ul>
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 생물 강치욱 교수"/><span class="subjct_title">전공 생물</span> 강치욱 교수<em class="cms">일정추후공지</em></label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="생물 교육론 앙혜정 교수"/><span class="subjct_title">생물 교육론</span> 앙혜정 교수<em class="cms">일정추후공지</em></label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 화학 강철 교수"/><span class="subjct_title">전공 화학</span> 강철 교수</label></li>
-                                    </ul>  
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][10]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 수학</span> 김현웅 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][11]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">수학 교육론</span> 박태영 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][12]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">수학 교육론</span> 박혜향 교수</label></li>
+                                    </ul>
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="도덕 윤리 김병찬 교수"/><span class="subjct_title">도덕 윤리</span> 김병찬 교수<em class="cms">일정추후공지</em></label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="일반 사회 허역 교수팀"/><span class="subjct_title">일반 사회</span> 허역 교수팀</label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 역사 김정권 교수"/><span class="subjct_title">전공 역사</span> 김종권 교수</label></li>                               
-                                    </ul>                       
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][13]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 생물</span> 강치욱 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][14]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">생물 교육론</span> 앙혜정 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][15]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 화학</span> 강철 교수</label></li>
+                                    </ul>
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 음악 다이애나 교수"/><span class="subjct_title">전공 음악</span> 다이애나 교수<em class="cms">일정추후공지</em></label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 체육 최규훈 교수"/><span class="subjct_title">전공 체육</span> 최규훈 교수<em class="cms">일정추후공지</em></label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전공 중국어 장영희 교수"/><span class="subjct_title">전공 중국어</span> 장영희 교수</label></li>
-                                    </ul>  
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][16]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">도덕 윤리</span> 김병찬 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][17]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">일반 사회</span> 허역 교수팀</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][18]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 역사</span> 김종권 교수</label></li>
+                                    </ul>
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="전자직 최우영 교수"/><span class="subjct_title">전기·전자·통신</span> 최우영 교수</label></li>
-                                        <li><label><input class="btn-login-check" type="checkbox" name="register_data2" value="정컴 교육론 장순선 교수"/><span class="subjct_title">정컴 교육론</span> 장순선 교수</label></li>
-                                    </ul>                                                                                                         
-                                 </td>                              
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][19]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 음악</span> 다이애나 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][20]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 체육</span> 최규훈 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][21]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 중국어</span> 장영희 교수</label></li>
+                                    </ul>
+                                    <ul class="subject_line">
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][22]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전기·전자·통신</span> 최우영 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][23]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">정컴 교육론</span> 장순선 교수</label></li>
+                                    </ul>
+                                 </td>
                             </tr>
                         </tbody>
-                    </table>                                                  
+                    </table>
                 </div>
             </div>
+        </form>
+
+        @if (empty($register_count) === true)
             <div class="evt_apply_table p_re">
                 <div class="btns_apply">
-                    <a href="javascript:void(0);" onclick="javascript:fn_submit(); return false;">설명회 참석 신청하기 ></a>
-                </div>  
-            </div>     
+                    <a href="javascript:void(0);" onclick="fn_submit(); return false;">설명회 참석 신청하기 ></a>
+                </div>
+            </div>
+        @else
+            <form name="delete_register" id="delete_register">
+                {!! csrf_field() !!}
+                {!! method_field('DELETE') !!}
+                <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
+                @foreach($register_count as $key => $row)
+                    <input type="hidden" name="em_idx[]" value="{{$row['EmIdx']}}">
+                @endforeach
+            </form>
             <div class="evt_cancle_table p_re">
                 <div class="btns_cancel">
-                    <a href="javascript:void(0);" onclick="javascript:fn_submit(); return false;">설명회 참석 취소하기 ></a>
+                    <a href="javascript:void(0);" onclick="fn_register_delete(); return false;">설명회 참석 취소하기 ></a>
                 </div>
-            </div>       
-        </form>
+            </div>
+        @endif
 
         <div class="evtCtnsBox evt04" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2022/11/2821_04.jpg" alt="푸짐한 선물"/>
         </div>
             
         <div id="Container" class="Container ssam NGR c_both maps">
-            @include('willbes.pc.site.main_partial.map_' . $__cfg['SiteCode'])           
+            @include('willbes.pc.site.main_partial.map_' . $__cfg['SiteCode'])
         </div>
         
         <div class="evtCtnsBox evt05" data-aos="fade-up">
@@ -357,7 +357,6 @@
                 @endif
             </div> 
         </div>
-
 
         <div class="evtCtnsBox evt07" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2022/11/2821_07.jpg" alt="여러분 차례"/>
@@ -421,24 +420,41 @@
         $(document).ready(function() {
             AOS.init();
 
-            $('.btn-login-check').on('click', function () {
-                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+            $('.btn-product-check').on('click', function () {
+                var this_group = $(this).data("product-group");
+
+                if (this_group > 1) {
+                    $(".sub-product").prop("disabled", false);
+                } else {
+                    $(".sub-product").prop("disabled", true);
+                }
+
+                if (this_group != 3) {
+                    $(".sub-product").prop("checked", false);
+                }
+
+                if (this_group == 3) {
+                    if ($(".sub-product:checked").length >= 3) {
+                        alert('전공과목은 2개까지 선택할 수 있습니다.');
+                        return false;
+                    }
+                }
             });
         });
 
         function fn_submit() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($register_count) === false)
+                alert('등록된 신청자 정보가 있습니다.');
+                return;
+            @endif
+
             var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
 
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
                 alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
-                return;
-            }
-
-            if ($regi_form_register.find('input[name="register_email"]').val() == '') {
-                alert('등록된 이메일이 없습니다.\n개인정보수정 페이지에서 이메일 저장 후 신청해 주세요.');
                 return;
             }
 
@@ -447,18 +463,19 @@
                 return;
             }
 
-            if ($regi_form_register.find('input[name="register_data2"]').is(':checked') === false) {
-                alert('희망하는 홍보 활동 과목을 선택해 주세요.');
+            if ($regi_form_register.find('select[name="register_data2"]').val() == '') {
+                alert('희망응시지역을 선택해 주세요.');
                 return;
             }
 
-            if ($regi_form_register.find('input[name="register_data3"]').is(':checked') === false) {
-                alert('지원자 소유의 SNS 채널을 선택해 주세요.');
+            if ($regi_form_register.find('select[name="register_data3"]').val() == '') {
+                alert('응시횟수를 선택해 주세요.');
                 return;
             }
 
-            if ($regi_form_register.find('input[name="register_data4"]').val() == '') {
-                alert('SNS계정 URL을 입력해 주세요.');
+            var chk_length = $regi_form_register.find('input[name="register_chk[]"]:checked').length;
+            if (chk_length < 1) {
+                alert('과목을 선택해 주세요.');
                 return;
             }
 
@@ -471,15 +488,23 @@
             }, showValidateError, null, false, 'alert');
         }
 
-        /*레이어팝업*/     
+        function fn_register_delete()
+        {
+            var $delete_register = $('#delete_register');
+            var _url = '{!! front_url('/event/deleteAllRegister') !!}';
 
-        function go_popup1() {
-        $('#popup1').bPopup();
-        }   
-        function go_popup2() {
-            $('#popup2').bPopup();
+            if (!confirm('취소 하시겠습니까?')) { return; }
+            ajaxSubmit($delete_register, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    location.reload();
+                }
+            }, showValidateError, null, false, 'alert');
         }
-     
+
+        /*레이어팝업*/     
+        function go_popup1(){$('#popup1').bPopup();}
+        function go_popup2(){$('#popup2').bPopup();}
         </script>
 
 {{-- 프로모션용 스크립트 include --}}

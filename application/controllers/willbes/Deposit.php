@@ -40,6 +40,43 @@ class Deposit extends \app\controllers\FrontController
     }
 
     /**
+     * 가상계좌입금통보 수동 실행
+     * https://www.local.willbes.net/deposit/resend?order_no=20221121111029364320&secret=70537bf1f99949ce8d9a850f45ae332d
+     */
+    public function resend()
+    {
+        $order_no = $this->_req('order_no');
+        $secret = get_var($this->_req('secret'), '');
+        $deposit_datm = date('Y-m-d H:i:s');
+        $reg_ip = $this->input->ip_address();
+        $arr_allow_vbank_ip = ['106.10.83.36'];
+
+        if (empty($order_no) === true && $secret != '70537bf1f99949ce8d9a850f45ae332d') {
+            die('잘못된 접근입니다.[1]');
+        }
+
+        if (ENVIRONMENT != 'local') {
+            if (in_array($reg_ip, $arr_allow_vbank_ip) === false) {
+                die('잘못된 접근입니다.[2]');
+            }
+        }
+
+        if (ENVIRONMENT == 'local' || ENVIRONMENT == 'testing') {
+            // 입금완료 처리
+            $input = [
+                'order_no' => $order_no,
+                'deposit_datm' => $deposit_datm,
+                'mid' => '',
+            ];
+
+            $result = $this->orderFModel->procDepositComplete($input);
+            dd($result);
+        } else {
+            die('잘못된 접근입니다.[3]');
+        }
+    }
+
+    /**
      * 입금통보 연동 테스트 폼
      */
     /*public function form()

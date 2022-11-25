@@ -10,14 +10,14 @@
 
     /************************************************************/
 
-    .evt_01 .wrap a {position: absolute; bottom:2vh; padding:2vh 5vh; width:50%; text-align:center; font-size:2.4vh; background:#63b8c4; color:#fff; left:50%; margin-left:-25%; z-index: 2; border-radius:50px; border:0}
+    .evt_01 .wrap a {position: absolute; bottom:1.5vh; padding:1vh 4vh; width:50%; text-align:center; font-size:2vh; background:#63b8c4; color:#fff; left:50%; margin-left:-25%; z-index: 2; border-radius:50px; border:0}
 
     .evtCtnsBox .check{margin:30px 20px 50px; font-size:1.6vh; text-align:center; line-height:1.5; letter-spacing:-1px;}
     .evtCtnsBox .check label{color:#000; font-weight:bold;}
     .evtCtnsBox .check input {border: 2px solid #000; margin-right: 8px; height: 20px; width: 20px; } 
     .evtCtnsBox .check a {display: block; width:60%; padding:5px 20px; color: #fff; background: #000; border-radius:20px; margin:2vh auto}
     .evtCtnsBox .check a:hover {background-color:#5380f5;}
-    .evtCtnsBox .check ul {margin-top:3vh; font-size:14px; text-align:left; padding-left:50px}
+    .evtCtnsBox .check ul {margin-top:3vh; font-size:1.6vh; text-align:left; padding-left:2vh}
 
     /* 이용안내 */
     .evtInfo {padding:5vh 2vh; background:#535353; color:#fff; font-size:1.6vh}

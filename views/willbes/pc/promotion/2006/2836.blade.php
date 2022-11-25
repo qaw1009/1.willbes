@@ -18,6 +18,9 @@
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
 		/************************************************************/ 
+
+        .sky {position:fixed; top:200px; right:10px; z-index:10;}
+        .sky a {display:block; margin-bottom:15px}
         
 		.evt_top {background:#040728}	
       
@@ -46,12 +49,15 @@
     </style>
 
 	<div class="evtContent NSK">
+        <div class="sky" id="QuickMenu">
+            <a href="#lecbuy"><img src="https://static.willbes.net/public/images/promotion/2022/11/2836_sky01.jpg" alt=""></a>         
+        </div>
 
 		<div class="evtCtnsBox evt_top" data-aos="fade-down">
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2836_top.jpg" alt="김동진 민법 티패스" />
 		</div>
 
-		<div class="evtCtnsBox evt_01" data-aos="fade-up">
+		<div class="evtCtnsBox evt_01" data-aos="fade-up" id="lecbuy">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/11/2836_01.jpg" alt="" />
                 <a href="javascript:go_PassLecture('202811');" class="NSK-Black">신청하기 ></a>

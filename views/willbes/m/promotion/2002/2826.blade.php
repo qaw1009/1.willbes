@@ -103,10 +103,23 @@
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2826m_06.jpg"  alt="그레이스 호퍼 명언"/>               
     </div>
 
+    <div class="evtCtnsBox" data-aos="fade-up">
+        <div class="wrap">
+            <img src="https://static.willbes.net/public/images/promotion/2022/11/2826m_08.jpg" alt="이미지 다운받기"/>
+            <a href="javascript:void(0);" onclick="giveCheck(); return false;" title="할인쿠폰받기" style="position: absolute;left: 25.31%;top: 62.73%;width: 49.44%;height: 4.38%;z-index: 2;"></a>
+            <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute;left: 59.31%;top: 71.27%;width: 33.94%;height: 7.58%;z-index: 2;"></a>
+        </div>
+    </div>
+
+    {{--홍보url--}}
+    @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+        @include('willbes.m.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'Y'))
+    @endif
+
     <div class="evtCtnsBox">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2826m_07.jpg"  alt="후회없는 선택"/>
-            <a href="https://police.willbes.net/m/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" title="신청하기" style="position: absolute;left: 25.47%;top: 87.65%;width: 49.55%;height: 5.57%;z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" title="신청하기" style="position: absolute;left: 34.47%;top: 89.65%;width: 31.25%;height: 5.57%;z-index: 2;"></a>
         </div>      
     </div>
 

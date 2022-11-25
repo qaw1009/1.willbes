@@ -78,6 +78,7 @@
 
         <div class="sky" id="QuickMenu">
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2827" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/11/2826_sky01.png" alt="경찰학 스페셜 이벤트"></a>
+            <a href="#coupon"><img src="https://static.willbes.net/public/images/promotion/2022/11/2826_sky03.png" title="소문내기"></a> 
             <a href="#lec"><img src="https://static.willbes.net/public/images/promotion/2022/11/2826_sky02.png" title="경찰학 완성반 신청하기"></a> 
         </div>
 
@@ -129,6 +130,18 @@
         <div class="evtCtnsBox evt06">      
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2826_06.jpg"  alt="그레이스 호퍼 명언"/>    
         </div>
+
+        <div class="evtCtnsBox evt08" data-aos="fade-up" id="coupon">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/11/2826_08.jpg" title="소문내기 이벤트">
+                <a href="javascript:void(0);" onclick="giveCheck(); return false;" title="쿠폰받기" style="position: absolute;left: 24.32%;top: 66.77%;width: 51.58%;height: 5.05%;z-index: 2;"></a>
+                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이벤트 이미지 다운로드" style="position: absolute;left: 57.32%;top: 77.62%;width: 26.46%;height: 6.55%;z-index: 2;"></a>
+            </div>
+        </div>
+
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_url_partial')
+        @endif 
 
         <div class="evtCtnsBox evt07" data-aos="fade-up" id="lec">                     
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2826_07.jpg"  alt="후회없는 선택"/>

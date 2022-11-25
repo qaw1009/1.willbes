@@ -104,9 +104,9 @@
         <div class="evtCtnsBox evt04" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/11/2826_04.jpg"  alt="경찰학 교재"/>
-                <a href="javascript:go_popup1()" title="핵심 서브노트" style="position: absolute;left: 40.66%;top: 45.25%;width: 14.69%;height: 2.89%;z-index: 2;"></a>
-                <a href="javascript:go_popup2()" title="21개년 총알기출 ox" style="position: absolute;left: 40.66%;top: 65.65%;width: 14.69%;height: 2.89%;z-index: 2;"></a>
-                <a href="javascript:go_popup3()" title="플러스 100제" style="position: absolute;left: 40.66%;top: 86.05%;width: 14.69%;height: 2.89%;z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_popup(1); return false;" title="핵심 서브노트" style="position: absolute;left: 40.66%;top: 45.25%;width: 14.69%;height: 2.89%;z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_popup(2); return false;" title="21개년 총알기출 ox" style="position: absolute;left: 40.66%;top: 65.65%;width: 14.69%;height: 2.89%;z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_popup(3); return false;" title="플러스 100제" style="position: absolute;left: 40.66%;top: 86.05%;width: 14.69%;height: 2.89%;z-index: 2;"></a>
             </div>
         </div>
 
@@ -167,10 +167,13 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/11/2825_textbook03.png" class="off" alt="" />  
             </div>
         </div>
-
     </div>
-
     <!-- End Container -->
+
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
     
     <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
     <script src="/public/js/willbes/dist/aos.js"></script>
@@ -197,18 +200,26 @@
             });
         });
 
+      {{--쿠폰발급--}}
+      function giveCheck() {
+          {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+          $regi_form = $('#regi_form');
+          @if(empty($arr_promotion_params) === false)
+              var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&give_idx={{$arr_promotion_params['give_idx']}}';
+              ajaxSubmit($regi_form, _check_url, function (ret) {
+                  if (ret.ret_cd) {
+                      alert('전국 모의고사 할인쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                      {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                  }
+              }, showValidateError, null, false, 'alert');
+          @else
+            alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+          @endif
+      }
+
         /*레이어팝업*/     
-
-        function go_popup1() {
-            $('#popup1').bPopup();
-        }   
-        function go_popup2() {
-            $('#popup2').bPopup();
-        }
-        function go_popup3() {
-            $('#popup3').bPopup();
-        }
-
+        function go_popup(obj){$('#popup'+obj).bPopup();}
     </script>
       
     {{-- 프로모션용 스크립트 include --}}

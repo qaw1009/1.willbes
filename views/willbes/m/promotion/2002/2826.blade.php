@@ -122,23 +122,23 @@
             <a href="https://police.willbes.net/m/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" title="신청하기" style="position: absolute;left: 34.47%;top: 89.65%;width: 31.25%;height: 5.57%;z-index: 2;"></a>
         </div>      
     </div>
-
 </div>
-
 <!-- End Container -->
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      $( document ).ready( function() {
-        AOS.init();
-      } );
-</script>
+<form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+    {!! csrf_field() !!}
+    {!! method_field('POST') !!}
+</form>
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
 <script src="/public/vendor/jquery/bxslider/jquery.bxslider.js"></script>
 <script type="text/javascript">
-
+    $(document).ready( function(){
+        AOS.init();
+    });
+    
     /*슬라이드*/
     $(document).ready(function() {
         var slidesImg1 = $("#slidesImg2").bxSlider({
@@ -150,8 +150,25 @@
             controls:false,
             pager:true,
         });
-    });   
+    });
 
+    {{--쿠폰발급--}}
+    function giveCheck() {
+        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+        $regi_form = $('#regi_form');
+        @if(empty($arr_promotion_params) === false)
+            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&give_idx={{$arr_promotion_params['give_idx']}}';
+            ajaxSubmit($regi_form, _check_url, function (ret) {
+                if (ret.ret_cd) {
+                    alert('전국 모의고사 할인쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                }
+            }, showValidateError, null, false, 'alert');
+        @else
+            alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+        @endif
+    }
 </script>
 
 {{-- 프로모션용 스크립트 include --}}

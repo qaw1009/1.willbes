@@ -403,6 +403,10 @@ class EventFModel extends WB_Model
                     throw new \Exception('접수 만료된 상태입니다.');
                 }
 
+                if (empty($row['PersonLimit']) === true) {
+                    throw new \Exception('접수 만료된 상품이 있습니다.');
+                }
+
                 //특강별 인원제한 체크
                 if ((empty($arr_register_member[$key]) === false) && $row['PersonLimitType'] == $this->_register_limit_type['limit_true'] && $row['PersonLimit'] <= $arr_register_member[$key]) {
                     throw new \Exception('마감되었습니다.');

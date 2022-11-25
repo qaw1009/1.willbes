@@ -251,8 +251,8 @@
                                 <th>유•초등</th>
                                 <td colspan="5">
                                     <ul>
-                                        <li><label><input class="btn-product-check" type="radio" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] or ''}}" data-product-group="1"/><span class="subjct_title">유아</span> 민정선 교수</label></li>
-                                        <li><label><input class="btn-product-check" type="radio" name="register_chk[]" value="{{ $arr_base['register_list'][1]['ErIdx'] or ''}}" data-product-group="1"/><span class="subjct_title">초등</span> 배재민 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check" type="radio" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][0]['PersonLimit'] or '0'}}" data-product-group="1"/><span class="subjct_title">유아</span> 민정선 교수</label></li>
+                                        <li><label><input class="btn-product-check" type="radio" name="register_chk[]" value="{{ $arr_base['register_list'][1]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][1]['PersonLimit'] or '0'}}" data-product-group="1"/><span class="subjct_title">초등</span> 배재민 교수<em class="cms">일정추후공지</em></label></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -260,43 +260,43 @@
                                 <th>중등</th>
                                 <td colspan="5">
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-product-check" type="radio" name="register_chk[]" value="{{ $arr_base['register_list'][2]['ErIdx'] or ''}}" data-product-group="2"/><span class="subjct_title">교육학 논술</span> 이경범 교수</label></li>
-                                        <li><label><input class="btn-product-check" type="radio" name="register_chk[]" value="{{ $arr_base['register_list'][3]['ErIdx'] or ''}}" data-product-group="2"/><span class="subjct_title">교육학 논술</span> 정현 교수</label></li>
+                                        <li><label><input class="btn-product-check" type="radio" name="register_chk[]" value="{{ $arr_base['register_list'][2]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][2]['PersonLimit'] or '0'}}" data-product-group="2"/><span class="subjct_title">교육학 논술</span> 이경범 교수</label></li>
+                                        <li><label><input class="btn-product-check" type="radio" name="register_chk[]" value="{{ $arr_base['register_list'][3]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][3]['PersonLimit'] or '0'}}" data-product-group="2"/><span class="subjct_title">교육학 논술</span> 정현 교수</label></li>
                                         <li><p class="middle">※ 중등은 교육학을 반드시 선택!</p></li>
                                     </ul>
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][4]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 국어</span> 송원영 교수</label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][5]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 국어</span>권보민 교수<em class="cms">일정추후공지</em></label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][6]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 국어</span> 구동언 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][4]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][4]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">전공 국어</span> 송원영 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][5]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][5]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">전공 국어</span>권보민 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][6]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][6]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">전공 국어</span> 구동언 교수</label></li>
                                     </ul>
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][7]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">일반영어/영미문학</span> 김유석 교수</label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][8]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">영어학</span> 김영문 교수</label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 수학</span>김철홍 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][7]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][7]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">일반영어/영미문학</span> 김유석 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][8]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][8]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">영어학</span> 김영문 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][9]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">전공 수학</span>김철홍 교수<em class="cms">일정추후공지</em></label></li>
                                     </ul>
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][10]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 수학</span> 김현웅 교수<em class="cms">일정추후공지</em></label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][11]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">수학 교육론</span> 박태영 교수</label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][12]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">수학 교육론</span> 박혜향 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][10]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][10]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">전공 수학</span> 김현웅 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][11]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][11]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">수학 교육론</span> 박태영 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][12]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][12]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">수학 교육론</span> 박혜향 교수</label></li>
                                     </ul>
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][13]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 생물</span> 강치욱 교수<em class="cms">일정추후공지</em></label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][14]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">생물 교육론</span> 앙혜정 교수<em class="cms">일정추후공지</em></label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][15]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 화학</span> 강철 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][13]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][13]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">전공 생물</span> 강치욱 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][14]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][14]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">생물 교육론</span> 앙혜정 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][15]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][15]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">전공 화학</span> 강철 교수</label></li>
                                     </ul>
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][16]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">도덕 윤리</span> 김병찬 교수<em class="cms">일정추후공지</em></label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][17]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">일반 사회</span> 허역 교수팀</label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][18]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 역사</span> 김종권 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][16]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][16]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">도덕 윤리</span> 김병찬 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][17]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][17]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">일반 사회</span> 허역 교수팀</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][18]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][18]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">전공 역사</span> 김종권 교수</label></li>
                                     </ul>
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][19]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 음악</span> 다이애나 교수<em class="cms">일정추후공지</em></label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][20]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 체육</span> 최규훈 교수<em class="cms">일정추후공지</em></label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][21]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전공 중국어</span> 장영희 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][19]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][19]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">전공 음악</span> 다이애나 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][20]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][20]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">전공 체육</span> 최규훈 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][21]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][21]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">전공 중국어</span> 장영희 교수</label></li>
                                     </ul>
                                     <ul class="subject_line">
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][22]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">전기·전자·통신</span> 최우영 교수</label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][23]['ErIdx'] or ''}}" data-product-group="3" disabled/><span class="subjct_title">정컴 교육론</span> 장순선 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][22]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][22]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">전기·전자·통신</span> 최우영 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][23]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][23]['PersonLimit'] or '0'}}" data-product-group="3" disabled/><span class="subjct_title">정컴 교육론</span> 장순선 교수</label></li>
                                     </ul>
                                  </td>
                             </tr>
@@ -422,6 +422,12 @@
 
             $('.btn-product-check').on('click', function () {
                 var this_group = $(this).data("product-group");
+                var this_limit = $(this).data("product-limit");
+
+                if (this_limit < 1) {
+                    alert('해당 과목의 설명회 일정은 추후 공지됩니다.');
+                    return false;
+                }
 
                 if (this_group > 1) {
                     $(".sub-product").prop("disabled", false);

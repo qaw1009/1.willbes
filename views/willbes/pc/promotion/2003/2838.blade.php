@@ -18,14 +18,16 @@
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
-        .sky {position:fixed;top:225px;right:10px;z-index:100;}
+        .sky {position:fixed;top:225px; width:120px; right:10px;z-index:100;}
         .sky a {display:block;margin-top:10px;}
+        .sky img {width:100%}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2115_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/11/2838_top_bg.jpg) no-repeat center top;}
+        .wb_top span { position: absolute; top:700px; left:50%; width:868px; margin-left:-400px; z-index: 2;}
 
-        .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2115_01_bg.jpg) no-repeat center top;}
+        .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2022/11/2838_01_bg.jpg) no-repeat center top;}
 
-        .wb_cts05 {background:url(https://static.willbes.net/public/images/promotion/2021/09/2115_05_bg.jpg) no-repeat center top;}
+        .wb_cts03 {background:#569d37}
 
          /*타이머*/
         .newTopDday * {font-size:24px}
@@ -63,6 +65,18 @@
 
 
     <div class="evtContent NSK" id="evtContainer">
+        <div class="sky" id="QuickMenu">
+            <a href="#evt03">
+                <img src="https://static.willbes.net/public/images/promotion/2022/11/2838_sky01.jpg" alt="대학생 할인">
+            </a>
+            <a href="#evt03">
+                <img src="https://static.willbes.net/public/images/promotion/2022/11/2838_sky02.jpg" alt="재도전">
+            </a>
+            <a href="#evt03">
+                <img src="https://static.willbes.net/public/images/promotion/2022/11/2838_sky03.jpg" alt="타사 수강증 인증">
+            </a>
+        </div>
+
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">        
             <div>
@@ -89,42 +103,31 @@
             </div>
         </div>
 
-        <div class="sky" id="QuickMenu">
-            <a href="#evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2114_sky.png" alt="대학생 할인">
-            </a>
-            <a href="#evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2114_sky01.png" alt="재도전">
-            </a>
-            <a href="#evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2022/01/2114_sky02.png" alt="타사 수강증 인증">
-            </a>
-        </div>
-
-        <div class="evtCtnsBox wb_top" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2115_top.jpg" alt="축산직 패스" />
+        <div class="evtCtnsBox wb_top">
+            <img src="https://static.willbes.net/public/images/promotion/2022/11/2838_top.jpg" alt="축산직 패스" />
+            <span data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/11/2838_top_img.png" alt="" /></span>
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2115_01.jpg" alt="윤용범 교수" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/11/2838_01.jpg" alt="윤용범 교수" />
         </div>
 
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2115_02.jpg" alt="학습 커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/11/2838_02.jpg" alt="학습 커리큘럼" />
         </div>
 
-        <div class="evtCtnsBox wb_cts05" id="evt05" data-aos="fade-up">
+        <div class="evtCtnsBox wb_cts03" id="evt03" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2115_05.jpg" alt="학습 커리큘럼" />
-                <a href="javascript:certOpen();" title="인증하기" style="position: absolute; left: 29.29%; top: 73.47%; width: 40.09%; height: 7.92%; z-index: 2;"></a>
-                <a href="#tip" title="유의사항" style="position: absolute; left: 41.88%; top: 83.1%; width: 15.27%; height: 4.57%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/11/2838_03.jpg" alt="학습 커리큘럼" />
+                <a href="javascript:certOpen();" title="인증하기" style="position: absolute; left: 29.73%; top: 74.37%; width: 39.73%; height: 7.92%; z-index: 2;"></a>
+                <a href="#tip" title="유의사항" style="position: absolute; left: 41.7%; top: 84.08%; width: 15.27%; height: 4.41%; z-index: 2;"></a>
             </div>
         </div>
 
         <div class="evtCtnsBox wb_cts06" id="transfer" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2115_06.jpg" alt="수강신청 하기"/>
-                <a href="javascript:go_PassLecture('194968');" title="" style="position: absolute; left: 58.3%; top: 84.5%; width: 27.95%; height: 7.31%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/11/2838_04.jpg" alt="수강신청 하기"/>
+                <a href="javascript:go_PassLecture('202813');" title="" style="position: absolute; left: 58.75%; top: 85.03%; width: 27.41%; height: 8.13%; z-index: 2;"></a>
             </div>
             <div class="check" id="chkInfo">               
                 <label>
@@ -163,11 +166,11 @@
                     <dd>
                         <ol>
                             <li>먼저 [내강의실] 메뉴에서 무한PASS존으로 접속합니다.</li>
-                            <li>구매하신 무한PASS 상품명 옆의 [강좌추가] 버튼을 클릭,원하는 과목/교수님/강좌를 선택 등록 후 수강할 수 있습니다.</li>
+                            <li>구매하신 무한PASS 상품명 옆의 [강좌추가] 버튼을 클릭,원하는 과목/교수님/강좌를 선택 등록 후 수강할 수 있습니다.
                             <li>본 PASS 이용 중에는 일시정지/재수강/연장 기능을 사용할 수 없습니다.</li>
                             <li>본 PASS 수강 시 이용가능한 기기는 다음과 같이 제한됩니다.<br>
                             - PC 2대 or 모바일 2대 or PC 1대+모바일 1대 (총 2대)</li>
-                            PC/모바일 기기변경 등 단말기 초기화가 필요한 경우, 내용 확인 후 진행 가능하오니 고객센터로 문의주시기 바랍니다.</li>                           
+                            <li>PC/모바일 기기변경 등 단말기 초기화가 필요한 경우, 내용 확인 후 진행 가능하오니 고객센터로 문의주시기 바랍니다.</li>                           
                         </ol>
                     </dd>
 
@@ -203,7 +206,7 @@
                     <dd>
                         <ol>
                             <li>본 이벤트는 1아이디당 1회만 참여 가능합니다.</li>
-                            <li>인증 완료 처리는 신청 후, 24시간 이내에 처리됩니다. 단, 주말 및 공휴일 인증 건의 경우 평일 오전 중으로 처리됩니다.<br>
+                            <li>인증 완료 처리는 신청 후, 24시간 이내에 처리됩니다. 단, 주말 및 공휴일 인증 건의 경우 평일 오전 중으로 처리됩니다.
                             1) 재도전 인증<br>
                             - 본인의 이름이 명시된 수험표 또는 윌비스 PASS 수강생의 경우 [내강의실] 페이지 내 이름과 PASS명이 명시된 이미지 캡쳐 후 업로드 시 인증 가능합니다.<br>
                             2) 환승 인증<br>

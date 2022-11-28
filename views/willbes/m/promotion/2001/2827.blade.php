@@ -162,7 +162,7 @@
         </form>
     </div> 
 
-    <div class="evtCtnsBox evt04" data-aos="fade-up">
+    <div class="evtCtnsBox evt04" data-aos="fade-up" id="evt04">
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2827m_04.jpg" title="스탬프랠리">
     </div>
 

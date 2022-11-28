@@ -515,13 +515,13 @@
                         <td>전기이론</td>
                         <td>이론</td>
                         <td>2023 최우영 전기이론 기본강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/202300" target="_blank">수강신청</a></td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/199303" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기이론</td>
                         <td>문제풀이</td>
-                        <td>2022 최우영 전기이론 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/188421" target="_blank">수강신청</a></td>
+                        <td>2023 최우영 전기이론 단원별 문제풀이</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/202300" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기이론</td>

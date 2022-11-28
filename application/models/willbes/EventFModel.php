@@ -568,8 +568,8 @@ class EventFModel extends WB_Model
                             if(empty($arr_event_product) === false && count($arr_event_product) > 0) {
                                 //데이터 배열 가공
                                 $arr_product_code = [];
-                                foreach($arr_event_product as $row){
-                                    $arr_product_code = array_merge($arr_product_code, [$row['ProdCode']]);
+                                foreach($arr_event_product as $product_row){
+                                    $arr_product_code = array_merge($arr_product_code, [$product_row['ProdCode']]);
                                 }
                                 if($this->orderFModel->procAutoOrder('event', element('event_idx', $inputData), $arr_product_code) !== true) {
                                     throw new \Exception('제공 강의상품이 처리되지 않았습니다.');

@@ -148,8 +148,8 @@
     {{-- 임용 --}}
     <div id="topBannerLayer" class="ssam">
         <div class="topBanner">
-            <a href="{{ front_url('/promotion/index/cate/3134/code/2455') }}" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_top_bn.jpg" alt="합격전략 설명회">
+            <a href="javascript:void(0)">
+                <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_top_bn.png" alt="합격전략 설명회">
             </a>
         </div>
     </div>

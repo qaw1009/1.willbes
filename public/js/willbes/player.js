@@ -52,10 +52,10 @@ function onKeyDown(keycode)
             player.forward(getStep());
             break;
         case 190: // >
-            player.setRate(player.getRate() + 0.2);
+            player.setRate(((player.getRate() + 0.1) >= 2.0) ? 2.0 : (player.getRate() + 0.1));
             break;
         case 188: // <
-            player.setRate(((player.getRate() - 0.2) < 0.6) ? 0.6 : (player.getRate() - 0.2));
+            player.setRate(((player.getRate() - 0.1) < 0.6) ? 0.6 : (player.getRate() - 0.1));
             break;
         case 77: // M
             player.setMute(!player.getMute());
@@ -63,14 +63,14 @@ function onKeyDown(keycode)
         case 82: // R
             player.setRepeat(!player.getRepeat());
             break;
-        case 90: // z : 원배속
-            player.setRate(((player.getRate() - 0.2) < 0.6) ? 0.6 : (player.getRate() - 0.2));
+        case 90: // z
+            player.setRate(((player.getRate() - 0.1) <= 0.6) ? 0.6 : (player.getRate() - 0.1));
             break;
-        case 88: // x : 느리게
+        case 88: // x
             player.setRate(1);
             break;
-        case 67: // c : 빠르게
-            player.setRate(player.getRate() + 0.2);
+        case 67: // c
+            player.setRate(((player.getRate() + 0.1) >= 2.0) ? 2.0 : (player.getRate() + 0.1));
             break;
         default:
             return;

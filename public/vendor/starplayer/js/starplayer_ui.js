@@ -23,14 +23,30 @@ function initScriptUI(player) {
     $(".btn_repeat").click(function() {toggleRepeat()});
     $(".btn_fullscreen").click(function() {toggleFullscreen()});
     $(".btn_mute").click(function() {toggleMute()});
-    $(".btn_speed06").click(function() {setRate(0.6)} );
-    $(".btn_speed08").click(function() {setRate(0.8)} );
-    $(".btn_speed10").click(function() {setRate(1.0)} );
-    $(".btn_speed12").click(function() {setRate(1.2)} );
-    $(".btn_speed14").click(function() {setRate(1.4)} );
-    $(".btn_speed16").click(function() {setRate(1.6)} );
-    $(".btn_speed18").click(function() {setRate(1.8)} );
-    $(".btn_speed20").click(function() {setRate(2.0)} );
+
+    $(".speed05").click(function() {setRate(0.5);$('.speed_controls_pop').hide();} );
+    $(".speed06").click(function() {setRate(0.6);$('.speed_controls_pop').hide();} );
+    $(".speed07").click(function() {setRate(0.7);$('.speed_controls_pop').hide();} );
+    $(".speed08").click(function() {setRate(0.8);$('.speed_controls_pop').hide();} );
+    $(".speed09").click(function() {setRate(0.9);$('.speed_controls_pop').hide();} );
+    $(".speed10").click(function() {setRate(1.0);$('.speed_controls_pop').hide();} );
+    $(".speed11").click(function() {setRate(1.1);$('.speed_controls_pop').hide();} );
+    $(".speed12").click(function() {setRate(1.2);$('.speed_controls_pop').hide();} );
+    $(".speed13").click(function() {setRate(1.3);$('.speed_controls_pop').hide();} );
+    $(".speed14").click(function() {setRate(1.4);$('.speed_controls_pop').hide();} );
+    $(".speed15").click(function() {setRate(1.5);$('.speed_controls_pop').hide();} );
+    $(".speed16").click(function() {setRate(1.6);$('.speed_controls_pop').hide();} );
+    $(".speed17").click(function() {setRate(1.7);$('.speed_controls_pop').hide();} );
+    $(".speed18").click(function() {setRate(1.8);$('.speed_controls_pop').hide();} );
+    $(".speed19").click(function() {setRate(1.9);$('.speed_controls_pop').hide();} );
+    $(".speed20").click(function() {setRate(2.0);$('.speed_controls_pop').hide();} );
+
+    $(".speed_view").click(function() { $(".speed_controls_pop").toggle(); } );
+
+
+
+    $(".speed_minus").click(function() {player.setRate(((player.getRate() - 0.1) < 0.6) ? 0.6 : (player.getRate() - 0.1));} );
+    $(".speed_plus").click(function() {player.setRate(((player.getRate() + 0.1) > 2.0) ? 2.0 : (player.getRate() + 0.1));} );
 
     function getPageX(event) {
         return event.originalEvent.changedTouches ? event.originalEvent.changedTouches[0].pageX : event.pageX;
@@ -221,23 +237,31 @@ function initScriptUI(player) {
     }
 
     function updateRateChange(rate) {
-        $(".btn_common").removeClass("active");
-        var temp = Math.ceil(parseInt(rate * 10));
+        $(".speed_btn").removeClass("on");
+        var speed_text = '1.0';
+        var temp = Math.round((rate + Number.EPSILON) * 10);
         temp /= 10;
         var element;
         switch (temp) {
-            case 0.6: element = $(".btn_speed06"); break;
-            case 0.8: element = $(".btn_speed08"); break;
-            case 1.0: element = $(".btn_speed10"); break;
-            case 1.2: element = $(".btn_speed12"); break;
-            case 1.3: element = $(".btn_speed14"); break;
-            case 1.4: element = $(".btn_speed14"); break;
-            case 1.6: element = $(".btn_speed16"); break;
-            case 1.7: element = $(".btn_speed18"); break;
-            case 1.8: element = $(".btn_speed18"); break;
-            case 2.0: element = $(".btn_speed20"); break;
+            case 0.5: element = $(".speed05");speed_text = '0.5'; break;
+            case 0.6: element = $(".speed06");speed_text = '0.6'; break;
+            case 0.7: element = $(".speed07");speed_text = '0.7'; break;
+            case 0.8: element = $(".speed08");speed_text = '0.8'; break;
+            case 0.9: element = $(".speed09");speed_text = '0.9'; break;
+            case 1.0: element = $(".speed10");speed_text = '1.0'; break;
+            case 1.1: element = $(".speed11");speed_text = '1.1'; break;
+            case 1.2: element = $(".speed12");speed_text = '1.2'; break;
+            case 1.3: element = $(".speed13");speed_text = '1.3'; break;
+            case 1.4: element = $(".speed14");speed_text = '1.4'; break;
+            case 1.5: element = $(".speed15");speed_text = '1.5'; break;
+            case 1.6: element = $(".speed16");speed_text = '1.6'; break;
+            case 1.7: element = $(".speed17");speed_text = '1.7'; break;
+            case 1.8: element = $(".speed18");speed_text = '1.8'; break;
+            case 1.9: element = $(".speed19");speed_text = '1.9'; break;
+            case 2.0: element = $(".speed20");speed_text = '2.0'; break;
         }
-        element.addClass("active");
+        element.addClass("on");
+        $("#speed_text").text(temp);
     }
 
     function updateRepeatChange(repeat) {

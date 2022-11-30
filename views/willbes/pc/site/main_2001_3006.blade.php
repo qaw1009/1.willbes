@@ -39,7 +39,11 @@
         <div class="Section mt50">
             <div class="widthAuto">
                 <div class="will-nTit NSK-Black">경찰승진 <span class="tx-color">객관식</span> <span class="tx16 NSK ml20">형사소송법, 형법, 실무종합, <span class="tx-color">헌법(NEW), 행정학(NEW)</span></span></div>
-                <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_1120x465.jpg" alt="전문화된 교수진">
+                @if(time() < strtotime('202212010900'))
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_1120x465.jpg" alt="전문화된 교수진">
+                @else
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_1120x465_2022.jpg" alt="전문화된 교수진">
+                @endif
             </div>
         </div>
 

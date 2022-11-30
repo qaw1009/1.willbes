@@ -397,23 +397,30 @@
         <ul class="tabWrap">
             <li><a href="#map01">노량진(본원)</a></li>
             <li><a href="#map02">부산</a></li>
-            <li><a href="#map03">대구</a></li>
+            {{--<li><a href="#map03">대구</a></li>--}}
             <li><a href="#map04">인천</a></li>
             <li><a href="#map05">광주</a></li>
         </ul>
         <div class="mapCts">
             <div id="map01">
-                <div><img src="https://pass.willbes.net/public/uploads/willbes/site/2004/map_2004_001_1575349859.jpg"></div>
-                <div class="add">서울 동작구 노량진로 196 JH빌딩 10층 <span>ㅣ</span> <br>1544-0330 <a href="#none">상담신청 ></a></div>
+                <div><img src="https://static.willbes.net/public/images/willbes/gosi_acad/map/mapSeoul.jpg"></div>
+                <div class="add">
+                    <p>[본원] 서울 동작구 만양로 105 한성빌딩 2층</p>
+                    <p>[법원/검찰] 서울 동작구 노량진로 196 JH빌딩 7층</p>
+                    <p>[연락처] 1544-0330</p>
+                    <a href="#none">상담신청 ></a>
+                </div>
             </div>
             <div id="map02">
                 <div><img src="https://pass.willbes.net/public/uploads/willbes/site/2004/map_2004_003_1575349889.jpg"></div>
                 <div class="add">부산 진구 부정동 223-8 <span>ㅣ</span> <br>1522-8112 <a href="#none">상담신청 ></a></div>
             </div>
+            {{--
             <div id="map03">
                 <div><img src="https://pass.willbes.net/public/uploads/willbes/site/2004/map_2004_004_1575349910.jpg"></div>
                 <div class="add">대구 중구 중앙대로 412(남일동) CGV 2층 <span>ㅣ</span> <br>1522-6112 <a href="#none">상담신청 ></a></div>
             </div>
+            --}}
             <div id="map04">
                 <div><img src="https://pass.willbes.net/public/uploads/willbes/site/2004/map_2004_005_1575349940.jpg"></div>
                 <div class="add">인천 부평구 경원대로 1395 부평1번가 11층 <span>ㅣ</span> <br>1544-1661 <a href="#none">상담신청 ></a></div>
@@ -446,11 +453,11 @@
             <div id="notice2" class="tabContent pd20">
                 <div class="moreBtn"><a href="#none">+ 더보기</a></div>
                 <ul class="List-Table">
-                    <li><a href="#none">강의실 배정표 – 12월 11일 (금)</a><span class="date">2018-04-01</span></li>
-                    <li><a href="#none">강의실 배정표 – 12월 10일 (목)</a><span class="date">2018-04-01</span></li>
-                    <li><a href="#none">강의실 배정표 – 12월 9일 (수)</a><span class="date">2018-03-06</span></li>
-                    <li><a href="#none">강의실 배정표 – 12월 9일 (수)</a><span class="date">2018-03-06</span></li>
-                    <li><a href="#none">강의실 배정표 – 12월 9일 (수)</a><span class="date">2018-03-06</span></li>
+                    <li><a href="#none">강의실 배정표 - 12월 11일 (금)</a><span class="date">2018-04-01</span></li>
+                    <li><a href="#none">강의실 배정표 - 12월 10일 (목)</a><span class="date">2018-04-01</span></li>
+                    <li><a href="#none">강의실 배정표 - 12월 9일 (수)</a><span class="date">2018-03-06</span></li>
+                    <li><a href="#none">강의실 배정표 - 12월 9일 (수)</a><span class="date">2018-03-06</span></li>
+                    <li><a href="#none">강의실 배정표 - 12월 9일 (수)</a><span class="date">2018-03-06</span></li>
                 </ul>
             </div>
             <div id="notice3" class="tabContent pd20">

@@ -73,6 +73,8 @@
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable_modal = $list_table_modal.DataTable({
                 serverSide: true,
+                displayStart: 0,
+                displayLength: 20,
                 ajax: {
                     'url' : '{{ site_url('/common/searchMember/listAjax') }}',
                     'type' : 'POST',

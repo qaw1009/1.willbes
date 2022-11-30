@@ -746,14 +746,14 @@
                 <div class="tabBox noticeBox_campus">
                     <div id="campus1" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('gosi_acad/map/mapSeoul.jpg') }}" alt="노량진">
-                            <span class="origin">노량진(본원)</span>
+                            <img src="https://static.willbes.net/public/images/willbes/gosi_acad/map/mapSeoul.jpg" alt="노량진">
+                            {{--<span class="origin">노량진(본원)</span>--}}
                         </div>
                         <div class="campus_info">
                             <dl>
                                 <dt>
                                     <div class="c-tit">
-                                        <span class="tx-color">노량진</span> 캠퍼스 공지사항
+                                        <span class="tx-color">노량진</span> 학원 공지사항
                                         <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
@@ -764,14 +764,15 @@
                                     </div>
                                 </dt>
                                 <dt>
-                                    <div class="c-tit"><span class="tx-color">노량진</span> 캠퍼스 오시는 길</div>
+                                    <div class="c-tit"><span class="tx-color">노량진학원</span> 오시는 길</div>
                                     <div class="c-info">
                                         <div class="address">
-                                            <span class="a-tit">주소</span>
-                                            <span>
-                                                서울시 동작구 장승배기로 168 드림타워<br/>
-                                                (서울시 동작구 노량진동 54-11번지)
-                                            </span>
+                                            <span class="a-tit">본원</span>
+                                            <span>서울 동작구 만양로 105 한성빌딩 2층</span>
+                                        </div>
+                                        <div class="address">
+                                            <span class="a-tit">법원/감찰</span>
+                                            <span>서울 동작구 노량진로 196 JH빌딩 10층</span>
                                         </div>
                                         <div class="tel">
                                             <span class="a-tit">연락처</span>

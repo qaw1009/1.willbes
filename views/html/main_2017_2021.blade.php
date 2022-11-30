@@ -1921,7 +1921,7 @@ no-repeat 5px center}
                     </ul>
                 </div>
             </div> 
-            <div class="mapinfo">
+            <div class="mapinfo NSK-Black">
                 윌비스 임용고시학원은<br>
                 별도의 <strong>무료 주차장</strong>이 없습니다.
                 가급적 대중교통을 이용해 주시기 바랍니다!

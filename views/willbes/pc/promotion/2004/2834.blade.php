@@ -27,13 +27,13 @@
 
         .evt_01 {background:#f0f0f0}
         .evt_02 .tabmenu {width:980px; margin:0 auto 40px; display:flex; justify-content: space-between;}
-        .evt_02 .tabmenu a {padding:20px; width:33%; background:#a5a8ad; color:#fff; font-size:28px}
+        .evt_02 .tabmenu a {padding:20px; width:24.8%; background:#a5a8ad; color:#fff; font-size:28px}
         .evt_02 .tabmenu a.active {background:#ca2c07}    
         
         .evt_03 {background:#ca2c07}
         .evt_04 {background:#ececec}
 
-        .evt_05 {background:url(https://static.willbes.net/public/images/promotion/2022/11/2834_05_bg.jpg) no-repeat center top;}
+        .evt_05 {background:url(https://static.willbes.net/public/images/promotion/2022/11/2834_07_bg.jpg) no-repeat center top;}
         
         .evt_06 ul {width:1120px; margin:0 auto; padding:100px; text-align:left; font-size:20px; line-height:1.7; display:flex; flex-wrap: wrap;  }
         .evt_06 li {list-style-type: disc; margin-left:20px; margin-bottom:20px; width:calc(50% - 20px)}
@@ -68,15 +68,19 @@
 		<div class="evtCtnsBox evt_02" data-aos="fade-up">
 			<img src="https://static.willbes.net/public/images/promotion/2022/11/2834_02_01.jpg" alt="" />
             <div class="tabmenu">
-                <a href="#tab01"><strong class="NSK-Black">소방학</strong> 권나라</a>
-                <a href="#tab02"><strong class="NSK-Black">소방관계법규</strong> 이종오</a>
-                <a href="#tab03"><strong class="NSK-Black">소방행정법</strong> 신기훈</a>
+                <a href="#tab01"><strong class="NSK-Black">소방학</strong><br> 권나라</a>
+                <a href="#tab02"><strong class="NSK-Black">소방관계법규</strong><br> 이종오</a>
+                <a href="#tab04"><strong class="NSK-Black">소방관계법규</strong><br> 오도희</a>
+                <a href="#tab03"><strong class="NSK-Black">소방행정법</strong><br> 신기훈</a>
             </div>
             <div id="tab01">
                 <a href="https://pass.willbes.net/pass/professor/show/prof-idx/51422/?cate_code=3050&subject_idx=1259" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/11/2834_02_02.jpg" alt="소방학 권나라" /></a>
             </div>
             <div id="tab02">
                 <a href="https://pass.willbes.net/pass/professor/show/prof-idx/51055?cate_code=3050&subject_idx=1284" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/11/2834_02_03.jpg" alt="소방관계법규 이종오" /></a>
+            </div>
+            <div id="tab04">
+                <a href="https://pass.willbes.net/pass/professor/show/prof-idx/51423?cate_code=3050&subject_idx=1284" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/11/2834_02_06.jpg" alt="소방관계법규 오도희" /></a>
             </div>
             <div id="tab03">
                 <a href="https://pass.willbes.net/pass/professor/show/prof-idx/51215?cate_code=3050&subject_idx=1257" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/11/2834_02_04.jpg" alt="소방행정법 신기훈" /></a>	
@@ -94,8 +98,9 @@
 
         <div class="evtCtnsBox evt_05" data-aos="fade-up" id="lecbuy">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/11/2834_05.jpg" alt="합격보장반" />	
-                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/202747" title="수강신청" style="position: absolute; left: 64.02%; top: 65.13%; width: 25.18%; height: 12.25%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/11/2834_07.jpg" alt="합격보장반" />	
+                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/202747" title="합격패스" style="position: absolute; left: 65.09%; top: 52.13%; width: 23.84%; height: 11%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/202993" title="합격보장반" style="position: absolute; left: 65.18%; top: 72.25%; width: 23.84%; height: 11%; z-index: 2;"></a>
             </div>
 		</div> 
 

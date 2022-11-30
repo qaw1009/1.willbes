@@ -266,13 +266,13 @@
                                     </ul>
                                     <ul class="subject_line">
                                         <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][4]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][4]['PersonLimit'] or '0'}}" data-product-group="3" autocomplete="off" disabled/><span class="subjct_title">전공 국어</span> 송원영 교수</label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][5]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][5]['PersonLimit'] or '0'}}" data-product-group="3" autocomplete="off" disabled/><span class="subjct_title">전공 국어</span>권보민 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][5]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][5]['PersonLimit'] or '0'}}" data-product-group="3" autocomplete="off" disabled/><span class="subjct_title">전공 국어</span> 권보민 교수<em class="cms">일정추후공지</em></label></li>
                                         <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][6]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][6]['PersonLimit'] or '0'}}" data-product-group="3" autocomplete="off" disabled/><span class="subjct_title">전공 국어</span> 구동언 교수</label></li>
                                     </ul>
                                     <ul class="subject_line">
                                         <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][7]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][7]['PersonLimit'] or '0'}}" data-product-group="3" autocomplete="off" disabled/><span class="subjct_title">일반영어/영미문학</span> 김유석 교수</label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][8]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][8]['PersonLimit'] or '0'}}" data-product-group="3" autocomplete="off" disabled/><span class="subjct_title">영어학</span> 김영문 교수</label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][9]['PersonLimit'] or '0'}}" data-product-group="3" autocomplete="off" disabled/><span class="subjct_title">전공 수학</span>김철홍 교수<em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][8]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][8]['PersonLimit'] or '0'}}" data-product-group="3" autocomplete="off" disabled/><span class="subjct_title">영어학</span> 김영문 교수 <em class="cms">일정추후공지</em></label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][9]['PersonLimit'] or '0'}}" data-product-group="3" autocomplete="off" disabled/><span class="subjct_title">전공 수학</span> 김철홍 교수<em class="cms">일정추후공지</em></label></li>
                                     </ul>
                                     <ul class="subject_line">
                                         <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][10]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][10]['PersonLimit'] or '0'}}" data-product-group="3" autocomplete="off" disabled/><span class="subjct_title">전공 수학</span> 김현웅 교수<em class="cms">일정추후공지</em></label></li>
@@ -366,9 +366,8 @@
             <div class="evtInfoBox">
                 <h4 class="NSK-Black">※ 합격전략 설명회 신청 관련 안내 사항</h4>
                 <ul>
-                    <li>윌비스 임용의 합격 전략 설명회 (이하, 설명회)는<br>
-                        유아는 2022년 12월 10일(토) 14시부터, 중등은 2022년 12월 17일(토) 에 진행합니다.
-                    </li>
+                    <li>윌비스 임용의 합격 전략 설명회(이하, 설명회)는 2022년 12월17일(토)에 진행되며,<br>
+                        유아는 15시부터, 증등(교육학)은 13시부터 진행됩니다.</li>
                     <li>본 설명회는 2024학년도 시험을 대비 하는 이벤트입니다. (대학(원)재학생, 졸업예정자가 참석하셔도 됩니다.)</li>
                     <li>설명회 참석을 위해서는 본 페이지를 통하여 사전에 신청해 주셔야 합니다.<br>
                         * 중등의 경우, 교육학과 전공과목을 신청할 수 있습니다. 
@@ -377,9 +376,12 @@
                     <li>설명회 신청내역을 수정하실 분은 취소 후, 다시 작성해 주시면 됩니다.</li>
                     <li>설명회 관련 자세한 문의 사항은 홈페이지 1:1상담 게시판을 통하여 요청하시면 됩니다.</li>
                     <li>설명회장에는 무료로 운영하는 주차장이 없습니다. 가급적 대중교통을 이용해 주시면 되고, 부득이한 경우 노량진의 유료 주차장을 사전에 검색해 보시고 오시는 것이 좋습니다.</li> 
-                    <li>설명회 참석 선물은 당일 지급합니다.<br>
-                        (추첨선물: 1년 수강할인권, 아이패드, 애플워치, 에어팟 / 참석선물: 카카오 카렌더, 먼슬리 노트, 위클리 노트
-                    </li>    
+                    <li>설명회에 참석하시면 푸짐한 혜택이 있습니다. <br>
+                        - 사전접수 후, 참석하시는 모든 분께 카카오 플래너(3종중 1종 랜덤)를 드립니다. <br>
+                        - 추첨을 통하여 연간패키지 수강권, 아이패드, 애플워치, 스타벅스 교환권(3만원권)을 드립니다. <br>
+                        - 설명회 당일, 연간패키지를 접수하시면 문화상품권(2만원권)을 드립니다. (연간패키지를 설명회 전에 접수하시고, 설명회에 참석하
+                        셔도 문화상품권을 받을 수 있습니다.<br>
+                        - 연간패키지 선착순 1,000명 접수 이벤트도 별도로 진행됩니다.</li>    
                 </ul>
                 <h4 class="NSK-Black mt100">※ 소문내기 이벤트 관련 유의사항</h4>
                 <ul>

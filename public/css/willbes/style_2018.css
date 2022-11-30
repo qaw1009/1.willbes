@@ -1423,6 +1423,16 @@
     clear: both
 }
 
+.ssam .mapWrap .mapinfo {
+    clear: both;
+    color: #333; font-size: 18px;
+    text-align: center;
+    line-height: 1.4;
+    border: 1px solid #0c5dc0;
+    padding: 20px;
+    margin-top: 20px
+}
+
 .ssam .LeclistTable .replyTxt td {
     font-size: 14px
 }

@@ -41,21 +41,23 @@
     }
     .slide_con .bx-wrapper .bx-pager.bx-default-pager a.active {
         width: 30px;
-    }    
+    }
+
+    .evt07 .title {font-size:25px; font-weight:bold;}
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
-
+    .evt07 .title {font-size:16px;}
     }
 
     /* 태블릿 세로 */
     @@media only screen and (min-width: 375px) and (max-width: 640px) { 
-        
+    .evt07 .title {font-size:19px;}   
     }
     
     /* 태블릿 가로, PC */
     @@media only screen and (min-width: 641px) {
-
+    .evt07 .title {font-size:22px;}
     }
     
 </style>
@@ -109,8 +111,16 @@
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2825m_06.jpg"  alt="그레이스 호퍼 명언"/>               
     </div>
 
-    <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2022/11/2825m_07.jpg"  alt="후회없는 선택"/>               
+    <div class="evtCtnsBox evt07">
+        <img src="https://static.willbes.net/public/images/promotion/2022/11/2825m_07.jpg"  alt="후회없는 선택"/>
+        <div class="title">김재규 총알경찰학 단과강의 신청 > </div>        
+        @if(empty($arr_base['display_product_data']) === false)
+            @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
+        @endif
+        <div class="title mt100">김재규 총알경찰학 무료강의 신청 > </div>  
+        @if(empty($arr_base['display_product_data']) === false)
+            @include('willbes.m.promotion.display_product_partial',array('group_num'=>2))
+        @endif          
     </div>   
 
 </div>

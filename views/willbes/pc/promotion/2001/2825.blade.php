@@ -142,18 +142,15 @@
         </div>
 
         <div class="evtCtnsBox evt07" data-aos="fade-up" id="lec">                     
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2825_07.jpg"  alt="후회없는 선택"/>
-            {{--
-            <div class="title">박우찬 경찰학 단과강의 신청 > </div>        
-            <img src="https://static.willbes.net/public/images/promotion/2022/08/2737_05_01.jpg"  alt="곧 공개"/>  
-            @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
-            @endif
-            <div class="title mt100">박우찬 경찰학 무료강의 신청 > </div>  
+            <img src="https://static.willbes.net/public/images/promotion/2022/11/2825_07.jpg"  alt="후회없는 선택"/>           
+            <div class="title">김재규 총알경찰학 단과강의 신청 ></div>        
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif
-            --}}
+            <div class="title mt100">김재규 총알경찰학 무료강의 신청 > </div>  
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+            @endif
         </div>
 
         <!--레이어팝업-->

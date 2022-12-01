@@ -21,37 +21,17 @@
 
         /************************************************************/
 
-        .wb_top09 {background:url(https://static.willbes.net/public/images/promotion/2022/10/2225_top_bg.jpg) no-repeat center top; height: 1200px;}
-        .wb_top09 .imgA {position: absolute; top:250px; left:50%; margin-left:-372px; z-index: 2;}
-
-        .wb_top10 {background:url(https://static.willbes.net/public/images/promotion/2022/11/2225_top_bg.jpg) no-repeat center top; height: 1222px;}
-        .wb_top10 .imgA {position: absolute; top:250px; left:50%; margin-left:-372px; z-index: 2;}
+        .wb_top10 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2225_top_bg.jpg) no-repeat center top; height: 1100px;}
+        .wb_top10 .imgA {position: absolute; top:200px; left:50%; margin-left:-372px; width:745px; z-index: 2;}
 
         .wb_cts03 {background:#303132}
 
     </style>
 
     <div class="evtContent NSK" id="evtContainer"> 
-
-        {{--9월--}}
-        @if(time() < strtotime('202210312400'))
-        <div class="evtCtnsBox wb_top09">
-           <span class="imgA" data-aos="flip-up" data-aos-duration="1000"><img src="https://static.willbes.net/public/images/promotion/2022/10/2225_top_img.png" alt="윌비스 드림팩"/></span>
-        </div>          
-
-        <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/10/2225_01.jpg" alt="윌비스 회원가입"/>
-                <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2003" target="_blank" title="회원가입하기" style="position: absolute;left: 28.77%;top: 25.12%;width: 42.27%;height: 15.45%;z-index: 2;"></a>
-            </div>
-        </div>
-        <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/10/2225_02.jpg" alt="드림 기프트"/>
-        </div>
-        @else
-        {{--11월--}}            
+           
         <div class="evtCtnsBox wb_top10">
-           <span class="imgA" data-aos="flip-up" data-aos-duration="1000"><img src="https://static.willbes.net/public/images/promotion/2022/10/2225_top_img.png" alt="윌비스 드림팩"/></span>
+           <span class="imgA" data-aos="flip-up" data-aos-duration="1000"><img src="https://static.willbes.net/public/images/promotion/2022/12/2225_top_img.png" alt="윌비스 드림팩"/></span>
         </div>          
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
@@ -63,7 +43,7 @@
         <div class="evtCtnsBox wb_cts02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/10/2225_02.jpg" alt="드림 기프트"/>
         </div>
-        @endif 
+ 
 
         <div class="evtCtnsBox wb_cts03" data-aos="fade-up">
             <div class="wrap">

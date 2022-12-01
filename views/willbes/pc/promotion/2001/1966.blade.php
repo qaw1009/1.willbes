@@ -57,13 +57,13 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">     
-
+        {{--
         <div class="skybanner">
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2741" target="_blank"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1966_sky.png" alt="" >
             </a>             
-        </div>   
-
+        </div>
+        --}}
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1966_top.jpg"  alt="정답은 G-TELP" usemap="#Map1966A" border="0" />
             <map name="Map1966A">

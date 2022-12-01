@@ -34,14 +34,14 @@
                         <div>ㆍ노량진역 3번출구 (노들역 방면)</div>
                         <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map03.png">152, 500, 504, 654, 742 <br>
                         <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map04.png">5516, 5517, 5535, 5536
-                    </li>                    
-                    <li>
-                        <div>윌비스 임용고시학원은<br></div>
-                        <div>별도의 <strong>무료 주차장</strong>이 없습니다.<br>
-                        <div>가급적 대중교통을 이용해 주시기 바랍니다!</div>         
-                    </li>
+                    </li>                   
                 </ul>
             </div>
+        </div>
+        <div class="mapinfo NSK-Black">
+            윌비스 임용고시학원은<br>
+            별도의 <span class="tx-color">무료 주차장</span>이 없습니다. 
+            가급적 <span class="tx-color">대중교통</span>을 이용해 주시기 바랍니다!
         </div>
     </div>
 </div>

@@ -36,14 +36,14 @@
         <div class="evtCtnsBox evt01" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/12/2841_01.jpg" title="일정">
-                <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/202995" target="_blank" title="접수 바로가기" style="position: absolute;left: 7.99%;top: 62.63%;width: 9.76%;height: 2.79%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3059/prod-code/202591" target="_blank" title="접수 바로가기" style="position: absolute;left: 7.99%;top: 62.63%;width: 9.76%;height: 2.79%;z-index: 2;"></a>
             </div>
         </div>
 
         <div class="evtCtnsBox evt02 pb50" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/12/2841_02.jpg" title="조문특강">
             <div class="passbuy">
-                <a href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/202995" target="_blank">접수 바로가기 →</a>
+                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3059/prod-code/202591" target="_blank">접수 바로가기 →</a>
             </div>
         </div>
 

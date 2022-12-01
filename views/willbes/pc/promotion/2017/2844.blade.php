@@ -20,7 +20,7 @@
 
         /************************************************************/
 
-        .eventTop {background:url(https://static.willbes.net/public/images/promotion/2022/11/2821_top_bg.jpg) no-repeat center top; height: 1009px;}
+        .eventTop {background:url(https://static.willbes.net/public/images/promotion/2022/11/2821_top_bg.jpg) no-repeat center top; height: 1008px;}
         .eventTop span {position: absolute; top:300px; left:50%; margin-left:-420px}
 
         .evt02 .btns {margin:50px 0;}
@@ -92,6 +92,17 @@
         .urlWrap .evt_table table td:nth-child(2) {text-align:left}
 
         .evt07 {background:url(https://static.willbes.net/public/images/promotion/2022/11/2821_07_bg.jpg) no-repeat center top;}
+        .evt08 {background:#171717; padding:150px 0}
+        .evt08 .wrap {margin:50px auto 100px; display:flex; flex-wrap: wrap; justify-content: space-between; }
+        .evt08 .wrap a {margin-bottom:20px}
+        .evt08 .tableBox {width:1120px; margin:50px auto 0; padding:50px; background:#fff; border-radius:20px}
+        .evt08 .tableBox th,
+        .evt08 .tableBox td {padding:15px 10px; border:0; font-size:16px}
+        .evt08 .tableBox td:nth-child(2) {text-align:left}
+        .evt08 .tableBox tr {border-bottom:1px solid #ccc}
+        .evt08 .tableBox tr:nth-child(1) {border-top:1px solid #ccc}
+        .evt08 .tableBox tr:hover {background:#fdf1c9}
+        .evt08 .tableBox td a {display:block}
 
         /*안내사항*/
         .evtInfo {padding:150px 0; background:#333; color:#fff; font-size:16px}
@@ -108,13 +119,28 @@
             width: auto;
         }
         .b-close {
-            right: 10px;
-            top: 50px;
-            padding: 5px;
+            position: absolute;
+            right: -39px;
+            top: -39px;
             display: inline-block;
             cursor: pointer;
+            width: 78px;
+            height: 78px; 
+            transform: rotate(0deg);
+            transition: all 1s;
+            z-index: 9999;
         }
+        .b-close:hover {transform: rotate(360deg); transition: all 1s;}
+        
         .Pstyle .content {height:auto; width:auto;}
+        .memoirs {background:#fff; padding:50px; width:900px; height:500px; overflow-y: scroll; font-size:15px; line-height:1.3}
+        .memoirstitle {font-size:18px; padding-bottom:10px; border-bottom:1px solid #ccc; margin-bottom:10px; display:flex; justify-content: space-between;}
+        .memoirstitle span {vertical-align:top}
+        .memoirstitle strong {color:#1a4bba}
+
+
+        .videoBox{position: relative; padding-top: 60%; width:760px;}
+        .videoBox iframe{position: absolute; top:0; left:0; width:100%; height:100%; }
 
     </style>
 
@@ -123,6 +149,167 @@
         <div class="evtCtnsBox eventTop">
         	<span data-aos="flip-down"><img src="https://static.willbes.net/public/images/promotion/2022/11/2821_top.png" alt="합격전략 설명회"/></span>
         </div>
+
+        <div class="evtCtnsBox evt08" data-aos="fade-up">
+        	<img src="https://static.willbes.net/public/images/promotion/2022/11/2821_08_title01.png" alt="윌비스 임용 합격생 간담회"/>
+            <div class="wrap">
+                <a href="javascript:videoPop('#vid1');"><img src="https://static.willbes.net/public/images/promotion/2022/11/2821_08_sum.png"></a>
+                <a href="javascript:videoPop('#vid2');"><img src="https://static.willbes.net/public/images/promotion/2022/11/2821_08_sum.png"></a>
+                <a href="javascript:videoPop('#vid3');"><img src="https://static.willbes.net/public/images/promotion/2022/11/2821_08_sum.png"></a>
+                <a href="javascript:videoPop('#vid4');"><img src="https://static.willbes.net/public/images/promotion/2022/11/2821_08_sum.png"></a>
+                <a href="javascript:videoPop('#vid5');"><img src="https://static.willbes.net/public/images/promotion/2022/11/2821_08_sum.png"></a>
+                <a href="javascript:videoPop('#vid6');"><img src="https://static.willbes.net/public/images/promotion/2022/11/2821_08_sum.png"></a>
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2022/11/2821_08_title02.png" alt="윌비스 임용 합격생 간담회"/>
+            <div class="tableBox">
+                <table cellspacing="0" cellpadding="0">
+                    <col width="15%">
+                    <col>
+                    <col width="10%">
+                    <tbody>
+                        <tr>
+                            <td>도덕윤리</td>
+                            <td><a href="#none" onclick="javascript:go_popup3()">2차 고득점의 비결은 1차 고득점이다.</a></td>
+                            <td>박동*</td>
+                        </tr>
+                        <tr>
+                            <td>유아</td>
+                            <td><a href="#none" onclick="javascript:go_popup3()">21년대비유아민정선교수님/2022경기최종합격/일병행</a></td>
+                            <td>한우*</td>
+                        </tr>
+                        <tr>
+                            <td>전공일반사회</td>
+                            <td><a href="#none" onclick="javascript:go_popup3()">윌비스 일반사회 허역팀 강의를 수강하고 합격하였습니다.</a></td>
+                            <td>유소*</td>
+                        </tr>
+                        <tr>
+                            <td>전공생물</td>
+                            <td><a href="#none" onclick="javascript:go_popup3()">작년최탈 후 재도전, 올해는 최합 했습니다!</a></td>
+                            <td>유지*</td>
+                        </tr>
+                        <tr>
+                            <td>전문상담</td>
+                            <td><a href="#none" onclick="javascript:go_popup3()">임산부도 했어요~ 다들 할 수 있어요~!!</a></td>
+                            <td>김미*</td>
+                        </tr>
+                        <tr>
+                            <td>전기</td>
+                            <td><a href="#none" onclick="javascript:go_popup3()">일 병행 합격했습니다.</a></td>
+                            <td>김은*</td>
+                        </tr>
+                        <tr>
+                            <td>전공음악</td>
+                            <td><a href="#none" onclick="javascript:go_popup3()">음악임용의 종지부</a></td>
+                            <td>김신*</td>
+                        </tr>
+                        <tr>
+                            <td>전자</td>
+                            <td><a href="#none" onclick="javascript:go_popup3()">전자초수 합격</a></td>
+                            <td>김소*</td>
+                        </tr>
+                        <tr>
+                            <td>전공국어</td>
+                            <td><a href="#none" onclick="javascript:go_popup3()">꾸준함이 정말 최고입니다!</a></td>
+                            <td>이현*</td>
+                        </tr>
+                        <tr>
+                            <td>전공역사</td>
+                            <td><a href="#none" onclick="javascript:go_popup3()">2022 역사 합격수기</a></td>
+                            <td>임강*</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="Paging">
+                    <ul>
+                        <li class="Prev"><a href="#none"><img src="/public/img/willbes/paging/paging_prev.png"> </a></li>
+                        <li><a class="on" href="#">1</a><span class="row-line">|</span></li>
+                        <li><a href="#none">2</a><span class="row-line">|</span></li>
+                        <li><a href="#none">3</a><span class="row-line">|</span></li>
+                        <li><a href="#none">4</a><span class="row-line">|</span></li>
+                        <li><a href="#none">5</a><span class="row-line">|</span></li>
+                        <li><a href="#none">6</a><span class="row-line">|</span></li>
+                        <li><a href="#none">7</a><span class="row-line">|</span></li>
+                        <li><a href="#none">8</a><span class="row-line">|</span></li>
+                        <li><a href="#none">9</a><span class="row-line">|</span></li>
+                        <li><a href="#none">10</a></li>
+                        <li class="Next"><a href="#none"><img src="/public/img/willbes/paging/paging_next.png"> </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {{--유튜브 영상--}}
+        <div id="vid1" style="display: none;">
+            <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span> 
+            <div class="videoBox">
+                <iframe src="https://www.youtube.com/embed/jJZRVBm3fCM?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            </div>
+        </div>
+        <div id="vid2" style="display: none;">
+            <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span> 
+            <div class="videoBox">
+                <iframe src="https://www.youtube.com/embed/1KPVPoL63HY?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            </div>
+        </div>
+        <div id="vid3" style="display: none;">
+            <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span> 
+            <div class="videoBox">
+                <iframe src="https://www.youtube.com/embed/4Njnhbcl7Xs?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            </div>
+        </div>
+        <div id="vid4" style="display: none;">
+            <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span> 
+            <div class="videoBox">
+                <iframe src="https://www.youtube.com/embed/beHIn0F_2lI?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            </div>
+        </div>
+        <div id="vid5" style="display: none;">
+            <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span> 
+            <div class="videoBox">
+                <iframe src="https://www.youtube.com/embed/hPXBthC1xmU?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            </div>
+        </div>
+        <div id="vid6" style="display: none;">
+            <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span> 
+            <div class="videoBox">
+                <iframe src="https://www.youtube.com/embed/Y2W3lUrn3aI?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            </div>
+        </div>
+
+        {{--수기 팝업--}}
+        <div id="popup3" class="Pstyle">
+            <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>   
+            <div class="content">         
+                <div class="memoirs NSK">
+                    <div class="memoirstitle"><span><strong>도덕윤리</strong> 2차 고득점의 비결은 1차 고득점이다.</span> <span>박동*</span></div>
+                    <div>
+                        안녕하세요. 2022년도 중등임용고시 도덕·윤리 과목에 응시하여 초수에 합격한 윌비스 수강생입니다. 우선 이 합격수기를 보고 계실 여러분께 힘찬 응원 보냅니다. 저 또한 1년간 지독하게 공부를 해보았기 때문에 그 힘듦과 괴로움,외로움을 잘 알고 있기에 여러분들의 수고에 공감을 하지 않을 수 없습니다. 여러분들은 정말 대단한 하루를 수행해나가고 계시기에 박수받아 마땅하다고 생각합니다.<br>
+                        <br>
+                        합격을 하기 위해 고군분투하고 계신 여러분 모두 대단하시고 수고많으십니다. 그러면 제 합격수기 시작하겠습니다.(1차컷+18.67 2차컷+8.1) <br>
+                        <br>
+                        제가 합격수기에서 알려드릴 것은 어떤 계획을 짜서 어떤 책을 보며 공부했다는 것을 알려드리기 보단 공부를 시작할 때 지켜야 할 점에 대해 알려드리고자 합니다.<br>
+                        <br>
+                        저는 공부를 시작하면서 제일 먼저 해야할 첫 단추는 자신이 어떤 공부에 적합한지를 파악하는 것이라 생각합니다.<br>
+                        <br>
+                        <br>
+                        공부의 분류는 크게 두가지로 나눌 수 있습니다.<br>
+                        <br>
+                        첫번째 적자생존형 공부입니다.<br>
+                        적자생존형은 기본서를 보고 노트에 중요한 내용을 필기하여 자신만의 서브노트를 만드는 공부방식입니다.<br>
+                        이 공부방식의 장점은 깊은 암기가 가능하며 망각곡선중 망각이 시작되는 시점이 늦다는 점입니다.<br>
+                        하지만 적자생존형 공부방식은 시간이 오래 걸리며 이해가 동반된 필기가 아니라면 손목만 아프고 시간만 낭비하는 공부가 될 수 있다는 단점을 가지고 있습니다.<br>
+                        <br>
+                        <br>
+                        두번째 공부방식은 읽자생존형 공부방식입니다.<br>
+                        읽자생존형은 기본서에 밑줄을 그어가며 눈으로 읽으며 밑줄친 부분을 이해될 때까지 반복하여 읽는 것입니다. 이 공부방식의 장점은 회독시간이 빠르며 짧은 시간내에 많은 암기가 가능하다는 점입니다.<br>
+                        <br>
+                        하지만 이 공부방식의 단점은 회독수가 굉장히 많지 않으면 쉽게 잊어 먹으며 쉽게 응용은 가능하나 완벽한 암기가 되지 않는다는 점입니다.<br>
+                        <br>
+                        저는 노트에 필기를 해놓아도 악필이여서 알아보지 못하는 경우가 많았고 노트를 볼 시간에 차라리 기본서를 읽는게 더 효과적인것 같아 읽자생존형 공부방식을 선택하였습니다.<br>
+                    </div>
+                </div> 
+            </div> 
+        </div>  
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2022/11/2821_01.jpg" alt="윌비스 임용과 함께"/>
@@ -396,6 +583,7 @@
                 </ul>
             </div>
         </div>
+        
 
          <!--레이어팝업-->
          <div id="popup1" class="Pstyle">
@@ -514,9 +702,28 @@
             }, showValidateError, null, false, 'alert');
         }
 
+        function pullOpen(){
+            var url = "{{front_url('/promotion/index/cate/3137/code/2844_popup')}}";
+            window.open(url,'arm_event', 'top=100,scrollbars=no,toolbar=no,resizable=yes,width=560,height=315');
+        }
+
+        // 비디오팝업
+        function videoPop(id) { 
+            $(id).bPopup({
+                positionStyle:'fixed',            
+                onClose: function(){
+                    $('video').each(function(){
+                        $(this).get(0).pause();
+                    });
+                }
+            });
+        } 
+
         /*레이어팝업*/     
         function go_popup1(){$('#popup1').bPopup();}
         function go_popup2(){$('#popup2').bPopup();}
+        function go_popup3(){$('#popup3').bPopup();}
+
         </script>
 
 {{-- 프로모션용 스크립트 include --}}

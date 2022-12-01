@@ -51,11 +51,22 @@
                     @foreach($data['arr_campus_info'] as $campus_ccd => $row)
                         <div id="map{{ $loop->index }}">
                             <div><img src="{{$row['Info'][0]['MapPath']}}" alt="{{$row['Info'][0]['CampusDispName']}}"></div>
-                            <div class="add">
-                                {{$row['Info'][0]['Addr1'] . $row['Info'][0]['Addr2']}} <span>ㅣ</span> <br>
-                                {{$row['Info'][0]['Tel']}}
-                                <a href="{{front_url('/support/qna/create?s_campus='.$campus_ccd)}}">상담신청 ></a>
-                            </div>
+                            @if($campus_ccd == '605001')
+                                <div class="add">
+                                    <p>[본원] {{$row['Info'][0]['Addr1']}}</p>
+                                    @if(empty($row['Info'][0]['Addr2']) === false)
+                                        <p>[법원/검찰] {{$row['Info'][0]['Addr2']}}</p>
+                                    @endif
+                                    <p>{{$row['Info'][0]['Tel']}}</p>
+                                    <a href="{{front_url('/support/qna/create?s_campus='.$campus_ccd)}}">상담신청 ></a>
+                                </div>
+                            @else
+                                <div class="add">
+                                    {{$row['Info'][0]['Addr1'] . $row['Info'][0]['Addr2']}} <span>ㅣ</span> <br>
+                                    {{$row['Info'][0]['Tel']}}
+                                    <a href="{{front_url('/support/qna/create?s_campus='.$campus_ccd)}}">상담신청 ></a>
+                                </div>
+                            @endif
                         </div>
                     @endforeach
                 </div>

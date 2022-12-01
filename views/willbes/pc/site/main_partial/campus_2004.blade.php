@@ -16,7 +16,7 @@
                     <div class="">
                         <div class="map_img">
                             <img src="{{$row['Info'][0]['MapPath']}}" alt="{{$row['Info'][0]['CampusDispName']}}">
-                            <span class="origin">{{$row['Info'][0]['CampusDispName']}}</span>
+                            @if($campus_ccd != '605001')<span class="origin">{{$row['Info'][0]['CampusDispName']}}</span>@endif
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -49,13 +49,26 @@
                                     <dt>
                                         <div class="c-tit"><span class="tx-color">{{$info_row['CampusDispName']}}</span> 학원 오시는 길</div>
                                         <div class="c-info">
-                                            <div class="address">
-                                                <span class="a-tit">주소</span>
-                                                <span>
-                                                    {{$info_row['Addr1']}}
-                                                    {!! empty($info_row['Addr2']) === false ? '<br/>(' . $info_row['Addr2'] . ')' : '' !!}
-                                                </span>
-                                            </div>
+                                            @if($campus_ccd == '605001')
+                                                <div class="address">
+                                                    <span class="a-tit">본원</span>
+                                                    <span>{{$info_row['Addr1']}}</span>
+                                                </div>
+                                                @if(empty($info_row['Addr2']) === false)
+                                                    <div class="address">
+                                                        <span class="a-tit">법원/감찰</span>
+                                                        <span>{{$info_row['Addr2']}}</span>
+                                                    </div>
+                                                @endif
+                                            @else
+                                                <div class="address">
+                                                    <span class="a-tit">주소</span>
+                                                    <span>
+                                                        {{$info_row['Addr1']}}
+                                                        {!! empty($info_row['Addr2']) === false ? '<br/>(' . $info_row['Addr2'] . ')' : '' !!}
+                                                    </span>
+                                                </div>
+                                            @endif
                                             <div class="tel">
                                                 <span class="a-tit">연락처</span>
                                                 <span class="tx-color">{{$info_row['Tel']}}</span>

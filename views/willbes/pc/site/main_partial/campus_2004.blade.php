@@ -56,7 +56,7 @@
                                                 </div>
                                                 @if(empty($info_row['Addr2']) === false)
                                                     <div class="address">
-                                                        <span class="a-tit">법원/감찰</span>
+                                                        <span class="a-tit">법원/검찰</span>
                                                         <span>{{$info_row['Addr2']}}</span>
                                                     </div>
                                                 @endif

@@ -37,6 +37,7 @@
 }
 .laj_sec .termsBx01 {padding:10px ; height:100px; overflow:hidden; overflow-y:scroll; border:1px solid #cecece;}
 .laj_sec .termsBx01 li {margin-bottom:10px}
+.laj_sec input[type=radio] {vertical-align:middle; width:16px; height:16px}
 
 
 </style>

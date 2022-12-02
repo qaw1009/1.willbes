@@ -54,16 +54,30 @@
                     <div class="control_text_time"><span id="text_currentTime">00:00:00</span> / <span id="text_duration">00:00:00</span></div>
                 </div>
                 <div class="control_r">
-                    <ul class="speed_controls">
-                        <li><a class="btn_common btn_speed06"></a></li>
-                        <li><a class="btn_common btn_speed08"></a></li>
-                        <li><a class="btn_common btn_speed10 active"></a></li>
-                        <li><a class="btn_common btn_speed12"></a></li>
-                        <li><a class="btn_common btn_speed14"></a></li>
-                        <li><a class="btn_common btn_speed16"></a></li>
-                        <li><a class="btn_common btn_speed18"></a></li>
-                        <li><a class="btn_common btn_speed20"></a></li>
-                    </ul>
+                    <div class="speed_controls_num">
+                        <div class="speed_controls_btn">
+                            <a href="#" class="speed_minus">-</a>
+                            <a href="#" class="speed_view" id="speed_text">1.0</a>
+                            <a href="#" class="speed_plus">+</a>
+                        </div>
+                        <div class="speed_controls_pop" style="display:none;">
+                            <a href="#" class="speed_btn speed06">0.6</a>
+                            <a href="#" class="speed_btn speed07">0.7</a>
+                            <a href="#" class="speed_btn speed08">0.8</a>
+                            <a href="#" class="speed_btn speed09">0.9</a>
+                            <a href="#" class="speed_btn speed10 on">1.0</a>
+                            <a href="#" class="speed_btn speed11">1.1</a>
+                            <a href="#" class="speed_btn speed12">1.2</a>
+                            <a href="#" class="speed_btn speed13">1.3</a>
+                            <a href="#" class="speed_btn speed14">1.4</a>
+                            <a href="#" class="speed_btn speed15">1.5</a>
+                            <a href="#" class="speed_btn speed16">1.6</a>
+                            <a href="#" class="speed_btn speed17">1.7</a>
+                            <a href="#" class="speed_btn speed18">1.8</a>
+                            <a href="#" class="speed_btn speed19">1.9</a>
+                            <a href="#" class="speed_btn speed20">2.0</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

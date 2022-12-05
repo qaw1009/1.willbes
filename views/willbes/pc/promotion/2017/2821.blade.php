@@ -20,6 +20,10 @@
 
         /************************************************************/
 
+        .sky {position:fixed;top:250px;right:10px; width:120px; z-index:100;}
+        .sky a {display:block; margin-bottom:10px; background:#fff; border:3px solid #071b44; color:#071b44; padding:15px; text-align:center; font-size:16px}
+        .sky a:hover {color:#fff; background:#071b44}
+
         .eventTop {background:url(https://static.willbes.net/public/images/promotion/2022/11/2821_top_bg.jpg) no-repeat center top; height: 1009px;}
         .eventTop span {position: absolute; top:300px; left:50%; margin-left:-420px}
 
@@ -119,6 +123,20 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
+        <div class="sky" id="QuickMenu">
+            <a href="#runningMate">
+            합격전략<br>
+            설명회<br>
+            (현장참석)<br>
+            신청하기<br>👇
+            </a> 
+            <a href="#evt05">
+            합격전략<br>
+            설명회<br>
+            소문내기<br>
+            이벤트참여<br>👇
+            </a>   
+        </div>  
         
         <div class="evtCtnsBox eventTop">
         	<span data-aos="flip-down"><img src="https://static.willbes.net/public/images/promotion/2022/11/2821_top.png" alt="합격전략 설명회"/></span>
@@ -336,7 +354,7 @@
             @include('willbes.pc.site.main_partial.map_' . $__cfg['SiteCode'])
         </div>
         
-        <div class="evtCtnsBox evt05" data-aos="fade-up">
+        <div class="evtCtnsBox evt05" data-aos="fade-up" id="evt05">
         	<img src="https://static.willbes.net/public/images/promotion/2022/11/2821_05.jpg" alt="소문내기 이벤트"/>
         </div>
 

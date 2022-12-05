@@ -296,7 +296,7 @@
                                     </ul>
                                     <ul class="subject_line">
                                         <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][22]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][22]['PersonLimit'] or '0'}}" data-product-group="3" autocomplete="off" disabled/><span class="subjct_title">전기·전자·통신</span> 최우영 교수</label></li>
-                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][23]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][23]['PersonLimit'] or '0'}}" data-product-group="3" autocomplete="off" disabled/><span class="subjct_title">정컴 교육론</span> 장순선 교수</label></li>
+                                        <li><label><input class="btn-product-check sub-product" type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][23]['ErIdx'] or ''}}" data-product-limit="{{ $arr_base['register_list'][23]['PersonLimit'] or '0'}}" data-product-group="3" autocomplete="off" disabled/><span class="subjct_title">정컴 교육론</span> 장순선 교수<em class="cms">일정추후공지</em></label></li>
                                     </ul>
                                  </td>
                             </tr>

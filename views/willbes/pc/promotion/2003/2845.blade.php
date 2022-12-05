@@ -27,7 +27,8 @@
     .evt03 {background:#f5f5f5;}
 
     .evt05 {background:#966c3c;}
-    .evt07 {background:#f4d956;}
+    .evt07 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2845_07_bg.jpg) no-repeat center top;}
+    .evt08 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2845_08_bg.jpg) no-repeat center top;}
 
     </style>
 
@@ -46,11 +47,11 @@
         </div>
 
         <div class="evtCtnsBox evt02 pb50" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/12/2845_02.jpg" title="조문특강">
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2845_02.jpg" title="">
         </div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/12/2845_03.jpg" title="23년도 시험일까지 무료수강">
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2845_03.jpg" title="">
         </div>
 
         <div class="evtCtnsBox evt04" data-aos="fade-up">
@@ -71,7 +72,14 @@
         <div class="evtCtnsBox evt07" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/12/2845_07.jpg" title="">
-                <a href="javascript:void(0);" onclick="showPopup();" title="설문 참여"  style="position: absolute; left: 34.29%; top: 73.09%; width: 30.63%; height: 11.85%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="showPopup();" title="설문 참여"  style="position: absolute; left: 34.38%; top: 76%; width: 30.8%; height: 12.77%; z-index: 2;"></a>
+            </div>
+        </div>
+
+        <div class="evtCtnsBox evt08">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/12/2845_08.jpg" title="예비순환 + 1~3순환 전과목 온라인 수강">
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" title="수강신청" style="position: absolute; left: 26.16%; top: 78.42%; width: 47.32%; height: 10.58%; z-index: 2;"></a>
             </div>
         </div>
 

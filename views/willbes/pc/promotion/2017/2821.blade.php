@@ -124,7 +124,7 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
-            <a href="#runningMate">
+            <a href="#evt03">
             합격전략<br>
             설명회<br>
             (현장참석)<br>
@@ -171,7 +171,7 @@
             <input type="hidden" name="target_param_names[]" value="희망응시지역"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_param_names[]" value="응시횟수"/> {{-- 체크 항목 전송 --}}
 
-            <div class="evtCtnsBox evt03" id="runningMate" data-aos="fade-up">
+            <div class="evtCtnsBox evt03" id="evt03" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/11/2821_03.jpg" alt="설명회 신청"/>
                 <div class="evt_table p_re">
                     {{-- 신청완료 --}}

@@ -332,15 +332,17 @@
 .MemberBox {
 	width: 940px;
 	margin: 0 auto;
+	display: flex;
+
 }
 
 .MemberBox .Member {
-	float: left;
+	/*float: left;*/
 }
 
 .MemberBox .youpass {
-	float: right;
-	text-align: center;
+	/*float: right;
+	text-align: center;*/
 }
 
 .MemberBox .youpass img {

@@ -61,9 +61,11 @@
                         {!! banner('로그인하단', '', $__cfg['SiteCode'], '0') !!}
                     </div>
                 </div>  
+                {{--
                 <div class="youpass">
                     <a href="https://www.njobler.net/promotion/index/cate/3001/code/1075" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/login_bn_221111.jpg" title="njob"></a>
                 </div>
+                --}}
             </div>
             <!-- End 로그인 -->
             <br/><br/><br/><br/><br/><br/>

@@ -771,7 +771,7 @@
                                             <span>서울 동작구 만양로 105 한성빌딩 2층</span>
                                         </div>
                                         <div class="address">
-                                            <span class="a-tit">법원/감찰</span>
+                                            <span class="a-tit">법원/검찰</span>
                                             <span>서울 동작구 노량진로 196 JH빌딩 10층</span>
                                         </div>
                                         <div class="tel">

@@ -21,10 +21,14 @@
         /************************************************************/ 
 
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/06/2701_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/12/2701_top_bg.jpg) no-repeat center top;}
 
-        .evt05 {background:#f0f0f0}
-        .evt06 {background:#00bfff}
+        .evt02 {background:#ede2dc}
+        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2701_03_bg.jpg) no-repeat center top;}
+        .evt05 {background:#dbdbdb}
+
+        .evt07 {background:#d7f2ff}
+        .evt08 {background:#ebebeb}
 
         /* 이용안내 */
         .evtInfo {padding:100px 0; background:#555; color:#fff; line-height:1.5}
@@ -40,47 +44,60 @@
 
     <div class="evtContent NSK" id="evtContainer">
 		<div class="evtCtnsBox evtTop" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2701_top.jpg" alt="김동진 법원팀" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2701_top.jpg" alt="김동진 법원팀" />
 		</div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-left">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2701_01.jpg" alt="김동진 법원팀" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2701_01.jpg" alt="김동진 법원팀" />
 		</div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-right">
-            <div class="wrap">            
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2701_02.jpg" alt="연간 커리큘럼">
-                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU67JiI67mE7Iic7ZmY&course_idx=" title="예비순환" target="_blank" style="position: absolute; left: 11.88%; top: 90.05%; width: 11.61%; height: 3.88%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MeyInO2ZmA%3D%3D" title="1순환" target="_blank" style="position: absolute; left: 24.91%; top: 90.05%; width: 11.61%; height: 3.88%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MuyInO2ZmA%3D%3D" title="2순환" target="_blank" style="position: absolute; left: 38.04%; top: 90.05%; width: 11.61%; height: 3.88%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6M%2ByInO2ZmA%3D%3D" title="3순환" target="_blank" style="position: absolute; left: 50.8%; top: 90.05%; width: 11.61%; height: 3.88%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NOyInO2ZmA%3D%3D" title="4순환" target="_blank" style="position: absolute; left: 63.93%; top: 90.05%; width: 11.61%; height: 3.88%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NeyInO2ZmA%3D%3D" title="5순환" target="_blank" style="position: absolute; left: 77.23%; top: 90.05%; width: 11.61%; height: 3.88%; z-index: 2;"></a>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/12/2701_02.jpg" alt="절대 만족 후기"/>
+                
             </div>
 		</div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-left">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2701_03.jpg" alt="김동진 법원팀" />
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2701_03.jpg" alt="김동진 법원팀" />
 		</div>
 
+
+
         <div class="evtCtnsBox evt04" data-aos="fade-right">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2701_04.jpg" alt="절대 만족 후기"/>
-                <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="더 많은 합격수기 보기" style="position: absolute; left: 34.46%; top: 80.45%; width: 30.89%; height: 5.55%; z-index: 2;"></a>
+            <div class="wrap">            
+                <img src="https://static.willbes.net/public/images/promotion/2022/12/2701_04.jpg" alt="연간 커리큘럼">
+                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU67JiI67mE7Iic7ZmY&course_idx=" title="예비순환" target="_blank" style="position: absolute; left: 0.98%; top: 76.24%; width: 15.71%; height: 9.08%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MeyInO2ZmA%3D%3D" title="1순환" target="_blank" style="position: absolute; left: 17.41%; top: 76.24%; width: 15.71%; height: 9.08%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MuyInO2ZmA%3D%3D" title="2순환" target="_blank" style="position: absolute; left: 33.75%; top: 76.24%; width: 15.71%; height: 9.08%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6M%2ByInO2ZmA%3D%3D" title="3순환" target="_blank" style="position: absolute; left: 50.36%; top: 76.24%; width: 15.71%; height: 9.08%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NOyInO2ZmA%3D%3D" title="4순환" target="_blank" style="position: absolute; left: 66.79%; top: 76.24%; width: 15.71%; height: 9.08%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NeyInO2ZmA%3D%3D" title="5순환" target="_blank" style="position: absolute; left: 83.04%; top: 76.24%; width: 15.71%; height: 9.08%; z-index: 2;"></a>
             </div>
 		</div>
 
         <div class="evtCtnsBox evt05" data-aos="fade-up">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2701_05.jpg" alt="학원종합반" />
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" style="position: absolute; left: 35.09%; top: 74.15%; width: 30.98%; height: 8.72%; z-index: 2;"></a>
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2701_05.jpg" alt="동행 면접스터디" />
 		</div>
 
         <div class="evtCtnsBox evt06" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2701_06.jpg" alt="설문조사" />
-                <a href="javascript:void(0);" onclick="showPopup();" style="position: absolute; left: 20.89%; top: 66.32%; width: 31.7%; height: 13.02%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/12/2701_06.jpg" alt="설문조사" />
+                <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="더 많은 합격수기 보기" style="position: absolute; left: 24.73%; top: 79.85%; width: 50%; height: 9%; z-index: 2;"></a>
+            </div>
+		</div>
+
+        <div class="evtCtnsBox evt07" data-aos="fade-up">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/12/2701_07.jpg" alt="수강신청" />
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" style="position: absolute; left: 16.88%; top: 78.05%; width: 64.11%; height: 13.08%; z-index: 2;"></a>
+            </div>
+		</div>
+
+        <div class="evtCtnsBox evt08" data-aos="fade-up">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2022/12/2701_08.jpg" alt="설문조사" />
+                <a href="javascript:void(0);" onclick="showPopup();" style="position: absolute; left: 16.88%; top: 77.05%; width: 64.11%; height: 13.08%; z-index: 2;"></a>
             </div>
 		</div>
 {{--
@@ -152,8 +169,8 @@
 	</div>
     <!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
       $( document ).ready( function() {
         AOS.init();

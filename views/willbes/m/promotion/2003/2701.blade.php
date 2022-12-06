@@ -18,53 +18,46 @@
     .guide_box dd{margin:0 0 20px 5px;}
     .guide_box dd li{margin-bottom:3px; list-style:decimal; margin-left:20px;font-size:1.5vh;}
     
-    /* 폰 가로, 태블릿 세로*/
-    @@media only screen and (max-width: 374px)  {   
-        
-    }
-
-    /* 태블릿 세로 */
-    @@media only screen and (min-width: 375px) and (max-width: 640px) {       
-
-    }
-    
-    /* 태블릿 가로, PC */
-    @@media only screen and (min-width: 641px) {
-        
-    }
-
 </style>
 
 <div id="Container" class="Container NSK c_both">
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_top.jpg" alt="법원직 연간종합반" >
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2701m_top.jpg" alt="법원직 3~5순환패스" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-left">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_01.jpg" alt="합격생 배출 압도적 1위" />
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2701m_01.jpg" alt="합격생 배출 압도적 1위" />
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-right">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_02.jpg" alt="커리큘럼" >
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2701m_02.jpg" alt="체크포인트" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_03.jpg" alt="면접스터디"/>
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2701m_03.jpg" alt="김동진팀"/>
     </div> 
 
     <div class="evtCtnsBox wrap" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_04.jpg" alt="후기 "/>
-        <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="" style="position: absolute; left: 18.89%; top: 92.65%; width: 62.08%; height: 3.58%; z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2701m_04.jpg" alt="커리큘럼"/>
     </div>
 
     <div class="evtCtnsBox wrap" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_05.jpg" alt="수강신청 "/>
-        <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3059" target="_blank" style="position: absolute; left: 26.39%; top: 78.38%; width: 48.33%; height: 8.02%; z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2701m_05.jpg" alt="면접스터디 "/>
     </div>
 
     <div class="evtCtnsBox wrap" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2701m_06.jpg" alt="설문 "/>
-        <a href="javascript:void(0);" onclick="showPopup();" title="설문조사" style="position: absolute; left: 7.92%; top: 67.1%; width: 48.33%; height: 12.38%; z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2701m_06.jpg" alt="후기"/>
+        <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="" style="position: absolute; left: 20.28%; top: 84.82%; width: 58.75%; height: 6.29%;z-index: 2;"></a>        
+    </div>
+
+    <div class="evtCtnsBox wrap" data-aos="fade-up">
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2701m_07.jpg" alt="수강신청"/>
+        <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3059" title="" style="position: absolute; left: 19.44%; top: 69.6%; width: 58.75%; height: 11.75%; z-index: 2;"></a>
+    </div>
+
+    <div class="evtCtnsBox wrap" data-aos="fade-up">
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2701m_08.jpg" alt="체험 팩 설문조사"/>
+        <a href="javascript:void(0);" onclick="showPopup();" title="설문조사" style="position: absolute; left: 19.44%; top: 66.13%; width: 58.75%; height: 11.73%;  z-index: 2;"></a>
     </div>
 
 {{--
@@ -135,8 +128,8 @@
 
 <!-- End Container -->
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+<script src="/public/js/willbes/dist/aos.js"></script>
 <script>
       $( document ).ready( function() {
         AOS.init();

@@ -40,7 +40,7 @@
                                 <li><a href="#none" class="favor-cate-each" data-key="2001_3001" data-url="{{ front_app_url('/home/index/cate/3001', 'police') }}">일반경찰·경행경채·경찰간부</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2001_3006" data-url="{{ front_app_url('/home/index/cate/3006', 'police') }}">경찰승진</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2001_3007" data-url="{{ front_app_url('/home/index/cate/3007', 'police') }}">해양경찰</a></li>
-                                <li><a href="#none" class="favor-cate-each" data-key="2001_3008" data-url="{{ front_app_url('/home/index/cate/3008', 'police') }}">해양경찰특채</a></li>
+                                <li><a href="#none" class="favor-cate-each" data-key="2001_3008" data-url="{{ front_app_url('/home/index/cate/3008', 'police') }}">해양경찰경채</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2008_3100" data-url="{{ front_app_url('/home/index/cate/3100', 'spo') }}">한림법학원 경찰간부</a></li>
                             </ul>
                         </div>
@@ -174,7 +174,7 @@
                                 <a href="{{ front_app_url('/home/index/cate/3001', 'police') }}" target="_blank">일반경찰·경행경채·경찰간부</a>
                                 <a href="{{ front_app_url('/home/index/cate/3006', 'police') }}" target="_blank">경찰승진</a>
                                 <a href="{{ front_app_url('/home/index/cate/3007', 'police') }}" target="_blank">해양경찰</a>
-                                <a href="{{ front_app_url('/home/index/cate/3008', 'police') }}" target="_blank">해양경찰특채</a>
+                                <a href="{{ front_app_url('/home/index/cate/3008', 'police') }}" target="_blank">해양경찰경채</a>
                                 <a href="{{ front_app_url('/home/index/cate/3100', 'spo') }}" target="_blank">한림법학원 경찰간부</a>
                             </td>
                         </tr>

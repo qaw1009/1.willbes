@@ -92,7 +92,7 @@
                 <div class="passLecBuy NSK-Black"> 
                     <div>                                       
                         <input type="radio" id="y_pkg1" name="y_pkg" value="201174"/>                
-                        <label for="y_pkg1">23년 2차 PASS 신청하기</label>
+                        <label for="y_pkg1">73기대비 L-PASS 신청하기</label>
                     </div>                             
                 </div>
             </div>

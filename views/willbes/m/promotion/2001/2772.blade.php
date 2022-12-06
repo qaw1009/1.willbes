@@ -12,7 +12,7 @@
     .evt01 .txtinfo p {background:#000; color:#fff; padding:10px 5px; border-radius:30px; margin-top:-60px; margin-bottom:20px; font-size:1.8vh; text-align:center}
 
     .evt01 {background:#f5f5f7; padding-bottom:50px}
-    .evt01 .price {text-align:center; font-size:25px; font-weight:bold; color:#333; letter-spacing:-1px; position:absolute; bottom:8.5%;left:20%;width:100%; z-index: 10;}
+    .evt01 .price {text-align:center; font-size:25px; font-weight:bold; color:#333; letter-spacing:-1px; position:absolute; bottom:5%;width:100%; z-index: 10;}
     .evt01 .price p {margin-bottom:20px}    
     .evt_01 .price label {display:inline-block}
     .evt01 .price input:checked + label {color:#333399;}
@@ -87,7 +87,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2772m_01.jpg" alt="23년 2차 PASS 신청하기" > 
                 <div class="price NSK-Black">                       
                     <input type="radio" id="y_pkg1" name="y_pkg" value="201174" onClick=""/>
-                    <label for="y_pkg1"> 23년 2차 PASS 신청</label>
+                    <label for="y_pkg1"> 73기대비 L-PASS 신청하기</label>
                 </div>
             </div>                    
             <div class="ext01txt">

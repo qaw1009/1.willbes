@@ -27,7 +27,7 @@
         .evt_02 {background:#f1f1f1}
         .evt_03 {background:#3fddde}
 
-        .evt_05 a {display:block; width:250px; margin:0 auto; padding:10px; text-align:center; background:#333; color:#fff; font-size:14px; border-radius:30px;}
+        .evt_05 a {display:block; width:250px; margin:30px auto 0; padding:10px; text-align:center; background:#333; color:#fff; font-size:14px; border-radius:30px;}
         .evt_05 p {font-size:40px; margin:100px auto}
 
         /* 이용안내 */

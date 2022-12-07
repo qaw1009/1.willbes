@@ -171,14 +171,14 @@
                     <li><a href="#none" onclick="javascript:go_popup16()"><strong>영어</strong><p>영어과, 재수로 합격한 김유석 교수님 제자입니다</p><span>김성*</span></a></li>
                     <li><a href="#none" onclick="javascript:go_popup17()"><strong>교육학</strong><p>임산부도 했어요. 다들 할 수 있어요!!</p><span>김미*</span></a></li>
                     <li><a href="#none" onclick="javascript:go_popup27()"><strong>영어</strong><p>경기영어. 초수. 교직이수. 복수전공. 이과생. 재학생</p><span>최은*</span></a></li>
-                    <li><a href="#none" onclick="javascript:go_popup18()"><strong>유아</strong><p>경남.민쌤 2년 패키지.2차 고득점.민쌤감사합니다</p><span>황나*</span></a></li>
-                    <li><a href="#none" onclick="javascript:go_popup19()"><strong>유아</strong><p>서울 고득점 누구나 할 수 있다!!</p><span>이예*</span></a></li>
-                    <li><a href="#none" onclick="javascript:go_popup20()"><strong>유아</strong><p>서울 유아임용 초수합격수기!시관관리 꿀팁들 공유해요.</p><span>조혜*</span></a></li>
+                    <li><a href="#none" onclick="javascript:go_popup18()"><strong>유아</strong><p>경남.민쌤 2년 패키지.2차 고득점.민쌤감사합니다</p><span>황나*</span></a></li>              
                     <li><a href="#none" onclick="javascript:go_popup21()"><strong>음악</strong><p>전북 합격수기 입니다!!</p><span>R=**</span></a></li>
+                    <li><a href="#none" onclick="javascript:go_popup19()"><strong>유아</strong><p>서울 고득점 누구나 할 수 있다!!</p><span>이예*</span></a></li>
                     <li><a href="#none" onclick="javascript:go_popup22()"><strong>음악</strong><p>2021 서울 음악 초수 합격수기</p><span>전가*</span></a></li>
                     <li><a href="#none" onclick="javascript:go_popup23()"><strong>일반사회</strong><p>윌비스 일반사회 허역팀 강의를 수강하고 합격하였습니다.</p><span>유소*</span></a></li>
                     <li><a href="#none" onclick="javascript:go_popup24()"><strong>전기전자</strong><p>서울 전기전자 합격 수기입니다.</p><span>이소*</span></a></li>
                     <li><a href="#none" onclick="javascript:go_popup25()"><strong>중국어</strong><p>2020학년도 경기 3등 합격!! </p><span>조미*</span></a></li>
+                    <li><a href="#none" onclick="javascript:go_popup20()"><strong>유아</strong><p>서울 유아임용 초수합격수기! 시간 관리 꿀팁들 공유해요.</p><span>조혜*</span></a></li>
                     <li><a href="#none" onclick="javascript:go_popup26()"><strong>중국어</strong><p>2021학년도 경기 합격! 합격! </p><span>장선*</span></a></li>
                 </ul>
                 </div>

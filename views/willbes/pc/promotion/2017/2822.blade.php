@@ -118,11 +118,12 @@
 
         .evtInfo {padding:80px 0; background:#fff; color:#242424; font-size:16px}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
+        .evtInfoBox span {vertical-align:top}
         .evtInfoBox h4 {font-size:40px; margin-bottom:20px}
         .evtInfoBox h4 span {color:#e30000}
         .evtInfoBox h5 {font-size:20px; margin-bottom:10px; font-weight:bold}
         .evtInfoBox ul {margin-bottom:30px}
-        .evtInfoBox li {list-style-type: decimal;margin-left:30px; margin-bottom:10px}
+        .evtInfoBox li {list-style-type: decimal;margin-left:30px; margin-bottom:10px}        
         .evtInfoBox p {margin-bottom:10px}
         .evtInfoBox p span {padding:3px 10px; background:#333; color:#fff; font-size:16px; border-radius:10px}
         .evtInfoBox tr {border:1px solid #ccc}
@@ -165,11 +166,7 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-        @if(time() < strtotime('202201071700'))
-            <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_02.jpg" alt="특별이벤트"/>
-        @else
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2438_02.jpg" alt="특별이벤트"/>
-        @endif
         </div>
 
         {{-- 핫클립 상품 Box(ajax data) evt03--}}
@@ -222,6 +219,7 @@
                     <li>본 패키지 강의의 환불은 학원의 설립·운영 및 과외 교습소에 관한 법률 18조 (동 시행령)에 따라 진행됩니다.</li>
                     <li>본 연간패키지 상품은 할인이 적용된 상품으로 할인 전 원 수강료를 기준으로 환불하는 것을 원칙으로 합니다.</li>
                 </ul>
+
                 <p><span>교습개시 이후, 학원 직강의 환불 규정</span></p>
                 <ul>
                     <li>학원 직강의 교습기간이 1개월 이내인 경우
@@ -244,20 +242,24 @@
                     (단과의 묶음으로 구성된 패키지 강의 환불시에는 기 수강한 단과금액의 원 수강료를 공제하고 환불이 받을 수 있습니다.)</li>
                 </ul>
 
-                @if(time() < strtotime('202201071700'))
-                <h5>[선착순 1,000명 이벤트]</h5>
+                <p><span>교습개시 이후, 동영상강의 환불 규정</span></p>
                 <ul>
-                    <li>패키지 접수자 선착순 1,000명 돌파, 보내주신 성원에 힘입어 2022년 1월 7일(금) 17시 이전 결제자 분들 전원에게 증정 하는 것으로 이벤트를 전격 연장 합니다. (마감 시간 이후 결제자 분들은 혜택 제공 불가)</li>      
-                @else    
+                    <li>패키지 강의의 환불은 강좌의 원 금액을 기준으로 공제가 됩니다.</li>
+                    <li>본 페이지의 연간패키지 강좌는 이용기간 기준의 패키지 상품으로 환불 시에는 “<span class="tx-red">(수강료)결제금액 - (강좌 정상가의 1일 이용대금×이용일수)</span>”의 기준으로 환불 받을 수 있습니다.<br>
+                    ※ 이용일수란? 강의 시작(결제일)일로 부터 환불을 요청하신 날까지 경과된 일수를 의미합니다.</li>
+                    <li>‘결제 7일 이내’ 맛보기 강의 제외, 2강 이하 수강 시에는 전액 환불 가능합니다.</li>
+                    <li>‘결제 7일 이내’ 2강 이상 수강 시에는 경과 일수만큼 일할 공제 후 부분 환불됩니다.</li>
+                </ul>
+
+   
                 <h5>[문화상품권 증정 이벤트]</h5>
                 <ul>       
-                    <li>문화상품권 지급 이벤트는 22년 1월 7일(금) 17시 이전까지 결제하신 분들에게 혜택이 제공됩니다.</li>    
-                @endif
+                    <li>문화상품권 지급 이벤트는 선착순 1,000명 이내에 포함된 분들에게 혜택이 제공됩니다. (최종결제일 기준)</li>
                     <li>본 이벤트 페이지에 등록된 과목의 패키지 강의 결제 시에만 카운트 됩니다. (가상 계좌의 경우, 마감 시간 전 입금 완료가 되어야함)</li>
                     <li>문화상품권 지급 이벤트 당첨자들에게는 1월 중순 이후 개별적으로 문자발송 드릴 예정입니다.</li>
-                    <li>문화상품권 수령을 위해서는 세금 소득신고를 위한 수령자의 주민번호를 요청할 수 있습니다. (본인 입력방식)</li>
+                    <li>문화상품권 수령을 위해서는 세금 소득신고를 위한 수령자의 주민번호를 요청할 수 있습니다.(본인 입력방식)</li>
                     <li>문화상품권은 윌비스 홈페이지의 회원정보에 작성한 전화번호를 통하여 문자로 발송됩니다.</li>
-                    <li>휴대폰 번호 기재 오류로 인한 피해는 본사에서 책임지지 않습니다. </li>
+                    <li>휴대폰 번호 기재 오류로 인한 피해는 본사에서 책임지지 않습니다.</li>
                 </ul>
             </div>
         </div>

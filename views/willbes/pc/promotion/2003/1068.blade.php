@@ -183,13 +183,18 @@
 
 		<div class="evtCtnsBox wb_02" id="transfer2">
 			<div class="wrap">
-				<img src="https://static.willbes.net/public/images/promotion/2022/11/1068_02_02.gif" alt="패키지 수강신청" />
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/198483" target="_blank" title="기본/심화이론 패키지" style="position: absolute;left: 26.79%;top: 40.09%;width: 18.57%;height: 3.87%;z-index: 2;"></a>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/198575" target="_blank" title="7급 이론" style="position: absolute;left: 74.29%;top: 40.09%;width: 18.57%;height: 3.87%;z-index: 2;"></a>
-				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/202441" target="_blank" title="9급 농업직 이론" style="position: absolute;left: 26.79%;top: 60.09%;width: 18.57%;height: 3.87%;z-index: 2;"></a>
-				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/202449" target="_blank" title="7급 농업직 이론" style="position: absolute;left: 74.29%;top: 60.09%;width: 18.57%;height: 3.87%;z-index: 2;"></a>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/199703" target="_blank" title="농촌지도사" style="position: absolute;left: 26.79%;top: 80.29%;width: 18.57%;height: 3.87%;z-index: 2;"></a>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/199704" target="_blank" title="농촌지도사 경기인천" style="position: absolute;left: 74.29%;top: 80.29%;width: 18.57%;height: 3.87%;z-index: 2;"></a>
+				<img src="https://static.willbes.net/public/images/promotion/2022/12/1068_02_02.gif" alt="패키지 수강신청" />
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/198483" target="_blank" title="기본/심화이론 패키지" style="position: absolute; left: 27.05%; top: 35.31%; width: 17.95%; height: 3.11%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/198575" target="_blank" title="7급 이론" style="position: absolute; left: 74.29%; top: 35.31%; width: 17.95%; height: 3.11%; z-index: 2;"></a>
+
+				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/202441" target="_blank" title="9급 농업직 이론" style="position: absolute; left: 27.05%; top: 52.5%; width: 17.95%; height: 3.11%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/202449" target="_blank" title="7급 농업직 이론" style="position: absolute;left: 74.29%; top: 52.5%; width: 17.95%; height: 3.11%; z-index: 2;"></a>
+
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/199703" target="_blank" title="농촌지도사" style="position: absolute;left: 27.05%; top: 70.27%; width: 17.95%; height: 3.11%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/199704" target="_blank" title="농촌지도사 경기인천" style="position: absolute;left: 74.29%; top: 70.27%; width: 17.95%; height: 3.11%; z-index: 2;"></a>
+
+				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/203584" target="_blank" title="농촌지도사 경기외 + 기출" style="position: absolute;left: 27.05%; top: 87.75%; width: 17.95%; height: 3.11%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/203585" target="_blank" title="농촌지도사 + 기출 경기인천" style="position: absolute;left: 74.29%; top: 87.75%; width: 17.95%; height: 3.11%; z-index: 2;"></a>
 			</div>	
 		</div>
 		       

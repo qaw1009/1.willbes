@@ -50,8 +50,8 @@
         .wb_cts06 .passbuy a {display:block; width:400px; margin:0 auto; background:#1c2127; color:#fff; font-size:30px; border-radius:50px; padding:20px 0; font-weight:bold}  
         .wb_cts06 .passbuy a:hover {background:#b47607; color:#fff;}
 
-        .lecWrap {display:flex; width:1120px; margin:auto; line-height:1.5; font-size:14px}
-        .lecWrap .pass {width:calc(25% - 10px); margin-bottom:10px; margin-right:10px}
+        .lecWrap {display:flex; width:1120px; margin:auto; line-height:1.5; font-size:14px; }
+        .lecWrap .pass {width:calc(25% - 10px); margin-bottom:10px; margin-right:10px; position: relative;}
         .lecWrap .pass:last-child {margin-right:0}
         .lecWrap .pass div {font-size:22px}
         .lecWrap .pass div:nth-child(1) {font-size:20px; font-weight:bold; margin-bottom:20px}
@@ -69,6 +69,17 @@
         .lecWrap .pass input:checked + label {border:1px solid #b47607; background:#b47607; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3)}
         .lecWrap .pass input:checked + label div,
         .lecWrap .pass input:checked + label span{color:#fff; box-shadow:none}
+        .lecWrap .pass p {position: absolute; bottom:-20px; width:80%; left:10%; padding:5px; text-align:center; font-size:18px; background:#43AAF7; color:#fff; border-radius:10px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;} 
+        @@keyframes upDown{
+            from{background:#b47607}
+            50%{background:#865908}
+            to{background:#b47607}
+        }
+        @@-webkit-keyframes upDown{
+            from{background:#b47607}
+            50%{background:#865908}
+            to{background:#b47607}
+        }
         
         /*수강신청 체크*/
         .check {width:980px; margin:50px auto;}
@@ -229,6 +240,7 @@
                                 <li>배속제한 없는 무제한수강</li>
                             </ul>
                         </label>
+                        <p>12월 최종마감</p>
                     </div>
 
                     <div class="pass">

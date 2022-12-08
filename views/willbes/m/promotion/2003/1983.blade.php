@@ -22,7 +22,7 @@
     .event05 .ctTilte strong {color:#b47607}
 
     .lecWrap {display:flex; flex-wrap: wrap; justify-content: center; line-height:1.5; font-size:1.5vh; width:100%}
-    .lecWrap .pass {/*margin:0 10px 10px; flex: 1 1 100%;*/ width:calc(50% - 10px); margin:0 auto 10px; position: relative; letter-spacing:-1px}
+    .lecWrap .pass {/*margin:0 10px 10px; flex: 1 1 100%;*/ width:calc(50% - 10px); margin:0 auto 15px; position: relative; letter-spacing:-1px}
     .lecWrap .pass div {font-size:2vh}
     .lecWrap .pass div:nth-child(1) {font-weight:600;}
     .lecWrap .pass div:nth-child(2) {font-size:1.8vh; font-weight:600;}
@@ -40,6 +40,18 @@
     .lecWrap .pass input:checked + label div,
     .lecWrap .pass input:checked + label span{color:#fff; box-shadow:none}
     .lecWrap .pass input:checked + label ul {margin-top:30px; display:block}
+
+    .lecWrap .pass p {position: absolute; bottom:-10px; width:80%; left:10%; padding:5px; text-align:center; font-size:1.8vh; background:#43AAF7; color:#fff; border-radius:10px; z-index:10; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;} 
+        @@keyframes upDown{
+            from{background:#b47607}
+            50%{background:#865908}
+            to{background:#b47607}
+        }
+        @@-webkit-keyframes upDown{
+            from{background:#b47607}
+            50%{background:#865908}
+            to{background:#b47607}
+        }
 
     .check {margin:50px auto;}
     .check label {cursor:pointer; font-size:1.6vh; color:#000;font-weight:bold;}
@@ -71,7 +83,7 @@
     @@media only screen and (max-width: 374px)  {  
         .passWrap {display:block;}
         .passLec {width:95%; margin:10px auto}
-        .lecWrap .pass{width:95%; margin:0 auto 10px}        
+        .lecWrap .pass{width:95%; margin:0 auto 15px}        
         .dday a {padding:5px 10px;}
     }
 
@@ -79,7 +91,7 @@
     @@media only screen and (min-width: 375px) and (max-width: 640px) {
         .passWrap {display:block;}
         .passLec {width:95%; margin:10px auto}
-        .lecWrap .pass{width:95%; margin:0 auto 10px; }  
+        .lecWrap .pass{width:95%; margin:0 auto 15px; }  
         .lecWrap .pass ul,
         .lecWrap .pass input:checked + label ul {display:flex; flex-wrap: wrap;}
         .lecWrap .pass li {width:calc(50% - 20px);}
@@ -177,6 +189,7 @@
                                 <li>배속제한 없는 무제한수강</li>
                             </ul>
                         </label>
+                        <p>12월 최종마감</p>
                     </div>
 
                     <div class="pass">

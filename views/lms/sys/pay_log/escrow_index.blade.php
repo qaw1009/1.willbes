@@ -139,7 +139,7 @@
                     {'data' : 'EscrowDatm'},
                     {'data' : 'ResultCode'},
                     {'data' : 'ResultMsg', 'render' : function(data, type, row, meta) {
-                        return '<div style="max-width: 580px; word-break: break-all;">' + data + '</div>';
+                        return data === null ? '' : '<div style="max-width: 580px; word-break: break-all;">' + data + '</div>';
                     }},
                     {'data' : 'RegDatm'},
                     {'data' : null, 'render' : function(data, type, row, meta) {

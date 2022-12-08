@@ -33,6 +33,8 @@
         .evt_02 .slide_con p.rightBtn {right:-100px}
         .evt_02 li {display:inline; float:left}
         .evt_02:after {content:""; display:block; clear:both}      
+        .evt_02 .bx-controls{margin-top: 50px; position: relative;}  
+
 
         .evt_05 .slide_con {position:relative; width:980px; margin:0 auto; padding-bottom: 140px;} 
         .evt_05 .bx-controls{margin-top: 138px; position: relative;}  

@@ -338,12 +338,12 @@
                         </ul>
                         <div class="sort">
                             <p>                                
-                                <input type="radio" id="y_pkg11" name="y_pkg" value="203637"/> 
-                                <label for="y_pkg11"> 행정직 PASS</label>
+                                <input type="radio" id="y_pkg12" name="y_pkg" value="203637"/> 
+                                <label for="y_pkg12"> 행정직 PASS</label>
                             </p>
                             <p>               
-                                <input type="radio" id="y_pkg12" name="y_pkg" value="203638"/>
-                                <label for="y_pkg12"> 세무직 PASS</label>
+                                <input type="radio" id="y_pkg13" name="y_pkg" value="203638"/>
+                                <label for="y_pkg13"> 세무직 PASS</label>
                             </p>
                             <p>
                                 <label for=""> &nbsp;</label>

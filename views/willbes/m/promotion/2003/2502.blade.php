@@ -246,12 +246,12 @@
                         </ul>
                         <div class="sort">
                             <p>                                
-                                <input type="radio" id="y_pkg7" name="y_pkg" value="203637"/> 
-                                <label for="y_pkg7"> 행정직 PASS</label>
+                                <input type="radio" id="y_pkg9" name="y_pkg" value="203637"/> 
+                                <label for="y_pkg9"> 행정직 PASS</label>
                             </p>
                             <p>               
-                                <input type="radio" id="y_pkg8" name="y_pkg" value="203638"/>
-                                <label for="y_pkg8"> 세무직 PASS</label>
+                                <input type="radio" id="y_pkg10" name="y_pkg" value="203638"/>
+                                <label for="y_pkg10"> 세무직 PASS</label>
                             </p>
                         </div>                        
                     </div>

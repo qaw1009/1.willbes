@@ -41,7 +41,6 @@
                                 <li><a href="#none" class="favor-cate-each" data-key="2001_3006" data-url="{{ front_app_url('/home/index/cate/3006', 'police') }}">경찰승진</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2001_3007" data-url="{{ front_app_url('/home/index/cate/3007', 'police') }}">해양경찰</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2001_3008" data-url="{{ front_app_url('/home/index/cate/3008', 'police') }}">해양경찰경채</a></li>
-                                <li><a href="#none" class="favor-cate-each" data-key="2008_3100" data-url="{{ front_app_url('/home/index/cate/3100', 'spo') }}">한림법학원 경찰간부</a></li>
                             </ul>
                         </div>
                         <div>
@@ -175,7 +174,6 @@
                                 <a href="{{ front_app_url('/home/index/cate/3006', 'police') }}" target="_blank">경찰승진</a>
                                 <a href="{{ front_app_url('/home/index/cate/3007', 'police') }}" target="_blank">해양경찰</a>
                                 <a href="{{ front_app_url('/home/index/cate/3008', 'police') }}" target="_blank">해양경찰경채</a>
-                                <a href="{{ front_app_url('/home/index/cate/3100', 'spo') }}" target="_blank">한림법학원 경찰간부</a>
                             </td>
                         </tr>
                         <tr>
@@ -330,22 +328,18 @@
                             <a href="{{ front_app_url('/campus/show/code/605010', 'police', true) }}" target="_blank">경기 광주(기숙형)</a>
                         </li>
                         <li>
-                            <strong>경찰간부</strong>
-                            <a href="{{ front_app_url('/home/index/cate/3100', 'spo') }}" target="_blank">신림(한림법학원)</a>
-                        </li>
-                        <li>
                             <strong>교원임용</strong>
                             <a href="{{ front_app_url('/home/index', 'ssam') }}" target="_blank">노량진</a>
-                        </li>
-                        <li>
-                            <strong>고등고시</strong>
-                            <a href="{{ front_app_url('/home/index/cate/3094', 'gosi') }}" target="_blank">신림(한림법학원)</a>
                         </li>
                         <li>
                             <strong>전문자격</strong>
                             <a href="{{ front_app_url('/home/index/cate/309002', 'job') }}" target="_blank">감평/노무-신림(한림법학원)</a><span>|</span>
                             <a href="http://www.namucpa.com" target="_blank">CPA/CTA(나무경영아카데미)</a><span>|</span>
                             <a href="{{ front_app_url('/home/index/cate/309004', 'job') }}" target="_blank">변리사-강남(한림법학원)</a>
+                        </li>
+                        <li>
+                            <strong>고등고시</strong>
+                            <a href="{{ front_app_url('/home/index/cate/3094', 'gosi') }}" target="_blank">신림(한림법학원)</a>
                         </li>
                     </ul>
                 </div>

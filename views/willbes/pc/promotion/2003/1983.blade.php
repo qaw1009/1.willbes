@@ -50,13 +50,13 @@
         .wb_cts06 .passbuy a {display:block; width:400px; margin:0 auto; background:#1c2127; color:#fff; font-size:30px; border-radius:50px; padding:20px 0; font-weight:bold}  
         .wb_cts06 .passbuy a:hover {background:#b47607; color:#fff;}
 
-        .lecWrap {display:flex; width:1000px; margin:auto; line-height:1.5; font-size:14px}
-        .lecWrap .pass {width:calc(33.3333% - 10px); margin-bottom:10px; margin-right:10px}
+        .lecWrap {display:flex; width:1120px; margin:auto; line-height:1.5; font-size:14px}
+        .lecWrap .pass {width:calc(25% - 10px); margin-bottom:10px; margin-right:10px}
         .lecWrap .pass:last-child {margin-right:0}
         .lecWrap .pass div {font-size:22px}
-        .lecWrap .pass div:nth-child(1) {font-size:22px; font-weight:bold; margin-bottom:20px}
+        .lecWrap .pass div:nth-child(1) {font-size:20px; font-weight:bold; margin-bottom:20px}
         .lecWrap .pass div:nth-child(2) {font-size:18px; font-weight:600;}
-        .lecWrap .pass div:nth-child(3) {font-size:28px; color:#b47607}
+        .lecWrap .pass div:nth-child(3) {font-size:24px; color:#b47607}
         .lecWrap .pass div strong {font-size:40px;}
         .lecWrap .pass div span {box-shadow:inset 0 -15px 0 #fbeacb; color:#b47607}
         .lecWrap .pass ul {margin-top:30px}
@@ -225,6 +225,21 @@
                                 <li><span>23년 4월 국가직까지 수강</span></li>
                                 <li><span>최종합격시 100% 환급</span></li>
                                 <li><span>교재포인트 3만점 제공</span></li>
+                                <li>온라인모의고사 무료<br>(전국모의고사 시행시 제공)</li>
+                                <li>배속제한 없는 무제한수강</li>
+                            </ul>
+                        </label>
+                    </div>
+
+                    <div class="pass">
+                        <input type="radio" name="y_pkg" id="pass04" value="203638">
+                        <label for="pass04">
+                            <div class="NSK-Black">2023대비 문제풀이 PASS</div>
+                            <div><span>12월 한정 할인</span></div>
+                            <div>39만원 👉 <strong class="NSK-Black">29</strong>만원</div>
+                            <ul>                            
+                                <li><span>23년 6월까지 수강</span></li>
+                                <li><span>최종합격시 100% 환급</span></li>
                                 <li>온라인모의고사 무료<br>(전국모의고사 시행시 제공)</li>
                                 <li>배속제한 없는 무제한수강</li>
                             </ul>

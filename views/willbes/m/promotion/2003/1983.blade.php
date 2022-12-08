@@ -22,7 +22,7 @@
     .event05 .ctTilte strong {color:#b47607}
 
     .lecWrap {display:flex; flex-wrap: wrap; justify-content: center; line-height:1.5; font-size:1.5vh; width:100%}
-    .lecWrap .pass {/*margin:0 10px 10px; flex: 1 1 100%;*/ width:33%; margin:0 auto 10px; position: relative; letter-spacing:-1px}
+    .lecWrap .pass {/*margin:0 10px 10px; flex: 1 1 100%;*/ width:calc(50% - 10px); margin:0 auto 10px; position: relative; letter-spacing:-1px}
     .lecWrap .pass div {font-size:2vh}
     .lecWrap .pass div:nth-child(1) {font-weight:600;}
     .lecWrap .pass div:nth-child(2) {font-size:1.8vh; font-weight:600;}
@@ -79,14 +79,18 @@
     @@media only screen and (min-width: 375px) and (max-width: 640px) {
         .passWrap {display:block;}
         .passLec {width:95%; margin:10px auto}
-        .lecWrap .pass{width:95%; margin:0 auto 10px}  
+        .lecWrap .pass{width:95%; margin:0 auto 10px; }  
+        .lecWrap .pass ul,
+        .lecWrap .pass input:checked + label ul {display:flex; flex-wrap: wrap;}
+        .lecWrap .pass li {width:calc(50% - 20px);}
+        .lecWrap .pass input:checked + label ul li {width:calc(50% - 20px);}
     }
     
     /* 태블릿 가로, PC */
     @@media only screen and (min-width: 641px) {
         /*.lecWrap .pass {margin:0 5px 10px; flex: 1 1 40%;}*/
         .lecWrap .pass div:nth-child(2) { margin-bottom:20px}
-        .lecWrap .pass ul {display:block}
+        .lecWrap .pass ul {display:block}     
         .check br {display:none}
     }
 
@@ -169,6 +173,21 @@
                                 <li><span>23년 4월 지방직까지 수강</span></li>
                                 <li><span>최종합격시 100% 환급</span></li>
                                 <li><span>교재포인트 3만점 제공</span></li>
+                                <li>온라인모의고사 무료<br>(전국모의고사 시행시 제공)</li>
+                                <li>배속제한 없는 무제한수강</li>
+                            </ul>
+                        </label>
+                    </div>
+
+                    <div class="pass">
+                        <input type="radio" name="y_pkg" id="pass04" value="203638">
+                        <label for="pass04">
+                            <div class="NSK-Black">2023대비 문제풀이 PASS</div>
+                            <div><span>12월 한정 할인</span></div>
+                            <div>39만원 👉 <strong class="NSK-Black">29</strong>만원</div>
+                            <ul>                            
+                                <li><span>23년 6월까지 수강</span></li>
+                                <li><span>최종합격시 100% 환급</span></li>
                                 <li>온라인모의고사 무료<br>(전국모의고사 시행시 제공)</li>
                                 <li>배속제한 없는 무제한수강</li>
                             </ul>

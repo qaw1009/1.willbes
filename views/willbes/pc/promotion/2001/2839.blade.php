@@ -173,7 +173,7 @@
         </div>
 
         <!-- 타이머 -->
-        <div id="newTopDday" class="newTopDday" data-aos="fade-down"> 
+        <div id="newTopDday" class="newTopDday" data-aos="fade-up"> 
             <div id="ddaytime">
                 <ul>
                     <li>
@@ -199,64 +199,7 @@
             </div>
         </div>
 
-        {{--10월 13일 11시까지--}}
-        @if(time() < strtotime('202210131100'))
-        <div class="evtCtnsBox evt_top" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/10/2758_top.jpg" alt="올인원 경찰 패스"/>           
-		</div>
 
-        <div class="evtCtnsBox evtPass" id="pass" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2758_01.jpg" alt="구매전 안내"/>           
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/10/2758_02.jpg" alt="윌비스 경찰 PASS">
-                <div class="passLecBuy NSK-Black"> 
-                    <div>                                       
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="201561"/>                
-                        <label for="y_pkg1">23년 2차 PASS 신청하기</label>
-                    </div>
-                    <div>                    
-                        <input type="radio" id="y_pkg2" name="y_pkg" value="201560"/>
-                        <label for="y_pkg2">23년 1차 PASS 신청하기</label>
-                    </div>
-                    <div>                                       
-                        <input type="radio" id="y_pkg3" name="y_pkg" value="201561"/>                
-                        <label for="y_pkg3">23년 2차 PASS 신청하기</label>
-                    </div>
-                    <div>                    
-                        <input type="radio" id="y_pkg4" name="y_pkg" value="201560"/>
-                        <label for="y_pkg4">23년 1차 PASS 신청하기</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="check">
-                <input type="checkbox" id="is_chk1" name="is_chk" value="Y"/>
-                <label for="is_chk1">페이지 하단 윌비스 경찰PASS 이용안내를 모두 확인하였고,이에 동의합니다. </label>
-                <a href="javascript:goDesc('tab01')">이용안내확인하기 ↓</a>
-                <p>
-                    ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>
-                    ※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.<br>
-                    ※ 쿠폰은 PASS 결제 후 [내 강의실>결제관리>쿠폰/수강권 관리] 에서 확인 가능합니다.<br>
-                    ※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.
-                </p>
-            </div>
-
-            <div class="title02" id="transfer">
-                재수강과 환승 하실 수강생은 모두 주목
-                <div class="NSK-Black">최대 <span>35% 할인</span> 받고 구매하세요.</div>
-            </div>
-
-            <div class="wrap">
-                <a href="https://www.willbes.net/classroom/qna/index" target="_blank" title="재수강 쿠폰받기"><img src="https://static.willbes.net/public/images/promotion/2022/07/2718_03_01.png"></a>
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기"><img src="https://static.willbes.net/public/images/promotion/2022/07/2718_03_02.png"></a>
-            </div>
-
-            <div class="totalPrice NSK-Black">
-                <a href="javascript:void(0);" onclick="termsCheck('is_chk1', 'pass');">패스상품 신청하기 ></a>
-            </div>  
-        </div> 
-        @else
-        {{--10월 13일 11시이후--}}  
         <div class="evtCtnsBox evt_top" data-aos="fade-up">    
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_top.jpg" alt="올인원 경찰 패스"/>           
 		</div>
@@ -291,7 +234,7 @@
 
             <div class="check">
                 <input type="checkbox" id="is_chk1" name="is_chk" value="Y"/>
-                <label for="is_chk1">페이지 하단 윌비스 경찰PASS 이용안내를 모두 확인하였고,이에 동의합니다. </label>
+                <label for="is_chk1">페이지 하단 이용안내를 모두 확인하였고,이에 동의합니다. </label>
                 <a href="javascript:goDesc('tab01')">이용안내확인하기 ↓</a>
                 <p>
                     ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>
@@ -314,8 +257,8 @@
             <div class="totalPrice NSK-Black">
                 <a href="javascript:void(0);" onclick="termsCheck('is_chk1', 'pass');">패스상품 신청하기 ></a>
             </div>  
-        </div>   
-        @endif  
+        </div>  
+ 
          
         <div class="evtCtnsBox evt_04" data-aos="fade-up">    
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_04.jpg" alt="커리큘럼"/>            
@@ -519,8 +462,8 @@
                                 <li>환급 시 상품 결제 금액에서 지급된 혜택만큼 차감 후 환급됩니다. (제세공과금 22% 제외)<br>                                  
                                     ※ 지급된 혜택(포인트 등)을 사용하지 않았어도 지급된 만큼 차감 후 환급금 책정
                                 </li>
-                                <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 호텔숙박권 지급 대상이 됩니다.<br>
-                                    ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채
+                                <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 환급금 지급 대상이 됩니다.<br>
+                                ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채
                                 </li>    
                                 <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. <span class="tx-red">(23년 1차,2차 최종합격)</span></li>
                                 <li>패스 수강 기간 내에 합격예측 서비스 1회 이상 참여 해주셔야 합니다.<br>
@@ -529,7 +472,7 @@
                                 <li>패스 수강기간 내에 모든 전국 모의고사 및 빅매치 모의고사를 모두 응시하여야 합니다.<br>
                                     (온/오프 무관하며, 추후 응시내역 파일첨부 제출해 주셔야 합니다.)
                                 </li>    
-                                <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 호텔 숙박권 지급이 가능합니다.<br>
+                                <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 환급가능합니다.<br>
                                     - 제출 서류 (모든 제출 서류는 반드시 윌비스 경찰 아이디 수강생 본인 명의이여야 합니다.)<br>
                                     ① 응시표 사본 : 응시번호 기재 필수, 응시원서/응시접수증/응시표출력 전체화면 등 대체 가능<br>
                                     ② 최종 합격증명서 : 최종 합격 확인 증명 가능한 관련 사이트 전체 화면 캡쳐본 등 대체 가능<br>
@@ -670,8 +613,8 @@
                                 <li>환급 시 상품 결제 금액에서 지급된 혜택만큼 차감 후 환급됩니다. (제세공과금 22% 제외)<br>                                  
                                     ※ 지급된 혜택(포인트 등)을 사용하지 않았어도 지급된 만큼 차감 후 환급금 책정
                                 </li>
-                                <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 호텔숙박권 지급 대상이 됩니다.<br>
-                                    ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채
+                                <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 환급금 지급 대상이 됩니다.<br>
+                                ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채
                                 </li>    
                                 <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. <span class="tx-red">(23년 1차,2차 최종합격)</span></li>
                                 <li>패스 수강 기간 내에 합격예측 서비스 1회 이상 참여 해주셔야 합니다.<br>
@@ -680,7 +623,7 @@
                                 <li>패스 수강기간 내에 모든 전국 모의고사 및 빅매치 모의고사를 모두 응시하여야 합니다.<br>
                                     (온/오프 무관하며, 추후 응시내역 파일첨부 제출해 주셔야 합니다.)
                                 </li>    
-                                <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 호텔 숙박권 지급이 가능합니다.<br>
+                                <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 환급가능합니다.<br>
                                     - 제출 서류 (모든 제출 서류는 반드시 윌비스 경찰 아이디 수강생 본인 명의이여야 합니다.)<br>
                                     ① 응시표 사본 : 응시번호 기재 필수, 응시원서/응시접수증/응시표출력 전체화면 등 대체 가능<br>
                                     ② 최종 합격증명서 : 최종 합격 확인 증명 가능한 관련 사이트 전체 화면 캡쳐본 등 대체 가능<br>
@@ -803,17 +746,17 @@
                                 <li>환급 시 상품 결제 금액에서 지급된 혜택만큼 차감 후 환급됩니다. (제세공과금 22% 제외)<br>                                  
                                     ※ 지급된 혜택(포인트 등)을 사용하지 않았어도 지급된 만큼 차감 후 환급금 책정
                                 </li>
-                                <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 호텔숙박권 지급 대상이 됩니다.<br>
-                                    ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채
+                                <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 환급금 지급 대상이 됩니다.<br>
+                                ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채
                                 </li>    
-                                <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. <span class="tx-red">(23년 1차 최종합격)</span></li>
+                                <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. <span class="tx-red">(23년 1차,2차 최종합격)</span></li>
                                 <li>패스 수강 기간 내에 합격예측 서비스 1회 이상 참여 해주셔야 합니다.<br>
                                     (해당 서비스는 시즌성 이벤트로 일정 기간이 지나면 확인 불가하니, 참여 후 캡쳐해서 추후 증빙자료로 제출하셔야 합니다.)
                                 </li>    
                                 <li>패스 수강기간 내에 모든 전국 모의고사 및 빅매치 모의고사를 모두 응시하여야 합니다.<br>
                                     (온/오프 무관하며, 추후 응시내역 파일첨부 제출해 주셔야 합니다.)
                                 </li>    
-                                <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 호텔 숙박권 지급이 가능합니다.<br>
+                                <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 환급가능합니다.<br>
                                     - 제출 서류 (모든 제출 서류는 반드시 윌비스 경찰 아이디 수강생 본인 명의이여야 합니다.)<br>
                                     ① 응시표 사본 : 응시번호 기재 필수, 응시원서/응시접수증/응시표출력 전체화면 등 대체 가능<br>
                                     ② 최종 합격증명서 : 최종 합격 확인 증명 가능한 관련 사이트 전체 화면 캡쳐본 등 대체 가능<br>

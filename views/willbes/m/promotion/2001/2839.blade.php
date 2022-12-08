@@ -56,11 +56,11 @@
     .passgo a {display:block; border-radius:50px; color:#fff; background:#000; font-size:22px}
 
     /* 이용안내 */
-    .content_guide_wrap{background:#f3f3f3; padding:100px 20px}
-    .content_guide_wrap .guide_tit{text-align:left; font-size:26px; margin-bottom:30px}
+    .content_guide_wrap{background:#f3f3f3; padding:100px 20px; font-size:1.4vh}
+    .content_guide_wrap .guide_tit{text-align:left; font-size:2.6vh; margin-bottom:30px}
     .content_guide_wrap .tabs {display:flex; justify-content: space-around;} 
     .content_guide_wrap .tabs li {width:25%;}
-    .content_guide_wrap .tabs li a {display:block; text-align:center; padding:15px 0; font-size:16px; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
+    .content_guide_wrap .tabs li a {display:block; text-align:center; padding:15px 0; font-size:1.6vh; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
     .content_guide_wrap .tabs li a:hover,
     .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
     .content_guide_wrap .tabs:after {content:""; display:block; clear:both}
@@ -68,7 +68,7 @@
     .content_guide_box dl{word-break:keep-all; padding:10px}
     .content_guide_box dt{margin-bottom:10px}
     .content_guide_box dt h3{color:#fff; background:#333; display:inline-block; padding:3px 7px; font-weight:bold; margin-right:10px; font-size:120%}
-    .content_guide_box dd{color:#777; margin:0 0 20px 5px; line-height:17px}
+    .content_guide_box dd{color:#777; margin:0 0 20px 5px; line-height:1.4}
     .content_guide_box dd strong {color:#555}
     .content_guide_box dd li {margin-bottom:3px; list-style:decimal; margin-left:20px}
     .content_guide_box dd:after {content:""; display:block; clear:both}
@@ -87,8 +87,7 @@
         .tabContaier .tabContents div {font-size:22px;}
         .tabContaier .tabContents div a {font-size:16px;}
 
-        .content_guide_wrap .guide_tit{font-size:24px;}
-        .content_guide_wrap .tabs li a {font-size:15px !important; letter-spacing:-1px}
+        .content_guide_wrap .tabs li a {letter-spacing:-1px}
 
     }
 
@@ -106,8 +105,8 @@
         .tabContaier .tabContents div {font-size:20px;}
         .tabContaier .tabContents div a {font-size:14px;}
 
-        .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
-        .content_guide_wrap .tabs li a {font-size:12px !important; letter-spacing:-1px}
+        .content_guide_wrap .guide_tit{margin-bottom:30px}
+        .content_guide_wrap .tabs li a {letter-spacing:-1px}
 
     }
 
@@ -408,8 +407,8 @@
                             <li>환급 시 상품 결제 금액에서 지급된 혜택만큼 차감 후 환급됩니다. (제세공과금 22% 제외)<br>                                  
                                 ※ 지급된 혜택(포인트 등)을 사용하지 않았어도 지급된 만큼 차감 후 환급금 책정
                             </li>
-                            <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 호텔숙박권 지급 대상이 됩니다.<br>
-                                ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채
+                            <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 환급금 지급 대상이 됩니다.<br>
+                            ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채
                             </li>    
                             <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. <span class="tx-red">(23년 1차,2차 최종합격)</span></li>
                             <li>패스 수강 기간 내에 합격예측 서비스 1회 이상 참여 해주셔야 합니다.<br>
@@ -418,7 +417,7 @@
                             <li>패스 수강기간 내에 모든 전국 모의고사 및 빅매치 모의고사를 모두 응시하여야 합니다.<br>
                                 (온/오프 무관하며, 추후 응시내역 파일첨부 제출해 주셔야 합니다.)
                             </li>    
-                            <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 호텔 숙박권 지급이 가능합니다.<br>
+                            <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 환급가능합니다.<br>
                                 - 제출 서류 (모든 제출 서류는 반드시 윌비스 경찰 아이디 수강생 본인 명의이여야 합니다.)<br>
                                 ① 응시표 사본 : 응시번호 기재 필수, 응시원서/응시접수증/응시표출력 전체화면 등 대체 가능<br>
                                 ② 최종 합격증명서 : 최종 합격 확인 증명 가능한 관련 사이트 전체 화면 캡쳐본 등 대체 가능<br>
@@ -559,8 +558,8 @@
                             <li>환급 시 상품 결제 금액에서 지급된 혜택만큼 차감 후 환급됩니다. (제세공과금 22% 제외)<br>                                  
                                 ※ 지급된 혜택(포인트 등)을 사용하지 않았어도 지급된 만큼 차감 후 환급금 책정
                             </li>
-                            <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 호텔숙박권 지급 대상이 됩니다.<br>
-                                ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채
+                            <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 환급금 지급 대상이 됩니다.<br>
+                            ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채
                             </li>    
                             <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. <span class="tx-red">(23년 1차,2차 최종합격)</span></li>
                             <li>패스 수강 기간 내에 합격예측 서비스 1회 이상 참여 해주셔야 합니다.<br>
@@ -569,7 +568,7 @@
                             <li>패스 수강기간 내에 모든 전국 모의고사 및 빅매치 모의고사를 모두 응시하여야 합니다.<br>
                                 (온/오프 무관하며, 추후 응시내역 파일첨부 제출해 주셔야 합니다.)
                             </li>    
-                            <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 호텔 숙박권 지급이 가능합니다.<br>
+                            <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 환급가능합니다.<br>
                                 - 제출 서류 (모든 제출 서류는 반드시 윌비스 경찰 아이디 수강생 본인 명의이여야 합니다.)<br>
                                 ① 응시표 사본 : 응시번호 기재 필수, 응시원서/응시접수증/응시표출력 전체화면 등 대체 가능<br>
                                 ② 최종 합격증명서 : 최종 합격 확인 증명 가능한 관련 사이트 전체 화면 캡쳐본 등 대체 가능<br>
@@ -692,17 +691,17 @@
                             <li>환급 시 상품 결제 금액에서 지급된 혜택만큼 차감 후 환급됩니다. (제세공과금 22% 제외)<br>                                  
                                 ※ 지급된 혜택(포인트 등)을 사용하지 않았어도 지급된 만큼 차감 후 환급금 책정
                             </li>
-                            <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 호텔숙박권 지급 대상이 됩니다.<br>
-                                ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채
+                            <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 환급금 지급 대상이 됩니다.<br>
+                            ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채
                             </li>    
-                            <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. <span class="tx-red">(23년 1차 최종합격)</span></li>
+                            <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. <span class="tx-red">(23년 1차,2차 최종합격)</span></li>
                             <li>패스 수강 기간 내에 합격예측 서비스 1회 이상 참여 해주셔야 합니다.<br>
                                 (해당 서비스는 시즌성 이벤트로 일정 기간이 지나면 확인 불가하니, 참여 후 캡쳐해서 추후 증빙자료로 제출하셔야 합니다.)
                             </li>    
                             <li>패스 수강기간 내에 모든 전국 모의고사 및 빅매치 모의고사를 모두 응시하여야 합니다.<br>
                                 (온/오프 무관하며, 추후 응시내역 파일첨부 제출해 주셔야 합니다.)
                             </li>    
-                            <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 호텔 숙박권 지급이 가능합니다.<br>
+                            <li>합격 인증 기간 내에 최종 합격 인증 자료 및 신청 서류 제출이 완료된 회원에게만 환급가능합니다.<br>
                                 - 제출 서류 (모든 제출 서류는 반드시 윌비스 경찰 아이디 수강생 본인 명의이여야 합니다.)<br>
                                 ① 응시표 사본 : 응시번호 기재 필수, 응시원서/응시접수증/응시표출력 전체화면 등 대체 가능<br>
                                 ② 최종 합격증명서 : 최종 합격 확인 증명 가능한 관련 사이트 전체 화면 캡쳐본 등 대체 가능<br>

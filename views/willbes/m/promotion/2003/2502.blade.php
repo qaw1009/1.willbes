@@ -60,28 +60,26 @@
     .wb_cts05 .ctTilte p {font-size:3.6vh;}
     .wb_cts05 .ctTilte strong {color:#fff901}
 
-    .lecWrap {display:flex; justify-content: center; line-height:1.5; font-size:1.6vh; color:#333; padding:0 1vh}
-    .lecWrap .pass {width:calc(49% - 10px); margin-bottom:10px; margin-right:10px; display:block; border-radius:10px; background:#fff; padding:20px 40px; text-align:left; height: 100%; font-size:2.2vh; }
-    .lecWrap .pass:last-child {margin-right:0} 
+    .lecWrap {/*display:flex; justify-content: center;*/ line-height:1.5; font-size:1.6vh; color:#333; padding:0 2vh}
+    .lecWrap .pass {/*width:calc(49% - 10px);*/ margin-bottom:10px; display:block; border-radius:10px; background:#fff; padding:2vh; text-align:left; font-size:2vh;}
     .lecWrap .titleBox div:nth-child(1) {font-weight:300; color:#0065ef}
-    .lecWrap .titleBox div:nth-child(2) {margin-bottom:20px; font-size:3vh}
+    .lecWrap .titleBox div:nth-child(2) {margin-bottom:2vh; font-size:3vh}
     .lecWrap .titleBox div:nth-child(3) {font-size:2vh; font-weight:600;}
-    .lecWrap .titleBox div:nth-child(4) {font-size:2.8vh; color:#0065ef}
-    .lecWrap .titleBox div:nth-child(4) strong {font-size:4vh;}
+    .lecWrap .titleBox div:nth-child(4) {font-size:2.5vh; color:#0065ef}
+    .lecWrap .titleBox div:nth-child(4) strong {font-size:3.6vh;}
     .lecWrap .titleBox div span {box-shadow:inset 0 -14px 0 #c5ddfd; color:#0065ef}
-    .lecWrap .pass ul {margin-top:30px; font-size:1.6vh}
-    .lecWrap .pass li {list-style:disc; margin-left:20px; margin-bottom:10px; font-weight:bold}
-    .lecWrap .pass li:nth-child(1),
-    .lecWrap .pass li:nth-child(2),
-    .lecWrap .pass li:nth-child(3) {font-size:2vh;}
+    .lecWrap .pass ul {margin-top:2vh; font-size:1.8vh; display:flex; flex-wrap: wrap;}
+    .lecWrap .pass li {list-style:disc; margin-left:20px; margin-bottom:5px; font-weight:bold; width:calc(50% - 20px);}
     .lecWrap .pass li span {color:#0065ef; vertical-align:top}
+    .lecWrap .pass li.ls_none {list-style:none; }
 
-    .lecWrap .sort {width:80%; margin:3vh auto; font-size:2vh}
-    .lecWrap .sort p {position: relative;}
-    .lecWrap .pass input[type="radio"] {position: absolute; top:30%; left:10px; height:20px; width:20px; vertical-align:center /*position:absolute; top:20px; left:20px; visibility: hidden;*/}
-    .lecWrap .pass label {padding:5px 0 5px 35px; display:block; font-weight:bold; text-align:left}
+    .lecWrap .sort {width:100%; margin:2vh 0; font-size:1.8vh; text-align:left}
+    .lecWrap .sort p {position: relative; width:49%; display:inline-block}
+    .lecWrap .pass input[type="radio"] {position: absolute; top:30%; left:0; height:18px; width:18px; vertical-align:middle}
+    .lecWrap .pass label {padding:5px 0 5px 23px; display:block; font-weight:bold; text-align:left}
     .lecWrap .pass:hover {cursor: pointer;}
-    .lecWrap .pass input:checked + label {background:#0065ef; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3); color:#fff; border-radius:10px}   
+    .lecWrap .pass input:checked + label {background:#0065ef; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3); color:#fff; border-radius:10px}
+    .lecWrap .pass:last-child {border:3px solid #000}
 
     /*수강신청 체크*/
     .check {margin:3vh 1vh}
@@ -114,18 +112,17 @@
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {
         .lecWrap {display:block;}
-        .lecWrap .pass {display:block; width:calc(100%); height: auto; margin-right:0; margin:0 auto; margin-bottom:2vh}
-
+        .lecWrap .pass li {width:calc(100%);}
     }  
 
     /* 태블릿 세로 */
     @@media only screen and (min-width: 375px) and (max-width: 640px) {
-        .lecWrap {display:block;}
+        /*.lecWrap {display:block;}
         .lecWrap .pass {display:block; width:calc(100%); height: auto; margin-right:0; margin:0 auto; margin-bottom:2vh }
         .lecWrap .sort {width:100%;}
         .lecWrap .sort p {position: relative; width:49%; display:inline-block}
         .lecWrap .pass input[type="radio"] {left:0;}
-        .lecWrap .pass label {padding:5px 0 5px 25px;}
+        .lecWrap .pass label {padding:5px 0 5px 25px;}*/
     }
     
     /* 태블릿 가로, PC */
@@ -175,6 +172,7 @@
                             <li><span>~24년 6월까지 수강</span></li>
                             <li><span>최종합격시 100% 환급</span></li>
                             <li><span>교재포인트 3만점 제공</span></li>
+                            <li class="ls_none"><span></span></li>
                             <li>온라인모의고사 무료 <br>(전국모의고사 시행시 제공)</li>
                             <li>배속제한 없는 무제한수강</li>
                         </ul>
@@ -209,6 +207,7 @@
                             <li><span>23년 6월까지 수강</span></li>
                             <li><span>최종합격시 100% 환급</span></li>
                             <li><span>교재포인트 3만점 제공</span></li>
+                            <li class="ls_none"><span></span></li>
                             <li>온라인모의고사 무료 <br>(전국모의고사 시행시 제공)</li>
                             <li>배속제한 없는 무제한수강</li>
                         </ul>
@@ -228,6 +227,31 @@
                             <p>                               
                                 <input type="radio" id="y_pkg8" name="y_pkg" value="201803"/>
                                 <label for="y_pkg8"> 사회복지직 PASS</label>
+                            </p>
+                        </div>                        
+                    </div>
+
+                    <div class="pass">
+                        <div class="titleBox">
+                            <div>2023대비</div>
+                            <div class="NSK-Black">9급 문제풀이 PASS</div>
+                            <div><span>12월 한정 할인</span></div>
+                            <div>39만원 👉 <strong class="NSK-Black">29</strong>만원</div>
+                        </div>
+                        <ul>
+                            <li><span>23년 6월까지 수강</span></li>
+                            <li><span>최종합격시 100% 환급</span></li>
+                            <li>온라인모의고사 무료 <br>(전국모의고사 시행시 제공)</li>
+                            <li>배속제한 없는 무제한수강</li>
+                        </ul>
+                        <div class="sort">
+                            <p>                                
+                                <input type="radio" id="y_pkg7" name="y_pkg" value="203637"/> 
+                                <label for="y_pkg7"> 행정직 PASS</label>
+                            </p>
+                            <p>               
+                                <input type="radio" id="y_pkg8" name="y_pkg" value="203638"/>
+                                <label for="y_pkg8"> 세무직 PASS</label>
                             </p>
                         </div>                        
                     </div>

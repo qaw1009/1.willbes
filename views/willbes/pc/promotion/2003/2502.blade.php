@@ -70,29 +70,42 @@
         .evtCtnsBox .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}*/
         input[type="radio"] {width:20px;height:20px;}
 
-        .lecWrap {display:flex; width:1000px; margin:auto; line-height:1.5; font-size:14px; color:#333}
-        .lecWrap .pass {width:calc(33.33333% - 10px); margin-bottom:10px; margin-right:10px; display:block; border-radius:10px; background:#fff; padding:20px 30px 20px 40px; text-align:left; box-sizing: border-box; height: 100%; font-size:22px}
+        .lecWrap {display:flex; width:1120px; margin:auto; line-height:1.5; font-size:14px; color:#333}
+        .lecWrap .pass {width:calc(25% - 10px); margin-bottom:10px; margin-right:10px; display:block; border-radius:10px; background:#fff; padding:20px 20px 20px 30px; text-align:left; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;
+ height: 100%; min-height:690px; font-size:20px; position: relative;}
         .lecWrap .pass:last-child {margin-right:0} 
         .lecWrap .titleBox div:nth-child(1) {font-weight:300; color:#0065ef}
-        .lecWrap .titleBox div:nth-child(2) {margin-bottom:20px; font-size:30px}
-        .lecWrap .titleBox div:nth-child(3) {font-size:18px; font-weight:600;}
-        .lecWrap .titleBox div:nth-child(4) {font-size:28px; color:#0065ef}
+        .lecWrap .titleBox div:nth-child(2) {margin-bottom:20px; font-size:26px}
+        .lecWrap .titleBox div:nth-child(3) {font-size:17px; font-weight:600;}
+        .lecWrap .titleBox div:nth-child(4) {font-size:24px; color:#0065ef}
         .lecWrap .titleBox div:nth-child(4) strong {font-size:40px;}
         .lecWrap .titleBox div span {box-shadow:inset 0 -14px 0 #c5ddfd; color:#0065ef}
         .lecWrap .pass ul {margin-top:30px; font-size:16px}
-        .lecWrap .pass li {list-style:disc; margin-left:20px; margin-bottom:10px; font-weight:bold}
+        .lecWrap .pass li {list-style:disc; margin-left:10px; margin-bottom:10px; font-weight:bold}
+        .lecWrap .pass li.ls_none {list-style:none; }
         .lecWrap .pass li:nth-child(1),
         .lecWrap .pass li:nth-child(2),
-        .lecWrap .pass li:nth-child(3) {font-size:20px;}
+        .lecWrap .pass li:nth-child(3) {font-size:18px;}
         .lecWrap .pass li span {color:#0065ef; vertical-align:top}
+        .lecWrap .pass:last-child {border:3px solid #000}
 
-        .lecWrap .sort {width:80%; margin:50px auto 30px;}
+        .lecWrap .sort {width:90%; margin:50px auto 30px;}
         .lecWrap .sort p {position: relative;}
         .lecWrap .pass input[type="radio"] {position: absolute; top:30%; left:10px; height:20px; width:20px; vertical-align:center /*position:absolute; top:20px; left:20px; visibility: hidden;*/}
         .lecWrap .pass label {padding:5px 0 5px 35px; display:block; font-weight:bold}
         .lecWrap .pass:hover {cursor: pointer;}
-        .lecWrap .pass input:checked + label {background:#0065ef; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3); color:#fff; border-radius:10px}        
-
+        .lecWrap .pass input:checked + label {background:#0065ef; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3); color:#fff; border-radius:10px}     
+        .lecWrap .pass .endinfo {position: absolute; bottom:20px; width:80%; left:10%; padding:10px; text-align:center; background:#43AAF7; color:#fff; border-radius:10px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;} 
+        @@keyframes upDown{
+            from{background:#43AAF7}
+            50%{background:#4855fb}
+            to{background:#43AAF7}
+        }
+        @@-webkit-keyframes upDown{
+            from{background:#43AAF7}
+            50%{background:#4855fb}
+            to{background:#43AAF7}
+        }
 
         /*수강신청 체크*/
         .check { width:930px; margin:30px auto 50px;}
@@ -301,6 +314,39 @@
                             <p>
                                 <input type="radio" id="y_pkg11" name="y_pkg" value="190056"/>
                                 <label for="y_pkg11"> 교육행정직 PASS</label>
+                            </p>
+                            <p>
+                                <label for=""> &nbsp;</label>
+                            </p>
+                        </div>
+                        <div class="endinfo">12월 최종 마감</div>                     
+                    </div>
+
+                    <div class="pass">
+                        <div class="titleBox">
+                            <div>2023대비</div>
+                            <div class="NSK-Black">9급 문제풀이 PASS</div>
+                            <div><span>12월 한정 할인</span></div>
+                            <div>39만원 👉 <strong class="NSK-Black">29</strong>만원</div>
+                        </div>
+                        <ul>
+                            <li><span>23년 6월까지 수강</span></li>
+                            <li><span>최종합격시 100% 환급</span></li>
+                            <li class="ls_none"><span>&nbsp;</span></li>
+                            <li>온라인모의고사 무료<br>(전국모의고사 시행시 제공)</li>
+                            <li>배속제한 없는 무제한수강</li>
+                        </ul>
+                        <div class="sort">
+                            <p>                                
+                                <input type="radio" id="y_pkg11" name="y_pkg" value="203637"/> 
+                                <label for="y_pkg11"> 행정직 PASS</label>
+                            </p>
+                            <p>               
+                                <input type="radio" id="y_pkg12" name="y_pkg" value="203638"/>
+                                <label for="y_pkg12"> 세무직 PASS</label>
+                            </p>
+                            <p>
+                                <label for=""> &nbsp;</label>
                             </p>
                             <p>
                                 <label for=""> &nbsp;</label>

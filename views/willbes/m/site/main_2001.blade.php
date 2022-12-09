@@ -243,7 +243,7 @@
         <div class="groupLink">
             <a href="#" onclick="javascript:alert('2024 경찰승진PASS Coming soon');">경찰승진<img src="https://static.willbes.net/public/images/promotion/m/icon_link.png" ></a>
             <a href="{{ front_url('/promotion/index/cate/3007/code/2809') }}" target="_blank">해양경찰<img src="https://static.willbes.net/public/images/promotion/m/icon_link.png" ></a>
-            <a href="https://police.willbes.net/m/promotion/index/cate/3008/code/2437" target="_blank">해경경채<img src="https://static.willbes.net/public/images/promotion/m/icon_link.png" ></a>
+            <a href="https://police.willbes.net/m/promotion/index/cate/3008/code/2849" target="_blank">해경경채<img src="https://static.willbes.net/public/images/promotion/m/icon_link.png" ></a>
             <a href="https://police.willbes.net/m/promotion/index/cate/3001/code/2772" target="_blank">경찰간부<img src="https://static.willbes.net/public/images/promotion/m/icon_link.png" ></a>
         </div>
 

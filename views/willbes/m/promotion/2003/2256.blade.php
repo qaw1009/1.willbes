@@ -251,7 +251,7 @@
                         <label for="pass08">
                             <div>전자직 9급</div>
                             <div>전과목 T-PASS</div>                           
-                            <div><strong class="NSK-Black">70</strong>만원</div>
+                            <div><strong class="NSK-Black">99</strong>만원</div>
                             <ul>
                                 <li>2023. 7월까지 수강</li>
                                 <li>전자직 관련 강좌제공</li>

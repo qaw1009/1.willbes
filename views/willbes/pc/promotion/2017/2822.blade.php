@@ -19,7 +19,7 @@
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_top_bg.jpg) no-repeat center top; height:1202px}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_top_bg.jpg) no-repeat center top;}
         .evtTop div {position: absolute; left:50%; bottom:0; width:1110px; margin-left:-555px; z-index: 2;}
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_01_bg.jpg) no-repeat center top;}
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_02_bg.jpg) no-repeat center top;}

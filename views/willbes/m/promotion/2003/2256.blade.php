@@ -33,25 +33,27 @@
     .event05 {padding:50px 0}
 
     .lecWrap {display:flex; flex-wrap: wrap; line-height:1.5; font-size:1.5vh; width:100%}
-    .lecWrap .pass {margin:0 10px 10px; flex: 1 1 100%; position: relative;}
+    .lecWrap .pass {margin:0 10px 20px; flex: 1 1 100%; position: relative;}
     .lecWrap .pass div {font-size:2vh}
-    .lecWrap .pass div:nth-child(1) {font-size:2.2vh; font-weight:600; color:#fb6250}
+    .lecWrap .pass div:nth-child(1) {font-size:2.2vh; font-weight:600; color:#c23227}
     .lecWrap .pass div:nth-child(2) {font-size:2.2vh; font-weight:600;}
-    .lecWrap .pass div:nth-child(3) {font-size:1.4vh; font-weight:600;}
-    .lecWrap .pass div:nth-child(4) {font-size:2.2vh; color:#fb6250}
+    .lecWrap .pass div:nth-child(3) {font-size:2.2vh; font-weight:600; color:#c23227}
+    .lecWrap .pass div:nth-child(4) {font-size:2.2vh;}
     .lecWrap .pass div:nth-child(4) strong {font-size:3vh;}
-    .lecWrap .pass div span {box-shadow:inset 0 -10px 0 #fde1df; color:#fb6250}
+    .lecWrap .pass div span {box-shadow:inset 0 -10px 0 #fde1df; color:#c23227}
     .lecWrap .pass ul {margin-top:30px; display:none}
-    .lecWrap .pass li {list-style:disc; margin-left:20px; margin-bottom:10px; font-weight:bold}
+    .lecWrap .pass li {list-style:disc; margin-left:20px; margin-bottom:5px; font-weight:bold}
     .lecWrap .pass li span {font-weight:normal; color:#666; vertical-align:top}
 
     .lecWrap .pass input[type="radio"] {height:26px; width:26px; position:absolute; top:20px; left:20px; visibility: hidden;}
     .lecWrap .pass label{display:block; border:1px solid #d7d7d7; padding:20px; text-align:left; box-sizing: border-box; height: 100%; }
     .lecWrap .pass label:hover {cursor: pointer;}
-    .lecWrap .pass input:checked + label {border:1px solid #fb6250; background:#fb6250; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3)}
+    .lecWrap .pass input:checked + label {border:1px solid #c23227; background:#c23227; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3)}
     .lecWrap .pass input:checked + label div,
     .lecWrap .pass input:checked + label span{color:#fff; box-shadow:none}
     .lecWrap .pass input:checked + label ul {margin-top:30px; display:block}
+
+    .lecWrap .pass p {position: absolute; width:70%; left:50%; top:-15px; margin-left:-35%; color:#fff; background:#c23227; padding:5px; border-radius:20px; font-size:1.6vh; z-index: 10;}
 
     .check {margin:50px auto;}
     .check label {cursor:pointer; font-size:1.5vh;color:#000;font-weight:bold;}
@@ -59,7 +61,7 @@
     .check a {display:inline-block; padding:5px 10px; color:#fff; background:#2d2d2d; margin-left:10px; border-radius:4px;font-size:1.2vh;} 
 
     .event05 .passbuy a {display:block; width:80%; margin:0 auto; background:#1c2127; color:#fff; font-size:2.4vh; border-radius:40px; padding:10px 0; font-weight:bold}  
-    .event05 .passbuy a:hover {background:#fb6250; color:#fff;}
+    .event05 .passbuy a:hover {background:#c23227; color:#fff;}
 
     /* 이용안내 */
     .evtInfo {padding:50px 20px; background:#f4f4f4; color:#3a3a3a; font-size:1.6vh}
@@ -91,7 +93,7 @@
     
     /* 태블릿 가로, PC */
     @@media only screen and (min-width: 641px) {
-        .lecWrap .pass {margin:0 5px 10px; flex: 1 1 40%;}
+        .lecWrap .pass {flex: 1 1 40%;}
         .lecWrap .pass div:nth-child(2) { margin-bottom:20px}
         .lecWrap .pass:nth-child(even) {margin-right:0}
         .lecWrap .pass ul {display:block}
@@ -135,11 +137,14 @@
                         <div>전과목 T-PASS</div>                       
                         <div><strong class="NSK-Black">120</strong>만원</div>
                         <ul>
-                            <li>2023. 7월까지 통신직 9급 전 강좌 제공 <span>(9급 국가직/지방직/군무원 대비 가능)</span></li>
+                            <li>2023. 7월까지 수강</li>
+                            <li>통신직 9급 전 강좌제공</li>
+                            <li>국가직/지방직/군무원 대비</li> 
                             <li>PC+모바일 총 2대</li>
-                            <li>3배수 제한</li>                          
+                            <li>3배수 제한</li>                               
                         </ul>
                     </label>
+                    <p>12월 최종 마감</p>
                 </div>
 
                 <div class="pass">
@@ -149,11 +154,14 @@
                         <div>전과목 T-PASS</div>                      
                         <div><strong class="NSK-Black">76</strong>만원</div>
                         <ul>
-                            <li>2023. 6월까지 전기직 9급 전 강좌 제공 <span>(9급 국가직/지방직 대비 가능)</span></li>
+                            <li>2023. 6월까지 수강</li>
+                            <li>전기직 9급 전 강좌제공</li>
+                            <li>국가직/지방직 대비</li> 
                             <li>PC+모바일 총 2대</li>
-                            <li>3배수 제한</li>                           
+                            <li>3배수 제한</li>                               
                         </ul>
                     </label>
+                    <p>12월 최종 마감</p>
                 </div>
 
                 <div class="pass">
@@ -163,11 +171,14 @@
                         <div>전과목 T-PASS</div>                      
                         <div><strong class="NSK-Black">100</strong>만원</div>
                         <ul>
-                            <li>2023. 10월까지 전기직 9·7급 전 강좌 제공 <span>(9급 국가직/지방직 대비 가능)</span></li>
+                            <li>2023. 10월까지 수강</li>
+                            <li>전기직 7/9급 전 강좌제공</li>
+                            <li>7/9급 국가직/지방직 대비</li> 
                             <li>PC+모바일 총 2대</li>
-                            <li>3배수 제한</li>                          
+                            <li>3배수 제한</li>                               
                         </ul>
                     </label>
+                    <p>12월 최종 마감</p>
                 </div>
 
                 <div class="pass">
@@ -177,18 +188,86 @@
                         <div>전과목 T-PASS</div>                       
                         <div><strong class="NSK-Black">70</strong>만원</div>
                         <ul>
-                            <li>2023. 7월까지 전자직 9급 전 강좌 제공 <span>(9급 전자직 대비 가능)</span></li>
+                            <li>2023. 7월까지 수강</li>
+                            <li>전자직 관련 강좌제공</li>
+                            <li>9급 군무원 대비</li> 
                             <li>PC+모바일 총 2대</li>
-                            <li>3배수 제한</li>                           
+                            <li>3배수 제한</li>                               
+                        </ul>
+                    </label>
+                    <p>12월 최종 마감</p>
+                </div>
+
+                <div class="pass">
+                    <input type="radio" name="y_pkg" id="pass05" value="203640">
+                    <label for="pass05">
+                        <div>방송통신 9급</div>
+                        <div>문제풀이 T-PASS</div>                           
+                        <div><strong class="NSK-Black">69</strong>만원</div>
+                        <ul>
+                            <li>2023. 4월 국가직까지 수강</li>
+                            <li>9급 문풀 강좌제공</li>
+                            <li>국가직 대비</li> 
+                            <li>PC+모바일 총 2대</li>
+                            <li>3배수 제한</li>                               
                         </ul>
                     </label>
                 </div>
+
+                <div class="pass">
+                        <input type="radio" name="y_pkg" id="pass06" value="203646">
+                        <label for="pass06">
+                            <div>통신직 9급</div>
+                            <div>풀제풀이 T-PASS</div>                           
+                            <div><strong class="NSK-Black">79</strong>만원</div>
+                            <ul>
+                                <li>2023. 6월까지 수강</li>
+                                <li>9급 문풀 강좌제공</li>
+                                <li>지방직 대비</li> 
+                                <li>PC+모바일 총 2대</li>
+                                <li>3배수 제한</li>                               
+                            </ul>
+                        </label>
+                    </div>
+
+                    <div class="pass">
+                        <input type="radio" name="y_pkg" id="pass07" value="203639">
+                        <label for="pass07">
+                            <div>전기직 9급</div>
+                            <div>문제풀이 T-PASS</div>                           
+                            <div><strong class="NSK-Black">59</strong>만원</div>
+                            <ul>
+                                <li>2023. 6월까지 수강</li>
+                                <li>9급 문풀 강좌제공</li>
+                                <li>국가직/지방직 대비</li> 
+                                <li>PC+모바일 총 2대</li>
+                                <li>3배수 제한</li>                               
+                            </ul>
+                        </label>
+                    </div>
+
+                    <div class="pass">
+                        <input type="radio" name="y_pkg" id="pass08" value="203650">
+                        <label for="pass08">
+                            <div>전자직 9급</div>
+                            <div>전과목 T-PASS</div>                           
+                            <div><strong class="NSK-Black">70</strong>만원</div>
+                            <ul>
+                                <li>2023. 7월까지 수강</li>
+                                <li>전자직 관련 강좌제공</li>
+                                <li>9급 군무원 대비</li> 
+                                <li>PC+모바일 총 2대</li>
+                                <li>3배수 제한</li>                               
+                            </ul>
+                        </label>
+                    </div>
+
             </div>
 
             <div class="check">
                 <label>
                     <input name="ischk"  type="checkbox" value="Y" />
-                    페이지 하단 T-PASS 이용안내를 모두 확인하였고, <br>이에 동의합니다.
+                    페이지 하단 이용안내를 모두 확인하였고, <br>이에 동의합니다.
                 </label>
                 <a href="#careful">이용안내확인 ↓</a>
             </div>

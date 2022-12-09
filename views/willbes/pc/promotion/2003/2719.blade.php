@@ -52,9 +52,10 @@
         .wb_cts05 {padding-bottom:150px; background:#fff; width:1120px; margin:0 auto}
         .wb_cts05 .title {font-size:50px; line-height:1.2; margin-bottom:40px; color:#373737}
 
-        .lecWrap {display:flex; width:1120px; margin:auto; line-height:1.5; font-size:14px}
-        .lecWrap .pass {width:calc(50% - 10px); margin-bottom:10px; margin-right:10px;}
-        .lecWrap .pass:last-child {width:calc(50%); margin-right:0}
+        .lecWrap {display:flex; flex-wrap: wrap; width:1120px; margin:auto; line-height:1.5; font-size:14px}
+        .lecWrap .pass {/*width:calc(33.3333% - 10px);*/ margin-bottom:10px; margin-right:10px; flex: 1 1 25%;}
+        .lecWrap .pass:nth-child(3),
+        .lecWrap .pass:last-child {margin-right:0}
         .lecWrap .pass div {font-size:22px}
         .lecWrap .pass div:nth-child(1) {font-size:22px; font-weight:600; color:#fb6250}
         .lecWrap .pass div:nth-child(2) {font-size:22px; font-weight:600; margin-bottom:20px}
@@ -203,54 +204,39 @@
                     <p class="NSK-Black">장사원 유기농업기능사 [필기]</p>
                 </div>
                 <div class="price">
-                    <strong>120,000</strong>원
-                    <a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/189289" target="_blank">지금 바로 신청하기</a>
+                    <strong>150,000</strong>원
+                    <a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/203152" target="_blank">지금 바로 신청하기</a>
                 </div>
             </div>
 
             <div>
                 <div class="lecWrap">
                     <div class="pass" data-aos="fade-right">
-                        <input type="radio" name="y_pkg" id="pass01" value="199734">
-                        <label for="pass01">
-                            <div>장사원 농업직 9급</div>
-                            <div>[국가직 대비] T-PASS</div>
-                            <div><strong>94</strong>만원</div>
-                            <ul>
-                                <li>2023.4월까지 농업직 9급 전 강좌 제공 (국가직 대비 과정)</li>
-                                <li>PC+모바일 총 2대</li>
-                                <li>3배수 제한</li>
-                                <li><span>인증 EVENT 참여 시 3만원 추가 할인</span></li>
-                            </ul>
-                        </label>
-                    </div>
-
-                    <div class="pass" data-aos="fade-left">
                         <input type="radio" name="y_pkg" id="pass02" value="199733">
                         <label for="pass02">
-                            <div>장사원 농업직 9급</div>
-                            <div>[지방직 대비] T-PASS</div>
+                            <div>농업직 9급</div>
+                            <div>[국가직/지방직 대비] T-PASS</div>
                             <div><strong>99</strong>만원</div>
                             <ul>
-                                <li>2023.6월까지 농업직 9급 전 강좌 제공 (지방직 대비 과정)</li>
+                                <li>2023. 6월까지 수강</li>
                                 <li>PC+모바일 총 2대</li>
                                 <li>3배수 제한</li>
-                                <li><span>인증 EVENT 참여 시 3만원 추가 할인</span></li>
+                                <li><span>인증시 3만원 할인</span></li>
                             </ul>
                         </label>
                     </div>
 
-                    <div class="pass" data-aos="fade-right">
+                    <div class="pass" data-aos="fade-down">
                         <input type="radio" name="y_pkg" id="pass03" value="202015">
                         <label for="pass03">
-                            <div>장사원 농촌지도사</div>
-                            <div>[경기/인천] T-PASS</div>
+                            <div>농촌지도사</div>
+                            <div>[경기/인천 등] T-PASS</div>
                             <div><strong>120</strong>만원</div>
                             <ul>
-                                <li>2023.10월까지 농촌지도사 전 강좌</li>
+                                <li>2023.10월까지 수강</li>
                                 <li>PC+모바일 총 2대</li>
                                 <li>3배수 제한</li>
-                                <li><span>인증 EVENT 참여 시 3만원 추가 할인</span></li>
+                                <li><span>인증시 3만원 할인</span></li>
                             </ul>
                         </label>
                     </div>
@@ -258,14 +244,59 @@
                     <div class="pass" data-aos="fade-left">
                         <input type="radio" name="y_pkg" id="pass04" value="202013">
                         <label for="pass04">
-                            <div>장사원 농촌지도사</div>
+                            <div>농촌지도사</div>
                             <div>[경기/인천 외] T-PASS</div>
                             <div><strong>120</strong>만원</div>
                             <ul>
-                                <li>2023.10월까지 농촌지도사 전 강좌</li>
+                                <li>2023.10월까지 수강</li>
                                 <li>PC+모바일 총 2대</li>
                                 <li>3배수 제한</li>
-                                <li><span>인증 EVENT 참여 시 3만원 추가 할인</span></li>
+                                <li><span>인증시 3만원 할인</span></li>
+                            </ul>
+                        </label>
+                    </div>
+
+                    <div class="pass" data-aos="fade-right">
+                        <input type="radio" name="y_pkg" id="pass01" value="203596">
+                        <label for="pass01">
+                            <div>농업직 9급[국가/지방직]</div>
+                            <div>문제풀이 T-PASS</div>
+                            <div><strong>69</strong>만원</div>
+                            <ul>
+                                <li>2023. 6월까지 수강</li>
+                                <li>PC+모바일 총 2대</li>
+                                <li>3배수 제한</li>
+                                <li><span>인증시 3만원 할인</span></li>
+                            </ul>
+                        </label>
+                    </div>
+
+                    <div class="pass" data-aos="fade-up">
+                        <input type="radio" name="y_pkg" id="pass05" value="202014">
+                        <label for="pass05">
+                            <div>농촌지도사 [경기/인천]</div>
+                            <div>문제풀이 T-PASS</div>
+                            <div><strong>79</strong>만원</div>
+                            <ul>
+                                <li>2023. 10월까지 수강</li>
+                                <li>PC+모바일 총 2대</li>
+                                <li>3배수 제한</li>
+                                <li><span>인증시 3만원 할인</span></li>
+                            </ul>
+                        </label>
+                    </div>
+
+                    <div class="pass" data-aos="fade-left">
+                        <input type="radio" name="y_pkg" id="pass06" value="203592">
+                        <label for="pass06">
+                            <div>농촌지도사 [경기/인천 외]</div>
+                            <div>문제풀이 T-PASS</div>
+                            <div><strong>79</strong>만원</div>
+                            <ul>
+                                <li>2023. 10월까지 수강</li>
+                                <li>PC+모바일 총 2대</li>
+                                <li>3배수 제한</li>
+                                <li><span>인증시 3만원 할인</span></li>
                             </ul>
                         </label>
                     </div>

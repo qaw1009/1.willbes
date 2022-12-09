@@ -91,8 +91,8 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
-            <a href="#pass"><img src="https://static.willbes.net/public/images/promotion/2022/12/2849_sky01.png" alt="합격패스"/></a> 
-            <a href="#evt07"><img src="https://static.willbes.net/public/images/promotion/2022/12/2849_sky02.png" alt="할인쿠폰"/></a>                       
+            <a href="#evt07"><img src="https://static.willbes.net/public/images/promotion/2022/12/2849_sky01.png" alt="합격쿠폰"/></a> 
+            <a href="#pass"><img src="https://static.willbes.net/public/images/promotion/2022/12/2849_sky02.png" alt="합격패스"/></a>                       
         </div>     
 
         <div class="evtCtnsBox evt_top">

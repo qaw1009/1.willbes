@@ -19,8 +19,9 @@
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_top_bg.jpg) no-repeat center top;}
-        .evt01 {background:#002643;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_top_bg.jpg) no-repeat center top; height:1202px}
+        .evtTop div {position: absolute; left:50%; bottom:0; width:1110px; margin-left:-555px; z-index: 2;}
+        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_01_bg.jpg) no-repeat center top;}
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_02_bg.jpg) no-repeat center top;}
 
         .evt03 {width:1120px; margin:0 auto; padding:100px 0; display: flex; justify-content: space-between;}
@@ -114,9 +115,8 @@
         .tabCts .buyWrap .checkWrap label {cursor: pointer}
 
         .evt04 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_04_bg.jpg) no-repeat center top;}
-        .evt05 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_05_bg.jpg) no-repeat center top;}
 
-        .evtInfo {padding:80px 0; background:#fff; color:#242424; font-size:16px}
+        .evtInfo {padding:80px 0; background:#CCC; color:#242424; font-size:16px}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
         .evtInfoBox span {vertical-align:top}
         .evtInfoBox h4 {font-size:40px; margin-bottom:20px}
@@ -126,9 +126,9 @@
         .evtInfoBox li {list-style-type: decimal;margin-left:30px; margin-bottom:10px}        
         .evtInfoBox p {margin-bottom:10px}
         .evtInfoBox p span {padding:3px 10px; background:#333; color:#fff; font-size:16px; border-radius:10px}
-        .evtInfoBox tr {border:1px solid #ccc}
+        .evtInfoBox tr {border:1px solid #FFF}
         .evtInfoBox th,
-        .evtInfoBox td {padding:5px; text-align:center; border-right:1px solid #ccc}
+        .evtInfoBox td {padding:5px; text-align:center; border-right:1px solid #FFF}
         .evtInfoBox th {background:#f4f4f4}
 
         .willbes-Layer-CurriBox {top:2300px; margin-left: -560px;}
@@ -156,31 +156,31 @@
         .ssam .willbes-Layer-youtube iframe {width:860px; height:484px}
     </style>
 
-    <div class="p_re evtContent NSK ssam" id="evtContainer">
+    <div class="evtContent NSK ssam" id="evtContainer">
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_top.jpg" alt="2022학년도 연간패키지"/>
+            <div data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/12/2822_top.png" alt="2023학년도 연간패키지"/></div>
         </div>
 
-        <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_01.jpg" alt="열공지원금 팡팡"/>
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_01.jpg" alt="연간 커리큘럼"/>
         </div>
 
-        <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2438_02.jpg" alt="특별이벤트"/>
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_02.jpg" alt="선착순 1000명"/>
+        </div>
+
+        <div class="evtCtnsBox evt05" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_03.jpg" alt="선착순 1000명"/>
         </div>
 
         {{-- 핫클립 상품 Box(ajax data) evt03--}}
         <div id="hotclip_box"></div>
 
-        <div class="evtCtnsBox evt04">
+        <div class="evtCtnsBox evt04" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_04.jpg" alt="초심을 잃지 마세요~!"/>
         </div>
 
-        <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_05.jpg" alt="합격 패키지"/>
-        </div>
-
-        <div class="evtCtnsBox evtInfo">
+        <div class="evtCtnsBox evtInfo" data-aos="fade-up">
             <div class="evtInfoBox">
                 <h4 class="NSK-Black"><span>[ 필독 ]</span> 연간 패키지 수강 시 유의 사항</h4>
                 <ul>
@@ -273,6 +273,7 @@
                 <iframe src="https://www.youtube.com/embed/Y2W3lUrn3aI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
+
         {{--교수 커리큘럼 팝업 --}}
         <div id="Curriculum" class="willbes-Layer-CurriBox">
             <div class="popupWrap">
@@ -298,6 +299,14 @@
             sendAjax(_url, '', function(ret) {
                 $('#hotclip_box').html(ret);
             }, null, false, 'GET', 'html');
+        });
+    </script>
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+        $(document).ready( function() {
+        AOS.init();
         });
     </script>
 @stop

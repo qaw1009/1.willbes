@@ -251,7 +251,7 @@
                         <input type="radio" name="y_pkg" id="pass06" value="203646">
                         <label for="pass06">
                             <div>통신직 9급</div>
-                            <div>풀제풀이 T-PASS</div>                           
+                            <div>문제풀이 T-PASS</div>                           
                             <div><strong class="NSK-Black">79</strong>만원</div>
                             <ul>
                                 <li>2023. 6월까지 수강</li>
@@ -282,8 +282,8 @@
                     <div class="pass">
                         <input type="radio" name="y_pkg" id="pass08" value="203650">
                         <label for="pass08">
-                            <div>전자직 9급</div>
-                            <div>전과목 T-PASS</div>                           
+                            <div>통신 9급/군무원</div>
+                            <div>문제풀이 T-PASS</div>                           
                             <div><strong class="NSK-Black">99</strong>만원</div>
                             <ul>
                                 <li>2023. 7월까지 수강</li>

@@ -36,6 +36,8 @@
     .lecWrap .pass input:checked + label span{color:#fff; box-shadow:none}
     .lecWrap .pass input:checked + label ul {margin-top:30px; display:block}
 
+    .lecWrap .pass p {position: absolute; width:70%; left:50%; top:-20px; margin-left:-35%; color:#fff; background:#fb6250; padding:10px; border-radius:20px 20px 0 0; font-size:1.6vh; z-index: 10;}
+
     .lecWrapB {font-size:2vh; background:#f3f3f3; border-radius:20px; margin-bottom:30px; padding:30px 50px; text-align:left; line-height:1.3; border:5px solid #fb6250; animation:bdColor 2s infinite;-webkit-animation:bdColor 2s infinite;}
     @@keyframes bdColor{
         from{border-color:#000}
@@ -163,6 +165,7 @@
                             <li><span>인증시 3만원 할인</span></li>
                         </ul>
                     </label>
+                    <p>12월 최종 마감</p>
                 </div>
 
                 <div class="pass" data-aos="fade-right">

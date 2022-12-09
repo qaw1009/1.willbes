@@ -53,7 +53,7 @@
         .wb_cts05 .title {font-size:50px; line-height:1.2; margin-bottom:40px; color:#373737}
 
         .lecWrap {display:flex; flex-wrap: wrap; width:1120px; margin:auto; line-height:1.5; font-size:14px}
-        .lecWrap .pass {/*width:calc(33.3333% - 10px);*/ margin-bottom:10px; margin-right:10px; flex: 1 1 25%;}
+        .lecWrap .pass {/*width:calc(33.3333% - 10px);*/ margin-bottom:10px; margin-right:10px; flex: 1 1 25%; position: relative;}
         .lecWrap .pass:nth-child(3),
         .lecWrap .pass:last-child {margin-right:0}
         .lecWrap .pass div {font-size:22px}
@@ -72,6 +72,7 @@
         .lecWrap .pass input:checked + label {border:1px solid #fb6250; background:#fb6250; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3)}
         .lecWrap .pass input:checked + label div,
         .lecWrap .pass input:checked + label span{color:#fff; box-shadow:none}
+        .lecWrap .pass p {position: absolute; width:260px; left:50%; top:-20px; margin-left:-130px; color:#fff; background:#fb6250; padding:10px; border-radius:20px 20px 0 0; font-size:16px; z-index: 10;}
 
         .lecWrapB {display:flex; justify-content: space-between; font-size:20px; background:#f3f3f3; border-radius:20px; margin-bottom:30px; padding:30px 50px; text-align:left; line-height:1.3; border:5px solid #fb6250; animation:bdColor 2s infinite;-webkit-animation:bdColor 2s infinite;}
         @@keyframes bdColor{
@@ -224,6 +225,7 @@
                                 <li><span>인증시 3만원 할인</span></li>
                             </ul>
                         </label>
+                        <p>12월 최종 마감</p>
                     </div>
 
                     <div class="pass" data-aos="fade-down">

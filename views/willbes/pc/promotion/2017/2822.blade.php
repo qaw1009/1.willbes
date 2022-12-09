@@ -157,8 +157,9 @@
     </style>
 
     <div class="evtContent NSK ssam" id="evtContainer">
-        <div class="evtCtnsBox evtTop">
-            <div data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/12/2822_top.png" alt="2023학년도 연간패키지"/></div>
+        <div class="evtCtnsBox evtTop" data-aos="fade-up">
+            {{--<div data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/12/2822_top.png" alt="2023학년도 연간패키지"/></div>--}}
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_top.jpg" alt="2023학년도 연간패키지"/>
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">

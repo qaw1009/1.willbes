@@ -24,11 +24,12 @@
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_01_bg.jpg) no-repeat center top;}
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_02_bg.jpg) no-repeat center top;}
 
-        .evt03 {width:1120px; margin:0 auto; padding:100px 0; display: flex; justify-content: space-between;}
+        .evt03 {width:1120px; margin:0 auto; padding:100px 0; display: flex; justify-content: space-between;} 
 
         .ssam-Lnb {
-            width: 300px;
+            width: 240px;
             text-align:left;
+            margin-left:60px
         }
         .ssam-Lnb .lnb-List {border:1px solid #a2a2a2; border-top:0}
         .ssam-Lnb .lnb-List .ssam-lnb-List-Tit a {
@@ -54,11 +55,26 @@
             border-top: 1px solid #b2b2b2;
             border-bottom: 1px solid #ececec;
         }
-        .ssam-Lnb .lnb-List .lnb-List-Depth dl dt a {
+        .ssam-Lnb .lnb-List .lnb-List-Depth dl dt {position: relative;}
+        .ssam-Lnb .lnb-List .lnb-List-Depth dl dt a:before{ 
+            background: #0077e3 none repeat scroll 0 0; 
+            border-radius: 2px;
+            content: '';
             display: block;
+            height: 4px;
+            left: 20px;
+            position: absolute;
+            top: 50%;
+            width: 4px;
+            margin-top:-2px;
+        }
+
+        .ssam-Lnb .lnb-List .lnb-List-Depth dl dt a {
+            display: flex;
+            justify-content: space-between; 
             font-size: 16px;
             color: #3a3a3a;
-            padding:15px 20px;
+            padding:15px 30px;
             border-bottom:1px solid #ddd;
         }
         .ssam-Lnb .lnb-List .lnb-List-Depth dl dt a:hover,
@@ -89,7 +105,7 @@
         .tabCts .pkgBuy div:nth-of-type(even) a {background:#4b66b0;}
         .tabCts .pkgBuy a:hover {background:#ffd800 !important; color:#111}
         .tabCts .pkgBuy div:last-child a {margin:0}
-        .tabCts .pkgBuy strong {display:block; font-size:18px}
+        .tabCts .pkgBuy strong {display:block; font-size:18px;}
 
 
         .tabCts .buyWrap h4 {font-size:24px; margin-bottom:20px}
@@ -131,7 +147,7 @@
         .evtInfoBox td {padding:5px; text-align:center; border-right:1px solid #FFF}
         .evtInfoBox th {background:#f4f4f4}
 
-        .willbes-Layer-CurriBox {top:2300px; margin-left: -560px;}
+        .willbes-Layer-CurriBox {top:3700px; margin-left: -560px;}
 
         .ssam .willbes-Layer-youtube {
             display: none;
@@ -140,7 +156,7 @@
             display:flex; justify-content: center;align-items: center;
             background:#000;
             position: absolute;
-            top: 2300px;
+            top: 3700px;
             z-index: 110;
             width: 860px;
             height: 484px;

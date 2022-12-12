@@ -9,7 +9,7 @@
     .evtCtnsBox img {width:100%; max-width:720px;}
     .evtCtnsBox .wrap {position:relative}
 
-    /*.evtCtnsBox a {border:1px solid #000}*/    
+    /*.evtCtnsBox a {border:1px solid #000}   */
 
     .evt01 .youtube {position:relative; padding-top:30px; padding-bottom:56.25%; margin:0; height:0;background: #000;} 
     .evt01 .youtube iframe {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%; z-index: 2;}
@@ -41,19 +41,19 @@
         width: 30px;
     }
 
-    .evt_07 {padding:50px 0; background:#f5f5f7}
-    .evt_07 h4 {font-family: 'Black Han Sans', sans-serif; font-size:30px}
+    .evt_07 {padding:50px 0; background:#313131}
+    .evt_07 h4 {font-family: 'Black Han Sans', sans-serif; font-size:3vh}
     .evt_07 > a {display:block; margin-bottom:15px}
 
-    .check {padding:20px 0 0;}
-    .check label {cursor:pointer; font-size:15px;color:#000;font-weight:bold;}
-    .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-    .check a {display:block; padding:10px 0; color:#fff; background:#393939; border-radius:20px; font-weight:bold; width:60%; margin:20px auto}
+    .evt_07 .check {padding:20px 0 0; color:#fff; font-size:1.6vh; }
+    .evt_07 .check label {cursor:pointer; font-size:1.8vh; font-weight:bold;}
+    .evt_07 .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
+    .evt_07 .check a {display:block; padding:10px 0; color:#fff; background:#116a84; border-radius:20px; font-weight:bold; width:60%; margin:20px auto;}
 
-    .evtInfo {padding:50px 20px; background:#626262; color:#fff;}
+    .evtInfo {padding:50px 20px; background:#626262; color:#fff; font-size:1.6vh; }
     .evtInfoBox {margin:0 auto; text-align:left; line-height:1.4;}
     .evtInfoBox h4 {font-size:2.4vh; margin-bottom:30px;}
-    .evtInfoBox .infoTit {font-size:1.6vh; margin-bottom:10px}
+    .evtInfoBox .infoTit {font-size:1.8vh; margin-bottom:10px}
     .evtInfoBox .infoTit strong {padding:5px 10px; background:#fff; color:#000; border-radius:20px;}
     .evtInfoBox ul {margin-bottom:20px}
     .evtInfoBox li {margin-bottom:5px; list-style-type: decimal; margin-left:20px}
@@ -64,7 +64,7 @@
 <div id="Container" class="Container NSK c_both">
 
     <div class="evtCtnsBox evt_top" data-aos="fade-down">
-        <img src="https://static.willbes.net/public/images/promotion/2022/11/2828m_top.jpg" alt="경찰학 김재규" >        
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2828m_top.jpg" alt="경찰학 김재규" >        
     </div> 
 
     <div class="evtCtnsBox evt01" data-aos="fade-up">
@@ -109,9 +109,9 @@
 
     <div class="evtCtnsBox evt_07" data-aos="fade-up">
             <div class="wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2828m_07.jpg" alt="">
-            <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank" title="유튜브 바로가기" data-url="https://police.willbes.net/m/periodPackage/show/cate/3001/pack/648001/prod-code/202735" style="position: absolute;left: 15.75%;top: 36.27%;width: 64.83%;height: 5.12%;z-index: 2;"></a>           
-            <a href="javascript:void(0);" title="신청하기" data-url="https://police.willbes.net/m/periodPackage/show/cate/3001/pack/648001/prod-code/202735" onclick="go_PassLecture(this)" style="position: absolute;left: 11.75%;top: 80.27%;width: 76.83%;height: 10.12%;z-index: 2;"></a>               
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2828m_07.jpg" alt="">
+        
+            <a href="javascript:void(0);" title="신청하기" data-url="https://police.willbes.net/m/periodPackage/show/cate/3001/pack/648001/prod-code/202735" onclick="go_PassLecture(this)" style="position: absolute; left: 11.53%; top: 73.9%; width: 76.81%; height: 14.32%; z-index: 2;"></a>               
         </div>
         <div class="check">
             <label>

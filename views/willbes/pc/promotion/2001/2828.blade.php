@@ -24,7 +24,7 @@
         .sky {position:fixed;top:200px;right:10px;z-index:100;}
         .sky a {display:block; margin-bottom:10px}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/11/2828_top_bg.jpg) no-repeat center top; height:1765px}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/12/2828_top_bg.jpg) no-repeat center top; height:1765px}
         .evtTop .mainImg {position:absolute; top:390px; left:50%; margin-left:-429.5px}
 
         .evt01 {background:#19586A}
@@ -52,9 +52,6 @@
         .evt06 {background:#F5F5F5;}
 
         .evt07 {background:#313131;}
-        .evt07 .wrap a {background:#116984; color:#fff; font-size:40px;display:grid;align-items: center;}
-        .evt07 .wrap a:hover {background:#FF5D00;}   
-        .evt07 .wrap a span {font-size:25px; margin-left:20px}   
         .evt07 .check {width:800px; margin:0 auto; padding:20px; font-size:16px; color:#000; letter-spacing:-1px;color:#fff;}
         .evt07 .check a {display:inline-block; padding:10px; color:#fff; background:#000; margin-left:40px; border-radius:20px; font-size:12px}
         .evt07 .check p {font-size:14px; padding:50px 0 50px 20px; line-height:1.4; text-align:left; width:600px; margin:0 auto;color:#fff;}
@@ -92,8 +89,7 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky" id="QuickMenu">
-            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2022/11/2828_sky01.png" alt="100일 완성 패스 신청하기"></a>
-            <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/11/2828_sky02.png" alt="라이브 퀴즈쇼"></a>         
+            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2022/11/2828_sky01.png" alt="100일 완성 패스 신청하기"></a>    
         </div>
         
         <div class="evtCtnsBox evtTop">
@@ -147,10 +143,9 @@
 
         <div class="evtCtnsBox evt07" data-aos="fade-up" id="apply">
             <div class="wrap NSK-Black">
-                <img src="https://static.willbes.net/public/images/promotion/2022/11/2828_07.jpg" alt="100일 완성 패스" />
-                <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank" title="유튜브 바로가기" style="position: absolute;left: 29.38%;top: 34.03%;width: 41.07%;height: 4.28%;z-index: 2;background:none"></a>
-                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51424?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="김재규 홈" style="position: absolute;left: 69.38%;top: 86.54%;width: 11.07%;height: 3.78%;z-index: 2;background:none"></a>
-                <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/202735" onclick="go_PassLecture(this)" title="" style="position: absolute;left: 29.95%;top: 79.97%;width: 25.55%;height: 9.45%;z-index: 2;border-radius:0 6px 6px 0">85,000원 <span>신청하기 ></span></a>
+                <img src="https://static.willbes.net/public/images/promotion/2022/12/2828_07.jpg" alt="100일 완성 패스" />
+                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51424?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="김재규 홈" style="position: absolute; left: 28.84%; top: 74.47%; width: 31.96%; height: 14.55%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/202735" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 68.04%; top: 84.17%; width: 12.86%; height: 5.19%; z-index: 2;"></a>
             </div>
             <div class="check">
                 <input name="ischk" type="checkbox" id="is_chk1" value="Y" />

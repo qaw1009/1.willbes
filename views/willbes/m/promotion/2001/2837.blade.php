@@ -55,7 +55,7 @@
 
         <div class="evtCtnsBox evt_05" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/12/2837m_05_01.jpg" alt="" />	
-            <a href="javascript:go_PassLecture('196774');" title=""><img src="https://static.willbes.net/public/images/promotion/2022/12/2837m_05_02.jpg" alt="" /><span>신청하기 ></span></a>
+            <a href="javascript:go_PassLecture('203784');" title=""><img src="https://static.willbes.net/public/images/promotion/2022/12/2837m_05_02.jpg" alt="" /><span>신청하기 ></span></a>
             <a href="javascript:go_PassLecture('203736');" title=""><img src="https://static.willbes.net/public/images/promotion/2022/12/2837m_05_03.jpg" alt="" /><span>신청하기 ></span></a>
             <a href="javascript:go_PassLecture('203735');" title=""><img src="https://static.willbes.net/public/images/promotion/2022/12/2837m_05_04.jpg" alt="" /><span>신청하기 ></span></a>
 

@@ -105,7 +105,7 @@
             <div class="tabCts">
                 <div id="tab1">
                     <img src="https://static.willbes.net/public/images/promotion/2022/12/2837_05_01.png" alt=""/>
-                    <a href="javascript:go_PassLecture('196774');" class="NSK-Black">이국령 헌법 신청 ></a>
+                    <a href="javascript:go_PassLecture('203784');" class="NSK-Black">이국령 헌법 신청 ></a>
                 </div>
                 <div id="tab2">
                     <img src="https://static.willbes.net/public/images/promotion/2022/12/2837_05_02.png" alt=""/>

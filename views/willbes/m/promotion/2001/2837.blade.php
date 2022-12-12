@@ -11,15 +11,9 @@
     /************************************************************/
 
 
-    .tabs {border-bottom:2px solid #926054; width:100%; margin:0 auto 30px; display:flex; justify-content: center;}
-    .tabs li {width:100%;}
-    .tabs li a {display:block; color:#fff; background:#000; height:5vh; line-height:5vh; text-align:center; margin-right:1px; font-size:1.5vh;font-weight:bold;}
-    .tabs li a:hover,
-    .tabs li a.active {background:#926054;}     
-    .tabs li:last-child a {margin:0}
-
     .evt_05 {padding-bottom:3vh; background:#0f181d; color:#fff }
-    .evt_05 > a {display:block; margin-bottom:1.5vh}
+    .evt_05 > a {display:block; margin-bottom:1.5vh; position: relative;}
+    .evt_05 > a span {font-size:2vh; color:#fff; padding:10px 20px; background:#3f80d8; border-radius:40px; box-shadow:10px rgba(0,0,0,.5); position: absolute; left:10%; bottom:1.5vh; z-index: 2;}
     .evtCtnsBox .check{margin:30px 20px 50px; font-size:1.5vh; text-align:center; line-height:1.5; letter-spacing:-1px;}
     .evtCtnsBox .check label{font-weight:bold;}
     .evtCtnsBox .check input {border: 2px solid #000;margin-right: 8px;height: 20px; width: 20px;} 
@@ -61,9 +55,9 @@
 
         <div class="evtCtnsBox evt_05" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/12/2837m_05_01.jpg" alt="" />	
-            <a href="javascript:go_PassLecture('196774');" title=""><img src="https://static.willbes.net/public/images/promotion/2022/12/2837m_05_02.jpg" alt="" /></a>
-            <a href="javascript:go_PassLecture('203736');" title=""><img src="https://static.willbes.net/public/images/promotion/2022/12/2837m_05_03.jpg" alt="" /></a>
-            <a href="javascript:go_PassLecture('203735');" title=""><img src="https://static.willbes.net/public/images/promotion/2022/12/2837m_05_04.jpg" alt="" /></a>
+            <a href="javascript:go_PassLecture('196774');" title=""><img src="https://static.willbes.net/public/images/promotion/2022/12/2837m_05_02.jpg" alt="" /><span>신청하기 ></span></a>
+            <a href="javascript:go_PassLecture('203736');" title=""><img src="https://static.willbes.net/public/images/promotion/2022/12/2837m_05_03.jpg" alt="" /><span>신청하기 ></span></a>
+            <a href="javascript:go_PassLecture('203735');" title=""><img src="https://static.willbes.net/public/images/promotion/2022/12/2837m_05_04.jpg" alt="" /><span>신청하기 ></span></a>
 
             <div class="check">
                 <label>

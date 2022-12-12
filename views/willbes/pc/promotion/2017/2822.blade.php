@@ -147,7 +147,7 @@
         .evtInfoBox td {padding:5px; text-align:center; border-right:1px solid #FFF}
         .evtInfoBox th {background:#f4f4f4}
 
-        .willbes-Layer-CurriBox {top:3700px; margin-left: -560px;}
+        .willbes-Layer-CurriBox {top:3750px; margin-left: -560px;}
 
         .ssam .willbes-Layer-youtube {
             display: none;
@@ -156,7 +156,7 @@
             display:flex; justify-content: center;align-items: center;
             background:#000;
             position: absolute;
-            top: 3700px;
+            top: 3750px;
             z-index: 110;
             width: 860px;
             height: 484px;

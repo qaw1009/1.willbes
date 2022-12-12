@@ -1,4 +1,4 @@
-<div class="evtCtnsBox evt03">
+<div class="evt03">
     <div class="ssam-Lnb">
         <div class="lnb-List tabs">
             @if (empty($data) === false)

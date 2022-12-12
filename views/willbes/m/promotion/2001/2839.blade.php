@@ -176,32 +176,36 @@
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2839m_pro.jpg" alt="올인원 총알경찰학"/>           
     </div>
 
+    <div class="evtCtnsBox evt_limit" data-aos="fade-up">    
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2839m_limit_event.jpg" alt="선착순 100명 한정 이벤트"/>           
+    </div>
+
     <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01"> 
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2839m_01.jpg" alt="구매전 안내"/>            
         <div class="evt01_coupon lecbuy" id="pass">
             <div class="p_re">
-                <img src="https://static.willbes.net/public/images/promotion/2022/11/2839m_02_01.png" alt="" > 
+                <img src="https://static.willbes.net/public/images/promotion/2022/12/2839m_02_01.png" alt="" > 
                 <div class="price NSK-Black">                       
                     <input type="radio" id="y_pkg1" name="y_pkg" value="202976" onClick=""/>
                     <label for="y_pkg1">평생 0원 PASS 신청</label>
                 </div>
             </div>
             <div class="p_re">
-                <img src="https://static.willbes.net/public/images/promotion/2022/11/2839m_02_02.png" alt="" > 
+                <img src="https://static.willbes.net/public/images/promotion/2022/12/2839m_02_02.png" alt="" > 
                 <div class="price NSK-Black">                       
                     <input type="radio" id="y_pkg2" name="y_pkg" value="202977" onClick=""/>
                     <label for="y_pkg2">23년 2차 0원PASS 신청</label>
                 </div>
             </div>
             <div class="p_re">
-                <img src="https://static.willbes.net/public/images/promotion/2022/11/2839m_02_03.png" alt="" > 
+                <img src="https://static.willbes.net/public/images/promotion/2022/12/2839m_02_03.png" alt="" > 
                 <div class="price NSK-Black">                       
                     <input type="radio" id="y_pkg3" name="y_pkg" value="202978" onClick=""/>
                     <label for="y_pkg3">23년 1차 FINAL PASS 신청</label>
                 </div>
             </div>
             <div class="p_re">
-                <img src="https://static.willbes.net/public/images/promotion/2022/11/2839m_02_04.png" alt="" > 
+                <img src="https://static.willbes.net/public/images/promotion/2022/12/2839m_02_04.png" alt="" > 
                 <div class="price NSK-Black">                       
                     <input type="radio" id="y_pkg4" name="y_pkg" value="202971" onClick=""/>
                     <label for="y_pkg4">M사 컴백홈 PASS 신청</label>
@@ -218,7 +222,7 @@
             </div>
         </div>        
         <div data-aos="fade-up" class="p_re mt50">
-            <img src="https://static.willbes.net/public/images/promotion/2022/10/2758m_03.jpg" alt="할일받고 구매하자">
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2758m_03.jpg" alt="할일받고 구매하자">
             <a href="https://police.willbes.net/m/support/qna/index/cate/3001?s_cate_code=3001&s_is_my_contents=1" target="_blank" title="재수강 쿠폰받기" style="position: absolute; left: 8.47%; top: 25.65%; width: 38.75%; height: 34.57%; z-index: 2;"></a>
 
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute; left: 52.5%; top: 25.65%; width: 38.75%; height: 34.57%; z-index: 2;"></a>

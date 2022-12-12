@@ -29,6 +29,8 @@
 
         .evt_pro {background:#13171A;}
 
+        .evt_limit {background:url(https://static.willbes.net/public/images/promotion/2022/12/2839_limit_event_bg.jpg) no-repeat center top;}
+
         .evt_01 {background:#f5f5f7;}        
 
         .evtPass {background:#F5F5F7; padding:100px 0}
@@ -165,7 +167,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_sky01.png" alt="윌비스 경찰 패스">
             </a>  
             <a href="#transfer">
-                <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_sky02.png" alt="최대 35프로 할인">
+                <img src="https://static.willbes.net/public/images/promotion/2022/12/2839_sky02.png" alt="최대 35프로 할인">
             </a>  
             <a href="#pass">
                 <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_sky03.png" alt="m사 환승 26만원">
@@ -208,10 +210,14 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_pro.jpg" alt="올인원 총알경제학"/>           
 		</div>
 
+        <div class="evtCtnsBox evt_limit" data-aos="fade-up">    
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2839_limit_event.jpg" alt="선착순 100명 한정 이벤트"/>           
+		</div>
+
         <div class="evtCtnsBox evtPass" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_01.jpg" alt="구매전 안내"/>           
             <div class="wrap" id="pass">
-                <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_02_v2.jpg" alt="윌비스 경찰 PASS">
+                <img src="https://static.willbes.net/public/images/promotion/2022/12/2839_02_v2.jpg" alt="윌비스 경찰 PASS">
                 <div class="passLecBuy NSK-Black"> 
                     <div>                                       
                         <input type="radio" id="y_pkg1" name="y_pkg" value="202976"/>                
@@ -246,7 +252,7 @@
 
             <div class="title02" id="transfer">
                 신규가입 & 재수강 & M사환승 하실 수강생은 모두 주목!!
-                <div class="NSK-Black">최대 <span>26만원 혜택</span> 받고 구매하세요.</div>
+                <div class="NSK-Black">최대 <span>27만원 혜택</span> 받고 구매하세요.</div>
             </div>
 
             <div class="wrap">

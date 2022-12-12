@@ -24,7 +24,7 @@
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_01_bg.jpg) no-repeat center top;}
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_02_bg.jpg) no-repeat center top;}
 
-        .evt03 {width:1120px; margin:0 auto; padding:100px 0; display: flex; justify-content: space-between;} 
+        .evt03 {width:1120px; margin:0 auto; padding:0 0 100px; display: flex; justify-content: space-between;} 
 
         .ssam-Lnb {
             width: 240px;

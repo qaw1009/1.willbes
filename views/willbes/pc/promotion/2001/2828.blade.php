@@ -24,7 +24,7 @@
         .sky {position:fixed;top:200px;right:10px;z-index:100;}
         .sky a {display:block; margin-bottom:10px}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/12/2828_top_bg.jpg) no-repeat center top; height:1765px}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/12/2828_top_bg.jpg) no-repeat center top; height:1720px}
         .evtTop .mainImg {position:absolute; top:390px; left:50%; margin-left:-429.5px}
 
         .evt01 {background:#19586A}

@@ -27,8 +27,8 @@
                         </select>
                         <select class="form-control" id="search_match" name="search_match" title="결제정보불일치">
                             <option value="">데이터비교</option>
-                            <option value="Y" selected="selected">일치</option>
-                            <option value="N" >불일치</option>
+                            <option value="Y">일치</option>
+                            <option value="N" selected="selected">불일치</option>
                         </select>
                     </div>
                 </div>

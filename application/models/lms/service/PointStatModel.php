@@ -190,42 +190,46 @@ class PointStatModel extends WB_Model
      * @param string $point_type [포인트타입, lecture : 강좌, book : 교재]
      * @param string $search_start_date [조회시작일자]
      * @param string $search_end_date [조회종료일자]
+     * @param string $search_date_type [조회일자구분]
      * @param array $arr_condition [추가조회조건]
      * @return mixed
      */
-    public function listStatSaveUsePointByReason($point_type, $search_start_date, $search_end_date, $arr_condition = [])
+    public function listStatSaveUsePointByReason($point_type, $search_start_date, $search_end_date, $search_date_type, $arr_condition = [])
     {
+        $search_date_type_num = $this->_getSearchDateTypeNum($search_start_date, $search_end_date, $search_date_type);
         $search_start_date = $search_start_date . ' 00:00:00';
         $search_end_date = $search_end_date . ' 23:59:59';
 
-        $column = 'U.BaseYm, U.ReasonCode, sum(U.SumSavePoint) as SumSavePoint, sum(U.SumUsePoint) as SumUsePoint';
+        $column = 'U.BaseDate, U.ReasonCode, sum(U.SumSavePoint) as SumSavePoint, sum(U.SumUsePoint) as SumUsePoint';
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
         $from = '
             from (
-                select TA.SaveYm as BaseYm, TA.SaveReason as ReasonCode, sum(TA.SavePoint) as SumSavePoint, 0 as SumUsePoint
+                select TA.BaseDate, TA.SaveReason as ReasonCode, sum(TA.SavePoint) as SumSavePoint, 0 as SumUsePoint
                 from (
-                    select PS.SiteCode, PS.SavePoint, left(PS.SaveDatm, 7) as SaveYm
+                    select PS.SiteCode, PS.SavePoint, left(PS.SaveDatm, ?) as BaseDate
                         , (select case
-                            when PS.ReasonCcd = "680001" then "order"
-                            when PS.ReasonCcd = "680006" then "join"
-                            when PS.ReasonCcd in ("680007", "680008", "680009") then "event"
-                            else "etc"
+                            when PS.ReasonCcd = "680001" then "Order"
+                            when PS.ReasonCcd = "680002" then "Refund"
+                            when PS.ReasonCcd = "680006" then "Join"
+                            when PS.ReasonCcd in ("680007", "680008", "680009") then "Event"
+                            else "Etc"
                           end) as SaveReason
                     from ' . $this->_table['point_save'] . ' as PS
                     where PS.SaveDatm between ? and ?
                         and PS.PointType = ?
                         ' . $where . '
                 ) as TA
-                group by TA.SaveYm, TA.SaveReason
+                group by TA.BaseDate, TA.SaveReason
                 union all
-                select TA.UseYm as BaseYm, TA.UseReason as ReasonCode, 0 as SumSavePoint, sum(TA.UsePoint) as SumUsePoint
+                select TA.BaseDate, TA.UseReason as ReasonCode, 0 as SumSavePoint, sum(TA.UsePoint) as SumUsePoint
                 from (
-                    select PS.SiteCode, PU.UsePoint, left(PU.UseDatm, 7) as UseYm
+                    select PS.SiteCode, PU.UsePoint, left(PU.UseDatm, ?) as BaseDate
                         , (select case
-                            when PU.ReasonCcd = "681001" then "order"
-                            when PU.ReasonCcd = "681002" then "expire"
-                            else "etc"
+                            when PU.ReasonCcd = "681001" then "Order"
+                            when PU.ReasonCcd = "681002" then "Expire"
+                            when PU.ReasonCcd = "681003" then "Refund"
+                            else "Etc"
                           end) as UseReason
                     from ' . $this->_table['point_use'] . ' as PU
                         inner join ' . $this->_table['point_save'] . ' as PS
@@ -234,17 +238,41 @@ class PointStatModel extends WB_Model
                         and PS.PointType = ?
                         ' . $where . '
                 ) as TA
-                group by TA.UseYm, TA.UseReason            
+                group by TA.BaseDate, TA.UseReason            
             ) as U 
-            group by U.BaseYm, U.ReasonCode
-            order by U.BaseYm, U.ReasonCode                   
+            group by U.BaseDate, U.ReasonCode
+            order by U.BaseDate, U.ReasonCode                   
         ';
 
-        $binds = [$search_start_date, $search_end_date, $point_type, $search_start_date, $search_end_date, $point_type];
+        $binds = [$search_date_type_num, $search_start_date, $search_end_date, $point_type, $search_date_type_num, $search_start_date, $search_end_date, $point_type];
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from, $binds);
 
         return $query->result_array();
+    }
+
+    /**
+     * 조회일자구분에 맞는 날짜포맷 리턴
+     * @param string $search_start_date [조회시작일자]
+     * @param string $search_end_date [조회종료일자]
+     * @param string $search_date_type [조회일자구분]
+     * @return int
+     */
+    private function _getSearchDateTypeNum($search_start_date, $search_end_date, $search_date_type)
+    {
+        $arr_date_type_num = ['year' => 4, 'month' => 7, 'day' => 10];
+
+        if ($search_date_type != 'year') {
+            $diff_days = diff_days($search_end_date, $search_start_date);
+
+            if ($diff_days > 365) {
+                $search_date_type = 'year';
+            } elseif ($diff_days > 31) {
+                $search_date_type = 'month';
+            }
+        }
+
+        return element($search_date_type, $arr_date_type_num, 7);
     }
 }

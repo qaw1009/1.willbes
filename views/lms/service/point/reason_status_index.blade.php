@@ -30,6 +30,23 @@
                             </div>
                             <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off" title="검색종료일자">
                         </div>
+                        <div class="btn-group mr-20" role="group">
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-mon">전월</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-weeks">1주일</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="15-days">15일</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-months">1개월</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="3-months">3개월</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="6-months">6개월</button>
+                        </div>
+                        <div class="radio mr-20">
+                            <input type="radio" id="search_date_type_day" name="search_date_type" class="flat" value="day"/> <label for="search_date_type_day" class="input-label">일</label>
+                            <input type="radio" id="search_date_type_month" name="search_date_type" class="flat" value="month" checked="checked"/> <label for="search_date_type_month" class="input-label">월</label>
+                            <input type="radio" id="search_date_type_year" name="search_date_type" class="flat" value="year"/> <label for="search_date_type_year" class="input-label">년</label>
+                        </div>
+                        <div class="inline-block">
+                            * 검색기간이 31일을 초과할 경우 '월'로 365일이 초과할 경우 '년'으로 자동 변환
+                        </div>
                     </div>
                 </div>
             </div>
@@ -46,17 +63,19 @@
                 <thead>
                 <tr class="bg-odd">
                     <th rowspan="2" class="valign-middle">No</th>
-                    <th rowspan="2" class="valign-middle">기간(년월)</th>
-                    <th colspan="5">적립포인트</th>
-                    <th colspan="4">사용포인트</th>
+                    <th rowspan="2" class="valign-middle">기간</th>
+                    <th colspan="6">적립포인트</th>
+                    <th colspan="5">사용포인트</th>
                 </tr>
                 <tr class="bg-odd">
                     <th>회원가입</th>
                     <th>주문/결제</th>
+                    <th>환불(사용복구)</th>
                     <th>이벤트</th>
                     <th>기타</th>
                     <th class="bg-info">합계</th>
                     <th>주문/결제</th>
+                    <th>환불(적립회수)</th>
                     <th>소멸</th>
                     <th>기타</th>
                     <th class="bg-info">합계</th>
@@ -65,10 +84,12 @@
                     <th colspan="2" class="text-center">합계</th>
                     <th id="t_join_save_point" class="sumTh"></th>
                     <th id="t_order_save_point" class="sumTh"></th>
+                    <th id="t_refund_save_point" class="sumTh"></th>
                     <th id="t_event_save_point" class="sumTh"></th>
                     <th id="t_etc_save_point" class="sumTh"></th>
                     <th id="t_save_point" class="sumTh"></th>
                     <th id="t_order_use_point" class="sumTh"></th>
+                    <th id="t_refund_use_point" class="sumTh"></th>
                     <th id="t_expire_use_point" class="sumTh"></th>
                     <th id="t_etc_use_point" class="sumTh"></th>
                     <th id="t_use_point" class="sumTh"></th>
@@ -104,6 +125,7 @@
                     'url' : '{{ site_url('/service/point/reasonStatus/listAjax/' . $_point_type) }}',
                     'type' : 'POST',
                     'data' : function(data) {
+                        checkSearchDateType();
                         return $.extend(arrToJson($search_form.serializeArray()), {});
                     }
                 },
@@ -112,11 +134,14 @@
                         // 리스트 번호
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
-                    {'data' : 'BaseYm'},
+                    {'data' : 'BaseDate'},
                     {'data' : 'JoinSavePoint', 'render' : function(data, type, row, meta) {
                         return addComma(data);
                     }},
                     {'data' : 'OrderSavePoint', 'render' : function(data, type, row, meta) {
+                        return addComma(data);
+                    }},
+                    {'data' : 'RefundSavePoint', 'render' : function(data, type, row, meta) {
                         return addComma(data);
                     }},
                     {'data' : 'EventSavePoint', 'render' : function(data, type, row, meta) {
@@ -129,6 +154,9 @@
                         return '<strong>' + addComma(data) + '</strong>';
                     }},
                     {'data' : 'OrderUsePoint', 'render' : function(data, type, row, meta) {
+                        return addComma(data);
+                    }},
+                    {'data' : 'RefundUsePoint', 'render' : function(data, type, row, meta) {
                         return addComma(data);
                     }},
                     {'data' : 'ExpireUsePoint', 'render' : function(data, type, row, meta) {
@@ -148,10 +176,12 @@
                 if (json.sum_data !== null) {
                     $('#t_join_save_point').html(addComma(json.sum_data.tJoinSavePoint));
                     $('#t_order_save_point').html(addComma(json.sum_data.tOrderSavePoint));
+                    $('#t_refund_save_point').html(addComma(json.sum_data.tRefundSavePoint));
                     $('#t_event_save_point').html(addComma(json.sum_data.tEventSavePoint));
                     $('#t_etc_save_point').html(addComma(json.sum_data.tEtcSavePoint));
                     $('#t_save_point').html(addComma(json.sum_data.tSavePoint));
                     $('#t_order_use_point').html(addComma(json.sum_data.tOrderUsePoint));
+                    $('#t_refund_use_point').html(addComma(json.sum_data.tRefundUsePoint));
                     $('#t_expire_use_point').html(addComma(json.sum_data.tExpireUsePoint));
                     $('#t_etc_use_point').html(addComma(json.sum_data.tEtcUsePoint));
                     $('#t_use_point').html(addComma(json.sum_data.tUsePoint));
@@ -167,6 +197,24 @@
                     formCreateSubmit('{{ site_url('/service/point/reasonStatus/excel/' . $_point_type) }}', $search_form.serializeArray(), 'POST');
                 }
             });
+
+            // 날짜 차이에 따라 검색기간 구분값 자동 변경
+            function checkSearchDateType() {
+                var dt_type = $search_form.find('input[name="search_date_type"]:checked').val();
+                var start_date = $search_form.find('input[name="search_start_date"]').val();
+                var end_date = $search_form.find('input[name="search_end_date"]').val();
+                var diff_date;
+
+                if (dt_type !== 'year') {
+                    diff_date = getDiffDate(start_date, end_date, 'days');
+
+                    if (diff_date > 365) {
+                        $search_form.find('input[name="search_date_type"][value="year"]').prop('checked', true).iCheck('update');
+                    } else if (diff_date > 31) {
+                        $search_form.find('input[name="search_date_type"][value="month"]').prop('checked', true).iCheck('update');
+                    }
+                }
+            }
         });
     </script>
 @stop

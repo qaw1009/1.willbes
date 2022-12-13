@@ -24,7 +24,7 @@
         .sky {position:fixed;top:200px;right:10px;z-index:100;}
         .sky a {display:block; margin-bottom:10px}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/11/2826_top_bg.jpg) no-repeat center;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/12/2826_top_bg.jpg) no-repeat center;}
 
         .evt01 {background:#2D57A3}
 
@@ -77,13 +77,11 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky" id="QuickMenu">
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2827" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/11/2826_sky01.png" alt="경찰학 스페셜 이벤트"></a>
-            <a href="#coupon"><img src="https://static.willbes.net/public/images/promotion/2022/11/2826_sky03.png" title="소문내기"></a> 
-            <a href="#lec"><img src="https://static.willbes.net/public/images/promotion/2022/11/2826_sky02.png" title="경찰학 완성반 신청하기"></a> 
+            <a href="#lec"><img src="https://static.willbes.net/public/images/promotion/2022/12/2826_sky01.png" alt="경찰학 100일 완성반 이벤트"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" data-aos="fade-down">           
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2826_top.jpg"  alt="100일 완성반" />   
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2826_top.jpg"  alt="100일 완성반" />   
 		</div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
@@ -130,7 +128,7 @@
         <div class="evtCtnsBox evt06">      
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2826_06.jpg"  alt="그레이스 호퍼 명언"/>    
         </div>
-
+{{--
         <div class="evtCtnsBox evt08" data-aos="fade-up" id="coupon">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/11/2826_08.jpg" title="소문내기 이벤트">
@@ -142,9 +140,9 @@
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif 
-
+        --}}
         <div class="evtCtnsBox evt07" data-aos="fade-up" id="lec">                     
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2826_07.jpg"  alt="후회없는 선택"/>
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2826_07.jpg"  alt="후회없는 선택"/>
             <div class="pass_apply NSK-Black"><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank">신청하기 ></a></div> 
         </div>
 

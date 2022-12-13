@@ -15,6 +15,7 @@
 
     .evt05 {background:#F5F5F5; padding-bottom:8vh}
     .slide_con {padding:0 30px 30px}
+    .slide_con li img {max-width:511px; margin:0 auto}
     .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0}
     .slide_con .bx-wrapper .bx-pager {
         width: auto;
@@ -60,7 +61,7 @@
 <div id="Container" class="Container NSK c_both">
 
     <div class="evtCtnsBox evt_top" data-aos="fade-down">
-        <img src="https://static.willbes.net/public/images/promotion/2022/11/2826m_top.jpg" alt="100일 완성반" >        
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2826m_top.jpg" alt="100일 완성반" >        
     </div> 
 
     <div class="evtCtnsBox evt01" data-aos="fade-up">
@@ -102,7 +103,7 @@
     <div class="evtCtnsBox">
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2826m_06.jpg"  alt="그레이스 호퍼 명언"/>               
     </div>
-
+{{--
     <div class="evtCtnsBox" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2826m_08.jpg" alt="이미지 다운받기"/>
@@ -111,15 +112,15 @@
         </div>
     </div>
 
-    {{--홍보url--}}
     @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
         @include('willbes.m.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'Y'))
     @endif
+    --}}
 
     <div class="evtCtnsBox" data-aos="fade-up">
         <div class="wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2826m_07.jpg"  alt="후회없는 선택"/>
-            <a href="https://police.willbes.net/m/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" title="신청하기" style="position: absolute;left: 34.47%;top: 89.65%;width: 31.25%;height: 5.57%;z-index: 2;"></a>
+            <img src="https://static.willbes.net/public/images/promotion/2022/12/2826m_07.jpg"  alt=""/>
+            <a href="https://police.willbes.net/m/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" title="신청하기" style="position: absolute; left: 25.56%; top: 88%; width: 49.72%; height: 7.7%; z-index: 2;"></a>
         </div>      
     </div>
 </div>

@@ -144,8 +144,8 @@
         <div class="evtCtnsBox evt07" data-aos="fade-up" id="apply">
             <div class="wrap NSK-Black">
                 <img src="https://static.willbes.net/public/images/promotion/2022/12/2828_07.jpg" alt="100일 완성 패스" />
-                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51424?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="김재규 홈" style="position: absolute; left: 28.84%; top: 74.47%; width: 31.96%; height: 14.55%; z-index: 2;"></a>
-                <a href="javascript:void(0);" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/202735" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 68.04%; top: 84.17%; width: 12.86%; height: 5.19%; z-index: 2;"></a>
+                <a href="javascript:void(0);" title="신청하기" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/202735" style="position: absolute; left: 28.84%; top: 74.47%; width: 31.96%; height: 14.55%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51424?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="김재규 홈" style="position: absolute; left: 68.04%; top: 84.17%; width: 12.86%; height: 5.19%; z-index: 2;"></a>                
             </div>
             <div class="check">
                 <input name="ischk" type="checkbox" id="is_chk1" value="Y" />

@@ -35,7 +35,7 @@
         .wb_cts01 .tabs a strong {font-size:26px}
         .wb_cts01 .tabs a.active {background:#fff; color:#ec614e;}
 
-        .wb_cts02 .btns a {width:400px; margin:0 auto; font-size:30px; background:#1e1e1e; color:#fff; display:block; padding:20px; border-radius:50px}
+        .wb_cts02 .btns a {width:500px; margin:0 auto; font-size:30px; background:#1e1e1e; color:#fff; display:block; padding:20px; border-radius:50px}
         .wb_cts02 .btns a:hover {background:#ec614e;}
 
 
@@ -101,7 +101,7 @@
             <div id="tab01">
                 <img src="https://static.willbes.net/public/images/promotion/2022/12/1101_01.jpg" />
                 <div class="btns">
-                    <a href="https://pass.willbes.net/pass/support/qna/create" target="_blank">1:1 상담 신청하기 ></a>
+                    <a href="https://pass.willbes.net/pass/consult/visitConsult/index" target="_blank">1:1 심층 방문상담 예약하기 ></a>
                 </div>
             </div>
             <div id="tab02">

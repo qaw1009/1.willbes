@@ -3,9 +3,9 @@
         <div class="lnb-List tabs">
             @if (empty($data) === false)
                 @foreach($data as $subject_name => $arr_row)
-                    <div class="ssam-lnb-List-Tit {{($loop->first === true ? 'hover' : '')}}">
+                    {{--<div class="ssam-lnb-List-Tit {{($loop->first === true ? 'hover' : '')}}">
                         <a href="javascript:void(0);">{{$subject_name}}</a>
-                    </div>
+                    </div>--}}
                     <div class="lnb-List-Depth" style="display: {{($loop->first == true ? 'block' : 'none')}}">
                         <dl>
                             @foreach($arr_row as $key => $row)

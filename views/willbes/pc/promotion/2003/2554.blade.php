@@ -62,7 +62,7 @@
         <div class="evtCtnsBox wb_03 pb100" data-aos="fade-up" id="lecbuy01">           
             <img src="https://static.willbes.net/public/images/promotion/2022/08/2554_03.jpg" alt="1+1 이벤트" />
             <div class="evt_apply NSK-Black">
-                <a href="https://www.willbes.net/classroom/on/list/ongoing" target="_blank" alt="수강후기 쓰기">지금 바로 1+1 EVENT 참여하기 ></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/200304" target="_blank" alt="수강후기 쓰기">지금 바로 1+1 EVENT 참여하기 ></a>
             </div>                   
         </div>
         

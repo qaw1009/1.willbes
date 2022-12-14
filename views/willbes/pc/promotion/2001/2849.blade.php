@@ -127,9 +127,9 @@
         <div class="evtCtnsBox evt_03">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/12/2849_03.jpg"  alt="학습 PLAN" />     
-                <a href="https://blog.naver.com/psb7817/222869689060" title="준비방법" style="position: absolute; left: 38.66%; top: 50.55%; width: 22.59%; height: 3.29%; z-index: 2;"></a>
-                <a href="https://blog.naver.com/psb7817/222211861661" target="_blank" title="해양경찰 공부는 이렇게" style="position: absolute; left: 38.66%; top: 89.28%; width: 22.59%; height: 3.29%; z-index: 2;"></a>
-            </div>       
+                <a href="https://blog.naver.com/psb7817/222211861661" target="_blank" title="공부법" style="position: absolute; left: 38.66%; top: 50.55%; width: 22.59%; height: 3.29%; z-index: 2;"></a>
+                <a href="https://blog.naver.com/psb7817/222869689060" target="_blank" title="준비요령" style="position: absolute; left: 38.66%; top: 89.28%; width: 22.59%; height: 3.29%; z-index: 2;"></a>
+            </div>     
         </div>
 
         <div class="evtCtnsBox evt_04">

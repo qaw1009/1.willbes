@@ -186,7 +186,7 @@
             <div class="p_re">
                 <img src="https://static.willbes.net/public/images/promotion/2022/12/2839m_02_01.png" alt="" > 
                 <div class="price NSK-Black">                       
-                    <input type="radio" id="y_pkg1" name="y_pkg" value="202976" onClick=""/>
+                    <input type="radio" id="y_pkg1" name="y_pkg" value="203769" onClick=""/>
                     <label for="y_pkg1">평생 0원 PASS 신청</label>
                 </div>
             </div>

@@ -220,7 +220,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2022/12/2839_02_v2.jpg" alt="윌비스 경찰 PASS">
                 <div class="passLecBuy NSK-Black"> 
                     <div>                                       
-                        <input type="radio" id="y_pkg1" name="y_pkg" value="202976"/>                
+                        <input type="radio" id="y_pkg1" name="y_pkg" value="203769"/>                
                         <label for="y_pkg1">평생 0원 PASS 신청</label>
                     </div>
                     <div>                    

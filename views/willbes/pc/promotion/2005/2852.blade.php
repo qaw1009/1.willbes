@@ -107,9 +107,9 @@
         <div class="evtCtnsBox evt_02">
             <h4>황종휴 경제학 고득점 합격 E-PASS Ⅱ</h4>
             <div class="wrap">                
-                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/239908" onclick="go_PassLecture(this)"  data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/12/2852_02_01.png" alt="경제학 3 PICK 패키지" /></a> 
-                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/239909" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/12/2852_02_02.png" alt="재정학 3 PICK 패키지" /></a> 
-                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/239910" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/12/2852_02_03.png" alt="경제학+국제경제학 패키지" /></a>
+                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/203908" onclick="go_PassLecture(this)"  data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/12/2852_02_01.png" alt="경제학 3 PICK 패키지" /></a> 
+                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/203909" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/12/2852_02_02.png" alt="재정학 3 PICK 패키지" /></a> 
+                <a href="javascript:void(0);" data-url="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/203910" onclick="go_PassLecture(this)" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/12/2852_02_03.png" alt="경제학+국제경제학 패키지" /></a>
             </div>    
             <div class="check">
                 <label>

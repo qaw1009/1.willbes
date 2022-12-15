@@ -19,6 +19,9 @@
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
+        .sky {position:fixed;top:100px; right:10px ;width:120px; text-align:center; z-index:100;}    
+        .sky a {display: block; margin-bottom:10px}
+
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_top_bg.jpg) no-repeat center top;}
         .evtTop div {position: absolute; left:50%; bottom:0; width:1110px; margin-left:-555px; z-index: 2;}
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_01_bg.jpg) no-repeat center top;}
@@ -172,8 +175,11 @@
     </style>
 
     <div class="evtContent NSK ssam" id="evtContainer">
+        <div class="sky" id="QuickMenu">          
+            <a href="https://ssam.willbes.net/promotion/index/cate/3137/code/2821" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/12/2822_sky.jpg" alt="합격전략 설명회" /></a>               
+        </div>
+
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
-            {{--<div data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/12/2822_top.png" alt="2023학년도 연간패키지"/></div>--}}
             <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_top.jpg" alt="2023학년도 연간패키지"/>
         </div>
 

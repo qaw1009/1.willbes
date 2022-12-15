@@ -136,31 +136,33 @@
                         <table cellspacing="0" cellpadding="0" class="txtTable tx-black pb-zero" style="display:none">
                             <tbody>
                             <tr>
-                                <td> 
-                                    <h4 class="NG mb10 tx16 tx-dark-blue"><span class="tx-shadow">[ GS3순환 단과선등록 안내사항  ]</span></h4>
+                                <td class="tx14"> 
+                                    <h4 class="NG mb10 tx16 tx-dark-blue"><span class="tx-shadow">[ GS1순환 단과선등록 안내사항 ]</span></h4>
                                     <strong>1. 신청 대상자</strong><br>
-                                    1) 22년대비 GS2순환 이수진 노동법 [실강/실영상] 수강생<br>
-                                    2) 22년대비 GS2순환 문일  행정쟁송법 [실강/실영상] 수강생<br>
-                                    3) 22년대비 GS2순환 오은지 인사노무관리, 경영조직론 [실강/실영상] 수강생<br>
-                                    <span class="tx-red">※ [온라인첨삭반 / 월요영상반 / 동영상 ] 강의 수강자는 선접수 대상자가 아닙니다.</span><br>
+                                    1) 23년대비 GS0순환 이수진 노동법 [실강/실영상] 수강생<br>
+                                    2) 23년대비 GS0순환 문일 행정쟁송법 [실강/실영상] 수강생<br>
+                                    <span class="tx-red">※ [온라인첨삭반 / 동영상] 강의 수강자는 선접수 대상자가 아닙니다.</span><br>
                                     <br>
-                                    <strong>2. 신청 기간 : <span class="tx-shadow">6/8(수) 11시 ~ 6/12(일) 24시</span></strong><br>                                 
+                                    <strong>2. 신청 기간 : <span class="tx-shadow">12/15(금) 11시 ~ 12/16(금) 24시</span></strong><br>                                 
                                     <br>
-                                    <strong>3. 신청 강의 : GS3순환 강의</strong><br>
+                                    <strong>3. 신청 강의 : GS1순환 강의</strong><br>
                                     <br>
-                                    <strong>4. 신청 방법 : 홈페이지(PC, 모바일, 태블릿) / 방문 신청</strong><br>
-                                    ▶ 홈페이지 신청방법: 홈페이지 로그인 → 학원수강신청 → 단과 선등록<br>
-                                    ▶ <span class="tx-shadow">코로나바이러스-19 예방을 위해 가급적 홈페이지 수강신청</span> 부탁드립니다.<br>
+                                    <strong>4. 신청 방법 : 홈페이지(모바일: PC버전 가능) / 방문 신청</strong><br>
+                                    ① 온라인신청: 로그인 → 학원수강신청 → 단과선접수 클릭<br>
+                                    ② 방문신청: 신분증 지참 후 방문<br>
+                                    <span class="tx-shadow">※ 온라인 신청을 권장드립니다.</span><br>
                                     <br>
-                                    <strong>5. 선등록 해당강의 외 다른 GS3순환 강의 동시등록 가능(GS2순환 수강이력에 따라 동시등록 가능한 강의 상이)</strong><br>
-                                    ▶ 이수진T 강의 선등록 대상자 → 이수진T[실강/실영상/온라인첨삭] + 문일T[실영상/온라인첨삭] 신청 가능<br>
-                                    <span class="tx-red">※문일T 실강반 신청 불가</span><br>
+                                    <strong>5. 수강신청 확인 방법: 로그인 → 내강의실 → 학원강좌 → 수강신청강좌 → 단과반 탭 클릭</strong><br>
                                     <br>
-                                    <strong>6. 수강신청 확인 방법 : 홈페이지 로그인 → 내강의실 → 학원강좌 → 수강신청강좌</strong><br>
+                                    <strong>6. 수강증: 강의실 입장 전까지 데스크에서 발급</strong><br>
+                                    <span class="tx-shadow">※ 신분증 지참 필수</span><br>
                                     <br>
-                                    <strong>7. 기타 사항</strong><br>
+                                    <strong>7. GS1순환 <a href="https://job.willbes.net/support/gosiNotice/show/cate/309002?board_idx=442776&s_cate_code=309002&s_cate_code_disabled=Y" target="_blank" class="tx-red">시간표 보기 ></a></strong><br>
+                                    <br>
+                                    <strong>8. 유의사항</strong><br>
                                     1) 결제순으로 수강신청이 확정됩니다.<br>
-                                    2) 수강증: 강의실 입장전까지 데스크에서 발급<br>
+                                    <span class="tx-red">2) 단과 선접수 시 실강 잔여좌석이 없을 수 있습니다. (종합반 수강신청 여부에 따라 잔여좌석이 상이합니다.)<br>
+                                    3) 기간 내 수강신청을 하더라도 실강은 선착순으로 마감되며, 실영상반/온라인첨삭반은 수강신청 가능합니다.</span>
                                 </td>
                             </tr>
                             </tbody>

@@ -1,6 +1,10 @@
+User-agent: BLEXBot
+Disallow: /
+
 User-agent: *
 Disallow: /lcms/
 Disallow: /member/
 Disallow: /classroom/
 Disallow: /m/member/
 Disallow: /m/classroom/
+

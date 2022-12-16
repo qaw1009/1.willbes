@@ -12,10 +12,14 @@
         <div class="willbes-Counsel c_both">
             @include('willbes.pc.site.consult.common')
         </div>
-            <div class="willbes-User-Info">
-                <form id="calendar_form" name="calendar_form"><span id="calendar_box"></span></form>
-                <span id="schedule_box"></span>
-           </div>
+        <div class="willbes-User-Info">
+            <form id="calendar_form" name="calendar_form"><span id="calendar_box"></span></form>
+            <span id="schedule_box"></span>
+       </div>
+
+        {{--소방직 배너 2023.01.31까지 노출--}}
+        {{--<div class="pt50 c_both"><img src="https://static.willbes.net/public/images/promotion/2022/12/3023_940x300.jpg" alt="구매전 안내"/></div>--}}
+
         {{--<div id="RESERVEPASS"></div>--}}
     </div>
     {!! banner('수험정보_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
@@ -42,7 +46,7 @@
             $('#calendar_box').html(ret).show().css('display', 'block').trigger('click');
             /*
             todo : 이미지 추가 시 같이 반영
-            $(".calendar_week").find("td:eq(3)").html('수 <br><span style="font-size:11px; color: red;">상담투어신청</span>');
+            $(".calendar_week").find("td:eq(3)").html('수 <div class="tx-red">상담투어신청</div>');
             */
         }, showAlertError, false, 'GET', 'html');
 

@@ -18,7 +18,7 @@
        </div>
 
         {{--소방직 배너 2023.01.31까지 노출--}}
-        {{--<div class="pt50 c_both"><img src="https://static.willbes.net/public/images/promotion/2022/12/3023_940x300.jpg" alt="구매전 안내"/></div>--}}
+        {{--<div class="pt50 c_both"><img src="https://static.willbes.net/public/images/promotion/2022/12/3023_940x300.jpg" alt="소방직 1월 구매 이벤트"/></div>--}}
 
         {{--<div id="RESERVEPASS"></div>--}}
     </div>

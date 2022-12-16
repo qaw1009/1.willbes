@@ -237,6 +237,7 @@
                                         echo '<option value="'. $i .'" '. $selected .'>'. $str . $i .'</option>';
                                     }
                                 @endphp
+                                <option value="120" {{($method == 'PUT' && $data['ConsultTime'] == '120' ? 'selected="selected"' : '')}}>120</option>
                             </select> 분
                             <span class="blue pr-10 pl-30">[쉬는시간]</span>
                             <select class="form-control" id="break_time" name="break_time" required="required" @if($method == 'PUT') disabled="disabled" @endif>

@@ -40,6 +40,10 @@
 
         sendAjax(_url, data, function(ret) {
             $('#calendar_box').html(ret).show().css('display', 'block').trigger('click');
+            /*
+            todo : 이미지 추가 시 같이 반영
+            $(".calendar_week").find("td:eq(3)").html('수 <br><span style="font-size:11px; color: red;">상담투어신청</span>');
+            */
         }, showAlertError, false, 'GET', 'html');
 
         $('#schedule_list_table').html('');

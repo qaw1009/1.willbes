@@ -8,9 +8,9 @@
     <div class="Layer-Tit NG tx-dark-black">나의 <span class="tx-blue">예약현황</span></div>
     <div class="Layer-Cont">
         <div class="Layer-SubTit tx-gray">
-            ‘ 예약완료’ 된 상담정보만 확인할 수 있습니다. (‘예약취소’시 확인불가)<br/>
+            '예약완료' 된 상담정보만 확인할 수 있습니다. ('예약취소'시 확인불가)<br/>
             @if(empty($consult_type) === false && $consult_type == 'V')
-                예약 완료된 상담중 ‘미방문’ 상담 상태가 있을 경우 추가 {{ $consult_name }} 예약이 불가능합니다. (‘미방문’상태 예약취소 후 {{ $consult_name }} 예약가능)
+                예약 완료된 상담중 '미방문' 상담 상태가 있을 경우 추가 {{ $consult_name }} 예약이 불가능합니다. ('미방문'상태 예약취소 후 {{ $consult_name }} 예약가능)
             @endif
         </div>
         <div class="PASSZONE-Lec-Section">

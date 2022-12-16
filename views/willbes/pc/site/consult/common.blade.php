@@ -40,7 +40,7 @@
                         @endforeach
                     </select>
                 </td>
-                <td>
+                <td class="tx-right">
                     <button type="button" class="mem-Btn combine-Btn bg-blue bd-dark-blue" onclick="javascript:mySchedule();">
                         <span><strong>나의 예약현황</strong></span>
                     </button>

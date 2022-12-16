@@ -122,7 +122,7 @@
                                         <option value="노량진2">노량진2</option>
                                     </select>
                                 </td>
-                                <td>
+                                <td class="tx-right">
                                     <button type="submit" onclick="" class="mem-Btn combine-Btn bg-blue bd-dark-blue">
                                         <span><strong>나의 예약현황</strong></span>
                                     </button>
@@ -158,7 +158,7 @@
                                 <td>일</td>
                                 <td>월</td>
                                 <td>화</td>
-                                <td>수</td>
+                                <td>수<div class="tx-red">상담투어신청</div></td>
                                 <td>목</td>
                                 <td>금</td>
                                 <td>토</td>
@@ -289,6 +289,9 @@
                     </div>
                 </div>
             </div>
+
+            {{--소방직 배너 2023.01.31까지 노출--}}
+            <div class="pt50 c_both"><img src="https://static.willbes.net/public/images/promotion/2022/12/3023_940x300.jpg" alt="구매전 안내"/></div>
         </div>
         <!-- willbes-Counsel -->
     </div>

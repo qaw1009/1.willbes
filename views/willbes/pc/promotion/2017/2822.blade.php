@@ -175,10 +175,11 @@
     </style>
 
     <div class="evtContent NSK ssam" id="evtContainer">
+        {{--
         <div class="sky" id="QuickMenu">          
             <a href="https://ssam.willbes.net/promotion/index/cate/3137/code/2821" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/12/2822_sky.jpg" alt="합격전략 설명회" /></a>               
         </div>
-
+        --}}
         <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_top.jpg" alt="2023학년도 연간패키지"/>
         </div>

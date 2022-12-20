@@ -889,7 +889,36 @@
 
 .ssam .d-day-wrap div.package strong.count {
     font-size: 26px;
-    color: red
+    color: #fa7a09;
+    animation: animate1 1s infinite;
+}
+
+@keyframes animate1 {
+    from {
+        color: #fa7a09
+    }
+
+    50% {
+        color: red
+    }
+
+    to {
+        color: #fa7a09
+    }
+}
+
+@-webkit-keyframes animate1 {
+    from {
+        color: #fa7a09
+    }
+
+    50% {
+        color: red
+    }
+
+    to {
+        color: #fa7a09
+    }
 }
 
 /* subContainer : Prof : willbes-Layer-Trend */

@@ -1,6 +1,6 @@
 @extends('html.layouts.master')
 @section('content')
-
+<link href="/public/css/willbes/style_2018.css?ver={{time()}}" rel="stylesheet">
 <style type="text/css">
 .ssam .noticeBanner {float:right; width:550px; position:relative;}
 .ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
@@ -135,8 +135,6 @@ no-repeat 5px center}
 .ssam .VisualSubBox .Subtab li a:hover {color:#fff; background:#5ba5fe; font-weight:bold;}
 .ssam .VisualSubBox .Subtab li:nth-child a (6),
 .ssam .VisualSubBox .Subtab li:last-child a {border:0}
-
-
 </style>
 
 <!-- Container -->
@@ -144,12 +142,15 @@ no-repeat 5px center}
 
     <div class="d-day NSK">
         <div class="d-day-wrap">
+            {{-- 기존 d-day 주석처리
             <div>
                 <p>유∙초등 1차 <span class="NSK-Black">D-31</span></p>
             </div>
             <div>
                 <p>중등 1차 <span class="NSK-Black">D-45</span></p>
             </div>
+            --}}
+            <div class="package"><span>연간패키지 문화상품권 증정이벤트! <strong>마감까지 D-11</strong></span> <strong class="count">15:11:12</strong> 남았습니다.</div>
         </div>
     </div>
 

@@ -871,6 +871,27 @@
     color: #036ac1
 }
 
+.ssam .d-day-wrap div.package {
+    font-size: 16px;
+}
+
+.ssam .d-day-wrap div.package span {
+    border-radius: 6px;
+    background: #662801;
+    color: #f6ea7c !important;
+    padding: 2px 8px;
+    vertical-align: text-top;
+}
+
+.ssam .d-day-wrap div.package strong {
+    color: #fff
+}
+
+.ssam .d-day-wrap div.package strong.count {
+    font-size: 26px;
+    color: red
+}
+
 /* subContainer : Prof : willbes-Layer-Trend */
 .willbes-Layer-Trend {
     display: none;
@@ -1425,7 +1446,8 @@
 
 .ssam .mapWrap .mapinfo {
     clear: both;
-    color: #333; font-size: 18px;
+    color: #333;
+    font-size: 18px;
     text-align: center;
     line-height: 1.4;
     border: 1px solid #0c5dc0;

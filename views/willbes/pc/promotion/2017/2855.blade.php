@@ -1,0 +1,148 @@
+@extends('willbes.pc.layouts.master')
+
+@section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
+    <!-- content -->
+    <style type="text/css">
+        .evtContent {
+            position:relative;
+            width:100% !important;
+            min-width:1120px !important;
+            margin-top:20px !important;
+            padding:0 !important;
+            background:#fff;
+            color:#3a3a3a;
+        }
+        .evtContent span {vertical-align:middle}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+
+        /************************************************************/
+
+        .eventTop {background:url(https://static.willbes.net/public/images/promotion/2021/12/2455_top_bg.jpg) no-repeat center top;}
+        .evt01 {background:#eee9e3;}
+        .evt01 .profList {width:1120px; margin:10px auto 0; display: flex; flex-wrap: wrap; justify-content: space-between; padding-bottom:140px}
+        .evt01 .profList .profBox {width: 270px; margin-bottom:15px; position: relative;}
+        .evt01 .profList .profBox a:hover {box-shadow:5px 5px 10px rgba(0,0,0,.4); outline:1px solid #b28026; display: block;}
+        .evt01 .profList .soon {position:absolute; width:100%; height:100%; background:rgba(0,0,0,.6); color:#fff; z-index: 2;
+            display: flex; justify-content: center; align-items: flex-end; font-size:24px; padding-bottom:80px}
+        
+        .evt02 {background:#b28026}
+
+        .evt03 {background:#eee9e3; padding-top:150px}    
+        .evt03 .map {width:1120px; margin:0 auto; height:623px; background:#f4f4f4}
+
+    </style>
+
+    <div class="evtContent NSK" id="evtContainer">
+        <div class="evtCtnsBox eventTop">
+        	<img src="https://static.willbes.net/public/images/promotion/2021/12/2455_top.jpg" alt="2023학년도 대비 윌비스 임용 합격전략 설명회"/>
+        </div>
+
+        <div class="evtCtnsBox evt01">
+            <img src="https://static.willbes.net/public/images/promotion/2022/04/2455_01.jpg" alt="교수진"/>
+            <div class="profList">
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('188327','1327812','HD');"><img src="https://static.willbes.net/public/images/promotion/2022/04/2455_01_t30.jpg" alt="민정선 유아"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189540','1328680','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t01.jpg" alt="이경범 교육학"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189597','1328888','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t24.jpg" alt="정현 교육학"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189524','1328611','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t23.jpg" alt="신태식 교육학"/></a>
+                </div>
+                <div class="profBox">                    
+                    <a href="javascript:fnPlayerSample('189525','1328610','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t02.jpg" alt="이인재 교육학"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189542','1328262','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t03.jpg" alt="송원영 전공국어"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189545','1328676','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t04.jpg" alt="구동언 전공국어"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189549','1328770','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t05.jpg" alt="김유석 전공영어"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189551','1327523','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t06.jpg" alt="김영문 영어학"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189420','1328367','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t07.jpg" alt="김철홍 전공수학"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189555','1328677','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t22.jpg" alt="김현웅 전공수학"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189421','1328364','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t08.jpg" alt="박태영 수학교육론"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189556','1328681','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t09.jpg" alt="박혜향 수학교육론"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('174880','1258449','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t10.jpg" alt="양혜정 생물교육론"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189526','1328675','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t11.jpg" alt="강철 전공화학"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('174884','1256233','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t12.jpg" alt="김병찬 도덕윤리"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189557','1328679','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t13.jpg" alt="김민응 도덕윤리"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189920','1329983','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t25.jpg" alt="최규훈 전공체육"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189561','1328769','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t16.jpg" alt="다이애나 전공음악"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189719','1332081','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t14.jpg" alt="허역팀 일반사회"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189719','1329286','HD');"><img src="https://static.willbes.net/public/images/promotion/2022/01/2455_01_t26.jpg" alt="허역 일반사회"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189719','1329288','HD');"><img src="https://static.willbes.net/public/images/promotion/2022/01/2455_01_t27.jpg" alt="이응재 일반사회"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189719','1329289','HD');"><img src="https://static.willbes.net/public/images/promotion/2022/01/2455_01_t28.jpg" alt="정인홍 일반사회"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189719','1329287','HD');"><img src="https://static.willbes.net/public/images/promotion/2022/01/2455_01_t29.jpg" alt="김현중 일반사회"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189558','1328678','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t15.jpg" alt="김종권 전공역사"/></a>
+                </div>          
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('177588','1270307','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t17.jpg" alt="최우영 전기전자통신"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189560','1328682','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t18.jpg" alt="송광진 정보컴퓨터"/></a>
+                </div>
+                <div class="profBox">
+                    <a href="javascript:fnPlayerSample('189559','1328674','HD');"><img src="https://static.willbes.net/public/images/promotion/2021/12/2455_01_t19.jpg" alt="장영희 전공중국어"/></a>
+                </div>
+                <div class="profBox"></div>
+            </div>
+        </div>
+
+        <div class="evtCtnsBox evt02">
+            <img src="https://static.willbes.net/public/images/promotion/2021/12/2455_02.jpg" alt="유의사항"/>
+        </div>
+
+    </div>
+    <!-- End Container -->
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+        $(document).ready( function() {
+            AOS.init();
+        });
+    </script>
+@stop

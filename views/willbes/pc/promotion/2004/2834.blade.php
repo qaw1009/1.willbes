@@ -52,10 +52,11 @@
     </style>
     
 	<div class="evtContent NSK">
+        {{--
         <div class="sky" id="QuickMenu">
             <a href="#lecbuy"><img src="https://static.willbes.net/public/images/promotion/2022/11/2834_sky.png" alt="불꽃소방 실강오픈"></a>         
         </div>
-    
+        --}}    
 		<div class="evtCtnsBox evt_top" data-aos="fade-up">
 			<img src="https://static.willbes.net/public/images/promotion/2022/11/2834_top.jpg" alt="불꽃소방 실강오픈" />
 		</div>
@@ -94,18 +95,16 @@
 
         <div class="evtCtnsBox evt_04" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2834_04.jpg" alt="추가 학습혜택" />	
-		</div> 
-
+		</div>
+        {{--
         <div class="evtCtnsBox evt_05" data-aos="fade-up" id="lecbuy">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/11/2834_07.jpg" alt="합격보장반" />	
                 <a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/202993" title="합격패스" style="position: absolute; left: 65.09%; top: 52.13%; width: 23.84%; height: 11%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/202747" title="합격보장반" style="position: absolute; left: 65.18%; top: 72.25%; width: 23.84%; height: 11%; z-index: 2;"></a>
             </div>
-		</div> 
-
-  
-
+		</div>
+        --}}
         <div class="evtCtnsBox evt_06" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2834_06.jpg" alt="합격보장반" />
             <div class="loadmap">

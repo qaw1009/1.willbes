@@ -18,7 +18,9 @@
        </div>
 
         {{--소방직 배너 2023.01.31까지 노출--}}
-        {{--<div class="pt50 c_both"><img src="https://static.willbes.net/public/images/promotion/2022/12/3023_940x300.jpg" alt="소방직 1월 구매 이벤트"/></div>--}}
+        @if ($__cfg['SiteCode'] == '2004' && element('s_campus',$arr_input) == '605001')
+            <div class="pt50 c_both"><img src="https://static.willbes.net/public/images/promotion/2022/12/3023_940x300.jpg" alt="소방직 1월 구매 이벤트"/></div>
+        @endif
 
         {{--<div id="RESERVEPASS"></div>--}}
     </div>
@@ -44,10 +46,7 @@
 
         sendAjax(_url, data, function(ret) {
             $('#calendar_box').html(ret).show().css('display', 'block').trigger('click');
-            /*
-            todo : 이미지 추가 시 같이 반영
-            $(".calendar_week").find("td:eq(3)").html('수 <div class="tx-red">상담투어신청</div>');
-            */
+            @if ($__cfg['SiteCode'] == '2004' && element('s_campus',$arr_input) == '605001') $(".calendar_week").find("td:eq(3)").html('수 <div class="tx-red">상담투어신청</div>'); @endif
         }, showAlertError, false, 'GET', 'html');
 
         $('#schedule_list_table').html('');

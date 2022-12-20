@@ -24,7 +24,7 @@ class BaseConsult extends \app\controllers\FrontController
         $arr_base['comment'] = $this->_depth_comment($arr_base['depth']);
         $arr_base['site_code'] = $this->_site_code;
         $consult_name = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? '상담' : $this->_consult_name;
-        $arr_base['title'] = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? '· GS0순환 이수진 노동법 1:1 대면상담 예약' : '· 심층 ' . $consult_name . ' 예약';
+        $arr_base['title'] = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? 'ㆍ신현표 노무사의 공부방법론 및 답안작성법 1:1 대면상담 예약' : '· 심층 ' . $consult_name . ' 예약';
 
             // 캠퍼스 조회
         $arr_base['campus'] = [];
@@ -343,13 +343,15 @@ class BaseConsult extends \app\controllers\FrontController
             case "1" :
                 // 자격증 & 전화상담인 경우
                 if ($this->_site_code == '2011' && $this->_consult_type == 'T') {
-                    $comment = '· 2023대비 GS0순환 이수진 노동법, 실강 및 실영상반 수강생에 한해 예약가능합니다.<br/>
-                                · 9/19(월) 13:00까지 예약 가능하며, 선착순으로 예약 마감됩니다.<br/>
-                                · 상담 일시<br/>
-                                <span class="ml20"></span>- 9/26(월)~10/14(금) 14:00~21:00 (마지막타임 20:30~21:00)<br/>
-                                <span class="ml20"></span>- 9/23(금), 10/21(금), 10/28(금) 14:00~17:30 (마지막타임 17:00~17:30)<br/>
-                                · 예약 완료 이후에는 변경이 어려울 수 있으니, 신중히 선택해주시기 바랍니다.<br/>
-                                · 진행 강의실 및 안내사항은 9/22(목) 문자공지드립니다.<br/>';
+                    $comment = '<p style="color: red; margin-bottom: 10px;">※ 12/22(목) 오후 2시부터 예약 가능합니다.  (아이디 로그인 후 가능)</p>
+                                ㆍ수강대상 : 제31회 공인노무사 2차 시험 응시자<br/>
+                                ㆍ12/25(일) 오후 12:00까지 예약 가능하며, 선착순으로 예약 마감됩니다.<br/>
+                                ㆍ상담 일시    (※ 개인별 상담시간 : 1시간)<br/>
+                                <span style="margin-left: 30px;"></span>1회 - 12/26(월) 오후 13:00~18:00 (마지막 타임 17:00~18:00)<br/>
+                                <span style="margin-left: 30px;"></span>2회 - 12/27(화) 오후 13:00~18:00 (마지막 타임 17:00~18:00)<br/>
+                                ㆍ예약 완료 이후에는 변경이 불가하오니, 신중히 선택해주시기 바랍니다.<br/>
+                                ㆍ진행 강의실 및 안내사항은 추후 문자공지드립니다.<br/>
+                                ㆍ불가피 참석이 어려우신 경우, 다른 대기자분들의 상담을 위해 학원(1544-1881 ARS1, 3)으로 연락 주시기 바랍니다.<br/>';
                 } else {
                     switch ($this->_consult_type) {
                         case 'V' :

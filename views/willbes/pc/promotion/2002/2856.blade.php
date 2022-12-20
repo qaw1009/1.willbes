@@ -30,7 +30,7 @@
         .newTopDday ul li .mock_test {font-size:16px;font-weight:400;line-height:1.75;}
         .newTopDday ul li strong {line-height:70px}
         .newTopDday ul li img {width:50px}
-        .newTopDday ul li:first-child {line-height:none;padding-right:10px; padding-top:10px;width:30%;}
+        .newTopDday ul li:first-child {line-height:none;margin-right:-75px; padding-top:10px;width:30%;}
         .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:70px}
         .newTopDday ul:after {content:""; display:block; clear:both}
 

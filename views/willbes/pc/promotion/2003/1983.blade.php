@@ -231,7 +231,7 @@
                         <label for="pass03">
                             <div class="NSK-Black">2023대비 국가직 PASS</div>
                             <div><span>인증 EVENT 5만원 할인</span></div>
-                            <div>49만원 👉 <strong class="NSK-Black">44</strong>만원</div>
+                            <div>49만원 👉 <strong class="NSK-Black">39</strong>만원</div>
                             <ul>                            
                                 <li><span>23년 4월 국가직까지 수강</span></li>
                                 <li><span>최종합격시 100% 환급</span></li>

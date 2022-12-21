@@ -128,7 +128,7 @@
 
     <!-- Container -->
     <div id="Container" class="Container ssam NGR c_both">
-        @if(empty($data['dday']) === false)
+        {{--@if(empty($data['dday']) === false)
             <div class="d-day NSK">
                 <div class="d-day-wrap">
                     @foreach($data['dday'] as $row)
@@ -138,7 +138,15 @@
                     @endforeach
                 </div>
             </div>
-        @endif
+        @endif--}}
+        <div class="d-day NSK">
+            <div class="d-day-wrap">
+                <div class="package">
+                    <span>연간패키지 문화상품권 증정이벤트! <strong>마감까지 D-<var id="_day">0</var></strong></span>
+                    <strong id="_time" class="count NSK-Black">00:00:00</strong> 남았습니다.
+                </div>
+            </div>
+        </div>
 
         <!-- site nav -->
         @include('willbes.pc.site._viewTest.main_partial.site_menu')
@@ -490,6 +498,11 @@
             // }).mouseleave(function (){
             //     subslidesImg.startAuto();
             // });
+        });
+
+        /* d-day 카운트 스크립트 */
+        $(document).ready(function() {
+            dDayTimer('2022-12-30','17:00','_day','_time');
         });
     </script>
 @stop

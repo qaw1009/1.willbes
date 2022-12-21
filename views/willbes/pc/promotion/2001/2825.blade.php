@@ -83,7 +83,7 @@
 
         <div class="sky" id="QuickMenu">
             <a href="#lec"><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_sky1.png" alt="100일 완성반"></a>
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2827" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_sky2.png" alt="스페셜 이벤트"></a>         
+            {{--<a href="https://police.willbes.net/promotion/index/cate/3001/code/2827" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/11/2825_sky2.png" alt="스페셜 이벤트"></a>--}}       
         </div>
         
         <div class="evtCtnsBox evtTop">

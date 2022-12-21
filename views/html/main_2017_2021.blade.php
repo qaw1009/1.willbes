@@ -135,6 +135,61 @@ no-repeat 5px center}
 .ssam .VisualSubBox .Subtab li a:hover {color:#fff; background:#5ba5fe; font-weight:bold;}
 .ssam .VisualSubBox .Subtab li:nth-child a (6),
 .ssam .VisualSubBox .Subtab li:last-child a {border:0}
+
+
+.ssam .d-day {position: absolute; top: 120px; z-index: 999;}
+.ssam .d-day-wrap {background:#1c242b; width:1120px !important; height:50px; border-radius:10px; display: flex; justify-content: center; align-items: center; padding:0 !important; text-align:center}
+.ssam .d-day-wrap div.package {
+    font-size: 20px; color:#fff; font-weight:bold; line-height:50px; width:100%;
+}
+
+.ssam .d-day-wrap div.package span {
+    vertical-align: baseline; 
+}
+.ssam .d-day-wrap div.package .pc1 {color:#eeeabd !important}
+.ssam .d-day-wrap div.package .round {
+    color: #1b232a; background:#eeeabd; padding:2px 15px; border-radius:20px; margin:0 20px 0 30px; 
+}
+.ssam .d-day-wrap div.package .h_line {display:inline-block; width:100px; margin:-10px 30px 0; border-top:1px solid #fff; height: 10px;}
+.ssam .d-day-wrap div.package .pc2 {font-size:30px;}
+.ssam .d-day-wrap div.package .pc2 span {color:#fff !important}
+.ssam .d-day-wrap div.package p strong span {
+    color: #fff !important;
+    font-size: 20px;
+}
+
+.ssam .d-day-wrap div.package .count {
+    font-size: 30px;
+    color: #fa7a09;
+    animation: animate1 1s infinite;
+}
+@@keyframes animate1 {
+    from {
+        color: #eeeabd
+    }
+
+    50% {
+        color: red
+    }
+
+    to {
+        color: #eeeabd
+    }
+}
+
+@@-webkit-keyframes animate1 {
+    from {
+        color: #eeeabd
+    }
+
+    50% {
+        color: red
+    }
+
+    to {
+        color: #eeeabd
+    }
+}
 </style>
 
 <!-- Container -->
@@ -150,7 +205,11 @@ no-repeat 5px center}
                 <p>중등 1차 <span class="NSK-Black">D-45</span></p>
             </div>
             --}}
-            <div class="package"><p>연간패키지 문화상품권 증정이벤트! <strong>마감까지 D-<span>11</span></strong></p> <strong class="count NSK-Black">15:11:12</strong> 남았습니다.</div>
+            <div class="package">
+                연간패키지 <span class="pc1">문화상품권 증정이벤트!</span> <strong class="round">마감까지</strong> <strong class="pc2">D-<span>11</span></strong>
+                <span class="h_line"></span>
+                <strong class="count NSK-Black">15:11:12</strong> 남았습니다.
+            </div>
         </div>
     </div>
 

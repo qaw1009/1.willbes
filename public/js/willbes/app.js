@@ -250,3 +250,49 @@ function event_layer_popup(url) {
         $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
     }, null, false, 'GET', 'html');
 }
+
+/**
+ * d-day 타이머
+ * @param end_date
+ * @param end_time
+ * @param eleid_day
+ * @param eleid_time
+ * return 일자, 시:분:초
+ */
+function dDayTimer(end_date, end_time, eleid_day, eleid_time) {
+    if(!end_time) end_time = '00:00';
+    var dday = moment(end_date + ' ' + end_time + ':00', 'YYYY-MM-DD HH:mm:ss');
+    var now, distance;
+    var d, h, m, s;
+
+    var dDayCountRepeat = setInterval(function(){
+        now = moment().format('YYYY-MM-DD HH:mm:ss');
+        distance = dday.diff(now, 'milliseconds');
+
+        if (distance <= 0) {
+            d=0;h=0;m=0;s=0;
+            $('#'+eleid_day).html(0);
+            $('#'+eleid_time).html('00:00:00');
+            clearInterval(dDayCountRepeat);
+        } else {
+            d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            s = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (h < 10) {
+                h = '0' + h;
+            }
+            if (m < 10) {
+                m = '0' + m;
+            }
+            if (s < 10) {
+                s = '0' + s;
+            }
+
+            $('#'+eleid_day).html(d);
+            $('#'+eleid_time).html(h + ':' + m + ':' + s);
+        }
+
+    }, 1000);
+}

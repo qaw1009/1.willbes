@@ -142,7 +142,7 @@
         <div class="d-day NSK">
             <div class="d-day-wrap">
                 <div class="package">
-                    <span>연간패키지 문화상품권 증정이벤트! <strong>마감까지 D-<var id="_day">0</var></strong></span>
+                    <p>연간패키지 문화상품권 증정이벤트! <strong>마감까지 D-<span id="_day">0</span></strong></p>
                     <strong id="_time" class="count NSK-Black">00:00:00</strong> 남았습니다.
                 </div>
             </div>

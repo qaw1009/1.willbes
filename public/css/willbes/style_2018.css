@@ -875,16 +875,22 @@
     font-size: 16px;
 }
 
-.ssam .d-day-wrap div.package span {
+.ssam .d-day-wrap div.package p {
     border-radius: 6px;
     background: #662801;
     color: #f6ea7c !important;
     padding: 2px 8px;
     vertical-align: text-top;
+    display: inline;
 }
 
-.ssam .d-day-wrap div.package strong {
+.ssam .d-day-wrap div.package p strong {
     color: #fff
+}
+
+.ssam .d-day-wrap div.package p strong span {
+    color: #fff !important;
+    font-size: 16px;
 }
 
 .ssam .d-day-wrap div.package strong.count {

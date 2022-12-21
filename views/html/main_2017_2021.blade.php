@@ -150,7 +150,7 @@ no-repeat 5px center}
                 <p>중등 1차 <span class="NSK-Black">D-45</span></p>
             </div>
             --}}
-            <div class="package"><span>연간패키지 문화상품권 증정이벤트! <strong>마감까지 D-11</strong></span> <strong class="count NSK-Black">15:11:12</strong> 남았습니다.</div>
+            <div class="package"><p>연간패키지 문화상품권 증정이벤트! <strong>마감까지 D-<span>11</span></strong></p> <strong class="count NSK-Black">15:11:12</strong> 남았습니다.</div>
         </div>
     </div>
 

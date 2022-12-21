@@ -38,11 +38,6 @@
                 </ul>
             </div>
         </div>
-        <div class="mapinfo NSK-Black">
-            윌비스 임용고시학원은<br>
-            별도의 <span class="tx-color">무료 주차장</span>이 없습니다. 
-            가급적 <span class="tx-color">대중교통</span>을 이용해 주시기 바랍니다!
-        </div>
     </div>
 </div>
 

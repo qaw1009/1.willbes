@@ -38,19 +38,19 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox eventTop">
+        <div class="evtCtnsBox eventTop" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2022/12/2855_top.jpg" alt="2023학년도 대비 윌비스 임용 합격전략 설명회"/>
         </div>
 
-        <div class="evtCtnsBox evt01">
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2022/12/2855_01.jpg" alt="2023학년도 대비 윌비스 임용 합격전략 설명회"/>
         </div>
 
-        <div class="evtCtnsBox evt02">
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2022/12/2855_02.jpg" alt="2023학년도 대비 윌비스 임용 합격전략 설명회"/>
         </div>
 
-        <div class="evtCtnsBox evt03">
+        <div class="evtCtnsBox evt03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/12/2855_03.jpg" alt="교수진"/>
             <div class="profList">
                 <div class="profBox">
@@ -224,7 +224,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox evt04">
+        <div class="evtCtnsBox evt04" data-aos="fade-up">
             <a href="https://ssam.willbes.net/promotion/index/cate/3137/code/2822" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/12/2855_04.jpg" alt="연간패키지"/></a>
         </div>
 

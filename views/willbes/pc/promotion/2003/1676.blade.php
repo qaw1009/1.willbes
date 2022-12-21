@@ -76,7 +76,7 @@
             </map>  
         </div>
 
-        @if(time() < strtotime('202212120000'))
+        @if(time() < strtotime('202301020000'))
             <div class="evtCtnsBox evttop_banners" >
                 <div class="wrap" data-aos="fade-left">
                     <div class="txtInfo">
@@ -86,11 +86,11 @@
                     </div> 
                     <div class="btns">
                         <div>
-                            12/05(월)~12/9(금)
+                            12/26(월)~12/30(금)
                             <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank">접수하기 ></a>
                         </div>
                         <div>
-                            12/10(토)~12/11(일)
+                            12/31(토)~1/1(일)
                             <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank">응시하기 ></a>
                         </div>
                     </div>
@@ -127,9 +127,9 @@
         <div class="evtCtnsBox evt02" id="pairing" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
-                <ul id="slidesImg4">               
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/11/1676_02_11.jpg" /></li>
+                <ul id="slidesImg4">              
                     <li><img src="https://static.willbes.net/public/images/promotion/2022/11/1676_02_12.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/12/1676_02_01.jpg" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p>
@@ -238,7 +238,7 @@
                             - 매주 화/목 21:00~21:40 똑똑영어 (어휘), 8회분<br>
                             - 1주차/3주차 월~금 : 무료 온라인 모의고사 접수 진행<br>
                             - 1주차/3주차 토~일 : 무료 온라인 모의고사 응시 기간<br>
-                            - 11/28(월), 12/12(월) 오후 7~8시 :  모의고사 해설 방송 진행 (실시간 LIVE), 2회분</li>
+                            - 1/2(월), 1/16(월) 오후 7~8시 :  모의고사 해설 방송 진행 (실시간 LIVE), 2회분</li>
 
                             <li>본 방송은 방송 종료 후 유료 동영상 강의로 전환됩니다.<br>
                             단, 정규방송과의 형평성을 고려하여 방송 후 1주일 뒤 동영상 서비스가 제공됩니다.</li>
@@ -250,9 +250,9 @@
                             - PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br>
                             - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.</li>
                             <li>열공 출첵 이벤트 관련<br>
-                            - 본 이벤트는 로그인 후 참여 가능하며, 11/21(월)~12.16(금)까지 총 20회 진행됩니다. (*토~일 제외)<br>
-                            - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (11/28(월), 12/12(월) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
-                            - 당첨자 안내 공지는 12/21(수) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
+                            - 본 이벤트는 로그인 후 참여 가능하며, 12/26(월)~1.20(금)까지 총 20회 진행됩니다. (*토~일 제외)<br>
+                            - 출석체크 가능 시간 반반 21:00~22:00, 똑똑 21:00~21:40, 모의고사 해설 LIVE (1/28월), 1/16(월) 19:00~20:00 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
+                            - 당첨자 안내 공지는 1/25(수) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
                         </ol>
                     </dd>
                 </dl>

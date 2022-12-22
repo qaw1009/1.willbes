@@ -151,11 +151,11 @@ no-repeat 5px center}
     color: #1b232a; background:#eeeabd; padding:5px 15px; border-radius:20px; margin:0 20px 0 30px; display:inline; 
 }
 
-.ssam .Section .d-day-wrap div.package .pc2 {font-size:32px; margin-right:30px}
+.ssam .Section .d-day-wrap div.package .pc2 {font-size:28px; margin-right:30px}
 .ssam .Section .d-day-wrap div.package .pc2 span {color:#fff !important}
 
 .ssam .d-day-wrap div.package .count {
-    font-size: 32px;
+    font-size: 34px !important;
     color: #fa7a09;
     margin-right:10px;
     animation: animate1 1s infinite;
@@ -423,7 +423,7 @@ no-repeat 5px center}
         <div class="d-day-wrap">
             <div class="package NSK">
                 연간패키지 <span class="pc1">문화상품권 증정이벤트!</span> <strong class="round">마감까지</strong> <strong class="pc2">D-<span>11</span></strong>
-                <strong class="count NSK-Black">15:11:12</strong> 남았습니다.
+                <strong class="count NSK-Black">15:11:12 05</strong> 남았습니다.
             </div>
         </div>
     </div>

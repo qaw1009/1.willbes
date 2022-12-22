@@ -133,9 +133,9 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1676m_02.jpg" alt="" >
         <ul>
             <li>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/202268" target="_blank">
+                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/204162" target="_blank">
                     <span>반반모고&똑똑영어</span>
-                    <span>11월 방송</span>
+                    <span>12월 방송</span>
                     <span>다시보기</span>
                     <span><strong>6만원으로</strong>방송 다시보기 ></span>
                 </a>

@@ -145,7 +145,7 @@
             </div>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/11/1676_03_02.jpg" name="evt3" id="evt3">
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/202268" target="_blank" title="11월방송 다시보기" style="position: absolute; left: 11.7%; top: 75.99%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/204162" target="_blank" title="방송 다시보기" style="position: absolute; left: 11.7%; top: 75.99%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/199952" target="_blank" title="다시보기" style="position: absolute; left: 38.93%; top: 75.59%; width: 21.34%; height: 9.34%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" title="tpass" style="position: absolute; left: 66.88%; top: 75.99%; width: 21.34%; height: 9.34%; z-index: 2;"></a>                
             </div>

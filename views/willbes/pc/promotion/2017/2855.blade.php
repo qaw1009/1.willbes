@@ -197,7 +197,6 @@
                     <img src="https://static.willbes.net/public/images/promotion/2022/12/2855_03_t21.jpg" alt="다이애나 음악"/>
                     <div class="btns">
                         <a href="javascript:fnPlayerSample('203875','1386842','HD');">설명회 보기</a>
-                        <a href="@if($file_yn[21] == 'Y') {{ front_url($file_link[21]) }} @else {{ $file_link[21] }} @endif" alt="자료 받기">설명회 자료 받기</a>
                     </div>
                 </div>
                 <div class="profBox">
@@ -215,11 +214,7 @@
                 </div>
 
                 <div class="profBox">
-                    <div class="NSK-Black">
-                        2024년 대비<br>
-                        윌비스임용과<br>
-                        시작하세요.<br>
-                    </div>
+                    <img src="https://static.willbes.net/public/images/promotion/2022/12/2855_03_end.jpg" alt=""/>
                 </div>
             </div>
         </div>

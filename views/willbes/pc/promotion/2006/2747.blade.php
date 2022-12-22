@@ -70,73 +70,54 @@
                 <li><a href="#tab06">노동경제학</a></li>
 			</ul>
 			<div id="tab01" class="wrap">
-				<img src="https://static.willbes.net/public/images/promotion/2022/08/2747_02_01.jpg" alt="노동법" />
-                <a href="javascript:go_PassLecture('200780');" title="이수진" style="position: absolute; left: 88.13%; top: 65.29%; width: 10.45%; height: 3.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200781');" title="이수진" style="position: absolute; left: 88.13%; top: 69.98%; width: 10.45%; height: 3.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200782');" title="이수진" style="position: absolute; left: 88.13%; top: 74.49%; width: 10.45%; height: 3.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200783');" title="이수진" style="position: absolute; left: 88.13%; top: 79.10%; width: 10.45%; height: 3.68%; z-index: 2;"></a>
+				<img src="https://static.willbes.net/public/images/promotion/2022/12/2747_02_01.jpg" alt="노동법" />
+                <a href="javascript:go_PassLecture('200780');" title="이수진" style="position: absolute; left: 88.13%; top: 68.59%; width: 10.45%; height: 3.68%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200781');" title="이수진" style="position: absolute;left: 88.13%;top: 73.48%;width: 10.45%;height: 3.68%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200782');" title="이수진" style="position: absolute;left: 88.13%;top: 78.29%;width: 10.45%;height: 3.68%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200783');" title="이수진" style="position: absolute;left: 88.13%;top: 83.05%;width: 10.45%;height: 3.68%;z-index: 2;"></a>
 
-                <a href="javascript:go_PassLecture('200784');" title="김지현" style="position: absolute; left: 88.13%; top: 90.98%; width: 10.45%; height: 3.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200785');" title="김지현" style="position: absolute; left: 88.13%; top: 95.67%; width: 10.45%; height: 3.68%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200784');" title="김지현" style="position: absolute;left: 88.13%;top: 95.78%;width: 10.45%;height: 3.68%;z-index: 2;"></a>              
 			</div>
 			<div id="tab02" class="wrap">
-				<img src="https://static.willbes.net/public/images/promotion/2022/08/2747_02_02.jpg" alt="행정쟁송법"/>
-                <a href="javascript:go_PassLecture('200786');" title="문일" style="position: absolute; left: 88.13%; top: 57.07%; width: 10.45%; height: 2.26%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200788');" title="문일" style="position: absolute; left: 88.13%; top: 59.95%; width: 10.45%; height: 2.26%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200789');" title="문일" style="position: absolute; left: 88.13%; top: 62.84%; width: 10.45%; height: 2.26%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200790');" title="문일" style="position: absolute; left: 88.13%; top: 65.67%; width: 10.45%; height: 2.26%; z-index: 2;"></a>
+				<img src="https://static.willbes.net/public/images/promotion/2022/12/2747_02_02.jpg" alt="행정쟁송법"/>
+                <a href="javascript:go_PassLecture('200786');" title="문일" style="position: absolute;left: 88.13%;top: 60.07%;width: 10.45%;height: 3.06%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200788');" title="문일" style="position: absolute;left: 88.13%;top: 64.27%;width: 10.45%;height: 3.06%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200789');" title="문일" style="position: absolute;left: 88.13%;top: 68.47%;width: 10.45%;height: 3.06%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200790');" title="문일" style="position: absolute;left: 88.13%;top: 72.77%;width: 10.45%;height: 3.06%;z-index: 2;"></a>
 
-                <a href="javascript:go_PassLecture('200791');" title="이승민" style="position: absolute; left: 88.13%; top: 72.96%; width: 10.45%; height: 2.26%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200793');" title="이승민" style="position: absolute; left: 88.13%; top: 75.90%; width: 10.45%; height: 2.26%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200794');" title="이승민" style="position: absolute; left: 88.13%; top: 78.68%; width: 10.45%; height: 2.26%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200795');" title="이승민" style="position: absolute; left: 88.13%; top: 81.56%; width: 10.45%; height: 2.26%; z-index: 2;"></a>
-
-                <a href="javascript:go_PassLecture('200796');" title="서창교" style="position: absolute; left: 88.13%; top: 88.91%; width: 10.45%; height: 2.26%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200797');" title="서창교" style="position: absolute; left: 88.13%; top: 91.74%; width: 10.45%; height: 2.26%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200799');" title="서창교" style="position: absolute; left: 88.13%; top: 94.57%; width: 10.45%; height: 2.26%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200800');" title="서창교" style="position: absolute; left: 88.13%; top: 97.45%; width: 10.45%; height: 2.26%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200791');" title="이승민" style="position: absolute;left: 88.13%;top: 83.67%;width: 10.45%;height: 3.06%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200793');" title="이승민" style="position: absolute;left: 88.13%;top: 87.97%;width: 10.45%;height: 3.06%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200794');" title="이승민" style="position: absolute;left: 88.13%;top: 92.17%;width: 10.45%;height: 3.06%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200795');" title="이승민" style="position: absolute;left: 88.13%;top: 96.37%;width: 10.45%;height: 3.06%;z-index: 2;"></a>            
 			</div>
 			<div id="tab03" class="wrap">
-				<img src="https://static.willbes.net/public/images/promotion/2022/08/2747_02_03.jpg" alt="인사노무관리"/>
-                <a href="javascript:go_PassLecture('200801');" title="오은지" style="position: absolute; left: 88.04%; top: 56.38%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200802');" title="오은지" style="position: absolute; left: 88.04%; top: 58.48%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200803');" title="오은지" style="position: absolute; left: 88.04%; top: 60.62%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200804');" title="오은지" style="position: absolute; left: 88.04%; top: 62.72%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
+				<img src="https://static.willbes.net/public/images/promotion/2022/12/2747_02_03.jpg" alt="인사노무관리"/>
+                <a href="javascript:go_PassLecture('200801');" title="오은지" style="position: absolute;left: 88.04%;top: 61.08%;width: 10.45%;height: 2.09%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200802');" title="오은지" style="position: absolute;left: 88.04%;top: 64.08%;width: 10.45%;height: 2.09%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200803');" title="오은지" style="position: absolute;left: 88.04%;top: 67.08%;width: 10.45%;height: 2.09%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200804');" title="오은지" style="position: absolute;left: 88.04%;top: 70.08%;width: 10.45%;height: 2.09%;z-index: 2;"></a>
 
-                <a href="javascript:go_PassLecture('200805');" title="정준모" style="position: absolute; left: 88.04%; top: 68.14%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200806');" title="정준모" style="position: absolute; left: 88.04%; top: 70.28%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200807');" title="정준모" style="position: absolute; left: 88.04%; top: 72.43%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200808');" title="정준모" style="position: absolute; left: 88.04%; top: 74.48%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
-
-                <a href="javascript:go_PassLecture('200809');" title="박건민" style="position: absolute; left: 88.04%; top: 79.97%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200810');" title="박건민" style="position: absolute; left: 88.04%; top: 82.07%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200811');" title="박건민" style="position: absolute; left: 88.04%; top: 84.17%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200812');" title="박건민" style="position: absolute; left: 88.04%; top: 86.23%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
-
-                <a href="javascript:go_PassLecture('200813');" title="신현표" style="position: absolute; left: 88.04%; top: 91.77%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200814');" title="신현표" style="position: absolute; left: 88.04%; top: 93.91%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200815');" title="신현표" style="position: absolute; left: 88.04%; top: 95.97%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200816');" title="신현표" style="position: absolute; left: 88.04%; top: 98.03%; width: 10.45%; height: 1.68%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200805');" title="정준모" style="position: absolute;left: 88.04%;top: 77.78%;width: 10.45%;height: 2.09%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200806');" title="정준모" style="position: absolute;left: 88.04%;top: 80.78%;width: 10.45%;height: 2.09%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200807');" title="정준모" style="position: absolute;left: 88.04%;top: 83.78%;width: 10.45%;height: 2.09%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200808');" title="정준모" style="position: absolute;left: 88.04%;top: 86.75%;width: 10.45%;height: 2.09%;z-index: 2;"></a>
+              
+                <a href="javascript:go_PassLecture('200813');" title="신현표" style="position: absolute;left: 88.04%;top: 94.48%;width: 10.45%;height: 2.09%;z-index: 2;"></a>              
+                <a href="javascript:go_PassLecture('200815');" title="신현표" style="position: absolute;left: 88.04%;top: 97.48%;width: 10.45%;height: 2.09%;z-index: 2;"></a>                             
 			</div>
 			<div id="tab04" class="wrap">
-				<img src="https://static.willbes.net/public/images/promotion/2022/08/2747_02_04.jpg" alt="경영조직론"/>
-                <a href="javascript:go_PassLecture('200817');" title="오은지" style="position: absolute; left: 88.04%; top: 58.9%; width: 10.45%; height: 1.62%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200818');" title="오은지" style="position: absolute; left: 88.04%; top: 61.13%; width: 10.45%; height: 1.62%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200819');" title="오은지" style="position: absolute; left: 88.04%; top: 63.32%; width: 10.45%; height: 1.62%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200820');" title="오은지" style="position: absolute; left: 88.04%; top: 65.51%; width: 10.45%; height: 1.62%; z-index: 2;"></a>
+				<img src="https://static.willbes.net/public/images/promotion/2022/12/2747_02_04.jpg" alt="경영조직론"/>
+                <a href="javascript:go_PassLecture('200817');" title="오은지" style="position: absolute;left: 88.04%;top: 64.91%;width: 10.45%;height: 2.22%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200818');" title="오은지" style="position: absolute;left: 88.04%;top: 68.11%;width: 10.45%;height: 2.22%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200819');" title="오은지" style="position: absolute;left: 88.04%;top: 71.31%;width: 10.45%;height: 2.22%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200820');" title="오은지" style="position: absolute;left: 88.04%;top: 74.46%;width: 10.45%;height: 2.22%;z-index: 2;"></a>
 
-                <a href="javascript:go_PassLecture('200823');" title="정준모" style="position: absolute; left: 88.04%; top: 71.17%; width: 10.45%; height: 1.62%;  z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200824');" title="정준모" style="position: absolute; left: 88.04%; top: 73.44%; width: 10.45%; height: 1.62%;  z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200823');" title="정준모" style="position: absolute;left: 88.04%;top: 82.71%;width: 10.45%;height: 2.22%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200824');" title="정준모" style="position: absolute;left: 88.04%;top: 85.91%;width: 10.45%;height: 2.22%;z-index: 2;"></a>
 
-                <a href="javascript:go_PassLecture('200825');" title="박건민" style="position: absolute; left: 88.04%; top: 79.1%; width: 10.45%; height: 1.62%;  z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200826');" title="박건민" style="position: absolute; left: 88.04%; top: 81.38%; width: 10.45%; height: 1.62%;  z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200827');" title="박건민" style="position: absolute; left: 88.04%; top: 83.52%; width: 10.45%; height: 1.62%;  z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200828');" title="박건민" style="position: absolute; left: 88.04%; top: 85.71%; width: 10.45%; height: 1.62%;  z-index: 2;"></a>
-
-                <a href="javascript:go_PassLecture('200829');" title="신현표" style="position: absolute; left: 88.04%; top: 91.41%; width: 10.45%; height: 1.62%;  z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200830');" title="신현표" style="position: absolute; left: 88.04%; top: 93.65%; width: 10.45%; height: 1.62%;  z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200831');" title="신현표" style="position: absolute; left: 88.04%; top: 95.88%; width: 10.45%; height: 1.62%;  z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200832');" title="신현표" style="position: absolute; left: 88.04%; top: 98.12%; width: 10.45%; height: 1.62%;  z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('200829');" title="신현표" style="position: absolute;left: 88.04%;top: 94.11%;width: 10.45%;height: 2.22%;z-index: 2;"></a>               
+                <a href="javascript:go_PassLecture('200831');" title="신현표" style="position: absolute;left: 88.04%;top: 97.31%;width: 10.45%;height: 2.22%;z-index: 2;"></a>
+                
 			</div>
 			<div id="tab05" class="wrap">
 				<img src="https://static.willbes.net/public/images/promotion/2022/08/2747_02_05.jpg" alt="민사소송법"/>
@@ -146,11 +127,9 @@
                 <a href="javascript:go_PassLecture('200858');" title="김춘환" style="position: absolute; left: 88.04%; top: 92.25%; width: 10.45%; height: 6.37%; z-index: 2;"></a>
 			</div>
             <div id="tab06" class="wrap">
-				<img src="https://static.willbes.net/public/images/promotion/2022/08/2747_02_06.jpg" alt="노동경제학"/>
-                <a href="javascript:go_PassLecture('200859');" title="이강희" style="position: absolute; left: 88.04%; top: 66.27%; width: 10.45%; height: 6.37%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200860');" title="이강희" style="position: absolute; left: 88.04%; top: 75.04%; width: 10.45%; height: 6.37%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200861');" title="이강희" style="position: absolute; left: 88.04%; top: 83.82%; width: 10.45%; height: 6.37%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('200862');" title="이강희" style="position: absolute; left: 88.04%; top: 92.25%; width: 10.45%; height: 6.37%; z-index: 2;"></a>
+				<img src="https://static.willbes.net/public/images/promotion/2022/12/2747_02_06.jpg" alt="노동경제학"/>
+                <a href="javascript:go_PassLecture('200859');" title="이강희" style="position: absolute;left: 88.04%;top: 80.27%;width: 10.45%;height: 8.17%;z-index: 2;"></a>               
+                <a href="javascript:go_PassLecture('200861');" title="이강희" style="position: absolute;left: 88.04%;top: 90.87%;width: 10.45%;height: 8.17%;z-index: 2;"></a>               
 			</div>
             <div class="check">
                 <label>

@@ -138,55 +138,7 @@ no-repeat 5px center}
 
 
 
-.ssam .Section .d-day-wrap {margin-top:20px; background:#1c242b; padding:20px 0; letter-spacing:0;}
-.ssam .Section .d-day-wrap div.package {
-    font-size: 22px; color:#fff; font-weight:bold;  width:1120px; margin:0 auto; border-radius:10px; display: flex; justify-content: center; align-items: center; padding:0 !important; text-align:center
-}
 
-.ssam .Section .d-day-wrap div.package span {
-    vertical-align: baseline; 
-}
-.ssam .Section .d-day-wrap div.package .pc1 {color:#eeeabd !important; margin-left:10px}
-.ssam .Section .d-day-wrap div.package .round {
-    color: #1b232a; background:#eeeabd; padding:5px 15px; border-radius:20px; margin:0 20px 0 30px; display:inline; 
-}
-
-.ssam .Section .d-day-wrap div.package .pc2 {font-size:28px; margin-right:30px}
-.ssam .Section .d-day-wrap div.package .pc2 span {color:#fff !important}
-
-.ssam .d-day-wrap div.package .count {
-    font-size: 34px !important;
-    color: #fa7a09;
-    margin-right:10px;
-    animation: animate1 1s infinite;
-}
-@@keyframes animate1 {
-    from {
-        color: #eeeabd
-    }
-
-    50% {
-        color: red
-    }
-
-    to {
-        color: #eeeabd
-    }
-}
-
-@@-webkit-keyframes animate1 {
-    from {
-        color: #eeeabd
-    }
-
-    50% {
-        color: red
-    }
-
-    to {
-        color: #eeeabd
-    }
-}
 </style>
 
 <!-- Container -->

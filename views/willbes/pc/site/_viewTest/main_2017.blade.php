@@ -139,19 +139,20 @@
                 </div>
             </div>
         @endif--}}
-        <div class="d-day NSK">
-            <div class="d-day-wrap">
-                <div class="package">
-                    <p>연간패키지 문화상품권 증정이벤트! <strong>마감까지 D-<span id="_day">0</span></strong></p>
-                    <strong id="_time" class="count NSK-Black">00:00:00</strong> 남았습니다.
-                </div>
-            </div>
-        </div>
 
         <!-- site nav -->
         @include('willbes.pc.site._viewTest.main_partial.site_menu')
 
-        <div class="Section MainVisual mt20">
+        <div class="Section">
+            <div class="d-day-wrap">
+                <div class="package NSK">
+                    연간패키지 <span class="pc1">문화상품권 증정이벤트!</span> <strong class="round">마감까지</strong> <strong class="pc2">D-<span id="_day">11</span></strong>
+                    <strong id="_time" class="count NSK-Black">00:00:00 00</strong> 남았습니다.
+                </div>
+            </div>
+        </div>
+
+        <div class="Section MainVisual">
             <div class="VisualBox p_re">
                 @if(empty($data['arr_main_banner']['메인_빅배너']) === false)
                     <div id="MainRollingSlider" class="MaintabBox">

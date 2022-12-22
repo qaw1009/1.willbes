@@ -1,58 +1,42 @@
-@extends('willbes.pc.layouts.master')
+@extends('willbes.m.layouts.master')
 
 @section('content')
-    @include('willbes.pc.layouts.partial.site_menu')
-    <!-- content -->
-    <style type="text/css">
-        .evtContent {
-            position:relative;
-            width:100% !important;
-            min-width:1120px !important;
-            margin-top:20px !important;
-            padding:0 !important;
-            background:#fff;
-            color:#3a3a3a;
-        }
-        .evtContent span {vertical-align:middle}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
-        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+<!-- Container -->
 
-        /************************************************************/
+<style type="text/css">
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:1.4vh; line-height:1.5; clear:both}
+    .evtCtnsBox img {width:100%; max-width:720px;}
+    /*.evtCtnsBox a {border:1px solid #000}*/
 
-        .eventTop {background:url(https://static.willbes.net/public/images/promotion/2022/12/2855_top_bg.jpg) no-repeat center top;}
-        .evt02 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2855_02_bg.jpg) no-repeat center top;}
-        .evt03 .profList {width:1120px; margin:10px auto 0; display: flex; flex-wrap: wrap; justify-content: space-between; padding-bottom:140px}
-        .evt03 .profList .profBox {width: 270px; margin-bottom:15px; position: relative;}
-        .evt03 .profList .profBox:hover {box-shadow:5px 5px 10px rgba(0,0,0,.4); outline:1px solid #b28026;}
-        .evt03 .profList .profBox .btns {position:absolute; bottom:15px; width:80%; left:50%; margin-left:-40%; z-index: 2; font-size:16px;}
-        .evt03 .profList .profBox .btns a {display:block; padding:7px 0; margin-top:1px; background:rgba(1,65,75,.7); color:#fff}
-        .evt03 .profList .profBox .btns a:last-child {background:rgba(0,0,0,.7);}
-        .evt03 .profList .profBox .btns a:first-child {background:rgba(1,65,75,.7);}
-        .evt03 .profList .profBox .btns a:hover {background:#000}
-        .evt03 .profList .profBox:last-child:hover {box-shadow:0 0 0 rgba(0,0,0,.4); outline:0;}
 
-        .evt03 .profList .profBox .NSK-Black {font-size:28px; display: flex; justify-content: center; align-items: center; width:100%; height:100%; color:#b28026; background:#f5f5f5;  line-height:1.2}
-        .evt04 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2855_04_bg.jpg) no-repeat center top;}
 
-    </style>
+    .evt03 .profList {margin-top:1vh; display: flex; flex-wrap: wrap; justify-content: space-between; padding-bottom:6vh}
+    .evt03 .profList .profBox {width: 49%; margin-bottom:1.3vh; position: relative;}
+    .evt03 .profList .profBox .btns {position:absolute; bottom:1vh; width:80%; left:50%; margin-left:-40%; z-index: 2; font-size:1.6vh;}
+    .evt03 .profList .profBox .btns a {display:block; padding:0.5vh 0; margin-top:1px; background:rgba(1,65,75,.7); color:#fff}
+    .evt03 .profList .profBox .btns a:last-child {background:rgba(0,0,0,.7);}
+    .evt03 .profList .profBox .btns a:first-child {background:rgba(1,65,75,.7);}
 
-    <div class="evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox eventTop" data-aos="fade-up">
-        	<img src="https://static.willbes.net/public/images/promotion/2022/12/2855_top.jpg" alt="2023학년도 대비 윌비스 임용 합격전략 설명회"/>
-        </div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-up">
-        	<img src="https://static.willbes.net/public/images/promotion/2022/12/2855_01.jpg" alt=""/>
-        </div>
+</style>
 
-        <div class="evtCtnsBox evt02" data-aos="fade-up">
-        	<img src="https://static.willbes.net/public/images/promotion/2022/12/2855_02.jpg" alt=""/>
-        </div>
+<div id="Container" class="Container NSK c_both">
 
-        <div class="evtCtnsBox evt03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/12/2855_03.jpg" alt=""/>
-            <div class="profList">
+    <div class="evtCtnsBox wb_top"  data-aos="fade-up">            
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2855m_top.jpg" alt="2023학년도 대비 윌비스 임용 합격전략 설명회" />            
+    </div>
+
+    <div class="evtCtnsBox"  data-aos="fade-up">
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2855m_01.jpg" alt=""/>
+    </div>
+
+    <div class="evtCtnsBox" data-aos="fade-up">
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2855m_02.jpg" alt=""/>
+    </div>
+
+    <div class="evtCtnsBox evt03"  data-aos="fade-up">
+        <img src="https://static.willbes.net/public/images/promotion/2022/12/2855m_03.jpg" alt="교수진"/>
+        <div class="profList">
                 <div class="profBox">
                     <img src="https://static.willbes.net/public/images/promotion/2022/12/2855_03_t01.jpg" alt="민정선 유아"/>
                     <div class="btns">
@@ -217,20 +201,26 @@
                     <img src="https://static.willbes.net/public/images/promotion/2022/12/2855_03_end.jpg" alt=""/>
                 </div>
             </div>
-        </div>
+    </div> 
 
-        <div class="evtCtnsBox evt04" data-aos="fade-up">
-            <a href="https://ssam.willbes.net/promotion/index/cate/3137/code/2822" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/12/2855_04.jpg" alt="연간패키지"/></a>
-        </div>
-
+    <div class="evtCtnsBox">
+        <a href="https://ssam.willbes.net/promotion/index/cate/3137/code/2822" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/12/2855m_04.jpg" alt="연간패키지"/></a>
     </div>
-    <!-- End Container -->
 
-    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
-    <script src="/public/js/willbes/dist/aos.js"></script>
-    <script>
-        $(document).ready( function() {
-            AOS.init();
-        });
-    </script>
+</div>
+
+ <!-- End Container -->
+
+<link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+<script src="/public/js/willbes/dist/aos.js"></script>
+<script>
+    $(document).ready( function() {
+        AOS.init();
+    });
+</script>
+
 @stop
+
+
+
+

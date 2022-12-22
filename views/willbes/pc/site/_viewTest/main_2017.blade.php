@@ -128,7 +128,7 @@
 
     <!-- Container -->
     <div id="Container" class="Container ssam NGR c_both">
-        {{--@if(empty($data['dday']) === false)
+        @if(empty($data['dday']) === false)
             <div class="d-day NSK">
                 <div class="d-day-wrap">
                     @foreach($data['dday'] as $row)
@@ -138,7 +138,7 @@
                     @endforeach
                 </div>
             </div>
-        @endif--}}
+        @endif
 
         <!-- site nav -->
         @include('willbes.pc.site._viewTest.main_partial.site_menu')
@@ -146,8 +146,8 @@
         <div class="Section">
             <div class="d-day-wrap">
                 <div class="package NSK">
-                    연간패키지 <span class="pc1">문화상품권 증정이벤트!</span> <strong class="round">마감까지</strong> <strong class="pc2">D-<span id="_day">11</span></strong>
-                    <strong id="_time" class="count NSK-Black">00:00:00 00</strong> 남았습니다.
+                    연간패키지 <span class="pc1">문화상품권 증정이벤트!</span> <strong class="round">마감까지</strong> <strong class="pc2">D-<span id="_day">0</span></strong>
+                    <strong id="_time" class="count NSK-Black">00:00:00</strong> 남았습니다.
                 </div>
             </div>
         </div>
@@ -191,8 +191,6 @@
             </div>
         </div>
 
-
-
         <div class="Section Section1 mt40">
             <div class="widthAuto smallTit NSK-Black">
                 <p>
@@ -228,7 +226,6 @@
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1827') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_yhj.jpg" alt="생물교육론 양혜정"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/2565') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51310.jpg" alt="전공화학 강철"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/2566') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51156.jpg" alt="전공체육 최규훈"></a></li>
-
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1829') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_diana.jpg" alt="음악 다이애나"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1830') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_cuy.jpg" alt="전기전자통신 최우영"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1831') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_sgj.jpg" alt="정보컴퓨터 송광진"></a></li>
@@ -274,7 +271,6 @@
             </div>
         </div>
 
-
         <div class="Section Section3 mt40">
             <div class="widthAuto">
                 <div class="will-nTit">윌비스 임용 <span class="tx-color">합격 교수진</span></div>
@@ -289,7 +285,6 @@
                 </ul>
             </div>
         </div>
-
 
         @if(empty($data['top_order_lecture']) === false)
             <div class="Section Section4 mt80">

@@ -247,7 +247,7 @@ no-repeat 5px center}
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
-                <li class="Tit">학원<span class="row-line">|</span></li>
+                <li class="Tit">교원임용<span class="row-line">|</span></li>
                 <li class="subTit">윌비스 임용</li>
             </ul>
             <ul class="menu-List">

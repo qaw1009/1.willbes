@@ -137,30 +137,27 @@ no-repeat 5px center}
 .ssam .VisualSubBox .Subtab li:last-child a {border:0}
 
 
-.ssam .d-day {position: absolute; top: 120px; z-index: 999;}
-.ssam .d-day-wrap {background:#1c242b; width:1120px !important; height:50px; border-radius:10px; display: flex; justify-content: center; align-items: center; padding:0 !important; text-align:center}
-.ssam .d-day-wrap div.package {
-    font-size: 20px; color:#fff; font-weight:bold; line-height:50px; width:100%;
+
+.ssam .Section .d-day-wrap {margin-top:20px; background:#1c242b; padding:20px 0; letter-spacing:0;}
+.ssam .Section .d-day-wrap div.package {
+    font-size: 22px; color:#fff; font-weight:bold;  width:1120px; margin:0 auto; border-radius:10px; display: flex; justify-content: center; align-items: center; padding:0 !important; text-align:center
 }
 
-.ssam .d-day-wrap div.package span {
+.ssam .Section .d-day-wrap div.package span {
     vertical-align: baseline; 
 }
-.ssam .d-day-wrap div.package .pc1 {color:#eeeabd !important}
-.ssam .d-day-wrap div.package .round {
-    color: #1b232a; background:#eeeabd; padding:2px 15px; border-radius:20px; margin:0 20px 0 30px; 
-}
-.ssam .d-day-wrap div.package .h_line {display:inline-block; width:100px; margin:-10px 30px 0; border-top:1px solid #fff; height: 10px;}
-.ssam .d-day-wrap div.package .pc2 {font-size:30px;}
-.ssam .d-day-wrap div.package .pc2 span {color:#fff !important}
-.ssam .d-day-wrap div.package p strong span {
-    color: #fff !important;
-    font-size: 20px;
+.ssam .Section .d-day-wrap div.package .pc1 {color:#eeeabd !important; margin-left:10px}
+.ssam .Section .d-day-wrap div.package .round {
+    color: #1b232a; background:#eeeabd; padding:5px 15px; border-radius:20px; margin:0 20px 0 30px; display:inline; 
 }
 
+.ssam .Section .d-day-wrap div.package .pc2 {font-size:32px; margin-right:30px}
+.ssam .Section .d-day-wrap div.package .pc2 span {color:#fff !important}
+
 .ssam .d-day-wrap div.package .count {
-    font-size: 30px;
+    font-size: 32px;
     color: #fa7a09;
+    margin-right:10px;
     animation: animate1 1s infinite;
 }
 @@keyframes animate1 {
@@ -195,23 +192,20 @@ no-repeat 5px center}
 <!-- Container -->
 <div id="Container" class="Container ssam NGR c_both">
 
+{{--
     <div class="d-day NSK">
         <div class="d-day-wrap">
-            {{-- 기존 d-day 주석처리
+
             <div>
                 <p>유∙초등 1차 <span class="NSK-Black">D-31</span></p>
             </div>
             <div>
                 <p>중등 1차 <span class="NSK-Black">D-45</span></p>
             </div>
-            --}}
-            <div class="package">
-                연간패키지 <span class="pc1">문화상품권 증정이벤트!</span> <strong class="round">마감까지</strong> <strong class="pc2">D-<span>11</span></strong>
-                <span class="h_line"></span>
-                <strong class="count NSK-Black">15:11:12</strong> 남았습니다.
-            </div>
+
         </div>
     </div>
+    --}}
 
     <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
         <div class="Section widthAuto p_re">            
@@ -425,7 +419,16 @@ no-repeat 5px center}
         </h3>
     </div>
 
-    <div class="Section MainVisual mt20">
+    <div class="Section">
+        <div class="d-day-wrap">
+            <div class="package NSK">
+                연간패키지 <span class="pc1">문화상품권 증정이벤트!</span> <strong class="round">마감까지</strong> <strong class="pc2">D-<span>11</span></strong>
+                <strong class="count NSK-Black">15:11:12</strong> 남았습니다.
+            </div>
+        </div>
+    </div>
+
+    <div class="Section MainVisual">
         <div class="VisualBox p_re">            
             <div id="MainRollingSlider" class="MaintabBox">
                 <ul class="MaintabSlider">
@@ -3416,7 +3419,7 @@ no-repeat 5px center}
             speed:400,
             pause:3000,
             sliderWidth:1120,
-            auto : true,	
+            auto : false,	
             autoHover: true,						
             pagerCustom: '#MainRollingDiv',
             controls:false, 				

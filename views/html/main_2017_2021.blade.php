@@ -192,7 +192,7 @@ no-repeat 5px center}
 <!-- Container -->
 <div id="Container" class="Container ssam NGR c_both">
 
-{{--
+
     <div class="d-day NSK">
         <div class="d-day-wrap">
 
@@ -205,7 +205,7 @@ no-repeat 5px center}
 
         </div>
     </div>
-    --}}
+    
 
     <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
         <div class="Section widthAuto p_re">            

@@ -10,8 +10,9 @@
 
 
 
-    .evt03 .profList {margin-top:1vh; display: flex; flex-wrap: wrap; justify-content: space-between; padding-bottom:6vh}
-    .evt03 .profList .profBox {width: 49%; margin-bottom:1.3vh; position: relative;}
+    .evt03 .profList {margin-top:1vh; display: flex; flex-wrap: wrap; justify-content: space-between; padding-bottom:6vh; max-width:560px; margin:0 auto}
+    .evt03 .profList .profBox {width:49%; max-width:270px; margin-bottom:1.3vh; position: relative;}
+    .evt03 .profList .profBox img {}
     .evt03 .profList .profBox .btns {position:absolute; bottom:1vh; width:80%; left:50%; margin-left:-40%; z-index: 2; font-size:1.6vh;}
     .evt03 .profList .profBox .btns a {display:block; padding:0.5vh 0; margin-top:1px; background:rgba(1,65,75,.7); color:#fff}
     .evt03 .profList .profBox .btns a:last-child {background:rgba(0,0,0,.7);}
@@ -29,11 +30,11 @@
     <div class="evtCtnsBox"  data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/12/2855m_01.jpg" alt=""/>
     </div>
-
+{{--
     <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/12/2855m_02.jpg" alt=""/>
     </div>
-
+    --}}
     <div class="evtCtnsBox evt03"  data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/12/2855m_03.jpg" alt="교수진"/>
         <div class="profList">

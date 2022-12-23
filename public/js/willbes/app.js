@@ -271,7 +271,7 @@ function dDayTimer(end_date, end_time, eleid_day, eleid_time) {
         if (distance <= 0) {
             d=0;h=0;m=0;s=0;
             $('#'+eleid_day).html(0);
-            $('#'+eleid_time).html('00:00:00');
+            $('#'+eleid_time).html('00:00:00 00');
             clearInterval(dDayCountRepeat);
         } else {
             d = Math.floor(distance / (1000 * 60 * 60 * 24));

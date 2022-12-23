@@ -18,9 +18,11 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
-		/************************************************************/ 
-        .evt_top {background:#ffd0da}  
-		.evt_01 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2860_01_bg.jpg) no-repeat center top;}	            
+		/************************************************************/
+        
+        .evt_top {background:#ffd0da}
+        
+		.evt_01 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2860_01_bg.jpg) no-repeat center top;}           
 
         .evt_02 {padding-bottom:150px; width:1120px; margin:0 auto; }
 		.tabs {border-bottom:2px solid #e8234e; display:flex; justify-content: center;}
@@ -29,9 +31,10 @@
 		.tabs li a:hover,
 		.tabs li a.active {background:#e8234e;}     
         .tabs li:last-child a {margin:0}
-        
-        .evt_02 .btn a {background:#e8234e; color:#fff; font-size:40px; display:block; margin-top:30px; padding:20px 0; border-radius:50px}
-        .evt_02 .btn a:hover {background:#000;}
+
+        .evt_03 {background:#FFD0DA;}         
+        .evt_03 .btn a {margin:0 auto;width:1000px;background:#e8234e; color:#fff; font-size:40px; display:block; margin-top:30px; padding:20px 0; border-radius:50px;}
+        .evt_03 .btn a:hover {background:#000;}
 
         .evtCtnsBox .check{width: 800px; margin:50px auto 0; font-size:16px; text-align:center;line-height:1.5;
 					  letter-spacing:-1px;font-weight:bold;}
@@ -40,15 +43,16 @@
 		.evtCtnsBox .check a {display: inline-block; padding:5px 20px; color: #fff;background: #000;border-radius:20px; margin-left:20px}
         .evtCtnsBox .check a:hover {background-color:#e8234e; color:#fff}
 
-		.evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
-		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
+		.evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:15px}
+		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.5}
 		.evtInfoBox h4 {font-size:20px; margin-bottom:20px}
 		.evtInfoBox .infoTit {font-size:16px; margin-bottom:20px}
 		.evtInfoBox .infoTit strong {padding:8px 20px; background:#333; border-radius:20px}
 		.evtInfoBox ul {margin-bottom:30px}
 		.evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
 
-        /************************************************************/      
+        /************************************************************/
+
     </style> 
 	<div class="evtContent NSK">
 		<div class="evtCtnsBox evt_top" data-aos="fade-up">
@@ -86,12 +90,16 @@
 			</div>
 			<div id="tab05" class="wrap">
 				<img src="https://static.willbes.net/public/images/promotion/2022/12/2860_02_t05.jpg" alt="사회보험법"/>
-			</div>
+			</div>            
+		</div>
+
+        <div class="evtCtnsBox evt_03 pb100" data-aos="fade-up">
+			<img src="https://static.willbes.net/public/images/promotion/2022/12/2860_03.jpg" alt="" />
             <div class="btn NSK-Black"><a href="javascript:go_PassLecture('204105');">2023 1차 기본이론 선택형종합반 강의 신청하기 ></a></div>
             <div class="check">
                 <label>
                     <input type="checkbox" name="ischk" value="Y">
-                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다   
+                    페이지 하단 노무 1차 기본이론 선택형 종합반 이용안내를 모두 확인하였고, 이에 동의합니다.   
                 </label>
                 <a href="#careful">이용안내확인하기 ↓</a>
             </div> 

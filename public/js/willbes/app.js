@@ -263,12 +263,11 @@ function dDayTimer(end_date, end_time, eleid_day, eleid_time) {
     if(!end_time) end_time = '00:00';
     var dday = moment(end_date + ' ' + end_time + ':00', 'YYYY-MM-DD HH:mm:ss');
     var now, distance;
-    var d, h, m, s;
-
+    var d, h, m, s, ms, now_ms;
     var dDayCountRepeat = setInterval(function(){
         now = moment().format('YYYY-MM-DD HH:mm:ss');
         distance = dday.diff(now, 'milliseconds');
-
+        now_ms = moment().milliseconds();
         if (distance <= 0) {
             d=0;h=0;m=0;s=0;
             $('#'+eleid_day).html(0);
@@ -279,9 +278,10 @@ function dDayTimer(end_date, end_time, eleid_day, eleid_time) {
             h = String(Math.floor((distance / (1000 * 60 * 60)) % 24)).padStart(2, "0");
             m = String(Math.floor((distance / (1000 * 60)) % 60)).padStart(2, "0");
             s = String(Math.floor((distance / 1000) % 60)).padStart(2, "0");
-            $('#'+eleid_day).html(d);
-            $('#'+eleid_time).html(h + ':' + m + ':' + s);
-        }
+            ms = String(Math.floor((now_ms % 60) % 60)).padStart(2, "0");
 
-    }, 1000);
+            $('#'+eleid_day).html(d);
+            $('#'+eleid_time).html(h + ':' + m + ':' + s + ' ' + ms);
+        }
+    }, 100);
 }

@@ -30,11 +30,11 @@
     <div class="evtCtnsBox"  data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/12/2855m_01.jpg" alt=""/>
     </div>
-{{--
+
     <div class="evtCtnsBox" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/12/2855m_02.jpg" alt=""/>
     </div>
-    --}}
+
     <div class="evtCtnsBox evt03"  data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/12/2855m_03.jpg" alt="교수진"/>
         <div class="profList">

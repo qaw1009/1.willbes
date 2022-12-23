@@ -143,6 +143,15 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
+        <div class="Section">
+            <div class="d-day-wrap">
+                <div class="package NSK">
+                    연간패키지 <span class="pc1">문화상품권 증정이벤트!</span> <strong class="round">마감까지</strong> <strong class="pc2">D-<span id="_day">0</span></strong>
+                    <strong id="_time" class="count NSK-Black">00:00:00 00</strong> 남았습니다.
+                </div>
+            </div>
+        </div>
+
         <div class="Section MainVisual mt20">
             <div class="VisualBox p_re">
                 @if(empty($data['arr_main_banner']['메인_빅배너']) === false)
@@ -490,6 +499,11 @@
             // }).mouseleave(function (){
             //     subslidesImg.startAuto();
             // });
+        });
+
+        /* d-day 카운트 스크립트 */
+        $(document).ready(function() {
+            dDayTimer('2022-12-30','17:00','_day','_time');
         });
     </script>
 @stop

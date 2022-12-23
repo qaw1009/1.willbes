@@ -206,7 +206,7 @@
 </div>
 
  <!-- End Container -->
-
+<script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
 <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
 <script src="/public/js/willbes/dist/aos.js"></script>
 <script>

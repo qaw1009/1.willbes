@@ -39,9 +39,9 @@
             .evt01 .table_wrap td{color:#444;padding:10px; line-height:1.5; text-align:left}
             .evt01 .table_wrap tr th{border-top:1px solid #d0d2d9}
 
-            .evt01 .info02 {display:flex; justify-content: space-between; width:80%; margin:50px auto 0}
-            .popupBtn { width:150px;}
-            .popupBtn a {width:100%; height:100%; display:flex; justify-content: center; align-items: center; text-align:center; background:#fcc43e; border-radius:10px; border:5px solid #fc9c3e;}
+            .evt01 .info02 {display:flex; justify-content: space-between; width:100%; margin:50px auto 0}
+            .popupBtn {width:380px; margin-left:30px}
+            .popupBtn a {width:100%; height:100%; display:flex; justify-content: center; align-items: center; text-align:center; background:#fcc43e; border-radius:10px; border:5px solid #fc9c3e; font-size:22px;}
             .popupBtn a:hover {background:#fc9c3e; color:#fff}
 
             .evt01 .btnSet {width:80%; margin:50px auto}
@@ -116,15 +116,16 @@
                         <br>
                         <p>[갱신 신청 기간] </p>
                         * 1차: 2023년 01월 26일(목) 까지<br>
-                        * 2차: 2023년 02월 23일(금) 까지
+                        * 2차: 2023년 02월 23일(목) 까지
                     </div>
                     <div class="info">
                         <ul>
                             <li>
                                 개인정보 및 고유식별정보 수집/이용 동의<br>
                                 1) 개인정보의 수집ㆍ이용 목적 : 수강기간 연장을 위한 확인 <br>
-                                2) 수집하려는 개인정보의 항목 : 학원ID, 이름, 연락처, 주민등록번호, 수강과목 등 <br>
-                                3) 동의를 거부할 권리가 있다는 사실 및 동의 거부에 따른 불이익이 있는 경우에는 그 불이익의 내용: 고객님은 동의를 거부하실 수 있으며, 거부 시 수강연장이 불가합니다.
+                                2) 수집하려는 개인정보의 항목 : 학원ID, 이름, 연락처, 주민등록번호, (본인의 점수가 표시된) 시험 응시정보 또는 시험 확인서 
+<br>
+                                3) 개인정보 및 고유식별 정보 수집/이용 동의에 거부할 수 있으며, 거부하실 경우 수강갱신은 불가합니다. 
                             </li>
                             <li>입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3자에게 제공되지 않으며 개인정보 처리 방침에 따라 보호되고 있습니다.</li>
                             <li>개인정보 수집/이용에 동의하셨으면, 아래 사항을 기재해 주시기 바랍니다.</li>
@@ -179,13 +180,13 @@
 
                         <div class="info02">
                             <div>
-                                <p>* 불합격 인증 파일 예시</P>
-                                1. 반드시 예시과 같은 방법으로 제출한 경우에만 갱신 가능합니다.  <br>
-                                2. 나이스 홈페이지 화면 캡처 (해당 내용 모두 표시 되어야 함)<br>
-                                3. 해당 시도 교육청 시험 확인서 (해당 내용 모두 표시 되어야 함)<br>
-                                4. 두 가지 인증파일 중 하나를 선택하여 인증해야 합니다. 
+                                <p>* 불합격 인증 파일 제출시 참고사항 </P>
+                                    1. 불합격 인증 파일을 제출할 때에는 오른쪽의 『인증 예시 파일 보기』를 참고 하시고, 예시와 같이 해당 란의 모든
+                                    내용이 표시된 파일을 제출하셔야 갱신이 가능합니다. (예외규정 없음)<br>
+                                    2.인증 파일은 『나이스 홈페이지 화면 캡처본』과 시험에 응시한 해당 시·도 교육청에서 발급 받은 『시험확인서』 두 종류의 파일만 인정됩니다.<br>
+                                    3. 두 종류의 인증 파일중 하나를 선택하셔서 제출해 주시면 됩니다. 
                             </div>
-                            <div class="popupBtn"><a href="javascript:go_popup1()">🔺<br>인증 예시<br>파일 보기<br></a></div>
+                            <div class="popupBtn NSK-Black"><a href="javascript:go_popup1()">🔺<br>인증 예시<br>파일 보기<br></a></div>
                         </div>
 
                         <div class="btnSet">

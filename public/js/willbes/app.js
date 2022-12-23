@@ -276,20 +276,9 @@ function dDayTimer(end_date, end_time, eleid_day, eleid_time) {
             clearInterval(dDayCountRepeat);
         } else {
             d = Math.floor(distance / (1000 * 60 * 60 * 24));
-            h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            s = Math.floor((distance % (1000 * 60)) / 1000);
-
-            if (h < 10) {
-                h = '0' + h;
-            }
-            if (m < 10) {
-                m = '0' + m;
-            }
-            if (s < 10) {
-                s = '0' + s;
-            }
-
+            h = String(Math.floor((distance / (1000 * 60 * 60)) % 24)).padStart(2, "0");
+            m = String(Math.floor((distance / (1000 * 60)) % 60)).padStart(2, "0");
+            s = String(Math.floor((distance / 1000) % 60)).padStart(2, "0");
             $('#'+eleid_day).html(d);
             $('#'+eleid_time).html(h + ':' + m + ':' + s);
         }

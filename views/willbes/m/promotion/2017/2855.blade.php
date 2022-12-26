@@ -101,8 +101,7 @@
                 <div class="profBox">
                     <img src="https://static.willbes.net/public/images/promotion/2022/12/2855_03_t10.jpg" alt="박태영 수학"/>
                     <div class="btns">
-                        <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p=189421&u=1328364&q=HD", "{{config_item('starplayer_license')}}");'>설명회 보기</a>
-                        <a href="@if($file_yn[10] == 'Y') {{ front_url($file_link[10]) }} @else {{ $file_link[10] }} @endif" alt="자료 받기">설명회 자료 받기</a>
+                        <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p=204212&u=1392134&q=HD", "{{config_item('starplayer_license')}}");'>설명회 보기</a>
                     </div>
                 </div>
                 <div class="profBox">

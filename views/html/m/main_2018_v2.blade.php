@@ -225,7 +225,7 @@
     font-size: 2.2vh;
     color: #fa7a09;
     margin-right: .5vh;
-    vertical-align:baseline;
+    vertical-align:text-top;
     animation: animate1 1s infinite;
 }
 

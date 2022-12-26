@@ -201,33 +201,33 @@
         animation: animate1 1s infinite;
     }
 
-@@keyframes animate1 {
-    from {
-        color: #eeeabd
+    @@keyframes animate1 {
+        from {
+            color: #eeeabd
+        }
+
+        50% {
+            color: red
+        }
+
+        to {
+            color: #eeeabd
+        }
     }
 
-    50% {
-        color: red
-    }
+    @@-webkit-keyframes animate1 {
+        from {
+            color: #eeeabd
+        }
 
-    to {
-        color: #eeeabd
-    }
-}
+        50% {
+            color: red
+        }
 
-@@-webkit-keyframes animate1 {
-    from {
-        color: #eeeabd
+        to {
+            color: #eeeabd
+        }
     }
-
-    50% {
-        color: red
-    }
-
-    to {
-        color: #eeeabd
-    }
-}
     </style>
     <!-- Container -->
     <div id="Container" class="Container NSK ssam mb40">

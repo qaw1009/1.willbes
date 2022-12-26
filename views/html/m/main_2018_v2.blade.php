@@ -228,7 +228,7 @@
 .ssam .d-day-wrap div.package .count {
     font-size: 3.6vh;
     color: #fa7a09;
-    letter-spacing:-0.5vw;
+    letter-spacing:-1px;
     vertical-align:bottom;
     animation: animate1 1s infinite;
 }

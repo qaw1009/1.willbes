@@ -24,7 +24,7 @@ class BaseConsult extends \app\controllers\FrontController
         $arr_base['comment'] = $this->_depth_comment($arr_base['depth']);
         $arr_base['site_code'] = $this->_site_code;
         $consult_name = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? '상담' : $this->_consult_name;
-        $arr_base['title'] = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? 'ㆍ신현표 노무사의 공부방법론 및 답안작성법 1:1 대면상담 예약' : '· 심층 ' . $consult_name . ' 예약';
+        $arr_base['title'] = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? 'ㆍ신현표 노무사의 공부고민 및 내용의문사항 상담 예약' : '· 심층 ' . $consult_name . ' 예약';
 
             // 캠퍼스 조회
         $arr_base['campus'] = [];
@@ -347,8 +347,8 @@ class BaseConsult extends \app\controllers\FrontController
                                 ㆍ수강대상 : 제31회 공인노무사 2차 시험 응시자<br/>
                                 ㆍ12/25(일) 오후 12:00까지 예약 가능하며, 선착순으로 예약 마감됩니다.<br/>
                                 ㆍ상담 일시 <span class="ml5"></span>(※ 개인별 상담시간 : 1시간)<br/>
-                                <span class="ml20"></span>1회 - 12/26(월) 오후 13:00~18:00 (마지막 타임 17:00~18:00)<br/>
-                                <span class="ml20"></span>2회 - 12/27(화) 오후 13:00~18:00 (마지막 타임 17:00~18:00)<br/>
+                                <span class="ml20"></span>1회 - 12/26(월) 오후 17:00~22:00 (마지막 타임 21:00~22:00)<br/>
+                                <span class="ml20"></span>2회 - 12/27(화) 오후 17:00~22:00 (마지막 타임 21:00~22:00)<br/>
                                 ㆍ예약 완료 이후에는 변경이 불가하오니, 신중히 선택해주시기 바랍니다.<br/>
                                 ㆍ진행 강의실 및 안내사항은 추후 문자공지드립니다.<br/>
                                 ㆍ불가피 참석이 어려우신 경우, 다른 대기자분들의 상담을 위해 학원(1544-1881 ARS1, 3)으로 연락 주시기 바랍니다.<br/>';

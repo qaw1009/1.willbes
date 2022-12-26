@@ -150,9 +150,101 @@
             font-size: 14px;
         }
     }
+
+    .ssam .Section .d-day-wrap {
+        background: #1c242b;
+        padding: 15px 0;
+        letter-spacing: 0;
+    }
+
+    .ssam .Section .d-day-wrap div.package {
+        font-size: 1.7vh;
+        color: #fff;
+        font-weight: bold;
+        border-radius: 10px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .ssam .Section .d-day-wrap div.package div {display:inline-block;}
+    .ssam .Section .d-day-wrap div.package div:first-child {text-align:right; margin-right:10px; width:calc(52% - 10px)}
+    .ssam .Section .d-day-wrap div.package div:last-child {width:48%} 
+    .ssam .Section .d-day-wrap div.package div p {margin-bottom:10px}
+    .ssam .Section .d-day-wrap div.package span {
+        vertical-align: baseline;
+    }
+
+    .ssam .Section .d-day-wrap div.package .pc1 {
+        color: #eeeabd;
+    }
+
+    .ssam .Section .d-day-wrap div.package .round {
+        color: #1b232a;
+        background: #eeeabd;
+        padding: 0.3vh 1vh;
+        border-radius: 2vh;
+        margin: 0 1vh;
+        display: inline;
+    }
+
+
+    .ssam .Section .d-day-wrap div.package .pc2 span {
+        color: #fff !important
+    }
+
+    .ssam .d-day-wrap div.package .count {
+        font-size: 3.6vh;
+        color: #fa7a09;
+        letter-spacing:-1px;
+        vertical-align:bottom;
+        animation: animate1 1s infinite;
+    }
+
+@@keyframes animate1 {
+    from {
+        color: #eeeabd
+    }
+
+    50% {
+        color: red
+    }
+
+    to {
+        color: #eeeabd
+    }
+}
+
+@@-webkit-keyframes animate1 {
+    from {
+        color: #eeeabd
+    }
+
+    50% {
+        color: red
+    }
+
+    to {
+        color: #eeeabd
+    }
+}
     </style>
     <!-- Container -->
     <div id="Container" class="Container NSK ssam mb40">
+        <div class="Section">
+            <div class="d-day-wrap">
+                <div class="package NSK">
+                    <div>
+                        <p>연간패키지 <span class="pc1">문화상품권 이벤트</span></p>
+                        <strong class="round">마감까지</strong> <strong class="pc2">D-<span id="_day">0</span></strong>
+                    </div>
+                    <div>
+                        <strong id="_time" class="count NSK-Black">00:00:00 00</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         {!! banner('M_메인', 'MainSlider', $__cfg['SiteCode'], '0') !!}
 
         {{-- 수강후기 --}}
@@ -242,6 +334,11 @@
                     clickable: true,
                 },
             });
+        });
+
+        /* d-day 카운트 스크립트 */
+        $(document).ready(function() {
+            dDayTimer('2022-12-30','17:00','_day','_time');
         });
     </script>
 @stop

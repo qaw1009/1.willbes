@@ -260,18 +260,7 @@
         color: #eeeabd
     }
 }
-/*
-    @@media only screen and (max-width: 374px)  {
-        .ssam .Section .d-day-wrap div.package p {margin-bottom:1vh; display:block}
-        }
 
-    @@media only screen and (min-width: 375px) and (max-width: 640px) {
-        .ssam .Section .d-day-wrap div.package p {margin-bottom:1vh; display:blocK}
-    }
-    @@media only screen and (min-width: 741px) {
-        .ssam .Section .d-day-wrap div.package {font-size: 3vh !important}
-        .ssam .d-day-wrap div.package .count {font-size: 4vh;}
-    }*/
     </style>
 
 </head>

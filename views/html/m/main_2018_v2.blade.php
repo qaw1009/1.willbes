@@ -179,6 +179,91 @@
     }
 
 }
+
+.ssam .Section .d-day-wrap {
+    background: #1c242b;
+    padding: 15px 0;
+    letter-spacing: 0;
+}
+
+.ssam .Section .d-day-wrap div.package {
+    font-size: 1.6vh;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: center
+}
+.ssam .Section .d-day-wrap div.package p {display:inline-block; margin-bottom:0}
+.ssam .Section .d-day-wrap div.package span {
+    vertical-align: baseline;
+}
+
+.ssam .Section .d-day-wrap div.package .pc1 {
+    color: #eeeabd !important;
+    margin-left: 0.6vh
+}
+
+.ssam .Section .d-day-wrap div.package .round {
+    color: #1b232a;
+    background: #eeeabd;
+    padding: 0.3vh 1vh;
+    border-radius: 2vh;
+    margin: 0 1vh;
+    display: inline;
+}
+
+.ssam .Section .d-day-wrap div.package .pc2 {
+    font-size: 1.8vh;
+    margin-right: .5vh
+}
+
+.ssam .Section .d-day-wrap div.package .pc2 span {
+    color: #fff !important
+}
+
+.ssam .d-day-wrap div.package .count {
+    font-size: 2.2vh;
+    color: #fa7a09;
+    margin-right: .5vh;
+    vertical-align:baseline;
+    animation: animate1 1s infinite;
+}
+
+@@keyframes animate1 {
+    from {
+        color: #eeeabd
+    }
+
+    50% {
+        color: red
+    }
+
+    to {
+        color: #eeeabd
+    }
+}
+
+@@-webkit-keyframes animate1 {
+    from {
+        color: #eeeabd
+    }
+
+    50% {
+        color: red
+    }
+
+    to {
+        color: #eeeabd
+    }
+}
+
+    @@media only screen and (max-width: 374px)  {
+        .ssam .Section .d-day-wrap div.package p {margin-bottom:1vh; display:block}
+        }
+
+    @@media only screen and (min-width: 375px) and (max-width: 640px) {
+        .ssam .Section .d-day-wrap div.package p {margin-bottom:1vh; display:blocK}
+    }
     </style>
 
 </head>
@@ -276,13 +361,24 @@
                     <a href="#none" class="moreMenu">고객센터</a>                     
                 </li>
             </ul>                
-        </div> 
-       
+        </div>        
     </div>    
 </div>
 
+
+
 <!-- Container -->
 <div id="Container" class="Container NSK ssam mb40">  
+    <div class="Section">
+        <div class="d-day-wrap">
+            <div class="package NSK">
+                <p>연간패키지 <span class="pc1">문화상품권 증정이벤트!</span></p>
+                <strong class="round">마감까지</strong> <strong class="pc2">D-<span id="_day">0</span></strong>
+                <strong id="_time" class="count NSK-Black">00:00:00 00</strong> 남았습니다.
+            </div>
+        </div>
+    </div>
+
     <div class="MainSlider swiper-container swiper-container-page">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2012/wsbook_720x400_01.jpg"></div>

@@ -1,6 +1,8 @@
-@extends('willbes.m.layouts.master')
+@if(element('file_type', $arr_input) !== 'ajax_')
+    @extends('willbes.m.layouts.master')
 
-@section('content')
+    @section('content')
+
     <!-- Container -->
     <div id="Container" class="Container NG c_both">
         <div class="willbes-Tit NGEB p_re">
@@ -9,7 +11,7 @@
             </button>
             지역별 공고문
         </div>
-
+@endif
         <form id="url_form" name="url_form" method="GET"></form>
         <div class="w-Guide-Ssam mt20">
             <div class="guidebox GM">
@@ -53,8 +55,10 @@
             </div>
         </div>
 
+@if(element('file_type', $arr_input) !== 'ajax_')
         <!-- Topbtn -->
         @include('willbes.m.layouts.topbtn')
     </div>
     <!-- End Container -->
-@stop
+    @stop
+@endif

@@ -34,7 +34,7 @@
         <div class="x_content">
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">
                 {!! csrf_field() !!}
-            <table id="list_table" class="table table-striped table-bordered">
+            <table id="list_table" class="table table-striped table-bordered table-hover">
                 <thead>
                 <tr>
                     <th class="searching rowspan">GNB-2depth [<span class="blue">코드</span>]</th>
@@ -44,6 +44,7 @@
                     <th class="searching_is_use">사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
+                    <th>접근권한</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -95,6 +96,7 @@
                         </td>
                         <td>{{ $row['LastRegAdminName'] }}</td>
                         <td>{{ $row['LastRegDatm'] }}</td>
+                        <td> <button type="button" class="btn btn-xs btn-warning ml-10 btn-authority" data-menu-route='{{ ($row['BMenuName'] . (empty($row['MMenuName']) ? '' : ' > '. $row['MMenuName']) . (empty($row['SMenuName']) ? '' : ' > '. $row['SMenuName']) ) . ($row['LastIsUse'] === 'Y' ? '(사용)' : '(미사용)')}}' data-menu-idx="{{ empty($row['SMenuIdx']) ? $row['MMenuIdx'] : $row['SMenuIdx'] }}">설정</button></td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -192,5 +194,25 @@
                 .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
                 .draw();
         }
+
+        $('.btn-authority').click(function() {
+            var menu_idx = typeof $(this).data('menu-idx') != 'undefined' ? $(this).data('menu-idx') : '';
+            var menu_route = typeof $(this).data('menu-route') != 'undefined' ? encodeURIComponent($(this).data('menu-route')) : '';
+            if(menu_idx === '') {
+                alert("메뉴 식별자가 존재하지 않습니다. 다시 확인해 주세요.");return false;
+            }
+
+            $('.btn-authority').setLayer({
+                'modal_id' : 'pop_modal',
+                'url' : '{{ site_url('/sys/menu/authority/') }}',
+                'width' : 1150,
+                'add_param_type' : 'param',
+                'add_param' : [
+                    {'id' : 'menu_idx', 'value' : menu_idx},
+                    {'id' : 'menu_route', 'value' : menu_route}
+                ]
+            });
+        })
+
     </script>
 @stop

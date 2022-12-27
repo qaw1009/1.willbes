@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Menu extends \app\controllers\BaseController
 {
-    protected $models = array('sys/menu');
+    protected $models = array('sys/menu', 'sys/wCode', 'sys/role');
     protected $helpers = array();
 
     public function __construct()
@@ -140,5 +140,82 @@ class Menu extends \app\controllers\BaseController
         $result = $this->menuModel->modifyMenusReorder(json_decode($this->_reqP('params'), true));
 
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 권한설정 인덱스
+     * @return CI_Output|void
+     */
+    public function authority()
+    {
+        $menu_idx = $this->_reqG('menu_idx');
+        $menu_route = rawurldecode($this->_reqG('menu_route'));
+
+        if(empty($menu_idx)) {
+            return $this->json_error('메뉴 식별자가 존재하지 않습니다.', _HTTP_NOT_FOUND);
+        }
+
+        // role 목록
+        $role_list = $this->roleModel->getRoleArray();
+        // 소속, 직급 목록
+        $wccds = $this->wCodeModel->getCcdInArray(['109', '110']);
+
+        $this->load->view('sys/menu/authority_create', [
+            'menu_idx' => $menu_idx,
+            'menu_route' => $menu_route,
+            'position_ccd' => $wccds['110'],
+            'dept_ccd' => $wccds['109'],
+            'role_list' => $role_list
+        ]);
+    }
+
+    /**
+     * 메뉴별 관리자 접근권한 목록
+     * @return CI_Output
+     */
+    public function authorityListAjax()
+    {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $arr_condition = [
+            'EQ' => [
+                'a.MenuIdx' => element('menu_idx', $arr_input),
+                'a.IsStatus' => 'Y',
+                'e.wAdminDeptCcd' => element('search_dept', $arr_input),
+                'e.wAdminPositionCcd' => element('search_position', $arr_input),
+                'c.RoleIdx' => element('search_role', $arr_input),
+                'e.wIsUse' => element('search_is_use', $arr_input),
+                'h.IsWrite' => element('search_is_write', $arr_input),
+                'h.IsExcel' => element('search_is_excel', $arr_input),
+                'h.IsMasking' => element('search_is_masking', $arr_input),
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'e.wAdminId' => element('search_value', $arr_input),
+                    'e.wAdminName' => element('search_value', $arr_input),
+                ]
+            ]
+        ];
+
+        $list = $this->menuModel->listMenuAdminAuthority($arr_condition);
+        return $this->response([
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 메뉴별 권한 처리
+     */
+    public function authorityStore()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '상태값', 'rules' => 'trim|required']
+        ];
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->menuModel->addMenuAdminAuthority(json_decode($this->_reqP('params'), true));
+        $this->json_result($result, '설정한 권한이 적용되었습니다.', $result);
     }
 }

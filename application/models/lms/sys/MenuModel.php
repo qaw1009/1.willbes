@@ -6,6 +6,8 @@ class MenuModel extends WB_Model
     private $_table = [
         'menu' => 'lms_sys_menu',
         'admin' => 'wbs_sys_admin',
+        'authority' => 'lms_sys_admin_authority',
+        'wbs_code' => 'wbs_sys_code'
     ];
 
     public function __construct()
@@ -337,4 +339,94 @@ class MenuModel extends WB_Model
 
         return true;
     }
+
+    /**
+     * 메뉴별 관리자 권한 목록
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function listMenuAdminAuthority($arr_condition = [])
+    {
+        $column = " straight_join
+                        a.MenuIdx, a.MenuName, a.MenuDepth
+                        ,c.RoleIdx, c.RoleName 
+                        ,e.wAdminIdx, e.wAdminId, e.wAdminName, e.wIsUse, e.wRegDatm 
+                        ,e.wAdminDeptCcd,e.wAdminPositionCcd
+                        ,f.wCcdName as DeptName
+                        ,g.wCcdName as PositionName
+                        ,ifnull(h.IsWrite, 'N') as IsWrite
+                        ,ifnull(h.IsExcel, 'N') as IsExcel
+                        ,ifnull(h.IsMasking, 'N') as IsMasking";
+        $from = " 
+                    from
+                        ". $this->_table['menu'] ." a
+                        join lms_sys_admin_role_r_menu b on a.MenuIdx = b.MenuIdx and b.IsStatus ='Y' 
+                        join lms_sys_admin_role c on b.RoleIdx = c.RoleIdx and c.IsStatus = 'Y' and c.IsUse = 'Y'
+                        join lms_sys_admin_r_admin_role d on c.RoleIdx = d.RoleIdx and d.IsStatus ='Y'
+                        join ". $this->_table['admin'] ." e on d.wAdminIdx = e.wAdminIdx and e.wIsStatus = 'Y' and e.wIsApproval ='Y'
+                        join ". $this->_table['wbs_code'] ." f on e.wAdminDeptCcd = f.wCcd and f.wIsStatus = 'Y'
+                        join ". $this->_table['wbs_code'] ." g on e.wAdminPositionCcd = g.wCcd and g.wIsStatus = 'Y'
+                        left join ". $this->_table['authority'] ." h on e.wAdminIdx = h.wAdminIdx and d.RoleIdx = h.RoleIdx and a.MenuIdx = h.MenuIdx and h.IsStatus = 'Y'
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere();
+        $order_by = $this->_conn->makeOrderBy(['c.RoleIdx' => 'asc', 'e.wAdminName' => 'asc', 'e.wAdminIdx' => 'desc'])->getMakeOrderBy();
+        
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        return $query->result_array();
+    }
+
+    /**
+     * 메뉴별 권한 처리
+     * @param array $params
+     * @return array|bool
+     */
+    public function addMenuAdminAuthority($params=[])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            $menu_idx = $params['menu_idx'];
+            $admin_idx = $this->session->userdata('admin_idx');
+
+            /* 기존 데이터 상태값 변경*/
+            $this->_conn->set(['IsStatus' => 'N', 'UpdAdminIdx' => $admin_idx])->where('MenuIdx', $menu_idx)->where('IsStatus', 'Y');
+            if($this->_conn->update($this->_table['authority']) === false) {
+                throw new \Exception('기존 데이터 수정에 실패했습니다.');
+            }
+
+            $default_data = [
+                'MenuIdx' => $menu_idx,
+                'RegAdminIdx' => $admin_idx,
+                'RegIp' => $this->input->ip_address(),
+            ];
+
+            /* 신규 데이터 삽입*/
+            foreach ($params['authority'] as $admin => $column) {
+
+                $admin_idx = str_first_pos_before($admin, '|');
+                $role_idx = str_first_pos_after($admin, '|');
+
+                $insert_data = ['wAdminIdx' => $admin_idx, 'RoleIdx' => $role_idx];
+                $insert_data = array_merge($insert_data, $column, ['JsonData' => json_encode($column)], $default_data);
+
+                if($this->_conn->set($insert_data)->insert($this->_table['authority']) === false) {
+                    throw new \Exception('권한 등록에 실패했습니다.');
+                }
+            }
+            $this->_conn->trans_commit();
+
+        } catch(\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
 }

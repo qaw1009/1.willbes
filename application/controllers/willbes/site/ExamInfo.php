@@ -54,7 +54,8 @@ class ExamInfo extends \app\controllers\FrontController
                 }
             }
         }
-        $this->load->view('site/examinfo/notice',[
+        $file_type = element('file_type', $arr_input);
+        $this->load->view('site/examinfo/'.$file_type.'notice',[
             'arr_input' => $arr_input
             ,'exam_area_ccd' => $codes
             ,'data' => $data

@@ -182,9 +182,9 @@
         .ssam .Section .d-day-wrap div.package .round {
             color: #1b232a;
             background: #eeeabd;
-            padding: 0.3vh 1vh;
+            padding: 0.2vh 1vh;
             border-radius: 2vh;
-            margin: 0 1vh;
+            margin-right: 0.5vh;
             display: inline;
         }
 
@@ -236,7 +236,7 @@
                 <div class="package NSK">
                     <div>
                         <p>연간패키지 <span class="pc1">문화상품권 이벤트</span></p>
-                        <strong class="round">마감까지</strong> <strong class="pc2">D-<span id="_day">0</span></strong>
+                        <strong class="round">12.30.(금) 17시 마감까지</strong> <strong class="pc2">D-<span id="_day">0</span></strong>
                     </div>
                     <div>
                         <strong id="_time" class="count NSK-Black">00:00:00 00</strong>

@@ -168,8 +168,8 @@
             align-items: center;
         }
         .ssam .Section .d-day-wrap div.package div {display:inline-block;}
-        .ssam .Section .d-day-wrap div.package div:first-child {text-align:right; margin-right:10px; width:calc(52% - 10px)}
-        .ssam .Section .d-day-wrap div.package div:last-child {width:48%} 
+        .ssam .Section .d-day-wrap div.package div:first-child {text-align:right; margin-right:10px; width:calc(54% - 10px)}
+        .ssam .Section .d-day-wrap div.package div:last-child {width:46%} 
         .ssam .Section .d-day-wrap div.package div p {margin-bottom:10px}
         .ssam .Section .d-day-wrap div.package span {
             vertical-align: baseline;
@@ -184,7 +184,7 @@
             background: #eeeabd;
             padding: 0.2vh 1vh;
             border-radius: 2vh;
-            margin-right: 0.5vh;
+            margin-right: 5px;
             display: inline;
         }
 

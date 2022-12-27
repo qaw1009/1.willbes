@@ -131,7 +131,7 @@
                                 }},
                             {'data' : 'wRegDatm'},
                             {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                                    return '<input type="checkbox" class="flat check-write" data-admin="'+ row.wAdminIdx + '|' + row.RoleIdx +'" name="is_write" value="Y" '+ (row.IsWrite === 'Y' ? 'checked=checked' : '') +'>';
+                                    return '<input type="checkbox" class="flat check-write" data-admin="'+ row.wAdminIdx + '|' + row.RoleIdx +'" data-idx="'+ row.SaaIdx +'" name="is_write" value="Y" '+ (row.IsWrite === 'Y' ? 'checked=checked' : '') +'>';
                                 }},
                             {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                                     return '<input type="checkbox" class="flat check-excel" name="is_excel" value="Y" '+ (row.IsExcel === 'Y' ? 'checked=checked' : '') +'>';
@@ -148,19 +148,24 @@
                             return;
                         }
                         var $menu_idx = $regi_form_modal.find('input[name="menu_idx"]').val();
-                        var $params = {'menu_idx' : $menu_idx , 'authority' : {}};
+                        var $params = {'menu_idx' : $menu_idx , 'authority' : {}, 'saa_idx' : []};
 
                         var $is_write = $list_table_modal.find('input[name="is_write"]')
                         var $is_excel = $list_table_modal.find('input[name="is_excel"]')
                         var $is_masking = $list_table_modal.find('input[name="is_masking"]')
 
                         $is_write.each(function(idx){
+                            this_idx = $(this).data('idx') || 'N';
                             this_admin = $(this).data('admin');
                             this_write = $(this).filter(':checked').val() || 'N';
                             this_excel = $is_excel.eq(idx).filter(':checked').val() || 'N';
                             this_masking = $is_masking.eq(idx).filter(':checked').val() || 'N';
                             if(this_write === 'Y' || this_excel === 'Y' || this_masking === 'Y') {
                                 $params['authority'][this_admin] = {'IsWrite' : this_write, 'IsExcel' : this_excel, 'IsMasking' : this_masking};
+                            }
+                            // 삭제할 SaaIdx 값
+                            if(this_idx !== 'N') {
+                                $params['saa_idx'].push(this_idx);
                             }
                         });
 

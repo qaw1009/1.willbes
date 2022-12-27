@@ -356,7 +356,9 @@ class MenuModel extends WB_Model
                         ,g.wCcdName as PositionName
                         ,ifnull(h.IsWrite, 'N') as IsWrite
                         ,ifnull(h.IsExcel, 'N') as IsExcel
-                        ,ifnull(h.IsMasking, 'N') as IsMasking";
+                        ,ifnull(h.IsMasking, 'N') as IsMasking
+                        ,h.SaaIdx
+                        ";
         $from = " 
                     from
                         ". $this->_table['menu'] ." a
@@ -394,10 +396,16 @@ class MenuModel extends WB_Model
             $menu_idx = $params['menu_idx'];
             $admin_idx = $this->session->userdata('admin_idx');
 
-            /* 기존 데이터 상태값 변경*/
-            $this->_conn->set(['IsStatus' => 'N', 'UpdAdminIdx' => $admin_idx])->where('MenuIdx', $menu_idx)->where('IsStatus', 'Y');
-            if($this->_conn->update($this->_table['authority']) === false) {
-                throw new \Exception('기존 데이터 수정에 실패했습니다.');
+            $saa_idx = $params['saa_idx'];  // 삭제할 SsaIdx 값
+
+            if(count($saa_idx) > 0) {
+                /* 기존 데이터 상태값 변경*/
+                $this->_conn->set(['IsStatus' => 'N', 'UpdAdminIdx' => $admin_idx])->where( 'IsStatus', 'Y')->where('MenuIdx', $menu_idx)
+                    ->where_in('SaaIdx',array_unique($saa_idx));
+
+                if($this->_conn->update($this->_table['authority']) === false) {
+                    throw new \Exception('기존 데이터 수정에 실패했습니다.');
+                }
             }
 
             $default_data = [

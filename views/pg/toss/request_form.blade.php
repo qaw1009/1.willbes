@@ -18,8 +18,10 @@
                             alert(error.message);
                         }
                         $('#payment_layer').remove();
+                        $('#chk_payment_layer').remove();
                     });
             }, 500);
         });
     </script>
 </div>
+<div id="chk_payment_layer"></div>

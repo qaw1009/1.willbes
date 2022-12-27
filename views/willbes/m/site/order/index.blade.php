@@ -787,6 +787,12 @@
 
         // 결제하기 버튼 클릭 (수정 => 결제버튼 선택자 변경)
         $('#btn_pay').on('click', function() {
+            if ($('#chk_payment_layer').length > 0) {
+                alert('결제하기 버튼은 한번만 클릭해 주세요.');
+                $('#chk_payment_layer').remove();
+                return;
+            }
+
             var url = '{{ front_url('/payment/request') }}';
             ajaxSubmit($regi_form, url, function(ret) {
                 if(ret.ret_cd) {

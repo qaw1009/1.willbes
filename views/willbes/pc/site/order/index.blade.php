@@ -953,6 +953,12 @@
 
             // 결제하기 버튼 클릭
             $('button[name="btn_pay"]').on('click', function() {
+                if ($('#chk_payment_layer').length > 0) {
+                    alert('결제하기 버튼은 한번만 클릭해 주세요.');
+                    $('#chk_payment_layer').remove();
+                    return;
+                }
+
                 var url = '{{ front_url('/payment/request') }}';
                 ajaxSubmit($regi_form, url, function(ret) {
                     if(ret.ret_cd) {
@@ -966,6 +972,7 @@
                             if ($('#payment_layer').length > 0) {
                                 $('#payment_layer').remove();
                                 $('#payment_js').remove();
+                                $('#chk_payment_layer').remove();
                             }
                             $('body').append(ret.ret_data);
                         }

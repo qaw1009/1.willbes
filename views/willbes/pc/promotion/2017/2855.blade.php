@@ -56,7 +56,7 @@
                 <div class="profBox">
                     <img src="https://static.willbes.net/public/images/promotion/2022/12/2855_03_t01.jpg" alt="민정선 유아"/>
                     <div class="btns">
-                        <a href="#none" onclick="javascript:alert('준비중입니다.');">설명회 보기</a>
+                        <a href="javascript:fnPlayerSample('204258','1391335','HD');">설명회 보기</a>
                         <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="자료 받기">설명회 자료 받기</a>
                     </div>
                 </div>

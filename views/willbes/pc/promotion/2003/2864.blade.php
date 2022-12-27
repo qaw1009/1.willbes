@@ -25,7 +25,6 @@
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
-
         <input type="hidden" name="msg" value="아래 체험팩 수강후기를 등록해 주세요.">
     </form>
     
@@ -40,8 +39,8 @@
         <div class="evtCtnsBox pb100">
             <div class="wrap" data-aos="fade-right">
                 <img src="https://static.willbes.net/public/images/promotion/2022/12/2864_01.jpg" alt="후기쓰고 쿠폰받기" />
-                <a href="javascript:void(0);" onclick="giveCheck();" title="실강쿠폰받기" style="position: absolute; left: 54.38%; top: 60.83%; width: 22.59%; height: 10.36%; z-index: 2;"></a>
-                <a href="#" title="온라인쿠폰받기" style="position: absolute; left: 54.55%; top: 75.5%; width: 22.59%; height: 10.36%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}'); return false;" title="실강쿠폰받기" style="position: absolute; left: 54.38%; top: 60.83%; width: 22.59%; height: 10.36%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}'); return false;" title="온라인쿠폰받기" style="position: absolute; left: 54.55%; top: 75.5%; width: 22.59%; height: 10.36%; z-index: 2;"></a>
             </div>
 
             {{--기본댓글--}}
@@ -72,11 +71,11 @@
       }
 
       {{--쿠폰발급--}}
-      function giveCheck() {
+      function giveCheck(give_idx) {
           {!! login_check_inner_script('로그인 후 이용해주세요.','Y') !!}
 
           @if(empty($arr_promotion_params) === false)
-              var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
+              var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&give_idx=' + give_idx;
               ajaxSubmit($regi_form, _check_url, function (ret) {
                   if (ret.ret_cd) {
                       alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');

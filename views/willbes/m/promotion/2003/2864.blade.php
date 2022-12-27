@@ -10,6 +10,12 @@
     /*.evtCtnsBox.wrap a {border:1px solid #000}*/    
 </style>
 
+<form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+    {!! csrf_field() !!}
+    {!! method_field('POST') !!}
+    <input type="hidden" name="msg" value="아래 체험팩 수강후기를 등록해 주세요.">
+</form>
+
 <div id="Container" class="Container NSK c_both">
     <div class="evtCtnsBox wrap" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/12/2864m_top.gif" alt="" >
@@ -18,8 +24,8 @@
 
     <div class="evtCtnsBox wrap" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/12/2864m_01.jpg" alt=""/>
-        <a href="javascript:void(0);" onclick="giveCheck();" title="실강쿠폰받기" style="position: absolute; left: 23.61%; top: 65.33%; width: 46.25%; height: 10.19%; z-index: 2;"></a>
-        <a href="#" title="온라인쿠폰받기" style="position: absolute; left: 23.61%; top: 78.29%; width: 46.25%; height: 10.19%; z-index: 2;"></a>        
+        <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}'); return false;" title="실강쿠폰받기" style="position: absolute; left: 23.61%; top: 65.33%; width: 46.25%; height: 10.19%; z-index: 2;"></a>
+        <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}'); return false;" title="온라인쿠폰받기" style="position: absolute; left: 23.61%; top: 78.29%; width: 46.25%; height: 10.19%; z-index: 2;"></a>
     </div>
 
     @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
@@ -49,11 +55,11 @@
       }
 
       {{--쿠폰발급--}}
-      function giveCheck() {
+      function giveCheck(give_idx) {
           {!! login_check_inner_script('로그인 후 이용해주세요.','Y') !!}
 
           @if(empty($arr_promotion_params) === false)
-              var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
+              var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&give_idx=' + give_idx;
               ajaxSubmit($regi_form, _check_url, function (ret) {
                   if (ret.ret_cd) {
                       alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');

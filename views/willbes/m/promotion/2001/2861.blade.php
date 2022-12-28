@@ -41,36 +41,36 @@
     <div class="evtCtnsBox evt02" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/12/2861m_02.jpg" alt="계급별 pass"/>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189899" target="_blank" title="" style="position: absolute; left: 16.53%; top: 12.45%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189900" target="_blank" title="" style="position: absolute; left: 52.92%; top: 12.45%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189901" target="_blank" title="" style="position: absolute; left: 16.53%; top: 22.95%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189902" target="_blank" title="" style="position: absolute; left: 52.92%; top: 22.95%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189904" target="_blank" title="" style="position: absolute; left: 16.53%; top: 33.42%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189905" target="_blank" title="" style="position: absolute; left: 52.92%; top: 33.42%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189906" target="_blank" title="" style="position: absolute; left: 16.53%; top: 43.92%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189907" target="_blank" title="" style="position: absolute; left: 52.92%; top: 43.92%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189908" target="_blank" title="" style="position: absolute; left: 16.53%; top: 54.46%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189907" target="_blank" title="" style="position: absolute; left: 52.92%; top: 54.46%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189908" target="_blank" title="" style="position: absolute; left: 16.53%; top: 64.96%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189907" target="_blank" title="" style="position: absolute; left: 52.92%; top: 64.96%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189908" target="_blank" title="" style="position: absolute; left: 16.53%; top: 75.43%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189907" target="_blank" title="" style="position: absolute; left: 52.92%; top: 75.43%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189908" target="_blank" title="" style="position: absolute; left: 16.53%; top: 85.93%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189907" target="_blank" title="" style="position: absolute; left: 52.92%; top: 85.93%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204319" target="_blank" title="" style="position: absolute; left: 16.53%; top: 12.45%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204320" target="_blank" title="" style="position: absolute; left: 52.92%; top: 12.45%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204321" target="_blank" title="" style="position: absolute; left: 16.53%; top: 22.95%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="#none" title="" style="position: absolute; left: 52.92%; top: 22.95%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204314" target="_blank" title="" style="position: absolute; left: 16.53%; top: 33.42%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204317" target="_blank" title="" style="position: absolute; left: 52.92%; top: 33.42%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204294" target="_blank" title="" style="position: absolute; left: 16.53%; top: 43.92%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="#none" title="" style="position: absolute; left: 52.92%; top: 43.92%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204318" target="_blank" title="" style="position: absolute; left: 16.53%; top: 54.46%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204295" target="_blank" title="" style="position: absolute; left: 52.92%; top: 54.46%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204300" target="_blank" title="" style="position: absolute; left: 16.53%; top: 64.96%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="#none" title="" style="position: absolute; left: 52.92%; top: 64.96%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204322" target="_blank" title="" style="position: absolute; left: 16.53%; top: 75.43%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204323" target="_blank" title="" style="position: absolute; left: 52.92%; top: 75.43%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204324" target="_blank" title="" style="position: absolute; left: 16.53%; top: 85.93%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204325" target="_blank" title="" style="position: absolute; left: 52.92%; top: 85.93%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
         </div>
     </div>
 
     <div class="evtCtnsBox evt03" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/12/2861m_03.jpg" alt="교수님 pass"/>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189909" target="_blank" title="" style="position: absolute; left: 16.67%; top: 21.51%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189910" target="_blank" title="" style="position: absolute; left: 52.36%; top: 21.51%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189911" target="_blank" title="" style="position: absolute; left: 16.67%; top: 39.52%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189913" target="_blank" title="" style="position: absolute; left: 52.36%; top: 39.52%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189914" target="_blank" title="" style="position: absolute; left: 16.67%; top: 57.7%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189914" target="_blank" title="" style="position: absolute; left: 52.36%; top: 57.7%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189914" target="_blank" title="" style="position: absolute; left: 16.67%; top: 76.15%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/189914" target="_blank" title="" style="position: absolute; left: 52.36%; top: 76.15%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204326" target="_blank" title="" style="position: absolute; left: 16.67%; top: 21.51%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204327" target="_blank" title="" style="position: absolute; left: 52.36%; top: 21.51%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204328" target="_blank" title="" style="position: absolute; left: 16.67%; top: 39.52%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204329" target="_blank" title="" style="position: absolute; left: 52.36%; top: 39.52%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204330" target="_blank" title="" style="position: absolute; left: 16.67%; top: 57.7%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
+            <a href="#none" title="" style="position: absolute; left: 52.36%; top: 57.7%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204338" target="_blank" title="" style="position: absolute; left: 16.67%; top: 76.15%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204348" target="_blank" title="" style="position: absolute; left: 52.36%; top: 76.15%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
         </div>
     </div>
 

@@ -63,11 +63,12 @@
                     </colgroup>
                     <thead class="bg-white-gray">
                         <tr>
-                            <th class="text-center">NO</th>
+                            <th>NO</th>
+                            <th>설문번호</th>
                             <th>제목</th>
-                            <th class="text-center">시작일 / 종료일</th>
-                            <th class="text-center">결과</th>
-                            <th class="text-center">사용유무</th>
+                            <th>시작일 / 종료일</th>
+                            <th>결과</th>
+                            <th>사용유무</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -106,6 +107,9 @@
                 columns: [
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        }},
+                    {'data' : 'SsIdx', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<b>'+data+'</b>';
                         }},
                     {'data' : 'SurveyTitle', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.SsIdx + '"><u class="blue">' + row.SurveyTitle + '</u></a>';

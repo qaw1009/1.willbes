@@ -39,10 +39,9 @@
             .evt01 .table_wrap td{color:#444;padding:10px; line-height:1.5; text-align:left}
             .evt01 .table_wrap tr th{border-top:1px solid #d0d2d9}
 
-            .evt01 .info02 {width:100%;}
+            .evt01 .info02 {width:100%;display:flex; justify-content: space-between; width:100%; margin:0 auto;}
             .evt01 .info02 li {margin-left:20px; list-style-type: disc;font-size:15px;}
             
-            .evt01 .info02 {display:flex; justify-content: space-between; width:100%; margin:0 auto;}
             .popupBtn {width:380px; margin-left:30px}
             .popupBtn a {width:100%; height:100%; display:flex; justify-content: center; align-items: center; text-align:center; background:#fcc43e; border-radius:10px; border:5px solid #fc9c3e; font-size:22px;}
             .popupBtn a:hover {background:#fc9c3e; color:#fff}

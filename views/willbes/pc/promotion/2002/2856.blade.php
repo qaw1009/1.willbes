@@ -35,7 +35,7 @@
         .newTopDday ul:after {content:""; display:block; clear:both}
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/12/2856_top_bg.jpg) no-repeat center top; height:1060px; overflow: hidden;}
-        .evt_top .ani{position:absolute; left:50%; top:180px; margin-left:-480px; z-index: 10;}
+        .evt_top .ani{position:absolute; left:50%; top:180px; margin-left:-445px; z-index: 10;}
 
         .wb_01 {background:#161D2F}
 

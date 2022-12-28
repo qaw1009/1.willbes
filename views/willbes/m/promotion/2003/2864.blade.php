@@ -19,7 +19,8 @@
 <div id="Container" class="Container NSK c_both">
     <div class="evtCtnsBox wrap" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2022/12/2864m_top.gif" alt="" >
-        <a href="javascript:void(0);" onclick="showPopup();" title="설문조사" style="position: absolute; left: 25.97%; top: 80.96%; width: 46.25%; height: 9.84%; z-index: 2;"></a>
+        {{--<a href="javascript:void(0);" onclick="showPopup();" title="설문조사" style="position: absolute; left: 25.97%; top: 80.96%; width: 46.25%; height: 9.84%; z-index: 2;"></a>--}}
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSefF5pV0_2K12Yg-Muk6_YxGFMQ2lv54s5BHz73LRSVqEgV4g/viewform?usp=sf_link" target="_blank" title="설문조사" style="position: absolute; left: 25.97%; top: 80.96%; width: 46.25%; height: 9.84%; z-index: 2;"></a>
     </div> 
 
     <div class="evtCtnsBox wrap" data-aos="fade-up">

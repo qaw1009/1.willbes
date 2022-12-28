@@ -32,7 +32,8 @@
         <div class="evtCtnsBox evt_top" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/12/2864_top.gif" alt="후기쓰고 쿠폰받기"/>
-                <a href="javascript:void(0);" onclick="showPopup();" title="설문 참여" style="position: absolute; left: 34.11%; top: 72.05%; width: 31.16%; height: 10.22%; z-index: 2;"></a>
+                {{--<a href="javascript:void(0);" onclick="showPopup();" title="설문 참여" style="position: absolute; left: 34.11%; top: 72.05%; width: 31.16%; height: 10.22%; z-index: 2;"></a>--}}
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSefF5pV0_2K12Yg-Muk6_YxGFMQ2lv54s5BHz73LRSVqEgV4g/viewform?usp=sf_link" target="_blank" title="설문 참여" style="position: absolute; left: 34.11%; top: 72.05%; width: 31.16%; height: 10.22%; z-index: 2;"></a>
             </div>
         </div>
 

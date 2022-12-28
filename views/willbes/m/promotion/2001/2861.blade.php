@@ -21,12 +21,7 @@
     .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px;}    
 </style>
 
-<div id="Container" class="Container NSK c_both"> 
-
-    <div class="evtCtnsBox evt00" data-aos="fade-down">
-        <img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_00.jpg" alt="경찰학원부분 1위" >        
-    </div>
-
+<div id="Container" class="Container NSK c_both">
     <div class="evtCtnsBox evtTop" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/12/2861m_top.jpg" alt="승진 pass"/>

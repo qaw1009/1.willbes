@@ -22,7 +22,7 @@
 
             .evtTop {background:#369eff}
             .evt01 {width:1120px; margin:50px auto; padding:20px; text-align:left; font-size:16px; line-height:1.4}
-            .evt01 p {font-weight:bold; font-size:18px}
+            .evt01 p {font-weight:bold; font-size:19px;padding:20px 0;}
             .evt01 .info {font-size:14px; margin-top:50px}
             .evt01 .info ul {border:1px solid #ccc; background:#f4f4f4; padding:20px; margin:20px 0 10px;}
             .evt01 .info li {margin-left:20px; list-style:disc; margin-bottom:5px}
@@ -39,7 +39,10 @@
             .evt01 .table_wrap td{color:#444;padding:10px; line-height:1.5; text-align:left}
             .evt01 .table_wrap tr th{border-top:1px solid #d0d2d9}
 
-            .evt01 .info02 {display:flex; justify-content: space-between; width:100%; margin:50px auto 0}
+            .evt01 .info02 {width:100%;}
+            .evt01 .info02 li {margin-left:20px; list-style-type: disc;font-size:15px;}
+            
+            .evt01 .info02 {display:flex; justify-content: space-between; width:100%; margin:0 auto;}
             .popupBtn {width:380px; margin-left:30px}
             .popupBtn a {width:100%; height:100%; display:flex; justify-content: center; align-items: center; text-align:center; background:#fcc43e; border-radius:10px; border:5px solid #fc9c3e; font-size:22px;}
             .popupBtn a:hover {background:#fc9c3e; color:#fff}
@@ -178,14 +181,14 @@
                                 </tr>
                             </tbody>
                         </table>
-
-                        <div class="info02">
-                            <div>
-                                <p>* 불합격 인증 파일 제출시 참고사항 </P>
-                                <li>불합격 인증 파일을 제출할 때에는 오른쪽의 『인증 예시 파일 보기』를 참고 하시고, 예시와 같이 해당 란의 모든 내용이 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;표시된 파일을 제출하셔야 갱신이 가능합니다. (예외규정 없음)</li>                                  
-                                <li>인증 파일은 『나이스 홈페이지 화면 캡처본』과 시험에 응시한 해당 시·도 교육청에서 발급 받은<br> &nbsp;&nbsp;&nbsp;&nbsp;『시험확인서』 두 종류의 파일만 인정됩니다.</li>
+                        
+                        <p>* 불합격 인증 파일 제출시 참고사항 </P>
+                        <div class="info02">                            
+                            <ul>                                
+                                <li>불합격 인증 파일을 제출할 때에는 오른쪽의 『인증 예시 파일 보기』를 참고 하시고, 예시와 같이 해당 란의 모든 내용이 표시된 파일을 제출하셔야 갱신이 가능합니다. (예외규정 없음)</li>                                  
+                                <li>인증 파일은 『나이스 홈페이지 화면 캡처본』과 시험에 응시한 해당 시·도 교육청에서 발급 받은『시험확인서』 두 종류의 파일만 인정됩니다.</li>
                                 <li>두 종류의 인증 파일중 하나를 선택하셔서 제출해 주시면 됩니다.</li>
-                            </div>
+                            </ul>
                             <div class="popupBtn NSK-Black"><a href="javascript:go_popup1()">🔺<br>인증 예시<br>파일 보기<br></a></div>
                         </div>
 

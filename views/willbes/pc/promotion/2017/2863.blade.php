@@ -135,11 +135,7 @@
                     </div>
 
                     <div class="btnSet">
-                        @if(element('recipient_type', $arr_promotion_params, '') == 'Y' && empty($arr_base['member_recipient']) === false)
-                            <a href="{!! front_url('/event/registerStore') !!}" onclick="fn_submit(); return false;">상기 내용에 동의하며, 문화상품권 발송 신청합니다 ></a>
-                        @else
-                            <a href="javascript:alert('상품권 수령 대상자가 아닙니다.');">문화상품권 신청하기 ></a>
-                        @endif
+                        <a href="{!! front_url('/event/registerStore') !!}" onclick="fn_submit(); return false;">상기 내용에 동의하며, 문화상품권 발송 신청합니다 ></a>
                     </div>
                 </div>
             </div>
@@ -159,6 +155,12 @@
 
         function fn_submit() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+            @if(element('recipient_type', $arr_promotion_params, '') == 'Y' && empty($arr_base['member_recipient']) === false)
+            @else
+                alert('상품권 수령 대상자가 아닙니다.');
+                return false;
+            @endif
+
             var _url = '{!! front_url('/event/registerStore') !!}';
             ajaxSubmit($regi_form_register, _url, function (ret) {
                 if (ret.ret_cd) {

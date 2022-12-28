@@ -55,6 +55,7 @@
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
             <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
+            <input type="hidden" name="recipient_type" value="{{$arr_promotion_params['recipient_type']}}"> {{-- 상품지급대상(문화상품권) 기능 사용 --}}
             <input type="hidden" name="ssn_type" value="Y"> {{-- 주민번호 전송 --}}
             <input type="hidden" id="register_name" name="register_name" value="{{sess_data('mem_name')}}">
             <input type="hidden" id="userId" name="userId" value="{{sess_data('mem_id')}}">
@@ -143,7 +144,7 @@
                         (10만원권 수령자 - 128,205원 차감 / 15만원권 수령자 - 192,308원 차감 )</li>
                     </ul>
                     <div class="btnSet">
-                        @if(empty($arr_base['member_recipient']) === false)
+                        @if($arr_promotion_params['recipient_type'] == 'Y' && empty($arr_base['member_recipient']) === false)
                             <a href="{!! front_url('/event/registerStore') !!}" onclick="javascript:fn_submit(); return false;">문화상품권 신청하기 ></a>
                         @else
                             <a href="javascript:alert('상품권 수령 대상자가 아닙니다.');">문화상품권 신청하기 ></a>

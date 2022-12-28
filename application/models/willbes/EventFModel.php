@@ -374,8 +374,7 @@ class EventFModel extends WB_Model
             $register_email = (empty($inputData['register_email']) === true) ? '' : $this->memberFModel->getEncString($inputData['register_email']);
 
             //프로모션상품 지급 대상자 조회
-            $reg_ssn = ''; //함호화된 주민번호 변수
-            if (element('ssn_type', $inputData) == 'Y') {
+            if (element('recipient_type', $inputData) == 'Y') {
                 if (empty($this->session->userdata('mem_idx')) === true) {
                     throw new \Exception('로그인 후 이용해주세요.');
                 }
@@ -391,8 +390,6 @@ class EventFModel extends WB_Model
                 if (empty($result_recipient) === true) {
                     throw new \Exception('회원님은 상품권 수령 대상자가 아닙니다.');
                 }
-                $temp_ssn = $inputData['ssn_1'].$inputData['ssn_2'];
-                $reg_ssn = $this->memberFModel->getEncString($temp_ssn);
             }
 
             //검증
@@ -581,6 +578,8 @@ class EventFModel extends WB_Model
 
                 //주민번호(암호화)
                 if (element('ssn_type', $inputData) == 'Y') {
+                    $temp_ssn = $inputData['ssn_1'].$inputData['ssn_2'];
+                    $reg_ssn = $this->memberFModel->getEncString($temp_ssn);
                     $input_register_data[$key]['UserSsnEnc'] = $reg_ssn;
                 }
                 $input_register_data[$key]['EtcTitle'] = element('etc_title', $inputData);
@@ -604,7 +603,7 @@ class EventFModel extends WB_Model
                 }
             }
 
-            if (element('ssn_type', $inputData) == 'Y') {
+            if (element('recipient_type', $inputData) == 'Y') {
                 if ($this->_updatePromotionRecipientMemberApply(
                     $event_data['PromotionCode'], $this->session->userdata('mem_idx'), $this->session->userdata('mem_id')) !== true) {
                     throw new \Exception('신청에 실패했습니다. 관리자에게 문의해주세요.');

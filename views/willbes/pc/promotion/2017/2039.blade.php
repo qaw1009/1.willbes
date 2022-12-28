@@ -50,6 +50,7 @@
             {!! csrf_field() !!}
             <input type="hidden" name="_method" value="POST">
             <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
+            <input type="hidden" name="recipient_type" value="Y"> {{-- 상품지급대상(문화상품권) 기능 사용 --}}
             <input type="hidden" name="ssn_type" value="Y"> {{-- 주민번호 전송 --}}
             <input type="hidden" id="register_name" name="register_name" value="{{sess_data('mem_name')}}">
             <input type="hidden" id="userId" name="userId" value="{{sess_data('mem_id')}}">

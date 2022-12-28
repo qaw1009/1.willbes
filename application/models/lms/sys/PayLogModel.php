@@ -33,8 +33,11 @@ class PayLogModel extends WB_Model
             $defined_column = [
                 'pay' => 'PL.PayIdx, PL.OrderNo, PL.PayType, PL.PgDriver, PL.PgMid, PL.PgTid, PL.PayMethod, PL.PayDetailCode, PL.ReqPayPrice, PL.ApprovalNo, PL.ApprovalDatm
                     , PL.ResultCode, PL.ResultMsg, PL.ResultPgTid, PL.ResultPayPrice, PL.ReqReason, PL.RegDatm',
-                'deposit' => 'PL.DepositIdx, PL.OrderNo, PL.MsgSeq, PL.PgDriver, O.PgMid, PL.PgTid, if(PL.RealPayPrice = 0, O.RealPayPrice, PL.RealPayPrice) as RealPayPrice
-                    , PL.VBankCode, PL.VBankAccountNo, PL.DepositBankName, PL.DepositName, PL.DepositDatm, PL.ErrorMsg, PL.RegDatm, PL.RegIp',
+                'deposit' => 'PL.DepositIdx, PL.OrderNo, PL.MsgSeq, PL.PgDriver, O.PgMid, PL.PgTid
+                    , if(PL.RealPayPrice = 0, O.RealPayPrice, PL.RealPayPrice) as RealPayPrice
+                    , if(PL.VBankAccountNo = "", O.VBankAccountNo, PL.VBankAccountNo) as VBankAccountNo
+	                , if(PL.DepositBankName = "", fn_ccd_name(O.VBankCcd), PL.DepositBankName) as DepositBankName
+                    , PL.VBankCode, PL.DepositName, PL.DepositDatm, PL.ErrorMsg, PL.RegDatm, PL.RegIp',
                 'escrow' => 'PL.EscrowIdx, PL.OrderNo, PL.PgDriver, PL.PgMid, PL.EscrowParam1, PL.EscrowParam2, PL.EscrowDatm, PL.ResultCode, PL.ResultMsg, PL.IsResend, PL.RegDatm
                     , if(PL.ResultCode = "0000", "Y", "N") as IsSuccess
                     , fn_ccd_name(PL.EscrowParam1) as EscrowParam1Name'

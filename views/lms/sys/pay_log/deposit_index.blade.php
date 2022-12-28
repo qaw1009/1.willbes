@@ -97,10 +97,8 @@
                     <th>상점아이디</th>
                     <th>TID</th>
                     <th>입금금액</th>
-                    <th>입금은행코드</th>
-                    <th>입금계좌번호</th>
-                    {{--<th>입금은행명</th>
-                    <th>입금자명</th>--}}
+                    <th>입금은행명(코드)</th>
+                    <th>가상계좌번호</th>
                     <th>입금일시</th>
                     <th>에러메시지</th>
                     <th>등록일시</th>
@@ -151,10 +149,10 @@
                     {'data' : 'RealPayPrice', 'render' : function(data, type, row, meta) {
                         return addComma(data);
                     }},
-                    {'data' : 'VBankCode'},
+                    {'data' : 'DepositBankName', 'render' : function(data, type, row, meta) {
+                        return data + (row.VBankCode === '' ? '' : '(' + row.VBankCode + ')');
+                    }},
                     {'data' : 'VBankAccountNo'},
-                    //{'data' : 'DepositBankName'},
-                    //{'data' : 'DepositName'},
                     {'data' : 'DepositDatm'},
                     {'data' : 'ErrorMsg'},
                     {'data' : 'RegDatm'},

@@ -72,12 +72,12 @@
         @if (empty($arr_base['register_member_list']) === false)
             @if ($arr_base['register_list'][0]['PersonLimit'] <= $arr_base['register_member_list'][$arr_base['register_list'][0]['ErIdx']]['mem_cnt'])
                 {{--선착순 20명 마감되었을때 보여지는 이미지와 문구--}}
-                <img src="https://static.willbes.net/public/images/promotion/2022/11/1067_04_end.jpg" title="선찬순 20명 마감되었습니다." usemap="#Map1067" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/12/1067_04_end.jpg" title="선찬순 20명 마감되었습니다." usemap="#Map1067" />
                 <map name="Map1067" id="Map1067">
                     <area shape="rect" coords="619,672,893,775" href="#none" onclick="javascript:alert('선착순 20명 마감되었습니다.');" />
                 </map>
             @else
-                <img src="https://static.willbes.net/public/images/promotion/2022/11/1067_04.jpg" title="예약 접수" usemap="#Map1067" />
+                <img src="https://static.willbes.net/public/images/promotion/2022/12/1067_04.jpg" title="예약 접수" usemap="#Map1067" />
                 <map name="Map1067" id="Map1067">
                     <area shape="rect" coords="619,672,893,775" href="#none" onclick="{{ $goSubmit }}" />
                 </map>

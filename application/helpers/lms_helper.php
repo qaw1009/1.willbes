@@ -337,3 +337,118 @@ if (!function_exists('get_admin_sub_role')) {
         return array_get(sess_data('admin_auth_data'), 'Role.SubRole.' . $sub_role, $default);
     }
 }
+
+if (!function_exists('get_current_menu_info')) {
+    /**
+     * 현재 메뉴정보 리턴
+     */
+    function get_current_menu_info()
+    {
+        $_CI =& get_instance();
+        return array_get($_CI->load->get_var('__menu'), 'CURRENT');
+    }
+}
+
+if (!function_exists('get_current_menu_perm')) {
+    /**
+     * 현재 메뉴 세부권한유무 리턴
+     * @param string|array $perms [권한명(write, excel, masking)]
+     * @return array|mixed|string
+     */
+    function get_current_menu_perm($perms)
+    {
+        $curr_menu_info = get_current_menu_info();  // 현재 메뉴정보 조회
+        $has_perms = [];
+
+        foreach ((array) $perms as $perm) {
+            if (empty($curr_menu_info) === true) {
+                $has_perms[$perm] = 'Y';
+            } else {
+                $has_perms[$perm] = get_var(array_get($curr_menu_info, 'Is' . ucfirst($perm), 'N'), 'N');
+            }
+        }
+
+        return count($has_perms) > 1 ? $has_perms : array_value_first($has_perms);
+    }
+}
+
+if (!function_exists('has_write_menu_perm')) {
+    /**
+     * 현재 메뉴 쓰기 권한유무 리턴
+     * @return bool
+     */
+    function has_write_menu_perm()
+    {
+        return get_current_menu_perm('write') == 'Y';
+    }
+}
+
+if (!function_exists('has_excel_menu_perm')) {
+    /**
+     * 현재 메뉴 엑셀다운로드 권한유무 리턴
+     * @return bool
+     */
+    function has_excel_menu_perm()
+    {
+        return get_current_menu_perm('excel') == 'Y';
+    }
+}
+
+if (!function_exists('check_menu_perm')) {
+    /**
+     * 현재 메뉴 세부권한 체크
+     * @param string $perm [권한명(write, excel)]
+     * @param string $err_url [에러URL(back, close, redirect url)]
+     * @return bool|void
+     */
+    function check_menu_perm($perm, $err_url = 'back')
+    {
+        $is_perm = get_current_menu_perm($perm);    // 현재 메뉴 세부권한유무 조회
+
+        if ($is_perm != 'Y') {
+            $_CI =& get_instance();
+            $err_msg = '권한이 없습니다.[' . $perm . ']';
+
+            if ($_CI->input->is_ajax_request() === true) {
+                $_CI->output->set_content_type('application/json')
+                    ->set_status_header(_HTTP_NO_PERMISSION)
+                    ->set_output(json_encode([
+                        'ret_cd' => false,
+                        'ret_msg' => $err_msg,
+                        'ret_status' => _HTTP_NO_PERMISSION
+                    ], JSON_UNESCAPED_UNICODE))
+                    ->_display();
+                exit(1);
+            } else {
+                show_alert($err_msg, $err_url, false);
+            }
+        }
+
+        return true;
+    }
+}
+
+if (!function_exists('check_menu_perm_inner_script')) {
+    /**
+     * 현재 메뉴 세부권한 체크 스크립트
+     * @example {!! check_menu_perm_inner_script('write') !!}
+     * @param string $perm [권한명(write, excel)]
+     * @param string $err_url [에러URL(redirect url)]
+     * @return void|null
+     */
+    function check_menu_perm_inner_script($perm, $err_url = '')
+    {
+        $is_perm = get_current_menu_perm($perm);    // 현재 메뉴 세부권한유무 조회
+
+        if ($is_perm != 'Y') {
+            $output = 'alert("권한이 없습니다.[' . $perm . ']");' . PHP_EOL;
+            if (empty($err_url) === false) {
+                $output .= 'location.replace("' . $err_url . '");' . PHP_EOL;
+            }
+            $output .= 'return;';
+            echo $output;
+        } else {
+            return null;
+        }
+    }
+}

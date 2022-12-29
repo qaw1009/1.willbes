@@ -60,7 +60,7 @@ abstract class AdminAuthService
      * @param array $uri_get_params
      * @return array|bool
      */
-    public function getCurrentMenuInfo($menus = [], $uri_str, $uri_get_params = [])
+    public function getCurrentMenuInfo($menus, $uri_str, $uri_get_params = [])
     {
         foreach ((array) $menus as $row) {
             if(empty($row['MenuUrl']) === false) {
@@ -82,7 +82,10 @@ abstract class AdminAuthService
                             'MenuIdx' => $row['MenuIdx'],
                             'GroupMenuIdx' => $row['GroupMenuIdx'],
                             'UrlRouteName' => $this->_toHtmlUrlRouteName($row['UrlRouteName']),
-                            'MenuName' => $row['MenuName']
+                            'MenuName' => $row['MenuName'],
+                            'IsWrite' => element('IsWrite', $row),
+                            'IsExcel' => element('IsExcel', $row),
+                            'IsMasking' => element('IsMasking', $row),
                         ];
                     }
                 }
@@ -98,7 +101,7 @@ abstract class AdminAuthService
      * @param $current_group_menu_idx
      * @return array
      */
-    public function getViewAuthMenu($menus = [], $current_group_menu_idx)
+    public function getViewAuthMenu($menus, $current_group_menu_idx)
     {
         if (count($menus) < 1) {
             return [];

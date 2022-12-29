@@ -35,7 +35,8 @@ class LmsAuthService extends AdminAuthService
                     when 2 then concat(G.MenuName, ">", M.MenuName)
                     when 3 then concat(G.MenuName, ">", P.MenuName, ">", M.MenuName) 
                   end) as UrlRouteName 
-                  ,M.IsOpen        
+                , M.IsOpen
+                , AA.IsWrite, AA.IsExcel, AA.IsMasking
         ';
 
         $from = '
@@ -47,7 +48,9 @@ class LmsAuthService extends AdminAuthService
                 inner join lms_sys_admin_role_r_menu as RM
                     on RM.MenuIdx = M.MenuIdx and RM.IsStatus = "Y"
                 inner join lms_sys_admin_role as R
-                    on R.RoleIdx = RM.RoleIdx and R.IsStatus = "Y" and R.IsUse = "Y"        
+                    on R.RoleIdx = RM.RoleIdx and R.IsStatus = "Y" and R.IsUse = "Y"
+                left join lms_sys_admin_authority as AA
+		            on AA.MenuIdx = M.MenuIdx and AA.RoleIdx = RM.RoleIdx and AA.wAdminIdx = ? and AA.IsStatus = "Y"
         ';
 
         $where = ' where M.IsStatus = "Y" and M.IsUse = "Y" and RM.RoleIdx = ?';
@@ -60,7 +63,7 @@ class LmsAuthService extends AdminAuthService
         $order_by_offset_limit = ' order by TreeNum asc';
 
         // 쿼리 실행
-        $query = $this->_db->query('select ' . $column . $from . $where . $order_by_offset_limit, [$role_idx]);
+        $query = $this->_db->query('select ' . $column . $from . $where . $order_by_offset_limit, [$this->_CI->session->userdata('admin_idx'), $role_idx]);
 
         return $query->result_array();
     }

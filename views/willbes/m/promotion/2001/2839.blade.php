@@ -191,17 +191,17 @@
                 </div>
             </div>
             <div class="p_re">
-                <img src="https://static.willbes.net/public/images/promotion/2022/12/2839m_02_02.png" alt="" > 
+                <img src="https://static.willbes.net/public/images/promotion/2023/01/2839m_02_02.png" alt="" > 
                 <div class="price NSK-Black">                       
-                    <input type="radio" id="y_pkg2" name="y_pkg" value="202977" onClick=""/>
-                    <label for="y_pkg2">23년 2차 0원PASS 신청</label>
+                    <input type="radio" id="y_pkg2" name="y_pkg" value="204276" onClick=""/>
+                    <label for="y_pkg2">24년 1차 0원 PASS 신청</label>
                 </div>
             </div>
             <div class="p_re">
-                <img src="https://static.willbes.net/public/images/promotion/2022/12/2839m_02_03.png" alt="" > 
+                <img src="https://static.willbes.net/public/images/promotion/2023/01/2839m_02_03.png" alt="" > 
                 <div class="price NSK-Black">                       
-                    <input type="radio" id="y_pkg3" name="y_pkg" value="202978" onClick=""/>
-                    <label for="y_pkg3">23년 1차 FINAL PASS 신청</label>
+                    <input type="radio" id="y_pkg3" name="y_pkg" value="202977" onClick=""/>
+                    <label for="y_pkg3">23년 2차 0원 PASS 신청</label>
                 </div>
             </div>
             <div class="p_re">
@@ -357,7 +357,7 @@
             <ul class="tabs">
                 <li><a href="#tab01" class="active">평생 0원<br> PASS</a></li>
                 <li><a href="#tab02">23년 2차 0원<br> PASS</a></li>
-                <li><a href="#tab03">23년 FINAL<br> PASS</a></li>
+                <li><a href="#tab03">24년1차 0원<br> PASS</a></li>
                 <li><a href="#tab04">M사 컴백홈<br> PASS</a></li>               
             </ul>
 
@@ -648,13 +648,13 @@
             <div class="content_guide_box" id="tab03">
                 <dl>
                     <dt>
-                        <h3>23년 FINAL PASS</h3>
+                        <h3>24년1차 0원 PASS</h3>
                     </dt>
                     <dd>
                         <ol>
-                            <li>본 상품은 구매일로부터 23년 1차 시험일까지 수강 가능한 기간제 PASS 입니다.</li>
+                            <li>본 상품은 구매일로부터 24년 1차 시험일까지 수강 가능한 기간제 PASS 입니다.</li>
                             <li>본 상품 강좌 구성은 다음과 같습니다.<br>
-                                - 2022년 / 2023년  대비 형사법, 경찰학, 헌법, 범죄학 전 강좌<br>                              
+                                - 2022년/2023년/2024년 대비 형사법, 경찰학, 헌법, 범죄학 전 강좌<br>                      
                                 <div class="tx-blue">
                                     * 형사법  임종희 교수님<br>
                                     * 형사법 : 형법 : 문형석 교수님 / 형사 소송법 :김한기 교수님<br>
@@ -698,7 +698,7 @@
                             <li>수강기간 내에 진행된 순경 공채 시험 최종합격 및 인증 자료를 제출하여야 환급금 지급 대상이 됩니다.<br>
                             ※ 합격 인증 가능 직렬 : 일반공채, 101경비단, 전의경 경채, 경찰행정 경채
                             </li>    
-                            <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. <span class="tx-red">(23년 1차 최종합격)</span></li>
+                            <li>합격 인증은 합격한 시험의 최종합격자 발표일로부터 1개월 이내에만 가능합니다. <span class="tx-red">(23년1차.2차,24년1차 최종합격)</span></li>
                             <li>패스 수강 기간 내에 합격예측 서비스 1회 이상 참여 해주셔야 합니다.<br>
                                 (해당 서비스는 시즌성 이벤트로 일정 기간이 지나면 확인 불가하니, 참여 후 캡쳐해서 추후 증빙자료로 제출하셔야 합니다.)
                             </li>    

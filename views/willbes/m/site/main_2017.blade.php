@@ -231,6 +231,8 @@
     </style>
     <!-- Container -->
     <div id="Container" class="Container NSK ssam mb40">
+    
+        @if(time() < strtotime('202212301700'))
         <div class="Section">
             <div class="d-day-wrap">
                 <div class="package NSK">
@@ -244,6 +246,7 @@
                 </div>
             </div>
         </div>
+        @endif
 
         {!! banner('M_메인', 'MainSlider', $__cfg['SiteCode'], '0') !!}
 

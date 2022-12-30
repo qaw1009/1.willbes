@@ -143,6 +143,7 @@
         <!-- site nav -->
         @include('willbes.pc.site._viewTest.main_partial.site_menu')
 
+        @if(time() < strtotime('202212301700'))
         <div class="Section">
             <div class="d-day-wrap">
                 <div class="package NSK">
@@ -151,6 +152,7 @@
                 </div>
             </div>
         </div>
+        @endif
 
         <div class="Section MainVisual">
             <div class="VisualBox p_re">

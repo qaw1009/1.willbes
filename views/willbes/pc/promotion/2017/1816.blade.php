@@ -58,12 +58,12 @@
         <div class="evtCtnsBox youtube">
             <ul>
                 <li>
-                    <div><span>2020학년도</span> 유아 합격생 간담회</div>
+                    <div>유아 합격생 간담회</div>
                     <iframe src="https://www.youtube.com/embed/Y2W3lUrn3aI?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
                 <li>
-                    <div><span>2023학년도</span> 유아 합격전략 설명회 보기</div>
-                    <iframe src="https://www.youtube.com/embed/mG3dim4NgKI?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div><span>2024학년도</span> 유아 합격전략 설명회 보기</div>
+                    <iframe src="https://www.youtube.com/embed/Fy5PQHVOl4U?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
             </ul>            
         </div>

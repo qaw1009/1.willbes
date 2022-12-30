@@ -53,6 +53,7 @@
 
         <div class="evtCtnsBox youtube">
             <ul>
+                {{--
                 <li>
                     <div><span>2021 국어교육론</span> 이론반 실강 보기</div>
                     <iframe src="https://www.youtube.com/embed/8Pd2FV9vVXg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -61,9 +62,10 @@
                     <div><span>2021 문학교육론</span> 이론반 실강 보기</div>
                     <iframe src="https://www.youtube.com/embed/y8vRHR1V5SA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
+                --}}
                 <li>
-                    <div class="mt100" style="font-size:28px"><span>2023 학년도 대비</span> 송원영 국어/문학교육론 설명회</div>
-                    <iframe src="https://www.youtube.com/embed/NH8iLXKXvBY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="mt100" style="font-size:28px"><span>2024 학년도 대비</span> 송원영 국어/문학교육론 설명회</div>
+                    <iframe src="https://www.youtube.com/embed/-UDA9C24w3I?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
                 <li>
                     <div class="mt100"><span>송원영 국어교육론</span> 강의 미리보기</div>

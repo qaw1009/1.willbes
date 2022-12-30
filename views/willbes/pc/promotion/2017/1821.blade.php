@@ -66,12 +66,12 @@
         <div class="evtCtnsBox youtube">
             <ul class="mb100">
                 <li>
-                    <div class="title"><span>2021 1~2월</span> 영미시의 이해 1강 보기</div>
-                    <iframe src="https://www.youtube.com/embed/cQrUoe1fJR0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="title"><span>2024학년도 대비 </span> 전공영어 합격전략 설명회</div>
+                    <iframe src="https://www.youtube.com/embed/0j6ug8_J--c?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
                 <li>
-                    <div class="title"><span>2022 학년도 대비 </span> 설명회 바로보기</div>
-                    <iframe src="https://www.youtube.com/embed/1arYo1DapLU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="title"><span>2023 학년도 대비 </span> 전공영어 합격전략 설명회</div>
+                    <iframe src="https://www.youtube.com/embed/JQyMBOr7juc?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
             </ul> 
             <div class="title"><span>[김유석 교수의 영어 임용 뽀개기] </span> # 1~5 바로 보기</div>

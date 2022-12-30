@@ -54,8 +54,8 @@
         <div class="evtCtnsBox youtube" data-aos="fade-up">
             <ul>
                 <li>
-                    <div><span>2023학년도 대비</span> 장영희 전공중국어 설명회</div>
-                    <iframe src="https://www.youtube.com/embed/nXC4KosrbmQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div><span>2024학년도 대비</span> 장영희 전공중국어 설명회</div>
+                    <iframe src="https://www.youtube.com/embed/cQbWvRLhVdQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
                 <li>
                     <div><span>최종 모의고사 & 2차반 </span>설명회</div>

@@ -49,8 +49,8 @@
         <div class="evtCtnsBox youtube" data-aos="fade-up">
             <ul>
                 <li>
-                    <div><span>2023학년도 대비</span> 정 현 교육학 설명회</div>
-                    <iframe src="https://www.youtube.com/embed/Og9Mxchg5zY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div><span>2024학년도 대비</span> 정 현 교육학 설명회</div>
+                    <iframe src="https://www.youtube.com/embed/zfNG8TVxXTg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
                 <li>
                     <div><span>정 현 교육학 </span>강의 미리보기</div>

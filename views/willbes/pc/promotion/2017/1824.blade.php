@@ -58,7 +58,7 @@
                 </li>
                 <li>
                     <div><span>2024학년도 대비 </span> 전공수학 합격전략 설명회</div>
-                    <iframe src="https://www.youtube.com/embed/3EtPRQcBrh?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/3EtPRQcBrhI?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
             </ul>            
         </div>

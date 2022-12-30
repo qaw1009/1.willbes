@@ -34,6 +34,7 @@
 
         .evt03 .profList .profBox .NSK-Black {font-size:28px; display: flex; justify-content: center; align-items: center; width:100%; height:100%; color:#b28026; background:#f5f5f5;  line-height:1.2}
         .evt04 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2855_04_bg.jpg) no-repeat center top;}
+        .evt04_01 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2855_04_01_bg.jpg) no-repeat center top;}
 
     </style>
 
@@ -217,10 +218,15 @@
                 </div>
             </div>
         </div>
-
+        @if(time() < strtotime('202212301700'))
         <div class="evtCtnsBox evt04" data-aos="fade-up">
             <a href="https://ssam.willbes.net/promotion/index/cate/3137/code/2822" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/12/2855_04.jpg" alt="연간패키지"/></a>
         </div>
+        @else
+        <div class="evtCtnsBox evt04_01" data-aos="fade-up">
+            <a href="https://ssam.willbes.net/promotion/index/cate/3137/code/2822" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/12/2855_04_01.jpg" alt="연간패키지"/></a>
+        </div>
+        @endif
 
     </div>
     <!-- End Container -->

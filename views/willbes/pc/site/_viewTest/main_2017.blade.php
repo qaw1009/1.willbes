@@ -154,7 +154,7 @@
         </div>
         @endif
 
-        <div class="Section MainVisual">
+        <div class="Section MainVisual mt20">
             <div class="VisualBox p_re">
                 @if(empty($data['arr_main_banner']['메인_빅배너']) === false)
                     <div id="MainRollingSlider" class="MaintabBox">

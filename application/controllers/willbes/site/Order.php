@@ -118,7 +118,7 @@ class Order extends \app\controllers\FrontController
         if ($results['order']['PayRouteCcd'] == $this->orderListFModel->_pay_route_ccd['pg'] && $is_vbank == 'N') {
             // 결제완료 로그 데이터 조회
             $pay_log_data = $this->orderListFModel->getPaidOrderPaymentData($order_no, $results['order']['PgCcd'], $results['order']['PayMethodCcd']);
-            $results['order']['ReceiptUrl'] = element('PgReceiptUrl', $pay_log_data);
+            $results['order']['ReceiptUrl'] = array_get($pay_log_data, 'PgReceiptUrl');
         }
 
         // 주문상품 목록 조회

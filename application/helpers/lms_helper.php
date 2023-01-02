@@ -428,6 +428,26 @@ if (!function_exists('check_menu_perm')) {
     }
 }
 
+if (!function_exists('check_menu_perm_alert')) {
+    /**
+     * 현재 메뉴 세부권한 체크 메시지 출력 (중단없음)
+     * @param string $perm [권한명(write)]
+     */
+    function check_menu_perm_alert($perm)
+    {
+        $is_perm = get_current_menu_perm($perm);    // 현재 메뉴 세부권한유무 조회
+
+        if ($is_perm != 'Y') {
+            $output = '<script type="text/javascript">' . PHP_EOL;
+            $output .= 'alert("권한이 없습니다.[' . $perm . ']");' . PHP_EOL;
+            $output .= '</script>' . PHP_EOL;
+            echo($output);
+        } else {
+            return null;
+        }
+    }
+}
+
 if (!function_exists('check_menu_perm_inner_script')) {
     /**
      * 현재 메뉴 세부권한 체크 스크립트

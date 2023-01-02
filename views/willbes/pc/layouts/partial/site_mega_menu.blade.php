@@ -569,12 +569,12 @@
             <table class="ssamProf">
                 <thead>
                     <tr>
-                        <th rowspan="2">교육학</th>
-                        <th>유.초등</th>
+                      <th>유.초등</th>
+                      <th rowspan="2">교육학</th>
                         <th colspan="10">중등</th>
                     </tr>
                     <tr>
-                        <th>유아</th>
+                      <th>유아</th>
                         <th>국어</th>
                         <th>영어</th>
                         <th>수학</th>
@@ -589,19 +589,14 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td rowspan="3">
-                            <ul>
-                                <li><a href="{{front_url('/professor/show/prof-idx/51312?cate_code=3134&subject_idx=1980')}}">이경범</a></li>
-                                <li><a href="{{front_url('/professor/show/prof-idx/51158?cate_code=3134&subject_idx=1980')}}">정현</a></li>
-                                <li><a href="{{front_url('/professor/show/prof-idx/51336?cate_code=3134&subject_idx=1980')}}">신태식</a></li>
-                                <li><a href="{{front_url('/professor/show/prof-idx/51074?cate_code=3134&subject_idx=1980')}}">이인재</a></li>
-                                <li><a href="{{front_url('/professor/show/prof-idx/51075?cate_code=3134&subject_idx=1980')}}">홍의일</a></li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li><a href="{{front_url('/professor/show/prof-idx/51076?cate_code=3135&subject_idx=1981')}}">민정선</a></li>
-                            </ul>
+                      <td><ul>
+                        <li><a href="{{front_url('/professor/show/prof-idx/51076?cate_code=3135&amp;subject_idx=1981')}}">민정선</a></li>
+                      </ul></td>
+                      <td rowspan="3">
+                          <ul>
+                              <li><a href="{{front_url('/professor/show/prof-idx/51312?cate_code=3134&subject_idx=1980')}}">이경범</a></li>
+                              <li><a href="{{front_url('/professor/show/prof-idx/51158?cate_code=3134&subject_idx=1980')}}">정현</a></li>
+                          </ul>
                         </td>
                         <td rowspan="3">
                             <ul>
@@ -647,7 +642,6 @@
                         <td rowspan="3">
                             <ul>
                                 <li><a href="{{front_url('/professor/show/prof-idx/51088?cate_code=3137&subject_idx=1989')}}">김병찬</a></li>
-                                <li><a href="{{front_url('/professor/show/prof-idx/51317?cate_code=3137&subject_idx=1989')}}">김민응</a></li>
                             </ul>
                         </td>
                         <td rowspan="3">
@@ -678,17 +672,15 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>초등</th>
+                      <th>초등</th>
                         <th>전기전자통신</th>
                         <th>정보컴퓨터</th>
                         <th>중국어</th>
                     </tr>
                     <tr>
-                    <td>
-                        <ul>
-                            <li><a href="{{front_url('/professor/show/prof-idx/51077?cate_code=3135&subject_idx=1982')}}">배재민</a></li>
-                        </ul>
-                    </td>
+                      <td><ul>
+                        <li><a href="{{front_url('/professor/show/prof-idx/51077?cate_code=3135&amp;subject_idx=1982')}}">배재민</a></li>
+                      </ul></td>
                     <td>
                         <ul>
                             <li><a href="{{front_url('/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992')}}">최우영</a></li>                            
@@ -696,8 +688,6 @@
                     </td>
                         <td>
                             <ul>
-                                <li class="subTit">정보컴퓨터</li>
-                                <li><a href="{{front_url('/professor/show/prof-idx/51092?cate_code=3137&subject_idx=1993')}}">송광진</a></li>
                                 <li class="subTit">정컴교육론</li>
                                 <li><a href="{{front_url('/professor/show/prof-idx/51093?cate_code=3137&subject_idx=1994')}}">장순선</a></li>
                             </ul>

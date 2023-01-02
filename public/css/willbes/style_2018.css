@@ -331,7 +331,7 @@
     font-size: 14px;
     background: #fff;
     color: #494949;
-    line-height: 30px;
+    line-height: 44px !important;
     border-right: 1px solid #e3e3e3;
     border-bottom: 1px solid #e3e3e3
 }

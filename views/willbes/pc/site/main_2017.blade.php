@@ -210,9 +210,6 @@
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1817') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_bjm.jpg" alt="초등 배재민"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/2555') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51312.jpg" alt="교육한 이경범"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/2556') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51158.jpg" alt="교육한 정현"></a></li>
-                        <li><a href="{{ front_url('/promotion/index/cate/3140/code/2557') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51336.jpg" alt="교육한 신태식"></a></li>
-                        <li><a href="{{ front_url('/promotion/index/cate/3140/code/1814') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_lij.jpg" alt="교육한 이인재"></a></li>
-                        <li><a href="{{ front_url('/promotion/index/cate/3140/code/1815') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_hei.jpg" alt="교육한 홍의일"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1818') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_swy.jpg" alt="전공국어 송원영"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1820') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kbm.jpg" alt="전공국어 권보민"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/2558') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51313.jpg" alt="전공국어 구동언"></a></li>
@@ -222,18 +219,15 @@
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/2559') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51338.jpg" alt="전공수학 김현웅"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1825') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_bty.jpg" alt="수학교육론 박태영"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/2560') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51314.jpg" alt="수학교육론 박혜향"></a></li>
-                        <li><a href="{{ front_url('/promotion/index/cate/3140/code/1828') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kbc.jpg" alt="도덕윤리 김병찬"></a></li>
-                        <li><a href="{{ front_url('/promotion/index/cate/3140/code/2561') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51317.jpg" alt="도덕윤리 김민웅"></a></li>
-                        <li><a href="{{ front_url('/promotion/index/cate/3140/code/2562') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51316.jpg" alt="일반사회 허역 팀"></a></li>
-                        <li><a href="{{ front_url('/promotion/index/cate/3140/code/2562') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51315.jpg" alt="전공역사 김종권"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1826') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kcu.jpg" alt="전공생물 강치욱"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1827') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_yhj.jpg" alt="생물교육론 양혜정"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/2565') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51310.jpg" alt="전공화학 강철"></a></li>
-                        <li><a href="{{ front_url('/promotion/index/cate/3140/code/2566') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51156.jpg" alt="전공체육 최규훈"></a></li>
-                        
+                        <li><a href="{{ front_url('/promotion/index/cate/3140/code/1828') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kbc.jpg" alt="도덕윤리 김병찬"></a></li>
+                        <li><a href="{{ front_url('/promotion/index/cate/3140/code/2562') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51316.jpg" alt="일반사회 허역 팀"></a></li>
+                        <li><a href="{{ front_url('/promotion/index/cate/3140/code/2562') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51315.jpg" alt="전공역사 김종권"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1829') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_diana.jpg" alt="음악 다이애나"></a></li>
+                        <li><a href="{{ front_url('/promotion/index/cate/3140/code/2566') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51156.jpg" alt="전공체육 최규훈"></a></li>                        
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1830') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_cuy.jpg" alt="전기전자통신 최우영"></a></li>
-                        <li><a href="{{ front_url('/promotion/index/cate/3140/code/1831') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_sgj.jpg" alt="정보컴퓨터 송광진"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1832') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_jss.jpg" alt="정컴교육론 장순선"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/2563') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_51318.jpg" alt="중국어 장영희"></a></li>
                     </ul>
@@ -246,9 +240,6 @@
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1817') }}"'><a data-slide-index='1' href="javascript:void(0);">초등 배재민</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2555') }}"'><a data-slide-index='2' href="javascript:void(0);">교육학 이경범</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2556') }}"'><a data-slide-index='3' href="javascript:void(0);">교육학 정 현</a></li>
-                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2557') }}"'><a data-slide-index='4' href="javascript:void(0);">교육학 신태식</a></li>
-                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1814') }}"'><a data-slide-index='5' href="javascript:void(0);">교육학 이인재</a></li>
-                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1815') }}"'><a data-slide-index='6' href="javascript:void(0);">교육학 홍의일</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1818') }}"'><a data-slide-index='7' href="javascript:void(0);">전공국어 송원영</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1820') }}"'><a data-slide-index='8' href="javascript:void(0);">전공국어 권보민</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2558') }}"'><a data-slide-index='9' href="javascript:void(0);">전공국어 구동언</a></li>
@@ -258,17 +249,15 @@
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2559') }}"'><a data-slide-index='28' href="javascript:void(0);">전공수학 김현웅</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1825') }}"'><a data-slide-index='13' href="javascript:void(0);">수학교육론 박태영</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2560') }}"'><a data-slide-index='14' href="javascript:void(0);">수학교육론 박혜향</a></li>
-                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1828') }}"'><a data-slide-index='15' href="javascript:void(0);">도덕윤리 김병찬</a></li>
-                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2561') }}"'><a data-slide-index='16' href="javascript:void(0);">도덕윤리 김민웅</a></li>
-                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2562') }}"'><a data-slide-index='17' href="javascript:void(0);">일반사회 허역 팀</a></li>
-                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2564') }}"'><a data-slide-index='18' href="javascript:void(0);">전공역사 김종권</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1826') }}"'><a data-slide-index='19' href="javascript:void(0);">전공생물 강치욱</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1827') }}"'><a data-slide-index='20' href="javascript:void(0);">생물교육론 양혜정</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2565') }}"'><a data-slide-index='21' href="javascript:void(0);">전공화학 강 철</a></li>
-                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2566') }}"'><a data-slide-index='22' href="javascript:void(0);">전공체육 최규훈</a></li>
-                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1829') }}"'><a data-slide-index='23' href="javascript:void(0);">전공음악 다이애나</a></li>
+                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1828') }}"'><a data-slide-index='15' href="javascript:void(0);">도덕윤리 김병찬</a></li>
+                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2562') }}"'><a data-slide-index='17' href="javascript:void(0);">일반사회 허역 팀</a></li>
+                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2564') }}"'><a data-slide-index='18' href="javascript:void(0);">전공역사 김종권</a></li>
+                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1829') }}"'><a data-slide-index='23' href="javascript:void(0);">전공음악 다이애나</a></li>                
+                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2566') }}"'><a data-slide-index='22' href="javascript:void(0);">전공체육 최규훈</a></li>                        
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1830') }}"'><a data-slide-index='24' href="javascript:void(0);">전기전자통신 최우영</a></li>
-                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1831') }}"'><a data-slide-index='25' href="javascript:void(0);">정보컴퓨터 송광진</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1832') }}"'><a data-slide-index='26' href="javascript:void(0);">정컴교육론 장순선</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/2563') }}"'><a data-slide-index='27' href="javascript:void(0);">중국어 장영희</a></li>
                     </ul>

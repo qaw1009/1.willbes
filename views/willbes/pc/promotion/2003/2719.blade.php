@@ -224,8 +224,7 @@
                                 <li>3배수 제한</li>
                                 <li><span>인증시 3만원 할인</span></li>
                             </ul>
-                        </label>
-                        <p>12월 최종 마감</p>
+                        </label>                        
                     </div>
 
                     <div class="pass" data-aos="fade-down">

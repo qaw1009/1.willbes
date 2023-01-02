@@ -570,11 +570,11 @@
                 <thead>
                     <tr>
                       <th>유.초등</th>
-                      <th rowspan="2">교육학</th>
-                        <th colspan="10">중등</th>
+                      <th colspan="11">중등</th>
                     </tr>
                     <tr>
                       <th>유아</th>
+                      <th>교육학</th>
                         <th>국어</th>
                         <th>영어</th>
                         <th>수학</th>

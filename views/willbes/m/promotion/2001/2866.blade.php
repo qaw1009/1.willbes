@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox" data-aos="fade-up"> 
+        <div class="evtCtnsBox"> 
             <img src="https://static.willbes.net/public/images/promotion/2023/01/2866m_02_02.jpg" alt="백지노트란?"/>
             <a href="https://cafe.daum.net/policeacademy" target="_blank" title="경시모" style="position: absolute; left: 3.61%; top: 94.13%; width: 21.81%; height: 4.38%; z-index: 2;"></a>
             <a href="https://cafe.naver.com/polstudy" target="_blank" title="경꿈사" style="position: absolute; left: 26.81%; top: 94.13%; width: 21.81%; height: 4.38%; z-index: 2;"></a>

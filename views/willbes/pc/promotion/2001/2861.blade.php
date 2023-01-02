@@ -118,7 +118,7 @@
                         <p>경장/경사/경위</p>
                         2024<br>
                         임종희 형소법 <strong>&</strong><br>
-                        오형웅 실무종합
+                        오현웅 실무종합
                         <div><span>2과목</span><strong>70</strong>만원</div>
                         <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/204321" target="_blank">PASS 수강신청</a>
                     </div>

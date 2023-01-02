@@ -7,7 +7,7 @@
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both}
     .evtCtnsBox img {max-width:100%;}
     .evtCtnsBox.wrap {position:relative}
-    /*.evtCtnsBox.wrap a {border:1px solid #000}*/    
+    /*.evtCtnsBox.wrap a {border:1px solid #000}*/
 </style>
 
 <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
@@ -24,9 +24,10 @@
     </div> 
 
     <div class="evtCtnsBox wrap" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/12/2864m_01.jpg" alt=""/>
-        <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}'); return false;" title="실강쿠폰받기" style="position: absolute; left: 23.61%; top: 65.33%; width: 46.25%; height: 10.19%; z-index: 2;"></a>
-        <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}'); return false;" title="온라인쿠폰받기" style="position: absolute; left: 23.61%; top: 78.29%; width: 46.25%; height: 10.19%; z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2023/01/2864m_01.jpg" alt=""/>
+        <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}'); return false;" title="실강쿠폰받기" style="position: absolute; left: 23.47%; top: 67.07%; width: 45.69%; height: 6.8%; z-index: 2;"></a>
+        <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}'); return false;" title="온라인쿠폰받기" style="position: absolute; left: 23.47%; top: 76.33%; width: 45.69%; height: 6.8%; z-index: 2;"></a>
+        <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx3'] or ''}}'); return false;" title="종합반쿠폰받기" style="position: absolute; left: 23.47%; top: 85.53%; width: 45.69%; height: 6.8%; z-index: 2;"></a>
     </div>
 
     @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

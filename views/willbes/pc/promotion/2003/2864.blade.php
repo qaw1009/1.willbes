@@ -39,9 +39,10 @@
 
         <div class="evtCtnsBox pb100">
             <div class="wrap" data-aos="fade-right">
-                <img src="https://static.willbes.net/public/images/promotion/2022/12/2864_01.jpg" alt="후기쓰고 쿠폰받기" />
-                <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}'); return false;" title="실강쿠폰받기" style="position: absolute; left: 54.38%; top: 60.83%; width: 22.59%; height: 10.36%; z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}'); return false;" title="온라인쿠폰받기" style="position: absolute; left: 54.55%; top: 75.5%; width: 22.59%; height: 10.36%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2023/01/2864_01.jpg" alt="후기쓰고 쿠폰받기" />
+                <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}'); return false;" title="실강쿠폰받기" style="position: absolute; left: 54.11%; top: 51.67%; width: 23.21%; height: 6.83%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}'); return false;" title="온라인쿠폰받기" style="position: absolute; left: 54.11%; top: 60.67%; width: 23.21%; height: 6.83%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx3'] or ''}}'); return false;" title="종합반쿠폰받기" style="position: absolute; left: 54.11%; top: 68.92%; width: 23.21%; height: 6.83%; z-index: 2;"></a>
             </div>
 
             {{--기본댓글--}}

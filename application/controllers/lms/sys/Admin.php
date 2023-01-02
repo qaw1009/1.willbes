@@ -49,6 +49,7 @@ class Admin extends \app\controllers\BaseController
             ],
             'ORG' => [
                 'LKB' => [
+                    'wAdminIdx' => $this->_reqP('search_value'),
                     'wAdminId' => $this->_reqP('search_value'),
                     'wAdminName' => $this->_reqP('search_value')
                 ]

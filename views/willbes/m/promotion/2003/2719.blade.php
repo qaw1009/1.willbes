@@ -14,7 +14,9 @@
     .dday span {color:#75a612; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
     .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#3a99f0; font-size:1.4px !important;}
 
+  
     .event05 {padding:50px 0}
+    .event05 .title {font-size:40px; line-height:1.2; margin-bottom:40px; color:#373737}
 
     .lecWrap {display:flex; flex-wrap: wrap; line-height:1.5; font-size:1.5vh; width:100%}
     .lecWrap .pass {margin:0 10px 10px; flex: 1 1 100%; position: relative;}
@@ -22,7 +24,7 @@
     .lecWrap .pass div:nth-child(1) {font-size:2.2vh; font-weight:600; color:#fb6250}
     .lecWrap .pass div:nth-child(2) {font-size:2.2vh; font-weight:600;}
     .lecWrap .pass div:nth-child(3) {font-size:2.2vh; color:#fb6250}
-    .lecWrap .pass div:nth-child(3) strong {font-size:3vh; font-family: 'Oswald', sans-serif;}
+    .lecWrap .pass div:nth-child(3) strong {font-size:2vh; font-family: 'Oswald', sans-serif;}
     .original {text-decoration:line-through;}
     .lecWrap .pass ul {margin-top:30px; display:none}
     .lecWrap .pass li {list-style:disc; margin-left:20px; margin-bottom:10px; font-weight:bold}
@@ -86,6 +88,7 @@
         .lecWrap .pass div:nth-child(3) {position:absolute; top:20px; right:20px; z-index: 2;}
         .lecWrap .pass div:nth-child(4) {position:absolute; top:40px; right:20px; z-index: 2;}
         .lecWrapB {margin:10px}
+        .event05 .title {font-size:25px; line-height:1.2; margin-bottom:40px; color:#373737}
     }
 
     /* 태블릿 세로 */
@@ -93,6 +96,7 @@
         .lecWrap .pass div:nth-child(3) {position:absolute; top:20px; right:20px; z-index: 2;}
         .lecWrap .pass div:nth-child(4) {position:absolute; top:40px; right:20px; z-index: 2;}
         .lecWrapB {margin:10px}
+        .event05 .title {font-size:30px; line-height:1.2; margin-bottom:40px; color:#373737}
     }
     
     /* 태블릿 가로, PC */
@@ -102,6 +106,7 @@
         .lecWrap .pass:nth-child(even) {margin-right:0}
         .lecWrap .pass ul {display:block}
         .check br {display:none}
+        .event05 .title {font-size:35px; line-height:1.2; margin-bottom:40px; color:#373737}
     }
 
 </style>
@@ -136,7 +141,11 @@
     </div>
 
     <div class="evtCtnsBox event05" id="transfer" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/07/2719m_05.jpg" alt="" />
+
+        <div class="title" data-aos="fade-down">
+            2023~2024년도, <span class="NSK-Black">농업직렬의 대세<br>
+            장사원 교수님</span>과 함께 하세요!
+        </div>
 
         <div class="lecWrapB" data-aos="fade-up">
             <div class="txtInfo">

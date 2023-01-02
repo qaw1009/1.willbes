@@ -17,51 +17,14 @@
 
     .apply_bg {background:#43AAF9;padding-bottom:50px}
 
-/*
-    .wb_cts05m {background:#43aaf8;padding-bottom:100px}
-
-    .wb_cts05m .txtinfo {margin:10% 8%; padding:40px 20px 20px; border:1px solid #000; border-radius:10px; margin-bottom:50px; font-size:1.6vh; text-align:left}
-    .wb_cts05m .txtinfo p {background:#000; color:#fff; padding:10px 5px; border-radius:30px; margin-bottom:20px; font-size:1.8vh; text-align:center}
-
-    .wb_cts05m {background:#f5f5f7; padding-bottom:8vh}
-    .wb_cts05m .price {text-align:center; font-size:35px; font-weight:bold; color:#000; letter-spacing:-1px; position:absolute; top:90%; width:100%; z-index: 10;}
-    .wb_cts05m .price p {margin-bottom:20px}
-    .wb_cts05m .price p span {color:#ffda39; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
-    @@keyframes upDown{
-        from{color:#d53a44}
-        50%{color:#533fd1}
-        to{color:#d53a44}
-    }
-    @@-webkit-keyframes upDown{
-        from{color:#d53a44}
-        50%{color:#533fd1}
-        to{color:#d53a44}
-    }
-
-    .wb_cts05m {background:#43AAF7;padding-bottom:100px;}    
-    .wb_cts05m .passLecBuy2 {position:absolute; bottom:85px; width:470px; left:50%; margin-left:-130px; color:#252525; letter-spacing:-1px}  
-    .wb_cts05m .passLecBuy div {width:50%; line-height:40px; font-size:22px; font-weight:bold; text-align:center;} 
-    .wb_cts05m .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
-    input[type="radio"] {width:20px;height:20px;}
-    .sorts {margin-left:19px;}
-    */
-
-    /*수강신청 체크
-    .check {margin:3vh 1vh 50px;}
-    .check label {cursor:pointer;color:#fff;font-weight:bold;font-size:2vh;}
-    .check input {border:1px solid #000; margin-right:10px; height:24px; width:24px; }
-    .check a.infotxt {display:inline-block; padding:10px 20px;color:#fff; background:#1c2127; margin-left:20px; border-radius:20px; font-weight:bold; font-size:1.6vh}
-    .wb_cts05m .passbuy a {display:block; width:80%; margin:0 auto; background:#1c2127; color:#fff; font-size:2.6vh; border-radius:50px; padding:15px; font-weight:bold}
-    */
-
     .wb_cts05 {background:#43AAF7;padding:10vh 0;}
     .wb_cts05 .ctTilte {color:#fff; letter-spacing:-1px; font-size:2vh; margin-bottom:5vh}
     .wb_cts05 .ctTilte h5 {font-size:4.4vh;}
     .wb_cts05 .ctTilte p {font-size:3.6vh;}
     .wb_cts05 .ctTilte strong {color:#fff901}
 
-    .lecWrap {/*display:flex; justify-content: center;*/ line-height:1.5; font-size:1.6vh; color:#333; padding:0 2vh}
-    .lecWrap .pass {/*width:calc(49% - 10px);*/ margin-bottom:10px; display:block; border-radius:10px; background:#fff; padding:2vh; text-align:left; font-size:2vh;}
+    .lecWrap {line-height:1.5; font-size:1.6vh; color:#333; padding:0 2vh}
+    .lecWrap .pass {margin-bottom:10px; display:block; border-radius:10px; background:#fff; padding:2vh; text-align:left; font-size:2vh;}
     .lecWrap .titleBox div:nth-child(1) {font-weight:300; color:#0065ef}
     .lecWrap .titleBox div:nth-child(2) {margin-bottom:2vh; font-size:3vh}
     .lecWrap .titleBox div:nth-child(3) {font-size:2vh; font-weight:600;}
@@ -95,10 +58,10 @@
     .content_guide_wrap .guide_tit{text-align:left; font-size:2.6vh; margin-bottom:30px}
     .content_guide_wrap .tabs {display:flex; justify-content: space-around;} 
     .content_guide_wrap .tabs li {width:50%;}
-    .content_guide_wrap .tabs li a {display:block; text-align:center; padding:15px 0; font-size:1.8vh; border:2px solid #f3f3f3; border-bottom:2px solid #202020; }
+    .content_guide_wrap .tabs li a {display:block; text-align:center; padding:15px 0; font-size:1.8vh; border:2px solid #202020; background:#202020; color:#fff}
     .content_guide_wrap .tabs li a:hover,
-    .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #f3f3f3; color:#202020; font-weight:600}
-    .content_guide_wrap .tabs:after {content:""; display:block; clear:both}
+    .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #f3f3f3; color:#202020; font-weight:600; background:#f3f3f3;}
+    .content_guide_wrap .tabs:after {content:""; display:block; clear:both; }
     .content_guide_box{padding-top:20px;}
     .content_guide_box dl{word-break:keep-all; padding:10px}
     .content_guide_box dt{margin-bottom:10px}
@@ -165,7 +128,7 @@
                         <div class="titleBox">
                             <div>2023 ~ 24대비</div>
                             <div class="NSK-Black">9급 0원 PASS</div>
-                            <div><span>인증 EVENT 5만원 할인</span></div>
+                            <div><span>인증 + Event 10만원 할인</span></div>
                             <div>64만원 👉 <strong class="NSK-Black">59</strong>만원</div>
                         </div>
                         <ul>
@@ -235,7 +198,7 @@
                         <div class="titleBox">
                             <div>2023대비</div>
                             <div class="NSK-Black">9급 문제풀이 PASS</div>
-                            <div><span>12월 한정 할인</span></div>
+                            <div><span>신년 Event 한정할인</span></div>
                             <div>39만원 👉 <strong class="NSK-Black">29</strong>만원</div>
                         </div>
                         <ul>

@@ -22,7 +22,7 @@
     .event05 .ctTilte strong {color:#b47607}
 
     .lecWrap {display:flex; flex-wrap: wrap; justify-content: center; line-height:1.5; font-size:1.5vh; width:100%}
-    .lecWrap .pass {/*margin:0 10px 10px; flex: 1 1 100%;*/ width:calc(50% - 10px); margin:0 auto 15px; position: relative; letter-spacing:-1px}
+    .lecWrap .pass {/*margin:0 10px 10px; flex: 1 1 100%;*/ width:calc(33.3333% - 10px); margin:0 auto 15px; position: relative; letter-spacing:-1px}
     .lecWrap .pass div {font-size:2vh}
     .lecWrap .pass div:nth-child(1) {font-weight:600;}
     .lecWrap .pass div:nth-child(2) {font-size:1.8vh; font-weight:600;}
@@ -147,7 +147,7 @@
                         <input type="radio" name="y_pkg" id="pass01" value="201800">
                         <label for="pass01">
                             <div class="NSK-Black">2023~24대비 0원 PASS</div>
-                            <div><span>인증 EVENT 5만원 할인</span></div>
+                            <div><span>쿠폰(인중) + 즉시할인<br>최대 10만원 할인</span></div>
                             <div>64만원 👉 <strong class="NSK-Black">59</strong>만원</div>
                             <ul>
                                 <li><span>~24년 6월까지 수강</span></li>
@@ -176,27 +176,10 @@
                     </div>
 
                     <div class="pass">
-                        <input type="radio" name="y_pkg" id="pass03" value="189939">
-                        <label for="pass03">
-                            <div class="NSK-Black">2023대비 국가직 PASS</div>
-                            <div><span>인증 EVENT 5만원 할인</span></div>
-                            <div>49만원 👉 <strong class="NSK-Black">39</strong>만원</div>
-                            <ul>                            
-                                <li><span>23년 4월 지방직까지 수강</span></li>
-                                <li><span>최종합격시 100% 환급</span></li>
-                                <li><span>교재포인트 3만점 제공</span></li>
-                                <li>온라인모의고사 무료<br>(전국모의고사 시행시 제공)</li>
-                                <li>배속제한 없는 무제한수강</li>
-                            </ul>
-                        </label>
-                        <p>12월 최종마감</p>
-                    </div>
-
-                    <div class="pass">
                         <input type="radio" name="y_pkg" id="pass04" value="203638">
                         <label for="pass04">
                             <div class="NSK-Black">2023대비 문제풀이 PASS</div>
-                            <div><span>12월 한정 할인</span></div>
+                            <div><span>신년 Event 한정할인</span></div>
                             <div>39만원 👉 <strong class="NSK-Black">29</strong>만원</div>
                             <ul>                            
                                 <li><span>23년 6월까지 수강</span></li>

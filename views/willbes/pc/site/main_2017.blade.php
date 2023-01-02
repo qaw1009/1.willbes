@@ -46,7 +46,7 @@
         .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 100; 
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(50%, auto)); 
-            grid-template-rows: repeat(15, minmax(0, auto)); 
+            grid-template-rows: repeat(12, minmax(0, auto)); 
             grid-auto-flow: column;
             grid-gap: 0;
             gap: 0; 
@@ -60,7 +60,7 @@
             .prof-Tab li {flex: 1 1 40%;}
         }
 
-        .ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:25px; line-height:25px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
+        .ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:32px; line-height:32px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
         .ssam .sec-prof .prof-Tab li a span {font-size:12px; color:#0a2230; display:inline-block; width:67px; margin-right:2px; vertical-align:bottom; font-weight:bold;  text-align:left;}
         .ssam .sec-prof .prof-Tab li a.active {background:#0a2230; width:140px; border:1px solid #0a2230; border-bottom:1px solid #638294}
         .ssam .sec-prof .prof-Tab li a.active span {color:#8ca4b2}

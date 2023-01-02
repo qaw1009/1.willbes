@@ -67,9 +67,12 @@
         .guide_box dd li.none {list-style:none; margin-left:0}
         .guide_box span {color: #ca1919; vertical-align:top}
         .guide_box dd:last-child {margin:0}
-
     </style>
-    
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
+
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox time NSK-Black" id="newTopDday" data-aos="fade-down">
             <div>
@@ -108,9 +111,9 @@
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2865_02.jpg" alt="쿠폰 내려온다" />
-                <a href="javascript:void(0);" title="단과 할인 쿠폰 다운로드" style="position: absolute;left: 2.98%;top: 67.24%;width: 31.01%;height: 7.98%;z-index: 2;"></a>
-                <a href="javascript:void(0);" title="패키지 할인 쿠폰 다운로드" style="position: absolute;left: 34.58%;top: 67.24%;width: 31.01%;height: 7.98%;z-index: 2;"></a>
-                <a href="javascript:void(0);" title="pass 할인 쿠폰 다운로드" style="position: absolute;left: 65.78%;top: 67.24%;width: 31.01%;height: 7.98%;z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}'); return false;" title="단과 할인 쿠폰 다운로드" style="position: absolute;left: 2.98%;top: 67.24%;width: 31.01%;height: 7.98%;z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}'); return false;" title="패키지 할인 쿠폰 다운로드" style="position: absolute;left: 34.58%;top: 67.24%;width: 31.01%;height: 7.98%;z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx3'] or ''}}'); return false;" title="pass 할인 쿠폰 다운로드" style="position: absolute;left: 65.78%;top: 67.24%;width: 31.01%;height: 7.98%;z-index: 2;"></a>
             </div>
         </div>
 
@@ -182,6 +185,28 @@
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
+
+        {{--쿠폰발급--}}
+        function giveCheck(give_idx) {
+            $regi_form = $('#regi_form');
+
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($arr_promotion_params) === false)
+
+            @if(strtotime(date('YmdHi')) >= strtotime($arr_promotion_params['edate']))
+            alert('쿠폰발급 기간이 아닙니다.');
+            return;
+            @endif
+
+            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&give_idx=' + give_idx;
+            ajaxSubmit($regi_form, _check_url, function (ret) {
+                if (ret.ret_cd) {
+                    alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                }
+            }, showValidateError, null, false, 'alert');
+            @endif
+        }
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

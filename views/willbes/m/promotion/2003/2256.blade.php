@@ -31,13 +31,15 @@
 
 
     .event05 {padding:50px 0}
+    .event05 .title {font-size:40px; line-height:1.2; margin-bottom:40px;}
+    .event05 .title span {color:#C23227;}
 
     .lecWrap {display:flex; flex-wrap: wrap; line-height:1.5; font-size:1.5vh; width:100%}
     .lecWrap .pass {margin:0 10px 20px; flex: 1 1 100%; position: relative;}
     .lecWrap .pass div {font-size:2vh}
     .lecWrap .pass div:nth-child(1) {font-size:2.2vh; font-weight:600; color:#c23227}
     .lecWrap .pass div:nth-child(2) {font-size:2.2vh; font-weight:600;}
-    .lecWrap .pass div:nth-child(3) {font-size:2.2vh; font-weight:600; color:#c23227}
+    .lecWrap .pass div:nth-child(3) {font-size:2vh; font-weight:600; color:#c23227}
     .lecWrap .pass div:nth-child(4) {font-size:2.2vh;}
     .lecWrap .pass div:nth-child(4) strong {font-size:3vh;}
     .lecWrap .pass div span {box-shadow:inset 0 -10px 0 #fde1df; color:#c23227}
@@ -83,12 +85,14 @@
     @@media only screen and (max-width: 374px)  {   
         .lecWrap .pass div:nth-child(3) {position:absolute; top:20px; right:20px; z-index: 2;}
         .lecWrap .pass div:nth-child(4) {position:absolute; top:40px; right:20px; z-index: 2;}
+        .event05 .title {font-size:25px;}
     }
 
     /* 태블릿 세로 */
     @@media only screen and (min-width: 375px) and (max-width: 640px) {       
         .lecWrap .pass div:nth-child(3) {position:absolute; top:20px; right:20px; z-index: 2;}
         .lecWrap .pass div:nth-child(4) {position:absolute; top:40px; right:20px; z-index: 2;}
+        .event05 .title {font-size:30px;}
     }
     
     /* 태블릿 가로, PC */
@@ -98,6 +102,7 @@
         .lecWrap .pass:nth-child(even) {margin-right:0}
         .lecWrap .pass ul {display:block}
         .check br {display:none}
+        .event05 .title {font-size:35px;}
     }
 
 </style>
@@ -127,81 +132,80 @@
     </div>
 
     <div class="evtCtnsBox event05" id="transfer" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2022/06/2256_05.jpg" alt="" />
+        <div class="title" data-aos="fade-down">
+            2023~2024년도, <span class="NSK-Black">통신/전기/전자직의 대세<br>
+            최우영 교수님</span>과 함께 하세요!
+        </div>        
         <div>
             <div class="lecWrap">
                 <div class="pass">
-                    <input type="radio" name="y_pkg" id="pass01" value="198399">
+                    <input type="radio" name="y_pkg" id="pass01" value="204384">
                     <label for="pass01">
-                        <div>통신직 9급</div>
-                        <div>전과목 T-PASS</div>                       
-                        <div><strong class="NSK-Black">120</strong>만원</div>
+                        <div>23~24 대비 통신직</div>
+                        <div>전공과목 이론 T-PASS</div>                       
+                        <div><strong class="NSK-Black">75</strong>만원</div>
                         <ul>
-                            <li>2023. 7월까지 수강</li>
+                            <li>2024. 7월까지 수강</li>
                             <li>통신직 9급 전 강좌제공</li>
                             <li>국가직/지방직/군무원 대비</li> 
                             <li>PC+모바일 총 2대</li>
                             <li>3배수 제한</li>                               
                         </ul>
-                    </label>
-                    <p>12월 최종 마감</p>
+                    </label>                    
                 </div>
 
                 <div class="pass">
-                    <input type="radio" name="y_pkg" id="pass02" value="198398">
+                    <input type="radio" name="y_pkg" id="pass02" value="204193">
                     <label for="pass02">
-                        <div>전기직 9급</div>
-                        <div>전과목 T-PASS</div>                      
-                        <div><strong class="NSK-Black">76</strong>만원</div>
+                        <div>23~24 대비 9급 전기직</div>
+                        <div>전공과목 이론 T-PASS</div>                      
+                        <div><strong class="NSK-Black">40</strong>만원</div>
                         <ul>
-                            <li>2023. 6월까지 수강</li>
+                            <li>2024. 6월까지 수강</li>
                             <li>전기직 9급 전 강좌제공</li>
                             <li>국가직/지방직 대비</li> 
                             <li>PC+모바일 총 2대</li>
                             <li>3배수 제한</li>                               
                         </ul>
-                    </label>
-                    <p>12월 최종 마감</p>
+                    </label>                    
                 </div>
 
                 <div class="pass">
-                    <input type="radio" name="y_pkg" id="pass03" value="198401">
+                    <input type="radio" name="y_pkg" id="pass03" value="204382">
                     <label for="pass03">
-                        <div>전기직 9·7급</div>
-                        <div>전과목 T-PASS</div>                      
-                        <div><strong class="NSK-Black">100</strong>만원</div>
+                        <div>23~24 대비 7/9급 전기직</div>
+                        <div>전공과목 이론 T-PASS</div>                      
+                        <div><strong class="NSK-Black">55</strong>만원</div>
                         <ul>
-                            <li>2023. 10월까지 수강</li>
+                            <li>2024. 10월까지 수강</li>
                             <li>전기직 7/9급 전 강좌제공</li>
                             <li>7/9급 국가직/지방직 대비</li> 
                             <li>PC+모바일 총 2대</li>
                             <li>3배수 제한</li>                               
                         </ul>
-                    </label>
-                    <p>12월 최종 마감</p>
+                    </label>                   
                 </div>
 
                 <div class="pass">
-                    <input type="radio" name="y_pkg" id="pass04" value="198400">
+                    <input type="radio" name="y_pkg" id="pass04" value="204383">
                     <label for="pass04">
-                        <div>전자직 9급</div>
-                        <div>전과목 T-PASS</div>                       
-                        <div><strong class="NSK-Black">70</strong>만원</div>
+                        <div>23~24 대비 군무원 전자직</div>
+                        <div>전공과목 이론 T-PASS</div>                       
+                        <div><strong class="NSK-Black">45</strong>만원</div>
                         <ul>
-                            <li>2023. 7월까지 수강</li>
+                            <li>2024. 7월까지 수강</li>
                             <li>전자직 관련 강좌제공</li>
                             <li>9급 군무원 대비</li> 
                             <li>PC+모바일 총 2대</li>
                             <li>3배수 제한</li>                               
                         </ul>
-                    </label>
-                    <p>12월 최종 마감</p>
+                    </label>                    
                 </div>
 
                 <div class="pass">
                     <input type="radio" name="y_pkg" id="pass05" value="203640">
                     <label for="pass05">
-                        <div>방송통신 9급</div>
+                        <div>2023 방송통신직 9급</div>
                         <div>문제풀이 T-PASS</div>                           
                         <div><strong class="NSK-Black">69</strong>만원</div>
                         <ul>
@@ -217,7 +221,7 @@
                 <div class="pass">
                         <input type="radio" name="y_pkg" id="pass06" value="203646">
                         <label for="pass06">
-                            <div>통신직 9급</div>
+                            <div>2023 통신직 9급</div>
                             <div>문제풀이 T-PASS</div>                           
                             <div><strong class="NSK-Black">79</strong>만원</div>
                             <ul>
@@ -233,7 +237,7 @@
                     <div class="pass">
                         <input type="radio" name="y_pkg" id="pass07" value="203639">
                         <label for="pass07">
-                            <div>전기직 9급</div>
+                            <div>2023 전기직 9급</div>
                             <div>문제풀이 T-PASS</div>                           
                             <div><strong class="NSK-Black">59</strong>만원</div>
                             <ul>
@@ -249,7 +253,7 @@
                     <div class="pass">
                         <input type="radio" name="y_pkg" id="pass08" value="203650">
                         <label for="pass08">
-                            <div>통신 9급/군무원</div>
+                            <div>2023 통신 9급/군무원</div>
                             <div>문제풀이 T-PASS</div>                           
                             <div><strong class="NSK-Black">99</strong>만원</div>
                             <ul>

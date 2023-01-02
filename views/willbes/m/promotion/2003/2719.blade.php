@@ -23,7 +23,7 @@
     .lecWrap .pass div:nth-child(2) {font-size:2.2vh; font-weight:600;}
     .lecWrap .pass div:nth-child(3) {font-size:2.2vh; color:#fb6250}
     .lecWrap .pass div:nth-child(3) strong {font-size:3vh; font-family: 'Oswald', sans-serif;}
-    .lecWrap .pass div span {box-shadow:inset 0 -10px 0 #fde1df; color:#fb6250}
+    .original {text-decoration:line-through;}
     .lecWrap .pass ul {margin-top:30px; display:none}
     .lecWrap .pass li {list-style:disc; margin-left:20px; margin-bottom:10px; font-weight:bold}
     .lecWrap .pass li span {color:#fb6250; vertical-align:top}
@@ -153,13 +153,13 @@
         <div>
             <div class="lecWrap">
                 <div class="pass" data-aos="fade-right">
-                    <input type="radio" name="y_pkg" id="pass02" value="199733">
+                    <input type="radio" name="y_pkg" id="pass02" value="204385">
                     <label for="pass02">
-                        <div>농업직 9급</div>
+                        <div>23~24 대비 농업직</div>
                         <div>[국가직/지방직 대비] T-PASS</div>
-                        <div><strong>99</strong>만원</div>
+                        <div><strong><span class="original">120</span> -> 109</strong>만원</div>
                         <ul>
-                            <li>2023. 6월까지 수강</li>
+                            <li>2024. 6월까지 수강</li>
                             <li>PC+모바일 총 2대</li>
                             <li>3배수 제한</li>
                             <li><span>인증시 3만원 할인</span></li>

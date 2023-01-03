@@ -237,7 +237,7 @@
                     </div>
                     <div class="item">
                         <img src="https://static.willbes.net/public/images/promotion/2022/12/2861_03_t04.png" alt="형법 김원욱"/>
-                        <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/204328" target="_blank">PASS 수강신청</a>
+                        <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/204329" target="_blank">PASS 수강신청</a>
                     </div>
                     <div class="item">
                         <img src="https://static.willbes.net/public/images/promotion/2022/12/2861_03_t05.png" alt="실무종합 오현웅"/>

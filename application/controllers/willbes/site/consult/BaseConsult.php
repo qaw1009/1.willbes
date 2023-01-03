@@ -21,10 +21,20 @@ class BaseConsult extends \app\controllers\FrontController
     {
         $arr_input = array_merge($this->_reqG(null));
         $arr_base['depth'] = 1;
-        $arr_base['comment'] = $this->_depth_comment($arr_base['depth']);
+        $arr_base['comment'] = $this->_depth_comment($arr_base['depth'], $arr_input);
         $arr_base['site_code'] = $this->_site_code;
         $consult_name = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? '상담' : $this->_consult_name;
-        $arr_base['title'] = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? 'ㆍ신현표 노무사의 공부고민 및 내용의문사항 상담 예약' : '· 심층 ' . $consult_name . ' 예약';
+        /*$arr_base['title'] = ($this->_site_code == '2011' && $this->_consult_type == 'T') ? 'ㆍ신현표 노무사의 공부고민 및 내용의문사항 상담 예약' : '· 심층 ' . $consult_name . ' 예약';*/
+
+        if ($this->_site_code == '2011' && $this->_consult_type == 'T') {
+            if (element('s_campus', $arr_input, '') == '605011') {
+                $arr_base['title'] = 'ㆍGS1순환 이수진 노동법 [합격생 1:1 멘토링 프로그램] 멘토 지원';
+            } else {
+                $arr_base['title'] = 'ㆍ신현표 노무사의 공부고민 및 내용의문사항 상담 예약';
+            }
+        } else {
+            $arr_base['title'] = '· 심층 ' . $consult_name . ' 예약';
+        }
 
             // 캠퍼스 조회
         $arr_base['campus'] = [];
@@ -338,12 +348,19 @@ class BaseConsult extends \app\controllers\FrontController
     }
 
     // 상담 문구
-    private function _depth_comment($depth = 1) {
+    private function _depth_comment($depth = 1, $arr_input = []) {
         switch ($depth) {
             case "1" :
                 // 자격증 & 전화상담인 경우
                 if ($this->_site_code == '2011' && $this->_consult_type == 'T') {
-                    $comment = '<p style="color: red; margin-bottom: 10px;">※ 12/22(목) 오후 2시부터 예약 가능합니다.  (아이디 로그인 후 가능)</p>
+                    if (element('s_campus', $arr_input, '') == '605011') {
+                        $comment = '<p style="color: red; margin-bottom: 10px;">※ 1/8(일) 자정까지 지원 가능 (아이디 로그인 후 가능)</p>
+                                1. 예약 완료 후 메일 발송 必<br/>
+                                <span class="ml20"></span>- 성함, 연락처 기재<br/>
+                                <span class="ml20"></span>- hlat0770@hanmail.net<br/>
+                                2. 1/12(목) 선발여부 확정하여 문자공지 드립니다.<br/>';
+                    } else {
+                        $comment = '<p style="color: red; margin-bottom: 10px;">※ 12/22(목) 오후 2시부터 예약 가능합니다.  (아이디 로그인 후 가능)</p>
                                 ㆍ수강대상 : 제31회 공인노무사 2차 시험 응시자<br/>
                                 ㆍ12/25(일) 오후 12:00까지 예약 가능하며, 선착순으로 예약 마감됩니다.<br/>
                                 ㆍ상담 일시 <span class="ml5"></span>(※ 개인별 상담시간 : 1시간)<br/>
@@ -352,6 +369,7 @@ class BaseConsult extends \app\controllers\FrontController
                                 ㆍ예약 완료 이후에는 변경이 불가하오니, 신중히 선택해주시기 바랍니다.<br/>
                                 ㆍ진행 강의실 및 안내사항은 추후 문자공지드립니다.<br/>
                                 ㆍ불가피 참석이 어려우신 경우, 다른 대기자분들의 상담을 위해 학원(1544-1881 ARS1, 3)으로 연락 주시기 바랍니다.<br/>';
+                    }
                 } else {
                     switch ($this->_consult_type) {
                         case 'V' :

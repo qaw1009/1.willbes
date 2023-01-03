@@ -185,7 +185,7 @@
                     <div class="item">
                         <p>경감</p>
                         2024<br>
-                        임종희 형소법 <strong>&</strong><br>
+                        임종희 형법 <strong>&</strong><br>
                         유시완 행정법<span>(주관식)</span>
                         <div><span>2과목</span><strong>80</strong>만원</div> 
                         <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/204322" target="_blank">PASS 수강신청</a>

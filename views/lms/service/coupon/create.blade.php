@@ -216,7 +216,7 @@
                     </label>
                     <div class="col-md-4 form-inline item">
                         <input type="number" id="disc_rate" name="disc_rate" class="form-control" required="required" title="할인율" value="{{ $data['DiscRate'] }}" style="width: 140px;">
-                        <select class="form-control" id="disc_type" name="disc_type">
+                        <select class="form-control" id="disc_type" name="disc_type" title="할인율구분">
                             <option value="R" @if('R' == $data['DiscType']) selected="selected" @endif>%</option>
                             <option value="P" @if('P' == $data['DiscType']) selected="selected" @endif>원</option>
                         </select>
@@ -410,7 +410,7 @@
                     } else if(prod_type === 'on' || prod_type === 'off') {
                         // 강좌 검색
                         $('#btn_product_search').setLayer({
-                            'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&return_type=inline&target_id=selected_product&target_field=prod_code',
+                            'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&hide_tabs=userpack_lecture&return_type=inline&target_id=selected_product&target_field=prod_code',
                             'width' : 1200
                         });
                     } else if(prod_type === 'mock_exam') {

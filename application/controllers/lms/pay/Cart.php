@@ -132,7 +132,7 @@ class Cart extends BaseOrder
         $this->load->view('pay/cart/create', [
             'arr_prod_type_target_ccd' => $arr_prod_type_target_ccd,
             'arr_prod_type_target_name' => $arr_prod_type_target_name,
-            'prod_search_hide_tabs' => 'periodpack_lecture'
+            'prod_search_hide_tabs' => 'userpack_lecture,periodpack_lecture'
         ]);
     }
 

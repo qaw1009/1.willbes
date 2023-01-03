@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_member_value">회원검색</label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" id="search_member_value" name="search_member_value">
+                        <input type="text" class="form-control" id="search_member_value" name="search_member_value" title="회원검색어">
                     </div>
                     <div class="col-md-8">
                         <p class="form-control-static">이름, 아이디, 휴대폰번호 뒷4자리 검색 가능</p>
@@ -28,23 +28,34 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_order_no">주문번호</label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" id="search_order_no" name="search_order_no">
+                        <input type="text" class="form-control" id="search_order_no" name="search_order_no" title="주문번호">
                     </div>
                     <label class="control-label col-md-1 col-md-offset-2">조건검색</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control" id="search_point_status_ccd" name="search_point_status_ccd">
+                        <select class="form-control" id="search_point_status_ccd" name="search_point_status_ccd" title="상태">
                             <option value="">상태</option>
                             @foreach($arr_point_status_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
-                                <option value="U">차감</option>
+                            <option value="U">차감</option>
+                        </select>
+                        <select class="form-control" id="search_save_use_reason_ccd" name="search_save_use_reason_ccd" title="적립/차감사유">
+                            <option value="">적립/차감사유</option>
+                            <option value="">------------- 적립사유 -------------</option>
+                            @foreach($arr_save_reason_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                            <option value="">------------- 차감사유 -------------</option>
+                            @foreach($arr_use_reason_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1">날짜검색</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_point_type" name="search_point_type">
+                        <select class="form-control mr-10" id="search_point_type" name="search_point_type" title="적립/차감일">
                             <option value="all">적립/차감일</option>
                             <option value="save">적립일</option>
                             <option value="use">차감일</option>
@@ -53,12 +64,12 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off" title="조회시작일자">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off" title="조회종료일자">
                         </div>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>

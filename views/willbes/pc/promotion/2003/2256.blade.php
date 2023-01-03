@@ -53,10 +53,9 @@
         .lecWrap .pass:nth-child(4),
         .lecWrap .pass:last-child {margin-right:0}
         .lecWrap .pass div {font-size:22px}
-        .lecWrap .pass div:nth-child(1) {font-size:22px; font-weight:600; color:#c23227}
-        .lecWrap .pass div:nth-child(2) {font-size:22px; font-weight:600; margin-bottom:20px}
-        .lecWrap .pass div:nth-child(3) {font-size:22px; font-weight:600; color:#c23227}
-        .lecWrap .pass div:nth-child(4) {font-size:22px; }
+        .lecWrap .pass div:nth-child(1) {font-size:20px; font-weight:600; color:#c23227; letter-spacing:-1px}
+        .lecWrap .pass div:nth-child(2) {font-weight:600; margin-bottom:20px}
+        .lecWrap .pass div:nth-child(3) {font-weight:600; color:#c23227}
         .lecWrap .pass div:nth-child(4) strong {font-size:30px;}
         .lecWrap .pass div span {box-shadow:inset 0 -10px 0 #fde1df; color:#c23227}
         .lecWrap .pass ul {margin-top:30px}
@@ -322,10 +321,8 @@
 				<div class="infoTit"><strong>상품구성</strong></div>
 				<ul>
                     <li>최우영 T-PASS 제공 과정<br>
-                    - 통신직 : 2022년도 대비 이론+2023년도 9급 국가직·지방직/군무원 대비 신규 개강 전 과정<br>
-                    - 전기직 : 2022년도 대비 이론 및 문제풀이+2023년도 9/7급 국가직·지방직/군무원 전기직 대비 신규 개강 전 과정<br>
-                    - 전자직 : 2022년도 대비 이론 및 문제풀이+2023년도 군무원 전자직 대비 신규 개강 전 과정
-                     </li>   
+                    - 통신직, 전기직, 전자직 이론 패스는 2023 및 2024 대비 과정을 제공하는 이론패스입니다.<br>
+                    - 통신직, 전기직, 전자직 문제풀이 패스 2023년 대비 과정을 제공하는 이문재풀이 패스입니다.</li>
                     <li>개강 일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>
                     <li>본 T-PASS 내 제공되는 과정 중 신규 개강이 진행되지 않는 경우, 전년도 진행 과정으로 대체 제공될 수 있습니다.</li>
                     <li>본 T-PASS를 통한 강의 수강 시, 각 과정당 3배수 제한이 적용됩니다.</li>

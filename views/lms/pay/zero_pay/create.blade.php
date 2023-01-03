@@ -391,7 +391,7 @@
                     prod_type = prod_type.replace('_lecture', '');
 
                     $('#btn_product_search').setLayer({
-                        'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&return_type=inline&target_id=selected_product&target_field=prod_code&is_event=Y',
+                        'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&hide_tabs=userpack_lecture&return_type=inline&target_id=selected_product&target_field=prod_code&is_event=Y',
                         'width' : 1200
                     });
                 }

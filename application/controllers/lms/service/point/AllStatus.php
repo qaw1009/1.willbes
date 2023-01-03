@@ -6,7 +6,7 @@ class AllStatus extends \app\controllers\BaseController
     protected $models = array('sys/code', 'service/point');
     protected $helpers = array();
     private $_point_type = null;
-    private $_ccd = ['PointStatus' => '679'];
+    private $_ccd = ['PointStatus' => '679', 'SaveReason' => '680', 'UseReason' => '681'];
 
     public function __construct()
     {
@@ -34,8 +34,13 @@ class AllStatus extends \app\controllers\BaseController
             'BDT' => ['PSU.ExpireDatm' => [date('Y-m-d'), date('Y-m-t')]]
         ]), '0.RemainPoint', 0);
 
+        // 사용하는 코드값 조회
+        $arr_used_ccd = $this->codeModel->getCcdInArray(array_values($this->_ccd));
+
         $this->load->view('service/point/all_status_index', [
-            'arr_point_status_ccd' => $this->codeModel->getCcd($this->_ccd['PointStatus']),
+            'arr_point_status_ccd' => $arr_used_ccd[$this->_ccd['PointStatus']],
+            'arr_save_reason_ccd' => $arr_used_ccd[$this->_ccd['SaveReason']],
+            'arr_use_reason_ccd' => $arr_used_ccd[$this->_ccd['UseReason']],
             'valid_save_point' => $valid_save_point,
             'expire_save_point' => $expire_save_point,
             '_point_type' => $this->_point_type
@@ -99,12 +104,13 @@ class AllStatus extends \app\controllers\BaseController
      */
     private function _getListConditions()
     {
-        $arr_condition = [
+        return [
             'EQ' => [
                 'M.MemIdx' => $this->_reqP('search_member_idx'),
                 'PSU.SiteCode' => $this->_reqP('search_site_code'),
                 'O.OrderNo' => $this->_reqP('search_order_no'),
-                'PSU.PointStatusCcd' => $this->_reqP('search_point_status_ccd')
+                'PSU.PointStatusCcd' => $this->_reqP('search_point_status_ccd'),
+                'PSU.ReasonCcd' => $this->_reqP('search_save_use_reason_ccd'),
             ],
             'IN' => [
                 'PSU.SiteCode' => get_auth_site_codes()   //사이트 권한 추가
@@ -120,7 +126,5 @@ class AllStatus extends \app\controllers\BaseController
                 ]
             ]
         ];
-
-        return $arr_condition;
     }
 }

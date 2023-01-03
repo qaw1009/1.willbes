@@ -111,7 +111,7 @@ class Order extends \app\controllers\FrontController
         // PG사 결제완료일 경우 영수증 출력 URL 조회
         if ($results['order']['PayRouteCcd'] == $this->orderListFModel->_pay_route_ccd['pg'] && empty($results['order']['CompleteDatm']) === false) {
             $pay_log_data = $this->orderListFModel->getPaidOrderPaymentData($order_no, $results['order']['PgCcd'], $results['order']['PayMethodCcd']);
-            $results['order']['ReceiptUrl'] = element('PgReceiptUrl', $pay_log_data);
+            $results['order']['ReceiptUrl'] = array_get($pay_log_data, 'PgReceiptUrl');
         }
 
         // 주문상품 목록 조회

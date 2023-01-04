@@ -38,6 +38,11 @@ Class CommonLecture extends \app\controllers\BaseController
      */
     public function redata()
     {
+        /* 권한 체크 */
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'params', 'label' => '상태값', 'rules' => 'trim|required']
@@ -54,6 +59,11 @@ Class CommonLecture extends \app\controllers\BaseController
      */
     public function copy()
     {
+        /* 권한 체크 */
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'prodCode', 'label' => '상품코드', 'rules' => 'trim|required']
@@ -73,6 +83,11 @@ Class CommonLecture extends \app\controllers\BaseController
      */
     public function reoption()
     {
+        /* 권한 체크 */
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
         ];
@@ -89,6 +104,11 @@ Class CommonLecture extends \app\controllers\BaseController
      */
     public function reorder()
     {
+        /* 권한 체크 */
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']

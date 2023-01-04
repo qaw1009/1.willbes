@@ -16,6 +16,8 @@
             ${"MemoTypeCcd_".$row['MemoTypeCcd']} = $row['Memo'];
         }
     @endphp
+    {{-- 권한 체크 --}}
+    {!! check_menu_perm_alert('write') !!}
 
     <h5>- 온라인 기간제패키지 상품 정보를 관리하는 메뉴입니다.(기간제패키지 : 운영자가 구성한 강좌를 할인 적용하여 프리패스 형태로 제공)</h5>
     <div class="x_panel">
@@ -964,6 +966,9 @@
 
             // ajax submit
             $regi_form.submit(function() {
+                {{-- 권한 체크 --}}
+                {!! check_menu_perm_inner_script('write') !!}
+
                 if($('#content_length').val() > 1000 || $('#content_byte').val() > 2000) {
                     alert('자동문자발송 내용은 공백포함 1000글자, 2000바이트 이내로 전송 가능합니다.'); return;
                 }

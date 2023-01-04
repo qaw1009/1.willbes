@@ -214,6 +214,11 @@ Class PackageAdmin extends CommonLecture
      */
     public function store()
     {
+        /* 권한 체크 */
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $method = 'add';
 
         $rules = [

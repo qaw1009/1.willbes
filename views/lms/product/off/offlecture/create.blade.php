@@ -2,27 +2,29 @@
 
 @section('content')
 
-@php
-    $disabled = '';
-    if($method == 'PUT') {
-        $disabled = "disabled";
-    }
+    @php
+        $disabled = '';
+        if($method == 'PUT') {
+            $disabled = "disabled";
+        }
 
-    //메모코드 초기화
-    for($i=634001; $i<634006; $i++){
-        ${"MemoTypeCcd_".$i} = ''; //초기화
-    }
-    foreach ($data_memo as $row) {
-        ${"MemoTypeCcd_".$row['MemoTypeCcd']} = $row['Memo'];
-    }
+        //메모코드 초기화
+        for($i=634001; $i<634006; $i++){
+            ${"MemoTypeCcd_".$i} = ''; //초기화
+        }
+        foreach ($data_memo as $row) {
+            ${"MemoTypeCcd_".$row['MemoTypeCcd']} = $row['Memo'];
+        }
 
-    if($method == 'POST') {
-        $week_arr = explode(",",",,,,,,");
-    }
-    elseif($method == 'PUT') {
-      $week_arr = explode(",",$data['WeekArray']);
-    }
-@endphp
+        if($method == 'POST') {
+            $week_arr = explode(",",",,,,,,");
+        }
+        elseif($method == 'PUT') {
+          $week_arr = explode(",",$data['WeekArray']);
+        }
+    @endphp
+    {{-- 권한 체크 --}}
+    {!! check_menu_perm_alert('write') !!}
 
     <h5>- 학원 단과반 상품 정보를 관리하는 메뉴입니다.</h5>
     <div class="x_panel">
@@ -1261,6 +1263,9 @@
 
             // ajax submit
             $regi_form.submit(function() {
+                {{-- 권한 체크 --}}
+                {!! check_menu_perm_inner_script('write') !!}
+
                 if($('#content_length').val() > 1000 || $('#content_byte').val() > 2000) {
                     alert('자동문자발송 내용은 공백포함 1000글자, 2000바이트 이내로 전송 가능합니다.'); return;
                 }

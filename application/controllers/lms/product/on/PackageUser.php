@@ -170,6 +170,11 @@ Class PackageUser extends CommonLecture
      * 처리 프로세스
      */
     public function store() {
+        /* 권한 체크 */
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+        
         $method = 'add';
 
         $rules = [

@@ -173,6 +173,8 @@
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 신규/추천/사용 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 무료강좌복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 무료강좌등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
+                            {{-- 권한 체크 --}}
+                            {!! check_menu_perm_inner_script('write') !!}
                             location.href = '{{ site_url('product/on/lectureFree/create') }}';
                         }
                     }
@@ -243,6 +245,10 @@
 
             //강의복사
             $('.btn-copy').on('click',function(){
+
+                {{-- 권한 체크 --}}
+                {!! check_menu_perm_inner_script('write') !!}
+
                 if ($('input:radio[name="copyProdCode"]').is(':checked') === false) {
                     alert('복사할 강좌를 선택해 주세요.');
                     return false;
@@ -265,6 +271,10 @@
 
             // 정렬순서 변경
             $('.btn-order-modify').on('click', function() {
+
+                {{-- 권한 체크 --}}
+                {!! check_menu_perm_inner_script('write') !!}
+
                 if (!confirm('정렬순서를 적용하시겠습니까?')) {
                     return;
                 }
@@ -293,6 +303,10 @@
 
             // 신규, 추천 상태 변경
             $('.btn-new-best-modify').on('click', function() {
+
+                {{-- 권한 체크 --}}
+                {!! check_menu_perm_inner_script('write') !!}
+
                 if (!confirm('상태를 적용하시겠습니까?')) {
                     return;
                 }

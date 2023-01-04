@@ -8,6 +8,8 @@
             $disabled = "disabled";
         }
     @endphp
+    {{-- 권한 체크 --}}
+    {!! check_menu_perm_alert('write') !!}
 
     <h5>- 선수강좌 정보를 관리하는 메뉴입니다.</h5>
     <div class="x_panel">
@@ -355,6 +357,9 @@
 
             // ajax submit
             $regi_form.submit(function() {
+                {{-- 권한 체크 --}}
+                {!! check_menu_perm_inner_script('write') !!}
+
                 var _url = '{{ site_url('/product/etc/beforeLecture/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {

@@ -17,6 +17,8 @@
             //echo  ${"MemoTypeCcd_".$row['MemoTypeCcd']};
         }
     @endphp
+    {{-- 권한 체크 --}}
+    {!! check_menu_perm_alert('write') !!}
 
     <h5>- 온라인 무료강좌 상품 정보를 관리하는 메뉴입니다.</h5>
     <div class="x_panel">
@@ -835,9 +837,10 @@
                 $('#content_length').val(fn_chk_text_length($('#SmsMemo').val(), 'space'));
             @endif
 
-
             // ajax submit
             $regi_form.submit(function() {
+                {{-- 권한 체크 --}}
+                {!! check_menu_perm_inner_script('write') !!}
 
                 if($('#content_length').val() > 1000 || $('#content_byte').val() > 2000) {
                     alert('자동문자발송 내용은 공백포함 1000글자, 2000바이트 이내로 전송 가능합니다.'); return;

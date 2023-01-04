@@ -182,6 +182,7 @@
 
             // 적립/차감일괄등록, 바로등록 버튼 클릭
             $('.btn-search-regist, .btn-direct-regist').on('click', function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 var reg_type = $(this).prop('class').indexOf('direct') > -1 ? 'direct' : 'search';
                 var mem_idx = $search_form.find('input[name="mem_idx"]').val();
 

@@ -143,6 +143,11 @@ class SaveUse extends \app\controllers\BaseController
      */
     public function store()
     {
+        // 쓰기권한 체크
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],

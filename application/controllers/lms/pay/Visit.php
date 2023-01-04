@@ -7,6 +7,8 @@ class Visit extends BaseOrder
 {
     protected $models = array('pay/orderList', 'pay/order', 'pay/salesProduct', 'member/manageMember', 'service/point', 'sys/site', 'sys/code');
     protected $helpers = array();
+    protected $_write_perm_methods = array('store');
+    protected $_excel_perm_methods = array();
     private $_list_add_join = array('refund', 'campus_all', 'print_cert_log');
 
     public function __construct()

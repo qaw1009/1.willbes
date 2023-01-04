@@ -238,6 +238,7 @@
 
             // 유료결제등록 버튼 클릭
             $('.btn-admin-order').on('click', function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 location.href = '{{ site_url('/pay/adminPay/create') }}' + dtParamsToQueryString($datatable);
             });
 

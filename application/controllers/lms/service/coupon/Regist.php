@@ -233,6 +233,11 @@ class Regist extends \app\controllers\BaseController
      */
     public function store()
     {
+        // 쓰기권한 체크
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $rules = [
             ['field' => 'coupon_name', 'label' => '쿠폰명', 'rules' => 'trim|required'],
             ['field' => 'issue_start_date', 'label' => '유효시작일자', 'rules' => 'trim|required'],

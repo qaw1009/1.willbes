@@ -277,6 +277,7 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-view', function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 location.href = '{{ site_url('/pay/refundProc/show') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });

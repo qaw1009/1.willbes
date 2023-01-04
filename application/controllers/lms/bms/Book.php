@@ -140,6 +140,11 @@ class Book extends \app\controllers\BaseController
      */
     public function store()
     {
+        // 쓰기권한 체크
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $rules = [
             /*['field' => 'school_year', 'label' => '대비학년도', 'rules' => 'trim|required'],
             ['field' => 'course_idx', 'label' => '과정', 'rules' => 'trim|required|integer'],
@@ -189,6 +194,11 @@ class Book extends \app\controllers\BaseController
      */
     public function redata()
     {
+        // 쓰기권한 체크
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'params', 'label' => '신규/추천여부', 'rules' => 'trim|required']

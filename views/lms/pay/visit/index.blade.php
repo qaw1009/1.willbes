@@ -265,6 +265,7 @@
 
             // 수강접수하기 버튼 클릭
             $('.btn-visit-order').on('click', function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 location.href = '{{ site_url('/pay/visit/create') }}' + dtParamsToQueryString($datatable);
             });
 
@@ -295,8 +296,8 @@
 
             // 환불처리 버튼 클릭
             $list_table.on('click', '.btn-refund', function() {
-                var url = '{{ site_url('/pay/refundProc/show/') }}' + $(this).data('order-idx');
-                window.open(url, '_blank');
+                {!! check_menu_perm_inner_script('write') !!}
+                window.open('{{ site_url('/pay/refundProc/show/') }}' + $(this).data('order-idx'), '_blank');
             });
 
             // 엑셀다운로드 버튼 클릭

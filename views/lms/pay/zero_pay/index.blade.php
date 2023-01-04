@@ -226,6 +226,7 @@
 
             // 0원결제등록 버튼 클릭
             $('.btn-zero-order').on('click', function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 location.href = '{{ site_url('/pay/zeroPay/create') }}' + dtParamsToQueryString($datatable);
             });
 

@@ -7,6 +7,8 @@ class BaseOrder extends \app\controllers\BaseController
     protected $helpers = array();
     protected $_order_type = '';
     protected $_group_ccd = array();
+    protected $_write_perm_methods = array();
+    protected $_excel_perm_methods = array();
     private $_is_refund = false;
     private $_is_refund_proc = false;
     private $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
@@ -18,7 +20,30 @@ class BaseOrder extends \app\controllers\BaseController
         $this->_order_type = strtolower($this->router->class);
         $this->_group_ccd = $this->orderListModel->_group_ccd;
         $this->_is_refund = starts_with($this->_order_type, 'refund');
-        $this->_is_refund_proc = $this->_order_type == 'refundproc' ? true : false;
+        $this->_is_refund_proc = $this->_order_type == 'refundproc';
+    }
+
+    /**
+     * 주문메뉴 쓰기, 엑셀다운로드 권한체크 후 해당 메소드 실행
+     * @param string $method [메소드명]
+     * @param array $params [전달파라미터]
+     * @return mixed|void
+     */
+    public function _remap($method, $params = array())
+    {
+        if (in_array($method, $this->_write_perm_methods) === true) {
+            // 쓰기권한 체크
+            if (check_menu_perm('write') !== true) {
+                return null;
+            }
+        } elseif (in_array($method, $this->_excel_perm_methods) === true) {
+            // 엑셀다운로드 권한 체크
+            if (check_menu_perm('excel') !== true) {
+                return null;
+            }
+        }
+
+        parent::_remap($method, $params);
     }
 
     /**

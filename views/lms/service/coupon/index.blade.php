@@ -11,41 +11,41 @@
                     <label class="control-label col-md-1">쿠폰기본정보</label>
                     <div class="col-md-11 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                        <select class="form-control mr-10" id="search_cate_code" name="search_cate_code">
+                        <select class="form-control" id="search_cate_code" name="search_cate_code" title="카테고리">
                             <option value="">카테고리</option>
                             @foreach($arr_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateRouteName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_deploy_type" name="search_deploy_type">
+                        <select class="form-control" id="search_deploy_type" name="search_deploy_type" title="배포루트">
                             <option value="">배포루트</option>
                             <option value="N">온라인</option>
                             <option value="F">오프라인</option>
                         </select>
-                        <select class="form-control mr-10" id="search_coupon_type_ccd" name="search_coupon_type_ccd">
+                        <select class="form-control" id="search_coupon_type_ccd" name="search_coupon_type_ccd" title="쿠폰유형">
                             <option value="">쿠폰유형</option>
                             @foreach($arr_coupon_type_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pin_type" name="search_pin_type">
+                        <select class="form-control" id="search_pin_type" name="search_pin_type" title="핀번호유형">
                             <option value="">핀번호유형</option>
                             <option value="S">공통핀번호</option>
                             <option value="R">랜덤핀번호</option>
                         </select>
-                        <select class="form-control mr-10" id="search_apply_type_ccd" name="search_apply_type_ccd">
+                        <select class="form-control" id="search_apply_type_ccd" name="search_apply_type_ccd" title="적용구분">
                             <option value="">적용구분</option>
                             @foreach($arr_apply_type_ccd as $key => $arr)
                                 <option value="{{ $key }}">{{ $arr[0] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_lec_type_ccd" name="search_lec_type_ccd">
+                        <select class="form-control" id="search_lec_type_ccd" name="search_lec_type_ccd" title="적용상세구분">
                             <option value="">적용상세구분</option>
                             @foreach($arr_lec_type_ccd as $key => $arr)
                                 <option value="{{ $key }}">{{ $arr[0] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_apply_range_type" name="search_apply_range_type">
+                        <select class="form-control" id="search_apply_range_type" name="search_apply_range_type" title="적용범위">
                             <option value="">적용범위</option>
                             <option value="A">전체</option>
                             <option value="I">항목별</option>
@@ -63,18 +63,18 @@
                     </div>
                     <label class="control-label col-md-1">쿠폰사용조건</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control mr-10" id="search_is_issue" name="search_is_issue">
+                        <select class="form-control" id="search_is_issue" name="search_is_issue" title="발급여부">
                             <option value="">발급여부</option>
                             <option value="Y">발급</option>
                             <option value="N">미발급</option>
                         </select>
-                        <select class="form-control mr-10" id="search_issue_valid" name="search_issue_valid">
+                        <select class="form-control" id="search_issue_valid" name="search_issue_valid" title="유효여부">
                             <option value="">유효여부</option>
                             <option value="유효">유효</option>
                             <option value="만료">만료</option>
                             <option value="발급전">발급전</option>
                         </select>
-                        <select class="form-control mr-10" id="search_valid_type" name="search_valid_type">
+                        <select class="form-control" id="search_valid_type" name="search_valid_type" title="사용기간">
                             <option value="">사용기간</option>
                             <option value="day">사용일수</option>
                             <option value="end_date">종료일</option>
@@ -84,7 +84,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">날짜검색</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_date_type" name="search_date_type">
+                        <select class="form-control" id="search_date_type" name="search_date_type" title="날짜구분">
                             <option value="I">유효기간</option>
                             <option value="R">등록일</option>
                         </select>
@@ -92,12 +92,12 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off" title="조회시작일">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off" title="조회종료일">
                         </div>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>
@@ -216,6 +216,7 @@
 
             // 쿠폰복사 버튼 클릭
             $('.btn-copy').on('click', function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 var coupon_idx = $list_table.find('input[name="coupon_idx"]:checked').val();
                 if (typeof coupon_idx === 'undefined') {
                     alert('복사할 쿠폰을 선택해 주세요.');
@@ -235,6 +236,7 @@
 
             // 데이터 등록 폼
             $('.btn-regist').on('click', function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 location.href = '{{ site_url('/service/coupon/regist/create') }}' + dtParamsToQueryString($datatable);
             });
 

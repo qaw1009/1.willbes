@@ -994,4 +994,6 @@
             };
         });
     </script>
+    {{-- 쓰기권한 체크 메시지 --}}
+    {!! check_menu_perm_alert('write') !!}
 @stop

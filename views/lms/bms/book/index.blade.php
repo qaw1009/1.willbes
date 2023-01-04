@@ -128,9 +128,7 @@
                 buttons: [
                     { text: '<i class="fa fa-pencil mr-5"></i> 신규/추천 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify' },
                     { text: '<i class="fa fa-files-o mr-5"></i> 교재복사', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-copy' },
-                    { text: '<i class="fa fa-pencil mr-5"></i> 교재등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                        location.href = '{{ site_url('/bms/book/create') }}' + dtParamsToQueryString($datatable);
-                    }}
+                    { text: '<i class="fa fa-pencil mr-5"></i> 교재등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
                 ],
                 ajax: {
                     'url' : '{{ site_url('/bms/book/listAjax') }}',
@@ -181,8 +179,15 @@
                 ]
             });
 
+            // 교재등록 버튼 클릭
+            $('.btn-regist').on('click', function() {
+                {!! check_menu_perm_inner_script('write') !!}
+                location.href = '{{ site_url('/bms/book/create') }}' + dtParamsToQueryString($datatable);
+            });
+
             // 교재복사 버튼 클릭
             $('.btn-copy').on('click', function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 var prod_code = $list_table.find('input[name="prod_code"]:checked').val();
                 if (typeof prod_code === 'undefined') {
                     alert('복사할 교재를 선택해 주세요.');
@@ -199,6 +204,7 @@
 
             // 신규, 추천 상태 변경
             $('.btn-new-best-modify').on('click', function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 if (!confirm('신규/추천 상태를 적용하시겠습니까?')) {
                     return;
                 }

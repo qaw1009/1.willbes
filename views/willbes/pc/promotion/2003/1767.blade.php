@@ -44,9 +44,10 @@
 
         .evtInfo {padding:80px 0; background:#e9e9e9; color:#555; font-size:14px}
         .evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
-        .evtInfoBox h4 {font-size:40px; margin-bottom:20px}
-        .evtInfoBox .infoTit {font-size:20px;}
+        .evtInfoBox h4 {font-size:40px; margin-bottom:50px}
+        .evtInfoBox .infoTit {font-size:20px;margin-bottom:10px}
         .evtInfoBox ul {margin-bottom:30px}
+        .evtInfoBox li {margin-bottom:5px; list-style:decimal; margin-left:20px;}
 
         /*분할 유튜브*/
         .youtube_contents {position:relative;width:1050px;margin:auto;z-index:1;}
@@ -152,81 +153,7 @@
                                         <p>통합방위법에는 시행규칙이 없다!</p>
                                     </div>
                                 </a>
-                            </li>
-                            
-                            {{--
-                            <li class="">
-                                <a href="#tab4">
-                                    <span class="num_box" data-num="4">4</span>
-                                    <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
-                                    <div class="text_box">
-                                        <p>[전자] 기초 전기/전자 이론 『전기의 본질』 빠르게 확인하기!</p>
-                                    </div>
-                                </a>
-                            </li> 
-                        
-                            <li class="">
-                                <a href="#tab5">
-                                    <span class="num_box" data-num="5">5</span>
-                                    <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
-                                    <div class="text_box">
-                                        <p>무선/통신 공통이론에서 『변조이론』 제일 중요한 거 알지!?😆</p>                                   
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="">
-                                <a href="#tab6">
-                                    <span class="num_box" data-num="6">6</span>
-                                    <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
-                                    <div class="text_box">
-                                        <p>『전기회로 기본용어』 10분 핵심정리 확인하기!!</p>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="">
-                                <a href="#tab7">
-                                    <span class="num_box" data-num="7">7</span>
-                                    <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
-                                    <div class="text_box">
-                                        <p>무선/통신 공통이론에서 『변조이론』 제일 중요한 거 알지!?😆 2탄</p>
-                                    </div>
-                                </a>
-                            </li>                                
-                        
-                            <li class="">
-                                <a href="#tab8">
-                                    <span class="num_box" data-num="8">8</span>
-                                    <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
-                                    <div class="text_box">
-                                        <p>무선/통신 공통이론에서 『변조이론』 제일 중요한 거 알지!? 피날레!</p>
-                                    </div>
-                                </a>
-                            </li>  
-                            
-                            <li class="">
-                                <a href="#tab9">
-                                    <span class="num_box" data-num="9">9</span>
-                                    <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
-                                    <div class="text_box">
-                                        <p>『RLC회로의 특성』 바로 이거야!!</p>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="">
-                                <a href="#tab10">
-                                    <span class="num_box" data-num="10">10</span>
-                                    <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200605/20200605182708_3872.png" alt=""></div>
-                                    <div class="text_box">
-                                        <p>[리라클영어] 이리라 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
-                                        <span>영어 / 이리라</span>
-                                    </div>
-                                </a>
-                            </li>    
-                            --}}        
-
+                            </li>                
                         </ul>
                     </div>
                 </div>          
@@ -241,7 +168,7 @@
     <div class="evtCtnsBox wb_03" id="apply" data-aos="fade-up">  
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1767_03.jpg" usemap="#Map1767_apply" title="수강신청" border="0" />
-            <a href="javascript:go_PassLecture('190276');" title="수강신청" style="position: absolute; left: 64.38%; top: 54.29%; width: 22.68%; height: 10.57%; z-index: 2;"></a>
+            <a href="javascript:go_PassLecture('204473');" title="수강신청" style="position: absolute; left: 64.38%; top: 54.29%; width: 22.68%; height: 10.57%; z-index: 2;"></a>
         </div>
         <div class="check">
             <label>
@@ -257,43 +184,43 @@
             <h4 class="NGEB">예비전력관리 업무담당자 PASS 이용안내</h4>
             <div class="infoTit"><strong>상품구성</strong></div>
             <ul>
-                <li>1. 본 PASS는 김도형 교수의 예비전력관리 업무담당자 전 과정을 배수 제한 없이 무제한으로 수강 가능합니다.</li> 
-                <li>2. 2022년 대비로 진행되는 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.</li>
-                <li>3. 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있다는 점 숙지 부탁드립니다.</li>
+                <li>본 PASS는 김도형 교수의 예비전력관리 업무담당자 전 과정을 배수 제한 없이 무제한으로 수강 가능합니다.</li> 
+                <li>2023년 대비로 진행되는 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.</li>
+                <li>학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있다는 점 숙지 부탁드립니다.</li>
             </ul>   
             <div class="infoTit"><strong>수강기간</strong></div>
             <ul>
-                <li>1. 수강기간은 상품 상세 안내 페이지에 표시된 기간만큼 제공되며, 결제가 완료되는 즉시 수강이 시작됩니다.</li> 
+                <li>수강기간은 상품 상세 안내 페이지에 표시된 기간만큼 제공되며, 결제가 완료되는 즉시 수강이 시작됩니다.</li> 
             </ul>   
             <div class="infoTit"><strong>수강관련</strong></div>
             <ul>
-                <li>1. 먼저 [내강의실] 메뉴에서 무한PASS존으로 접속합니다.</li> 
-                <li>2. 구매하신 무한PASS 상품명 옆의 [강좌추가] 버튼을 클릭,원하는 과목/교수님/강좌를 선택 등록 후 수강할 수 있습니다.</li> 
-                <li>3. 본 PASS를 이용 중에는 일시 정지 기능을 사용할 수 없습니다.</li> 
-                <li>4. 본 PASS 수강 시 이용가능한 기기는 다음과 같이 제한됩니다.<br>
+                <li>먼저 [내강의실] 메뉴에서 무한PASS존으로 접속합니다.</li> 
+                <li>구매하신 무한PASS 상품명 옆의 [강좌추가] 버튼을 클릭,원하는 과목/교수님/강좌를 선택 등록 후 수강할 수 있습니다.</li> 
+                <li>본 PASS를 이용 중에는 일시 정지 기능을 사용할 수 없습니다.</li> 
+                <li>본 PASS 수강 시 이용가능한 기기는 다음과 같이 제한됩니다.<br>
                 - PC 3대 or 모바일 3대 or PC 1대+모바일 2대 or PC 2대+모바일 1대 (총 3대)
                 </li> 
-                <li>5. PC/모바일 기기변경 등 단말기 초기화가 필요한 경우, 내용 확인 후 진행 가능하오니 고객센터로 문의주시기 바랍니다.</li>
-                <li>※ 본 상품 구매 전/후, 담당자(서진원 과장 : 070-4006-7176)와의 상담을 통한 교재 및 모의고사 발송 안내 반드시 진행 요망</li> 
+                <li>PC/모바일 기기변경 등 단말기 초기화가 필요한 경우, 내용 확인 후 진행 가능하오니 고객센터로 문의주시기 바랍니다.<br>
+                ※ 본 상품 구매 전/후, 담당자(서진원 과장 : 070-4006-7176)와의 상담을 통한 교재 및 모의고사 발송 안내 반드시 진행 요망</li> 
             </ul>   
             <div class="infoTit"><strong>교재관련</strong></div>
             <ul>
-                <li>1. 본 PASS는 교재를 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 [교재구매] 메뉴에서 별도로 구입 가능합니다.</li>
+                <li>본 PASS는 교재를 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 [교재구매] 메뉴에서 별도로 구입 가능합니다.</li>
             </ul>   
             <div class="infoTit"><strong>환불정책</strong></div>
             <ul>
-                <li>1. 결제 후 7일 이내 전액 환불 가능합니다.</li>
-                <li>2. 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
-                <li>3. 자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
-                <li>4. 본 상품은 특별 기획 상품으로, 수강시작일(결제 당일 포함)로부터 7일 경과 후 환불 시에는 할인 되기 전 정가를 기준으로 사용일수만큼 차감하고 환불됩니다.<br>
+                <li>결제 후 7일 이내 전액 환불 가능합니다.</li>
+                <li>맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
+                <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
+                <li>본 상품은 특별 기획 상품으로, 수강시작일(결제 당일 포함)로부터 7일 경과 후 환불 시에는 할인 되기 전 정가를 기준으로 사용일수만큼 차감하고 환불됩니다.<br>
                 · 결제금액 - (강좌 정상가의 1일 이용대금x이용일수)        
                 </li>        
             </ul>   
             <div class="infoTit"><strong>유의사항</strong></div>
             <ul>
-                <li>1. 본 상품은 특별할인기획 상품으로 쿠폰할인/다다익선/적립금 사용 등 혜택이 적용되지 않습니다.</li>
-                <li>2. 선택한 교수의 강의가 학원 사정에 의해 부득이하게 진행되지 않을 경우 대체 강의가 제공되며, 이로 인한 환불은 불가합니다.</li>
-                <li>3. 아이디 공유 적발 시 회원 자격 박탈 및 환불 불가하며, 추가적인 불법 공유 행위 적발 시 형사 고발 조치가 단행될 수 있습니다.</li>        
+                <li>본 상품은 특별할인기획 상품으로 쿠폰할인/다다익선/적립금 사용 등 혜택이 적용되지 않습니다.</li>
+                <li>선택한 교수의 강의가 학원 사정에 의해 부득이하게 진행되지 않을 경우 대체 강의가 제공되며, 이로 인한 환불은 불가합니다.</li>
+                <li>아이디 공유 적발 시 회원 자격 박탈 및 환불 불가하며, 추가적인 불법 공유 행위 적발 시 형사 고발 조치가 단행될 수 있습니다.</li>        
             </ul>               
             <strong>※ 고객만족센터 : 1544-5006</strong>
         </div>  
@@ -301,14 +228,6 @@
 
 </div>
  <!-- End Container -->
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-    $( document ).ready( function() {
-        AOS.init();
-    } );
-</script>
 
 <script>
   /* 수강신청 */
@@ -321,8 +240,6 @@
       var url = '{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/') }}' + code;
       location.href = url;
   }
-
-
       //유툽
 
       var tab1_url = "https://www.youtube.com/embed/vcIVfZluZuY?rel=0";
@@ -362,6 +279,14 @@
           });
       });
 
+</script>
+
+<link href="/public/js/willbes/dist/aos.css" rel="stylesheet">    
+<script src="/public/js/willbes/dist/aos.js"></script>
+<script>
+    $(document).ready(function() {
+        AOS.init();
+    });
 </script>
 
 {{-- 프로모션용 스크립트 include --}}

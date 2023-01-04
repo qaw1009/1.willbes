@@ -364,7 +364,7 @@ if (!function_exists('get_current_menu_perm')) {
             if (empty($curr_menu_info) === true) {
                 $has_perms[$perm] = 'Y';
             } else {
-                $has_perms[$perm] = get_var(array_get($curr_menu_info, 'Is' . ucfirst($perm), 'N'), 'N');
+                $has_perms[$perm] = get_var(array_get($curr_menu_info, 'Is' . ucfirst($perm), 'Y'), 'Y');
             }
         }
 

@@ -5,7 +5,7 @@
             <div class="tabContent">
                 <div class="map_img">
                     <img src="https://static.willbes.net/public/images/promotion/main/2015/map2015.jpg" alt="위치">
-                    {{--<span>인 천</span>--}}
+                    <span>윌비스 소방</span>
                 </div>
                 <div class="campus_info">
                     <dl>
@@ -19,14 +19,37 @@
                                     </span>
                                 </div>
                                 <div class="tel">
-                                    <span class="a-tit">연락처</span>
+                                    <span class="a-tit">문의</span>
                                     <span class="tx-color">1522-6112</span>
                                 </div>
                             </div>
                         </dt>
                     </dl>
-                    <div class="btn NSK-Black">
-                        <a href="{{front_url('/support/qna/create')}}">1:1 상담신청</a>
+                    <div class="traffic">
+                        <p class="tx16"><img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map01.png"> 지하철을 이용할 경우</p>
+                        <ul>
+                            <li>
+                                <div class="tx14">1.9호선 <span class="tx-color">노량진역 (1.2.3번 출구)</span></div>
+                                도보 5분 (250m)
+                            </li>
+                        </ul>
+                        <div class="line"></div>
+                        <p class="tx16"><img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map02.png"> 버스를 이용할 경우</p>
+                        <ul>
+                            <li>
+                                <div>ㆍ노량진역(노량진수산시장.CTS기독교TV 방면 / 노들역 방면)</div>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map03.png">150, 360, 507, 605, 640 <br>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map04.png">5531, 6211, 6411 <br>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map06.png">9408 <br>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map05.png">동작03, 동작08
+                            </li>
+                            <li>
+                                <div>ㆍ노량진역 2번출구 (동작구청, 노량진초등학교앞 방면)</div>
+                                <div>ㆍ노량진역 3번출구 (노들역 방면)</div>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map03.png">152, 500, 504, 654, 742 <br>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map04.png">5516, 5517, 5535, 5536
+                            </li>                   
+                        </ul>
                     </div>
                 </div>
             </div>

@@ -308,8 +308,8 @@
 .Section4_ic .campus_info {
     position: relative;
     float: right !important;
-    width: 320px;
-    height: 328px;
+    width: 350px;
+    line-height: 1.5
 }
 
 .Section4_ic .campus_info dl dt {
@@ -334,6 +334,42 @@
     color: #000;
     text-align: center;
     border: 1px solid #000;
+}
+
+.Section4_ic .traffic {
+    height: 230px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px
+}
+
+.Section4_ic .traffic li img {
+    vertical-align: middle;
+    margin: 0 5px
+}
+
+.Section4_ic .traffic p {
+    font-size: 18px;
+    font-weight: bold
+}
+
+.Section4_ic .traffic .line {
+    margin: 20px 0;
+    border-top: 1px solid #f0f0f0
+}
+
+.Section4_ic .traffic ul {
+    margin-top: 10px
+}
+
+.Section4_ic .traffic li {
+    margin-bottom: 10px
+}
+
+.ssam .mapWrap:after {
+    content: '';
+    display: block;
+    clear: both
 }
 
 /* Main Container : QuickMenu : iccheon 

@@ -1110,8 +1110,8 @@
                 <li class="Tit">소방 공무원</li>
                 <li>
                     <span>종합반</span>
-                    <a href="{{front_url('/offLecture/show/cate/3050/prod-code/202993')}}">소방합격반</a>
-                    <a href="{{front_url('/offLecture/show/cate/3050/prod-code/202747')}}">소방합격보장반</a>
+                    <a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/202993" target="_blank">소방합격반</a>
+                    <a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/202747" target="_blank">소방합격보장반</a>
                 </li>
                 <li>
                     <span>단과반</span>
@@ -1123,9 +1123,9 @@
                     <span style="width:100%;">통합생활관리반</span>
                 </li>
                 <li>
-                    <a href="{{front_url('/offLecture/index?cate_code=3050&campus_ccd=605001&course_idx=1480')}}">1개월 스페셜 에디션</a>
-                    <a href="{{front_url('/offLecture/index?cate_code=3050&campus_ccd=605001&course_idx=1480')}}">6개월 스페셜 에디션</a>
-                    <a href="{{front_url('/offLecture/index?cate_code=3050&campus_ccd=605001&course_idx=1480')}}">12개월 스페셜 에디션</a>
+                    <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3050&campus_ccd=605001&course_idx=1480" target="_blank">1개월 스페셜 에디션</a>
+                    <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3050&campus_ccd=605001&course_idx=1480" target="_blank">6개월 스페셜 에디션</a>
+                    <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3050&campus_ccd=605001&course_idx=1480" target="_blank">12개월 스페셜 에디션</a>
                 </li>
             </ul>
         </div>

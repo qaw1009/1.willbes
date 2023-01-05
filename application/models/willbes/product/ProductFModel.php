@@ -93,7 +93,7 @@ class ProductFModel extends WB_Model
                 case 'on_lecture' :
                 case 'on_lecture_before' :
                 case 'on_free_lecture' :
-                        $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, StudyPeriod, MultipleApply, StudyStartDate
+                        $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, StudyPeriodCcd, StudyPeriod, MultipleApply, StudyStartDate, StudyEndDate
                             , SubjectIdx, SubjectName, CourseIdx, CourseName, OrderNumCourse, SchoolYear, ProfIdx, wProfIdx, wProfName, ProfNickName, ProfSlogan
                             , wLecIdx, wUnitLectureCnt, wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo
                             , wScheduleCount, ProfReferData, ProdPriceData, IsOpenwUnitNum, IsOpenStudyComment, AppellationCcdName 
@@ -102,9 +102,6 @@ class ProductFModel extends WB_Model
                         if ($learn_pattern == 'on_free_lecture') {
                             // 온라인 무료강좌 컬럼 추가 (무료강좌타입, 보강동영상 비밀번호)
                             $column .= ', FreeLecTypeCcd, FreeLecPasswd';
-                        } else {
-                            // 온라인 단강좌 컬럼 추가 (수강기간옵션, 수강종료일)
-                            $column .= ', StudyPeriodCcd, StudyEndDate';
                         }
                     break;
                 

@@ -152,7 +152,7 @@
             <div>
                 <div class="lecWrap">
                     <div class="pass">
-                        <input type="radio" name="y_pkg" id="pass01" value="201800">
+                        <input type="radio" name="y_pkg" id="pass01" value="194804">
                         <label for="pass01">
                             <div class="NSK-Black">2023 공채/경채</div>
                             <h5 class="NSK-Black"><span>소방직</span> PASS</h5>
@@ -173,7 +173,7 @@
                     </div>
 
                     <div class="pass">
-                        <input type="radio" name="y_pkg" id="pass02" value="201799">
+                        <input type="radio" name="y_pkg" id="pass02" value="204388">
                         <label for="pass02">
                             <div class="NSK-Black">2024 공채/경채</div>
                             <h5 class="NSK-Black"><span>소방직</span> PASS</h5>

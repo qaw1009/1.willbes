@@ -139,6 +139,11 @@ class Regist extends \app\controllers\BaseController
      */
     public function store()
     {
+        // 쓰기권한 체크
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $method = 'add';
         $lr_idx = '';
         $mang_type = $this->_req('mang_type');
@@ -217,6 +222,11 @@ class Regist extends \app\controllers\BaseController
      */
     public function storeSeat()
     {
+        // 쓰기권한 체크
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'lr_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
@@ -237,6 +247,11 @@ class Regist extends \app\controllers\BaseController
      */
     public function storeSmsIsUse()
     {
+        // 쓰기권한 체크
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'lr_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
@@ -254,6 +269,11 @@ class Regist extends \app\controllers\BaseController
 
     public function storeTakeType()
     {
+        // 쓰기권한 체크
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'lr_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],

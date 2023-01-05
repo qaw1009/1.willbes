@@ -149,6 +149,7 @@
 
             var _url = '{{ site_url('/pass/readingRoom/regist/storeSeat') }}' + '?' + '{!! $default_query_string !!}';
             $_regi_form.submit(function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 ajaxSubmit($_regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);

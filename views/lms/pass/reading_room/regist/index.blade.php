@@ -106,6 +106,7 @@
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-pencil mr-5"></i> {{$mang_title}}등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
+                            {!! check_menu_perm_inner_script('write') !!}
                             location.href = '{{ site_url('/pass/readingRoom/regist/create') }}' + dtParamsToQueryString($datatable) + '{!! $default_query_string !!}';
                         }}
                 ],

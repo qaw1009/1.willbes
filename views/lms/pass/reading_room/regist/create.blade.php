@@ -1,5 +1,6 @@
 @extends('lcms.layouts.master')
 @section('content')
+    {!! check_menu_perm_alert('write') !!}
     <style>
         .btn-save-is-sms-use {padding: 3px 11px !important; margin-bottom: auto !important;}
     </style>
@@ -244,6 +245,7 @@
 
             //문자발송 사용여부 저장
             $('#btn_save_is_sms_use').click(function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 var sms_is_use = $regi_form.find('input[name="sms_is_use"]:checked').val();
                 if(!confirm('문자발송 사용여부를 '+( sms_is_use == 'Y' ? '사용' : '미사용' )+'으로 저장하시겠습니까?')) return false;
                 var _url = '{{ site_url("/pass/readingRoom/regist/storeSmsIsUse") }}' + getQueryString();
@@ -257,6 +259,7 @@
 
             //연장타입 수정
             $('#btn_save_take_type').click(function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 if(!confirm('수정 저장하시겠습니까?')) return false;
                 var _url = '{{ site_url("/pass/readingRoom/regist/storeTakeType") }}' + getQueryString();
                 ajaxSubmit($regi_form, _url, function(ret) {
@@ -269,6 +272,7 @@
 
             // ajax submit
             $regi_form.submit(function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 var _url = '{{ site_url("/pass/readingRoom/regist/store") }}' + getQueryString();
 
                 ajaxSubmit($regi_form, _url, function(ret) {

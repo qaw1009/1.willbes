@@ -140,6 +140,11 @@ class Issue extends \app\controllers\BaseController
      */
     public function storeMemo()
     {
+        // 쓰기권한 체크
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'master_order_idx', 'label' => '메인주문번호', 'rules' => 'trim|required|integer'],
@@ -159,8 +164,12 @@ class Issue extends \app\controllers\BaseController
      */
     public function storeSeatChange()
     {
-        $mang_type = $this->_req('mang_type');
+        // 쓰기권한 체크
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
 
+        $mang_type = $this->_req('mang_type');
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[modify]'],
             ['field' => 'now_order_idx', 'label' => '주문번호식별자', 'rules' => 'trim|required'],
@@ -181,6 +190,11 @@ class Issue extends \app\controllers\BaseController
      */
     public function storeSeatOut()
     {
+        // 쓰기권한 체크
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
             ['field' => 'lr_idx', 'label' => '상품식별자', 'rules' => 'trim|required|integer'],

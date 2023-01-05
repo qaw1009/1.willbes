@@ -151,6 +151,7 @@
                 buttons: [
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-pencil mr-5"></i> {{$mang_title}}등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
+                            {!! check_menu_perm_inner_script('write') !!}
                             location.href = '{{ site_url('/pass/readingRoom/regist/create') }}' + dtParamsToQueryString($datatable) + '{!! $default_query_string !!}';
                         }}
                 ],
@@ -200,14 +201,13 @@
                             }
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            var _url = '{{ site_url('/pay/visit/create') }}?type=extend&target_order_idx='+row.MasterOrderIdx+'&target_prod_code='+row.ProdCode;
                             //퇴실,만료
                             if(row.SeatStatusCcd == '{{$arr_seat_status_ccd['out']}}' || row.SeatStatusCcd == '{{$arr_seat_status_ccd['end']}}') {
                                 return '<p style="color: #bdbdbd">[연장]</p>';
                             } else {
                                 //상시
                                 if (row.TakeType == 'A') {
-                                    return '<a href="'+_url+'" target="_blank"><u>[연장]</u></a>';
+                                    return '<a href="javascript:void(0);" class="btn-visit-order" data-target-order-idx="'+row.MasterOrderIdx+'" data-target-prod-code="'+row.ProdCode+'"><u>[연장]</u></a>';
                                 } else {
                                     //만료일 +-7일(기간만족), 배정, 연장, 자리이동
                                     if (row.ExtensionType == 'Y'
@@ -215,7 +215,7 @@
                                             || row.SeatStatusCcd == '{{$arr_seat_status_ccd['extension']}}'
                                             || row.SeatStatusCcd == '{{$arr_seat_status_ccd['change']}}')
                                     ) {
-                                        return '<a href="'+_url+'" target="_blank"><u>[연장]</u></a>';
+                                        return '<a href="javascript:void(0);" class="btn-visit-order" data-target-order-idx="'+row.MasterOrderIdx+'" data-target-prod-code="'+row.ProdCode+'"><u>[연장]</u></a>';
                                     } else {
                                         return '<p style="color: #bdbdbd">[연장]</p>';
                                     }
@@ -228,10 +228,17 @@
 
             // 좌석배정/좌석이동
             $list_table.on('click', '.btn-create-seat-modal', function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 $('.btn-create-seat-modal').setLayer({
                     "url" : "{{ site_url('/pass/readingRoom/issue/modifySeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}' + '&now_order_idx=' + $(this).data('order-idx'),
                     "width" : "1200"
                 });
+            });
+
+            $list_table.on('click', '.btn-visit-order', function() {
+                {!! check_menu_perm_inner_script('write') !!}
+                var _url = '{{ site_url('/pay/visit/create') }}?type=extend&target_order_idx='+$(this).data('target-order-idx')+'&target_prod_code='+$(this).data('target-prod-code');
+                window.open(_url, '_blank');
             });
 
             // 엑셀다운로드 이벤트

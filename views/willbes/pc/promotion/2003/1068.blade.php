@@ -625,7 +625,7 @@
 					<tr>
 						<td>유기농업기능사</td>
 						<td>이론</td>
-						<td>2023 장사원 유기농업기능사(필기)</td>
+						<td>2023 장사원 유기농업기능사(필기/실기)</td>
 						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/203152" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>

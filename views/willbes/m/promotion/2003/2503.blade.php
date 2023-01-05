@@ -14,40 +14,64 @@
     .dday {font-size:24px !important; padding:10px; background:#ebebeb; color:#000; text-align:left; letter-spacing:-1px}
     .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
     .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#3a99f0; font-size:14px !important;}
+    
+    .evt02 {background:#323943; padding-bottom:5vh}
+    .slide_pro {display:flex; flex-wrap: wrap; justify-content: center; padding:0 3vh}
+    .slide_pro li {width:calc(50% - 4vh);margin:0 2vh;margin-bottom:2vh;}
 
-    .passWrap {display:flex; margin:5vh 0; font-size:1.7vh; text-align:left}
-    .passLec {padding:20px; }
-    .passLec h5 {font-size:2.4vh; text-align:center; margin-bottom:20px; font-weight:bold; color:#a47002}
-    .passLec li { list-style-type: disc; margin-left:20px; margin-bottom:10px}
-    .passLec li:first-child {list-style:none; font-size:2vh; margin-top:20px; text-align:center}
+    
+    .event05 {padding:10vh 0; background:#323943; }
+    .event05 .ctTilte {letter-spacing:-1px; font-size:2vh; margin-bottom:5vh; color:#c2c2c2}
+    .event05 .ctTilte h5 {font-size:2.8vh;}
+    .event05 .ctTilte p {font-size:1.8vh; margin-top:1vh}
+    .event05 .ctTilte strong {color:#efc126}
 
-    .passLec input {height:24px; width:24px; vertical-align:middle}
-    .passLec label {color:#a47002; font-weight:bold; margin-left:10px}
-    .passLec p {font-size:1.4vh;color:red;}
+    .lecWrap {display:flex; flex-wrap: wrap; justify-content: center; line-height:1.5; font-size:1.8vh; width:100%}
+    .lecWrap .pass {width:calc(50% - 2vw); position: relative; margin:0 1vw}
+    .lecWrap .pass div {font-size:2.2vh}
+    .lecWrap .pass h5 {font-size:4vh; margin-bottom:2vh}
+    .lecWrap .pass h5 span {color:#b47607}
+    .lecWrap .pass div:nth-child(1) {font-weight:600;}
+    .lecWrap .pass div:nth-child(3) {font-size:2.2vh; font-weight:600;}
+    .lecWrap .pass div:nth-child(4) {font-size:2.4vh; color:#b47607}
+    .lecWrap .pass div strong {font-size:3vh;}
+    .lecWrap .pass div span {box-shadow:inset 0 -10px 0 #fbeacb; color:#b47607}
+    .lecWrap .pass ul {margin-top:30px; display:none}
+    .lecWrap .pass li {list-style:disc; margin-left:1vh; margin-bottom:1vh; font-weight:bold}
+    .lecWrap .pass li span {color:#b47607; vertical-align:top}
 
-    .wb_cts05m {background:#323943; padding-bottom:10px}
-    .wb_cts05m .passlec {display:flex; width:720px; margin:auto; justify-content: space-around; flex-wrap: wrap;}
-    .wb_cts05m .passlec div {width:255px;position:relative; margin-bottom:20px}
-    .wb_cts05m .passlec div label {display:block; width:255px; height:473px; font-size:0; cursor: pointer;}
-    .wb_cts05m .passlec div:nth-child(1) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/06/2503_05_03m.png)}
-    .wb_cts05m .passlec div:nth-child(2) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/06/2503_05_04m.png)}
-    .wb_cts05m .passlec input[type="radio"] {height:26px; width:26px; position:absolute; top:20px; left:20px; visibility: hidden;}
-    .wb_cts05m .passlec input:checked + label {background-position:right top}
+    .lecWrap .pass input[type="radio"] {height:26px; width:26px; position:absolute; top:20px; left:20px; visibility: hidden;}
+    .lecWrap .pass label{display:block; background:#fff; border-radius:10px; padding:20px; text-align:left; box-sizing: border-box; height: 100%; }
+    .lecWrap .pass label:hover {cursor: pointer;}
+    .lecWrap .pass input:checked + label {border:1px solid #b47607; background:#b47607; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3)}
+    .lecWrap .pass input:checked + label div,
+    .lecWrap .pass input:checked + label span{color:#fff; box-shadow:none}
+    .lecWrap .pass input:checked + label ul {margin-top:30px; display:block}
 
-    /*수강신청 체크*/
-    .check {padding:0 10px}
-    .check p {margin-bottom:50px;padding:40px 10px 0;}
-    .check p a {display:block; width:80%; margin:0 auto; font-size:2.6vh; color:#fff; background:#111; text-align:center; border-radius:50px; padding:10px 0}
-    .check p a:hover {background:#fff;color:#1c2127;} 
-    .check label {cursor:pointer;color:#fff;font-weight:bold;font-size:15px;}
+    .lecWrap .pass p {position: absolute; bottom:-10px; width:80%; left:10%; padding:5px; text-align:center; font-size:1.8vh; background:#43AAF7; color:#fff; border-radius:10px; z-index:10; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;} 
+        @@keyframes upDown{
+            from{background:#b47607}
+            50%{background:#865908}
+            to{background:#b47607}
+        }
+        @@-webkit-keyframes upDown{
+            from{background:#b47607}
+            50%{background:#865908}
+            to{background:#b47607}
+        }
+
+    .check {margin:5vh auto;}
+    .check label {cursor:pointer; font-size:1.8vh; color:#fff;font-weight:bold;}
     .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-    .check a.infotxt {display:inline-block; padding:5px 10px;color:#fff; background:#000; margin-left:10px; border-radius:20px}
-    .check a.infotxt:hover {background:#fff;color:#1c2127;} 
+    .check a {display:inline-block; padding:5px 10px; color:#fff; background:#2d2d2d; margin-left:10px; border-radius:4px;font-size:1.6vh;} 
 
-    .evtInfo {padding:50px 20px; background:#535353; color:#fff; font-size:14px}
+    .event05 .passbuy a {display:block; width:80%; margin:0 auto; background:#1c2127; color:#fff; font-size:2.4vh; border-radius:40px; padding:10px 0; font-weight:bold}  
+    .event05 .passbuy a:hover {background:#b47607; color:#fff;}
+
+    .evtInfo {padding:50px 20px; background:#535353; color:#fff; font-size:1.6vh}
     .evtInfoBox {margin:0 auto; text-align:left; line-height:1.4}
-    .evtInfoBox h4 {font-size:22px; margin-bottom:20px}
-    .evtInfoBox .infoTit {font-size:16px; margin-bottom:20px}
+    .evtInfoBox h4 {font-size:2.4vh; margin-bottom:20px}
+    .evtInfoBox .infoTit {font-size:1.8vh; margin-bottom:20px}
     .evtInfoBox .infoTit strong {padding:8px 20px; background:#333; border-radius:20px;}
     .evtInfoBox ul {margin-bottom:30px}
     .evtInfoBox li {margin-bottom:8px; list-style-type: decimal; margin-left:20px}  
@@ -56,21 +80,29 @@
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {  
-        .wb_cts05m .passlec {display:flow-root;}
-        .check p {margin-bottom:50px;padding:40px 10px 0;}
-        .check p a {display:block;margin:0 auto;color:#fff; background:#111; text-align:center; border-radius:50px; padding:10px 0;font-size:17px;}
-        .check a.infotxt {display:flow-root;margin-top:10px;}
-    }  
+        .passWrap {display:block;}
+        .passLec {width:95%; margin:10px auto}
+        .lecWrap .pass{width:95%; margin:0 auto 15px}        
+        .dday a {padding:5px 10px;}
+    }
 
     /* 태블릿 세로 */
     @@media only screen and (min-width: 375px) and (max-width: 640px) {
-        .wb_cts05m .passlec {display:flex;width:375px;}
+        .passWrap {display:block;}
+        .passLec {width:95%; margin:10px auto}
+        .lecWrap .pass{width:95%; margin:0 auto 15px; }  
+        .lecWrap .pass ul,
+        .lecWrap .pass input:checked + label ul {display:flex; flex-wrap: wrap;}
+        .lecWrap .pass li {width:calc(100%);}
+        .lecWrap .pass input:checked + label ul li {width:calc(100%);}
     }
     
     /* 태블릿 가로, PC */
     @@media only screen and (min-width: 641px) {
-        .newTopDday {background:#e4e4e4; width:720px; padding:15px 0 40px}
-        .wb_cts05m .passlec {display:flex; width:641px; margin:auto; justify-content: space-around; flex-wrap: wrap;}
+        /*.lecWrap .pass {margin:0 5px 10px; flex: 1 1 40%;}*/
+        .lecWrap .pass div:nth-child(2) { margin-bottom:20px}
+        .lecWrap .pass ul {display:block}     
+        .check br {display:none}
     }
 
     </style>
@@ -92,31 +124,87 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2503m_01.jpg" alt="수많은 혜택들">
         </div>
 
-        <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2503m_02.jpg" alt="교수진">
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2023/01/2503m_02.jpg" alt="교수진">
+            <ul class="slide_pro">
+                <li><img src="https://static.willbes.net/public/images/promotion/2023/01/2503_02_04.jpg" alt="권나라"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2023/01/2503_02_01.jpg" alt="이종오"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2023/01/2503_02_05.jpg" alt="오도희"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2023/01/2503_02_03.jpg" alt="이종오"/></li> 
+                <li><img src="https://static.willbes.net/public/images/promotion/2023/01/2503_02_06.jpg" alt="신기훈"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2023/01/2503_02_02.jpg" alt="이석준"/></li>         
+            </ul>
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2503m_03.jpg" alt="커리큘럼">
         </div>
 
-        <div class="evtCtnsBox wb_cts05m" data-aos="fade-up" id="lecBuy2023">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2503m_05.jpg" alt="">
-            <div class="passlec">
-                <div>
-                    <input type="radio" name="y_pkg" id="pass05" value="194804"><label for="pass05">소방직 공채 패스</label>
-                </div>
-                <div>
-                    <input type="radio" name="y_pkg" id="pass06" value="194803"><label for="pass06">소방직 경채 패스</label>
-                </div>            
+        <div class="evtCtnsBox event05" data-aos="fade-up" id="evt01">
+            <div class="ctTilte">
+                <h5>
+                    <strong class="NSK-Black">2023~2024년도 시험일까지!<br>
+                    윌비스 소방직 전 강좌</strong>를 합리적인 가격에!</h5>
+                <p>2023, 2024년 합격도, 치열하게 질주하고 싶다면<br>
+                    더 이상 고민하지 말고 윌비스 공무원에서 시작하세요!</p>
             </div>
-            <div class="check" id="chkInfo">               
-                <label>
-                    <input name="ischk" type="checkbox" value="Y" />
-                    페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
-                </label>
-                <a href="#tip" class="infotxt" > 유의사항 자세히보기 ↓</a>
-                <p class="NGEB"><a onclick="go_PassLecture(1);" target="_blank">지금 바로 신청하기 ></a></p>     
+
+            <div>
+                <div class="lecWrap">
+                    <div class="pass">
+                        <input type="radio" name="y_pkg" id="pass01" value="201800">
+                        <label for="pass01">
+                            <div class="NSK-Black">2023 공채/경채</div>
+                            <h5 class="NSK-Black"><span>소방직</span> PASS</h5>
+                            <div><span>재도전/환승/대학생 5만원 할인</span></div>
+                            <div>25만원 👉 <strong class="NSK-Black">20</strong>만원</div>
+                            <ul>
+                                <li>
+                                    22~23 소방직 [공/경채] 대비 커리큘럼 무제한<br>
+                                    <span>(2023년 시험일까지 수강)</span></li>
+                                <li>배수 제한 없는 무제한 반복 수강</li>
+                                <li>온라인모의고사 무료 응시<br>
+                                    <span>(윌비스 전국모의고사 시행 시 제공)</span></li>
+                                <li><span>G-TELP</span> Level.2 강좌 제공 </li>
+                                <li><span>한국사능력검정시험</span> 강좌 제공</li>
+                                <li>수강지원 포인트 3만점</li>
+                            </ul>
+                        </label>
+                    </div>
+
+                    <div class="pass">
+                        <input type="radio" name="y_pkg" id="pass02" value="201799">
+                        <label for="pass02">
+                            <div class="NSK-Black">2024 공채/경채</div>
+                            <h5 class="NSK-Black"><span>소방직</span> PASS</h5>
+                            <div><span>재도전/환승/대학생 5만원 할인</span></div>
+                            <div>39만원 👉 <strong class="NSK-Black">34</strong>만원</div>
+                            <ul>
+                                <li>
+                                    22~23 소방직 [공/경채] 대비 커리큘럼 무제한<br>
+                                    <span>(2024년 시험일까지 수강)</span></li>
+                                <li>배수 제한 없는 무제한 반복 수강</li>
+                                <li>온라인모의고사 무료 응시<br>
+                                    <span>(윌비스 전국모의고사 시행 시 제공)</span></li>
+                                <li><span>G-TELP</span> Level.2 강좌 제공 </li>
+                                <li><span>한국사능력검정시험</span> 강좌 제공</li>
+                                <li>수강지원 포인트 3만점</li>
+                            </ul>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="check">
+                    <label>
+                        <input name="ischk"  type="checkbox" value="Y" />
+                        페이지 하단 이용안내를 모두 확인하였고, <br>이에 동의합니다.
+                    </label>
+                    <a href="#tip">이용안내확인 ↓</a>
+                </div>
+
+                <div class="passbuy">
+                    <a href="javascript:void(0);" onclick="javascript:go_PassLecture(); return false;">지금 바로 신청하기 ></a>
+                </div>
             </div>
         </div>
 
@@ -125,13 +213,11 @@
 				<h4 class="NSK-Black">소방 PASS반 이용안내</h4>
 				<div class="infoTit"><strong>상품구성</strong></div>
 				<ul>
-                    <li>2023 대비 상품의 경우 2022~2023 대비 진행 강의 제공</li>
+                    <li>본 PASS 과정은 2023년 대비 및 2024년 대비를 위한 과정입니다.</li>
                     <li>수강 가능 교수진<br>
-                        · 소방 [공채] : 소방학 이종오, 소방관계법규 이종오, 행정법 이석준, G-TELP 김혜진, 한능검 오태진<br>
-                        · 소방 [경채] : 소방학 이종오, 소방관계법규 이종오, G-TELP 김혜진, 한능검 오태진<br>
-                        (* 교수진별 커리큘럼 진행은 상이할 수 있으며 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있습니다. 신규 과정이 진행되지 않는 경우에는 이전 연도 과정을 대체 제공 해드립니다.)<br>
-                    </li>
-                    <li>수강기간 : 2023년 4월까지</li>
+                    · 소방 [공/경채] : 소방학 권나라/이종오, 소방관계법규 오도희/이종오, 행정법 신기훈 이석준, G-TELP 김혜진, 한능검 오태진
+                    (* 교수진별 커리큘럼 진행은 상이할 수 있으며 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있습니다. 신규 과정이 진행되지 않는 경우에는 이전 연도 과정을 대체 제공 해드립니다.)</li>
+                    <li>수강기간 : 2023년도 대비 과정 시험일까지, 2024년도 대비 과정 24년 4월까지</li>
 				</ul>
 				<div class="infoTit"><strong>강의안내</strong></div>
 				<ul>

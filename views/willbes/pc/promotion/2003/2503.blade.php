@@ -24,46 +24,75 @@
         .sky {position:fixed; top:200px; right:10px; width:137px; z-index:1; text-align:right}
         .sky a {display:block; margin-bottom:10px;}
  
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2022/05/2503_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2023/01/2503_top_bg.jpg) no-repeat center top;}
         
         .wb_cts02 {
             background:#323943; padding-bottom:150px;
         }
-        .wb_cts02 .box-prof {width:100%; }
-        .wb_cts02 .box-prof .bx-wrapper{max-width:100% !important;}
-        .wb_cts02 .box-prof ul {display:flex; justify-content: center; }
-        .wb_cts02 .box-prof li {margin-right:20px}
-        .wb_cts02 .box-prof li img {
-            width: 289px;
-            height: 411px;
-            -webkit-box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
-            -moz-box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
-            box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
+        /*교수 롤링*/
+        .section_pro {
+        background:url(https://static.willbes.net/public/images/promotion/2022/01/2502_02_bg.jpg) no-repeat center top; 
+                   position:relative;height:919px;clear:both;}      
+        .section_pro .box_pro {position:absolute; top:380px; left:0; width:100%; z-index:1}
+        .section_pro .box_pro .bx-wrapper{max-width:100% !important;}
+        .section_pro .box_pro li {display:inline; float:left; height: 380px;}
+        .section_pro .box_pro li img {
+        width: 310px;
+        height: 380px;
+        -webkit-box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
+        -moz-box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
+        box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.31);
         }
 
         .wb_cts04 {background:#f4f4f4;}
-        
-        .wb_cts05 {background:#323943; padding-bottom:150px}
-        .wb_cts05 .passlec {display:flex; width:930px; margin:auto; justify-content: space-between; flex-wrap: wrap;}
-        .wb_cts05 .passlec div {width:452px; height:563px; position:relative; margin-bottom:20px}
-        .wb_cts05 .passlec div label {display:block; width:452px; height:563px; font-size:0; cursor: pointer;}
-        .wb_cts05 .passlec div:nth-child(1) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/05/2503_05_03.png)}
-        .wb_cts05 .passlec div:nth-child(2) label {background-image:url(https://static.willbes.net/public/images/promotion/2022/05/2503_05_04.png)}
 
-        .wb_cts05 .passlec input[type="radio"] {height:26px; width:26px; position:absolute; top:20px; left:20px; visibility: hidden;}
-        .wb_cts05 .passlec input:checked + label {background-position:right top}
+        .wb_cts05 {padding:150px 0; line-height:1.4; background:#323943; }
+        .wb_cts05 .ctTilte {letter-spacing:-1px; font-size:26px; margin-bottom:50px; color:#c2c2c2}
+        .wb_cts05 .ctTilte h5 {font-size:48px;}
+        .wb_cts05 .ctTilte p {font-size:18px; margin-top:10px}
+        .wb_cts05 .ctTilte strong {color:#efc126}
 
-        /*수강신청 체크*/
-        .check { width:930px; margin:30px auto;}
-        .check p {margin-bottom:50px;padding-top:75px;}
-        .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#163C57; text-align:center; border-radius:90px;}
-        .check p a:hover {color:#8d0033; background:#eee53b;}
-        .check label {cursor:pointer;color:#fff;font-weight:bold;font-size:15px;}
-        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-        .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#504f4f; background:#ededed; margin-left:50px; border-radius:20px;font-size:15px;font-weight:bold;}
         .wb_cts05 .passbuy a {display:block; width:400px; margin:0 auto; background:#e8cb56; color:#323943; font-size:30px; border-radius:50px; padding:20px 0; font-weight:bold}  
-        .wb_cts05 .passbuy a:hover {background:#000; color:#e8cb56;}   
+        .wb_cts05 .passbuy a:hover {background:#fff;}
 
+        .lecWrap {display:flex; width:900px; margin:auto; font-size:16px; }
+        .lecWrap .pass {width:calc(50% - 10px); margin-bottom:10px; margin-right:10px; position: relative;}
+        .lecWrap .pass:last-child {margin-right:0}
+        .lecWrap .pass div {font-size:22px}
+        .lecWrap .pass h5 {font-size:46px; margin-bottom:30px}
+        .lecWrap .pass h5 span {color:#b47607}
+        .lecWrap .pass div:nth-child(1) {font-size:20px;}
+        .lecWrap .pass div:nth-child(3) {font-size:18px; font-weight:600;}
+        .lecWrap .pass div:nth-child(4) {font-size:24px; color:#b47607}
+        .lecWrap .pass div strong {font-size:40px;}
+        .lecWrap .pass div span {box-shadow:inset 0 -15px 0 #fbeacb; color:#b47607}
+        .lecWrap .pass ul {margin-top:30px}
+        .lecWrap .pass li {list-style:disc; margin-left:20px; margin-bottom:10px; font-weight:bold}
+        .lecWrap .pass li span {color:#b47607; vertical-align:top}
+
+        .lecWrap .pass input[type="radio"] {height:26px; width:26px; position:absolute; top:20px; left:20px; visibility: hidden;}
+        .lecWrap .pass label{display:block; padding:40px; text-align:left;  box-sizing: border-box; height: 100%; border-radius:20px; background:#fff}
+        .lecWrap .pass label:hover {cursor: pointer;}
+        .lecWrap .pass input:checked + label {background:#efc126; color:#323943; box-shadow:5px 5px 10px rgba(0,0,0,.3)}
+        .lecWrap .pass input:checked + label div,
+        .lecWrap .pass input:checked + label span{color:#323943; box-shadow:none}
+        .lecWrap .pass p {position: absolute; bottom:-20px; width:80%; left:10%; padding:5px; text-align:center; font-size:18px; background:#43AAF7; color:#fff; border-radius:10px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;} 
+        @@keyframes upDown{
+            from{background:#b47607}
+            50%{background:#865908}
+            to{background:#b47607}
+        }
+        @@-webkit-keyframes upDown{
+            from{background:#b47607}
+            50%{background:#865908}
+            to{background:#b47607}
+        }
+        
+        /*수강신청 체크*/
+        .check {width:980px; margin:50px auto;}
+        .check label {cursor:pointer; font-size:15px;color:#fff;font-weight:bold;}
+        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
+        .check a {display:inline-block; padding:5px 10px; color:#fff; background:#7f7d7e; margin-left:50px; border-radius:4px;font-size:14px;}  
          /*타이머*/
         .newTopDday * {font-size:24px}
         .newTopDday {background:#e4e4e4; width:100%; padding:15px 0 40px}
@@ -78,11 +107,11 @@
 
         /* 이용안내 */
         .wb_info {padding:100px 0; background:#f4f4f4}
-        .guide_box{width:1000px; margin:0 auto; text-align:left; word-break:keep-all; line-height:1.5; font-size:13px;}
-        .guide_box h2 {font-size:30px; margin-bottom:30px}
+        .guide_box{width:1000px; margin:0 auto; text-align:left; word-break:keep-all; line-height:1.5; font-size:14px;}
+        .guide_box h2 {font-size:30px; margin-bottom:40px}
         .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; 
-        padding:5px 20px; font-weight:bold; font-size:17px; border-radius:30px}        
-        .guide_box dd{color:#777; margin:0 0 20px 5px;}
+        padding:5px 20px; font-weight:bold; font-size:18px; border-radius:30px}        
+        .guide_box dd{color:#777; margin:0 0 30px 5px;}
         .guide_box dd strong {color:#555}
         .guide_box dd li {margin-bottom:3px; list-style:decimal; margin-left:20px;}
         .guide_box dd li a {display:inline-block; margin-left:20px; background:#032E5B; color:#fff; padding:3px 10px; border-radius:15px; font-size:12px}
@@ -126,7 +155,7 @@
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/05/2503_top.jpg" alt="소방 패스"  />
+                <img src="https://static.willbes.net/public/images/promotion/2023/01/2503_top.jpg" alt="소방 패스"  />
                 <a href="#lecBuy2023" title="22년 패스" style="position: absolute; left: 20.8%; top: 81.55%; width: 57.86%; height: 8.41%; z-index: 2;"></a>
             </div>
         </div>
@@ -138,10 +167,13 @@
         <div class="evtCtnsBox wb_cts02"  data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/01/2503_02.jpg" alt="교수진" />
             <div class="box-prof">
-                <ul class="slidesProf">
+                <ul class="slide_pro">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2023/01/2503_02_04.jpg" alt="권나라"/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2022/08/2503_02_01.jpg" alt="이종오"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/08/2503_02_02.jpg" alt="이석준"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2022/08/2503_02_03.jpg" alt="이종오"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2023/01/2503_02_05.jpg" alt="오도희"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/08/2503_02_03.jpg" alt="이종오"/></li> 
+                    <li><img src="https://static.willbes.net/public/images/promotion/2023/01/2503_02_06.jpg" alt="신기훈"/></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2022/08/2503_02_02.jpg" alt="이석준"/></li>         
                 </ul>
             </div>  
         </div> 
@@ -159,25 +191,71 @@
             </div>    
         </div>
 
-        <div class="evtCtnsBox wb_cts05" id="lecBuy" data-aos="fade-up">            
-            <img src="https://static.willbes.net/public/images/promotion/2022/05/2503_05.jpg" alt="소방직 패스 수강신청" />
-            <div class="passlec">
-                <div id="lecBuy2023">
-                    <input type="radio" name="y_pkg" id="pass03" value="194804"><label for="pass03">2023 소방직 공채</label>
-                </div>
-                <div>
-                    <input type="radio" name="y_pkg" id="pass04" value="194803"><label for="pass04">2023 소방직 경채</label>
-                </div>
+        <div class="evtCtnsBox wb_cts05" id="apply" data-aos="fade-up">
+            <div class="ctTilte">
+                <h5>
+                    <strong class="NSK-Black">2023~2024년도 시험일까지!<br>
+                    윌비스 소방직 전 강좌</strong>를 합리적인 가격에!</h5>
+                <p>2023, 2024년 합격도, 치열하게 질주하고 싶다면<br>
+                    더 이상 고민하지 말고 윌비스 공무원에서 시작하세요!</p>
             </div>
-            <div class="check" id="chkInfo">
-                <label>
-                    <input name="ischk" type="checkbox" value="Y" />
-                    페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
-                </label>
-                <a href="#careful" class="infotxt" > 이용안내 확인하기 ↓</a>
-            </div> 
-            <div class="passbuy">
-                <a href="javascript:void(0);" onclick="javascript:go_PassLecture(); return false;">지금 바로 신청하기</a>
+
+            <div>
+                <div class="lecWrap">
+                    <div class="pass">
+                        <input type="radio" name="y_pkg" id="pass01" value="194804">
+                        <label for="pass01">
+                            <div class="NSK-Black">2023 공채/경채</div>
+                            <h5 class="NSK-Black"><span>소방직</span> PASS</h5>
+                            <div><span>재도전/환승/대학생 5만원 할인</span></div>
+                            <div>25만원 👉 <strong class="NSK-Black">20</strong>만원</div>
+                            <ul>
+                                <li>
+                                    22~23 소방직 [공/경채] 대비 커리큘럼 무제한<br>
+                                    <span>(2023년 시험일까지 수강)</span></li>
+                                <li>배수 제한 없는 무제한 반복 수강</li>
+                                <li>온라인모의고사 무료 응시<br>
+                                    <span>(윌비스 전국모의고사 시행 시 제공)</span></li>
+                                <li><span>G-TELP</span> Level.2 강좌 제공 </li>
+                                <li><span>한국사능력검정시험</span> 강좌 제공</li>
+                                <li>수강지원 포인트 3만점</li>
+                            </ul>
+                        </label>
+                    </div>
+
+                    <div class="pass">
+                        <input type="radio" name="y_pkg" id="pass02" value="204388">
+                        <label for="pass02">
+                            <div class="NSK-Black">2024 공채/경채</div>
+                            <h5 class="NSK-Black"><span>소방직</span> PASS</h5>
+                            <div><span>재도전/환승/대학생 5만원 할인</span></div>
+                            <div>39만원 👉 <strong class="NSK-Black">34</strong>만원</div>
+                            <ul>
+                                <li>
+                                    22~23 소방직 [공/경채] 대비 커리큘럼 무제한<br>
+                                    <span>(2024년 시험일까지 수강)</span></li>
+                                <li>배수 제한 없는 무제한 반복 수강</li>
+                                <li>온라인모의고사 무료 응시<br>
+                                    <span>(윌비스 전국모의고사 시행 시 제공)</span></li>
+                                <li><span>G-TELP</span> Level.2 강좌 제공 </li>
+                                <li><span>한국사능력검정시험</span> 강좌 제공</li>
+                                <li>수강지원 포인트 3만점</li>
+                            </ul>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="check">
+                    <label>
+                        <input name="ischk"  type="checkbox" value="Y" />
+                        페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
+                    </label>
+                    <a href="#careful">이용안내확인하기 ↓</a>
+                </div>
+
+                <div class="passbuy">
+                    <a href="javascript:void(0);" onclick="javascript:go_PassLecture(); return false;">지금 바로 신청하기 ></a>
+                </div>
             </div>
         </div>
 
@@ -188,12 +266,11 @@
                     <dt>상품구성</dt>
                     <dd>
                         <ol>
-                            <li>2023 대비 상품의 경우 2022~2023 대비 진행 강의 제공</li>
+                            <li>본 PASS 과정은 2023년 대비 및 2024년 대비를 위한 과정입니다.</li>
                             <li>수강 가능 교수진<br>
-                            · 소방 [공채] : 소방학 이종오, 소방관계법규 이종오, 행정법 이석준, G-TELP 김혜진, 한능검 오태진<br>
-                            · 소방 [경채] : 소방학 이종오, 소방관계법규 이종오, G-TELP 김혜진, 한능검 오태진<br>
+                            · 소방 [공/경채] : 소방학 권나라/이종오, 소방관계법규 오도희/이종오, 행정법 신기훈 이석준, G-TELP 김혜진, 한능검 오태진
                             (* 교수진별 커리큘럼 진행은 상이할 수 있으며 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있습니다. 신규 과정이 진행되지 않는 경우에는 이전 연도 과정을 대체 제공 해드립니다.)</li>
-                            <li>수강기간 : 2022년 4월까지</li>
+                            <li>수강기간 : 2023년도 대비 과정 시험일까지, 2024년도 대비 과정 24년 4월까지</li>
                         </ol>
                     </dd>
 
@@ -257,32 +334,7 @@
     </div>
     <!-- End Container -->
 
-    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
-    <script src="/public/js/willbes/dist/aos.js"></script>
-    <script>
-      $(document).ready( function() {
-        AOS.init();
-      });
-    </script>
-
-    <script>   
-    /* 
-        $(document).ready(function() {
-            var BxProf = $('.slidesProf').bxSlider({
-                slideWidth: 289,
-                slideMargin: 40,
-                maxSlides:10,
-                minSlides:1,
-                moveSlides: 1,
-                ticker:true,
-                speed:40000,
-                onSlideAfter: function() {
-                    BxProf.stopAuto();
-                    BxProf.startAuto();
-                }
-            });
-        });*/
-
+    <script>  
         /*수강신청 동의*/ 
         function go_PassLecture(){
             if($("input[name='ischk']:checked").size() < 1){
@@ -309,10 +361,35 @@
                 alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
             @endif
         }
+
+        $(document).ready(function() {
+            var BxProf = $('.slide_pro').bxSlider({
+                slideWidth: 310,
+                slideMargin: 40,
+                maxSlides:10,
+                minSlides:1,
+                moveSlides: 1,
+                ticker:true,
+                speed:40000,
+                onSlideAfter: function() {
+                    BxBook.stopAuto();
+                    BxBook.startAuto();
+                }
+            });
+        });
+
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
+    </script>
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+      $(document).ready( function() {
+        AOS.init();
+      });
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

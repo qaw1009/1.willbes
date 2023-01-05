@@ -162,7 +162,7 @@
                                 <a href="{{ front_app_url('/home/index/cate/3022', 'pass') }}" target="_blank">세무직</a>
                                 <a href="{{ front_app_url('/home/index/cate/3035', 'pass') }}" target="_blank">법원직</a>
                                 <a href="{{ front_app_url('/home/index/cate/3148', 'pass') }}" target="_blank">검찰직</a>
-                                <a href="{{ front_app_url('/home/index/cate/3023', 'pass') }}" target="_blank">소방직</a>
+                                <a href="https://willbesedu.willbes.net/pass/home/index" target="_blank">소방직</a>
                                 <a href="{{ front_app_url('/home/index/cate/3028', 'pass') }}" target="_blank">기술직</a>
                                 <a href="{{ front_app_url('/home/index/cate/3024', 'pass') }}" target="_blank">군무원 </a>
                             </td>

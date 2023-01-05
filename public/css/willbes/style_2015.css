@@ -272,16 +272,9 @@
 .incheon .willbesNumber ul li {
     margin-left: 0px;
     vertical-align: top;
+    padding: 0 50px
 }
 
-.incheon .willbesNumber ul li {
-    margin-left: 50px;
-    vertical-align: top;
-}
-
-.incheon .willbesNumber ul li:first-child {
-    margin-left: -25px;
-}
 
 /*학원 오시는 길*/
 .Section4_ic {

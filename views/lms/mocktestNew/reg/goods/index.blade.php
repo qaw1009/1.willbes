@@ -128,6 +128,7 @@
                 buttons: [
                     { text: '<i class="fa fa-copy mr-5"></i> 복사', className: 'btn btn-sm btn-primary mr-15 btn-copy' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 모의고사 등록', className: 'btn btn-sm btn-success', action: function(e, dt, node, config) {
+                            {!! check_menu_perm_inner_script('write') !!}
                             location.href = '{{ site_url('/mocktestNew/reg/goods/create') }}' + dtParamsToQueryString($datatable);
                         }}
                 ],
@@ -199,6 +200,7 @@
 
             //복사
             $('.btn-copy').on('click', function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 if ($('input:radio[name="target"]').is(':checked') === false) {
                     alert('복사할 모의고사를 선택해 주세요.');
                     return false;

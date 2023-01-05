@@ -255,6 +255,7 @@
 
             //메모저장
             $('#btn_memo').on('click', function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 var _url = '{{ site_url('/pass/readingRoom/issue/storeMemo') }}' + '?' + '{!! $default_query_string !!}';
                 var memo = $('#memo_content').val();
 
@@ -280,6 +281,7 @@
 
             //퇴실처리
             $('#btn_seat_out').on('click', function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 var now_seat_id = "_seat_{{$data['SerialNumber']}}";
                 var _url = '{{ site_url('/pass/readingRoom/issue/storeSeatOut') }}' + '?' + '{!! $default_query_string !!}';
                 var data = {
@@ -306,6 +308,7 @@
             });
 
             $_regi_form.submit(function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 var _url = '{{ site_url('/pass/readingRoom/issue/storeSeatChange') }}' + '?' + '{!! $default_query_string !!}';
 
                 if (!confirm('수정 하시겠습니까?')) {

@@ -1,6 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
+    {!! check_menu_perm_alert('write') !!}
     @php
         //메모코드 초기화
         for($i=634001; $i<634007; $i++){
@@ -790,6 +791,7 @@
 
             // 등록,수정
             $regi_form.submit(function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 var chapterTotal = [];
                 eList.find('tr').each(function () { chapterTotal.push($(this).data('subject-idx')); });
                 sList.find('tr').each(function () { chapterTotal.push($(this).data('subject-idx')); });

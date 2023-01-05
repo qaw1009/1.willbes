@@ -197,6 +197,11 @@ class Goods extends BaseMocktest
      */
     public function store()
     {
+        // 쓰기권한 체크
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $Info = @json_decode($this->_reqP('Info'));
         if(!is_object($Info) || !isset($Info->chapterTotal) || !isset($Info->chapterExist) || !isset($Info->chapterDel)) {
             $this->json_error("입력오류");
@@ -296,6 +301,11 @@ class Goods extends BaseMocktest
 
     public function copyData()
     {
+        // 쓰기권한 체크
+        if (check_menu_perm('write') !== true) {
+            return null;
+        }
+
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required|is_natural_no_zero'],

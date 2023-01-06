@@ -1,13 +1,13 @@
 @extends('willbes.pc.layouts.master')
-<link href="/public/css/willbes/style_2015.css?ver={{time()}}" rel="stylesheet">
 @section('content')
+<link href="/public/css/willbes/style_2015.css?ver={{time()}}" rel="stylesheet">
 <!-- Container -->
 <div id="Container" class="Container incheon NGR c_both">
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
-                <li class="Tit">학원<span class="row-line">|</span></li>
-                <li class="subTit">인천학원</li>
+                <li class="Tit">소방<span class="row-line">|</span></li>
+                <li class="subTit">노량진소방학원</li>
             </ul>
             <ul class="menu-List">
                 <li>
@@ -186,6 +186,58 @@
         </div>
     </div>
 
+    <div class="Section gosi-profWrap">
+        <div class="widthAuto">
+            <div class="will-nTit NSK-Black">합격을 책임질 <span>9급 대표 교수진</span></div>       
+            <div class="gosi-tabs-contents-wrap">
+                <div class="gosi-tabs-content">
+                    <ul class="gosi-gate-prof">
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_01.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_01.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>                
+                </div>
+            </div>
+        </div>
+    </div> 
+
     <div class="Section mt20 c_both">
         <div class="widthAuto">
             <div class="will-acadTit">학원 <span class="tx-color">둘러보기</span></div>
@@ -270,35 +322,58 @@
 
     <div class="Section Section4_ic mt40">
         <div class="widthAuto">
-            <div class="will-acadTit">인천 <span class="tx-color">고시학원</span></div>
+            <div class="will-acadTit">윌비스 <span class="tx-color">소방학원</span></div>
             <div class="noticeTabs campus c_both">
                 <div class="tabBox noticeBox_campus">
                     <div class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('gosi_acad/map/mapIC.jpg') }}" alt="인천">
-                            <span>인 천</span>
+                            <img src="https://static.willbes.net/public/images/promotion/main/2015/map2015.jpg" alt="소방">
+                            <span>윌비스 소방</span>
                         </div>
                         <div class="campus_info">
                             <dl>
                                 <dt>
-                                    <div class="c-tit"><span class="tx-color">인천</span> 캠퍼스 오시는 길</div>
+                                    <div class="c-tit"><span class="tx-color">윌비스</span> 소방학원</div>
                                     <div class="c-info">
                                         <div class="address">
                                             <span class="a-tit">주소</span>
                                             <span>
-                                                인천 부평구 경원대로 1395 부평일번가 11층<br> (부평역 13번 출구)
+                                            서울시 동작구 만양로 105 한성빌딩 2층
                                             </span>
                                         </div>
                                         <div class="tel">
-                                            <span class="a-tit">연락처</span>
-                                            <span class="tx-color">1544-1661</span>
+                                            <span class="a-tit">문의</span>
+                                            <span class="tx-color">1522-6112</span>
                                         </div>
                                     </div>
                                 </dt>
                             </dl>
-                            <div class="btn NSK-Black">
-                                <a href="#none">1:1 상담신청</a>
-                            </div>
+                            <div class="traffic">
+                        <p class="tx16"><img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map01.png"> 지하철을 이용할 경우</p>
+                        <ul>
+                            <li>
+                                <div class="tx14">1.9호선 <span class="tx-color">노량진역 (1.2.3번 출구)</span></div>
+                                도보 5분 (250m)
+                            </li>
+                        </ul>
+                        <div class="line"></div>
+                        <p class="tx16"><img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map02.png"> 버스를 이용할 경우</p>
+                        <ul>
+                            <li>
+                                <div>ㆍ노량진역(노량진수산시장.CTS기독교TV 방면 / 노들역 방면)</div>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map03.png">150, 360, 507, 605, 640 <br>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map04.png">5531, 6211, 6411 <br>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map06.png">9408 <br>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map05.png">동작03, 동작08
+                            </li>
+                            <li>
+                                <div>ㆍ노량진역 2번출구 (동작구청, 노량진초등학교앞 방면)</div>
+                                <div>ㆍ노량진역 3번출구 (노들역 방면)</div>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map03.png">152, 500, 504, 654, 742 <br>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map04.png">5516, 5517, 5535, 5536
+                            </li>                   
+                        </ul>
+                    </div>
                         </div>
                     </div>
                 </div>
@@ -313,8 +388,8 @@
                     <dt class="willbesNumber">
                         <ul>
                             <li>
-                                <div class="nTit">온라인 수강문의</div>
-                                <div class="nNumber tx-color">1544-5006 <span>▶</span> 1</div>
+                                <div class="nTit">학원 수강문의</div>
+                                <div class="nNumber tx-color">1522-6112</div>
                                 <div class="nTxt">
                                     [운영시간]<br/>
                                     평일: 09시~ 18시 (점심시간12시~13시)<br/>
@@ -330,18 +405,10 @@
                                     공휴일/일요일휴무<br/>
                                 </div>
                             </li>
-                            <li>
-                                <div class="nTit">학원 고객센터</div>
-                                <div class="nNumber tx-color">1544-1661</div>
-                                <div class="nTxt">
-                                    [전화/방문상담 운영시간]<br/>
-                                    평일/주말: 09시~ 18시<br/>
-                                </div>
-                            </li>
                         </ul>
                     </dt>    
                     <dt class="willbesCenter">
-                        <div class="centerTit">인천 고시학원 사이트에 물어보세요!</div>
+                        <div class="centerTit">윌비스 소방학원 사이트에 물어보세요!</div>
                         <ul>
                             <li>
                                 <a href="#none">
@@ -434,6 +501,28 @@
         $("#imgBannerRight1").click(function (){
             slidesImg1.goToPrevSlide();
         });        
+    });
+
+    /*교수진*/
+    $(function() {
+        $('.sliderProf').bxSlider({        
+            auto: true,
+            controls: true,
+            pause: 4000,
+            pager: true,
+            pagerType: 'short',
+            slideWidth: 208,
+            minSlides:1,
+            maxSlides:1,
+            moveSlides:1,
+            adaptiveHeight: true,
+            infiniteLoop: true,
+            touchEnabled: false,
+            autoHover: true,
+            onSliderLoad: function(){
+                $(".gosi-gate-prof").css("visibility", "visible").animate({opacity:1}); 
+            }  
+        });
     });
 </script>
 @stop

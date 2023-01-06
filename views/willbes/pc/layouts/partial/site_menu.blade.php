@@ -7,11 +7,16 @@
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
+            @if(in_array(ENVIRONMENT, ['local', 'development']) === true && empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3006')
+                {{-- TODO : 경찰승진 임시적용 --}}
+                <li class="Tit"><img src="/public/img/willbes/tmp/olla_logo.png"></li>
+            @else
                 <li class="Tit">{{ $__cfg['SiteMenu']['ActiveMenu']['UrlRouteNames'][0] }}</li>
                 {{-- 사이트메뉴 서브타이틀 노출안함 (컨트롤러 메소드에서 설정값 전달) --}}
                 @if(isset($hide_site_menu_sub_title) === false || $hide_site_menu_sub_title !== true)
                 <li class="subTit"><span class="row-line">|</span><a href="{{ array_get($__cfg['SiteMenu']['ActiveMenu'], 'HomeUrl', '#none') }}">{{ $__cfg['SiteMenu']['ActiveMenu']['UrlRouteNames'][1] }}</a></li>
                 @endif
+            @endif
             </ul>
             <ul class="menu-List">
                 @foreach($__cfg['SiteMenu']['TreeMenu'] as $menu_idx => $menu_row)

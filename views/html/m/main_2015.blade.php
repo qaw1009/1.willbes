@@ -21,6 +21,7 @@
     .swiper-sec06-Wrap .swiper-slide {
         width: 210px; align-items: flex-start; margin-right:10px;
     }
+    .swiper-sec06-Wrap .swiper-slide:last-child {margin-right:0}
     .swiper-sec06-Wrap .swiper-slide a {
         display: block;
     }
@@ -71,27 +72,42 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_210.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2015/210x350_01.jpg" alt="배너명">
                     </a>                    
                 </div>            
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_210_02.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2015/210x350_02.jpg" alt="배너명">
                     </a>                    
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_210_03.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2015/210x350_03.jpg" alt="배너명">
                     </a>                   
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_210_04.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2015/210x350_04.jpg" alt="배너명">
                     </a>                    
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_210_05.jpg" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2015/210x350_05.jpg" alt="배너명">
+                    </a>                    
+                </div>
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2015/210x350_06.jpg" alt="배너명">
+                    </a>                    
+                </div>
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2015/210x350_07.jpg" alt="배너명">
+                    </a>                    
+                </div>
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2015/210x350_08.jpg" alt="배너명">
                     </a>                    
                 </div>
             </div>

@@ -195,40 +195,39 @@
                         <li>
                             <div class="nSlider">
                                 <div class="sliderProf">
-                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_01.jpg" alt="배너명 핵심이론"></a></div>
-                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2015/208x470_01a.jpg" alt="배너명"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2015/208x470_01b.jpg" alt="배너명"></a></div>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="nSlider">
                                 <div class="sliderProf">
-                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명 핵심이론"></a></div>
-                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2015/208x470_02a.jpg" alt="배너명"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2015/208x470_02b.jpg" alt="배너명"></a></div>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="nSlider">
                                 <div class="sliderProf">
-                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명 핵심이론"></a></div>
-                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2015/208x470_03a.jpg" alt="배너명"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2015/208x470_03b.jpg" alt="배너명"></a></div>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="nSlider">
                                 <div class="sliderProf">
-                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명 핵심이론"></a></div>
-                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2015/208x470_04a.jpg" alt="배너명"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2015/208x470_04b.jpg" alt="배너명"></a></div>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="nSlider">
                                 <div class="sliderProf">
-                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명 핵심이론"></a></div>
-                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_01.jpg" alt="배너명"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2015/208x470_05.jpg" alt="배너명"></a></div>
                                 </div>
                             </div>
                         </li>

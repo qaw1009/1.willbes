@@ -64,7 +64,7 @@
 
     <div class="swiper-sec06-Wrap">
         <div class="gosiTitle NSK">
-            합격을 책임지는 <strong class="NSK-Black">윌비스 교수진</strong>
+            합격을 책임지는 <strong class="NSK-Black">소방대표 교수진</strong>
         </div>
 
         <div class="swiper-sec06">

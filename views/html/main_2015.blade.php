@@ -109,7 +109,7 @@
                 </li>
                 <li class="willbesedu">
                     <a href="#none" target="_self">
-                    학원방문결제<span class="arrow-Btn">></span>
+                    소방온라인<span class="arrow-Btn">></span>
                     </a>
                  </li>
             </ul>
@@ -444,27 +444,15 @@
 
 
     <div id="QuickMenu" class="MainQuickMenu">
-        <div class="mb5">
-            <a href="https://police.willbes.net/pass/campus/show/code/605005" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/main/2015_sky01.jpg">
-            </a>
-        </div>
         <ul class="gobtn">
             <li><a href="#none">이달의 개강안내</a></li>
-            <li><a href="#none">학원 갤러리</a></li>
+            <li><a href="#none">공지사항</a></li>
             <li><a href="#none">강의 시간표</a></li>
-            <li><a href="#none">모의고사</a></li>            
-            <li><a href="#none">실시간 소통실</a></li>
+            <li><a href="#none">강의실 배정표</a></li>            
+            <li><a href="#none">1:1방문상담</a></li>            
+            <li><a href="#none">보강동영상</a></li>
         </ul>
         <ul>
-            <li>   
-                <div class="QuickSlider">      
-                    <div class="sliderNum">
-                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
-                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
-                    </div>
-                </div>
-            </li>
             <li>   
                 <div class="QuickSlider">      
                     <div class="sliderNum">

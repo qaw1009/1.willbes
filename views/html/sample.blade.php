@@ -63,7 +63,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_acad') }}" target="_blank">공무원 학원 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_2003_3148') }}" target="_blank">공무원 검찰직 메인</a></li>
                 <li class="c_both"></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_2015') }}" target="_blank">인천 학원 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_2015') }}" target="_blank">소방 학원 메인</a></li>
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3094') }}" target="_blank">고등고시 5급행정</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3095') }}" target="_blank">고등고시 국립외교원</a></li>

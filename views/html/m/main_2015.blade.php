@@ -1,6 +1,44 @@
 @extends('html.m.layouts.v2.master')
 
 @section('content')
+<style>
+    .swiper-sec06-Wrap {
+        position: relative;
+        overflow: hidden;
+        padding:5vh 0 6vh;
+        background: #c0bcb0;
+        margin-top:2vh;
+    }
+    .swiper-sec06-Wrap .gosiTitle {
+	font-size: 3vh;
+	text-align: center;
+	padding: 0 0 20px;
+	word-break: keep-all;
+	line-height: 1.2;
+    color:#fff
+}
+    .swiper-sec06-Wrap .swiper-wrapper {display: flex; justify-content: space-between; height: auto; margin-left:4%}
+    .swiper-sec06-Wrap .swiper-slide {
+        width: 210px; align-items: flex-start; margin-right:10px;
+    }
+    .swiper-sec06-Wrap .swiper-slide a {
+        display: block;
+    }
+    .swiper-sec06-Wrap .swiper-slide img {
+        max-width: 100%;
+    }
+    /* iPhone 5/SE */
+    @@media only screen and (max-width: 374px) {
+        .swiper-sec06-Wrap .swiper-slide {
+            width: 150px; 
+        }            
+    }
+    @@media only screen and (min-width: 375px) and (max-width: 640px) {
+        .swiper-sec06-Wrap .swiper-slide {
+            width: 150px; 
+        }
+    }
+</style>
 <!-- Container -->
 <div id="Container" class="Container NG c_both mb20">    
     <div class="MainSlider swiper-container swiper-container-page c_both">
@@ -23,6 +61,42 @@
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div> 
+
+    <div class="swiper-sec06-Wrap">
+        <div class="gosiTitle NSK">
+            합격을 책임지는 <strong class="NSK-Black">윌비스 교수진</strong>
+        </div>
+
+        <div class="swiper-sec06">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_210.jpg" alt="배너명">
+                    </a>                    
+                </div>            
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_210_02.jpg" alt="배너명">
+                    </a>                    
+                </div>
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_210_03.jpg" alt="배너명">
+                    </a>                   
+                </div>
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_210_04.jpg" alt="배너명">
+                    </a>                    
+                </div>
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2022/intro_210_05.jpg" alt="배너명">
+                    </a>                    
+                </div>
+            </div>
+        </div>
+    </div>  
 
     <div class="buttonTabs noticeTabs c_both">
         <ul class="tabWrap buttonWrap noticeWrap three">
@@ -77,4 +151,18 @@
     </div>
 </div>
 <!-- End Container -->
+
+<script>   
+    //교수진
+    var swiper6 = new Swiper('.swiper-sec06', {
+      slidesPerView: 'auto',
+      slidesPerColumn: 1,
+      spaceBetween: 10,
+      autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        }, //3초에 한번씩 자동 넘김
+    });
+
+</script> 
 @stop

@@ -56,6 +56,27 @@
             </div>
         </div>
 
+        <div class="Section gosi-profWrap">
+            <div class="widthAuto">
+                <div class="will-nTit NSK-Black">합격을 책임질 <span>9급 대표 교수진</span></div>
+                <div class="gosi-tabs-contents-wrap">
+                    <div class="gosi-tabs-content">
+                        <ul class="gosi-gate-prof">
+                            @for($i=1; $i<=5; $i++)
+                                @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
+                                    <li>
+                                        <div class="nSlider">
+                                            {!! banner_html(element('메인_교수진'.$i, $data['arr_main_banner']), 'sliderProf') !!}
+                                        </div>
+                                    </li>
+                                @endif
+                            @endfor
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="Section mt20 c_both">
             <div class="widthAuto">
                 <div class="will-acadTit">학원 <span class="tx-color">둘러보기</span></div>
@@ -148,6 +169,28 @@
             });
             $("#imgBannerRight1").click(function (){
                 slidesImg1.goToNextSlide();
+            });
+        });
+
+        /*교수진*/
+        $(function() {
+            $('.sliderProf').bxSlider({
+                auto: true,
+                controls: true,
+                pause: 4000,
+                pager: true,
+                pagerType: 'short',
+                slideWidth: 208,
+                minSlides:1,
+                maxSlides:1,
+                moveSlides:1,
+                adaptiveHeight: true,
+                infiniteLoop: true,
+                touchEnabled: false,
+                autoHover: true,
+                onSliderLoad: function(){
+                    $(".gosi-gate-prof").css("visibility", "visible").animate({opacity:1});
+                }
             });
         });
     </script>

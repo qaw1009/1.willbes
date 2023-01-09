@@ -33,6 +33,7 @@
         <div class="Section mt40">
             <div class="widthAuto">
                 @if(in_array(ENVIRONMENT, ['local', 'development']) === true && empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3006')
+                    {{-- TODO : 경찰승진 임시적용 --}}
                     <img src="/public/img/willbes/tmp/bn_olla.png" alt="">
                 @else
                     <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_1148x133.jpg" alt="경감/경정 승진 패스 개설, 네오고시뱅크 제휴">

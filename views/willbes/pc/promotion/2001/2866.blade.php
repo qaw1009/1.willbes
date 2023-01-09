@@ -62,12 +62,13 @@
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2023/01/2866_01.jpg" alt="예시"/>
-                <a href="javascript:go_popup1()" title="" style="position: absolute; left: 78.48%; top: 40.99%; width: 12.77%; height: 4.58%; z-index: 2;"></a>
-                <a href="javascript:go_popup2()" title="" style="position: absolute; left: 36.16%; top: 62.75%; width: 12.77%; height: 4.58%; z-index: 2;"></a>
-                <a href="javascript:go_popup3()" title="" style="position: absolute; left: 78.57%; top: 62.75%; width: 12.77%; height: 4.58%; z-index: 2;"></a>
-                <a href="javascript:go_popup4()" title="" style="position: absolute; left: 36.16%; top: 84.05%; width: 12.77%; height: 4.58%; z-index: 2;"></a>
-                <a href="javascript:go_popup5()" title="" style="position: absolute; left: 78.57%; top: 84.05%; width: 12.77%; height: 4.58%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2023/01/2866_01s.jpg" alt="예시"/>
+                <a href="javascript:go_popup1()" title="" style="position: absolute; left: 78.48%; top: 36.39%; width: 12.77%; height: 4.58%; z-index: 2;"></a>
+                <a href="javascript:go_popup2()" title="" style="position: absolute; left: 35.76%;top: 55.65%;width: 12.77%;height: 4.58%;z-index: 2;"></a>
+                <a href="javascript:go_popup3()" title="" style="position: absolute; left: 78.76%;top: 55.65%;width: 12.77%;height: 4.58%;z-index: 2;"></a>
+                <a href="javascript:go_popup4()" title="" style="position: absolute;left: 35.76%;top: 74.75%;width: 12.77%;height: 4.58%;z-index: 2;"></a>
+                <a href="javascript:go_popup5()" title="" style="position: absolute;left: 78.76%;top: 74.75%;width: 12.77%;height: 4.58%;z-index: 2;"></a>
+                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="테마3종 다운받기" style="position: absolute;left: 23.56%;top: 84.85%;width: 52.97%;height: 5.58%;z-index: 2;"></a>
             </div>
         </div>
 

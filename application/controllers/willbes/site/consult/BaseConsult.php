@@ -28,7 +28,7 @@ class BaseConsult extends \app\controllers\FrontController
 
         if ($this->_site_code == '2011' && $this->_consult_type == 'T') {
             if (element('s_campus', $arr_input, '') == '605011') {
-                $arr_base['title'] = 'ㆍGS1순환 이수진 노동법 [합격생 1:1 멘토링 프로그램] 멘토 지원';
+                $arr_base['title'] = 'ㆍGS1순환 이수진 노동법 평일반 [합격생 1:1 멘토링 프로그램] ';
             } else {
                 $arr_base['title'] = 'ㆍ신현표 노무사의 공부고민 및 내용의문사항 상담 예약';
             }
@@ -354,11 +354,16 @@ class BaseConsult extends \app\controllers\FrontController
                 // 자격증 & 전화상담인 경우
                 if ($this->_site_code == '2011' && $this->_consult_type == 'T') {
                     if (element('s_campus', $arr_input, '') == '605011') {
-                        $comment = '<p style="color: red; margin-bottom: 10px;">※ 1/8(일) 자정까지 지원 가능 (아이디 로그인 후 가능)</p>
-                                1. 예약 완료 후 메일 발송 必<br/>
-                                <span class="ml20"></span>- 성함, 연락처 기재<br/>
-                                <span class="ml20"></span>- hlat0770@hanmail.net<br/>
-                                2. 1/12(목) 선발여부 확정하여 문자공지 드립니다.<br/>';
+                        $comment = '<p style="color: red; margin-bottom: 10px;">※ 1/10(화) 오전 10시부터 예약 가능합니다. (아이디 로그인 후 가능)</p>
+                                ㆍ참여대상 : GS1순환 이수진 노동법 평일반 수강생(실강반/실영상반/온라인첨삭반/온라인수강생 해당)<br/>
+                                ㆍ1/12(목) 오전 10:00까지 예약 가능하며, 선착순으로 예약 마감됩니다.<br/>
+                                ㆍ진행일정<br/>
+                                <span class="ml20"></span>- 1/16(월)~1/20(금), 1/25(수)~1/31(화) 매주 월~금 진행<br/>
+                                <span class="ml20"></span>- 저녁 18:30~21:00 (마지막 타임 20:30~21:00)<br/>
+                                <span class="ml20"></span>- 개인별 상담시간: 30분<br/>
+                                ㆍ예약 완료 이후에는 변경이 불가하오니, 신중히 선택해주시기 바랍니다.<br/>
+                                ㆍ진행 강의실 및 안내사항은 추후 문자공지드립니다.<br/>
+                                ㆍ불가피 참석이 어려우신 경우, 다른 대기자분들의 상담을 위해 학원(1544-1881 ARS1, 3)으로 연락 주시기 바랍니다.<br/>';
                     } else {
                         $comment = '<p style="color: red; margin-bottom: 10px;">※ 12/22(목) 오후 2시부터 예약 가능합니다.  (아이디 로그인 후 가능)</p>
                                 ㆍ수강대상 : 제31회 공인노무사 2차 시험 응시자<br/>

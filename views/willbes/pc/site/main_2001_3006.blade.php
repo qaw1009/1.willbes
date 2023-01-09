@@ -32,7 +32,11 @@
 
         <div class="Section mt40">
             <div class="widthAuto">
-                <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_1148x133.jpg" alt="경감/경정 승진 패스 개설, 네오고시뱅크 제휴">
+                @if(in_array(ENVIRONMENT, ['local', 'development']) === true && empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3006')
+                    <img src="/public/img/willbes/tmp/bn_olla.png" alt="">
+                @else
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_1148x133.jpg" alt="경감/경정 승진 패스 개설, 네오고시뱅크 제휴">
+                @endif
             </div>
         </div>
 

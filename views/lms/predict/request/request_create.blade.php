@@ -422,7 +422,7 @@
 
                 // 강좌 검색
                 $('.btn_product_search').setLayer({
-                    'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type=on&return_type=inline&target_id='+span_id+'&target_field=prod_code&is_event=Y',
+                    'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type=on&hide_tabs=userpack_lecture&return_type=inline&target_id='+span_id+'&target_field=prod_code&is_event=Y',
                     'width' : 1200
                 });
 

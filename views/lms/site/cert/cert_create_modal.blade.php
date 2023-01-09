@@ -227,7 +227,7 @@
                     $('#searchProduct').on('click', function(e) {
                         if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
                         $('#searchProduct').setLayer({
-                            'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + $("#site_code").val() + '&prod_type=on&return_type=inline&target_id=selected_product&target_field=prod_code&is_event=Y',
+                            'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + $("#site_code").val() + '&prod_type=on&hide_tabs=userpack_lecture&return_type=inline&target_id=selected_product&target_field=prod_code&is_event=Y',
                             'width' : 1200
                         })
                     });

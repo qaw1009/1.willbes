@@ -553,7 +553,7 @@
                     mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                     auto:true,
                     speed:350,
-                    pause:4000,
+                    pause:5000,
                     pager:false,
                     controls:false,
                     minSlides:5,

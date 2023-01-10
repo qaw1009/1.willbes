@@ -46,19 +46,19 @@
             <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2020/07/1716_sky.jpg"  title="수강신청하기" /></a>
         </div>
 
-        <div class="evtCtnsBox evtTop">
+        <div class="evtCtnsBox evtTop" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2023/01/1716_top.jpg" title="스파르타 합격 관리반">                    
         </div>
 
-        <div class="evtCtnsBox evt01">
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1716_01.jpg" title="비포어">           
         </div>
         
-        <div class="evtCtnsBox evt02">
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1716_02.jpg" title="애프터">           
         </div>
         
-        <div class="evtCtnsBox evt03">
+        <div class="evtCtnsBox evt03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1716_03.jpg" title="차별화된 합격시스템">
             <div class="tabs">
                 <ul>
@@ -84,11 +84,11 @@
             </div>
         </div>
         
-         <div class="evtCtnsBox evt06" id="apply">
+         <div class="evtCtnsBox evt06" id="apply" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/1716_06.jpg" title="수강신청">
-                <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3130/prod-code/204596" title="실강 스파르타" style="position: absolute; left: 17.68%; top: 38.98%; width: 16.07%; height: 4.41%; z-index: 2;"></a>
-                <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3130/prod-code/204597" title="독학 스파르타" style="position: absolute; left: 66.88%; top: 38.98%; width: 16.07%; height: 4.41%; z-index: 2;"></a>
+                <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3130/prod-code/204596" target="_blank" title="실강 스파르타" style="position: absolute; left: 17.68%; top: 38.98%; width: 16.07%; height: 4.41%; z-index: 2;"></a>
+                <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3130/prod-code/204597" target="_blank" title="독학 스파르타" style="position: absolute; left: 66.88%; top: 38.98%; width: 16.07%; height: 4.41%; z-index: 2;"></a>
             </div>                  
         </div>
 
@@ -98,13 +98,8 @@
     <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">    
     <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
-        $( document ).ready( function() {
-            AOS.init();
-        } );
-
-
-    /*탭(이미지버전)*/
-    $(document).ready(function(){
+        /*탭(이미지버전)*/
+        $(document).ready(function(){
                 $('.tabs ul').each(function(){
                     var $active, $content, $links = $(this).find('a');
                     $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
@@ -140,7 +135,10 @@
             return false; 
         });
     });
-            
+
+    $(document).ready(function() {
+        AOS.init();
+    });
 </script>
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')

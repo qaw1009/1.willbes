@@ -7,24 +7,25 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
         .sky {position:fixed; top:200px; width:180px; right:10px; z-index:1;}
         .sky a {padding-bottom:10px; display:block}
         
-        .evtTop {background:#79CAFF url(https://static.willbes.net/public/images/promotion/2020/07/1716_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:#79CAFF url(https://static.willbes.net/public/images/promotion/2023/01/1716_top_bg.jpg) no-repeat center top;}
         .evt01 {background:#79CAFF url(https://static.willbes.net/public/images/promotion/2020/07/1716_01_bg.jpg) no-repeat center top;}
         .evt02 {background:#9090FE url(https://static.willbes.net/public/images/promotion/2020/07/1716_02_bg.jpg) no-repeat center top;}
         .evt03 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/07/1716_03_bg.jpg) no-repeat center top;}
-        .evt06 {background: url(https://static.willbes.net/public/images/promotion/2021/01/1716_06_bg.jpg) no-repeat center top;} 
+        .evt06 {background: url(https://static.willbes.net/public/images/promotion/2023/01/1716_06_bg.jpg) no-repeat center top;} 
 
          /*탭(이미지)*/
         .tabs{width:100%; text-align:center;}
@@ -39,14 +40,14 @@
 
     </style>
 
-    <div class="p_re evtContent NGR" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky">
             <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2020/07/1716_sky.jpg"  title="수강신청하기" /></a>
         </div>
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1716_top.jpg" title="스파르타 합격 관리반">                    
+            <img src="https://static.willbes.net/public/images/promotion/2023/01/1716_top.jpg" title="스파르타 합격 관리반">                    
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -76,7 +77,7 @@
                 </ul>
             </div>
             <div id="tab01s" > 
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1716_03_tab01.jpg" />      
+                <img src="https://static.willbes.net/public/images/promotion/2023/01/1716_03_tab01.jpg" />      
             </div>                                        
             <div id="tab02s">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1716_03_tab02.jpg" />         
@@ -84,19 +85,23 @@
         </div>
         
          <div class="evtCtnsBox evt06" id="apply">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1716_06.jpg" usemap="#Map1716_apply"  title="수강신청" border="0">
-            <map name="Map1716_apply" id="Map1716_apply">
-                <area shape="rect" coords="102,517,343,556" href="https://willbesedu.willbes.net/pass/offPackage/index?cate_code=3125&course_idx=1301" target="_blank" alt="경찰관리형" />
-                <area shape="rect" coords="439,516,682,556" href="https://willbesedu.willbes.net/pass/offPackage/index?cate_code=3126&course_idx=1301" target="_blank" alt="소방관리형" />
-                <area shape="rect" coords="775,517,1019,556" href="https://willbesedu.willbes.net/pass/offPackage/index?cate_code=3124&course_idx=1301" target="_blank" alt="공무원관리형" />
-                <area shape="rect" coords="752,883,904,934" href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3130" target="_blank"  alt="강한 학습 관리반" />
-            </map>                  
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2023/01/1716_06.jpg" title="수강신청">
+                <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3130/prod-code/204596" title="실강 스파르타" style="position: absolute; left: 17.68%; top: 38.98%; width: 16.07%; height: 4.41%; z-index: 2;"></a>
+                <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3130/prod-code/204597" title="독학 스파르타" style="position: absolute; left: 66.88%; top: 38.98%; width: 16.07%; height: 4.41%; z-index: 2;"></a>
+            </div>                  
         </div>
 
 	</div>
     <!-- End Container --> 
 
-<script type="text/javascript">
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">    
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+        $( document ).ready( function() {
+            AOS.init();
+        } );
+
 
     /*탭(이미지버전)*/
     $(document).ready(function(){

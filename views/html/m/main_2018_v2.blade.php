@@ -51,6 +51,49 @@
 	font-size: 12px;
 }
 
+
+/*교수별이벤트 */
+.ssam .profEvt,
+.ssam .profEvt .swiper-wrapper,
+.ssam .profEvt .swiper-slide {
+	height: auto;
+	width: 100% !important;
+}
+.ssam .profEvt {margin-top:5vh}
+.ssam .profEvt .swiper-wrapper {margin-top:1vh}
+.ssam .profEvt .swiper-button-next,
+.ssam .profEvt .swiper-button-prev {
+	position: static;
+	width: 26px;
+	height: 26px;
+    margin-top:0;
+	cursor: pointer;	
+    border-radius:12px;
+    display:inline-block;
+    background-size:104% !important;
+}
+
+.ssam .profEvt .swiper-button-next,
+.ssam .profEvt .swiper-container-rtl .swiper-button-prev {
+	background:#ccc url("https://static.willbes.net/public/images/promotion/m/icon_arrowR.png") no-repeat center center;
+}
+
+.ssam .profEvt .swiper-button-prev,
+.ssam .profEvt .swiper-container-rtl .swiper-button-next {
+	background:#ccc url("https://static.willbes.net/public/images/promotion/m/icon_arrowL.png") no-repeat center center;
+}
+
+.ssam .profEvt .swiper-button-next.swiper-button-disabled,
+.ssam .profEvt .swiper-button-prev.swiper-button-disabled {
+	pointer-events: auto;
+}
+.ssam .profEvt .swiper-slide {padding:0 1vh; display:flex; justify-content: space-between;}
+.ssam .profEvt a {display:inline-block; margin:0 0.5vh; text-align:left}
+.ssam .profEvt a p {font-size:1.8vh; color:#383838; margin:1vh 0; padding:0 1vh;  }
+.ssam .profEvt a span {color:#adadad; font-size:1.6vh; padding:0 10px }
+
+
+
 .ssam .lecup-Notice {position:absolute; top:15px; width:calc(100% - 110px);}
 .ssam .lecup-Notice a {display:block; height:36px; line-height:36px; font-size:13px;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;z-index:2;
@@ -387,7 +430,57 @@
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
+    </div>    
+
+    
+    <div class="profEvt swiper-container swiper-container-arrow">
+        <div class="mainTit NSK-Black">          
+            교수별 <span class="tx-main">이벤트 & 특강안내</span> 
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>             
+        </div>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
+                    <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                    <span>모의고사</span>
+                </a>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
+                    <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                    <span>모의고사</span>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
+                    <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                    <span>모의고사</span>
+                </a>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
+                    <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                    <span>모의고사</span>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
+                    <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                    <span>모의고사</span>
+                </a>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
+                    <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                    <span>모의고사</span>
+                </a>
+            </div>
+        </div>
+        <!-- Add Arrows -->
+
     </div>
+
         
     <div class="noticeTabs c_both mt30">
         <ul class="tabWrap mainTab">

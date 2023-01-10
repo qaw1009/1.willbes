@@ -468,8 +468,8 @@ no-repeat 5px center}
         <div class="profEvtBanner">
                 <div class="title">교수별 <span class="tx-color">이벤트 & 특강안내</span></div>
                 <div class="ctrbtn">
-                    <a class="leftBtn" id="pebLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>
-                    <a class="rightBtn" id="pebRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
+                    <a class="leftBtn" id="pebLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt=""></a>
+                    <a class="rightBtn" id="pebRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt=""></a>
                 </div>
                 <div class="bSlider profEvt">
                     <div>

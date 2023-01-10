@@ -87,8 +87,8 @@
 .ssam .profEvt .swiper-button-prev.swiper-button-disabled {
 	pointer-events: auto;
 }
-.ssam .profEvt .swiper-slide {padding:0 1vh; display:flex; justify-content: space-between;}
-.ssam .profEvt a {display:inline-block; margin:0 0.5vh; text-align:left}
+.ssam .profEvt .swiper-slide {padding:0 2vh; display:flex; justify-content: space-between;}
+.ssam .profEvt a {display:inline-block; margin:0 0.5vh; text-align:left; max-width:320px}
 .ssam .profEvt a p {font-size:1.8vh; color:#383838; margin:1vh 0; padding:0 1vh;  }
 .ssam .profEvt a span {color:#adadad; font-size:1.6vh; padding:0 10px }
 
@@ -442,36 +442,36 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
                     <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
                     <span>모의고사</span>
                 </a>
                 <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
-                    <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                    <span>모의고사</span>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                    <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                    <span>모의고사</span>
-                </a>
-                <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
                     <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
                     <span>모의고사</span>
                 </a>
             </div>
             <div class="swiper-slide">
                 <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
                     <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
                     <span>모의고사</span>
                 </a>
                 <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
+                    <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                    <span>모의고사</span>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
+                    <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                    <span>모의고사</span>
+                </a>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
                     <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
                     <span>모의고사</span>
                 </a>

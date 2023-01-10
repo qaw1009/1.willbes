@@ -1339,7 +1339,7 @@
 }
 
 .ssam .willbesNumber ul li {
-    margin-left: 40px;
+    margin-left: 20px !important;
     vertical-align: top;
     text-align: center;
 }

@@ -15,6 +15,18 @@
 
 .ssam .noticeBox .List-Table {margin-top:20px !important;border-top:0 !important}
 
+
+.ssam .profEvtBanner {width:1120px; margin:50px auto; position:relative;}
+.ssam .profEvtBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
+.ssam .profEvtBanner .bx-wrapper {max-width:1120px !important;}
+.ssam .profEvtBanner .profEvt {height:250px !important; overflow: hidden; display:flex}
+.ssam .profEvtBanner .profEvt > div {margin-right:15px; font-weight:bold; line-height:1.4; }
+.ssam .profEvtBanner .profEvt a p {font-size:16px; color:#383838; margin:10px 0; padding:0 10px }
+.ssam .profEvtBanner .profEvt a span {color:#adadad; font-size:14px; padding:0 10px }
+.ssam .profEvtBanner .profEvt img {display:block; width:210px}
+.ssam .profEvtBanner .ctrbtn {position:absolute; top:5px; left:200px}
+
+
 .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
 .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
 .ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}
@@ -135,11 +147,8 @@ no-repeat 5px center}
 .ssam .VisualSubBox .Subtab li a:hover {color:#fff; background:#5ba5fe; font-weight:bold;}
 .ssam .VisualSubBox .Subtab li:nth-child a (6),
 .ssam .VisualSubBox .Subtab li:last-child a {border:0}
-
-
-
-
 </style>
+
 
 <!-- Container -->
 <div id="Container" class="Container ssam NGR c_both">
@@ -404,8 +413,7 @@ no-repeat 5px center}
     </div>
 
     <div class="Section mt40">
-        <div class="widthAuto">        
-
+        <div class="widthAuto">   
             <div class="noticeTabs">
                 <ul class="tabWrap noticeWrap two">
                     <li><a href="#notice1" class="on">공지사항</a></li>
@@ -453,9 +461,90 @@ no-repeat 5px center}
                     <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>                  
                 </div>              
             </div>
-
         </div>
     </div> 
+
+    <div class="Section">
+        <div class="profEvtBanner">
+                <div class="title">교수별 <span class="tx-color">이벤트 & 특강안내</span></div>
+                <div class="ctrbtn">
+                    <a class="leftBtn" id="pebLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>
+                    <a class="rightBtn" id="pebRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
+                </div>
+                <div class="bSlider profEvt">
+                    <div>
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
+                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
+                            <p>임용중국어 장영희<br>이론&기출 총정리 특강</p>
+                            <span>총정리 특강</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
+                            <p>생물 강치욱/양혜정<br>10~11월 생물 Final 모의고사</p>
+                            <span>실전모의고사</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
+                            <p>전공음악 다이애나<br>2022 10-11월 실전모의고사</p>
+                            <span>개강안내</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
+                            <p>임용중국어 장영희<br>이론&기출 총정리 특강</p>
+                            <span>개강안내</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
+                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
+                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
+                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                            <span>개강안내</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
+                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                            <span>실전모의고사</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
+                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                            <span>개강안내</span>
+                        </a>
+                    </div>             
+                </div>              
+            </div>
+    </div>
 
     <div class="Section sec-prof mt40">
         <div class="sec-prof-title"><img src="https://static.willbes.net/public/images/promotion/main/2018/title01.jpg" title="교수진"></div>
@@ -1891,9 +1980,8 @@ no-repeat 5px center}
                             </li>
                         </ul>
                     </dt>
-                    {{--<dd class="GM">※ 전화상담 시 통화 내용은 자동녹취되며, 일요일 및 법정공휴일은 휴무입니다.</dd>--}}
                 </dl>
-            </div>          
+            </div>
         </div>
     </div>
 
@@ -1941,26 +2029,7 @@ no-repeat 5px center}
     </div>
 
     <div id="QuickMenuC" class="MainQuickMenuSSam NGR">
-        {{--
-        <ul>
-            <li class="dday">
-                <div class="QuickSlider">
-                    <div class="sliderNum">
-                        <div class="QuickDdayBox">
-                            <div class="q_tit">중등</div>
-                            <div class="q_day">2018.12.12</div>
-                            <div class="q_dday NSK-Black">D-5</div>
-                        </div>
-                        <div class="QuickDdayBox">
-                            <div class="q_tit">유아·초등</div>
-                            <div class="q_day">2019.04.05</div>
-                            <div class="q_dday NSK-Black">D-10</div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        --}}
+
         <ul class="gobtn NG">
             <li>
                 <a href="{{ site_url('/lecture/index/pattern/free?cate_code=') }}">
@@ -3405,6 +3474,30 @@ no-repeat 5px center}
         });
         $("#HotnNewRight").click(function (){
             hnnImg1.goToPrevSlide();
+        });        
+    });
+
+    /* 교수별이벤트*/
+    $(function() {
+        var peImg1 = $(".profEvt").bxSlider({
+            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+            auto:true,
+            speed:350,
+            pause:4000,
+            pager:false,
+            controls:false,
+            minSlides:5,
+            maxSlides:5,
+            slideWidth:210,
+            slideMargin:0,
+            autoHover: true,
+            moveSlides:5,
+        });
+        $("#pebLeft").click(function (){
+            peImg1.goToNextSlide();
+        });
+        $("#pebRight").click(function (){
+            peImg1.goToPrevSlide();
         });        
     });
 

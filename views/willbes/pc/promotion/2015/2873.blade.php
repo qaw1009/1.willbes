@@ -101,7 +101,7 @@
             <div id="tab01">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2873_01.jpg" />
                 <div class="btns">
-                    <a href="https://pass.willbes.net/pass/consult/visitConsult/index?s_campus=605014" target="_blank">1:1 심층 방문상담 예약하기 ></a>
+                    <a href="https://pass.willbes.net/pass/consult/visitConsult/index?s_campus=605001" target="_blank">1:1 심층 방문상담 예약하기 ></a>
                 </div>
             </div>
             <div id="tab02">

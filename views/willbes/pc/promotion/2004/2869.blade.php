@@ -93,7 +93,7 @@
 
         <div class="evtCtnsBox wb_cts03">
             <div class="wrap">
-                <a href="javascript:void(0);" title="url 복사하기" onclick="copyTxt();" style="position: absolute;left: 64.46%;top: 24.99%;width: 29.53%;height: 8.97%;z-index: 2;"></a>
+                <a href="javascript:void(0);" title="url 복사하기" onclick="copyTxt('<iframe width=\'661\' height=\'361\' src=\'https://www.youtube.com/embed/q6wusmfYGCM\' title=\'[노량진 윌비스 불꽃소방학원] To be a Hero!\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\' allowfullscreen></iframe>');" style="position: absolute;left: 64.46%;top: 24.99%;width: 29.53%;height: 8.97%;z-index: 2;"></a>
                 <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운로드" style="position: absolute;left: 64.46%;top: 33.99%;width: 29.53%;height: 8.97%;z-index: 2;"></a>
                 <a href="https://cafe.naver.com/im119" title="네이버 소사모" target="_blank" style="position: absolute;left: 13.46%;top: 94.99%;width: 16.13%;height: 4.27%;z-index: 2;"></a>
                 <a href="https://cafe.daum.net/im119" title="다음 소사모" target="_blank" style="position: absolute;left: 32.46%;top: 94.99%;width: 16.13%;height: 4.27%;z-index: 2;"></a>

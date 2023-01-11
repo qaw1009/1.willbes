@@ -166,7 +166,7 @@
                     <label for="pass02">
                         <div>23~24 대비 농업직</div>
                         <div>[국가직/지방직 대비] T-PASS</div>
-                        <div><strong><span class="original">120</span> -> 109</strong>만원</div>
+                        <div><strong><span class="original">150</span> -> 120</strong>만원</div>
                         <ul>
                             <li>2024. 6월까지 수강</li>
                             <li>PC+모바일 총 2대</li>

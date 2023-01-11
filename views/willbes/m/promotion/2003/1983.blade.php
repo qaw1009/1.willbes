@@ -147,7 +147,7 @@
                         <input type="radio" name="y_pkg" id="pass01" value="201800">
                         <label for="pass01">
                             <div class="NSK-Black">2023~24대비 0원 PASS</div>
-                            <div><span>쿠폰(인중) + 즉시할인<br>최대 10만원 할인</span></div>
+                            <div><span>인증 EVENT 5만원 할인</span></div>
                             <div>64만원 👉 <strong class="NSK-Black">59</strong>만원</div>
                             <ul>
                                 <li><span>~24년 6월까지 수강</span></li>
@@ -179,8 +179,8 @@
                         <input type="radio" name="y_pkg" id="pass04" value="203638">
                         <label for="pass04">
                             <div class="NSK-Black">2023대비 문제풀이 PASS</div>
-                            <div><span>신년 Event 한정할인</span></div>
-                            <div>39만원 👉 <strong class="NSK-Black">29</strong>만원</div>
+                            <div><span>인증 EVENT 5만원 할인</span></div>
+                            <div>39만원 👉 <strong class="NSK-Black">34</strong>만원</div>
                             <ul>                            
                                 <li><span>23년 6월까지 수강</span></li>
                                 <li><span>최종합격시 100% 환급</span></li>

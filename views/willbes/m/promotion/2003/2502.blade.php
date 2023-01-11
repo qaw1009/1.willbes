@@ -128,7 +128,7 @@
                         <div class="titleBox">
                             <div>2023 ~ 24대비</div>
                             <div class="NSK-Black">9급 0원 PASS</div>
-                            <div><span>인증 + Event 10만원 할인</span></div>
+                            <div><span>인증 EVENT 5만원 할인</span></div>
                             <div>64만원 👉 <strong class="NSK-Black">59</strong>만원</div>
                         </div>
                         <ul>
@@ -198,8 +198,8 @@
                         <div class="titleBox">
                             <div>2023대비</div>
                             <div class="NSK-Black">9급 문제풀이 PASS</div>
-                            <div><span>신년 Event 한정할인</span></div>
-                            <div>39만원 👉 <strong class="NSK-Black">29</strong>만원</div>
+                            <div><span>인증 EVENT 5만원 할인</span></div>
+                            <div>39만원 👉 <strong class="NSK-Black">34</strong>만원</div>
                         </div>
                         <ul>
                             <li><span>23년 6월까지 수강</span></li>

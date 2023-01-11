@@ -132,7 +132,7 @@
         <div class="evtCtnsBox wb_cts04">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2869_04.jpg" alt="이벤트2"/>
-                <a href="javascript:void(0);" title="쿠폰 다운로드" style="position: absolute;left: 27.66%;top: 72.99%;width: 45.13%;height: 11.27%;z-index: 2;"></a>
+                <a href="javascript:void(0);" title="쿠폰 다운로드" style="position: absolute;left: 27.66%;top: 62.79%;width: 45.13%;height: 11.27%;z-index: 2;"></a>
             </div>            
         </div>
 

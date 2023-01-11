@@ -9,7 +9,7 @@
         <li><a href="{{ front_url('/support/notice/index') }}">공지사항</a></li>      
         <li><a href="{{ front_url('/offinfo/boardInfo/index/80') }}">강의 시간표</a></li>
         <li><a href="{{ front_url('/offinfo/boardInfo/index/82') }}">강의실 배정표</a></li>
-        <li><a href="{{ front_url('/consult/visitConsult/index?s_campus=605005') }}">1:1방문상담</a></li>
+        <li><a href="{{ front_url('https://pass.willbes.net/pass/consult/visitConsult/index?s_campus=605005') }}">1:1방문상담</a></li>
         <li><a href="{{ front_url('/lecture/index/?search_order=course&course_idx=1481') }}">보강동영상</a></li>
     </ul>
     <li>

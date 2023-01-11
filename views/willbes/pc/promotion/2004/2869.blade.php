@@ -138,13 +138,7 @@
 
    <!-- End Container -->
 
-    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
-    <script src="/public/js/willbes/dist/aos.js"></script>
-    <script>
-        $(document).ready( function() {
-        AOS.init();
-        });
-    </script>
+
     <script type="text/javascript">       
         /*슬라이드*/
         $(document).ready(function() {
@@ -198,6 +192,13 @@
             });
         });
 
+    </script>
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+        $(document).ready( function() {
+        AOS.init();
+        });
     </script>
     
 <!-- End Container -->

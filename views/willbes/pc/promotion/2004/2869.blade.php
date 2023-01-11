@@ -4,21 +4,19 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
-            width:100% !important;
+            width:100%;
             min-width:1120px !important;
-            background:#ccc;
-            margin-top:20px !important;
+            max-width:2000px !important;
+            margin:20px auto 0;
             padding:0 !important;
-            background:#fff;
+            background:#fff;     
+            font-size:14px;       
         }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position: relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
         /************************************************************/
 
@@ -54,7 +52,7 @@
         
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox wb_top" data-aos="fade-down">            
             <img src="https://static.willbes.net/public/images/promotion/2023/01/2869_top.jpg" alt="히어로" />            
@@ -96,7 +94,7 @@
         <div class="evtCtnsBox wb_cts03">
             <div class="wrap">
                 <a href="javascript:void(0);" title="url 복사하기" onclick="copyTxt();" style="position: absolute;left: 64.46%;top: 24.99%;width: 29.53%;height: 8.97%;z-index: 2;"></a>
-                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운로드" style="position: absolute;left: 64.46%;top: 33.99%;width: 29.53%;height: 8.97%;z-index: 2;"></a>
+                <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운로드" style="position: absolute;left: 64.46%;top: 33.99%;width: 29.53%;height: 8.97%;z-index: 2;"></a>
                 <a href="https://cafe.naver.com/im119" title="네이버 소사모" target="_blank" style="position: absolute;left: 13.46%;top: 94.99%;width: 16.13%;height: 4.27%;z-index: 2;"></a>
                 <a href="https://cafe.daum.net/im119" title="다음 소사모" target="_blank" style="position: absolute;left: 32.46%;top: 94.99%;width: 16.13%;height: 4.27%;z-index: 2;"></a>
                 <a href="https://cafe.naver.com/gsdccompany" title="네이버 소방꿈" target="_blank" style="position: absolute;left: 52.06%;top: 94.99%;width: 16.13%;height: 4.27%;z-index: 2;"></a>
@@ -132,7 +130,7 @@
         <div class="evtCtnsBox wb_cts04">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2869_04.jpg" alt="이벤트2"/>
-                <a href="javascript:void(0);" title="쿠폰 다운로드" style="position: absolute;left: 27.66%;top: 72.99%;width: 45.13%;height: 11.27%;z-index: 2;"></a>
+                <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" title="쿠폰 다운로드" style="position: absolute; left: 27.05%; top: 62.8%; width: 45.89%; height: 11.1%; z-index: 2;"></a>
             </div>            
         </div>
 
@@ -204,6 +202,6 @@
     
 <!-- End Container -->
 
-{{-- 프로모션용 스크립트 include --}}
+    {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
 @stop

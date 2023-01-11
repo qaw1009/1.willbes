@@ -173,7 +173,7 @@
                         <label for="pass01">
                             <div>23~24 대비 통신직</div>
                             <div>전공과목 이론 T-PASS</div>                           
-                            <div><strong class="NSK-Black">75</strong>만원</div>
+                            <div><strong class="NSK-Black">79</strong>만원</div>
                             <ul>
                                 <li>2024. 7월까지 수강</li>
                                 <li>통신직 9급 전 강좌제공</li>
@@ -189,7 +189,7 @@
                         <label for="pass02">
                             <div>23~24 대비 9급 전기직</div>
                             <div>전공과목 이론 T-PASS</div>                          
-                            <div><strong class="NSK-Black">40</strong>만원</div>
+                            <div><strong class="NSK-Black">44</strong>만원</div>
                             <ul>
                                 <li>2024. 6월까지 수강</li>
                                 <li>전기직 9급 전 강좌제공</li>
@@ -205,7 +205,7 @@
                         <label for="pass03">
                             <div>23~24 대비 7/9급 전기직</div>
                             <div>전공과목 이론 T-PASS</div>                          
-                            <div><strong class="NSK-Black">55</strong>만원</div>
+                            <div><strong class="NSK-Black">59</strong>만원</div>
                             <ul>
                                 <li>2024. 10월까지 수강</li>
                                 <li>전기직 7/9급 전 강좌제공</li>
@@ -221,7 +221,7 @@
                         <label for="pass04">
                             <div>23~24 대비 군무원 전자직</div>
                             <div>전공과목 이론 T-PASS</div>                           
-                            <div><strong class="NSK-Black">45</strong>만원</div>
+                            <div><strong class="NSK-Black">49</strong>만원</div>
                             <ul>
                                 <li>2024. 7월까지 수강</li>
                                 <li>전자직 관련 강좌제공</li>

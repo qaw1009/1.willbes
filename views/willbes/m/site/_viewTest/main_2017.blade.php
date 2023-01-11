@@ -295,40 +295,43 @@
             </div>
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
-                        <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                        <span>모의고사</span>
-                    </a>
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
-                        <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                        <span>모의고사</span>
-                    </a>
+                    @for($i=1; $i<=2; $i++)
+                        @if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true)
+                            <div>
+                                <a href="{{ empty($data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl']) === false ? $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl'] : '#none' }}" target="_{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkType'] }}">
+                                    <img src="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerFullPath'] . $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerImgName'] }}" alt="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] }}">
+                                    <p>{!! $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] !!}</p>
+                                    <span>{{$data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['Desc']}}</span>
+                                </a>
+                            </div>
+                        @endif
+                    @endfor
                 </div>
                 <div class="swiper-slide">
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
-                        <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                        <span>모의고사</span>
-                    </a>
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
-                        <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                        <span>모의고사</span>
-                    </a>
+                    @for($i=3; $i<=4; $i++)
+                        @if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true)
+                            <div>
+                                <a href="{{ empty($data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl']) === false ? $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl'] : '#none' }}" target="_{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkType'] }}">
+                                    <img src="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerFullPath'] . $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerImgName'] }}" alt="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] }}">
+                                    <p>{!! $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] !!}</p>
+                                    <span>{{$data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['Desc']}}</span>
+                                </a>
+                            </div>
+                        @endif
+                    @endfor
                 </div>
                 <div class="swiper-slide">
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
-                        <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                        <span>모의고사</span>
-                    </a>
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
-                        <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                        <span>모의고사</span>
-                    </a>
+                    @for($i=5; $i<=6; $i++)
+                        @if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true)
+                            <div>
+                                <a href="{{ empty($data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl']) === false ? $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl'] : '#none' }}" target="_{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkType'] }}">
+                                    <img src="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerFullPath'] . $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerImgName'] }}" alt="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] }}">
+                                    <p>{!! $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] !!}</p>
+                                    <span>{{$data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['Desc']}}</span>
+                                </a>
+                            </div>
+                        @endif
+                    @endfor
                 </div>
             </div>
             <!-- Add Arrows -->

@@ -200,76 +200,17 @@
                     <a class="rightBtn" id="pebRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
                 </div>
                 <div class="bSlider profEvt">
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                            <p>임용중국어 장영희<br>이론&기출 총정리 특강</p>
-                            <span>총정리 특강</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                            <p>생물 강치욱/양혜정<br>10~11월 생물 Final 모의고사</p>
-                            <span>실전모의고사</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                            <p>전공음악 다이애나<br>2022 10-11월 실전모의고사</p>
-                            <span>개강안내</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                            <p>임용중국어 장영희<br>이론&기출 총정리 특강</p>
-                            <span>개강안내</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
-                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
-                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
-                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                            <span>개강안내</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
-                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                            <span>실전모의고사</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
-                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                            <span>개강안내</span>
-                        </a>
-                    </div>             
+                    @for($i=1; $i<=10; $i++)
+                        @if(isset($data['arr_main_banner']['메인_교수이벤트_'.$i]) === true)
+                            <div>
+                                <a href="{{ empty($data['arr_main_banner']['메인_교수이벤트_'.$i][0]['LinkUrl']) === false ? $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['LinkUrl'] : '#none' }}" target="_{{ $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['LinkType'] }}">
+                                    <img src="{{ $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['BannerFullPath'] . $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['BannerImgName'] }}" alt="{{ $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['BannerName'] }}">
+                                    <p>{!! $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['BannerName'] !!}</p>
+                                    <span>{{$data['arr_main_banner']['메인_교수이벤트_'.$i][0]['Desc']}}</span>
+                                </a>
+                            </div>
+                        @endif
+                    @endfor
                 </div>              
             </div>
         </div>

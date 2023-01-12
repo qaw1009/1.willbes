@@ -49,7 +49,7 @@
 
         .evt03 {background:#f4f4f4; padding:120px 0}
 
-        .evt03 .tableWrap td a {display:block; padding:10px; border-radius:5px; border:0; width:90%; background:#ededed; color:#333; text-align:center}
+        .evt03 .tableWrap td a {display:block; padding:10px; border-radius:5px; border:0; width:90%; background:#427bda; color:#fff; text-align:center}
         .evt03 .tableWrap td a.down {background:#427bda; color:#fff;}
         .evt03 .tableWrap td a:hover {background:#000; color:#fff;}
 
@@ -175,12 +175,12 @@
                         <tr>
                             <td>실무종합</td>
                             <td>김재규 교수</td>
-                            <td><a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" class="down">DOWNLOAD <img src="https://static.willbes.net/public/images/promotion/2023/01/2872_icon_02.png" alt=""/></a></td>
+                            <td><a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif">DOWNLOAD <img src="https://static.willbes.net/public/images/promotion/2023/01/2872_icon_02.png" alt=""/></a></td>
                         </tr>
                         <tr>
                             <td>형법</td>
                             <td>김원욱 교수</td>
-                            <td><a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" class="down">DOWNLOAD <img src="https://static.willbes.net/public/images/promotion/2023/01/2872_icon_02.png" alt=""/></a></td>
+                            <td><a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif">DOWNLOAD <img src="https://static.willbes.net/public/images/promotion/2023/01/2872_icon_02.png" alt=""/></a></td>
                         </tr>
                         <tr>
                             <td>형사소송법</td>

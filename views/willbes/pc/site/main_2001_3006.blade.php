@@ -43,7 +43,7 @@
 
         <div class="Section mt50">
             <div class="widthAuto">
-                <div class="will-nTit NSK-Black">경찰승진 <span class="tx-color">객관식</span> <span class="tx16 NSK ml20">형사소송법, 형법, 실무종합, <span class="tx-color">헌법(NEW), 행정학(NEW)</span></span></div>
+                <div class="will-nTit NSK-Black">경찰승진 <span class="tx-color">객관식</span> <span class="tx16 NSK ml20">형사소송법, 형법, 실무종합, 헌법, 행정학</span></div>
                 <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_1120x465.jpg" alt="전문화된 교수진">
             </div>
         </div>

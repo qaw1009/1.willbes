@@ -68,7 +68,6 @@
         .evt_02 h4 {font-family: 'Black Han Sans', sans-serif;}
         
         /************************************************************/
-
     </style>
 
 	<div class="evtContent NSK">
@@ -79,14 +78,14 @@
         <div class="evtCtnsBox evt_01">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2868_01.jpg" alt="소문이 많아지면 상품도 업"/> 
-                <div class="count">* 현재 참여 수 : <strong>210</strong>개</div>
+                <div class="count">* 현재 참여 수 : <strong>{{$data['PromotionCommentCnt']}}</strong>개</div>
                 <div class="countTable">
                     <ul>
-                        <li><strong>5구간</strong> 401개 이상</li>
-                        <li><strong>4구간</strong> 200 ~ 400개</li>
-                        <li class="now"><strong>3구간</strong> 101 ~ 200개</li>
-                        <li><strong>2구간</strong> 51 ~ 100개</li>
-                        <li><strong>1구간</strong> 0 ~ 50개</li>
+                        <li class="{{($data['PromotionCommentCnt'] >= 401 ? 'now' : '')}}"><strong>5구간</strong> 401개 이상</li>
+                        <li class="{{($data['PromotionCommentCnt'] >= 201 && $data['PromotionCommentCnt'] <= 400 ? 'now' : '')}}"><strong>4구간</strong> 201 ~ 400개</li>
+                        <li class="{{($data['PromotionCommentCnt'] >= 101 && $data['PromotionCommentCnt'] <= 200 ? 'now' : '')}}"><strong>3구간</strong> 101 ~ 200개</li>
+                        <li class="{{($data['PromotionCommentCnt'] >= 51 && $data['PromotionCommentCnt'] <= 100 ? 'now' : '')}}"><strong>2구간</strong> 51 ~ 100개</li>
+                        <li class="{{($data['PromotionCommentCnt'] <= 50 ? 'now' : '')}}"><strong>1구간</strong> 0 ~ 50개</li>
                     </ul>
                 </div>
                 <div class="countGraph">
@@ -98,14 +97,14 @@
                         <span><img src="https://static.willbes.net/public/images/promotion/2023/01/2868_bar05.png" alt=""/></span>
                     </div>
                 </div>
-            </div>        
+            </div>
 		</div>
 
         <div class="evtCtnsBox evt_02">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2868_02.jpg" alt=""/> 
                 <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="소문내기 이미지 다운로드" style="position: absolute; left: 8.13%; top: 95.28%; width: 19.02%; height: 2.16%; z-index: 2;"></a>
-            </div>           
+            </div>
 		</div>
 
         <div class="evtCtnsBox evt_03">
@@ -114,7 +113,7 @@
                 @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                     @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N', 'login_url'=>app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www'), 'is_public' => true)){{--기존SNS예외처리시, 로그인페이지 이동--}}
                 @endif
-            </div>  
+            </div>
             <div class="evtInfo" id="notice" data-aos="fade-up">
                 <div class="evtInfoBox">
                     <h4 class="NSK-Black">유의사항</h4>
@@ -132,22 +131,18 @@
                     </ul>
                     <div class="infoTit"><strong>※ 블로그 / 인스타그램 작성시 필수 해시태그 : #한림법학원 #5급psat #합격예측 #소문내기</strong></div>
                 </div>
-            </div>         
+            </div>
 		</div>
-
-        
-
 	</div>
     <!-- End Container -->
 
     <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
     <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
-      $(document).ready(function() {
-        AOS.init();
-      });  
+      $(document).ready(function(){
+          AOS.init();
+      });
     </script>
-
 
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')

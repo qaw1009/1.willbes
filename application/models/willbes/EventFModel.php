@@ -1053,6 +1053,10 @@ class EventFModel extends WB_Model
         $column = '
             ElIdx, Content, OptionCcds, EventName, PromotionCode, PromotionParams, PromotionLiveType, PromotionLivePlayer, 
             RegisterEndDate, CommentUseArea, LimitType, PromotionCnt, CommentUiTypeCcds, CommentEmoticonImages
+            ,( SELECT COUNT(*) AS commentCnt FROM lms_event_comment AS ec
+                WHERE ec.ElIdx = lms_event_lecture.ElIdx AND ec.IsStatus = "Y"
+                AND ec.RegDatm >= lms_event_lecture.RegisterStartDate AND ec.RegDatm < lms_event_lecture.RegisterEndDate
+            ) AS PromotionCommentCnt
         ';
         $from = "
             FROM {$this->_table['event_lecture']}
@@ -1171,6 +1175,20 @@ class EventFModel extends WB_Model
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    public function commentCount($arr_condition = [])
+    {
+        $column = 'count(*) AS numrows';
+        $from = "
+            FROM {$this->_table['event_comment']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        return $query->row(0)->numrows;
     }
 
     /**

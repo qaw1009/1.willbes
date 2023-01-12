@@ -64,14 +64,14 @@
 
     <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2023/01/2868m_01.jpg" alt="소문이 많아지면 상품도 업"/>
-        <div class="count">* 현재 참여 수 : <strong>210</strong>개</div>
+        <div class="count">* 현재 참여 수 : <strong>{{$data['PromotionCommentCnt']}}</strong>개</div>
         <div class="countTable">
             <ul>
-                <li><strong>5구간</strong> 401개 이상</li>
-                <li><strong>4구간</strong> 200 ~ 400개</li>
-                <li class="now"><strong>3구간</strong> 101 ~ 200개</li>
-                <li><strong>2구간</strong> 51 ~ 100개</li>
-                <li><strong>1구간</strong> 0 ~ 50개</li>
+                <li class="{{($data['PromotionCommentCnt'] >= 401 ? 'now' : '')}}"><strong>5구간</strong> 401개 이상</li>
+                <li class="{{($data['PromotionCommentCnt'] >= 201 && $data['PromotionCommentCnt'] <= 400 ? 'now' : '')}}"><strong>4구간</strong> 201 ~ 400개</li>
+                <li class="{{($data['PromotionCommentCnt'] >= 101 && $data['PromotionCommentCnt'] <= 200 ? 'now' : '')}}"><strong>3구간</strong> 101 ~ 200개</li>
+                <li class="{{($data['PromotionCommentCnt'] >= 51 && $data['PromotionCommentCnt'] <= 100 ? 'now' : '')}}"><strong>2구간</strong> 51 ~ 100개</li>
+                <li class="{{($data['PromotionCommentCnt'] <= 50 ? 'now' : '')}}"><strong>1구간</strong> 0 ~ 50개</li>
             </ul>
         </div>
     </div>

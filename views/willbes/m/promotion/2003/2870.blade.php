@@ -34,8 +34,16 @@
         <img src="https://static.willbes.net/public/images/promotion/2023/01/2870m_03.jpg" alt="교수진" />
     </div>
 
-    <div class="evtCtnsBox evt04" data-aos="fade-up">               
-        <img src="https://static.willbes.net/public/images/promotion/2023/01/2870m_04.jpg" alt="연간 커리큘럼">           
+    <div class="evtCtnsBox evt04" data-aos="fade-up">
+        <div class="wrap"> 
+            <img src="https://static.willbes.net/public/images/promotion/2023/01/2870m_04.jpg" alt="연간 커리큘럼">
+            <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU67JiI67mE7Iic7ZmY&course_idx=" title="예비순환" target="_blank" style="position: absolute;left: 3.98%;top: 17.04%;width: 92.11%;height: 10.38%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MeyInO2ZmA%3D%3D" title="1순환" target="_blank" style="position: absolute;left: 3.98%;top: 29.84%;width: 92.11%;height: 10.38%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6MuyInO2ZmA%3D%3D" title="2순환" target="_blank" style="position: absolute;left: 3.98%;top: 42.64%;width: 92.11%;height: 10.38%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6M%2ByInO2ZmA%3D%3D" title="3순환" target="_blank" style="position: absolute;left: 3.98%;top: 55.54%;width: 92.11%;height: 10.38%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NOyInO2ZmA%3D%3D" title="4순환" target="_blank" style="position: absolute;left: 3.98%;top: 68.24%;width: 92.11%;height: 10.38%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&search_text=UHJvZE5hbWU6NeyInO2ZmA%3D%3D" title="5순환" target="_blank" style="position: absolute;left: 3.98%;top: 81.04%;width: 92.11%;height: 10.38%;z-index: 2;"></a>
+        </div>
     </div>
 
     <div class="evtCtnsBox evt05" data-aos="fade-up">
@@ -52,8 +60,7 @@
     <div class="evtCtnsBox evt07" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2023/01/2870m_07.jpg" alt="4~5순환 학원종합반" />
-            <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3059" target="_blank" style="position: absolute;left: 17.98%;top: 71.05%;width: 64.11%;height: 11.08%;z-index: 2;"></a>
-            <a href="https://pass.willbes.net/pass/promotion/index/cate/3059/code/2119" target="_blank" style="position: absolute;left: 17.98%;top: 82.55%;width: 64.11%;height: 11.08%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3059" target="_blank" style="position: absolute;left: 17.98%;top: 80.05%;width: 64.11%;height: 12.08%;z-index: 2;"></a>
         </div>
     </div>
 

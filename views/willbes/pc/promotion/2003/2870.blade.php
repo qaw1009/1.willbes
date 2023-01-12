@@ -90,8 +90,7 @@
         <div class="evtCtnsBox evt07" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2870_07.jpg" alt="4~5순환 학원종합반" />
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" style="position: absolute;left: 17.58%;top: 71.05%;width: 64.11%;height: 11.08%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3059/code/2119" target="_blank" style="position: absolute;left: 17.58%;top: 83.05%;width: 64.11%;height: 11.08%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" style="position: absolute;left: 17.58%;top: 80.05%;width: 64.11%;height: 12.08%;z-index: 2;"></a>                
             </div>
 		</div>
 

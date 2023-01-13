@@ -38,6 +38,8 @@
         .evt01 {padding-bottom:8vh;}        
 
         .evt03 {padding-bottom:10vh}
+        .evt03 .title {font-size:3.4vh; color:#2d363d; line-height:1.4; margin:5vh 0}
+        .evt03 .title strong {color:#e66f1f}
         .evt03 .lecwrap {font-size:1.6vh; line-height:1.4}
         .evt03 .lecbox {border:2px solid #454c54; background:#fff; padding:1.8vh; width:90%; margin:0 auto 2vh; text-align:left; position: relative; display:flex; justify-content: space-between;}
         .evt03 .lecbox:hover {box-shadow:10px 10px 10px rgba(0,0,0,.2); border:2px solid #f06524;}
@@ -103,7 +105,10 @@
         </div>
 
         <div class="evtCtnsBox evt03" id="lec">
-            <img src="https://static.willbes.net/public/images/promotion/2022/10/2180m_03.jpg" alt="수강신청" >
+            <div class="title">
+                <strong class="NSK-Black">2023 ~ 2024</strong>년에도, 한덕현 영어는<br>
+                <strong class="NSK-Black">오직 합격</strong>에 <strong  class="NSK-Black">최적화된 공시 영어</strong>를 선보입니다.
+            </div>
             <div class="lecwrap">
                 <div class="lecbox">
                     <ul>

@@ -23,9 +23,6 @@
         .sky {position: fixed; top:250px; right:10px; width:200px; z-index:10;}
         .sky a {margin-bottom:5px; display:block}
 
-
-
-
 		.evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/02/2180_top_bg.jpg) no-repeat center top; height:1124px; position:relative}
         .evtTop span { position:absolute; top:880px; left:50%; width:1120px; margin-left:-560px; z-index: 10;}
 
@@ -50,7 +47,9 @@
         .newTopDday ul:after {content:""; display:block; clear:both}
 
 
-		.evt03 {background:#e8e8e8; padding-bottom:150px} 
+		.evt03 {background:#e8e8e8; padding:150px 0} 
+        .evt03 .title {font-size:38px; color:#2d363d; line-height:1.4; margin-bottom:50px}
+        .evt03 .title strong {color:#e66f1f}
 
         .evt03 .lecwrap {width:1120px; margin:0 auto; display:flex; justify-content: space-between; font-size:16px; line-height:1.4}
         .evt03 .lecbox {border:2px solid #454c54; background:#fff; padding:20px; width:calc(20%); height:280px; margin-right:10px; position: relative;}
@@ -192,27 +191,27 @@
         </div>   
 
         <div class="evtCtnsBox evt03" id="event" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/10/2180_03_01.jpg" />
+            <div class="title">
+                <strong class="NSK-Black">2023 ~ 2024</strong>년에도, 한덕현 영어는<br>
+                <strong class="NSK-Black">오직 합격</strong>에 <strong  class="NSK-Black">최적화된 공시 영어</strong>를 선보입니다.
+            </div>
             <div class="lecwrap">
                 <div class="lecbox">
                     <ul>
                         <li class="NSK-Black">전과정 T-PASS</li>
-                        <li>2023 국가직/지방직 완벽대비</li>
-                        <li>전과정 무제한 수강</li>
-                        
-                        
+                        <li>2023~2024 시험대비</li>
+                        <li>전과정 무제한 수강</li>                      
                     </ul>
                     <div>
-                        <p class="NSK-Black">69만원</p>
-                        <a href="javascript:go_PassLecture('199386');">수강신청</a>
+                        <p class="NSK-Black">75만원</p>
+                        <a href="javascript:go_PassLecture('204673');">수강신청</a>
                     </div>
                 </div>
                 <div class="lecbox">
                     <ul>
                         <li class="NSK-Black">실전 I T-PASS</li> 
                         <li>2023 국가직/지방직 실전대비</li>
-                        <li>실전464 / 독해기적 /<br>스나이퍼32 / 아작내기 /<br>새벽모의고사</li>
-                                               
+                        <li>실전464 / 독해기적 /<br>스나이퍼32 / 아작내기 /<br>새벽모의고사</li>                                               
                     </ul>
                     <div>
                         <p class="NSK-Black">49만원</p>
@@ -223,8 +222,7 @@
                     <ul>
                         <li class="NSK-Black">실전 II T-PASS</li> 
                         <li>2023 국가직/지방직 실전대비</li>
-                        <li>실전464/스나이퍼32 /<br>새벽모의고사</li>
-                                               
+                        <li>실전464/스나이퍼32 /<br>새벽모의고사</li>                                               
                     </ul>
                     <div>
                         <p class="NSK-Black">39만원</p>
@@ -253,9 +251,7 @@
                         <a href="javascript:go_PassLecture('199952');">수강신청</a>
                     </div>
                 </div>
-
             </div>
-
             
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
@@ -319,14 +315,6 @@
 
 	<!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        $(document).ready(function() {
-            AOS.init();
-        });
-    </script>
-
 	<script type="text/javascript">
         /*디데이카운트다운*/
         $(document).ready(function() {
@@ -377,6 +365,14 @@
         });
 
 	</script>
+
+<link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+        $(document).ready(function() {
+            AOS.init();
+        });
+    </script>
 
 	{{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')

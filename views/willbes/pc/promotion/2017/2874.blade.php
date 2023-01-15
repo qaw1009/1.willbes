@@ -93,7 +93,21 @@
         <div class="evtCtnsBox problem">
             <div class="title NSK-Black">2차 문제복기 이벤트 참여하기</div>
             <div>
-                
+                <table cellspacing="0" cellpadding="0">
+                    <col />
+                    <tr>
+                        <th>회원정보</th>
+                        <td>홍길동(아이디***)</td>
+                        <th>응시정보</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
             </div>
         </div> 
 
@@ -105,6 +119,7 @@
         </div>
         
         <div class="evtCtnsBox event02" id="event02">
+            
             <!--<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_01.jpg" alt="이벤트 둘"/>-
             
             <div class="evt_table">

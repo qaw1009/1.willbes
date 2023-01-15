@@ -4524,9 +4524,8 @@ body.memBody #Footer {
 
 .lecTable .w-txt img,
 .lecTable .w-txt p img {
-	width: 100% !important;
 	height: auto !important;
-	max-width: 900px;
+	max-width: 680px;
 }
 
 .lecTable .w-start {

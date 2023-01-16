@@ -240,7 +240,12 @@ class BasePromotion extends \app\controllers\FrontController
 
             // 문화상품권 지급내역 조회
             if(empty($arr_promotion_params['recipient_type']) === false && $arr_promotion_params['recipient_type'] == 'Y'){
-                $arr_condition = ['EQ' => ['PromotionCode' => $data['PromotionCode'], 'IsStatus' => 'Y', 'MemIdx' => $this->session->userdata('mem_idx')]];
+                $arr_condition = [
+                    'EQ' => [
+                        'r.PromotionCode' => $data['PromotionCode']
+                        ,'r.IsStatus' => 'Y'
+                        , 'r.MemIdx' => $this->session->userdata('mem_idx')]
+                ];
                 $arr_base['member_recipient'] = $this->eventFModel->findPromotionMemberRecipient($arr_condition);
             }
 

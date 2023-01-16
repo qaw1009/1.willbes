@@ -84,7 +84,7 @@
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2023/01/2875_top.jpg" alt="연간 Package 선 접수(문화상품권 증정) 이벤트 "/>
         </div>
-        <!--
+
         <form name="regi_form_register" id="regi_form_register">
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
@@ -101,7 +101,7 @@
             <input type="hidden" name="target_param_names[]" value="수강생정보"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" id="register_data1" name="register_data1" value="{{ $arr_base['member_recipient']['SubjectName'] or ''}}">
             <input type="hidden" id="register_data2" name="register_data2" value="{{ $arr_base['member_recipient']['GiftCertificate'] or ''}}">
-        -->
+
             <div class="evtCtnsBox evt01">
                 <div>
                     안녕하세요.<br>
@@ -123,9 +123,11 @@
             </div>
 
             <div class="evtCtnsBox evt02">
-                <div class="before">
-                    <div class="popupbtn NSK-Black"><a href="javascript:go_popup1()">신청정보 확인하기</a></div>
-                </div>
+                @if(sess_data('is_login') === true && $arr_base['member_recipient']['IsApply'] == 'Y')
+                    <div class="before">
+                        <div class="popupbtn NSK-Black"><a href="javascript:go_popup1()">신청정보 확인하기</a></div>
+                    </div>
+                @endif
                 <div class="info">
                     <ul>
                         <li>
@@ -138,7 +140,7 @@
                         <li>입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3자에게 제공되지 않으며 개인정보 처리 방침에 따라 보호되고 있습니다.</li>
                         <li>개인정보 수집/이용에 동의하셨으면, 아래 사항을 기재해 주시기 바랍니다.</li>
                     </ul>
-                    <label><input type="checkbox" id="is_chk" name="is_chk" value="Y" onchange="loginCheck();" title="개인정보 수집/이용 동의"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+                    <label><input class="btn-login-check" type="checkbox" id="is_chk" name="is_chk" value="Y" title="개인정보 수집/이용 동의" autocomplete="off"> 윌비스에 개인정보 제공 동의하기(필수)</label>
                 </div>
                 <div class="table_wrap">
                     <table>
@@ -164,8 +166,8 @@
                             <tr>
                               <th>* 주민번호</th>
                                 <td>
-                                    <input type="text" id="ssn_1" name="ssn_1" maxlength="6" onclick="loginCheck();" style="width:100px"/> -
-                                    <input type="text" id="ssn_2" name="ssn_2" maxlength="7" onclick="loginCheck();" style="width:100px"/>
+                                    <input class="btn-login-check" type="text" id="ssn_1" name="ssn_1" maxlength="6" style="width:100px" autocomplete="off"/> -
+                                    <input class="btn-login-check" type="password" id="ssn_2" name="ssn_2" maxlength="7" style="width:100px" autocomplete="off"/>
                                 </td>
                                 <th>* 상품권 종류</th>
                                 <td>
@@ -185,58 +187,56 @@
                         <li>문화상품권 신청 시, 상기 내용을 숙지하고, 동의한 것으로 간주합니다. </li>
                     </ul>
                     <div class="btnSet">
-                        @if($arr_promotion_params['recipient_type'] == 'Y' && empty($arr_base['member_recipient']) === false)
-                            <a href="{!! front_url('/event/registerStore') !!}" onclick="javascript:fn_submit(); return false;">문화상품권 신청하기 ></a>
-                        @else
-                            <a href="javascript:alert('상품권 수령 대상자가 아닙니다.');">문화상품권 신청하기 ></a>
-                        @endif
-                    </div>
-                </div>
-
-            </div>
-
-            <div id="popup1" class="Pstyle NSK">
-                <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>
-                <div class="content">
-                    <div class="table_wrap">
-                        <div class="p_title">신청정보</div>
-                        <table>
-                            <col width="15%">
-                            <col width="35%">
-                            <col width="15%">
-                            <col>
-                            <tbody>
-                                <tr>
-                                    <th>성명</th>
-                                    <td>{{sess_data('mem_name')}}</td>
-                                    <th>윌비스 ID</th>
-                                    <td>{{sess_data('mem_id')}}</td>
-                                </tr>
-                                <tr>
-                                <th>연락처</th>
-                                    <td>{{sess_data('mem_phone')}}</td>
-                                    <th>* 패키지 수강과목</th>
-                                    <td>
-                                        {{ $arr_base['member_recipient']['SubjectName'] or ''}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                <th>* 주민번호</th>
-                                    <td>
-                                        <input type="text" id="ssn_1" name="ssn_1" maxlength="6" onclick="loginCheck();" style="width:100px"/> -
-                                        <input type="text" id="ssn_2" name="ssn_2" maxlength="7" onclick="loginCheck();" style="width:100px"/>
-                                    </td>
-                                    <th>* 상품권 종류</th>
-                                    <td>
-                                        {{ $arr_base['member_recipient']['GiftCertificate'] or ''}}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <a href="{!! front_url('/event/registerStore') !!}" onclick="fn_submit(); return false;">문화상품권 신청하기 ></a>
                     </div>
                 </div>
             </div>
-        <!--</form>-->
+
+            @if(sess_data('is_login') === true && $arr_base['member_recipient']['IsApply'] == 'Y')
+                <div id="popup1" class="Pstyle NSK">
+                    <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>
+                    <div class="content">
+                        <div class="table_wrap">
+                            <div class="p_title">신청정보</div>
+                            <table>
+                                <col width="15%">
+                                <col width="35%">
+                                <col width="15%">
+                                <col>
+                                <tbody>
+                                    <tr>
+                                        <th>성명</th>
+                                        <td>{{sess_data('mem_name')}}</td>
+                                        <th>윌비스 ID</th>
+                                        <td>{{sess_data('mem_id')}}</td>
+                                    </tr>
+                                    <tr>
+                                    <th>연락처</th>
+                                        <td>
+                                            {{sess_data('mem_phone')}}
+                                        </td>
+                                        <th>* 패키지 수강과목</th>
+                                        <td>
+                                            {{ $arr_base['member_recipient']['SubjectName'] or ''}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <th>* 주민번호</th>
+                                        <td>
+                                            {{ $arr_base['member_recipient']['UserSsn'] or ''}}
+                                        </td>
+                                        <th>* 상품권 종류</th>
+                                        <td>
+                                            {{ $arr_base['member_recipient']['GiftCertificate'] or ''}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </form>
     </div>
     <!-- End Container -->
 
@@ -259,10 +259,19 @@
                     return false;
                 }
             });
+
+            $('.btn-login-check').on('click', function () {
+                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+            });
         });
 
         function fn_submit() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+            @if(element('recipient_type', $arr_promotion_params, '') == 'Y' && empty($arr_base['member_recipient']) === false)
+            @else
+                alert('상품권 수령 대상자가 아닙니다.');
+                return false;
+            @endif
 
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
                 alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
@@ -333,10 +342,6 @@
             if (sum != arr_ssn[12]) {return _msg[2];}
 
             return true;
-        }
-
-        function loginCheck(){
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
         }
 
         //팝업

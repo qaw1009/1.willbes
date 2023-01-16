@@ -307,10 +307,18 @@ class EventFModel extends WB_Model
      */
     public function findPromotionMemberRecipient($arr_condition = [])
     {
-        $column = 'MemIdx, MemId, IsApply, SubjectName, GiftCertificate';
-        $from = " FROM {$this->_table['event_promotion_member_recipient']}";
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
+        $column = "
+            r.MemIdx, r.MemId, r.IsApply, r.SubjectName, r.GiftCertificate, em.UserName
+            ,REGEXP_REPLACE(fn_dec(em.UserTelEnc), '(02|.{3})(.+)(.{4})', '\\\\1-\\\\2-\\\\3') AS UserTel
+            ,REGEXP_REPLACE(fn_dec(em.UserSsnEnc), '([[:digit:]]{6})([[:digit:]]{7})','\\\\1-\\\\2') AS UserSsn
+        ";
+        $from = "
+            FROM {$this->_table['event_promotion_member_recipient']} AS r
+            INNER JOIN {$this->_table['event_lecture']} AS e ON r.PromotionCode = e.PromotionCode
+            INNER JOIN {$this->_table['event_register']} AS reg ON e.ElIdx = reg.ElIdx
+            LEFT JOIN {$this->_table['event_member']} AS em ON reg.ErIdx = em.ErIdx AND r.MemIdx = em.MemIdx
+        ";
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         return $this->_conn->query('select '. $column . $from . $where)->row_array();
     }
 

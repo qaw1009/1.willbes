@@ -319,8 +319,8 @@
                     </li>             
                 </ul>                
                 <div id="tab1" class="tabContents">
-                    <div class="youtube">
-                        <object data="https://www.youtube.com/embed/ueqN7v3wgKc?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
+                    <div class="youtube" data-num="1">
+                        <object data="https://www.youtube.com/embed/ueqN7v3wgKc?rel=0"   frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
                         <p class="NSK-Black">NEW ALL in One 헌법</p>
@@ -329,8 +329,8 @@
                     </div>                        
                 </div>
                 <div id="tab2" class="tabContents">
-                    <div class="youtube">
-                        <object data="https://www.youtube.com/embed/6zd2TPGVf84?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
+                    <div class="youtube" data-num="2" >
+                        <object data="https://www.youtube.com/embed/6zd2TPGVf84?rel=0"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
                         <p class="NSK-Black">NEW ALL in One 형사법</p>
@@ -339,7 +339,7 @@
                     </div>                        
                 </div> 
                 <div id="tab3" class="tabContents">
-                    <div class="youtube">
+                    <div class="youtube" data-num="3">
                         <object data="https://www.youtube.com/embed/c_cRv4ZclJo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
@@ -349,7 +349,7 @@
                     </div>                               
                 </div>
                 <div id="tab4" class="tabContents">
-                    <div class="youtube">
+                    <div class="youtube" data-num="4">
                         <object data="https://www.youtube.com/embed/iQQRQEYkoIE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
@@ -359,7 +359,7 @@
                     </div>                                
                 </div> 
                 <div id="tab5" class="tabContents">
-                    <div class="youtube">
+                    <div class="youtube" data-num="5">
                         <object data="https://www.youtube.com/embed/zj9uAPnA618?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
@@ -368,7 +368,7 @@
                     </div>                          
                 </div>              
                 <div id="tab6" class="tabContents">
-                    <div class="youtube">
+                    <div class="youtube" data-num="6">
                         <object data="https://www.youtube.com/embed/4xZM-lm67Bw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
@@ -1017,10 +1017,30 @@
 
          /*탭(텍스터버전)*/
         $(document).ready(function(){
+            var  youtube_url1 = "https://www.youtube.com/embed/ueqN7v3wgKc?rel=0";
+            var  youtube_url2 = "https://www.youtube.com/embed/6zd2TPGVf84?rel=0"; 
+            var  youtube_url3 = "https://www.youtube.com/embed/c_cRv4ZclJo?rel=0"; 
+            var  youtube_url4 = "https://www.youtube.com/embed/iQQRQEYkoIE?rel=0"; 
+            var  youtube_url5 = "https://www.youtube.com/embed/zj9uAPnA618?rel=0"; 
+            var  youtube_url6 = "https://www.youtube.com/embed/4xZM-lm67Bw?rel=0"; 
+
             $(".tabContents").hide();
             $(".tabContents:first").show();
             $(".tabContaier ul li a").click(function(){
+
             var activeTab = $(this).attr("href");
+            var objyt =  $(activeTab).find('.youtube').data("num");            
+            $('.tabContents').find('object').remove();
+			
+                switch(objyt){
+                    case 1 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url1 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></object>`); break;
+                    case 2 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url2 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></object>`); break;
+                    case 3 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url3 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></object>`); break;
+                    case 4 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url4 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></object>`); break;
+                    case 5 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url5 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></object>`); break;
+                    default : $(activeTab).find('.youtube').append(`<object data="` + youtube_url6 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></object>`);  break;
+                }				
+
             $(".tabContaier ul li a").removeClass("active");
             $(this).addClass("active");
             $(".tabContents").hide();

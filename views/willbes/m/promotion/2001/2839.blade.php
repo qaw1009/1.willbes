@@ -43,8 +43,8 @@
     .tabContaier li:last-child a {margin:0}
 
     /*유튜브*/
-    .video-container {position:relative; padding-bottom:56.25%; overflow: hidden; margin-top:-20px !important}
-    .video-container object {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
+    .youtube {position:relative; padding-bottom:56.25%; overflow: hidden; margin-top:-20px !important}
+    .youtube object {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
     .tabContaier .tabContents div {font-size:3.6vh; color:#000; font-weight:bold; margin-top:20px; text-align:left; position: relative;}
     .tabContaier .tabContents div > a {color:#cf9c5d; font-size:2vh; background:url("https://static.willbes.net/public/images/promotion/2022/03/2595_icon01.png") no-repeat right center; padding-right:25px}
@@ -257,7 +257,7 @@
             </ul>                
             <div id="tab1" class="tabContents">
                 <div class="wrap">                     
-                    <div class="video-container">
+                    <div class="youtube" data-num="1">
                         <object data="https://www.youtube.com/embed/ueqN7v3wgKc?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
@@ -268,7 +268,7 @@
             </div>
             <div id="tab2" class="tabContents">
                 <div class="wrap">                       
-                    <div class="video-container">
+                    <div class="youtube" data-num="2">
                         <object data="https://www.youtube.com/embed/6zd2TPGVf84?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
@@ -279,7 +279,7 @@
             </div> 
             <div id="tab3" class="tabContents">
                 <div class="wrap">                      
-                    <div class="video-container">
+                    <div class="youtube" data-num="3">
                         <object data="https://www.youtube.com/embed/c_cRv4ZclJo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
@@ -290,7 +290,7 @@
             </div>
             <div id="tab4" class="tabContents">
                 <div class="wrap">                       
-                    <div class="video-container">
+                    <div class="youtube" data-num="4">
                         <object data="https://www.youtube.com/embed/iQQRQEYkoIE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
@@ -301,7 +301,7 @@
             </div> 
             <div id="tab5" class="tabContents">
                 <div class="wrap"> 
-                    <div class="video-container">
+                    <div class="youtube" data-num="5">
                         <object data="https://www.youtube.com/embed/zj9uAPnA618?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
@@ -312,7 +312,7 @@
             </div>              
             <div id="tab6" class="tabContents">
                 <div class="wrap">
-                    <div class="video-container">
+                    <div class="youtube" data-num="6">
                         <object data="https://www.youtube.com/embed/4xZM-lm67Bw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
@@ -1049,19 +1049,39 @@
         }
     });
 
-    //교수 tab
+    /*유튜브 자바스크립트 조작(재생, 일시정지, 종료 후 처리)*/
     $(document).ready(function(){
-        $(".tabContents").hide();
-        $(".tabContents:first").show();
-        $(".tabContaier ul li a").click(function(){
-        var activeTab = $(this).attr("href");
-        $(".tabContaier ul li a").removeClass("active");
-        $(this).addClass("active");
-        $(".tabContents").hide();
-        $(activeTab).fadeIn();
-        return false;
-        });
-    });
+            var  youtube_url1 = "https://www.youtube.com/embed/ueqN7v3wgKc?rel=0";
+            var  youtube_url2 = "https://www.youtube.com/embed/6zd2TPGVf84?rel=0"; 
+            var  youtube_url3 = "https://www.youtube.com/embed/c_cRv4ZclJo?rel=0"; 
+            var  youtube_url4 = "https://www.youtube.com/embed/iQQRQEYkoIE?rel=0"; 
+            var  youtube_url5 = "https://www.youtube.com/embed/zj9uAPnA618?rel=0"; 
+            var  youtube_url6 = "https://www.youtube.com/embed/4xZM-lm67Bw?rel=0"; 
+
+            $(".tabContents").hide();
+            $(".tabContents:first").show();
+            $(".tabContaier ul li a").click(function(){
+
+            var activeTab = $(this).attr("href");
+            var objyt =  $(activeTab).find('.youtube').data("num");            
+            $('.tabContents').find('object').remove();
+			
+                switch(objyt){
+                    case 1 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url1 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 2 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url2 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 3 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url3 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 4 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url4 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 5 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url5 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    default : $(activeTab).find('.youtube').append(`<object data="` + youtube_url6 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                }				
+
+            $(".tabContaier ul li a").removeClass("active");
+            $(this).addClass("active");
+            $(".tabContents").hide();
+            $(activeTab).fadeIn();
+            return false;
+            });
+        });        
             
 </script>
 

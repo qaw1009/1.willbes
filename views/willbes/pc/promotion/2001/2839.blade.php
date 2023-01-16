@@ -1015,7 +1015,7 @@
         }
 
 
-         /*탭(텍스터버전)*/
+        /*유튜브 자바스크립트 조작(재생, 일시정지, 종료 후 처리)*/
         $(document).ready(function(){
             var  youtube_url1 = "https://www.youtube.com/embed/ueqN7v3wgKc?rel=0";
             var  youtube_url2 = "https://www.youtube.com/embed/6zd2TPGVf84?rel=0"; 
@@ -1038,7 +1038,7 @@
                     case 3 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url3 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></object>`); break;
                     case 4 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url4 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></object>`); break;
                     case 5 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url5 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></object>`); break;
-                    default : $(activeTab).find('.youtube').append(`<object data="` + youtube_url6 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></object>`);  break;
+                    default : $(activeTab).find('.youtube').append(`<object data="` + youtube_url6 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></object>`); break;
                 }				
 
             $(".tabContaier ul li a").removeClass("active");

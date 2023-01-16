@@ -67,7 +67,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">   
         <div class="evtCtnsBox wb_top">             
-            <span class="img01 NSK-Black">2021년 공무원 합격의 주인공은 여러분입니다!</span>
+            <span class="img01 NSK-Black">2024년 공무원 합격의 주인공은 여러분입니다!</span>
             <div class="nameBox">
                 <div id="slider1" class="bxslider">
                     <ul>

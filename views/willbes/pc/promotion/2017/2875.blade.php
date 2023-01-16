@@ -25,7 +25,7 @@
         .evt01 p {font-weight:bold; font-size:18px}
 
         .evt02 {width:1120px; margin:0 auto 100px; text-align:left; font-size:16px; line-height:1.4; padding:20px}
-        .evt02 .before {position:absolute;top:0; left:0; height:100%; background:rgba(0,0,0,.7); width:100%; z-index: 10; display: flex; flex-direction: column; justify-content: center; align-items: center; color:#fff; font-size:30px; text-align:center; box-shadow: 10px 10px 10px 0 rgba(0,0,0,0.2);}
+        .evt02 .before {position:absolute;top:0; left:0; height:100%; background:rgba(0,0,0,.3); width:100%; z-index: 10; display: flex; flex-direction: column; justify-content: center; align-items: center; color:#fff; font-size:30px; text-align:center; box-shadow: 10px 10px 10px 0 rgba(0,0,0,0.2);}
         .evt02 .before .popupbtn a {display:block; width:400px; border-radius:10px; color:#fff; padding:15px 10px; background:#0c5dc0;margin-top:30px;}
         .evt02 .before .popupbtn a:hover {background:#000;} 
 

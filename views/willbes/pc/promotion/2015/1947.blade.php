@@ -375,7 +375,7 @@
         <div class="evtCtnsBox">
             <ul class="wb_03">
                 <li class="NSK-Black">coming soon!</li>
-                <li>인천 윌비스  21년 2차 최종합격의 주인공은?</li>
+                <li>윌비스 최종합격의 주인공은?</li>
                 <li class="NSK-Black">이제 .. 당신 차례입니다!</li>
             </ul>
         </div>

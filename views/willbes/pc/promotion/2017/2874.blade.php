@@ -13,62 +13,46 @@
             font-size:14px;
             line-height:1.4;
         }
-        .evtContent span {vertical-align:top}
+        .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position: relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         /*.evtCtnsBox .wrap a:hover {border:1px solid #000}*/
 
         /************************************************************/
   
-        .eventTop {background:#67c0c1}
+        .eventTop {background:url(https://static.willbes.net/public/images/promotion/2023/01/2874_top_bg.jpg) no-repeat center top;}
 
-        .event01 {background:#429697; padding:50px 0; color:#fff}
-        .event01 .title {font-size:50px;}
+        .event01 {background:#9701f8 url(https://static.willbes.net/public/images/promotion/2023/01/2874_01_bg.jpg) no-repeat center top;}
+        .problem {width:1120px; margin:0 auto; background:url(https://static.willbes.net/public/images/promotion/2023/01/2874_01_02.jpg)}
 
-        .event01_1 {background:#fff; width:1120px; margin:0 auto; padding:100px 0; font-size:14px}
-        .event01_1 .title { font-size:40px; color:#67c0c1; margin-bottom:50px}
-        .event01_1 span {vertical-align:top}
 
-        .event02 {background:#65bebf; position:relative; padding:50px 0 100px}
-        .evt_table{position:absolute; top:1170px; width:800px; left:50%; margin-left:-400px}
-        .evt_table table{width:100%;}
-        .evt_table table th,
-        .evt_table table td {margin:10px 0}
-        .evt_table table th div{background:#67c0c1; color:#fff; font-size:20px; font-weight:300; height:80px; line-height:80px}
-        .evt_table table td div{font-size:20px; font-weight:300; height:80px; line-height:80px} 
-        .evt_table table td{font-size:20px; color:#000; font-weight:300; text-align:left; padding:10px}   
-        .evt_table table tr:nth-child(2) td div {border-bottom:2px solid #67c0c1}     
-        .evt_table table tr:last-child td div {line-height:1.4; padding-top:15px}
+        
+        .evtCtnsBox .title {font-size:40px; font-weight:bold; margin-bottom:50px; color:#4c4c4c}
+        .evt_table{width:1120px; margin:0 auto; background:url(https://static.willbes.net/public/images/promotion/2023/01/2874_01_02.jpg); padding:50px; position: relative; color:#fff; font-size:20px}
+
+        .evt_table .before { position: absolute;top:0; left:50%; margin-left:-500px; height:100%; background:rgba(0,0,0,.7); width:1000px; border-radius:30px; z-index: 10; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+        .evt_table .before .popupbtn {margin-top:30px;}
+        .evt_table .before .popupbtn a {display:block; width:200px; border-radius:10px; color:#fff; padding:10px; background:#000; border:1px solid #fff}
+        .evt_table .before .popupbtn a:hover {background:#9701f8;}
+        .evt_table table{width:95%; border:1px solid #eee; margin:0 auto}
+        .evt_table tr {border:1px solid #eee;}
+        .evt_table th,
+        .evt_table td {padding:10px 5px; font-size:16px}
+        .evt_table th {background:#f0dbfe; color:#000; font-weight:300;}
+        .evt_table td {text-align:left}
         .evt_table input[type=text] {height:28px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; vertical-align:middle}
         .evt_table input[type=file] {height:30px; color:#494a4d; vertical-align:top; font-size:16px}
-        .evt_table td div a {vertical-align:top; line-height:1}
-        .evt_table select {font-size:20px; font-weight:300; height:80px; padding:0 10px}
+        .evt_table select {padding:5px; min-width:40%}
+        .evt_table textarea {padding:5px; border:1px solid #b8b8b8; width:100% }
         .evt_table .btns {margin-top:50px}
-        .evt_table .btns a {display:inline-block; width:260px; text-align:center; height:80px; line-height:80px; font-size:30px; color:#000; background:#f6f859}
-        .evt_table .btns a:last-child {background:#000; color:#fff; margin-left:30px;}
+        .evt_table .btns a {display:block; text-align:center; width:400px; margin:0 auto; padding:10px 20px; font-size:30px; color:#fff; background:#2d2623; border-radius:10px}
+        .evt_table .btns a:hover {background:#9701f8;}
 
-        .event02 .imgSlider {position:relative; width:100%; margin:100px auto 0;}
-        .event02 .imgSlider > div {width:980px; margin:0 auto; height:228px; overflow:hidden;}
-        .event02 .imgSlider li {display:inline-block; float:left; width:180px}
-        .event02 .imgSlider p {position:absolute; top:50%; left:50%; width:38px; height:72px; margin-top:-36px; z-index:100}
-        .event02 .imgSlider p a {cursor:pointer}
-        .event02 .imgSlider p.leftBtn {margin-left:-588px}
-        .event02 .imgSlider p.rightBtn {margin-left:550px}
+        .event02 {position:relative; width:1120px; margin:0 auto; padding:100px 0}
 
-        .event02 .imgSlider .imgWrap {background:#fff; border-radius:20px; width:180px; padding:0 15px 15px}
-        .event02 .imgSlider .imgWrap .listTitle {color:#333; padding:15px 0; font-size:16px}
-        .event02 .imgSlider .imgWrap .listTitle span {color:#3b9091; vertical-align:top}
-        .event02 .imgSlider .imgWrap .listTitle a {display:inline-block; background:#333; color:#fff; font-size:14px; width:20px; line-height:20px;  border-radius:4px; float:right}
-        .event02 .imgSlider .imgWrap .imgBox {width:150px; height:165px; margin:0 auto; overflow:hidden}
+        .event02 .Paging a.on {text-decoration:none}
 
-        .event02 .imgSlider > div {width:980px; margin:0 auto; height:auto; overflow:hidden;}
-        .event02 .imgSlider .list ul {margin-right:-20px}
-        .event02 .imgSlider .list li {display:inline-block; float:left; width:180px; margin-right:20px; margin-bottom:20px;}
-
-        .event02 .Paging a {color:#fff}
-        .event02 .Paging a.on {color:#f6f859; text-decoration:none}
-
-        .event03 {background:#4ea5a6;}
+        .event03 {background:#fff0bd;}
 
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -82,107 +66,95 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox eventTop">
-        	<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_top.jpg" alt="합격축하 이벤트"/>
+        	<img src="https://static.willbes.net/public/images/promotion/2023/01/2874_top.jpg" alt="합격축하 이벤트"/>
         </div>
 
-
         <div class="evtCtnsBox event01">
-            <div class="title NSK-Black"><img src="https://static.willbes.net/public/images/promotion/2021/04/2052_title_01.jpg"/></div>
-        </div>       
-        
-        <div class="evtCtnsBox problem">
-            <div class="title NSK-Black">2차 문제복기 이벤트 참여하기</div>
-            <div>
-                <table cellspacing="0" cellpadding="0">
-                    <col />
+            <img src="https://static.willbes.net/public/images/promotion/2023/01/2874_01_01.jpg"/>  
+            <div class="evt_table">
+                <div class="before">
+                    <div>로그인해 주세요!<br>
+                    문제복기 이벤트 참여는 로그인을 해주셔야 합니다.</div>
+                    <div class="popupbtn"><a href="https://www.willbes.net/member/login/?rtnUrl=%2F%2Fwww.willbes.net%2F">로그인</a></div>
+                </div>
+                <div class="title NSK-Black">2차 문제복기 이벤트 참여하기</div>
+                <table>
+                    <col width="18%"/>
+                    <col width="25%"/>
+                    <col width="15%"/>
+                    <col width=""/>
                     <tr>
                         <th>회원정보</th>
                         <td>홍길동(아이디***)</td>
                         <th>응시정보</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>
+                            <select id="" name="" title="응시과목">
+                                <option value="">응시과목</option>
+                                <option value="">교육학</option>
+                                <option value="">유아</option>
+                                <option value="">전공국어</option>
+                            </select>
+                            <select id="" name="" title="응시지역">
+                                <option value="">응시지역</option>
+                                <option value="">서울</option>
+                                <option value="">부산</option>
+                                <option value="">경기</option>
+                            </select>
+                        </td>
                     </tr>
                 </table>
+
+                <table class="mt20">
+                    <col width="18%"/>
+                    <col width=""/>
+                    <tr>
+                        <th>2차 문제복기<br>(수업실연)</th>
+                        <td>
+                            <textarea name="" id="" cols="30" rows="4" placeholder="수업실연 내용 및 전체적인 면접 진행 순서를 자유롭게 작성해 주세요!"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>2차 문제복기<br>(면접)</th>
+                        <td>
+                            <textarea name="" id="" cols="30" rows="4" placeholder="면접 시 질문사항을  자유롭게 작성해 주세요!"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>2차 문제복기<br>(과정안 문제)</th>
+                        <td>
+                            <textarea name="" id="" cols="30" rows="4" placeholder="과정안 문제를 자유롭게 작성해 주세요!"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>2차 문제복기<br>(답 안)</th>
+                        <td>
+                            <textarea name="" id="" cols="30" rows="4" placeholder="본인이 작성한 답안을 작성해 주세요!"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>2차 문제복기<br>(점수복기)</th>
+                        <td>
+                            <textarea name="" id="" cols="30" rows="4" placeholder="본인이 취득한 점수를 작성해 주세요!"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>2차 시험 준비시<br> 가장 중요한 것은?<br>(후배들에게 당부사항)</th>
+                        <td>
+                            <textarea name="" id="" cols="30" rows="4" placeholder="자유롭게 작성해 주세요!"></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <div class="btns"><a href="#none">문제복기 자료 제출하기</a></div>
             </div>
+            <img src="https://static.willbes.net/public/images/promotion/2023/01/2874_01_03.jpg"/> 
         </div> 
 
-        <div class="evtCtnsBox event01_1" id="reviewListWrap">
+        <div class="evtCtnsBox event02" id="reviewListWrap">
         </div>
-
-        <div class="evtCtnsBox event01">
-            <div class="title NSK-Black"><img src="https://static.willbes.net/public/images/promotion/2021/04/2052_title_02.jpg"/></div>
-        </div>
-        
-        <div class="evtCtnsBox event02" id="event02">
-            
-            <!--<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_01.jpg" alt="이벤트 둘"/>-
-            
-            <div class="evt_table">
-                <form name="regi_form_register" id="regi_form_register">
-                    {!! csrf_field() !!}
-                    {!! method_field('POST') !!}
-                    <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
-                    <input type="hidden" name="register_type" value="promotion"/>
-                    <input type="hidden" name="register_overlap_chk" value="Y"> {{-- 중복 신청 가능여부 --}}
-                    <input type="hidden" name="file_chk" value="Y"/>
-                    <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
-                    <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] }}"/>
-                    <input type="hidden" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}" readonly="readonly"/>
-                    <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
-
-                    <table>
-                        <col width="35%" />
-                        <col  />
-                        <tbody>
-                            <tr>
-                                <th><div>과목</div></th>
-                                <td>
-                                    <select name="register_data1" id="register_data1" class="seleDiv" style="width:100%;">
-                                        <option value="">선택</option>
-                                        @foreach($arr_base['subject'] as $key => $val)
-                                            @if($key <= $arr_base['max_subject_idx'] && $val != '교육학')
-                                                <option value="{{ $val }}">{{ $val }}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><div>이름</div></th>
-                                <td><div>{{ sess_data('mem_name') }}</div></td>
-                            </tr>
-                            <tr>
-                                <th><div>합격 인증 파일 첨부</div></th>
-                                <td colspan="3">
-                                    <div>
-                                        <input type="file" id="attach_file" name="attach_file" onChange="chkUploadFile(this)" style="width:60%"/>&nbsp;&nbsp;
-                                        <a href="#none" onclick="del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" alt="삭제"></a>
-
-                                        <p class="tx12 mt10">*파일의 크기는 2MB까지 업로드 가능, 이미지파일 (jpg, png등)만 가능합니다.</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="btns">
-                        <a href="#none" onclick="fn_submit();">확인</a>
-                        <a href="#none" onclick="reset_form(this);">취소</a>
-                    </div>
-                </form>
-            </div>
-            -->
-            <div id="imgSliderWrap"></div>
-        </div>        
 
         <div class="evtCtnsBox event03">
-        	<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_03.jpg" alt="합격을 진심으로 축하합니다."/>
-        </div>
-
+            <img src="https://static.willbes.net/public/images/promotion/2023/01/2874_02.jpg"/>
+        </div>  
        
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">
@@ -208,29 +180,6 @@
         $(document).ready(function() {
             fnReviewList();
             fnRegisterList();
-
-            var sliderImg = $("#sliderImg").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:5,
-                maxSlides:5,
-                slideWidth: 180,
-                slideMargin:20,
-                autoHover: true,
-                moveSlides:1
-            });
-
-            $("#imgBannerLeft").click(function (){
-                sliderImg.goToPrevSlide();
-            });
-
-            $("#imgBannerRight").click(function (){
-                sliderImg.goToNextSlide();
-            });
         });
 
         function fnReviewList(page,cate_code,subject_idx,keyword){

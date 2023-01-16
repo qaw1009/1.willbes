@@ -332,12 +332,12 @@
         <div class="evtCtnsBox wb_01">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1947_01.jpg" alt="인천윌비스 공무원 합격자" /> 
             <ul class="tabs NSK-Black">
-                <li><a href="#tab01">경찰공무원</a></li>
                 <li><a href="#tab02">소방공무원</a></li>
+                <li><a href="#tab01">경찰공무원</a></li>                
                 <li><a href="#tab03">9급공무원</a></li>
             </ul> 
-            <div id="tab01"><img src="https://static.willbes.net/public/images/promotion/2020/11/1947_01_01.jpg" alt="찐합격수기 경찰" /></div>
             <div id="tab02"><img src="https://static.willbes.net/public/images/promotion/2020/11/1947_01_02.jpg" alt="찐합격수기 소방" /></div>
+            <div id="tab01"><img src="https://static.willbes.net/public/images/promotion/2020/11/1947_01_01.jpg" alt="찐합격수기 경찰" /></div>            
             <div id="tab03"><img src="https://static.willbes.net/public/images/promotion/2020/11/1947_01_03.jpg" alt="찐합격수기 9급" /></div>
             <div class="golec"><a href="https://willbesedu.willbes.net/pass/support/review/index" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/11/1947_01_txt.png" alt="찐합격수기 더보기" /></a></div>
         </div> 

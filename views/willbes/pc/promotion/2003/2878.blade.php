@@ -93,11 +93,11 @@
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" style="position: absolute;left: 17.58%;top: 80.05%;width: 64.11%;height: 12.08%;z-index: 2;"></a>                
             </div>
 		</div>
-
+        {{--
         <div class="evtCtnsBox evt07s" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2023/01/2878_07s.jpg" alt="온라인 관리반" />
 		</div>
-
+        
         <div class="evtCtnsBox evt08" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2878_08.jpg" alt="4~5순환 온라인 관리반" />
@@ -105,7 +105,7 @@
                 <a href="https://pass.willbes.net/pass/promotion/index/cate/3059/code/2119" target="_blank" style="position: absolute;left: 17.58%;top: 81.95%;width: 64.11%;height: 11.08%;z-index: 2;"></a>
             </div>
 		</div>
-
+        --}}
         <div class="evtCtnsBox evt09" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2878_09.jpg" alt="체험팩 설문조사 참여하기" />

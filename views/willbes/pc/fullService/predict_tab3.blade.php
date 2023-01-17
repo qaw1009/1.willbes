@@ -2,22 +2,22 @@
     <span class="bold">{{sess_data('mem_name')}}님의 응시 정보</span>
 </div>
 <table cellspacing="0" cellpadding="0" class="table_type">
-    <col width="153" span="4" />
+    <col span="4" width="25%"/>
     <tr>
-        <td dir="ltr" width="153" class="bold gray">응시번호</td>
-        <td dir="ltr" width="153">{{$regi_data['TakeNumber']}}</td>
-        <td dir="ltr" width="153" class="bold gray">성명</td>
-        <td dir="ltr" width="153">{{$regi_data['MemName']}}</td>
+        <th>응시번호</th>
+        <td>{{$regi_data['TakeNumber']}}</td>
+        <th>성명</th>
+        <td>{{$regi_data['MemName']}}</td>
     </tr>
     <tr>
-        <td dir="ltr" width="153" class="bold gray">응시직렬</td>
-        <td dir="ltr" width="153">{{$regi_data['TakeMockPartName']}}</td>
-        <td dir="ltr" width="153" class="bold gray">경쟁률</td>
-        <td dir="ltr" width="153">{{$regi_data['CompetitionRateNow']}}</td>
+        <th>응시직렬</th>
+        <td>{{$regi_data['TakeMockPartName']}}</td>
+        <th>경쟁률</th>
+        <td>{{$regi_data['CompetitionRateNow']}}</td>
     </tr>
     <tr>
-        <td colspan="2" dir="ltr" width="306" class="bold gray">선발인원 / 출원인원</td>
-        <td colspan="2" dir="ltr" width="306">{{number_format($regi_data['PickNum'])}}명 / {{number_format($regi_data['TakeNum'])}}명</td>
+        <th>선발인원 / 출원인원</th>
+        <td colspan="3" >{{number_format($regi_data['PickNum'])}}명 / {{number_format($regi_data['TakeNum'])}}명</td>
     </tr>
 </table>
 <div class="stage">
@@ -25,36 +25,42 @@
 </div>
 <table cellspacing="0" cellpadding="0" class="table_type">
     <col width="88" span="7" />
-    <tr class="bold gray">
-        <td dir="ltr" width="88">과목</td>
-        <td dir="ltr" width="88">내 점수</td>
-        <td dir="ltr" width="88">전체 평균</td>
-        <td dir="ltr" width="88">상위 10% 컷</td>
-        <td dir="ltr" width="88">상위 20% 컷</td>
-        <td dir="ltr" width="88">나의 상위 %</td>
-        <td dir="ltr" width="88">과락 여부</td>
-    </tr>
+    <thead>
+        <tr>
+            <th>과목</th>
+            <th>내 점수</th>
+            <th>전체 평균</th>
+            <th>상위 10% 컷</th>
+            <th>상위 20% 컷</th>
+            <th>나의 상위 %</th>
+            <th>과락 여부</th>
+        </tr>
+    </thead>
     @if(empty($arr_statsForGradesData['list']) === false)
         @foreach($arr_statsForGradesData['list'] as $row)
+        <tbody>
             <tr>
-                <td dir="ltr" width="88" class="bold blue">{{$row['SubjectName']}}</td>
-                <td dir="ltr" width="88">{{$row['MyOrgPoint']}}점</td>
-                <td dir="ltr" width="88">{{$row['AvgOrgPoint']}}점</td>
-                <td dir="ltr" width="88">{{$row['Top10AvgOrgPoint']}}점</td>
-                <td dir="ltr" width="88">{{$row['Top20AvgOrgPoint']}}점</td>
-                <td dir="ltr" width="88">{{($row['AvgMyRank'])}}%</td>
-                <td dir="ltr" width="88" class="{{($row['MyOrgPoint'] <= 40 ? 'wrong' : 'pass')}}">{{($row['MyOrgPoint'] <= 40 ? '과락' : '')}}</td>
+                <th>{{$row['SubjectName']}}</th>
+                <td>{{$row['MyOrgPoint']}}점</td>
+                <td>{{$row['AvgOrgPoint']}}점</td>
+                <td>{{$row['Top10AvgOrgPoint']}}점</td>
+                <td>{{$row['Top20AvgOrgPoint']}}점</td>
+                <td>{{($row['AvgMyRank'])}}%</td>
+                <td class="{{($row['MyOrgPoint'] <= 40 ? 'wrong' : 'pass')}}">{{($row['MyOrgPoint'] <= 40 ? '과락' : '')}}</td>
             </tr>
+        </tbody>
         @endforeach
-        <tr class="bold">
-            <td dir="ltr" width="88" class="gray">합계 평균</td>
-            <td dir="ltr" width="88" class="avg">{{$arr_statsForGradesData['stats']['TotalMyOrgPoint']}}점</td>
-            <td dir="ltr" width="88" class="avg">{{$arr_statsForGradesData['stats']['TotalAvgOrgPoint']}}점</td>
-            <td dir="ltr" width="88" class="avg">{{$arr_statsForGradesData['stats']['TotalTop10AvgOrgPoint']}}점</td>
-            <td dir="ltr" width="88" class="avg">{{$arr_statsForGradesData['stats']['TotalTop20AvgOrgPoint']}}점</td>
-            <td dir="ltr" width="88" class="avg">{{$arr_statsForGradesData['stats']['TotalAvgMyRank']}}%</td>
-            <td dir="ltr" width="88" class="avg {{($arr_statsForGradesData['stats']['TotalMyOrgPoint'] <= 40 ? 'wrong' : 'pass')}}">{{($arr_statsForGradesData['stats']['TotalMyOrgPoint'] <= 40 ? '과락' : '')}}</td>
-        </tr>
+        <tfoot>
+            <tr>
+                <th>합계 평균</th>
+                <td class="avg">{{$arr_statsForGradesData['stats']['TotalMyOrgPoint']}}점</td>
+                <td class="avg">{{$arr_statsForGradesData['stats']['TotalAvgOrgPoint']}}점</td>
+                <td class="avg">{{$arr_statsForGradesData['stats']['TotalTop10AvgOrgPoint']}}점</td>
+                <td class="avg">{{$arr_statsForGradesData['stats']['TotalTop20AvgOrgPoint']}}점</td>
+                <td class="avg">{{$arr_statsForGradesData['stats']['TotalAvgMyRank']}}%</td>
+                <td class="avg {{($arr_statsForGradesData['stats']['TotalMyOrgPoint'] <= 40 ? 'wrong' : 'pass')}}">{{($arr_statsForGradesData['stats']['TotalMyOrgPoint'] <= 40 ? '과락' : '')}}</td>
+            </tr>
+        </tfoot>
     @endif
 </table>
 
@@ -75,25 +81,28 @@
 
 @foreach($arr_subjectForPoints as $key => $val)
     <div id="sub1_tab_{{$key}}">
-        <div class="bold chart graph_area" id="chart_div1_{{$key}}" style="height: 350px;"></div>
+        <div class="bold chart graph_area" id="chart_div1_{{$key}}" style="height: 350px;">
+            <span class="titleY">이용자수</span>
+            <span class="titleX">점수</span>
+        </div>
 
         <table cellspacing="0" cellpadding="0" class="table_type">
             <col width="88" span="4" />
             <tr class="bold gray">
-                <td rowspan="2" dir="ltr" width="88">원점수<br>(이상~미만)</td>
-                <td rowspan="2" dir="ltr" width="88">구간비율</td>
-                <td rowspan="2" dir="ltr" width="88">누적인원</td>
-                <td rowspan="2" dir="ltr" width="88">누적비율</td>
+                <td rowspan="2">원점수<br>(이상~미만)</td>
+                <td rowspan="2">구간비율</td>
+                <td rowspan="2">누적인원</td>
+                <td rowspan="2">누적비율</td>
             </tr>
             <tr> </tr>
             @if (empty($arr_statsForChartData['total']) === false)
                 @if (array_key_exists($key, $arr_statsForChartData['total']) === true)
                     @foreach($arr_statsForChartData['total'][$key] as $g_k => $row)
                         <tr>
-                            <td dir="ltr" width="88" class="bold blue">{{$row['title']}}</td>
-                            <td dir="ltr" width="88">{{$row['avgSection']}}%</td>
-                            <td dir="ltr" width="88">{{$row['cntCumsum']}}</td>
-                            <td dir="ltr" width="88">{{$row['avgCumsum']}}%</td>
+                            <td class="bold blue">{{$row['title']}}</td>
+                            <td>{{$row['avgSection']}}%</td>
+                            <td>{{$row['cntCumsum']}}</td>
+                            <td>{{$row['avgCumsum']}}%</td>
                         </tr>
                     @endforeach
                 @endif
@@ -108,23 +117,23 @@
 <table cellspacing="0" cellpadding="0" class="table_type">
     <col width="88" span="6" />
     <tr class="bold">
-        <td dir="ltr" width="88">등수</td>
+        <td>등수</td>
         @foreach($arr_subjectForStats as $key => $val)
-            <td dir="ltr" width="88">{{$val}}</td>
+            <td>{{$val}}</td>
         @endforeach
-        <td dir="ltr" width="88">상위(%)</td>
+        <td>상위(%)</td>
     </tr>
 
     @if(empty($arr_statsForTotalAvgData) === false)
         @foreach($arr_statsForTotalAvgData as $row)
             @php $arr_orgPoint = json_decode($row['jsonOrgPoint'],true); @endphp
             <tr class="{{($regi_data['PrIdx'] == $row['PrIdx'] ? 'current' : '')}}">
-                <td dir="ltr" width="88" class="bold">{{$row['UserRank']}}</td>
-                <td dir="ltr" width="88">{{$row['avgOrgPoint']}}점</td>
+                <td class="bold">{{$row['UserRank']}}</td>
+                <td>{{$row['avgOrgPoint']}}점</td>
                 @foreach($arr_orgPoint as $p_key => $p_row)
-                    <td dir="ltr" width="88">{{$p_row['OrgPoint']}}점</td>
+                    <td>{{$p_row['OrgPoint']}}점</td>
                 @endforeach
-                <td dir="ltr" width="88">{{$row['UserAvgRank']}}</td>
+                <td>{{$row['UserAvgRank']}}</td>
             </tr>
         @endforeach
     @endif
@@ -149,20 +158,20 @@
         <table cellspacing="0" cellpadding="0" class="table_type">
             <col width="88" span="4" />
             <tr class="bold gray">
-                <td rowspan="2" dir="ltr" width="88">원점수<br>(이상~미만)</td>
-                <td rowspan="2" dir="ltr" width="88">구간비율</td>
-                <td rowspan="2" dir="ltr" width="88">누적인원</td>
-                <td rowspan="2" dir="ltr" width="88">누적비율</td>
+                <td rowspan="2">원점수<br>(이상~미만)</td>
+                <td rowspan="2">구간비율</td>
+                <td rowspan="2">누적인원</td>
+                <td rowspan="2">누적비율</td>
             </tr>
             <tr> </tr>
             @if (empty($arr_statsForChartData['takemockpart']) === false)
                 @if (array_key_exists($key, $arr_statsForChartData['takemockpart']) === true)
                     @foreach($arr_statsForChartData['takemockpart'][$key] as $g_k => $row)
                         <tr>
-                            <td dir="ltr" width="88" class="bold blue">{{$row['title']}}</td>
-                            <td dir="ltr" width="88">{{$row['avgSection']}}%</td>
-                            <td dir="ltr" width="88">{{$row['cntCumsum']}}</td>
-                            <td dir="ltr" width="88">{{$row['avgCumsum']}}%</td>
+                            <td class="bold blue">{{$row['title']}}</td>
+                            <td>{{$row['avgSection']}}%</td>
+                            <td>{{$row['cntCumsum']}}</td>
+                            <td>{{$row['avgCumsum']}}%</td>
                         </tr>
                     @endforeach
                 @endif
@@ -177,22 +186,22 @@
 <table cellspacing="0" cellpadding="0" class="table_type">
     <col width="88" span="6" />
     <tr class="bold">
-        <td dir="ltr" width="88">등수</td>
+        <td>등수</td>
         @foreach($arr_subjectForStats as $key => $val)
-            <td dir="ltr" width="88">{{$val}}</td>
+            <td>{{$val}}</td>
         @endforeach
-        <td dir="ltr" width="88">상위(%)</td>
+        <td>상위(%)</td>
     </tr>
     @if(empty($arr_statsForTakeMockPartAvgData) === false)
         @foreach($arr_statsForTakeMockPartAvgData as $row)
             @php $arr_orgPoint = json_decode($row['jsonOrgPoint'],true); @endphp
             <tr class="{{($regi_data['PrIdx'] == $row['PrIdx'] ? 'current' : '')}}">
-                <td dir="ltr" width="88" class="bold">{{$row['UserRank']}}</td>
-                <td dir="ltr" width="88">{{$row['avgOrgPoint']}}점</td>
+                <td class="bold">{{$row['UserRank']}}</td>
+                <td>{{$row['avgOrgPoint']}}점</td>
                 @foreach($arr_orgPoint as $p_key => $p_row)
-                    <td dir="ltr" width="88">{{$p_row['OrgPoint']}}점</td>
+                    <td>{{$p_row['OrgPoint']}}점</td>
                 @endforeach
-                <td dir="ltr" width="88">{{$row['UserAvgRank']}}</td>
+                <td>{{$row['UserAvgRank']}}</td>
             </tr>
         @endforeach
     @endif

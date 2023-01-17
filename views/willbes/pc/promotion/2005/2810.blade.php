@@ -63,7 +63,8 @@
 
      /*2번째 탭*/
     .step {font-size:17px;line-height:2;padding-bottom:50px;}
-    .stage {font-size:17px;line-height:1.5;text-align:left;width:720px;margin:0 auto;padding-bottom:5px;}
+    .stage {font-size:17px;line-height:1.5;text-align:left;width:720px;margin:40px auto 0;padding-bottom:5px;}
+    .stage:first-child {margin-top:0}
     .phase {display:inline-block;background:#000;color:#fff;border-radius:10px;width:75px;text-align:center;}
     .bold {font-weight:bold;}
     .gray {background:#F2F2F2}
@@ -75,11 +76,16 @@
 
     .table_type {width:720px; margin:1em auto; border-top:#464646 1px solid; border-bottom:#464646 1px solid; border-left:#cdcdcd 1px solid}
     .table_type caption {display:none}	
+    .table_type th {font-weight:bold;}
     .table_type th,
-    .table_type td {letter-spacing:normal; text-align:center; padding:10px 8px}
-    .table_type th {color:#464646; background:#f3f3f3; font-weight:400; border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid}
+    .table_type td {letter-spacing:normal; text-align:center; padding:10px 8px}    
+
+    .table_type thead th {color:#464646; background:#f3f3f3; border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; }
     .table_type th.th2 {background:#fffcd1}
-    .table_type td {border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; vertical-align:middle; color:#464646; text-align:left;}
+    .table_type td {border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; vertical-align:middle; color:#464646;}
+    .table_type tbody th {background:#DAE3F3;}
+    .table_type tfoot th {color:#464646; background:#f3f3f3;}
+    .table_type tfoot td {font-weight:bold}
     .table_type td input {vertical-align:middle}
     .table_type td span.blueB {font-weight:bold; color:#33F}
     .table_type td span.redB {font-weight:bold; color:#C00}
@@ -108,9 +114,11 @@
     .markSbtn1 a {display:inline-block; padding:10px;background:#2260ff; color:#fff;margin:0 5px}
     .markSbtn1 a.btn2 {background:#bf1212; border:1px solid #bf1212}
     .markSbtn1 a.btn3 {background:#fff; border:1px solid #333; color:#333}
-    .markSbtn2 {display:inline;padding:10px;background:#2260ff; color:#fff;margin:0 5px}
-    .graph_area {font-size:17px;line-height:1.5;text-align:left;width:720px;margin:0 auto;padding-bottom:5px;text-align:center;}
+    .markSbtn2 {display:block;padding:10px;background:#2260ff; color:#fff;margin:0 5px}
+    .graph_area {font-size:17px;line-height:1.5;text-align:left;width:720px;margin:0 auto;padding-bottom:5px;text-align:center; position: relative;}
     .graph_area::after {content:'';display:block;clear:both;}  
+    .graph_area .titleY {font-size:12px; background:#000; color:#fff; padding:3px 10px; position: absolute;top:0;left:0;z-index: 10; border-radius:20px; font-weight:normal}
+    .graph_area .titleX {font-size:12px; background:#000; color:#fff; padding:3px 10px; position: absolute;bottom:50px;right:50px;z-index: 10; border-radius:20px; font-weight:normal}
     .recheck_area {margin:50px;}
     .markSbtn3_combine {display:flex;margin-left:-50px;padding-top:50px;}
     .subject {width:33.3333%}
@@ -141,7 +149,7 @@
     .markTab li:last-child a {margin-right:0}
     .markTab:after {content:""; display:block; clear:both}
 
-    .markTab2 {width:720px;margin:0 auto;margin-top:10px; /*border-bottom:1px solid #333*/}
+    .markTab2 {width:720px;margin:10px auto;}
     .markTab2 li {display:inline; float:left; width:25%}
     .markTab2 a {display:block; padding:1em 0; background:#999; color:#fff; margin-right:1px; font-weight:bold; letter-spacing:2px; text-align:center}
     .markTab2 a.active {background:#333}
@@ -208,16 +216,18 @@
 
                         <img src="https://static.willbes.net/public/images/promotion/2022/09/2771_02.png" alt="이벤트 둘">
                         <div class="point">                   
-                            <h5>Q. 내가 생각하는 예쌍 합격컷은?</h5>
+                            <h5>Q. 내가 생각하는 예상 합격컷은?</h5>
                             <div>
                                 예상 합격 점수 (평균값) <input class="score" type="text" maxlength="3" name="register_data1" oninput="maxLengthCheck(this);" value="{{ (empty($register_count[0]['EtcValue']) === false ? $register_count[0]['EtcValue'] : '') }}"> 점
                                 <a href="javascript:void(0);" onclick="fn_submit(); return false;">합격 점수 예상하기 ></a>
                             </div>
                         </div>
+                        {{--
                         <div class="textinfo">
                             이벤트 기간 <strong>~ 7/27(수) 자정까지</strong> 당첨자 발표 <strong>9/2(금) 개별 발표</strong>
                             <p>※ 합격컷 발표 이후 정답자에 한해 추첨을 통해 상품이 지급됩니다. (지급일 : 9/7(수))</p>
                         </div>
+                        --}}
                     </form>
                 </div>
 
@@ -238,18 +248,15 @@
     </div>
 
     
-    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
-    <script src="/public/js/willbes/dist/aos.js"></script>
+
     
     <!-- googlechart -->
-    {{--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>--}}
 
     <script src="/public/vendor/Nwagon/Nwagon.js?ver={{time()}}"></script>
     <link rel="stylesheet" href="/public/vendor/Nwagon/Nwagon.css?ver={{time()}}">
 
     <script type="text/javascript">
         $(document).ready(function(){
-            AOS.init();
             /*상단 tab*/
             $('.tabs').each(function(){
                 var $active, $content, $links = $(this).find('a');
@@ -350,9 +357,17 @@
             }
         }
     </script>
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+      $(document).ready(function() {
+            AOS.init();
+        });
+    </script>
     
 <!-- End Container -->
 
-{{-- 프로모션용 스크립트 include --}}
+    {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
 @stop

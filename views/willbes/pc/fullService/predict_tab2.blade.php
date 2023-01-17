@@ -76,6 +76,7 @@
                 </ul>
             </td>
         </tr>
+        {{--
         <tr>
             <th>가산점</th>
             <td>
@@ -87,6 +88,7 @@
                 </ul>
             </td>
         </tr>
+        --}}
     </table>
 </form>
 <div class="eventPopS3">

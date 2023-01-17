@@ -56,6 +56,23 @@
             </div>
         </div>
 
+        @if(isset($data['arr_main_banner']['메인_중간띠배너']) === true)
+            <div class="gosi-bnfull-Sec02">
+                <div class="gosi-bnfull02">
+                    {!! banner_html($data['arr_main_banner']['메인_중간띠배너'], 'sliderBar02') !!}
+
+                    <p class="leftBtn" id="imgBannerLeft02"><a href="#none">이전</a></p>
+                    <p class="rightBtn" id="imgBannerRight02"><a href="none">다음</a></p>
+                </div>
+            </div>
+        @endif
+
+        <div class="Section">
+            <div class="widthAuto">
+                {!! banner_html(element('메인_미들배너', $data['arr_main_banner'])) !!}
+            </div>
+        </div>
+
         <div class="Section gosi-profWrap">
             <div class="widthAuto">
                 <div class="will-nTit NSK-Black">합격을 책임질 <span>소방 대표 교수진</span></div>

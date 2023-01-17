@@ -23,7 +23,7 @@
         /************************************************************/
         .wb_top {background:url("https://static.willbes.net/public/images/promotion/2021/02/1282_top_bg.jpg") center top no-repeat}
 
-        .wb_cts02 {padding-bottom:150px}
+        .wb_cts02 {padding-bottom:50px}
         .wb_cts02 .memo {width:1020px; margin:0 auto; background:#fff; padding:40px; text-align:left; line-height:1.5; font-size:14px; position:relative; color:#666}
         .memoTab {position:absolute; right:40px; top:40px; z-index:10}
         .memoTab li {margin-bottom:10px}
@@ -750,10 +750,11 @@
             </div>
         </div>
     </div>
-
+    {{--
     <div class="evtCtnsBox wb_cts03">
         <img src="https://static.willbes.net/public/images/promotion/2021/02/1282_03.jpg" title="합격이라는 결과로 보답"/>
-	</div>  
+	</div>
+    --}}
 </div>
 <!-- End Container -->
 

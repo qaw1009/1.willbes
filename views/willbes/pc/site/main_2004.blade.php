@@ -58,9 +58,10 @@
             </div>
         </div>
 
-        {{-- on air include --}}
+        {{-- on air include 
         @include('willbes.pc.site.main_partial.on_air')
-
+        --}}
+        
         <div class="Section Section2 pt80 pb80 mt50">
             <div class="widthAuto">
                 <div class="gosi-acadTit NSK-Thin mb50">

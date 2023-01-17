@@ -1,5 +1,16 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
+<style>
+/* */
+.gosi-bnfull-Sec02 {position:relative; height: 190px; background: url(https://static.willbes.net/public/images/promotion/main/2003/3019_1120x190_bg.jpg) repeat-x left bottom; }
+.gosi-bnfull-Sec02 .gosi-bnfull02 {width: 1120px; height: 190px; margin:0 auto; overflow: hidden;}
+.gosi-bnfull-Sec02 p {position:absolute; top:70%; left:50%; margin-top:-19px; width:22px; height:38px; cursor:pointer;
+    background: url(https://static.willbes.net/public/images/promotion/main/arrow_w22.png) no-repeat left center;  opacity:0.4; filter:alpha(opacity=40);}
+.gosi-bnfull-Sec02 p a {display:none;}
+.gosi-bnfull-Sec02 p.leftBtn {margin-left:-620px;}
+.gosi-bnfull-Sec02 p.rightBtn {margin-left:588px; background-position: right center;}
+.gosi-bnfull-Sec02 p:hover {opacity:100; filter:alpha(opacity=100);}
+</style>
     <link href="/public/css/willbes/style_2015.css?ver={{time()}}" rel="stylesheet">
     <!-- Container -->
     <div id="Container" class="Container incheon NGR c_both">

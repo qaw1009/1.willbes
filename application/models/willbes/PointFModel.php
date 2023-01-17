@@ -13,8 +13,8 @@ class PointFModel extends WB_Model
     ];
 
     public $_point_status_ccd = ['save' => '679001', 'useall' => '679002', 'expire' => '679003'];    // 포인트상태 (적립, 소진, 소멸)
-    private $_point_save_reason_ccd = ['paid' => '680001', 'join' => '680006', 'event_comment' => '680009'];   // 포인트 적립사유 (결제완료)
-    private $_point_use_reason_ccd = ['paid' => '681001'];    // 포인트 사용사유 (주문결제)
+    private $_point_save_reason_ccd = ['paid' => '680001', 'join' => '680006', 'event_comment' => '680009', 'etc' => '680999'];   // 포인트 적립사유 (결제완료)
+    private $_point_use_reason_ccd = ['paid' => '681001', 'etc' => '681999'];    // 포인트 사용사유 (주문결제)
 
     public function __construct()
     {
@@ -233,6 +233,26 @@ class PointFModel extends WB_Model
             'order_idx' => $order_idx,
             'order_prod_idx' => $order_prod_idx,
             'reason_type' => 'paid'
+        ];
+
+        return $this->addUsePoint($point_type, $use_point, $input);
+    }
+
+    /**
+     * 사용사유별 포인트 사용
+     * @param string $point_type [강좌포인트 : lecture, 교재포인트 : book]
+     * @param int $use_point [사용포인트]
+     * @param int $site_code [사이트코드]
+     * @param string $reason_type [사용사유구분(etc)]
+     * @param null|string $etc_reason [사용기타사유]
+     * @return bool|string
+     */
+    public function addReasonUsePoint($point_type, $use_point, $site_code, $reason_type, $etc_reason = null)
+    {
+        $input = [
+            'site_code' => $site_code,
+            'reason_type' => $reason_type,
+            'etc_reason' => $etc_reason,
         ];
 
         return $this->addUsePoint($point_type, $use_point, $input);

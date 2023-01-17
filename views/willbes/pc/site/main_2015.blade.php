@@ -1,7 +1,7 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
 <style>
-/* */
+ /*소방공무원 합격 스토리*/
 .gosi-bnfull-Sec02 {position:relative; height: 190px; background: url(https://static.willbes.net/public/images/promotion/main/2003/3019_1120x190_bg.jpg) repeat-x left bottom; }
 .gosi-bnfull-Sec02 .gosi-bnfull02 {width: 1120px; height: 190px; margin:0 auto; overflow: hidden;}
 .gosi-bnfull-Sec02 p {position:absolute; top:70%; left:50%; margin-top:-19px; width:22px; height:38px; cursor:pointer;
@@ -67,22 +67,25 @@
             </div>
         </div>
 
-        @if(isset($data['arr_main_banner']['메인_중간띠배너']) === true)
+        <div class="Section">
             <div class="gosi-bnfull-Sec02">
                 <div class="gosi-bnfull02">
-                    {!! banner_html($data['arr_main_banner']['메인_중간띠배너'], 'sliderBar02') !!}
-
+                    <a href="https://willbesedu.willbes.net/pass/promotion/index/cate/3126/code/2877" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/fire_sec01.jpg" alt="소방공무원 합격 스토리">
+                    </a>
                     <p class="leftBtn" id="imgBannerLeft02"><a href="#none">이전</a></p>
                     <p class="rightBtn" id="imgBannerRight02"><a href="none">다음</a></p>
                 </div>
             </div>
-        @endif
+        </div>
 
         <div class="Section">
             <div class="widthAuto">
-                {!! banner_html(element('메인_미들배너', $data['arr_main_banner'])) !!}
+                <a href="https://willbesedu.willbes.net/pass/promotion/index/cate/3126/code/2877" target="_blank"> 
+                    <img src="https://static.willbes.net/public/images/promotion/main/fire_sec02.jpg" alt="공통점은 합격">
+                </a>    
             </div>
-        </div>
+        </div>           
 
         <div class="Section gosi-profWrap">
             <div class="widthAuto">

@@ -32,14 +32,13 @@
 
 
     /*전체 탭*/
-    .evt_tab {padding-bottom:150px}
-    .tabs {width:1120px; margin:0 auto;}
-    .tabs li {display:inline; float:left; width:25%;} 
+    .evt_tab {padding-bottom:100px}
+    .tabs {width:1120px; margin:0 auto; display:flex}
+    .tabs li {width:25%;} 
     .tabs li a {display:block; color:#fff; background:#5918cc; height:50px; line-height:50px; text-align:center; margin-right:1px; font-size:20px;font-weight:bold;}
     .tabs li a:hover,
     .tabs li a.active {background:#fff; color:#000}
     .tabs li:last-child a {margin:0}
-    .tabs:after {content:""; display:block; clear:both}
 
     .tab_content {width:1120px; margin:0 auto; background:#fff; padding:100px 0}
     .tab_content:first-child {}
@@ -183,16 +182,19 @@
                 <li><a href="#tab04">합격예측</a></li>
             </ul>
             <div class="tab_content" id="tab01" data-aos="fade-up" style="background-color:transparent">
-                <div class="evt01_01">
+                <div class="evt01_00">
+                    <img src="https://static.willbes.net/public/images/promotion/2022/11/2810_00.png" alt="event1">
+                </div>
+                <div class="evt01_01 mt100">
                     <div class="wrap">
-                        <img src="https://static.willbes.net/public/images/promotion/2022/11/2810_01.png" alt="event1">
+                        <img src="https://static.willbes.net/public/images/promotion/2022/11/2810_01.png" alt="event2">
                         <a href="#url" title="UP!" style="position: absolute; left: 47.14%; top: 14.74%; width: 22.23%; height: 3.69%; z-index: 2;"></a> 
                         <a href="javascript:void(0);" title="링크복사" onclick="copyTxt();" style="position: absolute; left: 35.8%; top: 88.94%; width: 10.89%; height: 2.09%; z-index: 2;"></a>
                         <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="소문내기 다운" style="position: absolute; left: 47.14%; top: 88.89%; width: 16.61%; height: 2.09%; z-index: 2;"></a>                        
                     </div>
                 </div>
 
-                <div class="wbox" id="url">
+                <div class="wbox mt50" id="url">
                     {{--홍보url--}}
                     @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                         @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N', 'login_url'=>app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www'), 'is_public' => true)){{--기존SNS예외처리시, 로그인페이지 이동--}}

@@ -15,7 +15,7 @@
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position: relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a {border:1px solid #fff}
+        /*.evtCtnsBox .wrap a {border:1px solid #fff}*/
 
     /************************************************************/
 
@@ -225,9 +225,9 @@
                         <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="소문내기 다운" style="position: absolute; top: 91.28%; left: 47.41%; width: 16.52%; height: 2.21%;z-index: 2;"></a>
                         
                         <a href="https://section.blog.naver.com/" target="_blank" title="블로그" style="position: absolute; left: 72.59%; top: 90.58%; width: 5.18%; height: 3.08%; z-index: 2;"></a>
-                        <a href="https://www.instagram.com/" target="_blank" title="인스타" style="position: absolute; left: 72.59%; top: 90.58%; width: 5.18%; height: 3.08%; z-index: 2;"></a>
-                        <a href="https://section.cafe.naver.com/ca-fe/" target="_blank" title="네이버카페" style="position: absolute; left: 72.59%; top: 90.58%; width: 5.18%; height: 3.08%; z-index: 2;"></a>
-                        <a href="https://top.cafe.daum.net/" target="_blank" title="다음카페" style="position: absolute; left: 72.59%; top: 90.58%; width: 5.18%; height: 3.08%; z-index: 2;"></a>
+                        <a href="https://www.instagram.com/" target="_blank" title="인스타" style="position: absolute; left: 78.04%; top: 90.58%; width: 5.18%; height: 3.08%; z-index: 2;"></a>
+                        <a href="https://section.cafe.naver.com/ca-fe/" target="_blank" title="네이버카페" style="position: absolute; left: 82.77%; top: 90.58%; width: 5.18%; height: 3.08%; z-index: 2;"></a>
+                        <a href="https://top.cafe.daum.net/" target="_blank" title="다음카페" style="position: absolute; left: 87.68%; top: 90.58%; width: 5.18%; height: 3.08%; z-index: 2;"></a>
                     </div>
                 </div>
 
@@ -273,7 +273,7 @@
                 <div class="evt01_03">
                     <div class="wrap">
                         <img src="https://static.willbes.net/public/images/promotion/2022/11/2810_03.png" alt="event3">
-                        <a href="javascript:void(0);" onclick="popup();" title="인증+등록하기" style="position: absolute; left: 22.86%; top: 85.77%; width: 54.64%; height: 11.6%;  z-index: 2;"></a>
+                        <a href="javascript:void(0);" onclick="popup();" title="인증+등록하기" style="position: absolute; left: 26.16%; top: 87.9%; width: 54.46%; height: 12.68%; z-index: 2;"></a>
                     </div>
                 </div>
             </div>

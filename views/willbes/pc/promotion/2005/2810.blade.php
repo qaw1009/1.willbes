@@ -45,7 +45,23 @@
 
     .wbox {width:1100px; margin:0 auto; background:#fff; border-radius:10px} 
 
+    .textbox {color:#fff;}
+    .textbox ul {background:#10002c; font-size:24px; line-height:1.5; padding:30px; margin:0 120px; text-align:left; border-radius:6px; color:#00fffd}
+    .textbox ul li:nth-child(1) {color:#ffe400; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;vertical-align:top;}
+    @@keyframes upDown{
+        from{color:#ffe400}
+        50%{color:#fff}
+        to{color:#ffe400}
+    }
+    @@-webkit-keyframes upDown{
+        from{color:#ffe400}
+        50%{color:#fff}
+        to{color:#ffe400}
+    }
 
+    .textbox .notice {text-align:left; line-height:1.5; font-size:16px; margin:30px 180px; }
+    .textbox p {margin-bottom:10px; font-size:18px; font-weight:bold}
+    .textbox .notice li {list-style: disc; margin-left:20px; margin-bottom:10px}
 
     .evt01_02 {width:1120px; margin:0 auto; position:relative}
     .evt01_02 .point {font-size:16px; margin-top:100px; line-height:1.5}
@@ -184,6 +200,22 @@
             <div class="tab_content" id="tab01" data-aos="fade-up" style="background-color:transparent">
                 <div class="evt01_00">
                     <img src="https://static.willbes.net/public/images/promotion/2022/11/2810_00.png" alt="event1">
+                    <div class="textbox">
+                        <ul>
+                            <li class="NSK-Black">[Research I] 정답 공개 전, 합격 예측 정답 입력하면 전원 100% 커피 쿠폰 증정!</li>
+                            <li>[Research II] 정답 공개 후, 합격 예측 정답 입력하면 100명 추첨 커피 쿠폰 증정</li>
+                        </ul>
+                        <div class="notice">
+                            <p>유의사항</p>
+                            <ol>
+                                <li>최초 제출한 정답 기준으로 구분됩니다.<br>
+                                예)<br>
+                                 - 정답 공개 전 답안 제출 > 정답 공개 후 답안 수정 [Research I]에 포함<br>
+                                 - 정답 공개 후 답안 제출 및 수정 [Research Ⅱ]에 포함</li>
+                                <li>부적절한 방법으로 이벤트 참여시 관리자에 의해 삭제 또는 당첨 취소될 수 있습니다.</li>
+                            </ol>
+                        </div>
+                    </div>
                 </div>
                 <div class="evt01_01 mt100">
                     <div class="wrap">

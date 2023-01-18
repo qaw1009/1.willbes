@@ -903,6 +903,12 @@ class Pg_toss extends CI_Driver
                 $result_add_data = json_encode($result_add_data, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);    // 유니코드 변환안함, 역슬래시 추가안함
             }
 
+            // 결과메시지
+            $result_msg = element('result_msg', $params, '');
+            if (empty($result_msg) === true) {
+                $result_msg = '';
+            }
+
             $data = [
                 'OrderNo' => element('order_no', $params),
                 'PayType' => $pay_type,
@@ -915,7 +921,7 @@ class Pg_toss extends CI_Driver
                 'ApprovalNo' => element('approval_no', $params),
                 'ApprovalDatm' => element('approval_datm', $params),
                 'ResultCode' => (element('result', $params) === true ? '0000' : '9999'),
-                'ResultMsg' => element('result_msg', $params, ''),
+                'ResultMsg' => $result_msg,
                 'ResultPgTid' => element('repay_tid', $params),
                 'ResultPayPrice' => element('repay_remain_price', $params),
                 'ResultAddData' => $result_add_data,

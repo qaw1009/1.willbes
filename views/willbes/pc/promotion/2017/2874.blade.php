@@ -28,9 +28,9 @@
 
         
         .evtCtnsBox .title {font-size:40px; font-weight:bold; margin-bottom:50px; color:#4c4c4c}
-        .evt_table{width:1120px; margin:0 auto; background:url(https://static.willbes.net/public/images/promotion/2023/01/2874_01_02.jpg); padding:50px; position: relative; color:#fff; font-size:20px}
+        .evt_table{width:1120px; margin:0 auto; background:url(https://static.willbes.net/public/images/promotion/2023/01/2874_01_02.jpg); padding:50px; position: relative; font-size:20px}
 
-        .evt_table .before { position: absolute;top:0; left:50%; margin-left:-500px; height:100%; background:rgba(0,0,0,.7); width:1000px; border-radius:30px; z-index: 10; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+        .evt_table .before { position: absolute;top:0; left:50%; margin-left:-500px; height:100%; background:rgba(0,0,0,.7); width:1000px; border-radius:30px; z-index: 10; display: flex; flex-direction: column; justify-content: center; align-items: center; color:#fff}
         .evt_table .before .popupbtn {margin-top:30px;}
         .evt_table .before .popupbtn a {display:block; width:200px; border-radius:10px; color:#fff; padding:10px; background:#000; border:1px solid #fff}
         .evt_table .before .popupbtn a:hover {background:#9701f8;}

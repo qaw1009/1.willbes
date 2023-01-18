@@ -30,7 +30,9 @@ class EventLectureModel extends WB_Model
         'product_lecture' => 'lms_product_lecture',
         'event_download_log' => 'lms_event_download_log',
         'event_promotion_board' => 'lms_event_promotion_board',
-        'event_promotion_board_file' => 'lms_event_promotion_board_file'
+        'event_promotion_board_file' => 'lms_event_promotion_board_file',
+        'event_promotion_recall_question' => 'lms_event_promotion_recall_question',
+        'event_promotion_recall_member' => 'lms_event_promotion_recall_member'
     ];
 
     public $_groupCcd = [
@@ -1570,6 +1572,65 @@ class EventLectureModel extends WB_Model
             return error_result($e);
         }
         return true;
+    }
+
+    /**
+     * 문제복기 : 문제 조회
+     */
+    public function findPromotionRecallQuestion($promotion_code = null)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'PromotionCode' => $promotion_code
+                ,'IsStatus' => 'Y'
+            ]
+        ];
+
+        $column = '
+            RecallQuestionIdx,PromotionCode,TitleUseCount
+            ,Title_1,Title_2,Title_3,Title_4,Title_5,Title_6,Title_7,Title_8,Title_9,Title_10
+            ,PlaceHolder_1,PlaceHolder_2,PlaceHolder_3,PlaceHolder_4,PlaceHolder_5,PlaceHolder_6,PlaceHolder_7,PlaceHolder_8,PlaceHolder_9,PlaceHolder_10
+        ';
+
+        $from = " FROM {$this->_table['event_promotion_recall_question']} ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select ' . $column .$from .$where)->row_array();
+    }
+
+    public function listPromotionRecallMember($is_count = true, $title_use_count = 0, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        if ($is_count === true) {
+            $column = " count(*) AS numrows";
+            $order_by_offset_limit = '';
+        } else {
+            if ($is_count == 'excel') {
+                $column = 'm.MemName, m.MemId, fn_dec(m.PhoneEnc) AS Phone, a.ExamSubjectName, a.ExamAreaName, a.RegDatm';
+                for ($i = 1; $i <= $title_use_count; $i++) {
+                    $column .= ',a.RecallContent_' . $i;
+                }
+                $order_by_offset_limit = '';
+            } else {
+                $column = 'm.MemId, m.MemName,fn_dec(m.PhoneEnc) AS Phone,a.RecallIdx, a.MemIdx, a.ExamSubjectName, a.ExamAreaName, a.RegDatm';
+                for ($i = 1; $i <= $title_use_count; $i++) {
+                    $column .= ',CONCAT(LEFT(a.RecallContent_' . $i . ',20),"...") AS RecallContent_' . $i;
+                }
+                $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+                $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            }
+        }
+
+        $from = "
+            FROM {$this->_table['event_promotion_recall_member']} AS a
+            LEFT JOIN {$this->_table['member']} AS m ON a.MemIdx = m.MemIdx
+        ";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
 

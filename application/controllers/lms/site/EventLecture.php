@@ -480,6 +480,9 @@ class EventLecture extends \app\controllers\BaseController
         // 관리자명 리턴
         $wAdmin_info = $this->adminModel->findAdmin('wAdminName', ['EQ' => ['wAdminIdx' => $this->session->userdata('admin_idx')]]);
 
+        //문제복기 문제 조회
+        $data['arr_recall_question'] = $this->eventLectureModel->findPromotionRecallQuestion($data['PromotionCode']);
+
         // 등록파일 데이터 조회
         $list_event_file = $this->eventLectureModel->listEventForFile($el_idx);
         if ($this->eventLectureModel->_request_type_names[$data['RequestType']] == '프로모션') {
@@ -713,6 +716,92 @@ class EventLecture extends \app\controllers\BaseController
             'recordsFiltered' => $count,
             'data' => $list,
         ]);
+    }
+
+    /**
+     * 문제복기 회원데이터
+     * @param array $params
+     * @return CI_Output
+     */
+    public function listRecallMemberAjax($params = [])
+    {
+        $count = 0;
+        $list = [];
+        $promotion_code = $params[0];
+        $title_use_count = element('title_use_count', $this->_reqP(null), 0);
+
+        $arr_condition = [
+            'EQ' => [
+                'a.PromotionCode' => $promotion_code
+                ,'a.IsStatus' => 'Y'
+            ],
+            'ORG1' => [
+                'LKB' => [
+                    'm.MemName' => $this->_reqP('search_member_value'),
+                    'm.MemId' => $this->_reqP('search_member_value'),
+                    'm.Phone3' => $this->_reqP('search_member_value'),
+                ]
+            ]
+        ];
+        $arr_condition['BDT'] = ['a.RegDatm' => [$this->_reqP('search_member_start_date'), $this->_reqP('search_member_end_date')]];
+
+        $count = $this->eventLectureModel->listPromotionRecallMember(true, $title_use_count, $arr_condition);
+        if ($count > 0) {
+            $list = $this->eventLectureModel->listPromotionRecallMember(false, $title_use_count, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    /**
+     * 문제복기 엑셀 다운로드
+     * @param array $params
+     */
+    public function recallMemberExcel($params = [])
+    {
+        $file_name = '프로모션_문제복기_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
+        $promotion_code = $params[0];
+        $title_use_count = element('title_use_count', $this->_reqP(null), 0);
+        $headers = ['이름', '아이디', '연락처', '응시과목', '응시지역', '작성일'];
+
+        $data = $this->eventLectureModel->findPromotionRecallQuestion($promotion_code);
+        if (empty($data) === false) {
+            for ($i=1; $i<=$data['TitleUseCount']; $i++) {
+                $headers = array_merge($headers, [$data['Title_'.$i]]);
+            }
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'a.PromotionCode' => $promotion_code
+                ,'a.IsStatus' => 'Y'
+            ],
+            'ORG1' => [
+                'LKB' => [
+                    'm.MemName' => $this->_reqP('search_member_value'),
+                    'm.MemId' => $this->_reqP('search_member_value'),
+                    'm.Phone3' => $this->_reqP('search_member_value'),
+                ]
+            ]
+        ];
+        $arr_condition['BDT'] = ['a.RegDatm' => [$this->_reqP('search_member_start_date'), $this->_reqP('search_member_end_date')]];
+        $list = $this->eventLectureModel->listPromotionRecallMember('excel', $title_use_count, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
+
+        /*----  다운로드 정보 저장  ----*/
+        $download_query = $this->eventLectureModel->getLastQuery();
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
+            show_alert('로그 저장 중 오류가 발생하였습니다.','back');
+        }
+        /*----  다운로드 정보 저장  ----*/
+
+        // export excel
+        $this->load->library('excel');
+        $this->excel->exportExcel($file_name, $list, $headers);
     }
 
     /**

@@ -37,7 +37,7 @@ class SupportNotice extends BaseSupport
         $get_params = http_build_query($arr_input);
 
         $s_cate_code = element('s_cate_code',$arr_input);
-        $s_campus = (int)element('s_campus',$arr_input);
+        $s_campus = (empty((int)element('s_campus',$arr_input)) === true) ? '' : (int)element('s_campus',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
         $subject_idx = element('subject_idx',$arr_input);

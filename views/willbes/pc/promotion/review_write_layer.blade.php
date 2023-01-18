@@ -28,7 +28,7 @@
                                     <option value="{{$key}}" @if(($__cfg['SiteCode'] != config_item('app_intg_site_code') && $__cfg['SiteCode'] == $key) || (element('s_site_code', $arr_input) == $key)) selected="selected" @endif>{{$val}}</option>
                                 @endforeach
                             </select>
-                            <select id="s_cate_code" name="s_cate_code" title="구분" class="seleDiv" style="width: 250px;" required="required">
+                            <select id="s_cate_code" name="s_cate_code" title="구분" class="seleDiv" style="width: 170px;" required="required">
                                 <option value="">구분</option>
                                 @php $temp_s_cate_code = ''; @endphp
                                 @foreach($arr_base['category'] as $row)
@@ -40,7 +40,7 @@
                                 <input type="hidden" name="s_cate_code" value="{{$temp_s_cate_code}}">
                             @endif
 
-                            <select class="form-control" id="subject_idx" name="subject_idx" class="seleCampus" style="width: 250px;" title="과목명" required="required" @if($method == 'POST') disabled="disabled" @else @endif>
+                            <select class="form-control" id="subject_idx" name="subject_idx" class="seleCampus" style="width: 170px;" title="과목명" required="required" @if($method == 'POST') disabled="disabled" @else @endif>
                                 <option value="">과목</option>
                                 @if(empty($arr_base['subject']) === false)
                                     @foreach($arr_base['subject'] as $row)
@@ -48,6 +48,17 @@
                                     @endforeach
                                 @endif
                             </select>
+
+                            @if($__cfg['SiteCode'] == '2017')
+                                <select class="form-control" id="area_ccd" name="area_ccd" required="required" class="seleCampus" title="응시지역">
+                                    <option value="">응시지역</option>
+                                    @if(empty($arr_base['area']) === false)
+                                        @foreach($arr_base['area'] as $key => $val)
+                                            <option value="{{$key}}" @if((empty($data['AreaCcd']) === false) && $data['AreaCcd'] == $key)selected="selected"@endif>{{$val}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            @endif
                         </td>
                     </tr>
                     <tr class="d_none">

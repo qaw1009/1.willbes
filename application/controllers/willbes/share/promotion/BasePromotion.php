@@ -7,6 +7,9 @@ class BasePromotion extends \app\controllers\FrontController
     protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF',
         '_lms/sys/code', 'dDayF', 'product/lectureF', 'eventsurvey/survey', '_lms/product/base/subject', 'memberF', 'professorHotClipF', 'promotionBoardF', 'order/orderListF');
     protected $helpers = array('download');
+    protected $auth_controller = false;
+    protected $auth_methods = array('storePromotionRecall');
+
     protected $_arr_paging_limit = [10,15];
     protected $_paging_count = 10;
     protected $_paging_count_m = 5;
@@ -189,6 +192,11 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 이벤트 추가신청정보 조회
         $arr_base['add_apply_data'] = $this->eventFModel->listEventPromotionForAddApply($data['ElIdx']);
+
+        // 문제복기 데이터 조회
+        if(empty($arr_promotion_params['exam_recall_type']) === false && $arr_promotion_params['exam_recall_type'] == 'Y') {
+            $arr_base['recall_data'] = $this->eventFModel->listEventPromotionForRecall($data['PromotionCode'], $this->session->userdata('mem_idx'));
+        }
 
         $arr_base['add_apply_member_login_count'] = 0;
         $register_count = '';
@@ -973,6 +981,52 @@ class BasePromotion extends \app\controllers\FrontController
         $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
+    /**
+     * 프로모션 신청 여부 체크
+     * @return mixed
+     */
+    public function checkEventRegisterMember()
+    {
+        $el_idx = $this->_req('el_idx');
+
+        if(empty($el_idx)) {
+            return $this->json_error('이벤트 정보가 없습니다.');
+        }
+
+        // *** 프로모션 신청여부 확인 ***
+        if ($this->eventFModel->getMemberForRegisterCount($el_idx, ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx')]]) == 0) {
+            return $this->json_error('이벤트를 신청한뒤 이용 가능한 서비스입니다.');
+        }
+        return $this->json_result(true);
+    }
+
+    /**
+     * 문제복기 등록
+     */
+    public function storePromotionRecall()
+    {
+        $rules = [
+            ['field' => 'promotion_code', 'label' => '프로모션코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'recall_question_id', 'label' => '문제복기식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'recall_params_cnt', 'label' => '항목수', 'rules' => 'trim|required|integer'],
+            ['field' => 'exam_subject_name', 'label' => '응시과목', 'rules' => 'trim|required'],
+            ['field' => 'exam_area_name', 'label' => '응시지역', 'rules' => 'trim|required']
+        ];
+
+        for($i=1; $i<=$this->_reqP('recall_params_cnt'); $i++) {
+            $rules = array_merge($rules, [
+                ['field' => 'recall_content_'.$i, 'label' => '자료', 'rules' => 'trim|required']
+            ]);
+        }
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventFModel->addPromotionRecall($this->_reqP(null, false));
+        $this->json_result($result, '제출되었습니다.', $result);
+    }
+
 
     /**
      * 합격예측 데이터
@@ -1005,25 +1059,6 @@ class BasePromotion extends \app\controllers\FrontController
             return $this->json_error($result["ret_msg"]);
         }
         return $this->json_result($result['ret_cd'] , $result, $result);
-    }
-
-    /**
-     * 프로모션 신청 여부 체크
-     * @return mixed
-     */
-    public function checkEventRegisterMember()
-    {
-        $el_idx = $this->_req('el_idx');
-
-        if(empty($el_idx)) {
-            return $this->json_error('이벤트 정보가 없습니다.');
-        }
-
-        // *** 프로모션 신청여부 확인 ***
-        if ($this->eventFModel->getMemberForRegisterCount($el_idx, ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx')]]) == 0) {
-            return $this->json_error('이벤트를 신청한뒤 이용 가능한 서비스입니다.');
-        }
-        return $this->json_result(true);
     }
 
     /**

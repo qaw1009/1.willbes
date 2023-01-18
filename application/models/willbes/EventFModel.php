@@ -14,6 +14,8 @@ class EventFModel extends WB_Model
         'event_promotion_live_video' => 'lms_event_promotion_live_video',
         'event_read_log' => 'lms_event_read_log',
         'event_promotion_member_recipient' => 'lms_event_promotion_member_recipient',
+        'event_promotion_recall_question' => 'lms_event_promotion_recall_question',
+        'event_promotion_recall_member' => 'lms_event_promotion_recall_member',
         'board' => 'lms_board',
         'board_r_category' => 'lms_board_r_category',
         'vw_board_2' => 'vw_board_2',
@@ -2331,6 +2333,84 @@ class EventFModel extends WB_Model
 
             if ($is_update === false) {
                 throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 복기 이벤트 데이터 조회
+     * @param $promotion_code
+     * @param $mem_idx
+     */
+    public function listEventPromotionForRecall($promotion_code, $mem_idx)
+    {
+        $column = '
+            a.RecallQuestionIdx, a.PromotionCode, a.TitleUseCount
+            ,a.Title_1, a.Title_2, a.Title_3, a.Title_4, a.Title_5, a.Title_6, a.Title_7, a.Title_8, a.Title_9, a.Title_10
+            ,a.PlaceHolder_1, a.PlaceHolder_2, a.PlaceHolder_3, a.PlaceHolder_4, a.PlaceHolder_5, a.PlaceHolder_6, a.PlaceHolder_7, a.PlaceHolder_8, a.PlaceHolder_9, a.PlaceHolder_10
+            ,b.RecallIdx, b.MemIdx, b.ExamSubjectName, b.ExamAreaName
+            ,b.RecallContent_1, b.RecallContent_2, b.RecallContent_3, b.RecallContent_4, b.RecallContent_5
+            ,b.RecallContent_6, b.RecallContent_7, b.RecallContent_8, b.RecallContent_9, b.RecallContent_10
+        ';
+
+        $from = "
+            FROM {$this->_table['event_promotion_recall_question']} AS a
+            LEFT JOIN {$this->_table['event_promotion_recall_member']} AS b ON a.PromotionCode = b.PromotionCode AND a.RecallQuestionIdx = b.RecallQuestionIdx AND b.IsStatus='Y' AND b.MemIdx=?
+        ";
+
+        $arr_condition = [
+            'EQ' => [
+                'a.PromotionCode' => $promotion_code,
+                'a.IsStatus' => 'Y'
+            ]
+        ];
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select ' . $column . $from . $where, [$mem_idx])->row_array();
+    }
+
+    /**
+     * 복기이벤트 자료 저장
+     * @param $form_data
+     * @return array|bool
+     */
+    public function addPromotionRecall($form_data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $result = $this->listEventPromotionForRecall(element('promotion_code',$form_data), $this->session->userdata('mem_idx'));
+            if (empty($result) === true) {
+                throw new \Exception('조회된 문제복기 데이터가 없습니다. 다시 시도해 주세요.');
+            }
+
+            if (empty($result['RecallIdx']) === false) {
+                throw new \Exception('등록된 자료가 있습니다.');
+            }
+
+            $input_data = [
+                'PromotionCode' => element('promotion_code',$form_data)
+                ,'RecallQuestionIdx' => element('recall_question_id',$form_data)
+                ,'MemIdx' => $this->session->userdata('mem_idx')
+                ,'ExamSubjectName' => element('exam_subject_name',$form_data)
+                ,'ExamAreaName' => element('exam_area_name',$form_data)
+            ];
+
+            for($i=1; $i<=element('recall_params_cnt',$form_data); $i++) {
+                $input_data = array_merge($input_data, [
+                    'RecallContent_'.$i => element('recall_content_'.$i,$form_data)
+                ]);
+            }
+
+            if ($this->_conn->set($input_data)->insert($this->_table['event_promotion_recall_member']) === false) {
+                throw new \Exception('자료 제출에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();

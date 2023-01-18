@@ -59,6 +59,16 @@
                                         @endforeach
                                     </select>
 
+                                    @if($__cfg['SiteCode'] == '2017')
+                                        <select class="form-control" id="area_ccd" name="area_ccd" required="required" class="seleCampus" title="응시지역">
+                                            <option value="">응시지역</option>
+                                            @if(empty($arr_base['area']) === false)
+                                                @foreach($arr_base['area'] as $key => $val)
+                                                    <option value="{{$key}}" @if((empty($data['AreaCcd']) === false) && $data['AreaCcd'] == $key)selected="selected"@endif>{{$val}}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    @endif
                                 </td>
                             </tr>
                             <tr class="d_none">

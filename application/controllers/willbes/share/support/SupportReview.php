@@ -5,7 +5,8 @@ require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
 class SupportReview extends BaseSupport
 {
-    protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'downloadF', '_lms/sys/site', '_lms/sys/code','_lms/product/base/sortMapping','_lms/product/base/subject', 'product/baseProductF');
+    protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'downloadF',
+        '_lms/sys/site', '_lms/sys/code','_lms/product/base/sortMapping','_lms/product/base/subject', 'product/baseProductF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array('create', 'store', 'delete', 'destroyFile', 'writeReviewLayer');
@@ -17,8 +18,9 @@ class SupportReview extends BaseSupport
     protected $_paging_count_m = 5;
     protected $_reg_type = 0;    //등록타입
     private $_groupCcd = [
-        'consult_ccd' => '622',   //유형 그룹 코드 = 상담유형
-        'reply_status_ccd_complete' => '621004'  //답변등록상태 (답변완료)
+        'consult_ccd' => '622'   //유형 그룹 코드 = 상담유형
+        ,'reply_status_ccd_complete' => '621004'  //답변등록상태 (답변완료)
+        ,'area_ccd' => '734'    // 지역
     ];
     private $_on_off_swich = [
         '91' => [                               // bm_idx 수강평/합격수기관리 -> 합격수기
@@ -251,6 +253,9 @@ class SupportReview extends BaseSupport
         // 카테고리 연관 과목 조회
         $arr_cate_subject = $this->_getCateSubjectParts($arr_base['category']);
 
+        //지역
+        $arr_base['area'] = $this->codeModel->getCcd($this->_groupCcd['area_ccd']);
+
         $method = 'POST';
         $data = null;
 
@@ -266,7 +271,7 @@ class SupportReview extends BaseSupport
 
             $column = '
                 BoardIdx, b.SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
-                , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName, SubjectIdx
+                , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName, SubjectIdx, AreaCcd
                 , Title, Content, ReadCnt, SettingReadCnt
                 , RegDatm, RegMemIdx, RegMemId, RegMemName
                 , ReplyContent, ReplyRegDatm, ReplyStatusCcd
@@ -314,7 +319,7 @@ class SupportReview extends BaseSupport
         $board_idx = element('board_idx',$arr_input);
         $s_site_code = element('s_site_code',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
-        $s_campus = (int)element('s_campus',$arr_input);
+        $s_campus = (empty((int)element('s_campus',$arr_input)) === true) ? '' : (int)element('s_campus',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
         $subject_idx = element('subject_idx',$arr_input);
@@ -614,6 +619,9 @@ class SupportReview extends BaseSupport
         $param_site_code = $this->_site_code == '2000' ? null : $this->_site_code;
         $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($param_site_code);
 
+        //지역
+        $arr_base['area'] = $this->codeModel->getCcd($this->_groupCcd['area_ccd']);
+
         $method = 'POST';
         $data = null;
 
@@ -629,7 +637,7 @@ class SupportReview extends BaseSupport
 
             $column = '
                 BoardIdx, b.SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
-                , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName, SubjectIdx
+                , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName, SubjectIdx, AreaCcd
                 , Title, Content, ReadCnt, SettingReadCnt
                 , RegDatm, RegMemIdx, RegMemId, RegMemName
                 , ReplyContent, ReplyRegDatm, ReplyStatusCcd
@@ -802,7 +810,7 @@ class SupportReview extends BaseSupport
         $board_idx = element('board_idx',$arr_input);
         $s_site_code = element('s_site_code',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
-        $s_campus = (int)element('s_campus',$arr_input);
+        $s_campus = (empty((int)element('s_campus',$arr_input)) === true) ? '' : (int)element('s_campus',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
         $subject_idx = element('subject_idx',$arr_input);
@@ -963,6 +971,7 @@ class SupportReview extends BaseSupport
                 'ReadCnt' => 0,
                 'SettingReadCnt' => 0,
                 'SubjectIdx' => element('subject_idx', $input),
+                'AreaCcd' => element('area_ccd', $input),
             ],
             'board_r_category' => [
                 'site_category' => element('s_cate_code', $input, $this->_cate_code)

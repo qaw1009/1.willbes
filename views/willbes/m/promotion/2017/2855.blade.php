@@ -133,14 +133,14 @@
                 <div class="profBox">
                     <img src="https://static.willbes.net/public/images/promotion/2022/12/2855_03_t15.jpg" alt="일반사회 허역팀"/>
                     <div class="btns">
-                        <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p=204062&u=1393823&q=HD", "{{config_item('starplayer_license')}}");'>설명회 보기</a>
+                        <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p=204062&u=1391656&q=HD", "{{config_item('starplayer_license')}}");'>설명회 보기</a>
                         <a href="@if($file_yn[15] == 'Y') {{ front_url($file_link[15]) }} @else {{ $file_link[15] }} @endif" alt="자료 받기">설명회 자료 받기</a>
                     </div>
                 </div>
                 <div class="profBox">
                     <img src="https://static.willbes.net/public/images/promotion/2022/12/2855_03_t16.jpg" alt="허역 일반사회"/>
                     <div class="btns">
-                        <a href="javascript:void(0);" onclick="alert('준비중입니다.'); return false;">설명회 보기</a>
+                    <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p=204062&u=1393823&q=HD", "{{config_item('starplayer_license')}}");'>설명회 보기</a>
                         <a href="@if($file_yn[16] == 'Y') {{ front_url($file_link[16]) }} @else {{ $file_link[16] }} @endif" alt="자료 받기">설명회 자료 받기</a>
                     </div>
                 </div>

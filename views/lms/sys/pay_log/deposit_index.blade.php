@@ -147,7 +147,7 @@
                     {'data' : 'PgMid'},
                     {'data' : 'PgTid'},
                     {'data' : 'RealPayPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return data === null ? '' : addComma(data);
                     }},
                     {'data' : 'DepositBankName', 'render' : function(data, type, row, meta) {
                         return data + (row.VBankCode === '' ? '' : '(' + row.VBankCode + ')');

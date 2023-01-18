@@ -915,7 +915,7 @@ class Pg_toss extends CI_Driver
                 'ApprovalNo' => element('approval_no', $params),
                 'ApprovalDatm' => element('approval_datm', $params),
                 'ResultCode' => (element('result', $params) === true ? '0000' : '9999'),
-                'ResultMsg' => element('result_msg', $params),
+                'ResultMsg' => element('result_msg', $params, ''),
                 'ResultPgTid' => element('repay_tid', $params),
                 'ResultPayPrice' => element('repay_remain_price', $params),
                 'ResultAddData' => $result_add_data,

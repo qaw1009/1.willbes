@@ -869,6 +869,24 @@ class EventLecture extends \app\controllers\BaseController
     }
 
     /**
+     * 문제복기 회원데이터 삭제
+     */
+    public function deleteExamRecallMember()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+            ,['field' => 'recall_member_idx', 'label' => '문제복기회원식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventLectureModel->deletePromotionRecallMember($this->_reqP('recall_member_idx'));
+        $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
      * 댓글등록
      */
     public function storeComment()

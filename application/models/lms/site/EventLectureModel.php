@@ -1730,6 +1730,34 @@ class EventLectureModel extends WB_Model
         return true;
     }
 
+    /**
+     * 문제복기 회원데이터 삭제
+     * @param $recall_member_idx
+     * @return array|bool
+     */
+    public function deletePromotionRecallMember($recall_member_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $input_data = [
+                'IsStatus' => 'N',
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ];
+            $this->_conn->set($input_data)->where('RecallMemberIdx', $recall_member_idx);
+
+            if($this->_conn->update($this->_table['event_promotion_recall_member'])=== false) {
+                throw new \Exception('삭제 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
 
     /**
      * 문제복기 등록/수정 데이터 셋팅

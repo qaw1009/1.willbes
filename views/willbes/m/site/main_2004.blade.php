@@ -46,6 +46,7 @@
                     @foreach($data['arr_campus_info'] as $campus_ccd => $row)
                         <li><a href="#map{{ $loop->index }}">{{$row['CampusReName']}}</a></li>
                     @endforeach
+                    <li><a href="#map{{ count($data['arr_campus_info']) + 1 }}">가산(서울)</a></li>
                 </ul>
                 <div class="mapCts">
                     @foreach($data['arr_campus_info'] as $campus_ccd => $row)
@@ -53,9 +54,14 @@
                             <div><img src="{{$row['Info'][0]['MapPath']}}" alt="{{$row['Info'][0]['CampusDispName']}}"></div>
                             @if($campus_ccd == '605001')
                                 <div class="add">
-                                    <p>[본원] {{$row['Info'][0]['Addr1']}}</p>
+                                    @if(empty($row['Info'][0]['Addr1']) === false)
+                                        <p>[9급/기술직] {{$row['Info'][0]['Addr1']}}</p>
+                                    @endif
                                     @if(empty($row['Info'][0]['Addr2']) === false)
-                                        <p>[법원/검찰] {{$row['Info'][0]['Addr2']}}</p>
+                                        <p>[소방/기술직] {{$row['Info'][0]['Addr2']}}</p>
+                                    @endif
+                                    @if(empty($row['Info'][0]['Addr3']) === false)
+                                        <p>[법원/검찰직] {{$row['Info'][0]['Addr3']}}</p>
                                     @endif
                                     <p>{{$row['Info'][0]['Tel']}}</p>
                                     <a href="{{front_url('/support/qna/create?s_campus='.$campus_ccd)}}">상담신청 ></a>
@@ -69,6 +75,17 @@
                             @endif
                         </div>
                     @endforeach
+
+                    <div id="map{{ count($data['arr_campus_info']) + 1 }}">
+                        <div><img src="https://static.willbes.net/public/images/willbes/gosi_acad/map/mapSeoulGasan.jpg"></div>
+                        <div class="add">
+                            <p>[9급/기술직] 서울 금천구 벚꽃로 298(대륭포스트타워6차) 707호</p>
+                            <p>[소방/기술직] 서울 동작구 만양로 105 한성빌딩 2층</p>
+                            <p>[법원/검찰직] 서울 동작구 노량진로 196 JH빌딩 7층</p>
+                            <p>[연락처] 1544-0330</p>
+                            <a href="#none">상담신청 ></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         @endif

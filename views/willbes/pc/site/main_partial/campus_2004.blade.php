@@ -6,9 +6,11 @@
             @foreach($data['arr_campus_info'] as $campus_ccd => $row)
                 <li>
                     <a href="#campus{{ $loop->index }}" @if($loop->first == true)class="on"@endif>{{$row['CampusReName']}}</a>
-                    @if($loop->last == false)<span class="row-line">|</span>@endif
+                    {{--@if($loop->last == false)<span class="row-line">|</span>@endif--}}
+                    <span class="row-line">|</span>
                 </li>
             @endforeach
+            <li><a href="#campus{{ count($data['arr_campus_info']) + 1 }}">가산(서울)</a></li>
         </ul>
         <div class="tabBox noticeBox_campus">
             @foreach($data['arr_campus_info'] as $campus_ccd => $row)
@@ -50,14 +52,22 @@
                                         <div class="c-tit"><span class="tx-color">{{$info_row['CampusDispName']}}</span> 학원 오시는 길</div>
                                         <div class="c-info">
                                             @if($campus_ccd == '605001')
-                                                <div class="address">
-                                                    <span class="a-tit">본원</span>
-                                                    <span>{{$info_row['Addr1']}}</span>
-                                                </div>
+                                                @if(empty($info_row['Addr1']) === false)
+                                                    <div class="address">
+                                                        <span class="a-tit">9급/기술직</span>
+                                                        <span>{{$info_row['Addr1']}}</span>
+                                                    </div>
+                                                @endif
                                                 @if(empty($info_row['Addr2']) === false)
                                                     <div class="address">
-                                                        <span class="a-tit">법원/검찰</span>
+                                                        <span class="a-tit">소방/기술직</span>
                                                         <span>{{$info_row['Addr2']}}</span>
+                                                    </div>
+                                                @endif
+                                                @if(empty($info_row['Addr3']) === false)
+                                                    <div class="address">
+                                                        <span class="a-tit">법원/검찰직</span>
+                                                        <span>{{$info_row['Addr3']}}</span>
                                                     </div>
                                                 @endif
                                             @else
@@ -76,7 +86,7 @@
                                         </div>
                                     </dt>
                                 @endforeach
-                                <dt class="p_re bd-none">
+                                <dt class="bd-none">
                                     <div class="btn NSK-Black">
                                         <a href="{{front_url('/support/qna/create?s_campus='.$campus_ccd)}}">1:1 상담신청</a>
                                     </div>
@@ -96,6 +106,41 @@
                     @endif
                 </div>
             @endforeach
+
+            <div id="campus{{ count($data['arr_campus_info']) + 1 }}" class="tabContent">
+                <div class="map_img">
+                    <img src="https://static.willbes.net/public/images/willbes/gosi_acad/map/mapSeoulGasan.jpg" alt="가산(서울)">
+                    {{--<span>가산(서울)</span>--}}
+                </div>
+                <div class="campus_info">
+                    <dl>
+                        <dt>
+                            <div class="c-tit"><span class="tx-color">학원</span> 오시는 길</div>
+                            <div class="c-info">
+                                <div class="address">
+                                    <span class="a-tit">9급/기술직</span>
+                                    <span>서울 금천구 벚꽃로 298(대륭포스트타워6차) 707호</span>
+                                </div>
+                                <div class="address">
+                                    <span class="a-tit">소방/기술직</span>
+                                    <span>서울 동작구 만양로 105 한성빌딩 2층</span>
+                                </div>
+                                <div class="address">
+                                    <span class="a-tit">법원/검찰직</span>
+                                    <span>서울 동작구 노량진로 196 JH빌딩 7층</span>
+                                </div>
+                                <div class="tel">
+                                    <span class="a-tit">연락처</span>
+                                    <span class="tx-color">1544-0330</span>
+                                </div>
+                            </div>
+                        </dt>
+                    </dl>
+                    <div class="btn NSK-Black">
+                        <a href="{{front_url('/support/qna/create')}}">1:1 상담신청</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

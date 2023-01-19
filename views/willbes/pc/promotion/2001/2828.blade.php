@@ -24,7 +24,7 @@
         .sky {position:fixed;top:200px;right:10px;z-index:100;}
         .sky a {display:block; margin-bottom:10px}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/12/2828_top_bg.jpg) no-repeat center top; height:1720px}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2023/01/2828_top_bg.jpg) no-repeat center top; height:1720px}
         .evtTop .mainImg {position:absolute; top:390px; left:50%; margin-left:-429.5px}
 
         .evt01 {background:#19586A}
@@ -143,8 +143,8 @@
 
         <div class="evtCtnsBox evt07" data-aos="fade-up" id="apply">
             <div class="wrap NSK-Black">
-                <img src="https://static.willbes.net/public/images/promotion/2022/12/2828_07.jpg" alt="100일 완성 패스" />
-                <a href="javascript:void(0);" title="신청하기" onclick="go_PassLecture(this)" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/202735" style="position: absolute; left: 28.84%; top: 74.47%; width: 31.96%; height: 14.55%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2023/01/2828_07.jpg" alt="100일 완성 패스" />
+                <a href="javascript:void(0);" title="신청하기" onclick="go_PassLecture(this)" data-url="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/204770" style="position: absolute; left: 28.84%; top: 74.47%; width: 31.96%; height: 14.55%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51424?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" title="김재규 홈" style="position: absolute; left: 68.04%; top: 84.17%; width: 12.86%; height: 5.19%; z-index: 2;"></a>                
             </div>
             <div class="check">
@@ -162,15 +162,13 @@
                 <h4 class="NSK-Black">2023 1차대비 김재규 경찰학 100일 완성 PASS 이용안내</h4>
                 <div class="infoTit NSK-Black">강좌 기본</div>
                 <ul>               
-                    <li>본 상품은 구매일로부터 23년1차 필기시험일 까지 무제한으로 수강 가능한 기간제 패스입니다.(최초 : 23년 3월 30일까지)</li>
+                    <li>본 상품은 구매일로부터 1년간 무제한으로 수강 가능한 기간제 패스입니다.</li>
                     <li>김재규 경찰학 100일완성  PASS는 결제가 완료되는 즉시 수강이 시작됩니다. (결제 완료자에 한함)</li>
                     <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
                     <li>김재규 경찰학 T-PASS 상품 구성은 다음과 같습니다.<br>                    
-                        - 김재규 경찰학 T-PASS : 김재규 교수님 경찰학 전 강좌<br>
-                        - 12월5일 : 이총기+핵서 (핵심이론반)<br>
-                        - 23년 1월 : 플러스 1000제(실전대비 객관식 집중강의)<br>
-                        - 23년 2월 : 개정법령특강<br>
-                        - 학원사정으로 커리는 지연,변경될수 있습니다.<br>
+                        - 23년 1차 대비 전 강좌<br>
+                        - 23년 2차 대비 전 강좌<br>                     
+                        - 학원사정으로 커리는 지연,변경될수 있습니다.
                     </li>
                 </ul>
 

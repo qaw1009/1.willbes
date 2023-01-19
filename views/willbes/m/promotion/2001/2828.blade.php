@@ -64,7 +64,7 @@
 <div id="Container" class="Container NSK c_both">
 
     <div class="evtCtnsBox evt_top" data-aos="fade-down">
-        <img src="https://static.willbes.net/public/images/promotion/2022/12/2828m_top.jpg" alt="경찰학 김재규" >        
+        <img src="https://static.willbes.net/public/images/promotion/2023/01/2828m_top.jpg" alt="경찰학 김재규" >        
     </div> 
 
     <div class="evtCtnsBox evt01" data-aos="fade-up">
@@ -109,9 +109,9 @@
 
     <div class="evtCtnsBox evt_07" data-aos="fade-up">
             <div class="wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2022/12/2828m_07.jpg" alt="">
+            <img src="https://static.willbes.net/public/images/promotion/2023/01/2828m_07.jpg" alt="">
         
-            <a href="javascript:void(0);" title="신청하기" data-url="https://police.willbes.net/m/periodPackage/show/cate/3001/pack/648001/prod-code/202735" onclick="go_PassLecture(this)" style="position: absolute; left: 11.53%; top: 73.9%; width: 76.81%; height: 14.32%; z-index: 2;"></a>               
+            <a href="javascript:void(0);" title="신청하기" data-url="https://police.willbes.net/m/periodPackage/show/cate/3001/pack/648001/prod-code/204770" onclick="go_PassLecture(this)" style="position: absolute; left: 11.53%; top: 74.09%; width: 76.81%; height: 14.32%; z-index: 2;"></a>               
         </div>
         <div class="check">
             <label>
@@ -130,15 +130,13 @@
             <h4 class="NSK-Black">2023 1차대비 김재규 경찰학 100일 완성 PASS 이용안내</h4>
             <div class="infoTit NSK-Black"><strong>강좌 기본</strong></div>
             <ul>               
-                <li>본 상품은 구매일로부터 23년1차 필기시험일 까지 무제한으로 수강 가능한 기간제 패스입니다.(최초 : 23년 3월 30일까지)</li>
+                <li>본 상품은 구매일로부터 1년간 무제한으로 수강 가능한 기간제 패스입니다.</li>
                 <li>김재규 경찰학 100일완성  PASS는 결제가 완료되는 즉시 수강이 시작됩니다. (결제 완료자에 한함)</li>
                 <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
                 <li>김재규 경찰학 T-PASS 상품 구성은 다음과 같습니다.<br>                    
-                    - 김재규 경찰학 T-PASS : 김재규 교수님 경찰학 전 강좌<br>
-                    - 12월5일 : 이총기+핵서 (핵심이론반)<br>
-                    - 23년 1월 : 플러스 1000제(실전대비 객관식 집중강의)<br>
-                    - 23년 2월 : 개정법령특강<br>
-                    - 학원사정으로 커리는 지연,변경될수 있습니다.<br>
+                    - 23년 1차 대비 전 강좌<br>
+                    - 23년 2차 대비 전 강좌<br> 
+                    - 학원사정으로 커리는 지연,변경될수 있습니다.
                 </li>
             </ul>
 

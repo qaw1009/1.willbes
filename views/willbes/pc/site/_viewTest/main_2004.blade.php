@@ -38,7 +38,7 @@
             </div>
         </div>--}}
 
-        <div class="Section">
+        <div class="Section mt50">
             <div class="widthAuto bnSec01">
                 <div class="will-acadTit">합격생 추천 단과 시리즈</div>
                 <ul>
@@ -58,10 +58,11 @@
             </div>
         </div>
 
-        {{-- on air include --}}
+        {{-- on air include
         @include('willbes.pc.site.main_partial.on_air')
+        --}}
 
-        <div class="Section Section2 pt80 pb80 mt50">
+        <div class="Section Section2 pt80 pb80">
             <div class="widthAuto">
                 <div class="gosi-acadTit NSK-Thin mb50">
                     여러분의 꿈과 목표를 위해,<br />
@@ -157,7 +158,7 @@
         --}}
 
         <div class="Section Section4 mb50 mt80">
-            @include('willbes.pc.site.main_partial.campus_' . $__cfg['SiteCode'])
+            @include('willbes.pc.site._viewTest.main_partial.campus_' . $__cfg['SiteCode'])
         </div>
 
         <div id="QuickMenu" class="acadMainQuickMenu">

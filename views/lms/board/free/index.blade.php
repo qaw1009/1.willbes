@@ -87,6 +87,7 @@
                     <th>운영사이트</th>
                     <th>캠퍼스</th>
                     <th>카테고리</th>
+                    <th>응시지역</th>
                     <th>제목</th>
                     <th>첨부</th>
                     <th>등록자</th>
@@ -174,6 +175,7 @@
                                 return str;
                             }
                         }},
+                    {'data' : 'AreaCcdName'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                         }},

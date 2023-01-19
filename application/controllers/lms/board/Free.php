@@ -120,6 +120,7 @@ class Free extends BaseBoard
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.RegType,
             LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName, MEM.MemName AS RegMemName, MEM.MemId AS RegMemId, LB.ReviewRegDate,
+            fn_ccd_name(LB.AreaCcd) AS AreaCcdName,
             IF(LB.RegType = 1, LB.RegMemId, MEM.MemId) AS RegMemId,
             IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName, 
             IF(LB.RegType = 1, ADMIN.wAdminName,"") AS AdmMemName
@@ -195,6 +196,9 @@ class Free extends BaseBoard
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
 
+        //응시지역
+        $arr_area = $this->codeModel->getCcd('734');
+
         // 항목 설정 (임용)
         $arr_swich = element($this->bm_idx,$this->_on_off_swich);
         if(!(empty($arr_swich) === false && in_array($site_code,$arr_swich['site_code']) === true)){
@@ -203,7 +207,7 @@ class Free extends BaseBoard
 
         if (empty($params[0]) === false) {
             $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.RegType, LB.SubjectIdx,
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LB.AreaCcd, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.RegType, LB.SubjectIdx,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
             IF(LB.RegType = 1, LB.RegMemId, MEM.MemId) AS RegMemId,
             IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName
@@ -251,6 +255,7 @@ class Free extends BaseBoard
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
             'arr_campus' => $arr_campus,
+            'arr_area' => $arr_area,
             'campus_all_ccd' => $this->codeModel->campusAllCcd,
             'method' => $method,
             'data' => $data,
@@ -328,7 +333,9 @@ class Free extends BaseBoard
 
         $column = '
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName,
+            fn_ccd_name(LB.AreaCcd) AS AreaCcdName,
+            ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
             ';
 
         $board_idx = $params[0];
@@ -442,6 +449,7 @@ class Free extends BaseBoard
                 'SiteCode' => element('site_code', $input),
                 'BmIdx' => $this->bm_idx,
                 'CampusCcd' => element('campus_ccd', $input),
+                'AreaCcd' => element('area_ccd', $input),
                 'RegType' => element('reg_type', $input),
                 'Title' => element('title', $input),
                 'IsBest' => (element('is_best', $input) == '1') ? '1' : '0',

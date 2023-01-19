@@ -63,8 +63,9 @@
                         </span>
                     </div>
 
-                    <label class="control-label col-md-1-1 d-line" for="review_reg_date">등록날짜<span class="required">*</span></label>
-                    <div class="col-md-3 form-inline ml-12-dot">
+                    <label class="control-label col-md-1-1 d-line">등록날짜<span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 ml-12-dot item form-inline">
                         <div class="input-group mb-0">
                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                             <input type="text" class="form-control datepicker" id="review_reg_date" name="review_reg_date" value="{{ $data['ReviewRegDate'] or date('Y-m-d') }}">
@@ -85,6 +86,18 @@
                                 <option value="">과목명</option>
                                 @foreach($arr_subject as $row)
                                     <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['SubjectIdx'] == $data['SubjectIdx'])) selected="selected" @endif>{{ $row['SubjectName'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-1-1" for="area_ccd">응시지역</label>
+                        <div class="col-md-3 form-inline">
+                            <select class="form-control" name="area_ccd">
+                                <option value="">응시지역</option>
+                                @foreach($arr_area as $key => $val)
+                                    <option value="{{$key}}" @if($method == 'PUT' && ($key == $data['AreaCcd'])) selected="selected" @endif>{{$val}}</option>
                                 @endforeach
                             </select>
                         </div>

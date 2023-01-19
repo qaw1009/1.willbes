@@ -54,9 +54,14 @@
                             <div><img src="{{$row['Info'][0]['MapPath']}}" alt="{{$row['Info'][0]['CampusDispName']}}"></div>
                             @if($campus_ccd == '605001')
                                 <div class="add">
-                                    <p>[본원] {{$row['Info'][0]['Addr1']}}</p>
+                                    @if(empty($row['Info'][0]['Addr1']) === false)
+                                        <p>[9급/기술직] {{$row['Info'][0]['Addr1']}}</p>
+                                    @endif
                                     @if(empty($row['Info'][0]['Addr2']) === false)
-                                        <p>[법원/검찰] {{$row['Info'][0]['Addr2']}}</p>
+                                        <p>[소방/기술직] {{$row['Info'][0]['Addr2']}}</p>
+                                    @endif
+                                    @if(empty($row['Info'][0]['Addr3']) === false)
+                                        <p>[법원/검찰직] {{$row['Info'][0]['Addr3']}}</p>
                                     @endif
                                     <p>{{$row['Info'][0]['Tel']}}</p>
                                     <a href="{{front_url('/support/qna/create?s_campus='.$campus_ccd)}}">상담신청 ></a>

@@ -52,14 +52,22 @@
                                         <div class="c-tit"><span class="tx-color">{{$info_row['CampusDispName']}}</span> 학원 오시는 길</div>
                                         <div class="c-info">
                                             @if($campus_ccd == '605001')
-                                                <div class="address">
-                                                    <span class="a-tit">본원</span>
-                                                    <span>{{$info_row['Addr1']}}</span>
-                                                </div>
+                                                @if(empty($info_row['Addr1']) === false)
+                                                    <div class="address">
+                                                        <span class="a-tit">9급/기술직</span>
+                                                        <span>{{$info_row['Addr1']}}</span>
+                                                    </div>
+                                                @endif
                                                 @if(empty($info_row['Addr2']) === false)
                                                     <div class="address">
-                                                        <span class="a-tit">법원/검찰</span>
+                                                        <span class="a-tit">소방/기술직</span>
                                                         <span>{{$info_row['Addr2']}}</span>
+                                                    </div>
+                                                @endif
+                                                @if(empty($info_row['Addr3']) === false)
+                                                    <div class="address">
+                                                        <span class="a-tit">법원/검찰직</span>
+                                                        <span>{{$info_row['Addr3']}}</span>
                                                     </div>
                                                 @endif
                                             @else

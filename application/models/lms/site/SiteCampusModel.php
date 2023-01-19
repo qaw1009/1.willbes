@@ -26,7 +26,7 @@ class SiteCampusModel extends WB_Model
      */
     public function listSiteCampusInfo($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $column = 'SC.ScInfoIdx, SC.SiteCode, SC.CampusCcd, SC.DispName, SC.Tel, SC.Addr1, SC.Addr2, SC.MapPath, SC.OrderNum, SC.IsOrigin, SC.IsUse, SC.RegDatm, SC.RegAdminIdx
+        $column = 'SC.ScInfoIdx, SC.SiteCode, SC.CampusCcd, SC.DispName, SC.Tel, SC.Addr1, SC.Addr2, SC.Addr3, SC.MapPath, SC.OrderNum, SC.IsOrigin, SC.IsUse, SC.RegDatm, SC.RegAdminIdx
             , S.SiteName, CC.CcdName as CampusCcdName, A.wAdminName as RegAdminName';
 
         $from = '
@@ -59,7 +59,7 @@ class SiteCampusModel extends WB_Model
      */
     public function findSiteCampusInfoForModify($scinfo_idx)
     {
-        $column = 'SC.ScInfoIdx, SC.SiteCode, SC.CampusCcd, SC.DispName, SC.Tel, SC.Addr1, SC.Addr2, SC.MapPath, SC.OrderNum, SC.IsOrigin, SC.IsUse, SC.RegDatm, SC.RegAdminIdx, SC.UpdDatm, SC.UpdAdminIdx';
+        $column = 'SC.ScInfoIdx, SC.SiteCode, SC.CampusCcd, SC.DispName, SC.Tel, SC.Addr1, SC.Addr2, SC.Addr3, SC.MapPath, SC.OrderNum, SC.IsOrigin, SC.IsUse, SC.RegDatm, SC.RegAdminIdx, SC.UpdDatm, SC.UpdAdminIdx';
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = SC.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $column .= ' , if(SC.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = SC.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName';
 
@@ -116,6 +116,7 @@ class SiteCampusModel extends WB_Model
                 'Tel' => element('tel', $input),
                 'Addr1' => element('addr1', $input),
                 'Addr2' => element('addr2', $input),
+                'Addr3' => element('addr3', $input),
                 'MapPath' => $map_path,
                 'OrderNum' => get_var(element('order_num', $input), $this->getSiteCampusInfoOrderNum($site_code)),
                 'IsOrigin' => element('is_origin', $input, 'N'),
@@ -178,6 +179,7 @@ class SiteCampusModel extends WB_Model
                 'Tel' => element('tel', $input),
                 'Addr1' => element('addr1', $input),
                 'Addr2' => element('addr2', $input),
+                'Addr3' => element('addr3', $input),
                 'OrderNum' => get_var(element('order_num', $input), $this->getSiteCampusInfoOrderNum($row['SiteCode'])),
                 'IsOrigin' => element('is_origin', $input, 'N'),
                 'IsUse' => element('is_use', $input, 'Y'),

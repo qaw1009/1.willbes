@@ -46,6 +46,7 @@
                         <th>연락처</th>
                         <th>주소1</th>
                         <th>주소2</th>
+                        <th>주소3</th>
                         <th>맵이미지</th>
                         <th>정렬</th>
                         <th class="searching_is_use">사용여부</th>
@@ -63,6 +64,7 @@
                             <td>{{ $row['Tel'] }}</td>
                             <td>{{ $row['Addr1'] }}</td>
                             <td>{{ $row['Addr2'] }}</td>
+                            <td>{{ $row['Addr3'] }}</td>
                             <td><a href="{{ $row['MapPath'] }}" rel="popup-image"><i class="fa fa-picture-o"></i></a></td>
                             <td><input type="text" name="order_num" class="form-control input-sm" value="{{ $row['OrderNum'] }}" data-origin-order-num="{{ $row['OrderNum'] }}" data-idx="{{ $row['ScInfoIdx'] }}" style="width: 60px;"/></td>
                             <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif

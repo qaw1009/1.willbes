@@ -67,6 +67,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-1-1" for="addr3">주소3
+                    </label>
+                    <div class="col-md-4 item">
+                        <input type="text" id="addr3" name="addr3" class="form-control" title="주소3" value="{{ $data['Addr3'] }}"/>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-1-1" for="map_img">맵이미지 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 item">

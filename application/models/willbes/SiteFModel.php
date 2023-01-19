@@ -83,7 +83,7 @@ class SiteFModel extends WB_Model
     {
         $column = 'SCI.SiteCode, SCI.CampusCcd, CC.CcdName as CampusCcdName, concat(CC.CcdName, if(SCI.IsOrigin = "Y", "(본원)", "")) as CampusReName
 	        , if(SCI.DispName = "", CC.CcdName, SCI.DispName) as CampusDispName
-            , SCI.Tel, SCI.Addr1, SCI.Addr2, SCI.MapPath, SCI.IsOrigin';
+            , SCI.Tel, SCI.Addr1, SCI.Addr2, SCI.Addr3, SCI.MapPath, SCI.IsOrigin';
 
         $from = '
             from ' . $this->_table['site_campus_info'] . ' as SCI

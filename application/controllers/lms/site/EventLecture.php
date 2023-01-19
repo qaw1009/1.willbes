@@ -805,6 +805,70 @@ class EventLecture extends \app\controllers\BaseController
     }
 
     /**
+     * 문제복기 문항관리 페이지
+     * @param array $params
+     */
+    public function createExamRecallModal($params = [])
+    {
+        $promotion_code = $params[0];
+        $method = 'POST';
+        $data = $this->eventLectureModel->findPromotionRecallQuestion($promotion_code);
+
+        if (empty($data) === false) {
+            $method = 'PUT';
+        }
+
+        $this->load->view("site/event_lecture/create_exam_recall_modal", [
+            'method' => $method,
+            'promotion_code' => $promotion_code,
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * 문제복기 등록/수정
+     */
+    public function storeExamRecall()
+    {
+        $rules = [
+            ['field' => 'promotion_code', 'label' => '프로모션코드', 'rules' => 'trim|required|integer']
+            ,['field' => 'title_use_count', 'label' => '문항수', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        if (empty($this->_reqP('recall_question_idx')) === true) {
+            $method = 'add';
+        } else {
+            $method = 'modify';
+        }
+
+        $result = $this->eventLectureModel->{$method . 'PromotionRecallQuestion'}($this->_reqP(null, false));
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 문제복기 삭제
+     */
+    public function deleteExamRecall()
+    {
+        $rules = [
+            ['field' => 'promotion_code', 'label' => '프로모션코드', 'rules' => 'trim|required|integer']
+            ,['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+            ,['field' => 'recall_question_idx', 'label' => '문제복기관리식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventLectureModel->deletePromotionRecallQuestion($this->_reqP('recall_question_idx'));
+        $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
      * 댓글등록
      */
     public function storeComment()

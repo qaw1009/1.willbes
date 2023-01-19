@@ -1599,6 +1599,16 @@ class EventLectureModel extends WB_Model
         return $this->_conn->query('select ' . $column .$from .$where)->row_array();
     }
 
+    /**
+     * 문제복기 리스트
+     * @param bool $is_count
+     * @param int $title_use_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
     public function listPromotionRecallMember($is_count = true, $title_use_count = 0, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $where = $this->_conn->makeWhere($arr_condition);
@@ -1626,11 +1636,120 @@ class EventLectureModel extends WB_Model
 
         $from = "
             FROM {$this->_table['event_promotion_recall_member']} AS a
+            INNER JOIN {$this->_table['event_promotion_recall_question']} AS b ON a.PromotionCode = b.PromotionCode AND a.RecallQuestionIdx = b.RecallQuestionIdx AND b.IsStatus = 'Y'
             LEFT JOIN {$this->_table['member']} AS m ON a.MemIdx = m.MemIdx
         ";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 문제복기 등록
+     * @param array $form_data
+     * @return array|bool
+     */
+    public function addPromotionRecallQuestion($form_data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $input_data = $this->_addInputDataForRecallQuestion($form_data);
+            $input_data = array_merge($input_data, [
+                'IsStatus' => 'Y',
+                'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                'RegDatm' => date('Y-m-d H:i:s')
+            ]);
+
+            if ($this->_conn->set($input_data)->insert($this->_table['event_promotion_recall_question']) === false) {
+                throw new \Exception('문제복기 등록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 문제복기 수정
+     * @param array $form_data
+     * @return array|bool
+     */
+    public function modifyPromotionRecallQuestion($form_data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $recall_question_idx = element('recall_question_idx', $form_data);
+            $input_data = $this->_addInputDataForRecallQuestion($form_data);
+            $input_data = array_merge($input_data, [
+                'IsStatus' => 'Y',
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ]);
+            $this->_conn->set($input_data)->where('RecallQuestionIdx', $recall_question_idx);
+
+            if($this->_conn->update($this->_table['event_promotion_recall_question'])=== false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 문제복기 삭제
+     * @param $recall_question_idx
+     * @return array|bool
+     */
+    public function deletePromotionRecallQuestion($recall_question_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $input_data = [
+                'IsStatus' => 'N',
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ];
+            $this->_conn->set($input_data)->where('RecallQuestionIdx', $recall_question_idx);
+
+            if($this->_conn->update($this->_table['event_promotion_recall_question'])=== false) {
+                throw new \Exception('삭제 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+
+    /**
+     * 문제복기 등록/수정 데이터 셋팅
+     * @param $form_data
+     * @return array
+     */
+    private function _addInputDataForRecallQuestion($form_data)
+    {
+        $input_data = [
+            'PromotionCode' => element('promotion_code', $form_data)
+            ,'TitleUseCount' => element('title_use_count', $form_data)
+        ];
+
+        $i = 1;
+        foreach ($form_data['title'] as $key => $val) {
+            $input_data['Title_'.$i] = $val;
+            $input_data['PlaceHolder_'.$i] = element('placeholder', $form_data)[$key];
+            $i++;
+        }
+        return $input_data;
     }
 
 

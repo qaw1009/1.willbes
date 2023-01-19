@@ -107,7 +107,7 @@
                 @endfor
             ]
         });
-        /*$('div.left-button').html('<button type="button" class="btn btn-danger btn-reg-recallQuestion">문제등록</button>');*/
+        $('div.left-button').html('<button type="button" class="btn btn-danger btn-reg-recallQuestion">문제등록</button>');
 
         // 검색초기화
         $('.btn-reset-recall').click(function () {
@@ -127,7 +127,10 @@
         });
 
         $('.btn-reg-recallQuestion').on('click', function () {
-
+            $('.btn-reg-recallQuestion').setLayer({
+                "url" : "{{ site_url('site/eventLecture/createExamRecallModal/'.$data['PromotionCode']) }}",
+                width : "800"
+            });
         });
     });
 </script>

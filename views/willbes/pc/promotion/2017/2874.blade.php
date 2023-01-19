@@ -161,7 +161,7 @@
                             <td>
                                 <div>
                                     <input type="file" id="attach_file" name="attach_file" onChange="chkUploadFile(this)" style="width:60%"/>&nbsp;&nbsp;
-                                    <p class="tx12 mt10">* jpg 등의 이미지 형식과 pdf, zip 파일 업로드 가능</p>
+                                    <p class="tx12 mt10">* jpg 등의 이미지 형식과 hwp, doc, pdf, zip 파일 업로드 가능</p>
                                 </div>
                             </td>
                         </tr>
@@ -275,8 +275,8 @@
         function fileExtCheck(strfile) {
             if( strfile != "" ){
                 var ext = strfile.split('.').pop().toLowerCase();
-                if($.inArray(ext, ['jpg','gif','png','pdf','zip']) == -1) {
-                    alert('jpg 등의 이미지 형식과 pdf, zip 파일만 업로드 할수 있습니다.');
+                if($.inArray(ext, ['hwp', 'doc', 'pdf', 'jpg', 'gif', 'png', 'zip']) == -1) {
+                    alert('jpg 등의 이미지 형식과 hwp, doc, pdf, zip 파일만 업로드 할수 있습니다.');
                     return false;
                 }
             }

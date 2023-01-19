@@ -1625,7 +1625,7 @@ class EventLectureModel extends WB_Model
                 }
                 $order_by_offset_limit = '';
             } else {
-                $column = 'm.MemId, m.MemName,fn_dec(m.PhoneEnc) AS Phone,a.RecallMemberIdx, a.MemIdx, a.ExamSubjectName, a.ExamAreaName, a.RegDatm';
+                $column = 'm.MemId, m.MemName,fn_dec(m.PhoneEnc) AS Phone,a.RecallMemberIdx, a.MemIdx, a.ExamSubjectName, a.ExamAreaName, a.FileFullPath, a.FileRealName, a.RegDatm';
                 for ($i = 1; $i <= $title_use_count; $i++) {
                     $column .= ',CONCAT(LEFT(a.RecallContent_' . $i . ',20),"...") AS RecallContent_' . $i;
                 }

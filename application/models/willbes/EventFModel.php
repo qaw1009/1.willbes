@@ -55,6 +55,7 @@ class EventFModel extends WB_Model
     private $_upload_file_rule = [
         'allowed_types' => 'gif|jpg|jpeg|png|bmp|pdf|hwp|doc|docx',
         'allowed_types2' => 'gif|jpg|jpeg|png|bmp',
+        'allowed_types3' => 'gif|jpg|jpeg|png|bmp|pdf|zip',
         'overwrite' => 'false',
         'max_size' => 5120
     ];
@@ -2407,6 +2408,26 @@ class EventFModel extends WB_Model
                 $input_data = array_merge($input_data, [
                     'RecallContent_'.$i => element('recall_content_'.$i,$form_data)
                 ]);
+            }
+
+            if (empty($_FILES['attach_file']) === false) {
+                $sum_size_mb = round($_FILES['attach_file']['size'] / 1024);
+                if ($sum_size_mb > $this->_upload_file_rule['max_size']) {
+                    throw new \Exception('첨부파일 최대 5MB까지 등록 가능합니다.');
+                }
+
+                $this->load->library('upload');
+                $upload_dir = config_item('upload_prefix_dir') . '/event/member/recall/' . date('Y') . '/' . date('md');
+                $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(0), $upload_dir
+                    ,'allowed_types:'.$this->_upload_file_rule['allowed_types3'].',overwrite:'.$this->_upload_file_rule['overwrite']);
+                if (is_array($uploaded) === false) {
+                    throw new \Exception($uploaded);
+                }
+
+                if (count($uploaded) > 0) {
+                    $input_data['FileFullPath'] = $this->upload->_upload_url . $upload_dir . '/' . $uploaded[0]['orig_name'];
+                    $input_data['FileRealName'] = $uploaded[0]['client_name'];
+                }
             }
 
             if ($this->_conn->set($input_data)->insert($this->_table['event_promotion_recall_member']) === false) {

@@ -49,6 +49,7 @@
                 <th>연락처</th>
                 <th>응시과목</th>
                 <th>응시지역</th>
+                <th>첨부파일</th>
                 <th>등록일</th>
                 @if (empty($data['arr_recall_question']) === false)
                     @for($i=1; $i<=$data['arr_recall_question']['TitleUseCount']; $i++)
@@ -99,6 +100,11 @@
                 {'data' : 'Phone'},
                 {'data' : 'ExamSubjectName'},
                 {'data' : 'ExamAreaName'},
+                {'data' : 'FileRealName', 'render' : function(data, type, row, meta) {
+                        var tmp_return;
+                        (data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file btn-recall-file-download" data-file-path="'+row.FileFullPath+'" data-file-name="'+row.FileRealName+'" style="cursor: pointer"></p>';
+                        return tmp_return;
+                    }},
                 {'data' : 'RegDatm'},
                 @for($i=1; $i<=$data['arr_recall_question']['TitleUseCount']; $i++)
                     {'data' : null, 'render' : function(data, type, row, meta) {
@@ -154,6 +160,11 @@
                     $datatable_recall.draw();
                 }
             }, showError, false, 'POST');
-        })
+        });
+
+        $list_recall_table.on('click', '.btn-recall-file-download', function() {
+            var _url = '{{ site_url("/site/eventLecture/download") }}/' + '?path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+            window.open(_url, '_blank');
+        });
     });
 </script>

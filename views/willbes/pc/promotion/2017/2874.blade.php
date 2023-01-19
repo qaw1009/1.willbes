@@ -156,17 +156,15 @@
                                 </tr>
                             @endfor
                         @endif
-                                <tr>
-                                    <th>파일첨부</th>
-                                    <td>
-                                        <div>
-                                            <input type="file" id="attach_file" name="attach_file" onChange="chkUploadFile(this)" style="width:60%"/>&nbsp;&nbsp;
-                                            <a href="#none" onclick="del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" alt="삭제"></a>
-
-                                            <p class="tx12 mt10">* jpg 등의 이미지 형식과 pdf, zip 파일 업로드 가능</p>
-                                        </div>
-                                    </td>
-                                </tr>
+                        <tr>
+                            <th>파일첨부</th>
+                            <td>
+                                <div>
+                                    <input type="file" id="attach_file" name="attach_file" onChange="chkUploadFile(this)" style="width:60%"/>&nbsp;&nbsp;
+                                    <p class="tx12 mt10">* jpg 등의 이미지 형식과 pdf, zip 파일 업로드 가능</p>
+                                </div>
+                            </td>
+                        </tr>
                     </table>
                     <div class="btns"><a href="javascript:void(0)" onclick="fnRecallSubmit(); return false;">문제복기 자료 제출하기</a></div>
                 </div>
@@ -237,9 +235,17 @@
             });
             if (vali_msg) { alert(vali_msg); return; }
 
+            if ($('#attach_file').val() == '') {
+            } else {
+                if(fileExtCheck($('#attach_file').val()) == false) {
+                    return;
+                }
+            }
+
             if (!confirm('제출 후 수정 불가능합니다. 제출하시겠습니까?')) {
                 return;
             }
+
             var _url = '{!! front_url('/promotion/storePromotionRecall/') !!}';
             ajaxSubmit($regi_form, _url, function (ret) {
                 if (ret.ret_cd) {
@@ -263,6 +269,17 @@
                     $("#reviewListWrap").html(ret);
                 }
             }, showAlertError, false, 'GET', 'html');
+        }
+
+        //파일 확장자 체크
+        function fileExtCheck(strfile) {
+            if( strfile != "" ){
+                var ext = strfile.split('.').pop().toLowerCase();
+                if($.inArray(ext, ['jpg','gif','png','pdf','zip']) == -1) {
+                    alert('jpg 등의 이미지 형식과 pdf, zip 파일만 업로드 할수 있습니다.');
+                    return false;
+                }
+            }
         }
     </script>
 

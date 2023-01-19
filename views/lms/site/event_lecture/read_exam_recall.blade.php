@@ -55,7 +55,7 @@
                         <th>{!! $data['arr_recall_question']['Title_'.$i] !!}</th>
                     @endfor
                 @endif
-                {{--<th>삭제</th>--}}
+                <th>삭제</th>
             </tr>
             </thead>
             <tbody>
@@ -106,9 +106,9 @@
                             return "<textarea style='width:100%; height:100px; boarder:0px; margin:0px;' readonly='readonly'>"+content+"</textarea>";
                         }},
                 @endfor
-                /*{'data' : null, 'render' : function(data, type, row, meta) {
+                {'data' : null, 'render' : function(data, type, row, meta) {
                         return '<a href="#none" class="btn-delete-recall-member" data-recal-memberl-idx="' + row.RecallMemberIdx + '"><span class="red"><u>삭제</u></span></a>';
-                    }}*/
+                    }}
             ]
         });
         $('div.left-button').html('<button type="button" class="btn btn-danger btn-reg-recallQuestion">문제등록</button>');
@@ -136,5 +136,24 @@
                 width : "800"
             });
         });
+
+        $list_recall_table.on('click', '.btn-delete-recall-member', function() {
+            var _url = '{{ site_url("/site/eventLecture/deleteExamRecallMember/") }}';
+            var data = {
+                '{{ csrf_token_name() }}' : $search_recall_form.find('input[name="{{ csrf_token_name() }}"]').val()
+                ,'_method' : 'DELETE'
+                ,'recall_member_idx' : $(this).data('recal-memberl-idx')
+            };
+
+            if (!confirm('삭제하시겠습니까?')) {
+                return;
+            }
+            sendAjax(_url, data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    $datatable_recall.draw();
+                }
+            }, showError, false, 'POST');
+        })
     });
 </script>

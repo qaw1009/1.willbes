@@ -76,7 +76,7 @@
                 <input type="hidden" name="promotion_code"  id ="promotion_code" value="{{ $data['PromotionCode'] }}"/>
                 <input type="hidden" name="recall_question_id"  id ="recall_question_id" value="{{ $arr_base['recall_data']['RecallQuestionIdx'] or '' }}"/>
                 <input type="hidden" name="recall_params_cnt"  id ="recall_params_cnt" value="{{ $arr_base['recall_data']['TitleUseCount'] or '' }}"/>
-                <input type="hidden" name="recall_mid"  id ="recall_mid" value="{{ $arr_base['recall_data']['RecallIdx'] or '' }}"/>
+                <input type="hidden" name="recall_mid"  id ="recall_mid" value="{{ $arr_base['recall_data']['RecallMemberIdx'] or '' }}"/>
 
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2874_01_01.jpg"/>
                 <div class="evt_table">

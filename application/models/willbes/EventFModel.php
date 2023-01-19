@@ -2354,7 +2354,7 @@ class EventFModel extends WB_Model
             a.RecallQuestionIdx, a.PromotionCode, a.TitleUseCount
             ,a.Title_1, a.Title_2, a.Title_3, a.Title_4, a.Title_5, a.Title_6, a.Title_7, a.Title_8, a.Title_9, a.Title_10
             ,a.PlaceHolder_1, a.PlaceHolder_2, a.PlaceHolder_3, a.PlaceHolder_4, a.PlaceHolder_5, a.PlaceHolder_6, a.PlaceHolder_7, a.PlaceHolder_8, a.PlaceHolder_9, a.PlaceHolder_10
-            ,b.RecallIdx, b.MemIdx, b.ExamSubjectName, b.ExamAreaName
+            ,b.RecallMemberIdx, b.MemIdx, b.ExamSubjectName, b.ExamAreaName
             ,b.RecallContent_1, b.RecallContent_2, b.RecallContent_3, b.RecallContent_4, b.RecallContent_5
             ,b.RecallContent_6, b.RecallContent_7, b.RecallContent_8, b.RecallContent_9, b.RecallContent_10
         ';
@@ -2391,7 +2391,7 @@ class EventFModel extends WB_Model
                 throw new \Exception('조회된 문제복기 데이터가 없습니다. 다시 시도해 주세요.');
             }
 
-            if (empty($result['RecallIdx']) === false) {
+            if (empty($result['RecallMemberIdx']) === false) {
                 throw new \Exception('등록된 자료가 있습니다.');
             }
 

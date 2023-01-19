@@ -55,6 +55,7 @@
                         <th>{!! $data['arr_recall_question']['Title_'.$i] !!}</th>
                     @endfor
                 @endif
+                {{--<th>삭제</th>--}}
             </tr>
             </thead>
             <tbody>
@@ -105,6 +106,9 @@
                             return "<textarea style='width:100%; height:100px; boarder:0px; margin:0px;' readonly='readonly'>"+content+"</textarea>";
                         }},
                 @endfor
+                /*{'data' : null, 'render' : function(data, type, row, meta) {
+                        return '<a href="#none" class="btn-delete-recall-member" data-recal-memberl-idx="' + row.RecallMemberIdx + '"><span class="red"><u>삭제</u></span></a>';
+                    }}*/
             ]
         });
         $('div.left-button').html('<button type="button" class="btn btn-danger btn-reg-recallQuestion">문제등록</button>');

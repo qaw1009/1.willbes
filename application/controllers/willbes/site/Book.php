@@ -63,8 +63,8 @@ class Book extends \app\controllers\FrontController
                 $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $cate_code, element('series_ccd', $arr_input));
             }
 
-            // 온라인공무원일 경우 과목 디폴트 설정 (0번째 과목)
-            if ($this->_site_code == '2003' && isset($arr_input['subject_idx']) === false) {
+            // 온라인공무원일 경우 과목 디폴트 설정 (0번째 과목) => 9급, 7급 카테고리만 적용 (2023.01.19)
+            if ($this->_site_code == '2003' && in_array($cate_code, ['3019', '3020']) === true && isset($arr_input['subject_idx']) === false) {
                 $arr_input['subject_idx'] = array_get($arr_base['subject'], '0.SubjectIdx');
             }
         } else {

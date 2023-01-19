@@ -86,7 +86,7 @@
                                         </div>
                                     </dt>
                                 @endforeach
-                                <dt class="p_re bd-none">
+                                <dt class="bd-none">
                                     <div class="btn NSK-Black">
                                         <a href="{{front_url('/support/qna/create?s_campus='.$campus_ccd)}}">1:1 상담신청</a>
                                     </div>

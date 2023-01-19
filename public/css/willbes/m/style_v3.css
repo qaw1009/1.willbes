@@ -1593,10 +1593,12 @@ body.memBody #Footer {
 	height: 12px !important;
 }
 
+
+
 .gosi .campus li {
 	display: inline;
 	float: left;
-	width: 20%;
+	width: 50%;
 }
 
 .gosi .campus li a {
@@ -1605,11 +1607,16 @@ body.memBody #Footer {
 	text-align: center;
 	padding: 15px 0;
 	margin-right: 5px;
-	font-size: 14px;
+	font-size: 1.6vh;
 	width: calc(100%-5px);
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+}
+
+.gosi .campus li a.on {
+	background: #333 !important;
+	color: #fff !important;
 }
 
 .gosi .campus li:last-child a {

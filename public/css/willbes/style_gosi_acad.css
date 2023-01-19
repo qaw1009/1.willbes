@@ -473,10 +473,15 @@
     color: #ba560e;
 }
 
+.GA .noticeBox_campus {
+    height: 328px;
+    overflow: hidden;
+}
+
 .GA .campus_info {
     position: relative;
     float: right;
-    width: 350px;
+    width: 370px;
     height: 328px;
 }
 
@@ -484,6 +489,10 @@
     position: absolute;
     left: 0;
     bottom: 0;
+}
+
+.GA .campus_info .c-info span.a-tit {
+    width: 80px;
 }
 
 .GA .campus_info .btn a {

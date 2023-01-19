@@ -1,6 +1,6 @@
 @extends('willbes.pc.layouts.master')
-
 @section('content')
+<link href="/public/css/willbes/style_gosi_acad.css?ver={{time()}}" rel="stylesheet">
 <!-- Container -->
 <div id="Container" class="Container GA NGR c_both">
     <div class="Menu widthAuto NGR c_both">
@@ -389,54 +389,6 @@
         </h3>
     </div>
 
-    {{--
-    <div class="Section mt20">
-        <div class="widthAuto">
-            <ul class="bnSecTop">
-                <li>
-                    <div class="bSlider acad">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_01.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_02.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="bSlider acad">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_03.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_04.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="bSlider acad">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_02.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_03.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="bSlider acad">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_04.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_01.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="bSlider acad">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_01.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_02.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>    
-    --}}
 
     <div class="Section MainVisual mt20">
         <div class="widthAuto">
@@ -737,11 +689,13 @@
             <div class="will-acadTit">윌비스 <span class="tx-color">공무원</span> 캠퍼스</div>
             <div class="noticeTabs campus c_both">
                 <ul class="tabWrap noticeWrap_campus">
-                    <li><a href="#campus1" class="on">노량진(본원)</a><span class="row-line">|</span></li>
-                    <li><a href="#campus2" class="">인천</a><span class="row-line">|</span></li>
+                    <li><a href="#campus1" class="on">노량진</a><span class="row-line">|</span></li>
+                    <li><a href="#campus2" class="">가산(서울)</a></li>
+                    {{--
                     <li><a href="#campus3" class="">대구</a><span class="row-line">|</span></li>
                     <li><a href="#campus4" class="">부산</a><span class="row-line">|</span></li>
                     <li><a href="#campus5" class="">광주</a></li>
+                    --}}
                 </ul>
                 <div class="tabBox noticeBox_campus">
                     <div id="campus1" class="tabContent">
@@ -753,7 +707,7 @@
                             <dl>
                                 <dt>
                                     <div class="c-tit">
-                                        <span class="tx-color">노량진</span> 학원 공지사항
+                                        <span class="tx-color">학원</span> 공지사항
                                         <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
@@ -764,15 +718,19 @@
                                     </div>
                                 </dt>
                                 <dt>
-                                    <div class="c-tit"><span class="tx-color">노량진학원</span> 오시는 길</div>
+                                    <div class="c-tit"><span class="tx-color">학원</span> 오시는 길</div>
                                     <div class="c-info">
                                         <div class="address">
-                                            <span class="a-tit">본원</span>
+                                            <span class="a-tit">9급/기술직</span>
+                                            <span>서울 금천구 벚꽃로 298(대륭포스트타워6차) 707호</span>
+                                        </div>
+                                        <div class="address">
+                                            <span class="a-tit">소방/기술직</span>
                                             <span>서울 동작구 만양로 105 한성빌딩 2층</span>
                                         </div>
                                         <div class="address">
-                                            <span class="a-tit">법원/검찰</span>
-                                            <span>서울 동작구 노량진로 196 JH빌딩 10층</span>
+                                            <span class="a-tit">법원/검찰직</span>
+                                            <span>서울 동작구 노량진로 196 JH빌딩 7층</span>
                                         </div>
                                         <div class="tel">
                                             <span class="a-tit">연락처</span>
@@ -782,8 +740,8 @@
                                 </dt>
                             </dl>
                             <div class="btn NSK-Black">
-                                <a href="https://cop.dev.willbes.net/pass/support/qna/index">1:1 상담신청</a>
-                                <a href="http://pf.kakao.com/_kcZIu/chat" target="_blank"><img src="{{ img_url('gosi_acad/icon_kakaotalk.png') }}"> 카톡상담신청</a>
+                                <a href="https://pass.willbes.net/pass/support/qna/create">1:1 상담신청</a>
+                                {{--<a href="http://pf.kakao.com/_kcZIu/chat" target="_blank"><img src="{{ img_url('gosi_acad/icon_kakaotalk.png') }}"> 카톡상담신청</a>--}}
                             </div>
                         </div>
                     </div>
@@ -791,14 +749,14 @@
 
                     <div id="campus2" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('gosi_acad/map/mapIC.jpg') }}" alt="인천">
-                            <span>인 천</span>
+                            <img src="https://static.willbes.net/public/images/willbes/gosi_acad/map/mapSeoulGasan.jpg" alt="가산(서울)">
+                            {{--<span>가산(서울)</span>--}}
                         </div>
                         <div class="campus_info">
                             <dl>
                                 <dt>
                                     <div class="c-tit">
-                                        <span class="tx-color">인천</span> 캠퍼스 공지사항
+                                        <span class="tx-color">학원</span>  공지사항
                                         <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
@@ -809,28 +767,34 @@
                                     </div>
                                 </dt>
                                 <dt>
-                                    <div class="c-tit"><span class="tx-color">인천</span> 캠퍼스 오시는 길</div>
+                                    <div class="c-tit"><span class="tx-color">학원</span> 오시는 길</div>
                                     <div class="c-info">
                                         <div class="address">
-                                            <span class="a-tit">주소</span>
-                                            <span>
-                                                인천 부평구 광장로 26 서연빌딩 4층 
-                                            </span>
+                                            <span class="a-tit">9급/기술직</span>
+                                            <span>서울 금천구 벚꽃로 298(대륭포스트타워6차) 707호</span>
+                                        </div>
+                                        <div class="address">
+                                            <span class="a-tit">소방/기술직</span>
+                                            <span>서울 동작구 만양로 105 한성빌딩 2층</span>
+                                        </div>
+                                        <div class="address">
+                                            <span class="a-tit">법원/검찰직</span>
+                                            <span>서울 동작구 노량진로 196 JH빌딩 7층</span>
                                         </div>
                                         <div class="tel">
                                             <span class="a-tit">연락처</span>
-                                            <span class="tx-color">1544-1661</span>
+                                            <span class="tx-color">1544-0330</span>
                                         </div>
                                     </div>
                                 </dt>
                             </dl>
                             <div class="btn NSK-Black">
-                                <a href="https://cop.dev.willbes.net/pass/support/qna/index">1:1 상담신청</a>
+                                <a href="https://pass.willbes.net/pass/support/qna/create">1:1 상담신청</a>
                             </div>
                         </div>
                     </div>
-                    <!-- 인천 //-->
-
+                    
+                    {{--
                     <div id="campus3" class="tabContent">
                         <div class="map_img">
                             <img src="{{ img_url('gosi_acad/map/mapDG.jpg') }}" alt="대구">
@@ -872,7 +836,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- 대구 //-->
+                    
 
                     <div id="campus4" class="tabContent">
                         <div class="map_img">
@@ -914,7 +878,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- 부산 //-->
+                    
 
                     <div id="campus5" class="tabContent">
                         <div class="map_img">
@@ -956,7 +920,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- 광주 //-->
+                    --}}
                 </div>
             </div>
         </div>

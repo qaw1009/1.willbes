@@ -326,13 +326,13 @@
                 <div class="tabBox noticeBox_campus">
                     <div class="tabContent">
                         <div class="map_img">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2015/map2015.jpg" alt="소방">
-                            <span>윌비스 소방</span>
+                            <img src="https://static.willbes.net/public/images/willbes/gosi_acad/map/mapSeoul.jpg" alt="소방">
+                            {{--<span>윌비스 소방</span>--}}
                         </div>
                         <div class="campus_info">
                             <dl>
                                 <dt>
-                                    <div class="c-tit"><span class="tx-color">윌비스</span> 소방학원</div>
+                                    <div class="c-tit">윌비스 <span class="tx-color">소방학원</span></div>
                                     <div class="c-info">
                                         <div class="address">
                                             <span class="a-tit">주소</span>

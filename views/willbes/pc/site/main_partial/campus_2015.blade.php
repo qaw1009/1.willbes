@@ -4,8 +4,8 @@
         <div class="tabBox noticeBox_campus">
             <div class="tabContent">
                 <div class="map_img">
-                    <img src="https://static.willbes.net/public/images/promotion/main/2015/map2015.jpg" alt="위치">
-                    <span>윌비스 소방</span>
+                    <img src="https://static.willbes.net/public/images/willbes/gosi_acad/map/mapSeoul.jpg" alt="위치">
+                    {{--<span>윌비스 소방</span>--}}
                 </div>
                 <div class="campus_info">
                     <dl>

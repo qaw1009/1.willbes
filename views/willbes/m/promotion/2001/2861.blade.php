@@ -9,6 +9,35 @@
     .evtCtnsBox img {width:100%; max-width:720px;}
     /*.evtCtnsBox a {border:1px solid #000}*/
 
+    .evt02,
+    .evt03 {background:#f5f5f7}
+    .evt02 .wrap,
+    .evt03 .wrap {width:95%; margin:0 auto; padding:3vh 0}
+    .passBox {display:flex; margin:0 auto; flex-wrap: wrap;}
+    .passBox .item {padding:3vh 2vh; background:#fff; border-radius:10px; text-align:left; line-height:1.3; font-size:2vh; font-weight:bold; width:calc((100%/3) - 1vh); color:#323232; margin:0.5vh;
+        position:relative; /*height:325px;*/ letter-spacing:-1px;
+        -webkit-box-shadow: 0px 5px 12px 0px rgba(0,0,0,0.10);
+        -moz-box-shadow: 0px 5px 12px 0px rgba(0,0,0,0.10);
+        box-shadow: 0px 5px 12px 0px rgba(0,0,0,0.10);
+    }
+    .passBox .item.itemCS {background:#cecece url(https://static.willbes.net/public/images/olla/promotion/2023/01/1001_06_cs.png) no-repeat center center;}
+    .passBox .item p {color:#f46773; font-size:1.6vh; margin-bottom:1.5vh; }
+    .passBox .item > strong {color:#a7a7a7}
+    .passBox .item > span {font-size:16px; color:#a7a7a7; vertical-align: middle; display:inline-block;}
+    .passBox .item div {}
+    .passBox .item div span {background:#e0474a; color:#fff; padding:4px 5px; line-height:1; vertical-align:bottom; margin-bottom:10px; display:inline-block; margin-right:10px; font-size:18px; } 
+    .passBox .item div strong {font-size:50px; font-family: 'Oswald', sans-serif; color:#000}       
+    .passBox .item a {width:90%; font-size:1.6vh; color:#fff; background:#000; text-align:center; padding:7px 0; border-radius:20px; display:block}
+    .passBox .item a:hover {color:#fff; background:#337c9f;}
+    
+    .passBox:nth-child(2) .item p {color:#ff6a18;}
+    .passBox:nth-child(2) .item div span {background:#ff6a18;}
+    .passBox:nth-child(3) .item p {color:#30799a;}
+    .passBox:nth-child(3) .item div span {background:#30799a;}
+
+    .passBoxT .item {padding:0; max-width:230px;}
+    .passBoxT .item a {width:100%; background:#fff; padding:0;}
+
     .content_guide_wrap  {padding:5vh 2vh; background:#dedede; color:#f0f0f0;}
     .content_guide_box {text-align:left; line-height:1.3}
     .content_guide_box .guide_tit{margin-bottom:20px;}
@@ -18,7 +47,22 @@
     .content_guide_box dd{ color:#777; font-size:15px; margin:0 0 20px 5px; line-height:19p x;}
     .content_guide_box dd strong{ color:#555;}
     .content_guide_box dd p{ margin-bottom:3px;}
-    .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px;}    
+    .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px;}  
+    
+    /* 폰 가로, 태블릿 세로*/
+    @@media only screen and (max-width: 374px)  {
+        .passBox .item {width:calc((100%/2) - 1vh);}
+    }
+
+    /* 태블릿 세로 */
+    @@media only screen and (min-width: 375px) and (max-width: 640px) {
+        .passBox .item {width:calc((100%/2) - 1vh);}
+    }
+
+    /* 태블릿 가로, PC */
+    @@media only screen and (min-width: 641px) {
+
+    }
 </style>
 
 <div id="Container" class="Container NSK c_both">
@@ -34,6 +78,7 @@
     </div>
 
     <div class="evtCtnsBox evt02" data-aos="fade-up">
+        <!--
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2022/12/2861m_02.jpg" alt="계급별 pass"/>
             <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204319" target="_blank" title="" style="position: absolute; left: 16.53%; top: 12.45%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
@@ -53,19 +98,68 @@
             <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204324" target="_blank" title="" style="position: absolute; left: 16.53%; top: 85.93%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
             <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204325" target="_blank" title="" style="position: absolute; left: 52.92%; top: 85.93%; width: 30.83%; height: 9.18%; z-index: 2;"></a>
         </div>
+-->
+        <img src="https://static.willbes.net/public/images/promotion/2023/01/2861m_02.jpg" alt="계급별 pass"/>
+        <div class="wrap">    
+            <div class="passBox">
+                <div class="item">
+                    <p>경장/경사/경위</p>
+                    2024<br>
+                    임종희 형소법 <strong>&</strong><br>
+                    임종희 형법<br>
+                    <div><span>2과목</span><strong>70</strong>만원</div>
+                    <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204319" target="_blank">PASS 수강신청</a>
+                </div>
+                <div class="item">
+                    <p>경장/경사/경위</p>
+                    2024<br>
+                    임종희 형소법 <strong>&</strong><br>
+                    문형석 형법<br>
+                    <div><span>2과목</span><strong>70</strong>만원</div>
+                    <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204320" target="_blank">PASS 수강신청</a>
+                </div>
+                <div class="item">
+                    <p>경감</p>
+                    2024<br>
+                    임종희 형법 <strong>&</strong><br>
+                    유시완 행정법<span>(주관식)</span>
+                    <div><span>2과목</span><strong>80</strong>만원</div> 
+                    <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204322" target="_blank">PASS 수강신청</a>
+                </div>
+                <div class="item">
+                    <p>경감</p>
+                    2024<br>
+                    문형석 형법 <strong>&</strong><br>
+                    유시완 행정법<span>(주관식)</span>
+                    <div><span>2과목</span><strong>80</strong>만원</div> 
+                    <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204323" target="_blank">PASS 수강신청</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="evtCtnsBox evt03" data-aos="fade-up">
         <div class="wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2022/12/2861m_03.jpg" alt="교수님 pass"/>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204326" target="_blank" title="" style="position: absolute; left: 16.67%; top: 21.51%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204327" target="_blank" title="" style="position: absolute; left: 52.36%; top: 21.51%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204328" target="_blank" title="" style="position: absolute; left: 16.67%; top: 39.52%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204329" target="_blank" title="" style="position: absolute; left: 52.36%; top: 39.52%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204330" target="_blank" title="" style="position: absolute; left: 16.67%; top: 57.7%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
-            <a href="#none" title="" style="position: absolute; left: 52.36%; top: 57.7%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204338" target="_blank" title="" style="position: absolute; left: 16.67%; top: 76.15%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204348" target="_blank" title="" style="position: absolute; left: 52.36%; top: 76.15%; width: 30.83%; height: 15.67%; z-index: 2;"></a>
+            <img src="https://static.willbes.net/public/images/promotion/2023/01/2861m_03.jpg" alt="교수님 pass"/>
+            <div class="wrap">            
+                <div class="passBox passBoxT">
+                    <div class="item">                        
+                        <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204326" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/12/2861_03_t01.png" alt="임종희 형소법"/></a>
+                    </div>
+                    <div class="item">                        
+                        <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204327" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/12/2861_03_t02.png" alt="임종희 형법"/></a>
+                    </div>
+                    <div class="item">                        
+                        <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204328" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/12/2861_03_t03.png" alt="형법 문형석"/></a>
+                    </div>                 
+                    <div class="item">                        
+                        <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204338" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/12/2861_03_t06.png" alt="헌법 황남기"/></a>
+                    </div>
+                    <div class="item">                        
+                        <a href="https://police.willbes.net/m/periodPackage/show/cate/3006/pack/648001/prod-code/204348" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/12/2861_03_t07.png" alt="행정학 김철"/></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

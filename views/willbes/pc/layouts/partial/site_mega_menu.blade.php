@@ -1104,7 +1104,7 @@
             </div>
         </div>
     @elseif($__cfg['SiteCode'] == '2015')
-        {{-- 인천학원 --}}
+        {{-- 소방학원 
         <div class="drop-Box list-drop-Box list-drop-Box-ic">
             <ul>
                 <li class="Tit">소방 공무원</li>
@@ -1129,6 +1129,7 @@
                 </li>
             </ul>
         </div>
+        --}}
     @endif
 @endsection
 

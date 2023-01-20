@@ -1014,9 +1014,11 @@ class BasePromotion extends \app\controllers\FrontController
         ];
 
         for($i=1; $i<=$this->_reqP('recall_params_cnt'); $i++) {
-            $rules = array_merge($rules, [
-                ['field' => 'recall_content_'.$i, 'label' => '자료', 'rules' => 'trim|required']
-            ]);
+            if($i !== 4 && $i !== 5) {  /* TODO 4,5번 항목 선택사항으로 수정 */
+                $rules = array_merge($rules, [
+                    ['field' => 'recall_content_'.$i, 'label' => '자료', 'rules' => 'trim|required']
+                ]);
+            }
         }
 
         if ($this->validate($rules) === false) {

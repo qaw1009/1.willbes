@@ -228,9 +228,11 @@
 
             var vali_msg = '';
             $('.recall-content').each(function(){
-                if ($(this).val() == '') {
-                    vali_msg = '문제복기 항목을 모두 입력해 주세요.';
-                    return false;
+                if( $(this).attr("name") !== 'recall_content_4' && $(this).attr("name") !== 'recall_content_5' ) { {{--TODO 4,5 항목 선택 입력으로 수정--}}
+                    if ($(this).val() == '') {
+                        vali_msg = '문제복기 항목을 모두 입력해 주세요.';
+                        return false;
+                    }
                 }
             });
             if (vali_msg) { alert(vali_msg); return; }

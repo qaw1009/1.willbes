@@ -169,11 +169,15 @@
     @else
     {{--10월--}}  
     <div class="evtCtnsBox evt_top" data-aos="fade-up">         
-        <img src="https://static.willbes.net/public/images/promotion/2022/11/2839m_top.jpg" alt="올인원 경찰 패스" >                 
+        <img src="https://static.willbes.net/public/images/promotion/2023/01/2839m_top.jpg" alt="맞춤형 공부" >                 
     </div>
     
     <div class="evtCtnsBox evt_pro" data-aos="fade-up">    
-        <img src="https://static.willbes.net/public/images/promotion/2022/11/2839m_pro.jpg" alt="올인원 총알경찰학"/>           
+        <img src="https://static.willbes.net/public/images/promotion/2023/01/2839m_pro.jpg" alt="올인원 총알경찰학"/>           
+    </div>
+
+    <div class="evtCtnsBox evt_self" data-aos="fade-up">    
+        <img src="https://static.willbes.net/public/images/promotion/2023/01/2839m_self_test.jpg" alt="셀프테스트"/>           
     </div>
 
     <div class="evtCtnsBox evt_limit" data-aos="fade-up">    
@@ -181,10 +185,10 @@
     </div>
 
     <div class="evtCtnsBox evt01" data-aos="fade-up" id="evt01"> 
-        <img src="https://static.willbes.net/public/images/promotion/2022/11/2839m_01.jpg" alt="구매전 안내"/>            
+        <img src="https://static.willbes.net/public/images/promotion/2023/01/2839m_01.jpg" alt="초시생 추천"/>            
         <div class="evt01_coupon lecbuy" id="pass">
             <div class="p_re">
-                <img src="https://static.willbes.net/public/images/promotion/2022/12/2839m_02_01.png" alt="" > 
+                <img src="https://static.willbes.net/public/images/promotion/2023/01/2839m_02_01.png" alt="" > 
                 <div class="price NSK-Black">                       
                     <input type="radio" id="y_pkg1" name="y_pkg" value="203769" onClick=""/>
                     <label for="y_pkg1">평생 0원 PASS 신청</label>
@@ -197,6 +201,7 @@
                     <label for="y_pkg2">24년 1차 0원 PASS 신청</label>
                 </div>
             </div>
+            <img src="https://static.willbes.net/public/images/promotion/2023/01/2839m_02.jpg" alt="n시생 추천"/> 
             <div class="p_re">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2839m_02_03.png" alt="" > 
                 <div class="price NSK-Black">                       
@@ -205,7 +210,7 @@
                 </div>
             </div>
             <div class="p_re">
-                <img src="https://static.willbes.net/public/images/promotion/2022/12/2839m_02_04.png" alt="" > 
+                <img src="https://static.willbes.net/public/images/promotion/2023/01/2839m_02_04.png" alt="" > 
                 <div class="price NSK-Black">                       
                     <input type="radio" id="y_pkg4" name="y_pkg" value="202971" onClick=""/>
                     <label for="y_pkg4">M사 컴백홈 PASS 신청</label>
@@ -222,12 +227,12 @@
             </div>
         </div>        
         <div data-aos="fade-up" class="p_re mt50">
-            <img src="https://static.willbes.net/public/images/promotion/2022/12/2758m_03.jpg" alt="할일받고 구매하자">
-            <a href="https://police.willbes.net/m/support/qna/index/cate/3001?s_cate_code=3001&s_is_my_contents=1" target="_blank" title="재수강 쿠폰받기" style="position: absolute; left: 8.47%; top: 25.65%; width: 38.75%; height: 34.57%; z-index: 2;"></a>
+            <img src="https://static.willbes.net/public/images/promotion/2023/01/2758m_03.jpg" alt="할일받고 구매하자">
+            <a href="https://police.willbes.net/m/support/qna/index/cate/3001?s_cate_code=3001&s_is_my_contents=1" target="_blank" title="재수강 쿠폰받기" style="position: absolute; left: 8.47%; top: 25.65%; width: 38.75%; height: 37.57%; z-index: 2;"></a>
 
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute; left: 52.5%; top: 25.65%; width: 38.75%; height: 34.57%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute; left: 52.5%; top: 25.65%; width: 38.75%; height: 37.57%; z-index: 2;"></a>
 
-            <a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" title="패스상품 신청하기" style="position: absolute; left: 6.39%; top: 73.57%; width: 86.53%; height: 24.57%; z-index: 2;"></a>
+            <a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');" title="패스상품 신청하기" style="position: absolute; left: 6.39%; top: 75.57%; width: 86.53%; height: 24.57%; z-index: 2;"></a>
         </div> 
     </div>
     @endif
@@ -358,7 +363,7 @@
                 <li><a href="#tab01" class="active">평생 0원<br> PASS</a></li>
                 <li><a href="#tab02">23년 2차 0원<br> PASS</a></li>
                 <li><a href="#tab03">24년1차 0원<br> PASS</a></li>
-                <li><a href="#tab04">M사 컴백홈<br> PASS</a></li>               
+                <li><a href="#tab04">타사 환승<br> PASS</a></li>               
             </ul>
 
             <div class="content_guide_box" id="tab01">
@@ -781,7 +786,7 @@
             <div class="content_guide_box" id="tab04">
                 <dl>
                     <dt>
-                        <h3>M사 컴백홈 PASS</h3>
+                        <h3>타사 환승 PASS</h3>
                     </dt>
                     <dd>
                         <ol>
@@ -809,13 +814,13 @@
                     </dd>
 
                     <dt>
-                        <h3>M사 컴백홈 PASS 26만원 할인쿠폰 지급안내</h3>
+                        <h3>타사 환승 PASS 26만원 할인쿠폰 지급안내</h3>
                     </dt>
                     <dd>
                         <ol>
                             <li>미래인재경찰학원에서 온라인인강을 듣고있는 회원대상 쿠폰이벤트 입니다. (단과 / 종합반 / PASS 모두해당)</li>
                             <li>온라인 1:1 게시판으로 문의글 과 증빙자료를 보내주시면 담당자 확인후 회원님 ID로 쿠폰발급해드립니다. > <a href="https://www.willbes.net/classroom/qna/index" target="_blank"><span class="tx-red">온라인 1:1게시판 바로가기</span></a><br>
-                                <span class="tx-red">예시) 게시판 제목 : M사 컴백홈 PASS 할인쿠폰 요청드립니다. 증빙서류 보내드립니다.</span><br>
+                                <span class="tx-red">예시) 게시판 제목 : 타사 환승 PASS 할인쿠폰 요청드립니다. 증빙서류 보내드립니다.</span><br>
                                 * 위 예시처럼 작성요청<br>
                                 * 강의이력 캡쳐본 또는 증빙자료 필수 <br>
                                 * 평일 9시 ~ 17시 까지 발급가능 (주말제외 , 공휴일 제외)<br>

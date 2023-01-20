@@ -25,9 +25,11 @@
         .sky {position:fixed;top:200px;right:10px;z-index:100;}
         .sky a {display:block; margin-bottom:10px}
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/11/2839_top_bg.jpg) no-repeat center top;}
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2023/01/2839_top_bg.jpg) no-repeat center top;}
 
         .evt_pro {background:#13171A;}
+
+        .evt_self {background:#F5F5F7;}
 
         .evt_limit {background:url(https://static.willbes.net/public/images/promotion/2022/12/2839_limit_event_bg.jpg) no-repeat center top;}
 
@@ -164,13 +166,13 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
             <a href="#pass">
-                <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_sky01.png" alt="윌비스 경찰 패스">
+                <img src="https://static.willbes.net/public/images/promotion/2023/01/2839_sky01.png" alt="윌비스 경찰 패스">
             </a>  
             <a href="#transfer">
-                <img src="https://static.willbes.net/public/images/promotion/2022/12/2839_sky02.png" alt="최대 35프로 할인">
+                <img src="https://static.willbes.net/public/images/promotion/2023/01/2839_sky02.png" alt="최대 35프로 할인">
             </a>  
             <a href="#pass">
-                <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_sky03.png" alt="m사 환승 26만원">
+                <img src="https://static.willbes.net/public/images/promotion/2023/01/2839_sky03.png" alt="m사 환승 26만원">
             </a>  
         </div>
 
@@ -203,11 +205,15 @@
 
 
         <div class="evtCtnsBox evt_top" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_top.jpg" alt="올인원 경찰 패스"/>           
+            <img src="https://static.willbes.net/public/images/promotion/2023/01/2839_top.jpg" alt="맞춤형 공부"/>           
 		</div>
 
         <div class="evtCtnsBox evt_pro" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_pro.jpg" alt="올인원 총알경제학"/>           
+            <img src="https://static.willbes.net/public/images/promotion/2023/01/2839_pro.jpg" alt="올인원 총알경제학"/>           
+		</div>
+
+        <div class="evtCtnsBox evt_self" data-aos="fade-up">    
+            <img src="https://static.willbes.net/public/images/promotion/2023/01/2839_self_test.jpg" alt="셀프테스트"/>           
 		</div>
 
         <div class="evtCtnsBox evt_limit" data-aos="fade-up">    
@@ -233,7 +239,7 @@
                     </div>
                     <div>                    
                         <input type="radio" id="y_pkg4" name="y_pkg" value="202971"/>
-                        <label for="y_pkg4">M사 컴백홈 PASS 신청</label>
+                        <label for="y_pkg4">타사 환승 PASS 신청</label>
                     </div>
                 </div>
             </div>
@@ -251,8 +257,8 @@
             </div>
 
             <div class="title02" id="transfer">
-                신규가입 & 재수강 & M사환승 하실 수강생은 모두 주목!!
-                <div class="NSK-Black">최대 <span>27만원 혜택</span> 받고 구매하세요.</div>
+                신규가입 & 재수강 & 환승 하실 수강생은 모두 주목!!
+                <div class="NSK-Black">최대 <span>35만원 혜택</span> 받고 구매하세요.</div>
             </div>
 
             <div class="wrap">
@@ -415,7 +421,7 @@
                     <li><a href="#tab01" class="active">평생 0원 PASS</a></li>
                     <li><a href="#tab02">23년 2차 0원 PASS</a></li>
                     <li><a href="#tab03">24년1차 0원 PASS</a></li>
-                    <li><a href="#tab04">M사 컴백홈 PASS</a></li>               
+                    <li><a href="#tab04">타사 환승 PASS</a></li>               
                 </ul>
 
                 <div class="content_guide_box" id="tab01">
@@ -838,7 +844,7 @@
                 <div class="content_guide_box" id="tab04">
                     <dl>
                         <dt>
-                            <h3>M사 컴백홈 PASS</h3>
+                            <h3>타사 환승 PASS</h3>
                         </dt>
                         <dd>
                             <ol>
@@ -866,13 +872,13 @@
                         </dd>
 
                         <dt>
-                            <h3>M사 컴백홈 PASS 26만원 할인쿠폰 지급안내</h3>
+                            <h3>타사 환승 PASS 26만원 할인쿠폰 지급안내</h3>
                         </dt>
                         <dd>
                             <ol>
                                 <li>미래인재경찰학원에서 온라인인강을 듣고있는 회원대상 쿠폰이벤트 입니다. (단과 / 종합반 / PASS 모두해당)</li>
                                 <li>온라인 1:1 게시판으로 문의글 과 증빙자료를 보내주시면 담당자 확인후 회원님 ID로 쿠폰발급해드립니다. > <a href="https://www.willbes.net/classroom/qna/index" target="_blank"><span class="tx-red">온라인 1:1게시판 바로가기</span></a><br>
-                                    <span class="tx-red">예시) 게시판 제목 : M사 컴백홈 PASS 할인쿠폰 요청드립니다. 증빙서류 보내드립니다.</span><br>
+                                    <span class="tx-red">예시) 게시판 제목 : 타사 환승 PASS 할인쿠폰 요청드립니다. 증빙서류 보내드립니다.</span><br>
                                     * 위 예시처럼 작성요청<br>
                                     * 강의이력 캡쳐본 또는 증빙자료 필수 <br>
                                     * 평일 9시 ~ 17시 까지 발급가능 (주말제외 , 공휴일 제외)<br>

@@ -172,11 +172,11 @@
             </form>
         </div>
 
-        <div class="evtCtnsBox event02" id="reviewListWrap">
-        </div>
-
         <div class="evtCtnsBox event03">
             <img src="https://static.willbes.net/public/images/promotion/2023/01/2874_02.jpg"/>
+        </div>
+
+        <div class="evtCtnsBox event02" id="reviewListWrap">
         </div>
 
         <div class="evtCtnsBox evtInfo">

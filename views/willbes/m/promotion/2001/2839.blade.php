@@ -171,14 +171,14 @@
     <div class="evtCtnsBox evt_top" data-aos="fade-up">         
         <img src="https://static.willbes.net/public/images/promotion/2023/01/2839m_top.jpg" alt="맞춤형 공부" >                 
     </div>
-    
-    <div class="evtCtnsBox evt_pro" data-aos="fade-up">    
-        <img src="https://static.willbes.net/public/images/promotion/2023/01/2839m_pro.jpg" alt="올인원 총알경찰학"/>           
-    </div>
 
     <div class="evtCtnsBox evt_self" data-aos="fade-up">    
         <img src="https://static.willbes.net/public/images/promotion/2023/01/2839m_self_test.jpg" alt="셀프테스트"/>           
     </div>
+    
+    <div class="evtCtnsBox evt_pro" data-aos="fade-up">    
+        <img src="https://static.willbes.net/public/images/promotion/2023/01/2839m_pro.jpg" alt="올인원 총알경찰학"/>           
+    </div>    
 
     <div class="evtCtnsBox evt_limit" data-aos="fade-up">    
         <img src="https://static.willbes.net/public/images/promotion/2022/12/2839m_limit_event.jpg" alt="선착순 100명 한정 이벤트"/>           
@@ -212,8 +212,8 @@
             <div class="p_re">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2839m_02_04.png" alt="" > 
                 <div class="price NSK-Black">                       
-                    <input type="radio" id="y_pkg4" name="y_pkg" value="202971" onClick=""/>
-                    <label for="y_pkg4">M사 컴백홈 PASS 신청</label>
+                    <input type="radio" id="y_pkg4" name="y_pkg" value="204763" onClick=""/>
+                    <label for="y_pkg4">타사 환승 PASS 신청</label>
                 </div>
             </div>               
             <div class="ext01txt">
@@ -818,7 +818,7 @@
                     </dt>
                     <dd>
                         <ol>
-                            <li>미래인재경찰학원에서 온라인인강을 듣고있는 회원대상 쿠폰이벤트 입니다. (단과 / 종합반 / PASS 모두해당)</li>
+                            <li>타학원에서 온라인인강을 듣고있는 회원대상 쿠폰이벤트 입니다. (단과 / 종합반 / PASS 모두해당)</li>
                             <li>온라인 1:1 게시판으로 문의글 과 증빙자료를 보내주시면 담당자 확인후 회원님 ID로 쿠폰발급해드립니다. > <a href="https://www.willbes.net/classroom/qna/index" target="_blank"><span class="tx-red">온라인 1:1게시판 바로가기</span></a><br>
                                 <span class="tx-red">예시) 게시판 제목 : 타사 환승 PASS 할인쿠폰 요청드립니다. 증빙서류 보내드립니다.</span><br>
                                 * 위 예시처럼 작성요청<br>

@@ -73,7 +73,7 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
-            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/2834" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/12/1101_sky.jpg" alt="합격보장반"></a>
+            <a href="https://willbesedu.willbes.net/pass/promotion/index/cate/3126/code/2881" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/12/1101_sky.jpg" alt="합격보장반"></a>
         </div>
 
         <div class="evtCtnsBox wb_mp4" data-aos="fade-up">

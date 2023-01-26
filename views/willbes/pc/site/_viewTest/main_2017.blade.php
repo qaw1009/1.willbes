@@ -448,7 +448,7 @@
                 speed:400,
                 pause:3000,
                 sliderWidth:1120,
-                auto : false,
+                auto : true,
                 autoHover: true,
                 pagerCustom: '#MainRollingDiv',
                 controls:false,

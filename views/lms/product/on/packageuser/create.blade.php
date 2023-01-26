@@ -181,7 +181,7 @@
                                             <input type="checkbox" id="IsApply_{{$i}}" name="IsApply[]" value="{{$i}}" class="flat" @if($select_IsApply == 'Y') checked="checked" @endif></td>
                                         <td>
                                             <select name="DiscNum[]" id="DiscNum_{{$i}}" class="form-control">
-                                                @for($k=2;$k<9;$k++)
+                                                @for($k=2;$k<=12;$k++)
                                                     <option value="{{$k}}" @if($select_DiscNum == $k) selected="selected" @endif>{{$k}}</option>
                                                 @endfor
                                             </select>
@@ -868,7 +868,7 @@
                     if($('input:checkbox[name="IsApply[]"]').is(":checked") == false) {
                         alert('패키지할인 정보를 선택하여 주십시오.');$('input[name="IsApply[]"]:eq(0)').focus();return;
                     }
-                    for($i=1;$i<5;$i++){
+                    for($i=1;$i<8;$i++){
                         if ($('input:checkbox[id="IsApply_'+$i+'"]').is(":checked") == true) {
                             if($("#DiscRate_"+$i).val() == '') {
                                 alert('할인율을 입력하여 주십시오');$("#DiscRate_"+$i).focus();return;

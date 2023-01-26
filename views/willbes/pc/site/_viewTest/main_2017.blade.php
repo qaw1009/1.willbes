@@ -1,140 +1,236 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    <style type="text/css">
-        .ssam .willbes-Layer-ReplyBox-1120 .Layer-Cont {font-size:14px}
-        .ssam .MaintabList {background-color:rgba(0,0,0,.5)}
-        .ssam .VisualBox .MaintabFlex {width: 1120px; margin:0 auto; display:flex; justify-content: space-around; border-left:1px solid #fff}
-        .ssam .VisualBox .MaintabFlex span {
-            height: 50px;
-            font-size: 14px;
-            line-height: 50px;
-            width:calc(100%);
-        }
-        .ssam .VisualBox .MaintabFlex span a {color:#fff}
-        .ssam .VisualBox .MaintabFlex span a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            border-right:1px solid #fff
-        }
-        .ssam .VisualBox .MaintabFlex span a:hover {
-            background-color:rgba(255,255,255,.3); font-weight:bold
-        }
+<style type="text/css">
+/*Main Container : 상단 배너*/
+.ssam .MainVisual {
+    width: 100%;
+    min-width: 1120px;
+    max-width: 2000px;
+    height: 420px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+}
 
-        .ssam .noticeBanner {float:right; position:relative;}
-        .ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
-        .ssam .noticeBanner .HotnNew {width:540px; height:240px; overflow: hidden;}
-        .ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:110px}
+.ssam .MaintabBox {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -1000px;
+    width: 2000px;
+    min-width: 1120px;
+    max-width: 2000px;
+    height: 500px;
+    overflow: hidden;
+}
 
-        .ssam .noticeTabs {height:293px; overflow:hidden;}
-        .ssam .noticeWrap li a {display:block; color:#474747 !important; background:#ededed; padding:0 20px !important; text-align:center; font-weight:bold; border:3px solid #ededed !important; border-radius:20px; font-size:18px; line-height:26px !important; height:32px !important; vertical-align:middle}
-        .ssam .noticeWrap li a.on {border:3px solid #0c5dc0 !important; background:#fff; }
+.ssam .MaintabBox p {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin-top: -28px;
+    width: 32px;
+    height: 57px;
+    cursor: pointer;
+    background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;
+}
 
-        .ssam .noticeBox .List-Table {margin-top:20px !important;border-top:0 !important}
+.ssam .MaintabBox p a {
+    display: none;
+}
 
-        .ssam .profEvtBanner {width:1120px; margin:50px auto; position:relative;}
-        .ssam .profEvtBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
-        .ssam .profEvtBanner .bx-wrapper {max-width:1120px !important;}
-        .ssam .profEvtBanner .profEvt {height:250px !important; overflow: hidden; display:flex}
-        .ssam .profEvtBanner .profEvt > div {margin-right:15px; font-weight:bold; line-height:1.4; }
-        .ssam .profEvtBanner .profEvt a p {font-size:16px; color:#383838; margin:10px 0; padding:0 10px }
-        .ssam .profEvtBanner .profEvt a span {color:#adadad; font-size:14px; padding:0 10px }
-        .ssam .profEvtBanner .profEvt img {display:block; width:210px}
-        .ssam .profEvtBanner .ctrbtn {position:absolute; top:5px; left:200px}
+.ssam .MaintabBox p.leftBtn {
+    margin-left: -560px;
+}
 
-        .ssam .sec-prof {background:#9cb6c5 url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative; margin-top:40px}
-        .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
-        .ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}
+.ssam .MaintabBox p.rightBtn {
+    margin-left: 528px;
+    background-position: right center;
+}
 
-        .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
-        .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
-        /*
-        .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
-        .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
-        */
-        .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 100;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(50%, auto));
-            grid-template-rows: repeat(12, minmax(0, auto));
-            grid-auto-flow: column;
-            grid-gap: 0;
-            gap: 0;
-        }
-        /*ie 구버전용*/
-        _:-ms-lang(x), .prof-Tab {}
-        @@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-            .prof-Tab {
-                display: flex; justify-content: space-between;flex-wrap: wrap;
-            }
-            .prof-Tab li {flex: 1 1 40%;}
-        }
+.ssam .MaintabList {
+    position: absolute;
+    width: 100%;
+    top: 376px;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
-        .ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:32px; line-height:32px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
-        .ssam .sec-prof .prof-Tab li a span {font-size:12px; color:#0a2230; display:inline-block; width:67px; margin-right:2px; vertical-align:bottom; font-weight:bold;  text-align:left;}
-        .ssam .sec-prof .prof-Tab li a.active {background:#0a2230; width:140px; border:1px solid #0a2230; border-bottom:1px solid #638294}
-        .ssam .sec-prof .prof-Tab li a.active span {color:#8ca4b2}
-        .ssam .sec-prof .prof-Tab li a {content; display:block; clear:both}
-        .ssam .sec-prof .prof-Tab-Cts {position:relative; width:1120px; margin:0 auto;}
-        .ssam .sec-prof .prof-Tab-Cts .btnBox {position:absolute; top:195px; left:384px}
-        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a {display:inline-block; color:#fff; padding:4px 10px 4px 22px; margin-right:4px}
-        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(1) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon01.png")
-        no-repeat 5px center}
-        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(2) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon02.png")
-        no-repeat 5px center}
-        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(3) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon03.png")
-        no-repeat 5px center}
-        .ssam .sec-prof .prof-Tab-Cts .prof-clip-btn {margin-top:42px}
-        .ssam .sec-prof .prof-Tab-Cts .prof-clip-btn a {display:inline-block; margin-right:5px}
-        .ssam .sec-prof .prof-Tab-Cts .hotclip {position:absolute; top:225px; left:355px;}
+.ssam .VisualBox .MaintabFlex {
+    width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    border-left: 1px solid #fff
+}
 
-        .ssam .willbes-Layer-youtube {
-            display: none;
-            background:#000;
-            position: absolute;
-            top: 50px;
-            z-index: 110;
-            width: 860px;
-            height: 484px;
-            border: 1px solid #2f2f2f;
-            left: 50%;
-            margin-left: -445px;
-        }
-        .ssam .willbes-Layer-youtube .closeBtn {
-            position: absolute;
-            top: -33px;
-            right: -2px;
-        }
-        .ssam .willbes-Layer-youtube iframe {width:860px; height:484px}
+.ssam .VisualBox .MaintabFlex span {
+    font-size: 14px;
+    width: calc(100%);
+}
 
-        .ssam .willbes-Layer-ProfReply {
-            display: none;
-            background: #fff;
-            position: absolute;
-            top: 54px;
-            /*right: 0;*/
-            z-index: 110;
-            width: 890px;
-            border: 1px solid #2f2f2f;
-            padding: 20px 25px 30px;
-            left: 50%;
-            margin-left: -445px;
-        }
-        .ssam .willbes-Layer-ProfReply .Layer-Tit {
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 0;
-            padding: 20px 0 25px;
-            border-bottom: 2px solid #000;
-            margin-bottom:20px
-        }
-        .ssam .willbes-Layer-ProfReply .closeBtn {
-            position: absolute;
-            top: -1px;
-            right: -1px;
-        }
+.ssam .VisualBox .MaintabFlex span a {
+    color: #fff;
+    display: block;
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    border-right: 1px solid #fff
+}
 
-    </style>
+.ssam .VisualBox .MaintabFlex span a:hover {
+    background-color: rgba(255, 255, 255, .3);
+    font-weight: bold
+}
+
+
+
+.ssam .VisualBox .MaintabSlider li img {
+    width: 100%;
+    height: 100%;
+}
+
+.ssam .VisualBox .Maintab li a:hover,
+.ssam .VisualBox .Maintab li a.active {
+    color: #fff;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.ssam .noticeBanner {float:right; position:relative;}
+.ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
+.ssam .noticeBanner .HotnNew {width:540px; height:240px; overflow: hidden;}
+.ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:110px}
+
+.ssam .noticeTabs {height:293px; overflow:hidden;}
+.ssam .noticeWrap li a {display:block; color:#474747 !important; background:#ededed; padding:0 20px !important; text-align:center; font-weight:bold; border:3px solid #ededed !important; border-radius:20px; font-size:18px; line-height:26px !important; height:32px !important; vertical-align:middle}
+.ssam .noticeWrap li a.on {border:3px solid #0c5dc0 !important; background:#fff; }
+
+.ssam .noticeBox .List-Table {margin-top:20px !important;border-top:0 !important}
+
+.ssam .Layer-hnyoutube {
+    display: none;
+    background:#000;
+    position: absolute;
+    top: 650px;
+    z-index: 110;
+    width: 860px;
+    height: 484px;
+    border: 1px solid #2f2f2f;
+    left: 50%;
+    margin-left: -445px;
+}
+.ssam .Layer-hnyoutube .closeBtn {
+	position: absolute;
+	top: -33px;
+	right: -2px;
+}
+.ssam .Layer-hnyoutube iframe {width:860px; height:484px}
+
+.ssam .profEvtBanner {width:1120px; margin:50px auto; position:relative;}
+.ssam .profEvtBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
+.ssam .profEvtBanner .bx-wrapper {max-width:1120px !important;}
+.ssam .profEvtBanner .profEvt {height:250px !important; overflow: hidden; display:flex}
+.ssam .profEvtBanner .profEvt > div {margin-right:15px; font-weight:bold; line-height:1.4; }
+.ssam .profEvtBanner .profEvt a p {font-size:16px; color:#383838; margin:10px 0; padding:0 10px }
+.ssam .profEvtBanner .profEvt a span {color:#adadad; font-size:14px; padding:0 10px }
+.ssam .profEvtBanner .profEvt img {display:block; width:210px}
+.ssam .profEvtBanner .ctrbtn {position:absolute; top:5px; left:200px}
+
+.ssam .sec-prof {background:#9cb6c5 url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative; margin-top:40px}
+.ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
+.ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}
+
+.ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
+.ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
+/*
+.ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
+.ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
+*/
+.ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 100;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50%, auto));
+    grid-template-rows: repeat(12, minmax(0, auto));
+    grid-auto-flow: column;
+    grid-gap: 0;
+    gap: 0;
+}
+/*ie 구버전용*/
+_:-ms-lang(x), .prof-Tab {}
+@@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .prof-Tab {
+        display: flex; justify-content: space-between;flex-wrap: wrap;
+    }
+    .prof-Tab li {flex: 1 1 40%;}
+}
+
+.ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:32px; line-height:32px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
+.ssam .sec-prof .prof-Tab li a span {font-size:12px; color:#0a2230; display:inline-block; width:67px; margin-right:2px; vertical-align:bottom; font-weight:bold;  text-align:left;}
+.ssam .sec-prof .prof-Tab li a.active {background:#0a2230; width:140px; border:1px solid #0a2230; border-bottom:1px solid #638294}
+.ssam .sec-prof .prof-Tab li a.active span {color:#8ca4b2}
+.ssam .sec-prof .prof-Tab li a {content; display:block; clear:both}
+.ssam .sec-prof .prof-Tab-Cts {position:relative; width:1120px; margin:0 auto;}
+.ssam .sec-prof .prof-Tab-Cts .btnBox {position:absolute; top:195px; left:384px}
+.ssam .sec-prof .prof-Tab-Cts .prof-top-btn a {display:inline-block; color:#fff; padding:4px 10px 4px 22px; margin-right:4px}
+.ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(1) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon01.png")
+no-repeat 5px center}
+.ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(2) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon02.png")
+no-repeat 5px center}
+.ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(3) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon03.png")
+no-repeat 5px center}
+.ssam .sec-prof .prof-Tab-Cts .prof-clip-btn {margin-top:42px}
+.ssam .sec-prof .prof-Tab-Cts .prof-clip-btn a {display:inline-block; margin-right:5px}
+.ssam .sec-prof .prof-Tab-Cts .hotclip {position:absolute; top:225px; left:355px;}
+
+.ssam .willbes-Layer-youtube {
+    display: none;
+    background:#000;
+    position: absolute;
+    top: 50px;
+    z-index: 110;
+    width: 860px;
+    height: 484px;
+    border: 1px solid #2f2f2f;
+    left: 50%;
+    margin-left: -445px;
+}
+.ssam .willbes-Layer-youtube .closeBtn {
+    position: absolute;
+    top: -33px;
+    right: -2px;
+}
+.ssam .willbes-Layer-youtube iframe {width:860px; height:484px}
+
+.ssam .willbes-Layer-ProfReply {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 54px;
+    /*right: 0;*/
+    z-index: 110;
+    width: 890px;
+    border: 1px solid #2f2f2f;
+    padding: 20px 25px 30px;
+    left: 50%;
+    margin-left: -445px;
+}
+.ssam .willbes-Layer-ProfReply .Layer-Tit {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding: 20px 0 25px;
+    border-bottom: 2px solid #000;
+    margin-bottom:20px
+}
+.ssam .willbes-Layer-ProfReply .closeBtn {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+}
+
+</style>
 
     <!-- Container -->
     <div id="Container" class="Container ssam NGR c_both">

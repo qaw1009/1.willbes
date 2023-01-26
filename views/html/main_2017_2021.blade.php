@@ -2,6 +2,103 @@
 @section('content')
 <link href="/public/css/willbes/style_2018.css?ver={{time()}}" rel="stylesheet">
 <style type="text/css">
+/*Main Container : 상단 배너*/
+.ssam .MainVisual {
+    width: 100%;
+    min-width: 1120px;
+    max-width: 2000px;
+    height: 420px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.ssam .MaintabBox {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -1000px;
+    width: 2000px;
+    min-width: 1120px;
+    max-width: 2000px;
+    height: 500px;
+    overflow: hidden;
+}
+
+.ssam .MaintabBox p {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin-top: -28px;
+    width: 32px;
+    height: 57px;
+    cursor: pointer;
+    background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;
+}
+
+.ssam .MaintabBox p a {
+    display: none;
+}
+
+.ssam .MaintabBox p.leftBtn {
+    margin-left: -560px;
+}
+
+.ssam .MaintabBox p.rightBtn {
+    margin-left: 528px;
+    background-position: right center;
+}
+
+.ssam .MaintabList {
+    position: absolute;
+    width: 100%;
+    top: 376px;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ssam .VisualBox .MaintabFlex {
+    width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    border-left: 1px solid #fff
+}
+
+.ssam .VisualBox .MaintabFlex span {
+    font-size: 14px;
+    width: calc(100%);
+}
+
+.ssam .VisualBox .MaintabFlex span a {
+    color: #fff;
+    display: block;
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    border-right: 1px solid #fff
+}
+
+.ssam .VisualBox .MaintabFlex span a:hover {
+    background-color: rgba(255, 255, 255, .3);
+    font-weight: bold
+}
+
+
+
+.ssam .VisualBox .MaintabSlider li img {
+    width: 100%;
+    height: 100%;
+}
+
+.ssam .VisualBox .Maintab li a:hover,
+.ssam .VisualBox .Maintab li a.active {
+    color: #fff;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+}
+
 .ssam .noticeBanner {float:right; width:550px; position:relative;}
 .ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
 .ssam .noticeBanner .bx-wrapper {max-width:550px !important; }
@@ -15,6 +112,25 @@
 
 .ssam .noticeBox .List-Table {margin-top:20px !important;border-top:0 !important}
 
+.ssam .Layer-hnyoutube {
+	display: none;
+	background:#000;
+	position: absolute;
+	top: 650px;
+	z-index: 110;
+	width: 860px;
+	height: 484px;
+	border: 1px solid #2f2f2f;
+	left: 50%;
+	margin-left: -445px;
+}
+.ssam .Layer-hnyoutube .closeBtn {
+	position: absolute;
+	top: -33px;
+	right: -2px;
+}
+.ssam .Layer-hnyoutube iframe {width:860px; height:484px}
+
 
 .ssam .profEvtBanner {width:1120px; margin:50px auto; position:relative;}
 .ssam .profEvtBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
@@ -27,19 +143,39 @@
 .ssam .profEvtBanner .ctrbtn {position:absolute; top:5px; left:200px}
 
 
-.ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
+
+.ssam .sec-prof {background:#9cb6c5 url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative; margin-top:40px}
 .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
 .ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}
-.ssam .sec-prof .prof-Tab {position:absolute; top:24px; left:50px; width:300px; z-index: 900;}
 
+.ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
 .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
-.ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:35px; line-height:35px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
-.ssam .sec-prof .prof-Tab li a span {font-size:13px; color:#0a2230; display:inline-block; width:67px; margin-right:2px; vertical-align:bottom; font-weight:bold;  text-align:left;}
-.ssam .sec-prof .prof-Tab li a.active {width:130px; background:#0a2230; width:140px; border:1px solid #0a2230; border-bottom:1px solid #638294}
+/*
+.ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
+.ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
+*/
+.ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 100; 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(50%, auto)); 
+    grid-template-rows: repeat(12, minmax(0, auto)); 
+    grid-auto-flow: column;
+    grid-gap: 0;
+    gap: 0; 
+}
+/*ie 구버전용*/
+_:-ms-lang(x), .prof-Tab {}
+@@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+.prof-Tab {
+    display: flex; justify-content: space-between;flex-wrap: wrap;
+    }
+    .prof-Tab li {flex: 1 1 40%;}
+}
+.ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:32px; line-height:32px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
+.ssam .sec-prof .prof-Tab li a span {font-size:12px; color:#0a2230; display:inline-block; width:67px; margin-right:2px; vertical-align:bottom; font-weight:bold;  text-align:left;}
+.ssam .sec-prof .prof-Tab li a.active {background:#0a2230; width:140px; border:1px solid #0a2230; border-bottom:1px solid #638294}
 .ssam .sec-prof .prof-Tab li a.active span {color:#8ca4b2}
-.ssam .sec-prof .prof-Tab li a,
-.ssam .sec-prof .prof-Tab:after {content; display:block; clear:both}
-.ssam .sec-prof .prof-Tab-Cts {position:relative; width:1120px; margin:0 auto}
+.ssam .sec-prof .prof-Tab li a {content; display:block; clear:both}
+.ssam .sec-prof .prof-Tab-Cts {position:relative; width:1120px; margin:0 auto;}
 .ssam .sec-prof .prof-Tab-Cts .btnBox {position:absolute; top:195px; left:384px}
 .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a {display:inline-block; color:#fff; padding:4px 10px 4px 22px; margin-right:4px}
 .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(1) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon01.png") 
@@ -53,49 +189,49 @@ no-repeat 5px center}
 .ssam .sec-prof .prof-Tab-Cts .hotclip {position:absolute; top:225px; left:355px;}
 
 .ssam .willbes-Layer-youtube {
-	display: none;
-	background:#000;
-	position: absolute;
-	top: 50px;
-	z-index: 110;
-	width: 860px;
-	height: 484px;
-	border: 1px solid #2f2f2f;
-	left: 50%;
-	margin-left: -445px;
+    display: none;
+    background:#000;
+    position: absolute;
+    top: 50px;
+    z-index: 110;
+    width: 860px;
+    height: 484px;
+    border: 1px solid #2f2f2f;
+    left: 50%;
+    margin-left: -445px;
 }
 .ssam .willbes-Layer-youtube .closeBtn {
-	position: absolute;
-	top: -33px;
-	right: -2px;
+    position: absolute;
+    top: -33px;
+    right: -2px;
 }
 .ssam .willbes-Layer-youtube iframe {width:860px; height:484px}
 
 .ssam .willbes-Layer-ProfReply {
-	display: none;
-	background: #fff;
-	position: absolute;
-	top: 54px;
-	/*right: 0;*/
-	z-index: 110;
-	width: 890px;
-	border: 1px solid #2f2f2f;
-	padding: 20px 25px 30px;
-	left: 50%;
-	margin-left: -445px;
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 54px;
+    /*right: 0;*/
+    z-index: 110;
+    width: 890px;
+    border: 1px solid #2f2f2f;
+    padding: 20px 25px 30px;
+    left: 50%;
+    margin-left: -445px;
 }
 .ssam .willbes-Layer-ProfReply .Layer-Tit {
-	font-size: 18px;
-	font-weight: 600;
-	letter-spacing: 0;
-	padding: 20px 0 25px;
-	border-bottom: 2px solid #000;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding: 20px 0 25px;
+    border-bottom: 2px solid #000;
     margin-bottom:20px
 }
 .ssam .willbes-Layer-ProfReply .closeBtn {
-	position: absolute;
-	top: -1px;
-	right: -1px;
+    position: absolute;
+    top: -1px;
+    right: -1px;
 }
 
 /*중간 교수진 영역*/
@@ -106,15 +242,15 @@ no-repeat 5px center}
 .prof-dropdown:hover {background:#fff}
 .prof-dropdown:hover > a {color:#0a2230}
 .prof-dropdown:hover .prof-list-drop-Box {
-	display: block;
+    display: block;
 }
 .prof-list-drop-Box {
-	display: none;
-	position: absolute;
-	background: #fff;
+    display: none;
+    position: absolute;
+    background: #fff;
     left:169px;
     top:0;
-	width: 150px;
+    width: 150px;
     height: 281px;
     border:1px solid #668597; border-left:0;
 }
@@ -153,7 +289,7 @@ no-repeat 5px center}
 <!-- Container -->
 <div id="Container" class="Container ssam NGR c_both">
 
-
+    {{--
     <div class="d-day NSK">
         <div class="d-day-wrap">
 
@@ -166,7 +302,7 @@ no-repeat 5px center}
 
         </div>
     </div>
-    
+    --}}   
 
     <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
         <div class="Section widthAuto p_re">            
@@ -209,7 +345,7 @@ no-repeat 5px center}
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">교원임용<span class="row-line">|</span></li>
-                <li class="subTit">윌비스 임용</li>
+                <li class="subTit">윌비스임용</li>
             </ul>
             <ul class="menu-List">
                 <li>
@@ -380,6 +516,7 @@ no-repeat 5px center}
         </h3>
     </div>
 
+    {{--
     <div class="Section">
         <div class="d-day-wrap">
             <div class="package NSK">
@@ -388,15 +525,16 @@ no-repeat 5px center}
             </div>
         </div>
     </div>
+    --}}
 
-    <div class="Section MainVisual">
+    <div class="Section MainVisual mt20">
         <div class="VisualBox p_re">            
             <div id="MainRollingSlider" class="MaintabBox">
                 <ul class="MaintabSlider">
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_01.jpg" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_02.jpg" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_03.jpg" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_04.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2000x420_01.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2000x420_02.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2000x420_03.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2000x420_04.jpg" alt="배너명"></a></li>
                 </ul>                  
                 <p class="leftBtn" id="imgBannerLeft"><a href="#none">이전</a></p>
                 <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p> 
@@ -455,12 +593,21 @@ no-repeat 5px center}
                     <a class="rightBtn" id="HotnNewRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
                 </div>
                 <div class="bSlider HotnNew">
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>                  
+                    <div><a onclick="openWin('sec-hnyou-layer'),openWin('hnyoutube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
+                    <div><a onclick="openWin('sec-hnyou-layer'),openWin('hnyoutube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>
+                    <div><a onclick="openWin('sec-hnyou-layer'),openWin('hnyoutube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
+                    <div><a onclick="openWin('sec-hnyou-layer'),openWin('hnyoutube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>                  
                 </div>              
             </div>
+
+            {{--HOT & NEW youtube 팝업 --}}
+            <div id="hnyoutube" class="Layer-hnyoutube">
+                <a class="closeBtn" href="#none" onclick="closeWin('sec-hnyou-layer'),closeWin('hnyoutube')">
+                    <img src="{{ img_url('prof/close.png') }}">
+                </a>
+                <iframe src="https://www.youtube.com/embed/Y2W3lUrn3aI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                
+            </div>
+            <div id="sec-hnyou-layer" class="willbes-Layer-Black"></div>
         </div>
     </div> 
 
@@ -546,73 +693,30 @@ no-repeat 5px center}
             </div>
     </div>
 
-    <div class="Section sec-prof mt40">
+    <div class="Section sec-prof">
         <div class="sec-prof-title"><img src="https://static.willbes.net/public/images/promotion/main/2018/title01.jpg" title="교수진"></div>
         <div class="widthAuto p_re NSK">
-
-            <ul class="ssam-prof-List">
-                <li class="prof-dropdown">
-                    <a href="#none">유·초등</a>
-                    <div class="prof-list-drop-Box">
-                        <ul>
-                            <li><a href="#none">유아 <strong>민정선</strong></a></li>
-                            <li><a href="#none">초등 <strong>배재민</strong></a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="prof-dropdown">
-                    <a href="#none">교육학논술</a>
-                    <div class="prof-list-drop-Box">
-                        <ul>
-                            <li><a href="#none">교육학 <strong>이경범</strong></a></li>
-                            <li><a href="#none">교육학 <strong>이인재</strong></a></li>
-                            <li><a href="#none">교육학 <strong>정현</strong></a></li>
-                            <li><a href="#none">교육학 <strong>홍의일</strong></a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="prof-dropdown">
-                    <a href="#none">중등(국·영·수)</a>
-                    <div class="prof-list-drop-Box">
-                        <ul>
-                            <li><a href="#none">국어 <strong>송원영</strong></a></li>
-                            <li><a href="#none">국어 <strong>권보민</strong></a></li>
-                            <li><a href="#none">국어 <strong>구동언</strong></a></li>
-                            <li><a href="#none">영어 <strong>김유석</strong></a></li>
-                            <li><a href="#none">영어 <strong>김영문</strong></a></li>
-                            <li><a href="#none">수학 <strong>김철홍</strong></a></li>
-                            <li><a href="#none">수학 <strong>박태영</strong></a></li>
-                            <li><a href="#none">수학 <strong>박혜향</strong></a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="prof-dropdown">
-                    <a href="#none">중등(사회·과학)</a>
-                    <div class="prof-list-drop-Box">
-                        <ul>
-                            <li><a href="#none">일반사회 <strong>허역팀</strong></a></li>
-                            <li><a href="#none">생물 <strong>강치욱</strong></a></li>
-                            <li><a href="#none">생물 <strong>양혜정</strong></a></li>
-                            <li><a href="#none">화학 <strong>강철</strong></a></li>
-                            <li><a href="#none">도덕윤리 <strong>김병찬</strong></a></li>
-                            <li><a href="#none">도덕윤리 <strong>김민응</strong></a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="prof-dropdown">
-                    <a href="#none">중등(음·체·전산·중국어)</a>
-                    <div class="prof-list-drop-Box">
-                        <ul>
-                            <li><a href="#none">음악 <strong>다이애나</strong></a></li>
-                            <li><a href="#none">체육 <strong>체규훈</strong></a></li>
-                            <li><a href="#none">전기전자통신 <strong>최우영</strong></a></li>
-                            <li><a href="#none">정보컴퓨터 <strong>송광진</strong></a></li>
-                            <li><a href="#none">정보컴퓨터 <strong>장순선</strong></a></li>
-                            <li><a href="#none">중국어 <strong>장영희</strong></a></li>
-                            <li><a href="#none">중국어 <strong>정경미</strong></a></li>
-                        </ul>
-                    </div>
-                </li>
+            <ul class="prof-Tab" id="profRolling">
+                <li><a data-slide-index="0" href="javascript:void(0);" class="active"><span>유아</span>민정선</a></li>
+                <li><a data-slide-index="1" href="javascript:void(0);"><span>초등</span>배재민</a></li>
+                <li><a data-slide-index="3" href="javascript:void(0);"><span>교육학</span>홍의일</a></li>
+                <li><a data-slide-index="4" href="javascript:void(0);"><span>전공국어</span>송원영</a></li>
+                <li><a data-slide-index="5" href="javascript:void(0);"><span>전공국어</span>권보민</a></li>
+                <li><a data-slide-index="6" href="javascript:void(0);"><span>전공영어</span>김유석</a></li>
+                <li><a data-slide-index="7" href="javascript:void(0);"><span>전공영어</span>김영문</a></li>
+                <li><a data-slide-index="8" href="javascript:void(0);"><span>전공수학</span>김철홍</a></li>
+                <li><a data-slide-index="9" href="javascript:void(0);"><span>수학교육론</span>박태영</a></li>
+                <li><a data-slide-index="10" href="javascript:void(0);"><span>전공생물</span>강치욱</a></li>
+                <li><a data-slide-index="11" href="javascript:void(0);"><span>생물교육론</span>양혜정</a></li>
+                <li><a data-slide-index="12" href="javascript:void(0);"><span>도덕윤리</span>김병찬</a></li>
+                <li><a data-slide-index="13" href="javascript:void(0);"><span>전공역사</span>최용림</a></li>
+                <li><a data-slide-index="14" href="javascript:void(0);"><span>전공음악</span>다이애나</a></li>
+                <li><a data-slide-index="15" href="javascript:void(0);"><span>전기전자통신</span>최우영</a></li>
+                <li><a data-slide-index="16" href="javascript:void(0);"><span>정보컴퓨터</span>송광진</a></li>
+                <li><a data-slide-index="17" href="javascript:void(0);"><span>정컴교육론</span>장순선</a></li>
+                <li><a data-slide-index="18" href="javascript:void(0);"><span>전공중국어</span>정경미</a></li>
+                <li><a data-slide-index="19" href="javascript:void(0);"><span>수학교육론</span>박태영</a></li>
+                <li><a data-slide-index="20" href="javascript:void(0);"><span>전공생물</span>강치욱</a></li>
             </ul>
 
             <div class="prof-Tab-Wrap" id="profRollingSlider">
@@ -628,7 +732,7 @@ no-repeat 5px center}
                         </div>
                     </div>
                     <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51076.jpg" title="유아 민정선" class="prof-img">
+                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51076?cate_code=3135&subject_idx=1981"><img src="https://static.willbes.net/public/images/promotion/main/2018/51076.jpg" title="유아 민정선"></a>
                 </div>
 
                 <div class="prof-Tab-Cts" id="tab02">
@@ -3436,7 +3540,7 @@ no-repeat 5px center}
             speed:400,
             pause:3000,
             sliderWidth:1120,
-            auto : false,	
+            auto : true,	
             autoHover: true,						
             pagerCustom: '#MainRollingDiv',
             controls:false, 				

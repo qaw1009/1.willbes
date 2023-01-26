@@ -598,7 +598,7 @@ no-repeat 5px center}
                     slideWidth:210,
                     slideMargin:0,
                     autoHover: true,
-                    moveSlides:5,
+                    moveSlides:1,
                 });
                 $("#pebLeft").click(function (){
                     peImg1.goToNextSlide();

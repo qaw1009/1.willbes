@@ -114,12 +114,12 @@
     margin-bottom: 18px;
 }
 
-/*Main Container : 상단 배너*/
+/*Main Container : 상단 배너
 .ssam .MainVisual {
     width: 100%;
     min-width: 1120px;
     max-width: 2000px;
-    height: 500px;
+    height: 420px;
     overflow: hidden;
     position: relative;
     margin: 0 auto;
@@ -164,9 +164,8 @@
 
 .ssam .MaintabList {
     position: absolute;
-    top: 450px;
     width: 100%;
-    height: 50px;
+    top: 376px;
     z-index: 99;
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -180,20 +179,16 @@
 }
 
 .ssam .VisualBox .MaintabFlex span {
-    height: 50px;
     font-size: 14px;
-    line-height: 50px;
     width: calc(100%);
 }
 
 .ssam .VisualBox .MaintabFlex span a {
-    color: #fff
-}
-
-.ssam .VisualBox .MaintabFlex span a {
+    color: #fff;
     display: block;
     width: 100%;
-    height: 100%;
+    height: 44px;
+    line-height: 44px;
     border-right: 1px solid #fff
 }
 
@@ -215,6 +210,7 @@
     font-weight: bold;
     background: rgba(0, 0, 0, 0.5);
 }
+*/
 
 .ssam .smallTit {
     border-top: 1px solid #b8b8b8;

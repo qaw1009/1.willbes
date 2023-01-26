@@ -28,8 +28,15 @@
                         <div class="group-content">
                             <div class="form-group">
                                 <label class="control-label col-md-2" for="title{{$i}}">문항 {{$i}}</label>
-                                <div class="col-md-9">
+                                <div class="col-md-8">
                                     <input type="text" id="title{{$i}}" name="title[]" class="form-control" title="문항 {{$i}}" value="{{ $data['Title_'.$i] }}">
+                                </div>
+                                <div class="col-md-2 form-inline">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="flat" id="is_required_{{$i}}" name="is_required[{{$i-1}}]"
+                                               value="Y" {{ (explode(',',$data['IsRequired'])[$i-1] == 'Y' ? 'checked="checked"' : '') }}>
+                                        <label for="is_required_{{$i}}">필수여부</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">

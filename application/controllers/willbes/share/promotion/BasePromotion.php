@@ -193,11 +193,6 @@ class BasePromotion extends \app\controllers\FrontController
         // 이벤트 추가신청정보 조회
         $arr_base['add_apply_data'] = $this->eventFModel->listEventPromotionForAddApply($data['ElIdx']);
 
-        // 문제복기 데이터 조회
-        if(empty($arr_promotion_params['exam_recall_type']) === false && $arr_promotion_params['exam_recall_type'] == 'Y') {
-            $arr_base['recall_data'] = $this->eventFModel->listEventPromotionForRecall($data['PromotionCode'], $this->session->userdata('mem_idx'));
-        }
-
         $arr_base['add_apply_member_login_count'] = 0;
         $register_count = '';
         $apply_result = null;
@@ -1001,10 +996,38 @@ class BasePromotion extends \app\controllers\FrontController
     }
 
     /**
+     * 문제복기 view ajax
+     */
+    public function viewRecallAjax($params = [])
+    {
+        if (empty($params[0]) === true || !is_numeric($params[0])) {
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
+
+        $promotion_code = $params[0];
+        $data = $this->eventFModel->listEventPromotionForRecall($promotion_code, $this->session->userdata('mem_idx'));
+        if (empty($data) === true) {
+            show_alert('조회된 문제복기 데이터가 없습니다.', 'back');
+        }
+
+        $this->load->view('promotion/view_recall_ajax', [
+            'promotion_code' => $promotion_code
+            ,'login_url' => $this->_reqG('login_url')
+            ,'data' => $data
+        ]);
+    }
+
+    /**
      * 문제복기 등록
      */
     public function storePromotionRecall()
     {
+        $recall_data = $this->eventFModel->listEventPromotionForRecall($this->_reqP('promotion_code'), $this->session->userdata('mem_idx'));
+        if (empty($recall_data) === true) {
+            $this->json_error('조회된 문제복기 데이터가 없습니다. 다시 시도해주세요.');
+            return;
+        }
+
         $rules = [
             ['field' => 'promotion_code', 'label' => '프로모션코드', 'rules' => 'trim|required|integer'],
             ['field' => 'recall_question_id', 'label' => '문제복기식별자', 'rules' => 'trim|required|integer'],
@@ -1013,10 +1036,12 @@ class BasePromotion extends \app\controllers\FrontController
             ['field' => 'exam_area_name', 'label' => '응시지역', 'rules' => 'trim|required']
         ];
 
-        for($i=1; $i<=$this->_reqP('recall_params_cnt'); $i++) {
-            if($i !== 4 && $i !== 5) {  /* TODO 4,5번 항목 선택사항으로 수정 */
+        $arr_isrequired = explode(',',$recall_data['IsRequired']);
+        foreach ($arr_isrequired as $key => $val) {
+            $num = $key+1;
+            if ($val == 'Y') {
                 $rules = array_merge($rules, [
-                    ['field' => 'recall_content_'.$i, 'label' => '자료', 'rules' => 'trim|required']
+                    ['field' => 'recall_content_'.$num, 'label' => '문제복기', 'rules' => 'trim|required']
                 ]);
             }
         }

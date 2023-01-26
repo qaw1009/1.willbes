@@ -1587,7 +1587,7 @@ class EventLectureModel extends WB_Model
         ];
 
         $column = '
-            RecallQuestionIdx,PromotionCode,TitleUseCount
+            RecallQuestionIdx,PromotionCode,TitleUseCount,IsRequired
             ,Title_1,Title_2,Title_3,Title_4,Title_5,Title_6,Title_7,Title_8,Title_9,Title_10
             ,PlaceHolder_1,PlaceHolder_2,PlaceHolder_3,PlaceHolder_4,PlaceHolder_5,PlaceHolder_6,PlaceHolder_7,PlaceHolder_8,PlaceHolder_9,PlaceHolder_10
         ';
@@ -1775,8 +1775,13 @@ class EventLectureModel extends WB_Model
         foreach ($form_data['title'] as $key => $val) {
             $input_data['Title_'.$i] = $val;
             $input_data['PlaceHolder_'.$i] = element('placeholder', $form_data)[$key];
+            $arr_required[$key] = (empty(element('is_required', $form_data)[$key]) === false && empty($val) === false) ? element('is_required', $form_data)[$key] : 'N';
             $i++;
         }
+        $input_data = array_merge($input_data, [
+            'IsRequired' => implode(',',$arr_required)
+        ]);
+
         return $input_data;
     }
 

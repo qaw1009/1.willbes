@@ -747,7 +747,7 @@ class EventLecture extends \app\controllers\BaseController
 
         $count = $this->eventLectureModel->listPromotionRecallMember(true, $title_use_count, $arr_condition);
         if ($count > 0) {
-            $list = $this->eventLectureModel->listPromotionRecallMember(false, $title_use_count, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
+            $list = $this->eventLectureModel->listPromotionRecallMember(false, $title_use_count, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.RecallMemberIdx' => 'ASC']);
         }
 
         return $this->response([
@@ -789,7 +789,7 @@ class EventLecture extends \app\controllers\BaseController
             ]
         ];
         $arr_condition['BDT'] = ['a.RegDatm' => [$this->_reqP('search_member_start_date'), $this->_reqP('search_member_end_date')]];
-        $list = $this->eventLectureModel->listPromotionRecallMember('excel', $title_use_count, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
+        $list = $this->eventLectureModel->listPromotionRecallMember('excel', $title_use_count, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.RecallMemberIdx' => 'ASC']);
 
         /*----  다운로드 정보 저장  ----*/
         $download_query = $this->eventLectureModel->getLastQuery();

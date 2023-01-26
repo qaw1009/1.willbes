@@ -2352,7 +2352,7 @@ class EventFModel extends WB_Model
     public function listEventPromotionForRecall($promotion_code, $mem_idx)
     {
         $column = '
-            a.RecallQuestionIdx, a.PromotionCode, a.TitleUseCount
+            a.RecallQuestionIdx, a.PromotionCode, a.TitleUseCount, a.IsRequired
             ,a.Title_1, a.Title_2, a.Title_3, a.Title_4, a.Title_5, a.Title_6, a.Title_7, a.Title_8, a.Title_9, a.Title_10
             ,a.PlaceHolder_1, a.PlaceHolder_2, a.PlaceHolder_3, a.PlaceHolder_4, a.PlaceHolder_5, a.PlaceHolder_6, a.PlaceHolder_7, a.PlaceHolder_8, a.PlaceHolder_9, a.PlaceHolder_10
             ,b.RecallMemberIdx, b.MemIdx, b.ExamSubjectName, b.ExamAreaName

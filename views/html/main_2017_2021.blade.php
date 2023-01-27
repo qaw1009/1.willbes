@@ -593,7 +593,7 @@ no-repeat 5px center}
                     <a class="rightBtn" id="HotnNewRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
                 </div>
                 <div class="bSlider HotnNew">
-                    <div><a {{--onclick="openWin('sec-hnyou-layer'),openWin('hnyoutube')"--}} class="btnYoutubeLayerBox" data-youtube-code="vMDATFJKb7o"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
+                    <div><a onclick="openWin('sec-hnyou-layer'),openWin('hnyoutube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
                     <div><a onclick="openWin('sec-hnyou-layer'),openWin('hnyoutube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>
                     <div><a onclick="openWin('sec-hnyou-layer'),openWin('hnyoutube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_01.jpg" alt="배너명"></a></div>
                     <div><a onclick="openWin('sec-hnyou-layer'),openWin('hnyoutube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_260x240_02.jpg" alt="배너명"></a></div>                  
@@ -601,13 +601,13 @@ no-repeat 5px center}
             </div>
 
             {{--HOT & NEW youtube 팝업 --}}
-            {{--<div id="hnyoutube" class="Layer-hnyoutube">
+            <div id="hnyoutube" class="Layer-hnyoutube">
                 <a class="closeBtn" href="#none" onclick="closeWin('sec-hnyou-layer'),closeWin('hnyoutube')">
                     <img src="{{ img_url('prof/close.png') }}">
                 </a>
                 <iframe src="https://www.youtube.com/embed/Y2W3lUrn3aI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                
             </div>
-            <div id="sec-hnyou-layer" class="willbes-Layer-Black"></div>--}}
+            <div id="sec-hnyou-layer" class="willbes-Layer-Black"></div>
         </div>
     </div> 
 
@@ -3498,16 +3498,6 @@ no-repeat 5px center}
     </div>
     <div id="LayerTrend" class="willbes-Layer-Black"></div>    
     <!-- // willbes-Layer-Trend -->
-
-    {{--<div>
-    <div id="hnyoutube" class="Layer-hnyoutube">
-        <a class="closeBtn" href="#none" onclick="closeWin('sec-hnyou-layer'),closeWin('hnyoutube')">
-            <img src="{{ img_url('prof/close.png') }}">
-        </a>
-        <iframe src="https://www.youtube.com/embed/Y2W3lUrn3aI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    <div id="sec-hnyou-layer" class="willbes-Layer-Black"></div>
-    </div>--}}
 </div>
 <!-- End Container -->
 

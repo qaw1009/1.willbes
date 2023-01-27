@@ -285,3 +285,26 @@ function dDayTimer(end_date, end_time, eleid_day, eleid_time) {
         }
     }, 100);
 }
+
+// banner 버튼 : 버튼 타입이 youtube인 경우 호출
+$(function() {
+    $('.btnYoutubeLayerBox').on('click', function(e) {
+        var youtube_code = $(this).data("youtube-code");
+        var _html = '';
+        _html += '<div><div id="hnyoutube" class="Layer-hnyoutube">';
+        _html += '<a class="closeBtn" href="javascript:void(0);" onclick="initOpenLayerYoutubeBox()">';
+        _html += '<img src="/public/img/willbes/prof/close.png">';
+        _html += '</a>';
+        _html += '<iframe src="https://www.youtube.com/embed/'+youtube_code+'?rel=0&modestbranding=1&showinfo=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        _html += '</div>';
+        _html += '<div id="sec-hnyou-layer" class="willbes-Layer-Black"></div></div>';
+
+        //최상위 DIV기준으로 append
+        $("#Container").append(_html);
+        openWin('sec-hnyou-layer');openWin('hnyoutube');
+    });
+});
+
+function initOpenLayerYoutubeBox() {
+    $(".Layer-hnyoutube").parent("div").remove();
+}

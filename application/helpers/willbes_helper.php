@@ -114,6 +114,12 @@ if (!function_exists('banner_html')) {
                     $link_url = app_to_env_url($row['LinkUrl']) . '/event/popupRegistCreateByBanner?banner_idx=' . $row['BIdx'];
                     $a_start = $tag_html.'<a href="#none" onclick="event_layer_popup(\'' . $link_url . '\');" class="' . $a_class . '">';
                     $a_end = '</a><div id="APPLYPASS" class="willbes-Layer-Black"></div>';
+
+                } else if ($row['LinkType'] == 'youtube') {
+                    $link_url = $row['LinkUrl'];
+                    $a_start = $tag_html.'<a href="javascript:void(0);" class="' . $a_class . ' btnYoutubeLayerBox" data-youtube-code="'.$link_url.'">';
+                    $a_end = '</a>';
+
                 } else {
                     $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www');
                     $a_end = '</a>';

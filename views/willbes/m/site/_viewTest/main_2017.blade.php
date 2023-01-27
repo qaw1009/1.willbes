@@ -423,7 +423,7 @@
                 spaceBetween: 0,
                 slidesPerGroup: 1,
                 loop: true,
-                loopFillGroupWithBlank: false,
+                loopFillGroupWithBlank: true,
                 autoplay: {
                     delay: 3000,
                     disableOnInteraction: false,

@@ -24,14 +24,8 @@
     }
 
     /*교수별이벤트 */
-    .ssam .profEvt,
-    .ssam .profEvt .swiper-wrapper,
-    .ssam .profEvt .swiper-slide {
-        height: auto;
-        width: 100% !important;
-    }
     .ssam .profEvt {margin-top:5vh}
-    .ssam .profEvt .swiper-wrapper {margin-top:1vh}
+    .ssam .profEvt .swiper-wrapper {display: flex; height: auto;}
     .ssam .profEvt .swiper-button-next,
     .ssam .profEvt .swiper-button-prev {
         position: static;
@@ -46,20 +40,20 @@
 
     .ssam .profEvt .swiper-button-next,
     .ssam .profEvt .swiper-container-rtl .swiper-button-prev {
-        background:#ccc url("https://static.willbes.net/public/images/promotion/m/icon_arrowR.png") no-repeat center center;
+        background:#ccc url("https://static.willbes.net/public/images/promotion/m/icon_arrowL.png") no-repeat center center;
     }
 
     .ssam .profEvt .swiper-button-prev,
     .ssam .profEvt .swiper-container-rtl .swiper-button-next {
-        background:#ccc url("https://static.willbes.net/public/images/promotion/m/icon_arrowL.png") no-repeat center center;
+        background:#ccc url("https://static.willbes.net/public/images/promotion/m/icon_arrowR.png") no-repeat center center;
     }
 
     .ssam .profEvt .swiper-button-next.swiper-button-disabled,
     .ssam .profEvt .swiper-button-prev.swiper-button-disabled {
         pointer-events: auto;
     }
-    .ssam .profEvt .swiper-slide {padding:0 2vh; display:flex; justify-content: space-between;}
-    .ssam .profEvt a {display:inline-block; margin:0 0.5vh; text-align:left; max-width:320px}
+    .ssam .profEvt .swiper-wrapper .swiper-slide {padding:0 2vh; width:50% !important; margin-top:1vh}
+    .ssam .profEvt a {display:block; margin:0 0.5vh; text-align:left; max-width:320px}
     .ssam .profEvt a p {font-size:1.8vh; color:#383838; margin:1vh 0; padding:0 1vh;  }
     .ssam .profEvt a span {color:#adadad; font-size:1.6vh; padding:0 10px }
 
@@ -290,8 +284,8 @@
         <div class="profEvt swiper-container swiper-container-arrow">
             <div class="mainTit NSK-Black">          
                 교수별 <span class="tx-main">이벤트 & 특강안내</span> 
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>             
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>                             
             </div>
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -421,6 +415,19 @@
                     el: '.swiper-pagination',
                     clickable: true,
                 },
+            });
+
+            //교수별 이벤트
+            var swiper_review = new Swiper ('.swiper-container-arrow', {
+                slidesPerView: 'auto',
+                spaceBetween: 0,
+                slidesPerGroup: 1,
+                loop: true,
+                loopFillGroupWithBlank: false,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }, //3초에 한번씩 자동 넘김            
             });
 
             //맛보기강의

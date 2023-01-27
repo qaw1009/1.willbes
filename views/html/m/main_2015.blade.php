@@ -5,15 +5,14 @@
     .gosiTitle {
         font-size: 2.2vh;
         text-align: center;
-        padding: 5vh 0 2vh;
+        padding: 7vh 0 2vh;
         word-break: keep-all;
         line-height: 1.2;
     }
     .swiper-sec06-Wrap {
         position: relative;
         overflow: hidden;
-        padding:0 0 6vh;
-        margin-top:5vh;
+        margin-top:7vh;
     }
     .swiper-sec06-Wrap .gosiTitle {
         padding: 0 0 20px;
@@ -142,13 +141,13 @@
                 <div class="add">
                     <p>서울 동작구 만양로 105 한성빌딩 2층</p>
                     <p>1544-0330</p>
-                    <a href="#none">실시간 상담신청 ></a>
+                    <a href="https://open.kakao.com/o/sYbXiXWe" target="_blank">실시간 상담신청 ></a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="noticeTabs c_both mt30">
+    <div class="noticeTabs c_both mt50">
         <ul class="tabWrap mainTab">
             <li><a href="#notice1" class="on">학원공지사항</a></li>
             <li><a href="#notice2">시험공고</a></li>

@@ -5,15 +5,14 @@
     .gosiTitle {
         font-size: 2.2vh;
         text-align: center;
-        padding: 5vh 0 2vh;
+        padding: 7vh 0 2vh;
         word-break: keep-all;
         line-height: 1.2;
     }
     .swiper-sec06-Wrap {
         position: relative;
         overflow: hidden;
-        padding:0 0 6vh;
-        margin-top:5vh;
+        margin-top:7vh;
     }
     .swiper-sec06-Wrap .gosiTitle {
         padding: 0 0 20px;
@@ -46,7 +45,7 @@
     }
 </style>
     <!-- Container -->
-    <div id="Container" class="Container NG c_both mb20">
+    <div id="Container" class="Container NG gosi mb40">
         {!! banner('M_메인_01', 'MainSlider c_both', $__cfg['SiteCode'], '0') !!}
         {!! banner('M_메인_02', 'MainSlider c_both mt20', $__cfg['SiteCode'], '0') !!}
 

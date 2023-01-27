@@ -4,101 +4,99 @@
     <style type="text/css">
         .ssam .willbes-Layer-ReplyBox-1120 .Layer-Cont {font-size:14px}
         /*Main Container : 상단 배너*/
-.ssam .MainVisual {
-    width: 100%;
-    min-width: 1120px;
-    max-width: 2000px;
-    height: 420px;
-    overflow: hidden;
-    position: relative;
-    margin: 0 auto;
-    text-align: center;
-}
+        .ssam .MainVisual {
+            width: 100%;
+            min-width: 1120px;
+            max-width: 2000px;
+            height: 420px;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+            text-align: center;
+        }
 
-.ssam .MaintabBox {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    margin-left: -1000px;
-    width: 2000px;
-    min-width: 1120px;
-    max-width: 2000px;
-    height: 500px;
-    overflow: hidden;
-}
+        .ssam .MaintabBox {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -1000px;
+            width: 2000px;
+            min-width: 1120px;
+            max-width: 2000px;
+            height: 500px;
+            overflow: hidden;
+        }
 
-.ssam .MaintabBox p {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    margin-top: -28px;
-    width: 32px;
-    height: 57px;
-    cursor: pointer;
-    background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;
-}
+        .ssam .MaintabBox p {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            margin-top: -28px;
+            width: 32px;
+            height: 57px;
+            cursor: pointer;
+            background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;
+        }
 
-.ssam .MaintabBox p a {
-    display: none;
-}
+        .ssam .MaintabBox p a {
+            display: none;
+        }
 
-.ssam .MaintabBox p.leftBtn {
-    margin-left: -560px;
-}
+        .ssam .MaintabBox p.leftBtn {
+            margin-left: -560px;
+        }
 
-.ssam .MaintabBox p.rightBtn {
-    margin-left: 528px;
-    background-position: right center;
-}
+        .ssam .MaintabBox p.rightBtn {
+            margin-left: 528px;
+            background-position: right center;
+        }
 
-.ssam .MaintabList {
-    position: absolute;
-    width: 100%;
-    top: 376px;
-    z-index: 99;
-    background-color: rgba(0, 0, 0, 0.5);
-}
+        .ssam .MaintabList {
+            position: absolute;
+            width: 100%;
+            top: 376px;
+            z-index: 99;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
 
-.ssam .VisualBox .MaintabFlex {
-    width: 1120px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    border-left: 1px solid #fff
-}
+        .ssam .VisualBox .MaintabFlex {
+            width: 1120px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            border-left: 1px solid #fff
+        }
 
-.ssam .VisualBox .MaintabFlex span {
-    font-size: 14px;
-    width: calc(100%);
-}
+        .ssam .VisualBox .MaintabFlex span {
+            font-size: 14px;
+            width: calc(100%);
+        }
 
-.ssam .VisualBox .MaintabFlex span a {
-    color: #fff;
-    display: block;
-    width: 100%;
-    height: 44px;
-    line-height: 44px;
-    border-right: 1px solid #fff
-}
+        .ssam .VisualBox .MaintabFlex span a {
+            color: #fff;
+            display: block;
+            width: 100%;
+            height: 44px;
+            line-height: 44px;
+            border-right: 1px solid #fff
+        }
 
-.ssam .VisualBox .MaintabFlex span a:hover {
-    background-color: rgba(255, 255, 255, .3);
-    font-weight: bold
-}
+        .ssam .VisualBox .MaintabFlex span a:hover {
+            background-color: rgba(255, 255, 255, .3);
+            font-weight: bold
+        }
 
+        .ssam .VisualBox .MaintabSlider li img {
+            width: 100%;
+            height: 100%;
+        }
 
-
-.ssam .VisualBox .MaintabSlider li img {
-    width: 100%;
-    height: 100%;
-}
-
-.ssam .VisualBox .Maintab li a:hover,
-.ssam .VisualBox .Maintab li a.active {
-    color: #fff;
-    font-weight: bold;
-    background: rgba(0, 0, 0, 0.5);
-}
+        .ssam .VisualBox .Maintab li a:hover,
+        .ssam .VisualBox .Maintab li a.active {
+            color: #fff;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.5);
+        }
 
         .ssam .noticeBanner {float:right; position:relative;}
         .ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
@@ -110,6 +108,27 @@
         .ssam .noticeWrap li a.on {border:3px solid #0c5dc0 !important; background:#fff; }
 
         .ssam .noticeBox .List-Table {margin-top:20px !important;border-top:0 !important}
+
+
+        .ssam .Layer-hnyoutube {
+            display: none;
+            background:#000;
+            position: absolute;
+            top: 650px;
+            z-index: 110;
+            width: 860px;
+            height: 484px;
+            border: 1px solid #2f2f2f;
+            left: 50%;
+            margin-left: -445px;
+        }
+        .ssam .Layer-hnyoutube .closeBtn {
+            position: absolute;
+            top: -33px;
+            right: -2px;
+        }
+        .ssam .Layer-hnyoutube iframe {width:860px; height:484px}
+
 
         .ssam .sec-prof {background:#9cb6c5 url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative; margin-top:40px}
         .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}

@@ -121,10 +121,11 @@
                     <label class="control-label col-md-1-1" for="link_url">링크주소<span class="required">*</span></label>
                     <div class="col-md-10 form-inline">
                         <input type="text" id="link_url" name="link_url" class="form-control" maxlength="255" title="링크주소" value="{{ $data['LinkUrl'] }}" required="required" placeholder="링크주소 입니다." style="width: 40%">
-                        <div class="mt-10">• 내부링크 : 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (예: police.willbes.net/home/index/cate/3001)</span></div>
-                        <div class="mt-5">• 외부링크 : 프로토콜 (http, https) <span class="red bold">입력 필수 (예: http://www.hanlimgosi.co.kr)</span></div>
-                        <div class="mt-5">• 스크립트 : <span class="red bold">스크립트 코드 입력 예: javascript:alert('샘플영상 준비중입니다.');</span></div>
-                        <div class="mt-5">• 레이어팝업 : <span class="red bold">실제 서비스 도메인만 입력 (예 : police.willbes.net)</span></div>
+                        <div class="mt-10">• 내부링크 : 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (ex: police.willbes.net/home/index/cate/3001)</span></div>
+                        <div class="mt-5">• 외부링크 : 프로토콜 (http, https) <span class="red bold">입력 필수 (ex: http://www.hanlimgosi.co.kr)</span></div>
+                        <div class="mt-5">• 스크립트 : 스크립트 코드 입력 <span class="red bold">javascript:alert('샘플영상 준비중입니다.');</span></div>
+                        <div class="mt-5">• 레이어팝업 : 실제 서비스 도메인만 입력 <span class="red bold">(ex: police.willbes.net)</span></div>
+                        <div class="mt-5">• 유튜브팝업 : 코드만 입력 (ex: https://www.youtube.com/embed/<span class="red bold">Y2W3lUrn3aI</span>)</div>
                         <div class="mt-5">• 연결링크가 없을 경우 : <span class="red bold">#</span> 입력</div>
                     </div>
                 </div>
@@ -173,7 +174,7 @@
                                 <label class="control-label col-md-1-1" for="bg_color">BG 컬러값</label>
                                 <div class="col-md-6">
                                     <input type="text" id="bg_color" name="bg_color" class="form-control" maxlength="10" title="BG컬러" value="{{ $data['BgColor'] }}" style="width: 200px;">
-                                    <small class="ml-5">• 컬러값 입력 (예: <a class="red bold">#ffffff</a>)</small>
+                                    <small class="ml-5">• 컬러값 입력 (ex: <a class="red bold">#ffffff</a>)</small>
                                 </div>
                             </div>
                             <div class="form-group form-inline">

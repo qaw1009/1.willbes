@@ -2122,7 +2122,7 @@ body.memBody #Footer {
 	height: 50px;
 	line-height: 50px;
 	text-align: center;
-	font-size: 18px;
+	font-size: 1.8vh;
 	color: #313131;
 }
 
@@ -2132,7 +2132,7 @@ body.memBody #Footer {
 }
 
 .csCenter .tel li {
-	padding: 20px 0;
+	padding: 2vh 0;
 	border-right: 1px solid #ccc;
 	cursor: pointer;
 }
@@ -2143,13 +2143,19 @@ body.memBody #Footer {
 
 .csCenter li img {
 	float: left;
-	margin: 0 5px 10px 10px;
+	margin: -13% 5px 10px 10px;
+}
+
+.csCenter li div.goTel {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .csCenter li div.goTel div {
 	float: left;
-	font-size: 14px;
-	line-height: 1.2;
+	font-size: 1.6vh;
+	line-height: 1.4;
 	margin-left: 5px;
 }
 
@@ -2159,7 +2165,7 @@ body.memBody #Footer {
 
 .csCenter li strong {
 	display: block;
-	font-size: 18px;
+	font-size: 1.8vh;
 	color: #313131;
 }
 
@@ -9784,6 +9790,10 @@ span.calendar_btn {
 
 	.introBox3 .bigType li {
 		width: calc(50% - 8px);
+	}
+
+	.csCenter li img {
+		margin: 0 5px 10px 10px;
 	}
 
 	.csCenter .link li a {

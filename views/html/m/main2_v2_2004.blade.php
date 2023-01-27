@@ -519,10 +519,9 @@
 
     <div class="appPlayer c_both">
         <a href="#none">
-            <img src="{{ img_url('m/main/icon_app_player.gif') }}">
+            <img src="https://static.willbes.net/public/images/promotion/m/2001/bn_720x96.jpg">
         </a>
     </div>
-
 </div>
 <!-- End Container -->
 <script>    

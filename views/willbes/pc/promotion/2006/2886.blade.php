@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position: relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+       /* .evtCtnsBox .wrap a {border:1px solid #000}*/
 
 		/************************************************************/
 
@@ -87,15 +87,16 @@
 		</div>
 
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2023/01/2886_02_01.jpg" alt="" />
             <div class="wrap" id="lecbuy">
-                <img src="https://static.willbes.net/public/images/promotion/2023/01/2886_02.jpg" alt="" />
-                <a href="javascript:void(0);" data-url="https://job.willbes.net/userPackage/show/cate/309002/prod-code/204986" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 12.59%; top: 68.17%; width: 22.59%; height: 14.04%; z-index: 2;"></a>
-                <a href="javascript:void(0);" data-url="https://job.willbes.net/userPackage/show/cate/309002/prod-code/204987" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 38.21%; top: 68.17%; width: 22.59%; height: 14.04%; z-index: 2;"></a>
-                <a href="javascript:void(0);" data-url="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/200222" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 64.2%; top: 68.17%; width: 22.59%; height: 14.04%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2023/01/2886_02_02.jpg" alt="" />
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/userPackage/show/cate/309002/prod-code/204986" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 12.86%; top: 38.48%; width: 22.23%; height: 26.75%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/userPackage/show/cate/309002/prod-code/204987" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 38.21%; top: 38.48%; width: 22.23%; height: 26.75%;  z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/200222" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 64.2%; top: 38.48%; width: 22.23%; height: 26.75%;  z-index: 2;"></a>
 
-                <a href="javascript:void(0);" data-url="https://job.willbes.net/userPackage/show/cate/309002/prod-code/204105" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 12.59%; top: 83.62%; width: 22.59%; height: 14.04%; z-index: 2;"></a>
-                <a href="javascript:void(0);" data-url="https://job.willbes.net/userPackage/show/cate/309002/prod-code/204999" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 38.21%; top: 83.62%; width: 22.59%; height: 14.04%; z-index: 2;"></a>
-                <a href="javascript:void(0);" data-url="https://job.willbes.net/userPackage/show/cate/309002/prod-code/205000" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 64.2%; top: 83.62%; width: 22.59%; height: 14.04%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/userPackage/show/cate/309002/prod-code/204105" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 12.59%; top: 68.35%; width: 22.23%; height: 26.75%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/userPackage/show/cate/309002/prod-code/204999" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 38.21%; top: 68.35%; width: 22.23%; height: 26.75%;z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/userPackage/show/cate/309002/prod-code/205000" onclick="go_PassLecture(this)" title="" style="position: absolute; left: 64.2%; top: 68.35%; width: 22.23%; height: 26.75%;z-index: 2;"></a>
             </div>
             <div class="check">
                 <label>

@@ -62,7 +62,7 @@
        
         <div class="evtCtnsBox evt_01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2023/01/2886_01.jpg" alt="" />	
-            <ul class="tabs" id="lecbuy">
+            <ul class="tabs">
 				<li><a href="#tab01">민법</a></li>
 				<li><a href="#tab02">노동법</a></li>
 				<li><a href="#tab03">사회보험법</a></li>

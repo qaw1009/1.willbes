@@ -62,9 +62,7 @@
         <div class="gosiTitle NSK">
             <span class="NSK-Black">신규개강</span> 안내
         </div>
-        <div class="MainSlider swiper-container swiper-container-page">
-            {!! banner('M_메인_서브_3', 'MainSlider', $__cfg['SiteCode'], '0') !!}
-        </div>
+        {!! banner('M_메인_서브_3', 'MainSlider', $__cfg['SiteCode'], '0') !!}
 
         <div class="swiper-sec06-Wrap">
             <div class="gosiTitle NSK">

@@ -498,10 +498,8 @@ class Home extends \app\controllers\FrontController
     private function _getSite2015Data($cate_code = '', $arr_campus = [])
     {
         $data = [];
-        if (APP_DEVICE == 'pc') {
-            $data['arr_main_banner'] = $this->_banner('0');
-        }
-
+        $data['arr_campus_info'] = $this->_getSiteCampusInfo();
+        $data['arr_main_banner'] = $this->_banner('0');
         $data['notice'] = $this->_boardNotice(5, null, ['605005']);
         $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
         $data['exam_news'] = $this->_boardExamNews(5);

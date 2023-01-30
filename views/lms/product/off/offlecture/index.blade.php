@@ -149,7 +149,7 @@
                     <div class="col-md-5 form-inline">
                         <select class="form-control" id="search_date_type2" name="search_date_type2" title="날짜구분" style="width:100px;">
                             <option value="B.StudyStartDate">개강일</option>
-                            <option value="B.StudyEndDate">종강일</option>
+                            <option value="B.StudyEndDate" selected="selected">종강일</option>
                             <option value="B.SaleStartDat">접수시작일</option>
                             <option value="B.SaleEndDat">접수종료일</option>
                             <option value="A.RegDatm">등록일</option>

@@ -87,7 +87,7 @@ Class PackageUser extends CommonLecture
         $file_name = '[온라인]사용자패키지상품_'.$this->session->userdata('admin_idx').'_'.date("Y-m-d");
 
         $this->load->library('excel');
-        if ($this->excel->exportExcel($file_name, $list, $headers) !== true) {
+        if ($this->excel->exportHugeExcel($file_name, $list, $headers) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
         // download log

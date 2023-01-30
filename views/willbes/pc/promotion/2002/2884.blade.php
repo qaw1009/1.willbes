@@ -28,7 +28,7 @@
         .wb_01 {background:#f5f5f7;}
         .wb_02 {background:#363331;}
         .wb_03 {background:#2e386f; position: relative;}
-        .wb_03 .obj{position: absolute;top:0; right:105px;}
+        .wb_03 .obj{position: absolute;top:0; right:-105px;}
         .wb_04 {background:#57473b;}
         .wb_05 {background:url(https://static.willbes.net/public/images/promotion/2023/01/2884_05_bg.jpg) no-repeat center top; height:3840px; overflow: hidden;}
         .wb_06 {background:#fff; position: relative;}
@@ -80,9 +80,9 @@
         <div class="evtCtnsBox wb_03" data-aos="fade-up">        
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2884_03.jpg"  alt="관리반 포인트01"/>   
-            </div>    
-            <div class="obj" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
-                <img src="https://static.willbes.net/public/images/promotion/2023/01/2884_person.png" alt="교수">
+                <div class="obj" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                    <img src="https://static.willbes.net/public/images/promotion/2023/01/2884_person.png" alt="교수">
+                </div>    
             </div>    
 		</div>
 

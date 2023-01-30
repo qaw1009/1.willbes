@@ -19,9 +19,9 @@
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
 		/************************************************************/
-        
-        .evt_top {background:#6cd2ff}           
 
+       
+        .evt_top {background:#6cd2ff}   
 
 		.tabs {border-bottom:2px solid #021433; display:flex; justify-content: center; width:1120px; margin:0 auto}
 		.tabs li {width:100%;}
@@ -51,6 +51,7 @@
 
     </style> 
 	<div class="evtContent NSK">
+
 		<div class="evtCtnsBox evt_top" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2886_top.jpg" alt="" />		

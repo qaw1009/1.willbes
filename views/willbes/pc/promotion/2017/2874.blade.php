@@ -60,11 +60,16 @@
         .evtInfoBox ul {margin-bottom:30px}
         .evtInfoBox li {list-style-type: decimal;margin-left:20px; margin-bottom:10px}
 
-        .skyBanner {position:fixed; width:180px; top:250px; right:10px; z-index:10;}
-        .skyBanner a {display:block; margin-bottom:10px}
+        .sky {position:fixed; width:150px; top:250px; right:10px; z-index:10;}
+        .sky a {display:block; margin-bottom:10px}
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
+        <div class="sky" id="QuickMenu">
+            <a href="#reviewListWrap"><img src="https://static.willbes.net/public/images/promotion/2023/01/2874_sky1.png" alt="현직경찰 인증하기"></a>
+            <a href="https://ssam.willbes.net/support/notice/show?board_idx=448965&s_cate_code_disabled=Y" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/01/2874_sky2.png" alt="계급별 패스"></a>
+        </div>
+
         <div class="evtCtnsBox eventTop">
         	<img src="https://static.willbes.net/public/images/promotion/2023/01/2874_top.jpg" alt="합격축하 이벤트"/>
         </div>

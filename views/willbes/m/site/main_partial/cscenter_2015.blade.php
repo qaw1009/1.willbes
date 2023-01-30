@@ -9,7 +9,7 @@
                 <img src="{{ img_url('m/main/icon_tel.png') }}">
                 <div>
                     <strong>학원문의</strong>
-                    <span>1544-6112</span>
+                    <span>1522-6112</span>
                     평일 09시~18시<br>
                     (점심시간 12시~13시)<br>
                     공휴일/일요일휴무

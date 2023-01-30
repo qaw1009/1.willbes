@@ -45,40 +45,7 @@ Class PackageUser extends CommonLecture
     */
     public function listAjax()
     {
-        $arr_condition = [
-            'EQ' => [
-                'A.ProdTypeCcd' => $this->prodtypeccd,
-                'B.LearnPatternCcd' => $this->learnpatternccd,
-                'A.SiteCode' => $this->_reqP('search_site_code'),
-                'C.CateCode' => $this->_reqP('search_md_cate_code'),
-                'B.SchoolYear' => $this->_reqP('search_schoolyear'),
-                'A.IsUse' =>$this->_reqP('search_is_use'),
-                'A.SaleStatusCcd' =>$this->_reqP('search_sales_ccd'),
-                'B.PackTypeCcd' => $this->_reqP('search_pack_type_ccd'),
-            ],
-            'LKR' => [
-                'C.CateCode' => $this->_reqP('search_lg_cate_code'),
-            ],
-        ];
-
-        $arr_condition = array_merge($arr_condition,[
-            'ORG1' => [
-                'LKB' => [
-                    'A.ProdCode' => $this->_reqP('search_value'),
-                    'A.ProdName' => $this->_reqP('search_value')
-                ]
-            ],
-        ]);
-
-        if (!empty($this->_reqP('search_sdate')) && !empty($this->_reqP('search_edate'))) {
-            $arr_condition = array_merge($arr_condition, [
-                'BDT' => [
-                    'A.RegDatm' => [$this->_reqP('search_sdate'), $this->_reqP('search_edate')]
-                ],
-            ]);
-        }
-
-        //var_dump($arr_condition);
+        $arr_condition = $this->_setCondition();
         $list = [];
         $count = $this->packageUserModel->listLecture(true, $arr_condition);
 
@@ -91,6 +58,44 @@ Class PackageUser extends CommonLecture
             'recordsFiltered' => $count,
             'data' => $list
         ]);
+    }
+
+    /**
+     * 강좌목록 엑셀 변환
+     * @return CI_Output
+     */
+    public function listExcel()
+    {
+        $arr_condition = $this->_setCondition();
+        $other_column = '
+                    Ab.SiteName, A.ProdCode, A.ProdName, Ca.CateName, B.SchoolYear
+                    ,Bd.CcdName as PackTypeCcd_Name, D.CourseName
+                    ,A.SaleStartDatm, A.SaleEndDatm
+                    ,Aa.CcdName as SaleStatusCcd_Name
+                    ,if(B.PackTypeCcd = \'743001\',"", format(E.SalePrice,0)) as SalePrice
+                    ,if(B.PackTypeCcd = \'743001\',"", E.SaleRate) as SaleRate
+                    ,if(B.PackTypeCcd = \'743001\',"", format(E.RealSalePrice,0)) as RealSalePrice
+                    ,A.IsUse, A.RegDatm, Z.wAdminName';
+
+        $list = $this->packageUserModel->listLecture(false, $arr_condition, null, null, ['A.ProdCode' => 'desc'], $other_column);
+
+        $headers = [
+            '사이트명', '상품코드', '상품명', '카테고리',  '대비학년도', '패키지유형', '과정', '접수시작일', '접수종료일'
+            ,'판매상태', '정가', '할인' ,' 판매가', '사용여부', '등록일', '등록자'
+        ];
+
+        $file_name = '[온라인]사용자패키지상품_'.$this->session->userdata('admin_idx').'_'.date("Y-m-d");
+
+        $this->load->library('excel');
+        if ($this->excel->exportExcel($file_name, $list, $headers) !== true) {
+            show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
+        // download log
+        $last_query = $this->packageUserModel->getLastQuery();
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($last_query, $file_name, count($list)) !== true) {
+            show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
+        }
     }
 
     /**
@@ -203,5 +208,57 @@ Class PackageUser extends CommonLecture
 
         $result = $this->packageUserModel->{$method.'Product'}($this->_reqP(null),'packageuser');
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 검색 조건
+     * @return array
+     */
+    private function _setCondition()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'A.ProdTypeCcd' => $this->prodtypeccd,
+                'B.LearnPatternCcd' => $this->learnpatternccd,
+                'A.SiteCode' => $this->_reqP('search_site_code'),
+                'C.CateCode' => $this->_reqP('search_md_cate_code'),
+                'B.SchoolYear' => $this->_reqP('search_schoolyear'),
+                'A.IsUse' =>$this->_reqP('search_is_use'),
+                'A.SaleStatusCcd' =>$this->_reqP('search_sales_ccd'),
+                'B.PackTypeCcd' => $this->_reqP('search_pack_type_ccd'),
+            ],
+            'LKR' => [
+                'C.CateCode' => $this->_reqP('search_lg_cate_code'),
+            ],
+        ];
+
+        $arr_condition = array_merge($arr_condition,[
+            'ORG1' => [
+                'LKB' => [
+                    'A.ProdCode' => $this->_reqP('search_value'),
+                    'A.ProdName' => $this->_reqP('search_value')
+                ]
+            ],
+        ]);
+
+        // 시작일
+        if (!empty($this->_reqP('search_sdate'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'GTE' => [
+                    'A.RegDatm' => $this->_reqP('search_sdate')
+                ],
+            ]);
+        }
+
+        // 종료일
+        if (!empty($this->_reqP('search_edate'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'LTE' => [
+                    'A.RegDatm' => $this->_reqP('search_edate')
+                ],
+            ]);
+        }
+
+        return $arr_condition;
     }
 }

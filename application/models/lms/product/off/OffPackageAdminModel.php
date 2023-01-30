@@ -15,33 +15,36 @@ class OffPackageAdminModel extends CommonLectureModel
      * @param array $order_by
      * @return mixed
      */
-    public function listLecture($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_condition_add = null)
+    public function listLecture($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $other_column = null)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
 
-            $column = ' 
-                     A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.IsDisp,A.RegDatm
-                    ,DATE_FORMAT(SaleStartDatm,\'%Y-%m-%d\') as SaleStartDatm
-                    ,DATE_FORMAT(SaleEndDatm,\'%Y-%m-%d\') as SaleEndDatm
-                    ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
-                    ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.FixNumber,B.StudyStartDate,B.StudyEndDate,B.IsLecOpen
-                    ,B.SchoolStartYear,B.SchoolStartMonth,B.AcceptStatusCcd,B.OrderNum
-                    ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
-                    ,Bd.CcdName as StudyPatternCcd_Name
-                    ,Be.CcdName as StudyApplyCcd_Name
-                    ,Bg.CcdName as CampusCcd_Name
-                    ,Bh.CcdName as AcceptStatusCcd_Name
-                    ,Bi.CcdName as PackTypeCcd_Name
-                    ,C.CateCode
-                    ,Ca.CateName, Cb.CateName as CateName_Parent
-                    ,D.SalePrice, D.SaleRate, D.RealSalePrice
-                    ,IFNULL(F.DivisionCount,0) AS DivisionCount
-                    ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
-                    ,Z.wAdminName
-            ';
+            if(empty($other_column)) {
+                $column = ' 
+                         A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.IsDisp,A.RegDatm
+                        ,DATE_FORMAT(SaleStartDatm,\'%Y-%m-%d\') as SaleStartDatm
+                        ,DATE_FORMAT(SaleEndDatm,\'%Y-%m-%d\') as SaleEndDatm
+                        ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
+                        ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.FixNumber,B.StudyStartDate,B.StudyEndDate,B.IsLecOpen
+                        ,B.SchoolStartYear,B.SchoolStartMonth,B.AcceptStatusCcd,B.OrderNum
+                        ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
+                        ,Bd.CcdName as StudyPatternCcd_Name
+                        ,Be.CcdName as StudyApplyCcd_Name
+                        ,Bg.CcdName as CampusCcd_Name
+                        ,Bh.CcdName as AcceptStatusCcd_Name
+                        ,Bi.CcdName as PackTypeCcd_Name
+                        ,C.CateCode
+                        ,Ca.CateName, Cb.CateName as CateName_Parent
+                        ,D.SalePrice, D.SaleRate, D.RealSalePrice
+                        ,IFNULL(F.DivisionCount,0) AS DivisionCount
+                        ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
+                        ,Z.wAdminName';
+            } else {
+                $column = $other_column;
+            }
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -73,12 +76,7 @@ class OffPackageAdminModel extends CommonLectureModel
 
         // 사이트 권한 추가
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(true);
-
-        if(empty($arr_condition_add) === false) {
-            $where .= ' and '.$arr_condition_add;
-        }
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);

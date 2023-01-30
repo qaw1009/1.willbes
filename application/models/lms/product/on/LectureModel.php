@@ -15,15 +15,16 @@ class LectureModel extends CommonLectureModel
      * @param array $order_by
      * @return mixed
      */
-    public function listLecture($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_condition_add=null)
+    public function listLecture($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $other_column = null)
     {
 
         if ($is_count === true) {
-            $column = 'count(*) AS numrows';
+            $column = 'count(A.ProdCode) AS numrows';
             $order_by_offset_limit = '';
         } else {
 
-            $column = ' STRAIGHT_JOIN
+            if(empty($other_column)) {
+                $column = ' STRAIGHT_JOIN
                    A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.IsDisp,A.RegDatm
                     ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                     ,Ac.CcdName as ProdTypeCcd_Name
@@ -37,16 +38,12 @@ class LectureModel extends CommonLectureModel
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
                     ,E.ProfIdx_String,E.wProfName_String
                     ,IFNULL(F.DivisionCount,0) AS DivisionCount
-                    #,fn_product_count_cart(A.ProdCode) as CartCnt
-                    #,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
-                    #,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
-                    ,0 as CartCnt       #장바구니테이블 스캔으로 인해 쿼리속도 저하    19.02.18 최진영 차장님 협의
-                    ,0 as PayIngCnt    #주문테이블 스캔으로 인해 쿼리속도 저하
-                    ,0 as PayEndCnt    #주문테이블 스캔으로 인해 쿼리속도 저하
-                    #,fn_product_professor_name(A.ProdCode) as ProfName_Arr	//검색때문에 vw_product_r_professor_concat_repr 사용
                     ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
-                    ,Z.wAdminName
-            ';
+                    ,Z.wAdminName';
+            } else {
+                $column = ' STRAIGHT_JOIN ' . $other_column;
+            }
+
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -77,12 +74,7 @@ class LectureModel extends CommonLectureModel
 
         // 사이트 권한 추가
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(true);
-
-        if(empty($arr_condition_add) === false) {
-            $where .= ' and '.$arr_condition_add;
-        }
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);

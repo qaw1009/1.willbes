@@ -15,28 +15,30 @@ class PackageUserModel extends CommonLectureModel
      * @param array $order_by
      * @return mixed
      */
-    public function listLecture($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listLecture($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $other_column = null)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
 
-            $column = ' STRAIGHT_JOIN
-                                A.ProdCode,A.ProdName,A.IsUse,A.RegDatm
-                                ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
-                                ,B.CourseIdx, B.PackTypeCcd
-                                ,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply
-                                ,Bc.CcdName as LearnPatternCcd_Name
-                                ,Bd.CcdName as PackTypeCcd_Name
-                                ,C.CateCode
-                                ,Ca.CateName, Cb.CateName as CateName_Parent
-                                ,D.CourseName
-                                ,E.SalePrice, E.SaleRate, E.RealSalePrice
-                                ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
-                                ,Z.wAdminName
-                                
-            ';
+            if(empty($other_column)) {
+                $column = ' STRAIGHT_JOIN
+                                    A.ProdCode,A.ProdName,A.IsUse,A.RegDatm
+                                    ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
+                                    ,B.CourseIdx, B.PackTypeCcd
+                                    ,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply
+                                    ,Bc.CcdName as LearnPatternCcd_Name
+                                    ,Bd.CcdName as PackTypeCcd_Name
+                                    ,C.CateCode
+                                    ,Ca.CateName, Cb.CateName as CateName_Parent
+                                    ,D.CourseName
+                                    ,E.SalePrice, E.SaleRate, E.RealSalePrice
+                                    ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
+                                    ,Z.wAdminName';
+            } else {
+                $column = ' STRAIGHT_JOIN ' . $other_column;
+            }
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -61,14 +63,12 @@ class PackageUserModel extends CommonLectureModel
 
         // 사이트 권한 추가
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(true);
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
-
 
     /**
      * 상품 및 강좌 등록

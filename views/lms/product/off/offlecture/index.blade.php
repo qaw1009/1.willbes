@@ -135,15 +135,27 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_sdate">날짜검색</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control" id="search_date_type" name="search_date_type" title="날짜구분" style="width:120px;">
+                        <select class="form-control" id="search_date_type" name="search_date_type" title="날짜구분" style="width:100px;">
                             <option value="B.StudyStartDate">개강일</option>
                             <option value="B.StudyEndDate">종강일</option>
                             <option value="B.SaleStartDat">접수시작일</option>
                             <option value="B.SaleEndDat">접수종료일</option>
                             <option value="A.RegDatm">등록일</option>
                         </select>
-                        <input name="search_sdate"  class="form-control datepicker" id="search_sdate" style="width: 100px;"  type="text"  value="" title="조회시작일">
-                        ~ <input name="search_edate"  class="form-control datepicker" id="search_edate" style="width: 100px;"  type="text"  value="" title="조회종료일">
+                        <input name="search_sdate"  class="form-control datepicker" id="search_sdate" style="width: 100px;"  type="text"  value="" title="조회시작일" placeholder="조회시작일">
+                        ~ <input name="search_edate"  class="form-control datepicker" id="search_edate" style="width: 100px;"  type="text"  value="" title="조회종료일" placeholder="조회종료일">
+                    </div>
+                    <label class="control-label col-md-1" for="search_sdate2">날짜검색2</label>
+                    <div class="col-md-5 form-inline">
+                        <select class="form-control" id="search_date_type2" name="search_date_type2" title="날짜구분" style="width:100px;">
+                            <option value="B.StudyStartDate">개강일</option>
+                            <option value="B.StudyEndDate">종강일</option>
+                            <option value="B.SaleStartDat">접수시작일</option>
+                            <option value="B.SaleEndDat">접수종료일</option>
+                            <option value="A.RegDatm">등록일</option>
+                        </select>
+                        <input name="search_sdate2"  class="form-control datepicker" id="search_sdate2" style="width: 100px;"  type="text"  value="" title="조회시작일" placeholder="조회시작일">
+                        ~ <input name="search_edate2"  class="form-control datepicker" id="search_edate2" style="width: 100px;"  type="text"  value="" title="조회종료일" placeholder="조회종료일">
                     </div>
                 </div>
             </div>
@@ -201,7 +213,8 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-5"></i> 정렬순서 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order-modify'}
+                    { text: '<i class="fa fa-pencil mr-5"></i> 엑셀 다운로드', className: 'btn-sm btn-info border-radius-reset mr-15 btn-excel'}
+                    ,{ text: '<i class="fa fa-pencil mr-5"></i> 정렬순서 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order-modify'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 신규/추천/사용 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 단과반복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 단과반등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
@@ -459,6 +472,13 @@
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url('/product/off/offLecture/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+            });
+
+            // 엑셀 다운로드
+            $('.btn-excel').on('click', function() {
+                if(confirm("엑셀파일을 다운로드 하시겠습니까?")) {
+                    formCreateSubmit('{{ site_url('/product/off/offLecture/listExcel') }}', $search_form.serializeArray(), 'POST');
+                }
             });
         });
     </script>

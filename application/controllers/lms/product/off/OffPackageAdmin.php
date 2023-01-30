@@ -56,87 +56,12 @@ Class OffPackageAdmin extends CommonLecture
      */
     public function listAjax()
     {
-        $arr_condition = [
-            'EQ' => [
-                'A.ProdTypeCcd' => $this->prodtypeccd,
-                'B.LearnPatternCcd' => $this->learnpatternccd,
-                'A.SiteCode' => $this->_reqP('search_site_code'),
-                'C.CateCode' => $this->_reqP('search_md_cate_code'),
-                'B.SchoolYear' => $this->_reqP('search_schoolyear'),
-                'B.SubjectIdx' => $this->_reqP('search_subject_idx'),
-                'B.CourseIdx' => $this->_reqP('search_course_idx'),
-                'B.StudyPatternCcd' =>$this->_reqP('search_studypattern_ccd'),
-                'B.PackTypeCcd' =>$this->_reqP('search_packtype_ccd'),
-                'B.StudyApplyCcd' =>$this->_reqP('search_studyapply_ccd'),
-                'B.SchoolStartYear' =>$this->_reqP('search_schoolstartyear'),
-                'B.SchoolStartMonth' =>$this->_reqP('search_schoolstartmonth'),
-                'B.IsLecOpen' =>$this->_reqP('search_islecopen'),
-                //'A.IsSaleEnd' =>$this->_reqP('search_issaleend'),
-                'B.AcceptStatusCcd' =>$this->_reqP('search_acceptccd'),
-                'A.IsUse' =>$this->_reqP('search_is_use'),
-                'A.IsDisp' =>$this->_reqP('search_is_disp'),
-                'B.CampusCcd' => $this->_reqP('search_campus_code'),
-            ],
-            'LKR' => [
-                'C.CateCode' => $this->_reqP('search_lg_cate_code'),
-            ],
-            'LKB' => [
-                'E.ProfIdx_String' => $this->_reqP('search_prof_idx'),
-            ]
-        ];
-
-        if($this->_reqP('search_opt') === 'prod') {
-            $arr_condition = array_merge($arr_condition,[
-                'ORG1' => [
-                    'LKB' => [
-                        'A.ProdCode' => $this->_reqP('search_value'),
-                        'A.ProdName' => $this->_reqP('search_value')
-                    ]
-                ],
-            ]);
-        } else if($this->_reqP('search_opt') === 'prof' && $this->_reqP('search_value') !== '') {
-            $arr_condition = array_merge($arr_condition,[
-                'ORG1' => [
-                    'RAW' => [
-                        'A.ProdCode IN ' => '(
-                            select aa.ProdCode from
-                                lms_product_r_sublecture aa
-							    join lms_product_division bb on aa.ProdCodeSub = bb.ProdCode and bb.IsReprProf=\'Y\' and bb.IsStatus=\'Y\'
-							    join lms_professor cc on bb.ProfIdx = cc.ProfIdx and cc.IsStatus =\'Y\'
-							    join wbs_pms_professor dd on cc.wProfIdx = dd.wProfIdx and dd.wIsStatus=\'Y\'
-							where aa.IsStatus=\'Y\'
-							and dd.wProfName like \'%'. $this->_reqP('search_value') .'%\'  
-                        )'
-                    ]
-                ],
-            ]);
-        }
-
-        if (!empty($this->_reqP('search_sdate')) && !empty($this->_reqP('search_edate'))) {
-            $arr_condition = array_merge($arr_condition, [
-                'BDT' => [
-                    $this->_reqP('search_date_type') => [$this->_reqP('search_sdate'), $this->_reqP('search_edate')]
-                ],
-            ]);
-        }
-
-        $arr_condition_add = null;
-
-        if( $this->_req('search_calc') == 'Y') {
-            $arr_condition = array_merge_recursive($arr_condition,[
-                'GTE' => [
-                    'F.DivisionCount' => '1'
-                ],
-            ]);
-        } else if( $this->_req('search_calc') == 'N') {
-            $arr_condition_add = ' F.DivisionCount is null ';
-        }
-
+        $arr_condition = $this->_setCondition();
         $list = [];
-        $count = $this->offPackageAdminModel->listLecture(true, $arr_condition,null,null,[],$arr_condition_add);
+        $count = $this->offPackageAdminModel->listLecture(true, $arr_condition,null,null,[]);
 
         if ($count > 0) {
-            $list = $this->offPackageAdminModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.RegDatm' => 'desc'],$arr_condition_add);
+            $list = $this->offPackageAdminModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.RegDatm' => 'desc']);
         }
 
         return $this->response([
@@ -144,6 +69,52 @@ Class OffPackageAdmin extends CommonLecture
             'recordsFiltered' => $count,
             'data' => $list
         ]);
+    }
+
+    /**
+     * 강좌목록 엑셀 변환
+     * @return CI_Output
+     */
+    public function listExcel()
+    {
+        $arr_condition = $this->_setCondition();
+        $other_column = '
+                        Ab.SiteName, A.ProdCode, A.ProdName, Ca.CateName, Ba.CourseName, B.SchoolYear
+                        ,Bi.CcdName as PackTypeCcd_Name
+                        ,Bg.CcdName as CampusCcd_Name
+                        ,Bd.CcdName as StudyPatternCcd_Name
+                        ,concat(B.SchoolStartYear , \'/\', B.SchoolStartMonth) as SchoolStartYearMonth
+                        ,A.SaleStartDatm, A.SaleEndDatm
+                        ,format(D.SalePrice,0) as SalePrice, D.SaleRate, format(D.RealSalePrice,0) as RealSalePrice
+                        ,if(B.IsLecOpen = \'Y\', "개설", "폐강") as IsLecOpen_Name
+                        ,A.IsUse, A.RegDatm, Z.wAdminName';
+
+        $list = $this->offPackageAdminModel->listLecture(false, $arr_condition, null, null, ['A.ProdCode' => 'desc'], $other_column);
+
+        $headers = [
+            '사이트명', '상품코드', '상품명', '카테고리', '과정',  '대비학년도'
+            ,'패키지유형'
+            ,'캠퍼스'
+            ,'수강형태'
+            ,'개강년/월'
+            ,'접수시작일', '접수종료일'
+            ,'정가', '할인' ,' 판매가'
+            ,'개설여부'
+            ,'사용여부', '등록일', '등록자'
+        ];
+
+        $file_name = '[학원]종합반상품_'.$this->session->userdata('admin_idx').'_'.date("Y-m-d");
+
+        $this->load->library('excel');
+        if ($this->excel->exportExcel($file_name, $list, $headers) !== true) {
+            show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
+        // download log
+        $last_query = $this->offPackageAdminModel->getLastQuery();
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($last_query, $file_name, count($list)) !== true) {
+            show_alert('엑셀파일 다운로드 로그 저장 중 오류가 발생하였습니다.', 'back');
+        }
     }
 
     /**
@@ -262,5 +233,117 @@ Class OffPackageAdmin extends CommonLecture
 
         $result = $this->offPackageAdminModel->{$method.'Product'}($this->_reqP(null));
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 검색 조건
+     * @return array
+     */
+    private function _setCondition()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'A.ProdTypeCcd' => $this->prodtypeccd,
+                'B.LearnPatternCcd' => $this->learnpatternccd,
+                'A.SiteCode' => $this->_reqP('search_site_code'),
+                'C.CateCode' => $this->_reqP('search_md_cate_code'),
+                'B.SchoolYear' => $this->_reqP('search_schoolyear'),
+                'B.SubjectIdx' => $this->_reqP('search_subject_idx'),
+                'B.CourseIdx' => $this->_reqP('search_course_idx'),
+                'B.StudyPatternCcd' =>$this->_reqP('search_studypattern_ccd'),
+                'B.PackTypeCcd' =>$this->_reqP('search_packtype_ccd'),
+                'B.StudyApplyCcd' =>$this->_reqP('search_studyapply_ccd'),
+                'B.SchoolStartYear' =>$this->_reqP('search_schoolstartyear'),
+                'B.SchoolStartMonth' =>$this->_reqP('search_schoolstartmonth'),
+                'B.IsLecOpen' =>$this->_reqP('search_islecopen'),
+                //'A.IsSaleEnd' =>$this->_reqP('search_issaleend'),
+                'B.AcceptStatusCcd' =>$this->_reqP('search_acceptccd'),
+                'A.IsUse' =>$this->_reqP('search_is_use'),
+                'A.IsDisp' =>$this->_reqP('search_is_disp'),
+                'B.CampusCcd' => $this->_reqP('search_campus_code'),
+            ],
+            'LKR' => [
+                'C.CateCode' => $this->_reqP('search_lg_cate_code'),
+            ],
+            'LKB' => [
+                'E.ProfIdx_String' => $this->_reqP('search_prof_idx'),
+            ]
+        ];
+
+        if($this->_reqP('search_opt') === 'prod') {
+            $arr_condition = array_merge($arr_condition,[
+                'ORG1' => [
+                    'LKB' => [
+                        'A.ProdCode' => $this->_reqP('search_value'),
+                        'A.ProdName' => $this->_reqP('search_value')
+                    ]
+                ],
+            ]);
+        } else if($this->_reqP('search_opt') === 'prof' && $this->_reqP('search_value') !== '') {
+            $arr_condition = array_merge($arr_condition,[
+                'ORG1' => [
+                    'RAW' => [
+                        'A.ProdCode IN ' => '(
+                            select aa.ProdCode from
+                                lms_product_r_sublecture aa
+							    join lms_product_division bb on aa.ProdCodeSub = bb.ProdCode and bb.IsReprProf=\'Y\' and bb.IsStatus=\'Y\'
+							    join lms_professor cc on bb.ProfIdx = cc.ProfIdx and cc.IsStatus =\'Y\'
+							    join wbs_pms_professor dd on cc.wProfIdx = dd.wProfIdx and dd.wIsStatus=\'Y\'
+							where aa.IsStatus=\'Y\'
+							and dd.wProfName like \'%'. $this->_reqP('search_value') .'%\'  
+                        )'
+                    ]
+                ],
+            ]);
+        }
+
+        // 시작일
+        if (!empty($this->_reqP('search_sdate'))) {
+            if($this->_reqP('search_date_type') === 'SchoolStart') {  //개강년월 검색
+                $arr_condition = array_merge_recursive($arr_condition, [
+                    'GTE' => [
+                        'concat(B.SchoolStartYear,B.SchoolStartMonth)'=> date("Ym", strtotime($this->_reqP('search_sdate')))
+                    ],
+                ]);
+            } else {
+                $arr_condition = array_merge_recursive($arr_condition, [
+                    'GTE' => [
+                        $this->_reqP('search_date_type') => $this->_reqP('search_sdate')
+                    ],
+                ]);
+            }
+        }
+
+        // 종료일
+        if (!empty($this->_reqP('search_edate'))) {
+            if($this->_reqP('search_date_type') === 'SchoolStart') {    //개강년월 검색
+                $arr_condition = array_merge_recursive($arr_condition, [
+                    'LTE' => [
+                        'concat(B.SchoolStartYear,B.SchoolStartMonth)'=> date("Ym", strtotime($this->_reqP('search_edate')))
+                    ],
+                ]);
+            } else {
+                $arr_condition = array_merge_recursive($arr_condition, [
+                    'LTE' => [
+                        $this->_reqP('search_date_type') => $this->_reqP('search_edate')
+                    ],
+                ]);
+            }
+        }
+
+        // 정산여부
+        if( $this->_req('search_calc') == 'Y') {
+            $arr_condition = array_merge_recursive($arr_condition,[
+                'GTE' => [
+                    'F.DivisionCount' => '1'
+                ],
+            ]);
+        } else if( $this->_req('search_calc') == 'N') {
+            $arr_condition = array_merge_recursive($arr_condition,[
+                'RAW' => ['F.DivisionCount is' => ' null']
+            ]);
+        }
+
+        return $arr_condition;
     }
 }

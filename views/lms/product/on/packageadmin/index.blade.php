@@ -143,7 +143,8 @@
                 serverSide: true,
                 //"lengthMenu": [20, 50, 100 ],
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-5"></i> 정렬순서 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order-modify'}
+                    { text: '<i class="fa fa-pencil mr-5"></i> 엑셀 다운로드', className: 'btn-sm btn-info border-radius-reset mr-15 btn-excel'}
+                    ,{ text: '<i class="fa fa-pencil mr-5"></i> 정렬순서 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order-modify'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 신규/추천/사용 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 운영자패키지복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 운영자패키지등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
@@ -170,24 +171,19 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.CateName;
                         }},
-
                     {'data' : 'SchoolYear'},//대비학년도
-
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.PackTypeCcd_Name.replace('패키지','');
                         }},
-
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '['+row.ProdCode+ '] <a href="#" class="btn-modify" data-idx="' + row.ProdCode + '"><u>' + row.ProdName + '</u></a> ';
                         }},//패키지명
-
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
                         }},
                     {'data' : 'IsNew', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_new" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-new="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},
-
                     {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_best" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-best="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},
@@ -331,6 +327,13 @@
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url('/product/on/packageAdmin/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+            });
+
+            // 엑셀 다운로드
+            $('.btn-excel').on('click', function() {
+                if(confirm("엑셀파일을 다운로드 하시겠습니까?")) {
+                    formCreateSubmit('{{ site_url('/product/on/packageAdmin/listExcel') }}', $search_form.serializeArray(), 'POST');
+                }
             });
         });
     </script>

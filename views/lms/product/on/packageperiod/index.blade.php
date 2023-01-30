@@ -18,7 +18,7 @@
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10 hide" id="search_md_cate_code" name="search_md_cate_code">
+                        <select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
                             <option value="">중분류</option>
                             @foreach($arr_md_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
@@ -114,7 +114,8 @@
                 serverSide: true,
 
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-5"></i> 사용 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
+                    { text: '<i class="fa fa-pencil mr-5"></i> 엑셀 다운로드', className: 'btn-sm btn-info border-radius-reset mr-15 btn-excel'}
+                    ,{ text: '<i class="fa fa-pencil mr-5"></i> 사용 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 기간제패키지복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 기간제패키지등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
                         {{-- 권한 체크 --}}
@@ -136,29 +137,23 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '<input type="radio" class="flat"  name="copyProdCode" value="'+row.ProdCode+'">';
                         }},
-
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.CateName;
                         }},
-
                     {'data' : 'SchoolYear'},//대비학년도
 
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.PackTypeCcd_Name.replace('패키지','');
                         }},
-
-                    //{'data' : 'StudyPeriod_Name'},//수강기간
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.StudyPeriodCcd==='616001' ? row.StudyPeriod_Name : '~'+row.StudyEndDate;
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '['+row.ProdCode+ '] <a href="#" class="btn-modify" data-idx="' + row.ProdCode + '"><u>' + row.ProdName + '</u></a> ';
                         }},//패키지명
-
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
                         }},
-
                     {'data' : 'MultipleApply', 'render' : function(data, type, row, meta) {
                             return (data === '1') ? '배수제한없음' : data;
                         }},//배수
@@ -168,11 +163,6 @@
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},//사용여부
-                    /*
-                    {'data' : 'CartCnt'},//장바구니
-                    {'data' : 'PayIngCnt'},//입금대기
-                    {'data' : 'PayEndCnt'},//결제완료
-                    */
                     {'data' : 'wAdminName'},//등록자
                     {'data' : 'RegDatm'},//등록일
                     {'data' : null, 'render' : function(data, type, row, meta) {
@@ -258,10 +248,16 @@
                 }, showError, false, 'POST');
             });
 
-
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url('/product/on/packagePeriod/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+            });
+
+            // 엑셀 다운로드
+            $('.btn-excel').on('click', function() {
+                if(confirm("엑셀파일을 다운로드 하시겠습니까?")) {
+                    formCreateSubmit('{{ site_url('/product/on/packagePeriod/listExcel') }}', $search_form.serializeArray(), 'POST');
+                }
             });
 
         });

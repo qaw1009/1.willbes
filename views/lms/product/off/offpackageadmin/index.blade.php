@@ -30,7 +30,6 @@
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-
                         <select name="search_schoolyear" id="search_schoolyear" class="form-control" title="대비학년도">
                             <option value="">대비학년도</option>
                             @for($i=(date('Y')+2); $i>=2015; $i--)
@@ -49,28 +48,24 @@
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        &nbsp;
                         <select class="form-control" id="search_studyapply_ccd" name="search_studyapply_ccd">
                             <option value="">수강신청구분</option>
                             @foreach($studyapply_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        &nbsp;
                         <select class="form-control" id="search_packtype_ccd" name="search_packtype_ccd">
                             <option value="">종합반유형</option>
                             @foreach($packtype_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        &nbsp;
                         <select name="search_schoolstartyear" id="search_schoolstartyear"  class="form-control" title="개강년도">
                             <option value="">개강년도</option>
                             @for($i=(date('Y')+1); $i>=2014; $i--)
                                 <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
-                        &nbsp;
                         <select name="search_schoolstartmonth" id="search_schoolstartmonth"  class="form-control" title="개강월">
                             <option value="">개강월</option>
                             @for($i=1;$i<=12;$i++)
@@ -78,26 +73,22 @@
                                 <option value="{{$ii}}">{{$ii}}</option>
                             @endfor
                         </select>
-                        &nbsp;
                         <select class="form-control" id="search_islecopen" name="search_islecopen">
                             <option value="">개설여부</option>
                             <option value="Y">개설</option>
                             <option value="N">폐강</option>
                         </select>
-                        &nbsp;
                         <select class="form-control" id="search_acceptccd" name="search_acceptccd">
                             <option value="">접수상태</option>
                             @foreach($accept_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        &nbsp;
                         <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
-                        &nbsp;
                         <select class="form-control" id="search_calc" name="search_calc">
                             <option value="">정산입력여부</option>
                             <option value="Y">입력</option>
@@ -119,14 +110,13 @@
                     <label class="control-label col-md-1" for="search_sdate">날짜검색</label>
                     <div class="col-md-5 form-inline">
                         <select class="form-control" id="search_date_type" name="search_date_type" style="width:120px;">
-                            <option value="B.StudyStartDate">개강일</option>
-                            <option value="B.StudyEndDate">종강일</option>
+                            <option value="SchoolStart">개강년/월</option>
                             <option value="B.SaleStartDat">접수시작일</option>
                             <option value="B.SaleEndDat">접수종료일</option>
                             <option value="A.RegDatm">등록일</option>
                         </select>
-                        <input name="search_sdate"  class="form-control datepicker" id="search_sdate" style="width: 100px;"  type="text"  value="">
-                        ~ <input name="search_edate"  class="form-control datepicker" id="search_edate" style="width: 100px;"  type="text"  value="">
+                        <input name="search_sdate"  class="form-control datepicker" id="search_sdate" style="width: 100px;"  type="text"  value="" placeholder="조회시작일">
+                        ~ <input name="search_edate"  class="form-control datepicker" id="search_edate" style="width: 100px;"  type="text"  value="" placeholder="조회종료일">
                     </div>
                 </div>
             </div>
@@ -182,7 +172,8 @@
                 serverSide: true,
 
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-5"></i> 정렬순서 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order-modify'}
+                    { text: '<i class="fa fa-pencil mr-5"></i> 엑셀 다운로드', className: 'btn-sm btn-info border-radius-reset mr-15 btn-excel'}
+                    ,{ text: '<i class="fa fa-pencil mr-5"></i> 정렬순서 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order-modify'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 신규/추천/사용 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 종합반복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 종합반등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
@@ -434,6 +425,13 @@
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url('/product/off/offPackageAdmin/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+            });
+
+            // 엑셀 다운로드
+            $('.btn-excel').on('click', function() {
+                if(confirm("엑셀파일을 다운로드 하시겠습니까?")) {
+                    formCreateSubmit('{{ site_url('/product/off/offPackageAdmin/listExcel') }}', $search_form.serializeArray(), 'POST');
+                }
             });
         });
     </script>

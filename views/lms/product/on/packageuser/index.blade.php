@@ -108,7 +108,8 @@
                 serverSide: true,
 
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-5"></i> 사용 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
+                    { text: '<i class="fa fa-pencil mr-5"></i> 엑셀 다운로드', className: 'btn-sm btn-info border-radius-reset mr-15 btn-excel'}
+                    ,{ text: '<i class="fa fa-pencil mr-5"></i> 사용 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 사용자패키지복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 사용자패키지등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
                             {{-- 권한 체크 --}}
@@ -229,6 +230,13 @@
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url('/product/on/packageUser/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+            });
+
+            // 엑셀 다운로드
+            $('.btn-excel').on('click', function() {
+                if(confirm("엑셀파일을 다운로드 하시겠습니까?")) {
+                    formCreateSubmit('{{ site_url('/product/on/packageUser/listExcel') }}', $search_form.serializeArray(), 'POST');
+                }
             });
 
         });

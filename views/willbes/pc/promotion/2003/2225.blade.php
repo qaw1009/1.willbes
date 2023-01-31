@@ -21,18 +21,18 @@
 
         /************************************************************/
 
-        .wb_top10 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2225_top_bg.jpg) no-repeat center top; height: 1100px;}
-        .wb_top10 .imgA {position: absolute; top:200px; left:50%; margin-left:-372px; width:745px; z-index: 2;}
+        .wb_top10 {background:url(https://static.willbes.net/public/images/promotion/2023/01/2225_top_bg.jpg) no-repeat center top; height: 1170px;}
+        .wb_top10 .imgA {position: absolute; top:225px; left:50%; margin-left:-372px; width:745px; z-index: 2;}
 
         .wb_cts03 {background:#303132}
 
     </style>
 
-    <div class="evtContent NSK" id="evtContainer"> 
-           
+    <div class="evtContent NSK" id="evtContainer">
+
         <div class="evtCtnsBox wb_top10">
            <span class="imgA" data-aos="flip-up" data-aos-duration="1000"><img src="https://static.willbes.net/public/images/promotion/2022/12/2225_top_img.png" alt="윌비스 드림팩"/></span>
-        </div>          
+        </div>
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
             <div class="wrap">

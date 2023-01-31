@@ -10,13 +10,9 @@
 
 <div id="Container" class="Container NSK c_both">    
 
-    <div class="evtCtnsBox" data-aos="fade-down">
-        @if(time() < strtotime('202208312400'))
-            <img src="https://static.willbes.net/public/images/promotion/2022/08/2225m_top.jpg" alt="윌비스 웰컴팩" >
-        @else
-            <img src="https://static.willbes.net/public/images/promotion/2022/09/2225m_top.jpg" alt="윌비스 드림팩" >
-        @endif
-    </div> 
+    <div class="evtCtnsBox" data-aos="fade-down">        
+        <img src="https://static.willbes.net/public/images/promotion/2023/01/2225m_top.jpg" alt="윌비스 드림팩" >       
+    </div>
 
     <div class="evtCtnsBox" data-aos="fade-up">
         <div class="wrap">

@@ -35,7 +35,7 @@ class SysLogModel extends WB_Model
         } else {
             $in_column = 'AR.ArIdx, AR.wAdminIdx, AR.RoleIdx, AR.IsStatus, AR.RegDatm, AR.RegAdminIdx, AR.RegIp, AR.UpdDatm, AR.UpdAdminIdx
                 , A.wAdminId, A.wAdminName
-                , fn_mask(A.wAdminId, "id", "Y") as wAdminIdMask
+                , fn_mask(A.wAdminId, "id", "N") as wAdminIdMask
                 , R.RoleName
                 , RA.wAdminId as RegAdminId, RA.wAdminName as RegAdminName	
                 , UA.wAdminId as UpdAdminId, UA.wAdminName as UpdAdminName
@@ -91,7 +91,7 @@ class SysLogModel extends WB_Model
         } else {
             $in_column = 'SC.AsIdx, SC.wAdminIdx, SC.SiteCode, SC.CampusCcd, SC.IsStatus, SC.RegDatm, SC.RegAdminIdx, SC.RegIp, SC.UpdDatm, SC.UpdAdminIdx
                 , A.wAdminId, A.wAdminName
-                , fn_mask(A.wAdminId, "id", "Y") as wAdminIdMask
+                , fn_mask(A.wAdminId, "id", "N") as wAdminIdMask
                 , S.SiteName
                 , CCA.CcdName as CampusCcdName
                 , RA.wAdminId as RegAdminId, RA.wAdminName as RegAdminName	

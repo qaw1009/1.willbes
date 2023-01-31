@@ -14,13 +14,14 @@ class AdminModel extends WB_Model
     private $_ccd = [
         'Campus' => '605'
     ];
-    private $_mask;
+    // 마스킹해제여부
+    private $_no_mask;
 
     public function __construct()
     {
         parent::__construct('lms');
 
-        $this->_mask = get_admin_sub_role('mask', 'Y');
+        $this->_no_mask = get_admin_sub_role('no_mask', 'N');
     }
 
     /**
@@ -46,7 +47,7 @@ class AdminModel extends WB_Model
         $in_colum = '
                 A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPositionCcd, A.wAdminDeptCcd, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail
                     , A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wLastLoginDatm, A.wLastLoginIp
-                    , fn_mask(A.wAdminId, "id", "' . $this->_mask . '") as wAdminIdMask                                       
+                    , fn_mask(A.wAdminId, "id", "' . $this->_no_mask . '") as wAdminIdMask                                       
                     , ifnull(AR.RoleIdx, "") as RoleIdx, AR.RegDatm as RoleRegDatm
                     , if((select count(*) from ' . $this->_table['admin_r_site_campus'] . ' where wAdminIdx = A.wAdminIdx and IsStatus = "Y") > 0, "Y", "N") as IsSiteCampus
                     , (case when A.wAdminIdx = A.wRegAdminIdx 
@@ -80,7 +81,7 @@ class AdminModel extends WB_Model
     {
         $column = 'A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPositionCcd, A.wAdminDeptCcd, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail';
         $column .= ' , A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
-        $column .= ' , fn_mask(A.wAdminId, "id", "' . $this->_mask . '") as wAdminIdMask, ifnull(AR.RoleIdx, "") as RoleIdx';
+        $column .= ' , fn_mask(A.wAdminId, "id", "' . $this->_no_mask . '") as wAdminIdMask, ifnull(AR.RoleIdx, "") as RoleIdx';
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
         $column .= ' , if(A.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wUpdAdminIdx and wIsStatus = "Y")) as wUpdAdminName';
 

@@ -124,14 +124,14 @@ class LmsAuthService extends AdminAuthService
         $results['Role']['SubRole'] = empty($results['Role']['SubRoleJson']) === true ? null : json_decode($results['Role']['SubRoleJson'], true);
         unset($results['Role']['SubRoleJson']);
 
-        // 마스킹여부
-        $results['Role']['SubRole']['mask'] = 'Y';
+        // 마스킹해제여부
+        $results['Role']['SubRole']['no_mask'] = 'N';
 
         // 시스템관리자 여부
         $results['Role']['IsSysRole'] = false;
         if (empty($results['Role']['RoleIdx']) === false && $results['Role']['RoleIdx'] == config_item('sys_role_idx')) {
             $results['Role']['IsSysRole'] = true;
-            $results['Role']['SubRole']['mask'] = 'N';    // 시스템관리자일 경우 unmask
+            $results['Role']['SubRole']['no_mask'] = 'Y';    // 시스템관리자일 경우 마스킹해제
         }
 
         // 사이트, 캠퍼스 권한 조회

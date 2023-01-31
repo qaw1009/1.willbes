@@ -342,7 +342,7 @@ class RoleModel extends WB_Model
         } else {
             $in_column = 'CL.wArcIdx, CL.wAdminIdx, CL.wRoleIdx, CL.wPrevRoleIdx, CL.wRegDatm, CL.wRegAdminIdx, CL.wRegIp
                 , A.wAdminId, A.wAdminName
-                , fn_mask(A.wAdminId, "id", "Y") as wAdminIdMask
+                , fn_mask(A.wAdminId, "id", "N") as wAdminIdMask
                 , R.wRoleName, ifnull(PR.wRoleName, "-") as wPrevRoleName
                 , RA.wAdminName as wRegAdminName                        
             ';

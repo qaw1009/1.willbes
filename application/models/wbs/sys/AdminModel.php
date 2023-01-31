@@ -36,7 +36,7 @@ class AdminModel extends WB_Model
         } else {
             $column = '
                 A.wAdminIdx, A.wRoleIdx, A.wAdminId, A.wAdminName, A.wAdminPositionCcd, A.wAdminDeptCcd, A.wIsApproval, A.wIsUse, A.wRegDatm, A.wRegAdminIdx
-                    , fn_mask(A.wAdminId, "id", "Y") as wAdminIdMask
+                    , fn_mask(A.wAdminId, "id", "N") as wAdminIdMask
                     , ifnull(R.wRoleName, "-") as wRoleName
                     , (case when A.wAdminIdx = A.wRegAdminIdx 
                             then A.wAdminName
@@ -98,7 +98,7 @@ class AdminModel extends WB_Model
     {
         $column = 'A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail, A.wAdminDeptCcd, A.wAdminPositionCcd, A.wAdminDesc';
         $column .= ' , A.wIsApproval, A.wApprovalDatm, A.wApprovalAdminIdx, A.wPasswdExpireDate, A.wPasswdExpirePeriod, A.wProfIdx, A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
-        $column .= ' , fn_mask(A.wAdminId, "id", "Y") as wAdminIdMask';
+        $column .= ' , fn_mask(A.wAdminId, "id", "N") as wAdminIdMask';
         $column .= ' , if(A.wRoleIdx = 0, "", A.wRoleIdx) as wRoleIdx';
         $column .= ' , if(A.wRoleIdx = 0, "", (select wRoleName from ' . $this->_table['admin_role'] . ' where wRoleIdx = A.wRoleIdx and wIsStatus = "Y")) as wRoleName';
         $column .= ' , if(A.wApprovalAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wApprovalAdminIdx and wIsStatus = "Y")) as wApprovalAdminName';
@@ -596,7 +596,7 @@ class AdminModel extends WB_Model
                     when "PW" then "비밀번호만료"
                     else "자동등록"
                   end) as wPasswdChgRouteName
-                , A.wAdminId, A.wAdminName, fn_mask(A.wAdminId, "id", "Y") as wAdminIdMask
+                , A.wAdminId, A.wAdminName, fn_mask(A.wAdminId, "id", "N") as wAdminIdMask
                 , AR.wRoleName
                 , RA.wAdminId as wRegAdminId, RA.wAdminName as wRegAdminName
             ';

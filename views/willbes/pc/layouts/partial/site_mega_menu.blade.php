@@ -1103,33 +1103,36 @@
                 </ul>
             </div>
         </div>
-    @elseif($__cfg['SiteCode'] == '2015')
-        {{-- 소방학원 
+    @elseif($__cfg['SiteCode'] == '2015')       
         <div class="drop-Box list-drop-Box list-drop-Box-ic">
             <ul>
                 <li class="Tit">소방 공무원</li>
                 <li>
                     <span>종합반</span>
-                    <a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/202993" target="_blank">소방합격반</a>
-                    <a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/202747" target="_blank">소방합격보장반</a>
+                    <a href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3126&campus_ccd=605005&course_idx=&subject_idx=2259" target="_blank">합격반</a>
+                    <a href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3126&campus_ccd=605005&course_idx=&subject_idx=2259" target="_blank">합격보장반</a>
+                    <a href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3126&campus_ccd=605005&course_idx=&subject_idx=2258" target="_blank">실강0원패스</a>
                 </li>
                 <li>
                     <span>단과반</span>
-                    <a href="{{front_url('/offLecture/index?cate_code=3126&course_idx=1303')}}">이론반</a>
+                    <a href="{{front_url('/offLecture/index?cate_code=3126&course_idx=1303')}}">기본이론</a>
+                    <a href="{{front_url('/offLecture/index?cate_code=3126&course_idx=1487')}}">심화이론</a>
                     <a href="{{front_url('/offLecture/index?cate_code=3126&course_idx=1304')}}">문제풀이</a>
-                    <a href="{{front_url('/offLecture/index?cate_code=3126&course_idx=1358')}}">면접특강</a>
+                    <a href="{{front_url('/offLecture/index?cate_code=3126&campus_ccd=605005&course_idx=1310')}}">스파르타독서실</a>
+                    <a href="{{front_url('/offLecture/index?cate_code=3126&campus_ccd=605005&course_idx=&subject_idx=2110&prof_idx=51044')}}">G-TELP</a>
+                    <a href="{{front_url('/offLecture/index?cate_code=3126&campus_ccd=605005&course_idx=&subject_idx=2109&prof_idx=51229')}}">한능검</a>
+                    <a href="{{front_url('/offLecture/index?cate_code=3126&campus_ccd=605005&course_idx=&subject_idx=2090')}}">소방면접</a>
                 </li>
                 <li>
                     <span style="width:100%;">통합생활관리반</span>
                 </li>
                 <li>
-                    <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3050&campus_ccd=605001&course_idx=1480" target="_blank">1개월 스페셜 에디션</a>
-                    <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3050&campus_ccd=605001&course_idx=1480" target="_blank">6개월 스페셜 에디션</a>
-                    <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3050&campus_ccd=605001&course_idx=1480" target="_blank">12개월 스페셜 에디션</a>
+                    <a href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3126&campus_ccd=605005&course_idx=&subject_idx=2257" target="_blank">1개월 스페셜 에디션</a>
+                    <a href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3126&campus_ccd=605005&course_idx=&subject_idx=2257" target="_blank">6개월 스페셜 에디션</a>
+                    <a href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3126&campus_ccd=605005&course_idx=&subject_idx=2257" target="_blank">12개월 스페셜 에디션</a>
                 </li>
             </ul>
-        </div>
-        --}}
+        </div>       
     @endif
 @endsection
 

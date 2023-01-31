@@ -1106,7 +1106,7 @@
     @elseif($__cfg['SiteCode'] == '2015')       
         <div class="drop-Box list-drop-Box list-drop-Box-ic">
             <ul>
-                <li class="Tit">소방 공무원</li>
+                <li class="Tit">윌비스 소방</li>
                 <li>
                     <span>종합반</span>
                     <a href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3126&campus_ccd=605005&course_idx=&subject_idx=2259" target="_blank">합격반</a>

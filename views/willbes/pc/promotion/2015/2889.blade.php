@@ -68,7 +68,7 @@
 		<div class="evtCtnsBox evt_01" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/02/2889_01.jpg" alt="실강 0원 패스란" />
-                <a href="javascript:alert('Coming Soon!')" title="수강신청하기" style="position: absolute;left: 20.59%;top: 76.83%;width: 37.84%;height: 8.71%;z-index: 2;"></a>
+                <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3126/prod-code/205021" target="_blank" title="수강신청하기" style="position: absolute;left: 20.59%;top: 76.83%;width: 37.84%;height: 8.71%;z-index: 2;"></a>
             </div>
 		</div>        
 

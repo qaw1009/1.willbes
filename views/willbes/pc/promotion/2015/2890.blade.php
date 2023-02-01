@@ -58,7 +58,7 @@
 	<div class="evtContent NSK">
 
         <div class="sky" id="QuickMenu">
-            <a href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3126&campus_ccd=605005&course_idx=&subject_idx=2259" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/02/2890_sky.jpg" alt="합격 보장반 신청하기"></a>         
+            <a href="#lecbuy"><img src="https://static.willbes.net/public/images/promotion/2023/02/2890_sky.jpg" alt="합격 보장반 신청하기"></a>         
         </div>
 
 		<div class="evtCtnsBox evt_top">
@@ -68,7 +68,7 @@
 		<div class="evtCtnsBox evt_01" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/02/2890_01.jpg" alt="필기 상위 10% 합격보장반" />
-                <a href="javascript:alert('Coming Soon!')" title="수강신청하기" style="position: absolute;left: 20.59%;top: 76.29%;width: 37.84%;height: 8.71%;z-index: 2;"></a>
+                <a href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3126&campus_ccd=605005&course_idx=&subject_idx=2259" target="_blank" title="수강신청하기" style="position: absolute;left: 20.59%;top: 76.29%;width: 37.84%;height: 8.71%;z-index: 2;"></a>
             </div>
 		</div>
 

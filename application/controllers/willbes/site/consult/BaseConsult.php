@@ -28,7 +28,7 @@ class BaseConsult extends \app\controllers\FrontController
 
         if ($this->_site_code == '2011' && $this->_consult_type == 'T') {
             if (element('s_campus', $arr_input, '') == '605011') {
-                $arr_base['title'] = 'ㆍGS1순환 이수진 노동법 평일반 [합격생 1:1 멘토링 프로그램] ';
+                $arr_base['title'] = 'ㆍGS1순환 이수진 노동법 주말반 [합격생 1:1 멘토링 프로그램] 멘토 지원';
             } else {
                 $arr_base['title'] = 'ㆍ신현표 노무사의 공부고민 및 내용의문사항 상담 예약';
             }

@@ -222,36 +222,6 @@
                                                 <td class="w-time tx-left pl25"> 월~토요일 : 08:00~19:00 <br />
                                                 일요일 : 08:00~18:00 </td>
                                             </tr>
-                                            <tr>
-                                                <td class="w-site" rowspan="2">경찰간부/<br>일반경찰</td>
-                                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
-                                                <td class="w-call">1566-4770</td>
-                                                <td class="w-time tx-left pl25"> 평일 9:00~18:00 (점심시간 12시~13시)<br/>
-                                                주말/공휴일 휴무 </td>
-                                                <td class="w-time tx-center"><a href="{{front_app_url('/support/qna/index', 'spo', false, true)}}">1:1상담 ></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                                <td class="w-call">1544-1881</td>
-                                                <td class="w-time tx-left pl25"> 평일 8:00~18:00<br/>
-                                                주말/공휴일 휴무 </td>
-                                                <td class="w-time tx-center"><a href="{{front_app_url('/support/qna/index', 'spo', true)}}">1:1상담 ></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-site">N잡 / 어학 / 취업</td>
-                                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
-                                                <td class="w-call">1544-5006 ▶ 2</td>
-                                                <td class="w-time tx-left pl25"> 평일 9:00~18:00 (점심시간 12시~13시)<br/>
-                                                주말/공휴일 휴무 </td>
-                                                <td class="w-time tx-center"><a href="https://www.njobler.net/board/qna/index" target="_blank">1:1상담 ></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-site">인천고시학원</td>
-                                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                                <td class="w-call">1544-1661</td>
-                                                <td class="w-time tx-left pl25">평일/주말 9:00~18:00</td>
-                                                <td class="w-time tx-center"><a href="{{front_app_url('/support/qna/index', 'willbesedu', true)}}">1:1상담 ></a></td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

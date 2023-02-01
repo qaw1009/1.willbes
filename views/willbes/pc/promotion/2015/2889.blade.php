@@ -58,7 +58,7 @@
 	<div class="evtContent NSK">
 
         <div class="sky" id="QuickMenu">
-            <a href="#lecbuy"><img src="https://static.willbes.net/public/images/promotion/2023/02/2889_sky.jpg" alt="실강 0원 패스 신청하기"></a>         
+            <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3126/prod-code/205021" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/02/2889_sky.jpg" alt="실강 0원 패스 신청하기"></a>         
         </div>
 
 		<div class="evtCtnsBox evt_top">
@@ -72,7 +72,7 @@
             </div>
 		</div>        
 
-		<div class="evtCtnsBox evt_02" data-aos="fade-up" id="lecbuy">
+		<div class="evtCtnsBox evt_02" data-aos="fade-up">
 			<img src="https://static.willbes.net/public/images/promotion/2023/02/2889_02.jpg" alt="불꽃 소방팀" />
             <div class="tabmenu">
                 <a href="#tab01"><strong class="NSK-Black">소방학</strong><br> 권나라</a>        

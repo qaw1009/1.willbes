@@ -311,23 +311,10 @@
                         <li>
                             <strong>공무원</strong>
                             <a href="{{ front_app_url('/home/index', 'pass', true) }}" target="_blank">서울(가산/노량진)</a>
-                            {{--
-                            <a href="{{ front_app_url('/home/index', 'willbesedu', true) }}" target="_blank">인천</a><span>|</span>
-                            <a href="https://pass.willbes.net/pass/campus/show/code/605004" target="_blank">대구</a><span>|</span>
-                            <a href="http://busan.willbes.net" target="_blank">부산</a><span>|</span>
-                            <a href="https://pass.willbes.net/pass/campus/show/code/605006" target="_blank">광주</a>
-                            --}}
                         </li>
                         <li>
                             <strong>경찰</strong>
-                            <a href="{{ front_app_url('/home/index', 'police', true) }}" target="_blank">노량진</a><span>|</span>
-                            <a href="{{ front_app_url('/campus/show/code/605005', 'police', true) }}" target="_blank">인천</a><span>|</span>
-                            <a href="{{ front_app_url('/campus/show/code/605004', 'police', true) }}" target="_blank">대구</a><span>|</span>
-                            <a href="{{ front_app_url('/campus/show/code/605003', 'police', true) }}" target="_blank">부산</a><span>|</span>
-                            <a href="{{ front_app_url('/campus/show/code/605006', 'police', true) }}" target="_blank">광주</a><span>|</span>
-                            <a href="{{ front_app_url('/campus/show/code/605009', 'police', true) }}" target="_blank">제주</a><span>|</span>
-                            <a href="https://blog.naver.com/als9946" target="_blank">전북</a><span>|</span>
-                            <a href="{{ front_app_url('/campus/show/code/605010', 'police', true) }}" target="_blank">경기 광주(기숙형)</a>
+                            <a href="{{ front_app_url('/home/index', 'police', true) }}" target="_blank">노량진</a>
                         </li>
                         <li>
                             <strong>교원임용</strong>
@@ -495,6 +482,7 @@
                                         일요일 : 08:00~18:00 
                                     </td>
                                 </tr>
+                                {{--
                                 <tr>
                                     <td class="w-site" rowspan="2">경찰간부 · 일반경찰</td>
                                     <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
@@ -511,7 +499,7 @@
                                         평일 8:00~18:00<br/>
                                         주말/공휴일 휴무
                                     </td>
-                                </tr>
+                                </tr>                                
                                 <tr>
                                     <td class="w-site">N잡/취업</td>
                                     <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
@@ -521,12 +509,7 @@
                                         주말/공휴일 휴무
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="w-site">인천고시학원</td>
-                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                    <td class="w-call">1544-1661</td>
-                                    <td class="w-time tx-left pl25">평일/주말 9:00~18:00</td>
-                                </tr>
+                                --}}
                             </tbody>
                         </table>
                     </div>

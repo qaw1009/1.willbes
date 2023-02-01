@@ -22,13 +22,13 @@
         .sky {position:fixed;top:100px; right:10px ;width:120px; text-align:center; z-index:100;}    
         .sky a {display: block; margin-bottom:10px}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_top_bg.jpg) no-repeat center top;}
-        .evtTop_01 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_top_01_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2023/02/2822_top_bg.jpg) no-repeat center top;}
 
         .evtTop div {position: absolute; left:50%; bottom:0; width:1110px; margin-left:-555px; z-index: 2;}
-        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_01_bg.jpg) no-repeat center top;}
-        .evt02 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_02_bg.jpg) no-repeat center top;}
-        .evt02_01 {background:url(https://static.willbes.net/public/images/promotion/2022/12/2822_02_01_bg.jpg) no-repeat center top;}
+
+        .evt00 {background:url(https://static.willbes.net/public/images/promotion/2023/02/2822_00_bg.jpg) no-repeat center top;}
+        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2023/02/2822_01_bg.jpg) no-repeat center top;}
+        .evt02 {background:#555}
 
         .evt03 {width:1060px; margin:0 auto; padding:0 0 100px; display: flex; justify-content: space-between;} 
 
@@ -84,7 +84,7 @@
         }
         .ssam-Lnb .lnb-List .lnb-List-Depth dl dt a:hover,
         .ssam-Lnb .lnb-List .lnb-List-Depth dl dt a.active {
-            background: #ffd800;
+            background: #0471d6; color:#fff
         }
         .ssam-Lnb .lnb-List .lnb-List-Depth dl dt:last-child,
         .ssam-Lnb .lnb-List .lnb-List-Depth dl dt:last-child a {border-bottom:0}
@@ -178,30 +178,26 @@
     </style>
 
     <div class="evtContent NSK ssam" id="evtContainer">
-        @if(time() < strtotime('202212301700'))
-            <div class="evtCtnsBox evtTop" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_top.jpg" alt="2023학년도 연간패키지"/>
-            </div>
-            <div class="evtCtnsBox evt01" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_01.jpg" alt="연간 커리큘럼"/>
-            </div>
-            <div class="evtCtnsBox evt02" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_02.jpg" alt="선착순 1000명"/>
-            </div>
-        @else
-            <div class="evtCtnsBox evtTop_01" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_top_01.jpg" alt="2023학년도 연간패키지"/>
-            </div>
-            <div class="evtCtnsBox evt01" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_01.jpg" alt="연간 커리큘럼"/>
-            </div>
-            <div class="evtCtnsBox evt02_01" data-aos="fade-up">
-                <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_02_01.jpg" alt="선착순 1000명"/>
-            </div>
-        @endif
+
+        <div class="evtCtnsBox evtTop" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2023/02/2822_top.jpg" alt="2024학년도 연간패키지"/>
+        </div>
+
+        <div class="evtCtnsBox evt00" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2023/02/2822_00.jpg" alt="최강 교수진"/>
+        </div>
+
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2023/02/2822_01.jpg" alt="연간 커리큘럼"/>
+        </div>
+
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2023/02/2822_02.jpg" alt="선착순 1000명"/>
+        </div>
+
 
         <div class="evtCtnsBox evt05" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/12/2822_03.jpg" alt="선착순 1000명"/>
+            <img src="https://static.willbes.net/public/images/promotion/2023/02/2822_03.jpg" alt="연간 패키지 수강신청"/>
         </div>
 
         {{-- 핫클립 상품 Box(ajax data) evt03--}}

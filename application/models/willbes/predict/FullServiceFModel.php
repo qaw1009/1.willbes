@@ -151,8 +151,8 @@ class FullServiceFModel extends WB_Model
                     ) AS QuestionCnt
                 FROM {$this->_table['predict_register']} AS a
                 INNER JOIN {$this->_table['predict_register_r_code']} AS prc ON a.PrIdx = prc.PrIdx
-                INNER JOIN {$this->_table['predict_paper']} AS pp ON prc.SubjectCode = pp.SubjectCode AND pp.IsStatus = 'Y' AND pp.IsUse = 'Y'
-                INNER JOIN {$this->_table['predict_code_r_subject']} AS pcrs ON pp.SubjectCode = pcrs.SubjectCode AND pcrs.IsStatus = 'Y' AND pcrs.IsUse = 'Y'
+                INNER JOIN {$this->_table['predict_paper']} AS pp ON a.PredictIdx = pp.PredictIdx AND prc.SubjectCode = pp.SubjectCode AND pp.IsStatus = 'Y' AND pp.IsUse = 'Y'
+                INNER JOIN {$this->_table['predict_code_r_subject']} AS pcrs ON a.PredictIdx = pcrs.PredictIdx AND pp.SubjectCode = pcrs.SubjectCode AND pcrs.IsStatus = 'Y' AND pcrs.IsUse = 'Y'
                 INNER JOIN {$this->_table['predict_code']} AS pc ON pcrs.SubjectCode = pc.Ccd AND pc.IsUse = 'Y'
                 {$where}
             ) AS m

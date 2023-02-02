@@ -667,8 +667,9 @@ class PredictModel extends WB_Model
             PP.PredictIdx, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo,
             PP.TakeNumRedundancyCheckIsUse, PP.PreServiceIsUse, PP.AnswerServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs,
             PP.PreServiceSDatm, PP.PreServiceEDatm, PP.AnswerServiceSDatm, PP.AnswerServiceEDatm, PP.ServiceSDatm, PP.ServiceEDatm, PP.LastServiceSDatm, PP.LastServiceEDatm,
-            PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName, A2.wAdminName AS wAdminName2,
-            pp.SuccessfulCount,pp.CertIdxArr,pp.SpIdx
+            pp.SuccessfulCount, pp.CertIdxArr, pp.SpIdx, pp.IsQuestionType, pp.IsAddPoint,
+            PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse,
+            A.wAdminName, A2.wAdminName AS wAdminName2
         ";
 
         $from = "
@@ -919,10 +920,12 @@ class PredictModel extends WB_Model
                 'ServiceEDatm' => $ServiceEDatm,
                 'LastServiceSDatm' => $LastServiceSDatm,
                 'LastServiceEDatm' => $LastServiceEDatm,
-                'RegIp'          => $this->input->ip_address(),
                 'SuccessfulCount' =>$this->input->post('SuccessfulCount'),
                 'CertIdxArr' =>$this->input->post('CertIdxArr'),
                 'SpIdx' =>$this->input->post('SpIdx'),
+                'IsQuestionType' =>$this->input->post('IsQuestionType'),
+                'IsAddPoint' =>$this->input->post('IsAddPoint'),
+                'RegIp'          => $this->input->ip_address(),
                 'RegDatm'        => $date,
                 'RegAdminIdx'    => $this->session->userdata('admin_idx'),
             );
@@ -991,6 +994,8 @@ class PredictModel extends WB_Model
                 'SuccessfulCount' =>$this->input->post('SuccessfulCount'),
                 'CertIdxArr' =>$this->input->post('CertIdxArr'),
                 'SpIdx' =>$this->input->post('SpIdx'),
+                'IsQuestionType' =>$this->input->post('IsQuestionType'),
+                'IsAddPoint' =>$this->input->post('IsAddPoint'),
                 'RegIp'          => $this->input->ip_address(),
                 'UpdAdminIdx'    => $this->session->userdata('admin_idx'),
             );

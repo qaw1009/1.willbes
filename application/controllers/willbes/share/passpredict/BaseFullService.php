@@ -113,6 +113,7 @@ class BaseFullService extends \app\controllers\FrontController
 
         $this->load->view('fullService/predict_tab2', [
             'predict_idx' => $predict_idx
+            ,'predict_data' => $predict_data
             ,'ss_idx' => $ss_idx
             ,'arr_member_step' => $this->_arr_member_step
             ,'arr_base' => $arr_base
@@ -246,7 +247,7 @@ class BaseFullService extends \app\controllers\FrontController
             ['field' => 'take_mock_part', 'label' => '응시직렬', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'subject_p[]', 'label' => '공통과목', 'rules' => 'trim|required'],
             ['field' => 'take_area', 'label' => '응시지역', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'add_point', 'label' => '가산점', 'rules' => 'trim|required'],
+            ['field' => 'add_point', 'label' => '가산점', 'rules' => 'callback_validateRequiredIf[is_add_point,Y]'],
             ['field' => 'take_number', 'label' => '응시번호', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'lecture_type', 'label' => '수강여부', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'Period', 'label' => '시험준비기간', 'rules' => 'trim|required|is_natural_no_zero'],

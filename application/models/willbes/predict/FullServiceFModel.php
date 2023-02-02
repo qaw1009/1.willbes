@@ -35,7 +35,7 @@ class FullServiceFModel extends WB_Model
      */
     public function findPredictData($arr_condition)
     {
-        $column = 'PredictIdx, MockPart, TakeNumRedundancyCheckIsUse, PreServiceIsUse';
+        $column = 'PredictIdx, MockPart, IsQuestionType, IsAddPoint, TakeNumRedundancyCheckIsUse, PreServiceIsUse';
         $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
         $column .= ',DATE_FORMAT(AnswerServiceSDatm, \'%Y%m%d%H%i\') AS AnswerServiceSDatm, DATE_FORMAT(AnswerServiceEDatm, \'%Y%m%d%H%i\') AS AnswerServiceEDatm';
         $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';
@@ -1128,7 +1128,7 @@ class FullServiceFModel extends WB_Model
             ,'TakeNumber' => element('take_number', $form_data)
             ,'TakeMockPart' => element('take_mock_part', $form_data)
             ,'TakeArea' => element('take_area', $form_data)
-            ,'AddPoint' => element('add_point', $form_data)
+            ,'AddPoint' => element('add_point', $form_data, 0)
             ,'LectureType' => element('lecture_type', $form_data)
             ,'Period' => element('Period', $form_data)
         ];
@@ -1152,7 +1152,7 @@ class FullServiceFModel extends WB_Model
                         'PrIdx' => $pr_idx,
                         'PredictIdx' => element('predict_idx', $form_data),
                         'SubjectCode' => $subject_s[$i],
-                        'QuestionType' => element('question_type', $form_data),
+                        'QuestionType' => element('question_type', $form_data,1),
                     );
                     if ($this->_conn->set($data)->insert($this->_table['predict_register_r_code']) === false) {
                         throw new \Exception('저장에 실패했습니다.');
@@ -1167,7 +1167,7 @@ class FullServiceFModel extends WB_Model
                         'PrIdx' => $pr_idx,
                         'PredictIdx' => element('predict_idx', $form_data),
                         'SubjectCode' => $subject_p[$i],
-                        'QuestionType' => element('question_type', $form_data),
+                        'QuestionType' => element('question_type', $form_data,1),
                     );
                     if ($this->_conn->set($data)->insert($this->_table['predict_register_r_code']) === false) {
                         throw new \Exception('저장에 실패했습니다.');

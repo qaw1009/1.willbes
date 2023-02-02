@@ -261,6 +261,23 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-1-1" for="IsQuestionType">책형여부<span class="required">*</span></label>
+                    <div class="col-md-4 form-inline">
+                        <div class="radio mt-5">
+                            <input type="radio" name="IsQuestionType" class="flat" value="Y" @if($method == 'PUT' && $data['IsQuestionType'] == 'Y') checked="checked" @endif> <span class="flat-text mr-20">사용</span>
+                            <input type="radio" name="IsQuestionType" class="flat" value="N" @if($method == 'PUT' && $data['IsQuestionType'] == 'N') checked="checked" @endif> <span class="flat-text">미사용</span>
+                        </div>
+                    </div>
+                    <label class="control-label col-md-1-1" for="IsAddPoint">가산점여부<span class="required">*</span></label>
+                    <div class="col-md-4 form-inline">
+                        <div class="radio mt-5">
+                            <input type="radio" name="IsAddPoint" class="flat" value="Y" @if($method == 'PUT' && $data['IsAddPoint'] == 'Y') checked="checked" @endif> <span class="flat-text mr-20">사용</span>
+                            <input type="radio" name="IsAddPoint" class="flat" value="N" @if($method == 'PUT' && $data['IsAddPoint'] == 'N') checked="checked" @endif> <span class="flat-text">미사용</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1" for="SuccessfulCount">필기합격자수</label>
                     <div class="col-md-4 form-inline">
                         <input type="text" class="form-control" name="SuccessfulCount" value="@if($method == 'PUT'){{ $data['SuccessfulCount'] }}@endif" style="width:50px;">

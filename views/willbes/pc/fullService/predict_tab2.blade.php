@@ -13,10 +13,11 @@
     <input type="hidden" id="GroupCcd" name="GroupCcd" >
     <input type="hidden" name="site_code" value="{{ $__cfg['SiteCode'] }}" />
     <input type="hidden" name="predict_idx" value="{{ $predict_idx }}" />
+    <input type="hidden" name="is_question_type" value="{{ $predict_data['IsQuestionType'] }}" />
+    <input type="hidden" name="is_add_point" value="{{ $predict_data['IsAddPoint'] }}" />
     <input type="hidden" name="lecture_type" value="4" />
     <input type="hidden" name="Period" value="1" />
     <input type="hidden" name="img_pass" value="Y" />
-    <input type="hidden" name="is_question_type" value="Y" />
     <input type="hidden" name="pr_idx" value="{{ $regi_data['PrIdx'] }}" />
 
     @foreach($regi_subject_data as $row)
@@ -67,6 +68,7 @@
                 <label><input type="text" name="take_number" id="take_number" maxlength="8" value="{{ $regi_data['TakeNumber'] }}"/></label>
             </td>
         </tr>
+        @if($predict_data['IsQuestionType'] == 'Y')
         <tr>
             <th>책형</th>
             <td>
@@ -76,19 +78,22 @@
                 </ul>
             </td>
         </tr>
-        {{--
-        <tr>
-            <th>가산점</th>
-            <td>
-                <ul class="sel_info">
-                    <li><input type="radio" name="add_point" id="add_point10" value="10" {{ ($regi_data['AddPoint'] == '10') ? 'checked="checked' : '' }}/> <label for="add_point10">10점</label></li>
-                    <li><input type="radio" name="add_point" id="add_point5" value="5" {{ ($regi_data['AddPoint'] == '5') ? 'checked="checked' : '' }}/> <label for="add_point5">5점</label></li>
-                    <li><input type="radio" name="add_point" id="add_point3" value="3" {{ ($regi_data['AddPoint'] == '3') ? 'checked="checked' : '' }}/> <label for="add_point3">3점</label></li>
-                    <li><input type="radio" name="add_point" id="add_point0" value="0" {{ ($regi_data['AddPoint'] == '0') ? 'checked="checked' : '' }}/> <label for="add_point0">없음</label></li>
-                </ul>
-            </td>
-        </tr>
-        --}}
+        @endif
+        @if($predict_data['IsAddPoint'] == 'Y')
+            <tr>
+                <th>가산점</th>
+                <td>
+                    <ul class="sel_info">
+                        <li><input type="radio" name="add_point" id="add_point10" value="10" {{ ($regi_data['AddPoint'] == '10') ? 'checked="checked' : '' }}/> <label for="add_point10">10점</label></li>
+                        <li><input type="radio" name="add_point" id="add_point5" value="5" {{ ($regi_data['AddPoint'] == '5') ? 'checked="checked' : '' }}/> <label for="add_point5">5점</label></li>
+                        <li><input type="radio" name="add_point" id="add_point3" value="3" {{ ($regi_data['AddPoint'] == '3') ? 'checked="checked' : '' }}/> <label for="add_point3">3점</label></li>
+                        <li><input type="radio" name="add_point" id="add_point0" value="0" {{ ($regi_data['AddPoint'] == '0') ? 'checked="checked' : '' }}/> <label for="add_point0">없음</label></li>
+                    </ul>
+                </td>
+            </tr>
+        @else
+            <input type="hidden" name="add_point" value="0" />
+        @endif
     </table>
 </form>
 <div class="eventPopS3">
@@ -378,8 +383,8 @@
         if ($("#take_area").val() == '') { alert('지역을 선택해 주세요.'); return false; }
         if ($("#take_number").val() == '') { alert('응시번호를 입력해 주세요.'); return false; }
         if (takeNumChk($("#take_mock_part").val(), takenum) != true) { alert('올바른 응시번호가 아닙니다.'); return false; }
-        if ($("input:radio[name='question_type']").is(':checked') == false) { alert('책형을 선택해 주세요.'); return false; }
-        if ($("input:radio[name='add_point']").is(':checked') == false) { alert('가산점을 선택해 주세요.'); return false; }
+        if ($regi_form.find('input[name="is_question_type"]').val() == 'Y' && $("input:radio[name='question_type']").is(':checked') == false) { alert('책형을 선택해 주세요.'); return false; }
+        if ($regi_form.find('input[name="is_add_point"]').val() == 'Y' && $("input:radio[name='add_point']").is(':checked') == false) { alert('가산점을 선택해 주세요.'); return false; }
         if($("input:checkbox[id='is_chk']").is(":checked") == false){ alert('개인정보 제공 동의는 필수입니다.'); return false; }
 
         var _url = '{{ site_url('/fullService/storeRegister') }}';

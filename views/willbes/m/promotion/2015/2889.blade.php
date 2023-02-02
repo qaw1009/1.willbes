@@ -48,20 +48,20 @@
         <img src="https://static.willbes.net/public/images/promotion/2023/02/2889m_top.jpg" alt="0원 패스"/>        
     </div>
 
-    <div class="evtCtnsBox" data-aos="fade-up">
+    <div class="evtCtnsBox">
         <a href="https://willbesedu.willbes.net/m/pass/offLecture/show/cate/3126/prod-code/205021" target="_blank">
             <img src="https://static.willbes.net/public/images/promotion/2023/02/2889m_apply.jpg" alt="신청하기"/>
         </a>      
     </div>
 
-    <div class="evtCtnsBox" data-aos="fade-up">
+    <div class="evtCtnsBox">
         <div class="wrap">    
             <img src="https://static.willbes.net/public/images/promotion/2023/02/2889m_01.jpg" alt="0원패스란"/>
             <a href="https://willbesedu.willbes.net/m/pass/offLecture/show/cate/3126/prod-code/205021" target="_blank" title="수강신청하기" style="position: absolute;left: 16.75%;top: 83.63%;width: 42.87%;height: 8.82%;z-index: 2;"></a>
         </div>
     </div>
 
-    <div class="evtCtnsBox" data-aos="fade-up">
+    <div class="evtCtnsBox">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2023/02/2889m_02.jpg" alt="불꽃소방팀"/>
             <a href="https://pass.willbes.net/m/pass/professor/show/prof-idx/51422/?cate_code=3050&subject_idx=1259" target="_blank" title="권나라 홈" style="position: absolute;left: 47.75%;top: 37.63%;width: 32.17%;height: 2.92%;z-index: 2;"></a>
@@ -70,27 +70,27 @@
         </div>       
     </div>
 
-    <div class="evtCtnsBox" data-aos="fade-up">        
+    <div class="evtCtnsBox">        
         <img src="https://static.willbes.net/public/images/promotion/2023/02/2889m_02_curri.jpg" alt="커리큘럼"/>           
     </div>
 
-    <div class="evtCtnsBox" data-aos="fade-up">        
+    <div class="evtCtnsBox">        
         <img src="https://static.willbes.net/public/images/promotion/2023/02/2889m_03.jpg" alt="추가 학습혜택"/>           
     </div>
 
-    <div class="evtCtnsBox" data-aos="fade-up">   
+    <div class="evtCtnsBox">   
         <a href="https://willbesedu.willbes.net/pass/promotion/index/cate/3126/code/2879" title="통합생활 관리반 더 알아보기" target="_blank">
             <img src="https://static.willbes.net/public/images/promotion/2023/02/2889m_04.jpg" alt="통합생활 관리반"/>
         </a>      
     </div>
 
-    <div class="evtCtnsBox" data-aos="fade-up">        
+    <div class="evtCtnsBox">        
         <div class="youtube">
             <object data="https://www.youtube.com/embed/qzgc1l4EtGA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
         </div> 
     </div>
 
-    <div class="evtCtnsBox evt_05" data-aos="fade-up">        
+    <div class="evtCtnsBox evt_05">        
         <img src="https://static.willbes.net/public/images/promotion/2023/02/2890m_05.jpg" alt="히어로"/>
         <div class="loadmap">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1881.7990872517546!2d126.94238635957505!3d37.51272428677447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9fe8a0a1e2a5%3A0x3bc432e93a6e20c1!2zKOyjvCnsnIzruYTsiqQ!5e0!3m2!1sko!2skr!4v1669167778104!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

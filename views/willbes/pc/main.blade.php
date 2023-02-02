@@ -314,7 +314,8 @@
                         </li>
                         <li>
                             <strong>경찰</strong>
-                            <a href="{{ front_app_url('/home/index', 'police', true) }}" target="_blank">노량진</a>
+                            <a href="{{ front_app_url('/home/index', 'police', true) }}" target="_blank">노량진</a><span>|</span>
+                            <a href="https://police.willbes.net/pass/campus/show/code/605006" target="_blank">광주</a>
                         </li>
                         <li>
                             <strong>교원임용</strong>

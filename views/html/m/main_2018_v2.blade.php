@@ -439,42 +439,42 @@
             <div class="swiper-slide">
                 <a href="#none">
                     <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
-                    <p>1 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                    <p>1 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!1111</p>
                     <span>모의고사</span>
                 </a>
             </div>
             <div class="swiper-slide">
                 <a href="#none">
                     <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
-                    <p>2 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                    <p>2 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!2222</p>
                     <span>모의고사</span>
                 </a>
             </div>
             <div class="swiper-slide">
                 <a href="#none">
                     <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
-                    <p>3 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                    <p>3 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!3333</p>
                     <span>모의고사</span>
                 </a>
             </div>
             <div class="swiper-slide">
                 <a href="#none">
                     <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
-                    <p>4 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                    <p>4 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!4444</p>
                     <span>모의고사</span>
                 </a>
             </div>
             <div class="swiper-slide">
                 <a href="#none">
                     <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
-                    <p>5 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                    <p>5 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!5555</p>
                     <span>모의고사</span>
                 </a>
             </div>
             <div class="swiper-slide">
                 <a href="#none">
                     <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
-                    <p>6 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                    <p>6 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!6666</p>
                     <span>모의고사</span>
                 </a>
             </div>

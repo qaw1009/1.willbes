@@ -622,42 +622,42 @@ no-repeat 5px center}
                     <div>
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!111</p>
                             <span>모의고사</span>
                         </a>
                     </div>
                     <div>
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                            <p>임용중국어 장영희<br>이론&기출 총정리 특강</p>
+                            <p>임용중국어 장영희<br>이론&기출 총정리 특강222</p>
                             <span>총정리 특강</span>
                         </a>
                     </div>
                     <div>
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                            <p>생물 강치욱/양혜정<br>10~11월 생물 Final 모의고사</p>
+                            <p>생물 강치욱/양혜정<br>10~11월 생물 Final 모의고사333</p>
                             <span>실전모의고사</span>
                         </a>
                     </div>
                     <div>
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                            <p>전공음악 다이애나<br>2022 10-11월 실전모의고사</p>
+                            <p>전공음악 다이애나<br>2022 10-11월 실전모의고사444</p>
                             <span>개강안내</span>
                         </a>
                     </div>
                     <div>
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                            <p>임용중국어 장영희<br>이론&기출 총정리 특강</p>
+                            <p>임용중국어 장영희<br>이론&기출 총정리 특강555</p>
                             <span>개강안내</span>
                         </a>
                     </div>
                     <div>
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
-                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!666</p>
                             <span>모의고사</span>
                         </a>
                     </div>
@@ -688,7 +688,7 @@ no-repeat 5px center}
                             <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
                             <span>개강안내</span>
                         </a>
-                    </div>             
+                    </div>
                 </div>              
             </div>
     </div>

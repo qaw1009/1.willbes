@@ -281,6 +281,8 @@
 
         {!! banner('M_메인', 'MainSlider', $__cfg['SiteCode'], '0') !!}
 
+        {{--
+        todo : 차후 다시 요청할 영역.
         <div class="profEvt swiper-container swiper-container-arrow">
             <div class="mainTit NSK-Black">          
                 교수별 <span class="tx-main">이벤트 & 특강안내</span> 
@@ -288,9 +290,9 @@
                 <div class="swiper-button-prev"></div>                             
             </div>
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    @for($i=1; $i<=2; $i++)
-                        @if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true)
+                @for($i=1; $i<=8; $i++)
+                    @if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true)
+                        <div class="swiper-slide">
                             <div>
                                 <a href="{{ empty($data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl']) === false ? $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl'] : '#none' }}" target="_{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkType'] }}">
                                     <img src="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerFullPath'] . $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerImgName'] }}" alt="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] }}">
@@ -298,51 +300,13 @@
                                     <span>{{$data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['Desc']}}</span>
                                 </a>
                             </div>
-                        @endif
-                    @endfor
-                </div>
-                <div class="swiper-slide">
-                    @for($i=3; $i<=4; $i++)
-                        @if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true)
-                            <div>
-                                <a href="{{ empty($data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl']) === false ? $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl'] : '#none' }}" target="_{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkType'] }}">
-                                    <img src="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerFullPath'] . $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerImgName'] }}" alt="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] }}">
-                                    <p>{!! $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] !!}</p>
-                                    <span>{{$data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['Desc']}}</span>
-                                </a>
-                            </div>
-                        @endif
-                    @endfor
-                </div>
-                <div class="swiper-slide">
-                    @for($i=5; $i<=6; $i++)
-                        @if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true)
-                            <div>
-                                <a href="{{ empty($data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl']) === false ? $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl'] : '#none' }}" target="_{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkType'] }}">
-                                    <img src="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerFullPath'] . $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerImgName'] }}" alt="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] }}">
-                                    <p>{!! $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] !!}</p>
-                                    <span>{{$data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['Desc']}}</span>
-                                </a>
-                            </div>
-                        @endif
-                    @endfor
-                </div>
-                <div class="swiper-slide">
-                    @for($i=7; $i<=8; $i++)
-                        @if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true)
-                            <div>
-                                <a href="{{ empty($data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl']) === false ? $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl'] : '#none' }}" target="_{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkType'] }}">
-                                    <img src="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerFullPath'] . $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerImgName'] }}" alt="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] }}">
-                                    <p>{!! $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] !!}</p>
-                                    <span>{{$data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['Desc']}}</span>
-                                </a>
-                            </div>
-                        @endif
-                    @endfor
-                </div>
+                        </div>
+                    @endif
+                @endfor
             </div>
             <!-- Add Arrows -->
         </div>
+        --}}
 
         {{-- 수강후기 --}}
         @include('willbes.m.site.main_partial.study_comment_' . $__cfg['SiteCode'])

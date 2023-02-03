@@ -4,41 +4,23 @@
 <!-- Container -->
 
 <style type="text/css">
-    .Container {font-size:62.5%;}
-    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size: calc(1.4rem + (((100vw - 1.4rem) / (90 - 20))) * (2.0 - 1.4)); line-height:1.5; clear:both}
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both}
     .evtCtnsBox img {max-width:100%;}
+    .evtCtnsBox.wrap {position:relative}
     /*.evtCtnsBox a {border:1px solid #000}*/
 
     /*유튜브*/
     .youtube {position:relative; padding-bottom:56.25%; overflow: hidden; margin-top:-20px !important}
     .youtube object {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
-    .evt_05 ul {width:800px; margin:0 auto; padding:10px; text-align:left; font-size:20px; line-height:1.7;}
-    .evt_05 li {list-style-type: disc; margin-left:20px; margin-bottom:20px; width:calc(50% - 20px)}
-    .evt_05 li div {font-size:18px; color:#666}   
-    .evt_05 li div span {padding:2px 5px; font-size:14px; color:#fff; border-radius:4px; vertical-align:middle; display:inline-block}
+    .evt_05 ul {padding:10px; text-align:left; font-size:2vh; line-height:1.7;}
+    .evt_05 li {list-style-type: disc; margin-left:20px; margin-bottom:20px;}
+    .evt_05 li div {font-size:1.8vh; color:#666}   
+    .evt_05 li div span {padding:2px 5px; font-size:1.4vh; color:#fff; border-radius:4px; vertical-align:middle; display:inline-block}
     .evt_05 li div span:nth-of-type(1) {background:#3957ac;}
     .evt_05 li div span:nth-of-type(2) {background:#40a028;}
     .evt_05 li div span:nth-of-type(3) {background:#c90f25;}
-    .evt_05 li div span:nth-of-type(4) {background:#40a028;}
-
-    .loadmap {position: relative; /*padding-bottom:56.25%;*/ overflow: hidden; max-width:100%; height:500px; }
-    .loadmap iframe {position:absolute; top: 0; left: 0; width:100%; height:100%;}
-
-    /* 폰 가로, 태블릿 세로*/
-    @@media only screen and (max-width: 374px)  {   
-        .evt_05 li div {font-size:13px;}
-    }
-
-    /* 태블릿 세로 */
-    @@media only screen and (min-width: 375px) and (max-width: 640px) {       
-        .evt_05 li div {font-size:15px;}
-    }
-    
-    /* 태블릿 가로, PC */
-    @@media only screen and (min-width: 641px) {
-        .evt_05 li div {font-size:17px;}
-    }
+    .evt_05 li div span:nth-of-type(4) {background:#40a028;}  
     
 </style>
 
@@ -92,8 +74,8 @@
 
     <div class="evtCtnsBox evt_05">        
         <img src="https://static.willbes.net/public/images/promotion/2023/02/2890m_05.jpg" alt="히어로"/>
-        <div class="loadmap">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1881.7990872517546!2d126.94238635957505!3d37.51272428677447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9fe8a0a1e2a5%3A0x3bc432e93a6e20c1!2zKOyjvCnsnIzruYTsiqQ!5e0!3m2!1sko!2skr!4v1669167778104!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div>
+            <img src="https://static.willbes.net/public/images/willbes/gosi_acad/map/map_so.jpg">
         </div> 
         <ul>
             <li>

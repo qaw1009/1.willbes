@@ -4,6 +4,8 @@
     @include('willbes.pc.layouts.partial.site_menu')
    
     <!-- Container -->
+
+    <link href="/public/css/willbes/style_2015.css?ver={{time()}}" rel="stylesheet">
     <style type="text/css">
         .evtContent {
             width:100%;
@@ -39,20 +41,6 @@
         .wb_cts02 .btns a {width:500px; margin:0 auto; font-size:30px; background:#1e1e1e; color:#fff; display:block; padding:20px; border-radius:50px}
         .wb_cts02 .btns a:hover {background:#ec614e;}
 
-
-        .evt_06 ul {width:1120px; margin:0 auto; padding:100px; text-align:left; font-size:20px; line-height:1.7; display:flex; flex-wrap: wrap;  }
-        .evt_06 li {list-style-type: disc; margin-left:20px; margin-bottom:20px; width:calc(50% - 20px)}
-        .evt_06 li div {font-size:18px; color:#666}   
-        .evt_06 li div span {padding:2px 5px; font-size:14px; color:#fff; border-radius:4px; vertical-align:middle; display:inline-block}
-        .evt_06 li div span:nth-of-type(1) {background:#3957ac;}
-        .evt_06 li div span:nth-of-type(2) {background:#40a028;}
-        .evt_06 li div span:nth-of-type(3) {background:#c90f25;}
-        .evt_06 li div span:nth-of-type(4) {background:#40a028;}
-
-        .loadmap {position: relative; /*padding-bottom:56.25%;*/ overflow: hidden; max-width:100%; height:500px; }
-        .loadmap iframe {position:absolute; top: 0; left: 0; width:100%; height:100%;} 
-
-
         .evtInfo {text-align:left; padding:100px 0; background:#f4f4f4}
         .wb_tipBox {width:1000px; margin:0 auto; font-size:16px; line-height:1.4}
         .wb_tipBox > strong { font-weight:bold; color:#333; display:block; margin-bottom:20px}
@@ -66,9 +54,7 @@
         .wb_tipBox th {font-weight:bold; color:#333; background:#f6f0ec;}	
         .wb_tip_orange {color:#c03011;}
         .wb_tipBox b{vertical-align:top;} 
-
-
-    </style>
+    </style>   
 
 
     <div class="evtContent NSK" id="evtContainer">
@@ -113,6 +99,7 @@
             </div>
         </div>
 
+        {{--
         <div class="evtCtnsBox evt_06">
             <img src="https://static.willbes.net/public/images/promotion/2022/12/1101_04.jpg" alt="합격보장반" />
             <div class="loadmap">
@@ -142,6 +129,13 @@
                 </li>
             </ul>	  
 		</div>
+        --}}
+
+        <div class="incheon">
+            <div class="Section Section4_ic mt40 mb100">
+                @include('willbes.pc.site.main_partial.campus_' . $__cfg['SiteCode'])
+            </div>
+        </div>
         
         
         <div class="evtCtnsBox evtInfo" data-aos="fade-up">
@@ -222,9 +216,6 @@
                 </div>
             </div>  
         </div>
-
-
-
     </div>
     <!-- End Container -->
 

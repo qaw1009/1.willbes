@@ -4,9 +4,9 @@
 <!-- Container -->
 
 <style type="text/css">
-    .Container {font-size:62.5%;}
-    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size: calc(1.4rem + (((100vw - 1.4rem) / (90 - 20))) * (2.0 - 1.4)); line-height:1.5; clear:both}
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both}
     .evtCtnsBox img {max-width:100%;}
+    .evtCtnsBox.wrap {position:relative}
     /*.evtCtnsBox a {border:1px solid #000}*/
 
     .wb_cts05 {background:#E1E9FF;padding-bottom:50px;}

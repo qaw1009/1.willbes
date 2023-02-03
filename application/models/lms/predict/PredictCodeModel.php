@@ -250,7 +250,7 @@ class PredictCodeModel extends WB_Model
         $column = "
             a.PrsIdx, a.PredictIdx, a.TakeMockPart, a.SubjectCode, a.GroupBy, a.RegDatm, a.OrderNum, b.CcdName, b.Type, IF(b.Type='P','필수','선택') AS TypeName
             ,c.wAdminName AS RegAdminName
-            ,(SELECT CcdName FROM {$this->_table['predict_code']} AS s1 WHERE s1.Ccd = a.TakeMockPart) AS TakeMockPartName
+            ,CONCAT(s.CcdName,' [',s.Ccd,']') AS TakeMockPartName
         ";
 
         $arr_condition = [

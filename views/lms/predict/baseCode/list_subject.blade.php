@@ -15,7 +15,7 @@
                 <table id="_list_table" class="table table-bordered table-striped table-head-row2 form-table">
                     <thead class="bg-white-gray">
                     <tr>
-                        <th class="rowspan">직렬</th>
+                        <th class="rowspan">직렬 [코드]</th>
                         <th>과목</th>
                         <th>과목타입</th>
                         <th>과목그룹</th>

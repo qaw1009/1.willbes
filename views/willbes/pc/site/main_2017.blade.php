@@ -129,6 +129,15 @@
         }
         .ssam .Layer-hnyoutube iframe {width:860px; height:484px}
 
+        .ssam .profEvtBanner {width:1120px; margin:50px auto; position:relative;}
+        .ssam .profEvtBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
+        .ssam .profEvtBanner .bx-wrapper {max-width:1120px !important;}
+        .ssam .profEvtBanner .profEvt {height:250px !important; overflow: hidden; display:flex}
+        .ssam .profEvtBanner .profEvt > div {margin-right:15px; font-weight:bold; line-height:1.4; }
+        .ssam .profEvtBanner .profEvt a p {font-size:16px; color:#383838; margin:10px 0; padding:0 10px }
+        .ssam .profEvtBanner .profEvt a span {color:#adadad; font-size:14px; padding:0 10px }
+        .ssam .profEvtBanner .profEvt img {display:block; width:210px}
+        .ssam .profEvtBanner .ctrbtn {position:absolute; top:5px; left:200px}
 
         .ssam .sec-prof {background:#9cb6c5 url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative; margin-top:40px}
         .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
@@ -279,6 +288,32 @@
             </div>
         </div>
 
+        @php $j=0; for($i=1; $i<=10; $i++) {if(isset($data['arr_main_banner']['메인_교수이벤트_'.$i]) === true) {$j++;}} @endphp
+        <div class="Section">
+            <div class="profEvtBanner">
+                <div class="title">교수별 <span class="tx-color">이벤트 & 특강안내</span></div>
+                @if ($j > 5)
+                    <div class="ctrbtn">
+                        <a class="leftBtn" id="pebLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>
+                        <a class="rightBtn" id="pebRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
+                    </div>
+                @endif
+                <div class="bSlider profEvt {{($j > 5) ? 'prof-slider' : ''}}">
+                    @for($i=1; $i<=10; $i++)
+                        @if(isset($data['arr_main_banner']['메인_교수이벤트_'.$i]) === true)
+                            <div>
+                                <a href="{{ empty($data['arr_main_banner']['메인_교수이벤트_'.$i][0]['LinkUrl']) === false ? $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['LinkUrl'] : '#none' }}" target="_{{ $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['LinkType'] }}">
+                                    <img src="{{ $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['BannerFullPath'] . $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['BannerImgName'] }}" alt="{{ $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['BannerName'] }}">
+                                    <p>{!! $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['BannerName'] !!}</p>
+                                    <span>{{$data['arr_main_banner']['메인_교수이벤트_'.$i][0]['Desc']}}</span>
+                                </a>
+                            </div>
+                        @endif
+                    @endfor
+                </div>
+            </div>
+        </div>
+
         <div class="Section sec-prof mt40">
             @include('willbes.pc.site.main_partial.professor_hot_clip_' . $__cfg['SiteCode'])
         </div>
@@ -289,8 +324,6 @@
                 @include('willbes.pc.site.main_partial.study_comment_' . $__cfg['SiteCode'])
             </div>
         </div>
-
-
 
         <div class="Section Section1 mt40">
             <div class="widthAuto smallTit NSK-Black">
@@ -362,7 +395,6 @@
             </div>
         </div>
 
-
         <div class="Section Section3 mt40">
             <div class="widthAuto">
                 <div class="will-nTit">윌비스 임용 <span class="tx-color">합격 교수진</span></div>
@@ -377,7 +409,6 @@
                 </ul>
             </div>
         </div>
-  
 
         @if(empty($data['top_order_lecture']) === false)
             <div class="Section Section4 mt80">
@@ -554,6 +585,30 @@
                 $("#HotnNewRight").click(function (){
                     hnnImg1.goToPrevSlide();
                 });        
+            });
+
+            /* 교수별이벤트*/
+            $(function() {
+                var peImg1 = $(".prof-slider").bxSlider({
+                    mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                    auto:true,
+                    speed:350,
+                    pause:5000,
+                    pager:false,
+                    controls:false,
+                    minSlides:5,
+                    maxSlides:5,
+                    slideWidth:210,
+                    slideMargin:0,
+                    autoHover: true,
+                    moveSlides:1,
+                });
+                $("#pebLeft").click(function (){
+                    peImg1.goToNextSlide();
+                });
+                $("#pebRight").click(function (){
+                    peImg1.goToPrevSlide();
+                });
             });
 
             //적중배너

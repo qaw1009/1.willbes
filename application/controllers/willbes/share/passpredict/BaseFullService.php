@@ -44,6 +44,15 @@ class BaseFullService extends \app\controllers\FrontController
         //직렬
         $arr_base['arr_mock_part'] = $this->fullServiceFModel->listMockPartForPredict($predict_idx);
 
+        //직렬별 응시번호 체크 값 셋팅
+        $arr_base['arr_mock_part_takenum'] = [];
+        if (empty($arr_base['arr_mock_part']) === false) {
+            foreach ($arr_base['arr_mock_part'] as $row) {
+                $arr_base['arr_mock_part_takenum'][$row['Ccd']]['ValidateLengthTakeNum'] = $row['ValidateLengthTakeNum'];
+                $arr_base['arr_mock_part_takenum'][$row['Ccd']]['ValidateGroupTakeNum'] = $row['ValidateGroupTakeNum'];
+            }
+        }
+
         //지역
         $get_area_code = $this->config->item('sysCode_Area', 'predict');
         $arr_base['arr_area'] = $this->codeModel->getCcd($get_area_code);

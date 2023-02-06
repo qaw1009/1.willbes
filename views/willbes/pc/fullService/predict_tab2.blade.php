@@ -396,21 +396,20 @@
         }, showValidateError, null, false, 'alert');
     }
 
-    // 직렬별 응시번호 체크
+    /**
+     * 직렬별 응시번호 체크
+     * 체크길이가 0인경우 응시번호 미체크
+     * */
     function takeNumChk(take_mock_part, takenum) {
         var number = (isNaN(takenum)) ? 0 : takenum;
-        var arrItem = {
-            '801':'400', '802':'422', '803':'472', '804':'440', '805':'428'
-            ,'806':'410', '807':'426', '808':'424', '809':'406', '810':'408'
-            ,'811':'470', '812':'412', '813':'450', '814':'466', '815':'462'
-            ,'816':'464', '817':'500', '818':'502', '819':'504', '820':'506'
-            ,'821':'508', '822':'514', '823':'516', '824':'526', '825':'518'
-            ,'826':'524', '827':'420'
-        };
-        var ch = String(number).substr(0,3);
+        var arrItem = {!! json_encode($arr_base['arr_mock_part_takenum']) !!}
+
         if (typeof arrItem[take_mock_part] !== 'undefined') {
-            if (arrItem[take_mock_part] != ch) {
-                return false;
+            if (arrItem[take_mock_part]['ValidateLengthTakeNum'] > 0) {
+                var ch = String(number).substr(0, arrItem[take_mock_part]['ValidateLengthTakeNum']);
+                if (arrItem[take_mock_part]['ValidateGroupTakeNum'] != ch) {
+                    return false;
+                }
             }
         } else {
             return false;

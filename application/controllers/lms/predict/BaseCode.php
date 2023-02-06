@@ -204,4 +204,20 @@ class BaseCode extends \app\controllers\BaseController
         $result = $this->predictCodeModel->updateParams($this->_reqP(null), 'order_num');
         $this->json_result($result, '적용 되었습니다.', $result);
     }
+
+    public function storeGroupTakeNumber()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'predict_idx', 'label' => '합격예측식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->predictCodeModel->updateGroupTakeNumber($this->_reqP(null));
+        $this->json_result($result, '적용 되었습니다.', $result);
+    }
 }

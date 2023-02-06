@@ -248,8 +248,8 @@ class PredictCodeModel extends WB_Model
     public function getPredictForSubjectAll($predict_idx = null, $take_mock_part = null)
     {
         $column = "
-            a.PrsIdx, a.PredictIdx, a.TakeMockPart, a.SubjectCode, a.GroupBy, a.RegDatm, a.OrderNum, b.CcdName, b.Type, IF(b.Type='P','필수','선택') AS TypeName
-            ,c.wAdminName AS RegAdminName
+            a.PrsIdx, a.PredictIdx, a.TakeMockPart, a.SubjectCode, a.GroupBy, a.RegDatm, a.OrderNum, a.ValidateLengthTakeNum, a.ValidateGroupTakeNum
+            ,b.CcdName, b.Type, IF(b.Type='P','필수','선택') AS TypeName, c.wAdminName AS RegAdminName
             ,CONCAT(s.CcdName,' [',s.Ccd,']') AS TakeMockPartName
         ";
 
@@ -387,6 +387,52 @@ class PredictCodeModel extends WB_Model
                     throw new \Exception('수정에 실패했습니다.');
                 }
             }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 직렬별 응시번호 체크 조건 등록
+     * @param array $form_data
+     * @return array|bool
+     */
+    public function updateGroupTakeNumber($form_data = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $predict_idx = element('predict_idx', $form_data);
+            $params = json_decode(element('params', $form_data), true);
+
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            foreach ($params as $key => $row) {
+                if (explode('-', $key)[0] != $predict_idx) {
+                    throw new \Exception('합격예측코드가 다릅니다. 다시 시도해 주세요.');
+                }
+
+                $input_data = [
+                    'ValidateLengthTakeNum' => $row['length_take_num']
+                    ,'ValidateGroupTakeNum' => $row['group_take_num']
+                    ,'UpdAdminIdx' => $this->session->userdata('admin_idx')
+                ];
+
+                $is_update = $this->_conn->set($input_data)
+                    ->where('PredictIdx', explode('-', $key)[0])
+                    ->where('TakeMockPart', explode('-', $key)[1])
+                    ->where('IsUse', 'Y')->where('IsStatus', 'Y')
+                    ->update($this->_table['predict_code_r_subject']);
+                if ($is_update === false || $this->_conn->affected_rows() < 1) {
+                    throw new \Exception('수정에 실패했습니다.');
+                }
+            }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();

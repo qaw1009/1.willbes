@@ -51,9 +51,8 @@ class FullServiceFModel extends WB_Model
      */
     public function listMockPartForPredict($predict_idx)
     {
-        $column = "Ccd, CcdName";
-        $from = " FROM {$this->_table['predict_code']}";
-        $order_by = $this->_conn->makeOrderBy(['OrderNum' => 'ASC'])->getMakeOrderBy();
+        $column = "a.Ccd, a.CcdName, s.ValidateLengthTakeNum, s.ValidateGroupTakeNum";
+        $order_by = $this->_conn->makeOrderBy(['a.OrderNum' => 'ASC'])->getMakeOrderBy();
 
         //일반경채(남)의 수사, 행정법 코드 제외
         $arr_condition = [
@@ -65,10 +64,24 @@ class FullServiceFModel extends WB_Model
                 AND Ccd != '100901' AND Ccd != '100902'"
             ],
         ];
-
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
+
+        $from = "
+            FROM (
+                SELECT Ccd, CcdName, OrderNum
+                FROM {$this->_table['predict_code']}
+                {$where}
+            ) AS a
+            INNER JOIN (
+                SELECT TakeMockPart, ValidateLengthTakeNum, ValidateGroupTakeNum
+                FROM {$this->_table['predict_code_r_subject']}
+                WHERE PredictIdx = '{$predict_idx}'
+                AND IsStatus = 'Y' AND IsUse = 'Y'
+                GROUP BY TakeMockPart
+            ) AS s ON s.TakeMockPart = a.Ccd
+        ";
+        return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
     }
 
     /**

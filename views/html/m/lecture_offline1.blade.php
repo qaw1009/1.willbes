@@ -108,7 +108,7 @@
                                 </div>
                                 <dl class="w-info tx-gray">                                
                                     <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
-                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt>                                                              
+                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n7">직강마감</span></dt>                                                              
                                 </dl>
                                 <div class="priceWrap">
                                     <span class="price">80,000원</span>
@@ -165,7 +165,7 @@
                                 </div>
                                 <dl class="w-info tx-gray">                                
                                     <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
-                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt>                          
+                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n4">접수마감</span></dt>                          
                                 </dl>
                                 <div class="priceWrap">
                                     <span class="price">80,000원</span>

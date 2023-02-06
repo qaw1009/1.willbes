@@ -13707,11 +13707,11 @@ table.acadlecInfoPackageTable tr.Top td {
 .w-notice .acadInfo {
 	display: inline-block;
 	padding: 0 6px;
-	height: 15px;
-	font-size: 10px;
+	height: 17px;
+	font-size: 11px;
 	color: #fff;
 	text-align: center;
-	line-height: 15px;
+	line-height: 17px;
 	margin: 0 1px 0 0;
 	border-radius: 10px;
 }
@@ -13726,6 +13726,10 @@ table.acadlecInfoPackageTable tr.Top td {
 
 .w-notice .acadInfo.n3 {
 	background: #333;
+}
+
+.w-notice .acadInfo.n4 {
+	background: #2119b7;
 }
 
 .w-info .w-notice .acadInfo {

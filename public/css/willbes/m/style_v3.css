@@ -4441,6 +4441,10 @@ body.memBody #Footer {
 	background: #46a1dc;
 }
 
+.w-info dt .nBox.n7 {
+	background: #2119b7;
+}
+
 .w-info .lBox {
 	display: inline-block;
 	min-width: 50px;

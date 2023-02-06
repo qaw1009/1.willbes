@@ -313,7 +313,49 @@
                                 </dl><br/>
                             </td>
                             <td class="w-notice p_re">
-                                <div class="acadInfo NSK n3">마감</div>
+                                <div class="acadInfo NSK n3">접수마감</div>
+                                <div class="priceWrap">
+                                    <span class="dcprice">64,000원</span>
+                                </div> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- lecTable -->
+            </div>
+            <!-- willbes-Lec-Table -->
+
+            <div class="willbes-Lec-Table p_re">
+                <table cellspacing="0" cellpadding="0" class="lecTable acadlecTable">
+                    <colgroup>
+                        <col style="width: 75px;">
+                        <col style="width: 90px;">
+                        <col style="width: 590px;">
+                        <col style="width: 185px;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td class="w-place bg-light-white">노량진</td>
+                            <td class="w-list">문제<br/>풀이</td>
+                            <td class="w-data tx-left pl15">
+                                <div class="w-tit w-acad-tit"><a href="{{ site_url('/home/html/acad_list_packagesub_new') }}">[지방-아특] 기미진 기특한 국어 전범위 문풀 [4~5월]</a></div>
+                                <dl class="w-info acad">
+                                    <dt>
+                                        <a href="#none" onclick="openWin('InfoForm')">
+                                            <strong>종합반 상세정보</strong>
+                                        </a>
+                                    </dt>
+                                    <dt><span class="row-line">|</span></dt>
+                                    <dt>개강월 : <span class="tx-blue">2018-02</span></dt>
+                                    <dt><span class="row-line">|</span></dt>
+                                    <dt>수강형태 : <span class="tx-blue">라이브</span></dt>
+                                    <dt class="NSK ml15">
+                                        <span class="acadBox n2">방문접수</span>
+                                    </dt>
+                                </dl><br/>
+                            </td>
+                            <td class="w-notice p_re">
+                                <div class="acadInfo NSK n4">직강마감</div>
                                 <div class="priceWrap">
                                     <span class="dcprice">64,000원</span>
                                 </div> 

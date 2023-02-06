@@ -618,7 +618,7 @@ no-repeat 5px center}
                     <a class="leftBtn" id="pebLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt=""></a>
                     <a class="rightBtn" id="pebRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt=""></a>
                 </div>
-                <div class="bSlider profEvt">
+                <div class="bSlider profEvt prof-slider">
                     <div>
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
@@ -3581,7 +3581,7 @@ no-repeat 5px center}
 
     /* 교수별이벤트*/
     $(function() {
-        var peImg1 = $(".profEvt").bxSlider({
+        var peImg1 = $(".prof-slider").bxSlider({
             mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
             auto:true,
             speed:350,

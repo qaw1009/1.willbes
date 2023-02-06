@@ -288,14 +288,17 @@ no-repeat 5px center}
             </div>
         </div>
 
+        @php $j=0; for($i=1; $i<=10; $i++) {if(isset($data['arr_main_banner']['메인_교수이벤트_'.$i]) === true) {$j++;}} @endphp
         <div class="Section">
             <div class="profEvtBanner">
                 <div class="title">교수별 <span class="tx-color">이벤트 & 특강안내</span></div>
-                <div class="ctrbtn">
-                    <a class="leftBtn" id="pebLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>
-                    <a class="rightBtn" id="pebRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
-                </div>
-                <div class="bSlider profEvt">
+                @if ($j > 5)
+                    <div class="ctrbtn">
+                        <a class="leftBtn" id="pebLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>
+                        <a class="rightBtn" id="pebRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
+                    </div>
+                @endif
+                <div class="bSlider profEvt {{($j > 5) ? 'prof-slider' : ''}}">
                     @for($i=1; $i<=10; $i++)
                         @if(isset($data['arr_main_banner']['메인_교수이벤트_'.$i]) === true)
                             <div>
@@ -586,7 +589,7 @@ no-repeat 5px center}
 
             /* 교수별이벤트*/
             $(function() {
-                var peImg1 = $(".profEvt").bxSlider({
+                var peImg1 = $(".prof-slider").bxSlider({
                     mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                     auto:true,
                     speed:350,

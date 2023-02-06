@@ -13,7 +13,7 @@
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
                     <div class="col-md-2">
-                        <p class="form-control-static">배너명 검색 가능</p>
+                        <p class="form-control-static">노출색션, 배너명 검색 가능(LIKE 검색)</p>
                     </div>
                     <label class="control-label col-md-1" for="search_cate_code">조건</label>
                     <div class="col-md-5 form-inline">

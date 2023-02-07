@@ -105,6 +105,7 @@ class Question extends \app\controllers\BaseController
         $arr_subject_list = $this->predictCodeModel->getPredictForSubjectAll();
 
         $data = null;
+        $isDeny = false;
         if(empty($idx) === true){
             $method = "POST";
             $subject = "";
@@ -123,9 +124,16 @@ class Question extends \app\controllers\BaseController
             $PredictIdx = $data['PredictIdx'];
             $filepath = $this->config->item('upload_url_predict', 'predict');
             $filepath = $filepath.$idx."/";
+            $arr_predict_data = array_pluck($productList,'QuestionTypeCnt','PredictIdx');
+            $get_predict_question_type_cnt = $arr_predict_data[$PredictIdx];
 
             //문항정보 카운트수
-            $arr_question_type_count = $this->predictModel->countExamQuestions($idx);
+            $arr_question_type_count = $this->predictModel->countExamQuestions($idx, $get_predict_question_type_cnt);
+            $cnt = 0;
+            foreach ($arr_question_type_count as $val) {
+                $cnt += $val;
+            }
+            $isDeny = ($cnt <= 0) ? false : true;
         }
 
         $this->load->view('predict/question/question_create', [
@@ -140,8 +148,7 @@ class Question extends \app\controllers\BaseController
             'data' => $data,
             'filepath' => $filepath,
             'arr_question_type_count' => $arr_question_type_count,
-            'isDeny' => (empty($arr_question_type_count['QuestionType1']) === true && empty($arr_question_type_count['QuestionType2']) === true) ? false : true
-
+            'isDeny' => $isDeny
         ]);
     }
 
@@ -210,6 +217,7 @@ class Question extends \app\controllers\BaseController
         $pp_idx = $this->_reqG('pp_idx');
         $question_type = $this->_reqG('question_type');
         $total_score = $this->_reqG('total_score');
+        $question_type_cnt = $this->_reqG('question_type_cnt');
 
         //문항정보
         $question_data = $this->predictModel->listExamQuestions(['EQ' => ['PQ.PpIdx' => $pp_idx,'PQ.QuestionType' => $question_type,'PQ.IsStatus' => 'Y']]);
@@ -220,6 +228,7 @@ class Question extends \app\controllers\BaseController
             ,'question_type' => $question_type
             ,'total_score' => $total_score
             ,'question_data' => $question_data
+            ,'question_type_cnt' => $question_type_cnt
         ]);
     }
 

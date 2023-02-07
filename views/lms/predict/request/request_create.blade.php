@@ -19,7 +19,7 @@
                     <div class="col-md-4 form-inline">
                         {!! html_site_select($data['SiteCode'], 'SiteCode', 'SiteCode', '', '운영 사이트', 'required', ($method == 'PUT'?'disabled':''), false) !!}
                     </div>
-                    <label class="control-label col-md-1-1" for="site_code">서비스코드</label>
+                    <label class="control-label col-md-1-1" for="predict_idx">서비스코드</label>
                     <div class="col-md-4">
                         <div class="form-control-static">{{ (empty($data['PredictIdx']) === false) ? $data['PredictIdx'] : ''}}</div>
                     </div>
@@ -29,9 +29,13 @@
                     <div class="col-md-4 form-inline item">
                         <input type="text" class="form-control" name="ProdName" value="@if($method == 'PUT'){{ $data['ProdName'] }}@endif" style="width:70%;">
                     </div>
+                    <label class="control-label col-md-1-1" for="QuestionTypeCnt">문제유형 수<span class="required">*</span></label>
+                    <div class="col-md-4 form-inline item">
+                        <input type="number" class="form-control" name="QuestionTypeCnt" value="{{($method=='CREATE') ? '1' : $data['QuestionTypeCnt']}}" title="문제유형 수" required="required" style="width:10%;">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="SiteCode">시험연도<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="MockYear">시험연도<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
                         <select class="form-control" name="MockYear">
                             <option value="">연도</option>
@@ -40,7 +44,7 @@
                             @endfor
                         </select>
                     </div>
-                    <label class="control-label col-md-1-1" for="site_code">시험차수<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="MockRotationNo">시험차수<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
                         <select class="form-control" name="MockRotationNo">
                             <option value="">회차</option>
@@ -225,14 +229,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="SiteCode">모바일 서비스 여부</label>
+                    <label class="control-label col-md-1-1" for="MobileServiceIs">모바일 서비스 여부</label>
                     <div class="col-md-4 form-inline item">
                         <div class="checkbox">
                             <input type="checkbox" name="MobileServiceIs[]" class="flat" value="716001" @if($method == 'PUT' && in_array('716001',$data['MobileServiceIsArr'])) checked="checked" @endif> <span class="flat-text mr-20">사전예약</span>
                             <input type="checkbox" name="MobileServiceIs[]" class="flat" value="716002" @if($method == 'PUT' && in_array('716002',$data['MobileServiceIsArr'])) checked="checked" @endif> <span class="flat-text">본서비스</span>
                         </div>
                     </div>
-                    <label class="control-label col-md-1-1" for="site_code">설문 조사 여부</label>
+                    <label class="control-label col-md-1-1" for="SurveyIs">설문 조사 여부</label>
                     <div class="col-md-4">
                         <div class="checkbox">
                             <input type="checkbox" name="SurveyIs[]" class="flat" value="716001" @if($method == 'PUT' && in_array('716001',$data['SurveyIsArr'])) checked="checked" @endif> <span class="flat-text mr-20">사전예약</span>
@@ -410,6 +414,10 @@
 
             // 등록,수정
             $regi_form.submit(function() {
+                if ($regi_form.find('input[name="QuestionTypeCnt"]').val() < 1) {
+                    alert('문제유형 수는 1이상이여야 합니다.');
+                    return false;
+                }
                 var orderNum_cnt = $regi_form.find('input[name="OrderNum[]"]').length;
                 for(i=0; i<orderNum_cnt; i++) {
                     if ($("#selected_product"+(i+1)).find('input[name="prod_code[]"]').length == 0) {

@@ -26,8 +26,8 @@
                     <div class="form-inline col-md-4 item">
                         <select class="form-control" id="PredictIdx" name="PredictIdx" required="required" title="합격예측">
                             <option value="">합격예측서비스명</option>
-                            @foreach($productList as $key => $val)
-                                <option class="{{$val['SiteCode']}}" value="{{ $val['PredictIdx'] }}" @if($method == 'PUT' && $data['PredictIdx'] == $val['PredictIdx']) selected @endif>{{ $val['ProdName'] }}</option>
+                            @foreach($productList as $key => $row)
+                                <option class="{{$row['SiteCode']}}" data-question-type-cnt="{{$row['QuestionTypeCnt']}}" value="{{ $row['PredictIdx'] }}" @if($method == 'PUT' && $data['PredictIdx'] == $row['PredictIdx']) selected @endif>{{ $row['ProdName'] }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -115,11 +115,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="ExplanFile">문항등록</label>
+                    <label class="control-label col-md-1-1" for="question_box">문항등록</label>
                     <div class="col-md-4 form-inline">
                         @if($method == 'PUT')
-                            <button type="button" class="btn btn-sm btn-success btn-question-modal" data-question-type="1">문제유형1 ({{$arr_question_type_count['QuestionType1']}})</button>
-                            <button type="button" class="btn btn-sm btn-success btn-question-modal" data-question-type="2">문제유형2 ({{$arr_question_type_count['QuestionType2']}})</button>
+                            <div class="question-box"></div>
                         @else
                             <span class="form-control-static">기본정보 등록 후 문항등록 가능합니다.</span>
                         @endif
@@ -164,6 +163,8 @@
         var chapterDel = [];
 
         $(document).ready(function() {
+            var arr_question_type_count = {!! json_encode($arr_question_type_count) !!};
+
             // 합격예측서비스명 자동 변경
             $regi_form.find('select[name="PredictIdx"]').chained("#search_site_code");
             // 직렬
@@ -183,6 +184,25 @@
                 $("#sType").val(subject_type);
             });
 
+            //문제유형 수만큼 버튼생성
+            $regi_form.on('change', 'select[name="PredictIdx"]', function() {
+                $(".question-box").html('');
+                var i, qCnt;
+                var font_style;
+                for(i=1; i<=$(this).find("option:selected").data("question-type-cnt"); i++) {
+                    qCnt = arr_question_type_count['QuestionType'+i];
+                    font_style = '';
+                    if (typeof arr_question_type_count['QuestionType'+i] === 'undefined') {
+                        font_style = 'red bold';
+                        qCnt = 0;
+                        alert('합격예측의 문제유형수가 다릅니다. 확인해주세요.');
+                    }
+
+                    $(".question-box").append('<button type="button" class="btn btn-sm btn-success btn-question-modal '+font_style+'" data-question-type="'+i+'">문제유형'+i+' ('+qCnt+')</button>');
+                }
+            });
+            $("#PredictIdx option").trigger('change');
+
             // 목록 이동
             $('#goList').on('click', function() {
                 location.replace('{{ site_url('/predict/question/') }}' + getQueryString());
@@ -200,10 +220,13 @@
             });
 
             //문제유형1,문제유형2 호출
-            $('.btn-question-modal').on('click', function() {
+            $regi_form.on('click', '.btn-question-modal', function() {
+                var question_type_cnt = $regi_form.find('select[name="PredictIdx"] option:selected').data("question-type-cnt");
+
                 var params = '?pp_idx=' + '{{ $data['PpIdx'] }}';
                 params += '&question_type=' + $(this).data("question-type");
                 params += '&total_score=' + '{{ $data['TotalScore'] }}';
+                params += '&question_type_cnt=' + question_type_cnt;
                 $('.btn-question-modal').setLayer({
                     'url': '{{ site_url('/predict/question/questionListModal') }}' + params,
                     'width': 1400

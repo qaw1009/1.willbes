@@ -1,11 +1,11 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    @if($question_type == 1)
-        [문제유형1] <button type="button" class="btn btn-sm btn-dark" onclick="javascript:_replaceModal('2')">문제유형2</button>
-    @else
-        [문제유형2] <button type="button" class="btn btn-sm btn-dark" onclick="javascript:_replaceModal('1')">문제유형1</button>
-    @endif
+    @for($i=1; $i<=$question_type_cnt; $i++)
+        @if($i != $question_type)
+            <button type="button" class="btn btn-sm btn-dark" onclick="javascript:_replaceModal('{{$i}}')">문제유형{{$i}}</button>
+        @endif
+    @endfor
 @stop
 
 
@@ -16,15 +16,17 @@
     <input type="hidden" name="idx" value="{{ $pp_idx }}">
     <input type="hidden" name="question_type" value="{{ $question_type }}">
     <input type="hidden" name="TotalScore" value="{{ $total_score }}">
+    <input type="hidden" name="question_type_cnt" value="{{ $question_type_cnt }}">
     <input type="hidden" name="Info" value="">
 @endsection
 
 @section('layer_content')
+    <div class="x_title">
+        <h2>[문제유형{{$question_type}}]</h2>
+        <span class="required">*</span>
+        '문항호출' 클릭시, 이전 회차의 과목별 문제정보에서 등록할 문제를 선택할 수 있습니다. (동일 과목, 교수정보 지난 과목별 문제만 호출)
+    </div>
     <div class="x_content mt-20">
-        <h5 class="mb-20">
-            <span class="required">*</span>
-            '문항호출' 클릭시, 이전 회차의 과목별 문제정보에서 등록할 문제를 선택할 수 있습니다. (동일 과목, 교수정보 지난 과목별 문제만 호출)
-        </h5>
         <div>
             <div class="pull-left mb-10">[ 총 {{ count($question_data) }}건 ]</div>
             <div class="pull-right text-right form-inline mb-5">
@@ -217,6 +219,7 @@
             var params = '?pp_idx=' + '{{ $pp_idx }}';
             params += '&question_type=' + question_type;
             params += '&total_score=' + '{{ $total_score }}';
+            params += '&question_type_cnt=' + '{{ $question_type_cnt }}';
             var _replace_url = '{{ site_url('/predict/question/questionListModal') }}' + params;
             replaceModal(_replace_url,'');
         }

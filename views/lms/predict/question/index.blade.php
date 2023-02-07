@@ -69,14 +69,16 @@
                         <th rowspan="2" class="text-center">과목</th>
                         <th rowspan="2" class="text-center">과목별문제지명</th>
                         <th rowspan="2" class="text-center">문제보기</th>
-                        <th colspan="2" class="text-center">문항수</th>
+                        <th colspan="4" class="text-center">문항수</th>
                         <th rowspan="2" class="text-center">사용여부</th>
                         <th rowspan="2" class="text-center">등록자</th>
                         <th rowspan="2" class="text-center" style="width:130px">등록일</th>
                     </tr>
-                    <tr>
-                        <th class="text-center">가형</th>
-                        <th class="text-center bdr-line">나형</th>
+                    <tr class="add-th">
+                        <th class="text-center bdr-line">1형</th>
+                        <th class="text-center bdr-line">2형</th>
+                        <th class="text-center bdr-line">3형</th>
+                        <th class="text-center bdr-line">4형</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -140,6 +142,8 @@
                     }},
                     {'data' : 'QuestionCnt1', 'class': 'text-center'},
                     {'data' : 'QuestionCnt2', 'class': 'text-center'},
+                    {'data' : 'QuestionCnt3', 'class': 'text-center'},
+                    {'data' : 'QuestionCnt4', 'class': 'text-center'},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},

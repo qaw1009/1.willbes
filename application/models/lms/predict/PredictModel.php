@@ -99,7 +99,7 @@ class PredictModel extends WB_Model
 
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
         $column = "
-            PP.PredictIdx, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo,
+            PP.PredictIdx, PP.MockPart, PP.SiteCode, PP.ProdName, PP.QuestionTypeCnt, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo,
             PP.TakeNumRedundancyCheckIsUse, PP.PreServiceIsUse, PP.AnswerServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs,
             PP.PreServiceSDatm, PP.PreServiceEDatm, PP.AnswerServiceSDatm, PP.AnswerServiceEDatm, PP.ServiceSDatm, PP.ServiceEDatm, PP.LastServiceSDatm, PP.LastServiceEDatm,
             PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName
@@ -169,6 +169,8 @@ class PredictModel extends WB_Model
 	        A.wAdminName, A2.wAdminName AS wAdminName2, PP.IsUse, PD.ProdName
 	        ,(SELECT COUNT(*) FROM {$this->_table['predictQuestion']} AS EQ WHERE PP.PpIdx = EQ.PpIdx AND EQ.QuestionType = 1 AND EQ.IsStatus = 'Y') AS QuestionCnt1
             ,(SELECT COUNT(*) FROM {$this->_table['predictQuestion']} AS EQ WHERE PP.PpIdx = EQ.PpIdx AND EQ.QuestionType = 2 AND EQ.IsStatus = 'Y') AS QuestionCnt2
+            ,(SELECT COUNT(*) FROM {$this->_table['predictQuestion']} AS EQ WHERE PP.PpIdx = EQ.PpIdx AND EQ.QuestionType = 3 AND EQ.IsStatus = 'Y') AS QuestionCnt3
+            ,(SELECT COUNT(*) FROM {$this->_table['predictQuestion']} AS EQ WHERE PP.PpIdx = EQ.PpIdx AND EQ.QuestionType = 4 AND EQ.IsStatus = 'Y') AS QuestionCnt4
 	        ,(SELECT CcdName FROM lms_predict_code AS a WHERE a.Ccd = PP.TakeMockPart) AS TakeMockPartName
 	        ,(SELECT CcdName FROM lms_predict_code AS a WHERE a.Ccd = PP.SubjectCode) AS SubjectName
         ";
@@ -664,7 +666,7 @@ class PredictModel extends WB_Model
      */
     public function getProduct($PredictIdx){
         $column = "
-            PP.PredictIdx, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo,
+            PP.PredictIdx, PP.MockPart, PP.SiteCode, PP.ProdName, PP.QuestionTypeCnt, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo,
             PP.TakeNumRedundancyCheckIsUse, PP.PreServiceIsUse, PP.AnswerServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs,
             PP.PreServiceSDatm, PP.PreServiceEDatm, PP.AnswerServiceSDatm, PP.AnswerServiceEDatm, PP.ServiceSDatm, PP.ServiceEDatm, PP.LastServiceSDatm, PP.LastServiceEDatm,
             pp.SuccessfulCount, pp.CertIdxArr, pp.SpIdx, pp.IsQuestionType, pp.IsAddPoint,
@@ -799,7 +801,7 @@ class PredictModel extends WB_Model
         $arr_condition = ['IN' => ['PP.SiteCode' => get_auth_site_codes()]];    //사이트 권한 추가
 
         $column = "
-            PP.PredictIdx, PP.MockPart, PP.SiteCode, PP.ProdName, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo,  
+            PP.PredictIdx, PP.MockPart, PP.SiteCode, PP.ProdName, PP.QuestionTypeCnt, PP.TakeAreas1CCds, PP.AddPointCcds, PP.MockYear, PP.MockRotationNo,  
             PP.TakeNumRedundancyCheckIsUse, PP.PreServiceIsUse, PP.AnswerServiceIsUse, PP.ServiceIsUse, PP.LastServiceIsUse, PP.ExplainLectureIsUse, PP.MobileServiceIs, PP.SurveyIs,
             PP.PreServiceSDatm, PP.PreServiceEDatm, PP.AnswerServiceSDatm, PP.AnswerServiceEDatm, PP.ServiceSDatm, PP.ServiceEDatm, PP.LastServiceSDatm, PP.LastServiceEDatm,
             PP.RegIp, PP.RegDatm, PP.RegAdminIdx, PP.UpdDatm, PP.UpdAdminIdx, PP.IsUse, A.wAdminName, A2.wAdminName AS wAdminName2
@@ -895,7 +897,7 @@ class PredictModel extends WB_Model
             $PredictIdx = $this->_conn->getFindResult($this->_table['predictProduct'], 'IFNULL(MAX(PredictIdx) + 1, 100001) as PredictIdx');
             $PredictIdx = $PredictIdx['PredictIdx'];
 
-            // lms_Product_Mock 저장
+            // lms_product_predict 저장
             $data = array(
                 'PredictIdx'       => $PredictIdx,
                 'MockPart'       => implode(',', $this->input->post('MockPart')),
@@ -903,6 +905,7 @@ class PredictModel extends WB_Model
                 'SurveyIs'       => empty($this->input->post('SurveyIs')) ? null : implode(',', $this->input->post('SurveyIs')),
                 'SiteCode'      => $this->input->post('SiteCode'),
                 'ProdName'      => $this->input->post('ProdName', true),
+                'QuestionTypeCnt' => $this->input->post('QuestionTypeCnt', true),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'TakeNumRedundancyCheckIsUse' => $this->input->post('TakeNumRedundancyCheckIsUse'),
@@ -968,12 +971,13 @@ class PredictModel extends WB_Model
             $LastServiceSDatm =   $this->input->post('LastServiceSDatm_d') .' '. $this->input->post('LastServiceSDatm_h') .':'. $this->input->post('LastServiceSDatm_m') .':00';
             $LastServiceEDatm =   $this->input->post('LastServiceEDatm_d') .' '. $this->input->post('LastServiceEDatm_h') .':'. $this->input->post('LastServiceEDatm_m') .':00';
 
-            // lms_Product_Mock 저장
+            // lms_product_predict 저장
             $data = array(
                 'MockPart'       => implode(',', $this->input->post('MockPart')),
                 'ProdName'      => $this->input->post('ProdName', true),
                 'MobileServiceIs' => empty($this->input->post('MobileServiceIs')) ? null : implode(',', $this->input->post('MobileServiceIs')),
                 'SurveyIs'       => empty($this->input->post('SurveyIs')) ? null : implode(',', $this->input->post('SurveyIs')),
+                'QuestionTypeCnt' => $this->input->post('QuestionTypeCnt', true),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'TakeNumRedundancyCheckIsUse' => $this->input->post('TakeNumRedundancyCheckIsUse'),
@@ -1167,15 +1171,17 @@ class PredictModel extends WB_Model
 
     /**
      * 문제유형 수
-     * @param $pp_idx
+     * @param string $pp_idx
+     * @param int $questionTypeCnt
      * @return mixed
      */
-    public function countExamQuestions($pp_idx)
+    public function countExamQuestions($pp_idx = '', $questionTypeCnt = 2)
     {
-        $query_string = "
-            (SELECT COUNT(*) AS cnt FROM {$this->_table['predictQuestion']} WHERE PpIdx = '{$pp_idx}' AND QuestionType = 1 AND IsStatus = 'Y') AS QuestionType1
-            ,(SELECT COUNT(*) AS cnt FROM {$this->_table['predictQuestion']} WHERE PpIdx = '{$pp_idx}' AND QuestionType = 2 AND IsStatus = 'Y') AS QuestionType2
-        ";
+        $query_string = "";
+        for ($i=1; $i<=$questionTypeCnt; $i++){
+            $query_string .= ",(SELECT COUNT(*) AS cnt FROM {$this->_table['predictQuestion']} WHERE PpIdx = '{$pp_idx}' AND QuestionType = {$i} AND IsStatus = 'Y') AS QuestionType{$i}";
+        }
+        $query_string = ltrim($query_string, ',');
         return $this->_conn->query('select ' . $query_string)->row_array();
     }
 

@@ -121,6 +121,7 @@ class Request extends \app\controllers\BaseController
         $rules = [
             ['field' => 'SiteCode', 'label' => '사이트', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'ProdName', 'label' => '서비스명', 'rules' => 'trim|required'],
+            ['field' => 'QuestionTypeCnt', 'label' => '문제유형 수', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockYear', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockRotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockPart[]', 'label' => '직렬', 'rules' => 'trim|required|is_natural_no_zero'],
@@ -173,6 +174,7 @@ class Request extends \app\controllers\BaseController
         $rules = [
             /*['field' => 'SiteCode', 'label' => '사이트', 'rules' => 'trim|required|is_natural_no_zero'],*/
             ['field' => 'ProdName', 'label' => '서비스명', 'rules' => 'trim|required'],
+            ['field' => 'QuestionTypeCnt', 'label' => '문제유형 수', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockYear', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockRotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockPart[]', 'label' => '직렬', 'rules' => 'trim|required|is_natural_no_zero'],

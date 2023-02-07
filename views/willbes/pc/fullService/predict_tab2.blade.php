@@ -73,8 +73,10 @@
             <th>책형</th>
             <td>
                 <ul class="sel_info">
-                    <li><input type="radio" name="question_type" id="question_type1" value="1" @if($regi_data['QuestionType'] == 1) checked="checked" @endif/> <label for="question_type1">가형</label></li>
-                    <li><input type="radio" name="question_type" id="question_type2" value="2" @if($regi_data['QuestionType'] == 2) checked="checked" @endif/> <label for="question_type2">나형</label></li>
+                    @for($i=1; $i<=$predict_data['QuestionTypeCnt']; $i++)
+                        <li><input type="radio" name="question_type" id="question_type{{$i}}" value="{{$i}}" @if($regi_data['QuestionType'] == $i) checked="checked" @endif/>
+                            <label for="question_type{{$i}}">{{$predict_data['question_type_names']['kor'][$i]}}</label></li>
+                    @endfor
                 </ul>
             </td>
         </tr>

@@ -21,6 +21,20 @@ class FullServiceFModel extends WB_Model
     ];
 
     private $_cut_line = 40;    //가산점 합산 기준 점수
+    public $question_type_names = [
+        'kor' => [
+            '1' => '가형'
+            ,'2' => '나형'
+            ,'3' => '다형'
+            ,'4' => '라형'
+        ],
+        'eng' => [
+            '1' => 'A형'
+            ,'2' => 'B형'
+            ,'3' => 'C형'
+            ,'4' => 'D형'
+        ]
+    ];
 
     public function __construct()
     {
@@ -35,7 +49,7 @@ class FullServiceFModel extends WB_Model
      */
     public function findPredictData($arr_condition)
     {
-        $column = 'PredictIdx, MockPart, IsQuestionType, IsAddPoint, TakeNumRedundancyCheckIsUse, PreServiceIsUse';
+        $column = 'PredictIdx, MockPart, IsQuestionType, QuestionTypeCnt, IsAddPoint, TakeNumRedundancyCheckIsUse, PreServiceIsUse';
         $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
         $column .= ',DATE_FORMAT(AnswerServiceSDatm, \'%Y%m%d%H%i\') AS AnswerServiceSDatm, DATE_FORMAT(AnswerServiceEDatm, \'%Y%m%d%H%i\') AS AnswerServiceEDatm';
         $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';

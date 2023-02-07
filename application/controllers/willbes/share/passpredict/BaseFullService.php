@@ -39,6 +39,9 @@ class BaseFullService extends \app\controllers\FrontController
         if (empty($predict_data) === true) {
             show_alert('조회된 합격예측 정보가 없습니다.','back');
         }
+        $predict_data = array_merge($predict_data, [
+            'question_type_names' => $this->fullServiceFModel->question_type_names
+        ]);
         $predict_idx = $predict_data['PredictIdx'];
 
         //직렬

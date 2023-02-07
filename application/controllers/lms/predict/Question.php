@@ -267,7 +267,7 @@ class Question extends \app\controllers\BaseController
             $this->json_error('문항번호가 중복되어 있습니다.');
             return;
         }
-        if( $this->input->post('TotalScore') != array_reduce($this->input->post('Scoring'), function ($sum, $v) { $sum += $v; return $sum; }, 0) ) {
+        if( $this->input->post('TotalScore') != (string)array_reduce($this->input->post('Scoring'), function ($sum, $v) { $sum += $v; return $sum; }, 0) ) {
             $this->json_error('문항별 배점의 합과 총점이 일치하지 않습니다.');
             return;
         }

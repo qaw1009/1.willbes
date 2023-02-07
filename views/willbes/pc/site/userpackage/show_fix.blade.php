@@ -51,7 +51,14 @@
                                             $sale_type_ccd = $price_row['SaleTypeCcd'];
                                         @endphp
                                         <span class="tx-dark-gray">{{ number_format($price_row['SalePrice'], 0) }}원</span>
-                                        <span class="tx-pink pl10">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                        <span class="tx-pink pl10">
+                                             {{-- TODO 임용 예외처리 : 사용자패키지(고정형) + '원' 일 경우 % 로 변환 (23.02.06 강희경)--}}
+                                            @if($__cfg['SiteGroupCode'] === '1011' && $price_row['SaleRateUnit'] === '원' )
+                                                (↓{{ number_format(($price_row['SalePrice'] - $price_row['RealSalePrice'] ) / $price_row['SalePrice'] * 100). '%'}})
+                                            @else
+                                                (↓{{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }})
+                                            @endif
+                                        </span>
                                         <span class="pl10"> ▶ </span>
                                         <span class="lec_price tx-light-blue pl10" data-info="{{$price_row['RealSalePrice']}}">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
                                     @endif
@@ -141,7 +148,14 @@
                                     <div class="priceWrap priceWrap2">
                                         @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
                                             <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
-                                            <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span> ▶
+                                            <span class="discount">
+                                                {{-- TODO 임용 예외처리 : 사용자패키지(고정형) + '원' 일 경우 % 로 변환 (23.02.06 최진영)--}}
+                                                @if($__cfg['SiteGroupCode'] === '1011' && $price_row['SaleRateUnit'] === '원' && $data['PackTypeCcd'] === '743002')
+                                                    ({{ number_format(($price_row['SalePrice'] - $price_row['RealSalePrice'] ) / $price_row['SalePrice'] * 100). '%'}}↓)
+                                                @else
+                                                    ({{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }}↓)
+                                                @endif
+                                            </span> ▶
                                         @endif
                                         <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
                                     </div>

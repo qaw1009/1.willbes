@@ -46,7 +46,15 @@
                                         @php
                                             $sale_type_ccd = $price_row['SaleTypeCcd'];
                                         @endphp
-                                        {{ number_format($price_row['SalePrice'], 0) }}원<span class="tx-red">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                        {{ number_format($price_row['SalePrice'], 0) }}원
+                                        <span class="tx-red">
+                                            {{-- TODO 임용 예외처리 : 사용자패키지(고정형) + '원' 일 경우 % 로 변환 (23.02.06 최진영)--}}
+                                            @if($__cfg['SiteGroupCode'] === '1011' && $price_row['SaleRateUnit'] === '원'  && $data['PackTypeCcd'] === '743002')
+                                                ({{ number_format(($price_row['SalePrice'] - $price_row['RealSalePrice'] ) / $price_row['SalePrice'] * 100). '%'}}↓)
+                                            @else
+                                                ({{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }}↓)
+                                            @endif
+                                        </span>
                                         ▶ <span class="lec_price tx-blue" data-info="{{$price_row['RealSalePrice']}}">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
                                     @endif
                                 @endforeach

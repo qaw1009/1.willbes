@@ -61,6 +61,7 @@
                     <th class="rowspan">상점아이디</th>
                     <th>취소구분</th>
                     <th>성공건수</th>
+                    <th>취소금액(성공건만)</th>
                     <th>실패건수</th>
                     <th>연동건수</th>
                 </tr>
@@ -70,6 +71,7 @@
                 <tfoot>
                 <tr class="bg-odd">
                     <th colspan="3">전체합계</th>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -102,7 +104,7 @@
                 rowGroup: {
                     startRender: null,
                     endRender: function(rows, group) {
-                        var arr_column = ['SuccCnt', 'FailCnt', 'CancelCnt'];
+                        var arr_column = ['SuccCnt', 'CancelPrice', 'FailCnt', 'CancelCnt'];
                         var t_html = '';
 
                         t_html += '<td>' + rows.data().pluck('RegDate')[0] + '</td>';
@@ -134,6 +136,9 @@
                     {'data' : 'SuccCnt', 'render' : function(data, type, row, meta) {
                         return addComma(data);
                     }},
+                    {'data' : 'CancelPrice', 'render' : function(data, type, row, meta) {
+                        return addComma(data);
+                    }},
                     {'data' : 'FailCnt', 'render' : function(data, type, row, meta) {
                         return addComma(data);
                     }},
@@ -143,7 +148,7 @@
                 ],
                 footerCallback: function(tfoot, data, start, end, display) {
                     var api = this.api();
-                    for(var i = 3; i <= 5; i++) {
+                    for(var i = 3; i <= 6; i++) {
                         $(api.column(i).footer()).html(
                             addComma(
                                 api.column(i).data().reduce(function (a, b, curr_idx) {

@@ -114,14 +114,20 @@ class PayLogModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
 
         $column = 'RegDate, PgMid, concat(RegDate, "_", PgMid) as RowspanSrc, PayType, count(0) as CancelCnt
-            , ifnull(sum(if(ResultCode in ("00", "0000"), 1, 0)), 0) as SuccCnt, ifnull(sum(if(ResultCode in ("00", "0000"), 0, 1)), 0) as FailCnt';
+            , ifnull(sum(if(ResultCode in ("00", "0000"), 1, 0)), 0) as SuccCnt, ifnull(sum(if(ResultCode in ("00", "0000"), 0, 1)), 0) as FailCnt
+            , ifnull(sum(if(ResultCode in ("00", "0000"), ifnull(CancelPrice, 0), 0)), 0) as CancelPrice';
 
         $from = '
             from (
-                select PgMid, PayType, ResultCode, left(RegDatm, 10) as RegDate
-                from ' . $this->_table['pay'] . ' 
-                where PayType in ("CA", "NC", "RP")
-                    and RegDatm between ? and ?
+                select A.PgMid, A.PayType, A.ResultCode, left(A.RegDatm, 10) as RegDate
+                    , ifnull(A.ReqPayPrice, B.ReqPayPrice) as CancelPrice
+                from ' . $this->_table['pay'] . ' as A
+                    left join ' . $this->_table['pay'] . ' as B
+                        on A.OrderNo = B.OrderNo 				
+                            and A.PayType = "CA" and A.ResultCode in ("00", "0000") and A.ReqPayPrice is null
+                            and B.PayType in ("PA", "MP") and B.ResultCode in ("00", "0000")                 
+                where A.PayType in ("CA", "NC", "RP")
+                    and A.RegDatm between ? and ?
             ) as U
             ' . $where . '
             group by RegDate, PgMid, PayType

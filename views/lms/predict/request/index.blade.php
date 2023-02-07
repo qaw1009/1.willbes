@@ -42,6 +42,7 @@
                     <thead class="bg-white-gray">
                     <tr>
                         <th class="text-center">NO</th>
+                        <th class="text-center">문제유형개수</th>
                         <th class="text-center">연도</th>
                         <th class="text-center">회차</th>
                         <th class="text-center">합격예측서비스명</th>
@@ -86,6 +87,7 @@
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
+                    {'data' : 'QuestionTypeCnt', 'class': 'text-center'},
                     {'data' : 'MockYear', 'class': 'text-center'},
                     {'data' : 'MockRotationNo', 'class': 'text-center'},
                     {'data' : null, 'render' : function(data, type, row, meta) {

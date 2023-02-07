@@ -184,7 +184,7 @@ class FullServiceFModel extends WB_Model
                 {$where}
             ) AS m
             LEFT JOIN (
-                SELECT a.PpIdx, IF(a.OrgPoint >= {$this->_cut_line}, a.OrgPoint + b.AddPoint, a.OrgPoint) AS MyScore
+                SELECT a.PpIdx, ROUND(IF(a.OrgPoint >= {$this->_cut_line}, a.OrgPoint + b.AddPoint, a.OrgPoint),2) AS MyScore
                 FROM {$this->_table['predict_grades_origin']} AS a
                 INNER JOIN `lms_predict_register` AS b ON a.PredictIdx = b.PredictIdx AND a.PrIdx = b.PrIdx
                 {$where_sub1}
@@ -512,7 +512,7 @@ class FullServiceFModel extends WB_Model
                     IF(FIND_IN_SET(pa.Answer, pq.RightAnswer) > 0, 'Y', 'N') AS IsWrong
                     FROM {$this->_table['predict_register']} AS pr
                     INNER JOIN {$this->_table['predict_register_r_code']} AS rc ON pr.PrIdx = rc.PrIdx
-                    INNER JOIN {$this->_table['predict_paper']} AS pp ON pp.SubjectCode = rc.SubjectCode AND pp.IsStatus = 'Y' AND pp.IsUse = 'Y'
+                    INNER JOIN {$this->_table['predict_paper']} AS pp ON pr.PredictIdx = pp.PredictIdx AND pp.SubjectCode = rc.SubjectCode AND pp.IsStatus = 'Y' AND pp.IsUse = 'Y'
                     INNER JOIN {$this->_table['predict_questions']} AS pq ON pp.PpIdx = pq.PpIdx AND rc.QuestionType = pq.QuestionType AND pp.IsUse = 'Y' AND pq.IsStatus = 'Y'
                     LEFT JOIN {$this->_table['predict_answerpaper']} AS pa ON pa.PrIdx = rc.PrIdx AND pq.PpIdx = pa.PpIdx AND pq.PqIdx = pa.PqIdx
                     {$where}
@@ -523,7 +523,7 @@ class FullServiceFModel extends WB_Model
                         SELECT a.PredictIdx, a.SubjectCode, a.QuestionType, c.PpIdx, c.PqIdx
                         FROM {$this->_table['predict_register']} AS pr
                         INNER JOIN {$this->_table['predict_register_r_code']} AS a ON pr.PrIdx = a.PrIdx
-                        INNER JOIN {$this->_table['predict_paper']} AS b ON a.SubjectCode = b.SubjectCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+                        INNER JOIN {$this->_table['predict_paper']} AS b ON pr.PredictIdx = b.PredictIdx AND  a.SubjectCode = b.SubjectCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
                         INNER JOIN {$this->_table['predict_questions']} AS c ON b.PpIdx = c.PpIdx AND a.QuestionType = c.QuestionType
                         {$where}
                     ) AS a
@@ -531,7 +531,7 @@ class FullServiceFModel extends WB_Model
                     GROUP BY b.PqIdx
                 ) AS tcount ON tcount.PpIdx = answer.PpIdx AND tcount.PqIdx = answer.PqIdx
             ) AS base
-            INNER JOIN {$this->_table['predict_code_r_subject']} AS pcrs ON base.SubjectCode = pcrs.SubjectCode AND pcrs.IsStatus = 'Y' AND pcrs.IsUse = 'Y'
+            INNER JOIN {$this->_table['predict_code_r_subject']} AS pcrs ON pcrs.PredictIdx = {$predict_idx} AND base.SubjectCode = pcrs.SubjectCode AND pcrs.IsStatus = 'Y' AND pcrs.IsUse = 'Y'
             
             LEFT JOIN (
                 SELECT b.PpIdx, b.PqIdx, COUNT(*) AS cnt
@@ -539,7 +539,7 @@ class FullServiceFModel extends WB_Model
                     SELECT a.PredictIdx, a.SubjectCode, a.QuestionType, c.PpIdx, c.PqIdx
                     FROM {$this->_table['predict_register']} AS pr
                     INNER JOIN {$this->_table['predict_register_r_code']} AS a ON pr.PrIdx = a.PrIdx
-                    INNER JOIN {$this->_table['predict_paper']} AS b ON a.SubjectCode = b.SubjectCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+                    INNER JOIN {$this->_table['predict_paper']} AS b ON pr.PredictIdx = b.PredictIdx AND  a.SubjectCode = b.SubjectCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
                     INNER JOIN {$this->_table['predict_questions']} AS c ON b.PpIdx = c.PpIdx AND a.QuestionType = c.QuestionType
                     {$where}
                 ) AS a
@@ -553,7 +553,7 @@ class FullServiceFModel extends WB_Model
                     SELECT a.PredictIdx, a.SubjectCode, a.QuestionType, c.PpIdx, c.PqIdx
                     FROM {$this->_table['predict_register']} AS pr
                     INNER JOIN {$this->_table['predict_register_r_code']} AS a ON pr.PrIdx = a.PrIdx
-                    INNER JOIN {$this->_table['predict_paper']} AS b ON a.SubjectCode = b.SubjectCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+                    INNER JOIN {$this->_table['predict_paper']} AS b ON pr.PredictIdx = b.PredictIdx AND  a.SubjectCode = b.SubjectCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
                     INNER JOIN {$this->_table['predict_questions']} AS c ON b.PpIdx = c.PpIdx AND a.QuestionType = c.QuestionType
                     {$where}
                 ) AS a
@@ -567,7 +567,7 @@ class FullServiceFModel extends WB_Model
                     SELECT a.PredictIdx, a.SubjectCode, a.QuestionType, c.PpIdx, c.PqIdx
                     FROM {$this->_table['predict_register']} AS pr
                     INNER JOIN {$this->_table['predict_register_r_code']} AS a ON pr.PrIdx = a.PrIdx
-                    INNER JOIN {$this->_table['predict_paper']} AS b ON a.SubjectCode = b.SubjectCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+                    INNER JOIN {$this->_table['predict_paper']} AS b ON pr.PredictIdx = b.PredictIdx AND  a.SubjectCode = b.SubjectCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
                     INNER JOIN {$this->_table['predict_questions']} AS c ON b.PpIdx = c.PpIdx AND a.QuestionType = c.QuestionType
                     {$where}
                 ) AS a
@@ -581,7 +581,7 @@ class FullServiceFModel extends WB_Model
                     SELECT a.PredictIdx, a.SubjectCode, a.QuestionType, c.PpIdx, c.PqIdx
                     FROM {$this->_table['predict_register']} AS pr
                     INNER JOIN {$this->_table['predict_register_r_code']} AS a ON pr.PrIdx = a.PrIdx
-                    INNER JOIN {$this->_table['predict_paper']} AS b ON a.SubjectCode = b.SubjectCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+                    INNER JOIN {$this->_table['predict_paper']} AS b ON pr.PredictIdx = b.PredictIdx AND  a.SubjectCode = b.SubjectCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
                     INNER JOIN {$this->_table['predict_questions']} AS c ON b.PpIdx = c.PpIdx AND a.QuestionType = c.QuestionType
                     {$where}
                 ) AS a
@@ -595,7 +595,7 @@ class FullServiceFModel extends WB_Model
                     SELECT a.PredictIdx, a.SubjectCode, a.QuestionType, c.PpIdx, c.PqIdx
                     FROM {$this->_table['predict_register']} AS pr
                     INNER JOIN {$this->_table['predict_register_r_code']} AS a ON pr.PrIdx = a.PrIdx
-                    INNER JOIN {$this->_table['predict_paper']} AS b ON a.SubjectCode = b.SubjectCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+                    INNER JOIN {$this->_table['predict_paper']} AS b ON pr.PredictIdx = b.PredictIdx AND  a.SubjectCode = b.SubjectCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
                     INNER JOIN {$this->_table['predict_questions']} AS c ON b.PpIdx = c.PpIdx AND a.QuestionType = c.QuestionType
                     {$where}
                 ) AS a
@@ -609,7 +609,7 @@ class FullServiceFModel extends WB_Model
                     SELECT a.PredictIdx, a.SubjectCode, a.QuestionType, c.PpIdx, c.PqIdx
                     FROM {$this->_table['predict_register']} AS pr
                     INNER JOIN {$this->_table['predict_register_r_code']} AS a ON pr.PrIdx = a.PrIdx
-                    INNER JOIN {$this->_table['predict_paper']} AS b ON a.SubjectCode = b.SubjectCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+                    INNER JOIN {$this->_table['predict_paper']} AS b ON pr.PredictIdx = b.PredictIdx AND  a.SubjectCode = b.SubjectCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
                     INNER JOIN {$this->_table['predict_questions']} AS c ON b.PpIdx = c.PpIdx AND a.QuestionType = c.QuestionType
                     {$where}
                 ) AS a
@@ -747,7 +747,7 @@ class FullServiceFModel extends WB_Model
             
             FROM (
                 SELECT a.PredictIdx, a.PrIdx, a.PpIdx, c.GroupBy
-                ,IF(a.OrgPoint >= {$this->_cut_line}, a.OrgPoint + pr.AddPoint, a.OrgPoint) AS MyOrgPoint
+                ,ROUND(IF(a.OrgPoint >= {$this->_cut_line}, a.OrgPoint + pr.AddPoint, a.OrgPoint),2) AS MyOrgPoint
                 ,D.CcdName AS SubjectName, d.OrderNum
                 FROM {$this->_table['predict_grades_origin']} AS a
                 INNER JOIN {$this->_table['predict_register']} AS pr ON a.PredictIdx = pr.PredictIdx AND a.PrIdx = pr.PrIdx
@@ -815,7 +815,7 @@ class FullServiceFModel extends WB_Model
                     SELECT c.PpIdx
                     FROM {$this->_table['predict_register']} AS a
                     INNER JOIN {$this->_table['predict_register_r_code']} AS b ON a.PrIdx = b.PrIdx
-                    INNER JOIN {$this->_table['predict_paper']} AS c ON b.SubjectCode = c.SubjectCode AND c.IsStatus = 'Y' AND c.IsUse = 'Y'
+                    INNER JOIN {$this->_table['predict_paper']} AS c ON a.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode AND c.IsStatus = 'Y' AND c.IsUse = 'Y'
                     WHERE a.PredictIdx = {$predict_idx} AND a.PrIdx = {$pr_idx} AND a.IsStatus = 'Y'
                 )
             ";
@@ -849,8 +849,8 @@ class FullServiceFModel extends WB_Model
                             FROM (
                                 SELECT PrIdx
                                 FROM {$this->_table['predict_grades_origin']} AS a
-                                INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx
-                                INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode 
+                                INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+                                INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode AND c.IsStatus = 'Y' AND c.IsUse = 'Y'
                                 WHERE a.PredictIdx = {$predict_idx}
                                 {$add_where}
                                 GROUP BY a.PrIdx
@@ -868,8 +868,8 @@ class FullServiceFModel extends WB_Model
                             SELECT a.PrIdx, ROUND(AVG(IF(a.OrgPoint >= {$this->_cut_line}, a.OrgPoint + pr.AddPoint, a.OrgPoint)),2) AS OrgPoint
                             FROM {$this->_table['predict_grades_origin']} AS a
                             INNER JOIN {$this->_table['predict_register']} AS pr ON a.PredictIdx = pr.PredictIdx AND a.PrIdx = pr.PrIdx
-                            INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx
-                            INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode 
+                            INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+                            INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode AND c.IsStatus = 'Y' AND c.IsUse = 'Y'
                             WHERE a.PredictIdx = {$predict_idx}
                             {$add_where}
                             GROUP BY a.PrIdx
@@ -884,8 +884,8 @@ class FullServiceFModel extends WB_Model
                         SELECT a.PrIdx, '0' AS GroupBy, ROUND(AVG(IF(a.OrgPoint >= {$this->_cut_line}, a.OrgPoint + pr.AddPoint, a.OrgPoint)),2) AS OrgPoint
                         FROM {$this->_table['predict_grades_origin']} AS a
                         INNER JOIN {$this->_table['predict_register']} AS pr ON a.PredictIdx = pr.PredictIdx AND a.PrIdx = pr.PrIdx
-                        INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx
-                        INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode
+                        INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+                        INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode AND c.IsStatus = 'Y' AND c.IsUse = 'Y'
                         WHERE a.PredictIdx = '{$predict_idx}' AND a.PrIdx = '{$pr_idx}'
                         GROUP BY a.PrIdx
                     ) AS a
@@ -913,8 +913,8 @@ class FullServiceFModel extends WB_Model
                         FROM (
                             SELECT c.GroupBy, COUNT(*) AS total
                             FROM {$this->_table['predict_grades_origin']} AS a
-                            INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx
-                            INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode 
+                            INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+                            INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode AND c.IsStatus = 'Y' AND c.IsUse = 'Y'
                             WHERE a.PredictIdx = {$predict_idx}
                             {$add_where}
                             GROUP BY c.GroupBy
@@ -932,8 +932,8 @@ class FullServiceFModel extends WB_Model
                             SELECT a.PredictIdx, a.PpIdx, c.GroupBy, IF(a.OrgPoint >= {$this->_cut_line}, a.OrgPoint + pr.AddPoint, a.OrgPoint) AS OrgPoint,a.PrIdx
                             FROM {$this->_table['predict_grades_origin']} AS a
                             INNER JOIN {$this->_table['predict_register']} AS pr ON a.PredictIdx = pr.PredictIdx AND a.PrIdx = pr.PrIdx		
-                            INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx
-                            INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode
+                            INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+                            INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode AND c.IsStatus = 'Y' AND c.IsUse = 'Y'
                             WHERE a.PredictIdx = {$predict_idx} 
                             {$add_where}
                         ) AS a
@@ -947,8 +947,8 @@ class FullServiceFModel extends WB_Model
                         SELECT a.PrIdx, c.GroupBy, ROUND(AVG(IF(a.OrgPoint >= {$this->_cut_line}, a.OrgPoint + pr.AddPoint, a.OrgPoint)),2) AS OrgPoint
                         FROM {$this->_table['predict_grades_origin']} AS a
                         INNER JOIN {$this->_table['predict_register']} AS pr ON a.PredictIdx = pr.PredictIdx AND a.PrIdx = pr.PrIdx
-                        INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx
-                        INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode
+                        INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+                        INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode AND c.IsStatus = 'Y' AND c.IsUse = 'Y'
                         WHERE a.PredictIdx = '{$predict_idx}' AND a.PrIdx = '{$pr_idx}'
                         GROUP BY a.PrIdx, c.GroupBy
                     ) AS a
@@ -1043,13 +1043,13 @@ class FullServiceFModel extends WB_Model
             a.PrIdx, a.avgOrgPoint, t.UserRank, t.UserAvgRank
             ,(
                 SELECT CONCAT('[',
-                            GROUP_CONCAT(JSON_OBJECT('OrderNum', c1.OrderNum,'PpIdx', a1.PpIdx,'OrgPoint', IF(a1.OrgPoint >= 10, a1.OrgPoint + pr.AddPoint, a1.OrgPoint))
+                            GROUP_CONCAT(JSON_OBJECT('OrderNum', c1.OrderNum,'PpIdx', a1.PpIdx,'OrgPoint', ROUND(IF(a1.OrgPoint >= 10, a1.OrgPoint + pr.AddPoint, a1.OrgPoint),2))
                             ORDER BY c1.OrderNum ASC)
                         ,']') AS jsonOrgPoint
                 FROM {$this->_table['predict_grades_origin']} AS a1
                 INNER JOIN {$this->_table['predict_register']} AS pr ON a1.PredictIdx = pr.PredictIdx AND a1.PrIdx = pr.PrIdx
-                INNER JOIN {$this->_table['predict_paper']} AS b1 ON a1.PpIdx = b1.PpIdx
-                INNER JOIN {$this->_table['predict_code_r_subject']} AS c1 ON b1.SubjectCode = c1.SubjectCode
+                INNER JOIN {$this->_table['predict_paper']} AS b1 ON a1.PpIdx = b1.PpIdx AND b1.IsStatus = 'Y' AND b1.IsUse = 'Y'
+                INNER JOIN {$this->_table['predict_code_r_subject']} AS c1 ON a1.PredictIdx = c1.PredictIdx AND b1.SubjectCode = c1.SubjectCode AND c1.IsStatus = 'Y' AND c1.IsUse = 'Y'
                 WHERE a1.PredictIdx = {$predict_idx} AND a1.PrIdx = a.PrIdx
                 GROUP BY a1.PrIdx
             ) AS jsonOrgPoint
@@ -1257,7 +1257,7 @@ class FullServiceFModel extends WB_Model
                     SELECT pr.MemIdx, pr.PrIdx, pr.PredictIdx, pp.PpIdx, pr.TakeMockPart, pr.TakeArea, SUM(b.Scoring) AS SUM
                     FROM {$this->_table['predict_register']} AS pr
                     INNER JOIN {$this->_table['predict_register_r_code']} AS prc ON pr.PrIdx = prc.PrIdx
-                    INNER JOIN {$this->_table['predict_code_r_subject']} AS pcrs ON prc.SubjectCode = pcrs.SubjectCode AND IsUse = 'Y'
+                    INNER JOIN {$this->_table['predict_code_r_subject']} AS pcrs ON pr.PredictIdx = pcrs.PredictIdx AND prc.SubjectCode = pcrs.SubjectCode AND IsUse = 'Y'
                     INNER JOIN {$this->_table['predict_paper']} AS pp ON pcrs.SubjectCode = pp.SubjectCode AND pp.IsStatus = 'Y' AND pp.IsUse = 'Y'
                     INNER JOIN {$this->_table['predict_answerpaper']} AS a ON pr.PrIdx = a.PrIdx AND pp.PpIdx = a.PpIdx
                     INNER JOIN {$this->_table['predict_questions']} AS b ON a.PqIdx = b.PqIdx AND prc.QuestionType = b.QuestionType

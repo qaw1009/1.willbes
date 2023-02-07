@@ -497,7 +497,8 @@
             ajaxSubmit($regi_form, _url, function (ret) {
                 if (ret.ret_cd) {
                     alert(ret.ret_msg);
-                    ajaxHtml2('{{$predict_idx}}', '{{$ss_idx}}');
+                    /*ajaxHtml2('{{$predict_idx}}', '{{$ss_idx}}');*/
+                    location.reload();
                 }
             }, showValidateError, null, false, 'alert');
         }

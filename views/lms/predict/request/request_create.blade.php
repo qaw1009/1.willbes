@@ -29,10 +29,6 @@
                     <div class="col-md-4 form-inline item">
                         <input type="text" class="form-control" name="ProdName" value="@if($method == 'PUT'){{ $data['ProdName'] }}@endif" style="width:70%;">
                     </div>
-                    <label class="control-label col-md-1-1" for="QuestionTypeCnt">문제유형 수<span class="required">*</span></label>
-                    <div class="col-md-4 form-inline item">
-                        <input type="number" class="form-control" name="QuestionTypeCnt" value="{{($method=='CREATE') ? '1' : $data['QuestionTypeCnt']}}" title="문제유형 수" required="required" style="width:10%;">
-                    </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="MockYear">시험연도<span class="required">*</span></label>
@@ -272,6 +268,13 @@
                             <input type="radio" name="IsQuestionType" class="flat" value="N" @if($method == 'PUT' && $data['IsQuestionType'] == 'N') checked="checked" @endif> <span class="flat-text">미사용</span>
                         </div>
                     </div>
+                    <label class="control-label col-md-1-1" for="QuestionTypeCnt">책형 개수<span class="required">*</span></label>
+                    <div class="col-md-4 form-inline item">
+                        <input type="number" class="form-control" name="QuestionTypeCnt" value="{{($method=='CREATE') ? '1' : $data['QuestionTypeCnt']}}" title="문제유형 수" required="required" style="width:10%;">
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1" for="IsAddPoint">가산점여부<span class="required">*</span></label>
                     <div class="col-md-4 form-inline">
                         <div class="radio mt-5">

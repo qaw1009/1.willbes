@@ -163,7 +163,7 @@
                                             <a href="#none" class="lecView" onclick="openWin('InfoForm{{ $row['ProdCode'] }}')">강좌상세정보</a><span class="row-line">|</span>
                                             수강형태 : <span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span>
                                             <span class="NSK ml10 nBox n{{ substr($row['StudyApplyCcd'], -1) == '1' ? '4' : '1' }}">{{$row['StudyApplyCcdName']}}</span>
-                                            <span class="NSK nBox n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</span>
+                                            <span class="NSK nBox n{{$row['AcceptStatusCcd'] === '675004' ? '7' : substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</span>
                                         </dt><br/>
                                     @if(empty($price_row) === false)
                                         <dt>

@@ -43,7 +43,7 @@
                                             <dt><strong>수강형태</strong><span class="tx-blue">{{ $data['StudyPatternCcdName'] }}</span> </dt>
                                             <dt>
                                                 <span class="NSK nBox n{{ substr($data['StudyApplyCcd'], -1) == '1' ? '4' : '1' }}">{{ $data['StudyApplyCcdName'] }}</span>
-                                                <span class="NSK nBox n{{ substr($data['AcceptStatusCcd'], -1) }}">{{ $data['AcceptStatusCcdName'] }}</span>
+                                                <span class="NSK nBox n{{$data['AcceptStatusCcd'] === '675004' ? '7' : substr($data['AcceptStatusCcd'], -1) }}">{{ $data['AcceptStatusCcdName'] }}</span>
                                             </dt>
                                         </dl>
                                     </div>

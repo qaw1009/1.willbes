@@ -20,7 +20,7 @@
                                 <dt>
                                     {{ $data['CampusCcdName'] }}
                                     <span class="NSK ml10 nBox n{{ substr($data['StudyApplyCcd'], -1) == '1' ? '4' : '1' }}">{{$data['StudyApplyCcdName']}}</span>
-                                    <span class="NSK nBox n{{ substr($data['AcceptStatusCcd'], -1) }}">{{$data['AcceptStatusCcdName']}}</span>
+                                    <span class="NSK nBox n{{$data['AcceptStatusCcd'] === '675004' ? '7' : substr($data['AcceptStatusCcd'], -1) }}">{{$data['AcceptStatusCcdName']}}</span>
                             </dl>
                             <div class="w-tit tx-blue">
                                 {{$data['ProdName']}}
@@ -126,7 +126,7 @@
                                         <dl class="w-info tx-gray">
                                             <dt>
                                                 <strong>수강형태</strong><span class="tx-blue">{{$sub_row['StudyPatternCcdName']}}</span>
-                                                <span class="NSK nBox n{{ substr($sub_row['AcceptStatusCcd'], -1) }} ml10">{{$sub_row['AcceptStatusCcdName']}}</span>
+                                                <span class="NSK nBox n{{$sub_row['AcceptStatusCcd'] === '675004' ? '7' : substr($sub_row['AcceptStatusCcd'], -1) }} ml10">{{$sub_row['AcceptStatusCcdName']}}</span>
                                             </dt>
                                             <dt>
                                                 <span class="tx-blue">
@@ -230,7 +230,7 @@
                                             <dl class="w-info tx-gray">
                                                 <dt>
                                                     <strong>수강형태</strong><span class="tx-blue">{{$sub_row['StudyPatternCcdName']}}</span>
-                                                    <span class="NSK nBox n{{ substr($sub_row['AcceptStatusCcd'], -1) }} ml10">{{$sub_row['AcceptStatusCcdName']}}</span>
+                                                    <span class="NSK nBox n{{$sub_row['AcceptStatusCcd'] === '675004' ? '7' : substr($sub_row['AcceptStatusCcd'], -1) }} ml10">{{$sub_row['AcceptStatusCcdName']}}</span>
                                                 </dt>
                                                 <dt>
                                                 <span class="tx-blue">

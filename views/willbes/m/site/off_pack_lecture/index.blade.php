@@ -94,7 +94,7 @@
                                 <dt>개강월 <span class="tx-blue">{{$row['SchoolStartYear']}}년 {{$row['SchoolStartMonth']}}월</span> <span class="row-line">|</span></dt>
                                 <dt>수강형태 <span class="tx-blue">{{$row['StudyPatternCcdName']}}</span>
                                     <span class="NSK ml10 nBox n{{ substr($row['StudyApplyCcd'], -1) == '1' ? '4' : '1' }}">{{ $row['StudyApplyCcdName'] }}</span>
-                                    <span class="NSK nBox n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</span></dt><br>
+                                    <span class="NSK nBox n{{$row['AcceptStatusCcd'] === '675004' ? '7' : substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</span></dt><br>
                                 @php
                                     if(empty($row['ProdPriceData']) == false) {
                                         $saletypeccd = $row['ProdPriceData'][0]['SaleTypeCcd'];

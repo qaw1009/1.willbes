@@ -60,8 +60,8 @@ class ProductFModel extends WB_Model
     // 상품 판매상태 > 판매가능, 판매예정
     public $_sale_status_ccds = ['available' => '618001', 'expected' => '618002'];
 
-    // 학원 단과,종합반 접수상태 > 접수예정, 접수중, 접수마감(추가-21.05.10 : 한주연대리)
-    public $_accept_status_ccds = ['expected' => '675001', 'available' => '675002', 'end' => '675003'];
+    // 학원 단과,종합반 접수상태 > 접수예정, 접수중, 접수마감(추가-21.05.10 : 한주연대리), 직강마감(추가-23.02.06 : 강희경과장)
+    public $_accept_status_ccds = ['expected' => '675001', 'available' => '675002', 'end' => '675003', 'finish' => '675004'];
 
     // 판매가능 공통코드 (판매가능, 판매중)
     public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];

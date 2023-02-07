@@ -40,7 +40,7 @@
                                             <dt class="h27">
                                                 <strong>수강형태</strong>{{$data['StudyPatternCcdName']}}
                                                     <span class="NSK ml10 nBox n{{ substr($data['StudyApplyCcd'], -1) == '1' ? '4' : '1' }}">{{ $data['StudyApplyCcdName'] }}</span>
-                                                    <span class="NSK nBox n{{ substr($data['AcceptStatusCcd'], -1) }}">{{ $data['AcceptStatusCcdName'] }}</span></dt>
+                                                    <span class="NSK nBox n{{$data['AcceptStatusCcd'] === '675004' ? '7' : substr($data['AcceptStatusCcd'], -1) }}">{{ $data['AcceptStatusCcdName'] }}</span></dt>
                                             <dt class="h27"><strong>접수기간</strong><span class="tx-blue">{{ date('Y.m.d', strtotime($data['SaleStartDatm'])) }} ~ {{ date('Y.m.d', strtotime($data['SaleEndDatm'])) }}</span> </dt>
                                         </dl>
                                     </div>
@@ -137,7 +137,7 @@
                                                     </div>
                                                     <dl class="w-info tx-gray">
                                                         <dt><strong>수강형태</strong><span class="tx-blue">{{$sub_row['StudyPatternCcdName']}}</span>
-                                                            <span class="NSK nBox n{{ substr($sub_row['AcceptStatusCcd'], -1) }}">{{ $sub_row['AcceptStatusCcdName'] }}</span></dt>
+                                                            <span class="NSK nBox n{{$sub_row['AcceptStatusCcd'] === '675004' ? '7' : substr($sub_row['AcceptStatusCcd'], -1) }}">{{ $sub_row['AcceptStatusCcdName'] }}</span></dt>
                                                         <dt><span class="tx-blue">{{str_replace('-', '.', $sub_row['StudyStartDate'])}} ~ {{str_replace('-', '.', $sub_row['StudyEndDate'])}} {{$sub_row['WeekArrayName']}} ({{$sub_row['Amount']}}회차)</span></dt>
                                                         <dt><a href="#none" class="lecView" onclick="openWin('InfoForm_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}')">강좌상세정보</a></dt>
                                                     </dl>
@@ -270,7 +270,7 @@
                                                         </div>
                                                         <dl class="w-info tx-gray">
                                                             <dt><strong>수강형태</strong><span class="tx-blue">{{$sub_row['StudyPatternCcdName']}}</span>
-                                                                <span class="NSK nBox n{{ substr($sub_row['AcceptStatusCcd'], -1) }}">{{ $sub_row['AcceptStatusCcdName'] }}</span>
+                                                                <span class="NSK nBox n{{$sub_row['AcceptStatusCcd'] === '675004' ? '7' : substr($sub_row['AcceptStatusCcd'], -1) }}">{{ $sub_row['AcceptStatusCcdName'] }}</span>
                                                             </dt>
                                                             <dt><span class="tx-blue">{{$sub_row['StudyStartDate']}} ~  {{$sub_row['StudyEndDate']}} {{$sub_row['WeekArrayName']}} ({{$sub_row['Amount']}}회차)</span></dt>
                                                             <dt><a href="#none" class="lecView" onclick='InfoForm_sel_{{$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode']}}'>강좌상세정보</a></dt>

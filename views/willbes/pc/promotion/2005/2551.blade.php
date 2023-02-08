@@ -47,7 +47,7 @@
         .evt_apply {padding:100px 0 50px; width:1120px; margin:auto}
         .evt_apply .tabs {display:flex; margin-bottom:20px;flex-direction: row;}
         .evt_apply .tabs a {font-size:19px; text-align:center; display:block; width:25%; background:#333; color:#fff; padding:25px 0;line-height:25px;}
-        .evt_apply .tabs a.active {background:#1d6751; color:#fff;}
+        .evt_apply .tabs a.active {background:#e5162a; color:#fff;}
         .evt_apply .tabs a strong {color:#cf1425}
 
         /* 이용안내 */
@@ -136,24 +136,25 @@
             <div class="guide_box">
                 <h2 class="NSK-Black">새로운 시작! 새봄맞이 동영상 이벤트 </h2>
                 <dl>
-                    <dt>이벤트내용 : 이벤트기간 결제시 자동적용</dt>
+                    <dt>이벤트내용 : 이벤트페이지에서 결제시 자동적용</dt>
                     <dd>
                         <ol>    
                             <li>예비순환 :<br>
-                                - 이벤트기간 결제시 : 15%할인<br>
-                                - 2강좌이상결제시 : 20%할인<br>
-                                - 3강좌이상결제시 30%할인
-                            </li>
-                            <li>GS1순환<br>
                                 - 이벤트기간 결제시 : 20%할인<br>
-                                - 2강좌이상결제시 : 30%할인
-                            </li>
+                                - 2강좌이상결제시 : 약25%할인<br>
+                                - 3강좌이상결제시 약30%할인</li>
+                            <li>GS1순환<br>
+                            - 이벤트기간 결제시 : 20%할인<br>
+                            - 2강좌이상결제시 : 약25%할인<br>
+                            - 3강좌이상결제시 약30%할인</li>
                             <li>GS2순환<br>
-                                - 이벤트기간 결제시 : 40%할인
-                            </li>
-                            <li>PSAT, 5급헌법 <br>
-                                - 이벤트기간 결제시 : 15%할인<br>
-                                - 2강좌이상결제시 : 20%할인
+                            - 이벤트기간 결제시 : 40%할인</li>
+                            <li>PSAT<br>
+                            - 이벤트기간 결제시 : 15%할인<br>
+                            - 2강좌이상결제시 : 약20%할인<br>
+                            - 3강좌이상결제시 약30%할인</li>
+                            <li>5급헌법<br>
+                            - 이벤트기간 : 40%할인
                             </li>
                         </ol>
                     </dd>
@@ -161,16 +162,14 @@
                     <dd>
                         <ol>
                             <li>본상품은 이벤트 진행강의로 강의환불시 동영상 단가 정가금액과 원수강일수기준으로 수강한 횟차를 제외한 수강하지 않은 강의 횟차에 대해 환불이 진행됩니다.<br>
-                                다만, 원수강일수가 지난 강의는 환불이 되지 않습니다.   기타 환불규정은 약관의 규정에 따릅니다.
-                             </li>
+                            다만, 원수강일수가 지난 강의는 환불이 되지 않습니다. 기타 환불규정은 약관의 규정에 따릅니다.</li>
                             <li>본 이벤트는 복지할인쿠폰 등 다른 쿠폰과 중복적용되지 않습니다.</li>                                       
                         </ol>
                     </dd>
-                    <dt>수강 시작일 관련</dt>
+                    <dt>수강 시작일</dt>
                     <dd>
                         <ol>
-                            <li>수강시작일은 30일 범위내에서 설정 가능하시며, 수강시작일 변경을 원하실 경우 동영상 게시판에 글을 남겨주시면 90일 범위내에서 변경하여 드리겠습니다.</li>                           
-                            <li>본 이벤트는 내부사정에 의해 사전공지없이 종료 또는 변경될 수 있습니다.</li>                                  
+                            <li>수강시작일은 30일 범위내에서 설정 가능하시며, 수강시작일 변경을 원하실 경우 동영상 게시판에 글을 남겨주시면 90일 범위내에서 변경하여 드리겠습니다. 본 이벤트는 내부사정에 의해 사전공지없이 종료 또는 변경될 수 있습니다.</li>                                  
                         </ol>
                     </dd>
                     <dt>기기대수 제한 및 배수 제한</dt>
@@ -190,12 +189,10 @@
 	</div>
     <!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
-        $(document).ready(function() {
-            AOS.init();
-
+        $(document).ready(function() {   
             $(".tabContents").hide();
             $(".tabContents:first").show();
             $(".tabs a").click(function(){
@@ -209,6 +206,8 @@
 
             /*디데이*/
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
+
+            AOS.init();
         });
                
     </script>

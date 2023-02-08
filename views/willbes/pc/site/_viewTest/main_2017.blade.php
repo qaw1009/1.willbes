@@ -296,7 +296,6 @@ no-repeat 5px center}
         @php $j=0; for($i=1; $i<=10; $i++) {if(isset($data['arr_main_banner']['메인_교수이벤트_'.$i]) === true) {$j++;}} @endphp
         <div class="Section">
             <div class="profEvtBanner">
-                {{--<div class="title">교수별 <span class="tx-color">이벤트 & 특강안내</span></div>--}}
                 @if ($j > 5)
                     <div class="ctrbtn">
                         <a class="leftBtn" id="pebLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>

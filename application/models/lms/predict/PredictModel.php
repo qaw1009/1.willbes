@@ -1854,7 +1854,7 @@ class PredictModel extends WB_Model
             $query_string = "
                 lms_predict_answerpaper AS a,
                 (
-                    SELECT pa.PrIdx, pa.PpIdx, pa.PqIdx, IF(pa.Answer = pq.RightAnswer,'Y','N') AS targetIsWrong
+                    SELECT pa.PrIdx, pa.PpIdx, pa.PqIdx, IF(FIND_IN_SET(pa.Answer, pq.RightAnswer) > 0, 'Y', 'N') AS targetIsWrong
                     FROM lms_predict_answerpaper AS pa
                     INNER JOIN lms_predict_paper AS pp ON pa.PredictIdx = pp.PredictIdx AND pa.PpIdx = pp.PpIdx AND pp.IsStatus = 'Y' AND pp.IsUse = 'Y'
                     INNER JOIN lms_predict_register_r_code AS rc ON pa.PredictIdx = rc.PredictIdx AND pa.PrIdx = rc.PrIdx AND pp.SubjectCode = rc.SubjectCode

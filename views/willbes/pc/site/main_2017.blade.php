@@ -129,20 +129,15 @@
         }
         .ssam .Layer-hnyoutube iframe {width:860px; height:484px}
 
-        .ssam .profEvtBanner {width:1120px; margin:30px auto; position:relative;}
+        .ssam .profEvtBanner {width:1120px; margin:50px auto; position:relative;}
         .ssam .profEvtBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
-        .ssam .profEvtBanner .bx-wrapper {max-width:1120px !important; position:relative;}
+        .ssam .profEvtBanner .bx-wrapper {max-width:1120px !important;}
         .ssam .profEvtBanner .profEvt {height:250px !important; overflow: hidden; display:flex}
         .ssam .profEvtBanner .profEvt > div {margin-right:15px; font-weight:bold; line-height:1.4; }
         .ssam .profEvtBanner .profEvt a p {font-size:16px; color:#383838; margin:10px 0; padding:0 10px }
         .ssam .profEvtBanner .profEvt a span {color:#adadad; font-size:14px; padding:0 10px }
-        .ssam .profEvtBanner .profEvt img {display:block; width:210px; background:#000}
-        .ssam .profEvtBanner .profEvt a:hover img {filter:alpha(opacity=50);
-            -moz-opacity:0.5;
-            -khtml-opacity: 0.5;
-            opacity: 0.5;
-        }
-        .ssam .profEvtBanner .ctrbtn {text-align:right; margin-bottom:10px}
+        .ssam .profEvtBanner .profEvt img {display:block; width:210px}
+        .ssam .profEvtBanner .ctrbtn {position:absolute; top:5px; left:200px}
 
         .ssam .sec-prof {background:#9cb6c5 url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative; margin-top:40px}
         .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
@@ -296,7 +291,7 @@
         {{--@php $j=0; for($i=1; $i<=10; $i++) {if(isset($data['arr_main_banner']['메인_교수이벤트_'.$i]) === true) {$j++;}} @endphp
         <div class="Section">
             <div class="profEvtBanner">
-                {{--<div class="title">교수별 <span class="tx-color">이벤트 & 특강안내</span></div>--}}
+                <div class="title">교수별 <span class="tx-color">이벤트 & 특강안내</span></div>
                 @if ($j > 5)
                     <div class="ctrbtn">
                         <a class="leftBtn" id="pebLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>

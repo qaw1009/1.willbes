@@ -132,15 +132,21 @@
 .ssam .Layer-hnyoutube iframe {width:860px; height:484px}
 
 
-.ssam .profEvtBanner {width:1120px; margin:50px auto; position:relative;}
+.ssam .profEvtBanner {width:1120px; margin:30px auto; position:relative;}
 .ssam .profEvtBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
-.ssam .profEvtBanner .bx-wrapper {max-width:1120px !important;}
+.ssam .profEvtBanner .bx-wrapper {max-width:1120px !important; position:relative;}
 .ssam .profEvtBanner .profEvt {height:250px !important; overflow: hidden; display:flex}
 .ssam .profEvtBanner .profEvt > div {margin-right:15px; font-weight:bold; line-height:1.4; }
 .ssam .profEvtBanner .profEvt a p {font-size:16px; color:#383838; margin:10px 0; padding:0 10px }
 .ssam .profEvtBanner .profEvt a span {color:#adadad; font-size:14px; padding:0 10px }
-.ssam .profEvtBanner .profEvt img {display:block; width:210px}
-.ssam .profEvtBanner .ctrbtn {position:absolute; top:5px; left:200px}
+.ssam .profEvtBanner .profEvt img {display:block; width:210px; background:#000}
+.ssam .profEvtBanner .profEvt a:hover img {filter:alpha(opacity=50);
+    -moz-opacity:0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+}
+.ssam .profEvtBanner .ctrbtn {text-align:right; margin-bottom:10px}
+
 
 
 
@@ -613,11 +619,12 @@ no-repeat 5px center}
 
     <div class="Section">
         <div class="profEvtBanner">
-                <div class="title">교수별 <span class="tx-color">이벤트 & 특강안내</span></div>
+                {{--<div class="title">교수별 <span class="tx-color">이벤트 & 특강안내</span></div>--}}
                 <div class="ctrbtn">
                     <a class="leftBtn" id="pebLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt=""></a>
                     <a class="rightBtn" id="pebRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt=""></a>
                 </div>
+                
                 <div class="bSlider profEvt prof-slider">
                     <div>
                         <a href="#none">

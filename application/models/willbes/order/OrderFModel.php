@@ -137,7 +137,7 @@ class OrderFModel extends BaseOrderFModel
 
             // 단과/제휴 할인율이 적용된 경우 포인트 적립, 포인트/쿠폰 사용 불가
             if (isset($row['IsLecDisc']) === true && $row['IsLecDisc'] == 'Y') {
-                // 임용사이트일 경우만 상품별 쿠폰사용설정 적용으로 정책변경 (2023.02.07)
+                // 임용사이트일 경우만 상품별 쿠폰사용설정 적용으로 정책변경 (2023.02.13)
                 if (in_array($row['SiteCode'], ['2017', '2018']) === false) {
                     $row['IsCoupon'] = 'N';
                 }

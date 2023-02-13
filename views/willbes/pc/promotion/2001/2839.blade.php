@@ -25,7 +25,7 @@
         .sky {position:fixed;top:200px;right:10px;z-index:100;}
         .sky a {display:block; margin-bottom:10px}
 
-        .evt_top {background:#2784d2}
+        .evt_top {background:#465888}
 
         .evt_self {background:#F5F5F7;}
 

@@ -182,7 +182,7 @@
             </div> 
             <div class="wrap" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2767_04.jpg" alt="손해평가사 동영상 수강신청" />			  
-                <a href="hhttps://job.willbes.net/package/show/cate/309007/pack/648001/prod-code/203713" target="_blank" title="1차 대비 종합반" style="position: absolute; left: 63.39%; top: 22.75%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
+                <a href="https://job.willbes.net/package/show/cate/309007/pack/648001/prod-code/203713" target="_blank" title="1차 대비 종합반" style="position: absolute; left: 63.39%; top: 22.75%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
                 <a href="https://job.willbes.net/package/show/cate/309007/pack/648001/prod-code/204765" target="_blank" style="position: absolute; left: 63.39%; top: 44.84%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
                 <a href="https://job.willbes.net/package/show/cate/309007/pack/648001/prod-code/204748" target="_blank" title="1차 + 2차 대비 종합반" style="position: absolute; left: 63.39%; top: 67.19%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
             </div>            

@@ -115,6 +115,12 @@
                                             @endif
                                         </li>
                                     @endif
+                                    {{-- 단과/제휴 할인율 표기 --}}
+                                    @if(isset($row['IsLecDisc']) === true && $row['IsLecDisc'] == 'Y')
+                                        <li class="lec_disc_info">
+                                            <span class="tx-red">{{ $row['LecDiscTitle'] }} (↓{{ $row['LecDiscRate'] . $row['LecDiscRateUnit'] }})</span>
+                                        </li>
+                                    @endif
                                     {{-- 쿠폰사용가능 상품일 경우만 노출 --}}
                                     @if($row['IsCoupon'] == 'Y')
                                         <li>
@@ -125,12 +131,6 @@
                                                 <span class="tx-blue">(<span class="coupon-disc-price">0</span>원 할인)</span>
                                                 <a href="#none" class="btn-coupon-apply-delete delete" data-cart-idx="{{ $row['CartIdx'] }}"><img src="{{ img_url('m/main/close.png') }}"></a>
                                             </span>
-                                        </li>
-                                    @endif
-                                    {{-- 단과/제휴 할인율 표기 --}}
-                                    @if(isset($row['IsLecDisc']) === true && $row['IsLecDisc'] == 'Y')
-                                        <li class="lec_disc_info">
-                                            <span class="tx-red">{{ $row['LecDiscTitle'] }} (↓{{ $row['LecDiscRate'] . $row['LecDiscRateUnit'] }})</span>
                                         </li>
                                     @endif
                                 </ul>
@@ -544,7 +544,10 @@
                     coupon_detail_idx[idx] = $(this).val();
                 }
             });
-            var data = { 'ele_id' : ele_id, 'cart_idx' : $(this).data('cart-idx'), 'coupon_detail_idx' : JSON.stringify(coupon_detail_idx) };
+            var data = {
+                'ele_id' : ele_id, 'cart_idx' : $(this).data('cart-idx'), 'coupon_detail_idx' : JSON.stringify(coupon_detail_idx),
+                'cart_type' : '{{ $results['cart_type'] }}', 'cart_sub_type' : '{{ $cart_sub_type }}', 'aff_idx' : '{{ $results['aff_idx'] }}'
+            };
 
             sendAjax('{{ front_url('/myCoupon/') }}', data, function(ret) {
                 $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');

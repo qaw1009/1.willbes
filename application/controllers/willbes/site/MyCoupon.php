@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MyCoupon extends \app\controllers\FrontController
 {
-    protected $models = array('couponF', 'order/cartF');
+    protected $models = array('couponF', 'order/cartF', 'order/orderF');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -21,18 +21,55 @@ class MyCoupon extends \app\controllers\FrontController
     {
         $sess_mem_idx = $this->session->userdata('mem_idx');
         $cart_idx = $this->_req('cart_idx');
-        if (empty($cart_idx) === true) {
+        $cart_type = $this->_req('cart_type');
+
+        // 필수 파라미터 체크
+        if (empty($cart_idx) === true || empty($cart_type) === true) {
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        // 장바구니 식별자 세션 체크
+        $sess_cart_idx = $this->cartFModel->checkSessCartIdx(false);
+        if ($sess_cart_idx === false) {
+            return $this->json_error('잘못된 접근입니다.');
+        }
+
+        // 제휴할인 식별자 세션 체크
+        $sess_aff_idx = $this->cartFModel->checkSessAffIdx($this->_req('aff_idx'));
+        if ($sess_aff_idx === false) {
+            return $this->json_error('잘못된 접근입니다.[2]');
         }
 
         // 이미 선택한 쿠폰 식별자
         $arr_coupon_detail_idx = json_decode($this->_req('coupon_detail_idx'), true);
 
         // 장바구니 조회
+        $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, 'N', false, $this->_req('cart_sub_type'));
+
+        // 장바구니 데이터 가공 (이미 선택한 쿠폰 적용안함)
+        $cart_results = $this->orderFModel->getMakeCartReData('apply_coupon', $cart_type, $cart_rows, [], 0, '', $sess_aff_idx);
+        if (is_array($cart_results) === false) {
+            return $this->json_error($cart_results, _HTTP_NOT_FOUND);
+        }
+
+        // 장바구니 데이터 추출 (장바구니식별자 파라미터와 동일한 장바구니 데이터 추출)
+        $cart_data = [];
+        foreach ($cart_results['list'] as $row) {
+            if ($cart_idx == $row['CartIdx']) {
+                $cart_data = $row;
+                break;
+            }
+        }
+
+        if (empty($cart_data) === true) {
+            return $this->json_error('장바구니 데이터가 없습니다.', _HTTP_NOT_FOUND);
+        }
+
+        /*// 장바구니 조회
         $cart_data = $this->cartFModel->findCartByCartIdx($cart_idx, $sess_mem_idx);
         if (empty($cart_data) === true) {
             return $this->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
-        }
+        }*/
 
         // 상품구분명 / 상품구분명 색상 class 번호
         $cart_data['CartProdTypeName'] = $this->cartFModel->_cart_prod_type_name[$cart_data['CartProdType']];

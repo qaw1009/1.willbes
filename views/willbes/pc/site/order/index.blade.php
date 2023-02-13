@@ -659,7 +659,10 @@
                         coupon_detail_idx[idx] = $(this).val();
                     }
                 });
-                var data = { 'ele_id' : ele_id, 'cart_idx' : $(this).data('cart-idx'), 'coupon_detail_idx' : JSON.stringify(coupon_detail_idx) };
+                var data = {
+                    'ele_id' : ele_id, 'cart_idx' : $(this).data('cart-idx'), 'coupon_detail_idx' : JSON.stringify(coupon_detail_idx),
+                    'cart_type' : '{{ $results['cart_type'] }}', 'cart_sub_type' : '{{ $cart_sub_type }}', 'aff_idx' : '{{ $results['aff_idx'] }}'
+                };
 
                 sendAjax('{{ front_url('/myCoupon/') }}', data, function(ret) {
                     $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');

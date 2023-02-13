@@ -696,9 +696,6 @@ if (!function_exists('str_left')) {
      */
     function str_left($haystack, $length)
     {
-        if ($length < 1) {
-            return $haystack;
-        }
         return mb_substr($haystack, 0, $length);
     }
 }
@@ -712,9 +709,6 @@ if (!function_exists('str_right')) {
      */
     function str_right($haystack, $length)
     {
-        if ($length < 1) {
-            return $haystack;
-        }
         return mb_substr($haystack, ($length * -1));
     }
 }

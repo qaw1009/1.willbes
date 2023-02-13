@@ -15,8 +15,8 @@ class OrderFModel extends BaseOrderFModel
 
     /**
      * 장바구니 데이터 가공
-     * @param string $make_type [데이터 생성구분, 주문 : order, 결제 : pay, 사용포인트 체크 : check_use_point]
-     * @param string $cart_type [장바구니 구분, 온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book, 모의고사 : mock_exam]
+     * @param string $make_type [데이터 생성구분 (주문: order, 결제: pay, 사용포인트체크: check_use_point, 쿠폰적용팝업: apply_coupon)]
+     * @param string $cart_type [장바구니 구분 (온라인강좌: on_lecture, 학원강좌: off_lecture, 교재: book, 모의고사: mock_exam)]
      * @param array $cart_rows [유효한 장바구니 데이터]
      * @param array $arr_coupon_detail_idx [장바구니별 적용된 사용자쿠폰 식별자]
      * @param int $use_point [결제 사용 포인트]
@@ -137,7 +137,11 @@ class OrderFModel extends BaseOrderFModel
 
             // 단과/제휴 할인율이 적용된 경우 포인트 적립, 포인트/쿠폰 사용 불가
             if (isset($row['IsLecDisc']) === true && $row['IsLecDisc'] == 'Y') {
-                $row['IsCoupon'] = 'N';
+                // 임용사이트일 경우만 상품별 쿠폰사용설정 적용으로 정책변경 (2023.02.07)
+                if (in_array($row['SiteCode'], ['2017', '2018']) === false) {
+                    $row['IsCoupon'] = 'N';
+                }
+
                 $row['IsPoint'] = 'N';
                 $row['IsUsePoint'] = 'N';
             }

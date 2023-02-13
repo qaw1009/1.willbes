@@ -851,7 +851,7 @@
 }
 
 .cop_acad .MainQuickMenu li:nth-child(5) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq05.png");
+    background-image: url("../../img/willbes/cop_acad/icon_rq11.png");
 }
 
 .cop_acad .MainQuickMenu li:nth-child(6) a {
@@ -865,6 +865,7 @@
 .cop_acad .MainQuickMenu li:nth-child(8) a {
     background-image: url("../../img/willbes/cop_acad/icon_rq08.png");
 }
+
 
 /*캠퍼스 메인 오시는 길*/
 .PA .map_img {

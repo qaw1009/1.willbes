@@ -169,41 +169,38 @@
                             <td>자습실 사용 가능</td>                           
                         </tr>
                     </table>	
-                </li>
-                <p>
-                    * 홍덕기 교수님의 2차 1과목은 교수님의 개인사정으로 11월 5일(토) 개강합니다. (보강 일정 11월 공지 예정)               
-                </p>   
+                </li> 
             </ul>
 		</div> 
 
         <div class="evtCtnsBox evt_04">
             <div class="wrap" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2767_03.jpg" alt="손해평가사 학원 수강신청" />			  
-                <a href="https://job.willbes.net/pass/offLecture/index?cate_code=3184&course_idx=1257" target="_blank" title="1차 대비 종합반" style="position: absolute; left: 63.39%; top: 26.21%; width: 21.61%; height: 18.93%;; z-index: 2;"></a>
-                <a href="https://job.willbes.net/pass/offLecture/index?cate_code=3184&course_idx=1388" target="_blank" title="2차 대비 종합반" style="position: absolute; left: 63.39%; top: 47.83%; width: 21.61%; height: 18.93%;z-index: 2;"></a>
-                <a href="https://job.willbes.net/pass/offPackage/index?cate_code=3184&campus_ccd=605013&course_idx=1466" target="_blank" title="1차 + 2차 대비 종합반" style="position: absolute; left: 63.39%; top: 69.95%; width: 21.61%; height: 18.93%; z-index: 2;"></a>
+                <a href="https://job.willbes.net/pass/offLecture/show/cate/3184/prod-code/204508" target="_blank" title="1차 대비 종합반" style="position: absolute; left: 63.39%; top: 26.21%; width: 21.61%; height: 18.93%;; z-index: 2;"></a>
+                <a href="https://job.willbes.net/pass/offLecture/show/cate/3184/prod-code/205293" target="_blank" title="2차 대비 종합반" style="position: absolute; left: 63.39%; top: 47.83%; width: 21.61%; height: 18.93%;z-index: 2;"></a>
+                <a href="https://job.willbes.net/pass/offPackage/show/prod-code/204315" target="_blank" title="1차 + 2차 대비 종합반" style="position: absolute; left: 63.39%; top: 69.95%; width: 21.61%; height: 18.93%; z-index: 2;"></a>
             </div> 
             <div class="wrap" data-aos="fade-up">
                 <img src="https://static.willbes.net/public/images/promotion/2022/09/2767_04.jpg" alt="손해평가사 동영상 수강신청" />			  
-                <a href="https://job.willbes.net/Package/index/cate/309007/pack/648001" target="_blank" title="1차 대비 종합반" style="position: absolute; left: 63.39%; top: 22.75%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
-                <a href="https://job.willbes.net/Package/index/cate/309007/pack/648001" target="_blank" style="position: absolute; left: 63.39%; top: 44.84%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
-                <a href="https://job.willbes.net/Package/index/cate/309007/pack/648001" target="_blank" title="1차 + 2차 대비 종합반" style="position: absolute; left: 63.39%; top: 67.19%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
+                <a href="hhttps://job.willbes.net/package/show/cate/309007/pack/648001/prod-code/203713" target="_blank" title="1차 대비 종합반" style="position: absolute; left: 63.39%; top: 22.75%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
+                <a href="https://job.willbes.net/package/show/cate/309007/pack/648001/prod-code/204765" target="_blank" style="position: absolute; left: 63.39%; top: 44.84%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
+                <a href="https://job.willbes.net/package/show/cate/309007/pack/648001/prod-code/204748" target="_blank" title="1차 + 2차 대비 종합반" style="position: absolute; left: 63.39%; top: 67.19%; width: 21.79%; height: 19.08%;  z-index: 2;"></a>
             </div>            
 		</div> 
 
         <div class="loadmap">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2238.5189534842293!2d126.72321452519192!3d37.49037028993977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7c45f64466a5%3A0x41ad2be6af1f3f59!2zKOyjvCnsnIzruYTsiqTqs7XrrLTsm5Dqsr3ssLDtlZnsm5A!5e0!3m2!1sko!2skr!4v1662530065277!5m2!1sko!2skr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.7925561536167!2d126.94179891558733!3d37.51281053496024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9f67dcc61ed5%3A0xeda52baf4372cac9!2z7ISc7Jq47Yq567OE7IucIOuPmeyekeq1rCDrp4zslpHroZwgMTA1!5e0!3m2!1sko!2skr!4v1676266978384!5m2!1sko!2skr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>   
 
         <div class="evtCtnsBox evt_05" data-aos="fade-up">
 			<ul>
                 <li>
                     주소
-                    <div>인천 부평구 경원대로 1395 부평일번가 11층(부평지하상가 13번 출구)</div>
+                    <div>서울 동작구 만양로 105 2층  (1,9호선 노량진역 (1,2,3번출구) 도보 250m)</div>
                 </li>
                 <li>
                     수강상담
-                    <div>1544-1661 / 032-508-0020</div>
+                    <div>1544-1661</div>
                 </li>
             </ul>	  
 		</div> 

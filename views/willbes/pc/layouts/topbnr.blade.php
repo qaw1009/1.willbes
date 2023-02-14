@@ -1,11 +1,11 @@
 @if($__cfg['SiteCode'] == '2001')
     {{-- 경찰온라인 사이트일 경우만 적용--}}
-    {{--<div id="topBannerLayer">
+    <div id="topBannerLayer">
         <div class="topBanner">
             <!--a id="show_topBanner" href="javascript:showOrHidefigure(0);"-->
-            <img src="https://static.willbes.net/public/images/promotion/2019/06/1284_00.jpg" alt="적중! 적중! 또 다시 적중!">
+            <img src="https://static.willbes.net/public/images/promotion/main/2001/kcp1st.jpg" alt="2023 한국소비자 선호도 교육서비스 부문 1위">
         </div>
-
+    {{--
         <div id="topBannerWarp" style="display:none">
             <div class="myToggle">
                 <div id="frame">
@@ -94,12 +94,12 @@
     </div>
 @endif
 @if($__cfg['CateCode'] == '3028')
-    {{-- 공무원 기술직 사이트일 경우만 적용 
+    {{-- 공무원 기술직 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3028_top_bn.gif" alt="기술직"></a>
+            <img src="https://static.willbes.net/public/images/promotion/main/2001/kcp1st.jpg" alt="2023 한국소비자 선호도 교육서비스 부문 1위">
         </div>
-    </div>--}}
+    </div>
 @endif
 @if($__cfg['CateCode'] == '3030')
     {{-- 공무원 부사관 사이트일 경우만 적용 --}}

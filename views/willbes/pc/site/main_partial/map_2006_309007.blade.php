@@ -5,7 +5,7 @@
             <div class="tabContent">
                 <div class="map_img">
                     <img src="https://static.willbes.net/public/images/promotion/main/2006/map_309007.jpg" alt="손해평가사">
-                    <span>손해평가사 학원</span>
+                    {{--<span>손해평가사 학원</span>--}}
                 </div>
                 <div class="campus_info">
                     <dl>

@@ -31,14 +31,14 @@
                     <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
                         <colgroup>
                             <col style="width: 120px;">
-                            <col style="width: 210px;">
+                            <col style="width: 190px;">
                             <col style="width: 490px;">
                             <col style="width: 120px;">
                         </colgroup>
                         <thead>
                         <tr>
+                            <th>과정<span class="row-line">|</span></th>
                             <th>응시분야<span class="row-line">|</span></th>
-                            <th>직렬<span class="row-line">|</span></th>
                             <th>모의고사명<span class="row-line">|</span></th>
                             <th>정오표</th>
                         </tr>

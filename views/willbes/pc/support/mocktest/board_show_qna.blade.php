@@ -31,11 +31,13 @@
                     <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
                         <colgroup>
                             <col style="width: 150px;">
+                            <col style="width: 150px;">
                             <col style="width: 610px;">
                             <col style="width: 180px;">
                         </colgroup>
                         <thead>
                         <tr>
+                            <th>과정<span class="row-line">|</span></th>
                             <th>응시분야<span class="row-line">|</span></th>
                             <th>모의고사명<span class="row-line">|</span></th>
                             <th>이의제기</th>
@@ -44,6 +46,7 @@
                         <tbody>
                         <tr>
                             <td class="w-type">{{$prod_data['CateName']}}</td>
+                            <td class="w-col">{{implode(',',$prod_data['MockPartName'])}}</td>
                             <td class="w-list tx-left pl20">{{$prod_data['ProdName']}}</td>
                             <td class="w-graph">{{$prod_data['qnaTotalCnt']}} 개</td>
                         </tr>

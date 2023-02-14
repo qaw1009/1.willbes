@@ -42,6 +42,7 @@ class SupportMockTest extends BaseSupport
         ];
 
         $column = 'pm.*,
+            mr.TakeMockPart,fn_ccd_name(mr.TakeMockPart) AS TakeMockPart_Name,
             IFNULL(DATE_FORMAT(pm.TakeStartDatm, \'%Y%m%d\'), 0) as TakeStartDate,
             IFNULL(DATE_FORMAT(pm.TakeEndDatm, \'%Y%m%d\'), 0) as TakeEndDate,
             IFNULL(BD1.cnt, 0) AS qnaTotalCnt, IFNULL(BD2.cnt, 0) AS noticeCnt
@@ -93,6 +94,14 @@ class SupportMockTest extends BaseSupport
 
         // 모의고사 상품 상세 조회
         $prod_data = $this->_getProdData($prod_code);
+
+        // 직렬 추출 및 데이터 셋팅
+        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
+        $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
+        $mockPart = explode(',', $prod_data['MockPart']);
+        foreach ($mockPart as $mp) {
+            if( !empty($codes[$mockKindCode][$mp]) ) $prod_data['MockPartName'][] = $codes[$mockKindCode][$mp];
+        }
 
         $arr_condition = [
             'EQ' => [
@@ -182,6 +191,14 @@ class SupportMockTest extends BaseSupport
         /*if ($prod_data['IsTake'] != 'Y') {
             show_alert('응시한 모의고사 상품이 아닙니다.', 'back');
         }*/
+
+        // 직렬 추출 및 데이터 셋팅
+        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
+        $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
+        $mockPart = explode(',', $prod_data['MockPart']);
+        foreach ($mockPart as $mp) {
+            if( !empty($codes[$mockKindCode][$mp]) ) $prod_data['MockPartName'][] = $codes[$mockKindCode][$mp];
+        }
 
         $method = 'POST';
         $board_data = null;
@@ -358,6 +375,14 @@ class SupportMockTest extends BaseSupport
             /*if ($prod_data['IsTake'] != 'Y') {
                 show_alert('응시한 모의고사 상품이 아닙니다.', 'back');
             }*/
+        }
+
+        // 직렬 추출 및 데이터 셋팅
+        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
+        $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
+        $mockPart = explode(',', $prod_data['MockPart']);
+        foreach ($mockPart as $mp) {
+            if( !empty($codes[$mockKindCode][$mp]) ) $prod_data['MockPartName'][] = $codes[$mockKindCode][$mp];
         }
 
         $this->load->view('/support/mocktest/board_show_qna',[

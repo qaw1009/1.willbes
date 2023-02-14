@@ -86,8 +86,8 @@
                                 @foreach($list as $row)
                                     <tr>
                                         <td class="w-no">{{$paging['rownum']}}</td>
-                                        <td class="w-process">{{ $row['SiteName'] }}</td>
-                                        <td class="w-type">{{ $row['CateName'] }}</td>
+                                        <td class="w-process">{{ $row['CateName'] }}</td>
+                                        <td class="w-type">{{ $row['TakeMockPart_Name'] }}</td>
                                         <td class="w-date">{{ substr($row['Wdate'],0,10) }}</td>
                                         <td class="w-list">
                                             {{hpSubString($row['ProdName'],0,40,'...')}}

@@ -6470,7 +6470,7 @@ form .LeclistTable .evtTable tr td a.w-del {
 }
 
 .LeclistTable table.mockTable tr.two th .row-line {
-	margin: 8px 0;
+	/*margin: 8px 0;*/
 }
 
 .LeclistTable table.mockTable tr td.w-price {

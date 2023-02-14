@@ -58,6 +58,7 @@
                             <colgroup>
                                 <col style="width: 50px;">
                                 <col style="width: 80px;">
+                                <col style="width: 80px;">
                                 <col style="width: 570px;">
                                 <col style="width: 70px;">
                                 <col style="width: 70px;">
@@ -66,6 +67,7 @@
                             <thead>
                             <tr class="two">
                                 <th rowspan="2">No<span class="row-line">|</span></th>
+                                <th rowspan="2">과정<span class="row-line">|</span></th>
                                 <th rowspan="2">응시분야<span class="row-line">|</span></th>
                                 <th rowspan="2">모의고사명<span class="row-line">|</span></th>
                                 <th class="bd-none" colspan="2">이의제기</th>
@@ -86,6 +88,7 @@
                                 <tr>
                                     <td class="w-no">{{$paging['rownum']}}</td>
                                     <td class="w-type">{{$row['CateName']}}</td>
+                                    <td class="w-type">{{$row['TakeMockPart_Name']}}</td>
                                     <td class="w-list tx-left pl20">{{$row['ProdName']}}</td>
                                     <td class="w-test"><a class="tx-light-blue" href="{{front_url('/'.$default_path.'/listQna/cate/'.$def_cate_code.'?prod_code='.$row['ProdCode'].'&'.$get_params)}}">{{$row['qnaTotalCnt']}}개</a></td>
                                     <td class="w-state">

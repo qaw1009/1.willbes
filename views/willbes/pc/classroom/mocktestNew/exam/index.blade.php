@@ -84,8 +84,8 @@
                                 @foreach($list as $row)
                                     <tr>
                                         <td class="w-no">{{$paging['rownum']}}</td>
-                                        <td class="w-process">{{ $row['SiteName'] }}</td>
-                                        <td class="w-type">{{ $row['CateName'] }}</td>
+                                        <td class="w-process">{{ $row['CateName'] }}</td>
+                                        <td class="w-type">{{ $row['TakeMockPart_Name'] }}</td>
                                         <td class="w-date">@if(empty($row['TakeStartDatm']) === false) {{ $row['TakeStartDatm'] }} ~ {{ $row['TakeEndDatm'] }} @else 상시 @endif</td>
                                         <td class="w-list">
                                             {{hpSubString($row['ProdName'],0,40,'...')}}

@@ -37,8 +37,8 @@
                         </colgroup>
                         <thead>
                         <tr>
+                            <th>과정<span class="row-line">|</span></th>
                             <th>응시분야<span class="row-line">|</span></th>
-                            <th>직렬<span class="row-line">|</span></th>
                             <th>모의고사명<span class="row-line">|</span></th>
                             <th>정오표</th>
                         </tr>

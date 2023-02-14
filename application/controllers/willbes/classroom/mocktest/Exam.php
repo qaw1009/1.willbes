@@ -48,7 +48,8 @@ class Exam extends \app\controllers\FrontController
                    (SELECT SiteGroupName FROM lms_site_group WHERE SiteGroupCode = (SELECT SiteGroupCode FROM lms_site WHERE SiteCode = PD.SiteCode)) AS SiteName,
                    MR.RegDatm AS IsDate,
                    PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,
-                   C1.CateName, C1.IsUse AS IsUseCate, TakeStartDatm, TakeEndDatm';
+                   C1.CateName, C1.IsUse AS IsUseCate, TakeStartDatm, TakeEndDatm,
+                   MR.TakeMockPart,fn_ccd_name(MR.TakeMockPart) AS TakeMockPart_Name';
 
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;

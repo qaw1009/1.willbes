@@ -293,7 +293,7 @@
             </div>
         </div>
 
-        @php $j=0; for($i=1; $i<=10; $i++) {if(isset($data['arr_main_banner']['메인_교수이벤트_'.$i]) === true) {$j++;}} @endphp
+        {{--@php $j=0; for($i=1; $i<=10; $i++) {if(isset($data['arr_main_banner']['메인_교수이벤트_'.$i]) === true) {$j++;}} @endphp
         <div class="Section">
             <div class="profEvtBanner">
                 @if ($j > 5)
@@ -320,7 +320,7 @@
                     @endfor
                 </div>
             </div>
-        </div>
+        </div>--}}
 
         <div class="Section sec-prof mt40">
             @include('willbes.pc.site.main_partial.professor_hot_clip_' . $__cfg['SiteCode'])

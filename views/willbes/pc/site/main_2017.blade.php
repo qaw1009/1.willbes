@@ -293,7 +293,7 @@
             </div>
         </div>
 
-        {{--@php $j=0; for($i=1; $i<=10; $i++) {if(isset($data['arr_main_banner']['메인_교수이벤트_'.$i]) === true) {$j++;}} @endphp
+        @php $j=0; for($i=1; $i<=10; $i++) {if(isset($data['arr_main_banner']['메인_교수이벤트_'.$i]) === true) {$j++;}} @endphp
         <div class="Section">
             <div class="profEvtBanner">
                 @if ($j > 5)
@@ -306,7 +306,11 @@
                     @for($i=1; $i<=10; $i++)
                         @if(isset($data['arr_main_banner']['메인_교수이벤트_'.$i]) === true)
                             <div>
-                                <a href="{{ empty($data['arr_main_banner']['메인_교수이벤트_'.$i][0]['LinkUrl']) === false ? $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['LinkUrl'] : '#none' }}" target="_{{ $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['LinkType'] }}">
+                                @if($data['arr_main_banner']['메인_교수이벤트_'.$i][0]['LinkType'] == 'youtube')
+                                    <a href="javascript:void(0);" class="btnYoutubeLayerBox" data-youtube-code="{{$data['arr_main_banner']['메인_교수이벤트_'.$i][0]['LinkUrl']}}">
+                                @else
+                                    <a href="{{ empty($data['arr_main_banner']['메인_교수이벤트_'.$i][0]['LinkUrl']) === false ? $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['LinkUrl'] : '#none' }}" target="_{{ $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['LinkType'] }}">
+                                @endif
                                     <img src="{{ $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['BannerFullPath'] . $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['BannerImgName'] }}" alt="{{ $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['BannerName'] }}">
                                     <p>{!! $data['arr_main_banner']['메인_교수이벤트_'.$i][0]['BannerName'] !!}</p>
                                     <span>{{$data['arr_main_banner']['메인_교수이벤트_'.$i][0]['Desc']}}</span>
@@ -316,7 +320,7 @@
                     @endfor
                 </div>
             </div>
-        </div>--}}
+        </div>
 
         <div class="Section sec-prof mt40">
             @include('willbes.pc.site.main_partial.professor_hot_clip_' . $__cfg['SiteCode'])

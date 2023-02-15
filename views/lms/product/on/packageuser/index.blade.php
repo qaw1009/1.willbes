@@ -234,6 +234,9 @@
 
             // 엑셀 다운로드
             $('.btn-excel').on('click', function() {
+                {{-- 권한 체크 --}}
+                {!! check_menu_perm_inner_script('excel') !!}
+
                 if(confirm("엑셀파일을 다운로드 하시겠습니까?")) {
                     formCreateSubmit('{{ site_url('/product/on/packageUser/listExcel') }}', $search_form.serializeArray(), 'POST');
                 }

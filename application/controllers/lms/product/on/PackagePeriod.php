@@ -71,6 +71,11 @@ Class PackagePeriod extends CommonLecture
      */
     public function listExcel()
     {
+        /* 권한 체크 */
+        if (check_menu_perm('excel') !== true) {
+            return null;
+        }
+
         $arr_condition = $this->_setCondition();
         $other_column = '
                     Ab.SiteName, A.ProdCode, A.ProdName, Ca.CateName, B.SchoolYear

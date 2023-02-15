@@ -44,8 +44,16 @@
         <div class="topBanner">
         <img src="https://static.willbes.net/public/images/promotion/main/2001/kcp1st.jpg" alt="2023 한국소비자 선호도 교육서비스 부문 1위">
         </div>
-    </div>
-    
+    </div>    
+@endif
+
+@if($__cfg['SiteCode'] == '2015')
+    {{-- 소방학원--}}
+    <div id="topBannerLayer">
+        <div class="topBanner">
+        <img src="https://static.willbes.net/public/images/promotion/main/2001/kcp1st.jpg" alt="2023 한국소비자 선호도 교육서비스 부문 1위">
+        </div>
+    </div>    
 @endif
 
 @if($__cfg['CateCode'] == '3019')

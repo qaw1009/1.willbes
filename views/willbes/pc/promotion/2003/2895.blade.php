@@ -150,9 +150,7 @@
         // 파일 다운로드
         function fileDownload(file_idx, event_idx)
         {
-            var _url = '{{ site_url("/promotion/download") }}' + '?file_idx='+file_idx + '&event_idx='+event_idx;
-            window.open(_url, '_blank');
-            /*location.href='{{ site_url("/promotion/download") }}' + '?file_idx='+file_idx + '&event_idx='+event_idx;*/
+            location.href='{{ front_url("/promotion/download") }}' + '?file_idx='+file_idx + '&event_idx='+event_idx;
         }
 
         {{--쿠폰발급--}}

@@ -1,38 +1,126 @@
 /* top bar banner */
-.gosi .topBanner {display:block; background:#ececec; width:100%; text-align:center}
-.gosi .topBanner p {width:100%; max-width:1120px; margin:0 auto}
-.gosi .topBanner p img {width:100%}
+.gosi .topBanner {
+    display: block;
+    width: 100%;
+    text-align: center
+}
+
+.gosi .topBanner p {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto
+}
+
+.gosi .topBanner p img {
+    width: 100%
+}
 
 /************************************* gosi gate**********************************************/
 .gosi-gate .tx-color {
     color: #ba560e;
 }
-.gosi-gate-top { position:relative; height:120px;}
-.gosi-gate-sns {width:150px; height:40px; float:left; position:absolute; top:60px; z-index:10}
-.gosi-gate-sns li {display:inline; float:left; margin-right:5px}
-.gosi-gate-sns ul:after {content:''; display:block; clear:both}
 
-.gosi-logo {position:absolute; left:50%; margin-left:-107px; width:214px; top:30px; z-index:10}
+.gosi-gate-top {
+    position: relative;
+    height: 120px;
+}
 
-.gosi-gate-search {position:absolute; top:40px; right:0; z-index:1}
+.gosi-gate-sns {
+    width: 150px;
+    height: 40px;
+    float: left;
+    position: absolute;
+    top: 60px;
+    z-index: 10
+}
 
-.gosi-gate-menu {width:1120px; margin:0 auto; border-bottom:2px solid #000}
-.gosi-gate-menu li {display:inline; float:left; width:11.11111%;}    
-.gosi-gate-menu a {display:block; text-align:center; font-size:16px; margin:10px 0 15px; border-right:1px solid #b7b7b7; font-weight:bold}
-.gosi-gate-menu a:hover {color:#ba560e}
-.gosi-gate-menu li:last-child a {border:0}
-.gosi-gate-menu ul:after {content:''; display:block; clear:both}
+.gosi-gate-sns li {
+    display: inline;
+    float: left;
+    margin-right: 5px
+}
 
-.gosi-gate-bnSec01 > div {width: 555px; height:400px; overflow:hidden}
-.gosi-gate-bnSec01:after {content:''; display:block; clear:both}
+.gosi-gate-sns ul:after {
+    content: '';
+    display: block;
+    clear: both
+}
 
-.gosi-gate-Sec {background: #f8f8f8; padding-bottom:100px; margin-top:60px}
+.gosi-logo {
+    position: absolute;
+    left: 50%;
+    margin-left: -107px;
+    width: 214px;
+    top: 30px;
+    z-index: 10
+}
+
+.gosi-gate-search {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    z-index: 1
+}
+
+.gosi-gate-menu {
+    width: 1120px;
+    margin: 0 auto;
+    border-bottom: 2px solid #000
+}
+
+.gosi-gate-menu li {
+    display: inline;
+    float: left;
+    width: 11.11111%;
+}
+
+.gosi-gate-menu a {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    margin: 10px 0 15px;
+    border-right: 1px solid #b7b7b7;
+    font-weight: bold
+}
+
+.gosi-gate-menu a:hover {
+    color: #ba560e
+}
+
+.gosi-gate-menu li:last-child a {
+    border: 0
+}
+
+.gosi-gate-menu ul:after {
+    content: '';
+    display: block;
+    clear: both
+}
+
+.gosi-gate-bnSec01>div {
+    width: 555px;
+    height: 400px;
+    overflow: hidden
+}
+
+.gosi-gate-bnSec01:after {
+    content: '';
+    display: block;
+    clear: both
+}
+
+.gosi-gate-Sec {
+    background: #f8f8f8;
+    padding-bottom: 100px;
+    margin-top: 60px
+}
+
 .gosi-gate-bnSec02 {
     clear: both;
     float: left;
     width: 1120px;
     height: 380px;
-    overflow: hidden;    
+    overflow: hidden;
 }
 
 .gosi-gate-bnSec02 .MaintabList {
@@ -43,9 +131,10 @@
     z-index: 99;
     text-align: center;
 }
+
 .gosi-gate-bnSec02 .MaintabList ul li {
     background: #251c1c;
-    display: inline-block; 
+    display: inline-block;
     height: 28px;
     font-size: 14px;
     color: #fff;
@@ -54,46 +143,66 @@
     margin: 0 -2px;
     width: 180px;
 }
+
 .gosi-gate-bnSec02 .MaintabList.three ul li {
     width: 209px;
 }
+
 .gosi-gate-bnSec02 .MaintabList.four ul li {
     width: 156px;
 }
+
 .gosi-gate-bnSec02 .MaintabList.five ul li {
     width: 188px;
 }
+
 .gosi-gate-bnSec02 .MaintabList ul li a {
     display: block;
     width: 100%;
     height: 100%;
 }
+
 .gosi-gate-bnSec02 .MaintabSlider li img {
     width: 100%;
     height: 100%;
 }
-.gosi-gate-bnSec02 .MaintabList ul li a:hover,
-.gosi-gate-bnSec02 .MaintabList ul li a.active { background:#FFF; color:#251c1c}
 
-.gosi-gate-bnSec03 li {display:inline; float:right; margin-left:20px}
-.gosi-gate-bnSec03 li:first-child {margin:0; float:left}
+.gosi-gate-bnSec02 .MaintabList ul li a:hover,
+.gosi-gate-bnSec02 .MaintabList ul li a.active {
+    background: #FFF;
+    color: #251c1c
+}
+
+.gosi-gate-bnSec03 li {
+    display: inline;
+    float: right;
+    margin-left: 20px
+}
+
+.gosi-gate-bnSec03 li:first-child {
+    margin: 0;
+    float: left
+}
 
 .gosi-gate-prof li {
     display: inline;
-    float: left;    
+    float: left;
     width: 220px;
     height: 320px;
     margin-left: 5px;
     overflow: hidden;
 }
+
 .gosi-gate-prof li:first-child {
     margin-left: 0;
 }
+
 .gosi-gate-prof:after {
     content: "";
     display: block;
     clear: both;
 }
+
 .gosi-gate-prof .bSlider .bx-wrapper .bx-pager {
     float: left;
     width: auto;
@@ -101,29 +210,93 @@
     bottom: -20px;
     text-align: center;
 }
+
 .gosi-gate-prof .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
 }
-.gosi-gate-prof .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+
+.gosi-gate-prof .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .gosi-gate-prof .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .gosi-gate-prof .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #ba560e !important;
 }
-.gosi-gate-prof:after {content:''; display:block; clear:both}
 
-.gosi-gate .castBox {position:relative; width:1120px; margin: 0 auto;}
-.gosi-gate .castslider {width:1120px; margin: 0 auto; height:265px; overflow: hidden;}
-.gosi-gate .castslider li {display: inline; float: left; width:33.33333%;}
-.gosi-gate .castslider li a {display:block; width:370px; height:220px;} 
-.gosi-gate .castslider li div.castTitle {height:40px; line-height:40px; font-size:14px; text-align:center; 
-   width:80%; overflow:hidden;white-space:nowrap; text-overflow:ellipsis; margin:0 auto}
-.gosi-gate .castslider:after {content: ""; display: block; clear:both}
-.gosi-gate .castBox p {position:absolute; top:45%; margin-top:-22px; width:44px; height:45px; z-index:10}
-.gosi-gate .castBox p.leftBtn {left:-22px}
-.gosi-gate .castBox p.rightBtn {right:-22px}
+.gosi-gate-prof:after {
+    content: '';
+    display: block;
+    clear: both
+}
 
-.gosi-gate-bnSec04 li {display:inline; float:left; width:370px; margin-right:5px}
-.gosi-gate-bnSec04 li:last-child {margin:0}
+.gosi-gate .castBox {
+    position: relative;
+    width: 1120px;
+    margin: 0 auto;
+}
+
+.gosi-gate .castslider {
+    width: 1120px;
+    margin: 0 auto;
+    height: 265px;
+    overflow: hidden;
+}
+
+.gosi-gate .castslider li {
+    display: inline;
+    float: left;
+    width: 33.33333%;
+}
+
+.gosi-gate .castslider li a {
+    display: block;
+    width: 370px;
+    height: 220px;
+}
+
+.gosi-gate .castslider li div.castTitle {
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    text-align: center;
+    width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0 auto
+}
+
+.gosi-gate .castslider:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+.gosi-gate .castBox p {
+    position: absolute;
+    top: 45%;
+    margin-top: -22px;
+    width: 44px;
+    height: 45px;
+    z-index: 10
+}
+
+.gosi-gate .castBox p.leftBtn {
+    left: -22px
+}
+
+.gosi-gate .castBox p.rightBtn {
+    right: -22px
+}
+
+.gosi-gate-bnSec04 li {
+    display: inline;
+    float: left;
+    width: 370px;
+    margin-right: 5px
+}
+
+.gosi-gate-bnSec04 li:last-child {
+    margin: 0
+}
 
 .gosi-gate .noticeList .List-Table li a {
     display: inline-block;
@@ -133,15 +306,22 @@
     overflow: hidden;
     letter-spacing: 0;
 }
-.gosi-gate .noticeList .List-Table li img {display: inline-block; vertical-align: top; margin-top: 8px;}
+
+.gosi-gate .noticeList .List-Table li img {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 8px;
+}
+
 .gosi-gate .noticeList .List-Table li a span {
     background: #ba560e;
-    color:#fff;
+    color: #fff;
     padding: 0 10px;
     border-radius: 10px;
-    margin-top:3px;
+    margin-top: 3px;
     margin-right: 5px;
-    height: 19px; line-height: 19px;    
+    height: 19px;
+    line-height: 19px;
 }
 
 /*********************************************     Main Container : Gosi     *********************************************/
@@ -150,19 +330,30 @@
 }
 
 /* Main Container : MainVisual */
-.gosi .lastTime {position: relative;}
-.gosi .lastTime span {
-    position: absolute; top:40px; right:220px;
-    color:#ba5610; font-family: Tahoma, Verdana, Geneva, sans-serif; font-size: 38px; letter-spacing: -2px; font-weight: bold;
-    /*text-shadow: 0 2px 4px rgba(0,0,0,.3); */
-    border-bottom:2px solid #ba5610;
+.gosi .lastTime {
+    position: relative;
 }
+
+.gosi .lastTime span {
+    position: absolute;
+    top: 40px;
+    right: 220px;
+    color: #ba5610;
+    font-family: Tahoma, Verdana, Geneva, sans-serif;
+    font-size: 38px;
+    letter-spacing: -2px;
+    font-weight: bold;
+    /*text-shadow: 0 2px 4px rgba(0,0,0,.3); */
+    border-bottom: 2px solid #ba5610;
+}
+
 .gosi .MainVisual {
     position: relative;
     width: 1120px;
-    margin:0 auto;
+    margin: 0 auto;
     height: 400px;
 }
+
 .gosi .MainVisual:after {
     content: "";
     display: block;
@@ -171,37 +362,40 @@
 
 .gosi .VisualBox {
     position: absolute;
-    width:725px;  
+    width: 725px;
     height: 400px;
     overflow: hidden;
     z-index: 1;
-  }
+}
+
 .gosi .VisualBox img {
     height: 400px;
-  }
-  
+}
+
 .gosi .VisualBox .bx-wrapper .bx-controls-auto {
-    left:20px;
+    left: 20px;
     bottom: 20px;
     width: 50px;
     z-index: 90;
 }
+
 .gosi .VisualBox .bx-wrapper .bx-pager {
     width: auto;
-    left:60px;
+    left: 60px;
     bottom: 22px;
     text-align: left;
     z-index: 90;
 }
+
 .gosi .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
-  }
+}
 
 .gosi .VisualsubBox {
     width: 384px;
     height: 400px;
-    padding:10px;
-    float:right;
+    padding: 10px;
+    float: right;
     background: #ccc;
     z-index: 1;
 }
@@ -209,28 +403,30 @@
 
 .gosi .VisualsubBox .bSlider:nth-child(2) {
     position: absolute;
-    margin-top:3px;
+    margin-top: 3px;
     width: 364px;
     height: 248px !important;
     overflow: hidden;
     z-index: 1;
-  }
+}
 
 .gosi .VisualsubBox .bx-wrapper .bx-controls-auto {
-    left:20px;
+    left: 20px;
     bottom: 20px;
     margin: 0;
     width: 50px;
     z-index: 90;
-  }
+}
+
 .gosi .VisualsubBox .bx-wrapper .bx-pager {
     float: right;
     width: auto;
-    left:60px;
+    left: 60px;
     bottom: 20px;
     text-align: right;
     z-index: 90;
 }
+
 .gosi .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
     width: 8px;
@@ -238,7 +434,12 @@
     margin: 0 2px;
 }
 
-.gosi .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden; z-index: 1;}
+.gosi .VisualsubBox .VisualsubBoxTop {
+    width: 364px;
+    height: 128px;
+    overflow: hidden;
+    z-index: 1;
+}
 
 .gosi .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager {
     float: left;
@@ -248,10 +449,12 @@
     text-align: left;
     z-index: 1;
 }
-.gosi .VisualsubBox .VisualsubBoxTop  .bx-wrapper .bx-pager.bx-default-pager a {
+
+.gosi .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
 }
-.gosi .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+
+.gosi .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .gosi .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
 .gosi .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #ba560e !important;
@@ -260,18 +463,18 @@
 
 /**/
 .gosi .Section.barBnr {
-    background:url("../../img/willbes/gosi/banner/bnr_1120_bg.jpg") repeat-x left bottom;
-    margin-top:20px;
+    background: url("../../img/willbes/gosi/banner/bnr_1120_bg.jpg") repeat-x left bottom;
+    margin-top: 20px;
 }
 
 /* Main Container : Prof */
 .gosi .PBcts li {
     display: inline;
-    float: left;    
+    float: left;
     width: 224px;
     height: 390px;
     overflow: hidden;
-    margin:0;
+    margin: 0;
 }
 
 .gosi .PBcts:after {
@@ -279,6 +482,7 @@
     display: block;
     clear: both;
 }
+
 .gosi .PBcts .bSlider .bx-wrapper .bx-pager {
     float: left;
     width: auto;
@@ -286,10 +490,12 @@
     bottom: 10px;
     text-align: center;
 }
+
 .gosi .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
 }
-.gosi .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+
+.gosi .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .gosi .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .gosi .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #ba560e !important;
@@ -313,128 +519,244 @@
 
 /**/
 .gosi .Section .willbesLec {
-    width:614px;
-    float:left;
+    width: 614px;
+    float: left;
 }
+
 .gosi .smallTit {
-    border-top:1px solid #000;
+    border-top: 1px solid #000;
     font-size: 22px;
-    color:#363636;    
+    color: #363636;
     position: relative;
 }
+
 .gosi .smallTit p {
     position: absolute;
-    top:-15px;
-    text-align:left;
+    top: -15px;
+    text-align: left;
     width: 100%;
 }
-.gosi .smallTit p a {vertical-align: top; margin-left: 10px}
+
+.gosi .smallTit p a {
+    vertical-align: top;
+    margin-left: 10px
+}
+
 .gosi .smallTit span {
     font-weight: 600;
     background: #fff;
-    padding:0 20px 0 0;
+    padding: 0 20px 0 0;
 }
+
 .gosi .smallTit strong {
-    color:#ba560e;
+    color: #ba560e;
 }
 
 .gosi .will-listTit {
     margin-bottom: 15px;
-    color:#181818;
+    color: #181818;
 }
 
 /*메인 과목별 베스트 강의*/
-.bestLectBx {position:relative;}
+.bestLectBx {
+    position: relative;
+}
+
 .bestLectBx .prof-subject {
-    position:absolute;
-    top:0;
-    left:30px !important; 
-    background:#fff;
+    position: absolute;
+    top: 0;
+    left: 30px !important;
+    background: #fff;
     overflow: hidden;
 }
-.bestLectBx .prof-subject li {
-    display: inline; float: left; margin:0;
-}
-.bestLectBx .prof-subject li a {
-    display:block;    
-    width:78px;
-    height:30px;
-    line-height:30px;
-    text-align:center;
-    font-size:12px; 
-    white-space:nowrap;
-    text-overflow:ellipsis;
-    vertical-align:middle; 
-    background:#ececec;  
-    overflow: hidden;    
-}
-.bestLectBx .prof-subject li span {float:left; color:#c8c8c8}
-.bestLectBx .prof-subject li a:hover, 
-.bestLectBx .prof-subject li a.active{color:#c7763c;}
-.bestLectBx .prof-subjec:after {content:""; display: block; clear:both;}
 
-.bestLectBx .prof-professors {clear:both; margin-top:40px;}
-.bestLectBx .prof-slider {width:614px; height:120px; overflow:hidden;}
-.bestLectBx .prof-slider li {position:relative; display:inline; float:left; height:120px; width:50%}
-.bestLectBx .prof-slider li div {position:absolute; width:120px; height:120px; overflow: hidden; background:#ececec}
-.bestLectBx .prof-slider li img {width:120px}
-.bestLectBx .prof-slider li span {position:absolute; left:138px; width:150px}
-.bestLectBx .prof-slider li span.txt1 {top:0; color:#3a3a3a; font-size:17px}
-.bestLectBx .prof-slider li span.txt2 {top:22px; color:#ba560e; font-size:22px; font-weight:bold;}
-.bestLectBx .prof-slider li span.txt3 {top:50px; color:#666; font-size: 14px; line-height: 1.4}
-.bestLectBx .prof-slider li > a {position:absolute; left:138px; bottom:0; border:1px solid #c9c9c9; display: inline; padding:3px 5px; color:#898989}
+.bestLectBx .prof-subject li {
+    display: inline;
+    float: left;
+    margin: 0;
+}
+
+.bestLectBx .prof-subject li a {
+    display: block;
+    width: 78px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    background: #ececec;
+    overflow: hidden;
+}
+
+.bestLectBx .prof-subject li span {
+    float: left;
+    color: #c8c8c8
+}
+
+.bestLectBx .prof-subject li a:hover,
+.bestLectBx .prof-subject li a.active {
+    color: #c7763c;
+}
+
+.bestLectBx .prof-subjec:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.bestLectBx .prof-professors {
+    clear: both;
+    margin-top: 40px;
+}
+
+.bestLectBx .prof-slider {
+    width: 614px;
+    height: 120px;
+    overflow: hidden;
+}
+
+.bestLectBx .prof-slider li {
+    position: relative;
+    display: inline;
+    float: left;
+    height: 120px;
+    width: 50%
+}
+
+.bestLectBx .prof-slider li div {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    background: #ececec
+}
+
+.bestLectBx .prof-slider li img {
+    width: 120px
+}
+
+.bestLectBx .prof-slider li span {
+    position: absolute;
+    left: 138px;
+    width: 150px
+}
+
+.bestLectBx .prof-slider li span.txt1 {
+    top: 0;
+    color: #3a3a3a;
+    font-size: 17px
+}
+
+.bestLectBx .prof-slider li span.txt2 {
+    top: 22px;
+    color: #ba560e;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.bestLectBx .prof-slider li span.txt3 {
+    top: 50px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4
+}
+
+.bestLectBx .prof-slider li>a {
+    position: absolute;
+    left: 138px;
+    bottom: 0;
+    border: 1px solid #c9c9c9;
+    display: inline;
+    padding: 3px 5px;
+    color: #898989
+}
+
 .bestLectBx .prof-slider:after {
-    content:""; display: block; clear:both;
+    content: "";
+    display: block;
+    clear: both;
 }
 
 .bestLectBx .bx-wrapper .bx-viewport {
     z-index: 10;
 }
+
 .bestLectBx .bx-wrapper .bx-controls-direction {
     width: 100%;
     height: 30px;
     position: absolute;
-    top:0;
+    top: 0;
 }
+
 .bestLectBx .bx-wrapper .bx-controls-direction a {
     width: 30px;
     height: 30px;
 }
+
 .bestLectBx .bx-wrapper .bx-controls-direction a.disabled {
     display: block;
     opacity: 0.5;
 }
+
 .bestLectBx .bx-wrapper .bx-prev {
-    background:#ececec url("../../img/willbes/gosi/btn_prev.png") no-repeat center center;
+    background: #ececec url("../../img/willbes/gosi/btn_prev.png") no-repeat center center;
     left: 0;
     right: inherit;
 }
+
 .bestLectBx .bx-wrapper .bx-next {
-    background:#ececec url("../../img/willbes/gosi/btn_next.png") no-repeat center center;
+    background: #ececec url("../../img/willbes/gosi/btn_next.png") no-repeat center center;
     left: inherit;
     right: 0;
 }
 
 /*메인 무료특강*/
-.freeLectBx li {display: inline; float:left; margin-right:4px; line-height: 1.4; font-size: 13px}
-.freeLectBx li:last-child {margin:0}
-.freeLectBx li p {color:#ba560e; font-size: 15px; font-weight: 500; margin-top: 15px}
-.freeLectBx:after {content:''; display: block; clear:both}
+.freeLectBx li {
+    display: inline;
+    float: left;
+    margin-right: 4px;
+    line-height: 1.4;
+    font-size: 13px
+}
+
+.freeLectBx li:last-child {
+    margin: 0
+}
+
+.freeLectBx li p {
+    color: #ba560e;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 15px
+}
+
+.freeLectBx:after {
+    content: '';
+    display: block;
+    clear: both
+}
 
 /*메인 윌비스 소식*/
-.gosi .Section .willbesNews {float: right; width: 465px;}
+.gosi .Section .willbesNews {
+    float: right;
+    width: 465px;
+}
 
 /* Main Container : Notice : noticeTabs */
 .gosi .tabWrap.noticeWrap {
     height: 16px;
     border: none;
 }
+
 .gosi .tabWrap.noticeWrap li {
     float: left;
     width: auto;
     height: 16px;
     margin-right: 10px;
 }
+
 .gosi .tabWrap.noticeWrap li a {
     display: block;
     width: 100%;
@@ -444,27 +766,31 @@
     color: #c5c5c5;
     text-align: center;
     letter-spacing: 0;
-    border:none !important;
-    border-right:1px solid #999 !important;
+    border: none !important;
+    border-right: 1px solid #999 !important;
     padding-right: 10px;
 }
+
 .gosi .tabWrap.noticeWrap li a.on {
     height: 19px;
     line-height: 19px;
     font-weight: 600;
     color: #ba560e;
-    border:none !important;
-    border-right:1px solid #999 !important;
+    border: none !important;
+    border-right: 1px solid #999 !important;
 }
+
 .gosi .tabWrap.noticeWrap li:last-child a.on,
 .gosi .tabWrap.noticeWrap li:last-child a {
-    border-right:none !important;
+    border-right: none !important;
 }
+
 .gosi .tabBox.noticeBox a.btn-add {
     position: absolute;
     top: -16px;
     right: 0;
 }
+
 .gosi .tabBox.noticeBox .List-Table li {
     position: relative;
     font-size: 13px;
@@ -473,6 +799,7 @@
     line-height: 37px;
     border-bottom: 1px solid #e3e3e3;
 }
+
 .gosi .tabBox.noticeBox .List-Table li a {
     display: inline-block;
     width: 80%;
@@ -481,9 +808,10 @@
     overflow: hidden;
     letter-spacing: 0;
 }
+
 .gosi .tabBox.noticeBox .List-Table li a span {
     background: #ba560e;
-    color:#fff;
+    color: #fff;
     padding: 0 10px;
     border-radius: 10px;
     margin-right: 5px;
@@ -491,39 +819,81 @@
 
 /**/
 /*메인 수강후기*/
-.reviewBx {height:150px; overflow: hidden; border-bottom:1px solid #ccc}
-.reviewBx .sliderNumV {position:relative} 
-.reviewBx .sliderNumV .lecReview {float:left; display: inline-block; width:370px !important; min-height:120px !important; margin-top:30px; line-height: 1.3}
+.reviewBx {
+    height: 150px;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc
+}
+
+.reviewBx .sliderNumV {
+    position: relative
+}
+
+.reviewBx .sliderNumV .lecReview {
+    float: left;
+    display: inline-block;
+    width: 370px !important;
+    min-height: 120px !important;
+    margin-top: 30px;
+    line-height: 1.3
+}
+
 .reviewBx .sliderNumV .imgBox {
     float: left;
     width: 82px;
     margin: 0 15px 0 25px;
-    background:#e1e1e1;
+    background: #e1e1e1;
 }
+
 .reviewBx .sliderNumV .imgBox img {
     width: 100%;
-} 
+}
+
 .reviewBx .sliderNumV .imgBox.cover {
     position: relative;
 }
+
 .reviewBx .sliderNumV .imgBox.cover img.coverImg {
     position: absolute;
 }
 
-.reviewBx .sliderNumV .lecReview ul {position: absolute; top:0; left:130px; width:220px}
-.reviewBx .sliderNumV .lecReview li {margin-bottom: 5px; color:#3a3a3a}
-.reviewBx .sliderNumV .lecReview li:first-child {color:#c7763c; font-size:16px; font-weight: 600}
-.reviewBx .sliderNumV .lecReview li:nth-child(2) {font-weight: 600}
+.reviewBx .sliderNumV .lecReview ul {
+    position: absolute;
+    top: 0;
+    left: 130px;
+    width: 220px
+}
 
-.reviewBx .sliderNumV:after {content:''; display: block; clear:both}
+.reviewBx .sliderNumV .lecReview li {
+    margin-bottom: 5px;
+    color: #3a3a3a
+}
+
+.reviewBx .sliderNumV .lecReview li:first-child {
+    color: #c7763c;
+    font-size: 16px;
+    font-weight: 600
+}
+
+.reviewBx .sliderNumV .lecReview li:nth-child(2) {
+    font-weight: 600
+}
+
+.reviewBx .sliderNumV:after {
+    content: '';
+    display: block;
+    clear: both
+}
 
 .reviewBx .bx-wrapper .bx-prev {
     background: url("../../img/willbes/prof/btn_prev_V.png") no-repeat 0 0 !important;
 }
+
 .reviewBx .bx-wrapper .bx-next {
     background: url("../../img/willbes/prof/btn_next_V.png") no-repeat 0 0 !important;
     left: 20px;
 }
+
 .reviewBx .bx-wrapper .bx-controls-direction {
     position: absolute;
     top: 0;
@@ -531,10 +901,12 @@
     width: 40px;
     height: 20px;
 }
+
 .reviewBx .bx-wrapper .bx-controls-direction a {
     width: 20px;
     height: 20px;
 }
+
 .reviewBx .bx-wrapper .bx-pager {
     width: auto;
     position: absolute;
@@ -554,30 +926,40 @@
 .gosi .tx-color {
     color: #ba560e;
 }
+
 .gosi .Section3 {
     background: #f8f8f8;
-    padding-bottom:90px;
+    padding-bottom: 90px;
 }
+
 .gosi .List-Table li a img,
-.gosi .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.gosi .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .gosi .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .gosi .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus,
-.gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #ba560e;
 }
+
 .gosi .Section .SpecialBox li {
-    display: inline; float: left;
-    width: 216px; height: 143px;
-    margin-right:10px; margin-bottom:10px;
+    display: inline;
+    float: left;
+    width: 216px;
+    height: 143px;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
+
 .gosi .Section .SpecialBox li:nth-child(5),
 .gosi .Section .SpecialBox li:last-child {
-    margin-right:0;
+    margin-right: 0;
 }
+
 .gosi .Section .SpecialBox ul:after {
-    content:''; display: block; clear:both;
+    content: '';
+    display: block;
+    clear: both;
 }
 
 /* Main Container : QuickMenu : Gosi */
@@ -588,6 +970,7 @@
     padding-top: 10px;
     letter-spacing: 0;
 }
+
 .gosi .QuickSlider .sliderNum {
     width: 100px;
     height: 192px;
@@ -601,23 +984,28 @@
     height: 62px;
     border-bottom: none;
 }
+
 .tabShow.tab_gosi_Guide li {
     width: 12.5%;
     height: 62px;
     padding: 0 8px;
 }
+
 .tabShow.tab_gosi_Guide li a.two,
 .tabShow.tab_gosi_Guide li a.on.two {
     line-height: 17px;
 }
+
 .tabShow.tab_gosi_Guide li a.two span {
     padding-top: 15px;
     display: inline-block;
 }
+
 .tabShow.tab_gosi_Guide li a.on.two span {
     line-height: 17px;
     padding-top: 10px;
 }
+
 .tabShow.tab_gosi_Guide li a.on span {
     position: absolute;
     bottom: 0;
@@ -632,6 +1020,7 @@
     border-left: 1px solid #026f61;
     border-right: 1px solid #026f61;
 }
+
 .tabShow.tab_gosi_Guide li a,
 .tabShow.tab_gosi_Guide li a.on {
     background: #026f61;
@@ -642,31 +1031,91 @@
     height: 62px;
     border: none;
 }
+
 .tabShow.tab_gosi_Guide li:first-child a,
 .tabShow.tab_gosi_Guide li:first-child a.on {
     border: none;
 }
 
-.w-gosi-Guide {letter-spacing: 0}
-.w-gosi-Guide .examInfoGu2 .hTy4 {background: url("../../img/willbes/gosi/guide/left_arrow.png") no-repeat 0 center; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 30px 0 10px; font-size:16px; font-weight:bold; color: #24606a; line-height: 30px; padding-left: 25px;}
+.w-gosi-Guide {
+    letter-spacing: 0
+}
 
-.examInfoGu3 {padding: 35px 45px 55px}
-.examInfoGu3 .hTy {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"}
-.examInfoGu3 .hTy.txt-gray {font-size: 14px; font-weight:bold; color: #555; line-height: 18px}
-.examInfoGu3 .hTy.txt-red {font-size: 14px; font-weight:bold; color: #d52b2b; line-height: 18px}
-.examInfoGu3 .hTy4 {width: 786px; margin: 0 auto 20px; font-size:16px; font-weight:bold; color: #026f61; line-height: 30px}
+.w-gosi-Guide .examInfoGu2 .hTy4 {
+    background: url("../../img/willbes/gosi/guide/left_arrow.png") no-repeat 0 center;
+    font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif";
+    margin: 30px 0 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #24606a;
+    line-height: 30px;
+    padding-left: 25px;
+}
 
-.examInfoGu3 .hTy5 {width: 786px; margin: 0 auto 15px}
-.examInfoGu3 .hTy5 span {font-size: 13px}
+.examInfoGu3 {
+    padding: 35px 45px 55px
+}
 
-.examInfoGu3 .hTy6.center {margin: 15px 60px 0; font-size:13px}
-.examInfoGu3 .hTy6.right {margin: 0 0 5px; text-align: right;}
-.examInfoGu3 .hTy6.right span {font-size: 13px}
-.examInfoGu3 .hTy6.left span {margin: 5px 0 0; text-align: left; font-size: 12px}
+.examInfoGu3 .hTy {
+    font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"
+}
+
+.examInfoGu3 .hTy.txt-gray {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    line-height: 18px
+}
+
+.examInfoGu3 .hTy.txt-red {
+    font-size: 14px;
+    font-weight: bold;
+    color: #d52b2b;
+    line-height: 18px
+}
+
+.examInfoGu3 .hTy4 {
+    width: 786px;
+    margin: 0 auto 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #026f61;
+    line-height: 30px
+}
+
+.examInfoGu3 .hTy5 {
+    width: 786px;
+    margin: 0 auto 15px
+}
+
+.examInfoGu3 .hTy5 span {
+    font-size: 13px
+}
+
+.examInfoGu3 .hTy6.center {
+    margin: 15px 60px 0;
+    font-size: 13px
+}
+
+.examInfoGu3 .hTy6.right {
+    margin: 0 0 5px;
+    text-align: right;
+}
+
+.examInfoGu3 .hTy6.right span {
+    font-size: 13px
+}
+
+.examInfoGu3 .hTy6.left span {
+    margin: 5px 0 0;
+    text-align: left;
+    font-size: 12px
+}
 
 .sliderGuide .bx-wrapper .bx-viewport {
     z-index: 10;
 }
+
 .sliderGuide .bx-wrapper .bx-controls-direction {
     width: 100%;
     height: 45px;
@@ -674,24 +1123,29 @@
     top: 50%;
     margin-top: -22px;
 }
+
 .sliderGuide .bx-wrapper .bx-controls-direction a {
     width: 35px;
     height: 45px;
 }
+
 .sliderGuide .bx-wrapper .bx-controls-direction a.disabled {
     display: block;
     opacity: 0.5;
 }
+
 .sliderGuide .bx-wrapper .bx-prev {
     background: url("../../img/willbes/gosi/guide/guide_prev.png") no-repeat 0 0;
     left: -45px;
     right: inherit;
 }
+
 .sliderGuide .bx-wrapper .bx-next {
     background: url("../../img/willbes/gosi/guide/guide_next.png") no-repeat 0 0;
     left: inherit;
     right: -45px;
 }
+
 .sliderGuide .bx-wrapper .bx-pager {
     font-size: 12px;
     font-weight: 300;
@@ -702,14 +1156,21 @@
 .guide_slider {
     width: 848px !important;
 }
+
 .basicWd {
-    width:786px;
+    width: 786px;
     margin: 0 auto;
 }
+
 .basicWd1 tr td {
     padding: 20px;
 }
-.basicWd .txtL ul li {margin-bottom:5px;padding-left:8px;background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 6px}
+
+.basicWd .txtL ul li {
+    margin-bottom: 5px;
+    padding-left: 8px;
+    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 6px
+}
 
 .mgBox {
     background: #f0f0f0;
@@ -718,10 +1179,12 @@
     width: 786px;
     margin: 20px auto 0;
 }
+
 .mgBox-none {
     background: none;
     border: none;
 }
+
 .mgBox .tt {
     background: url("../../img/willbes/gosi/guide/right_arrow.png") no-repeat 0 6px;
     font-size: 16px;
@@ -730,35 +1193,43 @@
     padding-left: 12px;
     margin-bottom: 10px;
 }
+
 .mgBox .st {
     margin-bottom: 5px;
 }
+
 .mgBox .ttx {
     font-size: 13px;
     font-weight: 600;
     color: #4d4d4d;
 }
+
 .mgBox ul li {
     margin-top: 15px;
     padding-left: 10px;
     background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
 }
+
 .mgBox dl dt {
     background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
     padding-left: 10px;
 }
+
 .mgBox ul li:first-child {
     margin-top: 0;
 }
+
 .mgBox_no {
     border: 1px solid #dbdbdb;
     padding: 40px 60px;
     width: 786px;
     margin: 20px auto 0;
 }
+
 .mgBox span {
     vertical-align: baseline;
 }
+
 ul.dot li {
     margin-top: 15px;
     padding-left: 10px;
@@ -771,6 +1242,7 @@ ul.dot li {
     color: #243553;
     border-right: 1px solid #bfbfbf;
 }
+
 .tableBox tr td {
     font-size: 14px;
     text-align: center;
@@ -779,6 +1251,7 @@ ul.dot li {
     border-bottom: 1px solid #bfbfbf;
     padding: 25px 0;
 }
+
 .tableBox tr.hh td {
     border: none;
     height: 25px;
@@ -788,18 +1261,22 @@ ul.dot li {
     height: 67px;
     border: 1px solid #24606a;
 }
+
 .tabWrap.tab_gosi_success_Guide li {
     width: 50%;
     height: 65px;
 }
+
 .tabWrap.tab_gosi_success_Guide li a {
     background: #fff;
     color: #24606a;
 }
+
 .tabWrap.tab_gosi_success_Guide li a.on {
     background: #24606a;
     color: #fff;
 }
+
 .tabWrap.tab_gosi_success_Guide li a,
 .tabWrap.tab_gosi_success_Guide li a.on {
     font-size: 20px;
@@ -808,6 +1285,7 @@ ul.dot li {
     height: 65px;
     border: none;
 }
+
 .tabWrap.tab_gosi_success_Guide a.on:before {
     content: '';
     display: block;
@@ -821,21 +1299,26 @@ ul.dot li {
     border-color: #24606a transparent transparent;
     border-width: 10px;
 }
+
 .tabWrap.tab_gosi_scuuess_list_Guide {
     float: left;
     height: 35px;
     border-bottom: none;
     clear: both;
 }
+
 .tabWrap.tab_gosi_scuuess_list_Guide li {
     height: 35px;
 }
+
 .tabWrap.tab_gosi_scuuess_list_Guide li a {
     color: #24606a;
 }
+
 .tabWrap.tab_gosi_scuuess_list_Guide li a.on {
     color: #8f724d;
 }
+
 .tabWrap.tab_gosi_scuuess_list_Guide li a,
 .tabWrap.tab_gosi_scuuess_list_Guide li a.on {
     background: none;
@@ -845,10 +1328,12 @@ ul.dot li {
     height: 35px;
     border: none;
 }
+
 .tabWrap.tab_gosi_scuuess_list_Guide li:first-child a,
 .tabWrap.tab_gosi_scuuess_list_Guide li:first-child a.on {
     border: none;
 }
+
 .tabWrap.tab_gosi_scuuess_list_Guide .row-line {
     float: right;
     background: #b7b7b7;

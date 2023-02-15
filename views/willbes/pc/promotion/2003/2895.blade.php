@@ -65,12 +65,16 @@
                                     <span><img src="https://static.willbes.net/public/images/promotion/2023/02/2895_stemp.png" alt="종료"/></span>
                                 @endif
                             </div>
-                            @if(date("YmdHis") < $row['format_RegisterStartDatm'])
-                                <a href="javascript:void(0);" onclick="alert(('다운로드 기간이 아닙니다.'))">다운로드</a>
-                            @elseif(date("YmdHis") >= $row['format_RegisterStartDatm'] && date("YmdHis") <= $row['format_RegisterEndDatm'])
-                                <a href="javascript:void(0);" onclick="fn_submit('{{$row['ErIdx']}}','{{$file_data_promotion[$key]['EfIdx'] or ''}}','{{$data['ElIdx']}}'); return false;">다운로드</a>
+                            @if(sess_data('is_login') !== true)
+                                <a href="javascript:void(0);" onclick="fn_go_login(); return false;">다운로드</a>
                             @else
-                                <a href="javascript:void(0);" onclick="alert(('해당 회차 모의고사는 종료되었습니다.'))">다운로드</a>
+                                @if(date("YmdHis") < $row['format_RegisterStartDatm'])
+                                    <a href="javascript:void(0);" onclick="alert(('다운로드 기간이 아닙니다.'))">다운로드</a>
+                                @elseif(date("YmdHis") >= $row['format_RegisterStartDatm'] && date("YmdHis") <= $row['format_RegisterEndDatm'])
+                                    <a href="javascript:void(0);" onclick="fn_submit('{{$row['ErIdx']}}','{{$file_data_promotion[$key]['EfIdx'] or ''}}','{{$data['ElIdx']}}'); return false;">다운로드</a>
+                                @else
+                                    <a href="javascript:void(0);" onclick="alert(('해당 회차 모의고사는 종료되었습니다.'))">다운로드</a>
+                                @endif
                             @endif
                         </li>
                         @php $i++; @endphp
@@ -167,6 +171,9 @@
                 }, showValidateError, null, false, 'alert');
             @endif
         }
+
+        function fn_go_login() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+        }
     </script>
-    
 @stop

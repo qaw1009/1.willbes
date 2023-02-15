@@ -213,10 +213,9 @@ class EventFModel extends WB_Model
         $column = '
             A.ErIdx, A.PersonLimitType, A.PersonLimit, A.Name, A.RegisterExpireStatus, A.RegisterStartDatm, A.RegisterEndDatm,
             (SELECT COUNT(*) FROM '.$this->_table['event_member'].' AS m1 WHERE m1.ErIdx = A.ErIdx AND m1.IsStatus = \'Y\') AS MemCount,
-            C.ProdCode,
-            D.LearnPatternCcd,
-            E.ProfIdx, E.ProfNickName, E.SubjectIdx, E.SubjectName, E.ProdName, E.StudyPeriod
-            ';
+            DATE_FORMAT(A.RegisterStartDatm,\'%Y%m%d%H%i%s\') AS format_RegisterStartDatm,
+            DATE_FORMAT(A.RegisterEndDatm,\'%Y%m%d%H%i%s\') AS format_RegisterEndDatm,
+            C.ProdCode,D.LearnPatternCcd,E.ProfIdx, E.ProfNickName, E.SubjectIdx, E.SubjectName, E.ProdName, E.StudyPeriod';
         $from = "
             FROM {$this->_table['event_register']} AS A
             LEFT JOIN {$this->_table['event_register_r_product']} AS C ON A.ErIdx = C.ErIdx AND C.IsStatus = 'Y'

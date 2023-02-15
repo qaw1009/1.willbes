@@ -2056,7 +2056,7 @@ class EventLectureModel extends WB_Model
                                 ]);
                             } else {
                                 $reg_set_data = array_merge($reg_set_data, [
-                                    'RegisterEndDatm' => element('event_register_end_date', $input)[$key]. ' '.element('event_register_end_hour', $input)[$key].':'.element('event_register_end_min', $input)[$key].':00'
+                                    'RegisterEndDatm' => element('event_register_end_date', $input)[$key]. ' '.element('event_register_end_hour', $input)[$key].':'.element('event_register_end_min', $input)[$key].':59'
                                 ]);
                             }
                         }
@@ -2722,7 +2722,7 @@ class EventLectureModel extends WB_Model
                                     ]);
                                 } else {
                                     $add_param = array_merge($add_param, [
-                                        'RegisterEndDatm' => element('event_register_end_date', $input)[$arr_key]. ' '.element('event_register_end_hour', $input)[$arr_key].':'.element('event_register_end_min', $input)[$arr_key].':00'
+                                        'RegisterEndDatm' => element('event_register_end_date', $input)[$arr_key]. ' '.element('event_register_end_hour', $input)[$arr_key].':'.element('event_register_end_min', $input)[$arr_key].':59'
                                     ]);
                                 }
                             }
@@ -2755,7 +2755,7 @@ class EventLectureModel extends WB_Model
                                     ]);
                                 } else {
                                     $modify_param = array_merge($modify_param, [
-                                        'RegisterEndDatm' => element('event_register_end_date', $input)[$arr_key]. ' '.element('event_register_end_hour', $input)[$arr_key].':'.element('event_register_end_min', $input)[$arr_key].':00'
+                                        'RegisterEndDatm' => element('event_register_end_date', $input)[$arr_key]. ' '.element('event_register_end_hour', $input)[$arr_key].':'.element('event_register_end_min', $input)[$arr_key].':59'
                                     ]);
                                 }
                             }

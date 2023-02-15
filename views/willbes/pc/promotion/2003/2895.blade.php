@@ -51,38 +51,31 @@
         <div class="evtCtnsBox evt01" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2023/02/2895_01.jpg" alt=""/>
         </div>
-       
+
         <div class="evtCtnsBox evt02" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2023/02/2895_02.jpg" alt=""/>
             <ul>
-                <li>
-                    <div>
-                        <img src="https://static.willbes.net/public/images/promotion/2023/02/2895_02_01.jpg" alt="1회 모의고사"/>
-                        <span><img src="https://static.willbes.net/public/images/promotion/2023/02/2895_stemp.png" alt="종료"/></span>
-                    </div>
-                    <a href="#none">다운로드</a>
-                </li>
-                <li>
-                    <div>
-                        <img src="https://static.willbes.net/public/images/promotion/2023/02/2895_02_02.jpg" alt="2회 모의고사"/>
-                        {{--<span><img src="https://static.willbes.net/public/images/promotion/2023/02/2895_stemp.png" alt="종료"/></span>--}}
-                    </div>
-                    <a href="#none">다운로드</a>
-                </li>
-                <li>
-                    <div>
-                        <img src="https://static.willbes.net/public/images/promotion/2023/02/2895_02_03.jpg" alt="3회 모의고사"/>
-                        {{--<span><img src="https://static.willbes.net/public/images/promotion/2023/02/2895_stemp.png" alt="종료"/></span>--}}
-                    </div>
-                    <a href="#none">다운로드</a>
-                </li>
-                <li>
-                    <div>
-                        <img src="https://static.willbes.net/public/images/promotion/2023/02/2895_02_04.jpg" alt="4회 모의고사"/>
-                        {{--<span><img src="https://static.willbes.net/public/images/promotion/2023/02/2895_stemp.png" alt="종료"/></span>--}}
-                    </div>
-                    <a href="#none">다운로드</a>
-                </li>
+                @if(empty($arr_base['register_list']) === false)
+                    @php $i=1; @endphp
+                    @foreach($arr_base['register_list'] as $key => $row)
+                        <li>
+                            <div>
+                                <img src="https://static.willbes.net/public/images/promotion/2023/02/2895_02_0{{$i}}.jpg" alt="{{$i}}회 모의고사"/>
+                                @if(date("YmdHis") >= $row['format_RegisterEndDatm'])
+                                    <span><img src="https://static.willbes.net/public/images/promotion/2023/02/2895_stemp.png" alt="종료"/></span>
+                                @endif
+                            </div>
+                            @if(date("YmdHis") < $row['format_RegisterStartDatm'])
+                                <a href="javascript:void(0);" onclick="alert(('다운로드 기간이 아닙니다.'))">다운로드</a>
+                            @elseif(date("YmdHis") >= $row['format_RegisterStartDatm'] && date("YmdHis") <= $row['format_RegisterEndDatm'])
+                                <a href="javascript:void(0);" onclick="fn_submit('{{$row['ErIdx']}}','{{$file_data_promotion[$key]['EfIdx'] or ''}}','{{$data['ElIdx']}}'); return false;">다운로드</a>
+                            @else
+                                <a href="javascript:void(0);" onclick="alert(('해당 회차 모의고사는 종료되었습니다.'))">다운로드</a>
+                            @endif
+                        </li>
+                        @php $i++; @endphp
+                    @endforeach
+                @endif
             </ul>
             <div class="evtinfo">
                 <p>※ 이용안내</p>
@@ -97,8 +90,8 @@
             </div>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/02/2895_02_05.jpg" alt=""/>
-                <a href="#none" title="단과 쿠폰" style="position: absolute; left: 21.61%; top: 77.27%; width: 18.39%; height: 6.29%; z-index: 2;"></a>
-                <a href="#none" title="패키지 쿠폰" style="position: absolute; left: 61.07%; top: 77.27%; width: 18.39%; height: 6.29%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}');" title="단과 쿠폰" style="position: absolute; left: 21.61%; top: 77.27%; width: 18.39%; height: 6.29%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}');" title="패키지 쿠폰" style="position: absolute; left: 61.07%; top: 77.27%; width: 18.39%; height: 6.29%; z-index: 2;"></a>
             </div>
         </div>
 
@@ -111,11 +104,26 @@
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif
         </div>
-
         <div class="evtCtnsBox evt04" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2023/02/2895_04.jpg" alt=""/>
         </div>
     </div>
+
+    <form name="regi_form_register" id="regi_form_register">
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+        <input type="hidden" name="register_type" value="promotion"/>
+        <input type="hidden" name="register_chk[]" value=""/>
+        <input type="hidden" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}">
+        <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
+        <input type="hidden" name="register_overlap_chk" value="Y"> {{-- 중복 신청 가능여부 --}}
+    </form>
+
+    <form id="regi_form_coupon" name="regi_form_coupon" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
 
    <!-- End Container -->
     <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
@@ -124,6 +132,43 @@
         $(document).ready( function() {
         AOS.init();
         });
+
+        // 신청접수
+        function fn_submit(er_idx, file_idx, event_idx) {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            var $regi_form_register = $('#regi_form_register');
+            $regi_form_register.find("input[name='register_chk[]']").val(er_idx);
+            var _url = '{!! front_url('/event/registerStore') !!}';
+            ajaxSubmit($regi_form_register, _url, function (ret) {
+                if (ret.ret_cd) {
+                    fileDownload(file_idx, event_idx);
+                }
+            }, showValidateError, null, false, 'alert');
+        }
+
+        // 파일 다운로드
+        function fileDownload(file_idx, event_idx)
+        {
+            var _url = '{{ site_url("/promotion/download") }}' + '?file_idx='+file_idx + '&event_idx='+event_idx;
+            window.open(_url, '_blank');
+            /*location.href='{{ site_url("/promotion/download") }}' + '?file_idx='+file_idx + '&event_idx='+event_idx;*/
+        }
+
+        {{--쿠폰발급--}}
+        function giveCheck(give_idx) {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            var $regi_form_coupon = $('#regi_form_coupon');
+            @if(empty($arr_promotion_params) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&give_idx=' + give_idx;
+                ajaxSubmit($regi_form_coupon, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    }
+                }, showValidateError, null, false, 'alert');
+            @endif
+        }
     </script>
     
 @stop

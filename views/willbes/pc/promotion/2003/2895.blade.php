@@ -35,6 +35,8 @@
         .evtinfo p {font-size:16px; font-weight:bold; margin-bottom:10px}
 
         .evt03 {padding-bottom:150px}
+        .evt03 .sTilte {margin:100px auto 50px; font-size:36px}
+        .evt03 .sTilte strong {color:#e30000}
         .evt04 {background:#eee}
       
     </style>
@@ -93,11 +95,18 @@
                 3. 해설자료는 제공되지 않습니다.<br>
                 4. 동영상 강의는 유료 결제입니다.
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2023/02/2895_02_05.jpg" alt=""/>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2023/02/2895_02_05.jpg" alt=""/>
+                <a href="#none" title="단과 쿠폰" style="position: absolute; left: 21.61%; top: 77.27%; width: 18.39%; height: 6.29%; z-index: 2;"></a>
+                <a href="#none" title="패키지 쿠폰" style="position: absolute; left: 61.07%; top: 77.27%; width: 18.39%; height: 6.29%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt03" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2023/02/2895_03.jpg" alt=""/>
+            <div class="sTilte"><strong>[패키지]</strong> 할인 받고 알차게 수강하자~</div>
+            <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/205422" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/02/2895_03_01.jpg" alt=""/></a>
+            <div class="sTilte"><strong>[단과]</strong> 내가 필요한 과목만~</div>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif

@@ -172,8 +172,8 @@
                 </div>
 
                 <div class="form-group" style="border-bottom:none;">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-11">
+                    {{--<div class="col-md-1"></div>--}}
+                    <div class="col-md-12 ml-30">
                         <div class="form-group hide" id="limit_{{$options_keys[0]}}">
                             <label class="control-label col-md-1">신청리스트</label>
                             <div class="col-md-11">
@@ -596,7 +596,7 @@
                         {{-- 프로모션 추가신청정보 --}}
                         <div class="form-group hide" id="limit_{{$options_keys[5]}}">
                             <div class="row">
-                                <div class="col-md-1 item form-inline">
+                                <div class="col-md-1 form-inline">
                                     <button type="button" class="btn btn-info btn-apply-add">추가</button>
                                 </div>
                                 <div class="col-md-11">
@@ -961,7 +961,6 @@
                 add_lists += '<td><input type="hidden" name="expire_status[]" value="Y"></td>';
                 add_lists += '<td><input type="hidden" name="register_is_use[]" value="Y"></td>';
                 add_lists += '<td></td>';
-                add_lists += '<td></td>';
                 add_lists += '<td>';
                 add_lists += '		<div class="input-group mb-0">';
                 add_lists += '			<div class="input-group-addon"><i class="fa fa-calendar"></i></div>';
@@ -1031,8 +1030,8 @@
                     arr_p_prod_code.push($(this).val());
                 });
 
-                var register_start_datm = $('#event_register_start_date_' + modify_number).val() + ' ' + $('#event_register_start_hour_' + modify_number).val() + ':' + $('#event_register_start_min_' + modify_number).val() + ':00';
-                var register_end_datm = $('#event_register_end_date_' + modify_number).val() + ' ' + $('#event_register_end_hour_' + modify_number).val() + ':' + $('#event_register_end_min_' + modify_number).val() + ':00';
+                var event_register_start_datm = $('#event_register_start_date_' + modify_number).val() + ' ' + $('#event_register_start_hour_' + modify_number).val() + ':' + $('#event_register_start_min_' + modify_number).val() + ':00';
+                var event_register_end_datm = $('#event_register_end_date_' + modify_number).val() + ' ' + $('#event_register_end_hour_' + modify_number).val() + ':' + $('#event_register_end_min_' + modify_number).val() + ':00';
 
                 var data = {
                     '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
@@ -1044,8 +1043,8 @@
                     'expire_status' : $("#expire_status_"+modify_number).val(),
                     'is_use' : $("#register_is_use_"+modify_number).val(),
                     'prod_code[]' : arr_p_prod_code,
-                    'register_start_datm' : register_start_datm,
-                    'register_end_datm' : register_end_datm,
+                    'event_register_start_datm' : event_register_start_datm,
+                    'event_register_end_datm' : event_register_end_datm,
                 };
 
                 if (!confirm('상태를 변경 하시겠습니까?')) {

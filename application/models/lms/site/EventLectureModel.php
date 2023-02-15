@@ -944,8 +944,8 @@ class EventLectureModel extends WB_Model
                 'Name' => $input['register_name'],
                 'RegisterExpireStatus' => $input['expire_status'],
                 'IsUse' => $input['is_use'],
-                'RegisterStartDatm' => $input['register_start_datm'],
-                'RegisterEndDatm' => $input['register_end_datm'],
+                'RegisterStartDatm' => $input['event_register_start_datm'],
+                'RegisterEndDatm' => $input['event_register_start_datm'],
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
                 'UpdDatm' => date('Y-m-d H:i:s')
             ];
@@ -2045,6 +2045,21 @@ class EventLectureModel extends WB_Model
                             'RegAdminIdx' => $this->session->userdata('admin_idx'),
                             'RegIp' => $this->input->ip_address()
                         ];
+                        if (empty(element('event_register_start_date', $input)[$key]) === false) {
+                            $reg_set_data = array_merge($reg_set_data, [
+                                'RegisterStartDatm' => element('event_register_start_date', $input)[$key]. ' '.element('event_register_start_hour', $input)[$key].':'.element('event_register_start_min', $input)[$key].':00'
+                            ]);
+
+                            if (empty(element('event_register_end_date', $input)[$key]) === true) {
+                                $reg_set_data = array_merge($reg_set_data, [
+                                    'RegisterEndDatm' => '2100-12-31 23:59:59'
+                                ]);
+                            } else {
+                                $reg_set_data = array_merge($reg_set_data, [
+                                    'RegisterEndDatm' => element('event_register_end_date', $input)[$key]. ' '.element('event_register_end_hour', $input)[$key].':'.element('event_register_end_min', $input)[$key].':00'
+                                ]);
+                            }
+                        }
 
                         if ($this->_conn->set($reg_set_data)->insert($this->_table['event_register']) === false) {
                             throw new \Exception('fail');
@@ -2684,7 +2699,7 @@ class EventLectureModel extends WB_Model
                     $insert_data = array_values(array_diff($arr_event_register_er_idx, $before_data));
                     if(empty($insert_data) === false) {
                         foreach ($insert_data as $i_key => $i_val) {
-                            $arr_key = array_search($i_val, $arr_event_register_er_idx) ;
+                            $arr_key = array_search($i_val, $arr_event_register_er_idx);
                             $add_param = [
                                 'ElIdx' => $input['el_idx'],
                                 'PersonLimitType' => $arr_event_register_person_limit_type[$arr_key],
@@ -2696,6 +2711,21 @@ class EventLectureModel extends WB_Model
                                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                                 'RegIp' => $this->input->ip_address()
                             ];
+                            if (empty(element('event_register_start_date', $input)[$arr_key]) === false) {
+                                $add_param = array_merge($add_param, [
+                                    'RegisterStartDatm' => element('event_register_start_date', $input)[$arr_key]. ' '.element('event_register_start_hour', $input)[$arr_key].':'.element('event_register_start_min', $input)[$arr_key].':00'
+                                ]);
+
+                                if (empty(element('event_register_end_date', $input)[$arr_key]) === true) {
+                                    $add_param = array_merge($add_param, [
+                                        'RegisterEndDatm' => '2100-12-31 23:59:59'
+                                    ]);
+                                } else {
+                                    $add_param = array_merge($add_param, [
+                                        'RegisterEndDatm' => element('event_register_end_date', $input)[$arr_key]. ' '.element('event_register_end_hour', $input)[$arr_key].':'.element('event_register_end_min', $input)[$arr_key].':00'
+                                    ]);
+                                }
+                            }
                             if($this->addEventForRegister($add_param) !== true) {
                                 throw new \Exception('프로모션 신청리스트 업데이트를 실패하였습니다.');
                             }
@@ -2714,6 +2744,21 @@ class EventLectureModel extends WB_Model
                                 'RegisterExpireStatus' => $arr_expire_status[$arr_key],
                                 'IsUse' => $arr_register_is_use[$arr_key]
                             ];
+                            if (empty(element('event_register_start_date', $input)[$arr_key]) === false) {
+                                $modify_param = array_merge($modify_param, [
+                                    'RegisterStartDatm' => element('event_register_start_date', $input)[$arr_key]. ' '.element('event_register_start_hour', $input)[$arr_key].':'.element('event_register_start_min', $input)[$arr_key].':00'
+                                ]);
+
+                                if (empty(element('event_register_end_date', $input)[$arr_key]) === true) {
+                                    $modify_param = array_merge($modify_param, [
+                                        'RegisterEndDatm' => '2100-12-31 23:59:59'
+                                    ]);
+                                } else {
+                                    $modify_param = array_merge($modify_param, [
+                                        'RegisterEndDatm' => element('event_register_end_date', $input)[$arr_key]. ' '.element('event_register_end_hour', $input)[$arr_key].':'.element('event_register_end_min', $input)[$arr_key].':00'
+                                    ]);
+                                }
+                            }
                             if($this->modifyEventForRegister($i_val, $modify_param) !== true) {
                                 throw new \Exception('프로모션 신청리스트 업데이트를 실패하였습니다.');
                             }

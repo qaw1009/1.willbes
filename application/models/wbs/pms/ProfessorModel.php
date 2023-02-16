@@ -186,7 +186,7 @@ class ProfessorModel extends WB_Model
             // 첨부 이미지 업로드
             $data = [];
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/professor/' . $prof_idx;
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/professor/' . $prof_idx;
 
             $uploaded = $this->upload->uploadFile('img', ['attach_img'], $this->_getAttachImgNames($prof_idx), $upload_sub_dir);
             if (is_array($uploaded) === false) {
@@ -277,7 +277,7 @@ class ProfessorModel extends WB_Model
             $data = [];
             $bak_uploaded_files = [];
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/professor/' . $prof_idx;
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/professor/' . $prof_idx;
 
             // 첨부 이미지 삭제
             foreach (element('attach_img_delete', $input, []) as $img_idx) {

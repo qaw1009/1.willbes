@@ -748,7 +748,7 @@ class FullServiceFModel extends WB_Model
             FROM (
                 SELECT a.PredictIdx, a.PrIdx, a.PpIdx, c.GroupBy
                 ,ROUND(IF(a.OrgPoint >= {$this->_cut_line}, a.OrgPoint + pr.AddPoint, a.OrgPoint),2) AS MyOrgPoint
-                ,D.CcdName AS SubjectName, d.OrderNum
+                ,D.CcdName AS SubjectName, c.OrderNum
                 FROM {$this->_table['predict_grades_origin']} AS a
                 INNER JOIN {$this->_table['predict_register']} AS pr ON a.PredictIdx = pr.PredictIdx AND a.PrIdx = pr.PrIdx
                 INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx AND b.IsStatus = 'Y' AND b.IsUse = 'Y'

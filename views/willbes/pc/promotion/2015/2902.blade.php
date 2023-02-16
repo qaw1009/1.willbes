@@ -74,7 +74,7 @@
                 <a href="#tab03"><strong class="NSK-Black">소방행정법</strong><br> 신기훈</a>
             </div>
             <div id="tab01">
-                <a href="https://pass.willbes.net/pass/professor/show/prof-idx/51422/?cate_code=3050&subject_idx=1259" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/02/2902_02_t01.jpg" alt="소방학 권나라" /></a>
+                <a href="https://willbesedu.willbes.net/pass/professor/show/prof-idx/51432?cate_code=3126&subject_idx=1962" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/02/2902_02_t01.jpg" alt="소방학 권나라" /></a>
             </div>        
             <div id="tab02">
                 <a href="https://pass.willbes.net/pass/professor/show/prof-idx/51423?cate_code=3050&subject_idx=1284" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/02/2902_02_t02.jpg" alt="소방관계법규 오도희" /></a>

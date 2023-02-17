@@ -50,8 +50,7 @@
 
         .lecWrap {display:flex; flex-wrap: wrap; width:1120px; margin:auto; line-height:1.5; font-size:14px}
         .lecWrap .pass {/*width:calc(25% - 10px);*/ margin-bottom:10px; margin-right:10px; flex: 1 1 24%; position: relative;}
-        .lecWrap .pass:nth-child(4),
-        .lecWrap .pass:last-child {margin-right:0}
+        /*.lecWrap .pass:nth-child(4), .lecWrap .pass:last-child {margin-right:0}*/        
         .lecWrap .pass div {font-size:22px}
         .lecWrap .pass div:nth-child(1) {font-size:20px; font-weight:600; color:#c23227; letter-spacing:-1px}
         .lecWrap .pass div:nth-child(2) {font-weight:600; margin-bottom:20px}
@@ -220,7 +219,7 @@
                     <div class="pass">
                         <input type="radio" name="y_pkg" id="pass12" value="198400">
                         <label for="pass12">
-                            <div>2023전자직 7/9급</div>
+                            <div>2023전자직 9급</div>
                             <div>전과목 T-PASS</div>                           
                             <div><strong class="NSK-Black">70</strong>만원</div>
                             <ul>

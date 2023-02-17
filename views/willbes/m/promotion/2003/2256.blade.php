@@ -190,7 +190,7 @@
                 <div class="pass">
                     <input type="radio" name="y_pkg" id="pass12" value="198400">
                     <label for="pass12">
-                        <div>2023전자직 7/9급</div>
+                        <div>2023전자직 9급</div>
                         <div>전과목 T-PASS</div>                           
                         <div><strong class="NSK-Black">70</strong>만원</div>
                         <ul>
@@ -202,7 +202,7 @@
                         </ul>
                     </label>                        
                 </div>
-                
+
                 <div class="pass">
                     <input type="radio" name="y_pkg" id="pass01" value="204384">
                     <label for="pass01">

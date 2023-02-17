@@ -704,8 +704,8 @@
                     <tr>
                         <td>디지털공학</td>
                         <td>이론</td>
-                        <td>2022 최우영 디지털공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/189859" target="_blank">수강신청</a></td>
+                        <td>2023 최우영 디지털공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/205284" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>

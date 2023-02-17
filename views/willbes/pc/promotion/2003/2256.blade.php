@@ -168,6 +168,71 @@
             </div>
             <div>
                 <div class="lecWrap">
+
+                    <div class="pass">
+                        <input type="radio" name="y_pkg" id="pass09" value="198399">
+                        <label for="pass09">
+                            <div>2023 통신직 9급</div>
+                            <div>전과목 T-PASS</div>                           
+                            <div><strong class="NSK-Black">120</strong>만원</div>
+                            <ul>
+                                <li>2023. 7월까지 수강</li>
+                                <li>통신직 9급 전 강좌제공</li>
+                                <li>국가직/지방직/군무원 대비</li> 
+                                <li>PC+모바일 총 2대</li>
+                                <li>3배수 제한</li>                               
+                            </ul>
+                        </label>                        
+                    </div>
+
+                    <div class="pass">
+                        <input type="radio" name="y_pkg" id="pass10" value="198398">
+                        <label for="pass10">
+                            <div>2023 전기직 9급</div>
+                            <div>전과목 T-PASS</div>                           
+                            <div><strong class="NSK-Black">76</strong>만원</div>
+                            <ul>
+                                <li>2023. 6월까지 수강</li>
+                                <li>전기직 9급 전 강좌제공</li>
+                                <li>국가직/지방직 대비</li> 
+                                <li>PC+모바일 총 2대</li>
+                                <li>3배수 제한</li>                               
+                            </ul>
+                        </label>                        
+                    </div>
+
+                    <div class="pass">
+                        <input type="radio" name="y_pkg" id="pass11" value="198401">
+                        <label for="pass11">
+                            <div>2023 전기직 7/9급</div>
+                            <div>전과목 T-PASS</div>                           
+                            <div><strong class="NSK-Black">100</strong>만원</div>
+                            <ul>
+                                <li>2023. 10월까지 수강</li>
+                                <li>전기직 7/9급 전 강좌제공</li>
+                                <li>7/9급 국가직/지방직대비 </li> 
+                                <li>PC+모바일 총 2대</li>
+                                <li>3배수 제한</li>                               
+                            </ul>
+                        </label>                        
+                    </div>
+
+                    <div class="pass">
+                        <input type="radio" name="y_pkg" id="pass12" value="198400">
+                        <label for="pass12">
+                            <div>2023전자직 7/9급</div>
+                            <div>전과목 T-PASS</div>                           
+                            <div><strong class="NSK-Black">70</strong>만원</div>
+                            <ul>
+                                <li>2023. 7월까지 수강</li>
+                                <li>전자직 관련 강좌제공</li>
+                                <li>9급 군무원 대비</li> 
+                                <li>PC+모바일 총 2대</li>
+                                <li>3배수 제한</li>                               
+                            </ul>
+                        </label>                        
+                    </div>
+
                     <div class="pass">
                         <input type="radio" name="y_pkg" id="pass01" value="204384">
                         <label for="pass01">
@@ -288,7 +353,7 @@
                             <div><strong class="NSK-Black">99</strong>만원</div>
                             <ul>
                                 <li>2023. 7월까지 수강</li>
-                                <li>전자직 관련 강좌제공</li>
+                                <li>통신직 관련 강좌제공</li>
                                 <li>9급 군무원 대비</li> 
                                 <li>PC+모바일 총 2대</li>
                                 <li>3배수 제한</li>                               

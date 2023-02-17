@@ -226,14 +226,14 @@
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2022 장사원 재배학 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/188933" target="_blank">수강신청</a></td>
+						<td>2023 장사원 재배학 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/202440" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2022 [국가직] 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/190666" target="_blank">수강신청</a></td>
+						<td>2023 [국가직] 장사원 재배학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/204743" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -266,14 +266,14 @@
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
-						<td>2022 장사원 식용작물 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/189189" target="_blank">수강신청</a></td>
+						<td>2023 장사원 식용작물 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/202439" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
-						<td>2022 [국가직] 장사원 식용작물 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/190667" target="_blank">수강신청</a></td>
+						<td>2023 [국가직] 장사원 식용작물 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/204744" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
@@ -310,14 +310,14 @@
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2022 [국가직] 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/190666" target="_blank">수강신청</a></td>
+						<td>2023 [국가직] 장사원 재배학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/202440" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2022 [국가직] 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/190666" target="_blank">수강신청</a></td>
+						<td>2023 [국가직] 장사원 재배학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/204743" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -350,14 +350,14 @@
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
-						<td>2022 장사원 식용작물 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/189189" target="_blank">수강신청</a></td>
+						<td>2023 장사원 식용작물 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/202439" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
-						<td>2022 [국가직] 장사원 식용작물 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/190667" target="_blank">수강신청</a></td>
+						<td>2023 [국가직] 장사원 식용작물 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/204744" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
@@ -383,8 +383,8 @@
 					<tr>
 						<td>생물학개론</td>
 						<td>이론</td>
-						<td>2022 장사원 생물학 이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/189201" target="_blank">수강신청</a></td>
+						<td>2023 장사원 생물학 이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/204741" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>생물학개론</td>
@@ -417,8 +417,8 @@
 					<tr>
 						<td>토양학</td>
 						<td>문제풀이</td>
-						<td>2022 장사원 토양학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/189196" target="_blank">수강신청</a></td>
+						<td>2023 장사원 토양학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/204399" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
             </div>
@@ -443,14 +443,14 @@
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2022 장사원 재배학 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/188933" target="_blank">수강신청</a></td>
+						<td>2023 장사원 재배학 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/202440" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2022 [국가직] 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/190666" target="_blank">수강신청</a></td>
+						<td>2023 [국가직] 장사원 재배학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/204743" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -483,8 +483,8 @@
 					<tr>
 						<td>작물생리학</td>
 						<td>문제풀이</td>
-						<td>2022 장사원 작물생리학 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/189200" target="_blank">수강신청</a></td>
+						<td>2023 장사원 작물생리학 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/204740" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>작물생리학</td>
@@ -505,8 +505,8 @@
 					<tr>
 						<td>생물학개론</td>
 						<td>이론</td>
-						<td>2022 장사원 생물학 이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/189201" target="_blank">수강신청</a></td>
+						<td>2023 장사원 생물학 이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/204741" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>생물학개론</td>
@@ -539,8 +539,8 @@
 					<tr>
 						<td>농촌지도론</td>
 						<td>문제풀이</td>
-						<td>2022 장사원 농촌지도론 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/189199" target="_blank">수강신청</a></td>
+						<td>2023 장사원 농촌지도론 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/204739" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>농촌지도론</td>
@@ -573,8 +573,8 @@
 					<tr>
 						<td>토양학</td>
 						<td>문제풀이</td>
-						<td>2022 장사원 토양학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/189196" target="_blank">수강신청</a></td>
+						<td>2023 장사원 토양학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/204399" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
             </div>
@@ -593,8 +593,8 @@
 					<tr>
 						<td>생물학개론</td>
 						<td>이론</td>
-						<td>2022 장사원 생물학 이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/189201" target="_blank">수강신청</a></td>
+						<td>2023 장사원 생물학 이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/204741" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>생물학개론</td>

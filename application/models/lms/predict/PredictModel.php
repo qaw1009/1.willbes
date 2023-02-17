@@ -200,22 +200,17 @@ class PredictModel extends WB_Model
     {
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? " LIMIT $offset, $limit" : "";
         $column = " 
-            PR.PrIdx,
-            P.ProdName,
-            P.PredictIdx,
-            PR.ApplyType,
-            MemName,
-            PR.MemIdx,
-            MemId,
-            fn_dec(M.PhoneEnc) AS Phone,
-            (SELECT CcdValue FROM {$this->_table['predictCode']} WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
+            PR.PrIdx,P.ProdName,P.PredictIdx,PR.ApplyType,MemName,PR.MemIdx,MemId,fn_dec(M.PhoneEnc) AS Phone,TaKeNumber,
+            (SELECT IFNULL(CcdValue,CcdName) FROM {$this->_table['predictCode']} WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
             (SELECT CcdValue FROM {$this->_table['sysCode']} WHERE Ccd = PR.TaKeArea) AS TaKeArea,
-            TaKeNumber,
             if(LectureType = 1, '온라인강의', if(LectureType = 2, '학원강의', if(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
             if(Period = 1, '6개월 이하', if(Period = 2, '1년 이하', if(Period = 3, '2년 이하', '2년 이상'))) AS Period,
-            PR.RegDatm,
-            PR.AddPoint,
-            ( SELECT GROUP_CONCAT(CcdName) FROM lms_predict_code WHERE Ccd IN ( SELECT SSPRRC.SubjectCode FROM lms_predict_register_r_code SSPRRC WHERE SSPRRC.PrIdx = PR.PrIdx GROUP BY SSPRRC.PrIdx ) ) AS SubjectName
+            PR.RegDatm,PR.AddPoint,
+            (
+                SELECT GROUP_CONCAT(CcdName) 
+                FROM {$this->_table['predictCode']} 
+                WHERE Ccd IN (SELECT SSPRRC.SubjectCode FROM {$this->_table['predictRegisterR']} AS SSPRRC WHERE SSPRRC.PrIdx = PR.PrIdx GROUP BY SSPRRC.PrIdx)
+            ) AS SubjectName
         ";
         $from = "
             FROM 
@@ -226,9 +221,7 @@ class PredictModel extends WB_Model
         $selectCount = "SELECT COUNT(*) AS cnt";
         $where = " WHERE PR.IsStatus = 'Y' AND PR.MemIdx != '1000000'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
-        //$order = " ORDER BY PR.RegDatm DESC";
         $order = " ORDER BY PR.PrIdx DESC";
-        //echo "<pre>". 'select' . $column . $from . $where . $order_by . "</pre>";
 
         $data = $this->_conn->query('Select'. $column . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
@@ -317,7 +310,7 @@ class PredictModel extends WB_Model
 
             $column = " 
                 PrIdx, ApplyType, MemName, MemIdx, MemId, AddPoint, fn_dec(PhoneEnc) AS Phone, TaKeNumber as TaKeNumber,
-                (SELECT CcdValue FROM {$this->_table['predictCode']} WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
+                (SELECT IFNULL(CcdValue,CcdName) FROM {$this->_table['predictCode']} WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
                 (SELECT CcdValue FROM {$this->_table['sysCode']} WHERE Ccd = PR.TaKeArea) AS TaKeArea,
                 if(LectureType = 1, '온라인강의', if(LectureType = 2, '학원강의', if(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
                 if(Period = 1, '6개월 이하', if(Period = 2, '1년 이하', if(Period = 3, '2년 이하', '2년 이상'))) AS Period, RegDatm,
@@ -520,17 +513,11 @@ class PredictModel extends WB_Model
     public function predictRegistListExcel($condition='', $limit='', $offset='')
     {
         $column = "
-            CONCAT(P.ProdName,'[',P.PredictIdx,']') AS ProdName,
-            PR.ApplyType, 
-            MemName,
-            MemId,
-            fn_dec(M.PhoneEnc) AS Phone,
-            (SELECT CcdValue FROM {$this->_table['predictCode']} WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
-            (SELECT CcdValue FROM {$this->_table['sysCode']} WHERE Ccd = PR.TaKeArea) AS TaKeArea,
-            TaKeNumber,
+            CONCAT(P.ProdName,'[',P.PredictIdx,']') AS ProdName, PR.ApplyType, MemName,MemId,fn_dec(M.PhoneEnc) AS Phone,
+            (SELECT IFNULL(CcdValue,CcdName) FROM {$this->_table['predictCode']} WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
+            (SELECT CcdValue FROM {$this->_table['sysCode']} WHERE Ccd = PR.TaKeArea) AS TaKeArea, TaKeNumber,
             if(LectureType = 1, '온라인강의', if(LectureType = 2, '학원강의', if(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
-            if(Period = 1, '6개월 이하', if(Period = 2, '1년 이하', if(Period = 3, '2년 이하', '2년 이상'))) AS Period,
-            PR.RegDatm
+            if(Period = 1, '6개월 이하', if(Period = 2, '1년 이하', if(Period = 3, '2년 이하', '2년 이상'))) AS Period, PR.RegDatm
         ";
 
         $from = "
@@ -543,15 +530,7 @@ class PredictModel extends WB_Model
         $where = "WHERE PR.IsStatus = 'Y' AND PR.MemIdx != '1000000'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = " ORDER BY PR.RegDatm DESC\n";
-
-        $sql = "
-            SELECT 
-            $column     
-            $from  
-            $where 
-            $order              
-        ";
-        $data = $this->_conn->query($sql)->result_array();
+        $data = $this->_conn->query('SELECT' . $column . $from . $where . $order)->result_array();
         return $data;
     }
 
@@ -574,7 +553,7 @@ class PredictModel extends WB_Model
 
         $column = "
             PR.ApplyType,MemName,PR.MemIdx,MemId,fn_dec(M.PhoneEnc) AS Phone,
-            (SELECT CcdValue FROM lms_predict_code WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
+            (SELECT IFNULL(CcdValue,CcdName) FROM lms_predict_code WHERE Ccd = PR.TakeMockPart) AS TakeMockPart,
             (SELECT CcdValue FROM lms_sys_code WHERE Ccd = PR.TaKeArea) AS TaKeArea,
             AddPoint,TaKeNumber,IF(LectureType = 1, '온라인강의', IF(LectureType = 2, '학원강의', IF(LectureType = 3, '온라인 + 학원강의', '미수강'))) AS LectureType,
             IF(Period = 1, '6개월 이하', IF(Period = 2, '1년 이하', IF(Period = 3, '2년 이하', '2년 이상'))) AS Period,

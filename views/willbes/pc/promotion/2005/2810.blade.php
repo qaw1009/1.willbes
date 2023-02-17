@@ -150,11 +150,13 @@
 
     .marking {margin:10px; padding:10px; border:1px dashed #e4e4e4}
     .marking h5 {font-size:17px; margin-bottom:10px;text-align:left;font-weight:bold;}
-    .marking li {display:inline; float:left; width:16.666%;}
+    .marking ul {display:flex;flex-flow:wrap;}
+    .marking li {width:16.666%}
     .marking li div {margin-right:4px;  padding:3px; background:#666; text-align:center}
     .marking li div label {color:#fff; padding-bottom:5px; display: block}
     .marking li div input {width:100%; padding:5px 0; margin:0 auto; text-align:center; letter-spacing:4px;background:#fff;}
     .marking li div span {position:absolute; right:20px; top:30px; z-index: 10;}
+  
     .marking ul:after {content:""; display:block; clear:both}
 
     .markTab {width:720px;margin:0 auto;margin-top:10px; /*border-bottom:1px solid #333*/}

@@ -209,7 +209,11 @@
                             <li>[Research II] 정답 공개 후, 합격 예측 정답 입력하면 100명 추첨 커피 쿠폰 증정</li>
                         </ul>
                         --}}
-                        <img src="https://static.willbes.net/public/images/promotion/2023/02/2810_00_01.gif" alt="event1">                        
+                        @if(time() < strtotime('202303041900'))
+                        <img src="https://static.willbes.net/public/images/promotion/2023/02/2810_00_01.gif" alt="event1"> 
+                        @else 
+                        <img src="https://static.willbes.net/public/images/promotion/2023/02/2810_00_end.jpg" alt="event1">       
+                        @endif
                         <div class="notice">
                             <p>유의사항</p>
                             <ol>

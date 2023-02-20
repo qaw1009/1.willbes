@@ -203,10 +203,13 @@
                 <div class="evt01_00">
                     <img src="https://static.willbes.net/public/images/promotion/2022/11/2810_00.png" alt="event1">
                     <div class="textbox">
+                        {{--
                         <ul>
                             <li class="NSK-Black">[Research I] 정답 공개 전, 합격 예측 정답 입력하면 전원 100% 커피 쿠폰 증정!</li>
                             <li>[Research II] 정답 공개 후, 합격 예측 정답 입력하면 100명 추첨 커피 쿠폰 증정</li>
                         </ul>
+                        --}}
+                        <img src="https://static.willbes.net/public/images/promotion/2023/02/2810_00_01.gif" alt="event1">                        
                         <div class="notice">
                             <p>유의사항</p>
                             <ol>

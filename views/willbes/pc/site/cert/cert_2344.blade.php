@@ -37,7 +37,7 @@
     </style>
     
     <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 leaveArmyJoin NGR">
-        <div><h3 class="NSK">신광은경찰 수강생 인증</h3></div>
+        <div><h3 class="NSK">경찰 수강생 인증</h3></div>
         <div class="laj_sec">
             <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
@@ -75,17 +75,18 @@
                             <input type="file" class="input-file" size="3" id="attachfile" name="attachfile" style="width:70%;">
                         </li>
                         <li>* 인증파일 2MB까지 업로드 가능하며, 이미지파일 (jpg, png, gif 등) 또는 PDF 파일 형태로 첨부<br>
-                            * 인증파일 : <span class="tx-red">신광은경찰팀 수험인증 할수 있는 증빙서류</span><br>
+                            * 인증파일 : <span class="tx-red">경찰팀 수험인증 할수 있는 증빙서류</span><br>
                             * 관리자 인증 시, SMS로 개별 알림</li>
                     </ul>
 
                     <h4 class="mt40">유의사항</h4>
                     <div class="lecTxt">
-                        * 이벤트 대상자 : 신광은경찰팀 강의를 수강했던 모든 회원* 쿠폰은 ID당 1번 발급됩니다. (재발급 불가,유효기간 7일)<br>
+                        * 이벤트 대상자 : 경찰팀 강의를 수강했던 모든 회원
+                        * 쿠폰은 ID당 1번 발급됩니다. (재발급 불가,유효기간 7일)<br>
                         * 발급되는 쿠폰은 해경단기PASS에만 사용가능합니다.<br>
                         * 인증시간 : 오후 4시 이전 요청 시, 당일 승인 | 오후 4시 이후 요청 시 익일 승인<br>
                         * 관리자 승인후 쿠폰은3장 발급됩니다.(1장만 사용가능)<br>
-                        ※ 이벤트 기간 : ~2021.9.30(목) 까지<br>
+                        ※ 이벤트 기간 : ~ 2021.9.30(목) 까지<br>
                         ※ 단, 주말 및 공휴일 인증 요청건의 경우, 휴일 다음날 22시 이전에 일괄 처리<br>
                         <span class="tx-red">* 상기 인증 내용이 다를 경우, 구매한 상품은 취소 및 환불 처리 됩니다.</span>              
                     </div>

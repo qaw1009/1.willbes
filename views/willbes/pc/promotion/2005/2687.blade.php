@@ -219,8 +219,8 @@
 
     </div>
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
     <!-- googlechart -->
     {{--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>--}}
 

@@ -50,7 +50,7 @@
                 <tbody>
                 <tr>
                     <th><strong>형법,형사소송법 단과강의 50% 할인</strong></th>
-                    <th><strong>단과강의 40% 할인 </strong></th>
+                    <th><strong>단과강의 40% 할인</strong></th>
                 </tr>
                 </tbody>
             </table>

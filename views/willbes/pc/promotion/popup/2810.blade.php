@@ -36,29 +36,38 @@
 	.termsBx01{padding:0px 20px; height:100px; overflow:hidden; overflow-y:scroll; border:1px solid #cecece}
 	.termsBx01 h2{margin:10px 0;font-weight:bold;font-size:14px}
 	.termsBx01 .st  {margin-top:15px}
-	.termsBx01 ul li {margin-bottom:5px}
+	.termsBx01 ul li {margin-bottom:10px}
 	.termsBx01 .span { height:60px; text-align:right}   
 
     .Layerpop .btn {text-align:center; border-top:1px solid #ccc; padding-top:20px; margin-top:20px}
     .Layerpop .btn a {width:100px; display:inline-block; font-size:16px; text-align:center; background:#c14842; color:#fff; height:40px; line-height:40px}
     .Layerpop .btn a:hover {background:#000;}
     .Layerpop .btn a:last-child {background:#333;}
-
 </style>
 
 <div class="willbes-Layer-PassBox NGR">
-    <h1>5급 PSAT 수강내역 인증</h1>
+    <h1>PSAT 수강내역 인증 + 수강후기 등록하기</h1>
     <div id="popup" class="Layerpop" >
         <form name="regi_form_register" id="regi_form_register" enctype="multipart/form-data">
             {!! csrf_field() !!}
             {!! method_field($arr_base['method']) !!}
+            <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $arr_base['data']['ElIdx'] }}"/>
+            <input type="hidden" id="register_name" name="register_name" value="{{sess_data('mem_name')}}">
+            <input type="hidden" id="userId" name="userId" value="{{sess_data('mem_id')}}">
+            <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
+            <input type="hidden" name="register_type" value="promotion"/>
+            <input type="hidden" name="file_chk" value="Y"/>
+            <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] }}"/>
+
             <input type="hidden" name="CertIdx" id="CertIdx" value="{{$arr_cert['cert_idx']}}">
             <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$arr_cert['cert_data']['CertTypeCcd']}}">
-            <input type="hidden" name="file_chk" value="Y"/>
+
             <input type="hidden" name="check_take_no" value="N">    {{-- 응시번호 합격여부 체크 --}}
+            <input type="hidden" name="TakeArea" value="712018">
+
             <div id="request">
                 <div class="termsBx">
-                    <h3 class="tit">[인증 정보]</h3>
+                    <h3 class="tit">[수강내역 인증 정보]</h3>
                     <ul>
                         @php
                             $takekind = '';
@@ -78,59 +87,74 @@
                             if(empty($arr_cert['apply_result']['AddContent1']) === false) {
                                 $addcontent1 = $arr_cert['apply_result']['AddContent1'];
                             }
-                            if(empty($arr_cert['apply_result']['AddContent2']) === false) {
-                                $addcontent1 = $arr_cert['apply_result']['AddContent2'];
-                            }
                         @endphp
 
                         <li><strong>회원명(아이디)</strong> <span>{{sess_data('mem_name')}}({{ substr(sess_data('mem_id'),0, (strlen(sess_data('mem_id'))-3)) }}***)</span></li>
                         <li><strong>응시 시험정보</strong>
-                            {{--<select  name="TakeKind" id="TakeKind" {{empty($takekind) === false ? 'disabled="disabled"' : ''}}>
+                            <select  name="TakeKind" id="TakeKind" {{empty($takekind) === false ? 'disabled="disabled"' : ''}}>
                                 <option value="">직렬선택</option>
                                 @foreach($arr_cert['kind_ccd'] as $key => $val)
                                     <option value="{{$key}}" {{($key == $takekind ? 'selected="selected"' : '')}} >{{$val}}</option>
                                 @endforeach
 
                             </select>
-                            <select id="TakeArea" name="TakeArea" {{empty($takearea) === false ? 'disabled="disabled"' : ''}}>
+                            {{--<select id="TakeArea" name="TakeArea" {{empty($takearea) === false ? 'disabled="disabled"' : ''}}>
                                 <option value="">지역구분</option>
                                 @foreach($arr_cert['area_ccd'] as $key => $val)
                                     @if($key != '712018') --}}{{--전국제외--}}{{--
-                                    <option value="{{$key}}" {{($key == $takearea ? 'selected="selected"' : '')}}>{{$val}}</option>
+                                        <option value="{{$key}}" {{($key == $takearea ? 'selected="selected"' : '')}}>{{$val}}</option>
                                     @endif
                                 @endforeach
                             </select>--}}
-                            <input type="text" name="TakeNo" id="TakeNo" numberOnly value="{{ $takeno }}" placeholder="응시번호" {{empty($takeno) === false ? 'disabled="disabled"' : ''}}>
+                            <input type="text" name="TakeNo" id="TakeNo"  numberOnly value="{{ $takeno }}" placeholder="응시번호" {{empty($takeno) === false ? 'disabled="disabled"' : ''}}>
                         </li>
                         <li>
-                            <strong>수강내역 인증</strong>
-                            <input type="radio" id="AddContent11" name="AddContent1" value="실강" {{($addcontent1 == '실강' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent11"  class="mr10">실강 </label>
-                            <input type="radio" id="AddContent22" name="AddContent1" value="인강" {{($addcontent1 == '인강' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent22"  class="mr10">인강</label>
+                            <strong>수강내역 인증 파일</strong>
+                            <input type="radio" id="AddContent11" name="AddContent1" value="1차 시험합격" {{($addcontent1 == '1차 시험합격' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent11"  class="mr10">1차 시험합격</label>
                             <input type="file" name="attachfile" id="attachfile" style="width:300px">
                             <div class="mt10">
-                                - 수강증 또는 결제내역(내강의실 -  결제관리 -  주문/배송조회) 캡처 화면을 올려주세요.<br>
+                                - 수강증 또는 결제내역(내강의실 - 결제관리 - 주문/배송조회) 캡처 화면을 올려주세요.<br>
                                 - 이미지 파일(jpg, png) 또는 PDF 파일 첨부
                             </div>
                         </li>
                     </ul>
-                                                                               
+
+                    <h3  class="tit">[PSAT 과목 수강후기 작성]</h3>
+                    <a href="{{ (empty($arr_base['arr_file']) === true) ? '' : front_url('/promotion/download?file_idx='.$arr_base['arr_file']['EfIdx'].'&event_idx='.$arr_base['data']['ElIdx']) }}"  class="file">PSAT 과목 수강후기 양식 다운로드 ↓</a><br>
+                    <input type="file" name="attach_file" id="attach_file" style="width:250px; margin-top:5px">
+                    @if(empty($arr_base['regist_member']['FileFullPath']) === false)
+                    <input type="button" onclick="javascript:modifyFile();" value="파일수정">
+                    @endif
+                    <div class="mt10">
+                        - 반드시 위의 합격수기 양식 파일을 다운로드 받아서 작성해 주세요.<Br>
+                        - 합격수기 양식은 개별 상황에 맞게 워드, 한글 파일 양식 중 하나를 첨부해 주시면 됩니다.<Br>
+                        - 합격수기 장석 시 문서 내 항목을 모두 작성하셔야 하며, 무성의한 내용 및 허위 내용은 당첨에서 제외될 수 있습니다. 
+                    </div>
                 </div>
 
                 <h3>[개인정보 수집/이용 동의 안내]</h3>
                 <div class="termsBx01">
                     <ul>
                         <li>
-                            1. 개인정보 수집 이용 목적<br>
-                            - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 수강내역 인증 이벤트 참여             
+                        1. 개인정보 수집 이용 목적<br>
+                        - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 합격수기 이벤트 참여<br>
+                        - 개인정보 수집 항목<Br>
+                        공모전 신청 : 회원명, 휴대폰 번호, 이메일 주소, 응시정보 (직렬 및 지역, 응시번호, 응시표)<Br>
+                        합격수기 양식 : 이름, 아이디, 성별, 나이, 수험기간, 응시과목 및 모의고사, 2차 시험 필기 점수 
                         </li>
-                        <li>2. 개인정보 수집 항목 : 회원명, 아이디, 응시번호</li>
                         <li>
-                            3. 개인정보 이용기간 및 보유기간<br>
-                            - 본 수집, 활용목적 달성 후 바로 파기
-                        </li>    
+                        2. 개인정보 이용기간 및 보유기간<br>
+                        - 본 수집, 활용목적 달성 후 바로 파기 
+                        </li>
                         <li>
-                            4. 개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
-                            - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나,<br>&nbsp;&nbsp;위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부 시 이벤트 신청이 불가능함을 알려드립니다.
+                        3. 개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
+                        - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 
+                        위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부 시 이벤트 신청이 불가능함을 알려드립니다.
+                        </li>
+                        <li>
+                        4. 저작재산권 이용 허락<br>
+                        - 제공해주신 합격수기 및 설문은 당사의 마케팅에 활용되며, 
+                        귀하의 승인으로 회사는 합격수기 등과 관련된 저작재산권 등 일체의 권리를 영구적으로 이용할 수 있습니다.
                         </li>
                     </ul>                    
                 </div>
@@ -142,8 +166,8 @@
                 </div>
 
                 <div class="btn">
-                    <a href="javascript:void(0);" onclick="fn_submit(); return false;" style="{{ (empty($arr_cert['apply_result']) === false) ? 'display: none;' : '' }}">등록</a>
-                    <a href="javascript:void(0);" onclick="self.close(); return false;">{{ (empty($arr_cert['apply_result']) === false) ? '닫기' : '취소' }}</a>
+                    <a href="#none" onclick="javascript:fn_submit();" style="{{ (empty($arr_cert['apply_result']) === false) ? 'display: none;' : '' }}">등록</a>
+                    <a href="#none" onclick="javascript:self.close();">취소</a>
                 </div>
             </div>
         </form>  
@@ -187,12 +211,12 @@
             }
         @endif
 
-        if ($('#attachfile').val() == '') {
-            alert('합격수기 파일을 등록해 주세요.');
-            $('#attachfile').focus();
+        if ($('#attach_file').val() == '') {
+            alert('수강후기 파일을 등록해 주세요.');
+            $('#attach_file').focus();
             return;
         } else {
-            if(fileExtCheck($('#attachfile').val()) == false) {
+            if(fileExtCheck($('#attach_file').val()) == false) {
                 return;
             }
         }
@@ -207,30 +231,58 @@
         @if($arr_cert['cert_data']['ApprovalStatus'] != 'Y' )
             @if($arr_cert['cert_data']["IsCertAble"] == 'Y')
                 {{-- 인증 프로세스 --}}
-                /*var _check_url = '{!! front_url('/CertApply/checkTakeNumber/') !!}';*/
-                var _check_url = '{!! front_url('/CertApply/store/') !!}';
-                ajaxSubmit($regi_form_register, _check_url, function(ret) {
+                var _check_url = '{!! front_url('/CertApply/checkTakeNumber/') !!}';
+                    ajaxSubmit($regi_form_register, _check_url, function(ret) {
                     if(ret.ret_cd) {
-                        alert('정상적으로 등록되었습니다.');
-                        location.reload();
+                        //alert('정상적으로 등록되었습니다.');
+                        submitEnd();
                     } else {
                         alert("인증 확인이 불가합니다. 운영자에게 문의하여 주십시오.");
                         return;
                     }
                 }, showValidateError, null, false, 'alert');
                 {{-- 인증 프로세스 --}}
+            @else
+                submitEnd();
             @endif
+        @else
+                submitEnd();
         @endif
     }
 
     function fileExtCheck(strfile) {
         if( strfile != "" ){
             var ext = strfile.split('.').pop().toLowerCase();
-            if($.inArray(ext, ['jpg','png','pdf']) == -1) {
-                alert('jpg,png,pdf 파일만 업로드 할수 있습니다.');
+            if($.inArray(ext, ['hwp','doc','docx','pdf']) == -1) {
+                alert('hwp,doc,docx,pdf 파일만 업로드 할수 있습니다.');
                 return false;
             }
         }
+    }
+
+    function submitEnd() {
+        var _url = '{!! front_url('/event/registerStore') !!}';
+
+        ajaxSubmit($regi_form_register, _url, function(ret) {
+            if(ret.ret_cd) {
+                alert(ret.ret_msg);
+                window.close();
+            }
+        }, showValidateError, null, false, 'alert');
+    }
+
+    function modifyFile()
+    {
+        var _url = '{!! front_url('/event/registerStoreForModifyFile') !!}';
+
+        if (!confirm('수강후기 파일이 이미 등록되어 있습니다. \n재등록하시면 기존 파일은 삭제됩니다. \n재등록하시겠습니까?')) { return true; }
+
+        ajaxSubmit($regi_form_register, _url, function(ret) {
+            if(ret.ret_cd) {
+                alert(ret.ret_msg);
+                window.close();
+            }
+        }, showValidateError, null, false, 'alert');
     }
 
     $("input:text[numberOnly]").on("keyup", function() {

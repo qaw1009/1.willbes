@@ -47,7 +47,7 @@
 </style>
 
 <div class="willbes-Layer-PassBox NGR">
-    <h1>7급 PSAT 수강내역 인증</h1>
+    <h1>5급 PSAT 수강내역 인증</h1>
     <div id="popup" class="Layerpop" >
         <form name="regi_form_register" id="regi_form_register" enctype="multipart/form-data">
             {!! csrf_field() !!}
@@ -108,7 +108,7 @@
                             <input type="radio" id="AddContent22" name="AddContent1" value="인강" {{($addcontent1 == '인강' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent22"  class="mr10">인강</label>
                             <input type="file" name="attachfile" id="attachfile" style="width:300px">
                             <div class="mt10">
-                                - 수강증 또는 결제내역(내강의실 – 결제관리 – 주문/배송조회) 캡처 화면을 올려주세요.<br>
+                                - 수강증 또는 결제내역(내강의실 -  결제관리 -  주문/배송조회) 캡처 화면을 올려주세요.<br>
                                 - 이미지 파일(jpg, png) 또는 PDF 파일 첨부
                             </div>
                         </li>

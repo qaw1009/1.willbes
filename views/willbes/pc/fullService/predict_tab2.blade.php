@@ -126,7 +126,11 @@
     </div>
 </div>
 <div class="markSbtn1">
-    <a href="javascript:void(0)" onclick="regiSubmit(); return false;">{{ ($arr_base['method'] == 'MOD') ? '수 정' : '저 장' }}</a>
+    @if($arr_base['method'] == 'POST')
+        <a href="javascript:void(0);" onclick="regiSubmit(); return false;">저 장</a>
+    @else
+        <a href="javascript:void(0);">입력완료</a>
+    @endif
 </div>
 
 @if ($arr_member_step[2] == 'on')
@@ -150,9 +154,10 @@
                                 @if(empty($row['SqJsonData']) === false)
                                     @foreach($row['SqJsonData'] as $k => $v)
                                         @for($i=1; $i<=$row['SqCnt']; $i++)
-                                            <li><input type="radio" name="survey_answer[{{$row['SsqIdx']}}][{{$k}}]" class="survey_answer_group" value="{{$i}}"
-                                                @if($member_answer_data['AnswerInfo'][$row['SsqIdx']][$k] == $i) checked="checked" @endif/>
-                                                {{ $v['item'][$i] }}
+                                            <li><input type="radio" name="survey_answer[{{$row['SsqIdx']}}][{{$k}}]"
+                                                       class="survey_answer_group" id="survey_answer_{{$row['SsqIdx']}}_{{$k}}_{{$i}}" value="{{$i}}"
+                                                       @if($member_answer_data['AnswerInfo'][$row['SsqIdx']][$k] == $i) checked="checked" @endif/>
+                                                <label for="survey_answer_{{$row['SsqIdx']}}_{{$k}}_{{$i}}">{{ $v['item'][$i] }}</label>
                                             </li>
                                         @endfor
                                     @endforeach
@@ -177,7 +182,7 @@
 
 @if ($arr_member_step[3] == 'on')
     <div class="stage">
-        <span class="phase">3단계</span> <span class="bold">답안 입력 / 채점결과 확인</span>
+        <span class="phase">3단계</span> <span class="bold">답안 입력</span>
     </div>
     <form id="answer_form" name="answer_form" method="POST" onsubmit="return false;" novalidate>
         <div class="grading_result">
@@ -220,7 +225,7 @@
 
 @if ($arr_member_step[4] == 'on')
     <div class="stage">
-        <span class="phase">3단계</span> <span class="bold">답안 입력 / 채점결과 확인</span>
+        <span class="phase">3단계</span> <span class="bold">채점결과 확인</span>
     </div>
     <div>
         <ul class="markTab">
@@ -428,8 +433,8 @@
         $('.survey_answer_group').each(function() {
             if($(this).is(':visible')){
                 if($('input:radio[name="' + $(this).prop('name') + '"]').is(':checked') === false){
-                    alert($(this).prop('name'));
-                    vali_msg = '응답하지 않은 설문이 있습니다.' +  $(this).prop('name');
+                    /*alert($(this).prop('name'));*/
+                    vali_msg = '응답하지 않은 설문이 있습니다.';
                 }
             }else{
                 $(this).prop("checked",false);
@@ -492,7 +497,7 @@
      * 재채점
      */
     function examDeleteAjax() {
-        if (confirm('재채점 하실 경우 기존에 입력한 모든 성적 데이터는 삭제됩니다. 재채점 하시겠습니까?')) {
+        if (confirm('답안을 재입력하실 경우 기존에 입력한 모든 성적데이터는 삭제됩니다.\n답안을 다시 입력하시겠습니까?')) {
             var _url = '{{ front_url('/fullService/examDeleteAjax') }}';
             ajaxSubmit($regi_form, _url, function (ret) {
                 if (ret.ret_cd) {

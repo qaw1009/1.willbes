@@ -57,7 +57,7 @@
             <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
             <input type="hidden" name="register_type" value="promotion"/>
             <input type="hidden" name="file_chk" value="Y"/>
-            <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] }}"/>
+            <input type="hidden" name="register_chk[]" value="{{ (empty($arr_base['register_list']) === false && empty($arr_base['register_list'][1]['ErIdx']) === false) ? $arr_base['register_list'][1]['ErIdx'] : $arr_base['register_list'][0]['ErIdx'] }}"/>
 
             <input type="hidden" name="CertIdx" id="CertIdx" value="{{$arr_cert['cert_idx']}}">
             <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$arr_cert['cert_data']['CertTypeCcd']}}">
@@ -91,17 +91,16 @@
 
                         <li><strong>회원명(아이디)</strong> <span>{{sess_data('mem_name')}}({{ substr(sess_data('mem_id'),0, (strlen(sess_data('mem_id'))-3)) }}***)</span></li>
                         <li><strong>응시 시험정보</strong>
-                        {{--<select  name="TakeKind" id="TakeKind" {{empty($takekind) === false ? 'disabled="disabled"' : ''}}>
+                            <select  name="TakeKind" id="TakeKind" {{empty($takekind) === false ? 'disabled="disabled"' : ''}}>
                                 <option value="">직렬선택</option>
                                 @foreach($arr_cert['kind_ccd'] as $key => $val)
                                     <option value="{{$key}}" {{($key == $takekind ? 'selected="selected"' : '')}} >{{$val}}</option>
                                 @endforeach
-
                             </select>
-                            <select id="TakeArea" name="TakeArea" {{empty($takearea) === false ? 'disabled="disabled"' : ''}}>
+                            {{--<select id="TakeArea" name="TakeArea" {{empty($takearea) === false ? 'disabled="disabled"' : ''}}>
                                 <option value="">지역구분</option>
                                 @foreach($arr_cert['area_ccd'] as $key => $val)
-                                    @if($key != '712018') --}}{{--전국제외--}}{{--
+                                    @if($key != '712018') 전국제외
                                         <option value="{{$key}}" {{($key == $takearea ? 'selected="selected"' : '')}}>{{$val}}</option>
                                     @endif
                                 @endforeach
@@ -114,7 +113,10 @@
                             <input type="radio" id="AddContent22" name="AddContent1" value="인강" {{($addcontent1 == '인강' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent22"  class="mr10">인강</label>
                             <input type="file" name="attachfile" id="attachfile" style="width:300px">
                             <div class="mt10">
-                                - 수강증 또는 결제내역(내강의실 - 결제관리 - 주문/배송조회) 캡처 화면을 올려주세요.<br>
+                                - 한림법학원 PSAT 강의 수강 내역을 증빙할 수 있는 결제 내역 또는 수강 목록 이미지를 캡처하여 등록해주시기 바랍니다.<br>
+                                단, 환불된 주문건에 대해서는 인정되지 않으며, 1건 이상 주문 건에 한하여만 정상 참여됩니다.<br>
+                                ① 내강의실 – 온라인강좌 – 수강종료강좌<br>
+                                ② 내강의실 – 결제관리 – 주문/배송조회<br>
                                 - 이미지 파일(jpg, png) 또는 PDF 파일 첨부
                             </div>
                         </li>
@@ -127,9 +129,9 @@
                     <input type="button" onclick="javascript:modifyFile();" value="파일수정">
                     @endif
                     <div class="mt10">
-                        - 반드시 위의 합격수기 양식 파일을 다운로드 받아서 작성해 주세요.<Br>
-                        - 합격수기 양식은 개별 상황에 맞게 워드, 한글 파일 양식 중 하나를 첨부해 주시면 됩니다.<Br>
-                        - 합격수기 장석 시 문서 내 항목을 모두 작성하셔야 하며, 무성의한 내용 및 허위 내용은 당첨에서 제외될 수 있습니다. 
+                        - 첨부된 양식 참고하여 양식에 맞게 작성해주시기 바랍니다.<br>
+                        - 수강 후기 양식은 개별 상황에 맞게 메모장, 워드, 한글 파일 양식 중 하나를 제출해주시면 됩니다.<br>
+                        - 수강 내역 확인 및 이벤트 정상 참여를 위해 양식 예시 항목은 모두 작성하여야 하며, 무성의한 내용 및 허위 내용은 당첨에서 제외될 수 있습니다.
                     </div>
                 </div>
 
@@ -138,24 +140,25 @@
                     <ul>
                         <li>
                         1. 개인정보 수집 이용 목적<br>
-                        - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 합격수기 이벤트 참여<br>
-                        - 개인정보 수집 항목<Br>
-                        공모전 신청 : 회원명, 휴대폰 번호, 이메일 주소, 응시정보 (직렬 및 지역, 응시번호, 응시표)<Br>
-                        합격수기 양식 : 이름, 아이디, 성별, 나이, 수험기간, 응시과목 및 모의고사, 2차 시험 필기 점수 
+                            - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 수강 후기 이벤트 참여<br>
+                            - 개인정보 수집 항목<br>
+                            * 이벤트 참여 시 필요 정보 : 이름, 아이디, 응시 직렬 및 응시번호, 수강 인증 내역<br>
+                            * 수강 후기 작성 시 필요 정보 : 이름, 아이디, 연락처, 수강 과목 및 수강 강사, 수강 후기
                         </li>
                         <li>
                         2. 개인정보 이용기간 및 보유기간<br>
-                        - 본 수집, 활용목적 달성 후 바로 파기 
+                            - 이벤트 참여시 수집된 개인정보에 대해서는 수집, 활용 목적 달성 후 바로 파기됩니다.<br>
+                            - 개인 정보를 제외한 작성해주신 수강 후기 내용에 대해서는 이 후 마케팅에 활용될 수 있습니다.
                         </li>
                         <li>
                         3. 개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
-                        - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 
-                        위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부 시 이벤트 신청이 불가능함을 알려드립니다.
+                            - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나,
+                            위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부 시 이벤트 신청이 불가능함을 알려드립니다.
                         </li>
                         <li>
                         4. 저작재산권 이용 허락<br>
-                        - 제공해주신 합격수기 및 설문은 당사의 마케팅에 활용되며, 
-                        귀하의 승인으로 회사는 합격수기 등과 관련된 저작재산권 등 일체의 권리를 영구적으로 이용할 수 있습니다.
+                            - 제공해주신 수강 후기는 각 과목별 강사진 및 당사의 마케팅에 활용될 수 있으며,
+                            귀하의 승인으로 한림법학원은 수강 후기 등과 관련된 저작재산권 등 일체의 권리를 영구적으로 이용할 수 있습니다.
                         </li>
                     </ul>                    
                 </div>
@@ -210,6 +213,9 @@
                 $('#attachfile').focus();
                 return;
             }
+            if(fileExtCheck($('#attachfile').val(),1) == false) {
+                return;
+            }
         @endif
 
         if ($('#attach_file').val() == '') {
@@ -217,7 +223,7 @@
             $('#attach_file').focus();
             return;
         } else {
-            if(fileExtCheck($('#attach_file').val()) == false) {
+            if(fileExtCheck($('#attach_file').val(),2) == false) {
                 return;
             }
         }
@@ -251,12 +257,19 @@
         @endif
     }
 
-    function fileExtCheck(strfile) {
-        if( strfile != "" ){
+    function fileExtCheck(strfile,type) {
+        if (strfile != "") {
             var ext = strfile.split('.').pop().toLowerCase();
-            if($.inArray(ext, ['hwp','doc','docx','pdf']) == -1) {
-                alert('hwp,doc,docx,pdf 파일만 업로드 할수 있습니다.');
-                return false;
+            if(type == 1) {
+                if($.inArray(ext, ['gif','jpg','jpeg','png','bmp','pdf']) === -1) {
+                    alert('이미지 파일 또는 PDF 파일만 업로드 할수 있습니다.');
+                    return false;
+                }
+            } else {
+                if ($.inArray(ext, ['hwp', 'doc', 'docx', 'pdf']) == -1) {
+                    alert('hwp,doc,docx,pdf 파일만 업로드 할수 있습니다.');
+                    return false;
+                }
             }
         }
     }

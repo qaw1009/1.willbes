@@ -92,14 +92,20 @@ class BaseFullService extends \app\controllers\FrontController
             if (empty($regi_data) === false) {
                 $arr_base['method'] = 'MOD';
 
-                //설문데이터 조회 (2단계) /** todo : 3단계 오픈 임의 설정, 설문데이터 개발 완료 후 조건 추가 */
+                //설문데이터 조회 (2단계)
                 $this->_arr_member_step[2] = 'on';
                 if(empty($ss_idx) === false){
                     $survey_data = $this->_getSurveyQuestion($ss_idx);
                     $member_answer_data = $this->_getMemberSurveyAnswer($ss_idx);
 
                     if(empty($member_answer_data) === false){
-                        $this->_arr_member_step[3] = 'on';
+                        if ($predict_data['AnswerServiceIsUse'] == 'Y') {
+                            if (date('YmdHi') >= $predict_data['AnswerServiceSDatm'] && date('YmdHi') <= $predict_data['AnswerServiceEDatm']) {
+                                $this->_arr_member_step[3] = 'on';
+                            }
+                        } else {
+                            $this->_arr_member_step[3] = 'on';
+                        }
                     }
                 }
                 
@@ -115,6 +121,16 @@ class BaseFullService extends \app\controllers\FrontController
                     ];
                     $regi_subject_data = $this->fullServiceFModel->findRegisterSubjectData($arr_condition);
                     $list_question = $this->_listQuestionForRegister($predict_idx, $regi_data['PrIdx'], $regi_subject_data);
+                }
+
+                if ($this->_arr_member_step[4] == 'on-ready') {
+                    if ($predict_data['ServiceIsUse'] == 'Y') {
+                        if (date('YmdHi') >= $predict_data['ServiceSDatm'] && date('YmdHi') <= $predict_data['ServiceEDatm']) {
+                            $this->_arr_member_step[4] = 'on';
+                        }
+                    } else {
+                        $this->_arr_member_step[4] = 'on';
+                    }
                 }
 
                 if ($this->_arr_member_step[4] == 'on') {
@@ -344,9 +360,9 @@ class BaseFullService extends \app\controllers\FrontController
         ];
         $result = $this->fullServiceFModel->listQuestionForRegister($arr_condition);
         if (empty($result) === false) {
-            //등록된 답안 입력 정보가 있다면 (4단계 => on)
+            //등록된 답안 입력 정보가 있다면 (4단계 => on-ready 대기)
             if (empty($result[0]['Answer']) === false) {
-                $this->_arr_member_step[4] = 'on';
+                $this->_arr_member_step[4] = 'on-ready';
             }
         }
 

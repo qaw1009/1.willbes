@@ -91,14 +91,14 @@
 
                         <li><strong>회원명(아이디)</strong> <span>{{sess_data('mem_name')}}({{ substr(sess_data('mem_id'),0, (strlen(sess_data('mem_id'))-3)) }}***)</span></li>
                         <li><strong>응시 시험정보</strong>
-                            <select  name="TakeKind" id="TakeKind" {{empty($takekind) === false ? 'disabled="disabled"' : ''}}>
+                        {{--<select  name="TakeKind" id="TakeKind" {{empty($takekind) === false ? 'disabled="disabled"' : ''}}>
                                 <option value="">직렬선택</option>
                                 @foreach($arr_cert['kind_ccd'] as $key => $val)
                                     <option value="{{$key}}" {{($key == $takekind ? 'selected="selected"' : '')}} >{{$val}}</option>
                                 @endforeach
 
                             </select>
-                            {{--<select id="TakeArea" name="TakeArea" {{empty($takearea) === false ? 'disabled="disabled"' : ''}}>
+                            <select id="TakeArea" name="TakeArea" {{empty($takearea) === false ? 'disabled="disabled"' : ''}}>
                                 <option value="">지역구분</option>
                                 @foreach($arr_cert['area_ccd'] as $key => $val)
                                     @if($key != '712018') --}}{{--전국제외--}}{{--
@@ -109,8 +109,9 @@
                             <input type="text" name="TakeNo" id="TakeNo"  numberOnly value="{{ $takeno }}" placeholder="응시번호" {{empty($takeno) === false ? 'disabled="disabled"' : ''}}>
                         </li>
                         <li>
-                            <strong>수강내역 인증 파일</strong>
-                            <input type="radio" id="AddContent11" name="AddContent1" value="1차 시험합격" {{($addcontent1 == '1차 시험합격' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent11"  class="mr10">1차 시험합격</label>
+                            <strong>수강내역 인증</strong>
+                            <input type="radio" id="AddContent11" name="AddContent1" value="실강" {{($addcontent1 == '실강' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent11"  class="mr10">실강 </label>
+                            <input type="radio" id="AddContent22" name="AddContent1" value="인강" {{($addcontent1 == '인강' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent22"  class="mr10">인강</label>
                             <input type="file" name="attachfile" id="attachfile" style="width:300px">
                             <div class="mt10">
                                 - 수강증 또는 결제내역(내강의실 - 결제관리 - 주문/배송조회) 캡처 화면을 올려주세요.<br>

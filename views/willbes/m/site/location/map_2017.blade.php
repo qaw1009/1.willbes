@@ -21,7 +21,7 @@
                     <div class="mapimg"><a href="http://kko.to/1OZeEGANoP" target="_blank"><img src="https://static.willbes.net/public/images/promotion/m/2018/map_ssam.jpg" alt="오시는 길"></a></div>
                 </div>--}}
                 
-                <div id="map">지도영역</div>
+                <div id="map" class="location_map">지도영역</div>
                 
             </div>
         </div>

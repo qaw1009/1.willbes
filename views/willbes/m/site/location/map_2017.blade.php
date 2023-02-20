@@ -15,11 +15,11 @@
                         [지번] 서울 동작구 만양로 105 한성빌딩 2층</li>
                     <li><a href="tel:1544-3169" target="_blank">1544-3169</a></li>
                 </ul>
-{{--
+
                 <div class="location_map">
                     <span><img src="https://static.willbes.net/public/images/promotion/m/icon_add.png" alt="학원"></span>
                     <div class="mapimg"><a href="http://kko.to/1OZeEGANoP" target="_blank"><img src="https://static.willbes.net/public/images/promotion/m/2018/map_ssam.jpg" alt="오시는 길"></a></div>
-                </div>--}}
+                </div>
                 
                 <div id="map" class="location_map">지도영역</div>
                 

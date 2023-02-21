@@ -20,7 +20,7 @@
             50%{transform:scale(0.9)}
             to{transform:scale(1)}
         }
-        .evt_02 {background:#004751; margin-top:10vh}
+        .evt_02 {background:#004751;}
 
         /*레이어팝업*/
         .Pstyle {

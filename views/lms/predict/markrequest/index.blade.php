@@ -10,24 +10,26 @@
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group form-inline">
-                    <label class="col-md-1 control-label">조건</label>
-                    <div class="col-md-11">
+                    <label class="col-md-1-1 control-label">조건</label>
+                    <div class="col-md-4">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx">
                             @foreach($predictList as $row)
                                 <option value="{{$row['PredictIdx']}}" class="{{$row['SiteCode']}}">[{{$row['PredictIdx']}}] {{$row['ProdName']}}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-5" id="search_ApplyType" name="search_ApplyType">
-                            <option value="">구분</option>
-                            <option value="합격예측">합격예측</option>
-                            <option value="사전특강">사전특강</option>
-                        </select>
                         <select class="form-control mr-5" id="search_take_mock_part" name="search_take_mock_part">
                             <option value="">응시직렬</option>
                             @foreach($arr_take_mock_part_list as $row)
                                 <option class="{{$row['PredictIdx']}}" value="{{$row['TakeMockPart']}}">{{$row['CcdName']}}</option>
                             @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control mr-5" id="search_ApplyType" name="search_ApplyType">
+                            <option value="">구분</option>
+                            <option value="합격예측">합격예측</option>
+                            <option value="사전특강">사전특강</option>
                         </select>
                         <select class="form-control mr-5" id="search_TakeArea" name="search_TakeArea">
                             <option value="">응시지역</option>
@@ -40,8 +42,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-1 control-label">답안데이터추출 추가조건</label>
-                    <div class="col-md-11 form-inline">
+                    <label class="col-md-1-1 control-label">답안데이터추출 추가조건</label>
+                    <div class="col-md-5 form-inline">
                         <select class="form-control" id="search_subject_code" name="search_subject_code" title="과목 답안데이터추출">
                             <option value="">과목선택</option>
                             @foreach($arr_subject_list as $key => $row)
@@ -59,7 +61,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-1 control-label">회원검색</label>
+                    <label class="col-md-1-1 control-label">회원검색</label>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="search_fi" name="search_fi" value="{{ $search_fi }}">
                     </div>

@@ -3693,4 +3693,30 @@ class PredictModel extends WB_Model
         ";
         return $this->_conn->query("select ". $column . $from . $order_by)->result_array();
     }
+
+    public function listAnswerPaperForExcel($arr_condition)
+    {
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = "
+                m.MemId, c.CcdName AS TakeMockPartName, pa.RegDatm, pp.PaperName
+                ,pq.QuestionType, pq.QuestionNO, pa.Answer
+                ,GROUP_CONCAT(pq.QuestionNO ORDER BY pq.QuestionNO ASC) AS question_no
+                ,GROUP_CONCAT(pa.Answer ORDER BY pq.QuestionNO ASC) AS member_answer
+            ";
+        $from = "
+            FROM lms_predict_register AS r
+            INNER JOIN lms_predict_code AS c ON r.TakeMockPart = c.Ccd
+            INNER JOIN lms_predict_register_r_code AS rc ON r.PredictIdx = rc.PredictIdx AND r.PrIdx = rc.PrIdx
+            INNER JOIN lms_predict_paper AS pp ON rc.PredictIdx = pp.PredictIdx AND rc.SubjectCode = pp.SubjectCode AND pp.IsStatus = 'Y' AND pp.IsUse = 'Y'
+            INNER JOIN lms_predict_code_r_subject AS crs ON pp.PredictIdx = crs.PredictIdx AND pp.TakeMockPart = crs.TakeMockPart AND pp.SubjectCode = crs.SubjectCode AND crs.IsStatus = 'Y' AND crs.IsUse = 'Y'
+            INNER JOIN lms_predict_answerpaper AS pa ON r.PredictIdx = pa.PredictIdx AND r.PrIdx = pa.PrIdx AND pp.PpIdx = pa.PpIdx
+            INNER JOIN lms_predict_questions AS pq ON pa.PpIdx = pq.PpIdx AND pa.PqIdx = pq.PqIdx AND pq.IsStatus = 'Y'
+            INNER JOIN lms_member AS m ON r.MemIdx = m.MemIdx
+        ";
+
+        $group_order_by = "GROUP BY r.PrIdx ORDER BY r.RegDatm ASC";
+        return $this->_conn->query('select ' . $column . $from . $where . $group_order_by)->result_array();
+    }
 }

@@ -5,6 +5,8 @@
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
+        <select id="temp_subject_code" style="display: none;"></select>
+
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group form-inline">
@@ -33,6 +35,25 @@
                                 @if($v['Ccd'] != '712018')
                                     <option value="{{$v['Ccd']}}">{{$v['CcdName']}}</option>
                                 @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-1 control-label">답안데이터추출 추가조건</label>
+                    <div class="col-md-11 form-inline">
+                        <select class="form-control" id="search_subject_code" name="search_subject_code" title="과목 답안데이터추출">
+                            <option value="">과목선택</option>
+                            @foreach($arr_subject_list as $key => $row)
+                                <option class="{{$row['PredictIdx'].'_'.$row['TakeMockPart']}}" data-subject-type="{{$row['Type']}}" value="{{$row['SubjectCode']}}">{{$row['CcdName']}}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control mr-5" id="search_question_type_cnt" name="search_question_type_cnt">
+                            <option value="">책형</option>
+                            @foreach($predictList as $row)
+                                @for($i=1; $i<=$row['QuestionTypeCnt']; $i++)
+                                    <option value="{{$i}}" class="{{$row['PredictIdx']}}">{{$i}}형</option>
+                                @endfor
                             @endforeach
                         </select>
                     </div>
@@ -97,10 +118,23 @@
             //직렬
             $search_form.find('select[name="search_take_mock_part"]').chained("#search_PredictIdx");
 
+            //책형
+            $search_form.find('select[name="search_question_type_cnt"]').chained("#search_PredictIdx");
+
+            // 과목
+            $search_form.find('select[name="search_subject_code"]').chained("#temp_subject_code");
+            $search_form.find('select[name="search_take_mock_part"]').on('change', function () {
+                var p_idx = $search_form.find('select[name="search_PredictIdx"]').val();
+                $("#temp_subject_code option").remove();
+                $("#temp_subject_code").append('<option value="'+p_idx+'_'+this.value+'">과목코드</option>');
+                $("#temp_subject_code option").trigger('change');
+            });
+
             // DataTables
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 답안데이터추출', className: 'btn-sm btn-success border-radius-reset mr-15 btn-answer-excel' },
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn btn-sm btn-primary btn-sms' }
                 ],
@@ -134,6 +168,30 @@
                             if (data > 0) { return '일반채점'; } else { return '직접채점'; }
                         }}
                 ]
+            });
+
+            // 답안데이터추출 엑셀다운로드
+            $('.btn-answer-excel').on('click', function(event) {
+                event.preventDefault();
+
+                if ($("#search_take_mock_part").val() == '') {
+                    alert('응시직렬을 선택해주세요.');
+                    return false;
+                }
+
+                if ($("#search_subject_code").val() == '') {
+                    alert('과목을 선택해주세요.');
+                    return false;
+                }
+
+                if ($("#search_question_type_cnt").val() == '') {
+                    alert('책형을 선택해주세요.');
+                    return false;
+                }
+
+                if (confirm('답안데이터추출 엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/predict/markrequest/answerPaperExcel') }}', $search_form.serializeArray(), 'POST');
+                }
             });
 
             // 엑셀다운로드

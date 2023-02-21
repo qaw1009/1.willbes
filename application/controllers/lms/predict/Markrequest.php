@@ -41,10 +41,16 @@ class Markrequest extends \app\controllers\BaseController
             ]
         ];
         list($data, $count) = $this->predictModel->mainList($condition);
+
+        //응시지역
         $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
+        $area = $this->predictModel->getArea($sysCode_Area);
+
         //직렬리스트
         $arr_take_mock_part_list = $this->predictCodeModel->getPredictForTakeMockPart();
-        $area = $this->predictModel->getArea($sysCode_Area);
+
+        //합격예측별 직렬별 과목 전체 리스트
+        $arr_subject_list = $this->predictCodeModel->getPredictForSubjectAll();
 
         $this->load->view('predict/markrequest/index', [
             'predictList' => $data,
@@ -52,6 +58,7 @@ class Markrequest extends \app\controllers\BaseController
             'def_site_code' => $scode,
             'arr_take_mock_part_list' => $arr_take_mock_part_list,
             'area' => $area,
+            'arr_subject_list' => $arr_subject_list,
             'search_fi'=> $search_fi
         ]);
     }
@@ -150,4 +157,49 @@ class Markrequest extends \app\controllers\BaseController
 
     }
 
+    public function answerPaperExcel()
+    {
+        $excel_data = [];
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
+        $arr_condition = [
+            'EQ' => [
+                'PP.PredictIdx' => $this->_req('search_PredictIdx'),
+                'r.TakeMockPart' => $this->_req('search_take_mock_part'),
+                'crs.SubjectCode' => $this->_req('search_subject_code'),
+                'pq.QuestionType' => $this->_req('search_question_type_cnt'),
+            ]
+        ];
+
+        $result = $this->predictModel->listAnswerPaperForExcel($arr_condition);
+
+        $file_name = '답안입력현황';
+        $question_headers = [];
+        if (empty($result) === false) {
+            $file_name = '답안입력현황_'.$result[0]['PaperName'].'_'.$result[0]['QuestionType'].'_'.date('Y-m-d');
+            $arr_question_no = explode(',',$result[0]['question_no']);
+            foreach ($arr_question_no as $val) {
+                $question_headers[] = $val;
+            }
+        }
+
+        $headers = ['ID', '직렬', '최종저장시간'];
+        $headers = array_merge($headers,$question_headers);
+
+        $this->load->library('excel');
+        foreach ($result as $key => $val) {
+            $excel_data[$key][] = $val['MemId'];
+            $excel_data[$key][] = $val['TakeMockPartName'];
+            $excel_data[$key][] = $val['RegDatm'];
+
+            $arr_member_answer = explode(',',$val['member_answer']);
+            foreach ($question_headers as $q_key => $q_no) {
+                $excel_data[$key][] = $arr_member_answer[$q_key];
+            }
+        }
+        if ($this->excel->exportHugeExcel($file_name, $excel_data, $headers) !== true) {
+            show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
+    }
 }

@@ -235,7 +235,7 @@
                 </div>
                 <div class="coupon">
                     <p><strong>김종권 역사</strong>
-                    3~11월 전공국어 패키지</p>
+                    3~11월 전공역사 패키지</p>
                     <div class="btns">
                         <a href="#none">학원강의 쿠폰</a>
                         <a href="#none">동영상강의 쿠폰</a>

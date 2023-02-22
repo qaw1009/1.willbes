@@ -104,7 +104,7 @@
                     <td colspan="13" class="bg-odd text-center">
                         <h4 class="inline-block no-margin">
                             <span id="search_period" class="pr-5"></span>
-                            <span id="sum_req_price">0</span>
+                            <span id="sum_req_price"></span>
                             <span class="blue"><span id="sum_deposit_price">0</span></span>
                             - <span class="red"><span id="sum_cancel_price">0</span></span>
                             = <span id="sum_pay_price">0</span>

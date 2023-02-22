@@ -121,11 +121,20 @@
                         <tr>
                             <th>응시예정과목</th>
                             <td>
-                                {{ $arr_base['member_recipient']['SubjectName'] or ''}}
+                                <select id="register_data1" name="register_data1" title="과목">
+                                    <option value="">과목 선택</option>
+                                    <option value="">유아</option>
+                                    <option value="">국어</option>
+                                    <option value="">영어</option>
+                                    <option value="">수학</option>
+                                    <option value="">역사</option>
+                                    <option value="">음악</option>
+                                    <option value="">중국어</option>
+                                </select>
                             </td>
                             <th>받고자 하는 쿠폰</th>
                             <td colspan="4">
-                                <select id="register_data" name="register_data" title="쿠폰">
+                                <select id="register_data2" name="register_data2" title="쿠폰">
                                     <option value="">쿠폰 선택</option>
                                     <option value="">[이경범] 교육학 3~11월 패키지 10% 할인 쿠폰</option>
                                     <option value="">[송원영] 3~11월 국교/문교 패키지 10%할인 쿠폰</option>
@@ -139,7 +148,6 @@
                                     <option value="">[장영희] 3~11월 중국어 초수트랙 패키지 10% 할인 쿠폰</option>
                                     <option value="">[박태영] 3~11월 중국어 N+수트랙 패키지 10% 할인 쿠폰</option>
                                 </select>
-                                {{sess_data('mem_phone')}}
                             </td>
                         </tr>
                         <tr>

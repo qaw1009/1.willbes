@@ -231,7 +231,7 @@
                         <img src="https://static.willbes.net/public/images/promotion/2022/11/2810_01.png" alt="event2">
                         <a href="#url" title="UP!" style="position: absolute; left: 47.05%; top: 13.6%; width: 22.05%; height: 4.13%; z-index: 2;"></a> 
                         <a href="javascript:void(0);" title="링크복사" onclick="copyTxt();" style="position: absolute; left: 35.45%; top: 91.28%; width: 11.52%; height: 2.21%; z-index: 2;"></a>
-                        <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="소문내기 다운" style="position: absolute; top: 91.28%; left: 47.41%; width: 16.52%; height: 2.21%;z-index: 2;"></a>
+                        <a href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" title="소문내기 다운" style="position: absolute; top: 91.28%; left: 47.41%; width: 16.52%; height: 2.21%;z-index: 2;"></a>
                         
                         <a href="https://section.blog.naver.com/" target="_blank" title="블로그" style="position: absolute; left: 72.59%; top: 90.58%; width: 5.18%; height: 3.08%; z-index: 2;"></a>
                         <a href="https://www.instagram.com/" target="_blank" title="인스타" style="position: absolute; left: 78.04%; top: 90.58%; width: 5.18%; height: 3.08%; z-index: 2;"></a>
@@ -253,8 +253,7 @@
                         {!! method_field('POST') !!}
                         <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                         <input type="hidden" name="register_type" value="promotion"/>
-                        <input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/> {{-- 하나수강만 선택 가능할시 --}}
-
+                        {{--<input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/>--}} {{-- 하나수강만 선택 가능할시 --}}
                         <input type="hidden" id="userId" name="userId" value="{{sess_data('mem_id')}}">
                         <input type="hidden" name="register_name" value="{{sess_data('mem_name')}}">
                         <input type="hidden" name="register_tel" value="{{sess_data('mem_phone')}}">
@@ -266,7 +265,7 @@
                         <div class="point">                   
                             <h5>Q. 내가 생각하는 예상 합격컷은?</h5>
                             <div>
-                                예상 합격 점수 (평균값) <input class="score" type="text" maxlength="3" name="register_data1" oninput="maxLengthCheck(this);" value="{{ (empty($register_count[0]['EtcValue']) === false ? $register_count[0]['EtcValue'] : '') }}"> 점
+                                예상 합격 점수 (평균값) <input class="score" type="text" maxlength="5" name="register_data1" oninput="maxLengthCheck(this);" value="{{ (empty($register_count[0]['EtcValue']) === false ? $register_count[0]['EtcValue'] : '') }}"> 점
                                 <a href="javascript:void(0);" onclick="fn_submit(); return false;">합격 점수 예상하기 ></a>
                             </div>
                         </div>

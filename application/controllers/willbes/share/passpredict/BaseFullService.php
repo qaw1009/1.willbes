@@ -11,6 +11,7 @@ class BaseFullService extends \app\controllers\FrontController
         '2' => 'off'
         ,'3' => 'off'
         ,'4' => 'off'
+        ,'answer_submit_type' => 'on'
     ];  //회원단계 초기화
 
     public function __construct()
@@ -123,7 +124,7 @@ class BaseFullService extends \app\controllers\FrontController
                     $list_question = $this->_listQuestionForRegister($predict_idx, $regi_data['PrIdx'], $regi_subject_data);
                 }
 
-                if ($this->_arr_member_step[4] == 'on-ready') {
+                if ($this->_arr_member_step['answer_submit_type'] == 'off') {
                     if ($predict_data['ServiceIsUse'] == 'Y') {
                         if (date('YmdHi') >= $predict_data['ServiceSDatm'] && date('YmdHi') <= $predict_data['ServiceEDatm']) {
                             $this->_arr_member_step[4] = 'on';
@@ -362,7 +363,7 @@ class BaseFullService extends \app\controllers\FrontController
         if (empty($result) === false) {
             //등록된 답안 입력 정보가 있다면 (4단계 => on-ready 대기)
             if (empty($result[0]['Answer']) === false) {
-                $this->_arr_member_step[4] = 'on-ready';
+                $this->_arr_member_step['answer_submit_type'] = 'off';
             }
         }
 
@@ -452,7 +453,7 @@ class BaseFullService extends \app\controllers\FrontController
         //테이블 데이터(배열셋팅), 차트 데이터(배열정렬수정)
         foreach ($temp['total'] as $key => $row) {
             foreach ($row as $data_key => $data) {
-                if ($data_key <= 14) {
+                if ($data_key <= 11) {
                     $return['total'][$key][$data_key] = [
                         'title' => $data['title']
                         ,'avgSection' => $data['avgSection']
@@ -469,7 +470,7 @@ class BaseFullService extends \app\controllers\FrontController
         $sort = [];
         foreach ($temp['takemockpart'] as $key => $row) {
             foreach ($row as $data_key => $data) {
-                if ($data_key <= 14) {
+                if ($data_key <= 11) {
                     $return['takemockpart'][$key][$data_key] = [
                         'title' => $data['title']
                         ,'avgSection' => $data['avgSection']

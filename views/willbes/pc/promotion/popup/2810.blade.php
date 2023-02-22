@@ -28,7 +28,7 @@
     .termsBx li strong {display:inline-block; width:100px;}
     .termsBx li span {color:#1087ef}
     .termsBx p {font-size:16px; margin-bottom:10px; font-weight:bold}
-    .termsBx a {display:inline-block; width:280px; border-radius:4px; color:#fff; background:#c14842; text-align:center; height:26px; line-height:26px;
+    .termsBx a {display:inline-block; width:180px; border-radius:4px; color:#fff; background:#c14842; text-align:center; height:26px; line-height:26px;
         font-size:12px; border-bottom:2px solid #6b1612; border-right:1px solid #6b1612; vertical-align:auto}
     .termsBx a:hover {background:#a8312b;}
     .termsBx input[type=button] {display:inline-block; color:#fff; background:#4582cd; text-align:center; padding:0 15px; height:26px; line-height:26px; border:0}
@@ -122,8 +122,8 @@
                         </li>
                     </ul>
 
-                    <h3  class="tit">[PSAT 과목 수강후기 작성]</h3>
-                    <a href="{{ (empty($arr_base['arr_file']) === true) ? '' : front_url('/promotion/download?file_idx='.$arr_base['arr_file']['EfIdx'].'&event_idx='.$arr_base['data']['ElIdx']) }}"  class="file">PSAT 과목 수강후기 양식 다운로드 ↓</a><br>
+                    <h3  class="tit">[한림법학원 PSAT 수강 후기 작성]</h3>
+                    <a href="{{ (empty($arr_base['arr_file']) === true) ? '' : front_url('/promotion/download?file_idx='.$arr_base['arr_file']['EfIdx'].'&event_idx='.$arr_base['data']['ElIdx']) }}"  class="file">후기 양식 예시 확인하기 ↓</a><br>
                     <input type="file" name="attach_file" id="attach_file" style="width:250px; margin-top:5px">
                     @if(empty($arr_base['regist_member']['FileFullPath']) === false)
                     <input type="button" onclick="javascript:modifyFile();" value="파일수정">

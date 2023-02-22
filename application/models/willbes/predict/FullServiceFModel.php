@@ -643,8 +643,8 @@ class FullServiceFModel extends WB_Model
                 throw new \Exception('조회된 기본정보가 없습니다.');
             }
 
-            if ($register_data['PointDelCnt'] >= 2) {
-                throw new \Exception('재채점은 최대 2회만 가능합니다.');
+            if ($register_data['PointDelCnt'] >= 1) {
+                throw new \Exception('재채점은 최대 1회만 가능합니다.');
             }
 
             $where = ['PrIdx' => $pr_idx];
@@ -821,12 +821,12 @@ class FullServiceFModel extends WB_Model
             ";
         }
 
-        $total_numbering_table = /** @lang text */ "SELECT '0' AS GroupBy, num AS n FROM tmp_numbers LIMIT 25";
+        $total_numbering_table = /** @lang text */ "SELECT '0' AS GroupBy, num AS n FROM tmp_numbers LIMIT 20";
         $group_numbering_table = /** @lang text */ "
             SELECT a.GroupBy, a.n
-            FROM (SELECT '1' AS GroupBy, num AS n FROM tmp_numbers LIMIT 25) AS a
-            UNION ALL SELECT GroupBy, n FROM (SELECT '2' AS GroupBy, num AS n FROM tmp_numbers LIMIT 25) AS b
-            UNION ALL SELECT GroupBy, n FROM (SELECT '3' AS GroupBy, num AS n FROM tmp_numbers LIMIT 25) AS c
+            FROM (SELECT '1' AS GroupBy, num AS n FROM tmp_numbers LIMIT 20) AS a
+            UNION ALL SELECT GroupBy, n FROM (SELECT '2' AS GroupBy, num AS n FROM tmp_numbers LIMIT 20) AS b
+            UNION ALL SELECT GroupBy, n FROM (SELECT '3' AS GroupBy, num AS n FROM tmp_numbers LIMIT 20) AS c
         ";
 
         $query_string = /** @lang text */ "
@@ -1275,7 +1275,7 @@ class FullServiceFModel extends WB_Model
         return true;
     }
 
-    private function _setColumnForChartData()
+    /*private function _setColumnForChartData()
     {
         $return['title'] = "
             (
@@ -1309,31 +1309,85 @@ class FullServiceFModel extends WB_Model
 
         $return['numberForScore'] = "
             (
-                CASE WHEN a.OrgPoint < 4 THEN '1'
-                WHEN a.OrgPoint BETWEEN 4 AND 7 THEN '2'
-                WHEN a.OrgPoint BETWEEN 8 AND 11 THEN '3'
-                WHEN a.OrgPoint BETWEEN 12 AND 15 THEN '4'
-                WHEN a.OrgPoint BETWEEN 16 AND 19 THEN '5'
-                WHEN a.OrgPoint BETWEEN 20 AND 23 THEN '6'
-                WHEN a.OrgPoint BETWEEN 24 AND 27 THEN '7'
-                WHEN a.OrgPoint BETWEEN 28 AND 31 THEN '8'
-                WHEN a.OrgPoint BETWEEN 32 AND 35 THEN '9'
-                WHEN a.OrgPoint BETWEEN 36 AND 39 THEN '10'
-                WHEN a.OrgPoint BETWEEN 40 AND 43 THEN '11'
-                WHEN a.OrgPoint BETWEEN 44 AND 47 THEN '12'
-                WHEN a.OrgPoint BETWEEN 48 AND 51 THEN '13'
-                WHEN a.OrgPoint BETWEEN 52 AND 55 THEN '14'
-                WHEN a.OrgPoint BETWEEN 56 AND 59 THEN '15'
-                WHEN a.OrgPoint BETWEEN 60 AND 63 THEN '16'
-                WHEN a.OrgPoint BETWEEN 64 AND 67 THEN '17'
-                WHEN a.OrgPoint BETWEEN 68 AND 71 THEN '18'
-                WHEN a.OrgPoint BETWEEN 72 AND 75 THEN '19'
-                WHEN a.OrgPoint BETWEEN 76 AND 79 THEN '20'
-                WHEN a.OrgPoint BETWEEN 80 AND 83 THEN '21'
-                WHEN a.OrgPoint BETWEEN 84 AND 87 THEN '22'
-                WHEN a.OrgPoint BETWEEN 88 AND 91 THEN '23'
-                WHEN a.OrgPoint BETWEEN 92 AND 95 THEN '24'
+                CASE WHEN a.OrgPoint <= 4 THEN '1'
+                WHEN a.OrgPoint > 4 AND a.OrgPoint <= 7 THEN '2'
+                WHEN a.OrgPoint > 7 AND a.OrgPoint <= 11 THEN '3'
+                WHEN a.OrgPoint > 11 AND a.OrgPoint <= 15 THEN '4'
+                WHEN a.OrgPoint > 15 AND a.OrgPoint <= 19 THEN '5'
+                WHEN a.OrgPoint > 19 AND a.OrgPoint <= 23 THEN '6'
+                WHEN a.OrgPoint > 23 AND a.OrgPoint <= 27 THEN '7'
+                WHEN a.OrgPoint > 27 AND a.OrgPoint <= 31 THEN '8'
+                WHEN a.OrgPoint > 31 AND a.OrgPoint <= 35 THEN '9'
+                WHEN a.OrgPoint > 35 AND a.OrgPoint <= 39 THEN '10'
+                WHEN a.OrgPoint > 39 AND a.OrgPoint <= 43 THEN '11'
+                WHEN a.OrgPoint > 43 AND a.OrgPoint <= 47 THEN '12'
+                WHEN a.OrgPoint > 47 AND a.OrgPoint <= 51 THEN '13'
+                WHEN a.OrgPoint > 51 AND a.OrgPoint <= 55 THEN '14'
+                WHEN a.OrgPoint > 55 AND a.OrgPoint <= 59 THEN '15'
+                WHEN a.OrgPoint > 59 AND a.OrgPoint <= 63 THEN '16'
+                WHEN a.OrgPoint > 63 AND a.OrgPoint <= 67 THEN '17'
+                WHEN a.OrgPoint > 67 AND a.OrgPoint <= 71 THEN '18'
+                WHEN a.OrgPoint > 71 AND a.OrgPoint <= 75 THEN '19'
+                WHEN a.OrgPoint > 75 AND a.OrgPoint <= 79 THEN '20'
+                WHEN a.OrgPoint > 79 AND a.OrgPoint <= 83 THEN '21'
+                WHEN a.OrgPoint > 83 AND a.OrgPoint <= 87 THEN '22'
+                WHEN a.OrgPoint > 87 AND a.OrgPoint <= 91 THEN '23'
+                WHEN a.OrgPoint > 91 AND a.OrgPoint <= 95 THEN '24'
                 ELSE '25'
+            END)
+        ";
+
+        return $return;
+    }*/
+    private function _setColumnForChartData()
+    {
+        $return['title'] = "
+            (
+                CASE WHEN m.n = 1 THEN '~5점'
+                WHEN m.n = 2 THEN '5점~10점'
+                WHEN m.n = 3 THEN '10점~15점'
+                WHEN m.n = 4 THEN '15점~20점'
+                WHEN m.n = 5 THEN '20점~25점'
+                WHEN m.n = 6 THEN '25점~30점'
+                WHEN m.n = 7 THEN '30점~35점'
+                WHEN m.n = 8 THEN '35점~40점'
+                WHEN m.n = 9 THEN '40점~45점'
+                WHEN m.n = 10 THEN '45점~50점'
+                WHEN m.n = 11 THEN '50점~55점'
+                WHEN m.n = 12 THEN '55점~60점'
+                WHEN m.n = 13 THEN '60점~65점'
+                WHEN m.n = 14 THEN '65점~70점'
+                WHEN m.n = 15 THEN '70점~75점'
+                WHEN m.n = 16 THEN '75점~80점'
+                WHEN m.n = 17 THEN '80점~85점'
+                WHEN m.n = 18 THEN '85점~90점'
+                WHEN m.n = 19 THEN '90점~95점'
+                WHEN m.n = 20 THEN '95점~100점'
+            END)
+        ";
+
+        $return['numberForScore'] = "
+            (
+                CASE WHEN a.OrgPoint <= 5 THEN '1'
+                WHEN a.OrgPoint > 5 AND a.OrgPoint <= 10 THEN '2'
+                WHEN a.OrgPoint > 10 AND a.OrgPoint <= 15 THEN '3'
+                WHEN a.OrgPoint > 15 AND a.OrgPoint <= 20 THEN '4'
+                WHEN a.OrgPoint > 20 AND a.OrgPoint <= 25 THEN '5'
+                WHEN a.OrgPoint > 25 AND a.OrgPoint <= 30 THEN '6'
+                WHEN a.OrgPoint > 30 AND a.OrgPoint <= 35 THEN '7'
+                WHEN a.OrgPoint > 35 AND a.OrgPoint <= 40 THEN '8'
+                WHEN a.OrgPoint > 40 AND a.OrgPoint <= 45 THEN '9'
+                WHEN a.OrgPoint > 45 AND a.OrgPoint <= 50 THEN '10'
+                WHEN a.OrgPoint > 50 AND a.OrgPoint <= 55 THEN '11'
+                WHEN a.OrgPoint > 55 AND a.OrgPoint <= 60 THEN '12'
+                WHEN a.OrgPoint > 60 AND a.OrgPoint <= 65 THEN '13'
+                WHEN a.OrgPoint > 65 AND a.OrgPoint <= 70 THEN '14'
+                WHEN a.OrgPoint > 70 AND a.OrgPoint <= 75 THEN '15'
+                WHEN a.OrgPoint > 75 AND a.OrgPoint <= 80 THEN '16'
+                WHEN a.OrgPoint > 80 AND a.OrgPoint <= 85 THEN '17'
+                WHEN a.OrgPoint > 85 AND a.OrgPoint <= 90 THEN '18'
+                WHEN a.OrgPoint > 90 AND a.OrgPoint <= 95 THEN '19'
+                WHEN a.OrgPoint > 95 AND a.OrgPoint <= 100 THEN '20'
             END)
         ";
 

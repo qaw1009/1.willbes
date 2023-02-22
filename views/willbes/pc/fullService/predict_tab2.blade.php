@@ -217,7 +217,7 @@
         </div>
     </form>
     <div class="markSbtn1 mb35">
-        @if ($arr_member_step[4] != 'on')
+        @if ($arr_member_step['answer_submit_type'] == 'on')
             <a href="javascript:void(0)" onclick="answerSubmit(); return false;">채 점 하 기</a>
         @endif
     </div>
@@ -411,6 +411,7 @@
         var number = (isNaN(takenum)) ? 0 : takenum;
         var arrItem = {!! json_encode($arr_base['arr_mock_part_takenum']) !!}
 
+        if (takenum.length != '8') { return false; }
         if (typeof arrItem[take_mock_part] !== 'undefined') {
             if (arrItem[take_mock_part]['ValidateLengthTakeNum'] > 0) {
                 var ch = String(number).substr(0, arrItem[take_mock_part]['ValidateLengthTakeNum']);

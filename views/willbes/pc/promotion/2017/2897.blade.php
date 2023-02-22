@@ -100,80 +100,80 @@
                     <p><strong>이경범 교육학</strong>
                     3~11월 패키지</p>
                     <div class="btns">
-                        <a href="#">학원강의 쿠폰</a>
-                        <a href="#">동영상강의 쿠폰</a>
+                        <a href="#none">학원강의 쿠폰</a>
+                        <a href="#none">동영상강의 쿠폰</a>
                     </div>
                 </div>
                 <div class="coupon">
                     <p><strong>송원영 국어</strong>
                     3~11월 국교/문교 패키지</p>
                     <div class="btns">
-                        <a href="#">학원강의 쿠폰</a>
-                        <a href="#">동영상강의 쿠폰</a>
+                        <a href="#none">학원강의 쿠폰</a>
+                        <a href="#none">동영상강의 쿠폰</a>
                     </div>
                 </div>
                 <div class="coupon">
                     <p><strong>송원영 국어</strong>
                     3~11월 국교론 패키지</p>
                     <div class="btns">
-                        <a href="#">학원강의 쿠폰</a>
-                        <a href="#">동영상강의 쿠폰</a>
+                        <a href="#none">학원강의 쿠폰</a>
+                        <a href="#none">동영상강의 쿠폰</a>
                     </div>
                 </div>
                 <div class="coupon">
                     <p><strong>권보민 국어</strong>
                     3~11월 국어 문법 패키지</p>
                     <div class="btns">
-                        <a href="#">학원강의 쿠폰</a>
-                        <a href="#">동영상강의 쿠폰</a>
+                        <a href="#none">학원강의 쿠폰</a>
+                        <a href="#none">동영상강의 쿠폰</a>
                     </div>
                 </div>
                 <div class="coupon">
                     <p><strong>구동언 국어</strong>
                     3~11월 전공국어 패키지</p>
                     <div class="btns">
-                        <a href="#">학원강의 쿠폰</a>
-                        <a href="#">동영상강의 쿠폰</a>
+                        <a href="#none">학원강의 쿠폰</a>
+                        <a href="#none">동영상강의 쿠폰</a>
                     </div>
                 </div>
                 <div class="coupon">
                     <p><strong>박태영 수학교육론</strong>
                     3~11월 패키지</p>
                     <div class="btns">
-                        <a href="#">학원강의 쿠폰</a>
-                        <a href="#">동영상강의 쿠폰</a>
+                        <a href="#none">학원강의 쿠폰</a>
+                        <a href="#none">동영상강의 쿠폰</a>
                     </div>
                 </div>
                 <div class="coupon">
                     <p><strong>박혜향 수학교육론</strong>
                     3~11월 패키지</p>
                     <div class="btns">
-                        <a href="#">학원강의 쿠폰</a>
-                        <a href="#">동영상강의 쿠폰</a>
+                        <a href="#none">학원강의 쿠폰</a>
+                        <a href="#none">동영상강의 쿠폰</a>
                     </div>
                 </div>
                 <div class="coupon">
                     <p><strong>김종권 역사</strong>
                     3~11월 전공국어 패키지</p>
                     <div class="btns">
-                        <a href="#">학원강의 쿠폰</a>
-                        <a href="#">동영상강의 쿠폰</a>
+                        <a href="#none">학원강의 쿠폰</a>
+                        <a href="#none">동영상강의 쿠폰</a>
                     </div>
                 </div>
                 <div class="coupon">
                     <p><strong>장영희 중국어</strong>
                     3~11월 초수트랙 패키지</p>
                     <div class="btns">
-                        <a href="#">학원강의 쿠폰</a>
-                        <a href="#">동영상강의 쿠폰</a>
+                        <a href="#none">학원강의 쿠폰</a>
+                        <a href="#none">동영상강의 쿠폰</a>
                     </div>
                 </div>
                 <div class="coupon">
                     <p><strong>장영희 중국어</strong>
                     3~11월 N+수트랙 패키지</p>
                     <div class="btns">
-                        <a href="#">학원강의 쿠폰</a>
-                        <a href="#">동영상강의 쿠폰</a>
+                        <a href="#none">학원강의 쿠폰</a>
+                        <a href="#none">동영상강의 쿠폰</a>
                     </div>
                 </div>
             </div>
@@ -181,7 +181,7 @@
                 ※ 로그인 후, 해당 쿠폰을 클릭하면, 발급받을 수 있습니다. <br>
                 대상자가 아닌 경우, 발급이 제한됩니다. 
             </div>
-            <div><a href="#"><img src="https://static.willbes.net/public/images/promotion/2023/02/2897_02_btn.png"/></a></div>
+            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2023/02/2897_02_btn.png"/></a></div>
         </div>
 
         <div class="evtCtnsBox event03" data-aos="fade-up">

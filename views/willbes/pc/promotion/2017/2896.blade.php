@@ -78,8 +78,7 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox eventTop" data-aos="fade-up">
-        	<img src="https://static.willbes.net/public/images/promotion/2023/02/2897_top.jpg" alt="윌비스 임용 합격 환승센터"/>
-            <span><img src="https://static.willbes.net/public/images/promotion/2023/02/2897_top_01.png" alt=""/></span>
+        	2896 작업중
         </div>
 
         <div class="evtCtnsBox event01" data-aos="fade-up">

@@ -43,6 +43,17 @@
         .event01 label {margin-left:5px; font-size:16px; margin-bottom:100px; display:block}
         .event01 input[type=checkbox] {width:20px; height:20px}
 
+        .table_wrap {width:1050px; margin:0 auto 50px;}
+        .table_wrap table {width:100%; border:3px solid #464646; background:#fff; margin:10px 0}
+        .table_wrap td,
+        .table_wrap th{padding:10px; border:1px solid #cdcdcd; border-left:0; border-top:0; font-size:15px; text-align:center}
+        .table_wrap th{color:#000; font-weight:500; background:#f4f4f4}
+        .table_wrap td{color:#444;padding:10px; line-height:1.5; text-align:left}
+        .table_wrap tr th{border-top:1px solid #cdcdcd}
+        .btnSet {width:80%; margin:50px auto 0}
+        .btnSet a {display:block; padding:20px 0; text-align:center; font-size:25px; font-weight:bold; background:#ff3e3e; color:#fff; border-radius:50px}
+        .btnSet a:hover {background:#333;}   
+
         .event02 {width:1120px; margin:0 auto 150px;}        
         .event02 .couponWrap {width:1000px; margin:80px auto; display:flex; justify-content: space-between; flex-wrap: wrap; }
         .event02 .coupon {position: relative; background:url(https://static.willbes.net/public/images/promotion/2023/02/2897_02_coupon.jpg) no-repeat; height: 250px; width: 310px; margin-bottom:30px}
@@ -91,6 +102,68 @@
                 <label><input class="btn-login-check" type="checkbox" id="is_chk" name="is_chk" value="Y" title="개인정보 수집/이용 동의" autocomplete="off"> 윌비스에 개인정보 제공 동의하기(필수)</label>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_01_02.jpg"/>
+            <div class="table_wrap">
+                <table>
+                    <col width="15%">
+                    <col width="20%">
+                    <col width="15%">
+                    <col width="20%">
+                    <col width="15%">
+                    <col>
+                    <tbody>
+                        <tr>
+                            <th>성명</th>
+                            <td>{{sess_data('mem_name')}}</td>
+                            <th>윌비스 ID</th>
+                            <td>{{sess_data('mem_id')}}</td>
+                            <th>연락처</th>
+                            <td>{{sess_data('mem_phone')}}</td>
+                        </tr>
+                        <tr>
+                            <th>응시예정과목</th>
+                            <td>
+                                {{ $arr_base['member_recipient']['SubjectName'] or ''}}
+                            </td>
+                            <th>받고자 하는 쿠폰</th>
+                            <td colspan="4">
+                                <select id="register_data" name="register_data" title="쿠폰">
+                                    <option value="">쿠폰 선택</option>
+                                    <option value="">[이경범] 교육학 3~11월 패키지 10% 할인 쿠폰</option>
+                                    <option value="">[송원영] 3~11월 국교/문교 패키지 10%할인 쿠폰</option>
+                                    <option value="">[송원영] 3~11월 국교론 패키지 10%할인 쿠폰</option>
+                                    <option value="">[권보민] 3~11월 국어문법 패키지 10%할인 쿠폰</option>
+                                    <option value="">[송원영+권보민] 3~11월 완전정복 패키지 10%할인 쿠폰</option>
+                                    <option value="">[박태영] 3~11월 수학교육론 패키지 10% 할인 쿠폰</option>
+                                    <option value="">[박혜향] 3~11월 수학교육론 패키지 10% 할인 쿠폰</option>
+                                    <option value="">[김종권] 3~11월 전공역사 패키지 10% 할인 쿠폰</option>
+                                    <option value="">심화 Free Pass 패키지 00% 할인 쿠폰</option>
+                                    <option value="">[장영희] 3~11월 중국어 초수트랙 패키지 10% 할인 쿠폰</option>
+                                    <option value="">[박태영] 3~11월 중국어 N+수트랙 패키지 10% 할인 쿠폰</option>
+                                </select>
+                                {{sess_data('mem_phone')}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>수강이력 인증 파일</th>
+                            <td colspan="5">
+                                <input class="btn-login-check" type="file" id="attach_file_1" name="attach_file" onchange="chkUploadFile(this)" style="width:40%; margin-right:10px"/>
+                                <a onclick="del_file(1);"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" style="vertical-align:middle !important" alt="삭제"></a>
+                                * 10MB 이하의 이미지 파일(png, jpg, gif, bmp)
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <ul class="evtInfoBox">
+                    <li>환승할인 쿠폰의 발급을 위한 인증서류는 수강학원명, 수강생명, 수강과목, 수강기간이 명기되어 있는 
+                    수강증, 1개월 이내 발급된 수강확인증만 인정됩니다.</li>
+                    <li>타학원의 수강인증은 2021년 ~ 2022년에 진행된 (유료)강의만 해당 됩니다.</li>
+                    <li>인증 서류의 식별이 불가능한 경우 또는 이미지를 도용한 경우에는 할인혜택이 적용이 불가합니다.</li>
+                </ul>
+                <div class="btnSet">
+                    <a href="{!! front_url('/event/registerStore') !!}" onclick="fn_submit(); return false;">수강이력 인증하기 ></a>
+                </div>
+            </div>
         </div>
 
         <div class="evtCtnsBox event02" data-aos="fade-up">

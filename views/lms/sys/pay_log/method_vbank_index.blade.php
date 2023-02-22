@@ -2,16 +2,16 @@
 
 @section('content')
     <ul class="nav nav-tabs bar_tabs mb-20" role="tablist">
-        <li role="presentation" class="active"><a href="{{ site_url('/sys/payLog/index/pay') }}" class="cs-pointer"><strong>결제/취소</strong></a></li>
+        <li role="presentation"><a href="{{ site_url('/sys/payLog/index/pay') }}">결제/취소</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/method/card') }}">신용카드</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/method/bank') }}">계좌이체</a></li>
-        <li role="presentation"><a href="{{ site_url('/sys/payLog/method/vbank') }}">가상계좌</a></li>
+        <li role="presentation" class="active"><a href="{{ site_url('/sys/payLog/method/vbank') }}" class="cs-pointer"><strong>가상계좌</strong></a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/deposit') }}">가상계좌입금통보</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/escrow') }}">에스크로</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/stats') }}">승인완료통계</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/cancelStats') }}">결제취소통계</a></li>
     </ul>
-    <h5>- 결제/취소 연동 로그를 확인하는 메뉴입니다.</h5>
+    <h5>- 가상계좌 입금대기/완료/취소/부분환불 연동 로그를 확인하는 메뉴입니다. (연동실패건 제외)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
@@ -23,11 +23,7 @@
                             <option value="OrderNo">주문번호</option>
                             <option value="PgMid">상점아이디</option>
                             <option value="PgTid">TID</option>
-                            <option value="PayMethod">결제방법코드</option>
                             <option value="PayDetailCode">결제상세코드</option>
-                            <option value="ApprovalNo">승인번호</option>
-                            <option value="ResultMsg">결과메시지</option>
-                            <option value="ReqReason">요청사유</option>
                         </select>
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width: 260px;" title="주문검색어">
                     </div>
@@ -45,22 +41,11 @@
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control" id="search_pay_method" name="search_pay_method" title="결제방법">
-                            <option value="">결제방법</option>
-                            @foreach($codes['PayMethod'] as $key => $val)
-                                <option value="{{ $key }}">{{ $val }}</option>
-                            @endforeach
-                        </select>
                         <select class="form-control" id="search_pay_type" name="search_pay_type" title="연동구분">
                             <option value="">연동구분</option>
-                            @foreach($codes['PayType'] as $key => $val)
+                            @foreach($codes['PayType2'] as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
-                        </select>
-                        <select class="form-control" id="search_is_result" name="search_is_result" title="성공여부">
-                            <option value="">성공여부</option>
-                            <option value="Y">연동성공</option>
-                            <option value="N">연동실패</option>
                         </select>
                     </div>
                 </div>
@@ -106,16 +91,24 @@
                     <th class="valign-middle">PG구분</th>
                     <th class="valign-middle">결제구분</th>
                     <th class="valign-middle">상점아이디</th>
-                    <th class="valign-middle">TID<br/>(부분환불TID)</th>
-                    <th class="valign-middle">결제방법</th>
+                    <th class="valign-middle">TID</th>
                     <th class="valign-middle">결제상세코드</th>
-                    <th class="valign-middle">결제(취소)금액<br/>(부분환불남은금액)</th>
-                    <th class="valign-middle">승인번호</th>
-                    <th class="valign-middle">승인일시</th>
-                    <th class="valign-middle">결과코드</th>
-                    <th class="valign-middle">결과메시지</th>
-                    <th class="valign-middle">요청사유</th>
-                    <th class="valign-middle">등록일시</th>
+                    <th class="valign-middle">신청금액</th>
+                    <th class="valign-middle">신청일시</th>
+                    <th class="valign-middle">입금액</th>
+                    <th class="valign-middle">입금일시</th>
+                    <th class="valign-middle">취소금액</th>
+                    <th class="valign-middle">취소일시</th>
+                </tr>
+                <tr>
+                    <td colspan="13" class="bg-odd text-center">
+                        <h4 class="inline-block no-margin">
+                            <span id="search_period" class="pr-5"></span>
+                            <span class="blue"><span id="sum_req_price">0</span></span>
+                            - <span class="red"><span id="sum_cancel_price">0</span></span>
+                            = <span id="sum_pay_price">0</span>
+                        </h4>
+                    </td>
                 </tr>
                 </thead>
                 <tbody>
@@ -135,16 +128,14 @@
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $list_table.DataTable({
                 serverSide: true,
+                buttons: [
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success btn-excel' }
+                ],
                 ajax: {
-                    'url' : '{{ site_url('/sys/payLog/listAjax/' . $log_type) }}',
+                    'url' : '{{ site_url('/sys/payLog/methodAjax/' . $log_type) }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length });
-                    }
-                },
-                createdRow: function(row, data, dataIndex) {
-                    if (data.ResultCode !== '0000' && data.ResultCode !== '00') {
-                        $(row).addClass("danger");
                     }
                 },
                 columns: [
@@ -157,24 +148,49 @@
                     }},
                     {'data' : 'PgDriver'},
                     {'data' : 'PayType', 'render' : function(data, type, row, meta) {
-                        return meta.settings.json.codes.PayType[data];
+                        return meta.settings.json.codes.PayType2[data];
                     }},
                     {'data' : 'PgMid'},
                     {'data' : 'PgTid', 'render' : function(data, type, row, meta) {
-                        return (data !== null ? data : '') + (row.ResultPgTid !== null ? '<br/>' + row.ResultPgTid : '');
+                        return data === null ? '' : data;
                     }},
-                    {'data' : 'PayMethod'},
                     {'data' : 'PayDetailCode'},
                     {'data' : 'ReqPayPrice', 'render' : function(data, type, row, meta) {
-                        return (data != null ? addComma(data) : '') + (row.ResultPayPrice !== null ? '<br/>' + addComma(row.ResultPayPrice) : '');
+                        return data === null ? '' : addComma(data);
                     }},
-                    {'data' : 'ApprovalNo'},
-                    {'data' : 'ApprovalDatm'},
-                    {'data' : 'ResultCode'},
-                    {'data' : 'ResultMsg'},
-                    {'data' : 'ReqReason'},
-                    {'data' : 'RegDatm'}
+                    {'data' : 'VBankDatm'},
+                    {'data' : 'DepositPrice', 'render' : function(data, type, row, meta) {
+                        return data === null || data === '0' ? '' : '<span class="blue no-line-height">' + addComma(data) + '</span>';
+                    }},
+                    {'data' : 'DepositDatm'},
+                    {'data' : 'CancelPrice', 'render' : function(data, type, row, meta) {
+                        return data === null || data === '0' ? '' : '<span class="red no-line-height">' + addComma(data) + '</span>';
+                    }},
+                    {'data' : 'CancelDatm'}
                 ]
+            });
+
+            // 조회된 기간의 합계금액 표시 (datatable load event)
+            $datatable.on('xhr.dt', function(e, settings, json) {
+                $('#search_period').html('[' + $search_form.find('input[name="search_start_date"]').val() + ' ~ ' + $search_form.find('input[name="search_end_date"]').val() + ']');
+
+                if (json.sum_data !== null) {
+                    $('#sum_req_price').html(addComma(json.sum_data.tReqPayPrice) + ' (' + addComma(json.sum_data.tReqPayCnt) + '건)');
+                    $('#sum_cancel_price').html(addComma(Math.abs(json.sum_data.tCancelPrice)) + ' (' + addComma(json.sum_data.tCancelCnt) + '건)');
+                    $('#sum_pay_price').html(addComma(json.sum_data.tReqPayPrice - Math.abs(json.sum_data.tCancelPrice)) + ' (' + addComma(json.sum_data.tReqPayCnt - json.sum_data.tCancelCnt) + '건)');
+                } else {
+                    $('#sum_req_price').html('0');
+                    $('#sum_cancel_price').html('0');
+                    $('#sum_pay_price').html('0');
+                }
+            });
+
+            // 엑셀다운로드 버튼 클릭
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/sys/payLog/methodExcel/' . $log_type) }}', $search_form.serializeArray(), 'POST');
+                }
             });
         });
     </script>

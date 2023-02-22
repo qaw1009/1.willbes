@@ -9,6 +9,7 @@ class PayLog extends \app\controllers\BaseController
         'pay' => ['PgDriver', 'PgMid', 'PayType', 'PayMethod'],
         'deposit' => ['PgDriver', 'PgMid', 'DepositType'],
         'escrow' => ['PgDriver', 'PgBookMid'],
+        'method' => ['PgDriver', 'PgMid', 'PayType2'],
         'stats' => ['PgMid', 'PayDepositMethod'],
         'cancel_stats' => ['PgMid', 'CancelType'],
     ];
@@ -22,11 +23,13 @@ class PayLog extends \app\controllers\BaseController
             'willbes515' => '교재(willbes515)', 'willbes518' => '임용교재(willbes518)', 'willbes107' => '윌스토리(교재)(willbes107)'
         ],
         'PayType' => ['PA' => '결제요청', 'CA' => '결제취소', 'NC' => '망취소', 'RP' => '부분환불', 'MP' => '결제요청(모바일)'],
+        'PayType2' => ['WA' => '입금대기', 'PA' => '결제완료', 'CA' => '결제취소', 'NC' => '망취소', 'RP' => '부분환불'],
         'CancelType' => ['CA' => '결제취소', 'NC' => '망취소', 'RP' => '부분환불'],
         'DepositType' => ['PC' => 'PC', 'MO' => '모바일'],
         'PayMethod' => ['Card' => '신용카드', 'DirectBank' => '실시간계좌이체', 'VBank' => '가상계좌(무통장입금)'],
         'PayDepositMethod' => ['Card' => '신용카드', 'DirectBank' => '실시간계좌이체', 'VBank' => '가상계좌(무통장입금)', 'VDeposit' => '가상계좌(입금통보)'],
     ];
+    private $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct()
     {
@@ -125,6 +128,110 @@ class PayLog extends \app\controllers\BaseController
             'data' => $list,
             'codes' => $this->_getLogTypeCodes($log_type, false)
         ]);
+    }
+
+    /**
+     * 결제방법별 결제로그 인덱스
+     * @param array $params [결제방법 (card, bank, vbank)]
+     */
+    public function method($params = [])
+    {
+        $log_type = element('0', $params, 'card');
+        $view_type = $log_type == 'vbank' ? 'vbank' : 'normal';
+
+        $this->load->view('sys/pay_log/method_' . $view_type . '_index', [
+            'log_type' => $log_type,
+            'codes' => $this->_getLogTypeCodes('method')
+        ]);
+    }
+
+    /**
+     * 결제방법별 결제로그 목록 조회
+     * @param array $params [결제방법 (card, bank, vbank)]
+     * @return CI_Output
+     */
+    public function methodAjax($params = [])
+    {
+        $log_type = element('0', $params, 'card');
+        $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-d'));
+        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-d'));
+
+        $arr_condition = $this->_getMethodConditions();
+        $count = $this->payLogModel->listPayMethodLog($log_type, $search_start_date, $search_end_date, true, $arr_condition);
+        $list = [];
+        $sum_data = null;
+
+        if ($count > 0) {
+            $list = $this->payLogModel->listPayMethodLog($log_type, $search_start_date, $search_end_date, false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
+
+            // 합계
+            //$sum_data = element('0', $this->payLogModel->listPayMethodLog($log_type, $search_start_date, $search_end_date, 'sum', $arr_condition));
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+            'sum_data' => $sum_data,
+            'codes' => $this->_getLogTypeCodes('method', false)
+        ]);
+    }
+
+    /**
+     * 결제방법별 결제로그 엑셀다운로드
+     * @param array $params [결제방법 (card, bank, vbank)]
+     */
+    public function methodExcel($params = [])
+    {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
+        $log_type = element('0', $params, 'card');
+        $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-d'));
+        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-d'));
+
+        $arr_condition = $this->_getMethodConditions();
+        $list = $this->payLogModel->listPayMethodLog($log_type, $search_start_date, $search_end_date, 'excel', $arr_condition);
+        if (empty($list) === true) {
+            show_alert('데이터가 없습니다.', 'back');
+        }
+
+        $headers = ['주문번호', 'PG구분', '결제구분', '상점아이디', 'TID', '결제상세코드'];
+        if ($log_type == 'vbank') {
+            $headers = array_merge($headers, ['신청금액', '신청일시', '입금액', '입금일시', '취소금액', '취소일시']);
+        } else {
+            $headers = array_merge($headers, ['결제금액', '결제일시', '취소금액', '취소일시']);
+        }
+        $numerics = ['ReqPayPrice', 'CancelPrice', 'DepositPrice'];    // 숫자형 변환 대상 컬럼
+        $file_name = $log_type . '_결제로그_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+
+        // export excel
+        $this->load->library('excel');
+        if ($this->excel->exportHugeExcel($file_name, $list, $headers, $numerics) !== true) {
+            show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
+    }
+
+    /**
+     * 결제방법별 결제로그 검색조건 리턴
+     * @return array
+     */
+    private function _getMethodConditions()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'TA.PgMid' => $this->_reqP('search_pg_mid'), 'TA.PgDriver' => $this->_reqP('search_pg_driver'),
+                'TA.PayType' => $this->_reqP('search_pay_type')
+            ]
+        ];
+
+        // 검색어
+        $search_value = $this->_reqP('search_value');
+        if (empty($search_value) === false) {
+            $arr_condition['LKB']['TA.' . $this->_reqP('search_keyword')] = $search_value;
+        }
+
+        return $arr_condition;
     }
 
     /**

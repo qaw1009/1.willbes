@@ -3,6 +3,9 @@
 @section('content')
     <ul class="nav nav-tabs bar_tabs mb-20" role="tablist">
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/pay') }}">결제/취소</a></li>
+        <li role="presentation"><a href="{{ site_url('/sys/payLog/method/card') }}">신용카드</a></li>
+        <li role="presentation"><a href="{{ site_url('/sys/payLog/method/bank') }}">계좌이체</a></li>
+        <li role="presentation"><a href="{{ site_url('/sys/payLog/method/vbank') }}">가상계좌</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/deposit') }}">가상계좌입금통보</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/escrow') }}">에스크로</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/stats') }}">승인완료통계</a></li>

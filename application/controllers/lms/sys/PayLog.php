@@ -165,7 +165,7 @@ class PayLog extends \app\controllers\BaseController
             $list = $this->payLogModel->listPayMethodLog($log_type, $search_start_date, $search_end_date, false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
 
             // 합계
-            //$sum_data = element('0', $this->payLogModel->listPayMethodLog($log_type, $search_start_date, $search_end_date, 'sum', $arr_condition));
+            $sum_data = element('0', $this->payLogModel->listPayMethodLog($log_type, $search_start_date, $search_end_date, 'sum', $arr_condition));
         }
 
         return $this->response([

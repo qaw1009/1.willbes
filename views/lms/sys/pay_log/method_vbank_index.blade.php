@@ -104,7 +104,8 @@
                     <td colspan="13" class="bg-odd text-center">
                         <h4 class="inline-block no-margin">
                             <span id="search_period" class="pr-5"></span>
-                            <span class="blue"><span id="sum_req_price">0</span></span>
+                            <span id="sum_req_price">0</span>
+                            <span class="blue"><span id="sum_deposit_price">0</span></span>
                             - <span class="red"><span id="sum_cancel_price">0</span></span>
                             = <span id="sum_pay_price">0</span>
                         </h4>
@@ -175,11 +176,13 @@
                 $('#search_period').html('[' + $search_form.find('input[name="search_start_date"]').val() + ' ~ ' + $search_form.find('input[name="search_end_date"]').val() + ']');
 
                 if (json.sum_data !== null) {
-                    $('#sum_req_price').html(addComma(json.sum_data.tReqPayPrice) + ' (' + addComma(json.sum_data.tReqPayCnt) + '건)');
+                    $('#sum_req_price').html(addComma(json.sum_data.tReqPayPrice) + ' (' + addComma(json.sum_data.tReqPayCnt) + '건) => ');
+                    $('#sum_deposit_price').html(addComma(json.sum_data.tDepositPrice) + ' (' + addComma(json.sum_data.tDepositCnt) + '건)');
                     $('#sum_cancel_price').html(addComma(Math.abs(json.sum_data.tCancelPrice)) + ' (' + addComma(json.sum_data.tCancelCnt) + '건)');
-                    $('#sum_pay_price').html(addComma(json.sum_data.tReqPayPrice - Math.abs(json.sum_data.tCancelPrice)) + ' (' + addComma(json.sum_data.tReqPayCnt - json.sum_data.tCancelCnt) + '건)');
+                    $('#sum_pay_price').html(addComma(json.sum_data.tDepositPrice - Math.abs(json.sum_data.tCancelPrice)) + ' (' + addComma(json.sum_data.tDepositCnt - json.sum_data.tCancelCnt) + '건)');
                 } else {
-                    $('#sum_req_price').html('0');
+                    $('#sum_req_price').html('');
+                    $('#sum_deposit_price').html('0');
                     $('#sum_cancel_price').html('0');
                     $('#sum_pay_price').html('0');
                 }

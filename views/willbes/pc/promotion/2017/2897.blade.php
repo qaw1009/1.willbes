@@ -99,7 +99,7 @@
                     <li>입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3자에게 제공되지 않으며 개인정보 처리 방침에 따라 보호되고 있습니다.</li>
                     <li>이벤트 진행에 따른 저작물에 대한 저작권은 ㈜윌비스에 귀속됩니다.</li>
                 </ul>
-                <label><input class="btn-login-check" type="checkbox" id="is_chk" name="is_chk" value="Y" title="개인정보 수집/이용 동의" autocomplete="off"> 윌비스에 개인정보 제공 동의하기(필수)</label>
+                <label><input class="btn-login-check" type="checkbox" id="is_chk" name="is_chk" value="Y" title="개인정보 수집/이용 동의" autocomplete="off"> 이벤트참여에 따른 개인정보 및 마케팅활용 동의하기(필수)</label>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_01_02.jpg"/>
             <div class="table_wrap">

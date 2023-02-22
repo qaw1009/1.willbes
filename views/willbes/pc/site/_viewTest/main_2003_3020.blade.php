@@ -212,6 +212,51 @@
             letter-spacing: 0;
         }
 
+        .tabWrapCustom.noticeWrap_campus {
+            height: 60px;
+            border-bottom: none;
+            border-top: 2px solid #000;
+            clear: both;
+        }
+        .tabWrapCustom.noticeWrap_campus li {
+            float: left;
+            width: auto;
+            height: 60px;
+            margin: 0 10px;
+        }
+        .tabWrapCustom.noticeWrap_campus li a {
+            display: block;
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            background: none;
+            font-size: 13px;
+            color: #3a3a3a;
+            text-align: center;
+            letter-spacing: 0;
+            border: none;
+            padding-right: 20px;
+        }
+        .tabWrapCustom.noticeWrap_campus li:first-child a {
+            border-left: none;
+        }
+        .tabWrapCustom.noticeWrap_campus li a.on {
+            position: relative;
+            z-index: 2;
+            background: none;
+            height: 60px;
+            line-height: 60px;
+            font-weight: 600;
+            color: #3a3a3a;
+            border: none;
+        }
+        .tabWrapCustom.noticeWrap_campus .row-line {
+            float: right;
+            background: #b7b7b7;
+            width: 1px;
+            height: 12px;
+            margin: -36px 0 0;
+        }
     </style>
     <!-- Container -->
 
@@ -246,7 +291,6 @@
             </div>
         </div>
 
-        {{--
         <div class="Section gosi-bn02">
             <div class="widthAuto">
                 <ul>
@@ -262,7 +306,6 @@
                 </ul>
             </div>
         </div>
-        --}}
 
         <div class="Section gosi-bn03">
             <div class="widthAuto">
@@ -277,23 +320,6 @@
                         @endif
                     @endfor
                 </ul>
-            </div>
-        </div>
-
-        @if(isset($data['arr_main_banner']['메인_중간띠배너']) === true)
-            <div class="gosi-bnfull-Sec02">
-                <div class="gosi-bnfull02">
-                    {!! banner_html($data['arr_main_banner']['메인_중간띠배너'], 'sliderBar02') !!}
-
-                    <p class="leftBtn" id="imgBannerLeft02"><a href="#none">이전</a></p>
-                    <p class="rightBtn" id="imgBannerRight02"><a href="none">다음</a></p>
-                </div>
-            </div>
-        @endif
-
-        <div class="Section">
-            <div class="widthAuto">
-                {!! banner_html(element('메인_미들배너', $data['arr_main_banner'])) !!}
             </div>
         </div>
 
@@ -318,21 +344,12 @@
             </div>
         </div>
 
-        <div class="Section NG mt130">
-            <div class="widthAuto">
-                {{-- study comment include --}}
-                @include('willbes.pc.site.main_partial.study_comment_' . $__cfg['SiteCode'])
-            </div>
-        </div>
-        <!-- 수강후기 //-->
-
         <div class="Section NSK mt90">
             <div class="widthAuto">
                 <div class="willbesLec">
                     <div class="smallTit mb30">
                         <p><span>합격 콘텐츠를 한 눈에! <strong>윌비스 강좌</strong></span></p>
                     </div>
-
                     {{-- best product include --}}
                     @include('willbes.pc.site.main_partial.lecture_' . $__cfg['SiteCode'])
 
@@ -353,8 +370,53 @@
                     <div class="smallTit mb30">
                         <p><span>윌비스 <strong>소식</strong></span></p>
                     </div>
-                    {{-- board include --}}
-                    @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'] . '_box')
+                    <div class="noticeTabs">
+                        <div class="will-listTit mt45">공지사항</div>
+                        <div class="tabBox noticeBox" style="margin-top:-30px">
+                            <div class="tabContent p_re">
+                                <a href="{{front_url('/support/notice/index/cate/'.$__cfg['CateCode'])}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                                <ul class="List-Table">
+                                    @if(empty($data['notice']) === true)
+                                        <li><span>등록된 내용이 없습니다.</span></li>
+                                    @else
+                                        @foreach($data['notice'] as $row)
+                                            <li>
+                                                <a href="{{front_url('/support/notice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                                                    @if($row['IsBest'] == '1')<span>HOT</span>@endif {{$row['Title']}}
+                                                    @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}">@endif
+                                                </a>
+                                                <span class="date">{{$row['RegDatm']}}</span>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="noticeTabs mt30">
+                        <div class="will-listTit">강의계획서/자료</div>
+                        <div class="tabBox noticeBox" style="margin-top:-30px">
+                            <div class="tabContent p_re">
+                                <a href="{{front_url('/support/examNews/index/cate/'.$__cfg['CateCode'])}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                                <ul class="List-Table">
+                                    @if(empty($data['exam_news']) === true)
+                                        <li>등록된 내용이 없습니다.</li>
+                                    @else
+                                        @foreach($data['exam_news'] as $row)
+                                            <li>
+                                                <a href="{{front_url('/support/examNews/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                                                    @if($row['IsBest'] == '1')<span>HOT</span>@endif {{$row['Title']}}
+                                                    @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}">@endif
+                                                </a>
+                                                <span class="date">{{$row['RegDatm']}}</span>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!--willbesNews //-->
             </div>
@@ -362,8 +424,77 @@
 
         <div class="Section NSK mt90 mb90">
             <div class="widthAuto">
-                {{-- cscenter --}}
-                @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
+                {{--학원 오시는 길--}}
+                @include('willbes.pc.site.main_partial.map_2010')
+                <div class="Section NSK mt90 mb90">
+                    <div class="widthAuto">
+                        <div class="CScenterBox">
+                            <dl>
+                                <dt class="willbesNumber">
+                                    <ul>
+                                        <li>
+                                            <div class="nTit">온라인 수강문의</div>
+                                            <div class="nNumber tx-color">1566-4770 <span>▶</span> 2</div>
+                                            <div class="nTxt">
+                                                [운영시간]<br/>
+                                                평일: 09시~ 18시 (점심시간12시~13시)<br/>
+                                                주말/공휴일 휴무<br/>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="nTit">교재문의</div>
+                                            <div class="nNumber tx-color">1544-4944</div>
+                                            <div class="nTxt">
+                                                [운영시간]<br/>
+                                                평일: 09시~ 17시 (점심시간12시~13시)<br/>
+                                                주말/공휴일 휴무<br/>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="nTit">학원 고객센터</div>
+                                            <div class="nNumber tx-color">1544-1881 <span>▶</span> 1</div>
+                                            <div class="nTxt">
+                                                [전화/방문상담 운영시간]<br/>
+                                                월 ~ 토요일 : 8시 ~ 19시<br/>
+                                                일요일 : 8시 ~ 18시
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </dt>
+                                <dt class="willbesCenter">
+                                    <div class="centerTit">윌비스 공무원 사이트에 물어보세요!</div>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ site_url('/support/faq/index') }}">
+                                                <img src="{{ img_url('cop/icon_cecenter1.png') }}">
+                                                <div class="nTxt">자주하는<br/>질문</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ site_url('/support/mobile/index') }}">
+                                                <img src="{{ img_url('cop/icon_cecenter2.png') }}">
+                                                <div class="nTxt">모바일<br/>서비스</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ site_url('/support/qna/index') }}">
+                                                <img src="{{ img_url('cop/icon_cecenter3.png') }}">
+                                                <div class="nTxt">동영상<br/>상담실</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ site_url('/support/remote/index') }}">
+                                                <img src="{{ img_url('cop/icon_cecenter4.png') }}">
+                                                <div class="nTxt">1:1<br/>고객지원</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </dt>
+
+                            </dl>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -427,27 +558,6 @@
             });
         });
 
-        /*bar 배너 롤링 */
-        $(function() {
-            var slidesImg02 = $(".sliderBar02").bxSlider({
-                mode:'fade',
-                auto: true,
-                touchEnabled: false,
-                controls: false,
-                sliderWidth:2000,
-                pause: 3000,
-                autoHover: true,
-                pager: false,
-            });
-            $("#imgBannerRight02").click(function (){
-                slidesImg02.goToPrevSlide();
-            });
-
-            $("#imgBannerLeft02").click(function (){
-                slidesImg02.goToNextSlide();
-            });
-        });
-
         /*교수진*/
         $(function() {
             $('.sliderProf').bxSlider({
@@ -466,37 +576,6 @@
                 autoHover: true,
                 onSliderLoad: function(){
                     $(".gosi-gate-prof").css("visibility", "visible").animate({opacity:1});
-                }
-            });
-        });
-
-        /*윌비스 강좌*/
-        $(function(){
-            $('.prof-subject').bxSlider({
-                speed:800,
-                responsive:true,
-                infiniteLoop:true,
-                pager:false,
-                slideWidth:78,
-                minSlides:1,
-                maxSlides:8
-            });
-        });
-
-        /*수강후기*/
-        $(function() {
-            $('.sliderNumV').bxSlider({
-                mode: 'vertical',
-                auto: true,
-                controls: true,
-                infiniteLoop: true,
-                slideWidth: 1120,
-                pagerType: 'short',
-                minSlides: 3,
-                pause: 3000,
-                pager: true,
-                onSliderLoad: function(){
-                    $(".vSlider").css("visibility", "visible").animate({opacity:1});
                 }
             });
         });

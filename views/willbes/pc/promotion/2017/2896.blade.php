@@ -56,7 +56,7 @@
 
         .event02 {width:1120px; margin:0 auto 150px;}        
         .event02 .couponWrap {width:1000px; margin:80px auto; display:flex; justify-content: space-between; flex-wrap: wrap; }
-        .event02 .coupon {position: relative; background:url(https://static.willbes.net/public/images/promotion/2023/02/2897_02_coupon.jpg) no-repeat; height: 250px; width: 310px; margin-bottom:30px}
+        .event02 .coupon {position: relative; background:url(https://static.willbes.net/public/images/promotion/2023/02/2896_02_coupon.jpg) no-repeat; height: 250px; width: 310px; margin-bottom:30px}
         .event02 .coupon p {padding:45px 0 0 43px; text-align:left; color:#464646; font-size:17px;}
         .event02 .coupon p strong {display:block; font-size:24px; color:#9d00d8; letter-spacing:-2px}
 
@@ -66,7 +66,7 @@
 
         .event02 .textinfo {position: absolute; bottom:430px; right:180px; font-size:18px}
 
-        .event03 {background:url(https://static.willbes.net/public/images/promotion/2023/02/2897_03_bg.jpg) no-repeat center top; }
+        .event03 {background:url(https://static.willbes.net/public/images/promotion/2023/02/2896_03_bg.jpg) no-repeat center top; }
 
 
         .evtInfo {padding:80px 0; background:#ebebeb; font-size:16px}
@@ -82,7 +82,7 @@
         </div>
 
         <div class="evtCtnsBox event01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_01_01.jpg"/>
+            <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_01.jpg"/>
             <div class="info">
                 <ul>
                     <li>개인정보 수집 이용 목적  <br>
@@ -100,7 +100,7 @@
                 </ul>
                 <label><input class="btn-login-check" type="checkbox" id="is_chk" name="is_chk" value="Y" title="개인정보 수집/이용 동의" autocomplete="off"> 윌비스에 개인정보 제공 동의하기(필수)</label>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_01_02.jpg"/>
+            <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_02.jpg"/>
             <div class="table_wrap">
                 <table>
                     <col width="15%">
@@ -174,7 +174,7 @@
         </div>
 
         <div class="evtCtnsBox event02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_02.jpg"/>
+            <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_02.jpg"/>
             <div class="couponWrap">
                 <div class="coupon">
                     <p><strong>이경범 교육학</strong>
@@ -261,11 +261,11 @@
                 ※ 로그인 후, 해당 쿠폰을 클릭하면, 발급받을 수 있습니다. <br>
                 대상자가 아닌 경우, 발급이 제한됩니다. 
             </div>
-            <div><a href="https://ssam.willbes.net/promotion/index/cate/3140/code/2896"><img src="https://static.willbes.net/public/images/promotion/2023/02/2897_02_btn.png"/></a></div>
+            <div><a href="https://ssam.willbes.net/promotion/index/cate/3140/code/2896"><img src="https://static.willbes.net/public/images/promotion/2023/02/2896_02_btn.png"/></a></div>
         </div>
 
         <div class="evtCtnsBox event03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_03.jpg"/>
+            <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_03.jpg"/>
         </div>
 
 

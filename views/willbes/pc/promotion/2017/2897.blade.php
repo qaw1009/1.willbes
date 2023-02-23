@@ -95,6 +95,8 @@
                 <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
                 <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
                 <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
+                <input type="hidden" name="target_param_names[]" value="과목"/> {{-- 체크 항목 전송 --}}
+                <input type="hidden" name="target_param_names[]" value="쿠폰"/> {{-- 체크 항목 전송 --}}
 
                 <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_01_01.jpg"/>
                 <div class="info">
@@ -168,7 +170,7 @@
                             <tr>
                                 <th>수강이력 인증 파일</th>
                                 <td colspan="5">
-                                    <input class="btn-login-check" type="file" id="attach_file_1" name="attach_file" onchange="chkUploadFile(this)" style="width:40%; margin-right:10px"/>
+                                    <input class="btn-login-check" type="file" id="attach_file" name="attach_file" onchange="chkUploadFile(this)" style="width:40%; margin-right:10px"/>
                                     <a onclick="del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" style="vertical-align:middle !important" alt="삭제"></a>
                                     * 10MB 이하의 이미지 파일(png, jpg, gif, bmp)
                                 </td>

@@ -284,7 +284,7 @@
                     대상자가 아닌 경우, 발급이 제한됩니다.
                 </div>
                 <div>
-                    <a href="https://ssam.willbes.net/support/notice/show?board_idx=450775&s_cate_code_disabled=Y">
+                    <a href="https://ssam.willbes.net/support/notice/show?board_idx=450775&s_cate_code_disabled=Y" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_02_btn.png"/>
                     </a>
                 </div>

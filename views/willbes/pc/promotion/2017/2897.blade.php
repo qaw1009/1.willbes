@@ -83,186 +83,206 @@
         </div>
 
         <div class="evtCtnsBox event01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_01_01.jpg"/>
-            <div class="info">
-                <ul>
-                    <li>개인정보 수집 이용 목적  <br>
-                        - 본 이벤트의 대상자(타학원 수강이력이 있는 수험생) 확인 및 각종 문의사항 응대<br>
-                        - 통계분석 및 기타 마케팅에 활용<br>
-                        - 윌비스 임용고시학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공 </li>
-                    <li>개인정보 수집 항목<br>
-                    - 필수항목 : 성명, 본사ID, 연락처, 타학원의 수강이력 인증파일 </li>
-                    <li>개인정보 이용기간 및 보유기간<br>
-                    - 본사의 이용 목적 달성되었거나, 신청자의 해지요청 및 삭제요청 시 바로 파기 </li>
-                    <li>신청자의 개인정보 수집 및 활용 동의 거부 시<br>
-                    - 개인정보 수집에 동의하지 않으시는 경우 설명회 접수 및 서비스 이용에 제한이 있을 수 있습니다. </li>
-                    <li>입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3자에게 제공되지 않으며 개인정보 처리 방침에 따라 보호되고 있습니다.</li>
-                    <li>이벤트 진행에 따른 저작물에 대한 저작권은 ㈜윌비스에 귀속됩니다.</li>
-                </ul>
-                <label><input class="btn-login-check" type="checkbox" id="is_chk" name="is_chk" value="Y" title="개인정보 수집/이용 동의" autocomplete="off"> 이벤트참여에 따른 개인정보 및 마케팅활용 동의하기(필수)</label>
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_01_02.jpg"/>
-            <div class="table_wrap">
-                <table>
-                    <col width="15%">
-                    <col width="20%">
-                    <col width="15%">
-                    <col width="20%">
-                    <col width="15%">
-                    <col>
-                    <tbody>
-                        <tr>
-                            <th>성명</th>
-                            <td>{{sess_data('mem_name')}}</td>
-                            <th>윌비스 ID</th>
-                            <td>{{sess_data('mem_id')}}</td>
-                            <th>연락처</th>
-                            <td>{{sess_data('mem_phone')}}</td>
-                        </tr>
-                        <tr>
-                            <th>응시예정과목</th>
-                            <td>
-                                <select id="register_data1" name="register_data1" title="과목">
-                                    <option value="">과목 선택</option>
-                                    <option value="">유아</option>
-                                    <option value="">국어</option>
-                                    <option value="">영어</option>
-                                    <option value="">수학</option>
-                                    <option value="">역사</option>
-                                    <option value="">음악</option>
-                                    <option value="">중국어</option>
-                                </select>
-                            </td>
-                            <th>받고자 하는 쿠폰</th>
-                            <td colspan="4">
-                                <select id="register_data" name="register_data" title="쿠폰">
-                                    <option value="">쿠폰 선택</option>
-                                    <option value="">[이경범] 교육학 3~11월 패키지 10% 할인 쿠폰</option>
-                                    <option value="">[송원영] 3~11월 국교/문교 패키지 10%할인 쿠폰</option>
-                                    <option value="">[송원영] 3~11월 국교론 패키지 10%할인 쿠폰</option>
-                                    <option value="">[권보민] 3~11월 국어문법 패키지 10%할인 쿠폰</option>
-                                    <option value="">[송원영+권보민] 3~11월 완전정복 패키지 10%할인 쿠폰</option>
-                                    <option value="">[박태영] 3~11월 수학교육론 패키지 10% 할인 쿠폰</option>
-                                    <option value="">[박혜향] 3~11월 수학교육론 패키지 10% 할인 쿠폰</option>
-                                    <option value="">[김종권] 3~11월 전공역사 패키지 10% 할인 쿠폰</option>
-                                    <option value="">심화 Free Pass 패키지 00% 할인 쿠폰</option>
-                                    <option value="">[장영희] 3~11월 중국어 초수트랙 패키지 10% 할인 쿠폰</option>
-                                    <option value="">[박태영] 3~11월 중국어 N+수트랙 패키지 10% 할인 쿠폰</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>수강이력 인증 파일</th>
-                            <td colspan="5">
-                                <input class="btn-login-check" type="file" id="attach_file_1" name="attach_file" onchange="chkUploadFile(this)" style="width:40%; margin-right:10px"/>
-                                <a onclick="del_file(1);"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" style="vertical-align:middle !important" alt="삭제"></a>
-                                * 10MB 이하의 이미지 파일(png, jpg, gif, bmp)
-                            </td>
-                        </tr>
+            <form name="regi_form_register" id="regi_form_register">
+                {!! csrf_field() !!}
+                {!! method_field('POST') !!}
+                <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+                <input type="hidden" name="register_type" value="promotion"/>
+                <input type="hidden" name="ret_msg" value="신청되었습니다. 심사 후 개별 문자로 안내해 드리겠습니다."/>
+                <input type="hidden" name="file_chk" value="Y"/>
+                <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] or ''}}">
+                <input type="hidden" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}"/>
+                <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
+                <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
+                <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
 
-                    </tbody>
-                </table>
-                <ul class="evtInfoBox">
-                    <li>환승할인 쿠폰의 발급을 위한 인증서류는 수강학원명, 수강생명, 수강과목, 수강기간이 명기되어 있는 
-                    수강증, 1개월 이내 발급된 수강확인증만 인정됩니다.</li>
-                    <li>타학원의 수강인증은 2021년 ~ 2022년에 진행된 (유료)강의만 해당 됩니다.</li>
-                    <li>인증 서류의 식별이 불가능한 경우 또는 이미지를 도용한 경우에는 할인혜택이 적용이 불가합니다.</li>
-                </ul>
-                <div class="btnSet">
-                    <a href="{!! front_url('/event/registerStore') !!}" onclick="fn_submit(); return false;">수강이력 인증하기 ></a>
+                <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_01_01.jpg"/>
+                <div class="info">
+                    <ul>
+                        <li>개인정보 수집 이용 목적  <br>
+                            - 본 이벤트의 대상자(타학원 수강이력이 있는 수험생) 확인 및 각종 문의사항 응대<br>
+                            - 통계분석 및 기타 마케팅에 활용<br>
+                            - 윌비스 임용고시학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공 </li>
+                        <li>개인정보 수집 항목<br>
+                        - 필수항목 : 성명, 본사ID, 연락처, 타학원의 수강이력 인증파일 </li>
+                        <li>개인정보 이용기간 및 보유기간<br>
+                        - 본사의 이용 목적 달성되었거나, 신청자의 해지요청 및 삭제요청 시 바로 파기 </li>
+                        <li>신청자의 개인정보 수집 및 활용 동의 거부 시<br>
+                        - 개인정보 수집에 동의하지 않으시는 경우 설명회 접수 및 서비스 이용에 제한이 있을 수 있습니다. </li>
+                        <li>입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3자에게 제공되지 않으며 개인정보 처리 방침에 따라 보호되고 있습니다.</li>
+                        <li>이벤트 진행에 따른 저작물에 대한 저작권은 ㈜윌비스에 귀속됩니다.</li>
+                    </ul>
+                    <label for="is_chk"><input class="btn-login-check" type="checkbox" id="is_chk" name="is_chk" value="Y" title="개인정보 수집/이용 동의" autocomplete="off" onclick="loginCheck();"> 이벤트참여에 따른 개인정보 및 마케팅활용 동의하기(필수)</label>
                 </div>
-            </div>
+                <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_01_02.jpg"/>
+                <div class="table_wrap">
+                    <table>
+                        <col width="15%">
+                        <col width="20%">
+                        <col width="15%">
+                        <col width="20%">
+                        <col width="15%">
+                        <col>
+                        <tbody>
+                            <tr>
+                                <th>성명</th>
+                                <td>{{sess_data('mem_name')}}</td>
+                                <th>윌비스 ID</th>
+                                <td>{{sess_data('mem_id')}}</td>
+                                <th>연락처</th>
+                                <td>{{sess_data('mem_phone')}}</td>
+                            </tr>
+                            <tr>
+                                <th>응시예정과목</th>
+                                <td>
+                                    <select id="register_data1" name="register_data1" title="과목">
+                                        <option value="">과목 선택</option>
+                                        <option value="유아">유아</option>
+                                        <option value="국어">국어</option>
+                                        <option value="영어">영어</option>
+                                        <option value="수학">수학</option>
+                                        <option value="역사">역사</option>
+                                        <option value="음악">음악</option>
+                                        <option value="중국어">중국어</option>
+                                    </select>
+                                </td>
+                                <th>받고자 하는 쿠폰</th>
+                                <td colspan="4">
+                                    <select id="register_data2" name="register_data2" title="쿠폰">
+                                        <option value="">쿠폰 선택</option>
+                                        <option value="[이경범] 교육학 3~11월 패키지 10% 할인 쿠폰">[이경범] 교육학 3~11월 패키지 10% 할인 쿠폰</option>
+                                        <option value="[송원영] 3~11월 국교/문교 패키지 10%할인 쿠폰">[송원영] 3~11월 국교/문교 패키지 10%할인 쿠폰</option>
+                                        <option value="[송원영] 3~11월 국교론 패키지 10%할인 쿠폰">[송원영] 3~11월 국교론 패키지 10%할인 쿠폰</option>
+                                        <option value="[권보민] 3~11월 국어문법 패키지 10%할인 쿠폰">[권보민] 3~11월 국어문법 패키지 10%할인 쿠폰</option>
+                                        <option value="[송원영+권보민] 3~11월 완전정복 패키지 10%할인 쿠폰">[송원영+권보민] 3~11월 완전정복 패키지 10%할인 쿠폰</option>
+                                        <option value="[구동언] 3~11월 전공국어 패키지 10% 할인 쿠폰">[구동언] 3~11월 전공국어 패키지 10% 할인 쿠폰</option>
+                                        <option value="[박태영] 3~11월 수학교육론 패키지 10% 할인 쿠폰">[박태영] 3~11월 수학교육론 패키지 10% 할인 쿠폰</option>
+                                        <option value="[박혜향] 3~11월 수학교육론 패키지 10% 할인 쿠폰">[박혜향] 3~11월 수학교육론 패키지 10% 할인 쿠폰</option>
+                                        <option value="[김종권] 3~11월 전공역사 패키지 10% 할인 쿠폰">[김종권] 3~11월 전공역사 패키지 10% 할인 쿠폰</option>
+                                        <option value="심화 Free Pass 패키지 10% 할인 쿠폰">심화 Free Pass 패키지 10% 할인 쿠폰</option>
+                                        <option value="[장영희] 3~11월 중국어 초수트랙 패키지 10% 할인 쿠폰">[장영희] 3~11월 중국어 초수트랙 패키지 10% 할인 쿠폰</option>
+                                        <option value="[박태영] 3~11월 중국어 N+수트랙 패키지 10% 할인 쿠폰">[박태영] 3~11월 중국어 N+수트랙 패키지 10% 할인 쿠폰</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>수강이력 인증 파일</th>
+                                <td colspan="5">
+                                    <input class="btn-login-check" type="file" id="attach_file_1" name="attach_file" onchange="chkUploadFile(this)" style="width:40%; margin-right:10px"/>
+                                    <a onclick="del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" style="vertical-align:middle !important" alt="삭제"></a>
+                                    * 10MB 이하의 이미지 파일(png, jpg, gif, bmp)
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <ul class="evtInfoBox">
+                        <li>환승할인 쿠폰의 발급을 위한 인증서류는 수강학원명, 수강생명, 수강과목, 수강기간이 명기되어 있는
+                        수강증, 1개월 이내 발급된 수강확인증만 인정됩니다.</li>
+                        <li>타학원의 수강인증은 2021년 ~ 2022년에 진행된 (유료)강의만 해당 됩니다.</li>
+                        <li>인증 서류의 식별이 불가능한 경우 또는 이미지를 도용한 경우에는 할인혜택이 적용이 불가합니다.</li>
+                    </ul>
+                    <div class="btnSet">
+                        <a href="javascript:void(0);" onclick="fn_submit(); return false;">수강이력 인증하기 ></a>
+                    </div>
+                </div>
+            </form>
         </div>
 
         <div class="evtCtnsBox event02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_02.jpg"/>
-            <div class="couponWrap">
-                <div class="coupon">
-                    <p><strong>이경범 교육학</strong>
-                    3~11월 패키지</p>
-                    <div class="btns">
-                        <a href="#none">학원강의 쿠폰</a>
-                        <a href="#none">동영상강의 쿠폰</a>
+            <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+                {!! csrf_field() !!}
+                {!! method_field('POST') !!}
+
+                <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_02.jpg"/>
+                <div class="couponWrap">
+                    <div class="coupon">
+                        <p><strong>이경범 교육학</strong>
+                        3~11월 패키지</p>
+                        <div class="btns">
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2272' : '429' }}); return false;">학원강의 쿠폰</a>
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2261' : '426' }}); return false;">동영상강의 쿠폰</a>
+                        </div>
+                    </div>
+                    <div class="coupon">
+                        <p><strong>송원영 국어</strong>
+                        3~11월 국교/문교 패키지</p>
+                        <div class="btns">
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2273' : '429' }}); return false;">학원강의 쿠폰</a>
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2262' : '426' }}); return false;">동영상강의 쿠폰</a>
+                        </div>
+                    </div>
+                    <div class="coupon">
+                        <p><strong>송원영 국어</strong>
+                        3~11월 국교론 패키지</p>
+                        <div class="btns">
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2274' : '429' }}); return false;">학원강의 쿠폰</a>
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2263' : '426' }}); return false;">동영상강의 쿠폰</a>
+                        </div>
+                    </div>
+                    <div class="coupon">
+                        <p><strong>권보민 국어</strong>
+                        3~11월 국어 문법 패키지</p>
+                        <div class="btns">
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2275' : '429' }}); return false;">학원강의 쿠폰</a>
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2264' : '426' }}); return false;">동영상강의 쿠폰</a>
+                        </div>
+                    </div>
+                    <div class="coupon">
+                        <p><strong>구동언 국어</strong>
+                        3~11월 전공국어 패키지</p>
+                        <div class="btns">
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2276' : '429' }}); return false;">학원강의 쿠폰</a>
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2265' : '426' }}); return false;">동영상강의 쿠폰</a>
+                        </div>
+                    </div>
+                    <div class="coupon">
+                        <p><strong>박태영 수학교육론</strong>
+                        3~11월 패키지</p>
+                        <div class="btns">
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2277' : '429' }}); return false;">학원강의 쿠폰</a>
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2266' : '426' }}); return false;">동영상강의 쿠폰</a>
+                        </div>
+                    </div>
+                    <div class="coupon">
+                        <p><strong>박혜향 수학교육론</strong>
+                        3~11월 패키지</p>
+                        <div class="btns">
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2278' : '429' }}); return false;">학원강의 쿠폰</a>
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2267' : '426' }}); return false;">동영상강의 쿠폰</a>
+                        </div>
+                    </div>
+                    <div class="coupon">
+                        <p><strong>김종권 역사</strong>
+                        3~11월 전공역사 패키지</p>
+                        <div class="btns">
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2279' : '429' }}); return false;">학원강의 쿠폰</a>
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2268' : '426' }}); return false;">동영상강의 쿠폰</a>
+                        </div>
+                    </div>
+                    <div class="coupon">
+                        <p><strong>장영희 중국어</strong>
+                        3~11월 초수트랙 패키지</p>
+                        <div class="btns">
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2280' : '429' }}); return false;">학원강의 쿠폰</a>
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2269' : '426' }}); return false;">동영상강의 쿠폰</a>
+                        </div>
+                    </div>
+                    <div class="coupon">
+                        <p><strong>장영희 중국어</strong>
+                        3~11월 N+수트랙 패키지</p>
+                        <div class="btns">
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2281' : '429' }}); return false;">학원강의 쿠폰</a>
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2270' : '426' }}); return false;">동영상강의 쿠폰</a>
+                        </div>
                     </div>
                 </div>
-                <div class="coupon">
-                    <p><strong>송원영 국어</strong>
-                    3~11월 국교/문교 패키지</p>
-                    <div class="btns">
-                        <a href="#none">학원강의 쿠폰</a>
-                        <a href="#none">동영상강의 쿠폰</a>
-                    </div>
+                <div class="textinfo">
+                    ※ 로그인 후, 해당 쿠폰을 클릭하면, 발급받을 수 있습니다. <br>
+                    대상자가 아닌 경우, 발급이 제한됩니다.
                 </div>
-                <div class="coupon">
-                    <p><strong>송원영 국어</strong>
-                    3~11월 국교론 패키지</p>
-                    <div class="btns">
-                        <a href="#none">학원강의 쿠폰</a>
-                        <a href="#none">동영상강의 쿠폰</a>
-                    </div>
-                </div>
-                <div class="coupon">
-                    <p><strong>권보민 국어</strong>
-                    3~11월 국어 문법 패키지</p>
-                    <div class="btns">
-                        <a href="#none">학원강의 쿠폰</a>
-                        <a href="#none">동영상강의 쿠폰</a>
-                    </div>
-                </div>
-                <div class="coupon">
-                    <p><strong>구동언 국어</strong>
-                    3~11월 전공국어 패키지</p>
-                    <div class="btns">
-                        <a href="#none">학원강의 쿠폰</a>
-                        <a href="#none">동영상강의 쿠폰</a>
-                    </div>
-                </div>
-                <div class="coupon">
-                    <p><strong>박태영 수학교육론</strong>
-                    3~11월 패키지</p>
-                    <div class="btns">
-                        <a href="#none">학원강의 쿠폰</a>
-                        <a href="#none">동영상강의 쿠폰</a>
-                    </div>
-                </div>
-                <div class="coupon">
-                    <p><strong>박혜향 수학교육론</strong>
-                    3~11월 패키지</p>
-                    <div class="btns">
-                        <a href="#none">학원강의 쿠폰</a>
-                        <a href="#none">동영상강의 쿠폰</a>
-                    </div>
-                </div>
-                <div class="coupon">
-                    <p><strong>김종권 역사</strong>
-                    3~11월 전공역사 패키지</p>
-                    <div class="btns">
-                        <a href="#none">학원강의 쿠폰</a>
-                        <a href="#none">동영상강의 쿠폰</a>
-                    </div>
-                </div>
-                <div class="coupon">
-                    <p><strong>장영희 중국어</strong>
-                    3~11월 초수트랙 패키지</p>
-                    <div class="btns">
-                        <a href="#none">학원강의 쿠폰</a>
-                        <a href="#none">동영상강의 쿠폰</a>
-                    </div>
-                </div>
-                <div class="coupon">
-                    <p><strong>장영희 중국어</strong>
-                    3~11월 N+수트랙 패키지</p>
-                    <div class="btns">
-                        <a href="#none">학원강의 쿠폰</a>
-                        <a href="#none">동영상강의 쿠폰</a>
-                    </div>
-                </div>
-            </div>
-            <div class="textinfo">
-                ※ 로그인 후, 해당 쿠폰을 클릭하면, 발급받을 수 있습니다. <br>
-                대상자가 아닌 경우, 발급이 제한됩니다. 
-            </div>
-            <div><a href="https://ssam.willbes.net/promotion/index/cate/3140/code/2896"><img src="https://static.willbes.net/public/images/promotion/2023/02/2897_02_btn.png"/></a></div>
+                <div><a href="https://ssam.willbes.net/promotion/index/cate/3140/code/2896"><img src="https://static.willbes.net/public/images/promotion/2023/02/2897_02_btn.png"/></a></div>
+            </form>
         </div>
 
         <div class="evtCtnsBox event03" data-aos="fade-up">
@@ -295,6 +315,111 @@
         $(document).ready( function() {
             AOS.init();
         });
+
+        var $regi_form = $('#regi_form');
+        var $regi_form_register = $('#regi_form_register');
+
+        {{--쿠폰발급--}}
+        function giveCheck(give_idx) {
+            {!! login_check_inner_script('로그인 후 이용해주세요.','Y') !!}
+
+            @if(empty($arr_base['member_recipient']) === false)
+                @if(empty($arr_promotion_params) === false)
+                    if (confirm('해당 쿠폰을 발급하시겠습니까?')) {
+                        var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&give_idx=' + give_idx;
+                        ajaxSubmit($regi_form, _check_url, function (ret) {
+                            if (ret.ret_cd) {
+                                alert('할인 쿠폰이 발급되었습니다. \n\n마이페이지 > 쿠폰/수강권관리 메뉴에서 확인해 주세요.');
+                            }
+                        }, showValidateError, null, false, 'alert');
+                    }
+                @else
+                    alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+                @endif
+            @else
+                alert('쿠폰발급 대상자가 아닙니다. 자세한 사항은 학원전화 1544-3169로 문의 바랍니다.');
+            @endif
+        }
+
+        function fn_submit() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($register_count) === false)
+                alert('등록된 신청자 정보가 있습니다.');
+                return;
+            @endif
+
+            var _url = '{!! front_url('/event/registerStore') !!}';
+
+            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+                alert('이벤트참여에 따른 개인정보 및 마케팅 활용에 동의하셔야 합니다.');
+                $regi_form_register.find('input[name="is_chk"]').focus();
+                return;
+            }
+
+            if (!$regi_form_register.find('input[name="register_name"]').val()) {
+                alert('이름을 입력해 주세요.');
+                $regi_form_register.find('input[name="register_name"]').focus();
+                return;
+            }
+
+            if (!$regi_form_register.find('input[name="register_tel"]').val()) {
+                alert('연락처를 입력해 주세요.');
+                $regi_form_register.find('input[name="register_tel"]').focus();
+                return;
+            }
+
+            if (!$regi_form_register.find('select[name="register_data1"]').val()) {
+                alert('응시예정 과목을 선택해 주세요.');
+                $regi_form_register.find('select[name="register_data1"]').focus();
+                return;
+            }
+
+            if (!$regi_form_register.find('select[name="register_data2"]').val()) {
+                alert('쿠폰을 선택해 주세요.');
+                $regi_form_register.find('select[name="register_data2"]').focus();
+                return;
+            }
+
+            if (!$regi_form_register.find('input[name="attach_file"]').val()) {
+                alert('타학원 수강이력 인증 파일을 첨부해 주세요.');
+                $regi_form_register.find('input[name="attach_file"]').focus();
+                return;
+            }
+
+            if (confirm('해당 정보로 신청하시겠습니까?')) {
+                ajaxSubmit($regi_form_register, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        alert(ret.ret_msg);
+                        location.reload();
+                    }
+                }, showValidateError, null, false, 'alert');
+            }
+        }
+
+        function del_file(){
+            if(confirm("첨부파일을 삭제 하시겠습니까?")) {
+                $("#attach_file").val("");
+                return;
+            }
+        }
+
+        function chkUploadFile(elem){
+            if($(elem).val()){
+                var filename =  $(elem).prop("files")[0].name;
+                var ext = filename.split('.').pop().toLowerCase();
+
+                if($.inArray(ext, ['gif','jpg','jpeg','png','bmp']) == -1) {
+                    $(elem).val("");
+                    alert('이미지 파일만 업로드 가능합니다.');
+                }
+            }
+        }
+
+        function loginCheck(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+            return true;
+        }
     </script>
 
 

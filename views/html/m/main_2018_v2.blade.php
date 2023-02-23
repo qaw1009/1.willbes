@@ -53,8 +53,8 @@
 
 
 /*교수별이벤트 */
-.ssam .profEvt {margin-top:5vh}
-.ssam .profEvt .swiper-wrapper {display: flex; height: auto;}
+.ssam .profEvt {margin-top:5vh; padding-bottom:30px}
+.ssam .profEvt .swiper-wrapper {/*display: flex;*/ height:auto;}
 .ssam .profEvt .swiper-button-next,
 .ssam .profEvt .swiper-button-prev {
 	position: static;
@@ -81,11 +81,28 @@
 .ssam .profEvt .swiper-button-prev.swiper-button-disabled {
 	pointer-events: auto;
 }
-.ssam .profEvt .swiper-wrapper .swiper-slide {padding:0 2vh; width:50% !important; margin-top:1vh}
-.ssam .profEvt a {display:block; margin:0 0.5vh; text-align:left; max-width:320px}
-.ssam .profEvt a p {font-size:1.8vh; color:#383838; margin:1vh 0; padding:0 1vh;  }
-.ssam .profEvt a span {color:#adadad; font-size:1.6vh; padding:0 10px }
+/*.ssam .profEvt .swiper-wrapper .swiper-slide {padding:0 2vh; width:50% !important; margin-top:1vh}*/
+.ssam .profEvt .swiper-wrapper .swiper-slide {
+    width:auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: space-between;
+    -ms-flex-pack: space-between;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    margin:0 1.8vw 1.5vh;
+    font-size:1.4vh;
+}
 
+.ssam .profEvt a {display:block; margin:0 0.5vh; text-align:left; max-width:320px}
+.ssam .profEvt a p {font-size:1.8vh; color:#383838; margin:1vh 0; padding:0 1vh;}
+.ssam .profEvt a span {color:#adadad; font-size:1.6vh; padding:0 10px }
 
 
 .ssam .lecup-Notice {position:absolute; top:15px; width:calc(100% - 110px);}
@@ -203,6 +220,9 @@
         font-size: 13px;
     }
     .ssam .profwrap div {width:calc(50% - 10px);}
+    .ssam .profEvt .swiper-wrapper .swiper-slide {
+        width:170px;
+    }
 }
 @@media only screen and (min-width: 375px) and (max-width: 640px) {
     .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) {
@@ -213,6 +233,9 @@
     }
     .ssam .bestLecBox2 .lecinfo li strong {
         font-size: 14px;
+    }
+    .ssam .profEvt .swiper-wrapper .swiper-slide {
+        width:170px;
     }
 
 }
@@ -344,447 +367,499 @@
 <!-- topnav -->
 
 <!-- Header -->
-<div id="Header" class="NG c_both">
-    <div class="widthAutoFull">     
-        <div class="Menu-List p_re">             
-            <div class="main">
-                <button type="button" class="menubar Menu_open">
-                    <span class="hidden">사이트 메뉴</span>
-                </button>
-                <button type="button" class="mypage Menu_open">
-                    <span class="hidden">내강의실</span>
-                </button>
+    <div id="Header" class="NG c_both">
+        <div class="widthAutoFull">     
+            <div class="Menu-List p_re">             
+                <div class="main">
+                    <button type="button" class="menubar Menu_open">
+                        <span class="hidden">사이트 메뉴</span>
+                    </button>
+                    <button type="button" class="mypage Menu_open">
+                        <span class="hidden">내강의실</span>
+                    </button>
 
-                <div class="logo">
-                    <a href="#none" class="siteTitle NSK-Black">윌비스 임용</span></a>
-                </div>  
+                    <div class="logo">
+                        <a href="#none" class="siteTitle NSK-Black">윌비스 임용</span></a>
+                    </div>  
 
-                <button type="button" class="classroom">
-                    <span>강의실배정표</span>
-                </button>   
+                    <button type="button" class="classroom">
+                        <span>강의실배정표</span>
+                    </button>   
 
-                <button type="button" class="searchView">
-                    <span class="hidden">검색</span>
-                </button>
+                    <button type="button" class="searchView">
+                        <span class="hidden">검색</span>
+                    </button>
 
-                <button type="button" class="basket">
-                    <span class="hidden">장바구니</span>
-                </button>                
-            </div>                     
-        </div>
-
-        <div class="dday NSK">
-            <div class="NSK-Black">
-                <strong>유·초등 1차 <span>D-31</span></strong>
-                <strong>중등 1차 <span>D-45</span></strong>
+                    <button type="button" class="basket">
+                        <span class="hidden">장바구니</span>
+                    </button>                
+                </div>                     
             </div>
-        </div>
 
-        <div class="subMenuBox c_both">
-            <ul class="subMenu">
-                <li class="sMenuList">
-                    <a href="#none" class="moreMenu">내강의실</a>
-                </li>
-                <li class="sMenuList">
-                    <a href="#none" class="moreMenu">강의/교재신청</a>
-                </li>
-                <li class="sMenuList">
-                    <a href="#none" class="moreMenu">학원정보</a>
-                </li>
-                <li class="sMenuList">
-                    <a href="#none" class="moreMenu">고객센터</a>                     
-                </li>
-            </ul>                
-        </div>        
-    </div>    
-</div>
+            <div class="dday NSK">
+                <div class="NSK-Black">
+                    <strong>유·초등 1차 <span>D-31</span></strong>
+                    <strong>중등 1차 <span>D-45</span></strong>
+                </div>
+            </div>
+
+            <div class="subMenuBox c_both">
+                <ul class="subMenu">
+                    <li class="sMenuList">
+                        <a href="#none" class="moreMenu">내강의실</a>
+                    </li>
+                    <li class="sMenuList">
+                        <a href="#none" class="moreMenu">강의/교재신청</a>
+                    </li>
+                    <li class="sMenuList">
+                        <a href="#none" class="moreMenu">학원정보</a>
+                    </li>
+                    <li class="sMenuList">
+                        <a href="#none" class="moreMenu">고객센터</a>                     
+                    </li>
+                </ul>                
+            </div>        
+        </div>    
+    </div>
 
 
 
 <!-- Container -->
-<div id="Container" class="Container NSK ssam mb40">  
-    <div class="Section">
-        <div class="d-day-wrap">
-            <div class="package NSK">
-                <div><p>연간패키지 <span class="pc1">문화상품권 이벤트</span></p>
-                    <strong class="round">마감까지</strong> <strong class="pc2">D-<span id="_day">3</span></strong>
+    <div id="Container" class="Container NSK ssam mb40">  
+        <div class="Section">
+            <div class="d-day-wrap">
+                <div class="package NSK">
+                    <div><p>연간패키지 <span class="pc1">문화상품권 이벤트</span></p>
+                        <strong class="round">마감까지</strong> <strong class="pc2">D-<span id="_day">3</span></strong>
+                    </div>
+                    <div>
+                        <strong id="_time" class="count NSK-Black">00:00:00 00</strong>
+                    </div>
                 </div>
-                <div>
-                    <strong id="_time" class="count NSK-Black">00:00:00 00</strong>
-                </div>
             </div>
         </div>
-    </div>
 
-    <div class="MainSlider swiper-container swiper-container-page">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2012/wsbook_720x400_01.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2012/wsbook_720x400_02.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2012/wsbook_720x400_03.jpg"></div>
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-    </div>    
-
-    
-
-    <div class="profEvt swiper-container swiper-container-arrow">
-        <div class="mainTit NSK-Black">          
-            교수별 <span class="tx-main">이벤트 & 특강안내</span>
-            <div class="swiper-button-next"></div>  
-            <div class="swiper-button-prev"></div>
-                        
-        </div>
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
-                    <p>1 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!1111</p>
-                    <span>모의고사</span>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
-                    <p>2 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!2222</p>
-                    <span>모의고사</span>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
-                    <p>3 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!3333</p>
-                    <span>모의고사</span>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
-                    <p>4 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!4444</p>
-                    <span>모의고사</span>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
-                    <p>5 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!5555</p>
-                    <span>모의고사</span>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
-                    <p>6 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!6666</p>
-                    <span>모의고사</span>
-                </a>
-            </div>
-        </div>
-        <!-- Add Arrows -->
-
-    </div>
-
-        
-    <div class="noticeTabs c_both mt30">
-        <ul class="tabWrap mainTab">
-            <li><a href="#notice1" class="on">공지사항</a></li>
-            <li><a href="#notice2">강의업데이트</a></li>
-            <li><a href="#notice3">이벤트</a></li>
-        </ul>
-        <div class="tabBox buttonBox noticeBox">
-            <div id="notice1" class="tabContent pd20">
-                <div class="moreBtn"><a href="#none">+ 더보기</a></div>
-                <ul class="List-Table">
-                    <li><a href="#none"><span>HOT</span>공지사항 제목이 출력됩니다.</a><span class="date">2018-04-01</span></li>
-                    <li><a href="#none"><span>HOT</span>3월 31일(금) 새벽시스템점검안내 안내안내안내</a><span class="date">2018-04-01</span></li>
-                    <li><a href="#none"><span>HOT</span>설연휴학원고객센터운영안내</a><span class="date">2018-03-06</span></li>
-                    <li><a href="#none"><span>HOT</span>추석교재배송및고객센터휴무안내</a><span class="date">2018-03-06</span></li>
-                    <li><a href="#none">추석교재배송및고객센터휴무안내</a><span class="date">2018-03-06</span></li>
-                </ul>
-            </div>
-            <div id="notice2" class="tabContent pd20 p_re">
-                <div class="lecup-Notice"><a href="#none"><span>공지</span>동영상강의 업데이트 일정 공지</a></div>  
-                <div class="moreBtn"><a href="#none">+ 더보기</a></div>
-                <ul class="List-Table List-Table2">
-                    <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> [인강전용] 2020 확률과 통계 문제풀이 - 수강생용 </a></li>
-                    <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 - 직강 복습용 </a></li>
-                    <li><a href="#none"><strong class="tx-blue">[전공수학 박태영]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 - 직강 복습용 </a></li>
-                    <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 </a></li>
-                    <li><a href="#none"><strong class="tx-blue">[도덕윤리 김병찬]</strong> <strong class="tx-red">총 2강 업로드</strong> 직강수강생용) 2020 (9~10월) 모의고사반 - (9/17~ 강의) </a></li>
-                </ul>
-            </div>
-            <div id="notice3" class="tabContent pd20">
-                <div class="moreBtn"><a href="#none">+ 더보기</a></div>
-                <ul class="List-Table">
-                    <li><a href="#none"><span>HOT</span>공지사항 제목이 출력됩니다.333</a><span class="date">2018-04-01</span></li>
-                    <li><a href="#none"><span>HOT</span>3월 31일(금) 새벽시스템점검안내33</a><span class="date">2018-04-01</span></li>
-                    <li><a href="#none"><span>HOT</span>설연휴학원고객센터운영안내33</a><span class="date">2018-03-06</span></li>
-                    <li><a href="#none"><span>HOT</span>추석교재배송및고객센터휴무안내33</a><span class="date">2018-03-06</span></li>
-                    <li><a href="#none">추석교재배송및고객센터휴무안내33</a><span class="date">2018-03-06</span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="mainTit NSK-Black tx-center mt30">윌비스 임용 <span class="tx-main">합격 교수진</span></div>
-    <div class="profwrap">
-        <div>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof01.jpg" alt="강사명">
-            </a>
-        </div>
-        <div>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof02.jpg" alt="강사명">
-            </a>
-        </div>
-        <div>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof03.jpg" alt="강사명">
-            </a>
-        </div>
-        <div>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof04.jpg" alt="강사명">
-            </a>
-        </div>
-        <div>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof05.jpg" alt="강사명">
-            </a>
-        </div>
-        <div>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof06.jpg" alt="강사명">
-            </a>
-        </div>
-        <div>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof07.jpg" alt="강사명">
-            </a>
-        </div>
-        <div>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof08.jpg" alt="강사명">
-            </a>
-        </div>
-        <div>
-            <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof08.jpg" alt="강사명">
-            </a>
-        </div>
-    </div>
-
-    <div class="mainTit NSK-Black tx-center mt50">          
-        윌비스 임용 <span class="tx-main">실시간 인기강의 TOP3</span>           
-    </div>
-    <div class="reference">* 접속 시간 기준, 24시간 내 홈페이지 강의 결제 순</div>
-    <ul class="bestLecBox2 NSK">
-        <li class="bestLec">                    
-            <a href="#none">
-                <ul class="lecinfo">
-                    <li>유아<br><span class="NSK-Black"">민정선</span> 교수</li>
-                    <li><strong>이론반</strong></li>
-                </ul> 
-                <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_01.png" title="교수명"></div>                                
-            </a>  
-            
-            <div class="best NSK-Black">1</div>                         
-        </li>
-        <li class="bestLec">                       
-            <a href="#none">
-                <ul class="lecinfo">
-                    <li>전기전자통신<br><span class="NSK-Black"">최우영</span> 교수</li>
-                    <li><strong>문제풀이반</strong></li>
-                </ul> 
-                <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_02.png" title="교수명"></div>                                   
-            </a>
-            
-            <div class="best NSK-Black">2</div>
-        </li>
-        <li class="bestLec">                    
-            <a href="#none">
-                <ul class="lecinfo">
-                    <li>수학교육론<br><span class="NSK-Black"">박태영</span> 교수</li>
-                    <li><strong>이론반</strong></li>
-                </ul>  
-                <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_03.png" title="교수명"></div>                                     
-            </a>            
-            <div class="best NSK-Black">3</div>
-        </li>
-    </ul>
-
-    <div class="mainTit mt50 p_re">
-        <span class="NSK-Black">임용 <span class="tx-main">생생 수강후기</span></span>
-        <a href="#none" onclick="openWin('LayerReply'),openWin('Reply')" class="morebtn">more ></a>
-        <div class="goBtns NSK">
-            <a href="#none">합격수기 ></a></li>
-        </div>
-    </div>
-    <div class="replyBox mt10">       
-        <div class="swiper-container-reply">
-            <div class="swiper-wrapper review">
-                <div class="swiper-slide">
-                    <a href="#none">
-                        <div class="reviewInfo">
-                            도덕윤리 <span>|</span> 김병찬<br>
-                            2019 (9~10월) 모의고사반
-                        </div>
-                        <div class="title"><img src="/public/img/willbes/sub/star5.gif"/><span>황성*</span></div>
-                        <div class="reviewTxt">
-                            입학할때 부터 학교 선배들도 항상 김병찬교수님 강의를 듣고 있었고 사물함엔 김병찬 교수님 교재로 빼곡했습니다.
-                            그냥 당연히 임용준비하는 사람은 다 듣는가보다 하고 자연스레 4학년때 김병찬 교수님 직강을 신청하여 듣게됐습니다.
-                            직접 들어보니 정말 대단하시다는 생각이 들었습니다. 흐름에 맞춰 개념정리를 쭈~욱 해주시는데 들어주시는 예시들도
-                            너무 적절했고 어려운 학자들도 이해가 잘됐습니다. 무엇보다도 교수님 강의의 가장 큰 장점은 확실한 반복적 학습인것 같습니다. 
-                            1년 패키지를 듣게되면 강의마다 총 4번의 복습을 거치게 돼있습니다. 개념정리, 기출분석, 문제풀이, 모의고사 각각 
-                            다른 수업같지만 그 주제에 맞춰 이론을 시간내에 최소 4번 복습할 수 있습니다. 작년 초수에 수업도 들으면서 교생도 나가고 시간이 없어서 원문, 
-                            교과서 거의 못봤지만 교수님 강의듣고 복습하고 시키시는대로 (?) 해서 1차 합격했습니다!
-                        </div>                                
-                    </a>                
-                </div>  
-                <div class="swiper-slide">
-                    <a href="#none">
-                        <div class="reviewInfo">
-                            전공영어 <span>|</span> 공훈<br>
-                            2019 11월 공훈 영교론/영어학 최종모의고사반
-                        </div>
-                        <div class="title"><img src="/public/img/willbes/sub/star3.gif"/><span>황진*</span></div>
-                        <div class="reviewTxt">
-                            입학할때 부터 학교 선배들도 항상 김병찬교수님 강의를 듣고 있었고 사물함엔 김병찬 교수님 교재로 빼곡했습니다.
-                            그냥 당연히 임용준비하는 사람은 다 듣는가보다 하고 자연스레 4학년때 김병찬 교수님 직강을 신청하여 듣게됐습니다.
-                            직접 들어보니 정말 대단하시다는 생각이 들었습니다. 흐름에 맞춰 개념정리를 쭈~욱 해주시는데 들어주시는 예시들도
-                            너무 적절했고 어려운 학자들도 이해가 잘됐습니다. 무엇보다도 교수님 강의의 가장 큰 장점은 확실한 반복적 학습인것 같습니다. 
-                            1년 패키지를 듣게되면 강의마다 총 4번의 복습을 거치게 돼있습니다. 개념정리, 기출분석, 문제풀이, 모의고사 각각 
-                            다른 수업같지만 그 주제에 맞춰 이론을 시간내에 최소 4번 복습할 수 있습니다. 작년 초수에 수업도 들으면서 교생도 나가고 시간이 없어서 원문, 
-                            교과서 거의 못봤지만 교수님 강의듣고 복습하고 시키시는대로 (?) 해서 1차 합격했습니다!
-                        </div>                                
-                    </a>                
-                </div>
-                <div class="swiper-slide">
-                    <a href="#none">
-                        <div class="reviewInfo">
-                            도덕윤리 <span>|</span> 김병찬<br>
-                            2019 (9~10월) 모의고사반
-                        </div>
-                        <div class="title"><img src="/public/img/willbes/sub/star5.gif"/><span>황성*</span></div>
-                        <div class="reviewTxt">
-                            입학할때 부터 학교 선배들도 항상 김병찬교수님 강의를 듣고 있었고 사물함엔 김병찬 교수님 교재로 빼곡했습니다.
-                            그냥 당연히 임용준비하는 사람은 다 듣는가보다 하고 자연스레 4학년때 김병찬 교수님 직강을 신청하여 듣게됐습니다.
-                            직접 들어보니 정말 대단하시다는 생각이 들었습니다. 흐름에 맞춰 개념정리를 쭈~욱 해주시는데 들어주시는 예시들도
-                            너무 적절했고 어려운 학자들도 이해가 잘됐습니다. 무엇보다도 교수님 강의의 가장 큰 장점은 확실한 반복적 학습인것 같습니다. 
-                            1년 패키지를 듣게되면 강의마다 총 4번의 복습을 거치게 돼있습니다. 개념정리, 기출분석, 문제풀이, 모의고사 각각 
-                            다른 수업같지만 그 주제에 맞춰 이론을 시간내에 최소 4번 복습할 수 있습니다. 작년 초수에 수업도 들으면서 교생도 나가고 시간이 없어서 원문, 
-                            교과서 거의 못봤지만 교수님 강의듣고 복습하고 시키시는대로 (?) 해서 1차 합격했습니다!
-                        </div>                                
-                    </a>                
-                </div>
-                <div class="swiper-slide">
-                    <a href="#none">
-                        <div class="reviewInfo">
-                            도덕윤리 <span>|</span> 김병찬<br>
-                            2019 (9~10월) 모의고사반
-                        </div>
-                        <div class="title"><img src="/public/img/willbes/sub/star5.gif"/><span>황성*</span></div>
-                        <div class="reviewTxt">
-                            입학할때 부터 학교 선배들도 항상 김병찬교수님 강의를 듣고 있었고 사물함엔 김병찬 교수님 교재로 빼곡했습니다.
-                            그냥 당연히 임용준비하는 사람은 다 듣는가보다 하고 자연스레 4학년때 김병찬 교수님 직강을 신청하여 듣게됐습니다.
-                            직접 들어보니 정말 대단하시다는 생각이 들었습니다. 흐름에 맞춰 개념정리를 쭈~욱 해주시는데 들어주시는 예시들도
-                            너무 적절했고 어려운 학자들도 이해가 잘됐습니다. 무엇보다도 교수님 강의의 가장 큰 장점은 확실한 반복적 학습인것 같습니다. 
-                            1년 패키지를 듣게되면 강의마다 총 4번의 복습을 거치게 돼있습니다. 개념정리, 기출분석, 문제풀이, 모의고사 각각 
-                            다른 수업같지만 그 주제에 맞춰 이론을 시간내에 최소 4번 복습할 수 있습니다. 작년 초수에 수업도 들으면서 교생도 나가고 시간이 없어서 원문, 
-                            교과서 거의 못봤지만 교수님 강의듣고 복습하고 시키시는대로 (?) 해서 1차 합격했습니다!
-                        </div>                                
-                    </a>                
-                </div>
-                <div class="swiper-slide">
-                    <a href="#none">
-                        <div class="reviewInfo">
-                            전공국어 <span>|</span> 권보민<br>
-                            2019 9~10월 국어문법 실전모의고사반
-                        </div>
-                        <div class="title"><img src="/public/img/willbes/sub/star2.gif"/><span>홍길*</span></div>
-                        <div class="reviewTxt">
-                            입학할때 부터 학교 선배들도 항상 김병찬교수님 강의를 듣고 있었고 사물함엔 김병찬 교수님 교재로 빼곡했습니다.
-                            그냥 당연히 임용준비하는 사람은 다 듣는가보다 하고 자연스레 4학년때 김병찬 교수님 직강을 신청하여 듣게됐습니다.
-                            직접 들어보니 정말 대단하시다는 생각이 들었습니다. 흐름에 맞춰 개념정리를 쭈~욱 해주시는데 들어주시는 예시들도
-                            너무 적절했고 어려운 학자들도 이해가 잘됐습니다. 무엇보다도 교수님 강의의 가장 큰 장점은 확실한 반복적 학습인것 같습니다. 
-                            1년 패키지를 듣게되면 강의마다 총 4번의 복습을 거치게 돼있습니다. 개념정리, 기출분석, 문제풀이, 모의고사 각각 
-                            다른 수업같지만 그 주제에 맞춰 이론을 시간내에 최소 4번 복습할 수 있습니다. 작년 초수에 수업도 들으면서 교생도 나가고 시간이 없어서 원문, 
-                            교과서 거의 못봤지만 교수님 강의듣고 복습하고 시키시는대로 (?) 해서 1차 합격했습니다!
-                        </div>                                
-                    </a>                
-                </div>
+        <div class="MainSlider swiper-container swiper-container-page">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2012/wsbook_720x400_01.jpg"></div>
+                <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2012/wsbook_720x400_02.jpg"></div>
+                <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/2012/wsbook_720x400_03.jpg"></div>
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
+        </div>    
+
+        
+
+        <div class="profEvt swiper-container swiper-container-arrow">
+            <div class="swiper-container-prof">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
+                            <p>1 기출 및 개정 내용까지 법규특강으로 한번에 확인!</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
+                            <p>2 기출 및 개정 내용까지 법규특강으로 한번에 확인!</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
+                            <p>3 기출 및 개정 내용까지<br></p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
+                            <p>4 기출 및 개정 내용까지 법규특강으로 한번에 확인!</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
+                            <p>5 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
+                            <p>6 기출 및 개정 내용까지 법규특강으로</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
+                            <p>7 기출 및 개정 내용까지 법규특강으로</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
+                            <p>8 기출 및 개정 내용까지 법규특강으로</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
+                            <p>9 기출 및 개정 내용까지 법규특강으로</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
+                            <p>10 기출 및 개정 내용까지 법규특강으로</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            
+
         </div>
-    </div> 
-    
-    <div class="mainTit NSK-Black tx-center mt50">윌비스 임용 <span class="tx-main">시험 정보</span></div>
-    <div class="w-Guide-Ssam mt20">
-        <div class="NG ssamInfoMenu">
-            <ul class="tabShow tabinfo">
-                <li><a href="#infoTab01" class="on">최근<br>10년동향</a><li>
-                <li><a href="#infoTab02">임용<br>시험제도</a><li>                
-                <li><a href="#infoTab03">지역별<br>공고문</a><li>
-                <li class="one"><a href="#infoTab04">자료실</a><li>
+
+            
+        <div class="noticeTabs c_both mt30">
+            <ul class="tabWrap mainTab">
+                <li><a href="#notice1" class="on">공지사항</a></li>
+                <li><a href="#notice2">강의업데이트</a></li>
+                <li><a href="#notice3">이벤트</a></li>
             </ul>
-        </div>
-        <div id="infoTab01">
-            @include('html.m.guide_3134_02_inc')              
-        </div>
-        <div id="infoTab02">
-            @include('html.m.guide_3134_01_inc')              
-        </div>        
-        <div id="infoTab03">
-            @include('html.m.guide_3134_03_inc')              
-        </div>
-        <div id="infoTab04">
-            @include('html.m.guide_3134_04_inc')              
-        </div>
-    </div>
-
-    <div class="ssamEtc c_both">
-        <a href="#none">
-            <img src="https://static.willbes.net/public/images/promotion/m/2017/mainIcon01.png">
-            대학특강문의
-        </a>
-        <a href="#none">
-            <img src="https://static.willbes.net/public/images/promotion/m/2017/mainIcon02.png">
-            교수채용
-        </a>
-        <a href="#none">
-            <img src="https://static.willbes.net/public/images/promotion/m/2017/mainIcon03.png">
-            오시는길
-        </a>
-    </div>
-
-    <div class="ssamCsCenter">
-        <ul class="tel">
-            <li>
-                <div class="goTel">
-                    <div>
-                        <strong>강의 문의</strong>
-                        09시~ 22시
-                    </div>
-                    <span><a href="tel:1544-3169">1544-3169</a></span>                       
+            <div class="tabBox buttonBox noticeBox">
+                <div id="notice1" class="tabContent pd20">
+                    <div class="moreBtn"><a href="#none">+ 더보기</a></div>
+                    <ul class="List-Table">
+                        <li><a href="#none"><span>HOT</span>공지사항 제목이 출력됩니다.</a><span class="date">2018-04-01</span></li>
+                        <li><a href="#none"><span>HOT</span>3월 31일(금) 새벽시스템점검안내 안내안내안내</a><span class="date">2018-04-01</span></li>
+                        <li><a href="#none"><span>HOT</span>설연휴학원고객센터운영안내</a><span class="date">2018-03-06</span></li>
+                        <li><a href="#none"><span>HOT</span>추석교재배송및고객센터휴무안내</a><span class="date">2018-03-06</span></li>
+                        <li><a href="#none">추석교재배송및고객센터휴무안내</a><span class="date">2018-03-06</span></li>
+                    </ul>
                 </div>
+                <div id="notice2" class="tabContent pd20 p_re">
+                    <div class="lecup-Notice"><a href="#none"><span>공지</span>동영상강의 업데이트 일정 공지</a></div>  
+                    <div class="moreBtn"><a href="#none">+ 더보기</a></div>
+                    <ul class="List-Table List-Table2">
+                        <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> [인강전용] 2020 확률과 통계 문제풀이 - 수강생용 </a></li>
+                        <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 - 직강 복습용 </a></li>
+                        <li><a href="#none"><strong class="tx-blue">[전공수학 박태영]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 - 직강 복습용 </a></li>
+                        <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 </a></li>
+                        <li><a href="#none"><strong class="tx-blue">[도덕윤리 김병찬]</strong> <strong class="tx-red">총 2강 업로드</strong> 직강수강생용) 2020 (9~10월) 모의고사반 - (9/17~ 강의) </a></li>
+                    </ul>
+                </div>
+                <div id="notice3" class="tabContent pd20">
+                    <div class="moreBtn"><a href="#none">+ 더보기</a></div>
+                    <ul class="List-Table">
+                        <li><a href="#none"><span>HOT</span>공지사항 제목이 출력됩니다.333</a><span class="date">2018-04-01</span></li>
+                        <li><a href="#none"><span>HOT</span>3월 31일(금) 새벽시스템점검안내33</a><span class="date">2018-04-01</span></li>
+                        <li><a href="#none"><span>HOT</span>설연휴학원고객센터운영안내33</a><span class="date">2018-03-06</span></li>
+                        <li><a href="#none"><span>HOT</span>추석교재배송및고객센터휴무안내33</a><span class="date">2018-03-06</span></li>
+                        <li><a href="#none">추석교재배송및고객센터휴무안내33</a><span class="date">2018-03-06</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mainTit NSK-Black tx-center mt30">윌비스 임용 <span class="tx-main">합격 교수진</span></div>
+        <div class="profwrap">
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof01.jpg" alt="강사명">
+                </a>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof02.jpg" alt="강사명">
+                </a>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof03.jpg" alt="강사명">
+                </a>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof04.jpg" alt="강사명">
+                </a>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof05.jpg" alt="강사명">
+                </a>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof06.jpg" alt="강사명">
+                </a>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof07.jpg" alt="강사명">
+                </a>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof08.jpg" alt="강사명">
+                </a>
+            </div>
+            <div>
+                <a href="#none">
+                    <img src="https://static.willbes.net/public/images/promotion/m/2018/ssam_prof08.jpg" alt="강사명">
+                </a>
+            </div>
+        </div>
+
+        <div class="mainTit NSK-Black tx-center mt50">          
+            윌비스 임용 <span class="tx-main">실시간 인기강의 TOP3</span>           
+        </div>
+        <div class="reference">* 접속 시간 기준, 24시간 내 홈페이지 강의 결제 순</div>
+        <ul class="bestLecBox2 NSK">
+            <li class="bestLec">                    
+                <a href="#none">
+                    <ul class="lecinfo">
+                        <li>유아<br><span class="NSK-Black"">민정선</span> 교수</li>
+                        <li><strong>이론반</strong></li>
+                    </ul> 
+                    <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_01.png" title="교수명"></div>                                
+                </a>  
+                
+                <div class="best NSK-Black">1</div>                         
             </li>
-            <li>
-                <div class="goTel">
-                    <div>
-                        <strong>교재배송문의</strong>
-                        평일 09시~ 17시
-                    </div>
-                    <span><a href="tel:1544-4944">1544-4944</a></span>                      
-                </div>
+            <li class="bestLec">                       
+                <a href="#none">
+                    <ul class="lecinfo">
+                        <li>전기전자통신<br><span class="NSK-Black"">최우영</span> 교수</li>
+                        <li><strong>문제풀이반</strong></li>
+                    </ul> 
+                    <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_02.png" title="교수명"></div>                                   
+                </a>
+                
+                <div class="best NSK-Black">2</div>
+            </li>
+            <li class="bestLec">                    
+                <a href="#none">
+                    <ul class="lecinfo">
+                        <li>수학교육론<br><span class="NSK-Black"">박태영</span> 교수</li>
+                        <li><strong>이론반</strong></li>
+                    </ul>  
+                    <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_03.png" title="교수명"></div>                                     
+                </a>            
+                <div class="best NSK-Black">3</div>
             </li>
         </ul>
-    </div> 
 
-</div>
+        <div class="mainTit mt50 p_re">
+            <span class="NSK-Black">임용 <span class="tx-main">생생 수강후기</span></span>
+            <a href="#none" onclick="openWin('LayerReply'),openWin('Reply')" class="morebtn">more ></a>
+            <div class="goBtns NSK">
+                <a href="#none">합격수기 ></a></li>
+            </div>
+        </div>
+        <div class="replyBox mt10">       
+            <div class="swiper-container-reply">
+                <div class="swiper-wrapper review">
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <div class="reviewInfo">
+                                도덕윤리 <span>|</span> 김병찬<br>
+                                2019 (9~10월) 모의고사반
+                            </div>
+                            <div class="title"><img src="/public/img/willbes/sub/star5.gif"/><span>황성*</span></div>
+                            <div class="reviewTxt">
+                                입학할때 부터 학교 선배들도 항상 김병찬교수님 강의를 듣고 있었고 사물함엔 김병찬 교수님 교재로 빼곡했습니다.
+                                그냥 당연히 임용준비하는 사람은 다 듣는가보다 하고 자연스레 4학년때 김병찬 교수님 직강을 신청하여 듣게됐습니다.
+                                직접 들어보니 정말 대단하시다는 생각이 들었습니다. 흐름에 맞춰 개념정리를 쭈~욱 해주시는데 들어주시는 예시들도
+                                너무 적절했고 어려운 학자들도 이해가 잘됐습니다. 무엇보다도 교수님 강의의 가장 큰 장점은 확실한 반복적 학습인것 같습니다. 
+                                1년 패키지를 듣게되면 강의마다 총 4번의 복습을 거치게 돼있습니다. 개념정리, 기출분석, 문제풀이, 모의고사 각각 
+                                다른 수업같지만 그 주제에 맞춰 이론을 시간내에 최소 4번 복습할 수 있습니다. 작년 초수에 수업도 들으면서 교생도 나가고 시간이 없어서 원문, 
+                                교과서 거의 못봤지만 교수님 강의듣고 복습하고 시키시는대로 (?) 해서 1차 합격했습니다!
+                            </div>                                
+                        </a>                
+                    </div>  
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <div class="reviewInfo">
+                                전공영어 <span>|</span> 공훈<br>
+                                2019 11월 공훈 영교론/영어학 최종모의고사반
+                            </div>
+                            <div class="title"><img src="/public/img/willbes/sub/star3.gif"/><span>황진*</span></div>
+                            <div class="reviewTxt">
+                                입학할때 부터 학교 선배들도 항상 김병찬교수님 강의를 듣고 있었고 사물함엔 김병찬 교수님 교재로 빼곡했습니다.
+                                그냥 당연히 임용준비하는 사람은 다 듣는가보다 하고 자연스레 4학년때 김병찬 교수님 직강을 신청하여 듣게됐습니다.
+                                직접 들어보니 정말 대단하시다는 생각이 들었습니다. 흐름에 맞춰 개념정리를 쭈~욱 해주시는데 들어주시는 예시들도
+                                너무 적절했고 어려운 학자들도 이해가 잘됐습니다. 무엇보다도 교수님 강의의 가장 큰 장점은 확실한 반복적 학습인것 같습니다. 
+                                1년 패키지를 듣게되면 강의마다 총 4번의 복습을 거치게 돼있습니다. 개념정리, 기출분석, 문제풀이, 모의고사 각각 
+                                다른 수업같지만 그 주제에 맞춰 이론을 시간내에 최소 4번 복습할 수 있습니다. 작년 초수에 수업도 들으면서 교생도 나가고 시간이 없어서 원문, 
+                                교과서 거의 못봤지만 교수님 강의듣고 복습하고 시키시는대로 (?) 해서 1차 합격했습니다!
+                            </div>                                
+                        </a>                
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <div class="reviewInfo">
+                                도덕윤리 <span>|</span> 김병찬<br>
+                                2019 (9~10월) 모의고사반
+                            </div>
+                            <div class="title"><img src="/public/img/willbes/sub/star5.gif"/><span>황성*</span></div>
+                            <div class="reviewTxt">
+                                입학할때 부터 학교 선배들도 항상 김병찬교수님 강의를 듣고 있었고 사물함엔 김병찬 교수님 교재로 빼곡했습니다.
+                                그냥 당연히 임용준비하는 사람은 다 듣는가보다 하고 자연스레 4학년때 김병찬 교수님 직강을 신청하여 듣게됐습니다.
+                                직접 들어보니 정말 대단하시다는 생각이 들었습니다. 흐름에 맞춰 개념정리를 쭈~욱 해주시는데 들어주시는 예시들도
+                                너무 적절했고 어려운 학자들도 이해가 잘됐습니다. 무엇보다도 교수님 강의의 가장 큰 장점은 확실한 반복적 학습인것 같습니다. 
+                                1년 패키지를 듣게되면 강의마다 총 4번의 복습을 거치게 돼있습니다. 개념정리, 기출분석, 문제풀이, 모의고사 각각 
+                                다른 수업같지만 그 주제에 맞춰 이론을 시간내에 최소 4번 복습할 수 있습니다. 작년 초수에 수업도 들으면서 교생도 나가고 시간이 없어서 원문, 
+                                교과서 거의 못봤지만 교수님 강의듣고 복습하고 시키시는대로 (?) 해서 1차 합격했습니다!
+                            </div>                                
+                        </a>                
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <div class="reviewInfo">
+                                도덕윤리 <span>|</span> 김병찬<br>
+                                2019 (9~10월) 모의고사반
+                            </div>
+                            <div class="title"><img src="/public/img/willbes/sub/star5.gif"/><span>황성*</span></div>
+                            <div class="reviewTxt">
+                                입학할때 부터 학교 선배들도 항상 김병찬교수님 강의를 듣고 있었고 사물함엔 김병찬 교수님 교재로 빼곡했습니다.
+                                그냥 당연히 임용준비하는 사람은 다 듣는가보다 하고 자연스레 4학년때 김병찬 교수님 직강을 신청하여 듣게됐습니다.
+                                직접 들어보니 정말 대단하시다는 생각이 들었습니다. 흐름에 맞춰 개념정리를 쭈~욱 해주시는데 들어주시는 예시들도
+                                너무 적절했고 어려운 학자들도 이해가 잘됐습니다. 무엇보다도 교수님 강의의 가장 큰 장점은 확실한 반복적 학습인것 같습니다. 
+                                1년 패키지를 듣게되면 강의마다 총 4번의 복습을 거치게 돼있습니다. 개념정리, 기출분석, 문제풀이, 모의고사 각각 
+                                다른 수업같지만 그 주제에 맞춰 이론을 시간내에 최소 4번 복습할 수 있습니다. 작년 초수에 수업도 들으면서 교생도 나가고 시간이 없어서 원문, 
+                                교과서 거의 못봤지만 교수님 강의듣고 복습하고 시키시는대로 (?) 해서 1차 합격했습니다!
+                            </div>                                
+                        </a>                
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <div class="reviewInfo">
+                                전공국어 <span>|</span> 권보민<br>
+                                2019 9~10월 국어문법 실전모의고사반
+                            </div>
+                            <div class="title"><img src="/public/img/willbes/sub/star2.gif"/><span>홍길*</span></div>
+                            <div class="reviewTxt">
+                                입학할때 부터 학교 선배들도 항상 김병찬교수님 강의를 듣고 있었고 사물함엔 김병찬 교수님 교재로 빼곡했습니다.
+                                그냥 당연히 임용준비하는 사람은 다 듣는가보다 하고 자연스레 4학년때 김병찬 교수님 직강을 신청하여 듣게됐습니다.
+                                직접 들어보니 정말 대단하시다는 생각이 들었습니다. 흐름에 맞춰 개념정리를 쭈~욱 해주시는데 들어주시는 예시들도
+                                너무 적절했고 어려운 학자들도 이해가 잘됐습니다. 무엇보다도 교수님 강의의 가장 큰 장점은 확실한 반복적 학습인것 같습니다. 
+                                1년 패키지를 듣게되면 강의마다 총 4번의 복습을 거치게 돼있습니다. 개념정리, 기출분석, 문제풀이, 모의고사 각각 
+                                다른 수업같지만 그 주제에 맞춰 이론을 시간내에 최소 4번 복습할 수 있습니다. 작년 초수에 수업도 들으면서 교생도 나가고 시간이 없어서 원문, 
+                                교과서 거의 못봤지만 교수님 강의듣고 복습하고 시키시는대로 (?) 해서 1차 합격했습니다!
+                            </div>                                
+                        </a>                
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div> 
+        
+        <div class="mainTit NSK-Black tx-center mt50">윌비스 임용 <span class="tx-main">시험 정보</span></div>
+        <div class="w-Guide-Ssam mt20">
+            <div class="NG ssamInfoMenu">
+                <ul class="tabShow tabinfo">
+                    <li><a href="#infoTab01" class="on">최근<br>10년동향</a><li>
+                    <li><a href="#infoTab02">임용<br>시험제도</a><li>                
+                    <li><a href="#infoTab03">지역별<br>공고문</a><li>
+                    <li class="one"><a href="#infoTab04">자료실</a><li>
+                </ul>
+            </div>
+            <div id="infoTab01">
+                @include('html.m.guide_3134_02_inc')              
+            </div>
+            <div id="infoTab02">
+                @include('html.m.guide_3134_01_inc')              
+            </div>        
+            <div id="infoTab03">
+                @include('html.m.guide_3134_03_inc')              
+            </div>
+            <div id="infoTab04">
+                @include('html.m.guide_3134_04_inc')              
+            </div>
+        </div>
+
+        <div class="ssamEtc c_both">
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/m/2017/mainIcon01.png">
+                대학특강문의
+            </a>
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/m/2017/mainIcon02.png">
+                교수채용
+            </a>
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/m/2017/mainIcon03.png">
+                오시는길
+            </a>
+        </div>
+
+        <div class="ssamCsCenter">
+            <ul class="tel">
+                <li>
+                    <div class="goTel">
+                        <div>
+                            <strong>강의 문의</strong>
+                            09시~ 22시
+                        </div>
+                        <span><a href="tel:1544-3169">1544-3169</a></span>                       
+                    </div>
+                </li>
+                <li>
+                    <div class="goTel">
+                        <div>
+                            <strong>교재배송문의</strong>
+                            평일 09시~ 17시
+                        </div>
+                        <span><a href="tel:1544-4944">1544-4944</a></span>                      
+                    </div>
+                </li>
+            </ul>
+        </div> 
+
+    </div>
 <!-- End Container -->
 <script>
     $(function() {
+        //YOUTUBE 영상
+        var swiper5 = new Swiper('.swiper-container-prof', {
+            slidesPerView: 'auto',
+            slidesPerColumn: 2,
+            spaceBetween: 0,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
+            // init: false,
+            pagination: {
+                el: '.swiper-container-prof .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                375: {
+                slidesPerColumn: 2,
+                spaceBetween: 0,
+                },
+                640: {
+                slidesPerColumn: 2,
+                spaceBetween: 0,
+                },
+            }
+        });
+
         //수강후기
         var swiper_review = new Swiper ('.swiper-container-reply', {
             slidesPerView: 'auto',
@@ -812,6 +887,7 @@
                 disableOnInteraction: false,
             }, //3초에 한번씩 자동 넘김            
         });
+
     });
 </script>
 

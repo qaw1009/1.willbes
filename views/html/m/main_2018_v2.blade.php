@@ -455,14 +455,14 @@
             <div class="swiper-container-prof">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <a href="#none">
+                        <a href="https://youtu.be/gCF-qMPZHiY" target="_blank">
                             <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190.jpg" alt="배너명">
                             <p>1 기출 및 개정 내용까지 법규특강으로 한번에 확인!</p>
                             <span>모의고사</span>
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="#none">
+                        <a href="https://www.youtube.com/shorts/3jysDrzQFSk" target="_blank">
                             <img src="https://static.willbes.net/public/images/promotion/m/2018/320x190_02.jpg" alt="배너명">
                             <p>2 기출 및 개정 내용까지 법규특강으로 한번에 확인!</p>
                             <span>모의고사</span>

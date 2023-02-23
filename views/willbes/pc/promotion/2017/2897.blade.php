@@ -139,9 +139,9 @@
                                 <td>
                                     <select id="register_data1" name="register_data1" title="과목">
                                         <option value="">과목 선택</option>
-                                        <option value="유아">유아</option>
+{{--                                        <option value="유아">유아</option>--}}
                                         <option value="국어">국어</option>
-                                        <option value="영어">영어</option>
+{{--                                        <option value="영어">영어</option>--}}
                                         <option value="수학">수학</option>
                                         <option value="역사">역사</option>
                                         <option value="음악">음악</option>
@@ -152,18 +152,18 @@
                                 <td colspan="4">
                                     <select id="register_data2" name="register_data2" title="쿠폰">
                                         <option value="">쿠폰 선택</option>
-                                        <option value="[이경범] 교육학 3~11월 패키지 10% 할인 쿠폰">[이경범] 교육학 3~11월 패키지 10% 할인 쿠폰</option>
+                                        <option value="[이경범] 3~11월 교육학 패키지 10%할인 쿠폰">[이경범] 3~11월 교육학 패키지 10%할인 쿠폰</option>
                                         <option value="[송원영] 3~11월 국교/문교 패키지 10%할인 쿠폰">[송원영] 3~11월 국교/문교 패키지 10%할인 쿠폰</option>
                                         <option value="[송원영] 3~11월 국교론 패키지 10%할인 쿠폰">[송원영] 3~11월 국교론 패키지 10%할인 쿠폰</option>
                                         <option value="[권보민] 3~11월 국어문법 패키지 10%할인 쿠폰">[권보민] 3~11월 국어문법 패키지 10%할인 쿠폰</option>
-                                        <option value="[송원영+권보민] 3~11월 완전정복 패키지 10%할인 쿠폰">[송원영+권보민] 3~11월 완전정복 패키지 10%할인 쿠폰</option>
+{{--                                        <option value="[송원영+권보민] 3~11월 완전정복 패키지 10%할인 쿠폰">[송원영+권보민] 3~11월 완전정복 패키지 10%할인 쿠폰</option>--}}
                                         <option value="[구동언] 3~11월 전공국어 패키지 10% 할인 쿠폰">[구동언] 3~11월 전공국어 패키지 10% 할인 쿠폰</option>
                                         <option value="[박태영] 3~11월 수학교육론 패키지 10% 할인 쿠폰">[박태영] 3~11월 수학교육론 패키지 10% 할인 쿠폰</option>
                                         <option value="[박혜향] 3~11월 수학교육론 패키지 10% 할인 쿠폰">[박혜향] 3~11월 수학교육론 패키지 10% 할인 쿠폰</option>
                                         <option value="[김종권] 3~11월 전공역사 패키지 10% 할인 쿠폰">[김종권] 3~11월 전공역사 패키지 10% 할인 쿠폰</option>
-                                        <option value="심화 Free Pass 패키지 10% 할인 쿠폰">심화 Free Pass 패키지 10% 할인 쿠폰</option>
+                                        <option value="[다이애나] 전공음악 All Free Pass 패키지 15%할인 쿠폰">[다이애나] 전공음악 All Free Pass 패키지 15%할인 쿠폰</option>
                                         <option value="[장영희] 3~11월 중국어 초수트랙 패키지 10% 할인 쿠폰">[장영희] 3~11월 중국어 초수트랙 패키지 10% 할인 쿠폰</option>
-                                        <option value="[박태영] 3~11월 중국어 N+수트랙 패키지 10% 할인 쿠폰">[박태영] 3~11월 중국어 N+수트랙 패키지 10% 할인 쿠폰</option>
+                                        <option value="[장영희] 3~11월 중국어 N+수트랙 패키지 10% 할인 쿠폰">[장영희] 3~11월 중국어 N+수트랙 패키지 10% 할인 쿠폰</option>
                                     </select>
                                 </td>
                             </tr>
@@ -181,7 +181,7 @@
                     <ul class="evtInfoBox">
                         <li>환승할인 쿠폰의 발급을 위한 인증서류는 수강학원명, 수강생명, 수강과목, 수강기간이 명기되어 있는
                         수강증, 1개월 이내 발급된 수강확인증만 인정됩니다.</li>
-                        <li>타학원의 수강인증은 2021년 ~ 2022년에 진행된 (유료)강의만 해당 됩니다.</li>
+                        <li>타학원 수강인증은 20만원이상 유료강의를 수강한 경우만 해당됩니다.</li>
                         <li>인증 서류의 식별이 불가능한 경우 또는 이미지를 도용한 경우에는 할인혜택이 적용이 불가합니다.</li>
                     </ul>
                     <div class="btnSet">
@@ -283,7 +283,11 @@
                     ※ 로그인 후, 해당 쿠폰을 클릭하면, 발급받을 수 있습니다. <br>
                     대상자가 아닌 경우, 발급이 제한됩니다.
                 </div>
-                <div><a href="https://ssam.willbes.net/promotion/index/cate/3140/code/2896"><img src="https://static.willbes.net/public/images/promotion/2023/02/2897_02_btn.png"/></a></div>
+                <div>
+                    <a href="https://ssam.willbes.net/support/notice/show?board_idx=450775&s_cate_code_disabled=Y">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_02_btn.png"/>
+                    </a>
+                </div>
             </form>
         </div>
 

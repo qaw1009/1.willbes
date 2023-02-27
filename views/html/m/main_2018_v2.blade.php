@@ -96,11 +96,13 @@
     -ms-flex-align: flex-start;
     -webkit-align-items: flex-start;
     align-items: flex-start;
-    margin:0 1.8vw 1.5vh;
+    margin:0 20px 1.5vh;
     font-size:1.4vh;
 }
+.ssam .profEvt .swiper-wrapper .swiper-slide:last-child {margin-right:0}
+.ssam .profEvt .swiper-wrapper .swiper-slide img {border-radius:20px;}
 
-.ssam .profEvt a {display:block; margin:0 0.5vh; text-align:left; max-width:320px}
+.ssam .profEvt a {display:block; margin:0 auto; text-align:left; max-width:320px}
 .ssam .profEvt a p {font-size:1.8vh; color:#383838; margin:1vh 0; padding:0 1vh;}
 .ssam .profEvt a span {color:#adadad; font-size:1.6vh; padding:0 10px }
 
@@ -222,6 +224,7 @@
     .ssam .profwrap div {width:calc(50% - 10px);}
     .ssam .profEvt .swiper-wrapper .swiper-slide {
         width:170px;
+        margin:0 5px 1.5vh;
     }
 }
 @@media only screen and (min-width: 375px) and (max-width: 640px) {
@@ -236,6 +239,7 @@
     }
     .ssam .profEvt .swiper-wrapper .swiper-slide {
         width:170px;
+        margin:0 8px 1.5vh;
     }
 
 }
@@ -837,7 +841,7 @@
         //YOUTUBE 영상
         var swiper5 = new Swiper('.swiper-container-prof', {
             slidesPerView: 'auto',
-            slidesPerColumn: 2,
+            slidesPerColumn: 1,
             spaceBetween: 0,
             autoplay: {
                 delay: 3000,
@@ -848,13 +852,13 @@
                 el: '.swiper-container-prof .swiper-pagination',
                 clickable: true,
             },
-            breakpoints: {
+           breakpoints: {
                 375: {
-                slidesPerColumn: 2,
+                slidesPerColumn: 1,
                 spaceBetween: 0,
                 },
                 640: {
-                slidesPerColumn: 2,
+                slidesPerColumn: 1,
                 spaceBetween: 0,
                 },
             }

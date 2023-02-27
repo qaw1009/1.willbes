@@ -490,7 +490,6 @@
                                         </li>
                                     </ul>
                                 </dt>
-
                             </dl>
                         </div>
                     </div>
@@ -502,7 +501,6 @@
             {{-- quick menu --}}
             @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>
-
     </div>
     <!-- End Container -->
 

@@ -66,7 +66,7 @@
     .evt01_02 {width:1120px; margin:0 auto; position:relative}
     .evt01_02 .point {font-size:16px; margin-top:100px; line-height:1.5}
     .evt01_02 .point h5 {font-size:24px; font-weight:bold; color:#fff}
-    .evt01_02 .point div {width:900px; margin:50px auto; background:#fff; border-radius:10px; padding:50px; font-size:20px}
+    .evt01_02 .point div {margin:15px auto; background:#fff; border-radius:10px; padding:35px; font-size:20px}
     .evt01_02 .point input {width:100px; color:#000; border:1px solid #000}
     .evt01_02 .point div a {display:block; padding:20px; background:#000; font-size:18px; color:#fff; border-radius:50px; width:70%; margin:20px auto 0}
     .evt01_02 .point div a:hover {background:#3e0763}
@@ -177,6 +177,8 @@
     .first {background:#F2F2F2;font-weight:bold;}
     .wrong {color:red !important;}
     .pass {color:#0070C0 !important;}
+    #series {border:2px solid #101010;width:210px;}
+    .series_select {vertical-align:middle !important;}
     /*.score {position:absolute;left:50%;top:67%;margin-left:33px;width:110px;height:45px;border:2px solid #bfbfbf;}*/
 
 
@@ -266,7 +268,29 @@
                             <h5>Q. 내가 생각하는 예상 합격컷은?</h5>
                             <div>
                                 <p class="mb20 tx16">※ <strong class="tx-red">본인 응시 직렬</strong>에 해당하는 예상 합격컷을 기입 바랍니다.</p>
-
+                                <div>
+                                    <span class="series_select">직렬 선택</span>
+                                    <select title="직렬 선택" name="series" id="series" >
+                                        <option style="display:none">선택하세요▼</option>                         
+                                        <option value="">행정(일반행정:전국)</option>
+                                        <option value="">행정(일반행정:지역)</option>
+                                        <option value="">행정(법무행정)</option>
+                                        <option value="">행정(인사조직)</option>
+                                        <option value="">행정(재경)</option>
+                                        <option value="">행정(국제통상)</option>
+                                        <option value="">행정(교육행정)</option>
+                                        <option value="">사회복지(사회복지)</option>
+                                        <option value="">교정(교정)</option>
+                                        <option value="">보호(보호)</option>
+                                        <option value="">검찰(검찰</option>
+                                        <option value="">출입국관리(출입국관리)</option>
+                                        <option value="">5급기술</option>
+                                        <option value="">일반외교(국립외교원)</option>
+                                        <option value="">7급 지역인재</option>
+                                        <option value="">일반외교(국립외교원)</option>
+                                        <option value="">7급 지역인재</option>                         
+                                    </select>
+                                </div>                               
                                 예상 합격 점수 (평균값) <input class="score" type="text" maxlength="5" name="register_data1" oninput="maxLengthCheck(this);" value="{{ (empty($register_count[0]['EtcValue']) === false ? $register_count[0]['EtcValue'] : '') }}"> 점
                                 <a href="javascript:void(0);" onclick="fn_submit(); return false;">합격 점수 예상하기 ></a>
                             </div>

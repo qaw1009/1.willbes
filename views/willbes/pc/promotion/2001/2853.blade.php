@@ -23,7 +23,7 @@
         .sky {position:fixed; width:120px; top:200px; right:30px; z-index:10;}
         .sky a {display:block; margin-bottom:10px}
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2022/12/2853_top_bg.jpg) no-repeat center top;}
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2023/02/2853_top_bg.jpg) no-repeat center top;}
 
         .evt_01 {background:#F8F8F8}
 
@@ -83,7 +83,7 @@
         </div>
 
         <div class="evtCtnsBox evt_top"  data-aos="fade-down">
-            <img src="https://static.willbes.net/public/images/promotion/2022/12/2853_top.jpg"  alt="리얼 실전문제풀이 종합반">
+            <img src="https://static.willbes.net/public/images/promotion/2023/02/2853_top.jpg"  alt="리얼 실전문제풀이 종합반">
         </div>
 
         <div class="evtCtnsBox evt_01" data-aos="fade-up">
@@ -122,9 +122,10 @@
 
         <div class="evtCtnsBox evt_03" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/12/2853_03.jpg" alt="단과반">
-                <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1008" target="_blank" title="스텝1" style="position: absolute;left: 4.46%;top: 38.35%;width: 32.29%;height: 3.29%;z-index: 2;"></a>
-                <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1009" target="_blank" title="스텝2" style="position: absolute;left: 4.46%;top: 63.35%;width: 34.29%;height: 3.19%;z-index: 2;"></a>              
+                <img src="https://static.willbes.net/public/images/promotion/2023/02/2853_03.jpg" alt="단과반">
+                <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1008" target="_blank" title="스텝1" style="position: absolute;left: 4.46%;top: 34.85%;width: 32.29%;height: 3.29%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/205625" target="_blank" title="스텝2" style="position: absolute;left: 4.46%;top: 60.25%;width: 36.29%;height: 3.19%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/free?search_order=course&course_idx=1072" target="_blank" title="스텝3" style="position: absolute;left: 4.46%;top: 89.25%;width: 33.29%;height: 2.99%;z-index: 2;"></a>              
             </div>
         </div>
 

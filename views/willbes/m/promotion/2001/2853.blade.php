@@ -67,7 +67,7 @@
 <div id="Container" class="Container NSK c_both">
 
     <div class="evtCtnsBox" data-aos="fade-down">
-        <img src="https://static.willbes.net/public/images/promotion/2022/12/2853m_top.jpg" alt="리얼 실전문제풀이 종합반" >
+        <img src="https://static.willbes.net/public/images/promotion/2023/02/2853m_top.jpg" alt="리얼 실전문제풀이 종합반" >
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">
@@ -107,9 +107,10 @@
 
     <div class="evtCtnsBox" data-aos="fade-up">
         <div class="wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2022/12/2853m_03.jpg" alt="단과반" >
-            <a href="https://police.willbes.net/m/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1008" target="_blank" title="스텝1" style="position: absolute;left: 15.46%;top: 35.35%;width: 69.29%;height: 4.39%;z-index: 2;"></a>
-            <a href="https://police.willbes.net/m/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1009" target="_blank" title="스텝2" style="position: absolute;left: 13.46%;top: 63.75%;width: 73.29%;height: 4.39%;z-index: 2;"></a> 
+            <img src="https://static.willbes.net/public/images/promotion/2023/02/2853m_03.jpg" alt="단과반" >
+            <a href="https://police.willbes.net/m/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1008" target="_blank" title="스텝1" style="position: absolute;left: 15.46%;top: 30.35%;width: 69.29%;height: 4.39%;z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/package/show/cate/3001/pack/648001/prod-code/205625" target="_blank" title="스텝2" style="position: absolute;left: 13.46%;top: 58.15%;width: 73.29%;height: 4.39%;z-index: 2;"></a>
+            <a href="https://police.willbes.net/m/lecture/index/cate/3001/pattern/free?search_order=course&course_idx=1072" target="_blank" title="스텝3" style="position: absolute;left: 13.46%;top: 89.15%;width: 73.29%;height: 4.39%;z-index: 2;"></a> 
         </div> 
     </div>
 

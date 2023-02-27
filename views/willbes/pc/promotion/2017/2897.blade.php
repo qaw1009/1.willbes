@@ -82,7 +82,7 @@
             <span><img src="https://static.willbes.net/public/images/promotion/2023/02/2897_top_01.png" alt=""/></span>
         </div>
 
-        <div class="evtCtnsBox event01" data-aos="fade-up">
+        <div class="evtCtnsBox event01" data-aos="fade-up" id="evt01">
             <form name="regi_form_register" id="regi_form_register">
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
@@ -191,7 +191,7 @@
             </form>
         </div>
 
-        <div class="evtCtnsBox event02" data-aos="fade-up">
+        <div class="evtCtnsBox event02" data-aos="fade-up" id="evt02">
             <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}

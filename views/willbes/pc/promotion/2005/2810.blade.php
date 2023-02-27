@@ -70,6 +70,8 @@
     .evt01_02 .point input {width:100px; color:#000; border:1px solid #000}
     .evt01_02 .point div a {display:block; padding:20px; background:#000; font-size:18px; color:#fff; border-radius:50px; width:70%; margin:20px auto 0}
     .evt01_02 .point div a:hover {background:#3e0763}
+    .evt01_02 .fail_info {background:#fff;width:720px;font-size:25px;margin:0 auto;padding:50px;border-radius:10px;}
+    .evt01_02 .fail_info .fail {color:#5918CC;font-weight:bold;}
     .textinfo {color:#fff; line-height:1.5; font-size:20px} 
     .textinfo p {font-size:14px}
     .textinfo strong {color:#00fffc}
@@ -295,6 +297,9 @@
                                 <a href="javascript:void(0);" onclick="fn_submit(); return false;">합격 점수 예상하기 ></a>
                             </div>
                         </div>
+                        <div class="fail_info">                   
+                            <p class="fail">과락 과목이 포함되어 아쉽지만 불합격입니다.</p>                            
+                        </div>
                         {{--
                         <div class="textinfo">
                             이벤트 기간 <strong>~ 7/27(수) 자정까지</strong> 당첨자 발표 <strong>9/2(금) 개별 발표</strong>
@@ -317,8 +322,7 @@
             <div class="tab_content" id="tab03"></div>
             <div class="tab_content" id="tab04"></div>
         </div>
-
-
+        
     </div>
 
     

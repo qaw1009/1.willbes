@@ -271,7 +271,7 @@
                                 <div>
                                     <span class="series_select">직렬 선택</span>
                                     <select title="직렬 선택" name="series" id="series" >
-                                        <option style="display:none">선택하세요▼</option>                         
+                                        <option style="display:none">선택하세요</option>                         
                                         <option value="">행정(일반행정:전국)</option>
                                         <option value="">행정(일반행정:지역)</option>
                                         <option value="">행정(법무행정)</option>

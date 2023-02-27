@@ -77,7 +77,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01.jpg"/>
             <div class="pkgList">
                 <div class="lec">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t01.jpg"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t01.jpg" alt="유아 민정선"/>
                     <a href="javascript:go_popup1()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
                     <div class="btnSet">
                         <a href="#none">학원직강 수강신청</a>
@@ -85,15 +85,15 @@
                     </div>
                 </div>
                 <div class="lec">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t02.jpg"/>
-                    <a href="javascript:go_popup2()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t02.jpg" alt="유아 민정선"/>
+                    <a href="javascript:go_popup1()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
                     <div class="btnSet">
                         <a href="#none">학원직강 수강신청</a>
                         <a href="#none">동영상강의 수강신청</a>
                     </div>
                 </div>
                 <div class="lec">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t03.jpg"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t03.jpg" alt="교육학 이경범"/>
                     <a href="javascript:go_popup3()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
                     <div class="btnSet">
                         <a href="#none">학원직강 수강신청</a>
@@ -101,7 +101,7 @@
                     </div>
                 </div>
                 <div class="lec">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t04.jpg"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t04.jpg" alt="국어 송원영"/>
                     <a href="javascript:go_popup4()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
                     <div class="btnSet">
                         <a href="#none">학원직강 수강신청</a>
@@ -109,15 +109,15 @@
                     </div>
                 </div>
                 <div class="lec">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t05.jpg"/>
-                    <a href="javascript:go_popup5()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t05.jpg" alt="국어 송원영"/>
+                    <a href="javascript:go_popup4()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
                     <div class="btnSet">
                         <a href="#none">학원직강 수강신청</a>
                         <a href="#none">동영상강의 수강신청</a>
                     </div>
                 </div>
                 <div class="lec">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t06.jpg"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t06.jpg" alt="국어 권보민"/>
                     <a href="javascript:go_popup6()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
                     <div class="btnSet">
                         <a href="#none">학원직강 수강신청</a>
@@ -125,14 +125,14 @@
                     </div>
                 </div>
                 <div class="lec">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t07.jpg"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t07.jpg" alt="국어 송원영/권보민"/>
                     <div class="btnSet">
                         <a href="#none">학원직강 수강신청</a>
                         <a href="#none">동영상강의 수강신청</a>
                     </div>
                 </div>
                 <div class="lec">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t08.jpg"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t08.jpg" alt="국어 구동언"/>
                     <a href="javascript:go_popup8()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
                     <div class="btnSet">
                         <a href="#none">학원직강 수강신청</a>
@@ -140,7 +140,7 @@
                     </div>
                 </div>
                 <div class="lec">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t09.jpg"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t09.jpg" alt="영어 김유석"/>
                     <a href="javascript:go_popup9()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
                     <div class="btnSet">
                         <a href="#none">학원직강 수강신청</a>
@@ -148,7 +148,7 @@
                     </div>
                 </div>
                 <div class="lec">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t10.jpg"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t10.jpg" alt="수학 박태영"/>
                     <a href="javascript:go_popup10()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
                     <div class="btnSet">
                         <a href="#none">학원직강 수강신청</a>
@@ -156,7 +156,7 @@
                     </div>
                 </div>
                 <div class="lec">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t11.jpg"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t11.jpg" alt="수학 박혜향"/>
                     <a href="javascript:go_popup11()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
                     <div class="btnSet">
                         <a href="#none">학원직강 수강신청</a>
@@ -164,7 +164,7 @@
                     </div>
                 </div>
                 <div class="lec">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t12.jpg"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t12.jpg" alt="역사 김종권"/>
                     <a href="javascript:go_popup12()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
                     <div class="btnSet">
                         <a href="#none">학원직강 수강신청</a>
@@ -172,7 +172,7 @@
                     </div>
                 </div>
                 <div class="lec">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t13.jpg"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t13.jpg" alt="음악 다이애나"/>
                     <a href="javascript:go_popup13()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
                     <div class="btnSet">
                         <a href="#none">학원직강 수강신청</a>
@@ -180,7 +180,7 @@
                     </div>
                 </div>
                 <div class="lec">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t14.jpg"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t14.jpg" alt="중국어 장영희"/>
                     <a href="javascript:go_popup14()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
                     <div class="btnSet">
                         <a href="#none">학원직강 수강신청</a>
@@ -188,8 +188,8 @@
                     </div>
                 </div>
                 <div class="lec">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t15.jpg"/>
-                    <a href="javascript:go_popup15()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/02/2896_01_t15.jpg" alt="중국어 장영희"/>
+                    <a href="javascript:go_popup14()" title="" style="position: absolute; left: 26.64%; top: 67.98%; width: 12.43%; height: 21.05%; z-index: 2;"></a>
                     <div class="btnSet">
                         <a href="#none">학원직강 수강신청</a>
                         <a href="#none">동영상강의 수강신청</a>
@@ -208,30 +208,21 @@
                 <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51076/curri1_51076.jpg"/>
             </div>
         </div>
-        <div id="popup2" class="Pstyle NSK">
-            <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>
-            <div class="content">
-                <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51076/curri1_51076.jpg"/>
-            </div>
-        </div>
+
         <div id="popup3" class="Pstyle NSK">
             <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>
             <div class="content">
                 <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51312/curri1_51312.jpg"/>
             </div>
         </div>
+        
         <div id="popup4" class="Pstyle NSK">
             <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>
             <div class="content">
                 <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51078/curri1_51078_1672800572.jpg"/>
             </div>
         </div>
-        <div id="popup5" class="Pstyle NSK">
-            <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>
-            <div class="content">
-                <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51078/curri1_51078_1672800572.jpg"/>
-            </div>
-        </div>
+
         <div id="popup6" class="Pstyle NSK">
             <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>
             <div class="content">
@@ -245,43 +236,43 @@
                 <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51313/curri1_51313.jpg"/>
             </div>
         </div>
+
         <div id="popup9" class="Pstyle NSK">
             <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>
             <div class="content">
                 <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51081/curri1_51081.jpg"/>
             </div>
         </div>
+
         <div id="popup10" class="Pstyle NSK">
             <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>
             <div class="content">
                 <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51085/curri1_51085_1672800675.jpg"/>
             </div>
         </div>
+
         <div id="popup11" class="Pstyle NSK">
             <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>
             <div class="content">
                 <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51314/curri1_51314.jpg"/>
             </div>
         </div>
+
         <div id="popup12" class="Pstyle NSK">
             <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>
             <div class="content">
                 <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51315/curri1_51315.jpg"/>
             </div>
         </div>
+
         <div id="popup13" class="Pstyle NSK">
             <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>
             <div class="content">
                 <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51090/curri1_51090_1671000994.jpg"/>
             </div>
         </div>
+
         <div id="popup14" class="Pstyle NSK">
-            <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>
-            <div class="content">
-                <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51318/curri1_51318.jpg"/>
-            </div>
-        </div>
-        <div id="popup15" class="Pstyle NSK">
             <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>
             <div class="content">
                 <img src="https://ssam.willbes.net/public/uploads/willbes/professor/51318/curri1_51318.jpg"/>

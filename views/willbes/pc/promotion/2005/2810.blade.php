@@ -219,8 +219,8 @@
                             <ol>
                                 <li>최초 제출한 정답 기준으로 구분됩니다.<br>
                                 예)<br>
-                                 - 정답 공개 전 답안 제출 > 정답 공개 후 답안 수정 [Research I]에 포함<br>
-                                 - 정답 공개 후 답안 제출 및 수정 [Research Ⅱ]에 포함</li>
+                                 - 정답 공개 전 답안 제출 > [Research I]에 포함<br>
+                                 - 정답 공개 후 답안 제출 및 수정 > [Research Ⅱ]에 포함</li>
                                 <li>부적절한 방법으로 이벤트 참여시 관리자에 의해 삭제 또는 당첨 취소될 수 있습니다.</li>
                             </ol>
                         </div>
@@ -265,6 +265,8 @@
                         <div class="point">                   
                             <h5>Q. 내가 생각하는 예상 합격컷은?</h5>
                             <div>
+                                <p class="mb20 tx16">※ <strong class="tx-red">본인 응시 직렬</strong>에 해당하는 예상 합격컷을 기입 바랍니다.</p>
+
                                 예상 합격 점수 (평균값) <input class="score" type="text" maxlength="5" name="register_data1" oninput="maxLengthCheck(this);" value="{{ (empty($register_count[0]['EtcValue']) === false ? $register_count[0]['EtcValue'] : '') }}"> 점
                                 <a href="javascript:void(0);" onclick="fn_submit(); return false;">합격 점수 예상하기 ></a>
                             </div>
@@ -277,13 +279,14 @@
                         --}}
                     </form>
                 </div>
-
+                {{--
                 <div class="evt01_03">
                     <div class="wrap">
                         <img src="https://static.willbes.net/public/images/promotion/2022/11/2810_03.png" alt="event3">
                         <a href="javascript:void(0);" onclick="popup();" title="인증+등록하기" style="position: absolute; left: 26.16%; top: 87.9%; width: 54.46%; height: 12.68%; z-index: 2;"></a>
                     </div>
                 </div>
+                --}}
             </div>
 
             <div class="tab_content" id="tab02"></div>

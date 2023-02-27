@@ -40,6 +40,8 @@
         .job308906 .article6 {position:relative;}
         .job308906 .youtube {width:860px; margin:0 auto;}
         .job308906 .youtube iframe {width:860px; height:450px; margin-bottom:50px}
+        .job308906 .csTel {text-align:center; margin-top:80px; font-size:40px}
+        .job308906 .csTel span {vertical-align:top}
 
         /*타이머*/
         .job308906 .newTopDday {clear:both; background:#fff; width:100%; padding:10px 0;}

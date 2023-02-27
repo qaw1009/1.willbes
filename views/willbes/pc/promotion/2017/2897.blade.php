@@ -139,7 +139,7 @@
                                 <td>
                                     <select id="register_data1" name="register_data1" title="과목">
                                         <option value="">과목 선택</option>
-{{--                                        <option value="유아">유아</option>--}}
+                                        <option value="유아">유아</option>
                                         <option value="국어">국어</option>
 {{--                                        <option value="영어">영어</option>--}}
                                         <option value="수학">수학</option>
@@ -152,6 +152,7 @@
                                 <td colspan="4">
                                     <select id="register_data2" name="register_data2" title="쿠폰">
                                         <option value="">쿠폰 선택</option>
+                                        <option value="[민정선] 3~11월 유아 임용  패키지 5%할인 쿠폰">[민정선] 3~11월 유아 임용  패키지 5%할인 쿠폰</option>
                                         <option value="[이경범] 3~11월 교육학 패키지 10%할인 쿠폰">[이경범] 3~11월 교육학 패키지 10%할인 쿠폰</option>
                                         <option value="[송원영] 3~11월 국교/문교 패키지 10%할인 쿠폰">[송원영] 3~11월 국교/문교 패키지 10%할인 쿠폰</option>
                                         <option value="[송원영] 3~11월 국교론 패키지 10%할인 쿠폰">[송원영] 3~11월 국교론 패키지 10%할인 쿠폰</option>

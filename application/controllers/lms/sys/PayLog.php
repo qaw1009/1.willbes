@@ -141,6 +141,7 @@ class PayLog extends \app\controllers\BaseController
 
         $this->load->view('sys/pay_log/method_' . $view_type . '_index', [
             'log_type' => $log_type,
+            'log_name' => $this->_getMethodNameByLogType($log_type),
             'codes' => $this->_getLogTypeCodes('method')
         ]);
     }
@@ -178,6 +179,28 @@ class PayLog extends \app\controllers\BaseController
     }
 
     /**
+     * 결제방법별 상점아이디별 통계
+     * @param array $params [결제방법 (card, bank, vbank)]
+     */
+    public function methodStats($params = [])
+    {
+        $log_type = element('0', $params, 'card');
+        $search_start_date = get_var($this->_req('search_start_date'), date('Y-m-d'));
+        $search_end_date = get_var($this->_req('search_end_date'), date('Y-m-d'));
+
+        $arr_condition = $this->_getMethodConditions();
+        $list = $this->payLogModel->listPayMethodLog($log_type, $search_start_date, $search_end_date, 'group_sum', $arr_condition);
+
+        $this->load->view('sys/pay_log/method_stats_modal', [
+            'log_type' => $log_type,
+            'log_name' => $this->_getMethodNameByLogType($log_type),
+            'search_start_date' => $search_start_date,
+            'search_end_date' => $search_end_date,
+            'data' => $list
+        ]);
+    }
+
+    /**
      * 결제방법별 결제로그 엑셀다운로드
      * @param array $params [결제방법 (card, bank, vbank)]
      */
@@ -203,13 +226,30 @@ class PayLog extends \app\controllers\BaseController
             $headers = array_merge($headers, ['결제금액', '결제일시', '취소금액', '취소일시']);
         }
         $numerics = ['ReqPayPrice', 'CancelPrice', 'DepositPrice'];    // 숫자형 변환 대상 컬럼
-        $file_name = $log_type . '_결제로그_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
+        $file_name = $this->_getMethodNameByLogType($log_type) . '_결제로그_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
 
         // export excel
         $this->load->library('excel');
         if ($this->excel->exportHugeExcel($file_name, $list, $headers, $numerics) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
+    }
+
+    /**
+     * 결제방법별 결제로그 결제방법명 리턴
+     * @param string $log_type [로그구분 (card, bank, vbank)]
+     * @return string
+     */
+    private function _getMethodNameByLogType($log_type)
+    {
+        switch ($log_type) {
+            case 'card' : $log_name = '신용카드'; break;
+            case 'bank' : $log_name = '계좌이체'; break;
+            case 'vbank' : $log_name = '가상계좌'; break;
+            default : $log_name = ''; break;
+        }
+
+        return $log_name;
     }
 
     /**
@@ -220,15 +260,15 @@ class PayLog extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'TA.PgMid' => $this->_reqP('search_pg_mid'), 'TA.PgDriver' => $this->_reqP('search_pg_driver'),
-                'TA.PayType' => $this->_reqP('search_pay_type')
+                'TA.PgMid' => $this->_req('search_pg_mid'), 'TA.PgDriver' => $this->_req('search_pg_driver'),
+                'TA.PayType' => $this->_req('search_pay_type')
             ]
         ];
 
         // 검색어
-        $search_value = $this->_reqP('search_value');
+        $search_value = $this->_req('search_value');
         if (empty($search_value) === false) {
-            $arr_condition['LKB']['TA.' . $this->_reqP('search_keyword')] = $search_value;
+            $arr_condition['LKB']['TA.' . $this->_req('search_keyword')] = $search_value;
         }
 
         return $arr_condition;

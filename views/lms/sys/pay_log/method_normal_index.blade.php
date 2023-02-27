@@ -11,7 +11,7 @@
         <li role="presentation"><a href="{{ site_url('/sys/payLog/stats') }}">승인완료통계</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/cancelStats') }}">결제취소통계</a></li>
     </ul>
-    <h5>- {{ $log_type == 'card' ? '신용카드' : '계좌이체' }} 완료/취소/부분환불 연동 로그를 확인하는 메뉴입니다. (연동실패건 제외)</h5>
+    <h5>- {{ $log_name }} 완료/취소/부분환불 연동 로그를 확인하는 메뉴입니다. (연동실패건 제외)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
@@ -100,7 +100,7 @@
                 </tr>
                 <tr>
                     <td colspan="11" class="bg-odd text-center">
-                        <h4 class="inline-block no-margin">
+                        <h4 class="inline-block no-margin cs-pointer" id="btn_method_stats">
                             <span id="search_period" class="pr-5"></span>
                             <span class="blue"><span id="sum_req_price">0</span></span>
                             - <span class="red"><span id="sum_cancel_price">0</span></span>
@@ -154,7 +154,7 @@
                     }},
                     {'data' : 'PayDetailCode'},
                     {'data' : 'ReqPayPrice', 'render' : function(data, type, row, meta) {
-                        return data === null ? '' : addComma(data);
+                        return data === null || data === '0' ? '' : '<span class="blue no-line-height">' + addComma(data) + '</span>';
                     }},
                     {'data' : 'RegDatm'},
                     {'data' : 'CancelPrice', 'render' : function(data, type, row, meta) {
@@ -185,6 +185,28 @@
                 if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit('{{ site_url('/sys/payLog/methodExcel/' . $log_type) }}', $search_form.serializeArray(), 'POST');
                 }
+            });
+
+            // 상점아이디별 통계 조회
+            $('#btn_method_stats').click(function() {
+                if ($('#sum_req_price').text() === '0') {
+                    alert('데이터가 없습니다.');
+                    return;
+                }
+                $('#btn_method_stats').setLayer({
+                    'url' : '{{ site_url('/sys/payLog/methodStats/' . $log_type) }}',
+                    'width' : 1100,
+                    'add_param_type' : 'input',
+                    'add_param' : [
+                        { 'id': 'search_start_date' },
+                        { 'id': 'search_end_date' },
+                        { 'id': 'search_keyword' },
+                        { 'id': 'search_value' },
+                        { 'id': 'search_pg_driver' },
+                        { 'id': 'search_pg_mid' },
+                        { 'id': 'search_pay_type' },
+                    ]
+                });
             });
         });
     </script>

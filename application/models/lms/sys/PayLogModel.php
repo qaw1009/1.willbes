@@ -79,8 +79,11 @@ class PayLogModel extends WB_Model
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
         } else {
-            if ($is_count === 'sum') {
+            if ($is_count == 'sum') {
                 $column = $arr_query['sum_column'];
+            } elseif ($is_count == 'group_sum') {
+                $column = 'ifnull(TA.PgMid, "합계") as PgMid, ' . $arr_query['sum_column'];
+                $order_by_offset_limit = 'group by TA.PgMid with rollup';
             } else {
                 if (is_bool($is_count) === true) {
                     $column = 'TA.*, O.OrderIdx';

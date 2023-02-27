@@ -369,13 +369,13 @@
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/199305" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
-                        <td>통신이론</td>
+                        <td>통신공학</td>
                         <td>이론</td>
                         <td>2022 최우영 통신공학 이론</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193113" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
-                        <td>통신공학</td>
+                        <td>통신이론</td>
                         <td>이론</td>
                         <td>2023 최우영 통신이론 (이론+문풀)</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/202303" target="_blank">수강신청</a></td>
@@ -428,15 +428,15 @@
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/199306" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
-                        <td>통신이론</td>
+                        <td>통신공학</td>
                         <td>이론</td>
                         <td>2022 최우영 통신공학 이론</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193113" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
-                        <td>통신공학</td>
+                        <td>통신이론</td>
                         <td>이론</td>
-                        <td>2023 최우영 통신이론 (이론+문풀)</td>
+                        <td>2022 최우영 통신이론 (이론+문풀)</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/202303" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
@@ -847,19 +847,19 @@
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/199305" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
-                        <td>통신이론</td>
+                        <td>통신공학</td>
                         <td>이론</td>
                         <td>2022 최우영 통신공학 이론</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/193113" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
-                        <td>통신공학</td>
+                        <td>통신이론</td>
                         <td>이론</td>
-                        <td>2023 최우영 통신이론 (이론+문풀)</td>
+                        <td>2022 [7급] 최우영 통신이론 (이론+문풀)</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/202303" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
-                        <td>통신공학</td>
+                        <td>통신이론</td>
                         <td>문제풀이</td>
                         <td>2023 최우영 무선/통신 공통 단원별 문제풀이</td>
                         <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/202302" target="_blank">수강신청</a></td>

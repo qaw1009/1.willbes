@@ -159,7 +159,7 @@ class MemberPrivateModel extends WB_Model
                 WHERE MpIdx IN (
                     SELECT b.MpIdx
                     FROM {$this->_table['product_mock']} AS a
-                    INNER JOIN {$this->_table['product_mock_r_paper']} AS b ON a.ProdCode = b.ProdCode
+                    INNER JOIN {$this->_table['product_mock_r_paper']} AS b ON a.ProdCode = b.ProdCode AND b.IsStatus = 'Y'
                     WHERE a.ProdCode = M.ProdCode
                 )
             ) AS ProductCountAnswer

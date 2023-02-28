@@ -16,7 +16,7 @@
         .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+        .evtCtnsBox .wrap a {border:1px solid #000}
 
         /************************************************************/     
 
@@ -28,7 +28,8 @@
         .wb_cts01s {background:#fff8f2;}
         .wb_cts03 {padding-top:50px;}
         .wb_cts04 {background:#f4f4f4;padding-bottom:150px;}
-        .wb_cts05 {background:url(https://static.willbes.net/public/images/promotion/2022/10/1721_05_bg.jpg) center top no-repeat;}
+        .wb_cts05 {background:#008ce5}
+        .wb_cts05 span {position:absolute; top:400px; left:50%; margin-left:-700px; width:557px; z-index: 2; display: block;}
 
 
         /*탭(텍스트)*/
@@ -98,9 +99,9 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky" id="QuickMenu">
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB&subject_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/10/1721_sky_title.png" alt="개강강의"></a>
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE6riw" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/10/1721_sky1.png" alt="전기직"></a>
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67Ya17Iug&course_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/10/1721_sky3.png" alt="통신직"></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB&subject_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/02/1721_sky_title.png" alt="개강강의"></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE6riw" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/02/1721_sky1.png" alt="전기직"></a>
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU66rO17ZWZ&course_idx=" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/02/1721_sky3.png" alt="통신직"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">            
@@ -109,7 +110,7 @@
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/10/1721_01.jpg" alt="신청하기"/>
+                <img src="https://static.willbes.net/public/images/promotion/2023/02/1721_01.jpg" alt="신청하기"/>
                 <a href="https://cafe.daum.net/sharkchoi" target="_blank" title="카페" style="position: absolute;left: 13.46%;top: 73.99%;width: 14.23%;height: 9.57%;z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="단과강의" style="position: absolute;left: 43.46%;top: 73.99%;width: 14.23%;height: 9.57%;z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU6cGFzcw%3D%3D" target="_blank" title="t-pass" style="position: absolute;left: 72.96%;top: 73.99%;width: 14.23%;height: 9.57%;z-index: 2;"></a>
@@ -266,9 +267,10 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="t_pass_go" data-aos="fade-up">
+            <span data-aos="flip-left" data-aos-duration="1500"><img src="https://static.willbes.net/public/images/promotion/2023/02/1721_05_img.png" /></span>
             <div id="tab01s" class="wrap">            
-                <img src="https://static.willbes.net/public/images/promotion/2022/10/1721_05.jpg" />
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="수강신청" style="position: absolute;left: 43.79%;top: 77.37%;width: 32.54%;height: 7.01%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2023/02/1721_05.jpg" />
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU6MjIuMTE%3D" target="_blank" title="수강신청" style="position: absolute; left: 45.89%; top: 72.95%; width: 33.04%; height: 6.18%; z-index: 2;"></a>
             </div>
 
         </div>

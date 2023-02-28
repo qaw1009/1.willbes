@@ -85,16 +85,17 @@
         <div class="evtCtnsBox evt_02" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/02/2907_02.jpg" alt=""/>
-                <a href="#" onclick="javascript:alert('준비중입니다.');" title="" style="position: absolute; left: 8.89%; top: 58.14%; width: 81.94%; height: 7.63%; z-index: 2;"></a>
+                <a href="https://gosi.willbes.net/promotion/index/cate/3096/code/2912" title="합격예측 미리보기" style="position: absolute; left: 8.89%; top: 58.14%; width: 81.94%; height: 7.63%; z-index: 2;"></a>
             </div>
 		</div>
-
+        {{--
         <div id="popup1" class="Pstyle NSK">
             <span class="b-close"><img src="https://static.willbes.net/public/images/promotion/2022/11/ic_popupCloseBtn.png"></span>
             <div class="content">
                 <img src="https://static.willbes.net/public/images/promotion/2023/02/2907_02_popup.jpg" alt=""/>
             </div>
         </div>
+        --}}
 	</div>
     <!-- End Container -->
 

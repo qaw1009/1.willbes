@@ -115,9 +115,14 @@ class FullServiceSurveyFModel extends WB_Model
             //설문 저장 횟수 체크
             $member_check_count = element('member_check_count', $formData, 0);
             if ($member_check_count > 0) {
-                $result = $this->_memberCountSurvey(element('ss_idx', $formData));
+                $result = $this->_memberCountSurvey(element('ss_idx', $formData), '');
                 if ($result['cnt'] > $member_check_count) {
                     throw new \Exception('설문참여는 최대 '.$member_check_count.'회만 가능합니다.');
+                }
+            } else {
+                $result = $this->_memberCountSurvey(element('ss_idx', $formData), 'Y');
+                if (empty($result) === false) {
+                    throw new \Exception('이미 설문에 참여하셨습니다.');
                 }
             }
 
@@ -147,14 +152,16 @@ class FullServiceSurveyFModel extends WB_Model
     /**
      * 설문참여 횟수 카운트
      * @param $ss_idx
+     * @param $is_status
      * @return mixed
      */
-    private function _memberCountSurvey($ss_idx)
+    private function _memberCountSurvey($ss_idx, $is_status)
     {
         $arr_condition = [
             'EQ' => [
                 'SsIdx' => $ss_idx
                 ,'MemIdx' => $this->session->userdata('mem_idx')
+                ,'IsStatus' => $is_status
             ]
         ];
         $column = "COUNT(*) AS cnt";

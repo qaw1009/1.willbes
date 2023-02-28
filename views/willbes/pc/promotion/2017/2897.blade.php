@@ -66,17 +66,28 @@
 
         .event02 .textinfo {position: absolute; bottom:430px; right:180px; font-size:18px}
 
-        .event03 {background:url(https://static.willbes.net/public/images/promotion/2023/02/2897_03_bg.jpg) no-repeat center top; }
-
+        .event03 {background:url(https://static.willbes.net/public/images/promotion/2023/02/2897_03_bg.jpg) no-repeat center top;}
 
         .evtInfo {padding:80px 0; background:#ebebeb; font-size:16px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
 		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
         .evtInfoBox li {list-style-type: decimal;margin-left:20px; margin-bottom:10px}
 
+        .sky {position:fixed; top:180px; right:10px; z-index:10;}
+        .sky a {display:block; margin-bottom:5px}
+
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
+        <div class="sky" id="QuickMenu">                
+            <a href="#evt01">
+                <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_sky01.jpg" alt="t-pass 바로가기"/>
+            </a>
+            <a href="#evt02">
+                <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_sky02.jpg" alt="t-pass 바로가기"/>
+            </a>      
+        </div>
+
         <div class="evtCtnsBox eventTop" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2023/02/2897_top.jpg" alt="윌비스 임용 합격 환승센터"/>
             <span><img src="https://static.willbes.net/public/images/promotion/2023/02/2897_top_01.png" alt=""/></span>

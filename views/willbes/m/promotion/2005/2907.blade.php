@@ -80,7 +80,7 @@
     <div class="evtCtnsBox evt_02" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2023/02/2907_02.jpg" alt=""/>
-            <a href="#" onclick="javascript:alert('준비중입니다.');" title="" style="position: absolute; left: 8.89%; top: 58.14%; width: 81.94%; height: 7.63%; z-index: 2;"></a>
+            <a href="https://gosi.willbes.net/promotion/index/cate/3096/code/2912" target="_blank" title="" style="position: absolute; left: 8.89%; top: 58.14%; width: 81.94%; height: 7.63%; z-index: 2;"></a>
         </div>
     </div>
 

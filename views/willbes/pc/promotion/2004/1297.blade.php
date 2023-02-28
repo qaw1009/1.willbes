@@ -51,7 +51,7 @@
     <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
         $(document).ready( function() {
-        AOS.init();
+            AOS.init();
         });
     </script>
 

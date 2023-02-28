@@ -455,7 +455,7 @@
 
         
 
-        <div class="profEvt swiper-container swiper-container-arrow">
+        <div class="profEvt swiper-container">
             <div class="swiper-container-prof">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">

@@ -81,7 +81,7 @@
 .ssam .profEvt .swiper-button-prev.swiper-button-disabled {
 	pointer-events: auto;
 }
-/*.ssam .profEvt .swiper-wrapper .swiper-slide {padding:0 2vh; width:50% !important; margin-top:1vh}*/
+
 .ssam .profEvt .swiper-wrapper .swiper-slide {
     width:auto;
     display: -webkit-box;
@@ -838,7 +838,7 @@
 <!-- End Container -->
 <script>
     $(function() {
-        //YOUTUBE 영상
+        //YOUTUBE 팝업 배너
         var swiper5 = new Swiper('.swiper-container-prof', {
             slidesPerView: 'auto',
             slidesPerColumn: 1,

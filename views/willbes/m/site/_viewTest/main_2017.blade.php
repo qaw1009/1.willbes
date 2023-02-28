@@ -23,6 +23,61 @@
             font-size: 12px;
         }
 
+        /*교수별이벤트 */
+        .ssam .profEvt {margin-top:5vh; padding-bottom:30px}
+        .ssam .profEvt .swiper-wrapper {/*display: flex;*/ height:auto;}
+        .ssam .profEvt .swiper-button-next,
+        .ssam .profEvt .swiper-button-prev {
+            position: static;
+            width: 26px;
+            height: 26px;
+            margin-top:0;
+            cursor: pointer;	
+            border-radius:12px;
+            display:inline-block;
+            background-size:104% !important;
+        }
+
+        .ssam .profEvt .swiper-button-next,
+        .ssam .profEvt .swiper-container-rtl .swiper-button-prev {
+            background:#ccc url("https://static.willbes.net/public/images/promotion/m/icon_arrowL.png") no-repeat center center;
+        }
+
+        .ssam .profEvt .swiper-button-prev,
+        .ssam .profEvt .swiper-container-rtl .swiper-button-next {
+            background:#ccc url("https://static.willbes.net/public/images/promotion/m/icon_arrowR.png") no-repeat center center;
+        }
+
+        .ssam .profEvt .swiper-button-next.swiper-button-disabled,
+        .ssam .profEvt .swiper-button-prev.swiper-button-disabled {
+            pointer-events: auto;
+        }
+
+        .ssam .profEvt .swiper-wrapper .swiper-slide {
+            width:auto;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: space-between;
+            -ms-flex-pack: space-between;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            -webkit-box-align: flex-start;
+            -ms-flex-align: flex-start;
+            -webkit-align-items: flex-start;
+            align-items: flex-start;
+            margin:0 15px 1.5vh;
+            font-size:1.4vh;
+        }
+        .ssam .profEvt .swiper-wrapper .swiper-slide:last-child {margin-right:0}
+        .ssam .profEvt .swiper-wrapper .swiper-slide img {border-radius:20px;}
+
+        .ssam .profEvt a {display:block; margin:0 auto; text-align:left; max-width:300px}
+        .ssam .profEvt a p {font-size:1.8vh; color:#383838; margin:1vh 0; padding:0 1vh;}
+        .ssam .profEvt a span {color:#adadad; font-size:1.6vh; padding:0 10px }
+
+
         .ssam .lecup-Notice {position:absolute; top:15px; width:calc(100% - 110px);}
         .ssam .lecup-Notice a {display:block; height:36px; line-height:36px; font-size:13px;
             overflow: hidden; text-overflow: ellipsis; white-space: nowrap;z-index:2;
@@ -138,6 +193,10 @@
                 font-size: 13px;
             }
             .ssam .profwrap div {width:calc(50% - 10px);}
+            .ssam .profEvt .swiper-wrapper .swiper-slide {
+                width:150px;
+                margin:0 5px 1.5vh;
+            }
         }
         @@media only screen and (min-width: 375px) and (max-width: 640px) {
             .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) {
@@ -148,6 +207,10 @@
             }
             .ssam .bestLecBox2 .lecinfo li strong {
                 font-size: 14px;
+            }
+            .ssam .profEvt .swiper-wrapper .swiper-slide {
+                width:160px;
+                margin:0 8px 1.5vh;
             }
         }
 
@@ -250,6 +313,86 @@
 
         {!! banner('M_메인', 'MainSlider', $__cfg['SiteCode'], '0') !!}
 
+        {{--유튜브 팝업 배너--}}
+        <div class="profEvt swiper-container swiper-container-arrow">
+            <div class="swiper-container-prof">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="https://youtu.be/gCF-qMPZHiY" target="_blank">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178.jpg" alt="배너명">
+                            <p>1 기출 및 개정 내용까지 법규특강으로 한번에 확인!</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="https://www.youtube.com/shorts/3jysDrzQFSk" target="_blank">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178_02.jpg" alt="배너명">
+                            <p>2 기출 및 개정 내용까지 법규특강으로 한번에 확인!</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178.jpg" alt="배너명">
+                            <p>3 기출 및 개정 내용까지<br></p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178_02.jpg" alt="배너명">
+                            <p>4 기출 및 개정 내용까지 법규특강으로 한번에 확인!</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178.jpg" alt="배너명">
+                            <p>5 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178_02.jpg" alt="배너명">
+                            <p>6 기출 및 개정 내용까지 법규특강으로</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178_02.jpg" alt="배너명">
+                            <p>7 기출 및 개정 내용까지 법규특강으로</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178_02.jpg" alt="배너명">
+                            <p>8 기출 및 개정 내용까지 법규특강으로</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178_02.jpg" alt="배너명">
+                            <p>9 기출 및 개정 내용까지 법규특강으로</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178_02.jpg" alt="배너명">
+                            <p>10 기출 및 개정 내용까지 법규특강으로</p>
+                            <span>모의고사</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>        
+        </div>
+
         <div class="noticeTabs c_both mt30">
             {{-- 게시판 --}}
             @include('willbes.m.site.main_partial.board_' . $__cfg['SiteCode'])
@@ -305,6 +448,32 @@
 
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script>
+        //YOUTUBE 팝업 배너
+        var swiper5 = new Swiper('.swiper-container-prof', {
+            slidesPerView: 'auto',
+            slidesPerColumn: 1,
+            spaceBetween: 0,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
+            // init: false,
+            pagination: {
+                el: '.swiper-container-prof .swiper-pagination',
+                clickable: true,
+            },
+           breakpoints: {
+                375: {
+                slidesPerColumn: 1,
+                spaceBetween: 0,
+                },
+                640: {
+                slidesPerColumn: 1,
+                spaceBetween: 0,
+                },
+            }
+        });
+
         $(function() {
             //수강후기
             var swiper_review = new Swiper ('.swiper-container-reply', {

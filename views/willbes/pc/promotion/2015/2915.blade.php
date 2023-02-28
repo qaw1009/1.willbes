@@ -98,7 +98,7 @@
    
         <div class="evtCtnsBox wb_05" data-aos="fade-up" id="evt_02">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2023/02/2915_04s.jpg"  alt="이벤트" />
+                <img src="https://static.willbes.net/public/images/promotion/2023/02/2915_04.jpg"  alt="이벤트" />
                 <a href="javascript:void(0)" onclick="giveCheck()" title="할인쿠폰 받기" style="position: absolute;left: 28.91%;top: 44.75%;width: 42.82%;height: 4.35%;z-index: 2;"></a>
                 <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute; left: 57.14%; top: 61.29%; width: 29.29%; height: 6.26%; z-index: 2;"></a>
                 <a href="https://cafe.daum.net/im119/MoDm" title="소사모 다음" target="_blank" style="position: absolute;left: 10.34%;top: 92.09%;width: 15.89%;height: 5.76%;z-index: 2;"></a>

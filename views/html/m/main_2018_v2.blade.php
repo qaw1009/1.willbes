@@ -880,7 +880,7 @@
                 clickable: true,
             },
         });
-        var swiper_review = new Swiper ('.swiper-container-arrow', {
+        var swiper_review2 = new Swiper ('.swiper-container-arrow', {
             slidesPerView: 'auto',
             spaceBetween: 0,
             slidesPerGroup: 1,

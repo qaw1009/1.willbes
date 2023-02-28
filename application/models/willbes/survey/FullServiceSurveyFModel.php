@@ -112,6 +112,19 @@ class FullServiceSurveyFModel extends WB_Model
         try {
             $this->_conn->trans_begin();
 
+            //설문 저장 횟수 체크
+            $member_check_count = element('member_check_count', $formData, 0);
+            if ($member_check_count > 0) {
+                $result = $this->_memberCountSurvey(element('ss_idx', $formData));
+                if ($result['cnt'] > $member_check_count) {
+                    throw new \Exception('설문참여는 최대 '.$member_check_count.'회만 가능합니다.');
+                }
+            }
+
+            if ($this->_memberDeleteSurvey(element('ss_idx', $formData)) !== true) {
+                throw new \Exception('설문 제등록 실패했습니다.');
+            }
+
             $data = [
                 'MemIdx' => $this->session->userdata('mem_idx'),
                 'SsIdx'  => element('ss_idx', $formData),
@@ -131,4 +144,40 @@ class FullServiceSurveyFModel extends WB_Model
         return true;
     }
 
+    /**
+     * 설문참여 횟수 카운트
+     * @param $ss_idx
+     * @return mixed
+     */
+    private function _memberCountSurvey($ss_idx)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'SsIdx' => $ss_idx
+                ,'MemIdx' => $this->session->userdata('mem_idx')
+            ]
+        ];
+        $column = "COUNT(*) AS cnt";
+        $from = " FROM {$this->_table['survey_set_answer']}";
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        return $this->_conn->query('select '.$column .$from .$where)->row_array();
+    }
+
+    private function _memberDeleteSurvey($ss_idx)
+    {
+        try {
+            $input['IsStatus'] = 'N';
+            $where = [
+                'SsIdx' => $ss_idx
+                ,'MemIdx' => $this->session->userdata('mem_idx')
+            ];
+            $this->_conn->set($input)->where($where);
+            if ($this->_conn->update($this->_table['survey_set_answer']) === false) {
+                throw new \Exception('설문 제등록 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
 }

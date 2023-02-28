@@ -70,13 +70,10 @@
     .evt01_02 .point input {width:100px; color:#000; border:1px solid #000}
     .evt01_02 .point div a {display:block; padding:20px; background:#000; font-size:18px; color:#fff; border-radius:50px; width:70%; margin:20px auto 0}
     .evt01_02 .point div a:hover {background:#3e0763}
-    .evt01_02 .fail_info {background:#fff;width:720px;font-size:25px;margin:0 auto;padding:50px;border-radius:10px;}
-    .evt01_02 .fail_info .fail {color:#5918CC;font-weight:bold;}
-    .textinfo {color:#fff; line-height:1.5; font-size:20px} 
+    .textinfo {color:#fff; line-height:1.5; font-size:20px}
     .textinfo p {font-size:14px}
     .textinfo strong {color:#00fffc}
     .textinfo strong:nth-child(1) {color:#ffd800}   
-
 
      /*2번째 탭*/
     .step {font-size:17px;line-height:2;padding-bottom:50px;}
@@ -183,13 +180,15 @@
     .series_select {vertical-align:middle !important;}
     /*.score {position:absolute;left:50%;top:67%;margin-left:33px;width:110px;height:45px;border:2px solid #bfbfbf;}*/
 
-
+    .fail_info {background:#f3f3f3;width:720px;font-size:25px;margin:0 auto;padding:35px;border-radius:10px;}
+    .fail_info .fail {color:#5918CC;font-weight:bold;}
     </style>
 
     <!-- Container -->
 
     <div class="evtContent NSK" id="evtContainer">
-        <input type="hidden" id="_exam_type" name="_exam_type" value="N">
+        <input type="hidden" id="_tab3" name="_tab3" value="N">
+        <input type="hidden" id="_tab4" name="_tab4" value="N">
         <input type="hidden" id="_pr_id" name="_pr_id">
         <div class="evtCtnsBox evt_top">
             <span class="img01" data-aos="fade-right"><img src="https://static.willbes.net/public/images/promotion/2022/11/2810_top_img1.png" alt="psat 합격을 예측하다"></span>
@@ -262,6 +261,8 @@
                         <input type="hidden" name="register_name" value="{{sess_data('mem_name')}}">
                         <input type="hidden" name="register_tel" value="{{sess_data('mem_phone')}}">
                         <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
+                        <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
+                        <input type="hidden" name="target_param_names[]" value="직렬"/> {{-- 체크 항목 전송 --}}
                         <input type="hidden" name="target_param_names[]" value="예상 합격 점수"/> {{-- 체크 항목 전송 --}}
                         <input type="hidden" name="register_chk[]" id="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>
 
@@ -272,33 +273,28 @@
                                 <p class="mb20 tx16">※ <strong class="tx-red">본인 응시 직렬</strong>에 해당하는 예상 합격컷을 기입 바랍니다.</p>
                                 <div>
                                     <span class="series_select">직렬 선택</span>
-                                    <select title="직렬 선택" name="series" id="series" >
-                                        <option style="display:none">선택하세요</option>                         
-                                        <option value="">행정(일반행정:전국)</option>
-                                        <option value="">행정(일반행정:지역)</option>
-                                        <option value="">행정(법무행정)</option>
-                                        <option value="">행정(인사조직)</option>
-                                        <option value="">행정(재경)</option>
-                                        <option value="">행정(국제통상)</option>
-                                        <option value="">행정(교육행정)</option>
-                                        <option value="">사회복지(사회복지)</option>
-                                        <option value="">교정(교정)</option>
-                                        <option value="">보호(보호)</option>
-                                        <option value="">검찰(검찰</option>
-                                        <option value="">출입국관리(출입국관리)</option>
-                                        <option value="">5급기술</option>
-                                        <option value="">일반외교(국립외교원)</option>
-                                        <option value="">7급 지역인재</option>
-                                        <option value="">일반외교(국립외교원)</option>
-                                        <option value="">7급 지역인재</option>                         
+                                    <select title="직렬 선택" name="register_data1" id="register_data1">
+                                        <option value="" style="display:none">선택하세요</option>
+                                        <option {{ (empty($register_count[0]['EtcValue']) === false && explode(',',$register_count[0]['EtcValue'])[0] == '행정(일반행정:전국)' ? 'selected=selected' : '') }} value="행정(일반행정:전국)">행정(일반행정:전국)</option>
+                                        <option {{ (empty($register_count[0]['EtcValue']) === false && explode(',',$register_count[0]['EtcValue'])[0] == '행정(일반행정:지역)' ? 'selected=selected' : '') }} value="행정(일반행정:지역)">행정(일반행정:지역)</option>
+                                        <option {{ (empty($register_count[0]['EtcValue']) === false && explode(',',$register_count[0]['EtcValue'])[0] == '행정(법무행정)' ? 'selected=selected' : '') }} value="행정(법무행정)">행정(법무행정)</option>
+                                        <option {{ (empty($register_count[0]['EtcValue']) === false && explode(',',$register_count[0]['EtcValue'])[0] == '행정(인사조직)' ? 'selected=selected' : '') }} value="행정(인사조직)">행정(인사조직)</option>
+                                        <option {{ (empty($register_count[0]['EtcValue']) === false && explode(',',$register_count[0]['EtcValue'])[0] == '행정(재경)' ? 'selected=selected' : '') }} value="행정(재경)">행정(재경)</option>
+                                        <option {{ (empty($register_count[0]['EtcValue']) === false && explode(',',$register_count[0]['EtcValue'])[0] == '행정(국제통상)' ? 'selected=selected' : '') }} value="행정(국제통상)">행정(국제통상)</option>
+                                        <option {{ (empty($register_count[0]['EtcValue']) === false && explode(',',$register_count[0]['EtcValue'])[0] == '행정(교육행정)' ? 'selected=selected' : '') }} value="행정(교육행정)">행정(교육행정)</option>
+                                        <option {{ (empty($register_count[0]['EtcValue']) === false && explode(',',$register_count[0]['EtcValue'])[0] == '사회복지(사회복지)' ? 'selected=selected' : '') }} value="사회복지(사회복지)">사회복지(사회복지)</option>
+                                        <option {{ (empty($register_count[0]['EtcValue']) === false && explode(',',$register_count[0]['EtcValue'])[0] == '교정(교정)' ? 'selected=selected' : '') }} value="교정(교정)">교정(교정)</option>
+                                        <option {{ (empty($register_count[0]['EtcValue']) === false && explode(',',$register_count[0]['EtcValue'])[0] == '보호(보호)' ? 'selected=selected' : '') }} value="보호(보호)">보호(보호)</option>
+                                        <option {{ (empty($register_count[0]['EtcValue']) === false && explode(',',$register_count[0]['EtcValue'])[0] == '검찰(검찰)' ? 'selected=selected' : '') }} value="검찰(검찰)">검찰(검찰)</option>
+                                        <option {{ (empty($register_count[0]['EtcValue']) === false && explode(',',$register_count[0]['EtcValue'])[0] == '출입국관리(출입국관리)' ? 'selected=selected' : '') }} value="출입국관리(출입국관리)">출입국관리(출입국관리)</option>
+                                        <option {{ (empty($register_count[0]['EtcValue']) === false && explode(',',$register_count[0]['EtcValue'])[0] == '5급기술' ? 'selected=selected' : '') }} value="5급기술">5급기술</option>
+                                        <option {{ (empty($register_count[0]['EtcValue']) === false && explode(',',$register_count[0]['EtcValue'])[0] == '일반외교(국립외교원)' ? 'selected=selected' : '') }} value="일반외교(국립외교원)">일반외교(국립외교원)</option>
+                                        <option {{ (empty($register_count[0]['EtcValue']) === false && explode(',',$register_count[0]['EtcValue'])[0] == '7급 지역인재' ? 'selected=selected' : '') }} value="7급 지역인재">7급 지역인재</option>
                                     </select>
                                 </div>                               
-                                예상 합격 점수 (평균값) <input class="score" type="text" maxlength="5" name="register_data1" oninput="maxLengthCheck(this);" value="{{ (empty($register_count[0]['EtcValue']) === false ? $register_count[0]['EtcValue'] : '') }}"> 점
+                                예상 합격 점수 (평균값) <input class="score" type="text" maxlength="5" name="register_data2" oninput="maxLengthCheck(this);" value="{{ (empty($register_count[0]['EtcValue']) === false ? explode(',',$register_count[0]['EtcValue'])[1] : '') }}"> 점
                                 <a href="javascript:void(0);" onclick="fn_submit(); return false;">합격 점수 예상하기 ></a>
                             </div>
-                        </div>
-                        <div class="fail_info">                   
-                            <p class="fail">과락 과목이 포함되어 아쉽지만 불합격입니다.</p>                            
                         </div>
                         {{--
                         <div class="textinfo">
@@ -322,17 +318,11 @@
             <div class="tab_content" id="tab03"></div>
             <div class="tab_content" id="tab04"></div>
         </div>
-        
     </div>
 
-    
-
-    
     <!-- googlechart -->
-
     <script src="/public/vendor/Nwagon/Nwagon.js?ver={{time()}}"></script>
     <link rel="stylesheet" href="/public/vendor/Nwagon/Nwagon.css?ver={{time()}}">
-
     <script type="text/javascript">
         $(document).ready(function(){
             /*상단 tab*/
@@ -342,18 +332,30 @@
                 $active.addClass('active');
                 $content = $($active[0].hash);
                 $links.not($active).each(function () {
-                $(this.hash).hide()});
-            
+                    $(this.hash).hide()});
+
                 // Bind the click event handler
                 $(this).on('click', 'a', function(e){
-                    if ($(this).attr('href') == '#tab03' || $(this).attr('href') == '#tab04') {
+                    if ($(this).attr('href') == '#tab03') {
                         if ($("#_pr_id").val() == '') {
                             alert('기본정보 및 답안입력 후 확인 가능합니다.');
                             return false;
                         }
 
-                        if ($("#_exam_type").val() != 'Y') {
-                            alert('답안채점 후 확인 가능합니다.');
+                        if ($("#_tab3").val() != 'Y') {
+                            alert('정답공개 후 조회할 수 있습니다.');
+                            return false;
+                        }
+                    }
+
+                    if ($(this).attr('href') == '#tab04') {
+                        if ($("#_pr_id").val() == '') {
+                            alert('기본정보 및 답안입력 후 확인 가능합니다.');
+                            return false;
+                        }
+
+                        if ($("#_tab4").val() != 'Y') {
+                            alert('집계중입니다.');
                             return false;
                         }
                     }
@@ -391,11 +393,14 @@
         function fn_submit() {
             var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
-
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
 
+            if ($regi_form_register.find('select[name="register_data1"]').val() == '') {
+                alert('직렬을 선택해 주세요.');
+                return;
+            }
 
-            if ($regi_form_register.find('input[name="register_data1"]').val() == '') {
+            if ($regi_form_register.find('input[name="register_data2"]').val() == '') {
                 alert('예상되는 합격 점수를 입력해 주세요.');
                 return;
             }

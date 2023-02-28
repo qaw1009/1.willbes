@@ -133,13 +133,14 @@
     @endif
 </div>
 
-@if ($arr_member_step[2] == 'on')
+@if ($arr_member_step['survey_type'] == 'on' && empty($ss_idx) === false)
     <div class="stage">
         <span class="phase">2단계</span> <span class="bold">체감난이도 입력</span>
     </div>
     <form id="survey_answer_form" name="survey_answer_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         <input type="hidden" name="ss_idx" value="{{ $survey_data['survey']['SsIdx'] or '' }}">
+        <input type="hidden" name="member_check_count" value="1">
 
         <table cellspacing="0" cellpadding="0" class="table_type">
             <col width="30%" />
@@ -169,18 +170,54 @@
             @endif
         </table>
     </form>
-    @if(empty($member_answer_data) === true)
-        <div class="markSbtn1">
-            <a href="javascript:void(0);" onclick="surveyAnswerSubmit(); return false;">설 문 완 료</a>
-        </div>
-    @else
-        <div class="markSbtn1">
-            <a href="javascript:alert('이미 설문에 참여하셨습니다.');">설 문 완 료</a>
-        </div>
-    @endif
+    <div class="markSbtn1">
+        <a href="javascript:void(0);" onclick="surveyAnswerSubmit(); return false;">설 문 완 료</a>
+    </div>
 @endif
 
-@if ($arr_member_step[3] == 'on')
+@if ($arr_member_step['survey_type'] == 'on' && empty($ss_idx2) === false)
+    <div class="stage">
+        <span class="phase">2단계</span> <span class="bold">헙법 합격여부</span>
+    </div>
+    <form id="survey_answer_form2" name="survey_answer_form2" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        <input type="hidden" name="ss_idx" value="{{ $survey_data2['survey']['SsIdx'] or '' }}">
+        <input type="hidden" name="member_check_count" value="1">
+
+        <table cellspacing="0" cellpadding="0" class="table_type">
+            <col width="30%" />
+            <col width="*" />
+            {{-- 단일선택형 --}}
+            @if(empty($survey_data2['question']) === false)
+                @foreach($survey_data2['question'] as $key => $row)
+                    <tr>
+                        <th>{{ $row['SqTitle'] }}</th>
+                        <td>
+                            <ul class="sel_info">
+                                @if(empty($row['SqJsonData']) === false)
+                                    @foreach($row['SqJsonData'] as $k => $v)
+                                        @for($i=1; $i<=$row['SqCnt']; $i++)
+                                            <li><input type="radio" name="survey_answer[{{$row['SsqIdx']}}][{{$k}}]"
+                                                       class="survey_answer_group2" id="survey_answer_{{$row['SsqIdx']}}_{{$k}}_{{$i}}" value="{{$i}}"
+                                                       @if($member_answer_data2['AnswerInfo'][$row['SsqIdx']][$k] == $i) checked="checked" @endif/>
+                                                <label for="survey_answer_{{$row['SsqIdx']}}_{{$k}}_{{$i}}">{{ $v['item'][$i] }}</label>
+                                            </li>
+                                        @endfor
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </td>
+                    </tr>
+                @endforeach
+            @endif
+        </table>
+    </form>
+    <div class="markSbtn1">
+        <a href="javascript:void(0);" onclick="surveyAnswerSubmit2(); return false;">설 문 완 료</a>
+    </div>
+@endif
+
+@if ($arr_member_step[2] == 'on')
     <div class="stage">
         <span class="phase">3단계</span> <span class="bold">답안 입력</span>
     </div>
@@ -223,7 +260,7 @@
     </div>
 @endif
 
-@if ($arr_member_step[4] == 'on')
+@if ($arr_member_step[3] == 'on')
     <div class="stage">
         <span class="phase">3단계</span> <span class="bold">채점결과 확인</span>
     </div>
@@ -304,8 +341,25 @@
     var $regi_form = $('#regi_form');
     var $answer_form = $('#answer_form');
     var $survey_answer_form = $('#survey_answer_form');
+    var $survey_answer_form2 = $('#survey_answer_form2');
+    var pr_idx = $regi_form.find('input[name="pr_idx"]').val();
+    var step_3 = '{{$arr_member_step[3]}}';
+    var step_4 = '{{$arr_member_step[4]}}';
 
     $(document).ready(function() {
+        parent.document.getElementById('_pr_id').value = pr_idx;
+
+        //성적확인 및 분석 탭 호출
+        if (step_3 == 'on') {
+            parent.document.getElementById('_tab3').value = 'Y';
+            ajaxHtml3('{{$predict_idx}}', pr_idx, '{{$ss_idx}}', '{{$ss_idx2}}');
+        }
+
+        if (step_4 == 'on') {
+            parent.document.getElementById('_tab4').value = 'Y';
+            ajaxHtml4('{{$predict_idx}}', pr_idx, '{{$ss_idx2}}');
+        }
+
         $('.markTab').each(function(){
             var $active, $content, $links = $(this).find('a');
             $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
@@ -329,6 +383,10 @@
         });
 
         $('.btn-open-tab4').on('click', function (e) {
+            if (step_4 != 'on') {
+                alert('집계중입니다.');
+                return false;
+            }
             $('.tabs').each(function(){
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[1] || $links[1]);
@@ -355,17 +413,6 @@
                 $('#target_'+id).focus();
             }
         });
-
-        //성적확인 및 분석 탭 호출
-        var pr_idx = $regi_form.find('input[name="pr_idx"]').val();
-        parent.document.getElementById('_pr_id').value = pr_idx;
-
-        var step_4 = '{{$arr_member_step[4]}}';
-        if (step_4 == 'on') {
-            parent.document.getElementById('_exam_type').value = 'Y';
-            ajaxHtml3('{{$predict_idx}}', pr_idx, '{{$ss_idx}}');
-            ajaxHtml4('{{$predict_idx}}', pr_idx);
-        }
     });
 
     //직렬별 과목 파라미터 셋팅
@@ -398,7 +445,7 @@
         ajaxSubmit($regi_form, _url, function(ret) {
             if(ret.ret_cd) {
                 alert(ret.ret_msg);
-                ajaxHtml2('{{$predict_idx}}', '{{$ss_idx}}');
+                ajaxHtml2('{{$predict_idx}}', '{{$ss_idx}}', '{{$ss_idx2}}');
             }
         }, showValidateError, null, false, 'alert');
     }
@@ -425,9 +472,7 @@
         return true;
     }
 
-    /**
-     * 설문
-     */
+    //설문
     function surveyAnswerSubmit() {
         var vali_msg = '';
 
@@ -449,7 +494,34 @@
             ajaxSubmit($survey_answer_form, _url, function (ret) {
                 if (ret.ret_cd) {
                     alert(ret.ret_msg);
-                    ajaxHtml2('{{$predict_idx}}', '{{$ss_idx}}');
+                    ajaxHtml2('{{$predict_idx}}', '{{$ss_idx}}', '{{$ss_idx2}}');
+                }
+            }, showValidateError, null, false, 'alert');
+        }
+    }
+
+    function surveyAnswerSubmit2() {
+        var vali_msg = '';
+
+        $('.survey_answer_group2').each(function() {
+            if($(this).is(':visible')){
+                if($('input:radio[name="' + $(this).prop('name') + '"]').is(':checked') === false){
+                    /*alert($(this).prop('name'));*/
+                    vali_msg = '응답하지 않은 설문이 있습니다.';
+                }
+            }else{
+                $(this).prop("checked",false);
+            }
+        });
+
+        if(vali_msg){ alert(vali_msg); return; }
+
+        if (confirm('설문을 제출하시겠습니까?')) {
+            var _url = '{{ front_url('/fullService/storeSurveyAnswer') }}';
+            ajaxSubmit($survey_answer_form2, _url, function (ret) {
+                if (ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    ajaxHtml2('{{$predict_idx}}', '{{$ss_idx}}', '{{$ss_idx2}}');
                 }
             }, showValidateError, null, false, 'alert');
         }
@@ -488,7 +560,7 @@
             ajaxSubmit($answer_form, _url, function (ret) {
                 if (ret.ret_cd) {
                     alert(ret.ret_msg);
-                    ajaxHtml2('{{$predict_idx}}', '{{$ss_idx}}');
+                    ajaxHtml2('{{$predict_idx}}', '{{$ss_idx}}', '{{$ss_idx2}}');
                 }
             }, showValidateError, null, false, 'alert');
         }
@@ -520,11 +592,12 @@
     }
 
     //성적확인 및 분석 탭
-    function ajaxHtml3(predict_idx, pr_idx, ss_idx) {
+    function ajaxHtml3(predict_idx, pr_idx, ss_idx, ss_idx2) {
         var data = {
             'predict_idx' : predict_idx
             ,'pr_idx' : pr_idx
             ,'ss_idx' : ss_idx
+            ,'ss_idx2' : ss_idx2
         };
         if (pr_idx == '') { return false; }
 
@@ -534,10 +607,11 @@
     }
 
     //합격예측 탭
-    function ajaxHtml4(predict_idx, pr_idx) {
+    function ajaxHtml4(predict_idx, pr_idx, ss_idx2) {
         var data = {
             'predict_idx' : predict_idx
             ,'pr_idx' : pr_idx
+            ,'ss_idx2' : ss_idx2
         };
         if (pr_idx == '') { return false; }
 

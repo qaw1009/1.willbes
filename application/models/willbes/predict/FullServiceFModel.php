@@ -49,10 +49,11 @@ class FullServiceFModel extends WB_Model
      */
     public function findPredictData($arr_condition)
     {
-        $column = 'PredictIdx, MockPart, IsQuestionType, QuestionTypeCnt, IsAddPoint, TakeNumRedundancyCheckIsUse, PreServiceIsUse, AnswerServiceIsUse, ServiceIsUse';
+        $column = 'PredictIdx, MockPart, IsQuestionType, QuestionTypeCnt, IsAddPoint, TakeNumRedundancyCheckIsUse, PreServiceIsUse, AnswerServiceIsUse, ServiceIsUse, LastServiceIsUse';
         $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
         $column .= ',DATE_FORMAT(AnswerServiceSDatm, \'%Y%m%d%H%i\') AS AnswerServiceSDatm, DATE_FORMAT(AnswerServiceEDatm, \'%Y%m%d%H%i\') AS AnswerServiceEDatm';
         $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';
+        $column .= ',DATE_FORMAT(LastServiceSDatm, \'%Y%m%d%H%i\') AS LastServiceSDatm, DATE_FORMAT(LastServiceEDatm, \'%Y%m%d%H%i\') AS LastServiceEDatm';
 
         $from = " FROM {$this->_table['product_predict']}";
         $where = $this->_conn->makeWhere($arr_condition);

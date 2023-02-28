@@ -11,6 +11,7 @@ class BaseFullService extends \app\controllers\FrontController
         '2' => 'off'
         ,'3' => 'off'
         ,'4' => 'off'
+        ,'survey_type' => 'off'
         ,'answer_submit_type' => 'on'
     ];  //회원단계 초기화
 
@@ -30,6 +31,7 @@ class BaseFullService extends \app\controllers\FrontController
         $arr_input = $this->_reqG(null);
         $predict_idx = element('predict_idx', $arr_input);
         $ss_idx = element('ss_idx', $arr_input);
+        $ss_idx2 = element('ss_idx2', $arr_input);
 
         if (empty((int)$predict_idx) === true) {
             show_alert('합격예측코드가 없습니다.','back');
@@ -77,6 +79,8 @@ class BaseFullService extends \app\controllers\FrontController
         $regi_question_data = [];   //과목별,항목별 통계
         $survey_data = [];          //설문정보
         $member_answer_data = [];   //회원 설문 응답 내역
+        $survey_data2 = [];          //설문정보
+        $member_answer_data2 = [];   //회원 설문 응답 내역
 
         if ($this->isLogin() === true) {
             $mem_idx = $this->session->userdata('mem_idx');
@@ -94,24 +98,37 @@ class BaseFullService extends \app\controllers\FrontController
                 $arr_base['method'] = 'MOD';
 
                 //설문데이터 조회 (2단계)
-                $this->_arr_member_step[2] = 'on';
+                $this->_arr_member_step['survey_type'] = 'on';
+
+                //답안입력서비스
+                if ($predict_data['AnswerServiceIsUse'] == 'Y') {
+                    if (date('YmdHi') >= $predict_data['AnswerServiceSDatm'] && date('YmdHi') <= $predict_data['AnswerServiceEDatm']) {
+                        $this->_arr_member_step[2] = 'on';
+                    }
+                } else {
+                    $this->_arr_member_step[2] = 'on';
+                }
+
+                if ($predict_data['ServiceIsUse'] == 'Y') { //본서비스
+                    if (date('YmdHi') >= $predict_data['ServiceSDatm'] && date('YmdHi') <= $predict_data['ServiceEDatm']) {
+                        $this->_arr_member_step[3] = 'on';
+                    }
+                } else {
+                    $this->_arr_member_step[3] = 'on';
+                }
+
                 if(empty($ss_idx) === false){
                     $survey_data = $this->_getSurveyQuestion($ss_idx);
                     $member_answer_data = $this->_getMemberSurveyAnswer($ss_idx);
-
-                    if(empty($member_answer_data) === false){
-                        if ($predict_data['AnswerServiceIsUse'] == 'Y') {
-                            if (date('YmdHi') >= $predict_data['AnswerServiceSDatm'] && date('YmdHi') <= $predict_data['AnswerServiceEDatm']) {
-                                $this->_arr_member_step[3] = 'on';
-                            }
-                        } else {
-                            $this->_arr_member_step[3] = 'on';
-                        }
-                    }
                 }
-                
+
+                if(empty($ss_idx2) === false){
+                    $survey_data2 = $this->_getSurveyQuestion($ss_idx2);
+                    $member_answer_data2 = $this->_getMemberSurveyAnswer($ss_idx2);
+                }
+
                 //답안입력 (3단계)
-                if ($this->_arr_member_step[3] == 'on') {
+                if ($this->_arr_member_step[2] == 'on') {
                     //과목조회
                     $arr_condition = [
                         'EQ' => [
@@ -124,18 +141,18 @@ class BaseFullService extends \app\controllers\FrontController
                     $list_question = $this->_listQuestionForRegister($predict_idx, $regi_data['PrIdx'], $regi_subject_data);
                 }
 
+                if ($this->_arr_member_step[3] == 'on') {
+                    $regi_question_data = $this->_regi_question_data($predict_idx, $regi_data['PrIdx']);
+                }
+
                 if ($this->_arr_member_step['answer_submit_type'] == 'off') {
-                    if ($predict_data['ServiceIsUse'] == 'Y') {
-                        if (date('YmdHi') >= $predict_data['ServiceSDatm'] && date('YmdHi') <= $predict_data['ServiceEDatm']) {
+                    if ($predict_data['LastServiceIsUse'] == 'Y') {
+                        if (date('YmdHi') >= $predict_data['LastServiceSDatm'] && date('YmdHi') <= $predict_data['LastServiceEDatm']) {
                             $this->_arr_member_step[4] = 'on';
                         }
                     } else {
                         $this->_arr_member_step[4] = 'on';
                     }
-                }
-
-                if ($this->_arr_member_step[4] == 'on') {
-                    $regi_question_data = $this->_regi_question_data($predict_idx, $regi_data['PrIdx']);
                 }
             }
         }
@@ -144,6 +161,7 @@ class BaseFullService extends \app\controllers\FrontController
             'predict_idx' => $predict_idx
             ,'predict_data' => $predict_data
             ,'ss_idx' => $ss_idx
+            ,'ss_idx2' => $ss_idx2
             ,'arr_member_step' => $this->_arr_member_step
             ,'arr_base' => $arr_base
             ,'regi_data' => $regi_data
@@ -152,6 +170,8 @@ class BaseFullService extends \app\controllers\FrontController
             ,'regi_question_data' => $regi_question_data
             ,'survey_data' => $survey_data
             ,'member_answer_data' => $member_answer_data
+            ,'survey_data2' => $survey_data2
+            ,'member_answer_data2' => $member_answer_data2
         ]);
     }
 
@@ -164,6 +184,7 @@ class BaseFullService extends \app\controllers\FrontController
         $predict_idx = (int)$this->_reqG('predict_idx');
         $pr_idx = (int)$this->_reqG('pr_idx');
         $ss_idx = (int)$this->_reqG('ss_idx');
+        $ss_idx2 = (int)$this->_reqG('ss_idx2');
         $mem_idx = $this->session->userdata('mem_idx');
         
         if (empty($predict_idx) === true || empty($pr_idx) === true) {
@@ -223,6 +244,9 @@ class BaseFullService extends \app\controllers\FrontController
         //설문 데이터
         $arr_surveyChartData = $this->_getSurveyChartData($ss_idx);
 
+        //설문2 데이터
+        $arr_surveyChartData2 = $this->_getSurveyChartData($ss_idx2);
+
         $this->load->view('fullService/predict_tab3', [
             'regi_data' => $regi_data
             ,'arr_statsForGradesData' => $arr_statsForGradesData
@@ -232,6 +256,7 @@ class BaseFullService extends \app\controllers\FrontController
             ,'arr_statsForTotalAvgData' => $arr_statsForTotalAvgData
             ,'arr_statsForTakeMockPartAvgData' => $arr_statsForTakeMockPartAvgData
             ,'arr_surveyChartData' => $arr_surveyChartData
+            ,'arr_surveyChartData2' => $arr_surveyChartData2
         ]);
     }
 
@@ -240,6 +265,7 @@ class BaseFullService extends \app\controllers\FrontController
         $predict_idx = (int)$this->_reqG('predict_idx');
         $pr_idx = (int)$this->_reqG('pr_idx');
         $mem_idx = $this->session->userdata('mem_idx');
+        $ss_idx2 = (int)$this->_reqG('ss_idx2');
 
         if (empty($predict_idx) === true || empty($pr_idx) === true) {
             show_alert('잘못된 접근 입니다.');
@@ -259,10 +285,65 @@ class BaseFullService extends \app\controllers\FrontController
             show_alert('조회된 기본 정보가 없습니다.');
         }
 
+        $arr_statsForGradesData = $this->fullServiceFModel->statsForGradesData($predict_idx, $pr_idx);
         $fullservice_data = $this->fullServiceFModel->fullServiceForResult($predict_idx, $pr_idx);
 
+        //설문2 데이터 (헌법)
+        $isFailForSurvey = 2; // 기본값(과락)
+        $arr_surveyChartData2 = $this->_getMemberSurveyAnswer($ss_idx2);
+        if (empty($arr_surveyChartData2) === false) {
+            $isFailForSurvey = array_value_first(array_value_first($arr_surveyChartData2['AnswerInfo']));
+        }
+
+        //과목별 과락 체크
+        $isFailForSubject = '1';
+        foreach ($arr_statsForGradesData['list'] as $row) {
+            if ($row['MyOrgPoint'] <= 40) {
+                $isFailForSubject = 2;
+                break;
+            }
+        }
+
+        //과목 평균 과락 체크
+        $isFailForOrgPoint = 1;
+        if ($fullservice_data['TotalMyOrgPoint'] < 60) {
+            $isFailForOrgPoint = 2;
+        }
+
+        //과목평균 예측 기준 미달 체크
+        $isFailForPassLine = 1;
+        if ($fullservice_data['TotalMyOrgPoint'] < $fullservice_data['ExpectAvrPoint2']) {
+            $isFailForPassLine = 2;
+        }
+
+        $isFailComment = '';
+        if ($isFailForSurvey == 1 && $isFailForSubject == 1 && $isFailForOrgPoint == 1 && $isFailForPassLine == 1) {
+            $passline_title = '';
+            if ($fullservice_data['TotalMyOrgPoint'] >= $fullservice_data['StabilityAvrPoint']) {
+                $passline_title = '합격 유력권';
+            } else if ($fullservice_data['TotalMyOrgPoint'] >= $fullservice_data['StrongAvrPoint2'] && $fullservice_data['TotalMyOrgPoint'] < $fullservice_data['StrongAvrPoint1']) {
+                $passline_title = '합격 가능권';
+            } else if ($fullservice_data['TotalMyOrgPoint'] >= $fullservice_data['ExpectAvrPoint2'] && $fullservice_data['TotalMyOrgPoint'] < $fullservice_data['ExpectAvrPoint1']) {
+                $passline_title = '합격 유보권';
+            }
+
+            $isFailComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 {$passline_title}으로 예측됩니다. 합격을 기원합니다";
+        } else {
+            //헌법(설문 2번), 과목이 과락인 경우
+            if ($isFailForSurvey == 2 || $isFailForSubject == 2) {
+                $isFailComment = '과락 과목이 포함되어 아쉽지만 불합격입니다.';
+            } else {
+                //그외, 과목평균이 60점이하 or 예측기준 미달인 경우 (과락없는 불합격)
+                $isFailComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 아쉽지만 합격 가능성이 낮은 것으로 예측됩니다";
+            }
+        }
+
         $this->load->view('fullService/predict_tab4', [
-            'fullservice_data' => $fullservice_data
+            'arr_statsForGradesData' => $arr_statsForGradesData
+            ,'fullservice_data' => $fullservice_data
+            ,'arr_surveyChartData2' => $arr_surveyChartData2
+            ,'isFailForSurvey' => $isFailForSurvey //1:통과, 2:과락
+            ,'isFailComment' => $isFailComment
         ]);
     }
 

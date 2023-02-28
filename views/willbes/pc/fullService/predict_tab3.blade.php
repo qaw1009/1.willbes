@@ -219,12 +219,18 @@
                 <div><span class="level{{($loop->count - $loop->index) + 1}}"></span>{{$level_title}}</div>
             @endforeach
         </div>
-    </div> 
+    </div>
 </div>
 <div class="graph_area">
     <div class="markSbtn4 bold">
         <a href="javascript:void(0)">가장 어려웠던 과목은?</a><br>
         <div id="hardSubject"></div>
+    </div>
+</div>
+<div class="graph_area">
+    <div class="markSbtn4 bold">
+        <a href="javascript:void(0)">헌법 합격 여부</a><br>
+        <div id="subjectIsFail"></div>
     </div>
 </div>
 
@@ -256,6 +262,7 @@
         // 가장 어려웠던 과목은?
         hardSubject();
         levelSubject();
+        subjectIsFail();
     });
 
     // 체감 난이도는?
@@ -335,6 +342,43 @@
             'chartDiv': 'hardSubject',
             'chartType': 'pie',
             'chartSize': {width:450, height:250}
+        };
+        Nwagon.chart(options);
+    }
+
+    // 헌법 합격 여부 설문
+    function subjectIsFail() {
+        @if(empty($arr_surveyChartData2['graph1']) === false)
+        var json_data = {!! json_encode($arr_surveyChartData2['graph1']) !!};
+        @else
+            return;
+        @endif
+
+        var fields = [];
+        var values = [];
+        var title = '';
+        $.each(json_data, function(key, val) {
+            title = key;
+            $.each(val, function(item_k, item_v) {
+                $.each(item_v, function(k, v) {
+                    fields.push(k);
+                    values.push(v);
+                });
+            });
+        });
+
+        var options = {
+            'dataset':{
+                title: title,
+                values: values,
+                colorset: ['#f47aa2', '#4d9ef0', "#9f4ef1"],
+                fields: fields
+            },
+            'donut_width' : 100,
+            'core_circle_radius':0,
+            'chartDiv': 'subjectIsFail',
+            'chartType': 'pie',
+            'chartSize': {width:550, height:250}
         };
         Nwagon.chart(options);
     }

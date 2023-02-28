@@ -32,7 +32,7 @@
             width: 26px;
             height: 26px;
             margin-top:0;
-            cursor: pointer;	
+            cursor: pointer;
             border-radius:12px;
             display:inline-block;
             background-size:104% !important;
@@ -315,82 +315,23 @@
 
         {{--유튜브 팝업 배너--}}
         <div class="profEvt swiper-container swiper-container-arrow">
-            <div class="swiper-container-prof">
+            @php $j=0; for($i=1; $i<=10; $i++) {if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true) {$j++;}} @endphp
+            <div class="{{($j > 2) ? 'swiper-container-prof' : ''}} {{$j}}">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="https://youtu.be/gCF-qMPZHiY" target="_blank">
-                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178.jpg" alt="배너명">
-                            <p>1 기출 및 개정 내용까지 법규특강으로 한번에 확인!</p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="https://www.youtube.com/shorts/3jysDrzQFSk" target="_blank">
-                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178_02.jpg" alt="배너명">
-                            <p>2 기출 및 개정 내용까지 법규특강으로 한번에 확인!</p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178.jpg" alt="배너명">
-                            <p>3 기출 및 개정 내용까지<br></p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178_02.jpg" alt="배너명">
-                            <p>4 기출 및 개정 내용까지 법규특강으로 한번에 확인!</p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
-                    
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178.jpg" alt="배너명">
-                            <p>5 기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178_02.jpg" alt="배너명">
-                            <p>6 기출 및 개정 내용까지 법규특강으로</p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178_02.jpg" alt="배너명">
-                            <p>7 기출 및 개정 내용까지 법규특강으로</p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178_02.jpg" alt="배너명">
-                            <p>8 기출 및 개정 내용까지 법규특강으로</p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178_02.jpg" alt="배너명">
-                            <p>9 기출 및 개정 내용까지 법규특강으로</p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/m/2018/300x178_02.jpg" alt="배너명">
-                            <p>10 기출 및 개정 내용까지 법규특강으로</p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
+                    @for($i=1; $i<=10; $i++)
+                        @if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true)
+                        <div class="swiper-slide">
+                            <a href="{{ empty($data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl']) === false ? $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl'] : '#none' }}" target="_{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkType'] }}">
+                                <img src="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerFullPath'] . $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerImgName'] }}" alt="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] }}">
+                                <p>{!! $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] !!}</p>
+                                <span>{{$data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['Desc']}}</span>
+                            </a>
+                        </div>
+                        @endif
+                    @endfor
                 </div>
-                <div class="swiper-pagination"></div>
-            </div>        
+                @if ($j > 2)<div class="swiper-pagination"></div>@endif
+            </div>
         </div>
 
         <div class="noticeTabs c_both mt30">

@@ -315,7 +315,7 @@
 
         {{--유튜브 팝업 배너--}}
         @php $j=0; for($i=1; $i<=10; $i++) {if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true) {$j++;}} @endphp
-        <div class="profEvt {{($j > 2) ? 'swiper-container swiper-container-arrow' : ''}} {{$j}}">
+        <div class="profEvt {{($j > 2) ? 'swiper-container' : ''}} {{$j}}">
             <div class="{{($j > 2) ? 'swiper-container-prof' : ''}} {{$j}}">
                 <div class="swiper-wrapper">
                     @for($i=1; $i<=10; $i++)

@@ -314,8 +314,8 @@
         {!! banner('M_메인', 'MainSlider', $__cfg['SiteCode'], '0') !!}
 
         {{--유튜브 팝업 배너--}}
-        <div class="profEvt swiper-container swiper-container-arrow">
-            @php $j=0; for($i=1; $i<=10; $i++) {if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true) {$j++;}} @endphp
+        @php $j=0; for($i=1; $i<=10; $i++) {if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true) {$j++;}} @endphp
+        <div class="profEvt {{($j > 2) ? 'swiper-container swiper-container-arrow' : ''}} {{$j}}">
             <div class="{{($j > 2) ? 'swiper-container-prof' : ''}} {{$j}}">
                 <div class="swiper-wrapper">
                     @for($i=1; $i<=10; $i++)

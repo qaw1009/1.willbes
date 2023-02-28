@@ -269,8 +269,7 @@ no-repeat 5px center}
 .ssam .Section1 .smallTit {border-top:0;}
 .ssam .Section1 .smallTit p { position: static;}
 
-.ssam .VisualSubBox {text-align: center;background:url("https://static.willbes.net/public/images/promotion/main/2018/2018_main_bg.jpg"); width:1120px;
-    margin:0 auto; padding:50px 0}
+.ssam .VisualSubBox {text-align: center;background:url("https://static.willbes.net/public/images/promotion/main/2018/2018_main_bg.jpg"); width:1120px; margin:0 auto; padding:50px 0}
 .ssam .SubtabBox {
     width: 978px;
     height: 260px; 
@@ -289,6 +288,46 @@ no-repeat 5px center}
 .ssam .VisualSubBox .Subtab li a:hover {color:#fff; background:#5ba5fe; font-weight:bold;}
 .ssam .VisualSubBox .Subtab li:nth-child a (6),
 .ssam .VisualSubBox .Subtab li:last-child a {border:0}
+
+.MainQuickMenuSSam {
+    background:none;
+    width:78px;
+    top: 220px;
+	left:100%;
+	margin-left: -88px;
+	height: auto;
+	padding:0;
+	border-radius:0;
+}
+.MainQuickMenuSSam a {display:block; margin-bottom:10px}
+.MainQuickMenuSSam a:hover img {
+    -webkit-animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@@-webkit-keyframes flip-in-hor-bottom {
+    0% {
+        -webkit-transform: rotateX(80deg);
+                transform: rotateX(80deg);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: rotateX(0);
+                transform: rotateX(0);
+        opacity: 1;
+    }
+}
+@@keyframes flip-in-hor-bottom {
+    0% {
+        -webkit-transform: rotateX(80deg);
+                transform: rotateX(80deg);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: rotateX(0);
+                transform: rotateX(0);
+        opacity: 1;
+    }
+}
 </style>
 
 
@@ -2140,7 +2179,7 @@ no-repeat 5px center}
     </div>
 
     <div id="QuickMenuC" class="MainQuickMenuSSam NGR">
-
+        {{--
         <ul class="gobtn NG">
             <li>
                 <a href="{{ site_url('/lecture/index/pattern/free?cate_code=') }}">
@@ -2185,6 +2224,13 @@ no-repeat 5px center}
                 </a>
             </li>
         </ul>
+        --}}
+        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/m_sky01.png" alt="배너명"></a>
+        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/m_sky02.png" alt="배너명"></a>
+        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/m_sky03.png" alt="배너명"></a>
+        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/m_sky04.png" alt="배너명"></a>
+        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/m_sky05.png" alt="배너명"></a>
+        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/m_sky06.png" alt="배너명"></a>
     </div>
     
     {{-- 수강후기 팝업 willbes-Layer-ReplyBox --}}

@@ -37,17 +37,15 @@ class CertApply extends \app\controllers\FrontController
             'A.SiteCode' => $this->_site_code
         ];
 
-        //경찰시험직렬,경찰시험지역
-        $codes = $this->codeModel->getCcdInArray(['711','712']);
-
         $data = $this->certApplyFModel->findCertByCertIdx($cert_idx,$arr_condition);
         $product_list = $this->certApplyFModel->listProductByCertIdx($cert_idx,$arr_condition);
 
         if(empty($data)){
             show_alert('인증 설정 정보가 존재하지 않습니다.', 'close');
         }
-        $data['kind_ccd'] = $codes['711'];
-        $data['area_ccd'] = $codes['712'];
+        //경찰시험직렬,경찰시험지역
+        $data['kind_ccd'] = $this->codeModel->getCcd('711','', ['EQ' => ['CcdEtc' => config_app('SiteGroupCode')]]);
+        $data['area_ccd'] = $this->codeModel->getCcd('712');
 
         $this->load->view('site/cert/cert_'.$cert_page,[
             'cert_idx' => $cert_idx,

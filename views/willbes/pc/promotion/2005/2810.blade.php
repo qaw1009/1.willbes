@@ -180,7 +180,7 @@
     .series_select {vertical-align:middle !important;}
     /*.score {position:absolute;left:50%;top:67%;margin-left:33px;width:110px;height:45px;border:2px solid #bfbfbf;}*/
 
-    .fail_info {background:#f3f3f3;width:720px;font-size:25px;margin:0 auto;padding:35px;border-radius:10px;}
+    .fail_info {background:#f3f3f3;width:720px;font-size:22px;margin:0 auto;padding:35px;border-radius:10px;}
     .fail_info .fail {color:#5918CC;font-weight:bold;}
     </style>
 

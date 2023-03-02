@@ -336,6 +336,11 @@
     </div>
 @endif
 
+@if ($arr_member_step[4] != 'on')
+    <div>
+    [안내] 현재 데이터를 집계 중이며, 집계 후 공개될 예정입니다. 단, 신뢰할 수 있는 데이터가 부족할 경우 합격예측 서비스 제공이 어려울 수 있습니다.
+    </div>
+@endif
 
 <script type="text/javascript">
     var $regi_form = $('#regi_form');
@@ -540,11 +545,18 @@
                 focus_num += 1;
                 chk = new RegExp(regex, 'gi');
                 var val = $(this).val();
+
                 if (val == '') {
                     vali_msg = '답안을 모두 입력해 주세요.';
                     $('#target_'+focus_num).focus();
                     return false;
                 }
+
+                if (val.length < 5) {
+                    vali_msg = '정답을 모두 입력해주세요.';
+                    return false;
+                }
+
                 if (!chk.test(val)) {
                     vali_msg = '허용되지 않은 답안입니다.';
                     $('#target_'+focus_num).focus();

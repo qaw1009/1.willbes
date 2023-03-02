@@ -109,14 +109,6 @@ class BaseFullService extends \app\controllers\FrontController
                     $this->_arr_member_step[2] = 'on';
                 }
 
-                if ($predict_data['ServiceIsUse'] == 'Y') { //본서비스
-                    if (date('YmdHi') >= $predict_data['ServiceSDatm'] && date('YmdHi') <= $predict_data['ServiceEDatm']) {
-                        $this->_arr_member_step[3] = 'on';
-                    }
-                } else {
-                    $this->_arr_member_step[3] = 'on';
-                }
-
                 if(empty($ss_idx) === false){
                     $survey_data = $this->_getSurveyQuestion($ss_idx);
                     $member_answer_data = $this->_getMemberSurveyAnswer($ss_idx);
@@ -139,6 +131,17 @@ class BaseFullService extends \app\controllers\FrontController
                     ];
                     $regi_subject_data = $this->fullServiceFModel->findRegisterSubjectData($arr_condition);
                     $list_question = $this->_listQuestionForRegister($predict_idx, $regi_data['PrIdx'], $regi_subject_data);
+                }
+
+                //답안 입력 여부
+                if ($this->_arr_member_step['answer_submit_type'] == 'off') {
+                    if ($predict_data['ServiceIsUse'] == 'Y') { //본서비스
+                        if (date('YmdHi') >= $predict_data['ServiceSDatm'] && date('YmdHi') <= $predict_data['ServiceEDatm']) {
+                            $this->_arr_member_step[3] = 'on';
+                        }
+                    } else {
+                        $this->_arr_member_step[3] = 'on';
+                    }
                 }
 
                 if ($this->_arr_member_step[3] == 'on') {
@@ -316,7 +319,7 @@ class BaseFullService extends \app\controllers\FrontController
             $isFailForPassLine = 2;
         }
 
-        $isFailComment = '';
+        $resultComment = '';
         if ($isFailForSurvey == 1 && $isFailForSubject == 1 && $isFailForOrgPoint == 1 && $isFailForPassLine == 1) {
             $passline_title = '';
             if ($fullservice_data['TotalMyOrgPoint'] >= $fullservice_data['StabilityAvrPoint']) {
@@ -327,14 +330,14 @@ class BaseFullService extends \app\controllers\FrontController
                 $passline_title = '합격 유보권';
             }
 
-            $isFailComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 {$passline_title}으로 예측됩니다. 합격을 기원합니다";
+            $resultComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 {$passline_title}으로 예측됩니다. 합격을 기원합니다";
         } else {
             //헌법(설문 2번), 과목이 과락인 경우
             if ($isFailForSurvey == 2 || $isFailForSubject == 2) {
-                $isFailComment = '과락 과목이 포함되어 아쉽지만 불합격입니다.';
+                $resultComment = '과락 과목이 포함되어 아쉽지만 불합격입니다.';
             } else {
                 //그외, 과목평균이 60점이하 or 예측기준 미달인 경우 (과락없는 불합격)
-                $isFailComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 아쉽지만 합격 가능성이 낮은 것으로 예측됩니다";
+                $resultComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 아쉽지만 합격 가능성이 낮은 것으로 예측됩니다";
             }
         }
 
@@ -343,7 +346,7 @@ class BaseFullService extends \app\controllers\FrontController
             ,'fullservice_data' => $fullservice_data
             ,'arr_surveyChartData2' => $arr_surveyChartData2
             ,'isFailForSurvey' => $isFailForSurvey //1:통과, 2:과락
-            ,'isFailComment' => $isFailComment
+            ,'resultComment' => $resultComment
         ]);
     }
 

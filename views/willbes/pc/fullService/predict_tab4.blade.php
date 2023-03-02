@@ -21,7 +21,7 @@
             <tr>
                 <th>{{$row['SubjectName']}}</th>
                 <td>{{$row['MyOrgPoint']}}점</td>
-                <td class="{{($row['MyOrgPoint'] <= 40 ? 'wrong' : 'pass')}}">{{($row['MyOrgPoint'] <= 40 ? '과락' : '')}}</td>
+                <td class="{{($row['MyOrgPoint'] <= 40 ? 'wrong' : 'pass')}}">{{($row['MyOrgPoint'] <= 40 ? '과락' : '통과')}}</td>
             </tr>
         @endforeach
         </tbody>
@@ -29,7 +29,7 @@
 </table>
 
 <div class="fail_info">
-    <p class="fail">{{$isFailComment}}</p>
+    <p class="fail">{!! $resultComment !!}</p>
 </div>
 
 <div class="stage">

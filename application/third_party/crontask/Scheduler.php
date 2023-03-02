@@ -83,6 +83,10 @@ class Scheduler
         foreach ($this->tasks as $task) {
             if ($task->isRequired()) {
                 $task_id = $task->getId();
+
+                // remove old lock file
+                $this->_removeOldLockFile($task_id);
+
                 if ($this->_isOverlapping($task_id) === false) {
                     // create lock file
                     $this->_createLockFile($task_id);
@@ -155,6 +159,27 @@ class Scheduler
     }
 
     /**
+     * Remove old task lock file
+     * @param string $id
+     * @return null
+     */
+    private function _removeOldLockFile($id = '')
+    {
+        $lock_file = $this->lockFileDir . $id . '.lock';
+        $chk_time = 3600; // 삭제 기준 (1시간, 초단위)
+
+        if (file_exists($lock_file) === true) {
+            $life_time = time() - filemtime($lock_file);
+
+            if ($chk_time < $life_time) {
+                unlink($lock_file);
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * Write log
      * @param array $output
      * @return null
@@ -192,7 +217,7 @@ class Scheduler
                     'RunTime' => $row['runtime'],
                     'ResultCode' => (stripos($row['result'], 'Err') !== false ? 'N' : 'Y'),
                     'ResultMsg' => $row['result'],
-                    'RegAdminIdx' => '1005'
+                    'RegAdminIdx' => '1000'
                 ];
 
                 if ($_db->set($data)->insert($_table) === false) {

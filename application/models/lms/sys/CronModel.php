@@ -34,7 +34,7 @@ class CronModel extends WB_Model
 
         if ($is_count === false) {
             $column = 'CL.ExecIdx, CL.TaskType, CL.ExecDate, CL.RunTime, CL.ResultCode, CL.ResultMsg, CL.RegDatm, CL.RegAdminIdx 
-                , A.wAdminName as RegAdminName';
+                , if(CL.RegAdminIdx = "1000", "스케줄러실행", A.wAdminName) as RegAdminName';
         }
 
         return $this->_conn->getJoinListResult($this->_table['cron_exec_log'] . ' as CL', 'left', $this->_table['admin'] . ' as A'

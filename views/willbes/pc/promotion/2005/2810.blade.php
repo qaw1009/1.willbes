@@ -70,9 +70,6 @@
     .evt01_02 .point input {width:100px; color:#000; border:1px solid #000}
     .evt01_02 .point div a {display:block; padding:20px; background:#000; font-size:18px; color:#fff; border-radius:50px; width:70%; margin:20px auto 0}
     .evt01_02 .point div a:hover {background:#3e0763}
-    .evt01_02 .data_info {background:#fff;width:730px;font-size:21px;margin:0 auto;padding:50px;border-radius:10px;line-height:1.25;}
-    .evt01_02 .data_info .data{color:#5918cc;font-weight:bold;}
-    .evt01_02 .data_info .guide{font-size:25px;display:inline-block;padding-bottom:10px;}
     .textinfo {color:#fff; line-height:1.5; font-size:20px}
     .textinfo p {font-size:14px}
     .textinfo strong {color:#00fffc}
@@ -183,6 +180,9 @@
     .series_select {vertical-align:middle !important;}
     /*.score {position:absolute;left:50%;top:67%;margin-left:33px;width:110px;height:45px;border:2px solid #bfbfbf;}*/
 
+    .data_info {background:#f3f3f3;width:730px;font-size:21px;margin:0 auto;padding:50px;border-radius:10px;line-height:1.25;}
+    .data_info .data{color:#5918cc;font-weight:bold;}
+    .data_info .guide{font-size:25px;display:inline-block;padding-bottom:10px;}
     .fail_info {background:#f3f3f3;width:720px;font-size:22px;margin:0 auto;padding:35px;border-radius:10px;}
     .fail_info .fail {color:#5918CC;font-weight:bold;}
     </style>
@@ -298,9 +298,6 @@
                                 예상 합격 점수 (평균값) <input class="score" type="text" maxlength="5" name="register_data2" oninput="maxLengthCheck(this);" value="{{ (empty($register_count[0]['EtcValue']) === false ? explode(',',$register_count[0]['EtcValue'])[1] : '') }}"> 점
                                 <a href="javascript:void(0);" onclick="fn_submit(); return false;">합격 점수 예상하기 ></a>
                             </div>
-                        </div>
-                        <div class="data_info">
-                            <p class="data"><span class="tx-red guide">[안내]</span><br>현재 데이터를 집계 중이며, 집계 후 공개될 예정입니다. 단, 신뢰할 수 있는 데이터가 부족할 경우 합격예측 서비스 제공이 어려울 수 있습니다.</p>
                         </div>
                         {{--
                         <div class="textinfo">

@@ -8,8 +8,7 @@
         <li role="presentation"><a href="{{ site_url('/sys/payLog/method/vbank') }}">가상계좌</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/deposit') }}">가상계좌입금통보</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/escrow') }}">에스크로</a></li>
-        <li role="presentation"><a href="{{ site_url('/sys/payLog/stats') }}">승인완료통계</a></li>
-        <li role="presentation"><a href="{{ site_url('/sys/payLog/cancelStats') }}">결제취소통계</a></li>
+        <li role="presentation"><a href="{{ site_url('/sys/payLog/stats') }}">승인완료/취소통계</a></li>
     </ul>
     <h5>- {{ $log_name }} 완료/취소/부분환불 연동 로그를 확인하는 메뉴입니다. (연동실패건 제외)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">

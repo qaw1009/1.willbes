@@ -8,8 +8,7 @@
         <li role="presentation"><a href="{{ site_url('/sys/payLog/method/vbank') }}">가상계좌</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/payLog/index/deposit') }}">가상계좌입금통보</a></li>
         <li role="presentation" class="active"><a href="{{ site_url('/sys/payLog/index/escrow') }}" class="cs-pointer"><strong>에스크로</strong></a></li>
-        <li role="presentation"><a href="{{ site_url('/sys/payLog/stats') }}">승인완료통계</a></li>
-        <li role="presentation"><a href="{{ site_url('/sys/payLog/cancelStats') }}">결제취소통계</a></li>
+        <li role="presentation"><a href="{{ site_url('/sys/payLog/stats') }}">승인완료/취소통계</a></li>
     </ul>
     <h5>- 에스크로 연동 로그를 확인하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">

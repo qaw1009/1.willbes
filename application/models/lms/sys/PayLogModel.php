@@ -248,6 +248,106 @@ class PayLogModel extends WB_Model
     }
 
     /**
+     * 승인완료/결제취소 일자/상점아이디/결제방법별 연동 통계
+     * @param string $stats_type [집계구분 (date, mid, method)]
+     * @param string $search_start_date [조회시작일자]
+     * @param string $search_end_date [조회종료일자]
+     * @param array $arr_condition [조회조건]
+     * @return mixed
+     */
+    public function listPayCancelStats($stats_type, $search_start_date, $search_end_date, $arr_condition = [])
+    {
+        $search_start_date .= ' 00:00:00';
+        $search_end_date .= ' 23:59:59';
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+
+        switch ($stats_type) {
+            case 'mid' :
+                $std_column = 'PgMid, PayMethod';
+                break;
+            case 'method' :
+                $std_column = 'PayMethod';
+                break;
+            default :
+                $std_column = 'RegDate, PgMid, PayMethod';
+                break;
+        }
+
+        $column = '*, (tReqPayPrice - tCancelPrice) as tRemainPrice, (tRealReqPayPrice - tRealCancelPrice) as tRealRemainPrice';
+        $in_column = $std_column . '
+            , count(0) as tPayCnt
+            , count(distinct OrderNo) as tOrderCnt
+            , sum(if(PayType = "PA", 1, 0)) as tReqPayCnt
+            , sum(ReqPayPrice) as tReqPayPrice       
+            , sum(if(PayType = "CA", 1, 0)) as tCancelCnt            
+            , sum(CancelPrice) as tCancelPrice
+            , sum(if(PayMethod != "VBank", 1, 0)) as tRealPayCnt
+            , sum(if(PayMethod != "VBank" and PayType = "PA", 1, 0)) as tRealReqPayCnt
+            , sum(if(PayMethod != "VBank", ReqPayPrice, 0)) as tRealReqPayPrice
+            , sum(if(PayMethod != "VBank" and PayType = "CA", 1, 0)) as tRealCancelCnt
+            , sum(if(PayMethod != "VBank", CancelPrice, 0)) as tRealCancelPrice';
+        $from = '
+            from (
+                select OrderNo, PgMid, "PA" as PayType
+                    , (case 
+                        when PayMethod in (' . $this->_pay_method['card'] . ') then "Card"
+                        when PayMethod in (' . $this->_pay_method['bank'] . ') then "DirectBank"
+                        when PayMethod in (' . $this->_pay_method['vbank'] . ') then "VBank"
+                        else "etc"
+                      end) as PayMethod
+                    , ReqPayPrice	
+                    , 0 as CancelPrice
+                    , left(RegDatm, 10) as RegDate
+                from ' . $this->_table['pay'] . '
+                where PayType in (' . $this->_req_pay_type . ')
+                    and ResultCode in (' . $this->_succ_result_code . ')
+                    and RegDatm between ? and ?
+                union all
+                select DP.OrderNo, PA.PgMid, "PA" as PayType
+                    , "VDeposit" as PayMethod
+                    , PA.ReqPayPrice
+                    , 0 as CancelPrice
+                    , left(DP.RegDatm, 10) as RegDate
+                from ' . $this->_table['deposit'] . ' as DP
+                    inner join ' . $this->_table['pay'] . ' as PA
+                        on DP.OrderNo = PA.OrderNo                
+                where DP.RegDatm between ? and ?
+                    and DP.ErrorMsg is null
+                    and PA.PayType in (' . $this->_req_pay_type . ')
+                    and PA.PayMethod in (' . $this->_pay_method['vbank'] . ')
+                    and PA.ResultCode in (' . $this->_succ_result_code . ')
+                union all
+                select CA.OrderNo, CA.PgMid, "CA" as PayType
+                    , (case 
+                        when PA.PayMethod in (' . $this->_pay_method['card'] . ') then "Card"
+                        when PA.PayMethod in (' . $this->_pay_method['bank'] . ') then "DirectBank"
+                        when PA.PayMethod in (' . $this->_pay_method['vbank'] . ') and DP.DepositIdx is null then "VBank"
+                        when PA.PayMethod in (' . $this->_pay_method['vbank'] . ') and DP.DepositIdx is not null then "VDeposit"
+                        else "etc"
+                      end) as PayMethod	
+                    , 0 as ReqPayPrice
+                    , ifnull(CA.ReqPayPrice, PA.ReqPayPrice) as CancelPrice
+                    , left(CA.RegDatm, 10) as RegDate
+                from ' . $this->_table['pay'] . ' as CA
+                    inner join ' . $this->_table['pay'] . ' as PA
+                        on CA.OrderNo = PA.OrderNo
+                    left join ' . $this->_table['deposit'] . ' as DP
+                        on CA.OrderNo = DP.OrderNo and DP.ErrorMsg is null			
+                where CA.RegDatm between ? and ?
+                    and CA.PayType in (' . $this->_cancel_pay_type . ')
+                    and CA.ResultCode in (' . $this->_succ_result_code . ')
+                    and PA.PayType in (' . $this->_req_pay_type . ')
+                    and PA.ResultCode in (' . $this->_succ_result_code . ')
+            ) as U 
+            ' . $where . '           
+            group by ' . $std_column . ' with rollup
+        ';
+        $binds = [$search_start_date, $search_end_date, $search_start_date, $search_end_date, $search_start_date, $search_end_date];
+
+        return $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . ') as GRP', $binds)->result_array();
+    }
+
+    /**
      * 결제일자, 상점아이디, 결제방법별 연동 통계
      * @param string $search_start_date [조회시작일자]
      * @param string $search_end_date [조회종료일자]

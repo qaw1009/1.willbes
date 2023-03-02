@@ -11,6 +11,7 @@ class PayLog extends \app\controllers\BaseController
         'escrow' => ['PgDriver', 'PgBookMid'],
         'method' => ['PgDriver', 'PgMid', 'PayType2'],
         'stats' => ['PgMid', 'PayDepositMethod'],
+        'pay_stats' => ['PgMid', 'PayDepositMethod'],
         'cancel_stats' => ['PgMid', 'CancelType'],
     ];
     private $_codes = [
@@ -58,7 +59,7 @@ class PayLog extends \app\controllers\BaseController
     public function listAjax($params = [])
     {
         $log_type = element('0', $params, 'pay');
-        $order_column = 'PL.'.ucfirst($log_type) . 'Idx';
+        $order_column = 'PL.' . ucfirst($log_type) . 'Idx';
         $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-d'));
         $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-d'));
 
@@ -96,7 +97,7 @@ class PayLog extends \app\controllers\BaseController
                 $arr_condition['LKL']['PL.PayMethod'] = $search_pay_method;
             }
         }
-        
+
         // 연동성공여부 조건
         $search_is_result = $this->_reqP('search_is_result');
         if (empty($search_is_result) === false) {
@@ -275,13 +276,57 @@ class PayLog extends \app\controllers\BaseController
     }
 
     /**
-     * 승인완료 통계 인덱스
-     * @param array $params
+     * 승인완료/취소 통계 인덱스
+     * @param array $params [로그구분 (date, mid, method)]
      */
     public function stats($params = [])
     {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $log_type = element('0', $params, 'date');
+
         $this->load->view('sys/pay_log/stats_index', [
-            'codes' => $this->_getLogTypeCodes('stats')
+            'log_type' => $log_type,
+            'codes' => $this->_getLogTypeCodes('stats'),
+            'arr_input' => $arr_input,
+        ]);
+    }
+
+    /**
+     * 승인완료/취소 통계 목록 조회
+     * @param array $params [로그구분 (date, mid, method)]
+     * @return CI_Output
+     */
+    public function statsAjax($params = [])
+    {
+        $log_type = element('0', $params, 'date');
+        $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-d'));
+        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-d'));
+
+        $arr_condition = [
+            'EQ' => [
+                'PgMid' => $this->_reqP('search_pg_mid'),
+                'PayMethod' => $this->_reqP('search_pay_method'),
+            ]
+        ];
+        $list = $this->payLogModel->listPayCancelStats($log_type, $search_start_date, $search_end_date, $arr_condition);
+        $count = count($list);
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+            'codes' => $this->_getLogTypeCodes('stats', false)
+        ]);
+    }
+
+    /**
+     * 승인완료 통계 인덱스
+     * @param array $params
+     */
+    public function payStats($params = [])
+    {
+        $this->load->view('sys/pay_log/pay_stats_index', [
+            'codes' => $this->_getLogTypeCodes('pay_stats')
         ]);
     }
 
@@ -290,7 +335,7 @@ class PayLog extends \app\controllers\BaseController
      * @param array $params
      * @return CI_Output
      */
-    public function statsAjax($params = [])
+    public function payStatsAjax($params = [])
     {
         $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-d'));
         $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-d'));
@@ -309,7 +354,7 @@ class PayLog extends \app\controllers\BaseController
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list,
-            'codes' => $this->_getLogTypeCodes('stats', false)
+            'codes' => $this->_getLogTypeCodes('pay_stats', false)
         ]);
     }
 

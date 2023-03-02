@@ -13,6 +13,7 @@ class BaseFullService extends \app\controllers\FrontController
         ,'4' => 'off'
         ,'survey_type' => 'off'
         ,'answer_submit_type' => 'on'
+        ,'guide_box_onoff' => 'on'
     ];  //회원단계 초기화
 
     public function __construct()
@@ -157,6 +158,12 @@ class BaseFullService extends \app\controllers\FrontController
                         $this->_arr_member_step[4] = 'on';
                     }
                 }
+            }
+        }
+
+        if ($predict_data['LastServiceIsUse'] == 'Y') {
+            if (date('YmdHi') >= $predict_data['LastServiceSDatm'] && date('YmdHi') <= $predict_data['LastServiceEDatm']) {
+                $this->_arr_member_step['guide_box_onoff'] = 'off';
             }
         }
 

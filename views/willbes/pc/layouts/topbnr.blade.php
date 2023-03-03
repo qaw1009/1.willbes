@@ -5,13 +5,13 @@
             <!--a id="show_topBanner" href="javascript:showOrHidefigure(0);"-->
             <img src="https://static.willbes.net/public/images/promotion/main/2001/kcp1st.jpg" alt="2023 한국소비자 선호도 교육서비스 부문 1위">
         </div>
+    </div>
     {{--
-        <div id="topBannerWarp" style="display:none">
-            <div class="myToggle">
-                <div id="frame">
-                    <div id="bannerList">
-                        <a href="{{ site_url('/promotion/index/cate/3001/code/1022') }}" target="_blank"><img src="{{ img_url('cop/banner/onTopBnar_190123C_02.png') }}" alt="경찰팀 적중" /></a>
-                    </div>
+    <div id="topBannerWarp" style="display:none">
+        <div class="myToggle">
+            <div id="frame">
+                <div id="bannerList">
+                    <a href="{{ site_url('/promotion/index/cate/3001/code/1022') }}" target="_blank"><img src="{{ img_url('cop/banner/onTopBnar_190123C_02.png') }}" alt="경찰팀 적중" /></a>
                 </div>
             </div>
         </div>

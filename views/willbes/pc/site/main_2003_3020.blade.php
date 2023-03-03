@@ -20,7 +20,8 @@
             min-width: 1120px;
             max-width: 2000px;
             height: 90px;
-            overflow: hidden;}
+            overflow: hidden;
+            text-align:center}
         .gosi-bnfull .bx-wrapper .sliderBar img {width:2000px !important; height:90px}
 
         /*상단 메인 배너*//

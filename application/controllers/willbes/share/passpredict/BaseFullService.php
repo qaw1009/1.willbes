@@ -337,14 +337,16 @@ class BaseFullService extends \app\controllers\FrontController
                 $passline_title = '합격 유보권';
             }
 
-            $resultComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 {$passline_title}으로 예측됩니다. 합격을 기원합니다";
+            $resultComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 {$passline_title}으로 예측됩니다. 합격을 기원합니다.";
         } else {
-            //헌법(설문 2번), 과목이 과락인 경우
-            if ($isFailForSurvey == 2 || $isFailForSubject == 2) {
-                $resultComment = '과락 과목이 포함되어 합격예측이 불가합니다.';
+            if ($isFailForSurvey == 1 && $isFailForSubject == 1 && $isFailForPassLine == 2) {
+                $resultComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 합격 가능성이 낮습니다.";
             } else {
-                //그외, 과목평균이 60점이하 or 예측기준 미달인 경우 (과락없는 불합격)
-                $resultComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 합격예측이 불가합니다.";
+                if ($isFailForOrgPoint == 2) {
+                    $resultComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 합격예측이 불가합니다.";
+                } else {
+                    $resultComment = '과락 과목이 포함되어 합격예측이 불가합니다.';
+                }
             }
         }
 

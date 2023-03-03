@@ -2,7 +2,8 @@
 .gosi .topBanner {
     display: block;
     width: 100%;
-    text-align: center
+    text-align: center;
+    background-color: #ececec;
 }
 
 .gosi .topBanner p {

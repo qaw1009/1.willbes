@@ -294,11 +294,16 @@
                     colorset: ['#8faadc', '#f4b183', "#a9d18e", "#ffd966", "#cc99ff"],
                     fields: fields
                 },
-                'donut_width' : 85,
+                /*'donut_width' : 85,
                 'core_circle_radius':0,
                 'chartDiv': 'levelSubject' + cnt,
                 'chartType': 'pie',
-                'chartSize': {width:450, height:230}
+                'chartSize': {width:450, height:230}*/
+                'donut_width' : 70,
+                'core_circle_radius':0,
+                'chartDiv': 'levelSubject' + cnt,
+                'chartType': 'pie',
+                'chartSize': {width:225, height:180}
             };
             Nwagon.chart(options);
 

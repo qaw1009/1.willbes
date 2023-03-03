@@ -38,7 +38,8 @@
     var $data_form = $("#data_form");
     var $search_form = $("#search_form");
     $(document).ready(function() {
-        var time = 1000 * 60 * 60;  //1시간단위
+        var time = 1000 * 60 * {{$timer}};  //1시간단위
+        //var time = 5000;  //1시간단위
         console.log(time);
 
         startUpdate = function() {
@@ -68,7 +69,10 @@
                 $("#txt_depth_1").text("실행").trigger("change");
                 $("#depth_type_1").val("1");
             }
-        }, showValidateError, null, false, 'alert');
+        }, function(result, status) {
+            showValidateError(result, status);
+            stopUpdate();
+        }, null, false, 'alert');
     }
 
     //조정점수반영
@@ -79,7 +83,10 @@
                 $("#txt_depth_2").text("실행");
                 $("#depth_type_2").val("1");
             }
-        }, showValidateError, null, false, 'alert');
+        }, function(result, status) {
+            showValidateError(result, status);
+            stopUpdate();
+        }, null, false, 'alert');
     }
 
     //시험통계처리
@@ -97,7 +104,10 @@
                 $("#txt_result").text("성공");
                 $("#txt_cnt").text(d_write + ' ' + $("#cnt").val());
             }
-        }, showValidateError, null, false, 'alert');
+        }, function(result, status) {
+            showValidateError(result, status);
+            stopUpdate();
+        }, null, false, 'alert');
     }
 </script>
 @stop

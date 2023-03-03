@@ -22,6 +22,7 @@
 </table>
 <div class="stage">
     <span class="bold">{{$regi_data['MemName']}}님의 성적 분석</span>
+    <span class="bold tx-red">(헌법 데이터 미반영)</span>
 </div>
 <table cellspacing="0" cellpadding="0" class="table_type">
     <col width="88" span="7" />
@@ -376,7 +377,7 @@
             'dataset':{
                 title: title,
                 values: values,
-                colorset: ['#f47aa2', '#4d9ef0', "#9f4ef1"],
+                colorset: ['#65D4C5', '#F17274', "#9f4ef1"],
                 fields: fields
             },
             'donut_width' : 100,

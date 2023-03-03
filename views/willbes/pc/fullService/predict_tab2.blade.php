@@ -171,18 +171,22 @@
         </table>
     </form>
     <div class="markSbtn1">
-        <a href="javascript:void(0);" onclick="surveyAnswerSubmit(); return false;">설 문 완 료</a>
+        <a href="javascript:void(0);" onclick="surveyAnswerSubmit(); return false;">선 택 완 료</a>
     </div>
 @endif
 
 @if ($arr_member_step['survey_type'] == 'on' && empty($ss_idx2) === false)
     <div class="stage">
-        <span class="phase">2단계</span> <span class="bold">헙법 합격여부</span>
+        <span class="phase">2단계</span> <span class="bold">헌법 합격여부</span>
+    </div>
+    <div class="careful">
+        ※ 정답 공개 이후에 수정(1회) 가능합니다.<br>
+        ※ 정확한 합격예측 집계를 위해 헌법 PASS/FAIL여부는 반드시 기입 바랍니다.
     </div>
     <form id="survey_answer_form2" name="survey_answer_form2" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         <input type="hidden" name="ss_idx" value="{{ $survey_data2['survey']['SsIdx'] or '' }}">
-        <input type="hidden" name="member_check_count" value="1">
+        <input type="hidden" name="member_check_count" value="3">
 
         <table cellspacing="0" cellpadding="0" class="table_type">
             <col width="30%" />
@@ -213,13 +217,17 @@
         </table>
     </form>
     <div class="markSbtn1">
-        <a href="javascript:void(0);" onclick="surveyAnswerSubmit2(); return false;">설 문 완 료</a>
+        <a href="javascript:void(0);" onclick="surveyAnswerSubmit2(); return false;">선 택 완 료</a>
     </div>
 @endif
 
 @if ($arr_member_step[2] == 'on')
     <div class="stage">
         <span class="phase">3단계</span> <span class="bold">답안 입력</span>
+    </div>
+    <div class="careful">
+        ※ [Research Ⅱ] 기간에 한해 수정 1회 가능합니다.<br>
+        ※ 수정(재채점) 시 모든 답안이 초기화되오니 신중하게 기입 바랍니다.
     </div>
     <form id="answer_form" name="answer_form" method="POST" onsubmit="return false;" novalidate>
         <div class="grading_result">
@@ -569,7 +577,7 @@
         });
         if(vali_msg){ alert(vali_msg); return; }
 
-        if (confirm('정답을 제출하시겠습니까?')) {
+        if (confirm('작성하신 답안으로 제출하시겠습니까?')) {
             var _url = '{{ front_url('/fullService/storeAnswerPaper') }}';
             ajaxSubmit($answer_form, _url, function (ret) {
                 if (ret.ret_cd) {

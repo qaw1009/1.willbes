@@ -1089,7 +1089,7 @@ class FullServiceFModel extends WB_Model
     public function fullServiceForResult($predict_idx = '', $pr_idx = '')
     {
         $column = "
-            t.PredictIdx, t.PrIdx, t.TotalMyOrgPoint, t.TotalTop10AvgOrgPoint, t.TakeMockPart, t.TakeArea
+            t.PredictIdx, t.PrIdx, t.TotalMyOrgPoint, t.TotalTop10AvgOrgPoint, t.TotalTop20AvgOrgPoint, t.TakeMockPart, t.TakeArea
             ,gl.StabilityAvrPoint, gl.StrongAvrPoint2, gl.StrongAvrPoint1, gl.ExpectAvrPoint2, gl.ExpectAvrPoint1, gl.PassLineAgo
             ,IF (gl.StrongAvrPoint2 <= t.TotalMyOrgPoint && gl.StabilityAvrPoint >= t.TotalMyOrgPoint, 'Y', 'N') AS IsPass
         ";
@@ -1098,6 +1098,7 @@ class FullServiceFModel extends WB_Model
                 SELECT tAvg.PredictIdx, tAvg.PrIdx
                 ,ROUND(AVG(tAvg.MyOrgPoint),2) AS TotalMyOrgPoint
                 ,ROUND(AVG(tAvg.Top10AvgOrgPoint),2) AS TotalTop10AvgOrgPoint
+                ,ROUND(AVG(tAvg.Top20AvgOrgPoint),2) AS TotalTop20AvgOrgPoint
                 ,tAvg.TakeMockPart, tAvg.TakeArea
                 FROM (
                     SELECT a.PredictIdx, a.PrIdx, a.MyOrgPoint, a.TakeMockPart, a.TakeArea
@@ -1121,7 +1122,28 @@ class FullServiceFModel extends WB_Model
                             GROUP BY A.GroupBy
                         ) AS T 
                         WHERE a.PredictIdx = T.PredictIdx AND a.GroupBy = T.GroupBy
-                    ) AS Top10AvgOrgPoint   
+                    ) AS Top10AvgOrgPoint
+                    ,(
+                        SELECT T.Top20AvgOrgPoint
+                        FROM (
+                            SELECT A.PredictIdx, A.GroupBy, ROUND(AVG(A.OrgPoint),2) AS Top20AvgOrgPoint
+                            FROM (
+                                SELECT a.PredictIdx, a.PpIdx, a.GroupBy, a.OrgPoint
+                                    ,PERCENT_RANK() OVER (PARTITION BY a.GroupBy ORDER BY a.OrgPoint DESC) PaperPercRank
+                                FROM (
+                                    SELECT a.PredictIdx, a.PpIdx, c.GroupBy, IF(a.OrgPoint >= {$this->_cut_line}, a.OrgPoint + pr.AddPoint, a.OrgPoint) AS OrgPoint
+                                    FROM {$this->_table['predict_grades_origin']} AS a
+                                    INNER JOIN {$this->_table['predict_register']} AS pr ON a.PredictIdx = pr.PredictIdx AND a.PrIdx = pr.PrIdx
+                                    INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+                                    INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode AND c.IsStatus = 'Y' AND c.IsUse = 'Y'
+                                    WHERE a.PredictIdx = {$predict_idx}
+                                ) AS a
+                            ) AS A
+                            WHERE A.PaperPercRank BETWEEN 0 AND (20 / 100)
+                            GROUP BY A.GroupBy
+                        ) AS T 
+                        WHERE a.PredictIdx = T.PredictIdx AND a.GroupBy = T.GroupBy
+                    ) AS Top20AvgOrgPoint
                     FROM (
                         SELECT a.PredictIdx, a.PrIdx, a.PpIdx, c.GroupBy, IF(a.OrgPoint >= {$this->_cut_line}, a.OrgPoint + r.AddPoint, a.OrgPoint) AS MyOrgPoint
                         ,r.TakeMockPart, r.TakeArea

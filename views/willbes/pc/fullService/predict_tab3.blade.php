@@ -209,7 +209,7 @@
 <div class="graph_area">
     <div class="markSbtn3 bold">
         <a href="javascript:void(0)">PSAT 체감 난이도는?</a><br>
-        <div class="markSbtn3_combine">
+        <div class="markSbtn3_combine" style="text-align: left;">
             @foreach($arr_surveyChartData['graph1'] as $subject_name => $row)
                 <div id="levelSubject{{$loop->index}}" class="subject"><span class="subject_detail">{{$subject_name}}</span></div>
             @endforeach

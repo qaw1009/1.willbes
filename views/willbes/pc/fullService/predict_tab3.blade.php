@@ -209,7 +209,7 @@
 <div class="graph_area">
     <div class="markSbtn3 bold">
         <a href="javascript:void(0)">PSAT 체감 난이도는?</a><br>
-        <div class="markSbtn3_combine">
+        <div class="markSbtn3_combine" style="text-align: left;">
             @foreach($arr_surveyChartData['graph1'] as $subject_name => $row)
                 <div id="levelSubject{{$loop->index}}" class="subject"><span class="subject_detail">{{$subject_name}}</span></div>
             @endforeach
@@ -294,11 +294,16 @@
                     colorset: ['#8faadc', '#f4b183', "#a9d18e", "#ffd966", "#cc99ff"],
                     fields: fields
                 },
-                'donut_width' : 85,
+                /*'donut_width' : 85,
                 'core_circle_radius':0,
                 'chartDiv': 'levelSubject' + cnt,
                 'chartType': 'pie',
-                'chartSize': {width:450, height:230}
+                'chartSize': {width:450, height:230}*/
+                'donut_width' : 70,
+                'core_circle_radius':0,
+                'chartDiv': 'levelSubject' + cnt,
+                'chartType': 'pie',
+                'chartSize': {width:225, height:180}
             };
             Nwagon.chart(options);
 

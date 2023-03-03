@@ -95,7 +95,7 @@
                                                     </a>
                                                 </dt>
                                                 <dt>
-                                                    <a href="http://pf.kakao.com/_xijRxij/chat" target="_blank">
+                                                    <a href="https://ssam.willbes.net/promotion/index/cate/3140/code/2911">
                                                         <img src="{{ img_url('gnb/icon_kakao.png') }}" title="카카오톡">
                                                     </a>
                                                 </dt>

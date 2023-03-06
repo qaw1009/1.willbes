@@ -310,6 +310,7 @@ class BasePromotion extends \app\controllers\FrontController
         $get_page_params .= '&pattern=' . element('pattern', $arr_input);
         $get_page_params .= '&bottom_cafe_type=' . element('bottom_cafe_type', $arr_input, 'Y');
         $get_page_params .= '&promotion_code=' . element('promotion_code', $arr_input);
+        $get_page_params .= '&is_public=' . element('is_public', $arr_input);
 
         $onoff_type = element('pattern', $arr_input);
         $event_idx = element('event_idx', $arr_input);

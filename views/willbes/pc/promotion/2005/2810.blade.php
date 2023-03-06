@@ -185,6 +185,26 @@
     .data_info .guide{font-size:25px;display:inline-block;padding-bottom:10px;}
     .fail_info {background:#f3f3f3;width:720px;font-size:22px;margin:0 auto;padding:35px;border-radius:10px;}
     .fail_info .fail {color:#5918CC;font-weight:bold;}
+
+    /*타이머*/
+    .time {background:#f4f4f4; width:100%; padding:15px 0 40px; text-align:center; padding:20px 0}
+    .time table {width:950px; margin:0 auto}
+    .time table td {line-height:1.2; color:#000;}        
+    .time table td img {width:65%}
+    .time .time_txt {font-size:30px; letter-spacing: -1px; text-align:right}
+    .time span {color:#ffda39; font-size:30px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+    .time table td:last-child,
+    .time table td:last-child span {font-size:30px;}
+    @@keyframes upDown{
+        from{color:#170048}
+        50%{color:#e93797}
+        to{color:#170048}
+    }
+    @@-webkit-keyframes upDown{
+        from{color:#170048}
+        50%{color:#e93797}
+        to{color:#170048}
+    }
     </style>
 
     <!-- Container -->
@@ -193,6 +213,29 @@
         <input type="hidden" id="_tab3" name="_tab3" value="N">
         <input type="hidden" id="_tab4" name="_tab4" value="N">
         <input type="hidden" id="_pr_id" name="_pr_id">
+
+        <div class="evtCtnsBox time NSK-Black" id="newTopDday" data-aos="fade-up">
+            <div>
+                <table>
+                    <tr>                    
+                        <td class="time_txt">이벤트 마감일<br><span> 3/12(일)</span>까지</td>
+                        <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">일 </td>
+                        <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">:</td>
+                        <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td class="time_txt">:</td>
+                        <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
+                        <td>남았습니다.</td>
+                    </tr>
+                </table>                
+            </div>
+        </div>
+
         <div class="evtCtnsBox evt_top">
             <span class="img01" data-aos="fade-right"><img src="https://static.willbes.net/public/images/promotion/2022/11/2810_top_img1.png" alt="psat 합격을 예측하다"></span>
             <span class="img02" data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2022/11/2810_top_img2.png" alt=""></span>
@@ -445,6 +488,11 @@
                 object.value = '';
             }
         }
+
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
+        });
     </script>
 
     <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">

@@ -127,65 +127,7 @@
                     <div class="item itemCS"></div>
                     <div class="item itemCS"></div>
                 </div>
-                <!--
-                <div class="passBox">
-                    <div class="item">
-                        <p>경장/경사/경위</p>
-                        2024<br>
-                        문형석 형법 <strong>&</strong><br>
-                        오현웅 실무종합<br>
-                        <div><span>2과목</span><strong>70</strong>만원</div>
-                        <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/204314" target="_blank">PASS 수강신청</a>
-                    </div>
-                    <div class="item">
-                        <p>경장/경사/경위</p>
-                        2024<br>
-                        김원욱 형법<strong>&</strong><br>
-                        오현웅 실무종합<br>
-                        <div><span>2과목</span><strong>70</strong>만원</div>
-                        <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/204317" target="_blank">PASS 수강신청</a>
-                    </div>
-                    <div class="item">
-                        <p>경장/경사/경위</p>
-                        2024<br>
-                        임종희 형법 <strong>&</strong><br>
-                        오현웅 실무종합<br>
-                        <div><span>2과목</span><strong>70</strong>만원</div>
-                        <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/204294" target="_blank">PASS 수강신청</a>
-                    </div>
-                    <div class="item itemCS"></div>
-                </div>
-                <div class="passBox">
-                    <div class="item">
-                        <p>경장/경사/경위</p>
-                        2024<br>
-                        임종희 형소법 <strong>&</strong><br>
-                        임종희 형법 <strong>&</strong><br>
-                        오현웅 실무종합
-                        <div><span>3과목</span><strong>89</strong>만원</div> 
-                        <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/204318" target="_blank">PASS 수강신청</a>
-                    </div>
-                    <div class="item">
-                        <p>경장/경사/경위</p>
-                        2024<br>
-                        임종희 형소법 <strong>&</strong><br>
-                        문형석 형법 <strong>&</strong><br>
-                        오현웅 실무종합
-                        <div><span>3과목</span><strong>89</strong>만원</div> 
-                        <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/204295" target="_blank">PASS 수강신청</a>
-                    </div>
-                    <div class="item">
-                        <p>경장/경사/경위</p>
-                        2024<br>
-                        임종희 형소법 <strong>&</strong><br>
-                        김원욱 형법 <strong>&</strong><br>
-                        오현웅 실무종합
-                        <div><span>3과목</span><strong>89</strong>만원</div> 
-                        <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/204300" target="_blank">PASS 수강신청</a>
-                    </div>
-                    <div class="item itemCS"></div>
-                </div>
-        -->
+
                 <div class="passBox">
                     <div class="item">
                         <p>경감</p>
@@ -244,20 +186,12 @@
                         <img src="https://static.willbes.net/public/images/promotion/2022/12/2861_03_t03.png" alt="형법 문형석"/>
                         <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/204328" target="_blank">PASS 수강신청</a>
                     </div>
-                    {{--
-                    <div class="item">
-                        <img src="https://static.willbes.net/public/images/promotion/2022/12/2861_03_t04.png" alt="형법 김원욱"/>
-                        <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/204329" target="_blank">PASS 수강신청</a>
-                    </div>                   
-                    <div class="item">
-                        <img src="https://static.willbes.net/public/images/promotion/2022/12/2861_03_t05.png" alt="실무종합 오현웅"/>
-                        <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/204330" target="_blank">PASS 수강신청</a>
-                    </div>
-                    --}}                   
+               
                     <div class="item">
                         <img src="https://static.willbes.net/public/images/promotion/2022/12/2861_03_t06.png" alt="헌법 황남기"/>
                         <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/204338" target="_blank">PASS 수강신청</a>
                     </div>
+                    {{--
                     <div class="item">
                         <img src="https://static.willbes.net/public/images/promotion/2022/12/2861_03_t07.png" alt="행정학 김철"/>
                         <a href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/204348" target="_blank">PASS 수강신청</a>
@@ -265,6 +199,7 @@
                     <div class="item itemCS"></div>
                     <div class="item itemCS"></div>
                     <div class="item itemCS"></div>
+                    --}}
                 </div>
             </div>
         </div>

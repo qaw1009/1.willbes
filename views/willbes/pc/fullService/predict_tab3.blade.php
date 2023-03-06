@@ -215,19 +215,19 @@
                 <div id="levelSubject{{$loop->index}}" class="subject"><span class="subject_detail">{{$subject_name}}</span></div>
             @endforeach
         </div>
-        <div class="level">
+        {{--<div class="level">
             @foreach(array_value_first(array_value_first($arr_surveyChartData['graph1'])) as $level_title => $v)
-            {{--@foreach(array_value_first($arr_surveyChartData['graph1'][array_key_first($arr_surveyChartData['graph1'])]) as $level_title => $v)--}}
+            --}}{{--@foreach(array_value_first($arr_surveyChartData['graph1'][array_key_first($arr_surveyChartData['graph1'])]) as $level_title => $v)--}}{{--
                 <div><span class="level{{($loop->count - $loop->index) + 1}}"></span>{{$level_title}}</div>
             @endforeach
-        </div>
-        {{--<div class="level">
+        </div>--}}
+        <div class="level">
             <div><span class="level5"></span>매우 어려움</div>
             <div><span class="level4"></span>어려움</div>
             <div><span class="level3"></span>보통</div>
             <div><span class="level2"></span>쉬움</div>
             <div><span class="level1"></span>매우 쉬움</div>
-        </div>--}}
+        </div>
     </div>
 </div>
 <div class="graph_area">

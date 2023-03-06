@@ -25,7 +25,7 @@
         .sky {position:fixed;top:200px;right:10px;z-index:100;}
         .sky a {display:block; margin-bottom:10px}
 
-        .evt_top {background:#465888}
+        .evt_top {background:#4b32b4;}
 
         .evt_self {background:#F5F5F7;}
 
@@ -205,7 +205,7 @@
 
 
         <div class="evtCtnsBox evt_top" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2023/02/2839_top.jpg" alt="맞춤형 공부"/>       
+            <img src="https://static.willbes.net/public/images/promotion/2023/03/2839_top.jpg" alt="맞춤형 공부"/>       
 		</div>
 
         <div class="evtCtnsBox evt_self" data-aos="fade-up">    

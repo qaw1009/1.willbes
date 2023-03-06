@@ -24,15 +24,16 @@ class MemberPointExpireTask extends \crontask\tasks\Task
 
         try {
             $query = $_db->query('call sp_member_point_expire');
+            if ($query === false) {
+                throw new \Exception('회원포인트소멸 작업 중 오류가 발생했습니다.');
+            }
             $result = $query->row(0);
 
             $this->setOutput('MemberPointExpireTask complete.');
-
-            return $result->ReturnMsg . ' (' . $result->ReturnCnt . ')';
+            return $result->ReturnMsg . '(' . $result->ReturnCnt . ')';
         } catch (\Exception $e) {
             $this->setOutput('MemberPointExpireTask error occured. [' . $e->getMessage() . ']');
-
-            return 'Error (0)';
+            return 'Error(0)';
         } finally {
             $_db->close();
         }

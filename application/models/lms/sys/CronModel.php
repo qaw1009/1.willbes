@@ -7,12 +7,15 @@ class CronModel extends WB_Model
         'cron_exec_log' => 'lms_cron_exec_log',
         'admin' => 'wbs_sys_admin'
     ];
+    // 작업 목록
     public $_task_type = [
         'MPE' => '회원포인트소멸',
         'VSR' => '방문자통계집계',
         'ESM' => '매출통합데이터이관',
         'SAM' => '샘플작업'
     ];
+    // 수동실행 작업 목록
+    private $_exec_tasks = ['MPE', 'VSR'];
 
     public function __construct()
     {
@@ -74,17 +77,16 @@ class CronModel extends WB_Model
     {
         try {
             $today = date('Ymd');
-            $task_types = array_keys($this->_task_type);
 
             // 이미 실행된 작업 조회
             $arr_condition = [
                 'EQ' => ['ExecDate' => $today],
-                'IN' => ['TaskType' => $task_types]
+                'IN' => ['TaskType' => $this->_exec_tasks]
             ];
             $chk_tasks = array_pluck($this->_conn->getListResult($this->_table['cron_exec_log'], 'TaskType', $arr_condition), 'TaskType');
 
             // 실행할 작업
-            $exec_tasks = array_diff($task_types, $chk_tasks);
+            $exec_tasks = array_diff($this->_exec_tasks, $chk_tasks);
             if (empty($exec_tasks) === true) {
                 return null;    // 실행할 작업없음
             }

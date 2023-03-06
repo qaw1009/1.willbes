@@ -24,15 +24,16 @@ class VisitorStatsRegistTask extends \crontask\tasks\Task
 
         try {
             $query = $_db->query('call sp_visitor_stats_insert("", "")');
+            if ($query === false) {
+                throw new \Exception('방문자통계집계 작업 중 오류가 발생했습니다.');
+            }
             $result = $query->row(0);
 
             $this->setOutput('VisitorStatsRegistTask complete.');
-
-            return $result->ReturnMsg . ' (' . $result->StartDate . ' ~ ' . $result->EndDate . ' : ' . $result->ReturnCnt . ')';
+            return $result->ReturnMsg . '(' . $result->StartDate . ' ~ ' . $result->EndDate . ' : ' . $result->ReturnCnt . ')';
         } catch (\Exception $e) {
             $this->setOutput('VisitorStatsRegistTask error occured. [' . $e->getMessage() . ']');
-
-            return 'Error (0)';
+            return 'Error(0)';
         } finally {
             $_db->close();
         }

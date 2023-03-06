@@ -98,26 +98,59 @@ class Home extends \app\controllers\BaseController
     {
         $today_his = date('His');
         $result = true;
+        $succ_msg = '';
 
         // 작업스케줄러 실행 (시스템관리자 and 8 ~ 10시 30분 사이)
         if (is_sys_admin() === true) {
-            if ($today_his > '080000' && $today_his < '103000') {
-                $run_result = $this->cronModel->runScheduler();
-                if ($run_result === null) {
-                    $succ_msg = '모든 작업이 이미 실행되었습니다.';
+            // 로컬, 개발환경에서만 실행 (스테이지 환경에서 크론실행으로 대체)
+            if (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') {
+                if ($today_his > '080000' && $today_his < '103000') {
+                    $run_result = $this->cronModel->runScheduler();
+                    if ($run_result === null) {
+                        $succ_msg = '모든 작업이 이미 실행되었습니다.';
+                    } else {
+                        $result = $run_result;
+                        $succ_msg = '정상적으로 작업이 실행되었습니다.';
+                    }
                 } else {
-                    $result = $run_result;
-                    $succ_msg = '정상적으로 작업이 실행되었습니다.';
+                    $succ_msg = '작업 실행시간이 아닙니다.';
                 }
-            } else {
-                $succ_msg = '작업 실행시간이 아닙니다.';
             }
 
+            // 금일 작업스케줄러 실행로그 조회
             $log_data = $this->cronModel->getListRunSchedulerLog($this->cronModel->listTodayRunSchedulerLog());
+
+            // 크론실행일 경우 메시지 셋팅
+            if (empty($succ_msg) === true) {
+                if (empty($log_data) === false) {
+                    $succ_msg = '정상적으로 작업이 실행되었습니다.';
+                } else {
+                    $succ_msg = '작업 실행시간이 아닙니다.';
+                }
+            }
 
             return $this->json_result($result, $succ_msg, $result, $log_data);
         }
 
         return $this->json_result(true, '권한이 없습니다.');
+    }
+
+    /**
+     * 수동 작업스케줄러 실행
+     */
+    public function manualRunScheduler()
+    {
+        if (is_sys_admin() === true) {
+            $run_result = $this->cronModel->runScheduler();
+            if ($run_result === null) {
+                $result_msg = '모든 작업이 이미 실행되었습니다.';
+            } else {
+                $result_msg = '정상적으로 작업이 실행되었습니다.';
+            }
+        } else {
+            $result_msg = '권한이 없습니다.';
+        }
+
+        var_dump($result_msg);
     }
 }

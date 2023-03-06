@@ -216,11 +216,12 @@
                         </ul>
                         --}}
                         @if(time() < strtotime('202303041900'))
-                        <img src="https://static.willbes.net/public/images/promotion/2023/02/2810_00_01.gif" alt="event1"><br>
-                        <img src="https://static.willbes.net/public/images/promotion/2023/02/2810_00_02.png" alt="">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/02/2810_00_01.gif" alt="event1">
                         @else 
-                        <img src="https://static.willbes.net/public/images/promotion/2023/02/2810_00_end.jpg" alt="event1">       
+                        <img src="https://static.willbes.net/public/images/promotion/2023/02/2810_00_end.jpg" alt="event1">
                         @endif
+                        <br>
+                        <img src="https://static.willbes.net/public/images/promotion/2023/02/2810_00_02.png" alt="">
                         <div class="notice">
                             <p>유의사항</p>
                             <ol>

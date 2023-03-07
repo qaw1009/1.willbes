@@ -137,15 +137,16 @@
                             <tbody>
                             <tr>
                                 <td class="tx14"> 
-                                    <h4 class="NG mb10 tx16 tx-dark-blue"><span class="tx-shadow">[ GS1순환 단과선등록 안내사항 ]</span></h4>
+                                    <h4 class="NG mb10 tx16 tx-dark-blue"><span class="tx-shadow">[ GS2순환 단과선등록 안내사항 ]</span></h4>
                                     <strong>1. 신청 대상자</strong><br>
-                                    1) 23년대비 GS0순환 이수진 노동법 [실강/실영상] 수강생<br>
-                                    2) 23년대비 GS0순환 문일 행정쟁송법 [실강/실영상] 수강생<br>
+                                    1) 3년대비 GS1순환 이수진 노동법 [실강/실영상] 수강생
+                                    2) 23년대비 GS1순환 문일 행정쟁송법 [실강/실영상] 수강생
+                                    3) 23년대비 GS1순환 오은지 인사노무관리/행정쟁송법 [실강/실영상] 수강생<br>
                                     <span class="tx-red">※ [온라인첨삭반 / 동영상] 강의 수강자는 선접수 대상자가 아닙니다.</span><br>
                                     <br>
-                                    <strong>2. 신청 기간 : <span class="tx-shadow">12/15(금) 11시 ~ 12/16(금) 24시</span></strong><br>                                 
+                                    <strong>2. 신청 기간 : <span class="tx-shadow">3/10(금) 11시 ~ 3/13(월) 24시</span></strong><br>                                 
                                     <br>
-                                    <strong>3. 신청 강의 : GS1순환 강의</strong><br>
+                                    <strong>3. 신청 강의 : GS2순환 강의</strong><br>
                                     <br>
                                     <strong>4. 신청 방법 : 홈페이지(모바일: PC버전 가능) / 방문 신청</strong><br>
                                     ① 온라인신청: 로그인 → 학원수강신청 → 단과선접수 클릭<br>
@@ -157,12 +158,12 @@
                                     <strong>6. 수강증: 강의실 입장 전까지 데스크에서 발급</strong><br>
                                     <span class="tx-shadow">※ 신분증 지참 필수</span><br>
                                     <br>
-                                    <strong>7. GS1순환 <a href="https://job.willbes.net/support/gosiNotice/show/cate/309002?board_idx=442776&s_cate_code=309002&s_cate_code_disabled=Y" target="_blank" class="tx-red">시간표 보기 ></a></strong><br>
+                                    <strong>7. GS2순환 시간표 추후 홈페이지 공지사항 참고<br>
                                     <br>
                                     <strong>8. 유의사항</strong><br>
                                     1) 결제순으로 수강신청이 확정됩니다.<br>
                                     <span class="tx-red">2) 단과 선접수 시 실강 잔여좌석이 없을 수 있습니다. (종합반 수강신청 여부에 따라 잔여좌석이 상이합니다.)<br>
-                                    3) 기간 내 수강신청을 하더라도 실강은 선착순으로 마감되며, 실영상반/온라인첨삭반은 수강신청 가능합니다.</span>
+                                    3) 기간 내 수강신청을 하더라도 실강은 선착순으로 마감됩니다.</span>
                                 </td>
                             </tr>
                             </tbody>

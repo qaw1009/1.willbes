@@ -55,7 +55,7 @@
     </style> 
 	<div class="evtContent NSK">
         <div class="evtCtnsBox timeBox">
-            <div class="time NGEB" id="newTopDday">
+            <div class="time NSK-Black" id="newTopDday">
                 <ul>
                     <li class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }}</span> 마감!</li>
                     <li class="time_txt"><span>남은 시간은</span></li>
@@ -125,8 +125,7 @@
                     - 2개 과목 신청 : 10%할인<br>
                     - 3개 과목 신청 : 15%할인<br>
                     - 4개 과목 신청 : 25%할인</li>
-                    {{--<li>GS2순환 이벤트 기간 등록된 단과강의 40%할인</li>--}}
-                    <li>이벤트 기간 : 3월 17일(목) 24:00까지</li>
+                    <li>이벤트 기간 : 3월 22일(수) 24:00까지</li>
                     <li>수강시작일은 30일 범위내에서 설정하실 수 있으며 2과목 이상 신청하시고 수강시작일 변경을 원하실 경우 동영상게시판에 글을 남겨주시면 수정하여 드리겠습니다.(신청일로부터 90일 범위내)</li>
                 </ul>
                 <div class="infoTit"><strong>교재</strong></div>

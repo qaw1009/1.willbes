@@ -66,7 +66,7 @@
                         @endif
                         {{--<a href="javascript:;" onclick="javascript:alert('{{$service_start_mon}}월{{$service_start_day}}일({{$service_yoil}}) 오픈예정입니다.');" class="btn2">채점 및 성적확인</a>--}}
                     @endif
-                    {{--27일부터 보이는 버튼--}}
+                    {{--시험당일 12시 30분부터 보이는 버튼--}}
                     {{--<a href="javascript:alert('기본정보를 저장하고 채점해주세요.');" class="btn2">채점 및 성적확인</a>--}}
                 </div>
 

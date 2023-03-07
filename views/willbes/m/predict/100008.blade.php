@@ -148,7 +148,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>신광은팀<br />수강 </th>
+                            <th>신광은팀<br />수강</th>
                             <td>
                                 <ul class="sel_info">
                                     <li><input type="radio" name="LectureType" id="LectureType1" value="1" @if($mode == 'MOD' && $data['LectureType'] == '1') checked @endif /> <label for="LectureType1">온라인강의</label></li>
@@ -159,7 +159,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>시험<br />준비 기간 </th>
+                            <th>시험<br />준비 기간</th>
                             <td>
                                 <ul class="sel_info">
                                     <li><input type="radio" name="Period" id="Period1" value="1" @if($mode == 'MOD' && $data['Period'] == '1') checked @endif /> <label for="Period1">6개월 이하</label></li>

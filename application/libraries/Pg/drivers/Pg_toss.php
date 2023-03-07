@@ -707,6 +707,62 @@ class Pg_toss extends CI_Driver
     }
 
     /**
+     * 결제정보 API 조회
+     * @param string $mid [상점아이디]
+     * @param array $params [파라미터 (tid => paymentKey or order_no => 주문번호)]
+     * @return array
+     */
+    public function getPayInfo($mid, $params = [])
+    {
+        try {
+            // 시크릿 키 (테스트 모드일 경우 테스트 시크릿 키 셋팅)
+            $secret_key = $this->_getAPIKey($mid, 'secret_key');
+            if (empty($secret_key) === true) {
+                throw new Exception('시크릿 키가 없습니다. (' . $mid . ')');
+            }
+
+            $credential = base64_encode($secret_key . ':');
+
+            if (empty($params['order_no']) === false) {
+                $url = 'https://api.tosspayments.com/v1/payments/orders/' . $params['order_no'];
+            } elseif (empty($params['tid']) === false) {
+                $url = 'https://api.tosspayments.com/v1/payments/' . $params['tid'];
+            } else {
+                throw new Exception('필수 파라미터 오류입니다.');
+            }
+
+            $this->_CI->curl->setHeader('Authorization', 'Basic ' . $credential);
+            $this->_CI->curl->setOpt(CURLOPT_RETURNTRANSFER, true);
+            $this->_CI->curl->setOpt(CURLOPT_ENCODING, '');
+            $this->_CI->curl->setOpt(CURLOPT_TIMEOUT, 30);
+            $this->_CI->curl->setOpt(CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+            $this->_CI->curl->get($url);
+            $response = json_decode($this->_CI->curl->rawResponse, true);
+
+            // 연동결과 실패
+            $is_success = $this->_CI->curl->getInfo(CURLINFO_HTTP_CODE) == 200;
+            if ($is_success === false) {
+                throw new Exception($response['message']);
+            }
+
+            // 연동결과 오류
+            if ($this->_CI->curl->error === true) {
+                throw new Exception($this->_CI->curl->errorMessage);
+            }
+
+            return [
+                'ret_cd' => true,
+                'ret_data' => $response
+            ];
+        } catch (Exception $e) {
+            return [
+                'ret_cd' => false,
+                'ret_msg' => $e->getMessage()
+            ];
+        }
+    }
+
+    /**
      * 토스 API 실행
      * @param string $api_type [API 구분 (confirm, cancel)]
      * @param array $api_params [API 파라미터]

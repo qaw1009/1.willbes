@@ -139,6 +139,17 @@ class Pg extends CI_Driver_Library
     }
 
     /**
+     * 결제정보 API 조회
+     * @param string $mid
+     * @param array $params
+     * @return mixed
+     */
+    public function getPayInfo($mid, $params = [])
+    {
+        return $this->{$this->_driver}->getPayInfo($mid, $params);
+    }
+
+    /**
      * save file log
      * @param $msg
      * @param null $vars

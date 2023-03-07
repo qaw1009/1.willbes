@@ -140,6 +140,51 @@ class Order extends \app\controllers\FrontController
     }
 
     /**
+     * 영수증 조회
+     * @param array $params [주문번호 | 주문번호/type/영수증구분]
+     */
+    public function receipt($params = [])
+    {
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+        $order_no = element('0', $params);
+        $receipt_type = element('2', $params);  // 영수증구분 (receipt, cash-receipt)
+        $ori_receipt_url = base64_decode($this->_req('receipt_url'));   // 영수증 URL
+
+        if (empty($order_no) === true || empty($ori_receipt_url) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'close');
+        }
+
+        // 주문정보 조회
+        $order_data = $this->orderListFModel->findOrderByOrderNo($order_no, $sess_mem_idx);
+        if (empty($order_data) === true) {
+            show_alert('주문정보가 없습니다.', 'close');
+        }
+
+        // 디폴트 영수증 URL
+        $receipt_url = $ori_receipt_url;
+
+        if ($order_data['PgCcd'] == $this->orderListFModel->_pg_ccd['toss'] && $order_data['PayMethodCcd'] != $this->orderListFModel->_pay_method_ccd['card']) {
+            // 토스 계좌이체, 가상계좌 결제일 경우만 PG사 결제정보 API 연동
+            $this->load->driver('pg', ['driver' => 'toss']);
+            $data = $this->pg->getPayInfo($order_data['PgMid'], ['order_no' => $order_no]);
+
+            if ($data['ret_cd'] === true && empty($data['ret_data']) === false) {
+                // 매출전표, 현금영수증URL 추출
+                $sales_slip = array_get($data, 'ret_data.receipt.url'); // 매출전표
+                $cach_receipt = array_get($data, 'ret_data.cashReceipt.receiptUrl');    // 현금영수증
+
+                if ($receipt_type == 'cash-receipt' || empty($cach_receipt) === false) {
+                    $receipt_url = $cach_receipt;
+                } else {
+                    $receipt_url = $sales_slip;
+                }
+            }
+        }
+
+        redirect(get_var($receipt_url, $ori_receipt_url));
+    }
+
+    /**
      * 주문배송지 정보 수정
      */
     public function modifyAddr()

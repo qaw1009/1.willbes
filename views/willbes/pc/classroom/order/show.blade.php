@@ -313,10 +313,12 @@
     <script src="/public/js/post_util.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            // 영수증 출력하기 버튼 클릭
-            $('#btn_receipt_print').on('click', function() {
-                popupOpen('{!! $results['order']['ReceiptUrl'] or '' !!}', '_receipt_print', 1100, 700);
-            });
+            @if(isset($results['order']['ReceiptUrl']) === true)
+                // 영수증 출력하기 버튼 클릭
+                $('#btn_receipt_print').on('click', function() {
+                    popupOpen('{{ front_url('/classroom/order/receipt/' . $results['order']['OrderNo'] . '?receipt_url=' . base64_encode($results['order']['ReceiptUrl'])) }}', '_receipt_print', 1100, 700);
+                });
+            @endif
 
             // 가상계좌취소 버튼 클릭
             $('#btn_vbank_cancel').on('click', function() {

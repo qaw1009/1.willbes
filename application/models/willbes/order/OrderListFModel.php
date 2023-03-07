@@ -553,11 +553,9 @@ class OrderListFModel extends BaseOrderFModel
                 end
               ), "") as OriPgReceiptUrl
             , ifnull((
-                case PA.PgDriver
-                    when "inisis" then (select replace(CcdDesc, "{{$tid$}}", PA.PgTid) from ' . $this->_table['code'] . ' where Ccd = "' . $pg_ccd . '")
-                    when "toss" then concat("https://consumer.tosspayments.com/payment-history/", (
+                case when PA.PgDriver = "inisis" then (select replace(CcdDesc, "{{$tid$}}", PA.PgTid) from ' . $this->_table['code'] . ' where Ccd = "' . $pg_ccd . '")
+                    when PA.PgDriver = "toss" and PA.PayMethod in ("Bank", "VBank") then concat("https://consumer.tosspayments.com/payment-history/", (
                         case PA.PayMethod 
-                            when "Card" then "card"
                             when "Bank" then "account"
                             when "VBank" then "virtual-account"
                             else ""

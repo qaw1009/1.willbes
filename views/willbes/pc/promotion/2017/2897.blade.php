@@ -59,12 +59,15 @@
         .event02 .coupon {position: relative; background:url(https://static.willbes.net/public/images/promotion/2023/02/2897_02_coupon.jpg) no-repeat; height: 250px; width: 310px; margin-bottom:30px}
         .event02 .coupon p {padding:45px 0 0 43px; text-align:left; color:#464646; font-size:17px;}
         .event02 .coupon p strong {display:block; font-size:24px; color:#9d00d8; letter-spacing:-2px}
+        .event02 .couponNobg {background:none; position: relative;}
+        .event02 .couponNobg .textinfo {position:absolute; width:100%; height:100%; font-size:16px; text-align:left; display: flex;
+    justify-content: center; align-items: center;}
 
         .event02 .btns {position:absolute; bottom:0; left:0; display:flex; justify-content: space-between; width: 100%;}
         .event02 .btns a {display:block; text-align:center; padding:10px 0; font-size:16px; color:#fff; background:#363636; width:49%}
         .event02 .btns a:hover {background:#9d00d8;}
 
-        .event02 .textinfo {position: absolute; bottom:430px; right:180px; font-size:18px}
+        
 
         .event03 {background:url(https://static.willbes.net/public/images/promotion/2023/02/2897_03_bg.jpg) no-repeat center top;}
 
@@ -173,7 +176,7 @@
                                         <option value="[박태영] 3~11월 수학교육론 패키지 10% 할인 쿠폰">[박태영] 3~11월 수학교육론 패키지 10% 할인 쿠폰</option>
                                         <option value="[박혜향] 3~11월 수학교육론 패키지 10% 할인 쿠폰">[박혜향] 3~11월 수학교육론 패키지 10% 할인 쿠폰</option>
                                         <option value="[김종권] 3~11월 전공역사 패키지 10% 할인 쿠폰">[김종권] 3~11월 전공역사 패키지 10% 할인 쿠폰</option>
-                                        <option value="[다이애나] 전공음악 All Free Pass 패키지 15%할인 쿠폰">[다이애나] 전공음악 All Free Pass 패키지 15%할인 쿠폰</option>
+                                        <option value="[다이애나] 전공음악 All Free Pass 패키지 10%할인 쿠폰">[다이애나] 전공음악 All Free Pass 패키지 10%할인 쿠폰</option>
                                         <option value="[장영희] 3~11월 중국어 초수트랙 패키지 10% 할인 쿠폰">[장영희] 3~11월 중국어 초수트랙 패키지 10% 할인 쿠폰</option>
                                         <option value="[장영희] 3~11월 중국어 N+수트랙 패키지 10% 할인 쿠폰">[장영희] 3~11월 중국어 N+수트랙 패키지 10% 할인 쿠폰</option>
                                     </select>
@@ -275,6 +278,14 @@
                         </div>
                     </div>
                     <div class="coupon">
+                        <p><strong>다이애나 음악</strong>
+                        전공음악 All Free Pass 패키지</p>
+                        <div class="btns">
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2314' : '429' }}); return false;">학원강의 쿠폰</a>
+                            <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2313' : '426' }}); return false;">동영상강의 쿠폰</a>
+                        </div>
+                    </div>
+                    <div class="coupon">
                         <p><strong>장영희 중국어</strong>
                         3~11월 초수트랙 패키지</p>
                         <div class="btns">
@@ -290,11 +301,14 @@
                             <a href="javascript:void(0);" onclick="giveCheck({{ ENVIRONMENT == "production" ? '2270' : '426' }}); return false;">동영상강의 쿠폰</a>
                         </div>
                     </div>
+                    <div class="coupon couponNobg">
+                        <div class="textinfo">
+                            ※ 로그인 후, 해당 쿠폰을 클릭하면, 발급받을 수 있습니다. 
+                            대상자가 아닌 경우, 발급이 제한됩니다.
+                        </div>
+                    </div>
                 </div>
-                <div class="textinfo">
-                    ※ 로그인 후, 해당 쿠폰을 클릭하면, 발급받을 수 있습니다. <br>
-                    대상자가 아닌 경우, 발급이 제한됩니다.
-                </div>
+
                 <div>
                     <a href="https://ssam.willbes.net/support/notice/show?board_idx=450775&s_cate_code_disabled=Y" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/2023/02/2897_02_btn.png"/>
@@ -330,10 +344,6 @@
     <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
     <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
-        $(document).ready( function() {
-            AOS.init();
-        });
-
         var $regi_form = $('#regi_form');
         var $regi_form_register = $('#regi_form_register');
 
@@ -438,6 +448,10 @@
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
             return true;
         }
+
+        $(document).ready( function() {
+            AOS.init();
+        });
     </script>
 
 

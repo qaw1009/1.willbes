@@ -26,12 +26,12 @@
         .evt_top span.right {margin-left:430px}
 
         .evt02 {background:#f4f0e8}
-        .evt02 ul {display:flex;justify-content: space-between; width:760px; margin:0 auto}
+        .evt02 ul {display:flex;justify-content: space-between; width:580px; margin:0 auto}
         .evt02 li div {position: relative;}
         .evt02 li span {position: absolute; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,.7); z-index: 10; display:flex; justify-content: center; align-items: center;}
         .evt02 li a {display:block; background:#000; color:#fff; padding:10px; border-radius:30px; font-size:18px; margin-top:20px}
         .evt02 li a:hover {background:#e8201e;}
-        .evtinfo {width:760px; text-align:left; line-height:1.3; margin:50px auto 100px}
+        .evtinfo {width:760px; text-align:left; line-height:1.3; margin:0 auto 100px}
         .evtinfo p {font-size:16px; font-weight:bold; margin-bottom:10px}
 
         .evt03 {padding-bottom:150px}
@@ -43,7 +43,7 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox evt_top" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2023/02/2895_top.jpg" alt="세무직 모의고사 이벤트"/>
+            <img src="https://static.willbes.net/public/images/promotion/2023/03/2895_top.jpg" alt="세무직 모의고사 이벤트"/>
             <span class="left" data-aos="fade-right" data-aos-delay="200"><img src="https://static.willbes.net/public/images/promotion/2023/02/2895_top01.png" alt=""/></span>
             <span class="right" data-aos="fade-left" data-aos-delay="400"><img src="https://static.willbes.net/public/images/promotion/2023/02/2895_top02.png" alt=""/></span>
         </div>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2023/02/2895_02.jpg" alt=""/>
+            <img src="https://static.willbes.net/public/images/promotion/2023/03/2895_02.jpg" alt=""/>
             <ul>
                 @if(empty($arr_base['register_list']) === false)
                     @php $i=1; @endphp
@@ -81,14 +81,15 @@
                     @endforeach
                 @endif
             </ul>
+            <img src="https://static.willbes.net/public/images/promotion/2023/03/2895_02_1.jpg" alt=""/>
             <div class="evtinfo">
                 <p>※ 이용안내</p>
                 1. 대상 : 23년 4월 8일 국가직 시험을 준비하는 수험생. 모의고사 가격은 0원!<br>
                 2. 모의고사 자료 다운로드 기간은 회차별 상이합니다. <br>
-                -1회차 모의고사 다운로드 기간: 3월 2일~3월 8일<br>
-                -2회차 모의고사 다운로드 기간: 3월 9일~3월 15일<br>
-                -3회차 모의고사 다운로드 기간: 3월 16일~3월 22일<br>
-                -4회차 모의고사 다운로드 기간: 3월 23일~3월 29일<br>
+                -1회차 모의고사 다운로드 기간: 3월 13일~3월 19일<br>
+                -2회차 모의고사 다운로드 기간: 3월 20일~3월 26일<br>
+                -3회차 모의고사 다운로드 기간: 3월 27일~4월 02일<br>
+                3. 문제/해설자료 제공됩니다.<br>
                 3. 해설자료는 제공되지 않습니다.<br>
                 4. 동영상 강의는 유료 결제입니다.
             </div>

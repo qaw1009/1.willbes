@@ -23,6 +23,61 @@
             font-size: 12px;
         }
 
+        /*교수별이벤트 */
+        .ssam .profEvt {margin-top:5vh; padding-bottom:30px}
+        .ssam .profEvt .swiper-wrapper {/*display: flex;*/ height:auto;}
+        .ssam .profEvt .swiper-button-next,
+        .ssam .profEvt .swiper-button-prev {
+            position: static;
+            width: 26px;
+            height: 26px;
+            margin-top:0;
+            cursor: pointer;
+            border-radius:12px;
+            display:inline-block;
+            background-size:104% !important;
+        }
+
+        .ssam .profEvt .swiper-button-next,
+        .ssam .profEvt .swiper-container-rtl .swiper-button-prev {
+            background:#ccc url("https://static.willbes.net/public/images/promotion/m/icon_arrowL.png") no-repeat center center;
+        }
+
+        .ssam .profEvt .swiper-button-prev,
+        .ssam .profEvt .swiper-container-rtl .swiper-button-next {
+            background:#ccc url("https://static.willbes.net/public/images/promotion/m/icon_arrowR.png") no-repeat center center;
+        }
+
+        .ssam .profEvt .swiper-button-next.swiper-button-disabled,
+        .ssam .profEvt .swiper-button-prev.swiper-button-disabled {
+            pointer-events: auto;
+        }
+
+        .ssam .profEvt .swiper-wrapper .swiper-slide {
+            width:auto;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: space-between;
+            -ms-flex-pack: space-between;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            -webkit-box-align: flex-start;
+            -ms-flex-align: flex-start;
+            -webkit-align-items: flex-start;
+            align-items: flex-start;
+            margin:0 15px 1.5vh;
+            font-size:1.4vh;
+        }
+        .ssam .profEvt .swiper-wrapper .swiper-slide:last-child {margin-right:0}
+        .ssam .profEvt .swiper-wrapper .swiper-slide img {border-radius:20px;}
+
+        .ssam .profEvt a {display:block; margin:0 auto; text-align:left; max-width:300px}
+        .ssam .profEvt a p {font-size:1.8vh; color:#383838; margin:1vh 0; padding:0 1vh;}
+        .ssam .profEvt a span {color:#adadad; font-size:1.6vh; padding:0 10px }
+
+
         .ssam .lecup-Notice {position:absolute; top:15px; width:calc(100% - 110px);}
         .ssam .lecup-Notice a {display:block; height:36px; line-height:36px; font-size:13px;
             overflow: hidden; text-overflow: ellipsis; white-space: nowrap;z-index:2;
@@ -138,6 +193,10 @@
                 font-size: 13px;
             }
             .ssam .profwrap div {width:calc(50% - 10px);}
+            .ssam .profEvt .swiper-wrapper .swiper-slide {
+                width:150px;
+                margin:0 5px 1.5vh;
+            }
         }
         @@media only screen and (min-width: 375px) and (max-width: 640px) {
             .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) {
@@ -148,6 +207,10 @@
             }
             .ssam .bestLecBox2 .lecinfo li strong {
                 font-size: 14px;
+            }
+            .ssam .profEvt .swiper-wrapper .swiper-slide {
+                width:160px;
+                margin:0 8px 1.5vh;
             }
         }
 
@@ -169,7 +232,7 @@
         }
         .ssam .Section .d-day-wrap div.package div {display:inline-block;}
         .ssam .Section .d-day-wrap div.package div:first-child {text-align:right; margin-right:10px; width:calc(54% - 10px)}
-        .ssam .Section .d-day-wrap div.package div:last-child {width:46%} 
+        .ssam .Section .d-day-wrap div.package div:last-child {width:46%}
         .ssam .Section .d-day-wrap div.package div p {margin-bottom:10px}
         .ssam .Section .d-day-wrap div.package span {
             vertical-align: baseline;
@@ -202,32 +265,32 @@
         }
 
         @@keyframes animate1 {
-            from {
-                color: #eeeabd
-            }
+             from {
+                 color: #eeeabd
+             }
 
-            50% {
-                color: red
-            }
+             50% {
+                 color: red
+             }
 
-            to {
-                color: #eeeabd
-            }
-        }
+             to {
+                 color: #eeeabd
+             }
+         }
 
         @@-webkit-keyframes animate1 {
-            from {
-                color: #eeeabd
-            }
+             from {
+                 color: #eeeabd
+             }
 
-            50% {
-                color: red
-            }
+             50% {
+                 color: red
+             }
 
-            to {
-                color: #eeeabd
-            }
-        }
+             to {
+                 color: #eeeabd
+             }
+         }
     </style>
     <!-- Container -->
     <div id="Container" class="Container NSK ssam mb40">
@@ -249,6 +312,27 @@
         @endif
 
         {!! banner('M_메인', 'MainSlider', $__cfg['SiteCode'], '0') !!}
+
+        {{--유튜브 팝업 배너--}}
+        @php $j=0; for($i=1; $i<=10; $i++) {if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true) {$j++;}} @endphp
+        <div class="profEvt {{($j > 2) ? 'swiper-container' : ''}} {{$j}}">
+            <div class="{{($j > 2) ? 'swiper-container-prof' : ''}} {{$j}}">
+                <div class="swiper-wrapper">
+                    @for($i=1; $i<=10; $i++)
+                        @if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true)
+                            <div class="swiper-slide">
+                                <a href="{{ empty($data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl']) === false ? $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkUrl'] : '#none' }}" target="_{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['LinkType'] }}">
+                                    <img src="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerFullPath'] . $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerImgName'] }}" alt="{{ $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] }}">
+                                    <p>{!! $data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['BannerName'] !!}</p>
+                                    <span>{{$data['arr_main_banner']['메인_M_교수이벤트_'.$i][0]['Desc']}}</span>
+                                </a>
+                            </div>
+                        @endif
+                    @endfor
+                </div>
+                @if ($j > 2)<div class="swiper-pagination"></div>@endif
+            </div>
+        </div>
 
         <div class="noticeTabs c_both mt30">
             {{-- 게시판 --}}
@@ -305,6 +389,32 @@
 
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script>
+        //YOUTUBE 팝업 배너
+        var swiper5 = new Swiper('.swiper-container-prof', {
+            slidesPerView: 'auto',
+            slidesPerColumn: 1,
+            spaceBetween: 0,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
+            // init: false,
+            pagination: {
+                el: '.swiper-container-prof .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                375: {
+                    slidesPerColumn: 1,
+                    spaceBetween: 0,
+                },
+                640: {
+                    slidesPerColumn: 1,
+                    spaceBetween: 0,
+                },
+            }
+        });
+
         $(function() {
             //수강후기
             var swiper_review = new Swiper ('.swiper-container-reply', {

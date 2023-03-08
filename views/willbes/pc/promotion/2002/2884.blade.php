@@ -97,8 +97,8 @@
         <div class="evtCtnsBox wb_06" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2884_06.jpg"  alt="통합생활관리반 신청"/>   
-                <a href="https://police.willbes.net/pass/offPackage/index/type/life?cate_code=3010&campus_ccd=605001&course_idx=1093" target="_blank" class="NSK-Black">신청하기</a> 
-            </div>   
+                <a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1093&subject_idx=1473" target="_blank" class="NSK-Black">신청하기</a> 
+            </div>
 		</div>
 
         <div class="wb_ctsInfo" id="ctsInfo">

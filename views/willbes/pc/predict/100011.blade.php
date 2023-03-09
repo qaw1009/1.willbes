@@ -93,7 +93,7 @@
                         </li>
                         <li>
                             <strong class="mt10">* 응시과목</strong>
-                            <p>직렬(지역)구분을 선택해주세요.</p>
+                            @if($mode != 'MOD')<p id="take_txt">직렬(지역)구분을 선택해주세요.</p>@endif
                             <div>
                                 <p>- 공통과목 : <span id="karea1"></span></p>
                                 {{--<p>- 선택과목 : </p>

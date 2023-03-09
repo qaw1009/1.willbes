@@ -78,7 +78,7 @@
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2434" target="_blank" id="pass04"><img src="https://static.willbes.net/public/images/promotion/2022/05/2354_02_04.png" alt="한국사 김상범"></a>
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2346" target="_blank" id="pass05"><img src="https://static.willbes.net/public/images/promotion/2022/05/2354_02_05.png" alt="행정학 김철"></a>               
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2739" target="_blank" id="pass06"><img src="https://static.willbes.net/public/images/promotion/2022/09/2354_02_06.png" alt="행정법 임병주"></a>
-                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2707" target="_blank" id="pass07"><img src="https://static.willbes.net/public/images/promotion/2023/03/2354_02_08.jpg" alt="세무직 박창한/이윤호"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2707" target="_blank" id="pass07"><img src="https://static.willbes.net/public/images/promotion/2023/03/2354_02_08.png" alt="세무직 박창한/이윤호"></a>
             </div>     
         </div>
 

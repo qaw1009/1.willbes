@@ -104,7 +104,7 @@
 .ssam .noticeBanner .bx-wrapper {max-width:550px !important; }
 .ssam .noticeBanner .HotnNew {height:250px !important; overflow: hidden;}
 .ssam .noticeBanner .HotnNew img {display:block; border-radius:10px; box-shadow:0 5px 5px rgba(0,0,0,.2); margin-bottom:10px}
-.ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:110px}
+.ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:140px}
 
 .ssam .noticeTabs {height:293px; overflow:hidden;}
 .ssam .noticeWrap li a {display:block; color:#474747 !important; background:#ededed; padding:0 20px !important; text-align:center; font-weight:bold; border:3px solid #ededed !important; border-radius:20px; font-size:18px; line-height:26px !important; height:32px !important; vertical-align:middle} 

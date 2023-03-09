@@ -110,8 +110,8 @@
 
         <div class="evtCtnsBox" data-aos="fade-down">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/06/2503m_top.jpg" alt="소방 패스">
-                <a href="#apply" title="소방 PASS 구매하기" style="position: absolute;left: 9.8%;top: 81.53%;width: 80.41%;height: 9.52%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2023/03/2503m_top.jpg" alt="소방 패스">
+                <a href="#apply" title="소방 PASS 구매하기" style="position: absolute; left: 9.58%; top: 69.45%; width: 80.97%; height: 10.55%; z-index: 2;"></a>
             </div>
         </div>
 

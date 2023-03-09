@@ -24,7 +24,7 @@
         .sky {position:fixed; top:200px; right:10px; width:137px; z-index:1; text-align:right}
         .sky a {display:block; margin-bottom:10px;}
  
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2023/01/2503_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2023/03/2503_top_bg.jpg) no-repeat center top;}
         
         .wb_cts02 {
             background:#323943; padding-bottom:150px;
@@ -155,8 +155,8 @@
 
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2023/01/2503_top.jpg" alt="소방 패스"  />
-                <a href="#apply" title="22년 패스" style="position: absolute; left: 20.8%; top: 81.55%; width: 57.86%; height: 8.41%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2023/03/2503_top.jpg" alt="소방 패스"  />
+                <a href="#apply" title="22년 패스" style="position: absolute; left: 20%; top: 74.27%; width: 58.21%; height: 9.39%; z-index: 2;"></a>
             </div>
         </div>
 
@@ -180,7 +180,7 @@
 
 
         <div class="evtCtnsBox wb_cts03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/01/2503_03.jpg" alt="커리큘럼" />          
+            <img src="https://static.willbes.net/public/images/promotion/2023/03/2503_03.jpg" alt="커리큘럼" />          
         </div>
 
         <div class="evtCtnsBox wb_cts04" id="transfer" data-aos="fade-up">

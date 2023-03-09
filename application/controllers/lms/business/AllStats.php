@@ -18,15 +18,22 @@ class AllStats extends \app\controllers\BaseController
     public function index()
     {
         // 1차 카테고리 조회
-        $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);
+        $arr_code['arr_category'] = $this->categoryModel->getCategoryArray('', '', '', 1);
 
-        // 상품타입공통코드 조회
-        $arr_prod_type_ccd = $this->codeModel->getCcd($this->orderSalesModel->_group_ccd['ProdType']);
+        // 공통코드 조회 및 변수명 설정
+        $arr_target_group_ccd = array_filter_keys($this->orderSalesModel->_group_ccd, ['PayChannel', 'PayRoute', 'PayMethod', 'PayStatus', 'ProdType']);
+        $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
+        foreach ($arr_target_group_ccd as $key => $group_ccd) {
+            $arr_code['arr_' . snake_case($key) . '_ccd'] = $codes[$group_ccd];     // 언더스코어 형태로 변경 (PayChannel => arr_pay_channel_ccd)
+        }
 
-        $this->load->view('business/stats/index', [
-            'arr_category' => $arr_category,
-            'arr_prod_type_ccd' => $arr_prod_type_ccd
-        ]);
+        // 결제루트 공통코드에서 PG사결제, 학원방문결제, 제휴사결제, 관리자유료결제 코드만 필터링
+        $arr_code['arr_pay_route_ccd'] = array_filter_keys($arr_code['arr_pay_route_ccd'], array_filter_keys($this->orderSalesModel->_pay_route_ccd, ['pg', 'visit', 'alliance', 'admin_pay']));
+
+        // 결제상태 공통코드에서 결제완료, 환불완료 코드만 필터링
+        $arr_code['arr_pay_status_ccd'] = array_filter_keys($arr_code['arr_pay_status_ccd'], array_filter_keys($this->orderSalesModel->_pay_status_ccd, ['paid', 'refund']));
+
+        $this->load->view('business/stats/index', $arr_code);
     }
 
     /**
@@ -66,6 +73,9 @@ class AllStats extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'BO.SiteCode' => $this->_reqP('search_site_code'),
+                'BO.PayChannelCcd' => $this->_reqP('search_pay_channel_ccd'),
+                'BO.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'),
+                'BO.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'),
                 'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd'),
                 'SC.GroupCateCode' => $this->_reqP('search_cate_code')
             ],
@@ -73,6 +83,15 @@ class AllStats extends \app\controllers\BaseController
                 'BO.SiteCode' => get_auth_site_codes()  // 사이트 권한 추가
             ]
         ];
+
+        // 결제상태 조건
+        if (empty($this->_reqP('search_pay_status_ccd')) === false) {
+            if ($this->_reqP('search_pay_status_ccd') == $this->orderSalesModel->_pay_status_ccd['paid']) {
+                $arr_condition['RAW']['BO.RefundPrice is'] = ' null';   // 결제완료
+            } else {
+                $arr_condition['RAW']['BO.RefundPrice is'] = ' not null';   // 환불완료
+            }
+        }
 
         return $arr_condition;
     }
@@ -127,6 +146,7 @@ class AllStats extends \app\controllers\BaseController
         $cate_code = $params[2];
         $start_date = $params[3];
         $end_date = $params[4];
+        $qs = json_decode(base64_decode($this->_reqG('q')), true);
 
         if (empty($site_code) === true || empty($prod_type_ccd) === true || empty($cate_code) === true || empty($start_date) === true || empty($end_date) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
@@ -148,6 +168,10 @@ class AllStats extends \app\controllers\BaseController
             'cate_code' => $cate_code == '0000' || $cate_code == '9999' ? '' : $cate_code,
             'start_date' => $start_date,
             'end_date' => $end_date,
+            'search_pay_channel_ccd' => element('search_pay_channel_ccd', $qs),
+            'search_pay_route_ccd' => element('search_pay_route_ccd', $qs),
+            'search_pay_method_ccd' => element('search_pay_method_ccd', $qs),
+            'search_pay_status_ccd' => element('search_pay_status_ccd', $qs),
         ];
 
         $this->load->view('business/stats/show', [
@@ -201,6 +225,9 @@ class AllStats extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'BO.SiteCode' => $this->_reqP('site_code'),
+                'BO.PayChannelCcd' => $this->_reqP('search_pay_channel_ccd'),
+                'BO.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'),
+                'BO.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'),
                 'P.ProdTypeCcd' => $this->_reqP('prod_type_ccd'),
                 'SC.GroupCateCode' => $this->_reqP('cate_code')
             ],
@@ -208,6 +235,15 @@ class AllStats extends \app\controllers\BaseController
                 'BO.SiteCode' => get_auth_site_codes()  // 사이트 권한 추가
             ]
         ];
+
+        // 결제상태 조건
+        if (empty($this->_reqP('search_pay_status_ccd')) === false) {
+            if ($this->_reqP('search_pay_status_ccd') == $this->orderSalesModel->_pay_status_ccd['paid']) {
+                $arr_condition['RAW']['BO.RefundPrice is'] = ' null';   // 결제완료
+            } else {
+                $arr_condition['RAW']['BO.RefundPrice is'] = ' not null';   // 환불완료
+            }
+        }
 
         return $arr_condition;
     }

@@ -116,7 +116,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/02/2433_04.jpg" alt=""/>
             <div class="wrap" id="evt01">
                 <img src="https://static.willbes.net/public/images/promotion/2022/05/2433_04_01.jpg" alt="수강신청" />                
-                <a href="javascript:go_PassLecture('190917');" title="국어 오대혁 T-PASS" style="position: absolute; left: 58.79%; top: 64.78%; width: 20.25%; height: 17.22%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('206175');" title="국어 오대혁 T-PASS" style="position: absolute; left: 58.79%; top: 64.78%; width: 20.25%; height: 17.22%; z-index: 2;"></a>
             </div> 
             <div class="check" id="chkInfo">   
                 <label>
@@ -140,7 +140,7 @@
                     <dd>
                         <ol>
                             <li>제공과정<br>                                
-                                - 2022~2023 대비로 진행되는 신규과정 포함 오대혁 국어 전 과정 제공</li>
+                                - 2023~2024 대비로 진행되는 신규과정 포함 오대혁 국어 전 과정 제공</li>
                             <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                             <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>
                             <li>본 상품은 결제가 완료되는 즉시 수강이 시작됩니다.</li>
@@ -163,7 +163,6 @@
                             <li>구매하신 상품명 옆의 [강좌추가] 버튼을 클릭, 원하는 강좌를 선택 등록 후 수강할 수 있습니다.</li>
                             <li>본 상품은 일시정지/수강연장/재수강이 불가한 상품입니다.</li>
                             <li>본 T-PASS는 교재를 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 [교재구매] 메뉴에서 구입 가능합니다.</li>
-                            <li>윌비스 LIVE모드는 학원실강에서 진행되는 콘텐츠로, 본 상품에는 LIVE모드 별도 제공되지 않습니다.</li>
                         </ol>
                     </dd>  
 
@@ -187,13 +186,6 @@
     
     <!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      $(document).ready(function() {
-        AOS.init();
-      });
-    </script>
 
     <script type="text/javascript"> 
         function go_PassLecture(code){
@@ -212,6 +204,14 @@
                 dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
             @endif
         });
+    </script>
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">    
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+      $(document).ready(function() {
+        AOS.init();
+      });
     </script>
 
 @stop

@@ -97,7 +97,7 @@
         <div class="evtCtnsBox wb_04"  data-aos="fade-up" id="evt01">
             <img src="https://static.willbes.net/public/images/promotion/2022/08/2739_04.jpg" alt="임병주 교수님만 믿고 따라오세요!"/>
                 
-            <div><a href="javascript:go_PassLecture('200879');"><img src="https://static.willbes.net/public/images/promotion/2022/09/2739_05.jpg" alt="임병주 t-pass 수강신청"/></a></div>
+            <div><a href="javascript:go_PassLecture('206178');"><img src="https://static.willbes.net/public/images/promotion/2022/09/2739_05.jpg" alt="임병주 t-pass 수강신청"/></a></div>
    
             <div class="check">
                 <label>
@@ -122,7 +122,7 @@
                     <dd>
                         <ol>
                             <li>제공과정<br>                                
-                                - 2022~2023 대비로 진행되는 신규과정 포함 임병주 행정법 전 과정 제공</li>
+                                - 2023~2024 대비로 진행되는 신규과정 포함 임병주 행정법 전 과정 제공</li>
                             <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                             <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>
                             <li>본 상품은 결제가 완료되는 즉시 수강이 시작됩니다.</li>
@@ -145,7 +145,6 @@
                             <li>구매하신 상품명 옆의 [강좌추가] 버튼을 클릭, 원하는 강좌를 선택 등록 후 수강할 수 있습니다.</li>
                             <li>본 상품은 일시정지/수강연장/재수강이 불가한 상품입니다.</li>
                             <li>본 T-PASS는 교재를 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 [교재구매] 메뉴에서 구입 가능합니다.</li>
-                            <li>윌비스 LIVE모드는 학원실강에서 진행되는 콘텐츠로, 본 상품에는 LIVE모드 별도 제공되지 않습니다.</li>
                         </ol>
                     </dd>  
 

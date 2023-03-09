@@ -126,12 +126,12 @@
         <div class="evtCtnsBox evt_04" data-aos="fade-up" id="apply01">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/02/2434_04.jpg" alt="수강신청" />
-                <a href="javascript:go_PassLecture('185705');" title="한국사 김상범 티패스" style="position: absolute;left: 59.23%;top: 71.32%;width: 20.95%;height: 6.93%;z-index: 2;"></a>               
+                <a href="javascript:go_PassLecture('206176');" title="한국사 김상범 티패스" style="position: absolute;left: 59.23%;top: 71.32%;width: 20.95%;height: 6.93%;z-index: 2;"></a>               
             </div>
             <div class="check" id="chkInfo">   
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />
-                    페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#info" class="infotxt">이용안내확인하기 ↓</a>
             </div>              
@@ -155,7 +155,7 @@
                     <dd>
                         <ol>
                             <li>제공과정<br>
-                                - 2023 대비로 진행된 김상범 한국사 전 과정 제공
+                                - 2023~2024 대비로 진행되는 신규과정 포함 김상범 한국사 전 과정 제공
                             </li>
                             <li>본 상품의 수강기간은 상품 수강신청 상세안내 화면에 표기된 기간만큼 제공됩니다.</li>
                             <li>개강일정 및 교수님 사정에 따라 커리큘럼 및 강의 일정의 변동이 있을 수 있습니다.</li>
@@ -167,7 +167,7 @@
                     <dd>
                         <ol>
                             <li>본 상품 수강 시 이용 가능한 기기는 다음과 같이 제한됩니다.<br>
-                                - PC 2대 or 모바일 2대 of PC 1대 + 모바일 1대(총 2대)
+                                - PC 2대 or 모바일 2대 of PC 1대 + 모바일 1대(총 2대)
                             </li>
                             <li>PC/모바일 기기변경 등 단말기 초기화가 필요한 경우, 최조 1회에 한해 [내강의실] > [등록기기정보]에서 직접 초기화 가능하며, 그 외 특별한 사유에 의한 단말기 초기화의 경우, 고객센터 1544-5006 or 1:1 상단게시판으로 문의바랍니다.</li>
                         </ol>
@@ -179,8 +179,7 @@
                             <li>먼저 [내강의실] 메뉴에 무한 PASS존으로 접속합니다.</li>
                             <li>구매하신 상품명 옆의 [강좌추가] 버튼을 클릭, 원하는 강좌를 선택 등록 후 수강할 수 있습니다.</li>
                             <li>본 상품은 일시정지/수강연장/재수강이 불가한 상품입니다.</li>
-                            <li>본 T-PASS는 교재를 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 [교재구매] 메뉴에서 구입 가능합니다.</li>
-                            <li>윌비스 LIVE모드는 학원실강에서 진행되는 콘텐츠로, 본 상품에는 LIVE모드 별도 제공되지 않습니다.</li>                                
+                            <li>본 T-PASS는 교재를 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 [교재구매] 메뉴에서 구입 가능합니다.</li>                             
                         </ol>
                     </dd>
 
@@ -203,13 +202,7 @@
     </div>
     <!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      $( document ).ready( function() {
-        AOS.init();
-      } );
-    </script>
+
 
     <script type="text/javascript"> 
         function go_PassLecture(code){
@@ -221,7 +214,14 @@
             var url = '{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }
+    </script>
 
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+        $( document ).ready( function() {
+            AOS.init();
+        } );
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

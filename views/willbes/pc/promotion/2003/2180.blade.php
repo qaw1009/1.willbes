@@ -203,7 +203,7 @@
                         <li>전과정 무제한 수강</li>                      
                     </ul>
                     <div>
-                        <p class="NSK-Black">75만원</p>
+                        <p class="NSK-Black">69만원</p>
                         <a href="javascript:go_PassLecture('204673');">수강신청</a>
                     </div>
                 </div>
@@ -266,7 +266,7 @@
                 <div class="infoTit"><strong>상품구성</strong></div>
                 <ul>
                     <li>제공과정<br>
-                        - 전과정 T-PASS : 2024년 6월까지 진행되는 한덕현 영어 신규강좌 전 과정 (반반똑똑영어 다시보기, 새벽모의고사 포함)<br>
+                        - 전과정 T-PASS : 2024년 6월까지 진행되는 한덕현 영어 신규강좌 전 과정 (반반똑똑영어 다시보기, 새벽모의고사 포함)<br>
                         - 실전Ⅰ T-PASS : 2023대비 실전 464, 독해기적, 스나이퍼32, 아작내기 특강, 새벽모의고사 전과정<br>
                         &nbsp;&nbsp;[2022 과정 및 2023 신규과정(독해기적은 신규 촬영없이 지존과정 제공)]<br>
                         - 실전Ⅱ T-PASS : 2023대비 실전 464, 스나이퍼32, 새벽모의고사 전과정(2022 과정 및 2023 신규과정)<br>
@@ -366,7 +366,7 @@
 
 	</script>
 
-<link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
     <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
         $(document).ready(function() {

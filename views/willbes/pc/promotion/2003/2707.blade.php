@@ -111,14 +111,6 @@
             <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2022/07/2707_sky04.jpg" title="전문과목" /></a>
         </div>      
 
-        {{--
-        <div class="evtCtnsBox wb_00" data-aos="fade-up">
-            <a href="#apply">
-                <img src="https://static.willbes.net/public/images/promotion/2022/07/2707_00.png" alt="" />
-            </a>
-        </div>
-        --}}
-
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/07/2707_top.jpg" alt="세무직 티패스"  />
         </div>
@@ -265,8 +257,7 @@
                             <li>먼저 [내강의실] 메뉴에 무한 PASS존으로 접속합니다.</li> 
                             <li>구매하신 상품명 옆의 [강좌추가] 버튼을 클릭, 원하는 강좌를 선택 등록 후 수강할 수 있습니다.</li> 
                             <li>본 상품은 일시정지/수강연장/재수강이 불가한 상품입니다.</li> 
-                            <li>본 T-PASS는 교재를 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 [교재구매] 메뉴에서 구입 가능합니다.</li> 
-                            <li>윌비스 LIVE모드는 학원실강에서 진행되는 콘텐츠로, 본 상품에는 LIVE모드 별도 제공되지 않습니다.</li>                       
+                            <li>본 T-PASS는 교재를 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 [교재구매] 메뉴에서 구입 가능합니다.</li>                    
                         </ul>
                     </dd>  
 
@@ -285,14 +276,6 @@
         </div>
     </div>
     <!-- End Container -->
-
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        $(document).ready(function(){
-            AOS.init();
-        });
-    </script>
 
     <script>  
         /*수강신청 동의*/ 
@@ -338,6 +321,14 @@
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
+        });
+    </script>
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+        $(document).ready(function(){
+            AOS.init();
         });
     </script>
 

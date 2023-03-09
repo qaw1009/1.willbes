@@ -111,7 +111,7 @@
         <div class="evtCtnsBox" data-aos="fade-down">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2022/06/2503m_top.jpg" alt="소방 패스">
-                <a href="#lecBuy2023" title="소방 PASS 구매하기" style="position: absolute;left: 9.8%;top: 81.53%;width: 80.41%;height: 9.52%;z-index: 2;"></a>
+                <a href="#apply" title="소방 PASS 구매하기" style="position: absolute;left: 9.8%;top: 81.53%;width: 80.41%;height: 9.52%;z-index: 2;"></a>
             </div>
         </div>
 
@@ -135,7 +135,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2022/06/2503m_03.jpg" alt="커리큘럼">
         </div>
 
-        <div class="evtCtnsBox event05" data-aos="fade-up" id="evt01">
+        <div class="evtCtnsBox event05" data-aos="fade-up" id="apply">
             <div class="ctTilte">
                 <h5>
                     <strong class="NSK-Black">2023~2024년도 시험일까지!<br>

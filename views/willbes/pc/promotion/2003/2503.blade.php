@@ -156,7 +156,7 @@
         <div class="evtCtnsBox wb_top" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/01/2503_top.jpg" alt="소방 패스"  />
-                <a href="#lecBuy2023" title="22년 패스" style="position: absolute; left: 20.8%; top: 81.55%; width: 57.86%; height: 8.41%; z-index: 2;"></a>
+                <a href="#apply" title="22년 패스" style="position: absolute; left: 20.8%; top: 81.55%; width: 57.86%; height: 8.41%; z-index: 2;"></a>
             </div>
         </div>
 

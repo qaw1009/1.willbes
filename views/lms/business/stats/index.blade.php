@@ -10,16 +10,40 @@
                     <label class="control-label col-md-1">조건검색</label>
                     <div class="col-md-11 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'mr-10', '운영 사이트', '') !!}
-                        <select class="form-control mr-10" id="search_prod_type_ccd" name="search_prod_type_ccd">
+                        <select class="form-control" id="search_prod_type_ccd" name="search_prod_type_ccd" title="상품구분">
                             <option value="">상품구분</option>
                             @foreach($arr_prod_type_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_cate_code" name="search_cate_code">
+                        <select class="form-control" id="search_cate_code" name="search_cate_code" title="직종">
                             <option value="">직종</option>
                             @foreach($arr_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control" id="search_pay_channel_ccd" name="search_pay_channel_ccd" title="결제채널">
+                            <option value="">결제채널</option>
+                            @foreach($arr_pay_channel_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control" id="search_pay_route_ccd" name="search_pay_route_ccd" title="결제루트">
+                            <option value="">결제루트</option>
+                            @foreach($arr_pay_route_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control" id="search_pay_method_ccd" name="search_pay_method_ccd" title="결제수단">
+                            <option value="">결제수단</option>
+                            @foreach($arr_pay_method_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control" id="search_pay_status_ccd" name="search_pay_status_ccd" title="결제상태">
+                            <option value="">결제상태</option>
+                            @foreach($arr_pay_status_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -27,20 +51,25 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">결제일/환불일</label>
                     <div class="col-md-11 form-inline">
-                        <div class="input-group mb-0 mr-20">
+                        <div class="input-group mb-0">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off" title="조회시작일">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off" title="조회종료일">
                         </div>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-mon">전월</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-weeks">1주일</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="15-days">15일</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-months">1개월</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="3-months">3개월</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="6-months">6개월</button>
                         </div>
                     </div>
                 </div>

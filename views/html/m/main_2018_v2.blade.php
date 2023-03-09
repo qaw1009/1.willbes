@@ -430,6 +430,7 @@
 
 <!-- Container -->
     <div id="Container" class="Container NSK ssam mb40">  
+        {{--
         <div class="Section">
             <div class="d-day-wrap">
                 <div class="package NSK">
@@ -442,6 +443,7 @@
                 </div>
             </div>
         </div>
+        --}}
 
         <div class="MainSlider swiper-container swiper-container-page">
             <div class="swiper-wrapper">

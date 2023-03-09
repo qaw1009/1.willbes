@@ -132,8 +132,8 @@
 .ssam .Layer-hnyoutube iframe {width:860px; height:484px}
 
 
-.ssam .profEvtBanner {width:1120px; margin:30px auto; position:relative;}
-.ssam .profEvtBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
+.ssam .profEvtBanner {width:1120px; margin:50px auto 30px; position:relative;}
+.ssam .profEvtBanner .title {margin-bottom:10px; text-align:left; font-size:18px; font-weight:bold; height:26px; line-height:26px}
 .ssam .profEvtBanner .bx-wrapper {max-width:1120px !important; position:relative;}
 .ssam .profEvtBanner .profEvt {height:250px !important; overflow: hidden; display:flex}
 .ssam .profEvtBanner .profEvt > div {margin-right:15px; font-weight:bold; line-height:1.4; }
@@ -145,7 +145,7 @@
     -khtml-opacity: 0.5;
     opacity: 0.5;
 }
-.ssam .profEvtBanner .ctrbtn {text-align:right; margin-bottom:10px}
+.ssam .profEvtBanner .ctrbtn {position: absolute; left:240px; z-index: 3; top:0}
 
 
 
@@ -328,26 +328,14 @@ no-repeat 5px center}
         opacity: 1;
     }
 }
+.Menu {position: relative;}
+.Menu .ssam_1st {position: absolute; z-index: 2; top:-40px;}
+
 </style>
 
 
 <!-- Container -->
-<div id="Container" class="Container ssam NGR c_both">
-
-    {{--
-    <div class="d-day NSK">
-        <div class="d-day-wrap">
-
-            <div>
-                <p>유∙초등 1차 <span class="NSK-Black">D-31</span></p>
-            </div>
-            <div>
-                <p>중등 1차 <span class="NSK-Black">D-45</span></p>
-            </div>
-
-        </div>
-    </div>
-    --}}   
+<div id="Container" class="Container ssam NGR c_both"> 
 
     <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
         <div class="Section widthAuto p_re">            
@@ -387,6 +375,7 @@ no-repeat 5px center}
     </form>
 
     <div class="Menu widthAuto NGR c_both">
+        <div class="ssam_1st"><img src="https://static.willbes.net/public/images/promotion/main/2018/1st.jpg" alt="교육서비스부문 선호도 1위"></div>
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">교원임용<span class="row-line">|</span></li>
@@ -561,17 +550,6 @@ no-repeat 5px center}
         </h3>
     </div>
 
-    {{--
-    <div class="Section">
-        <div class="d-day-wrap">
-            <div class="package NSK">
-                연간패키지 <span class="pc1">문화상품권 증정이벤트!</span> <strong class="round">마감까지</strong> <strong class="pc2">D-<span>11</span></strong>
-                <strong class="count NSK-Black">15:11:12 05</strong> 남았습니다.
-            </div>
-        </div>
-    </div>
-    --}}
-
     <div class="Section MainVisual mt20">
         <div class="VisualBox p_re">            
             <div id="MainRollingSlider" class="MaintabBox">
@@ -658,85 +636,85 @@ no-repeat 5px center}
 
     <div class="Section">
         <div class="profEvtBanner">
-                {{--<div class="title">교수별 <span class="tx-color">이벤트 & 특강안내</span></div>--}}
-                <div class="ctrbtn">
-                    <a class="leftBtn" id="pebLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt=""></a>
-                    <a class="rightBtn" id="pebRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt=""></a>
-                </div>
-                
-                <div class="bSlider profEvt prof-slider">
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!111</p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                            <p>임용중국어 장영희<br>이론&기출 총정리 특강222</p>
-                            <span>총정리 특강</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                            <p>생물 강치욱/양혜정<br>10~11월 생물 Final 모의고사333</p>
-                            <span>실전모의고사</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                            <p>전공음악 다이애나<br>2022 10-11월 실전모의고사444</p>
-                            <span>개강안내</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
-                            <p>임용중국어 장영희<br>이론&기출 총정리 특강555</p>
-                            <span>개강안내</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
-                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!666</p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
-                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                            <span>모의고사</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
-                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                            <span>개강안내</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
-                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                            <span>실전모의고사</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
-                            <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
-                            <span>개강안내</span>
-                        </a>
-                    </div>
-                </div>              
+            <div class="title"><img src="https://static.willbes.net/public/images/promotion/main/2018/youtobe_logo.jpg"> Hot Clip & 인급동</div>
+            <div class="ctrbtn">
+                <a class="leftBtn" id="pebLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt=""></a>
+                <a class="rightBtn" id="pebRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt=""></a>
             </div>
+                
+            <div class="bSlider profEvt prof-slider">
+                <div>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
+                        <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!111</p>
+                        <span>모의고사</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
+                        <p>임용중국어 장영희<br>이론&기출 총정리 특강222</p>
+                        <span>총정리 특강</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
+                        <p>생물 강치욱/양혜정<br>10~11월 생물 Final 모의고사333</p>
+                        <span>실전모의고사</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
+                        <p>전공음악 다이애나<br>2022 10-11월 실전모의고사444</p>
+                        <span>개강안내</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130.jpg" alt="배너명">
+                        <p>임용중국어 장영희<br>이론&기출 총정리 특강555</p>
+                        <span>개강안내</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
+                        <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!666</p>
+                        <span>모의고사</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
+                        <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                        <span>모의고사</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
+                        <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                        <span>개강안내</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
+                        <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                        <span>실전모의고사</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/210x130_02.jpg" alt="배너명">
+                        <p>기출 및 개정 내용까지<br>법규특강으로 한번에 확인!</p>
+                        <span>개강안내</span>
+                    </a>
+                </div>
+            </div>              
+        </div>
     </div>
 
     <div class="Section sec-prof">

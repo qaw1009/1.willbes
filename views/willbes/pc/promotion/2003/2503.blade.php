@@ -56,7 +56,7 @@
         .wb_cts05 .passbuy a:hover {background:#fff;}
 
         .lecWrap {display:flex; width:900px; margin:auto; font-size:16px; }
-        .lecWrap .pass {width:calc(50% - 10px); margin-bottom:10px; margin-right:10px; position: relative;}
+        .lecWrap .pass {margin:10px auto; position: relative;}
         .lecWrap .pass:last-child {margin-right:0}
         .lecWrap .pass div {font-size:22px}
         .lecWrap .pass h5 {font-size:46px; margin-bottom:30px}
@@ -66,8 +66,8 @@
         .lecWrap .pass div:nth-child(4) {font-size:24px; color:#b47607}
         .lecWrap .pass div strong {font-size:40px;}
         .lecWrap .pass div span {box-shadow:inset 0 -15px 0 #fbeacb; color:#b47607}
-        .lecWrap .pass ul {margin-top:30px}
-        .lecWrap .pass li {list-style:disc; margin-left:20px; margin-bottom:10px; font-weight:bold}
+        .lecWrap .pass ul {margin-top:30px; display:flex; flex-wrap: wrap; }
+        .lecWrap .pass li {list-style:disc; margin-left:20px; margin-bottom:10px; font-weight:bold; width:calc(50% - 20px)}
         .lecWrap .pass li span {color:#b47607; vertical-align:top}
 
         .lecWrap .pass input[type="radio"] {height:26px; width:26px; position:absolute; top:20px; left:20px; visibility: hidden;}
@@ -161,7 +161,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/05/2503_01.jpg" alt="소방직 시험 변화" />          
+            <img src="https://static.willbes.net/public/images/promotion/2023/03/2503_01.jpg" alt="꼭 필요한 혜택" />          
         </div>
 
         <div class="evtCtnsBox wb_cts02"  data-aos="fade-up">
@@ -203,33 +203,12 @@
             <div>
                 <div class="lecWrap">
                     <div class="pass">
-                        <input type="radio" name="y_pkg" id="pass01" value="194804">
-                        <label for="pass01">
-                            <div class="NSK-Black">2023 공채/경채</div>
-                            <h5 class="NSK-Black"><span>소방직</span> PASS</h5>
-                            <div><span>재도전/환승/대학생 5만원 할인</span></div>
-                            <div>25만원 👉 <strong class="NSK-Black">20</strong>만원</div>
-                            <ul>
-                                <li>
-                                    22~23 소방직 [공/경채] 대비 커리큘럼 무제한<br>
-                                    <span>(2023년 시험일까지 수강)</span></li>
-                                <li>배수 제한 없는 무제한 반복 수강</li>
-                                <li>온라인모의고사 무료 응시<br>
-                                    <span>(윌비스 전국모의고사 시행 시 제공)</span></li>
-                                <li><span>G-TELP</span> Level.2 강좌 제공 </li>
-                                <li><span>한국사능력검정시험</span> 강좌 제공</li>
-                                <li>수강지원 포인트 3만점</li>
-                            </ul>
-                        </label>
-                    </div>
-
-                    <div class="pass">
                         <input type="radio" name="y_pkg" id="pass02" value="204388">
                         <label for="pass02">
                             <div class="NSK-Black">2024 공채/경채</div>
                             <h5 class="NSK-Black"><span>소방직</span> PASS</h5>
                             <div><span>재도전/환승/대학생 5만원 할인</span></div>
-                            <div>39만원 👉 <strong class="NSK-Black">34</strong>만원</div>
+                            <div><strong class="NSK-Black">199,000</strong>원</div>
                             <ul>
                                 <li>
                                     22~23 소방직 [공/경채] 대비 커리큘럼 무제한<br>
@@ -239,7 +218,7 @@
                                     <span>(윌비스 전국모의고사 시행 시 제공)</span></li>
                                 <li><span>G-TELP</span> Level.2 강좌 제공 </li>
                                 <li><span>한국사능력검정시험</span> 강좌 제공</li>
-                                <li>수강지원 포인트 3만점</li>
+                                <li>수강지원 포인트 5만점</li>
                             </ul>
                         </label>
                     </div>

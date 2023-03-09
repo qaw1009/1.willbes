@@ -26,9 +26,9 @@
     .event05 .ctTilte p {font-size:1.8vh; margin-top:1vh}
     .event05 .ctTilte strong {color:#efc126}
 
-    .lecWrap {display:flex; flex-wrap: wrap; justify-content: center; line-height:1.5; font-size:1.8vh; width:100%}
-    .lecWrap .pass {width:calc(50% - 2vw); position: relative; margin:0 1vw}
-    .lecWrap .pass div {font-size:2.2vh}
+    .lecWrap {display:flex; flex-wrap: wrap; justify-content: center; line-height:1.5; font-size:1.8vh;}
+    .lecWrap .pass {position: relative; margin:0 auto; width:80%}
+    .lecWrap .pass div {font-size:2.2vh;}
     .lecWrap .pass h5 {font-size:4vh; margin-bottom:2vh}
     .lecWrap .pass h5 span {color:#b47607}
     .lecWrap .pass div:nth-child(1) {font-weight:600;}
@@ -41,7 +41,7 @@
     .lecWrap .pass li span {color:#b47607; vertical-align:top}
 
     .lecWrap .pass input[type="radio"] {height:26px; width:26px; position:absolute; top:20px; left:20px; visibility: hidden;}
-    .lecWrap .pass label{display:block; background:#fff; border-radius:10px; padding:20px; text-align:left; box-sizing: border-box; height: 100%; }
+    .lecWrap .pass label{display:block; background:#fff; border-radius:10px; padding:20px 40px; text-align:left; box-sizing: border-box; }
     .lecWrap .pass label:hover {cursor: pointer;}
     .lecWrap .pass input:checked + label {border:1px solid #b47607; background:#b47607; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3)}
     .lecWrap .pass input:checked + label div,
@@ -80,17 +80,13 @@
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {  
-        .passWrap {display:block;}
-        .passLec {width:95%; margin:10px auto}
-        .lecWrap .pass{width:95%; margin:0 auto 15px}        
+        .passWrap {display:block;} 
         .dday a {padding:5px 10px;}
     }
 
     /* 태블릿 세로 */
     @@media only screen and (min-width: 375px) and (max-width: 640px) {
         .passWrap {display:block;}
-        .passLec {width:95%; margin:10px auto}
-        .lecWrap .pass{width:95%; margin:0 auto 15px; }  
         .lecWrap .pass ul,
         .lecWrap .pass input:checked + label ul {display:flex; flex-wrap: wrap;}
         .lecWrap .pass li {width:calc(100%);}
@@ -99,7 +95,6 @@
     
     /* 태블릿 가로, PC */
     @@media only screen and (min-width: 641px) {
-        /*.lecWrap .pass {margin:0 5px 10px; flex: 1 1 40%;}*/
         .lecWrap .pass div:nth-child(2) { margin-bottom:20px}
         .lecWrap .pass ul {display:block}     
         .check br {display:none}
@@ -121,7 +116,7 @@
         </div>
 
         <div class="evtCtnsBox" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2022/06/2503m_01.jpg" alt="수많은 혜택들">
+            <img src="https://static.willbes.net/public/images/promotion/2023/03/2503m_01.jpg" alt="수많은 혜택들">
         </div>
 
         <div class="evtCtnsBox evt02" data-aos="fade-up">
@@ -152,33 +147,12 @@
             <div>
                 <div class="lecWrap">
                     <div class="pass">
-                        <input type="radio" name="y_pkg" id="pass01" value="194804">
-                        <label for="pass01">
-                            <div class="NSK-Black">2023 공채/경채</div>
-                            <h5 class="NSK-Black"><span>소방직</span> PASS</h5>
-                            <div><span>재도전/환승/대학생 5만원 할인</span></div>
-                            <div>25만원 👉 <strong class="NSK-Black">20</strong>만원</div>
-                            <ul>
-                                <li>
-                                    22~23 소방직 [공/경채] 대비 커리큘럼 무제한<br>
-                                    <span>(2023년 시험일까지 수강)</span></li>
-                                <li>배수 제한 없는 무제한 반복 수강</li>
-                                <li>온라인모의고사 무료 응시<br>
-                                    <span>(윌비스 전국모의고사 시행 시 제공)</span></li>
-                                <li><span>G-TELP</span> Level.2 강좌 제공 </li>
-                                <li><span>한국사능력검정시험</span> 강좌 제공</li>
-                                <li>수강지원 포인트 3만점</li>
-                            </ul>
-                        </label>
-                    </div>
-
-                    <div class="pass">
                         <input type="radio" name="y_pkg" id="pass02" value="204388">
                         <label for="pass02">
                             <div class="NSK-Black">2024 공채/경채</div>
                             <h5 class="NSK-Black"><span>소방직</span> PASS</h5>
                             <div><span>재도전/환승/대학생 5만원 할인</span></div>
-                            <div>39만원 👉 <strong class="NSK-Black">34</strong>만원</div>
+                            <div><strong class="NSK-Black">199,000</strong>원</div>
                             <ul>
                                 <li>
                                     22~23 소방직 [공/경채] 대비 커리큘럼 무제한<br>
@@ -188,7 +162,7 @@
                                     <span>(윌비스 전국모의고사 시행 시 제공)</span></li>
                                 <li><span>G-TELP</span> Level.2 강좌 제공 </li>
                                 <li><span>한국사능력검정시험</span> 강좌 제공</li>
-                                <li>수강지원 포인트 3만점</li>
+                                <li>수강지원 포인트 5만점</li>
                             </ul>
                         </label>
                     </div>

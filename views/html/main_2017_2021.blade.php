@@ -145,7 +145,7 @@
     -khtml-opacity: 0.5;
     opacity: 0.5;
 }
-.ssam .profEvtBanner .ctrbtn {position: absolute; left:240px; z-index: 3; top:0}
+.ssam .profEvtBanner .ctrbtn {position: absolute; left:220px; z-index: 3; top:0}
 
 
 

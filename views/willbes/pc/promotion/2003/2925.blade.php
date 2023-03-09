@@ -47,11 +47,10 @@
 <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
 <script src="/public/js/willbes/dist/aos.js"></script>
 <script>
-      $(document).ready(function() {
+    $(document).ready(function() {
         AOS.init();
-      });
-
-    </script>
+    });
+</script>
 
 {{-- 프로모션용 스크립트 include --}}
 @include('willbes.pc.promotion.promotion_script')

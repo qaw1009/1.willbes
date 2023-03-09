@@ -180,7 +180,7 @@
 
 
         <div class="evtCtnsBox wb_cts03" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2023/03/2503_03.jpg" alt="커리큘럼" />          
+            <img src="https://static.willbes.net/public/images/promotion/2022/01/2503_03.jpg" alt="커리큘럼" />          
         </div>
 
         <div class="evtCtnsBox wb_cts04" id="transfer" data-aos="fade-up">

@@ -148,7 +148,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>수강</th>
+                            <th>수강여부</th>
                             <td>
                                 <ul class="sel_info">
                                     <li><input type="radio" name="LectureType" id="LectureType1" value="1" @if($mode == 'MOD' && $data['LectureType'] == '1') checked @endif /> <label for="LectureType1">온라인강의</label></li>

@@ -36,7 +36,7 @@
         </div>
 
         <div class="evtCtnsBox evtTop" data-aos="flip-down">        
-            <img src="https://static.willbes.net/public/images/promotion/2023/03/2918_top.jpg" title="적중은 신광은 경찰팀">    
+            <img src="https://static.willbes.net/public/images/promotion/2023/03/2918_top.jpg" title="적중은 윌비스 경찰팀">    
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
@@ -67,15 +67,11 @@
 	</div>
     <!-- End Container -->
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>
     <script>
       $( document ).ready( function() {
         AOS.init();
       } );
     </script>
-    <script type="text/javascript">
-    
-    </script>
-
 @stop

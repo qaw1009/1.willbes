@@ -100,11 +100,11 @@
 }
 
 .ssam .noticeBanner {float:right; width:550px; position:relative;}
-.ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
+.ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold; letter-spacing:normal}
 .ssam .noticeBanner .bx-wrapper {max-width:550px !important; }
 .ssam .noticeBanner .HotnNew {height:250px !important; overflow: hidden;}
 .ssam .noticeBanner .HotnNew img {display:block; border-radius:10px; box-shadow:0 5px 5px rgba(0,0,0,.2); margin-bottom:10px}
-.ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:140px}
+.ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:170px}
 
 .ssam .noticeTabs {height:293px; overflow:hidden;}
 .ssam .noticeWrap li a {display:block; color:#474747 !important; background:#ededed; padding:0 20px !important; text-align:center; font-weight:bold; border:3px solid #ededed !important; border-radius:20px; font-size:18px; line-height:26px !important; height:32px !important; vertical-align:middle} 
@@ -133,19 +133,21 @@
 
 
 .ssam .profEvtBanner {width:1120px; margin:50px auto 30px; position:relative;}
-.ssam .profEvtBanner .title {margin-bottom:10px; text-align:left; font-size:18px; font-weight:bold; height:26px; line-height:26px}
+.ssam .profEvtBanner .title {margin-bottom:10px; text-align:left; font-size:18px; font-weight:bold; height:26px; line-height:26px; letter-spacing:0}
+.ssam .profEvtBanner .title strong {font-size:14px;}
+.ssam .profEvtBanner .title span {font-size:18px;}
 .ssam .profEvtBanner .bx-wrapper {max-width:1120px !important; position:relative;}
 .ssam .profEvtBanner .profEvt {height:250px !important; overflow: hidden; display:flex}
-.ssam .profEvtBanner .profEvt > div {margin-right:15px; font-weight:bold; line-height:1.4; }
-.ssam .profEvtBanner .profEvt a p {font-size:16px; color:#383838; margin:10px 0; padding:0 10px }
-.ssam .profEvtBanner .profEvt a span {color:#adadad; font-size:14px; padding:0 10px }
+.ssam .profEvtBanner .profEvt > div {margin-right:15px; font-weight:bold; line-height:1.4;}
+.ssam .profEvtBanner .profEvt a p {font-size:16px; color:#383838; margin:10px 0; padding:0 10px}
+.ssam .profEvtBanner .profEvt a span {color:#adadad; font-size:14px; padding:0 10px}
 .ssam .profEvtBanner .profEvt img {display:block; width:210px; background:#000}
 .ssam .profEvtBanner .profEvt a:hover img {filter:alpha(opacity=50);
     -moz-opacity:0.5;
     -khtml-opacity: 0.5;
     opacity: 0.5;
 }
-.ssam .profEvtBanner .ctrbtn {position: absolute; left:220px; z-index: 3; top:0}
+.ssam .profEvtBanner .ctrbtn {position: absolute; left:300px; z-index: 3; top:0}
 
 
 
@@ -156,10 +158,7 @@
 
 .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
 .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
-/*
-.ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
-.ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
-*/
+
 .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 100; 
     display: grid; 
     grid-template-columns: repeat(auto-fill, minmax(50%, auto)); 
@@ -330,7 +329,6 @@ no-repeat 5px center}
 }
 .Menu {position: relative;}
 .Menu .ssam_1st {position: absolute; z-index: 2; top:-40px;}
-
 </style>
 
 
@@ -610,7 +608,7 @@ no-repeat 5px center}
             </div>
 
             <div class="noticeBanner">
-                <div class="title">Hot News & Issue</div>
+                <div class="title NSK-Black"><span class="tx-color">Hot News</span> & Issue</div>
                 <div class="ctrbtn">
                     <a class="leftBtn" id="HotnNewLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>
                     <a class="rightBtn" id="HotnNewRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
@@ -636,7 +634,7 @@ no-repeat 5px center}
 
     <div class="Section">
         <div class="profEvtBanner">
-            <div class="title"><img src="https://static.willbes.net/public/images/promotion/main/2018/youtobe_logo.jpg"> Hot Clip & 인급동</div>
+            <div class="title NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/2018/youtobe_logo.jpg"> Hot Clip & <strong><span class="tx-color">인</span>기<span class="tx-color">급</span>등<span class="tx-color">동</span>영상</strong></div>
             <div class="ctrbtn">
                 <a class="leftBtn" id="pebLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt=""></a>
                 <a class="rightBtn" id="pebRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt=""></a>

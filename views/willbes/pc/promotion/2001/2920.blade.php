@@ -6,7 +6,7 @@
 
     <!-- Container -->
     <div class="p_re evtContent NSK-Thin" id="evtContainer">
-        @include('willbes.pc.promotion.2001.2572_top')
+        @include('willbes.pc.promotion.2001.2920_top')
 
         <div class="evtCtnsBox">
             @if(time() < strtotime('202005300000'))

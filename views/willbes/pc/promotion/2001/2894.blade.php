@@ -344,7 +344,7 @@
             </div>
         @else
             <div id="tab02">
-                @include('willbes.pc.promotion.2001.2548_cts02')
+                @include('willbes.pc.promotion.2001.2894_cts02')
             </div>
         @endif
 
@@ -354,7 +354,7 @@
             </div>
         @else
             <div id="tab03">
-                @include('willbes.pc.promotion.2001.2548_cts03')
+                @include('willbes.pc.promotion.2001.2894_cts03')
             </div>
         @endif
 
@@ -364,7 +364,7 @@
             </div>
         @else
             <div id="tab04">
-                @include('willbes.pc.promotion.2001.2548_cts04')
+                @include('willbes.pc.promotion.2001.2894_cts04')
             </div>
         @endif
 
@@ -374,7 +374,7 @@
             </div>
         @else
             <div id="tab05">
-                @include('willbes.pc.promotion.2001.2548_cts05')
+                @include('willbes.pc.promotion.2001.2894_cts05')
             </div>
         @endif
 

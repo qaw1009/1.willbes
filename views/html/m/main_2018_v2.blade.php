@@ -50,7 +50,8 @@
 	background: #0c5dc0;
 	font-size: 12px;
 }
-
+.ssam .mainTit strong {font-size:16px}
+.ssam .mainTit span {font-size:20px}
 
 /*교수별이벤트 */
 .ssam .profEvt {margin-top:2vh; padding-bottom:30px}
@@ -455,7 +456,7 @@
             <div class="swiper-pagination"></div>
         </div>    
 
-        <div class="mainTit NSK-Black tx-center mt50"><img src="https://static.willbes.net/public/images/promotion/main/2018/youtobe_logo.jpg"> Hot Clip & 인급동</div>
+        <div class="mainTit NSK-Black tx-center mt50"><img src="https://static.willbes.net/public/images/promotion/main/2018/youtobe_logo.jpg"> Hot Clip & <strong><span class="tx-main">인</span>기<span class="tx-main">급</span>등<span class="tx-main">동</span>영상</strong></div>
 
         <div class="profEvt swiper-container">
             <div class="swiper-container-prof">

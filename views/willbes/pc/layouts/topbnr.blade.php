@@ -83,12 +83,13 @@
     </div>
 @endif
 @if($__cfg['CateCode'] == '3023')
-    {{-- 공무원 소방직 사이트일 경우만 적용 --}}
+    {{-- 공무원 소방직 사이트일 경우만 적용
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3023_top_bn.gif" alt="소방직"></a>
         </div>
     </div>
+    --}}
 @endif
 @if($__cfg['CateCode'] == '3024')
     {{-- 공무원 군무원 사이트일 경우만 적용 --}}

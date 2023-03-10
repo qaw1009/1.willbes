@@ -615,10 +615,12 @@
                 <li>
                     <span>물리</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51274?subject_idx=2176') }}">최성욱</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51427?subject_idx=2176') }}">엄기범</a>
                 </li>
                 <li>
                     <span>화학</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51288?subject_idx=2187') }}">조성민</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51426?subject_idx=2187') }}">이훈</a>
                 </li>
                 <li>
                     <span>생물</span>

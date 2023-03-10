@@ -110,8 +110,8 @@
 
                     <div class="evt_apply">
                         <div class="wrap">
-                            <img src="https://static.willbes.net/public/images/promotion/2023/03/2920_apply.jpg" alt="시험후기 공유하고 채점하면 기프티콘 증정 " />
-                            <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank" style="position: absolute;left: 22.04%;top: 83.41%;width: 56.13%;height: 9.52%;z-index: 2;"></a>
+                            <img src="https://static.willbes.net/public/images/promotion/2023/03/2920_apply.jpg" alt="영광" />
+                            <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank" style="position: absolute;left: 22.04%;top: 66.41%;width: 56.13%;height: 18.52%;z-index: 2;"></a>
                         </div>
                     </div>
 
@@ -135,7 +135,7 @@
                     <div class="evt_04">
                         <div class="wrap">
                             <img src="https://static.willbes.net/public/images/promotion/2023/03/2920_evt04.jpg" alt="" />
-                            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2277" target="_blank" style="position: absolute;left: 22.04%;top: 77.91%;top: 77.91;width: 56.13%;height: 14.52%;z-index: 2;"></a>
+                            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2918" target="_blank" style="position: absolute;left: 22.04%;top: 75.91%; width: 56.13%;height: 14.52%;z-index: 2;"></a>
                         </div>      
                     </div>                                                                          
 

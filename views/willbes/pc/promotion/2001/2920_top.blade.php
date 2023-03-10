@@ -18,8 +18,8 @@ if (empty($arr_promotion_params['live_start']) === false && empty($arr_promotion
 <ul class="skyBanner" id="QuickMenu">
     <li><a href="#event">합격예측 참여하고, <Br />푸짐한 혜택 받자!</a></li>
     <li><a href="javascript:tabMove(2);">빠른채점</a></li>
-    <li><a {!! $live_url !!}>라이브 토크쇼</a></li>
-    <li><a href="{{front_url('/promotion/index/cate/3001/code/2578')}}" target="_blank">적중이벤트</a></li>
+    <li><a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">라이브 토크쇼</a></li>
+    <li><a href="{{front_url('/promotion/index/cate/3001/code/2918')}}" target="_blank">적중이벤트</a></li>
 </ul>
 
 
@@ -80,7 +80,7 @@ if (empty($arr_promotion_params['live_start']) === false && empty($arr_promotion
 
 
     <div class="talkShow">
-        <a href="{{front_url('/promotion/index/cate/3001/code/2578')}}" target="_blank">
+        <a href="{{front_url('/promotion/index/cate/3001/code/2918')}}" target="_blank">
             <img src="https://static.willbes.net/public/images/promotion/2023/03/2920_top_bn4.png" alt="적중 이벤트">
         </a>
     </div>

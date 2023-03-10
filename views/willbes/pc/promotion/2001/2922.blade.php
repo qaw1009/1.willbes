@@ -5,7 +5,7 @@
     <link href="/public/css/willbes/promotion/cop_2018_1ch.css?ver={{time()}}" rel="stylesheet">
     <!-- Container -->
     <div class="p_re evtContent NSK-Thin" id="evtContainer">
-        @include('willbes.pc.promotion.2001.2572_top')
+        @include('willbes.pc.promotion.2001.2920_top')
         @include('willbes.pc.predict.iframe_predict_private')
     </div>
     <!-- End Container -->

@@ -5,7 +5,7 @@
     <link href="/public/css/willbes/promotion/cop_2018_1ch.css?ver={{time()}}" rel="stylesheet">
     <!-- Container -->
     <div class="p_re evtContent NSK-Thin" id="evtContainer">
-        @include('willbes.pc.promotion.2001.2572_top')
+        @include('willbes.pc.promotion.2001.2920_top')
         <div class="evtCtnsBox">
             <div class="s_section2">
                 <div class="s_section2_wrap">

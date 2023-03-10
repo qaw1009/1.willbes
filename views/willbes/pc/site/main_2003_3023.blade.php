@@ -218,9 +218,7 @@
     <div id="Container" class="Container gosi NGR c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')    
-        <div class="Section tx-center">
-            <img src="https://static.willbes.net/public/images/promotion/main/2003/3023_the_top.jpg" alt="과목 개편">
-        </div>   
+
         <div class="gosi-bnfull-Sec">
             <div class="gosi-bnfull">
                 {!! banner_html(element('메인_상단띠배너', $data['arr_main_banner']), 'sliderBar') !!}

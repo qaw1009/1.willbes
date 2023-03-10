@@ -196,7 +196,7 @@
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2918" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2023/03/2894_sky.png" alt="적중 이벤트">
             </a>
-            <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2924" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2023/03/2894_sky2.png" alt="토크쇼">
             </a>         
         </div>      

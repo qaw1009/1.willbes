@@ -455,8 +455,10 @@
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
         </div>    
-
+        {{--
         <div class="mainTit NSK-Black tx-center mt50"><img src="https://static.willbes.net/public/images/promotion/main/2018/youtobe_logo.jpg"> Hot Clip & <strong><span class="tx-main">인</span>기<span class="tx-main">급</span>등<span class="tx-main">동</span>영상</strong></div>
+        --}}
+        <div class="tx-center mt50"><img src="https://static.willbes.net/public/images/promotion/main/2018/main_title02.jpg"></div>
 
         <div class="profEvt swiper-container">
             <div class="swiper-container-prof">

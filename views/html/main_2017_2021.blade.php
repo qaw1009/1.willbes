@@ -104,7 +104,7 @@
 .ssam .noticeBanner .bx-wrapper {max-width:550px !important; }
 .ssam .noticeBanner .HotnNew {height:250px !important; overflow: hidden;}
 .ssam .noticeBanner .HotnNew img {display:block; border-radius:10px; box-shadow:0 5px 5px rgba(0,0,0,.2); margin-bottom:10px}
-.ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:170px}
+.ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:180px}
 
 .ssam .noticeTabs {height:293px; overflow:hidden;}
 .ssam .noticeWrap li a {display:block; color:#474747 !important; background:#ededed; padding:0 20px !important; text-align:center; font-weight:bold; border:3px solid #ededed !important; border-radius:20px; font-size:18px; line-height:26px !important; height:32px !important; vertical-align:middle} 
@@ -147,7 +147,7 @@
     -khtml-opacity: 0.5;
     opacity: 0.5;
 }
-.ssam .profEvtBanner .ctrbtn {position: absolute; left:300px; z-index: 3; top:0}
+.ssam .profEvtBanner .ctrbtn {position: absolute; left:320px; z-index: 3; top:0}
 
 
 
@@ -608,7 +608,7 @@ no-repeat 5px center}
             </div>
 
             <div class="noticeBanner">
-                <div class="title NSK-Black"><span class="tx-color">Hot News</span> & Issue</div>
+                <div class="title"><img src="https://static.willbes.net/public/images/promotion/main/2018/main_title01.jpg"></div>
                 <div class="ctrbtn">
                     <a class="leftBtn" id="HotnNewLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>
                     <a class="rightBtn" id="HotnNewRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>
@@ -634,7 +634,7 @@ no-repeat 5px center}
 
     <div class="Section">
         <div class="profEvtBanner">
-            <div class="title NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/2018/youtobe_logo.jpg"> Hot Clip & <strong><span class="tx-color">인</span>기<span class="tx-color">급</span>등<span class="tx-color">동</span>영상</strong></div>
+            <div class="title"><img src="https://static.willbes.net/public/images/promotion/main/2018/main_title02.jpg"></div>
             <div class="ctrbtn">
                 <a class="leftBtn" id="pebLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt=""></a>
                 <a class="rightBtn" id="pebRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt=""></a>

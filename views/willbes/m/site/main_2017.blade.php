@@ -313,6 +313,8 @@
 
         {!! banner('M_메인', 'MainSlider', $__cfg['SiteCode'], '0') !!}
 
+        <div class="tx-center mt50"><img src="https://static.willbes.net/public/images/promotion/main/2018/main_title02.jpg"></div>
+
         {{--유튜브 팝업 배너--}}
         @php $j=0; for($i=1; $i<=10; $i++) {if(isset($data['arr_main_banner']['메인_M_교수이벤트_'.$i]) === true) {$j++;}} @endphp
         <div class="profEvt {{($j > 2) ? 'swiper-container' : ''}} {{$j}}">

@@ -311,6 +311,8 @@
             </div>
         @endif
 
+        <div class="tx-center mt50"><img src="https://static.willbes.net/public/images/promotion/main/2018/main_title02.jpg"></div>
+
         {!! banner('M_메인', 'MainSlider', $__cfg['SiteCode'], '0') !!}
 
         {{--유튜브 팝업 배너--}}

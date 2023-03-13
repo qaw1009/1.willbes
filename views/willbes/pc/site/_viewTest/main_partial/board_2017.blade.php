@@ -50,7 +50,7 @@
 </div>
 
 <div class="noticeBanner">
-    <div class="title">Hot News & Issue</div>
+    <div class="title"><img src="https://static.willbes.net/public/images/promotion/main/2018/main_title01.jpg" alt="Hot News & Issue"></div>
     <div class="ctrbtn">
         <a class="leftBtn" id="HotnNewLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>
         <a class="rightBtn" id="HotnNewRight"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_R_27x27.png" alt="배너명"></a>

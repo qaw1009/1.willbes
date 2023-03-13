@@ -99,9 +99,9 @@
         }
 
         .ssam .noticeBanner {float:right; position:relative;}
-        .ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold;}
+        .ssam .noticeBanner .title {margin-bottom:10px; height:36px !important; line-height:36px !important; text-align:left; font-size:18px; color:#474747; font-weight:bold; letter-spacing:normal}
         .ssam .noticeBanner .HotnNew {width:540px; height:240px; overflow: hidden;}
-        .ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:140px}
+        .ssam .noticeBanner .ctrbtn {position:absolute; top:5px; left:180px}
 
         .ssam .noticeTabs {height:293px; overflow:hidden;}
         .ssam .noticeWrap li a {display:block; color:#474747 !important; background:#ededed; padding:0 20px !important; text-align:center; font-weight:bold; border:3px solid #ededed !important; border-radius:20px; font-size:18px; line-height:26px !important; height:32px !important; vertical-align:middle}
@@ -142,7 +142,7 @@
             -khtml-opacity: 0.5;
             opacity: 0.5;
         }
-        .ssam .profEvtBanner .ctrbtn {text-align:right; margin-bottom:10px}
+        .ssam .profEvtBanner .ctrbtn {position: absolute; left:320px; z-index: 3; top:0}
 
         .ssam .sec-prof {background:#9cb6c5 url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative; margin-top:40px}
         .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
@@ -150,10 +150,7 @@
 
         .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
         .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
-        /*
-        .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 2;}
-        .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
-        */
+
         .ssam .sec-prof .prof-Tab {position:absolute; top:15px; left:50px; width:300px; z-index: 100; 
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(50%, auto)); 
@@ -296,6 +293,7 @@
         @php $j=0; for($i=1; $i<=10; $i++) {if(isset($data['arr_main_banner']['메인_교수이벤트_'.$i]) === true) {$j++;}} @endphp
         <div class="Section">
             <div class="profEvtBanner">
+                <div class="title"><img src="https://static.willbes.net/public/images/promotion/main/2018/main_title02.jpg" alt="유튜브 hot clip & 인기급등동영상"></div>
                 @if ($j > 5)
                     <div class="ctrbtn">
                         <a class="leftBtn" id="pebLeft"><img src="https://static.willbes.net/public/images/promotion/main/2018/arrow_L_27x27.png" alt="배너명"></a>

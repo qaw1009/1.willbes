@@ -73,7 +73,7 @@
                                 <td>{{ number_format((int)$val2['PickNum']) }} ({{ number_format((int)$val2['TakeNum']) }})</td>
                             </tr>
                             <tr>
-                                <th>2021 2차 경쟁률</th>
+                                <th>2023 1차 경쟁률</th>
                                 <td>{{ $val2['CompetitionRateNow'] }}</td>
                             </tr>
                             <tr>
@@ -469,7 +469,7 @@
                     <li>Q1. 전체적인 시험난이도는?</li>
                     <li>Q2. 과목별 시험난이도는?</li>
                     <li>Q3. 시험준비하면서 도움된 부분은?</li>
-                    <li>Q4. 신광은 경찰면접캠프를 알고있는가?</li>
+                    <li>Q4. 윌비스경찰 면접캠프를 알고있는가?</li>
                 </ul>
             </div>
 
@@ -900,7 +900,7 @@
 
         function setAreaMsg(num)
         {
-            var msg = '※ 직전시험경쟁률 정보는 2021년 2차시험기준임.(전의경 경채 : 21년 1차기준)';
+            var msg = '※ 직전시험경쟁률 정보는 2022년 2차 시험기준임(전의경 경채 : 22년 1차기준)';
             switch (num) {
                 case 800 :
                     msg = '※ 직전시험 경쟁률, 직전시험 합격선 정보는 2019년 2차 시험 기준임.';

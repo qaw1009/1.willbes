@@ -24,7 +24,7 @@
         }
 
         /*교수별이벤트 */
-        .ssam .profEvt {margin-top:5vh; padding-bottom:30px}
+        .ssam .profEvt {margin-top:2vh; padding-bottom:30px}
         .ssam .profEvt .swiper-wrapper {/*display: flex;*/ height:auto;}
         .ssam .profEvt .swiper-button-next,
         .ssam .profEvt .swiper-button-prev {

@@ -69,7 +69,7 @@
         {{--<td dir="ltr" width="141">합격 여부 예측</td>--}}
     </tr>
     <tr>
-        <td dir="ltr" width="141">{{(empty($fullservice_data['StabilityAvrPoint']) === true ? '집계중' : $fullservice_data['StabilityAvrPoint'].'점')}}</td>
+        <td dir="ltr" width="141">{{(empty($fullservice_data['StrongAvrPoint1']) === true ? '집계중' : $fullservice_data['StrongAvrPoint1'].'점')}}</td>
         <td dir="ltr" width="141">{{(empty($fullservice_data['PassLineAgo']) === true ? '집계중' : $fullservice_data['PassLineAgo'].'점')}}</td>
         {{--<td dir="ltr" width="141">{{$fullservice_data['TotalMyOrgPoint']}}점</td>--}}
         <td dir="ltr" width="141">{{$fullservice_data['TotalTop20AvgOrgPoint']}}점</td>

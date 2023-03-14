@@ -1081,7 +1081,7 @@ class FullServiceFModel extends WB_Model
 
     /**
      * 합격예측 결과 데이터
-     * 전체 직렬 기준 : 내점수, 상위10%컷, 합격여부, 합격 **권
+     * 회원이 속한 직렬 기준 : 내점수, 상위10%컷, 합격여부, 합격 **권
      * @param string $predict_idx
      * @param string $pr_idx
      * @return mixed
@@ -1116,6 +1116,13 @@ class FullServiceFModel extends WB_Model
                                     INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
                                     INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode AND c.IsStatus = 'Y' AND c.IsUse = 'Y'
                                     WHERE a.PredictIdx = {$predict_idx}
+                                    AND b.PpIdx IN (
+                                        SELECT a.PpIdx
+                                        FROM {$this->_table['predict_paper']} AS a
+                                        INNER JOIN {$this->_table['predict_register_r_code']} AS b ON a.SubjectCode = b.SubjectCode
+                                        WHERE a.PredictIdx = {$predict_idx} AND b.PrIdx = {$pr_idx}
+                                        AND a.IsStatus = 'Y' AND a.IsUse = 'Y'
+                                    )
                                 ) AS a
                             ) AS A
                             WHERE A.PaperPercRank BETWEEN 0 AND (10 / 100)
@@ -1137,6 +1144,13 @@ class FullServiceFModel extends WB_Model
                                     INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
                                     INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode AND c.IsStatus = 'Y' AND c.IsUse = 'Y'
                                     WHERE a.PredictIdx = {$predict_idx}
+                                    AND b.PpIdx IN (
+                                        SELECT a.PpIdx
+                                        FROM {$this->_table['predict_paper']} AS a
+                                        INNER JOIN {$this->_table['predict_register_r_code']} AS b ON a.SubjectCode = b.SubjectCode
+                                        WHERE a.PredictIdx = {$predict_idx} AND b.PrIdx = {$pr_idx}
+                                        AND a.IsStatus = 'Y' AND a.IsUse = 'Y'
+                                    )
                                 ) AS a
                             ) AS A
                             WHERE A.PaperPercRank BETWEEN 0 AND (20 / 100)

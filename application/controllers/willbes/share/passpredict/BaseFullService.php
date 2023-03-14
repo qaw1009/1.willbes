@@ -327,25 +327,31 @@ class BaseFullService extends \app\controllers\FrontController
         }
 
         $resultComment = '';
-        if ($isFailForSurvey == 1 && $isFailForSubject == 1 && $isFailForOrgPoint == 1 && $isFailForPassLine == 1) {
-            $passline_title = '';
-            if ($fullservice_data['TotalMyOrgPoint'] >= $fullservice_data['StabilityAvrPoint']) {
-                $passline_title = '합격 유력권';
-            } else if ($fullservice_data['TotalMyOrgPoint'] >= $fullservice_data['StrongAvrPoint2'] && $fullservice_data['TotalMyOrgPoint'] < $fullservice_data['StrongAvrPoint1']) {
-                $passline_title = '합격 가능권';
-            } else if ($fullservice_data['TotalMyOrgPoint'] >= $fullservice_data['ExpectAvrPoint2'] && $fullservice_data['TotalMyOrgPoint'] < $fullservice_data['ExpectAvrPoint1']) {
-                $passline_title = '합격 유보권';
-            }
-
-            $resultComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 {$passline_title}으로 예측됩니다. 합격을 기원합니다.";
+        if (empty($fullservice_data['StabilityAvrPoint']) === true
+            || empty($fullservice_data['StrongAvrPoint1']) === true || empty($fullservice_data['StrongAvrPoint2']) === true
+            || empty($fullservice_data['ExpectAvrPoint1']) === true || empty($fullservice_data['ExpectAvrPoint2']) === true) {
+            $resultComment = '';
         } else {
-            if ($isFailForSurvey == 1 && $isFailForSubject == 1 && $isFailForPassLine == 2) {
-                $resultComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 합격 가능성이 낮습니다.";
+            if ($isFailForSurvey == 1 && $isFailForSubject == 1 && $isFailForOrgPoint == 1 && $isFailForPassLine == 1) {
+                $passline_title = '';
+                if ($fullservice_data['TotalMyOrgPoint'] >= $fullservice_data['StabilityAvrPoint']) {
+                    $passline_title = '합격 유력권';
+                } else if ($fullservice_data['TotalMyOrgPoint'] >= $fullservice_data['StrongAvrPoint2'] && $fullservice_data['TotalMyOrgPoint'] <= $fullservice_data['StrongAvrPoint1']) {
+                    $passline_title = '합격 가능권';
+                } else if ($fullservice_data['TotalMyOrgPoint'] >= $fullservice_data['ExpectAvrPoint2'] && $fullservice_data['TotalMyOrgPoint'] <= $fullservice_data['ExpectAvrPoint1']) {
+                    $passline_title = '합격 유보권';
+                }
+
+                $resultComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 {$passline_title}으로 예측됩니다. 합격을 기원합니다.";
             } else {
-                if ($isFailForOrgPoint == 2) {
-                    $resultComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 합격예측이 불가합니다.";
+                if ($isFailForSurvey == 1 && $isFailForSubject == 1 && $isFailForPassLine == 2) {
+                    $resultComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 합격 가능성이 낮습니다.";
                 } else {
-                    $resultComment = '과락 과목이 포함되어 합격예측이 불가합니다.';
+                    if ($isFailForOrgPoint == 2) {
+                        $resultComment = "평균 ‘{$fullservice_data['TotalMyOrgPoint']}’점으로 합격예측이 불가합니다.";
+                    } else {
+                        $resultComment = '과락 과목이 포함되어 합격예측이 불가합니다.';
+                    }
                 }
             }
         }

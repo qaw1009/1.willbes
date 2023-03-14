@@ -28,9 +28,11 @@
     @endif
 </table>
 
-<div class="fail_info">
-    <p class="fail">{!! $resultComment !!}</p>
-</div>
+@if(empty($resultComment) === false)
+    <div class="fail_info">
+        <p class="fail">{!! $resultComment !!}</p>
+    </div>
+@endif
 
 <div class="stage">
     <span class="bold">{{date('Y')}}년 합격권 예측 기준</span>

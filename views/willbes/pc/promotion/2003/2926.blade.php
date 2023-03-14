@@ -145,7 +145,16 @@
                     <li>작성된 게시물의 링크를 이벤트 페이지에 작성하면 끝!</li>
                 </ul>
             </div>
+
+            <div>
+                {{--홍보url--}}
+                @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                    @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
+                @endif
+            </div>
 		</div>
+
+
 
         <div class="evtCtnsBox evtInfo" data-aos="fade-up">
             <div class="guide_box">

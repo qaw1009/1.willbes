@@ -8,7 +8,7 @@
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:1.4vh; line-height:1.4; clear:both}
     .evtCtnsBox img {width:100%; max-width:720px;}
     .evtCtnsBox .wrap {position:relative}
-    .evtCtnsBox a {border:1px solid #000}
+    /*.evtCtnsBox a {border:1px solid #000}*/
 
 
 

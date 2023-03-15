@@ -7,8 +7,8 @@ class BaseOrder extends \app\controllers\BaseController
     protected $helpers = array();
     protected $_order_type = '';
     protected $_group_ccd = array();
-    protected $_write_perm_methods = array();
-    protected $_excel_perm_methods = array();
+    protected $_write_perm_methods = array('store');
+    protected $_excel_perm_methods = array('excel');
     private $_is_refund = false;
     private $_is_refund_proc = false;
     private $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값

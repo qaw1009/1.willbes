@@ -7,8 +7,6 @@ class OffProfAssign extends BaseOrder
 {
     protected $models = array('pay/orderList', 'pay/order', 'pay/salesProduct', 'member/manageMember', 'service/point', 'sys/site', 'sys/category', 'sys/code');
     protected $helpers = array();
-    protected $_write_perm_methods = array('store');
-    protected $_excel_perm_methods = array();
     private $_list_add_join = array('refund', 'campus', 'category', 'unpaid_info', 'assign_prof_log');
     private $_target_site_code = array();       // 학원사이트코드
     private $_target_pay_status_ccd = array();   // 사용하는 결제상태공통코드

@@ -170,6 +170,7 @@
 
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
+                {!! check_menu_perm_inner_script('excel') !!}
                 event.preventDefault();
                 var confirm_msg = '{{ config_get('privacy_excel_down_msg', '정말로 엑셀다운로드 하시겠습니까?') }}';
                 if (confirm(confirm_msg)) {
@@ -178,7 +179,8 @@
             });
 
             // 장바구니 담기 버튼 클릭
-            $('.btn-cart-regist').on('click', function(event) {
+            $('.btn-cart-regist').on('click', function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 location.href = '{{ site_url('/pay/cart/create') }}' + dtParamsToQueryString($datatable);
             });
 
@@ -198,6 +200,7 @@
 
             // 삭제 버튼 클릭
             $('.btn-cart-delete').on('click', function() {
+                {!! check_menu_perm_inner_script('write') !!}
                 var $mem_idx = $list_table.find('input[name="mem_idx[]"]:checked');
                 var $cart_idx = $list_table.find('input[name="cart_idx[]"]:checked');
                 var confirm_msg = $mem_idx.length > 0 ? '해당 회원의 장바구니 전체 내역을 삭제하시겠습니까?' : '해당 장바구니 내역을 삭제하시겠습니까?';

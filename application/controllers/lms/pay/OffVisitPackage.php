@@ -7,8 +7,6 @@ class OffVisitPackage extends BaseOrder
 {
     protected $models = array('pay/orderList', 'pay/order', 'pay/salesProduct', 'member/manageMember', 'service/point', 'sys/site', 'sys/code');
     protected $helpers = array();
-    protected $_write_perm_methods = array('store');
-    protected $_excel_perm_methods = array();
     private $_list_add_join = array('refund', 'campus', 'print_cert_log', 'unpaid_info');
     private $_target_site_code = array();       // 학원사이트코드
     private $_target_pack_type_ccd = array();   // 사용하는 패키지유형공통코드

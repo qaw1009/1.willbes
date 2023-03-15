@@ -7,6 +7,7 @@ class Cart extends BaseOrder
 {
     protected $models = array('pay/cart', 'pay/orderList', 'sys/code');
     protected $helpers = array();
+    protected $_write_perm_methods = array('store', 'destroy');
 
     public function __construct()
     {

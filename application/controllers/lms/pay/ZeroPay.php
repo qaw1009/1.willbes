@@ -7,8 +7,6 @@ class ZeroPay extends BaseOrder
 {
     protected $models = array('pay/orderList', 'pay/order', 'member/manageMember', 'service/point', 'sys/code');
     protected $helpers = array();
-    protected $_write_perm_methods = array('store');
-    protected $_excel_perm_methods = array();
     private $_list_add_join = array('delivery_info', 'refund', 'my_lecture');
     private $_tel1_ccd = '672';
     private $_phone1_ccd = '673';

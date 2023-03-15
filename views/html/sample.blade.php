@@ -65,11 +65,11 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_2015') }}" target="_blank">소방 학원 메인</a></li>
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3094_v3') }}" target="_blank">고등고시 5급행정</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3095') }}" target="_blank">고등고시 국립외교원</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3096') }}" target="_blank">고등고시 PSAT</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3097') }}" target="_blank">고등고시 5급헌법</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3098') }}" target="_blank">고등고시 법원행시</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3099') }}" target="_blank">고등고시 변호사시험</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3095_v3') }}" target="_blank">고등고시 국립외교원</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3096_v3') }}" target="_blank">고등고시 PSAT</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3097_v3') }}" target="_blank">고등고시 5급헌법</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3098_v3') }}" target="_blank">고등고시 법원행시</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_hanlim_3099_v3') }}" target="_blank">고등고시 변호사시험</a></li>
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_3090_309002_v2') }}" target="_blank">전문자격증 공인노무사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_3090_309003_v2') }}" target="_blank">전문자격증 감정평가사</a></li>

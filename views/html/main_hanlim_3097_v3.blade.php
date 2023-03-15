@@ -210,8 +210,8 @@
     </div> 
     
     <div class="Section mt50">
-        <div class="goMenuBtns">
-            <ul id="goMenuBtns">
+        <div class="goMenu">
+            <ul id="goMenu">
                 <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon01.png" alt=""><span>학원공지사항</span></a></li>
                 <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon02.png" alt=""><span>학원수강신청</span></a></li>
                 <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon03.png" alt=""><span>학원보강</span></a></li>

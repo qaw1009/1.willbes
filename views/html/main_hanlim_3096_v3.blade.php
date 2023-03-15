@@ -19,89 +19,6 @@
 .hanlim .VisualBox img {
     height: 360px;
 }
-
-.hanlim .bnSt02 {
-   margin-top:20px; display:flex; justify-content: space-between;
-}
-.hanlim .bnLeft {width:720px; height:90px; overflow: hidden; border-radius:12px; margin-right:20px}
-.hanlim .bnRight {width:380px; height:90px; overflow: hidden; border-radius:12px;}
-
-.Section .will-listTit {
-	margin-bottom: 10px;
-}
-
-.hanlim .tabBox.noticeBox {
-    margin-top: 0px;
-}
-
-.hanlim .tabBox.noticeBox a.btn-add {
-    position: absolute;
-    top: -30px;
-    right: 0;
-}
-
-.hanlim .tabBox.noticeBox .List-Table {
-    width: 100%;
-    border-top:2px solid #000;
-    padding:0
-}
-
-
-.hanlim .Section1 {
-    background: #fff;
-    padding: 90px 0 120px;
-}
-
-
-.lecBanner {
-	background:#f4f4f4;
-	padding: 90px 0;
-}
-
-.lecBanner .copyTit {
-	text-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.3);
-    text-align:left
-}
-
-.lecBanner li {
-	display: inline;
-	float: left;
-	width: 25%;
-	text-align: center;
-	margin-bottom: 20px;
-}
-
-.lecBanner li a {
-	display: block;
-	width: 260px;
-	margin: 0 auto;
-	height: 325px;
-	transition: opacity 0.4s ease-in-out;
-}
-
-.lecBanner li a img {
-	width: 100%;
-}
-
-.lecBanner li a:hover {
-	-webkit-box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.5);
-	-moz-box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.5);
-	box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.5);
-}
-
-.lecBanner ul:hover a:not(:hover) {
-	opacity: 0.4;
-}
-
-
-.hanlim .MainQuickMenu {
-	position: fixed;
-	top: 180px;
-	right: 10px;
-	width: 150px;
-	height: auto;
-	z-index: 100;
-}
 </style>
 <!-- Container -->
 
@@ -293,8 +210,8 @@
     </div> 
     
     <div class="Section mt50">
-        <div class="goMenuBtns">
-            <ul id="goMenuBtns">
+        <div class="goMenu">
+            <ul id="goMenu">
                 <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon01.png" alt=""><span>학원공지사항</span></a></li>
                 <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon02.png" alt=""><span>학원수강신청</span></a></li>
                 <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon03.png" alt=""><span>학원보강</span></a></li>

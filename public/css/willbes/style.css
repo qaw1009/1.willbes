@@ -7,8 +7,6 @@
 /*9급,7급*/
 @import url("style_gosi_acad.css");
 /*공무원학원*/
-/*@import url("style_gosi_law.css"); 법원직*/
-/*@import url("style_gosi_tech.css"); 기술직*/
 @import url("style_gosi_gp.css");
 /*군무원*/
 @import url("style_gosi_free.css");
@@ -41,8 +39,8 @@
 /*자격증 변리사*/
 @import url("style_3090_309005.css");
 /*자격증 관세사*/
-@import url("style_hanlim_3094.css");
-/*고등고시 5급행정*/
+/*@import url("style_hanlim_3094.css");
+고등고시 5급행정*/
 @import url("style_hanlim_3095.css");
 /*고등고시 국립외교원*/
 @import url("style_hanlim_3096.css");
@@ -59,6 +57,7 @@
 /*윌스토리*/
 @import url("style_2018.css?ver=2101061517");
 /*임용*/
+@import url("style_hanlim.css");
 
 /* Login Form : 공통 */
 .mem-Tit {
@@ -2408,7 +2407,7 @@ table.auTable tr td {
 }
 
 
-/*바로가기 메뉴*/
+/*바로가기 메뉴
 .goMenu {
 	background: #52bcc9;
 	padding: 0 50px;
@@ -2453,7 +2452,7 @@ table.auTable tr td {
 	top: 0;
 	margin: 0 auto;
 	z-index: 100;
-}
+}*/
 
 /*임용 Main Container : QuickMenu*/
 .MainQuickMenuSSam {
@@ -16902,7 +16901,7 @@ table.acadlecInfoPackageTable tr.Top td {
 	clear: both
 }
 
-/*****************************************고등고시, 자격증 배너***********************************************/
+/*****************************************고등고시, 자격증 배너******************************************
 .studyRoomCts {
 	margin: 35px;
 	line-height: 1.5;
@@ -16948,6 +16947,7 @@ table.acadlecInfoPackageTable tr.Top td {
 .lecBanner ul:hover a:not(:hover) {
 	opacity: 0.4;
 }
+*****/
 
 /*****************************************고등고시, 자격증 학원 오시는 길*******************************************/
 
@@ -16983,7 +16983,7 @@ table.acadlecInfoPackageTable tr.Top td {
 
 .Section4_hl .campus_info {
 	position: relative;
-	width: 320px;
+	width: 380px;
 	height: 328px;
 }
 

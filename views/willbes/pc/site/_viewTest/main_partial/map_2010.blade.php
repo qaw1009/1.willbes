@@ -45,7 +45,7 @@
         margin: -36px 0 0;
     }
 </style>
-<div class="Section Section4_hl mt50">
+<div class="Section Section4_hl">
     <div class="widthAuto">
         <div class="will-acadTit">윌비스 <span class="tx-color">한림법학원</span></div>
         <div class="noticeTabs campus c_both">

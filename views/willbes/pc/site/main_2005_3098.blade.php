@@ -2,11 +2,11 @@
 
 @section('content')
     <!-- Container -->
-    <div id="Container" class="Container hanlim{{$__cfg['CateCode']}} NSK c_both">
+    <div id="Container" class="Container hanlim hanlim{{$__cfg['CateCode']}} NSK c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
-        <div class="Section p_re">
+        <div class="Section p_re mt40">
             <div class="MainVisual NSK">
                 <div class="VisualBox">
                     <div class="bSlider">
@@ -23,11 +23,6 @@
                 </div>
             </div>
         </div>
-        <div class="Section barBnr">
-            <div class="widthAuto">
-                {!! banner_html(element('메인_띠배너', $data['arr_main_banner'])) !!}
-            </div>
-        </div>
 
         <div class="Section mt50">
             <div class="widthAuto">
@@ -36,8 +31,8 @@
             </div>
         </div>
 
-        <div class="Section mt30">
-            <div class="widthAuto">
+        <div class="Section mt50">
+            <div class="goMenu">
                 {{-- 학원수강신청, 학원보강, 강의실배정표, 신규동영상안내, 무료특강, 강의자료실 버튼 --}}
                 @include('willbes.pc.site.main_partial.content_menu_' . $__cfg['SiteCode'] . '_' . $__cfg['CateCode'])
             </div>
@@ -46,8 +41,8 @@
         <div class="Section lecBanner mt50">
             <div class="widthAuto">
                 <div class="copyTit NSK-Thin mb50">
-                    꿈을 향한 소중한 첫 걸음부터, <strong class="NSK-Black"><span class="tx-color">합격의 순간</span></strong>까지!<br />
-                    31년을 이어온 대표전문학원, <strong class="NSK-Black"><span class="tx-color">윌비스 한림법학원</span></strong>이 함께 합니다!!
+                    꿈을 향한 소중한 첫 걸음부터 합격의 순간까지!<br />
+                    <strong class="NSK-Black">32년을 이어온 대표전문학원, 윌비스 한림법학원이 함께 합니다!!</strong>
                 </div>
                 <ul>
                     @if(empty($data['arr_main_banner']['메인_리스트']) === false)
@@ -63,9 +58,9 @@
 
         {{--이달의 강의 / 강의맛보기 --}}
         <div class="Section Section1">
-            <div>
+            <div class="widthAuto">
                 <div class="copyTit">
-                    <strong class="NSK-Black">WILLBES 한림법학원</strong> <strong class="NSK-Black"><span class="tx-color">이달의 강의</span></strong>
+                윌비스 한림법학원 <strong class="NSK-Black">이달의 강의</strong>
                 </div>
                 <div class="thisMonth NSK">
                     <div class="thisMonthBox">
@@ -75,7 +70,7 @@
                                     <li>
                                         <a href="{{front_url('/lecture/show/pattern/only/cate/'.$row['CateCode'].'/prod-code/'.$row['ProdCode'])}}">
                                             <img src="{{$row['ProfIndexImg'] or ''}}">
-                                            <div class="tx-color">{{$row['ProdName']}}
+                                            <div>{{$row['ProdName']}}
                                                 <span class="NSK-Black">{{$row['ProfNickName']}}</span>
                                             </div>
                                             <div>{{$row['ProdMainIntroMemo']}}</div>
@@ -90,7 +85,7 @@
                 </div>
 
                 <div class="copyTit mt100">
-                    <strong class="NSK-Black">윌비스</strong> <strong class="NSK-Black"><span class="tx-color">대표 강의 맛보기</span></strong>
+                    윌비스 한림법학원 <strong class="NSK-Black">대표 강의 맛보기</strong>
                 </div>
                 <div class="preview NSK">
                     <div class="previewBox">
@@ -177,8 +172,8 @@
                 controls:false,
                 minSlides:3,
                 maxSlides:3,
-                slideWidth: 460,
-                slideMargin:10,
+                slideWidth: 357,
+                slideMargin:20,
                 autoHover: true,
                 moveSlides:1,
                 pager:true,

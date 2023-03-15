@@ -1,30 +1,61 @@
 /* top bar banner */
-.hanlim .topBanner {display:block; background:#ececec; width:100%; text-align:center}
-.hanlim .topBanner p {width:100%; max-width:1120px; margin:0 auto}
-.hanlim .topBanner p img {width:100%}
+.hanlim .topBanner {
+    display: block;
+    background: #ececec;
+    width: 100%;
+    text-align: center
+}
 
-.hanlim .menu-List .Tit {color: #b85712;}
-.hanlim .Menu .menu-List li.gosi > a {
+.hanlim .topBanner p {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto
+}
+
+.hanlim .topBanner p img {
+    width: 100%
+}
+
+.hanlim .menu-List .Tit {
     color: #b85712;
-    display:inline-block;
+}
+
+.hanlim .Menu .menu-List li.gosi>a {
+    color: #b85712;
+    display: inline-block;
     vertical-align: middle;
 }
-.hanlim .Menu .menu-List li.gosi > a .arrow-Btn {
+
+.hanlim .Menu .menu-List li.gosi>a .arrow-Btn {
     background: url("/public/img/willbes/gosi/icon_arrow.gif") no-repeat left center;
     float: right;
     width: 4px;
     height: 8px;
     margin: 15px 5px 0;
 }
+
 .hanlim .Depth .depth:last-child strong {
     color: #b85712;
 }
+
 .hanlim .tx-color {
     color: #b85712;
 }
-.hanlim .copyTit {color: #363636; font-size:36px; text-align:left; margin-bottom:30px}
-.hanlim .copyTit span {vertical-align: bottom;}
-.hanlim .copyTit span:nth-child(2) {color: #363636;}
+
+.hanlim .copyTit {
+    color: #363636;
+    font-size: 36px;
+    text-align: left;
+    margin-bottom: 30px
+}
+
+.hanlim .copyTit span {
+    vertical-align: bottom;
+}
+
+.hanlim .copyTit span:nth-child(2) {
+    color: #363636;
+}
 
 /*********************************************     Main Container     *********************************************/
 
@@ -32,9 +63,10 @@
 .hanlim .MainVisual {
     position: relative;
     width: 1120px;
-    margin:0 auto;
+    margin: 0 auto;
     height: 400px;
 }
+
 .hanlim .MainVisual:after {
     content: "";
     display: block;
@@ -42,61 +74,66 @@
 }
 
 .hanlim .VisualBox {
-    width:740px;  
+    width: 740px;
     height: 400px;
     overflow: hidden;
-    float:left;
-  }
+    float: left;
+}
+
 .hanlim .VisualBox img {
     height: 400px;
-  }
-  
+}
+
 .hanlim .VisualBox .bx-wrapper .bx-controls-auto {
-    left:20px;
+    left: 20px;
     bottom: 20px;
     width: 50px;
     z-index: 90;
 }
+
 .hanlim .VisualBox .bx-wrapper .bx-pager {
     width: auto;
-    left:60px;
+    left: 60px;
     bottom: 22px;
     text-align: left;
     z-index: 90;
 }
+
 .hanlim .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
-  }
+}
 
 .hanlim .VisualsubBox {
     width: 380px;
-    padding:10px;
-    float:right;
+    padding: 10px;
+    float: right;
     background: #ccc;
 }
 
 .hanlim .VisualsubBox .bSlider:nth-child(2) {
-    margin-top:3px;
+    margin-top: 3px;
     width: 360px;
     height: 223px !important;
     overflow: hidden;
-  }
+}
 
 .hanlim .VisualsubBox .bx-wrapper .bx-controls-auto {
-    left:20px;
+    left: 20px;
     bottom: 20px;
     margin: 0;
     width: 50px;
     z-index: 90;
-  }
+}
+
 .hanlim .VisualsubBox .bx-wrapper .bx-pager {
     float: right;
     width: auto;
-    left:60px;
+    left: 60px;
     bottom: 20px;
     text-align: right;
     z-index: 90;
 }
+
 .hanlim .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
     width: 8px;
@@ -104,7 +141,11 @@
     margin: 0 2px;
 }
 
-.hanlim .VisualsubBox .VisualsubBoxTop {width: 360px; height:154px; overflow: hidden;}
+.hanlim .VisualsubBox .VisualsubBoxTop {
+    width: 360px;
+    height: 154px;
+    overflow: hidden;
+}
 
 .hanlim .VisualsubBox .bSlider .bx-wrapper .bx-pager {
     float: left;
@@ -113,145 +154,211 @@
     bottom: 10px;
     text-align: left;
 }
+
 .hanlim .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
 }
-.hanlim .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+
+.hanlim .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .hanlim .bx-wrapper .bx-pager.bx-default-pager a.active,
 .hanlim .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #b85712 !important;
 }
 
-/*바로가기 메뉴*/ 
-.hanlim .goMenuBtns {background:#fff; padding:10px 0}
-.hanlim .goMenuBtns ul {width:1120px; margin:0 auto}
-.hanlim .goMenuBtns li {
-	display: inline;
-	float: left;
-	width: 160px;
+/*바로가기 메뉴*/
+.hanlim .goMenu {
+    background: #fff;
+    padding: 10px 0
 }
-.hanlim .goMenuBtns li a {
-	display: block;
-	text-align: center;
- }
-.hanlim .goMenuBtns li a img {display:block; margin:0 auto}
-.hanlim .goMenuBtns li span {display:inline-block; color:#363636; background:#c9e6fc; border-radius:10px; margin-top:10px; font-size:15px; padding:5px 15px}
-.hanlim .goMenuBtns li a:hover span {color: #fff; background:#0076e1}
-.hanlim .goMenuBtns:after {
-	content: "";
-	display: block;
-	clear: both;
+
+.hanlim .goMenu ul {
+    width: 1120px;
+    margin: 0 auto
 }
+
+.hanlim .goMenu li {
+    display: inline;
+    float: left;
+    width: 160px;
+}
+
+.hanlim .goMenu li a {
+    display: block;
+    text-align: center;
+}
+
+.hanlim .goMenu li a img {
+    display: block;
+    margin: 0 auto
+}
+
+.hanlim .goMenu li span {
+    display: inline-block;
+    color: #363636;
+    background: #c9e6fc;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: 15px;
+    padding: 5px 15px
+}
+
+.hanlim .goMenu li a:hover span {
+    color: #fff;
+    background: #0076e1
+}
+
+.hanlim .goMenu:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
 .hanlim .Section .fixed {
-	position: fixed;
+    position: fixed;
     width: 100%;
-    border-bottom:1px solid #333;
-	top: 0;
-	z-index: 100;
+    border-bottom: 1px solid #333;
+    top: 0;
+    z-index: 100;
 }
 
 
 /*업로드강의*/
 .hanlim .uploadLec {
-	position: relative;
+    position: relative;
     border: 4px solid #b85712;
-    height:58px;
+    height: 58px;
     padding-left: 20px;
-    overflow:hidden;
+    overflow: hidden;
 }
+
 .hanlim .uploadLec .sliderNumV div {
-	font-size: 18px;
-	height: 50px;
-	line-height: 50px;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
 }
+
 .hanlim .uploadLec .sliderNumV div span {
-	color: #ccc;
-	margin: 0 10px;
+    color: #ccc;
+    margin: 0 10px;
 }
+
 .hanlim .uploadLec .bx-wrapper .bx-prev {
-	background: url("/public/img/willbes/prof/btn_prev_V.png") no-repeat 0 0 !important;
+    background: url("/public/img/willbes/prof/btn_prev_V.png") no-repeat 0 0 !important;
 }
+
 .hanlim .uploadLec .bx-wrapper .bx-next {
-	background: url("/public/img/willbes/prof/btn_next_V.png") no-repeat 0 0 !important;
-	left: 20px;
+    background: url("/public/img/willbes/prof/btn_next_V.png") no-repeat 0 0 !important;
+    left: 20px;
 }
+
 .hanlim .uploadLec .bx-wrapper .bx-controls-direction {
-	position: absolute;
-	top: 15px;
-	right: 10px;
-	width: 40px;
-	height: 20px;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    width: 40px;
+    height: 20px;
 }
+
 .hanlim .uploadLec .bx-wrapper .bx-controls-direction a {
-	width: 20px;
-	height: 20px;
+    width: 20px;
+    height: 20px;
 }
+
 .hanlim .uploadLec .bx-wrapper .bx-pager {
-	width: auto;
-	position: absolute;
-	top: 18px;
-	right: 60px;
-	bottom: 0;
-	font-size: 11px;
-	font-weight: 300;
-	color: #888;
-	margin: 0;
-	padding: 0;
-	letter-spacing: 0;
+    width: auto;
+    position: absolute;
+    top: 18px;
+    right: 60px;
+    bottom: 0;
+    font-size: 11px;
+    font-weight: 300;
+    color: #888;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
 }
 
 /*hot issue*/
-.hanlim .hotIssue {background:#eee;	padding: 100px 0;}
+.hanlim .hotIssue {
+    background: #eee;
+    padding: 100px 0;
+}
+
 .hanlim .hotIssue li {
-	display: inline;
-	float: left;
-	width: 33.33333%;
-	text-align: center;
-	margin-bottom: 20px;
+    display: inline;
+    float: left;
+    width: 33.33333%;
+    text-align: center;
+    margin-bottom: 20px;
 }
+
 .hanlim .hotIssue li a {
-	display: block;
-	width: 360px;
-	margin: 0 auto;
-	transition: opacity 0.4s ease-in-out;
+    display: block;
+    width: 360px;
+    margin: 0 auto;
+    transition: opacity 0.4s ease-in-out;
 }
+
 .hanlim .hotIssue li a img {
-	width: 100%;
+    width: 100%;
 }
+
 .hanlim .hotIssue li a:hover {
-	-webkit-box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.3);
-	-moz-box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.3);
-	box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.3);
 }
+
 .hanlim .hotIssue ul:hover a:not(:hover) {
-	opacity: 0.4;
+    opacity: 0.4;
 }
 
 /*전문교수진 */
-.hanlim .SectionBg01 {background:#d0cdb9; padding:100px 0}
-.hanlim .SecBanner01 {margin-right:-20px; margin-top:20px}
-.hanlim .SecBanner01 li {display:inline; float:left; margin:0 20px 20px 0;}
-.hanlim .SecBanner01:after {content:''; display: block; clear:both}
+.hanlim .SectionBg01 {
+    background: #d0cdb9;
+    padding: 100px 0
+}
+
+.hanlim .SecBanner01 {
+    margin-right: -20px;
+    margin-top: 20px
+}
+
+.hanlim .SecBanner01 li {
+    display: inline;
+    float: left;
+    margin: 0 20px 20px 0;
+}
+
+.hanlim .SecBanner01:after {
+    content: '';
+    display: block;
+    clear: both
+}
 
 
 
 /* Main Container : Notice : noticeTabs */
 .hanlim .noticeTabs {
     width: 345px !important;
-    float:left;
-    margin-right:40px;
+    float: left;
+    margin-right: 40px;
 }
+
 .hanlim .tabBox.noticeBox {
-    margin-top:-30px;   
+    margin-top: -30px;
 }
+
 .hanlim .tabBox.noticeBox a.btn-add {
     position: absolute;
     top: -16px;
     right: 0;
 }
+
 .hanlim .tabBox.noticeBox .List-Table {
     width: 100%;
 }
+
 .hanlim .tabBox.noticeBox .List-Table li {
     position: relative;
     font-size: 13px;
@@ -260,6 +367,7 @@
     line-height: 37px;
     border-bottom: 1px solid #e3e3e3;
 }
+
 .hanlim .tabBox.noticeBox .List-Table li a {
     display: inline-block;
     width: 80%;
@@ -268,32 +376,98 @@
     overflow: hidden;
     letter-spacing: 0;
 }
+
 .hanlim .tabBox.noticeBox .List-Table li a span {
     background: #b85712;
-    color:#fff;
+    color: #fff;
     padding: 0 10px;
     border-radius: 10px;
     margin-right: 5px;
 }
+
 .hanlim .willbesNumber ul li {
     margin-left: 40px;
     vertical-align: top;
 }
 
 /*대표 강의 맛보기*/
-.hanlim .lectureBestWrap {background:#f0eee3; padding:100px 0}
-.hanlim .lectureBestWrap .f_left {background: url("https://static.willbes.net/public/images/promotion/main/2005/2005_img02.png") no-repeat center 0; float:left; height:270px; font-size:16px; width:180px}
-.hanlim .lectureBestWrap .f_left div {margin-top:170px; margin-left:30px}
-.hanlim .lectureBestWrap .f_left a {display:block; width:120px; margin:20px auto 0; text-align:center; color:#fff; background:#282828; border-radius:8px; padding:10px 0; font-size:16px}
-.hanlim .lectureBestWrap .lectureBest {position:relative; width:923px; float:right}
-.hanlim .lectureBestWrap .lectureBest .lbSlider {height:270px; overflow: hidden;}
-.hanlim .lectureBestWrap .lectureBest .lbSlider li {display: inline; float:left;}
-.hanlim .lectureBestWrap .lectureBest .lbSlider li a {display:block;} 
-.hanlim .lectureBestWrap .lectureBest .lbSlider li a div {text-align: center; margin-top:10px}
-.hanlim .lectureBestWrap .lectureBest .lbSlider:after {content: ""; display: block; clear:both}
-.hanlim .lectureBestWrap .lectureBest p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
-.hanlim .lectureBestWrap .lectureBest p.leftBtn {left:-30px}
-.hanlim .lectureBestWrap .lectureBest p.rightBtn {right:-50px}
+.hanlim .lectureBestWrap {
+    background: #f0eee3;
+    padding: 100px 0
+}
+
+.hanlim .lectureBestWrap .f_left {
+    background: url("https://static.willbes.net/public/images/promotion/main/2005/2005_img02.png") no-repeat center 0;
+    float: left;
+    height: 270px;
+    font-size: 16px;
+    width: 180px
+}
+
+.hanlim .lectureBestWrap .f_left div {
+    margin-top: 170px;
+    margin-left: 30px
+}
+
+.hanlim .lectureBestWrap .f_left a {
+    display: block;
+    width: 120px;
+    margin: 20px auto 0;
+    text-align: center;
+    color: #fff;
+    background: #282828;
+    border-radius: 8px;
+    padding: 10px 0;
+    font-size: 16px
+}
+
+.hanlim .lectureBestWrap .lectureBest {
+    position: relative;
+    width: 923px;
+    float: right
+}
+
+.hanlim .lectureBestWrap .lectureBest .lbSlider {
+    height: 270px;
+    overflow: hidden;
+}
+
+.hanlim .lectureBestWrap .lectureBest .lbSlider li {
+    display: inline;
+    float: left;
+}
+
+.hanlim .lectureBestWrap .lectureBest .lbSlider li a {
+    display: block;
+}
+
+.hanlim .lectureBestWrap .lectureBest .lbSlider li a div {
+    text-align: center;
+    margin-top: 10px
+}
+
+.hanlim .lectureBestWrap .lectureBest .lbSlider:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+.hanlim .lectureBestWrap .lectureBest p {
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+    width: 44px;
+    height: 45px;
+    z-index: 10
+}
+
+.hanlim .lectureBestWrap .lectureBest p.leftBtn {
+    left: -30px
+}
+
+.hanlim .lectureBestWrap .lectureBest p.rightBtn {
+    right: -50px
+}
 
 .hanlim .will-acadTit {
     font-size: 19px;
@@ -301,137 +475,502 @@
     color: #363636;
     line-height: 60px;
 }
+
 .hanlim .will-acadTit span {
     vertical-align: baseline;
 }
 
-/*오시는길
-.hanlim .loadMap .noticeTabs {
-	width: 100% !important;
-}
-.hanlim .loadMap .map_img {
-	position: relative;
-	float: left !important;
-	width: 698px;
-	height: 328px;
-	overflow: hidden;
-}
-.hanlim .loadMap .map_img img {
-	position: absolute;
-	left: 50%;
-	margin-left: -349px;
+/*고등고시 공통*/
+.thisMonth {
+    margin-top: 30px
 }
 
-.hanlim .loadMap .campus_info {
-	position: relative;
-	float: right !important;
-	width: 320px;
-	height: 328px;
-}
-.hanlim .loadMap .campus_info dl dt {
-	border-top: 1px solid #e3e3e3;
-	padding: 25px 0;
-}
-.hanlim .loadMap .campus_info dl dt:first-child {
-	border-top: none;
-	padding: 0 0 25px;
-}
-.hanlim .loadMap .campus_info .btn a {
-	display: inline-block;
-	font-size: 17px;
-	font-weight: bold;
-	height: 40px;
-	line-height: 40px;
-	padding: 0;
-	width: 168px;
-	margin-right: 5px;
-	color: #000;
-	text-align: center;
-	border: 1px solid #000;
-}*/
-
-.hanlim .willbesNumber {
-	padding: 30px 0 0 0;
-}
-.hanlim .willbesNumber ul li {
-    margin-left: 40px !important;
+.thisMonth .thisMonthBox {
+    position: relative;
+    height: 234px;
+    width: 1120px;
+    margin: 0 auto;
 }
 
-/*
+.thisMonth .tmslider {
+    width: 1120px;
+    margin: 0 auto;
+    height: 234px;
+    overflow: hidden;
+}
+
+.thisMonth .tmslider li {
+    display: inline;
+    float: left;
+    width: 25%;
+    overflow: hidden;
+    position: relative;
+}
+
+.thisMonth .tmslider li a {
+    display: block;
+    text-align: right;
+    height: 234px;
+    overflow: hidden;
+    background: #ba9e7d;
+    color: #fff;
+}
+
+.thisMonth .tmslider li a img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    -webkit-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, .5));
+    -moz-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, .5));
+    -ms-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, .5));
+    -o-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, .5));
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, .5));
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    transition: 0.2s all ease;
+    -webkit-transition: 0.2s all ease;
+    -moz-transition: 0.2s all ease;
+    -ms-transition: 0.2s all ease;
+    -o-transition: 0.2s all ease;
+}
+
+.thisMonth .tmslider li a:hover img {
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 0.2s all ease;
+    -webkit-transition: 0.2s all ease;
+    -moz-transition: 0.2s all ease;
+    -ms-transition: 0.2s all ease;
+    -o-transition: 0.2s all ease;
+}
+
+.thisMonth .tmslider li a div {
+    position: absolute;
+    left: 25px;
+    width: 170px;
+    text-align: left;
+    z-index: 5;
+    line-height: 1.4;
+
+}
+
+.thisMonth .tmslider li a div:nth-of-type(1) {
+    top: 40px;
+    font-size: 16px;
+}
+
+.thisMonth .tmslider li a span {
+    font-size: 32px;
+    font-weight: 600;
+    display: block;
+}
+
+.thisMonth .tmslider li a div:nth-of-type(2) {
+    bottom: 30px;
+    color: #fff;
+    font-size: 14px;
+    text-shadow: 1px 1px 1px #3b2812;
+    width: 170px;
+    height: 40px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.thisMonth .tmslider:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+.thisMonth .thisMonthBox p {
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+    width: 44px;
+    height: 45px;
+    z-index: 10
+}
+
+.thisMonth .thisMonthBox p.leftBtn {
+    left: -30px
+}
+
+.thisMonth .thisMonthBox p.rightBtn {
+    right: -50px
+}
+
+.hanlim .preview {
+    margin-top: 30px
+}
+
+.hanlim .preview .previewBox {
+    position: relative;
+    height: 250px;
+    width: 1120px;
+    margin: 0 auto;
+}
+
+.hanlim .preview .pvslider {
+    width: 1120px;
+    margin: 0 auto;
+    height: 250px;
+    overflow: hidden;
+}
+
+.hanlim .preview .pvslider li {
+    display: inline;
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+
+.hanlim .preview .pvslider li a {
+    display: block;
+    width: 357px;
+    height: 250px;
+    overflow: hidden;
+    background: url("https://static.willbes.net/public/images/promotion/main/2005/btn_play.jpg") no-repeat;
+    color: #fff
+}
+
+.hanlim .preview .pvslider li a img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    -webkit-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, .5));
+    -moz-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, .5));
+    -ms-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, .5));
+    -o-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, .5));
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, .5));
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    transition: 0.2s all ease;
+    -webkit-transition: 0.2s all ease;
+    -moz-transition: 0.2s all ease;
+    -ms-transition: 0.2s all ease;
+    -o-transition: 0.2s all ease;
+}
+
+.hanlim .preview .pvslider li a:hover img {
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 0.2s all ease;
+    -webkit-transition: 0.2s all ease;
+    -moz-transition: 0.2s all ease;
+    -ms-transition: 0.2s all ease;
+    -o-transition: 0.2s all ease;
+}
+
+.hanlim .preview .pvslider li a div {
+    position: absolute;
+    top: 40px;
+    left: 25px;
+    width: 60%;
+    font-size: 14px;
+    text-align: left;
+    z-index: 5;
+    line-height: 1.5;
+}
+
+.hanlim .preview .pvslider li a div strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px
+}
+
+.hanlim .preview .pvslider:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+.hanlim .preview .previewBox p {
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+    width: 44px;
+    height: 45px;
+    z-index: 10
+}
+
+.hanlim .preview .previewBox p.leftBtn {
+    left: -30px
+}
+
+.hanlim .preview .previewBox p.rightBtn {
+    right: -50px
+}
+
+/* Main Container : Notice : noticeTabs */
+.hanlim .noticeTabs {
+    width: 345px !important;
+    float: left;
+    margin-right: 40px;
+}
+
+.hanlim .tabBox.noticeBox {
+    margin-top: -30px;
+}
+
+.hanlim .tabBox.noticeBox a.btn-add {
+    position: absolute;
+    top: -16px;
+    right: 0;
+}
+
+.hanlim .tabBox.noticeBox .List-Table {
+    width: 100%;
+}
+
+.hanlim .tabBox.noticeBox .List-Table li {
+    position: relative;
+    font-size: 13px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.hanlim .tabBox.noticeBox .List-Table li a {
+    display: inline-block;
+    width: 80%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0;
+}
+
+.hanlim .tabBox.noticeBox .List-Table li a span {
+    background: #b85712;
+    color: #fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.hanlim .bnSt02 {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hanlim .bnLeft {
+    width: 720px;
+    height: 90px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-right: 20px
+}
+
+.hanlim .bnRight {
+    width: 380px;
+    height: 90px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.hanlim .Section .will-listTit {
+    margin-bottom: 10px;
+}
+
+.hanlim .tabBox.noticeBox {
+    margin-top: 0px;
+}
+
+.hanlim .tabBox.noticeBox a.btn-add {
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
+
+.hanlim .tabBox.noticeBox .List-Table {
+    width: 100%;
+    border-top: 2px solid #000;
+    padding: 0
+}
+
+.lecBanner {
+    background: #f4f4f4;
+    padding: 90px 0;
+}
+
+.lecBanner .copyTit {
+    text-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.3);
+    text-align: left
+}
+
+.lecBanner li {
+    display: inline;
+    float: left;
+    width: 25%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.lecBanner li a {
+    display: block;
+    width: 260px;
+    margin: 0 auto;
+    height: 325px;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.lecBanner li a img {
+    width: 100%;
+}
+
+.lecBanner li a:hover {
+    -webkit-box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.5);
+}
+
+.lecBanner ul:hover a:not(:hover) {
+    opacity: 0.4;
+}
+
+
 .hanlim .MainQuickMenu {
     position: fixed;
-    top: 80px;
+    top: 180px;
     right: 10px;
-    width: 160px;
-    height: auto;    
+    width: 150px;
+    height: auto;
     z-index: 100;
 }
-*/
+
+.hanlim .Section1 {
+    background: #fff;
+    padding: 90px 0 120px;
+}
+
+.hanlim .willbesNumber {
+    padding: 30px 0 0 0;
+}
+
+.hanlim .willbesNumber ul li {
+    margin-left: 40px !important;
+    vertical-align: top;
+}
+
+
 
 /**************************************************************************************/
 
 
 /*국립외교원*/
-.hl3095 .menu-List .Tit,
-.hl3095 .Menu .menu-List li.gosi > a,
-.hl3095 .Depth .depth:last-child strong,
-.hl3095 .tx-color {color: #70b04c;}
-.hl3095 .uploadLec {border: 4px solid #70b04c;}
-.hl3095 .tabBox.noticeBox .List-Table li a span {background: #70b04c;}
-.hl3095 .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.hl3095 .bx-wrapper .bx-pager.bx-default-pager a.active,
-.hl3095 .bx-wrapper .bx-pager.bx-default-pager a:focus {
+.hanlim3095 .menu-List .Tit,
+.hanlim3095 .Menu .menu-List li.gosi>a,
+.hanlim3095 .Depth .depth:last-child strong,
+.hanlim3095 .tx-color {
+    color: #70b04c;
+}
+
+.hanlim3095 .uploadLec {
+    border: 4px solid #70b04c;
+}
+
+.hanlim3095 .tabBox.noticeBox .List-Table li a span {
+    background: #70b04c;
+}
+
+.hanlim3095 .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.hanlim3095 .bx-wrapper .bx-pager.bx-default-pager a.active,
+.hanlim3095 .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #70b04c !important;
 }
 
 /*5급PSAT*/
-.hl3096 .menu-List .Tit,
-.hl3096 .Menu .menu-List li.gosi > a,
-.hl3096 .Depth .depth:last-child strong,
-.hl3096 .tx-color {color: #6440b3;}
-.hl3096 .uploadLec {border: 4px solid #6440b3;}
-.hl3096 .tabBox.noticeBox .List-Table li a span {background: #6440b3;}
-.hl3096 .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.hl3096 .bx-wrapper .bx-pager.bx-default-pager a.active,
-.hl3096 .bx-wrapper .bx-pager.bx-default-pager a:focus {
+.hanlim3096 .menu-List .Tit,
+.hanlim3096 .Menu .menu-List li.gosi>a,
+.hanlim3096 .Depth .depth:last-child strong,
+.hanlim3096 .tx-color {
+    color: #6440b3;
+}
+
+.hanlim3096 .uploadLec {
+    border: 4px solid #6440b3;
+}
+
+.hanlim3096 .tabBox.noticeBox .List-Table li a span {
+    background: #6440b3;
+}
+
+.hanlim3096 .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.hanlim3096 .bx-wrapper .bx-pager.bx-default-pager a.active,
+.hanlim3096 .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #6440b3 !important;
 }
 
 /*5급헌법*/
-.hl3097 .menu-List .Tit,
-.hl3097 .Menu .menu-List li.gosi > a,
-.hl3097 .Depth .depth:last-child strong,
-.hl3097 .tx-color {color: #142596;}
-.hl3097 .uploadLec {border: 4px solid #142596;}
-.hl3097 .tabBox.noticeBox .List-Table li a span {background: #142596;}
-.hl3097 .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.hl3097 .bx-wrapper .bx-pager.bx-default-pager a.active,
-.hl3097 .bx-wrapper .bx-pager.bx-default-pager a:focus {
+.hanlim3097 .menu-List .Tit,
+.hanlim3097 .Menu .menu-List li.gosi>a,
+.hanlim3097 .Depth .depth:last-child strong,
+.hanlim3097 .tx-color {
+    color: #142596;
+}
+
+.hanlim3097 .uploadLec {
+    border: 4px solid #142596;
+}
+
+.hanlim3097 .tabBox.noticeBox .List-Table li a span {
+    background: #142596;
+}
+
+.hanlim3097 .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.hanlim3097 .bx-wrapper .bx-pager.bx-default-pager a.active,
+.hanlim3097 .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #142596 !important;
 }
 
 /*법원행시*/
-.hl3098 .menu-List .Tit,
-.hl3098 .Menu .menu-List li.gosi > a,
-.hl3098 .Depth .depth:last-child strong,
-.hl3098 .tx-color {color: #20755e;}
-.hl3098 .uploadLec {border: 4px solid #20755e;}
-.hl3098 .tabBox.noticeBox .List-Table li a span {background: #20755e;}
-.hl3098 .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.hl3098 .bx-wrapper .bx-pager.bx-default-pager a.active,
-.hl3098 .bx-wrapper .bx-pager.bx-default-pager a:focus {
+.hanlim3098 .menu-List .Tit,
+.hanlim3098 .Menu .menu-List li.gosi>a,
+.hanlim3098 .Depth .depth:last-child strong,
+.hanlim3098 .tx-color {
+    color: #20755e;
+}
+
+.hanlim3098 .uploadLec {
+    border: 4px solid #20755e;
+}
+
+.hanlim3098 .tabBox.noticeBox .List-Table li a span {
+    background: #20755e;
+}
+
+.hanlim3098 .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.hanlim3098 .bx-wrapper .bx-pager.bx-default-pager a.active,
+.hanlim3098 .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #20755e !important;
 }
 
 /*변호사시험*/
-.hl3099 .menu-List .Tit,
-.hl3099 .Menu .menu-List li.gosi > a,
-.hl3099 .Depth .depth:last-child strong,
-.hl3099 .tx-color {color: #bf112b;}
-.hl3099 .uploadLec {border: 4px solid #bf112b;}
-.hl3099 .tabBox.noticeBox .List-Table li a span {background: #bf112b;}
-.hl3099 .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.hl3099 .bx-wrapper .bx-pager.bx-default-pager a.active,
-.hl3099 .bx-wrapper .bx-pager.bx-default-pager a:focus {
+.hanlim3099 .menu-List .Tit,
+.hanlim3099 .Menu .menu-List li.gosi>a,
+.hanlim3099 .Depth .depth:last-child strong,
+.hanlim3099 .tx-color {
+    color: #bf112b;
+}
+
+.hanlim3099 .uploadLec {
+    border: 4px solid #bf112b;
+}
+
+.hanlim3099 .tabBox.noticeBox .List-Table li a span {
+    background: #bf112b;
+}
+
+.hanlim3099 .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.hanlim3099 .bx-wrapper .bx-pager.bx-default-pager a.active,
+.hanlim3099 .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #bf112b !important;
 }

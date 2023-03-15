@@ -1,11 +1,30 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+<style>
+/* Main Container : MainVisual */
+.hanlim .MainVisual {
+    position: relative;
+    width: 1120px;
+    margin:40px auto 0;
+    height: 360px;
+}
+
+.hanlim .VisualBox {
+    width:1120px;  
+    height: 360px;
+    overflow: hidden;
+  }
+.hanlim .VisualBox img {
+    height: 360px;
+}
+</style>
     <!-- Container -->
-    <div id="Container" class="Container hanlim{{$__cfg['CateCode']}} NSK c_both">
+    <div id="Container" class="Container hanlim hanlim{{$__cfg['CateCode']}} NSK c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
+        {{--
         <div class="Section p_re">
             <div class="MainVisual NSK">
                 <div class="VisualBox">
@@ -23,10 +42,39 @@
                 </div>
             </div>
         </div>
+        --}}
 
-        <div class="Section mt20">
-            <div class="widthAuto">
-                {!! banner_html(element('메인_띠배너', $data['arr_main_banner'])) !!}
+
+        <div class="Section">        
+            <div class="MainVisual NSK">            
+                <div class="VisualBox">
+                    <div class="bSlider">
+                        <div class="sliderStopAutoPager">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_1120x360_01.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_1120x360_02.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_1120x360_03.jpg" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </div>   
+            </div>
+        </div>
+
+        <div class="Section">
+            <div class="widthAuto bnSt02">
+                <div class="bSlider bnLeft">                    
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_720x90_01.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_720x90_02.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_720x90_03.jpg" alt="배너명"></a></div>
+                    </div>
+                </div>   
+                <div class="bSlider bnRight">
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_380x90_01.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_380x90_02.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_380x90_03.jpg" alt="배너명"></a></div>
+                    </div>
+                </div>   
             </div>
         </div>
 
@@ -37,8 +85,8 @@
             </div>
         </div>
 
-        <div class="Section mt30">
-            <div class="widthAuto">
+        <div class="Section mt50">
+            <div class="goMenu">
                 {{-- 학원수강신청, 학원보강, 강의실배정표, 신규동영상안내, 무료특강, 강의자료실 버튼 --}}
                 @include('willbes.pc.site.main_partial.content_menu_' . $__cfg['SiteCode'] . '_' . $__cfg['CateCode'])
             </div>
@@ -47,8 +95,8 @@
         <div class="Section lecBanner mt50">
             <div class="widthAuto">
                 <div class="copyTit NSK-Thin mb50">
-                    꿈을 향한 소중한 첫 걸음부터, <strong class="NSK-Black"><span class="tx-color">합격의 순간</span></strong>까지!<br />
-                    29년을 이어온 대표전문학원, <strong class="NSK-Black"><span class="tx-color">윌비스 한림법학원</span></strong>이 함께 합니다!!
+                    꿈을 향한 소중한 첫 걸음부터 합격의 순간까지!<br />
+                    <strong class="NSK-Black">32년을 이어온 대표전문학원, 윌비스 한림법학원이 함께 합니다!!</strong>
                 </div>
                 <ul>
                     @if(empty($data['arr_main_banner']['메인_리스트']) === false)
@@ -64,9 +112,9 @@
 
         {{--이달의 강의 / 강의맛보기 --}}
         <div class="Section Section1">
-            <div>
+            <div class="widthAuto">
                 <div class="copyTit">
-                    <strong class="NSK-Black">WILLBES 한림법학원</strong> <strong class="NSK-Black"><span class="tx-color">이달의 강의</span></strong>
+                윌비스 한림법학원 <strong class="NSK-Black">이달의 강의</strong>
                 </div>
                 <div class="thisMonth NSK">
                     <div class="thisMonthBox">
@@ -91,7 +139,7 @@
                 </div>
 
                 <div class="copyTit mt100">
-                    <strong class="NSK-Black">윌비스</strong> <strong class="NSK-Black"><span class="tx-color">대표 강의 맛보기</span></strong>
+                    윌비스 한림법학원 <strong class="NSK-Black">대표 강의 맛보기</strong>
                 </div>
                 <div class="preview NSK">
                     <div class="previewBox">

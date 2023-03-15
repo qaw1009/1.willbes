@@ -6,6 +6,7 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
+            margin-top:0 !important;
             padding:0 !important;
             background:#fff;
         }
@@ -14,8 +15,8 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
 
         /************************************************************/ 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2022/10/2794_top_bg.jpg) no-repeat center top; height:1003px}
-        .evtTop p {font-size:70px; position: absolute; width:1000px; left:50%; margin-left:-500px; bottom:100px; color:#fff; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite; letter-spacing:-1px; text-align:center; z-index: 1;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2023/03/2926_top_bg.jpg) no-repeat center top;}
+        .evtTop span {position: absolute; left:50%; margin-left:240px; top: 650px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite; letter-spacing:-1px; text-align:center; z-index: 2;}
         @@keyframes upDown{
             from{color:#fff}
             50%{color:#ffe87d; scale:1.1}
@@ -27,26 +28,24 @@
             to{color:#fff}
         }
 
-        .evt01 {background:#fff}
+        .evt01 {background:#5c32cf}
 
-        .evt02 {background:url(https://static.willbes.net/public/images/promotion/2022/10/2794_02_bg.jpg) no-repeat center top;}
+        .evt02 {background:#1f2a3c}
 
-        .evt03 {background:#F2F2F2}
+        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2023/03/2926_03_bg.jpg) no-repeat center top;}
 
-        .evt05 {background:#efefef}
-
-        .evt06 {padding:100px 0}
-        .evt06 .buylec {width:1000px; margin:0 auto; font-size:24px; line-height:1.5;}
-        .evt06 .buylec p {font-size:58px; margin-bottom:30px}
-        .evt06 .buylec span {color:#484baf}
-        .evt06 .buylec div {display:flex; justify-content: center; }
-        .evt06 .buylec a {height:100%; width:40%; text-align:center; display:block; font-size:26px; font-weight:bold; color:#fff; background:#555edf; margin:0 10px; padding:20px; border-radius:10px}
-        .evt06 .buylec a:last-child {background:#792886}
-        .evt06 .buylec2 span {color:#cf3c3c}
-        .evt06 .buylec2 a {background:#0dabbe}
-        .evt06 .buylec2 a:last-child {background:#cf3c3c}
-        .evt06 .buylec a:hover {background:#000}
-        
+        .evt05 {background:url(https://static.willbes.net/public/images/promotion/2023/03/2926_05_bg.jpg) no-repeat center top;}
+        .evt06 {padding:150px 0}
+        .evt06 a:hover {display:inline-block;
+            box-shadow:
+                2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+                6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+                12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+                22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+                41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+                100px 100px 80px rgba(0, 0, 0, 0.07)
+            ;
+        }        
     </style>
 
     <div id="Container" class="Container gosi NGR c_both">
@@ -175,52 +174,45 @@
         </div>
 -->
 
+<div class="evtContent NSK">
 
-    <div class="evtContent NSK">
+<div class="evtCtnsBox evtTop" data-aos="fade-up">
+    <img src="https://static.willbes.net/public/images/promotion/2023/03/2926_top.jpg" alt="Advanced PSAT Class" />
+    <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2926_top_01.png" alt="마감유의" /></span>
+</div>
 
-        <div class="evtCtnsBox evtTop" data-aos="fade-up">
-            <p class="NSK-Black">"선착순 150명 마감"</p>
-        </div>
+<div class="evtCtnsBox evt01" data-aos="fade-up">
+    <img src="https://static.willbes.net/public/images/promotion/2023/03/2926_01.jpg" alt="" />   
+</div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-right">
-            <img src="https://static.willbes.net/public/images/promotion/2022/10/2794_01.jpg" alt="실강 단과반 전격 개설 합격이벤트" />   
-        </div>
+<div class="evtCtnsBox evt02" data-aos="fade-up">
+    <img src="https://static.willbes.net/public/images/promotion/2023/03/2926_02.jpg" alt="" />   
+</div>
 
-        <div class="evtCtnsBox evt02" data-aos="fade-left">
-            <img src="https://static.willbes.net/public/images/promotion/2022/10/2794_02.jpg" alt="특전" />   
-        </div>
+<div class="evtCtnsBox evt03" data-aos="fade-up">
+    <img src="https://static.willbes.net/public/images/promotion/2023/03/2926_03.jpg" alt="" />   
+</div>
 
-        <div class="evtCtnsBox evt03" data-aos="fade-right">
-            <img src="https://static.willbes.net/public/images/promotion/2022/10/2794_03.jpg" alt="10.17(월)부터 실강 진행" />   
-        </div>
+<div class="evtCtnsBox evt04" data-aos="fade-up">
+    <img src="https://static.willbes.net/public/images/promotion/2023/03/2926_04.jpg" alt="" /> 
+</div>
 
-        <div class="evtCtnsBox evt04" data-aos="fade-left">
-            <img src="https://static.willbes.net/public/images/promotion/2022/10/2794_04.jpg" alt="강의특징" /> 
-        </div>
+<div class="evtCtnsBox evt05" data-aos="fade-up">
+    <img src="https://static.willbes.net/public/images/promotion/2023/03/2926_05.jpg" alt="" /> 
+</div>
 
-        <div class="evtCtnsBox evt05" data-aos="fade-left">
-            <img src="https://static.willbes.net/public/images/promotion/2022/10/2794_05.jpg" alt="교수진" /> 
-        </div>
+<div class="evtCtnsBox evt06">
+    <div data-aos="fade-left"><img src="https://static.willbes.net/public/images/promotion/2023/03/2926_06_01.jpg" alt="" /></div>
+    <div data-aos="fade-right"><img src="https://static.willbes.net/public/images/promotion/2023/03/2926_06_02.jpg" alt="" /></div>
+    <div data-aos="fade-left"><img src="https://static.willbes.net/public/images/promotion/2023/03/2926_06_03.jpg" alt="" /></div>
+    <div data-aos="fade-right"><img src="https://static.willbes.net/public/images/promotion/2023/03/2926_06_04.jpg" alt="" /></div>
+    <div class="mt80" data-aos="fade-left"><a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3143&course_idx=1436" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/03/2926_06_05.jpg" alt="학원강의 신청" /></a></div>
+    <div class="mt30" data-aos="fade-right"><a href="https://pass.willbes.net/lecture/index/cate/3103/pattern/only?search_order=regist&subject_idx=&course_idx=1365&school_year=2023" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/03/2926_06_06.jpg" alt="동영상강의 신청" /></a></div>
+</div>
 
-        <div class="evtCtnsBox evt06" data-aos="fade-left">
-            <div class="buylec">
-                합격을 위한 이유 있는 선택!
-                <p class="NSK-Black">MAIN <span>PSAT</span> CLASS <span>기본이론강의</span></p>
-                <div>
-                    <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3143&course_idx=1427" target="_blank">학원 실강 수강신청 ></a>
-                    <a href="https://pass.willbes.net/lecture/index/cate/3103/pattern/only?search_order=regist&subject_idx=&course_idx=1364&school_year=2022" target="_blank">동영상 강의 수강신청 ></a>
-                </div>
-            </div>
-            <div class="buylec buylec2 mt100">
-                시작부터 끝까지 최고와 함께!
-                <p class="NSK-Black">Perfect <span>PSAT</span> Program <span>PASS</span></p>
-                <div>
-                    <a href="https://pass.willbes.net/pass/offPackage/show/prod-code/201485" target="_blank">학원 실강 수강신청 ></a>
-                    <a href="https://pass.willbes.net/Package/index/cate/3103/pack/648001" target="_blank">동영상 강의 수강신청 ></a>
-                </div>
-            </div>
-        </div>
-    </div>
+
+
+</div>
     <!-- End Container -->
 
 

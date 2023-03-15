@@ -105,12 +105,12 @@
 </style>
 <!-- Container -->
 
-<div id="Container" class="Container hanlim hanlim3098 NSK c_both">
+<div id="Container" class="Container hanlim hanlim3099 NSK c_both">
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">고등고시<span class="row-line">|</span></li>
-                <li class="subTit">법원행시</li>
+                <li class="subTit">변호사시험</li>
             </ul>
             <ul class="menu-List">
                 <li class="dropdown">
@@ -481,8 +481,8 @@
             <div class="will-acadTit">윌비스 <span class="tx-color">한림법학원</span></div>
             <div class="noticeTabs campus c_both">
                 <ul class="tabWrap noticeWrap_campus">
-                    <li><a href="#campus1" class="on">신림(본원)</a><span class="row-line">|</span></li>
-                    <li><a href="#campus2" class="">강남(분원)</a></li>
+                    <li><a href="#campus1" class="">신림(본원)</a><span class="row-line">|</span></li>
+                    <li><a href="#campus2" class="on">강남(분원)</a></li>
                 </ul>
                 <div class="tabBox noticeBox_campus">
                     <div id="campus1" class="tabContent">
@@ -493,13 +493,13 @@
                         <div class="campus_info">
                             <dl>
                                 <dt>
-                                    <div class="c-tit"><span class="tx-color">신림(본원)</span> 학원 오시는 길</div>
+                                    <div class="c-tit"><span class="tx-color">강남(본원)</span> 학원 오시는 길</div>
                                     <div class="c-info">
                                         <div class="address">
                                             <span class="a-tit">주소</span>
                                             <span>
-                                                서울 관악구 신림로 23길 16 일성트루엘 4층<br/>
-                                                (신림동 1523-1)
+                                                서울 강남구 테헤란로19길 18<br/>
+                                                (역삼동 645-12)
                                             </span>
                                         </div>
                                         <div class="tel">

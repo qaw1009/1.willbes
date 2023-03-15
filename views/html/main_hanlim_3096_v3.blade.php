@@ -105,12 +105,12 @@
 </style>
 <!-- Container -->
 
-<div id="Container" class="Container hanlim hanlim3094 NSK c_both">
+<div id="Container" class="Container hanlim hanlim3096 NSK c_both">
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">고등고시<span class="row-line">|</span></li>
-                <li class="subTit">5급행정(입법고시)</li>
+                <li class="subTit">5급PSAT</li>
             </ul>
             <ul class="menu-List">
                 <li class="dropdown">

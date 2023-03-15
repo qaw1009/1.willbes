@@ -133,7 +133,7 @@
 
 
 .ssam .profEvtBanner {width:1120px; margin:50px auto 30px; position:relative;}
-.ssam .profEvtBanner .title {margin-bottom:10px; text-align:left; font-size:18px; font-weight:bold; height:26px; line-height:26px; letter-spacing:0}
+.ssam .profEvtBanner .title {margin-bottom:25px; text-align:left; font-size:18px; font-weight:bold; height:26px; line-height:26px; letter-spacing:0}
 .ssam .profEvtBanner .title strong {font-size:14px;}
 .ssam .profEvtBanner .title span {font-size:18px;}
 .ssam .profEvtBanner .bx-wrapper {max-width:1120px !important; position:relative;}

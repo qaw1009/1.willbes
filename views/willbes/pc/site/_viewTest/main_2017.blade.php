@@ -130,7 +130,7 @@
 .ssam .Layer-hnyoutube iframe {width:860px; height:484px}
 
 .ssam .profEvtBanner {width:1120px; margin:50px auto 30px; position:relative;}
-.ssam .profEvtBanner .title {margin-bottom:10px; text-align:left; font-size:18px; font-weight:bold; height:26px; line-height:26px; letter-spacing:0}
+.ssam .profEvtBanner .title {margin-bottom:25px; text-align:left; font-size:18px; font-weight:bold; height:26px; line-height:26px; letter-spacing:0}
 .ssam .profEvtBanner .bx-wrapper {max-width:1120px !important; position:relative;}
 .ssam .profEvtBanner .profEvt {height:250px !important; overflow: hidden; display:flex}
 .ssam .profEvtBanner .profEvt > div {margin-right:15px; font-weight:bold; line-height:1.4; }

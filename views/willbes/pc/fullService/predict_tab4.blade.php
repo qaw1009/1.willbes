@@ -64,15 +64,11 @@
     <tr class="bold">
         <td dir="ltr" width="141">{{date('Y')}}년 합격컷 예상</td>
         <td dir="ltr" width="141">{{date('Y')-1}}년 합격컷</td>
-        {{--<td dir="ltr" width="141">내 점수</td>--}}
         <td dir="ltr" width="141">상위 20%컷</td>
-        {{--<td dir="ltr" width="141">합격 여부 예측</td>--}}
     </tr>
     <tr>
         <td dir="ltr" width="141">{{(empty($fullservice_data['StrongAvrPoint1']) === true ? '집계중' : $fullservice_data['StrongAvrPoint1'].'점')}}</td>
         <td dir="ltr" width="141">{{(empty($fullservice_data['PassLineAgo']) === true ? '집계중' : $fullservice_data['PassLineAgo'].'점')}}</td>
-        {{--<td dir="ltr" width="141">{{$fullservice_data['TotalMyOrgPoint']}}점</td>--}}
         <td dir="ltr" width="141">{{$fullservice_data['TotalTop20AvgOrgPoint']}}점</td>
-        {{--<td dir="ltr" width="141" class="{{($fullservice_data['IsPass'] == 'Y' ? '' : 'wrong')}}">{{($fullservice_data['IsPass'] == 'Y' ? '합격' : '불합격')}}</td>--}}
     </tr>
 </table>

@@ -1089,77 +1089,33 @@ class FullServiceFModel extends WB_Model
     public function fullServiceForResult($predict_idx = '', $pr_idx = '')
     {
         $column = "
-            t.PredictIdx, t.PrIdx, t.TotalMyOrgPoint, t.TotalTop10AvgOrgPoint, t.TotalTop20AvgOrgPoint, t.TakeMockPart, t.TakeArea
+            r.PredictIdx, r.PrIdx, r.TakeMockPart, r.TakeArea
             ,gl.StabilityAvrPoint, gl.StrongAvrPoint2, gl.StrongAvrPoint1, gl.ExpectAvrPoint2, gl.ExpectAvrPoint1, gl.PassLineAgo
-            ,IF (gl.StrongAvrPoint2 <= t.TotalMyOrgPoint && gl.StabilityAvrPoint >= t.TotalMyOrgPoint, 'Y', 'N') AS IsPass
+            ,r.TotalMyOrgPoint
+            ,(
+                SELECT ROUND(AVG(p.OrgPoint),2) AS Top20AvgOrgPoint
+                FROM (
+                    SELECT a.PredictIdx, a.TakeMockPart, b.OrgPoint, PERCENT_RANK() OVER (PARTITION BY b.PredictIdx ORDER BY b.OrgPoint DESC) PaperPercRank
+                    FROM (
+                        SELECT PredictIdx, TakeMockPart
+                        FROM {$this->_table['predict_register']}
+                        WHERE PredictIdx = {$predict_idx} AND PrIdx = {$pr_idx}
+                    ) AS a
+                    INNER JOIN {$this->_table['predict_grades_origin']} AS b ON a.PredictIdx = b.PredictIdx AND a.TakeMockPart = b.TakeMockPart
+                ) AS p
+                WHERE p.PredictIdx = r.PredictIdx AND p.TakeMockPart = r.TakeMockPart
+                AND p.PaperPercRank BETWEEN 0 AND (20 / 100)
+            ) AS TotalTop20AvgOrgPoint
+            ,IF (gl.StrongAvrPoint2 <= r.TotalMyOrgPoint && gl.StabilityAvrPoint >= r.TotalMyOrgPoint, 'Y', 'N') AS IsPass
         ";
         $from = "
             FROM (
-                SELECT tAvg.PredictIdx, tAvg.PrIdx
+                SELECT tAvg.PredictIdx, tAvg.PrIdx, tAvg.TakeMockPart, tAvg.TakeArea
                 ,ROUND(AVG(tAvg.MyOrgPoint),2) AS TotalMyOrgPoint
-                ,ROUND(AVG(tAvg.Top10AvgOrgPoint),2) AS TotalTop10AvgOrgPoint
-                ,ROUND(AVG(tAvg.Top20AvgOrgPoint),2) AS TotalTop20AvgOrgPoint
-                ,tAvg.TakeMockPart, tAvg.TakeArea
                 FROM (
                     SELECT a.PredictIdx, a.PrIdx, a.MyOrgPoint, a.TakeMockPart, a.TakeArea
-                    ,(
-                        SELECT T.Top10AvgOrgPoint
-                        FROM (
-                            SELECT A.PredictIdx, A.GroupBy, ROUND(AVG(A.OrgPoint),2) AS Top10AvgOrgPoint
-                            FROM (
-                                SELECT a.PredictIdx, a.PpIdx, a.GroupBy, a.OrgPoint
-                                    ,PERCENT_RANK() OVER (PARTITION BY a.GroupBy ORDER BY a.OrgPoint DESC) PaperPercRank
-                                FROM (
-                                    SELECT a.PredictIdx, a.PpIdx, c.GroupBy, IF(a.OrgPoint >= {$this->_cut_line}, a.OrgPoint + pr.AddPoint, a.OrgPoint) AS OrgPoint
-                                    FROM {$this->_table['predict_grades_origin']} AS a
-                                    INNER JOIN {$this->_table['predict_register']} AS pr ON a.PredictIdx = pr.PredictIdx AND a.PrIdx = pr.PrIdx
-                                    INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
-                                    INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode AND c.IsStatus = 'Y' AND c.IsUse = 'Y'
-                                    WHERE a.PredictIdx = {$predict_idx}
-                                    AND b.PpIdx IN (
-                                        SELECT a.PpIdx
-                                        FROM {$this->_table['predict_paper']} AS a
-                                        INNER JOIN {$this->_table['predict_register_r_code']} AS b ON a.SubjectCode = b.SubjectCode
-                                        WHERE a.PredictIdx = {$predict_idx} AND b.PrIdx = {$pr_idx}
-                                        AND a.IsStatus = 'Y' AND a.IsUse = 'Y'
-                                    )
-                                ) AS a
-                            ) AS A
-                            WHERE A.PaperPercRank BETWEEN 0 AND (10 / 100)
-                            GROUP BY A.GroupBy
-                        ) AS T 
-                        WHERE a.PredictIdx = T.PredictIdx AND a.GroupBy = T.GroupBy
-                    ) AS Top10AvgOrgPoint
-                    ,(
-                        SELECT T.Top20AvgOrgPoint
-                        FROM (
-                            SELECT A.PredictIdx, A.GroupBy, ROUND(AVG(A.OrgPoint),2) AS Top20AvgOrgPoint
-                            FROM (
-                                SELECT a.PredictIdx, a.PpIdx, a.GroupBy, a.OrgPoint
-                                    ,PERCENT_RANK() OVER (PARTITION BY a.GroupBy ORDER BY a.OrgPoint DESC) PaperPercRank
-                                FROM (
-                                    SELECT a.PredictIdx, a.PpIdx, c.GroupBy, IF(a.OrgPoint >= {$this->_cut_line}, a.OrgPoint + pr.AddPoint, a.OrgPoint) AS OrgPoint
-                                    FROM {$this->_table['predict_grades_origin']} AS a
-                                    INNER JOIN {$this->_table['predict_register']} AS pr ON a.PredictIdx = pr.PredictIdx AND a.PrIdx = pr.PrIdx
-                                    INNER JOIN {$this->_table['predict_paper']} AS b ON a.PredictIdx = b.PredictIdx AND a.PpIdx = b.PpIdx AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
-                                    INNER JOIN {$this->_table['predict_code_r_subject']} AS c ON b.PredictIdx = c.PredictIdx AND b.SubjectCode = c.SubjectCode AND c.IsStatus = 'Y' AND c.IsUse = 'Y'
-                                    WHERE a.PredictIdx = {$predict_idx}
-                                    AND b.PpIdx IN (
-                                        SELECT a.PpIdx
-                                        FROM {$this->_table['predict_paper']} AS a
-                                        INNER JOIN {$this->_table['predict_register_r_code']} AS b ON a.SubjectCode = b.SubjectCode
-                                        WHERE a.PredictIdx = {$predict_idx} AND b.PrIdx = {$pr_idx}
-                                        AND a.IsStatus = 'Y' AND a.IsUse = 'Y'
-                                    )
-                                ) AS a
-                            ) AS A
-                            WHERE A.PaperPercRank BETWEEN 0 AND (20 / 100)
-                            GROUP BY A.GroupBy
-                        ) AS T 
-                        WHERE a.PredictIdx = T.PredictIdx AND a.GroupBy = T.GroupBy
-                    ) AS Top20AvgOrgPoint
                     FROM (
-                        SELECT a.PredictIdx, a.PrIdx, a.PpIdx, c.GroupBy, IF(a.OrgPoint >= {$this->_cut_line}, a.OrgPoint + r.AddPoint, a.OrgPoint) AS MyOrgPoint
+                        SELECT a.PredictIdx, a.PrIdx, a.PpIdx, c.GroupBy, IF(a.OrgPoint >= 40, a.OrgPoint + r.AddPoint, a.OrgPoint) AS MyOrgPoint
                         ,r.TakeMockPart, r.TakeArea
                         FROM {$this->_table['predict_register']} AS r
                         INNER JOIN {$this->_table['predict_grades_origin']} AS a ON a.PredictIdx = r.PredictIdx AND a.PrIdx = r.PrIdx
@@ -1170,8 +1126,8 @@ class FullServiceFModel extends WB_Model
                     ) AS a
                 ) AS tAvg
                 GROUP BY tAvg.PredictIdx
-            ) AS t
-            LEFT JOIN {$this->_table['predict_grades_line']} AS gl ON t.PredictIdx = gl.PredictIdx AND t.TakeMockPart = gl.TakeMockPart AND t.TakeArea = gl.TakeArea
+            ) AS r
+            LEFT JOIN {$this->_table['predict_grades_line']} AS gl ON r.PredictIdx = gl.PredictIdx AND r.TakeMockPart = gl.TakeMockPart AND r.TakeArea = gl.TakeArea
         ";
         return $this->_conn->query('SELECT ' . $column . $from)->row_array();
     }

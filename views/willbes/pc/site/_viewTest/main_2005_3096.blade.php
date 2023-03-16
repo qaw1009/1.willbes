@@ -48,9 +48,10 @@
                 <div class="VisualBox">
                     <div class="bSlider">
                         <div class="sliderStopAutoPager">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_1120x360_01.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_1120x360_02.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_1120x360_03.jpg" alt="배너명"></a></div>
+                            {!! banner_html(element('메인_빅배너_V2', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
+{{--                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_1120x360_01.jpg" alt="배너명"></a></div>--}}
+{{--                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_1120x360_02.jpg" alt="배너명"></a></div>--}}
+{{--                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_1120x360_03.jpg" alt="배너명"></a></div>--}}
                         </div>
                     </div>
                 </div>   
@@ -61,16 +62,18 @@
             <div class="widthAuto bnSt02">
                 <div class="bSlider bnLeft">                    
                     <div class="slider">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_720x90_01.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_720x90_02.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_720x90_03.jpg" alt="배너명"></a></div>
+                        {!! banner_html(element('메인_서브1_V2', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
+{{--                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_720x90_01.jpg" alt="배너명"></a></div>--}}
+{{--                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_720x90_02.jpg" alt="배너명"></a></div>--}}
+{{--                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_720x90_03.jpg" alt="배너명"></a></div>--}}
                     </div>
                 </div>   
                 <div class="bSlider bnRight">
                     <div class="slider">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_380x90_01.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_380x90_02.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_380x90_03.jpg" alt="배너명"></a></div>
+                        {!! banner_html(element('메인_서브2_V2', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
+{{--                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_380x90_01.jpg" alt="배너명"></a></div>??--}}
+{{--                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_380x90_02.jpg" alt="배너명"></a></div>--}}
+{{--                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/3094/bn_380x90_03.jpg" alt="배너명"></a></div>--}}
                     </div>
                 </div>   
             </div>

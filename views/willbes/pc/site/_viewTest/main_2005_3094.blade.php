@@ -19,6 +19,7 @@
 }
 .hanlim .bnLeft {
     border: 1px solid #000;
+    background:#f4f4f4
 }
 </style>
     <!-- Container -->

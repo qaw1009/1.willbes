@@ -86,6 +86,8 @@
             font-size:12px;
             line-height: 1.4;
             color:#555556;
+            background:#fff;
+            padding-bottom:10px;
         }
         .urlWrap .snslink {
             width: 90%;
@@ -107,7 +109,6 @@
             background:#e8e6d9;
             padding:20px;
             text-align: center;
-            border-radius: 40px 40px 0 0;
         }
         .urlWrap .textarBox span {
             padding: 0 20px;
@@ -136,6 +137,7 @@
         }
         .urlWrap .url-List {
             margin-top: 1px;
+            background:#fff;
         }
         .urlWrap .url-List table {
             border-top:0;

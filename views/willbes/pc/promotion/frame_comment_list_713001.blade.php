@@ -3,7 +3,7 @@
 <style type="text/css">
 .replySection { 
     width:1000px; 
-    padding:20px;
+    padding:20px 20px 30px;
     margin:30px auto 100px; 
     font-size:12px; 
     line-height: 1.4;

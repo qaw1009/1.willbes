@@ -5,21 +5,24 @@
 .cts02_01 {background:url("https://static.willbes.net/public/images/promotion/2023/03/2894_cts02_01_bg.jpg") no-repeat center top;}
 .cts02_02 {padding-bottom:50px;}
 </style>
-
 <div>
     <div class="evtCtnsBox cts02_top">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2023/03/2894_cts02_top.jpg" alt="합격예측 풀서비스">
-            @if($arr_promotion_params['start_active_tab2'] <= date('YmdHi'))
-                <a href="{{front_url('/promotion/index/cate/3001/code/2921')}}" target="_blank" style="position: absolute;left: 26.01%;top: 84.07%;width: 48.13%;height: 6.3%;z-index: 2;"></a>
+            @if(empty($arr_promotion_params['fullservice_dday']) === false)
+                @if(date('YmdHi') >= $arr_promotion_params['fullservice_dday'])
+                    <a href="{{front_url('/promotion/index/cate/3001/code/2920')}}" target="_blank" style="position: absolute;left: 26.01%;top: 84.07%;width: 48.13%;height: 6.3%;z-index: 2;"></a>
+                @else
+                    @php
+                        $set_month = date("n", strtotime($arr_promotion_params['fullservice_dday'].'00'));
+                        $set_day = date("j", strtotime($arr_promotion_params['fullservice_dday'].'00'));
+                        $set_hour = date("H", strtotime($arr_promotion_params['fullservice_dday'].'00'));
+                        $set_min = date("i", strtotime($arr_promotion_params['fullservice_dday'].'00'));
+                    @endphp
+                    <a href="javascript:alert('{{$set_month}}월{{$set_day}}일 {{$set_hour}}시{{$set_min}}분 오픈됩니다.')" style="position: absolute;left: 26.01%;top: 84.07%;width: 48.13%;height: 6.3%;z-index: 2;"></a>
+                @endif
             @else
-                @php
-                    $set_month = date("n", strtotime($arr_promotion_params['start_active_tab2'].'00'));
-                    $set_day = date("j", strtotime($arr_promotion_params['start_active_tab2'].'00'));
-                    $set_hour = date("H", strtotime($arr_promotion_params['start_active_tab2'].'00'));
-                    $set_min = date("i", strtotime($arr_promotion_params['start_active_tab2'].'00'));
-                @endphp
-                <a href="javascript:alert('{{$set_month}}월{{$set_day}}일 {{$set_hour}}시{{$set_min}}분 오픈됩니다.')" style="position: absolute;left: 26.01%;top: 84.07%;width: 48.13%;height: 6.3%;z-index: 2;"></a>
+                <a href="javascript:alert('준비중입니다.')" style="position: absolute;left: 26.01%;top: 84.07%;width: 48.13%;height: 6.3%;z-index: 2;"></a>
             @endif
         </div>
     </div>

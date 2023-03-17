@@ -21,6 +21,7 @@
     border: 1px solid #000;
     background:#f4f4f4
 }
+.hanlim .bnLeft .bSlider .bx-viewport {height:360px !important;}
 </style>
     <!-- Container -->
     <div id="Container" class="Container hanlim hanlim{{$__cfg['CateCode']}} NSK c_both">

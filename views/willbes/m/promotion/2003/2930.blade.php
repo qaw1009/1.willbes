@@ -144,9 +144,9 @@
     <div class="evtCtnsBox evt02" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2023/03/2930m_02.jpg" alt="접수 및 시행일정" />
         <div class="infoTxt">
-            <h5 class="NSK-Black"><span>2023 必! 합격 실전 PACK이란?</span></h5>
+            {{--<h5 class="NSK-Black"><span>2023 必! 합격 실전 PACK이란?</span></h5>
             <strong>Advanced Class(유형별 실전모의고사 + 심화이론강의) + Master Class(전범위 실전모의고사 + 해설 및 핵심정리강의)</strong><br>
-            문제해결 능력과 시험 운영 능력을 급격하게 향상할 수 있는 PSAT 초격차 전략 강의
+            문제해결 능력과 시험 운영 능력을 급격하게 향상할 수 있는 PSAT 초격차 전략 강의--}}
             <p>
                 ※ 후기 작성일 기준 다음날 평일 오후 2시 전까지 해당 ID로 쿠폰이 발급됩니다.<br>
                 ※ 학원 방문 결제 하실 경우 할인 대상 여부를 말씀해주시면 할인된 금액으로 최종 결제 가능합니다.

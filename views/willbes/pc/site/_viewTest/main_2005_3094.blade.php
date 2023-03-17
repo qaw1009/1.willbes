@@ -1,7 +1,8 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
 <style>
-/* Main Container : MainVisual */
+/* Main Container : MainVisual 
+
 .hanlim .MainVisual {
     position: relative;
     width: 1120px;
@@ -16,7 +17,7 @@
   }
 .hanlim .VisualBox img {
     height: 360px;
-}
+}*/
 .hanlim .bnLeft {
     background:#f4f4f4
 }

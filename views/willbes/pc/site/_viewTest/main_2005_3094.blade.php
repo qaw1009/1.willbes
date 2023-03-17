@@ -17,6 +17,9 @@
 .hanlim .VisualBox img {
     height: 360px;
 }
+.hanlim .bnLeft {
+    border: 1px solid #000;
+}
 </style>
     <!-- Container -->
     <div id="Container" class="Container hanlim hanlim{{$__cfg['CateCode']}} NSK c_both">

@@ -75,6 +75,12 @@
                     vali_msg = '답안을 모두 입력해 주세요.';
                     return false;
                 }
+
+                if (val.length < 5) {
+                    vali_msg = '답안을 모두 입력해주세요.';
+                    return false;
+                }
+
                 if (!chk.test(val)) {
                     vali_msg = '허용되지 않은 답안입니다.';
                     return false;

@@ -15,8 +15,17 @@ class BaseEventSurvey extends \app\controllers\FrontController
     ];
 
     //직렬그룹설정 : 합격예측별로 다를 수 있음.
-    private $_group_take_mock_part = [100,200,400];
-    private $_single_take_mock_part = [300];
+    private $_target_group = [
+        'group' => [
+            'take_mock_part' => [100,200,400]
+            ,'subject_group' => [1,2,3]
+        ]
+        ,'single' => [
+            'take_mock_part' => [800]
+            ,'subject_group' => [4,5,6]
+        ]
+    ];
+
 
     public function __construct()
     {
@@ -192,22 +201,34 @@ class BaseEventSurvey extends \app\controllers\FrontController
 
         // 2. 과목별 원점수 평균 (origin, 0점 제외)
         /*$gradedata = $this->surveyModel->gradeList($PredictIdx);*/
-        $gradedata_1 = $this->surveyModel->gradeList_1($PredictIdx, $this->_group_take_mock_part);
-        $gradedata_2 = $this->surveyModel->gradeList_1($PredictIdx, $this->_single_take_mock_part);
+        $gradedata_1 = $this->surveyModel->gradeList_1($PredictIdx, $this->_target_group['group']['take_mock_part']);
+        $gradedata_2 = $this->surveyModel->gradeList_1($PredictIdx, $this->_target_group['single']['take_mock_part']);
 
         // 4. 총점성적분포 (origin, 0점 포함)
-        /*$pointList = $this->surveyModel->pointArea($PredictIdx);*/
-        $subject_result = $this->surveyModel->pointArea_1($PredictIdx, $this->_group_take_mock_part, 'total');
-        $pointList = array_pluck($subject_result,'PointAvg','Pointarea');
+        // 일반공채(남), 일반공채(여), 101단
+        $result = $this->surveyModel->pointArea_1($PredictIdx, $this->_target_group['group']['take_mock_part'], 'total', $this->_target_group['group']['subject_group']);
+        $pointList = array_pluck($result,'PointAvg','Pointarea');
+
+        // 경행경체
+        $result = $this->surveyModel->pointArea_1($PredictIdx, $this->_target_group['single']['take_mock_part'], 'total', $this->_target_group['single']['subject_group']);
+        $pointList2 = array_pluck($result,'PointAvg','Pointarea');
 
         // 5. 과목별성적분포 (origin, 0점 제외)
         /*$subjectPointList = $this->surveyModel->getSubjectPoint($PredictIdx);*/
-        $subject_result_1 = $this->surveyModel->pointArea_1($PredictIdx, $this->_group_take_mock_part, 1);
-        $subject_result_2 = $this->surveyModel->pointArea_1($PredictIdx, $this->_group_take_mock_part, 2);
-        $subject_result_3 = $this->surveyModel->pointArea_1($PredictIdx, $this->_group_take_mock_part, 3);
+        $subject_result_1 = $this->surveyModel->pointArea_1($PredictIdx, $this->_target_group['group']['take_mock_part'], 1);
+        $subject_result_2 = $this->surveyModel->pointArea_1($PredictIdx, $this->_target_group['group']['take_mock_part'], 2);
+        $subject_result_3 = $this->surveyModel->pointArea_1($PredictIdx, $this->_target_group['group']['take_mock_part'], 3);
         $subjectPointList_1 = array_pluck($subject_result_1,'PointAvg','Pointarea');
         $subjectPointList_2 = array_pluck($subject_result_2,'PointAvg','Pointarea');
         $subjectPointList_3 = array_pluck($subject_result_3,'PointAvg','Pointarea');
+
+        // 경행경채
+        $subject_result_4 = $this->surveyModel->pointArea_1($PredictIdx, $this->_target_group['single']['take_mock_part'], 4);
+        $subject_result_5 = $this->surveyModel->pointArea_1($PredictIdx, $this->_target_group['single']['take_mock_part'], 5);
+        $subject_result_6 = $this->surveyModel->pointArea_1($PredictIdx, $this->_target_group['single']['take_mock_part'], 6);
+        $subjectPointList_4 = array_pluck($subject_result_4,'PointAvg','Pointarea');
+        $subjectPointList_5 = array_pluck($subject_result_5,'PointAvg','Pointarea');
+        $subjectPointList_6 = array_pluck($subject_result_6,'PointAvg','Pointarea');
 
         // 6. 과목별단일선호도 (origin, 0점 제외)
         $bestList = $this->surveyModel->bestSubject($PredictIdx);
@@ -244,10 +265,14 @@ class BaseEventSurvey extends \app\controllers\FrontController
             'serialList' => $serialList,
             'areaList' => $dtSet,
             'pointList' => $pointList,
+            'pointList2' => $pointList2,
             /*'subjectPointList' => $subjectPointList,*/
             'subjectPointList_1' => $subjectPointList_1,
             'subjectPointList_2' => $subjectPointList_2,
             'subjectPointList_3' => $subjectPointList_3,
+            'subjectPointList_4' => $subjectPointList_4,
+            'subjectPointList_5' => $subjectPointList_5,
+            'subjectPointList_6' => $subjectPointList_6,
             'bestList' => $bestList,
             'bestCombList' => $bestCombList,
             'surveyStatisticsList' => $surveyStatisticsList,
@@ -414,12 +439,9 @@ class BaseEventSurvey extends \app\controllers\FrontController
         // 선택 비율계산
         foreach ($reset_data as $title => $answer){
             $item_sum = array_sum($answer);
-            if($item_sum > 0) {
-                foreach ($answer as $item => $cnt){
-                    $survey_data[$title][$item] = round(($cnt / $item_sum) * 100, 0);
-                }
+            foreach ($answer as $item => $cnt){
+                $survey_data[$title][$item] = ($item_sum > 0) ? round(($cnt / $item_sum) * 100, 0) : '0';
             }
-
         }
 
         return [$survey_levels,$survey_data];

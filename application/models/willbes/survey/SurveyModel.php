@@ -745,12 +745,12 @@ class SurveyModel extends WB_Model
                     and OrgPoint > 0
                 group by PpIdx, Pointarea
             ) as A
-                left join {$this->_table['predictPaper']} AS B ON A.PpIdx = B.PpIdx
+                left join {$this->_table['predictPaper']} AS B ON B.PredictIdx = ? AND A.PpIdx = B.PpIdx
                 left join {$this->_table['predictCode']} AS C ON B.SubjectCode = C.Ccd	
             order by A.PpIdx, A.pointarea asc             
         ";
 
-        $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx]);
+        $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx,$PredictIdx]);
         $result = $query->result_array();
 
         $arr_point_area = [];
@@ -795,7 +795,7 @@ class SurveyModel extends WB_Model
                 select pg.PpIdx, count(0) as CNT, max(pp.SubjectCode) as SubjectCode
                 from {$this->_table['predictGradesOrigin']} as pg
                     left join {$this->_table['predictPaper']} as pp
-                        on pg.PpIdx = pp.PpIdx
+                        on pg.PredictIdx = pp.PredictIdx AND pg.PpIdx = pp.PpIdx
                 where pg.PredictIdx = ?
                     and pp.Type = 'S'
                     and pg.OrgPoint > 0
@@ -841,7 +841,7 @@ class SurveyModel extends WB_Model
                 select pg.PrIdx, group_concat(pc.CcdName order by pp.PpIdx asc separator '/') as SubjectName
                 from {$this->_table['predictGradesOrigin']} as pg
                     left join {$this->_table['predictPaper']} as pp
-                        on pg.PpIdx = pp.PpIdx
+                        on pg.PredictIdx = pp.PredictIdx AND pg.PpIdx = pp.PpIdx
                     left join {$this->_table['predictCode']} as pc
                         on pp.SubjectCode = pc.Ccd
                 where pg.PredictIdx = ?
@@ -929,8 +929,8 @@ class SurveyModel extends WB_Model
         $from = "
             FROM 
                 {$this->_table['predictAnswerPaper']} AS pg
-                LEFT JOIN {$this->_table['predictGrades']} AS g ON pg.PpIdx = g.PpIdx AND pg.PrIdx = g.PrIdx
-                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                LEFT JOIN {$this->_table['predictGrades']} AS g ON pg.PredictIdx = g.PredictIdx AND pg.PpIdx = g.PpIdx AND pg.PrIdx = g.PrIdx
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON g.PredictIdx = pp.PredictIdx AND pg.PpIdx = pp.PpIdx
                 LEFT JOIN {$this->_table['predictCode']} AS pc2 ON pp.SubjectCode = pc2.Ccd
                 LEFT JOIN {$this->_table['predictQuestion']} AS pq ON pg.PpIdx = pq.PpIdx AND pg.PqIdx = pq.PqIdx
         ";
@@ -956,11 +956,11 @@ class SurveyModel extends WB_Model
         $from = "
             FROM 
                 {$this->_table['predictGradesOrigin']} AS pg
-                LEFT JOIN {$this->_table['predictGrades']} AS g ON pg.PpIdx = g.PpIdx AND pg.PrIdx = g.PrIdx
-                LEFT JOIN {$this->_table['predictGradesArea']} AS ga ON ga.TakeMockPart = pg.TakeMockPart AND ga.TakeArea = pg.TakeArea AND ga.PpIdx = pg.PpIdx
+                LEFT JOIN {$this->_table['predictGrades']} AS g ON pg.PredictIdx = g.PredictIdx AND pg.PpIdx = g.PpIdx AND pg.PrIdx = g.PrIdx
+                LEFT JOIN {$this->_table['predictGradesArea']} AS ga ON g.PredictIdx = ga.PredictIdx AND ga.TakeMockPart = pg.TakeMockPart AND ga.TakeArea = pg.TakeArea AND ga.PpIdx = pg.PpIdx
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PredictIdx = pp.PredictIdx AND pg.PpIdx = pp.PpIdx
                 LEFT JOIN {$this->_table['sysCode']} AS sc ON pg.TakeArea = sc.Ccd
                 LEFT JOIN {$this->_table['predictCode']} AS pc ON pg.TakeMockPart = pc.Ccd
-                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
                 LEFT JOIN {$this->_table['predictCode']} AS pc2 ON pp.SubjectCode = pc2.Ccd 
         ";
 
@@ -1321,7 +1321,7 @@ class SurveyModel extends WB_Model
                 LEFT JOIN {$this->_table['predictGradesLine']} AS pl ON pg.TakeArea = pl.TakeArea AND pg.TakeMockPart = pl.TakeMockPart AND pg.PredictIdx = pl.PredictIdx
                 LEFT JOIN {$this->_table['sysCode']} AS sc ON pg.TakeArea = sc.Ccd
                 LEFT JOIN {$this->_table['predictCode']} AS pc ON pg.TakeMockPart = pc.Ccd
-                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                LEFT JOIN {$this->_table['predictPaper']} AS pp ON pg.PredictIdx = pp.PredictIdx AND pg.PpIdx = pp.PpIdx
                 LEFT JOIN {$this->_table['predictCode']} AS pc2 ON pp.SubjectCode = pc2.Ccd
         ";
 
@@ -1442,12 +1442,12 @@ class SurveyModel extends WB_Model
                     and OrgPoint > 0
                 group by PpIdx
             ) as pg
-                left join {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx
+                left join {$this->_table['predictPaper']} AS pp ON pp.PredictIdx = ? AND pg.PpIdx = pp.PpIdx
                 left join {$this->_table['predictCode']} AS pc ON pp.SubjectCode = pc.Ccd
             order by pg.PpIdx asc                            
         ";
 
-        $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx]);
+        $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx,$PredictIdx]);
 
         return $query->result_array();
     }
@@ -1482,14 +1482,14 @@ class SurveyModel extends WB_Model
                 group by PpIdx, PqIdx
             ) as A
                 inner join {$this->_table['predictPaper']} as pp
-                    on A.PpIdx = pp.PpIdx
+                    on pp.PredictIdx = ? AND A.PpIdx = pp.PpIdx
                 inner join {$this->_table['predictQuestion']} as pq
                     on A.PpIdx = pq.PpIdx and A.PqIdx = pq.PqIdx
             where A.RankNum between 1 and 5
             order by A.PpIdx asc, A.RankNum asc            
         ";
 
-        $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx]);
+        $query = $this->_conn->query('select ' . $column . $from, [$PredictIdx,$PredictIdx]);
 
         return $query->result_array();
     }
@@ -1628,7 +1628,7 @@ class SurveyModel extends WB_Model
             $from = "
                 FROM {$this->_table['predictRegister']} AS pr
                 JOIN {$this->_table['predictRegisterR']} AS prc ON pr.PrIdx = prc.PrIdx
-                INNER JOIN {$this->_table['predictPaper']} AS pp ON prc.SubjectCode = pp.SubjectCode AND pp.IsStatus = 'Y' AND pp.IsUse = 'Y'
+                INNER JOIN {$this->_table['predictPaper']} AS pp ON prc.PredictIdx = pp.PredictIdx AND prc.SubjectCode = pp.SubjectCode AND pp.IsStatus = 'Y' AND pp.IsUse = 'Y'
                 INNER JOIN {$this->_table['predictCode']} AS pc ON pp.SubjectCode = pc.Ccd
             ";
             $arr_condition = [
@@ -1715,10 +1715,10 @@ class SurveyModel extends WB_Model
         ";
 
         if($ppIdx){
-            $where = "WHERE pp.PpIdx = '{$ppIdx}'";
+            $where = "WHERE pp.PredictIdx = '{$PredictIdx}' AND pp.PpIdx = '{$ppIdx}'";
             $order_by = " ORDER BY QuestionNO ";
         } else {
-            $where = "";
+            $where = "WHERE pp.PredictIdx = '{$PredictIdx}'";
             $order_by = " ORDER BY pp.PpIdx, QuestionNO ";
         }
 
@@ -1834,7 +1834,7 @@ class SurveyModel extends WB_Model
      * @param array $arr_condition
      * @return mixed
      */
-    public function questionTempCnt($arr_condition=[], $pridx){
+    public function questionTempCnt($arr_condition=[], $PredictIdx, $pridx){
 
         $column = "
             pp.PpIdx,
@@ -1844,14 +1844,13 @@ class SurveyModel extends WB_Model
             FROM 
                 {$this->_table['predictAnswerPaper']} 
             WHERE 
-                PpIdx = pp.PpIdx AND Answer != '0'  AND MemIdx = '".$this->session->userdata('mem_idx')."' AND PrIdx = ".$pridx.") AS CNT
+                PredictIdx = '{$PredictIdx}' AND PpIdx = pp.PpIdx AND Answer != '0'  AND MemIdx = '".$this->session->userdata('mem_idx')."' AND PrIdx = ".$pridx.") AS CNT
         ";
 
         $from = "
             FROM
                 {$this->_table['predictPaper']} AS pp
-                JOIN {$this->_table['predictQuestion']} AS pq ON pp.PpIdx = pq.PpIdx AND pp.IsUse = 'Y' AND pq.IsStatus = 'Y'
-            
+                JOIN {$this->_table['predictQuestion']} AS pq ON pp.PpIdx = pq.PpIdx AND pp.IsUse = 'Y' AND pq.IsStatus = 'Y'            
         ";
 
         $order_by = " GROUP BY pp.PpIdx ORDER BY pp.PpIdx";
@@ -2208,7 +2207,7 @@ class SurveyModel extends WB_Model
                 AND TakeArea = ?
             ) AS pg
             INNER JOIN {$this->_table['predictGradesArea']} AS pa ON pa.PredictIdx = ? AND pg.TakeMockPart = pa.TakeMockPart AND pg.TakeArea = pa.TakeArea AND pg.PpIdx = pa.PpIdx
-            INNER JOIN {$this->_table['predictPaper']} AS pp ON pg.PpIdx = pp.PpIdx AND IsStatus = 'Y'
+            INNER JOIN {$this->_table['predictPaper']} AS pp ON pp.PredictIdx = ? AND pg.PpIdx = pp.PpIdx AND IsStatus = 'Y'
             INNER JOIN (
                 SELECT PgIdx, RANK() OVER (PARTITION BY TakeMockPart,TakeArea,PpIdx ORDER BY RANK) MyRank
                 FROM {$this->_table['predictGrades']}
@@ -2226,7 +2225,7 @@ class SurveyModel extends WB_Model
             ) AS ct ON pg.TakeMockPart = ct.TakeMockPart AND pg.TakeArea = ct.TakeArea AND pg.PpIdx = ct.PpIdx
         ";
         $order_by = 'ORDER BY pg.PpIdx ASC';
-        $raw_binds = [$PredictIdx, $member_idx, $take_mock_part, $take_area, $PredictIdx, $PredictIdx, $take_mock_part, $take_area, $PredictIdx, $take_mock_part, $take_area];
+        $raw_binds = [$PredictIdx, $member_idx, $take_mock_part, $take_area, $PredictIdx, $PredictIdx, $PredictIdx, $take_mock_part, $take_area, $PredictIdx, $take_mock_part, $take_area];
         return $this->_conn->query('select ' . $column . $from . $order_by, $raw_binds)->result_array();
     }
     /*public function AvgListForUserInfo($PredictIdx, $take_mock_part, $take_area, $member_idx)

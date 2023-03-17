@@ -399,7 +399,7 @@ class SurveyModel extends WB_Model
 
         return $arr_point_area;
     }
-    public function pointArea_1($PredictIdx, $arr_target_mock_part, $subjectGroupBy = '')
+    public function pointArea_1($PredictIdx, $arr_target_mock_part, $subjectGroupBy = '', $arr_subject_group = '')
     {
         $column = 'Pointarea, ROUND((Cnt/TotalCnt) * 100, 2) AS PointAvg';
 
@@ -414,6 +414,7 @@ class SurveyModel extends WB_Model
                     ELSE 4';
                 break;
             case "1" :
+            case "4" :
                 $case_column = '
                     WHEN SUM(a.OrgPoint) BETWEEN 0 AND 10 THEN 0
                     WHEN SUM(a.OrgPoint) BETWEEN 11 AND 20 THEN 1
@@ -422,6 +423,7 @@ class SurveyModel extends WB_Model
                     ELSE 4';
                 break;
             case "2" :
+            case "5" :
                 $case_column = '
                     WHEN SUM(OrgPoint) BETWEEN 0 AND 20 THEN 0
                     WHEN SUM(OrgPoint) BETWEEN 21 AND 40 THEN 1
@@ -430,6 +432,7 @@ class SurveyModel extends WB_Model
                     ELSE 4';
                 break;
             case "3" :
+            case "6" :
                 $case_column = '
                     WHEN SUM(OrgPoint) BETWEEN 0 AND 20 THEN 0
                     WHEN SUM(OrgPoint) BETWEEN 21 AND 40 THEN 1
@@ -448,7 +451,14 @@ class SurveyModel extends WB_Model
             ]
         ];
 
-        if ($subjectGroupBy != 'total') {
+        //일반공채(남),일반공채(여),101단
+        if ($subjectGroupBy == 'total') {
+            $arr_condition = array_merge_recursive($arr_condition,[
+                'IN' => [
+                    'c.GroupBy' => $arr_subject_group
+                ]
+            ]);
+        } else {
             $arr_condition = array_merge_recursive($arr_condition,[
                 'EQ' => [
                     'c.GroupBy' => $subjectGroupBy

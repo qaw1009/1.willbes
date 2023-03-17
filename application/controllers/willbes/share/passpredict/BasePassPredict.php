@@ -457,12 +457,15 @@ class BasePassPredict extends \app\controllers\FrontController
         }
 
         $arr_condition2 = [
+            'EQ' => [
+                'pp.PredictIdx' => $PredictIdx
+            ],
             'IN' => [
                 'pp.PpIdx' => $tMpIdx
             ]
         ];
 
-        $qtCntList = $this->surveyModel->questionTempCnt($arr_condition2, $pridx);
+        $qtCntList = $this->surveyModel->questionTempCnt($arr_condition2, $PredictIdx, $pridx);
         $etcALLYN = "YES";
         foreach ($qtCntList as $key => $val) {
             $mpIdx = $val['PpIdx'];

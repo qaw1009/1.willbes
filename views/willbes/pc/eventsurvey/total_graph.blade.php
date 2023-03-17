@@ -20,35 +20,35 @@
             <div class="m_section3_box">
                 {{--응시지역--}}
                 <span id="areaset1">
-                <div class="m_section3_L">
-                    <ul class="tabs_2016" id="listview">
-                        <li class="seoul"><a href="javascript:selArea(712001)" id="ss_712001" alt="서울" class="active">서울</a></li>
-                        <li class="ic"><a href="javascript:selArea(712004)" id="ss_712004"  alt="인천">인천</a></li>
-                        <li class="kkb"><a href="javascript:selArea(712009)" id="ss_712009" alt="경기북부">경기북부</a></li>
-                        <li class="kkn"><a href="javascript:selArea(712008)" id="ss_712008" alt="경기남부">경기남부</a></li>
-                        <li class="kw"><a href="javascript:selArea(712010)" id="ss_712010" alt="강원">강원</a></li>
-                        <li class="cb"><a href="javascript:selArea(712011)" id="ss_712011" alt="충북">충북</a></li>
-                        <li class="cn"><a href="javascript:selArea(712012)" id="ss_712012" alt="충남">충남</a></li>
-                        <li class="dj"><a href="javascript:selArea(712006)" id="ss_712006" alt="대전">대전</a></li>
-                        <li class="kb"><a href="javascript:selArea(712015)" id="ss_712015" alt="경북">경북</a></li>
-                        <li class="kn"><a href="javascript:selArea(712016)" id="ss_712016" alt="경남">경남</a></li>
-                        <li class="dk"><a href="javascript:selArea(712003)" id="ss_712003" alt="경남">대구</a></li>
-                        <li class="bs"><a href="javascript:selArea(712002)" id="ss_712002" alt="부산">부산</a></li>
-                        <li class="us"><a href="javascript:selArea(712007)" id="ss_712007" alt="울산">울산</a></li>
-                        <li class="jb"><a href="javascript:selArea(712013)" id="ss_712013" alt="전북">전북</a></li>
-                        <li class="jn"><a href="javascript:selArea(712014)" id="ss_712014" alt="전남">전남</a></li>
-                        <li class="kj"><a href="javascript:selArea(712005)" id="ss_712005" alt="광주">광주</a></li>
-                        <li class="jj"><a href="javascript:selArea(712017)" id="ss_712017" alt="제주">제주</a></li>
-                    </ul>
-                </div>
-            </span>
+                    <div class="m_section3_L">
+                        <ul class="tabs_2016" id="listview">
+                            <li class="seoul"><a href="javascript:selArea(712001)" id="ss_712001" alt="서울" class="active">서울</a></li>
+                            <li class="ic"><a href="javascript:selArea(712004)" id="ss_712004"  alt="인천">인천</a></li>
+                            <li class="kkb"><a href="javascript:selArea(712009)" id="ss_712009" alt="경기북부">경기북부</a></li>
+                            <li class="kkn"><a href="javascript:selArea(712008)" id="ss_712008" alt="경기남부">경기남부</a></li>
+                            <li class="kw"><a href="javascript:selArea(712010)" id="ss_712010" alt="강원">강원</a></li>
+                            <li class="cb"><a href="javascript:selArea(712011)" id="ss_712011" alt="충북">충북</a></li>
+                            <li class="cn"><a href="javascript:selArea(712012)" id="ss_712012" alt="충남">충남</a></li>
+                            <li class="dj"><a href="javascript:selArea(712006)" id="ss_712006" alt="대전">대전</a></li>
+                            <li class="kb"><a href="javascript:selArea(712015)" id="ss_712015" alt="경북">경북</a></li>
+                            <li class="kn"><a href="javascript:selArea(712016)" id="ss_712016" alt="경남">경남</a></li>
+                            <li class="dk"><a href="javascript:selArea(712003)" id="ss_712003" alt="경남">대구</a></li>
+                            <li class="bs"><a href="javascript:selArea(712002)" id="ss_712002" alt="부산">부산</a></li>
+                            <li class="us"><a href="javascript:selArea(712007)" id="ss_712007" alt="울산">울산</a></li>
+                            <li class="jb"><a href="javascript:selArea(712013)" id="ss_712013" alt="전북">전북</a></li>
+                            <li class="jn"><a href="javascript:selArea(712014)" id="ss_712014" alt="전남">전남</a></li>
+                            <li class="kj"><a href="javascript:selArea(712005)" id="ss_712005" alt="광주">광주</a></li>
+                            <li class="jj"><a href="javascript:selArea(712017)" id="ss_712017" alt="제주">제주</a></li>
+                        </ul>
+                    </div>
+                </span>
                 <span id="areaset2" style="display:none;">
-                <div class="m_section3_L">
-                    <ul class="tabs_2016" id="listview">
-                        <li class="seoul"><a href="javascript:selArea(712001)" alt="서울" class="active">서울</a></li>
-                    </ul>
-                </div>
-            </span>>
+                    <div class="m_section3_L">
+                        <ul class="tabs_2016" id="listview">
+                            <li class="seoul"><a href="javascript:selArea(712001)" alt="서울" class="active">서울</a></li>
+                        </ul>
+                    </div>
+                </span>>
                 <!--m_section3_L//-->
 
                 {{--모집구분표--}}
@@ -110,62 +110,6 @@
                 <!--m_section3_R//-->
             </div>
         </div>
-
-        {{--과목별 원점수 평균--}}
-        {{--<div class="m_section3_3">
-            <h2>과목별 <span>원점수 평균</span></h2>
-            @if(empty($gradedata_1) === true || empty($gradedata_2) === true)
-                <div class="txtBox01">가답안 발표 후 해당 서비스가 제공됩니다.</div>
-            @else
-                <div class="m_section3_3L">
-                    <table class="boardTypeB">
-                        <thead>
-                        <tr>
-                            <th scope="col">직렬</th>
-                            <th scope="col">과목</th>
-                            <th scope="col">참여자 실시간 평균</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th class="thBg01" rowspan="4">
-                                일반공채(남),
-                                일반공채(여),
-                                101단
-                            </th>
-                        </tr>
-                        @foreach($gradedata_1 as $row)
-                            <tr>
-                                <td>{{ $row['SubjectName'] }}</td>
-                                <td>{{ $row['Avg'] }}</td>
-                            </tr>
-                        @endforeach
-                        <tr>
-                            <th class="thBg01" rowspan="4">
-                                전의경경채
-                            </th>
-                        </tr>
-                        @foreach($gradedata_2 as $row)
-                            <tr>
-                                <td>{{ $row['SubjectName'] }}</td>
-                                <td>{{ $row['Avg'] }}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="m_section3_3R">
-                    <select id="select_radar" onchange="jsRadar(this.value);" style="width: 98%; border: #555 1px solid; height: 28px; line-height: 28px;">
-                        <option value="1">{{$gradedata_1[0]['TakeMockPartName']}}</option>
-                        <option value="2">{{$gradedata_2[0]['TakeMockPartName']}}</option>
-                    </select>
-                    <div class="mt10">
-                        <div id="radar_box"></div>
-                    </div>
-                </div>
-            @endif
-        </div>--}}
 
         {{--합격예측 참여자 분석 현황--}}
         <div class="m_section3_3">
@@ -263,6 +207,102 @@
             @endif
         </div>
 
+
+        <div class="m_section3_3">
+            <h2><span>합격예측 참여자</span> 분석 현황 - 경행경채 </h2>
+            @if(empty($pointList2) === false)
+                <div class="m_section3_3L">
+                    <h3><Expect>총점</Expect> 성적 분포</h3>
+                    <table class="boardTypeC">
+                        <col width="20%" />
+                        <col width="" />
+                        @php $_arr_pa_area = ['4' => '201-250', '3' => '151-200', '2' => '101-150', '1' => '51-100', '0' => '0-50']; @endphp
+                        @foreach($_arr_pa_area as $key => $val)
+                            <tr>
+                                <th>{{ $val }}</th>
+                                <td>
+                                    <div class="graph"><span class="graph1" style="width:{{ element($key, $pointList2, 0) }}%"></span></div>
+                                    <Expect class="ratio"><span id="pa_s{{ $val }}">{{ element($key, $pointList2, 0) }}</span>%</Expect>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </table>
+                    <div class="mt10">
+                        <div id="pointarea_s"></div>
+                    </div>
+                </div>
+
+                <div class="m_section3_3R">
+                    <h3><Expect>과목별</Expect> 성적 분포 - 범죄학</h3>
+                    <div class="m_section3_3R_warp">
+                        <table class="boardTypeC">
+                            <col width="20%" />
+                            <col width="" />
+                            @php $_arr_pa_area = ['4' => '41-50', '3' => '31-40', '2' => '21-30', '1' => '11-20', '0' => '0-10']; @endphp
+                            @foreach($_arr_pa_area as $key => $val)
+                                <tr>
+                                    <th>{{ $val }}</th>
+                                    <td>
+                                        <div class="graph"><span class="graph1" style="width:{{ element($key, $subjectPointList_4, 0) }}%"></span></div>
+                                        <Expect class="ratio"><span id="pa-4{{ $val }}">{{ element($key, $subjectPointList_4, 0) }}</span>%</Expect>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
+                        <div class="mt10">
+                            <div id="point_subject_4"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="m_section3_3L">
+                    <h3><Expect>과목별</Expect> 성적 분포 - 형사법</h3>
+                    <table class="boardTypeC">
+                        <col width="20%" />
+                        <col width="" />
+                        @php $_arr_pa_area = ['4' => '81-100', '3' => '61-80', '2' => '41-60', '1' => '21-40', '0' => '0-20']; @endphp
+                        @foreach($_arr_pa_area as $key => $val)
+                            <tr>
+                                <th>{{ $val }}</th>
+                                <td>
+                                    <div class="graph"><span class="graph1" style="width:{{ element($key, $subjectPointList_5, 0) }}%"></span></div>
+                                    <Expect class="ratio"><span id="pa-5{{ $val }}">{{ element($key, $subjectPointList_5, 0) }}</span>%</Expect>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </table>
+                    <div class="mt10">
+                        <div id="point_subject_5"></div>
+                    </div>
+                </div>
+
+                <div class="m_section3_3R">
+                    <h3><Expect>과목별</Expect> 성적 분포 - 경찰학</h3>
+                    <div class="m_section3_3R_warp">
+                        <table class="boardTypeC">
+                            <col width="20%" />
+                            <col width="" />
+                            @php $_arr_pa_area = ['4' => '81-100', '3' => '61-80', '2' => '41-60', '1' => '21-40', '0' => '0-20']; @endphp
+                            @foreach($_arr_pa_area as $key => $val)
+                                <tr>
+                                    <th>{{ $val }}</th>
+                                    <td>
+                                        <div class="graph"><span class="graph1" style="width:{{ element($key, $subjectPointList_6, 0) }}%"></span></div>
+                                        <Expect class="ratio"><span id="pa-6{{ $val }}">{{ element($key, $subjectPointList_6, 0) }}</span>%</Expect>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
+                        <div class="mt10">
+                            <div id="point_subject_6"></div>
+                        </div>
+                    </div>
+                </div>
+            @else
+                <div class="txtBox01">가답안 발표 후 해당 서비스가 제공됩니다.</div>
+            @endif
+        </div>
+
         <div class="m_section3_3">
             <div class="mt50">
                 @if(empty($bestList) === false)
@@ -291,7 +331,7 @@
                         </div>
                     </div>
                 @endif
-            <!--m_section3_3L//-->
+                <!--m_section3_3L//-->
 
                 @if(empty($bestCombList) === false)
                     <div class="m_section3_3R">
@@ -317,8 +357,9 @@
                         <div class="mt10">
                             <div id="best2"></div>
                         </div>
-                    </div><!--m_section3_3R//-->
+                    </div>
                 @endif
+                <!--m_section3_3R//-->
             </div>
         </div>
 
@@ -515,15 +556,19 @@
     <script>
         $(document).ready(function () {
             $('#selgrade option').eq(0).prop('selected', 'selected');
-            selPoint();
-            selPoint_1();
-            selPoint_2();
-            selPoint_3();
+            selPoint_total('');
+            selPoint_total('_s');
+            selPoint_graph(1);
+            selPoint_graph(2);
+            selPoint_graph(3);
+            selPoint_graph(4);
+            selPoint_graph(5);
+            selPoint_graph(6);
+
             bestSubject();
             bestCombSubject();
             setAreaMsg(0);
             selSurveyGraph($('input[name="sp_serial"]:checked').val());
-            jsRadar($('#select_radar option:selected').val());
         });
 
         // 지역별 현황
@@ -556,8 +601,8 @@
         }
 
         // 총점 성적분포
-        function selPoint() {
-            if ($('#pointarea').length < 1) {
+        function selPoint_total(obj) {
+            if ($('#pointarea'+obj).length < 1) {
                 return;
             }
 
@@ -565,7 +610,7 @@
             var values = [];
             var length = fields.length;
             for(var i = 0; i < length; i++) {
-                values.push(parseFloat($('#pa' + fields[i]).text()));
+                values.push(parseFloat($('#pa'+obj + fields[i]).text()));
             }
 
             var options = {
@@ -577,125 +622,41 @@
                 },
                 'donut_width' : 35,
                 'core_circle_radius':50,
-                'chartDiv': 'pointarea',
+                'chartDiv': 'pointarea'+obj,
                 'chartType': 'donut',
                 'chartSize': {width:700, height:300}
             };
-            Nwagon.chart(options);
-        }
-
-        //원점수평균 : 분포그래프
-        function jsRadar(val) {
-            if ($('#select_radar').length < 1) {
-                return;
-            }
-
-            var json_gradedata_1 = {!! json_encode($gradedata_1) !!};
-            var json_gradedata_2 = {!! json_encode($gradedata_2) !!};
-            var names = [];
-            var values = [];
-
-            if (val == 1) {
-                $.each(json_gradedata_1, function(index, item) {
-                    names.push(item.SubjectName);
-                    values.push(parseInt(item.Avg));
-                });
-            } else {
-                $.each(json_gradedata_2, function(index, item) {
-                    names.push(item.SubjectName);
-                    values.push(parseInt(item.Avg));
-                });
-            }
-
-            var options = {
-                'legend':{
-                    names: names,
-                },
-                'dataset': {
-                    title: '과목별 원점수 평균 분포',
-                    values: [values],
-                    bgColor: '#f9f9f9',
-                    fgColor: '#30a1ce',
-                },
-                'chartDiv': 'radar_box',
-                'chartType': 'radar',
-                'chartSize': { width: 400, height: 250 }
-            };
-            $('#radar_box').html('');
             Nwagon.chart(options);
         }
 
         //과목별 성적분포
-        function selPoint_1() {
-            if ($('#point_subject_1').length < 1) {
+        function selPoint_graph(obj) {
+            if ($('#point_subject_'+obj).length < 1) {
                 return;
             }
-            var fields = ['0-10', '11-20', '21-30', '31-40', '41-50'];
+            var fields = [];
+            fields[1] = ['0-10', '11-20', '21-30', '31-40', '41-50'];
+            fields[2] = ['0-20', '21-40', '41-60', '61-80', '81-100'];
+            fields[3] = ['0-20', '21-40', '41-60', '61-80', '81-100'];
+            fields[4] = ['0-10', '11-20', '21-30', '31-40', '41-50'];
+            fields[5] = ['0-20', '21-40', '41-60', '61-80', '81-100'];
+            fields[6] = ['0-20', '21-40', '41-60', '61-80', '81-100'];
+
             var values = [];
-            var length = fields.length;
+            var length = fields[obj].length;
             for(var i = 0; i < length; i++) {
-                values.push(parseFloat($('#pa-1' + fields[i]).text()));
+                values.push(parseFloat($('#pa-'+obj + fields[obj][i]).text()));
             }
             var options = {
                 'dataset':{
                     title: 'Web accessibility status',
                     values: values,
                     colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93' , '#f10a00'],
-                    fields: fields
+                    fields: fields[obj]
                 },
                 'donut_width' : 35,
                 'core_circle_radius':50,
-                'chartDiv': 'point_subject_1',
-                'chartType': 'donut',
-                'chartSize': {width:700, height:300}
-            };
-            Nwagon.chart(options);
-        }
-        function selPoint_2() {
-            if ($('#point_subject_2').length < 1) {
-                return;
-            }
-            var fields = ['0-20', '21-40', '41-60', '61-80', '81-100'];
-            var values = [];
-            var length = fields.length;
-            for(var i = 0; i < length; i++) {
-                values.push(parseFloat($('#pa-2' + fields[i]).text()));
-            }
-            var options = {
-                'dataset':{
-                    title: 'Web accessibility status',
-                    values: values,
-                    colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93' , '#f10a00'],
-                    fields: fields
-                },
-                'donut_width' : 35,
-                'core_circle_radius':50,
-                'chartDiv': 'point_subject_2',
-                'chartType': 'donut',
-                'chartSize': {width:700, height:300}
-            };
-            Nwagon.chart(options);
-        }
-        function selPoint_3() {
-            if ($('#point_subject_3').length < 1) {
-                return;
-            }
-            var fields = ['0-20', '21-40', '41-60', '61-80', '81-100'];
-            var values = [];
-            var length = fields.length;
-            for(var i = 0; i < length; i++) {
-                values.push(parseFloat($('#pa-3' + fields[i]).text()));
-            }
-            var options = {
-                'dataset':{
-                    title: 'Web accessibility status',
-                    values: values,
-                    colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93' , '#f10a00'],
-                    fields: fields
-                },
-                'donut_width' : 35,
-                'core_circle_radius':50,
-                'chartDiv': 'point_subject_3',
+                'chartDiv': 'point_subject_'+obj,
                 'chartType': 'donut',
                 'chartSize': {width:700, height:300}
             };
@@ -911,5 +872,4 @@
             $(".area_txt").text(msg);
         }
     </script>
-
 @stop

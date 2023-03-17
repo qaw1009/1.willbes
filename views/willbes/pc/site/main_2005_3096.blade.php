@@ -6,7 +6,7 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
-        <div class="Section p_re mt40">
+        <div class="Section">
             <div class="MainVisual NSK">
                 <div class="VisualBox">
                     <div class="bSlider">

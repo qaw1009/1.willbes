@@ -1,7 +1,7 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
 <style>
-/* Main Container : MainVisual 
+/* Main Container : MainVisual */
 
 .hanlim .MainVisual {
     position: relative;
@@ -17,11 +17,10 @@
   }
 .hanlim .VisualBox img {
     height: 360px;
-}*/
+}
 .hanlim .bnLeft {
     background:#f4f4f4
 }
-
 </style>
     <!-- Container -->
     <div id="Container" class="Container hanlim hanlim{{$__cfg['CateCode']}} NSK c_both">

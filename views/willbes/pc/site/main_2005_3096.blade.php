@@ -6,19 +6,28 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
-        <div class="Section p_re mt40">
+        <div class="Section">
             <div class="MainVisual NSK">
                 <div class="VisualBox">
                     <div class="bSlider">
-                        {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
+                        <div class="sliderStopAutoPager">
+                            {!! banner_html(element('메인_빅배너_V2', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
+                        </div>
                     </div>
                 </div>
-                <div class="VisualsubBox">
-                    <div class="bSlider VisualsubBoxTop">
-                        {!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}
+            </div>
+        </div>
+
+        <div class="Section">
+            <div class="widthAuto bnSt02">
+                <div class="bSlider bnLeft">
+                    <div class="slider">
+                        {!! banner_html(element('메인_서브1_V2', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                     </div>
-                    <div class="bSlider">
-                        {!! banner_html(element('메인_서브2', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
+                </div>
+                <div class="bSlider bnRight">
+                    <div class="slider">
+                        {!! banner_html(element('메인_서브2_V2', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                     </div>
                 </div>
             </div>

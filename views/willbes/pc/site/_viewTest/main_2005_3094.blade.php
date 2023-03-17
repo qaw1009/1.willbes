@@ -42,12 +42,12 @@
         <div class="Section">
             <div class="widthAuto bnSt02">
                 <div class="bSlider bnLeft">                    
-                    <div class="slider">
+                    <div class="">
                         {!! banner_html(element('메인_서브1_V2', $data['arr_main_banner']), 'slider') !!}
                     </div>
                 </div>   
                 <div class="bSlider bnRight">
-                    <div class="slider">
+                    <div class="">
                         {!! banner_html(element('메인_서브2_V2', $data['arr_main_banner']), 'slider') !!}
                     </div>
                 </div>   

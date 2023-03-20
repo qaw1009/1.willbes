@@ -169,7 +169,7 @@
     @else
     {{--10월--}}  
     <div class="evtCtnsBox evt_top" data-aos="fade-up">         
-        <img src="https://static.willbes.net/public/images/promotion/2023/03/2839m_top.jpg" alt="맞춤형 공부" >                 
+        <img src="https://static.willbes.net/public/images/promotion/2023/04/2839m_top.jpg" alt="맞춤형 공부" >                
     </div>
 
     <div class="evtCtnsBox evt_self" data-aos="fade-up">    

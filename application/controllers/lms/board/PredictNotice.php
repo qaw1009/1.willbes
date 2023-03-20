@@ -75,7 +75,6 @@ class PredictNotice extends BaseBoard
                 'LKB' => [
                     'LB.Title' => $this->_reqP('search_value'),
                     'LB.Content' => $this->_reqP('search_value'),
-                    'LB.Content' => $this->_reqP('search_value'),
                     'LB.PredictIdx' => $this->_reqP('search_value'),
                     'PP.ProdName' => $this->_reqP('search_value')
                 ]

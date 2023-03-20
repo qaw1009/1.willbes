@@ -54,7 +54,6 @@
             </div>
         </div>
 
-
         <div class="Section mt50">
             <div class="widthAuto">
                 {{-- board include --}}

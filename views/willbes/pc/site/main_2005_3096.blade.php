@@ -46,6 +46,12 @@
 
         <div class="Section mt50">
             <div class="widthAuto">
+                {!! banner_html(element('메인_띠배너', $data['arr_main_banner'])) !!}
+            </div>
+        </div>
+
+        <div class="Section mt50">
+            <div class="widthAuto">
                 {{-- board include --}}
                 @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'])
             </div>

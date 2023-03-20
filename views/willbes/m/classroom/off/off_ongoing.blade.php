@@ -89,7 +89,7 @@
                                                             @if(empty($subrow['SuppProdCode']) == false && $subrow['SuppIsUse'] == 'Y' && $subrow['IsDisp'] != 'N')
                                                                 <a href="javascript:void(0);" onclick="fnBogang('{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}', 'P')">보강/복습동영상 신청 ></a>
                                                             @endif
-                                                            @if(in_array($subrow['SiteCode'], ['2018']))
+                                                            @if(in_array($subrow['SiteCode'], ['2018']) && $subrow['IsDisp'] != 'N')
                                                                 <a href="javascript:void(0);" onclick="fnCertificate('Package', '{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}');" class="type2">수강증 보기 ></a>
                                                             @endif
                                                         </div>
@@ -280,7 +280,7 @@
                                     <div class="mb10"><a href="#none" onclick="fnBogang('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}', '')" class="btnStfull03">보강/복습동영상 신청 ></a></div>
                                 @endif
 
-                                @if(in_array($row['SiteCode'], ['2002', '2018']))
+                                @if(in_array($row['SiteCode'], ['2002', '2018']) && $row['IsDisp'] != 'N')
                                     <div class="mb10"><a href="javascript:void(0);" onclick="fnCertificate('Lecture', '{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}');" class="btnStfull04">수강증 보기 ></a></div>
                                 @endif
                             </td>

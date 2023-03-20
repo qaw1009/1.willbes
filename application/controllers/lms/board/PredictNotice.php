@@ -198,7 +198,6 @@ class PredictNotice extends BaseBoard
 
             // 카테고리 연결 데이터 조회
             $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
-            print_r($arr_cate_code);
             $data['CateCodes'] = $arr_cate_code;
             $data['CateNames'] = implode(', ', array_values($arr_cate_code));
             $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);

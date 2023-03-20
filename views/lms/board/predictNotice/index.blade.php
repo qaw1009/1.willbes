@@ -15,7 +15,7 @@
                         <select class="form-control" id="search_predict_idx" name="search_predict_idx">
                             <option value="">합격예측</option>
                             @foreach($arr_predict_data as $row)
-                                <option value="{{ $row['PredictIdx'] }}">[{{ $row['PredictIdx'] }}] {{ $row['ProdName'] }}</option>
+                                <option value="{{ $row['PredictIdx'] }}" class="{{ $row['SiteCode'] }}">[{{ $row['PredictIdx'] }}] {{ $row['ProdName'] }}</option>
                             @endforeach
                         </select>
                         <select class="form-control" id="search_category" name="search_category">
@@ -110,6 +110,7 @@
 
             // site-code에 매핑되는 select box 자동 변경
             $search_form.find('select[name="search_category"]').chained("#search_site_code");
+            $search_form.find('select[name="search_predict_idx"]').chained("#search_site_code");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,

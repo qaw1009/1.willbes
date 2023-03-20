@@ -30,7 +30,7 @@
                         <select class="form-control" id="predict_idx" name="predict_idx" required="required" title="합격예측기본데이터">
                             <option value="">합격예측기본데이터</option>
                             @foreach($arr_predict_data as $row)
-                                <option value="{{ $row['PredictIdx'] }}" @if($method == 'PUT' && ($row['PredictIdx'] == $data['PredictIdx'])) selected="selected" @endif>{{ $row['ProdName'] }}</option>
+                                <option value="{{ $row['PredictIdx'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['PredictIdx'] == $data['PredictIdx'])) selected="selected" @endif>[{{ $row['PredictIdx'] }}] {{ $row['ProdName'] }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -129,6 +129,9 @@
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
+            // site-code에 매핑되는 select box 자동 변경
+            $regi_form.find('select[name="predict_idx"]').chained("#site_code");
+
             //editor load
             var $editor_profile = new cheditor();
             $editor_profile.config.editorHeight = '170px';

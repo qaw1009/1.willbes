@@ -19,6 +19,7 @@ class PredictNotice extends BaseBoard
         'default' => 0,     //본문글 첨부
         'reply' => 1        //본문 답변글첨부
     ];
+    private $_arrsite = ['2001' => '온라인 경찰', '2003' => '온라인 공무원', '2005' => '고등고시 공무원'];
 
     public function __construct()
     {
@@ -36,7 +37,6 @@ class PredictNotice extends BaseBoard
         $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
 
         $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
-        $arrsite = ['2001' => '온라인 경찰', '2003' => '온라인 공무원'];
 
         //카테고리 조회(구분)
         $arr_category = $this->_getCategoryArray('');
@@ -47,7 +47,7 @@ class PredictNotice extends BaseBoard
             'arr_search_data' => $arr_search_data['arr_search_data'],
             'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'siteCodeDef' => $cateD1[0]['SiteCode'],
-            'arrsite' => $arrsite,
+            'arrsite' => $this->_arrsite,
             'arr_category' => $arr_category,
             'arr_predict_data' => $arr_predict_data,
             'boardName' => $this->board_name,
@@ -163,7 +163,6 @@ class PredictNotice extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $arrsite = ['2001' => '온라인 경찰', '2003' => '온라인 공무원'];
 
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
@@ -200,6 +199,7 @@ class PredictNotice extends BaseBoard
 
             // 카테고리 연결 데이터 조회
             $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
+            print_r($arr_cate_code);
             $data['CateCodes'] = $arr_cate_code;
             $data['CateNames'] = implode(', ', array_values($arr_cate_code));
             $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
@@ -209,7 +209,7 @@ class PredictNotice extends BaseBoard
         }
 
         $this->load->view("board/{$this->board_name}/create", [
-            'arrsite' => $arrsite,
+            'arrsite' => $this->_arrsite,
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
             'arr_campus' => $arr_campus,

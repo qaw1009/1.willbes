@@ -6,7 +6,6 @@
     <script src="/public/vendor/Nwagon/Nwagon.js"></script>
     <link rel="stylesheet" href="/public/vendor/Nwagon/Nwagon.css">
 
-
     <div class="evtCtnsBox NGR">
         <div class="sub_warp">
             <div class="sub3_1">
@@ -296,7 +295,7 @@
         $(document).ready(function () {
             if(dataIs == 'N'){
                 alert('기본정보/점수를 입력해주세요.');
-                var _url = '{{ site_url('/promotion/index/cate/3001/code/2572') }}';
+                var _url = '{{ site_url('/promotion/index/cate/3001/code/2920') }}';
                 parent.location.href=_url;
                 return ;
             }

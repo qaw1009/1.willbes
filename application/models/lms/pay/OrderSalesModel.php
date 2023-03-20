@@ -37,7 +37,7 @@ class OrderSalesModel extends BaseOrderModel
                     , M.MemName, M.MemId, fn_dec(M.PhoneEnc) as MemPhone
                     , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName
                     , if(BO.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName
-                    , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName, SC.CateName, SGC.CateName as LgCateName 
+                    , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName, SC.CateName, SGC.CateName as LgCateName, S.SiteName
                     , json_value(CPM.CcdEtc, if(BO.PgCcd != "", concat("$.fee.", BO.PgCcd), "$.fee")) as PgFee';
                 $column .= $this->_getListSalesQuery('column', $arr_add_join);
             }
@@ -64,7 +64,9 @@ class OrderSalesModel extends BaseOrderModel
 
         // 매출현황 목록 조회일 경우 공통코드명, 카테고리명 조회
         if ($is_count === false || $is_count === 'excel') {
-            $from .= '                  
+            $from .= '      
+                left join ' . $this->_table['site'] . ' as S
+                    on BO.SiteCode = S.SiteCode and S.IsStatus = "Y"
                 left join ' . $this->_table['category'] . ' as SGC
                     on SC.GroupCateCode = SGC.CateCode and SGC.IsStatus = "Y"              
                 left join ' . $this->_table['code'] . ' as CPC
@@ -97,7 +99,7 @@ class OrderSalesModel extends BaseOrderModel
 
         // 쿼리 실행
         if ($is_count === 'excel') {
-            $excel_column = 'OrderNo';
+            $excel_column = 'OrderNo, SiteName';
             // 학원강좌일 경우 수강증번호 추가
             if (starts_with($stats_type, 'off') === true) {
                 $excel_column .= ', CertNo';

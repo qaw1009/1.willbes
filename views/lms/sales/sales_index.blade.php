@@ -4,7 +4,7 @@
     <h5>- 사이트 기준 {{ $sales_name }} 매출현황을 확인할 수 있습니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', $is_all_site_tab, [], false, $arr_site_code) !!}
         <input type="hidden" id="search_site_code" name="search_site_code" value="{{ $def_site_code }}"/>
         <div class="x_panel">
             <div class="x_content">
@@ -95,6 +95,9 @@
                                 @endforeach
                                 </div>
                             @endif
+                        </div>
+                        <div id="layer_no_cate" class="form-control-static">
+                            `전체` 이외의 사이트탭을 선택해 주세요.
                         </div>
                     </div>
                 </div>
@@ -254,7 +257,7 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
-                        return '<a href="{{ site_url('/pay/order/show') }}/' +row.OrderIdx + '" class="blue" target="_blank"><u>' + data + '</u></a>';
+                        return '<a href="{{ site_url('/pay/order/show') }}/' +row.OrderIdx + '" class="blue" target="_blank"><u>' + data + '</u></a><br/>' + row.SiteName;
                     }},
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
                         return data + '(' + row.MemId + ')<br/>' + row.MemPhone;
@@ -309,15 +312,21 @@
             // 사이트코드별 카테고리 변경
             var changeCategory = function(site_code) {
                 var $layer = $search_form.find('#layer_cate_code');
+                var $layer_no_cate = $search_form.find('#layer_no_cate');
 
                 if (site_code !== '') {
                     // display
+                    $layer.show();
+                    $layer_no_cate.hide();
                     $layer.find('.wrap_cate_code').css('display', 'none');
                     $layer.find('.wrap_cate_code').filter('.' + site_code).css('display', '');
 
                     // checkbox disabled
                     $layer.find('.search_chk_cate_code').iCheck('uncheck').iCheck('disable');
                     $layer.find('.search_chk_cate_code').filter('.' + site_code).iCheck('enable');
+                } else {
+                    $layer.hide();
+                    $layer_no_cate.show();
                 }
             };
 

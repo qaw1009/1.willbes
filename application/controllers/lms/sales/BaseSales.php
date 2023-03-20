@@ -92,7 +92,8 @@ class BaseSales extends \app\controllers\BaseController
         $this->load->view('sales/sales_index', array_merge([
             'sales_type' => $this->_sales_type,
             'sales_name' => $this->_sales_name,
-            'def_site_code' => key($arr_code['arr_site_code'])
+            'def_site_code' => ($this->_sales_type == 'all' && is_sys_admin() === true ? '' : array_key_first($arr_code['arr_site_code'])),
+            'is_all_site_tab' => ($this->_sales_type == 'all' && is_sys_admin() === true)
         ], $arr_code));
     }
 
@@ -229,7 +230,7 @@ class BaseSales extends \app\controllers\BaseController
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        $headers = array_merge(['주문번호', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '직종구분']
+        $headers = array_merge(['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '직종구분']
             , $this->_add_excel_header
             , ['상품구분', '캠퍼스', '학습형태', '상품명', '결제금액', '수수료율', '수수료', '결제완료일', '환불금액', '환불완료일', '결제상태']
         );

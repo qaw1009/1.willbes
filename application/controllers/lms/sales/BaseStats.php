@@ -441,9 +441,10 @@ class BaseStats extends \app\controllers\BaseController
         }
 
         $headers[0] = '주문번호';
+        $headers[1] = '운영사이트';
         // 학원강좌일 경우 수강증번호 추가
         if (starts_with($this->_stats_type, 'off') === true) {
-            $headers[1] = '수강증번호';
+            $headers[2] = '수강증번호';
         }
         $headers = array_merge($headers, [
             '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '직종구분', '상품구분', '캠퍼스', '학습형태', '상품명',

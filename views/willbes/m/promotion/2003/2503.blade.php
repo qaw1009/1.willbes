@@ -40,7 +40,7 @@
     .lecWrap .pass li {list-style:disc; margin-left:1vh; margin-bottom:1vh; font-weight:bold}
     .lecWrap .pass li span {color:#b47607; vertical-align:top}
 
-    .lecWrap .pass input[type="radio"] {height:26px; width:26px; position:absolute; top:20px; left:20px; visibility: hidden;}
+    .lecWrap .pass input[type="radio"] {height:26px; width:26px; position:absolute; top:24px; left:10px; /*visibility: hidden;*/}
     .lecWrap .pass label{display:block; background:#fff; border-radius:10px; padding:20px 40px; text-align:left; box-sizing: border-box; }
     .lecWrap .pass label:hover {cursor: pointer;}
     .lecWrap .pass input:checked + label {border:1px solid #b47607; background:#b47607; color:#fff; box-shadow:5px 5px 10px rgba(0,0,0,.3)}

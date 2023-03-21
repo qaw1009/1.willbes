@@ -7,6 +7,7 @@ class Delivery extends BaseOrder
 {
     protected $models = array('pay/orderList', 'pay/order', 'pay/deliveryInfo', 'member/manageMember', 'service/point', 'sys/code', 'crm/send/sms');
     protected $helpers = array();
+    protected $_excel_perm_methods = array('excel', 'targetExcel', 'targetExcelNew', 'cnplusExcel');
     private $_prod_type = null;
     private $_tab = null;
     private $_delivery_pay_status_ccd = array();

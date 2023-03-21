@@ -414,6 +414,7 @@
 
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
+                {!! check_menu_perm_inner_script('excel') !!}
                 event.preventDefault();
                 var confirm_msg = '{{ config_get('privacy_excel_down_msg', '정말로 엑셀다운로드 하시겠습니까?') }}';
                 if (confirm(confirm_msg)) {
@@ -423,6 +424,7 @@
 
             // 모아시스 (사용안함), CN플러스 엑셀다운로드 버튼 클릭
             $('.btn-target-excel, .btn-cnplus-excel').on('click', function(event) {
+                {!! check_menu_perm_inner_script('excel') !!}
                 event.preventDefault();
                 /*if ($search_form.find('input[name="search_site_code"]').val().length < 1) {
                     alert('운영사이트를 먼저 선택해 주십시오. (사이트탭 선택)');
@@ -441,6 +443,7 @@
 
             // 북존물류 엑셀다운로드 버튼 클릭 (윌스토리제외)
             $('.btn-target-excel-new').on('click', function(event) {
+                {!! check_menu_perm_inner_script('excel') !!}
                 event.preventDefault();
                 var url = '{{ site_url('/pay/delivery/targetExcelNew') }}';
 
@@ -451,6 +454,7 @@
 
             // 북존물류 엑셀다운로드(윌스토리) 버튼 클릭
             $('.btn-target-excel-new-willstory').on('click', function(event) {
+                {!! check_menu_perm_inner_script('excel') !!}
                 event.preventDefault();
 
                 if ($search_form.find('input[name="search_site_code"]').val().length > 0) {
@@ -467,6 +471,7 @@
 
             // CN플러스(윌스토리제외) 엑셀다운로드 버튼 클릭 (사용안함)
             $('.btn-cnplus-no-willstory-excel').on('click', function(event) {
+                {!! check_menu_perm_inner_script('excel') !!}
                 event.preventDefault();
                 var url = '{{ site_url('/pay/delivery/cnplusExcel/no-willstory') }}';
 

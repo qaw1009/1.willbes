@@ -107,7 +107,7 @@
             <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2927_top_img.png" alt="신승철 면접캠프" /></span>
 		</div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-top">
+        <div class="evtCtnsBox evt01" data-aos="fade-top" id="link01">
             <img src="https://static.willbes.net/public/images/promotion/2023/03/2927_01.jpg" alt=""/>   
             <div class="request" id="request">
                 <div class="requestL">
@@ -218,10 +218,10 @@
 		</div> 
 
         <div class="evtCtnsBox evt04" data-aos="fade-top">
-            <div class="wrap">
+            <div class="wrap" id="link02">
                 <img src="https://static.willbes.net/public/images/promotion/2023/03/2927_04.jpg" alt="면접 무료특강"/>   
-                <a href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" title="검사신청" target="_blank" style="position: absolute; left: 59.73%; top: 21.26%; width: 22.59%; height: 3.56%; z-index: 2;" id="link01"></a>
-                <a href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" title="검사신청" target="_blank" style="position: absolute; left: 72.86%; top: 65.29%; width: 10.18%; height: 2.84%; z-index: 2;" id="link02"></a>
+                <a href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" title="검사신청" target="_blank" style="position: absolute; left: 59.73%; top: 21.26%; width: 22.59%; height: 3.56%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" title="검사신청" target="_blank" style="position: absolute; left: 72.86%; top: 65.29%; width: 10.18%; height: 2.84%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" title="검사신청" target="_blank" style="position: absolute; left: 72.86%; top: 68.92%; width: 10.18%; height: 2.84%; z-index: 2;"></a>
             </div>
 		</div> 

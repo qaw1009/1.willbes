@@ -23,7 +23,7 @@
         .sky {position:fixed; top:200px; right:10px; z-index:10;}
         .sky a {display:block; margin-bottom:15px}
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2023/01/2884_top_bg.jpg) no-repeat center top; height:1480px; overflow: hidden;}
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2023/01/2884_top_bg.jpg) no-repeat center top; overflow: hidden;}
 
         .wb_01 {background:#f5f5f7;}
         .wb_02 {background:#363331;}

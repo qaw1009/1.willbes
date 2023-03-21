@@ -35,7 +35,7 @@
         .evt02 .btns a {width:500px; margin:50px auto 0; font-size:30px; background:#1e1e1e; color:#fff; display:block; padding:20px; border-radius:50px}
         .evt02 .btns a:hover {background:#ec614e;}
 
-        .evt03 {background:#2b2b2b url(https://static.willbes.net/public/images/promotion/2023/03/2879_02_bg.jpg) no-repeat center top; padding:150px 0}
+        .evt03 {background:#2b2b2b url(https://static.willbes.net/public/images/promotion/2023/03/2879_02_bg.jpg) no-repeat center top; padding:600px 0 150px}
         .evt03 div {margin-bottom:20px}
         .evt03 .btns a {width:500px; margin:50px auto 0; font-size:30px; background:#fff200; color:#000; display:block; padding:20px; border-radius:50px}
         .evt03 .btns a:hover {background:#ec614e; color:#fff;}

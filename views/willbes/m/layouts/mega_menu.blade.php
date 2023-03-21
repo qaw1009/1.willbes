@@ -128,7 +128,7 @@
                 <li>
                     <span>G-TELP</span>
                     <a href="{{ front_url('/professor/show/cate/3023/prof-idx/51348?subject_idx=1177') }}">김혜진</a>
-                    <a href="https://willbesedu.willbes.net/m/pass/professor/show/prof-idx/51044?cate_code=3126&subject_idx=1954" target="_blank">김혜진</a>
+                    <a href="https://willbesedu.willbes.net/m/pass/professor/show/prof-idx/51044?cate_code=3126&subject_idx=1954" target="_blank">제니</a>
                 </li>       
             </ul>
         @elseif($menu_cate_code == '3024')

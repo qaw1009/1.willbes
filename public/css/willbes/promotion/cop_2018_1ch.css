@@ -457,11 +457,12 @@ input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !importan
 .boardTypeC .ratio2ch {position:absolute; left:10px; top:14px; width:50px; text-align:left; z-index:99; display:block}
 
 .boardTypeC .graph span {display:block; height:14px}
-.boardTypeC .graph span.graph1 {background:#1087ef}
-.boardTypeC .graph span.graph2 {background:#8C132F}
-.boardTypeC .graph span.graph3 {background:#C69}
-.boardTypeC .graph span.graph4 {background:#639}
-.boardTypeC .graph span.graph5 {background:#C63}
+.boardTypeC .graph span.graph1 {background: #adf2ff}
+.boardTypeC .graph span.graph2 {background: #70d3ff}
+.boardTypeC .graph span.graph3 {background: #1fa7e5}
+.boardTypeC .graph span.graph4 {background: #067ab7}
+.boardTypeC .graph span.graph5 {background: #055896
+}
 .boardTypeC .graph span.graph_etc {background:#999}
 
 .boardTypeC .graph2ch span {display:block; height:14px; float:right}

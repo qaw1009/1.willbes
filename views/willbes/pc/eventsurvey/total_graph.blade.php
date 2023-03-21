@@ -125,7 +125,7 @@
                             <tr>
                                 <th>{{ $val }}</th>
                                 <td>
-                                    <div class="graph"><span class="graph1" style="width:{{ element($key, $pointList, 0) }}%"></span></div>
+                                    <div class="graph"><span class="graph{{$loop->index}}" style="width:{{ element($key, $pointList, 0) }}%"></span></div>
                                     <Expect class="ratio"><span id="pa{{ $val }}">{{ element($key, $pointList, 0) }}</span>%</Expect>
                                 </td>
                             </tr>
@@ -147,7 +147,7 @@
                                 <tr>
                                     <th>{{ $val }}</th>
                                     <td>
-                                        <div class="graph"><span class="graph1" style="width:{{ element($key, $subjectPointList_1, 0) }}%"></span></div>
+                                        <div class="graph"><span class="graph{{$loop->index}}" style="width:{{ element($key, $subjectPointList_1, 0) }}%"></span></div>
                                         <Expect class="ratio"><span id="pa-1{{ $val }}">{{ element($key, $subjectPointList_1, 0) }}</span>%</Expect>
                                     </td>
                                 </tr>
@@ -169,7 +169,7 @@
                             <tr>
                                 <th>{{ $val }}</th>
                                 <td>
-                                    <div class="graph"><span class="graph1" style="width:{{ element($key, $subjectPointList_2, 0) }}%"></span></div>
+                                    <div class="graph"><span class="graph{{$loop->index}}" style="width:{{ element($key, $subjectPointList_2, 0) }}%"></span></div>
                                     <Expect class="ratio"><span id="pa-2{{ $val }}">{{ element($key, $subjectPointList_2, 0) }}</span>%</Expect>
                                 </td>
                             </tr>
@@ -191,7 +191,7 @@
                                 <tr>
                                     <th>{{ $val }}</th>
                                     <td>
-                                        <div class="graph"><span class="graph1" style="width:{{ element($key, $subjectPointList_3, 0) }}%"></span></div>
+                                        <div class="graph"><span class="graph{{$loop->index}}" style="width:{{ element($key, $subjectPointList_3, 0) }}%"></span></div>
                                         <Expect class="ratio"><span id="pa-3{{ $val }}">{{ element($key, $subjectPointList_3, 0) }}</span>%</Expect>
                                     </td>
                                 </tr>
@@ -221,7 +221,7 @@
                             <tr>
                                 <th>{{ $val }}</th>
                                 <td>
-                                    <div class="graph"><span class="graph1" style="width:{{ element($key, $pointList2, 0) }}%"></span></div>
+                                    <div class="graph"><span class="graph{{$loop->index}}" style="width:{{ element($key, $pointList2, 0) }}%"></span></div>
                                     <Expect class="ratio"><span id="pa_s{{ $val }}">{{ element($key, $pointList2, 0) }}</span>%</Expect>
                                 </td>
                             </tr>
@@ -243,7 +243,7 @@
                                 <tr>
                                     <th>{{ $val }}</th>
                                     <td>
-                                        <div class="graph"><span class="graph1" style="width:{{ element($key, $subjectPointList_4, 0) }}%"></span></div>
+                                        <div class="graph"><span class="graph{{$loop->index}}" style="width:{{ element($key, $subjectPointList_4, 0) }}%"></span></div>
                                         <Expect class="ratio"><span id="pa-4{{ $val }}">{{ element($key, $subjectPointList_4, 0) }}</span>%</Expect>
                                     </td>
                                 </tr>
@@ -265,7 +265,7 @@
                             <tr>
                                 <th>{{ $val }}</th>
                                 <td>
-                                    <div class="graph"><span class="graph1" style="width:{{ element($key, $subjectPointList_5, 0) }}%"></span></div>
+                                    <div class="graph"><span class="graph{{$loop->index}}" style="width:{{ element($key, $subjectPointList_5, 0) }}%"></span></div>
                                     <Expect class="ratio"><span id="pa-5{{ $val }}">{{ element($key, $subjectPointList_5, 0) }}</span>%</Expect>
                                 </td>
                             </tr>
@@ -287,7 +287,7 @@
                                 <tr>
                                     <th>{{ $val }}</th>
                                     <td>
-                                        <div class="graph"><span class="graph1" style="width:{{ element($key, $subjectPointList_6, 0) }}%"></span></div>
+                                        <div class="graph"><span class="graph{{$loop->index}}" style="width:{{ element($key, $subjectPointList_6, 0) }}%"></span></div>
                                         <Expect class="ratio"><span id="pa-6{{ $val }}">{{ element($key, $subjectPointList_6, 0) }}</span>%</Expect>
                                     </td>
                                 </tr>
@@ -393,7 +393,7 @@
                                     --}}
                                     <th>{{ $item }}</th>
                                     <td>
-                                        <div class="graph"><span class="graph1" style="width:{{ $spread or 0 }}%"></span></div>
+                                        <div class="graph"><span class="graph{{$loop->index}}" style="width:{{ $spread or 0 }}%"></span></div>
                                         <Expect class="ratio">{{ $spread or 0 }}%</Expect>
                                     </td>
                                 </tr>
@@ -617,7 +617,8 @@
                 'dataset':{
                     title: 'Web accessibility status',
                     values: values,
-                    colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93' , '#f10a00'],
+                    /*colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93' , '#f10a00'],*/
+                    colorset: ['#adf2ff', '#70d3ff', "#1fa7e5", '#067ab7', '#055896'],
                     fields: fields
                 },
                 'donut_width' : 35,
@@ -651,7 +652,8 @@
                 'dataset':{
                     title: 'Web accessibility status',
                     values: values,
-                    colorset: ['#2EB400', '#2BC8C9', "#666666", '#f09a93' , '#f10a00'],
+                    colorset: ['#adf2ff', '#70d3ff', "#1fa7e5", '#067ab7', '#055896'],
+                    /*colorset: ['#d7dcdd', '#aeb6b8', "#aeb6b8", '#7b868a', '#525e61'],*/
                     fields: fields[obj]
                 },
                 'donut_width' : 35,

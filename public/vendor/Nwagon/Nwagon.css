@@ -87,7 +87,7 @@ ul.accessibility {font-size:0;height: 1px; line-height: 1px; overflow: hidden; w
 .core .core_text {fill:#444;font-family:'나눔고딕', '돋움', Dotum;font-size:15px;}
 
 /*pie and donut */
-.foreground .donuts .sector {stroke-width:1; stroke:#fff; cursor:pointer}
+.foreground .donuts .sector {stroke-width:1; /*stroke:#fff;*/ cursor:pointer}
 
 /* Radar Type */
 .Nwagon_radar .background .pie polyline{stroke:#000;stroke-width:0.2;}

@@ -109,15 +109,27 @@
                 </li>
                 <li>
                     <span>소방학개론</span>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51068?subject_idx=1113') }}">이종오</a>                                      
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51421?subject_idx=1113') }}">권나라</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51068?subject_idx=1113') }}">이종오</a>                                       
                 </li>                
                 <li>
                     <span>소방관계법규</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51420?subject_idx=1138') }}">오도희</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51068?subject_idx=1138') }}">이종오</a>                                                  
                 </li>
-                <li><span>행정법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50615?subject_idx=1111') }}">이석준</a></li>
-                <li><span>한국사검정능력시험</span><a href="{{ front_url('/professor/show/cate/3023/prof-idx/50027?subject_idx=1237') }}">오태진</a></li> 
-                <li><span>G-TELP</span><a href="{{ front_url('/professor/show/cate/3023/prof-idx/51348?subject_idx=1177') }}">김혜진</a></li>       
+                <li>
+                    <span>행정법</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51206?subject_idx=1111') }}">신기훈</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50615?subject_idx=1111') }}">이석준</a>
+                </li>
+                <li>
+                    <span>한국사검정능력시험</span>
+                    <a href="{{ front_url('/professor/show/cate/3023/prof-idx/50027?subject_idx=1237') }}">오태진</a></li> 
+                <li>
+                    <span>G-TELP</span>
+                    <a href="{{ front_url('/professor/show/cate/3023/prof-idx/51348?subject_idx=1177') }}">김혜진</a>
+                    <a href="https://willbesedu.willbes.net/m/pass/professor/show/prof-idx/51044?cate_code=3126&subject_idx=1954" target="_blank">김혜진</a>
+                </li>       
             </ul>
         @elseif($menu_cate_code == '3024')
             {{-- 군무원 --}}

@@ -25,7 +25,6 @@
         .sky {position:fixed;top:200px;right:10px;z-index:100;}
         .sky a {display:block; margin-bottom:10px}
 
-
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2023/03/2879_top_bg.jpg) no-repeat center top;}
         .evtTop span {position: absolute; top:300px; left:50%; margin-left:-386px; width:773px; z-index: 2;}
 
@@ -43,16 +42,12 @@
 
 
     <div class="evtContent NSK" id="evtContainer">
-        <div class="sky" id="QuickMenu">
-            <a href="https://willbesedu.willbes.net/pass/promotion/index/cate/3126/code/2881" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2022/12/1101_sky.jpg" alt="합격보장반"></a>
-        </div>
-
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2023/03/2879_top.jpg" alt="윌비스소방 통합생활관리반"/>
             <span data-aos="flip-left"><img src="https://static.willbes.net/public/images/promotion/2023/03/2879_top_img.png"  alt="윌비스소방 통합생활관리반"/></span>
         </div>
 
-        <div class="evtCtnsBox evt01 NSK-Black" data-aos="fade-up">
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
             노량진 수험관리의 끝판왕! 통합생활관리반의 모든것!
         </div>
 
@@ -64,7 +59,7 @@
             <div data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2023/03/2879_01_05.jpg" /></div>
             <div data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2023/03/2879_01_06.jpg" /></div>
             <div class="btns NSK-Black">
-                <a href="https://pass.willbes.net/pass/consult/visitConsult/index?s_campus=605005" target="_blank">1:1 심층 방문상담 예약하기 ></a>
+                <a href="https://willbesedu.willbes.net/pass/consult/visitConsult/index?s_campus=605005" target="_blank">1:1 심층 방문상담 예약하기 ></a>
             </div>
         </div>
 
@@ -78,7 +73,7 @@
             <div data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2023/03/2879_02_07.png" /></div>
             <div data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2023/03/2879_02_08.png" /></div>
             <div class="btns NSK-Black">
-                <a href="https://pass.willbes.net/pass/consult/visitConsult/index?s_campus=605005" target="_blank">1:1 심층 방문상담 예약하기 ></a>
+                <a href="https://willbesedu.willbes.net/pass/consult/visitConsult/index?s_campus=605005" target="_blank">1:1 심층 방문상담 예약하기 ></a>
             </div>
         </div>
 

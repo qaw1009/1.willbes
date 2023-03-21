@@ -110,7 +110,7 @@
             <div class="mt30" data-aos="fade-right"><a href="https://pass.willbes.net/lecture/index/cate/3103/pattern/only?search_order=regist&subject_idx=&course_idx=1365&school_year=2023" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/03/2926_06_06.jpg" alt="동영상강의 신청" /></a></div>
 		</div>
 
-        <div class="evtCtnsBox evt07" data-aos="fade-up">
+        <div class="evtCtnsBox evt07" data-aos="fade-up" id="evt">
             <img src="https://static.willbes.net/public/images/promotion/2023/03/2926_07_01.jpg" alt="" />
             <div class="textBox">
                 <p class="NSK-Black">바로가기<p>

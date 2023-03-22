@@ -55,7 +55,7 @@
         <div class="evtCtnsBox evt_04" data-aos="fade-up">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/03/2577_04.jpg" alt="수강안내" />
-                <a href="https://gosi.willbes.net/support/gosiNotice/show/cate/3094?board_idx=290148&s_cate_code=3094&s_campus=0&s_keyword=&prof_idx=&subject_idx=&view_type=&s_cate_code_disabled=Y&page=2" title="원격채점 방법 안내 자세히 보러가기 ▶" target="_blank" style="position: absolute;left: 49.66%;top: 88.67%;width: 25.21%;height: 5.41%;z-index: 2;"></a>
+                <a href="https://gosi.willbes.net/support/notice/show/cate/3094?board_idx=454893&s_cate_code=3094&s_cate_code_disabled=Y" title="원격채점 방법 안내 자세히 보러가기 ▶" target="_blank" style="position: absolute;left: 49.66%;top: 88.67%;width: 25.21%;height: 5.41%;z-index: 2;"></a>
             </div>     
         </div>
 

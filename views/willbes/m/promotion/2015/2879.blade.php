@@ -4,7 +4,7 @@
 <!-- Container -->
 
 <style type="text/css">
-    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both; font-size:10px}
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both;}
     .evtCtnsBox img {max-width:100%;}
     .evtCtnsBox.wrap {position:relative}
     /*.evtCtnsBox a {border:1px solid #000}*/
@@ -13,19 +13,20 @@
     .evtTop span img {width:70%; max-width:412px}
 
 
-    .lecbuy a {display:block; background:#2c312e; color:#fff; font-size:4.5vw; padding:3vh 0; width:80%; margin:3vh auto; text-align:center; border-radius:10px}
+    .lecbuy a {display:block; background:#2c312e; color:#fff; font-size:3vh; padding:3vh 0; width:80%; margin:3vh auto; text-align:center; border-radius:10px}
 
     .evt03 {padding-bottom:2vh; background:#2b2b2b}
     .evt03 .lecbuy a {background:#fff200; color:#2b2b2b;}
 
-    .evtMap ul {padding:10px; text-align:left; font-size:3.6vw; line-height:1.7;}
-    .evtMap li {list-style-type: disc; margin-left:20px; margin-bottom:20px;}
+    .evtMap ul {padding:1vh; text-align:left; font-size:2vh; line-height:1.7;}
+    .evtMap li {list-style-type: disc; margin-left:20px; margin-bottom:2vh;}
     .evtMap li div {color:#666}   
-    .evtMap li div span {padding:2px 5px; color:#fff; border-radius:4px; font-size:3vw; vertical-align:middle; display:inline-block}
+    .evtMap li div span {padding:2px 5px; color:#fff; border-radius:4px; font-size:1.8vh; vertical-align:middle; display:inline-block}
     .evtMap li div span:nth-of-type(1) {background:#3957ac;}
     .evtMap li div span:nth-of-type(2) {background:#40a028;}
     .evtMap li div span:nth-of-type(3) {background:#c90f25;}
     .evtMap li div span:nth-of-type(4) {background:#40a028;}    
+
 </style>
 
 <div id="Container" class="Container NSK c_both">

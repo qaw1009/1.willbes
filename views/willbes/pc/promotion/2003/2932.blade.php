@@ -108,7 +108,10 @@
             </a>   
             <a href="#event03"> 
                 <img src="https://static.willbes.net/public/images/promotion/2023/03/2932_sky02.png" alt="댓글참여" >
-            </a>                   
+            </a>
+            <a href="#none"> 
+                <img src="https://static.willbes.net/public/images/promotion/2023/03/2932_sky03.png" alt="다관왕 도전" >
+            </a>            
         </div>
 
         <div class="evtCtnsBox evtTop">

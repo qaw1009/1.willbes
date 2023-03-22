@@ -254,6 +254,7 @@
                     @endif
                 @endforeach
             </div>
+            {{-- 관리 안되서 비노출
             <div>
                 <dl class="sns-Btn mt10 mb10">
                     <dt>
@@ -278,6 +279,7 @@
                     </dt>
                 </dl>
             </div>
+            --}}
             <!-- gnb site setting -->
             <ul class="gnb-List-Sub p_re">
                 <li>

@@ -1529,6 +1529,19 @@
     line-height: 30px;
 }
 
+.w-Guide-Ssam h4 span {
+    font-size: 14px;
+    border-radius: 4px;
+    background: #036ac1;
+    color: #fff;
+    margin-right: 5px;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center
+}
+
 .w-Guide-Ssam .tabBox {
     position: relative;
     margin-bottom: 30px;
@@ -1689,6 +1702,24 @@
 
 .w-Guide-Ssam .listTable select {
     padding: 5px
+}
+
+.ssamGuideSt01 dt {
+    font-size: 14px;
+}
+
+.ssamGuideSt01 dd {
+    padding-left: 15px;
+    margin-bottom: 30px
+}
+
+.ssamGuideSt01 dd ul li {
+    list-style-type: square;
+    margin-left: 15px;
+}
+
+.ssamGuideSt01 .guidebox tbody th {
+    background: #fafafb
 }
 
 /* 대학특강, 교수채용 */

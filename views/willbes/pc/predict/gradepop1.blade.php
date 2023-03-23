@@ -25,7 +25,7 @@
                 <div class="paper">
                 @if($question_list[0]['file'])
                     @if(strpos($question_list[0]['file'], 'pdf') !== false)
-                            <iframe src="{{ $filepath }}{{ $question_list[0]['file'] }}" name="frmL" id="frmL" width="99%" height="650px" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
+                            <iframe src="{{ $filepath }}{{ $question_list[0]['file'] }}" name="frmL" id="frmL" width="99%" height="750px" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
                     @else
                             <img src="{{ $filepath }}{{ $question_list[0]['file'] }}" width="100%"/>
                     @endif

@@ -228,7 +228,7 @@
                         @endforeach
                     </table>
                     <div class="mt10">
-                        <div id="pointarea_s"></div>
+                        <div id="pointareasingle"></div>
                     </div>
                 </div>
 
@@ -557,7 +557,7 @@
         $(document).ready(function () {
             $('#selgrade option').eq(0).prop('selected', 'selected');
             selPoint_total('');
-            selPoint_total('_s');
+            selPoint_total('single');
             selPoint_graph(1);
             selPoint_graph(2);
             selPoint_graph(3);

@@ -45,7 +45,7 @@
                 <!--답안지-->
                 <div class="omrR">
                     <p>왼쪽 문제에 맞춰 실제 시험에서 제출한 문항별 답안지를 체크해 주세요.</p>
-                    <div>
+                    <div style="width: 100%; height: 700px; overflow: auto;">
                         <table class="boardTypeB">
                             <col width="20%" />
                             @foreach($question_list as $key => $row)

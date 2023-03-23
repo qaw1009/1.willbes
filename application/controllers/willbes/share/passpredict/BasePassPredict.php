@@ -1179,6 +1179,9 @@ class BasePassPredict extends \app\controllers\FrontController
                 $arr_base['resist_data'][$row['PrIdx']]['subject'][] = $row['subject'];
             }
 
+            //과목정보
+            $subject_list = $this->surveyModel->subjectList($idx, $PrIdx);
+
             //원점수 조회
             $user_point = [];
             $score1 = $this->surveyModel->getScore1($PrIdx, $idx);
@@ -1227,6 +1230,7 @@ class BasePassPredict extends \app\controllers\FrontController
 
         $this->load->view('willbes/pc/predict/private', [
             'arr_base' => $arr_base
+            ,'subject_list' => $subject_list
         ], false);
     }
     public function _back_private($params = [])

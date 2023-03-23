@@ -62,51 +62,32 @@
                                 <td colspan="6">등록된 성적 데이터가 없습니다.</td>
                             </tr>
                         @else
-                            @foreach($arr_base['user_point'] as $key => $val)
+                            @foreach($subject_list as $row)
                                 <tr>
-                                    <th>{{ $val['SubjectName'] }}</th>
-                                    <td>{{ $val['OrgPoint'] }}</td>
-                                    {{--<td>
-                                        @if ($val['TakeMockPart'] === 800)
-                                            {{ $val['OrgPoint'] }}
-                                        @else
-                                            @if (empty($arr_base['user_subject_avg']) === true)
-                                                집계중
-                                            @else
-                                                {{ $arr_base['user_subject_avg'][$key]['AdjustPoint'] }}
-                                            @endif
-                                        @endif
-                                    </td>--}}
+                                    <th>{{ $row['CcdName'] }}</th>
+                                    <td>{{ $arr_base['user_point'][$row['PpIdx']]['OrgPoint'] }}</td>
                                     <td>
                                         @if (empty($arr_base['user_subject_avg']) === true)
                                             집계중
                                         @else
-                                            {{ number_format($arr_base['user_subject_avg'][$key]['MyRank']) }} / {{ number_format($arr_base['user_subject_avg'][$key]['TakeNum']) }}
+                                            {{ number_format($arr_base['user_subject_avg'][$row['PpIdx']]['MyRank']) }} / {{ number_format($arr_base['user_subject_avg'][$row['PpIdx']]['TakeNum']) }}
                                         @endif
                                     </td>
                                     <td>
                                         @if (empty($arr_base['user_subject_avg']) === true)
                                             집계중
                                         @else
-                                            {{ $arr_base['user_subject_avg'][$key]['AvrPoint'] }}
+                                            {{ $arr_base['user_subject_avg'][$row['PpIdx']]['AvrPoint'] }}
                                         @endif
                                     </td>
                                     <td>
                                         @if (empty($arr_base['user_subject_avg']) === true)
                                             집계중
                                         @else
-                                            {{ $arr_base['user_subject_avg'][$key]['FivePerPoint'] }}
+                                            {{ $arr_base['user_subject_avg'][$row['PpIdx']]['FivePerPoint'] }}
                                         @endif
                                     </td>
                                 </tr>
-                                {{--<tr>
-                                    <th>{{ $row['PaperName'] }}</th>
-                                    <td>{{ $row['OrgPoint'] }}</td>
-                                    <td>{{ $row['AdjustPoint'] }}</td>
-                                    <td>{{ number_format($row['MyRank']) }} / {{ number_format($row['TakeNum']) }} </td>
-                                    <td>{{ $row['AvrPoint'] }}</td>
-                                    <td>{{ $row['FivePerPoint'] }}</td>
-                                </tr>--}}
                             @endforeach
                             <tr>
                                 <th>총점</th>

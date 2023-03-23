@@ -274,7 +274,7 @@
                 if(type == 1){
                     _url = '{{ front_url('/predict/popwin1/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
                     width = 1300;
-                    height = 900;
+                    height = 910;
                 } else if(type == 2){
                     _url = '{{ front_url('/predict/popwin2/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val();
                     width = 1380;

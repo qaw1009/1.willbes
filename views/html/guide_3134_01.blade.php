@@ -214,13 +214,13 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td class="tx-left">
+                                                <td class="tx-left" style="line-height:1.8">
                                                     ① 4년제 유아교육학과 졸업<br>
                                                     ② 전문대 유아교육학과 졸업+교직학점 이수<br>
                                                     ③ 유아교육대학원 양성과정 이수(석사)<br>
                                                     ④ 유치원 준교사 자격증+교육경력2년+소정의 재교육
                                                 </td>
-                                                <td class="tx-left">
+                                                <td class="tx-left" style="line-height:1.8">
                                                     ① 교육대학 졸업<br>
                                                     ② 사범대학을 졸업한 사람으로서 초등교육과정을 전공<br>
                                                     ③ 교육대학원 또는 교육부장관이 지정하는 대학원의 교육과에서 초등교육과정을 전공(석사)<br>
@@ -235,8 +235,7 @@
                             <dd>
                                 <ul>
                                     <li>임용시험 1차시험 합격자 발표 전날까지 유효한 자격증</li>
-                                    <li>자격증 유효범위 규정의 폐지: 기간 상관 없이 합격자 발표 전날까지 유효한 자격증<br>
-                                        * 2022년까지 제1차 시험일부터 역산하여 5년째 되는 해의 1월 1일 이후에 실시된 시험에서 취득한 자격증 규정의 폐지</li>
+                                    <li>자격증 유효범위 규정의 폐지: 2024학년도 시험부터 (5년) 유효기간 폐지</li>
                                 </ul>
                             </dd>
                             <dt class="NGEB">○ 응시연령</dt>
@@ -476,8 +475,9 @@
                             <dt class="NGEB">○ 시험관리기관</dt>
                             <dd>
                                 <ul>
-                                    <li>교육공무원법(개정 2021.9.24.) 및 교육공무원임용령 (개정 2021.6.22.)</li>
-                                    <li>교육공무원임용후보자선정경쟁시험규칙(개정 2022.9.5.)</li>
+                                    <li>시·도교육청: 시행 공고, 원서 교부·접수, 문·답지 운송, 시험 실시,합격자 발표</li>
+                                    <li>한국교육과정평가원: 1차 시험 출제 및 채점, 2차 시험 출제<br>
+                                    ※ 일부 시·도교육청은 2차 시험을 자체적으로 출제하므로, 해당 교육청의  반드시 공고문확인 요망</li>
                                 </ul>
                             </dd>
                             <dt class="NGEB">○ 출제 방향</dt>
@@ -566,8 +566,7 @@
                             <dd>
                                 <ul>
                                     <li>임용시험 1차 시험일까지 유효한 자격증</li>
-                                    <li>자격증 유효범위 규정의 폐지: 기간 상관 없이 1차 시험일지 유효한 자격증<br> 
-                                    * 2022년까지 제1차 시험일부터 역산하여 5년째 되는 해의 1월 1일 이후에 실시된 시험에서 취득한 자격증 규정의 폐지</li>
+                                    <li>자격증 유효범위 규정의 폐지: 2024학년도 시험부터 (5년) 유효기간 폐지</li>
                                 </ul>
                             </dd>
                             <dt class="NGEB">○ 응시연령</dt>
@@ -901,7 +900,7 @@
                             </dd>
                         </dl>
 
-                        <div><a href="https://www.historyexam.go.kr/pageLink.do?link=examSchedule&netfunnel_key=D99B03996D1A60ADAD8032E599D6C2F4D9C00F97F78518C74290BA6D297ACBD6831321FA66104DDB09AD4D7DF0AB32DD0743411B628930CFA930A1CA66FD4A801A12E865C88B697CC9223FA30AF28EDF5040FF6CCA34DB8A028CF47044B6F18A234B1EEDF2C1E725FD8CB4420BEBC394362C312C302C30" target="_blank"><img src="https://static.willbes.net/public/images/promotion/sub/guide_3134_03.jpg" alt="시험일정"/> <a></div>
+                        <div class="tx-center"><a href="https://www.historyexam.go.kr/pageLink.do?link=examSchedule&netfunnel_key=D99B03996D1A60ADAD8032E599D6C2F4D9C00F97F78518C74290BA6D297ACBD6831321FA66104DDB09AD4D7DF0AB32DD0743411B628930CFA930A1CA66FD4A801A12E865C88B697CC9223FA30AF28EDF5040FF6CCA34DB8A028CF47044B6F18A234B1EEDF2C1E725FD8CB4420BEBC394362C312C302C30" target="_blank"><img src="https://static.willbes.net/public/images/promotion/sub/guide_3134_03.jpg" alt="시험일정"/> <a></div>
                     </div> 
                 </div>
             </div>

@@ -108,6 +108,7 @@
             <div data-aos="fade-right"><img src="https://static.willbes.net/public/images/promotion/2023/03/2926_06_04.jpg" alt="" /></div>
             <div class="mt80" data-aos="fade-left"><a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3143&course_idx=1436" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/03/2926_06_05.jpg" alt="학원강의 신청" /></a></div>
             <div class="mt30" data-aos="fade-right"><a href="https://pass.willbes.net/lecture/index/cate/3103/pattern/only?search_order=regist&subject_idx=&course_idx=1365&school_year=2023" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/03/2926_06_06.jpg" alt="동영상강의 신청" /></a></div>
+            <div class="mt30" data-aos="fade-left"><a href="https://pass.willbes.net/pass/offPackage/show/prod-code/206094" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/03/2926_06_07.jpg" alt="학원패키지" /></a></div>
 		</div>
 
         <div class="evtCtnsBox evt07" data-aos="fade-up" id="evt">

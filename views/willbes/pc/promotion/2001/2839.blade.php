@@ -38,7 +38,7 @@
         .evtPass {background:#F5F5F7; padding:100px 0}
         .evtPass .title01 {font-size:30px; color:#000; margin-bottom:100px}
         .evtPass .wrap {width:1120px; margin:0 auto}
-        .evtPass .passLecBuy {display:flex; justify-content:space-around; position:absolute; bottom:60px; width:1120px; left:50%; margin-left:-563px; color:#252525; letter-spacing:-1px}
+        .evtPass .passLecBuy {display:flex; justify-content:space-around; position:absolute; bottom:60px; width:820px; left:50%; margin-left:-415px; color:#252525; letter-spacing:-1px}
         .evtPass .passLecBuy div {width:50%; line-height:30px; font-size:21px; font-weight:bold; text-align:center;} 
         .evtPass .passLecBuy p {font-size:18px; margin-bottom:20px; text-align:center; margin-left:-30px}
         .evtPass .passLecBuy p span,
@@ -112,7 +112,7 @@
         .content_guide_wrap .guide_tit{margin-bottom:50px; text-align:left; font-size:30px;}
 
         .content_guide_wrap .tabs {width:1120px; margin:0 auto; display:flex; justify-content: space-around;} 
-        .content_guide_wrap .tabs li {width:25%;}
+        .content_guide_wrap .tabs li {width:33.3333%;}
         .content_guide_wrap .tabs li a {display:block; text-align:center; height:60px; line-height:60px; font-size:140% !important; border:2px solid #f3f3f3; border-bottom:2px solid #202020;}
         .content_guide_wrap .tabs li a:hover,
         .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
@@ -209,7 +209,7 @@
 		</div>
 
         <div class="evtCtnsBox evt_self" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2023/01/2839_self_test.jpg" alt="셀프테스트"/>           
+            <img src="https://static.willbes.net/public/images/promotion/2023/03/2839_self_test.jpg" alt="셀프테스트"/>           
 		</div>
 
         <div class="evtCtnsBox evt_pro" data-aos="fade-up">    
@@ -223,7 +223,7 @@
         <div class="evtCtnsBox evtPass" data-aos="fade-up">
             <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_01.jpg" alt="구매전 안내"/>           
             <div class="wrap" id="pass">
-                <img src="https://static.willbes.net/public/images/promotion/2023/01/2839_02_v2.jpg" alt="윌비스 경찰 PASS">
+                <img src="https://static.willbes.net/public/images/promotion/2023/03/2839_02_v2.jpg" alt="윌비스 경찰 PASS">
                 <div class="passLecBuy NSK-Black"> 
                     <div>                                       
                         <input type="radio" id="y_pkg1" name="y_pkg" value="203769"/>                
@@ -236,11 +236,7 @@
                     <div>                                       
                         <input type="radio" id="y_pkg3" name="y_pkg" value="202977"/>                
                         <label for="y_pkg3">23년 2차 0원 PASS 신청</label>
-                    </div>
-                    <div>                    
-                        <input type="radio" id="y_pkg4" name="y_pkg" value="204763"/>
-                        <label for="y_pkg4">타사 환승 PASS 신청</label>
-                    </div>
+                    </div>                   
                 </div>
             </div>
 
@@ -273,22 +269,22 @@
  
          
         <div class="evtCtnsBox evt_04" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_04.jpg" alt="커리큘럼"/>            
+            <img src="https://static.willbes.net/public/images/promotion/2023/03/2839_04.jpg" alt="커리큘럼"/>            
         </div>
 
         <div class="evtCtnsBox evt_curri" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_curri.jpg" alt="커리큘럼 확인"/>
+                <img src="https://static.willbes.net/public/images/promotion/2023/03/2839_curri.jpg" alt="커리큘럼 확인"/>
                 <a href="javascript:void(0);" onclick="go_popup(1); return false;" title="커리큘럼 확인하기" style="position: absolute;left: 23.86%;top: 80.61%;width: 52.56%;height: 10.52%;z-index: 2;"></a>                
             </div>
         </div>
 
          <div class="evtCtnsBox evt_05" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_05.jpg" alt="교수진"/>            
+            <img src="https://static.willbes.net/public/images/promotion/2023/03/2839_05.jpg" alt="교수진"/>            
         </div>         
 
         <div class="evtCtnsBox evt_06 pb100" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2022/11/2839_06.jpg" alt="올인원 커리큘럼" />     
+            <img src="https://static.willbes.net/public/images/promotion/2023/03/2839_06.jpg" alt="올인원 커리큘럼" />     
             <div class="tabContaier" id="apply">    
                 <ul>
                     <li>
@@ -303,26 +299,19 @@
                     </li>                            
                     <li>
                         <a href="#tab3">
-                         <span>형법</span> 문형석
+                         <span>형사법</span> 김한기
                         </a>
                     </li>
                     <li>
                         <a href="#tab4">
-                         <span>형소법</span> 김한기
+                         <span>경찰학</span> 김재규
                         </a>
-                    </li>
-                    {{--
+                    </li>                   
                     <li>
                         <a href="#tab5">
-                         <span>경찰학</span> 박우찬
+                         <span>형사법</span> 김효범
                         </a>
-                    </li>
-                    --}}                 
-                    <li>
-                        <a href="#tab6">
-                            <span>범죄학</span> 김한기
-                        </a>
-                    </li>             
+                    </li>           
                 </ul>                
                 <div id="tab1" class="tabContents">
                     <div class="youtube" data-num="1">
@@ -343,44 +332,34 @@
                         <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51394?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">형사법 임종희</a>
                         {{--<span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2592" target="_blank">22년 1차 시험 완벽 적중 보기 ></a></span>--}}
                     </div>                        
-                </div> 
+                </div>             
                 <div id="tab3" class="tabContents">
                     <div class="youtube" data-num="3">
-                        <object data="https://www.youtube.com/embed/c_cRv4ZclJo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
-                    </div>
-                    <div>
-                        <p class="NSK-Black">NEW ALL in One 형법</p>
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51392?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">형법 문형석</a>
-                        {{--<span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2594" target="_blank">22년 1차 시험 완벽 적중 보기 ></a></span>--}}
-                    </div>                               
-                </div>
-                <div id="tab4" class="tabContents">
-                    <div class="youtube" data-num="4">
                         <object data="https://www.youtube.com/embed/iQQRQEYkoIE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
-                        <p class="NSK-Black">NEW ALL in One 형소법</p>
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51389?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">형소법 김한기</a>
+                        <p class="NSK-Black">NEW ALL in One 형사법</p>
+                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51389?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">형사법 김한기</a>
                         {{--<span><a href="https://police.willbes.net/promotion/index/cate/3001/code/2583" target="_blank">22년 1차 시험 완벽 적중 보기 ></a></span>--}}
                     </div>                                
                 </div> 
-                <div id="tab5" class="tabContents">
-                    <div class="youtube" data-num="5">
-                        <object data="https://www.youtube.com/embed/zj9uAPnA618?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
+                <div id="tab4" class="tabContents">
+                    <div class="youtube" data-num="4">
+                        <object data="https://www.youtube.com/embed/mcNmfoguKKg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
-                        <p class="NSK-Black">NEW ALL in One 경찰학</p>
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51395?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">경찰학 박우찬</a>
+                        <p class="NSK-Black">NEW 총알 경찰학</p>
+                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51424?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">경찰학 김재규</a>
                     </div>                          
                 </div>              
-                <div id="tab6" class="tabContents">
-                    <div class="youtube" data-num="6">
-                        <object data="https://www.youtube.com/embed/4xZM-lm67Bw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
+                <div id="tab5" class="tabContents">
+                    <div class="youtube" data-num="5">
+                        <object data="https://www.youtube.com/embed/rR7usJZW7Ls?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
-                        <p class="NSK-Black">NEW ALL in One 범죄학</p>
-                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51398?subject_idx=2178&subject_name=%EB%B2%94%EC%A3%84%ED%95%99%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">범죄학 김한기</a>
-                    </div>                        
+                        <p class="NSK-Black">NEW 올인원 형사법</p>
+                        <a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51393?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2823%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank">형사법 김효범</a>
+                    </div>                 
                 </div>                                
             </div>    
         </div>
@@ -421,7 +400,7 @@
                     <li><a href="#tab01" class="active">평생 0원 PASS</a></li>
                     <li><a href="#tab02">23년 2차 0원 PASS</a></li>
                     <li><a href="#tab03">24년1차 0원 PASS</a></li>
-                    <li><a href="#tab04">타사 환승 PASS</a></li>               
+                    {{--<li><a href="#tab04">타사 환승 PASS</a></li>--}}               
                 </ul>
 
                 <div class="content_guide_box" id="tab01">
@@ -840,7 +819,7 @@
                         </dd>
                     </dl>
                 </div>
-
+                {{--
                 <div class="content_guide_box" id="tab04">
                     <dl>
                         <dt>
@@ -954,7 +933,7 @@
                         </dd>
                     </dl>
                 </div>
-                
+                --}}                
             </div>
         </div>
         <!-- content_guide_wrap //-->
@@ -1025,10 +1004,9 @@
         $(document).ready(function(){
             var  youtube_url1 = "https://www.youtube.com/embed/ueqN7v3wgKc?rel=0";
             var  youtube_url2 = "https://www.youtube.com/embed/6zd2TPGVf84?rel=0"; 
-            var  youtube_url3 = "https://www.youtube.com/embed/c_cRv4ZclJo?rel=0"; 
-            var  youtube_url4 = "https://www.youtube.com/embed/iQQRQEYkoIE?rel=0"; 
-            var  youtube_url5 = "https://www.youtube.com/embed/zj9uAPnA618?rel=0"; 
-            var  youtube_url6 = "https://www.youtube.com/embed/4xZM-lm67Bw?rel=0"; 
+            var  youtube_url3 = "https://www.youtube.com/embed/iQQRQEYkoIE?rel=0"; 
+            var  youtube_url4 = "https://www.youtube.com/embed/mcNmfoguKKg?rel=0"; 
+            var  youtube_url5 = "https://www.youtube.com/embed/rR7usJZW7Ls?rel=0";
 
             $(".tabContents").hide();
             $(".tabContents:first").show();

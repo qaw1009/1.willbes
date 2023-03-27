@@ -87,7 +87,7 @@
                     <div class="btns">
                         <div>
                             3/27(월)~3/31(금)
-                            <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank">접수하기 ></a>
+                            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2932" target="_blank">접수하기 ></a>
                         </div>
                         <div>
                             4/1(토)~4.2(일)

@@ -222,7 +222,7 @@
                                 <th>{{ $val }}</th>
                                 <td>
                                     <div class="graph"><span class="graph{{$loop->remaining}}" style="width:{{ element($key, $pointList2, 0) }}%"></span></div>
-                                    <Expect class="ratio"><span id="pa_s{{ $val }}">{{ element($key, $pointList2, 0) }}</span>%</Expect>
+                                    <Expect class="ratio"><span id="pasingle{{ $val }}">{{ element($key, $pointList2, 0) }}</span>%</Expect>
                                 </td>
                             </tr>
                         @endforeach

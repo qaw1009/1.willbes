@@ -1,8 +1,8 @@
         <div class="tabBox NG">
             <ul class="tabShow">
                 <li><a href="#ssam_guide1" class="on">(유치원 • 초등) 임용시험의 개요</a></li>
-                <li><a href="#ssam_guide2">한국사 능력 검정 시험 안내</a></li>
-                <li><a href="#ssam_guide3">유아·초등 임용 시험 상세</a></li>
+                <li><a href="#ssam_guide2">중등 교원임용시험의 개요</a></li>
+                <li><a href="#ssam_guide3">한국사 능력 검정시험 안내</a></li>
             </ul>                
         </div>
         <div class="tabContent GM">
@@ -324,15 +324,8 @@
                 <div class="ssamGuideSt01">
                     <img src="https://static.willbes.net/public/images/promotion/sub/guide_3134_01.jpg" alt="유치원초등 임용시험"/>
                 </div>
-                
-                <ul class="guideBtn02 NG">
-                    <li><a href="https://static.willbes.net/public/images/promotion/main/2018/early_childhood_secondary_guidebook.pdf" target="_blank">교원임용<br>가이드북 보기 &gt;</a></li><li>
-                    </li>
-                    <li><a href="https://ssam.willbes.net/examInfo/notice">지역별 공고문<br>확인하기 &gt;</a></li><li>
-                    </li>
-                    <li><a href="https://ssam.willbes.net/support/examQuestion/index">교원임용<br>기출문제 보기 &gt;</a></li><li>
-                    </li>
-                </ul>
+         
+
             </div>   
 
             <div id="ssam_guide2" class="tabContent"> 
@@ -636,12 +629,6 @@
                 <div class="ssamGuideSt01">
                     <img src="https://static.willbes.net/public/images/promotion/sub/guide_3134_02.jpg" alt="중등 교원임용시험"/> 
                 </div> 
-
-                <ul class="guideBtn02 NG">
-                    <li><a href="https://static.willbes.net/public/images/promotion/main/2018/early_childhood_secondary_guidebook.pdf" target="_blank">교원임용 가이드북 보기 &gt;</a></li>
-                    <li onclick="ajaxInfoTab(this,2);" data-url="//ssam.dev.willbes.net/m/examInfo/notice?file_type=ajax_"><a href="#none">지역별 공고문 확인 &gt;</a></li>
-                    <li onclick="ajaxInfoTab(this,3);" data-url="//ssam.dev.willbes.net/m/support/examQuestion?file_type=ajax_"><a href="#none">교원임용 기출문제 보기 &gt;</a></li>
-                </ul>
             </div>
 
             <div id="ssam_guide3" class="tabContent"> 

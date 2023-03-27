@@ -1625,13 +1625,14 @@
 
 .w-Guide-Ssam .tabContent .guideBtn02 {
     margin-top: 20px;
-    margin-right: -10px
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .w-Guide-Ssam .tabContent .guideBtn02 li {
-    display: inline;
-    float: left;
-    width: 33.33333%
+    width: 33%;
+    display: block
 }
 
 .w-Guide-Ssam .tabContent .guideBtn02 a {
@@ -1641,7 +1642,8 @@
     padding: 10px;
     text-align: center;
     font-size: 14px;
-    margin-right: 10px
+    margin-right: 10px;
+    width: 100%;
 }
 
 .w-Guide-Ssam .tabContent .guideBtn02 a:hover {

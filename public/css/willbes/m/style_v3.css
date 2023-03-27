@@ -9107,6 +9107,19 @@ span.calendar_btn {
 	line-height: 30px;
 }
 
+.w-Guide-Ssam h4 span {
+	font-size: 14px;
+	border-radius: 4px;
+	background: #036ac1;
+	color: #fff;
+	margin-right: 5px;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center
+}
+
 .w-Guide-Ssam .tabBox {
 	position: relative;
 	margin-bottom: 30px;
@@ -9120,7 +9133,7 @@ span.calendar_btn {
 .w-Guide-Ssam .tabShow li {
 	display: inline;
 	float: left;
-	width: 50%;
+	width: 33.3333%;
 }
 
 .w-Guide-Ssam .tabShow li a {
@@ -9146,6 +9159,28 @@ span.calendar_btn {
 	content: "";
 	display: block;
 	clear: both;
+}
+
+.ssamGuideSt01 dt {
+	font-size: 14px;
+}
+
+.ssamGuideSt01 dd {
+	padding-left: 15px;
+	margin-bottom: 2vh
+}
+
+.ssamGuideSt01 dd ul li {
+	list-style-type: square;
+	margin-left: 15px;
+}
+
+.ssamGuideSt01 img {
+	max-width: 100%
+}
+
+.ssamGuideSt01 .guidebox tbody th {
+	background: #fafafb
 }
 
 .ssamInfoMenu {
@@ -9258,11 +9293,14 @@ span.calendar_btn {
 
 .w-Guide-Ssam .tabContent .guideBtn02 {
 	margin-top: 20px;
-	margin-right: -10px;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
 }
 
 .w-Guide-Ssam .tabContent .guideBtn02 li {
-	margin-bottom: 5px;
+	width: 33%;
+	display: block
 }
 
 .w-Guide-Ssam .tabContent .guideBtn02 a {
@@ -9273,6 +9311,7 @@ span.calendar_btn {
 	text-align: center;
 	font-size: 14px;
 	margin-right: 10px;
+	width: 100%;
 }
 
 .w-Guide-Ssam .tabContent .guideBtn02 a:hover {

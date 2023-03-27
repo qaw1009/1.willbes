@@ -120,19 +120,14 @@
     </div>
 
     <div class="Content p_re">
+
         <div class="w-Guide-Ssam">
             <div class="tabBox NG">
                 <ul class="tabShow">
                     <li><a href="#ssam_guide1" class="on">유치원·초등 교원 임용 가이드</a></li>
                     <li><a href="#ssam_guide2">중등 교원 임용 가이드</a></li>
                     <li><a href="#ssam_guide3">한국사 능력 검정시험 안내</a></li>
-                </ul>  
-                {{--
-                <div class="guideBtn">
-                    <a href="#none">유아임용 가이드북</a>
-                    <a href="#none">중등임용 가이드북</a>
-                </div>    
-                --}}          
+                </ul>          
             </div>
             <div class="tabContent GM">
                 <div id="ssam_guide1">
@@ -214,13 +209,13 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td class="tx-left" style="line-height:1.8">
+                                                <td class="tx-left" style="line-hegiht:1.8">
                                                     ① 4년제 유아교육학과 졸업<br>
                                                     ② 전문대 유아교육학과 졸업+교직학점 이수<br>
                                                     ③ 유아교육대학원 양성과정 이수(석사)<br>
                                                     ④ 유치원 준교사 자격증+교육경력2년+소정의 재교육
                                                 </td>
-                                                <td class="tx-left" style="line-height:1.8">
+                                                <td class="tx-left" style="line-hegiht:1.8">
                                                     ① 교육대학 졸업<br>
                                                     ② 사범대학을 졸업한 사람으로서 초등교육과정을 전공<br>
                                                     ③ 교육대학원 또는 교육부장관이 지정하는 대학원의 교육과에서 초등교육과정을 전공(석사)<br>
@@ -455,12 +450,9 @@
                     </div>
                     
                     <ul class="guideBtn02 NG">
-                        <li><a href="https://static.willbes.net/public/images/promotion/main/2018/early_childhood_secondary_guidebook.pdf" target="_blank">교원임용<br>가이드북 보기 &gt;</a></li><li>
-                        </li>
-                        <li><a href="https://ssam.willbes.net/examInfo/notice">지역별 공고문<br>확인하기 &gt;</a></li><li>
-                        </li>
-                        <li><a href="https://ssam.willbes.net/support/examQuestion/index">교원임용<br>기출문제 보기 &gt;</a></li><li>
-                        </li>
+                        <li><a href="https://static.willbes.net/public/images/promotion/main/2018/early_childhood_secondary_guidebook.pdf" target="_blank">교원임용<br>가이드북 보기 &gt;</a></li>
+                        <li><a href="https://ssam.willbes.net/examInfo/notice">지역별 공고문<br>확인하기 &gt;</a></li>
+                        <li><a href="https://ssam.willbes.net/support/examQuestion/index">교원임용<br>기출문제 보기 &gt;</a></li>
                     </ul>
                 </div>   
 
@@ -767,12 +759,9 @@
                     </div> 
 
                     <ul class="guideBtn02 NG">
-                        <li><a href="https://static.willbes.net/public/images/promotion/main/2018/early_childhood_secondary_guidebook.pdf" target="_blank">교원임용<br>가이드북 보기 &gt;</a></li><li>
-                        </li>
-                        <li><a href="https://ssam.willbes.net/examInfo/notice">지역별 공고문<br>확인하기 &gt;</a></li><li>
-                        </li>
-                        <li><a href="https://ssam.willbes.net/support/examQuestion/index">교원임용<br>기출문제 보기 &gt;</a></li><li>
-                        </li>
+                        <li><a href="https://static.willbes.net/public/images/promotion/main/2018/early_childhood_secondary_guidebook.pdf" target="_blank">교원임용<br>가이드북 보기 &gt;</a></li>
+                        <li><a href="https://ssam.willbes.net/examInfo/notice">지역별 공고문<br>확인하기 &gt;</a></li>
+                        <li><a href="https://ssam.willbes.net/support/examQuestion/index">교원임용<br>기출문제 보기 &gt;</a></li>
                     </ul>
                 </div>
 
@@ -904,7 +893,8 @@
                     </div> 
                 </div>
             </div>
-        </div>      
+        </div>   
+
     </div>
     <div class="Quick-Bnr ml20">
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     

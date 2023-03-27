@@ -177,37 +177,80 @@
                     <p>유아 민정선 교수</p>
                 </a></span>
                 <span><a href="#lsit02"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t02.png" alt=""/>
-                <p>초등 배재민 교수</p></a></span>
-                <span><a href="#lsit03"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t03.png" alt=""/></a></span>
-                <span><a href="#lsit04"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t04.png" alt=""/></a></span>
-                <span><a href="#lsit05"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t05.png" alt=""/></a></span>
-                <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t06.png" alt=""/></span>
-                <span><a href="#lsit07"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t07.png" alt=""/></a></span>
-                <span><a href="#lsit08"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t08.png" alt=""/></a></span>
-                <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t09.png" alt=""/></span>
+                <p>초등 배재민 교수</p>
+            </a></span>
+                <span><a href="#lsit03"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t03.png" alt=""/>
+                <p>교육학 이경범 교수</p></a></span>
+                <span><a href="#lsit04"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t04.png" alt=""/>
+                <p>교육학 정현 교수</p>
+            </a></span>
+                <span><a href="#lsit05"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t05.png" alt=""/>
+                <p>전공국어 송원영 교수</p>
+            </a></span>
+                <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t06.png" alt=""/>
+                <p>전공국어 권보민 교수</p>
+            </span>
+                <span><a href="#lsit07"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t07.png" alt=""/>
+                <p>전공국어 구동언 교수</p>
+            </a></span>
+                <span><a href="#lsit08"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t08.png" alt=""/>
+                <p>전공영어 김유석 교수</p>
+            </a></span>
+                <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t09.png" alt=""/>
+                <p>전공영어 김영문 교수</p>
+            </span>
                 <span>
                     <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t10.png" alt=""/>
                     <p>전공수학 김철홍 교수</p>
                 </span>
-                <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t11.png" alt=""/></span>
-                <span><a href="#lsit13"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t13.png" alt=""/></a></span>
-                <span><a href="#lsit12"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t12.png" alt=""/></a></span>
-                <span><a href="#lsit14"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t14.png" alt=""/></a></span>
-                <span><a href="#lsit15"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t15.png" alt=""/></a></span>
-                <span><a href="#lsit16"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t16.png" alt=""/></a></span>
-                <span><a href="#lsit17"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t17.png" alt=""/></a></span>
-                <span><a href="#lsit18"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t18.png" alt=""/></a></span>
-                <span><a href="#lsit19"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t19.png" alt=""/>
-                <p>일반사회(사문/교육론)<br> 이웅재 교수</p>
+                <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t11.png" alt=""/>
+                <p>전공수학 김현웅 교수</p>
+            </span>
+                <span><a href="#lsit13"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t13.png" alt=""/>
+                <p>수학교육론 박태영 교수</p>
             </a></span>
-                <span><a href="#lsit20"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t20.png" alt=""/></a></span>
-                <span><a href="#lsit21"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t21.png" alt=""/></a></span>
-
-                <span><a href="#lsit22"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t22.png" alt=""/></a></span>
-                <span><a href="#lsit23"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t23.png" alt=""/></a></span>
-                <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t24.png" alt=""/></span>
-                <span><a href="#lsit25"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t25.png" alt=""/></a></span>
-                <span><a href="#lsit26"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t26.png" alt=""/></a></span>
+                <span><a href="#lsit12"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t12.png" alt=""/>
+                <p>수학교육론 박혜향 교수</p>
+            </a></span>
+                <span><a href="#lsit14"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t14.png" alt=""/>
+                <p>전공생물 강치욱 교수</p>
+            </a></span>
+                <span><a href="#lsit15"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t15.png" alt=""/>
+                <p>생물교육론 양혜정 교수</p>
+            </a></span>
+                <span><a href="#lsit16"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t16.png" alt=""/>
+                <p>전공화학 강철 교수</p>
+            </a></span>
+                <span><a href="#lsit17"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t17.png" alt=""/>
+                <p>도덕윤리 김병찬 교수</p>
+            </a></span>
+                <span><a href="#lsit18"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t18.png" alt=""/>
+                <p>일반사회(경제)<br>허역 교수</p>
+            </a></span>
+                <span><a href="#lsit19"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t19.png" alt=""/>
+                <p>일반사회(사문/교육론)<br>이웅재 교수</p>
+            </a></span>
+                <span><a href="#lsit20"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t20.png" alt=""/>
+                <p>일반사회(법)<br>정인홍 교수</p>
+            </a></span>
+                <span><a href="#lsit21"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t21.png" alt=""/>
+                <p>일반사회(정치)<br>김현중 교수</p>
+            </a></span>
+                <span><a href="#lsit22"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t22.png" alt=""/>
+                <p>전공역사 김종권 교수</p>
+            </a></span>
+                <span><a href="#lsit23"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t23.png" alt=""/>
+                <p>전공음악 다이애나 교수</p>
+            </a></span>
+                <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t24.png" alt=""/>
+                <p>전공체육 최규훈 교수</p>
+            </span>
+                <span><a href="#lsit25"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t25.png" alt=""/>
+                <p>전기/전자 최우영 교수</p>
+            </a></span>
+                <span><a href="#lsit26"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t26.png" alt=""/>
+                <p>중국어 장영희 교수</p>
+            </a></span>
                 <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t00.png" alt=""/></span>
             </div>
             <div class="profHome">

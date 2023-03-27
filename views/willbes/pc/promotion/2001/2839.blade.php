@@ -213,7 +213,7 @@
 		</div>
 
         <div class="evtCtnsBox evt_pro" data-aos="fade-up">    
-            <img src="https://static.willbes.net/public/images/promotion/2023/01/2839_pro.jpg" alt="올인원 총알경제학"/>           
+            <img src="https://static.willbes.net/public/images/promotion/2023/03/2839_pro.jpg" alt="올인원 총알경제학"/>           
 		</div>       
 
         <div class="evtCtnsBox evt_limit" data-aos="fade-up">    

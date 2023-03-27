@@ -53,12 +53,13 @@
         }
 
         .evt01 {padding:150px 0}
-        .evt01 .profThumb {width:1200px; margin:80px auto; display:flex; flex-wrap: wrap; justify-content: space-between;}
-        .evt01 .profThumb span {display:block; margin-bottom:10px;}
+        .evt01 .profThumb {width:1260px; margin:80px auto; display:flex; flex-wrap: wrap; justify-content: space-between;}
+        .evt01 .profThumb span {display:block; margin-bottom:10px; width:130px; font-size:12px; position: relative; }
         .evt01 .profThumb span img {width:100%;}
-        .evt01 .profThumb span a {display:block;border-radius:10px}
+        .evt01 .profThumb span a {display:block; border-radius:10px; background:#fff; position: absolute; width:100%; overflow:hidden}
+        .evt01 .profThumb span p {background:rgba(0,0,0,.5); color:#fff; position: absolute; bottom:0; z-index:1; width:100%; padding:3px 0; border-radius:10px; }
         .evt01 .profThumb span a:hover {-webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	        animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;}
+	        animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; z-index: 10; overflow:hidden}
         @@-webkit-keyframes scale-up-center {
         0% {
             -webkit-transform: scale(1);
@@ -83,6 +84,9 @@
             box-shadow: 0 20px 20px 0px rgba(0, 0, 0, 0.35);
             }
         }
+
+        
+
         .profHome {width:938px; margin:0 auto}
         .profHome .list {border-bottom:2px dotted #363636; position: relative;}
         .profHome .list iframe{position: absolute; top:75px; left:620px; width:293px; height:170px; z-index: 2;}
@@ -168,8 +172,12 @@
         <div class="evtCtnsBox evt01" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_top.jpg" alt=""/>
             <div class="profThumb">
-                <span><a href="#lsit01"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t01.png" alt=""/></a></span>
-                <span><a href="#lsit02"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t02.png" alt=""/></a></span>
+                <span><a href="#lsit01">                    
+                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t01.png" alt=""/>
+                    <p>유아 민정선 교수</p>
+                </a></span>
+                <span><a href="#lsit02"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t02.png" alt=""/>
+                <p>초등 배재민 교수</p></a></span>
                 <span><a href="#lsit03"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t03.png" alt=""/></a></span>
                 <span><a href="#lsit04"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t04.png" alt=""/></a></span>
                 <span><a href="#lsit05"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t05.png" alt=""/></a></span>
@@ -177,7 +185,10 @@
                 <span><a href="#lsit07"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t07.png" alt=""/></a></span>
                 <span><a href="#lsit08"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t08.png" alt=""/></a></span>
                 <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t09.png" alt=""/></span>
-                <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t10.png" alt=""/></span>
+                <span>
+                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t10.png" alt=""/>
+                    <p>전공수학 김철홍 교수</p>
+                </span>
                 <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t11.png" alt=""/></span>
                 <span><a href="#lsit13"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t13.png" alt=""/></a></span>
                 <span><a href="#lsit12"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t12.png" alt=""/></a></span>
@@ -186,10 +197,12 @@
                 <span><a href="#lsit16"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t16.png" alt=""/></a></span>
                 <span><a href="#lsit17"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t17.png" alt=""/></a></span>
                 <span><a href="#lsit18"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t18.png" alt=""/></a></span>
-                <span><a href="#lsit19"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t19.png" alt=""/></a></span>
+                <span><a href="#lsit19"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t19.png" alt=""/>
+                <p>일반사회(사문/교육론)<br> 이웅재 교수</p>
+            </a></span>
                 <span><a href="#lsit20"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t20.png" alt=""/></a></span>
                 <span><a href="#lsit21"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t21.png" alt=""/></a></span>
-                <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t00.png" alt=""/></span>
+
                 <span><a href="#lsit22"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t22.png" alt=""/></a></span>
                 <span><a href="#lsit23"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t23.png" alt=""/></a></span>
                 <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t24.png" alt=""/></span>

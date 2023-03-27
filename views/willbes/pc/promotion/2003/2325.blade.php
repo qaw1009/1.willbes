@@ -15,10 +15,6 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
 
         /************************************************************/
-
-        .sky {position:fixed;top:200px;right:15px;z-index:200;}
-        .sky a {display:block;margin-top:10px;}
-
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2023/03/2325_top_bg.jpg) no-repeat center top;} 
         .evtTop span {position:absolute; left:50%; width:227px; top:180px; margin-left:230px; z-index:1}
 
@@ -41,14 +37,6 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        {{--
-        <div class="sky" id="QuickMenu">
-            <a href="#evt04"> 
-                <img src="https://static.willbes.net/public/images/promotion/2023/03/2325_sky01.jpg" alt="무료수강권">
-            </a>
-        </div>
-        --}}
-
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2023/03/2325_top.jpg" alt="인적성검사"/>
             <span data-aos="fade-right">

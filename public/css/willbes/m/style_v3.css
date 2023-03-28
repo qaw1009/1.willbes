@@ -9293,14 +9293,7 @@ span.calendar_btn {
 
 .w-Guide-Ssam .tabContent .guideBtn02 {
 	margin-top: 20px;
-	display: flex;
-	justify-content: space-between;
 	width: 100%;
-}
-
-.w-Guide-Ssam .tabContent .guideBtn02 li {
-	width: 33%;
-	display: block
 }
 
 .w-Guide-Ssam .tabContent .guideBtn02 a {

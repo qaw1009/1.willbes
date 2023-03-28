@@ -450,13 +450,13 @@
                     </div>
                     
                     <ul class="guideBtn02 NG">
-                        <li><a href="https://static.willbes.net/public/images/promotion/main/2018/early_childhood_secondary_guidebook.pdf" target="_blank">교원임용<br>가이드북 보기 &gt;</a></li>
+                        <li><a href="https://static.willbes.net/public/images/promotion/main/2018/2023년_윌비스임용가이드북.pdf" target="_blank">교원임용<br>가이드북 보기 &gt;</a></li>
                         <li><a href="https://ssam.willbes.net/examInfo/notice">지역별 공고문<br>확인하기 &gt;</a></li>
                         <li><a href="https://ssam.willbes.net/support/examQuestion/index">교원임용<br>기출문제 보기 &gt;</a></li>
                     </ul>
                 </div>   
 
-                <div id="ssam_guide2" class="tabContent"> 
+                <div id="ssam_guide2"> 
                     <h4 class="NGEB"><span>1</span> (중등) 교원임용시험의 개요</h4>
                     <div class="ssamGuideSt01">
                         <dl>
@@ -759,13 +759,13 @@
                     </div> 
 
                     <ul class="guideBtn02 NG">
-                        <li><a href="https://static.willbes.net/public/images/promotion/main/2018/early_childhood_secondary_guidebook.pdf" target="_blank">교원임용<br>가이드북 보기 &gt;</a></li>
+                        <li><a href="https://static.willbes.net/public/images/promotion/main/2018/2023년_윌비스임용가이드북.pdf" target="_blank">교원임용<br>가이드북 보기 &gt;</a></li>
                         <li><a href="https://ssam.willbes.net/examInfo/notice">지역별 공고문<br>확인하기 &gt;</a></li>
                         <li><a href="https://ssam.willbes.net/support/examQuestion/index">교원임용<br>기출문제 보기 &gt;</a></li>
                     </ul>
                 </div>
 
-                <div id="ssam_guide3" class="tabContent"> 
+                <div id="ssam_guide3"> 
                     <h4 class="NGEB"><span>1</span> 한국사 능력 검정시험 이란?</h4>
                     <div class="ssamGuideSt01">
                         <dl>

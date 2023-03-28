@@ -324,11 +324,13 @@
                 <div class="ssamGuideSt01">
                     <img src="https://static.willbes.net/public/images/promotion/sub/guide_3134_01.jpg" alt="유치원초등 임용시험"/>
                 </div>
-         
-
+                
+                <ul class="guideBtn02 NG">
+                    <li><a href="https://static.willbes.net/public/images/promotion/main/2018/2023년_윌비스임용가이드북.pdf" target="_blank">교원임용 가이드북 보기 &gt;</a></li>
+                </ul>
             </div>   
 
-            <div id="ssam_guide2" class="tabContent"> 
+            <div id="ssam_guide2"> 
                 <h4 class="NGEB"><span>1</span> (중등) 교원임용시험의 개요</h4>
                 <div class="ssamGuideSt01">
                     <dl>
@@ -629,9 +631,13 @@
                 <div class="ssamGuideSt01">
                     <img src="https://static.willbes.net/public/images/promotion/sub/guide_3134_02.jpg" alt="중등 교원임용시험"/> 
                 </div> 
+
+                <ul class="guideBtn02 NG">
+                    <li><a href="https://static.willbes.net/public/images/promotion/main/2018/2023년_윌비스임용가이드북.pdf" target="_blank">교원임용 가이드북 보기 &gt;</a></li>
+                </ul>
             </div>
 
-            <div id="ssam_guide3" class="tabContent"> 
+            <div id="ssam_guide3"> 
                 <h4 class="NGEB"><span>1</span> 한국사 능력 검정시험 이란?</h4>
                 <div class="ssamGuideSt01">
                     <dl>

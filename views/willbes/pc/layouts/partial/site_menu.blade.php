@@ -5,6 +5,11 @@
     {{-- 일반메뉴 (전체보기) 메뉴 설정 --}}
     @include('willbes.pc.layouts.partial.site_mega_menu')
     <div class="Menu widthAuto NGR c_both">
+        @if($__cfg['SiteCode'] == '2017')
+            <div class="ssam_1st"><a href="{{front_url('/support/notice/show?board_idx=450932&s_cate_code_disabled=Y')}}"><img src="https://static.willbes.net/public/images/promotion/main/2018/1st.jpg" alt="교육서비스부문 선호도 1위"></a></div>
+        @else
+        @endif        
+
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">{{ $__cfg['SiteMenu']['ActiveMenu']['UrlRouteNames'][0] }}</li>

@@ -172,10 +172,10 @@
         <div class="evtCtnsBox evt01" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_top.jpg" alt=""/>
             <div class="profThumb">
-                <span><a href="#lsit01">                    
+                <span>                  
                     <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t01.png" alt=""/>
                     <p>유아 민정선 교수</p>
-                </a></span>
+                </span>
                 <span><a href="#lsit02"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t02.png" alt=""/>
                 <p>초등 배재민 교수</p>
             </a></span>
@@ -254,11 +254,13 @@
                 <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t00.png" alt=""/></span>
             </div>
             <div class="profHome">
+                {{--
                 <div class="list" id="lsit01">
                     <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b01.png" alt="유아 민정선"/>
                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51076?cate_code=3135&subject_idx=1981" target="_blank"></a>
                     <iframe src="https://www.youtube.com/embed/1nhvzwp2Gos?rel=0" frameborder="0" allowfullscreen=""></iframe>
                 </div>
+                --}}
                 <div class="list" id="lsit02">
                     <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b02.png" alt="초등 배재민"/>
                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3135&subject_idx=1982" target="_blank"></a>

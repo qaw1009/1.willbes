@@ -1844,3 +1844,13 @@
     font-size: 14px !important;
     font-weight: normal !important
 }
+
+.Menu {
+    position: relative;
+}
+
+.Menu .ssam_1st {
+    position: absolute;
+    z-index: 2;
+    top: -40px;
+}

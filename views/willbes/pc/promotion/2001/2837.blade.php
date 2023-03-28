@@ -34,7 +34,7 @@
         .evtPass {background:#0f181d; padding:150px 0}
         .evtPass .title01 {font-size:40px; color:#d5d5d5; margin-bottom:100px}
         .evtPass ul {width:1030px; margin:0 auto 20px; display:flex}
-        .evtPass ul li {width:25%}
+        .evtPass ul li {width:33.3333%}
         .evtPass ul li a {font-size:30px; color:#506266; background:#192229; padding:15px 0; border-radius:6px; display:block; margin-right:20px}
         .evtPass ul li:last-child a {margin-right:0}
         .evtPass ul li a p {font-size:20px}
@@ -101,7 +101,6 @@
                 <li><a href="#tab1"><p>헌법</p>이국령</a></li>
                 <li><a href="#tab2"><p>형사법</p>임종희</a></li>
                 <li><a href="#tab3"><p>형사법</p>문형석&김한기</a></li>
-                <li><a href="#tab4"><p>2032년 2차대비</p>헌법 T-PASS</a></li>
             </ul>
             <div class="tabCts">
                 <div id="tab1">
@@ -115,10 +114,6 @@
                 <div id="tab3">
                     <img src="https://static.willbes.net/public/images/promotion/2022/12/2837_05_03.png" alt=""/>
                     <a href="javascript:go_PassLecture('203735');" class="NSK-Black">문형석 & 김한기 형사법 신청 ></a> 
-                </div>
-                <div id="tab4">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2837_05_04.png" alt=""/>
-                    <a href="javascript:go_PassLecture('206615');" class="NSK-Black">헌법 T-PASS 신청 ></a> 
                 </div>
             </div>
 

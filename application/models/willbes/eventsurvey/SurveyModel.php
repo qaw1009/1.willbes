@@ -345,7 +345,7 @@ class SurveyModel extends WB_Model
             SELECT c.SubjectCode, ROUND(AVG(a.OrgPoint)) AS AVG
             FROM lms_predict_grades_origin AS a
             INNER JOIN lms_predict_paper AS pp ON a.PpIdx = pp.PpIdx
-            INNER JOIN lms_predict_code_r_subject AS c ON pp.SubjectCode = c.SubjectCode
+            INNER JOIN lms_predict_code_r_subject AS c ON a.PredictIdx = c.PredictIdx AND pp.SubjectCode = c.SubjectCode
             {$where}
             GROUP BY c.GroupBy
         ) AS a
@@ -476,7 +476,7 @@ class SurveyModel extends WB_Model
                         SELECT COUNT(*)
                         FROM lms_predict_grades_origin AS a
                         INNER JOIN lms_predict_paper AS b ON a.PpIdx = b.PpIdx
-                        INNER JOIN lms_predict_code_r_subject AS c ON c.SubjectCode = b.SubjectCode AND c.IsUse = 'Y'
+                        INNER JOIN lms_predict_code_r_subject AS c ON a.PredictIdx = c.PredictIdx AND c.SubjectCode = b.SubjectCode AND c.IsUse = 'Y'
                         {$where}
                         GROUP BY a.PrIdx
                     ) AS a
@@ -488,7 +488,7 @@ class SurveyModel extends WB_Model
                     END) AS Pointarea
                     FROM lms_predict_grades_origin AS a
                     INNER JOIN lms_predict_paper AS b ON a.PpIdx = b.PpIdx
-                    INNER JOIN lms_predict_code_r_subject AS c ON c.SubjectCode = b.SubjectCode AND c.IsUse = 'Y'
+                    INNER JOIN lms_predict_code_r_subject AS c ON a.PredictIdx = c.PredictIdx AND c.SubjectCode = b.SubjectCode AND c.IsUse = 'Y'
                     {$where}
                     GROUP BY a.PrIdx
                 ) AS A

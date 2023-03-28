@@ -767,7 +767,7 @@ class PredictModel extends WB_Model
         $order_by = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
         $from = "
                 FROM {$this->_table['predictPaper']} as a
-                INNER JOIN lms_predict_code_r_subject AS b ON a.SubjectCode = b.SubjectCode AND b.IsUse = 'Y'
+                INNER JOIN lms_predict_code_r_subject AS b ON a.PredictIdx = b.PredictIdx AND a.SubjectCode = b.SubjectCode AND b.IsUse = 'Y'
             ";
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         return $query->result_array();

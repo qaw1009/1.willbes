@@ -41,9 +41,9 @@
         <div class="Section article5" data-aos="fade-up">
             <div class="p_re">
                 <img src="https://static.willbes.net/public/images/promotion/m/2006/309007_bn03.jpg" title="">
-                <a href="http://job.willbes.net/m/pass/offLecture/index?cate_code=3184&campus_ccd=605013&course_idx=1464&subject_idx=2243" title="1차" style="position: absolute; left: 10.28%; top: 10.58%; width: 33.47%; height: 34.33%; z-index: 2;"></a>
-                <a href="http://job.willbes.net/m/pass/offLecture/index?cate_code=3184&campus_ccd=605013&course_idx=1465&subject_idx=2244" title="2차" style="position: absolute; left: 55.83%; top: 10.58%; width: 33.47%; height: 34.33%; z-index: 2;"></a>
-                <a href="http://job.willbes.net/m/pass/offLecture/index?cate_code=3184&campus_ccd=605013&course_idx=1466&subject_idx=2245" title="1+2차" style="position: absolute; left: 21.67%; top: 63.07%; width: 56.25%; height: 24.75%;z-index: 2;"></a>
+                <a href="https://job.willbes.net/m/package/show/cate/309007/pack/648001/prod-code/203713" title="1차" style="position: absolute; left: 10.28%; top: 10.58%; width: 33.47%; height: 34.33%; z-index: 2;"></a>
+                <a href="https://job.willbes.net/m/package/show/cate/309007/pack/648001/prod-code/204765" title="2차" style="position: absolute; left: 55.83%; top: 10.58%; width: 33.47%; height: 34.33%; z-index: 2;"></a>
+                <a href="https://job.willbes.net/m/package/show/cate/309007/pack/648001/prod-code/204748" title="1+2차" style="position: absolute; left: 21.67%; top: 63.07%; width: 56.25%; height: 24.75%;z-index: 2;"></a>
             </div>
             <a href="https://job.willbes.net/pass/consult/visitConsult/index?s_campus=605013" target="_blank">📅 합격 상담 예약 👉</a>
             <div class="cs">손해평가사 자격증 문의 <strong>1544-1661</strong></div>

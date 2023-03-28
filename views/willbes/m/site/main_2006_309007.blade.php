@@ -33,7 +33,7 @@
         <div class="Section" data-aos="fade-up">
             <div class="video-container-box">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/CWs7EdhMWGQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/synN1uqFF7A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
                 <a href="http://job.willbes.net/m/pass/offLecture/index?cate_code=3184&campus_ccd=605013&course_idx=1466&subject_idx=2245" title="1+2차" style="position: absolute; left: 21.67%; top: 63.07%; width: 56.25%; height: 24.75%;z-index: 2;"></a>
             </div>
             <a href="https://job.willbes.net/pass/consult/visitConsult/index?s_campus=605013" target="_blank">📅 합격 상담 예약 👉</a>
-            <div class="cs">손해평가사 자격증 문의 <strong>1544-1661</strong></div>
+            <div class="cs">손해평가사 자격증 문의 <strong>1544-1661</strong></div>
         </div>
 
     </div>

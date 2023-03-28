@@ -184,10 +184,10 @@
         <div class="Section Area05">
             <div class="widthAuto">
                 <span class="youtube">
-                    <iframe src="https://www.youtube.com/embed/CWs7EdhMWGQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/synN1uqFF7A?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </span>
                 <span class="youtube">
-                    <iframe src="https://www.youtube.com/embed/xGZ5guPSVf8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/618hmKCM7wU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </span>
             </div>
         </div>

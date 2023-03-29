@@ -122,13 +122,13 @@
         </div>        
 
         <div class="evtCtnsBox evt05" data-aos="fade-up">          
-            <div class="mt100 mb20"><img src="https://static.willbes.net/public/images/promotion/2023/03/2937_05_02.jpg" title="종합반" id="evt05_02"></div>
-            @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
-            @endif
-            <div class="mb20"><img src="https://static.willbes.net/public/images/promotion/2023/03/2937_05_01.jpg" title="단과" id="evt05_01"></div>
+            <div class="mt100 mb20"><img src="https://static.willbes.net/public/images/promotion/2023/03/2937_05_02.jpg" title="단과" id="evt05_02"></div>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+            @endif
+            <div class="mb20"><img src="https://static.willbes.net/public/images/promotion/2023/03/2937_05_01.jpg" title="종합반" id="evt05_01"></div>
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
             @endif
         </div>
 

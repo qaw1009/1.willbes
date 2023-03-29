@@ -87,16 +87,16 @@
     </div>
 
     <div class="evtCtnsBox mt50" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2023/03/2937m_05_02.jpg" title="종합반"/>
+        <img src="https://static.willbes.net/public/images/promotion/2023/03/2937m_05_02.jpg" title="단과"/>
         @if(empty($arr_base['display_product_data']) === false)
-            @include('willbes.m.promotion.display_product_partial',array('group_num'=>2))
+            @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
         @endif
     </div>
 
     <div class="evtCtnsBox mt50" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2023/03/2937m_05_01.jpg" title="단과"/>  
+        <img src="https://static.willbes.net/public/images/promotion/2023/03/2937m_05_01.jpg" title="종합반"/>  
         @if(empty($arr_base['display_product_data']) === false)
-            @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
+            @include('willbes.m.promotion.display_product_partial',array('group_num'=>2))
         @endif       
     </div>  
     

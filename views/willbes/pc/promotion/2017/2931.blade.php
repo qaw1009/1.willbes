@@ -53,11 +53,11 @@
         }
 
         .evt01 {padding:150px 0}
-        .evt01 .profThumb {width:1260px; margin:80px auto; display:flex; flex-wrap: wrap; justify-content: space-between;}
+        .evt01 .profThumb {width:1260px; margin:80px auto 20px; display:flex; flex-wrap: wrap; justify-content: space-between;}
         .evt01 .profThumb span {display:block; margin-bottom:10px; width:130px; font-size:12px; position: relative; }
         .evt01 .profThumb span img {width:100%;}
         .evt01 .profThumb span a {display:block; border-radius:10px; background:#fff; position: absolute; width:100%; overflow:hidden}
-        .evt01 .profThumb span p {background:rgba(0,0,0,.5); color:#fff; position: absolute; bottom:0; z-index:1; width:100%; padding:3px 0; border-radius:10px; }
+        .evt01 .profThumb span p {background:rgba(0,0,0,.5); color:#fff; position: absolute; bottom:0; z-index:1; width:100%; padding:3px 0; border-radius:10px;}
         .evt01 .profThumb span a:hover {-webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 	        animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; z-index: 10; overflow:hidden}
         @@-webkit-keyframes scale-up-center {
@@ -83,13 +83,13 @@
             -webkit-box-shadow: 0 20px 20px 0px rgba(0, 0, 0, 0.35);
             box-shadow: 0 20px 20px 0px rgba(0, 0, 0, 0.35);
             }
-        }
-
-        
+        }        
 
         .profHome {width:938px; margin:0 auto}
         .profHome .list {border-bottom:2px dotted #363636; position: relative;}
-        .profHome .list iframe{position: absolute; top:75px; left:620px; width:293px; height:170px; z-index: 2;}
+        .profHome .youtube{position: absolute; top:75px; left:620px; width:293px; height:170px; z-index: 2;}
+        .profHome .youtube object {width:293px; height:170px;}  
+
         .profHome .list a {position: absolute; left: 25.91%; top: 39.57%; width: 10.98%; height: 14.03%; z-index: 2;}
 
 
@@ -171,195 +171,254 @@
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">
         	<img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_top.jpg" alt=""/>
-            <div class="profThumb">
-                <span>                  
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t01.png" alt=""/>
-                    <p>유아 민정선 교수</p>
-                </span>
-                <span><a href="#lsit02"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t02.png" alt=""/>
-                <p>초등 배재민 교수</p>
-            </a></span>
-                <span><a href="#lsit03"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t03.png" alt=""/>
-                <p>교육학 이경범 교수</p></a></span>
-                <span><a href="#lsit04"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t04.png" alt=""/>
-                <p>교육학 정현 교수</p>
-            </a></span>
-                <span><a href="#lsit05"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t05.png" alt=""/>
-                <p>전공국어 송원영 교수</p>
-            </a></span>
-                <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t06.png" alt=""/>
-                <p>전공국어 권보민 교수</p>
-            </span>
-                <span><a href="#lsit07"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t07.png" alt=""/>
-                <p>전공국어 구동언 교수</p>
-            </a></span>
-                <span><a href="#lsit08"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t08.png" alt=""/>
-                <p>전공영어 김유석 교수</p>
-            </a></span>
-                <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t09.png" alt=""/>
-                <p>전공영어 김영문 교수</p>
-            </span>
-                <span>
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t10.png" alt=""/>
-                    <p>전공수학 김철홍 교수</p>
-                </span>
-                <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t11.png" alt=""/>
-                <p>전공수학 김현웅 교수</p>
-            </span>
-                <span><a href="#lsit13"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t13.png" alt=""/>
-                <p>수학교육론 박태영 교수</p>
-            </a></span>
-                <span><a href="#lsit12"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t12.png" alt=""/>
-                <p>수학교육론 박혜향 교수</p>
-            </a></span>
-                <span><a href="#lsit14"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t14.png" alt=""/>
-                <p>전공생물 강치욱 교수</p>
-            </a></span>
-                <span><a href="#lsit15"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t15.png" alt=""/>
-                <p>생물교육론 양혜정 교수</p>
-            </a></span>
-                <span><a href="#lsit16"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t16.png" alt=""/>
-                <p>전공화학 강철 교수</p>
-            </a></span>
-                <span><a href="#lsit17"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t17.png" alt=""/>
-                <p>도덕윤리 김병찬 교수</p>
-            </a></span>
-                <span><a href="#lsit18"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t18.png" alt=""/>
-                <p>일반사회(경제)<br>허역 교수</p>
-            </a></span>
-                <span><a href="#lsit19"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t19.png" alt=""/>
-                <p>일반사회(사문/교육론)<br>이웅재 교수</p>
-            </a></span>
-                <span><a href="#lsit20"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t20.png" alt=""/>
-                <p>일반사회(법)<br>정인홍 교수</p>
-            </a></span>
-                <span><a href="#lsit21"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t21.png" alt=""/>
-                <p>일반사회(정치)<br>김현중 교수</p>
-            </a></span>
-                <span><a href="#lsit22"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t22.png" alt=""/>
-                <p>전공역사 김종권 교수</p>
-            </a></span>
-                <span><a href="#lsit23"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t23.png" alt=""/>
-                <p>전공음악 다이애나 교수</p>
-            </a></span>
-                <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t24.png" alt=""/>
-                <p>전공체육 최규훈 교수</p>
-            </span>
-                <span><a href="#lsit25"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t25.png" alt=""/>
-                <p>전기/전자 최우영 교수</p>
-            </a></span>
-                <span><a href="#lsit26"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t26.png" alt=""/>
-                <p>중국어 장영희 교수</p>
-            </a></span>
-                <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t00.png" alt=""/></span>
-            </div>
-            <div class="profHome">
-                {{--
-                <div class="list" id="lsit01">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b01.png" alt="유아 민정선"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51076?cate_code=3135&subject_idx=1981" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/1nhvzwp2Gos?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            <div class="profWrap">
+                <div class="profThumb">
+                    <span>                  
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t01.png" alt=""/>
+                        <p>유아 민정선 교수</p>
+                    </span>
+                    <span>
+                        <a href="#lsit01"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t02.png" alt=""/>
+                        <p>초등 배재민 교수</p></a>
+                    </span>
+                    <span>
+                        <a href="#lsit02"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t03.png" alt=""/>
+                        <p>교육학 이경범 교수</p></a>
+                    </span>
+                    <span>
+                        <a href="#lsit03"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t04.png" alt=""/>
+                        <p>교육학 정현 교수</p></a>
+                    </span>
+                    <span>
+                        <a href="#lsit04"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t05.png" alt=""/>
+                        <p>전공국어 송원영 교수</p></a>
+                    </span>
+                    <span>
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t06.png" alt=""/>
+                        <p>전공국어 권보민 교수</p>
+                    </span>
+                    <span>
+                        <a href="#lsit05"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t07.png" alt=""/>
+                        <p>전공국어 구동언 교수</p></a>
+                    </span>
+                    <span><a href="#lsit06"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t08.png" alt=""/>
+                    <p>전공영어 김유석 교수</p>
+                    </a></span>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t09.png" alt=""/>
+                    <p>전공영어 김영문 교수</p>
+                    </span>
+                    <span>
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t10.png" alt=""/>
+                        <p>전공수학 김철홍 교수</p>
+                    </span>
+                    <span>
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t11.png" alt=""/>
+                        <p>전공수학 김현웅 교수</p>
+                        </span>
+                    <span>
+                        <a href="#lsit07"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t13.png" alt=""/>
+                        <p>수학교육론 박태영 교수</p></a>
+                    </span>
+                    <span>
+                        <a href="#lsit08"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t12.png" alt=""/>
+                        <p>수학교육론 박혜향 교수</p></a>
+                    </span>
+                    <span>
+                        <a href="#lsit09"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t14.png" alt=""/>
+                        <p>전공생물 강치욱 교수</p></a>
+                    </span>
+                    <span>
+                        <a href="#lsit10"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t15.png" alt=""/>
+                        <p>생물교육론 양혜정 교수</p></a>
+                    </span>
+                    <span>
+                        <a href="#lsit11"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t16.png" alt=""/>
+                        <p>전공화학 강철 교수</p></a>
+                    </span>
+                    <span>
+                        <a href="#lsit12"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t17.png" alt=""/>
+                        <p>도덕윤리 김병찬 교수</p></a>
+                    </span>
+                    <span>
+                        <a href="#lsit13"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t18.png" alt=""/>
+                        <p>일반사회(경제)<br>허역 교수</p></a>
+                    </span>
+                    <span>
+                        <a href="#lsit14"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t19.png" alt=""/>
+                        <p>일반사회(사문/교육론)<br>이웅재 교수</p></a>
+                    </span>
+                    <span>
+                        <a href="#lsit15"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t20.png" alt=""/>
+                        <p>일반사회(법)<br>정인홍 교수</p></a>
+                    </span>
+                    <span>
+                        <a href="#lsit16"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t21.png" alt=""/>
+                        <p>일반사회(정치)<br>김현중 교수</p></a>
+                    </span>
+                    <span>
+                        <a href="#lsit17"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t22.png" alt=""/>
+                        <p>전공역사 김종권 교수</p></a>
+                    </span>
+                    <span>
+                        <a href="#lsit18"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t23.png" alt=""/>
+                        <p>전공음악 다이애나 교수</p></a>
+                    </span>
+                    <span>
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t24.png" alt=""/>
+                        <p>전공체육 최규훈 교수</p>
+                    </span>
+                    <span>
+                        <a href="#lsit19"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t25.png" alt=""/>
+                        <p>전기/전자 최우영 교수</p></a>
+                    </span>
+                    <span>
+                        <a href="#lsit20"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t26.png" alt=""/>
+                        <p>중국어 장영희 교수</p></a>
+                    </span>
+                    <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t00.png" alt=""/></span>
                 </div>
-                --}}
-                <div class="list" id="lsit02">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b02.png" alt="초등 배재민"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3135&subject_idx=1982" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/vB6VKuwBEwg?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit03">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b03.png" alt="교육학 이경범"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51312?cate_code=3134&subject_idx=1980" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/bFhmAdfWgHw?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit04">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b04.png" alt="교육학 정현"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51158?cate_code=3134&subject_idx=1980" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/pu1Jyv22mek?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit05">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b05.png" alt="국어 송원영"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/qCzPIJl2Gwg?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit07">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b07.png" alt="국어 구동언"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51313?cate_code=3137&subject_idx=1983" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/0mMXLf0Hd9c?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit08">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b08.png" alt="영어 김유석"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51313?cate_code=3137&subject_idx=1983" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/mnTVcvRsZvw?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit13">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b13.png" alt="수학교육론 박태영"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51085?cate_code=3137&subject_idx=1986" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/3LQ-cxTOVF4?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit12">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b12.png" alt="수학교육론 박혜향"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51314?cate_code=3137&subject_idx=1986" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/-7-XskxUNiE?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit14">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b14.png" alt="생물 강치욱"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51086?cate_code=3137&subject_idx=1987" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/V3cCh63R7Q8?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit15">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b15.png" alt="생물 양혜정"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51087?cate_code=3137&subject_idx=1988" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/Q7YXa2rSSxY?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit16">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b16.png" alt="화학 강철"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51310?cate_code=3137&subject_idx=2206" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/9_jTm9CFcsE?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit17">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b17.png" alt="도덕윤리 김병찬"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51088?cate_code=3137&subject_idx=1989" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/ps1EI1fhsqw?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit18">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b18.png" alt="일반사회 허역"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51316?cate_code=3137&subject_idx=2035" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/br3DAn1AZ7w?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit19">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b19.png" alt="일반사회 이웅재"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51316?cate_code=3137&subject_idx=2035" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/sKKeTuXvBDY?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit20">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b20.png" alt="일반사회 정인홍"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51316?cate_code=3137&subject_idx=2035" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/_b96pyf6Oyg?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit21">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b21.png" alt="일반사회 김현중"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51316?cate_code=3137&subject_idx=2035" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/sOJItCIHz48?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit22">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b22.png" alt="역사 김종권"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51315?cate_code=3137&subject_idx=1990" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/KFCEtn3bglE?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit23">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b23.png" alt="음악 다이애나"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51090?cate_code=3137&subject_idx=1991" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/Pj5tPame7kg?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit25">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b25.png" alt="전기전자 최우영"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/G6fRXl5rCeM?rel=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="list" id="lsit26">
-                    <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b26.png" alt="중국어 장영희"/>
-                    <a href="https://ssam.willbes.net/professor/show/prof-idx/51318?cate_code=3137&subject_idx=1995" target="_blank"></a>
-                    <iframe src="https://www.youtube.com/embed/Z0MU1njnDy0?rel=0" frameborder="0" allowfullscreen=""></iframe>
+
+                <div class="profHome">                    
+                    <div class="list" id="lsit01">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b02.png" alt="초등 배재민"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3135&subject_idx=1982" target="_blank"></a>
+                        <div class="youtube" data-num="1">
+                            <object data="https://www.youtube.com/embed/vB6VKuwBEwg?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit02">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b03.png" alt="교육학 이경범"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51312?cate_code=3134&subject_idx=1980" target="_blank"></a>
+                        <div class="youtube" data-num="2">
+                            <object data="https://www.youtube.com/embed/bFhmAdfWgHw?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit03">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b04.png" alt="교육학 정현"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51158?cate_code=3134&subject_idx=1980" target="_blank"></a>
+                        <div class="youtube" data-num="3">
+                            <object data="https://www.youtube.com/embed/pu1Jyv22mek?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit04">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b05.png" alt="국어 송원영"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983" target="_blank"></a>
+                        <div class="youtube" data-num="4">
+                            <object data="https://www.youtube.com/embed/qCzPIJl2Gwg?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit05">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b07.png" alt="국어 구동언"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51313?cate_code=3137&subject_idx=1983" target="_blank"></a>
+                        <div class="youtube" data-num="5">
+                            <object data="https://www.youtube.com/embed/0mMXLf0Hd9c?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit06">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b08.png" alt="영어 김유석"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51313?cate_code=3137&subject_idx=1983" target="_blank"></a>
+                        <div class="youtube" data-num="6">
+                            <object data="https://www.youtube.com/embed/mnTVcvRsZvw?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit07">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b13.png" alt="수학교육론 박태영"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51085?cate_code=3137&subject_idx=1986" target="_blank"></a>
+                        <div class="youtube" data-num="7">
+                            <object data="https://www.youtube.com/embed/3LQ-cxTOVF4?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit08">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b12.png" alt="수학교육론 박혜향"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51314?cate_code=3137&subject_idx=1986" target="_blank"></a>
+                        <div class="youtube" data-num="8">
+                            <object data="https://www.youtube.com/embed/-7-XskxUNiE?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit09">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b14.png" alt="생물 강치욱"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51086?cate_code=3137&subject_idx=1987" target="_blank"></a>
+                        <div class="youtube" data-num="9">
+                            <object data="https://www.youtube.com/embed/V3cCh63R7Q8?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit10">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b15.png" alt="생물 양혜정"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51087?cate_code=3137&subject_idx=1988" target="_blank"></a>
+                        <div class="youtube" data-num="10">
+                            <object data="https://www.youtube.com/embed/Q7YXa2rSSxY?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit11">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b16.png" alt="화학 강철"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51310?cate_code=3137&subject_idx=2206" target="_blank"></a>
+                        <div class="youtube" data-num="11">
+                            <object data="https://www.youtube.com/embed/9_jTm9CFcsE?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit12">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b17.png" alt="도덕윤리 김병찬"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51088?cate_code=3137&subject_idx=1989" target="_blank"></a>
+                        <div class="youtube" data-num="12">
+                            <object data="https://www.youtube.com/embed/ps1EI1fhsqw?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit13">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b18.png" alt="일반사회 허역"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51316?cate_code=3137&subject_idx=2035" target="_blank"></a>
+                        <div class="youtube" data-num="13">
+                            <object data="https://www.youtube.com/embed/br3DAn1AZ7w?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit14">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b19.png" alt="일반사회 이웅재"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51316?cate_code=3137&subject_idx=2035" target="_blank"></a>
+                        <div class="youtube" data-num="14">
+                            <object data="https://www.youtube.com/embed/sKKeTuXvBDY?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit15">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b20.png" alt="일반사회 정인홍"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51316?cate_code=3137&subject_idx=2035" target="_blank"></a>
+                        <div class="youtube" data-num="15">
+                            <object data="https://www.youtube.com/embed/_b96pyf6Oyg?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit16">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b21.png" alt="일반사회 김현중"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51316?cate_code=3137&subject_idx=2035" target="_blank"></a>
+                        <div class="youtube" data-num="16">
+                            <object data="https://www.youtube.com/embed/sOJItCIHz48?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit17">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b22.png" alt="역사 김종권"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51315?cate_code=3137&subject_idx=1990" target="_blank"></a>
+                        <div class="youtube" data-num="17">
+                            <object data="https://www.youtube.com/embed/KFCEtn3bglE?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit18">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b23.png" alt="음악 다이애나"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51090?cate_code=3137&subject_idx=1991" target="_blank"></a>
+                        <div class="youtube" data-num="18">
+                            <object data="https://www.youtube.com/embed/Pj5tPame7kg?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit19">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b25.png" alt="전기전자 최우영"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank"></a>
+                        <div class="youtube" data-num="19">
+                            <object data="https://www.youtube.com/embed/G6fRXl5rCeM?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
+                    <div class="list" id="lsit20">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b26.png" alt="중국어 장영희"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51318?cate_code=3137&subject_idx=1995" target="_blank"></a>
+                        <div class="youtube" data-num="20">
+                            <object data="https://www.youtube.com/embed/Z0MU1njnDy0?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -379,7 +438,7 @@
             <input type="hidden" name="target_param_names[]" value="희망응시지역"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_param_names[]" value="응시횟수"/> {{-- 체크 항목 전송 --}}
 
-            <div class="evtCtnsBox evt02" id="evt02" data-aos="fade-up">
+            <div class="evtCtnsBox evt02" id="evt02">
                 {{-- 신청완료
                 <div class="close NSK-Black"><span>설명회/특강<br>신청 완료</span></div> --}}
 
@@ -577,7 +636,7 @@
         	<img src="https://static.willbes.net/public/images/promotion/2023/03/2931_04.jpg" alt="여러분 차례"/>
         </div>
 
-        <div class="evtCtnsBox evtInfo">
+        <div class="evtCtnsBox evtInfo" data-aos="fade-up">
             <div class="evtInfoBox">
                 <h4 class="NSK-Black">[각 대학별 설명회/특강 신청 시 참고사항]</h4>
                 <ul>
@@ -604,13 +663,10 @@
     <!-- End Container -->
 
 
-    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">    
-    <script src="/public/js/willbes/dist/aos.js"></script>
+
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script>
         $(document).ready(function() {
-            AOS.init();
-
             $('#regi_form_register').on("click", "input, select", function () {
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
@@ -700,38 +756,67 @@
             }, showValidateError, null, false, 'alert');
         }
 
-        // 비디오팝업
-        function videoPop(id) { 
-            $(id).bPopup({
-                positionStyle:'fixed',            
-                onClose: function(){
-                    $('video').each(function(){
-                        $(this).get(0).pause();
-                    });
-                }
-            });
-        } 
+        /*유튜브 자바스크립트 조작(재생, 일시정지, 종료 후 처리)*/
+        $(document).ready(function(){
+            var  youtube_url1 = "https://www.youtube.com/embed/vB6VKuwBEwg?rel=0";
+            var  youtube_url2 = "https://www.youtube.com/embed/bFhmAdfWgHw?rel=0"; 
+            var  youtube_url3 = "https://www.youtube.com/embed/pu1Jyv22mek?rel=0"; 
+            var  youtube_url4 = "https://www.youtube.com/embed/qCzPIJl2Gwg?rel=0"; 
+            var  youtube_url5 = "https://www.youtube.com/embed/0mMXLf0Hd9c?rel=0";
+            var  youtube_url6 = "https://www.youtube.com/embed/mnTVcvRsZvw?rel=0";
+            var  youtube_url7 = "https://www.youtube.com/embed/3LQ-cxTOVF4?rel=0";
+            var  youtube_url8 = "https://www.youtube.com/embed/-7-XskxUNiE?rel=0"; 
+            var  youtube_url9 = "https://www.youtube.com/embed/V3cCh63R7Q8?rel=0"; 
+            var  youtube_url10 = "https://www.youtube.com/embed/Q7YXa2rSSxY?rel=0"; 
+            var  youtube_url11 = "https://www.youtube.com/embed/9_jTm9CFcsE?rel=0";
+            var  youtube_url12 = "https://www.youtube.com/embed/ps1EI1fhsqw?rel=0";
+            var  youtube_url13 = "https://www.youtube.com/embed/br3DAn1AZ7w?rel=0";
+            var  youtube_url14 = "https://www.youtube.com/embed/sKKeTuXvBDY?rel=0"; 
+            var  youtube_url15 = "https://www.youtube.com/embed/_b96pyf6Oyg?rel=0"; 
+            var  youtube_url16 = "https://www.youtube.com/embed/sOJItCIHz48?rel=0"; 
+            var  youtube_url17 = "https://www.youtube.com/embed/KFCEtn3bglE?rel=0";
+            var  youtube_url18 = "https://www.youtube.com/embed/Pj5tPame7kg?rel=0"; 
+            var  youtube_url19 = "https://www.youtube.com/embed/G6fRXl5rCeM?rel=0"; 
+            var  youtube_url20 = "https://www.youtube.com/embed/Z0MU1njnDy0?rel=0";
 
-        /*레이어팝업*/     
-        function go_popup1(){$('#popup1').bPopup();}
-        function go_popup2(){$('#popup2').bPopup();}
-        function go_popup11(){$('#popup11').bPopup();}
-        function go_popup12(){$('#popup12').bPopup();}
-        function go_popup13(){$('#popup13').bPopup();}
-        function go_popup14(){$('#popup14').bPopup();}
-        function go_popup15(){$('#popup15').bPopup();}
-        function go_popup16(){$('#popup16').bPopup();}
-        function go_popup17(){$('#popup17').bPopup();}
-        function go_popup18(){$('#popup18').bPopup();}
-        function go_popup19(){$('#popup19').bPopup();}
-        function go_popup20(){$('#popup20').bPopup();}
-        function go_popup21(){$('#popup21').bPopup();}
-        function go_popup22(){$('#popup22').bPopup();}
-        function go_popup23(){$('#popup23').bPopup();}
-        function go_popup24(){$('#popup24').bPopup();}
-        function go_popup25(){$('#popup25').bPopup();}
-        function go_popup26(){$('#popup26').bPopup();}
-        function go_popup27(){$('#popup27').bPopup();}
+            $(".list").hide();
+            $(".list:first").show();
+            $(".profThumb a").click(function(){
+
+            var activeTab = $(this).attr("href");
+            var objyt =  $(activeTab).find('.youtube').data("num");            
+            $('.list').find('object').remove();
+			
+                switch(objyt){
+                    case 1 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url1 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 2 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url2 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 3 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url3 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 4 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url4 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 5 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url5 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 6 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url6 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 7 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url7 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 8 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url8 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 9 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url9 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 10 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url10 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 11 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url11 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 12 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url12 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 13 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url13 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 14 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url14 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 15 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url15 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 16 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url16 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 17 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url17 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 18 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url18 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 19 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url19 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    default : $(activeTab).find('.youtube').append(`<object data="` + youtube_url20 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                }				
+
+            $(".profThumb a").removeClass("active");
+            $(this).addClass("active");
+            $(".list").hide();
+            $(activeTab).fadeIn();
+            return false;
+            });
+        });  
     </script>
 
     <script src="/public/vendor/jquery/slick/jquery.slick.min.js"></script>
@@ -751,6 +836,14 @@
             pauseOnHover:true,
             vertical:true
         });       
+    </script>
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">    
+    <script src="/public/js/willbes/dist/aos.js"></script>
+    <script>
+        $(document).ready( function() {
+            AOS.init();
+        });
     </script>
 
 {{-- 프로모션용 스크립트 include --}}

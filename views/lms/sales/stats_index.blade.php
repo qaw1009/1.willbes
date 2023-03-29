@@ -430,6 +430,7 @@
 
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
+                {!! check_menu_perm_inner_script('excel') !!}
                 event.preventDefault();
                 if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit('{{ site_url('/sales/' . $stats_type . '/excel') }}', $search_form.serializeArray(), 'POST');

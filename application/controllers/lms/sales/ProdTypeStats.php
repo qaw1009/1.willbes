@@ -182,6 +182,11 @@ class ProdTypeStats extends \app\controllers\BaseController
      */
     public function excel()
     {
+        // 엑셀다운로드 권한 체크
+        if (check_menu_perm('excel') !== true) {
+            return null;
+        }
+
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');
 
@@ -383,6 +388,11 @@ class ProdTypeStats extends \app\controllers\BaseController
      */
     public function orderListExcel()
     {
+        // 엑셀다운로드 권한 체크
+        if (check_menu_perm('excel') !== true) {
+            return null;
+        }
+
         set_time_limit(0);
         ini_set('memory_limit', $this->_memory_limit_size);
 

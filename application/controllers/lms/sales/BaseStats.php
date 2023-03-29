@@ -243,6 +243,11 @@ class BaseStats extends \app\controllers\BaseController
      */
     protected function _excel($headers)
     {
+        // 엑셀다운로드 권한 체크
+        if (check_menu_perm('excel') !== true) {
+            return null;
+        }
+
         set_time_limit(0);
         ini_set('memory_limit', $this->_memory_limit_size);
 
@@ -427,6 +432,11 @@ class BaseStats extends \app\controllers\BaseController
      */
     protected function orderListExcel()
     {
+        // 엑셀다운로드 권한 체크
+        if (check_menu_perm('excel') !== true) {
+            return null;
+        }
+
         set_time_limit(0);
         ini_set('memory_limit', $this->_memory_limit_size);
 

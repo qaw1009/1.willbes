@@ -367,6 +367,7 @@
 
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
+                {!! check_menu_perm_inner_script('excel') !!}
                 event.preventDefault();
                 var confirm_msg = '{{ config_get('privacy_excel_down_msg', '정말로 엑셀다운로드 하시겠습니까?') }}';
                 if (confirm(confirm_msg)) {

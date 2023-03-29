@@ -104,7 +104,7 @@
         <div class="evtCtnsBox evt03" data-aos="fade-up">  
             <img src="https://static.willbes.net/public/images/promotion/2023/03/2935_03.jpg" alt="" />   
             <div class="shinyBtn NSK-Black">                
-                <a href="#none">교재구매 바로가기 ></a>
+                <a href="#none" onclick="javascript:alert('준비중입니다.');">교재구매 바로가기 ></a>
             </div>
         </div>
 
@@ -113,8 +113,8 @@
                 <iframe src="https://www.youtube.com/embed/qzgc1l4EtGA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>  
             <div class="shinyBtn NSK-Black mt30">                
-                <a href="#none">단과구매 ></a>
-                <a href="#none">T-PASS 구매 ></a>
+                <a href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/51439?subject_idx=2261&subject_name=%EC%9D%91%EA%B8%89%EC%B2%98%EC%B9%98%ED%95%99&tab=open_lecture" target="_blank">단과구매 ></a>
+                <a href="#none" onclick="javascript:alert('준비중입니다.');">T-PASS 구매 ></a>
             </div>
         </div>
 

@@ -135,7 +135,7 @@
                     </li>
                     <li>
                         <span>[응급처치학]</span>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51439?subject_idx=2261')}}">김혜진</a>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51439?subject_idx=2261')}}">이혜영</a>
                     </li> 
                     <li>
                         <span>[한국사검정능력시험]</span>

@@ -134,13 +134,17 @@
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/51206?subject_idx=1111')}}">신기훈</a>
                     </li>
                     <li>
+                        <span>[응급처치학]</span>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51439?subject_idx=2261')}}">김혜진</a>
+                    </li> 
+                    <li>
                         <span>[한국사검정능력시험]</span>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/50027?subject_idx=1237')}}">오태진</a>
                     </li>
                     <li>
                         <span>[G-TELP]</span>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/51348?subject_idx=1177')}}">김혜진</a>
-                    </li>        
+                    </li>      
                 </ul>                   
             </div>
 

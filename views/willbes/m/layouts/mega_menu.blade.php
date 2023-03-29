@@ -124,12 +124,17 @@
                 </li>
                 <li>
                     <span>한국사검정능력시험</span>
-                    <a href="{{ front_url('/professor/show/cate/3023/prof-idx/50027?subject_idx=1237') }}">오태진</a></li> 
+                    <a href="{{ front_url('/professor/show/cate/3023/prof-idx/50027?subject_idx=1237') }}">오태진</a>
+                </li> 
                 <li>
                     <span>G-TELP</span>
                     <a href="{{ front_url('/professor/show/cate/3023/prof-idx/51348?subject_idx=1177') }}">김혜진</a>
                     <a href="https://willbesedu.willbes.net/m/pass/professor/show/prof-idx/51044?cate_code=3126&subject_idx=1954" target="_blank">제니</a>
-                </li>       
+                </li>  
+                <li>
+                    <span>응급처치학</span>
+                    <a href="{{ front_url('/professor/show/cate/3023/prof-idx/51439?subject_idx=2261') }}">이혜정</a>
+                </li>      
             </ul>
         @elseif($menu_cate_code == '3024')
             {{-- 군무원 --}}

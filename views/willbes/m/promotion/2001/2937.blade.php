@@ -86,20 +86,19 @@
         <a href="https://police.willbes.net/m/pass/offinfo/boardInfo/index/80" title="강의시간표 확인" target="_blank" style="position: absolute;left: 18.75%;top: 85.32%;width: 61.94%;height: 7.22%;z-index: 2;"></a>     
     </div>
 
-
-    <div class="evtCtnsBox evt07 mt50" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2023/03/2937m_05_01.jpg" title="단과"/>  
-        @if(empty($arr_base['display_product_data']) === false)
-            @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
-        @endif       
-    </div>
-
-    <div class="evtCtnsBox evt07" data-aos="fade-up">
+    <div class="evtCtnsBox mt50" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2023/03/2937m_05_02.jpg" title="종합반"/>
         @if(empty($arr_base['display_product_data']) === false)
             @include('willbes.m.promotion.display_product_partial',array('group_num'=>2))
         @endif
     </div>
+
+    <div class="evtCtnsBox mt50" data-aos="fade-up">
+        <img src="https://static.willbes.net/public/images/promotion/2023/03/2937m_05_01.jpg" title="단과"/>  
+        @if(empty($arr_base['display_product_data']) === false)
+            @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
+        @endif       
+    </div>  
     
 </div>
 

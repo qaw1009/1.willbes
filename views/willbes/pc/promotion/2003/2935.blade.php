@@ -51,8 +51,9 @@
         .evt04 {background:url(https://static.willbes.net/public/images/promotion/2023/03/2935_04_bg.jpg) repeat-x center top; padding:350px 0 150px}
 
         .evt05 {padding:150px 0 0}
-        .youtube {width:1120px; margin:0 auto}
-        .youtube iframe {width:1120px; height:550px}
+        .youtube {width:1120px; margin:0 auto; }
+        .youtube object {width:1120px; height:550px;}
+        .evt04 .youtube p {display:flex; justify-content:center; align-items:center; background:#111; color:#ccc; font-size:60px; height:550px;}
         
         .shinyBtn {width:860px; margin:0 auto; display:flex; justify-content: space-between;}
         .shinyBtn a {display:block; width:48%; padding:18px 0; color:#fff; font-size:30px; background:#db4346; border-radius:6px; overflow:hidden; position: relative;}
@@ -70,10 +71,10 @@
         }
         .shinyBtn a:after{animation:shinyBtn 2s ease-in-out infinite;}
         @@keyframes shinyBtn {
-            0% { transform: scale(0) rotate(45deg); opacity: 0; }
-            80% { transform: scale(0) rotate(45deg); opacity: 0.2; }
-            81% { transform: scale(4) rotate(45deg); opacity: 0.5; }
-            100% { transform: scale(60) rotate(45deg); opacity: 0; }
+            0% {transform: scale(0) rotate(45deg); opacity: 0;}
+            80% {transform: scale(0) rotate(45deg); opacity: 0.2;}
+            81% {transform: scale(4) rotate(45deg); opacity: 0.5;}
+            100% {transform: scale(60) rotate(45deg); opacity: 0;}
         }
 
         .evt03 .shinyBtn a {width:100%}
@@ -104,23 +105,26 @@
         <div class="evtCtnsBox evt03" data-aos="fade-up">  
             <img src="https://static.willbes.net/public/images/promotion/2023/03/2935_03.jpg" alt="" />   
             <div class="shinyBtn NSK-Black">                
-                <a href="#none" onclick="javascript:alert('준비중입니다.');">교재구매 바로가기 ></a>
+                <a href="https://pass.willbes.net/book/index/cate/3023?cate_code=3023&subject_idx=2261" target="_blank">교재구매 바로가기 ></a>
             </div>
         </div>
 
         <div class="evtCtnsBox evt04" data-aos="fade-up">  
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/qzgc1l4EtGA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p class="NSK-Black">Cooming Soon!</p>
+                {{--
+                <object data="https://www.youtube.com/embed/qzgc1l4EtGA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
+                --}}
             </div>  
             <div class="shinyBtn NSK-Black mt30">                
                 <a href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/51439?subject_idx=2261&subject_name=%EC%9D%91%EA%B8%89%EC%B2%98%EC%B9%98%ED%95%99&tab=open_lecture" target="_blank">단과구매 ></a>
-                <a href="#none" onclick="javascript:alert('준비중입니다.');">T-PASS 구매 ></a>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3023/pack/648001/prod-code/206617" target="_blank">T-PASS 구매 ></a>
             </div>
         </div>
 
         <div class="evtCtnsBox evt05" data-aos="fade-up">  
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/qzgc1l4EtGA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <object data="https://www.youtube.com/embed/qzgc1l4EtGA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2023/03/2935_05.jpg" alt="" />  
         </div>

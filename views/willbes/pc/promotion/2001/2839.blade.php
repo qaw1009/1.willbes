@@ -315,7 +315,7 @@
                 </ul>                
                 <div id="tab1" class="tabContents">
                     <div class="youtube" data-num="1">
-                        <object data="https://www.youtube.com/embed/ueqN7v3wgKc?rel=0"   frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
+                        <object data="https://www.youtube.com/embed/ueqN7v3wgKc?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
                     </div>
                     <div>
                         <p class="NSK-Black">NEW ALL in One 헌법</p>

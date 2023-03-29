@@ -35,7 +35,9 @@
     } 
 
     .youtubeWrap {position:relative; padding-bottom:56.25%; overflow: hidden; margin-top:-20px !important}
-    .youtubeWrap iframe {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
+    .youtubeWrap object {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
+
+    .youtubeWrap p {position:absolute; top:0; width:100%; height:100%; display:flex; justify-content:center; align-items:center; background:#111; color:#ccc; font-size:5vh;}
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
@@ -70,24 +72,27 @@
     <div class="evtCtnsBox evt03" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2023/03/2935m_03.jpg" alt="" />
         <div class="shinyBtn NSK-Black">                
-            <a href="#none" onclick="javascript:alert('준비중입니다.');">교재구매 바로가기 ></a>
+            <a href="https://pass.willbes.net/m/book/index/cate/3023?cate_code=3023&subject_idx=2261" target="_blank">교재구매 바로가기 ></a>
         </div>
     </div>
 
     <div class="evtCtnsBox evt04" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2023/03/2935m_04_01.jpg" alt="" />
         <div class="youtubeWrap">
-            <iframe src="https://www.youtube.com/embed/qzgc1l4EtGA?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p class="NSK-Black">Cooming Soon!</p>
+            {{--
+            <object data="https://www.youtube.com/embed/qzgc1l4EtGA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
+            --}}
         </div>
         <div class="shinyBtn NSK-Black mt30">                
             <a href="https://pass.willbes.net/m/professor/show/cate/3023/prof-idx/51439?subject_idx=2261" target="_blank">단과구매 ></a>
-            <a href="#none" onclick="javascript:alert('준비중입니다.');">T-PASS 구매 ></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3023/pack/648001/prod-code/206617" target="_blank">T-PASS 구매 ></a>
         </div> 
     </div>
 
     <div class="evtCtnsBox evt05" data-aos="fade-up">       
         <div class="youtubeWrap">
-            <iframe src="https://www.youtube.com/embed/qzgc1l4EtGA?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <object data="https://www.youtube.com/embed/qzgc1l4EtGA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
         </div> 
         <img src="https://static.willbes.net/public/images/promotion/2023/03/2935m_05.jpg" alt="" />
     </div>

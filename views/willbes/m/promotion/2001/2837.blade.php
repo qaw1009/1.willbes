@@ -58,7 +58,7 @@
             <a href="javascript:go_PassLecture('203784');" title=""><img src="https://static.willbes.net/public/images/promotion/2022/12/2837m_05_02.jpg" alt="" /><span>신청하기 ></span></a>
             <a href="javascript:go_PassLecture('203736');" title=""><img src="https://static.willbes.net/public/images/promotion/2022/12/2837m_05_03.jpg" alt="" /><span>신청하기 ></span></a>
             <a href="javascript:go_PassLecture('203735');" title=""><img src="https://static.willbes.net/public/images/promotion/2022/12/2837m_05_04.jpg" alt="" /><span>신청하기 ></span></a>
-
+            <a href="javascript:go_PassLecture('206615');" title=""><img src="https://static.willbes.net/public/images/promotion/2023/03/2837m_05_05.jpg" alt="" /><span>신청하기 ></span></a>
             <div class="check">
                 <label>
                     <input type="checkbox" name="ischk" value="Y">

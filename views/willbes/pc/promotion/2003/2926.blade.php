@@ -110,7 +110,7 @@
             <div class="mt30" data-aos="fade-right"><a href="https://pass.willbes.net/lecture/index/cate/3103/pattern/only?search_order=regist&subject_idx=&course_idx=1365&school_year=2023" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/03/2926_06_06.jpg" alt="동영상강의 신청" /></a></div>
             <div class="mt30" data-aos="fade-left"><a href="https://pass.willbes.net/pass/offPackage/show/prod-code/206094" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/03/2926_06_07.jpg" alt="학원패키지" /></a></div>
 		</div>
-
+        {{--
         <div class="evtCtnsBox evt07" data-aos="fade-up" id="evt">
             <img src="https://static.willbes.net/public/images/promotion/2023/03/2926_07_01.jpg" alt="" />
             <div class="textBox">
@@ -154,9 +154,8 @@
                 @endif
             </div>
 		</div>
-
-
-
+        --}}
+        {{--
         <div class="evtCtnsBox evtInfo" data-aos="fade-up">
             <div class="guide_box">
                 <h2 class="NSK-Black">유의사항</h2>
@@ -175,7 +174,7 @@
                 </dl>
             </div>
         </div>
-
+        --}}
 	</div>
     <!-- End Container -->
 

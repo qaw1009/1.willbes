@@ -3,14 +3,14 @@
     <style type="text/css">
         .Cts03 {margin-bottom:50px; text-align:left}
         .Cts03 h3 {font-size:16px;}
-        .Cts03 h3 span {color:#fa7738}
+        .Cts03 h3 span {color:#fa7738; vertical-align:top}
         .graphWrap {width:100%; margin-top:50px; font-size:14px; line-height:1.5;}
         .graphWrap li {position:relative; display:inline; float:left; width:48%; text-align:left; margin:0 0.5%;}
         .graphWrap select {position:absolute; top:5px; right:0}
         .graphWrap:after {content:""; display:block; clear:both}
         .graphbox {width:90%; margin:20px auto; border:1px solid #000;}
         .graphbox .subTit {font-size:120%; color:#F30}
-        .graph {width:20%; float:left; text-align:center; background:url(http://file.willbes.net/new_image/2015/04/graphBg.png) repeat;}
+        .graph {width:20%; float:left; text-align:center; background:url(https://static.willbes.net/public/images/promotion/2023/03/graphBg.png) repeat;}
         .graph p {padding:10px 0; background:#fff}
         .graph p:last-child {border-top:1px solid #333}
         .graph div {position:relative; width:45px; height:250px; margin:0 auto;}

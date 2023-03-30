@@ -39,6 +39,7 @@
         .evtPass ul li:last-child a {margin-right:0}
         .evtPass ul li a p {font-size:20px}
         .evtPass ul li a.active {color:#fff; background:#3f80d8; }
+        .evtPass ul li:last-child a.active {color:#fff; background:#05AB6B; }
         .evtPass .tabCts {width:1030px; margin:50px auto; position: relative;}
         .evtPass .tabCts a {display:block; background:#000; font-size:30px; color:#fff; padding:20px 0; background:#3f80d8; border-radius:60px; box-shadow:10px rgba(0,0,0,.5); width:500px; position: absolute; left:50%; margin-left:-250px; bottom:-30px; z-index: 2;}
         .evtPass .tabCts a:hover {background:#073ef3}
@@ -101,7 +102,7 @@
                 <li><a href="#tab1"><p>헌법</p>이국령</a></li>
                 <li><a href="#tab2"><p>형사법</p>임종희</a></li>
                 <li><a href="#tab3"><p>형사법</p>문형석&김한기</a></li>
-                <li><a href="#tab4"><p>2032년 2차대비</p>헌법 T-PASS</a></li>
+                <li><a href="#tab4"><p>2023년 2차대비</p>헌법 T-PASS</a></li>
             </ul>
             <div class="tabCts">
                 <div id="tab1">

@@ -111,10 +111,8 @@
 
         <div class="evtCtnsBox evt04" data-aos="fade-up">  
             <div class="youtube">
-                <p class="NSK-Black">Cooming Soon!</p>
-                {{--
-                <object data="https://www.youtube.com/embed/qzgc1l4EtGA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
-                --}}
+                {{--<p class="NSK-Black">Cooming Soon!</p>--}}
+                <object data="https://www.youtube.com/embed/W3wcvq26MuM?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
             </div>  
             <div class="shinyBtn NSK-Black mt30">                
                 <a href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/51439?subject_idx=2261&subject_name=%EC%9D%91%EA%B8%89%EC%B2%98%EC%B9%98%ED%95%99&tab=open_lecture" target="_blank">단과구매 ></a>

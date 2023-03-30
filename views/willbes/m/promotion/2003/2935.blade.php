@@ -79,10 +79,8 @@
     <div class="evtCtnsBox evt04" data-aos="fade-up">
         <img src="https://static.willbes.net/public/images/promotion/2023/03/2935m_04_01.jpg" alt="" />
         <div class="youtubeWrap">
-            <p class="NSK-Black">Cooming Soon!</p>
-            {{--
-            <object data="https://www.youtube.com/embed/qzgc1l4EtGA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>
-            --}}
+            {{--<p class="NSK-Black">Cooming Soon!</p>--}}            
+            <object data="https://www.youtube.com/embed/W3wcvq26MuM?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></object>            
         </div>
         <div class="shinyBtn NSK-Black mt30">                
             <a href="https://pass.willbes.net/m/professor/show/cate/3023/prof-idx/51439?subject_idx=2261" target="_blank">단과구매 ></a>

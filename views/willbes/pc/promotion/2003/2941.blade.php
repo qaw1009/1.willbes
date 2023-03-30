@@ -53,7 +53,7 @@
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2023/03/2941_02.jpg" alt="모의고사 바로가기"/>
                 <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="현장 모의고사" style="position: absolute;left: 13.43%;top: 25.36%;width: 29.98%;height: 3.99%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="라이브 모의고사" style="position: absolute;left: 13.43%;top: 57.36%;width: 29.98%;height: 3.99%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/book/index/cate/3035?cate_code=3035&subject_idx" target="_blank" title="라이브 모의고사" style="position: absolute;left: 13.43%;top: 57.36%;width: 29.98%;height: 3.99%;z-index: 2;"></a>
                 <a href="https://pass.willbes.net/book/index/cate/3035?cate_code=3035&subject_idx" target="_blank" title="봉투 모의고사" style="position: absolute;left: 13.43%;top: 89.26%;width: 29.98%;height: 3.99%;z-index: 2;"></a>
             </div>
         </div>

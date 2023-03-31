@@ -41,7 +41,7 @@
         width: 30px;
     }
 
-    .evt_07 {padding:50px 0; background:#313131}
+    .evt_07 {padding-bottom:50px; background:#313131}
     .evt_07 h4 {font-family: 'Black Han Sans', sans-serif; font-size:3vh}
     .evt_07 > a {display:block; margin-bottom:15px}
 
@@ -64,7 +64,7 @@
 <div id="Container" class="Container NSK c_both">
 
     <div class="evtCtnsBox evt_top" data-aos="fade-down">
-        <img src="https://static.willbes.net/public/images/promotion/2023/01/2828m_top.jpg" alt="경찰학 김재규" >        
+        <img src="https://static.willbes.net/public/images/promotion/2023/04/2828m_top.jpg" alt="경찰학 김재규" >        
     </div> 
 
     <div class="evtCtnsBox evt01" data-aos="fade-up">
@@ -107,11 +107,15 @@
         <img src="https://static.willbes.net/public/images/promotion/2022/11/2828m_06.jpg"  alt="그레이스 호퍼 명언"/>               
     </div>
 
+    <div class="evtCtnsBox">
+        <img src="https://static.willbes.net/public/images/promotion/2023/04/2828m_06s.jpg"  alt="100명 한정 이벤트"/>               
+    </div>
+
     <div class="evtCtnsBox evt_07" data-aos="fade-up">
             <div class="wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2023/01/2828m_07.jpg" alt="">
+            <img src="https://static.willbes.net/public/images/promotion/2023/04/2828m_07.jpg" alt="">
         
-            <a href="javascript:void(0);" title="신청하기" data-url="https://police.willbes.net/m/periodPackage/show/cate/3001/pack/648001/prod-code/204770" onclick="go_PassLecture(this)" style="position: absolute; left: 11.53%; top: 74.09%; width: 76.81%; height: 14.32%; z-index: 2;"></a>               
+            <a href="javascript:void(0);" title="신청하기" data-url="https://police.willbes.net/m/periodPackage/show/cate/3001/pack/648001/prod-code/206725" onclick="go_PassLecture(this)" style="position: absolute; left: 11.53%; top: 77.59%; width: 76.81%; height: 14.32%; z-index: 2;"></a>               
         </div>
         <div class="check">
             <label>
@@ -127,11 +131,11 @@
 
     <div class="evtCtnsBox evtInfo" id="info" data-aos="fade-up">
         <div class="evtInfoBox">
-            <h4 class="NSK-Black">2023 1차대비 김재규 경찰학 100일 완성 PASS 이용안내</h4>
+            <h4 class="NSK-Black">2023~24년 김재규 총알경찰학 T-PASS 이용안내</h4>
             <div class="infoTit NSK-Black"><strong>강좌 기본</strong></div>
             <ul>               
                 <li>본 상품은 구매일로부터 1년간 무제한으로 수강 가능한 기간제 패스입니다.</li>
-                <li>김재규 경찰학 100일완성  PASS는 결제가 완료되는 즉시 수강이 시작됩니다. (결제 완료자에 한함)</li>
+                <li>김재규 총알경찰학 T-PASS는 결제가 완료되는 즉시 수강이 시작됩니다.(결제완료자에 한함)</li>
                 <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
                 <li>김재규 경찰학 T-PASS 상품 구성은 다음과 같습니다.<br>                    
                     - 23년 1차 대비 전 강좌<br>
@@ -158,7 +162,7 @@
                 <li>로그인 후 [내 강의실]에서 [무한PASS존]으로 접속합니다.</li>
                 <li>구매한 PASS 상품 선택 후 [강좌추가하기]를 클릭, 원하시는 강좌를 등록한 후 수강할 수 있습니다.</li>
                 <li>강의수강시 일시정지, 수강연장 , 재수강 불가합니다.</li>
-                <li>김재규 100일완성반 PASS 수강시 이용 가능한 기기 대수는 다음과 같이 제한됩니다.<br>
+                <li>김재규 총알경찰학 T-PASS 수강시 이용가능한 기기대수는 다음과 같이 제한됩니다.<br>
                 총 수강 기기 대수 2대 : PC 2대 또는 PC 1대 모바일 1대 또는 모바일 2대 (윌비스경찰 PASS는  PMP 강의는 제공하지 않습니다.)</li>
                 <li>PC, 모바일 기기에 대한 초기화가 필요할 경우 최초 초기화에 한해서는 수강생 본인이 초기화가 가능합니다. 다만 추후 초기화가 필요할 시
                 내용 확인 후 가능하오니 고객센터로 문의하시기 바랍니다. ([내 강의실] 내 [무한PASS존]에서 등록기기정보 확인)</li>
@@ -169,7 +173,7 @@
             <ul>
                 <li>본 상품은 특별할인기획 상품으로 쿠폰 할인, 포인트 사용 등 혜택이 적용되지 않으니 양해 및 참고 부탁드립니다.<br>
                 (단,이벤트 시 쿠폰사용가능)</li>
-                <li>김재규 100일완성반 PASS 강좌 (부가 서비스 등) 중 불가피한 사정에 의해 부득이 진행되지 않을 경우 대체 강좌로 제공 예정이며,
+                <li>김재규 총알경찰학 T-PASS 강좌(부가서비스 등) 중 불가피한 사정에 의해 부득이 진행되지 않을경우 대체 강좌로 제공예정이며,
                 이로 인한 환불은 불가합니다.</li>
                 <li>아이디 공유, 타인에게 양도 및 판매 등 부정 사용 적발 시 수강 중인 PASS 강좌는 즉시 정지, 회원 자격이 박탈됩니다.<br>
                 이로 인한 강의 환불은 절대 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 발생할 수 있습니다.</li>

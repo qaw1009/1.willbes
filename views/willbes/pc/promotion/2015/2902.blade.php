@@ -56,9 +56,9 @@
 
 		<div class="evtCtnsBox evt_top" data-aos="fade-up">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2023/02/2902_top.jpg"  alt="파격할인 이벤트"/>
-                <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3126/prod-code/205095" target="_blank" title="합격반" style="position: absolute; left: 65%; top: 65.37%; width: 24.02%; height: 6.19%; z-index: 2;" id="evt01"></a>
-                <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3126/prod-code/205027" target="_blank" title="합격보장반" style="position: absolute; left: 65%; top: 76.29%; width: 24.02%; height: 6.19%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2023/03/2902_top.jpg"  alt="파격할인 이벤트"/>
+                <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3126/prod-code/206759" target="_blank" title="합격반" style="position: absolute; left: 65%; top: 65.37%; width: 24.02%; height: 6.19%; z-index: 2;" id="evt01"></a>
+                <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3126/prod-code/206753" target="_blank" title="합격보장반" style="position: absolute; left: 65%; top: 76.29%; width: 24.02%; height: 6.19%; z-index: 2;"></a>
             </div>
 		</div>
 
@@ -93,12 +93,12 @@
             <a href="https://willbesedu.willbes.net/pass/promotion/index/cate/3126/code/2879" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2023/02/2902_04_02.jpg" alt="" /></a>
             <img src="https://static.willbes.net/public/images/promotion/2023/02/2902_04_03.jpg" alt="" />
             <div class="lecbuy">
-                <a class="NSK-Black" href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3126/prod-code/205095" target="_blank">
-                    소방 합격반<br> <span class="NSK">350만원</span> 150만원
+                <a class="NSK-Black" href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3126/prod-code/206759" target="_blank">
+                    소방 합격반<br> <span class="NSK">350만원</span> 200만원
                     <strong>신청하기 ></strong>
                 </a>
-                <a class="NSK-Black" href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3126/prod-code/205027" target="_blank">
-                    소방 합격보장반<br> <span class="NSK">500만원</span> 300만원
+                <a class="NSK-Black" href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3126/prod-code/206753" target="_blank">
+                    소방 합격보장반<br> <span class="NSK">500만원</span> 380만원
                     <strong>신청하기 ></strong>
                 </a>
             </div>

@@ -24,8 +24,8 @@
         .sky {position:fixed;top:200px;right:10px;z-index:100;}
         .sky a {display:block; margin-bottom:10px}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2023/04/2828_top_bg.jpg) no-repeat center top; height:1760px}
-        .evtTop .mainImg {position:absolute; top:225px; left:50%; margin-left:-375.5px}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2023/04/2828_tops_bg.jpg) no-repeat center top; height:1760px}
+        .evtTop .mainImg {position:absolute; top:185px; left:50%; margin-left:-405.5px}
 
         .evt01 {background:#19586A}
 
@@ -95,7 +95,7 @@
         </div>
         
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2023/04/2828_top_img.png"  alt="경찰학 김재규" data-aos="flip-down" class="mainImg"/>
+            <img src="https://static.willbes.net/public/images/promotion/2023/04/2828_tops_img.png"  alt="경찰학 김재규" data-aos="flip-down" class="mainImg"/>
         </div>
 
         <div class="evtCtnsBox evt01" data-aos="fade-up">

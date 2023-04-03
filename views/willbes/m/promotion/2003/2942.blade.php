@@ -25,7 +25,7 @@
     padding:5px 20px; font-weight:bold; font-size:1.8vh; border-radius:30px}        
     .guide_box dd{color:#333; margin:0 0 20px 5px;}
     .guide_box dd strong {color:#555;}
-    .guide_box dd li {margin-bottom:5px; list-style:decimal; margin-left:20px; }
+    .guide_box dd li {margin-bottom:5px; list-style:disc; margin-left:20px; }
     .guide_box dd span {color:red}
     
     /* 폰 가로, 태블릿 세로*/

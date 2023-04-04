@@ -88,7 +88,7 @@
         .profHome {width:938px; margin:0 auto}
         .profHome .list {border-bottom:2px dotted #363636; position: relative;}
         .profHome .youtube{position: absolute; top:75px; left:620px; width:293px; height:170px; z-index: 2;}
-        .profHome .youtube object {width:293px; height:170px;}  
+        .profHome .youtube iframe {width:293px; height:170px;}  
 
         .profHome .list a {position: absolute; left: 25.91%; top: 39.57%; width: 10.98%; height: 14.03%; z-index: 2;}
 
@@ -178,11 +178,11 @@
                         <p>유아 민정선 교수</p>
                     </span>
                     <span>
-                        <a href="#lsit01"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t02.png" alt=""/>
+                        <a href="#lsit02"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t02.png" alt=""/>
                         <p>초등 배재민 교수</p></a>
                     </span>
                     <span>
-                        <a href="#lsit02"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t03.png" alt=""/>
+                        <a href="#lsit01"><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t03.png" alt=""/>
                         <p>교육학 이경범 교수</p></a>
                     </span>
                     <span>
@@ -278,145 +278,145 @@
                     <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_t00.png" alt=""/></span>
                 </div>
 
-                <div class="profHome">                    
+                <div class="profHome">   
                     <div class="list" id="lsit01">
-                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b02.png" alt="초등 배재민"/>
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3135&subject_idx=1982" target="_blank"></a>
-                        <div class="youtube" data-num="1">
-                            <object data="https://www.youtube.com/embed/vB6VKuwBEwg?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
-                        </div>
-                    </div>
-                    <div class="list" id="lsit02">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b03.png" alt="교육학 이경범"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51312?cate_code=3134&subject_idx=1980" target="_blank"></a>
                         <div class="youtube" data-num="2">
-                            <object data="https://www.youtube.com/embed/bFhmAdfWgHw?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/bFhmAdfWgHw?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
+                        </div>
+                    </div>                 
+                    <div class="list" id="lsit02">
+                        <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b02.png" alt="초등 배재민"/>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3135&subject_idx=1982" target="_blank"></a>
+                        <div class="youtube" data-num="1">
+                            <iframe src="https://www.youtube.com/embed/vB6VKuwBEwg?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit03">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b04.png" alt="교육학 정현"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51158?cate_code=3134&subject_idx=1980" target="_blank"></a>
                         <div class="youtube" data-num="3">
-                            <object data="https://www.youtube.com/embed/pu1Jyv22mek?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/pu1Jyv22mek?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit04">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b05.png" alt="국어 송원영"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983" target="_blank"></a>
                         <div class="youtube" data-num="4">
-                            <object data="https://www.youtube.com/embed/qCzPIJl2Gwg?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/qCzPIJl2Gwg?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit05">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b07.png" alt="국어 구동언"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51313?cate_code=3137&subject_idx=1983" target="_blank"></a>
                         <div class="youtube" data-num="5">
-                            <object data="https://www.youtube.com/embed/0mMXLf0Hd9c?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/0mMXLf0Hd9c?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit06">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b08.png" alt="영어 김유석"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51313?cate_code=3137&subject_idx=1983" target="_blank"></a>
                         <div class="youtube" data-num="6">
-                            <object data="https://www.youtube.com/embed/mnTVcvRsZvw?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/mnTVcvRsZvw?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit07">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b13.png" alt="수학교육론 박태영"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51085?cate_code=3137&subject_idx=1986" target="_blank"></a>
                         <div class="youtube" data-num="7">
-                            <object data="https://www.youtube.com/embed/3LQ-cxTOVF4?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/3LQ-cxTOVF4?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit08">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b12.png" alt="수학교육론 박혜향"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51314?cate_code=3137&subject_idx=1986" target="_blank"></a>
                         <div class="youtube" data-num="8">
-                            <object data="https://www.youtube.com/embed/-7-XskxUNiE?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/-7-XskxUNiE?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit09">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b14.png" alt="생물 강치욱"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51086?cate_code=3137&subject_idx=1987" target="_blank"></a>
                         <div class="youtube" data-num="9">
-                            <object data="https://www.youtube.com/embed/V3cCh63R7Q8?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/V3cCh63R7Q8?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit10">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b15.png" alt="생물 양혜정"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51087?cate_code=3137&subject_idx=1988" target="_blank"></a>
                         <div class="youtube" data-num="10">
-                            <object data="https://www.youtube.com/embed/Q7YXa2rSSxY?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/Q7YXa2rSSxY?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit11">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b16.png" alt="화학 강철"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51310?cate_code=3137&subject_idx=2206" target="_blank"></a>
                         <div class="youtube" data-num="11">
-                            <object data="https://www.youtube.com/embed/9_jTm9CFcsE?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/9_jTm9CFcsE?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit12">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b17.png" alt="도덕윤리 김병찬"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51088?cate_code=3137&subject_idx=1989" target="_blank"></a>
                         <div class="youtube" data-num="12">
-                            <object data="https://www.youtube.com/embed/ps1EI1fhsqw?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/ps1EI1fhsqw?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit13">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b18.png" alt="일반사회 허역"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51316?cate_code=3137&subject_idx=2035" target="_blank"></a>
                         <div class="youtube" data-num="13">
-                            <object data="https://www.youtube.com/embed/br3DAn1AZ7w?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/br3DAn1AZ7w?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit14">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b19.png" alt="일반사회 이웅재"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51316?cate_code=3137&subject_idx=2035" target="_blank"></a>
                         <div class="youtube" data-num="14">
-                            <object data="https://www.youtube.com/embed/sKKeTuXvBDY?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/sKKeTuXvBDY?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit15">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b20.png" alt="일반사회 정인홍"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51316?cate_code=3137&subject_idx=2035" target="_blank"></a>
                         <div class="youtube" data-num="15">
-                            <object data="https://www.youtube.com/embed/_b96pyf6Oyg?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/_b96pyf6Oyg?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit16">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b21.png" alt="일반사회 김현중"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51316?cate_code=3137&subject_idx=2035" target="_blank"></a>
                         <div class="youtube" data-num="16">
-                            <object data="https://www.youtube.com/embed/sOJItCIHz48?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/sOJItCIHz48?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit17">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b22.png" alt="역사 김종권"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51315?cate_code=3137&subject_idx=1990" target="_blank"></a>
                         <div class="youtube" data-num="17">
-                            <object data="https://www.youtube.com/embed/KFCEtn3bglE?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/KFCEtn3bglE?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit18">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b23.png" alt="음악 다이애나"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51090?cate_code=3137&subject_idx=1991" target="_blank"></a>
                         <div class="youtube" data-num="18">
-                            <object data="https://www.youtube.com/embed/Pj5tPame7kg?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/Pj5tPame7kg?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit19">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b25.png" alt="전기전자 최우영"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank"></a>
                         <div class="youtube" data-num="19">
-                            <object data="https://www.youtube.com/embed/G6fRXl5rCeM?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/G6fRXl5rCeM?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="list" id="lsit20">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b26.png" alt="중국어 장영희"/>
                         <a href="https://ssam.willbes.net/professor/show/prof-idx/51318?cate_code=3137&subject_idx=1995" target="_blank"></a>
                         <div class="youtube" data-num="20">
-                            <object data="https://www.youtube.com/embed/Z0MU1njnDy0?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>
+                            <iframe src="https://www.youtube.com/embed/Z0MU1njnDy0?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>
                     </div>
                 </div>
@@ -822,29 +822,29 @@
 
             var activeTab = $(this).attr("href");
             var objyt =  $(activeTab).find('.youtube').data("num");            
-            $('.list').find('object').remove();
+            $('.list').find('iframe').remove();
 			
                 switch(objyt){
-                    case 1 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url1 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 2 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url2 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 3 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url3 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 4 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url4 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 5 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url5 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 6 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url6 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 7 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url7 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 8 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url8 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 9 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url9 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 10 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url10 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 11 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url11 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 12 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url12 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 13 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url13 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 14 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url14 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 15 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url15 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 16 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url16 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 17 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url17 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 18 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url18 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    case 19 :  $(activeTab).find('.youtube').append(`<object data="` + youtube_url19 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
-                    default : $(activeTab).find('.youtube').append(`<object data="` + youtube_url20 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></object>`); break;
+                    case 1 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url1 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 2 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url2 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 3 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url3 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 4 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url4 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 5 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url5 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 6 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url6 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 7 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url7 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 8 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url8 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 9 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url9 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 10 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url10 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 11 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url11 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 12 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url12 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 13 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url13 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 14 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url14 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 15 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url15 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 16 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url16 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 17 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url17 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 18 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url18 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    case 19 :  $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url19 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
+                    default : $(activeTab).find('.youtube').append(`<iframe src="` + youtube_url20 + `" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>`); break;
                 }				
 
             $(".profThumb a").removeClass("active");

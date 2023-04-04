@@ -23,6 +23,8 @@
         .evt03 {background:url(https://static.willbes.net/public/images/promotion/2023/04/2942_03_bg.jpg) no-repeat center top;}
 
         .evt05 {background:#F0F0F0}
+        .evt05 .wrap {width:1000px;text-align:left;padding-bottom:25px;}
+        .careful {margin-top:25px; font-size:17px; line-height:1.5;color:#FE415B;font-weight:bold;} 
 
         .check {margin-top:20px; color:#333; font-size:14px}
         .check label {cursor:pointer;font-size:17px;font-weight:bold;}
@@ -86,7 +88,14 @@
 		</div>
 
         <div class="evtCtnsBox evt05" data-aos="fade-up">
-            <img src="https://static.willbes.net/public/images/promotion/2023/04/2942_05.jpg" alt="온라인 패스"/>           
+            <img src="https://static.willbes.net/public/images/promotion/2023/04/2942_05.jpg" alt="온라인 패스"/>
+            <div class="wrap">
+                <div class="careful">
+                    ★ 2024년 대비 민법 예비순환 및 1~2순환 강의는 김동진 강사의 건강상의 사유로 아래와 같이 진행됨을 미리 알려드립니다.<br>
+                    1. 2024년 대비 민법&lt;김동진&gt; 예비순환 강의 ▶ 2023년 대비 1순환 강의를 예비순환용 복습자료와 함께 수강하는 방식으로 진행<br>
+                    2. 2024년 대비 민법&lt;김동진&gt; 1~2순환 강의 ▶ 2023년 대비 1~2순환 강의로 대체되어 진행 &lt;3순환부터 실강 진행 예정&gt;
+                </div>
+            </div>
             <div class="check" id="chkInfo">   
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />

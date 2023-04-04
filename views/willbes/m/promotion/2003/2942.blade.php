@@ -10,6 +10,9 @@
     .evtCtnsBox .wrap { margin:0 auto; position:relative}
     /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
+    .evt05m .wrap {text-align:left; padding:1vh}
+    .careful {margin-top:1vh; font-size:1.75vh; line-height:1.75; text-align:left; padding:0 1vh;color:#FE415B;font-weight:bold;}
+    
     .evtCtnsBox .check_area {background:#F0F0F0;}
     .evtCtnsBox .check{margin:20px 20px 0; font-size:1.75vh; text-align:center; line-height:1.5; letter-spacing:-1px;}
     .evtCtnsBox .check label{font-weight:bold;}
@@ -75,13 +78,20 @@
     <div class="evtCtnsBox" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2023/04/2942m_04.jpg" alt="절대 만족 후기" >
-            <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="더 많은 합격수기 보기" style="position: absolute;left: 18.46%;top: 91.75%;width: 62.89%;height: 4.75%;z-index: 2;"></a>
+            <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="더 많은 합격수기 보기" style="position: absolute;left: 18.46%;top: 90.25%;width: 62.89%;height: 4.75%;z-index: 2;"></a>
         </div>
     </div> 
 
-    <div class="evtCtnsBox" data-aos="fade-up">
+    <div class="evtCtnsBox evt05m" data-aos="fade-up">
         <div class="check_area">
             <img src="https://static.willbes.net/public/images/promotion/2023/04/2942m_05_01.jpg" alt="예비순환+" >
+            <div class="wrap">
+                <div class="careful">
+                    ★ 2024년 대비 민법 예비순환 및 1~2순환 강의는 김동진 강사의 건강상의 사유로 아래와 같이 진행됨을 미리 알려드립니다.<br>
+                    1. 2024년 대비 민법&lt;김동진&gt; 예비순환 강의 ▶ 2023년 대비 1순환 강의를 예비순환용 복습자료와 함께 수강하는 방식으로 진행<br>
+                    2. 2024년 대비 민법&lt;김동진&gt; 1~2순환 강의 ▶ 2023년 대비 1~2순환 강의로 대체되어 진행 &lt;3순환부터 실강 진행 예정&gt;
+                </div>
+            </div>          
             <div class="check">
                     <label>
                     <input type="checkbox" name="ischk" value="Y">
@@ -94,9 +104,16 @@
         </div>
     </div> 
 
-    <div class="evtCtnsBox" data-aos="fade-up">
+    <div class="evtCtnsBox evt05m" data-aos="fade-up">
         <div class="check_area">
             <img src="https://static.willbes.net/public/images/promotion/2023/04/2942m_05_02.jpg" alt="1~5순환" >
+            <div class="wrap">
+                <div class="careful">
+                    ★ 2024년 대비 민법 예비순환 및 1~2순환 강의는 김동진 강사의 건강상의 사유로 아래와 같이 진행됨을 미리 알려드립니다.<br>
+                    1. 2024년 대비 민법&lt;김동진&gt; 예비순환 강의 ▶ 2023년 대비 1순환 강의를 예비순환용 복습자료와 함께 수강하는 방식으로 진행<br>
+                    2. 2024년 대비 민법&lt;김동진&gt; 1~2순환 강의 ▶ 2023년 대비 1~2순환 강의로 대체되어 진행 &lt;3순환부터 실강 진행 예정&gt;
+                </div>
+            </div>            
             <div class="check pb50">
                     <label>
                     <input type="checkbox" name="ischk" value="Y">

@@ -551,7 +551,7 @@
                                         <option value="정 현 교수" class="교육학">정 현 교수</option>
                                         <option value="송원영 교수" class="국어">송원영 교수</option>
                                         <option value="구동언 교수" class="국어">구동언 교수</option>
-                                        <option value="유석 교수" class="영어">유 석 교수</option>
+                                        <option value="유석 교수" class="영어">김유석 교수</option>
                                         <option value="박태영 교수" class="수학">박태영 교수</option>
                                         <option value="박혜향 교수" class="수학">박혜향 교수</option>
                                         <option value="강치욱 교수" class="생물">강치욱 교수</option>
@@ -562,6 +562,7 @@
                                         <option value="이웅재(사문/교육론) 교수" class="일반사회">이웅재(사문/교육론) 교수</option>
                                         <option value="정인홍(법) 교수" class="일반사회">정인홍(법) 교수</option>
                                         <option value="김현중(정치) 교수" class="일반사회">김현중(정치) 교수</option>
+                                        <option value="다이애나 교수" class="역사">김종권 교수</option>
                                         <option value="다이애나 교수" class="음악">다이애나 교수</option>
                                         <option value="최우영 교수" class="전기·전자·통신">최우영 교수</option>
                                         <option value="장영희 교수" class="중국어">장영희 교수</option>

@@ -165,7 +165,7 @@
                 </div>
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/2023/03/2938_01_02.jpg" />
-                    <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2932" target="_blank" title="모의고사 무료접수" style="position: absolute; left: 21.16%; top: 76.84%; width: 57.59%; height: 9.18%; z-index: 2;"></a>
+                    <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="모의고사 무료접수" style="position: absolute; left: 21.16%; top: 76.84%; width: 57.59%; height: 9.18%; z-index: 2;"></a>
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/2023/03/2938_01_03.jpg" />
             </div>

@@ -930,6 +930,13 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             $def_column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
             $main_query_order_by = '';
+
+            $from = "
+                FROM {$this->_table['lms_board']} as b
+                INNER JOIN lms_sys_board_master AS sbm ON b.BmIdx = sbm.BmIdx AND sbm.BmTypeCcd = '601002'
+            ";
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['b.IsStatus' => 'Y']);
+
         } else {
             $def_column = "
                 m.*,
@@ -952,13 +959,13 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
 
             $main_query_order_by = $this->_conn->makeOrderBy($add_order_by)->getMakeOrderBy();
-        }
 
-        $from = "
-            FROM {$this->_table['twoway_board_2']}
-            left join {$this->_table['lms_member']} as m on b.RegMemIdx = m.MemIdx
-            left join {$this->_table['product_subject']} as ps on b.SubjectIdx = ps.SubjectIdx and ps.IsStatus = 'Y' 
-        ";
+            $from = "
+                FROM {$this->_table['twoway_board_2']}
+                left join {$this->_table['lms_member']} as m on b.RegMemIdx = m.MemIdx
+                left join {$this->_table['product_subject']} as ps on b.SubjectIdx = ps.SubjectIdx and ps.IsStatus = 'Y' 
+            ";
+        }
 
         if (empty($cate_code) === false || empty($arr_condition['EQ']['d.OnOffLinkCateCode']) === false) {
             $from .= "

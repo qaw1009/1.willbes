@@ -257,11 +257,11 @@
         <div class="evtCtnsBox evt04" data-aos="fade-top" id="link01">
             <img src="https://static.willbes.net/public/images/promotion/2023/04/2943_04.jpg" alt=""/>   
             <div class="btn mb100 NSK-Black">
-                <a href="#none" class="mr10">
+                <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3126/prod-code/206744" target="_blank" class="mr10">
                     프리미엄 소방면접 신청 >
                     <p class="NSK">(종합적성검사 미포함)</p>
                 </a>
-                <a href="#none">
+                <a href="https://willbesedu.willbes.net/pass/offLecture/show/cate/3126/prod-code/206745" target="_blank">
                     프리미엄 소방면접 신청 >
                     <p class="NSK">(종합적성검사 포함)</p>
                 </a>

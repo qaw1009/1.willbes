@@ -98,7 +98,7 @@
 
 
         <div class="sky" id="QuickMenu">
-            <a href="#link01"><img src="https://static.willbes.net/public/images/promotion/2023/03/2927_sky01.png" alt="면접캠프 설명회" ></a>
+            {{--<a href="#link01"><img src="https://static.willbes.net/public/images/promotion/2023/03/2927_sky01.png" alt="면접캠프 설명회" ></a>--}}
             <a href="#link02"><img src="https://static.willbes.net/public/images/promotion/2023/03/2927_sky02.png" alt="최종점검 실전면접캠프" ></a>       
         </div>
 
@@ -106,7 +106,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2023/03/2927_top.jpg" alt="신승철 면접캠프" />
             <span><img src="https://static.willbes.net/public/images/promotion/2023/03/2927_top_img.png" alt="신승철 면접캠프" /></span>
 		</div>
-
+        {{--
         <div class="evtCtnsBox evt01" data-aos="fade-top" id="link01">
             <img src="https://static.willbes.net/public/images/promotion/2023/03/2927_01.jpg" alt=""/>   
             <div class="request" id="request">
@@ -198,7 +198,7 @@
                 <a href="#none" onclick="javascript:fn_submit();">면접캠프 설명회 신청하기 ></a>
             </div>         
         </div>         
-        
+        --}}
         <div class="evtCtnsBox evt02" data-aos="fade-top">
             <img src="https://static.willbes.net/public/images/promotion/2023/03/2927_02.jpg" alt="왜 신승철 면접인가?"/>    
             <object data="https://www.youtube.com/embed/KNUV0otKQ1c?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></object>

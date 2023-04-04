@@ -428,15 +428,24 @@
             {!! method_field('POST') !!}
             <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
             <input type="hidden" name="register_type" value="promotion"/>
-            <input type="hidden" id="register_name" name="register_name" value="{{(sess_data('is_login') === true) ? $arr_base['member_info']['MemName'] : ''}}">
-            <input type="hidden" id="register_tel" name="register_tel" value="{{(sess_data('is_login') === true && empty($arr_base['member_info']['Phone']) === false) ? $arr_base['member_info']['Phone'] : ''}}">
+            <input type="hidden" name="register_chk_el_idx" value="{{ $data['ElIdx'] }}"/> {{-- 하나수강만 선택 가능할시 --}}
+            <input type="hidden" id="register_name" name="register_name" value="{{sess_data('mem_name')}}">
+            <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
 
             <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_params[]" value="register_data3"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_params[]" value="register_data4"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_params[]" value="register_data5"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_params[]" value="register_data6"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_params[]" value="register_data7"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="희망 교수진"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="진행일자"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="시간"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="참석인원(예정)"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="진행형태"/> {{-- 체크 항목 전송 --}}
             <input type="hidden" name="target_param_names[]" value="출신학교/학부/학년"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="희망응시지역"/> {{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="응시횟수"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="target_param_names[]" value="학부/학과/단체명"/> {{-- 체크 항목 전송 --}}
 
             <div class="evtCtnsBox evt02" id="evt02">
                 {{-- 신청완료
@@ -492,7 +501,7 @@
                                 <td>{{sess_data('mem_name')}}</td>
                                 <th>연락처</th>
                                 <td>
-                                    {{(sess_data('is_login') === true && empty($arr_base['member_info']['Phone']) === false) ? $arr_base['member_info']['Phone'] : ''}}
+                                    {{sess_data('mem_phone')}}
                                 </td>
                             </tr>
                             <tr>
@@ -500,11 +509,11 @@
                                     학부/학년
                                 </th>
                                 <td colspan="3">
-                                    <input type="text" name="register_data1" maxlength="100">
+                                    <input type="text" name="register_data6" maxlength="100">
                                 </td>
                                 <th>학부/학과/<br />단체명</th>
                                 <td>
-                                    <input type="text" name="register_data2" maxlength="100">
+                                    <input type="text" name="register_data7" maxlength="100">
                                 </td>
                             </tr>
                         </tbody>
@@ -519,41 +528,55 @@
                             <tr class="elementary">
                                 <th>요청 과목</th>
                                 <td>
-                                    <select id="" name="" title="요청 과목 선택">
+                                    <select id="this_register_chk" style="display: none;">
                                         <option value="">요청 과목 선택</option>
-                                        <option value="유아">유아</option>
-                                        <option value="초등">초등</option>
-                                        <option value="교육학">교육학</option>
-                                        <option value="국어">국어</option>
-                                        <option value="영어">영어</option>
-                                        <option value="수학">수학</option>
-                                        <option value="생물">생물</option>
-                                        <option value="화학">화학</option>
-                                        <option value="도덕윤리">도덕윤리</option>
-                                        <option value="일반사회">일반사회</option>
-                                        <option value="역사">역사</option>
-                                        <option value="음악">음악</option>
-                                        <option value="전기전자통신">전기전자통신</option>
-                                        <option value="중국어">중국어</option>
+                                        @foreach($arr_base['register_list'] as $row)
+                                            <option value="{{ $row['Name'] }}">{{ $row['Name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                    <select id="register_chk" name="register_chk[]" title="요청 과목 선택">
+                                        <option value="">요청 과목 선택</option>
+                                        @foreach($arr_base['register_list'] as $row)
+                                            <option value="{{$row['ErIdx']}}" class="{{$row['Name']}}">{{$row['Name']}}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                                 <th>희망 교수진</th>                                    
                                 <td>
-                                    <select id="" name="" title="희망 교수진 선택">
+                                    <select id="register_data1" name="register_data1" title="희망 교수진 선택">
                                         <option value="">희망 교수진 선택</option>
-                                        <option value="민정선">민정선</option>
+                                        <option value="민정선 교수" class="유아">민정선 교수</option>
+                                        <option value="배재민 교수" class="초등">배재민 교수</option>
+                                        <option value="이경범 교수" class="교육학">이경범 교수</option>
+                                        <option value="정 현 교수" class="교육학">정 현 교수</option>
+                                        <option value="송원영 교수" class="국어">송원영 교수</option>
+                                        <option value="구동언 교수" class="국어">구동언 교수</option>
+                                        <option value="유석 교수" class="영어">유 석 교수</option>
+                                        <option value="박태영 교수" class="수학">박태영 교수</option>
+                                        <option value="박혜향 교수" class="수학">박혜향 교수</option>
+                                        <option value="강치욱 교수" class="생물">강치욱 교수</option>
+                                        <option value="양혜정 교수" class="생물">양혜정 교수 </option>
+                                        <option value="강 철 교수" class="화학">강 철 교수</option>
+                                        <option value="김병찬 교수" class="도덕윤리">김병찬 교수</option>
+                                        <option value="허역(경제) 교수" class="일반사회">허역(경제) 교수</option>
+                                        <option value="이웅재(사문/교육론) 교수" class="일반사회">이웅재(사문/교육론) 교수</option>
+                                        <option value="정인홍(법) 교수" class="일반사회">정인홍(법) 교수</option>
+                                        <option value="김현중(정치) 교수" class="일반사회">김현중(정치) 교수</option>
+                                        <option value="다이애나 교수" class="음악">다이애나 교수</option>
+                                        <option value="최우영 교수" class="전기·전자·통신">최우영 교수</option>
+                                        <option value="장영희 교수" class="중국어">장영희 교수</option>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
-                                <th>진행일자</th>                                    
+                                <th>진행일자</th>
                                 <td>
-                                    <input type="text" name="" maxlength="100" placeholder="진행 날짜 선택">
+                                    <input type="text" name="register_data2" placeholder="진행 날짜 선택" class="iptDate datepicker" maxlength="10" autocomplete="off">
                                     <div>* 신청일 기준으로 2주후부터 신청가능</div>
                                 </td>
                                 <th>시 간</th>                                    
                                 <td>
-                                    <select id="" name="" title="시간 선택">
+                                    <select name="register_data3" title="시간 선택">
                                         <option value="">요청 시간 선택</option>
                                         <option value="14:00~">14:00 ~</option>
                                         <option value="15:00~">15:00 ~</option>
@@ -566,7 +589,7 @@
                             <tr>
                                 <th>참석인원(예정)</th>                                    
                                 <td>
-                                    <select id="" name="" title="참석 인원">
+                                    <select name="register_data4" title="참석 인원">
                                         <option value="">참석인원(예정)</option>
                                         <option value="10명 ~ 15명">10명 ~ 15명</option>
                                         <option value="16명 ~ 30명">16명 ~ 30명</option>
@@ -577,8 +600,8 @@
                                 </td>
                                 <th>진행형태</th>                                    
                                 <td>
-                                    <select id="" name="" title="시간 선택">
-                                        <option value="">요청 시간 선택</option>
+                                    <select name="register_data5" title="진행형태">
+                                        <option value="">진행형태 선택</option>
                                         <option value="현장 설명회/특강">현장 설명회/특강</option>
                                         <option value="실시간 Zoom">실시간 Zoom</option>
                                     </select>
@@ -589,7 +612,7 @@
                                 <td colspan="3">
                                     <input class="btn-login-check" type="file" id="attach_file" name="attach_file" onchange="chkUploadFile(this)" style="width:40%; margin-right:10px"/>
                                     <a onclick="del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" style="vertical-align:middle !important" alt="삭제"></a>
-                                    <div>* 10MB 이하의 문서 파일(hwp, doc, txt)</div>
+                                    <div>* 5MB 이하의 문서 파일(hwp, doc, txt)</div>
                                 </td>
                             </tr>
                         </tbody>
@@ -662,36 +685,21 @@
     </div>
     <!-- End Container -->
 
-
-
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
-    <script>
+    <script type="text/javascript">
+        var $regi_form_register = $('#regi_form_register');
         $(document).ready(function() {
-            $('#regi_form_register').on("click", "input, select", function () {
-                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+            $regi_form_register.on('change', 'select[name="register_chk[]"]', function() {
+                var selected = $("select[name='register_chk[]'] option:selected").attr("class");  //selected class명 가져오기
+                $("#this_register_chk").val(selected).prop("selected", true).trigger('change');   //선택된 class명으로 selected 하기
+            });
 
-                var this_group = $(this).data("product-group");
-                var this_limit = $(this).data("product-limit");
+            $regi_form_register.find('select[name="register_data1"]').chained("#this_register_chk");  //hide selectbox에 매핑되는 select box 자동 변경
 
-                if (this_limit < 1) {
-                    alert('해당 과목의 설명회 일정은 추후 공지됩니다.');
-                    return false;
-                }
-
-                if (this_group != 3) {
-                    $(".sub-product").prop("checked", false);
-                }
-
-                if (this_group == 3) {
-                    if ($(".main-product").is(":checked") === false) {
-                        alert('교육학을 선택한 후 신청 가능합니다');
-                        return false;
-                    }
-
-                    if ($(".sub-product:checked").length >= 3) {
-                        alert('전공과목은 2개까지 선택할 수 있습니다.');
-                        return false;
-                    }
+            $regi_form_register.on('change', 'input[name="register_data2"]', function() {
+                if (date_check($regi_form_register.find('input[name="register_data2"]').val()) == false) {
+                    alert('신청일 기준으로 2주후부터 신청가능합니다.');
+                    $regi_form_register.find('input[name="register_data2"]').val('');
                 }
             });
         });
@@ -704,32 +712,49 @@
                 return;
             @endif
 
-            var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
-
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
                 alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
                 return;
             }
 
-            if ($regi_form_register.find('input[name="register_data1"]').val() == '') {
+            if ($regi_form_register.find('input[name="register_data6"]').val() == '') {
                 alert('출식학교/학부/학년을 입력해 주세요.');
                 return;
             }
 
-            if ($regi_form_register.find('select[name="register_data2"]').val() == '') {
-                alert('희망응시지역을 선택해 주세요.');
+            if ($regi_form_register.find('input[name="register_data7"]').val() == '') {
+                alert('학부/학과/단체명을 입력해 주세요.');
+                return;
+            }
+
+            if ($regi_form_register.find('select[name="register_chk[]"]').val() == '') {
+                alert('요청 과목을 선택해 주세요.');
+                return;
+            }
+
+            if ($regi_form_register.find('select[name="register_data1"]').val() == '') {
+                alert('희망 교수진을 선택해 주세요.');
+                return;
+            }
+
+            if ($regi_form_register.find('input[name="register_data2"]').val() == '') {
+                alert('진행일자를 선택해 주세요.');
                 return;
             }
 
             if ($regi_form_register.find('select[name="register_data3"]').val() == '') {
-                alert('응시횟수를 선택해 주세요.');
+                alert('시간을 선택해 주세요.');
                 return;
             }
 
-            var chk_length = $regi_form_register.find('input[name="register_chk[]"]:checked').length;
-            if (chk_length < 1) {
-                alert('과목을 선택해 주세요.');
+            if ($regi_form_register.find('select[name="register_data4"]').val() == '') {
+                alert('참석인원(예정)을 선택해 주세요.');
+                return;
+            }
+
+            if ($regi_form_register.find('select[name="register_data5"]').val() == '') {
+                alert('진행형태를 선택해 주세요.');
                 return;
             }
 
@@ -742,18 +767,29 @@
             }, showValidateError, null, false, 'alert');
         }
 
-        function fn_register_delete()
-        {
-            var $delete_register = $('#delete_register');
-            var _url = '{!! front_url('/event/deleteAllRegister') !!}';
+        function chkUploadFile(elem){
+            if($(elem).val()){
+                var filename =  $(elem).prop("files")[0].name;
+                var ext = filename.split('.').pop().toLowerCase();
 
-            if (!confirm('취소 하시겠습니까?')) { return; }
-            ajaxSubmit($delete_register, _url, function(ret) {
-                if(ret.ret_cd) {
-                    alert(ret.ret_msg);
-                    location.reload();
+                if($.inArray(ext, ['hwp','doc','txt']) === -1) {
+                    $(elem).val("");
+                    alert('hwp,doc,txt 파일만 업로드 가능합니다.');
                 }
-            }, showValidateError, null, false, 'alert');
+            }
+        }
+
+        function del_file(){
+            $("#attach_file").val("");
+        }
+
+        function date_check(get_date) {
+            var cutline = '{{date_compute(date('Ymd'), '14 day', 'Ymd')}}';
+            var select_date = get_date.replace(/-/g,"");
+            if (select_date <= cutline) {
+                return false;
+            }
+            return true;
         }
 
         /*유튜브 자바스크립트 조작(재생, 일시정지, 종료 후 처리)*/

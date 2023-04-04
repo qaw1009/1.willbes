@@ -38,10 +38,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ site_url('/landing/show/lcode/1040/cate/3134') }}">
+                    <a href="{{ site_url('/promotion/index/cate/3137/code/2820') }}">
                         <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick05.png" title="재학생러닝메이트" class="off">
                         <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick05_on.png" title="재학생러닝메이트" class="on">
-                        <p>재학생<br>러닝메이트</p>
+                        <p>러닝메이트<br>신청</p>
                     </a>
                 </li>
                 {{--<li><a href="#">TOP ▲</a></li>--}}

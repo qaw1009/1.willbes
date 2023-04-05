@@ -95,7 +95,7 @@
             <div class="check">
                     <label>
                     <input type="checkbox" name="ischk" value="Y">
-                    김동진 교수 강의 일정 변경 및 강의 안내를 모두 확인하였고, 이에 동의합니다.
+                    하단 상품안내 내용을 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <div class="apply_btn">
                     <a href="javascript:go_PassLecture('206673');">수강 신청하기 ></a>                      

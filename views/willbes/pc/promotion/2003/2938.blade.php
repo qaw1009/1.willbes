@@ -115,13 +115,14 @@
     </form>
 
     <div class="evtContent NSK" id="evtContainer">
-        {{--
+        @if(time() < strtotime('202304091300'))
         <div class="sky" id="QuickMenu">
-            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2020" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2022/03/2589_sky.png" alt="혜택받기" />
+            <a href="https://www.youtube.com/@@willbesgong" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2023/04/2938_sky.png" alt="혜택받기" />
             </a>
         </div>
-        --}}
+        @endif
+
 
         <div class="evtCtnsBox evtTop">
             <span data-aos="fade-up"><img src="https://static.willbes.net/public/images/promotion/2023/03/2938_top_img.png" title="국가직 9급 풀케어 서비스" /></span>

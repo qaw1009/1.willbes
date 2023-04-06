@@ -9,21 +9,21 @@
     .evtCtnsBox.wrap {position:relative}
     /*.evtCtnsBox.wrap a {border:1px solid #000}*/
 
-    .evt01 {line-height:1.4; width:1120px; margin:0 auto 40px;}
+    .evt01 {line-height:1.4; margin:0 auto 40px;}
     .evt01 .title {font-size:3vh; text-align:left; margin-bottom:1vh}
     .evt01 .title span {font-size:2vh; color:#ad0e11; vertical-align: middle; }
     .evt01 table {font-size:1.6vh; border:1px solid #d8d4d1; border-top-color:#000}
     .evt01 tr {border-bottom:1px solid #d8d4d1;}
     .evt01 th,
-    .evt01 td {padding:1.5vh; border-right:1px solid #d8d4d1;}
+    .evt01 td {padding:1vh 0.5vh; border-right:1px solid #d8d4d1;}
     .evt01 th {font-weight:bold;}
     .evt01 thead th {background:#f3e9e9}
     .evt01 tbody th {background:#f9f9f9}
     .evt01 td:nth-child(3) {text-align:center}
-    .evt01 td p {font-size:1.8vh; font-weight:bold; color:#ad0e11}
+    .evt01 td p {font-size:1.6vh; font-weight:bold; color:#ad0e11}
     .evt01 .info {margin-top:2vh; color:#ad0e11; font-size:1.6vh; text-align:left}
     .evt01 .shinyBtn {width:90%; margin:5vh auto 0; position: relative; overflow: hidden;}
-    .evt01 .shinyBtn a {font-size:3vh; border-radius:5vh; }
+    .evt01 .shinyBtn a {font-size:2.4vh; }
 
     .evt02 {padding:10vh 0; margin-bottom:40px;}
     .evt02 .tab {display:flex; justify-content: space-between;}
@@ -32,11 +32,11 @@
     .evt02 .tab a.active {background:#ad0e11; color:#fff;}
     .evt02 .shinyBtn a {position: absolute; left: 38.23%; top: 75.95%; width: 51.48%; z-index: 2;}
 
-    .evt03 .wrap {font-size:4vh; line-height:1.4}
-    .evt03 .wrap p {font-size:2.2vh; margin-bottom:5vh; color:#ad0e11}
+    .evt03 .wrap {font-size:3vh; line-height:1.4}
+    .evt03 .wrap p {font-size:2vh; margin-bottom:5vh; color:#ad0e11}
 
-    .shinyBtn {margin:0 5%;}
-    .shinyBtn a {display:block; padding:1.8vh 0; font-size:2.6vh; color:#fff; background:#db4346;  border-radius:0.6vh; overflow:hidden; position: relative; margin-bottom:1vh}
+    .shinyBtn {margin:0 5px;}
+    .shinyBtn a {display:block; padding:1.8vh 0; font-size:2.6vh; color:#fff; background:#db4346;  border-radius:5px; overflow:hidden; position: relative; margin-bottom:1vh}
     .shinyBtn a:hover {color:#fd9d1e; background:#000; }
     .shinyBtn a:after{
         content:'';
@@ -57,7 +57,7 @@
         100% { transform: scale(60) rotate(45deg); opacity: 0; }
     } 
     .evt01 th .shinyBtn {margin:0 auto}
-    .evt01 th .shinyBtn a {padding:0.5vh 0; font-size:1.4vh; font-weight:normal; margin:0 auto }
+    .evt01 th .shinyBtn a {padding:0.5vh; font-size:1.4vh; font-weight:normal; margin:0 auto }
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   

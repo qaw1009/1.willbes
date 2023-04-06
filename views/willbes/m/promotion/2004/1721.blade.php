@@ -91,8 +91,8 @@
 
     <div class="evtCtnsBox" >
         <div class="wrap">
-            <img src="https://static.willbes.net/public/images/promotion/2022/10/1721m_05.jpg" alt="">
-            <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="공무원" style="position: absolute;left: 24.29%;top: 77.77%;width: 52.53%;height: 7.33%;z-index: 2;"></a>    
+            <img src="https://static.willbes.net/public/images/promotion/2023/04/1721m_05.jpg" alt="4월 신규강좌">
+            <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="수강신청" style="position: absolute;left: 24.29%;top: 74.67%;width: 52.53%;height: 7.33%;z-index: 2;"></a>    
         </div>
     </div>
 

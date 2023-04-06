@@ -316,7 +316,7 @@
                     </div>
                     <div class="list" id="lsit06">
                         <img src="https://static.willbes.net/public/images/promotion/2023/03/2931_01_b08.png" alt="영어 김유석"/>
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51313?cate_code=3137&subject_idx=1983" target="_blank"></a>
+                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51081?cate_code=3137&subject_idx=1984" target="_blank"></a>
                         <div class="youtube" data-num="6">
                             <iframe src="https://www.youtube.com/embed/mnTVcvRsZvw?rel=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no"></iframe>
                         </div>

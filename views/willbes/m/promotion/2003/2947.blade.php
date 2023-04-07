@@ -23,9 +23,11 @@
         }
         .evt02{background-color: #1c478b;}
         .evt02 .shinyBtn{position: absolute; left: 50%; transform: translateX(-50%); top: 75.95%; z-index: 2;}
-        .evt02 .shinyBtn a {width: 87vw;font-size: 3.6vw;padding: 4% 0;background-color:#ffff00;color:#000;font-weight: bold;letter-spacing: -0.02em;}
+        .evt02 .shinyBtn a {width: 87vw;font-size: 3.6vw;padding: 4% 0;background-color:#ffff00;color:#000;font-weight: bold;letter-spacing: -0.02em;
+            max-width: 700px;
+        }
 
-        .evt03 { background-color: #eff3fa; padding: 15% 0;}
+        .evt03 { background-color: #eff3fa; padding: 13% 0;}
         .evt03 .tab {display:flex; justify-content: space-between; max-width:94%; width: 100%; flex-wrap: wrap; margin: 0 auto; padding-bottom: 7%;}
         .evt03 .tab a {display:block; width:calc(50% - 1.5px); margin-bottom: 3px; text-align:center; border:3px solid #061a3b; font-size:5vw; background:#061a3b; color:#fff;
              padding:2% 0; 
@@ -74,6 +76,7 @@
         .b-close img{width: 90%;}
         .Pstyle .content {height:auto;width: 94%;margin: 0 auto;}
         .Pstyle .content img{ width: 100%; max-width: 720px; }
+
     </style>
 
     <div class="evtContent NSK" id="evtContainer">

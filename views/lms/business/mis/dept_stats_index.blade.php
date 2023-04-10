@@ -43,9 +43,9 @@
     </form>
     <div class="x_panel mt-10">
         <div class="x_content">
-            <div class="row mt-10 mb-30 ml-0 mr-0">
+            <div class="row mb-30 ml-0 mr-0">
                 <div class="col-md-12 bg-white border-default">
-                    <div id="wrap_stats_chart" style="position: relative; width: 100%; height: 430px;">
+                    <div id="wrap_stats_chart" style="position: relative; width: 100%; height: {{ $dept_code == 'all' ? '440' : '540' }}px;">
                         <canvas id="stats_chart"></canvas>
                     </div>
                 </div>

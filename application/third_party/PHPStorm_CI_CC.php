@@ -240,6 +240,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property DbBackupLogModel $dbBackupLogModel                             Db Backup Log Model Class
  * @property PgKeyModel $pgKeyModel                                         Pg Key Model Class
  * @property PgDataModel $pgDataModel                                         Pg Data Model Class
+ * @property MisStatsOrderModel $misStatsOrderModel                         Mis Order Stats Model Class
  ***************** MockTest ****************************************************************************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
  * @property BaseCodeModel $baseCodeModel                                        MockTest BaseCod Model Class

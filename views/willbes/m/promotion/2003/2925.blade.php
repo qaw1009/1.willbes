@@ -14,7 +14,7 @@
 <div id="Container" class="Container NSK c_both">
 
     <div class="evtCtnsBox wrap" data-aos="fade-down">
-        <img src="https://static.willbes.net/public/images/promotion/2023/03/2925m_top.jpg" alt="10일 체험팩" >    
+        <img src="https://static.willbes.net/public/images/promotion/2023/04/2925m_top.jpg" alt="10일 체험팩" >    
     </div>  
 
     @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

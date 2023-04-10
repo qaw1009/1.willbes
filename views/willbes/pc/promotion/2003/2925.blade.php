@@ -17,6 +17,18 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;padding:100px 0;}
         /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
+        .evt_top span {position: absolute; left:50%; margin-left:200px; top: 610px; -webkit-animation:upDown 2s infinite; letter-spacing:-1px; text-align:center; z-index: 2;}
+        @@keyframes upDown{
+            from{color:#fff}
+            50%{color:#ffe87d; scale:1.1}
+            to{color:#fff}
+        }
+        @@-webkit-keyframes upDown{
+            from{color:#fff}
+            50%{color:#ffe87d; scale:1.1}
+            to{color:#fff}
+        } 
+
         /************************************************************/
 
     </style>
@@ -25,7 +37,8 @@
         
         <div class="evtCtnsBox evt_top" data-aos="fade-down">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2023/03/2925_top.png" alt="10일 체험팩"/>              
+                <img src="https://static.willbes.net/public/images/promotion/2023/04/2925_top.png" alt="10일 체험팩"/>
+                <span><img src="https://static.willbes.net/public/images/promotion/2023/04/2925_top_delay.png" alt="" /></span>      
             </div>
         </div>
 

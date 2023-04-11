@@ -8,10 +8,33 @@
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both}
     .evtCtnsBox img {max-width:100%;}
     .evtCtnsBox .wrap { margin:0 auto; position:relative}
-    /*.evtCtnsBox .wrap a {border:1px solid #000}*/
+    .evtCtnsBox .wrap a {border:1px solid #000}
+
+    .evt01 {background:#59d448; padding-bottom:10vh}
+    .evt01 .shinyBtn {width:90%; margin:auto;}
+    .evt01 .shinyBtn a {background:#292733; color:#fff; border-radius:10px; font-size:2.6vh; display:block; padding:2vh; overflow: hidden; position:relative;}
+    .evt01 .shinyBtn a:hover {background:#000;}
+    .evt01 .shinyBtn a:after{
+        content:'';
+        position: absolute;
+        top:0;
+        left:0;
+        background-color: #fff;
+        width: 30px;
+        height: 100%;
+        z-index: 1;
+        transform: skewY(129deg) skewX(-60deg);
+    }
+    .evt01 .shinyBtn a:after{animation:shinyBtn 2s ease-in-out infinite;}
+    @@keyframes shinyBtn {
+        0% {transform: scale(0) rotate(45deg); opacity: 0;}
+        80% {transform: scale(0) rotate(45deg); opacity: 0.2;}
+        81% {transform: scale(4) rotate(45deg); opacity: 0.5;}
+        100% {transform: scale(60) rotate(45deg); opacity: 0;}
+    }
 
     .evt03 {background:#212121; padding-bottom:10vh}
-    .tab {display:flex; justify-content: space-between; margin:0 auto 5vh}
+    .tab {display:flex; justify-content: space-between; margin:0 2% 5vh}
     .tab a {display:block; width:100%; text-align:center; font-size:2.6vh; font-weight:bold; background:#4b4747; color:#212121; padding:2vh;  line-height:1.4}
     .tab a p {font-size:2vh}
     .tab a:hover,
@@ -51,8 +74,11 @@
         <img src="https://static.willbes.net/public/images/promotion/2023/04/2948m_top.jpg" alt="김동진 법원팀" >
     </div> 
 
-    <div class="evtCtnsBox" data-aos="fade-up">
-        <img src="https://static.willbes.net/public/images/promotion/2023/04/2948m_01.jpg" alt="합격 공식" >         
+    <div class="evtCtnsBox evt01" data-aos="fade-up">
+        <img src="https://static.willbes.net/public/images/promotion/2023/04/2948m_01.jpg" alt="합격 공식" > 
+        <div class="shinyBtn NSK-Black">
+            <a href="http://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank">더 많은 합격수기 확인하기 ></a>
+        </div>        
     </div> 
 
     <div class="evtCtnsBox" data-aos="fade-up">

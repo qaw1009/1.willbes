@@ -8,7 +8,7 @@
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; line-height:1.5; clear:both}
     .evtCtnsBox img {max-width:100%;}
     .evtCtnsBox .wrap { margin:0 auto; position:relative}
-    .evtCtnsBox .wrap a {border:1px solid #000}
+    /*.evtCtnsBox .wrap a {border:1px solid #000}*/
 
     .evt01 {background:#59d448; padding-bottom:10vh}
     .evt01 .shinyBtn {width:90%; margin:auto;}

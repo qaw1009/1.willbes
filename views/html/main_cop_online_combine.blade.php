@@ -192,7 +192,19 @@
                                         <p>12월 16일 총 3강 업로드</p>
                                     </div>
                                 </a>
-                            </div>   
+                            </div> 
+                            <div class="lecReview">
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/51135/lec_list_51135.png">
+                                    </div>
+                                    <div class="lecinfo">
+                                        <p>형법 신광은</p>
+                                        <p>2021년 1차대비 신광은 형법 기본이론(20년 11월) 2021년 1차대비 신광은 1111)</p>
+                                        <p>12월 16일 총 4강 업로드</p>
+                                    </div>
+                                </a>
+                            </div>  
                         </div>
 
                         <div>                         
@@ -219,7 +231,19 @@
                                         <p>12월 16일 총 3강 업로드</p>
                                     </div>
                                 </a>
-                            </div>   
+                            </div> 
+                            <div class="lecReview">
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/51146/lec_list_51146.png">
+                                    </div>
+                                    <div class="lecinfo">
+                                        <p>형법 김원욱</p>
+                                        <p>2021년 1차대비 김원욱 형법 기본이론(20년 11월) 김원욱 형법 기본이론(20년 11월)</p>
+                                        <p>12월 16일 총 4강 업로드</p>
+                                    </div>
+                                </a>
+                            </div>  
                         </div>  
 
                         <div>                      
@@ -232,6 +256,18 @@
                                         <p>영어 김현정</p>
                                         <p>2021년 1차대비 김현정 영어 형법 기본이론(20년 11,12월)</p>
                                         <p>12월 16일 총 3강 업로드</p>
+                                    </div>
+                                </a>
+                            </div>  
+                            <div class="lecReview">
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/51135/lec_list_51135.png">
+                                    </div>
+                                    <div class="lecinfo">
+                                        <p>형법 신광은</p>
+                                        <p>2021년 1차대비 신광은 형법 기본이론(20년 11월)</p>
+                                        <p>12월 16일 총 4강 업로드</p>
                                     </div>
                                 </a>
                             </div>  
@@ -274,33 +310,18 @@
                                     </div>
                                 </a>
                             </div>  
-                        </div>
-
-                        <div>                                             
                             <div class="lecReview">
                                 <a href="#none">
                                     <div class="imgBox">
-                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/51146/lec_list_51146.png">
+                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/51135/lec_list_51135.png">
                                     </div>
                                     <div class="lecinfo">
-                                        <p>형법 김원욱</p>
-                                        <p>2021년 1차대비 김원욱 형법 기본이론(20년 11월)</p>
+                                        <p>형법 신광은</p>
+                                        <p>2021년 1차대비 신광은 형법 기본이론(20년 11월)</p>
                                         <p>12월 16일 총 4강 업로드</p>
                                     </div>
                                 </a>
-                            </div>
-                            <div class="lecReview">
-                                <a href="#none">
-                                    <div class="imgBox">
-                                        <img src="https://police.willbes.net/public/uploads/willbes/professor/50748/lec_list_50748.png">
-                                    </div>
-                                    <div class="lecinfo">
-                                        <p>영어 김현정</p>
-                                        <p>2021년 1차대비 김현정 영어 형법 기본이론(20년 11,12월)</p>
-                                        <p>12월 16일 총 3강 업로드</p>
-                                    </div>
-                                </a>
-                            </div>                          
+                            </div> 
                         </div>
                     </div>
                 </div>

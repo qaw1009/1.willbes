@@ -60,7 +60,7 @@
                     <div class="vSlider">
                         <div class="sliderNumV">
                             @foreach($data['lecture_update_info'] as $row)
-                                @if($loop->index % 2 == 1)
+                                @if($loop->index % 3 == 1)
                                     <div>
                                         @endif
                                         <div class="lecReview">
@@ -75,7 +75,7 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        @if($loop->index % 2 == 0)
+                                        @if($loop->index % 3 == 0)
                                     </div>
                                 @endif
                             @endforeach

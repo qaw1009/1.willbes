@@ -135,55 +135,55 @@
 
      <!-- 비디오 영상팝업 리스트 -->
 
-    <div id="vid1" style="display: none;">
+    <div id="vid1" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox" data-num="1">
             <iframe src="https://www.youtube.com/embed/B11PSWKoBsY?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid2" style="display: none;">
+    <div id="vid2"  class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox" data-num="2">
             <iframe src="https://www.youtube.com/embed/8WuVy15dGw0?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid3" style="display: none;">
+    <div id="vid3" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox" data-num="3">
             <iframe src="https://www.youtube.com/embed/Z7PDrEhrY2o?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid4" style="display: none;">
+    <div id="vid4" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox" data-num="4">
             <iframe src="https://www.youtube.com/embed/HEVczcIriqw?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid5" style="display: none;">
+    <div id="vid5" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox" data-num="5">
             <iframe src="https://www.youtube.com/embed/W3wcvq26MuM?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid6" style="display: none;">
+    <div id="vid6" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox" data-num="6">
             <iframe src="https://www.youtube.com/embed/t6sfD77mE8Y?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid7" style="display: none;">
+    <div id="vid7" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox" data-num="7">
             <iframe src="https://www.youtube.com/embed/kiOvGUUzPhM?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid8" style="display: none;">
+    <div id="vid8" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox" data-num="8">
             <iframe src="https://www.youtube.com/embed/dTJ3jiCpx8Y?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid9" style="display: none;">
+    <div id="vid9" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox" data-num="9">
             <iframe src="https://www.youtube.com/embed/rkkN4KuT4cQ?rel=0" frameborder="0" allowfullscreen=""></iframe>
@@ -203,12 +203,22 @@
 
         // 비디오팝업
         function videoPop(id) { 
+            
             $(id).bPopup({
                 positionStyle:'fixed',            
                 onClose: function(){
-                    $('video').each(function(){
-                        $(this).get(0).pause();
-                    });
+                    $(".yt_f iframe").attr('src', '');
+                },
+                onOpen: function(){
+                    $("#vid1 iframe").attr('src', 'https://www.youtube.com/embed/B11PSWKoBsY?rel=0');
+                    $("#vid2 iframe").attr('src', 'https://www.youtube.com/embed/8WuVy15dGw0?rel=0');
+                    $("#vid3 iframe").attr('src', 'https://www.youtube.com/embed/Z7PDrEhrY2o?rel=0');
+                    $("#vid4 iframe").attr('src', 'https://www.youtube.com/embed/HEVczcIriqw?rel=0');
+                    $("#vid5 iframe").attr('src', 'https://www.youtube.com/embed/W3wcvq26MuM?rel=0');
+                    $("#vid6 iframe").attr('src', 'https://www.youtube.com/embed/t6sfD77mE8Y?rel=0');
+                    $("#vid7 iframe").attr('src', 'https://www.youtube.com/embed/kiOvGUUzPhM?rel=0');
+                    $("#vid8 iframe").attr('src', 'https://www.youtube.com/embed/dTJ3jiCpx8Y?rel=0');
+                    $("#vid9 iframe").attr('src', 'https://www.youtube.com/embed/rkkN4KuT4cQ?rel=0');
                 }
             });
         }    

@@ -213,15 +213,17 @@
 }
 
 .cop .uploadLec {
-	box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
-	border-radius: 10px;
-	padding: 20px;
+	/*box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+		border-radius: 10px;*/
+	padding: 40px 20px;
+	border-top: 1px solid #373737;
+	border-bottom: 1px solid #cdcdcd
 }
 
 .cop .uploadLec .vSlider {
 	position: relative;
 	width: 100%;
-	height: 74px;
+	height: 82px;
 }
 
 .cop .uploadLec .vSlider:after {
@@ -231,7 +233,7 @@
 }
 
 .cop .uploadLec .vSlider .sliderNumV {
-	height: 74px;
+	height: 82px;
 	overflow: hidden;
 }
 
@@ -244,9 +246,10 @@
 .cop .uploadLec .vSlider .sliderNumV .lecReview {
 	float: left;
 	display: inline;
-	width: 33.3333%;
-	height: 74px;
+	width: calc(33.3333% - 20px);
+	height: 82px;
 	line-height: 1.3;
+	margin-right: 20px
 }
 
 .cop .uploadLec .vSlider .sliderNumV .lecReview a {
@@ -262,9 +265,9 @@
 .cop .uploadLec .imgBox {
 	position: relative;
 	float: left;
-	width: 74px;
-	height: 74px;
-	border-radius: 6px;
+	width: 82px;
+	height: 82px;
+	border-radius: 41px;
 	overflow: hidden;
 }
 
@@ -287,36 +290,17 @@
 	transform: translate(-50%, -50%) scale(1.1);
 }
 
-.cop .uploadLec .vSlider .sliderNumV>div:nth-child(1n) .lecReview:nth-child(1n) .imgBox {
-	background: #34b696;
+.cop .uploadLec .vSlider .sliderNumV .imgBox {
+	background: #e1e1e1;
 }
 
-.cop .uploadLec .vSlider .sliderNumV>div:nth-child(1n) .lecReview:nth-child(2n) .imgBox {
-	background: #e583b9;
-}
-
-.cop .uploadLec .vSlider .sliderNumV>div:nth-child(2n) .lecReview:nth-child(1n) .imgBox {
-	background: #3490b6;
-}
-
-.cop .uploadLec .vSlider .sliderNumV>div:nth-child(2n) .lecReview:nth-child(2n) .imgBox {
-	background: #b1b634;
-}
-
-.cop .uploadLec .vSlider .sliderNumV>div:nth-child(3n) .lecReview:nth-child(1n) .imgBox {
-	background: #b67734;
-}
-
-.cop .uploadLec .vSlider .sliderNumV>div:nth-child(3n) .lecReview:nth-child(2n) .imgBox {
-	background: #d3b9ef;
-}
 
 .cop .uploadLec .lecinfo {
 	float: left;
-	margin-left: 10px;
-	width: calc(100% - 100px);
+	margin-left: 20px;
+	width: calc(100% - 110px);
 	position: relative;
-	height: 74px
+	height: 82px;
 }
 
 .cop .uploadLec .lecinfo p {
@@ -326,17 +310,16 @@
 }
 
 .cop .uploadLec .lecinfo p:nth-child(2) {
-	color: #363636;
-	font-size: 16px;
-	font-weight: 600;
+	color: #4d4d4d;
+	font-size: 14px;
 	margin-bottom: 3px;
-	height: 44px;
+	height: 40px;
 	overflow: hidden;
 }
 
 .cop .uploadLec .lecinfo p:nth-child(3) {
-	color: #0c5dc0;
-	font-size: 12px;
+	color: #0089fa;
+	font-size: 13px;
 	position: absolute;
 	bottom: -3px
 }
@@ -358,7 +341,7 @@
 	float: none;
 	width: 100%;
 	right: 8px;
-	bottom: -50px;
+	bottom: -47px;
 	text-align: center;
 }
 

@@ -64,18 +64,18 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
-        {{--
+       
         <div class="sky" id="QuickMenu">
-            <a href="#tip">
-                <img src="https://static.willbes.net/public/images/promotion/2021/12/2454_sky.png" alt="경찰학 학습팁" >
+            <a href="#apply_go">
+                <img src="https://static.willbes.net/public/images/promotion/2023/04/2949_sky.png" alt="119 pass" >
             </a>          
         </div>
-        --}}
+        
         <div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2023/04/2949_top.png"  alt="윌비스 소방 119패스" data-aos="flip-down" class="main_img"/>
         </div>
 
-        <div class="evtCtnsBox evt_01" data-aos="fade-up">
+        <div class="evtCtnsBox evt_01" data-aos="fade-up" id="apply_go">
             <img src="https://static.willbes.net/public/images/promotion/2023/04/2949_01.jpg" title="수강신청">
             <div class="apply_area">
                 <div class="apply">
@@ -137,55 +137,55 @@
 
     <div id="vid1" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
-        <div class="videoBox" data-num="1">
+        <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/B11PSWKoBsY?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
     <div id="vid2"  class="yt_f" style="display: none;">
         <span class="b-close">X</span>
-        <div class="videoBox" data-num="2">
+        <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/8WuVy15dGw0?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
     <div id="vid3" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
-        <div class="videoBox" data-num="3">
+        <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/Z7PDrEhrY2o?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
     <div id="vid4" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
-        <div class="videoBox" data-num="4">
+        <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/HEVczcIriqw?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
     <div id="vid5" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
-        <div class="videoBox" data-num="5">
+        <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/W3wcvq26MuM?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
     <div id="vid6" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
-        <div class="videoBox" data-num="6">
+        <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/t6sfD77mE8Y?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
     <div id="vid7" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
-        <div class="videoBox" data-num="7">
+        <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/kiOvGUUzPhM?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
     <div id="vid8" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
-        <div class="videoBox" data-num="8">
+        <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/dTJ3jiCpx8Y?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
     <div id="vid9" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
-        <div class="videoBox" data-num="9">
+        <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/rkkN4KuT4cQ?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
@@ -221,7 +221,7 @@
                     $("#vid9 iframe").attr('src', 'https://www.youtube.com/embed/rkkN4KuT4cQ?rel=0');
                 }
             });
-        }    
+        }
         
         </script>
         

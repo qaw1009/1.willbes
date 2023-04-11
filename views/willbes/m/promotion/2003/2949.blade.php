@@ -59,10 +59,10 @@
     <div class="evtCtnsBox evt_01" data-aos="fade-up">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2023/04/2949m_01.jpg" title="수강신청">
-            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3023/pack/648001/prod-code/207036" target="_blank" title="24년 공채 0원 119 PASS" style="position: absolute;left: 13.73%;top: 19.16%;width: 35.71%;height: 26.31%;z-index: 2;"></a>
-            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3023/pack/648001/prod-code/207037" target="_blank" title="4년 공채 119 PASS" style="position: absolute;left: 51.03%;top: 19.16%;width: 35.71%;height: 26.31%;z-index: 2;"></a>
-            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3023/pack/648001/prod-code/207038" target="_blank" title="24년 구조/학과 경채 0원 PASS" style="position: absolute;left: 13.73%;top: 46.76%;width: 35.71%;height: 26.31%;z-index: 2;"></a>
-            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3023/pack/648001/prod-code/207039" target="_blank" title="24년 구급 경채 0원 PASS" style="position: absolute;left: 51.03%;top: 46.76%;width: 35.71%;height: 26.31%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3023/pack/648001/prod-code/207036" target="_blank" title="24년 공채 0원 119 PASS" style="position: absolute;left: 13.73%;top: 19.16%;width: 35.71%;height: 28.11%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3023/pack/648001/prod-code/207037" target="_blank" title="4년 공채 119 PASS" style="position: absolute;left: 51.03%;top: 19.16%;width: 35.71%;height: 28.11%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3023/pack/648001/prod-code/207038" target="_blank" title="24년 구조/학과 경채 0원 PASS" style="position: absolute;left: 13.73%;top: 48.46%;width: 35.71%;height: 28.11%;z-index: 2;"></a>
+            <a href="https://pass.willbes.net/m/periodPackage/show/cate/3023/pack/648001/prod-code/207039" target="_blank" title="24년 구급 경채 0원 PASS" style="position: absolute;left: 51.03%;top: 48.46%;width: 35.71%;height: 28.11%;z-index: 2;"></a>
         </div>    
     </div>
 
@@ -105,55 +105,55 @@
 
      <!-- 비디오 영상팝업 리스트 -->
 
-    <div id="vid1" style="display: none;">
+    <div id="vid1" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/B11PSWKoBsY?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid2" style="display: none;">
+    <div id="vid2" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/8WuVy15dGw0?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid3" style="display: none;">
+    <div id="vid3" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/Z7PDrEhrY2o?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid4" style="display: none;">
+    <div id="vid4" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/HEVczcIriqw?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid5" style="display: none;">
+    <div id="vid5" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/W3wcvq26MuM?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid6" style="display: none;">
+    <div id="vid6" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/t6sfD77mE8Y?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid7" style="display: none;">
+    <div id="vid7" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/kiOvGUUzPhM?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid8" style="display: none;">
+    <div id="vid8" class="yt_f" style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/dTJ3jiCpx8Y?rel=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
-    <div id="vid9" style="display: none;">
+    <div id="vid9" class="yt_f"style="display: none;">
         <span class="b-close">X</span>
         <div class="videoBox">
             <iframe src="https://www.youtube.com/embed/rkkN4KuT4cQ?rel=0" frameborder="0" allowfullscreen=""></iframe>
@@ -175,15 +175,25 @@
 
         // 비디오팝업
         function videoPop(id) { 
+            
             $(id).bPopup({
                 positionStyle:'fixed',            
                 onClose: function(){
-                    $('video').each(function(){
-                        $(this).get(0).pause();
-                    });
+                    $(".yt_f iframe").attr('src', '');
+                },
+                onOpen: function(){
+                    $("#vid1 iframe").attr('src', 'https://www.youtube.com/embed/B11PSWKoBsY?rel=0');
+                    $("#vid2 iframe").attr('src', 'https://www.youtube.com/embed/8WuVy15dGw0?rel=0');
+                    $("#vid3 iframe").attr('src', 'https://www.youtube.com/embed/Z7PDrEhrY2o?rel=0');
+                    $("#vid4 iframe").attr('src', 'https://www.youtube.com/embed/HEVczcIriqw?rel=0');
+                    $("#vid5 iframe").attr('src', 'https://www.youtube.com/embed/W3wcvq26MuM?rel=0');
+                    $("#vid6 iframe").attr('src', 'https://www.youtube.com/embed/t6sfD77mE8Y?rel=0');
+                    $("#vid7 iframe").attr('src', 'https://www.youtube.com/embed/kiOvGUUzPhM?rel=0');
+                    $("#vid8 iframe").attr('src', 'https://www.youtube.com/embed/dTJ3jiCpx8Y?rel=0');
+                    $("#vid9 iframe").attr('src', 'https://www.youtube.com/embed/rkkN4KuT4cQ?rel=0');
                 }
             });
-        } 
+        }
         </script>
         
     </script>

@@ -95,15 +95,15 @@ class MisStatsOrderModel extends BaseOrderModel
      */
     private function _getListFrom()
     {
-        // 학원운영1팀 공무원 카테고리 (7급PSAT, 7급전문(공무원), 법원, 경찰, 소방)
+        // 학원운영1팀 공무원 카테고리 (7급PSAT, 7급전문(공무원), 법원, 경찰, 소방, 미분류)
         // 공무원온라인
-        $a1_pass_on_cate_code = '3103, 3020, 3035, 3148, 3023';
+        $a1_pass_on_cate_code = '3103, 3020, 3035, 3148, 3023, 999999';
 
         // 공무원학원
         if (in_array(ENVIRONMENT, ['local', 'development']) === true) {
-            $a1_pass_off_cate_code = '3144, 3044, 3059, 3149, 3050';
+            $a1_pass_off_cate_code = '3144, 3044, 3059, 3149, 3050, 999999';
         } else {
-            $a1_pass_off_cate_code = '3143, 3044, 3059, 3149, 3050';
+            $a1_pass_off_cate_code = '3143, 3044, 3059, 3149, 3050, 999999';
         }
 
         return '

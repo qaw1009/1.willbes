@@ -17331,8 +17331,8 @@ table.acadlecInfoPackageTable tr.Top td {
 	background: #f6f7f8
 }
 
-.ssamLecTable tbody tr.pkg th {
-	background: #effaf5
+.ssamLecTable tbody .pkg th {
+	background: #effaf5 !important
 }
 
 .ssamLecTable td a {

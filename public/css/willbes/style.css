@@ -17331,14 +17331,6 @@ table.acadlecInfoPackageTable tr.Top td {
 	background: #f6f7f8
 }
 
-.ssamLecTable tbody .pkg th {
-	background: #effaf5 !important
-}
-
-.ssamLecTable tbody .pkg td:nth-child(1) {
-	color: #006cff
-}
-
 .ssamLecTable td a {
 	display: block;
 	padding: 3px;

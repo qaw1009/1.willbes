@@ -23,7 +23,7 @@
     .evt01 {background:#FF9C00; padding-bottom:50px}
     .evt01 .lecbuy {display:flex; justify-content:center; flex-wrap: wrap; margin:0 2vh}
     .evt01 .lecbuy .p_re {width:50%; margin-bottom:20px; position: relative;}
-    .evt01 .lecbuy .p_re img {max-width:317px;}
+    .evt01 .lecbuy .p_re img {max-width:268px;}
     .evt01 .check {font-size:1.6vh; text-align:center; line-height:1.4;margin-top:40px;font-weight:bold;}
     .evt01 .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
     .evt01 .check a {display:block; padding:5px 0; color:#fff; background:#000; width:60%; margin:20px auto 0; border-radius:20px; font-size:1.8vh;}

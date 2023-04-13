@@ -17331,12 +17331,11 @@ table.acadlecInfoPackageTable tr.Top td {
 	background: #f6f7f8
 }
 
-.ssamLecTable tbody th:nth-child(2),
 .ssamLecTable tbody .pkg th {
 	background: #effaf5 !important
 }
 
-.ssamLecTable tbody .pkg td:nth-child(2) {
+.ssamLecTable tbody .pkg td:nth-child(1) {
 	color: #006cff
 }
 

@@ -17322,13 +17322,17 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 
 .ssamLecTable thead th {
-	background: #e9ecf5 !important;
+	background: #e9ecf5;
 	font-size: 14px;
 	font-weight: bold;
 }
 
 .ssamLecTable tbody th {
-	background: #f6f7f8 !important
+	background: #f6f7f8
+}
+
+.ssamLecTable tbody tr.pkg th {
+	background: #effaf5
 }
 
 .ssamLecTable td a {

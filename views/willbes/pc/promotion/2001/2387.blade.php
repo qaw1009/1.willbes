@@ -13,11 +13,12 @@
         .sky {position:fixed;top:150px; right:10px; z-index:10;}
         .sky a {display:block; margin-bottom:10px}
                 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/10/2387_top_bg.jpg) no-repeat center top;}
-        .evt01{background-color: #014ee5;}
-        .evt02 {padding-top: 170px;}
-        .evt04{padding-bottom: 50px;}
-        .evt04 > img{padding: 40px 0;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2023/04/2387_top_bg.jpg) no-repeat center top;}
+        .evt01{background: #ebebeb;}
+        .evt02 {background: #4f4f4f;}
+        .evt03 {background: #f1f1f1;}
+        .evt04 {padding-bottom: 150px;}
+
 
         .evtTab {width:890px; margin:0 auto; padding-bottom: 80px; display: flex; justify-content: center; align-items: flex-end;}
         .evtTab li {width:50%; position: relative;}
@@ -52,35 +53,28 @@
         .evtTab li a:hover span,
         .evtTab li a.active span{font-size: 20px;}
         .evtTab:after {content:''; display:block; clear:both}
-
-
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
 
-        <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2387_top.jpg" alt="이국령의 경찰 헌법 도약" />
+        <div class="evtCtnsBox evtTop" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2023/04/2387_top.jpg" alt="이국령의 경찰 헌법 도약" />
         </div>
 
-        <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2387_01.jpg" alt="왜 이국령을 선택해야하나" />
+        <div class="evtCtnsBox evt01" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2023/04/2387_01.jpg" alt="왜 이국령을 선택해야하나" />
         </div>
 
-        <div class="evtCtnsBox evt02">
-            <ul class="evtTab">
-                <li><a href="#tab01">2021년 수험생대상<span>(재시생)</span></a></li>
-                <li><a href="#tab02">2022년 수험생대상<span>(초시생)</span></a></li>
-            </ul>
-            <div id="tab01"><img src="https://static.willbes.net/public/images/promotion/2021/10/2387_02_01.jpg" alt="이국령 헌법속성반" /></div>
-            <div id="tab02"><img src="https://static.willbes.net/public/images/promotion/2021/10/2387_02_02.jpg" alt="이국령 헌법 기본이론" /></div>
+        <div class="evtCtnsBox evt02" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2023/04/2387_02.jpg" alt="이국령 헌법속성반" />
         </div>
 
-        <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2387_03.jpg" alt="2022 합격대비 커리큘럼" />
+        <div class="evtCtnsBox evt03" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2023/04/2387_03.jpg" alt="2022 합격대비 커리큘럼" />
         </div>
 
-        <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/10/2387_04.jpg" alt="국령쌤 추천강좌" />
+        <div class="evtCtnsBox evt04" data-aos="fade-up">
+            <img src="https://static.willbes.net/public/images/promotion/2023/04/2387_04.jpg" alt="국령쌤 추천강좌" />
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif  
@@ -90,34 +84,15 @@
     <!-- End evtContainer -->
 
 
-    <script type="text/javascript">
-        /*탭*/
-        $(document).ready(function(){
-            $('.evtTab').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
-                $content = $($active[0].hash);
-                $links.not($active).each(function () {
-                    $(this.hash).hide()
-                });
-
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                    $active.removeClass('active');
-                    $content.hide();
-                    $active = $(this);
-                    $content = $(this.hash);
-                    $active.addClass('active');
-                    $content.show();
-                    e.preventDefault();
-                });
-            });
-        });
-
-        
-    </script>
-
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')
+
+    <link href="/public/js/willbes/dist/aos.css" rel="stylesheet">
+    <script src="/public/js/willbes/dist/aos.js"></script>  
+    <script>
+      $(document).ready( function() {
+        AOS.init();
+      });
+      
+    </script>
 @stop
